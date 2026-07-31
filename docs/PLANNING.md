@@ -8,9 +8,9 @@
 
 ## 0. Decisions locked (v1)
 
-| # | Decision |
+| Area | Decision |
 |---|---|
-| **Stack** | **Vite + Svelte + TypeScript**, deployed via GitHub Actions. Svelte compiles to very lean JS ("as vanilla as possible" while keeping a real reactive preview). Word data is **fetched at runtime** → adding words never needs a rebuild. |
+| **Stack** | **Vite + Svelte + TypeScript**, deployed via GitHub Actions. Svelte compiles to very lean JS ("as vanilla as possible" while keeping a real reactive preview). Word data is **fetched at runtime**, so adding words needs **no frontend-code build** — only a regenerated `data/index.json` (via `build-index`) plus the normal Pages redeploy. |
 | **Data layout** | **One folder per topic.** Filenames encode the language: a **language code** (`de.json`, `en.json`) = a translated variant (e.g. `topics/pokemon/de.json`); any **content-named** file (`champions.json`) = a single **language-neutral** list (e.g. `topics/league-of-legends/champions.json`) — no extra `neutral.json` layer. |
 | **Popularity / slider** | Sets are split into **ordered fame tiers** (roughly equal fame within a tier, tiers descending). The per-node slider **snaps to tier thresholds** (cumulative word counts), not every integer — no invented fine ordering. See §4.2. |
 | **Launch scope** | **skribbl-only MVP** first (comma separator, its limits, copy-to-clipboard). Multi-game presets and shareable-URL configs are **deferred** to a later milestone. |
