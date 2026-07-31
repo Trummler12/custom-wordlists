@@ -11,8 +11,8 @@ permissions:
   pages: write
   id-token: write
 
-# Let a newer run supersede an in-flight one, but never cancel a running
-# deploy (avoids leaving Pages half-updated).
+# Serialize Pages deploys: a newer run queues behind an in-flight one instead
+# of cancelling it, so a deploy is never interrupted mid-publish.
 concurrency:
   group: pages
   cancel-in-progress: false
