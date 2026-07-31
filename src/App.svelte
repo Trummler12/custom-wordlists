@@ -6,7 +6,7 @@
   <h1>{title}</h1>
   <p>
     Skeleton is live. This will become a tool to build custom word lists for
-    <a href="https://skribbl.io" target="_blank" rel="noreferrer">skribbl.io</a>
+    <a href="https://skribbl.io" target="_blank" rel="noopener noreferrer">skribbl.io</a>
     and similar word games.
   </p>
 </main>
