@@ -1,0 +1,7 @@
+# Local-only scratch: PR drafts, notes, anything not meant for the repo
+_untracked/
+
+# Node / build (for later milestones)
+node_modules/
+dist/
+.cache/
