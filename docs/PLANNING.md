@@ -93,7 +93,7 @@ schema/
 ```
 
 - Each **topic** = one **folder**. **Filename convention:** a **language code** (`de.json`, `en.json`) marks a translated variant; any **other filename** (`champions.json`) marks a single **language-neutral** list. `build-index` derives a topic's languages from the filenames — no redundant `neutral.json` wrapper.
-- `index.json` is **built by a script** that scans `data/topics/*/*.json` and emits a lightweight list `{ id, title, langs, groupCount, wordCount, icon }` so the frontend renders the tree *without* downloading every topic. The chosen language file is fetched only when the user expands/selects that topic → fast first load, scales to hundreds of topics.
+- `index.json` is **built by a script** that scans `data/topics/*/*.json` and emits a lightweight list `{ id, title, langs, files, groupCount, wordCount, icon }` so the frontend renders the tree *without* downloading every topic. `files` lists the topic folder's JSON filenames so the frontend can fetch a neutral topic whose file is content-named (`champions.json`), not `<id>.json`. The chosen language file is fetched only when the user expands/selects that topic → fast first load, scales to hundreds of topics.
 - A `validate-data` script cross-checks that a topic's language files share the **same group/tier structure** (same ids, same tier counts) so translations can't silently drift (the known downside of per-language files).
 
 ### 4.2 Topic file structure — groups + fame tiers
