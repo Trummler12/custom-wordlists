@@ -170,7 +170,8 @@
   }
 
   function toggleGroup(tid: string, g: Group) {
-    setGroup(tid, g, !groupFull(tid, g)); // full/partial → clear, empty → full
+    // Any selection (full or partial) clears; only an empty group fills.
+    setGroup(tid, g, groupSelCount(tid, g) === 0);
   }
   async function toggleTopic(t: TopicSummary) {
     const data = topicData[t.id] ?? (await ensureLoaded(t));
@@ -179,10 +180,8 @@
   }
   async function toggleCategory(ts: TopicSummary[]) {
     const on = !catFull(ts);
-    for (const t of ts) {
-      const data = topicData[t.id] ?? (await ensureLoaded(t));
-      if (data) setTopic(t, on);
-    }
+    const loaded = await Promise.all(ts.map((t) => topicData[t.id] ?? ensureLoaded(t)));
+    ts.forEach((t, i) => loaded[i] && setTopic(t, on));
   }
 
   // Group topics by their category path for the tree (topics keep manifest order).
@@ -284,16 +283,18 @@
       <section class="topics" aria-label="Topics">
         <h2>Topics</h2>
         {#each byCategory as [category, catTopics] (category)}
-          <label class="category">
+          {@const catId = "cat-" + (category.replace(/\//g, "-") || "root")}
+          <div class="category">
             <input
               type="checkbox"
+              id={catId}
               checked={catFull(catTopics)}
               use:setIndeterminate={catPartial(catTopics)}
               onchange={() => toggleCategory(catTopics)}
             />
-            <h3 class="category-title">{formatCategory(category)}</h3>
+            <h3 class="category-title"><label for={catId}>{formatCategory(category)}</label></h3>
             <span class="meta">{catSel(catTopics)} of {catTotal(catTopics)} words</span>
-          </label>
+          </div>
           <ul>
             {#each catTopics as t (t.id)}
             <li class="topic-item">
