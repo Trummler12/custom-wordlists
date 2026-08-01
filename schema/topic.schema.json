@@ -1,0 +1,77 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://trummler12.github.io/custom-wordlists/schema/topic.schema.json",
+  "title": "Topic",
+  "description": "One word-list topic (a single language variant). See docs/PLANNING.md §4.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "title", "groups"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$",
+      "description": "Kebab-case topic id; should match the topic folder name."
+    },
+    "lang": {
+      "type": "string",
+      "pattern": "^[a-z]{2}(-[A-Z]{2})?$",
+      "description": "Language code (e.g. \"de\", \"en\"). Present only for translated variants; omitted for language-neutral lists."
+    },
+    "title": { "type": "string", "minLength": 1 },
+    "icon": { "type": "string", "minLength": 1 },
+    "description": { "type": "string" },
+    "groups": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/group" }
+    },
+    "presets": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/preset" }
+    }
+  },
+  "$defs": {
+    "word": { "type": "string", "minLength": 1 },
+    "group": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "title"],
+      "description": "A subtopic; the smallest checkbox unit. Carries exactly one of `words` (flat) or `tiers` (fame-ordered).",
+      "properties": {
+        "id": { "type": "string", "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$" },
+        "title": { "type": "string", "minLength": 1 },
+        "words": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/word" }
+        },
+        "tiers": {
+          "type": "array",
+          "minItems": 1,
+          "description": "Ordered fame tiers, tier 0 = most famous; order within a tier is irrelevant.",
+          "items": {
+            "type": "array",
+            "minItems": 1,
+            "items": { "$ref": "#/$defs/word" }
+          }
+        }
+      },
+      "oneOf": [{ "required": ["words"] }, { "required": ["tiers"] }]
+    },
+    "preset": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "title", "groups"],
+      "description": "A named bundle of group ids (e.g. \"Include all\").",
+      "properties": {
+        "id": { "type": "string", "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$" },
+        "title": { "type": "string", "minLength": 1 },
+        "groups": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "type": "string" }
+        }
+      }
+    }
+  }
+}
