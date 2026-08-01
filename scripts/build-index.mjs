@@ -40,7 +40,7 @@ async function readTopicDir(id) {
     } catch (err) {
       throw new Error(`data/topics/${id}/${file}: could not read/parse — ${err.message}`);
     }
-    variants.push({ lang: LANG_RE.test(stem) ? stem : null, data });
+    variants.push({ lang: LANG_RE.test(stem) ? stem : null, file, data });
   }
   return variants;
 }
@@ -67,6 +67,7 @@ async function buildIndex() {
       title: rep.data.title,
       icon: rep.data.icon ?? null,
       langs, // empty array = language-neutral
+      files: variants.map((v) => v.file), // JSON filenames the frontend can fetch
       groupCount: rep.data.groups.length,
       wordCount: countWords(rep.data),
     });

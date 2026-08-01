@@ -1,0 +1,156 @@
+/* Component and base styles, written against the semantic theme variables from
+   themes.css. Last file in the import chain; main.ts imports this one. */
+@import "./themes.css";
+
+/* Base */
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  line-height: 1.5;
+}
+a {
+  color: inherit;
+}
+
+/* App shell */
+main {
+  max-width: 60rem;
+  margin: 2.5rem auto;
+  padding: 0 1rem;
+}
+h1 {
+  margin-bottom: 0.25rem;
+}
+h2 {
+  font-size: 1rem;
+  margin: 0 0 0.5rem;
+}
+.tagline {
+  margin-top: 0;
+  color: var(--muted);
+}
+.status.error,
+.warn {
+  color: var(--danger);
+}
+
+/* Two-column layout (stacks on narrow screens) */
+.layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  align-items: start;
+}
+@media (max-width: 40rem) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Topic list */
+.topics ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.topic-item {
+  border-bottom: 1px solid var(--border);
+}
+.topic-row {
+  display: flex;
+  align-items: baseline;
+  gap: 0.25rem;
+}
+.expander {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0 0.25rem;
+  color: var(--muted-2);
+  font-size: 0.9rem;
+  line-height: 1;
+}
+.topic {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  flex: 1;
+  padding: 0.5rem 0.2rem;
+  cursor: pointer;
+}
+.topic .title {
+  font-weight: 600;
+}
+.meta {
+  margin-left: auto;
+  color: var(--muted-2);
+  font-size: 0.85rem;
+}
+
+/* Groups (nested under a topic) */
+.groups {
+  list-style: none;
+  margin: 0 0 0.4rem 2.1rem;
+  padding: 0;
+}
+.group {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  padding: 0.25rem 0.2rem;
+  cursor: pointer;
+}
+.group .title {
+  font-weight: 500;
+}
+
+/* Per-group fame-depth slider (nested under a tiered group) */
+.group-depth {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  margin: 0.1rem 0 0.5rem 1.75rem;
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+.group-depth input[type="range"] {
+  width: 100%;
+  max-width: 16rem;
+}
+
+/* Output panel */
+.output-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.output-head button {
+  padding: 0.35rem 0.9rem;
+  cursor: pointer;
+}
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  padding: 0.6rem;
+  border: 1px solid var(--panel-border);
+  border-radius: var(--radius);
+  max-height: 24rem;
+  overflow-y: auto;
+  cursor: text;
+}
+.chip {
+  background: var(--chip-bg);
+  color: var(--chip-fg);
+  border-radius: var(--radius-sm);
+  padding: 0.1rem 0.45rem;
+  font-size: 0.9rem;
+}
+.counter {
+  color: var(--muted);
+  font-size: 0.85rem;
+  margin: 0.6rem 0 0;
+}
+.counter.warn {
+  font-weight: 600;
+}
