@@ -1,0 +1,21 @@
+{
+  "id": "lord-of-the-rings",
+  "lang": "de",
+  "title": "Der Herr der Ringe",
+  "icon": "💍",
+  "description": "Charaktere aus Der Herr der Ringe (deutsche Namen). Bekanntheits-Tiers (Tier 0 = am bekanntesten).",
+  "groups": [
+    {
+      "id": "characters",
+      "title": "Charaktere",
+      "tiers": [
+        ["Frodo", "Gandalf", "Aragorn", "Legolas", "Gimli", "Gollum", "Sauron", "Bilbo", "Samweis Gamdschie", "Saruman"],
+        ["Boromir", "Galadriel", "Elrond", "Théoden", "Éowyn", "Faramir", "Merry", "Pippin", "Baumbart", "Arwen"],
+        ["Éomer", "Denethor", "Grima Schlangenzunge", "Kankra", "Hexenkönig", "Tom Bombadil", "Radagast", "Celeborn", "Glorfindel", "Gerstenmann Butterblume"]
+      ]
+    }
+  ],
+  "presets": [
+    { "id": "all", "title": "Alle Charaktere", "groups": ["characters"] }
+  ]
+}
