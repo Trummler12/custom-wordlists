@@ -52,7 +52,6 @@ h2 {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  cursor: pointer;
   margin: 1rem 0 0.25rem;
 }
 .category:first-of-type {
@@ -64,6 +63,9 @@ h2 {
   text-transform: uppercase;
   letter-spacing: 0.05em;
   color: var(--muted-2);
+}
+.category-title label {
+  cursor: pointer;
 }
 .category .meta {
   font-size: 0.75rem;
@@ -157,6 +159,8 @@ h2 {
   left: var(--inset);
   background: var(--range-fill);
 }
+/* Inverted contrast on purpose: a dot on the blue fill is light, a dot on the
+   grey track is blue — so a marker stays visible on either side of the thumb. */
 .depth-dot {
   position: absolute;
   top: 50%;
@@ -164,12 +168,12 @@ h2 {
   height: 0.34rem;
   border-radius: 50%;
   transform: translate(-50%, -50%);
-  background: var(--range-dot); /* left of the thumb: sits on the blue fill */
+  background: var(--range-dot); /* left of the thumb, on the blue fill → light */
   pointer-events: none;
   z-index: 1;
 }
 .depth-dot.on {
-  background: var(--range-fill); /* right of the thumb: sits on the grey track */
+  background: var(--range-fill); /* right of the thumb, on the grey track → blue */
 }
 .depth-thumb {
   position: absolute;
