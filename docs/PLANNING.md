@@ -82,18 +82,19 @@ Other games (Codenames, Sketchful.io, Gartic Phone, …) mostly differ only in *
 ```
 data/
   topics/
-    league-of-legends/
-      champions.json      # language-neutral → content-named file, no lang code
-    pokemon/
-      de.json             # translated → one file per language code
-      en.json
-  index.json              # GENERATED — never hand-edited
+    gaming/                 # category folder (nestable, arbitrarily deep)
+      league-of-legends/
+        champions.json      # language-neutral → content-named file, no lang code
+      pokemon/
+        de.json             # translated → one file per language code
+        en.json
+  index.json                # GENERATED — never hand-edited
 schema/
-  topic.schema.json       # JSON Schema; validated in CI
+  topic.schema.json         # JSON Schema; validated in CI
 ```
 
-- Each **topic** = one **folder**. **Filename convention:** a **language code** (`de.json`, `en.json`) marks a translated variant; any **other filename** (`champions.json`) marks a single **language-neutral** list. `build-index` derives a topic's languages from the filenames — no redundant `neutral.json` wrapper.
-- `index.json` is **built by a script** that scans `data/topics/*/*.json` and emits a lightweight list `{ id, title, langs, files, groupCount, wordCount, icon }` so the frontend renders the tree *without* downloading every topic. `files` lists the topic folder's JSON filenames so the frontend can fetch a neutral topic whose file is content-named (`champions.json`), not `<id>.json`. The chosen language file is fetched only when the user expands/selects that topic → fast first load, scales to hundreds of topics.
+- Each **topic** = one **folder** that directly holds its JSON file(s). Folders **above** a topic are an **arbitrarily deep category path** (`gaming/`, or `gaming/pokemon/`), kebab-case like ids. **Filename convention:** a **language code** (`de.json`, `en.json`) marks a translated variant; any **other filename** (`champions.json`) marks a single **language-neutral** list. `build-index` derives a topic's languages from the filenames — no redundant `neutral.json` wrapper.
+- `index.json` is **built by a script** that walks `data/topics/**` (a directory with JSON files = a topic; folders above = its category) and emits a lightweight list `{ id, category, title, langs, files, groupCount, wordCount, icon }` so the frontend renders the tree *without* downloading every topic. `category` is the "/"-joined path from `topics/`; `files` lists the topic folder's JSON filenames so the frontend can fetch a neutral topic whose file is content-named (`champions.json`), not `<id>.json`. The chosen language file is fetched only when the user expands/selects that topic → fast first load, scales to hundreds of topics.
 - A `validate-data` script cross-checks that a topic's language files share the **same group/tier structure** (same ids, same tier counts) so translations can't silently drift (the known downside of per-language files).
 
 ### 4.2 Topic file structure — groups + fame tiers
@@ -204,13 +205,13 @@ custom-wordlists/
   index.html                 # Vite entry
   src/                        # Svelte + TS frontend code
   data/
-    topics/<topic>/<lang>.json  # one folder per topic, one file per language
+    topics/<category…>/<topic>/<lang>.json  # nestable category path, one file per language
     index.json               # GENERATED manifest
     games.json               # game presets (§6.4)
   schema/
     topic.schema.json        # JSON Schema for topic files
   scripts/
-    build-index.mjs          # scans data/topics/*/*.json → data/index.json
+    build-index.mjs          # walks data/topics/** → data/index.json
     validate-data.mjs        # schema-validate + cross-check language files per topic
   docs/
     PLANNING.md              # this file

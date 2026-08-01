@@ -8,6 +8,8 @@ export interface TopicSummary {
   title: string;
   /** Emoji/icon, or null when the topic has none. */
   icon: string | null;
+  /** Category path from topics/ (e.g. "gaming" or "gaming/pokemon"); "" = none. */
+  category: string;
   /** Available language codes (e.g. ["de","en"]); empty = language-neutral. */
   langs: string[];
   /** JSON filenames in the topic folder; the frontend fetches one of these. */

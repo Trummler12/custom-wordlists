@@ -48,6 +48,16 @@ h2 {
 }
 
 /* Topic list */
+.category-title {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--muted-2);
+  margin: 1rem 0 0.25rem;
+}
+.category-title:first-of-type {
+  margin-top: 0.25rem;
+}
 .topics ul {
   list-style: none;
   padding: 0;
