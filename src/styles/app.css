@@ -48,15 +48,25 @@ h2 {
 }
 
 /* Topic list */
+.category {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  margin: 1rem 0 0.25rem;
+}
+.category:first-of-type {
+  margin-top: 0.25rem;
+}
 .category-title {
+  margin: 0;
   font-size: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 0.05em;
   color: var(--muted-2);
-  margin: 1rem 0 0.25rem;
 }
-.category-title:first-of-type {
-  margin-top: 0.25rem;
+.category .meta {
+  font-size: 0.75rem;
 }
 .topics ul {
   list-style: none;
@@ -116,16 +126,36 @@ h2 {
 
 /* Per-group fame-depth slider (nested under a tiered group) */
 .group-depth {
-  display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
   margin: 0.1rem 0 0.5rem 1.75rem;
-  font-size: 0.8rem;
-  color: var(--muted);
-}
-.group-depth input[type="range"] {
   width: 100%;
   max-width: 16rem;
+}
+.depth-range {
+  display: block;
+  width: 100%;
+  margin: 0;
+  accent-color: var(--range-fill);
+}
+/* Snap markers under the slider: one per tier boundary (0…n). Dots up to the
+   thumb use the fill colour, the rest the track colour — same vars as the
+   slider itself. Side padding ≈ thumb radius so the ends line up with travel. */
+.snap-dots {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 0.5rem;
+  margin-top: 0.15rem;
+  box-sizing: border-box;
+}
+.snap-dot {
+  width: 0.4rem;
+  height: 0.4rem;
+  border-radius: 50%;
+  background: var(--range-track);
+  border: 1px solid var(--panel-border);
+}
+.snap-dot.on {
+  background: var(--range-fill);
+  border-color: var(--range-fill);
 }
 
 /* Output panel */
