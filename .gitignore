@@ -5,3 +5,6 @@ _untracked/
 node_modules/
 dist/
 .cache/
+
+# Generated data manifest (produced by `npm run build:index`)
+data/index.json
