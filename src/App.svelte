@@ -16,7 +16,8 @@
 
   let expanded = $state<Record<string, boolean>>({});
   let selected = $state<Record<string, boolean>>({}); // key `${topicId}:${groupId}`
-  let depth = $state(0); // fame depth (top-N tiers); 0 = uninitialized → all tiers
+  // Per-group fame depth (top-N tiers), keyed like `selected`. Absent = all tiers.
+  let depthByGroup = $state<Record<string, number>>({});
 
   let copied = $state(false);
 
@@ -73,35 +74,20 @@
   const someSelected = (t: TopicSummary) =>
     groupsOf(t).some((g) => selected[key(t.id, g.id)]);
 
-  // Deepest tier count among currently selected tiered groups (0 = none).
-  const maxTiers = $derived.by(() => {
-    let m = 0;
-    for (const t of topics) {
-      const data = topicData[t.id];
-      if (!data) continue;
-      for (const g of data.groups) {
-        if (g.tiers && selected[key(t.id, g.id)]) m = Math.max(m, g.tiers.length);
-      }
-    }
-    return m;
-  });
-
-  // Initialize the slider to "all tiers" and clamp it when the max shrinks.
-  $effect(() => {
-    if (maxTiers > 0 && (depth === 0 || depth > maxTiers)) depth = maxTiers;
-  });
+  // Effective depth for a tiered group: the slider value, or all tiers if unset.
+  const groupDepth = (k: string, tierCount: number) => depthByGroup[k] ?? tierCount;
 
   // Aggregate selected groups' words (top-N tiers), de-duplicated, manifest order.
   const merged = $derived.by(() => {
-    const d = depth || Infinity;
     const seen = new Set<string>();
     const out: string[] = [];
     for (const t of topics) {
       const data = topicData[t.id];
       if (!data) continue;
       for (const g of data.groups) {
-        if (!selected[key(t.id, g.id)]) continue;
-        const words = g.tiers ? g.tiers.slice(0, d).flat() : g.words ?? [];
+        const k = key(t.id, g.id);
+        if (!selected[k]) continue;
+        const words = g.tiers ? g.tiers.slice(0, groupDepth(k, g.tiers.length)).flat() : g.words ?? [];
         for (const w of words) {
           if (!seen.has(w)) {
             seen.add(w);
@@ -208,6 +194,22 @@
                           {#if g.tiers}{g.tiers.length} tiers{:else}{g.words?.length ?? 0} words{/if}
                         </span>
                       </label>
+                      {#if g.tiers && g.tiers.length > 1}
+                        {@const k = key(t.id, g.id)}
+                        <div class="group-depth">
+                          <label for="depth-{k}">
+                            Fame depth: top {groupDepth(k, g.tiers.length)} of {g.tiers.length} tiers
+                          </label>
+                          <input
+                            id="depth-{k}"
+                            type="range"
+                            min="1"
+                            max={g.tiers.length}
+                            value={groupDepth(k, g.tiers.length)}
+                            oninput={(e) => (depthByGroup[k] = +e.currentTarget.value)}
+                          />
+                        </div>
+                      {/if}
                     </li>
                   {/each}
                 </ul>
@@ -227,13 +229,6 @@
             {copied ? "Copied!" : "Copy"}
           </button>
         </div>
-
-        {#if maxTiers > 1}
-          <div class="depth">
-            <label for="depth">Fame depth: top {depth || maxTiers} of {maxTiers} tiers</label>
-            <input id="depth" type="range" min="1" max={maxTiers} bind:value={depth} />
-          </div>
-        {/if}
 
         {#if merged.length === 0}
           <p class="status">Select topics or groups to build a list.</p>
