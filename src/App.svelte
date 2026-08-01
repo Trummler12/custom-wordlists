@@ -188,7 +188,7 @@
   }
   .tagline {
     margin-top: 0;
-    color: #555;
+    color: var(--muted);
   }
   h2 {
     font-size: 1rem;
@@ -196,7 +196,7 @@
   }
   .status.error,
   .warn {
-    color: #b00020;
+    color: var(--danger);
   }
   .layout {
     display: grid;
@@ -219,7 +219,7 @@
     align-items: baseline;
     gap: 0.5rem;
     padding: 0.5rem 0.2rem;
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid var(--border);
     cursor: pointer;
   }
   .topic .title {
@@ -227,7 +227,7 @@
   }
   .topic .meta {
     margin-left: auto;
-    color: #777;
+    color: var(--muted-2);
     font-size: 0.85rem;
   }
   .output-head {
@@ -244,20 +244,21 @@
     flex-wrap: wrap;
     gap: 0.35rem;
     padding: 0.6rem;
-    border: 1px solid #ddd;
+    border: 1px solid var(--panel-border);
     border-radius: 0.4rem;
     max-height: 24rem;
     overflow-y: auto;
     cursor: text;
   }
   .chip {
-    background: #f2f3f5;
+    background: var(--chip-bg);
+    color: var(--chip-fg);
     border-radius: 0.3rem;
     padding: 0.1rem 0.45rem;
     font-size: 0.9rem;
   }
   .counter {
-    color: #555;
+    color: var(--muted);
     font-size: 0.85rem;
     margin: 0.6rem 0 0;
   }
