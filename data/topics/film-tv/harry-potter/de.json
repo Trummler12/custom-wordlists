@@ -1,0 +1,21 @@
+{
+  "id": "harry-potter",
+  "lang": "de",
+  "title": "Harry Potter",
+  "icon": "⚡",
+  "description": "Charaktere aus Harry Potter (deutsche Namen). Bekanntheits-Tiers (Tier 0 = am bekanntesten).",
+  "groups": [
+    {
+      "id": "characters",
+      "title": "Charaktere",
+      "tiers": [
+        ["Harry Potter", "Hermine Granger", "Ron Weasley", "Albus Dumbledore", "Lord Voldemort", "Severus Snape", "Hagrid", "Draco Malfoy", "Sirius Black", "Dobby"],
+        ["Minerva McGonagall", "Bellatrix Lestrange", "Lucius Malfoy", "Neville Longbottom", "Luna Lovegood", "Ginny Weasley", "Fred Weasley", "George Weasley", "Remus Lupin", "Dolores Umbridge", "Cedric Diggory", "Cho Chang"],
+        ["Tom Vorlost Riddle", "Peter Pettigrew", "Molly Weasley", "Arthur Weasley", "Nymphadora Tonks", "Mad-Eye Moody", "Gilderoy Lockhart", "Maulende Myrte", "Der fast kopflose Nick", "Fleur Delacour", "Viktor Krum", "Horace Slughorn"]
+      ]
+    }
+  ],
+  "presets": [
+    { "id": "all", "title": "Alle Charaktere", "groups": ["characters"] }
+  ]
+}
