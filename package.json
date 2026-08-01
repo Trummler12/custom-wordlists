@@ -5,8 +5,8 @@
   "type": "module",
   "description": "Build custom word lists for skribbl.io and similar word games.",
   "scripts": {
-    "dev": "vite",
-    "build": "svelte-check --tsconfig ./tsconfig.json && vite build",
+    "dev": "npm run build:index && vite",
+    "build": "npm run build:index && svelte-check --tsconfig ./tsconfig.json && vite build",
     "preview": "vite preview",
     "check": "svelte-check --tsconfig ./tsconfig.json",
     "typecheck:node": "tsc -p tsconfig.node.json --noEmit",
