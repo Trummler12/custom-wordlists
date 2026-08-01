@@ -1,6 +1,7 @@
-// Shapes of the generated manifest (data/index.json). Kept in sync with
-// scripts/build-index.mjs and schema/topic.schema.json. Topic-file interfaces
-// (Topic/Group/Preset) are added when on-demand topic loading lands.
+// Shapes of the generated manifest (data/index.json), produced by
+// scripts/build-index.mjs — the source of truth for these types. Topic-file
+// interfaces (Topic/Group/Preset), which will mirror schema/topic.schema.json,
+// are added when on-demand topic loading lands.
 
 /** One topic as summarized in the manifest — enough to render the tree. */
 export interface TopicSummary {
