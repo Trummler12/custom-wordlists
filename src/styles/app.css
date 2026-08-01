@@ -48,15 +48,27 @@ h2 {
 }
 
 /* Topic list */
+.category {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 1rem 0 0.25rem;
+}
+.category:first-of-type {
+  margin-top: 0.25rem;
+}
 .category-title {
+  margin: 0;
   font-size: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 0.05em;
   color: var(--muted-2);
-  margin: 1rem 0 0.25rem;
 }
-.category-title:first-of-type {
-  margin-top: 0.25rem;
+.category-title label {
+  cursor: pointer;
+}
+.category .meta {
+  font-size: 0.75rem;
 }
 .topics ul {
   list-style: none;
@@ -114,18 +126,74 @@ h2 {
   font-weight: 500;
 }
 
-/* Per-group fame-depth slider (nested under a tiered group) */
+/* Per-group fame-depth slider — a custom track so the snap markers can sit on
+   the rail and their spacing can mirror tier sizes (a native <input range>
+   can do neither). Colours come from the shared --range-* vars in themes.css. */
 .group-depth {
-  display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
-  margin: 0.1rem 0 0.5rem 1.75rem;
-  font-size: 0.8rem;
-  color: var(--muted);
-}
-.group-depth input[type="range"] {
+  margin: 0.45rem 0 0.7rem 1.75rem;
   width: 100%;
   max-width: 16rem;
+}
+.depth-track {
+  --inset: 8px; /* keeps the end dots off the rail edges; matches INSET_PX in App.svelte */
+  position: relative;
+  height: 1rem; /* hit area; the visible rail is thinner */
+  cursor: pointer;
+  touch-action: none; /* let pointer drag work without scrolling */
+}
+.depth-rail,
+.depth-fill {
+  position: absolute;
+  top: 50%;
+  height: 0.3rem;
+  border-radius: 999px;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+.depth-rail {
+  left: var(--inset);
+  right: var(--inset);
+  background: var(--range-track);
+}
+.depth-fill {
+  left: var(--inset);
+  background: var(--range-fill);
+}
+/* Inverted contrast on purpose: a dot on the blue fill is light, a dot on the
+   grey track is blue — so a marker stays visible on either side of the thumb. */
+.depth-dot {
+  position: absolute;
+  top: 50%;
+  width: 0.34rem;
+  height: 0.34rem;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--range-dot); /* left of the thumb, on the blue fill → light */
+  pointer-events: none;
+  z-index: 1;
+}
+.depth-dot.on {
+  background: var(--range-fill); /* right of the thumb, on the grey track → blue */
+}
+.depth-thumb {
+  position: absolute;
+  top: 50%;
+  width: 0.85rem;
+  height: 0.85rem;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--range-fill);
+  border: 2px solid var(--range-thumb-ring);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.35);
+  pointer-events: none;
+  z-index: 2;
+}
+.depth-track:focus-visible {
+  outline: none;
+}
+.depth-track:focus-visible .depth-thumb {
+  outline: 2px solid var(--range-fill);
+  outline-offset: 2px;
 }
 
 /* Output panel */

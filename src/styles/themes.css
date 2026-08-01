@@ -14,6 +14,16 @@
   --chip-bg: var(--color-gray-100);
   --chip-fg: var(--color-ink-900);
   --danger: var(--color-danger);
+  /* Custom fame-depth slider. Snap dots use inverted contrast vs. their
+     background (see app.css), so the colours cross over at the thumb:
+     --range-fill  = thumb, filled rail, and the dots on the (grey) track;
+     --range-track = the unfilled rail;
+     --range-dot   = the dots on the (blue) fill;
+     --range-thumb-ring frames the thumb against the rail. */
+  --range-fill: var(--color-blue-500);
+  --range-track: var(--color-gray-300);
+  --range-dot: #ffffff;
+  --range-thumb-ring: #ffffff;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -25,5 +35,9 @@
     --chip-bg: var(--color-slate-800);
     --chip-fg: var(--color-fog-100);
     --danger: var(--color-danger-soft);
+    --range-fill: var(--color-blue-400);
+    --range-track: var(--color-gray-700);
+    --range-dot: var(--color-fog-100);
+    --range-thumb-ring: var(--color-slate-800);
   }
 }

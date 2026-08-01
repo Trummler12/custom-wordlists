@@ -3,8 +3,17 @@
   import { loadManifest, loadTopic, pickFile } from "./lib/data";
   import type { TopicSummary, Topic, Group } from "./lib/types";
 
+  // ─── Tunables (configuration) ──────────────────────────────────────────────
   // skribbl's custom-wordlist rules (PLANNING §4/§6.2). Only game preset for now.
   const SKRIBBL = { separator: ",", minWords: 10, maxWordLen: 32, maxTotal: 20000 };
+  // Fame-depth slider snap spacing: every gap is at least this fraction of an
+  // equal step, and the remaining travel is distributed by tier size. Lower =
+  // more size-faithful spacing; higher = more even. Range (0, 1).
+  const MIN_GAP_RATIO = 0.4;
+  // Horizontal inset (px) that keeps the slider's end dots off the rail edges.
+  // Must stay in sync with `--inset` in src/styles/app.css.
+  const INSET_PX = 8;
+  // ────────────────────────────────────────────────────────────────────────────
 
   let topics = $state<TopicSummary[]>([]);
   let loading = $state(true);
@@ -15,8 +24,8 @@
   let topicError = $state<string | null>(null);
 
   let expanded = $state<Record<string, boolean>>({});
-  let selected = $state<Record<string, boolean>>({}); // key `${topicId}:${groupId}`
-  // Per-group fame depth (top-N tiers), keyed like `selected`. Absent = all tiers.
+  let selected = $state<Record<string, boolean>>({}); // flat groups only, key `${topicId}:${groupId}`
+  // Per-group fame depth (top-N tiers), keyed like `selected`. Absent/0 = unselected.
   let depthByGroup = $state<Record<string, number>>({});
 
   let copied = $state(false);
@@ -55,24 +64,125 @@
     if (expanded[t.id]) await ensureLoaded(t);
   }
 
+  const groupsOf = (t: TopicSummary): Group[] => topicData[t.id]?.groups ?? [];
+
+  // --- Selection model -------------------------------------------------------
+  // Tiered groups are represented purely by depthByGroup[k] (0…tierCount);
+  // flat `words` groups keep the boolean selected[k]. Every parent state below
+  // (group full/partial, topic, category) is derived from these two, so moving
+  // a slider rolls up to the topic and category checkboxes with no extra code.
+
+  const tierCount = (g: Group) => g.tiers?.length ?? 0;
+
+  const groupTotal = (g: Group): number =>
+    g.tiers ? g.tiers.reduce((n, tier) => n + tier.length, 0) : g.words?.length ?? 0;
+
+  const groupSelCount = (tid: string, g: Group): number => {
+    const k = key(tid, g.id);
+    if (g.tiers) {
+      const d = depthByGroup[k] ?? 0;
+      let n = 0;
+      for (let i = 0; i < d; i++) n += g.tiers[i].length;
+      return n;
+    }
+    return selected[k] ? g.words?.length ?? 0 : 0;
+  };
+
+  const groupFull = (tid: string, g: Group): boolean => {
+    const k = key(tid, g.id);
+    return g.tiers ? (depthByGroup[k] ?? 0) === g.tiers.length : !!selected[k];
+  };
+  const groupPartial = (tid: string, g: Group): boolean => {
+    if (!g.tiers) return false;
+    const d = depthByGroup[key(tid, g.id)] ?? 0;
+    return d > 0 && d < g.tiers.length;
+  };
+
+  const topicSelCount = (t: TopicSummary): number =>
+    groupsOf(t).reduce((n, g) => n + groupSelCount(t.id, g), 0);
+  const topicFull = (t: TopicSummary): boolean => {
+    const gs = groupsOf(t);
+    return gs.length > 0 && gs.every((g) => groupFull(t.id, g));
+  };
+  const topicPartial = (t: TopicSummary): boolean =>
+    topicSelCount(t) > 0 && !topicFull(t);
+
+  const catTotal = (ts: TopicSummary[]) => ts.reduce((n, t) => n + t.wordCount, 0);
+  const catSel = (ts: TopicSummary[]) => ts.reduce((n, t) => n + topicSelCount(t), 0);
+  const catFull = (ts: TopicSummary[]) => ts.every(topicFull);
+  const catPartial = (ts: TopicSummary[]) => catSel(ts) > 0 && !catFull(ts);
+
+  // Snap positions (fractions 0…1 of the thumb travel) for a tiered group's
+  // slider: one per tier boundary. Spacing reflects each tier's size, but every
+  // gap keeps at least MIN_GAP_RATIO of an equal step so dots never touch.
+  // MIN_GAP_RATIO and INSET_PX are configured in the Tunables block up top.
+  function snapPositions(g: Group): number[] {
+    const tiers = g.tiers ?? [];
+    const n = tiers.length;
+    const total = tiers.reduce((a, t) => a + t.length, 0) || 1;
+    const base = MIN_GAP_RATIO / n; // minimum gap, as a fraction of full travel
+    const scale = 1 - n * base; // remaining travel distributed by tier size
+    const pos = [0];
+    let acc = 0;
+    for (let i = 0; i < n; i++) {
+      acc += base + scale * (tiers[i].length / total);
+      pos.push(acc);
+    }
+    pos[n] = 1; // guard against float drift
+    return pos;
+  }
+  function nearestIndex(pos: number[], frac: number): number {
+    let best = 0;
+    let bestD = Infinity;
+    for (let i = 0; i < pos.length; i++) {
+      const d = Math.abs(pos[i] - frac);
+      if (d < bestD) {
+        bestD = d;
+        best = i;
+      }
+    }
+    return best;
+  }
+  function depthFromPointer(e: PointerEvent, k: string, g: Group) {
+    const rect = (e.currentTarget as HTMLElement).getBoundingClientRect();
+    const span = rect.width - 2 * INSET_PX;
+    const frac = span > 0 ? (e.clientX - rect.left - INSET_PX) / span : 0;
+    depthByGroup[k] = nearestIndex(snapPositions(g), Math.min(1, Math.max(0, frac)));
+  }
+  function depthKey(e: KeyboardEvent, k: string, n: number) {
+    let d = depthByGroup[k] ?? 0;
+    if (e.key === "ArrowRight" || e.key === "ArrowUp") d = Math.min(n, d + 1);
+    else if (e.key === "ArrowLeft" || e.key === "ArrowDown") d = Math.max(0, d - 1);
+    else if (e.key === "Home") d = 0;
+    else if (e.key === "End") d = n;
+    else return;
+    e.preventDefault();
+    depthByGroup[k] = d;
+  }
+
+  function setGroup(tid: string, g: Group, on: boolean) {
+    const k = key(tid, g.id);
+    if (g.tiers) depthByGroup[k] = on ? g.tiers.length : 0;
+    else selected[k] = on;
+  }
+  function setTopic(t: TopicSummary, on: boolean) {
+    for (const g of groupsOf(t)) setGroup(t.id, g, on);
+  }
+
+  function toggleGroup(tid: string, g: Group) {
+    // Any selection (full or partial) clears; only an empty group fills.
+    setGroup(tid, g, groupSelCount(tid, g) === 0);
+  }
   async function toggleTopic(t: TopicSummary) {
     const data = topicData[t.id] ?? (await ensureLoaded(t));
     if (!data) return;
-    const all = data.groups.every((g) => selected[key(t.id, g.id)]);
-    for (const g of data.groups) selected[key(t.id, g.id)] = !all;
+    setTopic(t, !topicFull(t));
   }
-
-  function toggleGroup(tid: string, gid: string) {
-    selected[key(tid, gid)] = !selected[key(tid, gid)];
+  async function toggleCategory(ts: TopicSummary[]) {
+    const on = !catFull(ts);
+    const loaded = await Promise.all(ts.map((t) => topicData[t.id] ?? ensureLoaded(t)));
+    ts.forEach((t, i) => loaded[i] && setTopic(t, on));
   }
-
-  const groupsOf = (t: TopicSummary): Group[] => topicData[t.id]?.groups ?? [];
-  const allSelected = (t: TopicSummary) => {
-    const gs = groupsOf(t);
-    return gs.length > 0 && gs.every((g) => selected[key(t.id, g.id)]);
-  };
-  const someSelected = (t: TopicSummary) =>
-    groupsOf(t).some((g) => selected[key(t.id, g.id)]);
 
   // Group topics by their category path for the tree (topics keep manifest order).
   const byCategory = $derived.by(() => {
@@ -90,9 +200,6 @@
   const formatCategory = (c: string) =>
     c === "" ? "Uncategorized" : c.split("/").map(titleCase).join(" / ");
 
-  // Effective depth for a tiered group: the slider value, or all tiers if unset.
-  const groupDepth = (k: string, tierCount: number) => depthByGroup[k] ?? tierCount;
-
   // Aggregate selected groups' words (top-N tiers), de-duplicated, manifest order.
   const merged = $derived.by(() => {
     const seen = new Set<string>();
@@ -102,8 +209,15 @@
       if (!data) continue;
       for (const g of data.groups) {
         const k = key(t.id, g.id);
-        if (!selected[k]) continue;
-        const words = g.tiers ? g.tiers.slice(0, groupDepth(k, g.tiers.length)).flat() : g.words ?? [];
+        let words: string[];
+        if (g.tiers) {
+          const d = depthByGroup[k] ?? 0;
+          if (d <= 0) continue;
+          words = g.tiers.slice(0, d).flat();
+        } else {
+          if (!selected[k]) continue;
+          words = g.words ?? [];
+        }
         for (const w of words) {
           if (!seen.has(w)) {
             seen.add(w);
@@ -169,7 +283,18 @@
       <section class="topics" aria-label="Topics">
         <h2>Topics</h2>
         {#each byCategory as [category, catTopics] (category)}
-          <h3 class="category-title">{formatCategory(category)}</h3>
+          {@const catId = "cat-" + (category.replace(/\//g, "-") || "root")}
+          <div class="category">
+            <input
+              type="checkbox"
+              id={catId}
+              checked={catFull(catTopics)}
+              use:setIndeterminate={catPartial(catTopics)}
+              onchange={() => toggleCategory(catTopics)}
+            />
+            <h3 class="category-title"><label for={catId}>{formatCategory(category)}</label></h3>
+            <span class="meta">{catSel(catTopics)} of {catTotal(catTopics)} words</span>
+          </div>
           <ul>
             {#each catTopics as t (t.id)}
             <li class="topic-item">
@@ -186,14 +311,14 @@
                 <label class="topic">
                   <input
                     type="checkbox"
-                    checked={allSelected(t)}
-                    use:setIndeterminate={someSelected(t) && !allSelected(t)}
+                    checked={topicFull(t)}
+                    use:setIndeterminate={topicPartial(t)}
                     onchange={() => toggleTopic(t)}
                   />
                   <span class="icon" aria-hidden="true">{t.icon ?? "•"}</span>
                   <span class="title">{t.title}</span>
                   <span class="meta">
-                    {#if loadingById[t.id] && !topicData[t.id]}loading…{:else}{t.wordCount} words{/if}
+                    {#if loadingById[t.id] && !topicData[t.id]}loading…{:else}{topicSelCount(t)} of {t.wordCount} words{/if}
                   </span>
                 </label>
               </div>
@@ -201,32 +326,57 @@
               {#if expanded[t.id] && topicData[t.id]}
                 <ul class="groups">
                   {#each groupsOf(t) as g (g.id)}
+                    {@const k = key(t.id, g.id)}
                     <li>
                       <label class="group">
                         <input
                           type="checkbox"
-                          checked={!!selected[key(t.id, g.id)]}
-                          onchange={() => toggleGroup(t.id, g.id)}
+                          checked={groupFull(t.id, g)}
+                          use:setIndeterminate={groupPartial(t.id, g)}
+                          onchange={() => toggleGroup(t.id, g)}
                         />
                         <span class="title">{g.title}</span>
-                        <span class="meta">
-                          {#if g.tiers}{g.tiers.length} tiers{:else}{g.words?.length ?? 0} words{/if}
-                        </span>
+                        <span class="meta">{groupSelCount(t.id, g)} of {groupTotal(g)} words</span>
                       </label>
                       {#if g.tiers && g.tiers.length > 1}
-                        {@const k = key(t.id, g.id)}
+                        {@const d = depthByGroup[k] ?? 0}
+                        {@const pos = snapPositions(g)}
                         <div class="group-depth">
-                          <label for="depth-{k}">
-                            Fame depth: top {groupDepth(k, g.tiers.length)} of {g.tiers.length} tiers
-                          </label>
-                          <input
-                            id="depth-{k}"
-                            type="range"
-                            min="1"
-                            max={g.tiers.length}
-                            value={groupDepth(k, g.tiers.length)}
-                            oninput={(e) => (depthByGroup[k] = +e.currentTarget.value)}
-                          />
+                          <div
+                            class="depth-track"
+                            role="slider"
+                            tabindex="0"
+                            aria-valuemin="0"
+                            aria-valuemax={g.tiers.length}
+                            aria-valuenow={d}
+                            aria-valuetext={`top ${d} of ${g.tiers.length} tiers`}
+                            aria-label={`Fame depth for ${g.title}`}
+                            onpointerdown={(e) => {
+                              e.currentTarget.setPointerCapture(e.pointerId);
+                              depthFromPointer(e, k, g);
+                            }}
+                            onpointermove={(e) => {
+                              if (e.buttons & 1) depthFromPointer(e, k, g);
+                            }}
+                            onkeydown={(e) => depthKey(e, k, tierCount(g))}
+                          >
+                            <span class="depth-rail"></span>
+                            <span
+                              class="depth-fill"
+                              style="width: calc({pos[d]} * (100% - 2 * var(--inset)))"
+                            ></span>
+                            {#each pos as p, i (i)}
+                              <span
+                                class="depth-dot"
+                                class:on={i > d}
+                                style="left: calc(var(--inset) + {p} * (100% - 2 * var(--inset)))"
+                              ></span>
+                            {/each}
+                            <span
+                              class="depth-thumb"
+                              style="left: calc(var(--inset) + {pos[d]} * (100% - 2 * var(--inset)))"
+                            ></span>
+                          </div>
                         </div>
                       {/if}
                     </li>
