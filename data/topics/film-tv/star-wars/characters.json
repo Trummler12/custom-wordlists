@@ -1,0 +1,20 @@
+{
+  "id": "star-wars",
+  "title": "Star Wars",
+  "icon": "🌌",
+  "description": "Star Wars characters (language-neutral — proper names are the same across locales; bare names used where titles would differ, e.g. \"Leia\"). Fame tiers by recognizability (tier 0 = most iconic).",
+  "groups": [
+    {
+      "id": "characters",
+      "title": "Characters",
+      "tiers": [
+        ["Darth Vader", "Luke Skywalker", "Yoda", "Han Solo", "Chewbacca", "Obi-Wan Kenobi", "Leia", "R2-D2", "C-3PO", "Palpatine"],
+        ["Anakin Skywalker", "Darth Maul", "Boba Fett", "Kylo Ren", "Rey", "Mace Windu", "Lando Calrissian", "Jabba", "Padmé Amidala", "Grogu"],
+        ["General Grievous", "Jar Jar Binks", "Count Dooku", "Qui-Gon Jinn", "Ahsoka Tano", "Din Djarin", "Poe Dameron", "Finn", "BB-8", "Jango Fett"]
+      ]
+    }
+  ],
+  "presets": [
+    { "id": "all", "title": "All characters", "groups": ["characters"] }
+  ]
+}
