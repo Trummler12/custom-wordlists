@@ -1,9 +1,11 @@
-// Validates every data/topics/<topic>/<file>.json against schema/topic.schema.json
+// Validates every data/topics/**/<topic>/<file>.json against schema/topic.schema.json
 // and adds cross-checks the schema can't express:
 //   1. preset.groups reference real group ids (referential integrity)
 //   2. no duplicate words within a topic file
 //   3. a topic's language variants share the same group/tier structure (no drift)
-// Exits non-zero on any problem. See PLANNING §4.1.
+//   4. category folder names are kebab-case (like ids)
+// A topic is any directory that directly holds JSON files; folders above it are
+// an arbitrarily deep category path. Exits non-zero on any problem. See PLANNING §4.1.
 import { readFile, readdir } from "node:fs/promises";
 import { join, dirname, basename } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -15,6 +17,25 @@ const TOPICS_DIR = join(ROOT, "data", "topics");
 const SCHEMA_FILE = join(ROOT, "schema", "topic.schema.json");
 
 const LANG_RE = /^[a-z]{2}(-[A-Z]{2})?$/;
+const KEBAB_RE = /^[a-z0-9]+(-[a-z0-9]+)*$/;
+
+/**
+ * Recursively find topics under data/topics. A directory that directly holds
+ * JSON files is a topic (leaf); folders above it are category segments. Returns
+ * `{ segments }` per topic (path from topics/ to the topic folder), sorted.
+ */
+async function collectTopics(segments) {
+  const dir = join(TOPICS_DIR, ...segments);
+  const entries = await readdir(dir, { withFileTypes: true });
+  const jsonFiles = entries.filter((e) => e.isFile() && e.name.endsWith(".json"));
+  if (segments.length > 0 && jsonFiles.length > 0) {
+    return [{ segments, files: jsonFiles.map((e) => e.name).sort() }];
+  }
+  const subDirs = entries.filter((e) => e.isDirectory()).map((e) => e.name).sort();
+  const out = [];
+  for (const sub of subDirs) out.push(...(await collectTopics([...segments, sub])));
+  return out;
+}
 
 /** All words of a topic file (flat + tiered), in document order. */
 function allWords(topic) {
@@ -42,25 +63,29 @@ async function main() {
   const validate = ajv.compile(schema);
 
   const errors = [];
-  let topicIds = [];
+  let found = [];
   try {
-    topicIds = (await readdir(TOPICS_DIR, { withFileTypes: true }))
-      .filter((e) => e.isDirectory())
-      .map((e) => e.name)
-      .sort();
+    found = await collectTopics([]);
   } catch {
     errors.push(`No topics directory at ${TOPICS_DIR}`);
   }
 
   let fileCount = 0;
-  for (const id of topicIds) {
-    const dir = join(TOPICS_DIR, id);
-    // Sort so validation order and the structural-parity reference variant are deterministic.
-    const files = (await readdir(dir)).filter((f) => f.endsWith(".json")).sort();
-    const variants = [];
+  for (const { segments, files } of found) {
+    const id = segments[segments.length - 1];
+    const relDir = segments.join("/");
+    const dir = join(TOPICS_DIR, ...segments);
 
+    // 4. category folder names must be kebab-case, like ids
+    for (const seg of segments.slice(0, -1)) {
+      if (!KEBAB_RE.test(seg)) {
+        errors.push(`data/topics/${relDir}: category folder "${seg}" is not kebab-case`);
+      }
+    }
+
+    const variants = [];
     for (const file of files) {
-      const rel = `data/topics/${id}/${file}`;
+      const rel = `data/topics/${relDir}/${file}`;
       fileCount++;
       let topic;
       try {
@@ -78,7 +103,7 @@ async function main() {
         continue; // shape unreliable; skip semantic checks for this file
       }
 
-      // folder/id agreement
+      // folder/id agreement (id = the topic folder name, deepest segment)
       if (topic.id !== id) {
         errors.push(`${rel}: id "${topic.id}" does not match folder "${id}"`);
       }
@@ -131,7 +156,7 @@ async function main() {
     for (const e of errors) console.error("  - " + e);
     process.exit(1);
   }
-  console.log(`validate-data: ${fileCount} file(s) across ${topicIds.length} topic(s) — all valid`);
+  console.log(`validate-data: ${fileCount} file(s) across ${found.length} topic(s) — all valid`);
 }
 
 main().catch((err) => {
