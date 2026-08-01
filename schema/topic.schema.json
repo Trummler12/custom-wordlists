@@ -8,8 +8,7 @@
   "required": ["id", "title", "groups"],
   "properties": {
     "id": {
-      "type": "string",
-      "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$",
+      "allOf": [{ "$ref": "#/$defs/id" }],
       "description": "Kebab-case topic id; should match the topic folder name."
     },
     "lang": {
@@ -31,6 +30,11 @@
     }
   },
   "$defs": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$",
+      "description": "Kebab-case identifier."
+    },
     "word": { "type": "string", "minLength": 1 },
     "group": {
       "type": "object",
@@ -38,7 +42,7 @@
       "required": ["id", "title"],
       "description": "A subtopic; the smallest checkbox unit. Carries exactly one of `words` (flat) or `tiers` (fame-ordered).",
       "properties": {
-        "id": { "type": "string", "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$" },
+        "id": { "$ref": "#/$defs/id" },
         "title": { "type": "string", "minLength": 1 },
         "words": {
           "type": "array",
@@ -64,12 +68,13 @@
       "required": ["id", "title", "groups"],
       "description": "A named bundle of group ids (e.g. \"Include all\").",
       "properties": {
-        "id": { "type": "string", "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$" },
+        "id": { "$ref": "#/$defs/id" },
         "title": { "type": "string", "minLength": 1 },
         "groups": {
           "type": "array",
           "minItems": 1,
-          "items": { "type": "string" }
+          "description": "References to group ids in this topic; referential integrity is checked by validate-data, not the schema.",
+          "items": { "$ref": "#/$defs/id" }
         }
       }
     }
