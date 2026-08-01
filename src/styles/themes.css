@@ -14,6 +14,10 @@
   --chip-bg: var(--color-gray-100);
   --chip-fg: var(--color-ink-900);
   --danger: var(--color-danger);
+  /* Range slider: shared by the thumb/fill (accent-color) and the reached snap
+     dots (--range-fill), and by the track and unreached dots (--range-track). */
+  --range-fill: var(--color-blue-500);
+  --range-track: var(--color-gray-300);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -25,5 +29,7 @@
     --chip-bg: var(--color-slate-800);
     --chip-fg: var(--color-fog-100);
     --danger: var(--color-danger-soft);
+    --range-fill: var(--color-blue-400);
+    --range-track: var(--color-gray-700);
   }
 }
