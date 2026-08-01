@@ -103,7 +103,8 @@
   const excluded = $derived(merged.filter((w) => w.length > SKRIBBL.maxWordLen));
   const outputText = $derived(included.join(SKRIBBL.separator));
   const charCount = $derived(outputText.length);
-  const belowMin = $derived(included.length > 0 && included.length < SKRIBBL.minWords);
+  // Counter only renders when merged.length > 0, so this needs no empty-guard.
+  const belowMin = $derived(included.length < SKRIBBL.minWords);
   const overMax = $derived(charCount > SKRIBBL.maxTotal);
 
   async function copy() {
@@ -159,7 +160,7 @@
                   type="button"
                   class="expander"
                   aria-expanded={!!expanded[t.id]}
-                  aria-label={expanded[t.id] ? "Collapse topic" : "Expand topic"}
+                  aria-label={(expanded[t.id] ? "Collapse " : "Expand ") + t.title}
                   onclick={() => toggleExpand(t)}
                 >
                   {expanded[t.id] ? "▾" : "▸"}
