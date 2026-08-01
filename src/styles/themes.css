@@ -1,0 +1,29 @@
+/* Maps the raw palette from globals.css onto semantic tokens, per theme.
+   Components consume only these semantic variables, never the raw palette, so
+   re-theming happens here alone. Second file in the import chain. */
+@import "./globals.css";
+
+:root {
+  color-scheme: light dark;
+
+  /* Semantic tokens — light theme (default) */
+  --muted: var(--color-gray-600);
+  --muted-2: var(--color-gray-550);
+  --border: var(--color-gray-200);
+  --panel-border: var(--color-gray-300);
+  --chip-bg: var(--color-gray-100);
+  --chip-fg: var(--color-ink-900);
+  --danger: var(--color-danger);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --muted: var(--color-gray-400);
+    --muted-2: var(--color-gray-500);
+    --border: var(--color-gray-800);
+    --panel-border: var(--color-gray-700);
+    --chip-bg: var(--color-slate-800);
+    --chip-fg: var(--color-fog-100);
+    --danger: var(--color-danger-soft);
+  }
+}

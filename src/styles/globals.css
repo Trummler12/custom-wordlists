@@ -1,0 +1,25 @@
+/* Raw, theme-agnostic design tokens: a named color palette plus non-color
+   globals. Nothing here references a theme — themes.css maps these onto the
+   semantic variables the components use. First file in the import chain. */
+:root {
+  /* Color palette (named, not semantic) */
+  --color-gray-100: #eef0f2;
+  --color-gray-200: #e6e6e6;
+  --color-gray-300: #d5d5d5;
+  --color-gray-400: #a9a9a9;
+  --color-gray-500: #8f8f8f;
+  --color-gray-550: #777777;
+  --color-gray-600: #555555;
+  --color-gray-700: #444444;
+  --color-gray-800: #333333;
+  --color-ink-900: #1a1a1a;
+  --color-slate-800: #2b2f36;
+  --color-fog-100: #eaeaea;
+  --color-danger: #b00020;
+  --color-danger-soft: #ff7a7a;
+
+  /* Non-color globals */
+  --font-sans: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --radius: 0.4rem;
+  --radius-sm: 0.3rem;
+}
