@@ -3,8 +3,17 @@
   import { loadManifest, loadTopic, pickFile } from "./lib/data";
   import type { TopicSummary, Topic, Group } from "./lib/types";
 
+  // ─── Tunables (configuration) ──────────────────────────────────────────────
   // skribbl's custom-wordlist rules (PLANNING §4/§6.2). Only game preset for now.
   const SKRIBBL = { separator: ",", minWords: 10, maxWordLen: 32, maxTotal: 20000 };
+  // Fame-depth slider snap spacing: every gap is at least this fraction of an
+  // equal step, and the remaining travel is distributed by tier size. Lower =
+  // more size-faithful spacing; higher = more even. Range (0, 1).
+  const MIN_GAP_RATIO = 0.4;
+  // Horizontal inset (px) that keeps the slider's end dots off the rail edges.
+  // Must stay in sync with `--inset` in src/styles/app.css.
+  const INSET_PX = 8;
+  // ────────────────────────────────────────────────────────────────────────────
 
   let topics = $state<TopicSummary[]>([]);
   let loading = $state(true);
@@ -103,9 +112,53 @@
   const catFull = (ts: TopicSummary[]) => ts.every(topicFull);
   const catPartial = (ts: TopicSummary[]) => catSel(ts) > 0 && !catFull(ts);
 
-  // Snap-dot indices for a tiered group's slider: 0…tierCount.
-  const snapIndices = (g: Group) =>
-    Array.from({ length: tierCount(g) + 1 }, (_, i) => i);
+  // Snap positions (fractions 0…1 of the thumb travel) for a tiered group's
+  // slider: one per tier boundary. Spacing reflects each tier's size, but every
+  // gap keeps at least MIN_GAP_RATIO of an equal step so dots never touch.
+  // MIN_GAP_RATIO and INSET_PX are configured in the Tunables block up top.
+  function snapPositions(g: Group): number[] {
+    const tiers = g.tiers ?? [];
+    const n = tiers.length;
+    const total = tiers.reduce((a, t) => a + t.length, 0) || 1;
+    const base = MIN_GAP_RATIO / n; // minimum gap, as a fraction of full travel
+    const scale = 1 - n * base; // remaining travel distributed by tier size
+    const pos = [0];
+    let acc = 0;
+    for (let i = 0; i < n; i++) {
+      acc += base + scale * (tiers[i].length / total);
+      pos.push(acc);
+    }
+    pos[n] = 1; // guard against float drift
+    return pos;
+  }
+  function nearestIndex(pos: number[], frac: number): number {
+    let best = 0;
+    let bestD = Infinity;
+    for (let i = 0; i < pos.length; i++) {
+      const d = Math.abs(pos[i] - frac);
+      if (d < bestD) {
+        bestD = d;
+        best = i;
+      }
+    }
+    return best;
+  }
+  function depthFromPointer(e: PointerEvent, k: string, g: Group) {
+    const rect = (e.currentTarget as HTMLElement).getBoundingClientRect();
+    const span = rect.width - 2 * INSET_PX;
+    const frac = span > 0 ? (e.clientX - rect.left - INSET_PX) / span : 0;
+    depthByGroup[k] = nearestIndex(snapPositions(g), Math.min(1, Math.max(0, frac)));
+  }
+  function depthKey(e: KeyboardEvent, k: string, n: number) {
+    let d = depthByGroup[k] ?? 0;
+    if (e.key === "ArrowRight" || e.key === "ArrowUp") d = Math.min(n, d + 1);
+    else if (e.key === "ArrowLeft" || e.key === "ArrowDown") d = Math.max(0, d - 1);
+    else if (e.key === "Home") d = 0;
+    else if (e.key === "End") d = n;
+    else return;
+    e.preventDefault();
+    depthByGroup[k] = d;
+  }
 
   function setGroup(tid: string, g: Group, on: boolean) {
     const k = key(tid, g.id);
@@ -285,20 +338,43 @@
                         <span class="meta">{groupSelCount(t.id, g)} of {groupTotal(g)} words</span>
                       </label>
                       {#if g.tiers && g.tiers.length > 1}
+                        {@const d = depthByGroup[k] ?? 0}
+                        {@const pos = snapPositions(g)}
                         <div class="group-depth">
-                          <input
-                            class="depth-range"
-                            type="range"
-                            min="0"
-                            max={g.tiers.length}
-                            value={depthByGroup[k] ?? 0}
-                            aria-label={`Fame depth for ${g.title} (${depthByGroup[k] ?? 0} of ${g.tiers.length} tiers)`}
-                            oninput={(e) => (depthByGroup[k] = +e.currentTarget.value)}
-                          />
-                          <div class="snap-dots" aria-hidden="true">
-                            {#each snapIndices(g) as i (i)}
-                              <span class="snap-dot" class:on={i <= (depthByGroup[k] ?? 0)}></span>
+                          <div
+                            class="depth-track"
+                            role="slider"
+                            tabindex="0"
+                            aria-valuemin="0"
+                            aria-valuemax={g.tiers.length}
+                            aria-valuenow={d}
+                            aria-valuetext={`top ${d} of ${g.tiers.length} tiers`}
+                            aria-label={`Fame depth for ${g.title}`}
+                            onpointerdown={(e) => {
+                              e.currentTarget.setPointerCapture(e.pointerId);
+                              depthFromPointer(e, k, g);
+                            }}
+                            onpointermove={(e) => {
+                              if (e.buttons & 1) depthFromPointer(e, k, g);
+                            }}
+                            onkeydown={(e) => depthKey(e, k, tierCount(g))}
+                          >
+                            <span class="depth-rail"></span>
+                            <span
+                              class="depth-fill"
+                              style="width: calc({pos[d]} * (100% - 2 * var(--inset)))"
+                            ></span>
+                            {#each pos as p, i (i)}
+                              <span
+                                class="depth-dot"
+                                class:on={i > d}
+                                style="left: calc(var(--inset) + {p} * (100% - 2 * var(--inset)))"
+                              ></span>
                             {/each}
+                            <span
+                              class="depth-thumb"
+                              style="left: calc(var(--inset) + {pos[d]} * (100% - 2 * var(--inset)))"
+                            ></span>
                           </div>
                         </div>
                       {/if}

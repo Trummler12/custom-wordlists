@@ -124,38 +124,72 @@ h2 {
   font-weight: 500;
 }
 
-/* Per-group fame-depth slider (nested under a tiered group) */
+/* Per-group fame-depth slider — a custom track so the snap markers can sit on
+   the rail and their spacing can mirror tier sizes (a native <input range>
+   can do neither). Colours come from the shared --range-* vars in themes.css. */
 .group-depth {
-  margin: 0.1rem 0 0.5rem 1.75rem;
+  margin: 0.45rem 0 0.7rem 1.75rem;
   width: 100%;
   max-width: 16rem;
 }
-.depth-range {
-  display: block;
-  width: 100%;
-  margin: 0;
-  accent-color: var(--range-fill);
+.depth-track {
+  --inset: 8px; /* keeps the end dots off the rail edges; matches INSET_PX in App.svelte */
+  position: relative;
+  height: 1rem; /* hit area; the visible rail is thinner */
+  cursor: pointer;
+  touch-action: none; /* let pointer drag work without scrolling */
 }
-/* Snap markers under the slider: one per tier boundary (0…n). Dots up to the
-   thumb use the fill colour, the rest the track colour — same vars as the
-   slider itself. Side padding ≈ thumb radius so the ends line up with travel. */
-.snap-dots {
-  display: flex;
-  justify-content: space-between;
-  padding: 0 0.5rem;
-  margin-top: 0.15rem;
-  box-sizing: border-box;
+.depth-rail,
+.depth-fill {
+  position: absolute;
+  top: 50%;
+  height: 0.3rem;
+  border-radius: 999px;
+  transform: translateY(-50%);
+  pointer-events: none;
 }
-.snap-dot {
-  width: 0.4rem;
-  height: 0.4rem;
-  border-radius: 50%;
+.depth-rail {
+  left: var(--inset);
+  right: var(--inset);
   background: var(--range-track);
-  border: 1px solid var(--panel-border);
 }
-.snap-dot.on {
+.depth-fill {
+  left: var(--inset);
   background: var(--range-fill);
-  border-color: var(--range-fill);
+}
+.depth-dot {
+  position: absolute;
+  top: 50%;
+  width: 0.34rem;
+  height: 0.34rem;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--range-dot); /* left of the thumb: sits on the blue fill */
+  pointer-events: none;
+  z-index: 1;
+}
+.depth-dot.on {
+  background: var(--range-fill); /* right of the thumb: sits on the grey track */
+}
+.depth-thumb {
+  position: absolute;
+  top: 50%;
+  width: 0.85rem;
+  height: 0.85rem;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--range-fill);
+  border: 2px solid var(--range-thumb-ring);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.35);
+  pointer-events: none;
+  z-index: 2;
+}
+.depth-track:focus-visible {
+  outline: none;
+}
+.depth-track:focus-visible .depth-thumb {
+  outline: 2px solid var(--range-fill);
+  outline-offset: 2px;
 }
 
 /* Output panel */
