@@ -22,14 +22,21 @@ function serveData(): Plugin {
   return {
     name: "serve-data",
     configResolved(config: ResolvedConfig) {
-      outDir = config.build.outDir;
+      // outDir is relative to root; resolve it now so the copy doesn't depend on cwd.
+      outDir = resolve(config.root, config.build.outDir);
     },
     configureServer(server) {
       server.middlewares.use((req, res, next) => {
         const url = req.url ?? "";
         if (!url.startsWith("/data/")) return next();
         // Strip query/hash, decode, and resolve inside DATA_DIR (traversal guard).
-        const rel = decodeURIComponent(url.slice("/data/".length).split(/[?#]/)[0]);
+        let rel: string;
+        try {
+          rel = decodeURIComponent(url.slice("/data/".length).split(/[?#]/)[0]);
+        } catch {
+          res.statusCode = 400;
+          return res.end("Bad Request");
+        }
         const filePath = resolve(DATA_DIR, rel);
         const within = relative(DATA_DIR, filePath);
         if (within.startsWith("..") || isAbsolute(within)) {
@@ -42,7 +49,13 @@ function serveData(): Plugin {
             if (extname(filePath) === ".json") {
               res.setHeader("Content-Type", "application/json; charset=utf-8");
             }
-            createReadStream(filePath).pipe(res);
+            const stream = createReadStream(filePath);
+            // File could vanish between stat() and open, or fs errors mid-read.
+            stream.on("error", () => {
+              if (!res.headersSent) res.statusCode = 500;
+              res.end();
+            });
+            stream.pipe(res);
           },
           () => next(),
         );
@@ -50,7 +63,7 @@ function serveData(): Plugin {
     },
     async closeBundle() {
       // Copy the whole data/ tree (incl. the generated index.json) into dist/data/.
-      await cp(DATA_DIR, join(resolve(outDir), "data"), { recursive: true });
+      await cp(DATA_DIR, join(outDir, "data"), { recursive: true });
     },
   };
 }
