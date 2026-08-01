@@ -29,11 +29,17 @@ function pickRepresentative(variants) {
 
 async function readTopicDir(id) {
   const dir = join(TOPICS_DIR, id);
-  const files = (await readdir(dir)).filter((f) => f.endsWith(".json"));
+  // Sort so variant selection and langs ordering are deterministic across filesystems.
+  const files = (await readdir(dir)).filter((f) => f.endsWith(".json")).sort();
   const variants = [];
   for (const file of files) {
     const stem = basename(file, ".json");
-    const data = JSON.parse(await readFile(join(dir, file), "utf8"));
+    let data;
+    try {
+      data = JSON.parse(await readFile(join(dir, file), "utf8"));
+    } catch (err) {
+      throw new Error(`data/topics/${id}/${file}: could not read/parse — ${err.message}`);
+    }
     variants.push({ lang: LANG_RE.test(stem) ? stem : null, data });
   }
   return variants;

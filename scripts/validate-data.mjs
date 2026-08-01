@@ -55,7 +55,8 @@ async function main() {
   let fileCount = 0;
   for (const id of topicIds) {
     const dir = join(TOPICS_DIR, id);
-    const files = (await readdir(dir)).filter((f) => f.endsWith(".json"));
+    // Sort so validation order and the structural-parity reference variant are deterministic.
+    const files = (await readdir(dir)).filter((f) => f.endsWith(".json")).sort();
     const variants = [];
 
     for (const file of files) {
@@ -65,7 +66,7 @@ async function main() {
       try {
         topic = JSON.parse(await readFile(join(dir, file), "utf8"));
       } catch (err) {
-        errors.push(`${rel}: invalid JSON — ${err.message}`);
+        errors.push(`${rel}: could not read/parse — ${err.message}`);
         continue;
       }
 
