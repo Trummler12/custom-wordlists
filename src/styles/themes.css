@@ -14,10 +14,14 @@
   --chip-bg: var(--color-gray-100);
   --chip-fg: var(--color-ink-900);
   --danger: var(--color-danger);
-  /* Range slider: shared by the thumb/fill (accent-color) and the reached snap
-     dots (--range-fill), and by the track and unreached dots (--range-track). */
+  /* Custom fame-depth slider: --range-fill is the thumb, the filled rail and the
+     dots that sit on the (grey) track; --range-track is the unfilled rail;
+     --range-dot is the dot colour on the (blue) fill; --range-thumb-ring frames
+     the thumb against the rail. */
   --range-fill: var(--color-blue-500);
   --range-track: var(--color-gray-300);
+  --range-dot: #ffffff;
+  --range-thumb-ring: #ffffff;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -31,5 +35,7 @@
     --danger: var(--color-danger-soft);
     --range-fill: var(--color-blue-400);
     --range-track: var(--color-gray-700);
+    --range-dot: var(--color-fog-100);
+    --range-thumb-ring: var(--color-slate-800);
   }
 }
