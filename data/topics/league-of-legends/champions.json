@@ -2,16 +2,17 @@
   "id": "league-of-legends",
   "title": "League of Legends",
   "icon": "⚔️",
-  "description": "League of Legends champion names (language-neutral). Curated starter set, grouped into coarse fame tiers.",
+  "description": "League of Legends champion names (language-neutral). Curated starter set, split into fame tiers by broad recognizability (tier 0 = most famous). Tier sizes are deliberately uneven — they follow natural popularity breaks, not fixed steps.",
   "groups": [
     {
       "id": "champions",
       "title": "Champions",
       "tiers": [
-        ["Garen", "Teemo", "Ashe", "Master Yi", "Yasuo", "Lux", "Ahri", "Ezreal", "Jinx", "Darius", "Lee Sin", "Zed", "Thresh", "Katarina", "Yone"],
-        ["Jhin", "Kai'Sa", "Vayne", "Riven", "Draven", "Blitzcrank", "Morgana", "Leona", "Malphite", "Nasus", "Veigar", "Miss Fortune", "Caitlyn", "Soraka", "Akali"],
-        ["Aatrox", "Fizz", "Gnar", "Irelia", "Janna", "Kayn", "Lucian", "Nautilus", "Orianna", "Pyke", "Sett", "Sona", "Volibear", "Xayah", "Sylas"],
-        ["Aurelion Sol", "Azir", "Bard", "Camille", "Cassiopeia", "Fiddlesticks", "Illaoi", "Ivern", "Kled", "Qiyana", "Rell", "Taliyah", "Zoe", "Rakan", "Kindred"]
+        ["Ahri", "Jinx", "Yasuo", "Teemo", "Lux", "Garen", "Ezreal", "Master Yi", "Ashe", "Caitlyn"],
+        ["Zed", "Lee Sin", "Katarina", "Darius", "Thresh", "Akali", "Jhin", "Kai'Sa", "Yone", "Riven", "Vayne"],
+        ["Miss Fortune", "Blitzcrank", "Morgana", "Draven", "Nasus", "Veigar", "Malphite", "Leona", "Lucian", "Sett", "Sylas", "Irelia"],
+        ["Soraka", "Fizz", "Sona", "Janna", "Nautilus", "Pyke", "Orianna", "Volibear", "Xayah", "Gnar", "Kayn", "Rakan"],
+        ["Aatrox", "Aurelion Sol", "Azir", "Bard", "Camille", "Cassiopeia", "Fiddlesticks", "Illaoi", "Ivern", "Kled", "Qiyana", "Rell", "Taliyah", "Zoe", "Kindred"]
       ]
     }
   ],
