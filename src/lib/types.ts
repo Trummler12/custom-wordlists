@@ -1,7 +1,6 @@
 // Shapes of the generated manifest (data/index.json), produced by
-// scripts/build-index.mjs — the source of truth for these types. Topic-file
-// interfaces (Topic/Group/Preset), which will mirror schema/topic.schema.json,
-// are added when on-demand topic loading lands.
+// scripts/build-index.mjs — the source of truth for the manifest types.
+// The topic-file types (Topic/Group/Preset) mirror schema/topic.schema.json.
 
 /** One topic as summarized in the manifest — enough to render the tree. */
 export interface TopicSummary {
@@ -11,6 +10,8 @@ export interface TopicSummary {
   icon: string | null;
   /** Available language codes (e.g. ["de","en"]); empty = language-neutral. */
   langs: string[];
+  /** JSON filenames in the topic folder; the frontend fetches one of these. */
+  files: string[];
   groupCount: number;
   wordCount: number;
 }
@@ -19,4 +20,31 @@ export interface TopicSummary {
 export interface Manifest {
   generatedAt: string;
   topics: TopicSummary[];
+}
+
+/** A group of words: either a flat `words` list or ordered fame `tiers`. */
+export interface Group {
+  id: string;
+  title: string;
+  words?: string[];
+  tiers?: string[][];
+}
+
+/** A named bundle of group ids within a topic. */
+export interface Preset {
+  id: string;
+  title: string;
+  groups: string[];
+}
+
+/** A single topic data file (data/topics/<id>/<file>.json). */
+export interface Topic {
+  id: string;
+  title: string;
+  icon?: string;
+  description?: string;
+  /** Present only on translated variants; absent on language-neutral files. */
+  lang?: string;
+  groups: Group[];
+  presets?: Preset[];
 }
