@@ -92,6 +92,16 @@ async function buildIndex() {
     });
   }
 
+  // Topic ids must be unique across categories — the frontend keys state by id,
+  // so a collision would silently merge two topics. Fail rather than emit it.
+  const seenIds = new Set();
+  for (const t of topics) {
+    if (seenIds.has(t.id)) {
+      throw new Error(`duplicate topic id "${t.id}" — topic folder names must be unique across categories`);
+    }
+    seenIds.add(t.id);
+  }
+
   const manifest = { generatedAt: new Date().toISOString(), topics };
   await writeFile(OUT_FILE, JSON.stringify(manifest, null, 2) + "\n", "utf8");
   console.log(`build-index: wrote ${topics.length} topic(s) → data/index.json`);

@@ -70,6 +70,18 @@ async function main() {
     errors.push(`No topics directory at ${TOPICS_DIR}`);
   }
 
+  // Topic ids must be globally unique — the frontend keys its state by id.
+  const idDirs = new Map();
+  for (const { segments } of found) {
+    const id = segments[segments.length - 1];
+    (idDirs.get(id) ?? idDirs.set(id, []).get(id)).push(segments.join("/"));
+  }
+  for (const [id, dirs] of idDirs) {
+    if (dirs.length > 1) {
+      errors.push(`duplicate topic id "${id}" across categories: ${dirs.join(", ")}`);
+    }
+  }
+
   let fileCount = 0;
   for (const { segments, files } of found) {
     const id = segments[segments.length - 1];

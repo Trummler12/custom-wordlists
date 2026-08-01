@@ -17,8 +17,9 @@ export async function loadTopic(category: string, id: string, file: string): Pro
   // Drop empty category segments so an uncategorized topic has no double slash.
   const path = ["topics", ...category.split("/").filter(Boolean), id, file].join("/");
   const url = `${DATA_BASE}${path}`;
+  const label = [category, id].filter(Boolean).join("/");
   const res = await fetch(url);
-  if (!res.ok) throw new Error(`topic "${id}" request failed (HTTP ${res.status}): ${url}`);
+  if (!res.ok) throw new Error(`topic "${label}" request failed (HTTP ${res.status}): ${url}`);
   return (await res.json()) as Topic;
 }
 
