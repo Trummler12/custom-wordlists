@@ -39,7 +39,7 @@
     loadingById[t.id] = true;
     topicError = null;
     try {
-      const data = await loadTopic(t.id, pickFile(t));
+      const data = await loadTopic(t.category, t.id, pickFile(t));
       topicData[t.id] = data;
       return data;
     } catch (e) {
@@ -73,6 +73,22 @@
   };
   const someSelected = (t: TopicSummary) =>
     groupsOf(t).some((g) => selected[key(t.id, g.id)]);
+
+  // Group topics by their category path for the tree (topics keep manifest order).
+  const byCategory = $derived.by(() => {
+    const map = new Map<string, TopicSummary[]>();
+    for (const t of topics) {
+      const list = map.get(t.category) ?? [];
+      list.push(t);
+      map.set(t.category, list);
+    }
+    return [...map.entries()];
+  });
+
+  const titleCase = (seg: string) =>
+    seg.split("-").map((w) => w.charAt(0).toUpperCase() + w.slice(1)).join(" ");
+  const formatCategory = (c: string) =>
+    c === "" ? "Uncategorized" : c.split("/").map(titleCase).join(" / ");
 
   // Effective depth for a tiered group: the slider value, or all tiers if unset.
   const groupDepth = (k: string, tierCount: number) => depthByGroup[k] ?? tierCount;
@@ -152,8 +168,10 @@
     <div class="layout">
       <section class="topics" aria-label="Topics">
         <h2>Topics</h2>
-        <ul>
-          {#each topics as t (t.id)}
+        {#each byCategory as [category, catTopics] (category)}
+          <h3 class="category-title">{formatCategory(category)}</h3>
+          <ul>
+            {#each catTopics as t (t.id)}
             <li class="topic-item">
               <div class="topic-row">
                 <button
@@ -216,8 +234,9 @@
                 </ul>
               {/if}
             </li>
-          {/each}
-        </ul>
+            {/each}
+          </ul>
+        {/each}
         {#if topicError}
           <p class="status error">{topicError}</p>
         {/if}

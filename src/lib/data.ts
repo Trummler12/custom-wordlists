@@ -12,9 +12,11 @@ export async function loadManifest(): Promise<Manifest> {
   return (await res.json()) as Manifest;
 }
 
-/** Load one topic data file (data/topics/<id>/<file>). */
-export async function loadTopic(id: string, file: string): Promise<Topic> {
-  const url = `${DATA_BASE}topics/${id}/${file}`;
+/** Load one topic data file (data/topics/<category>/<id>/<file>). */
+export async function loadTopic(category: string, id: string, file: string): Promise<Topic> {
+  // Drop empty category segments so an uncategorized topic has no double slash.
+  const path = ["topics", ...category.split("/").filter(Boolean), id, file].join("/");
+  const url = `${DATA_BASE}${path}`;
   const res = await fetch(url);
   if (!res.ok) throw new Error(`topic "${id}" request failed (HTTP ${res.status}): ${url}`);
   return (await res.json()) as Topic;
