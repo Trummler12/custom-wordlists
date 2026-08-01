@@ -1,7 +1,7 @@
 <script lang="ts">
   import { onMount } from "svelte";
-  import { loadManifest, loadTopic, pickFile, flattenWords } from "./lib/data";
-  import type { TopicSummary } from "./lib/types";
+  import { loadManifest, loadTopic, pickFile } from "./lib/data";
+  import type { TopicSummary, Topic, Group } from "./lib/types";
 
   // skribbl's custom-wordlist rules (PLANNING §4/§6.2). Only game preset for now.
   const SKRIBBL = { separator: ",", minWords: 10, maxWordLen: 32, maxTotal: 20000 };
@@ -10,12 +10,17 @@
   let loading = $state(true);
   let error = $state<string | null>(null);
 
-  let selected = $state<Record<string, boolean>>({});
-  let wordsById = $state<Record<string, string[]>>({}); // id → flattened words (cache)
+  let topicData = $state<Record<string, Topic>>({}); // id → loaded topic (cache)
   let loadingById = $state<Record<string, boolean>>({});
   let topicError = $state<string | null>(null);
 
+  let expanded = $state<Record<string, boolean>>({});
+  let selected = $state<Record<string, boolean>>({}); // key `${topicId}:${groupId}`
+  let depth = $state(0); // fame depth (top-N tiers); 0 = uninitialized → all tiers
+
   let copied = $state(false);
+
+  const key = (tid: string, gid: string) => `${tid}:${gid}`;
 
   onMount(async () => {
     try {
@@ -27,33 +32,81 @@
     }
   });
 
-  async function toggle(t: TopicSummary) {
-    const now = !selected[t.id];
-    selected[t.id] = now;
-    if (now && !wordsById[t.id] && !loadingById[t.id]) {
-      loadingById[t.id] = true;
-      topicError = null;
-      try {
-        wordsById[t.id] = flattenWords(await loadTopic(t.id, pickFile(t)));
-      } catch (e) {
-        selected[t.id] = false; // roll back a selection we couldn't fulfil
-        topicError = e instanceof Error ? e.message : String(e);
-      } finally {
-        loadingById[t.id] = false;
-      }
+  async function ensureLoaded(t: TopicSummary): Promise<Topic | null> {
+    if (topicData[t.id]) return topicData[t.id];
+    if (loadingById[t.id]) return null;
+    loadingById[t.id] = true;
+    topicError = null;
+    try {
+      const data = await loadTopic(t.id, pickFile(t));
+      topicData[t.id] = data;
+      return data;
+    } catch (e) {
+      topicError = e instanceof Error ? e.message : String(e);
+      return null;
+    } finally {
+      loadingById[t.id] = false;
     }
   }
 
-  // Aggregate selected topics' words in manifest order, de-duplicated.
+  async function toggleExpand(t: TopicSummary) {
+    expanded[t.id] = !expanded[t.id];
+    if (expanded[t.id]) await ensureLoaded(t);
+  }
+
+  async function toggleTopic(t: TopicSummary) {
+    const data = topicData[t.id] ?? (await ensureLoaded(t));
+    if (!data) return;
+    const all = data.groups.every((g) => selected[key(t.id, g.id)]);
+    for (const g of data.groups) selected[key(t.id, g.id)] = !all;
+  }
+
+  function toggleGroup(tid: string, gid: string) {
+    selected[key(tid, gid)] = !selected[key(tid, gid)];
+  }
+
+  const groupsOf = (t: TopicSummary): Group[] => topicData[t.id]?.groups ?? [];
+  const allSelected = (t: TopicSummary) => {
+    const gs = groupsOf(t);
+    return gs.length > 0 && gs.every((g) => selected[key(t.id, g.id)]);
+  };
+  const someSelected = (t: TopicSummary) =>
+    groupsOf(t).some((g) => selected[key(t.id, g.id)]);
+
+  // Deepest tier count among currently selected tiered groups (0 = none).
+  const maxTiers = $derived.by(() => {
+    let m = 0;
+    for (const t of topics) {
+      const data = topicData[t.id];
+      if (!data) continue;
+      for (const g of data.groups) {
+        if (g.tiers && selected[key(t.id, g.id)]) m = Math.max(m, g.tiers.length);
+      }
+    }
+    return m;
+  });
+
+  // Initialize the slider to "all tiers" and clamp it when the max shrinks.
+  $effect(() => {
+    if (maxTiers > 0 && (depth === 0 || depth > maxTiers)) depth = maxTiers;
+  });
+
+  // Aggregate selected groups' words (top-N tiers), de-duplicated, manifest order.
   const merged = $derived.by(() => {
+    const d = depth || Infinity;
     const seen = new Set<string>();
     const out: string[] = [];
     for (const t of topics) {
-      if (!selected[t.id]) continue;
-      for (const w of wordsById[t.id] ?? []) {
-        if (!seen.has(w)) {
-          seen.add(w);
-          out.push(w);
+      const data = topicData[t.id];
+      if (!data) continue;
+      for (const g of data.groups) {
+        if (!selected[key(t.id, g.id)]) continue;
+        const words = g.tiers ? g.tiers.slice(0, d).flat() : g.words ?? [];
+        for (const w of words) {
+          if (!seen.has(w)) {
+            seen.add(w);
+            out.push(w);
+          }
         }
       }
     }
@@ -84,6 +137,12 @@
     sel?.removeAllRanges();
     sel?.addRange(range);
   }
+
+  // Reflect a mixed parent-checkbox state (indeterminate is a DOM property).
+  function setIndeterminate(node: HTMLInputElement, value: boolean) {
+    node.indeterminate = value;
+    return { update: (v: boolean) => (node.indeterminate = v) };
+  }
 </script>
 
 <main>
@@ -108,19 +167,51 @@
         <h2>Topics</h2>
         <ul>
           {#each topics as t (t.id)}
-            <li>
-              <label class="topic">
-                <input
-                  type="checkbox"
-                  checked={!!selected[t.id]}
-                  onchange={() => toggle(t)}
-                />
-                <span class="icon" aria-hidden="true">{t.icon ?? "•"}</span>
-                <span class="title">{t.title}</span>
-                <span class="meta">
-                  {#if loadingById[t.id]}loading…{:else}{t.wordCount} words{/if}
-                </span>
-              </label>
+            <li class="topic-item">
+              <div class="topic-row">
+                <button
+                  type="button"
+                  class="expander"
+                  aria-expanded={!!expanded[t.id]}
+                  aria-label={expanded[t.id] ? "Collapse topic" : "Expand topic"}
+                  onclick={() => toggleExpand(t)}
+                >
+                  {expanded[t.id] ? "▾" : "▸"}
+                </button>
+                <label class="topic">
+                  <input
+                    type="checkbox"
+                    checked={allSelected(t)}
+                    use:setIndeterminate={someSelected(t) && !allSelected(t)}
+                    onchange={() => toggleTopic(t)}
+                  />
+                  <span class="icon" aria-hidden="true">{t.icon ?? "•"}</span>
+                  <span class="title">{t.title}</span>
+                  <span class="meta">
+                    {#if loadingById[t.id] && !topicData[t.id]}loading…{:else}{t.wordCount} words{/if}
+                  </span>
+                </label>
+              </div>
+
+              {#if expanded[t.id] && topicData[t.id]}
+                <ul class="groups">
+                  {#each groupsOf(t) as g (g.id)}
+                    <li>
+                      <label class="group">
+                        <input
+                          type="checkbox"
+                          checked={!!selected[key(t.id, g.id)]}
+                          onchange={() => toggleGroup(t.id, g.id)}
+                        />
+                        <span class="title">{g.title}</span>
+                        <span class="meta">
+                          {#if g.tiers}{g.tiers.length} tiers{:else}{g.words?.length ?? 0} words{/if}
+                        </span>
+                      </label>
+                    </li>
+                  {/each}
+                </ul>
+              {/if}
             </li>
           {/each}
         </ul>
@@ -137,8 +228,15 @@
           </button>
         </div>
 
+        {#if maxTiers > 1}
+          <div class="depth">
+            <label for="depth">Fame depth: top {depth || maxTiers} of {maxTiers} tiers</label>
+            <input id="depth" type="range" min="1" max={maxTiers} bind:value={depth} />
+          </div>
+        {/if}
+
         {#if merged.length === 0}
-          <p class="status">Select topics to build a list.</p>
+          <p class="status">Select topics or groups to build a list.</p>
         {:else}
           <!-- Read-only per-word chips (not a textarea) so M2 can color words. -->
           <div

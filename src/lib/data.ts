@@ -26,13 +26,3 @@ export function pickFile(t: TopicSummary): string {
   const lang = t.langs.includes("en") ? "en" : t.langs.includes("de") ? "de" : t.langs[0];
   return t.files.find((f) => f.startsWith(`${lang}.`)) ?? t.files[0];
 }
-
-/** All words in a topic, flattening flat `words` and every fame tier. */
-export function flattenWords(topic: Topic): string[] {
-  const out: string[] = [];
-  for (const g of topic.groups) {
-    if (g.words) out.push(...g.words);
-    if (g.tiers) for (const tier of g.tiers) out.push(...tier);
-  }
-  return out;
-}

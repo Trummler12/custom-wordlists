@@ -53,21 +53,68 @@ h2 {
   padding: 0;
   margin: 0;
 }
+.topic-item {
+  border-bottom: 1px solid var(--border);
+}
+.topic-row {
+  display: flex;
+  align-items: baseline;
+  gap: 0.25rem;
+}
+.expander {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0 0.25rem;
+  color: var(--muted-2);
+  font-size: 0.9rem;
+  line-height: 1;
+}
 .topic {
   display: flex;
   align-items: baseline;
   gap: 0.5rem;
+  flex: 1;
   padding: 0.5rem 0.2rem;
-  border-bottom: 1px solid var(--border);
   cursor: pointer;
 }
 .topic .title {
   font-weight: 600;
 }
-.topic .meta {
+.meta {
   margin-left: auto;
   color: var(--muted-2);
   font-size: 0.85rem;
+}
+
+/* Groups (nested under a topic) */
+.groups {
+  list-style: none;
+  margin: 0 0 0.4rem 2.1rem;
+  padding: 0;
+}
+.group {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  padding: 0.25rem 0.2rem;
+  cursor: pointer;
+}
+.group .title {
+  font-weight: 500;
+}
+
+/* Fame-depth slider */
+.depth {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  margin: 0.4rem 0 1rem;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+.depth input[type="range"] {
+  width: 100%;
 }
 
 /* Output panel */
