@@ -1,0 +1,22 @@
+{
+  "id": "elements",
+  "lang": "de",
+  "title": "Chemische Elemente",
+  "icon": "⚗️",
+  "description": "Die chemischen Elemente (deutsche Namen). Bekanntheits-Tiers nach Alltagsbekanntheit (Tier 0 = am geläufigsten); der letzte Tier sind die obskuren Lanthanoide/Actinoide und superschweren Synthetik-Elemente.",
+  "groups": [
+    {
+      "id": "elements",
+      "title": "Elemente",
+      "tiers": [
+        ["Wasserstoff", "Helium", "Kohlenstoff", "Stickstoff", "Sauerstoff", "Neon", "Natrium", "Magnesium", "Aluminium", "Silicium", "Phosphor", "Schwefel", "Chlor", "Kalium", "Calcium", "Eisen", "Kupfer", "Zink", "Silber", "Zinn", "Gold", "Quecksilber", "Blei", "Uran"],
+        ["Lithium", "Beryllium", "Bor", "Fluor", "Argon", "Titan", "Chrom", "Mangan", "Cobalt", "Nickel", "Arsen", "Brom", "Krypton", "Palladium", "Cadmium", "Iod", "Xenon", "Barium", "Wolfram", "Iridium", "Platin", "Radon", "Radium", "Plutonium"],
+        ["Scandium", "Vanadium", "Gallium", "Germanium", "Selen", "Rubidium", "Strontium", "Yttrium", "Zirconium", "Niob", "Molybdän", "Technetium", "Ruthenium", "Rhodium", "Indium", "Antimon", "Tellur", "Caesium", "Lanthan", "Cer", "Tantal", "Rhenium", "Osmium", "Thallium", "Bismut", "Polonium", "Francium", "Actinium", "Thorium", "Neptunium"],
+        ["Praseodym", "Neodym", "Promethium", "Samarium", "Europium", "Gadolinium", "Terbium", "Dysprosium", "Holmium", "Erbium", "Thulium", "Ytterbium", "Lutetium", "Hafnium", "Astat", "Protactinium", "Americium", "Curium", "Berkelium", "Californium", "Einsteinium", "Fermium", "Mendelevium", "Nobelium", "Lawrencium", "Rutherfordium", "Dubnium", "Seaborgium", "Bohrium", "Hassium", "Meitnerium", "Darmstadtium", "Roentgenium", "Copernicium", "Nihonium", "Flerovium", "Moscovium", "Livermorium", "Tenness", "Oganesson"]
+      ]
+    }
+  ],
+  "presets": [
+    { "id": "all", "title": "Alle Elemente", "groups": ["elements"] }
+  ]
+}
