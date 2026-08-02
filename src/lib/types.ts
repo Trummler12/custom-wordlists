@@ -52,6 +52,10 @@ export interface Topic {
   description?: string;
   /** Present only on translated variants; absent on language-neutral files. */
   lang?: string;
+  /** ISO date (YYYY-MM-DD) the list's contents last changed. */
+  lastUpdated?: string;
+  /** ISO date (YYYY-MM-DD) the list was last verified against its source. */
+  lastChecked?: string;
   groups: Group[];
   presets?: Preset[];
 }

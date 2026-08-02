@@ -53,7 +53,13 @@ async function collectTopics(segments) {
   // Category: each loose JSON file is a single-file topic (id = stem); recurse.
   const out = [];
   for (const file of jsonFiles) {
-    out.push({ segments: [...segments, basename(file, ".json")], files: [file], flat: true });
+    const stem = basename(file, ".json");
+    // A loose <lang>.json in a category would become a bogus flat topic (id "en"/
+    // "de"). Fail fast instead — localized variants must live in their own folder.
+    if (LANG_RE.test(stem)) {
+      throw new Error(`data/topics/${[...segments, file].join("/")}: a language file must live in its own topic folder, not loose in a category`);
+    }
+    out.push({ segments: [...segments, stem], files: [file], flat: true });
   }
   for (const sub of subDirs) out.push(...(await collectTopics([...segments, sub])));
   return out;
