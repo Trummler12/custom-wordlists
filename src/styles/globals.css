@@ -32,4 +32,6 @@
      `after` is the smaller gap down to its first child (category → topic). */
   --gap-before-cat: 0.7rem;
   --gap-after-cat: 0.2rem;
+  /* Space kept above and below the full-height sticky output panel. */
+  --output-gap: 1rem;
 }

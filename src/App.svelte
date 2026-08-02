@@ -290,24 +290,25 @@
 </script>
 
 <main>
-  <header>
-    <h1>Custom Wordlists</h1>
-    <p class="tagline">
-      Build custom word lists for
-      <a href="https://skribbl.io" target="_blank" rel="noopener noreferrer">skribbl.io</a>
-      and similar word games.
-    </p>
-  </header>
+  <div class="layout">
+    <div class="col-topics">
+      <header>
+        <h1>Custom Wordlists</h1>
+        <p class="tagline">
+          Build custom word lists for
+          <a href="https://skribbl.io" target="_blank" rel="noopener noreferrer">skribbl.io</a>
+          and similar word games.
+        </p>
+      </header>
 
-  {#if loading}
-    <p class="status">Loading topics…</p>
-  {:else if error}
-    <p class="status error">Could not load topics: {error}</p>
-  {:else if topics.length === 0}
-    <p class="status">No topics available yet.</p>
-  {:else}
-    <div class="layout">
-      <section class="topics" aria-label="Topics">
+      {#if loading}
+        <p class="status">Loading topics…</p>
+      {:else if error}
+        <p class="status error">Could not load topics: {error}</p>
+      {:else if topics.length === 0}
+        <p class="status">No topics available yet.</p>
+      {:else}
+        <section class="topics" aria-label="Topics">
         <h2>Topics</h2>
         {#snippet topicRow(t: TopicSummary)}
             <div class="topic-item">
@@ -435,8 +436,11 @@
         {#if topicError}
           <p class="status error">{topicError}</p>
         {/if}
-      </section>
+        </section>
+      {/if}
+    </div>
 
+    {#if !loading && !error && topics.length > 0}
       <section class="output" aria-label="Output">
         <div class="output-head">
           <h2>Output</h2>
@@ -481,6 +485,6 @@
           {/if}
         {/if}
       </section>
-    </div>
-  {/if}
+    {/if}
+  </div>
 </main>
