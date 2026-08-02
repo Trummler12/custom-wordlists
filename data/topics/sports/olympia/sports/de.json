@@ -1,0 +1,21 @@
+{
+  "id": "sports",
+  "lang": "de",
+  "title": "Sportarten",
+  "icon": "🏟️",
+  "description": "Olympische und gängige Sportarten (deutsche Namen). Bekanntheits-Tiers nach Popularität (Tier 0 = am verbreitetsten).",
+  "groups": [
+    {
+      "id": "disciplines",
+      "title": "Sportarten",
+      "tiers": [
+        ["Leichtathletik", "Schwimmen", "Turnen", "Fußball", "Basketball", "Tennis", "Boxen", "Radsport", "Volleyball", "Golf"],
+        ["Tischtennis", "Badminton", "Handball", "Judo", "Ringen", "Rudern", "Gewichtheben", "Fechten", "Bogenschießen", "Segeln"],
+        ["Wasserspringen", "Reiten", "Schießen", "Kanu", "Triathlon", "Hockey", "Rugby", "Skateboarding", "Surfen", "Taekwondo"]
+      ]
+    }
+  ],
+  "presets": [
+    { "id": "all", "title": "Alle Sportarten", "groups": ["disciplines"] }
+  ]
+}
