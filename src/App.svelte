@@ -94,13 +94,11 @@
   const groupHasNames = (g: Group): boolean =>
     (g.tiers ? g.tiers.flat() : g.words ?? []).some((e) => typeof e !== "string");
 
-  /** Distinct rendered strings for a list of entries in a mode. */
-  function renderDistinct(entries: Word[], mode: NamesMode): string[] {
+  /** Count of distinct rendered strings for a list of entries in a mode (no array). */
+  function renderCount(entries: Word[], mode: NamesMode): number {
     const seen = new Set<string>();
-    const out: string[] = [];
-    for (const e of entries)
-      for (const w of renderEntry(e, mode)) if (!seen.has(w)) { seen.add(w); out.push(w); }
-    return out;
+    for (const e of entries) for (const w of renderEntry(e, mode)) seen.add(w);
+    return seen.size;
   }
 
   const groupEntries = (g: Group): Word[] => (g.tiers ? g.tiers.flat() : g.words ?? []);
@@ -111,9 +109,9 @@
   }
 
   const groupTotal = (tid: string, g: Group): number =>
-    renderDistinct(groupEntries(g), modeOf(key(tid, g.id))).length;
+    renderCount(groupEntries(g), modeOf(key(tid, g.id)));
   const groupSelCount = (tid: string, g: Group): number =>
-    renderDistinct(selectedEntries(tid, g), modeOf(key(tid, g.id))).length;
+    renderCount(selectedEntries(tid, g), modeOf(key(tid, g.id)));
 
   const groupFull = (tid: string, g: Group): boolean => {
     const k = key(tid, g.id);
@@ -315,7 +313,7 @@
 </script>
 
 <main>
-  <div class="layout">
+  <div class="layout" class:single={loading || error || topics.length === 0}>
     <div class="col-topics">
       <header>
         <h1>Custom Wordlists</h1>

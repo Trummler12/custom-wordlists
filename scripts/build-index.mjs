@@ -53,13 +53,7 @@ async function collectTopics(segments) {
   // Category: each loose JSON file is a single-file topic (id = stem); recurse.
   const out = [];
   for (const file of jsonFiles) {
-    const stem = basename(file, ".json");
-    // A loose <lang>.json in a category would become a bogus flat topic (id "en"/
-    // "de"). Fail fast instead — localized variants must live in their own folder.
-    if (LANG_RE.test(stem)) {
-      throw new Error(`data/topics/${[...segments, file].join("/")}: a language file must live in its own topic folder, not loose in a category`);
-    }
-    out.push({ segments: [...segments, stem], files: [file], flat: true });
+    out.push({ segments: [...segments, basename(file, ".json")], files: [file], flat: true });
   }
   for (const sub of subDirs) out.push(...(await collectTopics([...segments, sub])));
   return out;
@@ -98,6 +92,11 @@ async function buildIndex() {
     const relPath = fileSegments.join("/");
     const variants = await readVariants(join(TOPICS_DIR, ...fileSegments), files, relPath);
     if (variants.length === 0) continue;
+    // A flat topic is a single loose file; if it declares `lang` it's a misplaced
+    // localized variant (would become a bogus topic id like "en"). Fail fast.
+    if (flat && variants[0].data.lang) {
+      throw new Error(`data/topics/${relPath}/${variants[0].file}: a language variant must live in its own topic folder, not loose in a category`);
+    }
     const rep = pickRepresentative(variants);
     const langs = variants.map((v) => v.lang).filter((l) => l !== null).sort();
     topics.push({
