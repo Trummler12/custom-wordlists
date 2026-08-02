@@ -1,0 +1,20 @@
+{
+  "id": "athletes",
+  "title": "Athletes",
+  "icon": "🏅",
+  "description": "Globally famous athletes across sports (language-neutral — proper names are the same across locales). Fame tiers by recognizability (tier 0 = most iconic).",
+  "groups": [
+    {
+      "id": "athletes",
+      "title": "Athletes",
+      "tiers": [
+        ["Lionel Messi", "Cristiano Ronaldo", "Michael Jordan", "Muhammad Ali", "Usain Bolt", "Roger Federer", "Serena Williams", "LeBron James", "Tiger Woods", "Pelé"],
+        ["Rafael Nadal", "Novak Djokovic", "Kobe Bryant", "Diego Maradona", "Michael Phelps", "Lewis Hamilton", "Michael Schumacher", "Tom Brady", "Neymar", "Kylian Mbappé"],
+        ["Zinedine Zidane", "David Beckham", "Shaquille O'Neal", "Floyd Mayweather", "Mike Tyson", "Simone Biles", "Wayne Gretzky", "Ronaldinho", "Stephen Curry", "Conor McGregor"]
+      ]
+    }
+  ],
+  "presets": [
+    { "id": "all", "title": "All athletes", "groups": ["athletes"] }
+  ]
+}
