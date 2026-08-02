@@ -3,7 +3,7 @@
   "lang": "de",
   "title": "Chemische Elemente",
   "icon": "⚗️",
-  "description": "Die chemischen Elemente (deutsche Namen). Bekanntheits-Tiers nach Alltagsbekanntheit (Tier 0 = am geläufigsten); der letzte Tier sind die obskuren Lanthanoide/Actinoide und superschweren Synthetik-Elemente.",
+  "description": "Die chemischen Elemente (deutsche Namen). Bekanntheits-Tiers nach Alltagsbekanntheit (Tier 0 = am geläufigsten); der letzte Tier enthält die obskuren Lanthanoide und Actinoide sowie die superschweren, synthetischen Elemente.",
   "groups": [
     {
       "id": "elements",
