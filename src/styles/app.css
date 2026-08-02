@@ -47,6 +47,19 @@ h2 {
   }
 }
 
+/* Output panel follows the viewport while the (often taller) topic list scrolls. */
+.output {
+  position: sticky;
+  top: 1rem;
+  align-self: start;
+}
+@media (max-width: 40rem) {
+  /* Stacked layout: output sits below the list, so pinning it would be odd. */
+  .output {
+    position: static;
+  }
+}
+
 /* Topic list */
 .category {
   display: flex;
@@ -213,7 +226,9 @@ h2 {
   padding: 0.6rem;
   border: 1px solid var(--panel-border);
   border-radius: var(--radius);
-  max-height: 24rem;
+  /* Cap to the viewport so the sticky panel's head + counter stay visible and
+     only the chips scroll (12rem ≈ heading + counter + margins + top offset). */
+  max-height: min(24rem, calc(100vh - 6rem));
   overflow-y: auto;
   cursor: text;
 }
