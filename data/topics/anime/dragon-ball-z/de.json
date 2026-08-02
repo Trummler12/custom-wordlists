@@ -1,0 +1,21 @@
+{
+  "id": "dragon-ball-z",
+  "lang": "de",
+  "title": "Dragon Ball Z",
+  "icon": "🐉",
+  "description": "Charaktere aus Dragon Ball Z (deutsche Dub-Namen). Bekanntheits-Tiers (Tier 0 = am bekanntesten).",
+  "groups": [
+    {
+      "id": "characters",
+      "title": "Charaktere",
+      "tiers": [
+        ["Son-Goku", "Vegeta", "Son-Gohan", "Piccolo", "Freezer", "Cell", "Boo", "Krillin"],
+        ["Bulma", "Trunks", "Son-Goten", "Muten-Roshi", "Tenshinhan", "C-18", "C-17", "Mr. Satan"],
+        ["Yamchu", "Chao-Zu", "Nordkaio", "Nappa", "Raditz", "Broly", "Gotenks", "Beerus"]
+      ]
+    }
+  ],
+  "presets": [
+    { "id": "all", "title": "Alle Charaktere", "groups": ["characters"] }
+  ]
+}
