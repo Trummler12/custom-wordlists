@@ -32,10 +32,12 @@ function pickRepresentative(variants) {
 }
 
 /**
- * Recursively find topics under data/topics. A directory that directly holds
- * JSON files is a topic (a leaf — we don't recurse into it); anything above is
- * a category segment. Returns `{ segments }` per topic (path from topics/ down
- * to and including the topic folder), sorted for determinism.
+ * Recursively find topics under data/topics. A folder with JSON files and no
+ * subfolders is a topic leaf (id = folder name). A folder that also has
+ * subfolders is a category: each loose JSON file in it is a single-file topic
+ * (id = file stem, `flat`), and its subfolders are walked. Folders above a
+ * topic are category segments. Returns `{ segments, files, flat }` per topic,
+ * sorted for determinism.
  */
 async function collectTopics(segments) {
   const dir = join(TOPICS_DIR, ...segments);
