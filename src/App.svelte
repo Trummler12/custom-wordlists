@@ -218,7 +218,11 @@
   const allTopicsOf = (node: CatNode): TopicSummary[] =>
     node.topics.concat(...node.children.map(allTopicsOf));
 
-  const catOpen = (node: CatNode) => catExpanded[node.path] ?? true;
+  // Default expansion: only top-level categories are open, so the second level
+  // (e.g. gaming → pokemon) shows up but its contents stay collapsed until the
+  // user drills in. A manual toggle (catExpanded) overrides the default.
+  const catDepth = (node: CatNode) => node.path.split("/").length - 1;
+  const catOpen = (node: CatNode) => catExpanded[node.path] ?? catDepth(node) === 0;
 
   const titleCase = (seg: string) =>
     seg.split("-").map((w) => w.charAt(0).toUpperCase() + w.slice(1)).join(" ");
