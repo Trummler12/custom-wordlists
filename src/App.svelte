@@ -24,6 +24,7 @@
   let topicError = $state<string | null>(null);
 
   let expanded = $state<Record<string, boolean>>({});
+  let catExpanded = $state<Record<string, boolean>>({}); // category node open/closed, by path
   let selected = $state<Record<string, boolean>>({}); // flat groups only, key `${topicId}:${groupId}`
   // Per-group fame depth (top-N tiers), keyed like `selected`. Absent/0 = unselected.
   let depthByGroup = $state<Record<string, number>>({});
@@ -184,21 +185,43 @@
     ts.forEach((t, i) => loaded[i] && setTopic(t, on));
   }
 
-  // Group topics by their category path for the tree (topics keep manifest order).
-  const byCategory = $derived.by(() => {
-    const map = new Map<string, TopicSummary[]>();
+  // Build a nested category tree from topic.category paths (topics keep manifest
+  // order; categories appear first-seen). Each node renders as one collapsible
+  // level showing only its own segment, so "gaming/pokemon/pokemon" nests inside
+  // "gaming/pokemon" instead of repeating the whole path as a flat header.
+  type CatNode = {
+    name: string;
+    path: string;
+    topics: TopicSummary[];
+    children: CatNode[];
+  };
+  const tree = $derived.by(() => {
+    const root: CatNode = { name: "", path: "", topics: [], children: [] };
     for (const t of topics) {
-      const list = map.get(t.category) ?? [];
-      list.push(t);
-      map.set(t.category, list);
+      let node = root;
+      let path = "";
+      for (const seg of t.category.split("/").filter(Boolean)) {
+        path = path ? `${path}/${seg}` : seg;
+        let child = node.children.find((c) => c.name === seg);
+        if (!child) {
+          child = { name: seg, path, topics: [], children: [] };
+          node.children.push(child);
+        }
+        node = child;
+      }
+      node.topics.push(t);
     }
-    return [...map.entries()];
+    return root;
   });
+
+  // All topics under a category node (its own plus every descendant's).
+  const allTopicsOf = (node: CatNode): TopicSummary[] =>
+    node.topics.concat(...node.children.map(allTopicsOf));
+
+  const catOpen = (node: CatNode) => catExpanded[node.path] ?? true;
 
   const titleCase = (seg: string) =>
     seg.split("-").map((w) => w.charAt(0).toUpperCase() + w.slice(1)).join(" ");
-  const formatCategory = (c: string) =>
-    c === "" ? "Uncategorized" : c.split("/").map(titleCase).join(" / ");
 
   // Aggregate selected groups' words (top-N tiers), de-duplicated, manifest order.
   const merged = $derived.by(() => {
@@ -282,22 +305,8 @@
     <div class="layout">
       <section class="topics" aria-label="Topics">
         <h2>Topics</h2>
-        {#each byCategory as [category, catTopics] (category)}
-          {@const catId = "cat-" + (category.replace(/\//g, "-") || "root")}
-          <div class="category">
-            <input
-              type="checkbox"
-              id={catId}
-              checked={catFull(catTopics)}
-              use:setIndeterminate={catPartial(catTopics)}
-              onchange={() => toggleCategory(catTopics)}
-            />
-            <h3 class="category-title"><label for={catId}>{formatCategory(category)}</label></h3>
-            <span class="meta">{catSel(catTopics)} of {catTotal(catTopics)} words</span>
-          </div>
-          <ul>
-            {#each catTopics as t (t.id)}
-            <li class="topic-item">
+        {#snippet topicRow(t: TopicSummary)}
+            <div class="topic-item">
               <div class="topic-row">
                 <button
                   type="button"
@@ -383,10 +392,42 @@
                   {/each}
                 </ul>
               {/if}
-            </li>
-            {/each}
-          </ul>
-        {/each}
+            </div>
+        {/snippet}
+
+        {#snippet categoryNode(node: CatNode)}
+          {@const at = allTopicsOf(node)}
+          {@const catId = "cat-" + (node.path.replace(/\//g, "-") || "root")}
+          <div class="category">
+            <button
+              type="button"
+              class="expander"
+              aria-expanded={catOpen(node)}
+              aria-label={(catOpen(node) ? "Collapse " : "Expand ") + titleCase(node.name)}
+              onclick={() => (catExpanded[node.path] = !catOpen(node))}
+            >
+              {catOpen(node) ? "▾" : "▸"}
+            </button>
+            <input
+              type="checkbox"
+              id={catId}
+              checked={catFull(at)}
+              use:setIndeterminate={catPartial(at)}
+              onchange={() => toggleCategory(at)}
+            />
+            <h3 class="category-title"><label for={catId}>{titleCase(node.name)}</label></h3>
+            <span class="meta">{catSel(at)} of {catTotal(at)} words</span>
+          </div>
+          {#if catOpen(node)}
+            <div class="cat-children">
+              {#each node.topics as t (t.id)}{@render topicRow(t)}{/each}
+              {#each node.children as child (child.path)}{@render categoryNode(child)}{/each}
+            </div>
+          {/if}
+        {/snippet}
+
+        {#each tree.topics as t (t.id)}{@render topicRow(t)}{/each}
+        {#each tree.children as node (node.path)}{@render categoryNode(node)}{/each}
         {#if topicError}
           <p class="status error">{topicError}</p>
         {/if}

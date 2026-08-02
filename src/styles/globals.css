@@ -24,4 +24,12 @@
   --font-sans: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   --radius: 0.4rem;
   --radius-sm: 0.3rem;
+  /* Total indentation added per nested category level in the topic tree. Split
+     evenly on either side of the guide line (see .cat-children in app.css). */
+  --tree-step: 0.6rem;
+  /* Vertical rhythm around a category header in the tree. `before` separates a
+     header from the content above it (topic → category, or category → category);
+     `after` is the smaller gap down to its first child (category → topic). */
+  --gap-before-cat: 0.7rem;
+  --gap-after-cat: 0.2rem;
 }
