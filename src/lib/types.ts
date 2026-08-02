@@ -10,9 +10,11 @@ export interface TopicSummary {
   icon: string | null;
   /** Category path from topics/ (e.g. "gaming" or "gaming/pokemon"); "" = none. */
   category: string;
+  /** True when the file sits loose in the category folder (no id-named folder). */
+  flat?: boolean;
   /** Available language codes (e.g. ["de","en"]); empty = language-neutral. */
   langs: string[];
-  /** JSON filenames in the topic folder; the frontend fetches one of these. */
+  /** JSON filenames for the topic; the frontend fetches one of these. */
   files: string[];
   groupCount: number;
   wordCount: number;

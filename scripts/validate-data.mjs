@@ -20,19 +20,26 @@ const LANG_RE = /^[a-z]{2}(-[A-Z]{2})?$/;
 const KEBAB_RE = /^[a-z0-9]+(-[a-z0-9]+)*$/;
 
 /**
- * Recursively find topics under data/topics. A directory that directly holds
- * JSON files is a topic (leaf); folders above it are category segments. Returns
- * `{ segments }` per topic (path from topics/ to the topic folder), sorted.
+ * Recursively find topics under data/topics. A folder with JSON files and no
+ * subfolders is a topic leaf (id = folder name). A folder that also has
+ * subfolders is a category: each loose JSON file is a single-file topic
+ * (id = file stem, `flat`), and its subfolders are walked. Folders above a
+ * topic are category segments. Returns `{ segments, files, flat }` per topic.
  */
 async function collectTopics(segments) {
   const dir = join(TOPICS_DIR, ...segments);
   const entries = await readdir(dir, { withFileTypes: true });
-  const jsonFiles = entries.filter((e) => e.isFile() && e.name.endsWith(".json"));
-  if (segments.length > 0 && jsonFiles.length > 0) {
-    return [{ segments, files: jsonFiles.map((e) => e.name).sort() }];
-  }
+  const jsonFiles = entries.filter((e) => e.isFile() && e.name.endsWith(".json")).map((e) => e.name).sort();
   const subDirs = entries.filter((e) => e.isDirectory()).map((e) => e.name).sort();
+
+  if (segments.length > 0 && jsonFiles.length > 0 && subDirs.length === 0) {
+    return [{ segments, files: jsonFiles, flat: false }];
+  }
+
   const out = [];
+  for (const file of jsonFiles) {
+    out.push({ segments: [...segments, basename(file, ".json")], files: [file], flat: true });
+  }
   for (const sub of subDirs) out.push(...(await collectTopics([...segments, sub])));
   return out;
 }
@@ -83,10 +90,19 @@ async function main() {
   }
 
   let fileCount = 0;
-  for (const { segments, files } of found) {
+  for (const { segments, files, flat } of found) {
     const id = segments[segments.length - 1];
-    const relDir = segments.join("/");
-    const dir = join(TOPICS_DIR, ...segments);
+    // Flat topics live loose in the category folder; foldered ones in a folder
+    // named after their id.
+    const fileSegments = flat ? segments.slice(0, -1) : segments;
+    const relDir = fileSegments.join("/");
+    const dir = join(TOPICS_DIR, ...fileSegments);
+
+    // A loose file in a category must be language-neutral; localized variants
+    // need their own folder so their <lang>.json files group into one topic.
+    if (flat && LANG_RE.test(basename(files[0], ".json"))) {
+      errors.push(`data/topics/${relDir}/${files[0]}: a language variant must live in its own topic folder, not loose in a category`);
+    }
 
     // 4. category folder names must be kebab-case, like ids
     for (const seg of segments.slice(0, -1)) {
@@ -115,9 +131,9 @@ async function main() {
         continue; // shape unreliable; skip semantic checks for this file
       }
 
-      // folder/id agreement (id = the topic folder name, deepest segment)
+      // id agreement: the folder name for foldered topics, the file stem for flat
       if (topic.id !== id) {
-        errors.push(`${rel}: id "${topic.id}" does not match folder "${id}"`);
+        errors.push(`${rel}: id "${topic.id}" does not match ${flat ? "filename" : "folder"} "${id}"`);
       }
 
       // filename ↔ lang agreement

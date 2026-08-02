@@ -48,7 +48,7 @@
     loadingById[t.id] = true;
     topicError = null;
     try {
-      const data = await loadTopic(t.category, t.id, pickFile(t));
+      const data = await loadTopic(t.category, t.id, pickFile(t), t.flat);
       topicData[t.id] = data;
       return data;
     } catch (e) {
