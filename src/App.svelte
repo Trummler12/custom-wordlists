@@ -1,7 +1,9 @@
 <script lang="ts">
   import { onMount } from "svelte";
   import { loadManifest, loadTopic, pickFile } from "./lib/data";
-  import type { TopicSummary, Topic, Group } from "./lib/types";
+  import type { TopicSummary, Topic, Group, Word } from "./lib/types";
+
+  type NamesMode = "short" | "long" | "both";
 
   // ─── Tunables (configuration) ──────────────────────────────────────────────
   // skribbl's custom-wordlist rules (PLANNING §4/§6.2). Only game preset for now.
@@ -28,6 +30,8 @@
   let selected = $state<Record<string, boolean>>({}); // flat groups only, key `${topicId}:${groupId}`
   // Per-group fame depth (top-N tiers), keyed like `selected`. Absent/0 = unselected.
   let depthByGroup = $state<Record<string, number>>({});
+  // Per-group names mode (only groups with short/long entries show the dropdown).
+  let namesMode = $state<Record<string, NamesMode>>({});
 
   let copied = $state(false);
 
@@ -75,19 +79,41 @@
 
   const tierCount = (g: Group) => g.tiers?.length ?? 0;
 
-  const groupTotal = (g: Group): number =>
-    g.tiers ? g.tiers.reduce((n, tier) => n + tier.length, 0) : g.words?.length ?? 0;
+  // --- Names mode (short / long / both) --------------------------------------
+  // A group's entries are plain strings or { short, long } pairs. A group with
+  // any pair shows a per-group Names dropdown; the mode picks which form(s) to
+  // emit. Counts and output dedup identical rendered strings (e.g. two "Kyle"s).
+  const modeOf = (k: string): NamesMode => namesMode[k] ?? "long";
 
-  const groupSelCount = (tid: string, g: Group): number => {
+  function renderEntry(e: Word, mode: NamesMode): string[] {
+    if (typeof e === "string") return [e];
+    if (mode === "short") return [e.short];
+    if (mode === "long") return [e.long];
+    return e.short === e.long ? [e.short] : [e.short, e.long];
+  }
+  const groupHasNames = (g: Group): boolean =>
+    (g.tiers ? g.tiers.flat() : g.words ?? []).some((e) => typeof e !== "string");
+
+  /** Distinct rendered strings for a list of entries in a mode. */
+  function renderDistinct(entries: Word[], mode: NamesMode): string[] {
+    const seen = new Set<string>();
+    const out: string[] = [];
+    for (const e of entries)
+      for (const w of renderEntry(e, mode)) if (!seen.has(w)) { seen.add(w); out.push(w); }
+    return out;
+  }
+
+  const groupEntries = (g: Group): Word[] => (g.tiers ? g.tiers.flat() : g.words ?? []);
+  function selectedEntries(tid: string, g: Group): Word[] {
     const k = key(tid, g.id);
-    if (g.tiers) {
-      const d = depthByGroup[k] ?? 0;
-      let n = 0;
-      for (let i = 0; i < d; i++) n += g.tiers[i].length;
-      return n;
-    }
-    return selected[k] ? g.words?.length ?? 0 : 0;
-  };
+    if (g.tiers) return g.tiers.slice(0, depthByGroup[k] ?? 0).flat();
+    return selected[k] ? g.words ?? [] : [];
+  }
+
+  const groupTotal = (tid: string, g: Group): number =>
+    renderDistinct(groupEntries(g), modeOf(key(tid, g.id))).length;
+  const groupSelCount = (tid: string, g: Group): number =>
+    renderDistinct(selectedEntries(tid, g), modeOf(key(tid, g.id))).length;
 
   const groupFull = (tid: string, g: Group): boolean => {
     const k = key(tid, g.id);
@@ -101,6 +127,12 @@
 
   const topicSelCount = (t: TopicSummary): number =>
     groupsOf(t).reduce((n, g) => n + groupSelCount(t.id, g), 0);
+  // Total available for a topic: live (mode-aware) once loaded, else the manifest
+  // entry count as a baseline.
+  const topicTotal = (t: TopicSummary): number => {
+    const gs = groupsOf(t);
+    return gs.length ? gs.reduce((n, g) => n + groupTotal(t.id, g), 0) : t.wordCount;
+  };
   const topicFull = (t: TopicSummary): boolean => {
     const gs = groupsOf(t);
     return gs.length > 0 && gs.every((g) => groupFull(t.id, g));
@@ -108,7 +140,7 @@
   const topicPartial = (t: TopicSummary): boolean =>
     topicSelCount(t) > 0 && !topicFull(t);
 
-  const catTotal = (ts: TopicSummary[]) => ts.reduce((n, t) => n + t.wordCount, 0);
+  const catTotal = (ts: TopicSummary[]) => ts.reduce((n, t) => n + topicTotal(t), 0);
   const catSel = (ts: TopicSummary[]) => ts.reduce((n, t) => n + topicSelCount(t), 0);
   const catFull = (ts: TopicSummary[]) => ts.every(topicFull);
   const catPartial = (ts: TopicSummary[]) => catSel(ts) > 0 && !catFull(ts);
@@ -235,20 +267,13 @@
       const data = topicData[t.id];
       if (!data) continue;
       for (const g of data.groups) {
-        const k = key(t.id, g.id);
-        let words: string[];
-        if (g.tiers) {
-          const d = depthByGroup[k] ?? 0;
-          if (d <= 0) continue;
-          words = g.tiers.slice(0, d).flat();
-        } else {
-          if (!selected[k]) continue;
-          words = g.words ?? [];
-        }
-        for (const w of words) {
-          if (!seen.has(w)) {
-            seen.add(w);
-            out.push(w);
+        const mode = modeOf(key(t.id, g.id));
+        for (const e of selectedEntries(t.id, g)) {
+          for (const w of renderEntry(e, mode)) {
+            if (!seen.has(w)) {
+              seen.add(w);
+              out.push(w);
+            }
           }
         }
       }
@@ -332,7 +357,7 @@
                   <span class="icon" aria-hidden="true">{t.icon ?? "•"}</span>
                   <span class="title">{t.title}</span>
                   <span class="meta">
-                    {#if loadingById[t.id] && !topicData[t.id]}loading…{:else}{topicSelCount(t)} of {t.wordCount} words{/if}
+                    {#if loadingById[t.id] && !topicData[t.id]}loading…{:else}{topicSelCount(t)} of {topicTotal(t)} words{/if}
                   </span>
                 </label>
               </div>
@@ -342,16 +367,30 @@
                   {#each groupsOf(t) as g (g.id)}
                     {@const k = key(t.id, g.id)}
                     <li>
-                      <label class="group">
-                        <input
-                          type="checkbox"
-                          checked={groupFull(t.id, g)}
-                          use:setIndeterminate={groupPartial(t.id, g)}
-                          onchange={() => toggleGroup(t.id, g)}
-                        />
-                        <span class="title">{g.title}</span>
-                        <span class="meta">{groupSelCount(t.id, g)} of {groupTotal(g)} words</span>
-                      </label>
+                      <div class="group">
+                        <label class="group-label">
+                          <input
+                            type="checkbox"
+                            checked={groupFull(t.id, g)}
+                            use:setIndeterminate={groupPartial(t.id, g)}
+                            onchange={() => toggleGroup(t.id, g)}
+                          />
+                          <span class="title">{g.title}</span>
+                        </label>
+                        {#if groupHasNames(g)}
+                          <select
+                            class="names-mode"
+                            aria-label={`Name form for ${g.title}`}
+                            value={modeOf(k)}
+                            onchange={(e) => (namesMode[k] = e.currentTarget.value as NamesMode)}
+                          >
+                            <option value="short">short</option>
+                            <option value="long">long</option>
+                            <option value="both">both</option>
+                          </select>
+                        {/if}
+                        <span class="meta">{groupSelCount(t.id, g)} of {groupTotal(t.id, g)} words</span>
+                      </div>
                       {#if g.tiers && g.tiers.length > 1}
                         {@const d = depthByGroup[k] ?? 0}
                         {@const pos = snapPositions(g)}

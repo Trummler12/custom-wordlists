@@ -45,7 +45,21 @@
       "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$",
       "description": "Kebab-case identifier."
     },
-    "word": { "type": "string", "minLength": 1 },
+    "word": {
+      "oneOf": [
+        { "type": "string", "minLength": 1 },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["short", "long"],
+          "description": "An entry with a short (common) and long (full) name; the UI's per-group Names dropdown picks short / long / both.",
+          "properties": {
+            "short": { "type": "string", "minLength": 1 },
+            "long": { "type": "string", "minLength": 1 }
+          }
+        }
+      ]
+    },
     "group": {
       "type": "object",
       "additionalProperties": false,

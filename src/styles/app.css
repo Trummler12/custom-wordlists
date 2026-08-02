@@ -163,13 +163,24 @@ header {
 }
 .group {
   display: flex;
-  align-items: baseline;
+  align-items: center;
   gap: 0.5rem;
   padding: 0.25rem 0.2rem;
+}
+.group-label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
   cursor: pointer;
 }
 .group .title {
   font-weight: 500;
+}
+/* Per-group Names dropdown (short / long / both); only groups with name pairs. */
+.names-mode {
+  font-size: 0.75rem;
+  padding: 0 0.15rem;
+  color: var(--muted);
 }
 
 /* Per-group fame-depth slider — a custom track so the snap markers can sit on

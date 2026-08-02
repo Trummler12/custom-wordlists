@@ -26,12 +26,15 @@ export interface Manifest {
   topics: TopicSummary[];
 }
 
+/** A word entry: a plain string, or a short/long name pair (for the Names mode). */
+export type Word = string | { short: string; long: string };
+
 /** A group of words: either a flat `words` list or ordered fame `tiers`. */
 export interface Group {
   id: string;
   title: string;
-  words?: string[];
-  tiers?: string[][];
+  words?: Word[];
+  tiers?: Word[][];
 }
 
 /** A named bundle of group ids within a topic. */
