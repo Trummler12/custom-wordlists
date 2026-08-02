@@ -1,0 +1,30 @@
+{
+  "id": "disney",
+  "lang": "en",
+  "title": "Disney",
+  "icon": "🏰",
+  "description": "Disney characters (English names): the classic Mouse & Duck universe plus animated-film leads. Fame tiers by recognizability (tier 0 = most iconic).",
+  "groups": [
+    {
+      "id": "classics",
+      "title": "Classics (Mouse & Duck)",
+      "tiers": [
+        ["Mickey Mouse", "Donald Duck", "Goofy", "Pluto", "Minnie Mouse", "Daisy Duck", "Scrooge McDuck", "Winnie the Pooh"],
+        ["Huey", "Dewey", "Louie", "Chip", "Dale", "Gyro Gearloose", "Gladstone Gander", "Beagle Boys"]
+      ]
+    },
+    {
+      "id": "animated-films",
+      "title": "Animated films",
+      "tiers": [
+        ["Simba", "Elsa", "Aladdin", "Ariel", "Mulan", "Woody", "Buzz Lightyear", "Stitch"],
+        ["Mufasa", "Scar", "Anna", "Olaf", "Genie", "Jasmine", "Maui", "Moana"]
+      ]
+    }
+  ],
+  "presets": [
+    { "id": "all", "title": "All characters", "groups": ["classics", "animated-films"] },
+    { "id": "classics", "title": "Classics only", "groups": ["classics"] },
+    { "id": "animated-films", "title": "Animated films only", "groups": ["animated-films"] }
+  ]
+}

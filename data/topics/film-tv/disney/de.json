@@ -1,0 +1,30 @@
+{
+  "id": "disney",
+  "lang": "de",
+  "title": "Disney",
+  "icon": "🏰",
+  "description": "Disney-Figuren (deutsche Namen): das klassische Maus- & Enten-Universum plus Animationsfilm-Hauptfiguren. Bekanntheits-Tiers (Tier 0 = am bekanntesten).",
+  "groups": [
+    {
+      "id": "classics",
+      "title": "Klassiker (Maus & Ente)",
+      "tiers": [
+        ["Micky Maus", "Donald Duck", "Goofy", "Pluto", "Minnie Maus", "Daisy Duck", "Dagobert Duck", "Winnie Puuh"],
+        ["Tick", "Trick", "Track", "Chip", "Chap", "Daniel Düsentrieb", "Gustav Gans", "Panzerknacker"]
+      ]
+    },
+    {
+      "id": "animated-films",
+      "title": "Animationsfilme",
+      "tiers": [
+        ["Simba", "Elsa", "Aladdin", "Arielle", "Mulan", "Woody", "Buzz Lightyear", "Stitch"],
+        ["Mufasa", "Scar", "Anna", "Olaf", "Dschinni", "Jasmin", "Maui", "Vaiana"]
+      ]
+    }
+  ],
+  "presets": [
+    { "id": "all", "title": "Alle Figuren", "groups": ["classics", "animated-films"] },
+    { "id": "classics", "title": "Nur Klassiker", "groups": ["classics"] },
+    { "id": "animated-films", "title": "Nur Animationsfilme", "groups": ["animated-films"] }
+  ]
+}
