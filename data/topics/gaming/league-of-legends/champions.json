@@ -3,6 +3,8 @@
   "title": "League of Legends",
   "icon": "⚔️",
   "description": "League of Legends champion names (language-neutral). Complete live roster (verified against Riot Data Dragon), split into fame tiers by broad recognizability (tier 0 = most famous). The final tier is the long tail of less-mainstream and newest champions, where fame differences are small. Tier sizes are uneven by design — they follow recognizability, not fixed steps.",
+  "lastUpdated": "2026-08-02",
+  "lastChecked": "2026-08-02",
   "groups": [
     {
       "id": "champions",
