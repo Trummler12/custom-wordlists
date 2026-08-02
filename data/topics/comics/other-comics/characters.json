@@ -1,0 +1,19 @@
+{
+  "id": "other-comics",
+  "title": "Other",
+  "icon": "💥",
+  "description": "Iconic comic characters outside the DC/Marvel universes (language-neutral — names are the same across locales). Fame tiers by recognizability (tier 0 = most iconic).",
+  "groups": [
+    {
+      "id": "characters",
+      "title": "Characters",
+      "tiers": [
+        ["Asterix", "Obelix", "Snoopy", "Garfield", "Lucky Luke"],
+        ["Spawn", "Hellboy", "Judge Dredd", "Invincible", "Corto Maltese"]
+      ]
+    }
+  ],
+  "presets": [
+    { "id": "all", "title": "All characters", "groups": ["characters"] }
+  ]
+}
