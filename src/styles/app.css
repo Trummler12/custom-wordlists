@@ -52,6 +52,11 @@ header {
   gap: 1.5rem;
   align-items: start;
 }
+/* Left column: header + topic tree. min-width:0 keeps long names from pushing
+   the grid track wider than its 1fr share. */
+.col-topics {
+  min-width: 0;
+}
 /* While loading / on error / with no topics the output column isn't rendered —
    collapse to one column so the header + status aren't stuck at half width. */
 .layout.single {

@@ -92,9 +92,10 @@ async function buildIndex() {
     const relPath = fileSegments.join("/");
     const variants = await readVariants(join(TOPICS_DIR, ...fileSegments), files, relPath);
     if (variants.length === 0) continue;
-    // A flat topic is a single loose file; if it declares `lang` it's a misplaced
-    // localized variant (would become a bogus topic id like "en"). Fail fast.
-    if (flat && variants[0].data.lang) {
+    // A flat topic is a single loose file. Reject it when it looks like a
+    // localized variant — either a language-code filename (id would be "en"/"de")
+    // or a declared `lang` field — matching validate-data. Fail fast.
+    if (flat && (LANG_RE.test(id) || variants[0].data.lang)) {
       throw new Error(`data/topics/${relPath}/${variants[0].file}: a language variant must live in its own topic folder, not loose in a category`);
     }
     const rep = pickRepresentative(variants);

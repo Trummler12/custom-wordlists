@@ -340,6 +340,7 @@
                   type="button"
                   class="expander"
                   aria-expanded={!!expanded[t.id]}
+                  aria-controls="groups-{t.id}"
                   aria-label={(expanded[t.id] ? "Collapse " : "Expand ") + t.title}
                   onclick={() => toggleExpand(t)}
                 >
@@ -361,7 +362,7 @@
               </div>
 
               {#if expanded[t.id] && topicData[t.id]}
-                <ul class="groups">
+                <ul class="groups" id="groups-{t.id}">
                   {#each groupsOf(t) as g (g.id)}
                     {@const k = key(t.id, g.id)}
                     <li>
@@ -445,6 +446,7 @@
               type="button"
               class="expander"
               aria-expanded={catOpen(node)}
+              aria-controls="{catId}-children"
               aria-label={(catOpen(node) ? "Collapse " : "Expand ") + titleCase(node.name)}
               onclick={() => (catExpanded[node.path] = !catOpen(node))}
             >
@@ -461,7 +463,7 @@
             <span class="meta">{catSel(at)} of {catTotal(at)} words</span>
           </div>
           {#if catOpen(node)}
-            <div class="cat-children">
+            <div class="cat-children" id="{catId}-children">
               {#each node.topics as t (t.id)}{@render topicRow(t)}{/each}
               {#each node.children as child (child.path)}{@render categoryNode(child)}{/each}
             </div>
