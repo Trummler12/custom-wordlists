@@ -415,19 +415,19 @@
       <button
         type="button"
         class="lang-btn"
-        aria-haspopup="listbox"
+        aria-haspopup="menu"
         aria-expanded={langMenuOpen === id}
         aria-label={`Language: ${langName(lang)}`}
         onclick={() => (langMenuOpen = langMenuOpen === id ? null : id)}
       >🌐</button>
       {#if langMenuOpen === id}
-        <ul class="lang-menu" role="listbox" aria-label="Language">
+        <ul class="lang-menu" role="menu" aria-label="Language">
           {#each availableLangs as l (l)}
-            <li>
+            <li role="none">
               <button
                 type="button"
-                role="option"
-                aria-selected={l === lang}
+                role="menuitemradio"
+                aria-checked={l === lang}
                 class:selected={l === lang}
                 onclick={() => chooseLanguage(l)}
               >
@@ -448,7 +448,7 @@
       <header>
         <div class="title-row">
           <h1>Custom Wordlists</h1>
-          <span class="lang-header-slot">{@render langPicker("header")}</span>
+          <div class="lang-header-slot">{@render langPicker("header")}</div>
         </div>
         <p class="tagline">
           Build custom word lists for
