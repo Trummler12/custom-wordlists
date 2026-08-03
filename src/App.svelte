@@ -89,6 +89,7 @@
     if (l === lang) return;
     lang = l;
     const gen = ++langGen;
+    topicError = null; // clear any stale error so a successful switch looks clean
     try {
       localStorage.setItem(LANG_STORAGE_KEY, l);
     } catch {
