@@ -46,6 +46,10 @@
   // Which language menu is open (by instance id), or null. Two pickers share the
   // language but each has its own trigger.
   let langMenuOpen = $state<string | null>(null);
+  // Bumped on every language switch. In-flight loads capture the value and
+  // discard their result if it changed meanwhile, so a slower fetch for an older
+  // language can't overwrite newer data.
+  let langGen = 0;
 
   let copied = $state(false);
 
@@ -84,19 +88,28 @@
   async function setLanguage(l: string) {
     if (l === lang) return;
     lang = l;
+    const gen = ++langGen;
     try {
       localStorage.setItem(LANG_STORAGE_KEY, l);
     } catch {
       /* localStorage unavailable — ignore */
     }
     // Selection is keyed by group id (identical across languages), so it stays;
-    // only the words change. Neutral topics don't depend on the language.
-    const reload = topics.filter((t) => t.langs.length > 0 && topicData[t.id]);
-    await Promise.all(
-      reload.map(async (t) => {
-        topicData[t.id] = await loadTopic(t.category, t.id, pickFile(t, l), t.flat ?? false);
-      }),
+    // only the words change. Neutral topics don't depend on the language. Reload
+    // topics that are already loaded *or* currently expanded (an expanded topic
+    // may still be loading via ensureLoaded, which discards its stale result).
+    const reload = topics.filter((t) => t.langs.length > 0 && (topicData[t.id] || expanded[t.id]));
+    const results = await Promise.allSettled(
+      reload.map(async (t) => ({
+        id: t.id,
+        data: await loadTopic(t.category, t.id, pickFile(t, l), t.flat ?? false),
+      })),
     );
+    if (gen !== langGen) return; // a newer switch superseded this one — drop these
+    for (const r of results) {
+      if (r.status === "fulfilled") topicData[r.value.id] = r.value.data;
+      else topicError = r.reason instanceof Error ? r.reason.message : String(r.reason);
+    }
   }
   const chooseLanguage = (l: string) => {
     langMenuOpen = null;
@@ -114,8 +127,12 @@
     if (loadingById[t.id]) return null;
     loadingById[t.id] = true;
     topicError = null;
+    const gen = langGen;
     try {
       const data = await loadTopic(t.category, t.id, pickFile(t, lang), t.flat ?? false);
+      // Language switched mid-flight: setLanguage reloads this topic with the new
+      // language (it's expanded), so drop this now-stale result.
+      if (gen !== langGen) return null;
       topicData[t.id] = data;
       return data;
     } catch (e) {
