@@ -30,9 +30,14 @@ export async function loadTopic(category: string, id: string, file: string, flat
   return (await res.json()) as Topic;
 }
 
-/** Representative file to load for a topic: en → de → first available. */
-export function pickFile(t: TopicSummary): string {
+/**
+ * File to load for a topic: the `preferred` language if the topic has it, else
+ * en → de → first available. Language-neutral topics have a single content file.
+ */
+export function pickFile(t: TopicSummary, preferred?: string): string {
   if (t.langs.length === 0) return t.files[0];
-  const lang = t.langs.includes("en") ? "en" : t.langs.includes("de") ? "de" : t.langs[0];
+  const lang =
+    (preferred && t.langs.includes(preferred) && preferred) ||
+    (t.langs.includes("en") ? "en" : t.langs.includes("de") ? "de" : t.langs[0]);
   return t.files.find((f) => f.startsWith(`${lang}.`)) ?? t.files[0];
 }

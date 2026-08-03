@@ -33,13 +33,50 @@
   // Per-group names mode (only groups with short/long entries show the dropdown).
   let namesMode = $state<Record<string, NamesMode>>({});
 
+  // Selected UI language: which variant of a localized topic to load. Neutral
+  // topics ignore it. Persisted in localStorage; default resolved in onMount.
+  let lang = $state<string>("en");
+  const LANG_STORAGE_KEY = "wordlists:lang";
+  // Endonyms for the picker; fallback is the upper-cased code.
+  const LANG_NAMES: Record<string, string> = {
+    de: "Deutsch", en: "English", fr: "Français", es: "Español", it: "Italiano",
+    pt: "Português", nl: "Nederlands", pl: "Polski", ja: "日本語", ko: "한국어", zh: "中文",
+  };
+  const langName = (l: string) => LANG_NAMES[l] ?? l.toUpperCase();
+  // Which language menu is open (by instance id), or null. Two pickers share the
+  // language but each has its own trigger.
+  let langMenuOpen = $state<string | null>(null);
+  // Bumped on every language switch. In-flight loads capture the value and
+  // discard their result if it changed meanwhile, so a slower fetch for an older
+  // language can't overwrite newer data.
+  let langGen = 0;
+
   let copied = $state(false);
 
   const key = (tid: string, gid: string) => `${tid}:${gid}`;
 
+  // Languages offered by the picker: every language any topic provides.
+  const availableLangs = $derived.by(() => {
+    const set = new Set<string>();
+    for (const t of topics) for (const l of t.langs) set.add(l);
+    return [...set].sort();
+  });
+
   onMount(async () => {
     try {
       topics = (await loadManifest()).topics;
+      // Default language: stored → browser → en → first available.
+      let stored: string | null = null;
+      try {
+        stored = localStorage.getItem(LANG_STORAGE_KEY);
+      } catch {
+        /* localStorage unavailable — ignore */
+      }
+      const browser = navigator.language?.slice(0, 2);
+      lang =
+        [stored, browser, "en"].find((l) => l && availableLangs.includes(l)) ??
+        availableLangs[0] ??
+        "en";
     } catch (e) {
       error = e instanceof Error ? e.message : String(e);
     } finally {
@@ -47,17 +84,61 @@
     }
   });
 
+  /** Switch language and reload the already-loaded localized topics. */
+  async function setLanguage(l: string) {
+    if (l === lang) return;
+    lang = l;
+    const gen = ++langGen;
+    topicError = null; // clear any stale error so a successful switch looks clean
+    try {
+      localStorage.setItem(LANG_STORAGE_KEY, l);
+    } catch {
+      /* localStorage unavailable — ignore */
+    }
+    // Selection is keyed by group id (identical across languages), so it stays;
+    // only the words change. Neutral topics don't depend on the language. Reload
+    // topics that are already loaded *or* currently expanded (an expanded topic
+    // may still be loading via ensureLoaded, which discards its stale result).
+    const reload = topics.filter((t) => t.langs.length > 0 && (topicData[t.id] || expanded[t.id]));
+    const results = await Promise.allSettled(
+      reload.map(async (t) => ({
+        id: t.id,
+        data: await loadTopic(t.category, t.id, pickFile(t, l), t.flat ?? false),
+      })),
+    );
+    if (gen !== langGen) return; // a newer switch superseded this one — drop these
+    for (const r of results) {
+      if (r.status === "fulfilled") topicData[r.value.id] = r.value.data;
+      else topicError = r.reason instanceof Error ? r.reason.message : String(r.reason);
+    }
+  }
+  const chooseLanguage = (l: string) => {
+    langMenuOpen = null;
+    void setLanguage(l);
+  };
+  function onWindowPointerDown(e: MouseEvent) {
+    if (langMenuOpen && !(e.target as Element)?.closest?.(".lang-picker")) langMenuOpen = null;
+  }
+  function onWindowKeyDown(e: KeyboardEvent) {
+    if (e.key === "Escape") langMenuOpen = null;
+  }
+
   async function ensureLoaded(t: TopicSummary): Promise<Topic | null> {
     if (topicData[t.id]) return topicData[t.id];
     if (loadingById[t.id]) return null;
     loadingById[t.id] = true;
     topicError = null;
+    const gen = langGen;
     try {
-      const data = await loadTopic(t.category, t.id, pickFile(t), t.flat ?? false);
+      const data = await loadTopic(t.category, t.id, pickFile(t, lang), t.flat ?? false);
+      // Language switched mid-flight: setLanguage reloads this topic with the new
+      // language (it's expanded), so drop this now-stale result.
+      if (gen !== langGen) return null;
       topicData[t.id] = data;
       return data;
     } catch (e) {
-      topicError = e instanceof Error ? e.message : String(e);
+      // Drop stale errors too: a newer language load may have already succeeded.
+      if (gen === langGen) topicError = e instanceof Error ? e.message : String(e);
       return null;
     } finally {
       loadingById[t.id] = false;
@@ -327,11 +408,49 @@
   }
 </script>
 
+<svelte:window onpointerdown={onWindowPointerDown} onkeydown={onWindowKeyDown} />
+
+{#snippet langPicker(id: string)}
+  {#if availableLangs.length > 1}
+    <div class="lang-picker">
+      <button
+        type="button"
+        class="lang-btn"
+        aria-haspopup="menu"
+        aria-expanded={langMenuOpen === id}
+        aria-label={`Language: ${langName(lang)}`}
+        onclick={() => (langMenuOpen = langMenuOpen === id ? null : id)}
+      >🌐</button>
+      {#if langMenuOpen === id}
+        <ul class="lang-menu" role="menu" aria-label="Language">
+          {#each availableLangs as l (l)}
+            <li role="none">
+              <button
+                type="button"
+                role="menuitemradio"
+                aria-checked={l === lang}
+                class:selected={l === lang}
+                onclick={() => chooseLanguage(l)}
+              >
+                <span class="lang-code">{l.toUpperCase()}</span>
+                <span class="lang-name">{langName(l)}</span>
+              </button>
+            </li>
+          {/each}
+        </ul>
+      {/if}
+    </div>
+  {/if}
+{/snippet}
+
 <main>
   <div class="layout" class:single={loading || error || topics.length === 0}>
     <div class="col-topics">
       <header>
-        <h1>Custom Wordlists</h1>
+        <div class="title-row">
+          <h1>Custom Wordlists</h1>
+          <div class="lang-header-slot">{@render langPicker("header")}</div>
+        </div>
         <p class="tagline">
           Build custom word lists for
           <a href="https://skribbl.io" target="_blank" rel="noopener noreferrer">skribbl.io</a>
@@ -498,9 +617,12 @@
       <section class="output" aria-label="Output">
         <div class="output-head">
           <h2>Output</h2>
-          <button type="button" onclick={copy} disabled={included.length === 0}>
-            {copied ? "Copied!" : "Copy"}
-          </button>
+          <div class="head-actions">
+            {@render langPicker("output")}
+            <button type="button" onclick={copy} disabled={included.length === 0}>
+              {copied ? "Copied!" : "Copy"}
+            </button>
+          </div>
         </div>
 
         {#if merged.length === 0}
