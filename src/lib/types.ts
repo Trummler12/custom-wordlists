@@ -10,9 +10,11 @@ export interface TopicSummary {
   icon: string | null;
   /** Category path from topics/ (e.g. "gaming" or "gaming/pokemon"); "" = none. */
   category: string;
+  /** True when the file sits loose in the category folder (no id-named folder). */
+  flat?: boolean;
   /** Available language codes (e.g. ["de","en"]); empty = language-neutral. */
   langs: string[];
-  /** JSON filenames in the topic folder; the frontend fetches one of these. */
+  /** JSON filenames for the topic; the frontend fetches one of these. */
   files: string[];
   groupCount: number;
   wordCount: number;
@@ -24,12 +26,15 @@ export interface Manifest {
   topics: TopicSummary[];
 }
 
+/** A word entry: a plain string, or a short/long name pair (for the Names mode). */
+export type Word = string | { short: string; long: string };
+
 /** A group of words: either a flat `words` list or ordered fame `tiers`. */
 export interface Group {
   id: string;
   title: string;
-  words?: string[];
-  tiers?: string[][];
+  words?: Word[];
+  tiers?: Word[][];
 }
 
 /** A named bundle of group ids within a topic. */
@@ -47,6 +52,10 @@ export interface Topic {
   description?: string;
   /** Present only on translated variants; absent on language-neutral files. */
   lang?: string;
+  /** ISO date (YYYY-MM-DD) the list's contents last changed. */
+  lastUpdated?: string;
+  /** ISO date (YYYY-MM-DD) the list was last verified against its source. */
+  lastChecked?: string;
   groups: Group[];
   presets?: Preset[];
 }

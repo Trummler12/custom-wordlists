@@ -1,0 +1,21 @@
+{
+  "id": "dragon-ball-z",
+  "lang": "en",
+  "title": "Dragon Ball Z",
+  "icon": "🐉",
+  "description": "Dragon Ball Z characters (English names). Fame tiers by recognizability (tier 0 = most iconic).",
+  "groups": [
+    {
+      "id": "characters",
+      "title": "Characters",
+      "tiers": [
+        ["Goku", "Vegeta", "Gohan", "Piccolo", "Frieza", "Cell", "Majin Buu", "Krillin"],
+        ["Bulma", "Trunks", "Goten", "Master Roshi", "Tien Shinhan", "Android 18", "Android 17", "Mr. Satan"],
+        ["Yamcha", "Chiaotzu", "King Kai", "Nappa", "Raditz", "Broly", "Gotenks", "Beerus"]
+      ]
+    }
+  ],
+  "presets": [
+    { "id": "all", "title": "All characters", "groups": ["characters"] }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "id": "elements",
+  "lang": "en",
+  "title": "Chemical Elements",
+  "icon": "⚗️",
+  "description": "The chemical elements (English names). Fame tiers by everyday recognizability (tier 0 = most familiar); the final tier is the obscure lanthanides/actinides and superheavy synthetics.",
+  "groups": [
+    {
+      "id": "elements",
+      "title": "Elements",
+      "tiers": [
+        ["Hydrogen", "Helium", "Carbon", "Nitrogen", "Oxygen", "Neon", "Sodium", "Magnesium", "Aluminium", "Silicon", "Phosphorus", "Sulfur", "Chlorine", "Potassium", "Calcium", "Iron", "Copper", "Zinc", "Silver", "Tin", "Gold", "Mercury", "Lead", "Uranium"],
+        ["Lithium", "Beryllium", "Boron", "Fluorine", "Argon", "Titanium", "Chromium", "Manganese", "Cobalt", "Nickel", "Arsenic", "Bromine", "Krypton", "Palladium", "Cadmium", "Iodine", "Xenon", "Barium", "Tungsten", "Iridium", "Platinum", "Radon", "Radium", "Plutonium"],
+        ["Scandium", "Vanadium", "Gallium", "Germanium", "Selenium", "Rubidium", "Strontium", "Yttrium", "Zirconium", "Niobium", "Molybdenum", "Technetium", "Ruthenium", "Rhodium", "Indium", "Antimony", "Tellurium", "Caesium", "Lanthanum", "Cerium", "Tantalum", "Rhenium", "Osmium", "Thallium", "Bismuth", "Polonium", "Francium", "Actinium", "Thorium", "Neptunium"],
+        ["Praseodymium", "Neodymium", "Promethium", "Samarium", "Europium", "Gadolinium", "Terbium", "Dysprosium", "Holmium", "Erbium", "Thulium", "Ytterbium", "Lutetium", "Hafnium", "Astatine", "Protactinium", "Americium", "Curium", "Berkelium", "Californium", "Einsteinium", "Fermium", "Mendelevium", "Nobelium", "Lawrencium", "Rutherfordium", "Dubnium", "Seaborgium", "Bohrium", "Hassium", "Meitnerium", "Darmstadtium", "Roentgenium", "Copernicium", "Nihonium", "Flerovium", "Moscovium", "Livermorium", "Tennessine", "Oganesson"]
+      ]
+    }
+  ],
+  "presets": [
+    { "id": "all", "title": "All elements", "groups": ["elements"] }
+  ]
+}

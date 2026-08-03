@@ -2,7 +2,9 @@
   "id": "league-of-legends",
   "title": "League of Legends",
   "icon": "⚔️",
-  "description": "League of Legends champion names (language-neutral). Full roster (through early 2025), split into fame tiers by broad recognizability (tier 0 = most famous). The final tier is the long tail of less-mainstream champions, where fame differences are small. Tier sizes are uneven by design — they follow recognizability, not fixed steps.",
+  "description": "League of Legends champion names (language-neutral). Complete live roster (verified against Riot Data Dragon), split into fame tiers by broad recognizability (tier 0 = most famous). The final tier is the long tail of less-mainstream and newest champions, where fame differences are small. Tier sizes are uneven by design — they follow recognizability, not fixed steps.",
+  "lastUpdated": "2026-08-02",
+  "lastChecked": "2026-08-02",
   "groups": [
     {
       "id": "champions",
@@ -13,7 +15,7 @@
         ["Ekko", "Sett", "Sylas", "Irelia", "Malphite", "Leona", "Veigar", "Sona", "Fizz", "Diana", "Fiora", "Jax", "Warwick", "Twisted Fate", "Vladimir", "Volibear", "Pyke", "Wukong"],
         ["Soraka", "Nautilus", "Orianna", "Xayah", "Rakan", "Gnar", "Kayn", "Aatrox", "Camille", "Viego", "Gwen", "Senna", "Samira", "Aphelios", "Seraphine", "Lulu", "Nami", "Nidalee", "Evelynn", "Shen"],
         ["Mordekaiser", "Renekton", "Tristana", "Tryndamere", "Annie", "Amumu", "Janna", "Ryze", "Karthus", "Singed", "Gangplank", "Graves", "Kindred", "Zoe", "Qiyana", "Taliyah", "Ziggs", "Rammus"],
-        ["Akshan", "Alistar", "Ambessa", "Anivia", "Aurelion Sol", "Aurora", "Azir", "Bard", "Bel'Veth", "Brand", "Braum", "Briar", "Cassiopeia", "Cho'Gath", "Corki", "Dr. Mundo", "Elise", "Fiddlesticks", "Galio", "Gragas", "Hecarim", "Heimerdinger", "Hwei", "Illaoi", "Ivern", "Jarvan IV", "Kalista", "Karma", "Kassadin", "Kayle", "Kennen", "Kha'Zix", "Kled", "Kog'Maw", "K'Sante", "LeBlanc", "Lillia", "Lissandra", "Malzahar", "Maokai", "Mel", "Milio", "Naafiri", "Neeko", "Nilah", "Nocturne", "Nunu & Willump", "Olaf", "Ornn", "Pantheon", "Poppy", "Quinn", "Rek'Sai", "Rell", "Renata Glasc", "Rengar", "Rumble", "Sejuani", "Shaco", "Shyvana", "Sion", "Sivir", "Skarner", "Smolder", "Swain", "Syndra", "Tahm Kench", "Talon", "Taric", "Trundle", "Twitch", "Udyr", "Urgot", "Varus", "Vel'Koz", "Vex", "Xerath", "Xin Zhao", "Yorick", "Yuumi", "Zac", "Zeri", "Zilean", "Zyra"]
+        ["Akshan", "Alistar", "Ambessa", "Anivia", "Aurelion Sol", "Aurora", "Azir", "Bard", "Bel'Veth", "Brand", "Braum", "Briar", "Cassiopeia", "Cho'Gath", "Corki", "Dr. Mundo", "Elise", "Fiddlesticks", "Galio", "Gragas", "Hecarim", "Heimerdinger", "Hwei", "Illaoi", "Ivern", "Jarvan IV", "Kalista", "Karma", "Kassadin", "Kayle", "Kennen", "Kha'Zix", "Kled", "Kog'Maw", "K'Sante", "LeBlanc", "Lillia", "Lissandra", "Locke", "Malzahar", "Maokai", "Mel", "Milio", "Naafiri", "Neeko", "Nilah", "Nocturne", "Nunu & Willump", "Olaf", "Ornn", "Pantheon", "Poppy", "Quinn", "Rek'Sai", "Rell", "Renata Glasc", "Rengar", "Rumble", "Sejuani", "Shaco", "Shyvana", "Sion", "Sivir", "Skarner", "Smolder", "Swain", "Syndra", "Tahm Kench", "Talon", "Taric", "Trundle", "Twitch", "Udyr", "Urgot", "Varus", "Vel'Koz", "Vex", "Xerath", "Xin Zhao", "Yorick", "Yunara", "Yuumi", "Zaahen", "Zac", "Zeri", "Zilean", "Zyra"]
       ]
     }
   ],

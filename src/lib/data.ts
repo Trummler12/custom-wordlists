@@ -12,10 +12,17 @@ export async function loadManifest(): Promise<Manifest> {
   return (await res.json()) as Manifest;
 }
 
-/** Load one topic data file (data/topics/<category>/<id>/<file>). */
-export async function loadTopic(category: string, id: string, file: string): Promise<Topic> {
+/**
+ * Load one topic data file. Foldered topics live at
+ * `data/topics/<category>/<id>/<file>`; flat topics sit loose in the category at
+ * `data/topics/<category>/<file>` (no id-named folder).
+ */
+export async function loadTopic(category: string, id: string, file: string, flat = false): Promise<Topic> {
   // Drop empty category segments so an uncategorized topic has no double slash.
-  const path = ["topics", ...category.split("/").filter(Boolean), id, file].join("/");
+  const segments = ["topics", ...category.split("/").filter(Boolean)];
+  if (!flat) segments.push(id);
+  segments.push(file);
+  const path = segments.join("/");
   const url = `${DATA_BASE}${path}`;
   const label = [category, id].filter(Boolean).join("/");
   const res = await fetch(url);

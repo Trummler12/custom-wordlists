@@ -3,6 +3,11 @@
 @import "./themes.css";
 
 /* Base */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
 body {
   margin: 0;
   font-family: var(--font-sans);
@@ -12,10 +17,13 @@ a {
   color: inherit;
 }
 
-/* App shell */
+/* The document scrolls as a whole — scroll anywhere to move the topic list; only
+   the output's chips capture the wheel (they have their own overflow). The header
+   lives in the left column so the output panel can span the full viewport height
+   from the very top. */
 main {
   max-width: 60rem;
-  margin: 2.5rem auto;
+  margin: var(--output-gap) auto;
   padding: 0 1rem;
 }
 h1 {
@@ -26,20 +34,33 @@ h2 {
   margin: 0 0 0.5rem;
 }
 .tagline {
-  margin-top: 0;
+  margin: 0;
   color: var(--muted);
 }
 .status.error,
 .warn {
   color: var(--danger);
 }
+header {
+  margin-bottom: 1rem;
+}
 
-/* Two-column layout (stacks on narrow screens) */
+/* Two-column layout (stacks on narrow screens). */
 .layout {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 1.5rem;
   align-items: start;
+}
+/* Left column: header + topic tree. min-width:0 keeps long names from pushing
+   the grid track wider than its 1fr share. */
+.col-topics {
+  min-width: 0;
+}
+/* While loading / on error / with no topics the output column isn't rendered —
+   collapse to one column so the header + status aren't stuck at half width. */
+.layout.single {
+  grid-template-columns: 1fr;
 }
 @media (max-width: 40rem) {
   .layout {
@@ -47,14 +68,42 @@ h2 {
   }
 }
 
+/* Output panel: sticky and always full viewport height (minus --output-gap top +
+   bottom), independent of the word count. The tall left column keeps the sticky
+   pinned through the whole page scroll. Flex column — the chips grow and scroll
+   inside, the counter stays at the bottom. */
+.output {
+  position: sticky;
+  top: var(--output-gap);
+  align-self: start;
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 2 * var(--output-gap));
+  min-height: 0;
+}
+@media (max-width: 40rem) {
+  /* Stacked: don't pin the output; size it to its content. */
+  .output {
+    position: static;
+    height: auto;
+  }
+  .chips {
+    flex: none;
+    max-height: min(24rem, calc(100vh - 6rem));
+  }
+}
+
 /* Topic list */
 .category {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  margin: 1rem 0 0.25rem;
+  gap: 0.4rem;
+  margin: var(--gap-before-cat) 0 var(--gap-after-cat);
 }
-.category:first-of-type {
+/* Only the first TOP-LEVEL category hugs the "Topics" heading. Nested first
+   children (e.g. Science → Chemistry) keep the normal above-gap so they aren't
+   cramped against their parent header. */
+.topics > .category:first-of-type {
   margin-top: 0.25rem;
 }
 .category-title {
@@ -69,6 +118,13 @@ h2 {
 }
 .category .meta {
   font-size: 0.75rem;
+}
+/* Nested tree level: indent a category's topics + subcategories, with a guide.
+   --tree-step (globals.css) is the total indent per level, split around the line. */
+.cat-children {
+  margin-left: calc(var(--tree-step) / 2);
+  padding-left: calc(var(--tree-step) / 2);
+  border-left: 1px solid var(--border);
 }
 .topics ul {
   list-style: none;
@@ -117,13 +173,24 @@ h2 {
 }
 .group {
   display: flex;
-  align-items: baseline;
+  align-items: center;
   gap: 0.5rem;
   padding: 0.25rem 0.2rem;
+}
+.group-label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
   cursor: pointer;
 }
 .group .title {
   font-weight: 500;
+}
+/* Per-group Names dropdown (short / long / both); only groups with name pairs. */
+.names-mode {
+  font-size: 0.75rem;
+  padding: 0 0.15rem;
+  color: var(--muted);
 }
 
 /* Per-group fame-depth slider — a custom track so the snap markers can sit on
@@ -209,12 +276,19 @@ h2 {
 .chips {
   display: flex;
   flex-wrap: wrap;
+  align-content: flex-start; /* pack chip rows at the top, don't spread them */
+  align-items: flex-start; /* keep each chip its natural height, not stretched */
   gap: 0.35rem;
   padding: 0.6rem;
   border: 1px solid var(--panel-border);
   border-radius: var(--radius);
-  max-height: 24rem;
+  /* Grow to fill the output panel; min-height:0 lets the chips scroll inside the
+     flex column instead of stretching it. The counter below stays visible. */
+  flex: 1 1 auto;
+  min-height: 0;
   overflow-y: auto;
+  /* The chips box is the one area whose wheel must NOT chain to the page scroll. */
+  overscroll-behavior: contain;
   cursor: text;
 }
 .chip {

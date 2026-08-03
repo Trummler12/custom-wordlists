@@ -1,8 +1,10 @@
-// Scans data/topics/**/<topic>/<file>.json and emits data/index.json — a light
-// manifest the frontend loads first so it can render the topic tree without
-// downloading every topic. A "topic" is any directory that directly holds JSON
-// files; the folders above it form an arbitrarily deep category path (e.g.
-// "gaming" or "gaming/pokemon"). Generated file; never hand-edited. See PLANNING §4.1.
+// Scans data/topics and emits data/index.json — a light manifest the frontend
+// loads first so it can render the topic tree without downloading every topic.
+// A topic is either a folder that holds JSON files and no subfolders (id = folder
+// name; neutral <content>.json or <lang>.json variants), or a single JSON file
+// sitting loose in a category folder that also has subfolders (id = file stem,
+// `flat`). Folders above a topic form an arbitrarily deep category path (e.g.
+// "gaming" or "sports/olympia"). Generated file; never hand-edited. See PLANNING §4.1.
 import { readFile, writeFile, readdir } from "node:fs/promises";
 import { join, dirname, basename } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -30,20 +32,29 @@ function pickRepresentative(variants) {
 }
 
 /**
- * Recursively find topics under data/topics. A directory that directly holds
- * JSON files is a topic (a leaf — we don't recurse into it); anything above is
- * a category segment. Returns `{ segments }` per topic (path from topics/ down
- * to and including the topic folder), sorted for determinism.
+ * Recursively find topics under data/topics. A folder with JSON files and no
+ * subfolders is a topic leaf (id = folder name). A folder that also has
+ * subfolders is a category: each loose JSON file in it is a single-file topic
+ * (id = file stem, `flat`), and its subfolders are walked. Folders above a
+ * topic are category segments. Returns `{ segments, files, flat }` per topic,
+ * sorted for determinism.
  */
 async function collectTopics(segments) {
   const dir = join(TOPICS_DIR, ...segments);
   const entries = await readdir(dir, { withFileTypes: true });
-  const jsonFiles = entries.filter((e) => e.isFile() && e.name.endsWith(".json"));
-  if (segments.length > 0 && jsonFiles.length > 0) {
-    return [{ segments, files: jsonFiles.map((e) => e.name).sort() }];
-  }
+  const jsonFiles = entries.filter((e) => e.isFile() && e.name.endsWith(".json")).map((e) => e.name).sort();
   const subDirs = entries.filter((e) => e.isDirectory()).map((e) => e.name).sort();
+
+  // Leaf: JSON files and no subfolders → one topic named after the folder.
+  if (segments.length > 0 && jsonFiles.length > 0 && subDirs.length === 0) {
+    return [{ segments, files: jsonFiles, flat: false }];
+  }
+
+  // Category: each loose JSON file is a single-file topic (id = stem); recurse.
   const out = [];
+  for (const file of jsonFiles) {
+    out.push({ segments: [...segments, basename(file, ".json")], files: [file], flat: true });
+  }
   for (const sub of subDirs) out.push(...(await collectTopics([...segments, sub])));
   return out;
 }
@@ -72,17 +83,27 @@ async function buildIndex() {
   }
 
   const topics = [];
-  for (const { segments, files } of found) {
+  for (const { segments, files, flat } of found) {
     const id = segments[segments.length - 1];
     const category = segments.slice(0, -1).join("/"); // "" = uncategorized
-    const relPath = segments.join("/");
-    const variants = await readVariants(join(TOPICS_DIR, ...segments), files, relPath);
+    // Flat topics live loose in the category folder; foldered ones in a folder
+    // named after their id.
+    const fileSegments = flat ? segments.slice(0, -1) : segments;
+    const relPath = fileSegments.join("/");
+    const variants = await readVariants(join(TOPICS_DIR, ...fileSegments), files, relPath);
     if (variants.length === 0) continue;
+    // A flat topic is a single loose file. Reject it when it looks like a
+    // localized variant — either a language-code filename (id would be "en"/"de")
+    // or a declared `lang` field — matching validate-data. Fail fast.
+    if (flat && (LANG_RE.test(id) || variants[0].data.lang)) {
+      throw new Error(`data/topics/${relPath}/${variants[0].file}: a language variant must live in its own topic folder, not loose in a category`);
+    }
     const rep = pickRepresentative(variants);
     const langs = variants.map((v) => v.lang).filter((l) => l !== null).sort();
     topics.push({
       id,
       category,
+      ...(flat ? { flat: true } : {}),
       title: rep.data.title,
       icon: rep.data.icon ?? null,
       langs, // empty array = language-neutral

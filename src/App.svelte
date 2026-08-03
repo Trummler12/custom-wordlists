@@ -1,7 +1,9 @@
 <script lang="ts">
   import { onMount } from "svelte";
   import { loadManifest, loadTopic, pickFile } from "./lib/data";
-  import type { TopicSummary, Topic, Group } from "./lib/types";
+  import type { TopicSummary, Topic, Group, Word } from "./lib/types";
+
+  type NamesMode = "short" | "long" | "both";
 
   // ─── Tunables (configuration) ──────────────────────────────────────────────
   // skribbl's custom-wordlist rules (PLANNING §4/§6.2). Only game preset for now.
@@ -24,9 +26,12 @@
   let topicError = $state<string | null>(null);
 
   let expanded = $state<Record<string, boolean>>({});
+  let catExpanded = $state<Record<string, boolean>>({}); // category node open/closed, by path
   let selected = $state<Record<string, boolean>>({}); // flat groups only, key `${topicId}:${groupId}`
   // Per-group fame depth (top-N tiers), keyed like `selected`. Absent/0 = unselected.
   let depthByGroup = $state<Record<string, number>>({});
+  // Per-group names mode (only groups with short/long entries show the dropdown).
+  let namesMode = $state<Record<string, NamesMode>>({});
 
   let copied = $state(false);
 
@@ -48,7 +53,7 @@
     loadingById[t.id] = true;
     topicError = null;
     try {
-      const data = await loadTopic(t.category, t.id, pickFile(t));
+      const data = await loadTopic(t.category, t.id, pickFile(t), t.flat ?? false);
       topicData[t.id] = data;
       return data;
     } catch (e) {
@@ -74,19 +79,51 @@
 
   const tierCount = (g: Group) => g.tiers?.length ?? 0;
 
-  const groupTotal = (g: Group): number =>
-    g.tiers ? g.tiers.reduce((n, tier) => n + tier.length, 0) : g.words?.length ?? 0;
+  // --- Names mode (short / long / both) --------------------------------------
+  // A group's entries are plain strings or { short, long } pairs. A group with
+  // any pair shows a per-group Names dropdown; the mode picks which form(s) to
+  // emit. Counts and output dedup identical rendered strings (e.g. two "Kyle"s).
+  const modeOf = (k: string): NamesMode => namesMode[k] ?? "long";
 
-  const groupSelCount = (tid: string, g: Group): number => {
-    const k = key(tid, g.id);
-    if (g.tiers) {
-      const d = depthByGroup[k] ?? 0;
-      let n = 0;
-      for (let i = 0; i < d; i++) n += g.tiers[i].length;
-      return n;
+  function renderEntry(e: Word, mode: NamesMode): string[] {
+    if (typeof e === "string") return [e];
+    if (mode === "short") return [e.short];
+    if (mode === "long") return [e.long];
+    return e.short === e.long ? [e.short] : [e.short, e.long];
+  }
+  const groupHasNames = (g: Group): boolean =>
+    g.tiers
+      ? g.tiers.some((tier) => tier.some((e) => typeof e !== "string"))
+      : (g.words ?? []).some((e) => typeof e !== "string");
+
+  /** Count of distinct rendered strings for a list of entries in a mode (no array). */
+  function renderCount(entries: Word[], mode: NamesMode): number {
+    const seen = new Set<string>();
+    for (const e of entries) for (const w of renderEntry(e, mode)) seen.add(w);
+    return seen.size;
+  }
+
+  // Groups are immutable after load, so cache each group's flattened entries
+  // instead of re-flattening its tiers on every render.
+  const entriesCache = new WeakMap<Group, Word[]>();
+  const groupEntries = (g: Group): Word[] => {
+    let entries = entriesCache.get(g);
+    if (!entries) {
+      entries = g.tiers ? g.tiers.flat() : g.words ?? [];
+      entriesCache.set(g, entries);
     }
-    return selected[k] ? g.words?.length ?? 0 : 0;
+    return entries;
   };
+  function selectedEntries(tid: string, g: Group): Word[] {
+    const k = key(tid, g.id);
+    if (g.tiers) return g.tiers.slice(0, depthByGroup[k] ?? 0).flat();
+    return selected[k] ? g.words ?? [] : [];
+  }
+
+  const groupTotal = (tid: string, g: Group): number =>
+    renderCount(groupEntries(g), modeOf(key(tid, g.id)));
+  const groupSelCount = (tid: string, g: Group): number =>
+    renderCount(selectedEntries(tid, g), modeOf(key(tid, g.id)));
 
   const groupFull = (tid: string, g: Group): boolean => {
     const k = key(tid, g.id);
@@ -100,6 +137,12 @@
 
   const topicSelCount = (t: TopicSummary): number =>
     groupsOf(t).reduce((n, g) => n + groupSelCount(t.id, g), 0);
+  // Total available for a topic: live (mode-aware) once loaded, else the manifest
+  // entry count as a baseline.
+  const topicTotal = (t: TopicSummary): number => {
+    const gs = groupsOf(t);
+    return gs.length ? gs.reduce((n, g) => n + groupTotal(t.id, g), 0) : t.wordCount;
+  };
   const topicFull = (t: TopicSummary): boolean => {
     const gs = groupsOf(t);
     return gs.length > 0 && gs.every((g) => groupFull(t.id, g));
@@ -107,7 +150,7 @@
   const topicPartial = (t: TopicSummary): boolean =>
     topicSelCount(t) > 0 && !topicFull(t);
 
-  const catTotal = (ts: TopicSummary[]) => ts.reduce((n, t) => n + t.wordCount, 0);
+  const catTotal = (ts: TopicSummary[]) => ts.reduce((n, t) => n + topicTotal(t), 0);
   const catSel = (ts: TopicSummary[]) => ts.reduce((n, t) => n + topicSelCount(t), 0);
   const catFull = (ts: TopicSummary[]) => ts.every(topicFull);
   const catPartial = (ts: TopicSummary[]) => catSel(ts) > 0 && !catFull(ts);
@@ -184,21 +227,50 @@
     ts.forEach((t, i) => loaded[i] && setTopic(t, on));
   }
 
-  // Group topics by their category path for the tree (topics keep manifest order).
-  const byCategory = $derived.by(() => {
-    const map = new Map<string, TopicSummary[]>();
+  // Build a nested category tree from topic.category paths (topics keep manifest
+  // order; categories appear first-seen). Each node renders as one collapsible
+  // level showing only its own segment, so "gaming/pokemon/pokemon" nests inside
+  // "gaming/pokemon" instead of repeating the whole path as a flat header.
+  type CatNode = {
+    name: string;
+    path: string;
+    topics: TopicSummary[];
+    children: CatNode[];
+    /** All topics under this node (own + descendants); filled once per tree build. */
+    all: TopicSummary[];
+  };
+  // All topics under a category node — precomputed once here so category rows don't
+  // re-flatten their subtree on every render.
+  const fillAll = (node: CatNode): TopicSummary[] =>
+    (node.all = node.topics.concat(...node.children.map(fillAll)));
+  const tree = $derived.by(() => {
+    const root: CatNode = { name: "", path: "", topics: [], children: [], all: [] };
     for (const t of topics) {
-      const list = map.get(t.category) ?? [];
-      list.push(t);
-      map.set(t.category, list);
+      let node = root;
+      let path = "";
+      for (const seg of t.category.split("/").filter(Boolean)) {
+        path = path ? `${path}/${seg}` : seg;
+        let child = node.children.find((c) => c.name === seg);
+        if (!child) {
+          child = { name: seg, path, topics: [], children: [], all: [] };
+          node.children.push(child);
+        }
+        node = child;
+      }
+      node.topics.push(t);
     }
-    return [...map.entries()];
+    fillAll(root);
+    return root;
   });
+
+  // Default expansion: only top-level categories are open, so the second level
+  // (e.g. gaming → pokemon) shows up but its contents stay collapsed until the
+  // user drills in. A manual toggle (catExpanded) overrides the default.
+  const catDepth = (node: CatNode) => node.path.split("/").length - 1;
+  const catOpen = (node: CatNode) => catExpanded[node.path] ?? catDepth(node) === 0;
 
   const titleCase = (seg: string) =>
     seg.split("-").map((w) => w.charAt(0).toUpperCase() + w.slice(1)).join(" ");
-  const formatCategory = (c: string) =>
-    c === "" ? "Uncategorized" : c.split("/").map(titleCase).join(" / ");
 
   // Aggregate selected groups' words (top-N tiers), de-duplicated, manifest order.
   const merged = $derived.by(() => {
@@ -208,20 +280,13 @@
       const data = topicData[t.id];
       if (!data) continue;
       for (const g of data.groups) {
-        const k = key(t.id, g.id);
-        let words: string[];
-        if (g.tiers) {
-          const d = depthByGroup[k] ?? 0;
-          if (d <= 0) continue;
-          words = g.tiers.slice(0, d).flat();
-        } else {
-          if (!selected[k]) continue;
-          words = g.words ?? [];
-        }
-        for (const w of words) {
-          if (!seen.has(w)) {
-            seen.add(w);
-            out.push(w);
+        const mode = modeOf(key(t.id, g.id));
+        for (const e of selectedEntries(t.id, g)) {
+          for (const w of renderEntry(e, mode)) {
+            if (!seen.has(w)) {
+              seen.add(w);
+              out.push(w);
+            }
           }
         }
       }
@@ -263,46 +328,34 @@
 </script>
 
 <main>
-  <header>
-    <h1>Custom Wordlists</h1>
-    <p class="tagline">
-      Build custom word lists for
-      <a href="https://skribbl.io" target="_blank" rel="noopener noreferrer">skribbl.io</a>
-      and similar word games.
-    </p>
-  </header>
+  <div class="layout" class:single={loading || error || topics.length === 0}>
+    <div class="col-topics">
+      <header>
+        <h1>Custom Wordlists</h1>
+        <p class="tagline">
+          Build custom word lists for
+          <a href="https://skribbl.io" target="_blank" rel="noopener noreferrer">skribbl.io</a>
+          and similar word games.
+        </p>
+      </header>
 
-  {#if loading}
-    <p class="status">Loading topics…</p>
-  {:else if error}
-    <p class="status error">Could not load topics: {error}</p>
-  {:else if topics.length === 0}
-    <p class="status">No topics available yet.</p>
-  {:else}
-    <div class="layout">
-      <section class="topics" aria-label="Topics">
+      {#if loading}
+        <p class="status">Loading topics…</p>
+      {:else if error}
+        <p class="status error">Could not load topics: {error}</p>
+      {:else if topics.length === 0}
+        <p class="status">No topics available yet.</p>
+      {:else}
+        <section class="topics" aria-label="Topics">
         <h2>Topics</h2>
-        {#each byCategory as [category, catTopics] (category)}
-          {@const catId = "cat-" + (category.replace(/\//g, "-") || "root")}
-          <div class="category">
-            <input
-              type="checkbox"
-              id={catId}
-              checked={catFull(catTopics)}
-              use:setIndeterminate={catPartial(catTopics)}
-              onchange={() => toggleCategory(catTopics)}
-            />
-            <h3 class="category-title"><label for={catId}>{formatCategory(category)}</label></h3>
-            <span class="meta">{catSel(catTopics)} of {catTotal(catTopics)} words</span>
-          </div>
-          <ul>
-            {#each catTopics as t (t.id)}
-            <li class="topic-item">
+        {#snippet topicRow(t: TopicSummary)}
+            <div class="topic-item">
               <div class="topic-row">
                 <button
                   type="button"
                   class="expander"
                   aria-expanded={!!expanded[t.id]}
+                  aria-controls={`groups-${t.id}`}
                   aria-label={(expanded[t.id] ? "Collapse " : "Expand ") + t.title}
                   onclick={() => toggleExpand(t)}
                 >
@@ -318,26 +371,40 @@
                   <span class="icon" aria-hidden="true">{t.icon ?? "•"}</span>
                   <span class="title">{t.title}</span>
                   <span class="meta">
-                    {#if loadingById[t.id] && !topicData[t.id]}loading…{:else}{topicSelCount(t)} of {t.wordCount} words{/if}
+                    {#if loadingById[t.id] && !topicData[t.id]}loading…{:else}{topicSelCount(t)} of {topicTotal(t)} words{/if}
                   </span>
                 </label>
               </div>
 
               {#if expanded[t.id] && topicData[t.id]}
-                <ul class="groups">
+                <ul class="groups" id={`groups-${t.id}`}>
                   {#each groupsOf(t) as g (g.id)}
                     {@const k = key(t.id, g.id)}
                     <li>
-                      <label class="group">
-                        <input
-                          type="checkbox"
-                          checked={groupFull(t.id, g)}
-                          use:setIndeterminate={groupPartial(t.id, g)}
-                          onchange={() => toggleGroup(t.id, g)}
-                        />
-                        <span class="title">{g.title}</span>
-                        <span class="meta">{groupSelCount(t.id, g)} of {groupTotal(g)} words</span>
-                      </label>
+                      <div class="group">
+                        <label class="group-label">
+                          <input
+                            type="checkbox"
+                            checked={groupFull(t.id, g)}
+                            use:setIndeterminate={groupPartial(t.id, g)}
+                            onchange={() => toggleGroup(t.id, g)}
+                          />
+                          <span class="title">{g.title}</span>
+                        </label>
+                        {#if groupHasNames(g)}
+                          <select
+                            class="names-mode"
+                            aria-label={`Name form for ${g.title}`}
+                            value={modeOf(k)}
+                            onchange={(e) => (namesMode[k] = e.currentTarget.value as NamesMode)}
+                          >
+                            <option value="short">short</option>
+                            <option value="long">long</option>
+                            <option value="both">both</option>
+                          </select>
+                        {/if}
+                        <span class="meta">{groupSelCount(t.id, g)} of {groupTotal(t.id, g)} words</span>
+                      </div>
                       {#if g.tiers && g.tiers.length > 1}
                         {@const d = depthByGroup[k] ?? 0}
                         {@const pos = snapPositions(g)}
@@ -383,15 +450,51 @@
                   {/each}
                 </ul>
               {/if}
-            </li>
-            {/each}
-          </ul>
-        {/each}
+            </div>
+        {/snippet}
+
+        {#snippet categoryNode(node: CatNode)}
+          {@const at = node.all}
+          {@const catId = "cat-" + (node.path.replace(/\//g, "-") || "root")}
+          <div class="category">
+            <button
+              type="button"
+              class="expander"
+              aria-expanded={catOpen(node)}
+              aria-controls={`${catId}-children`}
+              aria-label={(catOpen(node) ? "Collapse " : "Expand ") + titleCase(node.name)}
+              onclick={() => (catExpanded[node.path] = !catOpen(node))}
+            >
+              {catOpen(node) ? "▾" : "▸"}
+            </button>
+            <input
+              type="checkbox"
+              id={catId}
+              checked={catFull(at)}
+              use:setIndeterminate={catPartial(at)}
+              onchange={() => toggleCategory(at)}
+            />
+            <h3 class="category-title"><label for={catId}>{titleCase(node.name)}</label></h3>
+            <span class="meta">{catSel(at)} of {catTotal(at)} words</span>
+          </div>
+          {#if catOpen(node)}
+            <div class="cat-children" id={`${catId}-children`}>
+              {#each node.topics as t (t.id)}{@render topicRow(t)}{/each}
+              {#each node.children as child (child.path)}{@render categoryNode(child)}{/each}
+            </div>
+          {/if}
+        {/snippet}
+
+        {#each tree.topics as t (t.id)}{@render topicRow(t)}{/each}
+        {#each tree.children as node (node.path)}{@render categoryNode(node)}{/each}
         {#if topicError}
           <p class="status error">{topicError}</p>
         {/if}
-      </section>
+        </section>
+      {/if}
+    </div>
 
+    {#if !loading && !error && topics.length > 0}
       <section class="output" aria-label="Output">
         <div class="output-head">
           <h2>Output</h2>
@@ -436,6 +539,6 @@
           {/if}
         {/if}
       </section>
-    </div>
-  {/if}
+    {/if}
+  </div>
 </main>
