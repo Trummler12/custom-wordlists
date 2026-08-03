@@ -92,7 +92,9 @@
     return e.short === e.long ? [e.short] : [e.short, e.long];
   }
   const groupHasNames = (g: Group): boolean =>
-    (g.tiers ? g.tiers.flat() : g.words ?? []).some((e) => typeof e !== "string");
+    g.tiers
+      ? g.tiers.some((tier) => tier.some((e) => typeof e !== "string"))
+      : (g.words ?? []).some((e) => typeof e !== "string");
 
   /** Count of distinct rendered strings for a list of entries in a mode (no array). */
   function renderCount(entries: Word[], mode: NamesMode): number {
@@ -224,9 +226,15 @@
     path: string;
     topics: TopicSummary[];
     children: CatNode[];
+    /** All topics under this node (own + descendants); filled once per tree build. */
+    all: TopicSummary[];
   };
+  // All topics under a category node — precomputed once here so category rows don't
+  // re-flatten their subtree on every render.
+  const fillAll = (node: CatNode): TopicSummary[] =>
+    (node.all = node.topics.concat(...node.children.map(fillAll)));
   const tree = $derived.by(() => {
-    const root: CatNode = { name: "", path: "", topics: [], children: [] };
+    const root: CatNode = { name: "", path: "", topics: [], children: [], all: [] };
     for (const t of topics) {
       let node = root;
       let path = "";
@@ -234,19 +242,16 @@
         path = path ? `${path}/${seg}` : seg;
         let child = node.children.find((c) => c.name === seg);
         if (!child) {
-          child = { name: seg, path, topics: [], children: [] };
+          child = { name: seg, path, topics: [], children: [], all: [] };
           node.children.push(child);
         }
         node = child;
       }
       node.topics.push(t);
     }
+    fillAll(root);
     return root;
   });
-
-  // All topics under a category node (its own plus every descendant's).
-  const allTopicsOf = (node: CatNode): TopicSummary[] =>
-    node.topics.concat(...node.children.map(allTopicsOf));
 
   // Default expansion: only top-level categories are open, so the second level
   // (e.g. gaming → pokemon) shows up but its contents stay collapsed until the
@@ -439,7 +444,7 @@
         {/snippet}
 
         {#snippet categoryNode(node: CatNode)}
-          {@const at = allTopicsOf(node)}
+          {@const at = node.all}
           {@const catId = "cat-" + (node.path.replace(/\//g, "-") || "root")}
           <div class="category">
             <button
