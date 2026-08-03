@@ -137,7 +137,8 @@
       topicData[t.id] = data;
       return data;
     } catch (e) {
-      topicError = e instanceof Error ? e.message : String(e);
+      // Drop stale errors too: a newer language load may have already succeeded.
+      if (gen === langGen) topicError = e instanceof Error ? e.message : String(e);
       return null;
     } finally {
       loadingById[t.id] = false;
