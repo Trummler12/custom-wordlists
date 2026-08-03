@@ -103,7 +103,17 @@
     return seen.size;
   }
 
-  const groupEntries = (g: Group): Word[] => (g.tiers ? g.tiers.flat() : g.words ?? []);
+  // Groups are immutable after load, so cache each group's flattened entries
+  // instead of re-flattening its tiers on every render.
+  const entriesCache = new WeakMap<Group, Word[]>();
+  const groupEntries = (g: Group): Word[] => {
+    let entries = entriesCache.get(g);
+    if (!entries) {
+      entries = g.tiers ? g.tiers.flat() : g.words ?? [];
+      entriesCache.set(g, entries);
+    }
+    return entries;
+  };
   function selectedEntries(tid: string, g: Group): Word[] {
     const k = key(tid, g.id);
     if (g.tiers) return g.tiers.slice(0, depthByGroup[k] ?? 0).flat();
