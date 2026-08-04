@@ -1,7 +1,7 @@
 <script lang="ts">
   import { onMount } from "svelte";
   import { loadManifest, loadTopic, pickFile } from "./lib/data";
-  import type { TopicSummary, Topic, Group, Word } from "./lib/types";
+  import type { TopicSummary, Topic, Group, Word, CategoryMeta } from "./lib/types";
   import { strings } from "./locale";
 
   type NamesMode = "short" | "long" | "both";
@@ -19,6 +19,7 @@
   // ────────────────────────────────────────────────────────────────────────────
 
   let topics = $state<TopicSummary[]>([]);
+  let categories = $state<Record<string, CategoryMeta>>({}); // path → display metadata
   let loading = $state(true);
   let error = $state<string | null>(null);
 
@@ -68,7 +69,9 @@
 
   onMount(async () => {
     try {
-      topics = (await loadManifest()).topics;
+      const manifest = await loadManifest();
+      topics = manifest.topics;
+      categories = manifest.categories ?? {};
       // Default language: stored → browser → en → first available.
       let stored: string | null = null;
       try {
@@ -357,6 +360,14 @@
   const titleCase = (seg: string) =>
     seg.split("-").map((w) => w.charAt(0).toUpperCase() + w.slice(1)).join(" ");
 
+  // Display name for a topic / category in the active language, with fallbacks.
+  // Topic: per-lang title (if the names differ) → representative title.
+  // Category: per-lang title → global title → title-cased folder name.
+  const topicTitle = (t: TopicSummary) => t.titles?.[lang] ?? t.title;
+  const categoryTitle = (node: CatNode) =>
+    categories[node.path]?.titles?.[lang] ?? categories[node.path]?.title ?? titleCase(node.name);
+  const categoryIcon = (node: CatNode) => categories[node.path]?.icon;
+
   // Aggregate selected groups' words (top-N tiers), de-duplicated, manifest order.
   const merged = $derived.by(() => {
     const seen = new Set<string>();
@@ -479,7 +490,7 @@
                   class="expander"
                   aria-expanded={!!expanded[t.id]}
                   aria-controls={`groups-${t.id}`}
-                  aria-label={ui.toggle(!!expanded[t.id], t.title)}
+                  aria-label={ui.toggle(!!expanded[t.id], topicTitle(t))}
                   onclick={() => toggleExpand(t)}
                 >
                   {expanded[t.id] ? "▾" : "▸"}
@@ -492,7 +503,7 @@
                     onchange={() => toggleTopic(t)}
                   />
                   <span class="icon" aria-hidden="true">{t.icon ?? "•"}</span>
-                  <span class="title">{t.title}</span>
+                  <span class="title">{topicTitle(t)}</span>
                   <span class="meta">
                     {#if loadingById[t.id] && !topicData[t.id]}{ui.loadingShort}{:else}{ui.wordsOf(topicSelCount(t), topicTotal(t))}{/if}
                   </span>
@@ -585,7 +596,7 @@
               class="expander"
               aria-expanded={catOpen(node)}
               aria-controls={`${catId}-children`}
-              aria-label={ui.toggle(catOpen(node), titleCase(node.name))}
+              aria-label={ui.toggle(catOpen(node), categoryTitle(node))}
               onclick={() => (catExpanded[node.path] = !catOpen(node))}
             >
               {catOpen(node) ? "▾" : "▸"}
@@ -597,7 +608,11 @@
               use:setIndeterminate={catPartial(at)}
               onchange={() => toggleCategory(at)}
             />
-            <h3 class="category-title"><label for={catId}>{titleCase(node.name)}</label></h3>
+            <h3 class="category-title">
+              <label for={catId}>
+                {#if categoryIcon(node)}<span class="icon" aria-hidden="true">{categoryIcon(node)}</span> {/if}{categoryTitle(node)}
+              </label>
+            </h3>
             <span class="meta">{ui.wordsOf(catSel(at), catTotal(at))}</span>
           </div>
           {#if catOpen(node)}

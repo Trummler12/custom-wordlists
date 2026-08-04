@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://trummler12.github.io/custom-wordlists/schema/category.schema.json",
+  "title": "Category",
+  "description": "Optional display metadata for a category folder, in a `_category.json` sidecar. Overrides the folder-name-derived title (which can't punctuate or translate) and can add a per-language name and an icon. See docs/PLANNING.md §4.",
+  "type": "object",
+  "additionalProperties": false,
+  "minProperties": 1,
+  "properties": {
+    "title": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Display name for languages without a `titles` entry (and the global name for categories that don't translate, e.g. \"Film & TV\")."
+    },
+    "titles": {
+      "type": "object",
+      "minProperties": 1,
+      "description": "Per-language display names, keyed by language code; falls back to `title`, then the title-cased folder name.",
+      "propertyNames": { "pattern": "^[a-z]{2}(-[A-Z]{2})?$" },
+      "additionalProperties": { "type": "string", "minLength": 1 }
+    },
+    "icon": { "type": "string", "minLength": 1 }
+  }
+}
