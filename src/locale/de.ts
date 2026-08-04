@@ -28,4 +28,6 @@ export const de: UIStrings = {
     `${count} ${count === 1 ? "Wort" : "Wörter"} ausgeschlossen (länger als ${maxLen} Zeichen): ${list}`,
   languageLabel: (current) => `Sprache: ${current}`,
   languageMenu: "Sprache",
+  langUnsupported: (language) =>
+    `Für ${language} noch nicht bestätigt — dieses Thema ist evtl. unvollständig; fehlende Übersetzungen erscheinen auf Englisch.`,
 };

@@ -164,6 +164,12 @@ header {
   color: var(--muted-2);
   font-size: 0.85rem;
 }
+/* Marker next to a topic that doesn't fully support the selected language. */
+.lang-warning {
+  margin-left: 0.3rem;
+  font-size: 0.85rem;
+  cursor: help;
+}
 
 /* Groups (nested under a topic) */
 .groups {

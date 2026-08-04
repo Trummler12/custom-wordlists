@@ -1,8 +1,8 @@
 <script lang="ts">
   import { onMount } from "svelte";
-  import { loadManifest, loadTopic, pickFile } from "./lib/data";
-  import type { TopicSummary, Topic, Group, Word, CategoryMeta } from "./lib/types";
-  import { strings } from "./locale";
+  import { loadManifest, loadTopic } from "./lib/data";
+  import type { TopicSummary, Topic, Group, Word, WordEntry, LocalizedString, NamePair, CategoryMeta } from "./lib/types";
+  import { strings, SUPPORTED_LANGS } from "./locale";
 
   type NamesMode = "short" | "long" | "both";
 
@@ -51,21 +51,14 @@
   // Which language menu is open (by instance id), or null. Two pickers share the
   // language but each has its own trigger.
   let langMenuOpen = $state<string | null>(null);
-  // Bumped on every language switch. In-flight loads capture the value and
-  // discard their result if it changed meanwhile, so a slower fetch for an older
-  // language can't overwrite newer data.
-  let langGen = 0;
 
   let copied = $state(false);
 
   const key = (tid: string, gid: string) => `${tid}:${gid}`;
 
-  // Languages offered by the picker: every language any topic provides.
-  const availableLangs = $derived.by(() => {
-    const set = new Set<string>();
-    for (const t of topics) for (const l of t.langs) set.add(l);
-    return [...set].sort();
-  });
+  // Languages offered by the picker — the app's curated set (see locale/), not
+  // derived from topics: a topic missing the selected language falls back to en.
+  const availableLangs = SUPPORTED_LANGS;
 
   onMount(async () => {
     try {
@@ -91,37 +84,21 @@
     }
   });
 
-  /** Switch language and reload the already-loaded localized topics. */
-  async function setLanguage(l: string) {
+  /** Switch the UI language. Topic files carry every language inline, so nothing
+   *  is refetched — the derived counts/output re-resolve each entry against the
+   *  new `lang` reactively, and the id-keyed selection stays put. */
+  function setLanguage(l: string) {
     if (l === lang) return;
     lang = l;
-    const gen = ++langGen;
-    topicError = null; // clear any stale error so a successful switch looks clean
     try {
       localStorage.setItem(LANG_STORAGE_KEY, l);
     } catch {
       /* localStorage unavailable — ignore */
     }
-    // Selection is keyed by group id (identical across languages), so it stays;
-    // only the words change. Neutral topics don't depend on the language. Reload
-    // topics that are already loaded *or* currently expanded (an expanded topic
-    // may still be loading via ensureLoaded, which discards its stale result).
-    const reload = topics.filter((t) => t.langs.length > 0 && (topicData[t.id] || expanded[t.id]));
-    const results = await Promise.allSettled(
-      reload.map(async (t) => ({
-        id: t.id,
-        data: await loadTopic(t.category, t.id, pickFile(t, l), t.flat ?? false),
-      })),
-    );
-    if (gen !== langGen) return; // a newer switch superseded this one — drop these
-    for (const r of results) {
-      if (r.status === "fulfilled") topicData[r.value.id] = r.value.data;
-      else topicError = r.reason instanceof Error ? r.reason.message : String(r.reason);
-    }
   }
   const chooseLanguage = (l: string) => {
     langMenuOpen = null;
-    void setLanguage(l);
+    setLanguage(l);
   };
   function onWindowPointerDown(e: MouseEvent) {
     if (langMenuOpen && !(e.target as Element)?.closest?.(".lang-picker")) langMenuOpen = null;
@@ -135,17 +112,12 @@
     if (loadingById[t.id]) return null;
     loadingById[t.id] = true;
     topicError = null;
-    const gen = langGen;
     try {
-      const data = await loadTopic(t.category, t.id, pickFile(t, lang), t.flat ?? false);
-      // Language switched mid-flight: setLanguage reloads this topic with the new
-      // language (it's expanded), so drop this now-stale result.
-      if (gen !== langGen) return null;
+      const data = await loadTopic(t.path);
       topicData[t.id] = data;
       return data;
     } catch (e) {
-      // Drop stale errors too: a newer language load may have already succeeded.
-      if (gen === langGen) topicError = e instanceof Error ? e.message : String(e);
+      topicError = e instanceof Error ? e.message : String(e);
       return null;
     } finally {
       loadingById[t.id] = false;
@@ -173,19 +145,41 @@
   // emit. Counts and output dedup identical rendered strings (e.g. two "Kyle"s).
   const modeOf = (k: string): NamesMode => namesMode[k] ?? "long";
 
-  function renderEntry(e: Word, mode: NamesMode): string[] {
-    if (typeof e === "string") return [e];
-    if (mode === "short") return [e.short];
-    if (mode === "long") return [e.long];
-    return e.short === e.long ? [e.short] : [e.short, e.long];
+  // Resolve a leaf string to the active language: a language map picks `lang`
+  // (falling back to its "en" base); a plain string is already neutral.
+  function resolveStr(s: LocalizedString): string {
+    return typeof s === "string" ? s : (s[lang] ?? s.en);
+  }
+  // Resolve an entry to the active language. Two equivalent shapes are accepted:
+  // the preferred leaf form (a name pair whose fields each localize) and an
+  // entry-level language map { en, de, … } whose value is itself an entry — the
+  // latter is resolved by picking the language and recursing. Reads `lang`, so
+  // every derived count/output recomputes on a language switch with no refetch.
+  function resolveWord(e: WordEntry): Word {
+    if (typeof e === "string") return e;
+    const obj = e as Record<string, unknown>;
+    if ("short" in obj && "long" in obj) {
+      const p = e as NamePair;
+      return { short: resolveStr(p.short), long: resolveStr(p.long) };
+    }
+    // entry-level language map: pick the language's value, then resolve it.
+    const map = e as Record<string, WordEntry>;
+    return resolveWord(map[lang] ?? map.en);
+  }
+  function renderEntry(e: WordEntry, mode: NamesMode): string[] {
+    const w = resolveWord(e);
+    if (typeof w === "string") return [w];
+    if (mode === "short") return [w.short];
+    if (mode === "long") return [w.long];
+    return w.short === w.long ? [w.short] : [w.short, w.long];
   }
   const groupHasNames = (g: Group): boolean =>
     g.tiers
-      ? g.tiers.some((tier) => tier.some((e) => typeof e !== "string"))
-      : (g.words ?? []).some((e) => typeof e !== "string");
+      ? g.tiers.some((tier) => tier.some((e) => typeof resolveWord(e) !== "string"))
+      : (g.words ?? []).some((e) => typeof resolveWord(e) !== "string");
 
   /** Count of distinct rendered strings for a list of entries in a mode (no array). */
-  function renderCount(entries: Word[], mode: NamesMode): number {
+  function renderCount(entries: WordEntry[], mode: NamesMode): number {
     const seen = new Set<string>();
     for (const e of entries) for (const w of renderEntry(e, mode)) seen.add(w);
     return seen.size;
@@ -193,8 +187,8 @@
 
   // Groups are immutable after load, so cache each group's flattened entries
   // instead of re-flattening its tiers on every render.
-  const entriesCache = new WeakMap<Group, Word[]>();
-  const groupEntries = (g: Group): Word[] => {
+  const entriesCache = new WeakMap<Group, WordEntry[]>();
+  const groupEntries = (g: Group): WordEntry[] => {
     let entries = entriesCache.get(g);
     if (!entries) {
       entries = g.tiers ? g.tiers.flat() : g.words ?? [];
@@ -202,7 +196,7 @@
     }
     return entries;
   };
-  function selectedEntries(tid: string, g: Group): Word[] {
+  function selectedEntries(tid: string, g: Group): WordEntry[] {
     const k = key(tid, g.id);
     if (g.tiers) return g.tiers.slice(0, depthByGroup[k] ?? 0).flat();
     return selected[k] ? g.words ?? [] : [];
@@ -364,6 +358,7 @@
   // Topic: per-lang title (if the names differ) → representative title.
   // Category: per-lang title → global title → title-cased folder name.
   const topicTitle = (t: TopicSummary) => t.titles?.[lang] ?? t.title;
+  const groupTitle = (g: Group) => g.titles?.[lang] ?? g.title;
   const categoryTitle = (node: CatNode) =>
     categories[node.path]?.titles?.[lang] ?? categories[node.path]?.title ?? titleCase(node.name);
   const categoryIcon = (node: CatNode) => categories[node.path]?.icon;
@@ -504,6 +499,9 @@
                   />
                   <span class="icon" aria-hidden="true">{t.icon ?? "•"}</span>
                   <span class="title">{topicTitle(t)}</span>
+                  {#if !t.languages?.includes(lang)}
+                    <span class="lang-warning" title={ui.langUnsupported(langName(lang))}>⚠️</span>
+                  {/if}
                   <span class="meta">
                     {#if loadingById[t.id] && !topicData[t.id]}{ui.loadingShort}{:else}{ui.wordsOf(topicSelCount(t), topicTotal(t))}{/if}
                   </span>
@@ -523,12 +521,12 @@
                             use:setIndeterminate={groupPartial(t.id, g)}
                             onchange={() => toggleGroup(t.id, g)}
                           />
-                          <span class="title">{g.title}</span>
+                          <span class="title">{groupTitle(g)}</span>
                         </label>
                         {#if groupHasNames(g)}
                           <select
                             class="names-mode"
-                            aria-label={ui.nameFormLabel(g.title)}
+                            aria-label={ui.nameFormLabel(groupTitle(g))}
                             value={modeOf(k)}
                             onchange={(e) => (namesMode[k] = e.currentTarget.value as NamesMode)}
                           >
@@ -551,7 +549,7 @@
                             aria-valuemax={g.tiers.length}
                             aria-valuenow={d}
                             aria-valuetext={ui.tiersValueText(d, g.tiers.length)}
-                            aria-label={ui.fameDepthLabel(g.title)}
+                            aria-label={ui.fameDepthLabel(groupTitle(g))}
                             onpointerdown={(e) => {
                               e.currentTarget.setPointerCapture(e.pointerId);
                               depthFromPointer(e, k, g);
