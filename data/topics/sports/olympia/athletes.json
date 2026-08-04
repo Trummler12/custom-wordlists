@@ -1,6 +1,7 @@
 {
   "id": "athletes",
   "title": "Athletes",
+  "titles": { "en": "Athletes", "de": "Athleten" },
   "icon": "🏅",
   "description": "Globally famous athletes across sports (language-neutral — proper names are the same across locales). Fame tiers by recognizability (tier 0 = most iconic).",
   "groups": [

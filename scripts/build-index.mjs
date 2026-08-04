@@ -132,12 +132,15 @@ async function buildIndex() {
     }
     const rep = pickRepresentative(variants);
     const langs = variants.map((v) => v.lang).filter((l) => l !== null).sort();
-    // Per-language titles, but only when they actually differ across variants:
-    // a topic named the same in every language (e.g. "South Park") keeps just the
-    // single representative title, so `titles` marks genuinely translated names.
-    const titles = Object.fromEntries(
+    // Per-language titles, emitted only when the name genuinely translates.
+    // Localized topics: derive from each variant's own title (a topic named the
+    // same in every language, e.g. "South Park", keeps just the single title).
+    // Language-neutral topics (one shared word list): honor an explicit `titles`
+    // field so the title can translate without duplicating the words.
+    const variantTitles = Object.fromEntries(
       variants.filter((v) => v.lang !== null).map((v) => [v.lang, v.data.title]),
     );
+    const titles = Object.keys(variantTitles).length > 0 ? variantTitles : (rep.data.titles ?? {});
     const titlesDiffer = new Set(Object.values(titles)).size > 1;
     topics.push({
       id,
