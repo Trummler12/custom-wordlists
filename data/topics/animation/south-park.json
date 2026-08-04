@@ -23,7 +23,7 @@
         ],
 
         [
-          {"en":{"short":"Chef","long":"Jerome McElroy"},"de":{"short":"Chefkoch","long":"Jerome McElroy"}},
+          {"en":"Chef","de":"Chefkoch"},
           {"short":"Sharon","long":"Sharon Marsh"},
           "Mr. Mackey",
           {"short":"Gerald","long":"Gerald Broflovski"},
@@ -47,13 +47,13 @@
           "PC Principal",
           "Scott Malkinson",
           "Towelie",
-          "Strong Woman"
+          {"en":"Strong Woman","de":"Starke Frau"}
         ],
 
         [
           {"short":"Timmy","long":"Timmy Burch"},
           {"short":"Bebe","long":"Bebe Stevens"},
-          {"en":{"short":"Jesus","long":"Jesus Christ"},"de":{"short":"Jesus","long":"Jesus Christus"}},
+          {"short":"Jesus","long":{"en":"Jesus Christ","de":"Jesus Christus"}},
           "Satan",
           {"en":"Mayor McDaniels","de":"Bürgermeisterin McDaniels"},
           {"en":"Principal Victoria","de":"Direktorin Victoria"},
@@ -168,7 +168,8 @@
           "Loogie",
           {"en":"Craig's Gang","de":"Craigs Gang"},
           "Jenny",
-          "Esther"
+          "Esther",
+          "Jerome McElroy"
         ]
       ]
     }
