@@ -37,8 +37,9 @@ export interface CategoryMeta {
 export interface Manifest {
   generatedAt: string;
   topics: TopicSummary[];
-  /** Category display metadata keyed by category path; only labelled ones appear. */
-  categories: Record<string, CategoryMeta>;
+  /** Category display metadata keyed by category path; only labelled ones appear.
+   *  Optional so an older cached index.json (pre-categories) still type-checks. */
+  categories?: Record<string, CategoryMeta>;
 }
 
 /** A word entry: a plain string, or a short/long name pair (for the Names mode). */

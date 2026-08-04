@@ -82,7 +82,8 @@ async function readCategoryMeta(path) {
   try {
     data = JSON.parse(await readFile(file, "utf8"));
   } catch (err) {
-    throw new Error(`data/topics/${path}/${CATEGORY_META}: could not read/parse — ${err.message}`);
+    const msg = err instanceof Error ? err.message : String(err);
+    throw new Error(`data/topics/${path}/${CATEGORY_META}: could not read/parse — ${msg}`);
   }
   const meta = {};
   if (data.title) meta.title = data.title;
