@@ -25,7 +25,7 @@
       "type": "array",
       "minItems": 1,
       "uniqueItems": true,
-      "description": "Languages this topic fully supports. The frontend flags a topic when the selected language isn't listed. Omit for a language-neutral list that reads the same in every locale.",
+      "description": "Languages this topic fully supports. The frontend flags a topic (⚠️) when the selected language isn't listed — including when this field is omitted (support undeclared, shown even for English). Declare the languages to confirm support, including for a language-neutral list whose entries read the same in every locale.",
       "items": { "type": "string", "pattern": "^[a-z]{2}(-[A-Z]{2})?$" }
     },
     "lastUpdated": {

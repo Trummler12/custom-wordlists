@@ -17,7 +17,8 @@ export interface TopicSummary {
   /** Path to the topic's JSON file, relative to data/topics/ (e.g.
    *  "animation/south-park.json" or "animation/spongebob/characters.json"). */
   path: string;
-  /** Languages the topic fully supports; absent = unspecified (no warning). */
+  /** Languages the topic fully supports. Absent means support is undeclared — the
+   *  UI flags the topic (⚠️, even in English) until it's filled in. */
   languages?: string[];
   groupCount: number;
   wordCount: number;
@@ -42,10 +43,12 @@ export interface Manifest {
   categories?: Record<string, CategoryMeta>;
 }
 
-/** A string that may be localized: a plain string (same in every language), or a
- *  per-language map whose keys are language codes ("en" is the base; languages
- *  equal to "en" are omitted). */
-export type LocalizedString = string | Record<string, string>;
+/** A per-language map: the "en" base is required, other language codes optional. */
+export type LangMap<T> = { en: T } & Record<string, T>;
+
+/** A string that may translate: the same in every language (a plain string), or a
+ *  language map with an "en" base (languages equal to "en" are omitted). */
+export type LocalizedString = string | LangMap<string>;
 
 /** A short/long name entry; each field may itself be a LocalizedString. */
 export interface NamePair {
@@ -55,8 +58,9 @@ export interface NamePair {
 
 /** A word entry in a list: a localized string, a short/long name pair (each field
  *  may itself localize — the preferred form), or an entry-level language map whose
- *  values are whole entries (also accepted, e.g. from community content). */
-export type WordEntry = LocalizedString | NamePair | { [lang: string]: WordEntry };
+ *  values are a whole entry — a string or name pair (also accepted, e.g. from
+ *  community content). */
+export type WordEntry = LocalizedString | NamePair | LangMap<string | NamePair>;
 
 /** A word resolved to the active language: a plain string or a short/long pair. */
 export type Word = string | { short: string; long: string };
@@ -86,7 +90,9 @@ export interface Topic {
   titles?: Record<string, string>;
   icon?: string;
   description?: string;
-  /** Languages this topic fully supports; absent = language-neutral. */
+  /** Languages this topic fully supports. Absent means support is undeclared (the
+   *  UI shows a ⚠️ marker); declare the languages to confirm support — including
+   *  for a language-neutral list whose entries read the same in every locale. */
   languages?: string[];
   /** ISO date (YYYY-MM-DD) the list's contents last changed. */
   lastUpdated?: string;
