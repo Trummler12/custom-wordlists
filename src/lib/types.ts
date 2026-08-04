@@ -6,8 +6,10 @@
 export interface TopicSummary {
   id: string;
   title: string;
-  /** Per-language titles; present only when the variants' names actually differ
-   *  (e.g. SpongeBob). Absent when every language shares the same name. */
+  /** Per-language titles, present only when the name actually translates —
+   *  either the localized variants' titles differ (e.g. SpongeBob) or a neutral
+   *  topic declares an explicit `titles` map (e.g. "Athletes"/"Athleten"). Absent
+   *  when every language shares the same name; falls back to `title`. */
   titles?: Record<string, string>;
   /** Emoji/icon, or null when the topic has none. */
   icon: string | null;
