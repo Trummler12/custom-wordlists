@@ -6,6 +6,11 @@
 export interface TopicSummary {
   id: string;
   title: string;
+  /** Per-language titles, present only when the name actually translates —
+   *  either the localized variants' titles differ (e.g. SpongeBob) or a neutral
+   *  topic declares an explicit `titles` map (e.g. "Athletes"/"Athleten"). Absent
+   *  when every language shares the same name; falls back to `title`. */
+  titles?: Record<string, string>;
   /** Emoji/icon, or null when the topic has none. */
   icon: string | null;
   /** Category path from topics/ (e.g. "gaming" or "gaming/pokemon"); "" = none. */
@@ -20,10 +25,23 @@ export interface TopicSummary {
   wordCount: number;
 }
 
+/** Optional display metadata for a category node (from a `_category.json`). */
+export interface CategoryMeta {
+  /** Display name for languages without a `titles` entry; also the global name. */
+  title?: string;
+  /** Per-language display names, keyed by language code. */
+  titles?: Record<string, string>;
+  /** Emoji/icon for the category. */
+  icon?: string;
+}
+
 /** The generated manifest the frontend loads first. */
 export interface Manifest {
   generatedAt: string;
   topics: TopicSummary[];
+  /** Category display metadata keyed by category path; only labelled ones appear.
+   *  Optional so an older cached index.json (pre-categories) still type-checks. */
+  categories?: Record<string, CategoryMeta>;
 }
 
 /** A word entry: a plain string, or a short/long name pair (for the Names mode). */

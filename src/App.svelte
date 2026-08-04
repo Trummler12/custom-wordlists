@@ -1,7 +1,8 @@
 <script lang="ts">
   import { onMount } from "svelte";
   import { loadManifest, loadTopic, pickFile } from "./lib/data";
-  import type { TopicSummary, Topic, Group, Word } from "./lib/types";
+  import type { TopicSummary, Topic, Group, Word, CategoryMeta } from "./lib/types";
+  import { strings } from "./locale";
 
   type NamesMode = "short" | "long" | "both";
 
@@ -18,6 +19,7 @@
   // ────────────────────────────────────────────────────────────────────────────
 
   let topics = $state<TopicSummary[]>([]);
+  let categories = $state<Record<string, CategoryMeta>>({}); // path → display metadata
   let loading = $state(true);
   let error = $state<string | null>(null);
 
@@ -43,6 +45,9 @@
     pt: "Português", nl: "Nederlands", pl: "Polski", ja: "日本語", ko: "한국어", zh: "中文",
   };
   const langName = (l: string) => LANG_NAMES[l] ?? l.toUpperCase();
+  // Active UI-chrome strings; follows `lang`, falls back to English (see locale/).
+  // Named `ui` (not the i18n-usual `t`) because `t` is the TopicSummary loop var.
+  const ui = $derived(strings(lang));
   // Which language menu is open (by instance id), or null. Two pickers share the
   // language but each has its own trigger.
   let langMenuOpen = $state<string | null>(null);
@@ -64,7 +69,9 @@
 
   onMount(async () => {
     try {
-      topics = (await loadManifest()).topics;
+      const manifest = await loadManifest();
+      topics = manifest.topics;
+      categories = manifest.categories ?? {};
       // Default language: stored → browser → en → first available.
       let stored: string | null = null;
       try {
@@ -353,6 +360,14 @@
   const titleCase = (seg: string) =>
     seg.split("-").map((w) => w.charAt(0).toUpperCase() + w.slice(1)).join(" ");
 
+  // Display name for a topic / category in the active language, with fallbacks.
+  // Topic: per-lang title (if the names differ) → representative title.
+  // Category: per-lang title → global title → title-cased folder name.
+  const topicTitle = (t: TopicSummary) => t.titles?.[lang] ?? t.title;
+  const categoryTitle = (node: CatNode) =>
+    categories[node.path]?.titles?.[lang] ?? categories[node.path]?.title ?? titleCase(node.name);
+  const categoryIcon = (node: CatNode) => categories[node.path]?.icon;
+
   // Aggregate selected groups' words (top-N tiers), de-duplicated, manifest order.
   const merged = $derived.by(() => {
     const seen = new Set<string>();
@@ -418,11 +433,11 @@
         class="lang-btn"
         aria-haspopup="menu"
         aria-expanded={langMenuOpen === id}
-        aria-label={`Language: ${langName(lang)}`}
+        aria-label={ui.languageLabel(langName(lang))}
         onclick={() => (langMenuOpen = langMenuOpen === id ? null : id)}
       >🌐</button>
       {#if langMenuOpen === id}
-        <ul class="lang-menu" role="menu" aria-label="Language">
+        <ul class="lang-menu" role="menu" aria-label={ui.languageMenu}>
           {#each availableLangs as l (l)}
             <li role="none">
               <button
@@ -452,21 +467,21 @@
           <div class="lang-header-slot">{@render langPicker("header")}</div>
         </div>
         <p class="tagline">
-          Build custom word lists for
+          {ui.taglineBefore}
           <a href="https://skribbl.io" target="_blank" rel="noopener noreferrer">skribbl.io</a>
-          and similar word games.
+          {ui.taglineAfter}
         </p>
       </header>
 
       {#if loading}
-        <p class="status">Loading topics…</p>
+        <p class="status">{ui.loadingTopics}</p>
       {:else if error}
-        <p class="status error">Could not load topics: {error}</p>
+        <p class="status error">{ui.loadError(error)}</p>
       {:else if topics.length === 0}
-        <p class="status">No topics available yet.</p>
+        <p class="status">{ui.noTopics}</p>
       {:else}
-        <section class="topics" aria-label="Topics">
-        <h2>Topics</h2>
+        <section class="topics" aria-label={ui.topics}>
+        <h2>{ui.topics}</h2>
         {#snippet topicRow(t: TopicSummary)}
             <div class="topic-item">
               <div class="topic-row">
@@ -475,7 +490,7 @@
                   class="expander"
                   aria-expanded={!!expanded[t.id]}
                   aria-controls={`groups-${t.id}`}
-                  aria-label={(expanded[t.id] ? "Collapse " : "Expand ") + t.title}
+                  aria-label={ui.toggle(!!expanded[t.id], topicTitle(t))}
                   onclick={() => toggleExpand(t)}
                 >
                   {expanded[t.id] ? "▾" : "▸"}
@@ -488,9 +503,9 @@
                     onchange={() => toggleTopic(t)}
                   />
                   <span class="icon" aria-hidden="true">{t.icon ?? "•"}</span>
-                  <span class="title">{t.title}</span>
+                  <span class="title">{topicTitle(t)}</span>
                   <span class="meta">
-                    {#if loadingById[t.id] && !topicData[t.id]}loading…{:else}{topicSelCount(t)} of {topicTotal(t)} words{/if}
+                    {#if loadingById[t.id] && !topicData[t.id]}{ui.loadingShort}{:else}{ui.wordsOf(topicSelCount(t), topicTotal(t))}{/if}
                   </span>
                 </label>
               </div>
@@ -513,16 +528,16 @@
                         {#if groupHasNames(g)}
                           <select
                             class="names-mode"
-                            aria-label={`Name form for ${g.title}`}
+                            aria-label={ui.nameFormLabel(g.title)}
                             value={modeOf(k)}
                             onchange={(e) => (namesMode[k] = e.currentTarget.value as NamesMode)}
                           >
-                            <option value="short">short</option>
-                            <option value="long">long</option>
-                            <option value="both">both</option>
+                            <option value="short">{ui.nameForm.short}</option>
+                            <option value="long">{ui.nameForm.long}</option>
+                            <option value="both">{ui.nameForm.both}</option>
                           </select>
                         {/if}
-                        <span class="meta">{groupSelCount(t.id, g)} of {groupTotal(t.id, g)} words</span>
+                        <span class="meta">{ui.wordsOf(groupSelCount(t.id, g), groupTotal(t.id, g))}</span>
                       </div>
                       {#if g.tiers && g.tiers.length > 1}
                         {@const d = depthByGroup[k] ?? 0}
@@ -535,8 +550,8 @@
                             aria-valuemin="0"
                             aria-valuemax={g.tiers.length}
                             aria-valuenow={d}
-                            aria-valuetext={`top ${d} of ${g.tiers.length} tiers`}
-                            aria-label={`Fame depth for ${g.title}`}
+                            aria-valuetext={ui.tiersValueText(d, g.tiers.length)}
+                            aria-label={ui.fameDepthLabel(g.title)}
                             onpointerdown={(e) => {
                               e.currentTarget.setPointerCapture(e.pointerId);
                               depthFromPointer(e, k, g);
@@ -581,7 +596,7 @@
               class="expander"
               aria-expanded={catOpen(node)}
               aria-controls={`${catId}-children`}
-              aria-label={(catOpen(node) ? "Collapse " : "Expand ") + titleCase(node.name)}
+              aria-label={ui.toggle(catOpen(node), categoryTitle(node))}
               onclick={() => (catExpanded[node.path] = !catOpen(node))}
             >
               {catOpen(node) ? "▾" : "▸"}
@@ -593,8 +608,12 @@
               use:setIndeterminate={catPartial(at)}
               onchange={() => toggleCategory(at)}
             />
-            <h3 class="category-title"><label for={catId}>{titleCase(node.name)}</label></h3>
-            <span class="meta">{catSel(at)} of {catTotal(at)} words</span>
+            <h3 class="category-title">
+              <label for={catId}>
+                {#if categoryIcon(node)}<span class="icon" aria-hidden="true">{categoryIcon(node)}</span> {/if}{categoryTitle(node)}
+              </label>
+            </h3>
+            <span class="meta">{ui.wordsOf(catSel(at), catTotal(at))}</span>
           </div>
           {#if catOpen(node)}
             <div class="cat-children" id={`${catId}-children`}>
@@ -614,26 +633,26 @@
     </div>
 
     {#if !loading && !error && topics.length > 0}
-      <section class="output" aria-label="Output">
+      <section class="output" aria-label={ui.output}>
         <div class="output-head">
-          <h2>Output</h2>
+          <h2>{ui.output}</h2>
           <div class="head-actions">
             {@render langPicker("output")}
             <button type="button" onclick={copy} disabled={included.length === 0}>
-              {copied ? "Copied!" : "Copy"}
+              {copied ? ui.copied : ui.copy}
             </button>
           </div>
         </div>
 
         {#if merged.length === 0}
-          <p class="status">Select topics or groups to build a list.</p>
+          <p class="status">{ui.emptyOutput}</p>
         {:else}
           <!-- Read-only per-word chips (not a textarea) so M2 can color words. -->
           <div
             class="chips"
             role="textbox"
             aria-readonly="true"
-            aria-label="Generated word list"
+            aria-label={ui.generatedList}
             tabindex="0"
             onclick={(e) => selectAll(e.currentTarget)}
             onkeydown={(e) => {
@@ -647,16 +666,15 @@
           </div>
 
           <p class="counter" class:warn={belowMin || overMax}>
-            words: {included.length} · chars: {charCount.toLocaleString()} /
+            {ui.wordsLabel}: {included.length} · {ui.charsLabel}: {charCount.toLocaleString()} /
             {SKRIBBL.maxTotal.toLocaleString()}
-            {#if belowMin}· below skribbl minimum ({SKRIBBL.minWords}){/if}
-            {#if overMax}· over the maximum{/if}
+            {#if belowMin}{ui.belowMin(SKRIBBL.minWords)}{/if}
+            {#if overMax}{ui.overMax}{/if}
           </p>
 
           {#if excluded.length > 0}
             <p class="status warn">
-              {excluded.length} word{excluded.length === 1 ? "" : "s"} excluded
-              (longer than {SKRIBBL.maxWordLen} chars): {excluded.join(", ")}
+              {ui.excluded(excluded.length, SKRIBBL.maxWordLen, excluded.join(", "))}
             </p>
           {/if}
         {/if}
