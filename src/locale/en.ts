@@ -29,5 +29,5 @@ export const en: UIStrings = {
   languageLabel: (current) => `Language: ${current}`,
   languageMenu: "Language",
   langUnsupported: (language) =>
-    `Not fully available in ${language} yet — showing English where a translation is missing.`,
+    `Not confirmed for ${language} yet — this topic may be incomplete; English is used where a translation is missing.`,
 };

@@ -54,21 +54,33 @@
       "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$",
       "description": "Kebab-case identifier."
     },
+    "langMapString": {
+      "type": "object",
+      "minProperties": 1,
+      "required": ["en"],
+      "description": "A per-language string: keys are language codes (\"en\" is the required base), values the localized text. Languages that match \"en\" are omitted.",
+      "propertyNames": { "pattern": "^[a-z]{2}(-[A-Z]{2})?$" },
+      "additionalProperties": { "type": "string", "minLength": 1 }
+    },
+    "locString": {
+      "oneOf": [{ "type": "string", "minLength": 1 }, { "$ref": "#/$defs/langMapString" }],
+      "description": "A string that is the same everywhere (plain string) or translates (language map)."
+    },
     "namePair": {
       "type": "object",
       "additionalProperties": false,
       "required": ["short", "long"],
-      "description": "An entry with a short (common) and long (full) name; the UI's per-group Names dropdown picks short / long / both.",
+      "description": "An entry with a short (common) and long (full) name; the UI's per-group Names dropdown picks short / long / both. Each field may itself be a language map when only that part translates — the preferred form.",
       "properties": {
-        "short": { "type": "string", "minLength": 1 },
-        "long": { "type": "string", "minLength": 1 }
+        "short": { "$ref": "#/$defs/locString" },
+        "long": { "$ref": "#/$defs/locString" }
       }
     },
-    "langMap": {
+    "langMapEntry": {
       "type": "object",
       "minProperties": 1,
       "required": ["en"],
-      "description": "A per-language entry: keys are language codes (\"en\" is the required base), values the localized word. Languages that match \"en\" are omitted from the map.",
+      "description": "An entry-level per-language map: keys are language codes (\"en\" is the base), values are whole entries (a string or a name pair). Equivalent in content to leaf-localizing each field; the leaf form is preferred, but this whole-entry form is accepted too (e.g. from community content).",
       "propertyNames": { "pattern": "^[a-z]{2}(-[A-Z]{2})?$" },
       "additionalProperties": {
         "oneOf": [{ "type": "string", "minLength": 1 }, { "$ref": "#/$defs/namePair" }]
@@ -78,7 +90,7 @@
       "oneOf": [
         { "type": "string", "minLength": 1 },
         { "$ref": "#/$defs/namePair" },
-        { "$ref": "#/$defs/langMap" }
+        { "$ref": "#/$defs/langMapEntry" }
       ]
     },
     "group": {

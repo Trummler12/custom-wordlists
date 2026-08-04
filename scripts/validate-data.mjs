@@ -61,24 +61,32 @@ async function collectTopics(segments) {
   return { topics, categories };
 }
 
-/** Whether an entry object is a per-language map (keys are language codes) rather
- *  than a short/long name pair. */
-function isLangMap(entry) {
-  return typeof entry === "object" && !("short" in entry && "long" in entry);
+/** Base (en) form of a leaf string: the string itself, or its "en" value. */
+function baseStr(s) {
+  return typeof s === "string" ? s : s.en;
 }
-/** Canonical key for dedup: string as-is, name pair as "short long", language map
- *  keyed by its base (en) form so it collides with an equal plain entry. */
+/** Canonical key for dedup, keyed by each leaf's base (en) form so a localized
+ *  entry collides with an equal plain one. Handles both accepted shapes: the leaf
+ *  name pair `{short, long}` and an entry-level language map `{en, de, …}`. */
 function entryKey(word) {
   if (typeof word === "string") return word;
-  if (!isLangMap(word)) return `${word.short} ${word.long}`;
-  return entryKey(word.en);
+  if ("short" in word && "long" in word) return `${baseStr(word.short)} ${baseStr(word.long)}`;
+  return entryKey(word.en); // entry-level language map: key by the en value
 }
 
-/** Every language code referenced by an entry's language map, across the topic. */
+/** Every language code referenced anywhere in a topic's entries (leaf field maps
+ *  and entry-level maps alike). */
 function usedLangs(topic) {
   const out = new Set();
   const scan = (w) => {
-    if (typeof w === "object" && isLangMap(w)) for (const k of Object.keys(w)) out.add(k);
+    if (w == null || typeof w !== "object") return;
+    if ("short" in w && "long" in w) {
+      scan(w.short);
+      scan(w.long);
+      return;
+    }
+    for (const k of Object.keys(w)) out.add(k); // language-code keys
+    for (const v of Object.values(w)) scan(v); // recurse (values may be name pairs)
   };
   for (const group of topic.groups) {
     if (group.words) for (const w of group.words) scan(w);

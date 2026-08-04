@@ -1,7 +1,7 @@
 <script lang="ts">
   import { onMount } from "svelte";
   import { loadManifest, loadTopic } from "./lib/data";
-  import type { TopicSummary, Topic, Group, Word, WordEntry, CategoryMeta } from "./lib/types";
+  import type { TopicSummary, Topic, Group, Word, WordEntry, LocalizedString, NamePair, CategoryMeta } from "./lib/types";
   import { strings, SUPPORTED_LANGS } from "./locale";
 
   type NamesMode = "short" | "long" | "both";
@@ -145,16 +145,26 @@
   // emit. Counts and output dedup identical rendered strings (e.g. two "Kyle"s).
   const modeOf = (k: string): NamesMode => namesMode[k] ?? "long";
 
-  // Resolve a possibly-localized entry to the active language's word: a language
-  // map picks the current `lang` (falling back to its "en" base); a plain string
-  // or short/long pair is already language-neutral. Reads `lang`, so every derived
-  // count/output recomputes on a language switch with no refetch.
+  // Resolve a leaf string to the active language: a language map picks `lang`
+  // (falling back to its "en" base); a plain string is already neutral.
+  function resolveStr(s: LocalizedString): string {
+    return typeof s === "string" ? s : (s[lang] ?? s.en);
+  }
+  // Resolve an entry to the active language. Two equivalent shapes are accepted:
+  // the preferred leaf form (a name pair whose fields each localize) and an
+  // entry-level language map { en, de, … } whose value is itself an entry — the
+  // latter is resolved by picking the language and recursing. Reads `lang`, so
+  // every derived count/output recomputes on a language switch with no refetch.
   function resolveWord(e: WordEntry): Word {
     if (typeof e === "string") return e;
     const obj = e as Record<string, unknown>;
-    if (typeof obj.short === "string" && typeof obj.long === "string") return e as Word;
-    const map = e as Record<string, Word>;
-    return map[lang] ?? map.en;
+    if ("short" in obj && "long" in obj) {
+      const p = e as NamePair;
+      return { short: resolveStr(p.short), long: resolveStr(p.long) };
+    }
+    // entry-level language map: pick the language's value, then resolve it.
+    const map = e as Record<string, WordEntry>;
+    return resolveWord(map[lang] ?? map.en);
   }
   function renderEntry(e: WordEntry, mode: NamesMode): string[] {
     const w = resolveWord(e);
@@ -489,7 +499,7 @@
                   />
                   <span class="icon" aria-hidden="true">{t.icon ?? "•"}</span>
                   <span class="title">{topicTitle(t)}</span>
-                  {#if t.languages && !t.languages.includes(lang)}
+                  {#if !t.languages?.includes(lang)}
                     <span class="lang-warning" title={ui.langUnsupported(langName(lang))}>⚠️</span>
                   {/if}
                   <span class="meta">

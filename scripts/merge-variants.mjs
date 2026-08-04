@@ -37,18 +37,24 @@ const PLAN = new Map([
 
 // ─── merge helpers ────────────────────────────────────────────────────────────
 
-/** True when two word entries render identically across languages. */
-function entryEqual(a, b) {
-  if (typeof a === "string" || typeof b === "string") return a === b;
-  return a.short === b.short && a.long === b.long;
+/** Merge one leaf string: shared → the string; else a language map { en, de }. */
+function mergeStr(en, de) {
+  return en === de ? en : { en, de };
 }
-/** Merge one positional entry: shared → the entry itself; else a language map. */
-function mergeEntry(en, de) {
-  return entryEqual(en, de) ? en : { en, de };
+/** Merge one positional entry. Structure (string vs. name pair) is language-
+ *  neutral; only the leaf strings localize, so short/long merge independently. */
+function mergeEntry(en, de, label) {
+  const enObj = typeof en === "object";
+  const deObj = typeof de === "object";
+  if (!enObj && !deObj) return mergeStr(en, de);
+  if (enObj && deObj && "short" in en && "short" in de) {
+    return { short: mergeStr(en.short, de.short), long: mergeStr(en.long, de.long) };
+  }
+  throw new Error(`${label}: entry shape differs between en/de`);
 }
 function mergeList(en, de, label) {
   if (en.length !== de.length) throw new Error(`${label}: entry count differs (en ${en.length} / de ${de.length})`);
-  return en.map((e, i) => mergeEntry(e, de[i]));
+  return en.map((e, i) => mergeEntry(e, de[i], label));
 }
 function mergeGroup(gEn, gDe, label) {
   if (gEn.id !== gDe.id) throw new Error(`${label}: group id mismatch (${gEn.id} / ${gDe.id})`);
