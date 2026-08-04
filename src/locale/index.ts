@@ -38,6 +38,8 @@ export interface UIStrings {
   /** Globe-button aria-label, e.g. "Language: English". */
   languageLabel: (current: string) => string;
   languageMenu: string;
+  /** Warning marker for a topic that doesn't fully support the selected language. */
+  langUnsupported: (language: string) => string;
 }
 
 import { en } from "./en";
@@ -47,6 +49,11 @@ import { de } from "./de";
 export const FALLBACK_LANG = "en";
 
 const UI: Record<string, UIStrings> = { en, de };
+
+/** Languages the app offers in its picker — the ones with a UI dictionary. This
+ *  is the deliberately-curated app-level set, independent of any single topic's
+ *  own `languages`; grow it by adding a dictionary above. */
+export const SUPPORTED_LANGS: string[] = Object.keys(UI).sort();
 
 /** UI strings for `lang`, falling back to English when it has no dictionary. */
 export function strings(lang: string): UIStrings {

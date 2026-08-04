@@ -1,0 +1,35 @@
+{
+  "id": "spongebob",
+  "title": "SpongeBob SquarePants",
+  "titles": {"en":"SpongeBob SquarePants","de":"SpongeBob Schwammkopf"},
+  "icon": "🧽",
+  "description": "SpongeBob SquarePants characters (English names). Fame tiers by recognizability (tier 0 = most iconic).",
+  "languages": ["de","en"],
+  "groups": [
+    {
+      "id": "characters",
+      "title": "Characters",
+      "titles": {"en":"Characters","de":"Charaktere"},
+      "tiers": [
+        [
+          "SpongeBob",
+          "Patrick",
+          {"en":"Squidward","de":"Thaddäus"},
+          "Mr. Krabs",
+          "Sandy"
+        ],
+
+        [
+          "Plankton",
+          "Gary",
+          "Mrs. Puff",
+          {"en":"Pearl","de":"Perla"},
+          "Karen"
+        ]
+      ]
+    }
+  ],
+  "presets": [
+    {"id":"all","title":"All characters","groups":["characters"]}
+  ]
+}

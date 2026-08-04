@@ -6,21 +6,19 @@
 export interface TopicSummary {
   id: string;
   title: string;
-  /** Per-language titles, present only when the name actually translates —
-   *  either the localized variants' titles differ (e.g. SpongeBob) or a neutral
-   *  topic declares an explicit `titles` map (e.g. "Athletes"/"Athleten"). Absent
-   *  when every language shares the same name; falls back to `title`. */
+  /** Per-language titles, present only when the name actually translates (e.g.
+   *  SpongeBob). Absent when every language shares the same name; falls back to
+   *  `title`. */
   titles?: Record<string, string>;
   /** Emoji/icon, or null when the topic has none. */
   icon: string | null;
   /** Category path from topics/ (e.g. "gaming" or "gaming/pokemon"); "" = none. */
   category: string;
-  /** True when the file sits loose in the category folder (no id-named folder). */
-  flat?: boolean;
-  /** Available language codes (e.g. ["de","en"]); empty = language-neutral. */
-  langs: string[];
-  /** JSON filenames for the topic; the frontend fetches one of these. */
-  files: string[];
+  /** Path to the topic's JSON file, relative to data/topics/ (e.g.
+   *  "animation/south-park.json" or "animation/spongebob/characters.json"). */
+  path: string;
+  /** Languages the topic fully supports; absent = unspecified (no warning). */
+  languages?: string[];
   groupCount: number;
   wordCount: number;
 }
@@ -44,15 +42,21 @@ export interface Manifest {
   categories?: Record<string, CategoryMeta>;
 }
 
-/** A word entry: a plain string, or a short/long name pair (for the Names mode). */
+/** A renderable word: a plain string, or a short/long name pair (Names mode). */
 export type Word = string | { short: string; long: string };
+
+/** A word entry in a list: a Word, or a per-language map of Words whose keys are
+ *  language codes ("en" is the base; languages equal to "en" are omitted). */
+export type WordEntry = Word | Record<string, Word>;
 
 /** A group of words: either a flat `words` list or ordered fame `tiers`. */
 export interface Group {
   id: string;
   title: string;
-  words?: Word[];
-  tiers?: Word[][];
+  /** Per-language group titles, present only when the group name translates. */
+  titles?: Record<string, string>;
+  words?: WordEntry[];
+  tiers?: WordEntry[][];
 }
 
 /** A named bundle of group ids within a topic. */
@@ -62,14 +66,16 @@ export interface Preset {
   groups: string[];
 }
 
-/** A single topic data file (data/topics/<id>/<file>.json). */
+/** A single topic data file (data/topics/<…>/<file>.json). */
 export interface Topic {
   id: string;
   title: string;
+  /** Per-language titles, when the topic name translates. */
+  titles?: Record<string, string>;
   icon?: string;
   description?: string;
-  /** Present only on translated variants; absent on language-neutral files. */
-  lang?: string;
+  /** Languages this topic fully supports; absent = language-neutral. */
+  languages?: string[];
   /** ISO date (YYYY-MM-DD) the list's contents last changed. */
   lastUpdated?: string;
   /** ISO date (YYYY-MM-DD) the list was last verified against its source. */
