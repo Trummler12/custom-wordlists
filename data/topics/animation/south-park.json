@@ -4,6 +4,11 @@
   "icon": "⛄",
   "description": "South Park characters (English names; curated from the fandom wikis). Fame tiers: Main+Major, Supporting, Recurring+Classic (per the Major_Characters portal), then alter-egos, the tail by notability, and deep cuts. Entries carry a short (common) and long (full) name; use the per-group Names dropdown to pick short / long / both.",
   "languages": ["de","en"],
+  "sources": [
+    "German: https://southpark.fandom.com/de/wiki/Kategorie:Charaktere",
+    "English: https://southpark.fandom.com/wiki/Category:Characters",
+    "English XXL: https://southpark.fandom.com/wiki/Portal:Characters"
+  ],
   "lastUpdated": "2026-08-02",
   "lastChecked": "2026-08-02",
   "groups": [

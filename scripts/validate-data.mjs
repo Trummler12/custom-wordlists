@@ -5,9 +5,10 @@
 //   2. no duplicate words within a topic file
 //   3. every language used in an entry's language map is listed in `languages`
 //   4. category folder names are kebab-case (like ids)
+// Plus one non-fatal warning: a `sources` entry that carries no URL.
 // Every JSON file (except `_category.json`) is one topic; a folder is a category
 // when it has a subfolder, a `_category.json`, or ≥2 topic files, else a folder
-// with one topic file is a leaf topic. Exits non-zero on any problem. See PLANNING §4.1.
+// with one topic file is a leaf topic. Exits non-zero on any problem. See docs/archive/PLANNING.md §4.1.
 import { readFile, readdir } from "node:fs/promises";
 import { join, dirname, basename } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -21,6 +22,9 @@ const CATEGORY_SCHEMA_FILE = join(ROOT, "schema", "category.schema.json");
 
 const LANG_RE = /^[a-z]{2}(-[A-Z]{2})?$/;
 const KEBAB_RE = /^[a-z0-9]+(-[a-z0-9]+)*$/;
+// `sources` items are free-form so they can carry a label ("German: https://…"),
+// hence a loose "is there a link in here at all" check rather than a URL pattern.
+const URL_RE = /https?:\/\/\S/;
 // Sidecar filename holding a category node's display metadata (never a topic).
 const CATEGORY_META = "_category.json";
 
@@ -112,6 +116,7 @@ async function main() {
   const validateCategory = ajv.compile(categorySchema);
 
   const errors = [];
+  const warnings = [];
   let found = { topics: [], categories: [] };
   try {
     found = await collectTopics([]);
@@ -205,6 +210,18 @@ async function main() {
         errors.push(`${rel}: entry uses language "${l}" not listed in languages [${[...declared].join(", ")}]`);
       }
     }
+
+    // 4. sources should point somewhere — a warning, since a source can legitimately
+    //    be an offline one (a printed guide, an in-game list).
+    const sources = topic.sources == null ? [] : [topic.sources].flat();
+    for (const s of sources) {
+      if (!URL_RE.test(s)) warnings.push(`${rel}: source has no URL — "${s}"`);
+    }
+  }
+
+  if (warnings.length > 0) {
+    console.warn(`validate-data: ${warnings.length} warning(s):`);
+    for (const w of warnings) console.warn("  - " + w);
   }
 
   if (errors.length > 0) {

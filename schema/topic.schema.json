@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://trummler12.github.io/custom-wordlists/schema/topic.schema.json",
   "title": "Topic",
-  "description": "One word-list topic (a single file; entries carry their own per-language forms). See docs/PLANNING.md §4.",
+  "description": "One word-list topic (a single file; entries carry their own per-language forms). See docs/archive/PLANNING.md §4.",
   "type": "object",
   "additionalProperties": false,
   "required": ["id", "title", "groups"],
@@ -27,6 +27,14 @@
       "uniqueItems": true,
       "description": "Languages this topic fully supports. The frontend flags a topic (⚠️) when the selected language isn't listed — including when this field is omitted (support undeclared, shown even for English). Declare the languages to confirm support, including for a language-neutral list whose entries read the same in every locale.",
       "items": { "type": "string", "pattern": "^[a-z]{2}(-[A-Z]{2})?$" }
+    },
+    "sources": {
+      "allOf": [{ "$ref": "#/$defs/stringOrList" }],
+      "description": "Where the entries came from — one string or a list of them. Free-form, so a label can precede the link (\"German: https://…\"); validate-data warns when an item contains no URL."
+    },
+    "credits": {
+      "allOf": [{ "$ref": "#/$defs/stringOrList" }],
+      "description": "Who compiled or curated this list — one string or a list of them. Free-form: a name, a handle, an issue link."
     },
     "lastUpdated": {
       "type": "string",
@@ -53,6 +61,13 @@
       "type": "string",
       "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$",
       "description": "Kebab-case identifier."
+    },
+    "stringOrList": {
+      "oneOf": [
+        { "type": "string", "minLength": 1 },
+        { "type": "array", "minItems": 1, "uniqueItems": true, "items": { "type": "string", "minLength": 1 } }
+      ],
+      "description": "A single string, or a list of them when there is more than one."
     },
     "langMapString": {
       "type": "object",
