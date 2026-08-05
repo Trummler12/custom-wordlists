@@ -11,7 +11,8 @@ body:
         template instead — this one is for whole lists.
 
         Discussion is welcome: others may spot mistakes or suggest better fame ordering
-        in the thread before this becomes a pull request. See issue #17 for a worked example.
+        in the thread before this becomes a pull request. See the
+        [worked example](https://github.com/Trummler12/custom-wordlists/issues/17).
   - type: input
     id: topic
     attributes:
