@@ -1,7 +1,7 @@
 name: 🔧 Correction / small fix
 description: A wrong or missing entry, a fame-group tweak, or a missing translation.
 title: "🔧 <Topic> — <short summary>"
-labels: ["correction"]
+labels: ["Correction 🔧"]
 body:
   - type: markdown
     attributes:

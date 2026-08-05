@@ -1,7 +1,7 @@
 name: 📋 Word list — new or rework
 description: Propose a new word list, or a full rework of an existing one.
 title: "📋 <Topic> — <short summary>"
-labels: ["word-list"]
+labels: ["List 📋"]
 body:
   - type: markdown
     attributes:

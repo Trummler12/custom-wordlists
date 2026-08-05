@@ -1,7 +1,7 @@
 name: 💻 Code — bug or improvement
 description: Something in the app is broken, or an idea for how it could work better.
 title: "💻 <short summary>"
-labels: ["code"]
+labels: ["Code 💻"]
 body:
   - type: markdown
     attributes:
@@ -15,7 +15,7 @@ body:
       label: Kind
       options:
         - Bug — something doesn't work as it should
-        - Improvement — an idea for how it could work better
+        - Improvement — a concrete proposal for how it could work better
     validations:
       required: true
   - type: textarea
