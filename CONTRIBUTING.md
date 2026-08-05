@@ -14,10 +14,10 @@ Thanks for helping make the word lists better!
 You don't need to touch any code.
 
 1. Open an issue with a template: **Word list** (a new list or a full rework) or **Correction / small fix** (a wrong/missing entry, a fame-group tweak, a missing translation).
-2. For a small fix, just describe it. For a whole list, follow the format in the [template](https://github.com/Trummler12/custom-wordlists/issues/17): entries grouped by fame under `### FG 1`, `### FG 2`, … (most iconic first, around 10 in FG 1), **one entry per line**. Write just the English name when it's the same everywhere; add `de: …; es: …;` **only** for languages that differ from English. Give the **fullest** name a character has (`Eric Cartman`, not just `Cartman`) — an optional short form can be derived from it.
+2. For a small fix, just describe it. For a whole list, follow the format in the [worked example](https://github.com/Trummler12/custom-wordlists/issues/17): entries grouped by fame under `### FG 1`, `### FG 2`, … (most iconic first, around 10 in FG 1), **one entry per line**. Write just the English name when it's the same everywhere; add `de: …; es: …;` **only** for languages that differ from English. Give the **fullest** name a character has (`Eric Cartman`, not just `Cartman`) — an optional short form can be derived from it.
 3. **Discuss it.** Others (and the maintainer) may spot mistakes or suggest better fame ordering right in the issue thread — refine the proposal together before it's turned into a pull request. A maintainer converts an accepted proposal into the data files.
 
-See issue **#17** for a full worked example.
+See [issue #17](https://github.com/Trummler12/custom-wordlists/issues/17) for a full worked example.
 
 ## Option B — fork & pull request
 
@@ -27,11 +27,12 @@ Prefer to edit the data yourself:
 2. Word lists live in [`data/topics/**`](https://github.com/Trummler12/custom-wordlists/tree/main/data/topics) — **one JSON file per topic**, described by [`schema/topic.schema.json`](schema/topic.schema.json).
    - A folder is a category; a single JSON file (loose in a category, or alone in a folder named after the topic) is a topic.
    - An entry is a plain string, a `{ "short": …, "long": … }` name pair, or localizes at the leaf: `{ "en": …, "de": … }` — only the part that differs from English carries a language map. See `data/topics/animation/south-park.json` for the full range.
-   - A topic may declare `"languages"` (the languages it fully supports) and per-language `"titles"` for its display name.
+   - A topic may declare `"languages"` (the languages it fully supports) and per-language `"titles"` for its display name. Every language an entry uses must be listed there, and `"en"` is always part of it — so if you add a `"de"` translation, add `"de"` to `"languages"` too.
+   - Entries must be unique within a topic, and the topic's `"id"` must match its file stem (or, for a topic alone in its own folder, the folder name).
 3. Validate before opening the PR:
    ```bash
    npm install
-   npm run validate   # data against the schema + cross-checks
+   npm run validate   # data against the schema + the cross-checks above
    npm run check      # frontend type-check
    ```
 4. Open the PR against `main`. The maintainer reviews and merges.
