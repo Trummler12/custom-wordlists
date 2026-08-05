@@ -14,7 +14,7 @@ Thanks for helping make the word lists better!
 You don't need to touch any code.
 
 1. Open an issue with a template: **Word list** (a new list or a full rework) or **Correction / small fix** (a wrong/missing entry, a fame-group tweak, a missing translation).
-2. For a small fix, just describe it. For a whole list, follow the format in the [worked example](https://github.com/Trummler12/custom-wordlists/issues/17): entries grouped by fame under `### FG 1`, `### FG 2`, … (most iconic first, around 10 in FG 1), **one entry per line**. Write just the English name when it's the same everywhere; add `de: …; es: …;` **only** for languages that differ from English. Give the **fullest** name a character has (`Eric Cartman`, not just `Cartman`) — an optional short form can be derived from it.
+2. For a small fix, just describe it. For a whole list, follow the format in the [worked example](https://github.com/Trummler12/custom-wordlists/issues/17): entries sorted into **fame groups** — `### FG 1`, `### FG 2`, … — most iconic first, around 10 in FG 1, **one entry per line**. Write just the English name when it's the same everywhere; add `de: …; es: …;` **only** for languages that differ from English. Give the **fullest** name a character has (`Eric Cartman`, not just `Cartman`) — an optional short form can be derived from it.
 3. **Discuss it.** Others (and the maintainer) may spot mistakes or suggest better fame ordering right in the issue thread — refine the proposal together before it's turned into a pull request. A maintainer converts an accepted proposal into the data files.
 
 See [issue #17](https://github.com/Trummler12/custom-wordlists/issues/17) for a full worked example.
@@ -29,6 +29,7 @@ Prefer to edit the data yourself:
    - An entry is a plain string, a `{ "short": …, "long": … }` name pair, or localizes at the leaf: `{ "en": …, "de": … }` — only the part that differs from English carries a language map. See `data/topics/animation/south-park.json` for the full range.
    - A topic may declare `"languages"` (the languages it fully supports) and per-language `"titles"` for its display name. Every language an entry uses must be listed there, and `"en"` is always part of it — so if you add a `"de"` translation, add `"de"` to `"languages"` too.
    - Entries must be unique within a topic, and the topic's `"id"` must match its file stem (or, for a topic alone in its own folder, the folder name).
+   - A **fame group** (`FG 1`, `FG 2`, … in a proposal) is one entry of a group's `"tiers"` array — the schema and the app call these *tiers* (`FG 1` = tier 0). Careful: `"groups"` in the JSON means something else entirely, namely the subtopic that carries its own checkbox (e.g. "Characters").
 3. Validate before opening the PR:
    ```bash
    npm install
