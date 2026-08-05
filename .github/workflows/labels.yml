@@ -1,0 +1,94 @@
+# Two small label chores GitHub can't express on its own (see docs/LABELS.md):
+#   1. turn the issue forms' "Kind" dropdown into a real label, and
+#   2. keep at most one `priority: …` label on an issue.
+name: Labels
+
+on:
+  issues:
+    types: [opened, labeled]
+
+permissions:
+  issues: write
+
+jobs:
+  kind:
+    # Only on creation: re-running on every edit could strip a label a maintainer
+    # set by hand, which is more surprising than a stale one after a body edit.
+    if: github.event.action == 'opened'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/github-script@v7
+        with:
+          script: |
+            // Issue forms render each answer as "### <field label>" + the value, so the
+            // dropdown's first word ("New", "Bug", …) identifies the choice.
+            const KIND_LABELS = {
+              New: "New 🆕",
+              Rework: "Rework 🛠️",
+              Language: "Language 🌐",
+              Bug: "Bug 🐛",
+              Improvement: "Improvement ⚙️",
+            };
+
+            const body = context.payload.issue.body || "";
+            const sections = {};
+            for (const block of body.split(/^###[ \t]+/m).slice(1)) {
+              const nl = block.indexOf("\n");
+              const heading = (nl === -1 ? block : block.slice(0, nl)).trim();
+              // First occurrence wins: a "### Kind" pasted into a later free-text field
+              // must not shadow the real dropdown, which always comes at a fixed spot.
+              if (!(heading in sections)) {
+                sections[heading] = nl === -1 ? "" : block.slice(nl + 1).trim();
+              }
+            }
+
+            // "Kind of proposal" on the word-list form, plain "Kind" on the code form.
+            const answer = sections["Kind of proposal"] ?? sections["Kind"] ?? "";
+            const label = KIND_LABELS[answer.split(/\s+/)[0]];
+            if (!label) {
+              core.info(`No kind label for answer: ${JSON.stringify(answer)}`);
+              return;
+            }
+
+            const existing = context.payload.issue.labels.map((l) => l.name);
+            if (existing.includes(label)) return;
+
+            await github.rest.issues.addLabels({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.payload.issue.number,
+              labels: [label],
+            });
+            core.info(`Added ${label}`);
+
+  priority:
+    # Removing a label fires `unlabeled`, never `labeled`, so this cannot loop.
+    # Quoted because "priority: " contains a colon-space, which YAML would otherwise
+    # read as a nested mapping.
+    if: "github.event.action == 'labeled' && startsWith(github.event.label.name, 'priority: ')"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/github-script@v7
+        with:
+          script: |
+            // Most severe first — everything below the highest present gets dropped.
+            const ORDER = [
+              "priority: critical",
+              "priority: high",
+              "priority: medium",
+              "priority: low",
+            ];
+
+            const current = context.payload.issue.labels.map((l) => l.name);
+            const present = ORDER.filter((p) => current.includes(p));
+            if (present.length < 2) return;
+
+            for (const surplus of present.slice(1)) {
+              await github.rest.issues.removeLabel({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.payload.issue.number,
+                name: surplus,
+              });
+              core.info(`Removed ${surplus}, kept ${present[0]}`);
+            }
