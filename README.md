@@ -4,7 +4,7 @@ Build your own custom word lists for **[skribbl.io](https://skribbl.io)**, Coden
 
 **▶ Live: <https://trummler12.github.io/custom-wordlists/>**
 
-<!-- TODO: add a screenshot or short GIF of the tool here, e.g. ![screenshot](docs/screenshot.png) -->
+<!-- TODO: add a screenshot or short GIF of the tool here, e.g. ![screenshot](docs/assets/screenshot.png) -->
 
 ## What it does
 
@@ -50,4 +50,6 @@ Svelte 5 (runes) · Vite · TypeScript, deployed as a static site to GitHub Page
 
 ## License
 
-[MIT](LICENSE).
+The code is [MIT](LICENSE).
+
+The word lists are collections of **names** — characters, creatures, places and the like — compiled from public sources such as fandom wikis; no descriptions or other prose is copied from them. Each topic file names its own sources in its `sources` field. If you hold rights to something here and would rather it weren't, open an issue and it comes out.
