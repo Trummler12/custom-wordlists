@@ -1,0 +1,46 @@
+name: 💻 Code — bug or improvement
+description: Something in the app is broken, or an idea for how it could work better.
+title: "💻 <short summary>"
+labels: ["code"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        This one is about the **tool itself** — the site, the UI, the build. For anything
+        about the *contents* of a word list, use the **Word list** or
+        **Correction / small fix** template instead.
+  - type: dropdown
+    id: kind
+    attributes:
+      label: Kind
+      options:
+        - Bug — something doesn't work as it should
+        - Improvement — an idea for how it could work better
+    validations:
+      required: true
+  - type: textarea
+    id: what
+    attributes:
+      label: What's happening / what should change
+      description: For a bug, what you saw and what you expected instead. For an idea, what it would let you do.
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      description: Bugs only — how to trigger it. Screenshots welcome.
+      placeholder: |
+        1. Select the Pokémon topic
+        2. Drag the fame slider to …
+        3. The word count stays at 0
+    validations:
+      required: false
+  - type: input
+    id: environment
+    attributes:
+      label: Browser & device
+      description: Bugs only — helps when something renders or behaves differently.
+      placeholder: e.g. Firefox 141 on Windows 11, or Safari on iPhone
+    validations:
+      required: false
