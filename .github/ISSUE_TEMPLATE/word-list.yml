@@ -45,7 +45,6 @@ body:
         `de: …; es: …;` only for languages that differ from English. Give the fullest name
         a character has (`Eric Cartman`, not just `Cartman`) — the short form is derived
         from it; the reverse would mean looking up every surname by hand.
-      render: text
       placeholder: |
         ### FG 1
         Eric Cartman
