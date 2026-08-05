@@ -1,6 +1,6 @@
-name: Word list — new or rework
+name: 📋 Word list — new or rework
 description: Propose a new word list, or a full rework of an existing one.
-title: "[Word List] <Topic> — <short summary>"
+title: "📋 <Topic> — <short summary>"
 labels: ["word-list"]
 body:
   - type: markdown
@@ -12,12 +12,24 @@ body:
 
         Discussion is welcome: others may spot mistakes or suggest better fame ordering
         in the thread before this becomes a pull request. See the
-        [worked example](https://github.com/Trummler12/custom-wordlists/issues/17).
+        [worked example](https://github.com/Trummler12/custom-wordlists/issues/17), and
+        the [topic tracker](https://github.com/Trummler12/custom-wordlists/issues/16)
+        for what is already covered or in progress.
   - type: input
     id: topic
     attributes:
       label: Topic
       placeholder: e.g. South Park characters
+    validations:
+      required: true
+  - type: dropdown
+    id: kind
+    attributes:
+      label: Kind of proposal
+      options:
+        - New — a topic that isn't covered yet
+        - Rework — a full overhaul of an existing list
+        - Language — adding or fixing a language on an existing list
     validations:
       required: true
   - type: textarea

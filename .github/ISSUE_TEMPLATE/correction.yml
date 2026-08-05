@@ -1,6 +1,6 @@
-name: Correction / small fix
+name: 🔧 Correction / small fix
 description: A wrong or missing entry, a fame-group tweak, or a missing translation.
-title: "[Fix] <Topic> — <short summary>"
+title: "🔧 <Topic> — <short summary>"
 labels: ["correction"]
 body:
   - type: markdown
