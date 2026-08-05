@@ -1,0 +1,68 @@
+name: Word list — new or rework
+description: Propose a new word list, or a full rework of an existing one.
+title: "[Word List] <Topic> — <short summary>"
+labels: ["word-list"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for contributing a list! For a **small fix** (one wrong/missing entry, a
+        fame-group tweak, a missing translation) use the **Correction / small fix**
+        template instead — this one is for whole lists.
+
+        Discussion is welcome: others may spot mistakes or suggest better fame ordering
+        in the thread before this becomes a pull request. See issue #17 for a worked example.
+  - type: input
+    id: topic
+    attributes:
+      label: Topic
+      placeholder: e.g. South Park characters
+    validations:
+      required: true
+  - type: textarea
+    id: what-why
+    attributes:
+      label: What & why
+      description: One or two sentences — which topic, why it fits, or (for a rework) what's wrong with the current list.
+    validations:
+      required: true
+  - type: textarea
+    id: sources
+    attributes:
+      label: Sources
+      description: Links that back the entries (fandom wikis, official lists…). Optional but appreciated.
+    validations:
+      required: false
+  - type: textarea
+    id: entries
+    attributes:
+      label: Proposed entries
+      description: >
+        One entry per line, grouped by fame under `### FG 1`, `### FG 2`, … — most iconic
+        first (~10 in FG 1). The number of groups is open-ended and rarely below 5 (100+
+        entries want ~5–6, 300+ want 10 or more), with the last group(s) a long tail of
+        deep cuts. Write just the English name when it's the same everywhere; add
+        `de: …; es: …;` only for languages that differ from English. Give the fullest name
+        a character has (`Eric Cartman`, not just `Cartman`) — the short form is derived
+        from it; the reverse would mean looking up every surname by hand.
+      render: text
+      placeholder: |
+        ### FG 1
+        Eric Cartman
+        Stan Marsh
+        Kyle Broflovski
+        en: Chef; de: Chefkoch;
+
+        ### FG 2
+        en: Mayor McDaniels; de: Bürgermeisterin McDaniels;
+        en: Santa; de: Weihnachtsmann;
+        Satan
+    validations:
+      required: true
+  - type: textarea
+    id: notes
+    attributes:
+      label: Notes
+      description: Anything else — e.g. which entries deserve a short/long variant, or open questions.
+    validations:
+      required: false

@@ -1,0 +1,27 @@
+name: Correction / small fix
+description: A wrong or missing entry, a fame-group tweak, or a missing translation.
+title: "[Fix] <Topic> — <short summary>"
+labels: ["correction"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        For a whole new list or a full rework, use the **Word list** template instead.
+  - type: input
+    id: topic
+    attributes:
+      label: Which list / topic
+      placeholder: e.g. South Park characters
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: What's wrong / what to change
+      description: Describe it in a sentence or two. Links to sources are welcome.
+      placeholder: |
+        "Chef" is listed with his real name as the long form, but "Chef" and
+        "Jerome McElroy" are known very differently — they should be separate entries
+        in different fame groups.
+    validations:
+      required: true
