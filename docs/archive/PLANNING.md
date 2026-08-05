@@ -1,5 +1,12 @@
 # Custom Wordlists — Project Planning
 
+> ⚠️ **Archived.** This is the pre-implementation planning document, kept for the reasoning
+> behind the design. Parts of it no longer describe the code — §0's data layout
+> (`de.json` / `en.json` per topic folder) was superseded by one file per topic with
+> per-entry language maps. The authoritative descriptions are
+> [`schema/topic.schema.json`](../../schema/topic.schema.json) and
+> [`CONTRIBUTING.md`](../../CONTRIBUTING.md).
+
 > Status: **Ready v4** — reviewed for consistency; all decisions & content questions answered (§0, §6.1, §10). Ready to start M0. Only remaining external input: the broader Reddit topic list must be pasted in for M4 (Reddit blocks automated fetch).
 > Repo: `github.com/Trummler12/custom-wordlists` → GitHub Pages at `trummler12.github.io/custom-wordlists`
 > Goal: A static, GitHub-Pages-hosted tool where a visitor picks topics/subtopics, tunes how many words they want, and copies a ready-to-paste custom word list for **skribbl.io** (and similar word games).
