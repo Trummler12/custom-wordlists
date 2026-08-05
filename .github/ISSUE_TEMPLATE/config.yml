@@ -1,0 +1,6 @@
+# Keep blank issues on, so people can open plain discussion/question threads too.
+blank_issues_enabled: true
+contact_links:
+  - name: Contribution guide
+    url: https://github.com/Trummler12/custom-wordlists/blob/main/CONTRIBUTING.md
+    about: How to propose word lists and fixes (Option A via issues, or Option B via a PR).
