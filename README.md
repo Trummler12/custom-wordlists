@@ -14,6 +14,18 @@ Build your own custom word lists for **[skribbl.io](https://skribbl.io)**, Coden
 - **Multi-language** — switch the UI and the list content between languages (currently English & German); entries fall back to English where a translation isn't provided yet.
 - **skribbl-ready output** — de-duplicated, with live word/character counts and the skribbl limits checked for you.
 
+### Progress
+
+The tool itself does what it needs to; the word lists are the young part. Most are sketched out rather than finished, which is exactly where help from the community makes the difference — see [Contributing](#contributing) below.
+
+[Here](docs/Topic-Progress.md) is every topic planned so far and how far along it is (in English — other languages trail behind).
+
+### Future plans
+
+The obvious next steps are finishing the lists that exist, adding the ones that don't, and supporting more languages.
+
+[Here](docs/Language-Roadmap.md) is the rough order in which those languages are meant to arrive.
+
 ## Contributing
 
 Contributions are very welcome — new lists, fixes to existing ones, better fame ordering, or missing languages. **You don't need to write any code:** the easiest way is to open an issue.
