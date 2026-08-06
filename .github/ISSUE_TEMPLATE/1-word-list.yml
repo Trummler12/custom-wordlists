@@ -1,5 +1,5 @@
 name: 📋 Word list — new or rework
-description: Propose a new word list, or a full rework of an existing one.
+description: Propose a new word list, or a rework or an added language for an existing one.
 title: "📋 <Topic> — <short summary>"
 labels: ["List 📋"]
 body:
@@ -22,7 +22,7 @@ body:
       label: Kind of proposal
       options:
         - New — a topic that isn't covered yet
-        - Rework — a full overhaul of an existing list
+        - Rework — an overhaul of an existing list
         - Language — adding or fixing a language on an existing list
     validations:
       required: true
