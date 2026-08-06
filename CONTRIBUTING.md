@@ -16,7 +16,7 @@ The [topic tracker](https://github.com/Trummler12/custom-wordlists/issues/16) sh
 
 You don't need to touch any code.
 
-1. Open an issue with a template: **Word list** (a new list or a full rework), **Correction / small fix** (a wrong/missing entry, a fame-group tweak, a missing translation), or **Code** (anything about the app rather than a list).
+1. [Open an issue](https://github.com/Trummler12/custom-wordlists/issues) with a template: **Word list** (a new list or a full rework), **Correction / small fix** (a wrong/missing entry, a fame-group tweak, a missing translation), or **Code** (anything about the app rather than a list).
 2. For a small fix, just describe it. For a whole list, follow the format in the [worked example](https://github.com/Trummler12/custom-wordlists/issues/17): entries sorted into **fame groups** — `### FG 1`, `### FG 2`, … — most iconic first, around 10 in FG 1, **one entry per line**. Write just the English name when it's the same everywhere; add `de: …; es: …;` **only** for languages that differ from English. Give the **fullest** name a character has (`Eric Cartman`, not just `Cartman`) — an optional short form can be derived from it.
 3. **Discuss it.** Others (and the maintainer) may spot mistakes or suggest better fame ordering right in the issue thread — refine the proposal together before it's turned into a pull request. A maintainer converts an accepted proposal into the data files.
 
