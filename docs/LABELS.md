@@ -27,9 +27,9 @@ Applied automatically by the form. Exactly one per issue.
 
 | Label | Applied by | Meaning |
 |---|---|---|
-| `List 📋` | `word-list.yml` | A whole word list: new, a full rework, or a new language |
-| `Correction 🔧` | `correction.yml` | A wrong or missing entry, a fame-group tweak, a translation |
-| `Code 💻` | `bug.yml`, `improvement.yml` | The app itself — site, UI, build |
+| `List 📋` | `1-word-list.yml` | A whole word list: new, a full rework, or a new language |
+| `Correction 🔧` | `2-correction.yml` | A wrong or missing entry, a fame-group tweak, a translation |
+| `Code 💻` | `3-bug.yml`, `4-improvement.yml` | The app itself — site, UI, build |
 
 `Correction 🔧` is deliberately content-only. A wrong entry in a list is not a `Bug 🐛`;
 keeping them apart is what makes `Bug 🐛` usable as a filter for "the app is broken".
@@ -47,8 +47,8 @@ the template chooser.
 | `New 🆕` | `List 📋` | A topic that wasn't covered yet |
 | `Rework 🛠️` | `List 📋` | A full overhaul of an existing list |
 | `Language 🌐` | `List 📋` | Adds or fixes a language |
-| `Bug 🐛` | `bug.yml` | Something doesn't work as it should |
-| `Improvement ⚙️` | `improvement.yml` | A concrete proposal for how something could work better |
+| `Bug 🐛` | `3-bug.yml` | Something doesn't work as it should |
+| `Improvement ⚙️` | `4-improvement.yml` | A concrete proposal for how something could work better |
 
 `Idea 💡` is **not** in the dropdown on purpose: an open-ended idea versus a concrete
 proposal is a distinction the reporter shouldn't have to agonise over. Apply it on triage
