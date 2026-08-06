@@ -1,0 +1,23 @@
+name: ⚙️ Improvement — an idea for the app
+description: A proposal for how the tool could work better.
+title: "💻 <short summary>"
+labels: ["Code 💻", "Improvement ⚙️"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        This one is about the **tool itself** — the site, the UI, the build. For anything about the *contents* of a word list, use the **Word list** or **Correction / small fix** template instead. If something is outright broken, use **Bug**.
+  - type: textarea
+    id: what
+    attributes:
+      label: What should change
+      description: What it would let you do, and what stands in the way today.
+    validations:
+      required: true
+  - type: textarea
+    id: notes
+    attributes:
+      label: Notes
+      description: Anything else — sketches, examples, or how other tools solve it.
+    validations:
+      required: false
