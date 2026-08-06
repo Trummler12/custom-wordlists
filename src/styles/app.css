@@ -124,7 +124,10 @@ header {
   margin: 0 auto;
   padding: 0 1rem;
   display: flex;
-  flex-wrap: wrap;
+  /* Single line while the bar is a fixed --footer-h tall — a wrapped second
+     line would spill out of it. The stacked layout below re-enables wrapping,
+     where the bar grows with its content. */
+  flex-wrap: nowrap;
   gap: 0.25rem 1.5rem;
 }
 /* Both halves grow equally, so each keeps its own edge alignment — and still
@@ -149,6 +152,10 @@ header {
     /* Full-bleed border across the narrow viewport, despite main's padding. */
     margin: 1rem -1rem 0;
     padding: 0.6rem 0;
+  }
+  .footer-inner {
+    /* Height is free here, so the two halves may take a line each. */
+    flex-wrap: wrap;
   }
 }
 
