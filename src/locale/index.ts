@@ -40,6 +40,14 @@ export interface UIStrings {
   languageMenu: string;
   /** Warning marker for a topic that doesn't fully support the selected language. */
   langUnsupported: (language: string) => string;
+  /** Footer: label of the link to the repository. */
+  repository: string;
+  /** Footer, around the inline guide link: "<helpOut> <guide><helpOutAfter>".
+   *  `helpOutAfter` carries the trailing punctuation, which German and English
+   *  place differently around the link. */
+  helpOut: string;
+  contributionGuide: string;
+  helpOutAfter: string;
 }
 
 import { en } from "./en";

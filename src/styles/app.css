@@ -22,11 +22,15 @@ a {
    lives in the left column so the output panel can span the full viewport height
    from the very top. */
 main {
-  max-width: 60rem;
+  max-width: var(--content-max);
   margin: var(--output-gap) auto;
-  padding: 0 1rem;
+  /* Bottom padding clears the pinned footer; the stacked layout drops it again. */
+  padding: 0 1rem var(--footer-h);
 }
 h1 {
+  /* No top margin: the browser default would push the title below the output
+     column, which starts at --output-gap. */
+  margin-top: 0;
   margin-bottom: 0.25rem;
 }
 h2 {
@@ -69,16 +73,16 @@ header {
 }
 
 /* Output panel: sticky and always full viewport height (minus --output-gap top +
-   bottom), independent of the word count. The tall left column keeps the sticky
-   pinned through the whole page scroll. Flex column — the chips grow and scroll
-   inside, the counter stays at the bottom. */
+   bottom and the pinned footer), independent of the word count. The tall left
+   column keeps the sticky pinned through the whole page scroll. Flex column —
+   the chips grow and scroll inside, the counter stays at the bottom. */
 .output {
   position: sticky;
   top: var(--output-gap);
   align-self: start;
   display: flex;
   flex-direction: column;
-  height: calc(100vh - 2 * var(--output-gap));
+  height: calc(100vh - 2 * var(--output-gap) - var(--footer-h));
   min-height: 0;
 }
 @media (max-width: 40rem) {
@@ -90,6 +94,68 @@ header {
   .chips {
     flex: none;
     max-height: min(24rem, calc(100vh - 6rem));
+  }
+}
+
+/* Footer: the repo links. Wide layout pins it to the viewport bottom so it stays
+   reachable beside the sticky output column (which reserves room for it above).
+   Stacked layout un-pins it, so it comes to rest below the output block and
+   scrolls with the page instead of following the viewport. */
+.site-footer {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: var(--footer-h);
+  display: flex;
+  align-items: center;
+  font-size: 0.85rem;
+  color: var(--muted);
+  /* Opaque so the scrolling left column passes behind it. `Canvas` is the
+     browser's own page background, which follows the color-scheme like the
+     rest of the page (body sets no background of its own). */
+  background: Canvas;
+  border-top: 1px solid var(--border);
+}
+/* Same content box as main, so the ends sit flush with the columns above. */
+.footer-inner {
+  width: 100%;
+  max-width: var(--content-max);
+  margin: 0 auto;
+  padding: 0 1rem;
+  display: flex;
+  /* Single line while the bar is a fixed --footer-h tall — a wrapped second
+     line would spill out of it. The stacked layout below re-enables wrapping,
+     where the bar grows with its content. */
+  flex-wrap: nowrap;
+  gap: 0.25rem 1.5rem;
+}
+/* Both halves grow equally, so each keeps its own edge alignment — and still
+   does once they wrap onto separate lines, where each spans the full width. */
+.footer-help,
+.footer-repo {
+  flex: 1 1 auto;
+}
+.footer-repo {
+  text-align: right;
+}
+.site-footer a {
+  color: inherit;
+}
+@media (max-width: 40rem) {
+  main {
+    padding-bottom: 0;
+  }
+  .site-footer {
+    position: static;
+    height: auto;
+    /* Full-bleed border across the narrow viewport, despite main's padding. */
+    margin: 1rem -1rem 0;
+    padding: 0.6rem 0;
+  }
+  .footer-inner {
+    /* Height is free here, so the two halves may take a line each. */
+    flex-wrap: wrap;
   }
 }
 

@@ -32,6 +32,11 @@
      `after` is the smaller gap down to its first child (category → topic). */
   --gap-before-cat: 0.7rem;
   --gap-after-cat: 0.2rem;
+  /* Content width shared by <main> and the footer bar, so their edges line up. */
+  --content-max: 60rem;
   /* Space kept above and below the full-height sticky output panel. */
   --output-gap: 1rem;
+  /* Height of the pinned footer bar. The sticky output panel subtracts it from
+     its own height, so the two never overlap (see .site-footer in app.css). */
+  --footer-h: 2.25rem;
 }

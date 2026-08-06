@@ -6,7 +6,7 @@
 // stem is free). Folders above a topic form an arbitrarily deep category path
 // (e.g. "gaming" or "gaming/pokemon"); a `_category.json` carries optional
 // display metadata (title / titles / icon) for that category node.
-// Generated file; never hand-edited. See PLANNING §4.1.
+// Generated file; never hand-edited. See docs/archive/PLANNING.md §4.1.
 import { readFile, writeFile, readdir } from "node:fs/promises";
 import { join, dirname, basename } from "node:path";
 import { fileURLToPath } from "node:url";

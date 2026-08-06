@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://trummler12.github.io/custom-wordlists/schema/category.schema.json",
   "title": "Category",
-  "description": "Optional display metadata for a category folder, in a `_category.json` sidecar. Overrides the folder-name-derived title (which can't punctuate or translate) and can add a per-language name and an icon. See docs/PLANNING.md §4.",
+  "description": "Optional display metadata for a category folder, in a `_category.json` sidecar. Overrides the folder-name-derived title (which can't punctuate or translate) and can add a per-language name and an icon. See docs/archive/PLANNING.md §4.",
   "type": "object",
   "additionalProperties": false,
   "minProperties": 1,

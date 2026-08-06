@@ -1,6 +1,15 @@
 # Keep blank issues on, so people can open plain discussion/question threads too.
 blank_issues_enabled: true
 contact_links:
-  - name: Contribution guide
+  - name: 🗺️ Topic tracker — what's covered and what's planned
+    url: https://github.com/Trummler12/custom-wordlists/issues/16
+    about: Check here first — your topic may already be covered or in progress.
+  - name: 💡 Worked example of a word-list proposal
+    url: https://github.com/Trummler12/custom-wordlists/issues/17
+    about: A full proposal, filled in end to end, in the format the template expects.
+  - name: 🌍 Language roadmap
+    url: https://github.com/Trummler12/custom-wordlists/issues/15
+    about: Which languages are planned, and in what order.
+  - name: 📖 Contribution guide
     url: https://github.com/Trummler12/custom-wordlists/blob/main/CONTRIBUTING.md
     about: How to propose word lists and fixes (Option A via issues, or Option B via a PR).
