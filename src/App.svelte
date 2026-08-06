@@ -13,6 +13,8 @@
   // equal step, and the remaining travel is distributed by tier size. Lower =
   // more size-faithful spacing; higher = more even. Range (0, 1).
   const MIN_GAP_RATIO = 0.4;
+  // Repo home, used for the footer links.
+  const REPO_URL = "https://github.com/Trummler12/custom-wordlists";
   // Horizontal inset (px) that keeps the slider's end dots off the rail edges.
   // Must stay in sync with `--inset` in src/styles/app.css.
   const INSET_PX = 8;
@@ -679,4 +681,25 @@
       </section>
     {/if}
   </div>
+
+  <footer class="site-footer">
+    <!-- Inner box repeats main's content width so the two ends line up with the
+         topic column's left edge and the output panel's right edge. -->
+    <div class="footer-inner">
+      <span class="footer-help">
+        {ui.helpOut}
+        <a
+          href={REPO_URL + "?tab=contributing-ov-file#contributing"}
+          target="_blank"
+          rel="noopener noreferrer">{ui.contributionGuide}</a
+        >{ui.helpOutAfter}
+      </span>
+      <a
+        class="footer-repo"
+        href={REPO_URL + "#custom-wordlists"}
+        target="_blank"
+        rel="noopener noreferrer">{ui.repository}</a
+      >
+    </div>
+  </footer>
 </main>
