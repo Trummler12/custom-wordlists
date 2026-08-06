@@ -2,8 +2,8 @@
 blank_issues_enabled: true
 contact_links:
   # A divider, of sorts: GitHub offers none, and without one the templates above and the
-  # links below run into each other. Both fields are required and can't be blank, so the
-  # separator carries a link worth following instead of a dead one.
+  # links below run into each other. `name`, `url` and `about` are all required, so the
+  # separator can't be a blank row — it carries a link worth following instead.
   - name: 🌳
     url: https://impactful.ninja/best-charities-for-reforestation/
     about: 🌳🌳🌳🌳🌳🌳🌳🌳🌳🌳🌳🌳
