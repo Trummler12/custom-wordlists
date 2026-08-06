@@ -52,4 +52,4 @@ Svelte 5 (runes) · Vite · TypeScript, deployed as a static site to GitHub Page
 
 The code is [MIT](LICENSE).
 
-The word lists are collections of **names** — characters, creatures, places and the like — compiled from public sources such as fandom wikis; no descriptions or other prose is copied from them. Each topic file names its own sources in its `sources` field. If you hold rights to something here and would rather it weren't, open an issue and it comes out.
+The word lists are collections of **names** — characters, creatures, places and the like — compiled from public sources such as fandom wikis; no descriptions or other prose is copied from them. Ideally each topic file names its own sources in its `sources` field, and whoever compiled it in `credits` — that part is still work in progress. Many lists are only sketched out so far, with no source worth naming yet. If you hold rights to something here and would rather it weren't, open an issue and it comes out.
