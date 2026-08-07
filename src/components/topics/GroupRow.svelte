@@ -1,15 +1,13 @@
 <script lang="ts">
   import { setIndeterminate } from "../../lib/dom";
-  import { groupHasNames } from "../../lib/words";
-  import type { Group, NamesMode } from "../../lib/types";
+  import type { Group } from "../../lib/types";
   import { lang } from "../../state/lang.svelte";
   import { selection } from "../../state/selection.svelte";
   import { topics } from "../../state/topics.svelte";
   import FameDepthSlider from "./FameDepthSlider.svelte";
+  import NamesModeSelect from "./NamesModeSelect.svelte";
 
   let { tid, group }: { tid: string; group: Group } = $props();
-
-  const k = $derived(selection.key(tid, group.id));
 </script>
 
 <li>
@@ -23,18 +21,7 @@
       />
       <span class="title">{topics.groupTitle(group)}</span>
     </label>
-    {#if groupHasNames(group, lang.current)}
-      <select
-        class="names-mode"
-        aria-label={lang.ui.nameFormLabel(topics.groupTitle(group))}
-        value={selection.modeOf(k)}
-        onchange={(e) => selection.setMode(k, e.currentTarget.value as NamesMode)}
-      >
-        <option value="short">{lang.ui.nameForm.short}</option>
-        <option value="long">{lang.ui.nameForm.long}</option>
-        <option value="both">{lang.ui.nameForm.both}</option>
-      </select>
-    {/if}
+    <NamesModeSelect {tid} {group} label={topics.groupTitle(group)} />
     <span class="meta"
       >{lang.ui.wordsOf(selection.groupSelCount(tid, group), selection.groupTotal(tid, group))}</span
     >
