@@ -53,6 +53,20 @@
   // Which language menu is open (by instance id), or null. Two pickers share the
   // language but each has its own trigger.
   let langMenuOpen = $state<string | null>(null);
+  // Topic whose language warning shows its note, or null. A `title=` tooltip needs a
+  // hover, which touch devices don't have — so the ⚠️ is a button as well (issue #22).
+  let warnOpen = $state<string | null>(null);
+  // What kind of pointer last went down anywhere on the page. A click event doesn't
+  // carry that, and it decides whether the warning follows the cursor or the tap.
+  let lastPointerType = "mouse";
+  // Whether the open warning note sits above its row instead of below it.
+  let warnAbove = $state(false);
+  /** Open a topic's language note, flipping it above the row when the marker is low
+   *  enough that a note below would be cut off by the bottom of the viewport. */
+  function openWarn(id: string, marker: Element) {
+    warnAbove = marker.getBoundingClientRect().bottom > window.innerHeight * (2 / 3);
+    warnOpen = id;
+  }
 
   let copied = $state(false);
 
@@ -102,11 +116,20 @@
     langMenuOpen = null;
     setLanguage(l);
   };
-  function onWindowPointerDown(e: MouseEvent) {
-    if (langMenuOpen && !(e.target as Element)?.closest?.(".lang-picker")) langMenuOpen = null;
+  function onWindowPointerDown(e: PointerEvent) {
+    if (e.pointerType) lastPointerType = e.pointerType;
+    const target = e.target as Element | null;
+    if (langMenuOpen && !target?.closest?.(".lang-picker")) langMenuOpen = null;
+    // Only for pointers without hover — with a mouse, leaving the marker closes it.
+    if (warnOpen && lastPointerType !== "mouse" && !target?.closest?.(".lang-warning")) {
+      warnOpen = null;
+    }
   }
   function onWindowKeyDown(e: KeyboardEvent) {
-    if (e.key === "Escape") langMenuOpen = null;
+    if (e.key === "Escape") {
+      langMenuOpen = null;
+      warnOpen = null;
+    }
   }
 
   async function ensureLoaded(t: TopicSummary): Promise<Topic | null> {
@@ -502,13 +525,53 @@
                   <span class="icon" aria-hidden="true">{t.icon ?? "•"}</span>
                   <span class="title">{topicTitle(t)}</span>
                   {#if !t.languages?.includes(lang)}
-                    <span class="lang-warning" title={ui.langUnsupported(langName(lang))}>⚠️</span>
+                    <!-- A button, not a bare span: a `title` tooltip needs a hover, which
+                         touch devices don't have. Interactive content, so a click on it
+                         doesn't reach the surrounding <label>'s checkbox. -->
+                    <button
+                      type="button"
+                      class="lang-warning"
+                      aria-expanded={warnOpen === t.id}
+                      aria-controls={`lang-note-${t.id}`}
+                      aria-label={ui.langUnsupported(langName(lang))}
+                      onpointerenter={(e) => {
+                        if (e.pointerType === "mouse") openWarn(t.id, e.currentTarget);
+                      }}
+                      onpointerleave={(e) => {
+                        if (e.pointerType === "mouse") warnOpen = null;
+                      }}
+                      onfocus={(e) => openWarn(t.id, e.currentTarget)}
+                      onblur={() => (warnOpen = null)}
+                      onclick={(e) => {
+                        // With a mouse the hover above already governs the note; only
+                        // pointers that can't hover need the click to toggle it.
+                        if (lastPointerType === "mouse") return;
+                        if (warnOpen === t.id) warnOpen = null;
+                        else openWarn(t.id, e.currentTarget);
+                      }}>⚠️</button
+                    >
                   {/if}
                   <span class="meta">
                     {#if loadingById[t.id] && !topicData[t.id]}{ui.loadingShort}{:else}{ui.wordsOf(topicSelCount(t), topicTotal(t))}{/if}
                   </span>
                 </label>
               </div>
+              <!-- Outside the <label>, or clicking the note would toggle the topic.
+                   Spans the row, so it can't run out of the viewport on either side. -->
+              {#if warnOpen === t.id}
+                <!-- `tooltip`, not `status`: this is help text the reader asked for, not
+                     a live update that should interrupt whatever is being read. Screen
+                     readers get the same text from the button's aria-label, so the note
+                     is deliberately not also wired up as its description. -->
+                <p
+                  class="lang-warning-note"
+                  class:above={warnAbove}
+                  id={`lang-note-${t.id}`}
+                  role="tooltip"
+                >
+                  {ui.langUnsupported(langName(lang))}
+                </p>
+              {/if}
 
               {#if expanded[t.id] && topicData[t.id]}
                 <ul class="groups" id={`groups-${t.id}`}>

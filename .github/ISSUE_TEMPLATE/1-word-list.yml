@@ -1,20 +1,14 @@
 name: 📋 Word list — new or rework
-description: Propose a new word list, or a full rework of an existing one.
+description: Propose a new word list, or a rework or an added language for an existing one.
 title: "📋 <Topic> — <short summary>"
 labels: ["List 📋"]
 body:
   - type: markdown
     attributes:
       value: |
-        Thanks for contributing a list! For a **small fix** (one wrong/missing entry, a
-        fame-group tweak, a missing translation) use the **Correction / small fix**
-        template instead — this one is for whole lists.
+        Thanks for contributing a list! For a **small fix** (one wrong/missing entry, a fame-group tweak, a missing translation) use the **Correction / small fix** template instead — this one is for whole lists.
 
-        Discussion is welcome: others may spot mistakes or suggest better fame ordering
-        in the thread before this becomes a pull request. See the
-        [worked example](https://github.com/Trummler12/custom-wordlists/issues/17), and
-        the [topic tracker](https://github.com/Trummler12/custom-wordlists/issues/16)
-        for what is already covered or in progress.
+        Discussion is welcome: others may spot mistakes or suggest better fame ordering in the thread before this becomes a pull request. See the [worked example](https://github.com/Trummler12/custom-wordlists/issues/17), and the [topic tracker](https://github.com/Trummler12/custom-wordlists/blob/main/docs/Topic-Progress.md) for what is already covered or in progress.
   - type: input
     id: topic
     attributes:
@@ -28,7 +22,7 @@ body:
       label: Kind of proposal
       options:
         - New — a topic that isn't covered yet
-        - Rework — a full overhaul of an existing list
+        - Rework — an overhaul of an existing list
         - Language — adding or fixing a language on an existing list
     validations:
       required: true

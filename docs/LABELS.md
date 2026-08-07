@@ -27,24 +27,28 @@ Applied automatically by the form. Exactly one per issue.
 
 | Label | Applied by | Meaning |
 |---|---|---|
-| `List 📋` | `word-list.yml` | A whole word list: new, a full rework, or a new language |
-| `Correction 🔧` | `correction.yml` | A wrong or missing entry, a fame-group tweak, a translation |
-| `Code 💻` | `code.yml` | The app itself — site, UI, build |
+| `List 📋` | `1-word-list.yml` | A whole word list: new, a full rework, or a new language |
+| `Correction 🔧` | `2-correction.yml` | A wrong or missing entry, a fame-group tweak, a translation |
+| `Code 💻` | `3-bug.yml`, `4-improvement.yml` | The app itself — site, UI, build |
 
 `Correction 🔧` is deliberately content-only. A wrong entry in a list is not a `Bug 🐛`;
 keeping them apart is what makes `Bug 🐛` usable as a filter for "the app is broken".
 
 ## Kind — what shape it takes
 
-Derived from the form's *Kind* dropdown by the labeling workflow, on issue creation.
+On the word-list form this is a *Kind* dropdown, and the labeling workflow turns the
+answer into a label on issue creation. For code there is no dropdown: `Bug 🐛` and
+`Improvement ⚙️` are separate forms that apply their own label directly — a dropdown
+whose first option a mobile browser pre-selects is a worse question than two entries in
+the template chooser.
 
 | Label | From | Meaning |
 |---|---|---|
 | `New 🆕` | `List 📋` | A topic that wasn't covered yet |
 | `Rework 🛠️` | `List 📋` | A full overhaul of an existing list |
 | `Language 🌐` | `List 📋` | Adds or fixes a language |
-| `Bug 🐛` | `Code 💻` | Something doesn't work as it should |
-| `Improvement ⚙️` | `Code 💻` | A concrete proposal for how something could work better |
+| `Bug 🐛` | `3-bug.yml` | Something doesn't work as it should |
+| `Improvement ⚙️` | `4-improvement.yml` | A concrete proposal for how something could work better |
 
 `Idea 💡` is **not** in the dropdown on purpose: an open-ended idea versus a concrete
 proposal is a distinction the reporter shouldn't have to agonise over. Apply it on triage
@@ -68,10 +72,11 @@ labels (unlike Gitea), and the `priority: ` prefix exists only to keep the four 
 
 ## Status & housekeeping
 
-GitHub defaults, all maintainer-assigned.
+All maintainer-assigned; GitHub's defaults apart from `Example 📌`.
 
 | Label | Used for |
 |---|---|
+| `Example 📌` | Not a real request — an issue kept open as a filled-in sample of a template |
 | `documentation` | README, CONTRIBUTING, this file, the planning docs |
 | `question` | Needs an answer before anything can be decided |
 | `help wanted` | Maintainer would welcome someone else picking this up |

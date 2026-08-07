@@ -19,9 +19,9 @@ body:
     attributes:
       label: What's wrong / what to change
       description: Describe it in a sentence or two. Links to sources are welcome.
-      placeholder: |
-        "Chef" is listed with his real name as the long form, but "Chef" and
-        "Jerome McElroy" are known very differently — they should be separate entries
-        in different fame groups.
+      placeholder: >
+        "Chef" is listed with his real name as the long form, but "Chef" and "Jerome
+        McElroy" are known very differently — they should be separate entries in
+        different fame groups.
     validations:
       required: true

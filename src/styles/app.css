@@ -198,6 +198,7 @@ header {
   margin: 0;
 }
 .topic-item {
+  position: relative; /* anchor for .lang-warning-note */
   border-bottom: 1px solid var(--border);
 }
 .topic-row {
@@ -233,8 +234,40 @@ header {
 /* Marker next to a topic that doesn't fully support the selected language. */
 .lang-warning {
   margin-left: 0.3rem;
+  background: none;
+  border: none;
+  padding: 0;
+  font: inherit;
   font-size: 0.85rem;
+  line-height: 1;
   cursor: help;
+}
+/* The note the marker opens. Stretched across the topic row rather than hung off the
+   marker itself: the marker sits somewhere in the middle of a row of unknown width, so
+   any box anchored to it can leave the viewport on one side or the other. */
+.lang-warning-note {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  margin: 0.15rem 0 0;
+  padding: 0.4rem 0.55rem;
+  font-size: 0.8rem;
+  font-weight: 400;
+  line-height: 1.35;
+  color: var(--chip-fg);
+  background: var(--chip-bg);
+  border: 1px solid var(--panel-border);
+  border-radius: var(--radius);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
+}
+/* Set when the marker sits low in the viewport, where a note below it would be cut off
+   by the bottom edge — the vertical counterpart to the full-row stretch above. */
+.lang-warning-note.above {
+  top: auto;
+  bottom: 100%;
+  margin: 0 0 0.15rem;
 }
 
 /* Groups (nested under a topic) */

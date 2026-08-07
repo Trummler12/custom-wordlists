@@ -8,6 +8,11 @@ big enough to discuss belongs in an issue instead.
   Break it up into `src/components/{layout,output,topics}/` — one component per
   concern, in the style Vue projects use. Own refactor PR; behaviour-neutral, so
   it wants a careful before/after comparison rather than new tests.
+- **More inline markup in locale strings.** Once `src/locale/html/` exists (the
+  `{br}` snippet), `{i}`…`{/i}` and `{b}`…`{/b}` are the obvious companions: a
+  parser that turns a marked-up string into a list of parts, and one snippet per
+  tag. Nothing needs them today — add a tag the first time a string actually wants
+  it, not before.
 - **Football by country/continent (re-groupable list).** The complex part of the
   sports idea, deferred. Under a future `sports/football/`, football players should
   default to a by-continent split (classic fame slider per continent), toggleable

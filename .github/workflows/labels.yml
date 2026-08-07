@@ -21,7 +21,9 @@ jobs:
         with:
           script: |
             // Issue forms render each answer as "### <field label>" + the value, so the
-            // dropdown's first word ("New", "Bug", …) identifies the choice.
+            // dropdown's first word ("New", "Rework", …) identifies the choice. Bug and
+            // Improvement are their own forms now and label themselves; they stay in the
+            // map only so an older or hand-written body still gets its label.
             const KIND_LABELS = {
               New: "New 🆕",
               Rework: "Rework 🛠️",
@@ -42,7 +44,8 @@ jobs:
               }
             }
 
-            // "Kind of proposal" on the word-list form, plain "Kind" on the code form.
+            // "Kind of proposal" is the word-list form's dropdown — the only one left.
+            // Plain "Kind" is kept for hand-written bodies that still use the old shape.
             const answer = sections["Kind of proposal"] ?? sections["Kind"] ?? "";
             const label = KIND_LABELS[answer.split(/\s+/)[0]];
             if (!label) {

@@ -16,7 +16,7 @@ A few things follow from that:
   produce: numbered lists, stray headings, duplicates.
 - **More languages than the app offers.** Some dumps carry Japanese, Korean, Chinese,
   French, Italian and Spanish. That's raw material for later, not a promise — see the
-  [language roadmap](https://github.com/Trummler12/custom-wordlists/issues/15).
+  [language roadmap](../docs/Language-Roadmap.md).
 
 If you want to propose or fix a list, work from
 [CONTRIBUTING.md](../CONTRIBUTING.md) instead; adding a dump here is optional and only
