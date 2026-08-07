@@ -14,7 +14,7 @@
   import { buildTree, catDepth, titleCase, type CatNode } from "./lib/tree";
   import { depthFromKey, depthFromPointer, snapPositions } from "./lib/fame";
   import { selectAll, setIndeterminate } from "./lib/dom";
-  import { strings, SUPPORTED_LANGS } from "./locale";
+  import { lang } from "./state/lang.svelte";
 
   // Repo home, used for the footer links.
   const REPO_URL = "https://github.com/Trummler12/custom-wordlists";
@@ -36,19 +36,6 @@
   // Per-group names mode (only groups with short/long entries show the dropdown).
   let namesMode = $state<Record<string, NamesMode>>({});
 
-  // Selected UI language: which variant of a localized topic to load. Neutral
-  // topics ignore it. Persisted in localStorage; default resolved in onMount.
-  let lang = $state<string>("en");
-  const LANG_STORAGE_KEY = "wordlists:lang";
-  // Endonyms for the picker; fallback is the upper-cased code.
-  const LANG_NAMES: Record<string, string> = {
-    de: "Deutsch", en: "English", fr: "Français", es: "Español", it: "Italiano",
-    pt: "Português", nl: "Nederlands", pl: "Polski", ja: "日本語", ko: "한국어", zh: "中文",
-  };
-  const langName = (l: string) => LANG_NAMES[l] ?? l.toUpperCase();
-  // Active UI-chrome strings; follows `lang`, falls back to English (see locale/).
-  // Named `ui` (not the i18n-usual `t`) because `t` is the TopicSummary loop var.
-  const ui = $derived(strings(lang));
   // Which language menu is open (by instance id), or null. Two pickers share the
   // language but each has its own trigger.
   let langMenuOpen = $state<string | null>(null);
@@ -71,27 +58,12 @@
 
   const key = (tid: string, gid: string) => `${tid}:${gid}`;
 
-  // Languages offered by the picker — the app's curated set (see locale/), not
-  // derived from topics: a topic missing the selected language falls back to en.
-  const availableLangs = SUPPORTED_LANGS;
-
   onMount(async () => {
     try {
       const manifest = await loadManifest();
       topics = manifest.topics;
       categories = manifest.categories ?? {};
-      // Default language: stored → browser → en → first available.
-      let stored: string | null = null;
-      try {
-        stored = localStorage.getItem(LANG_STORAGE_KEY);
-      } catch {
-        /* localStorage unavailable — ignore */
-      }
-      const browser = navigator.language?.slice(0, 2);
-      lang =
-        [stored, browser, "en"].find((l) => l && availableLangs.includes(l)) ??
-        availableLangs[0] ??
-        "en";
+      lang.init();
     } catch (e) {
       error = e instanceof Error ? e.message : String(e);
     } finally {
@@ -99,21 +71,9 @@
     }
   });
 
-  /** Switch the UI language. Topic files carry every language inline, so nothing
-   *  is refetched — the derived counts/output re-resolve each entry against the
-   *  new `lang` reactively, and the id-keyed selection stays put. */
-  function setLanguage(l: string) {
-    if (l === lang) return;
-    lang = l;
-    try {
-      localStorage.setItem(LANG_STORAGE_KEY, l);
-    } catch {
-      /* localStorage unavailable — ignore */
-    }
-  }
   const chooseLanguage = (l: string) => {
     langMenuOpen = null;
-    setLanguage(l);
+    lang.set(l);
   };
   function onWindowPointerDown(e: PointerEvent) {
     if (e.pointerType) lastPointerType = e.pointerType;
@@ -169,9 +129,9 @@
   // emit. Counts and output dedup identical rendered strings (e.g. two "Kyle"s).
   const modeOf = (k: string): NamesMode => namesMode[k] ?? "long";
 
-  // The resolvers in lib/words.ts take the language as an argument; passing
-  // `lang` here is what keeps every derived count and the output recomputing on
-  // a language switch, with no refetch.
+  // The resolvers in lib/words.ts take the language as an argument; reading
+  // `lang.current` here is what keeps every derived count and the output
+  // recomputing on a language switch, with no refetch.
   function selectedEntries(tid: string, g: Group): WordEntry[] {
     const k = key(tid, g.id);
     if (g.tiers) return g.tiers.slice(0, depthByGroup[k] ?? 0).flat();
@@ -179,9 +139,9 @@
   }
 
   const groupTotal = (tid: string, g: Group): number =>
-    renderCount(groupEntries(g), modeOf(key(tid, g.id)), lang);
+    renderCount(groupEntries(g), modeOf(key(tid, g.id)), lang.current);
   const groupSelCount = (tid: string, g: Group): number =>
-    renderCount(selectedEntries(tid, g), modeOf(key(tid, g.id)), lang);
+    renderCount(selectedEntries(tid, g), modeOf(key(tid, g.id)), lang.current);
 
   const groupFull = (tid: string, g: Group): boolean => {
     const k = key(tid, g.id);
@@ -255,12 +215,12 @@
   const catOpen = (node: CatNode) => catExpanded[node.path] ?? catDepth(node) === 0;
 
   // Display name for a topic / category in the active language, with fallbacks.
-  // Topic: per-lang title (if the names differ) → representative title.
-  // Category: per-lang title → global title → title-cased folder name.
-  const topicTitle = (t: TopicSummary) => t.titles?.[lang] ?? t.title;
-  const groupTitle = (g: Group) => g.titles?.[lang] ?? g.title;
+  // Topic: per-lang.current title (if the names differ) → representative title.
+  // Category: per-lang.current title → global title → title-cased folder name.
+  const topicTitle = (t: TopicSummary) => t.titles?.[lang.current] ?? t.title;
+  const groupTitle = (g: Group) => g.titles?.[lang.current] ?? g.title;
   const categoryTitle = (node: CatNode) =>
-    categories[node.path]?.titles?.[lang] ?? categories[node.path]?.title ?? titleCase(node.name);
+    categories[node.path]?.titles?.[lang.current] ?? categories[node.path]?.title ?? titleCase(node.name);
   const categoryIcon = (node: CatNode) => categories[node.path]?.icon;
 
   // Aggregate selected groups' words (top-N tiers), de-duplicated, manifest order.
@@ -273,7 +233,7 @@
       for (const g of data.groups) {
         const mode = modeOf(key(t.id, g.id));
         for (const e of selectedEntries(t.id, g)) {
-          for (const w of renderEntry(e, mode, lang)) {
+          for (const w of renderEntry(e, mode, lang.current)) {
             if (!seen.has(w)) {
               seen.add(w);
               out.push(w);
@@ -308,29 +268,29 @@
 <svelte:window onpointerdown={onWindowPointerDown} onkeydown={onWindowKeyDown} />
 
 {#snippet langPicker(id: string)}
-  {#if availableLangs.length > 1}
+  {#if lang.available.length > 1}
     <div class="lang-picker">
       <button
         type="button"
         class="lang-btn"
         aria-haspopup="menu"
         aria-expanded={langMenuOpen === id}
-        aria-label={ui.languageLabel(langName(lang))}
+        aria-label={lang.ui.languageLabel(lang.name(lang.current))}
         onclick={() => (langMenuOpen = langMenuOpen === id ? null : id)}
       >🌐</button>
       {#if langMenuOpen === id}
-        <ul class="lang-menu" role="menu" aria-label={ui.languageMenu}>
-          {#each availableLangs as l (l)}
+        <ul class="lang-menu" role="menu" aria-label={lang.ui.languageMenu}>
+          {#each lang.available as l (l)}
             <li role="none">
               <button
                 type="button"
                 role="menuitemradio"
-                aria-checked={l === lang}
-                class:selected={l === lang}
+                aria-checked={l === lang.current}
+                class:selected={l === lang.current}
                 onclick={() => chooseLanguage(l)}
               >
                 <span class="lang-code">{l.toUpperCase()}</span>
-                <span class="lang-name">{langName(l)}</span>
+                <span class="lang-name">{lang.name(l)}</span>
               </button>
             </li>
           {/each}
@@ -349,21 +309,21 @@
           <div class="lang-header-slot">{@render langPicker("header")}</div>
         </div>
         <p class="tagline">
-          {ui.taglineBefore}
+          {lang.ui.taglineBefore}
           <a href="https://skribbl.io" target="_blank" rel="noopener noreferrer">skribbl.io</a>
-          {ui.taglineAfter}
+          {lang.ui.taglineAfter}
         </p>
       </header>
 
       {#if loading}
-        <p class="status">{ui.loadingTopics}</p>
+        <p class="status">{lang.ui.loadingTopics}</p>
       {:else if error}
-        <p class="status error">{ui.loadError(error)}</p>
+        <p class="status error">{lang.ui.loadError(error)}</p>
       {:else if topics.length === 0}
-        <p class="status">{ui.noTopics}</p>
+        <p class="status">{lang.ui.noTopics}</p>
       {:else}
-        <section class="topics" aria-label={ui.topics}>
-        <h2>{ui.topics}</h2>
+        <section class="topics" aria-label={lang.ui.topics}>
+        <h2>{lang.ui.topics}</h2>
         {#snippet topicRow(t: TopicSummary)}
             <div class="topic-item">
               <div class="topic-row">
@@ -372,7 +332,7 @@
                   class="expander"
                   aria-expanded={!!expanded[t.id]}
                   aria-controls={`groups-${t.id}`}
-                  aria-label={ui.toggle(!!expanded[t.id], topicTitle(t))}
+                  aria-label={lang.ui.toggle(!!expanded[t.id], topicTitle(t))}
                   onclick={() => toggleExpand(t)}
                 >
                   {expanded[t.id] ? "▾" : "▸"}
@@ -386,7 +346,7 @@
                   />
                   <span class="icon" aria-hidden="true">{t.icon ?? "•"}</span>
                   <span class="title">{topicTitle(t)}</span>
-                  {#if !t.languages?.includes(lang)}
+                  {#if !t.languages?.includes(lang.current)}
                     <!-- A button, not a bare span: a `title` tooltip needs a hover, which
                          touch devices don't have. Interactive content, so a click on it
                          doesn't reach the surrounding <label>'s checkbox. -->
@@ -395,7 +355,7 @@
                       class="lang-warning"
                       aria-expanded={warnOpen === t.id}
                       aria-controls={`lang-note-${t.id}`}
-                      aria-label={ui.langUnsupported(langName(lang))}
+                      aria-label={lang.ui.langUnsupported(lang.name(lang.current))}
                       onpointerenter={(e) => {
                         if (e.pointerType === "mouse") openWarn(t.id, e.currentTarget);
                       }}
@@ -414,7 +374,7 @@
                     >
                   {/if}
                   <span class="meta">
-                    {#if loadingById[t.id] && !topicData[t.id]}{ui.loadingShort}{:else}{ui.wordsOf(topicSelCount(t), topicTotal(t))}{/if}
+                    {#if loadingById[t.id] && !topicData[t.id]}{lang.ui.loadingShort}{:else}{lang.ui.wordsOf(topicSelCount(t), topicTotal(t))}{/if}
                   </span>
                 </label>
               </div>
@@ -431,7 +391,7 @@
                   id={`lang-note-${t.id}`}
                   role="tooltip"
                 >
-                  {ui.langUnsupported(langName(lang))}
+                  {lang.ui.langUnsupported(lang.name(lang.current))}
                 </p>
               {/if}
 
@@ -450,19 +410,19 @@
                           />
                           <span class="title">{groupTitle(g)}</span>
                         </label>
-                        {#if groupHasNames(g, lang)}
+                        {#if groupHasNames(g, lang.current)}
                           <select
                             class="names-mode"
-                            aria-label={ui.nameFormLabel(groupTitle(g))}
+                            aria-label={lang.ui.nameFormLabel(groupTitle(g))}
                             value={modeOf(k)}
                             onchange={(e) => (namesMode[k] = e.currentTarget.value as NamesMode)}
                           >
-                            <option value="short">{ui.nameForm.short}</option>
-                            <option value="long">{ui.nameForm.long}</option>
-                            <option value="both">{ui.nameForm.both}</option>
+                            <option value="short">{lang.ui.nameForm.short}</option>
+                            <option value="long">{lang.ui.nameForm.long}</option>
+                            <option value="both">{lang.ui.nameForm.both}</option>
                           </select>
                         {/if}
-                        <span class="meta">{ui.wordsOf(groupSelCount(t.id, g), groupTotal(t.id, g))}</span>
+                        <span class="meta">{lang.ui.wordsOf(groupSelCount(t.id, g), groupTotal(t.id, g))}</span>
                       </div>
                       {#if g.tiers && g.tiers.length > 1}
                         {@const d = depthByGroup[k] ?? 0}
@@ -475,8 +435,8 @@
                             aria-valuemin="0"
                             aria-valuemax={g.tiers.length}
                             aria-valuenow={d}
-                            aria-valuetext={ui.tiersValueText(d, g.tiers.length)}
-                            aria-label={ui.fameDepthLabel(groupTitle(g))}
+                            aria-valuetext={lang.ui.tiersValueText(d, g.tiers.length)}
+                            aria-label={lang.ui.fameDepthLabel(groupTitle(g))}
                             onpointerdown={(e) => {
                               e.currentTarget.setPointerCapture(e.pointerId);
                               dragDepth(e, k, g);
@@ -521,7 +481,7 @@
               class="expander"
               aria-expanded={catOpen(node)}
               aria-controls={`${catId}-children`}
-              aria-label={ui.toggle(catOpen(node), categoryTitle(node))}
+              aria-label={lang.ui.toggle(catOpen(node), categoryTitle(node))}
               onclick={() => (catExpanded[node.path] = !catOpen(node))}
             >
               {catOpen(node) ? "▾" : "▸"}
@@ -538,7 +498,7 @@
                 {#if categoryIcon(node)}<span class="icon" aria-hidden="true">{categoryIcon(node)}</span> {/if}{categoryTitle(node)}
               </label>
             </h3>
-            <span class="meta">{ui.wordsOf(catSel(at), catTotal(at))}</span>
+            <span class="meta">{lang.ui.wordsOf(catSel(at), catTotal(at))}</span>
           </div>
           {#if catOpen(node)}
             <div class="cat-children" id={`${catId}-children`}>
@@ -558,26 +518,26 @@
     </div>
 
     {#if !loading && !error && topics.length > 0}
-      <section class="output" aria-label={ui.output}>
+      <section class="output" aria-label={lang.ui.output}>
         <div class="output-head">
-          <h2>{ui.output}</h2>
+          <h2>{lang.ui.output}</h2>
           <div class="head-actions">
             {@render langPicker("output")}
             <button type="button" onclick={copy} disabled={included.length === 0}>
-              {copied ? ui.copied : ui.copy}
+              {copied ? lang.ui.copied : lang.ui.copy}
             </button>
           </div>
         </div>
 
         {#if merged.length === 0}
-          <p class="status">{ui.emptyOutput}</p>
+          <p class="status">{lang.ui.emptyOutput}</p>
         {:else}
           <!-- Read-only per-word chips (not a textarea) so M2 can color words. -->
           <div
             class="chips"
             role="textbox"
             aria-readonly="true"
-            aria-label={ui.generatedList}
+            aria-label={lang.ui.generatedList}
             tabindex="0"
             onclick={(e) => selectAll(e.currentTarget)}
             onkeydown={(e) => {
@@ -591,15 +551,15 @@
           </div>
 
           <p class="counter" class:warn={belowMin || overMax}>
-            {ui.wordsLabel}: {included.length} · {ui.charsLabel}: {charCount.toLocaleString()} /
+            {lang.ui.wordsLabel}: {included.length} · {lang.ui.charsLabel}: {charCount.toLocaleString()} /
             {SKRIBBL.maxTotal.toLocaleString()}
-            {#if belowMin}{ui.belowMin(SKRIBBL.minWords)}{/if}
-            {#if overMax}{ui.overMax}{/if}
+            {#if belowMin}{lang.ui.belowMin(SKRIBBL.minWords)}{/if}
+            {#if overMax}{lang.ui.overMax}{/if}
           </p>
 
           {#if excluded.length > 0}
             <p class="status warn">
-              {ui.excluded(excluded.length, SKRIBBL.maxWordLen, excluded.join(", "))}
+              {lang.ui.excluded(excluded.length, SKRIBBL.maxWordLen, excluded.join(", "))}
             </p>
           {/if}
         {/if}
@@ -612,18 +572,18 @@
          topic column's left edge and the output panel's right edge. -->
     <div class="footer-inner">
       <span class="footer-help">
-        {ui.helpOut}
+        {lang.ui.helpOut}
         <a
           href={REPO_URL + "?tab=contributing-ov-file#contributing"}
           target="_blank"
-          rel="noopener noreferrer">{ui.contributionGuide}</a
-        >{ui.helpOutAfter}
+          rel="noopener noreferrer">{lang.ui.contributionGuide}</a
+        >{lang.ui.helpOutAfter}
       </span>
       <a
         class="footer-repo"
         href={REPO_URL + "#custom-wordlists"}
         target="_blank"
-        rel="noopener noreferrer">{ui.repository}</a
+        rel="noopener noreferrer">{lang.ui.repository}</a
       >
     </div>
   </footer>
