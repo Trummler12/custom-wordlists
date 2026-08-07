@@ -2,17 +2,17 @@
   import { setIndeterminate } from "../../lib/dom";
   import type { TopicSummary } from "../../lib/types";
   import { langWarning } from "../../locale";
-  import Msg from "../../locale/html/Msg.svelte";
   import { lang } from "../../state/lang.svelte";
-  import { overlays } from "../../state/overlays.svelte";
   import { selection } from "../../state/selection.svelte";
   import { topics } from "../../state/topics.svelte";
+  import TipNote from "../common/TipNote.svelte";
   import GroupRow from "./GroupRow.svelte";
   import LanguageWarning from "./LanguageWarning.svelte";
 
   let { topic }: { topic: TopicSummary } = $props();
 
   const open = $derived(!!selection.expanded[topic.id]);
+  const warnId = $derived(`warn-${topic.id}`);
 </script>
 
 <div class="topic-item">
@@ -37,7 +37,7 @@
       <span class="icon" aria-hidden="true">{topic.icon ?? "•"}</span>
       <span class="title">{topics.topicTitle(topic)}</span>
       {#if !topic.languages?.includes(lang.current)}
-        <LanguageWarning topicId={topic.id} />
+        <LanguageWarning tipId={warnId} />
       {/if}
       <span class="meta">
         {#if topics.isLoading(topic)}{lang.ui.loadingShort}{:else}{lang.ui.wordsOf(
@@ -48,22 +48,8 @@
     </label>
   </div>
   <!-- The warning's note, outside the <label> above: inside it, a click on the
-       note would count as ticking the topic. Spans the row, so it can't run out
-       of the viewport on either side. -->
-  {#if overlays.warnTopic === topic.id}
-    <!-- `tooltip`, not `status`: this is help text the reader asked for, not a
-         live update that should interrupt whatever is being read. Screen readers
-         get the same text from the marker's aria-label, so the note is
-         deliberately not also wired up as its description. -->
-    <p
-      class="lang-warning-note"
-      class:above={overlays.warnAbove}
-      id={`lang-note-${topic.id}`}
-      role="tooltip"
-    >
-      <Msg text={langWarning(lang.ui, lang.current, lang.name(lang.current))} />
-    </p>
-  {/if}
+       note would count as ticking the topic. -->
+  <TipNote id={warnId} text={langWarning(lang.ui, lang.current, lang.name(lang.current))} />
 
   {#if open && topics.data[topic.id]}
     <ul class="groups" id={`groups-${topic.id}`}>

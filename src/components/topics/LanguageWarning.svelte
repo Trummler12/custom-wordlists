@@ -5,7 +5,7 @@
   import { overlays } from "../../state/overlays.svelte";
 
   // The marker only — TopicRow renders the note, for the reason given there.
-  let { topicId }: { topicId: string } = $props();
+  let { tipId }: { tipId: string } = $props();
 
   const text = $derived(langWarning(lang.ui, lang.current, lang.name(lang.current)));
 </script>
@@ -14,13 +14,13 @@
      devices don't have. -->
 <button
   type="button"
-  class="lang-warning"
-  aria-expanded={overlays.warnTopic === topicId}
-  aria-controls={`lang-note-${topicId}`}
+  class="lang-warning tip-trigger"
+  aria-expanded={overlays.tip === tipId}
+  aria-controls={tipId}
   aria-label={plain(text)}
-  onpointerenter={(e) => overlays.warnEnter(e, topicId)}
-  onpointerleave={(e) => overlays.warnLeave(e)}
-  onfocus={(e) => overlays.openWarn(topicId, e.currentTarget)}
-  onblur={overlays.closeWarn}
-  onclick={(e) => overlays.warnClick(e, topicId)}>⚠️</button
+  onpointerenter={(e) => overlays.tipEnter(e, tipId)}
+  onpointerleave={(e) => overlays.tipLeave(e)}
+  onfocus={(e) => overlays.openTip(tipId, e.currentTarget)}
+  onblur={overlays.closeTip}
+  onclick={(e) => overlays.tipClick(e, tipId)}>⚠️</button
 >

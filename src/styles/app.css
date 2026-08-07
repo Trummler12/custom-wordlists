@@ -198,7 +198,7 @@ header {
   margin: 0;
 }
 .topic-item {
-  position: relative; /* anchor for .lang-warning-note */
+  position: relative; /* anchor for .tip-note */
   border-bottom: 1px solid var(--border);
 }
 .topic-row {
@@ -242,10 +242,10 @@ header {
   line-height: 1;
   cursor: help;
 }
-/* The note the marker opens. Stretched across the topic row rather than hung off the
-   marker itself: the marker sits somewhere in the middle of a row of unknown width, so
-   any box anchored to it can leave the viewport on one side or the other. */
-.lang-warning-note {
+/* The note a tooltip trigger opens. Stretched across its positioned parent rather than
+   hung off the trigger itself: a trigger sits somewhere in the middle of a row of unknown
+   width, so any box anchored to it can leave the viewport on one side or the other. */
+.tip-note {
   position: absolute;
   top: 100%;
   left: 0;
@@ -262,9 +262,9 @@ header {
   border-radius: var(--radius);
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
 }
-/* Set when the marker sits low in the viewport, where a note below it would be cut off
+/* Set when the trigger sits low in the viewport, where a note below it would be cut off
    by the bottom edge — the vertical counterpart to the full-row stretch above. */
-.lang-warning-note.above {
+.tip-note.above {
   top: auto;
   bottom: 100%;
   margin: 0 0 0.15rem;
