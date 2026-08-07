@@ -1,6 +1,7 @@
 # Topic Progress
 
-The following list shows the progress on all Topics added or _planned_ so far:
+Progress on every topic added or _planned_ so far.
+A box is ticked once the list is complete in English; other languages trail behind.
 
 ## Animation
 
@@ -32,7 +33,14 @@ The following list shows the progress on all Topics added or _planned_ so far:
 - [ ] Apex Legends
 - [x] League of Legends
 - [ ] Video Game Characters
-- [-] Pokémon (lots of duplicate entries, no 'Fame Tiers' yet)
+
+### Pokémon
+
+_Entries are 'complete', but Items carries lots of functional duplicates and all three lists lack fame groups_
+
+- [ ] Items
+- [ ] Moves
+- [ ] Pokémon (generations 1–9)
 
 ## Science
 
