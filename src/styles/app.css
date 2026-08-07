@@ -215,6 +215,11 @@ header {
   font-size: 0.9rem;
   line-height: 1;
 }
+/* Same box as the button, minus the arrow — so a topic that can't expand keeps the
+   column width a topic that can would occupy. */
+.expander.placeholder {
+  visibility: hidden;
+}
 .topic {
   display: flex;
   align-items: baseline;
@@ -306,6 +311,12 @@ header {
   margin: 0.45rem 0 0.7rem 1.75rem;
   width: 100%;
   max-width: 16rem;
+}
+/* A single group's ruler, on the topic row itself. One level less of nesting than
+   the rule above, so it lines up under the topic title rather than under a group
+   name that isn't there. */
+.topic-item > .group-depth {
+  margin-left: 2.85rem;
 }
 .depth-track {
   --inset: 8px; /* keeps the end dots off the rail edges; matches INSET_PX in App.svelte */
