@@ -3,11 +3,6 @@
 Small ideas parked for later; pick up when a related area is touched. Anything
 big enough to discuss belongs in an issue instead.
 
-- **Split `src/App.svelte`.** At 700+ lines it holds the whole app: state, the
-  selection model, the fame-depth slider, the topic tree and the output panel.
-  Break it up into `src/components/{layout,output,topics}/` — one component per
-  concern, in the style Vue projects use. Own refactor PR; behaviour-neutral, so
-  it wants a careful before/after comparison rather than new tests.
 - **More inline markup in locale strings.** Once `src/locale/html/` exists (the
   `{br}` snippet), `{i}`…`{/i}` and `{b}`…`{/b}` are the obvious companions: a
   parser that turns a marked-up string into a list of parts, and one snippet per
@@ -43,6 +38,17 @@ big enough to discuss belongs in an issue instead.
   slider is nine near-identical controls in the way of a plain all-or-nothing
   checkbox. Depends on the single-group fix above, which decides where the
   slider lives in the first place.
+- **Show what just changed in the output.** Ticking a topic or moving a fame
+  slider changes the output silently, and on a long list the chips that appeared
+  are usually below the fold. Two halves. (1) Scroll the output box so the gap
+  between the last chip of the changed list and the next row lines up with the
+  bottom edge of the scroll area — the changed list ends exactly at the fold.
+  (2) Tint that list's chips green-to-red by the index of their fame group within
+  the topic; if a checkbox one level up brought in several leaf topics at once,
+  tint the whole batch. Together they answer "how many steps left does the slider
+  need to drop the first entry I don't know?" by reading the output instead of
+  guessing. Border in the stronger colour, background in a washed-out one, so the
+  chip text keeps a clearly darker ground under it.
 - **Two nits in the issue chooser.** The contribution-guide contact link points
   at `blob/main/CONTRIBUTING.md`; `?tab=contributing-ov-file` renders it in the
   repo's own tab instead. And the charity divider's `name` (one 🌳) is much
@@ -67,3 +73,13 @@ big enough to discuss belongs in an issue instead.
   the frontend should later surface them. Also: backfill dates on existing topics
   as we touch them (localized topics get them in both de/en files) — and `sources`
   along with them, wherever a list has one worth naming.
+- **Scoped CSS per component.** `src/styles/app.css` stayed whole through the
+  component split, so every rule is global and only the class names say which
+  component owns it. Moving each block into its component's `<style>` would fix
+  that, but two rules are coupled to TypeScript by comment (`--inset` ↔
+  `INSET_PX`, `--footer-h` ↔ the output panel) and the tokens have to stay
+  global — so it wants its own PR rather than a corner of another one.
+- **Tests for `src/lib/`.** The split left five modules of plain functions with
+  no runes and no DOM: `words`, `tree`, `fame`, `dom`, `skribbl`. That is all of
+  the app's logic that can be tested without mounting anything, and
+  `snapPositions` has already had one bug found by reading alone.
