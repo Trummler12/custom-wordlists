@@ -23,7 +23,6 @@
       />
       <span class="title">{topics.groupTitle(group)}</span>
     </label>
-    <!-- Only groups that actually hold short/long pairs get the form dropdown. -->
     {#if groupHasNames(group, lang.current)}
       <select
         class="names-mode"

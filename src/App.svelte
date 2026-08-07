@@ -21,10 +21,9 @@
 <svelte:window onpointerdown={overlays.onPointerDown} onkeydown={overlays.onKeyDown} />
 
 <main>
-  <!-- Two columns, stacking on narrow screens; one column while there is nothing
-       to show beside the topics. The document scrolls as a whole and the output
-       panel is sticky, so the header sits in the left column rather than above
-       both — that is what lets the panel span the full viewport height. -->
+  <!-- `single` collapses the grid to one column while there is nothing to show
+       beside the topics, so the header and the status line aren't stuck at half
+       width. -->
   <div class="layout" class:single={!topics.ready}>
     <div class="col-topics">
       <PageHeader />

@@ -3,9 +3,7 @@
   import { lang } from "../../state/lang.svelte";
   import { overlays } from "../../state/overlays.svelte";
 
-  // The marker only. Its note is rendered by TopicRow, outside the row's <label>:
-  // inside it, a click on the note counts as activating the label and would tick
-  // the topic. The marker itself may stay — interactive content doesn't forward.
+  // The marker only — TopicRow renders the note, for the reason given there.
   let { topicId }: { topicId: string } = $props();
 </script>
 

@@ -22,7 +22,6 @@ export function resolveWord(e: WordEntry, lang: string): Word {
     const p = e as NamePair;
     return { short: resolveStr(p.short, lang), long: resolveStr(p.long, lang) };
   }
-  // entry-level language map: pick the language's value, then resolve it.
   const map = e as Record<string, WordEntry>;
   return resolveWord(map[lang] ?? map.en, lang);
 }

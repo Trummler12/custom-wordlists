@@ -14,7 +14,6 @@
 {:else}
   <section class="topics" aria-label={lang.ui.topics}>
     <h2>{lang.ui.topics}</h2>
-    <!-- Uncategorised topics first, then the category nodes. -->
     {#each topics.tree.topics as t (t.id)}
       <TopicRow topic={t} />
     {/each}

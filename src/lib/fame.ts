@@ -31,7 +31,6 @@ export function snapPositions(g: Group): number[] {
   return pos;
 }
 
-/** Index of the snap position closest to `frac`. */
 export function nearestIndex(pos: number[], frac: number): number {
   let best = 0;
   let bestD = Infinity;

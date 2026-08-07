@@ -6,8 +6,6 @@
   import WordChips from "./WordChips.svelte";
 </script>
 
-<!-- Sticky and full viewport height regardless of the word count (see app.css);
-     the chips scroll inside it and the counter stays at the bottom. -->
 <section class="output" aria-label={lang.ui.output}>
   <div class="output-head">
     <h2>{lang.ui.output}</h2>
