@@ -2,18 +2,16 @@
   import { onMount } from "svelte";
   import type { NamesMode, TopicSummary } from "./lib/types";
   import type { CatNode } from "./lib/tree";
-  import { SKRIBBL } from "./lib/skribbl";
   import { groupHasNames } from "./lib/words";
   import { snapPositions } from "./lib/fame";
-  import { selectAll, setIndeterminate } from "./lib/dom";
+  import { setIndeterminate } from "./lib/dom";
   import { lang } from "./state/lang.svelte";
   import { topics } from "./state/topics.svelte";
   import { selection } from "./state/selection.svelte";
-  import { output } from "./state/output.svelte";
   import { overlays } from "./state/overlays.svelte";
   import PageHeader from "./components/layout/PageHeader.svelte";
-  import LanguagePicker from "./components/layout/LanguagePicker.svelte";
   import SiteFooter from "./components/layout/SiteFooter.svelte";
+  import OutputPanel from "./components/output/OutputPanel.svelte";
 
   onMount(async () => {
     await topics.init();
@@ -223,52 +221,7 @@
     </div>
 
     {#if topics.ready}
-      <section class="output" aria-label={lang.ui.output}>
-        <div class="output-head">
-          <h2>{lang.ui.output}</h2>
-          <div class="head-actions">
-            <LanguagePicker id="output" />
-            <button type="button" onclick={output.copy} disabled={output.included.length === 0}>
-              {output.copied ? lang.ui.copied : lang.ui.copy}
-            </button>
-          </div>
-        </div>
-
-        {#if output.merged.length === 0}
-          <p class="status">{lang.ui.emptyOutput}</p>
-        {:else}
-          <!-- Read-only per-word chips (not a textarea) so M2 can color words. -->
-          <div
-            class="chips"
-            role="textbox"
-            aria-readonly="true"
-            aria-label={lang.ui.generatedList}
-            tabindex="0"
-            onclick={(e) => selectAll(e.currentTarget)}
-            onkeydown={(e) => {
-              if (e.key === "Enter" || e.key === " ") {
-                e.preventDefault();
-                selectAll(e.currentTarget);
-              }
-            }}
-          >
-            {#each output.included as w (w)}<span class="chip">{w}</span>{/each}
-          </div>
-
-          <p class="counter" class:warn={output.belowMin || output.overMax}>
-            {lang.ui.wordsLabel}: {output.included.length} · {lang.ui.charsLabel}: {output.charCount.toLocaleString()} /
-            {SKRIBBL.maxTotal.toLocaleString()}
-            {#if output.belowMin}{lang.ui.belowMin(SKRIBBL.minWords)}{/if}
-            {#if output.overMax}{lang.ui.overMax}{/if}
-          </p>
-
-          {#if output.excluded.length > 0}
-            <p class="status warn">
-              {lang.ui.excluded(output.excluded.length, SKRIBBL.maxWordLen, output.excluded.join(", "))}
-            </p>
-          {/if}
-        {/if}
-      </section>
+      <OutputPanel />
     {/if}
   </div>
 

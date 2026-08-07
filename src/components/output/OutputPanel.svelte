@@ -1,0 +1,28 @@
+<script lang="ts">
+  import { lang } from "../../state/lang.svelte";
+  import { output } from "../../state/output.svelte";
+  import LanguagePicker from "../layout/LanguagePicker.svelte";
+  import OutputCounter from "./OutputCounter.svelte";
+  import WordChips from "./WordChips.svelte";
+</script>
+
+<!-- Sticky and full viewport height regardless of the word count (see app.css);
+     the chips scroll inside it and the counter stays at the bottom. -->
+<section class="output" aria-label={lang.ui.output}>
+  <div class="output-head">
+    <h2>{lang.ui.output}</h2>
+    <div class="head-actions">
+      <LanguagePicker id="output" />
+      <button type="button" onclick={output.copy} disabled={output.included.length === 0}>
+        {output.copied ? lang.ui.copied : lang.ui.copy}
+      </button>
+    </div>
+  </div>
+
+  {#if output.merged.length === 0}
+    <p class="status">{lang.ui.emptyOutput}</p>
+  {:else}
+    <WordChips />
+    <OutputCounter />
+  {/if}
+</section>
