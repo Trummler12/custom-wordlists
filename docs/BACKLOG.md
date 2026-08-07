@@ -21,6 +21,15 @@ big enough to discuss belongs in an issue instead.
   The marker needs a second string for `lang === "en"` — same warning, without
   the translation clause. Worth doing together with `{br}`, which the sentence
   wants anyway.
+- **A topic with a single group has one level too many.** "Chemical Elements"
+  holds exactly one group, "Elements", whose fame slider is the only thing worth
+  reaching — but it sits behind the topic's expander, so the topic behaves like a
+  folder even though it doesn't look like one, and the level it opens repeats its
+  own name. Same shape wherever a topic has one group. Likely fix: render the sole
+  group inline on the topic row (slider and all) and drop the expander; the
+  checkbox already derives from that group, so only the presentation changes. Look
+  at it properly first — `groupCount` is in the manifest, so the decision can be
+  made before the topic loads.
 - **Two nits in the issue chooser.** The contribution-guide contact link points
   at `blob/main/CONTRIBUTING.md`; `?tab=contributing-ov-file` renders it in the
   repo's own tab instead. And the charity divider's `name` (one 🌳) is much
