@@ -13,6 +13,40 @@ big enough to discuss belongs in an issue instead.
   parser that turns a marked-up string into a list of parts, and one snippet per
   tag. Nothing needs them today — add a tag the first time a string actually wants
   it, not before.
+- **The ⚠️ warning reads wrong in English.** A topic without a `languages` field
+  warns in every language including English, which is correct — those lists
+  aren't finished in English either. But `langUnsupported` is written for the
+  other case: "English is used where a translation is missing" describes a
+  fallback that, with English selected, there is nothing to fall back *from*.
+  The marker needs a second string for `lang === "en"` — same warning, without
+  the translation clause. Worth doing together with `{br}`, which the sentence
+  wants anyway.
+- **A topic with a single group has one level too many.** "Chemical Elements"
+  holds exactly one group, "Elements", whose fame slider is the only thing worth
+  reaching — but it sits behind the topic's expander, so the topic behaves like a
+  folder even though it doesn't look like one, and the level it opens repeats its
+  own name. This is the rule rather than the exception: the Pokémon generations,
+  items and moves, the Olympia athletes and disciplines, the elements. The
+  multi-group topics are the deliberate ones — Simpsons, SpongeBob, Dragon Ball,
+  the comics, film & TV — which all have further subtopics planned. Likely fix:
+  render the sole group inline on the topic row (slider and all) and drop the
+  expander; the checkbox already derives from that group, so only the presentation
+  changes. `groupCount` is in the manifest, so the decision can be made before the
+  topic loads.
+- **Fame sliders hidden by default, per topic.** A new topic field —
+  `hideRulerByDefault`, default `false` — plus a `[ ] ruler` checkbox on the level
+  above ("Show fame rulers for all Pokémon generations") that reveals them all at
+  once. Possibly one per generation as well; decide when building it. The reason
+  is specific to lists like these: for most topics people know the entries to
+  wildly differing depths, which is what the slider is for — but a very large
+  group of people knows more or less *every* Pokémon by name, and for them the
+  slider is nine near-identical controls in the way of a plain all-or-nothing
+  checkbox. Depends on the single-group fix above, which decides where the
+  slider lives in the first place.
+- **Two nits in the issue chooser.** The contribution-guide contact link points
+  at `blob/main/CONTRIBUTING.md`; `?tab=contributing-ov-file` renders it in the
+  repo's own tab instead. And the charity divider's `name` (one 🌳) is much
+  shorter than its `about` (twelve) — 8 or 9 would balance the two lines.
 - **Football by country/continent (re-groupable list).** The complex part of the
   sports idea, deferred. Under a future `sports/football/`, football players should
   default to a by-continent split (classic fame slider per continent), toggleable

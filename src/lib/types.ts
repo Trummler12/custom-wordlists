@@ -65,6 +65,9 @@ export type WordEntry = LocalizedString | NamePair | LangMap<string | NamePair>;
 /** A word resolved to the active language: a plain string or a short/long pair. */
 export type Word = string | { short: string; long: string };
 
+/** Which form(s) of a short/long name a group emits. Per group, default "long". */
+export type NamesMode = "short" | "long" | "both";
+
 /** A group of words: either a flat `words` list or ordered fame `tiers`. */
 export interface Group {
   id: string;
