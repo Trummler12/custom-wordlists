@@ -29,7 +29,8 @@ export const de: UIStrings = {
   languageLabel: (current) => `Sprache: ${current}`,
   languageMenu: "Sprache",
   langUnsupported: (language) =>
-    `Für ${language} noch nicht bestätigt — dieses Thema ist evtl. unvollständig.{br}Fehlende Übersetzungen erscheinen auf Englisch.`,
+    `Für ${language} noch nicht bestätigt — dieses Thema ist evtl. unvollständig.`,
+  langFallback: "Fehlende Übersetzungen erscheinen auf Englisch.",
   repository: "GitHub-Repository",
   helpOut: "Du möchtest mithelfen? Wirf einen Blick in den",
   // Link label stays English — the guide itself is only available in English.

@@ -1,10 +1,13 @@
 <script lang="ts">
+  import { langWarning } from "../../locale";
   import { plain } from "../../locale/html/plain";
   import { lang } from "../../state/lang.svelte";
   import { overlays } from "../../state/overlays.svelte";
 
   // The marker only — TopicRow renders the note, for the reason given there.
   let { topicId }: { topicId: string } = $props();
+
+  const text = $derived(langWarning(lang.ui, lang.current, lang.name(lang.current)));
 </script>
 
 <!-- A button, not a bare span: a `title` tooltip needs a hover, which touch
@@ -14,7 +17,7 @@
   class="lang-warning"
   aria-expanded={overlays.warnTopic === topicId}
   aria-controls={`lang-note-${topicId}`}
-  aria-label={plain(lang.ui.langUnsupported(lang.name(lang.current)))}
+  aria-label={plain(text)}
   onpointerenter={(e) => overlays.warnEnter(e, topicId)}
   onpointerleave={(e) => overlays.warnLeave(e)}
   onfocus={(e) => overlays.openWarn(topicId, e.currentTarget)}
