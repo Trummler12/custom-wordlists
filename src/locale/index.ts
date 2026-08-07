@@ -24,6 +24,10 @@ export interface UIStrings {
   nameFormLabel: (group: string) => string;
   fameDepthLabel: (group: string) => string;
   tiersValueText: (depth: number, total: number) => string;
+  /** Ruler tooltip for a list that has been ranked. */
+  fameGroupsDefined: (count: number) => string;
+  /** Ruler tooltip for a list that hasn't — an invitation to rank it. */
+  noFameGroups: string;
   output: string;
   copy: string;
   copied: string;

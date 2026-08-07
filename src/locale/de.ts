@@ -15,6 +15,9 @@ export const de: UIStrings = {
   nameFormLabel: (group) => `Namensform für ${group}`,
   fameDepthLabel: (group) => `Bekanntheitstiefe für ${group}`,
   tiersValueText: (depth, total) => `oberste ${depth} von ${total} Stufen`,
+  fameGroupsDefined: (count) => `Fame-Gruppen definiert: ${count}`,
+  noFameGroups:
+    "Noch keine Fame-Gruppen definiert — im Contribution Guide im Footer erfährst du, wie du welche vorschlagen kannst!",
   output: "Ausgabe",
   copy: "Kopieren",
   copied: "Kopiert!",

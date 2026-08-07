@@ -302,6 +302,7 @@ header {
    the rail and their spacing can mirror tier sizes (a native <input range>
    can do neither). Colours come from the shared --range-* vars in themes.css. */
 .group-depth {
+  position: relative; /* anchor for this ruler's .tip-note */
   margin: 0.45rem 0 0.7rem 1.75rem;
   width: 100%;
   max-width: 16rem;

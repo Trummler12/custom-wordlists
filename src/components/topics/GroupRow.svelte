@@ -26,8 +26,5 @@
       >{lang.ui.wordsOf(selection.groupSelCount(tid, group), selection.groupTotal(tid, group))}</span
     >
   </div>
-  <!-- A single tier has nothing to slide between. -->
-  {#if group.tiers && group.tiers.length > 1}
-    <FameDepthSlider {tid} {group} />
-  {/if}
+  <FameDepthSlider {tid} {group} />
 </li>
