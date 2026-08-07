@@ -1,6 +1,7 @@
 <script lang="ts">
   import { setIndeterminate } from "../../lib/dom";
   import type { TopicSummary } from "../../lib/types";
+  import Msg from "../../locale/html/Msg.svelte";
   import { lang } from "../../state/lang.svelte";
   import { overlays } from "../../state/overlays.svelte";
   import { selection } from "../../state/selection.svelte";
@@ -59,7 +60,7 @@
       id={`lang-note-${topic.id}`}
       role="tooltip"
     >
-      {lang.ui.langUnsupported(lang.name(lang.current))}
+      <Msg text={lang.ui.langUnsupported(lang.name(lang.current))} />
     </p>
   {/if}
 

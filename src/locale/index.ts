@@ -38,7 +38,9 @@ export interface UIStrings {
   /** Globe-button aria-label, e.g. "Language: English". */
   languageLabel: (current: string) => string;
   languageMenu: string;
-  /** Warning marker for a topic that doesn't fully support the selected language. */
+  /** Warning marker for a topic that doesn't fully support the selected language.
+   *  Carries `{br}` — render it through `html/Msg.svelte`, or `html/plain.ts`
+   *  where the result has to be a plain string. */
   langUnsupported: (language: string) => string;
   /** Footer: label of the link to the repository. */
   repository: string;

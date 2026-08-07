@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { plain } from "../../locale/html/plain";
   import { lang } from "../../state/lang.svelte";
   import { overlays } from "../../state/overlays.svelte";
 
@@ -15,7 +16,7 @@
   class="lang-warning"
   aria-expanded={overlays.warnTopic === topicId}
   aria-controls={`lang-note-${topicId}`}
-  aria-label={lang.ui.langUnsupported(lang.name(lang.current))}
+  aria-label={plain(lang.ui.langUnsupported(lang.name(lang.current)))}
   onpointerenter={(e) => overlays.warnEnter(e, topicId)}
   onpointerleave={(e) => overlays.warnLeave(e)}
   onfocus={(e) => overlays.openWarn(topicId, e.currentTarget)}
