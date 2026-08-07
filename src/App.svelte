@@ -1,24 +1,23 @@
 <script lang="ts">
   import { onMount } from "svelte";
   import { loadManifest, loadTopic } from "./lib/data";
-  import type { TopicSummary, Topic, Group, Word, WordEntry, LocalizedString, NamePair, CategoryMeta } from "./lib/types";
+  import type {
+    TopicSummary,
+    Topic,
+    Group,
+    NamesMode,
+    WordEntry,
+    CategoryMeta,
+  } from "./lib/types";
+  import { SKRIBBL } from "./lib/skribbl";
+  import { groupEntries, groupHasNames, renderCount, renderEntry } from "./lib/words";
+  import { buildTree, catDepth, titleCase, type CatNode } from "./lib/tree";
+  import { depthFromKey, depthFromPointer, snapPositions } from "./lib/fame";
+  import { selectAll, setIndeterminate } from "./lib/dom";
   import { strings, SUPPORTED_LANGS } from "./locale";
 
-  type NamesMode = "short" | "long" | "both";
-
-  // ─── Tunables (configuration) ──────────────────────────────────────────────
-  // skribbl's custom-wordlist rules (PLANNING §4/§6.2). Only game preset for now.
-  const SKRIBBL = { separator: ",", minWords: 10, maxWordLen: 32, maxTotal: 20000 };
-  // Fame-depth slider snap spacing: every gap is at least this fraction of an
-  // equal step, and the remaining travel is distributed by tier size. Lower =
-  // more size-faithful spacing; higher = more even. Range (0, 1).
-  const MIN_GAP_RATIO = 0.4;
   // Repo home, used for the footer links.
   const REPO_URL = "https://github.com/Trummler12/custom-wordlists";
-  // Horizontal inset (px) that keeps the slider's end dots off the rail edges.
-  // Must stay in sync with `--inset` in src/styles/app.css.
-  const INSET_PX = 8;
-  // ────────────────────────────────────────────────────────────────────────────
 
   let topics = $state<TopicSummary[]>([]);
   let categories = $state<Record<string, CategoryMeta>>({}); // path → display metadata
@@ -170,57 +169,9 @@
   // emit. Counts and output dedup identical rendered strings (e.g. two "Kyle"s).
   const modeOf = (k: string): NamesMode => namesMode[k] ?? "long";
 
-  // Resolve a leaf string to the active language: a language map picks `lang`
-  // (falling back to its "en" base); a plain string is already neutral.
-  function resolveStr(s: LocalizedString): string {
-    return typeof s === "string" ? s : (s[lang] ?? s.en);
-  }
-  // Resolve an entry to the active language. Two equivalent shapes are accepted:
-  // the preferred leaf form (a name pair whose fields each localize) and an
-  // entry-level language map { en, de, … } whose value is itself an entry — the
-  // latter is resolved by picking the language and recursing. Reads `lang`, so
-  // every derived count/output recomputes on a language switch with no refetch.
-  function resolveWord(e: WordEntry): Word {
-    if (typeof e === "string") return e;
-    const obj = e as Record<string, unknown>;
-    if ("short" in obj && "long" in obj) {
-      const p = e as NamePair;
-      return { short: resolveStr(p.short), long: resolveStr(p.long) };
-    }
-    // entry-level language map: pick the language's value, then resolve it.
-    const map = e as Record<string, WordEntry>;
-    return resolveWord(map[lang] ?? map.en);
-  }
-  function renderEntry(e: WordEntry, mode: NamesMode): string[] {
-    const w = resolveWord(e);
-    if (typeof w === "string") return [w];
-    if (mode === "short") return [w.short];
-    if (mode === "long") return [w.long];
-    return w.short === w.long ? [w.short] : [w.short, w.long];
-  }
-  const groupHasNames = (g: Group): boolean =>
-    g.tiers
-      ? g.tiers.some((tier) => tier.some((e) => typeof resolveWord(e) !== "string"))
-      : (g.words ?? []).some((e) => typeof resolveWord(e) !== "string");
-
-  /** Count of distinct rendered strings for a list of entries in a mode (no array). */
-  function renderCount(entries: WordEntry[], mode: NamesMode): number {
-    const seen = new Set<string>();
-    for (const e of entries) for (const w of renderEntry(e, mode)) seen.add(w);
-    return seen.size;
-  }
-
-  // Groups are immutable after load, so cache each group's flattened entries
-  // instead of re-flattening its tiers on every render.
-  const entriesCache = new WeakMap<Group, WordEntry[]>();
-  const groupEntries = (g: Group): WordEntry[] => {
-    let entries = entriesCache.get(g);
-    if (!entries) {
-      entries = g.tiers ? g.tiers.flat() : g.words ?? [];
-      entriesCache.set(g, entries);
-    }
-    return entries;
-  };
+  // The resolvers in lib/words.ts take the language as an argument; passing
+  // `lang` here is what keeps every derived count and the output recomputing on
+  // a language switch, with no refetch.
   function selectedEntries(tid: string, g: Group): WordEntry[] {
     const k = key(tid, g.id);
     if (g.tiers) return g.tiers.slice(0, depthByGroup[k] ?? 0).flat();
@@ -228,9 +179,9 @@
   }
 
   const groupTotal = (tid: string, g: Group): number =>
-    renderCount(groupEntries(g), modeOf(key(tid, g.id)));
+    renderCount(groupEntries(g), modeOf(key(tid, g.id)), lang);
   const groupSelCount = (tid: string, g: Group): number =>
-    renderCount(selectedEntries(tid, g), modeOf(key(tid, g.id)));
+    renderCount(selectedEntries(tid, g), modeOf(key(tid, g.id)), lang);
 
   const groupFull = (tid: string, g: Group): boolean => {
     const k = key(tid, g.id);
@@ -262,50 +213,12 @@
   const catFull = (ts: TopicSummary[]) => ts.every(topicFull);
   const catPartial = (ts: TopicSummary[]) => catSel(ts) > 0 && !catFull(ts);
 
-  // Snap positions (fractions 0…1 of the thumb travel) for a tiered group's
-  // slider: one per tier boundary. Spacing reflects each tier's size, but every
-  // gap keeps at least MIN_GAP_RATIO of an equal step so dots never touch.
-  // MIN_GAP_RATIO and INSET_PX are configured in the Tunables block up top.
-  function snapPositions(g: Group): number[] {
-    const tiers = g.tiers ?? [];
-    const n = tiers.length;
-    const total = tiers.reduce((a, t) => a + t.length, 0) || 1;
-    const base = MIN_GAP_RATIO / n; // minimum gap, as a fraction of full travel
-    const scale = 1 - n * base; // remaining travel distributed by tier size
-    const pos = [0];
-    let acc = 0;
-    for (let i = 0; i < n; i++) {
-      acc += base + scale * (tiers[i].length / total);
-      pos.push(acc);
-    }
-    pos[n] = 1; // guard against float drift
-    return pos;
+  function dragDepth(e: PointerEvent, k: string, g: Group) {
+    depthByGroup[k] = depthFromPointer(e, g);
   }
-  function nearestIndex(pos: number[], frac: number): number {
-    let best = 0;
-    let bestD = Infinity;
-    for (let i = 0; i < pos.length; i++) {
-      const d = Math.abs(pos[i] - frac);
-      if (d < bestD) {
-        bestD = d;
-        best = i;
-      }
-    }
-    return best;
-  }
-  function depthFromPointer(e: PointerEvent, k: string, g: Group) {
-    const rect = (e.currentTarget as HTMLElement).getBoundingClientRect();
-    const span = rect.width - 2 * INSET_PX;
-    const frac = span > 0 ? (e.clientX - rect.left - INSET_PX) / span : 0;
-    depthByGroup[k] = nearestIndex(snapPositions(g), Math.min(1, Math.max(0, frac)));
-  }
-  function depthKey(e: KeyboardEvent, k: string, n: number) {
-    let d = depthByGroup[k] ?? 0;
-    if (e.key === "ArrowRight" || e.key === "ArrowUp") d = Math.min(n, d + 1);
-    else if (e.key === "ArrowLeft" || e.key === "ArrowDown") d = Math.max(0, d - 1);
-    else if (e.key === "Home") d = 0;
-    else if (e.key === "End") d = n;
-    else return;
+  function keyDepth(e: KeyboardEvent, k: string, n: number) {
+    const d = depthFromKey(e, depthByGroup[k] ?? 0, n);
+    if (d === null) return;
     e.preventDefault();
     depthByGroup[k] = d;
   }
@@ -334,50 +247,12 @@
     ts.forEach((t, i) => loaded[i] && setTopic(t, on));
   }
 
-  // Build a nested category tree from topic.category paths (topics keep manifest
-  // order; categories appear first-seen). Each node renders as one collapsible
-  // level showing only its own segment, so "gaming/pokemon/pokemon" nests inside
-  // "gaming/pokemon" instead of repeating the whole path as a flat header.
-  type CatNode = {
-    name: string;
-    path: string;
-    topics: TopicSummary[];
-    children: CatNode[];
-    /** All topics under this node (own + descendants); filled once per tree build. */
-    all: TopicSummary[];
-  };
-  // All topics under a category node — precomputed once here so category rows don't
-  // re-flatten their subtree on every render.
-  const fillAll = (node: CatNode): TopicSummary[] =>
-    (node.all = node.topics.concat(...node.children.map(fillAll)));
-  const tree = $derived.by(() => {
-    const root: CatNode = { name: "", path: "", topics: [], children: [], all: [] };
-    for (const t of topics) {
-      let node = root;
-      let path = "";
-      for (const seg of t.category.split("/").filter(Boolean)) {
-        path = path ? `${path}/${seg}` : seg;
-        let child = node.children.find((c) => c.name === seg);
-        if (!child) {
-          child = { name: seg, path, topics: [], children: [], all: [] };
-          node.children.push(child);
-        }
-        node = child;
-      }
-      node.topics.push(t);
-    }
-    fillAll(root);
-    return root;
-  });
+  const tree = $derived(buildTree(topics));
 
   // Default expansion: only top-level categories are open, so the second level
   // (e.g. gaming → pokemon) shows up but its contents stay collapsed until the
   // user drills in. A manual toggle (catExpanded) overrides the default.
-  const catDepth = (node: CatNode) => node.path.split("/").length - 1;
   const catOpen = (node: CatNode) => catExpanded[node.path] ?? catDepth(node) === 0;
-
-  const titleCase = (seg: string) =>
-    seg.split("-").map((w) => w.charAt(0).toUpperCase() + w.slice(1)).join(" ");
 
   // Display name for a topic / category in the active language, with fallbacks.
   // Topic: per-lang title (if the names differ) → representative title.
@@ -398,7 +273,7 @@
       for (const g of data.groups) {
         const mode = modeOf(key(t.id, g.id));
         for (const e of selectedEntries(t.id, g)) {
-          for (const w of renderEntry(e, mode)) {
+          for (const w of renderEntry(e, mode, lang)) {
             if (!seen.has(w)) {
               seen.add(w);
               out.push(w);
@@ -428,19 +303,6 @@
     }
   }
 
-  function selectAll(node: HTMLElement) {
-    const range = document.createRange();
-    range.selectNodeContents(node);
-    const sel = window.getSelection();
-    sel?.removeAllRanges();
-    sel?.addRange(range);
-  }
-
-  // Reflect a mixed parent-checkbox state (indeterminate is a DOM property).
-  function setIndeterminate(node: HTMLInputElement, value: boolean) {
-    node.indeterminate = value;
-    return { update: (v: boolean) => (node.indeterminate = v) };
-  }
 </script>
 
 <svelte:window onpointerdown={onWindowPointerDown} onkeydown={onWindowKeyDown} />
@@ -588,7 +450,7 @@
                           />
                           <span class="title">{groupTitle(g)}</span>
                         </label>
-                        {#if groupHasNames(g)}
+                        {#if groupHasNames(g, lang)}
                           <select
                             class="names-mode"
                             aria-label={ui.nameFormLabel(groupTitle(g))}
@@ -617,12 +479,12 @@
                             aria-label={ui.fameDepthLabel(groupTitle(g))}
                             onpointerdown={(e) => {
                               e.currentTarget.setPointerCapture(e.pointerId);
-                              depthFromPointer(e, k, g);
+                              dragDepth(e, k, g);
                             }}
                             onpointermove={(e) => {
-                              if (e.buttons & 1) depthFromPointer(e, k, g);
+                              if (e.buttons & 1) dragDepth(e, k, g);
                             }}
-                            onkeydown={(e) => depthKey(e, k, tierCount(g))}
+                            onkeydown={(e) => keyDepth(e, k, tierCount(g))}
                           >
                             <span class="depth-rail"></span>
                             <span
