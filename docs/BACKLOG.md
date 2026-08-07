@@ -13,6 +13,18 @@ big enough to discuss belongs in an issue instead.
   parser that turns a marked-up string into a list of parts, and one snippet per
   tag. Nothing needs them today — add a tag the first time a string actually wants
   it, not before.
+- **The ⚠️ warning reads wrong in English.** A topic without a `languages` field
+  warns in every language including English, which is correct — those lists
+  aren't finished in English either. But `langUnsupported` is written for the
+  other case: "English is used where a translation is missing" describes a
+  fallback that, with English selected, there is nothing to fall back *from*.
+  The marker needs a second string for `lang === "en"` — same warning, without
+  the translation clause. Worth doing together with `{br}`, which the sentence
+  wants anyway.
+- **Two nits in the issue chooser.** The contribution-guide contact link points
+  at `blob/main/CONTRIBUTING.md`; `?tab=contributing-ov-file` renders it in the
+  repo's own tab instead. And the charity divider's `name` (one 🌳) is much
+  shorter than its `about` (twelve) — 8 or 9 would balance the two lines.
 - **Football by country/continent (re-groupable list).** The complex part of the
   sports idea, deferred. Under a future `sports/football/`, football players should
   default to a by-continent split (classic fame slider per continent), toggleable
