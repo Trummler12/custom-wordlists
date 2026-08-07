@@ -1,24 +1,17 @@
 <script lang="ts">
   import { onMount } from "svelte";
-  import type { TopicSummary, Group, NamesMode, WordEntry } from "./lib/types";
+  import type { NamesMode, TopicSummary } from "./lib/types";
   import { SKRIBBL } from "./lib/skribbl";
-  import { groupEntries, groupHasNames, renderCount, renderEntry } from "./lib/words";
-  import { catDepth, type CatNode } from "./lib/tree";
-  import { depthFromKey, depthFromPointer, snapPositions } from "./lib/fame";
+  import { groupHasNames, renderEntry } from "./lib/words";
+  import type { CatNode } from "./lib/tree";
+  import { snapPositions } from "./lib/fame";
   import { selectAll, setIndeterminate } from "./lib/dom";
   import { lang } from "./state/lang.svelte";
   import { topics } from "./state/topics.svelte";
+  import { selection } from "./state/selection.svelte";
 
   // Repo home, used for the footer links.
   const REPO_URL = "https://github.com/Trummler12/custom-wordlists";
-
-  let expanded = $state<Record<string, boolean>>({});
-  let catExpanded = $state<Record<string, boolean>>({}); // category node open/closed, by path
-  let selected = $state<Record<string, boolean>>({}); // flat groups only, key `${topicId}:${groupId}`
-  // Per-group fame depth (top-N tiers), keyed like `selected`. Absent/0 = unselected.
-  let depthByGroup = $state<Record<string, number>>({});
-  // Per-group names mode (only groups with short/long entries show the dropdown).
-  let namesMode = $state<Record<string, NamesMode>>({});
 
   // Which language menu is open (by instance id), or null. Two pickers share the
   // language but each has its own trigger.
@@ -39,8 +32,6 @@
   }
 
   let copied = $state(false);
-
-  const key = (tid: string, gid: string) => `${tid}:${gid}`;
 
   onMount(async () => {
     await topics.init();
@@ -69,108 +60,6 @@
     }
   }
 
-  async function toggleExpand(t: TopicSummary) {
-    expanded[t.id] = !expanded[t.id];
-    if (expanded[t.id]) await topics.ensure(t);
-  }
-
-  // --- Selection model -------------------------------------------------------
-  // Tiered groups are represented purely by depthByGroup[k] (0…tierCount);
-  // flat `words` groups keep the boolean selected[k]. Every parent state below
-  // (group full/partial, topic, category) is derived from these two, so moving
-  // a slider rolls up to the topic and category checkboxes with no extra code.
-
-  const tierCount = (g: Group) => g.tiers?.length ?? 0;
-
-  // --- Names mode (short / long / both) --------------------------------------
-  // A group's entries are plain strings or { short, long } pairs. A group with
-  // any pair shows a per-group Names dropdown; the mode picks which form(s) to
-  // emit. Counts and output dedup identical rendered strings (e.g. two "Kyle"s).
-  const modeOf = (k: string): NamesMode => namesMode[k] ?? "long";
-
-  // The resolvers in lib/words.ts take the language as an argument; reading
-  // `lang.current` here is what keeps every derived count and the output
-  // recomputing on a language switch, with no refetch.
-  function selectedEntries(tid: string, g: Group): WordEntry[] {
-    const k = key(tid, g.id);
-    if (g.tiers) return g.tiers.slice(0, depthByGroup[k] ?? 0).flat();
-    return selected[k] ? g.words ?? [] : [];
-  }
-
-  const groupTotal = (tid: string, g: Group): number =>
-    renderCount(groupEntries(g), modeOf(key(tid, g.id)), lang.current);
-  const groupSelCount = (tid: string, g: Group): number =>
-    renderCount(selectedEntries(tid, g), modeOf(key(tid, g.id)), lang.current);
-
-  const groupFull = (tid: string, g: Group): boolean => {
-    const k = key(tid, g.id);
-    return g.tiers ? (depthByGroup[k] ?? 0) === g.tiers.length : !!selected[k];
-  };
-  const groupPartial = (tid: string, g: Group): boolean => {
-    if (!g.tiers) return false;
-    const d = depthByGroup[key(tid, g.id)] ?? 0;
-    return d > 0 && d < g.tiers.length;
-  };
-
-  const topicSelCount = (t: TopicSummary): number =>
-    topics.groupsOf(t).reduce((n, g) => n + groupSelCount(t.id, g), 0);
-  // Total available for a topic: live (mode-aware) once loaded, else the manifest
-  // entry count as a baseline.
-  const topicTotal = (t: TopicSummary): number => {
-    const gs = topics.groupsOf(t);
-    return gs.length ? gs.reduce((n, g) => n + groupTotal(t.id, g), 0) : t.wordCount;
-  };
-  const topicFull = (t: TopicSummary): boolean => {
-    const gs = topics.groupsOf(t);
-    return gs.length > 0 && gs.every((g) => groupFull(t.id, g));
-  };
-  const topicPartial = (t: TopicSummary): boolean =>
-    topicSelCount(t) > 0 && !topicFull(t);
-
-  const catTotal = (ts: TopicSummary[]) => ts.reduce((n, t) => n + topicTotal(t), 0);
-  const catSel = (ts: TopicSummary[]) => ts.reduce((n, t) => n + topicSelCount(t), 0);
-  const catFull = (ts: TopicSummary[]) => ts.every(topicFull);
-  const catPartial = (ts: TopicSummary[]) => catSel(ts) > 0 && !catFull(ts);
-
-  function dragDepth(e: PointerEvent, k: string, g: Group) {
-    depthByGroup[k] = depthFromPointer(e, g);
-  }
-  function keyDepth(e: KeyboardEvent, k: string, n: number) {
-    const d = depthFromKey(e, depthByGroup[k] ?? 0, n);
-    if (d === null) return;
-    e.preventDefault();
-    depthByGroup[k] = d;
-  }
-
-  function setGroup(tid: string, g: Group, on: boolean) {
-    const k = key(tid, g.id);
-    if (g.tiers) depthByGroup[k] = on ? g.tiers.length : 0;
-    else selected[k] = on;
-  }
-  function setTopic(t: TopicSummary, on: boolean) {
-    for (const g of topics.groupsOf(t)) setGroup(t.id, g, on);
-  }
-
-  function toggleGroup(tid: string, g: Group) {
-    // Any selection (full or partial) clears; only an empty group fills.
-    setGroup(tid, g, groupSelCount(tid, g) === 0);
-  }
-  async function toggleTopic(t: TopicSummary) {
-    const data = topics.data[t.id] ?? (await topics.ensure(t));
-    if (!data) return;
-    setTopic(t, !topicFull(t));
-  }
-  async function toggleCategory(ts: TopicSummary[]) {
-    const on = !catFull(ts);
-    const loaded = await Promise.all(ts.map((t) => topics.data[t.id] ?? topics.ensure(t)));
-    ts.forEach((t, i) => loaded[i] && setTopic(t, on));
-  }
-
-  // Default expansion: only top-level categories are open, so the second level
-  // (e.g. gaming → pokemon) shows up but its contents stay collapsed until the
-  // user drills in. A manual toggle (catExpanded) overrides the default.
-  const catOpen = (node: CatNode) => catExpanded[node.path] ?? catDepth(node) === 0;
-
   // Aggregate selected groups' words (top-N tiers), de-duplicated, manifest order.
   const merged = $derived.by(() => {
     const seen = new Set<string>();
@@ -179,8 +68,8 @@
       const data = topics.data[t.id];
       if (!data) continue;
       for (const g of data.groups) {
-        const mode = modeOf(key(t.id, g.id));
-        for (const e of selectedEntries(t.id, g)) {
+        const mode = selection.modeOf(selection.key(t.id, g.id));
+        for (const e of selection.entriesOf(t.id, g)) {
           for (const w of renderEntry(e, mode, lang.current)) {
             if (!seen.has(w)) {
               seen.add(w);
@@ -210,7 +99,6 @@
       /* clipboard unavailable (e.g. insecure context) — ignore */
     }
   }
-
 </script>
 
 <svelte:window onpointerdown={onWindowPointerDown} onkeydown={onWindowKeyDown} />
@@ -278,19 +166,19 @@
                 <button
                   type="button"
                   class="expander"
-                  aria-expanded={!!expanded[t.id]}
+                  aria-expanded={!!selection.expanded[t.id]}
                   aria-controls={`groups-${t.id}`}
-                  aria-label={lang.ui.toggle(!!expanded[t.id], topics.topicTitle(t))}
-                  onclick={() => toggleExpand(t)}
+                  aria-label={lang.ui.toggle(!!selection.expanded[t.id], topics.topicTitle(t))}
+                  onclick={() => selection.toggleExpand(t)}
                 >
-                  {expanded[t.id] ? "▾" : "▸"}
+                  {selection.expanded[t.id] ? "▾" : "▸"}
                 </button>
                 <label class="topic">
                   <input
                     type="checkbox"
-                    checked={topicFull(t)}
-                    use:setIndeterminate={topicPartial(t)}
-                    onchange={() => toggleTopic(t)}
+                    checked={selection.topicFull(t)}
+                    use:setIndeterminate={selection.topicPartial(t)}
+                    onchange={() => selection.toggleTopic(t)}
                   />
                   <span class="icon" aria-hidden="true">{t.icon ?? "•"}</span>
                   <span class="title">{topics.topicTitle(t)}</span>
@@ -322,7 +210,7 @@
                     >
                   {/if}
                   <span class="meta">
-                    {#if topics.isLoading(t)}{lang.ui.loadingShort}{:else}{lang.ui.wordsOf(topicSelCount(t), topicTotal(t))}{/if}
+                    {#if topics.isLoading(t)}{lang.ui.loadingShort}{:else}{lang.ui.wordsOf(selection.topicSelCount(t), selection.topicTotal(t))}{/if}
                   </span>
                 </label>
               </div>
@@ -343,18 +231,18 @@
                 </p>
               {/if}
 
-              {#if expanded[t.id] && topics.data[t.id]}
+              {#if selection.expanded[t.id] && topics.data[t.id]}
                 <ul class="groups" id={`groups-${t.id}`}>
                   {#each topics.groupsOf(t) as g (g.id)}
-                    {@const k = key(t.id, g.id)}
+                    {@const k = selection.key(t.id, g.id)}
                     <li>
                       <div class="group">
                         <label class="group-label">
                           <input
                             type="checkbox"
-                            checked={groupFull(t.id, g)}
-                            use:setIndeterminate={groupPartial(t.id, g)}
-                            onchange={() => toggleGroup(t.id, g)}
+                            checked={selection.groupFull(t.id, g)}
+                            use:setIndeterminate={selection.groupPartial(t.id, g)}
+                            onchange={() => selection.toggleGroup(t.id, g)}
                           />
                           <span class="title">{topics.groupTitle(g)}</span>
                         </label>
@@ -362,18 +250,18 @@
                           <select
                             class="names-mode"
                             aria-label={lang.ui.nameFormLabel(topics.groupTitle(g))}
-                            value={modeOf(k)}
-                            onchange={(e) => (namesMode[k] = e.currentTarget.value as NamesMode)}
+                            value={selection.modeOf(k)}
+                            onchange={(e) => selection.setMode(k, e.currentTarget.value as NamesMode)}
                           >
                             <option value="short">{lang.ui.nameForm.short}</option>
                             <option value="long">{lang.ui.nameForm.long}</option>
                             <option value="both">{lang.ui.nameForm.both}</option>
                           </select>
                         {/if}
-                        <span class="meta">{lang.ui.wordsOf(groupSelCount(t.id, g), groupTotal(t.id, g))}</span>
+                        <span class="meta">{lang.ui.wordsOf(selection.groupSelCount(t.id, g), selection.groupTotal(t.id, g))}</span>
                       </div>
                       {#if g.tiers && g.tiers.length > 1}
-                        {@const d = depthByGroup[k] ?? 0}
+                        {@const d = selection.depth(k)}
                         {@const pos = snapPositions(g)}
                         <div class="group-depth">
                           <div
@@ -387,12 +275,12 @@
                             aria-label={lang.ui.fameDepthLabel(topics.groupTitle(g))}
                             onpointerdown={(e) => {
                               e.currentTarget.setPointerCapture(e.pointerId);
-                              dragDepth(e, k, g);
+                              selection.dragDepth(e, k, g);
                             }}
                             onpointermove={(e) => {
-                              if (e.buttons & 1) dragDepth(e, k, g);
+                              if (e.buttons & 1) selection.dragDepth(e, k, g);
                             }}
-                            onkeydown={(e) => keyDepth(e, k, tierCount(g))}
+                            onkeydown={(e) => selection.keyDepth(e, k, g)}
                           >
                             <span class="depth-rail"></span>
                             <span
@@ -427,28 +315,28 @@
             <button
               type="button"
               class="expander"
-              aria-expanded={catOpen(node)}
+              aria-expanded={selection.catOpen(node)}
               aria-controls={`${catId}-children`}
-              aria-label={lang.ui.toggle(catOpen(node), topics.categoryTitle(node))}
-              onclick={() => (catExpanded[node.path] = !catOpen(node))}
+              aria-label={lang.ui.toggle(selection.catOpen(node), topics.categoryTitle(node))}
+              onclick={() => selection.toggleCat(node)}
             >
-              {catOpen(node) ? "▾" : "▸"}
+              {selection.catOpen(node) ? "▾" : "▸"}
             </button>
             <input
               type="checkbox"
               id={catId}
-              checked={catFull(at)}
-              use:setIndeterminate={catPartial(at)}
-              onchange={() => toggleCategory(at)}
+              checked={selection.catFull(at)}
+              use:setIndeterminate={selection.catPartial(at)}
+              onchange={() => selection.toggleCategory(at)}
             />
             <h3 class="category-title">
               <label for={catId}>
                 {#if topics.categoryIcon(node)}<span class="icon" aria-hidden="true">{topics.categoryIcon(node)}</span> {/if}{topics.categoryTitle(node)}
               </label>
             </h3>
-            <span class="meta">{lang.ui.wordsOf(catSel(at), catTotal(at))}</span>
+            <span class="meta">{lang.ui.wordsOf(selection.catSel(at), selection.catTotal(at))}</span>
           </div>
-          {#if catOpen(node)}
+          {#if selection.catOpen(node)}
             <div class="cat-children" id={`${catId}-children`}>
               {#each node.topics as t (t.id)}{@render topicRow(t)}{/each}
               {#each node.children as child (child.path)}{@render categoryNode(child)}{/each}
