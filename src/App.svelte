@@ -1,32 +1,16 @@
 <script lang="ts">
   import { onMount } from "svelte";
-  import { loadManifest, loadTopic } from "./lib/data";
-  import type {
-    TopicSummary,
-    Topic,
-    Group,
-    NamesMode,
-    WordEntry,
-    CategoryMeta,
-  } from "./lib/types";
+  import type { TopicSummary, Group, NamesMode, WordEntry } from "./lib/types";
   import { SKRIBBL } from "./lib/skribbl";
   import { groupEntries, groupHasNames, renderCount, renderEntry } from "./lib/words";
-  import { buildTree, catDepth, titleCase, type CatNode } from "./lib/tree";
+  import { catDepth, type CatNode } from "./lib/tree";
   import { depthFromKey, depthFromPointer, snapPositions } from "./lib/fame";
   import { selectAll, setIndeterminate } from "./lib/dom";
   import { lang } from "./state/lang.svelte";
+  import { topics } from "./state/topics.svelte";
 
   // Repo home, used for the footer links.
   const REPO_URL = "https://github.com/Trummler12/custom-wordlists";
-
-  let topics = $state<TopicSummary[]>([]);
-  let categories = $state<Record<string, CategoryMeta>>({}); // path → display metadata
-  let loading = $state(true);
-  let error = $state<string | null>(null);
-
-  let topicData = $state<Record<string, Topic>>({}); // id → loaded topic (cache)
-  let loadingById = $state<Record<string, boolean>>({});
-  let topicError = $state<string | null>(null);
 
   let expanded = $state<Record<string, boolean>>({});
   let catExpanded = $state<Record<string, boolean>>({}); // category node open/closed, by path
@@ -59,16 +43,10 @@
   const key = (tid: string, gid: string) => `${tid}:${gid}`;
 
   onMount(async () => {
-    try {
-      const manifest = await loadManifest();
-      topics = manifest.topics;
-      categories = manifest.categories ?? {};
-      lang.init();
-    } catch (e) {
-      error = e instanceof Error ? e.message : String(e);
-    } finally {
-      loading = false;
-    }
+    await topics.init();
+    // Only once the manifest is there, as before: a failed load keeps the error
+    // message in English rather than resolving a language nobody can act on.
+    if (!topics.error) lang.init();
   });
 
   const chooseLanguage = (l: string) => {
@@ -91,29 +69,10 @@
     }
   }
 
-  async function ensureLoaded(t: TopicSummary): Promise<Topic | null> {
-    if (topicData[t.id]) return topicData[t.id];
-    if (loadingById[t.id]) return null;
-    loadingById[t.id] = true;
-    topicError = null;
-    try {
-      const data = await loadTopic(t.path);
-      topicData[t.id] = data;
-      return data;
-    } catch (e) {
-      topicError = e instanceof Error ? e.message : String(e);
-      return null;
-    } finally {
-      loadingById[t.id] = false;
-    }
-  }
-
   async function toggleExpand(t: TopicSummary) {
     expanded[t.id] = !expanded[t.id];
-    if (expanded[t.id]) await ensureLoaded(t);
+    if (expanded[t.id]) await topics.ensure(t);
   }
-
-  const groupsOf = (t: TopicSummary): Group[] => topicData[t.id]?.groups ?? [];
 
   // --- Selection model -------------------------------------------------------
   // Tiered groups are represented purely by depthByGroup[k] (0…tierCount);
@@ -154,15 +113,15 @@
   };
 
   const topicSelCount = (t: TopicSummary): number =>
-    groupsOf(t).reduce((n, g) => n + groupSelCount(t.id, g), 0);
+    topics.groupsOf(t).reduce((n, g) => n + groupSelCount(t.id, g), 0);
   // Total available for a topic: live (mode-aware) once loaded, else the manifest
   // entry count as a baseline.
   const topicTotal = (t: TopicSummary): number => {
-    const gs = groupsOf(t);
+    const gs = topics.groupsOf(t);
     return gs.length ? gs.reduce((n, g) => n + groupTotal(t.id, g), 0) : t.wordCount;
   };
   const topicFull = (t: TopicSummary): boolean => {
-    const gs = groupsOf(t);
+    const gs = topics.groupsOf(t);
     return gs.length > 0 && gs.every((g) => groupFull(t.id, g));
   };
   const topicPartial = (t: TopicSummary): boolean =>
@@ -189,7 +148,7 @@
     else selected[k] = on;
   }
   function setTopic(t: TopicSummary, on: boolean) {
-    for (const g of groupsOf(t)) setGroup(t.id, g, on);
+    for (const g of topics.groupsOf(t)) setGroup(t.id, g, on);
   }
 
   function toggleGroup(tid: string, g: Group) {
@@ -197,38 +156,27 @@
     setGroup(tid, g, groupSelCount(tid, g) === 0);
   }
   async function toggleTopic(t: TopicSummary) {
-    const data = topicData[t.id] ?? (await ensureLoaded(t));
+    const data = topics.data[t.id] ?? (await topics.ensure(t));
     if (!data) return;
     setTopic(t, !topicFull(t));
   }
   async function toggleCategory(ts: TopicSummary[]) {
     const on = !catFull(ts);
-    const loaded = await Promise.all(ts.map((t) => topicData[t.id] ?? ensureLoaded(t)));
+    const loaded = await Promise.all(ts.map((t) => topics.data[t.id] ?? topics.ensure(t)));
     ts.forEach((t, i) => loaded[i] && setTopic(t, on));
   }
-
-  const tree = $derived(buildTree(topics));
 
   // Default expansion: only top-level categories are open, so the second level
   // (e.g. gaming → pokemon) shows up but its contents stay collapsed until the
   // user drills in. A manual toggle (catExpanded) overrides the default.
   const catOpen = (node: CatNode) => catExpanded[node.path] ?? catDepth(node) === 0;
 
-  // Display name for a topic / category in the active language, with fallbacks.
-  // Topic: per-lang.current title (if the names differ) → representative title.
-  // Category: per-lang.current title → global title → title-cased folder name.
-  const topicTitle = (t: TopicSummary) => t.titles?.[lang.current] ?? t.title;
-  const groupTitle = (g: Group) => g.titles?.[lang.current] ?? g.title;
-  const categoryTitle = (node: CatNode) =>
-    categories[node.path]?.titles?.[lang.current] ?? categories[node.path]?.title ?? titleCase(node.name);
-  const categoryIcon = (node: CatNode) => categories[node.path]?.icon;
-
   // Aggregate selected groups' words (top-N tiers), de-duplicated, manifest order.
   const merged = $derived.by(() => {
     const seen = new Set<string>();
     const out: string[] = [];
-    for (const t of topics) {
-      const data = topicData[t.id];
+    for (const t of topics.all) {
+      const data = topics.data[t.id];
       if (!data) continue;
       for (const g of data.groups) {
         const mode = modeOf(key(t.id, g.id));
@@ -301,7 +249,7 @@
 {/snippet}
 
 <main>
-  <div class="layout" class:single={loading || error || topics.length === 0}>
+  <div class="layout" class:single={!topics.ready}>
     <div class="col-topics">
       <header>
         <div class="title-row">
@@ -315,11 +263,11 @@
         </p>
       </header>
 
-      {#if loading}
+      {#if topics.loading}
         <p class="status">{lang.ui.loadingTopics}</p>
-      {:else if error}
-        <p class="status error">{lang.ui.loadError(error)}</p>
-      {:else if topics.length === 0}
+      {:else if topics.error}
+        <p class="status error">{lang.ui.loadError(topics.error)}</p>
+      {:else if topics.all.length === 0}
         <p class="status">{lang.ui.noTopics}</p>
       {:else}
         <section class="topics" aria-label={lang.ui.topics}>
@@ -332,7 +280,7 @@
                   class="expander"
                   aria-expanded={!!expanded[t.id]}
                   aria-controls={`groups-${t.id}`}
-                  aria-label={lang.ui.toggle(!!expanded[t.id], topicTitle(t))}
+                  aria-label={lang.ui.toggle(!!expanded[t.id], topics.topicTitle(t))}
                   onclick={() => toggleExpand(t)}
                 >
                   {expanded[t.id] ? "▾" : "▸"}
@@ -345,7 +293,7 @@
                     onchange={() => toggleTopic(t)}
                   />
                   <span class="icon" aria-hidden="true">{t.icon ?? "•"}</span>
-                  <span class="title">{topicTitle(t)}</span>
+                  <span class="title">{topics.topicTitle(t)}</span>
                   {#if !t.languages?.includes(lang.current)}
                     <!-- A button, not a bare span: a `title` tooltip needs a hover, which
                          touch devices don't have. Interactive content, so a click on it
@@ -374,7 +322,7 @@
                     >
                   {/if}
                   <span class="meta">
-                    {#if loadingById[t.id] && !topicData[t.id]}{lang.ui.loadingShort}{:else}{lang.ui.wordsOf(topicSelCount(t), topicTotal(t))}{/if}
+                    {#if topics.isLoading(t)}{lang.ui.loadingShort}{:else}{lang.ui.wordsOf(topicSelCount(t), topicTotal(t))}{/if}
                   </span>
                 </label>
               </div>
@@ -395,9 +343,9 @@
                 </p>
               {/if}
 
-              {#if expanded[t.id] && topicData[t.id]}
+              {#if expanded[t.id] && topics.data[t.id]}
                 <ul class="groups" id={`groups-${t.id}`}>
-                  {#each groupsOf(t) as g (g.id)}
+                  {#each topics.groupsOf(t) as g (g.id)}
                     {@const k = key(t.id, g.id)}
                     <li>
                       <div class="group">
@@ -408,12 +356,12 @@
                             use:setIndeterminate={groupPartial(t.id, g)}
                             onchange={() => toggleGroup(t.id, g)}
                           />
-                          <span class="title">{groupTitle(g)}</span>
+                          <span class="title">{topics.groupTitle(g)}</span>
                         </label>
                         {#if groupHasNames(g, lang.current)}
                           <select
                             class="names-mode"
-                            aria-label={lang.ui.nameFormLabel(groupTitle(g))}
+                            aria-label={lang.ui.nameFormLabel(topics.groupTitle(g))}
                             value={modeOf(k)}
                             onchange={(e) => (namesMode[k] = e.currentTarget.value as NamesMode)}
                           >
@@ -436,7 +384,7 @@
                             aria-valuemax={g.tiers.length}
                             aria-valuenow={d}
                             aria-valuetext={lang.ui.tiersValueText(d, g.tiers.length)}
-                            aria-label={lang.ui.fameDepthLabel(groupTitle(g))}
+                            aria-label={lang.ui.fameDepthLabel(topics.groupTitle(g))}
                             onpointerdown={(e) => {
                               e.currentTarget.setPointerCapture(e.pointerId);
                               dragDepth(e, k, g);
@@ -481,7 +429,7 @@
               class="expander"
               aria-expanded={catOpen(node)}
               aria-controls={`${catId}-children`}
-              aria-label={lang.ui.toggle(catOpen(node), categoryTitle(node))}
+              aria-label={lang.ui.toggle(catOpen(node), topics.categoryTitle(node))}
               onclick={() => (catExpanded[node.path] = !catOpen(node))}
             >
               {catOpen(node) ? "▾" : "▸"}
@@ -495,7 +443,7 @@
             />
             <h3 class="category-title">
               <label for={catId}>
-                {#if categoryIcon(node)}<span class="icon" aria-hidden="true">{categoryIcon(node)}</span> {/if}{categoryTitle(node)}
+                {#if topics.categoryIcon(node)}<span class="icon" aria-hidden="true">{topics.categoryIcon(node)}</span> {/if}{topics.categoryTitle(node)}
               </label>
             </h3>
             <span class="meta">{lang.ui.wordsOf(catSel(at), catTotal(at))}</span>
@@ -508,16 +456,16 @@
           {/if}
         {/snippet}
 
-        {#each tree.topics as t (t.id)}{@render topicRow(t)}{/each}
-        {#each tree.children as node (node.path)}{@render categoryNode(node)}{/each}
-        {#if topicError}
-          <p class="status error">{topicError}</p>
+        {#each topics.tree.topics as t (t.id)}{@render topicRow(t)}{/each}
+        {#each topics.tree.children as node (node.path)}{@render categoryNode(node)}{/each}
+        {#if topics.topicError}
+          <p class="status error">{topics.topicError}</p>
         {/if}
         </section>
       {/if}
     </div>
 
-    {#if !loading && !error && topics.length > 0}
+    {#if topics.ready}
       <section class="output" aria-label={lang.ui.output}>
         <div class="output-head">
           <h2>{lang.ui.output}</h2>
