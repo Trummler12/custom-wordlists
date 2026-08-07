@@ -38,6 +38,15 @@ big enough to discuss belongs in an issue instead.
   slider is nine near-identical controls in the way of a plain all-or-nothing
   checkbox. Depends on the single-group fix above, which decides where the
   slider lives in the first place.
+- **One ruler for a whole category.** Fame rulers sit on the lowest level, one per
+  group, which is right by default — but a category whose topics are variations of
+  one list (the nine Pokémon generations) would be better served by a single ruler
+  on the parent that moves all of them together. Opt-in via a new field in that
+  folder's `_category.json`, since it only makes sense where the children really
+  are comparable. The children's tiers won't line up, so "move all to the same
+  fraction" has to round to each child's next snap point upwards; the child rulers
+  stay usable individually afterwards. Sizeable — a shared control that writes to
+  many groups is a different shape from anything the selection model does today.
 - **Show what just changed in the output.** Ticking a topic or moving a fame
   slider changes the output silently, and on a long list the chips that appeared
   are usually below the fold. Two halves. (1) Scroll the output box so the gap
