@@ -532,6 +532,7 @@
                       type="button"
                       class="lang-warning"
                       aria-expanded={warnOpen === t.id}
+                      aria-controls={`lang-note-${t.id}`}
                       aria-label={ui.langUnsupported(langName(lang))}
                       onpointerenter={(e) => {
                         if (e.pointerType === "mouse") openWarn(t.id, e.currentTarget);
@@ -558,7 +559,16 @@
               <!-- Outside the <label>, or clicking the note would toggle the topic.
                    Spans the row, so it can't run out of the viewport on either side. -->
               {#if warnOpen === t.id}
-                <p class="lang-warning-note" class:above={warnAbove} role="status">
+                <!-- `tooltip`, not `status`: this is help text the reader asked for, not
+                     a live update that should interrupt whatever is being read. Screen
+                     readers get the same text from the button's aria-label, so the note
+                     is deliberately not also wired up as its description. -->
+                <p
+                  class="lang-warning-note"
+                  class:above={warnAbove}
+                  id={`lang-note-${t.id}`}
+                  role="tooltip"
+                >
                   {ui.langUnsupported(langName(lang))}
                 </p>
               {/if}
