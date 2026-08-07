@@ -18,6 +18,8 @@ export const INSET_PX = 8;
 export function snapPositions(g: Group): number[] {
   const tiers = g.tiers ?? [];
   const n = tiers.length;
+  // No tiers, no travel — and the divisions below would be by zero.
+  if (n === 0) return [0];
   const total = tiers.reduce((a, t) => a + t.length, 0) || 1;
   const base = MIN_GAP_RATIO / n; // minimum gap, as a fraction of full travel
   const scale = 1 - n * base; // remaining travel distributed by tier size
