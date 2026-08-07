@@ -1,37 +1,19 @@
 <script lang="ts">
   import { onMount } from "svelte";
   import type { NamesMode, TopicSummary } from "./lib/types";
-  import { SKRIBBL } from "./lib/skribbl";
-  import { groupHasNames, renderEntry } from "./lib/words";
   import type { CatNode } from "./lib/tree";
+  import { SKRIBBL } from "./lib/skribbl";
+  import { groupHasNames } from "./lib/words";
   import { snapPositions } from "./lib/fame";
   import { selectAll, setIndeterminate } from "./lib/dom";
   import { lang } from "./state/lang.svelte";
   import { topics } from "./state/topics.svelte";
   import { selection } from "./state/selection.svelte";
+  import { output } from "./state/output.svelte";
+  import { overlays } from "./state/overlays.svelte";
 
   // Repo home, used for the footer links.
   const REPO_URL = "https://github.com/Trummler12/custom-wordlists";
-
-  // Which language menu is open (by instance id), or null. Two pickers share the
-  // language but each has its own trigger.
-  let langMenuOpen = $state<string | null>(null);
-  // Topic whose language warning shows its note, or null. A `title=` tooltip needs a
-  // hover, which touch devices don't have — so the ⚠️ is a button as well (issue #22).
-  let warnOpen = $state<string | null>(null);
-  // What kind of pointer last went down anywhere on the page. A click event doesn't
-  // carry that, and it decides whether the warning follows the cursor or the tap.
-  let lastPointerType = "mouse";
-  // Whether the open warning note sits above its row instead of below it.
-  let warnAbove = $state(false);
-  /** Open a topic's language note, flipping it above the row when the marker is low
-   *  enough that a note below would be cut off by the bottom of the viewport. */
-  function openWarn(id: string, marker: Element) {
-    warnAbove = marker.getBoundingClientRect().bottom > window.innerHeight * (2 / 3);
-    warnOpen = id;
-  }
-
-  let copied = $state(false);
 
   onMount(async () => {
     await topics.init();
@@ -39,69 +21,9 @@
     // message in English rather than resolving a language nobody can act on.
     if (!topics.error) lang.init();
   });
-
-  const chooseLanguage = (l: string) => {
-    langMenuOpen = null;
-    lang.set(l);
-  };
-  function onWindowPointerDown(e: PointerEvent) {
-    if (e.pointerType) lastPointerType = e.pointerType;
-    const target = e.target as Element | null;
-    if (langMenuOpen && !target?.closest?.(".lang-picker")) langMenuOpen = null;
-    // Only for pointers without hover — with a mouse, leaving the marker closes it.
-    if (warnOpen && lastPointerType !== "mouse" && !target?.closest?.(".lang-warning")) {
-      warnOpen = null;
-    }
-  }
-  function onWindowKeyDown(e: KeyboardEvent) {
-    if (e.key === "Escape") {
-      langMenuOpen = null;
-      warnOpen = null;
-    }
-  }
-
-  // Aggregate selected groups' words (top-N tiers), de-duplicated, manifest order.
-  const merged = $derived.by(() => {
-    const seen = new Set<string>();
-    const out: string[] = [];
-    for (const t of topics.all) {
-      const data = topics.data[t.id];
-      if (!data) continue;
-      for (const g of data.groups) {
-        const mode = selection.modeOf(selection.key(t.id, g.id));
-        for (const e of selection.entriesOf(t.id, g)) {
-          for (const w of renderEntry(e, mode, lang.current)) {
-            if (!seen.has(w)) {
-              seen.add(w);
-              out.push(w);
-            }
-          }
-        }
-      }
-    }
-    return out;
-  });
-
-  const included = $derived(merged.filter((w) => w.length <= SKRIBBL.maxWordLen));
-  const excluded = $derived(merged.filter((w) => w.length > SKRIBBL.maxWordLen));
-  const outputText = $derived(included.join(SKRIBBL.separator));
-  const charCount = $derived(outputText.length);
-  // Counter only renders when merged.length > 0, so this needs no empty-guard.
-  const belowMin = $derived(included.length < SKRIBBL.minWords);
-  const overMax = $derived(charCount > SKRIBBL.maxTotal);
-
-  async function copy() {
-    try {
-      await navigator.clipboard.writeText(outputText);
-      copied = true;
-      setTimeout(() => (copied = false), 1500);
-    } catch {
-      /* clipboard unavailable (e.g. insecure context) — ignore */
-    }
-  }
 </script>
 
-<svelte:window onpointerdown={onWindowPointerDown} onkeydown={onWindowKeyDown} />
+<svelte:window onpointerdown={overlays.onPointerDown} onkeydown={overlays.onKeyDown} />
 
 {#snippet langPicker(id: string)}
   {#if lang.available.length > 1}
@@ -110,11 +32,11 @@
         type="button"
         class="lang-btn"
         aria-haspopup="menu"
-        aria-expanded={langMenuOpen === id}
+        aria-expanded={overlays.langMenu === id}
         aria-label={lang.ui.languageLabel(lang.name(lang.current))}
-        onclick={() => (langMenuOpen = langMenuOpen === id ? null : id)}
+        onclick={() => overlays.toggleLangMenu(id)}
       >🌐</button>
-      {#if langMenuOpen === id}
+      {#if overlays.langMenu === id}
         <ul class="lang-menu" role="menu" aria-label={lang.ui.languageMenu}>
           {#each lang.available as l (l)}
             <li role="none">
@@ -123,7 +45,7 @@
                 role="menuitemradio"
                 aria-checked={l === lang.current}
                 class:selected={l === lang.current}
-                onclick={() => chooseLanguage(l)}
+                onclick={() => overlays.chooseLanguage(l)}
               >
                 <span class="lang-code">{l.toUpperCase()}</span>
                 <span class="lang-name">{lang.name(l)}</span>
@@ -189,24 +111,14 @@
                     <button
                       type="button"
                       class="lang-warning"
-                      aria-expanded={warnOpen === t.id}
+                      aria-expanded={overlays.warnTopic === t.id}
                       aria-controls={`lang-note-${t.id}`}
                       aria-label={lang.ui.langUnsupported(lang.name(lang.current))}
-                      onpointerenter={(e) => {
-                        if (e.pointerType === "mouse") openWarn(t.id, e.currentTarget);
-                      }}
-                      onpointerleave={(e) => {
-                        if (e.pointerType === "mouse") warnOpen = null;
-                      }}
-                      onfocus={(e) => openWarn(t.id, e.currentTarget)}
-                      onblur={() => (warnOpen = null)}
-                      onclick={(e) => {
-                        // With a mouse the hover above already governs the note; only
-                        // pointers that can't hover need the click to toggle it.
-                        if (lastPointerType === "mouse") return;
-                        if (warnOpen === t.id) warnOpen = null;
-                        else openWarn(t.id, e.currentTarget);
-                      }}>⚠️</button
+                      onpointerenter={(e) => overlays.warnEnter(e, t.id)}
+                      onpointerleave={(e) => overlays.warnLeave(e)}
+                      onfocus={(e) => overlays.openWarn(t.id, e.currentTarget)}
+                      onblur={overlays.closeWarn}
+                      onclick={(e) => overlays.warnClick(e, t.id)}>⚠️</button
                     >
                   {/if}
                   <span class="meta">
@@ -216,14 +128,14 @@
               </div>
               <!-- Outside the <label>, or clicking the note would toggle the topic.
                    Spans the row, so it can't run out of the viewport on either side. -->
-              {#if warnOpen === t.id}
+              {#if overlays.warnTopic === t.id}
                 <!-- `tooltip`, not `status`: this is help text the reader asked for, not
                      a live update that should interrupt whatever is being read. Screen
                      readers get the same text from the button's aria-label, so the note
                      is deliberately not also wired up as its description. -->
                 <p
                   class="lang-warning-note"
-                  class:above={warnAbove}
+                  class:above={overlays.warnAbove}
                   id={`lang-note-${t.id}`}
                   role="tooltip"
                 >
@@ -359,13 +271,13 @@
           <h2>{lang.ui.output}</h2>
           <div class="head-actions">
             {@render langPicker("output")}
-            <button type="button" onclick={copy} disabled={included.length === 0}>
-              {copied ? lang.ui.copied : lang.ui.copy}
+            <button type="button" onclick={output.copy} disabled={output.included.length === 0}>
+              {output.copied ? lang.ui.copied : lang.ui.copy}
             </button>
           </div>
         </div>
 
-        {#if merged.length === 0}
+        {#if output.merged.length === 0}
           <p class="status">{lang.ui.emptyOutput}</p>
         {:else}
           <!-- Read-only per-word chips (not a textarea) so M2 can color words. -->
@@ -383,19 +295,19 @@
               }
             }}
           >
-            {#each included as w (w)}<span class="chip">{w}</span>{/each}
+            {#each output.included as w (w)}<span class="chip">{w}</span>{/each}
           </div>
 
-          <p class="counter" class:warn={belowMin || overMax}>
-            {lang.ui.wordsLabel}: {included.length} · {lang.ui.charsLabel}: {charCount.toLocaleString()} /
+          <p class="counter" class:warn={output.belowMin || output.overMax}>
+            {lang.ui.wordsLabel}: {output.included.length} · {lang.ui.charsLabel}: {output.charCount.toLocaleString()} /
             {SKRIBBL.maxTotal.toLocaleString()}
-            {#if belowMin}{lang.ui.belowMin(SKRIBBL.minWords)}{/if}
-            {#if overMax}{lang.ui.overMax}{/if}
+            {#if output.belowMin}{lang.ui.belowMin(SKRIBBL.minWords)}{/if}
+            {#if output.overMax}{lang.ui.overMax}{/if}
           </p>
 
-          {#if excluded.length > 0}
+          {#if output.excluded.length > 0}
             <p class="status warn">
-              {lang.ui.excluded(excluded.length, SKRIBBL.maxWordLen, excluded.join(", "))}
+              {lang.ui.excluded(output.excluded.length, SKRIBBL.maxWordLen, output.excluded.join(", "))}
             </p>
           {/if}
         {/if}
