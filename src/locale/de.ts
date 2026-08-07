@@ -15,6 +15,9 @@ export const de: UIStrings = {
   nameFormLabel: (group) => `Namensform für ${group}`,
   fameDepthLabel: (group) => `Bekanntheitstiefe für ${group}`,
   tiersValueText: (depth, total) => `oberste ${depth} von ${total} Stufen`,
+  fameGroupsDefined: (count) => `Fame-Gruppen definiert: ${count}`,
+  noFameGroups:
+    "Noch keine Fame-Gruppen definiert — im Contribution Guide im Footer erfährst du, wie du welche vorschlagen kannst!",
   output: "Ausgabe",
   copy: "Kopieren",
   copied: "Kopiert!",
@@ -29,7 +32,8 @@ export const de: UIStrings = {
   languageLabel: (current) => `Sprache: ${current}`,
   languageMenu: "Sprache",
   langUnsupported: (language) =>
-    `Für ${language} noch nicht bestätigt — dieses Thema ist evtl. unvollständig.{br}Fehlende Übersetzungen erscheinen auf Englisch.`,
+    `Für ${language} noch nicht bestätigt — dieses Thema ist evtl. unvollständig.`,
+  langFallback: "Fehlende Übersetzungen erscheinen auf Englisch.",
   repository: "GitHub-Repository",
   helpOut: "Du möchtest mithelfen? Wirf einen Blick in den",
   // Link label stays English — the guide itself is only available in English.

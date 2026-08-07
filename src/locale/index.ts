@@ -24,6 +24,10 @@ export interface UIStrings {
   nameFormLabel: (group: string) => string;
   fameDepthLabel: (group: string) => string;
   tiersValueText: (depth: number, total: number) => string;
+  /** Ruler tooltip for a list that has been ranked. */
+  fameGroupsDefined: (count: number) => string;
+  /** Ruler tooltip for a list that hasn't — an invitation to rank it. */
+  noFameGroups: string;
   output: string;
   copy: string;
   copied: string;
@@ -38,10 +42,10 @@ export interface UIStrings {
   /** Globe-button aria-label, e.g. "Language: English". */
   languageLabel: (current: string) => string;
   languageMenu: string;
-  /** Warning marker for a topic that doesn't fully support the selected language.
-   *  Carries `{br}` — render it through `html/Msg.svelte`, or `html/plain.ts`
-   *  where the result has to be a plain string. */
+  /** Warning marker for a topic that doesn't fully support the selected language. */
   langUnsupported: (language: string) => string;
+  /** Second half of that warning — see `langWarning()` for when it applies. */
+  langFallback: string;
   /** Footer: label of the link to the repository. */
   repository: string;
   /** Footer, around the inline guide link: "<helpOut> <guide><helpOutAfter>".
@@ -68,4 +72,15 @@ export const SUPPORTED_LANGS: string[] = Object.keys(UI).sort();
 /** UI strings for `lang`, falling back to English when it has no dictionary. */
 export function strings(lang: string): UIStrings {
   return UI[lang] ?? UI[FALLBACK_LANG];
+}
+
+/** The full ⚠️ warning for a topic, in the active language. The fallback sentence
+ *  is dropped for English: an entry's `en` form is the base every other language
+ *  falls back *to*, so with English selected nothing is being fallen back from.
+ *
+ *  Carries `{br}` — render through `html/Msg.svelte`, or `html/plain.ts` where the
+ *  result has to be a plain string. */
+export function langWarning(ui: UIStrings, code: string, name: string): string {
+  const first = ui.langUnsupported(name);
+  return code === FALLBACK_LANG ? first : `${first}{br}${ui.langFallback}`;
 }

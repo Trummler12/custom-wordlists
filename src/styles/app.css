@@ -198,7 +198,7 @@ header {
   margin: 0;
 }
 .topic-item {
-  position: relative; /* anchor for .lang-warning-note */
+  position: relative; /* anchor for .tip-note */
   border-bottom: 1px solid var(--border);
 }
 .topic-row {
@@ -214,6 +214,11 @@ header {
   color: var(--muted-2);
   font-size: 0.9rem;
   line-height: 1;
+}
+/* Same box as the button, minus the arrow — so a topic that can't expand keeps the
+   column width a topic that can would occupy. */
+.expander.placeholder {
+  visibility: hidden;
 }
 .topic {
   display: flex;
@@ -242,10 +247,10 @@ header {
   line-height: 1;
   cursor: help;
 }
-/* The note the marker opens. Stretched across the topic row rather than hung off the
-   marker itself: the marker sits somewhere in the middle of a row of unknown width, so
-   any box anchored to it can leave the viewport on one side or the other. */
-.lang-warning-note {
+/* The note a tooltip trigger opens. Stretched across its positioned parent rather than
+   hung off the trigger itself: a trigger sits somewhere in the middle of a row of unknown
+   width, so any box anchored to it can leave the viewport on one side or the other. */
+.tip-note {
   position: absolute;
   top: 100%;
   left: 0;
@@ -262,9 +267,9 @@ header {
   border-radius: var(--radius);
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
 }
-/* Set when the marker sits low in the viewport, where a note below it would be cut off
+/* Set when the trigger sits low in the viewport, where a note below it would be cut off
    by the bottom edge — the vertical counterpart to the full-row stretch above. */
-.lang-warning-note.above {
+.tip-note.above {
   top: auto;
   bottom: 100%;
   margin: 0 0 0.15rem;
@@ -302,9 +307,16 @@ header {
    the rail and their spacing can mirror tier sizes (a native <input range>
    can do neither). Colours come from the shared --range-* vars in themes.css. */
 .group-depth {
+  position: relative; /* anchor for this ruler's .tip-note */
   margin: 0.45rem 0 0.7rem 1.75rem;
   width: 100%;
   max-width: 16rem;
+}
+/* A single group's ruler, on the topic row itself. One level less of nesting than
+   the rule above, so it lines up under the topic title rather than under a group
+   name that isn't there. */
+.topic-item > .group-depth {
+  margin-left: 2.85rem;
 }
 .depth-track {
   --inset: 8px; /* keeps the end dots off the rail edges; matches INSET_PX in App.svelte */

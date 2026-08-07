@@ -3,7 +3,8 @@
 // Every JSON file (except `_category.json`) is one topic. A folder is a CATEGORY
 // when it has a subfolder, a `_category.json`, or ≥2 topic files; otherwise a
 // folder holding a single topic file is a LEAF topic (id = folder name, the file
-// stem is free). Folders above a topic form an arbitrarily deep category path
+// stem is free) and is marked `foldered`, since owning a folder is how a topic
+// says it expects to be split up later. Folders above a topic form a category path
 // (e.g. "gaming" or "gaming/pokemon"); a `_category.json` carries optional
 // display metadata (title / titles / icon) for that category node.
 // Generated file; never hand-edited. See docs/archive/PLANNING.md §4.1.
@@ -49,7 +50,10 @@ async function collectTopics(segments) {
   if (segments.length > 0 && !isCategory && jsonFiles.length === 1) {
     const id = segments[segments.length - 1];
     const category = segments.slice(0, -1).join("/");
-    return { topics: [{ id, category, fileSegments: [...segments, jsonFiles[0]] }], categories: [] };
+    return {
+      topics: [{ id, category, foldered: true, fileSegments: [...segments, jsonFiles[0]] }],
+      categories: [],
+    };
   }
 
   // Category: each loose JSON file is a topic (id = file stem); recurse subfolders.
@@ -57,7 +61,12 @@ async function collectTopics(segments) {
   const categories = [];
   if (segments.length > 0 && hasCategoryMeta) categories.push({ path: segments.join("/") });
   for (const file of jsonFiles) {
-    topics.push({ id: basename(file, ".json"), category: segments.join("/"), fileSegments: [...segments, file] });
+    topics.push({
+      id: basename(file, ".json"),
+      category: segments.join("/"),
+      foldered: false,
+      fileSegments: [...segments, file],
+    });
   }
   for (const sub of subDirs) {
     const child = await collectTopics([...segments, sub]);
@@ -93,7 +102,7 @@ async function buildIndex() {
   }
 
   const topics = [];
-  for (const { id, category, fileSegments } of found.topics) {
+  for (const { id, category, foldered, fileSegments } of found.topics) {
     const path = fileSegments.join("/");
     let data;
     try {
@@ -113,6 +122,7 @@ async function buildIndex() {
       title: data.title,
       ...(titlesDiffer ? { titles } : {}),
       icon: data.icon ?? null,
+      ...(foldered ? { foldered: true } : {}),
       ...(data.languages ? { languages: data.languages } : {}),
       groupCount: data.groups.length,
       wordCount: countWords(data),

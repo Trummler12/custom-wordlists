@@ -9,9 +9,12 @@
 // boolean `selected[k]`. Every state above — group full/partial, topic, category —
 // is derived from those two, which is why moving a slider rolls all the way up to
 // the category checkbox with no code that says so.
+//
+// `depthOf` / `setDepth` present both as a depth, since every group has a ruler
+// and a ruler only speaks in depths; a flat group's is 0 or 1.
 
 import { groupEntries, renderCount } from "../lib/words";
-import { depthFromKey, depthFromPointer } from "../lib/fame";
+import { depthFromKey, depthFromPointer, tierSizes } from "../lib/fame";
 import { catDepth, type CatNode } from "../lib/tree";
 import type { Group, NamesMode, TopicSummary, WordEntry } from "../lib/types";
 import { lang } from "./lang.svelte";
@@ -120,20 +123,27 @@ class SelectionState {
 
   // --- Fame depth ------------------------------------------------------------
 
-  depth(k: string): number {
-    return this.depthByGroup[k] ?? 0;
+  depthOf(tid: string, g: Group): number {
+    const k = this.key(tid, g.id);
+    return g.tiers ? (this.depthByGroup[k] ?? 0) : this.selected[k] ? 1 : 0;
   }
+  setDepth(tid: string, g: Group, d: number): void {
+    const k = this.key(tid, g.id);
+    if (g.tiers) this.depthByGroup[k] = d;
+    else this.selected[k] = d > 0;
+  }
+
   /** Drag or click on the slider track. */
-  dragDepth(e: PointerEvent, k: string, g: Group): void {
-    this.depthByGroup[k] = depthFromPointer(e, g);
+  dragDepth(e: PointerEvent, tid: string, g: Group): void {
+    this.setDepth(tid, g, depthFromPointer(e, g));
   }
   /** Arrow/Home/End on the slider. Other keys are left alone — the event must
    *  keep its default, so the caller can't preventDefault unconditionally. */
-  keyDepth(e: KeyboardEvent, k: string, g: Group): void {
-    const d = depthFromKey(e, this.depth(k), g.tiers?.length ?? 0);
+  keyDepth(e: KeyboardEvent, tid: string, g: Group): void {
+    const d = depthFromKey(e, this.depthOf(tid, g), tierSizes(g).length);
     if (d === null) return;
     e.preventDefault();
-    this.depthByGroup[k] = d;
+    this.setDepth(tid, g, d);
   }
 
   // --- Setting ---------------------------------------------------------------

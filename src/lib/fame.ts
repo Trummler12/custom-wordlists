@@ -13,20 +13,33 @@ const MIN_GAP_RATIO = 0.4;
  *  Must stay in sync with `--inset` in src/styles/app.css. */
 export const INSET_PX = 8;
 
-/** Snap positions (fractions 0…1 of the thumb travel) for a tiered group: one per
- *  tier boundary, including both ends. */
+/** How many fame groups a list actually defines — 0 for a flat one. What the
+ *  ruler's tooltip reports, and the difference between a ruler worth dragging and
+ *  one that only says the list hasn't been ranked yet. */
+export function fameGroups(g: Group): number {
+  return g.tiers?.length ?? 0;
+}
+
+/** Sizes of the steps a ruler has. A flat group is one step holding everything,
+ *  so every group gets a ruler and the geometry below needs no special case. */
+export function tierSizes(g: Group): number[] {
+  return g.tiers ? g.tiers.map((t) => t.length) : [(g.words ?? []).length];
+}
+
+/** Snap positions (fractions 0…1 of the thumb travel): one per step boundary,
+ *  including both ends. */
 export function snapPositions(g: Group): number[] {
-  const tiers = g.tiers ?? [];
-  const n = tiers.length;
-  // No tiers, no travel — and the divisions below would be by zero.
+  const sizes = tierSizes(g);
+  const n = sizes.length;
+  // No steps, no travel — and the divisions below would be by zero.
   if (n === 0) return [0];
-  const total = tiers.reduce((a, t) => a + t.length, 0) || 1;
+  const total = sizes.reduce((a, s) => a + s, 0) || 1;
   const base = MIN_GAP_RATIO / n; // minimum gap, as a fraction of full travel
   const scale = 1 - n * base; // remaining travel distributed by tier size
   const pos = [0];
   let acc = 0;
   for (let i = 0; i < n; i++) {
-    acc += base + scale * (tiers[i].length / total);
+    acc += base + scale * (sizes[i] / total);
     pos.push(acc);
   }
   pos[n] = 1; // guard against float drift

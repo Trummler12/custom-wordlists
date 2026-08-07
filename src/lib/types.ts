@@ -17,6 +17,10 @@ export interface TopicSummary {
   /** Path to the topic's JSON file, relative to data/topics/ (e.g.
    *  "animation/south-park.json" or "animation/spongebob/characters.json"). */
   path: string;
+  /** True when the topic is a lone file in a folder named after it. That layout is
+   *  how a topic says it expects to be split into subtopics later, so such a topic
+   *  keeps its expander and its group rows even while it has only one group. */
+  foldered?: boolean;
   /** Languages the topic fully supports. Absent means support is undeclared — the
    *  UI flags the topic (⚠️, even in English) until it's filled in. */
   languages?: string[];
