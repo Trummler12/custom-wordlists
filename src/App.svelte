@@ -11,9 +11,9 @@
   import { selection } from "./state/selection.svelte";
   import { output } from "./state/output.svelte";
   import { overlays } from "./state/overlays.svelte";
-
-  // Repo home, used for the footer links.
-  const REPO_URL = "https://github.com/Trummler12/custom-wordlists";
+  import PageHeader from "./components/layout/PageHeader.svelte";
+  import LanguagePicker from "./components/layout/LanguagePicker.svelte";
+  import SiteFooter from "./components/layout/SiteFooter.svelte";
 
   onMount(async () => {
     await topics.init();
@@ -25,53 +25,10 @@
 
 <svelte:window onpointerdown={overlays.onPointerDown} onkeydown={overlays.onKeyDown} />
 
-{#snippet langPicker(id: string)}
-  {#if lang.available.length > 1}
-    <div class="lang-picker">
-      <button
-        type="button"
-        class="lang-btn"
-        aria-haspopup="menu"
-        aria-expanded={overlays.langMenu === id}
-        aria-label={lang.ui.languageLabel(lang.name(lang.current))}
-        onclick={() => overlays.toggleLangMenu(id)}
-      >🌐</button>
-      {#if overlays.langMenu === id}
-        <ul class="lang-menu" role="menu" aria-label={lang.ui.languageMenu}>
-          {#each lang.available as l (l)}
-            <li role="none">
-              <button
-                type="button"
-                role="menuitemradio"
-                aria-checked={l === lang.current}
-                class:selected={l === lang.current}
-                onclick={() => overlays.chooseLanguage(l)}
-              >
-                <span class="lang-code">{l.toUpperCase()}</span>
-                <span class="lang-name">{lang.name(l)}</span>
-              </button>
-            </li>
-          {/each}
-        </ul>
-      {/if}
-    </div>
-  {/if}
-{/snippet}
-
 <main>
   <div class="layout" class:single={!topics.ready}>
     <div class="col-topics">
-      <header>
-        <div class="title-row">
-          <h1>Custom Wordlists</h1>
-          <div class="lang-header-slot">{@render langPicker("header")}</div>
-        </div>
-        <p class="tagline">
-          {lang.ui.taglineBefore}
-          <a href="https://skribbl.io" target="_blank" rel="noopener noreferrer">skribbl.io</a>
-          {lang.ui.taglineAfter}
-        </p>
-      </header>
+      <PageHeader />
 
       {#if topics.loading}
         <p class="status">{lang.ui.loadingTopics}</p>
@@ -270,7 +227,7 @@
         <div class="output-head">
           <h2>{lang.ui.output}</h2>
           <div class="head-actions">
-            {@render langPicker("output")}
+            <LanguagePicker id="output" />
             <button type="button" onclick={output.copy} disabled={output.included.length === 0}>
               {output.copied ? lang.ui.copied : lang.ui.copy}
             </button>
@@ -315,24 +272,5 @@
     {/if}
   </div>
 
-  <footer class="site-footer">
-    <!-- Inner box repeats main's content width so the two ends line up with the
-         topic column's left edge and the output panel's right edge. -->
-    <div class="footer-inner">
-      <span class="footer-help">
-        {lang.ui.helpOut}
-        <a
-          href={REPO_URL + "?tab=contributing-ov-file#contributing"}
-          target="_blank"
-          rel="noopener noreferrer">{lang.ui.contributionGuide}</a
-        >{lang.ui.helpOutAfter}
-      </span>
-      <a
-        class="footer-repo"
-        href={REPO_URL + "#custom-wordlists"}
-        target="_blank"
-        rel="noopener noreferrer">{lang.ui.repository}</a
-      >
-    </div>
-  </footer>
+  <SiteFooter />
 </main>
