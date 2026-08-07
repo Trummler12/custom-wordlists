@@ -25,11 +25,24 @@ big enough to discuss belongs in an issue instead.
   holds exactly one group, "Elements", whose fame slider is the only thing worth
   reaching — but it sits behind the topic's expander, so the topic behaves like a
   folder even though it doesn't look like one, and the level it opens repeats its
-  own name. Same shape wherever a topic has one group. Likely fix: render the sole
-  group inline on the topic row (slider and all) and drop the expander; the
-  checkbox already derives from that group, so only the presentation changes. Look
-  at it properly first — `groupCount` is in the manifest, so the decision can be
-  made before the topic loads.
+  own name. This is the rule rather than the exception: the Pokémon generations,
+  items and moves, the Olympia athletes and disciplines, the elements. The
+  multi-group topics are the deliberate ones — Simpsons, SpongeBob, Dragon Ball,
+  the comics, film & TV — which all have further subtopics planned. Likely fix:
+  render the sole group inline on the topic row (slider and all) and drop the
+  expander; the checkbox already derives from that group, so only the presentation
+  changes. `groupCount` is in the manifest, so the decision can be made before the
+  topic loads.
+- **Fame sliders hidden by default, per topic.** A new topic field —
+  `hideRulerByDefault`, default `false` — plus a `[ ] ruler` checkbox on the level
+  above ("Show fame rulers for all Pokémon generations") that reveals them all at
+  once. Possibly one per generation as well; decide when building it. The reason
+  is specific to lists like these: for most topics people know the entries to
+  wildly differing depths, which is what the slider is for — but a very large
+  group of people knows more or less *every* Pokémon by name, and for them the
+  slider is nine near-identical controls in the way of a plain all-or-nothing
+  checkbox. Depends on the single-group fix above, which decides where the
+  slider lives in the first place.
 - **Two nits in the issue chooser.** The contribution-guide contact link points
   at `blob/main/CONTRIBUTING.md`; `?tab=contributing-ov-file` renders it in the
   repo's own tab instead. And the charity divider's `name` (one 🌳) is much
