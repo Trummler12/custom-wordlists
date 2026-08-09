@@ -90,6 +90,10 @@ async function readCategoryMeta(path) {
   if (data.title) meta.title = data.title;
   if (data.titles) meta.titles = data.titles;
   if (data.icon) meta.icon = data.icon;
+  // Emit either boolean, not just a truthy one: a `false` declaration is a real
+  // ruler-visibility boundary (shown by default, decoupled from ancestors), so
+  // its presence must survive into the manifest.
+  if (typeof data.hideRulersByDefault === "boolean") meta.hideRulersByDefault = data.hideRulersByDefault;
   return meta;
 }
 
@@ -123,6 +127,8 @@ async function buildIndex() {
       ...(titlesDiffer ? { titles } : {}),
       icon: data.icon ?? null,
       ...(foldered ? { foldered: true } : {}),
+      // Either boolean is meaningful — a `false` marks a boundary too (see readCategoryMeta).
+      ...(typeof data.hideRulersByDefault === "boolean" ? { hideRulersByDefault: data.hideRulersByDefault } : {}),
       ...(data.languages ? { languages: data.languages } : {}),
       groupCount: data.groups.length,
       wordCount: countWords(data),

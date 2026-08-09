@@ -19,6 +19,10 @@
       "propertyNames": { "pattern": "^[a-z]{2}(-[A-Z]{2})?$" },
       "additionalProperties": { "type": "string", "minLength": 1 }
     },
-    "icon": { "type": "string", "minLength": 1 }
+    "icon": { "type": "string", "minLength": 1 },
+    "hideRulersByDefault": {
+      "type": "boolean",
+      "description": "When true, the fame rulers of this category's topics start hidden behind a single toggle on the category row rather than shown. Declaring the field (either value) makes this category an independent ruler-visibility boundary: its toggle governs its subtree down to the next node that declares the field, and children without the field inherit this value."
+    }
   }
 }

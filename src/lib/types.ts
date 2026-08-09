@@ -24,6 +24,10 @@ export interface TopicSummary {
   /** Languages the topic fully supports. Absent means support is undeclared — the
    *  UI flags the topic (⚠️, even in English) until it's filled in. */
   languages?: string[];
+  /** Whether this topic's fame ruler starts hidden behind a toggle. Its *presence*
+   *  (either value) also makes the topic its own ruler-visibility boundary; absent
+   *  means it inherits from the nearest ancestor that declares it. See lib/rulers. */
+  hideRulersByDefault?: boolean;
   groupCount: number;
   wordCount: number;
 }
@@ -36,6 +40,10 @@ export interface CategoryMeta {
   titles?: Record<string, string>;
   /** Emoji/icon for the category. */
   icon?: string;
+  /** Whether this category's topics start with their fame rulers hidden. Its
+   *  *presence* (either value) makes the category an independent ruler-visibility
+   *  boundary whose toggle governs its subtree down to the next declaring node. */
+  hideRulersByDefault?: boolean;
 }
 
 /** The generated manifest the frontend loads first. */
@@ -101,6 +109,9 @@ export interface Topic {
    *  UI shows a ⚠️ marker); declare the languages to confirm support — including
    *  for a language-neutral list whose entries read the same in every locale. */
   languages?: string[];
+  /** Whether this topic's fame ruler starts hidden behind a toggle; its presence
+   *  also marks the topic as its own ruler-visibility boundary. */
+  hideRulersByDefault?: boolean;
   /** ISO date (YYYY-MM-DD) the list's contents last changed. */
   lastUpdated?: string;
   /** ISO date (YYYY-MM-DD) the list was last verified against its source. */

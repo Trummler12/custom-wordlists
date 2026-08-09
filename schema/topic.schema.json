@@ -28,6 +28,10 @@
       "description": "Languages this topic fully supports. The frontend flags a topic (⚠️) when the selected language isn't listed — including when this field is omitted (support undeclared, shown even for English). Declare the languages to confirm support, including for a language-neutral list whose entries read the same in every locale.",
       "items": { "type": "string", "pattern": "^[a-z]{2}(-[A-Z]{2})?$" }
     },
+    "hideRulersByDefault": {
+      "type": "boolean",
+      "description": "When true, this topic's fame ruler starts hidden behind a toggle rather than shown — useful for a flat list whose ruler is just its checkbox (e.g. one Pokémon generation). Declaring the field (either value) also makes the topic its own ruler-visibility boundary, so no ancestor category's toggle flips it. Omitted: inherited from the nearest ancestor that declares it, else shown."
+    },
     "sources": {
       "allOf": [{ "$ref": "#/$defs/stringOrList" }],
       "description": "Where the entries came from — one string or a list of them. Free-form, so a label can precede the link (\"German: https://…\"); validate-data warns when an item contains no URL."
