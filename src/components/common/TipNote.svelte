@@ -10,10 +10,10 @@
 </script>
 
 {#if overlays.tip === id}
-  <!-- `tooltip`, not `status`: this is help text the reader asked for, not a live
-       update that should interrupt whatever is being read. Screen readers get the
-       same text from the trigger's aria-label, so the note is deliberately not
-       also wired up as its description. -->
+  <!-- `tooltip`, not `status`: help text the reader asked for, not a live update
+       that should interrupt whatever is being read. An unranked ruler points its
+       aria-describedby at this note; the language warning instead carries the text
+       in its own aria-label, where the note is a visual echo. -->
   <p class="tip-note" class:above={overlays.tipAbove} {id} role="tooltip">
     <Msg text={text} />
   </p>
