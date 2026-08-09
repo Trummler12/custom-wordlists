@@ -1,39 +1,41 @@
 # Custom Wordlists
 
-Build your own custom word lists for **[skribbl.io](https://skribbl.io)**, Codenames, and other word-based games — pick topics, tune how deep into the "fame" tail you want to go, and copy a ready-to-paste list.
+Build your own custom word lists for **[skribbl.io](https://skribbl.io)**, Codenames, and other word-based games — pick topics, tune the "fame ruler" based on your Group's knowledge on the topic, and copy a ready-to-paste list.
 
 **▶ Live: <https://trummler12.github.io/custom-wordlists/>**
 
 <!-- TODO: add a screenshot or short GIF of the tool here, e.g. ![screenshot](docs/assets/screenshot.png) -->
 
-## What it does
+## What can you do?
 
 - **Topics & groups** — browse a category tree, select whole topics or individual groups.
 - **Fame depth** — a slider per group includes only the top-N fame tiers, so you can keep a list to just the iconic entries or go all the way into the deep cuts.
-- **Name forms** — entries with a short/long name (e.g. *Cartman* / *Eric Cartman*) can be emitted as short, long, or both.
+- **Name forms** — entries with a short/long name (e.g. *Cartman* / *Eric Cartman*) can be emitted as short, long, or both at once.
 - **Multi-language** — switch the UI and the list content between languages (currently English & German); entries fall back to English where a translation isn't provided yet.
 - **skribbl-ready output** — de-duplicated, with live word/character counts and the skribbl limits checked for you.
 
 ### Progress
 
-The tool itself does what it needs to; the word lists are the young part. Most are sketched out rather than finished, which is exactly where help from the community makes the difference — see [Contributing](#contributing) below.
+The tool itself already does what it needs to; the word lists, however, are where we heavily depend on **help from the community** — see [Contributing](#contributing) below.
 
-[Here](docs/Topic-Progress.md) is every topic planned so far and how far along it is (in English — other languages trail behind).
+[Here](docs/Topic-Progress.md) is **every topic planned** so far and how far along it is (in English — other languages trail behind).
 
 ### Future plans
 
-The obvious next steps are finishing the lists that exist, adding the ones that don't, and supporting more languages.
+The obvious next steps are finishing the **lists** that exist, adding the ones that don't, and supporting more languages.
 
-[Here](docs/Language-Roadmap.md) is the rough order in which those languages are meant to arrive.
+[Here](docs/Language-Roadmap.md) is the rough order in which those **languages** are meant to arrive.
 
 ## Contributing
 
-Contributions are very welcome — new lists, fixes to existing ones, better fame ordering, or missing languages. **You don't need to write any code:** the easiest way is to open an issue.
+Contributions are very welcome: new lists, fixes to existing ones, better fame ordering, or missing languages.
+**You don't need to write any code:** the easiest way is to open an issue.
 
-- **Option A (preferred): open an issue.** Use the *Word list* or *Correction / small fix* template. Discuss and refine it in the thread — a maintainer turns accepted proposals into the data files.
+- **Option A (preferred): [open an issue](https://github.com/Trummler12/custom-wordlists/issues).** Use the *Word list* or *Correction / small fix* template. Share a whole list either **simply** (just names under fame groups) or as **ready-to-paste JSON** — whichever suits you. Discuss and refine it in the Issues' thread; a maintainer turns accepted proposals into the data files.
 - **Option B: fork & PR.** Prefer to edit the JSON yourself? Go for it.
+- **Option C: help convert a list.** Turn a list someone posted in the simple form into JSON.
 
-See **[CONTRIBUTING.md](CONTRIBUTING.md)** for the details and the entry format, and [issue #17](https://github.com/Trummler12/custom-wordlists/issues/17) for a worked example.
+See **[CONTRIBUTING.md](CONTRIBUTING.md)** for the details and the entry format, and the worked examples for **list proposals**: [simple (#17)](https://github.com/Trummler12/custom-wordlists/issues/17) · [JSON (#26)](https://github.com/Trummler12/custom-wordlists/issues/26).
 
 ## Local development
 
@@ -53,9 +55,10 @@ Each topic is one JSON file under [`data/topics/**`](https://github.com/Trummler
 - a **`{short, long}` name pair** — `{"short": "Cartman", "long": "Eric Cartman"}` — for entries with both a common and a full name;
 - a **language map** — `{"en": "Chef", "de": "Chefkoch"}` — for entries that differ between languages.
 
-In rare cases these forms combine: a language map may wrap around only the part that actually differs from English, so a name pair whose long form translates becomes `{"short": "Jesus", "long": {"en": "Jesus Christ", "de": "Jesus Christus"}}`.
+In rare cases these forms combine: a language map may wrap around only the part that actually differs from English, so a name pair whose long form translates becomes
+`{"short": "Jesus", "long": {"en": "Jesus Christ", "de": "Jesus Christus"}}`.
 
-See [`data/topics/animation/south-park.json`](data/topics/animation/south-park.json) for all of them in one file. The manifest the app loads (`data/index.json`) is generated by the `build:index` step, which both `npm run dev` and `npm run build` run first.
+See [`data/topics/animation/south-park/characters.json`](data/topics/animation/south-park/characters.json#L19) for all of them in one file. The manifest the app loads (`data/index.json`) is generated by the `build:index` step, which both `npm run dev` and `npm run build` run first.
 
 ## Tech
 
