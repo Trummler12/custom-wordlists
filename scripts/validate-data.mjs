@@ -20,7 +20,8 @@ const TOPICS_DIR = join(ROOT, "data", "topics");
 const SCHEMA_FILE = join(ROOT, "schema", "topic.schema.json");
 const CATEGORY_SCHEMA_FILE = join(ROOT, "schema", "category.schema.json");
 
-const LANG_RE = /^[a-z]{2}(-[A-Z]{2})?$/;
+// A language tag: two-letter base, optionally a region (-CH) or script (-Hant) subtag.
+const LANG_RE = /^[a-z]{2}(-[A-Z]{2}|-[A-Z][a-z]{3})?$/;
 const KEBAB_RE = /^[a-z0-9]+(-[a-z0-9]+)*$/;
 // `sources` items are free-form so they can carry a label ("German: https://…"),
 // hence a loose "is there a link in here at all" check rather than a URL pattern.

@@ -16,7 +16,7 @@
       "type": "object",
       "minProperties": 1,
       "description": "Optional per-language display names for a topic whose title translates (e.g. \"South Park\" stays global, but \"SpongeBob SquarePants\"/\"SpongeBob Schwammkopf\" differ). Absent when the name is identical everywhere; falls back to `title`.",
-      "propertyNames": { "pattern": "^[a-z]{2}(-[A-Z]{2})?$" },
+      "propertyNames": { "pattern": "^[a-z]{2}(-[A-Z]{2}|-[A-Z][a-z]{3})?$" },
       "additionalProperties": { "type": "string", "minLength": 1 }
     },
     "icon": { "type": "string", "minLength": 1 },
@@ -26,7 +26,7 @@
       "minItems": 1,
       "uniqueItems": true,
       "description": "Languages this topic fully supports. The frontend flags a topic (⚠️) when the selected language isn't listed — including when this field is omitted (support undeclared, shown even for English). Declare the languages to confirm support, including for a language-neutral list whose entries read the same in every locale.",
-      "items": { "type": "string", "pattern": "^[a-z]{2}(-[A-Z]{2})?$" }
+      "items": { "type": "string", "pattern": "^[a-z]{2}(-[A-Z]{2}|-[A-Z][a-z]{3})?$" }
     },
     "hideRulersByDefault": {
       "type": "boolean",
@@ -78,7 +78,7 @@
       "minProperties": 1,
       "required": ["en"],
       "description": "A per-language string: keys are language codes (\"en\" is the required base), values the localized text. Languages that match \"en\" are omitted.",
-      "propertyNames": { "pattern": "^[a-z]{2}(-[A-Z]{2})?$" },
+      "propertyNames": { "pattern": "^[a-z]{2}(-[A-Z]{2}|-[A-Z][a-z]{3})?$" },
       "additionalProperties": { "type": "string", "minLength": 1 }
     },
     "locString": {
@@ -100,7 +100,7 @@
       "minProperties": 1,
       "required": ["en"],
       "description": "An entry-level per-language map: keys are language codes (\"en\" is the base), values are whole entries (a string or a name pair). Equivalent in content to leaf-localizing each field; the leaf form is preferred, but this whole-entry form is accepted too (e.g. from community content).",
-      "propertyNames": { "pattern": "^[a-z]{2}(-[A-Z]{2})?$" },
+      "propertyNames": { "pattern": "^[a-z]{2}(-[A-Z]{2}|-[A-Z][a-z]{3})?$" },
       "additionalProperties": {
         "oneOf": [{ "type": "string", "minLength": 1 }, { "$ref": "#/$defs/namePair" }]
       }
@@ -124,7 +124,7 @@
           "type": "object",
           "minProperties": 1,
           "description": "Optional per-language group titles, when the group name translates (e.g. \"Characters\"/\"Charaktere\").",
-          "propertyNames": { "pattern": "^[a-z]{2}(-[A-Z]{2})?$" },
+          "propertyNames": { "pattern": "^[a-z]{2}(-[A-Z]{2}|-[A-Z][a-z]{3})?$" },
           "additionalProperties": { "type": "string", "minLength": 1 }
         },
         "words": {
