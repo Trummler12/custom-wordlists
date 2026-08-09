@@ -10,9 +10,12 @@ contact_links:
   - name: 📖 Contribution guide
     url: https://github.com/Trummler12/custom-wordlists/blob/main/CONTRIBUTING.md
     about: How to propose word lists and fixes (Option A via issues, or Option B via a PR).
-  - name: 💡 Worked example of a word-list proposal
+  - name: 💡 Worked example — simple (plain text)
     url: https://github.com/Trummler12/custom-wordlists/issues/17
-    about: A full proposal, filled in end to end, in the format the template expects.
+    about: A full proposal as plain names under fame groups — the lowest-effort form.
+  - name: 🧩 Worked example — JSON (ready to paste)
+    url: https://github.com/Trummler12/custom-wordlists/issues/26
+    about: The same list shaped like the data file, so a maintainer can drop it straight in.
   - name: 🗺️ Topic tracker — what's covered and what's planned
     url: https://github.com/Trummler12/custom-wordlists/blob/main/docs/Topic-Progress.md
     about: Check here first — your topic may already be covered or in progress.

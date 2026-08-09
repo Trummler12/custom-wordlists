@@ -1,6 +1,6 @@
 # Contributing
 
-Thanks for helping make the word lists better!
+Thanks for helping with the project!
 
 ## What's worth contributing
 
@@ -12,15 +12,44 @@ Thanks for helping make the word lists better!
 
 The [topic tracker](docs/Topic-Progress.md) shows what's already covered and what's planned — worth a look before proposing a new list.
 
+## Choose your Way of Contributing
+
+- **[Option A — propose via an issue](#option-a--propose-via-an-issue-preferred)** — *preferred*
+- **[Option B — fork & pull request](#option-b--fork--pull-request)** — *for the hands-on*
+- **[Option C — help convert a list](#option-c--help-convert-a-list)** — *for the helpers*
+
 ## Option A — propose via an issue (preferred)
 
-You don't need to touch any code.
+You don't need to touch any code. [Open an issue](https://github.com/Trummler12/custom-wordlists/issues) with a template:
+- **Word list** (a new list or a full rework),
+- **Correction / small fix** (a wrong/missing entry, a fame-group tweak, a missing translation),
+- or **Bug** / **Improvement** (anything about the app rather than a list).
 
-1. [Open an issue](https://github.com/Trummler12/custom-wordlists/issues) with a template: **Word list** (a new list or a full rework), **Correction / small fix** (a wrong/missing entry, a fame-group tweak, a missing translation), or **Bug** / **Improvement** (anything about the app rather than a list).
-2. For a small fix, just describe it. For a whole list, follow the format in the [worked example](https://github.com/Trummler12/custom-wordlists/issues/17): entries sorted into **fame groups** — `### FG 1`, `### FG 2`, … — most iconic first, around 10 in FG 1, **one entry per line**. Write just the English name when it's the same everywhere; add `de: …; es: …;` **only** for languages that differ from English. Give the **fullest** name a character has (`Eric Cartman`, not just `Cartman`) — an optional short form can be derived from it.
-3. **Discuss it.** Others (and the maintainer) may spot mistakes or suggest better fame ordering right in the issue thread — refine the proposal together before it's turned into a pull request. A maintainer converts an accepted proposal into the data files.
+For a small fix, just describe it.  
+For a **whole list**, there are two ways to hand it over — pick whichever you're comfortable with:
 
-See [issue #17](https://github.com/Trummler12/custom-wordlists/issues/17) for a full worked example.
+<details>
+<summary><strong>I'd like it simple</strong></summary>
+
+Sort entries into **fame groups** — most iconic first, around 10 in FG 1, **one entry per line**.  
+Write just the English name when it's the same everywhere; add `de: …; es: …;` **only** for languages that differ from English.  
+Give the **fullest** name a character has (`Eric Cartman`, not just `Cartman`) — an optional short form can be derived from it.
+
+This is the lowest-effort path; a maintainer turns it into the data file. See the [simple worked example (#17)](https://github.com/Trummler12/custom-wordlists/issues/17).
+</details>
+
+<details>
+<summary><strong>I'd like to do it properly</strong> (preferred)</summary>
+
+Provide the **entries** in JSON shape — `"plain strings"`, `{ "short", "long" }` name pairs and `{ "en", "de" }` language maps, grouped into fame-group arrays, **one entry per line**.  
+You can skip the wrapper (`id`, `languages`, `titles`, …): it's derivable or ours to set. **Don't worry about indentation** either.  
+A maintainer drops the entries straight in, so this saves the most work. See the [JSON worked example (#26)](https://github.com/Trummler12/custom-wordlists/issues/26) and, for the full entry format, [`schema/topic.schema.json`](schema/topic.schema.json).
+
+For a **rework** or a **language** addition, JSON is the natural choice — the current list already *is* JSON, so you're editing rather than starting from scratch.
+</details>
+<br>
+
+**Either way, discuss it.** Others (and the maintainer) may spot mistakes or suggest better fame ordering right in the issue thread — refine the proposal together before it's turned into a pull request. A maintainer converts an accepted proposal into the data files.
 
 ## Option B — fork & pull request
 
@@ -28,8 +57,8 @@ Prefer to edit the data yourself:
 
 1. Fork the repo and create a branch.
 2. Word lists live in [`data/topics/**`](https://github.com/Trummler12/custom-wordlists/tree/main/data/topics) — **one JSON file per topic**, described by [`schema/topic.schema.json`](schema/topic.schema.json).
-   - A folder is a category; a single JSON file (loose in a category, or alone in a folder named after the topic) is a topic. Give a topic its own folder when you expect it to be split into subtopics later — the app keeps such a topic expandable, while a topic that is just a file shows its one group on its own row.
-   - An entry is a plain string, a `{ "short": …, "long": … }` name pair, or localizes at the leaf: `{ "en": …, "de": … }` — only the part that differs from English carries a language map. See `data/topics/animation/south-park/characters.json` for the full range.
+   - A folder is a category; a single JSON file (loose in a category, or alone in a folder named after the topic) is a topic. Give a topic its own folder when you expect it to receive subtopics later — the app keeps such a topic expandable, while a topic that is just a file shows its one group on its own row.
+   - An entry is a `"plain string"`, a `{ "short": …, "long": … }` name pair, or localizes at the leaf: `{ "en": …, "de": … }` — only the part that differs from English carries a language map. See `data/topics/animation/south-park/characters.json` for the full range.
    - A topic may declare `"languages"` (the languages it fully supports) and per-language `"titles"` for its display name. Every language an entry uses must be listed there, and `"en"` is always part of it — so if you add a `"de"` translation, add `"de"` to `"languages"` too.
    - Entries must be unique within a topic, and the topic's `"id"` must match its file stem (or, for a topic alone in its own folder, the folder name).
    - `"sources"` (where the entries came from) and `"credits"` (who compiled them) are optional and free-form — a single string or a list. A label may precede the link, e.g. `"German: https://…"`. Please fill in `"sources"` for a new list.
@@ -41,6 +70,14 @@ Prefer to edit the data yourself:
    npm run check      # frontend type-check
    ```
 4. Open the PR against `main`. The maintainer reviews and merges.
+
+## Option C — help convert a list
+
+Comfortable with JSON and spotted a list posted in the [simple form](#option-a--propose-via-an-issue-preferred)? Turning it into ready-to-paste JSON is a genuine help — such issues carry the `Needs JSON 🧩` label.
+
+1. **Say you're on it** — a quick comment on the original, so two people don't convert the same list. (A maintainer then marks it `Being converted 🔨`)
+2. **Hand over the JSON** as a **new issue** that references the original (`Refs #<number>`), or as a PR if you'd rather — **not** a buried follow-up comment, which is easy to lose. **Cross-link both ways** so the thread and the conversion stay connected.
+3. **Credit stays shared:** name both the original proposer and yourself in the topic's `credits`.
 
 ## Local development
 

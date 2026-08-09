@@ -45,24 +45,39 @@ body:
     attributes:
       label: Proposed entries
       description: >
-        One entry per line, sorted into **fame groups** under `### FG 1`, `### FG 2`, … —
-        most iconic first (~10 in FG 1). The number of groups is open-ended and rarely below 5 (100+
-        entries want ~5–6, 300+ want 10 or more), with the last group(s) a long tail of
-        deep cuts. Write just the English name when it's the same everywhere; add
-        `de: …; es: …;` only for languages that differ from English. Give the fullest name
-        a character has (`Eric Cartman`, not just `Cartman`) — the short form is derived
-        from it; the reverse would mean looking up every surname by hand.
+        Two forms are welcome — pick either (full examples:
+        **[simple](https://github.com/Trummler12/custom-wordlists/issues/17)** ·
+        **[JSON](https://github.com/Trummler12/custom-wordlists/issues/26)**).
+
+
+        **Simple:** names under **fame groups** (`### FG 1`, `### FG 2`, …), most iconic
+        first (~10 in FG 1), one per line; add `de: …;` only where a language differs from
+        English, and give the fullest name (`Eric Cartman`, not just `Cartman`).
+
+
+        **JSON:** just the entries, grouped into fame arrays, one per line — a maintainer
+        adds the wrapper and pastes it straight in. For a rework or a language, JSON is
+        easiest: the current list already *is* JSON. The placeholder below shows both.
       placeholder: |
         ### FG 1
         Eric Cartman
         Stan Marsh
-        Kyle Broflovski
         en: Chef; de: Chefkoch;
 
         ### FG 2
-        en: Mayor McDaniels; de: Bürgermeisterin McDaniels;
         en: Santa; de: Weihnachtsmann;
         Satan
+
+        --- OR directly as JSON: ---
+
+        [
+          {"short": "Cartman", "long": "Eric Cartman"},
+          "Mr. Mackey"
+        ],
+        [
+          {"en": "Santa", "de": "Weihnachtsmann"},
+          "Satan"
+        ]
     validations:
       required: true
   - type: textarea

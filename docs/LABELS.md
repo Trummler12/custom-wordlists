@@ -54,6 +54,22 @@ the template chooser.
 proposal is a distinction the reporter shouldn't have to agonise over. Apply it on triage
 when something turns out to be more of a direction than a proposal.
 
+## Conversion — from a simple list to JSON
+
+A `List 📋` can arrive in two shapes (see [CONTRIBUTING.md](../CONTRIBUTING.md)): the *simple*
+plain-text form, or ready-to-paste *JSON*. These two labels track a simple submission on its
+way to becoming data — kept apart from `help wanted` on purpose, so that promise ("never
+applied automatically") stays intact.
+
+| Label | Applied by | Meaning |
+|---|---|---|
+| `Needs JSON 🧩` | `.github/workflows/labels.yml`, on creation | The list came in simple form and still needs turning into JSON — a good spot to help out |
+| `Being converted 🔨` | Maintainer, by hand | Someone has claimed the conversion (a referencing issue or PR exists); avoids two people doing it at once |
+
+`Needs JSON 🧩` is set only when a word-list issue's body holds fewer than ~10 JSON-looking
+entry lines — i.e. it isn't already JSON. It's advisory: a maintainer can drop it if the
+heuristic misjudged. When help lands, swap it for `Being converted 🔨`.
+
 ## Priority
 
 Maintainer-assigned, on triage. At most one at a time — if several end up on an issue,
