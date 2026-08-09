@@ -2,9 +2,7 @@
   "id": "disney",
   "title": "Disney",
   "icon": "🏰",
-  "description": "Disney characters (English names): the classic Mouse & Duck universe plus animated-film leads. Fame tiers by recognizability (tier 0 = most iconic).",
-  "languages": ["de","en"],
-  "groups": [
+  "description": "Disney characters (English names): the classic Mouse & Duck universe plus animated-film leads. Fame tiers by recognizability (tier 0 = most iconic).",  "groups": [
     {
       "id": "classics",
       "title": "Classics (Mouse & Duck)",

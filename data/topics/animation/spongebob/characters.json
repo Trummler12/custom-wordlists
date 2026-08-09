@@ -3,9 +3,7 @@
   "title": "SpongeBob SquarePants",
   "titles": {"en":"SpongeBob SquarePants","de":"SpongeBob Schwammkopf"},
   "icon": "🧽",
-  "description": "SpongeBob SquarePants characters (English names). Fame tiers by recognizability (tier 0 = most iconic).",
-  "languages": ["de","en"],
-  "groups": [
+  "description": "SpongeBob SquarePants characters (English names). Fame tiers by recognizability (tier 0 = most iconic).",  "groups": [
     {
       "id": "characters",
       "title": "Characters",
