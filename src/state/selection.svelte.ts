@@ -15,6 +15,7 @@
 
 import { groupEntries, renderCount } from "../lib/words";
 import { depthFromKey, depthFromPointer, tierSizes } from "../lib/fame";
+import { rulerHiddenByDefault } from "../lib/rulers";
 import { catDepth, type CatNode } from "../lib/tree";
 import type { Group, NamesMode, TopicSummary, WordEntry } from "../lib/types";
 import { lang } from "./lang.svelte";
@@ -31,6 +32,9 @@ class SelectionState {
   expanded = $state<Record<string, boolean>>({});
   /** Which category nodes the user has toggled, by path. Absent = the default. */
   catExpanded = $state<Record<string, boolean>>({});
+  /** Explicit ruler-visibility flips, by topic id. Absent = the data-driven
+   *  default (see lib/rulers); only opted-in topics ever appear here. */
+  rulerVisible = $state<Record<string, boolean>>({});
 
   key(tid: string, gid: string): string {
     return `${tid}:${gid}`;
@@ -170,6 +174,32 @@ class SelectionState {
     const on = !this.catFull(ts);
     const loaded = await Promise.all(ts.map((t) => topics.data[t.id] ?? topics.ensure(t)));
     ts.forEach((t, i) => loaded[i] && this.setTopic(t, on));
+  }
+
+  // --- Ruler visibility ------------------------------------------------------
+  // Purely a view option: which fame rulers are shown, independent of what is
+  // selected. An explicit flip is remembered; otherwise the data-driven default
+  // applies. A control-root category's toggle rolls up over the topics it governs,
+  // exactly like the selection checkboxes above (`ts` is that governed set).
+
+  isRulerVisible(t: TopicSummary): boolean {
+    return this.rulerVisible[t.id] ?? !rulerHiddenByDefault(t, topics.categories);
+  }
+  toggleRuler(t: TopicSummary): void {
+    this.rulerVisible[t.id] = !this.isRulerVisible(t);
+  }
+
+  allRulersShown(ts: TopicSummary[]): boolean {
+    return ts.every((t) => this.isRulerVisible(t));
+  }
+  /** Mixed state — some rulers shown, some hidden — for the category toggle's
+   *  indeterminate mark, mirroring `catPartial`. */
+  someRulersHidden(ts: TopicSummary[]): boolean {
+    return !this.allRulersShown(ts) && ts.some((t) => this.isRulerVisible(t));
+  }
+  toggleCatRulers(ts: TopicSummary[]): void {
+    const on = !this.allRulersShown(ts);
+    for (const t of ts) this.rulerVisible[t.id] = on;
   }
 }
 
