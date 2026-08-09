@@ -1,6 +1,7 @@
-# Two small label chores GitHub can't express on its own (see docs/LABELS.md):
-#   1. turn the issue forms' "Kind" dropdown into a real label, and
-#   2. keep at most one `priority: …` label on an issue.
+# Three small label chores GitHub can't express on its own (see docs/LABELS.md):
+#   1. turn the issue forms' "Kind" dropdown into a real label,
+#   2. flag a word list posted in simple (non-JSON) form as `Needs JSON 🧩`, and
+#   3. keep at most one `priority: …` label on an issue.
 name: Labels
 
 on:
@@ -63,6 +64,53 @@ jobs:
               labels: [label],
             });
             core.info(`Added ${label}`);
+
+  needs-json:
+    # A word list posted in the simple (plain-text) form still has to be turned into JSON
+    # by hand — flag it so someone can offer to do that (see docs/LABELS.md). Only on
+    # creation, for the same reason as `kind`: never override a label a maintainer set later.
+    if: "github.event.action == 'opened' && contains(github.event.issue.labels.*.name, 'List 📋')"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/github-script@v7
+        with:
+          script: |
+            // The word-list form's label is on the payload at creation, so this runs only
+            // for lists. We look at the "Proposed entries" answer; a body without that
+            // heading (a hand-written issue) falls back to the whole text.
+            const body = context.payload.issue.body || "";
+            const sections = {};
+            for (const block of body.split(/^###[ \t]+/m).slice(1)) {
+              const nl = block.indexOf("\n");
+              const heading = (nl === -1 ? block : block.slice(0, nl)).trim();
+              if (!(heading in sections)) {
+                sections[heading] = nl === -1 ? "" : block.slice(nl + 1).trim();
+              }
+            }
+            const entries = sections["Proposed entries"] || body;
+
+            // A JSON entry line is a "…" string or a {…} object, optional trailing comma —
+            // the shape of `data/topics/**`. The simple form's `de: …;` lines match none of
+            // this, which is exactly what tells the two forms apart.
+            const JSON_ENTRY = /^\s*(\{.*\}|"(?:[^"\\]|\\.)*")\s*,?\s*$/;
+            const jsonLines = entries.split(/\r?\n/).filter((l) => JSON_ENTRY.test(l)).length;
+
+            // 10 is skribbl's minimum list length, so any real JSON list clears it easily;
+            // below it, treat the submission as the simple form that needs converting.
+            if (jsonLines >= 10) {
+              core.info(`Looks like JSON (${jsonLines} entry lines) — no label`);
+              return;
+            }
+
+            const label = "Needs JSON 🧩";
+            if (context.payload.issue.labels.map((l) => l.name).includes(label)) return;
+            await github.rest.issues.addLabels({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.payload.issue.number,
+              labels: [label],
+            });
+            core.info(`Added ${label} (${jsonLines} JSON-looking lines)`);
 
   priority:
     # Removing a label fires `unlabeled`, never `labeled`, so this cannot loop.
