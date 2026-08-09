@@ -15,6 +15,11 @@ export const en: UIStrings = {
   nameFormLabel: (group) => `Name form for ${group}`,
   fameDepthLabel: (group) => `Fame depth for ${group}`,
   tiersValueText: (depth, total) => `top ${depth} of ${total} tiers`,
+  fameGroupsDefined: (count) => `Fame groups defined: ${count}`,
+  noFameGroups:
+    "No fame groups defined yet — see the Contribution Guide in the footer to propose some!",
+  rulerToggle: (shown) => (shown ? "Hide this list's fame ruler" : "Show this list's fame ruler"),
+  rulerToggleAll: (allShown) => (allShown ? "Hide these fame rulers" : "Show these fame rulers"),
   output: "Output",
   copy: "Copy",
   copied: "Copied!",
@@ -29,7 +34,8 @@ export const en: UIStrings = {
   languageLabel: (current) => `Language: ${current}`,
   languageMenu: "Language",
   langUnsupported: (language) =>
-    `Not confirmed for ${language} yet — this topic may be incomplete.{br}English is used where a translation is missing.`,
+    `Not confirmed for ${language} yet — this topic may be incomplete.`,
+  langFallback: "English is used where a translation is missing.",
   repository: "GitHub Repository",
   helpOut: "Want to help with the project? Check out the",
   contributionGuide: "Contribution Guide",

@@ -4,7 +4,6 @@
   "titles": {"en":"Sports","de":"Sportarten"},
   "icon": "🏟️",
   "description": "Olympic and mainstream sporting disciplines (English names). Fame tiers by popularity (tier 0 = most mainstream).",
-  "languages": ["de","en"],
   "groups": [
     {
       "id": "disciplines",

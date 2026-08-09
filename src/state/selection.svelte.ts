@@ -9,9 +9,13 @@
 // boolean `selected[k]`. Every state above — group full/partial, topic, category —
 // is derived from those two, which is why moving a slider rolls all the way up to
 // the category checkbox with no code that says so.
+//
+// `depthOf` / `setDepth` present both as a depth, since every group has a ruler
+// and a ruler only speaks in depths; a flat group's is 0 or 1.
 
 import { groupEntries, renderCount } from "../lib/words";
-import { depthFromKey, depthFromPointer } from "../lib/fame";
+import { depthFromKey, depthFromPointer, tierSizes } from "../lib/fame";
+import { rulerHiddenByDefault } from "../lib/rulers";
 import { catDepth, type CatNode } from "../lib/tree";
 import type { Group, NamesMode, TopicSummary, WordEntry } from "../lib/types";
 import { lang } from "./lang.svelte";
@@ -28,6 +32,9 @@ class SelectionState {
   expanded = $state<Record<string, boolean>>({});
   /** Which category nodes the user has toggled, by path. Absent = the default. */
   catExpanded = $state<Record<string, boolean>>({});
+  /** Explicit ruler-visibility flips, by topic id. Absent = the data-driven
+   *  default (see lib/rulers); only opted-in topics ever appear here. */
+  rulerVisible = $state<Record<string, boolean>>({});
 
   key(tid: string, gid: string): string {
     return `${tid}:${gid}`;
@@ -120,20 +127,27 @@ class SelectionState {
 
   // --- Fame depth ------------------------------------------------------------
 
-  depth(k: string): number {
-    return this.depthByGroup[k] ?? 0;
+  depthOf(tid: string, g: Group): number {
+    const k = this.key(tid, g.id);
+    return g.tiers ? (this.depthByGroup[k] ?? 0) : this.selected[k] ? 1 : 0;
   }
+  setDepth(tid: string, g: Group, d: number): void {
+    const k = this.key(tid, g.id);
+    if (g.tiers) this.depthByGroup[k] = d;
+    else this.selected[k] = d > 0;
+  }
+
   /** Drag or click on the slider track. */
-  dragDepth(e: PointerEvent, k: string, g: Group): void {
-    this.depthByGroup[k] = depthFromPointer(e, g);
+  dragDepth(e: PointerEvent, tid: string, g: Group): void {
+    this.setDepth(tid, g, depthFromPointer(e, g));
   }
   /** Arrow/Home/End on the slider. Other keys are left alone — the event must
    *  keep its default, so the caller can't preventDefault unconditionally. */
-  keyDepth(e: KeyboardEvent, k: string, g: Group): void {
-    const d = depthFromKey(e, this.depth(k), g.tiers?.length ?? 0);
+  keyDepth(e: KeyboardEvent, tid: string, g: Group): void {
+    const d = depthFromKey(e, this.depthOf(tid, g), tierSizes(g).length);
     if (d === null) return;
     e.preventDefault();
-    this.depthByGroup[k] = d;
+    this.setDepth(tid, g, d);
   }
 
   // --- Setting ---------------------------------------------------------------
@@ -160,6 +174,32 @@ class SelectionState {
     const on = !this.catFull(ts);
     const loaded = await Promise.all(ts.map((t) => topics.data[t.id] ?? topics.ensure(t)));
     ts.forEach((t, i) => loaded[i] && this.setTopic(t, on));
+  }
+
+  // --- Ruler visibility ------------------------------------------------------
+  // Purely a view option: which fame rulers are shown, independent of what is
+  // selected. An explicit flip is remembered; otherwise the data-driven default
+  // applies. A control-root category's toggle rolls up over the topics it governs,
+  // exactly like the selection checkboxes above (`ts` is that governed set).
+
+  isRulerVisible(t: TopicSummary): boolean {
+    return this.rulerVisible[t.id] ?? !rulerHiddenByDefault(t, topics.categories);
+  }
+  toggleRuler(t: TopicSummary): void {
+    this.rulerVisible[t.id] = !this.isRulerVisible(t);
+  }
+
+  allRulersShown(ts: TopicSummary[]): boolean {
+    return ts.every((t) => this.isRulerVisible(t));
+  }
+  /** Mixed state — some rulers shown, some hidden — for the category toggle's
+   *  indeterminate mark, mirroring `catPartial`. */
+  someRulersHidden(ts: TopicSummary[]): boolean {
+    return !this.allRulersShown(ts) && ts.some((t) => this.isRulerVisible(t));
+  }
+  toggleCatRulers(ts: TopicSummary[]): void {
+    const on = !this.allRulersShown(ts);
+    for (const t of ts) this.rulerVisible[t.id] = on;
   }
 }
 

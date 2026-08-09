@@ -3,7 +3,6 @@
   "title": "Harry Potter",
   "icon": "⚡",
   "description": "Harry Potter characters (English names). Fame tiers by recognizability (tier 0 = most iconic).",
-  "languages": ["de","en"],
   "groups": [
     {
       "id": "characters",

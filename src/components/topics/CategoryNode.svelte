@@ -1,5 +1,6 @@
 <script lang="ts">
   import { setIndeterminate } from "../../lib/dom";
+  import { controlledTopics } from "../../lib/rulers";
   import type { CatNode } from "../../lib/tree";
   import { lang } from "../../state/lang.svelte";
   import { selection } from "../../state/selection.svelte";
@@ -14,6 +15,11 @@
   const all = $derived(node.all);
   const open = $derived(selection.catOpen(node));
   const id = $derived("cat-" + (node.path.replace(/\//g, "-") || "root"));
+
+  // Topics whose ruler this category governs (this node is their control root).
+  // Non-empty only when the category declares hideRulersByDefault; then its row
+  // carries a tri-state toggle rolling up over exactly these.
+  const governed = $derived(controlledTopics(node.path, all, topics.categories));
 </script>
 
 <div class="category">
@@ -41,6 +47,28 @@
         > {/if}{topics.categoryTitle(node)}
     </label>
   </h3>
+  {#if governed.length > 0}
+    <button
+      type="button"
+      class="ruler-toggle"
+      class:shown={selection.allRulersShown(governed)}
+      class:mixed={selection.someRulersHidden(governed)}
+      aria-pressed={selection.allRulersShown(governed)
+        ? "true"
+        : selection.someRulersHidden(governed)
+          ? "mixed"
+          : "false"}
+      aria-label={lang.ui.rulerToggleAll(selection.allRulersShown(governed))}
+      title={lang.ui.rulerToggleAll(selection.allRulersShown(governed))}
+      onclick={() => {
+        // A collapsed category renders none of its topic rows, so a toggle either
+        // way leaves nothing visibly changed — open it to show the result (rulers
+        // appearing, or gone).
+        selection.toggleCatRulers(governed);
+        if (!open) selection.toggleCat(node);
+      }}
+    >📏</button>
+  {/if}
   <span class="meta">{lang.ui.wordsOf(selection.catSel(all), selection.catTotal(all))}</span>
 </div>
 {#if open}

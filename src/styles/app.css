@@ -106,6 +106,9 @@ header {
   left: 0;
   right: 0;
   bottom: 0;
+  /* Above the row-spanning tip-notes (z-index 10): they overlay the next row
+     but must stop at this opaque bar rather than paint through it. */
+  z-index: 20;
   height: var(--footer-h);
   display: flex;
   align-items: center;
@@ -198,7 +201,7 @@ header {
   margin: 0;
 }
 .topic-item {
-  position: relative; /* anchor for .lang-warning-note */
+  position: relative; /* anchor for .tip-note */
   border-bottom: 1px solid var(--border);
 }
 .topic-row {
@@ -214,6 +217,11 @@ header {
   color: var(--muted-2);
   font-size: 0.9rem;
   line-height: 1;
+}
+/* Same box as the button, minus the arrow — so a topic that can't expand keeps the
+   column width a topic that can would occupy. */
+.expander.placeholder {
+  visibility: hidden;
 }
 .topic {
   display: flex;
@@ -242,10 +250,10 @@ header {
   line-height: 1;
   cursor: help;
 }
-/* The note the marker opens. Stretched across the topic row rather than hung off the
-   marker itself: the marker sits somewhere in the middle of a row of unknown width, so
-   any box anchored to it can leave the viewport on one side or the other. */
-.lang-warning-note {
+/* The note a tooltip trigger opens. Stretched across its positioned parent rather than
+   hung off the trigger itself: a trigger sits somewhere in the middle of a row of unknown
+   width, so any box anchored to it can leave the viewport on one side or the other. */
+.tip-note {
   position: absolute;
   top: 100%;
   left: 0;
@@ -262,19 +270,21 @@ header {
   border-radius: var(--radius);
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
 }
-/* Set when the marker sits low in the viewport, where a note below it would be cut off
+/* Set when the trigger sits low in the viewport, where a note below it would be cut off
    by the bottom edge — the vertical counterpart to the full-row stretch above. */
-.lang-warning-note.above {
+.tip-note.above {
   top: auto;
   bottom: 100%;
   margin: 0 0 0.15rem;
 }
 
 /* Groups (nested under a topic) */
-.groups {
-  list-style: none;
+/* .topics ul (the list reset) already zeroes list-style and padding here, but
+   its margin:0 also outweighs a bare .groups (0,1,1 vs 0,1,0) and would drop
+   these group checkboxes to the left of their topic's. Scope to the topic-item
+   so this one-step indent wins. */
+.topic-item > .groups {
   margin: 0 0 0.4rem 2.1rem;
-  padding: 0;
 }
 .group {
   display: flex;
@@ -297,18 +307,49 @@ header {
   padding: 0 0.15rem;
   color: var(--muted);
 }
+/* Show/hide toggle for a list's fame ruler. A view option, not a selection, so a
+   quiet icon rather than a checkbox that would read as another thing to tick.
+   Opacity carries the state — full = shown, dim = mixed (category roll-up), faint
+   = hidden — since an emoji can't take a colour. */
+.ruler-toggle {
+  background: none;
+  border: none;
+  padding: 0 0.2rem;
+  font-size: 0.8rem;
+  line-height: 1;
+  cursor: pointer;
+  opacity: 0.3;
+}
+.ruler-toggle.mixed {
+  opacity: 0.6;
+}
+.ruler-toggle.shown {
+  opacity: 1;
+}
 
 /* Per-group fame-depth slider — a custom track so the snap markers can sit on
    the rail and their spacing can mirror tier sizes (a native <input range>
    can do neither). Colours come from the shared --range-* vars in themes.css. */
 .group-depth {
+  position: relative; /* anchor for this ruler's .tip-note */
   margin: 0.45rem 0 0.7rem 1.75rem;
   width: 100%;
   max-width: 16rem;
 }
+/* A single group's ruler, on the topic row itself. One level less of nesting than
+   the rule above, so it lines up under the topic title rather than under a group
+   name that isn't there. */
+.topic-item > .group-depth {
+  margin-left: 2.85rem;
+}
 .depth-track {
   --inset: 8px; /* keeps the end dots off the rail edges; matches INSET_PX in App.svelte */
   position: relative;
+  /* Own stacking context, so the dots/thumb z-indexes below stack only against
+     each other and can't escape to the root context (where they would paint over
+     the fixed footer). The ruler's tip-note is a sibling of the track, not a
+     child, so it stays free to span rows. */
+  isolation: isolate;
   height: 1rem; /* hit area; the visible rail is thinner */
   cursor: pointer;
   touch-action: none; /* let pointer drag work without scrolling */

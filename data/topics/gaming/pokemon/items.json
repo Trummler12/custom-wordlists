@@ -4,6 +4,7 @@
   "icon": "🎒",
   "description": "Pokémon items (English names).",
   "languages": ["de","en"],
+  "hideRulersByDefault": true,
   "groups": [
     {
       "id": "items",

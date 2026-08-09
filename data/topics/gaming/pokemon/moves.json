@@ -5,6 +5,7 @@
   "icon": "💥",
   "description": "Pokémon moves (English names).",
   "languages": ["de","en"],
+  "hideRulersByDefault": true,
   "groups": [
     {
       "id": "moves",
