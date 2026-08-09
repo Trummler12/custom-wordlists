@@ -106,6 +106,9 @@ header {
   left: 0;
   right: 0;
   bottom: 0;
+  /* Above the row-spanning tip-notes (z-index 10): they overlay the next row
+     but must stop at this opaque bar rather than paint through it. */
+  z-index: 20;
   height: var(--footer-h);
   display: flex;
   align-items: center;
@@ -321,6 +324,11 @@ header {
 .depth-track {
   --inset: 8px; /* keeps the end dots off the rail edges; matches INSET_PX in App.svelte */
   position: relative;
+  /* Own stacking context, so the dots/thumb z-indexes below stack only against
+     each other and can't escape to the root context (where they would paint over
+     the fixed footer). The ruler's tip-note is a sibling of the track, not a
+     child, so it stays free to span rows. */
+  isolation: isolate;
   height: 1rem; /* hit area; the visible rail is thinner */
   cursor: pointer;
   touch-action: none; /* let pointer drag work without scrolling */
