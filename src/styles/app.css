@@ -279,10 +279,12 @@ header {
 }
 
 /* Groups (nested under a topic) */
-.groups {
-  list-style: none;
+/* .topics ul (the list reset) already zeroes list-style and padding here, but
+   its margin:0 also outweighs a bare .groups (0,1,1 vs 0,1,0) and would drop
+   these group checkboxes to the left of their topic's. Scope to the topic-item
+   so this one-step indent wins. */
+.topic-item > .groups {
   margin: 0 0 0.4rem 2.1rem;
-  padding: 0;
 }
 .group {
   display: flex;
