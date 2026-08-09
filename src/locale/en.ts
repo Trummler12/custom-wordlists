@@ -18,6 +18,8 @@ export const en: UIStrings = {
   fameGroupsDefined: (count) => `Fame groups defined: ${count}`,
   noFameGroups:
     "No fame groups defined yet — see the Contribution Guide in the footer to propose some!",
+  rulerToggle: (shown) => (shown ? "Hide this list's fame ruler" : "Show this list's fame ruler"),
+  rulerToggleAll: (allShown) => (allShown ? "Hide these fame rulers" : "Show these fame rulers"),
   output: "Output",
   copy: "Copy",
   copied: "Copied!",

@@ -1,6 +1,7 @@
 <script lang="ts">
   import { onMount } from "svelte";
   import { setIndeterminate } from "../../lib/dom";
+  import { rulerControl } from "../../lib/rulers";
   import type { TopicSummary } from "../../lib/types";
   import { langWarning } from "../../locale";
   import { lang } from "../../state/lang.svelte";
@@ -24,6 +25,11 @@
   // manifest, so the row knows its shape before the topic file arrives.
   const solo = $derived(topic.groupCount === 1 && !topic.foldered);
   const sole = $derived(solo ? topics.groupsOf(topic)[0] : undefined);
+
+  // A solo topic in a subtree that opted into ruler visibility gets a toggle to
+  // show/hide its inline ruler; absent = no control, the ruler is always shown.
+  const rulerOptIn = $derived(solo && rulerControl(topic, topics.categories) !== null);
+  const rulerShown = $derived(selection.isRulerVisible(topic));
 
   const open = $derived(!!selection.expanded[topic.id]);
   const warnId = $derived(`warn-${topic.id}`);
@@ -71,6 +77,17 @@
     {#if sole}
       <NamesModeSelect tid={topic.id} group={sole} label={topics.topicTitle(topic)} />
     {/if}
+    {#if rulerOptIn}
+      <button
+        type="button"
+        class="ruler-toggle"
+        class:shown={rulerShown}
+        aria-pressed={rulerShown}
+        aria-label={lang.ui.rulerToggle(rulerShown)}
+        title={lang.ui.rulerToggle(rulerShown)}
+        onclick={() => selection.toggleRuler(topic)}
+      >📏</button>
+    {/if}
     <span class="meta">
       {#if topics.isLoading(topic)}{lang.ui.loadingShort}{:else}{lang.ui.wordsOf(
           selection.topicSelCount(topic),
@@ -82,7 +99,7 @@
        note would count as ticking the topic. -->
   <TipNote id={warnId} text={langWarning(lang.ui, lang.current, lang.name(lang.current))} />
 
-  {#if sole}
+  {#if sole && rulerShown}
     <FameDepthSlider tid={topic.id} group={sole} />
   {/if}
 

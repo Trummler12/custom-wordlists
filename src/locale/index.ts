@@ -28,6 +28,10 @@ export interface UIStrings {
   fameGroupsDefined: (count: number) => string;
   /** Ruler tooltip for a list that hasn't — an invitation to rank it. */
   noFameGroups: string;
+  /** Toggle a single list's fame ruler; label reflects the current state. */
+  rulerToggle: (shown: boolean) => string;
+  /** Toggle from a category row all the rulers it governs; label on current state. */
+  rulerToggleAll: (allShown: boolean) => string;
   output: string;
   copy: string;
   copied: string;
