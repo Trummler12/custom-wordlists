@@ -1,8 +1,8 @@
 // One-shot codemod: merges each localized topic's `de.json` + `en.json` into a
 // single file for the new inline-i18n model. Identical entries collapse to a
 // plain string / name pair; entries that differ become a language map
-// { "en": …, "de": … } (en = base). Group/topic titles that differ become a
-// per-language `titles` map. The result is relocated per PLAN (flat single file
+// { "en": …, "de": … } (en = base). Group/topic titles that differ become such a
+// map too. The result is relocated per PLAN (flat single file
 // vs. a `characters.json` inside a folder that may grow), and the old
 // `de.json`/`en.json` (and now-empty folders) are removed.
 //
@@ -58,8 +58,7 @@ function mergeList(en, de, label) {
 }
 function mergeGroup(gEn, gDe, label) {
   if (gEn.id !== gDe.id) throw new Error(`${label}: group id mismatch (${gEn.id} / ${gDe.id})`);
-  const out = { id: gEn.id, title: gEn.title };
-  if (gEn.title !== gDe.title) out.titles = { en: gEn.title, de: gDe.title };
+  const out = { id: gEn.id, title: gEn.title === gDe.title ? gEn.title : { en: gEn.title, de: gDe.title } };
   if (gEn.tiers) {
     if (gEn.tiers.length !== gDe.tiers.length) throw new Error(`${label}/${gEn.id}: tier count differs`);
     out.tiers = gEn.tiers.map((tier, i) => mergeList(tier, gDe.tiers[i], `${label}/${gEn.id} tier ${i}`));
@@ -71,8 +70,7 @@ function mergeTopic(en, de, label) {
   if (en.groups.length !== de.groups.length) throw new Error(`${label}: group count differs`);
   return {
     id: en.id,
-    title: en.title,
-    ...(en.title !== de.title ? { titles: { en: en.title, de: de.title } } : {}),
+    title: en.title === de.title ? en.title : { en: en.title, de: de.title },
     ...(en.icon ? { icon: en.icon } : {}),
     ...(en.description ? { description: en.description } : {}),
     languages: ["de", "en"],
@@ -95,14 +93,12 @@ function serializeTiers(tiers) {
 }
 function serializeGroup(g) {
   const p = [`      "id": ${JSON.stringify(g.id)}`, `      "title": ${JSON.stringify(g.title)}`];
-  if (g.titles) p.push(`      "titles": ${JSON.stringify(g.titles)}`);
   if (g.tiers) p.push(`      "tiers": ${serializeTiers(g.tiers)}`);
   if (g.words) p.push(`      "words": ${entryBlock(g.words, "        ", "      ")}`);
   return "    {\n" + p.join(",\n") + "\n    }";
 }
 function serializeTopic(t) {
   const kv = [`  "id": ${JSON.stringify(t.id)}`, `  "title": ${JSON.stringify(t.title)}`];
-  if (t.titles) kv.push(`  "titles": ${JSON.stringify(t.titles)}`);
   if (t.icon) kv.push(`  "icon": ${JSON.stringify(t.icon)}`);
   if (t.description) kv.push(`  "description": ${JSON.stringify(t.description)}`);
   kv.push(`  "languages": ${JSON.stringify(t.languages)}`);

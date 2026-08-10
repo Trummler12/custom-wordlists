@@ -5,7 +5,7 @@
 /** One topic as summarized in the manifest — enough to render the tree. */
 export interface TopicSummary {
   id: string;
-  /** Display name, already merged from the topic file's `title`/`titles`. */
+  /** Display name — see `displayName` in lib/words. */
   title: WordEntry;
   /** Emoji/icon, or null when the topic has none. */
   icon: string | null;
@@ -33,7 +33,7 @@ export interface TopicSummary {
 
 /** Optional display metadata for a category node (from a `_category.json`). */
 export interface CategoryMeta {
-  /** Display name, already merged from the sidecar's `title`/`titles`. */
+  /** Display name — see `displayName` in lib/words. */
   title?: WordEntry;
   /** Emoji/icon for the category. */
   icon?: string;
@@ -82,8 +82,6 @@ export interface Group {
   id: string;
   /** Display name, same shape as an entry — see `displayName` in lib/words. */
   title: WordEntry;
-  /** @deprecated Being folded into `title`; read through `titles ?? title`. */
-  titles?: LangMap<string>;
   words?: WordEntry[];
   tiers?: WordEntry[][];
 }
@@ -100,8 +98,6 @@ export interface Topic {
   id: string;
   /** Display name, same shape as an entry — see `displayName` in lib/words. */
   title: WordEntry;
-  /** @deprecated Being folded into `title`; read through `titles ?? title`. */
-  titles?: LangMap<string>;
   icon?: string;
   description?: string;
   /** Languages this topic fully supports. Absent means support is undeclared (the

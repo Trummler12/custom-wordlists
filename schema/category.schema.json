@@ -11,13 +11,6 @@
       "allOf": [{ "$ref": "#/$defs/word" }],
       "description": "Display name, in the same shape as a topic's title or a word entry: a plain string where the name is global (\"Film & TV\"), a language map where it translates, or a short/long pair — `short` on the row, `long` in a hover. Falls back to the title-cased folder name."
     },
-    "titles": {
-      "type": "object",
-      "minProperties": 1,
-      "description": "DEPRECATED — fold the map into `title`, which now takes one directly.",
-      "propertyNames": { "pattern": "^[a-z]{2}(-[A-Z]{2})?$" },
-      "additionalProperties": { "type": "string", "minLength": 1 }
-    },
     "icon": { "type": "string", "minLength": 1 },
     "hideRulersByDefault": {
       "type": "boolean",

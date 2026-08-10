@@ -15,13 +15,6 @@
       "allOf": [{ "$ref": "#/$defs/word" }],
       "description": "Display name, in the same shape as an entry: a plain string where the name is global (\"South Park\"), a language map where it translates ({ \"en\": \"SpongeBob SquarePants\", \"de\": \"SpongeBob Schwammkopf\" }), or a short/long pair — the app puts `short` on the row and `long` in a hover, so a long name needn't crowd the tree."
     },
-    "titles": {
-      "type": "object",
-      "minProperties": 1,
-      "description": "DEPRECATED — fold the map into `title`, which now takes one directly.",
-      "propertyNames": { "pattern": "^[a-z]{2}(-[A-Z]{2}|-[A-Z][a-z]{3})?$" },
-      "additionalProperties": { "type": "string", "minLength": 1 }
-    },
     "icon": { "type": "string", "minLength": 1 },
     "description": { "type": "string" },
     "languages": {
@@ -132,13 +125,6 @@
         "title": {
           "allOf": [{ "$ref": "#/$defs/word" }],
           "description": "Display name, same shape as a topic's."
-        },
-        "titles": {
-          "type": "object",
-          "minProperties": 1,
-          "description": "DEPRECATED — fold the map into `title`, which now takes one directly.",
-          "propertyNames": { "pattern": "^[a-z]{2}(-[A-Z]{2}|-[A-Z][a-z]{3})?$" },
-          "additionalProperties": { "type": "string", "minLength": 1 }
         },
         "words": {
           "type": "array",

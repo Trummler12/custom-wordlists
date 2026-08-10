@@ -6,7 +6,7 @@
 // stem is free) and is marked `foldered`, since owning a folder is how a topic
 // says it expects to be split up later. Folders above a topic form a category path
 // (e.g. "gaming" or "gaming/pokemon"); a `_category.json` carries optional
-// display metadata (title / titles / icon) for that category node.
+// display metadata (title / icon) for that category node.
 // Generated file; never hand-edited. See docs/archive/PLANNING.md §4.1.
 import { readFile, writeFile, readdir } from "node:fs/promises";
 import { join, dirname, basename } from "node:path";
@@ -87,8 +87,7 @@ async function readCategoryMeta(path) {
     throw new Error(`data/topics/${path}/${CATEGORY_META}: could not read/parse — ${msg}`);
   }
   const meta = {};
-  const title = data.titles ?? data.title; // see the topic loop for the `??`
-  if (title) meta.title = title;
+  if (data.title) meta.title = data.title;
   if (data.icon) meta.icon = data.icon;
   // Emit either boolean, not just a truthy one: a `false` declaration is a real
   // ruler-visibility boundary (shown by default, decoupled from ancestors), so
@@ -119,9 +118,7 @@ async function buildIndex() {
       id,
       category, // "" = uncategorized
       path,
-      // A legacy `titles` map is exactly what `title` now holds directly, so the
-      // merge is the whole migration path. Drop the `??` once no file has one.
-      title: data.titles ?? data.title,
+      title: data.title,
       icon: data.icon ?? null,
       ...(foldered ? { foldered: true } : {}),
       // Either boolean is meaningful — a `false` marks a boundary too (see readCategoryMeta).

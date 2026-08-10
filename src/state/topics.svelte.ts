@@ -76,14 +76,11 @@ class TopicsState {
   // Display names in the active language. A title is a WordEntry, so resolving one
   // is resolving an entry: `short` goes on the row, `long` into its hover, and the
   // two are equal wherever the name has only one form.
-  //
-  // Groups still come straight from the topic file, which may carry the legacy
-  // `titles` map; the manifest's have already been merged by build-index.
   topicName(t: TopicSummary): DisplayName {
     return displayName(t.title, lang.current);
   }
   groupName(g: Group): DisplayName {
-    return displayName(g.titles ?? g.title, lang.current);
+    return displayName(g.title, lang.current);
   }
   categoryName(node: CatNode): DisplayName {
     const title = this.categories[node.path]?.title;
