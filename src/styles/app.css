@@ -213,7 +213,9 @@ header {
   background: none;
   border: none;
   cursor: pointer;
-  padding: 0 0.25rem;
+  /* Tighter on the checkbox side only: the outer padding is this small glyph's tap
+     area and has to stay. */
+  padding: 0 0.1rem 0 0.25rem;
   color: var(--muted-2);
   font-size: 0.9rem;
   line-height: 1;
@@ -228,7 +230,9 @@ header {
   align-items: baseline;
   gap: 0.5rem;
   flex: 1;
-  padding: 0.5rem 0.2rem;
+  /* Left inset trimmed to meet the expander above; the row gap is left alone, since
+     it also spaces the controls on the far side. */
+  padding: 0.5rem 0.2rem 0.5rem 0.1rem;
   cursor: pointer;
 }
 .topic .title {
