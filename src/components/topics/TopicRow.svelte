@@ -8,11 +8,12 @@
   import { langWarning } from "../../locale";
   import { lang } from "../../state/lang.svelte";
   import { selection } from "../../state/selection.svelte";
+  import { settings } from "../../state/settings.svelte";
   import { topics } from "../../state/topics.svelte";
+  import TipMarker from "../common/TipMarker.svelte";
   import TipNote from "../common/TipNote.svelte";
   import FameDepthSlider from "./FameDepthSlider.svelte";
   import GroupRow from "./GroupRow.svelte";
-  import LanguageMarker from "./LanguageMarker.svelte";
   import NamesModeSelect from "./NamesModeSelect.svelte";
 
   let { topic }: { topic: TopicSummary } = $props();
@@ -33,9 +34,10 @@
   const rulerOptIn = $derived(solo && rulerControl(topic, topics.categories) !== null);
   const rulerShown = $derived(selection.isRulerVisible(topic));
 
-  // Only where the switch would change something: not in English, and not for a
-  // list whose names in this language are the English ones anyway.
-  const englishOptIn = $derived(canForceEnglish(topic, lang.current));
+  // Behind a preference, and only where the switch would change something: not in
+  // English, and not for a list whose names in this language are the English ones
+  // anyway. Nearly every row qualifies, which is why it is off by default.
+  const englishOptIn = $derived(settings.showEnglishToggle && canForceEnglish(topic, lang.current));
   const forcedEnglish = $derived(selection.isForcedEnglish(topic));
 
   const open = $derived(!!selection.expanded[topic.id]);
@@ -97,7 +99,7 @@
         {name.short}
       </span>
       {#if langNote}
-        <LanguageMarker tipId={langTipId} icon={langNote.icon} text={langNote.text} />
+        <TipMarker tipId={langTipId} icon={langNote.icon} text={langNote.text} />
       {/if}
     </label>
     <!-- Both outside the <label>: a second form control inside it would leave the

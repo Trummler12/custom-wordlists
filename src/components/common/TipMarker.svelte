@@ -2,9 +2,9 @@
   import { plain } from "../../locale/html/plain";
   import { overlays } from "../../state/overlays.svelte";
 
-  // The marker only — TopicRow renders the note, for the reason given there, and
-  // decides which of the two this is: ⚠️ for a language nobody has confirmed, ℹ️ for
-  // one whose names are English on purpose.
+  // The trigger half of a tooltip: a small glyph that opens `tipId`. The caller
+  // renders the matching TipNote, and picks the glyph — ⚠️ where something is
+  // unconfirmed, ℹ️ where it is deliberate.
   let { tipId, icon, text }: { tipId: string; icon: string; text: string } = $props();
 </script>
 
@@ -12,7 +12,7 @@
      devices don't have. -->
 <button
   type="button"
-  class="lang-marker tip-trigger"
+  class="tip-marker tip-trigger"
   aria-expanded={overlays.tip === tipId}
   aria-controls={tipId}
   aria-label={plain(text)}

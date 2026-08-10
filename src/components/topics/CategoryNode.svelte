@@ -5,6 +5,7 @@
   import type { CatNode } from "../../lib/tree";
   import { lang } from "../../state/lang.svelte";
   import { selection } from "../../state/selection.svelte";
+  import { settings } from "../../state/settings.svelte";
   import { topics } from "../../state/topics.svelte";
   import CategoryNode from "./CategoryNode.svelte";
   import TopicRow from "./TopicRow.svelte";
@@ -26,7 +27,9 @@
   // The lists this category's shared English toggle governs — empty unless it
   // declares sharedEnglishToggle and something below it would actually change.
   const englishGoverned = $derived(
-    sharedEnglishTopics(node.path, all, topics.categories, lang.current),
+    settings.showEnglishToggle
+      ? sharedEnglishTopics(node.path, all, topics.categories, lang.current)
+      : [],
   );
 </script>
 

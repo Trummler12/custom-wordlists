@@ -259,9 +259,9 @@ header {
   min-width: 4ch;
   text-align: right;
 }
-/* Marker next to a topic with something to say about the selected language: ⚠️ for
-   one nobody has confirmed, ℹ️ for one whose names are English on purpose. */
-.lang-marker {
+/* A small glyph that opens a tip-note: ⚠️ where something is unconfirmed, ℹ️ where
+   it is deliberate. On a topic row and in the settings menu. */
+.tip-marker {
   margin-left: 0.3rem;
   background: none;
   border: none;
@@ -462,9 +462,41 @@ header {
 .lang-header-slot {
   display: none; /* shown only when the output stacks below — see media query */
   margin-left: auto;
+  gap: 0.35rem;
 }
-.lang-picker {
+.lang-picker,
+.settings-picker {
   position: relative;
+}
+/* Same box as the language menu it sits beside, but wider: these are sentences,
+   not a list of names. */
+.settings-menu {
+  position: absolute;
+  top: calc(100% + 0.25rem);
+  right: 0;
+  z-index: 10;
+  width: max-content;
+  max-width: min(20rem, 80vw);
+  padding: 0.5rem 0.6rem;
+  background: var(--chip-bg);
+  border: 1px solid var(--panel-border);
+  border-radius: var(--radius);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
+  font-size: 0.85rem;
+}
+/* One preference and whatever has to be said about it. Positioned, so its note
+   spans this row rather than the whole popover. */
+.setting-row {
+  position: relative;
+  display: flex;
+  align-items: baseline;
+  gap: 0.25rem;
+}
+.setting {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  cursor: pointer;
 }
 .lang-btn {
   background: none;
@@ -518,7 +550,7 @@ header {
 }
 @media (max-width: 40rem) {
   .lang-header-slot {
-    display: block;
+    display: flex;
   }
 }
 .chips {
