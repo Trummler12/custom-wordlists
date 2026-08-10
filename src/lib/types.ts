@@ -5,11 +5,8 @@
 /** One topic as summarized in the manifest — enough to render the tree. */
 export interface TopicSummary {
   id: string;
-  title: string;
-  /** Per-language titles, present only when the name actually translates (e.g.
-   *  SpongeBob). Absent when every language shares the same name; falls back to
-   *  `title`. */
-  titles?: Record<string, string>;
+  /** Display name, already merged from the topic file's `title`/`titles`. */
+  title: WordEntry;
   /** Emoji/icon, or null when the topic has none. */
   icon: string | null;
   /** Category path from topics/ (e.g. "gaming" or "gaming/pokemon"); "" = none. */
@@ -36,10 +33,8 @@ export interface TopicSummary {
 
 /** Optional display metadata for a category node (from a `_category.json`). */
 export interface CategoryMeta {
-  /** Display name for languages without a `titles` entry; also the global name. */
-  title?: string;
-  /** Per-language display names, keyed by language code. */
-  titles?: Record<string, string>;
+  /** Display name, already merged from the sidecar's `title`/`titles`. */
+  title?: WordEntry;
   /** Emoji/icon for the category. */
   icon?: string;
   /** Whether this category's topics start with their fame rulers hidden. Its
@@ -85,9 +80,10 @@ export type NamesMode = "short" | "long" | "both";
 /** A group of words: either a flat `words` list or ordered fame `tiers`. */
 export interface Group {
   id: string;
-  title: string;
-  /** Per-language group titles, present only when the group name translates. */
-  titles?: Record<string, string>;
+  /** Display name, same shape as an entry — see `displayName` in lib/words. */
+  title: WordEntry;
+  /** @deprecated Being folded into `title`; read through `titles ?? title`. */
+  titles?: LangMap<string>;
   words?: WordEntry[];
   tiers?: WordEntry[][];
 }
@@ -102,9 +98,10 @@ export interface Preset {
 /** A single topic data file (data/topics/<…>/<file>.json). */
 export interface Topic {
   id: string;
-  title: string;
-  /** Per-language titles, when the topic name translates. */
-  titles?: Record<string, string>;
+  /** Display name, same shape as an entry — see `displayName` in lib/words. */
+  title: WordEntry;
+  /** @deprecated Being folded into `title`; read through `titles ?? title`. */
+  titles?: LangMap<string>;
   icon?: string;
   description?: string;
   /** Languages this topic fully supports. Absent means support is undeclared (the

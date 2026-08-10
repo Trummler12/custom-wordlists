@@ -7,6 +7,7 @@
 import { loadManifest, loadTopic } from "../lib/data";
 import { buildTree, titleCase, type CatNode } from "../lib/tree";
 import type { CategoryMeta, Group, Topic, TopicSummary } from "../lib/types";
+import { displayName, type DisplayName } from "../lib/words";
 import { lang } from "./lang.svelte";
 
 class TopicsState {
@@ -72,19 +73,21 @@ class TopicsState {
     return !!this.loadingById[t.id] && !this.data[t.id];
   }
 
-  // Display names in the active language, with fallbacks.
-  // Topic and group: per-language title (present only when the name actually
-  // translates) → the representative title.
-  // Category: per-language title → global title → title-cased folder name.
-  topicTitle(t: TopicSummary): string {
-    return t.titles?.[lang.current] ?? t.title;
+  // Display names in the active language. A title is a WordEntry, so resolving one
+  // is resolving an entry: `short` goes on the row, `long` into its hover, and the
+  // two are equal wherever the name has only one form.
+  //
+  // Groups still come straight from the topic file, which may carry the legacy
+  // `titles` map; the manifest's have already been merged by build-index.
+  topicName(t: TopicSummary): DisplayName {
+    return displayName(t.title, lang.current);
   }
-  groupTitle(g: Group): string {
-    return g.titles?.[lang.current] ?? g.title;
+  groupName(g: Group): DisplayName {
+    return displayName(g.titles ?? g.title, lang.current);
   }
-  categoryTitle(node: CatNode): string {
-    const meta = this.categories[node.path];
-    return meta?.titles?.[lang.current] ?? meta?.title ?? titleCase(node.name);
+  categoryName(node: CatNode): DisplayName {
+    const title = this.categories[node.path]?.title;
+    return displayName(title ?? titleCase(node.name), lang.current);
   }
   categoryIcon(node: CatNode): string | undefined {
     return this.categories[node.path]?.icon;

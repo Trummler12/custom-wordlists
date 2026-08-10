@@ -87,8 +87,8 @@ async function readCategoryMeta(path) {
     throw new Error(`data/topics/${path}/${CATEGORY_META}: could not read/parse — ${msg}`);
   }
   const meta = {};
-  if (data.title) meta.title = data.title;
-  if (data.titles) meta.titles = data.titles;
+  const title = data.titles ?? data.title; // see the topic loop for the `??`
+  if (title) meta.title = title;
   if (data.icon) meta.icon = data.icon;
   // Emit either boolean, not just a truthy one: a `false` declaration is a real
   // ruler-visibility boundary (shown by default, decoupled from ancestors), so
@@ -115,16 +115,13 @@ async function buildIndex() {
       const msg = err instanceof Error ? err.message : String(err);
       throw new Error(`data/topics/${path}: could not read/parse — ${msg}`);
     }
-    // Per-language titles, emitted only when the name genuinely translates (a
-    // title identical across languages, e.g. "South Park", stays a single title).
-    const titles = data.titles ?? {};
-    const titlesDiffer = new Set(Object.values(titles)).size > 1;
     topics.push({
       id,
       category, // "" = uncategorized
       path,
-      title: data.title,
-      ...(titlesDiffer ? { titles } : {}),
+      // A legacy `titles` map is exactly what `title` now holds directly, so the
+      // merge is the whole migration path. Drop the `??` once no file has one.
+      title: data.titles ?? data.title,
       icon: data.icon ?? null,
       ...(foldered ? { foldered: true } : {}),
       // Either boolean is meaningful — a `false` marks a boundary too (see readCategoryMeta).

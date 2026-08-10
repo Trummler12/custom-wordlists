@@ -14,6 +14,7 @@
   // counter speak for the whole subtree, not just this level's own topics.
   const all = $derived(node.all);
   const open = $derived(selection.catOpen(node));
+  const name = $derived(topics.categoryName(node));
   const id = $derived("cat-" + (node.path.replace(/\//g, "-") || "root"));
 
   // Topics whose ruler this category governs (this node is their control root).
@@ -28,7 +29,7 @@
     class="expander"
     aria-expanded={open}
     aria-controls={`${id}-children`}
-    aria-label={lang.ui.toggle(open, topics.categoryTitle(node))}
+    aria-label={lang.ui.toggle(open, name.long)}
     onclick={() => selection.toggleCat(node)}
   >
     {open ? "▾" : "▸"}
@@ -44,7 +45,7 @@
     <label for={id}>
       {#if topics.categoryIcon(node)}<span class="icon" aria-hidden="true"
           >{topics.categoryIcon(node)}</span
-        > {/if}{topics.categoryTitle(node)}
+        > {/if}<span title={name.short !== name.long ? name.long : undefined}>{name.short}</span>
     </label>
   </h3>
   {#if governed.length > 0}

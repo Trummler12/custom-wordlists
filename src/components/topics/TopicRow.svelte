@@ -33,6 +33,7 @@
   const rulerShown = $derived(selection.isRulerVisible(topic));
 
   const open = $derived(!!selection.expanded[topic.id]);
+  const name = $derived(topics.topicName(topic));
 
   // Null for a language the list carries: nothing to say. Composed once here rather
   // than in the marker, which needs the same text flattened for its aria-label.
@@ -68,7 +69,7 @@
         class="expander"
         aria-expanded={open}
         aria-controls={`groups-${topic.id}`}
-        aria-label={lang.ui.toggle(open, topics.topicTitle(topic))}
+        aria-label={lang.ui.toggle(open, name.long)}
         onclick={() => selection.toggleExpand(topic)}
       >
         {open ? "▾" : "▸"}
@@ -82,7 +83,9 @@
         onchange={() => selection.toggleTopic(topic)}
       />
       <span class="icon" aria-hidden="true">{topic.icon ?? "•"}</span>
-      <span class="title">{topics.topicTitle(topic)}</span>
+      <span class="title" title={name.short !== name.long ? name.long : undefined}>
+        {name.short}
+      </span>
       {#if langNote}
         <LanguageMarker tipId={langTipId} icon={langNote.icon} text={langNote.text} />
       {/if}
@@ -90,7 +93,7 @@
     <!-- Both outside the <label>: a second form control inside it would leave the
          checkbox it names ambiguous, and the count isn't a name for anything. -->
     {#if sole}
-      <NamesModeSelect tid={topic.id} group={sole} label={topics.topicTitle(topic)} />
+      <NamesModeSelect tid={topic.id} group={sole} label={name.long} />
     {/if}
     {#if rulerOptIn}
       <button
