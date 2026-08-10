@@ -185,8 +185,12 @@ header {
 .category-title label {
   cursor: pointer;
 }
+/* The category counter reads at the same size as the ones below it — this row is
+   quieter by colour, weight and letterspacing, and shrinking its digits too made it
+   look like a different kind of number. Its own line-height, though: at the shared
+   size the default 1.5 would make this the tallest box on the row and stretch it. */
 .category .meta {
-  font-size: 0.75rem;
+  line-height: 1;
 }
 /* Nested tree level: indent a category's topics + subcategories, with a guide.
    --tree-step (globals.css) is the total indent per level, split around the line. */
@@ -252,7 +256,7 @@ header {
    number, where it reads as breathing room. Four digits simply outgrow it. */
 .meta .total {
   display: inline-block;
-  min-width: 3.2ch;
+  min-width: 4ch;
   text-align: right;
 }
 /* Marker next to a topic with something to say about the selected language: ⚠️ for
