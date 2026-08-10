@@ -24,6 +24,8 @@ export interface TopicSummary {
   /** Languages the topic fully supports. Absent means support is undeclared — the
    *  UI flags the topic (⚠️, even in English) until it's filled in. */
   languages?: string[];
+  /** Of those, the ones whose names simply are the English ones. See lib/languages. */
+  usesEnglishFor?: string[];
   /** Whether this topic's fame ruler starts hidden behind a toggle. Its *presence*
    *  (either value) also makes the topic its own ruler-visibility boundary; absent
    *  means it inherits from the nearest ancestor that declares it. See lib/rulers. */
@@ -109,6 +111,10 @@ export interface Topic {
    *  UI shows a ⚠️ marker); declare the languages to confirm support — including
    *  for a language-neutral list whose entries read the same in every locale. */
   languages?: string[];
+  /** Of those, the ones whose names simply are the English ones — the UI says so with
+   *  an ℹ️ rather than leaving the reader to wonder. `"*"` stands for every language
+   *  not named in `languages`. See lib/languages. */
+  usesEnglishFor?: string[];
   /** Whether this topic's fame ruler starts hidden behind a toggle; its presence
    *  also marks the topic as its own ruler-visibility boundary. */
   hideRulersByDefault?: boolean;

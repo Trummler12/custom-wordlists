@@ -1,6 +1,7 @@
 <script lang="ts">
   import { onMount } from "svelte";
   import { setIndeterminate } from "../../lib/dom";
+  import { langSupport } from "../../lib/languages";
   import { rulerControl } from "../../lib/rulers";
   import type { TopicSummary } from "../../lib/types";
   import { langWarning } from "../../locale";
@@ -10,7 +11,7 @@
   import TipNote from "../common/TipNote.svelte";
   import FameDepthSlider from "./FameDepthSlider.svelte";
   import GroupRow from "./GroupRow.svelte";
-  import LanguageWarning from "./LanguageWarning.svelte";
+  import LanguageMarker from "./LanguageMarker.svelte";
   import NamesModeSelect from "./NamesModeSelect.svelte";
 
   let { topic }: { topic: TopicSummary } = $props();
@@ -32,7 +33,21 @@
   const rulerShown = $derived(selection.isRulerVisible(topic));
 
   const open = $derived(!!selection.expanded[topic.id]);
-  const warnId = $derived(`warn-${topic.id}`);
+
+  // Null for a language the list carries: nothing to say. Composed once here rather
+  // than in the marker, which needs the same text flattened for its aria-label.
+  const langTipId = $derived(`lang-${topic.id}`);
+  const langNote = $derived.by(() => {
+    const name = lang.name(lang.current);
+    switch (langSupport(topic, lang.current)) {
+      case "declared":
+        return null;
+      case "english":
+        return { icon: "ℹ️", text: lang.ui.langUsesEnglish(name) };
+      case "undeclared":
+        return { icon: "⚠️", text: langWarning(lang.ui, lang.current, name) };
+    }
+  });
 
   // Nothing else will trigger the load: there is no expander to click, and the
   // ruler can't be drawn without the tiers it snaps to.
@@ -68,8 +83,8 @@
       />
       <span class="icon" aria-hidden="true">{topic.icon ?? "•"}</span>
       <span class="title">{topics.topicTitle(topic)}</span>
-      {#if !topic.languages?.includes(lang.current)}
-        <LanguageWarning tipId={warnId} />
+      {#if langNote}
+        <LanguageMarker tipId={langTipId} icon={langNote.icon} text={langNote.text} />
       {/if}
     </label>
     <!-- Both outside the <label>: a second form control inside it would leave the
@@ -95,9 +110,11 @@
         )}{/if}
     </span>
   </div>
-  <!-- The warning's note, outside the <label> above: inside it, a click on the
-       note would count as ticking the topic. -->
-  <TipNote id={warnId} text={langWarning(lang.ui, lang.current, lang.name(lang.current))} />
+  <!-- The marker's note, outside the <label> above: inside it, a click on the note
+       would count as ticking the topic. -->
+  {#if langNote}
+    <TipNote id={langTipId} text={langNote.text} />
+  {/if}
 
   {#if sole && rulerShown}
     <FameDepthSlider tid={topic.id} group={sole} />

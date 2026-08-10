@@ -4,8 +4,10 @@
 //   1. preset.groups reference real group ids (referential integrity)
 //   2. no duplicate words within a topic file
 //   3. every language used in an entry's language map is listed in `languages`
-//   4. category folder names are kebab-case (like ids)
-// Plus one non-fatal warning: a `sources` entry that carries no URL.
+//   4. `usesEnglishFor` doesn't contradict what the entries actually carry
+//   5. category folder names are kebab-case (like ids)
+// Plus non-fatal warnings: a `sources` entry that carries no URL, and a
+// `usesEnglishFor` language missing from `languages`.
 // Every JSON file (except `_category.json`) is one topic; a folder is a category
 // when it has a subfolder, a `_category.json`, or ≥2 topic files, else a folder
 // with one topic file is a leaf topic. Exits non-zero on any problem. See docs/archive/PLANNING.md §4.1.
@@ -20,7 +22,8 @@ const TOPICS_DIR = join(ROOT, "data", "topics");
 const SCHEMA_FILE = join(ROOT, "schema", "topic.schema.json");
 const CATEGORY_SCHEMA_FILE = join(ROOT, "schema", "category.schema.json");
 
-const LANG_RE = /^[a-z]{2}(-[A-Z]{2})?$/;
+// A language tag: two-letter base, optionally a region (-CH) or script (-Hant) subtag.
+const LANG_RE = /^[a-z]{2}(-[A-Z]{2}|-[A-Z][a-z]{3})?$/;
 const KEBAB_RE = /^[a-z0-9]+(-[a-z0-9]+)*$/;
 // `sources` items are free-form so they can carry a label ("German: https://…"),
 // hence a loose "is there a link in here at all" check rather than a URL pattern.
@@ -211,7 +214,33 @@ async function main() {
       }
     }
 
-    // 4. sources should point somewhere — a warning, since a source can legitimately
+    // 4. `usesEnglishFor` only claims that a language's names *are* the English ones.
+    //    It cannot be English itself, it needs `languages` to say what is supported at
+    //    all, and it must not name a language the entries actually translate.
+    const usesEnglish = topic.usesEnglishFor ?? [];
+    if (usesEnglish.length > 0) {
+      if (usesEnglish.includes("en")) {
+        errors.push(`${rel}: usesEnglishFor cannot contain "en"`);
+      }
+      if (!topic.languages) {
+        errors.push(`${rel}: usesEnglishFor needs languages — without it nothing is supported`);
+      }
+      for (const l of usedLangs(topic)) {
+        if (l !== "en" && usesEnglish.includes(l)) {
+          errors.push(`${rel}: usesEnglishFor lists "${l}", but entries carry ${l} names`);
+        }
+      }
+      // Convention rather than logic: `languages` stays the complete list of supported
+      // languages, so every code here should also stand there. `"*"` means "the rest",
+      // so it is the one that can't.
+      for (const l of usesEnglish) {
+        if (l !== "*" && l !== "en" && topic.languages && !declared.has(l)) {
+          warnings.push(`${rel}: usesEnglishFor lists "${l}", which is not in languages`);
+        }
+      }
+    }
+
+    // 5. sources should point somewhere — a warning, since a source can legitimately
     //    be an offline one (a printed guide, an in-game list).
     const sources = topic.sources == null ? [] : [topic.sources].flat();
     for (const s of sources) {

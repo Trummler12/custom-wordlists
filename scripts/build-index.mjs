@@ -130,6 +130,7 @@ async function buildIndex() {
       // Either boolean is meaningful — a `false` marks a boundary too (see readCategoryMeta).
       ...(typeof data.hideRulersByDefault === "boolean" ? { hideRulersByDefault: data.hideRulersByDefault } : {}),
       ...(data.languages ? { languages: data.languages } : {}),
+      ...(data.usesEnglishFor ? { usesEnglishFor: data.usesEnglishFor } : {}),
       groupCount: data.groups.length,
       wordCount: countWords(data),
     });

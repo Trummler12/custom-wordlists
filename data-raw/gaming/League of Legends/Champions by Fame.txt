@@ -1,0 +1,352 @@
+ 		% Correct
+Darkin Blade	Aatrox	
+	92.6%
+	Darius	
+	90%
+	Vi	
+	89.5%
+	Ahri	
+	89.2%
+	Garen	
+	88.8%
+Dark Child	Annie	
+	88.7%
+	Akali	
+	87.9%
+Frost Archer	Ashe	
+	87.6%
+	Yasuo	
+	87.2%
+	Caitlyn	
+	86.5%
+	Lux	
+	86.1%
+	Zed	
+	86%
+	Jinx	
+	85.9%
+	Yone	
+	85%
+Great Steam Golem	Blitzcrank	
+	83.5%
+	Ambessa	
+	82.3%
+	Draven	
+	82.2%
+Cryophoenix	Anivia	
+	82.2%
+	Ezreal	
+	81.7%
+	Azir	
+	81.3%
+Swift Scout	Teemo	
+	80.8%
+	Lulu	
+	80.4%
+	Kai'Sa	
+	80.2%
+Sad Mummy	Amumu	
+	80.1%
+	Lucian	
+	79.6%
+	Miss Fortune	
+	79.5%
+Minotaur	Alistar	
+	79.5%
+	Aurelion Sol	
+	78.9%
+	Braum	
+	78.9%
+Sinister Blade	Katarina	
+	78.8%
+	Mel	
+	78.4%
+	Leona	
+	78%
+	Jhin	
+	78%
+	Thresh	
+	77.9%
+	Heimerdinger	
+	77.8%
+	Ekko	
+	77.7%
+	Senna	
+	77.6%
+Blood Hunter	Warwick	
+	77.2%
+	Aphelios	
+	77%
+Megling Gunner	Tristana	
+	76.8%
+	Akshan	
+	76.8%
+	Brand	
+	76.7%
+	Irelia	
+	76.6%
+	Zyra	
+	76.6%
+	Kha'Zix	
+	76%
+	Viego	
+	75.8%
+Curator of the Sands	Nasus	
+	75.8%
+Fallen Angel	Morgana	
+	75.7%
+	Renekton	
+	75.5%
+	Vayne	
+	75.5%
+	Jayce	
+	75.3%
+	Bard	
+	75.3%
+	Bel'Veth	
+	75.2%
+Terror of the Void	Cho'Gath	
+	75.2%
+	Nautilus	
+	75%
+	Xayah	
+	74.8%
+Saltwater Scourge	Gangplank	
+	74.6%
+	Xerath	
+	74.5%
+	
+		% Correct
+	Jarvan IV	
+	74.4%
+	Fiora	
+	74.4%
+	Graves	
+	74.2%
+	Diana	
+	73.9%
+	Yuumi	
+	73.7%
+	Rakan	
+	73.7%
+Wuju Bladesman	Master Yi	
+	73.6%
+	Zoe	
+	73.5%
+	Seraphine	
+	73.3%
+Widowmaker	Evelynn	
+	73%
+	Viktor	
+	72.7%
+	Zac	
+	72.6%
+	Pyke	
+	72.3%
+Grandmaster at Arms	Jax	
+	72%
+	Hecarim	
+	72%
+Chronokeeper	Zilean	
+	71.9%
+Judicator	Kayle	
+	71.7%
+	Ornn	
+	71.7%
+	Sona	
+	71.6%
+	Fizz	
+	71.5%
+	Kayn	
+	71.4%
+	Volibear	
+	71.4%
+Void Walker	Kassadin	
+	71.2%
+	Lee Sin	
+	71.1%
+Card Master	Twisted Fate	
+	71.1%
+	Kalista	
+	71%
+Tiny Master of Evil	Veigar	
+	70.8%
+	Mordekaiser	
+	70.8%
+Harbinger of Doom	Fiddlesticks	
+	70.7%
+	Camille	
+	70.5%
+	Vel'Koz	
+	70.5%
+Starchild	Soraka	
+	70.4%
+Storm's Fury	Janna	
+	70.4%
+Shard of the Monolith	Malphite	
+	70.4%
+	Rengar	
+	70.3%
+Daring Bombardier	Corki	
+	70.2%
+	Zeri	
+	70.1%
+	Samira	
+	70%
+Yeti Rider	Nunu	
+	69.9%
+	Ziggs	
+	69.8%
+	Varus	
+	69.7%
+	Shen	
+	69.6%
+	Orianna	
+	69.6%
+	Galio	
+	69.5%
+	Nami	
+	69.2%
+	Sett	
+	69%
+	Poppy	
+	69%
+	Lissandra	
+	69%
+	Illaoi	
+	68.8%
+	Rek'Sai	
+	68.8%
+Barbarian King	Tryndamere	
+	68.8%
+Madman of Zaun	Dr. Mundo	
+	68.7%
+	Ivern	
+	68.6%
+	Maokai	
+	68.5%
+	Urgot	
+	68.5%
+	Sylas	
+	68.4%
+Undead Champion	Sion	
+	68.3%
+	Yorick	
+	68.3%
+	
+		% Correct
+	Yunara	
+	68.3%
+	Elise	
+	68%
+	Pantheon	
+	68%
+	Cassiopeia	
+	67.9%
+	Aurora	
+	67.8%
+	Zaahen	
+	67.7%
+Mad Chemist	Singed	
+	67.5%
+	Xin Zhao	
+	67.5%
+	Sejuani	
+	67.3%
+	Karma	
+	67.3%
+	Gragas	
+	67.2%
+	Locke	
+	67.1%
+	Kog'Maw	
+	66.8%
+	Kennen	
+	66.8%
+	Nidalee	
+	66.7%
+	Gnar	
+	66.5%
+	Talon	
+	66.3%
+	K'Sante	
+	65.9%
+	LeBlanc	
+	65.8%
+	Quinn	
+	65.8%
+Battle Mistress	Sivir	
+	65.7%
+	Qiyana	
+	65.7%
+	Syndra	
+	65.6%
+Animal Spirit	Udyr	
+	65.4%
+	Vex	
+	65.3%
+	Riven	
+	65.1%
+Deathsinger	Karthus	
+	65.1%
+Plague Rat	Twitch	
+	65.1%
+	Gwen	
+	64.8%
+	Swain	
+	64.6%
+	Neeko	
+	64.6%
+	Rumble	
+	64.5%
+	Malzahar	
+	64.4%
+	Milio	
+	64.2%
+	Olaf	
+	64.2%
+	Naafiri	
+	64.2%
+	Briar	
+	63.8%
+	Shaco	
+	63.8%
+Rogue Mage	Ryze	
+	63.4%
+Gem Knight	Taric	
+	63%
+Armordillo	Rammus	
+	63%
+	Hwei	
+	62.4%
+	Nocturne	
+	62.4%
+	Shyvana	
+	62.3%
+	Lillia	
+	62.2%
+	Rell	
+	62.2%
+	Renata Glasc	
+	62%
+	Kled	
+	61.8%
+	Tahm Kench	
+	61.7%
+	Kindred	
+	61.5%
+	Smolder	
+	61.2%
+	Vladimir	
+	61%
+	Trundle	
+	59.8%
+	Taliyah	
+	59.3%
+	Wukong	
+	59.2%
+	Nilah	
+	57.7%
+	Skarner	
+	55.3%
+https://de.sporcle.com/games/flux_capacitor/lol_champs/results

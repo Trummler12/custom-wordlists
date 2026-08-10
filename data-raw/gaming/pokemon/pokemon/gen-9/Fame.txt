@@ -1,0 +1,246 @@
+Number 	Pokémon 	% Correct
+906	Sprigatito	
+	94.6%
+912	Quaxly	
+	93.2%
+909	Fuecoco	
+	93.2%
+908	Meowscarada	
+	92.4%
+911	Skeledirge	
+	88.4%
+914	Quaquaval	
+	86.9%
+1008	Miraidon	
+	86.6%
+1007	Koraidon	
+	86.5%
+907	Floragato	
+	86.1%
+901	Crocalor	
+	83.8%
+915	Lechonk	
+	83.5%
+913	Quaxwell	
+	83.2%
+1006	Iron Valiant	
+	81%
+985	Scream Tail	
+	80.6%
+992	Iron Hands	
+	80.3%
+918	Spidops	
+	79.9%
+921	Pawmi	
+	79.3%
+922	Pawmo	
+	78.8%
+990	Iron Treads	
+	78.8%
+1005	Roaring Moon	
+	78.7%
+991	Iron Bundle	
+	78.4%
+916	Oinkologne	
+	78.2%
+923	Pawmot	
+	78%
+984	Great Tusk	
+	77%
+978	Tatsugiri	
+	76.7%
+941	Kilowattrel	
+	76.6%
+987	Flutter Mane	
+	76.5%
+994	Iron Moth	
+	76.5%
+940	Wattrel	
+	76.2%
+977	Dondozo	
+	76%
+998	Baxcalibur	
+	75.7%
+928	Smoliv	
+	75.7%
+920	Lokix	
+	75%
+995	Iron Thorns	
+	74.8%
+1009	Walking Wake	
+	74.7%
+993	Iron Jugulis	
+	74.4%
+917	Tarountula	
+	74.2%
+1010	Iron Leaves	
+	73.9%
+1000	Gholdengo	
+	73.5%
+996	Frigibax	
+	73.3%
+	
+Number 	Pokémon 	% Correct
+999	Gimmighoul	
+	73.2%
+930	Arboliva	
+	73.1%
+962	Bombirdier	
+	72.9%
+1002	Chien-Pao	
+	72.5%
+989	Sandy Shocks	
+	72.4%
+980	Clodsire	
+	72.1%
+1024	Terapagos	
+	72.1%
+919	Nymble	
+	71.9%
+1017	Ogerpon	
+	71.7%
+929	Dolliv	
+	71.7%
+959	Tinkaton	
+	71.6%
+961	Wugtrio	
+	71.6%
+997	Arctibax	
+	71.5%
+950	Klawf	
+	71.4%
+937	Ceruledge	
+	71.3%
+960	Wiglett	
+	71.2%
+935	Charcadet	
+	70.8%
+983	Kingambit	
+	70.7%
+926	Fidough	
+	70.7%
+986	Brute Bonnet	
+	70.7%
+981	Farigiraf	
+	70.6%
+936	Armarouge	
+	70.6%
+988	Slither Wing	
+	70.6%
+1014	Okidogi	
+	70.5%
+1001	Wo-Chien	
+	70.3%
+957	Tinkatink	
+	70.2%
+1003	Ting-Lu	
+	69.8%
+1004	Chi-Yu	
+	69.7%
+982	Dudunsparce	
+	69.6%
+968	Orthworm	
+	69.2%
+1023	Iron Crown	
+	69.2%
+1019	Hydrapple	
+	69%
+1015	Munkidori	
+	69%
+1025	Pecharunt	
+	68.8%
+932	Nacli	
+	68.7%
+973	Flamigo	
+	68.3%
+976	Veluza	
+	68.3%
+948	Toedscool	
+	68.3%
+958	Tinkatuff	
+	68.2%
+965	Varoom	
+	68.1%
+	
+Number 	Pokémon 	% Correct
+979	Annihilape	
+	67.9%
+949	Toedscruel	
+	67.9%
+1022	Iron Boulder	
+	67.9%
+975	Cetitan	
+	67.8%
+927	Dachsbun	
+	67.6%
+934	Garganacl	
+	67.6%
+966	Revavroom	
+	67.4%
+1016	Fezandipiti	
+	67.3%
+956	Espathra	
+	67%
+974	Cetoddle	
+	66.9%
+943	Mabosstiff	
+	66.9%
+939	Bellibolt	
+	66.9%
+1011	Dipplin	
+	66.9%
+1021	Raging Bolt	
+	66.8%
+972	Houndstone	
+	66.4%
+1020	Gouging Fire	
+	66.3%
+933	Naclstack	
+	66.2%
+964	Palafin	
+	66%
+955	Flittle	
+	65.7%
+1018	Archaludon	
+	65.3%
+942	Maschiff	
+	65.2%
+967	Cyclizar	
+	65.1%
+970	Glimmora	
+	65%
+963	Finizen	
+	64.5%
+971	Greavard	
+	64.3%
+925	Maushold	
+	64.3%
+1013	Sinistcha	
+	64.1%
+938	Tadbulb	
+	63.6%
+924	Tandemaus	
+	63.6%
+952	Scovillain	
+	63.5%
+969	Glimmet	
+	63.1%
+951	Capsakid	
+	62.8%
+945	Grafaiai	
+	62.6%
+1012	Poltchageist	
+	62.4%
+931	Squawkabilly	
+	61.6%
+954	Rabsca	
+	61.3%
+944	Shroodle	
+	61.2%
+953	Rellor	
+	61%
+947	Brambleghast	
+	60.7%
+946	Bramblin	
+	60.1%
+https://de.sporcle.com/games/SparknightSyzygy/pokemon-gen-ix/results
