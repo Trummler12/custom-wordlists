@@ -11,11 +11,14 @@
       "allOf": [{ "$ref": "#/$defs/id" }],
       "description": "Kebab-case topic id; matches the topic's folder name (foldered) or file stem (flat)."
     },
-    "title": { "type": "string", "minLength": 1 },
+    "title": {
+      "allOf": [{ "$ref": "#/$defs/word" }],
+      "description": "Display name, in the same shape as an entry: a plain string where the name is global (\"South Park\"), a language map where it translates ({ \"en\": \"SpongeBob SquarePants\", \"de\": \"SpongeBob Schwammkopf\" }), or a short/long pair — the app puts `short` on the row and `long` in a hover, so a long name needn't crowd the tree."
+    },
     "titles": {
       "type": "object",
       "minProperties": 1,
-      "description": "Optional per-language display names for a topic whose title translates (e.g. \"South Park\" stays global, but \"SpongeBob SquarePants\"/\"SpongeBob Schwammkopf\" differ). Absent when the name is identical everywhere; falls back to `title`.",
+      "description": "DEPRECATED — fold the map into `title`, which now takes one directly.",
       "propertyNames": { "pattern": "^[a-z]{2}(-[A-Z]{2}|-[A-Z][a-z]{3})?$" },
       "additionalProperties": { "type": "string", "minLength": 1 }
     },
@@ -126,11 +129,14 @@
       "description": "A subtopic; the smallest checkbox unit. Carries exactly one of `words` (flat) or `tiers` (fame-ordered).",
       "properties": {
         "id": { "$ref": "#/$defs/id" },
-        "title": { "type": "string", "minLength": 1 },
+        "title": {
+          "allOf": [{ "$ref": "#/$defs/word" }],
+          "description": "Display name, same shape as a topic's."
+        },
         "titles": {
           "type": "object",
           "minProperties": 1,
-          "description": "Optional per-language group titles, when the group name translates (e.g. \"Characters\"/\"Charaktere\").",
+          "description": "DEPRECATED — fold the map into `title`, which now takes one directly.",
           "propertyNames": { "pattern": "^[a-z]{2}(-[A-Z]{2}|-[A-Z][a-z]{3})?$" },
           "additionalProperties": { "type": "string", "minLength": 1 }
         },

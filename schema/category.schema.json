@@ -8,14 +8,13 @@
   "minProperties": 1,
   "properties": {
     "title": {
-      "type": "string",
-      "minLength": 1,
-      "description": "Display name for languages without a `titles` entry (and the global name for categories that don't translate, e.g. \"Film & TV\")."
+      "allOf": [{ "$ref": "#/$defs/word" }],
+      "description": "Display name, in the same shape as a topic's title or a word entry: a plain string where the name is global (\"Film & TV\"), a language map where it translates, or a short/long pair — `short` on the row, `long` in a hover. Falls back to the title-cased folder name."
     },
     "titles": {
       "type": "object",
       "minProperties": 1,
-      "description": "Per-language display names, keyed by language code; falls back to `title`, then the title-cased folder name.",
+      "description": "DEPRECATED — fold the map into `title`, which now takes one directly.",
       "propertyNames": { "pattern": "^[a-z]{2}(-[A-Z]{2})?$" },
       "additionalProperties": { "type": "string", "minLength": 1 }
     },
@@ -23,6 +22,38 @@
     "hideRulersByDefault": {
       "type": "boolean",
       "description": "When true, the fame rulers of this category's topics start hidden behind a single toggle on the category row rather than shown. Declaring the field (either value) makes this category an independent ruler-visibility boundary: its toggle governs its subtree down to the next node that declares the field, and children without the field inherit this value."
+    }
+  },
+  "$defs": {
+    "langMapString": {
+      "type": "object",
+      "minProperties": 1,
+      "required": ["en"],
+      "description": "A per-language string: keys are language codes (\"en\" is the required base), values the localized text. Languages that match \"en\" are omitted.",
+      "propertyNames": { "pattern": "^[a-z]{2}(-[A-Z]{2}|-[A-Z][a-z]{3})?$" },
+      "additionalProperties": { "type": "string", "minLength": 1 }
+    },
+    "locString": {
+      "oneOf": [{ "type": "string", "minLength": 1 }, { "$ref": "#/$defs/langMapString" }],
+      "description": "A string that is the same everywhere (plain string) or translates (language map)."
+    },
+    "namePair": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["short", "long"],
+      "description": "A short (row) and long (hover) form of the name; each may itself be a language map when only that part translates.",
+      "properties": {
+        "short": { "$ref": "#/$defs/locString" },
+        "long": { "$ref": "#/$defs/locString" }
+      }
+    },
+    "word": {
+      "description": "Mirrors `word` in topic.schema.json, so a category's title has the same shape as a topic's. Repeated rather than referenced across files: the two schemas are loaded independently.",
+      "oneOf": [
+        { "type": "string", "minLength": 1 },
+        { "$ref": "#/$defs/namePair" },
+        { "$ref": "#/$defs/langMapString" }
+      ]
     }
   }
 }
