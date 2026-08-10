@@ -1,7 +1,6 @@
 {
   "id": "moves",
-  "title": "Moves",
-  "titles": {"en":"Moves","de":"Attacken"},
+  "title": {"en":"Moves","de":"Attacken"},
   "icon": "💥",
   "description": "Pokémon moves (English names).",
   "languages": ["de","en"],
@@ -9,8 +8,7 @@
   "groups": [
     {
       "id": "moves",
-      "title": "Moves",
-      "titles": {"en":"Moves","de":"Attacken"},
+      "title": {"en":"Moves","de":"Attacken"},
       "words": [
         {"en":"Pound","de":"Klaps"},
         {"en":"Karate Chop","de":"Karateschlag"},

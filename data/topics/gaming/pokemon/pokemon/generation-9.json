@@ -1,6 +1,6 @@
 {
   "id": "generation-9",
-  "title": "Generation IX",
+  "title": {"short":"Gen IX","long":"Generation IX"},
   "icon": "🔴",
   "description": "Generation IX Pokémon (English names, National Dex order).",
   "languages": ["de","en","es","fr","it","ja","ja-Latn","ko","zh-Hans","zh-Hant"],

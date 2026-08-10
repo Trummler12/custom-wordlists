@@ -1,6 +1,6 @@
 {
   "id": "generation-6",
-  "title": "Generation VI",
+  "title": {"short":"Gen VI","long":"Generation VI"},
   "icon": "🔴",
   "description": "Generation VI Pokémon (English names, National Dex order).",
   "languages": ["de","en","es","fr","it","ja","ja-Latn","ko","zh-Hans","zh-Hant"],

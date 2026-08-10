@@ -1,14 +1,12 @@
 {
   "id": "lord-of-the-rings",
-  "title": "The Lord of the Rings",
-  "titles": {"en":"The Lord of the Rings","de":"Der Herr der Ringe"},
+  "title": {"en":"The Lord of the Rings","de":"Der Herr der Ringe"},
   "icon": "💍",
   "description": "The Lord of the Rings characters (English names). Fame tiers by recognizability (tier 0 = most iconic).",
   "groups": [
     {
       "id": "characters",
-      "title": "Characters",
-      "titles": {"en":"Characters","de":"Charaktere"},
+      "title": {"en":"Characters","de":"Charaktere"},
       "tiers": [
         [
           "Frodo",

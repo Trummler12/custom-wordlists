@@ -1,6 +1,6 @@
 {
   "id": "generation-1",
-  "title": "Generation I",
+  "title": {"short":"Gen I","long":"Generation I"},
   "icon": "🔴",
   "description": "Generation I Pokémon (English names, National Dex order).",
   "languages": ["de","en","es","fr","it","ja","ja-Latn","ko","zh-Hans","zh-Hant"],

@@ -1,7 +1,6 @@
 {
   "id": "other-comics",
-  "title": "Other",
-  "titles": { "en": "Other", "de": "Andere" },
+  "title": { "en": "Other", "de": "Andere" },
   "icon": "💥",
   "description": "Iconic comic characters outside the DC/Marvel universes (language-neutral — names are the same across locales). Fame tiers by recognizability (tier 0 = most iconic).",
   "groups": [
