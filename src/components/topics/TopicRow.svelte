@@ -103,11 +103,15 @@
         onclick={() => selection.toggleRuler(topic)}
       >📏</button>
     {/if}
-    <span class="meta">
-      {#if topics.isLoading(topic)}{lang.ui.loadingShort}{:else}{lang.ui.wordsOf(
-          selection.topicSelCount(topic),
-          selection.topicTotal(topic),
-        )}{/if}
+    <!-- The ratio alone, since it reads the same in every language; the sentence it
+         stands for is a hover away. The row needs the width for its controls. -->
+    <span
+      class="meta"
+      title={lang.ui.wordsOf(selection.topicSelCount(topic), selection.topicTotal(topic))}
+    >
+      {#if topics.isLoading(topic)}{lang.ui.loadingShort}{:else}{selection.topicSelCount(
+          topic,
+        )}/{selection.topicTotal(topic)}{/if}
     </span>
   </div>
   <!-- The marker's note, outside the <label> above: inside it, a click on the note

@@ -22,9 +22,12 @@
       <span class="title">{topics.groupTitle(group)}</span>
     </label>
     <NamesModeSelect {tid} {group} label={topics.groupTitle(group)} />
-    <span class="meta"
-      >{lang.ui.wordsOf(selection.groupSelCount(tid, group), selection.groupTotal(tid, group))}</span
+    <span
+      class="meta"
+      title={lang.ui.wordsOf(selection.groupSelCount(tid, group), selection.groupTotal(tid, group))}
     >
+      {selection.groupSelCount(tid, group)}/{selection.groupTotal(tid, group)}
+    </span>
   </div>
   <FameDepthSlider {tid} {group} />
 </li>

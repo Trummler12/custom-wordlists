@@ -69,7 +69,11 @@
       }}
     >📏</button>
   {/if}
-  <span class="meta">{lang.ui.wordsOf(selection.catSel(all), selection.catTotal(all))}</span>
+  <!-- The ratio alone, since it reads the same in every language; the sentence it
+       stands for is a hover away. The row needs the width for its controls. -->
+  <span class="meta" title={lang.ui.wordsOf(selection.catSel(all), selection.catTotal(all))}>
+    {selection.catSel(all)}/{selection.catTotal(all)}
+  </span>
 </div>
 {#if open}
   <!-- One nesting level per category, so gaming/pokemon/pokemon sits inside
