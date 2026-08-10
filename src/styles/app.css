@@ -332,7 +332,11 @@ header {
    quiet icon rather than a checkbox that would read as another thing to tick.
    Opacity carries the state — full = shown, dim = mixed (category roll-up), faint
    = hidden — since an emoji can't take a colour. */
-.ruler-toggle {
+/* The two row toggles: 📏 for a fame ruler's visibility, 🇬🇧 for a list's content
+   language. Both read their state as opacity — off is present but receded, so the
+   row doesn't change width when one is switched. */
+.ruler-toggle,
+.english-toggle {
   background: none;
   border: none;
   padding: 0 0.2rem;
@@ -341,10 +345,12 @@ header {
   cursor: pointer;
   opacity: 0.3;
 }
-.ruler-toggle.mixed {
+.ruler-toggle.mixed,
+.english-toggle.mixed {
   opacity: 0.6;
 }
-.ruler-toggle.shown {
+.ruler-toggle.shown,
+.english-toggle.on {
   opacity: 1;
 }
 

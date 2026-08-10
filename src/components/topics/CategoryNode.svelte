@@ -1,5 +1,6 @@
 <script lang="ts">
   import { setIndeterminate } from "../../lib/dom";
+  import { sharedEnglishTopics } from "../../lib/english";
   import { controlledTopics } from "../../lib/rulers";
   import type { CatNode } from "../../lib/tree";
   import { lang } from "../../state/lang.svelte";
@@ -21,6 +22,12 @@
   // Non-empty only when the category declares hideRulersByDefault; then its row
   // carries a tri-state toggle rolling up over exactly these.
   const governed = $derived(controlledTopics(node.path, all, topics.categories));
+
+  // The lists this category's shared English toggle governs — empty unless it
+  // declares sharedEnglishToggle and something below it would actually change.
+  const englishGoverned = $derived(
+    sharedEnglishTopics(node.path, all, topics.categories, lang.current),
+  );
 </script>
 
 <div class="category">
@@ -48,6 +55,27 @@
         > {/if}<span title={name.short !== name.long ? name.long : undefined}>{name.short}</span>
     </label>
   </h3>
+  {#if englishGoverned.length > 0}
+    <button
+      type="button"
+      class="english-toggle"
+      class:on={selection.allForcedEnglish(englishGoverned)}
+      class:mixed={selection.someForcedEnglish(englishGoverned)}
+      aria-pressed={selection.allForcedEnglish(englishGoverned)
+        ? "true"
+        : selection.someForcedEnglish(englishGoverned)
+          ? "mixed"
+          : "false"}
+      aria-label={lang.ui.englishToggleAll(selection.allForcedEnglish(englishGoverned))}
+      title={lang.ui.englishToggleAll(selection.allForcedEnglish(englishGoverned))}
+      onclick={() => {
+        // Same reasoning as the ruler toggle below: a collapsed category shows
+        // none of the rows this changes, so open it to show what happened.
+        selection.toggleCatEnglish(englishGoverned);
+        if (!open) selection.toggleCat(node);
+      }}
+    >🇬🇧</button>
+  {/if}
   {#if governed.length > 0}
     <button
       type="button"

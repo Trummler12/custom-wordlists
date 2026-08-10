@@ -10,6 +10,7 @@
 // A topic with no declaration anywhere on its path has no control at all: its
 // ruler is simply always shown, exactly as before this feature.
 
+import { ancestorPaths } from "./tree";
 import type { CategoryMeta, TopicSummary } from "./types";
 
 /** The node that governs a topic's ruler visibility: a category (by its path) or
@@ -18,15 +19,6 @@ import type { CategoryMeta, TopicSummary } from "./types";
 export type ControlRoot =
   | { kind: "category"; path: string }
   | { kind: "topic"; id: string };
-
-/** A topic's ancestor category paths, deepest first: "a/b/c" → ["a/b/c","a/b","a"].
- *  Deepest first so the nearest declaring category is found before shallower ones. */
-function ancestorPaths(category: string): string[] {
-  const segs = category.split("/").filter(Boolean);
-  const paths: string[] = [];
-  for (let i = segs.length; i > 0; i--) paths.push(segs.slice(0, i).join("/"));
-  return paths;
-}
 
 /** The ruler control governing a topic, or null when nothing on its path declares
  *  `hideRulersByDefault` (no toggle; the ruler is always shown). `hidden` is the

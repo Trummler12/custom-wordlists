@@ -1,6 +1,7 @@
 <script lang="ts">
   import { onMount } from "svelte";
   import { setIndeterminate } from "../../lib/dom";
+  import { canForceEnglish } from "../../lib/english";
   import { langSupport } from "../../lib/languages";
   import { rulerControl } from "../../lib/rulers";
   import type { TopicSummary } from "../../lib/types";
@@ -31,6 +32,11 @@
   // show/hide its inline ruler; absent = no control, the ruler is always shown.
   const rulerOptIn = $derived(solo && rulerControl(topic, topics.categories) !== null);
   const rulerShown = $derived(selection.isRulerVisible(topic));
+
+  // Only where the switch would change something: not in English, and not for a
+  // list whose names in this language are the English ones anyway.
+  const englishOptIn = $derived(canForceEnglish(topic, lang.current));
+  const forcedEnglish = $derived(selection.isForcedEnglish(topic));
 
   const open = $derived(!!selection.expanded[topic.id]);
   const name = $derived(topics.topicName(topic));
@@ -94,6 +100,17 @@
          checkbox it names ambiguous, and the count isn't a name for anything. -->
     {#if sole}
       <NamesModeSelect tid={topic.id} group={sole} label={name.long} />
+    {/if}
+    {#if englishOptIn}
+      <button
+        type="button"
+        class="english-toggle"
+        class:on={forcedEnglish}
+        aria-pressed={forcedEnglish}
+        aria-label={lang.ui.englishToggle(forcedEnglish)}
+        title={lang.ui.englishToggle(forcedEnglish)}
+        onclick={() => selection.toggleEnglish(topic)}>🇬🇧</button
+      >
     {/if}
     {#if rulerOptIn}
       <button
