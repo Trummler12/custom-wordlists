@@ -72,7 +72,7 @@
   <!-- The ratio alone, since it reads the same in every language; the sentence it
        stands for is a hover away. The row needs the width for its controls. -->
   <span class="meta" title={lang.ui.wordsOf(selection.catSel(all), selection.catTotal(all))}>
-    {selection.catSel(all)}/{selection.catTotal(all)}
+    {selection.catSel(all)}/<span class="total">{selection.catTotal(all)}</span>
   </span>
 </div>
 {#if open}

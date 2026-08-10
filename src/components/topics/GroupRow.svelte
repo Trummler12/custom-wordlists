@@ -26,7 +26,9 @@
       class="meta"
       title={lang.ui.wordsOf(selection.groupSelCount(tid, group), selection.groupTotal(tid, group))}
     >
-      {selection.groupSelCount(tid, group)}/{selection.groupTotal(tid, group)}
+      {selection.groupSelCount(tid, group)}/<span class="total"
+        >{selection.groupTotal(tid, group)}</span
+      >
     </span>
   </div>
   <FameDepthSlider {tid} {group} />

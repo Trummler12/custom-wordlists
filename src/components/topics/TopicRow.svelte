@@ -111,7 +111,7 @@
     >
       {#if topics.isLoading(topic)}{lang.ui.loadingShort}{:else}{selection.topicSelCount(
           topic,
-        )}/{selection.topicTotal(topic)}{/if}
+        )}/<span class="total">{selection.topicTotal(topic)}</span>{/if}
     </span>
   </div>
   <!-- The marker's note, outside the <label> above: inside it, a click on the note
