@@ -50,6 +50,9 @@ export interface UIStrings {
   langUnsupported: (language: string) => string;
   /** Second half of that warning — see `langWarning()` for when it applies. */
   langFallback: string;
+  /** Info marker for a topic whose names in the selected language are the English
+   *  ones, on purpose. */
+  langUsesEnglish: (language: string) => string;
   /** Footer: label of the link to the repository. */
   repository: string;
   /** Footer, around the inline guide link: "<helpOut> <guide><helpOutAfter>".

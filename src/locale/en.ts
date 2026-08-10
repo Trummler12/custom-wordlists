@@ -36,6 +36,7 @@ export const en: UIStrings = {
   langUnsupported: (language) =>
     `Not confirmed for ${language} yet — this topic may be incomplete.`,
   langFallback: "English is used where a translation is missing.",
+  langUsesEnglish: (language) => `${language} uses English names for all entries.`,
   repository: "GitHub Repository",
   helpOut: "Want to help with the project? Check out the",
   contributionGuide: "Contribution Guide",
