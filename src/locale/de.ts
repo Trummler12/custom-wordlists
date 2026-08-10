@@ -18,6 +18,12 @@ export const de: UIStrings = {
   fameGroupsDefined: (count) => `Fame-Gruppen definiert: ${count}`,
   noFameGroups:
     "Noch keine Fame-Gruppen definiert — im Contribution Guide im Footer erfährst du, wie du welche vorschlagen kannst!",
+  englishToggle: (forced) =>
+    forced ? "Diese Liste in der gewählten Sprache verwenden" : "Die englischen Einträge dieser Liste verwenden",
+  englishToggleAll: (allForced) =>
+    allForced
+      ? "Diese Listen in der gewählten Sprache verwenden"
+      : "Die englischen Einträge dieser Listen verwenden",
   rulerToggle: (shown) => (shown ? "Fame-Regler dieser Liste ausblenden" : "Fame-Regler dieser Liste einblenden"),
   rulerToggleAll: (allShown) => (allShown ? "Diese Fame-Regler ausblenden" : "Diese Fame-Regler einblenden"),
   output: "Ausgabe",

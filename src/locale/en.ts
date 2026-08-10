@@ -18,6 +18,10 @@ export const en: UIStrings = {
   fameGroupsDefined: (count) => `Fame groups defined: ${count}`,
   noFameGroups:
     "No fame groups defined yet — see the Contribution Guide in the footer to propose some!",
+  englishToggle: (forced) =>
+    forced ? "Use this list in the selected language" : "Use the English entries of this list",
+  englishToggleAll: (allForced) =>
+    allForced ? "Use these lists in the selected language" : "Use the English entries of these lists",
   rulerToggle: (shown) => (shown ? "Hide this list's fame ruler" : "Show this list's fame ruler"),
   rulerToggleAll: (allShown) => (allShown ? "Hide these fame rulers" : "Show these fame rulers"),
   output: "Output",
