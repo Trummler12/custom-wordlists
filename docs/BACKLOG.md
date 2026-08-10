@@ -8,6 +8,22 @@ big enough to discuss belongs in an issue instead.
   parser that turns a marked-up string into a list of parts, and one snippet per
   tag. Nothing needs them today — add a tag the first time a string actually wants
   it, not before.
+- **English entries *in addition* to the selected language.** The per-topic English
+  toggle replaces a list's entries; a third state would add them, for a game where
+  either name should count. What makes it worth building is the tooltip, which
+  would rotate with the state it describes rather than label it — "Toggle to use
+  English entries instead. / Toggle again to use English AND German entries", then
+  "Now uses English entries instead. / Toggle to use English AND German entries. /
+  Toggle again to only use German entries", then the third. Needs an answer first
+  for what the counts mean and how a name that is identical in both languages is
+  de-duplicated — neither of which the plain toggle has to face.
+- **An interface language separate from the content language.** "Keep the interface
+  in German while the lists are English" is the global half of the per-topic English
+  toggle, and belongs in the settings popover beside it. Cheap once that exists:
+  everything that renders words already asks `contentLang`. It also re-earns the
+  `${language}` placeholder in `langUsesEnglish`, which a locale can drop only while
+  it is guaranteed to be describing its own language — and the same holds for
+  `langUnsupported` and `languageLabel`.
 - **One shared *value* ruler for a whole category.** `hideRulersByDefault` already
   groups a category's topics under its control root (`controlledTopics` in
   `lib/rulers`) and toggles their rulers' *visibility* together. The next step is a
