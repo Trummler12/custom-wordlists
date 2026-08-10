@@ -18,6 +18,9 @@ export const en: UIStrings = {
   fameGroupsDefined: (count) => `Fame groups defined: ${count}`,
   noFameGroups:
     "No fame groups defined yet — see the Contribution Guide in the footer to propose some!",
+  settings: "Settings",
+  showEnglishToggle: "Show the option to use English entries",
+  showEnglishToggleEn: "These toggles only appear for languages other than English.",
   englishToggle: (forced) =>
     forced ? "Use this list in the selected language" : "Use the English entries of this list",
   englishToggleAll: (allForced) =>
