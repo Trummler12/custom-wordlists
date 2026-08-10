@@ -36,7 +36,7 @@ export const de: UIStrings = {
   langUnsupported: (language) =>
     `Für ${language} noch nicht bestätigt — dieses Thema ist evtl. unvollständig.`,
   langFallback: "Fehlende Übersetzungen erscheinen auf Englisch.",
-  langUsesEnglish: (language) => `${language} verwendet für alle Einträge die englischen Namen.`,
+  langUsesEnglish: () => "Auch im Deutschen werden offiziell die englischen Namen verwendet.",
   repository: "GitHub-Repository",
   helpOut: "Du möchtest mithelfen? Wirf einen Blick in den",
   // Link label stays English — the guide itself is only available in English.
