@@ -239,8 +239,9 @@ header {
   color: var(--muted-2);
   font-size: 0.85rem;
 }
-/* Marker next to a topic that doesn't fully support the selected language. */
-.lang-warning {
+/* Marker next to a topic with something to say about the selected language: ⚠️ for
+   one nobody has confirmed, ℹ️ for one whose names are English on purpose. */
+.lang-marker {
   margin-left: 0.3rem;
   background: none;
   border: none;
