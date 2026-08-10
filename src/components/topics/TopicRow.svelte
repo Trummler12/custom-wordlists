@@ -45,14 +45,18 @@
   // than in the marker, which needs the same text flattened for its aria-label.
   const langTipId = $derived(`lang-${topic.id}`);
   const langNote = $derived.by(() => {
-    const name = lang.name(lang.current);
-    switch (langSupport(topic, lang.current)) {
+    // The language this list is actually rendered in, which a forced-English topic
+    // has of its own — warning about German names it is no longer showing would be
+    // a warning about nothing. The note itself stays in the interface language.
+    const code = selection.contentLang(topic.id);
+    const name = lang.name(code);
+    switch (langSupport(topic, code)) {
       case "declared":
         return null;
       case "english":
         return { icon: "ℹ️", text: lang.ui.langUsesEnglish(name) };
       case "undeclared":
-        return { icon: "⚠️", text: langWarning(lang.ui, lang.current, name) };
+        return { icon: "⚠️", text: langWarning(lang.ui, code, name) };
     }
   });
 
