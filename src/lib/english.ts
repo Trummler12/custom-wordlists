@@ -5,11 +5,12 @@ import { langSupport } from "./languages";
 import { ancestorPaths } from "./tree";
 import type { CategoryMeta, TopicSummary } from "./types";
 
-/** Whether switching this topic to English would change anything in `code`.
- *  It wouldn't with English already selected, nor for a list whose names in this
- *  language are the English ones — which is exactly what `usesEnglishFor` says. */
+/** Whether this topic may be switched to English while `code` is selected. Two
+ *  cases can't: English itself, and a list that already says its names in this
+ *  language are the English ones. A list that hasn't declared its languages yet
+ *  can — being undeclared says nothing about whether it has its own names. */
 export function canForceEnglish(topic: TopicSummary, code: string): boolean {
-  return code !== "en" && langSupport(topic, code) === "declared";
+  return code !== "en" && langSupport(topic, code) !== "english";
 }
 
 /** The category whose row carries the shared toggle for this topic, or null when
