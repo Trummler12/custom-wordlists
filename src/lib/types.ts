@@ -41,6 +41,9 @@ export interface CategoryMeta {
    *  *presence* (either value) makes the category an independent ruler-visibility
    *  boundary whose toggle governs its subtree down to the next declaring node. */
   hideRulersByDefault?: boolean;
+  /** Whether this category's row carries one toggle switching every list below it
+   *  to English at once. See lib/english. */
+  sharedEnglishToggle?: boolean;
 }
 
 /** The generated manifest the frontend loads first. */

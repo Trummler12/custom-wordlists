@@ -1,5 +1,6 @@
 {
   "title": "Pokémon",
   "icon": "⚡",
-  "hideRulersByDefault": true
+  "hideRulersByDefault": true,
+  "sharedEnglishToggle": true
 }

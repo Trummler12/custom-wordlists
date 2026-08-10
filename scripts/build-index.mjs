@@ -93,6 +93,7 @@ async function readCategoryMeta(path) {
   // ruler-visibility boundary (shown by default, decoupled from ancestors), so
   // its presence must survive into the manifest.
   if (typeof data.hideRulersByDefault === "boolean") meta.hideRulersByDefault = data.hideRulersByDefault;
+  if (data.sharedEnglishToggle) meta.sharedEnglishToggle = true;
   return meta;
 }
 
