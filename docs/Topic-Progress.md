@@ -31,8 +31,12 @@ A box is ticked once the list is complete in English; other languages trail behi
 ## Gaming
 
 - [ ] Apex Legends
-- [x] League of Legends
 - [ ] Video Game Characters
+
+### League of Legends
+
+- [x] Champions
+- [ ] Legacy Champion Names (Checkbox)
 
 ### Pokémon
 
@@ -40,7 +44,10 @@ _Entries are 'complete', but Items carries lots of functional duplicates and all
 
 - [ ] Items
 - [ ] Moves
+- [ ] Characters
+- [ ] Locations
 - [ ] Pokémon (generations 1–9)
+- [ ] Pokémon Forms
 
 ## Science
 
