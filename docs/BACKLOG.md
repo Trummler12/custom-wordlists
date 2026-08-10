@@ -20,10 +20,19 @@ big enough to discuss belongs in an issue instead.
 - **An interface language separate from the content language.** "Keep the interface
   in German while the lists are English" is the global half of the per-topic English
   toggle, and belongs in the settings popover beside it. Cheap once that exists:
-  everything that renders words already asks `contentLang`. It also re-earns the
-  `${language}` placeholder in `langUsesEnglish`, which a locale can drop only while
-  it is guaranteed to be describing its own language — and the same holds for
-  `langUnsupported` and `languageLabel`.
+  everything that renders words already asks `contentLang`. Its dropdown needs an
+  explicit first option — *auto*, not a language — meaning "follow the language
+  selector", which is today's behaviour and has to stay reachable once the two can
+  diverge. It also re-earns the `${language}` placeholder in `langUsesEnglish`,
+  which a locale can drop only while it is guaranteed to be describing its own
+  language — and the same holds for `langUnsupported` and `languageLabel`.
+- **Force a list to a language other than English.** The 🇬🇧 toggle hard-codes the
+  one language every list has. But a German player might want a list in French, and
+  `contentLang` already returns a per-topic code — only the control assumes English.
+  Turning the toggle into a picker means deciding which languages to offer per
+  topic (`languages` knows), and what the row's control becomes when the answer
+  isn't a single flag. Worth doing when a list exists that anyone would want in a
+  third language.
 - **One shared *value* ruler for a whole category.** `hideRulersByDefault` already
   groups a category's topics under its control root (`controlledTopics` in
   `lib/rulers`) and toggles their rulers' *visibility* together. The next step is a
