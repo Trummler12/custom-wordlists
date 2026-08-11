@@ -1,7 +1,10 @@
 # Topic Progress
 
-Progress on every topic added or _planned_ so far.
-A box is ticked once the list is complete in English; other languages trail behind.
+Progress on every topic added or _planned_ so far, in three states:
+
+- [ ] the list is still incomplete
+- [x] the list is complete (at least English)
+- [x] **the list is complete, with supported languages & fame tiers**
 
 ## Animation
 
@@ -40,13 +43,11 @@ A box is ticked once the list is complete in English; other languages trail behi
 
 ### Pokémon
 
-_Entries are 'complete', but Items carries lots of functional duplicates and all three lists lack fame groups_
-
-- [ ] Items
-- [ ] Moves
+- [x] Items
+- [x] Moves
 - [ ] Characters
 - [ ] Locations
-- [ ] Pokémon (generations 1–9)
+- [x] **Pokémon (generations 1–9)**
 - [ ] Pokémon Forms
 
 ## Science
