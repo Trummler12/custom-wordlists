@@ -18,6 +18,7 @@ import { depthFromKey, depthFromPointer, tierSizes } from "../lib/fame";
 import { rulerHiddenByDefault } from "../lib/rulers";
 import { catDepth, type CatNode } from "../lib/tree";
 import type { Group, NamesMode, TopicSummary, WordEntry } from "../lib/types";
+import { FALLBACK_LANG } from "../locale";
 import { lang } from "./lang.svelte";
 import { topics } from "./topics.svelte";
 
@@ -35,6 +36,8 @@ class SelectionState {
   /** Explicit ruler-visibility flips, by topic id. Absent = the data-driven
    *  default (see lib/rulers); only opted-in topics ever appear here. */
   rulerVisible = $state<Record<string, boolean>>({});
+  /** Topics switched to English regardless of the interface language, by id. */
+  forceEnglish = $state<Record<string, boolean>>({});
 
   key(tid: string, gid: string): string {
     return `${tid}:${gid}`;
@@ -79,10 +82,10 @@ class SelectionState {
   }
 
   groupTotal(tid: string, g: Group): number {
-    return renderCount(groupEntries(g), this.modeOf(this.key(tid, g.id)), lang.current);
+    return renderCount(groupEntries(g), this.modeOf(this.key(tid, g.id)), this.contentLang(tid));
   }
   groupSelCount(tid: string, g: Group): number {
-    return renderCount(this.entriesOf(tid, g), this.modeOf(this.key(tid, g.id)), lang.current);
+    return renderCount(this.entriesOf(tid, g), this.modeOf(this.key(tid, g.id)), this.contentLang(tid));
   }
 
   groupFull(tid: string, g: Group): boolean {
@@ -200,6 +203,35 @@ class SelectionState {
   toggleCatRulers(ts: TopicSummary[]): void {
     const on = !this.allRulersShown(ts);
     for (const t of ts) this.rulerVisible[t.id] = on;
+  }
+
+  // --- Content language ------------------------------------------------------
+  // The interface language is one thing; the language a list's names come out in
+  // is another. They agree unless a topic is switched to English — for a list
+  // whose German names nobody uses, say. Everything that renders words asks
+  // `contentLang` rather than reading `lang.current`, so counts, de-duplication,
+  // the output and the ⚠️/ℹ️ marker all move together and none of them has to
+  // know a topic can differ.
+
+  contentLang(tid: string): string {
+    return this.forceEnglish[tid] ? FALLBACK_LANG : lang.current;
+  }
+  isForcedEnglish(t: TopicSummary): boolean {
+    return !!this.forceEnglish[t.id];
+  }
+  toggleEnglish(t: TopicSummary): void {
+    this.forceEnglish[t.id] = !this.forceEnglish[t.id];
+  }
+
+  allForcedEnglish(ts: TopicSummary[]): boolean {
+    return ts.length > 0 && ts.every((t) => this.isForcedEnglish(t));
+  }
+  someForcedEnglish(ts: TopicSummary[]): boolean {
+    return !this.allForcedEnglish(ts) && ts.some((t) => this.isForcedEnglish(t));
+  }
+  toggleCatEnglish(ts: TopicSummary[]): void {
+    const on = !this.allForcedEnglish(ts);
+    for (const t of ts) this.forceEnglish[t.id] = on;
   }
 }
 

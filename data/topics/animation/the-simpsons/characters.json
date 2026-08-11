@@ -1,7 +1,6 @@
 {
   "id": "the-simpsons",
-  "title": "The Simpsons",
-  "titles": { "en": "The Simpsons", "de": "Die Simpsons" },
+  "title": { "en": "The Simpsons", "de": "Die Simpsons" },
   "icon": "🍩",
   "description": "The Simpsons characters (language-neutral — these names are the same in the German dub). Fame tiers by recognizability (tier 0 = most iconic).",
   "groups": [

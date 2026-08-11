@@ -6,8 +6,7 @@
   "groups": [
     {
       "id": "classics",
-      "title": "Classics (Mouse & Duck)",
-      "titles": {"en":"Classics (Mouse & Duck)","de":"Klassiker (Maus & Ente)"},
+      "title": {"en":"Classics (Mouse & Duck)","de":"Klassiker (Maus & Ente)"},
       "tiers": [
         [
           {"en":"Mickey Mouse","de":"Micky Maus"},
@@ -34,8 +33,7 @@
     },
     {
       "id": "animated-films",
-      "title": "Animated films",
-      "titles": {"en":"Animated films","de":"Animationsfilme"},
+      "title": {"en":"Animated films","de":"Animationsfilme"},
       "tiers": [
         [
           "Simba",

@@ -1,17 +1,19 @@
 <script lang="ts">
   import { onMount } from "svelte";
   import { setIndeterminate } from "../../lib/dom";
+  import { canForceEnglish } from "../../lib/english";
   import { langSupport } from "../../lib/languages";
   import { rulerControl } from "../../lib/rulers";
   import type { TopicSummary } from "../../lib/types";
   import { langWarning } from "../../locale";
   import { lang } from "../../state/lang.svelte";
   import { selection } from "../../state/selection.svelte";
+  import { settings } from "../../state/settings.svelte";
   import { topics } from "../../state/topics.svelte";
+  import TipMarker from "../common/TipMarker.svelte";
   import TipNote from "../common/TipNote.svelte";
   import FameDepthSlider from "./FameDepthSlider.svelte";
   import GroupRow from "./GroupRow.svelte";
-  import LanguageMarker from "./LanguageMarker.svelte";
   import NamesModeSelect from "./NamesModeSelect.svelte";
 
   let { topic }: { topic: TopicSummary } = $props();
@@ -32,20 +34,31 @@
   const rulerOptIn = $derived(solo && rulerControl(topic, topics.categories) !== null);
   const rulerShown = $derived(selection.isRulerVisible(topic));
 
+  // Behind a preference, and only where the switch would change something: not in
+  // English, and not for a list whose names in this language are the English ones
+  // anyway. Nearly every row qualifies, which is why it is off by default.
+  const englishOptIn = $derived(settings.showEnglishToggle && canForceEnglish(topic, lang.current));
+  const forcedEnglish = $derived(selection.isForcedEnglish(topic));
+
   const open = $derived(!!selection.expanded[topic.id]);
+  const name = $derived(topics.topicName(topic));
 
   // Null for a language the list carries: nothing to say. Composed once here rather
   // than in the marker, which needs the same text flattened for its aria-label.
   const langTipId = $derived(`lang-${topic.id}`);
   const langNote = $derived.by(() => {
-    const name = lang.name(lang.current);
-    switch (langSupport(topic, lang.current)) {
+    // The language this list is actually rendered in, which a forced-English topic
+    // has of its own — warning about German names it is no longer showing would be
+    // a warning about nothing. The note itself stays in the interface language.
+    const code = selection.contentLang(topic.id);
+    const name = lang.name(code);
+    switch (langSupport(topic, code)) {
       case "declared":
         return null;
       case "english":
         return { icon: "ℹ️", text: lang.ui.langUsesEnglish(name) };
       case "undeclared":
-        return { icon: "⚠️", text: langWarning(lang.ui, lang.current, name) };
+        return { icon: "⚠️", text: langWarning(lang.ui, code, name) };
     }
   });
 
@@ -68,7 +81,7 @@
         class="expander"
         aria-expanded={open}
         aria-controls={`groups-${topic.id}`}
-        aria-label={lang.ui.toggle(open, topics.topicTitle(topic))}
+        aria-label={lang.ui.toggle(open, name.long)}
         onclick={() => selection.toggleExpand(topic)}
       >
         {open ? "▾" : "▸"}
@@ -82,15 +95,28 @@
         onchange={() => selection.toggleTopic(topic)}
       />
       <span class="icon" aria-hidden="true">{topic.icon ?? "•"}</span>
-      <span class="title">{topics.topicTitle(topic)}</span>
+      <span class="title" title={name.short !== name.long ? name.long : undefined}>
+        {name.short}
+      </span>
       {#if langNote}
-        <LanguageMarker tipId={langTipId} icon={langNote.icon} text={langNote.text} />
+        <TipMarker tipId={langTipId} icon={langNote.icon} text={langNote.text} />
       {/if}
     </label>
     <!-- Both outside the <label>: a second form control inside it would leave the
          checkbox it names ambiguous, and the count isn't a name for anything. -->
     {#if sole}
-      <NamesModeSelect tid={topic.id} group={sole} label={topics.topicTitle(topic)} />
+      <NamesModeSelect tid={topic.id} group={sole} label={name.long} />
+    {/if}
+    {#if englishOptIn}
+      <button
+        type="button"
+        class="english-toggle"
+        class:on={forcedEnglish}
+        aria-pressed={forcedEnglish}
+        aria-label={lang.ui.englishToggle(forcedEnglish)}
+        title={lang.ui.englishToggle(forcedEnglish)}
+        onclick={() => selection.toggleEnglish(topic)}>🇬🇧</button
+      >
     {/if}
     {#if rulerOptIn}
       <button
@@ -103,11 +129,15 @@
         onclick={() => selection.toggleRuler(topic)}
       >📏</button>
     {/if}
-    <span class="meta">
-      {#if topics.isLoading(topic)}{lang.ui.loadingShort}{:else}{lang.ui.wordsOf(
-          selection.topicSelCount(topic),
-          selection.topicTotal(topic),
-        )}{/if}
+    <!-- The ratio alone, since it reads the same in every language; the sentence it
+         stands for is a hover away. The row needs the width for its controls. -->
+    <span
+      class="meta"
+      title={lang.ui.wordsOf(selection.topicSelCount(topic), selection.topicTotal(topic))}
+    >
+      {#if topics.isLoading(topic)}{lang.ui.loadingShort}{:else}{selection.topicSelCount(
+          topic,
+        )}/<span class="total">{selection.topicTotal(topic)}</span>{/if}
     </span>
   </div>
   <!-- The marker's note, outside the <label> above: inside it, a click on the note

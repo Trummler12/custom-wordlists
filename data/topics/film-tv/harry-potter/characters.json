@@ -6,8 +6,7 @@
   "groups": [
     {
       "id": "characters",
-      "title": "Characters",
-      "titles": {"en":"Characters","de":"Charaktere"},
+      "title": {"en":"Characters","de":"Charaktere"},
       "tiers": [
         [
           "Harry Potter",

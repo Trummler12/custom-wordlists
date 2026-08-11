@@ -28,6 +28,16 @@ export interface UIStrings {
   fameGroupsDefined: (count: number) => string;
   /** Ruler tooltip for a list that hasn't — an invitation to rank it. */
   noFameGroups: string;
+  /** Settings button (aria-label) and the menu's own label. */
+  settings: string;
+  /** Label of the preference that reveals the per-list English toggles. */
+  showEnglishToggle: string;
+  /** Why that preference does nothing while the interface is English. */
+  showEnglishToggleEn: string;
+  /** Toggle a single list to English names; label reflects the current state. */
+  englishToggle: (forced: boolean) => string;
+  /** Toggle from a category row every list it governs; label on current state. */
+  englishToggleAll: (allForced: boolean) => string;
   /** Toggle a single list's fame ruler; label reflects the current state. */
   rulerToggle: (shown: boolean) => string;
   /** Toggle from a category row all the rulers it governs; label on current state. */

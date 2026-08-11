@@ -82,7 +82,6 @@ function serializeGroup(g) {
 }
 function serializeTopic(t) {
   const kv = [`  "id": ${JSON.stringify(t.id)}`, `  "title": ${JSON.stringify(t.title)}`];
-  if (t.titles) kv.push(`  "titles": ${JSON.stringify(t.titles)}`);
   if (t.icon) kv.push(`  "icon": ${JSON.stringify(t.icon)}`);
   if (t.description) kv.push(`  "description": ${JSON.stringify(t.description)}`);
   kv.push(`  "languages": ${JSON.stringify(t.languages)}`);

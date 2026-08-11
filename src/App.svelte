@@ -2,6 +2,7 @@
   import { onMount } from "svelte";
   import { lang } from "./state/lang.svelte";
   import { overlays } from "./state/overlays.svelte";
+  import { settings } from "./state/settings.svelte";
   import { topics } from "./state/topics.svelte";
   import PageHeader from "./components/layout/PageHeader.svelte";
   import SiteFooter from "./components/layout/SiteFooter.svelte";
@@ -9,6 +10,7 @@
   import TopicTree from "./components/topics/TopicTree.svelte";
 
   onMount(async () => {
+    settings.init();
     await topics.init();
     // Only once the manifest is there, as before: a failed load keeps the error
     // message in English rather than resolving a language nobody can act on.

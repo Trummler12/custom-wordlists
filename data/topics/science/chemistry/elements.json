@@ -1,15 +1,13 @@
 {
   "id": "elements",
-  "title": "Chemical Elements",
-  "titles": {"en":"Chemical Elements","de":"Chemische Elemente"},
+  "title": {"short":{"en":"Elements","de":"Elemente"},"long":{"en":"Chemical Elements","de":"Chemische Elemente"}},
   "icon": "⚗️",
   "description": "The chemical elements (English names). Fame tiers by everyday recognizability (tier 0 = most familiar); the final tier is the obscure lanthanides/actinides and superheavy synthetics.",
   "languages": ["de","en"],
   "groups": [
     {
       "id": "elements",
-      "title": "Elements",
-      "titles": {"en":"Elements","de":"Elemente"},
+      "title": {"en":"Elements","de":"Elemente"},
       "tiers": [
         [
           {"en":"Hydrogen","de":"Wasserstoff"},

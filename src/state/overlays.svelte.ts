@@ -12,6 +12,9 @@ class OverlayState {
   /** Which language menu is open, by instance id, or null. Two pickers share the
    *  language but each has its own trigger. */
   langMenu = $state<string | null>(null);
+  /** Which settings menu is open, by instance id, or null — same two-instance
+   *  arrangement as the language picker it sits beside. */
+  settingsMenu = $state<string | null>(null);
   /** The open tooltip's id, or null — at most one is open at a time. Ids double
    *  as the notes' DOM ids, so triggers can point `aria-controls` at them. */
   tip = $state<string | null>(null);
@@ -31,6 +34,12 @@ class OverlayState {
   chooseLanguage = (l: string): void => {
     this.langMenu = null;
     lang.set(l);
+  };
+
+  // --- Settings menu ---------------------------------------------------------
+
+  toggleSettingsMenu = (id: string): void => {
+    this.settingsMenu = this.settingsMenu === id ? null : id;
   };
 
   // --- Tooltips --------------------------------------------------------------
@@ -65,6 +74,7 @@ class OverlayState {
     if (e.pointerType) this.#lastPointerType = e.pointerType;
     const target = e.target as Element | null;
     if (this.langMenu && !target?.closest?.(".lang-picker")) this.langMenu = null;
+    if (this.settingsMenu && !target?.closest?.(".settings-picker")) this.settingsMenu = null;
     // Only for pointers without hover — with a mouse, leaving the trigger closes it.
     if (this.tip && this.#lastPointerType !== "mouse" && !target?.closest?.(".tip-trigger")) {
       this.closeTip();
@@ -73,6 +83,7 @@ class OverlayState {
   onKeyDown = (e: KeyboardEvent): void => {
     if (e.key === "Escape") {
       this.langMenu = null;
+      this.settingsMenu = null;
       this.closeTip();
     }
   };

@@ -44,6 +44,21 @@ export function renderCount(entries: WordEntry[], mode: NamesMode, lang: string)
   return seen.size;
 }
 
+/** A name resolved for display: what a row shows, and what its hover reveals.
+ *  `long` repeats `short` when the name has only one form. */
+export interface DisplayName {
+  short: string;
+  long: string;
+}
+
+/** Resolve a title. Titles are `WordEntry` like the entries themselves, so a name
+ *  that translates, or that has a crowded long form and a short one to put on a
+ *  row, needs no shape of its own. */
+export function displayName(e: WordEntry, lang: string): DisplayName {
+  const w = resolveWord(e, lang);
+  return typeof w === "string" ? { short: w, long: w } : w;
+}
+
 /** Whether any entry in the group has a short/long form — the condition for
  *  showing that group's names dropdown. */
 export function groupHasNames(g: Group, lang: string): boolean {

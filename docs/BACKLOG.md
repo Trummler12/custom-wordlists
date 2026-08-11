@@ -3,6 +3,55 @@
 Small ideas parked for later; pick up when a related area is touched. Anything
 big enough to discuss belongs in an issue instead.
 
+- **Record what a list deliberately leaves out.** Some sources carry entries nobody
+  could draw. `data/topics/gaming/pokemon/items.json` is the worst case: **300 of
+  its 1330 entries are `★And390`-style decoration data** (22.6%), plus
+  `Datenkarte01`…`27`, `Kupon 1`–`3`, `Briefpost 1`–`3`, `R1/R2/R4/R6-Schlüssel`
+  and eighteen `X-… 2`–`6` variants of items whose base form is already in the list
+  — roughly 355 entries, over a quarter of the topic. Deleting them is easy; the
+  problem is that the next re-import silently brings them back, and that a reader
+  can't tell a curated list from a careless one.
+
+  A new group-level field, beside `words` / `tiers`, holding what was taken out and
+  why. Sketch:
+
+  ```json
+  "omitted": [
+    { "match": "★*", "reason": "unnamed decoration data", "count": 300 },
+    { "match": "Datenkarte##", "reason": "27 numbered copies; the base name is listed" },
+    "Kupon 2",
+    "Kupon 3"
+  ]
+  ```
+
+  Design notes, in the order they mattered while thinking it through:
+
+  - **Patterns, not just names.** 300 literal `★…` strings would be worse than the
+    problem. A plain string means one literal entry; an object means a rule. Whether
+    the rule language is a glob (`★*`, `Datenkarte##`) or an anchored regex is the
+    one thing to decide first — globs read better in JSON, since a regex needs
+    `\\d` and full-match anchors; regexes handle the `X-… 2–6` family in one line.
+  - **Enforce it in `validate-data`, not at load.** The obvious reading of "fallback
+    filter" is to filter on load, but that runs a rule set over 1330 entries every
+    time the topic opens, forever, to protect against a mistake made in a codemod.
+    Better: `validate` errors when any entry matches an omission. Then a re-import
+    that resurrects `★And390` fails CI instead of quietly shipping, the invariant is
+    checked once, and the frontend stays as it is.
+  - **The tooltip can't name what a pattern removed** — that's the price of not
+    storing 300 strings. So its lines are of two kinds: a literal shows its name, a
+    rule shows its reason and its count ("300 entries — unnamed decoration data"),
+    which is what a reader actually wants at that size anyway. Needs a scrollable
+    variant of `.tip-note`, which is currently a small box sized to a sentence.
+  - **No manifest change.** The tooltip renders from the loaded topic file, like the
+    names dropdown, so `build-index` and `TopicSummary` stay out of it.
+  - **Name it `omitted`, not `excluded`.** The output counter already says
+    "excluded" for words over skribbl's 32-character limit — a different thing that
+    happens to the same list, and two of them under one word would be confusing in
+    both the code and the UI.
+  - **Open:** whether the removed names are kept anywhere in full. `data-raw/` holds
+    the source dumps already, so the honest answer may be that the raw file *is* the
+    complete record and the topic file only needs the rules — with the tooltip
+    pointing at the source rather than pretending to be exhaustive.
 - **More inline markup in locale strings.** Once `src/locale/html/` exists (the
   `{br}` snippet), `{i}`…`{/i}` and `{b}`…`{/b}` are the obvious companions: a
   parser that turns a marked-up string into a list of parts, and one snippet per
@@ -20,10 +69,19 @@ big enough to discuss belongs in an issue instead.
 - **An interface language separate from the content language.** "Keep the interface
   in German while the lists are English" is the global half of the per-topic English
   toggle, and belongs in the settings popover beside it. Cheap once that exists:
-  everything that renders words already asks `contentLang`. It also re-earns the
-  `${language}` placeholder in `langUsesEnglish`, which a locale can drop only while
-  it is guaranteed to be describing its own language — and the same holds for
-  `langUnsupported` and `languageLabel`.
+  everything that renders words already asks `contentLang`. Its dropdown needs an
+  explicit first option — *auto*, not a language — meaning "follow the language
+  selector", which is today's behaviour and has to stay reachable once the two can
+  diverge. It also re-earns the `${language}` placeholder in `langUsesEnglish`,
+  which a locale can drop only while it is guaranteed to be describing its own
+  language — and the same holds for `langUnsupported` and `languageLabel`.
+- **Force a list to a language other than English.** The 🇬🇧 toggle hard-codes the
+  one language every list has. But a German player might want a list in French, and
+  `contentLang` already returns a per-topic code — only the control assumes English.
+  Turning the toggle into a picker means deciding which languages to offer per
+  topic (`languages` knows), and what the row's control becomes when the answer
+  isn't a single flag. Worth doing when a list exists that anyone would want in a
+  third language.
 - **One shared *value* ruler for a whole category.** `hideRulersByDefault` already
   groups a category's topics under its control root (`controlledTopics` in
   `lib/rulers`) and toggles their rulers' *visibility* together. The next step is a

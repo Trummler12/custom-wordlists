@@ -31,7 +31,7 @@
     aria-valuemax={pos.length - 1}
     aria-valuenow={depth}
     aria-valuetext={lang.ui.tiersValueText(depth, pos.length - 1)}
-    aria-label={lang.ui.fameDepthLabel(topics.groupTitle(group))}
+    aria-label={lang.ui.fameDepthLabel(topics.groupName(group).long)}
     aria-describedby={ranked ? undefined : tipId}
     title={ranked ? lang.ui.fameGroupsDefined(fame) : undefined}
     onpointerdown={(e) => {

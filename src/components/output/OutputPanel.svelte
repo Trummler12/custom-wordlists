@@ -2,6 +2,7 @@
   import { lang } from "../../state/lang.svelte";
   import { output } from "../../state/output.svelte";
   import LanguagePicker from "../layout/LanguagePicker.svelte";
+  import SettingsMenu from "../layout/SettingsMenu.svelte";
   import OutputCounter from "./OutputCounter.svelte";
   import WordChips from "./WordChips.svelte";
 </script>
@@ -10,6 +11,7 @@
   <div class="output-head">
     <h2>{lang.ui.output}</h2>
     <div class="head-actions">
+      <SettingsMenu id="output" />
       <LanguagePicker id="output" />
       <button type="button" onclick={output.copy} disabled={output.included.length === 0}>
         {output.copied ? lang.ui.copied : lang.ui.copy}

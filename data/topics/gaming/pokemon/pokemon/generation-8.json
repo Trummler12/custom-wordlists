@@ -1,6 +1,6 @@
 {
   "id": "generation-8",
-  "title": "Generation VIII",
+  "title": {"short":"Gen VIII","long":"Generation VIII"},
   "icon": "🔴",
   "description": "Generation VIII Pokémon (English names, National Dex order).",
   "languages": ["de","en","es","fr","it","ja","ja-Latn","ko","zh-Hans","zh-Hant"],

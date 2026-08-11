@@ -6,7 +6,7 @@
 // stem is free) and is marked `foldered`, since owning a folder is how a topic
 // says it expects to be split up later. Folders above a topic form a category path
 // (e.g. "gaming" or "gaming/pokemon"); a `_category.json` carries optional
-// display metadata (title / titles / icon) for that category node.
+// display metadata (title / icon) for that category node.
 // Generated file; never hand-edited. See docs/archive/PLANNING.md §4.1.
 import { readFile, writeFile, readdir } from "node:fs/promises";
 import { join, dirname, basename } from "node:path";
@@ -88,12 +88,12 @@ async function readCategoryMeta(path) {
   }
   const meta = {};
   if (data.title) meta.title = data.title;
-  if (data.titles) meta.titles = data.titles;
   if (data.icon) meta.icon = data.icon;
   // Emit either boolean, not just a truthy one: a `false` declaration is a real
   // ruler-visibility boundary (shown by default, decoupled from ancestors), so
   // its presence must survive into the manifest.
   if (typeof data.hideRulersByDefault === "boolean") meta.hideRulersByDefault = data.hideRulersByDefault;
+  if (data.sharedEnglishToggle) meta.sharedEnglishToggle = true;
   return meta;
 }
 
@@ -115,16 +115,11 @@ async function buildIndex() {
       const msg = err instanceof Error ? err.message : String(err);
       throw new Error(`data/topics/${path}: could not read/parse — ${msg}`);
     }
-    // Per-language titles, emitted only when the name genuinely translates (a
-    // title identical across languages, e.g. "South Park", stays a single title).
-    const titles = data.titles ?? {};
-    const titlesDiffer = new Set(Object.values(titles)).size > 1;
     topics.push({
       id,
       category, // "" = uncategorized
       path,
       title: data.title,
-      ...(titlesDiffer ? { titles } : {}),
       icon: data.icon ?? null,
       ...(foldered ? { foldered: true } : {}),
       // Either boolean is meaningful — a `false` marks a boundary too (see readCategoryMeta).

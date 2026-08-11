@@ -1,6 +1,6 @@
 {
   "id": "generation-5",
-  "title": "Generation V",
+  "title": {"short":"Gen V","long":"Generation V"},
   "icon": "🔴",
   "description": "Generation V Pokémon (English names, National Dex order).",
   "languages": ["de","en","es","fr","it","ja","ja-Latn","ko","zh-Hans","zh-Hant"],

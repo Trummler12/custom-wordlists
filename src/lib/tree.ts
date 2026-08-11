@@ -40,6 +40,16 @@ export function buildTree(topics: TopicSummary[]): CatNode {
   return root;
 }
 
+/** A category path's ancestors, deepest first: "a/b/c" → ["a/b/c","a/b","a"]. In
+ *  that order because the features that walk it want the nearest declaring
+ *  ancestor, not the outermost. */
+export function ancestorPaths(category: string): string[] {
+  const segs = category.split("/").filter(Boolean);
+  const paths: string[] = [];
+  for (let i = segs.length; i > 0; i--) paths.push(segs.slice(0, i).join("/"));
+  return paths;
+}
+
 /** Depth of a node below the root: top-level categories are 0. */
 export const catDepth = (node: CatNode): number => node.path.split("/").length - 1;
 
