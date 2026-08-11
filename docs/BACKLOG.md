@@ -3,6 +3,25 @@
 Small ideas parked for later; pick up when a related area is touched. Anything
 big enough to discuss belongs in an issue instead.
 
+- **Somewhere to record a correction to imported data.** Upstream is sometimes
+  simply wrong, and the fix has to survive the next import. It already happened
+  once: PokéAPI returns four Pokémon with mixed or swapped Han scripts —
+  Porygon-Z and Flamigo carry a traditional character inside their simplified
+  name, Iron Boulder and Iron Crown have theirs the wrong way round — and the
+  repair lives in a `CHINESE_FIXES` constant inside
+  `scripts/enrich-pokemon-langs.mjs`. That is a data decision hiding in a script,
+  where nobody curating the list would think to look for it.
+
+  The catch that makes this different from `omitted`: **a correction is an
+  instruction to the importer, not to the app.** Omissions are applied at load,
+  every time, because they describe how a list should be *shown*. A correction
+  belongs in the file itself — the entry should simply be right — and the field
+  exists only so the next re-import doesn't undo it. So it wants a home the
+  codemods read and the frontend ignores, which may well be beside `sources`
+  rather than inside a group.
+
+  (Not motivated by `{"en":"Carbos","de":"Carbon"}` — that one is correct, Carbos
+  being the English name of the Speed vitamin.)
 - **Record what a list deliberately leaves out.** Some sources carry entries nobody
   could draw. `data/topics/gaming/pokemon/items.json` is the worst case: **300 of
   its 1330 entries are `★And390`-style decoration data** (22.6%), plus
