@@ -69,10 +69,12 @@ export function isOmitted(e: WordEntry, rules: Omission[]): boolean {
   return findOmission(e, rules) !== undefined;
 }
 
-/** The rules in force: every one the reader hasn't switched off. */
+/** The rules in force: every one the reader hasn't switched off. A locked rule
+ *  stays on regardless — the panel disables its checkbox, and a stored choice from
+ *  before it was locked must not outlive that. */
 export function activeRules(g: Group, included: readonly string[]): Omission[] {
   const on = new Set(included);
-  return (g.omitted ?? []).filter((r) => !on.has(r.id));
+  return (g.omitted ?? []).filter((r) => r.locked || !on.has(r.id));
 }
 
 // Keyed on the group, then on which optional rules are on — both stable for long

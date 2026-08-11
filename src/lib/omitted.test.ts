@@ -135,6 +135,16 @@ describe("activeRules", () => {
   it("ignores an id no rule declares", () => {
     expect(activeRules(g, ["nonsense"])).toHaveLength(2);
   });
+
+  it("keeps a locked rule on even when its id is switched on", () => {
+    const locked: Group = {
+      id: "g",
+      title: "G",
+      words: [],
+      omitted: [rule("★*", { id: "crystals", locked: true })],
+    };
+    expect(activeRules(locked, ["crystals"])).toHaveLength(1);
+  });
 });
 
 describe("visibleGroup", () => {

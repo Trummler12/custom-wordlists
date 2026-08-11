@@ -98,6 +98,11 @@ export interface Omission {
    *  (`Datenkarte01`…`27` → `Datenkarte`). Localized, because the base name is
    *  missing in every language, not just the one the pattern is written in. */
   as?: WordEntry;
+  /** When true, the reader can't switch this rule off — its checkbox is shown but
+   *  disabled. For a family that isn't words at all, where re-including it could
+   *  only ever be a mistake (300 Dynamax Crystals named `★Sgr6879`). Rare: the
+   *  default is that anything omitted can be asked back. */
+  locked?: boolean;
 }
 
 /** A group of words: either a flat `words` list or ordered fame `tiers`. */
