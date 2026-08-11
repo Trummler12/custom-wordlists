@@ -84,10 +84,10 @@ export default defineConfig(({ command }) => ({
   base: process.env.BASE_PATH ?? (command === "build" ? REPO_BASE : "/"),
   plugins: [svelte(), serveData()],
   test: {
-    // `lib/` only: it is the whole of the app's logic that runs without mounting
-    // anything. `dom.ts` is the exception and stays out — two functions aren't
-    // worth pulling jsdom in for.
-    include: ["src/lib/**/*.test.ts"],
+    // Anything that runs without mounting: lib/ and the locale markup parser.
+    // The rule is "no DOM, no runes", not a folder — dom.ts is the one module
+    // that needs one, for two functions not worth pulling jsdom in for.
+    include: ["src/**/*.test.ts"],
     environment: "node",
   },
 }));

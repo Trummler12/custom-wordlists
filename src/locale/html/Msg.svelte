@@ -1,8 +1,8 @@
 <script lang="ts">
-  import { parseMarkup } from "../../lib/markup";
+  import { parseMarkup } from "./markup";
 
   // Renders the inline markup a translatable string may carry — `{br}` and
-  // `[text](url)`. The tag set and its safety rules live in lib/markup, which
+  // `[text](url)`. The tag set and its safety rules live in ./markup, which
   // plain.ts reads too; see there for why this is parsed rather than {@html}.
   let { text }: { text: string } = $props();
 
