@@ -9,6 +9,14 @@
     {
       "id": "items",
       "title": "Items",
+      "omitted": [
+        {"match":"★*","reason":"Unnamed decoration data, not items anyone could draw"},
+        {"match":"X-* [2-6]","reason":"Stronger doses of the X- items, which are listed themselves"},
+        {"match":"[KR][0-9]-Schlüssel","as":{"en":"Key","de":"Schlüssel"},"reason":"Numbered room keys, indistinguishable once drawn"},
+        {"match":"Kupon [0-9]","as":{"en":"Coupon","de":"Kupon"},"reason":"Three identical coupons"},
+        {"match":"Briefpost [0-9]","reason":"Three numbered copies of one mail item"},
+        {"match":"Datenkarte[0-9]*","as":{"en":"Data Card","de":"Datenkarte"},"reason":"27 numbered cards; each stores different Pokéathlon data","optional":{"id":"data-cards","label":{"en":"Data Cards 01-27","de":"Datenkarten 01-27"},"url":"https://www.pokewiki.de/Datenkarte01"}}
+      ],
       "words": [
         {"en":"Master Ball","de":"Meisterball"},
         {"en":"Ultra Ball","de":"Hyperball"},
