@@ -118,43 +118,25 @@
     "omission": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["match", "reason"],
-      "description": "One family of entries left out of a list, and why.",
+      "required": ["id", "match", "reason"],
+      "description": "One family of entries left out of a list, and why. Every rule can be switched back on by the reader, from the panel that lists them.",
       "properties": {
+        "id": {
+          "allOf": [{ "$ref": "#/$defs/id" }],
+          "description": "Stable key for the reader's stored choice, unique within the group — the glob may be edited without resetting it."
+        },
         "match": {
           "type": "string",
           "minLength": 1,
           "description": "Whole-name glob: `*` any run, `?` one character, `[0-9]` a class. Globs rather than regexes because these are hand-written in JSON, where a regex would need doubled backslashes and anchors in every rule. An entry matches when ANY of its language forms does — the same junk is named differently per language (\"Data Card 01\" / \"Datenkarte01\"), so one rule per family suffices, written in whichever language reads best."
         },
         "reason": {
-          "type": "string",
-          "minLength": 1,
-          "description": "Why they are out, in one phrase. Shown to the reader, so write it for them."
+          "allOf": [{ "$ref": "#/$defs/locString" }],
+          "description": "Why they are out, in one phrase — the line beside the checkbox that can bring them back, so write it for the reader. Localized here rather than in a locale file because it describes this list's source, not the app: adding a word list never means editing en.ts. May carry `{br}` and `[text](url)` links (https only), resolved by src/locale/html."
         },
         "as": {
           "allOf": [{ "$ref": "#/$defs/word" }],
           "description": "A name that stands for the whole family, added to the list in their place. For a family whose base form the source never had: `Datenkarte01`…`27` collapse to `Datenkarte`. Leave it out where the base form is already an entry of its own (the `X-… 2`–`6` variants). A stand-in joins the least famous tier, since it represents a family pruned for being obscure."
-        },
-        "optional": {
-          "type": "object",
-          "additionalProperties": false,
-          "required": ["id", "label"],
-          "description": "Present when the reader may ask this family back into the list, via a checkbox in the ⌗ panel. For omissions that are merely too niche rather than junk: every Datenkarte tracks different Pokéathlon data, so deep enough in the lore they are 27 distinct drawable things. A last fame tier would be a trap for those.",
-          "properties": {
-            "id": {
-              "allOf": [{ "$ref": "#/$defs/id" }],
-              "description": "Stable key for the reader's stored choice — editing the glob must not silently reset it."
-            },
-            "label": {
-              "allOf": [{ "$ref": "#/$defs/word" }],
-              "description": "What the checkbox names: \"Include ⟨label⟩\"."
-            },
-            "url": {
-              "type": "string",
-              "pattern": "^https?://",
-              "description": "Where to read about the family, linked from the label."
-            }
-          }
         }
       }
     },

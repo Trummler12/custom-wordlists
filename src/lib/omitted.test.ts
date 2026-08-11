@@ -2,7 +2,9 @@ import { describe, expect, it } from "vitest";
 import { activeRules, entryForms, findOmission, globToRegExp, isOmitted, visibleGroup } from "./omitted";
 import type { Group, Omission } from "./types";
 
+let n = 0;
 const rule = (match: string, extra: Partial<Omission> = {}): Omission => ({
+  id: `r${n++}`,
   match,
   reason: "test",
   ...extra,
@@ -118,7 +120,7 @@ describe("activeRules", () => {
     words: [],
     omitted: [
       rule("★*"),
-      rule("Datenkarte*", { optional: { id: "data-cards", label: "Data Cards" } }),
+      rule("Datenkarte*", { id: "data-cards" }),
     ],
   };
 
@@ -126,11 +128,11 @@ describe("activeRules", () => {
     expect(activeRules(g, []).map((r) => r.match)).toEqual(["★*", "Datenkarte*"]);
   });
 
-  it("drops an optional rule the reader asked back", () => {
+  it("drops a rule the reader asked back", () => {
     expect(activeRules(g, ["data-cards"]).map((r) => r.match)).toEqual(["★*"]);
   });
 
-  it("ignores an id nothing declares", () => {
+  it("ignores an id no rule declares", () => {
     expect(activeRules(g, ["nonsense"])).toHaveLength(2);
   });
 });
@@ -142,10 +144,7 @@ describe("visibleGroup", () => {
     words: ["Pokéball", "★And390", { en: "Data Card 01", de: "Datenkarte01" }],
     omitted: [
       rule("★*"),
-      rule("Datenkarte*", {
-        as: { en: "Data Card", de: "Datenkarte" },
-        optional: { id: "data-cards", label: "Data Cards" },
-      }),
+      rule("Datenkarte*", { id: "data-cards", as: { en: "Data Card", de: "Datenkarte" } }),
     ],
   });
 

@@ -80,31 +80,24 @@ export type Word = string | { short: string; long: string };
 /** Which form(s) of a short/long name a group emits. Per group, default "long". */
 export type NamesMode = "short" | "long" | "both";
 
-/** One family of entries a list deliberately leaves out. See lib/omitted. */
+/** One family of entries a list deliberately leaves out. Every rule can be
+ *  switched back on by the reader, so each needs a stable key. See lib/omitted. */
 export interface Omission {
+  /** Stable key for the reader's stored choice — the glob may be edited without
+   *  resetting it. */
+  id: string;
   /** Whole-name glob: `*`, `?`, `[0-9]`. Matches an entry when any of its
    *  language forms matches, since the same junk is named differently per
    *  language. */
   match: string;
-  /** Why, in one phrase — this is what the reader is shown. */
-  reason: string;
+  /** Why, in one phrase — the line the reader sees beside the checkbox. Lives
+   *  here rather than in a locale because it describes this list's source, not
+   *  the app; may carry `[text](url)` and `{br}`, resolved by locale/html. */
+  reason: LocalizedString;
   /** The name that stands for the family, where the source has none of its own
    *  (`Datenkarte01`…`27` → `Datenkarte`). Localized, because the base name is
    *  missing in every language, not just the one the pattern is written in. */
   as?: WordEntry;
-  /** Present when the reader may ask for this family back. Some omissions are
-   *  junk (`★And390`); others are only too niche for a word game — every
-   *  Datenkarte tracks different Pokéathlon data, so deep enough in the lore they
-   *  are 27 distinct things. A last fame tier would be a trap for those; a
-   *  checkbox is honest. */
-  optional?: {
-    /** Stable key for the reader's choice, so editing the glob doesn't reset it. */
-    id: string;
-    /** What the checkbox says: "Include ⟨label⟩". */
-    label: WordEntry;
-    /** Where to read about them, if anywhere. */
-    url?: string;
-  };
 }
 
 /** A group of words: either a flat `words` list or ordered fame `tiers`. */

@@ -69,10 +69,10 @@ export function isOmitted(e: WordEntry, rules: Omission[]): boolean {
   return findOmission(e, rules) !== undefined;
 }
 
-/** The rules in force: everything except the optional ones the reader switched on. */
+/** The rules in force: every one the reader hasn't switched off. */
 export function activeRules(g: Group, included: readonly string[]): Omission[] {
   const on = new Set(included);
-  return (g.omitted ?? []).filter((r) => !(r.optional && on.has(r.optional.id)));
+  return (g.omitted ?? []).filter((r) => !on.has(r.id));
 }
 
 // Keyed on the group, then on which optional rules are on — both stable for long
