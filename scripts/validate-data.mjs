@@ -4,8 +4,9 @@
 //   1. preset.groups reference real group ids (referential integrity)
 //   2. no duplicate words within a topic file
 //   3. every language used in an entry's language map is listed in `languages`
-//   4. `usesEnglishFor` doesn't contradict what the entries actually carry
-//   5. category folder names are kebab-case (like ids)
+//   4. omission rules still describe the list (no stale rule, no self-matching `as`)
+//   5. `usesEnglishFor` doesn't contradict what the entries actually carry
+//   6. category folder names are kebab-case (like ids)
 // Plus non-fatal warnings: a `sources` entry that carries no URL, and a
 // `usesEnglishFor` language missing from `languages`.
 // Every JSON file (except `_category.json`) is one topic; a folder is a category
@@ -100,6 +101,35 @@ function usedLangs(topic) {
     if (group.tiers) for (const tier of group.tiers) for (const w of tier) scan(w);
   }
   return out;
+}
+
+/** Every string an entry carries, across its forms and languages. Mirrors
+ *  `entryForms` in src/lib/omitted.ts — the frontend's copy is the tested one, but
+ *  a .mjs script can't import TypeScript, the same reason LANG_RE is duplicated. */
+function entryForms(word) {
+  if (typeof word === "string") return [word];
+  const parts =
+    "short" in word && "long" in word ? [word.short, word.long] : Object.values(word);
+  return parts.flatMap(entryForms);
+}
+
+/** A whole-name glob as a RegExp. Mirrors `globToRegExp` in src/lib/omitted.ts. */
+function globToRegExp(glob) {
+  let out = "";
+  for (let i = 0; i < glob.length; i++) {
+    const c = glob[i];
+    if (c === "*") out += ".*";
+    else if (c === "?") out += ".";
+    else if (c === "[") {
+      const end = glob.indexOf("]", i + 1);
+      if (end === -1) out += "\\[";
+      else {
+        out += glob.slice(i, end + 1);
+        i = end;
+      }
+    } else out += c.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  }
+  return new RegExp(`^${out}$`, "u");
 }
 
 function allWords(topic) {
@@ -214,7 +244,25 @@ async function main() {
       }
     }
 
-    // 4. `usesEnglishFor` only claims that a language's names *are* the English ones.
+    // 4. omission rules must still describe the list they belong to. The entries
+    //    stay in the file and are filtered on load, so both of these are knowable:
+    //    a rule that matches nothing is stale (renamed upstream, or a typo), and a
+    //    replacement caught by a rule would be filtered straight back out.
+    for (const group of topic.groups) {
+      const entries = [...(group.words ?? []), ...(group.tiers ?? []).flat()];
+      for (const om of group.omitted ?? []) {
+        const re = globToRegExp(om.match);
+        const hits = entries.filter((e) => entryForms(e).some((f) => re.test(f)));
+        if (hits.length === 0) {
+          warnings.push(`${rel}: omission "${om.match}" (${group.id}) matches no entry`);
+        }
+        if (om.as && entryForms(om.as).some((f) => re.test(f))) {
+          errors.push(`${rel}: omission "${om.match}" (${group.id}) also matches its own \`as\``);
+        }
+      }
+    }
+
+    // 5. `usesEnglishFor` only claims that a language's names *are* the English ones.
     //    It cannot be English itself, it needs `languages` to say what is supported at
     //    all, and it must not name a language the entries actually translate.
     const usesEnglish = topic.usesEnglishFor ?? [];
@@ -240,7 +288,7 @@ async function main() {
       }
     }
 
-    // 5. sources should point somewhere — a warning, since a source can legitimately
+    // 6. sources should point somewhere — a warning, since a source can legitimately
     //    be an offline one (a printed guide, an in-game list).
     const sources = topic.sources == null ? [] : [topic.sources].flat();
     for (const s of sources) {

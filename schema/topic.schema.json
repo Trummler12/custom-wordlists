@@ -115,6 +115,28 @@
         { "$ref": "#/$defs/langMapEntry" }
       ]
     },
+    "omission": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["match", "reason"],
+      "description": "One family of entries left out of a list, and why.",
+      "properties": {
+        "match": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Whole-name glob: `*` any run, `?` one character, `[0-9]` a class. Globs rather than regexes because these are hand-written in JSON, where a regex would need doubled backslashes and anchors in every rule. An entry matches when ANY of its language forms does — the same junk is named differently per language (\"Data Card 01\" / \"Datenkarte01\"), so one rule per family suffices, written in whichever language reads best."
+        },
+        "reason": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Why they are out, in one phrase. Shown to the reader, so write it for them."
+        },
+        "as": {
+          "allOf": [{ "$ref": "#/$defs/word" }],
+          "description": "A name that stands for the whole family, added to the list in their place. For a family whose base form the source never had: `Datenkarte01`…`27` collapse to `Datenkarte`. Leave it out where the base form is already an entry of its own (the `X-… 2`–`6` variants)."
+        }
+      }
+    },
     "group": {
       "type": "object",
       "additionalProperties": false,
@@ -125,6 +147,12 @@
         "title": {
           "allOf": [{ "$ref": "#/$defs/word" }],
           "description": "Display name, same shape as a topic's."
+        },
+        "omitted": {
+          "type": "array",
+          "minItems": 1,
+          "description": "Families of entries this list hides from its source — junk nobody could draw, or numbered copies of one drawable thing. The entries stay in the file and are filtered on the way into the list, so a rule is always reversible and the ⌗ panel can say what was left out.",
+          "items": { "$ref": "#/$defs/omission" }
         },
         "words": {
           "type": "array",
