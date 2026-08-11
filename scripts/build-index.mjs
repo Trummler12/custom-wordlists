@@ -52,9 +52,18 @@ function globToRegExp(glob) {
 function countWords(topic) {
   let n = 0;
   for (const group of topic.groups) {
-    const rules = (group.omitted ?? []).map((o) => ({ re: globToRegExp(o.match), as: o.as }));
-    const kept = (list) =>
-      list.filter((e) => !rules.some((r) => entryForms(e).some((f) => r.re.test(f)))).length;
+    const rules = (group.omitted ?? []).map((o) => ({
+      res: [o.match].flat().map(globToRegExp),
+      except: o.except ?? [],
+      as: o.as,
+    }));
+    const covered = (e) => {
+      const forms = entryForms(e);
+      return rules.some(
+        (r) => !r.except.some((x) => forms.includes(x)) && forms.some((f) => r.res.some((p) => p.test(f))),
+      );
+    };
+    const kept = (list) => list.filter((e) => !covered(e)).length;
     if (group.words) n += kept(group.words);
     if (group.tiers) for (const tier of group.tiers) n += kept(tier);
     n += rules.filter((r) => r.as !== undefined).length;

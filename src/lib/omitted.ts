@@ -20,7 +20,7 @@ export function entryForms(e: WordEntry): string[] {
 
 // Compiled once per rule object; the rules live as long as the topic file they
 // came from, so a WeakMap keyed on the rule is enough.
-const compiled = new WeakMap<Omission, RegExp>();
+const compiled = new WeakMap<Omission, RegExp[]>();
 
 /** A glob as a whole-name pattern: `*` any run, `?` one character, `[0-9]` a
  *  class. Globs rather than regexes because these are written by hand in JSON,
@@ -49,13 +49,13 @@ export function globToRegExp(glob: string): RegExp {
   return new RegExp(`^${out}$`, "u");
 }
 
-function patternOf(rule: Omission): RegExp {
-  let re = compiled.get(rule);
-  if (!re) {
-    re = globToRegExp(rule.match);
-    compiled.set(rule, re);
+function patternsOf(rule: Omission): RegExp[] {
+  let res = compiled.get(rule);
+  if (!res) {
+    res = (Array.isArray(rule.match) ? rule.match : [rule.match]).map(globToRegExp);
+    compiled.set(rule, res);
   }
-  return re;
+  return res;
 }
 
 /** The first rule that covers this entry, or undefined when none does. */
@@ -63,7 +63,8 @@ export function findOmission(e: WordEntry, rules: Omission[]): Omission | undefi
   const forms = entryForms(e);
   return rules.find(
     (rule) =>
-      !rule.except?.some((x) => forms.includes(x)) && forms.some((f) => patternOf(rule).test(f)),
+      !rule.except?.some((x) => forms.includes(x)) &&
+      forms.some((f) => patternsOf(rule).some((re) => re.test(f))),
   );
 }
 

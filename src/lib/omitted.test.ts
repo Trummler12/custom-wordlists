@@ -12,7 +12,7 @@ import {
 import type { Group, Omission } from "./types";
 
 let n = 0;
-const rule = (match: string, extra: Partial<Omission> = {}): Omission => ({
+const rule = (match: string | string[], extra: Partial<Omission> = {}): Omission => ({
   id: `r${n++}`,
   match,
   reason: "test",
@@ -212,6 +212,20 @@ describe("visibleGroup", () => {
       omitted: [rule("Karte*", { as: "Karte" })],
     };
     expect(visibleGroup(tiered, []).tiers).toEqual([["Pikachu"], ["Bidoof", "Karte"]]);
+  });
+});
+
+describe("a rule with several globs", () => {
+  const doses = rule(["X-* [2-6]", "Angriffplus[0-9]"]);
+
+  it("matches through any of them", () => {
+    expect(isOmitted("X-Angriff 2", [doses])).toBe(true);
+    expect(isOmitted("Angriffplus2", [doses])).toBe(true);
+  });
+
+  it("still spares what none of them covers", () => {
+    expect(isOmitted("Angriffplus", [doses])).toBe(false);
+    expect(isOmitted("X-Angriff", [doses])).toBe(false);
   });
 });
 

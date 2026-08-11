@@ -126,9 +126,8 @@
           "description": "Stable key for the reader's stored choice, unique within the group — the glob may be edited without resetting it."
         },
         "match": {
-          "type": "string",
-          "minLength": 1,
-          "description": "Whole-name glob: `*` any run, `?` one character, `[0-9]` a class. Globs rather than regexes because these are hand-written in JSON, where a regex would need doubled backslashes and anchors in every rule. An entry matches when ANY of its language forms does — the same junk is named differently per language (\"Data Card 01\" / \"Datenkarte01\"), so one rule per family suffices, written in whichever language reads best."
+          "allOf": [{ "$ref": "#/$defs/stringOrList" }],
+          "description": "Whole-name glob, or a list of them when one family is named too differently across languages to share a pattern (`X-Angriff 2` vs. `Angriffplus2`): `*` any run, `?` one character, `[0-9]` a class. Globs rather than regexes because these are hand-written in JSON, where a regex would need doubled backslashes and anchors in every rule. An entry matches when ANY of its language forms does — the same junk is named differently per language (\"Data Card 01\" / \"Datenkarte01\"), so one rule per family suffices, written in whichever language reads best."
         },
         "reason": {
           "allOf": [{ "$ref": "#/$defs/locString" }],

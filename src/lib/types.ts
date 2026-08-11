@@ -87,9 +87,10 @@ export interface Omission {
    *  resetting it. */
   id: string;
   /** Whole-name glob: `*`, `?`, `[0-9]`. Matches an entry when any of its
-   *  language forms matches, since the same junk is named differently per
-   *  language. */
-  match: string;
+   *  language forms matches any of these, since the same junk is named
+   *  differently per language — sometimes differently enough to need a second
+   *  glob (`X-Angriff 2` and `Angriffplus2` are one family). */
+  match: string | string[];
   /** Why, in one phrase — the line the reader sees beside the checkbox. Lives
    *  here rather than in a locale because it describes this list's source, not
    *  the app; may carry `[text](url)` and `{br}`, resolved by locale/html. */

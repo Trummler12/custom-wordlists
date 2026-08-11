@@ -250,14 +250,18 @@ async function main() {
     //    replacement caught by a rule would be filtered straight back out.
     for (const group of topic.groups) {
       const entries = [...(group.words ?? []), ...(group.tiers ?? []).flat()];
-      for (const om of group.omitted ?? []) {
-        const re = globToRegExp(om.match);
-        const hits = entries.filter((e) => entryForms(e).some((f) => re.test(f)));
-        if (hits.length === 0) {
-          warnings.push(`${rel}: omission "${om.match}" (${group.id}) matches no entry`);
+      for (const om of [...(group.omitted ?? []), ...(group.omittable ?? [])]) {
+        const res = [om.match].flat().map(globToRegExp);
+        const covers = (e) => {
+          const forms = entryForms(e);
+          return !om.except?.some((x) => forms.includes(x)) && forms.some((f) => res.some((r) => r.test(f)));
+        };
+        const label = [om.match].flat().join(" / ");
+        if (!entries.some(covers)) {
+          warnings.push(`${rel}: omission "${label}" (${group.id}) matches no entry`);
         }
-        if (om.as && entryForms(om.as).some((f) => re.test(f))) {
-          errors.push(`${rel}: omission "${om.match}" (${group.id}) also matches its own \`as\``);
+        if (om.as && covers(om.as)) {
+          errors.push(`${rel}: omission "${label}" (${group.id}) also matches its own \`as\``);
         }
       }
     }
