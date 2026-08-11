@@ -138,6 +138,13 @@
           "allOf": [{ "$ref": "#/$defs/word" }],
           "description": "A name that stands for the whole family, added to the list in their place. For a family whose base form the source never had: `Datenkarte01`…`27` collapse to `Datenkarte`. Leave it out where the base form is already an entry of its own (the `X-… 2`–`6` variants). A stand-in joins the least famous tier, since it represents a family pruned for being obscure."
         },
+        "except": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "description": "Names the glob catches but shouldn't. A glob has no negation, and one exception is cheaper than a pattern contorted to avoid it: `*-Bonbon` means the 80 species candies, not `Dynamax-Bonbon`. Compared against any language form, like the glob itself.",
+          "items": { "type": "string", "minLength": 1 }
+        },
         "locked": {
           "type": "boolean",
           "description": "When true, the reader can't switch this rule off: the panel shows its checkbox disabled. For a family that isn't words at all, where re-including it could only be an accident — the 300 Dynamax Crystals named `★Sgr6879` after Bright Star Catalogue entries. Rare by design: the default is that anything omitted can be asked back."
@@ -159,6 +166,12 @@
           "type": "array",
           "minItems": 1,
           "description": "Families of entries this list hides from its source — junk nobody could draw, or numbered copies of one drawable thing. The entries stay in the file and are filtered on the way into the list, so a rule is always reversible and the ⌗ panel can say what was left out.",
+          "items": { "$ref": "#/$defs/omission" }
+        },
+        "omittable": {
+          "type": "array",
+          "minItems": 1,
+          "description": "Families the list OFFERS to leave out: same shape as `omitted`, opposite default. Present unless the reader ticks them off — for entries that are legitimate words but the first thing someone short of drawing room would cut (the 80 species candies). Rule ids must be unique across both arrays.",
           "items": { "$ref": "#/$defs/omission" }
         },
         "words": {

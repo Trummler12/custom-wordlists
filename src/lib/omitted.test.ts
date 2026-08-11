@@ -1,5 +1,14 @@
 import { describe, expect, it } from "vitest";
-import { activeRules, entryForms, findOmission, globToRegExp, isOmitted, visibleGroup } from "./omitted";
+import {
+  activeRules,
+  allRules,
+  entryForms,
+  findOmission,
+  globToRegExp,
+  isOmitted,
+  isOnByDefault,
+  visibleGroup,
+} from "./omitted";
 import type { Group, Omission } from "./types";
 
 let n = 0;
@@ -203,5 +212,49 @@ describe("visibleGroup", () => {
       omitted: [rule("Karte*", { as: "Karte" })],
     };
     expect(visibleGroup(tiered, []).tiers).toEqual([["Pikachu"], ["Bidoof", "Karte"]]);
+  });
+});
+
+describe("except", () => {
+  const candies = rule("*-Bonbon", { except: ["Dynamax-Bonbon"] });
+
+  it("spares a name the glob would otherwise catch", () => {
+    expect(isOmitted("Bisasam-Bonbon", [candies])).toBe(true);
+    expect(isOmitted("Dynamax-Bonbon", [candies])).toBe(false);
+  });
+
+  it("compares against any language form, like the glob", () => {
+    const e = { en: "Dynamax Candy", de: "Dynamax-Bonbon" };
+    expect(isOmitted(e, [candies])).toBe(false);
+  });
+});
+
+describe("omittable rules", () => {
+  const g: Group = {
+    id: "items",
+    title: "Items",
+    words: ["Pokéball", "★And390", "Bisasam-Bonbon"],
+    omitted: [rule("★*", { id: "crystals" })],
+    omittable: [rule("*-Bonbon", { id: "candies" })],
+  };
+
+  it("is off by default — the list keeps what it merely offers to drop", () => {
+    expect(visibleGroup(g, []).words).toEqual(["Pokéball", "Bisasam-Bonbon"]);
+  });
+
+  it("joins the rules in force once the reader ticks it", () => {
+    expect(visibleGroup(g, ["candies"]).words).toEqual(["Pokéball"]);
+  });
+
+  it("shares one toggled set with `omitted`, in the opposite direction", () => {
+    // "crystals" is an omitted rule, so listing it switches it OFF; "candies" is
+    // omittable, so listing it switches it ON.
+    expect(visibleGroup(g, ["crystals", "candies"]).words).toEqual(["Pokéball", "★And390"]);
+  });
+
+  it("lists both arrays in panel order, defaults intact", () => {
+    expect(allRules(g).map((r) => r.id)).toEqual(["crystals", "candies"]);
+    expect(isOnByDefault(g, g.omitted![0])).toBe(true);
+    expect(isOnByDefault(g, g.omittable![0])).toBe(false);
   });
 });

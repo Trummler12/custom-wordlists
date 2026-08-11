@@ -61,7 +61,10 @@ function patternOf(rule: Omission): RegExp {
 /** The first rule that covers this entry, or undefined when none does. */
 export function findOmission(e: WordEntry, rules: Omission[]): Omission | undefined {
   const forms = entryForms(e);
-  return rules.find((rule) => forms.some((f) => patternOf(rule).test(f)));
+  return rules.find(
+    (rule) =>
+      !rule.except?.some((x) => forms.includes(x)) && forms.some((f) => patternOf(rule).test(f)),
+  );
 }
 
 /** Whether any rule covers this entry. */
@@ -69,12 +72,28 @@ export function isOmitted(e: WordEntry, rules: Omission[]): boolean {
   return findOmission(e, rules) !== undefined;
 }
 
-/** The rules in force: every one the reader hasn't switched off. A locked rule
- *  stays on regardless — the panel disables its checkbox, and a stored choice from
- *  before it was locked must not outlive that. */
-export function activeRules(g: Group, included: readonly string[]): Omission[] {
-  const on = new Set(included);
-  return (g.omitted ?? []).filter((r) => r.locked || !on.has(r.id));
+/** Every rule a list declares, in the order the panel lists them: the ones that
+ *  filter by default, then the ones it merely offers. */
+export function allRules(g: Group): Omission[] {
+  return [...(g.omitted ?? []), ...(g.omittable ?? [])];
+}
+
+/** Whether a rule filters by default — which array it was declared in. */
+export function isOnByDefault(g: Group, rule: Omission): boolean {
+  return (g.omitted ?? []).includes(rule);
+}
+
+/** The rules in force. `toggled` holds the ids that deviate from their default,
+ *  so one set covers both directions: an `omitted` rule drops out when toggled, an
+ *  `omittable` one joins. A locked rule stays on regardless — the panel disables
+ *  its checkbox, and a stored choice from before it was locked must not outlive
+ *  that. */
+export function activeRules(g: Group, toggled: readonly string[]): Omission[] {
+  const flipped = new Set(toggled);
+  return [
+    ...(g.omitted ?? []).filter((r) => r.locked || !flipped.has(r.id)),
+    ...(g.omittable ?? []).filter((r) => flipped.has(r.id)),
+  ];
 }
 
 // Keyed on the group, then on which optional rules are on — both stable for long
@@ -85,19 +104,18 @@ const views = new WeakMap<Group, Map<string, Group>>();
  *  in its place. Filtering per tier rather than over a flattened list keeps the
  *  fame ruler's depths meaning what they meant.
  *
- *  Returns the group itself when nothing is omitted, so every list that has no
- *  rules — which is all of them but one — costs nothing and keeps its identity for
- *  the caches downstream. */
-export function visibleGroup(g: Group, included: readonly string[] = []): Group {
-  if (!g.omitted?.length) return g;
+ *  Returns the group itself when the list declares no rules — all of them but one
+ *  today — so it costs nothing and keeps its identity for the caches downstream. */
+export function visibleGroup(g: Group, toggled: readonly string[] = []): Group {
+  if (!g.omitted?.length && !g.omittable?.length) return g;
 
-  const key = [...included].sort().join(",");
+  const key = [...toggled].sort().join(",");
   let byKey = views.get(g);
   if (!byKey) views.set(g, (byKey = new Map()));
   const hit = byKey.get(key);
   if (hit) return hit;
 
-  const rules = activeRules(g, included);
+  const rules = activeRules(g, toggled);
   const keep = (list: WordEntry[]) => list.filter((e) => !isOmitted(e, rules));
   // One `as` per rule that is actually in force; a rule the reader switched back
   // on brings its own entries, and needs no stand-in.

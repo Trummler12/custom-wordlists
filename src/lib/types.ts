@@ -98,6 +98,11 @@ export interface Omission {
    *  (`Datenkarte01`…`27` → `Datenkarte`). Localized, because the base name is
    *  missing in every language, not just the one the pattern is written in. */
   as?: WordEntry;
+  /** Names the glob catches but shouldn't — a glob has no negation, and one
+   *  exception is cheaper than a pattern contorted to avoid it. `*-Bonbon` means
+   *  the 80 species candies, not `Dynamax-Bonbon`. Matched against any language
+   *  form, like the glob itself. */
+  except?: string[];
   /** When true, the reader can't switch this rule off — its checkbox is shown but
    *  disabled. For a family that isn't words at all, where re-including it could
    *  only ever be a mistake (300 Dynamax Crystals named `★Sgr6879`). Rare: the
@@ -110,8 +115,13 @@ export interface Group {
   id: string;
   /** Display name, same shape as an entry — see `displayName` in lib/words. */
   title: WordEntry;
-  /** What this list leaves out of its source, and why. */
+  /** What this list leaves out of its source, and why. Filtered by default; the
+   *  reader may switch any of them back on (unless `locked`). */
   omitted?: Omission[];
+  /** Families the list *offers* to leave out — present by default, removable on
+   *  demand. Same shape, opposite default: 80 species candies are legitimate
+   *  words, and still the first thing someone short of drawing room would cut. */
+  omittable?: Omission[];
   words?: WordEntry[];
   tiers?: WordEntry[][];
 }
