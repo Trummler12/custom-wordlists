@@ -1,4 +1,9 @@
-import { defineConfig, type Plugin, type ResolvedConfig } from "vite";
+// `defineConfig` from vitest/config rather than vite: the test block lives here
+// instead of in its own vitest.config.ts, which would take precedence over this
+// file rather than merge with it — and sharing one resolver is the whole reason
+// the tests use Vitest at all.
+import { defineConfig } from "vitest/config";
+import type { Plugin, ResolvedConfig } from "vite";
 import { svelte } from "@sveltejs/vite-plugin-svelte";
 import { createReadStream } from "node:fs";
 import { cp, stat } from "node:fs/promises";
@@ -19,11 +24,16 @@ const DATA_DIR = fileURLToPath(new URL("./data", import.meta.url));
 
 function serveData(): Plugin {
   let outDir = "dist";
+  let building = false;
   return {
     name: "serve-data",
     configResolved(config: ResolvedConfig) {
       // outDir is relative to root; resolve it now so the copy doesn't depend on cwd.
       outDir = resolve(config.root, config.build.outDir);
+      // Vitest resolves this config in serve mode and points build.outDir at a
+      // placeholder; without this, closeBundle would copy data/ into it on every
+      // test run.
+      building = config.command === "build";
     },
     configureServer(server) {
       server.middlewares.use((req, res, next) => {
@@ -62,6 +72,7 @@ function serveData(): Plugin {
       });
     },
     async closeBundle() {
+      if (!building) return;
       // Copy the whole data/ tree (incl. the generated index.json) into dist/data/.
       await cp(DATA_DIR, join(outDir, "data"), { recursive: true });
     },
@@ -72,4 +83,11 @@ function serveData(): Plugin {
 export default defineConfig(({ command }) => ({
   base: process.env.BASE_PATH ?? (command === "build" ? REPO_BASE : "/"),
   plugins: [svelte(), serveData()],
+  test: {
+    // `lib/` only: it is the whole of the app's logic that runs without mounting
+    // anything. `dom.ts` is the exception and stays out — two functions aren't
+    // worth pulling jsdom in for.
+    include: ["src/lib/**/*.test.ts"],
+    environment: "node",
+  },
 }));

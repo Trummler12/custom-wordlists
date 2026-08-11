@@ -31,6 +31,9 @@ jobs:
       - name: Validate topic data against schema
         run: npm run validate
 
+      - name: Unit tests (src/lib)
+        run: npm run test
+
       # `npm run build` = build:index && svelte-check && vite build, so this one
       # step regenerates the manifest, type-checks the frontend, and builds the
       # production bundle — the same gate that protects the auto-deployed site.
