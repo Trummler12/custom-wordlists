@@ -11,6 +11,7 @@
 import { readFile, writeFile, readdir, rm, rmdir } from "node:fs/promises";
 import { join, dirname, basename } from "node:path";
 import { fileURLToPath } from "node:url";
+import { serializeTopic } from "./lib/serialize.mjs";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 const TOPICS_DIR = join(ROOT, "data", "topics");
@@ -81,33 +82,8 @@ function mergeTopic(en, de, label) {
   };
 }
 
-// ─── serializer (house style: one tier per line, blank line between tiers) ─────
-
-/** An array with one entry per line: entries at `indent`, closing bracket at `close`. */
-function entryBlock(arr, indent, close) {
-  return "[\n" + arr.map((e) => indent + JSON.stringify(e)).join(",\n") + "\n" + close + "]";
-}
-function serializeTiers(tiers) {
-  // Each tier is a multi-line array (one entry per line); a blank line separates tiers.
-  return "[\n" + tiers.map((t) => "        " + entryBlock(t, "          ", "        ")).join(",\n\n") + "\n      ]";
-}
-function serializeGroup(g) {
-  const p = [`      "id": ${JSON.stringify(g.id)}`, `      "title": ${JSON.stringify(g.title)}`];
-  if (g.tiers) p.push(`      "tiers": ${serializeTiers(g.tiers)}`);
-  if (g.words) p.push(`      "words": ${entryBlock(g.words, "        ", "      ")}`);
-  return "    {\n" + p.join(",\n") + "\n    }";
-}
-function serializeTopic(t) {
-  const kv = [`  "id": ${JSON.stringify(t.id)}`, `  "title": ${JSON.stringify(t.title)}`];
-  if (t.icon) kv.push(`  "icon": ${JSON.stringify(t.icon)}`);
-  if (t.description) kv.push(`  "description": ${JSON.stringify(t.description)}`);
-  kv.push(`  "languages": ${JSON.stringify(t.languages)}`);
-  if (t.lastUpdated) kv.push(`  "lastUpdated": ${JSON.stringify(t.lastUpdated)}`);
-  if (t.lastChecked) kv.push(`  "lastChecked": ${JSON.stringify(t.lastChecked)}`);
-  kv.push(`  "groups": [\n` + t.groups.map(serializeGroup).join(",\n") + `\n  ]`);
-  if (t.presets) kv.push(`  "presets": [\n` + t.presets.map((pr) => "    " + JSON.stringify(pr)).join(",\n") + `\n  ]`);
-  return "{\n" + kv.join(",\n") + "\n}\n";
-}
+// The house-style serializer lives in scripts/lib/serialize.mjs — shared, so a
+// codemod can't quietly write a file back without the fields it didn't know.
 
 // ─── driver ───────────────────────────────────────────────────────────────────
 

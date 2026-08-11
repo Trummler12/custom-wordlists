@@ -15,6 +15,7 @@
 import { readFile, writeFile } from "node:fs/promises";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
+import { serializeTopic } from "./lib/serialize.mjs";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 const RAW = join(ROOT, "data-raw", "gaming", "pokemon", "pokemon");
@@ -74,22 +75,8 @@ function buildEntry(names) {
   return Object.keys(map).length === 1 ? en : map;
 }
 
-// ─── serializer (house style: one entry per line — mirrors merge-variants.mjs) ───
-
-function serializeGroup(g) {
-  const body = g.words.map((w) => "        " + JSON.stringify(w)).join(",\n");
-  return `    {\n      "id": ${JSON.stringify(g.id)},\n      "title": ${JSON.stringify(g.title)},\n      "words": [\n${body}\n      ]\n    }`;
-}
-function serializeTopic(t) {
-  const kv = [`  "id": ${JSON.stringify(t.id)}`, `  "title": ${JSON.stringify(t.title)}`];
-  if (t.icon) kv.push(`  "icon": ${JSON.stringify(t.icon)}`);
-  if (t.description) kv.push(`  "description": ${JSON.stringify(t.description)}`);
-  kv.push(`  "languages": ${JSON.stringify(t.languages)}`);
-  if (t.sources) kv.push(`  "sources": ${JSON.stringify(t.sources)}`);
-  kv.push(`  "groups": [\n${t.groups.map(serializeGroup).join(",\n")}\n  ]`);
-  if (t.presets) kv.push(`  "presets": [\n` + t.presets.map((p) => "    " + JSON.stringify(p)).join(",\n") + `\n  ]`);
-  return "{\n" + kv.join(",\n") + "\n}\n";
-}
+// The house-style serializer lives in scripts/lib/serialize.mjs — shared, so a
+// codemod can't quietly write a file back without the fields it didn't know.
 
 /** Order-independent canonical JSON (keys sorted recursively) for equality checks. */
 function canon(v) {
