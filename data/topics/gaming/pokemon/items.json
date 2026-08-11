@@ -10,12 +10,12 @@
       "id": "items",
       "title": "Items",
       "omitted": [
-        {"match":"★*","reason":"Unnamed decoration data, not items anyone could draw"},
-        {"match":"X-* [2-6]","reason":"Stronger doses of the X- items, which are listed themselves"},
-        {"match":"[KR][0-9]-Schlüssel","as":{"en":"Key","de":"Schlüssel"},"reason":"Numbered room keys, indistinguishable once drawn"},
-        {"match":"Kupon [0-9]","as":{"en":"Coupon","de":"Kupon"},"reason":"Three identical coupons"},
-        {"match":"Briefpost [0-9]","reason":"Three numbered copies of one mail item"},
-        {"match":"Datenkarte[0-9]*","as":{"en":"Data Card","de":"Datenkarte"},"reason":"27 numbered cards; each stores different Pokéathlon data","optional":{"id":"data-cards","label":{"en":"Data Cards 01-27","de":"Datenkarten 01-27"},"url":"https://www.pokewiki.de/Datenkarte01"}}
+        {"id":"decorations","match":"★*","reason":{"en":"300 unnamed decoration rows, which are data and not items","de":"300 unbenannte Dekorationszeilen, die Daten sind und keine Items"}},
+        {"id":"x-doses","match":"X-* [2-6]","reason":{"en":"Stronger doses of the X- items, drawn the same as the ones already listed","de":"Stärkere Dosen der X-Items, gezeichnet wie die bereits gelisteten"}},
+        {"id":"room-keys","match":"[KR][0-9]-Schlüssel","as":{"en":"Key","de":"Schlüssel"},"reason":{"en":"Eight numbered room keys, all one drawing","de":"Acht nummerierte Raumschlüssel, alle dieselbe Zeichnung"}},
+        {"id":"coupons","match":"Kupon [0-9]","as":{"en":"Coupon","de":"Kupon"},"reason":{"en":"Three identical coupons","de":"Drei identische Kupons"}},
+        {"id":"gram-mail","match":"Briefpost [0-9]","reason":{"en":"Three numbered copies of one piece of mail","de":"Drei nummerierte Kopien derselben Briefpost"}},
+        {"id":"data-cards","match":"Datenkarte[0-9]*","as":{"en":"Data Card","de":"Datenkarte"},"reason":{"en":"27 numbered [Data Cards](https://bulbapedia.bulbagarden.net/wiki/Data_Card), each recording a different Pokéathlon statistic","de":"27 nummerierte [Datenkarten](https://www.pokewiki.de/Pok%C3%A9athlon#Datenkarten), die je eine andere Pokéathlon-Statistik festhalten"}}
       ],
       "words": [
         {"en":"Master Ball","de":"Meisterball"},
