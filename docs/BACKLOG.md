@@ -88,11 +88,18 @@ big enough to discuss belongs in an issue instead.
   doesn't add extension resolution), or move the shared helpers into a plain `.mjs`
   both sides import. The second is smaller; the first would also let the other
   scripts share frontend logic, so it is worth deciding once rather than twice.
-- **More inline markup in locale strings.** Once `src/locale/html/` exists (the
-  `{br}` snippet), `{i}`…`{/i}` and `{b}`…`{/b}` are the obvious companions: a
+- **More inline markup in locale strings.** `src/locale/html/` handles `{br}` and
+  `[text](url)`; `{i}`…`{/i}` and `{b}`…`{/b}` are the obvious companions — a
   parser that turns a marked-up string into a list of parts, and one snippet per
   tag. Nothing needs them today — add a tag the first time a string actually wants
   it, not before.
+- **Group the locale keys.** `UIStrings` is ~40 flat keys covering the header, the
+  tree, the rulers, the output and the footer, and it only grows. Nesting them by
+  area (`topics.wordsOf`, `output.copied`, …) would make both dictionaries
+  readable at a glance and make a missing translation obvious. It is a mechanical
+  rename across every component that reads `lang.ui.*`, so it wants a quiet moment
+  and a PR of its own — never alongside a feature, where the two diffs would hide
+  each other.
 - **English entries *in addition* to the selected language.** The per-topic English
   toggle replaces a list's entries; a third state would add them, for a game where
   either name should count. What makes it worth building is the tooltip, which
