@@ -6,6 +6,7 @@
   import { topics } from "../../state/topics.svelte";
   import FameDepthSlider from "./FameDepthSlider.svelte";
   import NamesModeSelect from "./NamesModeSelect.svelte";
+  import OmittedPanel from "./OmittedPanel.svelte";
 
   let { tid, group }: { tid: string; group: Group } = $props();
 
@@ -26,6 +27,7 @@
       </span>
     </label>
     <NamesModeSelect {tid} {group} label={name.long} />
+    <OmittedPanel {tid} {group} />
     <span
       class="meta"
       title={lang.ui.wordsOf(selection.groupSelCount(tid, group), selection.groupTotal(tid, group))}
