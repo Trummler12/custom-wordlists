@@ -116,15 +116,14 @@ big enough to discuss belongs in an issue instead.
     the source dumps already, so the honest answer may be that the raw file *is* the
     complete record and the topic file only needs the rules — with the tooltip
     pointing at the source rather than pretending to be exhaustive.
-- **One matcher instead of two.** `scripts/validate-data.mjs` carries its own copy
-  of `globToRegExp` and `entryForms`, mirroring the tested ones in
+- **One matcher instead of two.** The scripts now share `scripts/lib/omissions.mjs`,
+  so what remains is the one copy that can't be helped: it mirrors the tested
   `src/lib/omitted.ts`, because a `.mjs` script can't import TypeScript — the same
-  reason `LANG_RE` is duplicated against the schema. Two ways out, neither urgent:
-  raise CI's Node from 20 to 22+ and import the `.ts` directly via native
-  type-stripping (which needs the module free of value imports, since stripping
-  doesn't add extension resolution), or move the shared helpers into a plain `.mjs`
-  both sides import. The second is smaller; the first would also let the other
-  scripts share frontend logic, so it is worth deciding once rather than twice.
+  reason `LANG_RE` is duplicated against the schema. The way out is raising CI's
+  Node from 20 to 22+ and importing the `.ts` directly via native type-stripping,
+  which needs the module free of value imports (stripping doesn't add extension
+  resolution). Worth doing when something else wants Node 22 anyway; not on its
+  own.
 - **More inline markup in locale strings.** `src/locale/html/` handles `{br}` and
   `[text](url)`; `{i}`…`{/i}` and `{b}`…`{/b}` are the obvious companions — a
   parser that turns a marked-up string into a list of parts, and one snippet per
