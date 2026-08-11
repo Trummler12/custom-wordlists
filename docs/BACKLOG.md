@@ -17,10 +17,10 @@ big enough to discuss belongs in an issue instead.
 
   ```json
   "omitted": [
-    { "match": "★*", "reason": "unnamed decoration data", "count": 300 },
-    { "match": "Datenkarte##", "reason": "27 numbered copies; the base name is listed" },
-    "Kupon 2",
-    "Kupon 3"
+    { "match": "★*", "reason": "unnamed decoration data" },
+    { "match": "Datenkarte##", "as": { "en": "Data Card", "de": "Datenkarte" },
+      "reason": "27 numbered copies of one drawable thing" },
+    { "match": "X-* [2-6]", "reason": "stat-boost variants; the base items are listed" }
   ]
   ```
 
@@ -31,6 +31,28 @@ big enough to discuss belongs in an issue instead.
     the rule language is a glob (`★*`, `Datenkarte##`) or an anchored regex is the
     one thing to decide first — globs read better in JSON, since a regex needs
     `\\d` and full-match anchors; regexes handle the `X-… 2–6` family in one line.
+  - **A rule matches an entry, not a string.** The junk is localized:
+    `{ "en": "Data Card 01", "de": "Datenkarte01" }`. A pattern written in German
+    would never see the English form, so an entry is omitted when *any* of its
+    language forms matches — one rule per family, written in whichever language
+    reads best. (The 300 `★And…` are plain strings, so language-neutral already.)
+  - **A rule may name what stands for the family: `as`.** "Datenkarte", "Kupon" and
+    "Briefpost" are perfectly drawable words that would otherwise vanish with their
+    numbered variants — and the base form exists nowhere in the source, so it can't
+    survive a regeneration by being an ordinary entry. Keeping it *inside* the rule
+    beats a separate `added` list: the two halves are one editorial act ("collapse
+    this family to its base name"), the tooltip line writes itself ("27 ×
+    Datenkarte01–27 → Datenkarte"), and nothing has to correlate two fields to
+    explain itself. `as` is a full word entry (`#/$defs/word`), since the name is
+    missing in every language, not just one. Omit `as` where the base form is
+    already in the source — the `X-… 2–6` variants, whose base items are listed.
+  - **Where a replacement lands once tiers exist:** in the tier of the best-known
+    entry it replaces, falling back to the last tier when none of them had one. The
+    generator already knows which entries a rule matched, so this costs nothing, and
+    it degrades correctly — a family of numbered junk lands at the bottom, while
+    collapsing a famous family would keep its standing. Moot until the items list
+    gets tiers at all (it is flat today), but it is the rule that stops a
+    regeneration from having to guess.
   - **Enforce it in `validate-data`, not at load.** The obvious reading of "fallback
     filter" is to filter on load, but that runs a rule set over 1330 entries every
     time the topic opens, forever, to protect against a mistake made in a codemod.
@@ -42,6 +64,11 @@ big enough to discuss belongs in an issue instead.
     rule shows its reason and its count ("300 entries — unnamed decoration data"),
     which is what a reader actually wants at that size anyway. Needs a scrollable
     variant of `.tip-note`, which is currently a small box sized to a sentence.
+  - **Not a bin for the button.** 🗑️ or 🚮 beside a row of checkboxes reads as
+    "delete this", which is the one thing it must not suggest — and 🚮 is public
+    signage that renders as a sign, not an object, on several platforms. 🧹 says the
+    list was tidied, ✂️ that it was trimmed; both are honest about a past edit rather
+    than offering a destructive one.
   - **No manifest change.** The tooltip renders from the loaded topic file, like the
     names dropdown, so `build-index` and `TopicSummary` stay out of it.
   - **Name it `omitted`, not `excluded`.** The output counter already says
