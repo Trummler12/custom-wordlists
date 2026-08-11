@@ -18,6 +18,11 @@ export const en: UIStrings = {
   fameGroupsDefined: (count) => `Fame groups defined: ${count}`,
   noFameGroups:
     "No fame groups defined yet — see the Contribution Guide in the footer to propose some!",
+  omittedLabel: "What this list leaves out",
+  omittedTitle: "Left out of this list:",
+  omitToggle: (omitted) =>
+    omitted ? "Toggle to include these in your list" : "Toggle to leave these out",
+  omitLocked: "These are game data rather than words, so they can't be added.",
   settings: "Settings",
   showEnglishToggle: "Show the option to use English entries",
   showEnglishToggleEn: "These toggles only appear for languages other than English.",

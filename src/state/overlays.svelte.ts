@@ -42,6 +42,14 @@ class OverlayState {
     this.settingsMenu = this.settingsMenu === id ? null : id;
   };
 
+  // --- Omissions panel -------------------------------------------------------
+
+  /** Which list is showing what it leaves out, keyed `${topicId}:${groupId}`. */
+  omittedPanel = $state<string | null>(null);
+  toggleOmittedPanel = (id: string): void => {
+    this.omittedPanel = this.omittedPanel === id ? null : id;
+  };
+
   // --- Tooltips --------------------------------------------------------------
 
   /** Show a note, flipping it above its row when the trigger sits low enough that
@@ -75,6 +83,7 @@ class OverlayState {
     const target = e.target as Element | null;
     if (this.langMenu && !target?.closest?.(".lang-picker")) this.langMenu = null;
     if (this.settingsMenu && !target?.closest?.(".settings-picker")) this.settingsMenu = null;
+    if (this.omittedPanel && !target?.closest?.(".omitted-host")) this.omittedPanel = null;
     // Only for pointers without hover — with a mouse, leaving the trigger closes it.
     if (this.tip && this.#lastPointerType !== "mouse" && !target?.closest?.(".tip-trigger")) {
       this.closeTip();
@@ -84,6 +93,7 @@ class OverlayState {
     if (e.key === "Escape") {
       this.langMenu = null;
       this.settingsMenu = null;
+      this.omittedPanel = null;
       this.closeTip();
     }
   };
