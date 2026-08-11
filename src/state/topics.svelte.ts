@@ -7,7 +7,7 @@
 import { loadManifest, loadTopic } from "../lib/data";
 import { buildTree, titleCase, type CatNode } from "../lib/tree";
 import type { CategoryMeta, Group, Topic, TopicSummary } from "../lib/types";
-import { visibleGroup } from "../lib/omitted";
+import { allRules, visibleGroup } from "../lib/omitted";
 import { displayName, type DisplayName } from "../lib/words";
 import { settings } from "./settings.svelte";
 import { lang } from "./lang.svelte";
@@ -75,7 +75,7 @@ class TopicsState {
   groupsOf(t: TopicSummary): Group[] {
     const groups = this.data[t.id]?.groups ?? [];
     return groups.map((g) =>
-      visibleGroup(g, settings.includedFor(t.id, g.id, (g.omitted ?? []).map((o) => o.id))),
+      visibleGroup(g, settings.toggledFor(t.id, g.id, allRules(g).map((o) => o.id))),
     );
   }
 
