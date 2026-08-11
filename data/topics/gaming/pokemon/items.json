@@ -17,6 +17,9 @@
         {"id":"gram-mail","match":"Briefpost [0-9]","reason":{"en":"Three numbered copies of one piece of mail","de":"Drei nummerierte Kopien derselben Briefpost"}},
         {"id":"data-cards","match":"Datenkarte[0-9]*","as":{"en":"Data Card","de":"Datenkarte"},"reason":{"en":"27 numbered [Data Cards](https://bulbapedia.bulbagarden.net/wiki/Data_Card), each recording a different Pokéathlon statistic","de":"27 nummerierte [Datenkarten](https://www.pokewiki.de/Pok%C3%A9athlon#Datenkarten), die je eine andere Pokéathlon-Statistik festhalten"}}
       ],
+      "omittable": [
+        {"id":"species-candies","match":"*-Bonbon","except":["Dynamax-Bonbon"],"reason":{"en":"80 [species candies](https://bulbapedia.bulbagarden.net/wiki/Exp._Candy), one per Pokémon — real items, but they crowd out the Pokémon themselves","de":"80 [Bonbons](https://www.pokewiki.de/Bonbon), eines je Pokémon – echte Items, aber sie verdrängen die Pokémon selbst"}}
+      ],
       "words": [
         {"en":"Master Ball","de":"Meisterball"},
         {"en":"Ultra Ball","de":"Hyperball"},
