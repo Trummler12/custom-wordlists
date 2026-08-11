@@ -16,6 +16,7 @@ import { readFile, readdir } from "node:fs/promises";
 import { join, dirname, basename } from "node:path";
 import { fileURLToPath } from "node:url";
 import AjvModule from "ajv/dist/2020.js";
+import { entryForms, globToRegExp } from "./lib/omissions.mjs";
 
 const Ajv = AjvModule.default ?? AjvModule;
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
@@ -101,35 +102,6 @@ function usedLangs(topic) {
     if (group.tiers) for (const tier of group.tiers) for (const w of tier) scan(w);
   }
   return out;
-}
-
-/** Every string an entry carries, across its forms and languages. Mirrors
- *  `entryForms` in src/lib/omitted.ts — the frontend's copy is the tested one, but
- *  a .mjs script can't import TypeScript, the same reason LANG_RE is duplicated. */
-function entryForms(word) {
-  if (typeof word === "string") return [word];
-  const parts =
-    "short" in word && "long" in word ? [word.short, word.long] : Object.values(word);
-  return parts.flatMap(entryForms);
-}
-
-/** A whole-name glob as a RegExp. Mirrors `globToRegExp` in src/lib/omitted.ts. */
-function globToRegExp(glob) {
-  let out = "";
-  for (let i = 0; i < glob.length; i++) {
-    const c = glob[i];
-    if (c === "*") out += ".*";
-    else if (c === "?") out += ".";
-    else if (c === "[") {
-      const end = glob.indexOf("]", i + 1);
-      if (end === -1) out += "\\[";
-      else {
-        out += glob.slice(i, end + 1);
-        i = end;
-      }
-    } else out += c.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-  }
-  return new RegExp(`^${out}$`, "u");
 }
 
 function allWords(topic) {
