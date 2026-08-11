@@ -7,7 +7,9 @@
 import { loadManifest, loadTopic } from "../lib/data";
 import { buildTree, titleCase, type CatNode } from "../lib/tree";
 import type { CategoryMeta, Group, Topic, TopicSummary } from "../lib/types";
+import { visibleGroup } from "../lib/omitted";
 import { displayName, type DisplayName } from "../lib/words";
+import { settings } from "./settings.svelte";
 import { lang } from "./lang.svelte";
 
 class TopicsState {
@@ -63,9 +65,18 @@ class TopicsState {
     }
   }
 
-  /** A topic's groups, empty until it has loaded. */
+  /** A topic's groups as the app shows them — omitted families filtered out —
+   *  empty until it has loaded.
+   *
+   *  The one place that resolves it, so counts, rulers, the output and every row
+   *  see the same list without any of them knowing about omissions. `visibleGroup`
+   *  hands back the group itself when it omits nothing, which is all but one list
+   *  today, and caches the rest. */
   groupsOf(t: TopicSummary): Group[] {
-    return this.data[t.id]?.groups ?? [];
+    const groups = this.data[t.id]?.groups ?? [];
+    return groups.map((g) =>
+      visibleGroup(g, settings.includedFor(t.id, g.id, (g.omitted ?? []).map((o) => o.id))),
+    );
   }
 
   /** Whether a topic is still fetching and has nothing to show yet. */

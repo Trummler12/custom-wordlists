@@ -13,9 +13,9 @@ class OutputState {
     const seen = new Set<string>();
     const out: string[] = [];
     for (const t of topics.all) {
-      const data = topics.data[t.id];
-      if (!data) continue;
-      for (const g of data.groups) {
+      // Through groupsOf, not data.groups: it is what applies each list's
+      // omissions, and the output must agree with the counts beside it.
+      for (const g of topics.groupsOf(t)) {
         const mode = selection.modeOf(selection.key(t.id, g.id));
         // Per topic, not per app: a topic switched to English emits English here
         // while the rest of the list follows the interface language.
