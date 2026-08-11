@@ -10,7 +10,7 @@
       "id": "items",
       "title": "Items",
       "omitted": [
-        {"id":"decorations","match":"★*","reason":{"en":"300 unnamed decoration rows, which are data and not items","de":"300 unbenannte Dekorationszeilen, die Daten sind und keine Items"}},
+        {"id":"dynamax-crystals","match":"★*","locked":true,"reason":{"en":"300 [Dynamax Crystals](https://bulbapedia.bulbagarden.net/wiki/Dynamax_Crystal), each named after a star in the Bright Star Catalogue; only twelve were ever usable","de":"300 [Dynamax-Kristalle](https://www.pokewiki.de/%E2%98%85And15), jeder nach einem Stern aus dem Bright Star Catalogue benannt; nur zwölf waren je nutzbar"}},
         {"id":"x-doses","match":"X-* [2-6]","reason":{"en":"Stronger doses of the X- items, drawn the same as the ones already listed","de":"Stärkere Dosen der X-Items, gezeichnet wie die bereits gelisteten"}},
         {"id":"room-keys","match":"[KR][0-9]-Schlüssel","as":{"en":"Key","de":"Schlüssel"},"reason":{"en":"Eight numbered room keys, all one drawing","de":"Acht nummerierte Raumschlüssel, alle dieselbe Zeichnung"}},
         {"id":"coupons","match":"Kupon [0-9]","as":{"en":"Coupon","de":"Kupon"},"reason":{"en":"Three identical coupons","de":"Drei identische Kupons"}},
