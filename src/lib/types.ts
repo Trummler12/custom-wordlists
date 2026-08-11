@@ -92,6 +92,19 @@ export interface Omission {
    *  (`Datenkarte01`…`27` → `Datenkarte`). Localized, because the base name is
    *  missing in every language, not just the one the pattern is written in. */
   as?: WordEntry;
+  /** Present when the reader may ask for this family back. Some omissions are
+   *  junk (`★And390`); others are only too niche for a word game — every
+   *  Datenkarte tracks different Pokéathlon data, so deep enough in the lore they
+   *  are 27 distinct things. A last fame tier would be a trap for those; a
+   *  checkbox is honest. */
+  optional?: {
+    /** Stable key for the reader's choice, so editing the glob doesn't reset it. */
+    id: string;
+    /** What the checkbox says: "Include ⟨label⟩". */
+    label: WordEntry;
+    /** Where to read about them, if anywhere. */
+    url?: string;
+  };
 }
 
 /** A group of words: either a flat `words` list or ordered fame `tiers`. */

@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
-import { entryForms, findOmission, globToRegExp, isOmitted } from "./omitted";
-import type { Omission } from "./types";
+import { activeRules, entryForms, findOmission, globToRegExp, isOmitted, visibleGroup } from "./omitted";
+import type { Group, Omission } from "./types";
 
 const rule = (match: string, extra: Partial<Omission> = {}): Omission => ({
   match,
@@ -108,5 +108,91 @@ describe("findOmission", () => {
 
   it("omits nothing when there are no rules", () => {
     expect(isOmitted("★And390", [])).toBe(false);
+  });
+});
+
+describe("activeRules", () => {
+  const g: Group = {
+    id: "g",
+    title: "G",
+    words: [],
+    omitted: [
+      rule("★*"),
+      rule("Datenkarte*", { optional: { id: "data-cards", label: "Data Cards" } }),
+    ],
+  };
+
+  it("holds every rule while nothing is switched on", () => {
+    expect(activeRules(g, []).map((r) => r.match)).toEqual(["★*", "Datenkarte*"]);
+  });
+
+  it("drops an optional rule the reader asked back", () => {
+    expect(activeRules(g, ["data-cards"]).map((r) => r.match)).toEqual(["★*"]);
+  });
+
+  it("ignores an id nothing declares", () => {
+    expect(activeRules(g, ["nonsense"])).toHaveLength(2);
+  });
+});
+
+describe("visibleGroup", () => {
+  const flat = (): Group => ({
+    id: "items",
+    title: "Items",
+    words: ["Pokéball", "★And390", { en: "Data Card 01", de: "Datenkarte01" }],
+    omitted: [
+      rule("★*"),
+      rule("Datenkarte*", {
+        as: { en: "Data Card", de: "Datenkarte" },
+        optional: { id: "data-cards", label: "Data Cards" },
+      }),
+    ],
+  });
+
+  it("returns the group itself when nothing is omitted", () => {
+    const plain: Group = { id: "g", title: "G", words: ["a"] };
+    expect(visibleGroup(plain, [])).toBe(plain);
+  });
+
+  it("drops matching entries and puts each rule's `as` in their place", () => {
+    const v = visibleGroup(flat(), []);
+    expect(v.words).toEqual(["Pokéball", { en: "Data Card", de: "Datenkarte" }]);
+  });
+
+  it("brings a family back — and drops its stand-in, which has nothing left to stand for", () => {
+    const v = visibleGroup(flat(), ["data-cards"]);
+    expect(v.words).toEqual(["Pokéball", { en: "Data Card 01", de: "Datenkarte01" }]);
+  });
+
+  it("leaves the group itself untouched", () => {
+    const g = flat();
+    visibleGroup(g, []);
+    expect(g.words).toHaveLength(3);
+  });
+
+  it("answers the same object for the same settings, and a different one otherwise", () => {
+    const g = flat();
+    expect(visibleGroup(g, [])).toBe(visibleGroup(g, []));
+    expect(visibleGroup(g, [])).not.toBe(visibleGroup(g, ["data-cards"]));
+  });
+
+  it("filters per tier, so a ruler's depths keep meaning what they meant", () => {
+    const tiered: Group = {
+      id: "g",
+      title: "G",
+      tiers: [["Pikachu", "★A"], ["Bidoof", "★B"]],
+      omitted: [rule("★*")],
+    };
+    expect(visibleGroup(tiered, []).tiers).toEqual([["Pikachu"], ["Bidoof"]]);
+  });
+
+  it("puts a stand-in in the least famous tier", () => {
+    const tiered: Group = {
+      id: "g",
+      title: "G",
+      tiers: [["Pikachu"], ["Bidoof"]],
+      omitted: [rule("Karte*", { as: "Karte" })],
+    };
+    expect(visibleGroup(tiered, []).tiers).toEqual([["Pikachu"], ["Bidoof", "Karte"]]);
   });
 });

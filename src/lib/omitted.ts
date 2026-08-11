@@ -3,7 +3,7 @@
 // validator (which fails when an omitted entry is present) and to the panel that
 // tells a reader what was left out.
 
-import type { Omission, WordEntry } from "./types";
+import type { Group, Omission, WordEntry } from "./types";
 
 /** Every string an entry carries, across all its forms and languages. A rule
  *  matches an entry when any of these does: the junk is localized
@@ -67,4 +67,53 @@ export function findOmission(e: WordEntry, rules: Omission[]): Omission | undefi
 /** Whether any rule covers this entry. */
 export function isOmitted(e: WordEntry, rules: Omission[]): boolean {
   return findOmission(e, rules) !== undefined;
+}
+
+/** The rules in force: everything except the optional ones the reader switched on. */
+export function activeRules(g: Group, included: readonly string[]): Omission[] {
+  const on = new Set(included);
+  return (g.omitted ?? []).filter((r) => !(r.optional && on.has(r.optional.id)));
+}
+
+// Keyed on the group, then on which optional rules are on — both stable for long
+// stretches, so a group is filtered once rather than once per render.
+const views = new WeakMap<Group, Map<string, Group>>();
+
+/** The group as the list shows it: omitted entries gone, each rule's `as` standing
+ *  in its place. Filtering per tier rather than over a flattened list keeps the
+ *  fame ruler's depths meaning what they meant.
+ *
+ *  Returns the group itself when nothing is omitted, so every list that has no
+ *  rules — which is all of them but one — costs nothing and keeps its identity for
+ *  the caches downstream. */
+export function visibleGroup(g: Group, included: readonly string[] = []): Group {
+  if (!g.omitted?.length) return g;
+
+  const key = [...included].sort().join(",");
+  let byKey = views.get(g);
+  if (!byKey) views.set(g, (byKey = new Map()));
+  const hit = byKey.get(key);
+  if (hit) return hit;
+
+  const rules = activeRules(g, included);
+  const keep = (list: WordEntry[]) => list.filter((e) => !isOmitted(e, rules));
+  // One `as` per rule that is actually in force; a rule the reader switched back
+  // on brings its own entries, and needs no stand-in.
+  const standIns = rules.map((r) => r.as).filter((a): a is WordEntry => a !== undefined);
+
+  const view: Group = g.tiers
+    ? { ...g, tiers: appendToLast(g.tiers.map(keep), standIns) }
+    : { ...g, words: [...keep(g.words ?? []), ...standIns] };
+  byKey.set(key, view);
+  return view;
+}
+
+/** Stand-ins join the least famous tier: they represent a family that was pruned
+ *  for being obscure, so promoting them above it would misreport them. */
+function appendToLast(tiers: WordEntry[][], extra: WordEntry[]): WordEntry[][] {
+  if (extra.length === 0) return tiers;
+  const out = tiers.map((t) => [...t]);
+  if (out.length === 0) return [extra];
+  out[out.length - 1].push(...extra);
+  return out;
 }

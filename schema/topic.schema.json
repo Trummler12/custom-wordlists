@@ -133,7 +133,28 @@
         },
         "as": {
           "allOf": [{ "$ref": "#/$defs/word" }],
-          "description": "A name that stands for the whole family, added to the list in their place. For a family whose base form the source never had: `Datenkarte01`…`27` collapse to `Datenkarte`. Leave it out where the base form is already an entry of its own (the `X-… 2`–`6` variants)."
+          "description": "A name that stands for the whole family, added to the list in their place. For a family whose base form the source never had: `Datenkarte01`…`27` collapse to `Datenkarte`. Leave it out where the base form is already an entry of its own (the `X-… 2`–`6` variants). A stand-in joins the least famous tier, since it represents a family pruned for being obscure."
+        },
+        "optional": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["id", "label"],
+          "description": "Present when the reader may ask this family back into the list, via a checkbox in the ⌗ panel. For omissions that are merely too niche rather than junk: every Datenkarte tracks different Pokéathlon data, so deep enough in the lore they are 27 distinct drawable things. A last fame tier would be a trap for those.",
+          "properties": {
+            "id": {
+              "allOf": [{ "$ref": "#/$defs/id" }],
+              "description": "Stable key for the reader's stored choice — editing the glob must not silently reset it."
+            },
+            "label": {
+              "allOf": [{ "$ref": "#/$defs/word" }],
+              "description": "What the checkbox names: \"Include ⟨label⟩\"."
+            },
+            "url": {
+              "type": "string",
+              "pattern": "^https?://",
+              "description": "Where to read about the family, linked from the label."
+            }
+          }
         }
       }
     },
