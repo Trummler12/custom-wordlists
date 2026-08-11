@@ -3,6 +3,24 @@
 Small ideas parked for later; pick up when a related area is touched. Anything
 big enough to discuss belongs in an issue instead.
 
+- **Legacy names for the League of Legends champions.** A few champions were
+  introduced under one name and renamed later, and someone who stopped playing
+  years ago knows only the old one. Both should be drawable, with the old ones off
+  by default behind an "include legacy names" checkbox.
+
+  **The machinery for that already exists.** An `omitted` rule is exactly this:
+  entries that sit in the file, are filtered on the way into the list, and come
+  back when the reader unticks them in the 🧹 panel. So this is data work — add the
+  legacy names as ordinary entries, then one rule whose `match` is the list of
+  them (a glob with no wildcards is a literal, and `match` already takes a list).
+  No new field, no new UI.
+
+  Two things to sort out when doing it: `data-raw/gaming/League of Legends/Champions
+  by Fame.txt` has a column per champion, but it holds their *title* (`Darkin
+  Blade` → Aatrox), so the legacy names have to come from somewhere else. And the
+  file writes each tier on one line, unlike every other tiered list — worth
+  expanding to one entry per line while it's open, which is what
+  `scripts/lib/serialize.mjs` would do anyway.
 - **Somewhere to record a correction to imported data.** Upstream is sometimes
   simply wrong, and the fix has to survive the next import. It already happened
   once: PokéAPI returns four Pokémon with mixed or swapped Han scripts —
