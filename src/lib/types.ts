@@ -80,11 +80,27 @@ export type Word = string | { short: string; long: string };
 /** Which form(s) of a short/long name a group emits. Per group, default "long". */
 export type NamesMode = "short" | "long" | "both";
 
+/** One family of entries a list deliberately leaves out. See lib/omitted. */
+export interface Omission {
+  /** Whole-name glob: `*`, `?`, `[0-9]`. Matches an entry when any of its
+   *  language forms matches, since the same junk is named differently per
+   *  language. */
+  match: string;
+  /** Why, in one phrase — this is what the reader is shown. */
+  reason: string;
+  /** The name that stands for the family, where the source has none of its own
+   *  (`Datenkarte01`…`27` → `Datenkarte`). Localized, because the base name is
+   *  missing in every language, not just the one the pattern is written in. */
+  as?: WordEntry;
+}
+
 /** A group of words: either a flat `words` list or ordered fame `tiers`. */
 export interface Group {
   id: string;
   /** Display name, same shape as an entry — see `displayName` in lib/words. */
   title: WordEntry;
+  /** What this list leaves out of its source, and why. */
+  omitted?: Omission[];
   words?: WordEntry[];
   tiers?: WordEntry[][];
 }
