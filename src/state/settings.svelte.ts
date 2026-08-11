@@ -12,20 +12,55 @@ class SettingsState {
    *  few is still clutter to everyone else. */
   showEnglishToggle = $state(false);
 
+  /** Omission rules the reader has flipped away from their default — keyed
+   *  `${topicId}:${groupId}:${ruleId}`. One set covers both directions: an
+   *  `omitted` rule listed here is switched off, an `omittable` one switched on.
+   *  Only deviations are stored, so the common case is an empty record. */
+  toggledOmissions = $state<Record<string, boolean>>({});
+
   init(): void {
     const stored = read();
-    if (stored) this.showEnglishToggle = !!stored.showEnglishToggle;
+    if (!stored) return;
+    this.showEnglishToggle = !!stored.showEnglishToggle;
+    this.toggledOmissions = stored.toggledOmissions ?? {};
   }
 
   setShowEnglishToggle(on: boolean): void {
     this.showEnglishToggle = on;
-    write({ showEnglishToggle: on });
+    this.save();
+  }
+
+  key(tid: string, gid: string, ruleId: string): string {
+    return `${tid}:${gid}:${ruleId}`;
+  }
+
+  /** The rule ids flipped for this group — what `visibleGroup` takes. */
+  toggledFor(tid: string, gid: string, ruleIds: string[]): string[] {
+    return ruleIds.filter((id) => this.toggledOmissions[this.key(tid, gid, id)]);
+  }
+  isToggled(tid: string, gid: string, ruleId: string): boolean {
+    return !!this.toggledOmissions[this.key(tid, gid, ruleId)];
+  }
+  toggleOmission(tid: string, gid: string, ruleId: string): void {
+    const k = this.key(tid, gid, ruleId);
+    if (this.toggledOmissions[k]) delete this.toggledOmissions[k];
+    else this.toggledOmissions[k] = true;
+    this.save();
+  }
+
+  private save(): void {
+    write({
+      showEnglishToggle: this.showEnglishToggle,
+      toggledOmissions: this.toggledOmissions,
+    });
   }
 }
 
 // localStorage throws in a few real setups (private mode, blocked storage), and a
 // missing preference is never worth an error.
-function read(): { showEnglishToggle?: boolean } | null {
+type Stored = { showEnglishToggle?: boolean; toggledOmissions?: Record<string, boolean> };
+
+function read(): Stored | null {
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
     return raw ? JSON.parse(raw) : null;
@@ -33,7 +68,7 @@ function read(): { showEnglishToggle?: boolean } | null {
     return null;
   }
 }
-function write(value: { showEnglishToggle: boolean }): void {
+function write(value: Stored): void {
   try {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(value));
   } catch {

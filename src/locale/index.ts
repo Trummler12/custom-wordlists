@@ -28,6 +28,13 @@ export interface UIStrings {
   fameGroupsDefined: (count: number) => string;
   /** Ruler tooltip for a list that hasn't — an invitation to rank it. */
   noFameGroups: string;
+  /** 🧹 button and the panel it opens: what this list leaves out. */
+  omittedLabel: string;
+  omittedTitle: string;
+  /** Checkbox beside one omission rule; label reflects what a click would do. */
+  omitToggle: (omitted: boolean) => string;
+  /** Why one rule's checkbox is disabled. */
+  omitLocked: string;
   /** Settings button (aria-label) and the menu's own label. */
   settings: string;
   /** Label of the preference that reveals the per-list English toggles. */

@@ -1,13 +1,16 @@
 <script lang="ts">
-  // Why a placeholder and not HTML in the string: Svelte escapes interpolated
-  // text, and the alternative ({@html}) would put every translation on an
-  // unescaped path to the DOM. A placeholder keeps the strings plain data.
-  //
-  // Only `{br}` so far. plain.ts has to know the same set; docs/BACKLOG.md has
-  // the tags that might follow.
+  import { parseMarkup } from "./markup";
+
+  // Renders the inline markup a translatable string may carry — `{br}` and
+  // `[text](url)`. The tag set and its safety rules live in ./markup, which
+  // plain.ts reads too; see there for why this is parsed rather than {@html}.
   let { text }: { text: string } = $props();
 
-  const parts = $derived(text.split("{br}"));
+  const parts = $derived(parseMarkup(text));
 </script>
 
-{#each parts as part, i (i)}{#if i}<br />{/if}{part}{/each}
+{#each parts as part, i (i)}{#if part.kind === "br"}<br />{:else if part.kind === "link"}<a
+      href={part.href}
+      target="_blank"
+      rel="noopener noreferrer">{part.text}</a
+    >{:else}{part.text}{/if}{/each}

@@ -15,6 +15,7 @@
   import FameDepthSlider from "./FameDepthSlider.svelte";
   import GroupRow from "./GroupRow.svelte";
   import NamesModeSelect from "./NamesModeSelect.svelte";
+  import OmittedPanel from "./OmittedPanel.svelte";
 
   let { topic }: { topic: TopicSummary } = $props();
 
@@ -106,6 +107,9 @@
          checkbox it names ambiguous, and the count isn't a name for anything. -->
     {#if sole}
       <NamesModeSelect tid={topic.id} group={sole} label={name.long} />
+    {/if}
+    {#if sole}
+      <OmittedPanel tid={topic.id} group={sole} />
     {/if}
     {#if englishOptIn}
       <button

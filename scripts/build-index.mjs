@@ -19,12 +19,54 @@ const OUT_FILE = join(ROOT, "data", "index.json");
 // Sidecar filename holding a category node's display metadata (never a topic).
 const CATEGORY_META = "_category.json";
 
-/** Total words in a topic file (flat `words` + flattened `tiers`). */
+/** Every string an entry carries. Mirrors `entryForms` in src/lib/omitted.ts —
+ *  see validate-data.mjs for why a .mjs script keeps its own copy. */
+function entryForms(word) {
+  if (typeof word === "string") return [word];
+  const parts = "short" in word && "long" in word ? [word.short, word.long] : Object.values(word);
+  return parts.flatMap(entryForms);
+}
+
+/** A whole-name glob as a RegExp. Mirrors `globToRegExp` in src/lib/omitted.ts. */
+function globToRegExp(glob) {
+  let out = "";
+  for (let i = 0; i < glob.length; i++) {
+    const c = glob[i];
+    if (c === "*") out += ".*";
+    else if (c === "?") out += ".";
+    else if (c === "[") {
+      const end = glob.indexOf("]", i + 1);
+      if (end === -1) out += "\\[";
+      else {
+        out += glob.slice(i, end + 1);
+        i = end;
+      }
+    } else out += c.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  }
+  return new RegExp(`^${out}$`, "u");
+}
+
+/** Words a topic contributes as the app shows it: omitted families out, each
+ *  rule's stand-in in. The manifest count is what a topic row advertises before
+ *  its file loads, so counting the raw list would make the number jump on load. */
 function countWords(topic) {
   let n = 0;
   for (const group of topic.groups) {
-    if (group.words) n += group.words.length;
-    if (group.tiers) for (const tier of group.tiers) n += tier.length;
+    const rules = (group.omitted ?? []).map((o) => ({
+      res: [o.match].flat().map(globToRegExp),
+      except: o.except ?? [],
+      as: o.as,
+    }));
+    const covered = (e) => {
+      const forms = entryForms(e);
+      return rules.some(
+        (r) => !r.except.some((x) => forms.includes(x)) && forms.some((f) => r.res.some((p) => p.test(f))),
+      );
+    };
+    const kept = (list) => list.filter((e) => !covered(e)).length;
+    if (group.words) n += kept(group.words);
+    if (group.tiers) for (const tier of group.tiers) n += kept(tier);
+    n += rules.filter((r) => r.as !== undefined).length;
   }
   return n;
 }

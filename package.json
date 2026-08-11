@@ -9,6 +9,7 @@
     "build": "npm run build:index && svelte-check --tsconfig ./tsconfig.json && vite build",
     "preview": "vite preview",
     "check": "svelte-check --tsconfig ./tsconfig.json",
+    "test": "vitest run",
     "typecheck:node": "tsc -p tsconfig.node.json --noEmit",
     "build:index": "node scripts/build-index.mjs",
     "validate": "node scripts/validate-data.mjs"
@@ -22,6 +23,7 @@
     "svelte-check": "^4.1.4",
     "tslib": "^2.8.1",
     "typescript": "^5.7.3",
-    "vite": "^6.0.7"
+    "vite": "^6.0.7",
+    "vitest": "^4.1.10"
   }
 }

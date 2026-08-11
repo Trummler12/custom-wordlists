@@ -64,6 +64,25 @@ Prefer to edit the data yourself:
    - `"usesEnglishFor"` names the languages among those whose entries simply *are* the English names — League of Legends champions are called the same in German. The app then shows an ℹ️ rather than leaving a reader to wonder why a German list is full of English words. Use `"*"` for a list that is English in every language you haven't named in `"languages"`.
    - Entries must be unique within a topic, and the topic's `"id"` must match its file stem (or, for a topic alone in its own folder, the folder name).
    - `"sources"` (where the entries came from) and `"credits"` (who compiled them) are optional and free-form — a single string or a list. A label may precede the link, e.g. `"German: https://…"`. Please fill in `"sources"` for a new list.
+   - `"omitted"` lists families of entries the list hides from its source — junk nobody could draw, or numbered copies of one drawable thing. **The entries stay in the file**: they are filtered on the way into the list, so every rule is reversible and the app can show a 🧹 panel saying what was left out and offering it back.
+
+     ```json
+     "omitted": [
+       { "id": "data-cards", "match": "Datenkarte[0-9]*",
+         "as": { "en": "Data Card", "de": "Datenkarte" },
+         "reason": { "en": "27 numbered [Data Cards](https://…), each recording a different statistic",
+                     "de": "27 nummerierte [Datenkarten](https://…), die je eine andere Statistik festhalten" } }
+     ]
+     ```
+
+     - `"id"` — kebab-case, unique within the group. It keys the reader's choice, so you may edit the glob without resetting it.
+     - `"match"` — a whole-name glob (`*` any run, `?` one character, `[0-9]` a class), or a list of them where one family is named too differently across languages to share a pattern (`"X-* [2-6]"` and `"Angriffplus[0-9]"`). A rule matches an entry when **any** of its language forms does, so one glob covers `"Data Card 01"` and `"Datenkarte01"` alike — write it in whichever language reads best.
+     - `"reason"` — one phrase, localized, shown beside the checkbox. It may carry `{br}` and `[text](url)` links (https only), so point at a wiki page for what you removed.
+     - `"as"` — optional: a name that stands for the family, added in their place, for a family whose base form the source never had. Leave it out where the base is already an entry of its own.
+     - `"except"` — optional: names the glob catches but shouldn't. Globs have no negation, and one exception beats a contorted pattern: `"*-Bonbon"` means the species candies, not `"Dynamax-Bonbon"`.
+     - `"locked"` — optional: the reader can't switch this rule off. Only for entries that aren't words at all (300 crystals named `★Sgr6879`), where adding them back could only be an accident.
+   - `"omittable"` takes the same rules with the opposite default: those entries are **present** unless the reader ticks them off. Use it for legitimate words that someone might still want gone — the 80 species candies are real items, and the first thing to cut if you need room for the Pokémon themselves.
+   - `npm run validate` checks the rules against the list: it warns when a rule matches nothing (a stale glob, or a typo) and errors when a rule would swallow its own `"as"`.
    - A **fame group** (`FG 1`, `FG 2`, … in a proposal) is one entry of a group's `"tiers"` array — the schema and the app call these *tiers* (`FG 1` = tier 0). Careful: `"groups"` in the JSON means something else entirely, namely the subtopic that carries its own checkbox (e.g. "Characters").
 3. Validate before opening the PR:
    ```bash

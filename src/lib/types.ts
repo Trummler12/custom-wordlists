@@ -80,11 +80,49 @@ export type Word = string | { short: string; long: string };
 /** Which form(s) of a short/long name a group emits. Per group, default "long". */
 export type NamesMode = "short" | "long" | "both";
 
+/** One family of entries a list deliberately leaves out. Every rule can be
+ *  switched back on by the reader, so each needs a stable key. See lib/omitted. */
+export interface Omission {
+  /** Stable key for the reader's stored choice — the glob may be edited without
+   *  resetting it. */
+  id: string;
+  /** Whole-name glob: `*`, `?`, `[0-9]`. Matches an entry when any of its
+   *  language forms matches any of these, since the same junk is named
+   *  differently per language — sometimes differently enough to need a second
+   *  glob (`X-Angriff 2` and `Angriffplus2` are one family). */
+  match: string | string[];
+  /** Why, in one phrase — the line the reader sees beside the checkbox. Lives
+   *  here rather than in a locale because it describes this list's source, not
+   *  the app; may carry `[text](url)` and `{br}`, resolved by locale/html. */
+  reason: LocalizedString;
+  /** The name that stands for the family, where the source has none of its own
+   *  (`Datenkarte01`…`27` → `Datenkarte`). Localized, because the base name is
+   *  missing in every language, not just the one the pattern is written in. */
+  as?: WordEntry;
+  /** Names the glob catches but shouldn't — a glob has no negation, and one
+   *  exception is cheaper than a pattern contorted to avoid it. `*-Bonbon` means
+   *  the 80 species candies, not `Dynamax-Bonbon`. Matched against any language
+   *  form, like the glob itself. */
+  except?: string[];
+  /** When true, the reader can't switch this rule off — its checkbox is shown but
+   *  disabled. For a family that isn't words at all, where re-including it could
+   *  only ever be a mistake (300 Dynamax Crystals named `★Sgr6879`). Rare: the
+   *  default is that anything omitted can be asked back. */
+  locked?: boolean;
+}
+
 /** A group of words: either a flat `words` list or ordered fame `tiers`. */
 export interface Group {
   id: string;
   /** Display name, same shape as an entry — see `displayName` in lib/words. */
   title: WordEntry;
+  /** What this list leaves out of its source, and why. Filtered by default; the
+   *  reader may switch any of them back on (unless `locked`). */
+  omitted?: Omission[];
+  /** Families the list *offers* to leave out — present by default, removable on
+   *  demand. Same shape, opposite default: 80 species candies are legitimate
+   *  words, and still the first thing someone short of drawing room would cut. */
+  omittable?: Omission[];
   words?: WordEntry[];
   tiers?: WordEntry[][];
 }

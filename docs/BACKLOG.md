@@ -3,6 +3,25 @@
 Small ideas parked for later; pick up when a related area is touched. Anything
 big enough to discuss belongs in an issue instead.
 
+- **Somewhere to record a correction to imported data.** Upstream is sometimes
+  simply wrong, and the fix has to survive the next import. It already happened
+  once: PokéAPI returns four Pokémon with mixed or swapped Han scripts —
+  Porygon-Z and Flamigo carry a traditional character inside their simplified
+  name, Iron Boulder and Iron Crown have theirs the wrong way round — and the
+  repair lives in a `CHINESE_FIXES` constant inside
+  `scripts/enrich-pokemon-langs.mjs`. That is a data decision hiding in a script,
+  where nobody curating the list would think to look for it.
+
+  The catch that makes this different from `omitted`: **a correction is an
+  instruction to the importer, not to the app.** Omissions are applied at load,
+  every time, because they describe how a list should be *shown*. A correction
+  belongs in the file itself — the entry should simply be right — and the field
+  exists only so the next re-import doesn't undo it. So it wants a home the
+  codemods read and the frontend ignores, which may well be beside `sources`
+  rather than inside a group.
+
+  (Not motivated by `{"en":"Carbos","de":"Carbon"}` — that one is correct, Carbos
+  being the English name of the Speed vitamin.)
 - **Record what a list deliberately leaves out.** Some sources carry entries nobody
   could draw. `data/topics/gaming/pokemon/items.json` is the worst case: **300 of
   its 1330 entries are `★And390`-style decoration data** (22.6%), plus
@@ -79,11 +98,27 @@ big enough to discuss belongs in an issue instead.
     the source dumps already, so the honest answer may be that the raw file *is* the
     complete record and the topic file only needs the rules — with the tooltip
     pointing at the source rather than pretending to be exhaustive.
-- **More inline markup in locale strings.** Once `src/locale/html/` exists (the
-  `{br}` snippet), `{i}`…`{/i}` and `{b}`…`{/b}` are the obvious companions: a
+- **One matcher instead of two.** `scripts/validate-data.mjs` carries its own copy
+  of `globToRegExp` and `entryForms`, mirroring the tested ones in
+  `src/lib/omitted.ts`, because a `.mjs` script can't import TypeScript — the same
+  reason `LANG_RE` is duplicated against the schema. Two ways out, neither urgent:
+  raise CI's Node from 20 to 22+ and import the `.ts` directly via native
+  type-stripping (which needs the module free of value imports, since stripping
+  doesn't add extension resolution), or move the shared helpers into a plain `.mjs`
+  both sides import. The second is smaller; the first would also let the other
+  scripts share frontend logic, so it is worth deciding once rather than twice.
+- **More inline markup in locale strings.** `src/locale/html/` handles `{br}` and
+  `[text](url)`; `{i}`…`{/i}` and `{b}`…`{/b}` are the obvious companions — a
   parser that turns a marked-up string into a list of parts, and one snippet per
   tag. Nothing needs them today — add a tag the first time a string actually wants
   it, not before.
+- **Group the locale keys.** `UIStrings` is ~40 flat keys covering the header, the
+  tree, the rulers, the output and the footer, and it only grows. Nesting them by
+  area (`topics.wordsOf`, `output.copied`, …) would make both dictionaries
+  readable at a glance and make a missing translation obvious. It is a mechanical
+  rename across every component that reads `lang.ui.*`, so it wants a quiet moment
+  and a PR of its own — never alongside a feature, where the two diffs would hide
+  each other.
 - **English entries *in addition* to the selected language.** The per-topic English
   toggle replaces a list's entries; a third state would add them, for a game where
   either name should count. What makes it worth building is the tooltip, which

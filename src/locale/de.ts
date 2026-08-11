@@ -18,6 +18,11 @@ export const de: UIStrings = {
   fameGroupsDefined: (count) => `Fame-Gruppen definiert: ${count}`,
   noFameGroups:
     "Noch keine Fame-Gruppen definiert — im Contribution Guide im Footer erfährst du, wie du welche vorschlagen kannst!",
+  omittedLabel: "Was diese Liste weglässt",
+  omittedTitle: "Nicht in dieser Liste:",
+  omitToggle: (omitted) =>
+    omitted ? "Umschalten, um diese in die Liste aufzunehmen" : "Umschalten, um diese wegzulassen",
+  omitLocked: "Das sind Spieldaten und keine Wörter, sie lassen sich nicht aufnehmen.",
   settings: "Einstellungen",
   showEnglishToggle: "Option zum Verwenden englischer Einträge anzeigen",
   showEnglishToggleEn: "Diese Schalter erscheinen nur bei anderen Sprachen als Englisch.",
