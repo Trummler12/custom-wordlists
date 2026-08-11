@@ -17,7 +17,7 @@ Number 	Pokémon 	% Correct
 	86.5%
 907	Floragato	
 	86.1%
-901	Crocalor	
+910	Crocalor	
 	83.8%
 915	Lechonk	
 	83.5%
