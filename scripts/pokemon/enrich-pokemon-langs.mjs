@@ -11,13 +11,18 @@
 // entries are corrected here (see CHINESE_FIXES) rather than in the raw dump, which
 // stays verbatim per its own README ("normalize before using in production").
 //
-// Run once: `node scripts/enrich-pokemon-langs.mjs`.
+// Run once: `node scripts/pokemon/enrich-pokemon-langs.mjs`.
+//
+// SUPERSEDED, and it throws rather than pretending otherwise. The join here is
+// positional — entry i of the group is dex order i — and the generations carry six
+// fame `tiers` since #31, so position no longer means dex. Replaced by the by-name
+// join in enrich-names.mjs; kept only until CHINESE_FIXES has moved there.
 import { readFile, writeFile } from "node:fs/promises";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
-import { serializeTopic } from "./lib/serialize.mjs";
+import { serializeTopic } from "../lib/serialize.mjs";
 
-const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
+const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..", "..");
 const RAW = join(ROOT, "data-raw", "gaming", "pokemon", "pokemon");
 const TOPICS = join(ROOT, "data", "topics", "gaming", "pokemon", "pokemon");
 

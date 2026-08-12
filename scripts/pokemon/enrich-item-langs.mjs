@@ -1,10 +1,10 @@
 // Adds every language PokéAPI has to data/topics/gaming/pokemon/items.json, from
-// the dumps scripts/dump-item-names.mjs writes. The item counterpart of
+// the dumps scripts/pokemon/dump-names.mjs writes. The item counterpart of
 // enrich-pokemon-langs.mjs, and separate from it because the join is different:
 // the generations align positionally to National Dex order, while items carry no
 // id of their own and are matched by their English name.
 //
-//   node scripts/enrich-item-langs.mjs [--add-new] [--write]
+//   node scripts/pokemon/enrich-item-langs.mjs [--add-new] [--write]
 //
 // Four things worth knowing about the source:
 //   · It stops localizing partway. Five of the nine languages have nothing past
@@ -24,10 +24,10 @@
 import { readFile, writeFile, readdir } from "node:fs/promises";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
-import { serializeTopic } from "./lib/serialize.mjs";
-import { UNKNOWN } from "./lib/omissions.mjs";
+import { serializeTopic } from "../lib/serialize.mjs";
+import { UNKNOWN } from "../lib/omissions.mjs";
 
-const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
+const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..", "..");
 const DUMPS = join(ROOT, "data-raw", "gaming", "pokemon", "items");
 const TOPIC = join(ROOT, "data", "topics", "gaming", "pokemon", "items.json");
 
