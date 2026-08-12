@@ -111,6 +111,17 @@ function usedLangs(topic) {
   return out;
 }
 
+/** Every entry of a topic, tiers flattened — the entries themselves, where
+ *  `allWords` hands back their dedup keys. */
+function allEntries(topic) {
+  const out = [];
+  for (const group of topic.groups) {
+    if (group.words) out.push(...group.words);
+    if (group.tiers) for (const tier of group.tiers) out.push(...tier);
+  }
+  return out;
+}
+
 function allWords(topic) {
   const out = [];
   for (const group of topic.groups) {
@@ -254,6 +265,29 @@ async function main() {
           if (e[l] !== undefined) {
             warnings.push(`${rel}: "${entryKey(e)}" lists "${l}" as unknown but has a name for it`);
           }
+        }
+      }
+    }
+
+    // 4c. corrections are instructions to the import, and the only way to tell
+    //     whether one still holds is to look at the entry it names. A stale one is
+    //     worse than none: it reads as a promise the file no longer keeps.
+    for (const c of topic.corrections ?? []) {
+      const entry = allEntries(topic).find((e) => baseStr(typeof e === "string" ? e : e.en) === c.entry);
+      if (!entry) {
+        warnings.push(`${rel}: correction for "${c.entry}" matches no entry`);
+        continue;
+      }
+      for (const [l, fix] of Object.entries(c)) {
+        if (l === "entry" || l === "why") continue;
+        if (topic.languages && !topic.languages.includes(l)) {
+          errors.push(`${rel}: correction for "${c.entry}" names language "${l}", not in languages`);
+        }
+        const have = typeof entry === "string" ? entry : entry[l];
+        if (have !== fix.new) {
+          warnings.push(
+            `${rel}: correction for "${c.entry}" (${l}) is not applied — entry has "${have}", correction says "${fix.new}"`,
+          );
         }
       }
     }
