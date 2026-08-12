@@ -11,6 +11,33 @@ export function resolveStr(s: LocalizedString, lang: string): string {
   return typeof s === "string" ? s : (s[lang] ?? s.en);
 }
 
+/** The key an entry uses to name the languages its source had no name for. Not a
+ *  language of its own: `resolveWord` never looks it up and `entryForms` skips it.
+ *
+ *  It exists because an absent key already means something else. An entry omits a
+ *  language it agrees with English on, so `"Protein"` says *Protein everywhere* —
+ *  and a bulk source that simply stops at Legends: Arceus would be saying the same
+ *  about a name nobody has ever written down. This is how a list says "we have
+ *  nothing here" instead of asserting the English word. */
+export const UNKNOWN = "?";
+
+/** The languages an entry declares it has no name for — empty for every entry
+ *  that declares none, which is every hand-written one. */
+export function unknownLangs(e: WordEntry): readonly string[] {
+  if (typeof e === "string") return [];
+  const v = (e as Record<string, unknown>)[UNKNOWN];
+  return Array.isArray(v) ? (v as string[]) : [];
+}
+
+/** Whether the list has no name for this entry in `lang`. An own key wins: a name
+ *  filled in by hand outranks a gap the bulk source reported, so correcting one
+ *  entry needs no edit to the `?` beside it. English never counts as unknown — it
+ *  is the base every entry has. */
+export function isUnknownIn(e: WordEntry, lang: string): boolean {
+  if (lang === "en" || typeof e === "string") return false;
+  return (e as Record<string, unknown>)[lang] === undefined && unknownLangs(e).includes(lang);
+}
+
 /** Resolve an entry to `lang`. Two equivalent shapes are accepted: the preferred
  *  leaf form (a name pair whose fields each localize) and an entry-level language
  *  map { en, de, … } whose value is itself an entry — the latter is resolved by

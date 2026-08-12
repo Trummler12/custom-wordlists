@@ -103,7 +103,16 @@
       "minProperties": 1,
       "required": ["en"],
       "description": "An entry-level per-language map: keys are language codes (\"en\" is the base), values are whole entries (a string or a name pair). Equivalent in content to leaf-localizing each field; the leaf form is preferred, but this whole-entry form is accepted too (e.g. from community content).",
-      "propertyNames": { "pattern": "^[a-z]{2}(-[A-Z]{2}|-[A-Z][a-z]{3})?$" },
+      "propertyNames": { "pattern": "^(\\?|[a-z]{2}(-[A-Z]{2}|-[A-Z][a-z]{3})?)$" },
+      "properties": {
+        "?": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "type": "string", "pattern": "^[a-z]{2}(-[A-Z]{2}|-[A-Z][a-z]{3})?$" },
+          "description": "Languages this entry has NO name in — the source data carried none. Not the same as an absent key, which means the language agrees with \"en\": without this, a bulk source that stops localizing partway would silently assert the English word as the German one. Written by the enrichment scripts, and outranked by an own key for the same language, so a name filled in by hand needs no edit here."
+        }
+      },
       "additionalProperties": {
         "oneOf": [{ "type": "string", "minLength": 1 }, { "$ref": "#/$defs/namePair" }]
       }

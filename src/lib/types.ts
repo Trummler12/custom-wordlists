@@ -72,7 +72,15 @@ export interface NamePair {
  *  may itself localize — the preferred form), or an entry-level language map whose
  *  values are a whole entry — a string or name pair (also accepted, e.g. from
  *  community content). */
-export type WordEntry = LocalizedString | NamePair | LangMap<string | NamePair>;
+export type WordEntry = LocalizedString | NamePair | LangMapEntry;
+
+/** An entry-level language map. Beside the languages it carries a `"?"` listing
+ *  the ones it has no name in at all — see `UNKNOWN` in lib/words for why an
+ *  absent key can't say that. */
+export type LangMapEntry = { en: string | NamePair; "?"?: string[] } & Record<
+  string,
+  string | NamePair | string[] | undefined
+>;
 
 /** A word resolved to the active language: a plain string or a short/long pair. */
 export type Word = string | { short: string; long: string };
@@ -125,6 +133,11 @@ export interface Group {
   omittable?: Omission[];
   words?: WordEntry[];
   tiers?: WordEntry[][];
+  /** How many entries the list has no name for in the language it is being shown
+   *  in — see `unknownCount` in lib/omitted. Not a field of the file: `visibleGroup`
+   *  puts it on the view it hands back, because by then the entries it counts are
+   *  gone and only the view knows how many there were. */
+  unknownCount?: number;
 }
 
 /** A named bundle of group ids within a topic. */
