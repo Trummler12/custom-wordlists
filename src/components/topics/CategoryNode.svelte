@@ -62,19 +62,19 @@
     <button
       type="button"
       class="english-toggle"
-      class:on={selection.allForcedEnglish(englishGoverned)}
-      class:mixed={selection.someForcedEnglish(englishGoverned)}
-      aria-pressed={selection.allForcedEnglish(englishGoverned)
+      class:on={lang.allForcedEnglish(englishGoverned)}
+      class:mixed={lang.someForcedEnglish(englishGoverned)}
+      aria-pressed={lang.allForcedEnglish(englishGoverned)
         ? "true"
-        : selection.someForcedEnglish(englishGoverned)
+        : lang.someForcedEnglish(englishGoverned)
           ? "mixed"
           : "false"}
-      aria-label={lang.ui.englishToggleAll(selection.allForcedEnglish(englishGoverned))}
-      title={lang.ui.englishToggleAll(selection.allForcedEnglish(englishGoverned))}
+      aria-label={lang.ui.englishToggleAll(lang.allForcedEnglish(englishGoverned))}
+      title={lang.ui.englishToggleAll(lang.allForcedEnglish(englishGoverned))}
       onclick={() => {
         // Same reasoning as the ruler toggle below: a collapsed category shows
         // none of the rows this changes, so open it to show what happened.
-        selection.toggleCatEnglish(englishGoverned);
+        lang.toggleCatEnglish(englishGoverned);
         if (!open) selection.toggleCat(node);
       }}
     >🇬🇧</button>

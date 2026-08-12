@@ -4,6 +4,7 @@
 
 import { SKRIBBL } from "../lib/skribbl";
 import { renderEntry } from "../lib/words";
+import { lang } from "./lang.svelte";
 import { selection } from "./selection.svelte";
 import { topics } from "./topics.svelte";
 
@@ -19,7 +20,7 @@ class OutputState {
         const mode = selection.modeOf(selection.key(t.id, g.id));
         // Per topic, not per app: a topic switched to English emits English here
         // while the rest of the list follows the interface language.
-        const code = selection.contentLang(t.id);
+        const code = lang.contentLang(t.id);
         for (const e of selection.entriesOf(t.id, g)) {
           for (const w of renderEntry(e, mode, code)) {
             if (!seen.has(w)) {
