@@ -9,6 +9,11 @@
     "Names: https://pokeapi.co",
     "Fame: https://de.sporcle.com/games/SparknightSyzygy/pokemon-gen-ix"
   ],
+  "corrections": [
+    {"entry":"Flamigo","zh-Hans":{"old":"纏红鹤","new":"缠红鹤"},"why":"PokéAPI mixes the Traditional 纏 into the Simplified name"},
+    {"entry":"Iron Boulder","zh-Hans":{"old":"鐵磐岩","new":"铁磐岩"},"zh-Hant":{"old":"铁磐岩","new":"鐵磐岩"},"why":"PokéAPI has the two scripts the wrong way round"},
+    {"entry":"Iron Crown","zh-Hans":{"old":"鐵頭殼","new":"铁头壳"},"zh-Hant":{"old":"铁头壳","new":"鐵頭殼"},"why":"PokéAPI has the two scripts the wrong way round"}
+  ],
   "groups": [
     {
       "id": "pokemon",
