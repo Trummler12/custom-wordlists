@@ -23,9 +23,11 @@ export const de: UIStrings = {
   omitToggle: (omitted) =>
     omitted ? "Umschalten, um diese in die Liste aufzunehmen" : "Umschalten, um diese wegzulassen",
   omitLocked: "Das sind Spieldaten und keine Wörter, sie lassen sich nicht aufnehmen.",
-  omitUnknown: (n) => `${n} Einträge ohne Deutsche Namen in den Ausgangsdaten`,
-  omitUnknownHint:
-    "Eingeschaltet erscheinen sie unter ihrem englischen Namen – der einzige, der für sie bekannt ist.",
+  omitUnknown: (n) => `${n} Einträge ohne deutsche Namen in den Ausgangsdaten`,
+  omitUnknownHint: (omitted) =>
+    omitted
+      ? "Umschalten, um deren englische Namen (Fallback) in die Liste zu lassen."
+      : "Umschalten, um diese wieder wegzulassen.",
   settings: "Einstellungen",
   showEnglishToggle: "Option zum Verwenden englischer Einträge anzeigen",
   showEnglishToggleEn: "Diese Schalter erscheinen nur bei anderen Sprachen als Englisch.",

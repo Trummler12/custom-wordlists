@@ -35,9 +35,10 @@ export interface UIStrings {
   omitToggle: (omitted: boolean) => string;
   /** Why one rule's checkbox is disabled. */
   omitLocked: string;
-  /** The panel row for entries the list has no name for in this language. */
+  /** The panel row for entries the list has no name for in this language, and its
+   *  hint — which, like `omitToggle`, says what a click would do. */
   omitUnknown: (n: number) => string;
-  omitUnknownHint: string;
+  omitUnknownHint: (omitted: boolean) => string;
   /** Settings button (aria-label) and the menu's own label. */
   settings: string;
   /** Label of the preference that reveals the per-list English toggles. */

@@ -59,7 +59,7 @@
           {/each}
           {#if unknown > 0}
             <li>
-              <label title={lang.ui.omitUnknownHint}>
+              <label title={lang.ui.omitUnknownHint(hidingUnknown)}>
                 <input
                   type="checkbox"
                   checked={hidingUnknown}
