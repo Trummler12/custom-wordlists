@@ -1,10 +1,16 @@
-// Adds every language PokéAPI has to data/topics/gaming/pokemon/items.json, from
-// the dumps scripts/pokemon/dump-names.mjs writes. The item counterpart of
-// enrich-pokemon-langs.mjs, and separate from it because the join is different:
-// the generations align positionally to National Dex order, while items carry no
-// id of their own and are matched by their English name.
+// Adds every language PokéAPI has to one of the flat Pokémon lists, from the dumps
+// scripts/pokemon/dump-names.mjs writes.
 //
-//   node scripts/pokemon/enrich-item-langs.mjs [--add-new] [--write]
+//   node scripts/pokemon/enrich-names.mjs <items|moves> [--add-new] [--write]
+//
+// The join is by ENGLISH NAME: these lists carry no id of their own, and the one
+// alternative — aligning by position, as the generations once were — stopped being
+// true the moment a list was reordered into fame tiers.
+//
+// Corrections come from the topic file's own `corrections`, not from a constant in
+// here: where the source is wrong, the file says so, and this only carries it out.
+// (One limit: an entry whose ENGLISH name is corrected can't be found by the join,
+// since the join key is the corrected name. No list needs that today.)
 //
 // Four things worth knowing about the source:
 //   · It stops localizing partway. Five of the nine languages have nothing past
@@ -28,8 +34,14 @@ import { serializeTopic } from "../lib/serialize.mjs";
 import { UNKNOWN } from "../lib/omissions.mjs";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..", "..");
-const DUMPS = join(ROOT, "data-raw", "gaming", "pokemon", "items");
-const TOPIC = join(ROOT, "data", "topics", "gaming", "pokemon", "items.json");
+
+/** What can be enriched: the dump folder under data-raw, and the topic file it
+ *  feeds. Both are flat one-group lists joined by English name; the generations
+ *  are not here, being tiered and keyed by Dex number. */
+const LISTS = {
+  items: "items.json",
+  moves: "moves.json",
+};
 
 /** Dump filename → the tag stored in the data. Absent = not stored. */
 const TAG = {
@@ -45,7 +57,7 @@ const TAG = {
   // "es-419": pending a decision; "ja-hrkt" is merged into ja below.
 };
 
-async function readDump(name) {
+async function readDump(DUMPS, name) {
   const rows = new Map();
   for (const line of (await readFile(join(DUMPS, `${name}.txt`), "utf8")).trim().split(/\r?\n/)) {
     const t = line.indexOf("\t");
@@ -55,8 +67,13 @@ async function readDump(name) {
 }
 
 async function main() {
+  const list = process.argv[2];
+  if (!LISTS[list]) throw new Error(`say which list to enrich: ${Object.keys(LISTS).join(" | ")}`);
+  const DUMPS = join(ROOT, "data-raw", "gaming", "pokemon", list);
+  const TOPIC = join(ROOT, "data", "topics", "gaming", "pokemon", LISTS[list]);
+
   const names = (await readdir(DUMPS)).filter((f) => f.endsWith(".txt")).map((f) => f.slice(0, -4));
-  const dump = Object.fromEntries(await Promise.all(names.map(async (n) => [n, await readDump(n)])));
+  const dump = Object.fromEntries(await Promise.all(names.map(async (n) => [n, await readDump(DUMPS, n)])));
 
   // An English name can belong to several item ids — older and newer rows, or two
   // genuinely different items. Take the id carrying the most languages, then the
@@ -76,6 +93,14 @@ async function main() {
   const enOf = (e) => (typeof e === "string" ? e : e.en);
   const deOf = (e) => (typeof e === "string" ? e : e.de);
 
+  // The list's own repairs, by the entry they name. `validate` checks they are
+  // still reflected in the file; this is the half that puts them there.
+  const byEntry = new Map(
+    (topic.corrections ?? []).map(({ entry, why, ...langs }) => [entry, langs]),
+  );
+
+  const problems = [];
+
   /** One entry from an item id: `{ en }` plus a key per language that differs, and
    *  a `?` naming the languages the source has no row for at all.
    *
@@ -89,13 +114,23 @@ async function main() {
    *  name filled in that way must survive the next re-run. */
   const buildEntry = (id, en, existing) => {
     const own = existing && typeof existing === "object" ? existing : {};
+    const fixes = byEntry.get(en) ?? {};
     const out = { en };
     const unknown = [];
     for (const [file, tag] of Object.entries(TAG)) {
       if (tag === "en") continue;
       // `ja` falls back to the kana spelling, which covers more of the list.
       const value = file === "ja" ? (dump.ja.get(id) ?? dump["ja-hrkt"].get(id)) : dump[file].get(id);
-      const name = value ?? own[tag];
+      // A correction only holds against the source it was written for. If upstream
+      // now says something else, it may have fixed the bug or renamed the thing on
+      // purpose — either way, overwriting it blind is how a repair becomes damage.
+      const fix = fixes[tag];
+      if (fix && value !== fix.old) {
+        problems.push(
+          `"${en}" (${tag}): correction expects the source to say "${fix.old}", it says "${value}"`,
+        );
+      }
+      const name = (fix ? fix.new : value) ?? own[tag];
       if (name === undefined) unknown.push(tag);
       else if (name !== out.en) out[tag] = name;
     }
@@ -104,7 +139,6 @@ async function main() {
     return Object.keys(out).length === 1 ? out.en : out;
   };
 
-  const problems = [];
   const usedIds = new Set();
   const enriched = group.words.map((entry) => {
     const id = pick(enOf(entry));
@@ -170,6 +204,6 @@ async function main() {
 }
 
 main().catch((err) => {
-  console.error("enrich-item-langs failed:", err.message);
+  console.error("enrich-names failed:", err.message);
   process.exit(1);
 });
