@@ -7,7 +7,8 @@
 import { loadManifest, loadTopic } from "../lib/data";
 import { buildTree, titleCase, type CatNode } from "../lib/tree";
 import type { CategoryMeta, Group, Topic, TopicSummary } from "../lib/types";
-import { allRules, visibleGroup } from "../lib/omitted";
+import { langSupport } from "../lib/languages";
+import { allRules, UNKNOWN_RULE, visibleGroup } from "../lib/omitted";
 import { displayName, type DisplayName } from "../lib/words";
 import { settings } from "./settings.svelte";
 import { lang } from "./lang.svelte";
@@ -69,13 +70,22 @@ class TopicsState {
    *  empty until it has loaded.
    *
    *  The one place that resolves it, so counts, rulers, the output and every row
-   *  see the same list without any of them knowing about omissions. `visibleGroup`
-   *  hands back the group itself when it omits nothing, which is all but one list
-   *  today, and caches the rest. */
+   *  see the same list without any of them knowing about omissions — nor about
+   *  the entries a list has no name for in the language it is showing in, which
+   *  `visibleGroup` drops on the same terms. `visibleGroup` hands back the group
+   *  itself when neither applies, and caches the rest. */
   groupsOf(t: TopicSummary): Group[] {
     const groups = this.data[t.id]?.groups ?? [];
+    // A list whose names in this language simply *are* the English ones is being
+    // shown in English, whatever the picker says — so it has no gaps to hide.
+    const picked = lang.contentLang(t.id);
+    const code = langSupport(t, picked) === "english" ? "en" : picked;
     return groups.map((g) =>
-      visibleGroup(g, settings.toggledFor(t.id, g.id, allRules(g).map((o) => o.id))),
+      visibleGroup(
+        g,
+        settings.toggledFor(t.id, g.id, [...allRules(g).map((o) => o.id), UNKNOWN_RULE]),
+        code,
+      ),
     );
   }
 
