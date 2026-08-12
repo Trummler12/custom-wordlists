@@ -132,14 +132,16 @@ big enough to discuss belongs in an issue instead.
   that can be tested without mounting anything. `snapPositions` in `dom` has
   already had one bug found by reading alone, which is the argument for it.
 - **Latin-American Spanish where it actually differs.** PokéAPI ships `es-419`
-  beside `es`, and for the items they disagree on five names out of 1330. Not
-  worth a language: no locale, no entry in the picker, nothing in
-  `usesEnglishFor`. Worth a toggle — with Spanish selected, a list that carries
-  any `es-419` names offers to use them *instead of* `es`, the same shape as the
-  🧹 rows. The dumps are committed (`data-raw/gaming/pokemon/items/es-419.txt`),
-  so the data half is one line in the enrichment's `TAG` map; do it when the
-  toggle exists, not before, or 564 entries gain an `es-419` in their `?` for
-  nothing.
+  beside `es`, and how far apart they are depends entirely on the list: **5 names
+  out of 1330 for the items, but 254 of 937 for the moves.** A quarter of the move
+  names is not a rounding error — Latin America has its own vocabulary here.
+
+  Still not worth a language: no locale, no entry in the picker, nothing in
+  `usesEnglishFor`. Worth a toggle — with Spanish selected, a list carrying any
+  `es-419` names offers to use them *instead of* `es`, the same shape as the 🧹
+  rows. The dumps are committed (`data-raw/gaming/pokemon/{items,moves}/es-419.txt`),
+  so the data half is one line in the enrichment's `TAG` map; do it when the toggle
+  exists, not before, or entries gain an `es-419` in their `?` for no consumer.
 - **A language tag the picker offers is not always the tag the data uses.** The
   Pokémon lists carry `zh-Hans` and `zh-Hant`, and `ja-Latn` beside `ja`. The
   picker offers `de` and `en` today, so nothing is wrong yet — but the moment it
