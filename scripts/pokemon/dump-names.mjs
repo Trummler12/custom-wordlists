@@ -30,6 +30,13 @@ const LISTS = {
   moves: "move_names.csv",
 };
 
+/** A CSV field as it was written: quoted when it holds a comma, with any quote of
+ *  its own doubled. Only the last column needs this — the two before it are ids. */
+function unquote(field) {
+  if (!field.startsWith('"') || !field.endsWith('"')) return field;
+  return field.slice(1, -1).replace(/""/g, '"');
+}
+
 async function csv(name) {
   const res = await fetch(`${BASE}/${name}`);
   if (!res.ok) throw new Error(`${name}: HTTP ${res.status}`);
@@ -51,13 +58,15 @@ async function main() {
     }),
   );
 
-  // `<id>,local_language_id,name` — verified to carry no commas, quotes or tabs in
-  // the name column, so the split below is safe.
+  // `<id>,local_language_id,name`. The name is the last column, so everything past
+  // the second comma is it — except that a name containing a comma arrives quoted,
+  // RFC 4180 style. One move does: `719,9,"10,000,000 Volt Thunderbolt"`. No item
+  // did, which is how the assumption survived this long.
   const byLang = new Map();
   for (const row of await csv(LISTS[list])) {
     const i = row.indexOf(",");
     const j = row.indexOf(",", i + 1);
-    const [id, langId, name] = [row.slice(0, i), row.slice(i + 1, j), row.slice(j + 1)];
+    const [id, langId, name] = [row.slice(0, i), row.slice(i + 1, j), unquote(row.slice(j + 1))];
     const lang = langs.get(langId);
     if (!lang) continue;
     if (!byLang.has(lang)) byLang.set(lang, []);
