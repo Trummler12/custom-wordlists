@@ -19,6 +19,7 @@ const TOPIC_KEYS = [
   "usesEnglishFor",
   "hideRulersByDefault",
   "sources",
+  "corrections",
   "credits",
   "lastUpdated",
   "lastChecked",

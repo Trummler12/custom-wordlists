@@ -39,6 +39,41 @@
       "allOf": [{ "$ref": "#/$defs/stringOrList" }],
       "description": "Where the entries came from — one string or a list of them. Free-form, so a label can precede the link (\"German: https://…\"); validate-data warns when an item contains no URL."
     },
+    "corrections": {
+      "type": "array",
+      "minItems": 1,
+      "description": "Where the source is simply wrong, and what the right name is. An instruction to the IMPORT, not to the app: unlike an omission — which describes how a list should be shown and is applied on every load — a correction is baked into the entry, and this field exists only so the next re-import does not undo it. The frontend never reads it.",
+      "items": {
+        "type": "object",
+        "minProperties": 3,
+        "required": ["entry", "why"],
+        "additionalProperties": false,
+        "properties": {
+          "entry": {
+            "type": "string",
+            "minLength": 1,
+            "description": "The entry this corrects, by its English name — the identity every list is keyed by. Named `entry` rather than `en` so that English itself can be corrected like any other language."
+          },
+          "why": {
+            "type": "string",
+            "minLength": 1,
+            "description": "What the source gets wrong. Plain text, not localized: a note to whoever re-runs the import, never shown to a reader."
+          }
+        },
+        "patternProperties": {
+          "^[a-z]{2}(-[A-Z]{2}|-[A-Z][a-z]{3})?$": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["old", "new"],
+            "description": "One language's repair. `new` is what the entry must carry, so validate-data can tell when a re-import has quietly undone it. `old` is what the source said when the correction was written: an import that finds something else has hit an upstream change, and must stop rather than overwrite it — the source may have fixed the bug, or renamed the thing for a reason of its own.",
+            "properties": {
+              "old": { "type": "string", "minLength": 1 },
+              "new": { "type": "string", "minLength": 1 }
+            }
+          }
+        }
+      }
+    },
     "credits": {
       "allOf": [{ "$ref": "#/$defs/stringOrList" }],
       "description": "Who compiled or curated this list — one string or a list of them. Free-form: a name, a handle, an issue link."
