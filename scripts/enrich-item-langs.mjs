@@ -6,7 +6,11 @@
 //
 //   node scripts/enrich-item-langs.mjs [--add-new] [--write]
 //
-// Three things worth knowing about the source:
+// Four things worth knowing about the source:
+//   · It stops localizing partway. Five of the nine languages have nothing past
+//     item id ~1658 — Hisui and Paldea are English, French and Japanese only. Those
+//     gaps go into the entry's `?` rather than being left as absent keys, which
+//     would claim the English name as theirs.
 //   · `ja-hrkt` is a SUPERSET of `ja` here, not the duplicate it was for the
 //     Pokémon — 1327 of our items against 1282, never disagreeing where both
 //     exist. Merged rather than dropped, or 45 Japanese names go missing.
@@ -21,6 +25,7 @@ import { readFile, writeFile, readdir } from "node:fs/promises";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 import { serializeTopic } from "./lib/serialize.mjs";
+import { UNKNOWN } from "./lib/omissions.mjs";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 const DUMPS = join(ROOT, "data-raw", "gaming", "pokemon", "items");
@@ -71,16 +76,31 @@ async function main() {
   const enOf = (e) => (typeof e === "string" ? e : e.en);
   const deOf = (e) => (typeof e === "string" ? e : e.de);
 
-  /** One entry from an item id: `{ en }` plus a key per language that differs. */
-  const buildEntry = (id, en) => {
+  /** One entry from an item id: `{ en }` plus a key per language that differs, and
+   *  a `?` naming the languages the source has no row for at all.
+   *
+   *  The two are not the same thing and the file has to say which is which. An
+   *  absent key already means "this language agrees with English", so leaving one
+   *  out for a name PokéAPI simply never localized would assert the English word as
+   *  the German one — see UNKNOWN in src/lib/words.ts.
+   *
+   *  `existing` is the entry as the list already has it. Its names win over the
+   *  source: they were verified by hand long before PokéAPI was involved, and a
+   *  name filled in that way must survive the next re-run. */
+  const buildEntry = (id, en, existing) => {
+    const own = existing && typeof existing === "object" ? existing : {};
     const out = { en };
+    const unknown = [];
     for (const [file, tag] of Object.entries(TAG)) {
       if (tag === "en") continue;
       // `ja` falls back to the kana spelling, which covers more of the list.
       const value = file === "ja" ? (dump.ja.get(id) ?? dump["ja-hrkt"].get(id)) : dump[file].get(id);
-      if (value && value !== out.en) out[tag] = value;
+      const name = value ?? own[tag];
+      if (name === undefined) unknown.push(tag);
+      else if (name !== out.en) out[tag] = name;
     }
-    // Nothing translates: a plain string, as the ★ crystals are.
+    if (unknown.length) out[UNKNOWN] = unknown;
+    // Nothing translates and nothing is missing: a plain string, as the ★ crystals.
     return Object.keys(out).length === 1 ? out.en : out;
   };
 
@@ -100,7 +120,7 @@ async function main() {
     }
 
     usedIds.add(id);
-    return buildEntry(id, enOf(entry));
+    return buildEntry(id, enOf(entry), entry);
   });
 
   if (problems.length) {
@@ -130,10 +150,15 @@ async function main() {
 
   const all = group.words;
   const localized = all.filter((e) => typeof e !== "string").length;
+  const unknown = all.filter((e) => typeof e !== "string" && e[UNKNOWN]).length;
   console.log(`${all.length} entries (${enriched.length} kept, ${added.length} added), ${localized} carry a language map`);
+  console.log(`${unknown} of them name at least one language the source has nothing for`);
+  console.log("  lang       named  unknown");
   for (const tag of topic.languages) {
-    const n = all.filter((e) => typeof e !== "string" && e[tag]).length;
-    console.log(`  ${tag.padEnd(8)} ${String(tag === "en" ? all.length : n).padStart(5)}`);
+    const named = all.filter((e) => typeof e !== "string" && e[tag]).length;
+    const gaps = all.filter((e) => typeof e !== "string" && e[UNKNOWN]?.includes(tag)).length;
+    const shown = tag === "en" ? all.length : named;
+    console.log(`  ${tag.padEnd(8)} ${String(shown).padStart(6)} ${String(gaps).padStart(8)}`);
   }
 
   if (process.argv.includes("--write")) {
