@@ -3,6 +3,39 @@
 Small ideas parked for later; pick up when a related area is touched. Anything
 big enough to discuss belongs in an issue instead.
 
+- **Tidy `scripts/`.** Nine files at one level, four of them Pokémon, and it grows
+  with every source imported. Two are dead: `gen-pokemon.mjs` writes
+  `generation-<n>/{de,en}.json`, a layout that stopped existing with the
+  inline-i18n merge in #18, and `merge-variants.mjs` is the one-shot that
+  performed that merge — it now skips every folder it looks at. Delete both; git
+  history is the archive for code, unlike `docs/archive/`, which exists because
+  people reach a doc by direct link.
+
+  Split the rest by what a script *does to you*, not by which topic it touches:
+  `build-index` and `validate-data` run on every build, the others rewrite data
+  files by hand and are meant to be run once and then left alone — which is
+  already why `tier-by-fame` only writes with `--write`.
+
+  ```
+  scripts/
+    build-index.mjs        npm run build:index
+    validate-data.mjs      npm run validate
+    omission-report.mjs    generic, hand-run
+    tier-by-fame.mjs       generic, hand-run
+    lib/
+    pokemon/               dump-item-names, enrich-item-langs, enrich-langs
+  ```
+
+  **Not a mirror of `data/topics/`.** `gaming/` carries no information here; one
+  script routinely spans many topic files (`enrich-langs` writes all nine
+  generations) and so has no single home in a mirror; and the real cluster is the
+  *source*, not the topic — all four are PokéAPI scripts, and Riot's API would want
+  a sibling folder rather than a path under `gaming/league-of-legends/`. Nest
+  deeper (`pokemon/items/`) only once one source is unwieldy on its own; Moves,
+  Characters and Locations would take it to seven files, which is still fine flat.
+
+  Best done at the *head* of a PR that adds scripts, so the new ones are born in
+  the right place.
 - **Legacy names for the League of Legends champions.** A few champions were
   introduced under one name and renamed later, and someone who stopped playing
   years ago knows only the old one. Both should be drawable, with the old ones off
