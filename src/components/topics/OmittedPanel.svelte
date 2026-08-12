@@ -35,10 +35,15 @@
       aria-expanded={open}
       aria-label={lang.ui.omittedLabel}
       title={lang.ui.omittedLabel}
-      onclick={() => overlays.toggleOmittedPanel(id)}>🧹</button
+      onclick={(e) => overlays.toggleOmittedPanel(id, e.currentTarget)}>🧹</button
     >
     {#if open}
-      <div class="omitted-panel" role="group" aria-label={lang.ui.omittedLabel}>
+      <div
+        class="omitted-panel"
+        class:above={overlays.omittedAbove}
+        role="group"
+        aria-label={lang.ui.omittedLabel}
+      >
         <p class="omitted-title">{lang.ui.omittedTitle}</p>
         <ul>
           {#each rules as rule (rule.id)}

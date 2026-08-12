@@ -20,6 +20,8 @@ class OverlayState {
   tip = $state<string | null>(null);
   /** Whether that note sits above its row instead of below. */
   tipAbove = $state(false);
+  /** The same for the omissions panel. */
+  omittedAbove = $state(false);
 
   /** What kind of pointer last went down anywhere on the page. A click event
    *  doesn't carry that, and it decides whether a tooltip follows the cursor or
@@ -46,16 +48,20 @@ class OverlayState {
 
   /** Which list is showing what it leaves out, keyed `${topicId}:${groupId}`. */
   omittedPanel = $state<string | null>(null);
-  toggleOmittedPanel = (id: string): void => {
-    this.omittedPanel = this.omittedPanel === id ? null : id;
+  toggleOmittedPanel = (id: string, trigger: Element): void => {
+    if (this.omittedPanel === id) {
+      this.omittedPanel = null;
+      return;
+    }
+    this.omittedAbove = opensUpward(trigger);
+    this.omittedPanel = id;
   };
 
   // --- Tooltips --------------------------------------------------------------
 
-  /** Show a note, flipping it above its row when the trigger sits low enough that
-   *  a note below would be cut off by the bottom of the viewport. */
+  /** Show a note, flipping it above its row when there is more room upward. */
   openTip = (id: string, trigger: Element): void => {
-    this.tipAbove = trigger.getBoundingClientRect().bottom > window.innerHeight * (2 / 3);
+    this.tipAbove = opensUpward(trigger);
     this.tip = id;
   };
   closeTip = (): void => {
@@ -97,6 +103,16 @@ class OverlayState {
       this.closeTip();
     }
   };
+}
+
+/** Which way an overlay should open from its trigger. The middle of the viewport,
+ *  not some fraction of it: whichever half the trigger is in, the other half is
+ *  where the room is — and a box that opens the wrong way is cut off by an edge
+ *  either way, so there is no reason to prefer one direction near the middle.
+ *
+ *  Shared by the tip-notes and the omissions panel so the two can't drift. */
+function opensUpward(trigger: Element): boolean {
+  return trigger.getBoundingClientRect().bottom > window.innerHeight / 2;
 }
 
 export const overlays = new OverlayState();
