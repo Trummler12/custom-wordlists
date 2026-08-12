@@ -1,0 +1,399 @@
+United States	
+	95%
+Canada	
+	94.7%
+Mexico	
+	92.9%
+Russia	
+	92.6%
+United Kingdom	
+	91.8%
+Brazil	
+	91.5%
+China	
+	90.8%
+France	
+	90.7%
+Australia	
+	90.3%
+Spain	
+	89.8%
+Japan	
+	89.2%
+Germany	
+	89%
+India	
+	88.8%
+Italy	
+	88.7%
+Argentina	
+	87.9%
+Chile	
+	87.6%
+Sweden	
+	87.2%
+Portugal	
+	86.9%
+Iceland	
+	86.4%
+South Korea	
+	86.1%
+North Korea	
+	86%
+Egypt	
+	85.9%
+South Africa	
+	85.8%
+Ireland	
+	85.8%
+New Zealand	
+	85.7%
+Finland	
+	85.5%
+Norway	
+	85.5%
+Türkiye	
+	84.7%
+Greece	
+	83.4%
+Iran	
+	83.1%
+Poland	
+	83%
+Denmark	
+	82.9%
+Iraq	
+	82.6%
+Peru	
+	82.2%
+Mongolia	
+	81.3%
+Madagascar	
+	80.7%
+Pakistan	
+	80.6%
+Ukraine	
+	80.5%
+Niger	
+	79.9%
+Cuba	
+	79.6%
+Austria	
+	78.8%
+Netherlands	
+	78.7%
+Belgium	
+	78.6%
+Switzerland	
+	78.6%
+Uruguay	
+	78.3%
+Saudi Arabia	
+	78%
+Israel	
+	77.8%
+Morocco	
+	77.7%
+Paraguay	
+	77.5%
+Indonesia	
+	77.2%
+Colombia	
+	77.2%
+Thailand	
+	77.2%
+Afghanistan	
+	76.6%
+Nigeria	
+	76.4%
+Vietnam	
+	76.2%
+Bolivia	
+	75.8%
+UAE	
+	74.9%
+Panama	
+	74.6%
+Jamaica	
+	74.5%
+Vatican City	
+	74.4%
+Czechia	
+	73.6%
+Hungary	
+	73.4%
+Sudan	
+	73.4%
+Yemen	
+	73.3%
+Venezuela	
+	73.1%
+Kazakhstan	
+	72.5%
+	
+Answer 	% Correct
+Latvia	
+	72.4%
+Lithuania	
+	72.4%
+Slovakia	
+	72%
+Chad	
+	71.9%
+Oman	
+	71.8%
+Romania	
+	71.7%
+Haiti	
+	71.7%
+Nepal	
+	71.6%
+Estonia	
+	71.5%
+Ecuador	
+	71.5%
+Sri Lanka	
+	71.3%
+Luxembourg	
+	71%
+Croatia	
+	70.5%
+Jordan	
+	70.4%
+Algeria	
+	70.3%
+Dominica	
+	70.1%
+Kenya	
+	69.9%
+Philippines	
+	69.7%
+Malaysia	
+	69.6%
+Syria	
+	69.2%
+Taiwan	
+	69.2%
+Laos	
+	69.1%
+Costa Rica	
+	68.6%
+Ethiopia	
+	68.5%
+Belarus	
+	68.4%
+Andorra	
+	68.3%
+Monaco	
+	68.2%
+Cambodia	
+	67.9%
+Slovenia	
+	67.9%
+Dem. Rep. of the Congo	
+	67.6%
+Libya	
+	67.5%
+South Sudan	
+	67.5%
+Uzbekistan	
+	67.2%
+Palestine	
+	67.2%
+Somalia	
+	67.2%
+Zimbabwe	
+	67.2%
+Bangladesh	
+	67.1%
+Singapore	
+	67.1%
+Cyprus	
+	67%
+Honduras	
+	66.9%
+Qatar	
+	66.8%
+Fiji	
+	66.7%
+Bahamas	
+	66.7%
+Albania	
+	66.5%
+Bulgaria	
+	66.4%
+Serbia	
+	66.3%
+Georgia	
+	65.6%
+Dominican Republic	
+	65.5%
+Malta	
+	65.4%
+Ghana	
+	65.4%
+Guatemala	
+	64.9%
+Papua New Guinea	
+	64.8%
+El Salvador	
+	64.7%
+Tunisia	
+	64.2%
+Turkmenistan	
+	63.9%
+Mali	
+	63.7%
+Guinea	
+	63.2%
+Lebanon	
+	63%
+Belize	
+	62.2%
+Nicaragua	
+	62.1%
+Myanmar	
+	62.1%
+North Macedonia	
+	61.8%
+Guyana	
+	61.5%
+Kuwait	
+	61.3%
+Zambia	
+	61.1%
+Bosnia and Herzegovina	
+	60.8%
+	
+Answer 	% Correct
+Uganda	
+	60.7%
+Côte d'Ivoire	
+	60.7%
+Armenia	
+	60.4%
+Cen. Afr. Rep.	
+	60.2%
+Rep. of the Congo	
+	60.2%
+Moldova	
+	60.1%
+Rwanda	
+	59.8%
+Suriname	
+	59.5%
+Angola	
+	59%
+Bhutan	
+	58.9%
+Liechtenstein	
+	58.9%
+Maldives	
+	58.8%
+Barbados	
+	58.6%
+Azerbaijan	
+	58.6%
+San Marino	
+	58.6%
+Trinidad and Tobago	
+	58.3%
+Togo	
+	58.1%
+Montenegro	
+	57.8%
+Lesotho	
+	57.5%
+Botswana	
+	57.4%
+Kosovo	
+	57.2%
+Senegal	
+	57%
+Tanzania	
+	57%
+Namibia	
+	56.9%
+Liberia	
+	56.8%
+Tajikistan	
+	56.8%
+Bahrain	
+	56.4%
+Cameroon	
+	56.4%
+Mozambique	
+	55.1%
+Eswatini	
+	55%
+Seychelles	
+	54.1%
+Kyrgyzstan	
+	54.1%
+Samoa	
+	53.3%
+St. Lucia	
+	53.3%
+Eritrea	
+	53.3%
+Djibouti	
+	53.3%
+The Gambia	
+	52.6%
+Tonga	
+	52.5%
+St. Kitts and Nevis	
+	52.2%
+Mauritius	
+	52%
+Brunei	
+	51.5%
+Mauritania	
+	51.2%
+Benin	
+	51%
+Marshall Islands	
+	51%
+Sierra Leone	
+	50.9%
+Micronesia	
+	50.8%
+Solomon Islands	
+	50.4%
+Malawi	
+	50.2%
+Equatorial Guinea	
+	50.1%
+Grenada	
+	49.3%
+Timor-Leste	
+	49.1%
+Guinea-Bissau	
+	48.5%
+Gabon	
+	48%
+St. Vincent-Grenadines	
+	47.8%
+Cabo Verde	
+	47.2%
+Burundi	
+	46.5%
+Antigua and Barbuda	
+	46.4%
+Burkina Faso	
+	46.3%
+Tuvalu	
+	46.1%
+Palau	
+	45.6%
+Vanuatu	
+	45.3%
+Comoros	
+	44.6%
+Kiribati	
+	43.2%
+Naoero	
+	42.9%
+São Tomé and Príncipe	
+	41.4%
+https://de.sporcle.com/games/g/world/results

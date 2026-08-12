@@ -1,0 +1,106 @@
+Answer 	% Correct
+California	
+	97.1%
+Texas	
+	96.9%
+Washington	
+	95.9%
+Florida	
+	95.9%
+New York	
+	95.9%
+Alaska	
+	93.5%
+North Dakota	
+	92.5%
+Hawaii	
+	92.4%
+South Dakota	
+	92.3%
+New Mexico	
+	91.4%
+Nevada	
+	91.4%
+North Carolina	
+	91.1%
+South
+Carolina	
+	90.8%
+Alabama	
+	89.6%
+Maine	
+	88.9%
+Arizona	
+	88.8%
+Ohio	
+	88.5%
+Georgia	
+	87.9%
+Oregon	
+	87.5%
+Virginia	
+	87.5%
+Idaho	
+	87.3%
+Michigan	
+	86.9%
+New Jersey	
+	86.9%
+Colorado	
+	86.5%
+Utah	
+	86.4%
+	
+Answer 	% Correct
+Mississippi	
+	85.7%
+Kansas	
+	85%
+West
+Virginia	
+	84.9%
+Kentucky	
+	84.7%
+Illinois	
+	84.7%
+Arkansas	
+	84.6%
+Montana	
+	84.1%
+Rhode Island	
+	84.1%
+Louisiana	
+	84.1%
+Pennsylvania	
+	84.1%
+Tennessee	
+	83.6%
+Wyoming	
+	81.6%
+New Hampshire	
+	80.9%
+Oklahoma	
+	80.2%
+Indiana	
+	79.6%
+Vermont	
+	79.4%
+Delaware	
+	79.3%
+Iowa	
+	79.2%
+Massachusetts	
+	78.8%
+Maryland	
+	78.6%
+Nebraska	
+	78.6%
+Wisconsin	
+	78.5%
+Minnesota	
+	77.8%
+Connecticut	
+	77.2%
+Missouri	
+	75.4%
+https://de.sporcle.com/games/g/states/results

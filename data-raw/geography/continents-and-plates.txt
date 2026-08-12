@@ -1,0 +1,4 @@
+Full Name: "Continents & Tectonic Plates"
+Fame Group 1: Common Continents
+Fame Group 2: Larger Tectonic Plates (From Eurasia to South Sandwich)
+Fame Group 3: Niche (very small) tectonic Plates (still need to be scientifically accepted)

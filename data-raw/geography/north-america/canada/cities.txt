@@ -1,0 +1,54 @@
+Answer 	% Correct
+Toronto	
+	97.2%
+Vancouver	
+	95.8%
+Montréal	
+	92.8%
+Ottawa - Gatineau	
+	86.7%
+Québec	
+	85.3%
+Calgary	
+	84.9%
+Edmonton	
+	81.9%
+Winnipeg	
+	75.9%
+Halifax	
+	67.1%
+Victoria	
+	62.1%
+Regina	
+	59.3%
+Saskatoon	
+	58.7%
+St. John's	
+	55.2%
+	
+Answer 	% Correct
+London	
+	50.5%
+Hamilton	
+	50.3%
+Windsor	
+	45.2%
+Kitchener	
+	30.4%
+St. Catharines - Niagara	
+	29%
+Kingston	
+	28.8%
+Greater Sudbury	
+	25.3%
+Kelowna	
+	24.1%
+Oshawa	
+	22%
+Barrie	
+	21.1%
+Sherbrooke	
+	17.3%
+Abbotsford	
+	15.1%
+https://de.sporcle.com/games/g/canada_populous/results
