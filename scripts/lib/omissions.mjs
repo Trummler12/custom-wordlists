@@ -5,11 +5,25 @@
 // Keeping ONE copy on this side at least means the validator, the manifest
 // builder and the report can't drift apart from each other.
 
-/** Every string an entry carries, across its forms and languages. */
+/** The key naming the languages an entry has no name in — see UNKNOWN in
+ *  src/lib/words.ts. Not a language, and not a name. */
+export const UNKNOWN = "?";
+
+/** Every string an entry carries, across its forms and languages. `?` is skipped:
+ *  it holds language codes, and a glob is here to match names, not tags. */
 export function entryForms(word) {
   if (typeof word === "string") return [word];
-  const parts = "short" in word && "long" in word ? [word.short, word.long] : Object.values(word);
+  const parts =
+    "short" in word && "long" in word
+      ? [word.short, word.long]
+      : Object.entries(word).filter(([k]) => k !== UNKNOWN).map(([, v]) => v);
   return parts.flatMap(entryForms);
+}
+
+/** The languages an entry declares it has no name in. */
+export function unknownLangs(word) {
+  const v = typeof word === "string" ? undefined : word[UNKNOWN];
+  return Array.isArray(v) ? v : [];
 }
 
 /** A whole-name glob as a RegExp: `*` any run, `?` one character, `[0-9]` a class. */

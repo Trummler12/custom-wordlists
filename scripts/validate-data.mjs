@@ -16,7 +16,7 @@ import { readFile, readdir } from "node:fs/promises";
 import { join, dirname, basename } from "node:path";
 import { fileURLToPath } from "node:url";
 import AjvModule from "ajv/dist/2020.js";
-import { entryForms, globToRegExp } from "./lib/omissions.mjs";
+import { entryForms, globToRegExp, UNKNOWN, unknownLangs } from "./lib/omissions.mjs";
 
 const Ajv = AjvModule.default ?? AjvModule;
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
@@ -94,8 +94,15 @@ function usedLangs(topic) {
       scan(w.long);
       return;
     }
-    for (const k of Object.keys(w)) out.add(k); // language-code keys
-    for (const v of Object.values(w)) scan(v); // recurse (values may be name pairs)
+    for (const [k, v] of Object.entries(w)) {
+      // `?` is not a language but a list of them — the ones this entry has no
+      // name in. They still have to be declared, so they count as used.
+      if (k === UNKNOWN) for (const l of v) out.add(l);
+      else {
+        out.add(k); // language-code key
+        scan(v); // recurse (values may be name pairs)
+      }
+    }
   };
   for (const group of topic.groups) {
     if (group.words) for (const w of group.words) scan(w);
@@ -234,6 +241,19 @@ async function main() {
         }
         if (om.as && covers(om.as)) {
           errors.push(`${rel}: omission "${label}" (${group.id}) also matches its own \`as\``);
+        }
+      }
+    }
+
+    // 4b. an entry that says it has no name in a language it does have one in.
+    //     Harmless to render — an own key wins — but it means a name was filled in
+    //     and the `?` beside it was left behind, and only a warning can say so.
+    for (const group of topic.groups) {
+      for (const e of [...(group.words ?? []), ...(group.tiers ?? []).flat()]) {
+        for (const l of unknownLangs(e)) {
+          if (e[l] !== undefined) {
+            warnings.push(`${rel}: "${entryKey(e)}" lists "${l}" as unknown but has a name for it`);
+          }
         }
       }
     }
