@@ -40,82 +40,6 @@ big enough to discuss belongs in an issue instead.
 
   (Not motivated by `{"en":"Carbos","de":"Carbon"}` — that one is correct, Carbos
   being the English name of the Speed vitamin.)
-- **Record what a list deliberately leaves out.** Some sources carry entries nobody
-  could draw. `data/topics/gaming/pokemon/items.json` is the worst case: **300 of
-  its 1330 entries are `★And390`-style decoration data** (22.6%), plus
-  `Datenkarte01`…`27`, `Kupon 1`–`3`, `Briefpost 1`–`3`, `R1/R2/R4/R6-Schlüssel`
-  and eighteen `X-… 2`–`6` variants of items whose base form is already in the list
-  — roughly 355 entries, over a quarter of the topic. Deleting them is easy; the
-  problem is that the next re-import silently brings them back, and that a reader
-  can't tell a curated list from a careless one.
-
-  A new group-level field, beside `words` / `tiers`, holding what was taken out and
-  why. Sketch:
-
-  ```json
-  "omitted": [
-    { "match": "★*", "reason": "unnamed decoration data" },
-    { "match": "Datenkarte##", "as": { "en": "Data Card", "de": "Datenkarte" },
-      "reason": "27 numbered copies of one drawable thing" },
-    { "match": "X-* [2-6]", "reason": "stat-boost variants; the base items are listed" }
-  ]
-  ```
-
-  Design notes, in the order they mattered while thinking it through:
-
-  - **Patterns, not just names.** 300 literal `★…` strings would be worse than the
-    problem. A plain string means one literal entry; an object means a rule. Whether
-    the rule language is a glob (`★*`, `Datenkarte##`) or an anchored regex is the
-    one thing to decide first — globs read better in JSON, since a regex needs
-    `\\d` and full-match anchors; regexes handle the `X-… 2–6` family in one line.
-  - **A rule matches an entry, not a string.** The junk is localized:
-    `{ "en": "Data Card 01", "de": "Datenkarte01" }`. A pattern written in German
-    would never see the English form, so an entry is omitted when *any* of its
-    language forms matches — one rule per family, written in whichever language
-    reads best. (The 300 `★And…` are plain strings, so language-neutral already.)
-  - **A rule may name what stands for the family: `as`.** "Datenkarte", "Kupon" and
-    "Briefpost" are perfectly drawable words that would otherwise vanish with their
-    numbered variants — and the base form exists nowhere in the source, so it can't
-    survive a regeneration by being an ordinary entry. Keeping it *inside* the rule
-    beats a separate `added` list: the two halves are one editorial act ("collapse
-    this family to its base name"), the tooltip line writes itself ("27 ×
-    Datenkarte01–27 → Datenkarte"), and nothing has to correlate two fields to
-    explain itself. `as` is a full word entry (`#/$defs/word`), since the name is
-    missing in every language, not just one. Omit `as` where the base form is
-    already in the source — the `X-… 2–6` variants, whose base items are listed.
-  - **Where a replacement lands once tiers exist:** in the tier of the best-known
-    entry it replaces, falling back to the last tier when none of them had one. The
-    generator already knows which entries a rule matched, so this costs nothing, and
-    it degrades correctly — a family of numbered junk lands at the bottom, while
-    collapsing a famous family would keep its standing. Moot until the items list
-    gets tiers at all (it is flat today), but it is the rule that stops a
-    regeneration from having to guess.
-  - **Enforce it in `validate-data`, not at load.** The obvious reading of "fallback
-    filter" is to filter on load, but that runs a rule set over 1330 entries every
-    time the topic opens, forever, to protect against a mistake made in a codemod.
-    Better: `validate` errors when any entry matches an omission. Then a re-import
-    that resurrects `★And390` fails CI instead of quietly shipping, the invariant is
-    checked once, and the frontend stays as it is.
-  - **The tooltip can't name what a pattern removed** — that's the price of not
-    storing 300 strings. So its lines are of two kinds: a literal shows its name, a
-    rule shows its reason and its count ("300 entries — unnamed decoration data"),
-    which is what a reader actually wants at that size anyway. Needs a scrollable
-    variant of `.tip-note`, which is currently a small box sized to a sentence.
-  - **Not a bin for the button.** 🗑️ or 🚮 beside a row of checkboxes reads as
-    "delete this", which is the one thing it must not suggest — and 🚮 is public
-    signage that renders as a sign, not an object, on several platforms. 🧹 says the
-    list was tidied, ✂️ that it was trimmed; both are honest about a past edit rather
-    than offering a destructive one.
-  - **No manifest change.** The tooltip renders from the loaded topic file, like the
-    names dropdown, so `build-index` and `TopicSummary` stay out of it.
-  - **Name it `omitted`, not `excluded`.** The output counter already says
-    "excluded" for words over skribbl's 32-character limit — a different thing that
-    happens to the same list, and two of them under one word would be confusing in
-    both the code and the UI.
-  - **Open:** whether the removed names are kept anywhere in full. `data-raw/` holds
-    the source dumps already, so the honest answer may be that the raw file *is* the
-    complete record and the topic file only needs the rules — with the tooltip
-    pointing at the source rather than pretending to be exhaustive.
 - **One matcher instead of two.** The scripts now share `scripts/lib/omissions.mjs`,
   so what remains is the one copy that can't be helped: it mirrors the tested
   `src/lib/omitted.ts`, because a `.mjs` script can't import TypeScript — the same
@@ -222,7 +146,23 @@ big enough to discuss belongs in an issue instead.
   that, but two rules are coupled to TypeScript by comment (`--inset` ↔
   `INSET_PX`, `--footer-h` ↔ the output panel) and the tokens have to stay
   global — so it wants its own PR rather than a corner of another one.
-- **Tests for `src/lib/`.** The split left five modules of plain functions with
-  no runes and no DOM: `words`, `tree`, `fame`, `dom`, `skribbl`. That is all of
-  the app's logic that can be tested without mounting anything, and
-  `snapPositions` has already had one bug found by reading alone.
+- **Tests for `dom` and `skribbl`.** Vitest covers `words`, `tree`, `fame`,
+  `english`, `languages` and `omitted`; these two are what is left of the logic
+  that can be tested without mounting anything. `snapPositions` in `dom` has
+  already had one bug found by reading alone, which is the argument for it.
+- **Latin-American Spanish where it actually differs.** PokéAPI ships `es-419`
+  beside `es`, and for the items they disagree on five names out of 1330. Not
+  worth a language: no locale, no entry in the picker, nothing in
+  `usesEnglishFor`. Worth a toggle — with Spanish selected, a list that carries
+  any `es-419` names offers to use them *instead of* `es`, the same shape as the
+  🧹 rows. The dumps are committed (`data-raw/gaming/pokemon/items/es-419.txt`),
+  so the data half is one line in the enrichment's `TAG` map; do it when the
+  toggle exists, not before, or 564 entries gain an `es-419` in their `?` for
+  nothing.
+- **A language tag the picker offers is not always the tag the data uses.** The
+  Pokémon lists carry `zh-Hans` and `zh-Hant`, and `ja-Latn` beside `ja`. The
+  picker offers `de` and `en` today, so nothing is wrong yet — but the moment it
+  offers `zh`, `resolveStr` looks up `s["zh"]`, misses, and falls back to
+  English, while `langSupport` reads `usesEnglishFor: ["*"]` and reports Chinese
+  as an English-named list. Both are the same missing step: resolve a selected
+  language to the closest tag the entry actually has before giving up on it.
