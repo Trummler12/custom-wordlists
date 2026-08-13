@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { langSupport } from "./languages";
+import { langSupport, matchTag } from "./languages";
 import type { TopicSummary } from "./types";
 
 const topic = (fields: Partial<TopicSummary>): TopicSummary => ({
@@ -54,5 +54,56 @@ describe("langSupport", () => {
     it("leaves nothing undeclared", () => {
       expect(langSupport(t, "xx")).not.toBe("undeclared");
     });
+  });
+});
+
+describe("matchTag", () => {
+  // What the Pokémon lists carry, which is the set the picker will offer.
+  const NINE = ["de", "en", "es", "fr", "it", "ja", "ko", "zh-Hans", "zh-Hant"];
+
+  it("takes the tag itself when it is there", () => {
+    expect(matchTag("de", NINE)).toBe("de");
+    expect(matchTag("zh-Hant", NINE)).toBe("zh-Hant");
+  });
+
+  it("matches regardless of how the tag is cased", () => {
+    // A stored preference or an Accept-Language header may spell it either way.
+    expect(matchTag("ZH-HANS", NINE)).toBe("zh-Hans");
+    expect(matchTag("zh-hant", NINE)).toBe("zh-Hant");
+  });
+
+  it("knows which script a Chinese region writes in", () => {
+    expect(matchTag("zh-CN", NINE)).toBe("zh-Hans");
+    expect(matchTag("zh-SG", NINE)).toBe("zh-Hans");
+    expect(matchTag("zh-TW", NINE)).toBe("zh-Hant");
+    expect(matchTag("zh-HK", NINE)).toBe("zh-Hant");
+  });
+
+  it("falls back to the script that is there when the other isn't", () => {
+    expect(matchTag("zh-CN", ["en", "zh-Hant"])).toBe("zh-Hant");
+  });
+
+  it("drops a region subtag", () => {
+    expect(matchTag("de-CH", NINE)).toBe("de");
+    expect(matchTag("en-GB", NINE)).toBe("en");
+    expect(matchTag("es-419", NINE)).toBe("es");
+  });
+
+  it("widens a bare tag to a script, because it expressed no preference", () => {
+    expect(matchTag("zh", NINE)).toBe("zh-Hans");
+    // First in the given order wins, so the caller's order is the preference.
+    expect(matchTag("zh", ["zh-Hant", "zh-Hans"])).toBe("zh-Hant");
+  });
+
+  it("never crosses a script boundary", () => {
+    // Romaji is Japanese written in another alphabet, not a dialect of it: a
+    // reader who asked for one and got the other got the wrong answer.
+    expect(matchTag("ja-Latn", ["en", "ja"])).toBeUndefined();
+    expect(matchTag("ja", ["en", "ja-Latn"])).toBeUndefined();
+  });
+
+  it("gives up rather than guess", () => {
+    expect(matchTag("ru", NINE)).toBeUndefined();
+    expect(matchTag("pt-BR", NINE)).toBeUndefined();
   });
 });
