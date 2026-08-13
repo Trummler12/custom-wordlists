@@ -4,11 +4,38 @@
 // recompute on a language switch without any of this knowing about runes.
 
 import type { Group, LocalizedString, NamePair, NamesMode, Word, WordEntry } from "./types";
+import { matchTag } from "./languages";
+
+/** The tag an entry carrying `keys` answers `lang` with, or undefined for none.
+ *
+ *  Memoized because the answer depends only on the language and the set of keys,
+ *  and a list of two thousand items has two thousand entries carrying the same
+ *  nine — one match per shape rather than one per entry per render. */
+const matched = new Map<string, string | undefined>();
+function tagFor(obj: Record<string, unknown>, lang: string): string | undefined {
+  const keys = Object.keys(obj).filter((k) => k !== UNKNOWN);
+  const cacheKey = `${lang}|${keys.join(",")}`;
+  let hit = matched.get(cacheKey);
+  if (hit === undefined && !matched.has(cacheKey)) {
+    hit = matchTag(lang, keys);
+    matched.set(cacheKey, hit);
+  }
+  return hit;
+}
 
 /** Resolve a leaf string to `lang`: a language map picks `lang` (falling back to
- *  its "en" base); a plain string is already neutral. */
+ *  the closest tag it does carry, then to its "en" base); a plain string is
+ *  already neutral.
+ *
+ *  The closest tag matters the moment the picker offers a tag the data spells
+ *  differently — a reader asking for `zh` on a list carrying `zh-Hans` wants the
+ *  Chinese name, not the English one it would otherwise fall through to. */
 export function resolveStr(s: LocalizedString, lang: string): string {
-  return typeof s === "string" ? s : (s[lang] ?? s.en);
+  if (typeof s === "string") return s;
+  const own = s[lang];
+  if (own !== undefined) return own;
+  const tag = tagFor(s, lang);
+  return tag !== undefined ? s[tag] : s.en;
 }
 
 /** The key an entry uses to name the languages its source had no name for. Not a
@@ -50,7 +77,10 @@ export function resolveWord(e: WordEntry, lang: string): Word {
     return { short: resolveStr(p.short, lang), long: resolveStr(p.long, lang) };
   }
   const map = e as Record<string, WordEntry>;
-  return resolveWord(map[lang] ?? map.en, lang);
+  // Same fallback chain as a leaf: the language, then the closest tag the entry
+  // carries, then the English base.
+  const tag = map[lang] !== undefined ? lang : tagFor(map, lang);
+  return resolveWord((tag !== undefined ? map[tag] : undefined) ?? map.en, lang);
 }
 
 /** The string(s) an entry contributes in a names mode. A pair whose two forms

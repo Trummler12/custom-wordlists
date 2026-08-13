@@ -23,6 +23,22 @@ describe("resolveStr", () => {
     expect(resolveStr(s, "en")).toBe("Squirtle");
     expect(resolveStr(s, "fr")).toBe("Squirtle");
   });
+
+  it("takes the closest tag before giving up on the language", () => {
+    // A reader asking for Chinese on a list that spells it `zh-Hans` wants the
+    // Chinese name, not the English one it would otherwise fall through to.
+    const s = { en: "Squirtle", "zh-Hans": "杰尼龟", "zh-Hant": "傑尼龜" };
+    expect(resolveStr(s, "zh")).toBe("杰尼龟");
+    expect(resolveStr(s, "zh-TW")).toBe("傑尼龜");
+    expect(resolveStr(s, "de-CH")).toBe("Squirtle");
+  });
+
+  it("does not read `?` as a language", () => {
+    // It holds language tags, not a name — matching against it would return an
+    // array where a string belongs.
+    const s = { en: "Squirtle", "?": ["ko"] } as unknown as { en: string };
+    expect(resolveStr(s, "ko")).toBe("Squirtle");
+  });
 });
 
 describe("resolveWord", () => {
