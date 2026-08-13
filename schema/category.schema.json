@@ -12,6 +12,7 @@
       "description": "Display name, in the same shape as a topic's title or a word entry: a plain string where the name is global (\"Film & TV\"), a language map where it translates, or a short/long pair — `short` on the row, `long` in a hover. Falls back to the title-cased folder name."
     },
     "icon": { "type": "string", "minLength": 1 },
+    "order": { "type": "integer", "description": "Where this sits among its siblings, lowest first. Undeclared sorts last, alphabetically — so ordering a few of them needs nothing on the rest. The tree is otherwise the file system's, which puts Animation first and Gaming sixth for no reason anyone chose." },
     "hideRulersByDefault": {
       "type": "boolean",
       "description": "When true, the fame rulers of this category's topics start hidden behind a single toggle on the category row rather than shown. Declaring the field (either value) makes this category an independent ruler-visibility boundary: its toggle governs its subtree down to the next node that declares the field, and children without the field inherit this value."

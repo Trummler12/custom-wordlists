@@ -39,6 +39,7 @@
       "allOf": [{ "$ref": "#/$defs/stringOrList" }],
       "description": "Where the entries came from — one string or a list of them. Free-form, so a label can precede the link (\"German: https://…\"); validate-data warns when an item contains no URL."
     },
+    "order": { "type": "integer", "description": "Where this sits among its siblings, lowest first. Undeclared sorts last, alphabetically — so ordering a few of them needs nothing on the rest. The tree is otherwise the file system's, which puts Animation first and Gaming sixth for no reason anyone chose." },
     "corrections": {
       "type": "array",
       "minItems": 1,

@@ -14,6 +14,7 @@ const TOPIC_KEYS = [
   "id",
   "title",
   "icon",
+  "order",
   "description",
   "languages",
   "usesEnglishFor",
