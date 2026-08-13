@@ -578,6 +578,16 @@ header {
   gap: 0.5rem;
   cursor: pointer;
 }
+/* A preference that picks rather than toggles. Wraps on a narrow menu, where a
+   label and a dropdown side by side would push past the popover's max-width. */
+.setting select {
+  font: inherit;
+  max-width: 100%;
+}
+.setting:has(select) {
+  flex-wrap: wrap;
+  row-gap: 0.25rem;
+}
 .lang-btn {
   background: none;
   border: 1px solid var(--panel-border);

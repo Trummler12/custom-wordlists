@@ -1,5 +1,6 @@
 <script lang="ts">
-  import { lang } from "../../state/lang.svelte";
+  import { AUTO, lang } from "../../state/lang.svelte";
+  import { UI_LANGS } from "../../locale";
   import { overlays } from "../../state/overlays.svelte";
   import { settings } from "../../state/settings.svelte";
   import TipMarker from "../common/TipMarker.svelte";
@@ -44,6 +45,24 @@
           <TipNote id={tipId} text={lang.ui.settings.showEnglishEn} />
         {/if}
       </div>
+      <!-- Only worth showing once there is a choice, the same guard the language
+           picker itself uses. -->
+      {#if UI_LANGS.length > 1}
+        <div class="setting-row">
+          <label class="setting">
+            <span>{lang.ui.settings.interfaceLang}</span>
+            <select
+              value={lang.uiPref}
+              onchange={(e) => lang.setUiPref(e.currentTarget.value)}
+            >
+              <option value={AUTO}>{lang.ui.settings.interfaceAuto}</option>
+              {#each UI_LANGS as l (l)}
+                <option value={l}>{lang.name(l)}</option>
+              {/each}
+            </select>
+          </label>
+        </div>
+      {/if}
     </div>
   {/if}
 </div>
