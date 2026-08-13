@@ -58,7 +58,7 @@
                 />
                 <!-- Through Msg: a reason may carry a link to what was left out,
                      which is the whole reason it is worth reading. -->
-                <span><Msg text={resolveStr(rule.reason, lang.current)} /></span>
+                <span><Msg text={resolveStr(rule.reason, lang.uiLang)} /></span>
               </label>
             </li>
           {/each}

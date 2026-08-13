@@ -98,14 +98,14 @@ class TopicsState {
   // is resolving an entry: `short` goes on the row, `long` into its hover, and the
   // two are equal wherever the name has only one form.
   topicName(t: TopicSummary): DisplayName {
-    return displayName(t.title, lang.current);
+    return displayName(t.title, lang.uiLang);
   }
   groupName(g: Group): DisplayName {
-    return displayName(g.title, lang.current);
+    return displayName(g.title, lang.uiLang);
   }
   categoryName(node: CatNode): DisplayName {
     const title = this.categories[node.path]?.title;
-    return displayName(title ?? titleCase(node.name), lang.current);
+    return displayName(title ?? titleCase(node.name), lang.uiLang);
   }
   categoryIcon(node: CatNode): string | undefined {
     return this.categories[node.path]?.icon;

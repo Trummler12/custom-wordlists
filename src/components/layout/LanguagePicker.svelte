@@ -15,7 +15,7 @@
       class="lang-btn"
       aria-haspopup="menu"
       aria-expanded={overlays.langMenu === id}
-      aria-label={lang.ui.language.label(lang.name(lang.current))}
+      aria-label={lang.ui.language.label(lang.nameInUi(lang.current))}
       onclick={() => overlays.toggleLangMenu(id)}
     >🌐</button>
     {#if overlays.langMenu === id}

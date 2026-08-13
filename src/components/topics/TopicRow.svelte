@@ -52,7 +52,7 @@
     // has of its own — warning about German names it is no longer showing would be
     // a warning about nothing. The note itself stays in the interface language.
     const code = lang.contentLang(topic.id);
-    const name = lang.name(code);
+    const name = lang.nameInUi(code);
     switch (langSupport(topic, code)) {
       case "declared":
         return null;
