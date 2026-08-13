@@ -162,11 +162,20 @@ export interface UIStrings {
 
 import { en } from "./en";
 import { de } from "./de";
+import { es } from "./es";
+import { fr } from "./fr";
+import { it } from "./it";
+import { ja } from "./ja";
+import { ko } from "./ko";
 
 /** Language that backs any locale without its own UI dictionary. */
 export const FALLBACK_LANG = "en";
 
-const UI: Record<string, UIStrings> = { en, de };
+// Five of these are machine-written and unreviewed by a native speaker; the
+// contribution guide asks for proofreaders by name. Chinese is missing on
+// purpose: it is a content language because Pokémon has it, not a planned
+// interface language — see docs/Language-Roadmap.md.
+const UI: Record<string, UIStrings> = { en, de, es, fr, it, ja, ko };
 
 /** Languages the chrome can be rendered in — the ones with a dictionary above.
  *  Deliberately small: a list can be offered in a language long before anyone has
