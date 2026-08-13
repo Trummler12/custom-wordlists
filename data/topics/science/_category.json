@@ -1,4 +1,5 @@
 {
   "title": { "en": "Science", "de": "Wissenschaft" },
-  "icon": "🔬"
+  "icon": "🔬",
+  "order": 1
 }
