@@ -41,6 +41,25 @@ function isScript(sub: string): boolean {
   return /^[A-Za-z]{4}$/.test(sub);
 }
 
+/** The short badge for a tag in a list of them: the base language, and one letter
+ *  more only where that wouldn't be unique.
+ *
+ *  `DE` beside `ZH-HANS` is a badge beside a spelled-out tag; `ZHS` and `ZHT` sit
+ *  in the same column as the rest and still tell the two apart. The full tag is
+ *  worth putting on the hover of whatever this labels. */
+export function tagChip(tag: string, available: readonly string[]): string {
+  const [base, sub] = tag.split("-");
+  const rivals = available
+    .filter((t) => t !== tag && t.split("-")[0] === base)
+    .map((t) => t.split("-")[1] ?? "");
+  if (rivals.length === 0 || !sub) return base.toUpperCase();
+  // The *distinguishing* letter, not the first one: `Hans` and `Hant` agree for
+  // three characters, and `ZHH` twice over would be worse than no badge at all.
+  let i = 0;
+  while (i < sub.length - 1 && rivals.some((r) => r[i] === sub[i])) i++;
+  return `${base}${sub[i]}`.toUpperCase();
+}
+
 /** The closest tag in `available` for the one someone asked for, or undefined.
  *  First match in the given order wins, so the caller's order is the preference.
  *
