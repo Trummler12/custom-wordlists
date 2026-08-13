@@ -2,7 +2,7 @@
   import { onMount } from "svelte";
   import { setIndeterminate } from "../../lib/dom";
   import { canForceEnglish } from "../../lib/english";
-  import { langSupport } from "../../lib/languages";
+  import { langSupport, splitName } from "../../lib/languages";
   import { rulerControl } from "../../lib/rulers";
   import type { TopicSummary } from "../../lib/types";
   import { langWarning } from "../../locale";
@@ -57,7 +57,7 @@
       case "declared":
         return null;
       case "english":
-        return { icon: "ℹ️", text: lang.ui.language.usesEnglish(name) };
+        return { icon: "ℹ️", text: lang.ui.language.usesEnglish(...splitName(name)) };
       case "undeclared":
         return { icon: "⚠️", text: langWarning(lang.ui, code, name) };
     }

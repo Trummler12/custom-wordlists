@@ -77,11 +77,14 @@ export interface LanguageStrings {
   /** Second half of that warning — see `langWarning()` for when it applies. */
   fallback: string;
   /** Info marker for a topic whose names in the selected language are the English
-   *  ones, on purpose. The argument is the *content* language named in the
-   *  interface one, so it is genuinely a variable — a German interface says this
-   *  about Korean lists — and a locale that would rather inflect the language name
-   *  has to phrase its way around that instead. */
-  usesEnglish: (language: string) => string;
+   *  ones, on purpose. The content language named in the interface one, so it is
+   *  genuinely a variable: a German interface says this about Korean lists.
+   *
+   *  Handed over in two halves — see `splitName` in lib/languages — because a
+   *  locale may need to decline the name, and `Chinesisch (vereinfacht)` can only
+   *  take an ending on its first word. A locale that puts the name in front of
+   *  its sentence simply concatenates them. */
+  usesEnglish: (primary: string, secondary: string) => string;
   /** Toggle a single list to English names; label reflects the current state. */
   useEnglish: (forced: boolean) => string;
   /** Toggle from a category row every list it governs; label on current state. */

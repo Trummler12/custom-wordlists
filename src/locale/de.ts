@@ -49,10 +49,12 @@ export const de: UIStrings = {
     unsupported: (language) =>
       `Für ${language} noch nicht bestätigt — dieses Thema ist evtl. unvollständig.`,
     fallback: "Fehlende Übersetzungen erscheinen auf Englisch.",
-    // Phrased around the language name rather than through it: "im Koreanischen"
-    // would need the name inflected, and "Chinesisch (vereinfacht)" doesn't
-    // inflect at all.
-    usesEnglish: (language) => `Auch im ${language}en werden offiziell die englischen Namen verwendet.`,
+    // Declined, which every language name ending in -isch takes an -en for:
+    // Koreanisch → Koreanischen. The handful that don't (Urdu, Hindi, Suaheli)
+    // are already correct undeclined — "auch im Urdu" — so the ending is added
+    // where it belongs rather than always. The bracketed half never takes it.
+    usesEnglish: (primary, secondary) =>
+      `Auch im ${primary}${primary.endsWith("sch") ? "en" : ""}${secondary} werden offiziell die englischen Namen verwendet.`,
     useEnglish: (forced) =>
       forced
         ? "Diese Liste in der gewählten Sprache verwenden"

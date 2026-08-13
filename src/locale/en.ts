@@ -44,7 +44,7 @@ export const en: UIStrings = {
     menu: "Language",
     unsupported: (language) => `Not confirmed for ${language} yet — this topic may be incomplete.`,
     fallback: "English is used where a translation is missing.",
-    usesEnglish: (language) => `${language} officially uses the English names too.`,
+    usesEnglish: (primary, secondary) => `${primary}${secondary} officially uses the English names too.`,
     useEnglish: (forced) =>
       forced ? "Use this list in the selected language" : "Use the English entries of this list",
     useEnglishAll: (allForced) =>
