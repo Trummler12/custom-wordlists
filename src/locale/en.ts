@@ -23,6 +23,11 @@ export const en: UIStrings = {
   omitToggle: (omitted) =>
     omitted ? "Toggle to include these in your list" : "Toggle to leave these out",
   omitLocked: "These are game data rather than words, so they can't be added.",
+  omitUnknown: (n) => `${n} entries the source data has no name for in this language`,
+  omitUnknownHint: (omitted) =>
+    omitted
+      ? "Toggle to include these under their English names — the only ones known for them."
+      : "Toggle to leave these out again.",
   settings: "Settings",
   showEnglishToggle: "Show the option to use English entries",
   showEnglishToggleEn: "These toggles only appear for languages other than English.",

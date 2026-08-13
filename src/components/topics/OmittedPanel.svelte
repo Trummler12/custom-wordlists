@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { allRules, isOnByDefault } from "../../lib/omitted";
+  import { allRules, isOnByDefault, UNKNOWN_RULE } from "../../lib/omitted";
   import type { Group, Omission } from "../../lib/types";
   import { resolveStr } from "../../lib/words";
   import Msg from "../../locale/html/Msg.svelte";
@@ -13,6 +13,12 @@
   const id = $derived(`omitted-${tid}-${group.id}`);
   const open = $derived(overlays.omittedPanel === id);
 
+  // Set by `visibleGroup`, and only in a language the list is missing names in —
+  // so this row appears exactly where there is something to report. It reads as one
+  // more thing the list leaves out, because in effect that is what it is.
+  const unknown = $derived(group.unknownCount ?? 0);
+  const hidingUnknown = $derived(!settings.isToggled(tid, group.id, UNKNOWN_RULE));
+
   // Ticked means "currently left out". An `omitted` rule starts ticked and an
   // `omittable` one doesn't, so the stored flip is the same bit either way — and
   // a locked rule is ticked whatever the reader once chose.
@@ -20,7 +26,7 @@
     r.locked || isOnByDefault(group, r) !== settings.isToggled(tid, group.id, r.id);
 </script>
 
-{#if rules.length > 0}
+{#if rules.length > 0 || unknown > 0}
   <div class="omitted-host">
     <button
       type="button"
@@ -29,10 +35,15 @@
       aria-expanded={open}
       aria-label={lang.ui.omittedLabel}
       title={lang.ui.omittedLabel}
-      onclick={() => overlays.toggleOmittedPanel(id)}>🧹</button
+      onclick={(e) => overlays.toggleOmittedPanel(id, e.currentTarget)}>🧹</button
     >
     {#if open}
-      <div class="omitted-panel" role="group" aria-label={lang.ui.omittedLabel}>
+      <div
+        class="omitted-panel"
+        class:above={overlays.omittedAbove}
+        role="group"
+        aria-label={lang.ui.omittedLabel}
+      >
         <p class="omitted-title">{lang.ui.omittedTitle}</p>
         <ul>
           {#each rules as rule (rule.id)}
@@ -51,6 +62,18 @@
               </label>
             </li>
           {/each}
+          {#if unknown > 0}
+            <li>
+              <label title={lang.ui.omitUnknownHint(hidingUnknown)}>
+                <input
+                  type="checkbox"
+                  checked={hidingUnknown}
+                  onchange={() => settings.toggleOmission(tid, group.id, UNKNOWN_RULE)}
+                />
+                <span>{lang.ui.omitUnknown(unknown)}</span>
+              </label>
+            </li>
+          {/if}
         </ul>
       </div>
     {/if}

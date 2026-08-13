@@ -16,6 +16,7 @@ import { readFile, readdir } from "node:fs/promises";
 import { join, dirname, basename } from "node:path";
 import { fileURLToPath } from "node:url";
 import AjvModule from "ajv/dist/2020.js";
+import { entryForms, globToRegExp, UNKNOWN, unknownLangs } from "./lib/omissions.mjs";
 
 const Ajv = AjvModule.default ?? AjvModule;
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
@@ -93,8 +94,15 @@ function usedLangs(topic) {
       scan(w.long);
       return;
     }
-    for (const k of Object.keys(w)) out.add(k); // language-code keys
-    for (const v of Object.values(w)) scan(v); // recurse (values may be name pairs)
+    for (const [k, v] of Object.entries(w)) {
+      // `?` is not a language but a list of them — the ones this entry has no
+      // name in. They still have to be declared, so they count as used.
+      if (k === UNKNOWN) for (const l of v) out.add(l);
+      else {
+        out.add(k); // language-code key
+        scan(v); // recurse (values may be name pairs)
+      }
+    }
   };
   for (const group of topic.groups) {
     if (group.words) for (const w of group.words) scan(w);
@@ -103,33 +111,15 @@ function usedLangs(topic) {
   return out;
 }
 
-/** Every string an entry carries, across its forms and languages. Mirrors
- *  `entryForms` in src/lib/omitted.ts — the frontend's copy is the tested one, but
- *  a .mjs script can't import TypeScript, the same reason LANG_RE is duplicated. */
-function entryForms(word) {
-  if (typeof word === "string") return [word];
-  const parts =
-    "short" in word && "long" in word ? [word.short, word.long] : Object.values(word);
-  return parts.flatMap(entryForms);
-}
-
-/** A whole-name glob as a RegExp. Mirrors `globToRegExp` in src/lib/omitted.ts. */
-function globToRegExp(glob) {
-  let out = "";
-  for (let i = 0; i < glob.length; i++) {
-    const c = glob[i];
-    if (c === "*") out += ".*";
-    else if (c === "?") out += ".";
-    else if (c === "[") {
-      const end = glob.indexOf("]", i + 1);
-      if (end === -1) out += "\\[";
-      else {
-        out += glob.slice(i, end + 1);
-        i = end;
-      }
-    } else out += c.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+/** Every entry of a topic, tiers flattened — the entries themselves, where
+ *  `allWords` hands back their dedup keys. */
+function allEntries(topic) {
+  const out = [];
+  for (const group of topic.groups) {
+    if (group.words) out.push(...group.words);
+    if (group.tiers) for (const tier of group.tiers) out.push(...tier);
   }
-  return new RegExp(`^${out}$`, "u");
+  return out;
 }
 
 function allWords(topic) {
@@ -262,6 +252,43 @@ async function main() {
         }
         if (om.as && covers(om.as)) {
           errors.push(`${rel}: omission "${label}" (${group.id}) also matches its own \`as\``);
+        }
+      }
+    }
+
+    // 4b. an entry that says it has no name in a language it does have one in.
+    //     Harmless to render — an own key wins — but it means a name was filled in
+    //     and the `?` beside it was left behind, and only a warning can say so.
+    for (const group of topic.groups) {
+      for (const e of [...(group.words ?? []), ...(group.tiers ?? []).flat()]) {
+        for (const l of unknownLangs(e)) {
+          if (e[l] !== undefined) {
+            warnings.push(`${rel}: "${entryKey(e)}" lists "${l}" as unknown but has a name for it`);
+          }
+        }
+      }
+    }
+
+    // 4c. corrections are instructions to the import, and the only way to tell
+    //     whether one still holds is to look at the entry it names. A stale one is
+    //     worse than none: it reads as a promise the file no longer keeps.
+    const correctable = topic.corrections?.length ? allEntries(topic) : [];
+    for (const c of topic.corrections ?? []) {
+      const entry = correctable.find((e) => baseStr(typeof e === "string" ? e : e.en) === c.entry);
+      if (!entry) {
+        warnings.push(`${rel}: correction for "${c.entry}" matches no entry`);
+        continue;
+      }
+      for (const [l, fix] of Object.entries(c)) {
+        if (l === "entry" || l === "why") continue;
+        if (topic.languages && !topic.languages.includes(l)) {
+          errors.push(`${rel}: correction for "${c.entry}" names language "${l}", not in languages`);
+        }
+        const have = typeof entry === "string" ? entry : entry[l];
+        if (have !== fix.new) {
+          warnings.push(
+            `${rel}: correction for "${c.entry}" (${l}) is not applied — entry has "${have}", correction says "${fix.new}"`,
+          );
         }
       }
     }

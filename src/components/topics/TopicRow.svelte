@@ -39,7 +39,7 @@
   // English, and not for a list whose names in this language are the English ones
   // anyway. Nearly every row qualifies, which is why it is off by default.
   const englishOptIn = $derived(settings.showEnglishToggle && canForceEnglish(topic, lang.current));
-  const forcedEnglish = $derived(selection.isForcedEnglish(topic));
+  const forcedEnglish = $derived(lang.isForcedEnglish(topic));
 
   const open = $derived(!!selection.expanded[topic.id]);
   const name = $derived(topics.topicName(topic));
@@ -51,7 +51,7 @@
     // The language this list is actually rendered in, which a forced-English topic
     // has of its own — warning about German names it is no longer showing would be
     // a warning about nothing. The note itself stays in the interface language.
-    const code = selection.contentLang(topic.id);
+    const code = lang.contentLang(topic.id);
     const name = lang.name(code);
     switch (langSupport(topic, code)) {
       case "declared":
@@ -119,7 +119,7 @@
         aria-pressed={forcedEnglish}
         aria-label={lang.ui.englishToggle(forcedEnglish)}
         title={lang.ui.englishToggle(forcedEnglish)}
-        onclick={() => selection.toggleEnglish(topic)}>🇬🇧</button
+        onclick={() => lang.toggleEnglish(topic)}>🇬🇧</button
       >
     {/if}
     {#if rulerOptIn}

@@ -362,9 +362,15 @@ header {
   left: 0;
   right: 0;
   z-index: 10;
-  /* A list can run long; it scrolls rather than pushing the row apart. */
-  max-height: 14rem;
+  /* A list can run long; it scrolls rather than pushing the row apart. Sized to
+     the viewport between two fixed bounds: below ~9rem the panel is a scrollbar
+     with a line in it, above ~24rem it is longer than any list has rules.
+     The middle term is what the flip leaves it — the panel only ever opens
+     downward from the top half — minus the footer bar it must not run under. */
+  max-height: clamp(9rem, calc(40vh - var(--footer-h)), 24rem);
   overflow-y: auto;
+  /* Reaching the end of the list shouldn't start scrolling the column behind it. */
+  overscroll-behavior: contain;
   padding: 0.5rem 0.6rem;
   background: var(--chip-bg);
   border: 1px solid var(--panel-border);
@@ -375,6 +381,13 @@ header {
   line-height: 1.35;
   text-align: left;
   cursor: auto;
+}
+/* Set when the 🧹 sits below the middle of the viewport, where a panel below it
+   would be cut off by the bottom edge — the same flip as .tip-note.above, decided
+   by the same function. */
+.omitted-panel.above {
+  top: auto;
+  bottom: 100%;
 }
 .omitted-title {
   margin: 0 0 0.35rem;

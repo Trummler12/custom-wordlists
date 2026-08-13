@@ -1,0 +1,1610 @@
+1	Meisterball
+2	Hyperball
+3	Superball
+4	Pokéball
+5	Safariball
+6	Netzball
+7	Tauchball
+8	Nestball
+9	Wiederball
+10	Timerball
+11	Luxusball
+12	Premierball
+13	Finsterball
+14	Heilball
+15	Flottball
+16	Jubelball
+17	Trank
+18	Gegengift
+19	Feuerheiler
+20	Eisheiler
+21	Aufwecker
+22	Para-Heiler
+23	Top-Genesung
+24	Top-Trank
+25	Hypertrank
+26	Supertrank
+27	Hyperheiler
+28	Beleber
+29	Top-Beleber
+30	Tafelwasser
+31	Sprudel
+32	Limonade
+33	Kuhmuh-Milch
+34	Energiestaub
+35	Kraftwurzel
+36	Heilpuder
+37	Vitalkraut
+38	Äther
+39	Top-Äther
+40	Elixier
+41	Top-Elixier
+42	Lavakeks
+43	Beerensaft
+44	Zauberasche
+45	KP-Plus
+46	Protein
+47	Eisen
+48	Carbon
+49	Kalzium
+50	Sonderbonbon
+51	AP-Plus
+52	Zink
+53	AP-Top
+54	Spezialität
+55	Megablock
+56	Angriffplus
+57	X-Angriff
+58	X-Verteidigung
+59	X-Initiative
+60	X-Genauigkeit
+61	X-Sp.-Ang.
+62	X-Sp.-Vert.
+63	Poképuppe
+64	Eneco-Rute
+65	Blaue Flöte
+66	Gelbe Flöte
+67	Rote Flöte
+68	Schwarze Flöte
+69	Weiße Flöte
+70	Küstensalz
+71	Küstenschale
+72	Purpurstück
+73	Indigostück
+74	Gelbstück
+75	Grünstück
+76	Superschutz
+77	Top-Schutz
+78	Fluchtseil
+79	Schutz
+80	Sonnenstein
+81	Mondstein
+82	Feuerstein
+83	Donnerstein
+84	Wasserstein
+85	Blattstein
+86	Minipilz
+87	Riesenpilz
+88	Perle
+89	Riesenperle
+90	Sternenstaub
+91	Sternenstück
+92	Nugget
+93	Herzschuppe
+94	Honig
+95	Wachsmulch
+96	Feuchtmulch
+97	Stabilmulch
+98	Neumulch
+99	Wurzelfossil
+100	Klauenfossil
+101	Helixfossil
+102	Domfossil
+103	Altbernstein
+104	Panzerfossil
+105	Kopffossil
+106	Steinknochen
+107	Leuchtstein
+108	Finsterstein
+109	Funkelstein
+110	Ovaler Stein
+111	Spiritkern
+112	Adamant-Orb
+113	Weiß-Orb
+114	Wiesenbrief
+115	Feuerbrief
+116	Wasserbrief
+117	Blütenbrief
+118	Minenbrief
+119	Stahlbrief
+120	Rosabrief
+121	Schneebrief
+122	Sternbrief
+123	Luftbrief
+124	Mosaikbrief
+125	Ziegelbrief
+126	Amrenabeere
+127	Maronbeere
+128	Pirsifbeere
+129	Fragiabeere
+130	Wilbirbeere
+131	Jonagobeere
+132	Sinelbeere
+133	Persimbeere
+134	Prunusbeere
+135	Tsitrubeere
+136	Giefebeere
+137	Wikibeere
+138	Magobeere
+139	Gauvebeere
+140	Yapabeere
+141	Himmihbeere
+142	Morbbeere
+143	Nanabbeere
+144	Nirbebeere
+145	Sananabeere
+146	Granabeere
+147	Setangbeere
+148	Qualotbeere
+149	Honmelbeere
+150	Labrusbeere
+151	Tamotbeere
+152	Saimbeere
+153	Magostbeere
+154	Rabutabeere
+155	Tronzibeere
+156	Kiwanbeere
+157	Pallmbeere
+158	Wasmelbeere
+159	Durinbeere
+160	Myrtilbeere
+161	Koakobeere
+162	Foepasbeere
+163	Kerzalbeere
+164	Grindobeere
+165	Kiroyabeere
+166	Rospelbeere
+167	Grarzbeere
+168	Schukebeere
+169	Kobabeere
+170	Pyapabeere
+171	Tanigabeere
+172	Chiaribeere
+173	Zitarzbeere
+174	Terirobeere
+175	Burleobeere
+176	Babiribeere
+177	Latchibeere
+178	Lydzibeere
+179	Linganbeere
+180	Salkabeere
+181	Tahaybeere
+182	Apikobeere
+183	Lansatbeere
+184	Krambobeere
+185	Enigmabeere
+186	Wunfrubeere
+187	Eipfelbeere
+188	Jabocabeere
+189	Roselbeere
+190	Blendpuder
+191	Schlohkraut
+192	Machoband
+193	EP-Teiler
+194	Flinkklaue
+195	Sanftglocke
+196	Mentalkraut
+197	Wahlband
+198	King-Stein
+199	Silberstaub
+200	Münzamulett
+201	Schutzband
+202	Seelentau
+203	Abysszahn
+204	Abyssplatte
+205	Rauchball
+206	Ewigstein
+207	Fokusband
+208	Glücks-Ei
+209	Scope-Linse
+210	Metallmantel
+211	Überreste
+212	Drachenhaut
+213	Kugelblitz
+214	Pudersand
+215	Granitstein
+216	Wundersaat
+217	Schattenbrille
+218	Schwarzgurt
+219	Magnet
+220	Zauberwasser
+221	Spitzer Schnabel
+222	Giftstich
+223	Ewiges Eis
+224	Bannsticker
+225	Krummlöffel
+226	Holzkohle
+227	Drachenzahn
+228	Seidenschal
+229	Up-Grade
+230	Muschelglocke
+231	Seerauch
+232	Laxrauch
+233	Lucky Punch
+234	Metallstaub
+235	Kampfknochen
+236	Lauchstange
+237	Roter Schal
+238	Blauer Schal
+239	Rosa Schal
+240	Grüner Schal
+241	Gelber Schal
+242	Großlinse
+243	Muskelband
+244	Schlaubrille
+245	Expertengurt
+246	Lichtlehm
+247	Leben-Orb
+248	Energiekraut
+249	Toxik-Orb
+250	Heiß-Orb
+251	Flottstaub
+252	Fokusgurt
+253	Zoomlinse
+254	Metronom
+255	Eisenkugel
+256	Schwerschweif
+257	Fatumknoten
+258	Giftschleim
+259	Eisbrocken
+260	Glattbrocken
+261	Heißbrocken
+262	Nassbrocken
+263	Griffklaue
+264	Wahlschal
+265	Klettdorn
+266	Machtreif
+267	Machtgurt
+268	Machtlinse
+269	Machtband
+270	Machtkette
+271	Machtgewicht
+272	Wechselhülle
+273	Großwurzel
+274	Wahlbrille
+275	Feuertafel
+276	Wassertafel
+277	Blitztafel
+278	Wiesentafel
+279	Frosttafel
+280	Fausttafel
+281	Gifttafel
+282	Erdtafel
+283	Wolkentafel
+284	Hirntafel
+285	Käfertafel
+286	Steintafel
+287	Spuktafel
+288	Dracotafel
+289	Furchttafel
+290	Eisentafel
+291	Schrägrauch
+292	Steinrauch
+293	Lahmrauch
+294	Wellenrauch
+295	Rosenrauch
+296	Glücksrauch
+297	Scheuchrauch
+298	Schützer
+299	Stromisierer
+300	Magmaisierer
+301	Dubiosdisc
+302	Düsterumhang
+303	Scharfklaue
+304	Scharfzahn
+305	TM01
+306	TM02
+307	TM03
+308	TM04
+309	TM05
+310	TM06
+311	TM07
+312	TM08
+313	TM09
+314	TM10
+315	TM11
+316	TM12
+317	TM13
+318	TM14
+319	TM15
+320	TM16
+321	TM17
+322	TM18
+323	TM19
+324	TM20
+325	TM21
+326	TM22
+327	TM23
+328	TM24
+329	TM25
+330	TM26
+331	TM27
+332	TM28
+333	TM29
+334	TM30
+335	TM31
+336	TM32
+337	TM33
+338	TM34
+339	TM35
+340	TM36
+341	TM37
+342	TM38
+343	TM39
+344	TM40
+345	TM41
+346	TM42
+347	TM43
+348	TM44
+349	TM45
+350	TM46
+351	TM47
+352	TM48
+353	TM49
+354	TM50
+355	TM51
+356	TM52
+357	TM53
+358	TM54
+359	TM55
+360	TM56
+361	TM57
+362	TM58
+363	TM59
+364	TM60
+365	TM61
+366	TM62
+367	TM63
+368	TM64
+369	TM65
+370	TM66
+371	TM67
+372	TM68
+373	TM69
+374	TM70
+375	TM71
+376	TM72
+377	TM73
+378	TM74
+379	TM75
+380	TM76
+381	TM77
+382	TM78
+383	TM79
+384	TM80
+385	TM81
+386	TM82
+387	TM83
+388	TM84
+389	TM85
+390	TM86
+391	TM87
+392	TM88
+393	TM89
+394	TM90
+395	TM91
+396	TM92
+397	VM01
+398	VM02
+399	VM03
+400	VM04
+401	VM05
+402	VM06
+403	VM07
+404	VM08
+405	Erkundungs-Set
+406	Beutesack
+407	Regelbuch
+408	Pokéradar
+409	Punktekarte
+410	Tagebuch
+411	Stickerkoffer
+412	Modekoffer
+413	Stickertüte
+414	Adressbuch
+415	K-Schlüssel
+416	Talisman
+417	G-Schlüssel
+418	Rote Kette
+419	Karte
+420	Kampffahnder
+421	Münzkorb
+422	Angel
+423	Profiangel
+424	Superangel
+425	Entonkanne
+426	Knurspbox
+427	Fahrrad
+428	B-Schlüssel
+429	Eichs Brief
+430	Lunarfeder
+431	Mitgliedskarte
+432	Azurflöte
+433	Bootsticket
+434	Wettbewerbskarte
+435	Magmastein
+436	Paket
+437	Kupon 1
+438	Kupon 2
+439	Kupon 3
+440	Lagerschlüssel
+441	Geheimtrank
+442	Platinum-Orb
+443	Kampfkamera
+444	Gracidea
+445	Geheimschlüssel
+446	Aprikokobox
+447	Pflanzset
+448	Schiggykanne
+449	Köderball
+450	Levelball
+451	Mondball
+452	Schwerball
+453	Turboball
+454	Freundesball
+455	Sympaball
+456	Parkball
+457	Turnierball
+458	Aprikoko Rot
+459	Aprikoko Blau
+460	Aprikoko Gelb
+461	Aprikoko Grün
+462	Aprikoko Pink
+463	Aprikoko Weiß
+464	Aprikoko Schwarz
+465	Itemradar
+466	Wutkeks
+467	Roter Edelstein
+468	Blauer Edelstein
+469	Grüne Kugel
+470	Mytokristall
+471	Icognitoheft
+472	Blaue Karte
+473	Flegmon-Rute
+474	Klarglocke
+475	Schlüsselkarte
+476	Kelleröffner
+477	Rote Haut
+478	Fundsache
+479	Fahrschein
+480	Spule
+481	Silberflügel
+482	Buntschwinge
+483	Rätsel-Ei
+484	GB-Player
+485	Gischtglocke
+486	Datenkarte01
+487	Datenkarte02
+488	Datenkarte03
+489	Datenkarte04
+490	Datenkarte05
+491	Datenkarte06
+492	Datenkarte07
+493	Datenkarte08
+494	Datenkarte09
+495	Datenkarte10
+496	Datenkarte11
+497	Datenkarte12
+498	Datenkarte13
+499	Datenkarte14
+500	Datenkarte15
+501	Datenkarte16
+502	Datenkarte17
+503	Datenkarte18
+504	Datenkarte19
+505	Datenkarte20
+506	Datenkarte21
+507	Datenkarte22
+508	Datenkarte23
+509	Datenkarte24
+510	Datenkarte25
+511	Datenkarte26
+512	Datenkarte27
+513	Tresorkapsel
+514	Fotoalbum
+515	Zigzagbrief
+516	Hafenbrief
+517	Glitzerbrief
+518	Eilbrief
+519	Waldbrief
+520	Wellenbrief
+521	Perlenbrief
+522	Dunkelbrief
+523	Tropenbrief
+524	Traumbrief
+525	Edelbrief
+526	Retrobrief
+527	Eilrad
+528	Kunstrad
+529	Wailmerkanne
+530	Devon-Waren
+531	Aschetasche
+532	Pokériegelbox
+533	Brief an Troy
+534	Äon-Ticket
+535	Scanner
+536	Wüstenbrille
+537	Meteorit
+538	K1-Schlüssel
+539	K2-Schlüssel
+540	K4-Schlüssel
+541	K6-Schlüssel
+542	Devon-Scope
+543	Eichs Paket
+544	Pokéflöte
+545	Rad-Coupon
+546	Goldenes Gebiss
+547	Aufzugsschlüssel
+548	Silph Scope
+549	Ruhmesdatei
+550	TM-Box
+551	Beerentüte
+552	Lehrkanal
+553	Tri-Pass
+554	Bunt-Pass
+555	Tee
+556	Geheimticket
+557	Auroraticket
+558	Puderdöschen
+559	Rubin
+560	Saphir
+561	Magmaemblem
+562	Alte Karte
+563	Aquamodul
+564	Blitzmodul
+565	Flammenmodul
+566	Gefriermodul
+567	Herzkonfekt
+568	Grußbrief
+569	Faiblebrief
+570	Einladebrief
+571	Dankesbrief
+572	Fragebrief
+573	Insiderbrief
+574	Rückbrief
+575	Brückbrief H
+576	Brückbrief M
+577	Brückbrief Z
+578	Brückbrief D
+579	Brückbrief W
+580	Schönschuppe
+581	Evolith
+582	Leichtstein
+583	Beulenhelm
+584	Luftballon
+585	Rote Karte
+586	Zielscheibe
+587	Klammerband
+588	Knolle
+589	Akku
+590	Fluchtknopf
+591	Feuerjuwel
+592	Wasserjuwel
+593	Elektrojuwel
+594	Pflanzenjuwel
+595	Eisjuwel
+596	Kampfjuwel
+597	Giftjuwel
+598	Bodenjuwel
+599	Flugjuwel
+600	Psychojuwel
+601	Käferjuwel
+602	Gesteinsjuwel
+603	Geisterjuwel
+604	Unlichtjuwel
+605	Stahljuwel
+606	Heilfeder
+607	Kraftfeder
+608	Abwehrfeder
+609	Geniefeder
+610	Espritfeder
+611	Flinkfeder
+612	Prachtfeder
+613	Schildfossil
+614	Federfossil
+615	Gartenpass
+616	Transferorb
+617	Traumball
+618	Pokéwedel
+619	Deko-Box
+620	Drakoschädel
+621	Duftpilz
+622	Riesennugget
+623	Triperle
+624	Kometstück
+625	Alter Heller
+626	Alter Taler
+627	Alter Dukat
+628	Alte Vase
+629	Alter Reif
+630	Alte Statue
+631	Alte Krone
+632	Stratos-Eis
+633	Angriffplus2
+634	X-Initiative 2
+635	X-Sp.-Ang. 2
+636	X-Sp.-Vert. 2
+637	X-Verteidigung 2
+638	X-Angriff 2
+639	X-Genauigkeit 2
+640	X-Initiative 3
+641	X-Sp.-Ang. 3
+642	X-Sp.-Vert. 3
+643	X-Verteidigung 3
+644	X-Angriff 3
+645	X-Genauigkeit 3
+646	X-Initiative 6
+647	X-Sp.-Ang. 6
+648	X-Sp.-Vert. 6
+649	X-Verteidigung 6
+650	X-Angriff 6
+651	X-Genauigkeit 6
+652	Fähigk.-Appell
+653	Itemabwurf
+654	Itemappell
+655	Umkehrappell
+656	Angriffplus3
+657	Lichtstein
+658	Dunkelstein
+659	TM93
+660	TM94
+661	TM95
+662	Viso-Caster
+664	Briefpost 1
+665	Briefpost 2
+666	Briefpost 3
+668	Drakojuwel
+669	Normaljuwel
+670	Medaillenbox
+671	DNS-Keil
+673	Genehmigung
+674	Ovalpin
+675	Schillerpin
+676	Plasmakarte
+677	Schnäuztuch
+678	Achromat
+679	Fundsache
+681	Wahrspiegel
+682	Schwächenschutz
+683	Offensivweste
+684	Feentafel
+685	Fähigk.-Kapsel
+686	Sahnehäubchen
+687	Duftbeutel
+688	Leuchtmoos
+689	Schneeball
+690	Schutzbrille
+691	Sprießmulch
+692	Wundermulch
+693	Wuchermulch
+694	Ultramulch
+695	Gengarnit
+696	Guardevoirnit
+697	Ampharosnit
+698	Bisaflornit
+699	Gluraknit X
+700	Turtoknit
+701	Mewtunit X
+702	Mewtunit Y
+703	Lohgocknit
+704	Meditalisnit
+705	Hundemonit
+706	Stollossnit
+707	Banetteonit
+708	Despotarnit
+709	Scheroxnit
+710	Pinsirnit
+711	Aerodactylonit
+712	Lucarionit
+713	Rexblisarnit
+714	Kangamanit
+715	Garadosnit
+716	Absolnit
+717	Gluraknit Y
+718	Simsalanit
+719	Skarabornit
+720	Flunkifernit
+721	Voltensonit
+722	Knakracknit
+723	Hibisbeere
+724	Akibeere
+725	Tarabeere
+726	Rabattmarke
+727	Skurriloskulptur
+728	Illumina-Galette
+729	Kieferfossil
+730	Flossenfossil
+731	Feenjuwel
+732	Abenteuerfibel
+733	Liftschlüssel
+734	Holo-Log
+735	Kalos-Emblem
+736	Kurioser Stein
+737	Linsenetui
+738	LeBelle-Ticket
+739	Mega-Ring
+740	Kraftwerks-Pass
+741	Brief vom Prof
+742	Rollerskates
+743	Loturzelkanne
+744	TMV-Pass
+745	TM96
+746	TM97
+747	TM98
+748	TM99
+749	TM100
+760	Latiasnit
+761	Latiosnit
+762	Normaler Stein
+763	Kosmetiketui
+764	Kleiderkoffer
+765	Yantara-Sablé
+768	Megaillon
+769	Mega-Handschuh
+770	Devon-Waren
+772	Pokériegel-Set
+773	R1-Schlüssel
+774	R2-Schlüssel
+775	R4-Schlüssel
+776	R6-Schlüssel
+779	Devon-Atemgerät
+780	Live-Anzug
+782	Magma-Anzug
+783	Aqua-Anzug
+784	Zweierticket
+785	Mega-Armreif
+786	Mega-Anhänger
+787	Mega-Brille
+788	Mega-Anker
+789	Mega-Anstecker
+790	Mega-Diadem
+791	Mega-Beinreif
+793	Sumpexnit
+794	Gewaldronit
+795	Zobirisnit
+796	Altarianit
+797	Galagladinit
+798	Ohrdochnit
+799	Metagrossnit
+800	Tohaidonit
+801	Lahmusnit
+802	Stahlosnit
+803	Taubossnit
+804	Firnontornit
+805	Diancienit
+806	Banngefäß
+807	Mega-Armband
+808	Cameruptnit
+809	Schlapornit
+810	Brutalandanit
+811	Bibornit
+814	Schlüssel-Stein
+815	Meteoritenstück
+816	Äon-Flöte
+817	Normium Z
+818	Pyrium Z
+819	Aquium Z
+820	Voltium Z
+821	Botanium Z
+822	Glacium Z
+823	Battalium Z
+824	Toxium Z
+825	Terrium Z
+826	Aerium Z
+827	Psium Z
+828	Insectium Z
+829	Petrium Z
+830	Phantomium Z
+831	Dracium Z
+832	Noctium Z
+833	Metallium Z
+834	Sylphium Z
+835	Pikachium Z
+836	Silberkronkorken
+837	Goldkronkorken
+838	Z-Ring
+839	Silvarronium Z
+840	Fuegronium Z
+841	Primarenium Z
+842	Kapium Z
+843	Marshadownium Z
+844	A-Raichunium Z
+845	Relaxonium Z
+846	Evolium Z
+847	Mewnium Z
+877	Ash-Pikachium Z
+878	Zutatenbeutel
+879	Angel
+880	Maske des Profs
+881	Festival-Ticket
+882	Glitzerstein
+883	Zitterorb
+884	Zygarde-Würfel
+885	Eisstein
+886	PokéMobil-Funk
+887	Ultraball
+888	Maxi-Malasada
+889	Roter Nektar
+890	Gelber Nektar
+891	Rosa Nektar
+892	Purpurner Nektar
+893	Sonnenflöte
+894	Mondflöte
+895	Seltsame Karte
+896	Feldbeschichtung
+897	Schutzpolster
+898	Elektro-Samen
+899	Psycho-Samen
+900	Nebel-Samen
+901	Gras-Samen
+902	Kampf-Disc
+903	Flug-Disc
+904	Gift-Disc
+905	Boden-Disc
+906	Gesteins-Disc
+907	Käfer-Disc
+908	Geister-Disc
+909	Stahl-Disc
+910	Feuer-Disc
+911	Wasser-Disc
+912	Pflanzen-Disc
+913	Elektro-Disc
+914	Psycho-Disc
+915	Eis-Disc
+916	Drachen-Disc
+917	Unlicht-Disc
+918	Feen-Disc
+919	Fahrrad
+920	Lagerschlüssel
+921	Kelleröffner
+922	Viso-Caster
+923	Viso-Caster
+924	DNS-Keil
+925	DNS-Keil
+926	Fundsache
+927	Fundsache
+928	Holo-Log
+929	Fahrrad
+930	Holo-Log
+931	Kelleröffner
+932	Lagerschlüssel
+933	Bootsticket
+934	Live-Kleid
+935	Meteorit
+936	Meteorit
+937	Meteorit
+938	Normium Z
+939	Pyrium Z
+940	Aquium Z
+941	Voltium Z
+942	Botanium Z
+943	Glacium Z
+944	Battalium Z
+945	Toxium Z
+946	Terrium Z
+947	Aerium Z
+948	Psium Z
+949	Insectium Z
+950	Petrium Z
+951	Phantomium Z
+952	Dracium Z
+953	Noctium Z
+954	Metallium Z
+955	Sylphium Z
+956	Pikachium Z
+957	Silvarronium Z
+958	Fuegronium Z
+959	Primarenium Z
+960	Kapium Z
+961	Marshadownium Z
+962	A-Raichunium Z
+963	Relaxonium Z
+964	Evolium Z
+965	Mewnium Z
+966	Ash-Pikachium Z
+967	Solgalium Z
+968	Lunalium Z
+969	Ultranecronium Z
+970	Mimigmium Z
+971	Wolwerockium Z
+972	Grandirasium Z
+973	Solgalium Z
+974	Lunalium Z
+975	Ultranecronium Z
+976	Mimigmium Z
+977	Wolwerockium Z
+978	Grandirasium Z
+979	Z-Kraftring
+980	Rosa Blatt
+981	Oranges Blatt
+982	Blaues Blatt
+983	Rotes Blatt
+984	Grünes Blatt
+985	Gelbes Blatt
+986	Violettes Blatt
+987	Regenbogenblüte
+988	Gewitterorden
+989	Necrosol
+990	Necrolun
+991	Necrosol
+992	Necrolun
+993	Elimas Normium Z
+994	Nachlassball
+995	Brutbon
+996	Schnäppchenbon
+997	Preisgeldbon
+998	EP-Bon
+999	Freundschaftsbon
+1000	Lockbon
+1001	Schutzbon
+1002	KP-Bon
+1003	AP-Bon
+1004	Statuswertebon
+1005	Fangbon
+1006	Autogramm
+1007	Pokémon-Box
+1008	Medizintasche
+1009	Bonbonglas
+1010	Stärkungstasche
+1011	Klamottenkoffer
+1012	Fangtasche
+1013	Kampftasche
+1014	Silberne Himmihbeere
+1015	Goldene Himmihbeere
+1016	Silberne Nanabbeere
+1017	Goldene Nanabbeere
+1018	Silberne Sananabeere
+1019	Goldene Sananabeere
+1020	Geheimschlüssel
+1021	Bootsticket
+1022	Paket
+1023	Schlüsselkarte
+1024	Spiralfeder
+1025	Kreidestein
+1026	Glasmurmel
+1027	Ohrring
+1028	Strandscherbe
+1029	Goldblatt
+1030	Silberblatt
+1031	Glanzkugel
+1032	Tropenmuschel
+1033	Blattbrief
+1034	Blattbrief
+1035	Ministrauß
+1036	Lockparfüm
+1037	Super-Lockparfüm
+1038	Top-Lockparfüm
+1039	Marmoria-Kräcker
+1040	Energiebonbon
+1041	Stärkebonbon
+1042	Robustbonbon
+1043	Gripsbonbon
+1044	Mentalbonbon
+1045	Flottbonbon
+1046	Energiebonbon+
+1047	Stärkebonbon+
+1048	Robustbonbon+
+1049	Gripsbonbon+
+1050	Mentalbonbon+
+1051	Flottbonbon+
+1052	Energiebonbon++
+1053	Stärkebonbon++
+1054	Robustbonbon++
+1055	Gripsbonbon++
+1056	Mentalbonbon++
+1057	Flottbonbon++
+1058	Bisasam-Bonbon
+1059	Glumanda-Bonbon
+1060	Schiggy-Bonbon
+1061	Raupy-Bonbon
+1062	Hornliu-Bonbon
+1063	Taubsi-Bonbon
+1064	Rattfratz-Bonbon
+1065	Habitak-Bonbon
+1066	Rettan-Bonbon
+1067	Pikachu-Bonbon
+1068	Sandan-Bonbon
+1069	Nidoran♀-Bonbon
+1070	Nidoran♂-Bonbon
+1071	Piepi-Bonbon
+1072	Vulpix-Bonbon
+1073	Pummeluff-Bonbon
+1074	Zubat-Bonbon
+1075	Myrapla-Bonbon
+1076	Paras-Bonbon
+1077	Bluzuk-Bonbon
+1078	Digda-Bonbon
+1079	Mauzi-Bonbon
+1080	Enton-Bonbon
+1081	Menki-Bonbon
+1082	Fukano-Bonbon
+1083	Quapsel-Bonbon
+1084	Abra-Bonbon
+1085	Machollo-Bonbon
+1086	Knofensa-Bonbon
+1087	Tentacha-Bonbon
+1088	Kleinstein-Bonbon
+1089	Ponita-Bonbon
+1090	Flegmon-Bonbon
+1091	Magnetilo-Bonbon
+1092	Porenta-Bonbon
+1093	Dodu-Bonbon
+1094	Jurob-Bonbon
+1095	Sleima-Bonbon
+1096	Muschas-Bonbon
+1097	Nebulak-Bonbon
+1098	Onix-Bonbon
+1099	Traumato-Bonbon
+1100	Krabby-Bonbon
+1101	Voltobal-Bonbon
+1102	Owei-Bonbon
+1103	Tragosso-Bonbon
+1104	Kicklee-Bonbon
+1105	Nockchan-Bonbon
+1106	Schlurp-Bonbon
+1107	Smogon-Bonbon
+1108	Rihorn-Bonbon
+1109	Chaneira-Bonbon
+1110	Tangela-Bonbon
+1111	Kangama-Bonbon
+1112	Seeper-Bonbon
+1113	Goldini-Bonbon
+1114	Sterndu-Bonbon
+1115	Pantimos-Bonbon
+1116	Sichlor-Bonbon
+1117	Rossana-Bonbon
+1118	Elektek-Bonbon
+1119	Pinsir-Bonbon
+1120	Tauros-Bonbon
+1121	Karpador-Bonbon
+1122	Lapras-Bonbon
+1123	Ditto-Bonbon
+1124	Evoli-Bonbon
+1125	Porygon-Bonbon
+1126	Amonitas-Bonbon
+1127	Kabuto-Bonbon
+1128	Aerodactyl-Bonbon
+1129	Relaxo-Bonbon
+1130	Arktos-Bonbon
+1131	Zapdos-Bonbon
+1132	Lavados-Bonbon
+1133	Dratini-Bonbon
+1134	Mewtu-Bonbon
+1135	Mew-Bonbon
+1136	Meltan-Bonbon
+1137	Magmar-Bonbon
+1138	Empfehlungsbrief
+1139	Pokémon-Box
+1140	Wunschstern
+1141	Dynamax-Band
+1142	Angel
+1143	Rotom-Rad
+1144	Würstchen
+1145	Pauls Feinkost
+1146	Bachs Feinkost
+1147	Dosenbohnen
+1148	Toastbrot
+1149	Spaghetti
+1150	Pilzmix
+1151	Röstrute
+1152	Dicker Lauch
+1153	Luxusapfel
+1154	Feine Knochen
+1155	Kartoffeln
+1156	Uferkraut
+1157	Gemüse
+1158	Frittiertes
+1159	Gekochtes Ei
+1160	Camping-Set
+1161	Rostiges Schwert
+1162	Rostiger Schild
+1163	Vogelfossil
+1164	Fischfossil
+1165	Drachenfossil
+1166	Paddelfossil
+1167	Zucker-Erdbeere
+1168	Zucker-Herz
+1169	Zucker-Beere
+1170	Zucker-Kleeblatt
+1171	Zucker-Blume
+1172	Zucker-Stern
+1173	Zucker-Schleife
+1174	Süßer Apfel
+1175	Saurer Apfel
+1176	Halsspray
+1177	Fluchttasche
+1178	Plateauschuhe
+1179	Fehlschlagschutz
+1180	Bizarroservice
+1181	Allzweckschirm
+1182	EP-Bonbon XS
+1183	EP-Bonbon S
+1184	EP-Bonbon M
+1185	EP-Bonbon L
+1186	EP-Bonbon XL
+1187	Dynamax-Bonbon
+1188	TP00
+1189	TP01
+1190	TP02
+1191	TP03
+1192	TP04
+1193	TP05
+1194	TP06
+1195	TP07
+1196	TP08
+1197	TP09
+1198	TP10
+1199	TP11
+1200	TP12
+1201	TP13
+1202	TP14
+1203	TP15
+1204	TP16
+1205	TP17
+1206	TP18
+1207	TP19
+1208	TP20
+1209	TP21
+1210	TP22
+1211	TP23
+1212	TP24
+1213	TP25
+1214	TP26
+1215	TP27
+1216	TP28
+1217	TP29
+1218	TP30
+1219	TP31
+1220	TP32
+1221	TP33
+1222	TP34
+1223	TP35
+1224	TP36
+1225	TP37
+1226	TP38
+1227	TP39
+1228	TP40
+1229	TP41
+1230	TP42
+1231	TP43
+1232	TP44
+1233	TP45
+1234	TP46
+1235	TP47
+1236	TP48
+1237	TP49
+1238	TP50
+1239	TP51
+1240	TP52
+1241	TP53
+1242	TP54
+1243	TP55
+1244	TP56
+1245	TP57
+1246	TP58
+1247	TP59
+1248	TP60
+1249	TP61
+1250	TP62
+1251	TP63
+1252	TP64
+1253	TP65
+1254	TP66
+1255	TP67
+1256	TP68
+1257	TP69
+1258	TP70
+1259	TP71
+1260	TP72
+1261	TP73
+1262	TP74
+1263	TP75
+1264	TP76
+1265	TP77
+1266	TP78
+1267	TP79
+1268	TP80
+1269	TP81
+1270	TP82
+1271	TP83
+1272	TP84
+1273	TP85
+1274	TP86
+1275	TP87
+1276	TP88
+1277	TP89
+1278	TP90
+1279	TP91
+1280	TP92
+1281	TP93
+1282	TP94
+1283	TP95
+1284	TP96
+1285	TP97
+1286	TP98
+1287	TP99
+1288	TM00
+1289	Solo-Minze
+1290	Hart-Minze
+1291	Frech-Minze
+1292	Mutig-Minze
+1293	Kühn-Minze
+1294	Pfiffig-Minze
+1295	Lasch-Minze
+1296	Locker-Minze
+1297	Mäßig-Minze
+1298	Mild-Minze
+1299	Hitzig-Minze
+1300	Ruhig-Minze
+1301	Still-Minze
+1302	Zart-Minze
+1303	Sacht-Minze
+1304	Forsch-Minze
+1305	Scheu-Minze
+1306	Hastig-Minze
+1307	Froh-Minze
+1308	Naiv-Minze
+1309	Ernst-Minze
+1310	Wunschbrocken
+1311	Rissige Kanne
+1312	Löchrige Kanne
+1313	Top-Ohrenstöpsel
+1314	Früchte
+1315	Kuhmuh-Käse
+1316	Gewürzmix
+1317	Frische Sahne
+1318	Fertigcurry
+1319	Kokosmilch
+1320	Fertignudeln
+1321	Frikadellen
+1322	Giga-Pulver
+1323	Wunschsplitter
+1324	Rotom-Rad
+1325	Superfangpin
+1326	Vergilbter Brief
+1327	Band-Autogramm
+1328	Sanias Buch
+1329	Rotom-Katalog
+1330	★And458
+1331	★And15
+1332	★And337
+1333	★And603
+1334	★And390
+1335	★Sgr6879
+1336	★Sgr6859
+1337	★Sgr6913
+1338	★Sgr7348
+1339	★Sgr7121
+1340	★Sgr6746
+1341	★Sgr7194
+1342	★Sgr7337
+1343	★Sgr7343
+1344	★Sgr6812
+1345	★Sgr7116
+1346	★Sgr7264
+1347	★Sgr7597
+1348	★Del7882
+1349	★Del7906
+1350	★Del7852
+1351	★Psc596
+1352	★Psc361
+1353	★Psc510
+1354	★Psc437
+1355	★Psc8773
+1356	★Lep1865
+1357	★Lep1829
+1358	★Boo5340
+1359	★Boo5506
+1360	★Boo5435
+1361	★Boo5602
+1362	★Boo5733
+1363	★Boo5235
+1364	★Boo5351
+1365	★Hya3748
+1366	★Hya3903
+1367	★Hya3418
+1368	★Hya3482
+1369	★Hya3845
+1370	★Eri1084
+1371	★Eri472
+1372	★Eri1666
+1373	★Eri897
+1374	★Eri1231
+1375	★Eri874
+1376	★Eri1298
+1377	★Eri1325
+1378	★Eri984
+1379	★Eri1464
+1380	★Eri1393
+1381	★Eri850
+1382	★Tau1409
+1383	★Tau1457
+1384	★Tau1165
+1385	★Tau1791
+1386	★Tau1910
+1387	★Tau1346
+1388	★Tau1373
+1389	★Tau1412
+1390	★CMa2491
+1391	★CMa2693
+1392	★CMa2294
+1393	★CMa2827
+1394	★CMa2282
+1395	★CMa2618
+1396	★CMa2657
+1397	★CMa2646
+1398	★UMa4905
+1399	★UMa4301
+1400	★UMa5191
+1401	★UMa5054
+1402	★UMa4295
+1403	★UMa4660
+1404	★UMa4554
+1405	★UMa4069
+1406	★UMa3569
+1407	★UMa3323
+1408	★UMa4033
+1409	★UMa4377
+1410	★UMa4375
+1411	★UMa4518
+1412	★UMa3594
+1413	★Vir5056
+1414	★Vir4825
+1415	★Vir4932
+1416	★Vir4540
+1417	★Vir4689
+1418	★Vir5338
+1419	★Vir4910
+1420	★Vir5315
+1421	★Vir5359
+1422	★Vir5409
+1423	★Vir5107
+1424	★Ari617
+1425	★Ari553
+1426	★Ari546
+1427	★Ari951
+1428	★Ori1713
+1429	★Ori2061
+1430	★Ori1790
+1431	★Ori1903
+1432	★Ori1948
+1433	★Ori2004
+1434	★Ori1852
+1435	★Ori1879
+1436	★Ori1899
+1437	★Ori1543
+1438	★Cas21
+1439	★Cas168
+1440	★Cas403
+1441	★Cas153
+1442	★Cas542
+1443	★Cas219
+1444	★Cas265
+1445	★Cnc3572
+1446	★Cnc3208
+1447	★Cnc3461
+1448	★Cnc3449
+1449	★Cnc3429
+1450	★Cnc3627
+1451	★Cnc3268
+1452	★Cnc3249
+1453	★Com4968
+1454	★Crv4757
+1455	★Crv4623
+1456	★Crv4662
+1457	★Crv4786
+1458	★Aur1708
+1459	★Aur2088
+1460	★Aur1605
+1461	★Aur2095
+1462	★Aur1577
+1463	★Aur1641
+1464	★Aur1612
+1465	★Pav7790
+1466	★Cet911
+1467	★Cet681
+1468	★Cet188
+1469	★Cet539
+1470	★Cet804
+1471	★Cep8974
+1472	★Cep8162
+1473	★Cep8238
+1474	★Cep8417
+1475	★Cen5267
+1476	★Cen5288
+1477	★Cen551
+1478	★Cen5459
+1479	★Cen5460
+1480	★CMi2943
+1481	★CMi2845
+1482	★Equ8131
+1483	★Vul7405
+1484	★UMi424
+1485	★UMi5563
+1486	★UMi5735
+1487	★UMi6789
+1488	★Crt4287
+1489	★Lyr7001
+1490	★Lyr7178
+1491	★Lyr7106
+1492	★Lyr7298
+1493	★Ara6585
+1494	★Sco6134
+1495	★Sco6527
+1496	★Sco6553
+1497	★Sco5953
+1498	★Sco5984
+1499	★Sco6508
+1500	★Sco6084
+1501	★Sco5944
+1502	★Sco6630
+1503	★Sco6027
+1504	★Sco6247
+1505	★Sco6252
+1506	★Sco5928
+1507	★Sco6241
+1508	★Sco6165
+1509	★Tri544
+1510	★Leo3982
+1511	★Leo4534
+1512	★Leo4357
+1513	★Leo4057
+1514	★Leo4359
+1515	★Leo4031
+1516	★Leo3852
+1517	★Leo3905
+1518	★Leo3773
+1519	★Gru8425
+1520	★Gru8636
+1521	★Gru8353
+1522	★Lib5685
+1523	★Lib5531
+1524	★Lib5787
+1525	★Lib5603
+1526	★Pup3165
+1527	★Pup3185
+1528	★Pup3045
+1529	★Cyg7924
+1530	★Cyg7417
+1531	★Cyg7796
+1532	★Cyg8301
+1533	★Cyg7949
+1534	★Cyg7528
+1535	★Oct7228
+1536	★Col1956
+1537	★Col2040
+1538	★Col2177
+1539	★Gem2990
+1540	★Gem2891
+1541	★Gem2421
+1542	★Gem2473
+1543	★Gem2216
+1544	★Gem2777
+1545	★Gem2650
+1546	★Gem2286
+1547	★Gem2484
+1548	★Gem2930
+1549	★Peg8775
+1550	★Peg8781
+1551	★Peg39
+1552	★Peg8308
+1553	★Peg8650
+1554	★Peg8634
+1555	★Peg8684
+1556	★Peg8450
+1557	★Peg8880
+1558	★Peg8905
+1559	★Oph6556
+1560	★Oph6378
+1561	★Oph6603
+1562	★Oph6149
+1563	★Oph6056
+1564	★Oph6075
+1565	★Ser5854
+1566	★Ser7141
+1567	★Ser5879
+1568	★Her6406
+1569	★Her6148
+1570	★Her6410
+1571	★Her6526
+1572	★Her6117
+1573	★Her6008
+1574	★Per936
+1575	★Per1017
+1576	★Per1131
+1577	★Per1228
+1578	★Per834
+1579	★Per941
+1580	★Phe99
+1581	★Phe338
+1582	★Vel3634
+1583	★Vel3485
+1584	★Vel3734
+1585	★Aqr8232
+1586	★Aqr8414
+1587	★Aqr8709
+1588	★Aqr8518
+1589	★Aqr7950
+1590	★Aqr8499
+1591	★Aqr8610
+1592	★Aqr8264
+1593	★Cru4853
+1594	★Cru4730
+1595	★Cru4763
+1596	★Cru4700
+1597	★Cru4656
+1598	★PsA8728
+1599	★TrA6217
+1600	★Cap7776
+1601	★Cap7754
+1602	★Cap8278
+1603	★Cap8322
+1604	★Cap7773
+1605	★Sge7479
+1606	★Car2326
+1607	★Car3685
+1608	★Car3307
+1609	★Car3699
+1610	★Dra5744
+1611	★Dra5291
+1612	★Dra6705
+1613	★Dra6536
+1614	★Dra7310
+1615	★Dra6688
+1616	★Dra4434
+1617	★Dra6370
+1618	★Dra7462
+1619	★Dra6396
+1620	★Dra6132
+1621	★Dra6636
+1622	★CVn4915
+1623	★CVn4785
+1624	★CVn4846
+1625	★Aql7595
+1626	★Aql7557
+1627	★Aql7525
+1628	★Aql7602
+1629	★Aql7235
+1630	Dyna-Honig
+1631	Dyna-Pilz
+1632	Galarnuss-Zweig
+1633	Galarnuss-Reif
+1634	Style-Karte
+1635	Rüstungspass
+1636	Rotom-Rad
+1637	Rotom-Rad
+1638	EP-Pin
+1639	Rüstungserz
+1640	Zeichenpin
+1641	Zügel des Bundes
+1642	Zügel des Bundes
+1643	Galarnuss-Kranz
+1644	Legenden-Notiz 1
+1645	Legenden-Notiz 2
+1646	Legenden-Notiz 3
+1647	Legenden-Notiz X
+1648	Kronenpass
+1649	Holzkrone
+1650	Kronblatt
+1651	Helles Rosshaar
+1652	Dunkles Rosshaar
+1653	Polarkarotte
+1654	Phantomkarotte
+1655	Dyna-Erz
+1656	Karottensamen
+1657	Fähigk.-Pflaster
+1658	Zügel des Bundes
+2109	Saftiger Apfel
+2230	Schwarzaugit
+2231	Torfblock
+2232	Legierungsmetall

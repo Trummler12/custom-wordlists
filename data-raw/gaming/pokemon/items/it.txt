@@ -1,0 +1,1606 @@
+1	Master Ball
+2	Ultra Ball
+3	Mega Ball
+4	Poké Ball
+5	Safari Ball
+6	Rete Ball
+7	Sub Ball
+8	Minor Ball
+9	Bis Ball
+10	Timer Ball
+11	Chic Ball
+12	Premier Ball
+13	Scuro Ball
+14	Cura Ball
+15	Velox Ball
+16	Pregio Ball
+17	Pozione
+18	Antidoto
+19	Antiscottatura
+20	Antigelo
+21	Sveglia
+22	Antiparalisi
+23	Ricarica totale
+24	Pozione Max
+25	Iperpozione
+26	Superpozione
+27	Cura totale
+28	Revitalizzante
+29	Revitalizz. Max
+30	Acqua fresca
+31	Gassosa
+32	Lemonsucco
+33	Latte Mumu
+34	Polvenergia
+35	Radicenergia
+36	Polvocura
+37	Vitalerba
+38	Etere
+39	Etere Max
+40	Elisir
+41	Elisir Max
+42	Lavottino
+43	Succodibacca
+44	Ceneremagica
+45	PS-Su
+46	Proteina
+47	Ferro
+48	Carburante
+49	Calcio
+50	Caramella rara
+51	PP-Su
+52	Zinco
+53	PP-Max
+54	Dolce Gateau
+55	Superguardia
+56	Supercolpo
+57	Attacco X
+58	Difesa X
+59	Velocità X
+60	Precisione X
+61	Att. Speciale X
+62	Dif. Speciale X
+63	Poké Bambola
+64	Coda Skitty
+65	Flauto Blu
+66	Flauto Giallo
+67	Flauto Rosso
+68	Flauto Nero
+69	Flauto Bianco
+70	Sale Ondoso
+71	Gusciondoso
+72	Coccio Rosso
+73	Coccio Blu
+74	Coccio Giallo
+75	Coccio Verde
+76	Superrepellente
+77	Repellente Max
+78	Fune di fuga
+79	Repellente
+80	Pietrasolare
+81	Pietralunare
+82	Pietrafocaia
+83	Pietratuono
+84	Pietraidrica
+85	Pietrafoglia
+86	Minifungo
+87	Grande Fungo
+88	Perla
+89	Grande Perla
+90	Polvostella
+91	Pezzo Stella
+92	Pepita
+93	Squama Cuore
+94	Miele
+95	Fertilrapido
+96	Fertilidro
+97	Fertilsaldo
+98	Fertilcolla
+99	Radifossile
+100	Fossilunghia
+101	Helixfossile
+102	Domofossile
+103	Ambra antica
+104	Fossilscudo
+105	Fossilcranio
+106	Osso Raro
+107	Pietrabrillo
+108	Neropietra
+109	Pietralbore
+110	Pietraovale
+111	Roccianima
+112	Adamasfera
+113	Splendisfera
+114	Mess. Erba
+115	Mess. Fiamma
+116	Mess. Bolla
+117	Mess. Petalo
+118	Mess. Tunnel
+119	Mess. Lega
+120	Mess. Cuore
+121	Mess. Neve
+122	Mess. Spazio
+123	Mess. Aereo
+124	Mess. Iride
+125	Mess. Muro
+126	Baccaliegia
+127	Baccastagna
+128	Baccapesca
+129	Baccafrago
+130	Baccaperina
+131	Baccamela
+132	Baccarancia
+133	Baccaki
+134	Baccaprugna
+135	Baccacedro
+136	Baccafico
+137	Baccakiwi
+138	Baccamango
+139	Baccaguava
+140	Baccapaia
+141	Baccalampon
+142	Baccamora
+143	Baccabana
+144	Baccapera
+145	Baccananas
+146	Baccagrana
+147	Baccalga
+148	Baccaloquat
+149	Baccamelon
+150	Baccauva
+151	Baccamodoro
+152	Baccavena
+153	Baccagostan
+154	Baccambutan
+155	Baccalemon
+156	Baccamelos
+157	Baccapalma
+158	Baccacomero
+159	Baccadurian
+160	Baccartillo
+161	Baccacao
+162	Baccapasflo
+163	Baccaparmen
+164	Baccarindo
+165	Baccamoya
+166	Baccarosmel
+167	Baccakebia
+168	Baccanaca
+169	Baccababa
+170	Baccapayapa
+171	Baccaitan
+172	Baccaciofo
+173	Baccacitrus
+174	Baccahaban
+175	Baccaxan
+176	Baccababiri
+177	Baccacinlan
+178	Baccalici
+179	Baccalongan
+180	Baccasalak
+181	Baccapitaya
+182	Baccacocca
+183	Baccalangsa
+184	Baccambola
+185	Baccaenigma
+186	Baccaracolo
+187	Baccacrela
+188	Baccajaba
+189	Baccaroam
+190	Luminpolvere
+191	Erbachiara
+192	Crescicappa
+193	Condividi esp.
+194	Rapidartigli
+195	Calmanella
+196	Mentalerba
+197	Bendascelta
+198	Roccia di Re
+199	Argenpolvere
+200	Monetamuleto
+201	Velopuro
+202	Cuorugiada
+203	Dente Abissi
+204	Squamabissi
+205	Palla Fumo
+206	Pietrastante
+207	Bandana
+208	Fortunuovo
+209	Mirino
+210	Metalcoperta
+211	Avanzi
+212	Squama Drago
+213	Elettropalla
+214	Sabbia Soffice
+215	Pietradura
+216	Miracolseme
+217	Occhialineri
+218	Cinturanera
+219	Calamita
+220	Acqua Magica
+221	Beccaffilato
+222	Velenaculeo
+223	Gelomai
+224	Spettrotarga
+225	Cucchiaio Torto
+226	Carbonella
+227	Dentedidrago
+228	Sciarpa Seta
+229	Upgrade
+230	Conchinella
+231	Marearoma
+232	Distraroma
+233	Fortunpugno
+234	Metalpolvere
+235	Ossospesso
+236	Gambo
+237	Fascia Rossa
+238	Fascia Blu
+239	Fascia Rosa
+240	Fascia Verde
+241	Fascia Gialla
+242	Grandelente
+243	Muscolbanda
+244	Saviocchiali
+245	Abilcintura
+246	Creta Luce
+247	Assorbisfera
+248	Vigorerba
+249	Tossicsfera
+250	Fiammosfera
+251	Velopolvere
+252	Focalnastro
+253	Zoomlente
+254	Plessimetro
+255	Ferropalla
+256	Rallentocoda
+257	Destincomune
+258	Fangopece
+259	Rocciafredda
+260	Roccialiscia
+261	Rocciacalda
+262	Rocciaumida
+263	Presartigli
+264	Stolascelta
+265	Vischiopunta
+266	Vigorcerchio
+267	Vigorfascia
+268	Vigorlente
+269	Vigorbanda
+270	Vigorgliera
+271	Vigorpeso
+272	Disfoguscio
+273	Granradice
+274	Lentiscelta
+275	Lastrarogo
+276	Lastraidro
+277	Lastrasaetta
+278	Lastraprato
+279	Lastragelo
+280	Lastrapugno
+281	Lastrafiele
+282	Lastrageo
+283	Lastracielo
+284	Lastramente
+285	Lastrabaco
+286	Lastrapietra
+287	Lastratetra
+288	Lastradrakon
+289	Lastratimore
+290	Lastraferro
+291	Bizzoaroma
+292	Roccioaroma
+293	Gonfioaroma
+294	Ondaroma
+295	Rosaroma
+296	Fortunaroma
+297	Puroaroma
+298	Copertura
+299	Elettritore
+300	Magmatore
+301	Dubbiodisco
+302	Terrorpanno
+303	Affilartigli
+304	Affilodente
+305	MT01
+306	MT02
+307	MT03
+308	MT04
+309	MT05
+310	MT06
+311	MT07
+312	MT08
+313	MT09
+314	MT10
+315	MT11
+316	MT12
+317	MT13
+318	MT14
+319	MT15
+320	MT16
+321	MT17
+322	MT18
+323	MT19
+324	MT20
+325	MT21
+326	MT22
+327	MT23
+328	MT24
+329	MT25
+330	MT26
+331	MT27
+332	MT28
+333	MT29
+334	MT30
+335	MT31
+336	MT32
+337	MT33
+338	MT34
+339	MT35
+340	MT36
+341	MT37
+342	MT38
+343	MT39
+344	MT40
+345	MT41
+346	MT42
+347	MT43
+348	MT44
+349	MT45
+350	MT46
+351	MT47
+352	MT48
+353	MT49
+354	MT50
+355	MT51
+356	MT52
+357	MT53
+358	MT54
+359	MT55
+360	MT56
+361	MT57
+362	MT58
+363	MT59
+364	MT60
+365	MT61
+366	MT62
+367	MT63
+368	MT64
+369	MT65
+370	MT66
+371	MT67
+372	MT68
+373	MT69
+374	MT70
+375	MT71
+376	MT72
+377	MT73
+378	MT74
+379	MT75
+380	MT76
+381	MT77
+382	MT78
+383	MT79
+384	MT80
+385	MT81
+386	MT82
+387	MT83
+388	MT84
+389	MT85
+390	MT86
+391	MT87
+392	MT88
+393	MT89
+394	MT90
+395	MT91
+396	MT92
+397	MN01
+398	MN02
+399	MN03
+400	MN04
+401	MN05
+402	MN06
+403	MN07
+404	MN08
+405	Esplorokit
+406	Bottinosacca
+407	Libro Regole
+408	Poké Radar
+409	Scheda Punti
+410	Agenda
+411	Portabolli
+412	Scatola Chic
+413	Bollosacca
+414	Blocco Amici
+415	Turbinchiave
+416	Arcamuleto
+417	Galachiave
+418	Rossocatena
+419	Mappa città
+420	Cercasfide
+421	Salvadanaio
+422	Amo Vecchio
+423	Amo Buono
+424	Super Amo
+425	Sprayduck
+426	Portapoffin
+427	Bicicletta
+428	Chiave Suite
+429	Lettera Oak
+430	Alalunare
+431	Scheda Soci
+432	Flauto Cielo
+433	Biglietto nave
+434	Tessera Gare
+435	Magmapietra
+436	Pacco
+437	Coupon 1
+438	Coupon 2
+439	Coupon 3
+440	Depochiave
+441	Pozione Segreta
+442	Grigiosfera
+443	Registradati
+444	Gracidea
+445	Chiave segreta
+446	Ghicobox
+447	Piantabacche
+448	Annaffiatoio
+449	Esca Ball
+450	Level Ball
+451	Luna Ball
+452	Peso Ball
+453	Rapid Ball
+454	Friend Ball
+455	Love Ball
+456	Parco Ball
+457	Gara Ball
+458	Ghicocca Rossa
+459	Ghicocca Blu
+460	Ghicocca Gialla
+461	Ghicocca Verde
+462	Ghicocca Rosa
+463	Ghicocca Bianca
+464	Ghicocca Nera
+465	Ricerca strum.
+466	Iramella
+467	Gemma rossa
+468	Gemma blu
+469	Sfera Verde
+470	Misticristal
+471	UnownBloc
+472	Carta Blu
+473	Coda Slowpoke
+474	Campana Chiara
+475	Apriporta
+476	Chiave sotterr.
+477	Squama Rossa
+478	Strumento perso
+479	Superpass
+480	Pezzo macch.
+481	Aladargento
+482	Ala d’Iride
+483	Uovo Mistero
+484	Lettore GB
+485	Campana Onda
+486	Scheda Dati 01
+487	Scheda Dati 02
+488	Scheda Dati 03
+489	Scheda Dati 04
+490	Scheda Dati 05
+491	Scheda Dati 06
+492	Scheda Dati 07
+493	Scheda Dati 08
+494	Scheda Dati 09
+495	Scheda Dati 10
+496	Scheda Dati 11
+497	Scheda Dati 12
+498	Scheda Dati 13
+499	Scheda Dati 14
+500	Scheda Dati 15
+501	Scheda Dati 16
+502	Scheda Dati 17
+503	Scheda Dati 18
+504	Scheda Dati 19
+505	Scheda Dati 20
+506	Scheda Dati 21
+507	Scheda Dati 22
+508	Scheda Dati 23
+509	Scheda Dati 24
+510	Scheda Dati 25
+511	Scheda Dati 26
+512	Scheda Dati 27
+513	Capsula Scrigno
+514	Album
+515	Mess. Agrume
+516	Mess. Porto
+517	Mess. Luci
+518	Mess. Tecno
+519	Mess. Bosco
+520	Mess. Onda
+521	Mess. Perle
+522	Mess. Ombra
+523	Mess. Tropic
+524	Mess. Sogno
+525	Mess. Lusso
+526	Mess. Rétro
+527	Bici da corsa
+528	Bici da cross
+529	Vaso Wailmer
+530	Merce Devon
+531	Sacco cenere
+532	PortaPokémelle
+533	Lettera
+534	Biglietto Eone
+535	Scanner
+536	Occhialoni
+537	Meteorite
+538	Chiave Cab.1
+539	Chiave Cab.2
+540	Chiave Cab.4
+541	Chiave Cab.6
+542	Devonscopio
+543	Pacco di Oak
+544	Poké Flauto
+545	Buono Bici
+546	Denti d’oro
+547	Chiave ascensore
+548	Spettrosonda
+549	PokéVIP
+550	Porta MT
+551	Portabacche
+552	Pokétivù
+553	Tris Pass
+554	Sette Pass
+555	Tè
+556	Bigl. Magico
+557	Bigl. Aurora
+558	Portafarina
+559	Rubino
+560	Zaffiro
+561	Stemma Magma
+562	Mappa Stinta
+563	Idromodulo
+564	Voltmodulo
+565	Piromodulo
+566	Gelomodulo
+567	Dolcecuore
+568	Messaggio Inizio
+569	Messaggio TVB
+570	Messaggio Invito
+571	Messaggio Grazie
+572	Messaggio Chiedi
+573	Mess. Sugg.
+574	Mess. Risp.
+575	Mess. Frec.
+576	Mess. Libec.
+577	Mess. Prop.
+578	Mess. Vill.
+579	Mess. Merav.
+580	Squama Bella
+581	Evolcondensa
+582	Pietralieve
+583	Bitorzolelmo
+584	Palloncino
+585	Cartelrosso
+586	Facilsaglio
+587	Legafascia
+588	Bulbo
+589	Ricaripila
+590	Pulsantefuga
+591	Bijoufuoco
+592	Bijouacqua
+593	Bijouelettro
+594	Bijouerba
+595	Bijoughiaccio
+596	Bijoulotta
+597	Bijouveleno
+598	Bijouterra
+599	Bijouvolante
+600	Bijoupsico
+601	Bijoucoleottero
+602	Bijouroccia
+603	Bijouspettro
+604	Bijoubuio
+605	Bijouacciaio
+606	Piumsalute
+607	Piumpotenza
+608	Piumtutela
+609	Piumingegno
+610	Piumintuito
+611	Piumreazione
+612	Piumabella
+613	Fossiltappo
+614	Fossilpiuma
+615	Liberticket
+616	Passabilia
+617	Dream Ball
+618	Pokégingillo
+619	Portagadget
+620	Teschio
+621	Profumfungo
+622	Granpepita
+623	Trittiperla
+624	Pezzo Cometa
+625	Soldantico
+626	Ducatantico
+627	Doblonantico
+628	Vasantico
+629	Bracciantico
+630	Statuantica
+631	Coronantica
+632	Conostropoli
+633	Supercolpo 2
+634	Velocità X-2
+635	Att. Sp. X-2
+636	Dif. Spec. X-2
+637	Difesa X-2
+638	Attacco X-2
+639	Precisione X-2
+640	Velocità X-3
+641	Att. Sp. X-3
+642	Dif. Spec. X-3
+643	Difesa X-3
+644	Attacco X-3
+645	Precisione X-3
+646	Velocità X-6
+647	Att. Sp. X-6
+648	Dif. Spec. X-6
+649	Difesa X-6
+650	Attacco X-6
+651	Precisione X-6
+652	Chiamabilità
+653	Lascioggetto
+654	Chiamoggetto
+655	Ripristino
+656	Supercolpo 3
+657	Chiarolite
+658	Scurolite
+659	MT93
+660	MT94
+661	MT95
+662	Interpoké
+664	Missiva 1
+665	Missiva 2
+666	Missiva 3
+668	Bijoudrago
+669	Bijounormale
+670	Box Premi
+671	Cuneo DNA
+673	Permesso
+674	Ovamuleto
+675	Cromamuleto
+676	Carta Plasma
+677	Pezza Sporca
+678	Acrocongegno
+679	Oggetto perso
+681	Verispecchio
+682	Vulneropolizza
+683	Corpetto assalto
+684	Lastraspiritello
+685	Capsula abilità
+686	Dolcespuma
+687	Bustina aromi
+688	Muschioluce
+689	Palla di neve
+690	Visierantisabbia
+691	Fertilflorido
+692	Fertilsorpresa
+693	Fertilcopioso
+694	Fertilprodigio
+695	Gengarite
+696	Gardevoirite
+697	Ampharosite
+698	Venusaurite
+699	Charizardite X
+700	Blastoisite
+701	Mewtwoite X
+702	Mewtwoite Y
+703	Blazikenite
+704	Medichamite
+705	Houndoomite
+706	Aggronite
+707	Banettite
+708	Tyranitarite
+709	Scizorite
+710	Pinsirite
+711	Aerodactylite
+712	Lucarite
+713	Abomasnowite
+714	Kangaskhanite
+715	Gyaradosite
+716	Absolite
+717	Charizardite Y
+718	Alakazamite
+719	Heracrossite
+720	Mawilite
+721	Manectricite
+722	Garchompite
+723	Baccarcadè
+724	Baccalighia
+725	Baccapane
+726	Buono sconto
+727	Strano ninnolo
+728	Pan di Lumi
+729	Fossilmascella
+730	Fossilpinna
+731	Bijoufolletto
+732	Guida Avventura
+733	Chiave ascensore
+734	Holovox
+735	Emblema di Kalos
+736	Sasso suggestivo
+737	Portalenti
+738	Carta Bellocchio
+739	Megacerchio
+740	Pass Centrale
+741	Lettera del Prof
+742	Pattini
+743	Irrigalotad
+744	Pass TMV
+745	MT96
+746	MT97
+747	MT98
+748	MT99
+749	MT100
+760	Latiasite
+761	Latiosite
+762	Sasso qualsiasi
+763	Trousse
+764	Baule per abiti
+765	Yantafrollino
+768	Megaciondolo
+769	Megaguanto
+770	Merce Devon
+772	Kit Pokémelle
+773	Chiave stanza 1
+774	Chiave stanza 2
+775	Chiave stanza 4
+776	Chiave stanza 6
+779	Maschera Devon
+780	Costume Live
+782	Tuta Magma
+783	Tuta Idro
+784	Biglietto doppio
+785	Megabracciale
+786	Megapendente
+787	Megaocchiali
+788	Megaancora
+789	Megaspilla
+790	Megadiadema
+791	Megagambale
+793	Swampertite
+794	Sceptilite
+795	Sableyite
+796	Altarite
+797	Galladite
+798	Audinite
+799	Metagrossite
+800	Sharpedite
+801	Slowbroite
+802	Steelixite
+803	Pidgeotite
+804	Glalite
+805	Diancite
+806	Vaso del vincolo
+807	Megapolsiera
+808	Cameruptite
+809	Lopunnite
+810	Salamencite
+811	Beedrillite
+814	Pietrachiave
+815	Framm. meteorite
+816	Flauto Eone
+817	Normium Z
+818	Pirium Z
+819	Idrium Z
+820	Electrium Z
+821	Herbium Z
+822	Glacium Z
+823	Luctium Z
+824	Venenium Z
+825	Terrium Z
+826	Volantium Z
+827	Psichium Z
+828	Insectium Z
+829	Petrium Z
+830	Spectrium Z
+831	Draconium Z
+832	Obscurium Z
+833	Metallium Z
+834	Follectium Z
+835	Pikacium Z
+836	Tappo d’argento
+837	Tappo d’oro
+838	Cerchio Z
+839	Deciduenium Z
+840	Incineronium Z
+841	Primarinium Z
+842	Tapium Z
+843	Marshadium Z
+844	Aloraicium Z
+845	Snorlactium Z
+846	Eevium Z
+847	Mewnium Z
+877	Ashpikacium Z
+878	Portaingredienti
+879	Amo
+880	Maschera Prof.
+881	Festicket
+882	Pietra lucente
+883	Fifasfera
+884	Teca Zygarde
+885	Pietragelo
+886	Chiamapassaggio
+887	UC Ball
+888	Malasada maxi
+889	Nettare rosso
+890	Nettare giallo
+891	Nettare rosa
+892	Nettare viola
+893	Flauto solare
+894	Flauto lunare
+895	Lettera segreta
+896	Fissacampo
+897	Smorzaurti
+898	Elettroseme
+899	Psicoseme
+900	Nebbiaseme
+901	Erbaseme
+902	ROM Lotta
+903	ROM Volante
+904	ROM Veleno
+905	ROM Terra
+906	ROM Roccia
+907	ROM Coleottero
+908	ROM Spettro
+909	ROM Acciaio
+910	ROM Fuoco
+911	ROM Acqua
+912	ROM Erba
+913	ROM Elettro
+914	ROM Psico
+915	ROM Ghiaccio
+916	ROM Drago
+917	ROM Buio
+918	ROM Folletto
+919	Bicicletta
+920	Depochiave
+921	Chiave sotterr.
+922	Interpoké
+923	Interpoké
+924	Cuneo DNA
+925	Cuneo DNA
+926	Oggetto perso
+927	Oggetto perso
+928	Holovox
+929	Bicicletta
+930	Holovox
+931	Chiave sotterr.
+932	Chiave magazzino
+933	Biglietto nave
+934	Vestito Live
+935	Meteorite
+936	Meteorite
+937	Meteorite
+938	Normium Z
+939	Pirium Z
+940	Idrium Z
+941	Electrium Z
+942	Herbium Z
+943	Glacium Z
+944	Luctium Z
+945	Venenium Z
+946	Terrium Z
+947	Volantium Z
+948	Psichium Z
+949	Insectium Z
+950	Petrium Z
+951	Spectrium Z
+952	Draconium Z
+953	Obscurium Z
+954	Metallium Z
+955	Follectium Z
+956	Pikacium Z
+957	Deciduenium Z
+958	Incineronium Z
+959	Primarinium Z
+960	Tapium Z
+961	Marshadium Z
+962	Aloraicium Z
+963	Snorlactium Z
+964	Eevium Z
+965	Mewnium Z
+966	Ashpikacium Z
+967	Solgaleium Z
+968	Lunalium Z
+969	Ultranecrozium Z
+970	Mimikyum Z
+971	Lycanrochium Z
+972	Kommonium Z
+973	Solgaleium Z
+974	Lunalium Z
+975	Ultranecrozium Z
+976	Mimikyum Z
+977	Lycanrochium Z
+978	Kommonium Z
+979	Supercerchio Z
+980	Petalo rosa
+981	Petalo arancione
+982	Petalo azzurro
+983	Petalo rosso
+984	Petalo verde
+985	Petalo giallo
+986	Petalo violetto
+987	Fiore arcobaleno
+988	Medaglia Tonante
+989	Necrosolix
+990	Necrolunix
+991	Necrosolix
+992	Necrolunix
+993	Normium Z Liam
+994	Poké Ball altrui
+995	Cova’n’roll
+996	Sconto’n’roll
+997	Soldi’n’roll
+998	Esp’n’roll
+999	Affetto’n’roll
+1000	Incontra’n’roll
+1001	Repelle’n’roll
+1002	PS’n’roll
+1003	PP’n’roll
+1004	Stat’n’roll
+1005	Acchiappa’n’roll
+1006	Autografo
+1007	Box Pokémon
+1008	Tasca rimedi
+1009	Portacaramelle
+1010	Tasca potenziam.
+1011	Valigia vestiti
+1012	Tasca cattura
+1013	Tasca lotta
+1014	Baccalampon argentata
+1015	Baccalampon dorata
+1016	Baccabana argentata
+1017	Baccabana dorata
+1018	Baccananas argentata
+1019	Baccananas dorata
+1020	Chiave segreta
+1021	Biglietto nave
+1022	Pacco
+1023	Apriporta
+1024	Molla elastica
+1025	Gessetto
+1026	Biglia
+1027	Orecchino
+1028	Vetro marino
+1029	Fogliadoro
+1030	Fogliargento
+1031	Pallina di fango
+1032	Tropiconchiglia
+1033	Foglialettera
+1034	Foglialettera
+1035	Bouquet
+1036	Profumo invito
+1037	Superprofumo
+1038	Profumo Max
+1039	Plumbeosalatini
+1040	Caramella vitalità S
+1041	Caramella potenza S
+1042	Caramella protezione S
+1043	Caramella acume S
+1044	Caramella intuito S
+1045	Caramella rapidità S
+1046	Caramella vitalità M
+1047	Caramella potenza M
+1048	Caramella protezione M
+1049	Caramella acume M
+1050	Caramella intuito M
+1051	Caramella rapidità M
+1052	Caramella vitalità L
+1053	Caramella potenza L
+1054	Caramella protezione L
+1055	Caramella acume L
+1056	Caramella intuito L
+1057	Caramella rapidità L
+1058	Caramella Bulbasaur
+1059	Caramella Charmander
+1060	Caramella Squirtle
+1061	Caramella Caterpie
+1062	Caramella Weedle
+1063	Caramella Pidgey
+1064	Caramella Rattata
+1065	Caramella Spearow
+1066	Caramella Ekans
+1067	Caramella Pikachu
+1068	Caramella Sandshrew
+1069	Caramella Nidoran♀
+1070	Caramella Nidoran♂
+1071	Caramella Clefairy
+1072	Caramella Vulpix
+1073	Caramella Jigglypuff
+1074	Caramella Zubat
+1075	Caramella Oddish
+1076	Caramella Paras
+1077	Caramella Venonat
+1078	Caramella Diglett
+1079	Caramella Meowth
+1080	Caramella Psyduck
+1081	Caramella Mankey
+1082	Caramella Growlithe
+1083	Caramella Poliwag
+1084	Caramella Abra
+1085	Caramella Machop
+1086	Caramella Bellsprout
+1087	Caramella Tentacool
+1088	Caramella Geodude
+1089	Caramella Ponyta
+1090	Caramella Slowpoke
+1091	Caramella Magnemite
+1092	Caramella Farfetch’d
+1093	Caramella Doduo
+1094	Caramella Seel
+1095	Caramella Grimer
+1096	Caramella Shellder
+1097	Caramella Gastly
+1098	Caramella Onix
+1099	Caramella Drowzee
+1100	Caramella Krabby
+1101	Caramella Voltorb
+1102	Caramella Exeggcute
+1103	Caramella Cubone
+1104	Caramella Hitmonlee
+1105	Caramella Hitmonchan
+1106	Caramella Lickitung
+1107	Caramella Koffing
+1108	Caramella Rhyhorn
+1109	Caramella Chansey
+1110	Caramella Tangela
+1111	Caramella Kangaskhan
+1112	Caramella Horsea
+1113	Caramella Goldeen
+1114	Caramella Staryu
+1115	Caramella Mr. Mime
+1116	Caramella Scyther
+1117	Caramella Jynx
+1118	Caramella Electabuzz
+1119	Caramella Pinsir
+1120	Caramella Tauros
+1121	Caramella Magikarp
+1122	Caramella Lapras
+1123	Caramella Ditto
+1124	Caramella Eevee
+1125	Caramella Porygon
+1126	Caramella Omanyte
+1127	Caramella Kabuto
+1128	Caramella Aerodactyl
+1129	Caramella Snorlax
+1130	Caramella Articuno
+1131	Caramella Zapdos
+1132	Caramella Moltres
+1133	Caramella Dratini
+1134	Caramella Mewtwo
+1135	Caramella Mew
+1136	Caramella Meltan
+1137	Caramella Magmar
+1138	Referenze
+1139	Box Pokémon
+1140	Desiostella
+1141	Polsino Dynamax
+1142	Amo
+1143	Bici Rotom
+1144	Salsicce
+1145	Lattina Gustavo
+1146	Scatoletta Bach
+1147	Lattina fagioli
+1148	Pan carré
+1149	Pasta
+1150	Funghi
+1151	Coda affumicata
+1152	Grosso porro
+1153	Mela prelibata
+1154	Ossi sottili
+1155	Patate
+1156	Erbe acquatiche
+1157	Verdure
+1158	Fritto misto
+1159	Uovo sodo
+1160	Kit da campeggio
+1161	Spada rovinata
+1162	Scudo rovinato
+1163	Ornitofossile
+1164	Ittiofossile
+1165	Dracofossile
+1166	Plesiofossile
+1167	Bonbonfragola
+1168	Bonboncuore
+1169	Bonbonbosco
+1170	Bonbonfoglio
+1171	Bonbonfiore
+1172	Bonbonstella
+1173	Bonbonfiocco
+1174	Dolcepomo
+1175	Aspropomo
+1176	Spray gola
+1177	Zainofuga
+1178	Scarponi robusti
+1179	Fiascopolizza
+1180	Distorservizio
+1181	Superombrello
+1182	Caram. Esp. XS
+1183	Caram. Esp. S
+1184	Caram. Esp. M
+1185	Caram. Esp. L
+1186	Caram. Esp. XL
+1187	Caram. Dynamax
+1188	DT00
+1189	DT01
+1190	DT02
+1191	DT03
+1192	DT04
+1193	DT05
+1194	DT06
+1195	DT07
+1196	DT08
+1197	DT09
+1198	DT10
+1199	DT11
+1200	DT12
+1201	DT13
+1202	DT14
+1203	DT15
+1204	DT16
+1205	DT17
+1206	DT18
+1207	DT19
+1208	DT20
+1209	DT21
+1210	DT22
+1211	DT23
+1212	DT24
+1213	DT25
+1214	DT26
+1215	DT27
+1216	DT28
+1217	DT29
+1218	DT30
+1219	DT31
+1220	DT32
+1221	DT33
+1222	DT34
+1223	DT35
+1224	DT36
+1225	DT37
+1226	DT38
+1227	DT39
+1228	DT40
+1229	DT41
+1230	DT42
+1231	DT43
+1232	DT44
+1233	DT45
+1234	DT46
+1235	DT47
+1236	DT48
+1237	DT49
+1238	DT50
+1239	DT51
+1240	DT52
+1241	DT53
+1242	DT54
+1243	DT55
+1244	DT56
+1245	DT57
+1246	DT58
+1247	DT59
+1248	DT60
+1249	DT61
+1250	DT62
+1251	DT63
+1252	DT64
+1253	DT65
+1254	DT66
+1255	DT67
+1256	DT68
+1257	DT69
+1258	DT70
+1259	DT71
+1260	DT72
+1261	DT73
+1262	DT74
+1263	DT75
+1264	DT76
+1265	DT77
+1266	DT78
+1267	DT79
+1268	DT80
+1269	DT81
+1270	DT82
+1271	DT83
+1272	DT84
+1273	DT85
+1274	DT86
+1275	DT87
+1276	DT88
+1277	DT89
+1278	DT90
+1279	DT91
+1280	DT92
+1281	DT93
+1282	DT94
+1283	DT95
+1284	DT96
+1285	DT97
+1286	DT98
+1287	DT99
+1288	MT00
+1289	Menta Schiva
+1290	Menta Decisa
+1291	Menta Birbona
+1292	Menta Audace
+1293	Menta Sicura
+1294	Menta Scaltra
+1295	Menta Fiacca
+1296	Menta Placida
+1297	Menta Modesta
+1298	Menta Mite
+1299	Menta Ardente
+1300	Menta Quieta
+1301	Menta Calma
+1302	Menta Gentile
+1303	Menta Cauta
+1304	Menta Vivace
+1305	Menta Timida
+1306	Menta Lesta
+1307	Menta Allegra
+1308	Menta Ingenua
+1309	Menta Seria
+1310	Desioblocco
+1311	Teiera rotta
+1312	Teiera crepata
+1313	Supertappi
+1314	Frutti
+1315	Formaggio Mumu
+1316	Spezie assortite
+1317	Panna da cucina
+1318	Curry precotto
+1319	Latte di cocco
+1320	Noodle precotti
+1321	Hamburger
+1322	Gigaspezia
+1323	Desioframmento
+1324	Bici Rotom
+1325	Catturamuleto
+1326	Vecchia lettera
+1327	Autografo band
+1328	Libro di Sonia
+1329	Catalogo Rotom
+1330	★And458
+1331	★And15
+1332	★And337
+1333	★And603
+1334	★And390
+1335	★Sgr6879
+1336	★Sgr6859
+1337	★Sgr6913
+1338	★Sgr7348
+1339	★Sgr7121
+1340	★Sgr6746
+1341	★Sgr7194
+1342	★Sgr7337
+1343	★Sgr7343
+1344	★Sgr6812
+1345	★Sgr7116
+1346	★Sgr7264
+1347	★Sgr7597
+1348	★Del7882
+1349	★Del7906
+1350	★Del7852
+1351	★Psc596
+1352	★Psc361
+1353	★Psc510
+1354	★Psc437
+1355	★Psc8773
+1356	★Lep1865
+1357	★Lep1829
+1358	★Boo5340
+1359	★Boo5506
+1360	★Boo5435
+1361	★Boo5602
+1362	★Boo5733
+1363	★Boo5235
+1364	★Boo5351
+1365	★Hya3748
+1366	★Hya3903
+1367	★Hya3418
+1368	★Hya3482
+1369	★Hya3845
+1370	★Eri1084
+1371	★Eri472
+1372	★Eri1666
+1373	★Eri897
+1374	★Eri1231
+1375	★Eri874
+1376	★Eri1298
+1377	★Eri1325
+1378	★Eri984
+1379	★Eri1464
+1380	★Eri1393
+1381	★Eri850
+1382	★Tau1409
+1383	★Tau1457
+1384	★Tau1165
+1385	★Tau1791
+1386	★Tau1910
+1387	★Tau1346
+1388	★Tau1373
+1389	★Tau1412
+1390	★CMa2491
+1391	★CMa2693
+1392	★CMa2294
+1393	★CMa2827
+1394	★CMa2282
+1395	★CMa2618
+1396	★CMa2657
+1397	★CMa2646
+1398	★UMa4905
+1399	★UMa4301
+1400	★UMa5191
+1401	★UMa5054
+1402	★UMa4295
+1403	★UMa4660
+1404	★UMa4554
+1405	★UMa4069
+1406	★UMa3569
+1407	★UMa3323
+1408	★UMa4033
+1409	★UMa4377
+1410	★UMa4375
+1411	★UMa4518
+1412	★UMa3594
+1413	★Vir5056
+1414	★Vir4825
+1415	★Vir4932
+1416	★Vir4540
+1417	★Vir4689
+1418	★Vir5338
+1419	★Vir4910
+1420	★Vir5315
+1421	★Vir5359
+1422	★Vir5409
+1423	★Vir5107
+1424	★Ari617
+1425	★Ari553
+1426	★Ari546
+1427	★Ari951
+1428	★Ori1713
+1429	★Ori2061
+1430	★Ori1790
+1431	★Ori1903
+1432	★Ori1948
+1433	★Ori2004
+1434	★Ori1852
+1435	★Ori1879
+1436	★Ori1899
+1437	★Ori1543
+1438	★Cas21
+1439	★Cas168
+1440	★Cas403
+1441	★Cas153
+1442	★Cas542
+1443	★Cas219
+1444	★Cas265
+1445	★Cnc3572
+1446	★Cnc3208
+1447	★Cnc3461
+1448	★Cnc3449
+1449	★Cnc3429
+1450	★Cnc3627
+1451	★Cnc3268
+1452	★Cnc3249
+1453	★Com4968
+1454	★Crv4757
+1455	★Crv4623
+1456	★Crv4662
+1457	★Crv4786
+1458	★Aur1708
+1459	★Aur2088
+1460	★Aur1605
+1461	★Aur2095
+1462	★Aur1577
+1463	★Aur1641
+1464	★Aur1612
+1465	★Pav7790
+1466	★Cet911
+1467	★Cet681
+1468	★Cet188
+1469	★Cet539
+1470	★Cet804
+1471	★Cep8974
+1472	★Cep8162
+1473	★Cep8238
+1474	★Cep8417
+1475	★Cen5267
+1476	★Cen5288
+1477	★Cen551
+1478	★Cen5459
+1479	★Cen5460
+1480	★CMi2943
+1481	★CMi2845
+1482	★Equ8131
+1483	★Vul7405
+1484	★UMi424
+1485	★UMi5563
+1486	★UMi5735
+1487	★UMi6789
+1488	★Crt4287
+1489	★Lyr7001
+1490	★Lyr7178
+1491	★Lyr7106
+1492	★Lyr7298
+1493	★Ara6585
+1494	★Sco6134
+1495	★Sco6527
+1496	★Sco6553
+1497	★Sco5953
+1498	★Sco5984
+1499	★Sco6508
+1500	★Sco6084
+1501	★Sco5944
+1502	★Sco6630
+1503	★Sco6027
+1504	★Sco6247
+1505	★Sco6252
+1506	★Sco5928
+1507	★Sco6241
+1508	★Sco6165
+1509	★Tri544
+1510	★Leo3982
+1511	★Leo4534
+1512	★Leo4357
+1513	★Leo4057
+1514	★Leo4359
+1515	★Leo4031
+1516	★Leo3852
+1517	★Leo3905
+1518	★Leo3773
+1519	★Gru8425
+1520	★Gru8636
+1521	★Gru8353
+1522	★Lib5685
+1523	★Lib5531
+1524	★Lib5787
+1525	★Lib5603
+1526	★Pup3165
+1527	★Pup3185
+1528	★Pup3045
+1529	★Cyg7924
+1530	★Cyg7417
+1531	★Cyg7796
+1532	★Cyg8301
+1533	★Cyg7949
+1534	★Cyg7528
+1535	★Oct7228
+1536	★Col1956
+1537	★Col2040
+1538	★Col2177
+1539	★Gem2990
+1540	★Gem2891
+1541	★Gem2421
+1542	★Gem2473
+1543	★Gem2216
+1544	★Gem2777
+1545	★Gem2650
+1546	★Gem2286
+1547	★Gem2484
+1548	★Gem2930
+1549	★Peg8775
+1550	★Peg8781
+1551	★Peg39
+1552	★Peg8308
+1553	★Peg8650
+1554	★Peg8634
+1555	★Peg8684
+1556	★Peg8450
+1557	★Peg8880
+1558	★Peg8905
+1559	★Oph6556
+1560	★Oph6378
+1561	★Oph6603
+1562	★Oph6149
+1563	★Oph6056
+1564	★Oph6075
+1565	★Ser5854
+1566	★Ser7141
+1567	★Ser5879
+1568	★Her6406
+1569	★Her6148
+1570	★Her6410
+1571	★Her6526
+1572	★Her6117
+1573	★Her6008
+1574	★Per936
+1575	★Per1017
+1576	★Per1131
+1577	★Per1228
+1578	★Per834
+1579	★Per941
+1580	★Phe99
+1581	★Phe338
+1582	★Vel3634
+1583	★Vel3485
+1584	★Vel3734
+1585	★Aqr8232
+1586	★Aqr8414
+1587	★Aqr8709
+1588	★Aqr8518
+1589	★Aqr7950
+1590	★Aqr8499
+1591	★Aqr8610
+1592	★Aqr8264
+1593	★Cru4853
+1594	★Cru4730
+1595	★Cru4763
+1596	★Cru4700
+1597	★Cru4656
+1598	★PsA8728
+1599	★TrA6217
+1600	★Cap7776
+1601	★Cap7754
+1602	★Cap8278
+1603	★Cap8322
+1604	★Cap7773
+1605	★Sge7479
+1606	★Car2326
+1607	★Car3685
+1608	★Car3307
+1609	★Car3699
+1610	★Dra5744
+1611	★Dra5291
+1612	★Dra6705
+1613	★Dra6536
+1614	★Dra7310
+1615	★Dra6688
+1616	★Dra4434
+1617	★Dra6370
+1618	★Dra7462
+1619	★Dra6396
+1620	★Dra6132
+1621	★Dra6636
+1622	★CVn4915
+1623	★CVn4785
+1624	★CVn4846
+1625	★Aql7595
+1626	★Aql7557
+1627	★Aql7525
+1628	★Aql7602
+1629	★Aql7235
+1630	Mielemax
+1631	Fungomax
+1632	Ramo Galarnoce
+1633	Fascia Galarnoce
+1634	Tessera chic
+1635	Pass Armatura
+1636	Bici Rotom
+1637	Bici Rotom
+1638	Esperienzamuleto
+1639	Rocciarmatura
+1640	Emblemamuleto
+1641	Briglie legame
+1642	Briglie legame
+1643	Corona Galarnoce
+1644	Leggenda 1
+1645	Leggenda 2
+1646	Leggenda 3
+1647	Leggenda ?
+1648	Pass Corona
+1649	Corona di legno
+1650	Petalo lucente
+1651	Crini bianchi
+1652	Crini neri
+1653	Carota algida
+1654	Carota oscura
+1655	Rocciamax
+1656	Semi di carota
+1657	Cerotto abilità
+1658	Briglie legame

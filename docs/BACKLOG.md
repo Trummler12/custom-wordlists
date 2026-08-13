@@ -3,115 +3,84 @@
 Small ideas parked for later; pick up when a related area is touched. Anything
 big enough to discuss belongs in an issue instead.
 
-- **Somewhere to record a correction to imported data.** Upstream is sometimes
-  simply wrong, and the fix has to survive the next import. It already happened
-  once: PokéAPI returns four Pokémon with mixed or swapped Han scripts —
-  Porygon-Z and Flamigo carry a traditional character inside their simplified
-  name, Iron Boulder and Iron Crown have theirs the wrong way round — and the
-  repair lives in a `CHINESE_FIXES` constant inside
-  `scripts/enrich-pokemon-langs.mjs`. That is a data decision hiding in a script,
-  where nobody curating the list would think to look for it.
+- **Legacy names for the League of Legends champions.** A few champions were
+  introduced under one name and renamed later, and someone who stopped playing
+  years ago knows only the old one. Both should be drawable, with the old ones off
+  by default behind an "include legacy names" checkbox.
 
-  The catch that makes this different from `omitted`: **a correction is an
-  instruction to the importer, not to the app.** Omissions are applied at load,
-  every time, because they describe how a list should be *shown*. A correction
-  belongs in the file itself — the entry should simply be right — and the field
-  exists only so the next re-import doesn't undo it. So it wants a home the
-  codemods read and the frontend ignores, which may well be beside `sources`
-  rather than inside a group.
+  **The machinery for that already exists.** An `omitted` rule is exactly this:
+  entries that sit in the file, are filtered on the way into the list, and come
+  back when the reader unticks them in the 🧹 panel. So this is data work — add the
+  legacy names as ordinary entries, then one rule whose `match` is the list of
+  them (a glob with no wildcards is a literal, and `match` already takes a list).
+  No new field, no new UI.
 
-  (Not motivated by `{"en":"Carbos","de":"Carbon"}` — that one is correct, Carbos
-  being the English name of the Speed vitamin.)
-- **Record what a list deliberately leaves out.** Some sources carry entries nobody
-  could draw. `data/topics/gaming/pokemon/items.json` is the worst case: **300 of
-  its 1330 entries are `★And390`-style decoration data** (22.6%), plus
-  `Datenkarte01`…`27`, `Kupon 1`–`3`, `Briefpost 1`–`3`, `R1/R2/R4/R6-Schlüssel`
-  and eighteen `X-… 2`–`6` variants of items whose base form is already in the list
-  — roughly 355 entries, over a quarter of the topic. Deleting them is easy; the
-  problem is that the next re-import silently brings them back, and that a reader
-  can't tell a curated list from a careless one.
-
-  A new group-level field, beside `words` / `tiers`, holding what was taken out and
-  why. Sketch:
-
-  ```json
-  "omitted": [
-    { "match": "★*", "reason": "unnamed decoration data" },
-    { "match": "Datenkarte##", "as": { "en": "Data Card", "de": "Datenkarte" },
-      "reason": "27 numbered copies of one drawable thing" },
-    { "match": "X-* [2-6]", "reason": "stat-boost variants; the base items are listed" }
-  ]
-  ```
-
-  Design notes, in the order they mattered while thinking it through:
-
-  - **Patterns, not just names.** 300 literal `★…` strings would be worse than the
-    problem. A plain string means one literal entry; an object means a rule. Whether
-    the rule language is a glob (`★*`, `Datenkarte##`) or an anchored regex is the
-    one thing to decide first — globs read better in JSON, since a regex needs
-    `\\d` and full-match anchors; regexes handle the `X-… 2–6` family in one line.
-  - **A rule matches an entry, not a string.** The junk is localized:
-    `{ "en": "Data Card 01", "de": "Datenkarte01" }`. A pattern written in German
-    would never see the English form, so an entry is omitted when *any* of its
-    language forms matches — one rule per family, written in whichever language
-    reads best. (The 300 `★And…` are plain strings, so language-neutral already.)
-  - **A rule may name what stands for the family: `as`.** "Datenkarte", "Kupon" and
-    "Briefpost" are perfectly drawable words that would otherwise vanish with their
-    numbered variants — and the base form exists nowhere in the source, so it can't
-    survive a regeneration by being an ordinary entry. Keeping it *inside* the rule
-    beats a separate `added` list: the two halves are one editorial act ("collapse
-    this family to its base name"), the tooltip line writes itself ("27 ×
-    Datenkarte01–27 → Datenkarte"), and nothing has to correlate two fields to
-    explain itself. `as` is a full word entry (`#/$defs/word`), since the name is
-    missing in every language, not just one. Omit `as` where the base form is
-    already in the source — the `X-… 2–6` variants, whose base items are listed.
-  - **Where a replacement lands once tiers exist:** in the tier of the best-known
-    entry it replaces, falling back to the last tier when none of them had one. The
-    generator already knows which entries a rule matched, so this costs nothing, and
-    it degrades correctly — a family of numbered junk lands at the bottom, while
-    collapsing a famous family would keep its standing. Moot until the items list
-    gets tiers at all (it is flat today), but it is the rule that stops a
-    regeneration from having to guess.
-  - **Enforce it in `validate-data`, not at load.** The obvious reading of "fallback
-    filter" is to filter on load, but that runs a rule set over 1330 entries every
-    time the topic opens, forever, to protect against a mistake made in a codemod.
-    Better: `validate` errors when any entry matches an omission. Then a re-import
-    that resurrects `★And390` fails CI instead of quietly shipping, the invariant is
-    checked once, and the frontend stays as it is.
-  - **The tooltip can't name what a pattern removed** — that's the price of not
-    storing 300 strings. So its lines are of two kinds: a literal shows its name, a
-    rule shows its reason and its count ("300 entries — unnamed decoration data"),
-    which is what a reader actually wants at that size anyway. Needs a scrollable
-    variant of `.tip-note`, which is currently a small box sized to a sentence.
-  - **Not a bin for the button.** 🗑️ or 🚮 beside a row of checkboxes reads as
-    "delete this", which is the one thing it must not suggest — and 🚮 is public
-    signage that renders as a sign, not an object, on several platforms. 🧹 says the
-    list was tidied, ✂️ that it was trimmed; both are honest about a past edit rather
-    than offering a destructive one.
-  - **No manifest change.** The tooltip renders from the loaded topic file, like the
-    names dropdown, so `build-index` and `TopicSummary` stay out of it.
-  - **Name it `omitted`, not `excluded`.** The output counter already says
-    "excluded" for words over skribbl's 32-character limit — a different thing that
-    happens to the same list, and two of them under one word would be confusing in
-    both the code and the UI.
-  - **Open:** whether the removed names are kept anywhere in full. `data-raw/` holds
-    the source dumps already, so the honest answer may be that the raw file *is* the
-    complete record and the topic file only needs the rules — with the tooltip
-    pointing at the source rather than pretending to be exhaustive.
-- **One matcher instead of two.** `scripts/validate-data.mjs` carries its own copy
-  of `globToRegExp` and `entryForms`, mirroring the tested ones in
+  Two things to sort out when doing it: `data-raw/gaming/League of Legends/Champions
+  by Fame.txt` has a column per champion, but it holds their *title* (`Darkin
+  Blade` → Aatrox), so the legacy names have to come from somewhere else. And the
+  file writes each tier on one line, unlike every other tiered list — worth
+  expanding to one entry per line while it's open, which is what
+  `scripts/lib/serialize.mjs` would do anyway.
+- **One matcher instead of two.** The scripts now share `scripts/lib/omissions.mjs`,
+  so what remains is the one copy that can't be helped: it mirrors the tested
   `src/lib/omitted.ts`, because a `.mjs` script can't import TypeScript — the same
-  reason `LANG_RE` is duplicated against the schema. Two ways out, neither urgent:
-  raise CI's Node from 20 to 22+ and import the `.ts` directly via native
-  type-stripping (which needs the module free of value imports, since stripping
-  doesn't add extension resolution), or move the shared helpers into a plain `.mjs`
-  both sides import. The second is smaller; the first would also let the other
-  scripts share frontend logic, so it is worth deciding once rather than twice.
+  reason `LANG_RE` is duplicated against the schema. The way out is raising CI's
+  Node from 20 to 22+ and importing the `.ts` directly via native type-stripping,
+  which needs the module free of value imports (stripping doesn't add extension
+  resolution). Worth doing when something else wants Node 22 anyway; not on its
+  own.
 - **More inline markup in locale strings.** `src/locale/html/` handles `{br}` and
   `[text](url)`; `{i}`…`{/i}` and `{b}`…`{/b}` are the obvious companions — a
   parser that turns a marked-up string into a list of parts, and one snippet per
   tag. Nothing needs them today — add a tag the first time a string actually wants
   it, not before.
+- **Geography — stored at the leaves, read from the top.** A large upcoming area with its
+  own shape. `data/topics/geography/` holds one folder per continent, and the entries live
+  *there*: `<continent>/countries.json`, `<continent>/capitals.json`,
+  `<continent>/cities.json`. The world-level **countries**, **capitals** and **cities**
+  carry no entries of their own — they are those same lists read one level up, assembled by
+  `inheritsUpwards`. Nothing is stored twice, and it looks redundant only in the tree, which
+  is exactly the point: the reader sees a world list, the repo sees seven files. **Cities go
+  one level deeper again** (continent → country), because a country's cities are a finer
+  resolution rather than a subset. **Continents + tectonic plates** is genuinely world-level
+  and stores its own entries. Cross-topic de-duplication is already in place
+  (`output.merged` dedups by rendered string), so overlapping layers are safe. A full
+  country → subdivision → district → municipality drill-down is enormous and explicitly
+  later; the continents are the near-term slice.
+
+  **A merged tier only means something if every file drew its boundary the same way.** For
+  the cities that boundary can be objective: population, on absolute thresholds (10M, 5M,
+  3M, 2M, 1.5M, 1.2M, 1M, 850k, 720k, 600k, 500k, 420k, 360k…, adjusted until the steps feel
+  like even samples). Tier 3 then means the same in Peru as in Japan, which is what makes
+  concatenating every child's tier 3 a list rather than a pile. A Sporcle percentage cannot
+  do that — it is relative to the people who took one quiz.
+
+  **Empty tiers have to become legal.** A country with no city above a million contributes
+  nothing to the top tiers and must still say so, or its fourth tier would merge into its
+  parent's first. The schema requires `minItems: 1` on each tier today; that has to go, and
+  `tierSizes` in the authoring script is no help here since the boundaries are given rather
+  than computed. The ruler itself is already fine — `fame.ts` reads the stored tier count
+  rather than assuming six, so thirteen population steps are a legal shape.
+- **`inheritsUpwards` — the field the above is built on.** A topic declaring it holds no
+  entries and takes them from the topics below it in the tree: tier *k* is every child's
+  tier *k*, concatenated. **Only the entries are inherited** — title, icon, languages and
+  omission rules stay declared per file, since a parent's list is not a parent's metadata.
+
+  **The sliders couple downward and report upward.** Moving the world slider moves every
+  continent's with it, and every country's below that: it is one selection at a coarser
+  grain. A child moved on its own does not command its parent — the parent's slider then
+  shows the *most common* position among its children, its checkbox reflects their states,
+  and its count is theirs added up. Authoritative going down, descriptive coming up, which
+  also means the parent needs no stored selection of its own.
+
+  A general mechanism, not a geography-specific one, but geography is what it exists for.
+- **`noGeoguessrCoverage` — filter countries to Street-View-covered ones.** A niche extra
+  for the countries list only: restrict to the countries with official Google Street View
+  coverage, for the GeoGuessr crowd. Decide between reusing the existing `omittable`
+  mechanism (a rule whose `match` is the uncovered countries — zero schema change,
+  functionally identical, and it shows in the 🧹 panel) and a dedicated topic-level field
+  driving its own "Pegman" toggle. Start with `omittable` unless the dedicated toggle earns
+  its keep.
 - **Group the locale keys.** `UIStrings` is ~40 flat keys covering the header, the
   tree, the rulers, the output and the footer, and it only grows. Nesting them by
   area (`topics.wordsOf`, `output.copied`, …) would make both dictionaries
@@ -205,7 +174,25 @@ big enough to discuss belongs in an issue instead.
   that, but two rules are coupled to TypeScript by comment (`--inset` ↔
   `INSET_PX`, `--footer-h` ↔ the output panel) and the tokens have to stay
   global — so it wants its own PR rather than a corner of another one.
-- **Tests for `src/lib/`.** The split left five modules of plain functions with
-  no runes and no DOM: `words`, `tree`, `fame`, `dom`, `skribbl`. That is all of
-  the app's logic that can be tested without mounting anything, and
-  `snapPositions` has already had one bug found by reading alone.
+- **Tests for `dom` and `skribbl`.** Vitest covers `words`, `tree`, `fame`,
+  `english`, `languages` and `omitted`; these two are what is left of the logic
+  that can be tested without mounting anything. `snapPositions` in `dom` has
+  already had one bug found by reading alone, which is the argument for it.
+- **Latin-American Spanish where it actually differs.** PokéAPI ships `es-419`
+  beside `es`, and how far apart they are depends entirely on the list: **5 names
+  out of 1330 for the items, but 254 of 937 for the moves.** A quarter of the move
+  names is not a rounding error — Latin America has its own vocabulary here.
+
+  Still not worth a language: no locale, no entry in the picker, nothing in
+  `usesEnglishFor`. Worth a toggle — with Spanish selected, a list carrying any
+  `es-419` names offers to use them *instead of* `es`, the same shape as the 🧹
+  rows. The dumps are committed (`data-raw/gaming/pokemon/{items,moves}/es-419.txt`),
+  so the data half is one line in the enrichment's `TAG` map; do it when the toggle
+  exists, not before, or entries gain an `es-419` in their `?` for no consumer.
+- **A language tag the picker offers is not always the tag the data uses.** The
+  Pokémon lists carry `zh-Hans` and `zh-Hant`, and `ja-Latn` beside `ja`. The
+  picker offers `de` and `en` today, so nothing is wrong yet — but the moment it
+  offers `zh`, `resolveStr` looks up `s["zh"]`, misses, and falls back to
+  English, while `langSupport` reads `usesEnglishFor: ["*"]` and reports Chinese
+  as an English-named list. Both are the same missing step: resolve a selected
+  language to the closest tag the entry actually has before giving up on it.

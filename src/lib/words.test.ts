@@ -7,6 +7,8 @@ import {
   renderEntry,
   resolveStr,
   resolveWord,
+  unknownLangs,
+  isUnknownIn,
 } from "./words";
 import type { Group } from "./types";
 
@@ -107,5 +109,37 @@ describe("groupEntries", () => {
 
   it("treats a group with neither list as empty", () => {
     expect(groupEntries({ id: "g", title: "G" })).toEqual([]);
+  });
+});
+
+describe("unknownLangs / isUnknownIn", () => {
+  const coin = { en: "Gimmighoul Coin", fr: "Pièce de Mordudor", "?": ["de", "ko"] };
+
+  it("reads the languages an entry has no name in", () => {
+    expect(unknownLangs(coin)).toEqual(["de", "ko"]);
+    expect(unknownLangs("Protein")).toEqual([]);
+    expect(unknownLangs({ en: "Poké Ball", de: "Pokéball" })).toEqual([]);
+  });
+
+  it("separates 'we have nothing' from 'the same as English'", () => {
+    // Both entries lack a `de` key; only one of them is claiming a German name.
+    expect(isUnknownIn(coin, "de")).toBe(true);
+    expect(isUnknownIn("Protein", "de")).toBe(false);
+    expect(isUnknownIn({ en: "Nugget", fr: "Pépite" }, "de")).toBe(false);
+  });
+
+  it("lets an own key outrank the gap the source reported", () => {
+    const filled = { ...coin, de: "Gierspinst-Münze" };
+    expect(isUnknownIn(filled, "de")).toBe(false);
+    expect(isUnknownIn(filled, "ko")).toBe(true);
+  });
+
+  it("never counts English — it is the base every entry has", () => {
+    expect(isUnknownIn({ en: "x", "?": ["en"] }, "en")).toBe(false);
+  });
+
+  it("leaves resolution alone: `?` is not a language", () => {
+    expect(resolveWord(coin, "de")).toBe("Gimmighoul Coin");
+    expect(resolveWord(coin, "fr")).toBe("Pièce de Mordudor");
   });
 });

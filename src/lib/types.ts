@@ -72,7 +72,15 @@ export interface NamePair {
  *  may itself localize — the preferred form), or an entry-level language map whose
  *  values are a whole entry — a string or name pair (also accepted, e.g. from
  *  community content). */
-export type WordEntry = LocalizedString | NamePair | LangMap<string | NamePair>;
+export type WordEntry = LocalizedString | NamePair | LangMapEntry;
+
+/** An entry-level language map. Beside the languages it carries a `"?"` listing
+ *  the ones it has no name in at all — see `UNKNOWN` in lib/words for why an
+ *  absent key can't say that. */
+export type LangMapEntry = { en: string | NamePair; "?"?: string[] } & Record<
+  string,
+  string | NamePair | string[] | undefined
+>;
 
 /** A word resolved to the active language: a plain string or a short/long pair. */
 export type Word = string | { short: string; long: string };
@@ -125,6 +133,11 @@ export interface Group {
   omittable?: Omission[];
   words?: WordEntry[];
   tiers?: WordEntry[][];
+  /** How many entries the list has no name for in the language it is being shown
+   *  in — see `unknownCount` in lib/omitted. Not a field of the file: `visibleGroup`
+   *  puts it on the view it hands back, because by then the entries it counts are
+   *  gone and only the view knows how many there were. */
+  unknownCount?: number;
 }
 
 /** A named bundle of group ids within a topic. */
@@ -135,6 +148,14 @@ export interface Preset {
 }
 
 /** A single topic data file (data/topics/<…>/<file>.json). */
+/** One repair of a source that is wrong, by the entry's English name. Beside
+ *  `entry` and `why` the keys are language tags: `new` is what the entry must
+ *  carry, `old` what the source said when the correction was written. */
+export type Correction = { entry: string; why: string } & Record<
+  string,
+  string | { old: string; new: string } | undefined
+>;
+
 export interface Topic {
   id: string;
   /** Display name, same shape as an entry — see `displayName` in lib/words. */
@@ -152,6 +173,15 @@ export interface Topic {
   /** Whether this topic's fame ruler starts hidden behind a toggle; its presence
    *  also marks the topic as its own ruler-visibility boundary. */
   hideRulersByDefault?: boolean;
+  /** Where the entries came from — one string or a list of them, free-form so a
+   *  label can precede the link ("German: https://…"). */
+  sources?: string | string[];
+  /** Who compiled or curated the list — one string or a list of them. */
+  credits?: string | string[];
+  /** Where the source is simply wrong. An instruction to the import, not to the
+   *  app: the frontend never reads this, and it is here only so the type mirrors
+   *  the schema. See `corrections` in schema/topic.schema.json. */
+  corrections?: Correction[];
   /** ISO date (YYYY-MM-DD) the list's contents last changed. */
   lastUpdated?: string;
   /** ISO date (YYYY-MM-DD) the list was last verified against its source. */

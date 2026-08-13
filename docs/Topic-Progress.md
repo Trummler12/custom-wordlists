@@ -1,11 +1,20 @@
 # Topic Progress
 
-Progress on every topic added or _planned_ so far.
-A box is ticked once the list is complete in English; other languages trail behind.
+Progress on every topic added or _planned_ so far. A topic's style says how far it has come:
+
+| style | complete (en+) | **all\* languages** | _fame tiers_ |
+|---|:---:|:---:|:---:|
+| [ ] topic | | | |
+| [x] topic | ✓ | | |
+| [x] _topic_ | ✓ | | ✓ |
+| [x] **topic** | ✓ | ✓ | |
+| [x] **_topic_** | ✓ | ✓ | ✓ |
+
+\*of course limited to languages _planned out_ so far to be supported; In case your selected Language is missing, a "⚠️" will show up with a respective tooltip.
 
 ## Animation
 
-- [x] South Park
+- [x] _South Park_
 - [ ] SpongeBob SquarePants
 - [ ] The Simpsons
 
@@ -35,25 +44,49 @@ A box is ticked once the list is complete in English; other languages trail behi
 
 ### League of Legends
 
-- [x] Champions
+- [x] _Champions_
 - [ ] Legacy Champion Names (Checkbox)
 
 ### Pokémon
 
-_Entries are 'complete', but Items carries lots of functional duplicates and all three lists lack fame groups_
-
-- [ ] Items
-- [ ] Moves
+- [x] **Items**
+- [x] **Moves**
 - [ ] Characters
 - [ ] Locations
-- [ ] Pokémon (generations 1–9)
+- [x] **_Pokémon (generations 1–9)_**
 - [ ] Pokémon Forms
+
+### Minecraft
+
+- [ ] Mobs
+- [ ] Items & Blocks
+- [ ] Biomes
+- [ ] Structures
+- [ ] Mods (Modifications)
 
 ## Science
 
 ### Chemistry
 
-- [x] Elements
+- [x] _Elements_
+
+## Geography
+
+- [ ] Countries
+- [ ] Capitals
+- [ ] Cities
+- [ ] Continents & Plates
+
+### Continents
+
+1 folder for each of the 7 common Continents, including:
+
+- [ ] Countries
+- [ ] Capitals
+- [ ] Cities
+- [ ] Local Settings to include or exclude individual countries
+
+_In the VERY long term, we might even expand downwards to individual Communities, but that might take years..._
 
 ## Sports
 

@@ -7,6 +7,7 @@ import {
   globToRegExp,
   isOmitted,
   isOnByDefault,
+  unknownCount,
   visibleGroup,
 } from "./omitted";
 import type { Group, Omission } from "./types";
@@ -270,5 +271,52 @@ describe("omittable rules", () => {
     expect(allRules(g).map((r) => r.id)).toEqual(["crystals", "candies"]);
     expect(isOnByDefault(g, g.omitted![0])).toBe(true);
     expect(isOnByDefault(g, g.omittable![0])).toBe(false);
+  });
+});
+
+describe("entries with no name in a language", () => {
+  const g: Group = {
+    id: "items",
+    title: "Items",
+    words: [
+      "Pokéball",
+      { en: "Gimmighoul Coin", fr: "Pièce de Mordudor", "?": ["de"] },
+      { en: "Tera Orb", fr: "Orbe Tera", "?": ["de"] },
+      "★And390",
+    ],
+    omitted: [rule("★*", { id: "crystals" })],
+  };
+
+  it("leaves them out of that language rather than showing the English word", () => {
+    expect(visibleGroup(g, [], "de").words).toEqual(["Pokéball"]);
+  });
+
+  it("keeps them where a name is known", () => {
+    expect(visibleGroup(g, [], "fr").words).toHaveLength(3);
+    expect(visibleGroup(g, [], "en").words).toHaveLength(3);
+  });
+
+  it("brings them back when the reader unticks the row", () => {
+    expect(visibleGroup(g, ["?"], "de").words).toHaveLength(3);
+  });
+
+  it("reports the size of the family in both positions", () => {
+    expect(visibleGroup(g, [], "de").unknownCount).toBe(2);
+    expect(visibleGroup(g, ["?"], "de").unknownCount).toBe(2);
+    expect(unknownCount(g, "en")).toBe(0);
+  });
+
+  it("does not report what a rule already left out", () => {
+    const withJunk: Group = {
+      ...g,
+      words: [...g.words!, { en: "★And391", "?": ["de"] }],
+    };
+    expect(unknownCount(withJunk, "de")).toBe(2);
+    expect(unknownCount(withJunk, "de", ["crystals"])).toBe(3);
+  });
+
+  it("keeps `?` out of the forms a glob sees — it holds tags, not names", () => {
+    expect(entryForms({ en: "Tera Orb", "?": ["de", "ko"] })).toEqual(["Tera Orb"]);
+    expect(isOmitted({ en: "Tera Orb", "?": ["de"] }, [rule("de")])).toBe(false);
   });
 });

@@ -11,6 +11,7 @@
 import { readFile, writeFile, readdir } from "node:fs/promises";
 import { join, dirname, basename } from "node:path";
 import { fileURLToPath } from "node:url";
+import { entryForms, globToRegExp } from "./lib/omissions.mjs";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 const TOPICS_DIR = join(ROOT, "data", "topics");
@@ -18,33 +19,6 @@ const OUT_FILE = join(ROOT, "data", "index.json");
 
 // Sidecar filename holding a category node's display metadata (never a topic).
 const CATEGORY_META = "_category.json";
-
-/** Every string an entry carries. Mirrors `entryForms` in src/lib/omitted.ts —
- *  see validate-data.mjs for why a .mjs script keeps its own copy. */
-function entryForms(word) {
-  if (typeof word === "string") return [word];
-  const parts = "short" in word && "long" in word ? [word.short, word.long] : Object.values(word);
-  return parts.flatMap(entryForms);
-}
-
-/** A whole-name glob as a RegExp. Mirrors `globToRegExp` in src/lib/omitted.ts. */
-function globToRegExp(glob) {
-  let out = "";
-  for (let i = 0; i < glob.length; i++) {
-    const c = glob[i];
-    if (c === "*") out += ".*";
-    else if (c === "?") out += ".";
-    else if (c === "[") {
-      const end = glob.indexOf("]", i + 1);
-      if (end === -1) out += "\\[";
-      else {
-        out += glob.slice(i, end + 1);
-        i = end;
-      }
-    } else out += c.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-  }
-  return new RegExp(`^${out}$`, "u");
-}
 
 /** Words a topic contributes as the app shows it: omitted families out, each
  *  rule's stand-in in. The manifest count is what a topic row advertises before
