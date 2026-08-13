@@ -30,10 +30,10 @@
     aria-valuemin="0"
     aria-valuemax={pos.length - 1}
     aria-valuenow={depth}
-    aria-valuetext={lang.ui.tiersValueText(depth, pos.length - 1)}
-    aria-label={lang.ui.fameDepthLabel(topics.groupName(group).long)}
+    aria-valuetext={lang.ui.fame.valueText(depth, pos.length - 1)}
+    aria-label={lang.ui.fame.depthLabel(topics.groupName(group).long)}
     aria-describedby={ranked ? undefined : tipId}
-    title={ranked ? lang.ui.fameGroupsDefined(fame) : undefined}
+    title={ranked ? lang.ui.fame.groupsDefined(fame) : undefined}
     onpointerdown={(e) => {
       e.currentTarget.setPointerCapture(e.pointerId);
       selection.dragDepth(e, tid, group);
@@ -65,5 +65,5 @@
       style="left: calc(var(--inset) + {pos[depth]} * (100% - 2 * var(--inset)))"
     ></span>
   </div>
-  <TipNote id={tipId} text={lang.ui.noFameGroups} />
+  <TipNote id={tipId} text={lang.ui.fame.none} />
 </div>

@@ -30,7 +30,7 @@
     <OmittedPanel {tid} {group} />
     <span
       class="meta"
-      title={lang.ui.wordsOf(selection.groupSelCount(tid, group), selection.groupTotal(tid, group))}
+      title={lang.ui.tree.wordsOf(selection.groupSelCount(tid, group), selection.groupTotal(tid, group))}
     >
       {selection.groupSelCount(tid, group)}/<span class="total"
         >{selection.groupTotal(tid, group)}</span

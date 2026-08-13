@@ -23,11 +23,11 @@
     class="lang-btn"
     aria-haspopup="dialog"
     aria-expanded={overlays.settingsMenu === id}
-    aria-label={lang.ui.settings}
+    aria-label={lang.ui.settings.label}
     onclick={() => overlays.toggleSettingsMenu(id)}
   >⚙️</button>
   {#if overlays.settingsMenu === id}
-    <div class="settings-menu" role="group" aria-label={lang.ui.settings}>
+    <div class="settings-menu" role="group" aria-label={lang.ui.settings.label}>
       <div class="setting-row">
         <label class="setting">
           <input
@@ -35,13 +35,13 @@
             checked={settings.showEnglishToggle}
             onchange={(e) => settings.setShowEnglishToggle(e.currentTarget.checked)}
           />
-          <span>{lang.ui.showEnglishToggle}</span>
+          <span>{lang.ui.settings.showEnglish}</span>
         </label>
         <!-- Outside the label, as on a topic row: inside it, opening the note
              would tick the checkbox. -->
         {#if moot}
-          <TipMarker {tipId} icon="⚠️" text={lang.ui.showEnglishToggleEn} />
-          <TipNote id={tipId} text={lang.ui.showEnglishToggleEn} />
+          <TipMarker {tipId} icon="⚠️" text={lang.ui.settings.showEnglishEn} />
+          <TipNote id={tipId} text={lang.ui.settings.showEnglishEn} />
         {/if}
       </div>
     </div>

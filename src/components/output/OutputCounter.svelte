@@ -6,14 +6,14 @@
 
 <!-- Only rendered with a non-empty list, so the limits need no empty-guard. -->
 <p class="counter" class:warn={output.belowMin || output.overMax}>
-  {lang.ui.wordsLabel}: {output.included.length} · {lang.ui.charsLabel}: {output.charCount.toLocaleString()}
+  {lang.ui.output.words}: {output.included.length} · {lang.ui.output.chars}: {output.charCount.toLocaleString()}
   / {SKRIBBL.maxTotal.toLocaleString()}
-  {#if output.belowMin}{lang.ui.belowMin(SKRIBBL.minWords)}{/if}
-  {#if output.overMax}{lang.ui.overMax}{/if}
+  {#if output.belowMin}{lang.ui.output.belowMin(SKRIBBL.minWords)}{/if}
+  {#if output.overMax}{lang.ui.output.overMax}{/if}
 </p>
 
 {#if output.excluded.length > 0}
   <p class="status warn">
-    {lang.ui.excluded(output.excluded.length, SKRIBBL.maxWordLen, output.excluded.join(", "))}
+    {lang.ui.output.excluded(output.excluded.length, SKRIBBL.maxWordLen, output.excluded.join(", "))}
   </p>
 {/if}

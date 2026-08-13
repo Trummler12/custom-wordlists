@@ -2,89 +2,140 @@
 // One dictionary per locale (en.ts, de.ts) implements UIStrings; the frontend
 // resolves the active one via strings(lang), falling back to English for any
 // language that has topic data but no UI translation yet.
+//
+// Grouped rather than flat, and a group is one of two things: a PLACE, when its
+// strings only ever appear there (header, tree, settings, output, footer), or a
+// FEATURE, when they follow a control that turns up on several rows (names, fame,
+// omitted, language). Which one a string is can be read off the component tree —
+// `settings.showEnglish` labels a checkbox that exists in exactly one popover, so
+// it is a place, while `language.useEnglish` sits on every topic row, so it is a
+// feature. The group carries the prefix, so no key repeats it.
 
-/** Every user-facing string the app chrome renders, keyed and typed. */
-export interface UIStrings {
+/** The banner. */
+export interface HeaderStrings {
   /** Tagline around the inline skribbl.io link: "<before> skribbl.io <after>". */
   taglineBefore: string;
   taglineAfter: string;
-  loadingTopics: string;
+}
+
+/** The topic tree's own chrome — its controls have their own groups below. */
+export interface TreeStrings {
+  topics: string;
+  loading: string;
   /** Error banner for a failed manifest load. */
   loadError: (message: string) => string;
-  noTopics: string;
-  topics: string;
+  empty: string;
   /** Expander aria-label, e.g. "Expand Pokémon" / "Collapse Pokémon". */
   toggle: (expanded: boolean, title: string) => string;
   /** Per-topic inline "loading…" while its data streams in. */
   loadingShort: string;
   /** Selection meta, e.g. "12 of 30 words" (topic, group and category rows). */
   wordsOf: (selected: number, total: number) => string;
-  /** Options of the per-group name-form dropdown. */
-  nameForm: { short: string; long: string; both: string };
-  nameFormLabel: (group: string) => string;
-  fameDepthLabel: (group: string) => string;
-  tiersValueText: (depth: number, total: number) => string;
+}
+
+/** The short/long name-form dropdown. */
+export interface NamesStrings {
+  form: { short: string; long: string; both: string };
+  formLabel: (group: string) => string;
+}
+
+/** The fame ruler and the 📏 that shows it. */
+export interface FameStrings {
+  depthLabel: (group: string) => string;
+  valueText: (depth: number, total: number) => string;
   /** Ruler tooltip for a list that has been ranked. */
-  fameGroupsDefined: (count: number) => string;
+  groupsDefined: (count: number) => string;
   /** Ruler tooltip for a list that hasn't — an invitation to rank it. */
-  noFameGroups: string;
-  /** 🧹 button and the panel it opens: what this list leaves out. */
-  omittedLabel: string;
-  omittedTitle: string;
-  /** Checkbox beside one omission rule; label reflects what a click would do. */
-  omitToggle: (omitted: boolean) => string;
-  /** Why one rule's checkbox is disabled. */
-  omitLocked: string;
-  /** The panel row for entries the list has no name for in this language, and its
-   *  hint — which, like `omitToggle`, says what a click would do. */
-  omitUnknown: (n: number) => string;
-  omitUnknownHint: (omitted: boolean) => string;
-  /** Settings button (aria-label) and the menu's own label. */
-  settings: string;
-  /** Label of the preference that reveals the per-list English toggles. */
-  showEnglishToggle: string;
-  /** Why that preference does nothing while the interface is English. */
-  showEnglishToggleEn: string;
-  /** Toggle a single list to English names; label reflects the current state. */
-  englishToggle: (forced: boolean) => string;
-  /** Toggle from a category row every list it governs; label on current state. */
-  englishToggleAll: (allForced: boolean) => string;
+  none: string;
   /** Toggle a single list's fame ruler; label reflects the current state. */
-  rulerToggle: (shown: boolean) => string;
+  toggle: (shown: boolean) => string;
   /** Toggle from a category row all the rulers it governs; label on current state. */
-  rulerToggleAll: (allShown: boolean) => string;
-  output: string;
-  copy: string;
-  copied: string;
-  emptyOutput: string;
-  generatedList: string;
-  /** Counter labels: "<words>: 42 · <chars>: 310 / 1,000". */
-  wordsLabel: string;
-  charsLabel: string;
-  belowMin: (min: number) => string;
-  overMax: string;
-  excluded: (count: number, maxLen: number, list: string) => string;
+  toggleAll: (allShown: boolean) => string;
+}
+
+/** The 🧹 button and the panel it opens: what this list leaves out. */
+export interface OmittedStrings {
+  label: string;
+  title: string;
+  /** Checkbox beside one omission rule; label reflects what a click would do. */
+  toggle: (omitted: boolean) => string;
+  /** Why one rule's checkbox is disabled. */
+  locked: string;
+  /** The panel row for entries the list has no name for in this language, and its
+   *  hint — which, like `toggle`, says what a click would do. */
+  unknown: (n: number) => string;
+  unknownHint: (omitted: boolean) => string;
+}
+
+/** The picker, the ⚠️/ℹ️ markers, and the per-list 🇬🇧 toggles. */
+export interface LanguageStrings {
   /** Globe-button aria-label, e.g. "Language: English". */
-  languageLabel: (current: string) => string;
-  languageMenu: string;
+  label: (current: string) => string;
+  menu: string;
   /** Warning marker for a topic that doesn't fully support the selected language. */
-  langUnsupported: (language: string) => string;
+  unsupported: (language: string) => string;
   /** Second half of that warning — see `langWarning()` for when it applies. */
-  langFallback: string;
+  fallback: string;
   /** Info marker for a topic whose names in the selected language are the English
    *  ones, on purpose. The language is always the dictionary's own, so a locale may
    *  name it outright and ignore the argument — which reads better in languages
    *  that would inflect it. English keeps it: it is what a language without its own
    *  dictionary would fall back to. */
-  langUsesEnglish: (language: string) => string;
-  /** Footer: label of the link to the repository. */
+  usesEnglish: (language: string) => string;
+  /** Toggle a single list to English names; label reflects the current state. */
+  useEnglish: (forced: boolean) => string;
+  /** Toggle from a category row every list it governs; label on current state. */
+  useEnglishAll: (allForced: boolean) => string;
+}
+
+/** The ⚙️ popover. */
+export interface SettingsStrings {
+  /** Button aria-label and the menu's own label. */
+  label: string;
+  /** Label of the preference that reveals the per-list English toggles. */
+  showEnglish: string;
+  /** Why that preference does nothing while the interface is English. */
+  showEnglishEn: string;
+}
+
+/** The output panel and its counter. */
+export interface OutputStrings {
+  label: string;
+  copy: string;
+  copied: string;
+  empty: string;
+  generatedList: string;
+  /** Counter labels: "<words>: 42 · <chars>: 310 / 1,000". */
+  words: string;
+  chars: string;
+  belowMin: (min: number) => string;
+  overMax: string;
+  excluded: (count: number, maxLen: number, list: string) => string;
+}
+
+/** The footer. */
+export interface FooterStrings {
+  /** Label of the link to the repository. */
   repository: string;
-  /** Footer, around the inline guide link: "<helpOut> <guide><helpOutAfter>".
+  /** Around the inline guide link: "<helpOut> <contributionGuide><helpOutAfter>".
    *  `helpOutAfter` carries the trailing punctuation, which German and English
    *  place differently around the link. */
   helpOut: string;
   contributionGuide: string;
   helpOutAfter: string;
+}
+
+/** Every user-facing string the app chrome renders, keyed and typed. */
+export interface UIStrings {
+  header: HeaderStrings;
+  tree: TreeStrings;
+  names: NamesStrings;
+  fame: FameStrings;
+  omitted: OmittedStrings;
+  language: LanguageStrings;
+  settings: SettingsStrings;
+  output: OutputStrings;
+  footer: FooterStrings;
 }
 
 import { en } from "./en";
@@ -112,6 +163,6 @@ export function strings(lang: string): UIStrings {
  *  Carries `{br}` — render through `html/Msg.svelte`, or `html/plain.ts` where the
  *  result has to be a plain string. */
 export function langWarning(ui: UIStrings, code: string, name: string): string {
-  const first = ui.langUnsupported(name);
-  return code === FALLBACK_LANG ? first : `${first}{br}${ui.langFallback}`;
+  const first = ui.language.unsupported(name);
+  return code === FALLBACK_LANG ? first : `${first}{br}${ui.language.fallback}`;
 }

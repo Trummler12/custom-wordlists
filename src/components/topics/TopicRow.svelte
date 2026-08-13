@@ -57,7 +57,7 @@
       case "declared":
         return null;
       case "english":
-        return { icon: "ℹ️", text: lang.ui.langUsesEnglish(name) };
+        return { icon: "ℹ️", text: lang.ui.language.usesEnglish(name) };
       case "undeclared":
         return { icon: "⚠️", text: langWarning(lang.ui, code, name) };
     }
@@ -82,7 +82,7 @@
         class="expander"
         aria-expanded={open}
         aria-controls={`groups-${topic.id}`}
-        aria-label={lang.ui.toggle(open, name.long)}
+        aria-label={lang.ui.tree.toggle(open, name.long)}
         onclick={() => selection.toggleExpand(topic)}
       >
         {open ? "▾" : "▸"}
@@ -117,8 +117,8 @@
         class="english-toggle"
         class:on={forcedEnglish}
         aria-pressed={forcedEnglish}
-        aria-label={lang.ui.englishToggle(forcedEnglish)}
-        title={lang.ui.englishToggle(forcedEnglish)}
+        aria-label={lang.ui.language.useEnglish(forcedEnglish)}
+        title={lang.ui.language.useEnglish(forcedEnglish)}
         onclick={() => lang.toggleEnglish(topic)}>🇬🇧</button
       >
     {/if}
@@ -128,8 +128,8 @@
         class="ruler-toggle"
         class:shown={rulerShown}
         aria-pressed={rulerShown}
-        aria-label={lang.ui.rulerToggle(rulerShown)}
-        title={lang.ui.rulerToggle(rulerShown)}
+        aria-label={lang.ui.fame.toggle(rulerShown)}
+        title={lang.ui.fame.toggle(rulerShown)}
         onclick={() => selection.toggleRuler(topic)}
       >📏</button>
     {/if}
@@ -137,9 +137,9 @@
          stands for is a hover away. The row needs the width for its controls. -->
     <span
       class="meta"
-      title={lang.ui.wordsOf(selection.topicSelCount(topic), selection.topicTotal(topic))}
+      title={lang.ui.tree.wordsOf(selection.topicSelCount(topic), selection.topicTotal(topic))}
     >
-      {#if topics.isLoading(topic)}{lang.ui.loadingShort}{:else}{selection.topicSelCount(
+      {#if topics.isLoading(topic)}{lang.ui.tree.loadingShort}{:else}{selection.topicSelCount(
           topic,
         )}/<span class="total">{selection.topicTotal(topic)}</span>{/if}
     </span>

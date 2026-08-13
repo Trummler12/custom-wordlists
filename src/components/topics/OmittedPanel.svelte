@@ -33,8 +33,8 @@
       class="omitted-btn"
       aria-haspopup="dialog"
       aria-expanded={open}
-      aria-label={lang.ui.omittedLabel}
-      title={lang.ui.omittedLabel}
+      aria-label={lang.ui.omitted.label}
+      title={lang.ui.omitted.label}
       onclick={(e) => overlays.toggleOmittedPanel(id, e.currentTarget)}>🧹</button
     >
     {#if open}
@@ -42,14 +42,14 @@
         class="omitted-panel"
         class:above={overlays.omittedAbove}
         role="group"
-        aria-label={lang.ui.omittedLabel}
+        aria-label={lang.ui.omitted.label}
       >
-        <p class="omitted-title">{lang.ui.omittedTitle}</p>
+        <p class="omitted-title">{lang.ui.omitted.title}</p>
         <ul>
           {#each rules as rule (rule.id)}
             {@const omitting = isOmitting(rule)}
             <li>
-              <label title={rule.locked ? lang.ui.omitLocked : lang.ui.omitToggle(omitting)}>
+              <label title={rule.locked ? lang.ui.omitted.locked : lang.ui.omitted.toggle(omitting)}>
                 <input
                   type="checkbox"
                   checked={omitting}
@@ -64,13 +64,13 @@
           {/each}
           {#if unknown > 0}
             <li>
-              <label title={lang.ui.omitUnknownHint(hidingUnknown)}>
+              <label title={lang.ui.omitted.unknownHint(hidingUnknown)}>
                 <input
                   type="checkbox"
                   checked={hidingUnknown}
                   onchange={() => settings.toggleOmission(tid, group.id, UNKNOWN_RULE)}
                 />
-                <span>{lang.ui.omitUnknown(unknown)}</span>
+                <span>{lang.ui.omitted.unknown(unknown)}</span>
               </label>
             </li>
           {/if}
