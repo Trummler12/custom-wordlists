@@ -25,6 +25,7 @@ import { serializeTopic } from "./lib/serialize.mjs";
 
 const RATIO = 1.4; // each tier vs. the one before it
 const MIN_TOP = 7; // fewer than this in tier 0 isn't a tier
+const TIERS = 6; // as many as the fame ruler has depths
 
 /** Rows of `<id> ⇥ <name>` with `⇥ <pct>%` on the next line, most famous first. */
 function parseFame(text) {
@@ -40,14 +41,20 @@ function parseFame(text) {
 }
 
 /** Tier sizes for `n` entries: geometric by RATIO, tier 0 floored at MIN_TOP with
- *  the ratio bending to fit. Sums to exactly `n`. */
+ *  the ratio bending to fit. Sums to exactly `n`.
+ *
+ *  A list too short for six tiers of MIN_TOP gets fewer of them. Six were not
+ *  negotiable before, and the rounding remainder — which always lands in the tail —
+ *  went negative below 36 entries, quietly emptying the last tier. `fame.ts` reads
+ *  the stored lengths, so a shorter ruler is a shape it already handles. */
 export function tierSizes(n) {
-  const span = (x) => (Math.pow(x, 6) - 1) / (x - 1);
+  const count = Math.min(TIERS, Math.max(1, Math.floor(n / MIN_TOP)));
+  const span = (x) => (Math.pow(x, count) - 1) / (x - 1);
   let ratio = RATIO;
   let first = n / span(RATIO);
   if (Math.round(first) < MIN_TOP) {
     first = MIN_TOP;
-    // Largest ratio whose six tiers still fit in `n` starting from MIN_TOP.
+    // Largest ratio whose tiers still fit in `n` starting from MIN_TOP.
     let lo = 1.0001;
     let hi = 3;
     for (let i = 0; i < 300; i++) {
@@ -57,8 +64,8 @@ export function tierSizes(n) {
     }
     ratio = (lo + hi) / 2;
   }
-  const sizes = Array.from({ length: 6 }, (_, i) => Math.max(1, Math.round(first * Math.pow(ratio, i))));
-  sizes[5] += n - sizes.reduce((a, b) => a + b, 0); // rounding lands in the tail
+  const sizes = Array.from({ length: count }, (_, i) => Math.max(1, Math.round(first * Math.pow(ratio, i))));
+  sizes[count - 1] += n - sizes.reduce((a, b) => a + b, 0); // rounding lands in the tail
   return sizes;
 }
 
