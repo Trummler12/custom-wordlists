@@ -13,7 +13,7 @@ export const en: UIStrings = {
     empty: "No topics available yet.",
     toggle: (expanded, title) => `${expanded ? "Collapse" : "Expand"} ${title}`,
     loadingShort: "loading…",
-    wordsOf: (selected, total) => `${selected} of ${total} words`,
+    wordsOf: (selected, total) => `${selected} of ${total} word${total === 1 ? "" : "s"}`,
   },
   names: {
     form: { short: "short", long: "long", both: "both" },
@@ -21,7 +21,8 @@ export const en: UIStrings = {
   },
   fame: {
     depthLabel: (group) => `Fame depth for ${group}`,
-    valueText: (depth, total) => `top ${depth} of ${total} tiers`,
+    valueText: (depth, total) =>
+      depth === 1 ? `top tier of ${total}` : `top ${depth} of ${total} tiers`,
     groupsDefined: (count) => `Fame groups defined: ${count}`,
     none: "No fame groups defined yet — see the Contribution Guide in the footer to propose some!",
     toggle: (shown) => (shown ? "Hide this list's fame ruler" : "Show this list's fame ruler"),
@@ -33,7 +34,8 @@ export const en: UIStrings = {
     toggle: (omitted) =>
       omitted ? "Toggle to include these in your list" : "Toggle to leave these out",
     locked: "These are game data rather than words, so they can't be added.",
-    unknown: (n) => `${n} entries the source data has no name for in this language`,
+    unknown: (n, primary, secondary) =>
+      `${n} entr${n === 1 ? "y" : "ies"} the source data has no ${primary}${secondary} name for`,
     unknownHint: (omitted) =>
       omitted
         ? "Toggle to include these under their English names — the only ones known for them."

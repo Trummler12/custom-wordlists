@@ -25,11 +25,13 @@ export interface TreeStrings {
   /** Error banner for a failed manifest load. */
   loadError: (message: string) => string;
   empty: string;
-  /** Expander aria-label, e.g. "Expand Pokémon" / "Collapse Pokémon". */
+  /** Expander aria-label, e.g. "Expand Pokémon" / "Collapse Pokémon". The title
+   *  is passed whole and the locale places it: German puts the verb last. */
   toggle: (expanded: boolean, title: string) => string;
   /** Per-topic inline "loading…" while its data streams in. */
   loadingShort: string;
-  /** Selection meta, e.g. "12 of 30 words" (topic, group and category rows). */
+  /** Selection meta, e.g. "12 of 30 words" (topic, group and category rows).
+   *  A list of one is a list of one word, not "1 of 1 words". */
   wordsOf: (selected: number, total: number) => string;
 }
 
@@ -42,6 +44,7 @@ export interface NamesStrings {
 /** The fame ruler and the 📏 that shows it. */
 export interface FameStrings {
   depthLabel: (group: string) => string;
+  /** Slider aria-valuetext. At depth 1 there is no "top 1 of" to speak of. */
   valueText: (depth: number, total: number) => string;
   /** Ruler tooltip for a list that has been ranked. */
   groupsDefined: (count: number) => string;
@@ -61,9 +64,12 @@ export interface OmittedStrings {
   toggle: (omitted: boolean) => string;
   /** Why one rule's checkbox is disabled. */
   locked: string;
-  /** The panel row for entries the list has no name for in this language, and its
-   *  hint — which, like `toggle`, says what a click would do. */
-  unknown: (n: number) => string;
+  /** The panel row for entries the list has no name for, and its hint — which,
+   *  like `toggle`, says what a click would do. The language is named rather than
+   *  referred to: the interface may be in a different one, and "no German names"
+   *  under a German interface showing Korean lists would be a lie. In two halves,
+   *  as `usesEnglish` — see `splitName` in lib/languages. */
+  unknown: (n: number, primary: string, secondary: string) => string;
   unknownHint: (omitted: boolean) => string;
 }
 

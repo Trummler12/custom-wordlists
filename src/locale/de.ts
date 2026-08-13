@@ -11,9 +11,10 @@ export const de: UIStrings = {
     loading: "Themen werden geladen…",
     loadError: (message) => `Themen konnten nicht geladen werden: ${message}`,
     empty: "Noch keine Themen verfügbar.",
-    toggle: (expanded, title) => `${expanded ? "Einklappen" : "Ausklappen"} ${title}`,
+    // Verb last, which is where German puts it: "Pokémon ausklappen".
+    toggle: (expanded, title) => `${title} ${expanded ? "einklappen" : "ausklappen"}`,
     loadingShort: "lädt…",
-    wordsOf: (selected, total) => `${selected} von ${total} Wörtern`,
+    wordsOf: (selected, total) => `${selected} von ${total} ${total === 1 ? "Wort" : "Wörtern"}`,
   },
   names: {
     form: { short: "kurz", long: "lang", both: "beide" },
@@ -21,7 +22,8 @@ export const de: UIStrings = {
   },
   fame: {
     depthLabel: (group) => `Bekanntheitstiefe für ${group}`,
-    valueText: (depth, total) => `oberste ${depth} von ${total} Stufen`,
+    valueText: (depth, total) =>
+      depth === 1 ? `oberste von ${total} Stufen` : `oberste ${depth} von ${total} Stufen`,
     groupsDefined: (count) => `Fame-Gruppen definiert: ${count}`,
     none: "Noch keine Fame-Gruppen definiert — im Contribution Guide im Footer erfährst du, wie du welche vorschlagen kannst!",
     toggle: (shown) =>
@@ -37,7 +39,8 @@ export const de: UIStrings = {
         ? "Umschalten, um diese in die Liste aufzunehmen"
         : "Umschalten, um diese wegzulassen",
     locked: "Das sind Spieldaten und keine Wörter, sie lassen sich nicht aufnehmen.",
-    unknown: (n) => `${n} Einträge ohne deutsche Namen in den Ausgangsdaten`,
+    unknown: (n, primary, secondary) =>
+      `${n} ${n === 1 ? "Eintrag" : "Einträge"} ohne Namen auf ${primary}${secondary} in den Ausgangsdaten`,
     unknownHint: (omitted) =>
       omitted
         ? "Umschalten, um deren englische Namen (Fallback) in die Liste zu lassen."
