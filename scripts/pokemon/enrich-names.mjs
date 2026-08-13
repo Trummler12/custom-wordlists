@@ -43,19 +43,29 @@ const LISTS = {
   moves: "moves.json",
 };
 
-/** Dump filename → the tag stored in the data. Absent = not stored. */
+/** Dump filename → the tag stored in the data. Absent = not stored. `es` comes
+ *  before `es-419` because a variant is written out only where it differs from the
+ *  language it varies from, which has to be in hand by then. ("ja-hrkt" is merged
+ *  into ja below rather than stored.) */
 const TAG = {
   de: "de",
   en: "en",
   es: "es",
+  "es-419": "es-419",
   fr: "fr",
   it: "it",
   ja: "ja",
   ko: "ko",
   "zh-hans": "zh-Hans",
   "zh-hant": "zh-Hant",
-  // "es-419": pending a decision; "ja-hrkt" is merged into ja below.
 };
+
+/** A variant tag → the tag it varies from. An absent key means "same as English"
+ *  everywhere else in the data, but for a variant it has to mean "same as the
+ *  language it belongs to" — `es-419` written out on all 1330 items would be the
+ *  Spanish column twice, and `matchTag` drops the region to find `es` anyway. It
+ *  also keeps variants out of `?`: a missing row is not a missing name. */
+const VARIANT_OF = { "es-419": "es" };
 
 async function readDump(DUMPS, name) {
   const rows = new Map();
@@ -131,8 +141,12 @@ async function main() {
         );
       }
       const name = (fix ? fix.new : value) ?? own[tag];
-      if (name === undefined) unknown.push(tag);
-      else if (name !== out.en) out[tag] = name;
+      // What an absent key would claim, and so what makes writing one worthwhile:
+      // the language it varies from for a variant, English for everything else.
+      const base = VARIANT_OF[tag] ? (out[VARIANT_OF[tag]] ?? out.en) : out.en;
+      if (name === undefined) {
+        if (!VARIANT_OF[tag]) unknown.push(tag);
+      } else if (name !== base) out[tag] = name;
     }
     if (unknown.length) out[UNKNOWN] = unknown;
     // Nothing translates and nothing is missing: a plain string, as the ★ crystals.
