@@ -385,6 +385,15 @@ header {
 /* Set when the 🧹 sits below the middle of the viewport, where a panel below it
    would be cut off by the bottom edge — the same flip as .tip-note.above, decided
    by the same function. */
+/* The side-by-side spellings a variant changes, inside the same panel. */
+.variant-list > summary {
+  cursor: pointer;
+  margin-top: 0.35rem;
+  opacity: 0.85;
+}
+.variant-list .from {
+  opacity: 0.7;
+}
 .omitted-panel.above {
   top: auto;
   bottom: 100%;

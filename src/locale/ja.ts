@@ -58,6 +58,8 @@ export const ja: UIStrings = {
       romaji: "リストの項目にローマ字を使う",
       es419: "リストの項目にラテンアメリカのスペイン語を使う",
     },
+    variantDiffers: (n) => `${n}件の項目が異なる表記です`,
+    variantShowList: "どの項目か見る",
     useEnglish: (forced) =>
       forced ? "このリストを選択した言語で表示する" : "このリストの英語の項目を使う",
     useEnglishAll: (allForced) =>

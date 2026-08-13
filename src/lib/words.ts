@@ -101,6 +101,27 @@ export function renderCount(entries: WordEntry[], mode: NamesMode, lang: string)
   return seen.size;
 }
 
+/** The entries a variant spells differently, as `base → variant` pairs.
+ *
+ *  Only entries carrying the tag: a variant is written into the data solely where
+ *  it deviates, so its presence *is* the difference. That makes the count worth
+ *  showing — it says where a variant matters, which is the question nobody can
+ *  answer from the outside. */
+export function variantPairs(
+  groups: Group[],
+  tag: string,
+  base: string,
+): { from: string; to: string }[] {
+  const out: { from: string; to: string }[] = [];
+  for (const g of groups) {
+    for (const e of [...(g.words ?? []), ...(g.tiers ?? []).flat()]) {
+      if (typeof e === "string" || (e as Record<string, unknown>)[tag] === undefined) continue;
+      out.push({ from: renderEntry(e, "short", base)[0], to: renderEntry(e, "short", tag)[0] });
+    }
+  }
+  return out;
+}
+
 /** A name resolved for display: what a row shows, and what its hover reveals.
  *  `long` repeats `short` when the name has only one form. */
 export interface DisplayName {

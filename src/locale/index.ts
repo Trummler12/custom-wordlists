@@ -97,6 +97,11 @@ export interface LanguageStrings {
    *  Latin American Spanish beside Spanish. Only ever shown while that language is
    *  selected, but shown in whatever language the interface is in. */
   variant: Record<VariantId, string>;
+  /** How many of a list's entries the variant spells differently. The number is
+   *  the point: it says where a variant matters, which is otherwise invisible. */
+  variantDiffers: (n: number) => string;
+  /** Opens the list of those entries, side by side. */
+  variantShowList: string;
   /** Toggle a single list to English names; label reflects the current state. */
   useEnglish: (forced: boolean) => string;
   /** Toggle from a category row every list it governs; label on current state. */

@@ -58,6 +58,8 @@ export const ko: UIStrings = {
       romaji: "목록 항목에 로마자 사용",
       es419: "목록 항목에 라틴 아메리카 스페인어 사용",
     },
+    variantDiffers: (n) => `${n}개 항목의 표기가 다릅니다`,
+    variantShowList: "어떤 항목인지 보기",
     useEnglish: (forced) =>
       forced ? "이 목록을 선택한 언어로 표시" : "이 목록의 영어 항목 사용",
     useEnglishAll: (allForced) =>

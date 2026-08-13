@@ -25,6 +25,8 @@ export interface Variant {
   id: VariantId;
   /** The tag its entries carry. */
   tag: string;
+  /** The per-list panel's button, where it has one. */
+  icon: string;
   /** Whether a single list may deviate from the global choice. Worth it only
    *  where lists genuinely disagree: Latin American Spanish differs on 5 of 1330
    *  items and 254 of 937 moves, and a control that appears on one list and not
@@ -34,8 +36,8 @@ export interface Variant {
 
 /** Keyed by the content language the variant belongs to. */
 export const VARIANTS: Record<string, Variant> = {
-  ja: { id: "romaji", tag: "ja-Latn", perTopic: false },
-  es: { id: "es419", tag: "es-419", perTopic: true },
+  ja: { id: "romaji", tag: "ja-Latn", icon: "🔤", perTopic: false },
+  es: { id: "es419", tag: "es-419", icon: "🌎", perTopic: true },
 };
 
 /** The variant for a content language, if it has one. */

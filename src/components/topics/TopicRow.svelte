@@ -16,6 +16,7 @@
   import GroupRow from "./GroupRow.svelte";
   import NamesModeSelect from "./NamesModeSelect.svelte";
   import OmittedPanel from "./OmittedPanel.svelte";
+  import VariantPanel from "./VariantPanel.svelte";
 
   let { topic }: { topic: TopicSummary } = $props();
 
@@ -113,6 +114,9 @@
     {#if sole}
       <OmittedPanel tid={topic.id} group={sole} />
     {/if}
+    <!-- Per topic, not per group: how a language spells a name is the same question
+         in every group of a list. Shows itself only where the answers differ. -->
+    <VariantPanel tid={topic.id} groups={topics.groupsOf(topic)} />
     {#if englishOptIn}
       <button
         type="button"

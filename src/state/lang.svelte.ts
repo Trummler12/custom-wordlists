@@ -126,8 +126,20 @@ class LangState {
    *  reads romaji reads it every visit. */
   variants = $state<Record<string, boolean>>({});
 
+  /** Lists told to deviate from the global choice, by topic id. Only meaningful
+   *  for a variant declared `perTopic`. */
+  variantByTopic = $state<Record<string, boolean>>({});
+
   variantOn(l: string): boolean {
     return !!variantFor(l) && !!this.variants[l];
+  }
+  /** Whether this list uses the variant: its own answer if it has one, the global
+   *  one otherwise. */
+  variantOnFor(tid: string): boolean {
+    return !!variantFor(this.current) && (this.variantByTopic[tid] ?? this.variantOn(this.current));
+  }
+  toggleVariantFor(tid: string): void {
+    this.variantByTopic[tid] = !this.variantOnFor(tid);
   }
   toggleVariant(l: string): void {
     this.variants[l] = !this.variants[l];
@@ -138,7 +150,7 @@ class LangState {
    *  it, the variant tag where one is on, the content language otherwise. */
   contentLang(tid: string): string {
     if (this.forceEnglish[tid]) return FALLBACK_LANG;
-    return this.variantOn(this.current) ? VARIANTS[this.current].tag : this.current;
+    return this.variantOnFor(tid) ? VARIANTS[this.current].tag : this.current;
   }
   isForcedEnglish(t: TopicSummary): boolean {
     return !!this.forceEnglish[t.id];

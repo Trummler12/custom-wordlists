@@ -57,6 +57,8 @@ export const es: UIStrings = {
       romaji: "Usar romaji en las entradas de las listas",
       es419: "Usar el español latinoamericano en las entradas de las listas",
     },
+    variantDiffers: (n) => `${n} entrada${n === 1 ? "" : "s"} se escribe${n === 1 ? "" : "n"} de otra forma`,
+    variantShowList: "Ver cuáles",
     useEnglish: (forced) =>
       forced
         ? "Usar esta lista en el idioma seleccionado"
