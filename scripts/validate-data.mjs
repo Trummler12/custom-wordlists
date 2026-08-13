@@ -272,8 +272,9 @@ async function main() {
     // 4c. corrections are instructions to the import, and the only way to tell
     //     whether one still holds is to look at the entry it names. A stale one is
     //     worse than none: it reads as a promise the file no longer keeps.
+    const correctable = topic.corrections?.length ? allEntries(topic) : [];
     for (const c of topic.corrections ?? []) {
-      const entry = allEntries(topic).find((e) => baseStr(typeof e === "string" ? e : e.en) === c.entry);
+      const entry = correctable.find((e) => baseStr(typeof e === "string" ? e : e.en) === c.entry);
       if (!entry) {
         warnings.push(`${rel}: correction for "${c.entry}" matches no entry`);
         continue;
