@@ -74,6 +74,13 @@ class TopicsState {
    *  the entries a list has no name for in the language it is showing in, which
    *  `visibleGroup` drops on the same terms. `visibleGroup` hands back the group
    *  itself when neither applies, and caches the rest. */
+  /** A topic's groups as the file has them — no omissions applied, and the same
+   *  array for the life of the page, which is what makes it safe to cache against.
+   *  Everything that renders a list wants `groupsOf` instead. */
+  rawGroups(tid: string): Group[] {
+    return this.data[tid]?.groups ?? [];
+  }
+
   groupsOf(t: TopicSummary): Group[] {
     const groups = this.data[t.id]?.groups ?? [];
     // A list whose names in this language simply *are* the English ones is being

@@ -107,11 +107,21 @@ export function renderCount(entries: WordEntry[], mode: NamesMode, lang: string)
  *  it deviates, so its presence *is* the difference. That makes the count worth
  *  showing — it says where a variant matters, which is the question nobody can
  *  answer from the outside. */
+const pairsByGroups = new WeakMap<Group[], Map<string, { from: string; to: string }[]>>();
+
 export function variantPairs(
   groups: Group[],
   tag: string,
   base: string,
 ): { from: string; to: string }[] {
+  // Keyed on the topic's own groups array, which is loaded once and never
+  // replaced: without this the scan runs per row per render, over lists of two
+  // thousand entries, for every topic on screen.
+  let byTag = pairsByGroups.get(groups);
+  if (!byTag) pairsByGroups.set(groups, (byTag = new Map()));
+  const hit = byTag.get(tag);
+  if (hit) return hit;
+
   const out: { from: string; to: string }[] = [];
   for (const g of groups) {
     for (const e of [...(g.words ?? []), ...(g.tiers ?? []).flat()]) {
@@ -119,6 +129,7 @@ export function variantPairs(
       out.push({ from: renderEntry(e, "short", base)[0], to: renderEntry(e, "short", tag)[0] });
     }
   }
+  byTag.set(tag, out);
   return out;
 }
 

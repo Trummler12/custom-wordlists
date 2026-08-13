@@ -116,7 +116,7 @@
     {/if}
     <!-- Per topic, not per group: how a language spells a name is the same question
          in every group of a list. Shows itself only where the answers differ. -->
-    <VariantPanel tid={topic.id} groups={topics.groupsOf(topic)} />
+    <VariantPanel tid={topic.id} />
     {#if englishOptIn}
       <button
         type="button"

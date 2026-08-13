@@ -1,19 +1,21 @@
 <script lang="ts">
   import { baseTag } from "../../lib/languages";
-  import type { Group } from "../../lib/types";
   import { variantPairs } from "../../lib/words";
   import { variantFor } from "../../locale/variants";
   import { lang } from "../../state/lang.svelte";
   import { overlays } from "../../state/overlays.svelte";
+  import { topics } from "../../state/topics.svelte";
 
-  let { tid, groups }: { tid: string; groups: Group[] } = $props();
+  let { tid }: { tid: string } = $props();
 
   const variant = $derived(variantFor(lang.current));
   // Only entries carrying the tag, which is only the ones that deviate — the
   // enrichment writes a variant key nowhere else. So this count is the answer to
   // "does this variant matter here", and the panel appearing at all is half of it.
   const pairs = $derived(
-    variant ? variantPairs(groups, variant.tag, baseTag(variant.tag)) : [],
+    variant?.perTopic
+      ? variantPairs(topics.rawGroups(tid), variant.tag, baseTag(variant.tag))
+      : [],
   );
   const id = $derived(`variant-${tid}`);
   const open = $derived(overlays.omittedPanel === id);
