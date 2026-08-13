@@ -148,6 +148,14 @@ export interface Preset {
 }
 
 /** A single topic data file (data/topics/<…>/<file>.json). */
+/** One repair of a source that is wrong, by the entry's English name. Beside
+ *  `entry` and `why` the keys are language tags: `new` is what the entry must
+ *  carry, `old` what the source said when the correction was written. */
+export type Correction = { entry: string; why: string } & Record<
+  string,
+  string | { old: string; new: string } | undefined
+>;
+
 export interface Topic {
   id: string;
   /** Display name, same shape as an entry — see `displayName` in lib/words. */
@@ -165,6 +173,15 @@ export interface Topic {
   /** Whether this topic's fame ruler starts hidden behind a toggle; its presence
    *  also marks the topic as its own ruler-visibility boundary. */
   hideRulersByDefault?: boolean;
+  /** Where the entries came from — one string or a list of them, free-form so a
+   *  label can precede the link ("German: https://…"). */
+  sources?: string | string[];
+  /** Who compiled or curated the list — one string or a list of them. */
+  credits?: string | string[];
+  /** Where the source is simply wrong. An instruction to the import, not to the
+   *  app: the frontend never reads this, and it is here only so the type mirrors
+   *  the schema. See `corrections` in schema/topic.schema.json. */
+  corrections?: Correction[];
   /** ISO date (YYYY-MM-DD) the list's contents last changed. */
   lastUpdated?: string;
   /** ISO date (YYYY-MM-DD) the list was last verified against its source. */
