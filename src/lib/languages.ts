@@ -41,6 +41,13 @@ function isScript(sub: string): boolean {
   return /^[A-Za-z]{4}$/.test(sub);
 }
 
+/** The language a tag belongs to, without script or region — what a question
+ *  about *support* asks, where a question about *rendering* wants the whole tag.
+ *  A list carrying Japanese supports Japanese whether or not it has romaji. */
+export function baseTag(tag: string): string {
+  return tag.split("-")[0];
+}
+
 /** A display name split at its parenthesis: `Chinesisch (vereinfacht)` becomes
  *  `["Chinesisch", " (vereinfacht)"]`, and a name without one keeps an empty tail.
  *
@@ -95,6 +102,14 @@ export function matchTag(wanted: string, available: readonly string[]): string |
   const parts = wanted.split("-");
   const base = parts[0].toLowerCase();
   const subs = parts.slice(1);
+
+  // A romanization degrades to the script it romanizes: a reader who asked for
+  // romaji on a list that has none is better served by the Japanese name than by
+  // the English one. Only in this direction — `ja` never lands on `ja-Latn`, since
+  // the unmarked form is always an acceptable answer and the marked one is not.
+  if (subs.some((s) => s.toLowerCase() === "latn")) {
+    return available.find((t) => t.toLowerCase() === base);
+  }
 
   // `de-CH` → `de`, `es-MX` → `es`. Only regions are dropped, and only when the
   // tag carries no script of its own.

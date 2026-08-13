@@ -95,10 +95,11 @@ describe("matchTag", () => {
     expect(matchTag("zh", ["zh-Hant", "zh-Hans"])).toBe("zh-Hant");
   });
 
-  it("never crosses a script boundary", () => {
-    // Romaji is Japanese written in another alphabet, not a dialect of it: a
-    // reader who asked for one and got the other got the wrong answer.
-    expect(matchTag("ja-Latn", ["en", "ja"])).toBeUndefined();
+  it("lets a romanization fall back to the script it romanizes", () => {
+    // Asked for romaji on a list that has none: the Japanese name beats the
+    // English one. Only in this direction — the unmarked form is always an
+    // acceptable answer, the marked one never is.
+    expect(matchTag("ja-Latn", ["en", "ja"])).toBe("ja");
     expect(matchTag("ja", ["en", "ja-Latn"])).toBeUndefined();
   });
 
