@@ -49,7 +49,10 @@ export const de: UIStrings = {
     unsupported: (language) =>
       `Für ${language} noch nicht bestätigt — dieses Thema ist evtl. unvollständig.`,
     fallback: "Fehlende Übersetzungen erscheinen auf Englisch.",
-    usesEnglish: () => "Auch im Deutschen werden offiziell die englischen Namen verwendet.",
+    // Phrased around the language name rather than through it: "im Koreanischen"
+    // would need the name inflected, and "Chinesisch (vereinfacht)" doesn't
+    // inflect at all.
+    usesEnglish: (language) => `Auch im ${language}en werden offiziell die englischen Namen verwendet.`,
     useEnglish: (forced) =>
       forced
         ? "Diese Liste in der gewählten Sprache verwenden"

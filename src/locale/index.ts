@@ -77,10 +77,10 @@ export interface LanguageStrings {
   /** Second half of that warning — see `langWarning()` for when it applies. */
   fallback: string;
   /** Info marker for a topic whose names in the selected language are the English
-   *  ones, on purpose. The language is always the dictionary's own, so a locale may
-   *  name it outright and ignore the argument — which reads better in languages
-   *  that would inflect it. English keeps it: it is what a language without its own
-   *  dictionary would fall back to. */
+   *  ones, on purpose. The argument is the *content* language named in the
+   *  interface one, so it is genuinely a variable — a German interface says this
+   *  about Korean lists — and a locale that would rather inflect the language name
+   *  has to phrase its way around that instead. */
   usesEnglish: (language: string) => string;
   /** Toggle a single list to English names; label reflects the current state. */
   useEnglish: (forced: boolean) => string;
@@ -160,8 +160,26 @@ const UI: Record<string, UIStrings> = { en, de };
 export const UI_LANGS: string[] = Object.keys(UI).sort();
 
 /** Languages the app offers in its picker — the app-level curated set, not
- *  derived from topics; a topic missing the selected language falls back to en. */
-export const SUPPORTED_LANGS: string[] = UI_LANGS;
+ *  derived from topics; a topic missing the selected language falls back to en.
+ *
+ *  These are the tags the data actually uses, script and all: `zh-Hans` and
+ *  `zh-Hant` are two lists, and a reader who wants Traditional should be able to
+ *  say so rather than have a script guessed for them. Tags nobody offers still
+ *  resolve — see `matchTag` — so a browser asking for `zh-CN` lands here anyway.
+ *
+ *  Alphabetical, which is also the order `matchTag` prefers when a bare tag has
+ *  to be widened. */
+export const CONTENT_LANGS: string[] = [
+  "de",
+  "en",
+  "es",
+  "fr",
+  "it",
+  "ja",
+  "ko",
+  "zh-Hans",
+  "zh-Hant",
+];
 
 /** UI strings for `lang`, falling back to English when it has no dictionary. */
 export function strings(lang: string): UIStrings {
