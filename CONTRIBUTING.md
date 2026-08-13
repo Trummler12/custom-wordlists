@@ -100,6 +100,26 @@ Comfortable with JSON and spotted a list posted in the [simple form](#option-a--
 2. **Hand over the JSON** as a **new issue** that references the original (`Refs #<number>`), or as a PR if you'd rather — **not** a buried follow-up comment, which is easy to lose. **Cross-link both ways** so the thread and the conversion stay connected.
 3. **Credit stays shared:** name both the original proposer and yourself in the topic's `credits`.
 
+## Looking for UI proofreaders — Spanish, French, Italian, Japanese, Korean
+
+The interface now speaks nine languages' worth of word lists and seven languages of its own.
+Two of those seven were written by people who speak them. **The other five — Spanish, French,
+Italian, Japanese and Korean — were machine-written and have never been read by a native
+speaker.** They are a starting point, not a translation.
+
+If one of them is yours, we'd be glad of ten minutes of it. What's worth reporting:
+
+- Anything that reads as a machine wrote it, even where it isn't *wrong*.
+- The sentences that bend grammar around an inserted language name — the ⚠️ and ℹ️ markers on
+  a topic row, where French elides its article and German declines the name. Every language
+  does this differently and each dictionary decides for itself.
+- Wording that's too long for the control it sits in.
+
+Confirming that a locale reads fine is just as useful as correcting it, and neither fits the
+issue templates — so please **[open a blank
+issue](https://github.com/Trummler12/custom-wordlists/issues/new)** and say which language
+you read. The files are `src/locale/<code>.ts`, one per language, all the same shape.
+
 ## Local development
 
 ```bash
