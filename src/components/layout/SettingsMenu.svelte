@@ -1,6 +1,7 @@
 <script lang="ts">
   import { AUTO, lang } from "../../state/lang.svelte";
   import { UI_LANGS } from "../../locale";
+  import { variantFor } from "../../locale/variants";
   import { overlays } from "../../state/overlays.svelte";
   import { settings } from "../../state/settings.svelte";
   import TipMarker from "../common/TipMarker.svelte";
@@ -16,6 +17,21 @@
   // row uses for a language it can't vouch for.
   const moot = $derived(lang.current === "en");
   const tipId = $derived(`setting-english-${id}`);
+
+  // The selected language's second way of being written, if it has one. Its whole
+  // existence is language-specific, so it appears and vanishes with the picker.
+  const variant = $derived(variantFor(lang.current));
+
+  // A setting that exists for one language and no other is easy never to notice,
+  // and there is nowhere else it could live. So the gear says so — briefly, once,
+  // each time a language with one is selected.
+  let nudge = $state(false);
+  $effect(() => {
+    if (!variant) return;
+    nudge = true;
+    const t = setTimeout(() => (nudge = false), 1600);
+    return () => clearTimeout(t);
+  });
 
   /** Hold the menu still — its width *and* where it sits — for as long as it is
    *  open. Height is free to move: the menu hangs from a fixed top edge, so only
@@ -68,6 +84,7 @@
   <button
     type="button"
     class="lang-btn"
+    class:nudge
     aria-haspopup="dialog"
     aria-expanded={overlays.settingsMenu === id}
     aria-label={lang.ui.settings.label}
@@ -91,6 +108,19 @@
           <TipNote id={tipId} text={lang.ui.settings.showEnglishEn} />
         {/if}
       </div>
+      {#if variant}
+        <div class="setting-row">
+          <label class="setting">
+            <input
+              type="checkbox"
+              checked={lang.variantOn(lang.current)}
+              onchange={() => lang.toggleVariant(lang.current)}
+            />
+            <!-- In its own language, because it can only ever be read in it. -->
+            <span lang={lang.current}>{variant.label}</span>
+          </label>
+        </div>
+      {/if}
       <!-- Only worth showing once there is a choice, the same guard the language
            picker itself uses. -->
       {#if UI_LANGS.length > 1}
