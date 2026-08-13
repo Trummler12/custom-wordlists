@@ -6,11 +6,13 @@
 // not `lang`). The same rule is why `ui` is a `$derived` field and not a plain one.
 
 import { CONTENT_LANGS, FALLBACK_LANG, strings, UI_LANGS, type UIStrings } from "../locale";
+import { VARIANTS, variantFor } from "../locale/variants";
 import { matchTag } from "../lib/languages";
 import type { TopicSummary } from "../lib/types";
 
 const STORAGE_KEY = "wordlists:lang";
 const UI_STORAGE_KEY = "wordlists:uiLang";
+const VARIANT_STORAGE_KEY = "wordlists:variants";
 
 /** The interface follows the list language unless told otherwise. */
 export const AUTO = "auto";
@@ -81,6 +83,9 @@ class LangState {
         .find((l) => l !== undefined) ??
       this.available[0] ??
       FALLBACK_LANG;
+    for (const l of (read(VARIANT_STORAGE_KEY) ?? "").split(",").filter(Boolean)) {
+      if (variantFor(l)) this.variants[l] = true;
+    }
     const ui = read(UI_STORAGE_KEY);
     this.uiPref = ui && (ui === AUTO || UI_LANGS.includes(ui)) ? ui : AUTO;
   }
@@ -116,8 +121,24 @@ class LangState {
    *  language in the picker, and that changes under it. */
   forceEnglish = $state<Record<string, boolean>>({});
 
+  /** Languages switched to their second way of being written, by language tag.
+   *  Stored: unlike the English toggles this is a lasting preference — someone who
+   *  reads romaji reads it every visit. */
+  variants = $state<Record<string, boolean>>({});
+
+  variantOn(l: string): boolean {
+    return !!variantFor(l) && !!this.variants[l];
+  }
+  toggleVariant(l: string): void {
+    this.variants[l] = !this.variants[l];
+    write(VARIANT_STORAGE_KEY, Object.keys(this.variants).filter((k) => this.variants[k]).join(","));
+  }
+
+  /** The tag a list's entries resolve with: English where the topic is switched to
+   *  it, the variant tag where one is on, the content language otherwise. */
   contentLang(tid: string): string {
-    return this.forceEnglish[tid] ? FALLBACK_LANG : this.current;
+    if (this.forceEnglish[tid]) return FALLBACK_LANG;
+    return this.variantOn(this.current) ? VARIANTS[this.current].tag : this.current;
   }
   isForcedEnglish(t: TopicSummary): boolean {
     return !!this.forceEnglish[t.id];

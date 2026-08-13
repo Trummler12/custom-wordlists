@@ -7,7 +7,7 @@
 import { loadManifest, loadTopic } from "../lib/data";
 import { buildTree, titleCase, type CatNode } from "../lib/tree";
 import type { CategoryMeta, Group, Topic, TopicSummary } from "../lib/types";
-import { langSupport } from "../lib/languages";
+import { baseTag, langSupport } from "../lib/languages";
 import { allRules, UNKNOWN_RULE, visibleGroup } from "../lib/omitted";
 import { displayName, type DisplayName } from "../lib/words";
 import { settings } from "./settings.svelte";
@@ -79,7 +79,7 @@ class TopicsState {
     // A list whose names in this language simply *are* the English ones is being
     // shown in English, whatever the picker says — so it has no gaps to hide.
     const picked = lang.contentLang(t.id);
-    const code = langSupport(t, picked) === "english" ? "en" : picked;
+    const code = langSupport(t, baseTag(picked)) === "english" ? "en" : picked;
     return groups.map((g) =>
       visibleGroup(
         g,

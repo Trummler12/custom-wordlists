@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { splitName } from "../../lib/languages";
+  import { baseTag, splitName } from "../../lib/languages";
   import { allRules, isOnByDefault, UNKNOWN_RULE } from "../../lib/omitted";
   import type { Group, Omission } from "../../lib/types";
   import { resolveStr } from "../../lib/words";
@@ -21,7 +21,7 @@
   const hidingUnknown = $derived(!settings.isToggled(tid, group.id, UNKNOWN_RULE));
   // The language the entries are missing, named in the interface language —
   // the two can differ, and the row is about the former.
-  const missing = $derived(splitName(lang.nameInUi(lang.contentLang(tid))));
+  const missing = $derived(splitName(lang.nameInUi(baseTag(lang.contentLang(tid)))));
 
   // Ticked means "currently left out". An `omitted` rule starts ticked and an
   // `omittable` one doesn't, so the stored flip is the same bit either way — and

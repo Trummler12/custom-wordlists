@@ -2,7 +2,7 @@
   import { onMount } from "svelte";
   import { setIndeterminate } from "../../lib/dom";
   import { canForceEnglish } from "../../lib/english";
-  import { langSupport, splitName } from "../../lib/languages";
+  import { baseTag, langSupport, splitName } from "../../lib/languages";
   import { rulerControl } from "../../lib/rulers";
   import type { TopicSummary } from "../../lib/types";
   import { langWarning } from "../../locale";
@@ -51,7 +51,9 @@
     // The language this list is actually rendered in, which a forced-English topic
     // has of its own — warning about German names it is no longer showing would be
     // a warning about nothing. The note itself stays in the interface language.
-    const code = lang.contentLang(topic.id);
+    // The language, not the way it is written: a list carrying Japanese supports
+    // Japanese whether or not it also carries romaji.
+    const code = baseTag(lang.contentLang(topic.id));
     const name = lang.nameInUi(code);
     switch (langSupport(topic, code)) {
       case "declared":
