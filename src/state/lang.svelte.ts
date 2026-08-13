@@ -5,7 +5,7 @@
 // store in state/ hands out an object and callers reach through it (`lang.current`,
 // not `lang`). The same rule is why `ui` is a `$derived` field and not a plain one.
 
-import { FALLBACK_LANG, strings, SUPPORTED_LANGS, UI_LANGS, type UIStrings } from "../locale";
+import { CONTENT_LANGS, FALLBACK_LANG, strings, UI_LANGS, type UIStrings } from "../locale";
 import { matchTag } from "../lib/languages";
 import type { TopicSummary } from "../lib/types";
 
@@ -41,7 +41,7 @@ class LangState {
 
   /** Languages the picker offers — the app's curated set (see locale/), not
    *  derived from topics: a topic missing the selected language falls back to en. */
-  readonly available: string[] = SUPPORTED_LANGS;
+  readonly available: string[] = CONTENT_LANGS;
 
   /** The language the chrome actually renders in.
    *

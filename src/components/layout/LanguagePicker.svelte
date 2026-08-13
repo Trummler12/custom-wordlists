@@ -1,6 +1,7 @@
 <script lang="ts">
   import { lang } from "../../state/lang.svelte";
   import { overlays } from "../../state/overlays.svelte";
+  import { tagChip } from "../../lib/languages";
 
   // Two pickers share the language but each needs its own open/closed state, so
   // the instance identifies itself: the header one shows only in the stacked
@@ -28,8 +29,9 @@
               aria-checked={l === lang.current}
               class:selected={l === lang.current}
               onclick={() => overlays.chooseLanguage(l)}
+              title={l}
             >
-              <span class="lang-code">{l.toUpperCase()}</span>
+              <span class="lang-code">{tagChip(l, lang.available)}</span>
               <span class="lang-name">{lang.name(l)}</span>
             </button>
           </li>
