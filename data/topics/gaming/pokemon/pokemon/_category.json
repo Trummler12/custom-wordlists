@@ -1,5 +1,9 @@
 {
-  "title": "Pokémon",
+  "title": {
+    "en": "Pokémon",
+    "ja": "ポケモン",
+    "ko": "포켓몬"
+  },
   "icon": "⚡",
   "hideRulersByDefault": true,
   "sharedEnglishToggle": true
