@@ -72,6 +72,7 @@ Progress on every topic added or _planned_ so far. A topic's style says how far 
 
 ## Geography
 
+- [x] **_Languages_**
 - [ ] Countries
 - [ ] Capitals
 - [ ] Cities
