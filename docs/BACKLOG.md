@@ -34,6 +34,33 @@ big enough to discuss belongs in an issue instead.
   parser that turns a marked-up string into a list of parts, and one snippet per
   tag. Nothing needs them today — add a tag the first time a string actually wants
   it, not before.
+- **Geography — a whole area, cities recurring by resolution.** A large upcoming area
+  with its own shape. `data/topics/geography/` gets one world-level topic each for
+  **countries**, **capitals** and **continents + tectonic plates**, grouped by continent
+  (fame tiers straight from the Sporcle % already sitting in `data-raw/geography/**`) — a
+  per-continent copy of those would be pure redundancy. **Cities are the exception:** they
+  recur as a separate topic per level (world / continent / country), each a *different
+  resolution* rather than a duplicate, with groups = the next subdivision down; deeper
+  levels come from the folder tree, since groups don't nest. Seven continents, including an
+  Antarctica folder left deliberately empty (the gag). Cross-topic de-duplication is
+  already in place (`output.merged` dedups by rendered string), so overlapping city layers
+  are safe to build. Big enough that the world lists are the near-term slice; a full
+  country → subdivision → district → municipality drill-down, done globally, is enormous
+  and explicitly later.
+- **`inheritsUpwards` — assemble a broad list from narrower ones.** If capitals also exist
+  per continent (`geography/<continent>/capitals.json`) *in addition* to a world
+  `capitals.json`, the world file shouldn't restate them. A field letting a topic leave the
+  shared fields empty and pull them up from its children would remove that redundancy — for
+  capitals, and equally for the recurring city layers. A general mechanism, not
+  geography-specific; design it when the first list actually wants to inherit rather than
+  repeat.
+- **`noGeoguessrCoverage` — filter countries to Street-View-covered ones.** A niche extra
+  for the countries list only: restrict to the countries with official Google Street View
+  coverage, for the GeoGuessr crowd. Decide between reusing the existing `omittable`
+  mechanism (a rule whose `match` is the uncovered countries — zero schema change,
+  functionally identical, and it shows in the 🧹 panel) and a dedicated topic-level field
+  driving its own "Pegman" toggle. Start with `omittable` unless the dedicated toggle earns
+  its keep.
 - **Group the locale keys.** `UIStrings` is ~40 flat keys covering the header, the
   tree, the rulers, the output and the footer, and it only grows. Nesting them by
   area (`topics.wordsOf`, `output.copied`, …) would make both dictionaries
