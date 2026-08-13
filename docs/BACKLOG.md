@@ -34,26 +34,46 @@ big enough to discuss belongs in an issue instead.
   parser that turns a marked-up string into a list of parts, and one snippet per
   tag. Nothing needs them today — add a tag the first time a string actually wants
   it, not before.
-- **Geography — a whole area, cities recurring by resolution.** A large upcoming area
-  with its own shape. `data/topics/geography/` gets one world-level topic each for
-  **countries**, **capitals** and **continents + tectonic plates**, grouped by continent
-  (fame tiers straight from the Sporcle % already sitting in `data-raw/geography/**`) — a
-  per-continent copy of those would be pure redundancy. **Cities are the exception:** they
-  recur as a separate topic per level (world / continent / country), each a *different
-  resolution* rather than a duplicate, with groups = the next subdivision down; deeper
-  levels come from the folder tree, since groups don't nest. Seven continents, including an
-  Antarctica folder left deliberately empty (the gag). Cross-topic de-duplication is
-  already in place (`output.merged` dedups by rendered string), so overlapping city layers
-  are safe to build. Big enough that the world lists are the near-term slice; a full
-  country → subdivision → district → municipality drill-down, done globally, is enormous
-  and explicitly later.
-- **`inheritsUpwards` — assemble a broad list from narrower ones.** If capitals also exist
-  per continent (`geography/<continent>/capitals.json`) *in addition* to a world
-  `capitals.json`, the world file shouldn't restate them. A field letting a topic leave the
-  shared fields empty and pull them up from its children would remove that redundancy — for
-  capitals, and equally for the recurring city layers. A general mechanism, not
-  geography-specific; design it when the first list actually wants to inherit rather than
-  repeat.
+- **Geography — stored at the leaves, read from the top.** A large upcoming area with its
+  own shape. `data/topics/geography/` holds one folder per continent, and the entries live
+  *there*: `<continent>/countries.json`, `<continent>/capitals.json`,
+  `<continent>/cities.json`. The world-level **countries**, **capitals** and **cities**
+  carry no entries of their own — they are those same lists read one level up, assembled by
+  `inheritsUpwards`. Nothing is stored twice, and it looks redundant only in the tree, which
+  is exactly the point: the reader sees a world list, the repo sees seven files. **Cities go
+  one level deeper again** (continent → country), because a country's cities are a finer
+  resolution rather than a subset. **Continents + tectonic plates** is genuinely world-level
+  and stores its own entries. Cross-topic de-duplication is already in place
+  (`output.merged` dedups by rendered string), so overlapping layers are safe. A full
+  country → subdivision → district → municipality drill-down is enormous and explicitly
+  later; the continents are the near-term slice.
+
+  **A merged tier only means something if every file drew its boundary the same way.** For
+  the cities that boundary can be objective: population, on absolute thresholds (10M, 5M,
+  3M, 2M, 1.5M, 1.2M, 1M, 850k, 720k, 600k, 500k, 420k, 360k…, adjusted until the steps feel
+  like even samples). Tier 3 then means the same in Peru as in Japan, which is what makes
+  concatenating every child's tier 3 a list rather than a pile. A Sporcle percentage cannot
+  do that — it is relative to the people who took one quiz.
+
+  **Empty tiers have to become legal.** A country with no city above a million contributes
+  nothing to the top tiers and must still say so, or its fourth tier would merge into its
+  parent's first. The schema requires `minItems: 1` on each tier today; that has to go, and
+  `tierSizes` in the authoring script is no help here since the boundaries are given rather
+  than computed. The ruler itself is already fine — `fame.ts` reads the stored tier count
+  rather than assuming six, so thirteen population steps are a legal shape.
+- **`inheritsUpwards` — the field the above is built on.** A topic declaring it holds no
+  entries and takes them from the topics below it in the tree: tier *k* is every child's
+  tier *k*, concatenated. **Only the entries are inherited** — title, icon, languages and
+  omission rules stay declared per file, since a parent's list is not a parent's metadata.
+
+  **The sliders couple downward and report upward.** Moving the world slider moves every
+  continent's with it, and every country's below that: it is one selection at a coarser
+  grain. A child moved on its own does not command its parent — the parent's slider then
+  shows the *most common* position among its children, its checkbox reflects their states,
+  and its count is theirs added up. Authoritative going down, descriptive coming up, which
+  also means the parent needs no stored selection of its own.
+
+  A general mechanism, not a geography-specific one, but geography is what it exists for.
 - **`noGeoguessrCoverage` — filter countries to Street-View-covered ones.** A niche extra
   for the countries list only: restrict to the countries with official Google Street View
   coverage, for the GeoGuessr crowd. Decide between reusing the existing `omittable`
