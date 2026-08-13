@@ -563,6 +563,11 @@ header {
   border-radius: var(--radius);
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
   font-size: 0.85rem;
+  /* Preferences are unrelated to one another, so they need air between them —
+     a checkbox and a dropdown read as one control otherwise. */
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 /* One preference and whatever has to be said about it. Positioned, so its note
    spans this row rather than the whole popover. */
@@ -578,15 +583,22 @@ header {
   gap: 0.5rem;
   cursor: pointer;
 }
-/* A preference that picks rather than toggles. Wraps on a narrow menu, where a
-   label and a dropdown side by side would push past the popover's max-width. */
+/* A preference that picks rather than toggles: "<label>: <dropdown>" on one line,
+   wrapping only when the popover's max-width forces it.
+
+   The pointer stops at the dropdown. A checkbox row is clickable across its whole
+   label, and carrying that over here would promise a second way to open the
+   dropdown that clicking the text doesn't deliver. */
 .setting select {
   font: inherit;
   max-width: 100%;
+  cursor: pointer;
 }
 .setting:has(select) {
   flex-wrap: wrap;
   row-gap: 0.25rem;
+  gap: 0.35rem;
+  cursor: default;
 }
 .lang-btn {
   background: none;
