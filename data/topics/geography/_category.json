@@ -1,0 +1,13 @@
+{
+  "title": {
+    "en": "Geography",
+    "de": "Geografie",
+    "es": "Geografía",
+    "fr": "Géographie",
+    "it": "Geografia",
+    "ja": "地理",
+    "ko": "지리"
+  },
+  "icon": "🌍",
+  "order": 3
+}
