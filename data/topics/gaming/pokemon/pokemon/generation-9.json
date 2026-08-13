@@ -3,7 +3,7 @@
   "title": {"short":"Gen IX","long":"Generation IX"},
   "icon": "🔴",
   "description": "Generation IX Pokémon, in ten languages. Fame tiers from an empirical recognition rate (tier 0 = best known); a first pass from one quiz's results, meant to be refined.",
-  "languages": ["de","en","es","fr","it","ja","ja-Latn","ko","zh-Hans","zh-Hant"],
+  "languages": ["de","en","es","es-419","fr","it","ja","ja-Latn","ko","zh-Hans","zh-Hant"],
   "usesEnglishFor": ["*"],
   "sources": [
     "Names: https://pokeapi.co",
