@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { langSupport, matchTag, tagChip } from "./languages";
+import { langSupport, matchTag, splitName, tagChip } from "./languages";
 import type { TopicSummary } from "./types";
 
 const topic = (fields: Partial<TopicSummary>): TopicSummary => ({
@@ -124,5 +124,17 @@ describe("tagChip", () => {
   it("drops the script once it is the only one of its language", () => {
     // Nothing to tell apart, so nothing to spell out.
     expect(tagChip("zh-Hans", ["en", "zh-Hans"])).toBe("ZH");
+  });
+});
+
+describe("splitName", () => {
+  it("leaves a plain name whole", () => {
+    expect(splitName("Koreanisch")).toEqual(["Koreanisch", ""]);
+  });
+
+  it("splits a qualifier off, keeping the space with it", () => {
+    // The locale glues the two back together around whatever ending it needs, so
+    // the tail has to carry its own separator.
+    expect(splitName("Chinesisch (vereinfacht)")).toEqual(["Chinesisch", " (vereinfacht)"]);
   });
 });

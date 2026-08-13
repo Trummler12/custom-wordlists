@@ -41,6 +41,18 @@ function isScript(sub: string): boolean {
   return /^[A-Za-z]{4}$/.test(sub);
 }
 
+/** A display name split at its parenthesis: `Chinesisch (vereinfacht)` becomes
+ *  `["Chinesisch", " (vereinfacht)"]`, and a name without one keeps an empty tail.
+ *
+ *  For the locales that put the language name *inside* a sentence rather than in
+ *  front of one. German declines it — "auch im Koreanischen" — and a qualifier in
+ *  brackets can't take the ending, so the two halves have to be handed over
+ *  separately for the locale to reassemble. */
+export function splitName(name: string): [string, string] {
+  const at = name.indexOf(" (");
+  return at === -1 ? [name, ""] : [name.slice(0, at), name.slice(at)];
+}
+
 /** The short badge for a tag in a list of them: the base language, and one letter
  *  more only where that wouldn't be unique.
  *
