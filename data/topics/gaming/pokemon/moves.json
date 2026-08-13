@@ -1,6 +1,6 @@
 {
   "id": "moves",
-  "title": {"en":"Moves","de":"Attacken"},
+  "title": {"en":"Moves","de":"Attacken","es":"Movimientos","fr":"Capacités","it":"Mosse","ja":"わざ","ko":"기술"},
   "icon": "💥",
   "description": "Pokémon moves, in nine languages.",
   "languages": ["de","en","es","es-419","fr","it","ja","ko","zh-Hans","zh-Hant"],
@@ -10,7 +10,7 @@
   "groups": [
     {
       "id": "moves",
-      "title": {"en":"Moves","de":"Attacken"},
+      "title": {"en":"Moves","de":"Attacken","es":"Movimientos","fr":"Capacités","it":"Mosse","ja":"わざ","ko":"기술"},
       "words": [
         {"en":"Pound","de":"Klaps","es":"Destructor","fr":"Écras’Face","it":"Botta","ja":"はたく","ko":"막치기","zh-Hans":"拍击","zh-Hant":"拍擊"},
         {"en":"Karate Chop","de":"Karateschlag","es":"Golpe Kárate","es-419":"Golpe Karate","fr":"Poing Karaté","it":"Colpokarate","ja":"からてチョップ","ko":"태권당수","zh-Hans":"空手劈","zh-Hant":"空手劈"},

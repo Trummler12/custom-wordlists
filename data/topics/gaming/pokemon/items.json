@@ -1,6 +1,6 @@
 {
   "id": "items",
-  "title": "Items",
+  "title": {"en":"Items","es":"Objetos","fr":"Objets","it":"Strumenti","ja":"どうぐ","ko":"도구"},
   "icon": "🎒",
   "description": "Pokémon items, in nine languages.",
   "languages": ["de","en","es","es-419","fr","it","ja","ko","zh-Hans","zh-Hant"],
@@ -10,7 +10,7 @@
   "groups": [
     {
       "id": "items",
-      "title": "Items",
+      "title": {"en":"Items","es":"Objetos","fr":"Objets","it":"Strumenti","ja":"どうぐ","ko":"도구"},
       "omitted": [
         {"id":"dynamax-crystals","match":"★*","locked":true,"reason":{"en":"300 [Dynamax Crystals](https://bulbapedia.bulbagarden.net/wiki/Dynamax_Crystal), each named after a star in the Bright Star Catalogue; only twelve were ever usable","de":"300 [Dynamax-Kristalle](https://bulbapedia.bulbagarden.net/wiki/Dynamax_Crystal), jeder nach einem Stern aus dem Bright Star Catalogue benannt; nur zwölf waren je nutzbar"}},
         {"id":"x-doses","match":["X-* [2-6]","Angriffplus[0-9]"],"reason":{"en":"Stronger doses of the [X- items](https://bulbapedia.bulbagarden.net/wiki/Battle_item#Effect), drawn the same as the ones already listed","de":"Stärkere Dosen der [X-Items](https://bulbapedia.bulbagarden.net/wiki/Battle_item#Effect), gezeichnet wie die bereits gelisteten"}},

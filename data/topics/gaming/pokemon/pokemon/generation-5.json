@@ -1,6 +1,6 @@
 {
   "id": "generation-5",
-  "title": {"short":"Gen V","long":"Generation V"},
+  "title": {"short":{"en":"Gen V","es":"Gen. V","fr":"Gén. V","it":"Gen. V","ja":"第5世代","ko":"5세대"},"long":{"en":"Generation V","es":"Generación V","fr":"Génération V","it":"Generazione V","ja":"第5世代","ko":"5세대"}},
   "icon": "🔴",
   "description": "Generation V Pokémon, in ten languages. Fame tiers from an empirical recognition rate (tier 0 = best known); a first pass from one quiz's results, meant to be refined.",
   "languages": ["de","en","es","es-419","fr","it","ja","ja-Latn","ko","zh-Hans","zh-Hant"],
@@ -12,7 +12,7 @@
   "groups": [
     {
       "id": "pokemon",
-      "title": "Pokémon",
+      "title": {"en":"Pokémon","ja":"ポケモン","ko":"포켓몬"},
       "tiers": [
         [
           {"en":"Snivy","de":"Serpifeu","fr":"Vipélierre","ja":"ツタージャ","ja-Latn":"Tsutarja","ko":"주리비얀","zh-Hans":"藤藤蛇","zh-Hant":"藤藤蛇"},

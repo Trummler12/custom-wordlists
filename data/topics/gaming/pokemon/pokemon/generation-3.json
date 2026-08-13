@@ -1,6 +1,6 @@
 {
   "id": "generation-3",
-  "title": {"short":"Gen III","long":"Generation III"},
+  "title": {"short":{"en":"Gen III","es":"Gen. III","fr":"Gén. III","it":"Gen. III","ja":"第3世代","ko":"3세대"},"long":{"en":"Generation III","es":"Generación III","fr":"Génération III","it":"Generazione III","ja":"第3世代","ko":"3세대"}},
   "icon": "🔴",
   "description": "Generation III Pokémon, in ten languages. Fame tiers from an empirical recognition rate (tier 0 = best known); a first pass from one quiz's results, meant to be refined.",
   "languages": ["de","en","es","es-419","fr","it","ja","ja-Latn","ko","zh-Hans","zh-Hant"],
@@ -12,7 +12,7 @@
   "groups": [
     {
       "id": "pokemon",
-      "title": "Pokémon",
+      "title": {"en":"Pokémon","ja":"ポケモン","ko":"포켓몬"},
       "tiers": [
         [
           {"en":"Mudkip","de":"Hydropi","fr":"Gobou","ja":"ミズゴロウ","ja-Latn":"Mizugorou","ko":"물짱이","zh-Hans":"水跃鱼","zh-Hant":"水躍魚"},
