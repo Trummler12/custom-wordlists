@@ -125,15 +125,21 @@ export function visibleGroup(
   toggled: readonly string[] = [],
   lang = "en",
 ): Group {
-  const declared = !!g.omitted?.length || !!g.omittable?.length;
-  const unknown = unknownCount(g, lang, toggled);
-  if (!declared && unknown === 0) return g;
-
+  // Before anything else: counting the unknowns walks every entry, so a cache hit
+  // has to be answered without it. The group filed under its own key is the
+  // "nothing applies" answer — it carries no `unknownCount` because there is none.
   const key = `${lang}|${[...toggled].sort().join(",")}`;
   let byKey = views.get(g);
   if (!byKey) views.set(g, (byKey = new Map()));
   const hit = byKey.get(key);
   if (hit) return hit;
+
+  const declared = !!g.omitted?.length || !!g.omittable?.length;
+  const unknown = unknownCount(g, lang, toggled);
+  if (!declared && unknown === 0) {
+    byKey.set(key, g);
+    return g;
+  }
 
   const rules = activeRules(g, toggled);
   // Ticked by default, like a declared `omitted` rule: a reader who wants the
