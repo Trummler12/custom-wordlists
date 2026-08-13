@@ -47,6 +47,10 @@ export const en: UIStrings = {
     unsupported: (language) => `Not confirmed for ${language} yet — this topic may be incomplete.`,
     fallback: "English is used where a translation is missing.",
     usesEnglish: (primary, secondary) => `${primary}${secondary} officially uses the English names too.`,
+    variant: {
+      romaji: "Use Romaji for list entries",
+      es419: "Use Latin American Spanish for list entries",
+    },
     useEnglish: (forced) =>
       forced ? "Use this list in the selected language" : "Use the English entries of this list",
     useEnglishAll: (allForced) =>

@@ -116,8 +116,7 @@
               checked={lang.variantOn(lang.current)}
               onchange={() => lang.toggleVariant(lang.current)}
             />
-            <!-- In its own language, because it can only ever be read in it. -->
-            <span lang={lang.current}>{variant.label}</span>
+            <span>{lang.ui.language.variant[variant.id]}</span>
           </label>
         </div>
       {/if}

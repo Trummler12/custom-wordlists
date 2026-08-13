@@ -58,6 +58,10 @@ export const de: UIStrings = {
     // where it belongs rather than always. The bracketed half never takes it.
     usesEnglish: (primary, secondary) =>
       `Auch im ${primary}${primary.endsWith("sch") ? "en" : ""}${secondary} werden offiziell die englischen Namen verwendet.`,
+    variant: {
+      romaji: "Romaji für die Listeneinträge verwenden",
+      es419: "Lateinamerikanisches Spanisch für die Listeneinträge verwenden",
+    },
     useEnglish: (forced) =>
       forced
         ? "Diese Liste in der gewählten Sprache verwenden"

@@ -11,6 +11,8 @@
 // it is a place, while `language.useEnglish` sits on every topic row, so it is a
 // feature. The group carries the prefix, so no key repeats it.
 
+import type { VariantId } from "./variants";
+
 /** The banner. */
 export interface HeaderStrings {
   /** Tagline around the inline skribbl.io link: "<before> skribbl.io <after>". */
@@ -91,6 +93,10 @@ export interface LanguageStrings {
    *  take an ending on its first word. A locale that puts the name in front of
    *  its sentence simply concatenates them. */
   usesEnglish: (primary: string, secondary: string) => string;
+  /** The switch for a language that is written two ways — romaji beside kana, or
+   *  Latin American Spanish beside Spanish. Only ever shown while that language is
+   *  selected, but shown in whatever language the interface is in. */
+  variant: Record<VariantId, string>;
   /** Toggle a single list to English names; label reflects the current state. */
   useEnglish: (forced: boolean) => string;
   /** Toggle from a category row every list it governs; label on current state. */

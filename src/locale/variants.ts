@@ -10,16 +10,21 @@
 // which is the chain `matchTag` already walks. The whole feature is which tag goes
 // first; counts, de-duplication, the output and `?` follow from that for free.
 //
-// The labels are in their own language on purpose. A variant's option only exists
-// while its language is selected, so a German or English translation of it could
-// never be rendered — writing one would be writing a string that cannot appear.
+// The labels live in the ordinary dictionaries rather than here, keyed by `id`.
+// The option only appears while its own language is selected, but the interface
+// it appears in is a separate choice — a German reader browsing Japanese lists
+// reads about romaji in German.
+
+/** Which variant a string belongs to. A new one adds a member here and a line to
+ *  every dictionary, which is exactly the work a new variant is. */
+export type VariantId = "romaji" | "es419";
 
 /** One language's second way of being written. */
 export interface Variant {
+  /** Names its label in `LanguageStrings.variant`. */
+  id: VariantId;
   /** The tag its entries carry. */
   tag: string;
-  /** The option's label, in the language it belongs to. */
-  label: string;
   /** Whether a single list may deviate from the global choice. Worth it only
    *  where lists genuinely disagree: Latin American Spanish differs on 5 of 1330
    *  items and 254 of 937 moves, and a control that appears on one list and not
@@ -29,10 +34,8 @@ export interface Variant {
 
 /** Keyed by the content language the variant belongs to. */
 export const VARIANTS: Record<string, Variant> = {
-  // "Use Romaji for list entries"
-  ja: { tag: "ja-Latn", label: "リストの項目にローマ字を使う", perTopic: false },
-  // "Use Latin American Spanish for list entries"
-  es: { tag: "es-419", label: "Usar el español latinoamericano en las listas", perTopic: true },
+  ja: { id: "romaji", tag: "ja-Latn", perTopic: false },
+  es: { id: "es419", tag: "es-419", perTopic: true },
 };
 
 /** The variant for a content language, if it has one. */
