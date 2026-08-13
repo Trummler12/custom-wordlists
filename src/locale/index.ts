@@ -96,6 +96,10 @@ export interface SettingsStrings {
   showEnglish: string;
   /** Why that preference does nothing while the interface is English. */
   showEnglishEn: string;
+  /** Label of the dropdown pinning the interface to one language. */
+  interfaceLang: string;
+  /** Its first option: follow the list language, which is the default. */
+  interfaceAuto: string;
 }
 
 /** The output panel and its counter. */
@@ -146,10 +150,15 @@ export const FALLBACK_LANG = "en";
 
 const UI: Record<string, UIStrings> = { en, de };
 
-/** Languages the app offers in its picker — the ones with a UI dictionary. This
- *  is the deliberately-curated app-level set, independent of any single topic's
- *  own `languages`; grow it by adding a dictionary above. */
-export const SUPPORTED_LANGS: string[] = Object.keys(UI).sort();
+/** Languages the chrome can be rendered in — the ones with a dictionary above.
+ *  Deliberately small: a list can be offered in a language long before anyone has
+ *  translated the interface into it, which is the whole reason the two are
+ *  separate settings. */
+export const UI_LANGS: string[] = Object.keys(UI).sort();
+
+/** Languages the app offers in its picker — the app-level curated set, not
+ *  derived from topics; a topic missing the selected language falls back to en. */
+export const SUPPORTED_LANGS: string[] = UI_LANGS;
 
 /** UI strings for `lang`, falling back to English when it has no dictionary. */
 export function strings(lang: string): UIStrings {

@@ -56,6 +56,8 @@ export const en: UIStrings = {
     label: "Settings",
     showEnglish: "Show the option to use English entries",
     showEnglishEn: "These toggles only appear for languages other than English.",
+    interfaceLang: "Interface language",
+    interfaceAuto: "Follow the list language",
   },
   output: {
     label: "Output",
