@@ -1,0 +1,609 @@
+aa	afar
+ab	abjasio
+ace	acehnés
+ach	acoli
+ada	adangme
+ady	adigeo
+ae	avéstico
+aeb	Tunisian Arabic
+af	afrikáans
+afh	afrihili
+agq	aghem
+ain	ainu
+ak	akan
+akk	acadio
+akz	Alabama
+ale	aleutiano
+aln	Gheg Albanian
+alt	altái meridional
+am	amárico
+an	aragonés
+ang	inglés antiguo
+anp	angika
+ar	árabe
+ar_001	árabe estándar moderno
+arc	arameo
+arn	mapuche
+aro	Araona
+arp	arapaho
+arq	Algerian Arabic
+arw	arahuaco
+ary	Moroccan Arabic
+arz	Egyptian Arabic
+as	asamés
+asa	asu
+ase	American Sign Language
+ast	asturiano
+av	avar
+avk	Kotava
+awa	avadhi
+ay	aimara
+az	azerbaiyano
+azb	South Azerbaijani
+ba	baskir
+bal	baluchi
+ban	balinés
+bar	Bavarian
+bas	basa
+bax	bamun
+bbc	Batak Toba
+bbj	ghomala
+be	bielorruso
+bej	beja
+bem	bemba
+bew	Betawi
+bez	bena
+bfd	bafut
+bfq	Badaga
+bg	búlgaro
+bho	bhojpuri
+bi	bislama
+bik	bicol
+bin	bini
+bjn	Banjar
+bkm	kom
+bla	siksika
+bm	bambara
+bn	bengalí
+bo	tibetano
+bpy	Bishnupriya
+bqi	Bakhtiari
+br	bretón
+bra	braj
+brh	Brahui
+brx	bodo
+bs	bosnio
+bss	akoose
+bua	buriat
+bug	buginés
+bum	bulu
+byn	blin
+byv	medumba
+ca	catalán
+cad	caddo
+car	caribe
+cay	cayuga
+cch	atsam
+ce	checheno
+ceb	cebuano
+cgg	chiga
+ch	chamorro
+chb	chibcha
+chg	chagatái
+chk	trukés
+chm	marí
+chn	jerga chinuk
+cho	choctaw
+chp	chipewyan
+chr	cheroqui
+chy	cheyene
+ckb	kurdo sorani
+co	corso
+cop	copto
+cps	Capiznon
+cr	cree
+crh	tártaro de Crimea
+cs	checo
+csb	casubio
+cu	eslavo eclesiástico
+cv	chuvash
+cy	galés
+da	danés
+dak	dakota
+dar	dargva
+dav	taita
+de	alemán
+de_AT	alemán austríaco
+de_CH	alto alemán suizo
+del	delaware
+den	slave
+dgr	dogrib
+din	dinka
+dje	zarma
+doi	dogri
+dsb	bajo sorbio
+dtp	Central Dusun
+dua	duala
+dum	neerlandés medieval
+dv	divehi
+dyo	jola-fonyi
+dyu	diula
+dz	dzongkha
+dzg	dazaga
+ebu	embu
+ee	ewé
+efi	efik
+egl	Emilian
+egy	egipcio antiguo
+eka	ekajuk
+el	griego
+elx	elamita
+en	inglés
+en_AU	inglés australiano
+en_CA	inglés canadiense
+en_GB	inglés británico
+en_US	inglés estadounidense
+enm	inglés medieval
+eo	esperanto
+es	español
+es_419	español latinoamericano
+es_ES	español de España
+es_MX	español de México
+esu	Central Yupik
+et	estonio
+eu	euskera
+ewo	ewondo
+ext	Extremaduran
+fa	persa
+fan	fang
+fat	fanti
+ff	fula
+fi	finés
+fil	filipino
+fit	Tornedalen Finnish
+fj	fiyiano
+fo	feroés
+fon	fon
+fr	francés
+fr_CA	francés canadiense
+fr_CH	francés suizo
+frc	Cajun French
+frm	francés medieval
+fro	francés antiguo
+frp	Arpitan
+frr	frisón septentrional
+frs	frisón oriental
+fur	friulano
+fy	frisón occidental
+ga	irlandés
+gaa	ga
+gag	gagauzo
+gan	Gan Chinese
+gay	gayo
+gba	gbaya
+gbz	Zoroastrian Dari
+gd	gaélico escocés
+gez	geez
+gil	gilbertés
+gl	gallego
+glk	Gilaki
+gmh	alemán de la alta edad media
+gn	guaraní
+goh	alemán de la alta edad antigua
+gom	Goan Konkani
+gon	gondi
+gor	gorontalo
+got	gótico
+grb	grebo
+grc	griego antiguo
+gsw	alemán suizo
+gu	gujarati
+guc	Wayuu
+gur	Frafra
+guz	gusii
+gv	manés
+gwi	kutchin
+ha	hausa
+hai	haida
+hak	Hakka Chinese
+haw	hawaiano
+he	hebreo
+hi	hindi
+hif	Fiji Hindi
+hil	hiligaynon
+hit	hitita
+hmn	hmong
+ho	hiri motu
+hr	croata
+hsb	alto sorbio
+hsn	Xiang Chinese
+ht	haitiano
+hu	húngaro
+hup	hupa
+hy	armenio
+hz	herero
+ia	interlingua
+iba	iban
+ibb	ibibio
+id	indonesio
+ie	interlingue
+ig	igbo
+ii	yi de Sichuán
+ik	inupiaq
+ilo	ilocano
+inh	ingush
+io	ido
+is	islandés
+it	italiano
+iu	inuktitut
+izh	Ingrian
+ja	japonés
+jam	Jamaican Creole English
+jbo	lojban
+jgo	ngomba
+jmc	machame
+jpr	judeo-persa
+jrb	judeo-árabe
+jut	Jutish
+jv	javanés
+ka	georgiano
+kaa	karakalpako
+kab	cabila
+kac	kachin
+kaj	jju
+kam	kamba
+kaw	kawi
+kbd	kabardiano
+kbl	kanembu
+kcg	tyap
+kde	makonde
+kea	criollo caboverdiano
+ken	Kenyang
+kfo	koro
+kg	kongo
+kgp	Kaingang
+kha	khasi
+kho	kotanés
+khq	koyra chiini
+khw	Khowar
+ki	kikuyu
+kiu	Kirmanjki
+kj	kuanyama
+kk	kazajo
+kkj	kako
+kl	groenlandés
+kln	kalenjin
+km	jemer
+kmb	kimbundu
+kn	canarés
+ko	coreano
+koi	komi permio
+kok	konkaní
+kos	kosraeano
+kpe	kpelle
+kr	kanuri
+krc	karachay-balkar
+kri	Krio
+krj	Kinaray-a
+krl	carelio
+kru	kurukh
+ks	cachemiro
+ksb	shambala
+ksf	bafia
+ksh	kölsch
+ku	kurdo
+kum	kumyk
+kut	kutenai
+kv	komi
+kw	córnico
+ky	kirguís
+la	latín
+lad	ladino
+lag	langi
+lah	lahnda
+lam	lamba
+lb	luxemburgués
+lez	lezgiano
+lfn	Lingua Franca Nova
+lg	ganda
+li	limburgués
+lij	Ligurian
+liv	Livonian
+lkt	lakota
+lmo	Lombard
+ln	lingala
+lo	laosiano
+lol	mongo
+loz	lozi
+lt	lituano
+ltg	Latgalian
+lu	luba-katanga
+lua	luba-lulua
+lui	luiseño
+lun	lunda
+luo	luo
+lus	lushai
+luy	luyia
+lv	letón
+lzh	Literary Chinese
+lzz	Laz
+mad	madurés
+maf	mafa
+mag	magahi
+mai	maithili
+mak	macasar
+man	mandingo
+mas	masái
+mde	maba
+mdf	moksha
+mdr	mandar
+men	mende
+mer	meru
+mfe	criollo mauriciano
+mg	malgache
+mga	irlandés medieval
+mgh	makhuwa-meetto
+mgo	meta’
+mh	marshalés
+mi	maorí
+mic	micmac
+min	minangkabau
+mk	macedonio
+ml	malayalam
+mn	mongol
+mnc	manchú
+mni	manipuri
+moh	mohawk
+mos	mossi
+mr	maratí
+mrj	Western Mari
+ms	malayo
+mt	maltés
+mua	mundang
+mul	lenguas múltiples
+mus	creek
+mwl	mirandés
+mwr	marwari
+mwv	Mentawai
+my	birmano
+mye	myene
+myv	erzya
+mzn	Mazanderani
+na	nauruano
+nan	Min Nan Chinese
+nap	napolitano
+naq	nama
+nb	bokmal noruego
+nd	ndebele septentrional
+nds	bajo alemán
+ne	nepalí
+new	newari
+ng	ndonga
+nia	nias
+niu	niueano
+njo	Ao Naga
+nl	neerlandés
+nl_BE	flamenco
+nmg	kwasio
+nn	nynorsk noruego
+nnh	ngiemboon
+no	noruego
+nog	nogai
+non	nórdico antiguo
+nov	Novial
+nqo	n’ko
+nr	ndebele meridional
+nso	sotho septentrional
+nus	nuer
+nv	navajo
+nwc	newari clásico
+ny	nyanja
+nym	nyamwezi
+nyn	nyankole
+nyo	nyoro
+nzi	nzima
+oc	occitano
+oj	ojibwa
+om	oromo
+or	oriya
+os	osético
+osa	osage
+ota	turco otomano
+pa	panyabí
+pag	pangasinán
+pal	pahlavi
+pam	pampanga
+pap	papiamento
+pau	palauano
+pcd	Picard
+pdc	Pennsylvania German
+pdt	Plautdietsch
+peo	persa antiguo
+pfl	Palatine German
+phn	fenicio
+pi	pali
+pl	polaco
+pms	Piedmontese
+pnt	Pontic
+pon	pohnpeiano
+prg	Prussian
+pro	provenzal antiguo
+ps	pastún
+pt	portugués
+pt_BR	portugués de Brasil
+pt_PT	portugués de Portugal
+qu	quechua
+quc	quiché
+qug	Chimborazo Highland Quichua
+raj	rajasthani
+rap	rapanui
+rar	rarotongano
+rgn	Romagnol
+rif	Riffian
+rm	retorrománico
+rn	kiroundi
+ro	rumano
+ro_MD	moldavo
+rof	rombo
+rom	romaní
+root	raíz
+rtm	Rotuman
+ru	ruso
+rue	Rusyn
+rug	Roviana
+rup	arrumano
+rw	kinyarwanda
+rwk	rwa
+sa	sánscrito
+sad	sandawe
+sah	sakha
+sam	arameo samaritano
+saq	samburu
+sas	sasak
+sat	santali
+saz	Saurashtra
+sba	ngambay
+sbp	sangu
+sc	sardo
+scn	siciliano
+sco	escocés
+sd	sindhi
+sdc	Sassarese Sardinian
+se	sami septentrional
+see	seneca
+seh	sena
+sei	Seri
+sel	selkup
+ses	koyraboro senni
+sg	sango
+sga	irlandés antiguo
+sgs	Samogitian
+sh	serbocroata
+shi	tashelhit
+shn	shan
+shu	árabe chadiano
+si	cingalés
+sid	sidamo
+sk	eslovaco
+sl	esloveno
+sli	Lower Silesian
+sly	Selayar
+sm	samoano
+sma	sami meridional
+smj	sami lule
+smn	sami inari
+sms	sami skolt
+sn	shona
+snk	soninké
+so	somalí
+sog	sogdiano
+sq	albanés
+sr	serbio
+srn	sranan tongo
+srr	serer
+ss	siswati
+ssy	saho
+st	sesotho meridional
+stq	Saterland Frisian
+su	sundanés
+suk	sukuma
+sus	susu
+sux	sumerio
+sv	sueco
+sw	swahili
+swb	comorense
+swc	swahili del Congo
+syc	siríaco clásico
+syr	siriaco
+szl	Silesian
+ta	tamil
+tcy	Tulu
+te	telugu
+tem	temne
+teo	teso
+ter	tereno
+tet	tetún
+tg	tayiko
+th	tailandés
+ti	tigriña
+tig	tigré
+tiv	tiv
+tk	turcomano
+tkl	tokelauano
+tkr	Tsakhur
+tl	tagalo
+tlh	klingon
+tli	tlingit
+tly	Talysh
+tmh	tamashek
+tn	setchwana
+to	tongano
+tog	tonga del Nyasa
+tpi	tok pisin
+tr	turco
+tru	Turoyo
+trv	taroko
+ts	tsonga
+tsd	Tsakonian
+tsi	tsimshiano
+tt	tártaro
+ttt	Muslim Tat
+tum	tumbuka
+tvl	tuvaluano
+tw	twi
+twq	tasawaq
+ty	tahitiano
+tyv	tuviniano
+tzm	tamazight del Marruecos Central
+udm	udmurt
+ug	uigur
+uga	ugarítico
+uk	ucraniano
+umb	umbundu
+und	lengua desconocida
+ur	urdu
+uz	uzbeko
+vai	vai
+ve	venda
+vec	Venetian
+vep	Veps
+vi	vietnamita
+vls	West Flemish
+vmf	Main-Franconian
+vo	volapük
+vot	vótico
+vro	Võro
+vun	vunjo
+wa	valón
+wae	walser
+wal	walamo
+war	waray
+was	washo
+wbp	Warlpiri
+wo	wólof
+wuu	Wu Chinese
+xal	kalmyk
+xh	xhosa
+xmf	Mingrelian
+xog	soga
+yao	yao
+yap	yapés
+yav	yangben
+ybb	yemba
+yi	yídish
+yo	yoruba
+yrl	Nheengatu
+yue	cantonés
+za	zhuang
+zap	zapoteco
+zbl	símbolos Bliss
+zea	Zeelandic
+zen	zenaga
+zgh	tamazight estándar marroquí
+zh	chino
+zh_Hans	chino simplificado
+zh_Hant	chino tradicional
+zu	zulú
+zun	zuni
+zxx	sin contenido lingüístico
+zza	zazaki

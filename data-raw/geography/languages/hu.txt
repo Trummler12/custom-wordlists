@@ -1,0 +1,609 @@
+aa	afar
+ab	abház
+ace	achinéz
+ach	akoli
+ada	adangme
+ady	adyghe
+ae	avesztán
+aeb	Tunisian Arabic
+af	afrikaans
+afh	afrihili
+agq	agem
+ain	ainu
+ak	akan
+akk	akkád
+akz	Alabama
+ale	aleut
+aln	Gheg Albanian
+alt	dél-altaji
+am	amhara
+an	aragonéz
+ang	óangol
+anp	angika
+ar	arab
+ar_001	modern szabányos arab
+arc	arámi
+arn	araucani
+aro	Araona
+arp	arapaho
+arq	Algerian Arabic
+arw	aravak
+ary	Moroccan Arabic
+arz	Egyptian Arabic
+as	asszámi
+asa	asu
+ase	American Sign Language
+ast	asztúr
+av	avar
+avk	Kotava
+awa	awádi
+ay	ajmara
+az	azerbajdzsáni
+azb	South Azerbaijani
+ba	baskír
+bal	balucsi
+ban	balinéz
+bar	Bavarian
+bas	basza
+bax	bamun
+bbc	Batak Toba
+bbj	gomala
+be	belorusz
+bej	bedzsa
+bem	bemba
+bew	Betawi
+bez	bena
+bfd	bafut
+bfq	Badaga
+bg	bolgár
+bho	bodzspuri
+bi	bislama
+bik	bikol
+bin	bini
+bjn	Banjar
+bkm	kom
+bla	siksika
+bm	bambara
+bn	bengáli
+bo	tibeti
+bpy	Bishnupriya
+bqi	Bakhtiari
+br	breton
+bra	braj
+brh	Brahui
+brx	bodo
+bs	bosnyák
+bss	koszi
+bua	burját
+bug	buginéz
+bum	bulu
+byn	blin
+byv	medumba
+ca	katalán
+cad	caddo
+car	karib
+cay	kajuga
+cch	atszam
+ce	csecsen
+ceb	cebui
+cgg	kiga
+ch	csamoró
+chb	csibcsa
+chg	csagatáj
+chk	csukéz
+chm	mari
+chn	csinuk zsargon
+cho	csoktó
+chp	csipevé
+chr	cseroki
+chy	csejen
+ckb	szoráni kurd
+co	korzikai
+cop	kopt
+cps	Capiznon
+cr	krí
+crh	krími tatár
+cs	cseh
+csb	kasub
+cu	egyházi szláv
+cv	csuvas
+cy	walesi
+da	dán
+dak	dakota
+dar	dargva
+dav	taita
+de	német
+de_AT	osztrák német
+de_CH	svájci felnémet
+del	delavár
+den	szlevi
+dgr	dogrib
+din	dinka
+dje	zarma
+doi	dogri
+dsb	alsó szorb
+dtp	Central Dusun
+dua	duala
+dum	közép holland
+dv	divehi
+dyo	jola-fonyi
+dyu	diula
+dz	butáni
+dzg	dazaga
+ebu	embu
+ee	eve
+efi	efik
+egl	Emilian
+egy	óegyiptomi
+eka	ekadzsuk
+el	görög
+elx	elamit
+en	angol
+en_AU	ausztrál angol
+en_CA	kanadai angol
+en_GB	brit angol
+en_US	amerikai angol
+enm	közép angol
+eo	eszperantó
+es	spanyol
+es_419	latin-amerikai spanyol
+es_ES	európai spanyol
+es_MX	spanyol (mexikói)
+esu	Central Yupik
+et	észt
+eu	baszk
+ewo	evondo
+ext	Extremaduran
+fa	perzsa
+fan	fang
+fat	fanti
+ff	fulani
+fi	finn
+fil	filippínó
+fit	Tornedalen Finnish
+fj	fidzsi
+fo	feröeri
+fon	fon
+fr	francia
+fr_CA	kanadai francia
+fr_CH	svájci francia
+frc	Cajun French
+frm	közép francia
+fro	ófrancia
+frp	Arpitan
+frr	északi fríz
+frs	keleti fríz
+fur	friuli
+fy	fríz
+ga	ír
+gaa	ga
+gag	gagauz
+gan	Gan Chinese
+gay	gajo
+gba	gbaja
+gbz	Zoroastrian Dari
+gd	skót gael
+gez	geez
+gil	ikiribati
+gl	galíciai
+glk	Gilaki
+gmh	közép felső német
+gn	guarani
+goh	ófelső német
+gom	Goan Konkani
+gon	gondi
+gor	gorontalo
+got	gót
+grb	grebó
+grc	ógörög
+gsw	svájci német
+gu	gudzsarati
+guc	Wayuu
+gur	Frafra
+guz	guszii
+gv	man-szigeti
+gwi	gvicsin
+ha	hausza
+hai	haida
+hak	Hakka Chinese
+haw	hawaii
+he	héber
+hi	hindi
+hif	Fiji Hindi
+hil	hiligajnon
+hit	hittite
+hmn	hmong
+ho	hiri motu
+hr	horvát
+hsb	felső szorb
+hsn	Xiang Chinese
+ht	haiti
+hu	magyar
+hup	hupa
+hy	örmény
+hz	herero
+ia	interlingva
+iba	iban
+ibb	ibibió
+id	indonéz
+ie	interlingue
+ig	igbó
+ii	szecsuán ji
+ik	inupiak
+ilo	ilokó
+inh	ingus
+io	idó
+is	izlandi
+it	olasz
+iu	inuktitut
+izh	Ingrian
+ja	japán
+jam	Jamaican Creole English
+jbo	lojban
+jgo	ngomba
+jmc	machame
+jpr	zsidó-perzsa
+jrb	zsidó-arab
+jut	Jutish
+jv	jávai
+ka	grúz
+kaa	kara-kalpak
+kab	kabije
+kac	kacsin
+kaj	jju
+kam	kamba
+kaw	kawi
+kbd	kabardi
+kbl	kanembu
+kcg	tyap
+kde	makonde
+kea	kabuverdianu
+ken	Kenyang
+kfo	koro
+kg	kongo
+kgp	Kaingang
+kha	kaszi
+kho	kotanéz
+khq	kojra-csíni
+khw	Khowar
+ki	kikuju
+kiu	Kirmanjki
+kj	kuanyama
+kk	kazah
+kkj	kakó
+kl	grönlandi
+kln	kalendzsin
+km	kambodzsai
+kmb	kimbundu
+kn	kannada
+ko	koreai
+koi	komi-permják
+kok	konkani
+kos	kosrei
+kpe	kpelle
+kr	kanuri
+krc	karacsáj-balkár
+kri	Krio
+krj	Kinaray-a
+krl	karelai
+kru	kuruh
+ks	kásmíri
+ksb	sambala
+ksf	bafia
+ksh	kölsch
+ku	kurd
+kum	kumük
+kut	kutenai
+kv	komi
+kw	korni
+ky	kirgiz
+la	latin
+lad	ladino
+lag	langi
+lah	lahnda
+lam	lamba
+lb	luxemburgi
+lez	lezg
+lfn	Lingua Franca Nova
+lg	ganda
+li	limburgi
+lij	Ligurian
+liv	Livonian
+lkt	lakota
+lmo	Lombard
+ln	lingala
+lo	laoszi
+lol	mongó
+loz	lozi
+lt	litván
+ltg	Latgalian
+lu	luba-katanga
+lua	luba-lulua
+lui	luiseno
+lun	lunda
+luo	luo
+lus	lushai
+luy	lujia
+lv	lett
+lzh	Literary Chinese
+lzz	Laz
+mad	madurai
+maf	mafa
+mag	magahi
+mai	maithili
+mak	makaszar
+man	mandingó
+mas	masai
+mde	maba
+mdf	moksán
+mdr	mandar
+men	mende
+mer	meru
+mfe	mauritiusi kreol
+mg	málgas
+mga	közép ír
+mgh	makua-metó
+mgo	meta’
+mh	marshalli
+mi	maori
+mic	mikmak
+min	minangkabau
+mk	macedón
+ml	malajálam
+mn	mongol
+mnc	mandzsu
+mni	manipuri
+moh	mohawk
+mos	moszi
+mr	marathi
+mrj	Western Mari
+ms	maláj
+mt	máltai
+mua	mundang
+mul	többszörös nyelvek
+mus	krík
+mwl	mirandéz
+mwr	marvari
+mwv	Mentawai
+my	burmai
+mye	myene
+myv	erzjány
+mzn	Mazanderani
+na	naurui
+nan	Min Nan Chinese
+nap	nápolyi
+naq	nama
+nb	norvég bokmal
+nd	északi ndebele
+nds	alsónémet
+ne	nepáli
+new	nevari
+ng	ndonga
+nia	nias
+niu	niui
+njo	Ao Naga
+nl	holland
+nl_BE	flamand
+nmg	ngumba
+nn	norvég nynorsk
+nnh	ngiemboon
+no	norvég
+nog	nogaj
+non	óskandináv
+nov	Novial
+nqo	n’kó
+nr	déli ndebele
+nso	északi szotó
+nus	nuer
+nv	navahó
+nwc	klasszikus newari
+ny	nyanja
+nym	nyamvézi
+nyn	nyankole
+nyo	nyoró
+nzi	nzima
+oc	okszitán
+oj	ojibva
+om	oromói
+or	orija
+os	oszét
+osa	osage
+ota	ottomán török
+pa	pandzsábi
+pag	pangaszinan
+pal	pahlavi
+pam	pampangan
+pap	papiamentó
+pau	palaui
+pcd	Picard
+pdc	Pennsylvania German
+pdt	Plautdietsch
+peo	óperzsa
+pfl	Palatine German
+phn	főniciai
+pi	pali
+pl	lengyel
+pms	Piedmontese
+pnt	Pontic
+pon	pohnpei
+prg	Prussian
+pro	óprovánszi
+ps	pastu
+pt	portugál
+pt_BR	brazíliai portugál
+pt_PT	európai portugál
+qu	kecsua
+quc	kicse
+qug	Chimborazo Highland Quichua
+raj	radzsasztáni
+rap	rapanui
+rar	rarotongai
+rgn	Romagnol
+rif	Riffian
+rm	réto-román
+rn	kirundi
+ro	román
+ro_MD	moldvai
+rof	rombo
+rom	roma
+root	ősi
+rtm	Rotuman
+ru	orosz
+rue	Rusyn
+rug	Roviana
+rup	aromán
+rw	kiruanda
+rwk	rwo
+sa	szanszkrit
+sad	szandave
+sah	jakut
+sam	szamaritánus arámi
+saq	szamburu
+sas	sasak
+sat	szantáli
+saz	Saurashtra
+sba	ngambay
+sbp	szangu
+sc	szardíniai
+scn	szicíliai
+sco	skót
+sd	szindhi
+sdc	Sassarese Sardinian
+se	északi számi
+see	szeneka
+seh	szena
+sei	Seri
+sel	szölkup
+ses	kojra-szenni
+sg	szangó
+sga	óír
+sgs	Samogitian
+sh	szerbhorvát
+shi	tachelhit
+shn	san
+shu	csádi arab
+si	szingaléz
+sid	szidamó
+sk	szlovák
+sl	szlovén
+sli	Lower Silesian
+sly	Selayar
+sm	szamoai
+sma	déli számi
+smj	lule számi
+smn	inar sami
+sms	koltta lapp
+sn	sona
+snk	szoninke
+so	szomáliai
+sog	sogdien
+sq	albán
+sr	szerb
+srn	szranai tongó
+srr	szerer
+ss	sziszuati
+ssy	szahó
+st	szeszotó
+stq	Saterland Frisian
+su	szundanéz
+suk	szukuma
+sus	szuszu
+sux	sumér
+sv	svéd
+sw	szuahéli
+swb	comorei
+swc	kongói szuahéli
+syc	klasszikus szír
+syr	szíriai
+szl	Silesian
+ta	tamil
+tcy	Tulu
+te	telugu
+tem	temne
+teo	teszó
+ter	terenó
+tet	tetum
+tg	tadzsik
+th	thai
+ti	tigrinja
+tig	tigré
+tiv	tiv
+tk	türkmén
+tkl	tokelaui
+tkr	Tsakhur
+tl	tagalog
+tlh	klingon
+tli	tlingit
+tly	Talysh
+tmh	tamasek
+tn	szecsuáni
+to	tonga
+tog	nyasa tonga
+tpi	tok pisin
+tr	török
+tru	Turoyo
+trv	tarokó
+ts	conga
+tsd	Tsakonian
+tsi	csimsiáni
+tt	tatár
+ttt	Muslim Tat
+tum	tumbuka
+tvl	tuvalu
+tw	twi
+twq	szavák
+ty	tahiti
+tyv	tuvai
+tzm	közép-marokkói tamazigt
+udm	udmurt
+ug	ujgur
+uga	ugariti
+uk	ukrán
+umb	umbundu
+und	ismeretlen nyelv
+ur	urdu
+uz	üzbég
+vai	vai
+ve	venda
+vec	Venetian
+vep	Veps
+vi	vietnami
+vls	West Flemish
+vmf	Main-Franconian
+vo	volapük
+vot	votják
+vro	Võro
+vun	vunjo
+wa	vallon
+wae	walser
+wal	valamo
+war	varaó
+was	vasó
+wbp	Warlpiri
+wo	volof
+wuu	Wu Chinese
+xal	kalmük
+xh	hosza
+xmf	Mingrelian
+xog	szoga
+yao	jaó
+yap	japi
+yav	jangben
+ybb	jemba
+yi	jiddis
+yo	joruba
+yrl	Nheengatu
+yue	kantoni
+za	zsuang
+zap	zapoték
+zbl	Bliss jelképrendszer
+zea	Zeelandic
+zen	zenaga
+zgh	marokkói tamazight
+zh	kínai
+zh_Hans	egyszerűsített kínai
+zh_Hant	hagyományos kínai
+zu	zulu
+zun	zuni
+zxx	nincs nyelvészeti tartalom
+zza	zaza
