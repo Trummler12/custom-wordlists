@@ -96,9 +96,12 @@ export interface SettingsStrings {
   showEnglish: string;
   /** Why that preference does nothing while the interface is English. */
   showEnglishEn: string;
-  /** Label of the dropdown pinning the interface to one language. */
+  /** Label of the dropdown pinning the interface to one language. Reads as one
+   *  line with its value ("Interface language: English"), so it carries its own
+   *  colon — French and German don't punctuate one the same way. */
   interfaceLang: string;
-  /** Its first option: follow the list language, which is the default. */
+  /** Its first option, and the default: follow the list language where we have a
+   *  dictionary for it. Kept short — it sits in a dropdown, not in a sentence. */
   interfaceAuto: string;
 }
 

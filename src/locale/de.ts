@@ -63,8 +63,8 @@ export const de: UIStrings = {
     label: "Einstellungen",
     showEnglish: "Option zum Verwenden englischer Einträge anzeigen",
     showEnglishEn: "Diese Schalter erscheinen nur bei anderen Sprachen als Englisch.",
-    interfaceLang: "Sprache der Oberfläche",
-    interfaceAuto: "Der Listensprache folgen",
+    interfaceLang: "Sprache der Oberfläche:",
+    interfaceAuto: "Automatisch",
   },
   output: {
     label: "Ausgabe",
