@@ -44,6 +44,9 @@ class TopicsState {
       lang.declaredLangs = Object.fromEntries(
         manifest.topics.map((t) => [t.id, t.languages ?? []]),
       );
+      lang.derivedRomaji = Object.fromEntries(
+        manifest.topics.filter((t) => t.generatedRomaji).map((t) => [t.id, true]),
+      );
     } catch (e) {
       this.error = e instanceof Error ? e.message : String(e);
     } finally {

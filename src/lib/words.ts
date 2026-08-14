@@ -4,7 +4,8 @@
 // recompute on a language switch without any of this knowing about runes.
 
 import type { Group, LocalizedString, NamePair, NamesMode, Word, WordEntry } from "./types";
-import { matchTag } from "./languages";
+import { baseTag, matchTag } from "./languages";
+import { toRomaji } from "./kana";
 
 /** The tag an entry carrying `keys` answers `lang` with, or undefined for none.
  *
@@ -29,13 +30,31 @@ function tagFor(obj: Record<string, unknown>, lang: string): string | undefined 
  *
  *  The closest tag matters the moment the picker offers a tag the data spells
  *  differently — a reader asking for `zh` on a list carrying `zh-Hans` wants the
- *  Chinese name, not the English one it would otherwise fall through to. */
-export function resolveStr(s: LocalizedString, lang: string): string {
+ *  Chinese name, not the English one it would otherwise fall through to.
+ *
+ *  `derived` lets a list whose romaji are transliterated rather than sourced say
+ *  so; see `transliterate`. It is off by default, because for most lists an
+ *  absent `ja-Latn` means "the romaji is the English name" and deriving one would
+ *  overwrite an official spelling with a reading of it. */
+export function resolveStr(s: LocalizedString, lang: string, derived = false): string {
   if (typeof s === "string") return s;
   const own = s[lang];
   if (own !== undefined) return own;
+  const made = derived ? transliterate(s, lang) : undefined;
+  if (made !== undefined) return made;
   const tag = tagFor(s, lang);
   return tag !== undefined ? s[tag] : s.en;
+}
+
+/** The romaji of an entry that carries none, read off its Japanese name.
+ *
+ *  After the entry's own key and before every fallback: a stored `ja-Latn` still
+ *  wins, so a reading someone reports as wrong can be pinned in the data without
+ *  turning the derivation off for the rest of the list. */
+function transliterate(s: Record<string, string>, lang: string): string | undefined {
+  if (!lang.toLowerCase().endsWith("-latn")) return undefined;
+  const source = s[baseTag(lang)];
+  return typeof source === "string" ? toRomaji(source) : undefined;
 }
 
 /** The key an entry uses to name the languages its source had no name for. Not a
@@ -69,24 +88,36 @@ export function isUnknownIn(e: WordEntry, lang: string): boolean {
  *  leaf form (a name pair whose fields each localize) and an entry-level language
  *  map { en, de, … } whose value is itself an entry — the latter is resolved by
  *  picking the language and recursing. */
-export function resolveWord(e: WordEntry, lang: string): Word {
+export function resolveWord(e: WordEntry, lang: string, derived = false): Word {
   if (typeof e === "string") return e;
   const obj = e as Record<string, unknown>;
   if ("short" in obj && "long" in obj) {
     const p = e as NamePair;
-    return { short: resolveStr(p.short, lang), long: resolveStr(p.long, lang) };
+    return {
+      short: resolveStr(p.short, lang, derived),
+      long: resolveStr(p.long, lang, derived),
+    };
   }
   const map = e as Record<string, WordEntry>;
-  // Same fallback chain as a leaf: the language, then the closest tag the entry
-  // carries, then the English base.
+  // Same fallback chain as a leaf: the language, then a reading derived from it
+  // where the list says its romaji are, then the closest tag, then English.
+  if (map[lang] === undefined && derived) {
+    const made = transliterate(map as Record<string, string>, lang);
+    if (made !== undefined) return made;
+  }
   const tag = map[lang] !== undefined ? lang : tagFor(map, lang);
   return resolveWord((tag !== undefined ? map[tag] : undefined) ?? map.en, lang);
 }
 
 /** The string(s) an entry contributes in a names mode. A pair whose two forms
  *  render identically collapses to one, so "both" can't produce a duplicate. */
-export function renderEntry(e: WordEntry, mode: NamesMode, lang: string): string[] {
-  const w = resolveWord(e, lang);
+export function renderEntry(
+  e: WordEntry,
+  mode: NamesMode,
+  lang: string,
+  derived = false,
+): string[] {
+  const w = resolveWord(e, lang, derived);
   if (typeof w === "string") return [w];
   if (mode === "short") return [w.short];
   if (mode === "long") return [w.long];
@@ -95,9 +126,14 @@ export function renderEntry(e: WordEntry, mode: NamesMode, lang: string): string
 
 /** Count of distinct rendered strings for a list of entries (without building the
  *  array): what the per-group and per-topic counters show. */
-export function renderCount(entries: WordEntry[], mode: NamesMode, lang: string): number {
+export function renderCount(
+  entries: WordEntry[],
+  mode: NamesMode,
+  lang: string,
+  derived = false,
+): number {
   const seen = new Set<string>();
-  for (const e of entries) for (const w of renderEntry(e, mode, lang)) seen.add(w);
+  for (const e of entries) for (const w of renderEntry(e, mode, lang, derived)) seen.add(w);
   return seen.size;
 }
 

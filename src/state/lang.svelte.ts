@@ -135,6 +135,17 @@ class LangState {
    *  one. Used for one question: does a variant apply to this list at all. */
   declaredLangs = $state<Record<string, readonly string[]>>({});
 
+  /** Topics whose romaji are transliterated at render time rather than stored,
+   *  mirrored the same way. */
+  derivedRomaji = $state<Record<string, boolean>>({});
+
+  /** Whether this list's names are being transliterated right now: it says its
+   *  romaji are derived, and the reader has asked for romaji. Everything that
+   *  renders an entry passes this along — see `resolveStr` in lib/words. */
+  derivesRomaji(tid: string): boolean {
+    return !!this.derivedRomaji[tid] && this.variantOnFor(tid);
+  }
+
   variantOn(l: string): boolean {
     return !!variantFor(l) && !!this.variants[l];
   }
