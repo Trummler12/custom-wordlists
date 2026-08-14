@@ -3,7 +3,8 @@
   "title": {"en":"Languages","de":"Sprachen","es":"Idiomas","fr":"Langues","it":"Lingue","ja":"言語","ko":"언어"},
   "icon": "🗣️",
   "description": "The world's languages, each named in thirty of them. Fame tiers by speakers worldwide.",
-  "languages": ["bg","cs","da","de","el","en","es","et","fi","fr","he","hu","it","ja","ko","lv","mk","nb","nl","pl","pt","ro","ru","sk","sr","sv","tl","tr","zh-Hans","zh-Hant"],
+  "languages": ["bg","cs","da","de","el","en","es","et","fi","fr","he","hu","it","ja","ja-Latn","ko","lv","mk","nb","nl","pl","pt","ro","ru","sk","sr","sv","tl","tr","zh-Hans","zh-Hant"],
+  "generatedRomaji": true,
   "sources": [
     "Names: https://github.com/umpirsky/language-list (CLDR)",
     "Speakers: https://www.languagecourse.net/languages-worldwide"
