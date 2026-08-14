@@ -141,6 +141,13 @@ big enough to discuss belongs in an issue instead.
   to matter, `romanize-names.mjs <list> --write` bakes them back in and `--strip` takes them
   out again; a stored `ja-Latn` already wins over a derived one, so the two can also be mixed
   per entry.
+- **Handing a list back to the global variant switch.** A per-list 🌎 stores a boolean
+  against the topic, and `variantOnFor` reads it in preference to the global choice — so
+  once a list has an opinion it keeps it, and there is no way to say "follow the switch
+  again". It wants a third state (undefined meaning *defer*, which the storage already
+  expresses and the checkbox cannot), or for the global switch to clear the per-list
+  answers when it flips. The second is simpler and probably what a reader expects; the
+  first is what the data already says.
 - **More of the world's languages than ISO 639-1 covers.** `geography/languages.json`
   keeps the 184 languages with a two-letter code and drops 425 with only a three-
   letter one. The cut is a proxy for prominence and a crude one — Cantonese and
@@ -192,14 +199,27 @@ big enough to discuss belongs in an issue instead.
 
 ## Under the hood
 
+- **Raise Node to 22, and fix the script that already assumes it.**
+  `scripts/pokemon/romanize-names.mjs` imports `src/lib/kana.ts` directly — one table for
+  the app and the codemod, which is the right call — but Node only reads a `.ts` without a
+  flag from 22.18 on, and both workflows pin 20. So the script's own usage line fails with
+  `ERR_UNKNOWN_FILE_EXTENSION` on the version the repo says it runs. Wants `.nvmrc`,
+  `node-version: 22` in `validate.yml` and `pages.yml`, and a line under *Local development*
+  in `CONTRIBUTING.md`. Take **two script fixes** along in the same PR, since they are the
+  next thing anyone running it hits: its `--write` path does `group.words.map(…)` unguarded
+  and dies on a tiered list (`geography/languages.json` is tiered, carries `generatedRomaji`
+  and 184 Japanese names — exactly what gets pointed at next), and its header still points at
+  a `scripts/lib/kana.mjs` that no longer exists, as does the `generatedRomaji` description in
+  `schema/topic.schema.json`. This is also the "something else wants Node 22 anyway" the next
+  entry is waiting for.
 - **One matcher instead of two.** The scripts now share `scripts/lib/omissions.mjs`,
   so what remains is the one copy that can't be helped: it mirrors the tested
   `src/lib/omitted.ts`, because a `.mjs` script can't import TypeScript — the same
   reason `LANG_RE` is duplicated against the schema. The way out is raising CI's
   Node from 20 to 22+ and importing the `.ts` directly via native type-stripping,
   which needs the module free of value imports (stripping doesn't add extension
-  resolution). Worth doing when something else wants Node 22 anyway; not on its
-  own.
+  resolution). Worth doing when something else wants Node 22 anyway — which the
+  entry above now is.
 - **Frugal topic loading.** A flattened (solo) topic loads as soon as its row
   appears rather than when expanded — its ruler can't be drawn without the tiers it
   snaps to. Fine at 28 topics (`data/topics/` is ~240 KB total), but as the
@@ -211,6 +231,19 @@ big enough to discuss belongs in an issue instead.
   that, but two rules are coupled to TypeScript by comment (`--inset` ↔
   `INSET_PX`, `--footer-h` ↔ the output panel) and the tokens have to stay
   global — so it wants its own PR rather than a corner of another one.
+- **The ⚙️ popover watches its anchor with a frame loop.** `pinBox` in
+  `SettingsMenu.svelte` calls `getBoundingClientRect()` on a `requestAnimationFrame`
+  loop for as long as the menu is open — two forced layouts per frame, to catch two
+  events that fire a handful of times. `ResizeObserver` on the anchor plus one on the
+  document element does the same without polling. It is a rewrite of the mechanism
+  rather than a fix to it, and the comment explaining *why* it watches where the anchor
+  ended up rather than the things that move it has to survive the change.
+- **Where `Speakers.txt` came from.** `build-languages.mjs` says it builds from "the
+  dumps that `dump-language-names.mjs` writes", and that is true of the thirty name
+  files but not of the 18 543-line speaker table beside them, which was pasted by hand.
+  `data-raw/README.md` allows snapshots and the topic's `sources` records the URL, so
+  nothing is wrong — half a line in the script header saying which of its two inputs has
+  no generator would save the next person the hunt.
 - **Tests for `dom` and `skribbl`.** Vitest covers `words`, `tree`, `fame`,
   `english`, `languages` and `omitted`; these two are what is left of the logic
   that can be tested without mounting anything. `snapPositions` in `dom` has
