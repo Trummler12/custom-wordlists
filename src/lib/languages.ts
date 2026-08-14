@@ -103,13 +103,12 @@ export function matchTag(wanted: string, available: readonly string[]): string |
   const base = parts[0].toLowerCase();
   const subs = parts.slice(1);
 
-  // A romanization degrades to the script it romanizes: a reader who asked for
-  // romaji on a list that has none is better served by the Japanese name than by
-  // the English one. Only in this direction — `ja` never lands on `ja-Latn`, since
-  // the unmarked form is always an acceptable answer and the marked one is not.
-  if (subs.some((s) => s.toLowerCase() === "latn")) {
-    return available.find((t) => t.toLowerCase() === base);
-  }
+  // A romanization asks for the language in Latin script, and an entry that has
+  // no romaji still has one name written that way: its English base. So this
+  // matches nothing and lets the caller fall through to `en` — which is also what
+  // an absent key has always meant. Falling back to the kana instead would hand
+  // ヒトカゲ to someone who asked for Hitokage.
+  if (subs.some((s) => s.toLowerCase() === "latn")) return undefined;
 
   // `de-CH` → `de`, `es-MX` → `es`. Only regions are dropped, and only when the
   // tag carries no script of its own.

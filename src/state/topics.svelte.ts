@@ -40,6 +40,10 @@ class TopicsState {
       const manifest = await loadManifest();
       this.all = manifest.topics;
       this.categories = manifest.categories ?? {};
+      // `lang` needs these and can't reach for them; see `declaredLangs`.
+      lang.declaredLangs = Object.fromEntries(
+        manifest.topics.map((t) => [t.id, t.languages ?? []]),
+      );
     } catch (e) {
       this.error = e instanceof Error ? e.message : String(e);
     } finally {

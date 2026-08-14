@@ -130,13 +130,25 @@ class LangState {
    *  for a variant declared `perTopic`. */
   variantByTopic = $state<Record<string, boolean>>({});
 
+  /** What each topic declares in `languages`, mirrored from the manifest by
+   *  `topics` at load — this store cannot ask for it, since that one imports this
+   *  one. Used for one question: does a variant apply to this list at all. */
+  declaredLangs = $state<Record<string, readonly string[]>>({});
+
   variantOn(l: string): boolean {
     return !!variantFor(l) && !!this.variants[l];
   }
   /** Whether this list uses the variant: its own answer if it has one, the global
-   *  one otherwise. */
+   *  one otherwise.
+   *
+   *  A list that doesn't declare the variant tag never uses it, whatever the
+   *  switch says. That gate is what lets an absent key mean "the same as English"
+   *  — the items carry no romaji at all, and without it every one of them would
+   *  resolve to its English name the moment romaji was switched on. */
   variantOnFor(tid: string): boolean {
-    return !!variantFor(this.current) && (this.variantByTopic[tid] ?? this.variantOn(this.current));
+    const v = variantFor(this.current);
+    if (!v || !(this.declaredLangs[tid] ?? []).includes(v.tag)) return false;
+    return this.variantByTopic[tid] ?? this.variantOn(this.current);
   }
   toggleVariantFor(tid: string): void {
     this.variantByTopic[tid] = !this.variantOnFor(tid);

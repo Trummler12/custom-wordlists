@@ -33,6 +33,16 @@ describe("resolveStr", () => {
     expect(resolveStr(s, "de-CH")).toBe("Squirtle");
   });
 
+  it("resolves a romanization to the English name when the entry has none", () => {
+    // ピカチュウ romanizes to "Pikachu", which is its English name exactly — so the
+    // entry omits the key, as it omits every name equal to English. Falling back
+    // to the kana would hand ピカチュウ to a reader who asked for romaji.
+    expect(resolveStr({ en: "Pikachu", ja: "ピカチュウ" }, "ja-Latn")).toBe("Pikachu");
+    expect(resolveStr({ en: "Charmander", ja: "ヒトカゲ", "ja-Latn": "Hitokage" }, "ja-Latn")).toBe(
+      "Hitokage",
+    );
+  });
+
   it("does not read `?` as a language", () => {
     // It holds language tags, not a name — matching against it would return an
     // array where a string belongs.
