@@ -120,6 +120,22 @@ big enough to discuss belongs in an issue instead.
   else. PokéAPI has no romaji for items or moves, so filling the gap means
   transliterating kana rather than importing a column — a different kind of job,
   and one where a wrong answer is invisible to everyone who can't read the original.
+- **Wāpuro rōmaji as a second romaji style.** *(No approach found yet that works, let alone
+  pays for itself.)* What the lists carry is Hepburn with long vowels doubled — the ASCII
+  middle. Wāpuro, what you actually type on a Japanese keyboard, writes the ー as a hyphen
+  (`mo-mo-miruku`). Two obstacles, either of which sinks it on its own. It cannot be derived
+  from the stored romaji: ほのお is ho-no-o and モーモー is a long vowel, and both are `oo` by
+  the time they reach us. And re-deriving it from the kana would overwrite the trademark
+  spellings a Japanese player actually knows — Butterfree becoming Batafurii — which no
+  amount of correctness makes an improvement. A setting to choose between them is overkill
+  on several levels at once.
+- **Kanji readings.** The transliterator is kana-only, which is why it can be trusted. The
+  languages list shows what stands in the way: `--check` names 16 characters it can't read,
+  and 語 alone accounts for 182 of them — but 中国語 is *chuugoku-go* while 韓国語 is
+  *kankoku-go*, the same 国 read two ways in two entries of one list. Per-character tables
+  produce confident wrong readings with nothing to catch them; the tool for the job is a
+  morphological analyser with a dictionary (MeCab, kuromoji), which is a real dependency for
+  a list we don't have yet.
 - **More of the world's languages than ISO 639-1 covers.** `geography/languages.json`
   keeps the 184 languages with a two-letter code and drops 425 with only a three-
   letter one. The cut is a proxy for prominence and a crude one — Cantonese and
