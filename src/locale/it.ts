@@ -59,7 +59,7 @@ export const it: UIStrings = {
       romaji: "Usare i rōmaji per le voci delle liste",
       es419: "Usare lo spagnolo latinoamericano per le voci delle liste",
     },
-    variantNote: { romaji: "Grafia Hepburn con vocali lunghe raddoppiate (Moomoomiruku). I rōmaji wāpuro non sono offerti: sostituirebbero le grafie ufficiali — Butterfree, non Batafurii." },
+    variantNote: { romaji: "Grafia Hepburn con vocali lunghe raddoppiate (Moomoomiruku).{br}I rōmaji wāpuro non sono offerti: sostituirebbero le grafie ufficiali — Butterfree, non Batafurii." },
     generatedRomaji:
       "Questi rōmaji sono stati generati dai nomi giapponesi. Se uno si scrive diversamente, [faccelo sapere](https://github.com/Trummler12/custom-wordlists/issues/new).",
     variantDiffers: (n) => `${n} voc${n === 1 ? "e si scrive" : "i si scrivono"} in modo diverso`,

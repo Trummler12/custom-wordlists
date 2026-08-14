@@ -58,7 +58,7 @@ export const ja: UIStrings = {
       romaji: "リストの項目にローマ字を使う",
       es419: "リストの項目にラテンアメリカのスペイン語を使う",
     },
-    variantNote: { romaji: "長音を母音の重ねで表すヘボン式（Moomoomiruku）。ワープロローマ字は非対応です。公式表記を上書きしてしまうため — Batafurii ではなく Butterfree。" },
+    variantNote: { romaji: "長音を母音の重ねで表すヘボン式（Moomoomiruku）。{br}ワープロローマ字は非対応です。公式表記を上書きしてしまうため — Batafurii ではなく Butterfree。" },
     generatedRomaji:
       "このローマ字は日本語名から自動生成したものです。実際の表記と違う場合は[お知らせください](https://github.com/Trummler12/custom-wordlists/issues/new)。",
     variantDiffers: (n) => `${n}件の項目が異なる表記です`,

@@ -2,6 +2,7 @@
   import { AUTO, lang } from "../../state/lang.svelte";
   import { UI_LANGS } from "../../locale";
   import { variantFor } from "../../locale/variants";
+  import { plain } from "../../locale/html/plain";
   import { overlays } from "../../state/overlays.svelte";
   import { settings } from "../../state/settings.svelte";
   import TipMarker from "../common/TipMarker.svelte";
@@ -116,7 +117,9 @@
               checked={lang.variantOn(lang.current)}
               onchange={() => lang.toggleVariant(lang.current)}
             />
-            <span title={lang.ui.language.variantNote[variant.id]}
+            <!-- `{br}` as a newline rather than a space: a browser tooltip honours
+                 one, and two sentences on a line run off the side of the screen. -->
+            <span title={plain(lang.ui.language.variantNote[variant.id] ?? "", "\n")}
               >{lang.ui.language.variant[variant.id]}</span
             >
           </label>
