@@ -150,6 +150,17 @@ function sorted(topic) {
     return out;
   };
   const t = order(topic, TOPIC_KEYS);
-  if (t.groups) t.groups = t.groups.map((g) => order(g, GROUP_KEYS));
+  if (t.groups) {
+    t.groups = t.groups.map((g) => {
+      const out = order(g, GROUP_KEYS);
+      // Rules are reordered on the way out too, so the comparison has to expect
+      // it — otherwise a file that merely lists `except` before `as` reads as
+      // data lost.
+      for (const key of ["omitted", "omittable"]) {
+        if (out[key]) out[key] = out[key].map((rule) => order(rule, RULE_KEYS));
+      }
+      return out;
+    });
+  }
   return t;
 }
