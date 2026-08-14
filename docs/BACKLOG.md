@@ -63,6 +63,12 @@ big enough to discuss belongs in an issue instead.
   also means the parent needs no stored selection of its own.
 
   A general mechanism, not a geography-specific one, but geography is what it exists for.
+- **The other umpirsky lists.** The same shape as the language list, CLDR-derived
+  and per-locale, each a plausible topic: [countries](https://github.com/umpirsky/country-list),
+  [currencies](https://github.com/umpirsky/currency-list) and
+  [top-level domains](https://github.com/umpirsky/tld-list). The country list is the
+  obvious next one — it is half of the geography plan above, already translated into
+  every language we might ever want.
 - **`noGeoguessrCoverage` — filter countries to Street-View-covered ones.** A niche extra
   for the countries list only: restrict to the countries with official Google Street View
   coverage, for the GeoGuessr crowd. Decide between reusing the existing `omittable`
@@ -93,13 +99,6 @@ big enough to discuss belongs in an issue instead.
   parser that turns a marked-up string into a list of parts, and one snippet per
   tag. Nothing needs them today — add a tag the first time a string actually wants
   it, not before.
-- **Group the locale keys.** `UIStrings` is ~40 flat keys covering the header, the
-  tree, the rulers, the output and the footer, and it only grows. Nesting them by
-  area (`topics.wordsOf`, `output.copied`, …) would make both dictionaries
-  readable at a glance and make a missing translation obvious. It is a mechanical
-  rename across every component that reads `lang.ui.*`, so it wants a quiet moment
-  and a PR of its own — never alongside a feature, where the two diffs would hide
-  each other.
 - **English entries *in addition* to the selected language.** The per-topic English
   toggle replaces a list's entries; a third state would add them, for a game where
   either name should count. What makes it worth building is the tooltip, which
@@ -109,40 +108,23 @@ big enough to discuss belongs in an issue instead.
   Toggle again to only use German entries", then the third. Needs an answer first
   for what the counts mean and how a name that is identical in both languages is
   de-duplicated — neither of which the plain toggle has to face.
-- **An interface language separate from the content language.** "Keep the interface
-  in German while the lists are English" is the global half of the per-topic English
-  toggle, and belongs in the settings popover beside it. Cheap once that exists:
-  everything that renders words already asks `contentLang`. Its dropdown needs an
-  explicit first option — *auto*, not a language — meaning "follow the language
-  selector", which is today's behaviour and has to stay reachable once the two can
-  diverge. It also re-earns the `${language}` placeholder in `langUsesEnglish`,
-  which a locale can drop only while it is guaranteed to be describing its own
-  language — and the same holds for `langUnsupported` and `languageLabel`.
 - **Force a list to a language other than English.** The 🇬🇧 toggle hard-codes the
-  one language every list has. But a German player might want a list in French, and
-  `contentLang` already returns a per-topic code — only the control assumes English.
-  Turning the toggle into a picker means deciding which languages to offer per
-  topic (`languages` knows), and what the row's control becomes when the answer
-  isn't a single flag. Worth doing when a list exists that anyone would want in a
-  third language.
-- **Latin-American Spanish where it actually differs.** PokéAPI ships `es-419`
-  beside `es`, and how far apart they are depends entirely on the list: **5 names
-  out of 1330 for the items, but 254 of 937 for the moves.** A quarter of the move
-  names is not a rounding error — Latin America has its own vocabulary here.
-
-  Still not worth a language: no locale, no entry in the picker, nothing in
-  `usesEnglishFor`. Worth a toggle — with Spanish selected, a list carrying any
-  `es-419` names offers to use them *instead of* `es`, the same shape as the 🧹
-  rows. The dumps are committed (`data-raw/gaming/pokemon/{items,moves}/es-419.txt`),
-  so the data half is one line in the enrichment's `TAG` map; do it when the toggle
-  exists, not before, or entries gain an `es-419` in their `?` for no consumer.
-- **A language tag the picker offers is not always the tag the data uses.** The
-  Pokémon lists carry `zh-Hans` and `zh-Hant`, and `ja-Latn` beside `ja`. The
-  picker offers `de` and `en` today, so nothing is wrong yet — but the moment it
-  offers `zh`, `resolveStr` looks up `s["zh"]`, misses, and falls back to
-  English, while `langSupport` reads `usesEnglishFor: ["*"]` and reports Chinese
-  as an English-named list. Both are the same missing step: resolve a selected
-  language to the closest tag the entry actually has before giving up on it.
+  one language every list has. But a German player might want *one* list in French
+  while the rest stay German, and `contentLang` already returns a per-topic code —
+  only the control assumes English. Turning the toggle into a picker means deciding
+  which languages to offer per topic (`languages` knows), and what the row's control
+  becomes when the answer isn't a single flag. Less pressing since #32: the global
+  picker now offers nine, so this is about one list disagreeing with the rest.
+- **Romaji beyond the Pokémon themselves.** The variant switch resolves `ja-Latn`
+  wherever an entry carries it, which today is the nine generations and nothing
+  else. PokéAPI has no romaji for items or moves, so filling the gap means
+  transliterating kana rather than importing a column — a different kind of job,
+  and one where a wrong answer is invisible to everyone who can't read the original.
+- **More of the world's languages than ISO 639-1 covers.** `geography/languages.json`
+  keeps the 184 languages with a two-letter code and drops 425 with only a three-
+  letter one. The cut is a proxy for prominence and a crude one — Cantonese and
+  Swiss German are both on the wrong side of it. Revisit with a source that ranks
+  rather than classifies.
 
 ## The interface
 
