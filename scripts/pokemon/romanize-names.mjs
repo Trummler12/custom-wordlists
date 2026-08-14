@@ -1,6 +1,7 @@
 // Fills in `ja-Latn` on a flat Pokémon list by transliterating its Japanese names.
 //
-//   node scripts/pokemon/romanize-names.mjs <items|moves> [--write]
+//   node scripts/pokemon/romanize-names.mjs <items|moves|path/to/topic.json> [--write]
+//   node scripts/pokemon/romanize-names.mjs <…> --check
 //
 // PokéAPI has romaji for the Pokémon themselves and for nothing else, so the
 // romaji switch left the items and the moves in kana. Their Japanese names hold
@@ -15,7 +16,7 @@ import { readFile, writeFile } from "node:fs/promises";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 import { serializeTopic } from "../lib/serialize.mjs";
-import { toRomaji } from "../lib/kana.mjs";
+import { toRomaji, isTransliterable } from "../lib/kana.mjs";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..", "..");
 const LISTS = { items: "items.json", moves: "moves.json" };
@@ -30,11 +31,52 @@ function ordered(entry) {
   return out;
 }
 
+/** Every entry of a topic, tiers flattened. */
+function allEntries(topic) {
+  return topic.groups.flatMap((g) => [...(g.words ?? []), ...(g.tiers ?? []).flat()]);
+}
+
+/** What a list would cost to romanize, without writing anything: the names this
+ *  cannot read, and the characters that stopped it, most common first.
+ *
+ *  A list of kanji compounds reports every one of its names — which is the answer
+ *  "this list is not transliterable", not a list of characters to go and add.
+ *  Kanji readings are not per-character: 語 is `go` in 中国語 and `kotoba` alone,
+ *  and 手紙 is `tegami` rather than `tekami`. A table would produce confident
+ *  wrong readings with nothing to catch them. */
+function check(topic) {
+  const entries = allEntries(topic).filter((e) => typeof e !== "string" && e.ja);
+  const bad = entries.filter((e) => !isTransliterable(e.ja));
+  const chars = new Map();
+  for (const e of bad) {
+    for (const c of e.ja) {
+      if (isTransliterable(c)) continue;
+      chars.set(c, (chars.get(c) ?? 0) + 1);
+    }
+  }
+  console.log(`${entries.length} Japanese names, ${bad.length} unreadable`);
+  if (bad.length) {
+    console.log("  e.g. " + bad.slice(0, 5).map((e) => `${e.ja} (${e.en})`).join(", "));
+    const top = [...chars].sort((a, b) => b[1] - a[1]);
+    console.log(`  ${chars.size} character(s) it cannot read: ` +
+      top.slice(0, 20).map(([c, n]) => `${c}×${n}`).join(" "));
+  }
+}
+
 async function main() {
-  const list = process.argv[2];
-  if (!LISTS[list]) throw new Error(`say which list: ${Object.keys(LISTS).join(" | ")}`);
-  const file = join(ROOT, "data", "topics", "gaming", "pokemon", LISTS[list]);
+  const list = process.argv[2] ?? "";
+  const file = list.endsWith(".json")
+    ? join(ROOT, list)
+    : join(ROOT, "data", "topics", "gaming", "pokemon", LISTS[list] ?? "");
+  if (!list || (!LISTS[list] && !list.endsWith(".json"))) {
+    throw new Error(`say which list: ${Object.keys(LISTS).join(" | ")}, or a path to a topic file`);
+  }
   const topic = JSON.parse(await readFile(file, "utf8"));
+
+  if (process.argv.includes("--check")) {
+    check(topic);
+    return;
+  }
 
   let written = 0;
   let sameAsEnglish = 0;
