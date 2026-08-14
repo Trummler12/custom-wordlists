@@ -5,6 +5,7 @@
   "description": "Pokémon items, in nine languages.",
   "languages": ["de","en","es","es-419","fr","it","ja","ja-Latn","ko","zh-Hans","zh-Hant"],
   "usesEnglishFor": ["*"],
+  "generatedRomaji": true,
   "hideRulersByDefault": true,
   "sources": "Names: https://pokeapi.co",
   "groups": [
