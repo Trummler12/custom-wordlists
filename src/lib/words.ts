@@ -78,10 +78,20 @@ export function unknownLangs(e: WordEntry): readonly string[] {
 /** Whether the list has no name for this entry in `lang`. An own key wins: a name
  *  filled in by hand outranks a gap the bulk source reported, so correcting one
  *  entry needs no edit to the `?` beside it. English never counts as unknown — it
- *  is the base every entry has. */
+ *  is the base every entry has.
+ *
+ *  The two halves ask about different things, which is why one takes the whole tag
+ *  and the other only its language. Having a name is a property of the *language*:
+ *  an entry with no Spanish name has none in Latin American Spanish either, and one
+ *  with no Japanese name has no reading to derive romaji from — and `?` never holds
+ *  a variant tag, since a missing row is not a missing name. Whether *this* spelling
+ *  is present is a property of the whole tag: an entry carrying `es-419` has a Latin
+ *  American name whatever `?` says about `es`. */
 export function isUnknownIn(e: WordEntry, lang: string): boolean {
-  if (lang === "en" || typeof e === "string") return false;
-  return (e as Record<string, unknown>)[lang] === undefined && unknownLangs(e).includes(lang);
+  if (typeof e === "string") return false;
+  const base = baseTag(lang);
+  if (base === "en") return false;
+  return (e as Record<string, unknown>)[lang] === undefined && unknownLangs(e).includes(base);
 }
 
 /** Resolve an entry to `lang`. Two equivalent shapes are accepted: the preferred

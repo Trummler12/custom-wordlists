@@ -162,6 +162,28 @@ describe("unknownLangs / isUnknownIn", () => {
 
   it("never counts English — it is the base every entry has", () => {
     expect(isUnknownIn({ en: "x", "?": ["en"] }, "en")).toBe(false);
+    expect(isUnknownIn({ en: "x", "?": ["en"] }, "en-GB")).toBe(false);
+  });
+
+  it("asks a variant tag about the language it varies from", () => {
+    // `?` holds languages, never variant tags — a missing row is not a missing
+    // name. So an entry with no Spanish name has none in Latin American Spanish
+    // either, and asking for the whole tag would find nothing and quietly assert
+    // the English word as the Spanish one.
+    const cape = { en: "Cape Brace", "?": ["es"] };
+    expect(isUnknownIn(cape, "es")).toBe(true);
+    expect(isUnknownIn(cape, "es-419")).toBe(true);
+    // Same for a romanization: with no Japanese name there is no reading to derive.
+    const gap = { en: "Rotom Catalog", "?": ["ja"] };
+    expect(isUnknownIn(gap, "ja-Latn")).toBe(true);
+  });
+
+  it("lets the variant's own key outrank the gap, as any own key does", () => {
+    // Which is why only this half asks for the whole tag: the entry has a Latin
+    // American name, whatever `?` says about Spanish at large.
+    const filled = { en: "Cape Brace", "es-419": "Capa Brazalete", "?": ["es"] };
+    expect(isUnknownIn(filled, "es-419")).toBe(false);
+    expect(isUnknownIn(filled, "es")).toBe(true);
   });
 
   it("leaves resolution alone: `?` is not a language", () => {
