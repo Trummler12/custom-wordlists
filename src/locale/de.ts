@@ -62,6 +62,7 @@ export const de: UIStrings = {
       romaji: "Romaji für die Listeneinträge verwenden",
       es419: "Lateinamerikanisches Spanisch für die Listeneinträge verwenden",
     },
+    variantNote: { romaji: "Hepburn-Schreibung mit doppelten Langvokalen (Moomoomiruku). Wāpuro-Romaji gibt es nicht: es würde offizielle Schreibweisen überschreiben — Butterfree statt Batafurii." },
     generatedRomaji:
       "Diese Romaji wurden aus den japanischen Namen erzeugt. Wird eines davon anders geschrieben, [sag uns Bescheid](https://github.com/Trummler12/custom-wordlists/issues/new).",
     variantDiffers: (n) => `${n} ${n === 1 ? "Eintrag wird" : "Einträge werden"} anders geschrieben`,

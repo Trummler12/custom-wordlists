@@ -57,6 +57,7 @@ export const es: UIStrings = {
       romaji: "Usar romaji en las entradas de las listas",
       es419: "Usar el español latinoamericano en las entradas de las listas",
     },
+    variantNote: { romaji: "Grafía Hepburn con vocales largas dobladas (Moomoomiruku). No se ofrece romaji wāpuro: sustituiría las grafías oficiales — Butterfree, no Batafurii." },
     generatedRomaji:
       "Estos romaji se generaron a partir de los nombres japoneses. Si alguno se escribe de otra forma, [avísanos](https://github.com/Trummler12/custom-wordlists/issues/new).",
     variantDiffers: (n) => `${n} entrada${n === 1 ? "" : "s"} se escribe${n === 1 ? "" : "n"} de otra forma`,

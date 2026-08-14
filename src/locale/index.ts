@@ -97,6 +97,10 @@ export interface LanguageStrings {
    *  Latin American Spanish beside Spanish. Only ever shown while that language is
    *  selected, but shown in whatever language the interface is in. */
   variant: Record<VariantId, string>;
+  /** What a variant offers, where that needs saying — the romaji one names its
+   *  spelling convention and why the other convention isn't offered. Partial: a
+   *  variant that speaks for itself needs no note. */
+  variantNote: Partial<Record<VariantId, string>>;
   /** Said of a list whose romaji were transliterated rather than sourced: correct
    *  as readings, not necessarily as spellings. Carries `[text](url)` — render it
    *  through html/Msg. */

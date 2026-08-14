@@ -60,6 +60,7 @@ export const fr: UIStrings = {
       romaji: "Utiliser les rōmaji pour les entrées des listes",
       es419: "Utiliser l'espagnol d'Amérique latine pour les entrées des listes",
     },
+    variantNote: { romaji: "Graphie Hepburn, voyelles longues doublées (Moomoomiruku). Les rōmaji wāpuro ne sont pas proposés : ils remplaceraient les graphies officielles — Butterfree, pas Batafurii." },
     generatedRomaji:
       "Ces rōmaji ont été générés à partir des noms japonais. Si l'un d'eux s'écrit autrement, [dites-le nous](https://github.com/Trummler12/custom-wordlists/issues/new).",
     variantDiffers: (n) => `${n} entrée${n === 1 ? "" : "s"} s’écri${n === 1 ? "t" : "vent"} autrement`,

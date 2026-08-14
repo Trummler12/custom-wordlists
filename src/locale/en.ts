@@ -51,6 +51,7 @@ export const en: UIStrings = {
       romaji: "Use Romaji for list entries",
       es419: "Use Latin American Spanish for list entries",
     },
+    variantNote: { romaji: "Hepburn spellings with long vowels doubled (Moomoomiruku). Wāpuro romaji is not offered: it would override official spellings — Butterfree, not Batafurii." },
     generatedRomaji:
       "These romaji were generated from the Japanese names. If one is spelled differently in practice, please [tell us](https://github.com/Trummler12/custom-wordlists/issues/new).",
     variantDiffers: (n) => `${n} entr${n === 1 ? "y" : "ies"} spelled differently`,
