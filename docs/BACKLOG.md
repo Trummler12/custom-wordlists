@@ -129,13 +129,18 @@ big enough to discuss belongs in an issue instead.
   spellings a Japanese player actually knows — Butterfree becoming Batafurii — which no
   amount of correctness makes an improvement. A setting to choose between them is overkill
   on several levels at once.
-- **Kanji readings.** The transliterator is kana-only, which is why it can be trusted. The
-  languages list shows what stands in the way: `--check` names 16 characters it can't read,
-  and 語 alone accounts for 182 of them — but 中国語 is *chuugoku-go* while 韓国語 is
-  *kankoku-go*, the same 国 read two ways in two entries of one list. Per-character tables
-  produce confident wrong readings with nothing to catch them; the tool for the job is a
-  morphological analyser with a dictionary (MeCab, kuromoji), which is a real dependency for
-  a list we don't have yet.
+- **Kanji beyond the twelve words the language list needed.** `src/lib/kana.ts` reads kana
+  by character and kanji by *word*, longest match first — 国 is `goku` in 中国 and `koku` in
+  韓国, so a per-character table could never be right for both. Twelve entries cover every
+  Japanese name we carry today. A future list will want more, and each one is a claim about
+  that word that someone has to check; `--check` names what is missing rather than guessing.
+  A morphological analyser (MeCab, kuromoji) is the tool if a list ever needs hundreds.
+- **Storing generated romaji instead of deriving them.** The app transliterates at render
+  time, so the readings exist nowhere in the data — which is 65 kB saved today and more as
+  the collection grows, but also 2714 readings nobody can review in a diff. If that turns out
+  to matter, `romanize-names.mjs <list> --write` bakes them back in and `--strip` takes them
+  out again; a stored `ja-Latn` already wins over a derived one, so the two can also be mixed
+  per entry.
 - **More of the world's languages than ISO 639-1 covers.** `geography/languages.json`
   keeps the 184 languages with a two-letter code and drops 425 with only a three-
   letter one. The cut is a proxy for prominence and a crude one — Cantonese and
