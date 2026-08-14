@@ -58,6 +58,8 @@ export const ko: UIStrings = {
       romaji: "목록 항목에 로마자 사용",
       es419: "목록 항목에 라틴 아메리카 스페인어 사용",
     },
+    generatedRomaji:
+      "이 로마자는 일본어 이름에서 자동 생성했습니다. 실제 표기와 다르면 [알려주세요](https://github.com/Trummler12/custom-wordlists/issues/new).",
     variantDiffers: (n) => `${n}개 항목의 표기가 다릅니다`,
     variantShowList: "어떤 항목인지 보기",
     useEnglish: (forced) =>

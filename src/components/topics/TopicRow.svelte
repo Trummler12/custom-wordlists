@@ -54,8 +54,14 @@
     // a warning about nothing. The note itself stays in the interface language.
     // The language, not the way it is written: a list carrying Japanese supports
     // Japanese whether or not it also carries romaji.
-    const code = baseTag(lang.contentLang(topic.id));
+    const tag = lang.contentLang(topic.id);
+    const code = baseTag(tag);
     const name = lang.nameInUi(code);
+    // A transliterated reading is right as a reading and may still not be how the
+    // name is written in practice, which only the reader can tell us.
+    if (tag !== code && topic.generatedRomaji) {
+      return { icon: "ℹ️", text: lang.ui.language.generatedRomaji };
+    }
     switch (langSupport(topic, code)) {
       case "declared":
         return null;

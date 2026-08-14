@@ -58,6 +58,8 @@ export const ja: UIStrings = {
       romaji: "リストの項目にローマ字を使う",
       es419: "リストの項目にラテンアメリカのスペイン語を使う",
     },
+    generatedRomaji:
+      "このローマ字は日本語名から自動生成したものです。実際の表記と違う場合は[お知らせください](https://github.com/Trummler12/custom-wordlists/issues/new)。",
     variantDiffers: (n) => `${n}件の項目が異なる表記です`,
     variantShowList: "どの項目か見る",
     useEnglish: (forced) =>

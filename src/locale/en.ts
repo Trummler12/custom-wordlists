@@ -51,6 +51,8 @@ export const en: UIStrings = {
       romaji: "Use Romaji for list entries",
       es419: "Use Latin American Spanish for list entries",
     },
+    generatedRomaji:
+      "These romaji were generated from the Japanese names. If one is spelled differently in practice, please [tell us](https://github.com/Trummler12/custom-wordlists/issues/new).",
     variantDiffers: (n) => `${n} entr${n === 1 ? "y" : "ies"} spelled differently`,
     variantShowList: "Show which",
     useEnglish: (forced) =>

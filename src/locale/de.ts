@@ -62,6 +62,8 @@ export const de: UIStrings = {
       romaji: "Romaji für die Listeneinträge verwenden",
       es419: "Lateinamerikanisches Spanisch für die Listeneinträge verwenden",
     },
+    generatedRomaji:
+      "Diese Romaji wurden aus den japanischen Namen erzeugt. Wird eines davon anders geschrieben, [sag uns Bescheid](https://github.com/Trummler12/custom-wordlists/issues/new).",
     variantDiffers: (n) => `${n} ${n === 1 ? "Eintrag wird" : "Einträge werden"} anders geschrieben`,
     variantShowList: "Welche?",
     useEnglish: (forced) =>

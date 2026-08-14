@@ -97,6 +97,10 @@ export interface LanguageStrings {
    *  Latin American Spanish beside Spanish. Only ever shown while that language is
    *  selected, but shown in whatever language the interface is in. */
   variant: Record<VariantId, string>;
+  /** Said of a list whose romaji were transliterated rather than sourced: correct
+   *  as readings, not necessarily as spellings. Carries `[text](url)` — render it
+   *  through html/Msg. */
+  generatedRomaji: string;
   /** How many of a list's entries the variant spells differently. The number is
    *  the point: it says where a variant matters, which is otherwise invisible. */
   variantDiffers: (n: number) => string;
