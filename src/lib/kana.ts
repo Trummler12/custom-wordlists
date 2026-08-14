@@ -121,9 +121,19 @@ function wordAt(text: string, at: number): string | undefined {
   return WORD_KEYS.find((w) => text.startsWith(w, at));
 }
 
+/** Katakana folded to hiragana and full-width Latin brought down to ASCII — the
+ *  one form both the readability check and the conversion work on. Done once and
+ *  passed along rather than repeated in each, which is how the two would drift. */
+function normalize(text: string): string {
+  return toHiragana(widthNormalize(text));
+}
+
 /** True for anything this can read: a word it knows, kana, the marks above, ASCII. */
 export function isTransliterable(text: string): boolean {
-  const src = toHiragana(widthNormalize(text));
+  return canRead(normalize(text));
+}
+
+function canRead(src: string): boolean {
   let rest = "";
   for (let i = 0; i < src.length; i++) {
     const word = wordAt(src, i);
@@ -141,12 +151,28 @@ export function isTransliterable(text: string): boolean {
   );
 }
 
+/** Readings already worked out. The app derives at render time, and a render walks
+ *  every entry of a list — 23 ms per pass over the 1795 Japanese item names, several
+ *  passes per render — so without this the same two thousand names are re-read on
+ *  every reactive change. Unbounded on purpose: the keys are the names a list holds,
+ *  so the map is bounded by the data rather than by how long the page stays open. */
+const readings = new Map<string, string | undefined>();
+
 /** A kana name in Latin script, capitalized. Returns undefined for anything
  *  holding a character this cannot read — a kanji, most likely — rather than
  *  dropping it silently. */
 export function toRomaji(text: string): string | undefined {
-  if (!isTransliterable(text)) return undefined;
-  const src = toHiragana(widthNormalize(text));
+  let hit = readings.get(text);
+  if (hit === undefined && !readings.has(text)) {
+    hit = read(normalize(text));
+    readings.set(text, hit);
+  }
+  return hit;
+}
+
+/** The conversion itself, on an already-normalized name. */
+function read(src: string): string | undefined {
+  if (!canRead(src)) return undefined;
   let out = "";
   let pending = ""; // a small つ waiting for the consonant it doubles
 

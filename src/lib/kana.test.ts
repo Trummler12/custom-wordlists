@@ -51,4 +51,15 @@ describe("toRomaji", () => {
     expect(isTransliterable("手紙")).toBe(false);
     expect(toRomaji("手紙")).toBeUndefined();
   });
+
+  it("answers the same on a second call, cached or not", () => {
+    // Readings are memoized because a render re-reads every name in the list. A
+    // refusal is an answer too, and has to survive the round trip as one rather
+    // than coming back as a cache miss.
+    expect(toRomaji("マスターボール")).toBe(toRomaji("マスターボール"));
+    expect(toRomaji("手紙")).toBeUndefined();
+    expect(toRomaji("手紙")).toBeUndefined();
+    // Two spellings of one name normalize to the same reading, and are cached apart.
+    expect(toRomaji("Ｖジェネレート")).toBe(toRomaji("Vジェネレート"));
+  });
 });
