@@ -40,6 +40,42 @@ function block(items, indent, closeIndent) {
   return `[\n${body}\n${line(closeIndent, "]")}`;
 }
 
+/** Field order within an omission rule. */
+const RULE_KEYS = ["id", "match", "as", "except", "locked", "reason"];
+
+/** One omission rule per block rather than per line, with its `reason` opened up
+ *  one language to a line.
+ *
+ *  A rule used to fit on a line because it carried two languages. At seven it
+ *  would run past any window, and these are prose sentences of uneven length —
+ *  grouping them two or three to a line means every line re-wraps when one
+ *  translation changes, and a diff that should read as "the Spanish text moved"
+ *  reads as three languages moving. One per line keeps a change where it
+ *  belongs. */
+function ruleBlock(rules) {
+  const NL = "\n";
+  const body = rules
+    .map((rule) => {
+      const keys = [...RULE_KEYS, ...Object.keys(rule).filter((k) => !RULE_KEYS.includes(k))];
+      const fields = [];
+      for (const key of keys) {
+        const value = rule[key];
+        if (value === undefined) continue;
+        if (key === "reason" && value !== null && typeof value === "object") {
+          const langs = Object.entries(value)
+            .map(([l, text]) => line(12, `${JSON.stringify(l)}: ${JSON.stringify(text)}`))
+            .join(`,${NL}`);
+          fields.push(line(10, `"reason": {${NL}${langs}${NL}${line(10, "}")}`));
+        } else {
+          fields.push(line(10, `${JSON.stringify(key)}: ${JSON.stringify(value)}`));
+        }
+      }
+      return [line(8, "{"), fields.join(`,${NL}`), line(8, "}")].join(NL);
+    })
+    .join(`,${NL}`);
+  return `[${NL}${body}${NL}${line(6, "]")}`;
+}
+
 /** Fame tiers: each tier its own multi-line array, a blank line between them, so
  *  the boundaries are visible in the file rather than only in the count. */
 function tierBlock(tiers) {
@@ -57,7 +93,7 @@ function serializeGroup(group, warn) {
     if (key === "words") parts.push(line(6, `"words": ${block(value, 8, 6)}`));
     else if (key === "tiers") parts.push(line(6, `"tiers": ${tierBlock(value)}`));
     else if (key === "omitted" || key === "omittable") {
-      parts.push(line(6, `"${key}": ${block(value, 8, 6)}`));
+      parts.push(line(6, `"${key}": ${ruleBlock(value)}`));
     } else parts.push(line(6, `"${key}": ${JSON.stringify(value)}`));
   }
   for (const key of Object.keys(group)) {
