@@ -175,6 +175,15 @@ big enough to discuss belongs in an issue instead.
   need to drop the first entry I don't know?" by reading the output instead of
   guessing. Border in the stronger colour, background in a washed-out one, so the
   chip text keeps a clearly darker ground under it.
+- **Say on the chip when a name could not be transliterated.** A Japanese name holding a
+  word `src/lib/kana.ts` doesn't know resolves to its English name instead — correct, and
+  silent. The chip should carry one of the persistent notes: *"The following character(s)
+  lack transcription entries: 語, 手, 紙{br}Please report that [here](…)"*, naming the
+  characters `isTransliterable` rejected. Two halves to build: the resolver has to report
+  *which* characters failed rather than only that it gave up, and `WordChips` has to be able
+  to mark a single chip. Only reachable through the romaji switch, so it stays quiet for
+  everyone else — but a reader who turns it on is exactly the person who can tell us the
+  reading.
 - **Use the screen width better on wide viewports.** `--content-max` (60rem)
   leaves a lot of unused space left & right on large windows. Ideas: a wider (or
   fluid) max-width; a wider topic column and/or multi-column category tree; keep
