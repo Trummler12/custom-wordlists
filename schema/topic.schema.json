@@ -39,6 +39,7 @@
       "allOf": [{ "$ref": "#/$defs/stringOrList" }],
       "description": "Where the entries came from — one string or a list of them. Free-form, so a label can precede the link (\"German: https://…\"); validate-data warns when an item contains no URL."
     },
+    "generatedRomaji": { "type": "boolean", "description": "True when this list's romaji were produced by transliterating its Japanese names rather than taken from a source that names them — see scripts/lib/kana.mjs. A reading derived from kana is correct as a reading and may still not be how the name is officially spelled in Latin script, so the UI says where that is the case and invites a correction." },
     "order": { "type": "integer", "description": "Where this sits among its siblings, lowest first. Undeclared sorts last, alphabetically — so ordering a few of them needs nothing on the rest. The tree is otherwise the file system's, which puts Animation first and Gaming sixth for no reason anyone chose." },
     "corrections": {
       "type": "array",

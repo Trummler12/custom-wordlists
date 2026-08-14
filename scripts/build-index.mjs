@@ -169,6 +169,7 @@ async function buildIndex() {
       ...(typeof data.hideRulersByDefault === "boolean" ? { hideRulersByDefault: data.hideRulersByDefault } : {}),
       ...(data.languages ? { languages: data.languages } : {}),
       ...(data.usesEnglishFor ? { usesEnglishFor: data.usesEnglishFor } : {}),
+      ...(data.generatedRomaji ? { generatedRomaji: true } : {}),
       groupCount: data.groups.length,
       wordCount: countWords(data),
     });

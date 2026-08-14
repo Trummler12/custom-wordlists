@@ -23,6 +23,8 @@ export interface TopicSummary {
   languages?: string[];
   /** Of those, the ones whose names simply are the English ones. See lib/languages. */
   usesEnglishFor?: string[];
+  /** Whether this list's romaji were transliterated rather than sourced. */
+  generatedRomaji?: boolean;
   /** Whether this topic's fame ruler starts hidden behind a toggle. Its *presence*
    *  (either value) also makes the topic its own ruler-visibility boundary; absent
    *  means it inherits from the nearest ancestor that declares it. See lib/rulers. */
@@ -170,6 +172,10 @@ export interface Topic {
    *  an ℹ️ rather than leaving the reader to wonder. `"*"` stands for every language
    *  not named in `languages`. See lib/languages. */
   usesEnglishFor?: string[];
+  /** Whether this list's romaji were transliterated from its Japanese names rather
+   *  than taken from a source that names them. Correct as readings, not necessarily
+   *  as spellings — the UI says so and asks for corrections. */
+  generatedRomaji?: boolean;
   /** Whether this topic's fame ruler starts hidden behind a toggle; its presence
    *  also marks the topic as its own ruler-visibility boundary. */
   hideRulersByDefault?: boolean;

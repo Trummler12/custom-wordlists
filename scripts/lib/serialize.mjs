@@ -18,6 +18,7 @@ const TOPIC_KEYS = [
   "description",
   "languages",
   "usesEnglishFor",
+  "generatedRomaji",
   "hideRulersByDefault",
   "sources",
   "corrections",
