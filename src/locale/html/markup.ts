@@ -51,8 +51,8 @@ export function parseMarkup(text: string): Part[] {
 
 /** The same string as readable plain text, for the places that must be a string:
  *  aria-label, title, placeholder. A link keeps its label and loses its URL. */
-export function plainText(text: string): string {
+export function plainText(text: string, br = " "): string {
   return parseMarkup(text)
-    .map((p) => (p.kind === "br" ? " " : p.text))
+    .map((p) => (p.kind === "br" ? br : p.text))
     .join("");
 }
