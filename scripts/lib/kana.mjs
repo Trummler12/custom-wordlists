@@ -7,8 +7,17 @@
 //
 // ASCII, and no macrons: the output is meant to be typed into a word game, where
 // `Mōmō` is unreachable on most keyboards. A long vowel repeats instead —
-// モーモーミルク → Moomoomiruku — which is also what someone types on a Japanese
-// keyboard to produce the kana in the first place.
+// モーモーミルク → Moomoomiruku.
+//
+// That is Hepburn's consonants (shi, chi, tsu, ji) with the long vowels doubled
+// rather than marked. It is neither strict Hepburn, which would write `Mōmō`, nor
+// strict wāpuro, which types the ー as a hyphen (`mo-mo-miruku`) — those are the
+// two named conventions and this is the readable ASCII middle.
+//
+// The conversion is one-way. `oo` cannot be turned back into a long vowel,
+// because ほのお is ho-no-o — three kana, no long vowel — and モーモー is not, and
+// both arrive here as `oo`. Anything wanting macrons has to start from the kana,
+// which is why no such option is offered on top of the stored romaji.
 //
 // This is NOT the style PokéAPI uses for the Pokémon themselves. Those are
 // trademark romanizations decided by a marketing department (ブイゼル → Buoysel,
