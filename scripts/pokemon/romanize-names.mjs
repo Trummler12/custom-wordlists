@@ -1,7 +1,12 @@
 // Fills in `ja-Latn` on a flat Pokémon list by transliterating its Japanese names.
 //
-//   node scripts/pokemon/romanize-names.mjs <items|moves|path/to/topic.json> [--write]
-//   node scripts/pokemon/romanize-names.mjs <…> --check
+//   node scripts/pokemon/romanize-names.mjs <items|moves|path/to/topic.json> --check
+//   node scripts/pokemon/romanize-names.mjs <…> --write   (bake the readings in)
+//   node scripts/pokemon/romanize-names.mjs <…> --strip   (take them out again)
+//
+// The app transliterates at render time, so a list needs none of this stored —
+// `--write` and `--strip` are the way back and forth, kept because the choice
+// between deriving and storing is one we may want to revisit per list.
 //
 // PokéAPI has romaji for the Pokémon themselves and for nothing else, so the
 // romaji switch left the items and the moves in kana. Their Japanese names hold
@@ -16,7 +21,8 @@ import { readFile, writeFile } from "node:fs/promises";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 import { serializeTopic } from "../lib/serialize.mjs";
-import { toRomaji, isTransliterable } from "../lib/kana.mjs";
+// Node reads the .ts directly, so the app and this script share one table.
+import { toRomaji, isTransliterable } from "../../src/lib/kana.ts";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..", "..");
 const LISTS = { items: "items.json", moves: "moves.json" };
@@ -75,6 +81,24 @@ async function main() {
 
   if (process.argv.includes("--check")) {
     check(topic);
+    return;
+  }
+
+  if (process.argv.includes("--strip")) {
+    let removed = 0;
+    for (const group of topic.groups) {
+      const strip = (e) => {
+        if (typeof e === "string" || e[VARIANT] === undefined) return e;
+        removed++;
+        const { [VARIANT]: _gone, ...rest } = e;
+        return rest;
+      };
+      if (group.words) group.words = group.words.map(strip);
+      if (group.tiers) group.tiers = group.tiers.map((t) => t.map(strip));
+    }
+    console.log(`${removed} ${VARIANT} key(s) removed`);
+    if (process.argv.includes("--write")) await writeFile(file, serializeTopic(topic), "utf8");
+    console.log(process.argv.includes("--write") ? "written" : "dry run — add --write to save");
     return;
   }
 

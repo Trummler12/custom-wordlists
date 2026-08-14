@@ -1,9 +1,18 @@
-// Kana → Latin script, for the lists PokéAPI gives no romaji for.
+// Kana → Latin script, for the lists no source gives romaji for.
 //
-// Only kana. Kanji have several readings each and cannot be transliterated
-// without knowing the word — but the Pokémon item and move names contain none:
-// 0 of 2115 and 0 of 919 rows hold a single kanji, they are hiragana and katakana
-// throughout. That is what makes this mechanical rather than a guess.
+// Lives in src/ and is imported by BOTH the app (which transliterates at render
+// time) and the codemods under scripts/ — Node reads a .ts directly, so there is
+// one table rather than two that drift.
+//
+// Mostly kana, and kana alone is mechanical: one character, one syllable. The
+// Pokémon items and moves hold no kanji at all — 0 of 2115 and 0 of 919 — so they
+// need nothing else.
+//
+// Kanji do not work that way: 国 is `goku` in 中国 and `koku` in 韓国, two entries
+// of the same list. So they are read from WORDS below, longest match first, keyed
+// on whole words rather than characters — which is how the ambiguity disappears
+// rather than being resolved. A list that needs a word this doesn't know reports
+// it (see `isTransliterable`) instead of guessing at it.
 //
 // ASCII, and no macrons: the output is meant to be typed into a word game, where
 // `Mōmō` is unreachable on most keyboards. A long vowel repeats instead —
@@ -25,7 +34,7 @@
 // they win; this fills in only where they don't.
 
 /** Kana → romaji, longest key first at lookup so digraphs beat their halves. */
-const KANA = {
+const KANA: Record<string, string> = {
   あ: "a", い: "i", う: "u", え: "e", お: "o",
   か: "ka", き: "ki", く: "ku", け: "ke", こ: "ko",
   が: "ga", ぎ: "gi", ぐ: "gu", げ: "ge", ご: "go",
@@ -62,12 +71,36 @@ const KANA = {
 };
 
 /** Marks that turn up inside a name and aren't plain full-width Latin. */
-const PUNCT = { "・": " ", "　": " ", "×": "x" };
+const PUNCT: Record<string, string> = { "・": " ", "　": " ", "×": "x" };
+
+/** Words this cannot spell out character by character, longest match first.
+ *
+ *  Every one is a compound whose reading is not the sum of its characters, so
+ *  each is a claim about that word and not about the kanji in it. The twelve here
+ *  are what the language list needs: `語` alone covers 170 of its 182 kanji names,
+ *  and the rest name a place or a direction. */
+const WORDS: Record<string, string> = {
+  語: "go",
+  中国: "chuugoku",
+  韓国: "kankoku",
+  日本: "nihon",
+  英: "ei",
+  南部: "nanbu",
+  南: "minami",
+  北: "kita",
+  西: "nishi",
+  四川: "shisen",
+  教会: "kyoukai",
+  島: "tou",
+};
+
+/** Longest first, so 南部 is read before 南. */
+const WORD_KEYS = Object.keys(WORDS).sort((a, b) => b.length - a.length);
 
 /** Names written in full-width Latin — Ｖジェネレート, ＧＢプレイヤー, ブリッジメールＳ
  *  — are common enough that refusing them would drop 421 of 3034. The block runs
  *  parallel to ASCII, so this is arithmetic like the kana above. */
-function widthNormalize(text) {
+function widthNormalize(text: string): string {
   return text.replace(/[！-～]/g, (c) => String.fromCharCode(c.charCodeAt(0) - 0xfee0));
 }
 
@@ -79,13 +112,25 @@ const LONG = "ー";
 
 /** Katakana to hiragana, so one table serves both. Their blocks run in parallel,
  *  which is why this is arithmetic rather than a second map. */
-function toHiragana(text) {
+function toHiragana(text: string): string {
   return text.replace(/[ァ-ヶ]/g, (c) => String.fromCharCode(c.charCodeAt(0) - 0x60));
 }
 
-/** True for anything this can read: kana, the marks above, ASCII. */
-export function isTransliterable(text) {
-  return [...toHiragana(widthNormalize(text))].every(
+/** The word at `at`, if one starts there. */
+function wordAt(text: string, at: number): string | undefined {
+  return WORD_KEYS.find((w) => text.startsWith(w, at));
+}
+
+/** True for anything this can read: a word it knows, kana, the marks above, ASCII. */
+export function isTransliterable(text: string): boolean {
+  const src = toHiragana(widthNormalize(text));
+  let rest = "";
+  for (let i = 0; i < src.length; i++) {
+    const word = wordAt(src, i);
+    if (word) i += word.length - 1;
+    else rest += src[i];
+  }
+  return [...rest].every(
     (c) =>
       KANA[c] !== undefined ||
       PUNCT[c] !== undefined ||
@@ -99,13 +144,20 @@ export function isTransliterable(text) {
 /** A kana name in Latin script, capitalized. Returns undefined for anything
  *  holding a character this cannot read — a kanji, most likely — rather than
  *  dropping it silently. */
-export function toRomaji(text) {
+export function toRomaji(text: string): string | undefined {
   if (!isTransliterable(text)) return undefined;
   const src = toHiragana(widthNormalize(text));
   let out = "";
   let pending = ""; // a small つ waiting for the consonant it doubles
 
   for (let i = 0; i < src.length; i++) {
+    const word = wordAt(src, i);
+    if (word) {
+      out += WORDS[word];
+      i += word.length - 1;
+      pending = "";
+      continue;
+    }
     const two = src.slice(i, i + 2);
     const one = src[i];
 
@@ -136,5 +188,19 @@ export function toRomaji(text) {
     }
     out += romaji;
   }
-  return out.charAt(0).toUpperCase() + out.slice(1);
+  return capitalize(spaceBrackets(out));
+}
+
+/** Latin script wants a space before an opening bracket; Japanese doesn't, its
+ *  own brackets being full-width and carrying their own side-bearing. So
+ *  `ノルウェー語(ブークモール)` arrives without one and reads as `Noruweego(…)`
+ *  until it gets one. */
+function spaceBrackets(text: string): string {
+  return text.replace(/(\S)\(/g, "$1 (");
+}
+
+/** The name, and anything in brackets after it, start with a capital — both are
+ *  names rather than sentences. */
+function capitalize(text: string): string {
+  return text.replace(/(^|\()\s*([a-z])/g, (m) => m.toUpperCase());
 }
