@@ -141,9 +141,14 @@ class LangState {
 
   /** Whether this list's names are being transliterated right now: it says its
    *  romaji are derived, and the reader has asked for romaji. Everything that
-   *  renders an entry passes this along — see `resolveStr` in lib/words. */
+   *  renders an entry passes this along — see `resolveStr` in lib/words.
+   *
+   *  The tag rather than "a variant is on": the two lists with derived romaji also
+   *  declare `es-419`, so asking the looser question calls Latin American Spanish a
+   *  romanization. `contentLang` has already applied the per-list gate, so the tag
+   *  it returns is the whole answer. */
   derivesRomaji(tid: string): boolean {
-    return !!this.derivedRomaji[tid] && this.variantOnFor(tid);
+    return !!this.derivedRomaji[tid] && this.contentLang(tid).toLowerCase().endsWith("-latn");
   }
 
   variantOn(l: string): boolean {

@@ -54,12 +54,13 @@
     // a warning about nothing. The note itself stays in the interface language.
     // The language, not the way it is written: a list carrying Japanese supports
     // Japanese whether or not it also carries romaji.
-    const tag = lang.contentLang(topic.id);
-    const code = baseTag(tag);
+    const code = baseTag(lang.contentLang(topic.id));
     const name = lang.nameInUi(code);
     // A transliterated reading is right as a reading and may still not be how the
-    // name is written in practice, which only the reader can tell us.
-    if (tag !== code && topic.generatedRomaji) {
+    // name is written in practice, which only the reader can tell us. The store
+    // owns that question — asking it here as "the tag isn't the language" would
+    // also catch `es-419`, which is a spelling of Spanish and not a reading.
+    if (lang.derivesRomaji(topic.id)) {
       return { icon: "ℹ️", text: lang.ui.language.generatedRomaji };
     }
     switch (langSupport(topic, code)) {
