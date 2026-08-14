@@ -35,6 +35,12 @@ const ISO_639_1 = /^[a-z]{2}$/;
 /** A dump file, as opposed to anything else that lives in the folder. */
 const DUMP_TAG = /^[a-z]{2}(-[A-Z][a-z]{3})?$/;
 
+/** Declared without a dump behind it. The romaji are transliterated at render time
+ *  from the Japanese column, so no file here names them — but the app gates the
+ *  romaji switch on the declaration, so the list has to say it carries the tag with
+ *  nothing stored under it. Rebuilding without this line turns the switch off. */
+const DERIVED = "ja-Latn";
+
 /** Speakers worldwide, in millions, for the boundary between one tier and the
  *  next. Round numbers on purpose: they are a claim someone can disagree with,
  *  which a percentile split of whatever happens to be in the list is not. */
@@ -121,7 +127,8 @@ async function main() {
     icon: "🗣️",
     description:
       "The world's languages, each named in thirty of them. Fame tiers by speakers worldwide.",
-    languages: tags.slice().sort(),
+    languages: [...tags, DERIVED].sort(),
+    generatedRomaji: true,
     sources: [
       "Names: https://github.com/umpirsky/language-list (CLDR)",
       "Speakers: https://www.languagecourse.net/languages-worldwide",
@@ -134,7 +141,9 @@ async function main() {
   console.log(`tiers: ${tiers.map((t) => t.length).join(" / ")}`);
   console.log(`${codes.filter((c) => !speakers.has(c)).length} have no speaker figure`);
   console.log(`${localized} carry a language map; ${words.length - localized} read the same in all`);
-  for (const tag of topic.languages) {
+  // One row per dump rather than per declared language: `ja-Latn` is declared and
+  // stored nowhere, so it would report zero and read like a failed import.
+  for (const tag of tags.slice().sort()) {
     const n = words.filter((w) => typeof w !== "string" && w[tag]).length;
     console.log(`  ${tag.padEnd(8)} ${String(tag === "en" ? words.length : n).padStart(5)}`);
   }
