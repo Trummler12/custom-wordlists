@@ -70,6 +70,7 @@
         {
           "id": "gram-mail",
           "match": "Briefpost [0-9]",
+          "as": {"en":"Gram","de":"Briefpost","es":"Envío","fr":"Courrier","it":"Missiva","ja":"はいたつぶつ","ko":"배달물","zh-Hans":"配送物品","zh-Hant":"配送物品"},
           "reason": {
             "en": "Three numbered copies of one [piece of mail](https://bulbapedia.bulbagarden.net/wiki/Gram)",
             "de": "Drei nummerierte Kopien derselben [Briefpost](https://bulbapedia.bulbagarden.net/wiki/Gram)",
@@ -168,7 +169,8 @@
         {
           "id": "species-candies",
           "match": "*-Bonbon",
-          "except": ["Dynamax-Bonbon"],
+          "except": ["Dynamax-Bonbon","Pokémon-Bonbon"],
+          "as": {"en":"Pokémon Candy","de":"Pokémon-Bonbon","es":"Caramelo de Pokémon","fr":"Bonbon de Pokémon","it":"Caramella di Pokémon","ja":"ポケモンのアメ","ko":"포켓몬의사탕","zh-Hans":"宝可梦糖果","zh-Hant":"寶可夢糖果"},
           "reason": {
             "en": "80 [species candies](https://bulbapedia.bulbagarden.net/wiki/Candy#Species-based_Candy), one per Pokémon — real items, but they crowd out the Pokémon themselves",
             "de": "80 [Bonbons](https://bulbapedia.bulbagarden.net/wiki/Candy#Species-based_Candy), eines je Pokémon – echte Items, aber sie verdrängen die Pokémon selbst",
