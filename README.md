@@ -4,7 +4,7 @@ Build your own custom word lists for **[skribbl.io](https://skribbl.io)**, Coden
 
 **▶ Live: <https://trummler12.github.io/custom-wordlists/>**
 
-<!-- TODO: add a screenshot or short GIF of the tool here, e.g. ![screenshot](docs/assets/screenshot.png) -->
+![The tool in use: a category tree on the left with the chemical elements and the League of Legends champions ticked and a fame ruler under one of them, and on the right the generated list of names with its word and character counts](assets/screenshot.jpg)
 
 ## What can you do?
 
