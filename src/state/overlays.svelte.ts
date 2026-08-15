@@ -6,9 +6,19 @@
 // straight to event attributes, where a plain method reference would arrive
 // without its `this`.
 
+import { tick } from "svelte";
 import { lang } from "./lang.svelte";
 
 class OverlayState {
+  /** The control that opened whatever is open. Escape removes a popover from the
+   *  document, and with it the focus that was inside it — a keyboard user then
+   *  lands on `<body>` and has to tab back to where they were.
+   *
+   *  Not `$state`: it is read in an event handler and never rendered. */
+  #opener: HTMLElement | null = null;
+  #remember(trigger: Element | null | undefined): void {
+    this.#opener = trigger instanceof HTMLElement ? trigger : null;
+  }
   /** Which language menu is open, by instance id, or null. Two pickers share the
    *  language but each has its own trigger. */
   langMenu = $state<string | null>(null);
@@ -33,8 +43,9 @@ class OverlayState {
 
   // --- Language menu ---------------------------------------------------------
 
-  toggleLangMenu = (id: string): void => {
+  toggleLangMenu = (id: string, trigger?: Element): void => {
     this.langMenu = this.langMenu === id ? null : id;
+    if (this.langMenu) this.#remember(trigger);
   };
   chooseLanguage = (l: string): void => {
     this.langMenu = null;
@@ -43,8 +54,9 @@ class OverlayState {
 
   // --- Settings menu ---------------------------------------------------------
 
-  toggleSettingsMenu = (id: string): void => {
+  toggleSettingsMenu = (id: string, trigger?: Element): void => {
     this.settingsMenu = this.settingsMenu === id ? null : id;
+    if (this.settingsMenu) this.#remember(trigger);
   };
 
   // --- Omissions panel -------------------------------------------------------
@@ -58,6 +70,7 @@ class OverlayState {
     }
     this.omittedAbove = opensUpward(trigger);
     this.omittedPanel = id;
+    this.#remember(trigger);
   };
 
   // --- Tooltips --------------------------------------------------------------
@@ -67,6 +80,7 @@ class OverlayState {
     this.tipAbove = opensUpward(trigger);
     this.tip = id;
     this.tipPinned = pinned;
+    this.#remember(trigger);
   };
   closeTip = (): void => {
     this.tip = null;
@@ -127,13 +141,30 @@ class OverlayState {
     if (this.tipPinned) this.closeTip();
   };
   onKeyDown = (e: KeyboardEvent): void => {
-    if (e.key === "Escape") {
-      this.langMenu = null;
-      this.settingsMenu = null;
-      this.omittedPanel = null;
-      this.closeTip();
-    }
+    if (e.key !== "Escape") return;
+    this.langMenu = null;
+    this.settingsMenu = null;
+    this.omittedPanel = null;
+    this.closeTip();
+    void this.#returnFocus();
   };
+
+  /** Hand the focus back to the control that opened the overlay — but only where
+   *  closing it is what cost the focus its home.
+   *
+   *  Waiting for the DOM to settle is what makes that answerable: an element
+   *  inside a popover that has just gone leaves the focus on `<body>`, and
+   *  nothing else here does. So a reader who was only hovering a marker keeps
+   *  their focus where it was, and one who was inside the menu gets it back. */
+  async #returnFocus(): Promise<void> {
+    const el = this.#opener;
+    this.#opener = null;
+    if (!el) return;
+    await tick();
+    // A list can rerender under a panel and take its trigger with it; there is
+    // nothing to return to then.
+    if (el.isConnected && document.activeElement === document.body) el.focus();
+  }
 }
 
 /** Whether this element is showing a focus ring: true when the keyboard put the
