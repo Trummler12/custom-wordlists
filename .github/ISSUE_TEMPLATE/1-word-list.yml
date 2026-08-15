@@ -8,6 +8,8 @@ body:
       value: |
         Thanks for contributing a list! For a **small fix** (one wrong/missing entry, a fame-group tweak, a missing translation) use the **Correction / small fix** template instead — this one is for whole lists.
 
+        Does your topic already exist somewhere as **structured data** (an API, a public dataset, a repo)? Then use **Data source** rather than this form: a couple of links get further than a typed-out list, because a script builds every language at once.
+
         Discussion is welcome: others may spot mistakes or suggest better fame ordering in the thread before this becomes a pull request. See the [worked example](https://github.com/Trummler12/custom-wordlists/issues/17), and the [topic tracker](https://github.com/Trummler12/custom-wordlists/blob/main/docs/Topic-Progress.md) for what is already covered or in progress.
   - type: input
     id: topic
