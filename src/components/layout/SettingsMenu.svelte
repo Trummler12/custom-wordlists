@@ -92,14 +92,17 @@
 </script>
 
 <div class="settings-picker">
+  <!-- `aria-haspopup="true"`, not `"dialog"`: what opens is a group of controls
+       that never takes the focus and traps nothing, and claiming a dialog
+       promises both. -->
   <button
     type="button"
     class="lang-btn"
     class:nudge
-    aria-haspopup="dialog"
+    aria-haspopup="true"
     aria-expanded={overlays.settingsMenu === id}
     aria-label={lang.ui.settings.label}
-    onclick={() => overlays.toggleSettingsMenu(id)}
+    onclick={(e) => overlays.toggleSettingsMenu(id, e.currentTarget)}
   >⚙️</button>
   {#if overlays.settingsMenu === id}
     <div class="settings-menu" role="group" aria-label={lang.ui.settings.label} use:pinBox>
