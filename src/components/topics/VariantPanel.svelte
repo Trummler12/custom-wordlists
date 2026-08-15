@@ -60,8 +60,12 @@
           <summary>
             {lang.ui.language.variantDiffers(pairs.length)} — {lang.ui.language.variantShowList}
           </summary>
+          <!-- Unkeyed: the list is one fixed array rendered in order, never
+               reordered or added to, and the only key available is a spelling —
+               which two entries may share, and a duplicate key is an error rather
+               than a rendering glitch. -->
           <ul>
-            {#each pairs as p (p.to)}
+            {#each pairs as p}
               <li><span class="from">{p.from}</span> → <span class="to">{p.to}</span></li>
             {/each}
           </ul>
