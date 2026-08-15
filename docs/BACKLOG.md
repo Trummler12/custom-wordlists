@@ -141,6 +141,15 @@ big enough to discuss belongs in an issue instead.
   to matter, `romanize-names.mjs <list> --write` bakes them back in and `--strip` takes them
   out again; a stored `ja-Latn` already wins over a derived one, so the two can also be mixed
   per entry.
+- **A derived reading for an entry-level language map.** `resolveWord` accepts two shapes
+  and calls them equivalent, and for romaji they aren't: `transliterate` reads a leaf, so a
+  map whose `ja` holds a *name pair* keeps its kana one level below where the derivation can
+  see it, and the entry falls through to English. It needs a second traversal that romanizes
+  an already resolved pair — passing `derived` into the recursion looks like the fix and does
+  nothing, since the pair's halves are plain strings by then and a plain string is neutral by
+  definition. No entry has the shape today; worth building the day the first list does, or
+  worth deciding that the leaf form is the only one romaji supports and saying so in the
+  schema.
 - **Handing a list back to the global variant switch.** A per-list 🌎 stores a boolean
   against the topic, and `variantOnFor` reads it in preference to the global choice — so
   once a list has an opinion it keeps it, and there is no way to say "follow the switch
@@ -205,13 +214,11 @@ big enough to discuss belongs in an issue instead.
   flag from 22.18 on, and both workflows pin 20. So the script's own usage line fails with
   `ERR_UNKNOWN_FILE_EXTENSION` on the version the repo says it runs. Wants `.nvmrc`,
   `node-version: 22` in `validate.yml` and `pages.yml`, and a line under *Local development*
-  in `CONTRIBUTING.md`. Take **two script fixes** along in the same PR, since they are the
-  next thing anyone running it hits: its `--write` path does `group.words.map(…)` unguarded
-  and dies on a tiered list (`geography/languages.json` is tiered, carries `generatedRomaji`
-  and 184 Japanese names — exactly what gets pointed at next), and its header still points at
-  a `scripts/lib/kana.mjs` that no longer exists, as does the `generatedRomaji` description in
-  `schema/topic.schema.json`. This is also the "something else wants Node 22 anyway" the next
-  entry is waiting for.
+  in `CONTRIBUTING.md`. Take **one script fix** along in the same PR, since it is the next
+  thing anyone running it hits: its `--write` path does `group.words.map(…)` unguarded and
+  dies on a tiered list — and `geography/languages.json` is tiered, carries
+  `generatedRomaji` and 184 Japanese names, so it is exactly what gets pointed at next.
+  This is also the "something else wants Node 22 anyway" the next entry is waiting for.
 - **One matcher instead of two.** The scripts now share `scripts/lib/omissions.mjs`,
   so what remains is the one copy that can't be helped: it mirrors the tested
   `src/lib/omitted.ts`, because a `.mjs` script can't import TypeScript — the same
