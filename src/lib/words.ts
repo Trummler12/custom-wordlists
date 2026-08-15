@@ -97,7 +97,16 @@ export function isUnknownIn(e: WordEntry, lang: string): boolean {
 /** Resolve an entry to `lang`. Two equivalent shapes are accepted: the preferred
  *  leaf form (a name pair whose fields each localize) and an entry-level language
  *  map { en, de, … } whose value is itself an entry — the latter is resolved by
- *  picking the language and recursing. */
+ *  picking the language and recursing.
+ *
+ *  **The two shapes are not equivalent for a derived reading.** `transliterate`
+ *  reads a leaf, so a map whose language holds a *name pair* has its Japanese one
+ *  level further down than this can reach, and the entry falls through to English
+ *  with its kana sitting inside it. Passing `derived` into the recursion does not
+ *  help: the pair's halves are plain strings by then, and a plain string is neutral
+ *  by definition — it would need a second traversal that romanizes an already
+ *  resolved pair. No entry has that shape (all four romanized lists are flat maps
+ *  of strings), so this is written down rather than built. */
 export function resolveWord(e: WordEntry, lang: string, derived = false): Word {
   if (typeof e === "string") return e;
   const obj = e as Record<string, unknown>;
