@@ -16,6 +16,18 @@
     // message in English rather than resolving a language nobody can act on.
     if (!topics.error) lang.init();
   });
+
+  // `index.html` can only name one language, and the chrome renders in seven. A
+  // screen reader takes its pronunciation rules from this attribute, which is the
+  // difference between accented and unintelligible for the CJK dictionaries.
+  //
+  // The interface language, not the content one: the attribute describes the
+  // sentences around the words, and those are the interface's. The words
+  // themselves sit in a list that can hold several languages at once, so there is
+  // no single answer for them anyway.
+  $effect(() => {
+    document.documentElement.lang = lang.uiLang;
+  });
 </script>
 
 <!-- One set of window handlers for the whole app: every overlay closes the same
