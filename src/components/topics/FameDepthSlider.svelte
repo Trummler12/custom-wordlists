@@ -46,8 +46,8 @@
     }}
     onpointerenter={(e) => !ranked && overlays.tipEnter(e, tipId)}
     onpointerleave={(e) => !ranked && overlays.tipLeave(e)}
-    onfocus={(e) => !ranked && overlays.openTip(tipId, e.currentTarget)}
-    onblur={() => !ranked && overlays.closeTip()}
+    onfocus={(e) => !ranked && overlays.tipFocus(e, tipId)}
+    onblur={() => !ranked && overlays.releaseTip()}
     onkeydown={(e) => selection.keyDepth(e, tid, group)}
   >
     <span class="depth-rail"></span>
