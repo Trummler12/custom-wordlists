@@ -12,30 +12,32 @@ Progress on every topic added or _planned_ so far. A topic's style says how far 
 
 \*of course limited to languages _planned out_ so far to be supported; In case your selected Language is missing, a "⚠️" will show up with a respective tooltip.
 
-## Animation
+The sections run in the order the app's own tree does, so the two can be read side by side.
 
-- [x] _South Park_
-- [ ] SpongeBob SquarePants
-- [ ] The Simpsons
+## Science
 
-## Anime
+### Chemistry
 
-- [ ] Dragon Ball Z
-- [ ] One Piece
-- [ ] Naruto
+- [x] _Elements_
 
-## Comics
+## Geography
 
-- [ ] DC
-- [ ] Marvel
-- [ ] Other
+- [x] **_Languages_**
+- [ ] Countries
+- [ ] Capitals
+- [ ] Cities
+- [ ] Continents & Plates
 
-## Film & TV
+### Continents
 
-- [ ] Disney
-- [ ] Harry Potter
-- [ ] The Lord of the Rings
-- [ ] Star Wars
+1 folder for each of the 7 common Continents, including:
+
+- [ ] Countries
+- [ ] Capitals
+- [ ] Cities
+- [ ] Local Settings to include or exclude individual countries
+
+_In the VERY long term, we might even expand downwards to individual Communities, but that might take years..._
 
 ## Gaming
 
@@ -64,30 +66,30 @@ Progress on every topic added or _planned_ so far. A topic's style says how far 
 - [ ] Structures
 - [ ] Mods (Modifications)
 
-## Science
+## Animation
 
-### Chemistry
+- [x] _South Park_
+- [ ] SpongeBob SquarePants
+- [ ] The Simpsons
 
-- [x] _Elements_
+## Anime
 
-## Geography
+- [ ] Dragon Ball Z
+- [ ] One Piece
+- [ ] Naruto
 
-- [x] **_Languages_**
-- [ ] Countries
-- [ ] Capitals
-- [ ] Cities
-- [ ] Continents & Plates
+## Comics
 
-### Continents
+- [ ] DC
+- [ ] Marvel
+- [ ] Other
 
-1 folder for each of the 7 common Continents, including:
+## Film & TV
 
-- [ ] Countries
-- [ ] Capitals
-- [ ] Cities
-- [ ] Local Settings to include or exclude individual countries
-
-_In the VERY long term, we might even expand downwards to individual Communities, but that might take years..._
+- [ ] Disney
+- [ ] Harry Potter
+- [ ] The Lord of the Rings
+- [ ] Star Wars
 
 ## Sports
 
