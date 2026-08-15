@@ -12,7 +12,7 @@
 // romaji switch left the items and the moves in kana. Their Japanese names hold
 // no kanji at all — 0 of 2115 and 0 of 919 — so the reading is derivable from the
 // characters, which is the whole reason this can be a script rather than a
-// translation job. See scripts/lib/kana.mjs for the style and its limits.
+// translation job. See src/lib/kana.ts for the style and its limits.
 //
 // Written wherever the transliteration differs from the ENGLISH name, since that
 // is what an absent key means. It rarely doesn't: すごいキズぐすり is Sugoikizugusuri
