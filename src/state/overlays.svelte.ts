@@ -93,8 +93,13 @@ class OverlayState {
     if (e.pointerType === "mouse") this.releaseTip();
   };
   tipFocus = (e: FocusEvent, id: string): void => {
-    if (this.#holding(id)) return;
-    this.openTip(id, e.currentTarget as Element);
+    // Only where a focus ring shows, which is to say: only for the keyboard, the
+    // one input that has neither hover nor a click to open this with. It also
+    // keeps out the focus a browser restores to the page on its own — returning to
+    // a tab is not a request to see anything.
+    const el = e.currentTarget as Element;
+    if (this.#holding(id) || !focusIsVisible(el)) return;
+    this.openTip(id, el);
   };
   tipClick = (e: MouseEvent, id: string): void => {
     if (this.#holding(id)) this.closeTip();
@@ -129,6 +134,20 @@ class OverlayState {
       this.closeTip();
     }
   };
+}
+
+/** Whether this element is showing a focus ring: true when the keyboard put the
+ *  focus there, false for a click and for focus an engine restores by itself.
+ *
+ *  `matches` throws on a selector it doesn't know, and an engine too old for
+ *  `:focus-visible` loses nothing by saying yes — it goes back to opening on any
+ *  focus, which is what every engine did before this. */
+function focusIsVisible(el: Element): boolean {
+  try {
+    return el.matches(":focus-visible");
+  } catch {
+    return true;
+  }
 }
 
 /** Which way an overlay should open from its trigger. The middle of the viewport,
