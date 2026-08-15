@@ -385,6 +385,10 @@ header {
 /* Set when the 🧹 sits below the middle of the viewport, where a panel below it
    would be cut off by the bottom edge — the same flip as .tip-note.above, decided
    by the same function. */
+.omitted-panel.above {
+  top: auto;
+  bottom: 100%;
+}
 /* The side-by-side spellings a variant changes, inside the same panel. */
 .variant-list > summary {
   cursor: pointer;
@@ -393,10 +397,6 @@ header {
 }
 .variant-list .from {
   opacity: 0.7;
-}
-.omitted-panel.above {
-  top: auto;
-  bottom: 100%;
 }
 .omitted-title {
   margin: 0 0 0.35rem;
@@ -559,21 +559,6 @@ header {
 }
 /* Same box as the language menu it sits beside, but wider: these are sentences,
    not a list of names. */
-/* Selecting a language that has a second way of being written puts a setting
-   under the gear that exists for no other language. Three blinks say so, since
-   nothing else on screen can. */
-@keyframes nudge {
-  0%, 100% { transform: none; }
-  50% { transform: scale(1.25); filter: brightness(1.4); }
-}
-.lang-btn.nudge {
-  animation: nudge 0.45s ease-in-out 3;
-}
-@media (prefers-reduced-motion: reduce) {
-  .lang-btn.nudge {
-    animation: none;
-  }
-}
 .settings-menu {
   position: absolute;
   top: calc(100% + 0.25rem);
@@ -632,6 +617,21 @@ header {
   font-size: 1rem;
   line-height: 1;
   cursor: pointer;
+}
+/* Selecting a language that has a second way of being written puts a setting
+   under the gear that exists for no other language. Three blinks say so, since
+   nothing else on screen can. */
+@keyframes nudge {
+  0%, 100% { transform: none; }
+  50% { transform: scale(1.25); filter: brightness(1.4); }
+}
+.lang-btn.nudge {
+  animation: nudge 0.45s ease-in-out 3;
+}
+@media (prefers-reduced-motion: reduce) {
+  .lang-btn.nudge {
+    animation: none;
+  }
 }
 .lang-menu {
   position: absolute;
