@@ -1,0 +1,44 @@
+name: 📊 Data source — build a list by script
+description: Share links to structured, multi-language data that a word list can be generated from.
+title: "📊 <Topic> — <what the data covers>"
+labels: ["Data 📊"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Some lists don't have to be typed out. Where a topic already exists as **structured data** — a public API, a Wikidata query, a CLDR export, a maintained list on GitHub — a script turns it into a word list in every language at once. The languages and the Pokémon lists were built exactly that way.
+
+        **A couple of links can be the whole contribution.** No entries needed here — if you'd rather hand over a finished list, use **Word list — new or rework** instead.
+  - type: input
+    id: topic
+    attributes:
+      label: Topic
+      placeholder: e.g. chemical elements
+    validations:
+      required: true
+  - type: dropdown
+    id: kind
+    attributes:
+      label: Kind of proposal
+      options:
+        - New — a topic that isn't covered yet
+        - Language — data that fills a language on an existing list
+    validations:
+      required: true
+  - type: textarea
+    id: sources
+    attributes:
+      label: Where the data is
+      description: One link per line. Anything a script can read — an API endpoint, a repository, a dump, a query. A page that merely renders a table counts too; just say which it is.
+      placeholder: |
+        https://github.com/umpirsky/country-list
+        https://pokeapi.co/api/v2/item/
+    validations:
+      required: true
+  - type: textarea
+    id: coverage
+    attributes:
+      label: What it covers
+      description: Whatever you happen to know — which languages, roughly how many entries, and whether the terms allow reuse. Guesses are welcome; we check before building anything.
+    validations:
+      required: false
