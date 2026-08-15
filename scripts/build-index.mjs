@@ -45,6 +45,12 @@ function countWords(topic) {
   return n;
 }
 
+/** Where a sibling with no declared `order` sorts. A finite number rather than
+ *  `Infinity`, so two of them subtract to 0 and compare equal — `Infinity` minus
+ *  itself is `NaN`, and a comparator that returns one is left to the engine to
+ *  interpret. It happens to work; it shouldn't have to. */
+const LAST = Number.MAX_SAFE_INTEGER;
+
 /** Names sorted by the `order` in the file each one names, lowest first, with the
  *  undeclared keeping their alphabetical order behind them.
  *
@@ -56,10 +62,10 @@ async function byOrder(names, fileOf) {
     names.map(async (name) => {
       try {
         const { order } = JSON.parse(await readFile(fileOf(name), "utf8"));
-        return { name, order: Number.isInteger(order) ? order : Infinity };
+        return { name, order: Number.isInteger(order) ? order : LAST };
       } catch {
         // No file, or none of our business — it simply has no opinion.
-        return { name, order: Infinity };
+        return { name, order: LAST };
       }
     }),
   );
