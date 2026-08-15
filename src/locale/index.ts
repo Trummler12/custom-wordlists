@@ -138,6 +138,12 @@ export interface OutputStrings {
   label: string;
   copy: string;
   copied: string;
+  /** Button label when the clipboard refused — an insecure origin, a document
+   *  that isn't focused, a denied permission. */
+  copyFailed: string;
+  /** What to do about it, shown beside the list. The chips are selected for the
+   *  reader at the same moment, so this describes a state as much as it asks. */
+  copyManual: string;
   empty: string;
   generatedList: string;
   /** Counter labels: "<words>: 42 · <chars>: 310 / 1,000". */

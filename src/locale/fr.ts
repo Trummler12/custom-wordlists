@@ -85,6 +85,8 @@ export const fr: UIStrings = {
     label: "Résultat",
     copy: "Copier",
     copied: "Copié !",
+    copyFailed: "Échec de la copie",
+    copyManual: "La liste est sélectionnée — copiez-la vous-même.",
     empty: "Sélectionnez des thèmes ou des groupes pour créer une liste.",
     generatedList: "Liste de mots générée",
     words: "mots",

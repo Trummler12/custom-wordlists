@@ -74,6 +74,8 @@ export const en: UIStrings = {
     label: "Output",
     copy: "Copy",
     copied: "Copied!",
+    copyFailed: "Copy failed",
+    copyManual: "The list is selected — copy it yourself.",
     empty: "Select topics or groups to build a list.",
     generatedList: "Generated word list",
     words: "words",
