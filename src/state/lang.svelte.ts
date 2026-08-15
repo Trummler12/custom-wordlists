@@ -6,7 +6,7 @@
 // not `lang`). The same rule is why `ui` is a `$derived` field and not a plain one.
 
 import { CONTENT_LANGS, FALLBACK_LANG, strings, UI_LANGS, type UIStrings } from "../locale";
-import { VARIANTS, variantFor } from "../locale/variants";
+import { VARIANTS, variantFor, type Variant } from "../locale/variants";
 import { matchTag } from "../lib/languages";
 import type { TopicSummary } from "../lib/types";
 
@@ -27,6 +27,12 @@ function displayName(l: string, inLang: string): string {
     // A runtime without the API, or a tag it refuses to parse.
     return l.toUpperCase();
   }
+}
+
+/** Where one list's answer about one variant is stored. Both halves, since a list
+ *  can declare more than one and they are separate questions. */
+function overrideKey(v: Variant, tid: string): string {
+  return `${v.id}|${tid}`;
 }
 
 class LangState {
@@ -126,8 +132,13 @@ class LangState {
    *  reads romaji reads it every visit. */
   variants = $state<Record<string, boolean>>({});
 
-  /** Lists told to deviate from the global choice, by topic id. Only meaningful
-   *  for a variant declared `perTopic`. */
+  /** Lists told to deviate from the global choice, by variant *and* topic id. Only
+   *  meaningful for a variant declared `perTopic`.
+   *
+   *  By variant as well, because one list can declare two: items and moves carry
+   *  both `es-419` and `ja-Latn`, so a key on the topic alone let a reader's Spanish
+   *  decision govern their romaji — and romaji, having no per-list control, offered
+   *  no way to take it back. */
   variantByTopic = $state<Record<string, boolean>>({});
 
   /** What each topic declares in `languages`, mirrored from the manifest by
@@ -164,10 +175,15 @@ class LangState {
   variantOnFor(tid: string): boolean {
     const v = variantFor(this.current);
     if (!v || !(this.declaredLangs[tid] ?? []).includes(v.tag)) return false;
-    return this.variantByTopic[tid] ?? this.variantOn(this.current);
+    // A variant with no per-list control can hold no per-list answer. Reading one
+    // anyway is the other half of how a stale choice reached the wrong variant.
+    if (!v.perTopic) return this.variantOn(this.current);
+    return this.variantByTopic[overrideKey(v, tid)] ?? this.variantOn(this.current);
   }
   toggleVariantFor(tid: string): void {
-    this.variantByTopic[tid] = !this.variantOnFor(tid);
+    const v = variantFor(this.current);
+    if (!v?.perTopic) return;
+    this.variantByTopic[overrideKey(v, tid)] = !this.variantOnFor(tid);
   }
   toggleVariant(l: string): void {
     this.variants[l] = !this.variants[l];
