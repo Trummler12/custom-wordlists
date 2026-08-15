@@ -7,20 +7,20 @@
   import WordChips from "./WordChips.svelte";
 </script>
 
-<section class="output" aria-label={lang.ui.output}>
+<section class="output" aria-label={lang.ui.output.label}>
   <div class="output-head">
-    <h2>{lang.ui.output}</h2>
+    <h2>{lang.ui.output.label}</h2>
     <div class="head-actions">
       <SettingsMenu id="output" />
       <LanguagePicker id="output" />
       <button type="button" onclick={output.copy} disabled={output.included.length === 0}>
-        {output.copied ? lang.ui.copied : lang.ui.copy}
+        {output.copied ? lang.ui.output.copied : lang.ui.output.copy}
       </button>
     </div>
   </div>
 
   {#if output.merged.length === 0}
-    <p class="status">{lang.ui.emptyOutput}</p>
+    <p class="status">{lang.ui.output.empty}</p>
   {:else}
     <WordChips />
     <OutputCounter />

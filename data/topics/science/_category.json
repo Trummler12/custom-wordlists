@@ -1,4 +1,13 @@
 {
-  "title": { "en": "Science", "de": "Wissenschaft" },
-  "icon": "🔬"
+  "title": {
+    "en": "Science",
+    "de": "Wissenschaft",
+    "es": "Ciencia",
+    "fr": "Sciences",
+    "it": "Scienza",
+    "ja": "科学",
+    "ko": "과학"
+  },
+  "icon": "🔬",
+  "order": 1
 }

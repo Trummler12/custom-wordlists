@@ -5,41 +5,113 @@
 // store in state/ hands out an object and callers reach through it (`lang.current`,
 // not `lang`). The same rule is why `ui` is a `$derived` field and not a plain one.
 
-import { FALLBACK_LANG, strings, SUPPORTED_LANGS, type UIStrings } from "../locale";
+import { CONTENT_LANGS, FALLBACK_LANG, strings, UI_LANGS, type UIStrings } from "../locale";
+import { VARIANTS, variantFor, type Variant } from "../locale/variants";
+import { matchTag } from "../lib/languages";
 import type { TopicSummary } from "../lib/types";
 
 const STORAGE_KEY = "wordlists:lang";
+const UI_STORAGE_KEY = "wordlists:uiLang";
+const VARIANT_STORAGE_KEY = "wordlists:variants";
 
-// Endonyms for the picker; fallback is the upper-cased code.
-const ENDONYMS: Record<string, string> = {
-  de: "Deutsch", en: "English", fr: "Français", es: "Español", it: "Italiano",
-  pt: "Português", nl: "Nederlands", pl: "Polski", ja: "日本語", ko: "한국어", zh: "中文",
-};
+/** The interface follows the list language unless told otherwise. */
+export const AUTO = "auto";
+
+/** One formatter per locale that has been asked for, `null` where the runtime
+ *  refused to build one. Constructing an `Intl.DisplayNames` costs roughly nine
+ *  times what asking an existing one does, and every topic row asks on every
+ *  render — for the language in its ⚠️/ℹ️ marker — as does every 🧹 panel.
+ *
+ *  Bounded by the interface languages, so a handful of entries at most. */
+const formatters = new Map<string, Intl.DisplayNames | null>();
+
+/** A language's name, in `inLang`. `Intl.DisplayNames` is generated from the same
+ *  CLDR data the language lists are, so it agrees with them for free and needs no
+ *  table of our own — pass a language its own code for the endonym. */
+function displayName(l: string, inLang: string): string {
+  let f = formatters.get(inLang);
+  if (f === undefined) {
+    try {
+      f = new Intl.DisplayNames([inLang], { type: "language" });
+    } catch {
+      // A runtime without the API, or a locale it refuses to parse.
+      f = null;
+    }
+    formatters.set(inLang, f);
+  }
+  try {
+    return f?.of(l) ?? l.toUpperCase();
+  } catch {
+    // `of` throws on its own for a malformed tag, which a stored preference can be.
+    return l.toUpperCase();
+  }
+}
+
+/** Where one list's answer about one variant is stored. Both halves, since a list
+ *  can declare more than one and they are separate questions. */
+function overrideKey(v: Variant, tid: string): string {
+  return `${v.id}|${tid}`;
+}
 
 class LangState {
-  /** Which variant of a localized topic to show. Neutral topics ignore it. */
+  /** The **content** language: which names a list emits, and what the 🌐 picker
+   *  sets. Neutral topics ignore it. */
   current = $state("en");
+
+  /** The **interface** preference: AUTO, or a language with a dictionary. Stored
+   *  separately from the content language — the whole point is that they differ. */
+  uiPref = $state(AUTO);
+
+  /** What the browser asked for at startup, kept for AUTO to fall back on. */
+  #browser = "";
 
   /** Languages the picker offers — the app's curated set (see locale/), not
    *  derived from topics: a topic missing the selected language falls back to en. */
-  readonly available: string[] = SUPPORTED_LANGS;
+  readonly available: string[] = CONTENT_LANGS;
 
-  /** UI-chrome strings for the current language, English where untranslated. */
-  readonly ui: UIStrings = $derived(strings(this.current));
+  /** The language the chrome actually renders in.
+   *
+   *  AUTO is *not* simply "follow the picker": the picker offers languages we have
+   *  no dictionary for, and a German reader choosing Japanese lists asked for
+   *  Japanese names, not an English interface. So the content language is tried
+   *  first, then whatever the browser wanted, then English. */
+  readonly uiLang: string = $derived(
+    this.uiPref !== AUTO && UI_LANGS.includes(this.uiPref)
+      ? this.uiPref
+      : (matchTag(this.current, UI_LANGS) ??
+        (this.#browser ? matchTag(this.#browser, UI_LANGS) : undefined) ??
+        FALLBACK_LANG),
+  );
 
-  /** Display name of a language, in that language. */
+  /** UI-chrome strings for the interface language. */
+  readonly ui: UIStrings = $derived(strings(this.uiLang));
+
+  /** A language in its own language — what the picker lists. */
   name(l: string): string {
-    return ENDONYMS[l] ?? l.toUpperCase();
+    return displayName(l, l);
   }
 
-  /** Resolve the startup language: stored → browser → en → first available. */
+  /** A language in the interface language — what a sentence about it says. */
+  nameInUi(l: string): string {
+    return displayName(l, this.uiLang);
+  }
+
+  /** Resolve the startup languages: stored → browser → en, the stored and browser
+   *  tags matched rather than compared, so `zh-CN` finds Simplified Chinese. */
   init(): void {
-    const stored = read();
-    const browser = navigator.language?.slice(0, 2);
+    this.#browser = navigator.language ?? "";
+    const stored = read(STORAGE_KEY);
     this.current =
-      [stored, browser, "en"].find((l) => l && this.available.includes(l)) ??
+      [stored, this.#browser, FALLBACK_LANG]
+        .map((l) => (l ? matchTag(l, this.available) : undefined))
+        .find((l) => l !== undefined) ??
       this.available[0] ??
-      "en";
+      FALLBACK_LANG;
+    for (const l of (read(VARIANT_STORAGE_KEY) ?? "").split(",").filter(Boolean)) {
+      if (variantFor(l)) this.variants[l] = true;
+    }
+    const ui = read(UI_STORAGE_KEY);
+    this.uiPref = ui && (ui === AUTO || UI_LANGS.includes(ui)) ? ui : AUTO;
   }
 
   /** Switch languages. Topic files carry every language inline, so nothing is
@@ -48,7 +120,13 @@ class LangState {
   set(l: string): void {
     if (l === this.current) return;
     this.current = l;
-    write(l);
+    write(STORAGE_KEY, l);
+  }
+
+  /** Pin the interface to one language, or hand it back to AUTO. */
+  setUiPref(l: string): void {
+    this.uiPref = l;
+    write(UI_STORAGE_KEY, l);
   }
 
   // --- Content language ------------------------------------------------------
@@ -67,8 +145,74 @@ class LangState {
    *  language in the picker, and that changes under it. */
   forceEnglish = $state<Record<string, boolean>>({});
 
+  /** Languages switched to their second way of being written, by language tag.
+   *  Stored: unlike the English toggles this is a lasting preference — someone who
+   *  reads romaji reads it every visit. */
+  variants = $state<Record<string, boolean>>({});
+
+  /** Lists told to deviate from the global choice, by variant *and* topic id. Only
+   *  meaningful for a variant declared `perTopic`.
+   *
+   *  By variant as well, because one list can declare two: items and moves carry
+   *  both `es-419` and `ja-Latn`, so a key on the topic alone let a reader's Spanish
+   *  decision govern their romaji — and romaji, having no per-list control, offered
+   *  no way to take it back. */
+  variantByTopic = $state<Record<string, boolean>>({});
+
+  /** What each topic declares in `languages`, mirrored from the manifest by
+   *  `topics` at load — this store cannot ask for it, since that one imports this
+   *  one. Used for one question: does a variant apply to this list at all. */
+  declaredLangs = $state<Record<string, readonly string[]>>({});
+
+  /** Topics whose romaji are transliterated at render time rather than stored,
+   *  mirrored the same way. */
+  derivedRomaji = $state<Record<string, boolean>>({});
+
+  /** Whether this list's names are being transliterated right now: it says its
+   *  romaji are derived, and the reader has asked for romaji. Everything that
+   *  renders an entry passes this along — see `resolveStr` in lib/words.
+   *
+   *  The tag rather than "a variant is on": the two lists with derived romaji also
+   *  declare `es-419`, so asking the looser question calls Latin American Spanish a
+   *  romanization. `contentLang` has already applied the per-list gate, so the tag
+   *  it returns is the whole answer. */
+  derivesRomaji(tid: string): boolean {
+    return !!this.derivedRomaji[tid] && this.contentLang(tid).toLowerCase().endsWith("-latn");
+  }
+
+  variantOn(l: string): boolean {
+    return !!variantFor(l) && !!this.variants[l];
+  }
+  /** Whether this list uses the variant: its own answer if it has one, the global
+   *  one otherwise.
+   *
+   *  A list that doesn't declare the variant tag never uses it, whatever the
+   *  switch says. That gate is what lets an absent key mean "the same as English"
+   *  — the items carry no romaji at all, and without it every one of them would
+   *  resolve to its English name the moment romaji was switched on. */
+  variantOnFor(tid: string): boolean {
+    const v = variantFor(this.current);
+    if (!v || !(this.declaredLangs[tid] ?? []).includes(v.tag)) return false;
+    // A variant with no per-list control can hold no per-list answer. Reading one
+    // anyway is the other half of how a stale choice reached the wrong variant.
+    if (!v.perTopic) return this.variantOn(this.current);
+    return this.variantByTopic[overrideKey(v, tid)] ?? this.variantOn(this.current);
+  }
+  toggleVariantFor(tid: string): void {
+    const v = variantFor(this.current);
+    if (!v?.perTopic) return;
+    this.variantByTopic[overrideKey(v, tid)] = !this.variantOnFor(tid);
+  }
+  toggleVariant(l: string): void {
+    this.variants[l] = !this.variants[l];
+    write(VARIANT_STORAGE_KEY, Object.keys(this.variants).filter((k) => this.variants[k]).join(","));
+  }
+
+  /** The tag a list's entries resolve with: English where the topic is switched to
+   *  it, the variant tag where one is on, the content language otherwise. */
   contentLang(tid: string): string {
-    return this.forceEnglish[tid] ? FALLBACK_LANG : this.current;
+    if (this.forceEnglish[tid]) return FALLBACK_LANG;
+    return this.variantOnFor(tid) ? VARIANTS[this.current].tag : this.current;
   }
   isForcedEnglish(t: TopicSummary): boolean {
     return !!this.forceEnglish[t.id];
@@ -91,16 +235,16 @@ class LangState {
 
 // localStorage throws in a few real setups (private mode, blocked storage), and
 // a missing preference is never worth an error.
-function read(): string | null {
+function read(key: string): string | null {
   try {
-    return localStorage.getItem(STORAGE_KEY);
+    return localStorage.getItem(key);
   } catch {
     return null;
   }
 }
-function write(l: string): void {
+function write(key: string, l: string): void {
   try {
-    localStorage.setItem(STORAGE_KEY, l);
+    localStorage.setItem(key, l);
   } catch {
     /* storage unavailable — the choice just won't survive a reload */
   }

@@ -1,0 +1,12 @@
+{
+  "title": {
+    "en": "Gaming",
+    "es": "Videojuegos",
+    "fr": "Jeux vidéo",
+    "it": "Videogiochi",
+    "ja": "ゲーム",
+    "ko": "게임"
+  },
+  "icon": "🎮",
+  "order": 3
+}

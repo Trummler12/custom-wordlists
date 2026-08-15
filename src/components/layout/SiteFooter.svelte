@@ -9,18 +9,18 @@
        topic column's left edge and the output panel's right edge. -->
   <div class="footer-inner">
     <span class="footer-help">
-      {lang.ui.helpOut}
+      {lang.ui.footer.helpOut}
       <a
         href={REPO_URL + "?tab=contributing-ov-file#contributing"}
         target="_blank"
-        rel="noopener noreferrer">{lang.ui.contributionGuide}</a
-      >{lang.ui.helpOutAfter}
+        rel="noopener noreferrer">{lang.ui.footer.contributionGuide}</a
+      >{lang.ui.footer.helpOutAfter}
     </span>
     <a
       class="footer-repo"
       href={REPO_URL + "#custom-wordlists"}
       target="_blank"
-      rel="noopener noreferrer">{lang.ui.repository}</a
+      rel="noopener noreferrer">{lang.ui.footer.repository}</a
     >
   </div>
 </footer>

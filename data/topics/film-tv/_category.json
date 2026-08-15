@@ -1,3 +1,10 @@
 {
-  "title": "Film & TV"
+  "title": {
+    "en": "Film & TV",
+    "es": "Cine y TV",
+    "fr": "Cinéma et TV",
+    "it": "Film e TV",
+    "ja": "映画・テレビ",
+    "ko": "영화·TV"
+  }
 }

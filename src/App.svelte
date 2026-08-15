@@ -18,9 +18,14 @@
   });
 </script>
 
-<!-- One pair of window handlers for the whole app: both overlays close the same
-     way, and this is also where the last pointer type is recorded. -->
-<svelte:window onpointerdown={overlays.onPointerDown} onkeydown={overlays.onKeyDown} />
+<!-- One set of window handlers for the whole app: every overlay closes the same
+     way. Scroll is there for the pinned tip-note alone, which is the one overlay
+     that outlives the pointer that opened it. -->
+<svelte:window
+  onpointerdown={overlays.onPointerDown}
+  onkeydown={overlays.onKeyDown}
+  onscroll={overlays.onScroll}
+/>
 
 <main>
   <!-- `single` collapses the grid to one column while there is nothing to show

@@ -79,10 +79,20 @@ class SelectionState {
   }
 
   groupTotal(tid: string, g: Group): number {
-    return renderCount(groupEntries(g), this.modeOf(this.key(tid, g.id)), lang.contentLang(tid));
+    return renderCount(
+      groupEntries(g),
+      this.modeOf(this.key(tid, g.id)),
+      lang.contentLang(tid),
+      lang.derivesRomaji(tid),
+    );
   }
   groupSelCount(tid: string, g: Group): number {
-    return renderCount(this.entriesOf(tid, g), this.modeOf(this.key(tid, g.id)), lang.contentLang(tid));
+    return renderCount(
+      this.entriesOf(tid, g),
+      this.modeOf(this.key(tid, g.id)),
+      lang.contentLang(tid),
+      lang.derivesRomaji(tid),
+    );
   }
 
   groupFull(tid: string, g: Group): boolean {

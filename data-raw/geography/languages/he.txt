@@ -1,0 +1,609 @@
+aa	אפארית
+ab	אבחזית
+ace	אכינזית
+ach	אקולי
+ada	אדנמה
+ady	אדיגית
+ae	אבסטן
+aeb	Tunisian Arabic
+af	אפריקאנס
+afh	אפריהילי
+agq	אהיים
+ain	אינו
+ak	אקאן
+akk	אכדית
+akz	Alabama
+ale	אלאוט
+aln	Gheg Albanian
+alt	אלטאי דרומית
+am	אמהרית
+an	אראגונית
+ang	אנגלית עתיקה
+anp	אנג׳יקה
+ar	ערבית
+ar_001	ערבית ספרותית
+arc	ארמית
+arn	אראוקנית
+aro	Araona
+arp	ארפהו
+arq	Algerian Arabic
+arw	ארוואק
+ary	Moroccan Arabic
+arz	Egyptian Arabic
+as	אסאמית
+asa	אסו
+ase	American Sign Language
+ast	אסטורית
+av	אבארית
+avk	Kotava
+awa	אוואדית
+ay	איימארית
+az	אזרית
+azb	South Azerbaijani
+ba	בשקירית
+bal	באלוצ׳י
+ban	בלינזית
+bar	בווארית
+bas	בסאא
+bax	באקס
+bbc	Batak Toba
+bbj	גומל
+be	בלארוסית
+bej	בז׳ה
+bem	במבה
+bew	Betawi
+bez	בנה
+bfd	באפוט
+bfq	Badaga
+bg	בולגרית
+bho	בוג׳פורי
+bi	ביסלמה
+bik	ביקול
+bin	ביני
+bjn	Banjar
+bkm	קום
+bla	סיקסיקה
+bm	במבארה
+bn	בנגלית
+bo	טיבטית
+bpy	Bishnupriya
+bqi	Bakhtiari
+br	ברטונית
+bra	בראג׳
+brh	Brahui
+brx	בודו
+bs	בוסנית
+bss	אקוסה
+bua	בוריאט
+bug	בוגינזית
+bum	בולו
+byn	בלין
+byv	מדומבה
+ca	קטלאנית
+cad	קאדו
+car	קאריב
+cay	קאיוגה
+cch	אטסם
+ce	צ׳צ׳נית
+ceb	קבואנו
+cgg	צ׳יגה
+ch	צ׳מורו
+chb	צ׳יבצ׳ה
+chg	צ׳אגאטאי
+chk	צ׳וקסה
+chm	מארי
+chn	ניב צ׳ינוק
+cho	צ׳וקטאו
+chp	צ׳יפוויאן
+chr	צ׳רוקי
+chy	שאיין
+ckb	כורדית סוראנית
+co	קורסיקנית
+cop	קופטית
+cps	Capiznon
+cr	קרי
+crh	טטרית של קרים
+cs	צ׳כית
+csb	קשוביאן
+cu	סלאבית כנסייתית עתיקה
+cv	צ׳ובאש
+cy	ולשית
+da	דנית
+dak	דקוטה
+dar	דרגווה
+dav	טאיטה
+de	גרמנית
+de_AT	גרמנית אוסטרית
+de_CH	גרמנית שוויצרית (גבוהה)
+del	דלאוור
+den	סלאבית
+dgr	דוגריב
+din	דינקה
+dje	זארמה
+doi	דוגרי
+dsb	סורבית נמוכה
+dtp	Central Dusun
+dua	דואלה
+dum	הולנדית תיכונה
+dv	דיבהי
+dyo	הולה-פוניי
+dyu	דיולה
+dz	דזונקה
+dzg	דזאנגה
+ebu	אמבו
+ee	אווה
+efi	אפיק
+egl	Emilian
+egy	מצרית עתיקה
+eka	אקיוק
+el	יוונית
+elx	עילמית
+en	אנגלית
+en_AU	אנגלית אוסטרלית
+en_CA	אנגלית קנדית
+en_GB	אנגלית בריטית
+en_US	אנגלית אמריקאית
+enm	אנגלית תיכונה
+eo	אספרנטו
+es	ספרדית
+es_419	ספרדית לטינו־אמריקאית
+es_ES	ספרדית אירופאית
+es_MX	ספרדית מקסיקנית
+esu	Central Yupik
+et	אסטונית
+eu	בסקית
+ewo	אוונדו
+ext	Extremaduran
+fa	פרסית
+fan	פנג
+fat	פאנטי
+ff	פולה
+fi	פינית
+fil	פיליפינית
+fit	Tornedalen Finnish
+fj	פיג׳ית
+fo	פארואזית
+fon	פון
+fr	צרפתית
+fr_CA	צרפתית קנדית
+fr_CH	צרפתית שוויצרית
+frc	Cajun French
+frm	צרפתית תיכונה
+fro	צרפתית עתיקה
+frp	Arpitan
+frr	פריזית צפונית
+frs	פריזיאן מזרחית
+fur	פריולית
+fy	פריזית
+ga	אירית
+gaa	גא
+gag	גגאוזית
+gan	Gan Chinese
+gay	גאיו
+gba	גבאיה
+gbz	Zoroastrian Dari
+gd	גאלית סקוטית
+gez	געז
+gil	גילברטזית
+gl	גליציאנית
+glk	Gilaki
+gmh	גרמנית בינונית-גבוהה
+gn	גוארני
+goh	גרמנית עתיקה גבוהה
+gom	Goan Konkani
+gon	גונדי
+gor	גורונטאלו
+got	גותית
+grb	גרבו
+grc	יוונית עתיקה
+gsw	גרמנית שוויצרית
+gu	גוג׳ראטית
+guc	Wayuu
+gur	Frafra
+guz	גוסי
+gv	מאנית
+gwi	גוויצ׳ין
+ha	האוסה
+hai	האידה
+hak	Hakka Chinese
+haw	הוואית
+he	עברית
+hi	הינדי
+hif	Fiji Hindi
+hil	היליגאינון
+hit	חיתית
+hmn	מונג
+ho	הארי מוטו
+hr	קרואטית
+hsb	סורבית גבוהה
+hsn	Xiang Chinese
+ht	האיטית
+hu	הונגרית
+hup	הופה
+hy	ארמנית
+hz	הררו
+ia	‏אינטרלינגואה
+iba	איבאן
+ibb	איביביו
+id	אינדונזית
+ie	אינטרלינגה
+ig	איגבו
+ii	סיצ׳ואן יי
+ik	אינופיאק
+ilo	אילוקו
+inh	אינגושית
+io	אידו
+is	איסלנדית
+it	איטלקית
+iu	אינוקטיטוט
+izh	Ingrian
+ja	יפנית
+jam	Jamaican Creole English
+jbo	לויבאן
+jgo	נגומה
+jmc	מצ׳אמה
+jpr	פרסית יהודית
+jrb	ערבית יהודית
+jut	Jutish
+jv	יאוונית
+ka	גאורגית
+kaa	קארא-קלפאק
+kab	קבילה
+kac	קצ׳ין
+kaj	ג׳יו
+kam	קמבה
+kaw	קאווי
+kbd	קברדית
+kbl	קנמבו
+kcg	טיאפ
+kde	מקונדה
+kea	קאבוורדיאנו
+ken	Kenyang
+kfo	קורו
+kg	קונגו
+kgp	Kaingang
+kha	קאסי
+kho	קוטאנזית
+khq	קוירה צ׳יני
+khw	Khowar
+ki	קיקויו
+kiu	Kirmanjki
+kj	קואניאמה
+kk	קזחית
+kkj	קאקו
+kl	קאלאליסוטית
+kln	קאלנג׳ין
+km	קמרית
+kmb	קימבונדו
+kn	קנאדה
+ko	קוריאנית
+koi	קומי-פרמיאקית
+kok	קונקאני
+kos	קוסראיאן
+kpe	קפלה
+kr	קאנורי
+krc	קראצ׳י-בלקר
+kri	Krio
+krj	Kinaray-a
+krl	קארלית
+kru	קורוק
+ks	קשמירית
+ksb	שמבאלה
+ksf	באפיה
+ksh	קולוניאן
+ku	כורדית
+kum	קומיק
+kut	קוטנאי
+kv	קומי
+kw	קורנית
+ky	קירגיזית
+la	לטינית
+lad	לדינו
+lag	לאנגי
+lah	לנדה
+lam	למבה
+lb	לוקסמבורגית
+lez	לזגית
+lfn	Lingua Franca Nova
+lg	גאנדה
+li	לימבורגיש
+lij	Ligurian
+liv	Livonian
+lkt	לקוטה
+lmo	Lombard
+ln	לינגלה
+lo	לאית
+lol	מונגו
+loz	לוזי
+lt	ליטאית
+ltg	Latgalian
+lu	לובה-קטנגה
+lua	לובה, לולואה
+lui	לואיסנו
+lun	לונדה
+luo	לואו
+lus	לושאי
+luy	לויה
+lv	לטבית
+lzh	Literary Chinese
+lzz	Laz
+mad	מדורסה
+maf	מאפא
+mag	מאגאהית
+mai	מאיטילית
+mak	מקסאר
+man	מנדינגו
+mas	מאסאית
+mde	מאבא
+mdf	מוקשה
+mdr	מנדאר
+men	מנדה
+mer	מרו
+mfe	מוריסיין
+mg	מלגשית
+mga	אירית תיכונה
+mgh	מקואה-מיטו
+mgo	מטא
+mh	מרשאלס
+mi	מאורית
+mic	מיקמק
+min	מיננגקבאו
+mk	מקדונית
+ml	מלאיאלם
+mn	מונגולית
+mnc	מנצ׳ו
+mni	מניפורית
+moh	מוהוק
+mos	מוסי
+mr	מרטהי
+mrj	Western Mari
+ms	מלאית
+mt	מלטית
+mua	מונדאנג
+mul	מספר שפות
+mus	קריק
+mwl	מירנדזית
+mwr	מרווארי
+mwv	Mentawai
+my	בורמזית
+mye	מאיין
+myv	ארזיה
+mzn	Mazanderani
+na	נאורית
+nan	Min Nan Chinese
+nap	נפוליטנית
+naq	נאמה
+nb	‏נורבגית ספרותית
+nd	צפון נדבלה
+nds	גרמנית תחתית
+ne	נפאלית
+new	נווארי
+ng	נדונגה
+nia	ניאס
+niu	ניואיאן
+njo	Ao Naga
+nl	הולנדית
+nl_BE	פלמית
+nmg	קוואסיו
+nn	נורבגית חדשה
+nnh	נגיאמבון
+no	נורבגית
+nog	נוגאי
+non	‏נורדית עתיקה
+nov	Novial
+nqo	נ׳קו
+nr	דרום נדבלה
+nso	סוטו הצפונית
+nus	נואר
+nv	נבחו
+nwc	נווארית קלאסית
+ny	ניאנג׳ה
+nym	ניאמווזי
+nyn	ניאנקולה
+nyo	ניורו
+nzi	נזימה
+oc	אוקסיטנית
+oj	אוג׳יבווה
+om	אורומו
+or	אוריה
+os	אוסטית
+osa	אוסג׳ה
+ota	טורקית עותומנית
+pa	פנג׳אבית
+pag	פנגסינאן
+pal	פלאבי
+pam	פמפאניה
+pap	פפיאמנטו
+pau	פלוואן
+pcd	Picard
+pdc	Pennsylvania German
+pdt	Plautdietsch
+peo	פרסית עתיקה
+pfl	Palatine German
+phn	פניקית
+pi	פאלי
+pl	פולנית
+pms	Piedmontese
+pnt	Pontic
+pon	פונפיאן
+prg	Prussian
+pro	פרובנסאל עתיקה
+ps	פאשטו
+pt	פורטוגלית
+pt_BR	פורטוגלית ברזילאית
+pt_PT	פורטוגלית אירופאית
+qu	קצ׳ואה
+quc	קיצ׳ה
+qug	Chimborazo Highland Quichua
+raj	ראג׳סטן
+rap	רפאנוי
+rar	ררוטונגאן
+rgn	Romagnol
+rif	Riffian
+rm	רומאנש
+rn	קירונדי
+ro	רומנית
+ro_MD	מולדבית
+rof	רומבו
+rom	רומאנית
+root	רוט
+rtm	Rotuman
+ru	רוסית
+rue	Rusyn
+rug	Roviana
+rup	ארומנית
+rw	קינירואנדה
+rwk	רווא
+sa	סנסקריט
+sad	סנדאווה
+sah	סאחה
+sam	ארמית שומרונית
+saq	סמבורו
+sas	ססאק
+sat	סאנטלי
+saz	Saurashtra
+sba	נגמבאי
+sbp	סאנגו
+sc	סרדינית
+scn	סיציליאנית
+sco	סקוטית
+sd	סינדהית
+sdc	Sassarese Sardinian
+se	לאפית צפונית
+see	סנקה
+seh	סנה
+sei	Seri
+sel	סלקופ
+ses	קויראבורו סני
+sg	סנגו
+sga	אירית עתיקה
+sgs	Samogitian
+sh	סרבו-קרואטית
+shi	טצ׳להיט
+shn	שאן
+shu	ערבית צ׳אדית
+si	סינהלה
+sid	סידמו
+sk	סלובקית
+sl	סלובנית
+sli	Lower Silesian
+sly	Selayar
+sm	סמואית
+sma	סאמי דרומית
+smj	לולה סאמי
+smn	אינארי סאמי
+sms	סקולט סאמי
+sn	שונה
+snk	סונינקה
+so	סומלית
+sog	סוגדיאן
+sq	אלבנית
+sr	סרבית
+srn	סרנאן טונגו
+srr	סרר
+ss	סיסוואטי
+ssy	סאהו
+st	ססות׳ו
+stq	Saterland Frisian
+su	סונדנית
+suk	סוקומה
+sus	סוסו
+sux	שומרית
+sv	שוודית
+sw	סווהילית
+swb	Comorian
+swc	סווהילי קונגולטזית
+syc	סירית קלאסית
+syr	סורית
+szl	Silesian
+ta	טמילית
+tcy	Tulu
+te	טלוגו
+tem	טימנה
+teo	טסו
+ter	טרנו
+tet	טטום
+tg	טג׳יקית
+th	תאית
+ti	טיגרינאית
+tig	טיגרית
+tiv	טיב
+tk	טורקמנית
+tkl	טוקלאו
+tkr	Tsakhur
+tl	טגלוג
+tlh	קלינגון
+tli	טלינגיט
+tly	Talysh
+tmh	טמאשק
+tn	טוניסיה
+to	טונגן
+tog	ניאסה טונגה
+tpi	טוק פיסין
+tr	טורקית
+tru	Turoyo
+trv	טרוקו
+ts	טסונגה
+tsd	Tsakonian
+tsi	טסימשיאן
+tt	טטרית
+ttt	Muslim Tat
+tum	טומבוקה
+tvl	טובאלו
+tw	טווי
+twq	טסוואק
+ty	טהיטית
+tyv	טובינית
+tzm	טמזייט של מרכז מרוקו
+udm	אודמורט
+ug	אויגהור
+uga	אוגריתית
+uk	אוקראינית
+umb	אומבונדו
+und	שפה לא ידועה
+ur	אורדו
+uz	אוזבקית
+vai	ואי
+ve	וונדה
+vec	Venetian
+vep	Veps
+vi	ויאטנמית
+vls	West Flemish
+vmf	Main-Franconian
+vo	‏וולאפיק
+vot	ווטיק
+vro	Võro
+vun	וונג׳ו
+wa	וואלון
+wae	וואלסר
+wal	וולאמו
+war	ווראי
+was	וואשו
+wbp	Warlpiri
+wo	ג׳ולוף
+wuu	Wu Chinese
+xal	קלמיק
+xh	קסוסה
+xmf	Mingrelian
+xog	סוגה
+yao	יאו
+yap	יאפזית
+yav	יאנגבן
+ybb	ימבה
+yi	יידיש
+yo	יורובה
+yrl	Nheengatu
+yue	קנטונזית
+za	ז׳ואנג
+zap	זאפוטק
+zbl	בליסימבולס
+zea	Zeelandic
+zen	זנאגה
+zgh	תמזיע׳ת מרוקאית תקנית
+zh	סינית
+zh_Hans	סינית מפושטת
+zh_Hant	סינית מסורתית
+zu	זולו
+zun	זוני
+zxx	ללא תוכן לשוני
+zza	זאזא

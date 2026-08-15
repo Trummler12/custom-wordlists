@@ -1,9 +1,9 @@
 {
   "id": "generation-4",
-  "title": {"short":"Gen IV","long":"Generation IV"},
+  "title": {"short":{"en":"Gen IV","es":"Gen. IV","fr":"Gén. IV","it":"Gen. IV","ja":"第4世代","ko":"4세대"},"long":{"en":"Generation IV","es":"Generación IV","fr":"Génération IV","it":"Generazione IV","ja":"第4世代","ko":"4세대"}},
   "icon": "🔴",
   "description": "Generation IV Pokémon, in ten languages. Fame tiers from an empirical recognition rate (tier 0 = best known); a first pass from one quiz's results, meant to be refined.",
-  "languages": ["de","en","es","fr","it","ja","ja-Latn","ko","zh-Hans","zh-Hant"],
+  "languages": ["de","en","es","es-419","fr","it","ja","ja-Latn","ko","zh-Hans","zh-Hant"],
   "usesEnglishFor": ["*"],
   "sources": [
     "Names: https://pokeapi.co",
@@ -12,7 +12,7 @@
   "groups": [
     {
       "id": "pokemon",
-      "title": "Pokémon",
+      "title": {"en":"Pokémon","ja":"ポケモン","ko":"포켓몬"},
       "tiers": [
         [
           {"en":"Piplup","de":"Plinfa","fr":"Tiplouf","ja":"ポッチャマ","ja-Latn":"Pochama","ko":"팽도리","zh-Hans":"波加曼","zh-Hant":"波加曼"},

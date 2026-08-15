@@ -39,7 +39,7 @@
     class="expander"
     aria-expanded={open}
     aria-controls={`${id}-children`}
-    aria-label={lang.ui.toggle(open, name.long)}
+    aria-label={lang.ui.tree.toggle(open, name.long)}
     onclick={() => selection.toggleCat(node)}
   >
     {open ? "▾" : "▸"}
@@ -69,8 +69,8 @@
         : lang.someForcedEnglish(englishGoverned)
           ? "mixed"
           : "false"}
-      aria-label={lang.ui.englishToggleAll(lang.allForcedEnglish(englishGoverned))}
-      title={lang.ui.englishToggleAll(lang.allForcedEnglish(englishGoverned))}
+      aria-label={lang.ui.language.useEnglishAll(lang.allForcedEnglish(englishGoverned))}
+      title={lang.ui.language.useEnglishAll(lang.allForcedEnglish(englishGoverned))}
       onclick={() => {
         // Same reasoning as the ruler toggle below: a collapsed category shows
         // none of the rows this changes, so open it to show what happened.
@@ -90,8 +90,8 @@
         : selection.someRulersHidden(governed)
           ? "mixed"
           : "false"}
-      aria-label={lang.ui.rulerToggleAll(selection.allRulersShown(governed))}
-      title={lang.ui.rulerToggleAll(selection.allRulersShown(governed))}
+      aria-label={lang.ui.fame.toggleAll(selection.allRulersShown(governed))}
+      title={lang.ui.fame.toggleAll(selection.allRulersShown(governed))}
       onclick={() => {
         // A collapsed category renders none of its topic rows, so a toggle either
         // way leaves nothing visibly changed — open it to show the result (rulers
@@ -103,7 +103,7 @@
   {/if}
   <!-- The ratio alone, since it reads the same in every language; the sentence it
        stands for is a hover away. The row needs the width for its controls. -->
-  <span class="meta" title={lang.ui.wordsOf(selection.catSel(all), selection.catTotal(all))}>
+  <span class="meta" title={lang.ui.tree.wordsOf(selection.catSel(all), selection.catTotal(all))}>
     {selection.catSel(all)}/<span class="total">{selection.catTotal(all)}</span>
   </span>
 </div>

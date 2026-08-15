@@ -45,6 +45,33 @@ function countWords(topic) {
   return n;
 }
 
+/** Where a sibling with no declared `order` sorts. A finite number rather than
+ *  `Infinity`, so two of them subtract to 0 and compare equal — `Infinity` minus
+ *  itself is `NaN`, and a comparator that returns one is left to the engine to
+ *  interpret. It happens to work; it shouldn't have to. */
+const LAST = Number.MAX_SAFE_INTEGER;
+
+/** Names sorted by the `order` in the file each one names, lowest first, with the
+ *  undeclared keeping their alphabetical order behind them.
+ *
+ *  Ordering a few siblings should cost nothing on the rest, and a folder that has
+ *  no opinion shouldn't need a `_category.json` to say so. Loose topics still come
+ *  before subfolders — `order` sorts within each, not across them. */
+async function byOrder(names, fileOf) {
+  const keyed = await Promise.all(
+    names.map(async (name) => {
+      try {
+        const { order } = JSON.parse(await readFile(fileOf(name), "utf8"));
+        return { name, order: Number.isInteger(order) ? order : LAST };
+      } catch {
+        // No file, or none of our business — it simply has no opinion.
+        return { name, order: LAST };
+      }
+    }),
+  );
+  return keyed.sort((a, b) => a.order - b.order).map((k) => k.name);
+}
+
 /**
  * Recursively find topics and category metadata under data/topics. A folder is a
  * category when it has a subfolder, a `_category.json`, or ≥2 topic files: each
@@ -57,8 +84,14 @@ async function collectTopics(segments) {
   const dir = join(TOPICS_DIR, ...segments);
   const entries = await readdir(dir, { withFileTypes: true });
   const allJson = entries.filter((e) => e.isFile() && e.name.endsWith(".json")).map((e) => e.name).sort();
-  const jsonFiles = allJson.filter((f) => f !== CATEGORY_META);
-  const subDirs = entries.filter((e) => e.isDirectory()).map((e) => e.name).sort();
+  const jsonFiles = await byOrder(
+    allJson.filter((f) => f !== CATEGORY_META),
+    (f) => join(dir, f),
+  );
+  const subDirs = await byOrder(
+    entries.filter((e) => e.isDirectory()).map((e) => e.name).sort(),
+    (d) => join(dir, d, CATEGORY_META),
+  );
   const hasCategoryMeta = allJson.includes(CATEGORY_META);
   const isCategory = subDirs.length > 0 || hasCategoryMeta || jsonFiles.length >= 2;
 
@@ -142,6 +175,7 @@ async function buildIndex() {
       ...(typeof data.hideRulersByDefault === "boolean" ? { hideRulersByDefault: data.hideRulersByDefault } : {}),
       ...(data.languages ? { languages: data.languages } : {}),
       ...(data.usesEnglishFor ? { usesEnglishFor: data.usesEnglishFor } : {}),
+      ...(data.generatedRomaji ? { generatedRomaji: true } : {}),
       groupCount: data.groups.length,
       wordCount: countWords(data),
     });

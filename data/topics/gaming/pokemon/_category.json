@@ -1,3 +1,7 @@
 {
-  "title": "Pokémon"
+  "title": {
+    "en": "Pokémon",
+    "ja": "ポケモン",
+    "ko": "포켓몬"
+  }
 }

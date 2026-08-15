@@ -1,0 +1,609 @@
+aa	afarčina
+ab	abcházčina
+ace	acehčina
+ach	ačoli
+ada	adangme
+ady	adygčina
+ae	avestčina
+aeb	Tunisian Arabic
+af	afrikánčina
+afh	afrihili
+agq	aghem
+ain	ainčina
+ak	akančina
+akk	akkadčina
+akz	Alabama
+ale	aleutčina
+aln	Gheg Albanian
+alt	južná altajčina
+am	amharčina
+an	aragónčina
+ang	stará angličtina
+anp	angika
+ar	arabčina
+ar_001	arabčina (moderná štandardná)
+arc	aramejčina
+arn	araukánčina
+aro	Araona
+arp	arapaho
+arq	Algerian Arabic
+arw	arawačtina
+ary	Moroccan Arabic
+arz	Egyptian Arabic
+as	ásamčina
+asa	asu
+ase	American Sign Language
+ast	astúrčina
+av	avarčina
+avk	Kotava
+awa	avadhčina
+ay	aymarčina
+az	azerbajdžančina
+azb	South Azerbaijani
+ba	baškirčina
+bal	balúčtina
+ban	balijčina
+bar	Bavarian
+bas	basa
+bax	bamun
+bbc	Batak Toba
+bbj	ghomala
+be	bieloruština
+bej	bedža
+bem	bemba
+bew	Betawi
+bez	bena
+bfd	bafut
+bfq	Badaga
+bg	bulharčina
+bho	bhódžpurčina
+bi	bislama
+bik	bikol
+bin	bini
+bjn	Banjar
+bkm	kom
+bla	siksika
+bm	bambarčina
+bn	bengálčina
+bo	tibetčina
+bpy	Bishnupriya
+bqi	Bakhtiari
+br	bretónčina
+bra	bradžčina
+brh	Brahui
+brx	bodo
+bs	bosniačtina
+bss	akoose
+bua	buriatčina
+bug	bugiština
+bum	bulu
+byn	blin
+byv	medumba
+ca	katalánčina
+cad	kaddo
+car	karibský
+cay	cayuga
+cch	atsam
+ce	čečenčina
+ceb	cebuánčina
+cgg	kiga
+ch	čamorčina
+chb	čibča
+chg	čagatajčina
+chk	truk
+chm	marijčina
+chn	činucký žargón
+cho	čoktavčina
+chp	čipevajčina
+chr	čerokí
+chy	čejenčina
+ckb	kurdčina (sorání)
+co	korzičtina
+cop	koptčina
+cps	Capiznon
+cr	krí
+crh	krymská turečtina
+cs	čeština
+csb	kašubčina
+cu	cirkevná slovančina
+cv	čuvaština
+cy	waleština
+da	dánčina
+dak	dakotčina
+dar	darginčina
+dav	taita
+de	nemčina
+de_AT	nemčina (rakúska)
+de_CH	nemčina (švajčiarska spisovná)
+del	delawarčina
+den	slovančina
+dgr	dogribčina
+din	dinka
+dje	zarma
+doi	dógrí
+dsb	dolnolužická srbčina
+dtp	Central Dusun
+dua	duala
+dum	stredná holandčina
+dv	divehi
+dyo	jola-fonyi
+dyu	ďula
+dz	dzongkä
+dzg	dazaga
+ebu	embu
+ee	ewe
+efi	efik
+egl	Emilian
+egy	staroegyptský
+eka	ekadžuk
+el	gréčtina
+elx	elamčina
+en	angličtina
+en_AU	angličtina (austrálska)
+en_CA	angličtina (kanadská)
+en_GB	angličtina (britská)
+en_US	angličtina (americká)
+enm	stredná angličtina
+eo	esperanto
+es	španielčina
+es_419	španielčina (latinskoamerická)
+es_ES	španielčina (európska)
+es_MX	španielčina (mexická)
+esu	Central Yupik
+et	estónčina
+eu	baskičtina
+ewo	ewondo
+ext	Extremaduran
+fa	perzština
+fan	fangčina
+fat	fanti
+ff	fulbčina
+fi	fínčina
+fil	filipínčina
+fit	Tornedalen Finnish
+fj	fidžijčina
+fo	faerčina
+fon	fončina
+fr	francúzština
+fr_CA	francúzština (kanadská)
+fr_CH	francúzština (švajčiarska)
+frc	Cajun French
+frm	stredná francúzština
+fro	stará francúzština
+frp	Arpitan
+frr	severná frízština
+frs	východná frízština
+fur	friulčina
+fy	západná frízština
+ga	írčina
+gaa	ga
+gag	gagauzština
+gan	Gan Chinese
+gay	gayo
+gba	gbaja
+gbz	Zoroastrian Dari
+gd	škótska gaelčina
+gez	etiópčina
+gil	kiribatčina
+gl	galícijčina
+glk	Gilaki
+gmh	stredná horná nemčina
+gn	guaraní
+goh	stará horná nemčina
+gom	Goan Konkani
+gon	góndčina
+gor	gorontalo
+got	gótčina
+grb	grebo
+grc	starogréčtina
+gsw	nemčina (švajčiarska)
+gu	gudžarátčina
+guc	Wayuu
+gur	Frafra
+guz	gusii
+gv	mančina
+gwi	gwichʼin
+ha	hauština
+hai	haida
+hak	Hakka Chinese
+haw	havajčina
+he	hebrejčina
+hi	hindčina
+hif	Fiji Hindi
+hil	hiligajnončina
+hit	chetitčina
+hmn	hmong
+ho	hiri motu
+hr	chorvátčina
+hsb	hornolužická srbčina
+hsn	Xiang Chinese
+ht	haitčina
+hu	maďarčina
+hup	hupčina
+hy	arménčina
+hz	herero
+ia	interlingua
+iba	ibančina
+ibb	ibibio
+id	indonézština
+ie	interlingue
+ig	igboština
+ii	s’čchuanská ioština
+ik	inupiaq
+ilo	ilokánčina
+inh	inguština
+io	ido
+is	islandčina
+it	taliančina
+iu	inuktitut
+izh	Ingrian
+ja	japončina
+jam	Jamaican Creole English
+jbo	lojban
+jgo	ngomba
+jmc	mašame
+jpr	židovská perzština
+jrb	židovská arabčina
+jut	Jutish
+jv	jávčina
+ka	gruzínčina
+kaa	karakalpačtina
+kab	kabylčina
+kac	kačjinčina
+kaj	jju
+kam	kamba
+kaw	kawi
+kbd	kabardčina
+kbl	kanembu
+kcg	tyap
+kde	makonde
+kea	kapverdčina
+ken	Kenyang
+kfo	koro
+kg	kongčina
+kgp	Kaingang
+kha	khasijčina
+kho	chotančina
+khq	západná songhajčina
+khw	Khowar
+ki	kikujčina
+kiu	Kirmanjki
+kj	kuaňama
+kk	kazaština
+kkj	kako
+kl	grónčina
+kln	kalendžin
+km	khmérčina
+kmb	kimbundu
+kn	kannadčina
+ko	kórejčina
+koi	komi-permiačtina
+kok	konkánčina
+kos	kusaie
+kpe	kpelle
+kr	kanurijčina
+krc	karačajevsko-balkarský jazyk
+kri	Krio
+krj	Kinaray-a
+krl	karelčina
+kru	kurukhčina
+ks	kašmírčina
+ksb	šambala
+ksf	bafia
+ksh	kolínčina
+ku	kurdčina
+kum	kumyčtina
+kut	kutenajčina
+kv	komijčina
+kw	kornčina
+ky	kirgizština
+la	latinčina
+lad	židovská španielčina
+lag	langi
+lah	lahandčina
+lam	lamba
+lb	luxemburčina
+lez	lezginčina
+lfn	Lingua Franca Nova
+lg	gandčina
+li	limburčina
+lij	Ligurian
+liv	Livonian
+lkt	lakotčina
+lmo	Lombard
+ln	lingalčina
+lo	laoština
+lol	mongo
+loz	lozi
+lt	litovčina
+ltg	Latgalian
+lu	luba-katanga
+lua	luba-luluánčina
+lui	luiseňo
+lun	lunda
+luo	luo
+lus	mizorámčina
+luy	luhja
+lv	lotyština
+lzh	Literary Chinese
+lzz	Laz
+mad	madurčina
+maf	mafa
+mag	magadhčina
+mai	maithilčina
+mak	makasarčina
+man	mandingo
+mas	masajčina
+mde	maba
+mdf	mokšiančina
+mdr	mandarčina
+men	mendi
+mer	meru
+mfe	maurícijská kreolčina
+mg	malgaština
+mga	stredná írčina
+mgh	makua-meetto
+mgo	meta’
+mh	kajin-majol
+mi	maorijčina
+mic	mikmakčina
+min	minangkabaučina
+mk	macedónčina
+ml	malajálamčina
+mn	mongolčina
+mnc	mandžuština
+mni	manípurčina
+moh	mohawkčina
+mos	mossi
+mr	maráthčina
+mrj	Western Mari
+ms	malajčina
+mt	maltčina
+mua	mundang
+mul	viaceré jazyky
+mus	kríkčina
+mwl	mirandčina
+mwr	marawari
+mwv	Mentawai
+my	barmčina
+mye	myene
+myv	erzjančina
+mzn	Mazanderani
+na	nauru
+nan	Min Nan Chinese
+nap	neapolčina
+naq	nama
+nb	nórsky bokmål
+nd	severné ndebele
+nds	dolná nemčina
+ne	nepálčina
+new	nevárčina
+ng	ndonga
+nia	niasánčina
+niu	niueština
+njo	Ao Naga
+nl	holandčina
+nl_BE	flámčina
+nmg	kwasio
+nn	nórsky nynorsk
+nnh	ngiemboon
+no	nórčina
+nog	nogajčina
+non	stará nórčina
+nov	Novial
+nqo	n’ko
+nr	južná ndebelčina
+nso	severná sothčina
+nus	nuer
+nv	navajo
+nwc	klasická nevárčina
+ny	čewa
+nym	ňamwezi
+nyn	ňankole
+nyo	ňoro
+nzi	nzima
+oc	okcitánčina
+oj	odžibva
+om	oromčina
+or	uríjčina
+os	osetčina
+osa	osagčina
+ota	osmanská turečtina
+pa	pandžábčina
+pag	pangasinančina
+pal	pahlaví
+pam	pampanga
+pap	papiamento
+pau	palaučina
+pcd	Picard
+pdc	Pennsylvania German
+pdt	Plautdietsch
+peo	stará perzština
+pfl	Palatine German
+phn	feničtina
+pi	pálí
+pl	poľština
+pms	Piedmontese
+pnt	Pontic
+pon	pohnpeičina
+prg	Prussian
+pro	stará okcitánčina
+ps	paštčina
+pt	portugalčina
+pt_BR	portugalčina (brazílska)
+pt_PT	portugalčina (európska)
+qu	kečuánčina
+quc	kʼicheʼ
+qug	Chimborazo Highland Quichua
+raj	radžastančina
+rap	rapanujčina
+rar	rarotongan
+rgn	Romagnol
+rif	Riffian
+rm	rétorománčina
+rn	kirundčina
+ro	rumunčina
+ro_MD	moldavčina
+rof	rombo
+rom	rómčina
+root	koreň
+rtm	Rotuman
+ru	ruština
+rue	Rusyn
+rug	Roviana
+rup	arumunčina
+rw	kiňarwanda
+rwk	rwa
+sa	sanskrit
+sad	sandawe
+sah	jakutčina
+sam	samaritánska aramejčina
+saq	samburu
+sas	sasačtina
+sat	santalčina
+saz	Saurashtra
+sba	ngambay
+sbp	sangu
+sc	sardínčina
+scn	sicílčina
+sco	škótčina
+sd	sindhčina
+sdc	Sassarese Sardinian
+se	severné sami
+see	seneca
+seh	sena
+sei	Seri
+sel	selkupčina
+ses	koyraboro senni
+sg	sango
+sga	stará írčina
+sgs	Samogitian
+sh	srbochorvátčina
+shi	tachelhit
+shn	šančina
+shu	čadská arabčina
+si	sinhalčina
+sid	sidamo
+sk	slovenčina
+sl	slovinčina
+sli	Lower Silesian
+sly	Selayar
+sm	samojčina
+sma	južné sami
+smj	sami (lule)
+smn	sami (inari)
+sms	sami (skolt)
+sn	šončina
+snk	soninke
+so	somálčina
+sog	sogdijčina
+sq	albánčina
+sr	srbčina
+srn	sranan
+srr	serer
+ss	svazijčina
+ssy	saho
+st	južná sothčina
+stq	Saterland Frisian
+su	sundčina
+suk	sukuma
+sus	susu
+sux	sumerčina
+sv	švédčina
+sw	svahilčina
+swb	komorčina
+swc	svahilčina (konžská)
+syc	klasická sýrčina
+syr	sýrčina
+szl	Silesian
+ta	tamilčina
+tcy	Tulu
+te	telugčina
+tem	temne
+teo	teso
+ter	tereno
+tet	tetum
+tg	tadžičtina
+th	thajčina
+ti	tigriňa
+tig	tigrejčina
+tiv	tiv
+tk	turkménčina
+tkl	tokelaučina
+tkr	Tsakhur
+tl	tagalčina
+tlh	klingónčina
+tli	tlingitčina
+tly	Talysh
+tmh	tamašek
+tn	tswančina
+to	tongčina
+tog	ňasa tonga
+tpi	tok pisin
+tr	turečtina
+tru	Turoyo
+trv	taroko
+ts	tsonga
+tsd	Tsakonian
+tsi	tsimshijské jazyky
+tt	tatárčina
+ttt	Muslim Tat
+tum	tumbuka
+tvl	tuvalčina
+tw	twi
+twq	tasawaq
+ty	tahitčina
+tyv	tuviančina
+tzm	tamašek (stredomarocký)
+udm	udmurtčina
+ug	ujgurčina
+uga	ugaritčina
+uk	ukrajinčina
+umb	umbundu
+und	neznámy jazyk
+ur	urdčina
+uz	uzbečtina
+vai	vai
+ve	vendčina
+vec	Venetian
+vep	Veps
+vi	vietnamčina
+vls	West Flemish
+vmf	Main-Franconian
+vo	volapük
+vot	vodčina
+vro	Võro
+vun	vunjo
+wa	valónčina
+wae	walserčina
+wal	walamo
+war	waray
+was	washo
+wbp	Warlpiri
+wo	wolof
+wuu	Wu Chinese
+xal	kalmyčtina
+xh	xhosa
+xmf	Mingrelian
+xog	soga
+yao	jao
+yap	japčina
+yav	jangben
+ybb	yemba
+yi	jidiš
+yo	jorubčina
+yrl	Nheengatu
+yue	kantončina
+za	čuangčina
+zap	zapotéčtina
+zbl	systém Bliss
+zea	Zeelandic
+zen	zenaga
+zgh	tamašek (štandardný marocký)
+zh	čínština
+zh_Hans	čínština (zjednodušená)
+zh_Hant	čínština (tradičná)
+zu	zuluština
+zun	zuniština
+zxx	bez jazykového obsahu
+zza	zázá

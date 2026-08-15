@@ -10,7 +10,7 @@
   class="chips"
   role="textbox"
   aria-readonly="true"
-  aria-label={lang.ui.generatedList}
+  aria-label={lang.ui.output.generatedList}
   tabindex="0"
   onclick={(e) => selectAll(e.currentTarget)}
   onkeydown={(e) => {

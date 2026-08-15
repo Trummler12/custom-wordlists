@@ -1,31 +1,187 @@
 {
   "id": "items",
-  "title": "Items",
+  "title": {"en":"Items","es":"Objetos","fr":"Objets","it":"Strumenti","ja":"どうぐ","ko":"도구"},
   "icon": "🎒",
   "description": "Pokémon items, in nine languages.",
-  "languages": ["de","en","es","fr","it","ja","ko","zh-Hans","zh-Hant"],
+  "languages": ["de","en","es","es-419","fr","it","ja","ja-Latn","ko","zh-Hans","zh-Hant"],
   "usesEnglishFor": ["*"],
+  "generatedRomaji": true,
   "hideRulersByDefault": true,
   "sources": "Names: https://pokeapi.co",
   "groups": [
     {
       "id": "items",
-      "title": "Items",
+      "title": {"en":"Items","es":"Objetos","fr":"Objets","it":"Strumenti","ja":"どうぐ","ko":"도구"},
       "omitted": [
-        {"id":"dynamax-crystals","match":"★*","locked":true,"reason":{"en":"300 [Dynamax Crystals](https://bulbapedia.bulbagarden.net/wiki/Dynamax_Crystal), each named after a star in the Bright Star Catalogue; only twelve were ever usable","de":"300 [Dynamax-Kristalle](https://bulbapedia.bulbagarden.net/wiki/Dynamax_Crystal), jeder nach einem Stern aus dem Bright Star Catalogue benannt; nur zwölf waren je nutzbar"}},
-        {"id":"x-doses","match":["X-* [2-6]","Angriffplus[0-9]"],"reason":{"en":"Stronger doses of the [X- items](https://bulbapedia.bulbagarden.net/wiki/Battle_item#Effect), drawn the same as the ones already listed","de":"Stärkere Dosen der [X-Items](https://bulbapedia.bulbagarden.net/wiki/Battle_item#Effect), gezeichnet wie die bereits gelisteten"}},
-        {"id":"room-keys","match":"[KR][0-9]-Schlüssel","as":{"en":"Key","de":"Schlüssel"},"reason":{"en":"Eight numbered [room keys](https://bulbapedia.bulbagarden.net/wiki/Key_to_Room_1) - the same shipwreck in Ruby/Sapphire and in its remake, all one drawing","de":"Acht nummerierte [Raumschlüssel](https://bulbapedia.bulbagarden.net/wiki/Key_to_Room_1) – dasselbe Schiffswrack in Rubin/Saphir und im Remake, alle dieselbe Zeichnung"}},
-        {"id":"coupons","match":"Kupon [0-9]","as":{"en":"Coupon","de":"Kupon"},"reason":{"en":"Three identical [coupons](https://bulbapedia.bulbagarden.net/wiki/Coupon)","de":"Drei identische [Kupons](https://bulbapedia.bulbagarden.net/wiki/Coupon)"}},
-        {"id":"gram-mail","match":"Briefpost [0-9]","reason":{"en":"Three numbered copies of one [piece of mail](https://bulbapedia.bulbagarden.net/wiki/Gram)","de":"Drei nummerierte Kopien derselben [Briefpost](https://bulbapedia.bulbagarden.net/wiki/Gram)"}},
-        {"id":"exp-candies","match":"EP-Bonbon *","as":{"en":"Exp. Candy","de":"EP-Bonbon","es":"Caramelo Exp.","fr":"Bonbon Exp.","it":"Caram. Esp.","ja":"けいけんアメ","ko":"경험사탕","zh-Hans":"经验糖果","zh-Hant":"經驗糖果"},"reason":{"en":"Five sizes of the same [Exp. Candy](https://bulbapedia.bulbagarden.net/wiki/Exp._Candy), XS through XL","de":"Fünf Grössen desselben [EP-Bonbons](https://www.pokewiki.de/EP-Bonbon), XS bis XL"}},
-        {"id":"stat-candy-doses","match":["*bonbon+","*bonbon++"],"reason":{"en":"Larger doses of the six [stat candies](https://bulbapedia.bulbagarden.net/wiki/Dynamax_Candy) already listed — Health Candy L and XL next to Health Candy","de":"Grössere Dosen der sechs bereits gelisteten [Statuswert-Bonbons](https://www.pokewiki.de/Bonbon) – Energiebonbon+ und ++ neben dem Energiebonbon"}},
-        {"id":"technical-machines","match":"TM[0-9]*","as":{"en":"Technical Machine","de":"Technische Maschine","es":"Máquina Técnica","fr":"Capsule Technique","it":"Macchina Tecnica","ja":"わざマシン","ko":"기술머신","zh-Hans":"招式学习器","zh-Hant":"招式學習器"},"reason":{"en":"230 numbered [TMs](https://bulbapedia.bulbagarden.net/wiki/TM), all one disc whatever move they teach","de":"230 nummerierte [TMs](https://www.pokewiki.de/TM), alle dieselbe Disc, ganz gleich welche Attacke sie lehren"}},
-        {"id":"hidden-machines","match":"HM[0-9]*","as":{"en":"Hidden Machine","de":"Versteckte Maschine","es":"Máquina Oculta","fr":"Capsule Secrète","it":"Macchina Nascosta","ja":"ひでんマシン","ko":"비전머신","zh-Hans":"秘传学习器","zh-Hant":"秘傳學習器"},"reason":{"en":"Eight numbered [HMs](https://bulbapedia.bulbagarden.net/wiki/HM), drawn as the TM disc in a different colour","de":"Acht nummerierte [VMs](https://www.pokewiki.de/VM), gezeichnet wie die TM-Disc in einer anderen Farbe"}},
-        {"id":"technical-records","match":"TR[0-9]*","as":{"en":"Technical Record","de":"Technische Platte","es":"Disco Técnico","fr":"Disque Technique","it":"Disco Tecnico","ja":"わざレコード","ko":"기술레코드","zh-Hans":"招式记录","zh-Hant":"招式紀錄"},"reason":{"en":"100 numbered [TRs](https://bulbapedia.bulbagarden.net/wiki/TR), the single-use record the Galar games replaced TMs with","de":"100 nummerierte [TPs](https://www.pokewiki.de/TP), die Einweg-Platte, die die Galar-Spiele anstelle der TMs verwenden"}},
-        {"id":"data-cards","match":"Datenkarte[0-9]*","as":{"en":"Data Card","de":"Datenkarte"},"reason":{"en":"27 numbered [Data Cards](https://bulbapedia.bulbagarden.net/wiki/Data_Card), each recording a different Pokéathlon statistic","de":"27 nummerierte [Datenkarten](https://www.pokewiki.de/Pok%C3%A9athlon#Datenkarten), die je eine andere Pokéathlon-Statistik festhalten"}}
+        {
+          "id": "dynamax-crystals",
+          "match": "★*",
+          "locked": true,
+          "reason": {
+            "en": "300 [Dynamax Crystals](https://bulbapedia.bulbagarden.net/wiki/Dynamax_Crystal), each named after a star in the Bright Star Catalogue; only twelve were ever usable",
+            "de": "300 [Dynamax-Kristalle](https://bulbapedia.bulbagarden.net/wiki/Dynamax_Crystal), jeder nach einem Stern aus dem Bright Star Catalogue benannt; nur zwölf waren je nutzbar",
+            "es": "300 [Cristales Dinamax](https://bulbapedia.bulbagarden.net/wiki/Dynamax_Crystal), cada uno con el nombre de una estrella del Bright Star Catalogue; solo doce llegaron a usarse",
+            "fr": "300 [Cristaux Dynamax](https://bulbapedia.bulbagarden.net/wiki/Dynamax_Crystal), chacun nommé d'après une étoile du Bright Star Catalogue ; douze seulement ont servi",
+            "it": "300 [Cristalli Dynamax](https://bulbapedia.bulbagarden.net/wiki/Dynamax_Crystal), ognuno col nome di una stella del Bright Star Catalogue; solo dodici sono stati utilizzabili",
+            "ja": "300個の[ダイマックスクリスタル](https://bulbapedia.bulbagarden.net/wiki/Dynamax_Crystal)。いずれもブライト・スター・カタログの星の名前で、実際に使えたのは12個だけ",
+            "ko": "300개의 [다이맥스 크리스탈](https://bulbapedia.bulbagarden.net/wiki/Dynamax_Crystal). 모두 밝은 별 목록의 별 이름이며, 실제로 쓸 수 있었던 것은 열두 개뿐"
+          }
+        },
+        {
+          "id": "x-doses",
+          "match": ["X-* [2-6]","Angriffplus[0-9]"],
+          "reason": {
+            "en": "Stronger doses of the [X- items](https://bulbapedia.bulbagarden.net/wiki/Battle_item#Effect), drawn the same as the ones already listed",
+            "de": "Stärkere Dosen der [X-Items](https://bulbapedia.bulbagarden.net/wiki/Battle_item#Effect), gezeichnet wie die bereits gelisteten",
+            "es": "Dosis más fuertes de los [objetos X](https://bulbapedia.bulbagarden.net/wiki/Battle_item#Effect), dibujadas igual que las ya incluidas",
+            "fr": "Doses plus fortes des [objets X](https://bulbapedia.bulbagarden.net/wiki/Battle_item#Effect), dessinées comme celles déjà listées",
+            "it": "Dosi più forti degli [strumenti X](https://bulbapedia.bulbagarden.net/wiki/Battle_item#Effect), disegnate come quelle già presenti",
+            "ja": "すでに載っている[Xシリーズ](https://bulbapedia.bulbagarden.net/wiki/Battle_item#Effect)の強力版。絵柄は同じ",
+            "ko": "이미 있는 [X 아이템](https://bulbapedia.bulbagarden.net/wiki/Battle_item#Effect)의 강화판. 그림은 같음"
+          }
+        },
+        {
+          "id": "room-keys",
+          "match": "[KR][0-9]-Schlüssel",
+          "as": {"en":"Key","de":"Schlüssel","es":"Llave","fr":"Clé","it":"Chiave","ja":"カギ","ko":"열쇠","zh-Hans":"钥匙","zh-Hant":"鑰匙"},
+          "reason": {
+            "en": "Eight numbered [room keys](https://bulbapedia.bulbagarden.net/wiki/Key_to_Room_1) - the same shipwreck in Ruby/Sapphire and in its remake, all one drawing",
+            "de": "Acht nummerierte [Raumschlüssel](https://bulbapedia.bulbagarden.net/wiki/Key_to_Room_1) – dasselbe Schiffswrack in Rubin/Saphir und im Remake, alle dieselbe Zeichnung",
+            "es": "Ocho [llaves de camarote](https://bulbapedia.bulbagarden.net/wiki/Key_to_Room_1) numeradas: el mismo barco hundido en Rubí/Zafiro y en su remake, un solo dibujo",
+            "fr": "Huit [clés de cabine](https://bulbapedia.bulbagarden.net/wiki/Key_to_Room_1) numérotées : la même épave dans Rubis/Saphir et dans son remake, un seul dessin",
+            "it": "Otto [chiavi di cabina](https://bulbapedia.bulbagarden.net/wiki/Key_to_Room_1) numerate: lo stesso relitto in Rubino/Zaffiro e nel remake, un unico disegno",
+            "ja": "番号違いの[船室のカギ](https://bulbapedia.bulbagarden.net/wiki/Key_to_Room_1)が8つ。ルビー・サファイアとそのリメイクで同じ沈没船、絵柄も1種類",
+            "ko": "번호만 다른 [선실 열쇠](https://bulbapedia.bulbagarden.net/wiki/Key_to_Room_1) 여덟 개. 루비·사파이어와 리메이크의 같은 난파선이며 그림도 하나"
+          }
+        },
+        {
+          "id": "coupons",
+          "match": "Kupon [0-9]",
+          "as": {"en":"Coupon","de":"Kupon","es":"Cupón","fr":"Bon","ja":"ひきかえけん","ko":"교환권","zh-Hans":"兑换券","zh-Hant":"兌換券"},
+          "reason": {
+            "en": "Three identical [coupons](https://bulbapedia.bulbagarden.net/wiki/Coupon)",
+            "de": "Drei identische [Kupons](https://bulbapedia.bulbagarden.net/wiki/Coupon)",
+            "es": "Tres [cupones](https://bulbapedia.bulbagarden.net/wiki/Coupon) idénticos",
+            "fr": "Trois [bons](https://bulbapedia.bulbagarden.net/wiki/Coupon) identiques",
+            "it": "Tre [coupon](https://bulbapedia.bulbagarden.net/wiki/Coupon) identici",
+            "ja": "同じ[ひきかえけん](https://bulbapedia.bulbagarden.net/wiki/Coupon)が3つ",
+            "ko": "똑같은 [교환권](https://bulbapedia.bulbagarden.net/wiki/Coupon) 세 개"
+          }
+        },
+        {
+          "id": "gram-mail",
+          "match": "Briefpost [0-9]",
+          "as": {"en":"Gram","de":"Briefpost","es":"Envío","fr":"Courrier","it":"Missiva","ja":"はいたつぶつ","ko":"배달물","zh-Hans":"配送物品","zh-Hant":"配送物品"},
+          "reason": {
+            "en": "Three numbered copies of one [piece of mail](https://bulbapedia.bulbagarden.net/wiki/Gram)",
+            "de": "Drei nummerierte Kopien derselben [Briefpost](https://bulbapedia.bulbagarden.net/wiki/Gram)",
+            "es": "Tres copias numeradas de una misma [carta](https://bulbapedia.bulbagarden.net/wiki/Gram)",
+            "fr": "Trois copies numérotées d'une même [lettre](https://bulbapedia.bulbagarden.net/wiki/Gram)",
+            "it": "Tre copie numerate della stessa [lettera](https://bulbapedia.bulbagarden.net/wiki/Gram)",
+            "ja": "同じ[てがみ](https://bulbapedia.bulbagarden.net/wiki/Gram)の番号違いが3つ",
+            "ko": "같은 [편지](https://bulbapedia.bulbagarden.net/wiki/Gram)의 번호만 다른 사본 세 개"
+          }
+        },
+        {
+          "id": "exp-candies",
+          "match": "EP-Bonbon *",
+          "as": {"en":"Exp. Candy","de":"EP-Bonbon","es":"Caramelo Exp.","fr":"Bonbon Exp.","it":"Caram. Esp.","ja":"けいけんアメ","ko":"경험사탕","zh-Hans":"经验糖果","zh-Hant":"經驗糖果"},
+          "reason": {
+            "en": "Five sizes of the same [Exp. Candy](https://bulbapedia.bulbagarden.net/wiki/Exp._Candy), XS through XL",
+            "de": "Fünf Grössen desselben [EP-Bonbons](https://www.pokewiki.de/EP-Bonbon), XS bis XL",
+            "es": "Cinco tamaños del mismo [Caramelo Exp.](https://bulbapedia.bulbagarden.net/wiki/Exp._Candy), de XS a XL",
+            "fr": "Cinq tailles du même [Bonbon Exp.](https://bulbapedia.bulbagarden.net/wiki/Exp._Candy), de XS à XL",
+            "it": "Cinque misure dello stesso [Caramella Esp.](https://bulbapedia.bulbagarden.net/wiki/Exp._Candy), da XS a XL",
+            "ja": "同じ[けいけんアメ](https://bulbapedia.bulbagarden.net/wiki/Exp._Candy)のS〜XLの5サイズ",
+            "ko": "같은 [경험사탕](https://bulbapedia.bulbagarden.net/wiki/Exp._Candy)의 XS부터 XL까지 다섯 크기"
+          }
+        },
+        {
+          "id": "stat-candy-doses",
+          "match": ["*bonbon+","*bonbon++"],
+          "reason": {
+            "en": "Larger doses of the six [stat candies](https://bulbapedia.bulbagarden.net/wiki/Dynamax_Candy) already listed — Health Candy L and XL next to Health Candy",
+            "de": "Grössere Dosen der sechs bereits gelisteten [Statuswert-Bonbons](https://www.pokewiki.de/Bonbon) – Energiebonbon+ und ++ neben dem Energiebonbon",
+            "es": "Dosis mayores de los seis [caramelos de característica](https://bulbapedia.bulbagarden.net/wiki/Dynamax_Candy) ya incluidos: Caramelo PS L y XL junto al Caramelo PS",
+            "fr": "Doses plus grandes des six [bonbons de statistique](https://bulbapedia.bulbagarden.net/wiki/Dynamax_Candy) déjà listés : Bonbon PV L et XL à côté du Bonbon PV",
+            "it": "Dosi maggiori delle sei [caramelle statistica](https://bulbapedia.bulbagarden.net/wiki/Dynamax_Candy) già presenti: Caramella PS L e XL accanto alla Caramella PS",
+            "ja": "すでに載っている6種の[能力アメ](https://bulbapedia.bulbagarden.net/wiki/Dynamax_Candy)の大きいサイズ。たいりょくアメLとXLがたいりょくアメの隣に並ぶ",
+            "ko": "이미 있는 여섯 [능력치 사탕](https://bulbapedia.bulbagarden.net/wiki/Dynamax_Candy)의 큰 용량. 체력사탕 L과 XL이 체력사탕 옆에 나란히"
+          }
+        },
+        {
+          "id": "technical-machines",
+          "match": "TM[0-9]*",
+          "as": {"en":"Technical Machine","de":"Technische Maschine","es":"Máquina Técnica","fr":"Capsule Technique","it":"Macchina Tecnica","ja":"わざマシン","ko":"기술머신","zh-Hans":"招式学习器","zh-Hant":"招式學習器"},
+          "reason": {
+            "en": "230 numbered [TMs](https://bulbapedia.bulbagarden.net/wiki/TM), all one disc whatever move they teach",
+            "de": "230 nummerierte [TMs](https://www.pokewiki.de/TM), alle dieselbe Disc, ganz gleich welche Attacke sie lehren",
+            "es": "230 [MTs](https://bulbapedia.bulbagarden.net/wiki/TM) numeradas, todas el mismo disco sea cual sea el movimiento que enseñan",
+            "fr": "230 [CTs](https://bulbapedia.bulbagarden.net/wiki/TM) numérotées, toutes le même disque quelle que soit la capacité enseignée",
+            "it": "230 [MT](https://bulbapedia.bulbagarden.net/wiki/TM) numerate, tutte lo stesso disco qualunque mossa insegnino",
+            "ja": "番号違いの[わざマシン](https://bulbapedia.bulbagarden.net/wiki/TM)が230個。覚えるわざが何であれディスクは同じ",
+            "ko": "번호만 다른 [기술머신](https://bulbapedia.bulbagarden.net/wiki/TM) 230개. 어떤 기술을 가르치든 디스크는 하나"
+          }
+        },
+        {
+          "id": "hidden-machines",
+          "match": "HM[0-9]*",
+          "as": {"en":"Hidden Machine","de":"Versteckte Maschine","es":"Máquina Oculta","fr":"Capsule Secrète","it":"Macchina Nascosta","ja":"ひでんマシン","ko":"비전머신","zh-Hans":"秘传学习器","zh-Hant":"秘傳學習器"},
+          "reason": {
+            "en": "Eight numbered [HMs](https://bulbapedia.bulbagarden.net/wiki/HM), drawn as the TM disc in a different colour",
+            "de": "Acht nummerierte [VMs](https://www.pokewiki.de/VM), gezeichnet wie die TM-Disc in einer anderen Farbe",
+            "es": "Ocho [MOs](https://bulbapedia.bulbagarden.net/wiki/HM) numeradas, dibujadas como el disco de MT en otro color",
+            "fr": "Huit [CSs](https://bulbapedia.bulbagarden.net/wiki/HM) numérotées, dessinées comme le disque de CT dans une autre couleur",
+            "it": "Otto [MN](https://bulbapedia.bulbagarden.net/wiki/HM) numerate, disegnate come il disco MT in un altro colore",
+            "ja": "番号違いの[ひでんマシン](https://bulbapedia.bulbagarden.net/wiki/HM)が8個。わざマシンのディスクの色違い",
+            "ko": "번호만 다른 [비전머신](https://bulbapedia.bulbagarden.net/wiki/HM) 여덟 개. 기술머신 디스크의 색만 다름"
+          }
+        },
+        {
+          "id": "technical-records",
+          "match": "TR[0-9]*",
+          "as": {"en":"Technical Record","de":"Technische Platte","es":"Disco Técnico","fr":"Disque Technique","it":"Disco Tecnico","ja":"わざレコード","ko":"기술레코드","zh-Hans":"招式记录","zh-Hant":"招式紀錄"},
+          "reason": {
+            "en": "100 numbered [TRs](https://bulbapedia.bulbagarden.net/wiki/TR), the single-use record the Galar games replaced TMs with",
+            "de": "100 nummerierte [TPs](https://www.pokewiki.de/TP), die Einweg-Platte, die die Galar-Spiele anstelle der TMs verwenden",
+            "es": "100 [DTs](https://bulbapedia.bulbagarden.net/wiki/TR) numerados, el disco de un solo uso con el que los juegos de Galar sustituyeron a las MTs",
+            "fr": "100 [DTs](https://bulbapedia.bulbagarden.net/wiki/TR) numérotés, le disque à usage unique par lequel les jeux de Galar ont remplacé les CTs",
+            "it": "100 [DT](https://bulbapedia.bulbagarden.net/wiki/TR) numerati, il disco monouso con cui i giochi di Galar hanno sostituito le MT",
+            "ja": "番号違いの[わざレコード](https://bulbapedia.bulbagarden.net/wiki/TR)が100個。ガラル地方でわざマシンの代わりになった使い切りのレコード",
+            "ko": "번호만 다른 [기술레코드](https://bulbapedia.bulbagarden.net/wiki/TR) 100개. 가라르 지방에서 기술머신을 대신한 일회용 레코드"
+          }
+        },
+        {
+          "id": "data-cards",
+          "match": "Datenkarte[0-9]*",
+          "as": {"en":"Data Card","de":"Datenkarte","es":"Tarjeta Datos","fr":"Carte Mémo","it":"Scheda Dati","ja":"データカード","ko":"데이터카드","zh-Hans":"数据卡","zh-Hant":"資料卡"},
+          "reason": {
+            "en": "27 numbered [Data Cards](https://bulbapedia.bulbagarden.net/wiki/Data_Card), each recording a different Pokéathlon statistic",
+            "de": "27 nummerierte [Datenkarten](https://www.pokewiki.de/Pok%C3%A9athlon#Datenkarten), die je eine andere Pokéathlon-Statistik festhalten",
+            "es": "27 [Tarjetas de Datos](https://bulbapedia.bulbagarden.net/wiki/Data_Card) numeradas, cada una con una estadística distinta del Pokéathlon",
+            "fr": "27 [Cartes Mémo](https://bulbapedia.bulbagarden.net/wiki/Data_Card) numérotées, chacune consignant une statistique différente du Pokéathlon",
+            "it": "27 [Schede Dati](https://bulbapedia.bulbagarden.net/wiki/Data_Card) numerate, ognuna con una statistica diversa del Pokéathlon",
+            "ja": "番号違いの[データカード](https://bulbapedia.bulbagarden.net/wiki/Data_Card)が27枚。それぞれポケスロンの別々の記録",
+            "ko": "번호만 다른 [데이터카드](https://bulbapedia.bulbagarden.net/wiki/Data_Card) 27장. 각각 포켓슬론의 다른 기록"
+          }
+        }
       ],
       "omittable": [
-        {"id":"species-candies","match":"*-Bonbon","except":["Dynamax-Bonbon"],"reason":{"en":"80 [species candies](https://bulbapedia.bulbagarden.net/wiki/Candy#Species-based_Candy), one per Pokémon — real items, but they crowd out the Pokémon themselves","de":"80 [Bonbons](https://bulbapedia.bulbagarden.net/wiki/Candy#Species-based_Candy), eines je Pokémon – echte Items, aber sie verdrängen die Pokémon selbst"}}
+        {
+          "id": "species-candies",
+          "match": "*-Bonbon",
+          "as": {"en":"Pokémon Candy","de":"Pokémon-Bonbon","es":"Caramelo de Pokémon","fr":"Bonbon de Pokémon","it":"Caramella di Pokémon","ja":"ポケモンのアメ","ko":"포켓몬의사탕","zh-Hans":"宝可梦糖果","zh-Hant":"寶可夢糖果"},
+          "except": ["Dynamax-Bonbon","Pokémon-Bonbon"],
+          "reason": {
+            "en": "80 [species candies](https://bulbapedia.bulbagarden.net/wiki/Candy#Species-based_Candy), one per Pokémon — real items, but they crowd out the Pokémon themselves",
+            "de": "80 [Bonbons](https://bulbapedia.bulbagarden.net/wiki/Candy#Species-based_Candy), eines je Pokémon – echte Items, aber sie verdrängen die Pokémon selbst",
+            "es": "80 [caramelos de especie](https://bulbapedia.bulbagarden.net/wiki/Candy#Species-based_Candy), uno por Pokémon: objetos reales, pero desplazan a los propios Pokémon",
+            "fr": "80 [bonbons d'espèce](https://bulbapedia.bulbagarden.net/wiki/Candy#Species-based_Candy), un par Pokémon : de vrais objets, mais ils noient les Pokémon eux-mêmes",
+            "it": "80 [caramelle di specie](https://bulbapedia.bulbagarden.net/wiki/Candy#Species-based_Candy), una per Pokémon: strumenti veri, ma soffocano i Pokémon stessi",
+            "ja": "ポケモンごとの[アメ](https://bulbapedia.bulbagarden.net/wiki/Candy#Species-based_Candy)が80種。実在するどうぐだが、ポケモン自体を埋もれさせてしまう",
+            "ko": "포켓몬마다 있는 [사탕](https://bulbapedia.bulbagarden.net/wiki/Candy#Species-based_Candy) 80종. 실제 도구지만 포켓몬 자체를 가려버림"
+          }
+        }
       ],
       "words": [
         {"en":"Master Ball","de":"Meisterball","ja":"マスターボール","ko":"마스터볼","zh-Hans":"大师球","zh-Hant":"大師球"},
@@ -155,14 +311,14 @@
         {"en":"Brick Mail","de":"Ziegelbrief","es":"Carta Pared","fr":"Lettre Brik","it":"Mess. Muro","ja":"ブリックメール","?":["ko","zh-Hans","zh-Hant"]},
         {"en":"Cheri Berry","de":"Amrenabeere","es":"Baya Zreza","fr":"Baie Ceriz","it":"Baccaliegia","ja":"クラボのみ","ko":"버치열매","zh-Hans":"樱子果","zh-Hant":"櫻子果"},
         {"en":"Chesto Berry","de":"Maronbeere","es":"Baya Atania","fr":"Baie Maron","it":"Baccastagna","ja":"カゴのみ","ko":"유루열매","zh-Hans":"零余果","zh-Hant":"零餘果"},
-        {"en":"Pecha Berry","de":"Pirsifbeere","es":"Baya Meloc","fr":"Baie Pêcha","it":"Baccapesca","ja":"モモンのみ","ko":"복슝열매","zh-Hans":"桃桃果","zh-Hant":"桃桃果"},
+        {"en":"Pecha Berry","de":"Pirsifbeere","es":"Baya Meloc","es-419":"Baya Duraz","fr":"Baie Pêcha","it":"Baccapesca","ja":"モモンのみ","ko":"복슝열매","zh-Hans":"桃桃果","zh-Hant":"桃桃果"},
         {"en":"Rawst Berry","de":"Fragiabeere","es":"Baya Safre","fr":"Baie Fraive","it":"Baccafrago","ja":"チーゴのみ","ko":"복분열매","zh-Hans":"莓莓果","zh-Hant":"莓莓果"},
         {"en":"Aspear Berry","de":"Wilbirbeere","es":"Baya Perasi","fr":"Baie Willia","it":"Baccaperina","ja":"ナナシのみ","ko":"배리열매","zh-Hans":"利木果","zh-Hant":"利木果"},
         {"en":"Leppa Berry","de":"Jonagobeere","es":"Baya Zanama","fr":"Baie Mepo","it":"Baccamela","ja":"ヒメリのみ","ko":"과사열매","zh-Hans":"苹野果","zh-Hant":"蘋野果"},
         {"en":"Oran Berry","de":"Sinelbeere","es":"Baya Aranja","fr":"Baie Oran","it":"Baccarancia","ja":"オレンのみ","ko":"오랭열매","zh-Hans":"橙橙果","zh-Hant":"橙橙果"},
         {"en":"Persim Berry","de":"Persimbeere","es":"Baya Caquic","fr":"Baie Kika","it":"Baccaki","ja":"キーのみ","ko":"시몬열매","zh-Hans":"柿仔果","zh-Hant":"柿仔果"},
         {"en":"Lum Berry","de":"Prunusbeere","es":"Baya Ziuela","fr":"Baie Prine","it":"Baccaprugna","ja":"ラムのみ","ko":"리샘열매","zh-Hans":"木子果","zh-Hant":"木子果"},
-        {"en":"Sitrus Berry","de":"Tsitrubeere","es":"Baya Zidra","fr":"Baie Sitrus","it":"Baccacedro","ja":"オボンのみ","ko":"자뭉열매","zh-Hans":"文柚果","zh-Hant":"文柚果"},
+        {"en":"Sitrus Berry","de":"Tsitrubeere","es":"Baya Zidra","es-419":"Baya Citrón","fr":"Baie Sitrus","it":"Baccacedro","ja":"オボンのみ","ko":"자뭉열매","zh-Hans":"文柚果","zh-Hant":"文柚果"},
         {"en":"Figy Berry","de":"Giefebeere","es":"Baya Higog","fr":"Baie Figuy","it":"Baccafico","ja":"フィラのみ","ko":"무화열매","zh-Hans":"勿花果","zh-Hant":"勿花果"},
         {"en":"Wiki Berry","de":"Wikibeere","es":"Baya Wiki","fr":"Baie Wiki","it":"Baccakiwi","ja":"ウイのみ","ko":"위키열매","zh-Hans":"异奇果","zh-Hant":"異奇果"},
         {"en":"Mago Berry","de":"Magobeere","es":"Baya Ango","fr":"Baie Mago","it":"Baccamango","ja":"マゴのみ","ko":"마고열매","zh-Hans":"芒芒果","zh-Hant":"芒芒果"},
@@ -244,7 +400,7 @@
         {"en":"Soft Sand","de":"Pudersand","es":"Arena Fina","fr":"Sable Doux","it":"Sabbia Soffice","ja":"やわらかいすな","ko":"부드러운모래","zh-Hans":"柔软沙子","zh-Hant":"柔軟沙子"},
         {"en":"Hard Stone","de":"Granitstein","es":"Piedra Dura","fr":"Pierre Dure","it":"Pietradura","ja":"かたいいし","ko":"딱딱한돌","zh-Hans":"硬石头","zh-Hant":"硬石頭"},
         {"en":"Miracle Seed","de":"Wundersaat","es":"Semilla Milagro","fr":"Graine Miracle","it":"Miracolseme","ja":"きせきのタネ","ko":"기적의씨","zh-Hans":"奇迹种子","zh-Hant":"奇跡種子"},
-        {"en":"Black Glasses","de":"Schattenbrille","es":"Gafas de Sol","fr":"Lunettes Noires","it":"Occhialineri","ja":"くろいメガネ","ko":"검은안경","zh-Hans":"黑色眼镜","zh-Hant":"黑色眼鏡"},
+        {"en":"Black Glasses","de":"Schattenbrille","es":"Gafas de Sol","es-419":"Lentes de Sol","fr":"Lunettes Noires","it":"Occhialineri","ja":"くろいメガネ","ko":"검은안경","zh-Hans":"黑色眼镜","zh-Hant":"黑色眼鏡"},
         {"en":"Black Belt","de":"Schwarzgurt","es":"Cinturón Negro","fr":"Ceinture Noire","it":"Cinturanera","ja":"くろおび","ko":"검은띠","zh-Hans":"黑带","zh-Hant":"黑帶"},
         {"en":"Magnet","es":"Imán","fr":"Aimant","it":"Calamita","ja":"じしゃく","ko":"자석","zh-Hans":"磁铁","zh-Hant":"磁鐵"},
         {"en":"Mystic Water","de":"Zauberwasser","es":"Agua Mística","fr":"Eau Mystique","it":"Acqua Magica","ja":"しんぴのしずく","ko":"신비의물방울","zh-Hans":"神秘水滴","zh-Hant":"神秘水滴"},
@@ -254,10 +410,10 @@
         {"en":"Spell Tag","de":"Bannsticker","es":"Hechizo","fr":"Rune Sort","it":"Spettrotarga","ja":"のろいのおふだ","ko":"저주의부적","zh-Hans":"诅咒之符","zh-Hant":"詛咒之符"},
         {"en":"Twisted Spoon","de":"Krummlöffel","es":"Cuchara Torcida","fr":"Cuillère Tordue","it":"Cucchiaio Torto","ja":"まがったスプーン","ko":"휘어진스푼","zh-Hans":"弯曲的汤匙","zh-Hant":"彎曲的湯匙"},
         {"en":"Charcoal","de":"Holzkohle","es":"Carbón","fr":"Charbon","it":"Carbonella","ja":"もくたん","ko":"목탄","zh-Hans":"木炭","zh-Hant":"木炭"},
-        {"en":"Dragon Fang","de":"Drachenzahn","es":"Colmillo de Dragón","fr":"Croc Dragon","it":"Dentedidrago","ja":"りゅうのキバ","ko":"용의이빨","zh-Hans":"龙之牙","zh-Hant":"龍之牙"},
+        {"en":"Dragon Fang","de":"Drachenzahn","es":"Colmillo de Dragón","es-419":"Colmillo Dragón","fr":"Croc Dragon","it":"Dentedidrago","ja":"りゅうのキバ","ko":"용의이빨","zh-Hans":"龙之牙","zh-Hant":"龍之牙"},
         {"en":"Silk Scarf","de":"Seidenschal","es":"Pañuelo de Seda","fr":"Mouchoir Soie","it":"Sciarpa Seta","ja":"シルクのスカーフ","ko":"실크스카프","zh-Hans":"丝绸围巾","zh-Hant":"絲綢圍巾"},
         {"en":"Upgrade","de":"Up-Grade","es":"Mejora","fr":"Améliorator","ja":"アップグレード","ko":"업그레이드","zh-Hans":"升级数据","zh-Hant":"升級資料"},
-        {"en":"Shell Bell","de":"Muschelglocke","es":"Cascabel Concha","fr":"Grelot Coque","it":"Conchinella","ja":"かいがらのすず","ko":"조개껍질방울","zh-Hans":"贝壳之铃","zh-Hant":"貝殼之鈴"},
+        {"en":"Shell Bell","de":"Muschelglocke","es":"Cascabel Concha","es-419":"Cascabel Nácar","fr":"Grelot Coque","it":"Conchinella","ja":"かいがらのすず","ko":"조개껍질방울","zh-Hans":"贝壳之铃","zh-Hant":"貝殼之鈴"},
         {"en":"Sea Incense","de":"Seerauch","es":"Incienso Marino","fr":"Encens Mer","it":"Marearoma","ja":"うしおのおこう","ko":"바닷물향로","zh-Hans":"海潮薰香","zh-Hant":"海潮薰香"},
         {"en":"Lax Incense","de":"Laxrauch","es":"Incienso Suave","fr":"Encens Doux","it":"Distraroma","ja":"のんきのおこう","ko":"무사태평향로","zh-Hans":"悠闲薰香","zh-Hant":"悠閒薰香"},
         {"en":"Lucky Punch","es":"Puño Suerte","fr":"Poing Chance","it":"Fortunpugno","ja":"ラッキーパンチ","ko":"럭키펀치","zh-Hans":"吉利拳","zh-Hant":"吉利拳"},

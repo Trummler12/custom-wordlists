@@ -7,7 +7,7 @@
 import { loadManifest, loadTopic } from "../lib/data";
 import { buildTree, titleCase, type CatNode } from "../lib/tree";
 import type { CategoryMeta, Group, Topic, TopicSummary } from "../lib/types";
-import { langSupport } from "../lib/languages";
+import { baseTag, langSupport } from "../lib/languages";
 import { allRules, UNKNOWN_RULE, visibleGroup } from "../lib/omitted";
 import { displayName, type DisplayName } from "../lib/words";
 import { settings } from "./settings.svelte";
@@ -40,6 +40,13 @@ class TopicsState {
       const manifest = await loadManifest();
       this.all = manifest.topics;
       this.categories = manifest.categories ?? {};
+      // `lang` needs these and can't reach for them; see `declaredLangs`.
+      lang.declaredLangs = Object.fromEntries(
+        manifest.topics.map((t) => [t.id, t.languages ?? []]),
+      );
+      lang.derivedRomaji = Object.fromEntries(
+        manifest.topics.filter((t) => t.generatedRomaji).map((t) => [t.id, true]),
+      );
     } catch (e) {
       this.error = e instanceof Error ? e.message : String(e);
     } finally {
@@ -74,12 +81,19 @@ class TopicsState {
    *  the entries a list has no name for in the language it is showing in, which
    *  `visibleGroup` drops on the same terms. `visibleGroup` hands back the group
    *  itself when neither applies, and caches the rest. */
+  /** A topic's groups as the file has them — no omissions applied, and the same
+   *  array for the life of the page, which is what makes it safe to cache against.
+   *  Everything that renders a list wants `groupsOf` instead. */
+  rawGroups(tid: string): Group[] {
+    return this.data[tid]?.groups ?? [];
+  }
+
   groupsOf(t: TopicSummary): Group[] {
     const groups = this.data[t.id]?.groups ?? [];
     // A list whose names in this language simply *are* the English ones is being
     // shown in English, whatever the picker says — so it has no gaps to hide.
     const picked = lang.contentLang(t.id);
-    const code = langSupport(t, picked) === "english" ? "en" : picked;
+    const code = langSupport(t, baseTag(picked)) === "english" ? "en" : picked;
     return groups.map((g) =>
       visibleGroup(
         g,
@@ -98,14 +112,14 @@ class TopicsState {
   // is resolving an entry: `short` goes on the row, `long` into its hover, and the
   // two are equal wherever the name has only one form.
   topicName(t: TopicSummary): DisplayName {
-    return displayName(t.title, lang.current);
+    return displayName(t.title, lang.uiLang);
   }
   groupName(g: Group): DisplayName {
-    return displayName(g.title, lang.current);
+    return displayName(g.title, lang.uiLang);
   }
   categoryName(node: CatNode): DisplayName {
     const title = this.categories[node.path]?.title;
-    return displayName(title ?? titleCase(node.name), lang.current);
+    return displayName(title ?? titleCase(node.name), lang.uiLang);
   }
   categoryIcon(node: CatNode): string | undefined {
     return this.categories[node.path]?.icon;

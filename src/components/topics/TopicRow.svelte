@@ -2,7 +2,7 @@
   import { onMount } from "svelte";
   import { setIndeterminate } from "../../lib/dom";
   import { canForceEnglish } from "../../lib/english";
-  import { langSupport } from "../../lib/languages";
+  import { baseTag, langSupport, splitName } from "../../lib/languages";
   import { rulerControl } from "../../lib/rulers";
   import type { TopicSummary } from "../../lib/types";
   import { langWarning } from "../../locale";
@@ -16,6 +16,7 @@
   import GroupRow from "./GroupRow.svelte";
   import NamesModeSelect from "./NamesModeSelect.svelte";
   import OmittedPanel from "./OmittedPanel.svelte";
+  import VariantPanel from "./VariantPanel.svelte";
 
   let { topic }: { topic: TopicSummary } = $props();
 
@@ -51,13 +52,22 @@
     // The language this list is actually rendered in, which a forced-English topic
     // has of its own — warning about German names it is no longer showing would be
     // a warning about nothing. The note itself stays in the interface language.
-    const code = lang.contentLang(topic.id);
-    const name = lang.name(code);
+    // The language, not the way it is written: a list carrying Japanese supports
+    // Japanese whether or not it also carries romaji.
+    const code = baseTag(lang.contentLang(topic.id));
+    const name = lang.nameInUi(code);
+    // A transliterated reading is right as a reading and may still not be how the
+    // name is written in practice, which only the reader can tell us. The store
+    // owns that question — asking it here as "the tag isn't the language" would
+    // also catch `es-419`, which is a spelling of Spanish and not a reading.
+    if (lang.derivesRomaji(topic.id)) {
+      return { icon: "ℹ️", text: lang.ui.language.generatedRomaji };
+    }
     switch (langSupport(topic, code)) {
       case "declared":
         return null;
       case "english":
-        return { icon: "ℹ️", text: lang.ui.langUsesEnglish(name) };
+        return { icon: "ℹ️", text: lang.ui.language.usesEnglish(...splitName(name)) };
       case "undeclared":
         return { icon: "⚠️", text: langWarning(lang.ui, code, name) };
     }
@@ -82,7 +92,7 @@
         class="expander"
         aria-expanded={open}
         aria-controls={`groups-${topic.id}`}
-        aria-label={lang.ui.toggle(open, name.long)}
+        aria-label={lang.ui.tree.toggle(open, name.long)}
         onclick={() => selection.toggleExpand(topic)}
       >
         {open ? "▾" : "▸"}
@@ -111,14 +121,17 @@
     {#if sole}
       <OmittedPanel tid={topic.id} group={sole} />
     {/if}
+    <!-- Per topic, not per group: how a language spells a name is the same question
+         in every group of a list. Shows itself only where the answers differ. -->
+    <VariantPanel tid={topic.id} />
     {#if englishOptIn}
       <button
         type="button"
         class="english-toggle"
         class:on={forcedEnglish}
         aria-pressed={forcedEnglish}
-        aria-label={lang.ui.englishToggle(forcedEnglish)}
-        title={lang.ui.englishToggle(forcedEnglish)}
+        aria-label={lang.ui.language.useEnglish(forcedEnglish)}
+        title={lang.ui.language.useEnglish(forcedEnglish)}
         onclick={() => lang.toggleEnglish(topic)}>🇬🇧</button
       >
     {/if}
@@ -128,8 +141,8 @@
         class="ruler-toggle"
         class:shown={rulerShown}
         aria-pressed={rulerShown}
-        aria-label={lang.ui.rulerToggle(rulerShown)}
-        title={lang.ui.rulerToggle(rulerShown)}
+        aria-label={lang.ui.fame.toggle(rulerShown)}
+        title={lang.ui.fame.toggle(rulerShown)}
         onclick={() => selection.toggleRuler(topic)}
       >📏</button>
     {/if}
@@ -137,9 +150,9 @@
          stands for is a hover away. The row needs the width for its controls. -->
     <span
       class="meta"
-      title={lang.ui.wordsOf(selection.topicSelCount(topic), selection.topicTotal(topic))}
+      title={lang.ui.tree.wordsOf(selection.topicSelCount(topic), selection.topicTotal(topic))}
     >
-      {#if topics.isLoading(topic)}{lang.ui.loadingShort}{:else}{selection.topicSelCount(
+      {#if topics.isLoading(topic)}{lang.ui.tree.loadingShort}{:else}{selection.topicSelCount(
           topic,
         )}/<span class="total">{selection.topicTotal(topic)}</span>{/if}
     </span>

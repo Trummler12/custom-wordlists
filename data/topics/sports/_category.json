@@ -1,3 +1,10 @@
 {
-  "title": { "en": "Sports", "de": "Sport" }
+  "title": {
+    "en": "Sports",
+    "de": "Sport",
+    "es": "Deportes",
+    "it": "Sport",
+    "ja": "スポーツ",
+    "ko": "스포츠"
+  }
 }

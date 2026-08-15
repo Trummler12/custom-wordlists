@@ -63,6 +63,12 @@ big enough to discuss belongs in an issue instead.
   also means the parent needs no stored selection of its own.
 
   A general mechanism, not a geography-specific one, but geography is what it exists for.
+- **The other umpirsky lists.** The same shape as the language list, CLDR-derived
+  and per-locale, each a plausible topic: [countries](https://github.com/umpirsky/country-list),
+  [currencies](https://github.com/umpirsky/currency-list) and
+  [top-level domains](https://github.com/umpirsky/tld-list). The country list is the
+  obvious next one — it is half of the geography plan above, already translated into
+  every language we might ever want.
 - **`noGeoguessrCoverage` — filter countries to Street-View-covered ones.** A niche extra
   for the countries list only: restrict to the countries with official Google Street View
   coverage, for the GeoGuessr crowd. Decide between reusing the existing `omittable`
@@ -93,13 +99,6 @@ big enough to discuss belongs in an issue instead.
   parser that turns a marked-up string into a list of parts, and one snippet per
   tag. Nothing needs them today — add a tag the first time a string actually wants
   it, not before.
-- **Group the locale keys.** `UIStrings` is ~40 flat keys covering the header, the
-  tree, the rulers, the output and the footer, and it only grows. Nesting them by
-  area (`topics.wordsOf`, `output.copied`, …) would make both dictionaries
-  readable at a glance and make a missing translation obvious. It is a mechanical
-  rename across every component that reads `lang.ui.*`, so it wants a quiet moment
-  and a PR of its own — never alongside a feature, where the two diffs would hide
-  each other.
 - **English entries *in addition* to the selected language.** The per-topic English
   toggle replaces a list's entries; a third state would add them, for a game where
   either name should count. What makes it worth building is the tooltip, which
@@ -109,40 +108,60 @@ big enough to discuss belongs in an issue instead.
   Toggle again to only use German entries", then the third. Needs an answer first
   for what the counts mean and how a name that is identical in both languages is
   de-duplicated — neither of which the plain toggle has to face.
-- **An interface language separate from the content language.** "Keep the interface
-  in German while the lists are English" is the global half of the per-topic English
-  toggle, and belongs in the settings popover beside it. Cheap once that exists:
-  everything that renders words already asks `contentLang`. Its dropdown needs an
-  explicit first option — *auto*, not a language — meaning "follow the language
-  selector", which is today's behaviour and has to stay reachable once the two can
-  diverge. It also re-earns the `${language}` placeholder in `langUsesEnglish`,
-  which a locale can drop only while it is guaranteed to be describing its own
-  language — and the same holds for `langUnsupported` and `languageLabel`.
 - **Force a list to a language other than English.** The 🇬🇧 toggle hard-codes the
-  one language every list has. But a German player might want a list in French, and
-  `contentLang` already returns a per-topic code — only the control assumes English.
-  Turning the toggle into a picker means deciding which languages to offer per
-  topic (`languages` knows), and what the row's control becomes when the answer
-  isn't a single flag. Worth doing when a list exists that anyone would want in a
-  third language.
-- **Latin-American Spanish where it actually differs.** PokéAPI ships `es-419`
-  beside `es`, and how far apart they are depends entirely on the list: **5 names
-  out of 1330 for the items, but 254 of 937 for the moves.** A quarter of the move
-  names is not a rounding error — Latin America has its own vocabulary here.
-
-  Still not worth a language: no locale, no entry in the picker, nothing in
-  `usesEnglishFor`. Worth a toggle — with Spanish selected, a list carrying any
-  `es-419` names offers to use them *instead of* `es`, the same shape as the 🧹
-  rows. The dumps are committed (`data-raw/gaming/pokemon/{items,moves}/es-419.txt`),
-  so the data half is one line in the enrichment's `TAG` map; do it when the toggle
-  exists, not before, or entries gain an `es-419` in their `?` for no consumer.
-- **A language tag the picker offers is not always the tag the data uses.** The
-  Pokémon lists carry `zh-Hans` and `zh-Hant`, and `ja-Latn` beside `ja`. The
-  picker offers `de` and `en` today, so nothing is wrong yet — but the moment it
-  offers `zh`, `resolveStr` looks up `s["zh"]`, misses, and falls back to
-  English, while `langSupport` reads `usesEnglishFor: ["*"]` and reports Chinese
-  as an English-named list. Both are the same missing step: resolve a selected
-  language to the closest tag the entry actually has before giving up on it.
+  one language every list has. But a German player might want *one* list in French
+  while the rest stay German, and `contentLang` already returns a per-topic code —
+  only the control assumes English. Turning the toggle into a picker means deciding
+  which languages to offer per topic (`languages` knows), and what the row's control
+  becomes when the answer isn't a single flag. Less pressing since #32: the global
+  picker now offers nine, so this is about one list disagreeing with the rest.
+- **Romaji beyond the Pokémon themselves.** The variant switch resolves `ja-Latn`
+  wherever an entry carries it, which today is the nine generations and nothing
+  else. PokéAPI has no romaji for items or moves, so filling the gap means
+  transliterating kana rather than importing a column — a different kind of job,
+  and one where a wrong answer is invisible to everyone who can't read the original.
+- **Wāpuro rōmaji as a second romaji style.** *(No approach found yet that works, let alone
+  pays for itself.)* What the lists carry is Hepburn with long vowels doubled — the ASCII
+  middle. Wāpuro, what you actually type on a Japanese keyboard, writes the ー as a hyphen
+  (`mo-mo-miruku`). Two obstacles, either of which sinks it on its own. It cannot be derived
+  from the stored romaji: ほのお is ho-no-o and モーモー is a long vowel, and both are `oo` by
+  the time they reach us. And re-deriving it from the kana would overwrite the trademark
+  spellings a Japanese player actually knows — Butterfree becoming Batafurii — which no
+  amount of correctness makes an improvement. A setting to choose between them is overkill
+  on several levels at once.
+- **Kanji beyond the twelve words the language list needed.** `src/lib/kana.ts` reads kana
+  by character and kanji by *word*, longest match first — 国 is `goku` in 中国 and `koku` in
+  韓国, so a per-character table could never be right for both. Twelve entries cover every
+  Japanese name we carry today. A future list will want more, and each one is a claim about
+  that word that someone has to check; `--check` names what is missing rather than guessing.
+  A morphological analyser (MeCab, kuromoji) is the tool if a list ever needs hundreds.
+- **Storing generated romaji instead of deriving them.** The app transliterates at render
+  time, so the readings exist nowhere in the data — which is 65 kB saved today and more as
+  the collection grows, but also 2714 readings nobody can review in a diff. If that turns out
+  to matter, `romanize-names.mjs <list> --write` bakes them back in and `--strip` takes them
+  out again; a stored `ja-Latn` already wins over a derived one, so the two can also be mixed
+  per entry.
+- **A derived reading for an entry-level language map.** `resolveWord` accepts two shapes
+  and calls them equivalent, and for romaji they aren't: `transliterate` reads a leaf, so a
+  map whose `ja` holds a *name pair* keeps its kana one level below where the derivation can
+  see it, and the entry falls through to English. It needs a second traversal that romanizes
+  an already resolved pair — passing `derived` into the recursion looks like the fix and does
+  nothing, since the pair's halves are plain strings by then and a plain string is neutral by
+  definition. No entry has the shape today; worth building the day the first list does, or
+  worth deciding that the leaf form is the only one romaji supports and saying so in the
+  schema.
+- **Handing a list back to the global variant switch.** A per-list 🌎 stores a boolean
+  against the topic, and `variantOnFor` reads it in preference to the global choice — so
+  once a list has an opinion it keeps it, and there is no way to say "follow the switch
+  again". It wants a third state (undefined meaning *defer*, which the storage already
+  expresses and the checkbox cannot), or for the global switch to clear the per-list
+  answers when it flips. The second is simpler and probably what a reader expects; the
+  first is what the data already says.
+- **More of the world's languages than ISO 639-1 covers.** `geography/languages.json`
+  keeps the 184 languages with a two-letter code and drops 425 with only a three-
+  letter one. The cut is a proxy for prominence and a crude one — Cantonese and
+  Swiss German are both on the wrong side of it. Revisit with a source that ranks
+  rather than classifies.
 
 ## The interface
 
@@ -172,6 +191,15 @@ big enough to discuss belongs in an issue instead.
   need to drop the first entry I don't know?" by reading the output instead of
   guessing. Border in the stronger colour, background in a washed-out one, so the
   chip text keeps a clearly darker ground under it.
+- **Say on the chip when a name could not be transliterated.** A Japanese name holding a
+  word `src/lib/kana.ts` doesn't know resolves to its English name instead — correct, and
+  silent. The chip should carry one of the persistent notes: *"The following character(s)
+  lack transcription entries: 語, 手, 紙{br}Please report that [here](…)"*, naming the
+  characters `isTransliterable` rejected. Two halves to build: the resolver has to report
+  *which* characters failed rather than only that it gave up, and `WordChips` has to be able
+  to mark a single chip. Only reachable through the romaji switch, so it stays quiet for
+  everyone else — but a reader who turns it on is exactly the person who can tell us the
+  reading.
 - **Use the screen width better on wide viewports.** `--content-max` (60rem)
   leaves a lot of unused space left & right on large windows. Ideas: a wider (or
   fluid) max-width; a wider topic column and/or multi-column category tree; keep
@@ -180,14 +208,25 @@ big enough to discuss belongs in an issue instead.
 
 ## Under the hood
 
+- **Raise Node to 22, and fix the script that already assumes it.**
+  `scripts/pokemon/romanize-names.mjs` imports `src/lib/kana.ts` directly — one table for
+  the app and the codemod, which is the right call — but Node only reads a `.ts` without a
+  flag from 22.18 on, and both workflows pin 20. So the script's own usage line fails with
+  `ERR_UNKNOWN_FILE_EXTENSION` on the version the repo says it runs. Wants `.nvmrc`,
+  `node-version: 22` in `validate.yml` and `pages.yml`, and a line under *Local development*
+  in `CONTRIBUTING.md`. Take **one script fix** along in the same PR, since it is the next
+  thing anyone running it hits: its `--write` path does `group.words.map(…)` unguarded and
+  dies on a tiered list — and `geography/languages.json` is tiered, carries
+  `generatedRomaji` and 184 Japanese names, so it is exactly what gets pointed at next.
+  This is also the "something else wants Node 22 anyway" the next entry is waiting for.
 - **One matcher instead of two.** The scripts now share `scripts/lib/omissions.mjs`,
   so what remains is the one copy that can't be helped: it mirrors the tested
   `src/lib/omitted.ts`, because a `.mjs` script can't import TypeScript — the same
   reason `LANG_RE` is duplicated against the schema. The way out is raising CI's
   Node from 20 to 22+ and importing the `.ts` directly via native type-stripping,
   which needs the module free of value imports (stripping doesn't add extension
-  resolution). Worth doing when something else wants Node 22 anyway; not on its
-  own.
+  resolution). Worth doing when something else wants Node 22 anyway — which the
+  entry above now is.
 - **Frugal topic loading.** A flattened (solo) topic loads as soon as its row
   appears rather than when expanded — its ruler can't be drawn without the tiers it
   snaps to. Fine at 28 topics (`data/topics/` is ~240 KB total), but as the
@@ -199,6 +238,19 @@ big enough to discuss belongs in an issue instead.
   that, but two rules are coupled to TypeScript by comment (`--inset` ↔
   `INSET_PX`, `--footer-h` ↔ the output panel) and the tokens have to stay
   global — so it wants its own PR rather than a corner of another one.
+- **The ⚙️ popover watches its anchor with a frame loop.** `pinBox` in
+  `SettingsMenu.svelte` calls `getBoundingClientRect()` on a `requestAnimationFrame`
+  loop for as long as the menu is open — two forced layouts per frame, to catch two
+  events that fire a handful of times. `ResizeObserver` on the anchor plus one on the
+  document element does the same without polling. It is a rewrite of the mechanism
+  rather than a fix to it, and the comment explaining *why* it watches where the anchor
+  ended up rather than the things that move it has to survive the change.
+- **Where `Speakers.txt` came from.** `build-languages.mjs` says it builds from "the
+  dumps that `dump-language-names.mjs` writes", and that is true of the thirty name
+  files but not of the 18 543-line speaker table beside them, which was pasted by hand.
+  `data-raw/README.md` allows snapshots and the topic's `sources` records the URL, so
+  nothing is wrong — half a line in the script header saying which of its two inputs has
+  no generator would save the next person the hunt.
 - **Tests for `dom` and `skribbl`.** Vitest covers `words`, `tree`, `fame`,
   `english`, `languages` and `omitted`; these two are what is left of the logic
   that can be tested without mounting anything. `snapPositions` in `dom` has

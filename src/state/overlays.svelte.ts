@@ -20,13 +20,16 @@ class OverlayState {
   tip = $state<string | null>(null);
   /** Whether that note sits above its row instead of below. */
   tipAbove = $state(false);
+  /** Whether the open note stays put instead of following the pointer.
+   *
+   *  A note can hold a link — the one inviting a romaji correction does — and a
+   *  note that closes the moment the cursor leaves its marker is a link nobody
+   *  with a mouse can reach: it is gone before the pointer arrives. So a click
+   *  pins it, with a cursor exactly as with a finger, and it stays until it is
+   *  dismissed. */
+  tipPinned = $state(false);
   /** The same for the omissions panel. */
   omittedAbove = $state(false);
-
-  /** What kind of pointer last went down anywhere on the page. A click event
-   *  doesn't carry that, and it decides whether a tooltip follows the cursor or
-   *  the tap. */
-  #lastPointerType = "mouse";
 
   // --- Language menu ---------------------------------------------------------
 
@@ -60,40 +63,68 @@ class OverlayState {
   // --- Tooltips --------------------------------------------------------------
 
   /** Show a note, flipping it above its row when there is more room upward. */
-  openTip = (id: string, trigger: Element): void => {
+  openTip = (id: string, trigger: Element, pinned = false): void => {
     this.tipAbove = opensUpward(trigger);
     this.tip = id;
+    this.tipPinned = pinned;
   };
   closeTip = (): void => {
     this.tip = null;
+    this.tipPinned = false;
+  };
+  /** Close unless the note is pinned — what leaving the marker and losing focus
+   *  both want, neither of them being a dismissal once the reader has asked for
+   *  the note to stay. */
+  releaseTip = (): void => {
+    if (!this.tipPinned) this.closeTip();
   };
 
-  // With a cursor the note follows the cursor; without one it answers to the tap,
-  // and the click handler stays out of the way when a mouse produced the click.
+  // Hovering or focusing shows the note for as long as the pointer or the focus
+  // is there; clicking pins it. A pinned note ignores both, so moving the cursor
+  // off its marker — towards the note, most likely — leaves it standing.
+  #holding(id: string): boolean {
+    return this.tipPinned && this.tip === id;
+  }
   tipEnter = (e: PointerEvent, id: string): void => {
-    if (e.pointerType === "mouse") this.openTip(id, e.currentTarget as Element);
+    if (e.pointerType !== "mouse" || this.#holding(id)) return;
+    this.openTip(id, e.currentTarget as Element);
   };
   tipLeave = (e: PointerEvent): void => {
-    if (e.pointerType === "mouse") this.closeTip();
+    if (e.pointerType === "mouse") this.releaseTip();
+  };
+  tipFocus = (e: FocusEvent, id: string): void => {
+    // Only where a focus ring shows, which is to say: only for the keyboard, the
+    // one input that has neither hover nor a click to open this with. It also
+    // keeps out the focus a browser restores to the page on its own — returning to
+    // a tab is not a request to see anything.
+    const el = e.currentTarget as Element;
+    if (this.#holding(id) || !focusIsVisible(el)) return;
+    this.openTip(id, el);
   };
   tipClick = (e: MouseEvent, id: string): void => {
-    if (this.#lastPointerType === "mouse") return;
-    if (this.tip === id) this.closeTip();
-    else this.openTip(id, e.currentTarget as Element);
+    if (this.#holding(id)) this.closeTip();
+    else this.openTip(id, e.currentTarget as Element, true);
   };
 
   // --- Window handlers -------------------------------------------------------
 
   onPointerDown = (e: PointerEvent): void => {
-    if (e.pointerType) this.#lastPointerType = e.pointerType;
     const target = e.target as Element | null;
     if (this.langMenu && !target?.closest?.(".lang-picker")) this.langMenu = null;
     if (this.settingsMenu && !target?.closest?.(".settings-picker")) this.settingsMenu = null;
     if (this.omittedPanel && !target?.closest?.(".omitted-host")) this.omittedPanel = null;
-    // Only for pointers without hover — with a mouse, leaving the trigger closes it.
-    if (this.tip && this.#lastPointerType !== "mouse" && !target?.closest?.(".tip-trigger")) {
+    // Neither on the marker, whose own click toggles, nor inside the note: a note
+    // exists to be read, and one carrying a link exists to be clicked — closing it
+    // here would take the link out of the document before the click reached it.
+    if (this.tip && !target?.closest?.(".tip-trigger") && !target?.closest?.(".tip-note")) {
       this.closeTip();
     }
+  };
+  /** A pinned note outlives the pointer, so it needs dismissals of its own: a
+   *  press elsewhere, Escape, or this. Which way it opened was read off its row's
+   *  place in the viewport, and a scroll makes that answer stale as well. */
+  onScroll = (): void => {
+    if (this.tipPinned) this.closeTip();
   };
   onKeyDown = (e: KeyboardEvent): void => {
     if (e.key === "Escape") {
@@ -103,6 +134,20 @@ class OverlayState {
       this.closeTip();
     }
   };
+}
+
+/** Whether this element is showing a focus ring: true when the keyboard put the
+ *  focus there, false for a click and for focus an engine restores by itself.
+ *
+ *  `matches` throws on a selector it doesn't know, and an engine too old for
+ *  `:focus-visible` loses nothing by saying yes — it goes back to opening on any
+ *  focus, which is what every engine did before this. */
+function focusIsVisible(el: Element): boolean {
+  try {
+    return el.matches(":focus-visible");
+  } catch {
+    return true;
+  }
 }
 
 /** Which way an overlay should open from its trigger. The middle of the viewport,

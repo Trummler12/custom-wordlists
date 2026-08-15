@@ -21,8 +21,9 @@ class OutputState {
         // Per topic, not per app: a topic switched to English emits English here
         // while the rest of the list follows the interface language.
         const code = lang.contentLang(t.id);
+        const derived = lang.derivesRomaji(t.id);
         for (const e of selection.entriesOf(t.id, g)) {
-          for (const w of renderEntry(e, mode, code)) {
+          for (const w of renderEntry(e, mode, code, derived)) {
             if (!seen.has(w)) {
               seen.add(w);
               out.push(w);

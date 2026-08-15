@@ -15,12 +15,12 @@
 {#if groupHasNames(group, lang.current)}
   <select
     class="names-mode"
-    aria-label={lang.ui.nameFormLabel(label)}
+    aria-label={lang.ui.names.formLabel(label)}
     value={selection.modeOf(k)}
     onchange={(e) => selection.setMode(k, e.currentTarget.value as NamesMode)}
   >
-    <option value="short">{lang.ui.nameForm.short}</option>
-    <option value="long">{lang.ui.nameForm.long}</option>
-    <option value="both">{lang.ui.nameForm.both}</option>
+    <option value="short">{lang.ui.names.form.short}</option>
+    <option value="long">{lang.ui.names.form.long}</option>
+    <option value="both">{lang.ui.names.form.both}</option>
   </select>
 {/if}

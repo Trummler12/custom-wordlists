@@ -17,8 +17,8 @@
     </div>
   </div>
   <p class="tagline">
-    {lang.ui.taglineBefore}
+    {lang.ui.header.taglineBefore}
     <a href="https://skribbl.io" target="_blank" rel="noopener noreferrer">skribbl.io</a>
-    {lang.ui.taglineAfter}
+    {lang.ui.header.taglineAfter}
   </p>
 </header>

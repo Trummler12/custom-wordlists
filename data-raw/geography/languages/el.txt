@@ -1,0 +1,609 @@
+aa	Αφάρ
+ab	Αμπχαζικά
+ace	Αχινίζ
+ach	Ακολί
+ada	Αντάνγκμε
+ady	Αντιγκέα
+ae	Αβεστάν
+aeb	Tunisian Arabic
+af	Αφρικάανς
+afh	Αφριχίλι
+agq	Αγκέμ
+ain	Αϊνού
+ak	Ακάν
+akk	Ακάντιαν
+akz	Alabama
+ale	Αλούτ
+aln	Gheg Albanian
+alt	Νότια Αλαταϊκά
+am	Αμαρικά
+an	Αραγκονικά
+ang	Παλαιά Αγγλικά
+anp	Ανγκικά
+ar	Αραβικά
+ar_001	Σύγχρονα Τυπικά Αραβικά
+arc	Αραμαϊκά
+arn	Αρουκάνιαν
+aro	Araona
+arp	Αράπαχο
+arq	Algerian Arabic
+arw	Αραγουάκ
+ary	Moroccan Arabic
+arz	Egyptian Arabic
+as	Ασαμεζικά
+asa	Άσου
+ase	American Sign Language
+ast	Αστουριανά
+av	Άβαρικ
+avk	Kotava
+awa	Αγουαντί
+ay	Αϊμάρα
+az	Αζερμπαϊτζανικά
+azb	South Azerbaijani
+ba	Μπασκίρ
+bal	Μπαλούτσι
+ban	Μπαλινίζ
+bar	Bavarian
+bas	Μπάσα
+bax	Μπαμούν
+bbc	Batak Toba
+bbj	Γκομάλα
+be	Λευκορωσικά
+bej	Μπέζα
+bem	Μπέμπα
+bew	Betawi
+bez	Μπένα
+bfd	Μπαφούτ
+bfq	Badaga
+bg	Βουλγαρικά
+bho	Μποζπούρι
+bi	Μπισλάμα
+bik	Μπικόλ
+bin	Μπίνι
+bjn	Banjar
+bkm	Κομ
+bla	Σικσίκα
+bm	Μπαμπάρα
+bn	Μπενγκάλι
+bo	Θιβετιανά
+bpy	Bishnupriya
+bqi	Bakhtiari
+br	Βρετονικά
+bra	Μπρατζ
+brh	Brahui
+brx	Μπόντο
+bs	Βοσνιακά
+bss	Ακόσι
+bua	Μπουριάτ
+bug	Μπουγκίζ
+bum	Μπουλού
+byn	Μπλιν
+byv	Μεντούμπα
+ca	Καταλανικά
+cad	Κάντο
+car	Καρίμπ
+cay	Καγιούγκα
+cch	Ατσάμ
+ce	Τσέτσνιαν
+ceb	Κεμπουάνο
+cgg	Τσίγκα
+ch	Καμόρρο
+chb	Τσίμπτσα
+chg	Τσαγκατάι
+chk	Τσουκίζι
+chm	Μάρι
+chn	Ιδιωματικά Σινούκ
+cho	Τσοκτάου
+chp	Τσίπιουαν
+chr	Τσερόκι
+chy	Σεγιέν
+ckb	Κουρδικά Σοράνι
+co	Κορσικανικά
+cop	Κοπτικά
+cps	Capiznon
+cr	Κρι
+crh	Τουρκικά Κριμαίας
+cs	Τσεχικά
+csb	Κασούμπιαν
+cu	Εκκλησιαστικά Σλαβικά
+cv	Χουβάς
+cy	Ουαλικά
+da	Δανικά
+dak	Ντακότα
+dar	Ντάργκουα
+dav	Τάιτα
+de	Γερμανικά
+de_AT	Γερμανικά Αυστρίας
+de_CH	Γερμανικά Ελβετίας
+del	Ντέλαγουερ
+den	Σλαβικά
+dgr	Ντόγκριμπ
+din	Ντίνκα
+dje	Ζάρμα
+doi	Ντόγκρι
+dsb	Γλώσσα Κάτω Λουσατίας
+dtp	Central Dusun
+dua	Ντουάλα
+dum	Μέσα Ολλανδικά
+dv	Ντιβέχι
+dyo	Τζόλα-Φόνι
+dyu	Ντογιούλα
+dz	Ντζόνγκχα
+dzg	Νταζάγκα
+ebu	Έμπου
+ee	Γι
+efi	Εφίκ
+egl	Emilian
+egy	Αρχαία Αιγυπτιακά
+eka	Εκατζούκ
+el	Ελληνικά
+elx	Ελαμάιτ
+en	Αγγλικά
+en_AU	Αγγλικά Αυστραλίας
+en_CA	Αγγλικά Καναδά
+en_GB	Αγγλικά Ηνωμένου Βασιλείου
+en_US	Αγγλικά Αμερικής
+enm	Μέσα Αγγλικά
+eo	Εσπεράντο
+es	Ισπανικά
+es_419	Ισπανικά Λατινικής Αμερικής
+es_ES	Ισπανικά Ευρώπης
+es_MX	Ισπανικά Μεξικού
+esu	Central Yupik
+et	Εσθονικά
+eu	Βασκικά
+ewo	Εγουόντο
+ext	Extremaduran
+fa	Περσικά
+fan	Φανγκ
+fat	Φάντι
+ff	Φουλάχ
+fi	Φινλανδικά
+fil	Φιλιππινεζικά
+fit	Tornedalen Finnish
+fj	Φίτζι
+fo	Φαρόε
+fon	Φον
+fr	Γαλλικά
+fr_CA	Γαλλικά Καναδά
+fr_CH	Γαλλικά Ελβετίας
+frc	Cajun French
+frm	Μέσα Γαλλικά
+fro	Παλαιά Γαλλικά
+frp	Arpitan
+frr	Βόρεια Φριζιανά
+frs	Ανατολικά Φριζιανά
+fur	Φριούλιαν
+fy	Δυτικά Φριζιανά
+ga	Ιρλανδικά
+gaa	Γκα
+gag	Γκαγκάουζ
+gan	Gan Chinese
+gay	Γκάγιο
+gba	Γκμπάγια
+gbz	Zoroastrian Dari
+gd	Σκωτικά Κελτικά
+gez	Γκιζ
+gil	Γκιλμπερτίζ
+gl	Γαλικιανά
+glk	Gilaki
+gmh	Μέσα Άνω Γερμανικά
+gn	Γκουαρανί
+goh	Παλαιά Άνω Γερμανικά
+gom	Goan Konkani
+gon	Γκόντι
+gor	Γκοροντάλο
+got	Γοτθικά
+grb	Γκρίμπο
+grc	Αρχαία Ελληνικά
+gsw	Ελβετικά Γερμανικά
+gu	Γκουγιαράτι
+guc	Wayuu
+gur	Frafra
+guz	Γκούσι
+gv	Μανξ
+gwi	Γκουίτσιν
+ha	Χάουσα
+hai	Χάιντα
+hak	Hakka Chinese
+haw	Χαβανεζικά
+he	Εβραϊκά
+hi	Χίντι
+hif	Fiji Hindi
+hil	Χιλιγκαγιόν
+hit	Χιτίτε
+hmn	Χμονγκ
+ho	Χίρι Μότου
+hr	Κροατικά
+hsb	Γλώσσα Άνω Λουσατίας
+hsn	Xiang Chinese
+ht	Αϊτιανά
+hu	Ουγγρικά
+hup	Χούπα
+hy	Αρμενικά
+hz	Χερέρο
+ia	Ιντερλίνγκουα
+iba	Ιμπάν
+ibb	Ιμπίμπιο
+id	Ινδονησιακά
+ie	Ιντερλίνγκουε
+ig	Ίγκμπο
+ii	Σικουάν Γι
+ik	Ινουπιάκ
+ilo	Ιλόκο
+inh	Ινγκούς
+io	Ίντο
+is	Ισλανδικά
+it	Ιταλικά
+iu	Ινουκτιτούτ
+izh	Ingrian
+ja	Ιαπωνικά
+jam	Jamaican Creole English
+jbo	Λόζμπαν
+jgo	Νγκόμπα
+jmc	Μάχαμε
+jpr	Ιουδαϊκά-Περσικά
+jrb	Ιουδαϊκά-Αραβικά
+jut	Jutish
+jv	Ιαβανεζικά
+ka	Γεωργιανά
+kaa	Κάρα-Καλπάκ
+kab	Καμπίλε
+kac	Κατσίν
+kaj	Τζου
+kam	Κάμπα
+kaw	Κάουι
+kbd	Καμπαρντιανά
+kbl	Κανέμπου
+kcg	Τουάπ
+kde	Μακόντε
+kea	Γλώσσα του Πράσινου Ακρωτηρίου
+ken	Kenyang
+kfo	Κόρο
+kg	Κονγκό
+kgp	Kaingang
+kha	Κάσι
+kho	Κοτανικά
+khq	Κόιρα Τσίνι
+khw	Khowar
+ki	Κικούγιου
+kiu	Kirmanjki
+kj	Κουανιγιάμα
+kk	Καζακικά
+kkj	Κάκο
+kl	Καλαάλισουτ
+kln	Καλεντζίν
+km	Καμποτζιανά
+kmb	Κιμπούντου
+kn	Κανάντα
+ko	Κορεατικά
+koi	Κόμι-Περμιάκ
+kok	Κονκάνι
+kos	Κοσραενικά
+kpe	Κπέλε
+kr	Κανούρι
+krc	Καρατσάι-Μπαλκάρ
+kri	Krio
+krj	Kinaray-a
+krl	Καρελιακά
+kru	Κουρούχ
+ks	Κασμίρι
+ksb	Σάμπαλα
+ksf	Μπάφια
+ksh	Κολωνικά
+ku	Κουρδικά
+kum	Κουμγιούκ
+kut	Κουτενάι
+kv	Κόμι
+kw	Κόρνις
+ky	Κυργιζικά
+la	Λατινικά
+lad	Λαδίνο
+lag	Λάνγκι
+lah	Λάχδα
+lam	Λάμπα
+lb	Λουξεμβουργιανά
+lez	Λαζγκιάν
+lfn	Lingua Franca Nova
+lg	Γκάντα
+li	Λιμβουργιανά
+lij	Ligurian
+liv	Livonian
+lkt	Λακότα
+lmo	Lombard
+ln	Λινγκάλα
+lo	Λαοθιανά
+lol	Μόνγκο
+loz	Λόζι
+lt	Λιθουανικά
+ltg	Latgalian
+lu	Λούμπα-Κατάνγκα
+lua	Λούμπα-Λουλούα
+lui	Λουισένο
+lun	Λούντα
+luo	Λούο
+lus	Λουσάι
+luy	Λουχία
+lv	Λετονικά
+lzh	Literary Chinese
+lzz	Laz
+mad	Μαντουρίζ
+maf	Μάφα
+mag	Μαγκάχι
+mai	Μαϊτχίλι
+mak	Μακαζάρ
+man	Μαντίνγκο
+mas	Μασάι
+mde	Μάμπα
+mdf	Μόκσα
+mdr	Μανδάρ
+men	Μέντε
+mer	Μερού
+mfe	Μορίσιεν
+mg	Μαλαγάσι
+mga	Μέσα Ιρλανδικά
+mgh	Μακούβα-Μέτο
+mgo	Μετά
+mh	Μάρσαλ
+mi	Μάορι
+mic	Μικμάκ
+min	Μινανγκαμπάου
+mk	Σλαβομακεδονικά
+ml	Μαλαγιαλάμ
+mn	Μογγολικά
+mnc	Μαντσού
+mni	Μανιπούρι
+moh	Μοχόκ
+mos	Μόσι
+mr	Μαράθι
+mrj	Western Mari
+ms	Μαλάι
+mt	Μαλτεζικά
+mua	Μουντάνγκ
+mul	Πολλαπλές γλώσσες
+mus	Κρικ
+mwl	Μιραντεζικά
+mwr	Μαργουάρι
+mwv	Mentawai
+my	Βιρμανικά
+mye	Μιένε
+myv	Έρζυα
+mzn	Mazanderani
+na	Ναούρου
+nan	Min Nan Chinese
+nap	Ναπολιτανικά
+naq	Νάμα
+nb	Νορβηγικά Μποκμάλ
+nd	Ντεμπέλε Βορρά
+nds	Κάτω Γερμανικά
+ne	Νεπάλι
+new	Νεγουάρι
+ng	Ντόνγκα
+nia	Νίας
+niu	Νιούεαν
+njo	Ao Naga
+nl	Ολλανδικά
+nl_BE	Φλαμανδικά
+nmg	Κβάσιο
+nn	Νορβηγικά Νινόρσκ
+nnh	Νγκιεμπούν
+no	Νορβηγικά
+nog	Νογκάι
+non	Παλαιά Νορβηγικά
+nov	Novial
+nqo	Ν’Κο
+nr	Ντεμπέλε Νότου
+nso	Βόρεια Σόθο
+nus	Νουέρ
+nv	Νάβαχο
+nwc	Κλασικά Νεουάρι
+ny	Νιάντζα
+nym	Νιαμγουέζι
+nyn	Νιανκόλε
+nyo	Νιόρο
+nzi	Νζίμα
+oc	Οκσιτανικά
+oj	Οζιβίγουα
+om	Ορόμο
+or	Ορίγια
+os	Οσετικά
+osa	Οσάζ
+ota	Οθωμανικά Τουρκικά
+pa	Παντζαπικά
+pag	Πανγκασινάν
+pal	Παχλάβι
+pam	Παμπάνγκα
+pap	Παπιαμέντο
+pau	Παλάουαν
+pcd	Picard
+pdc	Pennsylvania German
+pdt	Plautdietsch
+peo	Αρχαία Περσικά
+pfl	Palatine German
+phn	Φοινικικά
+pi	Πάλι
+pl	Πολωνικά
+pms	Piedmontese
+pnt	Pontic
+pon	Ποχπέιαν
+prg	Prussian
+pro	Παλαιά Προβενσιάλ
+ps	Πάστο
+pt	Πορτογαλικά
+pt_BR	Πορτογαλικά Βραζιλίας
+pt_PT	Πορτογαλικά Ευρώπης
+qu	Κετσούα
+quc	Κισέ
+qug	Chimborazo Highland Quichua
+raj	Ραζασθάνι
+rap	Ραπανούι
+rar	Ραροτονγκάν
+rgn	Romagnol
+rif	Riffian
+rm	Ρομανικά
+rn	Ρούντι
+ro	Ρουμανικά
+ro_MD	Μολδαβικά
+rof	Ρόμπο
+rom	Ρομανί
+root	Ρουτ
+rtm	Rotuman
+ru	Ρωσικά
+rue	Rusyn
+rug	Roviana
+rup	Αρομανικά
+rw	Κινιαρβάντα
+rwk	Ρουά
+sa	Σανσκριτικά
+sad	Σαντάγουε
+sah	Γιακούτ
+sam	Σαμαρίτικα Αραμαϊκά
+saq	Σαμπούρου
+sas	Σασάκ
+sat	Σαντάλι
+saz	Saurashtra
+sba	Νγκαμπέι
+sbp	Σάνγκου
+sc	Σαρδινικά
+scn	Σικελιανά
+sco	Σκωτικά
+sd	Σίντι
+sdc	Sassarese Sardinian
+se	Βόρεια Σάμι
+see	Σένεκα
+seh	Σένα
+sei	Seri
+sel	Σελκούπ
+ses	Κοϊραμπόρο Σένι
+sg	Σάνγκο
+sga	Παλαιά Ιρλανδικά
+sgs	Samogitian
+sh	Σερβοκροατικά
+shi	Τασελχίτ
+shn	Σαν
+shu	Αραβικά του Τσαντ
+si	Σινχαλεζικά
+sid	Σιντάμο
+sk	Σλοβακικά
+sl	Σλοβενικά
+sli	Lower Silesian
+sly	Selayar
+sm	Σαμόαν
+sma	Νότια Σάμι
+smj	Λούλε Σάμι
+smn	Ινάρι Σάμι
+sms	Σκολτ Σάμι
+sn	Σχόνα
+snk	Σονίνκε
+so	Σομάλι
+sog	Σογκντιέν
+sq	Αλβανικά
+sr	Σερβικά
+srn	Σρανάρ Τόνγκο
+srr	Σερέρ
+ss	Σουάτι
+ssy	Σάχο
+st	Νότια Σόθο
+stq	Saterland Frisian
+su	Σουδανικά
+suk	Σουκούμα
+sus	Σούσου
+sux	Σουμερικά
+sv	Σουηδικά
+sw	Σουαχίλι
+swb	Κομόρρια
+swc	Κονγκό Σουαχίλι
+syc	Κλασικά Συριακά
+syr	Συριακά
+szl	Silesian
+ta	Ταμίλ
+tcy	Tulu
+te	Τελούγκου
+tem	Τίμνε
+teo	Τέσο
+ter	Τερένο
+tet	Τέτουμ
+tg	Τατζίκ
+th	Ταϊλανδικά
+ti	Τιγκρίνυα
+tig	Τίγκρε
+tiv	Τιβ
+tk	Τουρκμενικά
+tkl	Τοκελάου
+tkr	Tsakhur
+tl	Ταγκαλόγκ
+tlh	Κλίνγκον
+tli	Τλίνγκιτ
+tly	Talysh
+tmh	Ταμασέκ
+tn	Τσιγουάνα
+to	Τονγκανικά
+tog	Νιάσα Τόνγκα
+tpi	Τοκ Πισίν
+tr	Τουρκικά
+tru	Turoyo
+trv	Ταρόκο
+ts	Τσόνγκα
+tsd	Tsakonian
+tsi	Τσίμσιαν
+tt	Τατάρ
+ttt	Muslim Tat
+tum	Τουμπούκα
+tvl	Τουβαλού
+tw	Τούι
+twq	Τασαβάκ
+ty	Ταϊτιανά
+tyv	Τουβίνιαν
+tzm	Ταμαζίτ Κεντρικού Μαρόκο
+udm	Ουντμούρτ
+ug	Ουιγουρικά
+uga	Ουγκαρίτικ
+uk	Ουκρανικά
+umb	Ουμπούντου
+und	Άγνωστη γλώσσα
+ur	Ουρντού
+uz	Ουζμπεκικά
+vai	Βάι
+ve	Βένδα
+vec	Venetian
+vep	Veps
+vi	Βιετναμικά
+vls	West Flemish
+vmf	Main-Franconian
+vo	Βόλαπικ
+vot	Βότικ
+vro	Võro
+vun	Βούντζο
+wa	Γουαλούν
+wae	Βάλσερ
+wal	Γουάλαμο
+war	Γουάρει
+was	Γουασό
+wbp	Warlpiri
+wo	Γουόλοφ
+wuu	Wu Chinese
+xal	Καλμίκ
+xh	Ζόσα
+xmf	Mingrelian
+xog	Σόγκα
+yao	Γιάο
+yap	Γιαπίζ
+yav	Γιανγκμπέν
+ybb	Γιέμπα
+yi	Γίντις
+yo	Γιορούμπα
+yrl	Nheengatu
+yue	Καντονέζικα
+za	Ζουάνγκ
+zap	Ζάποτεκ
+zbl	Σύμβολα Bliss
+zea	Zeelandic
+zen	Ζενάγκα
+zgh	Τυπικά Ταμαζίγκτ Μαρόκου
+zh	Κινεζικά
+zh_Hans	Απλοποιημένα Κινεζικά
+zh_Hant	Παραδοσιακά Κινεζικά
+zu	Ζουλού
+zun	Ζούνι
+zxx	Χωρίς γλωσσολογικό περιεχόμενο
+zza	Ζάζα

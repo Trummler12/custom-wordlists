@@ -22,3 +22,6 @@ contact_links:
   - name: 🌍 Language roadmap
     url: https://github.com/Trummler12/custom-wordlists/blob/main/docs/Language-Roadmap.md
     about: Which languages are planned, and in what order.
+  - name: 🗣️ Looking for UI proofreaders — ES, FR, IT, JA, KO
+    url: https://github.com/Trummler12/custom-wordlists/blob/main/CONTRIBUTING.md#looking-for-ui-proofreaders--spanish-french-italian-japanese-korean
+    about: Five interface languages were machine-written and never read by a native speaker.

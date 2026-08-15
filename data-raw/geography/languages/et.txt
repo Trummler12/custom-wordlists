@@ -1,0 +1,609 @@
+aa	afari
+ab	abhaasi
+ace	atšehi
+ach	akoli
+ada	adangme
+ady	adõgee
+ae	avesta
+aeb	Tunisian Arabic
+af	afrikaani
+afh	afrihili
+agq	aghemi
+ain	ainu
+ak	akani
+akk	akadi
+akz	Alabama
+ale	aleuudi
+aln	Gheg Albanian
+alt	altai
+am	amhari
+an	aragoni
+ang	vanainglise
+anp	angika
+ar	araabia
+ar_001	araabia (tänapäevane)
+arc	aramea
+arn	araukaani
+aro	Araona
+arp	arapaho
+arq	Algerian Arabic
+arw	aravaki
+ary	Moroccan Arabic
+arz	Egyptian Arabic
+as	assami
+asa	asa
+ase	American Sign Language
+ast	astuuria
+av	avaari
+avk	Kotava
+awa	avadhi
+ay	aimara
+az	aserbaidžaani
+azb	South Azerbaijani
+ba	baškiiri
+bal	belutši
+ban	bali
+bar	Bavarian
+bas	basa
+bax	bamuni
+bbc	Batak Toba
+bbj	ghomala
+be	valgevene
+bej	bedža
+bem	bemba
+bew	Betawi
+bez	bena
+bfd	bafuti
+bfq	Badaga
+bg	bulgaaria
+bho	bhodžpuri
+bi	bislama
+bik	bikoli
+bin	edo
+bjn	Banjar
+bkm	itaŋikomi
+bla	siksika
+bm	bambara
+bn	bengali
+bo	tiibeti
+bpy	Bishnupriya
+bqi	Bakhtiari
+br	bretooni
+bra	bradži
+brh	Brahui
+brx	bodo
+bs	bosnia
+bss	akoose
+bua	burjaadi
+bug	bugi
+bum	bulu
+byn	bilini
+byv	medumba
+ca	katalaani
+cad	kado
+car	kariibi
+cay	cayuga
+cch	atsami
+ce	tšetšeeni
+ceb	sebu
+cgg	chiga
+ch	tšamorro
+chb	tšibtša
+chg	tšagatai
+chk	tšuugi
+chm	mari
+chn	tšinuki žargoon
+cho	tšokto
+chp	tšipevai
+chr	tšerokii
+chy	šaieeni
+ckb	sorani kurdi
+co	korsika
+cop	kopti
+cps	Capiznon
+cr	krii
+crh	krimmitatari
+cs	tšehhi
+csb	kašuubi
+cu	kirikuslaavi
+cv	tšuvaši
+cy	kõmri
+da	taani
+dak	siuu
+dar	dargi
+dav	taita
+de	saksa
+de_AT	Austrian German
+de_CH	saksa (kõrgsaksa)
+del	delavari
+den	sleivi
+dgr	dogribi
+din	dinka
+dje	zarma
+doi	dogri
+dsb	alamsorbi
+dtp	Central Dusun
+dua	duala
+dum	keskhollandi
+dv	maldiivi
+dyo	jola-fonyi
+dyu	djula
+dz	dzongkha
+dzg	dazaga
+ebu	embu
+ee	eve
+efi	efiki
+egl	Emilian
+egy	muinasegiptuse
+eka	ekadžuki
+el	kreeka
+elx	eelami
+en	inglise
+en_AU	Australian English
+en_CA	Canadian English
+en_GB	inglise (Briti)
+en_US	inglise (USA)
+enm	keskinglise
+eo	esperanto
+es	hispaania
+es_419	Latin American Spanish
+es_ES	hispaania (Euroopa)
+es_MX	Mexican Spanish
+esu	Central Yupik
+et	eesti
+eu	baski
+ewo	evondo
+ext	Extremaduran
+fa	pärsia
+fan	fangi
+fat	fanti
+ff	fulbe
+fi	soome
+fil	filipino
+fit	Tornedalen Finnish
+fj	fidži
+fo	fääri
+fon	foni
+fr	prantsuse
+fr_CA	Canadian French
+fr_CH	Swiss French
+frc	Cajun French
+frm	keskprantsuse
+fro	vanaprantsuse
+frp	Arpitan
+frr	põhjafriisi
+frs	idafriisi
+fur	friuuli
+fy	läänefriisi
+ga	iiri
+gaa	gaa
+gag	gagauusi
+gan	Gan Chinese
+gay	gajo
+gba	gbaja
+gbz	Zoroastrian Dari
+gd	gaeli
+gez	etioopia
+gil	kiribati
+gl	galeegi
+glk	Gilaki
+gmh	keskülemsaksa
+gn	guaranii
+goh	vanaülemsaksa
+gom	Goan Konkani
+gon	gondi
+gor	gorontalo
+got	gooti
+grb	grebo
+grc	vanakreeka
+gsw	šveitsisaksa
+gu	gudžarati
+guc	Wayuu
+gur	Frafra
+guz	gusii
+gv	mänksi
+gwi	gvitšini
+ha	hausa
+hai	haida
+hak	Hakka Chinese
+haw	havai
+he	heebrea
+hi	hindi
+hif	Fiji Hindi
+hil	hiligainoni
+hit	heti
+hmn	hmongi
+ho	motu
+hr	horvaadi
+hsb	ülemsorbi
+hsn	Xiang Chinese
+ht	haiti
+hu	ungari
+hup	hupa
+hy	armeenia
+hz	herero
+ia	interlingua
+iba	ibani
+ibb	ibibio
+id	indoneesia
+ie	interlingue
+ig	ibo
+ii	sichuani jii
+ik	injupiaki
+ilo	iloko
+inh	inguši
+io	ido
+is	islandi
+it	itaalia
+iu	inuktituti
+izh	Ingrian
+ja	jaapani
+jam	Jamaican Creole English
+jbo	lojbani
+jgo	ngomba
+jmc	machame
+jpr	juudipärsia
+jrb	juudiaraabia
+jut	Jutish
+jv	jaava
+ka	gruusia
+kaa	karakalpaki
+kab	kabiili
+kac	katšini
+kaj	jju
+kam	kamba
+kaw	kaavi
+kbd	kabardi-tšerkessi
+kbl	kanembu
+kcg	tyapi
+kde	makonde
+kea	kabuverdianu
+ken	Kenyang
+kfo	koro
+kg	kongo
+kgp	Kaingang
+kha	khasi
+kho	saki
+khq	koyra chiini
+khw	Khowar
+ki	kikuju
+kiu	Kirmanjki
+kj	ambo
+kk	kasahhi
+kkj	kako
+kl	grööni
+kln	kaljenjin
+km	khmeeri
+kmb	mbundu
+kn	kannada
+ko	korea
+koi	permikomi
+kok	konkani
+kos	kosrae
+kpe	kpelle
+kr	kanuri
+krc	karatšai-balkaari
+kri	Krio
+krj	Kinaray-a
+krl	karjala
+kru	oraoni
+ks	kašmiiri
+ksb	shambala
+ksf	bafia
+ksh	cologniani
+ku	kurdi
+kum	kumõki
+kut	kutenai
+kv	komi
+kw	korni
+ky	kirgiisi
+la	ladina
+lad	ladiino
+lag	langi
+lah	lahnda
+lam	lamba
+lb	letseburgi
+lez	lesgi
+lfn	Lingua Franca Nova
+lg	ganda
+li	limburgi
+lij	Ligurian
+liv	Livonian
+lkt	lakota
+lmo	Lombard
+ln	lingala
+lo	lao
+lol	mongo
+loz	lozi
+lt	leedu
+ltg	Latgalian
+lu	luba
+lua	luba-lulua
+lui	luisenjo
+lun	lunda
+luo	luo
+lus	lušei
+luy	luyia
+lv	läti
+lzh	Literary Chinese
+lzz	Laz
+mad	madura
+maf	mafa
+mag	magali
+mai	maithili
+mak	makassari
+man	malinke
+mas	masai
+mde	maba
+mdf	mokša
+mdr	mandari
+men	mende
+mer	meru
+mfe	Mauritiuse kreoolkeel
+mg	malagassi
+mga	keskiiri
+mgh	makhuwa-meetto
+mgo	meta’
+mh	maršalli
+mi	maoori
+mic	mikmaki
+min	minangkabau
+mk	makedoonia
+ml	malajalami
+mn	mongoli
+mnc	mandžu
+mni	manipuri
+moh	mohoogi
+mos	more
+mr	marathi
+mrj	Western Mari
+ms	malai
+mt	malta
+mua	mundangi
+mul	mitu keelt
+mus	maskogi
+mwl	miranda
+mwr	marvari
+mwv	Mentawai
+my	birma
+mye	myene
+myv	ersa
+mzn	Mazanderani
+na	nauru
+nan	Min Nan Chinese
+nap	napoli
+naq	nama
+nb	norra bokmål
+nd	põhjandebele
+nds	alamsaksa
+ne	nepali
+new	nevari
+ng	ndonga
+nia	niasi
+niu	niue
+njo	Ao Naga
+nl	hollandi
+nl_BE	flaami
+nmg	kwasio
+nn	norra nynorsk
+nnh	ngiembooni
+no	norra
+nog	nogai
+non	vanapõhjala
+nov	Novial
+nqo	nkoo
+nr	lõunandebele
+nso	pedi
+nus	nueri
+nv	navaho
+nwc	vananevari
+ny	njandža
+nym	njamvesi
+nyn	nkole
+nyo	njoro
+nzi	nzima
+oc	provansi
+oj	odžibvei
+om	oromo
+or	oria
+os	osseedi
+osa	oseidži
+ota	osmanitürgi
+pa	pandžabi
+pag	pangasinani
+pal	pahlavi
+pam	pampanga
+pap	papiamento
+pau	belau
+pcd	Picard
+pdc	Pennsylvania German
+pdt	Plautdietsch
+peo	vanapärsia
+pfl	Palatine German
+phn	foiniikia
+pi	paali
+pl	poola
+pms	Piedmontese
+pnt	Pontic
+pon	poonpei
+prg	Prussian
+pro	vanaprovansi
+ps	puštu
+pt	portugali
+pt_BR	Brazilian Portuguese
+pt_PT	portugali (Euroopa)
+qu	ketšua
+quc	k’iche’
+qug	Chimborazo Highland Quichua
+raj	radžastani
+rap	rapanui
+rar	rarotonga
+rgn	Romagnol
+rif	Riffian
+rm	retoromaani
+rn	rundi
+ro	rumeenia
+ro_MD	moldova
+rof	rombo
+rom	mustlaskeel
+root	root
+rtm	Rotuman
+ru	vene
+rue	Rusyn
+rug	Roviana
+rup	aromuuni
+rw	ruanda
+rwk	rwa
+sa	sanskriti
+sad	sandave
+sah	jakuudi
+sam	samaaria aramea
+saq	samburu
+sas	sasaki
+sat	santali
+saz	Saurashtra
+sba	ngembay
+sbp	sangu
+sc	sardiinia
+scn	sitsiilia
+sco	šoti
+sd	sindhi
+sdc	Sassarese Sardinian
+se	põhjasaami
+see	seneca
+seh	sena
+sei	Seri
+sel	sölkupi
+ses	koyraboro senni
+sg	sango
+sga	vanaiiri
+sgs	Samogitian
+sh	serbia-horvaadi
+shi	tachelhiti
+shn	šani
+shu	Tšaadi araabia
+si	singali
+sid	sidamo
+sk	slovaki
+sl	sloveeni
+sli	Lower Silesian
+sly	Selayar
+sm	samoa
+sma	lõunasaami
+smj	lule saami
+smn	inari saami
+sms	koltasaami
+sn	šona
+snk	soninke
+so	somaali
+sog	sogdi
+sq	albaania
+sr	serbia
+srn	sranani
+srr	sereri
+ss	svaasi
+ssy	saho
+st	lõunasotho
+stq	Saterland Frisian
+su	sunda
+suk	sukuma
+sus	susu
+sux	sumeri
+sv	rootsi
+sw	suahiili
+swb	komoori
+swc	Kongo suahiili
+syc	klassikaline süüria
+syr	süüria
+szl	Silesian
+ta	tamili
+tcy	Tulu
+te	telugu
+tem	temne
+teo	teso
+ter	tereno
+tet	tetumi
+tg	tadžiki
+th	tai
+ti	tigrinja
+tig	tigree
+tiv	tivi
+tk	türkmeeni
+tkl	tokelau
+tkr	Tsakhur
+tl	tagalogi
+tlh	klingoni
+tli	tlingiti
+tly	Talysh
+tmh	tamašeki
+tn	tsvana
+to	tonga
+tog	tšitonga
+tpi	uusmelaneesia
+tr	türgi
+tru	Turoyo
+trv	taroko
+ts	tsonga
+tsd	Tsakonian
+tsi	tšimši
+tt	tatari
+ttt	Muslim Tat
+tum	tumbuka
+tvl	tuvalu
+tw	tvii
+twq	taswaqi
+ty	tahiti
+tyv	tõva
+tzm	Kesk-Maroko tamazighti
+udm	udmurdi
+ug	uiguuri
+uga	ugariti
+uk	ukraina
+umb	umbundu
+und	määramata
+ur	urdu
+uz	usbeki
+vai	vai
+ve	venda
+vec	Venetian
+vep	Veps
+vi	vietnami
+vls	West Flemish
+vmf	Main-Franconian
+vo	volapüki
+vot	vadja
+vro	Võro
+vun	vunjo
+wa	vallooni
+wae	walseri
+wal	volamo
+war	varai
+was	vašo
+wbp	Warlpiri
+wo	volofi
+wuu	Wu Chinese
+xal	kalmõki
+xh	koosa
+xmf	Mingrelian
+xog	soga
+yao	jao
+yap	japi
+yav	yangbeni
+ybb	yemba
+yi	jidiši
+yo	joruba
+yrl	Nheengatu
+yue	kantoni
+za	tšuangi
+zap	sapoteegi
+zbl	blissümbolid
+zea	Zeelandic
+zen	zenaga
+zgh	tamasikti (Maroko)
+zh	hiina
+zh_Hans	hiina (lihtsustatud)
+zh_Hant	hiina (traditsiooniline)
+zu	suulu
+zun	sunji
+zxx	mittekeeleline
+zza	zaza

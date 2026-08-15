@@ -4,11 +4,57 @@
 // recompute on a language switch without any of this knowing about runes.
 
 import type { Group, LocalizedString, NamePair, NamesMode, Word, WordEntry } from "./types";
+import { baseTag, matchTag } from "./languages";
+import { toRomaji } from "./kana";
+
+/** The tag an entry carrying `keys` answers `lang` with, or undefined for none.
+ *
+ *  Memoized because the answer depends only on the language and the set of keys,
+ *  and a list of two thousand items has two thousand entries carrying the same
+ *  nine — one match per shape rather than one per entry per render. */
+const matched = new Map<string, string | undefined>();
+function tagFor(obj: Record<string, unknown>, lang: string): string | undefined {
+  const keys = Object.keys(obj).filter((k) => k !== UNKNOWN);
+  const cacheKey = `${lang}|${keys.join(",")}`;
+  let hit = matched.get(cacheKey);
+  if (hit === undefined && !matched.has(cacheKey)) {
+    hit = matchTag(lang, keys);
+    matched.set(cacheKey, hit);
+  }
+  return hit;
+}
 
 /** Resolve a leaf string to `lang`: a language map picks `lang` (falling back to
- *  its "en" base); a plain string is already neutral. */
-export function resolveStr(s: LocalizedString, lang: string): string {
-  return typeof s === "string" ? s : (s[lang] ?? s.en);
+ *  the closest tag it does carry, then to its "en" base); a plain string is
+ *  already neutral.
+ *
+ *  The closest tag matters the moment the picker offers a tag the data spells
+ *  differently — a reader asking for `zh` on a list carrying `zh-Hans` wants the
+ *  Chinese name, not the English one it would otherwise fall through to.
+ *
+ *  `derived` lets a list whose romaji are transliterated rather than sourced say
+ *  so; see `transliterate`. It is off by default, because for most lists an
+ *  absent `ja-Latn` means "the romaji is the English name" and deriving one would
+ *  overwrite an official spelling with a reading of it. */
+export function resolveStr(s: LocalizedString, lang: string, derived = false): string {
+  if (typeof s === "string") return s;
+  const own = s[lang];
+  if (own !== undefined) return own;
+  const made = derived ? transliterate(s, lang) : undefined;
+  if (made !== undefined) return made;
+  const tag = tagFor(s, lang);
+  return tag !== undefined ? s[tag] : s.en;
+}
+
+/** The romaji of an entry that carries none, read off its Japanese name.
+ *
+ *  After the entry's own key and before every fallback: a stored `ja-Latn` still
+ *  wins, so a reading someone reports as wrong can be pinned in the data without
+ *  turning the derivation off for the rest of the list. */
+function transliterate(s: Record<string, string>, lang: string): string | undefined {
+  if (!lang.toLowerCase().endsWith("-latn")) return undefined;
+  const source = s[baseTag(lang)];
+  return typeof source === "string" ? toRomaji(source) : undefined;
 }
 
 /** The key an entry uses to name the languages its source had no name for. Not a
@@ -32,31 +78,65 @@ export function unknownLangs(e: WordEntry): readonly string[] {
 /** Whether the list has no name for this entry in `lang`. An own key wins: a name
  *  filled in by hand outranks a gap the bulk source reported, so correcting one
  *  entry needs no edit to the `?` beside it. English never counts as unknown — it
- *  is the base every entry has. */
+ *  is the base every entry has.
+ *
+ *  The two halves ask about different things, which is why one takes the whole tag
+ *  and the other only its language. Having a name is a property of the *language*:
+ *  an entry with no Spanish name has none in Latin American Spanish either, and one
+ *  with no Japanese name has no reading to derive romaji from — and `?` never holds
+ *  a variant tag, since a missing row is not a missing name. Whether *this* spelling
+ *  is present is a property of the whole tag: an entry carrying `es-419` has a Latin
+ *  American name whatever `?` says about `es`. */
 export function isUnknownIn(e: WordEntry, lang: string): boolean {
-  if (lang === "en" || typeof e === "string") return false;
-  return (e as Record<string, unknown>)[lang] === undefined && unknownLangs(e).includes(lang);
+  if (typeof e === "string") return false;
+  const base = baseTag(lang);
+  if (base === "en") return false;
+  return (e as Record<string, unknown>)[lang] === undefined && unknownLangs(e).includes(base);
 }
 
 /** Resolve an entry to `lang`. Two equivalent shapes are accepted: the preferred
  *  leaf form (a name pair whose fields each localize) and an entry-level language
  *  map { en, de, … } whose value is itself an entry — the latter is resolved by
- *  picking the language and recursing. */
-export function resolveWord(e: WordEntry, lang: string): Word {
+ *  picking the language and recursing.
+ *
+ *  **The two shapes are not equivalent for a derived reading.** `transliterate`
+ *  reads a leaf, so a map whose language holds a *name pair* has its Japanese one
+ *  level further down than this can reach, and the entry falls through to English
+ *  with its kana sitting inside it. Passing `derived` into the recursion does not
+ *  help: the pair's halves are plain strings by then, and a plain string is neutral
+ *  by definition — it would need a second traversal that romanizes an already
+ *  resolved pair. No entry has that shape (all four romanized lists are flat maps
+ *  of strings), so this is written down rather than built. */
+export function resolveWord(e: WordEntry, lang: string, derived = false): Word {
   if (typeof e === "string") return e;
   const obj = e as Record<string, unknown>;
   if ("short" in obj && "long" in obj) {
     const p = e as NamePair;
-    return { short: resolveStr(p.short, lang), long: resolveStr(p.long, lang) };
+    return {
+      short: resolveStr(p.short, lang, derived),
+      long: resolveStr(p.long, lang, derived),
+    };
   }
   const map = e as Record<string, WordEntry>;
-  return resolveWord(map[lang] ?? map.en, lang);
+  // Same fallback chain as a leaf: the language, then a reading derived from it
+  // where the list says its romaji are, then the closest tag, then English.
+  if (map[lang] === undefined && derived) {
+    const made = transliterate(map as Record<string, string>, lang);
+    if (made !== undefined) return made;
+  }
+  const tag = map[lang] !== undefined ? lang : tagFor(map, lang);
+  return resolveWord((tag !== undefined ? map[tag] : undefined) ?? map.en, lang);
 }
 
 /** The string(s) an entry contributes in a names mode. A pair whose two forms
  *  render identically collapses to one, so "both" can't produce a duplicate. */
-export function renderEntry(e: WordEntry, mode: NamesMode, lang: string): string[] {
-  const w = resolveWord(e, lang);
+export function renderEntry(
+  e: WordEntry,
+  mode: NamesMode,
+  lang: string,
+  derived = false,
+): string[] {
+  const w = resolveWord(e, lang, derived);
   if (typeof w === "string") return [w];
   if (mode === "short") return [w.short];
   if (mode === "long") return [w.long];
@@ -65,10 +145,47 @@ export function renderEntry(e: WordEntry, mode: NamesMode, lang: string): string
 
 /** Count of distinct rendered strings for a list of entries (without building the
  *  array): what the per-group and per-topic counters show. */
-export function renderCount(entries: WordEntry[], mode: NamesMode, lang: string): number {
+export function renderCount(
+  entries: WordEntry[],
+  mode: NamesMode,
+  lang: string,
+  derived = false,
+): number {
   const seen = new Set<string>();
-  for (const e of entries) for (const w of renderEntry(e, mode, lang)) seen.add(w);
+  for (const e of entries) for (const w of renderEntry(e, mode, lang, derived)) seen.add(w);
   return seen.size;
+}
+
+/** The entries a variant spells differently, as `base → variant` pairs.
+ *
+ *  Only entries carrying the tag: a variant is written into the data solely where
+ *  it deviates, so its presence *is* the difference. That makes the count worth
+ *  showing — it says where a variant matters, which is the question nobody can
+ *  answer from the outside. */
+const pairsByGroups = new WeakMap<Group[], Map<string, { from: string; to: string }[]>>();
+
+export function variantPairs(
+  groups: Group[],
+  tag: string,
+  base: string,
+): { from: string; to: string }[] {
+  // Keyed on the topic's own groups array, which is loaded once and never
+  // replaced: without this the scan runs per row per render, over lists of two
+  // thousand entries, for every topic on screen.
+  let byTag = pairsByGroups.get(groups);
+  if (!byTag) pairsByGroups.set(groups, (byTag = new Map()));
+  const hit = byTag.get(tag);
+  if (hit) return hit;
+
+  const out: { from: string; to: string }[] = [];
+  for (const g of groups) {
+    for (const e of [...(g.words ?? []), ...(g.tiers ?? []).flat()]) {
+      if (typeof e === "string" || (e as Record<string, unknown>)[tag] === undefined) continue;
+      out.push({ from: renderEntry(e, "short", base)[0], to: renderEntry(e, "short", tag)[0] });
+    }
+  }
+  byTag.set(tag, out);
+  return out;
 }
 
 /** A name resolved for display: what a row shows, and what its hover reveals.

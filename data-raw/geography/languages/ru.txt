@@ -1,0 +1,609 @@
+aa	афар
+ab	абхазский
+ace	ачехский
+ach	ачоли
+ada	адангме
+ady	адыгейский
+ae	авестийский
+aeb	Tunisian Arabic
+af	африкаанс
+afh	африхили
+agq	агхем
+ain	айну
+ak	акан
+akk	аккадский
+akz	Alabama
+ale	алеутский
+aln	Gheg Albanian
+alt	южноалтайский
+am	амхарский
+an	арагонский
+ang	староанглийский
+anp	ангика
+ar	арабский
+ar_001	арабский литературный
+arc	арамейский
+arn	арауканский
+aro	Araona
+arp	арапахо
+arq	Algerian Arabic
+arw	аравакский
+ary	Moroccan Arabic
+arz	Egyptian Arabic
+as	ассамский
+asa	аса
+ase	American Sign Language
+ast	астурийский
+av	аварский
+avk	Kotava
+awa	авадхи
+ay	аймара
+az	азербайджанский
+azb	South Azerbaijani
+ba	башкирский
+bal	белуджский
+ban	балийский
+bar	Bavarian
+bas	баса
+bax	бамум
+bbc	Batak Toba
+bbj	гхомала
+be	белорусский
+bej	беджа
+bem	бемба
+bew	Betawi
+bez	бена
+bfd	бафут
+bfq	Badaga
+bg	болгарский
+bho	бходжпури
+bi	бислама
+bik	бикольский
+bin	бини
+bjn	Banjar
+bkm	ком
+bla	сиксика
+bm	бамбарийский
+bn	бенгальский
+bo	тибетский
+bpy	Bishnupriya
+bqi	Bakhtiari
+br	бретонский
+bra	брауи
+brh	Brahui
+brx	бодо
+bs	боснийский
+bss	акоосе
+bua	бурятский
+bug	бугийский
+bum	булу
+byn	билин (блин)
+byv	медумба
+ca	каталанский
+cad	каддо
+car	кариб
+cay	кайюга
+cch	атсам
+ce	чеченский
+ceb	кебуано
+cgg	чига
+ch	чаморро
+chb	чибча
+chg	чагатайский
+chk	чукотский
+chm	марийский (черемисский)
+chn	чинук жаргон
+cho	чоктав
+chp	чипевайян
+chr	чероки
+chy	чейенн
+ckb	сорани курдский
+co	корсиканский
+cop	коптский
+cps	Capiznon
+cr	криийский
+crh	крымско-татарский
+cs	чешский
+csb	кашубианский
+cu	церковнославянский
+cv	чувашский
+cy	валлийский
+da	датский
+dak	дакота
+dar	даргва
+dav	таита
+de	немецкий
+de_AT	австрийский немецкий
+de_CH	швейцарский верхненемецкий
+del	делаварский
+den	слейви
+dgr	догриб
+din	динка
+dje	зарма
+doi	догри
+dsb	нижнелужицкий
+dtp	Central Dusun
+dua	дуала
+dum	средненидерландский
+dv	мальдивский
+dyo	дьола-фоньи
+dyu	диула (дьюла)
+dz	дзонг-кэ
+dzg	дазагский
+ebu	эмбу
+ee	эве
+efi	эфик
+egl	Emilian
+egy	древнеегипетский
+eka	экаджук
+el	греческий
+elx	эламский
+en	английский
+en_AU	австралийский английский
+en_CA	канадский английский
+en_GB	британский английский
+en_US	американский английский
+enm	среднеанглийский
+eo	эсперанто
+es	испанский
+es_419	латиноамериканский испанский
+es_ES	европейский испанский
+es_MX	Mexican Spanish
+esu	Central Yupik
+et	эстонский
+eu	баскский
+ewo	эвондо
+ext	Extremaduran
+fa	персидский
+fan	фанг
+fat	фанти
+ff	фулах
+fi	финский
+fil	филиппинский
+fit	Tornedalen Finnish
+fj	фиджи
+fo	фарерский
+fon	фон
+fr	французский
+fr_CA	канадский французский
+fr_CH	швейцарский французский
+frc	Cajun French
+frm	среднефранцузский
+fro	старофранцузский
+frp	Arpitan
+frr	фризский северный
+frs	восточный фризский
+fur	фриульский
+fy	западно-фризский
+ga	ирландский
+gaa	га
+gag	гагаузский
+gan	Gan Chinese
+gay	гайо
+gba	гбая
+gbz	Zoroastrian Dari
+gd	гэльский
+gez	геэз
+gil	гильбертский
+gl	галисийский
+glk	Gilaki
+gmh	средневерхненемецкий
+gn	гуарани
+goh	древневерхненемецкий
+gom	Goan Konkani
+gon	гонди
+gor	горонтало
+got	готский
+grb	гребо
+grc	древнегреческий
+gsw	швейцарский немецкий
+gu	гуджарати
+guc	Wayuu
+gur	Frafra
+guz	гусии
+gv	мэнский
+gwi	гвичин
+ha	хауса
+hai	хайда
+hak	Hakka Chinese
+haw	гавайский
+he	иврит
+hi	хинди
+hif	Fiji Hindi
+hil	хилигайнон
+hit	хеттский
+hmn	хмонг
+ho	хиримоту
+hr	хорватский
+hsb	верхнелужицкий
+hsn	Xiang Chinese
+ht	гаитянский
+hu	венгерский
+hup	хупа
+hy	армянский
+hz	гереро
+ia	интерлингва
+iba	ибанский
+ibb	ибибио
+id	индонезийский
+ie	интерлингве
+ig	игбо
+ii	сычуань
+ik	инупиак
+ilo	илоко
+inh	ингушский
+io	идо
+is	исландский
+it	итальянский
+iu	инуктитут
+izh	Ingrian
+ja	японский
+jam	Jamaican Creole English
+jbo	ложбан
+jgo	нгомба
+jmc	мачаме
+jpr	еврейско-персидский
+jrb	еврейско-арабский
+jut	Jutish
+jv	яванский
+ka	грузинский
+kaa	каракалпакский
+kab	кабильский
+kac	качинский
+kaj	каджи
+kam	камба
+kaw	кави
+kbd	кабардинский
+kbl	канембу
+kcg	тьяп
+kde	маконде
+kea	кабувердьяну
+ken	Kenyang
+kfo	коро
+kg	конго
+kgp	Kaingang
+kha	кхаси
+kho	хотанский
+khq	койра чиини
+khw	Khowar
+ki	кикуйю
+kiu	Kirmanjki
+kj	кунама
+kk	казахский
+kkj	како
+kl	гренландский
+kln	календжин
+km	кхмерский
+kmb	кимбундийский
+kn	каннада
+ko	корейский
+koi	коми-пермяцкий
+kok	конкани
+kos	косраенский
+kpe	кпелле
+kr	канури
+krc	карачаево-балкарский
+kri	Krio
+krj	Kinaray-a
+krl	карельский
+kru	курух
+ks	кашмири
+ksb	шамбала
+ksf	бафия
+ksh	кёльш
+ku	курдский
+kum	кумыкский
+kut	кутенаи
+kv	коми
+kw	корнийский
+ky	киргизский
+la	латинский
+lad	ладино
+lag	ланги
+lah	лахнда
+lam	ламба
+lb	люксембургский
+lez	лезгинский
+lfn	Lingua Franca Nova
+lg	ганда
+li	лимбургский
+lij	Ligurian
+liv	Livonian
+lkt	лакота
+lmo	Lombard
+ln	лингала
+lo	лаосский
+lol	монго
+loz	лози
+lt	литовский
+ltg	Latgalian
+lu	луба-катанга
+lua	луба-лулуа
+lui	луисеньо
+lun	лунда
+luo	луо (Кения и Танзания)
+lus	лушай
+luy	лухья
+lv	латышский
+lzh	Literary Chinese
+lzz	Laz
+mad	мадурский
+maf	мафа
+mag	магахи
+mai	майтхили
+mak	макассарский
+man	мандинго
+mas	масаи
+mde	мабанский
+mdf	мокшанский
+mdr	мандарский
+men	менде
+mer	меру
+mfe	маврикийский креольский
+mg	малагасийский
+mga	среднеирландский
+mgh	макуа-меетто
+mgo	мета
+mh	маршалльский
+mi	маори
+mic	микмак
+min	минангкабау
+mk	македонский
+ml	малаялам
+mn	монгольский
+mnc	маньчжурский
+mni	манипурский
+moh	мохаук
+mos	моси
+mr	маратхи
+mrj	Western Mari
+ms	малайский
+mt	мальтийский
+mua	мунданг
+mul	несколько языков
+mus	крик
+mwl	мирандийский
+mwr	марвари
+mwv	Mentawai
+my	бирманский
+mye	миене
+myv	эрзя
+mzn	Mazanderani
+na	науру
+nan	Min Nan Chinese
+nap	неаполитанский
+naq	нама
+nb	норвежский букмол
+nd	северный ндебели
+nds	нижнегерманский
+ne	непальский
+new	неварский
+ng	ндонга
+nia	ниас
+niu	ниуэ
+njo	Ao Naga
+nl	голландский
+nl_BE	фламандский
+nmg	квасио
+nn	норвежский нюнорск
+nnh	нгиембунд
+no	норвежский
+nog	ногайский
+non	старонорвежский
+nov	Novial
+nqo	нко
+nr	ндебели южный
+nso	сото северный
+nus	нуэр
+nv	навахо
+nwc	невари (классический)
+ny	ньянджа
+nym	ньямвези
+nyn	ньянколе
+nyo	ньоро
+nzi	нзима
+oc	окситанский
+oj	оджибва
+om	оромо
+or	ория
+os	осетинский
+osa	оседжи
+ota	старотурецкий
+pa	панджаби
+pag	пангасинан
+pal	пехлевийский
+pam	пампанга
+pap	папьяменто
+pau	палау
+pcd	Picard
+pdc	Pennsylvania German
+pdt	Plautdietsch
+peo	староперсидский
+pfl	Palatine German
+phn	финикийский
+pi	пали
+pl	польский
+pms	Piedmontese
+pnt	Pontic
+pon	понапе
+prg	Prussian
+pro	старопровансальский
+ps	пушту
+pt	португальский
+pt_BR	бразильский португальский
+pt_PT	европейский португальский
+qu	кечуа
+quc	киче
+qug	Chimborazo Highland Quichua
+raj	раджастхани
+rap	рапануи
+rar	раротонганский
+rgn	Romagnol
+rif	Riffian
+rm	романшский
+rn	рунди
+ro	румынский
+ro_MD	молдавский
+rof	ромбо
+rom	цыганский
+root	корневой язык
+rtm	Rotuman
+ru	русский
+rue	Rusyn
+rug	Roviana
+rup	арумынский
+rw	киньяруанда
+rwk	руанда
+sa	санскрит
+sad	сандаве
+sah	якутский
+sam	самаритянский арамейский
+saq	самбуру
+sas	сасаки
+sat	сантали
+saz	Saurashtra
+sba	нгамбайский
+sbp	сангу
+sc	сардинский
+scn	сицилийский
+sco	шотландский
+sd	синдхи
+sdc	Sassarese Sardinian
+se	северносаамский
+see	сенека
+seh	сена
+sei	Seri
+sel	селькупский
+ses	койраборо сенни
+sg	санго
+sga	староирландский
+sgs	Samogitian
+sh	сербскохорватский
+shi	тахелхит
+shn	шанский
+shu	чадский арабс
+si	сингальский
+sid	сидама
+sk	словацкий
+sl	словенский
+sli	Lower Silesian
+sly	Selayar
+sm	самоанский
+sma	саамский (южный)
+smj	луле-саамский
+smn	инари-саамский
+sms	скольт-саамский
+sn	шона
+snk	сонинке
+so	сомали
+sog	согдийский
+sq	албанский
+sr	сербский
+srn	сранан тонго
+srr	серер
+ss	свази
+ssy	сахо
+st	сото южный
+stq	Saterland Frisian
+su	сунданский
+suk	сукума
+sus	сусу
+sux	шумерский
+sv	шведский
+sw	суахили
+swb	коморский
+swc	конголезский суахили
+syc	классический сирийский
+syr	сирийский
+szl	Silesian
+ta	тамильский
+tcy	Tulu
+te	телугу
+tem	темне
+teo	тесо
+ter	терено
+tet	тетум
+tg	таджикский
+th	тайский
+ti	тигринья
+tig	тигре
+tiv	тиви
+tk	туркменский
+tkl	токелайский
+tkr	Tsakhur
+tl	тагалог
+tlh	клингонский
+tli	тлингит
+tly	Talysh
+tmh	тамашек
+tn	тсвана
+to	тонганский
+tog	ньяса (тонга)
+tpi	ток-писин
+tr	турецкий
+tru	туройо
+trv	тароко
+ts	тсонга
+tsd	Tsakonian
+tsi	цимшиан
+tt	татарский
+ttt	Muslim Tat
+tum	тумбука
+tvl	тувалу
+tw	тви
+twq	тасавак
+ty	таитянский
+tyv	тувинский
+tzm	среднеатласский тамазигхтский
+udm	удмуртский
+ug	уйгурский
+uga	угаритский
+uk	украинский
+umb	умбунду
+und	неизвестный язык
+ur	урду
+uz	узбекский
+vai	ваи
+ve	венда
+vec	Venetian
+vep	Veps
+vi	вьетнамский
+vls	West Flemish
+vmf	Main-Franconian
+vo	волапюк
+vot	водский
+vro	Võro
+vun	вунджо
+wa	валлонский
+wae	валисский
+wal	воламо
+war	варай
+was	вашо
+wbp	Warlpiri
+wo	волоф
+wuu	Wu Chinese
+xal	калмыцкий
+xh	коса
+xmf	Mingrelian
+xog	сога
+yao	яо
+yap	яп
+yav	янбан
+ybb	йемба
+yi	идиш
+yo	йоруба
+yrl	Nheengatu
+yue	кантонский
+za	чжуань
+zap	сапотекский
+zbl	блиссимволика
+zea	Zeelandic
+zen	зенагский
+zgh	тамазигхтский
+zh	китайский
+zh_Hans	упрощенный китайский
+zh_Hant	традиционный китайский
+zu	зулу
+zun	зуньи
+zxx	без языкового содержания
+zza	заза
