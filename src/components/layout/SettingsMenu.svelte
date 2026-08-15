@@ -28,10 +28,20 @@
   // each time a language with one is selected.
   let nudge = $state(false);
   $effect(() => {
+    // Cleared before anything else. Leaving it set when the new language has no
+    // variant latches the class on, and a class that never comes off never goes
+    // back on — after one badly timed switch the gear would never blink again.
+    nudge = false;
     if (!variant) return;
-    nudge = true;
-    const t = setTimeout(() => (nudge = false), 1600);
-    return () => clearTimeout(t);
+    // Back on a frame later rather than at once, for the same reason: an animation
+    // restarts only if its class actually left. Spanish straight to Japanese would
+    // otherwise blink once for the two of them.
+    const start = requestAnimationFrame(() => (nudge = true));
+    const stop = setTimeout(() => (nudge = false), 1600);
+    return () => {
+      cancelAnimationFrame(start);
+      clearTimeout(stop);
+    };
   });
 
   /** Hold the menu still — its width *and* where it sits — for as long as it is
