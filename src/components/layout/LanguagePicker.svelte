@@ -14,19 +14,24 @@
     <button
       type="button"
       class="lang-btn"
-      aria-haspopup="menu"
+      aria-haspopup="true"
       aria-expanded={overlays.langMenu === id}
       aria-label={lang.ui.language.label(lang.nameInUi(lang.current))}
-      onclick={() => overlays.toggleLangMenu(id)}
+      onclick={(e) => overlays.toggleLangMenu(id, e.currentTarget)}
     >🌐</button>
     {#if overlays.langMenu === id}
-      <ul class="lang-menu" role="menu" aria-label={lang.ui.language.menu}>
+      <!-- A list of buttons in a popover, and nothing more. `role="menu"` promises
+           the WAI-ARIA menu pattern — arrow keys between items, Home/End, focus
+           moving in as it opens — and none of that is implemented here: the
+           buttons are reached with Tab, like the buttons they are. Announcing a
+           menu and then behaving otherwise is worse for a screen-reader user than
+           announcing nothing, so the roles are gone rather than half-kept. -->
+      <ul class="lang-menu" aria-label={lang.ui.language.menu}>
         {#each lang.available as l (l)}
-          <li role="none">
+          <li>
             <button
               type="button"
-              role="menuitemradio"
-              aria-checked={l === lang.current}
+              aria-current={l === lang.current ? "true" : undefined}
               class:selected={l === lang.current}
               onclick={() => overlays.chooseLanguage(l)}
               title={l}
