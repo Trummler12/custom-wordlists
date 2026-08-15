@@ -17,14 +17,32 @@ const VARIANT_STORAGE_KEY = "wordlists:variants";
 /** The interface follows the list language unless told otherwise. */
 export const AUTO = "auto";
 
+/** One formatter per locale that has been asked for, `null` where the runtime
+ *  refused to build one. Constructing an `Intl.DisplayNames` costs roughly nine
+ *  times what asking an existing one does, and every topic row asks on every
+ *  render — for the language in its ⚠️/ℹ️ marker — as does every 🧹 panel.
+ *
+ *  Bounded by the interface languages, so a handful of entries at most. */
+const formatters = new Map<string, Intl.DisplayNames | null>();
+
 /** A language's name, in `inLang`. `Intl.DisplayNames` is generated from the same
  *  CLDR data the language lists are, so it agrees with them for free and needs no
  *  table of our own — pass a language its own code for the endonym. */
 function displayName(l: string, inLang: string): string {
+  let f = formatters.get(inLang);
+  if (f === undefined) {
+    try {
+      f = new Intl.DisplayNames([inLang], { type: "language" });
+    } catch {
+      // A runtime without the API, or a locale it refuses to parse.
+      f = null;
+    }
+    formatters.set(inLang, f);
+  }
   try {
-    return new Intl.DisplayNames([inLang], { type: "language" }).of(l) ?? l.toUpperCase();
+    return f?.of(l) ?? l.toUpperCase();
   } catch {
-    // A runtime without the API, or a tag it refuses to parse.
+    // `of` throws on its own for a malformed tag, which a stored preference can be.
     return l.toUpperCase();
   }
 }
