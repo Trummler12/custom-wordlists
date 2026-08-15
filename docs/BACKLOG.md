@@ -258,7 +258,4 @@ big enough to discuss belongs in an issue instead.
 
 ## Repo & community
 
-- **Two nits in the issue chooser.** The contribution-guide contact link points
-  at `blob/main/CONTRIBUTING.md`; `?tab=contributing-ov-file` renders it in the
-  repo's own tab instead. And the charity divider's `name` (one 🌳) is much
-  shorter than its `about` (twelve) — 8 or 9 would balance the two lines.
+*(nothing parked here right now)*
