@@ -13,7 +13,7 @@
 import { readFile, readdir } from "node:fs/promises";
 import { join, dirname, relative } from "node:path";
 import { fileURLToPath } from "node:url";
-import { groupEntries, ruleMatcher, rulesOf } from "./lib/omissions.mjs";
+import { entryForms, groupEntries, ruleMatcher, rulesOf } from "./lib/omissions.mjs";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 const TOPICS_DIR = join(ROOT, "data", "topics");
@@ -28,10 +28,10 @@ async function everyTopic(dir = TOPICS_DIR) {
   return out;
 }
 
-const label = (entry) => {
-  const forms = typeof entry === "string" ? [entry] : Object.values(entry);
-  return String(forms[0]);
-};
+/** One name for an entry, under `--names`. Through `entryForms` because an entry
+ *  nests: a name pair whose `short` is a language map put an object into the old
+ *  `Object.values(entry)[0]`, and the report printed `[object Object]`. */
+const label = (entry) => entryForms(entry)[0] ?? "";
 
 async function main() {
   const args = process.argv.slice(2);
