@@ -12,7 +12,8 @@
     "test": "vitest run",
     "typecheck:node": "tsc -p tsconfig.node.json --noEmit",
     "build:index": "node scripts/build-index.mjs",
-    "validate": "node scripts/validate-data.mjs"
+    "validate": "node scripts/validate-data.mjs",
+    "check:wraps": "node scripts/check-wraps.mjs"
   },
   "devDependencies": {
     "@sveltejs/vite-plugin-svelte": "^5.0.3",
