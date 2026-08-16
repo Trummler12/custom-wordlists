@@ -1,7 +1,7 @@
 // UI-chrome strings (everything the app itself renders — not topic content).
-// One dictionary per locale (en.ts, de.ts) implements UIStrings; the frontend
-// resolves the active one via strings(lang), falling back to English for any
-// language that has topic data but no UI translation yet.
+// One dictionary per locale implements UIStrings — seven of them, listed in UI
+// below; the frontend resolves the active one via strings(lang), falling back to
+// English for any language that has topic data but no UI translation yet.
 //
 // Grouped rather than flat, and a group is one of two things: a PLACE, when its
 // strings only ever appear there (header, tree, settings, output, footer), or a
