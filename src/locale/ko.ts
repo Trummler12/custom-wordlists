@@ -79,6 +79,8 @@ export const ko: UIStrings = {
     label: "결과",
     copy: "복사",
     copied: "복사했습니다",
+    copyFailed: "복사하지 못했습니다",
+    copyManual: "목록을 선택했습니다. 직접 복사해 주세요.",
     empty: "주제나 그룹을 선택하면 목록이 만들어집니다.",
     generatedList: "생성된 단어 목록",
     words: "단어",

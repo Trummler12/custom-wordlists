@@ -79,6 +79,8 @@ export const ja: UIStrings = {
     label: "出力",
     copy: "コピー",
     copied: "コピーしました",
+    copyFailed: "コピーできませんでした",
+    copyManual: "リストを選択しました。手動でコピーしてください。",
     empty: "トピックまたはグループを選ぶとリストができます。",
     generatedList: "生成された単語リスト",
     words: "単語",

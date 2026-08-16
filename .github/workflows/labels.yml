@@ -45,8 +45,10 @@ jobs:
               }
             }
 
-            // "Kind of proposal" is the word-list form's dropdown — the only one left.
-            // Plain "Kind" is kept for hand-written bodies that still use the old shape.
+            // "Kind of proposal" is the dropdown on the word-list and data-source forms.
+            // Both spell their options the same way on purpose, so one heading serves both
+            // and adding a form costs no change here. Plain "Kind" is kept for hand-written
+            // bodies that still use the old shape.
             const answer = sections["Kind of proposal"] ?? sections["Kind"] ?? "";
             const label = KIND_LABELS[answer.split(/\s+/)[0]];
             if (!label) {

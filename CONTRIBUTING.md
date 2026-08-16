@@ -8,9 +8,16 @@ Thanks for helping with the project!
 - An existing list that's **incomplete or has incorrect entries**.
 - **Fame groups** that don't match how well-known the entries actually are.
 - A **missing language**, or a wrong/awkward translation.
+- A **link to structured data** — an API, a dataset, a repo — that a list could be generated from.
 - Anything about the **tool itself** — a bug, or an idea for how it could work better.
 
 The [topic tracker](docs/Topic-Progress.md) shows what's already covered and what's planned — worth a look before proposing a new list.
+
+## Before you type out a list
+
+If your topic already exists as **structured data** — a public API, a Wikidata query, a CLDR export, a maintained list on GitHub — then please don't compile it by hand. The language list and the Pokémon lists were all built by script from sources like that, and a script does in one pass, in every language at once, what a spreadsheet does in an evening in one of them.
+
+**A couple of links can be the entire contribution:** open a [Data source](https://github.com/Trummler12/custom-wordlists/issues/new?template=2-data-source.yml) issue and say what you found. Naming a source we can script beats a hand-typed list of the same topic — it arrives more complete, and it stays checkable against where it came from.
 
 ## Choose your Way of Contributing
 
@@ -22,6 +29,7 @@ The [topic tracker](docs/Topic-Progress.md) shows what's already covered and wha
 
 You don't need to touch any code. [Open an issue](https://github.com/Trummler12/custom-wordlists/issues) with a template:
 - **Word list** (a new list or a full rework),
+- **Data source** (links to structured data a list can be built from — see above),
 - **Correction / small fix** (a wrong/missing entry, a fame-group tweak, a missing translation),
 - or **Bug** / **Improvement** (anything about the app rather than a list).
 
@@ -102,23 +110,15 @@ Comfortable with JSON and spotted a list posted in the [simple form](#option-a--
 
 ## Looking for UI proofreaders — Spanish, French, Italian, Japanese, Korean
 
-The interface now speaks nine languages' worth of word lists and seven languages of its own.
-Two of those seven were written by people who speak them. **The other five — Spanish, French,
-Italian, Japanese and Korean — were machine-written and have never been read by a native
-speaker.** They are a starting point, not a translation.
+The interface now speaks nine languages' worth of word lists and seven languages of its own. Two of those seven were written by people who speak them. **The other five — Spanish, French, Italian, Japanese and Korean — were machine-written and have never been read by a native speaker.** They are a starting point, not a translation.
 
 If one of them is yours, we'd be glad of ten minutes of it. What's worth reporting:
 
 - Anything that reads as a machine wrote it, even where it isn't *wrong*.
-- The sentences that bend grammar around an inserted language name — the ⚠️ and ℹ️ markers on
-  a topic row, where French elides its article and German declines the name. Every language
-  does this differently and each dictionary decides for itself.
+- The sentences that bend grammar around an inserted language name — the ⚠️ and ℹ️ markers on a topic row, where French elides its article and German declines the name. Every language does this differently and each dictionary decides for itself.
 - Wording that's too long for the control it sits in.
 
-Confirming that a locale reads fine is just as useful as correcting it, and neither fits the
-issue templates — so please **[open a blank
-issue](https://github.com/Trummler12/custom-wordlists/issues/new)** and say which language
-you read. The files are `src/locale/<code>.ts`, one per language, all the same shape.
+Confirming that a locale reads fine is just as useful as correcting it, and neither fits the issue templates — so please **[open a blank issue](https://github.com/Trummler12/custom-wordlists/issues/new)** and say which language you read. The files are `src/locale/<code>.ts`, one per language, all the same shape.
 
 ## Local development
 
@@ -126,6 +126,9 @@ you read. The files are `src/locale/<code>.ts`, one per language, all the same s
 npm install
 npm run dev        # dev server (runs build:index first, then vite)
 npm run build      # production build → dist/ (also runs build:index)
+npm run validate   # data against the schema + the cross-checks under Option B
+npm run check      # frontend type-check
+npm test           # unit tests — CI runs this as its own gate
 ```
 
 ## Questions & discussion

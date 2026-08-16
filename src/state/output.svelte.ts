@@ -48,18 +48,36 @@ class OutputState {
   readonly belowMin: boolean = $derived(this.included.length < SKRIBBL.minWords);
   readonly overMax: boolean = $derived(this.charCount > SKRIBBL.maxTotal);
 
-  /** True for a moment after a successful copy, for the button's label. */
-  copied = $state(false);
+  /** What the last copy attempt came to, for a moment afterwards. Three states
+   *  rather than a boolean, because a copy that doesn't happen has to look
+   *  different from one that hasn't been asked for. */
+  copyState = $state<"idle" | "copied" | "failed">("idle");
 
-  copy = async (): Promise<void> => {
+  /** Copy the list, reporting whether it worked so the caller can offer the
+   *  manual route.
+   *
+   *  It really does fail: `navigator.clipboard` is undefined on any origin that
+   *  isn't secure, and `writeText` rejects when the document has lost focus or
+   *  permission is refused. All of that used to be swallowed, leaving the one
+   *  action the app exists for indistinguishable from a dead button. */
+  copy = async (): Promise<boolean> => {
+    let ok = false;
     try {
       await navigator.clipboard.writeText(this.text);
-      this.copied = true;
-      setTimeout(() => (this.copied = false), 1500);
+      ok = true;
     } catch {
-      /* clipboard unavailable (e.g. insecure context) — ignore */
+      /* reported through the return value and copyState, not hidden */
     }
+    this.copyState = ok ? "copied" : "failed";
+    // A failure has something to read and something to do about it, so it stays
+    // up longer than the confirmation does. Cleared first: without that, a second
+    // click inherits the first click's timer and its message vanishes early.
+    clearTimeout(this.#reset);
+    this.#reset = setTimeout(() => (this.copyState = "idle"), ok ? 1500 : 5000);
+    return ok;
   };
+
+  #reset: ReturnType<typeof setTimeout> | undefined;
 }
 
 export const output = new OutputState();

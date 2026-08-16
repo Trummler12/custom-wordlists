@@ -156,7 +156,10 @@ class LangState {
    *  By variant as well, because one list can declare two: items and moves carry
    *  both `es-419` and `ja-Latn`, so a key on the topic alone let a reader's Spanish
    *  decision govern their romaji — and romaji, having no per-list control, offered
-   *  no way to take it back. */
+   *  no way to take it back.
+   *
+   *  Cleared for a variant whenever its global switch flips — see `toggleVariant`,
+   *  which is what gives a list a way back to following the switch. */
   variantByTopic = $state<Record<string, boolean>>({});
 
   /** What each topic declares in `languages`, mirrored from the manifest by
@@ -203,8 +206,25 @@ class LangState {
     if (!v?.perTopic) return;
     this.variantByTopic[overrideKey(v, tid)] = !this.variantOnFor(tid);
   }
+  /** Flip the variant for every list at once — and take back the lists that had
+   *  said otherwise.
+   *
+   *  A per-list 🌎 stores an answer against the topic, and `variantOnFor` prefers
+   *  it to the global one, so without this a list that once disagreed disagrees
+   *  forever: a checkbox has two states and none of them says "follow the switch
+   *  again". Clearing the overrides is that missing state, expressed through the
+   *  control that already exists rather than a third one nobody would find. */
   toggleVariant(l: string): void {
     this.variants[l] = !this.variants[l];
+    const v = variantFor(l);
+    if (v) {
+      const mine = `${v.id}|`;
+      // Only this variant's keys: a list can hold an answer about each, and
+      // switching romaji is no reason to forget what it said about Spanish.
+      for (const k of Object.keys(this.variantByTopic)) {
+        if (k.startsWith(mine)) delete this.variantByTopic[k];
+      }
+    }
     write(VARIANT_STORAGE_KEY, Object.keys(this.variants).filter((k) => this.variants[k]).join(","));
   }
 

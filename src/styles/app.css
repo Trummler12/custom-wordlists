@@ -291,6 +291,19 @@ header {
   border-radius: var(--radius);
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
 }
+/* Room for the 📌, so a first line can't run under it. Only while pinned: an
+   unpinned note is the common case and shouldn't carry the gap for nothing. */
+.tip-note.pinned {
+  padding-right: 1.5rem;
+}
+.tip-pin {
+  position: absolute; /* .tip-note is the containing block */
+  top: 0.25rem;
+  right: 0.4rem;
+  font-size: 0.65rem;
+  line-height: 1;
+  opacity: 0.75;
+}
 /* Set when the trigger sits low in the viewport, where a note below it would be cut off
    by the bottom edge — the vertical counterpart to the full-row stretch above. */
 .tip-note.above {

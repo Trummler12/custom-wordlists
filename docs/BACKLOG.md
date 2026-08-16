@@ -1,264 +1,60 @@
 # Backlog
 
-Small ideas parked for later; pick up when a related area is touched. Anything
-big enough to discuss belongs in an issue instead.
+Small ideas parked for later; pick up when a related area is touched. Anything big enough to discuss belongs in an issue instead.
 
 ## Lists, and the shapes they need
 
-- **Legacy names for the League of Legends champions.** A few champions were
-  introduced under one name and renamed later, and someone who stopped playing
-  years ago knows only the old one. Both should be drawable, with the old ones off
-  by default behind an "include legacy names" checkbox.
+- **Legacy names for the League of Legends champions.** A few champions were introduced under one name and renamed later, and someone who stopped playing years ago knows only the old one. Both should be drawable, with the old ones off by default behind an "include legacy names" checkbox.
 
-  **The machinery for that already exists.** An `omitted` rule is exactly this:
-  entries that sit in the file, are filtered on the way into the list, and come
-  back when the reader unticks them in the 🧹 panel. So this is data work — add the
-  legacy names as ordinary entries, then one rule whose `match` is the list of
-  them (a glob with no wildcards is a literal, and `match` already takes a list).
+  **The machinery for that already exists.** An `omitted` rule is exactly this: entries that sit in the file, are filtered on the way into the list, and come back when the reader unticks them in the 🧹 panel. So this is data work — add the legacy names as ordinary entries, then one rule whose `match` is the list of them (a glob with no wildcards is a literal, and `match` already takes a list).
   No new field, no new UI.
 
-  Two things to sort out when doing it: `data-raw/gaming/League of Legends/Champions
-  by Fame.txt` has a column per champion, but it holds their *title* (`Darkin
-  Blade` → Aatrox), so the legacy names have to come from somewhere else. And the
-  file writes each tier on one line, unlike every other tiered list — worth
-  expanding to one entry per line while it's open, which is what
-  `scripts/lib/serialize.mjs` would do anyway.
-- **Geography — stored at the leaves, read from the top.** A large upcoming area with its
-  own shape. `data/topics/geography/` holds one folder per continent, and the entries live
-  *there*: `<continent>/countries.json`, `<continent>/capitals.json`,
-  `<continent>/cities.json`. The world-level **countries**, **capitals** and **cities**
-  carry no entries of their own — they are those same lists read one level up, assembled by
-  `inheritsUpwards`. Nothing is stored twice, and it looks redundant only in the tree, which
-  is exactly the point: the reader sees a world list, the repo sees seven files. **Cities go
-  one level deeper again** (continent → country), because a country's cities are a finer
-  resolution rather than a subset. **Continents + tectonic plates** is genuinely world-level
-  and stores its own entries. Cross-topic de-duplication is already in place
-  (`output.merged` dedups by rendered string), so overlapping layers are safe. A full
-  country → subdivision → district → municipality drill-down is enormous and explicitly
-  later; the continents are the near-term slice.
+  Two things to sort out when doing it: `data-raw/gaming/League of Legends/Champions by Fame.txt` has a column per champion, but it holds their *title* (`Darkin Blade` → Aatrox), so the legacy names have to come from somewhere else. And the file writes each tier on one line, unlike every other tiered list — worth expanding to one entry per line while it's open, which is what `scripts/lib/serialize.mjs` would do anyway.
+- **Geography — stored at the leaves, read from the top.** A large upcoming area with its own shape. `data/topics/geography/` holds one folder per continent, and the entries live *there*: `<continent>/countries.json`, `<continent>/capitals.json`, `<continent>/cities.json`. The world-level **countries**, **capitals** and **cities** carry no entries of their own — they are those same lists read one level up, assembled by `inheritsUpwards`. Nothing is stored twice, and it looks redundant only in the tree, which is exactly the point: the reader sees a world list, the repo sees seven files. **Cities go one level deeper again** (continent → country), because a country's cities are a finer resolution rather than a subset. **Continents + tectonic plates** is genuinely world-level and stores its own entries. Cross-topic de-duplication is already in place (`output.merged` dedups by rendered string), so overlapping layers are safe. A full country → subdivision → district → municipality drill-down is enormous and explicitly later; the continents are the near-term slice.
 
-  **A merged tier only means something if every file drew its boundary the same way.** For
-  the cities that boundary can be objective: population, on absolute thresholds (10M, 5M,
-  3M, 2M, 1.5M, 1.2M, 1M, 850k, 720k, 600k, 500k, 420k, 360k…, adjusted until the steps feel
-  like even samples). Tier 3 then means the same in Peru as in Japan, which is what makes
-  concatenating every child's tier 3 a list rather than a pile. A Sporcle percentage cannot
-  do that — it is relative to the people who took one quiz.
+  **A merged tier only means something if every file drew its boundary the same way.** For the cities that boundary can be objective: population, on absolute thresholds (10M, 5M, 3M, 2M, 1.5M, 1.2M, 1M, 850k, 720k, 600k, 500k, 420k, 360k…, adjusted until the steps feel like even samples). Tier 3 then means the same in Peru as in Japan, which is what makes concatenating every child's tier 3 a list rather than a pile. A Sporcle percentage cannot do that — it is relative to the people who took one quiz.
 
-  **Empty tiers have to become legal.** A country with no city above a million contributes
-  nothing to the top tiers and must still say so, or its fourth tier would merge into its
-  parent's first. The schema requires `minItems: 1` on each tier today; that has to go, and
-  `tierSizes` in the authoring script is no help here since the boundaries are given rather
-  than computed. The ruler itself is already fine — `fame.ts` reads the stored tier count
-  rather than assuming six, so thirteen population steps are a legal shape.
-- **`inheritsUpwards` — the field the above is built on.** A topic declaring it holds no
-  entries and takes them from the topics below it in the tree: tier *k* is every child's
-  tier *k*, concatenated. **Only the entries are inherited** — title, icon, languages and
-  omission rules stay declared per file, since a parent's list is not a parent's metadata.
+  **Empty tiers have to become legal.** A country with no city above a million contributes nothing to the top tiers and must still say so, or its fourth tier would merge into its parent's first. The schema requires `minItems: 1` on each tier today; that has to go, and `tierSizes` in the authoring script is no help here since the boundaries are given rather than computed. The ruler itself is already fine — `fame.ts` reads the stored tier count rather than assuming six, so thirteen population steps are a legal shape.
+- **`inheritsUpwards` — the field the above is built on.** A topic declaring it holds no entries and takes them from the topics below it in the tree: tier *k* is every child's tier *k*, concatenated. **Only the entries are inherited** — title, icon, languages and omission rules stay declared per file, since a parent's list is not a parent's metadata.
 
-  **The sliders couple downward and report upward.** Moving the world slider moves every
-  continent's with it, and every country's below that: it is one selection at a coarser
-  grain. A child moved on its own does not command its parent — the parent's slider then
-  shows the *most common* position among its children, its checkbox reflects their states,
-  and its count is theirs added up. Authoritative going down, descriptive coming up, which
-  also means the parent needs no stored selection of its own.
+  **The sliders couple downward and report upward.** Moving the world slider moves every continent's with it, and every country's below that: it is one selection at a coarser grain. A child moved on its own does not command its parent — the parent's slider then shows the *most common* position among its children, its checkbox reflects their states, and its count is theirs added up. Authoritative going down, descriptive coming up, which also means the parent needs no stored selection of its own.
 
   A general mechanism, not a geography-specific one, but geography is what it exists for.
-- **The other umpirsky lists.** The same shape as the language list, CLDR-derived
-  and per-locale, each a plausible topic: [countries](https://github.com/umpirsky/country-list),
-  [currencies](https://github.com/umpirsky/currency-list) and
-  [top-level domains](https://github.com/umpirsky/tld-list). The country list is the
-  obvious next one — it is half of the geography plan above, already translated into
-  every language we might ever want.
-- **`noGeoguessrCoverage` — filter countries to Street-View-covered ones.** A niche extra
-  for the countries list only: restrict to the countries with official Google Street View
-  coverage, for the GeoGuessr crowd. Decide between reusing the existing `omittable`
-  mechanism (a rule whose `match` is the uncovered countries — zero schema change,
-  functionally identical, and it shows in the 🧹 panel) and a dedicated topic-level field
-  driving its own "Pegman" toggle. Start with `omittable` unless the dedicated toggle earns
-  its keep.
-- **Football by country/continent (re-groupable list).** The complex part of the
-  sports idea, deferred. Under a future `sports/football/`, football players should
-  default to a by-continent split (classic fame slider per continent), toggleable
-  via checkbox to one slider per country. Needs a data shape for "same list,
-  re-groupable along a chosen dimension" — design later. (Done already, not backlog:
-  `sports/olympia/athletes/` neutral athletes list and `sports/olympia/sports/`
-  de+en disciplines list.)
-- **Tooling for the `lastUpdated` / `lastChecked` fields.** The schema now has
-  optional ISO-date fields per topic (set on LoL so far). Follow-ups: (1) a
-  `scripts/stale-check.mjs` (or a `validate` warning) that lists topics sorted by
-  `lastChecked` — oldest / undated first — so we see which lists are due for a
-  currency re-check. (2) Have `build-index` emit the dates into the manifest if
-  the frontend should later surface them. Also: backfill dates on existing topics
-  as we touch them (localized topics get them in both de/en files) — and `sources`
-  along with them, wherever a list has one worth naming.
+- **The other umpirsky lists.** The same shape as the language list, CLDR-derived and per-locale, each a plausible topic: [countries](https://github.com/umpirsky/country-list), [currencies](https://github.com/umpirsky/currency-list) and [top-level domains](https://github.com/umpirsky/tld-list). The country list is the obvious next one — it is half of the geography plan above, already translated into every language we might ever want.
+- **`noGeoguessrCoverage` — filter countries to Street-View-covered ones.** A niche extra for the countries list only: restrict to the countries with official Google Street View coverage, for the GeoGuessr crowd. Decide between reusing the existing `omittable` mechanism (a rule whose `match` is the uncovered countries — zero schema change, functionally identical, and it shows in the 🧹 panel) and a dedicated topic-level field driving its own "Pegman" toggle. Start with `omittable` unless the dedicated toggle earns its keep.
+- **Football by country/continent (re-groupable list).** The complex part of the sports idea, deferred. Under a future `sports/football/`, football players should default to a by-continent split (classic fame slider per continent), toggleable via checkbox to one slider per country. Needs a data shape for "same list, re-groupable along a chosen dimension" — design later. (Done already, not backlog: `sports/olympia/athletes/` neutral athletes list and `sports/olympia/sports/` de+en disciplines list.)
+- **Tooling for the `lastUpdated` / `lastChecked` fields.** The schema now has optional ISO-date fields per topic (set on LoL so far). Follow-ups: (1) a `scripts/stale-check.mjs` (or a `validate` warning) that lists topics sorted by `lastChecked` — oldest / undated first — so we see which lists are due for a currency re-check. (2) Have `build-index` emit the dates into the manifest if the frontend should later surface them. Also: backfill dates on existing topics as we touch them (localized topics get them in both de/en files) — and `sources` along with them, wherever a list has one worth naming.
 
 ## Languages
 
-- **More inline markup in locale strings.** `src/locale/html/` handles `{br}` and
-  `[text](url)`; `{i}`…`{/i}` and `{b}`…`{/b}` are the obvious companions — a
-  parser that turns a marked-up string into a list of parts, and one snippet per
-  tag. Nothing needs them today — add a tag the first time a string actually wants
-  it, not before.
-- **English entries *in addition* to the selected language.** The per-topic English
-  toggle replaces a list's entries; a third state would add them, for a game where
-  either name should count. What makes it worth building is the tooltip, which
-  would rotate with the state it describes rather than label it — "Toggle to use
-  English entries instead. / Toggle again to use English AND German entries", then
-  "Now uses English entries instead. / Toggle to use English AND German entries. /
-  Toggle again to only use German entries", then the third. Needs an answer first
-  for what the counts mean and how a name that is identical in both languages is
-  de-duplicated — neither of which the plain toggle has to face.
-- **Force a list to a language other than English.** The 🇬🇧 toggle hard-codes the
-  one language every list has. But a German player might want *one* list in French
-  while the rest stay German, and `contentLang` already returns a per-topic code —
-  only the control assumes English. Turning the toggle into a picker means deciding
-  which languages to offer per topic (`languages` knows), and what the row's control
-  becomes when the answer isn't a single flag. Less pressing since #32: the global
-  picker now offers nine, so this is about one list disagreeing with the rest.
-- **Romaji beyond the Pokémon themselves.** The variant switch resolves `ja-Latn`
-  wherever an entry carries it, which today is the nine generations and nothing
-  else. PokéAPI has no romaji for items or moves, so filling the gap means
-  transliterating kana rather than importing a column — a different kind of job,
-  and one where a wrong answer is invisible to everyone who can't read the original.
-- **Wāpuro rōmaji as a second romaji style.** *(No approach found yet that works, let alone
-  pays for itself.)* What the lists carry is Hepburn with long vowels doubled — the ASCII
-  middle. Wāpuro, what you actually type on a Japanese keyboard, writes the ー as a hyphen
-  (`mo-mo-miruku`). Two obstacles, either of which sinks it on its own. It cannot be derived
-  from the stored romaji: ほのお is ho-no-o and モーモー is a long vowel, and both are `oo` by
-  the time they reach us. And re-deriving it from the kana would overwrite the trademark
-  spellings a Japanese player actually knows — Butterfree becoming Batafurii — which no
-  amount of correctness makes an improvement. A setting to choose between them is overkill
-  on several levels at once.
-- **Kanji beyond the twelve words the language list needed.** `src/lib/kana.ts` reads kana
-  by character and kanji by *word*, longest match first — 国 is `goku` in 中国 and `koku` in
-  韓国, so a per-character table could never be right for both. Twelve entries cover every
-  Japanese name we carry today. A future list will want more, and each one is a claim about
-  that word that someone has to check; `--check` names what is missing rather than guessing.
-  A morphological analyser (MeCab, kuromoji) is the tool if a list ever needs hundreds.
-- **Storing generated romaji instead of deriving them.** The app transliterates at render
-  time, so the readings exist nowhere in the data — which is 65 kB saved today and more as
-  the collection grows, but also 2714 readings nobody can review in a diff. If that turns out
-  to matter, `romanize-names.mjs <list> --write` bakes them back in and `--strip` takes them
-  out again; a stored `ja-Latn` already wins over a derived one, so the two can also be mixed
-  per entry.
-- **A derived reading for an entry-level language map.** `resolveWord` accepts two shapes
-  and calls them equivalent, and for romaji they aren't: `transliterate` reads a leaf, so a
-  map whose `ja` holds a *name pair* keeps its kana one level below where the derivation can
-  see it, and the entry falls through to English. It needs a second traversal that romanizes
-  an already resolved pair — passing `derived` into the recursion looks like the fix and does
-  nothing, since the pair's halves are plain strings by then and a plain string is neutral by
-  definition. No entry has the shape today; worth building the day the first list does, or
-  worth deciding that the leaf form is the only one romaji supports and saying so in the
-  schema.
-- **Handing a list back to the global variant switch.** A per-list 🌎 stores a boolean
-  against the topic, and `variantOnFor` reads it in preference to the global choice — so
-  once a list has an opinion it keeps it, and there is no way to say "follow the switch
-  again". It wants a third state (undefined meaning *defer*, which the storage already
-  expresses and the checkbox cannot), or for the global switch to clear the per-list
-  answers when it flips. The second is simpler and probably what a reader expects; the
-  first is what the data already says.
-- **More of the world's languages than ISO 639-1 covers.** `geography/languages.json`
-  keeps the 184 languages with a two-letter code and drops 425 with only a three-
-  letter one. The cut is a proxy for prominence and a crude one — Cantonese and
-  Swiss German are both on the wrong side of it. Revisit with a source that ranks
-  rather than classifies.
+- **More inline markup in locale strings.** `src/locale/html/` handles `{br}` and `[text](url)`; `{i}`…`{/i}` and `{b}`…`{/b}` are the obvious companions — a parser that turns a marked-up string into a list of parts, and one snippet per tag. Nothing needs them today — add a tag the first time a string actually wants it, not before.
+- **English entries *in addition* to the selected language.** The per-topic English toggle replaces a list's entries; a third state would add them, for a game where either name should count. What makes it worth building is the tooltip, which would rotate with the state it describes rather than label it — "Toggle to use English entries instead. / Toggle again to use English AND German entries", then "Now uses English entries instead. / Toggle to use English AND German entries. / Toggle again to only use German entries", then the third. Needs an answer first for what the counts mean and how a name that is identical in both languages is de-duplicated — neither of which the plain toggle has to face.
+- **Force a list to a language other than English.** The 🇬🇧 toggle hard-codes the one language every list has. But a German player might want *one* list in French while the rest stay German, and `contentLang` already returns a per-topic code — only the control assumes English. Turning the toggle into a picker means deciding which languages to offer per topic (`languages` knows), and what the row's control becomes when the answer isn't a single flag. Less pressing since #32: the global picker now offers nine, so this is about one list disagreeing with the rest.
+- **Romaji beyond the Pokémon themselves.** The variant switch resolves `ja-Latn` wherever an entry carries it, which today is the nine generations and nothing else. PokéAPI has no romaji for items or moves, so filling the gap means transliterating kana rather than importing a column — a different kind of job, and one where a wrong answer is invisible to everyone who can't read the original.
+- **Wāpuro rōmaji as a second romaji style.** *(No approach found yet that works, let alone pays for itself.)* What the lists carry is Hepburn with long vowels doubled — the ASCII middle. Wāpuro, what you actually type on a Japanese keyboard, writes the ー as a hyphen (`mo-mo-miruku`). Two obstacles, either of which sinks it on its own. It cannot be derived from the stored romaji: ほのお is ho-no-o and モーモー is a long vowel, and both are `oo` by the time they reach us. And re-deriving it from the kana would overwrite the trademark spellings a Japanese player actually knows — Butterfree becoming Batafurii — which no amount of correctness makes an improvement. A setting to choose between them is overkill on several levels at once.
+- **Kanji beyond the twelve words the language list needed.** `src/lib/kana.ts` reads kana by character and kanji by *word*, longest match first — 国 is `goku` in 中国 and `koku` in 韓国, so a per-character table could never be right for both. Twelve entries cover every Japanese name we carry today. A future list will want more, and each one is a claim about that word that someone has to check; `--check` names what is missing rather than guessing. A morphological analyser (MeCab, kuromoji) is the tool if a list ever needs hundreds.
+- **Storing generated romaji instead of deriving them.** The app transliterates at render time, so the readings exist nowhere in the data — which is 65 kB saved today and more as the collection grows, but also 2714 readings nobody can review in a diff. If that turns out to matter, `romanize-names.mjs <list> --write` bakes them back in and `--strip` takes them out again; a stored `ja-Latn` already wins over a derived one, so the two can also be mixed per entry.
+- **A derived reading for an entry-level language map.** `resolveWord` accepts two shapes and calls them equivalent, and for romaji they aren't: `transliterate` reads a leaf, so a map whose `ja` holds a *name pair* keeps its kana one level below where the derivation can see it, and the entry falls through to English. It needs a second traversal that romanizes an already resolved pair — passing `derived` into the recursion looks like the fix and does nothing, since the pair's halves are plain strings by then and a plain string is neutral by definition. No entry has the shape today; worth building the day the first list does, or worth deciding that the leaf form is the only one romaji supports and saying so in the schema.
+- **More of the world's languages than ISO 639-1 covers.** `geography/languages.json` keeps the 184 languages with a two-letter code and drops 425 with only a three-letter one. The cut is a proxy for prominence and a crude one — Cantonese and Swiss German are both on the wrong side of it. Revisit with a source that ranks rather than classifies.
 
 ## The interface
 
-- **One shared *value* ruler for a whole category.** `hideRulersByDefault` already
-  groups a category's topics under its control root (`controlledTopics` in
-  `lib/rulers`) and toggles their rulers' *visibility* together. The next step is a
-  single ruler on that same category row that moves all their *depths* together —
-  for a category whose topics are variations of one list (the nine Pokémon
-  generations). The children's tiers won't line up, so "move all to the same
-  fraction" rounds each child up to its next snap point; the child rulers stay
-  usable individually afterwards. Sizeable — writing many groups' depths from one
-  control is a different shape from the visibility toggle, which only flips a
-  boolean.
-- **Ruler-toggle polish.** The 📏 visibility toggle has rough edges: it sits by the
-  count on topic rows but right after the title on category rows (the category
-  title isn't `flex:1`); the hidden state (opacity 0.3) is quiet enough to miss;
-  and only a *solo* topic's ruler is gated — a foldered topic that opted in would
-  need its group rulers gated in `GroupRow` too (none does today).
-- **Show what just changed in the output.** Ticking a topic or moving a fame
-  slider changes the output silently, and on a long list the chips that appeared
-  are usually below the fold. Two halves. (1) Scroll the output box so the gap
-  between the last chip of the changed list and the next row lines up with the
-  bottom edge of the scroll area — the changed list ends exactly at the fold.
-  (2) Tint that list's chips green-to-red by the index of their fame group within
-  the topic; if a checkbox one level up brought in several leaf topics at once,
-  tint the whole batch. Together they answer "how many steps left does the slider
-  need to drop the first entry I don't know?" by reading the output instead of
-  guessing. Border in the stronger colour, background in a washed-out one, so the
-  chip text keeps a clearly darker ground under it.
-- **Say on the chip when a name could not be transliterated.** A Japanese name holding a
-  word `src/lib/kana.ts` doesn't know resolves to its English name instead — correct, and
-  silent. The chip should carry one of the persistent notes: *"The following character(s)
-  lack transcription entries: 語, 手, 紙{br}Please report that [here](…)"*, naming the
-  characters `isTransliterable` rejected. Two halves to build: the resolver has to report
-  *which* characters failed rather than only that it gave up, and `WordChips` has to be able
-  to mark a single chip. Only reachable through the romaji switch, so it stays quiet for
-  everyone else — but a reader who turns it on is exactly the person who can tell us the
-  reading.
-- **Use the screen width better on wide viewports.** `--content-max` (60rem)
-  leaves a lot of unused space left & right on large windows. Ideas: a wider (or
-  fluid) max-width; a wider topic column and/or multi-column category tree; keep
-  the output panel a sensible fixed width so it doesn't stretch too far. UI is
-  functional as-is, so this is polish — revisit when doing a layout pass.
+- **One shared *value* ruler for a whole category.** `hideRulersByDefault` already groups a category's topics under its control root (`controlledTopics` in `lib/rulers`) and toggles their rulers' *visibility* together. The next step is a single ruler on that same category row that moves all their *depths* together — for a category whose topics are variations of one list (the nine Pokémon generations). The children's tiers won't line up, so "move all to the same fraction" rounds each child up to its next snap point; the child rulers stay usable individually afterwards. Sizeable — writing many groups' depths from one control is a different shape from the visibility toggle, which only flips a boolean.
+- **Ruler-toggle polish.** The 📏 visibility toggle has rough edges: it sits by the count on topic rows but right after the title on category rows (the category title isn't `flex:1`); the hidden state (opacity 0.3) is quiet enough to miss; and only a *solo* topic's ruler is gated — a foldered topic that opted in would need its group rulers gated in `GroupRow` too (none does today).
+- **Show what just changed in the output.** Ticking a topic or moving a fame slider changes the output silently, and on a long list the chips that appeared are usually below the fold. Two halves. (1) Scroll the output box so the gap between the last chip of the changed list and the next row lines up with the bottom edge of the scroll area — the changed list ends exactly at the fold.
+  (2) Tint that list's chips green-to-red by the index of their fame group within the topic; if a checkbox one level up brought in several leaf topics at once, tint the whole batch. Together they answer "how many steps left does the slider need to drop the first entry I don't know?" by reading the output instead of guessing. Border in the stronger colour, background in a washed-out one, so the chip text keeps a clearly darker ground under it.
+- **Say on the chip when a name could not be transliterated.** A Japanese name holding a word `src/lib/kana.ts` doesn't know resolves to its English name instead — correct, and silent. The chip should carry one of the persistent notes: *"The following character(s) lack transcription entries: 語, 手, 紙{br}Please report that [here](…)"*, naming the characters `isTransliterable` rejected. Two halves to build: the resolver has to report *which* characters failed rather than only that it gave up, and `WordChips` has to be able to mark a single chip. Only reachable through the romaji switch, so it stays quiet for everyone else — but a reader who turns it on is exactly the person who can tell us the reading.
+- **Use the screen width better on wide viewports.** `--content-max` (60rem) leaves a lot of unused space left & right on large windows. Ideas: a wider (or fluid) max-width; a wider topic column and/or multi-column category tree; keep the output panel a sensible fixed width so it doesn't stretch too far. UI is functional as-is, so this is polish — revisit when doing a layout pass.
 
 ## Under the hood
 
-- **Raise Node to 22, and fix the script that already assumes it.**
-  `scripts/pokemon/romanize-names.mjs` imports `src/lib/kana.ts` directly — one table for
-  the app and the codemod, which is the right call — but Node only reads a `.ts` without a
-  flag from 22.18 on, and both workflows pin 20. So the script's own usage line fails with
-  `ERR_UNKNOWN_FILE_EXTENSION` on the version the repo says it runs. Wants `.nvmrc`,
-  `node-version: 22` in `validate.yml` and `pages.yml`, and a line under *Local development*
-  in `CONTRIBUTING.md`. Take **one script fix** along in the same PR, since it is the next
-  thing anyone running it hits: its `--write` path does `group.words.map(…)` unguarded and
-  dies on a tiered list — and `geography/languages.json` is tiered, carries
-  `generatedRomaji` and 184 Japanese names, so it is exactly what gets pointed at next.
-  This is also the "something else wants Node 22 anyway" the next entry is waiting for.
-- **One matcher instead of two.** The scripts now share `scripts/lib/omissions.mjs`,
-  so what remains is the one copy that can't be helped: it mirrors the tested
-  `src/lib/omitted.ts`, because a `.mjs` script can't import TypeScript — the same
-  reason `LANG_RE` is duplicated against the schema. The way out is raising CI's
-  Node from 20 to 22+ and importing the `.ts` directly via native type-stripping,
-  which needs the module free of value imports (stripping doesn't add extension
-  resolution). Worth doing when something else wants Node 22 anyway — which the
-  entry above now is.
-- **Frugal topic loading.** A flattened (solo) topic loads as soon as its row
-  appears rather than when expanded — its ruler can't be drawn without the tiers it
-  snaps to. Fine at 28 topics (`data/topics/` is ~240 KB total), but as the
-  catalogue grows it's worth loading only what's on screen, or only what a ruler
-  actually needs.
-- **Scoped CSS per component.** `src/styles/app.css` stayed whole through the
-  component split, so every rule is global and only the class names say which
-  component owns it. Moving each block into its component's `<style>` would fix
-  that, but two rules are coupled to TypeScript by comment (`--inset` ↔
-  `INSET_PX`, `--footer-h` ↔ the output panel) and the tokens have to stay
-  global — so it wants its own PR rather than a corner of another one.
-- **The ⚙️ popover watches its anchor with a frame loop.** `pinBox` in
-  `SettingsMenu.svelte` calls `getBoundingClientRect()` on a `requestAnimationFrame`
-  loop for as long as the menu is open — two forced layouts per frame, to catch two
-  events that fire a handful of times. `ResizeObserver` on the anchor plus one on the
-  document element does the same without polling. It is a rewrite of the mechanism
-  rather than a fix to it, and the comment explaining *why* it watches where the anchor
-  ended up rather than the things that move it has to survive the change.
-- **Where `Speakers.txt` came from.** `build-languages.mjs` says it builds from "the
-  dumps that `dump-language-names.mjs` writes", and that is true of the thirty name
-  files but not of the 18 543-line speaker table beside them, which was pasted by hand.
-  `data-raw/README.md` allows snapshots and the topic's `sources` records the URL, so
-  nothing is wrong — half a line in the script header saying which of its two inputs has
-  no generator would save the next person the hunt.
-- **Tests for `dom` and `skribbl`.** Vitest covers `words`, `tree`, `fame`,
-  `english`, `languages` and `omitted`; these two are what is left of the logic
-  that can be tested without mounting anything. `snapPositions` in `dom` has
-  already had one bug found by reading alone, which is the argument for it.
+- **Raise Node to 22, and fix the script that already assumes it.** `scripts/pokemon/romanize-names.mjs` imports `src/lib/kana.ts` directly — one table for the app and the codemod, which is the right call — but Node only reads a `.ts` without a flag from 22.18 on, and both workflows pin 20. So the script's own usage line fails with `ERR_UNKNOWN_FILE_EXTENSION` on the version the repo says it runs. Wants `.nvmrc`, `node-version: 22` in `validate.yml` and `pages.yml`, and a line under *Local development* in `CONTRIBUTING.md`. Take **one script fix** along in the same PR, since it is the next thing anyone running it hits: its `--write` path does `group.words.map(…)` unguarded and dies on a tiered list — and `geography/languages.json` is tiered, carries `generatedRomaji` and 184 Japanese names, so it is exactly what gets pointed at next. This is also the "something else wants Node 22 anyway" the next entry is waiting for.
+- **One matcher instead of two.** The scripts now share `scripts/lib/omissions.mjs`, so what remains is the one copy that can't be helped: it mirrors the tested `src/lib/omitted.ts`, because a `.mjs` script can't import TypeScript — the same reason `LANG_RE` is duplicated against the schema. The way out is raising CI's Node from 20 to 22+ and importing the `.ts` directly via native type-stripping, which needs the module free of value imports (stripping doesn't add extension resolution). Worth doing when something else wants Node 22 anyway — which the entry above now is.
+- **Frugal topic loading.** A flattened (solo) topic loads as soon as its row appears rather than when expanded — its ruler can't be drawn without the tiers it snaps to. Fine at 28 topics (`data/topics/` is ~240 KB total), but as the catalogue grows it's worth loading only what's on screen, or only what a ruler actually needs.
+- **Scoped CSS per component.** `src/styles/app.css` stayed whole through the component split, so every rule is global and only the class names say which component owns it. Moving each block into its component's `<style>` would fix that, but two rules are coupled to TypeScript by comment (`--inset` ↔ `INSET_PX`, `--footer-h` ↔ the output panel) and the tokens have to stay global — so it wants its own PR rather than a corner of another one.
+- **The ⚙️ popover watches its anchor with a frame loop.** `pinBox` in `SettingsMenu.svelte` calls `getBoundingClientRect()` on a `requestAnimationFrame` loop for as long as the menu is open — two forced layouts per frame, to catch two events that fire a handful of times. `ResizeObserver` on the anchor plus one on the document element does the same without polling. It is a rewrite of the mechanism rather than a fix to it, and the comment explaining *why* it watches where the anchor ended up rather than the things that move it has to survive the change.
+- **Tests for `dom` and `skribbl`.** Vitest covers `words`, `tree`, `fame`, `english`, `languages` and `omitted`; these two are what is left of the logic that can be tested without mounting anything. `snapPositions` in `dom` has already had one bug found by reading alone, which is the argument for it.
 
 ## Repo & community
 
-- **Two nits in the issue chooser.** The contribution-guide contact link points
-  at `blob/main/CONTRIBUTING.md`; `?tab=contributing-ov-file` renders it in the
-  repo's own tab instead. And the charity divider's `name` (one 🌳) is much
-  shorter than its `about` (twelve) — 8 or 9 would balance the two lines.
+*(nothing parked here right now)*

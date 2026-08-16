@@ -9,6 +9,14 @@ on:
 permissions:
   contents: read
 
+# One run per branch. `pages.yml` sets a group too but deliberately does *not*
+# cancel, since a deploy interrupted mid-publish leaves the site half-written;
+# here the opposite holds — three pushes to a PR have nothing to say to each
+# other, and only the last one's answer is worth waiting for.
+concurrency:
+  group: validate-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   validate:
     runs-on: ubuntu-latest
@@ -33,6 +41,12 @@ jobs:
 
       - name: Unit tests (src/lib)
         run: npm run test
+
+      # Advisory only, and it says so by construction: the script exits 0 whatever
+      # it finds, so no `continue-on-error` has to promise what the exit code
+      # already guarantees. Prose style is not something a build should fail over.
+      - name: Markdown line breaks (advisory)
+        run: npm run check:wraps
 
       # `npm run build` = build:index && svelte-check && vite build, so this one
       # step regenerates the manifest, type-checks the frontend, and builds the

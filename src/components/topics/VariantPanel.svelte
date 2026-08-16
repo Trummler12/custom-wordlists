@@ -29,7 +29,7 @@
     <button
       type="button"
       class="omitted-btn"
-      aria-haspopup="dialog"
+      aria-haspopup="true"
       aria-expanded={open}
       aria-label={lang.ui.language.variant[variant.id]}
       title={lang.ui.language.variant[variant.id]}
