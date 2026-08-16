@@ -9,16 +9,18 @@
 import { tick } from "svelte";
 import { lang } from "./lang.svelte";
 
-/** The overlays that remember what opened them, and the container each one lives
- *  in — how Escape works out which of them the focus is sitting in. A tip is
- *  matched on its note rather than a host, since the note is the only part of it
- *  that can hold a focusable thing: the link inviting a romaji correction. */
+/** The overlays that remember what opened them, and what counts as being "in" one
+ *  — how Escape works out which of them the focus is sitting in.
+ *
+ *  A tip has no single host element: its marker and its note are siblings under
+ *  whatever row they belong to, so both are named. The note is there for the one
+ *  focusable thing a note can hold, the link inviting a romaji correction. */
 type OverlayKind = "lang" | "settings" | "omitted" | "tip";
 const HOSTS: Record<OverlayKind, string> = {
   lang: ".lang-picker",
   settings: ".settings-picker",
   omitted: ".omitted-host",
-  tip: ".tip-note",
+  tip: ".tip-trigger, .tip-note",
 };
 
 class OverlayState {
@@ -184,29 +186,48 @@ class OverlayState {
   onScroll = (): void => {
     if (this.tipPinned) this.closeTip();
   };
+  /** Escape closes the one overlay the focus is in — innermost first, and nothing
+   *  else.
+   *
+   *  Scoped rather than sweeping the lot, which is both the WAI-ARIA rule for a
+   *  popup and the thing that keeps the key out of everyone else's way: a control
+   *  that wants Escape gets to have it. A native `<select>` already takes one to
+   *  close its own list without the page ever seeing the event, so the interface-
+   *  language dropdown costs one Escape and the settings menu around it the next
+   *  — and the same nesting falls out for a ⚠️ inside that menu, whose note goes
+   *  first and menu second.
+   *
+   *  Nothing is lost by not reaching further: a note the pointer opened closes
+   *  when the pointer leaves, and a menu closes on a press anywhere outside it. */
   onKeyDown = (e: KeyboardEvent): void => {
     if (e.key !== "Escape") return;
-    // Read before anything closes: whichever overlay currently holds the focus is
-    // the one about to take it away, and so the one whose trigger it goes back to.
-    // Asked of the focus rather than of what happens to be open, because several
-    // can be — a note stands open over a menu often enough.
-    const back = this.#focusedOverlay();
-    this.langMenu = null;
-    this.settingsMenu = null;
-    this.omittedPanel = null;
-    this.closeTip();
+    const kind = this.#focusedOverlay();
+    if (!kind) return;
+    if (kind === "tip") this.closeTip();
+    else if (kind === "lang") this.langMenu = null;
+    else if (kind === "settings") this.settingsMenu = null;
+    else this.omittedPanel = null;
+    const back = this.#openers[kind];
     if (back) void returnFocus(back);
   };
 
-  /** The trigger of the overlay the focus is inside, or null when the focus is
-   *  somewhere Escape isn't about to disturb — on a trigger itself, most often,
-   *  which needs nothing done to it. */
-  #focusedOverlay(): HTMLElement | null {
+  /** Which open overlay the focus sits in, or null. Innermost first, and only
+   *  overlays that are actually open — a `.lang-picker` is in the document
+   *  whether or not its menu is. */
+  #focusedOverlay(): OverlayKind | null {
     const active = document.activeElement as Element | null;
-    if (!active?.closest) return null;
-    for (const kind of Object.keys(HOSTS) as OverlayKind[]) {
-      if (active.closest(HOSTS[kind])) return this.#openers[kind];
-    }
+    // Nothing focused at all counts as being in the innermost open overlay.
+    // Safari and Firefox on macOS don't focus a button when it is clicked, so a
+    // pointer user there opens a menu without the focus ever leaving <body>, and
+    // a focus-scoped Escape would do nothing for them. This branch can't take the
+    // key from anyone: a control that wants Escape has the focus by definition,
+    // and this is precisely the case where nothing has it.
+    const loose = !active || active === document.body;
+    const inside = (sel: string) => loose || !!active?.closest?.(sel);
+    if (this.tip && inside(HOSTS.tip)) return "tip";
+    if (this.langMenu && inside(HOSTS.lang)) return "lang";
+    if (this.settingsMenu && inside(HOSTS.settings)) return "settings";
+    if (this.omittedPanel && inside(HOSTS.omitted)) return "omitted";
     return null;
   }
 }
