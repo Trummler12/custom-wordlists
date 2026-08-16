@@ -1,6 +1,11 @@
 // Builds data/topics/geography/languages.json from the dumps that
 // scripts/geography/dump-language-names.mjs writes.
 //
+// That covers the thirty name files and not the speaker table beside them:
+// Speakers.txt has no generator and was pasted by hand from the source the topic
+// records under `sources`. Nothing is wrong with that — data-raw/README.md allows
+// a snapshot — but it is worth knowing before hunting for the script that made it.
+//
 //   node scripts/geography/build-languages.mjs [--write]
 //
 // Generated rather than pasted, for the same reason the Pokémon lists are: 600-odd
