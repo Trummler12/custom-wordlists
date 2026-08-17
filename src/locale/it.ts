@@ -46,6 +46,12 @@ export const it: UIStrings = {
         ? "Attiva per includerle con il loro nome inglese, l'unico conosciuto."
         : "Attiva per tralasciarle di nuovo.",
     unknownTier: (tier, n) => `Livello ${tier}: ${n} voc${n === 1 ? "e interessata" : "i interessate"}`,
+    tooLong: (n, maxLen) =>
+      `Fino a ${n} nom${n === 1 ? "e" : "i"} di oltre ${maxLen} caratteri`,
+    tooLongHint: (omitted) =>
+      omitted
+        ? "Attiva per includerli comunque: skribbl.io non li accetta, ma un altro gioco potrebbe."
+        : "Attiva per tralasciarli di nuovo.",
   },
   language: {
     label: (current) => `Lingua: ${current}`,
@@ -93,8 +99,8 @@ export const it: UIStrings = {
     chars: "caratteri",
     belowMin: (min) => `· sotto il minimo di skribbl (${min})`,
     overMax: "· oltre il massimo",
-    excluded: (count, maxLen, list) =>
-      `${count} parol${count === 1 ? "a esclusa" : "e escluse"} (più di ${maxLen} caratteri): ${list}`,
+    overLong: (count, maxLen) =>
+      `${count} parol${count === 1 ? "a" : "e"} di oltre ${maxLen} caratteri`,
   },
   footer: {
     repository: "Repository GitHub",

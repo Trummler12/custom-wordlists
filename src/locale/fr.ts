@@ -46,6 +46,12 @@ export const fr: UIStrings = {
         ? "Activer pour les inclure sous leur nom anglais, le seul connu."
         : "Activer pour les laisser de côté à nouveau.",
     unknownTier: (tier, n) => `Niveau ${tier} : ${n} entrée${n === 1 ? "" : "s"} concernée${n === 1 ? "" : "s"}`,
+    tooLong: (n, maxLen) =>
+      `Jusqu'à ${n} nom${n === 1 ? "" : "s"} de plus de ${maxLen} caractères`,
+    tooLongHint: (omitted) =>
+      omitted
+        ? "Activer pour les inclure quand même : skribbl.io les refuse, mais un autre jeu peut les accepter."
+        : "Activer pour les laisser de côté à nouveau.",
   },
   language: {
     label: (current) => `Langue : ${current}`,
@@ -94,8 +100,8 @@ export const fr: UIStrings = {
     chars: "caractères",
     belowMin: (min) => `· en dessous du minimum de skribbl (${min})`,
     overMax: "· au-dessus du maximum",
-    excluded: (count, maxLen, list) =>
-      `${count} mot${count === 1 ? "" : "s"} exclu${count === 1 ? "" : "s"} (plus de ${maxLen} caractères) : ${list}`,
+    overLong: (count, maxLen) =>
+      `${count} mot${count === 1 ? "" : "s"} de plus de ${maxLen} caractères`,
   },
   footer: {
     repository: "Dépôt GitHub",

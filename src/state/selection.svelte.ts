@@ -13,12 +13,15 @@
 // `depthOf` / `setDepth` present both as a depth, since every group has a ruler
 // and a ruler only speaks in depths; a flat group's is 0 or 1.
 
+import { TOO_LONG_RULE } from "../lib/omitted";
+import { SKRIBBL } from "../lib/skribbl";
 import { groupEntries, renderCount } from "../lib/words";
 import { depthFromKey, depthFromPointer, tierSizes } from "../lib/fame";
 import { rulerHiddenByDefault } from "../lib/rulers";
 import { catDepth, type CatNode } from "../lib/tree";
 import type { Group, NamesMode, TopicSummary, WordEntry } from "../lib/types";
 import { lang } from "./lang.svelte";
+import { settings } from "./settings.svelte";
 import { topics } from "./topics.svelte";
 
 class SelectionState {
@@ -81,12 +84,20 @@ class SelectionState {
     return this.selected[k] ? (g.words ?? []) : [];
   }
 
+  /** The length limit in force for this list, or none where the reader has asked
+   *  for the over-long names anyway. The counters have to know: a number beside a
+   *  row that disagrees with what the output holds is worse than either. */
+  capFor(tid: string, g: Group): number | undefined {
+    return settings.isToggled(tid, g.id, TOO_LONG_RULE) ? undefined : SKRIBBL.maxWordLen;
+  }
+
   groupTotal(tid: string, g: Group): number {
     return renderCount(
       groupEntries(g),
       this.modeOf(tid, g),
       lang.contentLang(tid),
       lang.derivesRomaji(tid),
+      this.capFor(tid, g),
     );
   }
   groupSelCount(tid: string, g: Group): number {
@@ -95,6 +106,7 @@ class SelectionState {
       this.modeOf(tid, g),
       lang.contentLang(tid),
       lang.derivesRomaji(tid),
+      this.capFor(tid, g),
     );
   }
 

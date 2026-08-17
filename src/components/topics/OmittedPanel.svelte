@@ -1,11 +1,13 @@
 <script lang="ts">
   import { baseTag, splitName } from "../../lib/languages";
-  import { allRules, isOnByDefault, UNKNOWN_RULE } from "../../lib/omitted";
+  import { allRules, isOnByDefault, TOO_LONG_RULE, UNKNOWN_RULE } from "../../lib/omitted";
+  import { SKRIBBL } from "../../lib/skribbl";
   import type { Group, Omission } from "../../lib/types";
-  import { resolveStr } from "../../lib/words";
+  import { groupEntries, overlongForms, resolveStr } from "../../lib/words";
   import Msg from "../../locale/html/Msg.svelte";
   import { lang } from "../../state/lang.svelte";
   import { overlays } from "../../state/overlays.svelte";
+  import { selection } from "../../state/selection.svelte";
   import { settings } from "../../state/settings.svelte";
 
   let { tid, group }: { tid: string; group: Group } = $props();
@@ -39,6 +41,23 @@
     byTier.map((n, i) => [i + 1, n] as const).filter(([, n]) => n > 0),
   );
   const hidingUnknown = $derived(!settings.isToggled(tid, group.id, UNKNOWN_RULE));
+
+  // Named rather than counted per tier, unlike the row above: these have names —
+  // that is the whole trouble with them — so the hint can show which, the way the
+  // output counter used to before this became something a reader can switch.
+  const tooLong = $derived(
+    overlongForms(
+      groupEntries(group),
+      selection.modeOf(tid, group),
+      lang.contentLang(tid),
+      lang.derivesRomaji(tid),
+      SKRIBBL.maxWordLen,
+    ),
+  );
+  const hidingTooLong = $derived(!settings.isToggled(tid, group.id, TOO_LONG_RULE));
+  const tooLongTitle = $derived(
+    [lang.ui.omitted.tooLongHint(hidingTooLong), tooLong.join(", ")].join("\n"),
+  );
   const unknownTitle = $derived(
     [
       lang.ui.omitted.unknownHint(hidingUnknown),
@@ -56,7 +75,7 @@
     r.locked || isOnByDefault(group, r) !== settings.isToggled(tid, group.id, r.id);
 </script>
 
-{#if rules.length > 0 || unknown > 0}
+{#if rules.length > 0 || unknown > 0 || tooLong.length > 0}
   <div class="omitted-host">
     <button
       type="button"
@@ -101,6 +120,18 @@
                   onchange={() => settings.toggleOmission(tid, group.id, UNKNOWN_RULE)}
                 />
                 <span>{lang.ui.omitted.unknown(unknown, ...missing)}</span>
+              </label>
+            </li>
+          {/if}
+          {#if tooLong.length > 0}
+            <li>
+              <label title={tooLongTitle}>
+                <input
+                  type="checkbox"
+                  checked={hidingTooLong}
+                  onchange={() => settings.toggleOmission(tid, group.id, TOO_LONG_RULE)}
+                />
+                <span>{lang.ui.omitted.tooLong(tooLong.length, SKRIBBL.maxWordLen)}</span>
               </label>
             </li>
           {/if}

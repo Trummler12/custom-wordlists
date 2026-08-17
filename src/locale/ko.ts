@@ -47,6 +47,11 @@ export const ko: UIStrings = {
         ? "켜면 유일하게 알려진 영어 이름으로 포함합니다."
         : "켜면 다시 제외합니다.",
     unknownTier: (tier, n) => `${tier}단계: ${n}개 해당`,
+    tooLong: (n, maxLen) => `${maxLen}자를 넘는 이름 최대 ${n}개`,
+    tooLongHint: (omitted) =>
+      omitted
+        ? "켜면 그래도 포함합니다. skribbl.io는 받지 않지만 다른 게임은 받을 수도 있습니다."
+        : "켜면 다시 제외합니다.",
   },
   language: {
     label: (current) => `언어: ${current}`,
@@ -88,8 +93,7 @@ export const ko: UIStrings = {
     chars: "글자",
     belowMin: (min) => `· skribbl 최소 개수(${min}) 미만`,
     overMax: "· 최대치 초과",
-    excluded: (count, maxLen, list) =>
-      `${maxLen}자를 넘어 ${count}개 단어를 제외했습니다: ${list}`,
+    overLong: (count, maxLen) => `${maxLen}자를 넘는 단어 ${count}개`,
   },
   footer: {
     repository: "GitHub 저장소",

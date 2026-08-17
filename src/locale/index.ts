@@ -82,6 +82,14 @@ export interface OmittedStrings {
    *  stops. The useful half of the bound above — it says how far down a reader
    *  has to go before any of this concerns them. */
   unknownTier: (tier: number, n: number) => string;
+  /** The panel row for names the target game would refuse for their length, and
+   *  its hint — which names them, since unlike the row above these have names.
+   *
+   *  Names rather than entries: what leaves the list is one form of an entry, and
+   *  the entry itself is fine under its other one. Also an upper bound, for the
+   *  same reason as `unknown`. */
+  tooLong: (n: number, maxLen: number) => string;
+  tooLongHint: (omitted: boolean) => string;
 }
 
 /** The picker, the ⚠️/ℹ️ markers, and the per-list 🇬🇧 toggles. */
@@ -160,7 +168,11 @@ export interface OutputStrings {
   chars: string;
   belowMin: (min: number) => string;
   overMax: string;
-  excluded: (count: number, maxLen: number, list: string) => string;
+  /** How many of the words in the list skribbl would refuse for their length —
+   *  which can only happen where a reader switched the ✂️ rule off, so it states a
+   *  consequence rather than warning about a surprise. The words themselves are on
+   *  the hover, since the number is the part worth a line. */
+  overLong: (count: number, maxLen: number) => string;
 }
 
 /** The footer. */

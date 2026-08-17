@@ -41,6 +41,11 @@ export const en: UIStrings = {
         ? "Toggle to include these under their English names — the only ones known for them."
         : "Toggle to leave these out again.",
     unknownTier: (tier, n) => `Tier ${tier}: ${n} entr${n === 1 ? "y" : "ies"}`,
+    tooLong: (n, maxLen) => `Up to ${n} name${n === 1 ? "" : "s"} longer than ${maxLen} characters`,
+    tooLongHint: (omitted) =>
+      omitted
+        ? "Toggle to include them anyway — skribbl.io won't take them, but another game might."
+        : "Toggle to leave them out again.",
   },
   language: {
     label: (current) => `Language: ${current}`,
@@ -83,8 +88,8 @@ export const en: UIStrings = {
     chars: "chars",
     belowMin: (min) => `· below skribbl minimum (${min})`,
     overMax: "· over the maximum",
-    excluded: (count, maxLen, list) =>
-      `${count} word${count === 1 ? "" : "s"} excluded (longer than ${maxLen} chars): ${list}`,
+    overLong: (count, maxLen) =>
+      `${count} word${count === 1 ? "" : "s"} longer than ${maxLen} characters`,
   },
   footer: {
     repository: "GitHub Repository",

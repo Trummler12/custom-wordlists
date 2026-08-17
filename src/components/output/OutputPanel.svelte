@@ -23,7 +23,7 @@
     <div class="head-actions">
       <SettingsMenu id="output" />
       <LanguagePicker id="output" />
-      <button type="button" onclick={copy} disabled={output.included.length === 0}>
+      <button type="button" onclick={copy} disabled={output.merged.length === 0}>
         {#if output.copyState === "copied"}{lang.ui.output.copied}
         {:else if output.copyState === "failed"}{lang.ui.output.copyFailed}
         {:else}{lang.ui.output.copy}{/if}

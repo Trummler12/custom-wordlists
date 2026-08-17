@@ -46,6 +46,12 @@ export const de: UIStrings = {
         ? "Umschalten, um deren englische Namen (Fallback) in die Liste zu lassen."
         : "Umschalten, um diese wieder wegzulassen.",
     unknownTier: (tier, n) => `Stufe ${tier}: ${n} ${n === 1 ? "Eintrag" : "Einträge"} betroffen`,
+    tooLong: (n, maxLen) =>
+      `Bis zu ${n} ${n === 1 ? "Name" : "Namen"} mit mehr als ${maxLen} Zeichen`,
+    tooLongHint: (omitted) =>
+      omitted
+        ? "Umschalten, um sie trotzdem aufzunehmen — skribbl.io nimmt sie nicht an, ein anderes Spiel vielleicht schon."
+        : "Umschalten, um sie wieder wegzulassen.",
   },
   language: {
     label: (current) => `Sprache: ${current}`,
@@ -96,8 +102,8 @@ export const de: UIStrings = {
     chars: "Zeichen",
     belowMin: (min) => `· unter skribbl-Minimum (${min})`,
     overMax: "· über dem Maximum",
-    excluded: (count, maxLen, list) =>
-      `${count} ${count === 1 ? "Wort" : "Wörter"} ausgeschlossen (länger als ${maxLen} Zeichen): ${list}`,
+    overLong: (count, maxLen) =>
+      `${count} ${count === 1 ? "Wort" : "Wörter"} mit mehr als ${maxLen} Zeichen`,
   },
   footer: {
     repository: "GitHub-Repository",

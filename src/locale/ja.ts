@@ -47,6 +47,11 @@ export const ja: UIStrings = {
         ? "オンにすると、唯一分かっている英語名で含めます。"
         : "オンにすると、再び除外します。",
     unknownTier: (tier, n) => `第${tier}段階: ${n}件`,
+    tooLong: (n, maxLen) => `${maxLen}文字を超える名前が最大${n}件`,
+    tooLongHint: (omitted) =>
+      omitted
+        ? "オンにすると、それでも含めます。skribbl.io は受け付けませんが、他のゲームなら通るかもしれません。"
+        : "オンにすると、再び除外します。",
   },
   language: {
     label: (current) => `言語: ${current}`,
@@ -88,8 +93,7 @@ export const ja: UIStrings = {
     chars: "文字",
     belowMin: (min) => `· skribbl の最小数(${min})未満`,
     overMax: "· 上限超過",
-    excluded: (count, maxLen, list) =>
-      `${maxLen}文字を超えるため${count}語を除外しました: ${list}`,
+    overLong: (count, maxLen) => `${maxLen}文字を超える単語が${count}件`,
   },
   footer: {
     repository: "GitHub リポジトリ",
