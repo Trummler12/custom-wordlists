@@ -2,9 +2,11 @@
   import { onMount } from "svelte";
   import { setIndeterminate } from "../../lib/dom";
   import { canForceEnglish } from "../../lib/english";
+  import { tierNoteAt } from "../../lib/fame";
   import { baseTag, langSupport, splitName } from "../../lib/languages";
   import { rulerControl } from "../../lib/rulers";
   import type { TopicSummary } from "../../lib/types";
+  import { resolveStr } from "../../lib/words";
   import { langWarning } from "../../locale";
   import { lang } from "../../state/lang.svelte";
   import { selection } from "../../state/selection.svelte";
@@ -44,6 +46,12 @@
 
   const open = $derived(!!selection.expanded[topic.id]);
   const name = $derived(topics.topicName(topic));
+
+  // Only for a solo topic: the ruler a tier note talks about is on this row only
+  // when the group is. A foldered topic's notes ride its GroupRows instead.
+  const tierTipId = $derived(`tier-${topic.id}`);
+  const tierNote = $derived(sole ? tierNoteAt(sole, selection.depthOf(topic.id, sole)) : undefined);
+  const tierText = $derived(tierNote ? resolveStr(tierNote.text, lang.uiLang) : "");
 
   // Null for a language the list carries: nothing to say. Composed once here rather
   // than in the marker, which needs the same text flattened for its aria-label.
@@ -113,6 +121,9 @@
         <TipMarker tipId={langTipId} icon={langNote.icon} text={langNote.text} />
       {/if}
     </label>
+    {#if tierNote}
+      <TipMarker tipId={tierTipId} icon={tierNote.icon ?? "ℹ️"} text={tierText} />
+    {/if}
     <!-- Both outside the <label>: a second form control inside it would leave the
          checkbox it names ambiguous, and the count isn't a name for anything. -->
     {#if sole}
@@ -161,6 +172,9 @@
        would count as ticking the topic. -->
   {#if langNote}
     <TipNote id={langTipId} text={langNote.text} />
+  {/if}
+  {#if tierNote}
+    <TipNote id={tierTipId} text={tierText} />
   {/if}
 
   {#if sole && rulerShown}

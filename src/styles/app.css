@@ -320,6 +320,12 @@ header {
 .topic-item > .groups {
   margin: 0 0 0.4rem 2.1rem;
 }
+/* Anchor for a group's own .tip-note, which stretches across the row it belongs
+   to — without this it would measure against .topic-item and open below the whole
+   topic instead of below this line of it. */
+.topic-item > .groups > li {
+  position: relative;
+}
 .group {
   display: flex;
   align-items: center;
