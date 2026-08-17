@@ -1,0 +1,40 @@
+Pacific plate	太平洋板塊
+African plate	非洲板塊
+Antarctic plate	南極洲板塊
+North American plate	北美洲板塊
+Eurasian plate	歐亞大陸板塊
+Somali plate	索馬里板塊
+Indian plate	印度板塊
+Sunda plate	巽他板塊
+Philippine Sea plate	菲律賓板塊
+Arabian plate	阿拉伯板塊
+Okhotsk microplate	鄂霍次克板塊
+Scotia plate	斯科舍板塊
+Caroline plate	加洛林板塊
+North Andes plate	北安地斯板塊
+New Hebrides plate	新赫布里底板塊
+Bird's Head plate	鳥首板塊
+Kermadec plate	克馬德克板塊
+Woodlark plate	木百靈板塊
+Mariana plate	馬里亞納板塊
+North Bismarck plate	北俾斯麥板塊
+Timor plate	帝汶板塊
+Okinawa plate	沖繩板塊
+South Bismarck plate	南俾斯麥板塊
+Juan de Fuca plate	胡安·德富卡板塊
+Tonga plate	湯加板塊
+Balmoral Reef plate	巴爾莫勒爾礁板塊
+South Sandwich plate	南桑威奇板塊
+Easter microplate	復活節島板塊
+Conway Reef plate	康威礁板塊
+Solomon Sea plate	所羅門海板塊
+Niuafo'ou plate	紐阿福歐板塊
+Rivera plate	里維拉板塊
+Shetland plate	設得蘭板塊
+Futuna plate	富圖納板塊
+Manus plate	馬努斯板塊
+Halmahera plate	哈馬黑拉板塊
+Iranian plate	伊朗高原
+North Galapagos microplate	加拉帕戈斯板塊
+Rovuma plate	魯伍馬板塊
+Tisza plate	蒂薩板塊

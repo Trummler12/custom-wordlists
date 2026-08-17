@@ -1,0 +1,60 @@
+Pacific plate	plaque pacifique
+African plate	plaque africaine
+Antarctic plate	plaque antarctique
+North American plate	plaque nord-américaine
+Eurasian plate	plaque eurasienne
+Australian plate	plaque australienne
+South American plate	plaque sud-américaine
+Somali plate	plaque somalienne
+Nazca plate	plaque de Nazca
+Indian plate	plaque indienne
+Sunda plate	plaque de la Sonde
+Philippine Sea plate	plaque philippine
+Amur plate	plaque de l'Amour
+Arabian plate	plaque arabique
+Okhotsk microplate	plaque d'Okhotsk
+Caribbean plate	plaque caraïbe
+Cocos plate	plaque de Cocos
+Yangtze plate	plaque du Yangtsé
+Scotia plate	plaque Scotia
+Caroline plate	plaque des Carolines
+North Andes plate	plaque des Andes du Nord
+Banda Sea plate	plaque de la mer de Banda
+New Hebrides plate	plaque des Nouvelles-Hébrides
+Anatolian plate	plaque anatolienne
+Bird's Head plate	plaque de Bird's Head
+Burma plate	plaque birmane
+Kermadec plate	Plaque des Kermadec
+Woodlark plate	plaque Woodlark
+Mariana plate	plaque des Mariannes
+Molucca Sea plate	plaque de la mer des Moluques
+North Bismarck plate	plaque de Bismarck Nord
+Timor plate	plaque de Timor
+Okinawa plate	plaque d'Okinawa
+Aegean Sea plate	plaque de la mer Égée
+South Bismarck plate	plaque de Bismarck Sud
+Panama plate	plaque de Panama
+Juan de Fuca plate	plaque Juan de Fuca
+Tonga plate	plaque des Tonga
+Balmoral Reef plate	plaque du récif Balmoral
+South Sandwich plate	plaque des Sandwich
+Easter microplate	plaque de l'île de Pâques
+Conway Reef plate	Plaque du récif Conway
+Solomon Sea plate	plaque de la mer des Salomon
+Niuafo'ou plate	Plaque de Niuafo'ou
+Maoke plate	plaque Maoke
+Rivera plate	plaque Rivera
+Juan Fernández plate	plaque Juan Fernández
+Shetland plate	plaque des Shetland
+Manus plate	plaque de Manus
+Adriatic plate	plaque adriatique
+Capricorn plate	plaque du Capricorne
+Explorer plate	plaque Explorer
+Gonâve microplate	Microplaque de la Gonâve
+Gorda plate	Plaque Gorda
+Greenland plate	plaque du Groenland
+Iberian plate	Plaque ibérique
+Indo-Australian plate	plaque indo-australienne
+Iranian plate	Plateau Iranien
+Lwandle plate	Plaque Lwandle
+North Galapagos microplate	plaque des Galápagos

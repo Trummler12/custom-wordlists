@@ -1,0 +1,55 @@
+Pacific plate	태평양판
+African plate	아프리카판
+Antarctic plate	남극판
+North American plate	북미판
+Eurasian plate	유라시아판
+Australian plate	오스트레일리아판
+South American plate	남아메리카판
+Somali plate	소말리아판
+Nazca plate	나스카 플레이트
+Indian plate	인도판
+Sunda plate	순다판
+Philippine Sea plate	필리핀해판
+Amur plate	아무르판
+Arabian plate	아라비아판
+Okhotsk microplate	오호츠크판
+Caribbean plate	카리브판
+Cocos plate	코코스판
+Yangtze plate	양쯔판
+Scotia plate	스코샤판
+Caroline plate	캐롤라인판
+North Andes plate	북안데스판
+Banda Sea plate	반다해판
+New Hebrides plate	뉴헤브리디스판
+Anatolian plate	아나톨리아판
+Bird's Head plate	새의 머리 판
+Burma plate	버마판
+Kermadec plate	케르마데크판
+Woodlark plate	우들라크판
+Mariana plate	마리아나판
+North Bismarck plate	북비스마르크판
+Timor plate	티모르판
+Okinawa plate	오키나와판
+Aegean Sea plate	에게해판
+South Bismarck plate	남비스마르크판
+Panama plate	파나마판
+Juan de Fuca plate	후안데푸카판
+Tonga plate	통가판
+Balmoral Reef plate	밸모랄 환초판
+South Sandwich plate	사우스샌드위치판
+Easter microplate	이스터판
+Conway Reef plate	콘웨이 환초판
+Solomon Sea plate	솔로몬해판
+Niuafo'ou plate	니우아포우판
+Maoke plate	마오케판
+Rivera plate	리베라판
+Juan Fernández plate	후안페르난데스판
+Shetland plate	셰틀랜드판
+Futuna plate	푸투나판
+Manus plate	마누스판
+Gonâve microplate	고나브 미판
+Iberian plate	이베리아판
+Indo-Australian plate	인도-오스트레일리아판
+Iranian plate	이란고원
+North Galapagos microplate	갈라파고스 미판
+Philippine Mobile Belt	필리핀 변동대

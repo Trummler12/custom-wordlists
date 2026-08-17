@@ -1,0 +1,9 @@
+Africa	Afrika
+Antarctica	Antarktika
+Asia	Asien
+Australia	Australien
+Eurasia	Eurasien
+Europe	Europa
+North America	Nordamerika
+Oceania	Ozeanien
+South America	Südamerika

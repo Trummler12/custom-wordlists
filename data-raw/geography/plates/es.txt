@@ -1,0 +1,53 @@
+Pacific plate	Placa Pacífica
+African plate	Placa Africana
+Antarctic plate	Placa Antártica
+North American plate	Placa Norteamericana
+Eurasian plate	placa euroasiática
+Australian plate	placa Australiana
+South American plate	Placa Sudamericana
+Somali plate	Placa Somalí
+Nazca plate	Placa de Nazca
+Indian plate	Placa Índica
+Sunda plate	Placa de la Sonda
+Philippine Sea plate	Placa Filipina
+Amur plate	Placa Amuria
+Arabian plate	Placa arábiga
+Okhotsk microplate	Placa de Ojotsk
+Caribbean plate	Placa del Caribe
+Cocos plate	Placa de Cocos
+Yangtze plate	Placa Yangtsé
+Scotia plate	Placa Scotia
+Caroline plate	Placa de las Carolinas
+North Andes plate	Placa de los Andes del Norte
+Banda Sea plate	Placa del Mar de Banda
+Anatolian plate	Placa de Anatolia
+Bird's Head plate	Placa Cabeza de Pájaro
+Burma plate	Placa de Birmania
+Woodlark plate	Placa Woodlark
+Molucca Sea plate	Placa del Mar de las Molucas
+Timor plate	Placa de Timor
+Okinawa plate	Placa de Okinawa
+Aegean Sea plate	Placa del Mar Egeo
+Panama plate	Placa de Panamá
+Juan de Fuca plate	Placa de Juan de Fuca
+Tonga plate	Placa de Tonga
+Balmoral Reef plate	Placa del Arrecife Balmoral
+South Sandwich plate	Placa de Sandwich
+Easter microplate	Placa de Pascua
+Conway Reef plate	Placa del Arrecife de Conway
+Maoke plate	Placa de Maoke
+Rivera plate	Placa de Rivera
+Juan Fernández plate	Placa de Juan Fernández
+Shetland plate	Placa de Shetland
+Manus plate	Placa de Manus
+Adriatic plate	Placa Apuliana o Adriática
+Azores Plateau	Meseta de las Azores
+Explorer plate	Placa del Explorador
+Gonâve microplate	Placa de Gonâve
+Gorda plate	Placa de Gorda
+Greenland plate	Placa de Groenlandia
+Iberian plate	placa ibérica
+Indo-Australian plate	Placa Indoaustraliana
+Iranian plate	Meseta iraní
+North Galapagos microplate	Placa de Galápagos
+Puerto Rico-Virgin Islands microplate	Placa de Puerto Rico-Islas Vírgenes

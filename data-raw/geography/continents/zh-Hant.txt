@@ -1,0 +1,9 @@
+Africa	非洲
+Antarctica	南極洲
+Asia	亞洲
+Australia	澳洲大陸
+Eurasia	歐亞大陸
+Europe	歐洲
+North America	北美洲
+Oceania	大洋洲
+South America	南美洲
