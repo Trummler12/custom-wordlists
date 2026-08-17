@@ -40,14 +40,14 @@ Rivera plate	Placa de Rivera
 Juan Fernández plate	Placa de Juan Fernández
 Shetland plate	Placa de Shetland
 Manus plate	Placa de Manus
+Indo-Australian plate	Placa Indoaustraliana
+Gonâve microplate	Placa de Gonâve
+Puerto Rico-Virgin Islands microplate	Placa de Puerto Rico-Islas Vírgenes
 Adriatic plate	Placa Apuliana o Adriática
 Azores Plateau	Meseta de las Azores
-Explorer plate	Placa del Explorador
-Gonâve microplate	Placa de Gonâve
-Gorda plate	Placa de Gorda
-Greenland plate	Placa de Groenlandia
 Iberian plate	placa ibérica
-Indo-Australian plate	Placa Indoaustraliana
 Iranian plate	Meseta iraní
+Greenland plate	Placa de Groenlandia
+Explorer plate	Placa del Explorador
+Gorda plate	Placa de Gorda
 North Galapagos microplate	Placa de Galápagos
-Puerto Rico-Virgin Islands microplate	Placa de Puerto Rico-Islas Vírgenes

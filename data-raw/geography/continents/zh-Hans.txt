@@ -1,8 +1,9 @@
 Africa	非洲
 Antarctica	南极洲
 Asia	亚洲
-Australia	澳洲大陆
+Australia	澳大利亚
 Europe	欧洲
+India	印度
 North America	北美洲
 Oceania	大洋洲
 South America	南美洲

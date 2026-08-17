@@ -48,14 +48,14 @@ Juan Fernández plate	ファン・フェルナンデスプレート
 Shetland plate	シェトランドプレート
 Futuna plate	フツナプレート
 Manus plate	マヌスプレート
-Adriatic plate	アプリアプレート
-Explorer plate	エクスプローラープレート
-Gonâve microplate	ゴナーヴ・マイクロプレート
-Gorda plate	ゴルダプレート
-Greenland plate	グリーンランドプレート
 Indo-Australian plate	インド・オーストラリアプレート
+Gonâve microplate	ゴナーヴ・マイクロプレート
+Adriatic plate	アプリアプレート
 Iranian plate	イラン高原
-Madagascar plate	マダガスカル・プレート
+Sangihe plate	サンギヘ・プレート
+Greenland plate	グリーンランドプレート
+Explorer plate	エクスプローラープレート
+Gorda plate	ゴルダプレート
 North Galapagos microplate	ガラパゴスプレート
 Philippine Mobile Belt	フィリピン変動帯
-Sangihe plate	サンギヘ・プレート
+Madagascar plate	マダガスカル・プレート

@@ -33,8 +33,8 @@ Rivera plate	里維拉板塊
 Shetland plate	設得蘭板塊
 Futuna plate	富圖納板塊
 Manus plate	馬努斯板塊
-Halmahera plate	哈馬黑拉板塊
-Iranian plate	伊朗高原
-North Galapagos microplate	加拉帕戈斯板塊
 Rovuma plate	魯伍馬板塊
+Iranian plate	伊朗高原
+Halmahera plate	哈馬黑拉板塊
 Tisza plate	蒂薩板塊
+North Galapagos microplate	加拉帕戈斯板塊

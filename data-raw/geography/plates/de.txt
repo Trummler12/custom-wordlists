@@ -50,10 +50,10 @@ Shetland plate	Shetland-Platte
 Futuna plate	Futuna Platte
 Galápagos microplate	Galapagosplatte
 Manus plate	Manusplatte
-Adriatic plate	Adriatische Platte
-Explorer plate	Explorer-Platte
-Gonâve microplate	Gônave-Mikroplatte
-Gorda plate	Gordaplatte
 Indo-Australian plate	Indisch-Australische Platte
+Gonâve microplate	Gônave-Mikroplatte
+Adriatic plate	Adriatische Platte
 Iranian plate	Iranisches Hochland
+Explorer plate	Explorer-Platte
+Gorda plate	Gordaplatte
 North Galapagos microplate	Galapagos Mikroplatte

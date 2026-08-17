@@ -1,87 +1,87 @@
-# name	band	wikidata	steradian (Bird 2003)	de (Bird table)
-Pacific plate	major	Q205411	2.57685	Pazifische Platte
-African plate	major	Q203548	1.44065	Afrikanische Platte
-Antarctic plate	major	Q501705	1.43268	Antarktische Platte
-North American plate	major	Q220305	1.36559	Nordamerikanische Platte
-Eurasian plate	major	Q188521	1.19630	Eurasische Platte
-Australian plate	major	Q783056	1.13294	Australische Platte
-South American plate	major	Q119490	1.03045	Südamerikanische Platte
-Somali plate	minor	Q1415528	0.47192	Somaliaplatte
-Nazca plate	minor	Q538867	0.39669	Nazca-Platte
-Indian plate	minor	Q499481	0.30637	Indische Platte
-Sunda plate	minor	Q1144881	0.21967	Sundaplatte
-Philippine Sea plate	minor	Q339748	0.13409	Philippinische Platte
-Amur plate	minor	Q481751	0.13066	Amurplatte
-Arabian plate	minor	Q331093	0.12082	Arabische Platte
-Okhotsk microplate	minor	Q1139220	0.07482	Ochotsk-Platte
-Caribbean plate	minor	Q673071	0.07304	Karibische Platte
-Cocos plate	minor	Q386615	0.07223	Cocosplatte
-Yangtze plate	minor	Q2323550	0.05425	Jangtseplatte
-Scotia plate	minor	Q1046074	0.04190	Scotia-Platte
-Caroline plate	minor	Q1361799	0.03765	Karolinenplatte
-North Andes plate	micro	Q1340352	0.02394	Nordandenplatte
-Altiplano plate	micro		0.02050	Altiplanoplatte
-Banda Sea plate	micro	Q944310	0.01715	Bandaseeplatte
-New Hebrides plate	minor	Q1340601	0.01585	Neue-Hebriden-Platte
-Anatolian plate	micro	Q259207	0.01418	Anatolische Platte
-Bird's Head plate	micro	Q1200497	0.01295	Bird's-Head-Platte
-Burma plate	minor	Q969490	0.01270	Burmaplatte
-Kermadec plate	micro	Q1345056	0.01245	Kermadecplatte
-Woodlark plate	micro	Q1050177	0.01116	Woodlarkplatte
-Mariana plate	micro	Q1200990	0.01037	Marianenplatte
-Molucca Sea plate	micro	Q2657846	0.01030	Molukkenseeplatte
-North Bismarck plate	micro	Q1371610	0.00956	Nordbismarckplatte
-Timor plate	micro	Q1200968	0.00870	Timorplatte
-Okinawa plate	micro	Q1201001	0.00802	Okinawa-Platte
-Aegean Sea plate	micro	Q945014	0.00793	Ägäische Platte
-South Bismarck plate	micro	Q1344938	0.00762	Südbismarckplatte
-Panama plate	micro	Q951362	0.00674	Panamaplatte
-Juan de Fuca plate	micro	Q860385	0.00632	Juan-de-Fuca-Platte
-Tonga plate	micro	Q1200519	0.00625	Tongaplatte
-Balmoral Reef plate	micro	Q2363051	0.00481	Balmoral-Riff-Platte
-South Sandwich plate	micro	Q1361645	0.00454	Sandwichplatte
-Easter microplate	micro	Q1344950	0.00411	Osterplatte
-Conway Reef plate	micro	Q1344980	0.00356	Conway-Riff-Platte
-Solomon Sea plate	micro	Q1340339	0.00317	Salomonenseeplatte
-Niuafo'ou plate	micro	Q1200973	0.00306	Niuafo'ou-Platte
-Maoke plate	micro	Q643183	0.00284	Maokeplatte
-Rivera plate	micro	Q1200508	0.00249	Riveraplatte
-Juan Fernández plate	micro	Q588314	0.00241	Juan-Fernández-Platte
-Shetland plate	micro	Q1200982	0.00178	Shetlandplatte
-Futuna plate	micro	Q1135772	0.00079	Futunaplatte
-Galápagos microplate	micro		0.00036	Galapagosplatte
-Manus plate	micro	Q1345043	0.00020	Manusplatte
-Adriatic plate	micro	Q376417		
-Azores Plateau	micro	Q60755163		
-Capricorn plate	micro	Q23579442		
-Coiba plate	micro	Q55607867		
-Danakil microplate	micro	Q134706473		
-East Antarctic plate	micro			
-Explorer plate	micro	Q1384554		
-Falklands microplate	micro			
-Gonâve microplate	micro	Q2073887		
-Gorda plate	micro	Q1947556		
-Greenland plate	micro	Q5604222		
-Halmahera plate	micro	Q5643256		
-Hispaniola microplate	micro			
-Hreppar microplate	micro	Q28224929		
-Iberian plate	micro	Q2105037		
-Indo-Australian plate	major	Q844163		
-Iranian plate	micro	Q237660		
-Lwandle plate	micro	Q23581639		
-Macquarie plate	micro			
-Madagascar plate	micro	Q6726144		
-Malpelo plate	micro	Q39058577		
-North Galapagos microplate	micro	Q1200979		
-North Hispaniola microplate	micro			
-Pelso plate	micro	Q941323		
-Philippine Mobile Belt	micro	Q4671480		
-Puerto Rico-Virgin Islands microplate	micro	Q130362464		
-Queen Elizabeth Islands Subplate	micro	Q65041789		
-Rovuma plate	micro	Q25105221		
-Sangihe plate	micro	Q7418004		
-South Jamaica microplate	micro			
-Tisza plate	micro	Q1321456		
-Trobriand plate	micro	Q121879187		
-Victoria microplate	micro	Q104863725		
-West Antarctic plate	micro			
+# name	band	parent	wikidata	steradian (Bird 2003)	de (Bird table)
+Pacific plate	major		Q205411	2.57685	Pazifische Platte
+African plate	major		Q203548	1.44065	Afrikanische Platte
+Antarctic plate	major		Q501705	1.43268	Antarktische Platte
+North American plate	major		Q220305	1.36559	Nordamerikanische Platte
+Eurasian plate	major		Q188521	1.19630	Eurasische Platte
+Australian plate	major		Q783056	1.13294	Australische Platte
+South American plate	major		Q119490	1.03045	Südamerikanische Platte
+Somali plate	minor		Q1415528	0.47192	Somaliaplatte
+Nazca plate	minor		Q538867	0.39669	Nazca-Platte
+Indian plate	minor		Q499481	0.30637	Indische Platte
+Sunda plate	minor		Q1144881	0.21967	Sundaplatte
+Philippine Sea plate	minor		Q339748	0.13409	Philippinische Platte
+Amur plate	minor		Q481751	0.13066	Amurplatte
+Arabian plate	minor		Q331093	0.12082	Arabische Platte
+Okhotsk microplate	minor		Q1139220	0.07482	Ochotsk-Platte
+Caribbean plate	minor		Q673071	0.07304	Karibische Platte
+Cocos plate	minor		Q386615	0.07223	Cocosplatte
+Yangtze plate	minor		Q2323550	0.05425	Jangtseplatte
+Scotia plate	minor		Q1046074	0.04190	Scotia-Platte
+Caroline plate	minor		Q1361799	0.03765	Karolinenplatte
+North Andes plate	micro	South American plate	Q1340352	0.02394	Nordandenplatte
+Altiplano plate	micro	South American plate		0.02050	Altiplanoplatte
+Banda Sea plate	micro	Eurasian plate	Q944310	0.01715	Bandaseeplatte
+New Hebrides plate	minor		Q1340601	0.01585	Neue-Hebriden-Platte
+Anatolian plate	micro	Eurasian plate	Q259207	0.01418	Anatolische Platte
+Bird's Head plate	micro	Pacific plate	Q1200497	0.01295	Bird's-Head-Platte
+Burma plate	minor		Q969490	0.01270	Burmaplatte
+Kermadec plate	micro	Australian plate	Q1345056	0.01245	Kermadecplatte
+Woodlark plate	micro	Australian plate	Q1050177	0.01116	Woodlarkplatte
+Mariana plate	micro	Philippine Sea plate	Q1200990	0.01037	Marianenplatte
+Molucca Sea plate	micro	Eurasian plate	Q2657846	0.01030	Molukkenseeplatte
+North Bismarck plate	micro	Pacific plate	Q1371610	0.00956	Nordbismarckplatte
+Timor plate	micro	Eurasian plate	Q1200968	0.00870	Timorplatte
+Okinawa plate	micro	Eurasian plate	Q1201001	0.00802	Okinawa-Platte
+Aegean Sea plate	micro	Eurasian plate	Q945014	0.00793	Ägäische Platte
+South Bismarck plate	micro	Pacific plate	Q1344938	0.00762	Südbismarckplatte
+Panama plate	micro	Caribbean plate	Q951362	0.00674	Panamaplatte
+Juan de Fuca plate	micro	Pacific plate	Q860385	0.00632	Juan-de-Fuca-Platte
+Tonga plate	micro	Australian plate	Q1200519	0.00625	Tongaplatte
+Balmoral Reef plate	micro	Pacific plate	Q2363051	0.00481	Balmoral-Riff-Platte
+South Sandwich plate	micro	Scotia plate	Q1361645	0.00454	Sandwichplatte
+Easter microplate	micro	Pacific plate	Q1344950	0.00411	Osterplatte
+Conway Reef plate	micro	Pacific plate	Q1344980	0.00356	Conway-Riff-Platte
+Solomon Sea plate	micro	Pacific plate	Q1340339	0.00317	Salomonenseeplatte
+Niuafo'ou plate	micro	Australian plate	Q1200973	0.00306	Niuafo'ou-Platte
+Maoke plate	micro	Australian plate	Q643183	0.00284	Maokeplatte
+Rivera plate	micro	Cocos plate	Q1200508	0.00249	Riveraplatte
+Juan Fernández plate	micro	Pacific plate	Q588314	0.00241	Juan-Fernández-Platte
+Shetland plate	micro	Antarctic plate	Q1200982	0.00178	Shetlandplatte
+Futuna plate	micro	Australian plate	Q1135772	0.00079	Futunaplatte
+Galápagos microplate	micro	Pacific plate		0.00036	Galapagosplatte
+Manus plate	micro	Pacific plate	Q1345043	0.00020	Manusplatte
+Indo-Australian plate	major		Q844163		
+Lwandle plate	micro	African plate	Q23581639		
+Rovuma plate	micro	African plate	Q25105221		
+Victoria microplate	micro	African plate	Q104863725		
+Danakil microplate	micro	African plate	Q134706473		
+East Antarctic plate	micro	Antarctic plate			
+West Antarctic plate	micro	Antarctic plate			
+Capricorn plate	micro	Australian plate	Q23579442		
+Macquarie plate	micro	Australian plate			
+Gonâve microplate	micro	Caribbean plate	Q2073887		
+Hispaniola microplate	micro	Caribbean plate			
+North Hispaniola microplate	micro	Caribbean plate			
+Puerto Rico-Virgin Islands microplate	micro	Caribbean plate	Q130362464		
+South Jamaica microplate	micro	Caribbean plate			
+Adriatic plate	micro	Eurasian plate	Q376417		
+Azores Plateau	micro	Eurasian plate	Q60755163		
+Hreppar microplate	micro	Eurasian plate	Q28224929		
+Iberian plate	micro	Eurasian plate	Q2105037		
+Iranian plate	micro	Eurasian plate	Q237660		
+Halmahera plate	micro	Eurasian plate	Q5643256		
+Sangihe plate	micro	Eurasian plate	Q7418004		
+Pelso plate	micro	Eurasian plate	Q941323		
+Tisza plate	micro	Eurasian plate	Q1321456		
+Coiba plate	micro	Nazca plate	Q55607867		
+Malpelo plate	micro	Nazca plate	Q39058577		
+Greenland plate	micro	North American plate	Q5604222		
+Queen Elizabeth Islands Subplate	micro	North American plate	Q65041789		
+Explorer plate	micro	Pacific plate	Q1384554		
+Gorda plate	micro	Pacific plate	Q1947556		
+North Galapagos microplate	micro	Pacific plate	Q1200979		
+Trobriand plate	micro	Pacific plate	Q121879187		
+Philippine Mobile Belt	micro	Philippine Sea plate	Q4671480		
+Madagascar plate	micro	Somali plate	Q6726144		
+Falklands microplate	micro	South American plate			

@@ -50,37 +50,37 @@ Shetland plate	Shetland Plate
 Futuna plate	Futuna Plate
 Galápagos microplate	Galápagos microplate
 Manus plate	Manus Plate
-Adriatic plate	Adriatic Plate
-Azores Plateau	Azores Plateau
-Capricorn plate	Capricorn Plate
-Coiba plate	Coiba Plate
+Indo-Australian plate	Indo-Australian Plate
+Lwandle plate	Lwandle Plate
+Rovuma plate	Rovuma Plate
+Victoria microplate	Victoria Microplate
 Danakil microplate	Danakil microplate
 East Antarctic plate	East Antarctic plate
-Explorer plate	Explorer Plate
-Falklands microplate	Falklands microplate
+West Antarctic plate	West Antarctic plate
+Capricorn plate	Capricorn Plate
+Macquarie plate	Macquarie plate
 Gonâve microplate	Gonâve Microplate
-Gorda plate	Gorda Plate
-Greenland plate	Greenland Plate
-Halmahera plate	Halmahera Plate
 Hispaniola microplate	Hispaniola microplate
+North Hispaniola microplate	North Hispaniola microplate
+Puerto Rico-Virgin Islands microplate	Puerto Rico-Virgin Islands Microplate
+South Jamaica microplate	South Jamaica microplate
+Adriatic plate	Adriatic Plate
+Azores Plateau	Azores Plateau
 Hreppar microplate	Geological deformation of Iceland
 Iberian plate	Iberian plate
-Indo-Australian plate	Indo-Australian Plate
 Iranian plate	Iranian plateau
-Lwandle plate	Lwandle Plate
-Macquarie plate	Macquarie plate
-Madagascar plate	Madagascar Plate
-Malpelo plate	Malpelo Plate
-North Galapagos microplate	Galapagos Microplate
-North Hispaniola microplate	North Hispaniola microplate
-Pelso plate	Pelso Plate
-Philippine Mobile Belt	Philippine Mobile Belt
-Puerto Rico-Virgin Islands microplate	Puerto Rico-Virgin Islands Microplate
-Queen Elizabeth Islands Subplate	Queen Elizabeth Islands Subplate
-Rovuma plate	Rovuma Plate
+Halmahera plate	Halmahera Plate
 Sangihe plate	Sangihe Plate
-South Jamaica microplate	South Jamaica microplate
+Pelso plate	Pelso Plate
 Tisza plate	Tisza Plate
+Coiba plate	Coiba Plate
+Malpelo plate	Malpelo Plate
+Greenland plate	Greenland Plate
+Queen Elizabeth Islands Subplate	Queen Elizabeth Islands Subplate
+Explorer plate	Explorer Plate
+Gorda plate	Gorda Plate
+North Galapagos microplate	Galapagos Microplate
 Trobriand plate	Trobriand Plate
-Victoria microplate	Victoria Microplate
-West Antarctic plate	West Antarctic plate
+Philippine Mobile Belt	Philippine Mobile Belt
+Madagascar plate	Madagascar Plate
+Falklands microplate	Falklands microplate

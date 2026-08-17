@@ -46,17 +46,17 @@ Rivera plate	Placca Rivera
 Juan Fernández plate	Placca Juan Fernández
 Shetland plate	Placca delle Shetland
 Manus plate	Placca di Manus
+Indo-Australian plate	Placca indo-australiana
+Lwandle plate	Placca di Lwandle
+Capricorn plate	Placca del Capricorno
+Gonâve microplate	Microplacca di Gonâve
 Adriatic plate	Placca adriatica
 Azores Plateau	Plateau delle Azzorre
-Capricorn plate	Placca del Capricorno
-Explorer plate	Placca Explorer
-Gonâve microplate	Microplacca di Gonâve
-Gorda plate	Placca di Gorda
-Greenland plate	Placca della Groenlandia
 Iberian plate	Placca iberica
-Indo-Australian plate	Placca indo-australiana
 Iranian plate	altopiano iranico
-Lwandle plate	Placca di Lwandle
-Madagascar plate	Placca del Madagascar
+Greenland plate	Placca della Groenlandia
+Explorer plate	Placca Explorer
+Gorda plate	Placca di Gorda
 North Galapagos microplate	Placca delle Galápagos
 Philippine Mobile Belt	Cintura mobile delle Filippine
+Madagascar plate	Placca del Madagascar

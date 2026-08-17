@@ -1,9 +1,10 @@
 Africa	アフリカ
 Antarctica	南極大陸
 Asia	アジア
-Australia	オーストラリア大陸
+Australia	オーストラリア
 Eurasia	ユーラシア
 Europe	ヨーロッパ
+India	インド
 North America	北アメリカ
 Oceania	オセアニア
 South America	南アメリカ

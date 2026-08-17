@@ -47,14 +47,14 @@ Rivera plate	plaque Rivera
 Juan Fernández plate	plaque Juan Fernández
 Shetland plate	plaque des Shetland
 Manus plate	plaque de Manus
-Adriatic plate	plaque adriatique
-Capricorn plate	plaque du Capricorne
-Explorer plate	plaque Explorer
-Gonâve microplate	Microplaque de la Gonâve
-Gorda plate	Plaque Gorda
-Greenland plate	plaque du Groenland
-Iberian plate	Plaque ibérique
 Indo-Australian plate	plaque indo-australienne
-Iranian plate	Plateau Iranien
 Lwandle plate	Plaque Lwandle
+Capricorn plate	plaque du Capricorne
+Gonâve microplate	Microplaque de la Gonâve
+Adriatic plate	plaque adriatique
+Iberian plate	Plaque ibérique
+Iranian plate	Plateau Iranien
+Greenland plate	plaque du Groenland
+Explorer plate	plaque Explorer
+Gorda plate	Plaque Gorda
 North Galapagos microplate	plaque des Galápagos

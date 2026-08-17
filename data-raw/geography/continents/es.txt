@@ -4,6 +4,7 @@ Asia	Asia
 Australia	Australia
 Eurasia	Eurasia
 Europe	Europa
+India	India
 North America	América del Norte
 Oceania	Oceanía
 South America	América del Sur
