@@ -40,11 +40,12 @@ export const fr: UIStrings = {
       omitted ? "Activer pour les inclure dans votre liste" : "Activer pour les laisser de côté",
     locked: "Ce sont des données de jeu et non des mots : impossible de les ajouter.",
     unknown: (n, primary, secondary) =>
-      `${n} entrée${n === 1 ? "" : "s"} sans nom en ${primary}${secondary} dans les données source`,
+      `Jusqu'à ${n} entrée${n === 1 ? "" : "s"} sans nom en ${primary}${secondary} dans les données source`,
     unknownHint: (omitted) =>
       omitted
         ? "Activer pour les inclure sous leur nom anglais, le seul connu."
         : "Activer pour les laisser de côté à nouveau.",
+    unknownTier: (tier, n) => `Niveau ${tier} : ${n} entrée${n === 1 ? "" : "s"} concernée${n === 1 ? "" : "s"}`,
   },
   language: {
     label: (current) => `Langue : ${current}`,

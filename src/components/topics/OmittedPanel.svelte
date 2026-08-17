@@ -17,8 +17,34 @@
   // Set by `visibleGroup`, and only in a language the list is missing names in —
   // so this row appears exactly where there is something to report. It reads as one
   // more thing the list leaves out, because in effect that is what it is.
-  const unknown = $derived(group.unknownCount ?? 0);
+  //
+  // The whole list, not the part the ruler has reached. Scoping it to the
+  // selection sounds truer and reads worse: a reader looks through a topic's
+  // controls *before* switching it on, so a row that is only there once something
+  // is selected is missing at the one moment it was going to be read.
+  //
+  // What varies with the ruler is said instead — the count is phrased as an upper
+  // bound, and the tiers it falls in are named below, which is the part a reader
+  // can act on: it says how far down they have to go to meet these entries.
+  const byTier = $derived(group.unknownByTier ?? []);
+  const unknown = $derived(byTier.reduce((a, b) => a + b, 0));
+
+  // Tier numbers as the ruler counts its stops, from the famous end — however few
+  // there are. An unranked list counts as one tier holding everything, the same
+  // reading `tierSizes` in lib/fame takes: a reader sees a list and a ruler, not a
+  // shape in a file, and there is no telling a one-tier list from a flat one from
+  // the outside. So the line is redundant there rather than absent, which is the
+  // cheaper of the two ways to be wrong.
+  const affected = $derived(
+    byTier.map((n, i) => [i + 1, n] as const).filter(([, n]) => n > 0),
+  );
   const hidingUnknown = $derived(!settings.isToggled(tid, group.id, UNKNOWN_RULE));
+  const unknownTitle = $derived(
+    [
+      lang.ui.omitted.unknownHint(hidingUnknown),
+      ...affected.map(([t, n]) => lang.ui.omitted.unknownTier(t, n)),
+    ].join("\n"),
+  );
   // The language the entries are missing, named in the interface language —
   // the two can differ, and the row is about the former.
   const missing = $derived(splitName(lang.nameInUi(baseTag(lang.contentLang(tid)))));
@@ -68,7 +94,7 @@
           {/each}
           {#if unknown > 0}
             <li>
-              <label title={lang.ui.omitted.unknownHint(hidingUnknown)}>
+              <label title={unknownTitle}>
                 <input
                   type="checkbox"
                   checked={hidingUnknown}

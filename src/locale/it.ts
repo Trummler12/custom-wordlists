@@ -40,11 +40,12 @@ export const it: UIStrings = {
       omitted ? "Attiva per includerli nella tua lista" : "Attiva per tralasciarli",
     locked: "Sono dati di gioco e non parole, quindi non si possono aggiungere.",
     unknown: (n, primary, secondary) =>
-      `${n} voc${n === 1 ? "e" : "i"} senza nome in ${primary}${secondary} nei dati di origine`,
+      `Fino a ${n} voc${n === 1 ? "e" : "i"} senza nome in ${primary}${secondary} nei dati di origine`,
     unknownHint: (omitted) =>
       omitted
         ? "Attiva per includerle con il loro nome inglese, l'unico conosciuto."
         : "Attiva per tralasciarle di nuovo.",
+    unknownTier: (tier, n) => `Livello ${tier}: ${n} voc${n === 1 ? "e interessata" : "i interessate"}`,
   },
   language: {
     label: (current) => `Lingua: ${current}`,

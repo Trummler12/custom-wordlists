@@ -35,11 +35,12 @@ export const en: UIStrings = {
       omitted ? "Toggle to include these in your list" : "Toggle to leave these out",
     locked: "These are game data rather than words, so they can't be added.",
     unknown: (n, primary, secondary) =>
-      `${n} entr${n === 1 ? "y" : "ies"} the source data has no ${primary}${secondary} name for`,
+      `Up to ${n} entr${n === 1 ? "y" : "ies"} the source data has no ${primary}${secondary} name for`,
     unknownHint: (omitted) =>
       omitted
         ? "Toggle to include these under their English names — the only ones known for them."
         : "Toggle to leave these out again.",
+    unknownTier: (tier, n) => `Tier ${tier}: ${n} entr${n === 1 ? "y" : "ies"}`,
   },
   language: {
     label: (current) => `Language: ${current}`,

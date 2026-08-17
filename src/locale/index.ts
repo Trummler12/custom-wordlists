@@ -70,9 +70,18 @@ export interface OmittedStrings {
    *  like `toggle`, says what a click would do. The language is named rather than
    *  referred to: the interface may be in a different one, and "no German names"
    *  under a German interface showing Korean lists would be a lie. In two halves,
-   *  as `usesEnglish` — see `splitName` in lib/languages. */
+   *  as `usesEnglish` — see `splitName` in lib/languages.
+   *
+   *  An upper bound rather than a plain count: `n` is what the whole list is
+   *  missing, and how many of them a click actually brings back depends on where
+   *  the reader's fame ruler stands. */
   unknown: (n: number, primary: string, secondary: string) => string;
   unknownHint: (omitted: boolean) => string;
+  /** One line of the hint's breakdown, for a ranked list: which fame tier the
+   *  missing names fall in, counted from the famous end as the ruler counts its
+   *  stops. The useful half of the bound above — it says how far down a reader
+   *  has to go before any of this concerns them. */
+  unknownTier: (tier: number, n: number) => string;
 }
 
 /** The picker, the ⚠️/ℹ️ markers, and the per-list 🇬🇧 toggles. */

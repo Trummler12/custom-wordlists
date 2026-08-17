@@ -40,11 +40,12 @@ export const de: UIStrings = {
         : "Umschalten, um diese wegzulassen",
     locked: "Das sind Spieldaten und keine Wörter, sie lassen sich nicht aufnehmen.",
     unknown: (n, primary, secondary) =>
-      `${n} ${n === 1 ? "Eintrag" : "Einträge"} ohne Namen auf ${primary}${secondary} in den Ausgangsdaten`,
+      `Bis zu ${n} ${n === 1 ? "Eintrag" : "Einträge"} ohne Namen auf ${primary}${secondary} in den Ausgangsdaten`,
     unknownHint: (omitted) =>
       omitted
         ? "Umschalten, um deren englische Namen (Fallback) in die Liste zu lassen."
         : "Umschalten, um diese wieder wegzulassen.",
+    unknownTier: (tier, n) => `Stufe ${tier}: ${n} ${n === 1 ? "Eintrag" : "Einträge"} betroffen`,
   },
   language: {
     label: (current) => `Sprache: ${current}`,

@@ -41,11 +41,12 @@ export const ja: UIStrings = {
     toggle: (omitted) => (omitted ? "オンにしてリストに含める" : "オンにして除外する"),
     locked: "これらは単語ではなくゲームのデータなので、追加できません。",
     unknown: (n, primary, secondary) =>
-      `元データに${primary}${secondary}の名前がない項目が${n}件`,
+      `元データに${primary}${secondary}の名前がない項目が最大${n}件`,
     unknownHint: (omitted) =>
       omitted
         ? "オンにすると、唯一分かっている英語名で含めます。"
         : "オンにすると、再び除外します。",
+    unknownTier: (tier, n) => `第${tier}段階: ${n}件`,
   },
   language: {
     label: (current) => `言語: ${current}`,
