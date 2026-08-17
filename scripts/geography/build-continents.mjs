@@ -65,14 +65,27 @@ const OVERRIDES = {
   "Hreppar microplate.en": "Hreppar Microplate",
 };
 
+/** Short and long, like any entry with two forms: the tree row wants a word and
+ *  the hover wants the whole of it. */
 const TITLE = {
-  en: "Continents & Plates",
-  de: "Kontinente & Platten",
-  es: "Continentes y placas",
-  fr: "Continents et plaques",
-  it: "Continenti e placche",
-  ja: "大陸とプレート",
-  ko: "대륙과 판",
+  short: {
+    en: "Continents",
+    de: "Kontinente",
+    es: "Continentes",
+    fr: "Continents",
+    it: "Continenti",
+    ja: "大陸",
+    ko: "대륙",
+  },
+  long: {
+    en: "Continents & Plates",
+    de: "Kontinente & Platten",
+    es: "Continentes y placas",
+    fr: "Continents et plaques",
+    it: "Continenti e placche",
+    ja: "大陸とプレート",
+    ko: "대륙과 판",
+  },
 };
 
 /** The note tier 3 raises about itself, once the ruler reaches it. */

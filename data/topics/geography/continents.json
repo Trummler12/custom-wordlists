@@ -1,6 +1,6 @@
 {
   "id": "continents",
-  "title": {"en":"Continents & Plates","de":"Kontinente & Platten","es":"Continentes y placas","fr":"Continents et plaques","it":"Continenti e placche","ja":"大陸とプレート","ko":"대륙과 판"},
+  "title": {"short":{"en":"Continents","de":"Kontinente","es":"Continentes","fr":"Continents","it":"Continenti","ja":"大陸","ko":"대륙"},"long":{"en":"Continents & Plates","de":"Kontinente & Platten","es":"Continentes y placas","fr":"Continents et plaques","it":"Continenti e placche","ja":"大陸とプレート","ko":"대륙과 판"}},
   "icon": "🗺️",
   "description": "The continents and the tectonic plates, in one list: tier 0 pairs each landmass with the plate named after it, and the tiers below it walk down Bird's plate model by area until the plates run out of published ones.",
   "languages": ["en","de","es","fr","it","ja","ko","zh-Hans","zh-Hant"],
