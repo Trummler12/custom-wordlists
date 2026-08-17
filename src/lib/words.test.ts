@@ -3,6 +3,7 @@ import {
   displayName,
   groupEntries,
   groupHasNames,
+  overlongForms,
   renderCount,
   renderEntry,
   resolveStr,
@@ -100,6 +101,27 @@ describe("renderCount", () => {
     const entries = [{ en: "Ash", de: "Asch" }, "Ash"];
     expect(renderCount(entries, "long", "en")).toBe(1);
     expect(renderCount(entries, "long", "de")).toBe(2);
+  });
+
+  it("drops the forms past maxLen, and counts all of them without one", () => {
+    const entries = [{ short: "Sandwich", long: "South Sandwich Plate" }];
+    expect(renderCount(entries, "both", "en")).toBe(2);
+    expect(renderCount(entries, "both", "en", false, 10)).toBe(1);
+  });
+});
+
+describe("overlongForms", () => {
+  // The entry survives its long form: that is what makes this a rule about forms
+  // rather than about entries, and why it cannot live in `visibleGroup`.
+  const entries = [{ short: "Sandwich", long: "South Sandwich Plate" }, "Manus Plate"];
+
+  it("names the forms past the limit and leaves the rest alone", () => {
+    expect(overlongForms(entries, "both", "en", false, 12)).toEqual(["South Sandwich Plate"]);
+    expect(overlongForms(entries, "short", "en", false, 12)).toEqual([]);
+  });
+
+  it("is empty when everything fits", () => {
+    expect(overlongForms(entries, "both", "en", false, 40)).toEqual([]);
   });
 });
 

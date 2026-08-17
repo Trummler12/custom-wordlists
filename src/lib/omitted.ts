@@ -12,6 +12,19 @@ import { isUnknownIn, UNKNOWN } from "./words";
  *  validator rejects a declared rule that claims this id. */
 export const UNKNOWN_RULE = UNKNOWN;
 
+/** The reserved rule id for names longer than the target game accepts.
+ *
+ *  Reserved the same way, and toggled the same way, but it differs from every
+ *  other rule in two respects. It drops a *form* rather than an entry, so it
+ *  cannot be applied here — see `overlongForms` in lib/words. And it is a fact
+ *  about where the list is going rather than about where it came from, which is
+ *  why no topic file declares it: skribbl's limit is not the Pokédex's business.
+ *
+ *  Not `locked`, for the same reason it isn't declared. A list built for
+ *  something other than skribbl may want the long names, and refusing them would
+ *  be the app deciding what the reader's list is for. */
+export const TOO_LONG_RULE = ">";
+
 /** Every string an entry carries, across all its forms and languages. A rule
  *  matches an entry when any of these does: the junk is localized
  *  (`Data Card 01` / `Datenkarte01`), so a pattern written in one language would

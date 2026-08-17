@@ -143,17 +143,44 @@ export function renderEntry(
   return w.short === w.long ? [w.short] : [w.short, w.long];
 }
 
-/** Count of distinct rendered strings for a list of entries (without building the
- *  array): what the per-group and per-topic counters show. */
+/** The distinct strings a list contributes, first appearance first. */
+export function renderedForms(
+  entries: WordEntry[],
+  mode: NamesMode,
+  lang: string,
+  derived = false,
+): string[] {
+  const seen = new Set<string>();
+  for (const e of entries) for (const w of renderEntry(e, mode, lang, derived)) seen.add(w);
+  return [...seen];
+}
+
+/** How many of them the counters show. `maxLen` drops the forms too long for the
+ *  target game — see `TOO_LONG_RULE` in lib/omitted; leave it out to count all. */
 export function renderCount(
   entries: WordEntry[],
   mode: NamesMode,
   lang: string,
   derived = false,
+  maxLen?: number,
 ): number {
-  const seen = new Set<string>();
-  for (const e of entries) for (const w of renderEntry(e, mode, lang, derived)) seen.add(w);
-  return seen.size;
+  const forms = renderedForms(entries, mode, lang, derived);
+  return maxLen === undefined ? forms.length : forms.filter((w) => w.length <= maxLen).length;
+}
+
+/** The forms `maxLen` drops, for the panel that names them and offers them back.
+ *
+ *  Forms rather than entries, which is what sets this apart from every other
+ *  omission: an entry whose long form runs past the limit is perfectly usable
+ *  under its short one, so what leaves the list is one of its two names. */
+export function overlongForms(
+  entries: WordEntry[],
+  mode: NamesMode,
+  lang: string,
+  derived: boolean,
+  maxLen: number,
+): string[] {
+  return renderedForms(entries, mode, lang, derived).filter((w) => w.length > maxLen);
 }
 
 /** The entries a variant spells differently, as `base → variant` pairs.
