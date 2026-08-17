@@ -7,6 +7,7 @@ import {
   globToRegExp,
   isOmitted,
   isOnByDefault,
+  unknownByTier,
   unknownCount,
   visibleGroup,
 } from "./omitted";
@@ -301,9 +302,26 @@ describe("entries with no name in a language", () => {
   });
 
   it("reports the size of the family in both positions", () => {
-    expect(visibleGroup(g, [], "de").unknownCount).toBe(2);
-    expect(visibleGroup(g, ["?"], "de").unknownCount).toBe(2);
+    expect(visibleGroup(g, [], "de").unknownByTier).toEqual([2]);
+    expect(visibleGroup(g, ["?"], "de").unknownByTier).toEqual([2]);
     expect(unknownCount(g, "en")).toBe(0);
+  });
+
+  it("splits the count per tier, so a ruler can scope it", () => {
+    const tiered: Group = {
+      id: "plates",
+      title: "Plates",
+      tiers: [["Pacific Plate"], [{ en: "Manus Plate", "?": ["de"] }, { en: "Tonga Plate", "?": ["de"] }]],
+    };
+    expect(unknownByTier(tiered, "de")).toEqual([0, 2]);
+    expect(unknownCount(tiered, "de")).toBe(2);
+    // The reader who took only the famous tier is missing nothing.
+    expect(unknownByTier(tiered, "de").slice(0, 1).reduce((a, b) => a + b, 0)).toBe(0);
+  });
+
+  it("gives a flat group one bucket, which a depth of 1 addresses", () => {
+    expect(unknownByTier(g, "de")).toEqual([2]);
+    expect(unknownByTier(g, "en")).toEqual([0]);
   });
 
   it("does not report what a rule already left out", () => {

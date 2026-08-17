@@ -127,7 +127,7 @@ export function visibleGroup(
 ): Group {
   // Before anything else: counting the unknowns walks every entry, so a cache hit
   // has to be answered without it. The group filed under its own key is the
-  // "nothing applies" answer — it carries no `unknownCount` because there is none.
+  // "nothing applies" answer — it carries no `unknownByTier` because there is none.
   const key = `${lang}|${[...toggled].sort().join(",")}`;
   let byKey = views.get(g);
   if (!byKey) views.set(g, (byKey = new Map()));
@@ -135,7 +135,8 @@ export function visibleGroup(
   if (hit) return hit;
 
   const declared = !!g.omitted?.length || !!g.omittable?.length;
-  const unknown = unknownCount(g, lang, toggled);
+  const byTier = unknownByTier(g, lang, toggled);
+  const unknown = byTier.reduce((a, b) => a + b, 0);
   if (!declared && unknown === 0) {
     byKey.set(key, g);
     return g;
@@ -154,25 +155,41 @@ export function visibleGroup(
   const base: Group = g.tiers
     ? { ...g, tiers: appendToLast(g.tiers.map(keep), standIns) }
     : { ...g, words: [...keep(g.words ?? []), ...standIns] };
-  const view: Group = { ...base, unknownCount: unknown };
+  const view: Group = { ...base, unknownByTier: byTier };
   byKey.set(key, view);
   return view;
 }
 
-/** How many entries this list has no name for in `lang`, counted after the rules
- *  in force — a family that was left out anyway shouldn't be reported twice, and
- *  the number moves when the reader brings one back.
+/** How many entries have no name in `lang`, one number per tier, counted after
+ *  the rules in force — a family that was left out anyway shouldn't be reported
+ *  twice, and the numbers move when the reader brings one back.
  *
- *  Independent of whether the reader is hiding them: the panel row states the size
- *  of the family in both positions. */
-export function unknownCount(g: Group, lang: string, toggled: readonly string[] = []): number {
-  if (lang === "en") return 0;
+ *  Per tier rather than as a total, because the reader's ruler decides how much
+ *  of the list they are actually taking, and a count over tiers they left behind
+ *  reports a gap they don't have. Splitting it here is what lets the panel scope
+ *  it: this function cannot ask for the depth — `visibleGroup` runs inside
+ *  `topics`, and `selection`, which holds the depth, is downstream of it.
+ *
+ *  A flat group is one tier holding everything, which `depthOf` addresses with
+ *  its 0-or-1, so the caller needs no special case either.
+ *
+ *  Independent of whether the reader is hiding them: the panel row states the
+ *  size of the family in both positions. */
+export function unknownByTier(
+  g: Group,
+  lang: string,
+  toggled: readonly string[] = [],
+): number[] {
+  const lists = g.tiers ?? [g.words ?? []];
+  if (lang === "en") return lists.map(() => 0);
   const rules = activeRules(g, toggled);
-  let n = 0;
-  for (const list of g.tiers ?? [g.words ?? []]) {
-    for (const e of list) if (isUnknownIn(e, lang) && !isOmitted(e, rules)) n++;
-  }
-  return n;
+  return lists.map((list) => list.filter((e) => isUnknownIn(e, lang) && !isOmitted(e, rules)).length);
+}
+
+/** The same over the whole list — what filtering asks, since an entry is hidden
+ *  or not regardless of which tier it sits in. */
+export function unknownCount(g: Group, lang: string, toggled: readonly string[] = []): number {
+  return unknownByTier(g, lang, toggled).reduce((a, b) => a + b, 0);
 }
 
 /** Stand-ins join the least famous tier: they represent a family that was pruned

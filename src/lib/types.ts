@@ -140,10 +140,13 @@ export interface Group {
   words?: WordEntry[];
   tiers?: WordEntry[][];
   /** How many entries the list has no name for in the language it is being shown
-   *  in — see `unknownCount` in lib/omitted. Not a field of the file: `visibleGroup`
-   *  puts it on the view it hands back, because by then the entries it counts are
-   *  gone and only the view knows how many there were. */
-  unknownCount?: number;
+   *  in, one number per tier — see `unknownByTier` in lib/omitted. Not a field of
+   *  the file: `visibleGroup` puts it on the view it hands back, because by then
+   *  the entries it counts are gone and only the view knows how many there were.
+   *
+   *  Per tier so the reader's ruler can scope it — the panel reports what is
+   *  missing from the list they are taking, not from the file. */
+  unknownByTier?: number[];
 }
 
 /** A named bundle of group ids within a topic. */
