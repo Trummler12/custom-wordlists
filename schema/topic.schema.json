@@ -196,6 +196,28 @@
         }
       }
     },
+    "tierNote": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["fromTier", "text"],
+      "description": "One note, shown from a given ruler position downwards.",
+      "properties": {
+        "fromTier": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "The ruler position from which the note applies, counted from the famous end as the ruler counts its stops — so 1 is the first tier and the note is always shown. One-based rather than an index into `tiers`, because it is a statement about where the ruler stands, and an off-by-one here would be invisible: the note would simply appear a tier too early. An unranked list has one position, like everywhere else."
+        },
+        "icon": {
+          "type": "string",
+          "minLength": 1,
+          "description": "The glyph that opens the note. Defaults to ℹ️, which is nearly always right: a tier note describes something deliberate. ⚠️ is reserved for what is unconfirmed — a language a list has not been checked in — and using it here would blur that."
+        },
+        "text": {
+          "allOf": [{ "$ref": "#/$defs/locString" }],
+          "description": "The note itself. Localized here rather than in a locale file for the same reason `reason` is: it describes this list's source, not the app. May carry `{br}` and `[text](url)` links (https only), resolved by src/locale/html."
+        }
+      }
+    },
     "group": {
       "type": "object",
       "additionalProperties": false,
@@ -211,6 +233,12 @@
           "type": "string",
           "enum": ["short", "long", "both"],
           "description": "Which form of a short/long entry this group emits until the reader says otherwise. Omitted: `long`, which suits a list whose long form is the interesting one (a South Park character's full name). A list of countries wants the opposite — `Germany` is the entry and `Federal Republic of Germany` the footnote — and that is a fact about the list, not a preference, so it belongs in the file rather than in a default the reader has to undo on every visit."
+        },
+        "tierNotes": {
+          "type": "array",
+          "minItems": 1,
+          "description": "Things worth saying about this list once the reader's fame ruler reaches far enough down. For what no count can work out on its own — that a tier is ordered by nothing in particular because its source publishes no figures, that its entries come from a thinner source than the rest. Anything derivable belongs in the code instead, where it cannot go stale: how many names are missing in a language is already said by the ✂️ panel.",
+          "items": { "$ref": "#/$defs/tierNote" }
         },
         "omitted": {
           "type": "array",

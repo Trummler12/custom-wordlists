@@ -30,7 +30,16 @@ const TOPIC_KEYS = [
 ];
 
 /** Field order within a group. `words` and `tiers` are mutually exclusive. */
-const GROUP_KEYS = ["id", "title", "defaultNames", "omitted", "omittable", "words", "tiers"];
+const GROUP_KEYS = [
+  "id",
+  "title",
+  "defaultNames",
+  "tierNotes",
+  "omitted",
+  "omittable",
+  "words",
+  "tiers",
+];
 
 const line = (indent, text) => " ".repeat(indent) + text;
 
@@ -44,8 +53,11 @@ function block(items, indent, closeIndent) {
 /** Field order within an omission rule. */
 const RULE_KEYS = ["id", "match", "as", "except", "locked", "reason"];
 
-/** One omission rule per block rather than per line, with its `reason` opened up
- *  one language to a line.
+/** Field order within a tier note. */
+const NOTE_KEYS = ["fromTier", "icon", "text"];
+
+/** One object per block rather than per line, with its prose field opened up one
+ *  language to a line.
  *
  *  A rule used to fit on a line because it carried two languages. At seven it
  *  would run past any window, and these are prose sentences of uneven length —
@@ -53,20 +65,20 @@ const RULE_KEYS = ["id", "match", "as", "except", "locked", "reason"];
  *  translation changes, and a diff that should read as "the Spanish text moved"
  *  reads as three languages moving. One per line keeps a change where it
  *  belongs. */
-function ruleBlock(rules) {
+function proseBlock(items, order, prose) {
   const NL = "\n";
-  const body = rules
-    .map((rule) => {
-      const keys = [...RULE_KEYS, ...Object.keys(rule).filter((k) => !RULE_KEYS.includes(k))];
+  const body = items
+    .map((item) => {
+      const keys = [...order, ...Object.keys(item).filter((k) => !order.includes(k))];
       const fields = [];
       for (const key of keys) {
-        const value = rule[key];
+        const value = item[key];
         if (value === undefined) continue;
-        if (key === "reason" && value !== null && typeof value === "object") {
+        if (key === prose && value !== null && typeof value === "object") {
           const langs = Object.entries(value)
             .map(([l, text]) => line(12, `${JSON.stringify(l)}: ${JSON.stringify(text)}`))
             .join(`,${NL}`);
-          fields.push(line(10, `"reason": {${NL}${langs}${NL}${line(10, "}")}`));
+          fields.push(line(10, `${JSON.stringify(key)}: {${NL}${langs}${NL}${line(10, "}")}`));
         } else {
           fields.push(line(10, `${JSON.stringify(key)}: ${JSON.stringify(value)}`));
         }
@@ -94,7 +106,9 @@ function serializeGroup(group, warn) {
     if (key === "words") parts.push(line(6, `"words": ${block(value, 8, 6)}`));
     else if (key === "tiers") parts.push(line(6, `"tiers": ${tierBlock(value)}`));
     else if (key === "omitted" || key === "omittable") {
-      parts.push(line(6, `"${key}": ${ruleBlock(value)}`));
+      parts.push(line(6, `"${key}": ${proseBlock(value, RULE_KEYS, "reason")}`));
+    } else if (key === "tierNotes") {
+      parts.push(line(6, `"tierNotes": ${proseBlock(value, NOTE_KEYS, "text")}`));
     } else parts.push(line(6, `"${key}": ${JSON.stringify(value)}`));
   }
   for (const key of Object.keys(group)) {
@@ -160,6 +174,7 @@ function sorted(topic) {
       for (const key of ["omitted", "omittable"]) {
         if (out[key]) out[key] = out[key].map((rule) => order(rule, RULE_KEYS));
       }
+      if (out.tierNotes) out.tierNotes = out.tierNotes.map((n) => order(n, NOTE_KEYS));
       return out;
     });
   }

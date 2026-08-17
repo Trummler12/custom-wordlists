@@ -92,6 +92,21 @@ export type NamesMode = "short" | "long" | "both";
 
 /** One family of entries a list deliberately leaves out. Every rule can be
  *  switched back on by the reader, so each needs a stable key. See lib/omitted. */
+/** Something about a list that only becomes true — or only matters — once the
+ *  reader's ruler has gone far enough down it.
+ *
+ *  For what no count can derive: that a tier's order means nothing because its
+ *  source publishes no figures, that its entries come from a thinner source than
+ *  the rest. Whatever *is* derivable stays in code, where it can't go stale. */
+export interface TierNote {
+  /** The ruler position from which this applies, one-based, counted from the
+   *  famous end. A statement about where the ruler stands, not an index. */
+  fromTier: number;
+  /** Absent means ℹ️ — ⚠️ stays reserved for what is unconfirmed. */
+  icon?: string;
+  text: LocalizedString;
+}
+
 export interface Omission {
   /** Stable key for the reader's stored choice — the glob may be edited without
    *  resetting it. */
@@ -130,6 +145,8 @@ export interface Group {
    *  another. Absent means `long`. A list of countries wants `short` — which is a
    *  fact about that list rather than a preference, hence a field. */
   defaultNames?: NamesMode;
+  /** Notes that appear once the ruler reaches far enough down — see `TierNote`. */
+  tierNotes?: TierNote[];
   /** What this list leaves out of its source, and why. Filtered by default; the
    *  reader may switch any of them back on (unless `locked`). */
   omitted?: Omission[];

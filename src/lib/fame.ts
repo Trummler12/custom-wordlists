@@ -2,7 +2,7 @@
 // snap markers on its rail or space them by tier size, so the track is custom and
 // the maths lives here — pure, and returning a depth rather than setting one.
 
-import type { Group } from "./types";
+import type { Group, TierNote } from "./types";
 
 // Snap spacing: every gap is at least this fraction of an equal step, and the
 // remaining travel is distributed by tier size. Lower = more size-faithful
@@ -24,6 +24,19 @@ export function fameGroups(g: Group): number {
  *  so every group gets a ruler and the geometry below needs no special case. */
 export function tierSizes(g: Group): number[] {
   return g.tiers ? g.tiers.map((t) => t.length) : [(g.words ?? []).length];
+}
+
+/** The note this ruler position has earned, or none.
+ *
+ *  The deepest of those that apply, not all of them: two notes on one row would
+ *  be two glyphs the reader has to open in turn to find out they overlap, and a
+ *  note written for tier 4 already knows what tier 2's said. */
+export function tierNoteAt(g: Group, depth: number): TierNote | undefined {
+  let best: TierNote | undefined;
+  for (const n of g.tierNotes ?? []) {
+    if (n.fromTier <= depth && (!best || n.fromTier > best.fromTier)) best = n;
+  }
+  return best;
 }
 
 /** Snap positions (fractions 0…1 of the thumb travel): one per step boundary,

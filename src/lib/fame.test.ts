@@ -1,5 +1,12 @@
 import { describe, expect, it } from "vitest";
-import { depthFromKey, fameGroups, nearestIndex, snapPositions, tierSizes } from "./fame";
+import {
+  depthFromKey,
+  fameGroups,
+  nearestIndex,
+  snapPositions,
+  tierNoteAt,
+  tierSizes,
+} from "./fame";
 import type { Group } from "./types";
 
 const tiered = (...sizes: number[]): Group => ({
@@ -117,5 +124,30 @@ describe("depthFromKey", () => {
   it("returns null for anything else, so the caller leaves the event alone", () => {
     expect(depthFromKey(key("Tab"), 3, 5)).toBeNull();
     expect(depthFromKey(key("a"), 3, 5)).toBeNull();
+  });
+});
+
+describe("tierNoteAt", () => {
+  const g = (...notes: { fromTier: number; text: string }[]): Group => ({
+    ...tiered(3, 4, 5, 6),
+    tierNotes: notes,
+  });
+
+  it("says nothing until the ruler reaches the note", () => {
+    const one = g({ fromTier: 3, text: "thin down here" });
+    expect(tierNoteAt(one, 2)).toBeUndefined();
+    expect(tierNoteAt(one, 3)?.text).toBe("thin down here");
+    expect(tierNoteAt(one, 4)?.text).toBe("thin down here");
+  });
+
+  it("shows the deepest note that applies, not every one of them", () => {
+    const two = g({ fromTier: 2, text: "second" }, { fromTier: 4, text: "fourth" });
+    expect(tierNoteAt(two, 3)?.text).toBe("second");
+    expect(tierNoteAt(two, 4)?.text).toBe("fourth");
+  });
+
+  it("is nothing for a list that declares none", () => {
+    expect(tierNoteAt(tiered(3, 4), 2)).toBeUndefined();
+    expect(tierNoteAt(flat(10), 1)).toBeUndefined();
   });
 });
