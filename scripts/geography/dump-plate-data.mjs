@@ -50,20 +50,27 @@ const LANGS = {
   "zh-Hant": "zh-hant",
 };
 
-/** The continents, by hand. `P31 wd:Q5107` answers with fifteen items and most
- *  of them are noise — *African Continent* beside *Africa*, *Turtle Island*,
- *  *Afro-Eurasia*. For seven entries the list is shorter than the filter would
- *  be, and the names still come from the query.
+/** The landmasses, by hand. `P31 wd:Q5107` answers with fifteen items and most of
+ *  them are noise — *African Continent* beside *Africa*, *Turtle Island*,
+ *  *Afro-Eurasia*. For nine entries the list is shorter than the filter would be,
+ *  and the names still come from the query.
  *
- *  Eurasia is here although no one calls it a continent: the plate is named
- *  after it, and a plate needs a short form to pair with. */
-const CONTINENTS = {
+ *  Not all nine are continents, because what this table is for is the short form
+ *  of a plate's name: Eurasia and India name plates without being continents, and
+ *  Asia, Europe and Oceania are continents that name no plate.
+ *
+ *  Australia is the country (`Q408`) rather than the continent (`Q3960`), whose
+ *  label is a description in half our languages — *Australian continent*,
+ *  *continent australien*, *오스트레일리아 대륙*. The continent's name is the
+ *  country's name, and this table holds names. */
+const LANDMASSES = {
   Africa: "Q15",
   Antarctica: "Q51",
   Asia: "Q48",
-  Australia: "Q3960",
+  Australia: "Q408",
   Eurasia: "Q5401",
   Europe: "Q46",
+  India: "Q668",
   "North America": "Q49",
   Oceania: "Q55643",
   "South America": "Q18",
@@ -109,19 +116,39 @@ async function wikitext(host, page) {
   return r.parse.wikitext["*"];
 }
 
-/** The English page's three bands. `{{annotated link|X}}` is how it names each
- *  plate; the microplate section nests them under their parent plate, which we
- *  flatten — the parent is a fact about geology, not about the word list. */
+/** The English page's three bands, and — for the microplates — which plate each
+ *  sits under. That nesting is the only order the section has: it lists no areas,
+ *  so a list built from it cannot be sorted by size and groups by parent instead.
+ *
+ *  Only the outermost parent is kept. A handful nest twice (Gorda under Juan de
+ *  Fuca under Pacific), and the group a reader wants is the plate they have heard
+ *  of. Document order within a group is preserved, which keeps those pairs
+ *  together anyway.
+ *
+ *  Names arrive three ways on that page — a template, a bare link, and plain text
+ *  for the parent lines — and a parser that knew only the template would drop
+ *  entries silently, which is the kind of gap nobody notices for a year. */
 function bands(text) {
   const between = (a, b) => text.slice(text.indexOf(a), text.indexOf(b));
   const links = (s) => [...s.matchAll(/\{\{annotated link\|([^|}]+)/g)].map((m) => m[1].trim());
-  const micro = between("===Microplates===", "==Ancient tectonic plates==");
+  const name = (s) =>
+    (s.match(/\{\{annotated link\|([^|}]+)/) ?? s.match(/\[\[([^\]|]+)/) ?? [, s])[1]
+      ?.replace(/<ref.*/s, "")
+      .trim();
+
+  const micro = [];
+  let parent = "";
+  for (const [, depth, rest] of between("===Microplates===", "==Ancient tectonic plates==")
+    .matchAll(/^(\*+) *(.+)$/gm)) {
+    const title = name(rest);
+    if (!title) continue;
+    if (depth.length === 1) parent = title;
+    else micro.push({ title, parent });
+  }
   return {
     major: links(between("===Major plates===", "===Minor plates===")),
     minor: links(between("===Minor plates===", "===Microplates===")),
-    // One entry is a plain link rather than a template, and dropping it silently
-    // would be the kind of gap nobody notices for a year.
-    micro: [...links(micro), ...[...micro.matchAll(/^\*+ \[\[([^\]|]+)/gm)].map((m) => m[1])],
+    micro,
   };
 }
 
@@ -192,22 +219,23 @@ async function writeColumns(dir, keys, nameOf, total) {
 }
 
 async function main() {
-  // --- Continents ------------------------------------------------------------
-  const continentLabels = await labelsFor(Object.values(CONTINENTS));
-  const continentKeys = Object.keys(CONTINENTS);
-  console.log(`continents — ${continentKeys.length}`);
+  // --- Landmasses ------------------------------------------------------------
+  const landLabels = await labelsFor(Object.values(LANDMASSES));
+  const landKeys = Object.keys(LANDMASSES);
+  console.log(`continents — ${landKeys.length}`);
   await writeColumns(
     join(OUT, "continents"),
-    continentKeys,
-    (k, wd) => continentLabels[CONTINENTS[k]]?.[wd]?.value,
-    continentKeys.length,
+    landKeys,
+    (k, wd) => landLabels[LANDMASSES[k]]?.[wd]?.value,
+    landKeys.length,
   );
 
   // --- Plates ----------------------------------------------------------------
   const en = bands(await wikitext("en.wikipedia.org", "List of tectonic plates"));
   const bird = birdTable(await wikitext("de.wikipedia.org", "Liste der tektonischen Platten"));
 
-  const titles = [...new Set([...en.major, ...en.minor, ...en.micro])];
+  const parentOf = new Map(en.micro.map((m) => [m.title, m.parent]));
+  const titles = [...new Set([...en.major, ...en.minor, ...en.micro.map((m) => m.title)])];
   const items = await itemsFor("en.wikipedia.org", titles);
   const deItems = await itemsFor("de.wikipedia.org", bird.map((r) => r.title));
 
@@ -218,9 +246,13 @@ async function main() {
 
   const band = (t) =>
     en.major.includes(t) ? "major" : en.minor.includes(t) ? "minor" : "micro";
+  // By area where there is one, and by the page's own order where there isn't —
+  // which is the grouping by parent plate, so the unmeasured tail keeps the only
+  // structure anybody has given it.
+  const seen = new Map(titles.map((t, i) => [t, i]));
   const ranked = titles
     .slice()
-    .sort((a, b) => (areaOf(b)?.sr ?? -1) - (areaOf(a)?.sr ?? -1) || a.localeCompare(b));
+    .sort((a, b) => (areaOf(b)?.sr ?? -1) - (areaOf(a)?.sr ?? -1) || seen.get(a) - seen.get(b));
 
   await mkdir(join(OUT, "plates"), { recursive: true });
 
@@ -228,11 +260,20 @@ async function main() {
   // arrive as a diff across nine name columns.
   const structure = ranked.map((t) => {
     const a = areaOf(t);
-    return [t, band(t), items[t] ?? "", a ? a.sr.toFixed(5) : "", a ? a.de : ""].join("\t");
+    return [
+      t,
+      band(t),
+      parentOf.get(t) ?? "",
+      items[t] ?? "",
+      a ? a.sr.toFixed(5) : "",
+      a ? a.de : "",
+    ].join("\t");
   });
   await writeFile(
     join(OUT, "plates", "structure.tsv"),
-    "# name\tband\twikidata\tsteradian (Bird 2003)\tde (Bird table)\n" + structure.join("\n") + "\n",
+    "# name\tband\tparent\twikidata\tsteradian (Bird 2003)\tde (Bird table)\n" +
+      structure.join("\n") +
+      "\n",
     "utf8",
   );
 
