@@ -54,6 +54,25 @@ describe("snapPositions", () => {
     expect(a).toBeGreaterThan(0.15);
   });
 
+  it("keeps a stop for an empty tier", () => {
+    // A list whose tier boundaries come from outside — a population, a year — can
+    // have nothing in one band and must still say so, or its next band would sit
+    // where the empty one belongs. So the stop exists, at the minimum spacing,
+    // and the ones after it stay where a full tier would have put them.
+    const pos = snapPositions(tiered(5, 0, 5));
+    expect(pos).toHaveLength(4);
+    for (let i = 1; i < pos.length; i++) expect(pos[i]).toBeGreaterThan(pos[i - 1]);
+    expect(pos[2] - pos[1]).toBeLessThan(pos[1] - pos[0]);
+  });
+
+  it("survives a group whose tiers are all empty", () => {
+    // Not a list anyone would write, but the sizes sum to zero and the spacing
+    // maths divides by that sum.
+    const pos = snapPositions(tiered(0, 0));
+    expect(pos[0]).toBe(0);
+    expect(pos.at(-1)).toBe(1);
+  });
+
   it("survives a group with no tiers at all", () => {
     // Unreachable through the schema, which requires a tier — but the function
     // is in lib/, where the next caller won't know that.
