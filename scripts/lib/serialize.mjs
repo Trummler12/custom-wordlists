@@ -30,7 +30,7 @@ const TOPIC_KEYS = [
 ];
 
 /** Field order within a group. `words` and `tiers` are mutually exclusive. */
-const GROUP_KEYS = ["id", "title", "omitted", "omittable", "words", "tiers"];
+const GROUP_KEYS = ["id", "title", "defaultNames", "omitted", "omittable", "words", "tiers"];
 
 const line = (indent, text) => " ".repeat(indent) + text;
 

@@ -61,8 +61,11 @@ class SelectionState {
   // which form(s) to emit; counts and output de-duplicate identical rendered
   // strings, so "both" on a pair whose forms match still yields one word.
 
-  modeOf(k: string): NamesMode {
-    return this.namesMode[k] ?? "long";
+  // Takes the group rather than only its key, because the group is what carries
+  // the default: a list of countries emits `short` where South Park emits `long`,
+  // and neither is the reader's doing.
+  modeOf(tid: string, g: Group): NamesMode {
+    return this.namesMode[this.key(tid, g.id)] ?? g.defaultNames ?? "long";
   }
   setMode(k: string, mode: NamesMode): void {
     this.namesMode[k] = mode;
@@ -81,7 +84,7 @@ class SelectionState {
   groupTotal(tid: string, g: Group): number {
     return renderCount(
       groupEntries(g),
-      this.modeOf(this.key(tid, g.id)),
+      this.modeOf(tid, g),
       lang.contentLang(tid),
       lang.derivesRomaji(tid),
     );
@@ -89,7 +92,7 @@ class SelectionState {
   groupSelCount(tid: string, g: Group): number {
     return renderCount(
       this.entriesOf(tid, g),
-      this.modeOf(this.key(tid, g.id)),
+      this.modeOf(tid, g),
       lang.contentLang(tid),
       lang.derivesRomaji(tid),
     );

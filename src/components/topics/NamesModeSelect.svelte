@@ -16,7 +16,7 @@
   <select
     class="names-mode"
     aria-label={lang.ui.names.formLabel(label)}
-    value={selection.modeOf(k)}
+    value={selection.modeOf(tid, group)}
     onchange={(e) => selection.setMode(k, e.currentTarget.value as NamesMode)}
   >
     <option value="short">{lang.ui.names.form.short}</option>

@@ -126,6 +126,10 @@ export interface Group {
   id: string;
   /** Display name, same shape as an entry — see `displayName` in lib/words. */
   title: WordEntry;
+  /** Which form of a short/long entry this group emits until the reader picks
+   *  another. Absent means `long`. A list of countries wants `short` — which is a
+   *  fact about that list rather than a preference, hence a field. */
+  defaultNames?: NamesMode;
   /** What this list leaves out of its source, and why. Filtered by default; the
    *  reader may switch any of them back on (unless `locked`). */
   omitted?: Omission[];
