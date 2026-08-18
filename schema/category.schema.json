@@ -45,12 +45,22 @@
         "long": { "$ref": "#/$defs/locString" }
       }
     },
+    "langMapEntry": {
+      "type": "object",
+      "minProperties": 1,
+      "required": ["en"],
+      "description": "A per-language map whose values are whole names: a plain string, or a short/long pair. The counterpart to putting the language map inside each half of a pair, and the better shape where a language needs no short form at all — Korean writes the whole of \"Human Geography\" in four characters, and under the leaf form it would have to repeat it in both halves or fall back to the English short one. No `?` key here, unlike a topic's: a category is a label rather than an entry, so a language it lacks falls back to English like any other title.",
+      "propertyNames": { "pattern": "^[a-z]{2}(-[A-Z]{2}|-[0-9]{3}|-[A-Z][a-z]{3})?$" },
+      "additionalProperties": {
+        "oneOf": [{ "type": "string", "minLength": 1 }, { "$ref": "#/$defs/namePair" }]
+      }
+    },
     "word": {
       "description": "Mirrors `word` in topic.schema.json, so a category's title has the same shape as a topic's. Repeated rather than referenced across files: the two schemas are loaded independently.",
       "oneOf": [
         { "type": "string", "minLength": 1 },
         { "$ref": "#/$defs/namePair" },
-        { "$ref": "#/$defs/langMapString" }
+        { "$ref": "#/$defs/langMapEntry" }
       ]
     }
   }
