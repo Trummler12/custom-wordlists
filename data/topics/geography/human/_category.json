@@ -1,0 +1,13 @@
+{
+  "title": {
+    "en": {"short": "Human", "long": "Human Geography"},
+    "de": {"short": "Human", "long": "Humangeografie"},
+    "es": {"short": "Humana", "long": "Geografía humana"},
+    "fr": {"short": "Humaine", "long": "Géographie humaine"},
+    "it": {"short": "Umana", "long": "Geografia umana"},
+    "ja": "人文地理学",
+    "ko": "인문지리"
+  },
+  "icon": "🏙️",
+  "order": 2
+}

@@ -1,4 +1,4 @@
-// Builds data/topics/geography/languages.json from the dumps that
+// Builds data/topics/geography/human/languages.json from the dumps that
 // scripts/geography/dump-language-names.mjs writes.
 //
 // That covers the thirty name files and not the speaker table beside them:
@@ -31,7 +31,7 @@ import { serializeTopic } from "../lib/serialize.mjs";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..", "..");
 const DUMPS = join(ROOT, "data-raw", "geography", "languages");
-const TOPIC = join(ROOT, "data", "topics", "geography", "languages.json");
+const TOPIC = join(ROOT, "data", "topics", "geography", "human", "languages.json");
 
 /** A two-letter code is ISO 639-1; three letters is 639-2/3, which is where the
  *  long tail lives. */

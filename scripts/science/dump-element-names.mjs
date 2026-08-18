@@ -20,7 +20,7 @@
 // orthography — but the dump is a snapshot, so it keeps what it was given and the
 // build script decides. Every other language is written the way that language
 // writes a noun, which is what the curated lists carry too: `Deutsch` and
-// `alemán` sit side by side in geography/languages.json for the same reason.
+// `alemán` sit side by side in geography/human/languages.json for the same reason.
 import { mkdir, writeFile } from "node:fs/promises";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";

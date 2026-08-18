@@ -1,4 +1,4 @@
-// Builds data/topics/geography/continents.json from the dumps that
+// Builds data/topics/geography/physical/continents.json from the dumps that
 // scripts/geography/dump-plate-data.mjs leaves in data-raw/geography/.
 //
 //   node scripts/geography/build-continents.mjs [--write]
@@ -22,7 +22,7 @@ import { serializeTopic } from "../lib/serialize.mjs";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..", "..");
 const RAW = join(ROOT, "data-raw", "geography");
-const TOPIC = join(ROOT, "data", "topics", "geography", "continents.json");
+const TOPIC = join(ROOT, "data", "topics", "geography", "physical", "continents.json");
 
 const LANGS = ["en", "de", "es", "fr", "it", "ja", "ko", "zh-Hans", "zh-Hant"];
 
