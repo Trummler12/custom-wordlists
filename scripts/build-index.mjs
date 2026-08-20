@@ -142,6 +142,7 @@ async function readCategoryMeta(path) {
   // ruler-visibility boundary (shown by default, decoupled from ancestors), so
   // its presence must survive into the manifest.
   if (typeof data.hideRulersByDefault === "boolean") meta.hideRulersByDefault = data.hideRulersByDefault;
+  if (typeof data.hideRulers === "boolean") meta.hideRulers = data.hideRulers;
   if (data.sharedEnglishToggle) meta.sharedEnglishToggle = true;
   return meta;
 }
@@ -173,6 +174,7 @@ async function buildIndex() {
       ...(foldered ? { foldered: true } : {}),
       // Either boolean is meaningful — a `false` marks a boundary too (see readCategoryMeta).
       ...(typeof data.hideRulersByDefault === "boolean" ? { hideRulersByDefault: data.hideRulersByDefault } : {}),
+      ...(typeof data.hideRulers === "boolean" ? { hideRulers: data.hideRulers } : {}),
       ...(data.languages ? { languages: data.languages } : {}),
       ...(data.usesEnglishFor ? { usesEnglishFor: data.usesEnglishFor } : {}),
       ...(data.generatedRomaji ? { generatedRomaji: true } : {}),
