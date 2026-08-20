@@ -1,0 +1,197 @@
+Q148	Volksrepublik China
+Q668	Indien
+Q30	Vereinigte Staaten
+Q252	Indonesien
+Q843	Pakistan
+Q155	Brasilien
+Q1033	Nigeria
+Q902	Bangladesch
+Q159	Russland
+Q96	Mexiko
+Q115	Äthiopien
+Q17	Japan
+Q79	Ägypten
+Q928	Philippinen
+Q974	Demokratische Republik Kongo
+Q881	Vietnam
+Q794	Iran
+Q43	Türkei
+Q183	Deutschland
+Q142	Frankreich
+Q145	Vereinigtes Königreich
+Q869	Thailand
+Q258	Südafrika
+Q38	Italien
+Q924	Tansania
+Q836	Myanmar
+Q739	Kolumbien
+Q884	Südkorea
+Q29	Spanien
+Q114	Kenia
+Q414	Argentinien
+Q1036	Uganda
+Q262	Algerien
+Q889	Afghanistan
+Q212	Ukraine
+Q1049	Sudan
+Q796	Irak
+Q36	Polen
+Q16	Kanada
+Q1028	Marokko
+Q916	Angola
+Q265	Usbekistan
+Q833	Malaysia
+Q419	Peru
+Q851	Saudi-Arabien
+Q117	Ghana
+Q1019	Madagaskar
+Q717	Venezuela
+Q1008	Elfenbeinküste
+Q1029	Mosambik
+Q837	Nepal
+Q1009	Kamerun
+Q805	Jemen
+Q408	Australien
+Q423	Nordkorea
+Q858	Syrien
+Q865	Republik China
+Q965	Burkina Faso
+Q912	Mali
+Q1032	Niger
+Q854	Sri Lanka
+Q232	Kasachstan
+Q953	Sambia
+Q298	Chile
+Q657	Tschad
+Q218	Rumänien
+Q1020	Malawi
+Q424	Kambodscha
+Q774	Guatemala
+Q29999	Königreich der Niederlande
+Q736	Ecuador
+Q1041	Senegal
+Q954	Simbabwe
+Q1037	Ruanda
+Q962	Benin
+Q967	Burundi
+Q1006	Guinea
+Q958	Südsudan
+Q750	Bolivien
+Q31	Belgien
+Q948	Tunesien
+Q1045	Somalia
+Q241	Kuba
+Q790	Haiti
+Q213	Tschechien
+Q786	Dominikanische Republik
+Q34	Schweden
+Q41	Griechenland
+Q810	Jordanien
+Q45	Portugal
+Q227	Aserbaidschan
+Q878	Vereinigte Arabische Emirate
+Q801	Israel
+Q28	Ungarn
+Q863	Tadschikistan
+Q39	Schweiz
+Q184	Belarus
+Q40	Österreich
+Q691	Papua-Neuguinea
+Q783	Honduras
+Q945	Togo
+Q1044	Sierra Leone
+Q1016	Libyen
+Q813	Kirgisistan
+Q819	Laos
+Q733	Paraguay
+Q403	Serbien
+Q219	Bulgarien
+Q971	Republik Kongo
+Q874	Turkmenistan
+Q822	Libanon
+Q792	El Salvador
+Q756617	Königreich Dänemark
+Q334	Singapur
+Q33	Finnland
+Q20	Norwegen
+Q214	Slowakei
+Q664	Neuseeland
+Q800	Costa Rica
+Q219060	Palästina
+Q1014	Liberia
+Q929	Zentralafrikanische Republik
+Q27	Irland
+Q811	Nicaragua
+Q842	Oman
+Q1025	Mauretanien
+Q804	Panama
+Q817	Kuwait
+Q230	Georgien
+Q224	Kroatien
+Q225	Bosnien und Herzegowina
+Q986	Eritrea
+Q77	Uruguay
+Q711	Mongolei
+Q399	Armenien
+Q37	Litauen
+Q222	Albanien
+Q766	Jamaika
+Q1005	Gambia
+Q846	Katar
+Q1030	Namibia
+Q963	Botswana
+Q217	Moldau
+Q215	Slowenien
+Q1000	Gabun
+Q1013	Lesotho
+Q1007	Guinea-Bissau
+Q983	Äquatorialguinea
+Q211	Lettland
+Q221	Nordmazedonien
+Q1246	Kosovo
+Q398	Bahrain
+Q574	Osttimor
+Q191	Estland
+Q754	Trinidad und Tobago
+Q229	Zypern
+Q1027	Mauritius
+Q1050	Eswatini
+Q977	Dschibuti
+Q712	Fidschi
+Q970	Komoren
+Q734	Guyana
+Q917	Bhutan
+Q32	Luxemburg
+Q236	Montenegro
+Q685	Salomonen
+Q730	Suriname
+Q1011	Kap Verde
+Q233	Malta
+Q921	Brunei
+Q826	Malediven
+Q242	Belize
+Q778	Bahamas
+Q189	Island
+Q244	Barbados
+Q686	Vanuatu
+Q1039	São Tomé und Príncipe
+Q683	Samoa
+Q760	St. Lucia
+Q710	Kiribati
+Q1042	Seychellen
+Q769	Grenada
+Q757	St. Vincent und die Grenadinen
+Q678	Tonga
+Q781	Antigua und Barbuda
+Q228	Andorra
+Q702	Föderierte Staaten von Mikronesien
+Q784	Dominica
+Q709	Marshallinseln
+Q763	St. Kitts und Nevis
+Q235	Monaco
+Q347	Liechtenstein
+Q238	San Marino
+Q695	Palau
+Q697	Naoero
+Q672	Tuvalu
+Q237	Vatikanstadt

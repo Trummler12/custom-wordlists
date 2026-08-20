@@ -1,0 +1,204 @@
+Q956	Pekín
+Q987	Nueva Delhi
+Q61	Washington D. C.
+Q3630	Yakarta
+Q1362	Islamabad
+Q2844	Brasilia
+Q3787	Abuya
+Q1354	Daca
+Q649	Moscú
+Q1489	Ciudad de México
+Q3624	Adís Abeba
+Q1490	Tokio
+Q85	El Cairo
+Q1461	Manila
+Q3838	Kinsasa
+Q1858	Hanói
+Q3616	Teherán
+Q3640	Ankara
+Q64	Berlín
+Q90	París
+Q84	Londres
+Q1861	Bangkok
+Q3926	Pretoria
+Q5465	Ciudad del Cabo
+Q37701	Bloemfontein
+Q220	Roma
+Q3866	Dodoma
+Q37400	Naipyidó
+Q2841	Bogotá
+Q8684	Seúl
+Q2807	Madrid
+Q3870	Nairobi
+Q1486	Buenos Aires
+Q3894	Kampala
+Q3561	Argel
+Q5838	Kabul
+Q1899	Kiev
+Q1963	Jartum
+Q1530	Bagdad
+Q270	Varsovia
+Q1930	Ottawa
+Q3551	Rabat
+Q3897	Luanda
+Q269	Taskent
+Q1865	Kuala Lumpur
+Q2868	Lima
+Q3692	Riad
+Q3761	Acra
+Q3915	Antananarivo
+Q1533	Caracas
+Q3768	Yamusukro
+Q3889	Maputo
+Q3037	Katmandú
+Q3808	Yaundé
+Q2471	Saná
+Q131694	Adén
+Q3114	Canberra
+Q18808	Pionyang
+Q3766	Damasco
+Q1867	Taipéi
+Q3777	Uagadugú
+Q3703	Bamako
+Q3674	Niamey
+Q35381	Colombo
+Q41963	Sri Jayawardenapura Kotte
+Q1520	Astaná
+Q3881	Lusaka
+Q2887	Santiago de Chile
+Q3659	Yamena
+Q19660	Bucarest
+Q3876	Lilongüe
+Q1850	Nom Pen
+Q1555	Ciudad de Guatemala
+Q727	Ámsterdam
+Q2900	Quito
+Q3718	Dakar
+Q3921	Harare
+Q3859	Kigali
+Q3799	Porto Novo
+Q167551	Guitega
+Q3733	Conakri
+Q1947	Yuba
+Q1491	La Paz
+Q2907	Sucre
+Q239	Bruselas
+Q3572	Túnez
+Q2449	Mogadiscio
+Q1563	La Habana
+Q34261	Puerto Príncipe
+Q1085	Praga
+Q34820	Santo Domingo
+Q1754	Estocolmo
+Q1524	Atenas
+Q3805	Amán
+Q597	Lisboa
+Q9248	Bakú
+Q1519	Abu Dhabi
+Q1218	Jerusalén
+Q1781	Budapest
+Q9365	Dusambé
+Q70	Berna
+Q2280	Minsk
+Q1741	Viena
+Q36526	Puerto Moresby
+Q3238	Tegucigalpa
+Q3792	Lomé
+Q3780	Freetown
+Q3579	Trípoli
+Q9361	Biskek
+Q9326	Vientián
+Q2933	Asunción
+Q3711	Belgrado
+Q472	Sofía
+Q3844	Brazzaville
+Q23438	Asjabad
+Q3820	Beirut
+Q3110	San Salvador
+Q1748	Copenhague
+Q334	Singapur
+Q1757	Helsinki
+Q585	Oslo
+Q1780	Bratislava
+Q23661	Wellington
+Q3070	San José
+Q158119	Ramala
+Q212938	Jerusalén Este
+Q3748	Monrovia
+Q3832	Bangui
+Q1761	Dublín
+Q3274	Managua
+Q3826	Mascate
+Q3688	Nuakchot
+Q3306	Ciudad de Panamá
+Q35178	Ciudad de Kuwait
+Q994	Tiflis
+Q1435	Zagreb
+Q11194	Sarajevo
+Q3642	Asmara
+Q1335	Montevideo
+Q23430	Ulán Bator
+Q1953	Ereván
+Q216	Vilna
+Q19689	Tirana
+Q34692	Kingston
+Q3726	Banjul
+Q3861	Doha
+Q3935	Windhoek
+Q3919	Gaborone
+Q21197	Chisináu
+Q437	Liubliana
+Q3825	Libreville
+Q3909	Maseru
+Q3739	Bisáu
+Q1140136	Ciudad de la Paz
+Q1773	Riga
+Q384	Skopie
+Q25270	Pristina
+Q3882	Manama
+Q9310	Dili
+Q1770	Tallin
+Q39178	Puerto España
+Q3856	Nicosia
+Q3929	Port Louis
+Q101418	Lobamba
+Q3904	Mbabane
+Q3604	Ciudad de Yibuti
+Q38807	Suva
+Q3901	Moroni
+Q10717	Georgetown
+Q9270	Timbu
+Q1842	Luxemburgo
+Q23564	Podgorica
+Q40921	Honiara
+Q3001	Paramaribo
+Q3751	Praia
+Q23800	La Valeta
+Q9279	Bandar Seri Begawan
+Q9347	Malé
+Q3043	Belmopán
+Q2467	Nasáu
+Q1764	Reikiavik
+Q36168	Bridgetown
+Q37806	Port Vila
+Q3932	Santo Tomé
+Q36260	Apia
+Q41699	Castries
+Q131233	Tarawa Sur
+Q3940	Victoria
+Q41547	Saint George
+Q41474	Kingstown
+Q38834	Nukualofa
+Q36262	Saint John
+Q1863	Andorra la Vieja
+Q42751	Palikir
+Q36281	Roseau
+Q12919	Majuro
+Q41295	Basseterre
+Q235	Mónaco
+Q1844	Vaduz
+Q1848	San Marino
+Q515229	Ngerulmud
+Q31026	Yaren
+Q34126	Funafuti
+Q237	Ciudad del Vaticano
