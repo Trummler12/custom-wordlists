@@ -258,6 +258,20 @@ async function main() {
       }
     }
 
+    // 4a. tier conditions, where declared, name one boundary per tier: same length
+    //     as `tiers`, and only on a tiered group. The family-wide check (every file
+    //     in an inheritsUpwards family cuts tier k the same) rides with that feature.
+    for (const group of topic.groups) {
+      if (group.tierConditions === undefined) continue;
+      if (!group.tiers) {
+        errors.push(`${rel}: group "${group.id}" has tierConditions but no tiers`);
+      } else if (group.tierConditions.length !== group.tiers.length) {
+        errors.push(
+          `${rel}: group "${group.id}" has ${group.tierConditions.length} tierConditions for ${group.tiers.length} tiers`,
+        );
+      }
+    }
+
     // 4b. an entry that says it has no name in a language it does have one in.
     //     Harmless to render — an own key wins — but it means a name was filled in
     //     and the `?` beside it was left behind, and only a warning can say so.

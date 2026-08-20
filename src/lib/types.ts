@@ -29,6 +29,9 @@ export interface TopicSummary {
    *  (either value) also makes the topic its own ruler-visibility boundary; absent
    *  means it inherits from the nearest ancestor that declares it. See lib/rulers. */
   hideRulersByDefault?: boolean;
+  /** Whether this topic has no fame ruler at all — stronger than hiding it behind a
+   *  toggle. Inherited down the tree; the topic's own value wins. See lib/rulers. */
+  hideRulers?: boolean;
   groupCount: number;
   wordCount: number;
 }
@@ -43,6 +46,9 @@ export interface CategoryMeta {
    *  *presence* (either value) makes the category an independent ruler-visibility
    *  boundary whose toggle governs its subtree down to the next declaring node. */
   hideRulersByDefault?: boolean;
+  /** Whether the topics in this category's subtree have no fame ruler at all.
+   *  Inherited down to the next declaring node. See lib/rulers. */
+  hideRulers?: boolean;
   /** Whether this category's row carries one toggle switching every list below it
    *  to English at once. See lib/english. */
   sharedEnglishToggle?: boolean;
@@ -156,6 +162,12 @@ export interface Group {
   omittable?: Omission[];
   words?: WordEntry[];
   tiers?: WordEntry[][];
+  /** What each tier's boundary is, one entry per tier, same length and order as
+   *  `tiers`. Names the outside cut a tiered list was built from (a population, an
+   *  area) so the ruler tooltip can say what was selected and an `inheritsUpwards`
+   *  family can be checked for drawing tier k the same way. Localized. Absent for a
+   *  list with no outside boundary. See schema/topic.schema.json. */
+  tierConditions?: LocalizedString[];
   /** How many entries the list has no name for in the language it is being shown
    *  in, one number per tier — see `unknownByTier` in lib/omitted. Not a field of
    *  the file: `visibleGroup` puts it on the view it hands back, because by then
@@ -203,6 +215,9 @@ export interface Topic {
   /** Whether this topic's fame ruler starts hidden behind a toggle; its presence
    *  also marks the topic as its own ruler-visibility boundary. */
   hideRulersByDefault?: boolean;
+  /** Whether this topic has no fame ruler at all — no slider, no toggle. Inherited
+   *  down the tree; the topic's own value wins. See lib/rulers. */
+  hideRulers?: boolean;
   /** Where the entries came from — one string or a list of them, free-form so a
    *  label can precede the link ("German: https://…"). */
   sources?: string | string[];

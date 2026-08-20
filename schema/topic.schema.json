@@ -35,6 +35,10 @@
       "type": "boolean",
       "description": "When true, this topic's fame ruler starts hidden behind a toggle rather than shown — useful for a flat list whose ruler is just its checkbox (e.g. one Pokémon generation). Declaring the field (either value) also makes the topic its own ruler-visibility boundary, so no ancestor category's toggle flips it. Omitted: inherited from the nearest ancestor that declares it, else shown."
     },
+    "hideRulers": {
+      "type": "boolean",
+      "description": "When true, this topic has no fame ruler at all — no slider and no 📏 toggle, not even expanded. Distinct from `hideRulersByDefault`, which only starts the ruler hidden behind a toggle that can still reveal it. For a list whose ruler would be meaningless (an empty joke topic). Inherited down the tree like `hideRulersByDefault`: the topic's own value wins, else the nearest ancestor category that declares it; a child may re-enable with `false`."
+    },
     "sources": {
       "allOf": [{ "$ref": "#/$defs/stringOrList" }],
       "description": "Where the entries came from — one string or a list of them. Free-form, so a label can precede the link (\"German: https://…\"); validate-data warns when an item contains no URL."
@@ -254,7 +258,8 @@
         },
         "words": {
           "type": "array",
-          "minItems": 1,
+          "minItems": 0,
+          "description": "A flat list of entries, unordered. May be EMPTY, which is a deliberate claim rather than an oversight — a list that means to hold nothing (an empty joke topic) has to be able to say so.",
           "items": { "$ref": "#/$defs/word" }
         },
         "tiers": {
@@ -265,6 +270,12 @@
             "type": "array",
             "items": { "$ref": "#/$defs/word" }
           }
+        },
+        "tierConditions": {
+          "type": "array",
+          "minItems": 1,
+          "description": "What each tier's boundary is, one entry per tier, same length and order as `tiers`. For a list whose tiers are cut from an outside measure — a population, an area — this names the cut (\"100 million or more\") so the ruler tooltip can say what the reader just selected and so validate-data can check that every file in an `inheritsUpwards` family drew tier k the same way. Localized (`locString`), because the boundary is a name for continents-and-plates (\"major plates and larger\") and reads differently per language even when it is a number (Japanese writes 1億, not 100 million). Omitted for a list with no outside boundary (a cast, a Pokédex).",
+          "items": { "$ref": "#/$defs/locString" }
         }
       },
       "oneOf": [{ "required": ["words"] }, { "required": ["tiers"] }]

@@ -20,6 +20,7 @@ const TOPIC_KEYS = [
   "usesEnglishFor",
   "generatedRomaji",
   "hideRulersByDefault",
+  "hideRulers",
   "sources",
   "corrections",
   "credits",
@@ -39,6 +40,7 @@ const GROUP_KEYS = [
   "omittable",
   "words",
   "tiers",
+  "tierConditions",
 ];
 
 const line = (indent, text) => " ".repeat(indent) + text;
@@ -89,6 +91,21 @@ function proseBlock(items, order, prose) {
   return `[${NL}${body}${NL}${line(6, "]")}`;
 }
 
+/** Tier conditions: one locString per line, a lang map opened one language to a
+ *  line like a rule's prose — same reason, the strings are uneven prose. */
+function condBlock(conds) {
+  const body = conds
+    .map((c) => {
+      if (c === null || typeof c !== "object") return line(8, JSON.stringify(c));
+      const langs = Object.entries(c)
+        .map(([l, text]) => line(10, `${JSON.stringify(l)}: ${JSON.stringify(text)}`))
+        .join(",\n");
+      return `${line(8, "{")}\n${langs}\n${line(8, "}")}`;
+    })
+    .join(",\n");
+  return `[\n${body}\n${line(6, "]")}`;
+}
+
 /** Fame tiers: each tier its own multi-line array, a blank line between them, so
  *  the boundaries are visible in the file rather than only in the count. */
 function tierBlock(tiers) {
@@ -105,6 +122,7 @@ function serializeGroup(group, warn) {
     if (value === undefined) continue;
     if (key === "words") parts.push(line(6, `"words": ${block(value, 8, 6)}`));
     else if (key === "tiers") parts.push(line(6, `"tiers": ${tierBlock(value)}`));
+    else if (key === "tierConditions") parts.push(line(6, `"tierConditions": ${condBlock(value)}`));
     else if (key === "omitted" || key === "omittable") {
       parts.push(line(6, `"${key}": ${proseBlock(value, RULE_KEYS, "reason")}`));
     } else if (key === "tierNotes") {
