@@ -47,6 +47,24 @@ export function rulerHiddenByDefault(
   return rulerControl(topic, categories)?.hidden ?? false;
 }
 
+/** Whether a topic has no ruler at all — a stronger statement than
+ *  `hideRulersByDefault`, which only hides it behind a toggle. Inherited like that
+ *  field: the topic's own `hideRulers` wins, else the nearest ancestor category
+ *  that declares it; a `false` re-enables. Absent everywhere means the ruler
+ *  behaves normally (shown, or toggled per `rulerControl`). When true the row
+ *  draws no slider and no 📏 toggle. */
+export function rulerHidden(
+  topic: TopicSummary,
+  categories: Record<string, CategoryMeta>,
+): boolean {
+  if (typeof topic.hideRulers === "boolean") return topic.hideRulers;
+  for (const path of ancestorPaths(topic.category)) {
+    const value = categories[path]?.hideRulers;
+    if (typeof value === "boolean") return value;
+  }
+  return false;
+}
+
 /** The topics a category-kind control root governs: those among `descendants`
  *  whose nearest declaring node is this very category. A deeper boundary shadows
  *  it, so those topics belong to the deeper root and are excluded here — which is

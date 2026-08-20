@@ -4,7 +4,7 @@
   import { canForceEnglish } from "../../lib/english";
   import { tierNoteAt } from "../../lib/fame";
   import { baseTag, langSupport, splitName } from "../../lib/languages";
-  import { rulerControl } from "../../lib/rulers";
+  import { rulerControl, rulerHidden } from "../../lib/rulers";
   import type { TopicSummary } from "../../lib/types";
   import { resolveStr } from "../../lib/words";
   import { langWarning } from "../../locale";
@@ -33,9 +33,12 @@
   const solo = $derived(topic.groupCount === 1 && !topic.foldered);
   const sole = $derived(solo ? topics.groupsOf(topic)[0] : undefined);
 
+  // No ruler at all where a node on the path says so — no toggle, no slider, not
+  // even expanded. Stronger than the opt-in below, so it gates it.
+  const rulerGone = $derived(rulerHidden(topic, topics.categories));
   // A solo topic in a subtree that opted into ruler visibility gets a toggle to
   // show/hide its inline ruler; absent = no control, the ruler is always shown.
-  const rulerOptIn = $derived(solo && rulerControl(topic, topics.categories) !== null);
+  const rulerOptIn = $derived(solo && !rulerGone && rulerControl(topic, topics.categories) !== null);
   const rulerShown = $derived(selection.isRulerVisible(topic));
 
   // Behind a preference, and only where the switch would change something: not in
@@ -177,14 +180,14 @@
     <TipNote id={tierTipId} text={tierText} />
   {/if}
 
-  {#if sole && rulerShown}
+  {#if sole && rulerShown && !rulerGone}
     <FameDepthSlider tid={topic.id} group={sole} />
   {/if}
 
   {#if open && topics.data[topic.id]}
     <ul class="groups" id={`groups-${topic.id}`}>
       {#each topics.groupsOf(topic) as g (g.id)}
-        <GroupRow tid={topic.id} group={g} />
+        <GroupRow tid={topic.id} group={g} hideRuler={rulerGone} />
       {/each}
     </ul>
   {/if}

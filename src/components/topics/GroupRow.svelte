@@ -12,7 +12,10 @@
   import NamesModeSelect from "./NamesModeSelect.svelte";
   import OmittedPanel from "./OmittedPanel.svelte";
 
-  let { tid, group }: { tid: string; group: Group } = $props();
+  // `hideRuler` comes from the topic: a node on its path declared `hideRulers`, so
+  // this group's slider is suppressed like the solo one on TopicRow.
+  let { tid, group, hideRuler = false }: { tid: string; group: Group; hideRuler?: boolean } =
+    $props();
 
   const name = $derived(topics.groupName(group));
 
@@ -54,5 +57,7 @@
   {#if note}
     <TipNote id={tipId} text={noteText} />
   {/if}
-  <FameDepthSlider {tid} {group} />
+  {#if !hideRuler}
+    <FameDepthSlider {tid} {group} />
+  {/if}
 </li>
