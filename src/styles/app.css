@@ -312,36 +312,7 @@ header {
   margin: 0 0 0.15rem;
 }
 
-/* Groups (nested under a topic) */
-/* .topics ul (the list reset) already zeroes list-style and padding here, but
-   its margin:0 also outweighs a bare .groups (0,1,1 vs 0,1,0) and would drop
-   these group checkboxes to the left of their topic's. Scope to the topic-item
-   so this one-step indent wins. */
-.topic-item > .groups {
-  margin: 0 0 0.4rem 2.1rem;
-}
-/* Anchor for a group's own .tip-note, which stretches across the row it belongs
-   to — without this it would measure against .topic-item and open below the whole
-   topic instead of below this line of it. */
-.topic-item > .groups > li {
-  position: relative;
-}
-.group {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.25rem 0.2rem;
-}
-.group-label {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  cursor: pointer;
-}
-.group .title {
-  font-weight: 500;
-}
-/* Per-group Names dropdown (short / long / both); only groups with name pairs. */
+/* Names dropdown (short / long / both); only on a list whose entries have name pairs. */
 .names-mode {
   font-size: 0.75rem;
   padding: 0 0.15rem;

@@ -2,7 +2,7 @@
   "id": "south-park-characters",
   "title": {"en":"Characters","de":"Charaktere"},
   "icon": "🎭",
-  "description": "South Park characters (English names; curated from the fandom wikis). Fame tiers: Main+Major, Supporting, Recurring+Classic (per the Major_Characters portal), then alter-egos, the tail by notability, and deep cuts. Entries carry a short (common) and long (full) name; use the per-group Names dropdown to pick short / long / both.",
+  "description": "South Park characters (English names; curated from the fandom wikis). Fame tiers: Main+Major, Supporting, Recurring+Classic (per the Major_Characters portal), then alter-egos, the tail by notability, and deep cuts. Entries carry a short (common) and long (full) name; use the Names dropdown to pick short / long / both.",
   "languages": ["de","en"],
   "sources": [
     "German: https://southpark.fandom.com/de/wiki/Kategorie:Charaktere",
