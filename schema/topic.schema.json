@@ -16,8 +16,18 @@
       "description": "Kebab-case topic id; matches the topic's folder name (foldered) or file stem (flat)."
     },
     "title": {
-      "oneOf": [{ "$ref": "#/$defs/word" }, { "const": "" }],
-      "description": "Display name, in the same shape as an entry: a plain string where the name is global (\"South Park\"), a language map where it translates ({ \"en\": \"SpongeBob SquarePants\", \"de\": \"SpongeBob Schwammkopf\" }), or a short/long pair — the app puts `short` on the row and `long` in a hover, so a long name needn't crowd the tree. An empty string is allowed for a topic that is nothing but its icon (the Antarctica cricket)."
+      "oneOf": [
+        { "$ref": "#/$defs/word" },
+        { "const": "" },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["short", "long"],
+          "description": "An empty row label with a hover — for a topic that shows only its icon but still says something on hover (the Antarctica cricket).",
+          "properties": { "short": { "const": "" }, "long": { "$ref": "#/$defs/locString" } }
+        }
+      ],
+      "description": "Display name, in the same shape as an entry: a plain string where the name is global (\"South Park\"), a language map where it translates ({ \"en\": \"SpongeBob SquarePants\", \"de\": \"SpongeBob Schwammkopf\" }), or a short/long pair — the app puts `short` on the row and `long` in a hover, so a long name needn't crowd the tree. An empty string is allowed for a topic that is nothing but its icon, and an empty `short` with a `long` for one that shows only its icon but keeps a hover."
     },
     "icon": { "type": "string", "minLength": 1 },
     "description": { "type": "string" },

@@ -290,7 +290,7 @@ function category(title, icon, order) {
 function cricket() {
   return {
     id: "antarctica",
-    title: "",
+    title: { short: "", long: { en: "*crickets*", de: "*Grillenzirpen*" } },
     icon: "🦗",
     languages: LANGS,
     hideRulers: true,
