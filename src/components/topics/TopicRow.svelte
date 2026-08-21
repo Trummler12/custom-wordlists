@@ -15,30 +15,22 @@
   import TipMarker from "../common/TipMarker.svelte";
   import TipNote from "../common/TipNote.svelte";
   import FameDepthSlider from "./FameDepthSlider.svelte";
-  import GroupRow from "./GroupRow.svelte";
   import NamesModeSelect from "./NamesModeSelect.svelte";
   import OmittedPanel from "./OmittedPanel.svelte";
   import VariantPanel from "./VariantPanel.svelte";
 
   let { topic }: { topic: TopicSummary } = $props();
 
-  // A topic whose single group is the whole topic has nothing to expand into: the
-  // level would repeat the topic's own name and hold one ruler. That group is
-  // rendered on this row instead.
-  //
-  // Unless the topic owns a folder — that layout is how it says more subtopics are
-  // planned there, and an expander that comes and goes as the first of them lands
-  // would be worse than one that is briefly thin. Both facts come from the
-  // manifest, so the row knows its shape before the topic file arrives.
-  const solo = $derived(topic.groupCount === 1 && !topic.foldered);
-  const sole = $derived(solo ? topics.groupsOf(topic)[0] : undefined);
+  // A topic is its own single group — rendered on this row, ruler and all. Undefined
+  // until the file loads, which the guards below wait on.
+  const sole = $derived(topics.groupsOf(topic)[0]);
 
-  // No ruler at all where a node on the path says so — no toggle, no slider, not
-  // even expanded. Stronger than the opt-in below, so it gates it.
+  // No ruler at all where a node on the path says so — no toggle, no slider.
+  // Stronger than the opt-in below, so it gates it.
   const rulerGone = $derived(rulerHidden(topic, topics.categories));
-  // A solo topic in a subtree that opted into ruler visibility gets a toggle to
+  // A topic in a subtree that opted into ruler visibility gets a toggle to
   // show/hide its inline ruler; absent = no control, the ruler is always shown.
-  const rulerOptIn = $derived(solo && !rulerGone && rulerControl(topic, topics.categories) !== null);
+  const rulerOptIn = $derived(!rulerGone && rulerControl(topic, topics.categories) !== null);
   const rulerShown = $derived(selection.isRulerVisible(topic));
 
   // Behind a preference, and only where the switch would change something: not in
@@ -47,11 +39,9 @@
   const englishOptIn = $derived(settings.showEnglishToggle && canForceEnglish(topic, lang.current));
   const forcedEnglish = $derived(lang.isForcedEnglish(topic));
 
-  const open = $derived(!!selection.expanded[topic.id]);
   const name = $derived(topics.topicName(topic));
 
-  // Only for a solo topic: the ruler a tier note talks about is on this row only
-  // when the group is. A foldered topic's notes ride its GroupRows instead.
+  // The ruler a tier note talks about is the one on this row.
   const tierTipId = $derived(`tier-${topic.id}`);
   const tierNote = $derived(sole ? tierNoteAt(sole, selection.depthOf(topic.id, sole)) : undefined);
   const tierText = $derived(tierNote ? resolveStr(tierNote.text, lang.uiLang) : "");
@@ -86,29 +76,14 @@
 
   // Nothing else will trigger the load: there is no expander to click, and the
   // ruler can't be drawn without the tiers it snaps to.
-  onMount(() => {
-    if (solo) topics.ensure(topic);
-  });
+  onMount(() => topics.ensure(topic));
 </script>
 
 <div class="topic-item">
   <div class="topic-row">
-    {#if solo}
-      <!-- Keeps the checkbox column straight: it is the anchor the eye follows
-           down the tree, and it shouldn't shift by whether a topic has subgroups. -->
-      <span class="expander placeholder" aria-hidden="true">▸</span>
-    {:else}
-      <button
-        type="button"
-        class="expander"
-        aria-expanded={open}
-        aria-controls={`groups-${topic.id}`}
-        aria-label={lang.ui.tree.toggle(open, name.long)}
-        onclick={() => selection.toggleExpand(topic)}
-      >
-        {open ? "▾" : "▸"}
-      </button>
-    {/if}
+    <!-- Keeps the checkbox column straight: the placeholder holds the width a
+         category's expander occupies, so topic checkboxes line up under it. -->
+    <span class="expander placeholder" aria-hidden="true">▸</span>
     <label class="topic">
       <input
         type="checkbox"
@@ -182,13 +157,5 @@
 
   {#if sole && rulerShown && !rulerGone}
     <FameDepthSlider tid={topic.id} group={sole} />
-  {/if}
-
-  {#if open && topics.data[topic.id]}
-    <ul class="groups" id={`groups-${topic.id}`}>
-      {#each topics.groupsOf(topic) as g (g.id)}
-        <GroupRow tid={topic.id} group={g} hideRuler={rulerGone} />
-      {/each}
-    </ul>
   {/if}
 </div>

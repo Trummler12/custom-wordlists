@@ -8,7 +8,6 @@ const topic = (id: string, category: string): TopicSummary => ({
   icon: null,
   category,
   path: `${id}.json`,
-  groupCount: 1,
   wordCount: 1,
 });
 

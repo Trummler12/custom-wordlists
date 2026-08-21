@@ -31,8 +31,6 @@ class SelectionState {
   depthByGroup = $state<Record<string, number>>({});
   /** Per-group names mode; only groups with short/long entries show the dropdown. */
   namesMode = $state<Record<string, NamesMode>>({});
-  /** Which topics are expanded, by topic id. */
-  expanded = $state<Record<string, boolean>>({});
   /** Which category nodes the user has toggled, by path. Absent = the default. */
   catExpanded = $state<Record<string, boolean>>({});
   /** Explicit ruler-visibility flips, by topic id. Absent = the data-driven
@@ -44,11 +42,6 @@ class SelectionState {
   }
 
   // --- Expansion -------------------------------------------------------------
-
-  async toggleExpand(t: TopicSummary): Promise<void> {
-    this.expanded[t.id] = !this.expanded[t.id];
-    if (this.expanded[t.id]) await topics.ensure(t);
-  }
 
   /** Only top-level categories start open, so the second level (gaming → pokemon)
    *  shows up but its contents stay collapsed until the user drills in. */

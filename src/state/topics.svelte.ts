@@ -13,12 +13,12 @@ import { displayName, type DisplayName } from "../lib/words";
 import { settings } from "./settings.svelte";
 import { lang } from "./lang.svelte";
 
-// A flat topic's single implicit group, cached so it keeps its identity for the
-// WeakMap caches downstream (visibleGroup, groupEntries) — re-synthesizing per call
-// would defeat them. The group *is* the topic: same id and title, same list fields.
+// A topic's single group. The group *is* the topic — same id and title, same list
+// fields — so this wraps the topic as the one-element array the rendering code
+// consumes. Cached so it keeps its identity for the WeakMap caches downstream
+// (visibleGroup, groupEntries), which re-synthesizing per call would defeat.
 const synthGroups = new WeakMap<Topic, Group[]>();
 function normalizedGroups(data: Topic): Group[] {
-  if (data.groups) return data.groups;
   let cached = synthGroups.get(data);
   if (!cached) {
     const g: Group = {

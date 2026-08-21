@@ -1,6 +1,6 @@
 // Shapes of the generated manifest (data/index.json), produced by
 // scripts/build-index.mjs — the source of truth for the manifest types.
-// The topic-file types (Topic/Group/Preset) mirror schema/topic.schema.json.
+// The topic-file types (Topic/Group) mirror schema/topic.schema.json.
 
 /** One topic as summarized in the manifest — enough to render the tree. */
 export interface TopicSummary {
@@ -14,10 +14,6 @@ export interface TopicSummary {
   /** Path to the topic's JSON file, relative to data/topics/ (e.g.
    *  "animation/south-park.json" or "animation/spongebob/characters.json"). */
   path: string;
-  /** True when the topic is a lone file in a folder named after it. That layout is
-   *  how a topic says it expects to be split into subtopics later, so such a topic
-   *  keeps its expander and its group rows even while it has only one group. */
-  foldered?: boolean;
   /** Languages the topic fully supports. Absent means support is undeclared — the
    *  UI flags the topic (⚠️, even in English) until it's filled in. */
   languages?: string[];
@@ -32,7 +28,6 @@ export interface TopicSummary {
   /** Whether this topic has no fame ruler at all — stronger than hiding it behind a
    *  toggle. Inherited down the tree; the topic's own value wins. See lib/rulers. */
   hideRulers?: boolean;
-  groupCount: number;
   wordCount: number;
 }
 
@@ -178,13 +173,6 @@ export interface Group {
   unknownByTier?: number[];
 }
 
-/** A named bundle of group ids within a topic. */
-export interface Preset {
-  id: string;
-  title: string;
-  groups: string[];
-}
-
 /** A single topic data file (data/topics/<…>/<file>.json). */
 /** One repair of a source that is wrong, by the entry's English name. Beside
  *  `entry` and `why` the keys are language tags: `new` is what the entry must
@@ -231,10 +219,8 @@ export interface Topic {
   lastUpdated?: string;
   /** ISO date (YYYY-MM-DD) the list was last verified against its source. */
   lastChecked?: string;
-  // A single-list topic carries its list directly, in the same shape a group would
-  // (see `Group`). A multi-list topic uses `groups` instead; the two are mutually
-  // exclusive, and `topics.groupsOf` synthesizes a single group from the flat form
-  // so the rest of the app never sees the difference.
+  // A topic carries its list directly, in the same shape a `Group` does;
+  // `topics.groupsOf` wraps it as the single group the rendering code consumes.
   defaultNames?: NamesMode;
   tierNotes?: TierNote[];
   omitted?: Omission[];
@@ -242,6 +228,4 @@ export interface Topic {
   words?: WordEntry[];
   tiers?: WordEntry[][];
   tierConditions?: LocalizedString[];
-  groups?: Group[];
-  presets?: Preset[];
 }

@@ -8,7 +8,6 @@ const topic = (fields: Partial<TopicSummary>): TopicSummary => ({
   icon: null,
   category: "",
   path: "t.json",
-  groupCount: 1,
   wordCount: 1,
   ...fields,
 });

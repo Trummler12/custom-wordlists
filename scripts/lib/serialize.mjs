@@ -34,22 +34,8 @@ const TOPIC_KEYS = [
   "words",
   "tiers",
   "tierConditions",
-  "groups",
-  "presets",
 ];
 
-/** Field order within a group. `words` and `tiers` are mutually exclusive. */
-const GROUP_KEYS = [
-  "id",
-  "title",
-  "defaultNames",
-  "tierNotes",
-  "omitted",
-  "omittable",
-  "words",
-  "tiers",
-  "tierConditions",
-];
 
 const line = (indent, text) => " ".repeat(indent) + text;
 
@@ -131,22 +117,6 @@ function listField(key, value, field) {
   return null;
 }
 
-function serializeGroup(group, warn) {
-  const parts = [];
-  for (const key of GROUP_KEYS) {
-    const value = group[key];
-    if (value === undefined) continue;
-    const list = listField(key, value, 6);
-    parts.push(line(6, list ?? `"${key}": ${JSON.stringify(value)}`));
-  }
-  for (const key of Object.keys(group)) {
-    if (GROUP_KEYS.includes(key)) continue;
-    warn(`group "${group.id}" has unknown key "${key}" — written through unformatted`);
-    parts.push(line(6, `"${key}": ${JSON.stringify(group[key])}`));
-  }
-  return `${line(4, "{")}\n${parts.join(",\n")}\n${line(4, "}")}`;
-}
-
 /** Serialize a whole topic file, ending in a newline.
  *  `warn` receives a message for anything this file doesn't know about; pass
  *  something that fails loudly if you'd rather not find out later. */
@@ -156,14 +126,9 @@ export function serializeTopic(topic, warn = (m) => console.warn(`serialize: ${m
     if (Array.isArray(value) && (key === "sources" || key === "credits") && value.length > 1) {
       // A list of sources reads as a list, one per line — they are long URLs.
       parts.push(line(2, `"${key}": ${block(value, 4, 2)}`));
-    } else if (key === "groups") {
-      const body = value.map((g) => serializeGroup(g, warn)).join(",\n");
-      parts.push(line(2, `"groups": [\n${body}\n${line(2, "]")}`));
-    } else if (key === "presets") {
-      parts.push(line(2, `"presets": ${block(value, 4, 2)}`));
     } else {
-      // A flattened topic's list fields serialize at topic indent; everything else
-      // is a scalar or small object that fits on its line.
+      // A topic's list fields serialize at topic indent; everything else is a
+      // scalar or small object that fits on its line.
       const list = listField(key, value, 2);
       parts.push(line(2, list ?? `"${key}": ${JSON.stringify(value)}`));
     }
@@ -205,7 +170,5 @@ function sorted(topic) {
     if (obj.tierNotes) obj.tierNotes = obj.tierNotes.map((n) => order(n, NOTE_KEYS));
     return obj;
   };
-  const t = orderRules(order(topic, TOPIC_KEYS));
-  if (t.groups) t.groups = t.groups.map((g) => orderRules(order(g, GROUP_KEYS)));
-  return t;
+  return orderRules(order(topic, TOPIC_KEYS));
 }

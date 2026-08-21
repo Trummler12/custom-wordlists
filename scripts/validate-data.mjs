@@ -35,8 +35,8 @@ const URL_RE = /https?:\/\/\S/;
 // Sidecar filename holding a category node's display metadata (never a topic).
 const CATEGORY_META = "_category.json";
 
-// A flat topic is its own single group — it carries words/tiers/omitted directly.
-const groupsOf = (topic) => topic.groups ?? [topic];
+// A topic carries its list (words/tiers/omitted) directly, so it is its own group.
+const groupsOf = (topic) => [topic];
 
 // Where a stem repeats (every continent's `countries.json`), the immediate parent
 // folder qualifies the id — matching the file's own `id` and build-index.mjs.
@@ -223,17 +223,7 @@ async function main() {
       errors.push(`${rel}: id "${topic.id}" does not match location "${id}"`);
     }
 
-    // 1. referential integrity of preset.groups
-    const groupIds = new Set(groupsOf(topic).map((g) => g.id));
-    for (const preset of topic.presets ?? []) {
-      for (const ref of preset.groups) {
-        if (!groupIds.has(ref)) {
-          errors.push(`${rel}: preset "${preset.id}" references unknown group "${ref}"`);
-        }
-      }
-    }
-
-    // 2. duplicate words
+    // 1. duplicate words
     const seen = new Set();
     for (const w of allWords(topic)) {
       if (seen.has(w)) errors.push(`${rel}: duplicate entry "${w}"`);

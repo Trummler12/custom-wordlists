@@ -2,12 +2,11 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://trummler12.github.io/custom-wordlists/schema/topic.schema.json",
   "title": "Topic",
-  "description": "One word-list topic (a single file; entries carry their own per-language forms). Carries its list directly (`words` or `tiers`) for the common single-list case, or bundles several independently-checkable lists under `groups`. See docs/archive/PLANNING.md §4.",
+  "description": "One word-list topic (a single file; entries carry their own per-language forms). Carries its list directly: a flat `words` list or fame `tiers`. See docs/archive/PLANNING.md §4.",
   "type": "object",
   "additionalProperties": false,
   "required": ["id", "title"],
   "oneOf": [
-    { "required": ["groups"] },
     { "required": ["words"] },
     { "required": ["tiers"] }
   ],
@@ -17,8 +16,8 @@
       "description": "Kebab-case topic id; matches the topic's folder name (foldered) or file stem (flat)."
     },
     "title": {
-      "allOf": [{ "$ref": "#/$defs/word" }],
-      "description": "Display name, in the same shape as an entry: a plain string where the name is global (\"South Park\"), a language map where it translates ({ \"en\": \"SpongeBob SquarePants\", \"de\": \"SpongeBob Schwammkopf\" }), or a short/long pair — the app puts `short` on the row and `long` in a hover, so a long name needn't crowd the tree."
+      "oneOf": [{ "$ref": "#/$defs/word" }, { "const": "" }],
+      "description": "Display name, in the same shape as an entry: a plain string where the name is global (\"South Park\"), a language map where it translates ({ \"en\": \"SpongeBob SquarePants\", \"de\": \"SpongeBob Schwammkopf\" }), or a short/long pair — the app puts `short` on the row and `long` in a hover, so a long name needn't crowd the tree. An empty string is allowed for a topic that is nothing but its icon (the Antarctica cricket)."
     },
     "icon": { "type": "string", "minLength": 1 },
     "description": { "type": "string" },
@@ -142,16 +141,6 @@
       "minItems": 1,
       "description": "Flat-topic form of the group field — one boundary per tier, same length as `tiers`. See the group's `tierConditions`.",
       "items": { "$ref": "#/$defs/locString" }
-    },
-    "groups": {
-      "type": "array",
-      "minItems": 1,
-      "description": "Several independently-checkable lists under one topic row — for the few topics that are genuinely more than one list (a cast split into heroes and villains). A single-list topic carries `words`/`tiers` directly instead. Mutually exclusive with them.",
-      "items": { "$ref": "#/$defs/group" }
-    },
-    "presets": {
-      "type": "array",
-      "items": { "$ref": "#/$defs/preset" }
     }
   },
   "$defs": {
@@ -269,80 +258,6 @@
         "text": {
           "allOf": [{ "$ref": "#/$defs/locString" }],
           "description": "The note itself. Localized here rather than in a locale file for the same reason `reason` is: it describes this list's source, not the app. May carry `{br}` and `[text](url)` links (https only), resolved by src/locale/html."
-        }
-      }
-    },
-    "group": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": ["id", "title"],
-      "description": "A subtopic; the smallest checkbox unit. Carries exactly one of `words` (flat) or `tiers` (fame-ordered).",
-      "properties": {
-        "id": { "$ref": "#/$defs/id" },
-        "title": {
-          "allOf": [{ "$ref": "#/$defs/word" }],
-          "description": "Display name, same shape as a topic's."
-        },
-        "defaultNames": {
-          "type": "string",
-          "enum": ["short", "long", "both"],
-          "description": "Which form of a short/long entry this group emits until the reader says otherwise. Omitted: `long`, which suits a list whose long form is the interesting one (a South Park character's full name). A list of countries wants the opposite — `Germany` is the entry and `Federal Republic of Germany` the footnote — and that is a fact about the list, not a preference, so it belongs in the file rather than in a default the reader has to undo on every visit."
-        },
-        "tierNotes": {
-          "type": "array",
-          "minItems": 1,
-          "description": "Things worth saying about this list once the reader's fame ruler reaches far enough down. For what no count can work out on its own — that a tier is ordered by nothing in particular because its source publishes no figures, that its entries come from a thinner source than the rest. Anything derivable belongs in the code instead, where it cannot go stale: how many names are missing in a language is already said by the ✂️ panel.",
-          "items": { "$ref": "#/$defs/tierNote" }
-        },
-        "omitted": {
-          "type": "array",
-          "minItems": 1,
-          "description": "Families of entries this list hides from its source — junk nobody could draw, or numbered copies of one drawable thing. The entries stay in the file and are filtered on the way into the list, so a rule is always reversible and the ⌗ panel can say what was left out.",
-          "items": { "$ref": "#/$defs/omission" }
-        },
-        "omittable": {
-          "type": "array",
-          "minItems": 1,
-          "description": "Families the list OFFERS to leave out: same shape as `omitted`, opposite default. Present unless the reader ticks them off — for entries that are legitimate words but the first thing someone short of drawing room would cut (the 80 species candies). Rule ids must be unique across both arrays.",
-          "items": { "$ref": "#/$defs/omission" }
-        },
-        "words": {
-          "type": "array",
-          "minItems": 0,
-          "description": "A flat list of entries, unordered. May be EMPTY, which is a deliberate claim rather than an oversight — a list that means to hold nothing (an empty joke topic) has to be able to say so.",
-          "items": { "$ref": "#/$defs/word" }
-        },
-        "tiers": {
-          "type": "array",
-          "minItems": 1,
-          "description": "Ordered fame tiers, tier 0 = most famous; order within a tier is irrelevant. A tier may be EMPTY, which is a claim rather than an oversight: where the boundaries are given from outside — a population, a year — a list that has nothing in one band has to be able to say so, or its next band would sit where the empty one belongs and stop meaning the same thing as its siblings'. The ruler keeps such a stop, at its minimum spacing.",
-          "items": {
-            "type": "array",
-            "items": { "$ref": "#/$defs/word" }
-          }
-        },
-        "tierConditions": {
-          "type": "array",
-          "minItems": 1,
-          "description": "What each tier's boundary is, one entry per tier, same length and order as `tiers`. For a list whose tiers are cut from an outside measure — a population, an area — this names the cut (\"100 million or more\") so the ruler tooltip can say what the reader just selected and so validate-data can check that every file in an `inheritsUpwards` family drew tier k the same way. Localized (`locString`), because the boundary is a name for continents-and-plates (\"major plates and larger\") and reads differently per language even when it is a number (Japanese writes 1億, not 100 million). Omitted for a list with no outside boundary (a cast, a Pokédex).",
-          "items": { "$ref": "#/$defs/locString" }
-        }
-      },
-      "oneOf": [{ "required": ["words"] }, { "required": ["tiers"] }]
-    },
-    "preset": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": ["id", "title", "groups"],
-      "description": "A named bundle of group ids (e.g. \"Include all\").",
-      "properties": {
-        "id": { "$ref": "#/$defs/id" },
-        "title": { "type": "string", "minLength": 1 },
-        "groups": {
-          "type": "array",
-          "minItems": 1,
-          "description": "References to group ids in this topic; referential integrity is checked by validate-data, not the schema.",
-          "items": { "$ref": "#/$defs/id" }
         }
       }
     }

@@ -23,13 +23,11 @@ const CATEGORY_META = "_category.json";
 /** Words a topic contributes as the app shows it: omitted families out, each
  *  rule's stand-in in. The manifest count is what a topic row advertises before
  *  its file loads, so counting the raw list would make the number jump on load. */
-// A flat topic is its own single group — it carries words/tiers/omitted directly,
-// so the topic object stands in for the group here and everywhere below.
-const groupsOf = (topic) => topic.groups ?? [topic];
-
+// A topic carries its list (words/tiers/omitted) directly.
 function countWords(topic) {
   let n = 0;
-  for (const group of groupsOf(topic)) {
+  {
+    const group = topic;
     const rules = (group.omitted ?? []).map((o) => ({
       res: [o.match].flat().map(globToRegExp),
       except: o.except ?? [],
@@ -104,7 +102,7 @@ async function collectTopics(segments) {
     const id = segments[segments.length - 1];
     const category = segments.slice(0, -1).join("/");
     return {
-      topics: [{ id, category, foldered: true, fileSegments: [...segments, jsonFiles[0]] }],
+      topics: [{ id, category, fileSegments: [...segments, jsonFiles[0]] }],
       categories: [],
     };
   }
@@ -117,7 +115,6 @@ async function collectTopics(segments) {
     topics.push({
       id: basename(file, ".json"),
       category: segments.join("/"),
-      foldered: false,
       fileSegments: [...segments, file],
     });
   }
@@ -175,7 +172,7 @@ async function buildIndex() {
   disambiguate(found.topics);
 
   const topics = [];
-  for (const { id, category, foldered, fileSegments } of found.topics) {
+  for (const { id, category, fileSegments } of found.topics) {
     const path = fileSegments.join("/");
     let data;
     try {
@@ -190,14 +187,12 @@ async function buildIndex() {
       path,
       title: data.title,
       icon: data.icon ?? null,
-      ...(foldered ? { foldered: true } : {}),
       // Either boolean is meaningful — a `false` marks a boundary too (see readCategoryMeta).
       ...(typeof data.hideRulersByDefault === "boolean" ? { hideRulersByDefault: data.hideRulersByDefault } : {}),
       ...(typeof data.hideRulers === "boolean" ? { hideRulers: data.hideRulers } : {}),
       ...(data.languages ? { languages: data.languages } : {}),
       ...(data.usesEnglishFor ? { usesEnglishFor: data.usesEnglishFor } : {}),
       ...(data.generatedRomaji ? { generatedRomaji: true } : {}),
-      groupCount: data.groups?.length ?? 1,
       wordCount: countWords(data),
     });
   }
