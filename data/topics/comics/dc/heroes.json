@@ -1,0 +1,20 @@
+{
+  "id": "dc-heroes",
+  "title": "Heroes",
+  "icon": "🦸",
+  "description": "DC Comics superheroes and villains (language-neutral — names are the same across locales). Two groups; fame tiers by recognizability (tier 0 = most iconic).",
+  "tiers": [
+    [
+      "Batman",
+      "Superman",
+      "Wonder Woman"
+    ],
+
+    [
+      "Flash",
+      "Aquaman",
+      "Green Lantern",
+      "Green Arrow"
+    ]
+  ]
+}

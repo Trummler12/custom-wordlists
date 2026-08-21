@@ -140,8 +140,5 @@
       {"en":"Tennessine","de":"Tenness","es":"Teneso","fr":"Tennesse","it":"Tennesso","ja":"テネシン","ko":"테네신","zh-Hans":"鿬","zh-Hant":"鿬"},
       {"en":"Oganesson","es":"Oganesón","ja":"オガネソン","ko":"오가네손","zh-Hans":"鿫","zh-Hant":"鿫"}
     ]
-  ],
-  "presets": [
-    {"id":"all","title":"All elements","groups":["elements"]}
   ]
 }

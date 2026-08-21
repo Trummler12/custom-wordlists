@@ -2284,8 +2284,5 @@
     {"en":"Wing Ball","fr":"Envol Ball","?":["de","es","it","ja","ko","zh-Hans","zh-Hant"]},
     {"en":"Jet Ball","fr":"Propulse Ball","?":["de","es","it","ja","ko","zh-Hans","zh-Hant"]},
     {"en":"Origin Ball","fr":"Origine Ball","?":["de","es","it","ja","ko","zh-Hans","zh-Hant"]}
-  ],
-  "presets": [
-    {"id":"all","title":"All","groups":["items"]}
   ]
 }

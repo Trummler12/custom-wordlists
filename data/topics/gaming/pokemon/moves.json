@@ -928,8 +928,5 @@
     {"en":"Matcha Gotcha","es":"Cañón Batidor","fr":"Mortier Matcha","ja":"シャカシャカほう","ko":"휘적휘적포","?":["de","it","zh-Hans","zh-Hant"]},
     {"en":"Syrup Bomb","es":"Bomba Caramelo","fr":"Bombe au Sirop","ja":"みずあめボム","ko":"시럽봄","?":["de","it","zh-Hans","zh-Hant"]},
     {"en":"Ivy Cudgel","es":"Garrote Liana","fr":"Massue Liane","ja":"ツタこんぼう","ko":"덩굴방망이","?":["de","it","zh-Hans","zh-Hant"]}
-  ],
-  "presets": [
-    {"id":"all","title":"All","groups":["moves"]}
   ]
 }

@@ -42,8 +42,5 @@
       {"en":"Surfing","de":"Surfen"},
       "Taekwondo"
     ]
-  ],
-  "presets": [
-    {"id":"all","title":"All disciplines","groups":["sports"]}
   ]
 }

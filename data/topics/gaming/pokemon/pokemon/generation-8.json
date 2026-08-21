@@ -123,8 +123,5 @@
       {"en":"Indeedee","de":"Servol","fr":"Wimessir","ja":"イエッサン","ja-Latn":"Yessan","ko":"에써르","zh-Hans":"爱管侍","zh-Hant":"愛管侍"},
       {"en":"Pincurchin","de":"Britzigel","fr":"Wattapik","ja":"バチンウニ","ja-Latn":"Bachinuni","ko":"찌르성게","zh-Hans":"啪嚓海胆","zh-Hant":"啪嚓海膽"}
     ]
-  ],
-  "presets": [
-    {"id":"all","title":"All","groups":["generation-8"]}
   ]
 }

@@ -178,8 +178,5 @@
       {"en":"Exeggutor","de":"Kokowei","fr":"Noadkoko","ja":"ナッシー","ja-Latn":"Nassy","ko":"나시","zh-Hans":"椰蛋树","zh-Hant":"椰蛋樹"},
       {"en":"Lickitung","de":"Schlurp","fr":"Excelangue","ja":"ベロリンガ","ja-Latn":"Beroringa","ko":"내루미","zh-Hans":"大舌头","zh-Hant":"大舌頭"}
     ]
-  ],
-  "presets": [
-    {"id":"all","title":"All","groups":["generation-1"]}
   ]
 }

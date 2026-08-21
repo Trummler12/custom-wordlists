@@ -1,55 +1,46 @@
 {
-  "id": "lord-of-the-rings",
-  "title": {"en":"The Lord of the Rings","de":"Der Herr der Ringe"},
-  "icon": "💍",
+  "id": "lord-of-the-rings-characters",
+  "title": {"en":"Characters","de":"Charaktere"},
+  "icon": "🎭",
   "description": "The Lord of the Rings characters (English names). Fame tiers by recognizability (tier 0 = most iconic).",
-  "groups": [
-    {
-      "id": "characters",
-      "title": {"en":"Characters","de":"Charaktere"},
-      "tiers": [
-        [
-          "Frodo",
-          "Gandalf",
-          "Aragorn",
-          "Legolas",
-          "Gimli",
-          "Gollum",
-          "Sauron",
-          "Bilbo",
-          {"en":"Samwise Gamgee","de":"Samweis Gamdschie"},
-          "Saruman"
-        ],
+  "tiers": [
+    [
+      "Frodo",
+      "Gandalf",
+      "Aragorn",
+      "Legolas",
+      "Gimli",
+      "Gollum",
+      "Sauron",
+      "Bilbo",
+      {"en":"Samwise Gamgee","de":"Samweis Gamdschie"},
+      "Saruman"
+    ],
 
-        [
-          "Boromir",
-          "Galadriel",
-          "Elrond",
-          "Théoden",
-          "Éowyn",
-          "Faramir",
-          "Merry",
-          "Pippin",
-          {"en":"Treebeard","de":"Baumbart"},
-          "Arwen"
-        ],
+    [
+      "Boromir",
+      "Galadriel",
+      "Elrond",
+      "Théoden",
+      "Éowyn",
+      "Faramir",
+      "Merry",
+      "Pippin",
+      {"en":"Treebeard","de":"Baumbart"},
+      "Arwen"
+    ],
 
-        [
-          "Éomer",
-          "Denethor",
-          {"en":"Grima Wormtongue","de":"Grima Schlangenzunge"},
-          {"en":"Shelob","de":"Kankra"},
-          {"en":"Witch-king","de":"Hexenkönig"},
-          "Tom Bombadil",
-          "Radagast",
-          "Celeborn",
-          "Glorfindel",
-          {"en":"Barliman Butterbur","de":"Gerstenmann Butterblume"}
-        ]
-      ]
-    }
-  ],
-  "presets": [
-    {"id":"all","title":"All characters","groups":["characters"]}
+    [
+      "Éomer",
+      "Denethor",
+      {"en":"Grima Wormtongue","de":"Grima Schlangenzunge"},
+      {"en":"Shelob","de":"Kankra"},
+      {"en":"Witch-king","de":"Hexenkönig"},
+      "Tom Bombadil",
+      "Radagast",
+      "Celeborn",
+      "Glorfindel",
+      {"en":"Barliman Butterbur","de":"Gerstenmann Butterblume"}
+    ]
   ]
 }

@@ -42,8 +42,5 @@
       "Stephen Curry",
       "Conor McGregor"
     ]
-  ],
-  "presets": [
-    {"id":"all","title":"All athletes","groups":["athletes"]}
   ]
 }

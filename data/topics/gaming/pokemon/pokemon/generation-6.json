@@ -99,8 +99,5 @@
       {"en":"Barbaracle","de":"Thanathora","fr":"Golgopathe","ja":"ガメノデス","ja-Latn":"Gamenodes","ko":"거북손데스","zh-Hans":"龟足巨铠","zh-Hant":"龜足巨鎧"},
       {"en":"Binacle","de":"Bithora","fr":"Opermine","ja":"カメテテ","ja-Latn":"Kametete","ko":"거북손손","zh-Hans":"龟脚脚","zh-Hant":"龜腳腳"}
     ]
-  ],
-  "presets": [
-    {"id":"all","title":"All","groups":["generation-6"]}
   ]
 }

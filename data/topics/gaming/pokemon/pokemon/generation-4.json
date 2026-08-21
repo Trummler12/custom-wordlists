@@ -134,8 +134,5 @@
       {"en":"Chatot","de":"Plaudagei","fr":"Pijako","ja":"ペラップ","ja-Latn":"Perap","ko":"페라페","zh-Hans":"聒噪鸟","zh-Hant":"聒噪鳥"},
       {"en":"Mantyke","de":"Mantirps","fr":"Babimanta","ja":"タマンタ","ja-Latn":"Tamanta","ko":"타만타","zh-Hans":"小球飞鱼","zh-Hant":"小球飛魚"}
     ]
-  ],
-  "presets": [
-    {"id":"all","title":"All","groups":["generation-4"]}
   ]
 }

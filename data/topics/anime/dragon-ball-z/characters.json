@@ -1,49 +1,40 @@
 {
-  "id": "dragon-ball-z",
-  "title": "Dragon Ball Z",
-  "icon": "🐉",
+  "id": "dragon-ball-z-characters",
+  "title": {"en":"Characters","de":"Charaktere"},
+  "icon": "🎭",
   "description": "Dragon Ball Z characters (English names). Fame tiers by recognizability (tier 0 = most iconic).",
-  "groups": [
-    {
-      "id": "characters",
-      "title": {"en":"Characters","de":"Charaktere"},
-      "tiers": [
-        [
-          {"en":"Goku","de":"Son-Goku"},
-          "Vegeta",
-          {"en":"Gohan","de":"Son-Gohan"},
-          "Piccolo",
-          {"en":"Frieza","de":"Freezer"},
-          "Cell",
-          {"en":"Majin Buu","de":"Boo"},
-          "Krillin"
-        ],
+  "tiers": [
+    [
+      {"en":"Goku","de":"Son-Goku"},
+      "Vegeta",
+      {"en":"Gohan","de":"Son-Gohan"},
+      "Piccolo",
+      {"en":"Frieza","de":"Freezer"},
+      "Cell",
+      {"en":"Majin Buu","de":"Boo"},
+      "Krillin"
+    ],
 
-        [
-          "Bulma",
-          "Trunks",
-          {"en":"Goten","de":"Son-Goten"},
-          {"en":"Master Roshi","de":"Muten-Roshi"},
-          {"en":"Tien Shinhan","de":"Tenshinhan"},
-          {"en":"Android 18","de":"C-18"},
-          {"en":"Android 17","de":"C-17"},
-          "Mr. Satan"
-        ],
+    [
+      "Bulma",
+      "Trunks",
+      {"en":"Goten","de":"Son-Goten"},
+      {"en":"Master Roshi","de":"Muten-Roshi"},
+      {"en":"Tien Shinhan","de":"Tenshinhan"},
+      {"en":"Android 18","de":"C-18"},
+      {"en":"Android 17","de":"C-17"},
+      "Mr. Satan"
+    ],
 
-        [
-          {"en":"Yamcha","de":"Yamchu"},
-          {"en":"Chiaotzu","de":"Chao-Zu"},
-          {"en":"King Kai","de":"Nordkaio"},
-          "Nappa",
-          "Raditz",
-          "Broly",
-          "Gotenks",
-          "Beerus"
-        ]
-      ]
-    }
-  ],
-  "presets": [
-    {"id":"all","title":"All characters","groups":["characters"]}
+    [
+      {"en":"Yamcha","de":"Yamchu"},
+      {"en":"Chiaotzu","de":"Chao-Zu"},
+      {"en":"King Kai","de":"Nordkaio"},
+      "Nappa",
+      "Raditz",
+      "Broly",
+      "Gotenks",
+      "Beerus"
+    ]
   ]
 }

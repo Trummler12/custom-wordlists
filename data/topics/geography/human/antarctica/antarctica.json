@@ -1,6 +1,7 @@
 {
   "id": "antarctica",
-  "title": {"short":"🦗","long":{"en":"*crickets*","de":"*Grillenzirpen*"}},
+  "title": "",
+  "icon": "🦗",
   "languages": ["en","de","es","fr","it","ja","ko","zh-Hans","zh-Hant"],
   "hideRulers": true,
   "words": []

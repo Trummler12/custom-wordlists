@@ -148,8 +148,5 @@
       {"en":"Brambleghast","de":"Horrerba","fr":"Virevorreur","ja":"アノホラグサ","ja-Latn":"Anohoragusa","ko":"공푸리","zh-Hans":"怖纳噬草","zh-Hant":"怖納噬草"},
       {"en":"Bramblin","de":"Weherba","fr":"Virovent","ja":"アノクサ","ja-Latn":"Anokusa","ko":"그푸리","zh-Hans":"纳噬草","zh-Hant":"納噬草"}
     ]
-  ],
-  "presets": [
-    {"id":"all","title":"All","groups":["generation-9"]}
   ]
 }

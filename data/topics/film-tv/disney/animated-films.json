@@ -1,0 +1,29 @@
+{
+  "id": "animated-films",
+  "title": {"en":"Animated films","de":"Animationsfilme"},
+  "icon": "🎬",
+  "description": "Disney characters (English names): the classic Mouse & Duck universe plus animated-film leads. Fame tiers by recognizability (tier 0 = most iconic).",
+  "tiers": [
+    [
+      "Simba",
+      "Elsa",
+      "Aladdin",
+      {"en":"Ariel","de":"Arielle"},
+      "Mulan",
+      "Woody",
+      "Buzz Lightyear",
+      "Stitch"
+    ],
+
+    [
+      "Mufasa",
+      "Scar",
+      "Anna",
+      "Olaf",
+      {"en":"Genie","de":"Dschinni"},
+      {"en":"Jasmine","de":"Jasmin"},
+      "Maui",
+      {"en":"Moana","de":"Vaiana"}
+    ]
+  ]
+}

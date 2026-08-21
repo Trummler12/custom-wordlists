@@ -127,8 +127,5 @@
       {"en":"Shuckle","de":"Pottrott","fr":"Caratroc","ja":"ツボツボ","ja-Latn":"Tsubotsubo","ko":"단단지","zh-Hans":"壶壶","zh-Hant":"壺壺"},
       {"en":"Qwilfish","de":"Baldorfish","ja":"ハリーセン","ja-Latn":"Harysen","ko":"침바루","zh-Hans":"千针鱼","zh-Hant":"千針魚"}
     ]
-  ],
-  "presets": [
-    {"id":"all","title":"All","groups":["generation-2"]}
   ]
 }

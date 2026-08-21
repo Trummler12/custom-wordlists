@@ -115,8 +115,5 @@
       {"en":"Komala","de":"Koalelu","fr":"Dodoala","ja":"ネッコアラ","ja-Latn":"Nekkoara","ko":"자말라","zh-Hans":"树枕尾熊","zh-Hant":"樹枕尾熊"},
       {"en":"Morelull","de":"Bubungus","fr":"Spododo","ja":"ネマシュ","ja-Latn":"Nemasyu","ko":"자마슈","zh-Hans":"睡睡菇","zh-Hant":"睡睡菇"}
     ]
-  ],
-  "presets": [
-    {"id":"all","title":"All","groups":["generation-7"]}
   ]
 }

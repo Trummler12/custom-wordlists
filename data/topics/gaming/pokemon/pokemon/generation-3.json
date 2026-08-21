@@ -162,8 +162,5 @@
       {"en":"Barboach","de":"Schmerbe","fr":"Barloche","ja":"ドジョッチ","ja-Latn":"Dojoach","ko":"미꾸리","zh-Hans":"泥泥鳅","zh-Hant":"泥泥鰍"},
       {"en":"Chimecho","de":"Palimpalim","fr":"Éoko","ja":"チリーン","ja-Latn":"Chirean","ko":"치렁","zh-Hans":"风铃铃","zh-Hant":"風鈴鈴"}
     ]
-  ],
-  "presets": [
-    {"id":"all","title":"All","groups":["generation-3"]}
   ]
 }

@@ -183,8 +183,5 @@
       {"en":"Amoonguss","de":"Hutsassa","fr":"Gaulet","ja":"モロバレル","ja-Latn":"Morobareru","ko":"뽀록나","zh-Hans":"败露球菇","zh-Hant":"敗露球菇"},
       {"en":"Beheeyem","de":"Megalon","fr":"Neitram","ja":"オーベム","ja-Latn":"Ohbem","ko":"벰크","zh-Hans":"大宇怪","zh-Hant":"大宇怪"}
     ]
-  ],
-  "presets": [
-    {"id":"all","title":"All","groups":["generation-5"]}
   ]
 }
