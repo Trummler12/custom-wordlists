@@ -34,7 +34,11 @@ const TOPIC_KEYS = [
   "words",
   "tiers",
   "tierConditions",
+  "rulerTooltip",
 ];
+
+/** Field order within a ruler tooltip. */
+const TOOLTIP_KEYS = ["text", "empty"];
 
 
 const line = (indent, text) => " ".repeat(indent) + text;
@@ -97,6 +101,15 @@ function condBlock(conds, field) {
   return `[\n${body}\n${line(field, "]")}`;
 }
 
+/** A ruler tooltip: its two sentences one to a line, each language map inline —
+ *  the same reasoning as `condBlock`, they are short and read against each other. */
+function tooltipBlock(tt, field) {
+  const body = TOOLTIP_KEYS.filter((k) => tt[k] !== undefined)
+    .map((k) => line(field + 2, `${JSON.stringify(k)}: ${JSON.stringify(tt[k])}`))
+    .join(",\n");
+  return `{\n${body}\n${line(field, "}")}`;
+}
+
 /** Fame tiers: each tier its own multi-line array, a blank line between them, so
  *  the boundaries are visible in the file rather than only in the count. */
 function tierBlock(tiers, field) {
@@ -112,6 +125,7 @@ function listField(key, value, field) {
   if (key === "words") return `"words": ${block(value, field + 2, field)}`;
   if (key === "tiers") return `"tiers": ${tierBlock(value, field)}`;
   if (key === "tierConditions") return `"tierConditions": ${condBlock(value, field)}`;
+  if (key === "rulerTooltip") return `"rulerTooltip": ${tooltipBlock(value, field)}`;
   if (key === "omitted" || key === "omittable") return `"${key}": ${proseBlock(value, RULE_KEYS, "reason", field)}`;
   if (key === "tierNotes") return `"tierNotes": ${proseBlock(value, NOTE_KEYS, "text", field)}`;
   return null;
@@ -168,6 +182,7 @@ function sorted(topic) {
       if (obj[key]) obj[key] = obj[key].map((rule) => order(rule, RULE_KEYS));
     }
     if (obj.tierNotes) obj.tierNotes = obj.tierNotes.map((n) => order(n, NOTE_KEYS));
+    if (obj.rulerTooltip) obj.rulerTooltip = order(obj.rulerTooltip, TOOLTIP_KEYS);
     return obj;
   };
   return orderRules(order(topic, TOPIC_KEYS));

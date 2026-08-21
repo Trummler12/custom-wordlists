@@ -151,7 +151,8 @@
       "minItems": 1,
       "description": "Flat-topic form of the group field — one boundary per tier, same length as `tiers`. See the group's `tierConditions`.",
       "items": { "$ref": "#/$defs/locString" }
-    }
+    },
+    "rulerTooltip": { "$ref": "#/$defs/rulerTooltip" }
   },
   "$defs": {
     "id": {
@@ -246,6 +247,22 @@
         "locked": {
           "type": "boolean",
           "description": "When true, the reader can't switch this rule off: the panel shows its checkbox disabled. For a family that isn't words at all, where re-including it could only be an accident — the 300 Dynamax Crystals named `★Sgr6879` after Bright Star Catalogue entries. Rare by design: the default is that anything omitted can be asked back."
+        }
+      }
+    },
+    "rulerTooltip": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["text", "empty"],
+      "description": "What the fame ruler's hover says, replacing the bare \"Fame groups defined: n\" for a list whose tiers came from an outside boundary. `text` describes the selection once the ruler has moved; `empty` describes the ordering at rest, where nothing is selected yet.",
+      "properties": {
+        "text": {
+          "allOf": [{ "$ref": "#/$defs/locString" }],
+          "description": "Shown once the ruler is off its leftmost stop. May contain the token `{condition}`, which the frontend replaces with `tierConditions[depth - 1]` — the boundary of the lowest tier the ruler has just brought in (\"Selected: everything with {condition} inhabitants\"). Localized here rather than in a locale file, like `tierNotes.text`, because it describes this list."
+        },
+        "empty": {
+          "allOf": [{ "$ref": "#/$defs/locString" }],
+          "description": "Shown at the leftmost stop, where nothing is selected and no condition is in force. Says instead what the list is ordered by — the one thing a reader scouting the ruler before switching it on cannot read off a selection (\"Ranked by population.\")."
         }
       }
     },

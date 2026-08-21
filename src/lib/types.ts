@@ -108,6 +108,20 @@ export interface TierNote {
   text: LocalizedString;
 }
 
+/** The ruler's hover text — what the list is ordered by, and what the stop the
+ *  reader has dragged to has just selected. Replaces the bare "Fame groups
+ *  defined: n" for a list whose tiers came from an outside boundary. */
+export interface RulerTooltip {
+  /** Shown once the ruler has moved off rest. May carry `{condition}`, replaced
+   *  by `tierConditions[depth - 1]` — the lowest band the ruler has just brought
+   *  in ("everything with {condition} inhabitants"). */
+  text: LocalizedString;
+  /** Shown at the leftmost stop, where nothing is selected and so no condition is
+   *  in force: say instead what the list is ordered by, which is the one thing the
+   *  reader cannot yet read off a selection. */
+  empty: LocalizedString;
+}
+
 export interface Omission {
   /** Stable key for the reader's stored choice — the glob may be edited without
    *  resetting it. */
@@ -163,6 +177,9 @@ export interface Group {
    *  family can be checked for drawing tier k the same way. Localized. Absent for a
    *  list with no outside boundary. See schema/topic.schema.json. */
   tierConditions?: LocalizedString[];
+  /** What the ruler's hover says — see `RulerTooltip`. Absent falls back to the
+   *  bare tier count. */
+  rulerTooltip?: RulerTooltip;
   /** How many entries the list has no name for in the language it is being shown
    *  in, one number per tier — see `unknownByTier` in lib/omitted. Not a field of
    *  the file: `visibleGroup` puts it on the view it hands back, because by then
@@ -228,4 +245,5 @@ export interface Topic {
   words?: WordEntry[];
   tiers?: WordEntry[][];
   tierConditions?: LocalizedString[];
+  rulerTooltip?: RulerTooltip;
 }
