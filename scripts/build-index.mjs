@@ -23,9 +23,13 @@ const CATEGORY_META = "_category.json";
 /** Words a topic contributes as the app shows it: omitted families out, each
  *  rule's stand-in in. The manifest count is what a topic row advertises before
  *  its file loads, so counting the raw list would make the number jump on load. */
+// A flat topic is its own single group — it carries words/tiers/omitted directly,
+// so the topic object stands in for the group here and everywhere below.
+const groupsOf = (topic) => topic.groups ?? [topic];
+
 function countWords(topic) {
   let n = 0;
-  for (const group of topic.groups) {
+  for (const group of groupsOf(topic)) {
     const rules = (group.omitted ?? []).map((o) => ({
       res: [o.match].flat().map(globToRegExp),
       except: o.except ?? [],
@@ -147,6 +151,20 @@ async function readCategoryMeta(path) {
   return meta;
 }
 
+// An `inheritsUpwards` family is several files with the same name (every
+// continent's `countries.json`), so stems are no longer unique on their own. Where
+// one repeats, the immediate parent folder qualifies it — `africa/countries.json`
+// becomes `africa-countries`, matching the file's own `id`. Unique stems are left
+// alone, so nothing else in the tree changes. Kept in sync with validate-data.mjs.
+function disambiguate(topics) {
+  const count = {};
+  for (const t of topics) count[t.id] = (count[t.id] ?? 0) + 1;
+  for (const t of topics) {
+    if (count[t.id] > 1) t.id = `${t.category.split("/").pop()}-${t.id}`;
+  }
+  return topics;
+}
+
 async function buildIndex() {
   let found;
   try {
@@ -154,6 +172,7 @@ async function buildIndex() {
   } catch {
     throw new Error(`No topics directory at ${TOPICS_DIR}`);
   }
+  disambiguate(found.topics);
 
   const topics = [];
   for (const { id, category, foldered, fileSegments } of found.topics) {
@@ -178,7 +197,7 @@ async function buildIndex() {
       ...(data.languages ? { languages: data.languages } : {}),
       ...(data.usesEnglishFor ? { usesEnglishFor: data.usesEnglishFor } : {}),
       ...(data.generatedRomaji ? { generatedRomaji: true } : {}),
-      groupCount: data.groups.length,
+      groupCount: data.groups?.length ?? 1,
       wordCount: countWords(data),
     });
   }

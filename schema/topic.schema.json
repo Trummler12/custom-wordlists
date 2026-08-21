@@ -2,10 +2,15 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://trummler12.github.io/custom-wordlists/schema/topic.schema.json",
   "title": "Topic",
-  "description": "One word-list topic (a single file; entries carry their own per-language forms). See docs/archive/PLANNING.md §4.",
+  "description": "One word-list topic (a single file; entries carry their own per-language forms). Carries its list directly (`words` or `tiers`) for the common single-list case, or bundles several independently-checkable lists under `groups`. See docs/archive/PLANNING.md §4.",
   "type": "object",
   "additionalProperties": false,
-  "required": ["id", "title", "groups"],
+  "required": ["id", "title"],
+  "oneOf": [
+    { "required": ["groups"] },
+    { "required": ["words"] },
+    { "required": ["tiers"] }
+  ],
   "properties": {
     "id": {
       "allOf": [{ "$ref": "#/$defs/id" }],
@@ -94,9 +99,54 @@
       "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
       "description": "ISO date (YYYY-MM-DD) the list was last verified against its source (even if unchanged). Lets us spot which lists are due for a currency re-check."
     },
+    "defaultNames": {
+      "type": "string",
+      "enum": ["short", "long", "both"],
+      "description": "Flat-topic form of the group field of the same name — which form of a short/long entry to emit until the reader picks another. Absent means `long`."
+    },
+    "tierNotes": {
+      "type": "array",
+      "minItems": 1,
+      "description": "Flat-topic form of the group field — notes that appear once the ruler reaches far enough down. See `$defs/tierNote`.",
+      "items": { "$ref": "#/$defs/tierNote" }
+    },
+    "omitted": {
+      "type": "array",
+      "minItems": 1,
+      "description": "Flat-topic form of the group field — families of entries this list hides from its source, filtered by default.",
+      "items": { "$ref": "#/$defs/omission" }
+    },
+    "omittable": {
+      "type": "array",
+      "minItems": 1,
+      "description": "Flat-topic form of the group field — families the list offers to leave out, present by default. Rule ids must be unique across both arrays.",
+      "items": { "$ref": "#/$defs/omission" }
+    },
+    "words": {
+      "type": "array",
+      "minItems": 0,
+      "description": "A flat list of entries carried directly on the topic (no `groups`). May be empty — a deliberate claim rather than an oversight. Mutually exclusive with `tiers` and `groups`.",
+      "items": { "$ref": "#/$defs/word" }
+    },
+    "tiers": {
+      "type": "array",
+      "minItems": 1,
+      "description": "Fame tiers carried directly on the topic (no `groups`), tier 0 = most famous. A tier may be empty. Mutually exclusive with `words` and `groups`.",
+      "items": {
+        "type": "array",
+        "items": { "$ref": "#/$defs/word" }
+      }
+    },
+    "tierConditions": {
+      "type": "array",
+      "minItems": 1,
+      "description": "Flat-topic form of the group field — one boundary per tier, same length as `tiers`. See the group's `tierConditions`.",
+      "items": { "$ref": "#/$defs/locString" }
+    },
     "groups": {
       "type": "array",
       "minItems": 1,
+      "description": "Several independently-checkable lists under one topic row — for the few topics that are genuinely more than one list (a cast split into heroes and villains). A single-list topic carries `words`/`tiers` directly instead. Mutually exclusive with them.",
       "items": { "$ref": "#/$defs/group" }
     },
     "presets": {

@@ -35,6 +35,20 @@ const URL_RE = /https?:\/\/\S/;
 // Sidecar filename holding a category node's display metadata (never a topic).
 const CATEGORY_META = "_category.json";
 
+// A flat topic is its own single group — it carries words/tiers/omitted directly.
+const groupsOf = (topic) => topic.groups ?? [topic];
+
+// Where a stem repeats (every continent's `countries.json`), the immediate parent
+// folder qualifies the id — matching the file's own `id` and build-index.mjs.
+function disambiguate(topics) {
+  const count = {};
+  for (const t of topics) count[t.id] = (count[t.id] ?? 0) + 1;
+  for (const t of topics) {
+    if (count[t.id] > 1) t.id = `${t.category.split("/").pop()}-${t.id}`;
+  }
+  return topics;
+}
+
 /**
  * Recursively find topics and category-metadata files under data/topics. A folder
  * is a category when it has a subfolder, a `_category.json`, or ≥2 topic files:
@@ -106,7 +120,7 @@ function usedLangs(topic) {
       }
     }
   };
-  for (const group of topic.groups) {
+  for (const group of groupsOf(topic)) {
     if (group.words) for (const w of group.words) scan(w);
     if (group.tiers) for (const tier of group.tiers) for (const w of tier) scan(w);
   }
@@ -117,7 +131,7 @@ function usedLangs(topic) {
  *  `allWords` hands back their dedup keys. */
 function allEntries(topic) {
   const out = [];
-  for (const group of topic.groups) {
+  for (const group of groupsOf(topic)) {
     if (group.words) out.push(...group.words);
     if (group.tiers) for (const tier of group.tiers) out.push(...tier);
   }
@@ -126,7 +140,7 @@ function allEntries(topic) {
 
 function allWords(topic) {
   const out = [];
-  for (const group of topic.groups) {
+  for (const group of groupsOf(topic)) {
     if (group.words) for (const w of group.words) out.push(entryKey(w));
     if (group.tiers) for (const tier of group.tiers) for (const w of tier) out.push(entryKey(w));
   }
@@ -145,6 +159,7 @@ async function main() {
   let found = { topics: [], categories: [] };
   try {
     found = await collectTopics([]);
+    disambiguate(found.topics);
   } catch {
     errors.push(`No topics directory at ${TOPICS_DIR}`);
   }
@@ -209,7 +224,7 @@ async function main() {
     }
 
     // 1. referential integrity of preset.groups
-    const groupIds = new Set(topic.groups.map((g) => g.id));
+    const groupIds = new Set(groupsOf(topic).map((g) => g.id));
     for (const preset of topic.presets ?? []) {
       for (const ref of preset.groups) {
         if (!groupIds.has(ref)) {
@@ -240,7 +255,7 @@ async function main() {
     //    stay in the file and are filtered on load, so both of these are knowable:
     //    a rule that matches nothing is stale (renamed upstream, or a typo), and a
     //    replacement caught by a rule would be filtered straight back out.
-    for (const group of topic.groups) {
+    for (const group of groupsOf(topic)) {
       const entries = [...(group.words ?? []), ...(group.tiers ?? []).flat()];
       for (const om of [...(group.omitted ?? []), ...(group.omittable ?? [])]) {
         const res = [om.match].flat().map(globToRegExp);
@@ -261,7 +276,7 @@ async function main() {
     // 4a. tier conditions, where declared, name one boundary per tier: same length
     //     as `tiers`, and only on a tiered group. The family-wide check (every file
     //     in an inheritsUpwards family cuts tier k the same) rides with that feature.
-    for (const group of topic.groups) {
+    for (const group of groupsOf(topic)) {
       if (group.tierConditions === undefined) continue;
       if (!group.tiers) {
         errors.push(`${rel}: group "${group.id}" has tierConditions but no tiers`);
@@ -275,7 +290,7 @@ async function main() {
     // 4b. an entry that says it has no name in a language it does have one in.
     //     Harmless to render — an own key wins — but it means a name was filled in
     //     and the `?` beside it was left behind, and only a warning can say so.
-    for (const group of topic.groups) {
+    for (const group of groupsOf(topic)) {
       for (const e of [...(group.words ?? []), ...(group.tiers ?? []).flat()]) {
         for (const l of unknownLangs(e)) {
           if (e[l] !== undefined) {

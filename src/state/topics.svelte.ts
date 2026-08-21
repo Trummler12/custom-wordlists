@@ -13,6 +13,30 @@ import { displayName, type DisplayName } from "../lib/words";
 import { settings } from "./settings.svelte";
 import { lang } from "./lang.svelte";
 
+// A flat topic's single implicit group, cached so it keeps its identity for the
+// WeakMap caches downstream (visibleGroup, groupEntries) — re-synthesizing per call
+// would defeat them. The group *is* the topic: same id and title, same list fields.
+const synthGroups = new WeakMap<Topic, Group[]>();
+function normalizedGroups(data: Topic): Group[] {
+  if (data.groups) return data.groups;
+  let cached = synthGroups.get(data);
+  if (!cached) {
+    const g: Group = {
+      id: data.id,
+      title: data.title,
+      ...(data.defaultNames !== undefined ? { defaultNames: data.defaultNames } : {}),
+      ...(data.tierNotes ? { tierNotes: data.tierNotes } : {}),
+      ...(data.omitted ? { omitted: data.omitted } : {}),
+      ...(data.omittable ? { omittable: data.omittable } : {}),
+      ...(data.words ? { words: data.words } : {}),
+      ...(data.tiers ? { tiers: data.tiers } : {}),
+      ...(data.tierConditions ? { tierConditions: data.tierConditions } : {}),
+    };
+    synthGroups.set(data, (cached = [g]));
+  }
+  return cached;
+}
+
 class TopicsState {
   /** Every topic in the manifest, in manifest order. */
   all = $state<TopicSummary[]>([]);
@@ -85,11 +109,13 @@ class TopicsState {
    *  array for the life of the page, which is what makes it safe to cache against.
    *  Everything that renders a list wants `groupsOf` instead. */
   rawGroups(tid: string): Group[] {
-    return this.data[tid]?.groups ?? [];
+    const data = this.data[tid];
+    return data ? normalizedGroups(data) : [];
   }
 
   groupsOf(t: TopicSummary): Group[] {
-    const groups = this.data[t.id]?.groups ?? [];
+    const data = this.data[t.id];
+    const groups = data ? normalizedGroups(data) : [];
     // A list whose names in this language simply *are* the English ones is being
     // shown in English, whatever the picker says — so it has no gaps to hide.
     const picked = lang.contentLang(t.id);

@@ -26,6 +26,14 @@ const TOPIC_KEYS = [
   "credits",
   "lastUpdated",
   "lastChecked",
+  // A flattened topic carries its list directly, in the same order a group would.
+  "defaultNames",
+  "tierNotes",
+  "omitted",
+  "omittable",
+  "words",
+  "tiers",
+  "tierConditions",
   "groups",
   "presets",
 ];
@@ -59,7 +67,9 @@ const RULE_KEYS = ["id", "match", "as", "except", "locked", "reason"];
 const NOTE_KEYS = ["fromTier", "icon", "text"];
 
 /** One object per block rather than per line, with its prose field opened up one
- *  language to a line.
+ *  language to a line. `field` is the indent of the array's `"key":` line, so the
+ *  same shape serializes at group level (6) and, since the topics were flattened,
+ *  at topic level (2).
  *
  *  A rule used to fit on a line because it carried two languages. At seven it
  *  would run past any window, and these are prose sentences of uneven length —
@@ -67,8 +77,10 @@ const NOTE_KEYS = ["fromTier", "icon", "text"];
  *  translation changes, and a diff that should read as "the Spanish text moved"
  *  reads as three languages moving. One per line keeps a change where it
  *  belongs. */
-function proseBlock(items, order, prose) {
+function proseBlock(items, order, prose, field) {
   const NL = "\n";
+  const brace = field + 2;
+  const inner = field + 4;
   const body = items
     .map((item) => {
       const keys = [...order, ...Object.keys(item).filter((k) => !order.includes(k))];
@@ -78,41 +90,45 @@ function proseBlock(items, order, prose) {
         if (value === undefined) continue;
         if (key === prose && value !== null && typeof value === "object") {
           const langs = Object.entries(value)
-            .map(([l, text]) => line(12, `${JSON.stringify(l)}: ${JSON.stringify(text)}`))
+            .map(([l, text]) => line(inner + 2, `${JSON.stringify(l)}: ${JSON.stringify(text)}`))
             .join(`,${NL}`);
-          fields.push(line(10, `${JSON.stringify(key)}: {${NL}${langs}${NL}${line(10, "}")}`));
+          fields.push(line(inner, `${JSON.stringify(key)}: {${NL}${langs}${NL}${line(inner, "}")}`));
         } else {
-          fields.push(line(10, `${JSON.stringify(key)}: ${JSON.stringify(value)}`));
+          fields.push(line(inner, `${JSON.stringify(key)}: ${JSON.stringify(value)}`));
         }
       }
-      return [line(8, "{"), fields.join(`,${NL}`), line(8, "}")].join(NL);
+      return [line(brace, "{"), fields.join(`,${NL}`), line(brace, "}")].join(NL);
     })
     .join(`,${NL}`);
-  return `[${NL}${body}${NL}${line(6, "]")}`;
+  return `[${NL}${body}${NL}${line(field, "]")}`;
 }
 
-/** Tier conditions: one locString per line, a lang map opened one language to a
- *  line like a rule's prose — same reason, the strings are uneven prose. */
-function condBlock(conds) {
-  const body = conds
-    .map((c) => {
-      if (c === null || typeof c !== "object") return line(8, JSON.stringify(c));
-      const langs = Object.entries(c)
-        .map(([l, text]) => line(10, `${JSON.stringify(l)}: ${JSON.stringify(text)}`))
-        .join(",\n");
-      return `${line(8, "{")}\n${langs}\n${line(8, "}")}`;
-    })
-    .join(",\n");
-  return `[\n${body}\n${line(6, "]")}`;
+/** Tier conditions: one condition per line, its whole language map inline. Unlike
+ *  a rule's prose these are short parallel phrases, and reading tier 2 against tier
+ *  3 wants them stacked, not each spread over nine lines. */
+function condBlock(conds, field) {
+  const body = conds.map((c) => line(field + 2, JSON.stringify(c))).join(",\n");
+  return `[\n${body}\n${line(field, "]")}`;
 }
 
 /** Fame tiers: each tier its own multi-line array, a blank line between them, so
  *  the boundaries are visible in the file rather than only in the count. */
-function tierBlock(tiers) {
+function tierBlock(tiers, field) {
   const body = tiers
-    .map((tier) => line(8, block(tier, 10, 8)))
+    .map((tier) => line(field + 2, block(tier, field + 4, field + 2)))
     .join(",\n\n");
-  return `[\n${body}\n${line(6, "]")}`;
+  return `[\n${body}\n${line(field, "]")}`;
+}
+
+/** Serialize one of the list-carrying fields at the given indent, or null when the
+ *  key is not one — shared by a group (field 6) and a flat topic (field 2). */
+function listField(key, value, field) {
+  if (key === "words") return `"words": ${block(value, field + 2, field)}`;
+  if (key === "tiers") return `"tiers": ${tierBlock(value, field)}`;
+  if (key === "tierConditions") return `"tierConditions": ${condBlock(value, field)}`;
+  if (key === "omitted" || key === "omittable") return `"${key}": ${proseBlock(value, RULE_KEYS, "reason", field)}`;
+  if (key === "tierNotes") return `"tierNotes": ${proseBlock(value, NOTE_KEYS, "text", field)}`;
+  return null;
 }
 
 function serializeGroup(group, warn) {
@@ -120,14 +136,8 @@ function serializeGroup(group, warn) {
   for (const key of GROUP_KEYS) {
     const value = group[key];
     if (value === undefined) continue;
-    if (key === "words") parts.push(line(6, `"words": ${block(value, 8, 6)}`));
-    else if (key === "tiers") parts.push(line(6, `"tiers": ${tierBlock(value)}`));
-    else if (key === "tierConditions") parts.push(line(6, `"tierConditions": ${condBlock(value)}`));
-    else if (key === "omitted" || key === "omittable") {
-      parts.push(line(6, `"${key}": ${proseBlock(value, RULE_KEYS, "reason")}`));
-    } else if (key === "tierNotes") {
-      parts.push(line(6, `"tierNotes": ${proseBlock(value, NOTE_KEYS, "text")}`));
-    } else parts.push(line(6, `"${key}": ${JSON.stringify(value)}`));
+    const list = listField(key, value, 6);
+    parts.push(line(6, list ?? `"${key}": ${JSON.stringify(value)}`));
   }
   for (const key of Object.keys(group)) {
     if (GROUP_KEYS.includes(key)) continue;
@@ -152,7 +162,10 @@ export function serializeTopic(topic, warn = (m) => console.warn(`serialize: ${m
     } else if (key === "presets") {
       parts.push(line(2, `"presets": ${block(value, 4, 2)}`));
     } else {
-      parts.push(line(2, `"${key}": ${JSON.stringify(value)}`));
+      // A flattened topic's list fields serialize at topic indent; everything else
+      // is a scalar or small object that fits on its line.
+      const list = listField(key, value, 2);
+      parts.push(line(2, list ?? `"${key}": ${JSON.stringify(value)}`));
     }
   };
 
@@ -182,19 +195,17 @@ function sorted(topic) {
     for (const k of Object.keys(obj)) if (!keys.includes(k)) out[k] = obj[k];
     return out;
   };
-  const t = order(topic, TOPIC_KEYS);
-  if (t.groups) {
-    t.groups = t.groups.map((g) => {
-      const out = order(g, GROUP_KEYS);
-      // Rules are reordered on the way out too, so the comparison has to expect
-      // it — otherwise a file that merely lists `except` before `as` reads as
-      // data lost.
-      for (const key of ["omitted", "omittable"]) {
-        if (out[key]) out[key] = out[key].map((rule) => order(rule, RULE_KEYS));
-      }
-      if (out.tierNotes) out.tierNotes = out.tierNotes.map((n) => order(n, NOTE_KEYS));
-      return out;
-    });
-  }
+  // Rules and notes are reordered on the way out too, so the comparison has to
+  // expect it — otherwise a file that merely lists `except` before `as` reads as
+  // data lost. Applies wherever they live: in a group, or on a flattened topic.
+  const orderRules = (obj) => {
+    for (const key of ["omitted", "omittable"]) {
+      if (obj[key]) obj[key] = obj[key].map((rule) => order(rule, RULE_KEYS));
+    }
+    if (obj.tierNotes) obj.tierNotes = obj.tierNotes.map((n) => order(n, NOTE_KEYS));
+    return obj;
+  };
+  const t = orderRules(order(topic, TOPIC_KEYS));
+  if (t.groups) t.groups = t.groups.map((g) => orderRules(order(g, GROUP_KEYS)));
   return t;
 }

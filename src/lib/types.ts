@@ -231,6 +231,17 @@ export interface Topic {
   lastUpdated?: string;
   /** ISO date (YYYY-MM-DD) the list was last verified against its source. */
   lastChecked?: string;
-  groups: Group[];
+  // A single-list topic carries its list directly, in the same shape a group would
+  // (see `Group`). A multi-list topic uses `groups` instead; the two are mutually
+  // exclusive, and `topics.groupsOf` synthesizes a single group from the flat form
+  // so the rest of the app never sees the difference.
+  defaultNames?: NamesMode;
+  tierNotes?: TierNote[];
+  omitted?: Omission[];
+  omittable?: Omission[];
+  words?: WordEntry[];
+  tiers?: WordEntry[][];
+  tierConditions?: LocalizedString[];
+  groups?: Group[];
   presets?: Preset[];
 }
