@@ -16,7 +16,7 @@
 import { TOO_LONG_RULE } from "../lib/omitted";
 import { SKRIBBL } from "../lib/skribbl";
 import { groupEntries, renderCount } from "../lib/words";
-import { depthFromKey, depthFromPointer, tierSizes } from "../lib/fame";
+import { depthFromKey, depthFromPointer, skipCollapsed, snapPositions } from "../lib/fame";
 import { rulerHiddenByDefault } from "../lib/rulers";
 import { catDepth, type CatNode } from "../lib/tree";
 import type { Group, NamesMode, TopicSummary, WordEntry } from "../lib/types";
@@ -162,10 +162,14 @@ class SelectionState {
   /** Arrow/Home/End on the slider. Other keys are left alone — the event must
    *  keep its default, so the caller can't preventDefault unconditionally. */
   keyDepth(e: KeyboardEvent, tid: string, g: Group): void {
-    const d = depthFromKey(e, this.depthOf(tid, g), tierSizes(g).length);
+    const pos = snapPositions(g);
+    const from = this.depthOf(tid, g);
+    const d = depthFromKey(e, from, pos.length - 1);
     if (d === null) return;
     e.preventDefault();
-    this.setDepth(tid, g, d);
+    // Skip stops an empty leading/trailing tier collapsed onto an end, so an arrow
+    // moves the thumb rather than stepping onto an invisible duplicate stop.
+    this.setDepth(tid, g, skipCollapsed(pos, from, d));
   }
 
   // --- Setting ---------------------------------------------------------------

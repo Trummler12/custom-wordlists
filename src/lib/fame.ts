@@ -2,12 +2,21 @@
 // snap markers on its rail or space them by tier size, so the track is custom and
 // the maths lives here — pure, and returning a depth rather than setting one.
 
-import type { Group, TierNote } from "./types";
+import type { Group, LocalizedString, TierNote } from "./types";
 
-// Snap spacing: every gap is at least this fraction of an equal step, and the
-// remaining travel is distributed by tier size. Lower = more size-faithful
-// spacing; higher = more even. Range (0, 1).
+// Snap spacing: a non-empty tier gets at least this fraction of an equal step (of
+// the non-empty tiers), and the rest of the travel is distributed among them by
+// size. Lower = more size-faithful spacing; higher = more even. Range (0, 1).
 const MIN_GAP_RATIO = 0.4;
+
+// An empty tier between two full ones gets this fraction of the travel — near
+// zero, so its two stops almost touch and the reader sees there is a band with
+// nothing in it, without it claiming room a full tier would. Leading and trailing
+// empties get nothing at all (they collapse onto an end); see `snapPositions`.
+const INTERIOR_EMPTY_GAP = 0.02;
+// …but never more than this much of the rail for all interior empties together,
+// so a freak list of many empty bands can't crowd out the real ones.
+const INTERIOR_EMPTY_BUDGET = 0.2;
 
 /** Horizontal inset (px) that keeps the slider's end dots off the rail edges.
  *  Must stay in sync with `--inset` in src/styles/app.css. */
@@ -40,23 +49,84 @@ export function tierNoteAt(g: Group, depth: number): TierNote | undefined {
 }
 
 /** Snap positions (fractions 0…1 of the thumb travel): one per step boundary,
- *  including both ends. */
+ *  including both ends.
+ *
+ *  An empty tier is spaced by where it sits, because that is what the reader needs
+ *  to see. Empty bands at the famous (left) or least-famous (right) end collapse
+ *  onto that end — their first perceptible stop is the one that brings in real
+ *  entries — while an empty band between two full ones keeps a hair of travel, so
+ *  the reader can tell one stop carries two condition steps with nothing between.
+ *  The collapsed end stops are still returned (and rendered); `nearestIndex`'s
+ *  low-index tie-break keeps a pointer from ever landing on one. */
 export function snapPositions(g: Group): number[] {
   const sizes = tierSizes(g);
   const n = sizes.length;
   // No steps, no travel — and the divisions below would be by zero.
   if (n === 0) return [0];
-  const total = sizes.reduce((a, s) => a + s, 0) || 1;
-  const base = MIN_GAP_RATIO / n; // minimum gap, as a fraction of full travel
-  const scale = 1 - n * base; // remaining travel distributed by tier size
+
+  const isEmpty = sizes.map((s) => s === 0);
+  let lead = 0;
+  while (lead < n && isEmpty[lead]) lead++;
+  let trail = n;
+  while (trail > lead && isEmpty[trail - 1]) trail--;
+  // Between the collapsed ends: the tiers that get room. Empty ones there take a
+  // sliver each; full ones share the rest by size.
+  const interior: number[] = [];
+  const full: number[] = [];
+  for (let i = lead; i < trail; i++) (isEmpty[i] ? interior : full).push(i);
+
+  const gaps = new Array(n).fill(0);
+  const eps = interior.length
+    ? Math.min(INTERIOR_EMPTY_GAP, INTERIOR_EMPTY_BUDGET / interior.length)
+    : 0;
+  for (const i of interior) gaps[i] = eps;
+
+  if (full.length === 0) {
+    // Nothing but empty tiers (or only leading/trailing runs): no size to weigh,
+    // so spread the stops evenly rather than piling them on one end.
+    for (let i = 0; i < n; i++) gaps[i] = 1 / n;
+  } else {
+    const travel = 1 - eps * interior.length; // what the full tiers divide up
+    const total = full.reduce((a, i) => a + sizes[i], 0) || 1;
+    const base = (MIN_GAP_RATIO / full.length) * travel;
+    const scale = travel - base * full.length; // distributed by tier size
+    for (const i of full) gaps[i] = base + scale * (sizes[i] / total);
+  }
+
   const pos = [0];
   let acc = 0;
-  for (let i = 0; i < n; i++) {
-    acc += base + scale * (sizes[i] / total);
-    pos.push(acc);
-  }
+  for (let i = 0; i < n; i++) pos.push((acc += gaps[i]));
   pos[n] = 1; // guard against float drift
   return pos;
+}
+
+/** Move a keyboard step past any stops collapsed onto the current pixel, so an
+ *  arrow press shifts the thumb whenever it can. Leading and trailing empty tiers
+ *  share a position with an end (`snapPositions`), and stepping onto one would
+ *  look like nothing happened. `target` is what a plain ±1 (or Home/End) landed
+ *  on; the result keeps its direction and stays in range. */
+export function skipCollapsed(pos: number[], current: number, target: number): number {
+  if (target === current) return target;
+  const dir = target > current ? 1 : -1;
+  let d = target;
+  while (d > 0 && d < pos.length - 1 && pos[d] === pos[current]) d += dir;
+  return d;
+}
+
+/** The ruler's hover text at a given depth, when the list declares one — the
+ *  condition it has just brought in, or, at its leftmost stop, what it is ordered
+ *  by. `resolve` renders a localized string in the interface language. Returns
+ *  undefined for a list with no `rulerTooltip`, so the caller can fall back. */
+export function rulerTip(
+  g: Group,
+  depth: number,
+  resolve: (s: LocalizedString) => string,
+): string | undefined {
+  const rt = g.rulerTooltip;
+  if (!rt) return undefined;
+  if (depth <= 0) return resolve(rt.empty);
+  const cond = g.tierConditions?.[depth - 1];
+  return resolve(rt.text).replace("{condition}", cond ? resolve(cond) : "");
 }
 
 export function nearestIndex(pos: number[], frac: number): number {

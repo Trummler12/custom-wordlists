@@ -31,6 +31,7 @@ function normalizedGroups(data: Topic): Group[] {
       ...(data.words ? { words: data.words } : {}),
       ...(data.tiers ? { tiers: data.tiers } : {}),
       ...(data.tierConditions ? { tierConditions: data.tierConditions } : {}),
+      ...(data.rulerTooltip ? { rulerTooltip: data.rulerTooltip } : {}),
     };
     synthGroups.set(data, (cached = [g]));
   }
