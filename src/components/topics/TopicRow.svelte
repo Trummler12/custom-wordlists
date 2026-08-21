@@ -40,6 +40,9 @@
   const forcedEnglish = $derived(lang.isForcedEnglish(topic));
 
   const name = $derived(topics.topicName(topic));
+  // The long form on hover, and its hitbox spans the icon too — so a topic with an
+  // empty row label (the Antarctica cricket, icon only) still reveals it.
+  const titleTip = $derived(name.short !== name.long ? name.long : undefined);
 
   // The ruler a tier note talks about is the one on this row.
   const tierTipId = $derived(`tier-${topic.id}`);
@@ -91,8 +94,8 @@
         use:setIndeterminate={selection.topicPartial(topic)}
         onchange={() => selection.toggleTopic(topic)}
       />
-      <span class="icon" aria-hidden="true">{topic.icon ?? "•"}</span>
-      <span class="title" title={name.short !== name.long ? name.long : undefined}>
+      <span class="icon" aria-hidden="true" title={titleTip}>{topic.icon ?? "•"}</span>
+      <span class="title" title={titleTip}>
         {name.short}
       </span>
       {#if langNote}

@@ -54,6 +54,7 @@
   <h3 class="category-title">
     <label for={id}>
       {#if topics.categoryIcon(node)}<span class="icon" aria-hidden="true"
+          title={name.short !== name.long ? name.long : undefined}
           >{topics.categoryIcon(node)}</span
         > {/if}<span title={name.short !== name.long ? name.long : undefined}>{name.short}</span>
     </label>
