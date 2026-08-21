@@ -3,53 +3,47 @@
   "title": {"en":"Sports","de":"Sportarten"},
   "icon": "🏟️",
   "description": "Olympic and mainstream sporting disciplines (English names). Fame tiers by popularity (tier 0 = most mainstream).",
-  "groups": [
-    {
-      "id": "disciplines",
-      "title": {"en":"Disciplines","de":"Sportarten"},
-      "tiers": [
-        [
-          {"en":"Athletics","de":"Leichtathletik"},
-          {"en":"Swimming","de":"Schwimmen"},
-          {"en":"Gymnastics","de":"Turnen"},
-          {"en":"Football","de":"Fußball"},
-          "Basketball",
-          "Tennis",
-          {"en":"Boxing","de":"Boxen"},
-          {"en":"Cycling","de":"Radsport"},
-          "Volleyball",
-          "Golf"
-        ],
+  "tiers": [
+    [
+      {"en":"Athletics","de":"Leichtathletik"},
+      {"en":"Swimming","de":"Schwimmen"},
+      {"en":"Gymnastics","de":"Turnen"},
+      {"en":"Football","de":"Fußball"},
+      "Basketball",
+      "Tennis",
+      {"en":"Boxing","de":"Boxen"},
+      {"en":"Cycling","de":"Radsport"},
+      "Volleyball",
+      "Golf"
+    ],
 
-        [
-          {"en":"Table Tennis","de":"Tischtennis"},
-          "Badminton",
-          "Handball",
-          "Judo",
-          {"en":"Wrestling","de":"Ringen"},
-          {"en":"Rowing","de":"Rudern"},
-          {"en":"Weightlifting","de":"Gewichtheben"},
-          {"en":"Fencing","de":"Fechten"},
-          {"en":"Archery","de":"Bogenschießen"},
-          {"en":"Sailing","de":"Segeln"}
-        ],
+    [
+      {"en":"Table Tennis","de":"Tischtennis"},
+      "Badminton",
+      "Handball",
+      "Judo",
+      {"en":"Wrestling","de":"Ringen"},
+      {"en":"Rowing","de":"Rudern"},
+      {"en":"Weightlifting","de":"Gewichtheben"},
+      {"en":"Fencing","de":"Fechten"},
+      {"en":"Archery","de":"Bogenschießen"},
+      {"en":"Sailing","de":"Segeln"}
+    ],
 
-        [
-          {"en":"Diving","de":"Wasserspringen"},
-          {"en":"Equestrian","de":"Reiten"},
-          {"en":"Shooting","de":"Schießen"},
-          {"en":"Canoeing","de":"Kanu"},
-          "Triathlon",
-          "Hockey",
-          "Rugby",
-          "Skateboarding",
-          {"en":"Surfing","de":"Surfen"},
-          "Taekwondo"
-        ]
-      ]
-    }
+    [
+      {"en":"Diving","de":"Wasserspringen"},
+      {"en":"Equestrian","de":"Reiten"},
+      {"en":"Shooting","de":"Schießen"},
+      {"en":"Canoeing","de":"Kanu"},
+      "Triathlon",
+      "Hockey",
+      "Rugby",
+      "Skateboarding",
+      {"en":"Surfing","de":"Surfen"},
+      "Taekwondo"
+    ]
   ],
   "presets": [
-    {"id":"all","title":"All disciplines","groups":["disciplines"]}
+    {"id":"all","title":"All disciplines","groups":["sports"]}
   ]
 }
