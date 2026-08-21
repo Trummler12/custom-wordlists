@@ -1,0 +1,149 @@
+Africa
+Botswana
+Egypt
+Eswatini
+Ghana
+Kenya
+Lesotho
+Madagascar
+Mali
+Namibia
+Nigeria
+Réunion
+Rwanda
+São Tomé and Príncipe
+Senegal
+South Africa
+Tanzania
+Tunisia
+Uganda
+Antarctica
+Antarctica (McMurdo Station)
+Asia
+Afghanistan
+Bangladesh
+Bhutan
+British Indian Ocean Territory
+Cambodia
+China
+Christmas Island
+Cocos (Keeling) Islands
+Hong Kong
+India
+Indonesia
+Iraq
+Israel
+Japan
+Jordan
+Kazakhstan
+Kyrgyzstan
+Laos
+Lebanon
+Macao
+Malaysia
+Mongolia
+Nepal
+Oman
+Pakistan
+Palestine
+Philippines
+Qatar
+Russia
+Singapore
+South Korea
+Sri Lanka
+Syria
+Taiwan
+Thailand
+United Arab Emirates
+Vietnam
+Europe
+Åland
+Albania
+Andorra
+Austria
+Belarus
+Belgium
+Bosnia and Herzegovina
+Bulgaria
+Croatia
+Cyprus
+Czech Republic
+Denmark
+Estonia
+Faroe Islands
+Finland
+France
+Georgia
+Germany
+Gibraltar
+Greece
+Hungary
+Iceland
+Ireland
+Isle of Man
+Italy
+Jersey
+Kosovo
+Latvia
+Liechtenstein
+Lithuania
+Luxembourg
+Malta
+Monaco
+Montenegro
+Netherlands
+North Macedonia
+Norway
+Poland
+Portugal
+Romania
+San Marino
+Serbia
+Slovakia
+Slovenia
+Spain
+Svalbard and Jan Mayen
+Sweden
+Switzerland
+Turkey
+Ukraine
+United Kingdom
+North America
+Bermuda
+Canada
+Costa Rica
+Curaçao
+Dominican Republic
+Greenland
+Guatemala
+Martinique
+Mexico
+Panama
+Puerto Rico
+Saint Pierre and Miquelon
+United States
+United States Virgin Islands
+Oceania
+American Samoa
+Australia
+Guam
+New Zealand
+Northern Mariana Islands
+Pitcairn Islands
+United States Minor Outlying Islands
+Vanuatu
+South America
+Argentina
+Bolivia
+Brazil
+Chile
+Colombia
+Ecuador
+Falkland Islands
+Paraguay
+Peru
+South Georgia and the South Sandwich Islands
+Uruguay
+
+https://geohints.com/meta/countries - Only show countries with offical coverage: true
