@@ -89,7 +89,8 @@ async function main() {
   const zByName = new Map([...en].map(([z, name]) => [name.toLowerCase(), z]));
 
   const topic = JSON.parse(await readFile(TOPIC, "utf8"));
-  const group = topic.groups[0];
+  // A flat topic is its own group; a grouped one still has exactly the one.
+  const group = topic.groups?.[0] ?? topic;
 
   const missing = [];
   const gaps = [];

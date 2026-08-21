@@ -203,15 +203,9 @@ async function main() {
     ],
     lastUpdated: new Date().toISOString().slice(0, 10),
     lastChecked: new Date().toISOString().slice(0, 10),
-    groups: [
-      {
-        id: "continents",
-        title: { en: "Continents & Plates", de: "Kontinente & Platten" },
-        defaultNames: "both",
-        tierNotes: [{ fromTier: 4, icon: "ℹ️", text: TIER3_NOTE }],
-        tiers,
-      },
-    ],
+    defaultNames: "both",
+    tierNotes: [{ fromTier: 4, icon: "ℹ️", text: TIER3_NOTE }],
+    tiers,
   };
 
   const text = serializeTopic(topic);

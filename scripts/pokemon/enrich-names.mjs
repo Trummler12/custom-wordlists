@@ -99,7 +99,7 @@ async function main() {
       .sort((a, b) => b[1] - a[1] || a[0] - b[0])[0]?.[0];
 
   const topic = JSON.parse(await readFile(TOPIC, "utf8"));
-  const group = topic.groups[0];
+  const group = topic.groups?.[0] ?? topic;
   const enOf = (e) => (typeof e === "string" ? e : e.en);
   const deOf = (e) => (typeof e === "string" ? e : e.de);
 

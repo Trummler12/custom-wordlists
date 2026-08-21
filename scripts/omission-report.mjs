@@ -42,7 +42,7 @@ async function main() {
   let listed = 0;
   for (const file of files.sort()) {
     const topic = JSON.parse(await readFile(file, "utf8"));
-    for (const group of topic.groups) {
+    for (const group of topic.groups ?? [topic]) {
       const rules = rulesOf(group);
       if (rules.length === 0) continue;
       listed++;

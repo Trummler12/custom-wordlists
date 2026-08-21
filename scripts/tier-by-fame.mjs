@@ -78,9 +78,10 @@ async function main() {
   const topic = JSON.parse(await readFile(topicPath, "utf8"));
   const rows = parseFame(await readFile(famePath, "utf8"));
 
-  if (topic.groups.length !== 1) throw new Error(`${topicPath}: expected exactly one group`);
-  const group = topic.groups[0];
-  if (!group.words) throw new Error(`${topicPath}: group is already tiered`);
+  // A flat topic is its own group; a grouped one must carry exactly the one.
+  if (topic.groups && topic.groups.length !== 1) throw new Error(`${topicPath}: expected exactly one group`);
+  const group = topic.groups?.[0] ?? topic;
+  if (!group.words) throw new Error(`${topicPath}: already tiered`);
 
   if (rows.length !== group.words.length) {
     throw new Error(`${topicPath}: ${group.words.length} entries but ${rows.length} fame rows`);

@@ -138,7 +138,7 @@ async function main() {
       "Names: https://github.com/umpirsky/language-list (CLDR)",
       "Speakers: https://www.languagecourse.net/languages-worldwide",
     ],
-    groups: [{ id: "languages", title: { en: "Languages", de: "Sprachen" }, tiers }],
+    tiers,
   };
 
   const localized = words.filter((w) => typeof w !== "string").length;
