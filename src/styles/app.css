@@ -233,9 +233,9 @@ header {
   display: flex;
   align-items: baseline;
   gap: 0.5rem;
-  flex: 1;
-  /* Left inset trimmed to meet the expander above; the row gap is left alone, since
-     it also spaces the controls on the far side. */
+  /* Content-width, not flex:1 — so the Names dropdown sits against the title like
+     a group row's, rather than being pushed to the far side. `.meta`'s margin
+     still right-aligns the count. */
   padding: 0.5rem 0.2rem 0.5rem 0.1rem;
   cursor: pointer;
 }
