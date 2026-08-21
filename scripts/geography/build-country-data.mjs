@@ -99,16 +99,19 @@ const MORE = {
   "zh-Hans": (n) => `${n}及以上`,
   "zh-Hant": (n) => `${n}及以上`,
 };
-const UNDER = {
-  en: (n) => `under ${n}`,
-  de: (n) => `unter ${n}`,
-  es: (n) => `menos de ${n}`,
-  fr: (n) => `moins de ${n}`,
-  it: (n) => `meno di ${n}`,
-  ja: (n) => `${n}未満`,
-  ko: (n) => `${n} 미만`,
-  "zh-Hans": (n) => `不足${n}`,
-  "zh-Hant": (n) => `不足${n}`,
+// The last tier is the cumulative floor: the ruler selects everything down to it,
+// so the honest bound is "more than 0", not "under 1 million" — which would read
+// as excluding the larger tiers the selection has in fact already swept in.
+const ABOVE_ZERO = {
+  en: "more than 0",
+  de: "mehr als 0",
+  es: "más de 0",
+  fr: "plus de 0",
+  it: "più di 0",
+  ja: "0より多い",
+  ko: "0보다 많음",
+  "zh-Hans": "多于0",
+  "zh-Hant": "多於0",
 };
 /** `tierConditions`, one locString per tier. */
 function tierConditions() {
@@ -118,7 +121,7 @@ function tierConditions() {
     cond((l) => MORE[l](NUM[l][1])),
     cond((l) => MORE[l](NUM[l][2])),
     cond((l) => MORE[l](NUM[l][3])),
-    cond((l) => UNDER[l](NUM[l][3])),
+    cond((l) => ABOVE_ZERO[l]),
   ];
 }
 
