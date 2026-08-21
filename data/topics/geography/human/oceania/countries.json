@@ -1,0 +1,44 @@
+{
+  "id": "oceania-countries",
+  "title": {"en":"Countries","de":"Länder","es":"Países","fr":"Pays","it":"Paesi","ja":"国","ko":"국가","zh-Hans":"国家","zh-Hant":"國家"},
+  "languages": ["en","de","es","fr","it","ja","ko","zh-Hans","zh-Hant"],
+  "sources": ["Names & population: Wikidata sovereign states (P31 Q3624078) — https://www.wikidata.org/wiki/Q3624078 (see scripts/geography/dump-country-data.mjs)"],
+  "lastUpdated": "2026-08-21",
+  "lastChecked": "2026-08-21",
+  "defaultNames": "short",
+  "tiers": [
+    [],
+
+    [
+      {"en":"Australia","de":"Australien","fr":"Australie","ja":"オーストラリア","ko":"오스트레일리아","zh-Hans":"澳大利亚","zh-Hant":"澳大利亞"}
+    ],
+
+    [
+      {"en":"Papua New Guinea","de":"Papua-Neuguinea","es":"Papúa Nueva Guinea","fr":"Papouasie-Nouvelle-Guinée","it":"Papua Nuova Guinea","ja":"パプアニューギニア","ko":"파푸아뉴기니","zh-Hans":"巴布亚新几内亚","zh-Hant":"巴布亞紐幾內亞"},
+      {"en":"New Zealand","de":"Neuseeland","es":"Nueva Zelanda","fr":"Nouvelle-Zélande","it":"Nuova Zelanda","ja":"ニュージーランド","ko":"뉴질랜드","zh-Hans":"新西兰","zh-Hant":"紐西蘭"}
+    ],
+
+    [],
+
+    [
+      {"en":"Fiji","de":"Fidschi","es":"Fiyi","fr":"Fidji","it":"Figi","ja":"フィジー","ko":"피지","zh-Hans":"斐济","zh-Hant":"斐濟"},
+      {"en":"Solomon Islands","de":"Salomonen","es":"Islas Salomón","fr":"Îles Salomon","it":"Isole Salomone","ja":"ソロモン諸島","ko":"솔로몬 제도","zh-Hans":"所罗门群岛","zh-Hant":"索羅門群島"},
+      {"en":"Vanuatu","ja":"バヌアツ","ko":"바누아투","zh-Hans":"瓦努阿图","zh-Hant":"萬那杜"},
+      {"en":"Samoa","ja":"サモア","ko":"사모아","zh-Hans":"萨摩亚","zh-Hant":"薩摩亞"},
+      {"en":"Kiribati","ja":"キリバス","ko":"키리바시","zh-Hans":"基里巴斯","zh-Hant":"吉里巴斯"},
+      {"en":"Tonga","ja":"トンガ","ko":"통가","zh-Hans":"汤加","zh-Hant":"東加"},
+      {"en":"Federated States of Micronesia","de":"Föderierte Staaten von Mikronesien","es":"Estados Federados de Micronesia","fr":"États fédérés de Micronésie","it":"Stati Federati di Micronesia","ja":"ミクロネシア連邦","ko":"미크로네시아 연방","zh-Hans":"密克罗尼西亚联邦","zh-Hant":"密克羅尼西亞聯邦"},
+      {"en":"Marshall Islands","de":"Marshallinseln","es":"Islas Marshall","fr":"Îles Marshall","it":"Isole Marshall","ja":"マーシャル諸島","ko":"마셜 제도","zh-Hans":"马绍尔群岛","zh-Hant":"馬紹爾群島"},
+      {"en":"Palau","es":"Palaos","fr":"Palaos","ja":"パラオ","ko":"팔라우","zh-Hans":"帕劳","zh-Hant":"帛琉"},
+      {"en":"Nauru","de":"Naoero","ja":"ナウル","ko":"나우루","zh-Hans":"瑙鲁","zh-Hant":"瑙魯"},
+      {"en":"Tuvalu","ja":"ツバル","ko":"투발루","zh-Hans":"图瓦卢","zh-Hant":"吐瓦魯"}
+    ]
+  ],
+  "tierConditions": [
+    {"en":"100 million or more","de":"100 Millionen und mehr","es":"100 millones o más","fr":"100 millions ou plus","it":"100 milioni o più","ja":"1億以上","ko":"1억 이상","zh-Hans":"1亿及以上","zh-Hant":"1億及以上"},
+    {"en":"20 million or more","de":"20 Millionen und mehr","es":"20 millones o más","fr":"20 millions ou plus","it":"20 milioni o più","ja":"2000万以上","ko":"2000만 이상","zh-Hans":"2000万及以上","zh-Hant":"2000萬及以上"},
+    {"en":"5 million or more","de":"5 Millionen und mehr","es":"5 millones o más","fr":"5 millions ou plus","it":"5 milioni o più","ja":"500万以上","ko":"500만 이상","zh-Hans":"500万及以上","zh-Hant":"500萬及以上"},
+    {"en":"1 million or more","de":"1 Million und mehr","es":"1 millón o más","fr":"1 million ou plus","it":"1 milione o più","ja":"100万以上","ko":"100만 이상","zh-Hans":"100万及以上","zh-Hant":"100萬及以上"},
+    {"en":"under 1 million","de":"unter 1 Million","es":"menos de 1 millón","fr":"moins de 1 million","it":"meno di 1 milione","ja":"100万未満","ko":"100만 미만","zh-Hans":"不足100万","zh-Hant":"不足100萬"}
+  ]
+}

@@ -1,0 +1,81 @@
+{
+  "id": "europe-capitals",
+  "title": {"en":"Capitals","de":"Hauptstädte","es":"Capitales","fr":"Capitales","it":"Capitali","ja":"首都","ko":"수도","zh-Hans":"首都","zh-Hant":"首都"},
+  "languages": ["en","de","es","fr","it","ja","ko","zh-Hans","zh-Hant"],
+  "sources": ["Names: Wikidata capitals (P36) of the sovereign states — https://www.wikidata.org/wiki/Property:P36 (see scripts/geography/dump-country-data.mjs)"],
+  "lastUpdated": "2026-08-21",
+  "lastChecked": "2026-08-21",
+  "defaultNames": "short",
+  "tiers": [
+    [
+      {"en":"Moscow","de":"Moskau","es":"Moscú","fr":"Moscou","it":"Mosca","ja":"モスクワ","ko":"모스크바","zh-Hans":"莫斯科","zh-Hant":"莫斯科"}
+    ],
+
+    [
+      {"en":"Ankara","ja":"アンカラ","ko":"앙카라","zh-Hans":"安卡拉","zh-Hant":"安卡拉"},
+      {"en":"Berlin","es":"Berlín","it":"Berlino","ja":"ベルリン","ko":"베를린","zh-Hans":"柏林","zh-Hant":"柏林"},
+      {"en":"Paris","es":"París","it":"Parigi","ja":"パリ","ko":"파리","zh-Hans":"巴黎","zh-Hant":"巴黎"},
+      {"en":"London","es":"Londres","fr":"Londres","it":"Londra","ja":"ロンドン","ko":"런던","zh-Hans":"伦敦","zh-Hant":"倫敦"},
+      {"en":"Rome","de":"Rom","es":"Roma","it":"Roma","ja":"ローマ","ko":"로마","zh-Hans":"罗马","zh-Hant":"羅馬"},
+      {"en":"Madrid","ja":"マドリード","ko":"마드리드","zh-Hans":"马德里","zh-Hant":"馬德里"},
+      {"en":"Kyiv","de":"Kiew","es":"Kiev","fr":"Kiev","it":"Kiev","ja":"キーウ","ko":"키이우","zh-Hans":"基辅","zh-Hant":"基輔"},
+      {"en":"Warsaw","de":"Warschau","es":"Varsovia","fr":"Varsovie","it":"Varsavia","ja":"ワルシャワ","ko":"바르샤바","zh-Hans":"华沙","zh-Hant":"華沙"},
+      {"en":"Astana","es":"Astaná","ja":"アスタナ","ko":"아스타나","zh-Hans":"阿斯塔纳","zh-Hant":"阿斯塔納"}
+    ],
+
+    [
+      {"en":"Bucharest","de":"Bukarest","es":"Bucarest","fr":"Bucarest","it":"Bucarest","ja":"ブカレスト","ko":"부쿠레슈티","zh-Hans":"布加勒斯特","zh-Hant":"布加勒斯特"},
+      {"en":"Amsterdam","es":"Ámsterdam","ja":"アムステルダム","ko":"암스테르담","zh-Hans":"阿姆斯特丹","zh-Hant":"阿姆斯特丹"},
+      {"en":"Brussels","de":"Brüssel","es":"Bruselas","fr":"Bruxelles","it":"Bruxelles","ja":"ブリュッセル市","ko":"브뤼셀","zh-Hans":"布鲁塞尔","zh-Hant":"布魯塞爾"},
+      {"en":"Prague","de":"Prag","es":"Praga","it":"Praga","ja":"プラハ","ko":"프라하","zh-Hans":"布拉格","zh-Hant":"布拉格"},
+      {"en":"Stockholm","es":"Estocolmo","it":"Stoccolma","ja":"ストックホルム","ko":"스톡홀름","zh-Hans":"斯德哥尔摩","zh-Hant":"斯德哥爾摩"},
+      {"en":"Athens","de":"Athen","es":"Atenas","fr":"Athènes","it":"Atene","ja":"アテネ","ko":"아테네","zh-Hans":"雅典","zh-Hant":"雅典"},
+      {"en":"Lisbon","de":"Lissabon","es":"Lisboa","fr":"Lisbonne","it":"Lisbona","ja":"リスボン","ko":"리스본","zh-Hans":"里斯本","zh-Hant":"里斯本"},
+      {"en":"Budapest","ja":"ブダペスト","ko":"부다페스트","zh-Hans":"布达佩斯","zh-Hant":"布達佩斯"},
+      {"en":"Bern","es":"Berna","fr":"Berne","it":"Berna","ja":"ベルン","ko":"베른","zh-Hans":"伯尔尼","zh-Hant":"伯恩"},
+      {"en":"Minsk","ja":"ミンスク","ko":"민스크","zh-Hans":"明斯克","zh-Hant":"明斯克"},
+      {"en":"Vienna","de":"Wien","es":"Viena","fr":"Vienne","ja":"ウィーン","ko":"빈","zh-Hans":"维也纳","zh-Hant":"維也納"},
+      {"en":"Belgrade","de":"Belgrad","es":"Belgrado","it":"Belgrado","ja":"ベオグラード","ko":"베오그라드","zh-Hans":"贝尔格莱德","zh-Hant":"貝爾格勒"},
+      {"en":"Sofia","es":"Sofía","ja":"ソフィア","ko":"소피아","zh-Hans":"索非亚","zh-Hant":"索菲亞"},
+      {"en":"Copenhagen","de":"Kopenhagen","es":"Copenhague","fr":"Copenhague","it":"Copenaghen","ja":"コペンハーゲン","ko":"코펜하겐","zh-Hans":"哥本哈根","zh-Hant":"哥本哈根"},
+      {"en":"Helsinki","ja":"ヘルシンキ","ko":"헬싱키","zh-Hans":"赫尔辛基","zh-Hant":"赫爾辛基"},
+      {"en":"Oslo","ja":"オスロ","ko":"오슬로","zh-Hans":"奥斯陆","zh-Hant":"奧斯陸"},
+      {"en":"Bratislava","ja":"ブラチスラヴァ","ko":"브라티슬라바","zh-Hans":"布拉迪斯拉发","zh-Hant":"布拉提斯拉瓦"},
+      {"en":"Dublin","es":"Dublín","it":"Dublino","ja":"ダブリン","ko":"더블린","zh-Hant":"都柏林","?":["zh-Hans"]}
+    ],
+
+    [
+      {"en":"Tbilisi","de":"Tiflis","es":"Tiflis","fr":"Tbilissi","ja":"トビリシ","ko":"트빌리시","zh-Hans":"第比利斯","zh-Hant":"提比里斯"},
+      {"en":"Zagreb","it":"Zagabria","ja":"ザグレブ","ko":"자그레브","zh-Hans":"萨格勒布","zh-Hant":"札格雷布"},
+      {"en":"Sarajevo","ja":"サラエヴォ","ko":"사라예보","zh-Hans":"萨拉热窝","zh-Hant":"塞拉耶佛"},
+      {"en":"Vilnius","es":"Vilna","ja":"ヴィルニュス","ko":"빌뉴스","zh-Hans":"维尔纽斯","zh-Hant":"維爾紐斯"},
+      {"en":"Tirana","ja":"ティラナ","ko":"티라나","zh-Hans":"地拉那","zh-Hant":"地拉那"},
+      {"en":"Chișinău","de":"Chișinău / Kischinjow","es":"Chisináu","ja":"キシナウ","ko":"키시너우","zh-Hans":"基希讷乌","zh-Hant":"基希涅夫"},
+      {"en":"Ljubljana","es":"Liubliana","it":"Lubiana","ja":"リュブリャナ","ko":"류블랴나","zh-Hans":"卢布尔雅那","zh-Hant":"盧比安納"},
+      {"en":"Riga","ja":"リガ","ko":"리가","zh-Hans":"里加","zh-Hant":"里加"},
+      {"en":"Skopje","es":"Skopie","ja":"スコピエ","ko":"스코페","zh-Hans":"斯科普里","zh-Hant":"史高比耶"},
+      {"en":"Pristina","it":"Priština","ja":"プリシュティナ","ko":"프리슈티나","zh-Hans":"普里什蒂纳","zh-Hant":"普里斯提納"},
+      {"en":"Tallinn","es":"Tallin","ja":"タリン","ko":"탈린","zh-Hans":"塔林","zh-Hant":"塔林"},
+      {"en":"Nicosia","de":"Nikosia","fr":"Nicosie","ja":"ニコシア","ko":"니코시아","zh-Hans":"尼科西亚","zh-Hant":"尼古西亞"}
+    ],
+
+    [
+      {"en":"Luxembourg","de":"Luxemburg","es":"Luxemburgo","it":"Lussemburgo","ja":"ルクセンブルク市","ko":"룩셈부르크","zh-Hans":"卢森堡市","zh-Hant":"盧森堡市"},
+      {"en":"Podgorica","ja":"ポドゴリツァ","ko":"포드고리차","zh-Hans":"波德戈里察","zh-Hant":"波德戈里察"},
+      {"en":"Valletta","es":"La Valeta","fr":"La Valette","it":"La Valletta","ja":"バレッタ","ko":"발레타","zh-Hans":"瓦莱塔","zh-Hant":"瓦萊塔"},
+      {"en":"Reykjavík","es":"Reikiavik","fr":"Reykjavik","ja":"レイキャヴィーク","ko":"레이캬비크","zh-Hans":"雷克雅未克","zh-Hant":"雷克雅未克"},
+      {"en":"Andorra la Vella","es":"Andorra la Vieja","fr":"Andorre-la-Vieille","ja":"アンドラ・ラ・ベリャ","ko":"안도라라벨랴","zh-Hans":"安道尔城","zh-Hant":"老安道爾"},
+      {"en":"Monaco","es":"Mónaco","it":"Principato di Monaco","ja":"モナコ","ko":"모나코","zh-Hans":"摩纳哥","zh-Hant":"摩納哥"},
+      {"en":"Vaduz","ja":"ファドゥーツ","ko":"파두츠","zh-Hans":"瓦杜兹","zh-Hant":"華杜茲"},
+      {"en":"San Marino","fr":"Saint-Marin","it":"Città di San Marino","ja":"サンマリノ市","ko":"산마리노","zh-Hans":"圣马力诺","zh-Hant":"聖馬力諾"},
+      {"en":"Vatican City","de":"Vatikanstadt","es":"Ciudad del Vaticano","fr":"Vatican","it":"Città del Vaticano","ja":"バチカン","ko":"바티칸 시국","zh-Hans":"梵蒂冈","zh-Hant":"梵蒂岡"}
+    ]
+  ],
+  "tierConditions": [
+    {"en":"100 million or more","de":"100 Millionen und mehr","es":"100 millones o más","fr":"100 millions ou plus","it":"100 milioni o più","ja":"1億以上","ko":"1억 이상","zh-Hans":"1亿及以上","zh-Hant":"1億及以上"},
+    {"en":"20 million or more","de":"20 Millionen und mehr","es":"20 millones o más","fr":"20 millions ou plus","it":"20 milioni o più","ja":"2000万以上","ko":"2000만 이상","zh-Hans":"2000万及以上","zh-Hant":"2000萬及以上"},
+    {"en":"5 million or more","de":"5 Millionen und mehr","es":"5 millones o más","fr":"5 millions ou plus","it":"5 milioni o più","ja":"500万以上","ko":"500만 이상","zh-Hans":"500万及以上","zh-Hant":"500萬及以上"},
+    {"en":"1 million or more","de":"1 Million und mehr","es":"1 millón o más","fr":"1 million ou plus","it":"1 milione o più","ja":"100万以上","ko":"100만 이상","zh-Hans":"100万及以上","zh-Hant":"100萬及以上"},
+    {"en":"under 1 million","de":"unter 1 Million","es":"menos de 1 millón","fr":"moins de 1 million","it":"meno di 1 milione","ja":"100万未満","ko":"100만 미만","zh-Hans":"不足100万","zh-Hant":"不足100萬"}
+  ]
+}

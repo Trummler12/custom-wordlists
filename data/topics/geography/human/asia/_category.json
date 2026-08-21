@@ -1,0 +1,15 @@
+{
+  "title": {
+    "en": "Asia",
+    "de": "Asien",
+    "es": "Asia",
+    "fr": "Asie",
+    "it": "Asia",
+    "ja": "アジア",
+    "ko": "아시아",
+    "zh-Hans": "亚洲",
+    "zh-Hant": "亞洲"
+  },
+  "icon": "🌏",
+  "order": 1
+}

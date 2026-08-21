@@ -1,0 +1,81 @@
+{
+  "id": "europe-countries",
+  "title": {"en":"Countries","de":"Länder","es":"Países","fr":"Pays","it":"Paesi","ja":"国","ko":"국가","zh-Hans":"国家","zh-Hant":"國家"},
+  "languages": ["en","de","es","fr","it","ja","ko","zh-Hans","zh-Hant"],
+  "sources": ["Names & population: Wikidata sovereign states (P31 Q3624078) — https://www.wikidata.org/wiki/Q3624078 (see scripts/geography/dump-country-data.mjs)"],
+  "lastUpdated": "2026-08-21",
+  "lastChecked": "2026-08-21",
+  "defaultNames": "short",
+  "tiers": [
+    [
+      {"en":"Russia","de":"Russland","es":"Rusia","fr":"Russie","ja":"ロシア","ko":"러시아","zh-Hans":"俄罗斯","zh-Hant":"俄羅斯"}
+    ],
+
+    [
+      {"en":"Turkey","de":"Türkei","es":"Turquía","fr":"Turquie","it":"Turchia","ja":"トルコ","ko":"튀르키예","zh-Hans":"土耳其","zh-Hant":"土耳其"},
+      {"en":"Germany","de":"Deutschland","es":"Alemania","fr":"Allemagne","it":"Germania","ja":"ドイツ","ko":"독일","zh-Hans":"德国","zh-Hant":"德國"},
+      {"en":"France","de":"Frankreich","es":"Francia","it":"Francia","ja":"フランス","ko":"프랑스","zh-Hans":"法国","zh-Hant":"法國"},
+      {"en":"United Kingdom","de":"Vereinigtes Königreich","es":"Reino Unido","fr":"Royaume-Uni","it":"Regno Unito","ja":"イギリス","ko":"영국","zh-Hans":"英国","zh-Hant":"英國"},
+      {"en":"Italy","de":"Italien","es":"Italia","fr":"Italie","it":"Italia","ja":"イタリア","ko":"이탈리아","zh-Hans":"意大利","zh-Hant":"義大利"},
+      {"en":"Spain","de":"Spanien","es":"España","fr":"Espagne","it":"Spagna","ja":"スペイン王国","ko":"스페인","zh-Hans":"西班牙","zh-Hant":"西班牙"},
+      {"en":"Ukraine","es":"Ucrania","it":"Ucraina","ja":"ウクライナ","ko":"우크라이나","zh-Hans":"乌克兰","zh-Hant":"烏克蘭"},
+      {"en":"Poland","de":"Polen","es":"Polonia","fr":"Pologne","it":"Polonia","ja":"ポーランド","ko":"폴란드","zh-Hans":"波兰","zh-Hant":"波蘭"},
+      {"en":"Kazakhstan","de":"Kasachstan","es":"Kazajistán","it":"Kazakistan","ja":"カザフスタン","ko":"카자흐스탄","zh-Hans":"哈萨克斯坦","zh-Hant":"哈薩克"}
+    ],
+
+    [
+      {"en":"Romania","de":"Rumänien","es":"Rumania","fr":"Roumanie","ja":"ルーマニア","ko":"루마니아","zh-Hans":"罗马尼亚","zh-Hant":"羅馬尼亞"},
+      {"en":{"short":"Netherlands","long":"Kingdom of the Netherlands"},"de":{"short":"Niederlande","long":"Königreich der Niederlande"},"es":{"short":"Países Bajos","long":"Reino de los Países Bajos"},"fr":{"short":"Pays-Bas","long":"Royaume des Pays-Bas"},"it":{"short":"Paesi Bassi","long":"Regno dei Paesi Bassi"},"ja":{"short":"オランダ","long":"オランダ王国"},"ko":{"short":"네덜란드","long":"네덜란드 왕국"},"zh-Hans":{"short":"荷兰","long":"荷兰王国"},"zh-Hant":{"short":"荷蘭","long":"荷蘭王國"}},
+      {"en":"Belgium","de":"Belgien","es":"Bélgica","fr":"Belgique","it":"Belgio","ja":"ベルギー","ko":"벨기에","zh-Hans":"比利时","zh-Hant":"比利時"},
+      {"en":"Czech Republic","de":"Tschechien","es":"República Checa","fr":"Tchéquie","it":"Repubblica Ceca","ja":"チェコ共和国","ko":"체코","zh-Hans":"捷克","zh-Hant":"捷克"},
+      {"en":"Sweden","de":"Schweden","es":"Suecia","fr":"Suède","it":"Svezia","ja":"スウェーデン","ko":"스웨덴","zh-Hans":"瑞典","zh-Hant":"瑞典"},
+      {"en":"Greece","de":"Griechenland","es":"Grecia","fr":"Grèce","it":"Grecia","ja":"ギリシャ","ko":"그리스","zh-Hans":"希腊","zh-Hant":"希臘"},
+      {"en":"Portugal","it":"Portogallo","ja":"ポルトガル","ko":"포르투갈","zh-Hans":"葡萄牙","zh-Hant":"葡萄牙"},
+      {"en":"Hungary","de":"Ungarn","es":"Hungría","fr":"Hongrie","it":"Ungheria","ja":"ハンガリー","ko":"헝가리","zh-Hans":"匈牙利","zh-Hant":"匈牙利"},
+      {"en":"Switzerland","de":"Schweiz","es":"Suiza","fr":"Suisse","it":"Svizzera","ja":"スイス","ko":"스위스","zh-Hans":"瑞士","zh-Hant":"瑞士"},
+      {"en":"Belarus","es":"Bielorrusia","fr":"Biélorussie","it":"Bielorussia","ja":"ベラルーシ","ko":"벨라루스","zh-Hans":"白俄罗斯","zh-Hant":"白俄羅斯"},
+      {"en":"Austria","de":"Österreich","fr":"Autriche","ja":"オーストリア","ko":"오스트리아","zh-Hans":"奥地利","zh-Hant":"奧地利"},
+      {"en":"Serbia","de":"Serbien","fr":"Serbie","ja":"セルビア","ko":"세르비아","zh-Hans":"塞尔维亚","zh-Hant":"塞爾維亞"},
+      {"en":"Bulgaria","de":"Bulgarien","fr":"Bulgarie","ja":"ブルガリア","ko":"불가리아","zh-Hans":"保加利亚","zh-Hant":"保加利亞"},
+      {"en":{"short":"Denmark","long":"Kingdom of Denmark"},"de":{"short":"Dänemark","long":"Königreich Dänemark"},"es":{"short":"Dinamarca","long":"Reino de Dinamarca"},"fr":{"short":"Danemark","long":"Royaume de Danemark"},"it":{"short":"Danimarca","long":"Regno di Danimarca"},"ja":{"short":"デンマーク","long":"デンマーク王国"},"ko":{"short":"덴마크","long":"덴마크 왕국"},"zh-Hans":{"short":"丹麦","long":"丹麦王国"},"zh-Hant":{"short":"丹麥","long":"丹麥王國"}},
+      {"en":"Finland","de":"Finnland","es":"Finlandia","fr":"Finlande","it":"Finlandia","ja":"フィンランド","ko":"핀란드","zh-Hans":"芬兰","zh-Hant":"芬蘭"},
+      {"en":"Norway","de":"Norwegen","es":"Noruega","fr":"Norvège","it":"Norvegia","ja":"ノルウェー王国","ko":"노르웨이","zh-Hans":"挪威","zh-Hant":"挪威"},
+      {"en":"Slovakia","de":"Slowakei","es":"Eslovaquia","fr":"Slovaquie","it":"Slovacchia","ja":"スロバキア","ko":"슬로바키아","zh-Hans":"斯洛伐克","zh-Hant":"斯洛伐克"},
+      {"en":"Ireland","de":"Irland","es":"Irlanda","fr":"Irlande","it":"Irlanda","ja":"アイルランド","ko":"아일랜드","zh-Hans":"爱尔兰","zh-Hant":"愛爾蘭"}
+    ],
+
+    [
+      {"en":"Georgia","de":"Georgien","fr":"Géorgie","ja":"ジョージア","ko":"조지아","zh-Hans":"格鲁吉亚","zh-Hant":"喬治亞"},
+      {"en":"Croatia","de":"Kroatien","es":"Croacia","fr":"Croatie","it":"Croazia","ja":"クロアチア","ko":"크로아티아","zh-Hans":"克罗地亚","zh-Hant":"克羅地亞"},
+      {"en":"Bosnia and Herzegovina","de":"Bosnien und Herzegowina","es":"Bosnia y Herzegovina","fr":"Bosnie-Herzégovine","it":"Bosnia ed Erzegovina","ja":"ボスニア・ヘルツェゴビナ","ko":"보스니아 헤르체고비나","zh-Hans":"波斯尼亚和黑塞哥维那","zh-Hant":"波士尼亞與赫塞哥維納"},
+      {"en":"Lithuania","de":"Litauen","es":"Lituania","fr":"Lituanie","it":"Lituania","ja":"リトアニア","ko":"리투아니아","zh-Hans":"立陶宛","zh-Hant":"立陶宛"},
+      {"en":"Albania","de":"Albanien","fr":"Albanie","ja":"アルバニア","ko":"알바니아","zh-Hans":"阿尔巴尼亚","zh-Hant":"阿爾巴尼亞"},
+      {"en":"Moldova","de":"Moldau","es":"Moldavia","fr":"Moldavie","it":"Moldavia","ja":"モルドバ","ko":"몰도바","zh-Hans":"摩尔多瓦","zh-Hant":"摩爾多瓦"},
+      {"en":"Slovenia","de":"Slowenien","es":"Eslovenia","fr":"Slovénie","ja":"スロベニア","ko":"슬로베니아","zh-Hans":"斯洛文尼亚","zh-Hant":"斯洛維尼亞"},
+      {"en":"Latvia","de":"Lettland","es":"Letonia","fr":"Lettonie","it":"Lettonia","ja":"ラトビア","ko":"라트비아","zh-Hans":"拉脱维亚","zh-Hant":"拉脫維亞"},
+      {"en":"North Macedonia","de":"Nordmazedonien","es":"Macedonia del Norte","fr":"Macédoine du Nord","it":"Macedonia del Nord","ja":"北マケドニア","ko":"북마케도니아","zh-Hans":"北马其顿","zh-Hant":"北馬其頓"},
+      {"en":"Kosovo","ja":"コソボ共和国","ko":"코소보","zh-Hans":"科索沃","zh-Hant":"科索沃"},
+      {"en":"Estonia","de":"Estland","fr":"Estonie","ja":"エストニア","ko":"에스토니아","zh-Hans":"爱沙尼亚","zh-Hant":"愛沙尼亞"},
+      {"en":"Cyprus","de":"Zypern","es":"Chipre","fr":"Chypre","it":"Cipro","ja":"キプロス","ko":"키프로스","zh-Hans":"塞浦路斯","zh-Hant":"賽普勒斯"}
+    ],
+
+    [
+      {"en":"Luxembourg","de":"Luxemburg","es":"Luxemburgo","it":"Lussemburgo","ja":"ルクセンブルク","ko":"룩셈부르크","zh-Hans":"卢森堡","zh-Hant":"盧森堡"},
+      {"en":"Montenegro","fr":"Monténégro","ja":"モンテネグロ","ko":"몬테네그로","zh-Hans":"黑山","zh-Hant":"蒙特內哥羅"},
+      {"en":"Malta","fr":"Malte","ja":"マルタ","ko":"몰타","zh-Hans":"马耳他","zh-Hant":"馬耳他"},
+      {"en":"Iceland","de":"Island","es":"Islandia","fr":"Islande","it":"Islanda","ja":"アイスランド","ko":"아이슬란드","zh-Hans":"冰岛","zh-Hant":"冰島"},
+      {"en":"Andorra","fr":"Andorre","ja":"アンドラ","ko":"안도라","zh-Hans":"安道尔","zh-Hant":"安道爾"},
+      {"en":"Monaco","es":"Mónaco","it":"Principato di Monaco","ja":"モナコ","ko":"모나코","zh-Hans":"摩纳哥","zh-Hant":"摩納哥"},
+      {"en":"Liechtenstein","ja":"リヒテンシュタイン","ko":"리히텐슈타인","zh-Hans":"列支敦士登","zh-Hant":"列支敦斯登"},
+      {"en":"San Marino","fr":"Saint-Marin","ja":"サンマリノ","ko":"산마리노","zh-Hans":"圣马力诺","zh-Hant":"聖馬利諾"},
+      {"en":"Vatican City","de":"Vatikanstadt","es":"Ciudad del Vaticano","fr":"Vatican","it":"Città del Vaticano","ja":"バチカン","ko":"바티칸 시국","zh-Hans":"梵蒂冈","zh-Hant":"梵蒂岡"}
+    ]
+  ],
+  "tierConditions": [
+    {"en":"100 million or more","de":"100 Millionen und mehr","es":"100 millones o más","fr":"100 millions ou plus","it":"100 milioni o più","ja":"1億以上","ko":"1억 이상","zh-Hans":"1亿及以上","zh-Hant":"1億及以上"},
+    {"en":"20 million or more","de":"20 Millionen und mehr","es":"20 millones o más","fr":"20 millions ou plus","it":"20 milioni o più","ja":"2000万以上","ko":"2000만 이상","zh-Hans":"2000万及以上","zh-Hant":"2000萬及以上"},
+    {"en":"5 million or more","de":"5 Millionen und mehr","es":"5 millones o más","fr":"5 millions ou plus","it":"5 milioni o più","ja":"500万以上","ko":"500만 이상","zh-Hans":"500万及以上","zh-Hant":"500萬及以上"},
+    {"en":"1 million or more","de":"1 Million und mehr","es":"1 millón o más","fr":"1 million ou plus","it":"1 milione o più","ja":"100万以上","ko":"100만 이상","zh-Hans":"100万及以上","zh-Hant":"100萬及以上"},
+    {"en":"under 1 million","de":"unter 1 Million","es":"menos de 1 millón","fr":"moins de 1 million","it":"meno di 1 milione","ja":"100万未満","ko":"100만 미만","zh-Hans":"不足100万","zh-Hant":"不足100萬"}
+  ]
+}

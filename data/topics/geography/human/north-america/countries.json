@@ -1,0 +1,55 @@
+{
+  "id": "north-america-countries",
+  "title": {"en":"Countries","de":"Länder","es":"Países","fr":"Pays","it":"Paesi","ja":"国","ko":"국가","zh-Hans":"国家","zh-Hant":"國家"},
+  "languages": ["en","de","es","fr","it","ja","ko","zh-Hans","zh-Hant"],
+  "sources": ["Names & population: Wikidata sovereign states (P31 Q3624078) — https://www.wikidata.org/wiki/Q3624078 (see scripts/geography/dump-country-data.mjs)"],
+  "lastUpdated": "2026-08-21",
+  "lastChecked": "2026-08-21",
+  "defaultNames": "short",
+  "tiers": [
+    [
+      {"en":"United States","de":"Vereinigte Staaten","es":"Estados Unidos","fr":"États-Unis","it":"Stati Uniti","ja":"アメリカ合衆国","ko":"미국","zh-Hans":"美国","zh-Hant":"美國"},
+      {"en":"Mexico","de":"Mexiko","es":"México","fr":"Mexique","it":"Messico","ja":"メキシコ","ko":"멕시코","zh-Hans":"墨西哥","zh-Hant":"墨西哥"}
+    ],
+
+    [
+      {"en":"Canada","de":"Kanada","es":"Canadá","ja":"カナダ","ko":"캐나다","zh-Hans":"加拿大","zh-Hant":"加拿大"}
+    ],
+
+    [
+      {"en":"Guatemala","ja":"グアテマラ","ko":"과테말라","zh-Hans":"危地马拉","zh-Hant":"瓜地馬拉"},
+      {"en":"Cuba","de":"Kuba","ja":"キューバ","ko":"쿠바","zh-Hans":"古巴","zh-Hant":"古巴"},
+      {"en":"Haiti","es":"Haití","fr":"Haïti","ja":"ハイチ","ko":"아이티","zh-Hans":"海地","zh-Hant":"海地"},
+      {"en":"Dominican Republic","de":"Dominikanische Republik","es":"República Dominicana","fr":"République dominicaine","it":"Repubblica Dominicana","ja":"ドミニカ共和国","ko":"도미니카 공화국","zh-Hans":"多米尼加","zh-Hant":"多明尼加"},
+      {"en":"Honduras","ja":"ホンジュラス","ko":"온두라스","zh-Hans":"洪都拉斯","zh-Hant":"宏都拉斯"},
+      {"en":"El Salvador","fr":"Salvador","ja":"エルサルバドル","ko":"엘살바도르","zh-Hans":"萨尔瓦多","zh-Hant":"薩爾瓦多"},
+      {"en":"Costa Rica","ja":"コスタリカ","ko":"코스타리카","zh-Hans":"哥斯达黎加","zh-Hant":"哥斯大黎加"},
+      {"en":"Nicaragua","ja":"ニカラグア","ko":"니카라과","zh-Hans":"尼加拉瓜","zh-Hant":"尼加拉瓜"}
+    ],
+
+    [
+      {"en":"Panama","es":"Panamá","ja":"パナマ","ko":"파나마","zh-Hans":"巴拿马","zh-Hant":"巴拿馬"},
+      {"en":"Jamaica","de":"Jamaika","fr":"Jamaïque","it":"Giamaica","ja":"ジャマイカ","ko":"자메이카","zh-Hans":"牙买加","zh-Hant":"牙買加"},
+      {"en":"Trinidad and Tobago","de":"Trinidad und Tobago","es":"Trinidad y Tobago","fr":"Trinité-et-Tobago","it":"Trinidad e Tobago","ja":"トリニダード・トバゴ","ko":"트리니다드 토바고","zh-Hans":"特立尼达和多巴哥","zh-Hant":"千里達及托巴哥"}
+    ],
+
+    [
+      {"en":"Belize","es":"Belice","ja":"ベリーズ","ko":"벨리즈","zh-Hans":"伯利兹","zh-Hant":"貝里斯"},
+      {"en":"The Bahamas","de":"Bahamas","es":"Bahamas","fr":"Bahamas","it":"Bahamas","ja":"バハマ","ko":"바하마","zh-Hans":"巴哈马","zh-Hant":"巴哈馬"},
+      {"en":"Barbados","fr":"Barbade","ja":"バルバドス","ko":"바베이도스","zh-Hans":"巴巴多斯","zh-Hant":"巴貝多"},
+      {"en":"Saint Lucia","de":"St. Lucia","es":"Santa Lucía","fr":"Sainte-Lucie","ja":"セントルシア","ko":"세인트루시아","zh-Hans":"圣卢西亚","zh-Hant":"聖露西亞"},
+      {"en":"Grenada","es":"Granada","fr":"Grenade","ja":"グレナダ","ko":"그레나다","zh-Hans":"格林纳达","zh-Hant":"格瑞那達"},
+      {"en":"Saint Vincent and the Grenadines","de":"St. Vincent und die Grenadinen","es":"San Vicente y las Granadinas","fr":"Saint-Vincent-et-les-Grenadines","it":"Saint Vincent e Grenadine","ja":"セントビンセント・グレナディーン","ko":"세인트빈센트 그레나딘","zh-Hans":"圣文森特和格林纳丁斯","zh-Hant":"聖文森及格瑞那丁"},
+      {"en":"Antigua and Barbuda","de":"Antigua und Barbuda","es":"Antigua y Barbuda","fr":"Antigua-et-Barbuda","it":"Antigua e Barbuda","ja":"アンティグア・バーブーダ","ko":"앤티가 바부다","zh-Hans":"安提瓜和巴布达","zh-Hant":"安地卡及巴布達"},
+      {"en":"Dominica","fr":"Dominique","ja":"ドミニカ国","ko":"도미니카 연방","zh-Hans":"多米尼克","zh-Hant":"多米尼克"},
+      {"en":"Saint Kitts and Nevis","de":"St. Kitts und Nevis","es":"San Cristóbal y Nieves","fr":"Saint-Christophe-et-Niévès","it":"Saint Kitts e Nevis","ja":"セントクリストファー・ネイビス","ko":"세인트키츠 네비스","zh-Hans":"圣基茨和尼维斯","zh-Hant":"聖克里斯多福及尼維斯"}
+    ]
+  ],
+  "tierConditions": [
+    {"en":"100 million or more","de":"100 Millionen und mehr","es":"100 millones o más","fr":"100 millions ou plus","it":"100 milioni o più","ja":"1億以上","ko":"1억 이상","zh-Hans":"1亿及以上","zh-Hant":"1億及以上"},
+    {"en":"20 million or more","de":"20 Millionen und mehr","es":"20 millones o más","fr":"20 millions ou plus","it":"20 milioni o più","ja":"2000万以上","ko":"2000만 이상","zh-Hans":"2000万及以上","zh-Hant":"2000萬及以上"},
+    {"en":"5 million or more","de":"5 Millionen und mehr","es":"5 millones o más","fr":"5 millions ou plus","it":"5 milioni o più","ja":"500万以上","ko":"500만 이상","zh-Hans":"500万及以上","zh-Hant":"500萬及以上"},
+    {"en":"1 million or more","de":"1 Million und mehr","es":"1 millón o más","fr":"1 million ou plus","it":"1 milione o più","ja":"100万以上","ko":"100만 이상","zh-Hans":"100万及以上","zh-Hant":"100萬及以上"},
+    {"en":"under 1 million","de":"unter 1 Million","es":"menos de 1 millón","fr":"moins de 1 million","it":"meno di 1 milione","ja":"100万未満","ko":"100만 미만","zh-Hans":"不足100万","zh-Hant":"不足100萬"}
+  ]
+}

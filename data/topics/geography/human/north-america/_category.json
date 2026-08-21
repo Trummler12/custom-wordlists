@@ -1,0 +1,15 @@
+{
+  "title": {
+    "en": "North America",
+    "de": "Nordamerika",
+    "es": "América del Norte",
+    "fr": "Amérique du Nord",
+    "it": "America del Nord",
+    "ja": "北アメリカ",
+    "ko": "북아메리카",
+    "zh-Hans": "北美洲",
+    "zh-Hant": "北美洲"
+  },
+  "icon": "🌎",
+  "order": 4
+}

@@ -1,0 +1,80 @@
+{
+  "id": "asia-countries",
+  "title": {"en":"Countries","de":"Länder","es":"Países","fr":"Pays","it":"Paesi","ja":"国","ko":"국가","zh-Hans":"国家","zh-Hant":"國家"},
+  "languages": ["en","de","es","fr","it","ja","ko","zh-Hans","zh-Hant"],
+  "sources": ["Names & population: Wikidata sovereign states (P31 Q3624078) — https://www.wikidata.org/wiki/Q3624078 (see scripts/geography/dump-country-data.mjs)"],
+  "lastUpdated": "2026-08-21",
+  "lastChecked": "2026-08-21",
+  "defaultNames": "short",
+  "tiers": [
+    [
+      {"en":{"short":"China","long":"People's Republic of China"},"de":{"short":"China","long":"Volksrepublik China"},"es":{"short":"China","long":"República Popular China"},"fr":{"short":"Chine","long":"république populaire de Chine"},"it":"Cina","ja":{"short":"中国","long":"中華人民共和国"},"ko":{"short":"중국","long":"중화인민공화국"},"zh-Hans":{"short":"中国","long":"中华人民共和国"},"zh-Hant":{"short":"中國","long":"中華人民共和國"}},
+      {"en":"India","de":"Indien","fr":"Inde","ja":"インド","ko":"인도","zh-Hans":"印度","zh-Hant":"印度"},
+      {"en":"Indonesia","de":"Indonesien","fr":"Indonésie","ja":"インドネシア","ko":"인도네시아","zh-Hans":"印度尼西亚","zh-Hant":"印度尼西亞"},
+      {"en":"Pakistan","es":"Pakistán","ja":"パキスタン","ko":"파키스탄","zh-Hans":"巴基斯坦","zh-Hant":"巴基斯坦"},
+      {"en":"Bangladesh","de":"Bangladesch","es":"Bangladés","ja":"バングラデシュ","ko":"방글라데시","zh-Hans":"孟加拉国","zh-Hant":"孟加拉國"},
+      {"en":"Russia","de":"Russland","es":"Rusia","fr":"Russie","ja":"ロシア","ko":"러시아","zh-Hans":"俄罗斯","zh-Hant":"俄羅斯"},
+      {"en":"Japan","es":"Japón","fr":"Japon","it":"Giappone","ja":"日本","ko":"일본","zh-Hans":"日本","zh-Hant":"日本"},
+      {"en":"Philippines","de":"Philippinen","es":"Filipinas","it":"Filippine","ja":"フィリピン","ko":"필리핀","zh-Hans":"菲律宾","zh-Hant":"菲律賓"}
+    ],
+
+    [
+      {"en":"Vietnam","ja":"ベトナム","ko":"베트남","zh-Hans":"越南","zh-Hant":"越南"},
+      {"en":"Iran","es":"Irán","ja":"イラン","ko":"이란","zh-Hans":"伊朗","zh-Hant":"伊朗"},
+      {"en":"Turkey","de":"Türkei","es":"Turquía","fr":"Turquie","it":"Turchia","ja":"トルコ","ko":"튀르키예","zh-Hans":"土耳其","zh-Hant":"土耳其"},
+      {"en":"Thailand","es":"Tailandia","fr":"Thaïlande","it":"Tailandia","ja":"タイ王国","ko":"태국","zh-Hans":"泰国","zh-Hant":"泰國"},
+      {"en":"Myanmar","es":"Birmania","fr":"Birmanie","ja":"ミャンマー","ko":"미얀마","zh-Hans":"缅甸","zh-Hant":"緬甸"},
+      {"en":"South Korea","de":"Südkorea","es":"Corea del Sur","fr":"Corée du Sud","it":"Corea del Sud","ja":"大韓民国","ko":"대한민국","zh-Hans":"大韩民国","zh-Hant":"大韓民國"},
+      {"en":"Afghanistan","es":"Afganistán","ja":"アフガニスタン","ko":"아프가니스탄","zh-Hans":"阿富汗","zh-Hant":"阿富汗"},
+      {"en":"Iraq","de":"Irak","es":"Irak","fr":"Irak","ja":"イラク","ko":"이라크","zh-Hans":"伊拉克","zh-Hant":"伊拉克"},
+      {"en":"Uzbekistan","de":"Usbekistan","es":"Uzbekistán","fr":"Ouzbékistan","ja":"ウズベキスタン","ko":"우즈베키스탄","zh-Hans":"乌兹别克斯坦","zh-Hant":"烏茲別克斯坦"},
+      {"en":"Malaysia","es":"Malasia","fr":"Malaisie","ja":"マレーシア","ko":"말레이시아","zh-Hans":"马来西亚","zh-Hant":"馬來西亞"},
+      {"en":"Saudi Arabia","de":"Saudi-Arabien","es":"Arabia Saudí","fr":"Arabie saoudite","it":"Arabia Saudita","ja":"サウジアラビア","ko":"사우디아라비아","zh-Hans":"沙特阿拉伯","zh-Hant":"沙烏地阿拉伯"},
+      {"en":"Nepal","fr":"Népal","ja":"ネパール","ko":"네팔","zh-Hans":"尼泊尔","zh-Hant":"尼泊爾"},
+      {"en":"Yemen","de":"Jemen","fr":"Yémen","ja":"イエメン","ko":"예멘","zh-Hans":"也门","zh-Hant":"葉門"},
+      {"en":"North Korea","de":"Nordkorea","es":"Corea del Norte","fr":"Corée du Nord","it":"Corea del Nord","ja":"朝鮮民主主義人民共和国","ko":"조선민주주의인민공화국","zh-Hans":"朝鲜民主主义人民共和国","zh-Hant":"朝鮮民主主義人民共和國"},
+      {"en":"Syria","de":"Syrien","es":"Siria","fr":"Syrie","it":"Siria","ja":"シリア","ko":"시리아","zh-Hans":"叙利亚","zh-Hant":"敘利亞"},
+      {"en":"Taiwan","de":"Republik China","es":"República de China","fr":"Taïwan","ja":"中華民国","ko":"중화민국","zh-Hans":"中华民国","zh-Hant":"中華民國"},
+      {"en":"Sri Lanka","ja":"スリランカ","ko":"스리랑카","zh-Hans":"斯里兰卡","zh-Hant":"斯里蘭卡"},
+      {"en":"Kazakhstan","de":"Kasachstan","es":"Kazajistán","it":"Kazakistan","ja":"カザフスタン","ko":"카자흐스탄","zh-Hans":"哈萨克斯坦","zh-Hant":"哈薩克"}
+    ],
+
+    [
+      {"en":"Cambodia","de":"Kambodscha","es":"Camboya","fr":"Cambodge","it":"Cambogia","ja":"カンボジア","ko":"캄보디아","zh-Hans":"柬埔寨","zh-Hant":"柬埔寨"},
+      {"en":"Jordan","de":"Jordanien","es":"Jordania","fr":"Jordanie","it":"Giordania","ja":"ヨルダン","ko":"요르단","zh-Hans":"约旦","zh-Hant":"約旦"},
+      {"en":"Azerbaijan","de":"Aserbaidschan","es":"Azerbaiyán","fr":"Azerbaïdjan","it":"Azerbaigian","ja":"アゼルバイジャン","ko":"아제르바이잔","zh-Hans":"阿塞拜疆","zh-Hant":"亞塞拜然"},
+      {"en":"United Arab Emirates","de":"Vereinigte Arabische Emirate","es":"Emiratos Árabes Unidos","fr":"Émirats arabes unis","it":"Emirati Arabi Uniti","ja":"アラブ首長国連邦","ko":"아랍에미리트","zh-Hans":"阿拉伯联合酋长国","zh-Hant":"阿拉伯聯合大公國"},
+      {"en":"Israel","fr":"Israël","it":"Israele","ja":"イスラエル","ko":"이스라엘","zh-Hans":"以色列","zh-Hant":"以色列"},
+      {"en":"Tajikistan","de":"Tadschikistan","es":"Tayikistán","fr":"Tadjikistan","it":"Tagikistan","ja":"タジキスタン","ko":"타지키스탄","zh-Hans":"塔吉克斯坦","zh-Hant":"塔吉克斯坦"},
+      {"en":"Kyrgyzstan","de":"Kirgisistan","es":"Kirguistán","fr":"Kirghizistan","it":"Kirghizistan","ja":"キルギス","ko":"키르기스스탄","zh-Hans":"吉尔吉斯斯坦","zh-Hant":"吉爾吉斯"},
+      {"en":"Laos","ja":"ラオス","ko":"라오스","zh-Hans":"老挝","zh-Hant":"寮國"},
+      {"en":"Turkmenistan","es":"Turkmenistán","fr":"Turkménistan","ja":"トルクメニスタン","ko":"투르크메니스탄","zh-Hans":"土库曼斯坦","zh-Hant":"土庫曼"},
+      {"en":"Lebanon","de":"Libanon","es":"Líbano","fr":"Liban","it":"Libano","ja":"レバノン","ko":"레바논","zh-Hans":"黎巴嫩","zh-Hant":"黎巴嫩"},
+      {"en":"Singapore","de":"Singapur","es":"Singapur","fr":"Singapour","ja":"シンガポール","ko":"싱가포르","zh-Hans":"新加坡","zh-Hant":"新加坡"},
+      {"en":"Palestine","de":"Palästina","es":"Palestina","fr":"État de Palestine","it":"Stato di Palestina","ja":"パレスチナ国","ko":"팔레스타인","zh-Hans":"巴勒斯坦","zh-Hant":"巴勒斯坦"}
+    ],
+
+    [
+      {"en":"Oman","es":"Omán","ja":"オマーン","ko":"오만","zh-Hans":"阿曼","zh-Hant":"阿曼"},
+      {"en":"Kuwait","fr":"Koweït","ja":"クウェート","ko":"쿠웨이트","zh-Hans":"科威特","zh-Hant":"科威特"},
+      {"en":"Mongolia","de":"Mongolei","fr":"Mongolie","ja":"モンゴル国","ko":"몽골","zh-Hans":"蒙古国","zh-Hant":"蒙古國"},
+      {"en":"Armenia","de":"Armenien","fr":"Arménie","ja":"アルメニア","ko":"아르메니아","zh-Hans":"亚美尼亚","zh-Hant":"亞美尼亞"},
+      {"en":"Qatar","de":"Katar","es":"Catar","ja":"カタール","ko":"카타르","zh-Hans":"卡塔尔","zh-Hant":"卡達"},
+      {"en":"Bahrain","es":"Baréin","fr":"Bahreïn","it":"Bahrein","ja":"バーレーン","ko":"바레인","zh-Hans":"巴林","zh-Hant":"巴林"},
+      {"en":"Timor-Leste","de":"Osttimor","es":"Timor Oriental","fr":"Timor oriental","it":"Timor Est","ja":"東ティモール","ko":"동티모르","zh-Hans":"东帝汶","zh-Hant":"東帝汶"}
+    ],
+
+    [
+      {"en":"Bhutan","es":"Bután","fr":"Bhoutan","ja":"ブータン","ko":"부탄","zh-Hans":"不丹","zh-Hant":"不丹"},
+      {"en":"Brunei","es":"Brunéi","ja":"ブルネイ","ko":"브루나이","zh-Hans":"文莱","zh-Hant":"汶萊"},
+      {"en":"Maldives","de":"Malediven","es":"Maldivas","it":"Maldive","ja":"モルディブ","ko":"몰디브","zh-Hans":"马尔代夫","zh-Hant":"馬爾地夫"}
+    ]
+  ],
+  "tierConditions": [
+    {"en":"100 million or more","de":"100 Millionen und mehr","es":"100 millones o más","fr":"100 millions ou plus","it":"100 milioni o più","ja":"1億以上","ko":"1억 이상","zh-Hans":"1亿及以上","zh-Hant":"1億及以上"},
+    {"en":"20 million or more","de":"20 Millionen und mehr","es":"20 millones o más","fr":"20 millions ou plus","it":"20 milioni o più","ja":"2000万以上","ko":"2000만 이상","zh-Hans":"2000万及以上","zh-Hant":"2000萬及以上"},
+    {"en":"5 million or more","de":"5 Millionen und mehr","es":"5 millones o más","fr":"5 millions ou plus","it":"5 milioni o più","ja":"500万以上","ko":"500만 이상","zh-Hans":"500万及以上","zh-Hant":"500萬及以上"},
+    {"en":"1 million or more","de":"1 Million und mehr","es":"1 millón o más","fr":"1 million ou plus","it":"1 milione o più","ja":"100万以上","ko":"100만 이상","zh-Hans":"100万及以上","zh-Hant":"100萬及以上"},
+    {"en":"under 1 million","de":"unter 1 Million","es":"menos de 1 millón","fr":"moins de 1 million","it":"meno di 1 milione","ja":"100万未満","ko":"100만 미만","zh-Hans":"不足100万","zh-Hant":"不足100萬"}
+  ]
+}

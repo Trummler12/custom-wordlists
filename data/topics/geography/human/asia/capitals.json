@@ -1,0 +1,83 @@
+{
+  "id": "asia-capitals",
+  "title": {"en":"Capitals","de":"Hauptstädte","es":"Capitales","fr":"Capitales","it":"Capitali","ja":"首都","ko":"수도","zh-Hans":"首都","zh-Hant":"首都"},
+  "languages": ["en","de","es","fr","it","ja","ko","zh-Hans","zh-Hant"],
+  "sources": ["Names: Wikidata capitals (P36) of the sovereign states — https://www.wikidata.org/wiki/Property:P36 (see scripts/geography/dump-country-data.mjs)"],
+  "lastUpdated": "2026-08-21",
+  "lastChecked": "2026-08-21",
+  "defaultNames": "short",
+  "tiers": [
+    [
+      {"en":"Beijing","de":"Peking","es":"Pekín","fr":"Pékin","it":"Pechino","ja":"北京市","ko":"베이징시","zh-Hans":"北京市","zh-Hant":"北京市"},
+      {"en":"New Delhi","de":"Neu-Delhi","es":"Nueva Delhi","it":"Nuova Delhi","ja":"ニューデリー","ko":"뉴델리","zh-Hans":"新德里","zh-Hant":"新德里"},
+      {"en":"Jakarta","es":"Yakarta","it":"Giacarta","ja":"ジャカルタ","ko":"자카르타","zh-Hans":"雅加达","zh-Hant":"雅加達"},
+      {"en":"Islamabad","ja":"イスラマバード","ko":"이슬라마바드","zh-Hans":"伊斯兰堡","zh-Hant":"伊斯蘭瑪巴德"},
+      {"en":"Dhaka","es":"Daca","fr":"Dacca","it":"Dacca","ja":"ダッカ","ko":"다카","zh-Hans":"达卡市","zh-Hant":"達卡"},
+      {"en":"Moscow","de":"Moskau","es":"Moscú","fr":"Moscou","it":"Mosca","ja":"モスクワ","ko":"모스크바","zh-Hans":"莫斯科","zh-Hant":"莫斯科"},
+      {"en":"Tokyo","de":"Tokio","es":"Tokio","ja":"東京都","ko":"도쿄도","zh-Hans":"东京都","zh-Hant":"東京都"},
+      {"en":"Manila","fr":"Manille","ja":"マニラ","ko":"마닐라","zh-Hans":"马尼拉","zh-Hant":"馬尼拉"}
+    ],
+
+    [
+      {"en":"Hanoi","es":"Hanói","fr":"Hanoï","ja":"ハノイ","ko":"하노이","zh-Hans":"河内","zh-Hant":"河內"},
+      {"en":"Tehran","de":"Teheran","es":"Teherán","fr":"Téhéran","it":"Teheran","ja":"テヘラン","ko":"테헤란","zh-Hans":"德黑兰","zh-Hant":"德黑蘭"},
+      {"en":"Ankara","ja":"アンカラ","ko":"앙카라","zh-Hans":"安卡拉","zh-Hant":"安卡拉"},
+      {"en":"Bangkok","ja":"バンコク","ko":"방콕","zh-Hans":"曼谷","zh-Hant":"曼谷"},
+      {"en":"Naypyidaw","es":"Naipyidó","ja":"ネピドー","ko":"네피도","zh-Hans":"奈比多","zh-Hant":"奈比多"},
+      {"en":"Seoul","es":"Seúl","fr":"Séoul","it":"Seul","ja":"ソウル特別市","ko":"서울특별시","zh-Hans":"首尔","zh-Hant":"首爾"},
+      {"en":"Kabul","fr":"Kaboul","ja":"カーブル","ko":"카불","zh-Hans":"喀布尔","zh-Hant":"喀布爾"},
+      {"en":"Baghdad","de":"Bagdad","es":"Bagdad","fr":"Bagdad","ja":"バグダード","ko":"바그다드","zh-Hans":"巴格达","zh-Hant":"巴格達"},
+      {"en":"Tashkent","de":"Taschkent","es":"Taskent","fr":"Tachkent","ja":"タシュケント","ko":"타슈켄트","zh-Hans":"塔什干","zh-Hant":"塔什干"},
+      {"en":"Kuala Lumpur","ja":"クアラルンプール","ko":"쿠알라룸푸르","zh-Hans":"吉隆坡","zh-Hant":"吉隆坡"},
+      {"en":"Riyadh","de":"Riad","es":"Riad","fr":"Riyad","it":"Riad","ja":"リヤド","ko":"리야드","zh-Hans":"利雅得","zh-Hant":"利雅德"},
+      {"en":"Kathmandu","es":"Katmandú","fr":"Katmandou","it":"Katmandu","ja":"カトマンズ","ko":"카트만두","zh-Hans":"加德满都","zh-Hant":"加德滿都"},
+      {"en":"Sanaa","es":"Saná","it":"Sana'a","ja":"サヌア","ko":"사나","?":["zh-Hans","zh-Hant"]},
+      {"en":"Aden","es":"Adén","ja":"アデン","ko":"아덴","zh-Hans":"亚丁","zh-Hant":"亞丁"},
+      {"en":"Pyongyang","de":"Pjöngjang","es":"Pionyang","ja":"平壌市","ko":"평양시","zh-Hans":"平壤","zh-Hant":"平壤"},
+      {"en":"Damascus","de":"Damaskus","es":"Damasco","fr":"Damas","it":"Damasco","ja":"ダマスカス","ko":"다마스쿠스","zh-Hans":"大马士革","zh-Hant":"大馬士革"},
+      {"en":"Taipei","de":"Taipeh","es":"Taipéi","ja":"台北市","ko":"타이베이시","zh-Hans":"台北市","zh-Hant":"臺北市"},
+      {"en":"Colombo","ja":"コロンボ","ko":"콜롬보","zh-Hans":"科伦坡","zh-Hant":"可倫坡"},
+      {"en":"Sri Jayawardenepura Kotte","de":"Sri Jayewardenepura Kotte","es":"Sri Jayawardenapura Kotte","fr":"Sri Jayawardenapura","it":"Sri Jayawardenapura Kotte","ja":"スリジャヤワルダナプラコッテ","ko":"스리자야와르데네푸라코테","zh-Hans":"斯里贾亚瓦德纳普拉科特","?":["zh-Hant"]},
+      {"en":"Astana","es":"Astaná","ja":"アスタナ","ko":"아스타나","zh-Hans":"阿斯塔纳","zh-Hant":"阿斯塔納"}
+    ],
+
+    [
+      {"en":"Phnom Penh","es":"Nom Pen","ja":"プノンペン","ko":"프놈펜","zh-Hans":"金边","zh-Hant":"金邊"},
+      {"en":"Amman","es":"Amán","ja":"アンマン","ko":"암만","zh-Hans":"安曼","zh-Hant":"安曼"},
+      {"en":"Baku","es":"Bakú","fr":"Bakou","ja":"バクー","ko":"바쿠","zh-Hans":"巴库","zh-Hant":"巴庫"},
+      {"en":"Abu Dhabi","fr":"Abou Dabi","ja":"アブダビ","ko":"아부다비","zh-Hans":"阿布扎比","zh-Hant":"阿布達比"},
+      {"en":"Jerusalem","es":"Jerusalén","fr":"Jérusalem","it":"Gerusalemme","ja":"エルサレム","ko":"예루살렘","zh-Hans":"耶路撒冷","zh-Hant":"耶路撒冷"},
+      {"en":"Dushanbe","de":"Duschanbe","es":"Dusambé","fr":"Douchanbé","it":"Dušanbe","ja":"ドゥシャンベ","ko":"두샨베","zh-Hans":"杜尚别","zh-Hant":"杜尚貝"},
+      {"en":"Bishkek","de":"Bischkek","es":"Biskek","fr":"Bichkek","it":"Biškek","ja":"ビシュケク","ko":"비슈케크","zh-Hans":"比什凯克","zh-Hant":"比什凱克"},
+      {"en":"Vientiane","es":"Vientián","ja":"ヴィエンチャン","ko":"비엔티안","zh-Hans":"万象","zh-Hant":"永珍"},
+      {"en":"Ashgabat","de":"Aşgabat","es":"Asjabad","fr":"Achgabat","it":"Aşgabat","ja":"アシガバート","ko":"아시가바트","zh-Hans":"阿什哈巴德","zh-Hant":"阿什哈巴特"},
+      {"en":"Beirut","fr":"Beyrouth","ja":"ベイルート","ko":"베이루트","zh-Hans":"贝鲁特","zh-Hant":"貝魯特"},
+      {"en":"Singapore","de":"Singapur","es":"Singapur","fr":"Singapour","ja":"シンガポール","ko":"싱가포르","zh-Hans":"新加坡","zh-Hant":"新加坡"},
+      {"en":"Ramallah","es":"Ramala","ja":"ラマッラー","ko":"라말라","zh-Hans":"拉姆安拉","zh-Hant":"拉姆安拉"},
+      {"en":"East Jerusalem","de":"Ostjerusalem","es":"Jerusalén Este","fr":"Jérusalem-Est","it":"Gerusalemme Est","ja":"エルサレム","ko":"동예루살렘","zh-Hans":"东耶路撒冷","zh-Hant":"東耶路撒冷"}
+    ],
+
+    [
+      {"en":"Muscat","de":"Maskat","es":"Mascate","fr":"Mascate","it":"Mascate","ja":"マスカット","ko":"무스카트","zh-Hant":"馬斯喀特","?":["zh-Hans"]},
+      {"en":"Kuwait City","de":"Kuweit-Stadt","es":"Ciudad de Kuwait","fr":"Koweït","it":"Al Kuwait","ja":"クウェート市","ko":"쿠웨이트 시","zh-Hans":"科威特城","zh-Hant":"科威特城"},
+      {"en":"Ulaanbaatar","es":"Ulán Bator","fr":"Oulan-Bator","it":"Ulan Bator","ja":"ウランバートル","ko":"울란바타르","zh-Hans":"乌兰巴托","zh-Hant":"烏蘭巴托"},
+      {"en":"Yerevan","de":"Jerewan","es":"Ereván","fr":"Erevan","it":"Erevan","ja":"イェレヴァン","ko":"예레반","zh-Hans":"埃里温","zh-Hant":"葉里溫"},
+      {"en":"Doha","ja":"ドーハ","ko":"도하","zh-Hant":"杜哈","?":["zh-Hans"]},
+      {"en":"Manama","ja":"マナーマ","ko":"마나마","zh-Hans":"麦纳麦","zh-Hant":"麥納麦"},
+      {"en":"Dili","ja":"ディリ","ko":"딜리","zh-Hans":"帝力","zh-Hant":"帝力"}
+    ],
+
+    [
+      {"en":"Thimphu","es":"Timbu","fr":"Thimphou","ja":"ティンプー","ko":"팀부","zh-Hans":"廷布","zh-Hant":"辛布"},
+      {"en":"Bandar Seri Begawan","ja":"バンダルスリブガワン","ko":"반다르스리브가완","zh-Hans":"斯里巴加湾市","zh-Hant":"斯里巴加灣市"},
+      {"en":"Malé","it":"Male","ja":"マレ","ko":"말레","zh-Hans":"马累","zh-Hant":"馬累"}
+    ]
+  ],
+  "tierConditions": [
+    {"en":"100 million or more","de":"100 Millionen und mehr","es":"100 millones o más","fr":"100 millions ou plus","it":"100 milioni o più","ja":"1億以上","ko":"1억 이상","zh-Hans":"1亿及以上","zh-Hant":"1億及以上"},
+    {"en":"20 million or more","de":"20 Millionen und mehr","es":"20 millones o más","fr":"20 millions ou plus","it":"20 milioni o più","ja":"2000万以上","ko":"2000만 이상","zh-Hans":"2000万及以上","zh-Hant":"2000萬及以上"},
+    {"en":"5 million or more","de":"5 Millionen und mehr","es":"5 millones o más","fr":"5 millions ou plus","it":"5 milioni o più","ja":"500万以上","ko":"500만 이상","zh-Hans":"500万及以上","zh-Hant":"500萬及以上"},
+    {"en":"1 million or more","de":"1 Million und mehr","es":"1 millón o más","fr":"1 million ou plus","it":"1 milione o più","ja":"100万以上","ko":"100만 이상","zh-Hans":"100万及以上","zh-Hant":"100萬及以上"},
+    {"en":"under 1 million","de":"unter 1 Million","es":"menos de 1 millón","fr":"moins de 1 million","it":"meno di 1 milione","ja":"100万未満","ko":"100만 미만","zh-Hans":"不足100万","zh-Hant":"不足100萬"}
+  ]
+}

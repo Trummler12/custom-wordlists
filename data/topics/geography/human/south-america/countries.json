@@ -1,0 +1,44 @@
+{
+  "id": "south-america-countries",
+  "title": {"en":"Countries","de":"Länder","es":"Países","fr":"Pays","it":"Paesi","ja":"国","ko":"국가","zh-Hans":"国家","zh-Hant":"國家"},
+  "languages": ["en","de","es","fr","it","ja","ko","zh-Hans","zh-Hant"],
+  "sources": ["Names & population: Wikidata sovereign states (P31 Q3624078) — https://www.wikidata.org/wiki/Q3624078 (see scripts/geography/dump-country-data.mjs)"],
+  "lastUpdated": "2026-08-21",
+  "lastChecked": "2026-08-21",
+  "defaultNames": "short",
+  "tiers": [
+    [
+      {"en":"Brazil","de":"Brasilien","es":"Brasil","fr":"Brésil","it":"Brasile","ja":"ブラジル","ko":"브라질","zh-Hans":"巴西","zh-Hant":"巴西"}
+    ],
+
+    [
+      {"en":"Colombia","de":"Kolumbien","fr":"Colombie","ja":"コロンビア","ko":"콜롬비아","zh-Hans":"哥伦比亚","zh-Hant":"哥倫比亞"},
+      {"en":"Argentina","de":"Argentinien","fr":"Argentine","ja":"アルゼンチン","ko":"아르헨티나","zh-Hans":"阿根廷","zh-Hant":"阿根廷"},
+      {"en":"Peru","es":"Perú","fr":"Pérou","it":"Perù","ja":"ペルー","ko":"페루","zh-Hans":"秘鲁","zh-Hant":"秘魯"},
+      {"en":"Venezuela","ja":"ベネズエラ","ko":"베네수엘라","zh-Hans":"委内瑞拉","zh-Hant":"委內瑞拉"}
+    ],
+
+    [
+      {"en":"Chile","fr":"Chili","it":"Cile","ja":"チリ","ko":"칠레","zh-Hans":"智利","zh-Hant":"智利"},
+      {"en":"Ecuador","fr":"Équateur","ja":"エクアドル","ko":"에콰도르","zh-Hans":"厄瓜多尔","zh-Hant":"厄瓜多爾"},
+      {"en":"Bolivia","de":"Bolivien","fr":"Bolivie","ja":"ボリビア","ko":"볼리비아","zh-Hans":"玻利维亚","zh-Hant":"玻利維亞"},
+      {"en":"Paraguay","ja":"パラグアイ","ko":"파라과이","zh-Hans":"巴拉圭","zh-Hant":"巴拉圭"}
+    ],
+
+    [
+      {"en":"Uruguay","ja":"ウルグアイ","ko":"우루과이","zh-Hans":"乌拉圭","zh-Hant":"烏拉圭"}
+    ],
+
+    [
+      {"en":"Guyana","ja":"ガイアナ","ko":"가이아나","zh-Hans":"圭亚那","zh-Hant":"圭亞那"},
+      {"en":"Suriname","es":"Surinam","ja":"スリナム","ko":"수리남","zh-Hans":"苏里南","zh-Hant":"蘇利南"}
+    ]
+  ],
+  "tierConditions": [
+    {"en":"100 million or more","de":"100 Millionen und mehr","es":"100 millones o más","fr":"100 millions ou plus","it":"100 milioni o più","ja":"1億以上","ko":"1억 이상","zh-Hans":"1亿及以上","zh-Hant":"1億及以上"},
+    {"en":"20 million or more","de":"20 Millionen und mehr","es":"20 millones o más","fr":"20 millions ou plus","it":"20 milioni o più","ja":"2000万以上","ko":"2000만 이상","zh-Hans":"2000万及以上","zh-Hant":"2000萬及以上"},
+    {"en":"5 million or more","de":"5 Millionen und mehr","es":"5 millones o más","fr":"5 millions ou plus","it":"5 milioni o più","ja":"500万以上","ko":"500만 이상","zh-Hans":"500万及以上","zh-Hant":"500萬及以上"},
+    {"en":"1 million or more","de":"1 Million und mehr","es":"1 millón o más","fr":"1 million ou plus","it":"1 milione o più","ja":"100万以上","ko":"100만 이상","zh-Hans":"100万及以上","zh-Hant":"100萬及以上"},
+    {"en":"under 1 million","de":"unter 1 Million","es":"menos de 1 millón","fr":"moins de 1 million","it":"meno di 1 milione","ja":"100万未満","ko":"100만 미만","zh-Hans":"不足100万","zh-Hant":"不足100萬"}
+  ]
+}
