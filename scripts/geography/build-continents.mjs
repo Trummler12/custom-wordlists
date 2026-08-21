@@ -88,6 +88,73 @@ const TITLE = {
   },
 };
 
+/** What each tier's cut is, named rather than numbered — the plates come banded
+ *  (major / minor / micro), not by a threshold. Read cumulatively, as the ruler
+ *  brings everything down to and including a band: the tooltip substitutes the
+ *  lowest one just added. Seven languages, matching `TIER3_NOTE`; the two Chinese
+ *  UIs fall back to English there too. */
+const TIER_CONDITIONS = [
+  {
+    en: "continents and major plates",
+    de: "Kontinente und Grossplatten",
+    es: "continentes y placas mayores",
+    fr: "continents et plaques majeures",
+    it: "continenti e placche maggiori",
+    ja: "大陸と主要プレート",
+    ko: "대륙과 주요 판",
+  },
+  {
+    en: "minor plates and larger",
+    de: "Kleinplatten und grösser",
+    es: "placas menores y mayores",
+    fr: "plaques mineures et au-delà",
+    it: "placche minori e maggiori",
+    ja: "小規模プレート以上",
+    ko: "소규모 판 이상",
+  },
+  {
+    en: "microplates with a measured area, and larger",
+    de: "Mikroplatten mit gemessener Fläche und grösser",
+    es: "microplacas con superficie medida y mayores",
+    fr: "microplaques à superficie mesurée et au-delà",
+    it: "microplacche con superficie misurata e maggiori",
+    ja: "面積が測定された微小プレート以上",
+    ko: "면적이 측정된 미소판 이상",
+  },
+  {
+    en: "microplates and larger, measured or not",
+    de: "Mikroplatten und grösser, ob gemessen oder nicht",
+    es: "microplacas y mayores, medidas o no",
+    fr: "microplaques et au-delà, mesurées ou non",
+    it: "microplacche e maggiori, misurate o no",
+    ja: "微小プレート以上、測定の有無を問わず",
+    ko: "미소판 이상, 측정 여부와 무관",
+  },
+];
+
+/** The ruler's hover. `{condition}` is filled with the band above; at rest it
+ *  names what the list is sorted by, the one thing a selection can't show. */
+const RULER_TOOLTIP = {
+  text: {
+    en: "Selected: {condition}",
+    de: "Ausgewählt: {condition}",
+    es: "Seleccionado: {condition}",
+    fr: "Sélection : {condition}",
+    it: "Selezionate: {condition}",
+    ja: "選択中：{condition}",
+    ko: "선택됨: {condition}",
+  },
+  empty: {
+    en: "Ordered by plate area (Bird 2003).",
+    de: "Nach Plattenfläche geordnet (Bird 2003).",
+    es: "Ordenadas por superficie de la placa (Bird 2003).",
+    fr: "Classées par superficie des plaques (Bird 2003).",
+    it: "Ordinate per superficie delle placche (Bird 2003).",
+    ja: "プレート面積順（Bird 2003）。",
+    ko: "판 면적 순 (Bird 2003).",
+  },
+};
+
 /** The note tier 3 raises about itself, once the ruler reaches it. */
 const TIER3_NOTE = {
   en: "No area has ever been published for these plates, so this tier is grouped by the plate each sits under rather than ordered by size — and several of them are not their own encyclopedia article either.",
@@ -206,6 +273,8 @@ async function main() {
     defaultNames: "both",
     tierNotes: [{ fromTier: 4, icon: "ℹ️", text: TIER3_NOTE }],
     tiers,
+    tierConditions: TIER_CONDITIONS,
+    rulerTooltip: RULER_TOOLTIP,
   };
 
   const text = serializeTopic(topic);
