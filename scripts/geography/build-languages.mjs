@@ -51,6 +51,42 @@ const DERIVED = "ja-Latn";
  *  which a percentile split of whatever happens to be in the list is not. */
 const TIERS = [150e6, 60e6, 25e6, 8e6, 2e6, 0];
 
+/** One boundary per tier, index-aligned to `TIERS`. Number bands, in the same
+ *  house style as the country lists (nine UI languages, CJK counting in 億/万);
+ *  the noun ("speakers") lives in the tooltip, so these stay pure quantities. */
+const TIER_CONDITIONS = [
+  {"en":"150 million or more","de":"150 Millionen und mehr","es":"150 millones o más","fr":"150 millions ou plus","it":"150 milioni o più","ja":"1億5000万以上","ko":"1억 5000만 이상","zh-Hans":"1.5亿及以上","zh-Hant":"1.5億及以上"},
+  {"en":"60 million or more","de":"60 Millionen und mehr","es":"60 millones o más","fr":"60 millions ou plus","it":"60 milioni o più","ja":"6000万以上","ko":"6000만 이상","zh-Hans":"6000万及以上","zh-Hant":"6000萬及以上"},
+  {"en":"25 million or more","de":"25 Millionen und mehr","es":"25 millones o más","fr":"25 millions ou plus","it":"25 milioni o più","ja":"2500万以上","ko":"2500만 이상","zh-Hans":"2500万及以上","zh-Hant":"2500萬及以上"},
+  {"en":"8 million or more","de":"8 Millionen und mehr","es":"8 millones o más","fr":"8 millions ou plus","it":"8 milioni o più","ja":"800万以上","ko":"800만 이상","zh-Hans":"800万及以上","zh-Hant":"800萬及以上"},
+  {"en":"2 million or more","de":"2 Millionen und mehr","es":"2 millones o más","fr":"2 millions ou plus","it":"2 milioni o più","ja":"200万以上","ko":"200만 이상","zh-Hans":"200万及以上","zh-Hant":"200萬及以上"},
+  {"en":"more than 0","de":"mehr als 0","es":"más de 0","fr":"plus de 0","it":"più di 0","ja":"0より多い","ko":"0보다 많음","zh-Hans":"多于0","zh-Hant":"多於0"},
+];
+
+/** The ruler's hover. `{condition}` is filled with the band above; at rest it
+ *  names what the list is sorted by. Seven UI languages — the two Chinese UIs
+ *  fall back to English, as everywhere prose is authored here. */
+const RULER_TOOLTIP = {
+  text: {
+    en: "Selected: Languages with {condition} speakers worldwide",
+    de: "Ausgewählt: Sprachen mit {condition} Sprechern weltweit",
+    es: "Seleccionado: idiomas con {condition} hablantes en el mundo",
+    fr: "Sélection : langues comptant {condition} locuteurs dans le monde",
+    it: "Selezionate: lingue con {condition} parlanti nel mondo",
+    ja: "選択中：世界の話者数が{condition}の言語",
+    ko: "선택됨: 전 세계 사용자 수가 {condition}인 언어",
+  },
+  empty: {
+    en: "Ranked by speakers worldwide.",
+    de: "Nach Sprecherzahl weltweit geordnet.",
+    es: "Ordenados por número de hablantes en el mundo.",
+    fr: "Classées par nombre de locuteurs dans le monde.",
+    it: "Ordinate per numero di parlanti nel mondo.",
+    ja: "世界の話者数順。",
+    ko: "전 세계 사용자 수 기준 정렬.",
+  },
+};
+
 /** `Name ⇥ … ⇥ <iso2> ⇥ <iso3> ⇥ <speakers>`, with the countries a language is
  *  spoken in on their own lines between the rows. Read by shape rather than by
  *  column: the header shifts by one on the first row, and a table pasted out of a
@@ -139,6 +175,8 @@ async function main() {
       "Speakers: https://www.languagecourse.net/languages-worldwide",
     ],
     tiers,
+    tierConditions: TIER_CONDITIONS,
+    rulerTooltip: RULER_TOOLTIP,
   };
 
   const localized = words.filter((w) => typeof w !== "string").length;
