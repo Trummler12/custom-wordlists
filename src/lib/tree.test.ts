@@ -216,6 +216,26 @@ describe("mergeGroups", () => {
     // First occurrence wins; the per-continent matches stay reachable via `sources`.
     expect((merged.omitted?.[0] as { match: string[] }).match).toEqual(["Transnistria"]);
   });
+
+  it("sums the unknown counts and unites the rule summaries across contributors", () => {
+    const src = (
+      tid: string,
+      unknownByTier: number[],
+      summary: Record<string, { count: number; names: string[] }>,
+    ): { tid: string; group: Group } => ({
+      tid,
+      group: { id: tid, title: "Countries", tiers: [[]], unknownByTier, omissionSummary: summary },
+    });
+    const merged = mergeGroups(synth, [
+      src("europe", [1, 0], { "breakaway-states": { count: 1, names: ["Transnistria"] } }),
+      src("asia", [2, 1], { "breakaway-states": { count: 1, names: ["Abkhazia"] } }),
+    ]);
+    expect(merged.unknownByTier).toEqual([3, 1]);
+    expect(merged.omissionSummary?.["breakaway-states"]).toEqual({
+      count: 2,
+      names: ["Transnistria", "Abkhazia"],
+    });
+  });
 });
 
 describe("catDepth", () => {

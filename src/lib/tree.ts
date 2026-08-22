@@ -93,6 +93,9 @@ export function synthesizeTopics(topics: TopicSummary[]): TopicSummary[] {
  *  Republic of China) without depending on the list's names mode. */
 const mergeKey = (e: WordEntry): string => renderEntry(e, "both", "en").join("|");
 
+/** Cap on the names a merged rule's hover keeps, matching the per-list sample. */
+const SUMMARY_NAME_CAP = 30;
+
 /** The declared omission rules across the contributors, deduplicated by `id` —
  *  every continent writes the "breakaway states" rule under the same id (with its
  *  own `match`, its own territories), so the merged panel shows one row, not seven.
@@ -157,6 +160,29 @@ export function mergeGroups(
   } else {
     g.words = dedup(sources.flatMap((s) => s.group.words ?? []));
   }
+  // The "no name in this language" count reaches the merged panel too: summed per
+  // tier across the contributors (an upper bound — a transcontinental missing the
+  // same name twice counts twice, which "up to N" already allows for).
+  const tierN = Math.max(0, ...sources.map((s) => s.group.unknownByTier?.length ?? 0));
+  if (tierN > 0) {
+    g.unknownByTier = Array.from({ length: tierN }, (_, k) =>
+      sources.reduce((n, s) => n + (s.group.unknownByTier?.[k] ?? 0), 0),
+    );
+  }
+  // Each rule's count and name sample, gathered from the contributors that carry
+  // it — the same union the merged rule stands for. Names deduplicated so a
+  // transcontinental match is not listed twice; capped like the per-list sample.
+  const summary: Record<string, { count: number; names: string[] }> = {};
+  for (const s of sources) {
+    for (const [id, part] of Object.entries(s.group.omissionSummary ?? {})) {
+      const agg = (summary[id] ??= { count: 0, names: [] });
+      agg.count += part.count;
+      for (const name of part.names) {
+        if (agg.names.length < SUMMARY_NAME_CAP && !agg.names.includes(name)) agg.names.push(name);
+      }
+    }
+  }
+  if (Object.keys(summary).length) g.omissionSummary = summary;
   return g;
 }
 
