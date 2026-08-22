@@ -1,8 +1,8 @@
 <script lang="ts">
   import { baseTag, splitName } from "../../lib/languages";
-  import { allRules, isOnByDefault, TOO_LONG_RULE, UNKNOWN_RULE } from "../../lib/omitted";
+  import { allRules, TOO_LONG_RULE, UNKNOWN_RULE } from "../../lib/omitted";
   import { SKRIBBL } from "../../lib/skribbl";
-  import type { Group, Omission } from "../../lib/types";
+  import type { Group } from "../../lib/types";
   import { groupEntries, overlongForms, resolveStr } from "../../lib/words";
   import Msg from "../../locale/html/Msg.svelte";
   import { lang } from "../../state/lang.svelte";
@@ -68,11 +68,9 @@
   // the two can differ, and the row is about the former.
   const missing = $derived(splitName(lang.nameInUi(baseTag(lang.contentLang(tid)))));
 
-  // Ticked means "currently left out". An `omitted` rule starts ticked and an
-  // `omittable` one doesn't, so the stored flip is the same bit either way — and
-  // a locked rule is ticked whatever the reader once chose.
-  const isOmitting = (r: Omission) =>
-    r.locked || isOnByDefault(group, r) !== settings.isToggled(tid, group.id, r.id);
+  // Ticked means "currently left out"; `selection.omitting` reads the stored flip
+  // (and, for a synthesized topic, the majority across its contributors, which the
+  // toggle then commands as one). See selection.omitting / toggleOmission.
 </script>
 
 {#if rules.length > 0 || unknown > 0 || tooLong.length > 0}
@@ -96,14 +94,14 @@
         <p class="omitted-title">{lang.ui.omitted.title}</p>
         <ul>
           {#each rules as rule (rule.id)}
-            {@const omitting = isOmitting(rule)}
+            {@const omitting = selection.omitting(tid, group, rule.id)}
             <li>
               <label title={rule.locked ? lang.ui.omitted.locked : lang.ui.omitted.toggle(omitting)}>
                 <input
                   type="checkbox"
                   checked={omitting}
                   disabled={rule.locked}
-                  onchange={() => settings.toggleOmission(tid, group.id, rule.id)}
+                  onchange={() => selection.toggleOmission(tid, group, rule.id)}
                 />
                 <!-- Through Msg: a reason may carry a link to what was left out,
                      which is the whole reason it is worth reading. -->
