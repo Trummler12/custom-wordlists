@@ -164,6 +164,13 @@ export interface Omission {
    *  only ever be a mistake (300 Dynamax Crystals named `★Sgr6879`). Rare: the
    *  default is that anything omitted can be asked back. */
   locked?: boolean;
+  /** When true, the panel label is prefixed with "up to N", N being how many
+   *  entries the rule matches. For a rule whose `reason` names a category rather
+   *  than a fixed set ("territories generally regarded as part of another state"),
+   *  where the count is worth having and not already in the wording — so the reason
+   *  is then phrased to read on from the count. A rule whose reason already states
+   *  its own number (Pokémon's "300 Dynamax Crystals") leaves this off. */
+  count?: boolean;
 }
 
 /** A group of words: either a flat `words` list or ordered fame `tiers`. */
@@ -209,6 +216,11 @@ export interface Group {
    *  Per tier so the reader's ruler can scope it — the panel reports what is
    *  missing from the list they are taking, not from the file. */
   unknownByTier?: number[];
+  /** Per declared rule id: how many entries it matches, and a sample of their
+   *  names for the hover — put here by `visibleGroup`, which sees the entries
+   *  before they are filtered, and merged across a family by `mergeGroups`. The
+   *  count feeds a rule's "up to N" label, the names its tooltip. */
+  omissionSummary?: Record<string, { count: number; names: string[] }>;
 }
 
 /** A single topic data file (data/topics/<…>/<file>.json). */
