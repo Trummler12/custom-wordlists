@@ -10,12 +10,13 @@
     {
       "id": "dependencies",
       "match": ["Guam"],
+      "count": true,
       "reason": {
-        "en": "Territories generally regarded as part of a sovereign state",
+        "en": "territories generally regarded as part of a sovereign state",
         "de": "Gebiete, die allgemein als Teil eines souveränen Staates gelten",
-        "es": "Territorios considerados en general parte de un Estado soberano",
-        "fr": "Territoires généralement considérés comme partie d'un État souverain",
-        "it": "Territori generalmente considerati parte di uno Stato sovrano",
+        "es": "territorios considerados en general parte de un Estado soberano",
+        "fr": "territoires généralement considérés comme partie d'un État souverain",
+        "it": "territori generalmente considerati parte di uno Stato sovrano",
         "ja": "一般に主権国家の一部と見なされる地域",
         "ko": "일반적으로 주권 국가의 일부로 여겨지는 지역"
       }
@@ -25,12 +26,13 @@
     {
       "id": "associated-states",
       "match": ["Cook Islands","Niue"],
+      "count": true,
       "reason": {
-        "en": "States in free association with another, with limited recognition",
+        "en": "states in free association with another, with limited recognition",
         "de": "Staaten in freier Assoziation mit einem anderen, begrenzt anerkannt",
-        "es": "Estados en libre asociación con otro, de reconocimiento limitado",
-        "fr": "États en libre association avec un autre, à reconnaissance limitée",
-        "it": "Stati in libera associazione con un altro, dal riconoscimento limitato",
+        "es": "estados en libre asociación con otro, de reconocimiento limitado",
+        "fr": "états en libre association avec un autre, à reconnaissance limitée",
+        "it": "stati in libera associazione con un altro, dal riconoscimento limitato",
         "ja": "他国と自由連合を結ぶ、承認が限られた国",
         "ko": "다른 나라와 자유연합을 맺은, 승인이 제한된 국가"
       }

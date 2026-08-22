@@ -203,18 +203,19 @@ const OTHER = LANGS.filter((l) => l !== "en");
 const placeholder = (en) => ({ en, "?": [...OTHER] });
 
 /** The five recognition rules, in axis order (most state-like first). `default`
- *  decides the array: `omittable` shows by default, `omitted` hides. `reason` is
- *  the line beside the checkbox — seven UI languages, like every other prose in
- *  the data; the two Chinese UIs fall back to English. */
+ *  decides the array: `omittable` shows by default, `omitted` hides. Every rule
+ *  carries a count, so its `reason` opens lower-case with the countable noun and
+ *  reads on from the "up to N" the panel prepends — seven UI languages, like every
+ *  other prose in the data; the two Chinese UIs fall back to English. */
 const RULES = {
   "contested-states": {
     default: "omittable",
     reason: {
-      en: "Sovereign states with contested international recognition",
-      de: "Souveräne Staaten mit umstrittener internationaler Anerkennung",
-      es: "Estados soberanos con reconocimiento internacional disputado",
-      fr: "États souverains à la reconnaissance internationale contestée",
-      it: "Stati sovrani dal riconoscimento internazionale conteso",
+      en: "sovereign states with contested international recognition",
+      de: "souveräne Staaten mit umstrittener internationaler Anerkennung",
+      es: "estados soberanos con reconocimiento internacional disputado",
+      fr: "états souverains à la reconnaissance internationale contestée",
+      it: "stati sovrani dal riconoscimento internazionale conteso",
       ja: "国際的承認が争われている主権国家",
       ko: "국제적 승인이 논쟁 중인 주권 국가",
     },
@@ -222,11 +223,11 @@ const RULES = {
   "autonomous-territories": {
     default: "omittable",
     reason: {
-      en: "Highly autonomous territories often taken for countries of their own",
-      de: "Weitgehend autonome Gebiete, die viele für eigene Länder halten",
-      es: "Territorios muy autónomos que muchos toman por países propios",
-      fr: "Territoires très autonomes que beaucoup prennent pour des pays à part entière",
-      it: "Territori molto autonomi che molti scambiano per Paesi a sé",
+      en: "highly autonomous territories often taken for countries of their own",
+      de: "weitgehend autonome Gebiete, die viele für eigene Länder halten",
+      es: "territorios muy autónomos que muchos toman por países propios",
+      fr: "territoires très autonomes que beaucoup prennent pour des pays à part entière",
+      it: "territori molto autonomi che molti scambiano per paesi a sé",
       ja: "独自の国と見なされがちな高度な自治地域",
       ko: "독립국으로 여겨지곤 하는 고도 자치 지역",
     },
@@ -234,11 +235,11 @@ const RULES = {
   "associated-states": {
     default: "omittable",
     reason: {
-      en: "States in free association with another, with limited recognition",
+      en: "states in free association with another, with limited recognition",
       de: "Staaten in freier Assoziation mit einem anderen, begrenzt anerkannt",
-      es: "Estados en libre asociación con otro, de reconocimiento limitado",
-      fr: "États en libre association avec un autre, à reconnaissance limitée",
-      it: "Stati in libera associazione con un altro, dal riconoscimento limitato",
+      es: "estados en libre asociación con otro, de reconocimiento limitado",
+      fr: "états en libre association avec un autre, à reconnaissance limitée",
+      it: "stati in libera associazione con un altro, dal riconoscimento limitato",
       ja: "他国と自由連合を結ぶ、承認が限られた国",
       ko: "다른 나라와 자유연합을 맺은, 승인이 제한된 국가",
     },
@@ -246,11 +247,11 @@ const RULES = {
   "breakaway-states": {
     default: "omitted",
     reason: {
-      en: "Self-declared states recognized by few or no UN members",
-      de: "Selbsterklärte Staaten, von wenigen oder keinen UN-Mitgliedern anerkannt",
-      es: "Estados autoproclamados reconocidos por pocos o ningún miembro de la ONU",
-      fr: "États autoproclamés reconnus par peu ou aucun membre de l'ONU",
-      it: "Stati autoproclamati riconosciuti da pochi o nessun membro dell'ONU",
+      en: "self-declared states recognized by few or no UN members",
+      de: "selbsterklärte Staaten, von wenigen oder keinen UN-Mitgliedern anerkannt",
+      es: "estados autoproclamados reconocidos por pocos o ningún miembro de la ONU",
+      fr: "états autoproclamés reconnus par peu ou aucun membre de l'ONU",
+      it: "stati autoproclamati riconosciuti da pochi o nessun membro dell'ONU",
       ja: "国連加盟国のごく一部にしか、あるいは全く承認されない自称国家",
       ko: "유엔 회원국 중 극소수만이 또는 전혀 승인하지 않는 자칭 국가",
     },
@@ -258,11 +259,11 @@ const RULES = {
   dependencies: {
     default: "omitted",
     reason: {
-      en: "Territories generally regarded as part of a sovereign state",
+      en: "territories generally regarded as part of a sovereign state",
       de: "Gebiete, die allgemein als Teil eines souveränen Staates gelten",
-      es: "Territorios considerados en general parte de un Estado soberano",
-      fr: "Territoires généralement considérés comme partie d'un État souverain",
-      it: "Territori generalmente considerati parte di uno Stato sovrano",
+      es: "territorios considerados en general parte de un Estado soberano",
+      fr: "territoires généralement considérés comme partie d'un État souverain",
+      it: "territori generalmente considerati parte di uno Stato sovrano",
       ja: "一般に主権国家の一部と見なされる地域",
       ko: "일반적으로 주권 국가의 일부로 여겨지는 지역",
     },
@@ -310,7 +311,7 @@ function rulesFor(folder) {
   const omitted = [];
   const omittable = [];
   for (const id of Object.keys(names).sort()) {
-    const rule = { id, match: names[id].slice().sort(), reason: RULES[id].reason };
+    const rule = { id, match: names[id].slice().sort(), reason: RULES[id].reason, count: true };
     (RULES[id].default === "omitted" ? omitted : omittable).push(rule);
   }
   return { omitted, omittable };

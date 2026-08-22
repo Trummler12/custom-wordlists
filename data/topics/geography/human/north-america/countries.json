@@ -10,12 +10,13 @@
     {
       "id": "dependencies",
       "match": ["Greenland"],
+      "count": true,
       "reason": {
-        "en": "Territories generally regarded as part of a sovereign state",
+        "en": "territories generally regarded as part of a sovereign state",
         "de": "Gebiete, die allgemein als Teil eines souveränen Staates gelten",
-        "es": "Territorios considerados en general parte de un Estado soberano",
-        "fr": "Territoires généralement considérés comme partie d'un État souverain",
-        "it": "Territori generalmente considerati parte di uno Stato sovrano",
+        "es": "territorios considerados en general parte de un Estado soberano",
+        "fr": "territoires généralement considérés comme partie d'un État souverain",
+        "it": "territori generalmente considerati parte di uno Stato sovrano",
         "ja": "一般に主権国家の一部と見なされる地域",
         "ko": "일반적으로 주권 국가의 일부로 여겨지는 지역"
       }
@@ -25,12 +26,13 @@
     {
       "id": "autonomous-territories",
       "match": ["Puerto Rico"],
+      "count": true,
       "reason": {
-        "en": "Highly autonomous territories often taken for countries of their own",
-        "de": "Weitgehend autonome Gebiete, die viele für eigene Länder halten",
-        "es": "Territorios muy autónomos que muchos toman por países propios",
-        "fr": "Territoires très autonomes que beaucoup prennent pour des pays à part entière",
-        "it": "Territori molto autonomi che molti scambiano per Paesi a sé",
+        "en": "highly autonomous territories often taken for countries of their own",
+        "de": "weitgehend autonome Gebiete, die viele für eigene Länder halten",
+        "es": "territorios muy autónomos que muchos toman por países propios",
+        "fr": "territoires très autonomes que beaucoup prennent pour des pays à part entière",
+        "it": "territori molto autonomi che molti scambiano per paesi a sé",
         "ja": "独自の国と見なされがちな高度な自治地域",
         "ko": "독립국으로 여겨지곤 하는 고도 자치 지역"
       }

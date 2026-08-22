@@ -10,12 +10,13 @@
     {
       "id": "breakaway-states",
       "match": ["Somaliland"],
+      "count": true,
       "reason": {
-        "en": "Self-declared states recognized by few or no UN members",
-        "de": "Selbsterklärte Staaten, von wenigen oder keinen UN-Mitgliedern anerkannt",
-        "es": "Estados autoproclamados reconocidos por pocos o ningún miembro de la ONU",
-        "fr": "États autoproclamés reconnus par peu ou aucun membre de l'ONU",
-        "it": "Stati autoproclamati riconosciuti da pochi o nessun membro dell'ONU",
+        "en": "self-declared states recognized by few or no UN members",
+        "de": "selbsterklärte Staaten, von wenigen oder keinen UN-Mitgliedern anerkannt",
+        "es": "estados autoproclamados reconocidos por pocos o ningún miembro de la ONU",
+        "fr": "états autoproclamés reconnus par peu ou aucun membre de l'ONU",
+        "it": "stati autoproclamati riconosciuti da pochi o nessun membro dell'ONU",
         "ja": "国連加盟国のごく一部にしか、あるいは全く承認されない自称国家",
         "ko": "유엔 회원국 중 극소수만이 또는 전혀 승인하지 않는 자칭 국가"
       }
@@ -25,12 +26,13 @@
     {
       "id": "contested-states",
       "match": ["Western Sahara"],
+      "count": true,
       "reason": {
-        "en": "Sovereign states with contested international recognition",
-        "de": "Souveräne Staaten mit umstrittener internationaler Anerkennung",
-        "es": "Estados soberanos con reconocimiento internacional disputado",
-        "fr": "États souverains à la reconnaissance internationale contestée",
-        "it": "Stati sovrani dal riconoscimento internazionale conteso",
+        "en": "sovereign states with contested international recognition",
+        "de": "souveräne Staaten mit umstrittener internationaler Anerkennung",
+        "es": "estados soberanos con reconocimiento internacional disputado",
+        "fr": "états souverains à la reconnaissance internationale contestée",
+        "it": "stati sovrani dal riconoscimento internazionale conteso",
         "ja": "国際的承認が争われている主権国家",
         "ko": "국제적 승인이 논쟁 중인 주권 국가"
       }
