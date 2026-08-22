@@ -26,6 +26,8 @@ export const es: UIStrings = {
       depth === 1 ? `nivel más alto de ${total}` : `${depth} niveles más altos de ${total}`,
     groupsDefined: (count) => `Grupos de fama definidos: ${count}`,
     none: "Aún no hay grupos de fama definidos: consulta la Contribution Guide en el pie de página para proponer algunos.",
+    selected: "Selección:",
+    mostlySelected: "Selección mayoritaria:",
     toggle: (shown) =>
       shown ? "Ocultar la regla de fama de esta lista" : "Mostrar la regla de fama de esta lista",
     toggleAll: (allShown) =>

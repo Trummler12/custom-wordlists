@@ -26,6 +26,8 @@ export const de: UIStrings = {
       depth === 1 ? `oberste von ${total} Stufen` : `oberste ${depth} von ${total} Stufen`,
     groupsDefined: (count) => `Fame-Gruppen definiert: ${count}`,
     none: "Noch keine Fame-Gruppen definiert — im Contribution Guide im Footer erfährst du, wie du welche vorschlagen kannst!",
+    selected: "Ausgewählt:",
+    mostlySelected: "Grösstenteils ausgewählt:",
     toggle: (shown) =>
       shown ? "Fame-Regler dieser Liste ausblenden" : "Fame-Regler dieser Liste einblenden",
     toggleAll: (allShown) =>

@@ -26,6 +26,8 @@ export const fr: UIStrings = {
       depth === 1 ? `premier palier sur ${total}` : `${depth} premiers paliers sur ${total}`,
     groupsDefined: (count) => `Paliers de notoriété définis : ${count}`,
     none: "Aucun palier de notoriété défini pour l'instant — voir la Contribution Guide en pied de page pour en proposer.",
+    selected: "Sélection :",
+    mostlySelected: "Sélection majoritaire :",
     toggle: (shown) =>
       shown
         ? "Masquer la règle de notoriété de cette liste"

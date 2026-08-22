@@ -30,6 +30,8 @@ export const ja: UIStrings = {
     valueText: (depth, total) => `${total}段階中の上位${depth}段階`,
     groupsDefined: (count) => `定義済みの知名度グループ: ${count}`,
     none: "知名度グループはまだ定義されていません。フッターの Contribution Guide から提案できます。",
+    selected: "選択中：",
+    mostlySelected: "大半を選択中：",
     toggle: (shown) =>
       shown ? "このリストの知名度スライダーを隠す" : "このリストの知名度スライダーを表示する",
     toggleAll: (allShown) =>

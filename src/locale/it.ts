@@ -26,6 +26,8 @@ export const it: UIStrings = {
       depth === 1 ? `primo livello di ${total}` : `primi ${depth} livelli di ${total}`,
     groupsDefined: (count) => `Gruppi di notorietà definiti: ${count}`,
     none: "Nessun gruppo di notorietà definito finora — vedi la Contribution Guide nel piè di pagina per proporne.",
+    selected: "Selezione:",
+    mostlySelected: "Selezione maggioritaria:",
     toggle: (shown) =>
       shown
         ? "Nascondi il righello di notorietà di questa lista"

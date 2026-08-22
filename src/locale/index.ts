@@ -52,6 +52,12 @@ export interface FameStrings {
   groupsDefined: (count: number) => string;
   /** Ruler tooltip for a list that hasn't — an invitation to rank it. */
   none: string;
+  /** The prefix a topic's `rulerTooltip.text` wears — what the ruler position has
+   *  selected, down to the condition the text then names. */
+  selected: string;
+  /** The same prefix for a merged topic whose contributors don't all sit at its
+   *  ruler position: most are there, not all. */
+  mostlySelected: string;
   /** Toggle a single list's fame ruler; label reflects the current state. */
   toggle: (shown: boolean) => string;
   /** Toggle from a category row all the rulers it governs; label on current state. */

@@ -25,6 +25,8 @@ export const en: UIStrings = {
       depth === 1 ? `top tier of ${total}` : `top ${depth} of ${total} tiers`,
     groupsDefined: (count) => `Fame groups defined: ${count}`,
     none: "No fame groups defined yet — see the Contribution Guide in the footer to propose some!",
+    selected: "Selected:",
+    mostlySelected: "Mostly selected:",
     toggle: (shown) => (shown ? "Hide this list's fame ruler" : "Show this list's fame ruler"),
     toggleAll: (allShown) => (allShown ? "Hide these fame rulers" : "Show these fame rulers"),
   },

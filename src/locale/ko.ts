@@ -30,6 +30,8 @@ export const ko: UIStrings = {
     valueText: (depth, total) => `${total}단계 중 상위 ${depth}단계`,
     groupsDefined: (count) => `정의된 인지도 그룹: ${count}`,
     none: "아직 정의된 인지도 그룹이 없습니다. 하단의 Contribution Guide에서 제안할 수 있습니다.",
+    selected: "선택됨:",
+    mostlySelected: "대부분 선택됨:",
     toggle: (shown) =>
       shown ? "이 목록의 인지도 슬라이더 숨기기" : "이 목록의 인지도 슬라이더 표시",
     toggleAll: (allShown) =>
