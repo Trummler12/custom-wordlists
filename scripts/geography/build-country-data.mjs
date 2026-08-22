@@ -21,6 +21,16 @@
 // drawable name is the short one, so those three become a short/long pair and the
 // group defaults to `short`. St. John's has no English label at all and gets one.
 // These are the only hand-set names here — everything else is the dump verbatim.
+//
+// CONTESTED AND DEPENDENT TERRITORIES, PROVISIONAL. Beyond the 197 sovereign
+// states the dump yields, the lists carry territories placed on one axis: how far
+// the world sees each as its own state versus part of another. Recognition (or
+// perception) mostly won => `omittable` (shown, removable); mostly lost =>
+// `omitted` (hidden, offerable). Five rules span the axis (see RULES). The already
+// present trio (Kosovo, Taiwan, Palestine) is only classified; the rest are added
+// here as English-only placeholders (`?` for the other eight languages) — the full
+// multilingual fill comes later with the geonames expansion, so it is not done
+// twice. Countries only for now; capitals inherit the pattern in that same round.
 import { readFile, writeFile, mkdir } from "node:fs/promises";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -185,6 +195,127 @@ const SHORT = {
 /** Names the dump is missing outright — St. John's carries no English label. */
 const NAME_OVERRIDE = { "Q36262.en": "St. John's" };
 
+/** Every content language but English — the `?` list a placeholder entry carries,
+ *  saying it has no name yet in any of them. */
+const OTHER = LANGS.filter((l) => l !== "en");
+/** A provisional entry: an English name and nothing else yet. The geonames round
+ *  fills the eight `?` languages later, so no name is hand-typed twice. */
+const placeholder = (en) => ({ en, "?": [...OTHER] });
+
+/** The five recognition rules, in axis order (most state-like first). `default`
+ *  decides the array: `omittable` shows by default, `omitted` hides. `reason` is
+ *  the line beside the checkbox — seven UI languages, like every other prose in
+ *  the data; the two Chinese UIs fall back to English. */
+const RULES = {
+  "contested-states": {
+    default: "omittable",
+    reason: {
+      en: "Sovereign states with contested international recognition",
+      de: "Souveräne Staaten mit umstrittener internationaler Anerkennung",
+      es: "Estados soberanos con reconocimiento internacional disputado",
+      fr: "États souverains à la reconnaissance internationale contestée",
+      it: "Stati sovrani dal riconoscimento internazionale conteso",
+      ja: "国際的承認が争われている主権国家",
+      ko: "국제적 승인이 논쟁 중인 주권 국가",
+    },
+  },
+  "autonomous-territories": {
+    default: "omittable",
+    reason: {
+      en: "Highly autonomous territories often taken for countries of their own",
+      de: "Weitgehend autonome Gebiete, die viele für eigene Länder halten",
+      es: "Territorios muy autónomos que muchos toman por países propios",
+      fr: "Territoires très autonomes que beaucoup prennent pour des pays à part entière",
+      it: "Territori molto autonomi che molti scambiano per Paesi a sé",
+      ja: "独自の国と見なされがちな高度な自治地域",
+      ko: "독립국으로 여겨지곤 하는 고도 자치 지역",
+    },
+  },
+  "associated-states": {
+    default: "omittable",
+    reason: {
+      en: "States in free association with another, with limited recognition",
+      de: "Staaten in freier Assoziation mit einem anderen, begrenzt anerkannt",
+      es: "Estados en libre asociación con otro, de reconocimiento limitado",
+      fr: "États en libre association avec un autre, à reconnaissance limitée",
+      it: "Stati in libera associazione con un altro, dal riconoscimento limitato",
+      ja: "他国と自由連合を結ぶ、承認が限られた国",
+      ko: "다른 나라와 자유연합을 맺은, 승인이 제한된 국가",
+    },
+  },
+  "breakaway-states": {
+    default: "omitted",
+    reason: {
+      en: "Self-declared states recognized by few or no UN members",
+      de: "Selbsterklärte Staaten, von wenigen oder keinen UN-Mitgliedern anerkannt",
+      es: "Estados autoproclamados reconocidos por pocos o ningún miembro de la ONU",
+      fr: "États autoproclamés reconnus par peu ou aucun membre de l'ONU",
+      it: "Stati autoproclamati riconosciuti da pochi o nessun membro dell'ONU",
+      ja: "国連加盟国のごく一部にしか、あるいは全く承認されない自称国家",
+      ko: "유엔 회원국 중 극소수만이 또는 전혀 승인하지 않는 자칭 국가",
+    },
+  },
+  dependencies: {
+    default: "omitted",
+    reason: {
+      en: "Territories generally regarded as part of a sovereign state",
+      de: "Gebiete, die allgemein als Teil eines souveränen Staates gelten",
+      es: "Territorios considerados en general parte de un Estado soberano",
+      fr: "Territoires généralement considérés comme partie d'un État souverain",
+      it: "Territori generalmente considerati parte di uno Stato sovrano",
+      ja: "一般に主権国家の一部と見なされる地域",
+      ko: "일반적으로 주권 국가의 일부로 여겨지는 지역",
+    },
+  },
+};
+
+/** The territories to add, per continent folder — each an English-only placeholder
+ *  filed under one rule and given a rough population for its tier. Provisional and
+ *  meant to be edited by hand; the geonames round fills the languages and the rest
+ *  of the set. */
+const EXTRA = [
+  // omittable — shown by default, offered for removal
+  { folder: "africa", en: "Western Sahara", pop: 600000, rule: "contested-states" },
+  { folder: "asia", en: "Hong Kong", pop: 7500000, rule: "autonomous-territories" },
+  { folder: "north-america", en: "Puerto Rico", pop: 3200000, rule: "autonomous-territories" },
+  { folder: "oceania", en: "Cook Islands", pop: 15000, rule: "associated-states" },
+  { folder: "oceania", en: "Niue", pop: 1600, rule: "associated-states" },
+  // omitted — hidden by default, offered by the bar
+  { folder: "africa", en: "Somaliland", pop: 5700000, rule: "breakaway-states" },
+  { folder: "europe", en: "Northern Cyprus", pop: 380000, rule: "breakaway-states" },
+  { folder: "europe", en: "Transnistria", pop: 470000, rule: "breakaway-states" },
+  { folder: "asia", en: "Abkhazia", pop: 245000, rule: "breakaway-states" },
+  { folder: "asia", en: "South Ossetia", pop: 55000, rule: "breakaway-states" },
+  { folder: "north-america", en: "Greenland", pop: 56000, rule: "dependencies" },
+  { folder: "europe", en: "Faroe Islands", pop: 54000, rule: "dependencies" },
+  { folder: "oceania", en: "Guam", pop: 170000, rule: "dependencies" },
+];
+
+/** Territories already in the dump that only need classifying — the widely (if
+ *  contestedly) recognized trio, by the continent folder each sits in. */
+const CONTESTED_EXISTING = {
+  europe: ["Kosovo"],
+  asia: ["Taiwan", "Palestine"],
+};
+
+/** The `omitted` / `omittable` rules for one continent: every rule that has a
+ *  territory here, its `match` the names of those territories. Same id, same
+ *  reason across continents — so the synthesized world topic merges them into one
+ *  row (see mergeGroups) — while each continent matches only its own. */
+function rulesFor(folder) {
+  const names = {};
+  const add = (id, name) => (names[id] ??= []).push(name);
+  for (const e of EXTRA) if (e.folder === folder) add(e.rule, e.en);
+  for (const name of CONTESTED_EXISTING[folder] ?? []) add("contested-states", name);
+  const omitted = [];
+  const omittable = [];
+  for (const id of Object.keys(names).sort()) {
+    const rule = { id, match: names[id].slice().sort(), reason: RULES[id].reason };
+    (RULES[id].default === "omitted" ? omitted : omittable).push(rule);
+  }
+  return { omitted, omittable };
+}
+
 async function readColumns(dir) {
   const out = {};
   for (const lang of LANGS) {
@@ -251,14 +382,7 @@ function entry(qid, names, shortByLang) {
   return map;
 }
 
-/** Group entries into five population tiers, each a country order preserved. */
-function toTiers(countries, make) {
-  const tiers = [[], [], [], [], []];
-  for (const c of countries) tiers[tierOf(c.pop)].push(make(c));
-  return tiers;
-}
-
-function topic(id, title, tiers, sources, rulerTooltip) {
+function topic(id, title, tiers, sources, rulerTooltip, omitted, omittable) {
   return {
     id,
     title,
@@ -267,6 +391,8 @@ function topic(id, title, tiers, sources, rulerTooltip) {
     lastUpdated: TODAY,
     lastChecked: TODAY,
     defaultNames: "short",
+    ...(omitted?.length ? { omitted } : {}),
+    ...(omittable?.length ? { omittable } : {}),
     tiers,
     tierConditions: tierConditions(),
     rulerTooltip,
@@ -319,15 +445,25 @@ async function main() {
 
     const list = byContinent[folder].slice().sort((a, b) => b.pop - a.pop);
 
-    const countryTiers = toTiers(list, (c) => entry(c.country, countryNames[c.country], SHORT[c.country]));
-    await write(join(dir, "countries.json"), topic(`${folder}-countries`, T_COUNTRIES, countryTiers, SRC_COUNTRIES, RULER_COUNTRIES));
+    // Real countries plus this continent's provisional placeholders, tiered by
+    // population together — an omittable placeholder then shows in its true band.
+    const extras = EXTRA.filter((e) => e.folder === folder);
+    const items = [
+      ...list.map((c) => ({ pop: c.pop, make: () => entry(c.country, countryNames[c.country], SHORT[c.country]) })),
+      ...extras.map((e) => ({ pop: e.pop, make: () => placeholder(e.en) })),
+    ].sort((a, b) => b.pop - a.pop);
+    const countryTiers = [[], [], [], [], []];
+    for (const it of items) countryTiers[tierOf(it.pop)].push(it.make());
+    const { omitted, omittable } = rulesFor(folder);
+    await write(join(dir, "countries.json"), topic(`${folder}-countries`, T_COUNTRIES, countryTiers, SRC_COUNTRIES, RULER_COUNTRIES, omitted, omittable));
 
     // Capitals take their country's tier; a country with several contributes each.
+    // The placeholders stay out of the capitals for now (see header).
     const capTiers = [[], [], [], [], []];
     for (const c of list) for (const cap of c.capitals) capTiers[tierOf(c.pop)].push(entry(cap, capitalNames[cap]));
     await write(join(dir, "capitals.json"), topic(`${folder}-capitals`, T_CAPITALS, capTiers, SRC_CAPITALS, RULER_CAPITALS));
 
-    summary.push(`${folder.padEnd(14)} ${String(list.length).padStart(3)} countries, tiers ${countryTiers.map((t) => t.length).join("/")}`);
+    summary.push(`${folder.padEnd(14)} ${String(items.length).padStart(3)} countries, tiers ${countryTiers.map((t) => t.length).join("/")}`);
   }
 
   for (const s of summary) console.log(s);

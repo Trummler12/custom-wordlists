@@ -6,6 +6,36 @@
   "lastUpdated": "2026-08-22",
   "lastChecked": "2026-08-22",
   "defaultNames": "short",
+  "omitted": [
+    {
+      "id": "dependencies",
+      "match": ["Guam"],
+      "reason": {
+        "en": "Territories generally regarded as part of a sovereign state",
+        "de": "Gebiete, die allgemein als Teil eines souveränen Staates gelten",
+        "es": "Territorios considerados en general parte de un Estado soberano",
+        "fr": "Territoires généralement considérés comme partie d'un État souverain",
+        "it": "Territori generalmente considerati parte di uno Stato sovrano",
+        "ja": "一般に主権国家の一部と見なされる地域",
+        "ko": "일반적으로 주권 국가의 일부로 여겨지는 지역"
+      }
+    }
+  ],
+  "omittable": [
+    {
+      "id": "associated-states",
+      "match": ["Cook Islands","Niue"],
+      "reason": {
+        "en": "States in free association with another, with limited recognition",
+        "de": "Staaten in freier Assoziation mit einem anderen, begrenzt anerkannt",
+        "es": "Estados en libre asociación con otro, de reconocimiento limitado",
+        "fr": "États en libre association avec un autre, à reconnaissance limitée",
+        "it": "Stati in libera associazione con un altro, dal riconoscimento limitato",
+        "ja": "他国と自由連合を結ぶ、承認が限られた国",
+        "ko": "다른 나라와 자유연합을 맺은, 승인이 제한된 국가"
+      }
+    }
+  ],
   "tiers": [
     [],
 
@@ -25,13 +55,16 @@
       {"en":"Solomon Islands","de":"Salomonen","es":"Islas Salomón","fr":"Îles Salomon","it":"Isole Salomone","ja":"ソロモン諸島","ko":"솔로몬 제도","zh-Hans":"所罗门群岛","zh-Hant":"索羅門群島"},
       {"en":"Vanuatu","ja":"バヌアツ","ko":"바누아투","zh-Hans":"瓦努阿图","zh-Hant":"萬那杜"},
       {"en":"Samoa","ja":"サモア","ko":"사모아","zh-Hans":"萨摩亚","zh-Hant":"薩摩亞"},
+      {"en":"Guam","?":["de","es","fr","it","ja","ko","zh-Hans","zh-Hant"]},
       {"en":"Kiribati","ja":"キリバス","ko":"키리바시","zh-Hans":"基里巴斯","zh-Hant":"吉里巴斯"},
       {"en":"Tonga","ja":"トンガ","ko":"통가","zh-Hans":"汤加","zh-Hant":"東加"},
       {"en":"Federated States of Micronesia","de":"Föderierte Staaten von Mikronesien","es":"Estados Federados de Micronesia","fr":"États fédérés de Micronésie","it":"Stati Federati di Micronesia","ja":"ミクロネシア連邦","ko":"미크로네시아 연방","zh-Hans":"密克罗尼西亚联邦","zh-Hant":"密克羅尼西亞聯邦"},
       {"en":"Marshall Islands","de":"Marshallinseln","es":"Islas Marshall","fr":"Îles Marshall","it":"Isole Marshall","ja":"マーシャル諸島","ko":"마셜 제도","zh-Hans":"马绍尔群岛","zh-Hant":"馬紹爾群島"},
       {"en":"Palau","es":"Palaos","fr":"Palaos","ja":"パラオ","ko":"팔라우","zh-Hans":"帕劳","zh-Hant":"帛琉"},
+      {"en":"Cook Islands","?":["de","es","fr","it","ja","ko","zh-Hans","zh-Hant"]},
       {"en":"Nauru","de":"Naoero","ja":"ナウル","ko":"나우루","zh-Hans":"瑙鲁","zh-Hant":"瑙魯"},
-      {"en":"Tuvalu","ja":"ツバル","ko":"투발루","zh-Hans":"图瓦卢","zh-Hant":"吐瓦魯"}
+      {"en":"Tuvalu","ja":"ツバル","ko":"투발루","zh-Hans":"图瓦卢","zh-Hant":"吐瓦魯"},
+      {"en":"Niue","?":["de","es","fr","it","ja","ko","zh-Hans","zh-Hant"]}
     ]
   ],
   "tierConditions": [

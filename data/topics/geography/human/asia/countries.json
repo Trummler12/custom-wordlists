@@ -6,6 +6,49 @@
   "lastUpdated": "2026-08-22",
   "lastChecked": "2026-08-22",
   "defaultNames": "short",
+  "omitted": [
+    {
+      "id": "breakaway-states",
+      "match": ["Abkhazia","South Ossetia"],
+      "reason": {
+        "en": "Self-declared states recognized by few or no UN members",
+        "de": "Selbsterklärte Staaten, von wenigen oder keinen UN-Mitgliedern anerkannt",
+        "es": "Estados autoproclamados reconocidos por pocos o ningún miembro de la ONU",
+        "fr": "États autoproclamés reconnus par peu ou aucun membre de l'ONU",
+        "it": "Stati autoproclamati riconosciuti da pochi o nessun membro dell'ONU",
+        "ja": "国連加盟国のごく一部にしか、あるいは全く承認されない自称国家",
+        "ko": "유엔 회원국 중 극소수만이 또는 전혀 승인하지 않는 자칭 국가"
+      }
+    }
+  ],
+  "omittable": [
+    {
+      "id": "autonomous-territories",
+      "match": ["Hong Kong"],
+      "reason": {
+        "en": "Highly autonomous territories often taken for countries of their own",
+        "de": "Weitgehend autonome Gebiete, die viele für eigene Länder halten",
+        "es": "Territorios muy autónomos que muchos toman por países propios",
+        "fr": "Territoires très autonomes que beaucoup prennent pour des pays à part entière",
+        "it": "Territori molto autonomi che molti scambiano per Paesi a sé",
+        "ja": "独自の国と見なされがちな高度な自治地域",
+        "ko": "독립국으로 여겨지곤 하는 고도 자치 지역"
+      }
+    },
+    {
+      "id": "contested-states",
+      "match": ["Palestine","Taiwan"],
+      "reason": {
+        "en": "Sovereign states with contested international recognition",
+        "de": "Souveräne Staaten mit umstrittener internationaler Anerkennung",
+        "es": "Estados soberanos con reconocimiento internacional disputado",
+        "fr": "États souverains à la reconnaissance internationale contestée",
+        "it": "Stati sovrani dal riconoscimento internazionale conteso",
+        "ja": "国際的承認が争われている主権国家",
+        "ko": "국제적 승인이 논쟁 중인 주권 국가"
+      }
+    }
+  ],
   "tiers": [
     [
       {"en":{"short":"China","long":"People's Republic of China"},"de":{"short":"China","long":"Volksrepublik China"},"es":{"short":"China","long":"República Popular China"},"fr":{"short":"Chine","long":"république populaire de Chine"},"it":"Cina","ja":{"short":"中国","long":"中華人民共和国"},"ko":{"short":"중국","long":"중화인민공화국"},"zh-Hans":{"short":"中国","long":"中华人民共和国"},"zh-Hant":{"short":"中國","long":"中華人民共和國"}},
@@ -46,6 +89,7 @@
       {"en":"United Arab Emirates","de":"Vereinigte Arabische Emirate","es":"Emiratos Árabes Unidos","fr":"Émirats arabes unis","it":"Emirati Arabi Uniti","ja":"アラブ首長国連邦","ko":"아랍에미리트","zh-Hans":"阿拉伯联合酋长国","zh-Hant":"阿拉伯聯合大公國"},
       {"en":"Israel","fr":"Israël","it":"Israele","ja":"イスラエル","ko":"이스라엘","zh-Hans":"以色列","zh-Hant":"以色列"},
       {"en":"Tajikistan","de":"Tadschikistan","es":"Tayikistán","fr":"Tadjikistan","it":"Tagikistan","ja":"タジキスタン","ko":"타지키스탄","zh-Hans":"塔吉克斯坦","zh-Hant":"塔吉克斯坦"},
+      {"en":"Hong Kong","?":["de","es","fr","it","ja","ko","zh-Hans","zh-Hant"]},
       {"en":"Kyrgyzstan","de":"Kirgisistan","es":"Kirguistán","fr":"Kirghizistan","it":"Kirghizistan","ja":"キルギス","ko":"키르기스스탄","zh-Hans":"吉尔吉斯斯坦","zh-Hant":"吉爾吉斯"},
       {"en":"Laos","ja":"ラオス","ko":"라오스","zh-Hans":"老挝","zh-Hant":"寮國"},
       {"en":"Turkmenistan","es":"Turkmenistán","fr":"Turkménistan","ja":"トルクメニスタン","ko":"투르크메니스탄","zh-Hans":"土库曼斯坦","zh-Hant":"土庫曼"},
@@ -67,7 +111,9 @@
     [
       {"en":"Bhutan","es":"Bután","fr":"Bhoutan","ja":"ブータン","ko":"부탄","zh-Hans":"不丹","zh-Hant":"不丹"},
       {"en":"Brunei","es":"Brunéi","ja":"ブルネイ","ko":"브루나이","zh-Hans":"文莱","zh-Hant":"汶萊"},
-      {"en":"Maldives","de":"Malediven","es":"Maldivas","it":"Maldive","ja":"モルディブ","ko":"몰디브","zh-Hans":"马尔代夫","zh-Hant":"馬爾地夫"}
+      {"en":"Maldives","de":"Malediven","es":"Maldivas","it":"Maldive","ja":"モルディブ","ko":"몰디브","zh-Hans":"马尔代夫","zh-Hant":"馬爾地夫"},
+      {"en":"Abkhazia","?":["de","es","fr","it","ja","ko","zh-Hans","zh-Hant"]},
+      {"en":"South Ossetia","?":["de","es","fr","it","ja","ko","zh-Hans","zh-Hant"]}
     ]
   ],
   "tierConditions": [

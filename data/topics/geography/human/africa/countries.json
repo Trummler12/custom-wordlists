@@ -6,6 +6,36 @@
   "lastUpdated": "2026-08-22",
   "lastChecked": "2026-08-22",
   "defaultNames": "short",
+  "omitted": [
+    {
+      "id": "breakaway-states",
+      "match": ["Somaliland"],
+      "reason": {
+        "en": "Self-declared states recognized by few or no UN members",
+        "de": "Selbsterklärte Staaten, von wenigen oder keinen UN-Mitgliedern anerkannt",
+        "es": "Estados autoproclamados reconocidos por pocos o ningún miembro de la ONU",
+        "fr": "États autoproclamés reconnus par peu ou aucun membre de l'ONU",
+        "it": "Stati autoproclamati riconosciuti da pochi o nessun membro dell'ONU",
+        "ja": "国連加盟国のごく一部にしか、あるいは全く承認されない自称国家",
+        "ko": "유엔 회원국 중 극소수만이 또는 전혀 승인하지 않는 자칭 국가"
+      }
+    }
+  ],
+  "omittable": [
+    {
+      "id": "contested-states",
+      "match": ["Western Sahara"],
+      "reason": {
+        "en": "Sovereign states with contested international recognition",
+        "de": "Souveräne Staaten mit umstrittener internationaler Anerkennung",
+        "es": "Estados soberanos con reconocimiento internacional disputado",
+        "fr": "États souverains à la reconnaissance internationale contestée",
+        "it": "Stati sovrani dal riconoscimento internazionale conteso",
+        "ja": "国際的承認が争われている主権国家",
+        "ko": "국제적 승인이 논쟁 중인 주권 국가"
+      }
+    }
+  ],
   "tiers": [
     [
       {"en":"Nigeria","ja":"ナイジェリア","ko":"나이지리아","zh-Hans":"尼日利亚","zh-Hant":"奈及利亞"},
@@ -50,6 +80,7 @@
       {"en":"Sierra Leone","es":"Sierra Leona","ja":"シエラレオネ","ko":"시에라리온","zh-Hans":"塞拉利昂","zh-Hant":"獅子山"},
       {"en":"Libya","de":"Libyen","es":"Libia","fr":"Libye","it":"Libia","ja":"リビア","ko":"리비아","zh-Hans":"利比亚","zh-Hant":"利比亞"},
       {"en":"Republic of the Congo","de":"Republik Kongo","es":"Congo","fr":"République du Congo","it":"Repubblica del Congo","ja":"コンゴ共和国","ko":"콩고 공화국","zh-Hans":"刚果共和国","zh-Hant":"剛果共和國"},
+      {"en":"Somaliland","?":["de","es","fr","it","ja","ko","zh-Hans","zh-Hant"]},
       {"en":"Liberia","ja":"リベリア","ko":"라이베리아","zh-Hans":"利比里亚","zh-Hant":"賴比瑞亞"},
       {"en":"Central African Republic","de":"Zentralafrikanische Republik","es":"República Centroafricana","fr":"République centrafricaine","it":"Repubblica Centrafricana","ja":"中央アフリカ共和国","ko":"중앙아프리카 공화국","zh-Hans":"中非共和国","zh-Hant":"中非共和國"}
     ],
@@ -71,6 +102,7 @@
 
     [
       {"en":"Comoros","de":"Komoren","es":"Comoras","fr":"Comores","it":"Comore","ja":"コモロ","ko":"코모로","zh-Hans":"科摩罗","zh-Hant":"葛摩"},
+      {"en":"Western Sahara","?":["de","es","fr","it","ja","ko","zh-Hans","zh-Hant"]},
       {"en":"Cape Verde","de":"Kap Verde","es":"Cabo Verde","fr":"Cap-Vert","it":"Capo Verde","ja":"カーボベルデ","ko":"카보베르데","zh-Hans":"佛得角","zh-Hant":"維德角"},
       {"en":"São Tomé and Príncipe","de":"São Tomé und Príncipe","es":"Santo Tomé y Príncipe","fr":"Sao Tomé-et-Principe","it":"São Tomé e Príncipe","ja":"サントメ・プリンシペ","ko":"상투메 프린시페","zh-Hans":"圣多美和普林西比","zh-Hant":"聖多美普林西比"},
       {"en":"Seychelles","de":"Seychellen","ja":"セーシェル","ko":"세이셸","zh-Hans":"塞舌尔","zh-Hant":"塞席爾"}

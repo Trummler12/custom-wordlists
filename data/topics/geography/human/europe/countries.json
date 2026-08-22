@@ -6,6 +6,49 @@
   "lastUpdated": "2026-08-22",
   "lastChecked": "2026-08-22",
   "defaultNames": "short",
+  "omitted": [
+    {
+      "id": "breakaway-states",
+      "match": ["Northern Cyprus","Transnistria"],
+      "reason": {
+        "en": "Self-declared states recognized by few or no UN members",
+        "de": "Selbsterklärte Staaten, von wenigen oder keinen UN-Mitgliedern anerkannt",
+        "es": "Estados autoproclamados reconocidos por pocos o ningún miembro de la ONU",
+        "fr": "États autoproclamés reconnus par peu ou aucun membre de l'ONU",
+        "it": "Stati autoproclamati riconosciuti da pochi o nessun membro dell'ONU",
+        "ja": "国連加盟国のごく一部にしか、あるいは全く承認されない自称国家",
+        "ko": "유엔 회원국 중 극소수만이 또는 전혀 승인하지 않는 자칭 국가"
+      }
+    },
+    {
+      "id": "dependencies",
+      "match": ["Faroe Islands"],
+      "reason": {
+        "en": "Territories generally regarded as part of a sovereign state",
+        "de": "Gebiete, die allgemein als Teil eines souveränen Staates gelten",
+        "es": "Territorios considerados en general parte de un Estado soberano",
+        "fr": "Territoires généralement considérés comme partie d'un État souverain",
+        "it": "Territori generalmente considerati parte di uno Stato sovrano",
+        "ja": "一般に主権国家の一部と見なされる地域",
+        "ko": "일반적으로 주권 국가의 일부로 여겨지는 지역"
+      }
+    }
+  ],
+  "omittable": [
+    {
+      "id": "contested-states",
+      "match": ["Kosovo"],
+      "reason": {
+        "en": "Sovereign states with contested international recognition",
+        "de": "Souveräne Staaten mit umstrittener internationaler Anerkennung",
+        "es": "Estados soberanos con reconocimiento internacional disputado",
+        "fr": "États souverains à la reconnaissance internationale contestée",
+        "it": "Stati sovrani dal riconoscimento internazionale conteso",
+        "ja": "国際的承認が争われている主権国家",
+        "ko": "국제적 승인이 논쟁 중인 주권 국가"
+      }
+    }
+  ],
   "tiers": [
     [
       {"en":"Russia","de":"Russland","es":"Rusia","fr":"Russie","ja":"ロシア","ko":"러시아","zh-Hans":"俄罗斯","zh-Hant":"俄羅斯"}
@@ -63,8 +106,11 @@
       {"en":"Luxembourg","de":"Luxemburg","es":"Luxemburgo","it":"Lussemburgo","ja":"ルクセンブルク","ko":"룩셈부르크","zh-Hans":"卢森堡","zh-Hant":"盧森堡"},
       {"en":"Montenegro","fr":"Monténégro","ja":"モンテネグロ","ko":"몬테네그로","zh-Hans":"黑山","zh-Hant":"蒙特內哥羅"},
       {"en":"Malta","fr":"Malte","ja":"マルタ","ko":"몰타","zh-Hans":"马耳他","zh-Hant":"馬耳他"},
+      {"en":"Transnistria","?":["de","es","fr","it","ja","ko","zh-Hans","zh-Hant"]},
+      {"en":"Northern Cyprus","?":["de","es","fr","it","ja","ko","zh-Hans","zh-Hant"]},
       {"en":"Iceland","de":"Island","es":"Islandia","fr":"Islande","it":"Islanda","ja":"アイスランド","ko":"아이슬란드","zh-Hans":"冰岛","zh-Hant":"冰島"},
       {"en":"Andorra","fr":"Andorre","ja":"アンドラ","ko":"안도라","zh-Hans":"安道尔","zh-Hant":"安道爾"},
+      {"en":"Faroe Islands","?":["de","es","fr","it","ja","ko","zh-Hans","zh-Hant"]},
       {"en":"Monaco","es":"Mónaco","it":"Principato di Monaco","ja":"モナコ","ko":"모나코","zh-Hans":"摩纳哥","zh-Hant":"摩納哥"},
       {"en":"Liechtenstein","ja":"リヒテンシュタイン","ko":"리히텐슈타인","zh-Hans":"列支敦士登","zh-Hant":"列支敦斯登"},
       {"en":"San Marino","fr":"Saint-Marin","ja":"サンマリノ","ko":"산마리노","zh-Hans":"圣马力诺","zh-Hant":"聖馬利諾"},

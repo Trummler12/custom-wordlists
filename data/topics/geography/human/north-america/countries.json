@@ -6,6 +6,36 @@
   "lastUpdated": "2026-08-22",
   "lastChecked": "2026-08-22",
   "defaultNames": "short",
+  "omitted": [
+    {
+      "id": "dependencies",
+      "match": ["Greenland"],
+      "reason": {
+        "en": "Territories generally regarded as part of a sovereign state",
+        "de": "Gebiete, die allgemein als Teil eines souveränen Staates gelten",
+        "es": "Territorios considerados en general parte de un Estado soberano",
+        "fr": "Territoires généralement considérés comme partie d'un État souverain",
+        "it": "Territori generalmente considerati parte di uno Stato sovrano",
+        "ja": "一般に主権国家の一部と見なされる地域",
+        "ko": "일반적으로 주권 국가의 일부로 여겨지는 지역"
+      }
+    }
+  ],
+  "omittable": [
+    {
+      "id": "autonomous-territories",
+      "match": ["Puerto Rico"],
+      "reason": {
+        "en": "Highly autonomous territories often taken for countries of their own",
+        "de": "Weitgehend autonome Gebiete, die viele für eigene Länder halten",
+        "es": "Territorios muy autónomos que muchos toman por países propios",
+        "fr": "Territoires très autonomes que beaucoup prennent pour des pays à part entière",
+        "it": "Territori molto autonomi che molti scambiano per Paesi a sé",
+        "ja": "独自の国と見なされがちな高度な自治地域",
+        "ko": "독립국으로 여겨지곤 하는 고도 자치 지역"
+      }
+    }
+  ],
   "tiers": [
     [
       {"en":"United States","de":"Vereinigte Staaten","es":"Estados Unidos","fr":"États-Unis","it":"Stati Uniti","ja":"アメリカ合衆国","ko":"미국","zh-Hans":"美国","zh-Hant":"美國"},
@@ -29,6 +59,7 @@
 
     [
       {"en":"Panama","es":"Panamá","ja":"パナマ","ko":"파나마","zh-Hans":"巴拿马","zh-Hant":"巴拿馬"},
+      {"en":"Puerto Rico","?":["de","es","fr","it","ja","ko","zh-Hans","zh-Hant"]},
       {"en":"Jamaica","de":"Jamaika","fr":"Jamaïque","it":"Giamaica","ja":"ジャマイカ","ko":"자메이카","zh-Hans":"牙买加","zh-Hant":"牙買加"},
       {"en":"Trinidad and Tobago","de":"Trinidad und Tobago","es":"Trinidad y Tobago","fr":"Trinité-et-Tobago","it":"Trinidad e Tobago","ja":"トリニダード・トバゴ","ko":"트리니다드 토바고","zh-Hans":"特立尼达和多巴哥","zh-Hant":"千里達及托巴哥"}
     ],
@@ -42,6 +73,7 @@
       {"en":"Saint Vincent and the Grenadines","de":"St. Vincent und die Grenadinen","es":"San Vicente y las Granadinas","fr":"Saint-Vincent-et-les-Grenadines","it":"Saint Vincent e Grenadine","ja":"セントビンセント・グレナディーン","ko":"세인트빈센트 그레나딘","zh-Hans":"圣文森特和格林纳丁斯","zh-Hant":"聖文森及格瑞那丁"},
       {"en":"Antigua and Barbuda","de":"Antigua und Barbuda","es":"Antigua y Barbuda","fr":"Antigua-et-Barbuda","it":"Antigua e Barbuda","ja":"アンティグア・バーブーダ","ko":"앤티가 바부다","zh-Hans":"安提瓜和巴布达","zh-Hant":"安地卡及巴布達"},
       {"en":"Dominica","fr":"Dominique","ja":"ドミニカ国","ko":"도미니카 연방","zh-Hans":"多米尼克","zh-Hant":"多米尼克"},
+      {"en":"Greenland","?":["de","es","fr","it","ja","ko","zh-Hans","zh-Hant"]},
       {"en":"Saint Kitts and Nevis","de":"St. Kitts und Nevis","es":"San Cristóbal y Nieves","fr":"Saint-Christophe-et-Niévès","it":"Saint Kitts e Nevis","ja":"セントクリストファー・ネイビス","ko":"세인트키츠 네비스","zh-Hans":"圣基茨和尼维斯","zh-Hant":"聖克里斯多福及尼維斯"}
     ]
   ],
