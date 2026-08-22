@@ -189,6 +189,33 @@ describe("mergeGroups", () => {
     expect(merged.defaultNames).toBe("short");
     expect(merged.tierConditions).toEqual(["100 million or more", "more than 0"]);
   });
+
+  it("deduplicates the omission rules by id, so one row stands for the whole family", () => {
+    const withRules = (
+      tid: string,
+      omitted: { id: string; match: string[] }[],
+      omittable: { id: string; match: string[] }[],
+    ): { tid: string; group: Group } => ({
+      tid,
+      group: {
+        id: tid,
+        title: "Countries",
+        omitted: omitted.map((r) => ({ ...r, reason: "left out" })),
+        omittable: omittable.map((r) => ({ ...r, reason: "offered" })),
+        tiers: [[]],
+      },
+    });
+    const merged = mergeGroups(synth, [
+      // Each continent writes the same rule ids with its own territories.
+      withRules("europe", [{ id: "breakaway-states", match: ["Transnistria"] }], [{ id: "contested-states", match: ["Kosovo"] }]),
+      withRules("asia", [{ id: "breakaway-states", match: ["Abkhazia"] }], [{ id: "contested-states", match: ["Taiwan"] }]),
+      withRules("africa", [{ id: "breakaway-states", match: ["Somaliland"] }], []),
+    ]);
+    expect(merged.omitted?.map((r) => r.id)).toEqual(["breakaway-states"]);
+    expect(merged.omittable?.map((r) => r.id)).toEqual(["contested-states"]);
+    // First occurrence wins; the per-continent matches stay reachable via `sources`.
+    expect((merged.omitted?.[0] as { match: string[] }).match).toEqual(["Transnistria"]);
+  });
 });
 
 describe("catDepth", () => {

@@ -2,7 +2,7 @@
 // the `inheritsUpwards` synthesis: which merged topics to hang in it, and how to
 // assemble one from its contributors.
 
-import type { Group, TopicSummary, WordEntry } from "./types";
+import type { Group, Omission, TopicSummary, WordEntry } from "./types";
 import { renderEntry } from "./words";
 
 /** One level of the category tree. Renders as a single collapsible node showing
@@ -93,17 +93,42 @@ export function synthesizeTopics(topics: TopicSummary[]): TopicSummary[] {
  *  Republic of China) without depending on the list's names mode. */
 const mergeKey = (e: WordEntry): string => renderEntry(e, "both", "en").join("|");
 
+/** The declared omission rules across the contributors, deduplicated by `id` —
+ *  every continent writes the "breakaway states" rule under the same id (with its
+ *  own `match`, its own territories), so the merged panel shows one row, not seven.
+ *  First occurrence wins; validate-data guarantees same-id rules carry the same
+ *  reason, so which one wins can't matter. The per-contributor rules stay reachable
+ *  through `sources`, which is where a toggle on the merged row commands them. */
+function mergeRules(
+  sources: { tid: string; group: Group }[],
+  pick: (g: Group) => Omission[] | undefined,
+): Omission[] {
+  const seen = new Set<string>();
+  const out: Omission[] = [];
+  for (const s of sources) {
+    for (const rule of pick(s.group) ?? []) {
+      if (seen.has(rule.id)) continue;
+      seen.add(rule.id);
+      out.push(rule);
+    }
+  }
+  return out;
+}
+
 /** Merge the contributor groups of an `inheritsUpwards` family into the one group
  *  the synthesized topic renders. Tiers are assembled band by band and
- *  deduplicated (transcontinentals), while `sources` keeps each contributor's
- *  group so a later per-contributor view can regroup without re-merging. The
- *  boundary metadata (`tierConditions`, `rulerTooltip`, `defaultNames`) is taken
- *  from the first contributor — validate-data guarantees they all agree. */
+ *  deduplicated (transcontinentals), the omission rules deduplicated by id, while
+ *  `sources` keeps each contributor's group so a later per-contributor view can
+ *  regroup without re-merging. The boundary metadata (`tierConditions`,
+ *  `rulerTooltip`, `defaultNames`) is taken from the first contributor —
+ *  validate-data guarantees they all agree. */
 export function mergeGroups(
   synth: TopicSummary,
   sources: { tid: string; group: Group }[],
 ): Group {
   const first = sources[0].group;
+  const omitted = mergeRules(sources, (g) => g.omitted);
+  const omittable = mergeRules(sources, (g) => g.omittable);
   const dedup = (entries: WordEntry[]): WordEntry[] => {
     const seen = new Set<string>();
     const out: WordEntry[] = [];
@@ -121,6 +146,8 @@ export function mergeGroups(
     ...(first.defaultNames !== undefined ? { defaultNames: first.defaultNames } : {}),
     ...(first.tierConditions ? { tierConditions: first.tierConditions } : {}),
     ...(first.rulerTooltip ? { rulerTooltip: first.rulerTooltip } : {}),
+    ...(omitted.length ? { omitted } : {}),
+    ...(omittable.length ? { omittable } : {}),
     sources,
   };
   if (first.tiers) {
