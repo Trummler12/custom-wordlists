@@ -19,8 +19,14 @@
   const ranked = $derived(fame > 1);
   // What the ruler says on hover: the list's own line where it declares one (the
   // condition just brought in, moving with the thumb), else the bare tier count.
+  // The prefix comes from the locale, and turns to "Mostly selected" when a merged
+  // topic's contributors don't all sit at this position.
+  const prefix = $derived(
+    selection.depthMixed(tid) ? lang.ui.fame.mostlySelected : lang.ui.fame.selected,
+  );
   const tip = $derived(
-    rulerTip(group, depth, (s) => resolveStr(s, lang.uiLang)) ?? lang.ui.fame.groupsDefined(fame),
+    rulerTip(group, depth, (s) => resolveStr(s, lang.uiLang), prefix) ??
+      lang.ui.fame.groupsDefined(fame),
   );
   const tipId = $derived(`fame-${tid}-${group.id}`);
 </script>

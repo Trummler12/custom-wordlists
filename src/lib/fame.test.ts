@@ -187,30 +187,40 @@ describe("rulerTip", () => {
     ...tiered(2, 3),
     tierConditions: ["100 million or more", "20 million or more"],
     rulerTooltip: {
-      text: "Selected: Countries with {condition} inhabitants",
+      text: "Countries with {condition} inhabitants",
       empty: "Ranked by population.",
     },
   });
 
   it("is nothing for a list that declares none, so the caller can fall back", () => {
-    expect(rulerTip(tiered(2, 3), 1, resolve)).toBeUndefined();
+    expect(rulerTip(tiered(2, 3), 1, resolve, "Selected:")).toBeUndefined();
   });
 
-  it("says what the list is ordered by at rest", () => {
-    expect(rulerTip(g(), 0, resolve)).toBe("Ranked by population.");
+  it("says what the list is ordered by at rest, with no prefix", () => {
+    expect(rulerTip(g(), 0, resolve, "Selected:")).toBe("Ranked by population.");
   });
 
-  it("fills {condition} with the lowest band the ruler has brought in", () => {
-    expect(rulerTip(g(), 1, resolve)).toBe("Selected: Countries with 100 million or more inhabitants");
-    expect(rulerTip(g(), 2, resolve)).toBe("Selected: Countries with 20 million or more inhabitants");
+  it("prefixes the body and fills {condition} with the band just brought in", () => {
+    expect(rulerTip(g(), 1, resolve, "Selected:")).toBe(
+      "Selected: Countries with 100 million or more inhabitants",
+    );
+    expect(rulerTip(g(), 2, resolve, "Selected:")).toBe(
+      "Selected: Countries with 20 million or more inhabitants",
+    );
+  });
+
+  it("takes the prefix it is handed, so a mixed merge can say 'Mostly selected'", () => {
+    expect(rulerTip(g(), 1, resolve, "Mostly selected:")).toBe(
+      "Mostly selected: Countries with 100 million or more inhabitants",
+    );
   });
 
   it("drops the token when there are no conditions to fill it", () => {
     const noConds: Group = {
       ...tiered(2, 3),
-      rulerTooltip: { text: "Selected: {condition}", empty: "Ranked." },
+      rulerTooltip: { text: "{condition}", empty: "Ranked." },
     };
-    expect(rulerTip(noConds, 1, resolve)).toBe("Selected: ");
+    expect(rulerTip(noConds, 1, resolve, "Selected:")).toBe("Selected: ");
   });
 });
 

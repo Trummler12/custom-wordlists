@@ -268,6 +268,15 @@ class SelectionState {
     else this.selected[k] = d > 0;
   }
 
+  /** Whether a synthesized topic's contributors sit at different ruler depths — so
+   *  its ruler shows the common position (see `depthOf`) yet describes it as "Mostly
+   *  selected" rather than "Selected". Always false for an ordinary topic. */
+  depthMixed(tid: string): boolean {
+    if (!topics.isSynth(tid)) return false;
+    const depths = this.contribGroups(tid).map(({ t, g }) => this.depthOf(t.id, g));
+    return new Set(depths).size > 1;
+  }
+
   /** Drag or click on the slider track. */
   dragDepth(e: PointerEvent, tid: string, g: Group): void {
     this.setDepth(tid, g, depthFromPointer(e, g));

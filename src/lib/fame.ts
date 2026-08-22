@@ -115,18 +115,22 @@ export function skipCollapsed(pos: number[], current: number, target: number): n
 
 /** The ruler's hover text at a given depth, when the list declares one — the
  *  condition it has just brought in, or, at its leftmost stop, what it is ordered
- *  by. `resolve` renders a localized string in the interface language. Returns
- *  undefined for a list with no `rulerTooltip`, so the caller can fall back. */
+ *  by. `resolve` renders a localized string in the interface language; `prefix` is
+ *  the locale's "Selected:" (or "Mostly selected:") that opens the non-empty text.
+ *  Returns undefined for a list with no `rulerTooltip`, so the caller can fall back. */
 export function rulerTip(
   g: Group,
   depth: number,
   resolve: (s: LocalizedString) => string,
+  prefix: string,
 ): string | undefined {
   const rt = g.rulerTooltip;
   if (!rt) return undefined;
+  // At rest nothing is selected, so the ordering line stands on its own — no prefix.
   if (depth <= 0) return resolve(rt.empty);
   const cond = g.tierConditions?.[depth - 1];
-  return resolve(rt.text).replace("{condition}", cond ? resolve(cond) : "");
+  const body = resolve(rt.text).replace("{condition}", cond ? resolve(cond) : "");
+  return `${prefix} ${body}`;
 }
 
 export function nearestIndex(pos: number[], frac: number): number {
