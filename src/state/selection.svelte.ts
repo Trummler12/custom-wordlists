@@ -41,6 +41,36 @@ class SelectionState {
     return `${tid}:${gid}`;
   }
 
+  // --- Synthesized topics ----------------------------------------------------
+  // A synthesized (inheritsUpwards) topic holds no state of its own: it commands
+  // its contributors downward (setDepth/setMode write to each) and describes them
+  // upward (depthOf/modeOf report the most common, counts the deduplicated union).
+  // Every method below that takes a group checks `topics.isSynth(tid)` first.
+
+  /** The contributors of a synthesized topic paired with their loaded group, ready
+   *  to delegate to. Empty (and callers fall through) until the members load. */
+  private contribGroups(tid: string): { t: TopicSummary; g: Group }[] {
+    const out: { t: TopicSummary; g: Group }[] = [];
+    for (const t of topics.contributorsOf(tid)) {
+      const g = topics.groupsOf(t)[0];
+      if (g) out.push({ t, g });
+    }
+    return out;
+  }
+  /** The value most of the contributors agree on, lowest on a tie — so a
+   *  synthesized ruler never claims a deeper position than its members hold. */
+  private commonest<T extends string | number>(vals: T[], fallback: T): T {
+    if (vals.length === 0) return fallback;
+    const count = new Map<T, number>();
+    for (const v of vals) count.set(v, (count.get(v) ?? 0) + 1);
+    let best = vals[0];
+    for (const [v, c] of count) {
+      const bc = count.get(best) ?? 0;
+      if (c > bc || (c === bc && v < best)) best = v;
+    }
+    return best;
+  }
+
   // --- Expansion -------------------------------------------------------------
 
   /** Only top-level categories start open, so the second level (gaming → pokemon)
@@ -61,10 +91,18 @@ class SelectionState {
   // the default: a list of countries emits `short` where South Park emits `long`,
   // and neither is the reader's doing.
   modeOf(tid: string, g: Group): NamesMode {
+    if (topics.isSynth(tid)) {
+      const modes = this.contribGroups(tid).map(({ t, g }) => this.modeOf(t.id, g));
+      return this.commonest<NamesMode>(modes, g.defaultNames ?? "long");
+    }
     return this.namesMode[this.key(tid, g.id)] ?? g.defaultNames ?? "long";
   }
-  setMode(k: string, mode: NamesMode): void {
-    this.namesMode[k] = mode;
+  setMode(tid: string, g: Group, mode: NamesMode): void {
+    if (topics.isSynth(tid)) {
+      for (const c of this.contribGroups(tid)) this.setMode(c.t.id, c.g, mode);
+      return;
+    }
+    this.namesMode[this.key(tid, g.id)] = mode;
   }
 
   // --- Counts ----------------------------------------------------------------
@@ -72,9 +110,17 @@ class SelectionState {
   /** The entries a group currently contributes: its top-N tiers, or all of its
    *  flat words when ticked. */
   entriesOf(tid: string, g: Group): WordEntry[] {
-    const k = this.key(tid, g.id);
-    if (g.tiers) return g.tiers.slice(0, this.depthByGroup[k] ?? 0).flat();
-    return this.selected[k] ? (g.words ?? []) : [];
+    // A synthesized topic contributes what its members do — the union of their
+    // selected entries, each member at its own depth. `renderCount` de-duplicates
+    // by rendered form, so a transcontinental country counted here twice still
+    // counts once (Russia in Europe's and Asia's selection). The synth's own ruler
+    // position (`depthOf`) is a summary of the members, not the count's source.
+    if (topics.isSynth(tid)) {
+      return this.contribGroups(tid).flatMap(({ t, g }) => this.entriesOf(t.id, g));
+    }
+    const depth = this.depthOf(tid, g);
+    if (g.tiers) return g.tiers.slice(0, depth).flat();
+    return depth > 0 ? (g.words ?? []) : [];
   }
 
   /** The length limit in force for this list, or none where the reader has asked
@@ -104,10 +150,17 @@ class SelectionState {
   }
 
   groupFull(tid: string, g: Group): boolean {
+    if (topics.isSynth(tid)) {
+      const cs = this.contribGroups(tid);
+      return cs.length > 0 && cs.every(({ t, g }) => this.groupFull(t.id, g));
+    }
     const k = this.key(tid, g.id);
     return g.tiers ? (this.depthByGroup[k] ?? 0) === g.tiers.length : !!this.selected[k];
   }
   groupPartial(tid: string, g: Group): boolean {
+    if (topics.isSynth(tid)) {
+      return this.groupSelCount(tid, g) > 0 && !this.groupFull(tid, g);
+    }
     if (!g.tiers) return false;
     const d = this.depthByGroup[this.key(tid, g.id)] ?? 0;
     return d > 0 && d < g.tiers.length;
@@ -130,14 +183,22 @@ class SelectionState {
     return this.topicSelCount(t) > 0 && !this.topicFull(t);
   }
 
+  /** A category's topics minus the synthesized ones. A synthesized topic re-lists
+   *  its contributors, which already sit in the same subtree, so counting or
+   *  toggling it alongside them would double every country. */
+  private real(ts: TopicSummary[]): TopicSummary[] {
+    return ts.filter((t) => !topics.isSynth(t.id));
+  }
+
   catTotal(ts: TopicSummary[]): number {
-    return ts.reduce((n, t) => n + this.topicTotal(t), 0);
+    return this.real(ts).reduce((n, t) => n + this.topicTotal(t), 0);
   }
   catSel(ts: TopicSummary[]): number {
-    return ts.reduce((n, t) => n + this.topicSelCount(t), 0);
+    return this.real(ts).reduce((n, t) => n + this.topicSelCount(t), 0);
   }
   catFull(ts: TopicSummary[]): boolean {
-    return ts.every((t) => this.topicFull(t));
+    const real = this.real(ts);
+    return real.length > 0 && real.every((t) => this.topicFull(t));
   }
   catPartial(ts: TopicSummary[]): boolean {
     return this.catSel(ts) > 0 && !this.catFull(ts);
@@ -146,10 +207,18 @@ class SelectionState {
   // --- Fame depth ------------------------------------------------------------
 
   depthOf(tid: string, g: Group): number {
+    if (topics.isSynth(tid)) {
+      const depths = this.contribGroups(tid).map(({ t, g }) => this.depthOf(t.id, g));
+      return this.commonest(depths, 0);
+    }
     const k = this.key(tid, g.id);
     return g.tiers ? (this.depthByGroup[k] ?? 0) : this.selected[k] ? 1 : 0;
   }
   setDepth(tid: string, g: Group, d: number): void {
+    if (topics.isSynth(tid)) {
+      for (const c of this.contribGroups(tid)) this.setDepth(c.t.id, c.g, d);
+      return;
+    }
     const k = this.key(tid, g.id);
     if (g.tiers) this.depthByGroup[k] = d;
     else this.selected[k] = d > 0;
@@ -175,6 +244,10 @@ class SelectionState {
   // --- Setting ---------------------------------------------------------------
 
   setGroup(tid: string, g: Group, on: boolean): void {
+    if (topics.isSynth(tid)) {
+      this.setDepth(tid, g, on ? (g.tiers?.length ?? 1) : 0);
+      return;
+    }
     const k = this.key(tid, g.id);
     if (g.tiers) this.depthByGroup[k] = on ? g.tiers.length : 0;
     else this.selected[k] = on;
@@ -188,14 +261,22 @@ class SelectionState {
     this.setGroup(tid, g, this.groupSelCount(tid, g) === 0);
   }
   async toggleTopic(t: TopicSummary): Promise<void> {
+    if (topics.isSynth(t.id)) {
+      await topics.ensure(t); // loads every contributor
+      this.setTopic(t, !this.topicFull(t));
+      return;
+    }
     const data = topics.data[t.id] ?? (await topics.ensure(t));
     if (!data) return;
     this.setTopic(t, !this.topicFull(t));
   }
   async toggleCategory(ts: TopicSummary[]): Promise<void> {
-    const on = !this.catFull(ts);
-    const loaded = await Promise.all(ts.map((t) => topics.data[t.id] ?? topics.ensure(t)));
-    ts.forEach((t, i) => loaded[i] && this.setTopic(t, on));
+    // Only the real topics: a synthesized one just re-lists members already here,
+    // and toggling both would fight over the same contributors.
+    const real = this.real(ts);
+    const on = !this.catFull(real);
+    const loaded = await Promise.all(real.map((t) => topics.data[t.id] ?? topics.ensure(t)));
+    real.forEach((t, i) => loaded[i] && this.setTopic(t, on));
   }
 
   // --- Ruler visibility ------------------------------------------------------
