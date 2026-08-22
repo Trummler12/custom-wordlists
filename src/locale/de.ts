@@ -41,6 +41,7 @@ export const de: UIStrings = {
         ? "Umschalten, um diese in die Liste aufzunehmen"
         : "Umschalten, um diese wegzulassen",
     locked: "Das sind Spieldaten und keine Wörter, sie lassen sich nicht aufnehmen.",
+    upTo: (n) => `Bis zu ${n}`,
     unknown: (n, primary, secondary) =>
       `Bis zu ${n} ${n === 1 ? "Eintrag" : "Einträge"} ohne Namen auf ${primary}${secondary} in den Ausgangsdaten`,
     unknownHint: (omitted) =>

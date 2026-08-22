@@ -41,6 +41,7 @@ export const fr: UIStrings = {
     toggle: (omitted) =>
       omitted ? "Activer pour les inclure dans votre liste" : "Activer pour les laisser de côté",
     locked: "Ce sont des données de jeu et non des mots : impossible de les ajouter.",
+    upTo: (n) => `Jusqu'à ${n}`,
     unknown: (n, primary, secondary) =>
       `Jusqu'à ${n} entrée${n === 1 ? "" : "s"} sans nom en ${primary}${secondary} dans les données source`,
     unknownHint: (omitted) =>

@@ -42,6 +42,7 @@ export const ja: UIStrings = {
     title: "このリストから除外:",
     toggle: (omitted) => (omitted ? "オンにしてリストに含める" : "オンにして除外する"),
     locked: "これらは単語ではなくゲームのデータなので、追加できません。",
+    upTo: (n) => `最大${n}件`,
     unknown: (n, primary, secondary) =>
       `元データに${primary}${secondary}の名前がない項目が最大${n}件`,
     unknownHint: (omitted) =>

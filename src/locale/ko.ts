@@ -42,6 +42,7 @@ export const ko: UIStrings = {
     title: "이 목록에서 제외됨:",
     toggle: (omitted) => (omitted ? "켜면 목록에 포함합니다" : "켜면 제외합니다"),
     locked: "단어가 아니라 게임 데이터라서 추가할 수 없습니다.",
+    upTo: (n) => `최대 ${n}개`,
     unknown: (n, primary, secondary) =>
       `원본 데이터에 ${primary}${secondary} 이름이 없는 항목 최대 ${n}개`,
     unknownHint: (omitted) =>

@@ -41,6 +41,7 @@ export const it: UIStrings = {
     toggle: (omitted) =>
       omitted ? "Attiva per includerli nella tua lista" : "Attiva per tralasciarli",
     locked: "Sono dati di gioco e non parole, quindi non si possono aggiungere.",
+    upTo: (n) => `Fino a ${n}`,
     unknown: (n, primary, secondary) =>
       `Fino a ${n} voc${n === 1 ? "e" : "i"} senza nome in ${primary}${secondary} nei dati di origine`,
     unknownHint: (omitted) =>

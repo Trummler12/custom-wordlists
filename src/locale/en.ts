@@ -36,6 +36,7 @@ export const en: UIStrings = {
     toggle: (omitted) =>
       omitted ? "Toggle to include these in your list" : "Toggle to leave these out",
     locked: "These are game data rather than words, so they can't be added.",
+    upTo: (n) => `Up to ${n}`,
     unknown: (n, primary, secondary) =>
       `Up to ${n} entr${n === 1 ? "y" : "ies"} the source data has no ${primary}${secondary} name for`,
     unknownHint: (omitted) =>

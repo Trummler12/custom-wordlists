@@ -72,6 +72,9 @@ export interface OmittedStrings {
   toggle: (omitted: boolean) => string;
   /** Why one rule's checkbox is disabled. */
   locked: string;
+  /** The "up to N" a counting rule leads with, its `reason` reading on from it —
+   *  an upper bound, since how many a click brings back depends on the ruler. */
+  upTo: (n: number) => string;
   /** The panel row for entries the list has no name for, and its hint — which,
    *  like `toggle`, says what a click would do. The language is named rather than
    *  referred to: the interface may be in a different one, and "no German names"
