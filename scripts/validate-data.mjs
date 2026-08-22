@@ -1,7 +1,7 @@
 // Validates every data/topics/**/<file>.json against schema/topic.schema.json
 // (and each `_category.json` sidecar against schema/category.schema.json) plus
 // cross-checks the schema can't express:
-//   1. preset.groups reference real group ids (referential integrity)
+//   1. every member of an `inheritsUpwards` family cuts the same tier bands
 //   2. no duplicate words within a topic file
 //   3. every language used in an entry's language map is listed in `languages`
 //   4. omission rules still describe the list (no stale rule, no self-matching `as`)
@@ -190,6 +190,10 @@ async function main() {
     }
   }
 
+  // `inheritsUpwards` families, gathered across files for the consistency check
+  // after the loop: `${meetCategory}::${stem}` → each member's tier shape.
+  const families = new Map();
+
   let fileCount = 0;
   for (const { id, category, fileSegments } of found.topics) {
     const rel = `data/topics/${fileSegments.join("/")}`;
@@ -221,6 +225,19 @@ async function main() {
     // id agreement: the folder name (leaf) or the file stem (flat) — both equal `id`
     if (topic.id !== id) {
       errors.push(`${rel}: id "${topic.id}" does not match location "${id}"`);
+    }
+
+    // Gather this leaf into every family it contributes to (one per level up to
+    // `inheritsUpwards`), keyed by the meeting category and the shared file stem.
+    if (Number.isInteger(topic.inheritsUpwards) && topic.inheritsUpwards >= 1) {
+      const stem = basename(fileSegments[fileSegments.length - 1], ".json");
+      const segs = category.split("/").filter(Boolean);
+      for (let k = 1; k <= topic.inheritsUpwards && k <= segs.length; k++) {
+        const key = `${segs.slice(0, segs.length - k).join("/")}::${stem}`;
+        let fam = families.get(key);
+        if (!fam) families.set(key, (fam = []));
+        fam.push({ rel, tiers: topic.tiers, tierConditions: topic.tierConditions });
+      }
     }
 
     // 1. duplicate words
@@ -345,6 +362,25 @@ async function main() {
     const sources = topic.sources == null ? [] : [topic.sources].flat();
     for (const s of sources) {
       if (!URL_RE.test(s)) warnings.push(`${rel}: source has no URL — "${s}"`);
+    }
+  }
+
+  // 1. An `inheritsUpwards` family is merged into one composite topic, tier by
+  //    tier, so a tier only means something if every member cuts it the same way.
+  //    Same tier count, and the same `tierConditions` (compared as written — the
+  //    files come from one script, so any difference is a bug, not a variant).
+  for (const [key, members] of families) {
+    const label = key.replace("::", "/");
+    const first = members[0];
+    for (const m of members.slice(1)) {
+      const sameCount = (first.tiers?.length ?? 0) === (m.tiers?.length ?? 0);
+      const sameConds =
+        JSON.stringify(first.tierConditions ?? null) === JSON.stringify(m.tierConditions ?? null);
+      if (!sameCount || !sameConds) {
+        errors.push(
+          `inheritsUpwards family "${label}": ${m.rel} does not match ${first.rel} in tier boundaries`,
+        );
+      }
     }
   }
 

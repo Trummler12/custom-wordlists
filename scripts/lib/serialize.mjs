@@ -35,6 +35,7 @@ const TOPIC_KEYS = [
   "tiers",
   "tierConditions",
   "rulerTooltip",
+  "inheritsUpwards",
 ];
 
 /** Field order within a ruler tooltip. */

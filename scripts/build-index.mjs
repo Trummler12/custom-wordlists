@@ -3,10 +3,9 @@
 // Every JSON file (except `_category.json`) is one topic. A folder is a CATEGORY
 // when it has a subfolder, a `_category.json`, or ≥2 topic files; otherwise a
 // folder holding a single topic file is a LEAF topic (id = folder name, the file
-// stem is free) and is marked `foldered`, since owning a folder is how a topic
-// says it expects to be split up later. Folders above a topic form a category path
-// (e.g. "gaming" or "gaming/pokemon"); a `_category.json` carries optional
-// display metadata (title / icon) for that category node.
+// stem is free). Folders above a topic form a category path (e.g. "gaming" or
+// "gaming/pokemon"); a `_category.json` carries optional display metadata
+// (title / icon) for that category node.
 // Generated file; never hand-edited. See docs/archive/PLANNING.md §4.1.
 import { readFile, writeFile, readdir } from "node:fs/promises";
 import { join, dirname, basename } from "node:path";
@@ -193,6 +192,10 @@ async function buildIndex() {
       ...(data.languages ? { languages: data.languages } : {}),
       ...(data.usesEnglishFor ? { usesEnglishFor: data.usesEnglishFor } : {}),
       ...(data.generatedRomaji ? { generatedRomaji: true } : {}),
+      // The tree synthesizes a merged topic for each family of same-named leaves
+      // that carry this; the manifest passes it through so that can happen without
+      // loading every file first. See src/lib/tree.ts.
+      ...(Number.isInteger(data.inheritsUpwards) ? { inheritsUpwards: data.inheritsUpwards } : {}),
       wordCount: countWords(data),
     });
   }

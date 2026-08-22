@@ -152,7 +152,12 @@
       "description": "Flat-topic form of the group field — one boundary per tier, same length as `tiers`. See the group's `tierConditions`.",
       "items": { "$ref": "#/$defs/locString" }
     },
-    "rulerTooltip": { "$ref": "#/$defs/rulerTooltip" }
+    "rulerTooltip": { "$ref": "#/$defs/rulerTooltip" },
+    "inheritsUpwards": {
+      "type": "integer",
+      "minimum": 1,
+      "description": "How many levels up this leaf's list is ALSO shown, merged with the same-named leaves it meets there into one synthesized topic (which has no file of its own). `1` merges at the parent level — every `<continent>/countries.json` meets the others one level up, forming a single \"Countries\" topic under `human/`, a sibling of `languages`. A leaf contributes at every intermediate level up to this number, so `2` (cities: `<country>/cities.json`) merges both per continent and globally. An ADDITIONAL field beside `tiers`/`words`, not an alternative: the leaf keeps its own list where it sits and contributes it upward. All same-named leaves in a family must declare identical `tierConditions`, so the composite tiers mean one thing — validate-data enforces it."
+    }
   },
   "$defs": {
     "id": {
