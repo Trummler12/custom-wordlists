@@ -236,7 +236,13 @@ async function main() {
         const key = `${segs.slice(0, segs.length - k).join("/")}::${stem}`;
         let fam = families.get(key);
         if (!fam) families.set(key, (fam = []));
-        fam.push({ rel, tiers: topic.tiers, tierConditions: topic.tierConditions });
+        fam.push({
+          rel,
+          tiers: topic.tiers,
+          tierConditions: topic.tierConditions,
+          omitted: topic.omitted,
+          omittable: topic.omittable,
+        });
       }
     }
 
@@ -380,6 +386,38 @@ async function main() {
         errors.push(
           `inheritsUpwards family "${label}": ${m.rel} does not match ${first.rel} in tier boundaries`,
         );
+      }
+    }
+
+    // 2. Same-id omission rules across a family merge into one row on the
+    //    synthesized topic (mergeGroups keeps the first), so their shared parts
+    //    must agree: the same array (`omitted` vs `omittable`), the same `reason`
+    //    in every language, the same `as` and `locked`. Only `match`/`except` may
+    //    differ — each continent matches its own territories under the shared id.
+    const seenRule = new Map();
+    for (const m of members) {
+      for (const [kind, rules] of [["omitted", m.omitted], ["omittable", m.omittable]]) {
+        for (const rule of rules ?? []) {
+          const shape = {
+            kind,
+            reason: JSON.stringify(rule.reason ?? null),
+            as: JSON.stringify(rule.as ?? null),
+            locked: !!rule.locked,
+          };
+          const prev = seenRule.get(rule.id);
+          if (!prev) {
+            seenRule.set(rule.id, { rel: m.rel, ...shape });
+          } else if (
+            prev.kind !== shape.kind ||
+            prev.reason !== shape.reason ||
+            prev.as !== shape.as ||
+            prev.locked !== shape.locked
+          ) {
+            errors.push(
+              `inheritsUpwards family "${label}": omission "${rule.id}" in ${m.rel} does not match ${prev.rel} — reason/as/locked/default must be identical across the family`,
+            );
+          }
+        }
       }
     }
   }
