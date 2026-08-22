@@ -13,7 +13,7 @@
 // `depthOf` / `setDepth` present both as a depth, since every group has a ruler
 // and a ruler only speaks in depths; a flat group's is 0 or 1.
 
-import { allRules, isOnByDefault, TOO_LONG_RULE } from "../lib/omitted";
+import { allRules, isOnByDefault, TOO_LONG_RULE, UNKNOWN_RULE } from "../lib/omitted";
 import { SKRIBBL } from "../lib/skribbl";
 import { groupEntries, groupHasNames, renderCount } from "../lib/words";
 import { depthFromKey, depthFromPointer, skipCollapsed, snapPositions } from "../lib/fame";
@@ -210,14 +210,27 @@ class SelectionState {
     return d > 0 && d < g.tiers.length;
   }
 
-  /** Whether a declared omission rule is in force (its box ticked). The stored flip
-   *  is one bit either way: an `omitted` rule starts on, an `omittable` one off, so
-   *  "in force" is the default XOR the flip; a locked rule is always on. A
-   *  synthesized topic has no store of its own — it reports the majority among the
-   *  contributors that carry the rule, a tie counting as on (the side that hides). */
+  /** The two reserved rules (no name in this language; name too long) are not
+   *  declared in any file — every list has them implicitly — so a synthesized
+   *  topic must treat each contributor as carrying them. A declared rule is carried
+   *  only where it appears. */
+  private carriesRule(g: Group, ruleId: string): boolean {
+    return (
+      ruleId === UNKNOWN_RULE ||
+      ruleId === TOO_LONG_RULE ||
+      allRules(g).some((r) => r.id === ruleId)
+    );
+  }
+
+  /** Whether an omission rule is in force (its box ticked). The stored flip is one
+   *  bit either way: an `omitted` rule starts on, an `omittable` one off (a reserved
+   *  rule hides by default), so "in force" is the default XOR the flip; a locked
+   *  rule is always on. A synthesized topic has no store of its own — it reports the
+   *  majority among the contributors that carry the rule, a tie counting as on (the
+   *  side that hides). */
   omitting(tid: string, g: Group, ruleId: string): boolean {
     if (topics.isSynth(tid)) {
-      const cs = this.contribGroups(tid).filter(({ g }) => allRules(g).some((r) => r.id === ruleId));
+      const cs = this.contribGroups(tid).filter(({ g }) => this.carriesRule(g, ruleId));
       const on = cs.filter(({ t, g }) => this.omitting(t.id, g, ruleId)).length;
       return cs.length > 0 && on * 2 >= cs.length;
     }
@@ -226,12 +239,12 @@ class SelectionState {
     const onByDefault = rule ? isOnByDefault(g, rule) : true;
     return onByDefault !== settings.isToggled(tid, g.id, ruleId);
   }
-  /** Flip a declared omission rule. On a synthesized topic it commands every
-   *  contributor that carries the rule to the one new state, so a mixed set
-   *  resolves to a single choice — the same downward command as the ruler. */
+  /** Flip an omission rule. On a synthesized topic it commands every contributor
+   *  that carries the rule to the one new state, so a mixed set resolves to a
+   *  single choice — the same downward command as the ruler. */
   toggleOmission(tid: string, g: Group, ruleId: string): void {
     if (topics.isSynth(tid)) {
-      const cs = this.contribGroups(tid).filter(({ g }) => allRules(g).some((r) => r.id === ruleId));
+      const cs = this.contribGroups(tid).filter(({ g }) => this.carriesRule(g, ruleId));
       const target = !this.omitting(tid, g, ruleId);
       for (const { t, g: cg } of cs) {
         if (this.omitting(t.id, cg, ruleId) !== target) settings.toggleOmission(t.id, cg.id, ruleId);
