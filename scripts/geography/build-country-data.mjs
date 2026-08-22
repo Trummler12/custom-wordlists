@@ -129,6 +129,51 @@ function tierConditions() {
 const T_COUNTRIES = { en: "Countries", de: "Länder", es: "Países", fr: "Pays", it: "Paesi", ja: "国", ko: "국가", "zh-Hans": "国家", "zh-Hant": "國家" };
 const T_CAPITALS = { en: "Capitals", de: "Hauptstädte", es: "Capitales", fr: "Capitales", it: "Capitali", ja: "首都", ko: "수도", "zh-Hans": "首都", "zh-Hant": "首都" };
 
+/** The ruler hovers. `{condition}` is the population band just brought in; the
+ *  empty text names the ordering at rest. Seven UI languages (no absolute — the
+ *  list is what it is, "Countries with …", not "every country"). The capitals are
+ *  tiered by their country's population, so their hover says so. */
+const RULER_COUNTRIES = {
+  text: {
+    en: "Selected: Countries with {condition} inhabitants",
+    de: "Ausgewählt: Länder mit {condition} Einwohnern",
+    es: "Seleccionado: países con {condition} habitantes",
+    fr: "Sélection : pays comptant {condition} habitants",
+    it: "Selezionati: paesi con {condition} abitanti",
+    ja: "選択中：人口が{condition}の国",
+    ko: "선택됨: 인구가 {condition}인 국가",
+  },
+  empty: {
+    en: "Ranked by population.",
+    de: "Nach Einwohnerzahl geordnet.",
+    es: "Ordenados por población.",
+    fr: "Classés par population.",
+    it: "Ordinati per popolazione.",
+    ja: "人口順。",
+    ko: "인구순 정렬.",
+  },
+};
+const RULER_CAPITALS = {
+  text: {
+    en: "Selected: Capitals of countries with {condition} inhabitants",
+    de: "Ausgewählt: Hauptstädte von Ländern mit {condition} Einwohnern",
+    es: "Seleccionado: capitales de países con {condition} habitantes",
+    fr: "Sélection : capitales de pays comptant {condition} habitants",
+    it: "Selezionate: capitali di paesi con {condition} abitanti",
+    ja: "選択中：人口が{condition}の国の首都",
+    ko: "선택됨: 인구가 {condition}인 국가의 수도",
+  },
+  empty: {
+    en: "Ranked by their country's population.",
+    de: "Nach Einwohnerzahl des Landes geordnet.",
+    es: "Ordenadas por la población de su país.",
+    fr: "Classées par la population de leur pays.",
+    it: "Ordinate per la popolazione del loro paese.",
+    ja: "国の人口順。",
+    ko: "해당 국가의 인구순 정렬.",
+  },
+};
+
 /** The short name for the three formal-label states, per language. `long` is the
  *  dump's formal label; this is what the row shows. */
 const SHORT = {
@@ -143,7 +188,7 @@ async function readColumns(dir) {
   const out = {};
   for (const lang of LANGS) {
     const text = await readFile(join(RAW, dir, `${lang}.txt`), "utf8");
-    for (const row of text.split("\n").filter(Boolean)) {
+    for (const row of text.split(/\r?\n/).filter(Boolean)) {
       const [key, name] = row.split("\t");
       (out[key] ??= {})[lang] = name;
     }
@@ -154,7 +199,9 @@ async function readColumns(dir) {
 async function readStructure() {
   const text = await readFile(join(RAW, "countries", "structure.tsv"), "utf8");
   return text
-    .split("\n")
+    // Tolerate CRLF dumps: without this a Windows-checked-out structure.tsv leaves
+    // a trailing \r on the last column (the capital Q-id), and every lookup misses.
+    .split(/\r?\n/)
     .filter((l) => l && !l.startsWith("#"))
     .map((l) => {
       const [country, iso, pop, continents, capitals] = l.split("\t");
@@ -171,7 +218,7 @@ async function readContinentNames() {
   const out = {};
   for (const lang of LANGS) {
     const text = await readFile(join(RAW, "continents", `${lang}.txt`), "utf8");
-    for (const row of text.split("\n").filter(Boolean)) {
+    for (const row of text.split(/\r?\n/).filter(Boolean)) {
       const [key, name] = row.split("\t");
       (out[key] ??= {})[lang] = name;
     }
@@ -210,7 +257,7 @@ function toTiers(countries, make) {
   return tiers;
 }
 
-function topic(id, title, tiers, sources) {
+function topic(id, title, tiers, sources, rulerTooltip) {
   return {
     id,
     title,
@@ -221,6 +268,10 @@ function topic(id, title, tiers, sources) {
     defaultNames: "short",
     tiers,
     tierConditions: tierConditions(),
+    rulerTooltip,
+    // Each continent's list merges one level up into a single "Countries" /
+    // "Capitals" topic under human/, a sibling of languages. See src/lib/tree.ts.
+    inheritsUpwards: 1,
   };
 }
 
@@ -268,12 +319,12 @@ async function main() {
     const list = byContinent[folder].slice().sort((a, b) => b.pop - a.pop);
 
     const countryTiers = toTiers(list, (c) => entry(c.country, countryNames[c.country], SHORT[c.country]));
-    await write(join(dir, "countries.json"), topic(`${folder}-countries`, T_COUNTRIES, countryTiers, SRC_COUNTRIES));
+    await write(join(dir, "countries.json"), topic(`${folder}-countries`, T_COUNTRIES, countryTiers, SRC_COUNTRIES, RULER_COUNTRIES));
 
     // Capitals take their country's tier; a country with several contributes each.
     const capTiers = [[], [], [], [], []];
     for (const c of list) for (const cap of c.capitals) capTiers[tierOf(c.pop)].push(entry(cap, capitalNames[cap]));
-    await write(join(dir, "capitals.json"), topic(`${folder}-capitals`, T_CAPITALS, capTiers, SRC_CAPITALS));
+    await write(join(dir, "capitals.json"), topic(`${folder}-capitals`, T_CAPITALS, capTiers, SRC_CAPITALS, RULER_CAPITALS));
 
     summary.push(`${folder.padEnd(14)} ${String(list.length).padStart(3)} countries, tiers ${countryTiers.map((t) => t.length).join("/")}`);
   }

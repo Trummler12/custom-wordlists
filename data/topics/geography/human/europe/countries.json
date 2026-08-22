@@ -3,8 +3,8 @@
   "title": {"en":"Countries","de":"Länder","es":"Países","fr":"Pays","it":"Paesi","ja":"国","ko":"국가","zh-Hans":"国家","zh-Hant":"國家"},
   "languages": ["en","de","es","fr","it","ja","ko","zh-Hans","zh-Hant"],
   "sources": ["Names & population: Wikidata sovereign states (P31 Q3624078) — https://www.wikidata.org/wiki/Q3624078 (see scripts/geography/dump-country-data.mjs)"],
-  "lastUpdated": "2026-08-21",
-  "lastChecked": "2026-08-21",
+  "lastUpdated": "2026-08-22",
+  "lastChecked": "2026-08-22",
   "defaultNames": "short",
   "tiers": [
     [
@@ -77,5 +77,10 @@
     {"en":"5 million or more","de":"5 Millionen und mehr","es":"5 millones o más","fr":"5 millions ou plus","it":"5 milioni o più","ja":"500万以上","ko":"500만 이상","zh-Hans":"500万及以上","zh-Hant":"500萬及以上"},
     {"en":"1 million or more","de":"1 Million und mehr","es":"1 millón o más","fr":"1 million ou plus","it":"1 milione o più","ja":"100万以上","ko":"100만 이상","zh-Hans":"100万及以上","zh-Hant":"100萬及以上"},
     {"en":"more than 0","de":"mehr als 0","es":"más de 0","fr":"plus de 0","it":"più di 0","ja":"0より多い","ko":"0보다 많음","zh-Hans":"多于0","zh-Hant":"多於0"}
-  ]
+  ],
+  "rulerTooltip": {
+    "text": {"en":"Selected: Countries with {condition} inhabitants","de":"Ausgewählt: Länder mit {condition} Einwohnern","es":"Seleccionado: países con {condition} habitantes","fr":"Sélection : pays comptant {condition} habitants","it":"Selezionati: paesi con {condition} abitanti","ja":"選択中：人口が{condition}の国","ko":"선택됨: 인구가 {condition}인 국가"},
+    "empty": {"en":"Ranked by population.","de":"Nach Einwohnerzahl geordnet.","es":"Ordenados por población.","fr":"Classés par population.","it":"Ordinati per popolazione.","ja":"人口順。","ko":"인구순 정렬."}
+  },
+  "inheritsUpwards": 1
 }
