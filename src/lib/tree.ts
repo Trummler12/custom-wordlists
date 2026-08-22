@@ -1,6 +1,9 @@
-// The category tree the topic list renders, built from the flat manifest.
+// The category tree the topic list renders, built from the flat manifest — plus
+// the `inheritsUpwards` synthesis: which merged topics to hang in it, and how to
+// assemble one from its contributors.
 
-import type { TopicSummary } from "./types";
+import type { Group, TopicSummary, WordEntry } from "./types";
+import { renderEntry } from "./words";
 
 /** One level of the category tree. Renders as a single collapsible node showing
  *  only its own path segment, so "gaming/pokemon/pokemon" nests inside
@@ -18,8 +21,122 @@ export interface CatNode {
 const fillAll = (node: CatNode): TopicSummary[] =>
   (node.all = node.topics.concat(...node.children.map(fillAll)));
 
+/** The file stem of a topic's path, without the `.json` — the family key a set of
+ *  `inheritsUpwards` leaves share (every `countries.json` is one family). */
+const stemOf = (path: string): string => (path.split("/").pop() ?? "").replace(/\.json$/, "");
+
+/** The synthesized id for a family meeting at `meet` with file stem `stem`:
+ *  "geography/human" + "countries" → "geography-human-countries". Internal, and
+ *  distinct from the leaves' own ids ("africa-countries"), so it can key the tree
+ *  and the selection delegation without colliding. */
+const synthId = (meet: string, stem: string): string =>
+  `${meet.split("/").filter(Boolean).join("-")}-${stem}`;
+
+/** Languages every contributor supports — the intersection, in the first one's
+ *  order. A contributor that declares none constrains nothing (it is already
+ *  flagged on its own row); the synthesized topic claims a language only where all
+ *  its members actually have it. */
+function intersectLangs(contributors: TopicSummary[]): string[] | undefined {
+  const declared = contributors.map((c) => c.languages).filter((l): l is string[] => !!l);
+  if (declared.length === 0) return undefined;
+  return declared[0].filter((l) => declared.every((set) => set.includes(l)));
+}
+
+/** The synthesized topics an `inheritsUpwards` family calls for: one merged topic
+ *  per (meeting level, file stem), hung at that level as a sibling of the ordinary
+ *  topics there. It holds no file and no state — a control surface over the
+ *  same-named leaves it lists as `contributors`; `topics.groupsOf` assembles its
+ *  list and `selection` delegates every action to those leaves.
+ *
+ *  A leaf contributes at every level from 1 up to its `inheritsUpwards`, so a
+ *  `2` shows up merged twice (cities: per continent and globally). */
+export function synthesizeTopics(topics: TopicSummary[]): TopicSummary[] {
+  const families = new Map<string, TopicSummary[]>();
+  for (const t of topics) {
+    if (!t.inheritsUpwards) continue;
+    const stem = stemOf(t.path);
+    const segs = t.category.split("/").filter(Boolean);
+    for (let k = 1; k <= t.inheritsUpwards && k <= segs.length; k++) {
+      const meet = segs.slice(0, segs.length - k).join("/");
+      const key = `${meet}::${stem}`;
+      let family = families.get(key);
+      if (!family) families.set(key, (family = []));
+      family.push(t);
+    }
+  }
+  const synths: TopicSummary[] = [];
+  for (const [key, contributors] of families) {
+    const sep = key.indexOf("::");
+    const meet = key.slice(0, sep);
+    const stem = key.slice(sep + 2);
+    const first = contributors[0];
+    const languages = intersectLangs(contributors);
+    synths.push({
+      id: synthId(meet, stem),
+      title: first.title,
+      icon: first.icon,
+      category: meet,
+      path: "", // no file of its own — the mark of a synthesized topic, with `contributors`
+      ...(languages ? { languages } : {}),
+      contributors: contributors.map((c) => c.id),
+      // Pre-load baseline only; once the members load, `topics.groupsOf` gives the
+      // deduplicated count (transcontinentals merged), which is what the row shows.
+      wordCount: contributors.reduce((n, c) => n + c.wordCount, 0),
+    });
+  }
+  return synths;
+}
+
+/** The dedup key for merging a synthesized topic's tiers: an entry's English
+ *  forms, so a country that spans two continents (Russia under Europe and Asia)
+ *  collapses to one. `both` covers the short/long overrides (China / People's
+ *  Republic of China) without depending on the list's names mode. */
+const mergeKey = (e: WordEntry): string => renderEntry(e, "both", "en").join("|");
+
+/** Merge the contributor groups of an `inheritsUpwards` family into the one group
+ *  the synthesized topic renders. Tiers are assembled band by band and
+ *  deduplicated (transcontinentals), while `sources` keeps each contributor's
+ *  group so a later per-contributor view can regroup without re-merging. The
+ *  boundary metadata (`tierConditions`, `rulerTooltip`, `defaultNames`) is taken
+ *  from the first contributor — validate-data guarantees they all agree. */
+export function mergeGroups(
+  synth: TopicSummary,
+  sources: { tid: string; group: Group }[],
+): Group {
+  const first = sources[0].group;
+  const dedup = (entries: WordEntry[]): WordEntry[] => {
+    const seen = new Set<string>();
+    const out: WordEntry[] = [];
+    for (const e of entries) {
+      const key = mergeKey(e);
+      if (seen.has(key)) continue;
+      seen.add(key);
+      out.push(e);
+    }
+    return out;
+  };
+  const g: Group = {
+    id: synth.id,
+    title: synth.title,
+    ...(first.defaultNames !== undefined ? { defaultNames: first.defaultNames } : {}),
+    ...(first.tierConditions ? { tierConditions: first.tierConditions } : {}),
+    ...(first.rulerTooltip ? { rulerTooltip: first.rulerTooltip } : {}),
+    sources,
+  };
+  if (first.tiers) {
+    // A country sits in the same band in every continent (equal tierConditions),
+    // so dedup is per tier — one pass per band, not one across the whole list.
+    g.tiers = first.tiers.map((_, k) => dedup(sources.flatMap((s) => s.group.tiers?.[k] ?? [])));
+  } else {
+    g.words = dedup(sources.flatMap((s) => s.group.words ?? []));
+  }
+  return g;
+}
+
 /** Build the nested tree from each topic's `category` path. Topics keep manifest
- *  order; categories appear in first-seen order. */
+ *  order; categories appear in first-seen order. Pass synthesized topics
+ *  (`synthesizeTopics`) alongside the real ones to hang them at their meeting
+ *  level. */
 export function buildTree(topics: TopicSummary[]): CatNode {
   const root: CatNode = { name: "", path: "", topics: [], children: [], all: [] };
   for (const t of topics) {

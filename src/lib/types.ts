@@ -28,6 +28,21 @@ export interface TopicSummary {
   /** Whether this topic has no fame ruler at all — stronger than hiding it behind a
    *  toggle. Inherited down the tree; the topic's own value wins. See lib/rulers. */
   hideRulers?: boolean;
+  /** Just a number, passed through from the topic file: how many levels up this
+   *  leaf's list is also shown, merged with the same-named leaves it meets there.
+   *  1 for `countries.json`/`capitals.json` (meet one level up, under `human/`), 2
+   *  later for cities. Nothing to do with ids — resolving which leaves actually meet
+   *  is `synthesizeTopics`' job, one layer on. Absent = the leaf lives only where it
+   *  sits. */
+  inheritsUpwards?: number;
+  /** Populated by the frontend (`synthesizeTopics`), never read from a file: on a
+   *  SYNTHESIZED topic it holds the ids of the leaves that merge — the resolution
+   *  of their `inheritsUpwards` numbers into concrete contributors, which is where
+   *  ids first matter. Such a topic keeps no selection state of its own; its depth,
+   *  counts and fullness all delegate to these leaves, and it is left out of
+   *  category sums so they are not counted twice. Absent on every ordinary topic.
+   *  See lib/tree. */
+  contributors?: string[];
   wordCount: number;
 }
 
@@ -180,6 +195,12 @@ export interface Group {
   /** What the ruler's hover says — see `RulerTooltip`. Absent falls back to the
    *  bare tier count. */
   rulerTooltip?: RulerTooltip;
+  /** Present only on a SYNTHESIZED group (assembled by `topics.groupsOf` for an
+   *  inheritsUpwards topic): the contributor groups it was merged from, kept so a
+   *  later per-contributor view (⚙️/✂️) can regroup without the merge being
+   *  rewritten. Rendering and counts use the deduplicated `tiers`; this is the
+   *  provenance the merge must not throw away. See _untracked/docs/geography-architecture.md. */
+  sources?: { tid: string; group: Group }[];
   /** How many entries the list has no name for in the language it is being shown
    *  in, one number per tier — see `unknownByTier` in lib/omitted. Not a field of
    *  the file: `visibleGroup` puts it on the view it hands back, because by then
@@ -246,4 +267,11 @@ export interface Topic {
   tiers?: WordEntry[][];
   tierConditions?: LocalizedString[];
   rulerTooltip?: RulerTooltip;
+  /** How many levels up this leaf's list is also shown, merged with the same-named
+   *  leaves it meets there into one synthesized topic. `1` = the parent level (each
+   *  `<continent>/countries.json` meets the others one level up, under Human). `2`
+   *  would additionally merge two levels up (cities: per continent, then global). A
+   *  leaf keeps its own list where it sits AND contributes upward — an added field,
+   *  not an alternative to `tiers`/`words`. See schema/topic.schema.json. */
+  inheritsUpwards?: number;
 }
