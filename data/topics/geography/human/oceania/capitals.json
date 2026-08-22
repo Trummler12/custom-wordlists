@@ -42,7 +42,7 @@
     {"en":"more than 0","de":"mehr als 0","es":"más de 0","fr":"plus de 0","it":"più di 0","ja":"0より多い","ko":"0보다 많음","zh-Hans":"多于0","zh-Hant":"多於0"}
   ],
   "rulerTooltip": {
-    "text": {"en":"Selected: Capitals of countries with {condition} inhabitants","de":"Ausgewählt: Hauptstädte von Ländern mit {condition} Einwohnern","es":"Seleccionado: capitales de países con {condition} habitantes","fr":"Sélection : capitales de pays comptant {condition} habitants","it":"Selezionate: capitali di paesi con {condition} abitanti","ja":"選択中：人口が{condition}の国の首都","ko":"선택됨: 인구가 {condition}인 국가의 수도"},
+    "text": {"en":"Capitals of countries with {condition} inhabitants","de":"Hauptstädte von Ländern mit {condition} Einwohnern","es":"capitales de países con {condition} habitantes","fr":"capitales de pays comptant {condition} habitants","it":"capitali di paesi con {condition} abitanti","ja":"人口が{condition}の国の首都","ko":"인구가 {condition}인 국가의 수도"},
     "empty": {"en":"Ranked by their country's population.","de":"Nach Einwohnerzahl des Landes geordnet.","es":"Ordenadas por la población de su país.","fr":"Classées par la population de leur pays.","it":"Ordinate per la popolazione del loro paese.","ja":"国の人口順。","ko":"해당 국가의 인구순 정렬."}
   },
   "inheritsUpwards": 1

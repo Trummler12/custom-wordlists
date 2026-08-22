@@ -68,13 +68,13 @@ const TIER_CONDITIONS = [
  *  fall back to English, as everywhere prose is authored here. */
 const RULER_TOOLTIP = {
   text: {
-    en: "Selected: Languages with {condition} speakers worldwide",
-    de: "Ausgewählt: Sprachen mit {condition} Sprechern weltweit",
-    es: "Seleccionado: idiomas con {condition} hablantes en el mundo",
-    fr: "Sélection : langues comptant {condition} locuteurs dans le monde",
-    it: "Selezionate: lingue con {condition} parlanti nel mondo",
-    ja: "選択中：世界の話者数が{condition}の言語",
-    ko: "선택됨: 전 세계 사용자 수가 {condition}인 언어",
+    en: "Languages with {condition} speakers worldwide",
+    de: "Sprachen mit {condition} Sprechern weltweit",
+    es: "idiomas con {condition} hablantes en el mundo",
+    fr: "langues comptant {condition} locuteurs dans le monde",
+    it: "lingue con {condition} parlanti nel mondo",
+    ja: "世界の話者数が{condition}の言語",
+    ko: "전 세계 사용자 수가 {condition}인 언어",
   },
   empty: {
     en: "Ranked by speakers worldwide.",

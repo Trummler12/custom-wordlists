@@ -133,17 +133,11 @@ const TIER_CONDITIONS = [
 ];
 
 /** The ruler's hover. `{condition}` is filled with the band above; at rest it
- *  names what the list is sorted by, the one thing a selection can't show. */
+ *  names what the list is sorted by, the one thing a selection can't show. The
+ *  "Selected:" / "Mostly selected:" prefix is a locale string the frontend
+ *  prepends (src/locale, src/lib/fame `rulerTip`), so the text here is bare. */
 const RULER_TOOLTIP = {
-  text: {
-    en: "Selected: {condition}",
-    de: "Ausgewählt: {condition}",
-    es: "Seleccionado: {condition}",
-    fr: "Sélection : {condition}",
-    it: "Selezionate: {condition}",
-    ja: "選択中：{condition}",
-    ko: "선택됨: {condition}",
-  },
+  text: "{condition}",
   empty: {
     en: "Ordered by plate area (Bird 2003).",
     de: "Nach Plattenfläche geordnet (Bird 2003).",
@@ -187,7 +181,9 @@ async function readDump(dir) {
   const out = {};
   for (const lang of LANGS) {
     const text = await readFile(join(RAW, dir, `${lang}.txt`), "utf8");
-    for (const row of text.split("\n").filter(Boolean)) {
+    // Split CRLF-tolerantly: a Windows-checked-out dump would otherwise leave a \r
+    // on every name and bake it into the JSON strings.
+    for (const row of text.split(/\r?\n/).filter(Boolean)) {
       const [key, raw] = row.split("\t");
       const name = raw.replace(/\s*[(（][^)）]*[)）]\s*$/, "");
       (out[key] ??= {})[lang] = name.charAt(0).toUpperCase() + name.slice(1);
@@ -199,7 +195,7 @@ async function readDump(dir) {
 async function readStructure() {
   const text = await readFile(join(RAW, "plates", "structure.tsv"), "utf8");
   return text
-    .split("\n")
+    .split(/\r?\n/) // CRLF-tolerant, so the last column never keeps a trailing \r
     .filter((l) => l && !l.startsWith("#"))
     .map((l) => {
       const [name, band, parent, wikidata, sr] = l.split("\t");

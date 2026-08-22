@@ -79,7 +79,7 @@
     {"en":"more than 0","de":"mehr als 0","es":"más de 0","fr":"plus de 0","it":"più di 0","ja":"0より多い","ko":"0보다 많음","zh-Hans":"多于0","zh-Hant":"多於0"}
   ],
   "rulerTooltip": {
-    "text": {"en":"Selected: Countries with {condition} inhabitants","de":"Ausgewählt: Länder mit {condition} Einwohnern","es":"Seleccionado: países con {condition} habitantes","fr":"Sélection : pays comptant {condition} habitants","it":"Selezionati: paesi con {condition} abitanti","ja":"選択中：人口が{condition}の国","ko":"선택됨: 인구가 {condition}인 국가"},
+    "text": {"en":"Countries with {condition} inhabitants","de":"Länder mit {condition} Einwohnern","es":"países con {condition} habitantes","fr":"pays comptant {condition} habitants","it":"paesi con {condition} abitanti","ja":"人口が{condition}の国","ko":"인구가 {condition}인 국가"},
     "empty": {"en":"Ranked by population.","de":"Nach Einwohnerzahl geordnet.","es":"Ordenados por población.","fr":"Classés par population.","it":"Ordinati per popolazione.","ja":"人口順。","ko":"인구순 정렬."}
   },
   "inheritsUpwards": 1

@@ -130,18 +130,19 @@ const T_COUNTRIES = { en: "Countries", de: "Länder", es: "Países", fr: "Pays",
 const T_CAPITALS = { en: "Capitals", de: "Hauptstädte", es: "Capitales", fr: "Capitales", it: "Capitali", ja: "首都", ko: "수도", "zh-Hans": "首都", "zh-Hant": "首都" };
 
 /** The ruler hovers. `{condition}` is the population band just brought in; the
- *  empty text names the ordering at rest. Seven UI languages (no absolute — the
- *  list is what it is, "Countries with …", not "every country"). The capitals are
- *  tiered by their country's population, so their hover says so. */
+ *  empty text names the ordering at rest. The "Selected:" / "Mostly selected:"
+ *  prefix is a locale string the frontend prepends, so the text is bare and carries
+ *  no absolute — the list is what it is, "Countries with …", not "every country".
+ *  Seven UI languages; the capitals are tiered by their country's population. */
 const RULER_COUNTRIES = {
   text: {
-    en: "Selected: Countries with {condition} inhabitants",
-    de: "Ausgewählt: Länder mit {condition} Einwohnern",
-    es: "Seleccionado: países con {condition} habitantes",
-    fr: "Sélection : pays comptant {condition} habitants",
-    it: "Selezionati: paesi con {condition} abitanti",
-    ja: "選択中：人口が{condition}の国",
-    ko: "선택됨: 인구가 {condition}인 국가",
+    en: "Countries with {condition} inhabitants",
+    de: "Länder mit {condition} Einwohnern",
+    es: "países con {condition} habitantes",
+    fr: "pays comptant {condition} habitants",
+    it: "paesi con {condition} abitanti",
+    ja: "人口が{condition}の国",
+    ko: "인구가 {condition}인 국가",
   },
   empty: {
     en: "Ranked by population.",
@@ -155,13 +156,13 @@ const RULER_COUNTRIES = {
 };
 const RULER_CAPITALS = {
   text: {
-    en: "Selected: Capitals of countries with {condition} inhabitants",
-    de: "Ausgewählt: Hauptstädte von Ländern mit {condition} Einwohnern",
-    es: "Seleccionado: capitales de países con {condition} habitantes",
-    fr: "Sélection : capitales de pays comptant {condition} habitants",
-    it: "Selezionate: capitali di paesi con {condition} abitanti",
-    ja: "選択中：人口が{condition}の国の首都",
-    ko: "선택됨: 인구가 {condition}인 국가의 수도",
+    en: "Capitals of countries with {condition} inhabitants",
+    de: "Hauptstädte von Ländern mit {condition} Einwohnern",
+    es: "capitales de países con {condition} habitantes",
+    fr: "capitales de pays comptant {condition} habitants",
+    it: "capitali di paesi con {condition} abitanti",
+    ja: "人口が{condition}の国の首都",
+    ko: "인구가 {condition}인 국가의 수도",
   },
   empty: {
     en: "Ranked by their country's population.",

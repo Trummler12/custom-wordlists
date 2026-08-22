@@ -9,8 +9,8 @@
     "Areas: Bird (2003), An updated digital model of plate boundaries — via https://de.wikipedia.org/wiki/Liste_der_tektonischen_Platten",
     "Names: Wikidata labels of the plate articles and of https://www.wikidata.org/wiki/Q215680 — see scripts/geography/dump-plate-data.mjs"
   ],
-  "lastUpdated": "2026-08-21",
-  "lastChecked": "2026-08-21",
+  "lastUpdated": "2026-08-22",
+  "lastChecked": "2026-08-22",
   "defaultNames": "both",
   "tierNotes": [
     {
@@ -136,7 +136,7 @@
     {"en":"microplates and larger, measured or not","de":"Mikroplatten und grösser, ob gemessen oder nicht","es":"microplacas y mayores, medidas o no","fr":"microplaques et au-delà, mesurées ou non","it":"microplacche e maggiori, misurate o no","ja":"微小プレート以上、測定の有無を問わず","ko":"미소판 이상, 측정 여부와 무관"}
   ],
   "rulerTooltip": {
-    "text": {"en":"Selected: {condition}","de":"Ausgewählt: {condition}","es":"Seleccionado: {condition}","fr":"Sélection : {condition}","it":"Selezionate: {condition}","ja":"選択中：{condition}","ko":"선택됨: {condition}"},
+    "text": "{condition}",
     "empty": {"en":"Ordered by plate area (Bird 2003).","de":"Nach Plattenfläche geordnet (Bird 2003).","es":"Ordenadas por superficie de la placa (Bird 2003).","fr":"Classées par superficie des plaques (Bird 2003).","it":"Ordinate per superficie delle placche (Bird 2003).","ja":"プレート面積順（Bird 2003）。","ko":"판 면적 순 (Bird 2003)."}
   }
 }
