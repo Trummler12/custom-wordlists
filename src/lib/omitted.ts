@@ -4,7 +4,11 @@
 // tells a reader what was left out.
 
 import type { Group, Omission, WordEntry } from "./types";
-import { isUnknownIn, UNKNOWN } from "./words";
+import { displayName, isUnknownIn, UNKNOWN } from "./words";
+
+/** How many matched names a rule's summary keeps for its hover — enough to fill a
+ *  tooltip, capped so a large family (dependencies) doesn't stash hundreds. */
+const SAMPLE_CAP = 30;
 
 /** The reserved rule id for the entries no name is known for in a language. Not a
  *  rule in the file — it comes from the entries themselves — but a reader toggles
@@ -148,7 +152,7 @@ export function visibleGroup(
   if (hit) return hit;
 
   const declared = !!g.omitted?.length || !!g.omittable?.length;
-  const byTier = unknownByTier(g, lang, toggled);
+  const byTier = unknownByTier(g, lang);
   const unknown = byTier.reduce((a, b) => a + b, 0);
   if (!declared && unknown === 0) {
     byKey.set(key, g);
@@ -156,6 +160,9 @@ export function visibleGroup(
   }
 
   const rules = activeRules(g, toggled);
+  // Over the entries as written (before `keep` prunes them), so an on-by-default
+  // rule still reports how many it hides and which — the count and the tooltip.
+  const summary = declared ? omissionSummary(g, lang) : undefined;
   // Ticked by default, like a declared `omitted` rule: a reader who wants the
   // English placeholders back says so, and the id in `toggled` is that answer.
   const hideUnknown = unknown > 0 && !toggled.includes(UNKNOWN_RULE);
@@ -168,14 +175,22 @@ export function visibleGroup(
   const base: Group = g.tiers
     ? { ...g, tiers: appendToLast(g.tiers.map(keep), standIns) }
     : { ...g, words: [...keep(g.words ?? []), ...standIns] };
-  const view: Group = { ...base, unknownByTier: byTier };
+  const view: Group = {
+    ...base,
+    unknownByTier: byTier,
+    ...(summary ? { omissionSummary: summary } : {}),
+  };
   byKey.set(key, view);
   return view;
 }
 
-/** How many entries have no name in `lang`, one number per tier, counted after
- *  the rules in force — a family that was left out anyway shouldn't be reported
- *  twice, and the numbers move when the reader brings one back.
+/** How many entries have no name in `lang`, one number per tier.
+ *
+ *  Counted over the list as written, independent of every other rule: whether an
+ *  entry is also caught by, say, the breakaway-states rule is a different question,
+ *  and tying the two made this row's visibility flicker with the others' checkboxes.
+ *  Counting and hiding are separate concerns — the count is what unhiding could at
+ *  most bring back ("up to N"), the hiding is applied elsewhere.
  *
  *  Per tier rather than as a total, because the reader's ruler decides how much
  *  of the list they are actually taking, and a count over tiers they left behind
@@ -184,25 +199,39 @@ export function visibleGroup(
  *  `topics`, and `selection`, which holds the depth, is downstream of it.
  *
  *  A flat group is one tier holding everything, which `depthOf` addresses with
- *  its 0-or-1, so the caller needs no special case either.
- *
- *  Independent of whether the reader is hiding them: the panel row states the
- *  size of the family in both positions. */
-export function unknownByTier(
-  g: Group,
-  lang: string,
-  toggled: readonly string[] = [],
-): number[] {
+ *  its 0-or-1, so the caller needs no special case either. */
+export function unknownByTier(g: Group, lang: string): number[] {
   const lists = g.tiers ?? [g.words ?? []];
   if (lang === "en") return lists.map(() => 0);
-  const rules = activeRules(g, toggled);
-  return lists.map((list) => list.filter((e) => isUnknownIn(e, lang) && !isOmitted(e, rules)).length);
+  return lists.map((list) => list.filter((e) => isUnknownIn(e, lang)).length);
 }
 
 /** The same over the whole list — what filtering asks, since an entry is hidden
  *  or not regardless of which tier it sits in. */
-export function unknownCount(g: Group, lang: string, toggled: readonly string[] = []): number {
-  return unknownByTier(g, lang, toggled).reduce((a, b) => a + b, 0);
+export function unknownCount(g: Group, lang: string): number {
+  return unknownByTier(g, lang).reduce((a, b) => a + b, 0);
+}
+
+/** Per declared rule id, how many entries it matches and a sample of their names —
+ *  over the entries as written, before any are filtered, so an on-by-default rule
+ *  can still report what it hides. Each entry counts once, under the first rule
+ *  that covers it. Feeds a rule's "up to N" label and its hover. */
+export function omissionSummary(
+  g: Group,
+  lang: string,
+): Record<string, { count: number; names: string[] }> {
+  const rules = allRules(g);
+  const out: Record<string, { count: number; names: string[] }> = {};
+  for (const r of rules) out[r.id] = { count: 0, names: [] };
+  const entries = g.tiers ? g.tiers.flat() : g.words ?? [];
+  for (const e of entries) {
+    const rule = findOmission(e, rules);
+    if (!rule) continue;
+    const s = out[rule.id];
+    s.count++;
+    if (s.names.length < SAMPLE_CAP) s.names.push(displayName(e, lang).short);
+  }
+  return out;
 }
 
 /** Stand-ins join the least famous tier: they represent a family that was pruned
