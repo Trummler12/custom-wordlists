@@ -15,7 +15,7 @@
 
 import { TOO_LONG_RULE } from "../lib/omitted";
 import { SKRIBBL } from "../lib/skribbl";
-import { groupEntries, renderCount } from "../lib/words";
+import { groupEntries, groupHasNames, renderCount } from "../lib/words";
 import { depthFromKey, depthFromPointer, skipCollapsed, snapPositions } from "../lib/fame";
 import { rulerHiddenByDefault } from "../lib/rulers";
 import { catDepth, type CatNode } from "../lib/tree";
@@ -36,6 +36,13 @@ class SelectionState {
   /** Explicit ruler-visibility flips, by topic id. Absent = the data-driven
    *  default (see lib/rulers); only opted-in topics ever appear here. */
   rulerVisible = $state<Record<string, boolean>>({});
+
+  /** The last clear names-mode majority a synthesized topic showed, by its id — a
+   *  plain cache, not reactive state: it exists only so a tie among the
+   *  contributors leaves the dropdown where it was rather than flipping it. Read
+   *  and refreshed by `modeOf` (which already re-runs when a contributor's mode
+   *  changes, so the cache is always seen fresh). */
+  #modeShown: Record<string, NamesMode> = {};
 
   key(tid: string, gid: string): string {
     return `${tid}:${gid}`;
@@ -92,10 +99,47 @@ class SelectionState {
   // and neither is the reader's doing.
   modeOf(tid: string, g: Group): NamesMode {
     if (topics.isSynth(tid)) {
-      const modes = this.contribGroups(tid).map(({ t, g }) => this.modeOf(t.id, g));
-      return this.commonest<NamesMode>(modes, g.defaultNames ?? "long");
+      // A clear majority is shown and remembered; a tie leaves the dropdown on the
+      // last majority rather than flipping to an arbitrary winner.
+      const majority = this.strictMode(this.namesModes(tid));
+      if (majority !== undefined) this.#modeShown[tid] = majority;
+      return this.#modeShown[tid] ?? g.defaultNames ?? "long";
     }
     return this.namesMode[this.key(tid, g.id)] ?? g.defaultNames ?? "long";
+  }
+  /** The modes of the contributors that actually have a short/long distinction —
+   *  the only ones whose mode is observable. A continent of single-form names would
+   *  otherwise vote its default forever and freeze the merged dropdown on it. */
+  private namesModes(tid: string): NamesMode[] {
+    return this.contribGroups(tid)
+      .filter(({ g }) => groupHasNames(g, lang.current))
+      .map(({ t, g }) => this.modeOf(t.id, g));
+  }
+  /** The value with strictly more occurrences than any other, or undefined on a
+   *  tie (or none) — the merged names dropdown changes only when a new clear
+   *  majority forms, never on a dead heat. */
+  private strictMode(vals: NamesMode[]): NamesMode | undefined {
+    const count = new Map<NamesMode, number>();
+    for (const v of vals) count.set(v, (count.get(v) ?? 0) + 1);
+    let best: NamesMode | undefined;
+    let bestN = 0;
+    let tied = false;
+    for (const [v, n] of count) {
+      if (n > bestN) {
+        best = v;
+        bestN = n;
+        tied = false;
+      } else if (n === bestN) {
+        tied = true;
+      }
+    }
+    return tied ? undefined : best;
+  }
+  /** Whether a synthesized topic's distinguishing contributors disagree on their
+   *  names mode — so its dropdown shows the common one yet a re-pick still unifies
+   *  them (see NamesModeSelect). Always false for an ordinary topic. */
+  modeMixed(tid: string): boolean {
+    return topics.isSynth(tid) && new Set(this.namesModes(tid)).size > 1;
   }
   setMode(tid: string, g: Group, mode: NamesMode): void {
     if (topics.isSynth(tid)) {
