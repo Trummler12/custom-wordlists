@@ -121,9 +121,10 @@
   .coverage-btn:focus-visible {
     opacity: 1;
   }
+  /* ~0.8rem so the Pegman sits about the size of the toggle emojis beside it. */
   .coverage-btn img {
-    width: 1rem;
-    height: 1rem;
+    width: 0.8rem;
+    height: 0.8rem;
     display: block;
   }
   /* Stretched across the row rather than hung off the button, as .omitted-panel is,
