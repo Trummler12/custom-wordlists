@@ -3,9 +3,41 @@
   "title": {"en":"Capitals","de":"Hauptstädte","es":"Capitales","fr":"Capitales","it":"Capitali","ja":"首都","ko":"수도","zh-Hans":"首都","zh-Hant":"首都"},
   "languages": ["en","de","es","fr","it","ja","ko","zh-Hans","zh-Hant"],
   "sources": ["Names: Wikidata capitals (P36) of the sovereign states — https://www.wikidata.org/wiki/Property:P36 (see scripts/geography/dump-country-data.mjs)"],
-  "lastUpdated": "2026-08-22",
-  "lastChecked": "2026-08-22",
+  "lastUpdated": "2026-08-23",
+  "lastChecked": "2026-08-23",
   "defaultNames": "short",
+  "omittable": [
+    {
+      "id": "no-coverage",
+      "match": ["Addis Ababa","Algiers","Asmara","Bangui","Banjul","Bissau","Brazzaville","Ciudad de la Paz","Conakry","Djibouti","Freetown","Gitega","Harare","Juba","Khartoum","Kinshasa","Libreville","Lilongwe","Lomé","Luanda","Lusaka","Maputo","Mogadishu","Monrovia","Moroni","N'Djamena","Niamey","Nouakchott","Ouagadougou","Port Louis","Porto-Novo","Praia","Rabat","Tripoli","Victoria","Yamoussoukro","Yaoundé"],
+      "count": true,
+      "icon": "geoguessr",
+      "reason": {
+        "en": "countries with no Google Street View coverage",
+        "de": "Länder ohne Google-Street-View-Abdeckung",
+        "es": "países sin cobertura de Google Street View",
+        "fr": "pays sans couverture Google Street View",
+        "it": "paesi senza copertura di Google Street View",
+        "ja": "Google ストリートビュー非対応の国",
+        "ko": "구글 스트리트 뷰가 없는 국가"
+      }
+    },
+    {
+      "id": "rare-coverage",
+      "match": ["Bamako","Cairo","Dodoma"],
+      "count": true,
+      "icon": "geoguessr",
+      "reason": {
+        "en": "countries with only sparse Street View coverage",
+        "de": "Länder mit nur spärlicher Street-View-Abdeckung",
+        "es": "países con cobertura de Street View muy escasa",
+        "fr": "pays à couverture Street View très rare",
+        "it": "paesi con copertura Street View molto scarsa",
+        "ja": "ストリートビューがまばらな国",
+        "ko": "스트리트 뷰가 드문 국가"
+      }
+    }
+  ],
   "tiers": [
     [
       {"en":"Abuja","es":"Abuya","ja":"アブジャ","ko":"아부자","zh-Hans":"阿布贾","zh-Hant":"阿布加","?":["de","it"]},

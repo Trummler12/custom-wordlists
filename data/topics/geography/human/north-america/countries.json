@@ -3,8 +3,8 @@
   "title": {"en":"Countries","de":"Länder","es":"Países","fr":"Pays","it":"Paesi","ja":"国","ko":"국가","zh-Hans":"国家","zh-Hant":"國家"},
   "languages": ["en","de","es","fr","it","ja","ko","zh-Hans","zh-Hant"],
   "sources": ["Names & population: Wikidata sovereign states (P31 Q3624078) — https://www.wikidata.org/wiki/Q3624078 (see scripts/geography/dump-country-data.mjs)"],
-  "lastUpdated": "2026-08-22",
-  "lastChecked": "2026-08-22",
+  "lastUpdated": "2026-08-23",
+  "lastChecked": "2026-08-23",
   "defaultNames": "short",
   "omitted": [
     {
@@ -35,6 +35,21 @@
         "it": "territori molto autonomi che molti scambiano per paesi a sé",
         "ja": "独自の国と見なされがちな高度な自治地域",
         "ko": "독립국으로 여겨지곤 하는 고도 자치 지역"
+      }
+    },
+    {
+      "id": "no-coverage",
+      "match": ["Antigua and Barbuda","Barbados","Belize","Cuba","Dominica","El Salvador","Grenada","Haiti","Honduras","Jamaica","Nicaragua","Saint Kitts and Nevis","Saint Lucia","Saint Vincent and the Grenadines","The Bahamas","Trinidad and Tobago"],
+      "count": true,
+      "icon": "geoguessr",
+      "reason": {
+        "en": "countries with no Google Street View coverage",
+        "de": "Länder ohne Google-Street-View-Abdeckung",
+        "es": "países sin cobertura de Google Street View",
+        "fr": "pays sans couverture Google Street View",
+        "it": "paesi senza copertura di Google Street View",
+        "ja": "Google ストリートビュー非対応の国",
+        "ko": "구글 스트리트 뷰가 없는 국가"
       }
     }
   ],

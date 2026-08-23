@@ -3,8 +3,8 @@
   "title": {"en":"Countries","de":"Länder","es":"Países","fr":"Pays","it":"Paesi","ja":"国","ko":"국가","zh-Hans":"国家","zh-Hant":"國家"},
   "languages": ["en","de","es","fr","it","ja","ko","zh-Hans","zh-Hant"],
   "sources": ["Names & population: Wikidata sovereign states (P31 Q3624078) — https://www.wikidata.org/wiki/Q3624078 (see scripts/geography/dump-country-data.mjs)"],
-  "lastUpdated": "2026-08-22",
-  "lastChecked": "2026-08-22",
+  "lastUpdated": "2026-08-23",
+  "lastChecked": "2026-08-23",
   "defaultNames": "short",
   "omitted": [
     {
@@ -49,6 +49,36 @@
         "it": "stati sovrani dal riconoscimento internazionale conteso",
         "ja": "国際的承認が争われている主権国家",
         "ko": "국제적 승인이 논쟁 중인 주권 국가"
+      }
+    },
+    {
+      "id": "no-coverage",
+      "match": ["Armenia","Azerbaijan","Bahrain","Brunei","Iran","Kuwait","Maldives","Myanmar","North Korea","Saudi Arabia","Tajikistan","Timor-Leste","Turkmenistan","Uzbekistan","Yemen"],
+      "count": true,
+      "icon": "geoguessr",
+      "reason": {
+        "en": "countries with no Google Street View coverage",
+        "de": "Länder ohne Google-Street-View-Abdeckung",
+        "es": "países sin cobertura de Google Street View",
+        "fr": "pays sans couverture Google Street View",
+        "it": "paesi senza copertura di Google Street View",
+        "ja": "Google ストリートビュー非対応の国",
+        "ko": "구글 스트리트 뷰가 없는 국가"
+      }
+    },
+    {
+      "id": "rare-coverage",
+      "match": ["Afghanistan","China","Iraq"],
+      "count": true,
+      "icon": "geoguessr",
+      "reason": {
+        "en": "countries with only sparse Street View coverage",
+        "de": "Länder mit nur spärlicher Street-View-Abdeckung",
+        "es": "países con cobertura de Street View muy escasa",
+        "fr": "pays à couverture Street View très rare",
+        "it": "paesi con copertura Street View molto scarsa",
+        "ja": "ストリートビューがまばらな国",
+        "ko": "스트리트 뷰가 드문 국가"
       }
     }
   ],

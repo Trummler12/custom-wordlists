@@ -31,6 +31,14 @@
 // here as English-only placeholders (`?` for the other eight languages) — the full
 // multilingual fill comes later with the geonames expansion, so it is not done
 // twice. Countries only for now; capitals inherit the pattern in that same round.
+//
+// GEOGUESSR / STREET VIEW COVERAGE. Two more omittable rules, tagged with the
+// Pegman icon so the frontend shows them as a three-level radio (all / with
+// coverage / reliable only) instead of checkboxes: `no-coverage` and
+// `rare-coverage`. A country is fully covered, only sparsely (rare), or not at all:
+// geohints' official list gives covered-or-not, and the RARE_COVERAGE hand list
+// overrides the thin ones to "covered but sparse". The capitals inherit the same
+// rules, matched on the capital's own name.
 import { readFile, writeFile, mkdir } from "node:fs/promises";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -317,6 +325,80 @@ function rulesFor(folder) {
   return { omitted, omittable };
 }
 
+// --- Geoguessr / Street View coverage ---------------------------------------
+// Two omittable rules tagged with the Pegman icon, so the frontend lifts them out
+// of the 🚫 panel into a three-level radio (all / with coverage / reliable only).
+// See C8 in _untracked/PR/34-geography-elements.md.
+
+/** The icon key that groups the two coverage rules into one control. */
+const PEGMAN = "geoguessr";
+
+/** Continent headers and the footer to skip when reading the official list. */
+const GEOHINTS_HEADERS = new Set([
+  "Africa", "Antarctica", "Asia", "Europe", "North America", "Oceania", "South America",
+]);
+
+/** Countries whose Street View is only *sparse* — official coverage exists but
+ *  thin (China's handful of sites, Mali's few roads). They count as covered, so on
+ *  the ladder they sit above no-coverage. geohints' rare-coverage list, maintained
+ *  by hand (the official yes/no can't tell sparse from full); English short names,
+ *  and names not in our sovereign list (Martinique, Falklands…) simply never match. */
+const RARE_COVERAGE = new Set([
+  "Martinique", "Falkland Islands", "South Georgia and the South Sandwich Islands",
+  "Mali", "Egypt", "Tanzania", "Belarus", "Iraq", "Afghanistan",
+  "British Indian Ocean Territory", "China", "Cocos (Keeling) Islands", "Vanuatu",
+]);
+
+/** The two coverage reasons — lower-case leading noun, so the "up to N" the panel
+ *  prepends reads on. Seven UI languages; the two Chinese UIs fall back to English. */
+const COVERAGE = {
+  "no-coverage": {
+    en: "countries with no Google Street View coverage",
+    de: "Länder ohne Google-Street-View-Abdeckung",
+    es: "países sin cobertura de Google Street View",
+    fr: "pays sans couverture Google Street View",
+    it: "paesi senza copertura di Google Street View",
+    ja: "Google ストリートビュー非対応の国",
+    ko: "구글 스트리트 뷰가 없는 국가",
+  },
+  "rare-coverage": {
+    en: "countries with only sparse Street View coverage",
+    de: "Länder mit nur spärlicher Street-View-Abdeckung",
+    es: "países con cobertura de Street View muy escasa",
+    fr: "pays à couverture Street View très rare",
+    it: "paesi con copertura Street View molto scarsa",
+    ja: "ストリートビューがまばらな国",
+    ko: "스트리트 뷰가 드문 국가",
+  },
+};
+
+/** The official-coverage names, headers and footer stripped. A superset of our
+ *  list (it carries dependencies too), read only as a membership test. */
+async function readOfficial() {
+  const text = await readFile(join(RAW, "countries", "Geoguessr", "geohints_official.txt"), "utf8");
+  const out = new Set();
+  for (const raw of text.split(/\r?\n/)) {
+    const line = raw.trim();
+    if (!line || line.includes("http") || GEOHINTS_HEADERS.has(line)) continue;
+    out.add(line);
+  }
+  return out;
+}
+
+/** The two coverage rules for one list, from its uncovered members. `items` is
+ *  `{ match, rare }` per uncovered entry (a country by its short name, a capital by
+ *  its own); each rule is emitted only when it has a member. */
+function coverageRules(items) {
+  const pick = (rare) => items.filter((i) => i.rare === rare).map((i) => i.match).sort();
+  const rule = (id, match) => ({ id, match, count: true, icon: PEGMAN, reason: COVERAGE[id] });
+  const rules = [];
+  const none = pick(false);
+  const rare = pick(true);
+  if (none.length) rules.push(rule("no-coverage", none));
+  if (rare.length) rules.push(rule("rare-coverage", rare));
+  return rules;
+}
+
 async function readColumns(dir) {
   const out = {};
   for (const lang of LANGS) {
@@ -415,6 +497,7 @@ async function main() {
   const countryNames = await readColumns("countries");
   const capitalNames = await readColumns(join("countries", "capitals"));
   const continentNames = await readContinentNames();
+  const official = await readOfficial();
 
   // Each country to every continent it spans, deduplicated (Q538 and Q55643 both
   // map to oceania), sorted by population within a continent.
@@ -455,16 +538,42 @@ async function main() {
     ].sort((a, b) => b.pop - a.pop);
     const countryTiers = [[], [], [], [], []];
     for (const it of items) countryTiers[tierOf(it.pop)].push(it.make());
+
+    // Coverage: each real country is fully covered, only sparsely (rare), or not at
+    // all. The official list gives covered-or-not; the rare hand list overrides to
+    // "covered but thin". Only none and rare become rules; the capitals inherit them,
+    // matched on the capital's own name (from the country → capital mapping).
+    const shortEnOf = (c) => SHORT[c.country]?.en ?? countryNames[c.country]?.en;
+    const classOf = (c) => {
+      const nm = shortEnOf(c);
+      if (RARE_COVERAGE.has(nm)) return "rare";
+      return official.has(nm) ? "full" : "none";
+    };
+    const filtered = list
+      .map((c) => ({ c, nm: shortEnOf(c), cls: classOf(c) }))
+      .filter((x) => x.cls !== "full");
+    const covCountry = coverageRules(filtered.map((x) => ({ match: x.nm, rare: x.cls === "rare" })));
+    const capItems = [];
+    for (const x of filtered) {
+      for (const cap of x.c.capitals) {
+        const nm = capitalNames[cap]?.en;
+        if (nm) capItems.push({ match: nm, rare: x.cls === "rare" });
+      }
+    }
+    const covCapital = coverageRules(capItems);
+
     const { omitted, omittable } = rulesFor(folder);
-    await write(join(dir, "countries.json"), topic(`${folder}-countries`, T_COUNTRIES, countryTiers, SRC_COUNTRIES, RULER_COUNTRIES, omitted, omittable));
+    await write(join(dir, "countries.json"), topic(`${folder}-countries`, T_COUNTRIES, countryTiers, SRC_COUNTRIES, RULER_COUNTRIES, omitted, [...omittable, ...covCountry]));
 
     // Capitals take their country's tier; a country with several contributes each.
     // The placeholders stay out of the capitals for now (see header).
     const capTiers = [[], [], [], [], []];
     for (const c of list) for (const cap of c.capitals) capTiers[tierOf(c.pop)].push(entry(cap, capitalNames[cap]));
-    await write(join(dir, "capitals.json"), topic(`${folder}-capitals`, T_CAPITALS, capTiers, SRC_CAPITALS, RULER_CAPITALS));
+    await write(join(dir, "capitals.json"), topic(`${folder}-capitals`, T_CAPITALS, capTiers, SRC_CAPITALS, RULER_CAPITALS, undefined, covCapital));
 
-    summary.push(`${folder.padEnd(14)} ${String(items.length).padStart(3)} countries, tiers ${countryTiers.map((t) => t.length).join("/")}`);
+    const none = filtered.filter((x) => x.cls === "none").length;
+    const rare = filtered.length - none;
+    summary.push(`${folder.padEnd(14)} ${String(items.length).padStart(3)} countries, tiers ${countryTiers.map((t) => t.length).join("/")}, coverage ${none} none / ${rare} rare`);
   }
 
   for (const s of summary) console.log(s);
