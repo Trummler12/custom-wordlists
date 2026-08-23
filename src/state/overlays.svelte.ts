@@ -15,11 +15,12 @@ import { lang } from "./lang.svelte";
  *  A tip has no single host element: its marker and its note are siblings under
  *  whatever row they belong to, so both are named. The note is there for the one
  *  focusable thing a note can hold, the link inviting a romaji correction. */
-type OverlayKind = "lang" | "settings" | "omitted" | "tip";
+type OverlayKind = "lang" | "settings" | "omitted" | "coverage" | "tip";
 const HOSTS: Record<OverlayKind, string> = {
   lang: ".lang-picker",
   settings: ".settings-picker",
   omitted: ".omitted-host",
+  coverage: ".coverage-host",
   tip: ".tip-trigger, .tip-note",
 };
 
@@ -38,6 +39,7 @@ class OverlayState {
     lang: null,
     settings: null,
     omitted: null,
+    coverage: null,
     tip: null,
   };
   #remember(kind: OverlayKind, trigger: Element | null | undefined): void {
@@ -64,6 +66,8 @@ class OverlayState {
   tipPinned = $state(false);
   /** The same for the omissions panel. */
   omittedAbove = $state(false);
+  /** And for the coverage popup — its own button on the same row. */
+  coverageAbove = $state(false);
 
   // --- Language menu ---------------------------------------------------------
 
@@ -99,6 +103,21 @@ class OverlayState {
     this.omittedAbove = opensUpward(trigger);
     this.omittedPanel = id;
     this.#remember("omitted", trigger);
+  };
+
+  // --- Coverage popup --------------------------------------------------------
+
+  /** Which list is showing its Street View coverage filter, keyed
+   *  `${topicId}:${groupId}` — the Pegman's popup, a sibling of the 🚫 panel. */
+  coveragePanel = $state<string | null>(null);
+  toggleCoveragePanel = (id: string, trigger: Element): void => {
+    if (this.coveragePanel === id) {
+      this.coveragePanel = null;
+      return;
+    }
+    this.coverageAbove = opensUpward(trigger);
+    this.coveragePanel = id;
+    this.#remember("coverage", trigger);
   };
 
   // --- Tooltips --------------------------------------------------------------
@@ -173,6 +192,7 @@ class OverlayState {
     if (this.langMenu && !target?.closest?.(".lang-picker")) this.langMenu = null;
     if (this.settingsMenu && !target?.closest?.(".settings-picker")) this.settingsMenu = null;
     if (this.omittedPanel && !target?.closest?.(".omitted-host")) this.omittedPanel = null;
+    if (this.coveragePanel && !target?.closest?.(".coverage-host")) this.coveragePanel = null;
     // Neither on the marker, whose own click toggles, nor inside the note: a note
     // exists to be read, and one carrying a link exists to be clicked — closing it
     // here would take the link out of the document before the click reached it.
@@ -206,6 +226,7 @@ class OverlayState {
     if (kind === "tip") this.closeTip();
     else if (kind === "lang") this.langMenu = null;
     else if (kind === "settings") this.settingsMenu = null;
+    else if (kind === "coverage") this.coveragePanel = null;
     else this.omittedPanel = null;
     const back = this.#openers[kind];
     if (back) void returnFocus(back);
@@ -228,6 +249,7 @@ class OverlayState {
     if (this.langMenu && inside(HOSTS.lang)) return "lang";
     if (this.settingsMenu && inside(HOSTS.settings)) return "settings";
     if (this.omittedPanel && inside(HOSTS.omitted)) return "omitted";
+    if (this.coveragePanel && inside(HOSTS.coverage)) return "coverage";
     return null;
   }
 }

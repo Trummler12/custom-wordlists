@@ -14,6 +14,7 @@
   import { topics } from "../../state/topics.svelte";
   import TipMarker from "../common/TipMarker.svelte";
   import TipNote from "../common/TipNote.svelte";
+  import CoveragePanel from "./CoveragePanel.svelte";
   import FameDepthSlider from "./FameDepthSlider.svelte";
   import NamesModeSelect from "./NamesModeSelect.svelte";
   import OmittedPanel from "./OmittedPanel.svelte";
@@ -112,6 +113,9 @@
     {/if}
     {#if sole}
       <OmittedPanel tid={topic.id} group={sole} />
+    {/if}
+    {#if sole}
+      <CoveragePanel tid={topic.id} group={sole} />
     {/if}
     <!-- Per topic, not per group: how a language spells a name is the same question
          in every group of a list. Shows itself only where the answers differ. -->

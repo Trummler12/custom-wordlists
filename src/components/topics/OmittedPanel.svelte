@@ -17,7 +17,9 @@
   const RULE_TITLE_LINES = 5;
   const RULE_TITLE_PER_LINE = 10;
 
-  const rules = $derived(allRules(group));
+  // Icon-tagged rules leave for a control of their own (CoveragePanel), so the 🚫
+  // panel lists only the plain omissions.
+  const rules = $derived(allRules(group).filter((r) => !r.icon));
   const id = $derived(`omitted-${tid}-${group.id}`);
   const open = $derived(overlays.omittedPanel === id);
 
@@ -102,7 +104,7 @@
       aria-expanded={open}
       aria-label={lang.ui.omitted.label}
       title={lang.ui.omitted.label}
-      onclick={(e) => overlays.toggleOmittedPanel(id, e.currentTarget)}>🧹</button
+      onclick={(e) => overlays.toggleOmittedPanel(id, e.currentTarget)}>🚫</button
     >
     {#if open}
       <div
