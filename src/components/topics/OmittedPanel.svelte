@@ -11,9 +11,11 @@
 
   let { tid, group }: { tid: string; group: Group } = $props();
 
-  // How many matched names a rule's hover lists before it trails off — a title is a
-  // one-line-ish affordance, not a place for a hundred countries.
-  const RULE_TITLE_NAMES = 12;
+  // A rule's hover wraps its matched names over up to five lines, this many to a
+  // line, before it trails off with an ellipsis — long enough to be useful (and a
+  // little funny) without listing a hundred countries.
+  const RULE_TITLE_LINES = 5;
+  const RULE_TITLE_PER_LINE = 10;
 
   const rules = $derived(allRules(group));
   const id = $derived(`omitted-${tid}-${group.id}`);
@@ -76,11 +78,18 @@
   // label where it opts in; the names go in the hover, capped so it can't run away.
   const summaryOf = (ruleId: string) => group.omissionSummary?.[ruleId];
   const ruleTitle = (rule: Omission, omitting: boolean) => {
-    const names = summaryOf(rule.id)?.names ?? [];
-    const shown = names.slice(0, RULE_TITLE_NAMES);
-    const list = shown.join(", ") + (names.length > shown.length ? ", …" : "");
+    const info = summaryOf(rule.id);
     const hint = rule.locked ? lang.ui.omitted.locked : lang.ui.omitted.toggle(omitting);
-    return list ? [hint, list].join("\n") : hint;
+    if (!info?.names.length) return hint;
+    const shown = info.names.slice(0, RULE_TITLE_LINES * RULE_TITLE_PER_LINE);
+    const lines: string[] = [];
+    for (let i = 0; i < shown.length; i += RULE_TITLE_PER_LINE) {
+      lines.push(shown.slice(i, i + RULE_TITLE_PER_LINE).join(", "));
+    }
+    // More matched than the sample shows (a big rule, or names deduplicated below
+    // the count) — trail off, so the hover reads as an excerpt rather than the whole.
+    if (info.count > shown.length) lines[lines.length - 1] += ", …";
+    return [hint, ...lines].join("\n");
   };
 </script>
 
