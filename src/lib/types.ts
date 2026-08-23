@@ -171,6 +171,12 @@ export interface Omission {
    *  is then phrased to read on from the count. A rule whose reason already states
    *  its own number (Pokémon's "300 Dynamax Crystals") leaves this off. */
   count?: boolean;
+  /** An icon key that lifts this rule out of the 🚫 panel into its own control.
+   *  Rules that share an icon form one ordered ladder (array order = strictness),
+   *  rendered as a radio group rather than independent checkboxes — the Geoguessr
+   *  coverage filter is `no-coverage` then `rare-coverage`, both `"geoguessr"`. The
+   *  frontend resolves the key to the actual glyph or image. */
+  icon?: string;
 }
 
 /** A group of words: either a flat `words` list or ordered fame `tiers`. */

@@ -52,7 +52,7 @@ function block(items, indent, closeIndent) {
 }
 
 /** Field order within an omission rule. */
-const RULE_KEYS = ["id", "match", "as", "except", "locked", "count", "reason"];
+const RULE_KEYS = ["id", "match", "as", "except", "locked", "count", "icon", "reason"];
 
 /** Field order within a tier note. */
 const NOTE_KEYS = ["fromTier", "icon", "text"];

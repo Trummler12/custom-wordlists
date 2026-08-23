@@ -256,6 +256,11 @@
         "count": {
           "type": "boolean",
           "description": "When true, the panel prefixes this rule's label with \"up to N\", N being how many entries it matches — for a rule whose reason names a category rather than a fixed set, where the number is worth having and the reason is phrased to read on from it. A reason that already states its own number (\"300 Dynamax Crystals\") leaves this off."
+        },
+        "icon": {
+          "type": "string",
+          "minLength": 1,
+          "description": "An icon key that lifts this rule out of the omitted panel into its own control. Rules sharing an icon form one ordered ladder (array order = strictness) and render as a radio group, not independent checkboxes — the Geoguessr coverage filter is `no-coverage` then `rare-coverage`, both `\"geoguessr\"`. The frontend resolves the key to a glyph or image."
         }
       }
     },
