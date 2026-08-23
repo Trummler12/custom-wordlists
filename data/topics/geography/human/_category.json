@@ -9,5 +9,6 @@
     "ko": "인문지리"
   },
   "icon": "🏙️",
-  "order": 2
+  "order": 2,
+  "syncControls": ["geoguessr"]
 }
