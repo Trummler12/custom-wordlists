@@ -101,6 +101,19 @@ export interface OmittedStrings {
   tooLongHint: (omitted: boolean) => string;
 }
 
+/** The Pegman filter behind its own button: a country has full Street View
+ *  coverage, only sparse coverage, or none — the reader picks how strict to be. */
+export interface CoverageStrings {
+  /** Button aria-label and popup heading. */
+  label: string;
+  /** The three strictness levels, from loosest to strictest. `all` keeps every
+   *  country; `withCoverage` drops the uncovered ones but keeps the sparse; `reliable`
+   *  keeps only the fully covered. */
+  all: string;
+  withCoverage: string;
+  reliable: string;
+}
+
 /** The picker, the ⚠️/ℹ️ markers, and the per-list 🇬🇧 toggles. */
 export interface LanguageStrings {
   /** Globe-button aria-label, e.g. "Language: English". */
@@ -203,6 +216,7 @@ export interface UIStrings {
   names: NamesStrings;
   fame: FameStrings;
   omitted: OmittedStrings;
+  coverage: CoverageStrings;
   language: LanguageStrings;
   settings: SettingsStrings;
   output: OutputStrings;

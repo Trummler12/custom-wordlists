@@ -56,6 +56,12 @@ export const ja: UIStrings = {
         ? "オンにすると、それでも含めます。skribbl.io は受け付けませんが、他のゲームなら通るかもしれません。"
         : "オンにすると、再び除外します。",
   },
+  coverage: {
+    label: "Geoguessr / ストリートビューの対応",
+    all: "すべての国",
+    withCoverage: "対応あり",
+    reliable: "十分な対応のみ",
+  },
   language: {
     label: (current) => `言語: ${current}`,
     menu: "言語",

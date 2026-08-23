@@ -56,6 +56,12 @@ export const it: UIStrings = {
         ? "Attiva per includerli comunque: skribbl.io non li accetta, ma un altro gioco potrebbe."
         : "Attiva per tralasciarli di nuovo.",
   },
+  coverage: {
+    label: "Geoguessr / Copertura Street View",
+    all: "Tutti i paesi",
+    withCoverage: "Con copertura",
+    reliable: "Solo copertura affidabile",
+  },
   language: {
     label: (current) => `Lingua: ${current}`,
     menu: "Lingua",

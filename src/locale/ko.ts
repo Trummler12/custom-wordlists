@@ -56,6 +56,12 @@ export const ko: UIStrings = {
         ? "켜면 그래도 포함합니다. skribbl.io는 받지 않지만 다른 게임은 받을 수도 있습니다."
         : "켜면 다시 제외합니다.",
   },
+  coverage: {
+    label: "Geoguessr / 스트리트 뷰 지원",
+    all: "모든 국가",
+    withCoverage: "지원 포함",
+    reliable: "안정적 지원만",
+  },
   language: {
     label: (current) => `언어: ${current}`,
     menu: "언어",
