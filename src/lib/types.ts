@@ -43,6 +43,12 @@ export interface TopicSummary {
    *  category sums so they are not counted twice. Absent on every ordinary topic.
    *  See lib/tree. */
   contributors?: string[];
+  /** Icon-tagged control ladders this topic carries, `icon → ordered rule ids` —
+   *  the Geoguessr coverage filter is `{ geoguessr: ["no-coverage", "rare-coverage"] }`.
+   *  From build-index (a real topic) or copied from a contributor (a synthesized
+   *  one), so a control can be shown and synced without loading the file. Absent
+   *  where the topic carries no such rule. */
+  controls?: Record<string, string[]>;
   wordCount: number;
 }
 
@@ -62,6 +68,11 @@ export interface CategoryMeta {
   /** Whether this category's row carries one toggle switching every list below it
    *  to English at once. See lib/english. */
   sharedEnglishToggle?: boolean;
+  /** Icon keys whose control this category surfaces on its own row and syncs across
+   *  its subtree — `["geoguessr"]` on `geography/human` gives one coverage radio
+   *  that commands every Countries/Capitals leaf below. Generic so any icon-tagged
+   *  control (see `Omission.icon`) can be lifted to a category. */
+  syncControls?: string[];
 }
 
 /** The generated manifest the frontend loads first. */

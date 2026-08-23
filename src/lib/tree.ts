@@ -78,6 +78,9 @@ export function synthesizeTopics(topics: TopicSummary[]): TopicSummary[] {
       category: meet,
       path: "", // no file of its own — the mark of a synthesized topic, with `contributors`
       ...(languages ? { languages } : {}),
+      // The contributors carry the same icon controls (build-generated alike), so
+      // the synth surfaces the merged control from the first — no file load needed.
+      ...(first.controls ? { controls: first.controls } : {}),
       contributors: contributors.map((c) => c.id),
       // Pre-load baseline only; once the members load, `topics.groupsOf` gives the
       // deduplicated count (transcontinentals merged), which is what the row shows.

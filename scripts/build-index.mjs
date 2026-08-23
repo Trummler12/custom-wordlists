@@ -46,6 +46,18 @@ function countWords(topic) {
   return n;
 }
 
+/** Per-icon control ladders a topic carries: each icon-tagged omission rule, in
+ *  file order, grouped by its `icon`. The frontend surfaces these as a control of
+ *  their own (the Geoguessr radio), and — put in the manifest — can do so, and sync
+ *  them across a category, without loading a single topic file. */
+function controlsOf(topic) {
+  const out = {};
+  for (const rule of [...(topic.omitted ?? []), ...(topic.omittable ?? [])]) {
+    if (rule.icon) (out[rule.icon] ??= []).push(rule.id);
+  }
+  return out;
+}
+
 /** Where a sibling with no declared `order` sorts. A finite number rather than
  *  `Infinity`, so two of them subtract to 0 and compare equal — `Infinity` minus
  *  itself is `NaN`, and a comparator that returns one is left to the engine to
@@ -144,6 +156,9 @@ async function readCategoryMeta(path) {
   if (typeof data.hideRulersByDefault === "boolean") meta.hideRulersByDefault = data.hideRulersByDefault;
   if (typeof data.hideRulers === "boolean") meta.hideRulers = data.hideRulers;
   if (data.sharedEnglishToggle) meta.sharedEnglishToggle = true;
+  // Icon keys whose control this category surfaces and syncs across its subtree
+  // (e.g. ["geoguessr"]). Generic on purpose — any icon-tagged control rides it.
+  if (Array.isArray(data.syncControls) && data.syncControls.length) meta.syncControls = data.syncControls;
   return meta;
 }
 
@@ -196,6 +211,9 @@ async function buildIndex() {
       // that carry this; the manifest passes it through so that can happen without
       // loading every file first. See src/lib/tree.ts.
       ...(Number.isInteger(data.inheritsUpwards) ? { inheritsUpwards: data.inheritsUpwards } : {}),
+      // Icon-tagged rule ladders (e.g. the Geoguessr coverage filter), so the tree
+      // can show and sync them from the manifest alone. See src/components/topics.
+      ...(Object.keys(controlsOf(data)).length ? { controls: controlsOf(data) } : {}),
       wordCount: countWords(data),
     });
   }

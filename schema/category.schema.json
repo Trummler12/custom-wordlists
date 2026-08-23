@@ -24,6 +24,13 @@
     "sharedEnglishToggle": {
       "type": "boolean",
       "description": "When true, this category's row carries one toggle switching every list below it to its English entries at once — for a category whose topics are variations of a single list (the nine Pokémon generations), where making the choice nine times is the same choice. The per-topic toggles stay available underneath. Governs down to the next category that declares the field."
+    },
+    "syncControls": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "type": "string", "minLength": 1 },
+      "description": "Icon keys (see an omission rule's `icon`) whose control this category surfaces on its own row and syncs across its subtree — `[\"geoguessr\"]` on geography/human gives one Street View coverage radio that commands every Countries and Capitals leaf below at once. Generic: any icon-tagged control can be lifted to a category this way."
     }
   },
   "$defs": {
