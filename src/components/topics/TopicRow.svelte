@@ -40,6 +40,17 @@
   const englishOptIn = $derived(settings.showEnglishToggle && canForceEnglish(topic, lang.current));
   const forcedEnglish = $derived(lang.isForcedEnglish(topic));
 
+  // The Geoguessr coverage control, straight from the manifest — no file load. A
+  // synth commands its contributors (each with its own ladder); a plain topic, itself.
+  const coverage = $derived(topic.controls?.["geoguessr"]);
+  const coverageTargets = $derived(
+    topics.isSynth(topic.id)
+      ? topics
+          .contributorsOf(topic.id)
+          .map((c) => ({ tid: c.id, rules: c.controls?.["geoguessr"] ?? [] }))
+      : [{ tid: topic.id, rules: coverage ?? [] }],
+  );
+
   const name = $derived(topics.topicName(topic));
   // The long form on hover, and its hitbox spans the icon too — so a topic with an
   // empty row label (the Antarctica cricket, icon only) still reveals it.
@@ -114,8 +125,8 @@
     {#if sole}
       <OmittedPanel tid={topic.id} group={sole} />
     {/if}
-    {#if sole}
-      <CoveragePanel tid={topic.id} group={sole} />
+    {#if coverage}
+      <CoveragePanel id={`coverage-${topic.id}`} targets={coverageTargets} />
     {/if}
     <!-- Per topic, not per group: how a language spells a name is the same question
          in every group of a list. Shows itself only where the answers differ. -->

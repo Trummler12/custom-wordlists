@@ -8,6 +8,7 @@
   import { settings } from "../../state/settings.svelte";
   import { topics } from "../../state/topics.svelte";
   import CategoryNode from "./CategoryNode.svelte";
+  import CoveragePanel from "./CoveragePanel.svelte";
   import TopicRow from "./TopicRow.svelte";
 
   let { node }: { node: CatNode } = $props();
@@ -29,6 +30,17 @@
   const englishGoverned = $derived(
     settings.showEnglishToggle
       ? sharedEnglishTopics(node.path, all, topics.categories, lang.current)
+      : [],
+  );
+
+  // The Geoguessr coverage control this category syncs (syncControls), commanding
+  // every icon-carrying real leaf below at once. From the manifest — no file load,
+  // and synth topics are skipped so a country isn't counted through both.
+  const coverageTargets = $derived(
+    (topics.categories[node.path]?.syncControls ?? []).includes("geoguessr")
+      ? all
+          .filter((t) => !topics.isSynth(t.id) && t.controls?.["geoguessr"])
+          .map((t) => ({ tid: t.id, rules: t.controls!["geoguessr"] }))
       : [],
   );
 </script>
@@ -101,6 +113,9 @@
         if (!open) selection.toggleCat(node);
       }}
     >📏</button>
+  {/if}
+  {#if coverageTargets.length > 0}
+    <CoveragePanel id={`coverage-${id}`} targets={coverageTargets} />
   {/if}
   <!-- The ratio alone, since it reads the same in every language; the sentence it
        stands for is a hover away. The row needs the width for its controls. -->

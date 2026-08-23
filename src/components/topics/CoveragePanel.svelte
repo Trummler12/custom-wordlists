@@ -1,22 +1,50 @@
 <script lang="ts">
-  import { allRules } from "../../lib/omitted";
-  import type { Group } from "../../lib/types";
   import { lang } from "../../state/lang.svelte";
   import { overlays } from "../../state/overlays.svelte";
-  import { selection } from "../../state/selection.svelte";
+  import { settings } from "../../state/settings.svelte";
   import pegman from "../../../assets/GeoguessrIcon.png";
 
-  let { tid, group }: { tid: string; group: Group } = $props();
+  // The Geoguessr / Street View coverage filter: one radio ladder driving a set of
+  // leaf topics at once. Each `target` is a topic id and the ladder rules it holds
+  // — some continents have only `no-coverage`, some also `rare-coverage`, so a leaf
+  // votes on and is commanded for only the rules it actually carries. Targets are
+  // `[self]` for a plain row, the contributors for a synthesized one, and every
+  // icon-carrying descendant for a category row. All from the manifest — no load.
+  let { id, targets }: { id: string; targets: { tid: string; rules: string[] }[] } = $props();
 
-  // The coverage rules form one strictness ladder, in array order (no-coverage then
-  // rare-coverage): each level switches on a prefix of them. Not checkboxes, because
-  // hiding the sparse while showing the uncovered is nonsense — a radio rules it out.
-  const ladder = $derived(allRules(group).filter((r) => r.icon === "geoguessr"));
-  const id = $derived(`coverage-${tid}-${group.id}`);
   const open = $derived(overlays.coveragePanel === id);
 
-  // One radio per level, loosest first; with one rule (no sparse ones here) the
-  // ladder has two levels and the third label simply isn't shown.
+  // The full ladder is the union of the targets' rules, in first-seen order — every
+  // list names `no-coverage` before `rare-coverage`, so the order is stable.
+  const ladder = $derived.by(() => {
+    const seen: string[] = [];
+    for (const t of targets) for (const r of t.rules) if (!seen.includes(r)) seen.push(r);
+    return seen;
+  });
+
+  // A coverage rule is omittable and unlocked, so "in force" is just its stored
+  // flip; a flat topic's group id equals its topic id, so the key is (tid, tid, rule).
+  const on = (tid: string, ruleId: string) => settings.isToggled(tid, tid, ruleId);
+  // Majority among the targets that actually carry the rule — a leaf without it
+  // (no sparse countries) neither votes nor is counted for that step.
+  const majorityOn = (ruleId: string) => {
+    const holders = targets.filter((t) => t.rules.includes(ruleId));
+    return holders.length > 0 && holders.filter((t) => on(t.tid, ruleId)).length * 2 >= holders.length;
+  };
+
+  // The level is how many leading ladder rules a majority holds — a radio only ever
+  // sets a prefix, so a split rounds to the longest prefix that is majority-on.
+  const level = $derived.by(() => {
+    let n = 0;
+    for (const r of ladder) {
+      if (majorityOn(r)) n++;
+      else break;
+    }
+    return n;
+  });
+
+  // One radio per level, loosest first; a two-rule ladder gives three levels, a
+  // one-rule ladder two — the third label then simply isn't shown.
   const levels = $derived([...Array(ladder.length + 1).keys()]);
   const labels = $derived([
     lang.ui.coverage.all,
@@ -24,23 +52,13 @@
     lang.ui.coverage.reliable,
   ]);
 
-  // The current level is how many leading rules are in force. A radio only ever sets
-  // a prefix, so a partial state — from the old checkboxes, or a merged split across
-  // continents — rounds to the longest prefix that is fully on.
-  const level = $derived.by(() => {
-    let n = 0;
-    for (const r of ladder) {
-      if (selection.omitting(tid, group, r.id)) n++;
-      else break;
-    }
-    return n;
-  });
-
   function setLevel(n: number): void {
-    ladder.forEach((r, i) => {
-      const want = i < n;
-      if (selection.omitting(tid, group, r.id) !== want) selection.toggleOmission(tid, group, r.id);
-    });
+    for (const t of targets) {
+      for (const r of t.rules) {
+        const want = ladder.indexOf(r) < n;
+        if (on(t.tid, r) !== want) settings.toggleOmission(t.tid, t.tid, r);
+      }
+    }
   }
 </script>
 

@@ -168,6 +168,7 @@ header {
   align-items: center;
   gap: 0.4rem;
   margin: var(--gap-before-cat) 0 var(--gap-after-cat);
+  position: relative; /* anchor for the coverage popup, like .topic-row */
 }
 /* Only the first TOP-LEVEL category hugs the "Topics" heading. Nested first
    children (e.g. Science → Chemistry) keep the normal above-gap so they aren't
