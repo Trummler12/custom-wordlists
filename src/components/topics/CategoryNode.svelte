@@ -7,8 +7,10 @@
   import { selection } from "../../state/selection.svelte";
   import { settings } from "../../state/settings.svelte";
   import { topics } from "../../state/topics.svelte";
+  import { sovRules } from "../../lib/matrix";
   import CategoryNode from "./CategoryNode.svelte";
   import CoveragePanel from "./CoveragePanel.svelte";
+  import SovereigntyMatrix from "./SovereigntyMatrix.svelte";
   import TopicRow from "./TopicRow.svelte";
 
   let { node }: { node: CatNode } = $props();
@@ -40,7 +42,16 @@
     (topics.categories[node.path]?.syncControls ?? []).includes("geoguessr")
       ? all
           .filter((t) => !topics.isSynth(t.id) && t.controls?.["geoguessr"])
-          .map((t) => ({ tid: t.id, rules: t.controls!["geoguessr"] }))
+          .map((t) => ({ tid: t.id, rules: t.controls!["geoguessr"].map((r) => r.id) }))
+      : [],
+  );
+
+  // The sovereignty matrix this category syncs, same shape — each rule with its cell.
+  const sovTargets = $derived(
+    (topics.categories[node.path]?.syncControls ?? []).includes("sovereignty")
+      ? all
+          .filter((t) => !topics.isSynth(t.id) && t.controls?.["sovereignty"])
+          .map((t) => ({ tid: t.id, rules: sovRules(t.controls!["sovereignty"]) }))
       : [],
   );
 </script>
@@ -116,6 +127,9 @@
   {/if}
   {#if coverageTargets.length > 0}
     <CoveragePanel id={`coverage-${id}`} targets={coverageTargets} />
+  {/if}
+  {#if sovTargets.length > 0}
+    <SovereigntyMatrix id={`sovereignty-${id}`} targets={sovTargets} />
   {/if}
   <!-- The ratio alone, since it reads the same in every language; the sentence it
        stands for is a hover away. The row needs the width for its controls. -->

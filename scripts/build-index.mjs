@@ -46,14 +46,23 @@ function countWords(topic) {
   return n;
 }
 
-/** Per-icon control ladders a topic carries: each icon-tagged omission rule, in
- *  file order, grouped by its `icon`. The frontend surfaces these as a control of
- *  their own (the Geoguessr radio), and — put in the manifest — can do so, and sync
- *  them across a category, without loading a single topic file. */
+/** Per-icon controls a topic carries: each icon-tagged omission rule, in file
+ *  order, grouped by its `icon`, kept as `{ id, cell? }`. The frontend surfaces
+ *  these as a control of their own (the Geoguessr radio, the sovereignty matrix)
+ *  and — put in the manifest — can render, drive and sync them across a category
+ *  without loading a single topic file; the `cell` carries a matrix rule's place. */
 function controlsOf(topic) {
   const out = {};
   for (const rule of [...(topic.omitted ?? []), ...(topic.omittable ?? [])]) {
-    if (rule.icon) (out[rule.icon] ??= []).push(rule.id);
+    if (!rule.icon) continue;
+    const entry = { id: rule.id };
+    // A matrix rule carries its cell and the names it matches, so the grid can
+    // place it and name its members on hover without loading the topic file.
+    if (rule.cell) {
+      entry.cell = rule.cell;
+      entry.names = Array.isArray(rule.match) ? rule.match : [rule.match];
+    }
+    (out[rule.icon] ??= []).push(entry);
   }
   return out;
 }

@@ -14,8 +14,10 @@
   import { topics } from "../../state/topics.svelte";
   import TipMarker from "../common/TipMarker.svelte";
   import TipNote from "../common/TipNote.svelte";
+  import { sovRules } from "../../lib/matrix";
   import CoveragePanel from "./CoveragePanel.svelte";
   import FameDepthSlider from "./FameDepthSlider.svelte";
+  import SovereigntyMatrix from "./SovereigntyMatrix.svelte";
   import NamesModeSelect from "./NamesModeSelect.svelte";
   import OmittedPanel from "./OmittedPanel.svelte";
   import VariantPanel from "./VariantPanel.svelte";
@@ -47,9 +49,20 @@
     topics.isSynth(topic.id)
       ? topics
           .contributorsOf(topic.id)
-          .map((c) => ({ tid: c.id, rules: c.controls?.["geoguessr"] ?? [] }))
-      : [{ tid: topic.id, rules: coverage ?? [] }],
+          .map((c) => ({ tid: c.id, rules: (c.controls?.["geoguessr"] ?? []).map((r) => r.id) }))
+      : [{ tid: topic.id, rules: (coverage ?? []).map((r) => r.id) }],
   );
+
+  // The sovereignty & recognition matrix, the same way — each rule carries its
+  // `[row, col]` cell, so the grid renders and drives load-free. Guarded on the
+  // targets, not `topic.controls`: a synth's controls are its first contributor's,
+  // and not every continent carries a sovereignty rule.
+  const sovTargets = $derived(
+    topics.isSynth(topic.id)
+      ? topics.contributorsOf(topic.id).map((c) => ({ tid: c.id, rules: sovRules(c.controls?.["sovereignty"]) }))
+      : [{ tid: topic.id, rules: sovRules(topic.controls?.["sovereignty"]) }],
+  );
+  const sovActive = $derived(sovTargets.some((t) => t.rules.length > 0));
 
   const name = $derived(topics.topicName(topic));
   // The long form on hover, and its hitbox spans the icon too — so a topic with an
@@ -127,6 +140,9 @@
     {/if}
     {#if coverage}
       <CoveragePanel id={`coverage-${topic.id}`} targets={coverageTargets} />
+    {/if}
+    {#if sovActive}
+      <SovereigntyMatrix id={`sovereignty-${topic.id}`} targets={sovTargets} />
     {/if}
     <!-- Per topic, not per group: how a language spells a name is the same question
          in every group of a list. Shows itself only where the answers differ. -->

@@ -43,13 +43,24 @@ export interface TopicSummary {
    *  category sums so they are not counted twice. Absent on every ordinary topic.
    *  See lib/tree. */
   contributors?: string[];
-  /** Icon-tagged control ladders this topic carries, `icon → ordered rule ids` —
-   *  the Geoguessr coverage filter is `{ geoguessr: ["no-coverage", "rare-coverage"] }`.
+  /** Icon-tagged controls this topic carries, `icon → ordered rules` — the Geoguessr
+   *  coverage filter is `{ geoguessr: [{ id: "no-coverage" }, { id: "rare-coverage" }] }`.
    *  From build-index (a real topic) or copied from a contributor (a synthesized
-   *  one), so a control can be shown and synced without loading the file. Absent
-   *  where the topic carries no such rule. */
-  controls?: Record<string, string[]>;
+   *  one), so a control can be shown and synced without loading the file. A rule
+   *  carries its matrix `cell` where the icon renders as a grid (sovereignty) rather
+   *  than a linear ladder (coverage). Absent where the topic carries no such rule. */
+  controls?: Record<string, IconControl[]>;
   wordCount: number;
+}
+
+/** One rule inside a manifest `controls` ladder: its id, its matrix cell where the
+ *  control is a grid, and the names it matches where the control names them on
+ *  hover. Load-free — enough to render, drive and label the control from the
+ *  manifest alone. */
+export interface IconControl {
+  id: string;
+  cell?: [number, number];
+  names?: string[];
 }
 
 /** Optional display metadata for a category node (from a `_category.json`). */
@@ -196,6 +207,12 @@ export interface Omission {
    *  coverage filter is `no-coverage` then `rare-coverage`, both `"geoguessr"`. The
    *  frontend resolves the key to the actual glyph or image. */
   icon?: string;
+  /** A cell `[row, col]` (1-based) in a 2D control, for an icon whose rules form a
+   *  matrix rather than a linear ladder. The sovereignty filter places each rule on
+   *  a de-jure recognition row and a de-facto control column; the control lets the
+   *  reader include a top-left-anchored staircase of cells at once. Absent for a
+   *  linear-ladder icon (coverage). See `SovereigntyMatrix` and C10 in the plan. */
+  cell?: [number, number];
 }
 
 /** A group of words: either a flat `words` list or ordered fame `tiers`. */
