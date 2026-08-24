@@ -59,7 +59,7 @@ export const ja: UIStrings = {
   coverage: {
     label: "Geoguessr / ストリートビューの対応",
     all: "すべての国",
-    withCoverage: "対応あり",
+    withCoverage: "公式対応あり",
     reliable: "十分な対応のみ",
   },
   language: {

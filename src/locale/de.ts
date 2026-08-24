@@ -59,7 +59,7 @@ export const de: UIStrings = {
   coverage: {
     label: "Geoguessr / Street-View-Abdeckung",
     all: "Alle Länder",
-    withCoverage: "Mit Abdeckung",
+    withCoverage: "Mit offizieller Abdeckung",
     reliable: "Nur zuverlässige Abdeckung",
   },
   language: {

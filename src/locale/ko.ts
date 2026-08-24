@@ -59,7 +59,7 @@ export const ko: UIStrings = {
   coverage: {
     label: "Geoguessr / 스트리트 뷰 지원",
     all: "모든 국가",
-    withCoverage: "지원 포함",
+    withCoverage: "공식 지원 포함",
     reliable: "안정적 지원만",
   },
   language: {

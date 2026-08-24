@@ -107,8 +107,8 @@ export interface CoverageStrings {
   /** Button aria-label and popup heading. */
   label: string;
   /** The three strictness levels, from loosest to strictest. `all` keeps every
-   *  country; `withCoverage` drops the uncovered ones but keeps the sparse; `reliable`
-   *  keeps only the fully covered. */
+   *  country; `withCoverage` (labelled "official") drops the uncovered ones but keeps
+   *  the sparse; `reliable` keeps only the fully covered. */
   all: string;
   withCoverage: string;
   reliable: string;
