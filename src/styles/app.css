@@ -66,7 +66,7 @@ header {
 .layout.single {
   grid-template-columns: 1fr;
 }
-@media (max-width: 40rem) {
+@media (max-width: 50rem) {
   .layout {
     grid-template-columns: 1fr;
   }
@@ -85,7 +85,7 @@ header {
   height: calc(100vh - 2 * var(--output-gap) - var(--footer-h));
   min-height: 0;
 }
-@media (max-width: 40rem) {
+@media (max-width: 50rem) {
   /* Stacked: don't pin the output; size it to its content. */
   .output {
     position: static;
@@ -145,7 +145,7 @@ header {
 .site-footer a {
   color: inherit;
 }
-@media (max-width: 40rem) {
+@media (max-width: 50rem) {
   main {
     padding-bottom: 0;
   }
@@ -665,7 +665,7 @@ header {
 .lang-name {
   flex: 1;
 }
-@media (max-width: 40rem) {
+@media (max-width: 50rem) {
   .lang-header-slot {
     display: flex;
   }
