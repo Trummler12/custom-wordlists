@@ -3,40 +3,44 @@
   "title": {"en":"Countries","de":"Länder","es":"Países","fr":"Pays","it":"Paesi","ja":"国","ko":"국가","zh-Hans":"国家","zh-Hant":"國家"},
   "languages": ["en","de","es","fr","it","ja","ko","zh-Hans","zh-Hant"],
   "sources": ["Names & population: Wikidata sovereign states (P31 Q3624078) — https://www.wikidata.org/wiki/Q3624078 (see scripts/geography/dump-country-data.mjs)"],
-  "lastUpdated": "2026-08-23",
-  "lastChecked": "2026-08-23",
+  "lastUpdated": "2026-08-24",
+  "lastChecked": "2026-08-24",
   "defaultNames": "short",
   "omitted": [
     {
-      "id": "dependencies",
+      "id": "classic-autonomous",
       "match": ["Greenland"],
       "count": true,
+      "icon": "sovereignty",
+      "cell": [4,2],
       "reason": {
-        "en": "territories generally regarded as part of a sovereign state",
-        "de": "Gebiete, die allgemein als Teil eines souveränen Staates gelten",
-        "es": "territorios considerados en general parte de un Estado soberano",
-        "fr": "territoires généralement considérés comme partie d'un État souverain",
-        "it": "territori generalmente considerati parte di uno Stato sovrano",
-        "ja": "一般に主権国家の一部と見なされる地域",
-        "ko": "일반적으로 주권 국가의 일부로 여겨지는 지역"
+        "en": "autonomous territories internationally regarded as part of a sovereign state",
+        "de": "autonome Gebiete, die international als Teil eines souveränen Staates gelten",
+        "es": "territorios autónomos considerados internacionalmente parte de un Estado soberano",
+        "fr": "territoires autonomes internationalement considérés comme partie d'un État souverain",
+        "it": "territori autonomi considerati a livello internazionale parte di uno Stato sovrano",
+        "ja": "国際的に主権国家の一部と見なされる自治地域",
+        "ko": "국제적으로 주권 국가의 일부로 여겨지는 자치 지역"
+      }
+    },
+    {
+      "id": "special-status",
+      "match": ["Puerto Rico"],
+      "count": true,
+      "icon": "sovereignty",
+      "cell": [3,2],
+      "reason": {
+        "en": "highly autonomous territories with a distinct international presence, often taken for countries of their own",
+        "de": "weitgehend autonome Gebiete mit eigenständigem internationalem Auftreten, die viele für eigene Länder halten",
+        "es": "territorios muy autónomos con presencia internacional propia, que muchos toman por países propios",
+        "fr": "territoires très autonomes à présence internationale propre, que beaucoup prennent pour des pays à part entière",
+        "it": "territori molto autonomi con una presenza internazionale propria, che molti scambiano per paesi a sé",
+        "ja": "独自の国際的存在感を持ち、独自の国と見なされがちな高度な自治地域",
+        "ko": "독자적 국제적 존재감을 지녀 독립국으로 여겨지곤 하는 고도 자치 지역"
       }
     }
   ],
   "omittable": [
-    {
-      "id": "autonomous-territories",
-      "match": ["Puerto Rico"],
-      "count": true,
-      "reason": {
-        "en": "highly autonomous territories often taken for countries of their own",
-        "de": "weitgehend autonome Gebiete, die viele für eigene Länder halten",
-        "es": "territorios muy autónomos que muchos toman por países propios",
-        "fr": "territoires très autonomes que beaucoup prennent pour des pays à part entière",
-        "it": "territori molto autonomi che molti scambiano per paesi a sé",
-        "ja": "独自の国と見なされがちな高度な自治地域",
-        "ko": "독립국으로 여겨지곤 하는 고도 자치 지역"
-      }
-    },
     {
       "id": "no-coverage",
       "match": ["Antigua and Barbuda","Barbados","Belize","Cuba","Dominica","El Salvador","Grenada","Haiti","Honduras","Jamaica","Nicaragua","Saint Kitts and Nevis","Saint Lucia","Saint Vincent and the Grenadines","The Bahamas","Trinidad and Tobago"],

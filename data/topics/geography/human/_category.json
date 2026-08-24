@@ -10,5 +10,5 @@
   },
   "icon": "🏙️",
   "order": 2,
-  "syncControls": ["geoguessr"]
+  "syncControls": ["geoguessr", "sovereignty"]
 }

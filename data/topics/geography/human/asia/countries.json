@@ -3,52 +3,74 @@
   "title": {"en":"Countries","de":"Länder","es":"Países","fr":"Pays","it":"Paesi","ja":"国","ko":"국가","zh-Hans":"国家","zh-Hant":"國家"},
   "languages": ["en","de","es","fr","it","ja","ko","zh-Hans","zh-Hant"],
   "sources": ["Names & population: Wikidata sovereign states (P31 Q3624078) — https://www.wikidata.org/wiki/Q3624078 (see scripts/geography/dump-country-data.mjs)"],
-  "lastUpdated": "2026-08-23",
-  "lastChecked": "2026-08-23",
+  "lastUpdated": "2026-08-24",
+  "lastChecked": "2026-08-24",
   "defaultNames": "short",
   "omitted": [
     {
-      "id": "breakaway-states",
-      "match": ["Abkhazia","South Ossetia"],
+      "id": "special-status",
+      "match": ["Hong Kong","Macau"],
       "count": true,
+      "icon": "sovereignty",
+      "cell": [3,2],
       "reason": {
-        "en": "self-declared states recognized by few or no UN members",
-        "de": "selbsterklärte Staaten, von wenigen oder keinen UN-Mitgliedern anerkannt",
-        "es": "estados autoproclamados reconocidos por pocos o ningún miembro de la ONU",
-        "fr": "états autoproclamés reconnus par peu ou aucun membre de l'ONU",
-        "it": "stati autoproclamati riconosciuti da pochi o nessun membro dell'ONU",
-        "ja": "国連加盟国のごく一部にしか、あるいは全く承認されない自称国家",
-        "ko": "유엔 회원국 중 극소수만이 또는 전혀 승인하지 않는 자칭 국가"
+        "en": "highly autonomous territories with a distinct international presence, often taken for countries of their own",
+        "de": "weitgehend autonome Gebiete mit eigenständigem internationalem Auftreten, die viele für eigene Länder halten",
+        "es": "territorios muy autónomos con presencia internacional propia, que muchos toman por países propios",
+        "fr": "territoires très autonomes à présence internationale propre, que beaucoup prennent pour des pays à part entière",
+        "it": "territori molto autonomi con una presenza internazionale propria, che molti scambiano per paesi a sé",
+        "ja": "独自の国際的存在感を持ち、独自の国と見なされがちな高度な自治地域",
+        "ko": "독자적 국제적 존재감을 지녀 독립국으로 여겨지곤 하는 고도 자치 지역"
       }
     }
   ],
   "omittable": [
     {
-      "id": "autonomous-territories",
-      "match": ["Hong Kong"],
+      "id": "asymmetric-autonomy",
+      "match": ["Iraqi Kurdistan"],
       "count": true,
+      "icon": "sovereignty",
+      "cell": [1,2],
       "reason": {
-        "en": "highly autonomous territories often taken for countries of their own",
-        "de": "weitgehend autonome Gebiete, die viele für eigene Länder halten",
-        "es": "territorios muy autónomos que muchos toman por países propios",
-        "fr": "territoires très autonomes que beaucoup prennent pour des pays à part entière",
-        "it": "territori molto autonomi che molti scambiano per paesi a sé",
-        "ja": "独自の国と見なされがちな高度な自治地域",
-        "ko": "독립국으로 여겨지곤 하는 고도 자치 지역"
+        "en": "autonomous regions whose broad self-rule is internationally recognized",
+        "de": "autonome Regionen, deren weitreichende Selbstverwaltung völkerrechtlich anerkannt ist",
+        "es": "regiones autónomas cuyo amplio autogobierno está reconocido internacionalmente",
+        "fr": "régions autonomes dont la large autonomie est reconnue internationalement",
+        "it": "regioni autonome la cui ampia autonomia è riconosciuta a livello internazionale",
+        "ja": "広範な自治が国際的に認められている自治地域",
+        "ko": "폭넓은 자치가 국제적으로 인정된 자치 지역"
       }
     },
     {
-      "id": "contested-states",
+      "id": "de-facto-narrow",
+      "match": ["Abkhazia","South Ossetia"],
+      "count": true,
+      "icon": "sovereignty",
+      "cell": [3,1],
+      "reason": {
+        "en": "fully self-governing states recognized by only a few UN members",
+        "de": "vollständig selbstverwaltete Staaten, nur von wenigen UN-Mitgliedern anerkannt",
+        "es": "estados con autogobierno pleno reconocidos por solo unos pocos miembros de la ONU",
+        "fr": "états pleinement autonomes reconnus par seulement quelques membres de l'ONU",
+        "it": "stati pienamente autogovernati riconosciuti solo da pochi membri dell'ONU",
+        "ja": "ごく一部の国連加盟国のみに承認された、完全に自治を行う国家",
+        "ko": "소수의 유엔 회원국만이 승인한, 완전한 자치 국가"
+      }
+    },
+    {
+      "id": "de-facto-recognized",
       "match": ["Palestine","Taiwan"],
       "count": true,
+      "icon": "sovereignty",
+      "cell": [2,1],
       "reason": {
-        "en": "sovereign states with contested international recognition",
-        "de": "souveräne Staaten mit umstrittener internationaler Anerkennung",
-        "es": "estados soberanos con reconocimiento internacional disputado",
-        "fr": "états souverains à la reconnaissance internationale contestée",
-        "it": "stati sovrani dal riconoscimento internazionale conteso",
-        "ja": "国際的承認が争われている主権国家",
-        "ko": "국제적 승인이 논쟁 중인 주권 국가"
+        "en": "fully sovereign states recognized by many, though not all, UN members",
+        "de": "vollständig souveräne Staaten, von vielen, aber nicht allen UN-Mitgliedern anerkannt",
+        "es": "estados plenamente soberanos reconocidos por muchos, aunque no todos, los miembros de la ONU",
+        "fr": "états pleinement souverains reconnus par de nombreux membres de l'ONU, mais pas tous",
+        "it": "stati pienamente sovrani riconosciuti da molti, ma non tutti, i membri dell'ONU",
+        "ja": "全てではないが多くの国連加盟国に承認された、完全な主権国家",
+        "ko": "전부는 아니지만 다수의 유엔 회원국이 승인한 완전한 주권 국가"
       }
     },
     {
@@ -127,6 +149,7 @@
       {"en":"Laos","ja":"ラオス","ko":"라오스","zh-Hans":"老挝","zh-Hant":"寮國"},
       {"en":"Turkmenistan","es":"Turkmenistán","fr":"Turkménistan","ja":"トルクメニスタン","ko":"투르크메니스탄","zh-Hans":"土库曼斯坦","zh-Hant":"土庫曼"},
       {"en":"Lebanon","de":"Libanon","es":"Líbano","fr":"Liban","it":"Libano","ja":"レバノン","ko":"레바논","zh-Hans":"黎巴嫩","zh-Hant":"黎巴嫩"},
+      {"en":"Iraqi Kurdistan","?":["de","es","fr","it","ja","ko","zh-Hans","zh-Hant"]},
       {"en":"Singapore","de":"Singapur","es":"Singapur","fr":"Singapour","ja":"シンガポール","ko":"싱가포르","zh-Hans":"新加坡","zh-Hant":"新加坡"},
       {"en":"Palestine","de":"Palästina","es":"Palestina","fr":"État de Palestine","it":"Stato di Palestina","ja":"パレスチナ国","ko":"팔레스타인","zh-Hans":"巴勒斯坦","zh-Hant":"巴勒斯坦"}
     ],
@@ -143,6 +166,7 @@
 
     [
       {"en":"Bhutan","es":"Bután","fr":"Bhoutan","ja":"ブータン","ko":"부탄","zh-Hans":"不丹","zh-Hant":"不丹"},
+      {"en":"Macau","?":["de","es","fr","it","ja","ko","zh-Hans","zh-Hant"]},
       {"en":"Brunei","es":"Brunéi","ja":"ブルネイ","ko":"브루나이","zh-Hans":"文莱","zh-Hant":"汶萊"},
       {"en":"Maldives","de":"Malediven","es":"Maldivas","it":"Maldive","ja":"モルディブ","ko":"몰디브","zh-Hans":"马尔代夫","zh-Hant":"馬爾地夫"},
       {"en":"Abkhazia","?":["de","es","fr","it","ja","ko","zh-Hans","zh-Hant"]},

@@ -3,10 +3,26 @@
   "title": {"en":"Capitals","de":"Hauptstädte","es":"Capitales","fr":"Capitales","it":"Capitali","ja":"首都","ko":"수도","zh-Hans":"首都","zh-Hant":"首都"},
   "languages": ["en","de","es","fr","it","ja","ko","zh-Hans","zh-Hant"],
   "sources": ["Names: Wikidata capitals (P36) of the sovereign states — https://www.wikidata.org/wiki/Property:P36 (see scripts/geography/dump-country-data.mjs)"],
-  "lastUpdated": "2026-08-23",
-  "lastChecked": "2026-08-23",
+  "lastUpdated": "2026-08-24",
+  "lastChecked": "2026-08-24",
   "defaultNames": "short",
   "omittable": [
+    {
+      "id": "de-facto-recognized",
+      "match": ["Pristina"],
+      "count": true,
+      "icon": "sovereignty",
+      "cell": [2,1],
+      "reason": {
+        "en": "fully sovereign states recognized by many, though not all, UN members",
+        "de": "vollständig souveräne Staaten, von vielen, aber nicht allen UN-Mitgliedern anerkannt",
+        "es": "estados plenamente soberanos reconocidos por muchos, aunque no todos, los miembros de la ONU",
+        "fr": "états pleinement souverains reconnus par de nombreux membres de l'ONU, mais pas tous",
+        "it": "stati pienamente sovrani riconosciuti da molti, ma non tutti, i membri dell'ONU",
+        "ja": "全てではないが多くの国連加盟国に承認された、完全な主権国家",
+        "ko": "전부는 아니지만 다수의 유엔 회원국이 승인한 완전한 주권 국가"
+      }
+    },
     {
       "id": "no-coverage",
       "match": ["Chișinău","Vatican City"],

@@ -22,15 +22,16 @@
 // group defaults to `short`. St. John's has no English label at all and gets one.
 // These are the only hand-set names here — everything else is the dump verbatim.
 //
-// CONTESTED AND DEPENDENT TERRITORIES, PROVISIONAL. Beyond the 197 sovereign
-// states the dump yields, the lists carry territories placed on one axis: how far
-// the world sees each as its own state versus part of another. Recognition (or
-// perception) mostly won => `omittable` (shown, removable); mostly lost =>
-// `omitted` (hidden, offerable). Five rules span the axis (see RULES). The already
-// present trio (Kosovo, Taiwan, Palestine) is only classified; the rest are added
-// here as English-only placeholders (`?` for the other eight languages) — the full
-// multilingual fill comes later with the geonames expansion, so it is not done
-// twice. Countries only for now; capitals inherit the pattern in that same round.
+// SOVEREIGNTY & RECOGNITION, A 2D MATRIX (C10). Beyond the 197 sovereign states the
+// dump yields, the lists carry territories placed in a matrix: de-jure recognition
+// (row) × de-facto control (column). Each non-regular cell is one `icon:"sovereignty"`
+// rule, so the frontend shows them as a grid the reader fills as a staircase; the
+// default staircase splits them into `omittable` (shown) and `omitted` (hidden). See
+// CELLS. The already present trio (Kosovo, Taiwan, Palestine) is only placed; the
+// rest are English-only placeholders (`?` for the other eight languages), filled by
+// the later geonames round so no name is typed twice. The trio also carry through to
+// the capitals (their capitals are in the dump); the placeholder territories have no
+// capital yet, so the rest of the capitals wait for that same round.
 //
 // GEOGUESSR / STREET VIEW COVERAGE. Two more omittable rules, tagged with the
 // Pegman icon so the frontend shows them as a three-level radio (all / with
@@ -210,37 +211,46 @@ const OTHER = LANGS.filter((l) => l !== "en");
  *  fills the eight `?` languages later, so no name is hand-typed twice. */
 const placeholder = (en) => ({ en, "?": [...OTHER] });
 
-/** The five recognition rules, in axis order (most state-like first). `default`
- *  decides the array: `omittable` shows by default, `omitted` hides. Every rule
- *  carries a count, so its `reason` opens lower-case with the countable noun and
- *  reads on from the "up to N" the panel prepends — seven UI languages, like every
- *  other prose in the data; the two Chinese UIs fall back to English. */
-const RULES = {
-  "contested-states": {
+/** The icon key that groups the sovereignty cells into one matrix control. */
+const SOVEREIGNTY = "sovereignty";
+
+/** The sovereignty & recognition matrix (C10). Each non-regular cell is one rule,
+ *  placed on a `[row, col]`: rows are de-jure recognition (1 universal … 4 none),
+ *  columns are de-facto control (1 fully independent, 2 partially autonomous). The
+ *  top-left `Reguläre Staaten` cell is the unruled base (every sovereign state no
+ *  cell matches). `default` decides the array and, together, the cells form the
+ *  default staircase — column 1 included through row 3, column 2 through row 2. Every
+ *  reason opens lower-case with the countable noun so it reads on from the panel's
+ *  "up to N"; seven UI languages, the two Chinese UIs falling back to English. */
+const CELLS = {
+  "asymmetric-autonomy": {
+    cell: [1, 2],
     default: "omittable",
     reason: {
-      en: "sovereign states with contested international recognition",
-      de: "souveräne Staaten mit umstrittener internationaler Anerkennung",
-      es: "estados soberanos con reconocimiento internacional disputado",
-      fr: "états souverains à la reconnaissance internationale contestée",
-      it: "stati sovrani dal riconoscimento internazionale conteso",
-      ja: "国際的承認が争われている主権国家",
-      ko: "국제적 승인이 논쟁 중인 주권 국가",
+      en: "autonomous regions whose broad self-rule is internationally recognized",
+      de: "autonome Regionen, deren weitreichende Selbstverwaltung völkerrechtlich anerkannt ist",
+      es: "regiones autónomas cuyo amplio autogobierno está reconocido internacionalmente",
+      fr: "régions autonomes dont la large autonomie est reconnue internationalement",
+      it: "regioni autonome la cui ampia autonomia è riconosciuta a livello internazionale",
+      ja: "広範な自治が国際的に認められている自治地域",
+      ko: "폭넓은 자치가 국제적으로 인정된 자치 지역",
     },
   },
-  "autonomous-territories": {
+  "de-facto-recognized": {
+    cell: [2, 1],
     default: "omittable",
     reason: {
-      en: "highly autonomous territories often taken for countries of their own",
-      de: "weitgehend autonome Gebiete, die viele für eigene Länder halten",
-      es: "territorios muy autónomos que muchos toman por países propios",
-      fr: "territoires très autonomes que beaucoup prennent pour des pays à part entière",
-      it: "territori molto autonomi che molti scambiano per paesi a sé",
-      ja: "独自の国と見なされがちな高度な自治地域",
-      ko: "독립국으로 여겨지곤 하는 고도 자치 지역",
+      en: "fully sovereign states recognized by many, though not all, UN members",
+      de: "vollständig souveräne Staaten, von vielen, aber nicht allen UN-Mitgliedern anerkannt",
+      es: "estados plenamente soberanos reconocidos por muchos, aunque no todos, los miembros de la ONU",
+      fr: "états pleinement souverains reconnus par de nombreux membres de l'ONU, mais pas tous",
+      it: "stati pienamente sovrani riconosciuti da molti, ma non tutti, i membri dell'ONU",
+      ja: "全てではないが多くの国連加盟国に承認された、完全な主権国家",
+      ko: "전부는 아니지만 다수의 유엔 회원국이 승인한 완전한 주권 국가",
     },
   },
-  "associated-states": {
+  "free-association": {
+    cell: [2, 2],
     default: "omittable",
     reason: {
       en: "states in free association with another, with limited recognition",
@@ -252,7 +262,34 @@ const RULES = {
       ko: "다른 나라와 자유연합을 맺은, 승인이 제한된 국가",
     },
   },
-  "breakaway-states": {
+  "de-facto-narrow": {
+    cell: [3, 1],
+    default: "omittable",
+    reason: {
+      en: "fully self-governing states recognized by only a few UN members",
+      de: "vollständig selbstverwaltete Staaten, nur von wenigen UN-Mitgliedern anerkannt",
+      es: "estados con autogobierno pleno reconocidos por solo unos pocos miembros de la ONU",
+      fr: "états pleinement autonomes reconnus par seulement quelques membres de l'ONU",
+      it: "stati pienamente autogovernati riconosciuti solo da pochi membri dell'ONU",
+      ja: "ごく一部の国連加盟国のみに承認された、完全に自治を行う国家",
+      ko: "소수의 유엔 회원국만이 승인한, 완전한 자치 국가",
+    },
+  },
+  "special-status": {
+    cell: [3, 2],
+    default: "omitted",
+    reason: {
+      en: "highly autonomous territories with a distinct international presence, often taken for countries of their own",
+      de: "weitgehend autonome Gebiete mit eigenständigem internationalem Auftreten, die viele für eigene Länder halten",
+      es: "territorios muy autónomos con presencia internacional propia, que muchos toman por países propios",
+      fr: "territoires très autonomes à présence internationale propre, que beaucoup prennent pour des pays à part entière",
+      it: "territori molto autonomi con una presenza internazionale propria, che molti scambiano per paesi a sé",
+      ja: "独自の国際的存在感を持ち、独自の国と見なされがちな高度な自治地域",
+      ko: "독자적 국제적 존재감을 지녀 독립국으로 여겨지곤 하는 고도 자치 지역",
+    },
+  },
+  "pure-de-facto": {
+    cell: [4, 1],
     default: "omitted",
     reason: {
       en: "self-declared states recognized by few or no UN members",
@@ -264,65 +301,84 @@ const RULES = {
       ko: "유엔 회원국 중 극소수만이 또는 전혀 승인하지 않는 자칭 국가",
     },
   },
-  dependencies: {
+  "classic-autonomous": {
+    cell: [4, 2],
     default: "omitted",
     reason: {
-      en: "territories generally regarded as part of a sovereign state",
-      de: "Gebiete, die allgemein als Teil eines souveränen Staates gelten",
-      es: "territorios considerados en general parte de un Estado soberano",
-      fr: "territoires généralement considérés comme partie d'un État souverain",
-      it: "territori generalmente considerati parte di uno Stato sovrano",
-      ja: "一般に主権国家の一部と見なされる地域",
-      ko: "일반적으로 주권 국가의 일부로 여겨지는 지역",
+      en: "autonomous territories internationally regarded as part of a sovereign state",
+      de: "autonome Gebiete, die international als Teil eines souveränen Staates gelten",
+      es: "territorios autónomos considerados internacionalmente parte de un Estado soberano",
+      fr: "territoires autonomes internationalement considérés comme partie d'un État souverain",
+      it: "territori autonomi considerati a livello internazionale parte di uno Stato sovrano",
+      ja: "国際的に主権国家の一部と見なされる自治地域",
+      ko: "국제적으로 주권 국가의 일부로 여겨지는 자치 지역",
     },
   },
 };
 
 /** The territories to add, per continent folder — each an English-only placeholder
- *  filed under one rule and given a rough population for its tier. Provisional and
- *  meant to be edited by hand; the geonames round fills the languages and the rest
- *  of the set. */
+ *  filed in one matrix cell and given a rough population for its tier. Provisional
+ *  and meant to be edited by hand; the geonames round fills the languages and the
+ *  rest of the set, and the limited-recognition lists refine the cell calls. */
 const EXTRA = [
-  // omittable — shown by default, offered for removal
-  { folder: "africa", en: "Western Sahara", pop: 600000, rule: "contested-states" },
-  { folder: "asia", en: "Hong Kong", pop: 7500000, rule: "autonomous-territories" },
-  { folder: "north-america", en: "Puerto Rico", pop: 3200000, rule: "autonomous-territories" },
-  { folder: "oceania", en: "Cook Islands", pop: 15000, rule: "associated-states" },
-  { folder: "oceania", en: "Niue", pop: 1600, rule: "associated-states" },
-  // omitted — hidden by default, offered by the bar
-  { folder: "africa", en: "Somaliland", pop: 5700000, rule: "breakaway-states" },
-  { folder: "europe", en: "Northern Cyprus", pop: 380000, rule: "breakaway-states" },
-  { folder: "europe", en: "Transnistria", pop: 470000, rule: "breakaway-states" },
-  { folder: "asia", en: "Abkhazia", pop: 245000, rule: "breakaway-states" },
-  { folder: "asia", en: "South Ossetia", pop: 55000, rule: "breakaway-states" },
-  { folder: "north-america", en: "Greenland", pop: 56000, rule: "dependencies" },
-  { folder: "europe", en: "Faroe Islands", pop: 54000, rule: "dependencies" },
-  { folder: "oceania", en: "Guam", pop: 170000, rule: "dependencies" },
+  // R1C2 · asymmetric autonomies (seed of an otherwise-empty cell)
+  { folder: "asia", en: "Iraqi Kurdistan", pop: 6000000, cell: "asymmetric-autonomy" },
+  { folder: "europe", en: "Åland", pop: 30000, cell: "asymmetric-autonomy" },
+  // R2C2 · free association
+  { folder: "oceania", en: "Cook Islands", pop: 15000, cell: "free-association" },
+  { folder: "oceania", en: "Niue", pop: 1600, cell: "free-association" },
+  // R3C1 · narrowly recognized de-facto states
+  { folder: "asia", en: "Abkhazia", pop: 245000, cell: "de-facto-narrow" },
+  { folder: "asia", en: "South Ossetia", pop: 55000, cell: "de-facto-narrow" },
+  // R3C2 · special status / perceived as their own country
+  { folder: "africa", en: "Western Sahara", pop: 600000, cell: "special-status" },
+  { folder: "asia", en: "Hong Kong", pop: 7500000, cell: "special-status" },
+  { folder: "asia", en: "Macau", pop: 680000, cell: "special-status" },
+  { folder: "north-america", en: "Puerto Rico", pop: 3200000, cell: "special-status" },
+  // R4C1 · pure de-facto states (effective control, next to no recognition)
+  { folder: "africa", en: "Somaliland", pop: 5700000, cell: "pure-de-facto" },
+  { folder: "europe", en: "Northern Cyprus", pop: 380000, cell: "pure-de-facto" },
+  { folder: "europe", en: "Transnistria", pop: 470000, cell: "pure-de-facto" },
+  // R4C2 · classic autonomous territories (part of another state)
+  { folder: "north-america", en: "Greenland", pop: 56000, cell: "classic-autonomous" },
+  { folder: "europe", en: "Faroe Islands", pop: 54000, cell: "classic-autonomous" },
+  { folder: "oceania", en: "Guam", pop: 170000, cell: "classic-autonomous" },
 ];
 
-/** Territories already in the dump that only need classifying — the widely (if
- *  contestedly) recognized trio, by the continent folder each sits in. */
-const CONTESTED_EXISTING = {
-  europe: ["Kosovo"],
-  asia: ["Taiwan", "Palestine"],
+/** Territories already in the dump that only need a cell — the widely (if not
+ *  universally) recognized trio, by the continent folder each sits in. Their
+ *  capitals are in the dump too, so they are the ones the capitals lists carry. */
+const CLASSIFIED_EXISTING = {
+  europe: { "de-facto-recognized": ["Kosovo"] },
+  asia: { "de-facto-recognized": ["Taiwan", "Palestine"] },
 };
 
-/** The `omitted` / `omittable` rules for one continent: every rule that has a
- *  territory here, its `match` the names of those territories. Same id, same
- *  reason across continents — so the synthesized world topic merges them into one
- *  row (see mergeGroups) — while each continent matches only its own. */
-function rulesFor(folder) {
-  const names = {};
-  const add = (id, name) => (names[id] ??= []).push(name);
-  for (const e of EXTRA) if (e.folder === folder) add(e.rule, e.en);
-  for (const name of CONTESTED_EXISTING[folder] ?? []) add("contested-states", name);
+/** Build `omitted` / `omittable` sovereignty rules from a `{ cellId: [names] }`
+ *  map: one rule per cell that has a member, its `match` those names, sorted into
+ *  the two arrays by the cell's default. Same id, cell and reason across continents
+ *  — so the synthesized world topic merges them into one control (see mergeGroups)
+ *  — while each continent matches only its own. */
+function cellRules(names) {
   const omitted = [];
   const omittable = [];
   for (const id of Object.keys(names).sort()) {
-    const rule = { id, match: names[id].slice().sort(), reason: RULES[id].reason, count: true };
-    (RULES[id].default === "omitted" ? omitted : omittable).push(rule);
+    const c = CELLS[id];
+    const rule = { id, match: names[id].slice().sort(), count: true, icon: SOVEREIGNTY, cell: c.cell, reason: c.reason };
+    (c.default === "omitted" ? omitted : omittable).push(rule);
   }
   return { omitted, omittable };
+}
+
+/** The sovereignty rules for one continent's countries: its placeholder territories
+ *  plus the classified real states, each under its matrix cell. */
+function sovereigntyRules(folder) {
+  const names = {};
+  const add = (id, name) => (names[id] ??= []).push(name);
+  for (const e of EXTRA) if (e.folder === folder) add(e.cell, e.en);
+  for (const [id, list] of Object.entries(CLASSIFIED_EXISTING[folder] ?? {})) {
+    for (const name of list) add(id, name);
+  }
+  return cellRules(names);
 }
 
 // --- Geoguessr / Street View coverage ---------------------------------------
@@ -562,14 +618,29 @@ async function main() {
     }
     const covCapital = coverageRules(capItems);
 
-    const { omitted, omittable } = rulesFor(folder);
+    const { omitted, omittable } = sovereigntyRules(folder);
     await write(join(dir, "countries.json"), topic(`${folder}-countries`, T_COUNTRIES, countryTiers, SRC_COUNTRIES, RULER_COUNTRIES, omitted, [...omittable, ...covCountry]));
+
+    // Sovereignty on capitals: only the classified real states (the trio) have a
+    // capital in the data — the placeholders have none yet — so the capitals carry
+    // just those, matched on the capital's name, under the same cell as the country.
+    const capSov = {};
+    for (const [id, countryList] of Object.entries(CLASSIFIED_EXISTING[folder] ?? {})) {
+      for (const nm of countryList) {
+        const c = list.find((x) => countryNames[x.country]?.en === nm);
+        for (const cap of c?.capitals ?? []) {
+          const capNm = capitalNames[cap]?.en;
+          if (capNm) (capSov[id] ??= []).push(capNm);
+        }
+      }
+    }
+    const { omitted: capSovOmitted, omittable: capSovOmittable } = cellRules(capSov);
 
     // Capitals take their country's tier; a country with several contributes each.
     // The placeholders stay out of the capitals for now (see header).
     const capTiers = [[], [], [], [], []];
     for (const c of list) for (const cap of c.capitals) capTiers[tierOf(c.pop)].push(entry(cap, capitalNames[cap]));
-    await write(join(dir, "capitals.json"), topic(`${folder}-capitals`, T_CAPITALS, capTiers, SRC_CAPITALS, RULER_CAPITALS, undefined, covCapital));
+    await write(join(dir, "capitals.json"), topic(`${folder}-capitals`, T_CAPITALS, capTiers, SRC_CAPITALS, RULER_CAPITALS, capSovOmitted.length ? capSovOmitted : undefined, [...capSovOmittable, ...covCapital]));
 
     const none = filtered.filter((x) => x.cls === "none").length;
     const rare = filtered.length - none;

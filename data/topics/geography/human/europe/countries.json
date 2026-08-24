@@ -3,14 +3,32 @@
   "title": {"en":"Countries","de":"Länder","es":"Países","fr":"Pays","it":"Paesi","ja":"国","ko":"국가","zh-Hans":"国家","zh-Hant":"國家"},
   "languages": ["en","de","es","fr","it","ja","ko","zh-Hans","zh-Hant"],
   "sources": ["Names & population: Wikidata sovereign states (P31 Q3624078) — https://www.wikidata.org/wiki/Q3624078 (see scripts/geography/dump-country-data.mjs)"],
-  "lastUpdated": "2026-08-23",
-  "lastChecked": "2026-08-23",
+  "lastUpdated": "2026-08-24",
+  "lastChecked": "2026-08-24",
   "defaultNames": "short",
   "omitted": [
     {
-      "id": "breakaway-states",
+      "id": "classic-autonomous",
+      "match": ["Faroe Islands"],
+      "count": true,
+      "icon": "sovereignty",
+      "cell": [4,2],
+      "reason": {
+        "en": "autonomous territories internationally regarded as part of a sovereign state",
+        "de": "autonome Gebiete, die international als Teil eines souveränen Staates gelten",
+        "es": "territorios autónomos considerados internacionalmente parte de un Estado soberano",
+        "fr": "territoires autonomes internationalement considérés comme partie d'un État souverain",
+        "it": "territori autonomi considerati a livello internazionale parte di uno Stato sovrano",
+        "ja": "国際的に主権国家の一部と見なされる自治地域",
+        "ko": "국제적으로 주권 국가의 일부로 여겨지는 자치 지역"
+      }
+    },
+    {
+      "id": "pure-de-facto",
       "match": ["Northern Cyprus","Transnistria"],
       "count": true,
+      "icon": "sovereignty",
+      "cell": [4,1],
       "reason": {
         "en": "self-declared states recognized by few or no UN members",
         "de": "selbsterklärte Staaten, von wenigen oder keinen UN-Mitgliedern anerkannt",
@@ -20,35 +38,39 @@
         "ja": "国連加盟国のごく一部にしか、あるいは全く承認されない自称国家",
         "ko": "유엔 회원국 중 극소수만이 또는 전혀 승인하지 않는 자칭 국가"
       }
-    },
-    {
-      "id": "dependencies",
-      "match": ["Faroe Islands"],
-      "count": true,
-      "reason": {
-        "en": "territories generally regarded as part of a sovereign state",
-        "de": "Gebiete, die allgemein als Teil eines souveränen Staates gelten",
-        "es": "territorios considerados en general parte de un Estado soberano",
-        "fr": "territoires généralement considérés comme partie d'un État souverain",
-        "it": "territori generalmente considerati parte di uno Stato sovrano",
-        "ja": "一般に主権国家の一部と見なされる地域",
-        "ko": "일반적으로 주권 국가의 일부로 여겨지는 지역"
-      }
     }
   ],
   "omittable": [
     {
-      "id": "contested-states",
+      "id": "asymmetric-autonomy",
+      "match": ["Åland"],
+      "count": true,
+      "icon": "sovereignty",
+      "cell": [1,2],
+      "reason": {
+        "en": "autonomous regions whose broad self-rule is internationally recognized",
+        "de": "autonome Regionen, deren weitreichende Selbstverwaltung völkerrechtlich anerkannt ist",
+        "es": "regiones autónomas cuyo amplio autogobierno está reconocido internacionalmente",
+        "fr": "régions autonomes dont la large autonomie est reconnue internationalement",
+        "it": "regioni autonome la cui ampia autonomia è riconosciuta a livello internazionale",
+        "ja": "広範な自治が国際的に認められている自治地域",
+        "ko": "폭넓은 자치가 국제적으로 인정된 자치 지역"
+      }
+    },
+    {
+      "id": "de-facto-recognized",
       "match": ["Kosovo"],
       "count": true,
+      "icon": "sovereignty",
+      "cell": [2,1],
       "reason": {
-        "en": "sovereign states with contested international recognition",
-        "de": "souveräne Staaten mit umstrittener internationaler Anerkennung",
-        "es": "estados soberanos con reconocimiento internacional disputado",
-        "fr": "états souverains à la reconnaissance internationale contestée",
-        "it": "stati sovrani dal riconoscimento internazionale conteso",
-        "ja": "国際的承認が争われている主権国家",
-        "ko": "국제적 승인이 논쟁 중인 주권 국가"
+        "en": "fully sovereign states recognized by many, though not all, UN members",
+        "de": "vollständig souveräne Staaten, von vielen, aber nicht allen UN-Mitgliedern anerkannt",
+        "es": "estados plenamente soberanos reconocidos por muchos, aunque no todos, los miembros de la ONU",
+        "fr": "états pleinement souverains reconnus par de nombreux membres de l'ONU, mais pas tous",
+        "it": "stati pienamente sovrani riconosciuti da molti, ma non tutti, i membri dell'ONU",
+        "ja": "全てではないが多くの国連加盟国に承認された、完全な主権国家",
+        "ko": "전부는 아니지만 다수의 유엔 회원국이 승인한 완전한 주권 국가"
       }
     },
     {
@@ -147,6 +169,7 @@
       {"en":"Monaco","es":"Mónaco","it":"Principato di Monaco","ja":"モナコ","ko":"모나코","zh-Hans":"摩纳哥","zh-Hant":"摩納哥"},
       {"en":"Liechtenstein","ja":"リヒテンシュタイン","ko":"리히텐슈타인","zh-Hans":"列支敦士登","zh-Hant":"列支敦斯登"},
       {"en":"San Marino","fr":"Saint-Marin","ja":"サンマリノ","ko":"산마리노","zh-Hans":"圣马力诺","zh-Hant":"聖馬利諾"},
+      {"en":"Åland","?":["de","es","fr","it","ja","ko","zh-Hans","zh-Hant"]},
       {"en":"Vatican City","de":"Vatikanstadt","es":"Ciudad del Vaticano","fr":"Vatican","it":"Città del Vaticano","ja":"バチカン","ko":"바티칸 시국","zh-Hans":"梵蒂冈","zh-Hant":"梵蒂岡"}
     ]
   ],

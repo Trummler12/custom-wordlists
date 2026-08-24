@@ -3,14 +3,16 @@
   "title": {"en":"Countries","de":"Länder","es":"Países","fr":"Pays","it":"Paesi","ja":"国","ko":"국가","zh-Hans":"国家","zh-Hant":"國家"},
   "languages": ["en","de","es","fr","it","ja","ko","zh-Hans","zh-Hant"],
   "sources": ["Names & population: Wikidata sovereign states (P31 Q3624078) — https://www.wikidata.org/wiki/Q3624078 (see scripts/geography/dump-country-data.mjs)"],
-  "lastUpdated": "2026-08-23",
-  "lastChecked": "2026-08-23",
+  "lastUpdated": "2026-08-24",
+  "lastChecked": "2026-08-24",
   "defaultNames": "short",
   "omitted": [
     {
-      "id": "breakaway-states",
+      "id": "pure-de-facto",
       "match": ["Somaliland"],
       "count": true,
+      "icon": "sovereignty",
+      "cell": [4,1],
       "reason": {
         "en": "self-declared states recognized by few or no UN members",
         "de": "selbsterklärte Staaten, von wenigen oder keinen UN-Mitgliedern anerkannt",
@@ -20,23 +22,25 @@
         "ja": "国連加盟国のごく一部にしか、あるいは全く承認されない自称国家",
         "ko": "유엔 회원국 중 극소수만이 또는 전혀 승인하지 않는 자칭 국가"
       }
+    },
+    {
+      "id": "special-status",
+      "match": ["Western Sahara"],
+      "count": true,
+      "icon": "sovereignty",
+      "cell": [3,2],
+      "reason": {
+        "en": "highly autonomous territories with a distinct international presence, often taken for countries of their own",
+        "de": "weitgehend autonome Gebiete mit eigenständigem internationalem Auftreten, die viele für eigene Länder halten",
+        "es": "territorios muy autónomos con presencia internacional propia, que muchos toman por países propios",
+        "fr": "territoires très autonomes à présence internationale propre, que beaucoup prennent pour des pays à part entière",
+        "it": "territori molto autonomi con una presenza internazionale propria, che molti scambiano per paesi a sé",
+        "ja": "独自の国際的存在感を持ち、独自の国と見なされがちな高度な自治地域",
+        "ko": "독자적 국제적 존재감을 지녀 독립국으로 여겨지곤 하는 고도 자치 지역"
+      }
     }
   ],
   "omittable": [
-    {
-      "id": "contested-states",
-      "match": ["Western Sahara"],
-      "count": true,
-      "reason": {
-        "en": "sovereign states with contested international recognition",
-        "de": "souveräne Staaten mit umstrittener internationaler Anerkennung",
-        "es": "estados soberanos con reconocimiento internacional disputado",
-        "fr": "états souverains à la reconnaissance internationale contestée",
-        "it": "stati sovrani dal riconoscimento internazionale conteso",
-        "ja": "国際的承認が争われている主権国家",
-        "ko": "국제적 승인이 논쟁 중인 주권 국가"
-      }
-    },
     {
       "id": "no-coverage",
       "match": ["Algeria","Angola","Benin","Burkina Faso","Burundi","Cameroon","Cape Verde","Central African Republic","Chad","Comoros","Democratic Republic of the Congo","Djibouti","Equatorial Guinea","Eritrea","Ethiopia","Gabon","Guinea","Guinea-Bissau","Ivory Coast","Liberia","Libya","Malawi","Mauritania","Mauritius","Morocco","Mozambique","Niger","Republic of the Congo","Seychelles","Sierra Leone","Somalia","South Sudan","Sudan","The Gambia","Togo","Zambia","Zimbabwe"],
