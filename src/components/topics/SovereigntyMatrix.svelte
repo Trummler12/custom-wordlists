@@ -106,11 +106,11 @@
           {s.label} (<a class="wiki" href={s.wiki} target="_blank" rel="noopener noreferrer">Wikipedia</a>)
         </p>
         <div class="sovereignty-grid" style="--cols:{COLS}">
-          <!-- The corner names the two axes: de jure down the rows, de facto across
-               the columns. -->
+          <!-- The corner names the two axes: de jure (▾) down the rows on the left,
+               de facto (▸) across the columns on the right. -->
           <span class="corner">
-            <span class="axis-col">{s.axisCol} ▸</span>
             <span class="axis-row">▾ {s.axisRow}</span>
+            <span class="axis-col">{s.axisCol} ▸</span>
           </span>
           {#each cols as col, ci (col)}
             <span class="col-head" title={s.colDefs[ci]}>{col}</span>
@@ -187,26 +187,28 @@
   }
   .sovereignty-grid {
     display: grid;
-    grid-template-columns: max-content repeat(var(--cols), minmax(2.5rem, 1fr));
+    /* Row-header column takes what its content needs and shrinks to its min-content
+       (wrapping the labels) when the panel is tight; the corner's two axis strings
+       set that min-content, so they never lose their side-by-side room. The data
+       columns share the rest and carry the wider column headers, which wrap. */
+    grid-template-columns: minmax(min-content, max-content) repeat(var(--cols), minmax(3rem, 1fr));
     gap: 0.2rem;
     align-items: stretch;
   }
+  /* The two axis names on one line — de jure (▾, down the rows) at the left, de facto
+     (▸, across the columns) at the right. One line so the corner never forces the
+     header row taller than its column headers need; nowrap so both keep their room
+     and, together, define the row-header column's minimum width. */
   .corner {
     grid-column: 1;
+    align-self: end;
     display: flex;
-    flex-direction: column;
     justify-content: space-between;
-    gap: 0.1rem;
+    gap: 0.6rem;
     padding: 0 0.35rem 0.15rem 0;
     font-size: 0.7rem;
     font-style: italic;
     opacity: 0.7;
-  }
-  .axis-col {
-    text-align: right;
-  }
-  .axis-row {
-    text-align: left;
     white-space: nowrap;
   }
   .sovereignty-title .wiki {
@@ -223,7 +225,10 @@
     font-weight: 600;
     align-self: center;
     padding-right: 0.4rem;
-    white-space: nowrap;
+    /* Wraps rather than overflowing — the Romance translations ("Reconocimiento
+       universal") run well past the English and would otherwise slide over the row. */
+    overflow-wrap: break-word;
+    hyphens: auto;
   }
   /* Not colour alone: an included cell carries ✓, an excluded one ✕, so the state
      survives red-green colour-blindness and a monochrome render. */
