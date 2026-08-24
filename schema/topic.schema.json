@@ -261,6 +261,13 @@
           "type": "string",
           "minLength": 1,
           "description": "An icon key that lifts this rule out of the omitted panel into its own control. Rules sharing an icon form one ordered ladder (array order = strictness) and render as a radio group, not independent checkboxes — the Geoguessr coverage filter is `no-coverage` then `rare-coverage`, both `\"geoguessr\"`. The frontend resolves the key to a glyph or image."
+        },
+        "cell": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 2,
+          "items": { "type": "integer", "minimum": 1 },
+          "description": "A `[row, col]` cell (1-based) for an icon whose rules form a 2D matrix rather than a linear ladder. The sovereignty filter places each rule on a de-jure recognition row and a de-facto control column; the reader includes a top-left-anchored staircase of cells at once. Absent for a linear-ladder icon."
         }
       }
     },
