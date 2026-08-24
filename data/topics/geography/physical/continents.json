@@ -9,8 +9,8 @@
     "Areas: Bird (2003), An updated digital model of plate boundaries — via https://de.wikipedia.org/wiki/Liste_der_tektonischen_Platten",
     "Names: Wikidata labels of the plate articles and of https://www.wikidata.org/wiki/Q215680 — see scripts/geography/dump-plate-data.mjs"
   ],
-  "lastUpdated": "2026-08-22",
-  "lastChecked": "2026-08-22",
+  "lastUpdated": "2026-08-23",
+  "lastChecked": "2026-08-23",
   "defaultNames": "both",
   "tierNotes": [
     {
@@ -29,21 +29,23 @@
   ],
   "tiers": [
     [
-      {"en":"Pacific Plate","de":"Pazifische Platte","es":"Placa Pacífica","fr":"Plaque pacifique","it":"Placca pacifica","ja":"太平洋プレート","ko":"태평양판","zh-Hans":"太平洋板块","zh-Hant":"太平洋板塊"},
+      {"en":{"long":"Pacific Plate"},"de":{"long":"Pazifische Platte"},"es":{"long":"Placa Pacífica"},"fr":{"long":"Plaque pacifique"},"it":{"long":"Placca pacifica"},"ja":{"long":"太平洋プレート"},"ko":{"long":"태평양판"},"zh-Hans":{"long":"太平洋板块"},"zh-Hant":{"long":"太平洋板塊"}},
       {"en":{"short":"North America","long":"North American Plate"},"de":{"short":"Nordamerika","long":"Nordamerikanische Platte"},"es":{"short":"América del Norte","long":"Placa Norteamericana"},"fr":{"short":"Amérique du Nord","long":"Plaque nord-américaine"},"it":{"short":"America del Nord","long":"Placca nordamericana"},"ja":{"short":"北アメリカ","long":"北アメリカプレート"},"ko":{"short":"북아메리카","long":"북미판"},"zh-Hans":{"short":"北美洲","long":"北美洲板块"},"zh-Hant":{"short":"北美洲","long":"北美洲板塊"}},
       {"en":{"short":"Africa","long":"African Plate"},"de":{"short":"Afrika","long":"Afrikanische Platte"},"es":{"short":"África","long":"Placa Africana"},"fr":{"short":"Afrique","long":"Plaque africaine"},"it":{"short":"Africa","long":"Placca africana"},"ja":{"short":"アフリカ","long":"アフリカプレート"},"ko":{"short":"아프리카","long":"아프리카판"},"zh-Hans":{"short":"非洲","long":"非洲板块"},"zh-Hant":{"short":"非洲","long":"非洲板塊"}},
-      {"en":{"short":"Eurasia","long":"Eurasian Plate"},"de":{"short":"Eurasien","long":"Eurasische Platte"},"es":{"short":"Eurasia","long":"Placa euroasiática"},"fr":{"short":"Eurasie","long":"Plaque eurasienne"},"it":{"short":"Eurasia","long":"Placca euroasiatica"},"ja":{"short":"ユーラシア","long":"ユーラシアプレート"},"ko":{"short":"유라시아","long":"유라시아판"},"zh-Hans":"欧亚大陆板块","zh-Hant":{"short":"歐亞大陸","long":"歐亞大陸板塊"}},
-      {"en":"Asia","de":"Asien","fr":"Asie","ja":"アジア","ko":"아시아","zh-Hans":"亚洲","zh-Hant":"亞洲"},
-      {"en":"Europe","de":"Europa","es":"Europa","it":"Europa","ja":"ヨーロッパ","ko":"유럽","zh-Hans":"欧洲","zh-Hant":"歐洲"},
+      {"en":{"short":"Eurasia","long":"Eurasian Plate"},"de":{"short":"Eurasien","long":"Eurasische Platte"},"es":{"short":"Eurasia","long":"Placa euroasiática"},"fr":{"short":"Eurasie","long":"Plaque eurasienne"},"it":{"short":"Eurasia","long":"Placca euroasiatica"},"ja":{"short":"ユーラシア","long":"ユーラシアプレート"},"ko":{"short":"유라시아","long":"유라시아판"},"zh-Hans":{"long":"欧亚大陆板块"},"zh-Hant":{"short":"歐亞大陸","long":"歐亞大陸板塊"}},
+      {"en":{"short":"Asia"},"de":{"short":"Asien"},"fr":{"short":"Asie"},"ja":{"short":"アジア"},"ko":{"short":"아시아"},"zh-Hans":{"short":"亚洲"},"zh-Hant":{"short":"亞洲"}},
+      {"en":{"short":"Europe"},"de":{"short":"Europa"},"es":{"short":"Europa"},"it":{"short":"Europa"},"ja":{"short":"ヨーロッパ"},"ko":{"short":"유럽"},"zh-Hans":{"short":"欧洲"},"zh-Hant":{"short":"歐洲"}},
       {"en":{"short":"Antarctica","long":"Antarctic Plate"},"de":{"short":"Antarktis","long":"Antarktische Platte"},"es":{"short":"Antártida","long":"Placa Antártica"},"fr":{"short":"Antarctique","long":"Plaque antarctique"},"it":{"short":"Antartide","long":"Placca antartica"},"ja":{"short":"南極大陸","long":"南極プレート"},"ko":{"short":"남극","long":"남극판"},"zh-Hans":{"short":"南极洲","long":"南极洲板块"},"zh-Hant":{"short":"南極洲","long":"南極洲板塊"}},
-      {"en":"Indo-Australian Plate","de":"Indisch-Australische Platte","es":"Placa Indoaustraliana","fr":"Plaque indo-australienne","it":"Placca indo-australiana","ja":"インド・オーストラリアプレート","ko":"인도-오스트레일리아판","?":["zh-Hans","zh-Hant"]},
-      {"en":{"short":"Australia","long":"Australian Plate"},"de":{"short":"Australien","long":"Australische Platte"},"es":{"short":"Australia","long":"Placa Australiana"},"fr":{"short":"Australie","long":"Plaque australienne"},"it":{"short":"Australia","long":"Placca australiana"},"ja":{"short":"オーストラリア","long":"オーストラリアプレート"},"ko":{"short":"오스트레일리아","long":"오스트레일리아판"},"zh-Hans":"澳大利亚","zh-Hant":"澳大利亞"},
+      {"en":{"long":"Indo-Australian Plate"},"de":{"long":"Indisch-Australische Platte"},"es":{"long":"Placa Indoaustraliana"},"fr":{"long":"Plaque indo-australienne"},"it":{"long":"Placca indo-australiana"},"ja":{"long":"インド・オーストラリアプレート"},"ko":{"long":"인도-오스트레일리아판"},"?":["zh-Hans","zh-Hant"]},
+      {"en":{"short":"Australia","long":"Australian Plate"},"de":{"short":"Australien","long":"Australische Platte"},"es":{"short":"Australia","long":"Placa Australiana"},"fr":{"short":"Australie","long":"Plaque australienne"},"it":{"short":"Australia","long":"Placca australiana"},"ja":{"short":"オーストラリア","long":"オーストラリアプレート"},"ko":{"short":"오스트레일리아","long":"오스트레일리아판"},"zh-Hans":{"short":"澳大利亚"},"zh-Hant":{"short":"澳大利亞"}},
       {"en":{"short":"India","long":"Indian Plate"},"de":{"short":"Indien","long":"Indische Platte"},"es":{"short":"India","long":"Placa Índica"},"fr":{"short":"Inde","long":"Plaque indienne"},"it":{"short":"India","long":"Placca indiana"},"ja":{"short":"インド","long":"インドプレート"},"ko":{"short":"인도","long":"인도판"},"zh-Hans":{"short":"印度","long":"印度板块"},"zh-Hant":{"short":"印度","long":"印度板塊"}},
-      {"en":"Oceania","de":"Ozeanien","es":"Oceanía","fr":"Océanie","ja":"オセアニア","ko":"오세아니아","zh-Hans":"大洋洲","zh-Hant":"大洋洲"},
-      {"en":{"short":"South America","long":"South American Plate"},"de":{"short":"Südamerika","long":"Südamerikanische Platte"},"es":{"short":"América del Sur","long":"Placa Sudamericana"},"fr":{"short":"Amérique du Sud","long":"Plaque sud-américaine"},"it":{"short":"America meridionale","long":"Placca sudamericana"},"ja":{"short":"南アメリカ","long":"南アメリカプレート"},"ko":{"short":"남아메리카","long":"남아메리카판"},"zh-Hans":"南美洲","zh-Hant":"南美洲"}
+      {"en":{"short":"Oceania"},"de":{"short":"Ozeanien"},"es":{"short":"Oceanía"},"fr":{"short":"Océanie"},"ja":{"short":"オセアニア"},"ko":{"short":"오세아니아"},"zh-Hans":{"short":"大洋洲"},"zh-Hant":{"short":"大洋洲"}},
+      {"en":{"short":"South America","long":"South American Plate"},"de":{"short":"Südamerika","long":"Südamerikanische Platte"},"es":{"short":"América del Sur","long":"Placa Sudamericana"},"fr":{"short":"Amérique du Sud","long":"Plaque sud-américaine"},"it":{"short":"America meridionale","long":"Placca sudamericana"},"ja":{"short":"南アメリカ","long":"南アメリカプレート"},"ko":{"short":"남아메리카","long":"남아메리카판"},"zh-Hans":{"short":"南美洲"},"zh-Hant":{"short":"南美洲"}}
     ],
 
     [
+      {"en":"Pacific Plate","de":"Pazifische Platte","es":"Placa Pacífica","fr":"Plaque pacifique","it":"Placca pacifica","ja":"太平洋プレート","ko":"태평양판","zh-Hans":"太平洋板块","zh-Hant":"太平洋板塊"},
+      {"en":"Indo-Australian Plate","de":"Indisch-Australische Platte","es":"Placa Indoaustraliana","fr":"Plaque indo-australienne","it":"Placca indo-australiana","ja":"インド・オーストラリアプレート","ko":"인도-오스트레일리아판","?":["zh-Hans","zh-Hant"]},
       {"en":"Somali Plate","de":"Somaliaplatte","es":"Placa Somalí","fr":"Plaque somalienne","it":"Placca somala","ja":"ソマリアプレート","ko":"소말리아판","zh-Hans":"索马里板块","zh-Hant":"索馬里板塊"},
       {"en":"Nazca Plate","de":"Nazca-Platte","es":"Placa de Nazca","fr":"Plaque de Nazca","it":"Placca di Nazca","ja":"ナスカプレート","ko":"나스카 플레이트","?":["zh-Hans","zh-Hant"]},
       {"en":"Sunda Plate","de":"Sundaplatte","es":"Placa de la Sonda","fr":"Plaque de la Sonde","it":"Placca della Sonda","ja":"スンダプレート","ko":"순다판","zh-Hans":"巽他板块","zh-Hant":"巽他板塊"},

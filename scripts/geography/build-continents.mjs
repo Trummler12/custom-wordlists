@@ -13,8 +13,14 @@
 // TIER 0 MERGES TWO LISTS. The seven continents and the seven major plates name
 // the same landmasses, so they are one tier of paired entries rather than two of
 // near-duplicates — `Nordamerika` and `Nordamerikanische Platte` are the short and
-// long form of one entry. Four have only one form: the Pacific plate is no
-// continent, and Asia, Europe and Oceania are no plates.
+// long form of one entry. Five have only one form, and each is bound to the mode
+// that fits it: Asia, Europe and Oceania are no plates, so they are short-only and
+// drop out of the plate (long) dropdown; the Pacific and Indo-Australian plates are
+// no continents, so in tier 0 they are long-only and drop out of the continent
+// (short) dropdown. Those two are no less real for that, so each also gets a plain
+// two-form copy at the head of tier 1: under long it ranks where its area puts it
+// in tier 0, under short it shows one rank down as a plate among plates. Every
+// lower tier is plates only, left plain so a plate name shows in either dropdown.
 import { readFile, writeFile } from "node:fs/promises";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -212,15 +218,32 @@ async function readStructure() {
  *
  *  A language holding one of the two names and not the other gets that one as a
  *  plain string rather than a gap. Chinese has a name for Australia and none for
- *  its plate; dropping the entry over the missing half would take a name we have. */
-function entry(land, plate, lands, plates) {
+ *  its plate; dropping the entry over the missing half would take a name we have.
+ *
+ *  `bindSingle` decides what a single-name entry means. In tier 0 an entry with
+ *  only a continent (Asia) or only a plate (Pacific) is bound to that one mode —
+ *  stored as a one-sided name pair `{ short }` / `{ long }` so it never loads in
+ *  the dropdown that doesn't fit it. Below tier 0 every entry is a plate and there
+ *  is no continent form to withhold, so its lone name stays a plain string that
+ *  shows in short and long alike. */
+function entry(land, plate, lands, plates, bindSingle = false) {
   const map = {};
   const unknown = [];
   for (const lang of LANGS) {
     const short = land ? (OVERRIDES[`${land}.${lang}`] ?? lands[land]?.[lang]) : undefined;
     const long = plate ? (OVERRIDES[`${plate}.${lang}`] ?? plates[plate]?.[lang]) : undefined;
     const value =
-      short && long ? (short === long ? short : { short, long }) : (long ?? short);
+      short && long
+        ? short === long
+          ? short
+          : { short, long }
+        : bindSingle
+          ? short
+            ? { short }
+            : long
+              ? { long }
+              : undefined
+          : (long ?? short);
     if (value === undefined) unknown.push(lang);
     else map[lang] = value;
   }
@@ -243,13 +266,28 @@ async function main() {
   const stray = structure.filter((p) => p.band === "major" && !inTier0.has(p.name));
   if (stray.length) throw new Error(`major plate outside tier 0: ${stray.map((p) => p.name)}`);
 
+  // The two tier-0 plates that are no continents also head tier 1, as plain
+  // two-form copies: under short they leave tier 0 and rank here among the plates,
+  // and under long they render the same name as their tier-0 entry, which
+  // `output.merged` and the counts deduplicate away. Pacific first, then
+  // Indo-Australian, matching their order in tier 0.
+  const tier1Copies = [
+    entry(undefined, "Pacific plate", lands, plates),
+    entry(undefined, "Indo-Australian plate", lands, plates),
+  ];
+
   const tiers = [
-    TIER0.map((e) => entry(e.land, e.plate, lands, plates)),
-    structure.filter((p) => p.band === "minor" && !inTier0.has(p.name)),
+    TIER0.map((e) => entry(e.land, e.plate, lands, plates, true)),
+    [
+      ...tier1Copies,
+      ...structure.filter((p) => p.band === "minor" && !inTier0.has(p.name)),
+    ],
     structure.filter((p) => p.band === "micro" && p.sr !== undefined),
     structure.filter((p) => p.band === "micro" && p.sr === undefined),
   ].map((tier, i) =>
-    i === 0 ? tier : tier.map((p) => entry(undefined, p.name, lands, plates)),
+    i === 0
+      ? tier
+      : tier.map((p) => (p.name ? entry(undefined, p.name, lands, plates) : p)),
   );
 
   const topic = {
