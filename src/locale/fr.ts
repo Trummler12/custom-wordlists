@@ -62,6 +62,25 @@ export const fr: UIStrings = {
     withCoverage: "Avec couverture officielle",
     reliable: "Couverture fiable uniquement",
   },
+  sovereignty: {
+    label: "Souveraineté et reconnaissance",
+    wiki: "https://fr.wikipedia.org/wiki/Liste_des_États_non_reconnus_internationalement",
+    axisRow: "de jure",
+    axisCol: "de facto",
+    cols: ["Pleinement indépendant", "Partiellement autonome"],
+    rows: ["Reconnaissance universelle", "Large reconnaissance", "Reconnaissance partielle", "Sans reconnaissance"],
+    colDefs: [
+      "Gère ses frontières, sa justice, son armée et ses impôts.",
+      "A ses propres lois et son parlement, mais partage des compétences clés — monnaie, défense, politique étrangère — avec un autre État.",
+    ],
+    rowDefs: [
+      "État membre de l'ONU, reconnu par presque tous les autres.",
+      "Reconnu par une grande partie des membres de l'ONU, avec quelques réticents.",
+      "Reconnu par seulement quelques États, mais souvent avec une forte présence fonctionnelle ou perçue.",
+      "Considéré internationalement comme partie d'un autre État souverain.",
+    ],
+    regular: "États réguliers",
+  },
   language: {
     label: (current) => `Langue : ${current}`,
     menu: "Langue",

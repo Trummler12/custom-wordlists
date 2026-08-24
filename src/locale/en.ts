@@ -56,6 +56,25 @@ export const en: UIStrings = {
     withCoverage: "With official coverage",
     reliable: "Reliable coverage only",
   },
+  sovereignty: {
+    label: "Sovereignty & recognition",
+    wiki: "https://en.wikipedia.org/wiki/List_of_states_with_limited_recognition",
+    axisRow: "de jure",
+    axisCol: "de facto",
+    cols: ["Fully independent", "Partially autonomous"],
+    rows: ["Universally recognized", "Widely recognized", "Partially recognized", "Unrecognized"],
+    colDefs: [
+      "Runs its own borders, courts, army and taxes.",
+      "Has its own laws and parliament, but shares core powers — currency, defence, foreign policy — with another state.",
+    ],
+    rowDefs: [
+      "A UN member state, recognized by essentially every other.",
+      "Recognized by a large share of UN members, with some hold-outs.",
+      "Recognized by only a few states, though often with a strong functional or perceived presence.",
+      "Internationally regarded as part of another sovereign state.",
+    ],
+    regular: "Regular states",
+  },
   language: {
     label: (current) => `Language: ${current}`,
     menu: "Language",

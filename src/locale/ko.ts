@@ -62,6 +62,25 @@ export const ko: UIStrings = {
     withCoverage: "공식 지원 포함",
     reliable: "안정적 지원만",
   },
+  sovereignty: {
+    label: "주권과 승인",
+    wiki: "https://ko.wikipedia.org/wiki/미승인_국가_목록",
+    axisRow: "법률상",
+    axisCol: "사실상",
+    cols: ["완전 독립", "부분 자치"],
+    rows: ["보편적 승인", "폭넓은 승인", "부분적 승인", "미승인"],
+    colDefs: [
+      "국경·사법·군대·조세를 스스로 관장한다.",
+      "고유의 법률과 의회를 갖지만 통화·국방·외교 등 핵심 권한은 다른 국가와 공유한다.",
+    ],
+    rowDefs: [
+      "유엔 회원국으로, 사실상 모든 나라가 승인한다.",
+      "다수의 유엔 회원국이 승인하나 일부 반대가 있다.",
+      "소수 국가만 승인하지만 사실상·인식상 존재감이 큰 경우가 많다.",
+      "국제적으로 다른 주권 국가의 일부로 여겨진다.",
+    ],
+    regular: "일반 국가",
+  },
   language: {
     label: (current) => `언어: ${current}`,
     menu: "언어",

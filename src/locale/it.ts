@@ -62,6 +62,25 @@ export const it: UIStrings = {
     withCoverage: "Con copertura ufficiale",
     reliable: "Solo copertura affidabile",
   },
+  sovereignty: {
+    label: "Sovranità e riconoscimento",
+    wiki: "https://it.wikipedia.org/wiki/Stato_a_riconoscimento_limitato",
+    axisRow: "de iure",
+    axisCol: "de facto",
+    cols: ["Pienamente indipendente", "Parzialmente autonomo"],
+    rows: ["Riconoscimento universale", "Ampio riconoscimento", "Riconoscimento parziale", "Senza riconoscimento"],
+    colDefs: [
+      "Gestisce da sé confini, giustizia, esercito e tasse.",
+      "Ha leggi e parlamento propri, ma condivide competenze fondamentali — moneta, difesa, politica estera — con un altro Stato.",
+    ],
+    rowDefs: [
+      "Stato membro dell'ONU, riconosciuto da quasi tutti gli altri.",
+      "Riconosciuto da gran parte dei membri dell'ONU, con alcune eccezioni.",
+      "Riconosciuto solo da pochi Stati, spesso però con forte presenza funzionale o percepita.",
+      "Considerato a livello internazionale parte di un altro Stato sovrano.",
+    ],
+    regular: "Stati regolari",
+  },
   language: {
     label: (current) => `Lingua: ${current}`,
     menu: "Lingua",

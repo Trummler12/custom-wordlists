@@ -114,6 +114,31 @@ export interface CoverageStrings {
   reliable: string;
 }
 
+/** The sovereignty & recognition matrix behind its own ✅ button: a grid of cells,
+ *  de-jure recognition down the rows, de-facto control across the columns, that the
+ *  reader fills as a top-left-anchored staircase. The cells are named by their row
+ *  and column, so only the axes and the always-on corner need words. */
+export interface SovereigntyStrings {
+  /** Button aria-label and popup heading. */
+  label: string;
+  /** A Wikipedia URL for this language's "states with limited recognition" article,
+   *  linked beside the heading. */
+  wiki: string;
+  /** The row and column axis names, for the corner cell (`de jure` down the rows,
+   *  `de facto` across the columns). */
+  axisRow: string;
+  axisCol: string;
+  /** The two column headers, most independent first. */
+  cols: [string, string];
+  /** The four row headers, most recognized first. */
+  rows: [string, string, string, string];
+  /** A fuller definition of each column and row, shown on the header's hover. */
+  colDefs: [string, string];
+  rowDefs: [string, string, string, string];
+  /** The always-on top-left cell (universally recognized, fully independent). */
+  regular: string;
+}
+
 /** The picker, the ⚠️/ℹ️ markers, and the per-list 🇬🇧 toggles. */
 export interface LanguageStrings {
   /** Globe-button aria-label, e.g. "Language: English". */
@@ -217,6 +242,7 @@ export interface UIStrings {
   fame: FameStrings;
   omitted: OmittedStrings;
   coverage: CoverageStrings;
+  sovereignty: SovereigntyStrings;
   language: LanguageStrings;
   settings: SettingsStrings;
   output: OutputStrings;

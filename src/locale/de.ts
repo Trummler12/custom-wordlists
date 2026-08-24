@@ -62,6 +62,25 @@ export const de: UIStrings = {
     withCoverage: "Mit offizieller Abdeckung",
     reliable: "Nur zuverlässige Abdeckung",
   },
+  sovereignty: {
+    label: "Souveränität & Anerkennung",
+    wiki: "https://de.wikipedia.org/wiki/Liste_der_Gebiete_mit_begrenzter_Anerkennung_als_Staat",
+    axisRow: "de jure",
+    axisCol: "de facto",
+    cols: ["Vollständig unabhängig", "Teilweise autonom"],
+    rows: ["Universell anerkannt", "Überwiegend anerkannt", "Teilweise anerkannt", "Nicht anerkannt"],
+    colDefs: [
+      "Kontrolliert Grenzen, Justiz, Armee und Steuern selbst.",
+      "Hat eigene Gesetze und ein eigenes Parlament, teilt aber Kernbereiche — Währung, Verteidigung, Aussenpolitik — mit einem anderen Staat.",
+    ],
+    rowDefs: [
+      "UN-Mitgliedstaat, von praktisch allen anderen anerkannt.",
+      "Von einem grossen Teil der UN-Mitglieder anerkannt, mit einigen Verweigerern.",
+      "Nur von wenigen Staaten anerkannt, oft aber mit starker faktischer oder wahrgenommener Präsenz.",
+      "International als Teil eines anderen souveränen Staates betrachtet.",
+    ],
+    regular: "Reguläre Staaten",
+  },
   language: {
     label: (current) => `Sprache: ${current}`,
     menu: "Sprache",
