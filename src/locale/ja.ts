@@ -22,7 +22,7 @@ export const ja: UIStrings = {
     wordsOf: (selected, total) => `${total}語中${selected}語`,
   },
   names: {
-    form: { short: "短い", long: "長い", both: "両方" },
+    form: { short: "短い", long: "長い", both: "両方", all: "すべて" },
     formLabel: (group) => `${group}の名前の形式`,
   },
   fame: {

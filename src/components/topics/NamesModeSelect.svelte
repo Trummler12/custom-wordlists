@@ -1,6 +1,6 @@
 <script lang="ts">
   import type { Group, NamesMode } from "../../lib/types";
-  import { groupHasNames } from "../../lib/words";
+  import { groupHasNames, groupHasVariants } from "../../lib/words";
   import { lang } from "../../state/lang.svelte";
   import { selection } from "../../state/selection.svelte";
 
@@ -28,5 +28,8 @@
     <option value="short">{lang.ui.names.form.short}</option>
     <option value="long">{lang.ui.names.form.long}</option>
     <option value="both">{lang.ui.names.form.both}</option>
+    {#if groupHasVariants(group, lang.current)}
+      <option value="all">{lang.ui.names.form.all}</option>
+    {/if}
   </select>
 {/if}
