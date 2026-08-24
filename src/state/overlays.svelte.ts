@@ -15,12 +15,13 @@ import { lang } from "./lang.svelte";
  *  A tip has no single host element: its marker and its note are siblings under
  *  whatever row they belong to, so both are named. The note is there for the one
  *  focusable thing a note can hold, the link inviting a romaji correction. */
-type OverlayKind = "lang" | "settings" | "omitted" | "coverage" | "tip";
+type OverlayKind = "lang" | "settings" | "omitted" | "coverage" | "sovereignty" | "tip";
 const HOSTS: Record<OverlayKind, string> = {
   lang: ".lang-picker",
   settings: ".settings-picker",
   omitted: ".omitted-host",
   coverage: ".coverage-host",
+  sovereignty: ".sovereignty-host",
   tip: ".tip-trigger, .tip-note",
 };
 
@@ -40,6 +41,7 @@ class OverlayState {
     settings: null,
     omitted: null,
     coverage: null,
+    sovereignty: null,
     tip: null,
   };
   #remember(kind: OverlayKind, trigger: Element | null | undefined): void {
@@ -68,6 +70,8 @@ class OverlayState {
   omittedAbove = $state(false);
   /** And for the coverage popup — its own button on the same row. */
   coverageAbove = $state(false);
+  /** And for the sovereignty matrix — its own button on the same row. */
+  sovereigntyAbove = $state(false);
 
   // --- Language menu ---------------------------------------------------------
 
@@ -118,6 +122,21 @@ class OverlayState {
     this.coverageAbove = opensUpward(trigger);
     this.coveragePanel = id;
     this.#remember("coverage", trigger);
+  };
+
+  // --- Sovereignty matrix ----------------------------------------------------
+
+  /** Which list is showing its sovereignty & recognition matrix, keyed by the
+   *  control id — the ✅ button's popup, a sibling of the Pegman's. */
+  sovereigntyPanel = $state<string | null>(null);
+  toggleSovereigntyPanel = (id: string, trigger: Element): void => {
+    if (this.sovereigntyPanel === id) {
+      this.sovereigntyPanel = null;
+      return;
+    }
+    this.sovereigntyAbove = opensUpward(trigger);
+    this.sovereigntyPanel = id;
+    this.#remember("sovereignty", trigger);
   };
 
   // --- Tooltips --------------------------------------------------------------
@@ -193,6 +212,7 @@ class OverlayState {
     if (this.settingsMenu && !target?.closest?.(".settings-picker")) this.settingsMenu = null;
     if (this.omittedPanel && !target?.closest?.(".omitted-host")) this.omittedPanel = null;
     if (this.coveragePanel && !target?.closest?.(".coverage-host")) this.coveragePanel = null;
+    if (this.sovereigntyPanel && !target?.closest?.(".sovereignty-host")) this.sovereigntyPanel = null;
     // Neither on the marker, whose own click toggles, nor inside the note: a note
     // exists to be read, and one carrying a link exists to be clicked — closing it
     // here would take the link out of the document before the click reached it.
@@ -227,6 +247,7 @@ class OverlayState {
     else if (kind === "lang") this.langMenu = null;
     else if (kind === "settings") this.settingsMenu = null;
     else if (kind === "coverage") this.coveragePanel = null;
+    else if (kind === "sovereignty") this.sovereigntyPanel = null;
     else this.omittedPanel = null;
     const back = this.#openers[kind];
     if (back) void returnFocus(back);
@@ -250,6 +271,7 @@ class OverlayState {
     if (this.settingsMenu && inside(HOSTS.settings)) return "settings";
     if (this.omittedPanel && inside(HOSTS.omitted)) return "omitted";
     if (this.coveragePanel && inside(HOSTS.coverage)) return "coverage";
+    if (this.sovereigntyPanel && inside(HOSTS.sovereignty)) return "sovereignty";
     return null;
   }
 }
