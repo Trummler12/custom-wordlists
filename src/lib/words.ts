@@ -110,12 +110,14 @@ export function isUnknownIn(e: WordEntry, lang: string): boolean {
 export function resolveWord(e: WordEntry, lang: string, derived = false): Word {
   if (typeof e === "string") return e;
   const obj = e as Record<string, unknown>;
-  if ("short" in obj && "long" in obj) {
+  if ("short" in obj || "long" in obj) {
+    // A name pair, possibly single-form: resolve each half the entry carries and
+    // leave the other absent, so `renderEntry` can bind it to the one mode.
     const p = e as NamePair;
-    return {
-      short: resolveStr(p.short, lang, derived),
-      long: resolveStr(p.long, lang, derived),
-    };
+    const w: { short?: string; long?: string } = {};
+    if (p.short !== undefined) w.short = resolveStr(p.short, lang, derived);
+    if (p.long !== undefined) w.long = resolveStr(p.long, lang, derived);
+    return w;
   }
   const map = e as Record<string, WordEntry>;
   // Same fallback chain as a leaf: the language, then a reading derived from it
@@ -129,7 +131,9 @@ export function resolveWord(e: WordEntry, lang: string, derived = false): Word {
 }
 
 /** The string(s) an entry contributes in a names mode. A pair whose two forms
- *  render identically collapses to one, so "both" can't produce a duplicate. */
+ *  render identically collapses to one, so "both" can't produce a duplicate; a
+ *  single-form entry contributes nothing in the mode it lacks, which is how the
+ *  continent-only and plate-only entries drop out of the other dropdown. */
 export function renderEntry(
   e: WordEntry,
   mode: NamesMode,
@@ -138,9 +142,12 @@ export function renderEntry(
 ): string[] {
   const w = resolveWord(e, lang, derived);
   if (typeof w === "string") return [w];
-  if (mode === "short") return [w.short];
-  if (mode === "long") return [w.long];
-  return w.short === w.long ? [w.short] : [w.short, w.long];
+  if (mode === "short") return w.short !== undefined ? [w.short] : [];
+  if (mode === "long") return w.long !== undefined ? [w.long] : [];
+  const forms: string[] = [];
+  if (w.short !== undefined) forms.push(w.short);
+  if (w.long !== undefined && w.long !== w.short) forms.push(w.long);
+  return forms;
 }
 
 /** The distinct strings a list contributes, first appearance first. */
@@ -208,7 +215,11 @@ export function variantPairs(
   for (const g of groups) {
     for (const e of [...(g.words ?? []), ...(g.tiers ?? []).flat()]) {
       if (typeof e === "string" || (e as Record<string, unknown>)[tag] === undefined) continue;
-      out.push({ from: renderEntry(e, "short", base)[0], to: renderEntry(e, "short", tag)[0] });
+      // Fall back to the long form for a short-less entry, so a single-form entry
+      // that ever carries a variant still yields a name rather than undefined.
+      const from = renderEntry(e, "short", base)[0] ?? renderEntry(e, "long", base)[0];
+      const to = renderEntry(e, "short", tag)[0] ?? renderEntry(e, "long", tag)[0];
+      out.push({ from, to });
     }
   }
   byTag.set(tag, out);
@@ -227,7 +238,13 @@ export interface DisplayName {
  *  row, needs no shape of its own. */
 export function displayName(e: WordEntry, lang: string): DisplayName {
   const w = resolveWord(e, lang);
-  return typeof w === "string" ? { short: w, long: w } : w;
+  if (typeof w === "string") return { short: w, long: w };
+  // A title is always two-form, but a single-form entry can reach this through
+  // an omission sample — fill the missing half from the present one so the row
+  // and its hover both have something to show.
+  const short = w.short ?? w.long!;
+  const long = w.long ?? w.short!;
+  return { short, long };
 }
 
 /** Whether any entry in the group has a short/long form — the condition for

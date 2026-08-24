@@ -67,6 +67,17 @@ describe("resolveWord", () => {
   it("falls back to en for a language the map doesn't carry", () => {
     expect(resolveWord({ en: "Ash", de: "Asch" }, "fr")).toBe("Ash");
   });
+
+  it("resolves a single-form pair to the one half it carries", () => {
+    expect(resolveWord({ short: "Asia" }, "en")).toEqual({ short: "Asia" });
+    expect(resolveWord({ long: "Pacific plate" }, "en")).toEqual({ long: "Pacific plate" });
+  });
+
+  it("recurses into a language map holding single-form pairs", () => {
+    const asia = { en: { short: "Asia" }, de: { short: "Asien" } };
+    expect(resolveWord(asia, "de")).toEqual({ short: "Asien" });
+    expect(resolveWord(asia, "fr")).toEqual({ short: "Asia" });
+  });
 });
 
 describe("renderEntry", () => {
@@ -86,6 +97,16 @@ describe("renderEntry", () => {
     for (const mode of ["short", "long", "both"] as const) {
       expect(renderEntry("Charizard", mode, "en")).toEqual(["Charizard"]);
     }
+  });
+
+  it("drops a short-only entry from long, and a long-only from short", () => {
+    // A continent with no eponymous plate, and a plate with no continent.
+    expect(renderEntry({ short: "Asia" }, "short", "en")).toEqual(["Asia"]);
+    expect(renderEntry({ short: "Asia" }, "long", "en")).toEqual([]);
+    expect(renderEntry({ short: "Asia" }, "both", "en")).toEqual(["Asia"]);
+    expect(renderEntry({ long: "Pacific plate" }, "long", "en")).toEqual(["Pacific plate"]);
+    expect(renderEntry({ long: "Pacific plate" }, "short", "en")).toEqual([]);
+    expect(renderEntry({ long: "Pacific plate" }, "both", "en")).toEqual(["Pacific plate"]);
   });
 });
 

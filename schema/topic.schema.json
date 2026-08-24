@@ -187,8 +187,8 @@
     "namePair": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["short", "long"],
-      "description": "An entry with a short (common) and long (full) name; the UI's per-group Names dropdown picks short / long / both. Each field may itself be a language map when only that part translates — the preferred form.",
+      "anyOf": [{ "required": ["short"] }, { "required": ["long"] }],
+      "description": "An entry with a short (common) and/or long (full) name; the UI's per-group Names dropdown picks short / long / both. Each field may itself be a language map when only that part translates — the preferred form. At least one of the two must be present; omitting one binds the entry to the other mode, so a `{ short }` never loads under `long` and a `{ long }` never under `short` — how a continent with no eponymous plate, or a plate with no continent, drops out of the dropdown that doesn't fit it.",
       "properties": {
         "short": { "$ref": "#/$defs/locString" },
         "long": { "$ref": "#/$defs/locString" }
