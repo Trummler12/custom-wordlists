@@ -112,11 +112,16 @@ export function resolveWord(e: WordEntry, lang: string, derived = false): Word {
   const obj = e as Record<string, unknown>;
   if ("short" in obj || "long" in obj) {
     // A name pair, possibly single-form: resolve each half the entry carries and
-    // leave the other absent, so `renderEntry` can bind it to the one mode.
+    // leave the other absent, so `renderEntry` can bind it to the one mode. Any
+    // `others` variants resolve to a flat list, for the `all` mode.
     const p = e as NamePair;
-    const w: { short?: string; long?: string } = {};
+    const w: { short?: string; long?: string; others?: string[] } = {};
     if (p.short !== undefined) w.short = resolveStr(p.short, lang, derived);
     if (p.long !== undefined) w.long = resolveStr(p.long, lang, derived);
+    if (p.others !== undefined) {
+      const list = Array.isArray(p.others) ? p.others : [p.others];
+      w.others = list.map((o) => resolveStr(o, lang, derived));
+    }
     return w;
   }
   const map = e as Record<string, WordEntry>;
@@ -133,7 +138,8 @@ export function resolveWord(e: WordEntry, lang: string, derived = false): Word {
 /** The string(s) an entry contributes in a names mode. A pair whose two forms
  *  render identically collapses to one, so "both" can't produce a duplicate; a
  *  single-form entry contributes nothing in the mode it lacks, which is how the
- *  continent-only and plate-only entries drop out of the other dropdown. */
+ *  continent-only and plate-only entries drop out of the other dropdown. `all`
+ *  emits short+long and every `others` variant on top, deduplicated. */
 export function renderEntry(
   e: WordEntry,
   mode: NamesMode,
@@ -147,6 +153,9 @@ export function renderEntry(
   const forms: string[] = [];
   if (w.short !== undefined) forms.push(w.short);
   if (w.long !== undefined && w.long !== w.short) forms.push(w.long);
+  if (mode === "all" && w.others) {
+    for (const o of w.others) if (!forms.includes(o)) forms.push(o);
+  }
   return forms;
 }
 
@@ -252,6 +261,16 @@ export function displayName(e: WordEntry, lang: string): DisplayName {
 export function groupHasNames(g: Group, lang: string): boolean {
   const entries = groupEntries(g);
   return entries.some((e) => typeof resolveWord(e, lang) !== "string");
+}
+
+/** Whether any entry in the group carries an `others` variant — the condition for
+ *  offering the `all` option in that group's names dropdown, the way the ruler
+ *  tooltip appears only when it has something to say. */
+export function groupHasVariants(g: Group, lang: string): boolean {
+  return groupEntries(g).some((e) => {
+    const w = resolveWord(e, lang);
+    return typeof w !== "string" && w.others !== undefined && w.others.length > 0;
+  });
 }
 
 // Groups are immutable after load, so each group's flattened entries are cached

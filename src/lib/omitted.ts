@@ -40,11 +40,12 @@ export function entryForms(e: WordEntry): string[] {
   // A name pair localizes per field; anything else is a language map whose values
   // are themselves entries. Both bottom out in strings. `?` is not one of them: it
   // holds language codes, and a glob is here to match names, not tags.
+  const others = Array.isArray(obj.others) ? obj.others : obj.others !== undefined ? [obj.others] : [];
   const parts =
-    "short" in obj && "long" in obj
-      ? [obj.short, obj.long]
+    "short" in obj || "long" in obj
+      ? [obj.short, obj.long, ...others]
       : Object.entries(obj).filter(([k]) => k !== UNKNOWN).map(([, v]) => v);
-  return parts.flatMap((p) => entryForms(p as WordEntry));
+  return parts.filter((p) => p !== undefined).flatMap((p) => entryForms(p as WordEntry));
 }
 
 // Compiled once per rule object; the rules live as long as the topic file they

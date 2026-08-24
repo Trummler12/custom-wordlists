@@ -102,16 +102,19 @@ export type LangMap<T> = { en: T } & Record<string, T>;
  *  language map with an "en" base (languages equal to "en" are omitted). */
 export type LocalizedString = string | LangMap<string>;
 
-/** A short/long name entry; each field may itself be a LocalizedString.
+/** A named-forms entry: `short`, `long`, and any further `others`; each field may
+ *  itself be a LocalizedString.
  *
- *  A bag of named forms, not a fixed couple: at least one of the two is present,
+ *  A bag of named forms, not a fixed couple: at least one of short/long is present,
  *  and omitting one binds the entry to the other mode — a `{ short }` never loads
- *  under `long`, a `{ long }` never under `short` (see `renderEntry`). This is the
- *  seam a future `all` mode extends with further variant fields; today it carries
- *  short and long, either of which a single-form entry may leave out. */
+ *  under `long`, a `{ long }` never under `short` (see `renderEntry`). `others`
+ *  carries the variants that are neither the shortest nor the longest form — one
+ *  string or a list of them (Taiwan's further English names) — surfaced only by the
+ *  `all` mode, and localizing like the other two. */
 export interface NamePair {
   short?: LocalizedString;
   long?: LocalizedString;
+  others?: LocalizedString | LocalizedString[];
 }
 
 /** A word entry in a list: a localized string, a short/long name pair (each field
@@ -128,13 +131,16 @@ export type LangMapEntry = { en: string | NamePair; "?"?: string[] } & Record<
   string | NamePair | string[] | undefined
 >;
 
-/** A word resolved to the active language: a plain string, or a short/long pair
+/** A word resolved to the active language: a plain string, or a named-forms object
  *  where each half is present exactly when the entry carried it — a single-form
- *  entry resolves to a pair with one half. */
-export type Word = string | { short?: string; long?: string };
+ *  entry resolves to one half. `others` holds the resolved further variants, for
+ *  the `all` mode. */
+export type Word = string | { short?: string; long?: string; others?: string[] };
 
-/** Which form(s) of a short/long name a group emits. Per group, default "long". */
-export type NamesMode = "short" | "long" | "both";
+/** Which form(s) of a named-forms entry a group emits. Per group, default "long".
+ *  `all` adds every `others` variant on top of short+long, deduplicated; offered
+ *  only where a list actually carries one. */
+export type NamesMode = "short" | "long" | "both" | "all";
 
 /** One family of entries a list deliberately leaves out. Every rule can be
  *  switched back on by the reader, so each needs a stable key. See lib/omitted. */

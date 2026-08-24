@@ -3,6 +3,7 @@ import {
   displayName,
   groupEntries,
   groupHasNames,
+  groupHasVariants,
   overlongForms,
   renderCount,
   renderEntry,
@@ -108,6 +109,37 @@ describe("renderEntry", () => {
     expect(renderEntry({ long: "Pacific plate" }, "short", "en")).toEqual([]);
     expect(renderEntry({ long: "Pacific plate" }, "both", "en")).toEqual(["Pacific plate"]);
   });
+
+  it("adds the others only under 'all', deduplicated on top of short/long", () => {
+    // Taiwan's four English forms: short, long, and two further variants.
+    const tw = {
+      short: "Taiwan",
+      long: "Taiwan, Republic of China",
+      others: ["Taiwan R.O.C.", "Taiwan ROC"],
+    };
+    expect(renderEntry(tw, "short", "en")).toEqual(["Taiwan"]);
+    expect(renderEntry(tw, "both", "en")).toEqual(["Taiwan", "Taiwan, Republic of China"]);
+    expect(renderEntry(tw, "all", "en")).toEqual([
+      "Taiwan",
+      "Taiwan, Republic of China",
+      "Taiwan R.O.C.",
+      "Taiwan ROC",
+    ]);
+  });
+
+  it("takes a lone others string, and never repeats a form 'all' already carries", () => {
+    expect(renderEntry({ short: "HK", others: "HK" }, "all", "en")).toEqual(["HK"]);
+    expect(renderEntry({ short: "HK", long: "Hong Kong", others: "Hong Kong" }, "all", "en")).toEqual([
+      "HK",
+      "Hong Kong",
+    ]);
+  });
+
+  it("resolves the others in the active language", () => {
+    const e = { short: { en: "Cologne", de: "Köln" }, others: [{ en: "Colonia", de: "Domstadt" }] };
+    expect(renderEntry(e, "all", "de")).toEqual(["Köln", "Domstadt"]);
+    expect(renderEntry(e, "all", "en")).toEqual(["Cologne", "Colonia"]);
+  });
 });
 
 describe("renderCount", () => {
@@ -162,6 +194,19 @@ describe("groupHasNames", () => {
     const g: Group = { id: "g", title: "G", words: ["Ash", { short: "A", long: "Alpha" }] };
     expect(groupHasNames(g, "en")).toBe(true);
     expect(groupHasNames({ id: "g", title: "G", words: ["Ash"] }, "en")).toBe(false);
+  });
+});
+
+describe("groupHasVariants", () => {
+  it("is true only where an entry carries an others variant in that language", () => {
+    const withVar: Group = {
+      id: "g",
+      title: "G",
+      words: ["Ash", { short: "Taiwan", others: ["Taiwan ROC"] }],
+    };
+    expect(groupHasVariants(withVar, "en")).toBe(true);
+    const plain: Group = { id: "g", title: "G", words: ["Ash", { short: "A", long: "Alpha" }] };
+    expect(groupHasVariants(plain, "en")).toBe(false);
   });
 });
 

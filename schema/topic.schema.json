@@ -188,10 +188,17 @@
       "type": "object",
       "additionalProperties": false,
       "anyOf": [{ "required": ["short"] }, { "required": ["long"] }],
-      "description": "An entry with a short (common) and/or long (full) name; the UI's per-group Names dropdown picks short / long / both. Each field may itself be a language map when only that part translates — the preferred form. At least one of the two must be present; omitting one binds the entry to the other mode, so a `{ short }` never loads under `long` and a `{ long }` never under `short` — how a continent with no eponymous plate, or a plate with no continent, drops out of the dropdown that doesn't fit it.",
+      "description": "An entry with a short (common) and/or long (full) name, plus any further `others` variants; the UI's per-group Names dropdown picks short / long / both, and `all` where a list carries `others`. Each field may itself be a language map when only that part translates — the preferred form. At least one of short/long must be present; omitting one binds the entry to the other mode, so a `{ short }` never loads under `long` and a `{ long }` never under `short` — how a continent with no eponymous plate, or a plate with no continent, drops out of the dropdown that doesn't fit it.",
       "properties": {
         "short": { "$ref": "#/$defs/locString" },
-        "long": { "$ref": "#/$defs/locString" }
+        "long": { "$ref": "#/$defs/locString" },
+        "others": {
+          "description": "Further name variants that are neither the shortest nor the longest form (Taiwan's additional English names) — a single string or a list, each localizing like short/long. Surfaced only by the `all` names mode.",
+          "oneOf": [
+            { "$ref": "#/$defs/locString" },
+            { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/locString" } }
+          ]
+        }
       }
     },
     "langMapEntry": {
