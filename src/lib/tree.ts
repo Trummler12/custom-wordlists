@@ -81,6 +81,9 @@ export function synthesizeTopics(topics: TopicSummary[]): TopicSummary[] {
       // The contributors carry the same icon controls (build-generated alike), so
       // the synth surfaces the merged control from the first — no file load needed.
       ...(first.controls ? { controls: first.controls } : {}),
+      // Romaji is derived per contributor and merged in; the synth carries the flag
+      // too so its own row derives it and shows the ℹ️ note (see derivedRomaji).
+      ...(first.generatedRomaji ? { generatedRomaji: true } : {}),
       contributors: contributors.map((c) => c.id),
       // Pre-load baseline only; once the members load, `topics.groupsOf` gives the
       // deduplicated count (transcontinentals merged), which is what the row shows.

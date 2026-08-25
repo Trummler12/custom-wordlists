@@ -1,10 +1,11 @@
 {
   "id": "north-america-capitals",
   "title": {"en":"Capitals","de":"Hauptstädte","es":"Capitales","fr":"Capitales","it":"Capitali","ja":"首都","ko":"수도","zh-Hans":"首都","zh-Hant":"首都"},
-  "languages": ["en","de","es","fr","it","ja","ko","zh-Hans","zh-Hant"],
+  "languages": ["en","de","es","fr","it","ja","ja-Latn","ko","zh-Hans","zh-Hant"],
+  "generatedRomaji": true,
   "sources": ["Names: Wikidata capitals (P36) of the sovereign states — https://www.wikidata.org/wiki/Property:P36 (see scripts/geography/dump-country-data.mjs)"],
-  "lastUpdated": "2026-08-24",
-  "lastChecked": "2026-08-24",
+  "lastUpdated": "2026-08-25",
+  "lastChecked": "2026-08-25",
   "defaultNames": "short",
   "omittable": [
     {

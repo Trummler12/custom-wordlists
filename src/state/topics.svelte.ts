@@ -88,8 +88,12 @@ class TopicsState {
         ...manifest.topics.map((t) => [t.id, t.languages ?? []]),
         ...synthesizeTopics(manifest.topics).map((s) => [s.id, s.languages ?? []]),
       ]);
+      // Synthesized topics inherit the flag from their contributors, so the merged
+      // world "Countries"/"Capitals" rows derive romaji like the continental leaves.
       lang.derivedRomaji = Object.fromEntries(
-        manifest.topics.filter((t) => t.generatedRomaji).map((t) => [t.id, true]),
+        [...manifest.topics, ...synthesizeTopics(manifest.topics)]
+          .filter((t) => t.generatedRomaji)
+          .map((t) => [t.id, true]),
       );
     } catch (e) {
       this.error = e instanceof Error ? e.message : String(e);

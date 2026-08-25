@@ -99,14 +99,12 @@ export function isUnknownIn(e: WordEntry, lang: string): boolean {
  *  map { en, de, … } whose value is itself an entry — the latter is resolved by
  *  picking the language and recursing.
  *
- *  **The two shapes are not equivalent for a derived reading.** `transliterate`
- *  reads a leaf, so a map whose language holds a *name pair* has its Japanese one
- *  level further down than this can reach, and the entry falls through to English
- *  with its kana sitting inside it. Passing `derived` into the recursion does not
- *  help: the pair's halves are plain strings by then, and a plain string is neutral
- *  by definition — it would need a second traversal that romanizes an already
- *  resolved pair. No entry has that shape (all four romanized lists are flat maps
- *  of strings), so this is written down rather than built. */
+ *  A derived reading (a `-Latn` tag the list says it transliterates) is read off the
+ *  base-language sub-entry, whichever shape it is: a flat map's `ja` is a string, a
+ *  name-pair map's `ja` is a pair whose forms each transliterate (`romanizeWord`).
+ *  A form the table cannot read falls back to the Japanese itself, not to English,
+ *  so an uncovered name shows its kana/kanji and stands out rather than hiding as a
+ *  plausible-looking English word. */
 export function resolveWord(e: WordEntry, lang: string, derived = false): Word {
   if (typeof e === "string") return e;
   const obj = e as Record<string, unknown>;
@@ -126,14 +124,31 @@ export function resolveWord(e: WordEntry, lang: string, derived = false): Word {
     return w;
   }
   const map = e as Record<string, WordEntry>;
-  // Same fallback chain as a leaf: the language, then a reading derived from it
-  // where the list says its romaji are, then the closest tag, then English.
-  if (map[lang] === undefined && derived) {
-    const made = transliterate(map as Record<string, string>, lang);
-    if (made !== undefined) return made;
+  // A derived romaji reading comes off the base-language sub-entry — `ja` for a
+  // `ja-Latn` request — romanized form by form. This reaches into a name-pair `ja`
+  // that `transliterate` (which reads a leaf) cannot; a form the table can't read
+  // keeps its Japanese, so it shows kana/kanji rather than the English name.
+  if (map[lang] === undefined && derived && lang.toLowerCase().endsWith("-latn")) {
+    const base = baseTag(lang);
+    if (map[base] !== undefined) return romanizeWord(resolveWord(map[base], base));
   }
   const tag = map[lang] !== undefined ? lang : tagFor(map, lang);
   return resolveWord((tag !== undefined ? map[tag] : undefined) ?? map.en, lang);
+}
+
+/** A resolved Japanese word turned to romaji, form by form. Each string that the
+ *  table can read becomes its reading; one it can't keeps its Japanese, so an
+ *  uncovered kanji surfaces as itself instead of silently borrowing a neighbour's
+ *  reading or the English name. The shape is preserved, so `renderEntry` binds the
+ *  modes exactly as it would for a sourced language. */
+function romanizeWord(w: Word): Word {
+  if (typeof w === "string") return toRomaji(w) ?? w;
+  const out: { pref?: string; short?: string; long?: string; others?: string[] } = {};
+  if (w.pref !== undefined) out.pref = toRomaji(w.pref) ?? w.pref;
+  if (w.short !== undefined) out.short = toRomaji(w.short) ?? w.short;
+  if (w.long !== undefined) out.long = toRomaji(w.long) ?? w.long;
+  if (w.others !== undefined) out.others = w.others.map((o) => toRomaji(o) ?? o);
+  return out;
 }
 
 /** The string(s) an entry contributes in a names mode. A single-form mode falls back
