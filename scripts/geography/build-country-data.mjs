@@ -349,6 +349,7 @@ const RARE_COVERAGE = new Set([
   "Martinique", "Falkland Islands", "South Georgia and the South Sandwich Islands",
   "Mali", "Egypt", "Tanzania", "Belarus", "Iraq", "Afghanistan",
   "British Indian Ocean Territory", "China", "Cocos (Keeling) Islands", "Vanuatu",
+  "Western Sahara", // only a few main roads, caught during Morocco's official drives
 ]);
 
 /** The two coverage reasons — lower-case leading noun, so the "up to N" the panel
@@ -381,7 +382,7 @@ async function readOfficial() {
   const out = new Set();
   for (const raw of text.split(/\r?\n/)) {
     const line = raw.trim();
-    if (!line || line.includes("http") || GEOHINTS_HEADERS.has(line)) continue;
+    if (!line || line.startsWith("#") || line.includes("http") || GEOHINTS_HEADERS.has(line)) continue;
     out.add(line);
   }
   return out;
@@ -570,6 +571,20 @@ async function main() {
   const territoriesOf = (folder) => Object.entries(TERRITORIES).filter(([, m]) => m.folder === folder);
   const territoryPop = (m) => m.pop ?? (m.iso ? geo[m.iso]?.population : undefined) ?? 0;
 
+  /** A territory's English forms — its curated name plus the geonames English variants —
+   *  for matching against the coverage lists, the same way `enFormsOf` does for a country. */
+  const territoryEnForms = (name, m) => {
+    const names = m.iso ? geo[m.iso]?.names : TERR_NAMES[m.geonameId]?.names;
+    const en = (names ? bucketCountry(names, m.iso ?? String(m.geonameId), LANGS) : {}).en;
+    const forms =
+      en === undefined
+        ? []
+        : typeof en === "string"
+          ? [en]
+          : [en.pref, en.short, en.long, ...(en.others ?? [])].filter((s) => s !== undefined);
+    return [name, ...forms.filter((n) => n !== name)];
+  };
+
   /** A territory's localized entry: the curated file key is the English name (geonames
    *  labels Iraqi Kurdistan "Kurdistan" and Transnistria with its formal title), while
    *  geonames supplies the other languages and the English variants (as `others`). */
@@ -646,18 +661,23 @@ async function main() {
     // all. The official list gives covered-or-not; the rare hand list overrides to
     // "covered but thin". Only none and rare become rules; the capitals inherit them,
     // matched on the capital's own name (from the country → capital mapping).
-    const classOf = (c) => {
-      const forms = enFormsOf(c);
+    const classOfForms = (forms) => {
       if (forms.some((n) => RARE_COVERAGE.has(n))) return "rare";
       return forms.some((n) => official.has(n)) ? "full" : "none";
     };
-    const filtered = list
-      .map((c) => ({ c, nm: commonEnOf(c), cls: classOf(c) }))
+    // Countries and this continent's new territories alike: each is fully covered, only
+    // sparsely (rare), or not at all. Territories carry no capital yet, so an empty list.
+    const covSubjects = [
+      ...list.map((c) => ({ forms: enFormsOf(c), nm: commonEnOf(c), caps: c.capitals })),
+      ...newTerritories.map(([n, m]) => ({ forms: territoryEnForms(n, m), nm: n, caps: [] })),
+    ];
+    const filtered = covSubjects
+      .map((s) => ({ ...s, cls: classOfForms(s.forms) }))
       .filter((x) => x.cls !== "full");
     const covCountry = coverageRules(filtered.map((x) => ({ match: x.nm, rare: x.cls === "rare" })));
     const capItems = [];
     for (const x of filtered) {
-      for (const cap of x.c.capitals) {
+      for (const cap of x.caps) {
         const nm = capitalNames[cap]?.en;
         if (nm) capItems.push({ match: nm, rare: x.cls === "rare" });
       }
