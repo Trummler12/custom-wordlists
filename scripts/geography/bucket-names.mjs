@@ -1,23 +1,32 @@
 // Turns one country's geonames alternate names (per language, each carrying the
 // pref/short/colloq flags dump-geonames.mjs kept) into our named-forms shape: a `pref`
 // canonical name, an optional shorter `short` and fuller `long`, and the rest as
-// `others`. The flags are the signal — but with two guards they don't give:
+// `others`. The geonames flags are the signal, with three guards they don't give:
 //
-//  - Comma-bearing names are ISO sort-inverted artifacts ("Congo, The Democratic
-//    Republic Of", "Korea, Republic of") and stay out of pref/short/long.
-//  - OVERRIDES correct the rare geonames mislabel by ISO and language, the general
-//    rule holding for everything else (per Trummler's call: default for the common
-//    case, override the exceptions).
+//  - Only pref/short-flagged names may fill pref/short/long. An unflagged name (a
+//    dative form like "Vereinigten Staaten von Amerika", a doubtful spelling like
+//    "Malaysien") is not an endorsed form, so it stays in `others` rather than being
+//    asserted as a canonical name.
+//  - A language with no pref flag at all has singled none out — every variant is read
+//    as equally preferred, so it still yields a pref and a long (en-Croatia).
+//  - Comma-bearing names are ISO sort-inverted artifacts ("Korea, Republic of") and
+//    stay out of pref/short/long.
+//
+// Where the flags are wrong or a name is missing, an OVERRIDES entry fixes that one
+// case by hand; the general rule holds for everything else.
 
-/** Rare geonames mislabels, corrected by ISO and language — the value replaces the
- *  bucketed result for that language outright. geonames flags Taiwan's formal name as
- *  colloquial, which would otherwise banish it to `others`. */
+// ───────────────────────────────────────────────────────────────────────────────────
+// USER-EDITABLE — per-country name overrides, keyed by ISO code then language. The
+// value replaces the bucketed result for that language outright. Add an entry where the
+// geonames flags give a country the wrong shape:
+//   • geonames omits a name we need — TR has no plain "Turkey", carried here so the
+//     coverage list (which spells it that way) still matches.
+//   • a legitimate formal name is unflagged, so the rule leaves it in `others` — DE's
+//     "Federal Republic of Germany", promoted to `long` by hand.
+// ───────────────────────────────────────────────────────────────────────────────────
 export const OVERRIDES = {
-  TW: { en: { pref: "Taiwan", long: "Taiwan, Republic of China", others: ["Taiwan R.O.C.", "Taiwan ROC"] } },
-  // geonames marks the formal "Republic of Türkiye" preferred and offers no plain
-  // "Turkey"; make the common name pref and carry "Turkey" so the coverage list (which
-  // spells it "Turkey") still matches.
-  TR: { en: { pref: "Türkiye", long: "Republic of Türkiye", others: ["Turkey", "Republic of Turkey"] } },
+  DE: { en: { pref: "Germany", long: "Federal Republic of Germany" } },
+  TR: { en: { pref: "Republic of Türkiye", short: "Türkiye", others: ["Turkey", "Republic of Turkey"] } },
 };
 
 const hasComma = (n) => n.includes(",");
@@ -31,14 +40,19 @@ export function bucketLang(entries) {
   if (!entries?.length) return undefined;
   if (entries.length === 1) return entries[0].name;
 
+  // No pref flag anywhere means none was singled out — read every variant as equally
+  // preferred, so a language like en-Croatia ["Croatia"(short), "Republic of Croatia"]
+  // still yields a pref and a long.
+  const src = entries.some((e) => e.pref) ? entries : entries.map((e) => ({ ...e, pref: true }));
+
   const used = new Set();
   const take = (n) => (used.add(n), n);
-  const free = () => entries.filter((e) => !used.has(e.name));
+  const free = () => src.filter((e) => !used.has(e.name));
 
   // pref: a pref+short name, else a plain pref, else (no pref at all) a short name,
   // else the shortest — non-comma preferred throughout, shortest within a class.
-  const clean = entries.filter((e) => !hasComma(e.name));
-  const pool = clean.length ? clean : entries;
+  const clean = src.filter((e) => !hasComma(e.name));
+  const pool = clean.length ? clean : src;
   const prefs = pool.filter((e) => e.pref);
   const prefShort = prefs.filter((e) => e.short);
   let prefName;
@@ -49,15 +63,17 @@ export function bucketLang(entries) {
   else [prefName, prefIsShort] = [shortest(pool).name, false];
   take(prefName);
 
-  // long: the longer of two prefs, else the longest non-colloquial, non-comma name
-  // longer than pref. A comma name never becomes long — it is an ISO inverted artifact
-  // ("Micronesia, Federated States Of"), left for `others`.
+  // long: the longer of two prefs, else the longest other flagged name longer than
+  // pref. Only pref/short-flagged names are eligible — an unflagged one (a dative form
+  // like "Vereinigten Staaten von Amerika", a doubtful spelling like "Malaysien") is
+  // not an endorsed form, so it stays in `others` rather than being asserted as the
+  // long name; comma-bearing ISO inverted forms likewise.
   let longName;
   const otherPref = free().filter((e) => e.pref);
   if (prefs.length >= 2 && otherPref.length) {
     longName = longest(otherPref).name;
   } else {
-    const pick = longest(free().filter((e) => !e.colloq && !hasComma(e.name) && e.name.length > prefName.length));
+    const pick = longest(free().filter((e) => (e.pref || e.short) && !e.colloq && !hasComma(e.name) && e.name.length > prefName.length));
     if (pick) longName = pick.name;
   }
   if (longName) take(longName);
