@@ -205,12 +205,6 @@ const NAME_OVERRIDE = { "Q36262.en": "St. John's" };
  *  the code belongs to Denmark proper. */
 const ISO_OVERRIDE = { Q756617: "DK" };
 
-/** Every content language but English — the `?` list a placeholder entry carries,
- *  saying it has no name yet in any of them. */
-const OTHER = LANGS.filter((l) => l !== "en");
-/** A provisional entry: an English name and nothing else yet. The geonames round
- *  fills the eight `?` languages later, so no name is hand-typed twice. */
-const placeholder = (en) => ({ en, "?": [...OTHER] });
 
 /** The icon key that groups the sovereignty cells into one matrix control. */
 const SOVEREIGNTY = "sovereignty";
@@ -317,43 +311,6 @@ const CELLS = {
   },
 };
 
-/** The territories to add, per continent folder — each an English-only placeholder
- *  filed in one matrix cell and given a rough population for its tier. Provisional
- *  and meant to be edited by hand; the geonames round fills the languages and the
- *  rest of the set, and the limited-recognition lists refine the cell calls. */
-const EXTRA = [
-  // R1C2 · asymmetric autonomies (seed of an otherwise-empty cell)
-  { folder: "asia", en: "Iraqi Kurdistan", pop: 6000000, cell: "asymmetric-autonomy" },
-  { folder: "europe", en: "Åland", pop: 30000, cell: "asymmetric-autonomy" },
-  // R2C2 · free association
-  { folder: "oceania", en: "Cook Islands", pop: 15000, cell: "free-association" },
-  { folder: "oceania", en: "Niue", pop: 1600, cell: "free-association" },
-  // R3C1 · narrowly recognized de-facto states
-  { folder: "asia", en: "Abkhazia", pop: 245000, cell: "de-facto-narrow" },
-  { folder: "asia", en: "South Ossetia", pop: 55000, cell: "de-facto-narrow" },
-  // R3C2 · special status / perceived as their own country
-  { folder: "africa", en: "Western Sahara", pop: 600000, cell: "special-status" },
-  { folder: "asia", en: "Hong Kong", pop: 7500000, cell: "special-status" },
-  { folder: "asia", en: "Macau", pop: 680000, cell: "special-status" },
-  { folder: "north-america", en: "Puerto Rico", pop: 3200000, cell: "special-status" },
-  // R4C1 · pure de-facto states (effective control, next to no recognition)
-  { folder: "africa", en: "Somaliland", pop: 5700000, cell: "pure-de-facto" },
-  { folder: "europe", en: "Northern Cyprus", pop: 380000, cell: "pure-de-facto" },
-  { folder: "europe", en: "Transnistria", pop: 470000, cell: "pure-de-facto" },
-  // R4C2 · classic autonomous territories (part of another state)
-  { folder: "north-america", en: "Greenland", pop: 56000, cell: "classic-autonomous" },
-  { folder: "europe", en: "Faroe Islands", pop: 54000, cell: "classic-autonomous" },
-  { folder: "oceania", en: "Guam", pop: 170000, cell: "classic-autonomous" },
-];
-
-/** Territories already in the dump that only need a cell — the widely (if not
- *  universally) recognized trio, by the continent folder each sits in. Their
- *  capitals are in the dump too, so they are the ones the capitals lists carry. */
-const CLASSIFIED_EXISTING = {
-  europe: { "de-facto-recognized": ["Kosovo"] },
-  asia: { "de-facto-recognized": ["Taiwan", "Palestine"] },
-};
-
 /** Build `omitted` / `omittable` sovereignty rules from a `{ cellId: [names] }`
  *  map: one rule per cell that has a member, its `match` those names, sorted into
  *  the two arrays by the cell's default. Same id, cell and reason across continents
@@ -368,18 +325,6 @@ function cellRules(names) {
     (c.default === "omitted" ? omitted : omittable).push(rule);
   }
   return { omitted, omittable };
-}
-
-/** The sovereignty rules for one continent's countries: its placeholder territories
- *  plus the classified real states, each under its matrix cell. */
-function sovereigntyRules(folder) {
-  const names = {};
-  const add = (id, name) => (names[id] ??= []).push(name);
-  for (const e of EXTRA) if (e.folder === folder) add(e.cell, e.en);
-  for (const [id, list] of Object.entries(CLASSIFIED_EXISTING[folder] ?? {})) {
-    for (const name of list) add(id, name);
-  }
-  return cellRules(names);
 }
 
 // --- Geoguessr / Street View coverage ---------------------------------------
@@ -610,6 +555,53 @@ async function main() {
     return [en.pref, en.short, en.long, ...others].filter((s) => s !== undefined);
   };
 
+  // Territories beyond the ISO sovereign states (sovereign-territories.json), each placed
+  // in one C10 cell. Names come from geonames: by ISO from the country dump, or by
+  // geonameId from the territory dump for the six non-ISO ones. The recognised trio are
+  // already countries in the dump, so they take only their cell.
+  const TERRITORIES = Object.fromEntries(
+    Object.entries(JSON.parse(await readFile(join(RAW, "countries", "sovereign-territories.json"), "utf8"))).filter(
+      ([k]) => k !== "_comment",
+    ),
+  );
+  const TERR_NAMES = JSON.parse(await readFile(join(RAW, "countries", "geonames-territories.json"), "utf8"));
+  const structureIsos = new Set(structure.map((c) => c.iso).filter(Boolean));
+  const isExisting = (m) => Boolean(m.iso && structureIsos.has(m.iso));
+  const territoriesOf = (folder) => Object.entries(TERRITORIES).filter(([, m]) => m.folder === folder);
+  const territoryPop = (m) => m.pop ?? (m.iso ? geo[m.iso]?.population : undefined) ?? 0;
+
+  /** A territory's localized entry: the curated file key is the English name (geonames
+   *  labels Iraqi Kurdistan "Kurdistan" and Transnistria with its formal title), while
+   *  geonames supplies the other languages and the English variants (as `others`). */
+  const territoryEntry = (name, m) => {
+    const names = m.iso ? geo[m.iso]?.names : TERR_NAMES[m.geonameId]?.names;
+    const bucket = names ? bucketCountry(names, m.iso ?? String(m.geonameId), LANGS) : {};
+    const geoEn = bucket.en;
+    const enForms =
+      geoEn === undefined
+        ? []
+        : typeof geoEn === "string"
+          ? [geoEn]
+          : [geoEn.pref, geoEn.short, geoEn.long, ...(geoEn.others ?? [])].filter((s) => s !== undefined);
+    const extraEn = [...new Set(enForms.filter((n) => n !== name))];
+    const map = { en: extraEn.length ? { pref: name, others: extraEn } : name };
+    const unknown = [];
+    for (const lang of LANGS) {
+      if (lang === "en") continue;
+      const v = bucket[lang];
+      if (v === undefined || v === "") {
+        unknown.push(lang);
+        continue;
+      }
+      map[lang] = v;
+    }
+    for (const lang of LANGS) {
+      if (lang !== "en" && JSON.stringify(map[lang]) === JSON.stringify(map.en)) delete map[lang];
+    }
+    if (unknown.length) map["?"] = unknown;
+    return map;
+  };
+
   // Each country to every continent it spans, deduplicated (Q538 and Q55643 both
   // map to oceania), sorted by population within a continent.
   const byContinent = {};
@@ -640,12 +632,12 @@ async function main() {
 
     const list = byContinent[folder].slice().sort((a, b) => b.pop - a.pop);
 
-    // Real countries plus this continent's provisional placeholders, tiered by
-    // population together — an omittable placeholder then shows in its true band.
-    const extras = EXTRA.filter((e) => e.folder === folder);
+    // Real countries plus this continent's non-country territories, tiered by population
+    // together — a territory then shows in its true band.
+    const newTerritories = territoriesOf(folder).filter(([, m]) => !isExisting(m));
     const items = [
       ...list.map((c) => ({ pop: c.pop, make: () => countryEntry(c.country) })),
-      ...extras.map((e) => ({ pop: e.pop, make: () => placeholder(e.en) })),
+      ...newTerritories.map(([n, m]) => ({ pop: territoryPop(m), make: () => territoryEntry(n, m) })),
     ].sort((a, b) => b.pop - a.pop);
     const countryTiers = [[], [], [], [], []];
     for (const it of items) countryTiers[tierOf(it.pop)].push(it.make());
@@ -672,20 +664,26 @@ async function main() {
     }
     const covCapital = coverageRules(capItems);
 
-    const { omitted, omittable } = sovereigntyRules(folder);
+    // Sovereignty rules: every territory in this continent, matched by its English name
+    // (a new territory's file key, the trio's common country name), sorted into the cells.
+    const sovNames = {};
+    for (const [n, m] of territoriesOf(folder)) {
+      const c = isExisting(m) ? list.find((x) => x.iso === m.iso) : undefined;
+      (sovNames[m.cell] ??= []).push(c ? commonEnOf(c) : n);
+    }
+    const { omitted, omittable } = cellRules(sovNames);
     await write(join(dir, "countries.json"), topic(`${folder}-countries`, T_COUNTRIES, countryTiers, SRC_COUNTRIES, RULER_COUNTRIES, omitted, [...omittable, ...covCountry], "pref"));
 
     // Sovereignty on capitals: only the classified real states (the trio) have a
     // capital in the data — the placeholders have none yet — so the capitals carry
     // just those, matched on the capital's name, under the same cell as the country.
     const capSov = {};
-    for (const [id, countryList] of Object.entries(CLASSIFIED_EXISTING[folder] ?? {})) {
-      for (const nm of countryList) {
-        const c = list.find((x) => commonEnOf(x) === nm);
-        for (const cap of c?.capitals ?? []) {
-          const capNm = capitalNames[cap]?.en;
-          if (capNm) (capSov[id] ??= []).push(capNm);
-        }
+    for (const [, m] of territoriesOf(folder)) {
+      if (!isExisting(m)) continue; // only the trio have a capital in the dump
+      const c = list.find((x) => x.iso === m.iso);
+      for (const cap of c?.capitals ?? []) {
+        const capNm = capitalNames[cap]?.en;
+        if (capNm) (capSov[m.cell] ??= []).push(capNm);
       }
     }
     const { omitted: capSovOmitted, omittable: capSovOmittable } = cellRules(capSov);
