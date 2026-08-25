@@ -17,7 +17,7 @@ export const it: UIStrings = {
     wordsOf: (selected, total) => `${selected} di ${total} parol${total === 1 ? "a" : "e"}`,
   },
   names: {
-    form: { short: "corto", long: "lungo", both: "entrambi", all: "tutti" },
+    form: { pref: "preferito", short: "corto", long: "lungo", both: "entrambi", all: "tutti" },
     formLabel: (group) => `Forma del nome per ${group}`,
   },
   fame: {

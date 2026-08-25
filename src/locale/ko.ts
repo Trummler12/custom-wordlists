@@ -22,7 +22,7 @@ export const ko: UIStrings = {
     wordsOf: (selected, total) => `${total}개 중 ${selected}개 단어`,
   },
   names: {
-    form: { short: "짧게", long: "길게", both: "둘 다", all: "모두" },
+    form: { pref: "선호", short: "짧게", long: "길게", both: "둘 다", all: "모두" },
     formLabel: (group) => `${group}의 이름 형식`,
   },
   fame: {

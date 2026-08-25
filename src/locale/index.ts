@@ -39,7 +39,7 @@ export interface TreeStrings {
 
 /** The short/long name-form dropdown. */
 export interface NamesStrings {
-  form: { short: string; long: string; both: string; all: string };
+  form: { pref: string; short: string; long: string; both: string; all: string };
   formLabel: (group: string) => string;
 }
 

@@ -1,6 +1,6 @@
 <script lang="ts">
   import type { Group, NamesMode } from "../../lib/types";
-  import { groupHasNames, groupHasVariants } from "../../lib/words";
+  import { groupHasNames, groupHasPref, groupHasVariants } from "../../lib/words";
   import { lang } from "../../state/lang.svelte";
   import { selection } from "../../state/selection.svelte";
 
@@ -25,6 +25,9 @@
     onchange={(e) => selection.setMode(tid, group, e.currentTarget.value as NamesMode)}
   >
     {#if mixed}<option value="" hidden>{lang.ui.names.form[mode]}</option>{/if}
+    {#if groupHasPref(group, lang.current)}
+      <option value="pref">{lang.ui.names.form.pref}</option>
+    {/if}
     <option value="short">{lang.ui.names.form.short}</option>
     <option value="long">{lang.ui.names.form.long}</option>
     <option value="both">{lang.ui.names.form.both}</option>
