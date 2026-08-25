@@ -94,16 +94,16 @@
       {"en":"Solomon Islands","de":{"pref":"Salomonen","others":["Salomoninseln","Solomon-Inseln"]},"es":{"pref":"Islas Salomón","others":["Salomón"]},"fr":{"pref":"Îles Salomon","others":["Iles Salomon","Salomon"]},"it":{"pref":"Isole Salomone","others":["Isole Solomon","Salomone, isole"]},"ja":"ソロモン諸島","ko":{"pref":"솔로몬 제도","others":["솔로몬"]},"zh-Hans":"所罗门群岛","zh-Hant":"索羅門群島"},
       {"en":{"pref":"Vanuatu","others":["Republic of Vanuatu"]},"de":"Vanuatu","es":"Vanuatu","fr":{"pref":"Vanuatu","others":["République de Vanuatu"]},"it":"Vanuatu","ja":{"pref":"バヌアツ","long":"バヌアツ共和国"},"ko":"바누아투","zh-Hans":"瓦努阿图","zh-Hant":"萬那杜"},
       {"en":{"pref":"Samoa","others":["Independent State of Samoa"]},"de":"Samoa","es":"Samoa","fr":"Samoa","it":"Samoa","ja":{"pref":"サモア","others":["西サモア"]},"ko":"사모아","zh-Hans":"萨摩亚","zh-Hant":"薩摩亞"},
-      {"en":"Guam","?":["de","es","fr","it","ja","ko","zh-Hans","zh-Hant"]},
+      {"en":"Guam","ja":"グアム","ko":"괌","zh-Hans":"关岛","zh-Hant":"關島"},
       {"en":"Kiribati","ja":{"pref":"キリバス","long":"キリバス共和国"},"ko":{"pref":"키리바시","long":"키리바티"},"zh-Hans":"基里巴斯","zh-Hant":"吉里巴斯"},
       {"en":"Tonga","ja":{"pref":"トンガ","long":"トンガ王国"},"ko":"통가","zh-Hans":"汤加","zh-Hant":"東加"},
       {"en":{"pref":"Federated States of Micronesia","short":"Micronesia","others":["Micronesia, Federated States Of"]},"de":{"pref":"Mikronesien","others":["Föderierte Staaten von Mikronesien"]},"es":{"pref":"Micronesia","others":["Estados Federados de Micronesia"]},"fr":{"pref":"Micronésie","long":"États fédérés de Micronésie"},"it":{"pref":"Micronesia","others":["Stati Federati di Micronesia"]},"ja":"ミクロネシア連邦","ko":{"pref":"미크로네시아","others":["미크로네시아 연방"]},"zh-Hans":"密克罗尼西亚联邦","zh-Hant":{"pref":"密克羅尼西亞","long":"密克罗尼西亚"}},
       {"en":"Marshall Islands","de":{"pref":"Marshallinseln","long":"Marshall-Inseln"},"es":{"pref":"Islas Marshall","others":["Marshall"]},"fr":{"pref":"Îles Marshall","others":["Marshall, îles"]},"it":"Isole Marshall","ja":"マーシャル諸島","ko":"마셜 제도","zh-Hans":"马绍尔群岛","zh-Hant":"馬紹爾群島"},
       {"en":"Palau","es":"Palaos","fr":"Palaos","ja":"パラオ","ko":"팔라우","zh-Hans":"帕劳","zh-Hant":"帛琉"},
-      {"en":"Cook Islands","?":["de","es","fr","it","ja","ko","zh-Hans","zh-Hant"]},
+      {"en":"Cook Islands","de":"Cook-Inseln","es":"Islas Cook","fr":{"pref":"Îles Cook","others":["Iles Cook"]},"it":"Isole Cook","ja":"クック諸島","ko":{"pref":"쿡제도","long":"쿡 제도"},"zh-Hans":"库克群岛","zh-Hant":"庫克群島"},
       {"en":{"pref":"Nauru","others":["Republic of Nauru"]},"de":"Nauru","es":"Nauru","fr":"Nauru","it":"Nauru","ja":"ナウル","ko":"나우루","zh-Hans":"瑙鲁","zh-Hant":"諾魯"},
       {"en":"Tuvalu","ja":"ツバル","ko":"투발루","zh-Hans":{"pref":"图瓦卢","others":["圖瓦盧"]},"zh-Hant":"吐瓦魯"},
-      {"en":"Niue","?":["de","es","fr","it","ja","ko","zh-Hans","zh-Hant"]}
+      {"en":"Niue","es":{"pref":"Niue","others":["Isla Niue"]},"fr":{"pref":"Niue","others":["Nioué","Niué"]},"ja":{"pref":"ニウエ","long":"ニウエ島"},"ko":"니우에","zh-Hans":{"pref":"纽埃","others":["紐埃"]},"zh-Hant":"紐埃島"}
     ]
   ],
   "tierConditions": [

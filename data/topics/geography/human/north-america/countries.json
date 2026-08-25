@@ -83,7 +83,7 @@
 
     [
       {"en":{"pref":"Panama","others":["Republic of Panama"]},"de":"Panama","es":{"pref":"Panamá","others":["República de Panamá"]},"fr":{"pref":"Panama","others":["Panamá"]},"it":"Panamá","ja":"パナマ","ko":"파나마","zh-Hans":"巴拿马","zh-Hant":"巴拿馬"},
-      {"en":"Puerto Rico","?":["de","es","fr","it","ja","ko","zh-Hans","zh-Hant"]},
+      {"en":{"pref":"Puerto Rico","others":["Commonwealth of Puerto Rico"]},"de":"Puerto Rico","es":{"pref":"Puerto Rico","others":["Borinquen","Estado Libre Asociado de Puerto Rico"]},"fr":"Porto Rico","it":"Portorico","ja":"プエルトリコ","ko":"푸에르토리코","zh-Hant":"波多黎各","?":["zh-Hans"]},
       {"en":"Jamaica","de":"Jamaika","fr":"Jamaïque","it":"Giamaica","ja":"ジャマイカ","ko":"자메이카","zh-Hans":"牙买加","zh-Hant":"牙買加"},
       {"en":{"pref":"Trinidad and Tobago","others":["Trinidad & Tobago"]},"de":"Trinidad und Tobago","es":"Trinidad y Tobago","fr":{"pref":"Trinité-et-Tobago","others":["Trinidad et Tobago"]},"it":"Trinidad e Tobago","ja":{"pref":"トリニダード・トバゴ","long":"トリニダード・トバゴ共和国"},"ko":"트리니다드 토바고","zh-Hans":"特立尼达和多巴哥","zh-Hant":"千里達及托巴哥"}
     ],
@@ -97,7 +97,7 @@
       {"en":{"pref":"Saint Vincent and the Grenadines","short":"St Vincent and Grenadines","others":["St. Vincent & Grenadines"]},"de":"St. Vincent und die Grenadinen","es":"San Vicente y las Granadinas","fr":"Saint-Vincent-et-les-Grenadines","it":{"pref":"Saint Vincent e Grenadine","others":["Saint Vincent e Grenadines"]},"ja":{"pref":"セントビンセント及びグレナディーン諸島","others":["セントビンセント・グレナディーン"]},"ko":{"pref":"세인트빈센트그레나딘","long":"세인트 빈센트 그레나딘","others":["세인트빈센트 그레나딘"]},"zh-Hans":"圣文森特和格林纳丁斯","zh-Hant":"聖文森及格瑞那丁"},
       {"en":{"pref":"Antigua and Barbuda","others":["Antigua & Barbuda"]},"de":"Antigua und Barbuda","es":"Antigua y Barbuda","fr":{"pref":"Antigua-et-Barbuda","others":["Antigue-et-Barbude"]},"it":"Antigua e Barbuda","ja":{"pref":"アンティグアバブーダ","long":"アンティグア・バーブーダ"},"ko":{"pref":"앤티가 바부다","others":["안티가 바부다"]},"zh-Hans":"安提瓜和巴布达","zh-Hant":"安地卡及巴布達"},
       {"en":{"pref":"Dominica","others":["Commonwealth of Dominica"]},"de":"Dominica","es":"Dominica","fr":"Dominique","it":"Dominica","ja":"ドミニカ国","ko":{"pref":"도미니카","others":["도미니카 연방"]},"zh-Hans":"多米尼克","zh-Hant":"多米尼克"},
-      {"en":"Greenland","?":["de","es","fr","it","ja","ko","zh-Hans","zh-Hant"]},
+      {"en":"Greenland","de":"Grönland","es":"Groenlandia","fr":"Groenland","it":"Groenlandia","ja":"グリーンランド","ko":{"pref":"그린란드","others":["그린랜드"]},"zh-Hans":"格陵兰","zh-Hant":"格陵蘭"},
       {"en":{"pref":"Saint Kitts and Nevis","others":["St. Kitts and Nevis","St. Kitts & Nevis"]},"de":{"pref":"St. Kitts und Nevis","others":["Föderation St. Kitts und Nevis"]},"es":{"pref":"San Cristóbal y Nieves","others":["San Cristóbal y Nevis"]},"fr":{"pref":"Saint-Christophe-et-Niévès","others":["Saint-Kitts-et-Nevis"]},"it":{"pref":"Saint Kitts e Nevis","long":"Saint Christopher e Nevis"},"ja":{"pref":"セントクリストファー・ネビス","others":["セントクリストファー・ネイビス"]},"ko":{"pref":"세인트키츠 네비스","long":"세인트 키츠 네비스","others":["세인트크리스토퍼 네비스"]},"zh-Hans":{"pref":"圣基茨和尼维斯","others":["聖克里斯多福與尼維斯"]},"zh-Hant":"聖克里斯多福及尼維斯"}
     ]
   ],

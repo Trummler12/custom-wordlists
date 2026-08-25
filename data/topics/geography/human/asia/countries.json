@@ -147,12 +147,12 @@
       {"en":"United Arab Emirates","de":"Vereinigte Arabische Emirate","es":"Emiratos Árabes Unidos","fr":"Émirats Arabes Unis","it":"Emirati Arabi Uniti","ja":"アラブ首長国連邦","ko":{"pref":"아랍에미리트","long":"아랍에미리트 연합"},"zh-Hans":"阿拉伯联合酋长国","zh-Hant":{"pref":"阿拉伯聯合大公國","others":["阿拉伯联合酋长国"]}},
       {"en":{"pref":"Israel","others":["State of Israel"]},"de":"Israel","es":"Israel","fr":"Israël","it":"Israele","ja":{"pref":"イスラエル","long":"イスラエル国"},"ko":"이스라엘","zh-Hans":"以色列","zh-Hant":"以色列"},
       {"en":{"pref":"Tajikistan","others":["Republic of Tajikistan"]},"de":"Tadschikistan","es":"Tayikistán","fr":"Tadjikistan","it":"Tagikistan","ja":{"pref":"タジキスタン","long":"タジキスタン共和国"},"ko":{"pref":"타지크스탄","long":"타지키스탄"},"zh-Hans":"塔吉克斯坦","zh-Hant":"塔吉克"},
-      {"en":"Hong Kong","?":["de","es","fr","it","ja","ko","zh-Hans","zh-Hant"]},
+      {"en":{"pref":"Hong Kong","others":["Hong Kong S.A.R","Hong Kong Special Administrative Region"]},"de":{"pref":"Hong Kong","short":"Hongkong","others":["Sonderverwaltungszone Hongkong der Volksrepublik China"]},"es":"Hong Kong","fr":"Hong Kong","it":"Hong Kong","ja":"香港","ko":"홍콩","zh-Hant":{"pref":"香港","others":["香港特別行政區"]},"?":["zh-Hans"]},
       {"en":{"pref":"Kyrgyzstan","others":["Kyrgyz Republic"]},"de":{"pref":"Kirgisistan","others":["Kirgistan"]},"es":{"pref":"Kirguistán","others":["Kirgizistán","Kirguizistán"]},"fr":"Kirghizstan","it":"Kirghizistan","ja":{"pref":"キルギス","long":"キルギス共和国","others":["キルギスタン"]},"ko":"키르기스스탄","zh-Hans":"吉尔吉斯斯坦","zh-Hant":{"pref":"吉爾吉斯","others":["吉尔吉克斯坦"]}},
       {"en":{"pref":"Laos","others":["Lao","Lao PDR","Lao People’s Democratic Republic"]},"de":"Laos","es":"Laos","fr":"Laos","it":"Laos","ja":"ラオス","ko":"라오스","zh-Hans":"老挝","zh-Hant":{"pref":"寮國","others":["老挝人民民主共和国"]}},
       {"en":"Turkmenistan","es":"Turkmenistán","fr":{"pref":"Turkménistan","others":["Turkmenistan"]},"ja":"トルクメニスタン","ko":{"pref":"투르크메니스탄","others":["투르크멘"]},"zh-Hans":"土库曼斯坦","zh-Hant":"土庫曼"},
       {"en":{"pref":"Lebanon","others":["Republic of Lebanon"]},"de":"Libanon","es":{"pref":"Líbano","others":["el país del cedro"]},"fr":"Liban","it":"Libano","ja":{"pref":"レバノン","long":"レバノン共和国"},"ko":"레바논","zh-Hans":"黎巴嫩","zh-Hant":"黎巴嫩"},
-      {"en":"Iraqi Kurdistan","?":["de","es","fr","it","ja","ko","zh-Hans","zh-Hant"]},
+      {"en":{"pref":"Iraqi Kurdistan","others":["Kurdistan"]},"?":["de","es","fr","it","ja","ko","zh-Hans","zh-Hant"]},
       {"en":{"pref":"Singapore","others":["Republic of Singapore"]},"de":{"pref":"Singapur","others":["Republik Singapur"]},"es":"Singapur","fr":"Singapour","it":"Singapore","ja":"シンガポール","ko":{"pref":"싱가포르","others":["싱가폴"]},"zh-Hans":"新加坡共和国","zh-Hant":"新加坡"},
       {"en":{"pref":"Palestine","others":["occupied Palestinian Territory","oPT","Palestinian Territories","Palestinian Territory","State of Palestine"]},"de":{"pref":"Palästina","others":["Staat Palästina"]},"es":"Palestina","fr":{"pref":"Palestine","others":["État de Palestine"]},"it":{"pref":"Palestina","others":["Stato di Palestina","Territori palestinesi"]},"ja":"パレスチナ","ko":"팔레스타인","zh-Hans":"巴勒斯坦","zh-Hant":{"pref":"巴勒斯坦","long":"巴勒斯坦领土"}}
     ],
@@ -169,11 +169,11 @@
 
     [
       {"en":"Bhutan","es":"Bután","fr":{"pref":"Bhoutan","others":["Bhutan"]},"ja":{"pref":"ブータン","long":"ブータン王国"},"ko":"부탄","zh-Hans":"不丹","zh-Hant":"不丹"},
-      {"en":"Macau","?":["de","es","fr","it","ja","ko","zh-Hans","zh-Hant"]},
+      {"en":{"pref":"Macau","others":["Macao","Macao S.A.R","Macao Special Administrative Region of the People's Republic of China","Macau Special Administrative Region"]},"de":{"pref":"Macau","others":["Macao","Sonderverwaltungszone Macau"]},"es":"Macao","fr":"Macao","it":"Macao","ja":"マカオ","ko":"마카오","zh-Hans":{"pref":"澳门","others":["澳门特别行政区"]},"zh-Hant":"澳門"},
       {"en":{"pref":"Brunei","others":["Brunei Darussalam"]},"de":{"pref":"Brunei","long":"Brunei Darussalam"},"es":"Brunéi","fr":{"pref":"Brunei","long":"Brunéi Darussalam"},"it":"Brunei","ja":"ブルネイ","ko":"브루나이","zh-Hans":"文莱","zh-Hant":"汶萊"},
       {"en":{"pref":"Maldives","others":["Republic of Maldives"]},"de":"Malediven","es":"Maldivas","fr":"Maldives","it":"Maldive","ja":{"pref":"モルディブ","others":["モルジブ"]},"ko":"몰디브","zh-Hans":"马尔代夫","zh-Hant":"馬爾地夫"},
-      {"en":"Abkhazia","?":["de","es","fr","it","ja","ko","zh-Hans","zh-Hant"]},
-      {"en":"South Ossetia","?":["de","es","fr","it","ja","ko","zh-Hans","zh-Hant"]}
+      {"en":"Abkhazia","de":"Abchasien","es":"Abjasia","fr":"Abkhazie","it":"Abcasia","ja":"アブハジア","ko":"압하스","zh-Hans":"阿布哈茲","?":["zh-Hant"]},
+      {"en":{"pref":"South Ossetia","others":["Republic of South Ossetia","State of Alania"]},"de":"Südossetien","fr":"Ossétie du Sud-Alanie","?":["es","it","ja","ko","zh-Hans","zh-Hant"]}
     ]
   ],
   "tierConditions": [
