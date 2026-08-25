@@ -214,7 +214,8 @@ const SOVEREIGNTY = "sovereignty";
  *  columns are de-facto control (1 fully independent, 2 partially autonomous). The
  *  top-left `Reguläre Staaten` cell is the unruled base (every sovereign state no
  *  cell matches). `default` decides the array and, together, the cells form the
- *  default staircase — column 1 included through row 3, column 2 through row 2. Every
+ *  default staircase — column 1 included through row 4, column 2 through row 3, so
+ *  only the bottom-right cell (row 4, col 2) hides by default. Every
  *  reason opens lower-case with the countable noun so it reads on from the panel's
  *  "up to N"; seven UI languages, the two Chinese UIs falling back to English. */
 const CELLS = {
@@ -272,7 +273,7 @@ const CELLS = {
   },
   "special-status": {
     cell: [3, 2],
-    default: "omitted",
+    default: "omittable",
     reason: {
       en: "highly autonomous territories with a distinct international presence, often taken for countries of their own",
       de: "weitgehend autonome Gebiete mit eigenständigem internationalem Auftreten, die viele für eigene Länder halten",
@@ -285,7 +286,7 @@ const CELLS = {
   },
   "pure-de-facto": {
     cell: [4, 1],
-    default: "omitted",
+    default: "omittable",
     reason: {
       en: "self-declared states recognized by few or no UN members",
       de: "selbsterklärte Staaten, von wenigen oder keinen UN-Mitgliedern anerkannt",
