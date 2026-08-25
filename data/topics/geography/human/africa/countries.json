@@ -61,7 +61,7 @@
     },
     {
       "id": "rare-coverage",
-      "match": ["Egypt","Mali","Tanzania","Western Sahara"],
+      "match": ["Egypt","Mali","Tanzania"],
       "count": true,
       "icon": "geoguessr",
       "reason": {
