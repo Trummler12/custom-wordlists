@@ -78,7 +78,7 @@
     },
     {
       "id": "no-coverage",
-      "match": ["Moldova","Vatican City"],
+      "match": ["Moldova","Northern Cyprus","Transnistria","Vatican City"],
       "count": true,
       "icon": "geoguessr",
       "reason": {

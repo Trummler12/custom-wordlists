@@ -78,7 +78,7 @@
     },
     {
       "id": "no-coverage",
-      "match": ["Armenia","Azerbaijan","Bahrain","Brunei","Iran","Kuwait","Maldives","Myanmar","North Korea","Saudi Arabia","Tajikistan","Timor-Leste","Turkmenistan","Uzbekistan","Yemen"],
+      "match": ["Abkhazia","Armenia","Azerbaijan","Bahrain","Brunei","Iran","Iraqi Kurdistan","Kuwait","Maldives","Myanmar","North Korea","Saudi Arabia","South Ossetia","Tajikistan","Timor-Leste","Turkmenistan","Uzbekistan","Yemen"],
       "count": true,
       "icon": "geoguessr",
       "reason": {
