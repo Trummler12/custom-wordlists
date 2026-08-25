@@ -25,12 +25,14 @@
     onchange={(e) => selection.setMode(tid, group, e.currentTarget.value as NamesMode)}
   >
     {#if mixed}<option value="" hidden>{lang.ui.names.form[mode]}</option>{/if}
-    {#if groupHasPref(group, lang.current)}
-      <option value="pref">{lang.ui.names.form.pref}</option>
-    {/if}
     <option value="short">{lang.ui.names.form.short}</option>
     <option value="long">{lang.ui.names.form.long}</option>
     <option value="both">{lang.ui.names.form.both}</option>
+    <!-- `pref` sits below `both`, so the order reads that both and pref alike build on
+         short/long — pref not above, where it would read as "even more than both". -->
+    {#if groupHasPref(group, lang.current)}
+      <option value="pref">{lang.ui.names.form.pref}</option>
+    {/if}
     {#if groupHasVariants(group, lang.current)}
       <option value="all">{lang.ui.names.form.all}</option>
     {/if}
