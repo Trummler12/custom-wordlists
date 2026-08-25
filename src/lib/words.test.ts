@@ -80,6 +80,28 @@ describe("resolveWord", () => {
     expect(resolveWord(asia, "de")).toEqual({ short: "Asien" });
     expect(resolveWord(asia, "fr")).toEqual({ short: "Asia" });
   });
+
+  it("derives romaji off the base name pair of a language-major map", () => {
+    // A country entry: no ja-Latn key, so a derived read romanizes each Japanese
+    // form of the `ja` pair — the reading `transliterate` alone can't reach, since
+    // the map's `ja` is a pair, not a string.
+    const china = { en: { pref: "China" }, ja: { pref: "中国", others: ["中華人民共和国"] } };
+    expect(resolveWord(china, "ja-Latn", true)).toEqual({
+      pref: "Chuugoku",
+      others: ["Chuukajinminkyouwakoku"],
+    });
+  });
+
+  it("keeps the Japanese of a form the table can't read, not the English", () => {
+    // 手紙 is not in the dictionary, so its reading can't be derived; it must show
+    // itself rather than fall through to the English name and hide the gap.
+    const flat = { en: "Japanese", ja: "日本語" };
+    expect(resolveWord(flat, "ja-Latn", true)).toBe("Nihongo");
+    const miss = { en: "Letter", ja: "手紙" };
+    expect(resolveWord(miss, "ja-Latn", true)).toBe("手紙");
+    const pairMiss = { en: { pref: "Letter" }, ja: { pref: "手紙" } };
+    expect(resolveWord(pairMiss, "ja-Latn", true)).toEqual({ pref: "手紙" });
+  });
 });
 
 describe("renderEntry", () => {
