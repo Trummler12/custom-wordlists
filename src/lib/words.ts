@@ -140,8 +140,8 @@ export function resolveWord(e: WordEntry, lang: string, derived = false): Word {
  *  to `pref` when its own form is absent — and only to pref, so a `{ long }`-only
  *  plate still drops out of `short` and a `{ short }`-only continent out of `long`,
  *  exactly as before pref existed (there, pref is absent and the fallback is a no-op).
- *  A form that renders identically to another collapses, so "both" can't duplicate;
- *  `all` emits pref, short, long and every `others` variant, deduplicated. */
+ *  `both` emits the explicit pref, short and long (no fallback), `all` those plus every
+ *  `others` variant — both deduplicated, so a form shared across the three shows once. */
 export function renderEntry(
   e: WordEntry,
   mode: NamesMode,
@@ -169,12 +169,14 @@ export function renderEntry(
     }
     return forms;
   }
-  // both: the short and long forms, each falling back to pref, collapsed if equal.
+  // both: pref, short and long — the explicit forms, deduplicated. Unlike the
+  // single-form modes it does not fall back, so a pref-less {short}/{long} pair still
+  // yields just its one form. Where all three differ (a country with a distinct short)
+  // it renders three, which is the point of the mode sitting below pref in the dropdown.
   const forms: string[] = [];
-  const s = w.short ?? w.pref;
-  const l = w.long ?? w.pref;
-  if (s !== undefined) forms.push(s);
-  if (l !== undefined && l !== s) forms.push(l);
+  for (const v of [w.pref, w.short, w.long]) {
+    if (v !== undefined && !forms.includes(v)) forms.push(v);
+  }
   return forms;
 }
 

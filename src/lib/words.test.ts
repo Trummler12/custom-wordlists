@@ -158,6 +158,18 @@ describe("renderEntry", () => {
     expect(renderEntry({ long: "Pacific plate" }, "short", "en")).toEqual([]);
   });
 
+  it("emits all three explicit forms under 'both' when they differ, no fallback", () => {
+    const e = { pref: "Democratic Republic of Congo", short: "DR Congo", long: "Democratic Republic of the Congo" };
+    expect(renderEntry(e, "both", "en")).toEqual([
+      "Democratic Republic of Congo",
+      "DR Congo",
+      "Democratic Republic of the Congo",
+    ]);
+    // A pref-less pair still yields just its two, so B11's continents/plates are unmoved.
+    expect(renderEntry({ short: "Asia" }, "both", "en")).toEqual(["Asia"]);
+    expect(renderEntry({ short: "A", long: "Alpha" }, "both", "en")).toEqual(["A", "Alpha"]);
+  });
+
   it("emits pref, short, long and others under 'all', deduplicated", () => {
     const e = { pref: "United States", long: "United States of America", others: ["USA", "America"] };
     expect(renderEntry(e, "pref", "en")).toEqual(["United States"]);
