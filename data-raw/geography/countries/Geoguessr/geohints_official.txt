@@ -1,4 +1,4 @@
-Africa
+# Africa
 Botswana
 Egypt
 Eswatini
@@ -19,7 +19,7 @@ Tunisia
 Uganda
 Antarctica
 Antarctica (McMurdo Station)
-Asia
+# Asia
 Afghanistan
 Bangladesh
 Bhutan
@@ -57,7 +57,7 @@ Taiwan
 Thailand
 United Arab Emirates
 Vietnam
-Europe
+# Europe
 Åland
 Albania
 Andorra
@@ -109,7 +109,7 @@ Switzerland
 Turkey
 Ukraine
 United Kingdom
-North America
+# North America
 Bermuda
 Canada
 Costa Rica
@@ -133,7 +133,7 @@ Northern Mariana Islands
 Pitcairn Islands
 United States Minor Outlying Islands
 Vanuatu
-South America
+# South America
 Argentina
 Bolivia
 Brazil
@@ -146,4 +146,10 @@ Peru
 South Georgia and the South Sandwich Islands
 Uruguay
 
-https://geohints.com/meta/countries - Only show countries with offical coverage: true
+# https://geohints.com/meta/countries - Only show countries with offical coverage: true
+
+# --- Hand-added: territories with official coverage that the geohints export omits ---
+# (kept here because no-coverage is maintained off this file; a fresh pull must not lose them)
+Western Sahara
+Cook Islands
+Niue
