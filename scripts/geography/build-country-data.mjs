@@ -44,6 +44,7 @@ import { readFile, writeFile, mkdir } from "node:fs/promises";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 import { serializeTopic } from "../lib/serialize.mjs";
+import { bucketCountry, commonEn } from "./bucket-names.mjs";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..", "..");
 const RAW = join(ROOT, "data-raw", "geography");
@@ -194,15 +195,15 @@ const RULER_CAPITALS = {
   },
 };
 
-/** The short name for the three formal-label states, per language. `long` is the
- *  dump's formal label; this is what the row shows. */
-const SHORT = {
-  Q148: { en: "China", de: "China", es: "China", fr: "Chine", it: "Cina", ja: "中国", ko: "중국", "zh-Hans": "中国", "zh-Hant": "中國" },
-  Q29999: { en: "Netherlands", de: "Niederlande", es: "Países Bajos", fr: "Pays-Bas", it: "Paesi Bassi", ja: "オランダ", ko: "네덜란드", "zh-Hans": "荷兰", "zh-Hant": "荷蘭" },
-  Q756617: { en: "Denmark", de: "Dänemark", es: "Dinamarca", fr: "Danemark", it: "Danimarca", ja: "デンマーク", ko: "덴마크", "zh-Hans": "丹麦", "zh-Hant": "丹麥" },
-};
-/** Names the dump is missing outright — St. John's carries no English label. */
+/** Names the dump is missing outright — St. John's carries no English label. The
+ *  formal-label states (China, Netherlands, Denmark) need no override anymore: the
+ *  geonames bucket picks their common name as `pref` on its own. */
 const NAME_OVERRIDE = { "Q36262.en": "St. John's" };
+
+/** Structure rows the Wikidata dump left without an ISO code, mapped by hand so they
+ *  still reach their geonames names: the Kingdom of Denmark (Q756617) carries none —
+ *  the code belongs to Denmark proper. */
+const ISO_OVERRIDE = { Q756617: "DK" };
 
 /** Every content language but English — the `?` list a placeholder entry carries,
  *  saying it has no name yet in any of them. */
@@ -478,6 +479,7 @@ async function readStructure() {
       const [country, iso, pop, continents, capitals] = l.split("\t");
       return {
         country,
+        iso,
         pop: pop ? Number(pop) : 0,
         continents: continents ? continents.split("|") : [],
         capitals: capitals ? capitals.split("|") : [],
@@ -521,7 +523,7 @@ function entry(qid, names, shortByLang) {
   return map;
 }
 
-function topic(id, title, tiers, sources, rulerTooltip, omitted, omittable) {
+function topic(id, title, tiers, sources, rulerTooltip, omitted, omittable, defaultNames = "short") {
   return {
     id,
     title,
@@ -529,7 +531,7 @@ function topic(id, title, tiers, sources, rulerTooltip, omitted, omittable) {
     sources,
     lastUpdated: TODAY,
     lastChecked: TODAY,
-    defaultNames: "short",
+    defaultNames,
     ...(omitted?.length ? { omitted } : {}),
     ...(omittable?.length ? { omittable } : {}),
     tiers,
@@ -542,7 +544,8 @@ function topic(id, title, tiers, sources, rulerTooltip, omitted, omittable) {
 }
 
 const SRC_COUNTRIES = [
-  "Names & population: Wikidata sovereign states (P31 Q3624078) — https://www.wikidata.org/wiki/Q3624078 (see scripts/geography/dump-country-data.mjs)",
+  "Names & variants: geonames country info and alternate names — https://www.geonames.org/countries/ (see scripts/geography/dump-geonames.mjs)",
+  "Population & tiers: Wikidata sovereign states (P31 Q3624078) — https://www.wikidata.org/wiki/Q3624078 (see scripts/geography/dump-country-data.mjs)",
 ];
 const SRC_CAPITALS = [
   "Names: Wikidata capitals (P36) of the sovereign states — https://www.wikidata.org/wiki/Property:P36 (see scripts/geography/dump-country-data.mjs)",
@@ -554,6 +557,58 @@ async function main() {
   const capitalNames = await readColumns(join("countries", "capitals"));
   const continentNames = await readContinentNames();
   const official = await readOfficial();
+  const geo = JSON.parse(await readFile(join(RAW, "countries", "geonames-names.json"), "utf8"));
+
+  // geonames names per country QID, bucketed into pref/short/long/others and matched
+  // to the Wikidata dump by ISO code. The names come from geonames — richer, several
+  // variants per language; population, tiers and continents stay Wikidata's.
+  const geoBucketByQid = new Map();
+  for (const c of structure) {
+    const iso = ISO_OVERRIDE[c.country] ?? c.iso;
+    if (iso && geo[iso]) geoBucketByQid.set(c.country, bucketCountry(geo[iso].names, iso, LANGS));
+  }
+
+  /** A country's localized entry: names from its geonames bucket, the Wikidata dump as
+   *  the per-language fallback, languages equal to English dropped and the missing ones
+   *  listed under `?` — the same shape `entry` makes. */
+  const countryEntry = (qid) => {
+    const geoB = geoBucketByQid.get(qid);
+    const wiki = countryNames[qid];
+    const map = {};
+    const unknown = [];
+    for (const lang of LANGS) {
+      const v = geoB?.[lang] ?? NAME_OVERRIDE[`${qid}.${lang}`] ?? wiki?.[lang];
+      if (v === undefined || v === "") {
+        unknown.push(lang);
+        continue;
+      }
+      map[lang] = v;
+    }
+    if (map.en === undefined) throw new Error(`no English name for ${qid}`);
+    for (const lang of LANGS) {
+      if (lang !== "en" && JSON.stringify(map[lang]) === JSON.stringify(map.en)) delete map[lang];
+    }
+    if (unknown.length) map["?"] = unknown;
+    return map;
+  };
+
+  /** The common English name for matching against the coverage and recognition lists:
+   *  the geonames English pref, or the Wikidata English name where geonames has none. */
+  const commonEnOf = (c) => commonEn(geoBucketByQid.get(c.country)) ?? countryNames[c.country]?.en;
+
+  /** Every English form of a country — pref, short, long and the others — for matching
+   *  against the coverage lists, which spell a country however geohints happens to
+   *  ({pref:"Czechia", long:"Czech Republic"} must match the "Czech Republic" line). */
+  const enFormsOf = (c) => {
+    const en = geoBucketByQid.get(c.country)?.en;
+    if (en === undefined) {
+      const w = countryNames[c.country]?.en;
+      return w ? [w] : [];
+    }
+    if (typeof en === "string") return [en];
+    const others = en.others === undefined ? [] : Array.isArray(en.others) ? en.others : [en.others];
+    return [en.pref, en.short, en.long, ...others].filter((s) => s !== undefined);
+  };
 
   // Each country to every continent it spans, deduplicated (Q538 and Q55643 both
   // map to oceania), sorted by population within a continent.
@@ -589,7 +644,7 @@ async function main() {
     // population together — an omittable placeholder then shows in its true band.
     const extras = EXTRA.filter((e) => e.folder === folder);
     const items = [
-      ...list.map((c) => ({ pop: c.pop, make: () => entry(c.country, countryNames[c.country], SHORT[c.country]) })),
+      ...list.map((c) => ({ pop: c.pop, make: () => countryEntry(c.country) })),
       ...extras.map((e) => ({ pop: e.pop, make: () => placeholder(e.en) })),
     ].sort((a, b) => b.pop - a.pop);
     const countryTiers = [[], [], [], [], []];
@@ -599,14 +654,13 @@ async function main() {
     // all. The official list gives covered-or-not; the rare hand list overrides to
     // "covered but thin". Only none and rare become rules; the capitals inherit them,
     // matched on the capital's own name (from the country → capital mapping).
-    const shortEnOf = (c) => SHORT[c.country]?.en ?? countryNames[c.country]?.en;
     const classOf = (c) => {
-      const nm = shortEnOf(c);
-      if (RARE_COVERAGE.has(nm)) return "rare";
-      return official.has(nm) ? "full" : "none";
+      const forms = enFormsOf(c);
+      if (forms.some((n) => RARE_COVERAGE.has(n))) return "rare";
+      return forms.some((n) => official.has(n)) ? "full" : "none";
     };
     const filtered = list
-      .map((c) => ({ c, nm: shortEnOf(c), cls: classOf(c) }))
+      .map((c) => ({ c, nm: commonEnOf(c), cls: classOf(c) }))
       .filter((x) => x.cls !== "full");
     const covCountry = coverageRules(filtered.map((x) => ({ match: x.nm, rare: x.cls === "rare" })));
     const capItems = [];
@@ -619,7 +673,7 @@ async function main() {
     const covCapital = coverageRules(capItems);
 
     const { omitted, omittable } = sovereigntyRules(folder);
-    await write(join(dir, "countries.json"), topic(`${folder}-countries`, T_COUNTRIES, countryTiers, SRC_COUNTRIES, RULER_COUNTRIES, omitted, [...omittable, ...covCountry]));
+    await write(join(dir, "countries.json"), topic(`${folder}-countries`, T_COUNTRIES, countryTiers, SRC_COUNTRIES, RULER_COUNTRIES, omitted, [...omittable, ...covCountry], "pref"));
 
     // Sovereignty on capitals: only the classified real states (the trio) have a
     // capital in the data — the placeholders have none yet — so the capitals carry
@@ -627,7 +681,7 @@ async function main() {
     const capSov = {};
     for (const [id, countryList] of Object.entries(CLASSIFIED_EXISTING[folder] ?? {})) {
       for (const nm of countryList) {
-        const c = list.find((x) => countryNames[x.country]?.en === nm);
+        const c = list.find((x) => commonEnOf(x) === nm);
         for (const cap of c?.capitals ?? []) {
           const capNm = capitalNames[cap]?.en;
           if (capNm) (capSov[id] ??= []).push(capNm);
