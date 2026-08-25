@@ -16,11 +16,17 @@ export type Cell = [number, number];
 /** A stable string key for a cell, for set membership. */
 export const cellKey = (c: Cell): string => `${c[0]},${c[1]}`;
 
-/** The matrix rules of a manifest control, each paired with its cell and the names
- *  it matches — dropping any rule without a cell, since the grid is placed by
- *  coordinate. */
-export function sovRules(control: IconControl[] | undefined): { id: string; cell: Cell; names: string[] }[] {
-  return (control ?? []).flatMap((r) => (r.cell ? [{ id: r.id, cell: r.cell, names: r.names ?? [] }] : []));
+/** The matrix rules of a manifest control, each paired with its cell, the names it
+ *  matches and whether it hides by default (`omit`) — dropping any rule without a
+ *  cell, since the grid is placed by coordinate. `omit` decides which way a cell's
+ *  toggle reads: a hide-by-default cell is shown when toggled, a shown-by-default
+ *  one when untoggled. */
+export function sovRules(
+  control: IconControl[] | undefined,
+): { id: string; cell: Cell; names: string[]; omit: boolean }[] {
+  return (control ?? []).flatMap((r) =>
+    r.cell ? [{ id: r.id, cell: r.cell, names: r.names ?? [], omit: !!r.omit }] : [],
+  );
 }
 
 /** Whether `a` is up-and-left of (or equal to) `b` — at least as recognized and at

@@ -61,6 +61,11 @@ export interface IconControl {
   id: string;
   cell?: [number, number];
   names?: string[];
+  /** Present and true when the rule hides by default (declared in `omitted`). The
+   *  matrix reads it to know a toggled cell of this kind is shown, not hidden — the
+   *  inverse of a shown-by-default (`omittable`) cell. Absent on the common
+   *  shown-by-default rule. */
+  omit?: boolean;
 }
 
 /** Optional display metadata for a category node (from a `_category.json`). */

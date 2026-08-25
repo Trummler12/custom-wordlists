@@ -10,7 +10,7 @@
   // contributors for a synthesized one, and every rule-carrying descendant for a
   // category row — all from the manifest, no file load. The top-left cell (row 1,
   // col 1) is `Reguläre Staaten`: always in the list, never a rule.
-  type Rule = { id: string; cell: Cell; names: string[] };
+  type Rule = { id: string; cell: Cell; names: string[]; omit: boolean };
   let { id, targets }: { id: string; targets: { tid: string; rules: Rule[] }[] } = $props();
 
   const ROWS = 4;
@@ -19,15 +19,20 @@
 
   const open = $derived(overlays.sovereigntyPanel === id);
 
-  // A cell is in force through a plain flip of an omittable, unlocked rule; a flat
-  // topic's group id equals its topic id, so the key is (tid, tid, ruleId). A rule
-  // that is NOT toggled (not omitting) means the cell is included — shown.
-  const included = (tid: string, ruleId: string) => !settings.isToggled(tid, tid, ruleId);
+  // Whether a rule's cell is shown for a target; a flat topic's group id equals its
+  // topic id, so the key is (tid, tid, ruleId). The toggle reads opposite ways by
+  // default: a shown-by-default (`omittable`) rule is shown while untoggled and
+  // hidden once toggled, a hide-by-default (`omit`) rule the reverse — so mixing
+  // the two on one grid demands the rule's own default, not `!isToggled` for all.
+  const shown = (tid: string, r: Rule): boolean => {
+    const toggled = settings.isToggled(tid, tid, r.id);
+    return r.omit ? toggled : !toggled;
+  };
 
   // Every (target, rule) pair sitting on a given cell — a leaf votes on and is
   // commanded for only the cells it actually carries.
   const holdersAt = (c: Cell) =>
-    targets.flatMap((t) => t.rules.filter((r) => cellKey(r.cell) === cellKey(c)).map((r) => ({ tid: t.tid, id: r.id })));
+    targets.flatMap((t) => t.rules.filter((r) => cellKey(r.cell) === cellKey(c)).map((r) => ({ tid: t.tid, r })));
 
   // Regular states are always in; any other cell follows the majority of its
   // holders, and a cell no target carries (empty here) is neither in nor out.
@@ -35,21 +40,23 @@
     if (cellKey(c) === cellKey(REGULAR)) return "regular";
     const holders = holdersAt(c);
     if (holders.length === 0) return "empty";
-    const inCount = holders.filter((h) => included(h.tid, h.id)).length;
+    const inCount = holders.filter((h) => shown(h.tid, h.r)).length;
     return inCount * 2 >= holders.length ? "in" : "out";
   };
 
   // Click a cell: turning it on fills the staircase up-and-left, turning it off
   // clears everything down-and-right — every rule across every target updated so the
-  // included region stays one connected block.
+  // included region stays one connected block. `toggleOmission` flips the raw
+  // toggle, which flips `shown` whichever way the rule defaults, so the staircase
+  // maths stays in terms of shown-state and needs no default of its own.
   function toggleCell(c: Cell): void {
     const state = cellState(c);
     if (state === "regular" || state === "empty") return;
     const clickedIncluded = state === "in";
     for (const t of targets) {
       for (const r of t.rules) {
-        const want = includedAfterClick(r.cell, c, clickedIncluded, included(t.tid, r.id));
-        if (included(t.tid, r.id) !== want) settings.toggleOmission(t.tid, t.tid, r.id);
+        const want = includedAfterClick(r.cell, c, clickedIncluded, shown(t.tid, r));
+        if (shown(t.tid, r) !== want) settings.toggleOmission(t.tid, t.tid, r.id);
       }
     }
   }

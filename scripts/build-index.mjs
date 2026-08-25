@@ -47,13 +47,19 @@ function countWords(topic) {
 }
 
 /** Per-icon controls a topic carries: each icon-tagged omission rule, in file
- *  order, grouped by its `icon`, kept as `{ id, cell? }`. The frontend surfaces
- *  these as a control of their own (the Geoguessr radio, the sovereignty matrix)
- *  and — put in the manifest — can render, drive and sync them across a category
- *  without loading a single topic file; the `cell` carries a matrix rule's place. */
+ *  order, grouped by its `icon`, kept as `{ id, cell?, omit? }`. The frontend
+ *  surfaces these as a control of their own (the Geoguessr radio, the sovereignty
+ *  matrix) and — put in the manifest — can render, drive and sync them across a
+ *  category without loading a single topic file; the `cell` carries a matrix rule's
+ *  place, and `omit` marks a rule that hides by default (declared in `omitted`), so
+ *  the matrix knows a toggled such cell is shown rather than hidden. */
 function controlsOf(topic) {
   const out = {};
-  for (const rule of [...(topic.omitted ?? []), ...(topic.omittable ?? [])]) {
+  const tagged = [
+    ...(topic.omitted ?? []).map((rule) => ({ rule, omit: true })),
+    ...(topic.omittable ?? []).map((rule) => ({ rule, omit: false })),
+  ];
+  for (const { rule, omit } of tagged) {
     if (!rule.icon) continue;
     const entry = { id: rule.id };
     // A matrix rule carries its cell and the names it matches, so the grid can
@@ -62,6 +68,9 @@ function controlsOf(topic) {
       entry.cell = rule.cell;
       entry.names = Array.isArray(rule.match) ? rule.match : [rule.match];
     }
+    // Only the hide-by-default rules carry the flag; a shown-by-default one is the
+    // common case and stays lean.
+    if (omit) entry.omit = true;
     (out[rule.icon] ??= []).push(entry);
   }
   return out;
