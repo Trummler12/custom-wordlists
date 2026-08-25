@@ -1,0 +1,29 @@
+{
+  "_comment": "Territories beyond the ISO sovereign states, each placed in one C10 sovereignty cell. `folder` = continent; `cell` = matrix cell id (see CELLS in build-country-data). Names/capital come from geonames: `iso` reads them from geonames-names.json, `geonameId` resolves the entity directly (the six non-ISO ones), `pop` is a hand estimate for tiering where geonames has none. The recognised trio (Kosovo/Taiwan/Palestine) are already sovereign states in the dump, so they carry only their cell.",
+
+  "Kosovo":          { "folder": "europe",        "cell": "de-facto-recognized", "iso": "XK" },
+  "Taiwan":          { "folder": "asia",          "cell": "de-facto-recognized", "iso": "TW" },
+  "Palestine":       { "folder": "asia",          "cell": "de-facto-recognized", "iso": "PS" },
+
+  "Iraqi Kurdistan": { "folder": "asia",          "cell": "asymmetric-autonomy", "geonameId": 126585,  "pop": 6000000 },
+  "Åland":           { "folder": "europe",        "cell": "asymmetric-autonomy", "iso": "AX" },
+
+  "Cook Islands":    { "folder": "oceania",       "cell": "free-association",     "iso": "CK" },
+  "Niue":            { "folder": "oceania",       "cell": "free-association",     "iso": "NU" },
+
+  "Abkhazia":        { "folder": "asia",          "cell": "de-facto-narrow",      "geonameId": 6643410, "pop": 245000 },
+  "South Ossetia":   { "folder": "asia",          "cell": "de-facto-narrow",      "geonameId": 828984,  "pop": 55000 },
+
+  "Western Sahara":  { "folder": "africa",        "cell": "special-status",       "iso": "EH" },
+  "Hong Kong":       { "folder": "asia",          "cell": "special-status",       "iso": "HK" },
+  "Macau":           { "folder": "asia",          "cell": "special-status",       "iso": "MO" },
+  "Puerto Rico":     { "folder": "north-america", "cell": "special-status",       "iso": "PR" },
+
+  "Somaliland":      { "folder": "africa",        "cell": "pure-de-facto",        "geonameId": 328195,  "pop": 5700000 },
+  "Northern Cyprus": { "folder": "europe",        "cell": "pure-de-facto",        "geonameId": 8220545, "pop": 380000 },
+  "Transnistria":    { "folder": "europe",        "cell": "pure-de-facto",        "geonameId": 858889,  "pop": 470000 },
+
+  "Greenland":       { "folder": "north-america", "cell": "classic-autonomous",   "iso": "GL" },
+  "Faroe Islands":   { "folder": "europe",        "cell": "classic-autonomous",   "iso": "FO" },
+  "Guam":            { "folder": "oceania",       "cell": "classic-autonomous",   "iso": "GU" }
+}
