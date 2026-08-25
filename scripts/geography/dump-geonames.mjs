@@ -14,13 +14,9 @@
 // others, so re-bucketing needs no second trip to the network.
 import { writeFile } from "node:fs/promises";
 import { join, dirname } from "node:path";
-import { fileURLToPath } from "node:url";
+import { fileURLToPath, pathToFileURL } from "node:url";
 
 const USER = process.env.GEONAMES_USER;
-if (!USER) {
-  console.error("Set GEONAMES_USER to a geonames username with the free web services enabled.");
-  process.exit(1);
-}
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..", "..");
 const OUT = join(ROOT, "data-raw", "geography", "countries", "geonames-names.json");
@@ -44,7 +40,7 @@ async function api(path) {
  *  names are dropped. geonames tags Chinese as `zh` (mixed script), `zh-Hant` and
  *  `zh-TW`; the traditional tags are traditional, and the `zh` names they don't
  *  already hold are the simplified ones. */
-function namesFor(alt) {
+export function namesFor(alt) {
   const byTag = new Map();
   for (const a of alt ?? []) {
     if (!a.lang || a.isHistoric) continue;
@@ -84,6 +80,10 @@ function namesFor(alt) {
 }
 
 async function main() {
+  if (!USER) {
+    console.error("Set GEONAMES_USER to a geonames username with the free web services enabled.");
+    process.exit(1);
+  }
   const { geonames: countries = [] } = await api("countryInfoJSON");
   console.log(`countryInfo: ${countries.length} countries`);
 
@@ -114,7 +114,10 @@ async function main() {
   if (failed.length) console.warn(`failed (${failed.length}):\n  ${failed.join("\n  ")}`);
 }
 
-main().catch((e) => {
-  console.error(e);
-  process.exit(1);
-});
+// Run only when invoked directly, so `namesFor` can be imported without a dump firing.
+if (import.meta.url === pathToFileURL(process.argv[1]).href) {
+  main().catch((e) => {
+    console.error(e);
+    process.exit(1);
+  });
+}
