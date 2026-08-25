@@ -25,7 +25,9 @@
         "ja": "国際的に主権国家の一部と見なされる自治地域",
         "ko": "국제적으로 주권 국가의 일부로 여겨지는 자치 지역"
       }
-    },
+    }
+  ],
+  "omittable": [
     {
       "id": "special-status",
       "match": ["Puerto Rico"],
@@ -41,9 +43,7 @@
         "ja": "独自の国際的存在感を持ち、独自の国と見なされがちな高度な自治地域",
         "ko": "독자적 국제적 존재감을 지녀 독립국으로 여겨지곤 하는 고도 자치 지역"
       }
-    }
-  ],
-  "omittable": [
+    },
     {
       "id": "no-coverage",
       "match": ["Antigua and Barbuda","Bahamas","Barbados","Belize","Cuba","Dominica","El Salvador","Grenada","Haiti","Honduras","Jamaica","Nicaragua","Saint Kitts and Nevis","Saint Lucia","Saint Vincent and the Grenadines","Trinidad and Tobago"],

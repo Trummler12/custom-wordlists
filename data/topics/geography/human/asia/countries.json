@@ -9,24 +9,6 @@
   "lastUpdated": "2026-08-25",
   "lastChecked": "2026-08-25",
   "defaultNames": "pref",
-  "omitted": [
-    {
-      "id": "special-status",
-      "match": ["Hong Kong","Macau"],
-      "count": true,
-      "icon": "sovereignty",
-      "cell": [3,2],
-      "reason": {
-        "en": "highly autonomous territories with a distinct international presence, often taken for countries of their own",
-        "de": "weitgehend autonome Gebiete mit eigenständigem internationalem Auftreten, die viele für eigene Länder halten",
-        "es": "territorios muy autónomos con presencia internacional propia, que muchos toman por países propios",
-        "fr": "territoires très autonomes à présence internationale propre, que beaucoup prennent pour des pays à part entière",
-        "it": "territori molto autonomi con una presenza internazionale propria, che molti scambiano per paesi a sé",
-        "ja": "独自の国際的存在感を持ち、独自の国と見なされがちな高度な自治地域",
-        "ko": "독자적 국제적 존재감을 지녀 독립국으로 여겨지곤 하는 고도 자치 지역"
-      }
-    }
-  ],
   "omittable": [
     {
       "id": "asymmetric-autonomy",
@@ -74,6 +56,22 @@
         "it": "stati pienamente sovrani riconosciuti da molti, ma non tutti, i membri dell'ONU",
         "ja": "全てではないが多くの国連加盟国に承認された、完全な主権国家",
         "ko": "전부는 아니지만 다수의 유엔 회원국이 승인한 완전한 주권 국가"
+      }
+    },
+    {
+      "id": "special-status",
+      "match": ["Hong Kong","Macau"],
+      "count": true,
+      "icon": "sovereignty",
+      "cell": [3,2],
+      "reason": {
+        "en": "highly autonomous territories with a distinct international presence, often taken for countries of their own",
+        "de": "weitgehend autonome Gebiete mit eigenständigem internationalem Auftreten, die viele für eigene Länder halten",
+        "es": "territorios muy autónomos con presencia internacional propia, que muchos toman por países propios",
+        "fr": "territoires très autonomes à présence internationale propre, que beaucoup prennent pour des pays à part entière",
+        "it": "territori molto autonomi con una presenza internazionale propria, che molti scambiano per paesi a sé",
+        "ja": "独自の国際的存在感を持ち、独自の国と見なされがちな高度な自治地域",
+        "ko": "독자적 국제적 존재감을 지녀 독립국으로 여겨지곤 하는 고도 자치 지역"
       }
     },
     {

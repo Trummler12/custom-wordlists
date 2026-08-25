@@ -25,22 +25,6 @@
         "ja": "国際的に主権国家の一部と見なされる自治地域",
         "ko": "국제적으로 주권 국가의 일부로 여겨지는 자치 지역"
       }
-    },
-    {
-      "id": "pure-de-facto",
-      "match": ["Northern Cyprus","Transnistria"],
-      "count": true,
-      "icon": "sovereignty",
-      "cell": [4,1],
-      "reason": {
-        "en": "self-declared states recognized by few or no UN members",
-        "de": "selbsterklärte Staaten, von wenigen oder keinen UN-Mitgliedern anerkannt",
-        "es": "estados autoproclamados reconocidos por pocos o ningún miembro de la ONU",
-        "fr": "états autoproclamés reconnus par peu ou aucun membre de l'ONU",
-        "it": "stati autoproclamati riconosciuti da pochi o nessun membro dell'ONU",
-        "ja": "国連加盟国のごく一部にしか、あるいは全く承認されない自称国家",
-        "ko": "유엔 회원국 중 극소수만이 또는 전혀 승인하지 않는 자칭 국가"
-      }
     }
   ],
   "omittable": [
@@ -74,6 +58,22 @@
         "it": "stati pienamente sovrani riconosciuti da molti, ma non tutti, i membri dell'ONU",
         "ja": "全てではないが多くの国連加盟国に承認された、完全な主権国家",
         "ko": "전부는 아니지만 다수의 유엔 회원국이 승인한 완전한 주권 국가"
+      }
+    },
+    {
+      "id": "pure-de-facto",
+      "match": ["Northern Cyprus","Transnistria"],
+      "count": true,
+      "icon": "sovereignty",
+      "cell": [4,1],
+      "reason": {
+        "en": "self-declared states recognized by few or no UN members",
+        "de": "selbsterklärte Staaten, von wenigen oder keinen UN-Mitgliedern anerkannt",
+        "es": "estados autoproclamados reconocidos por pocos o ningún miembro de la ONU",
+        "fr": "états autoproclamés reconnus par peu ou aucun membre de l'ONU",
+        "it": "stati autoproclamati riconosciuti da pochi o nessun membro dell'ONU",
+        "ja": "国連加盟国のごく一部にしか、あるいは全く承認されない自称国家",
+        "ko": "유엔 회원국 중 극소수만이 또는 전혀 승인하지 않는 자칭 국가"
       }
     },
     {
