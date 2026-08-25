@@ -3,6 +3,7 @@ import {
   displayName,
   groupEntries,
   groupHasNames,
+  groupHasPref,
   groupHasVariants,
   overlongForms,
   renderCount,
@@ -140,6 +141,33 @@ describe("renderEntry", () => {
     expect(renderEntry(e, "all", "de")).toEqual(["Köln", "Domstadt"]);
     expect(renderEntry(e, "all", "en")).toEqual(["Cologne", "Colonia"]);
   });
+
+  it("falls a mode with no form of its own back to pref — but only to pref", () => {
+    const e = { pref: "a", long: "bc" };
+    expect(renderEntry(e, "pref", "en")).toEqual(["a"]);
+    expect(renderEntry(e, "short", "en")).toEqual(["a"]); // short absent → pref
+    expect(renderEntry(e, "long", "en")).toEqual(["bc"]); // long present → itself
+    expect(renderEntry(e, "both", "en")).toEqual(["a", "bc"]);
+    expect(renderEntry(e, "all", "en")).toEqual(["a", "bc"]);
+  });
+
+  it("does not let a missing form fall past pref onto the other form", () => {
+    // No pref: a short-only entry stays out of long, a long-only out of short —
+    // the binding that predates pref, preserved because the pref fallback is absent.
+    expect(renderEntry({ short: "Asia" }, "long", "en")).toEqual([]);
+    expect(renderEntry({ long: "Pacific plate" }, "short", "en")).toEqual([]);
+  });
+
+  it("emits pref, short, long and others under 'all', deduplicated", () => {
+    const e = { pref: "United States", long: "United States of America", others: ["USA", "America"] };
+    expect(renderEntry(e, "pref", "en")).toEqual(["United States"]);
+    expect(renderEntry(e, "all", "en")).toEqual([
+      "United States",
+      "United States of America",
+      "USA",
+      "America",
+    ]);
+  });
 });
 
 describe("renderCount", () => {
@@ -194,6 +222,15 @@ describe("groupHasNames", () => {
     const g: Group = { id: "g", title: "G", words: ["Ash", { short: "A", long: "Alpha" }] };
     expect(groupHasNames(g, "en")).toBe(true);
     expect(groupHasNames({ id: "g", title: "G", words: ["Ash"] }, "en")).toBe(false);
+  });
+});
+
+describe("groupHasPref", () => {
+  it("is true only where an entry carries a pref name in that language", () => {
+    const withPref: Group = { id: "g", title: "G", words: ["Ash", { pref: "Taiwan", long: "Republic of China" }] };
+    expect(groupHasPref(withPref, "en")).toBe(true);
+    const plain: Group = { id: "g", title: "G", words: ["Ash", { short: "A", long: "Alpha" }] };
+    expect(groupHasPref(plain, "en")).toBe(false);
   });
 });
 

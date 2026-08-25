@@ -42,8 +42,8 @@ export function entryForms(e: WordEntry): string[] {
   // holds language codes, and a glob is here to match names, not tags.
   const others = Array.isArray(obj.others) ? obj.others : obj.others !== undefined ? [obj.others] : [];
   const parts =
-    "short" in obj || "long" in obj
-      ? [obj.short, obj.long, ...others]
+    "pref" in obj || "short" in obj || "long" in obj
+      ? [obj.pref, obj.short, obj.long, ...others]
       : Object.entries(obj).filter(([k]) => k !== UNKNOWN).map(([, v]) => v);
   return parts.filter((p) => p !== undefined).flatMap((p) => entryForms(p as WordEntry));
 }

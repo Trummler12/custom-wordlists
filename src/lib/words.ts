@@ -110,12 +110,13 @@ export function isUnknownIn(e: WordEntry, lang: string): boolean {
 export function resolveWord(e: WordEntry, lang: string, derived = false): Word {
   if (typeof e === "string") return e;
   const obj = e as Record<string, unknown>;
-  if ("short" in obj || "long" in obj) {
-    // A name pair, possibly single-form: resolve each half the entry carries and
-    // leave the other absent, so `renderEntry` can bind it to the one mode. Any
+  if ("pref" in obj || "short" in obj || "long" in obj) {
+    // A name pair, possibly single-form: resolve each form the entry carries and
+    // leave the others absent, so `renderEntry` can bind or fall back per mode. Any
     // `others` variants resolve to a flat list, for the `all` mode.
     const p = e as NamePair;
-    const w: { short?: string; long?: string; others?: string[] } = {};
+    const w: { pref?: string; short?: string; long?: string; others?: string[] } = {};
+    if (p.pref !== undefined) w.pref = resolveStr(p.pref, lang, derived);
     if (p.short !== undefined) w.short = resolveStr(p.short, lang, derived);
     if (p.long !== undefined) w.long = resolveStr(p.long, lang, derived);
     if (p.others !== undefined) {
@@ -135,11 +136,12 @@ export function resolveWord(e: WordEntry, lang: string, derived = false): Word {
   return resolveWord((tag !== undefined ? map[tag] : undefined) ?? map.en, lang);
 }
 
-/** The string(s) an entry contributes in a names mode. A pair whose two forms
- *  render identically collapses to one, so "both" can't produce a duplicate; a
- *  single-form entry contributes nothing in the mode it lacks, which is how the
- *  continent-only and plate-only entries drop out of the other dropdown. `all`
- *  emits short+long and every `others` variant on top, deduplicated. */
+/** The string(s) an entry contributes in a names mode. A single-form mode falls back
+ *  to `pref` when its own form is absent — and only to pref, so a `{ long }`-only
+ *  plate still drops out of `short` and a `{ short }`-only continent out of `long`,
+ *  exactly as before pref existed (there, pref is absent and the fallback is a no-op).
+ *  A form that renders identically to another collapses, so "both" can't duplicate;
+ *  `all` emits pref, short, long and every `others` variant, deduplicated. */
 export function renderEntry(
   e: WordEntry,
   mode: NamesMode,
@@ -148,14 +150,31 @@ export function renderEntry(
 ): string[] {
   const w = resolveWord(e, lang, derived);
   if (typeof w === "string") return [w];
-  if (mode === "short") return w.short !== undefined ? [w.short] : [];
-  if (mode === "long") return w.long !== undefined ? [w.long] : [];
-  const forms: string[] = [];
-  if (w.short !== undefined) forms.push(w.short);
-  if (w.long !== undefined && w.long !== w.short) forms.push(w.long);
-  if (mode === "all" && w.others) {
-    for (const o of w.others) if (!forms.includes(o)) forms.push(o);
+  if (mode === "pref") {
+    const v = w.pref ?? w.short ?? w.long;
+    return v !== undefined ? [v] : [];
   }
+  if (mode === "short") {
+    const v = w.short ?? w.pref;
+    return v !== undefined ? [v] : [];
+  }
+  if (mode === "long") {
+    const v = w.long ?? w.pref;
+    return v !== undefined ? [v] : [];
+  }
+  if (mode === "all") {
+    const forms: string[] = [];
+    for (const v of [w.pref, w.short, w.long, ...(w.others ?? [])]) {
+      if (v !== undefined && !forms.includes(v)) forms.push(v);
+    }
+    return forms;
+  }
+  // both: the short and long forms, each falling back to pref, collapsed if equal.
+  const forms: string[] = [];
+  const s = w.short ?? w.pref;
+  const l = w.long ?? w.pref;
+  if (s !== undefined) forms.push(s);
+  if (l !== undefined && l !== s) forms.push(l);
   return forms;
 }
 
@@ -261,6 +280,15 @@ export function displayName(e: WordEntry, lang: string): DisplayName {
 export function groupHasNames(g: Group, lang: string): boolean {
   const entries = groupEntries(g);
   return entries.some((e) => typeof resolveWord(e, lang) !== "string");
+}
+
+/** Whether any entry in the group carries a `pref` name — the condition for offering
+ *  the `pref` option (and defaulting to it) in that group's names dropdown. */
+export function groupHasPref(g: Group, lang: string): boolean {
+  return groupEntries(g).some((e) => {
+    const w = resolveWord(e, lang);
+    return typeof w !== "string" && w.pref !== undefined;
+  });
 }
 
 /** Whether any entry in the group carries an `others` variant — the condition for

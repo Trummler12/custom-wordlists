@@ -102,16 +102,19 @@ export type LangMap<T> = { en: T } & Record<string, T>;
  *  language map with an "en" base (languages equal to "en" are omitted). */
 export type LocalizedString = string | LangMap<string>;
 
-/** A named-forms entry: `short`, `long`, and any further `others`; each field may
- *  itself be a LocalizedString.
+/** A named-forms entry: a `pref` canonical name, a `short` and `long` form, and any
+ *  further `others`; each field may itself be a LocalizedString.
  *
- *  A bag of named forms, not a fixed couple: at least one of short/long is present,
- *  and omitting one binds the entry to the other mode — a `{ short }` never loads
- *  under `long`, a `{ long }` never under `short` (see `renderEntry`). `others`
- *  carries the variants that are neither the shortest nor the longest form — one
- *  string or a list of them (Taiwan's further English names) — surfaced only by the
- *  `all` mode, and localizing like the other two. */
+ *  A bag of named forms, not a fixed couple: at least one of pref/short/long is
+ *  present. `pref` is the default and the fallback — a mode with no form of its own
+ *  falls back to it (`short` → pref, `long` → pref), so an entry need only spell out
+ *  short/long where they differ from it. With no pref the older binding holds: a
+ *  `{ short }` never loads under `long`, a `{ long }` never under `short` (see
+ *  `renderEntry`). `others` carries the variants that are none of pref/short/long
+ *  (Taiwan's further English names) — surfaced only by the `all` mode. Every field
+ *  localizes. */
 export interface NamePair {
+  pref?: LocalizedString;
   short?: LocalizedString;
   long?: LocalizedString;
   others?: LocalizedString | LocalizedString[];
@@ -132,15 +135,15 @@ export type LangMapEntry = { en: string | NamePair; "?"?: string[] } & Record<
 >;
 
 /** A word resolved to the active language: a plain string, or a named-forms object
- *  where each half is present exactly when the entry carried it — a single-form
- *  entry resolves to one half. `others` holds the resolved further variants, for
- *  the `all` mode. */
-export type Word = string | { short?: string; long?: string; others?: string[] };
+ *  carrying whichever of `pref`/`short`/`long` the entry had, plus `others` for the
+ *  `all` mode — each present exactly when the entry carried it. */
+export type Word = string | { pref?: string; short?: string; long?: string; others?: string[] };
 
-/** Which form(s) of a named-forms entry a group emits. Per group, default "long".
- *  `all` adds every `others` variant on top of short+long, deduplicated; offered
- *  only where a list actually carries one. */
-export type NamesMode = "short" | "long" | "both" | "all";
+/** Which form(s) of a named-forms entry a group emits. Per group, default "long"
+ *  (or "pref" for a list that has one). `pref` is the canonical name and the fallback
+ *  for short/long; `all` adds every `others` variant on top, deduplicated. `pref` and
+ *  `all` are offered only where a list actually carries one. */
+export type NamesMode = "pref" | "short" | "long" | "both" | "all";
 
 /** One family of entries a list deliberately leaves out. Every rule can be
  *  switched back on by the reader, so each needs a stable key. See lib/omitted. */

@@ -110,8 +110,8 @@
     },
     "defaultNames": {
       "type": "string",
-      "enum": ["short", "long", "both"],
-      "description": "Flat-topic form of the group field of the same name — which form of a short/long entry to emit until the reader picks another. Absent means `long`."
+      "enum": ["pref", "short", "long", "both", "all"],
+      "description": "Flat-topic form of the group field of the same name — which form of a named-forms entry to emit until the reader picks another. Absent means `long` (a list of `pref`-bearing entries sets `pref`)."
     },
     "tierNotes": {
       "type": "array",
@@ -187,9 +187,10 @@
     "namePair": {
       "type": "object",
       "additionalProperties": false,
-      "anyOf": [{ "required": ["short"] }, { "required": ["long"] }],
-      "description": "An entry with a short (common) and/or long (full) name, plus any further `others` variants; the UI's per-group Names dropdown picks short / long / both, and `all` where a list carries `others`. Each field may itself be a language map when only that part translates — the preferred form. At least one of short/long must be present; omitting one binds the entry to the other mode, so a `{ short }` never loads under `long` and a `{ long }` never under `short` — how a continent with no eponymous plate, or a plate with no continent, drops out of the dropdown that doesn't fit it.",
+      "anyOf": [{ "required": ["pref"] }, { "required": ["short"] }, { "required": ["long"] }],
+      "description": "An entry with a `pref` canonical name and/or a short (common) and long (full) form, plus any further `others` variants; the UI's per-group Names dropdown picks pref / short / long / both, and `all` where a list carries `others`. Each field may itself be a language map when only that part translates — the preferred form. `pref` is the default and the fallback: a mode with no form of its own falls back to it, so an entry need only spell out short/long where they differ. With no pref, at least one of short/long must be present and omitting one binds the entry to the other mode, so a `{ short }` never loads under `long` and a `{ long }` never under `short` — how a continent with no eponymous plate, or a plate with no continent, drops out of the dropdown that doesn't fit it.",
       "properties": {
+        "pref": { "$ref": "#/$defs/locString" },
         "short": { "$ref": "#/$defs/locString" },
         "long": { "$ref": "#/$defs/locString" },
         "others": {
