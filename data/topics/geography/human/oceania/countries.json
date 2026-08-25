@@ -46,7 +46,7 @@
     },
     {
       "id": "no-coverage",
-      "match": ["Federated States of Micronesia","Fiji","Kiribati","Marshall Islands","Nauru","Palau","Papua New Guinea","Samoa","Solomon Islands","Tonga","Tuvalu"],
+      "match": ["Federated States of Micronesia","Fiji","Kiribati","Marshall Islands","Nauru","Niue","Palau","Papua New Guinea","Samoa","Solomon Islands","Tonga","Tuvalu"],
       "count": true,
       "icon": "geoguessr",
       "reason": {

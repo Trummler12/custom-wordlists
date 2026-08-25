@@ -152,4 +152,3 @@ Uruguay
 # (kept here because no-coverage is maintained off this file; a fresh pull must not lose them)
 Western Sahara
 Cook Islands
-Niue
