@@ -62,8 +62,8 @@
   ],
   "tiers": [
     [
-      {"en":{"pref":"United States","long":"United States of America","others":["America","USA"]},"de":{"pref":"Vereinigte Staaten","short":"USA","long":"Vereinigten Staaten von Amerika"},"es":"Estados Unidos","fr":{"pref":"États-Unis","others":["USA"]},"it":{"pref":"Stati Uniti","others":["USA"]},"ja":"アメリカ","ko":"미국","zh-Hans":"美国","zh-Hant":"美國"},
-      {"en":{"pref":"Mexico","long":"United Mexican States","others":["Mexican Republic"]},"de":"Mexiko","es":{"pref":"México","long":"Estados Unidos Mexicanos","others":["el País Azteca","Méjico","Nueva España","República Mejicana"]},"fr":"Mexique","it":"Messico","ja":{"pref":"メキシコ","long":"メキシコ合衆国"},"ko":"멕시코","zh-Hans":"墨西哥","zh-Hant":"墨西哥"}
+      {"en":{"pref":"United States","long":"United States of America","others":["America","USA"]},"de":{"pref":"Vereinigte Staaten","short":"USA","others":["Vereinigten Staaten von Amerika"]},"es":"Estados Unidos","fr":{"pref":"États-Unis","others":["USA"]},"it":{"pref":"Stati Uniti","others":["USA"]},"ja":"アメリカ","ko":"미국","zh-Hans":"美国","zh-Hant":"美國"},
+      {"en":{"pref":"Mexico","others":["Mexican Republic","United Mexican States"]},"de":"Mexiko","es":{"pref":"México","others":["el País Azteca","Estados Unidos Mexicanos","Méjico","Nueva España","República Mejicana"]},"fr":"Mexique","it":"Messico","ja":{"pref":"メキシコ","long":"メキシコ合衆国"},"ko":"멕시코","zh-Hans":"墨西哥","zh-Hant":"墨西哥"}
     ],
 
     [
@@ -71,34 +71,34 @@
     ],
 
     [
-      {"en":{"pref":"Guatemala","long":"Republic of Guatemala"},"de":"Guatemala","es":{"pref":"Guatemala","long":"República de Guatemala"},"fr":"Guatemala","it":"Guatemala","ja":"グアテマラ","ko":"과테말라","zh-Hans":"危地马拉","zh-Hant":"瓜地馬拉"},
-      {"en":{"pref":"Cuba","long":"Republic of Cuba"},"de":"Kuba","es":{"pref":"Cuba","long":"República de Cuba","others":["Isla Juana"]},"fr":"Cuba","it":"Cuba","ja":{"pref":"キューバ","long":"キューバ共和国"},"ko":"쿠바","zh-Hans":"古巴","zh-Hant":"古巴"},
-      {"en":{"pref":"Haiti","long":"Republic of Haiti"},"de":"Haiti","es":"Haití","fr":{"pref":"Haïti","long":"République d’Haïti"},"it":"Haiti","ja":{"pref":"ハイチ","long":"ハイチ共和国"},"ko":{"pref":"아이티","others":["하이티"]},"zh-Hans":"海地","zh-Hant":"海地"},
+      {"en":{"pref":"Guatemala","others":["Republic of Guatemala"]},"de":"Guatemala","es":{"pref":"Guatemala","others":["República de Guatemala"]},"fr":"Guatemala","it":"Guatemala","ja":"グアテマラ","ko":"과테말라","zh-Hans":"危地马拉","zh-Hant":"瓜地馬拉"},
+      {"en":{"pref":"Cuba","others":["Republic of Cuba"]},"de":"Kuba","es":{"pref":"Cuba","long":"República de Cuba","others":["Isla Juana"]},"fr":"Cuba","it":"Cuba","ja":{"pref":"キューバ","long":"キューバ共和国"},"ko":"쿠바","zh-Hans":"古巴","zh-Hant":"古巴"},
+      {"en":{"pref":"Haiti","others":["Republic of Haiti"]},"de":"Haiti","es":"Haití","fr":{"pref":"Haïti","others":["République d’Haïti"]},"it":"Haiti","ja":{"pref":"ハイチ","long":"ハイチ共和国"},"ko":{"pref":"아이티","others":["하이티"]},"zh-Hans":"海地","zh-Hant":"海地"},
       {"en":"Dominican Republic","de":{"pref":"Dominikanische Republik","short":"Dom. Republik"},"es":{"pref":"República Dominicana","short":"Santo Domingo","long":"República de Santo Domingo","others":["Haití Español","Quisqueya"]},"fr":{"pref":"République dominicaine","others":["Dominicaine, république"]},"it":"Repubblica Dominicana","ja":"ドミニカ共和国","ko":{"pref":"도미니카 공화국","others":["도미니카공화국"]},"zh-Hans":"多明尼加","zh-Hant":{"pref":"多明尼加共和國","others":["多米尼加共和国"]}},
-      {"en":{"pref":"Honduras","long":"Republic of Honduras"},"de":"Honduras","es":{"pref":"Honduras","long":"República de Honduras"},"fr":"Honduras","it":"Honduras","ja":{"pref":"ホンジュラス","long":"ホンジュラス共和国"},"ko":"온두라스","zh-Hans":"洪都拉斯","zh-Hant":"宏都拉斯"},
-      {"en":{"pref":"El Salvador","long":"Republic of El Salvador"},"de":"El Salvador","es":{"pref":"El Salvador","long":"República de El Salvador"},"fr":{"pref":"Salvador","long":"El Salvador"},"it":"El Salvador","ja":"エルサルバドル","ko":"엘살바도르","zh-Hans":"萨尔瓦多","zh-Hant":"薩爾瓦多"},
-      {"en":{"pref":"Costa Rica","long":"Republic of Costa Rica"},"de":"Costa Rica","es":{"pref":"Costa Rica","long":"República de Costa Rica"},"fr":"Costa Rica","it":"Costa Rica","ja":"コスタリカ","ko":"코스타리카","zh-Hans":"哥斯达黎加","zh-Hant":"哥斯大黎加"},
-      {"en":{"pref":"Nicaragua","long":"Republic of Nicaragua"},"de":{"pref":"Nicaragua","others":["Nikaragua"]},"es":{"pref":"Nicaragua","long":"República de Nicaragua"},"fr":"Nicaragua","it":"Nicaragua","ja":{"pref":"ニカラグア","long":"ニカラグア共和国"},"ko":"니카라과","zh-Hans":"尼加拉瓜","zh-Hant":"尼加拉瓜"}
+      {"en":{"pref":"Honduras","others":["Republic of Honduras"]},"de":"Honduras","es":{"pref":"Honduras","others":["República de Honduras"]},"fr":"Honduras","it":"Honduras","ja":{"pref":"ホンジュラス","long":"ホンジュラス共和国"},"ko":"온두라스","zh-Hans":"洪都拉斯","zh-Hant":"宏都拉斯"},
+      {"en":{"pref":"El Salvador","others":["Republic of El Salvador"]},"de":"El Salvador","es":{"pref":"El Salvador","others":["República de El Salvador"]},"fr":{"pref":"Salvador","others":["El Salvador"]},"it":"El Salvador","ja":"エルサルバドル","ko":"엘살바도르","zh-Hans":"萨尔瓦多","zh-Hant":"薩爾瓦多"},
+      {"en":{"pref":"Costa Rica","others":["Republic of Costa Rica"]},"de":"Costa Rica","es":{"pref":"Costa Rica","others":["República de Costa Rica"]},"fr":"Costa Rica","it":"Costa Rica","ja":"コスタリカ","ko":"코스타리카","zh-Hans":"哥斯达黎加","zh-Hant":"哥斯大黎加"},
+      {"en":{"pref":"Nicaragua","others":["Republic of Nicaragua"]},"de":{"pref":"Nicaragua","others":["Nikaragua"]},"es":{"pref":"Nicaragua","others":["República de Nicaragua"]},"fr":"Nicaragua","it":"Nicaragua","ja":{"pref":"ニカラグア","long":"ニカラグア共和国"},"ko":"니카라과","zh-Hans":"尼加拉瓜","zh-Hant":"尼加拉瓜"}
     ],
 
     [
-      {"en":{"pref":"Panama","long":"Republic of Panama"},"de":"Panama","es":{"pref":"Panamá","long":"República de Panamá"},"fr":{"pref":"Panama","others":["Panamá"]},"it":"Panamá","ja":"パナマ","ko":"파나마","zh-Hans":"巴拿马","zh-Hant":"巴拿馬"},
+      {"en":{"pref":"Panama","others":["Republic of Panama"]},"de":"Panama","es":{"pref":"Panamá","others":["República de Panamá"]},"fr":{"pref":"Panama","others":["Panamá"]},"it":"Panamá","ja":"パナマ","ko":"파나마","zh-Hans":"巴拿马","zh-Hant":"巴拿馬"},
       {"en":"Puerto Rico","?":["de","es","fr","it","ja","ko","zh-Hans","zh-Hant"]},
       {"en":"Jamaica","de":"Jamaika","fr":"Jamaïque","it":"Giamaica","ja":"ジャマイカ","ko":"자메이카","zh-Hans":"牙买加","zh-Hant":"牙買加"},
-      {"en":{"pref":"Trinidad and Tobago","others":["Trinidad & Tobago"]},"de":"Trinidad und Tobago","es":"Trinidad y Tobago","fr":{"pref":"Trinité-et-Tobago","long":"Trinidad et Tobago"},"it":"Trinidad e Tobago","ja":{"pref":"トリニダード・トバゴ","long":"トリニダード・トバゴ共和国"},"ko":"트리니다드 토바고","zh-Hans":"特立尼达和多巴哥","zh-Hant":"千里達及托巴哥"}
+      {"en":{"pref":"Trinidad and Tobago","others":["Trinidad & Tobago"]},"de":"Trinidad und Tobago","es":"Trinidad y Tobago","fr":{"pref":"Trinité-et-Tobago","others":["Trinidad et Tobago"]},"it":"Trinidad e Tobago","ja":{"pref":"トリニダード・トバゴ","long":"トリニダード・トバゴ共和国"},"ko":"트리니다드 토바고","zh-Hans":"特立尼达和多巴哥","zh-Hant":"千里達及托巴哥"}
     ],
 
     [
       {"en":"Belize","es":"Belice","ja":"ベリーズ","ko":"벨리즈","zh-Hans":"伯利兹","zh-Hant":"貝里斯"},
-      {"en":{"pref":"Bahamas","long":"The Bahamas"},"de":"Bahamas","es":"Bahamas","fr":"Bahamas","it":"Bahamas","ja":{"pref":"バハマ","long":"バハマ国"},"ko":"바하마","zh-Hans":"巴哈马","zh-Hant":"巴哈馬"},
+      {"en":{"pref":"Bahamas","others":["The Bahamas"]},"de":"Bahamas","es":"Bahamas","fr":"Bahamas","it":"Bahamas","ja":{"pref":"バハマ","long":"バハマ国"},"ko":"바하마","zh-Hans":"巴哈马","zh-Hant":"巴哈馬"},
       {"en":"Barbados","fr":"Barbade","ja":"バルバドス","ko":"바베이도스","zh-Hans":"巴巴多斯","zh-Hant":"巴貝多"},
       {"en":{"pref":"Saint Lucia","others":["St Lucia","St. Lucia"]},"de":"Saint Lucia","es":{"pref":"Santa Lucía","others":["Saint Lucia"]},"fr":"Sainte-Lucie","it":{"pref":"Santa Lucia","others":["Saint Lucia"]},"ja":"セントルシア","ko":{"pref":"세인트루시아","long":"세인트 루시아"},"zh-Hans":"圣卢西亚","zh-Hant":"聖露西亞"},
       {"en":"Grenada","es":"Granada","fr":"Grenade","ja":"グレナダ","ko":"그레나다","zh-Hans":"格林纳达","zh-Hant":"格瑞那達"},
-      {"en":{"pref":"Saint Vincent and the Grenadines","short":"St Vincent and Grenadines","others":["St. Vincent & Grenadines"]},"de":"St. Vincent und die Grenadinen","es":"San Vicente y las Granadinas","fr":"Saint-Vincent-et-les-Grenadines","it":{"pref":"Saint Vincent e Grenadine","long":"Saint Vincent e Grenadines"},"ja":{"pref":"セントビンセント及びグレナディーン諸島","others":["セントビンセント・グレナディーン"]},"ko":{"pref":"세인트빈센트그레나딘","long":"세인트 빈센트 그레나딘","others":["세인트빈센트 그레나딘"]},"zh-Hans":"圣文森特和格林纳丁斯","zh-Hant":"聖文森及格瑞那丁"},
+      {"en":{"pref":"Saint Vincent and the Grenadines","short":"St Vincent and Grenadines","others":["St. Vincent & Grenadines"]},"de":"St. Vincent und die Grenadinen","es":"San Vicente y las Granadinas","fr":"Saint-Vincent-et-les-Grenadines","it":{"pref":"Saint Vincent e Grenadine","others":["Saint Vincent e Grenadines"]},"ja":{"pref":"セントビンセント及びグレナディーン諸島","others":["セントビンセント・グレナディーン"]},"ko":{"pref":"세인트빈센트그레나딘","long":"세인트 빈센트 그레나딘","others":["세인트빈센트 그레나딘"]},"zh-Hans":"圣文森特和格林纳丁斯","zh-Hant":"聖文森及格瑞那丁"},
       {"en":{"pref":"Antigua and Barbuda","others":["Antigua & Barbuda"]},"de":"Antigua und Barbuda","es":"Antigua y Barbuda","fr":{"pref":"Antigua-et-Barbuda","others":["Antigue-et-Barbude"]},"it":"Antigua e Barbuda","ja":{"pref":"アンティグアバブーダ","long":"アンティグア・バーブーダ"},"ko":{"pref":"앤티가 바부다","others":["안티가 바부다"]},"zh-Hans":"安提瓜和巴布达","zh-Hant":"安地卡及巴布達"},
-      {"en":{"pref":"Dominica","long":"Commonwealth of Dominica"},"de":"Dominica","es":"Dominica","fr":"Dominique","it":"Dominica","ja":"ドミニカ国","ko":{"pref":"도미니카","long":"도미니카 연방"},"zh-Hans":"多米尼克","zh-Hant":"多米尼克"},
+      {"en":{"pref":"Dominica","others":["Commonwealth of Dominica"]},"de":"Dominica","es":"Dominica","fr":"Dominique","it":"Dominica","ja":"ドミニカ国","ko":{"pref":"도미니카","others":["도미니카 연방"]},"zh-Hans":"多米尼克","zh-Hant":"多米尼克"},
       {"en":"Greenland","?":["de","es","fr","it","ja","ko","zh-Hans","zh-Hant"]},
-      {"en":{"pref":"Saint Kitts and Nevis","others":["St. Kitts and Nevis","St. Kitts & Nevis"]},"de":{"pref":"St. Kitts und Nevis","long":"Föderation St. Kitts und Nevis"},"es":{"pref":"San Cristóbal y Nieves","others":["San Cristóbal y Nevis"]},"fr":{"pref":"Saint-Christophe-et-Niévès","others":["Saint-Kitts-et-Nevis"]},"it":{"pref":"Saint Kitts e Nevis","long":"Saint Christopher e Nevis"},"ja":{"pref":"セントクリストファー・ネビス","long":"セントクリストファー・ネイビス"},"ko":{"pref":"세인트키츠 네비스","long":"세인트 키츠 네비스","others":["세인트크리스토퍼 네비스"]},"zh-Hans":{"pref":"圣基茨和尼维斯","long":"聖克里斯多福與尼維斯"},"zh-Hant":"聖克里斯多福及尼維斯"}
+      {"en":{"pref":"Saint Kitts and Nevis","others":["St. Kitts and Nevis","St. Kitts & Nevis"]},"de":{"pref":"St. Kitts und Nevis","others":["Föderation St. Kitts und Nevis"]},"es":{"pref":"San Cristóbal y Nieves","others":["San Cristóbal y Nevis"]},"fr":{"pref":"Saint-Christophe-et-Niévès","others":["Saint-Kitts-et-Nevis"]},"it":{"pref":"Saint Kitts e Nevis","long":"Saint Christopher e Nevis"},"ja":{"pref":"セントクリストファー・ネビス","others":["セントクリストファー・ネイビス"]},"ko":{"pref":"세인트키츠 네비스","long":"세인트 키츠 네비스","others":["세인트크리스토퍼 네비스"]},"zh-Hans":{"pref":"圣基茨和尼维斯","others":["聖克里斯多福與尼維斯"]},"zh-Hant":"聖克里斯多福及尼維斯"}
     ]
   ],
   "tierConditions": [

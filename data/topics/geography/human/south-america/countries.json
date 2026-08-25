@@ -28,30 +28,30 @@
   ],
   "tiers": [
     [
-      {"en":{"pref":"Brazil","long":"Federative Republic of Brazil"},"de":"Brasilien","es":"Brasil","fr":"Brésil","it":"Brasile","ja":{"pref":"ブラジル","long":"ブラジル連邦共和国"},"ko":"브라질","zh-Hans":"巴西","zh-Hant":"巴西"}
+      {"en":{"pref":"Brazil","others":["Federative Republic of Brazil"]},"de":"Brasilien","es":"Brasil","fr":"Brésil","it":"Brasile","ja":{"pref":"ブラジル","long":"ブラジル連邦共和国"},"ko":"브라질","zh-Hans":"巴西","zh-Hant":"巴西"}
     ],
 
     [
-      {"en":{"pref":"Colombia","long":"Republic of Colombia"},"de":"Kolumbien","es":{"pref":"Colombia","long":"República de Colombia"},"fr":"Colombie","it":"Colombia","ja":{"pref":"コロンビア","long":"コロンビア共和国"},"ko":"콜롬비아","zh-Hans":{"pref":"哥伦比亚","long":"哥伦比亚共和国"},"zh-Hant":"哥倫比亞"},
-      {"en":{"pref":"Argentina","long":"Argentine Republic"},"de":"Argentinien","es":{"pref":"Argentina","long":"República Argentina"},"fr":"Argentine","it":"Argentina","ja":{"pref":"アルゼンチン","long":"アルゼンチン共和国"},"ko":"아르헨티나","zh-Hans":"阿根廷","zh-Hant":"阿根廷"},
-      {"en":{"pref":"Peru","long":"Republic of Peru"},"de":"Peru","es":{"pref":"Perú","long":"República del Perú"},"fr":"Pérou","it":"Perù","ja":{"pref":"ペルー","long":"ペルー共和国"},"ko":"페루","zh-Hans":"秘鲁","zh-Hant":"秘魯"},
-      {"en":{"pref":"Venezuela","long":"Bolivarian Republic of Venezuela","others":["Republic of Venezuela","United States of Venezuela","Venezuela, Bolivarian Republic Of"]},"de":"Venezuela","es":{"pref":"Venezuela","long":"República Bolivariana de Venezuela","others":["Estados Unidos de Venezuela","República de Venezuela"]},"fr":{"pref":"Vénézuéla","long":"Venezuela"},"it":"Venezuela","ja":{"pref":"ベネズエラ","long":"ベネズエラ共和国"},"ko":{"pref":"베네수엘라","long":"베네주엘라"},"zh-Hans":"委内瑞拉","zh-Hant":"委內瑞拉"}
+      {"en":{"pref":"Colombia","others":["Republic of Colombia"]},"de":"Kolumbien","es":{"pref":"Colombia","others":["República de Colombia"]},"fr":"Colombie","it":"Colombia","ja":{"pref":"コロンビア","long":"コロンビア共和国"},"ko":"콜롬비아","zh-Hans":{"pref":"哥伦比亚","others":["哥伦比亚共和国"]},"zh-Hant":"哥倫比亞"},
+      {"en":{"pref":"Argentina","others":["Argentine Republic"]},"de":"Argentinien","es":{"pref":"Argentina","others":["República Argentina"]},"fr":"Argentine","it":"Argentina","ja":{"pref":"アルゼンチン","long":"アルゼンチン共和国"},"ko":"아르헨티나","zh-Hans":"阿根廷","zh-Hant":"阿根廷"},
+      {"en":{"pref":"Peru","others":["Republic of Peru"]},"de":"Peru","es":{"pref":"Perú","others":["República del Perú"]},"fr":"Pérou","it":"Perù","ja":{"pref":"ペルー","long":"ペルー共和国"},"ko":"페루","zh-Hans":"秘鲁","zh-Hant":"秘魯"},
+      {"en":{"pref":"Venezuela","others":["Bolivarian Republic of Venezuela","Republic of Venezuela","United States of Venezuela","Venezuela, Bolivarian Republic Of"]},"de":"Venezuela","es":{"pref":"Venezuela","others":["Estados Unidos de Venezuela","República Bolivariana de Venezuela","República de Venezuela"]},"fr":{"pref":"Vénézuéla","long":"Venezuela"},"it":"Venezuela","ja":{"pref":"ベネズエラ","long":"ベネズエラ共和国"},"ko":{"pref":"베네수엘라","long":"베네주엘라"},"zh-Hans":"委内瑞拉","zh-Hant":"委內瑞拉"}
     ],
 
     [
-      {"en":{"pref":"Chile","long":"Republic of Chile"},"de":"Chile","es":{"pref":"Chile","long":"República de Chile"},"fr":"Chili","it":"Cile","ja":{"pref":"チリ","long":"チリ共和国"},"ko":"칠레","zh-Hans":"智利","zh-Hant":"智利"},
-      {"en":{"pref":"Ecuador","long":"Republic of Ecuador"},"de":"Ecuador","es":{"pref":"Ecuador","long":"República del Ecuador"},"fr":"Équateur","it":"Ecuador","ja":{"pref":"エクアドル","long":"エクアドル共和国"},"ko":"에콰도르","zh-Hans":"厄瓜多尔","zh-Hant":"厄瓜多"},
-      {"en":{"pref":"Bolivia","long":"Bolivia (Plurinational State of)","others":["Bolivia, Plurinational State Of","Plurinational State of Bolivia","Republic of Bolivia"]},"de":"Bolivien","es":{"pref":"Bolivia","long":"Estado Plurinacional de Bolivia","others":["República de Bolivia"]},"fr":"Bolivie","it":"Bolivia","ja":{"pref":"ボリビア","long":"ボリビア共和国"},"ko":"볼리비아","zh-Hans":"玻利维亚","zh-Hant":"玻利維亞"},
-      {"en":{"pref":"Paraguay","long":"Republic of Paraguay"},"de":"Paraguay","es":{"pref":"Paraguay","long":"República del Paraguay"},"fr":"Paraguay","it":"Paraguay","ja":{"pref":"パラグアイ","long":"パラグアイ共和国"},"ko":"파라과이","zh-Hans":"巴拉圭","zh-Hant":"巴拉圭"}
+      {"en":{"pref":"Chile","others":["Republic of Chile"]},"de":"Chile","es":{"pref":"Chile","others":["República de Chile"]},"fr":"Chili","it":"Cile","ja":{"pref":"チリ","long":"チリ共和国"},"ko":"칠레","zh-Hans":"智利","zh-Hant":"智利"},
+      {"en":{"pref":"Ecuador","others":["Republic of Ecuador"]},"de":"Ecuador","es":{"pref":"Ecuador","others":["República del Ecuador"]},"fr":"Équateur","it":"Ecuador","ja":{"pref":"エクアドル","long":"エクアドル共和国"},"ko":"에콰도르","zh-Hans":"厄瓜多尔","zh-Hant":"厄瓜多"},
+      {"en":{"pref":"Bolivia","others":["Bolivia (Plurinational State of)","Bolivia, Plurinational State Of","Plurinational State of Bolivia","Republic of Bolivia"]},"de":"Bolivien","es":{"pref":"Bolivia","others":["Estado Plurinacional de Bolivia","República de Bolivia"]},"fr":"Bolivie","it":"Bolivia","ja":{"pref":"ボリビア","long":"ボリビア共和国"},"ko":"볼리비아","zh-Hans":"玻利维亚","zh-Hant":"玻利維亞"},
+      {"en":{"pref":"Paraguay","others":["Republic of Paraguay"]},"de":"Paraguay","es":{"pref":"Paraguay","others":["República del Paraguay"]},"fr":"Paraguay","it":"Paraguay","ja":{"pref":"パラグアイ","long":"パラグアイ共和国"},"ko":"파라과이","zh-Hans":"巴拉圭","zh-Hant":"巴拉圭"}
     ],
 
     [
-      {"en":{"pref":"Uruguay","long":"Oriental Republic of Uruguay"},"de":"Uruguay","es":{"pref":"Uruguay","long":"República Oriental del Uruguay"},"fr":"Uruguay","it":"Uruguay","ja":{"pref":"ウルグアイ","long":"ウルグアイ共和国"},"ko":"우루과이","zh-Hans":"乌拉圭","zh-Hant":"烏拉圭"}
+      {"en":{"pref":"Uruguay","others":["Oriental Republic of Uruguay"]},"de":"Uruguay","es":{"pref":"Uruguay","others":["República Oriental del Uruguay"]},"fr":"Uruguay","it":"Uruguay","ja":{"pref":"ウルグアイ","long":"ウルグアイ共和国"},"ko":"우루과이","zh-Hans":"乌拉圭","zh-Hant":"烏拉圭"}
     ],
 
     [
-      {"en":"Guyana","fr":{"pref":"Guyana","long":"Guyane britannique"},"ja":"ガイアナ","ko":"가이아나","zh-Hans":"圭亚那","zh-Hant":"蓋亞那"},
-      {"en":{"pref":"Suriname","long":"Republic of Suriname"},"de":"Suriname","es":"Surinam","fr":{"pref":"Suriname","others":["Surinam"]},"it":"Suriname","ja":{"pref":"スリナム","long":"スリナム共和国"},"ko":"수리남","zh-Hans":"苏里南","zh-Hant":"蘇利南"}
+      {"en":"Guyana","fr":{"pref":"Guyana","others":["Guyane britannique"]},"ja":"ガイアナ","ko":"가이아나","zh-Hans":"圭亚那","zh-Hant":"蓋亞那"},
+      {"en":{"pref":"Suriname","others":["Republic of Suriname"]},"de":"Suriname","es":"Surinam","fr":{"pref":"Suriname","others":["Surinam"]},"it":"Suriname","ja":{"pref":"スリナム","long":"スリナム共和国"},"ko":"수리남","zh-Hans":"苏里南","zh-Hant":"蘇利南"}
     ]
   ],
   "tierConditions": [
