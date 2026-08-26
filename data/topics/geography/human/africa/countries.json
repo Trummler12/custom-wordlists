@@ -7,9 +7,27 @@
     "Names & variants: geonames country info and alternate names — https://www.geonames.org/countries/ (see scripts/geography/dump-geonames.mjs)",
     "Population & tiers: Wikidata sovereign states (P31 Q3624078) — https://www.wikidata.org/wiki/Q3624078 (see scripts/geography/dump-country-data.mjs)"
   ],
-  "lastUpdated": "2026-08-25",
-  "lastChecked": "2026-08-25",
+  "lastUpdated": "2026-08-26",
+  "lastChecked": "2026-08-26",
   "defaultNames": "pref",
+  "omitted": [
+    {
+      "id": "classic-autonomous",
+      "match": ["Saint Helena"],
+      "count": true,
+      "icon": "sovereignty",
+      "cell": [4,2],
+      "reason": {
+        "en": "autonomous territories internationally regarded as part of a sovereign state",
+        "de": "autonome Gebiete, die international als Teil eines souveränen Staates gelten",
+        "es": "territorios autónomos considerados internacionalmente parte de un Estado soberano",
+        "fr": "territoires autonomes internationalement considérés comme partie d'un État souverain",
+        "it": "territori autonomi considerati a livello internazionale parte di uno Stato sovrano",
+        "ja": "国際的に主権国家の一部と見なされる自治地域",
+        "ko": "국제적으로 주권 국가의 일부로 여겨지는 자치 지역"
+      }
+    }
+  ],
   "omittable": [
     {
       "id": "pure-de-facto",
@@ -45,7 +63,7 @@
     },
     {
       "id": "no-coverage",
-      "match": ["Algeria","Angola","Benin","Burkina Faso","Burundi","Cabo Verde","Cameroon","Central African Republic","Chad","Comoros","Congo Republic","Democratic Republic of Congo","Djibouti","Equatorial Guinea","Eritrea","Ethiopia","Gabon","Guinea","Guinea-Bissau","Ivory Coast","Liberia","Libya","Malawi","Mauritania","Mauritius","Morocco","Mozambique","Niger","Seychelles","Sierra Leone","Somalia","Somaliland","South Sudan","Sudan","The Gambia","Togo","Zambia","Zimbabwe"],
+      "match": ["Algeria","Angola","Benin","Burkina Faso","Burundi","Cabo Verde","Cameroon","Central African Republic","Chad","Comoros","Congo Republic","Democratic Republic of Congo","Djibouti","Equatorial Guinea","Eritrea","Ethiopia","Gabon","Guinea","Guinea-Bissau","Ivory Coast","Liberia","Libya","Malawi","Mauritania","Mauritius","Morocco","Mozambique","Niger","Saint Helena","Seychelles","Sierra Leone","Somalia","Somaliland","South Sudan","Sudan","The Gambia","Togo","Zambia","Zimbabwe"],
       "count": true,
       "icon": "geoguessr",
       "reason": {
@@ -143,7 +161,8 @@
       {"en":{"pref":"Cabo Verde","others":["Republic of Cabo Verde","Republic of Cape Verde"]},"de":{"pref":"Kap Verde","others":["Inseln des Grünen Vorgebirges","Kapverden","Kapverdische Inseln"]},"es":"Cabo Verde","fr":"Cap-Vert","it":"Capo Verde","ja":"カーボベルデ","ko":"카보베르데","zh-Hans":"佛得角","zh-Hant":"維德角"},
       {"en":{"pref":"Western Sahara","others":["Moroccan Sahara"]},"de":"Westsahara","es":{"pref":"Sáhara Occidental","long":"República Árabe Saharaui Democrática","others":["Province of Sahara","Provincia del Sáhara","Provincia del Sáhara Español"]},"fr":{"pref":"Sahara Occidental","others":["Sahara marocain"]},"it":"Sahara Occidentale","ja":"西サハラ","ko":"서사하라","zh-Hant":"西撒哈拉","?":["zh-Hans"]},
       {"en":{"pref":"São Tomé and Príncipe","long":"São Tomé & Príncipe","others":["Democratic Republic of Sao Tome and Principe"]},"de":{"pref":"São Tomé und Príncipe","others":["Demokratische Republik São Tomé und Príncipe"]},"es":"Santo Tomé y Príncipe","fr":{"pref":"Sao Tomé-et-Principe","others":["São Tomé-et-Principe","São Tomé-et-Príncipe"]},"it":{"pref":"São Tomé e Príncipe","others":["Sao Tomè e Principe"]},"ja":{"pref":"サントメ プリンシペ","long":"サントメ・プリンシペ"},"ko":{"pref":"상투메 프린시페","others":["상토메 프린스페"]},"zh-Hans":{"pref":"圣多美和普林西比","others":["圣多美普林西比"]},"zh-Hant":"聖多美普林西比"},
-      {"en":"Seychelles","de":"Seychellen","ja":{"pref":"セーシェル","others":["セイシェル"]},"ko":{"pref":"세이셸","long":"세이쉘","others":["쉐이쉘"]},"zh-Hans":"塞舌尔","zh-Hant":{"pref":"塞席爾","long":"塞舌尔群岛"}}
+      {"en":"Seychelles","de":"Seychellen","ja":{"pref":"セーシェル","others":["セイシェル"]},"ko":{"pref":"세이셸","long":"세이쉘","others":["쉐이쉘"]},"zh-Hans":"塞舌尔","zh-Hant":{"pref":"塞席爾","long":"塞舌尔群岛"}},
+      {"en":{"pref":"Saint Helena","others":["St. Helena","Saint Helena, Ascension and Tristan Da Cunha","St. Helena, Ascension and Tristan Da Cunha"]},"de":{"pref":"St. Helena","others":["St. Helena, Ascension und Tristan da Cunha"]},"es":{"pref":"Santa Elena","others":["Santa Elena, Ascensión y Tristán de Acuña"]},"fr":{"pref":"Sainte-Hélène","others":["Île Sainte-Hélène","Sainte-Hélène, Ascension et Tristan da Cunha"]},"it":{"pref":"Sant’Elena","others":["Sant'Elena, Ascensione e Tristan da Cunha"]},"ja":"セントヘレナ","ko":"세인트헬레나","zh-Hans":"圣赫勒拿","zh-Hant":"聖赫勒拿島"}
     ]
   ],
   "tierConditions": [

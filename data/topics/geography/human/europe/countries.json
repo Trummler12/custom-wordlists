@@ -7,13 +7,13 @@
     "Names & variants: geonames country info and alternate names — https://www.geonames.org/countries/ (see scripts/geography/dump-geonames.mjs)",
     "Population & tiers: Wikidata sovereign states (P31 Q3624078) — https://www.wikidata.org/wiki/Q3624078 (see scripts/geography/dump-country-data.mjs)"
   ],
-  "lastUpdated": "2026-08-25",
-  "lastChecked": "2026-08-25",
+  "lastUpdated": "2026-08-26",
+  "lastChecked": "2026-08-26",
   "defaultNames": "pref",
   "omitted": [
     {
       "id": "classic-autonomous",
-      "match": ["Faroe Islands"],
+      "match": ["Faroe Islands","Gibraltar"],
       "count": true,
       "icon": "sovereignty",
       "cell": [4,2],
@@ -31,7 +31,7 @@
   "omittable": [
     {
       "id": "asymmetric-autonomy",
-      "match": ["Åland"],
+      "match": ["Guernsey","Isle of Man","Jersey","Åland"],
       "count": true,
       "icon": "sovereignty",
       "cell": [1,2],
@@ -43,6 +43,22 @@
         "it": "regioni autonome la cui ampia autonomia è riconosciuta a livello internazionale",
         "ja": "広範な自治が国際的に認められている自治地域",
         "ko": "폭넓은 자치가 국제적으로 인정된 자치 지역"
+      }
+    },
+    {
+      "id": "de-facto-narrow",
+      "match": ["Northern Cyprus"],
+      "count": true,
+      "icon": "sovereignty",
+      "cell": [3,1],
+      "reason": {
+        "en": "fully self-governing states recognized by only a few UN members",
+        "de": "vollständig selbstverwaltete Staaten, nur von wenigen UN-Mitgliedern anerkannt",
+        "es": "estados con autogobierno pleno reconocidos por solo unos pocos miembros de la ONU",
+        "fr": "états pleinement autonomes reconnus par seulement quelques membres de l'ONU",
+        "it": "stati pienamente autogovernati riconosciuti solo da pochi membri dell'ONU",
+        "ja": "ごく一部の国連加盟国のみに承認された、完全に自治を行う国家",
+        "ko": "소수의 유엔 회원국만이 승인한, 완전한 자치 국가"
       }
     },
     {
@@ -63,7 +79,7 @@
     },
     {
       "id": "pure-de-facto",
-      "match": ["Northern Cyprus","Transnistria"],
+      "match": ["Transnistria"],
       "count": true,
       "icon": "sovereignty",
       "cell": [4,1],
@@ -79,7 +95,7 @@
     },
     {
       "id": "no-coverage",
-      "match": ["Moldova","Northern Cyprus","Transnistria","Vatican City"],
+      "match": ["Guernsey","Moldova","Northern Cyprus","Transnistria","Vatican City"],
       "count": true,
       "icon": "geoguessr",
       "reason": {
@@ -168,10 +184,14 @@
       {"en":{"pref":"Transnistria","others":["Administrative-Territorial Units of the Left Bank of the Dniester"]},"de":"Transnistrien","es":"Unidad territorial autónoma con un estatus jurídico especial Transnistria","fr":"Transnistrie","ja":"沿ドニエストル地域","ko":"트란스니스트리아 자치 영토 단위","zh-Hans":"德涅斯特河沿岸自治领土单位","?":["it","zh-Hant"]},
       {"en":{"pref":"Northern Cyprus","others":["Turkish Republic of Northern Cyprus"]},"de":{"pref":"Nordzypern","others":["Türkische Republik Nordzypern"]},"fr":{"pref":"Chypre du Nord","others":["République turque de Chypre du Nord"]},"?":["es","it","ja","ko","zh-Hans","zh-Hant"]},
       {"en":{"pref":"Iceland","others":["Republic of Iceland"]},"de":"Island","es":"Islandia","fr":"Islande","it":"Islanda","ja":{"pref":"アイスランド","long":"アイスランド共和国"},"ko":"아이슬란드","zh-Hans":"冰岛","zh-Hant":"冰島"},
+      {"en":"Jersey","fr":{"pref":"Jersey","others":["Bailliage de Jersey"]},"ja":"ジャージー","ko":"저지","zh-Hans":"泽西岛","zh-Hant":"澤西島"},
       {"en":{"pref":"Andorra","others":["Principality of Andorra"]},"de":"Andorra","es":{"pref":"Andorra","long":"Principado de Andorra"},"fr":"Andorre","it":"Andorra","ja":"アンドラ","ko":"안도라","zh-Hans":"安道尔","zh-Hant":"安道爾"},
+      {"en":"Isle of Man","de":{"pref":"Isle of Man","short":"Insel Man"},"es":"Isla de Man","fr":{"pref":"Île de Man","others":["Man (Île)"]},"it":"Isola di Man","ja":"マン島","ko":{"pref":"맨섬","others":["맨 섬"]},"zh-Hans":"马恩岛","zh-Hant":{"pref":"曼島","long":"曼岛"}},
+      {"en":"Guernsey","es":"Guernesey","fr":{"pref":"Guernesey","others":["Bailliage de Guernesey"]},"ja":"ガーンジー","ko":"건지","zh-Hans":"根西岛","zh-Hant":"根息"},
       {"en":"Faroe Islands","de":{"pref":"Färöer","others":["Färöer-Inseln"]},"es":"Islas Feroe","fr":{"pref":"Îles Féroé","others":["Iles Féroé"]},"it":"Isole Faroe","ja":"フェロー諸島","ko":{"pref":"페로제도","long":"페로 제도"},"zh-Hans":"法罗群岛","zh-Hant":"法羅群島"},
       {"en":{"pref":"Monaco","long":"Principality of Monaco"},"de":"Monaco","es":{"pref":"Mónaco","long":"Principado de Mónaco"},"fr":{"pref":"Monaco","others":["Principauté de Monaco"]},"it":{"pref":"Monaco","others":["Principato di Monaco"]},"ja":"モナコ","ko":"모나코","zh-Hans":"摩纳哥","zh-Hant":"摩納哥"},
       {"en":{"pref":"Liechtenstein","others":["Principality of Liechtenstein"]},"de":{"pref":"Liechtenstein","others":["Fürstentum Liechtenstein"]},"es":"Liechtenstein","fr":"Liechtenstein","it":{"pref":"Liechtenstein","others":["Principato del Liechtenstein"]},"ja":{"pref":"リヒテンシュタイン","long":"リヒテンシュタイン公国"},"ko":"리히텐슈타인","zh-Hans":"列支敦士登","zh-Hant":"列支敦斯登"},
+      {"en":"Gibraltar","it":"Gibilterra","ja":"ジブラルタル","ko":"지브롤터","zh-Hans":"直布罗陀","zh-Hant":"直布羅陀"},
       {"en":"San Marino","fr":"Saint-Marin","it":{"pref":"San Marino","others":["Repubblica di San Marino"]},"ja":{"pref":"サンマリノ","long":"サンマリノ共和国"},"ko":"산마리노","zh-Hans":"圣马力诺","zh-Hant":"聖馬利諾"},
       {"en":{"pref":"Åland","others":["Åland Islands","Aland Islands","Province of Åland"]},"de":{"pref":"Åland","others":["Alandinseln","Ålandinseln"]},"es":{"pref":"Islas Aland","others":["Islas Åland","Islas de Åland"]},"fr":{"pref":"Åland","others":["Îles Åland"]},"it":{"pref":"Isole Åland","others":["Isole Aland"]},"ja":"オーランド諸島","ko":"올란드 제도","zh-Hans":"奥兰群岛","zh-Hant":"奧蘭群島"},
       {"en":{"pref":"Vatican City","others":["Holy See","Holy See (Vatican City State)","Vatican","Vatican City State","Vatican City State (Holy See)","Vatican Hill"]},"de":{"pref":"Vatikanstadt","long":"Staat der Vatikanstadt"},"es":{"pref":"Ciudad del Vaticano","others":["El Vaticano","Santa Sede","Santa Sede (Estado de la Ciudad del Vaticano)"]},"fr":{"pref":"Vatican","others":["Saint-Siège (Etat de la Cité du Vatican)","Saint-Siège (État de la Cité du Vatican)"]},"it":{"pref":"Città del Vaticano","short":"Vaticano","others":["Città Vaticano","Colle Vaticano","Santa Sede (Città del Vaticano)","Stato della Città del Vaticano"]},"ja":{"pref":"ローマ法王庁 (バチカン市国)","others":["ローマ教皇庁 (バチカン市国)"]},"ko":{"pref":"바티칸시티","others":["바티칸"]},"zh-Hans":"梵蒂冈","zh-Hant":{"pref":"梵蒂岡","long":"圣座（梵蒂冈）"}}

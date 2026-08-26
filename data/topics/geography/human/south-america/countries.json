@@ -7,9 +7,27 @@
     "Names & variants: geonames country info and alternate names — https://www.geonames.org/countries/ (see scripts/geography/dump-geonames.mjs)",
     "Population & tiers: Wikidata sovereign states (P31 Q3624078) — https://www.wikidata.org/wiki/Q3624078 (see scripts/geography/dump-country-data.mjs)"
   ],
-  "lastUpdated": "2026-08-25",
-  "lastChecked": "2026-08-25",
+  "lastUpdated": "2026-08-26",
+  "lastChecked": "2026-08-26",
   "defaultNames": "pref",
+  "omitted": [
+    {
+      "id": "classic-autonomous",
+      "match": ["Falkland Islands"],
+      "count": true,
+      "icon": "sovereignty",
+      "cell": [4,2],
+      "reason": {
+        "en": "autonomous territories internationally regarded as part of a sovereign state",
+        "de": "autonome Gebiete, die international als Teil eines souveränen Staates gelten",
+        "es": "territorios autónomos considerados internacionalmente parte de un Estado soberano",
+        "fr": "territoires autonomes internationalement considérés comme partie d'un État souverain",
+        "it": "territori autonomi considerati a livello internazionale parte di uno Stato sovrano",
+        "ja": "国際的に主権国家の一部と見なされる自治地域",
+        "ko": "국제적으로 주권 국가의 일부로 여겨지는 자치 지역"
+      }
+    }
+  ],
   "omittable": [
     {
       "id": "no-coverage",
@@ -24,6 +42,21 @@
         "it": "paesi senza copertura di Google Street View",
         "ja": "Google ストリートビュー非対応の国",
         "ko": "구글 스트리트 뷰가 없는 국가"
+      }
+    },
+    {
+      "id": "rare-coverage",
+      "match": ["Falkland Islands"],
+      "count": true,
+      "icon": "geoguessr",
+      "reason": {
+        "en": "countries with only sparse Street View coverage",
+        "de": "Länder mit nur spärlicher Street-View-Abdeckung",
+        "es": "países con cobertura de Street View muy escasa",
+        "fr": "pays à couverture Street View très rare",
+        "it": "paesi con copertura Street View molto scarsa",
+        "ja": "ストリートビューがまばらな国",
+        "ko": "스트리트 뷰가 드문 국가"
       }
     }
   ],
@@ -52,7 +85,8 @@
 
     [
       {"en":"Guyana","fr":{"pref":"Guyana","others":["Guyane britannique"]},"ja":"ガイアナ","ko":"가이아나","zh-Hans":"圭亚那","zh-Hant":"蓋亞那"},
-      {"en":{"pref":"Suriname","others":["Republic of Suriname"]},"de":"Suriname","es":"Surinam","fr":{"pref":"Suriname","others":["Surinam"]},"it":"Suriname","ja":{"pref":"スリナム","long":"スリナム共和国"},"ko":"수리남","zh-Hans":"苏里南","zh-Hant":"蘇利南"}
+      {"en":{"pref":"Suriname","others":["Republic of Suriname"]},"de":"Suriname","es":"Surinam","fr":{"pref":"Suriname","others":["Surinam"]},"it":"Suriname","ja":{"pref":"スリナム","long":"スリナム共和国"},"ko":"수리남","zh-Hans":"苏里南","zh-Hant":"蘇利南"},
+      {"en":{"pref":"Falkland Islands","others":["Colony of the Falkland Islands","Falkland Islands (Malvinas)"]},"de":"Falkland-Inseln","es":{"pref":"Islas Malvinas","others":["Islas Falkland (Malvinas)"]},"fr":{"pref":"îles Falkland (Malouines)","short":"Îles Malouines","others":["Îles Falkland"]},"it":"Isole Falkland","ja":"フォークランド諸島","ko":"포클랜드 제도","zh-Hant":{"pref":"福克蘭群島","long":"福克兰群岛"},"?":["zh-Hans"]}
     ]
   ],
   "tierConditions": [

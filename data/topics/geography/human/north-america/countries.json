@@ -7,13 +7,13 @@
     "Names & variants: geonames country info and alternate names — https://www.geonames.org/countries/ (see scripts/geography/dump-geonames.mjs)",
     "Population & tiers: Wikidata sovereign states (P31 Q3624078) — https://www.wikidata.org/wiki/Q3624078 (see scripts/geography/dump-country-data.mjs)"
   ],
-  "lastUpdated": "2026-08-25",
-  "lastChecked": "2026-08-25",
+  "lastUpdated": "2026-08-26",
+  "lastChecked": "2026-08-26",
   "defaultNames": "pref",
   "omitted": [
     {
       "id": "classic-autonomous",
-      "match": ["Greenland"],
+      "match": ["Anguilla","Bermuda","British Virgin Islands","Cayman Islands","Greenland","Montserrat","Saint Barthélemy","Saint Martin","Saint Pierre and Miquelon","Turks and Caicos Islands","United States Virgin Islands"],
       "count": true,
       "icon": "sovereignty",
       "cell": [4,2],
@@ -29,6 +29,22 @@
     }
   ],
   "omittable": [
+    {
+      "id": "asymmetric-autonomy",
+      "match": ["Aruba","Curaçao","Sint Maarten"],
+      "count": true,
+      "icon": "sovereignty",
+      "cell": [1,2],
+      "reason": {
+        "en": "autonomous regions whose broad self-rule is internationally recognized",
+        "de": "autonome Regionen, deren weitreichende Selbstverwaltung völkerrechtlich anerkannt ist",
+        "es": "regiones autónomas cuyo amplio autogobierno está reconocido internacionalmente",
+        "fr": "régions autonomes dont la large autonomie est reconnue internationalement",
+        "it": "regioni autonome la cui ampia autonomia è riconosciuta a livello internazionale",
+        "ja": "広範な自治が国際的に認められている自治地域",
+        "ko": "폭넓은 자치가 국제적으로 인정된 자치 지역"
+      }
+    },
     {
       "id": "special-status",
       "match": ["Puerto Rico"],
@@ -47,7 +63,7 @@
     },
     {
       "id": "no-coverage",
-      "match": ["Antigua and Barbuda","Bahamas","Barbados","Belize","Cuba","Dominica","El Salvador","Grenada","Haiti","Honduras","Jamaica","Nicaragua","Saint Kitts and Nevis","Saint Lucia","Saint Vincent and the Grenadines","Trinidad and Tobago"],
+      "match": ["Anguilla","Antigua and Barbuda","Aruba","Bahamas","Barbados","Belize","British Virgin Islands","Cayman Islands","Cuba","Dominica","El Salvador","Grenada","Haiti","Honduras","Jamaica","Montserrat","Nicaragua","Saint Barthélemy","Saint Kitts and Nevis","Saint Lucia","Saint Martin","Saint Vincent and the Grenadines","Sint Maarten","Trinidad and Tobago","Turks and Caicos Islands"],
       "count": true,
       "icon": "geoguessr",
       "reason": {
@@ -94,12 +110,25 @@
       {"en":{"pref":"Bahamas","others":["The Bahamas"]},"de":"Bahamas","es":"Bahamas","fr":"Bahamas","it":"Bahamas","ja":{"pref":"バハマ","long":"バハマ国"},"ko":"바하마","zh-Hans":"巴哈马","zh-Hant":"巴哈馬"},
       {"en":"Barbados","fr":"Barbade","ja":"バルバドス","ko":"바베이도스","zh-Hans":"巴巴多斯","zh-Hant":"巴貝多"},
       {"en":{"pref":"Saint Lucia","others":["St Lucia","St. Lucia"]},"de":"Saint Lucia","es":{"pref":"Santa Lucía","others":["Saint Lucia"]},"fr":"Sainte-Lucie","it":{"pref":"Santa Lucia","others":["Saint Lucia"]},"ja":"セントルシア","ko":{"pref":"세인트루시아","long":"세인트 루시아"},"zh-Hans":"圣卢西亚","zh-Hant":"聖露西亞"},
+      {"en":{"pref":"Curaçao","others":["Country of Curaçao"]},"de":"Curaçao","es":{"pref":"Curazao","long":"País de Curazao"},"fr":"Curaçao","it":{"pref":"Curaçao","others":["Curacao"]},"ja":"キュラソー","ko":"퀴라소","zh-Hans":"库拉索","zh-Hant":"庫拉索"},
       {"en":"Grenada","es":"Granada","fr":"Grenade","ja":"グレナダ","ko":"그레나다","zh-Hans":"格林纳达","zh-Hant":"格瑞那達"},
       {"en":{"pref":"Saint Vincent and the Grenadines","short":"St Vincent and Grenadines","others":["St. Vincent & Grenadines"]},"de":"St. Vincent und die Grenadinen","es":"San Vicente y las Granadinas","fr":"Saint-Vincent-et-les-Grenadines","it":{"pref":"Saint Vincent e Grenadine","others":["Saint Vincent e Grenadines"]},"ja":{"pref":"セントビンセント及びグレナディーン諸島","others":["セントビンセント・グレナディーン"]},"ko":{"pref":"세인트빈센트그레나딘","long":"세인트 빈센트 그레나딘","others":["세인트빈센트 그레나딘"]},"zh-Hans":"圣文森特和格林纳丁斯","zh-Hant":"聖文森及格瑞那丁"},
+      {"en":{"pref":"United States Virgin Islands","others":["U.S. Virgin Islands","Virgin Islands (US)"]},"de":"Amerikanische Jungferninseln","es":"Islas Vírgenes de EE. UU.","fr":{"pref":"Îles Vierges des États-Unis","short":"îles Vierges américaines"},"it":"Isole Vergini Americane","ja":"米領ヴァージン諸島","ko":"미국령 버진아일랜드","zh-Hans":"美属维尔京群岛","zh-Hant":{"pref":"美屬維京群島","long":"美属维京群岛"}},
+      {"en":{"pref":"Aruba","others":["Country of Aruba"]},"de":"Aruba","es":"Aruba","fr":"Aruba","it":"Aruba","ja":{"pref":"アルバ","long":"アルバ島"},"ko":"아루바","zh-Hans":{"pref":"阿鲁巴","others":["阿魯巴"]},"zh-Hant":"荷屬阿魯巴"},
       {"en":{"pref":"Antigua and Barbuda","others":["Antigua & Barbuda"]},"de":"Antigua und Barbuda","es":"Antigua y Barbuda","fr":{"pref":"Antigua-et-Barbuda","others":["Antigue-et-Barbude"]},"it":"Antigua e Barbuda","ja":{"pref":"アンティグアバブーダ","long":"アンティグア・バーブーダ"},"ko":{"pref":"앤티가 바부다","others":["안티가 바부다"]},"zh-Hans":"安提瓜和巴布达","zh-Hant":"安地卡及巴布達"},
       {"en":{"pref":"Dominica","others":["Commonwealth of Dominica"]},"de":"Dominica","es":"Dominica","fr":"Dominique","it":"Dominica","ja":"ドミニカ国","ko":{"pref":"도미니카","others":["도미니카 연방"]},"zh-Hans":"多米尼克","zh-Hant":"多米尼克"},
+      {"en":"Cayman Islands","de":"Kaimaninseln","es":"Islas Caimán","fr":{"pref":"Îles Caïmans","others":["Îles Caïman","Iles Caïmanes","Îles Caïmanes"]},"it":"Isole Cayman","ja":"ケイマン諸島","ko":{"pref":"케이맨제도","long":"케이맨 제도"},"zh-Hans":"开曼群岛","zh-Hant":"開曼群島"},
+      {"en":"Bermuda","de":{"pref":"Bermuda","others":["Bermudas"]},"es":"Bermudas","fr":"Bermudes","ja":{"pref":"バミューダ","others":["バミューダ諸島"]},"ko":"버뮤다","zh-Hans":"百慕大","zh-Hant":"百慕達"},
       {"en":"Greenland","de":"Grönland","es":"Groenlandia","fr":"Groenland","it":"Groenlandia","ja":"グリーンランド","ko":{"pref":"그린란드","others":["그린랜드"]},"zh-Hans":"格陵兰","zh-Hant":"格陵蘭"},
-      {"en":{"pref":"Saint Kitts and Nevis","others":["St. Kitts and Nevis","St. Kitts & Nevis"]},"de":{"pref":"St. Kitts und Nevis","others":["Föderation St. Kitts und Nevis"]},"es":{"pref":"San Cristóbal y Nieves","others":["San Cristóbal y Nevis"]},"fr":{"pref":"Saint-Christophe-et-Niévès","others":["Saint-Kitts-et-Nevis"]},"it":{"pref":"Saint Kitts e Nevis","long":"Saint Christopher e Nevis"},"ja":{"pref":"セントクリストファー・ネビス","others":["セントクリストファー・ネイビス"]},"ko":{"pref":"세인트키츠 네비스","long":"세인트 키츠 네비스","others":["세인트크리스토퍼 네비스"]},"zh-Hans":{"pref":"圣基茨和尼维斯","others":["聖克里斯多福與尼維斯"]},"zh-Hant":"聖克里斯多福及尼維斯"}
+      {"en":{"pref":"Saint Kitts and Nevis","others":["St. Kitts and Nevis","St. Kitts & Nevis"]},"de":{"pref":"St. Kitts und Nevis","others":["Föderation St. Kitts und Nevis"]},"es":{"pref":"San Cristóbal y Nieves","others":["San Cristóbal y Nevis"]},"fr":{"pref":"Saint-Christophe-et-Niévès","others":["Saint-Kitts-et-Nevis"]},"it":{"pref":"Saint Kitts e Nevis","long":"Saint Christopher e Nevis"},"ja":{"pref":"セントクリストファー・ネビス","others":["セントクリストファー・ネイビス"]},"ko":{"pref":"세인트키츠 네비스","long":"세인트 키츠 네비스","others":["세인트크리스토퍼 네비스"]},"zh-Hans":{"pref":"圣基茨和尼维斯","others":["聖克里斯多福與尼維斯"]},"zh-Hant":"聖克里斯多福及尼維斯"},
+      {"en":{"pref":"Sint Maarten","others":["Country of Sint Maarten","Sint Maarten (Dutch Part)"]},"de":"Sint Maarten","es":{"pref":"Isla de San Martín","long":"Sint Maarten","others":["San Martín"]},"fr":{"pref":"Saint-Martin","long":"Saint-Martin (partie néerlandaise)","others":["État de Saint-Martin","Saint-Martin (Royaume des Pays-Bas)"]},"it":"Sint Maarten","ja":"シント・マールテン","ko":{"pref":"신트마르턴","others":["신트마르텐"]},"zh-Hans":{"pref":"圣马丁岛","long":"荷属圣马丁"},"zh-Hant":"荷屬聖馬丁"},
+      {"en":{"pref":"Turks and Caicos Islands","others":["Turks and Caicos"]},"de":"Turks- und Caicosinseln","es":"Islas Turcas y Caicos","fr":{"pref":"Îles Turques-et-Caïques","others":["îles Turks-et-Caïcos","Îles Turks et Caïques"]},"it":"Isole Turks e Caicos","ja":"タークス・カイコス諸島","ko":{"pref":"터크스 케이커스 제도","others":["터크스케이커스"]},"zh-Hans":"特克斯和凯科斯群岛","zh-Hant":"土克斯及開科斯群島"},
+      {"en":{"pref":"Saint Martin","others":["Saint-Martin Collectivity","Saint Martin (French Part)","St Martin","St. Martin","St. Martin (French Part)"]},"de":{"pref":"Saint-Martin","short":"St. Martin"},"es":{"pref":"San Martín","others":["Isla de San Martín"]},"fr":{"pref":"Saint-Martin","long":"Saint-Martin (Antilles françaises)","others":["Collectivité de Saint-Martin"]},"it":{"pref":"Saint Martin","others":["Saint-Martin"]},"ja":"サン・マルタン","ko":"생마르탱","zh-Hans":"法属圣马丁","zh-Hant":"法屬聖馬丁"},
+      {"en":{"pref":"British Virgin Islands","others":["Virgin Islands (British)"]},"de":"Britische Jungferninseln","es":{"pref":"Islas Vírgenes Británicas","short":"Islas Vírgenes"},"fr":{"pref":"Îles Vierges britanniques","short":"Îles Vierges"},"it":"Isole Vergini Britanniche","ja":{"pref":"英領ヴァージン諸島","others":["イギリス領ヴァージン諸島"]},"ko":{"pref":"영국령 버진아일랜드","long":"영국령 버진 아일랜드"},"zh-Hans":{"pref":"英属维尔京群岛","others":["英屬維爾京群島"]},"zh-Hant":{"pref":"英屬維京群島","long":"英属维京群岛"}},
+      {"en":"Anguilla","es":"Anguila","ja":"アンギラ","ko":{"pref":"앵귈라","others":["안길라"]},"zh-Hans":"安圭拉","zh-Hant":"安奎拉"},
+      {"en":"Montserrat","ja":{"pref":"モントセラト","long":"モントセラト島"},"ko":{"pref":"몬트세라트","others":["몬트세랫"]},"zh-Hans":"蒙特塞拉特","zh-Hant":{"pref":"蒙哲臘","long":"蒙塞拉特群岛"}},
+      {"en":{"pref":"Saint Barthélemy","others":["St. Barthélemy","Territorial collectivity of Saint-Barthélemy"]},"de":{"pref":"Saint-Barthélemy","short":"St. Barthélemy","others":["Sankt Bartholomäus"]},"es":"San Bartolomé","fr":{"pref":"Saint-Barthélemy","others":["Collectivité territoriale de Saint-Barthélemy"]},"it":{"pref":"Saint-Barthélemy","others":["San Bartolomeo"]},"ja":{"pref":"サン・バルテルミー","others":["サン・バルテルミー島"]},"ko":{"pref":"생바르텔레미","long":"생 바르텔르미"},"zh-Hans":{"pref":"圣巴泰勒米","others":["聖巴泰勒米島"]},"zh-Hant":"聖巴瑟米"},
+      {"en":{"pref":"Saint Pierre and Miquelon","others":["St. Pierre & Miquelon"]},"de":"St. Pierre und Miquelon","es":"San Pedro y Miquelón","fr":{"pref":"Saint-Pierre-et-Miquelon","short":"Saint-Pierre et Miquelon","others":["Collectivité Territoriale de Saint-Pierre et Miquelon","St-Pierre et Miquelon"]},"it":"Saint-Pierre e Miquelon","ja":"サンピエール島・ミクロン島","ko":{"pref":"생피에르 미클롱","long":"생피에르앤드미클롱","others":["생피에르에 미클롱"]},"zh-Hans":"圣皮埃尔和密克隆群岛","zh-Hant":"聖皮埃與密克隆群島"}
     ]
   ],
   "tierConditions": [
