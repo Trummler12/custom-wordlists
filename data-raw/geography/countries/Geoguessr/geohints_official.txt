@@ -150,5 +150,3 @@ Uruguay
 
 # --- Hand-added: territories with official coverage that the geohints export omits ---
 # (kept here because no-coverage is maintained off this file; a fresh pull must not lose them)
-Western Sahara
-Cook Islands

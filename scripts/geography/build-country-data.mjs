@@ -350,6 +350,7 @@ const RARE_COVERAGE = new Set([
   "Martinique", "Falkland Islands", "South Georgia and the South Sandwich Islands",
   "Mali", "Egypt", "Tanzania", "Belarus", "Iraq", "Afghanistan",
   "British Indian Ocean Territory", "China", "Cocos (Keeling) Islands", "Vanuatu",
+  "Pitcairn Islands",
 ]);
 
 /** The two coverage reasons — lower-case leading noun, so the "up to N" the panel
