@@ -3,10 +3,13 @@
   "title": {"en":"Capitals","de":"Hauptstädte","es":"Capitales","fr":"Capitales","it":"Capitali","ja":"首都","ko":"수도","zh-Hans":"首都","zh-Hant":"首都"},
   "languages": ["en","de","es","fr","it","ja","ja-Latn","ko","zh-Hans","zh-Hant"],
   "generatedRomaji": true,
-  "sources": ["Names: Wikidata capitals (P36) of the sovereign states — https://www.wikidata.org/wiki/Property:P36 (see scripts/geography/dump-country-data.mjs)"],
-  "lastUpdated": "2026-08-25",
-  "lastChecked": "2026-08-25",
-  "defaultNames": "short",
+  "sources": [
+    "Names: Wikidata capitals (P36) of the sovereign states — https://www.wikidata.org/wiki/Property:P36 (see scripts/geography/dump-country-data.mjs)",
+    "Variants: geonames alternate names, linked via Wikidata GeoNames id (P1566) — https://www.geonames.org (see scripts/geography/dump-capital-geonames.mjs)"
+  ],
+  "lastUpdated": "2026-08-26",
+  "lastChecked": "2026-08-26",
+  "defaultNames": "pref",
   "omittable": [
     {
       "id": "no-coverage",
@@ -26,31 +29,31 @@
   ],
   "tiers": [
     [
-      {"en":"Brasília","es":"Brasilia","fr":"Brasilia","it":"Brasilia","ja":"ブラジリア","ko":"브라질리아","zh-Hans":"巴西利亚","zh-Hant":"巴西利亞"}
+      {"en":"Brasília","es":"Brasilia","fr":"Brasilia","it":{"pref":"Brasilia","others":["Brasília"]},"ja":"ブラジリア","ko":"브라질리아","zh-Hans":"巴西利亚","zh-Hant":"巴西利亞"}
     ],
 
     [
-      {"en":"Bogotá","fr":"Bogota","it":"Bogotà","ja":"ボゴタ","ko":"보고타","zh-Hans":"波哥大","zh-Hant":"波哥大"},
-      {"en":"Buenos Aires","ja":"ブエノスアイレス","ko":"부에노스아이레스","zh-Hans":"布宜诺斯艾利斯","zh-Hant":"布宜諾斯艾利斯"},
-      {"en":"Lima","ja":"リマ","ko":"리마","zh-Hans":"利马","zh-Hant":"利馬"},
-      {"en":"Caracas","ja":"カラカス","ko":"카라카스","zh-Hans":"加拉加斯","zh-Hant":"卡拉卡斯"}
+      {"en":"Bogotá","de":{"pref":"Bogotá","others":["Bogota"]},"fr":"Bogota","it":{"pref":"Bogotà","others":["Bogotá"]},"ja":"ボゴタ","ko":"보고타","zh-Hans":"波哥大","zh-Hant":"波哥大"},
+      {"en":"Buenos Aires","es":{"pref":"Buenos Aires","others":["Ciudad Autónoma de Buenos Aires"]},"ja":"ブエノスアイレス","ko":"부에노스아이레스","zh-Hans":"布宜诺斯艾利斯","zh-Hant":"布宜諾斯艾利斯"},
+      {"en":"Lima","ja":"リマ","ko":"리마","zh-Hans":{"pref":"利马","others":["利馬"]},"zh-Hant":"利馬"},
+      {"en":"Caracas","es":{"pref":"Caracas","others":["Santiago de León de Caracas"]},"ja":"カラカス","ko":"카라카스","zh-Hans":"加拉加斯","zh-Hant":"卡拉卡斯"}
     ],
 
     [
-      {"en":"Santiago","de":"Santiago de Chile","es":"Santiago de Chile","it":"Santiago del Cile","ja":"サンティアゴ","ko":"산티아고","zh-Hans":"圣地亚哥","zh-Hant":"聖地牙哥"},
-      {"en":"Quito","ja":"キト","ko":"키토","zh-Hant":"基多","?":["zh-Hans"]},
-      {"en":"La Paz","ja":"ラパス","ko":"라파스","zh-Hans":"拉巴斯","zh-Hant":"拉巴斯"},
-      {"en":"Sucre","ja":"スクレ","ko":"수크레","zh-Hant":"蘇克雷","?":["zh-Hans"]},
-      {"en":"Asunción","fr":"Asuncion","ja":"アスンシオン","ko":"아순시온","zh-Hans":"亚松森","zh-Hant":"亞松森"}
+      {"en":{"pref":"Santiago","others":["Santiago de Chile"]},"de":{"pref":"Santiago de Chile","others":["Santiago"]},"es":"Santiago de Chile","fr":{"pref":"Santiago","others":["Santiago du Chili"]},"it":"Santiago del Cile","ja":"サンティアゴ","ko":"산티아고","zh-Hans":"圣地亚哥","zh-Hant":{"pref":"聖地牙哥","others":["聖地亞哥"]}},
+      {"en":"Quito","fr":{"pref":"Quito","others":["San Francisco de Quito"]},"ja":"キト","ko":"키토","zh-Hans":"基多","zh-Hant":"基多"},
+      {"en":"La Paz","es":{"pref":"La Paz","others":["Ciudad La Paz"]},"ja":"ラパス","ko":"라파스","zh-Hans":"拉巴斯","zh-Hant":"拉巴斯"},
+      {"en":"Sucre","ja":"スクレ","ko":"수크레","zh-Hans":"苏克雷","zh-Hant":"蘇克雷"},
+      {"en":"Asunción","fr":{"pref":"Asuncion","others":["Asunción"]},"ja":"アスンシオン","ko":"아순시온","zh-Hans":{"pref":"亚松森","others":["亞松森"]},"zh-Hant":"亞松森"}
     ],
 
     [
-      {"en":"Montevideo","ja":"モンテビデオ","ko":"몬테비데오","zh-Hans":"蒙得维的亚","zh-Hant":"蒙特維多"}
+      {"en":"Montevideo","ja":"モンテビデオ","ko":"몬테비데오","zh-Hans":{"pref":"蒙得维的亚","others":["蒙特維多"]},"zh-Hant":"蒙特維多"}
     ],
 
     [
-      {"en":"Georgetown","ja":"ジョージタウン","ko":"조지타운","?":["zh-Hans","zh-Hant"]},
-      {"en":"Paramaribo","ja":"パラマリボ","ko":"파라마리보","zh-Hant":"巴拉馬利波","?":["zh-Hans"]}
+      {"en":"Georgetown","ja":"ジョージタウン","ko":"조지타운","zh-Hans":"乔治敦","?":["zh-Hant"]},
+      {"en":"Paramaribo","ja":"パラマリボ","ko":"파라마리보","zh-Hans":"帕拉马里博","zh-Hant":"巴拉馬利波"}
     ]
   ],
   "tierConditions": [
