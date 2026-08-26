@@ -499,6 +499,7 @@ const SRC_COUNTRIES = [
 ];
 const SRC_CAPITALS = [
   "Names: Wikidata capitals (P36) of the sovereign states — https://www.wikidata.org/wiki/Property:P36 (see scripts/geography/dump-country-data.mjs)",
+  "Variants: geonames alternate names, linked via Wikidata GeoNames id (P1566) — https://www.geonames.org (see scripts/geography/dump-capital-geonames.mjs)",
 ];
 
 async function main() {
@@ -508,6 +509,10 @@ async function main() {
   const continentNames = await readContinentNames();
   const official = await readOfficial();
   const geo = JSON.parse(await readFile(join(RAW, "countries", "geonames-names.json"), "utf8"));
+  // geonames alternate names per capital QID (via Wikidata P1566 → getJSON), the
+  // capitals' equivalent of the country dump. The Wikidata label stays the pref; these
+  // add the short and the other spellings. See dump-capital-geonames.mjs.
+  const capGeo = JSON.parse(await readFile(join(RAW, "countries", "capital-geonames-names.json"), "utf8"));
 
   // geonames names per country QID, bucketed into pref/short/long/others and matched
   // to the Wikidata dump by ISO code. The names come from geonames — richer, several
@@ -621,6 +626,38 @@ async function main() {
     return map;
   };
 
+  /** A capital's localized entry: the Wikidata label is the pref in each language —
+   *  the drawable common name, unchanged — while geonames adds the short (where it
+   *  flags one) and the other spellings (Peking, Kiew, Washington, D.C.) as `others`,
+   *  surfaced by the `all` mode. Key-anchored like a territory, so enrichment never
+   *  moves the default name. Where a language has no label the geonames preferred name
+   *  stands in; where geonames has no entry at all (South Tarawa) the label is alone. */
+  const capitalEntry = (qid) => {
+    const geoNames = capGeo[qid]?.names ?? {};
+    const map = {};
+    const unknown = [];
+    for (const lang of LANGS) {
+      const variants = geoNames[lang] ?? [];
+      const pref = NAME_OVERRIDE[`${qid}.${lang}`] ?? capitalNames[qid]?.[lang] ?? variants.find((e) => e.pref)?.name ?? variants[0]?.name;
+      if (!pref) {
+        unknown.push(lang);
+        continue;
+      }
+      const short = variants.find((e) => e.short && e.name !== pref)?.name;
+      const others = [...new Set(variants.map((e) => e.name).filter((n) => n !== pref && n !== short))];
+      const pair = { pref };
+      if (short) pair.short = short;
+      if (others.length) pair.others = others;
+      map[lang] = pair.short || pair.others ? pair : pref;
+    }
+    if (map.en === undefined) throw new Error(`no English name for capital ${qid}`);
+    for (const lang of LANGS) {
+      if (lang !== "en" && JSON.stringify(map[lang]) === JSON.stringify(map.en)) delete map[lang];
+    }
+    if (unknown.length) map["?"] = unknown;
+    return map;
+  };
+
   // Each country to every continent it spans, deduplicated (Q538 and Q55643 both
   // map to oceania), sorted by population within a continent.
   const byContinent = {};
@@ -715,8 +752,8 @@ async function main() {
     // Capitals take their country's tier; a country with several contributes each.
     // The placeholders stay out of the capitals for now (see header).
     const capTiers = [[], [], [], [], []];
-    for (const c of list) for (const cap of c.capitals) capTiers[tierOf(c.pop)].push(entry(cap, capitalNames[cap]));
-    await write(join(dir, "capitals.json"), topic(`${folder}-capitals`, T_CAPITALS, capTiers, SRC_CAPITALS, RULER_CAPITALS, capSovOmitted.length ? capSovOmitted : undefined, [...capSovOmittable, ...covCapital]));
+    for (const c of list) for (const cap of c.capitals) capTiers[tierOf(c.pop)].push(capitalEntry(cap));
+    await write(join(dir, "capitals.json"), topic(`${folder}-capitals`, T_CAPITALS, capTiers, SRC_CAPITALS, RULER_CAPITALS, capSovOmitted.length ? capSovOmitted : undefined, [...capSovOmittable, ...covCapital], "pref"));
 
     const none = filtered.filter((x) => x.cls === "none").length;
     const rare = filtered.length - none;
