@@ -1,0 +1,9104 @@
+{
+  "Q956": {
+    "geonameId": 1816670,
+    "names": {
+      "en": [
+        {
+          "name": "Beijing"
+        }
+      ],
+      "de": [
+        {
+          "name": "Beijing",
+          "pref": true
+        },
+        {
+          "name": "Peking"
+        }
+      ],
+      "es": [
+        {
+          "name": "Pekín"
+        }
+      ],
+      "fr": [
+        {
+          "name": "Pékin"
+        }
+      ],
+      "it": [
+        {
+          "name": "Pechino"
+        }
+      ],
+      "ja": [
+        {
+          "name": "北京市"
+        }
+      ],
+      "ko": [
+        {
+          "name": "북경"
+        },
+        {
+          "name": "베이징",
+          "pref": true
+        }
+      ],
+      "zh-Hans": [
+        {
+          "name": "北京"
+        },
+        {
+          "name": "北京市"
+        }
+      ]
+    }
+  },
+  "Q987": {
+    "geonameId": 1261481,
+    "names": {
+      "en": [
+        {
+          "name": "New Delhi",
+          "pref": true
+        }
+      ],
+      "de": [
+        {
+          "name": "Neu-Delhi"
+        }
+      ],
+      "es": [
+        {
+          "name": "Nueva Delhi"
+        }
+      ],
+      "fr": [
+        {
+          "name": "New Delhi",
+          "pref": true
+        }
+      ],
+      "it": [
+        {
+          "name": "Nuova Delhi"
+        }
+      ],
+      "ja": [
+        {
+          "name": "ニューデリー"
+        }
+      ],
+      "ko": [
+        {
+          "name": "뉴델리"
+        }
+      ],
+      "zh-Hant": [
+        {
+          "name": "新德里"
+        }
+      ]
+    }
+  },
+  "Q61": {
+    "geonameId": 11789030,
+    "names": {}
+  },
+  "Q3630": {
+    "geonameId": 1642907,
+    "names": {
+      "en": [
+        {
+          "name": "Jakarta",
+          "short": true
+        },
+        {
+          "name": "Jakarta Special Capital Region",
+          "pref": true
+        }
+      ],
+      "de": [
+        {
+          "name": "Jakarta"
+        }
+      ],
+      "es": [
+        {
+          "name": "Yakarta"
+        }
+      ],
+      "fr": [
+        {
+          "name": "Jakarta"
+        }
+      ],
+      "ja": [
+        {
+          "name": "ジャカルタ"
+        }
+      ]
+    }
+  },
+  "Q1362": {
+    "geonameId": 1176615,
+    "names": {
+      "en": [
+        {
+          "name": "Islamabad",
+          "pref": true
+        }
+      ],
+      "de": [
+        {
+          "name": "Islamabad"
+        }
+      ],
+      "es": [
+        {
+          "name": "Islamabad"
+        }
+      ],
+      "fr": [
+        {
+          "name": "Islamabad"
+        }
+      ],
+      "it": [
+        {
+          "name": "Islamabad"
+        }
+      ],
+      "ja": [
+        {
+          "name": "イスラマバード"
+        }
+      ],
+      "ko": [
+        {
+          "name": "이슬라마바드"
+        }
+      ],
+      "zh-Hans": [
+        {
+          "name": "伊斯兰堡"
+        }
+      ]
+    }
+  },
+  "Q2844": {
+    "geonameId": 3469058,
+    "names": {
+      "en": [
+        {
+          "name": "Brasília"
+        }
+      ],
+      "de": [
+        {
+          "name": "Brasília"
+        }
+      ],
+      "es": [
+        {
+          "name": "Brasilia"
+        }
+      ],
+      "fr": [
+        {
+          "name": "Brasilia"
+        }
+      ],
+      "it": [
+        {
+          "name": "Brasilia"
+        },
+        {
+          "name": "Brasília"
+        }
+      ],
+      "ja": [
+        {
+          "name": "ブラジリア"
+        }
+      ],
+      "ko": [
+        {
+          "name": "브라질리아"
+        }
+      ],
+      "zh-Hans": [
+        {
+          "name": "巴西利亚"
+        }
+      ]
+    }
+  },
+  "Q3787": {
+    "geonameId": 2352778,
+    "names": {
+      "en": [
+        {
+          "name": "Abuja"
+        }
+      ],
+      "de": [
+        {
+          "name": "Abuja"
+        }
+      ],
+      "es": [
+        {
+          "name": "Abuja"
+        },
+        {
+          "name": "Abuya"
+        }
+      ],
+      "fr": [
+        {
+          "name": "Abuja"
+        }
+      ],
+      "it": [
+        {
+          "name": "Abuja"
+        }
+      ],
+      "ja": [
+        {
+          "name": "アブジャ"
+        }
+      ],
+      "ko": [
+        {
+          "name": "아부자"
+        }
+      ],
+      "zh-Hans": [
+        {
+          "name": "阿布贾"
+        }
+      ]
+    }
+  },
+  "Q1354": {
+    "geonameId": 1185241,
+    "names": {
+      "en": [
+        {
+          "name": "Dhaka"
+        }
+      ],
+      "de": [
+        {
+          "name": "Dakka"
+        },
+        {
+          "name": "Dhaka"
+        }
+      ],
+      "es": [
+        {
+          "name": "Daca"
+        }
+      ],
+      "fr": [
+        {
+          "name": "Dacca"
+        }
+      ],
+      "it": [
+        {
+          "name": "Dacca"
+        },
+        {
+          "name": "Dhâkâ"
+        }
+      ],
+      "ja": [
+        {
+          "name": "ダッカ"
+        }
+      ],
+      "ko": [
+        {
+          "name": "다카"
+        }
+      ],
+      "zh-Hant": [
+        {
+          "name": "達卡"
+        }
+      ],
+      "zh-Hans": [
+        {
+          "name": "达卡"
+        }
+      ]
+    }
+  },
+  "Q649": {
+    "geonameId": 524894,
+    "names": {
+      "en": [
+        {
+          "name": "Moscow",
+          "pref": true,
+          "short": true
+        }
+      ],
+      "de": [
+        {
+          "name": "Moskau",
+          "pref": true,
+          "short": true
+        }
+      ],
+      "es": [
+        {
+          "name": "Moscú",
+          "pref": true,
+          "short": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "Moscou",
+          "pref": true,
+          "short": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "モスクワ"
+        }
+      ]
+    }
+  },
+  "Q1489": {
+    "geonameId": 3527646,
+    "names": {
+      "en": [
+        {
+          "name": "Mexico City"
+        }
+      ],
+      "de": [
+        {
+          "name": "Mexiko-Stadt"
+        }
+      ],
+      "es": [
+        {
+          "name": "Ciudad de México",
+          "pref": true
+        },
+        {
+          "name": "El DF",
+          "colloq": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "Mexico"
+        }
+      ],
+      "it": [
+        {
+          "name": "Città del Messico"
+        }
+      ],
+      "ja": [
+        {
+          "name": "メキシコシティ"
+        }
+      ],
+      "ko": [
+        {
+          "name": "멕시코시티"
+        }
+      ],
+      "zh-Hans": [
+        {
+          "name": "墨西哥城市"
+        }
+      ]
+    }
+  },
+  "Q3624": {
+    "geonameId": 444178,
+    "names": {
+      "en": [
+        {
+          "name": "Addis Ababa",
+          "short": true
+        }
+      ],
+      "de": [
+        {
+          "name": "Addis Abeba"
+        }
+      ],
+      "es": [
+        {
+          "name": "Adís Abeba"
+        }
+      ],
+      "fr": [
+        {
+          "name": "Addis-Abeba"
+        }
+      ],
+      "ja": [
+        {
+          "name": "アディスアベバ"
+        }
+      ]
+    }
+  },
+  "Q1490": {
+    "geonameId": 1850144,
+    "names": {
+      "en": [
+        {
+          "name": "Tokyo",
+          "pref": true,
+          "short": true
+        },
+        {
+          "name": "Tokyo Metropolis"
+        },
+        {
+          "name": "Tokyo Prefecture"
+        }
+      ],
+      "de": [
+        {
+          "name": "Tokio"
+        }
+      ],
+      "es": [
+        {
+          "name": "Tokio"
+        }
+      ],
+      "fr": [
+        {
+          "name": "Préfecture de Tokyo"
+        }
+      ],
+      "it": [
+        {
+          "name": "Tokyo"
+        }
+      ],
+      "ja": [
+        {
+          "name": "とうきょうと"
+        },
+        {
+          "name": "東京"
+        },
+        {
+          "name": "東京都",
+          "pref": true
+        }
+      ],
+      "ko": [
+        {
+          "name": "도쿄 도",
+          "pref": true
+        }
+      ],
+      "zh-Hant": [
+        {
+          "name": "東京都"
+        }
+      ],
+      "zh-Hans": [
+        {
+          "name": "东京都"
+        }
+      ]
+    }
+  },
+  "Q85": {
+    "geonameId": 360630,
+    "names": {
+      "en": [
+        {
+          "name": "Cairo",
+          "pref": true
+        }
+      ],
+      "de": [
+        {
+          "name": "Kairo",
+          "pref": true
+        }
+      ],
+      "es": [
+        {
+          "name": "Cairo",
+          "short": true
+        },
+        {
+          "name": "El Cairo",
+          "pref": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "Le Caire",
+          "pref": true
+        }
+      ],
+      "it": [
+        {
+          "name": "Il Cairo"
+        }
+      ],
+      "ja": [
+        {
+          "name": "カイロ"
+        }
+      ],
+      "ko": [
+        {
+          "name": "카이로"
+        }
+      ],
+      "zh-Hant": [
+        {
+          "name": "開羅"
+        }
+      ]
+    }
+  },
+  "Q1461": {
+    "geonameId": 1701668,
+    "names": {
+      "en": [
+        {
+          "name": "City of Manila"
+        },
+        {
+          "name": "Manila",
+          "pref": true
+        },
+        {
+          "name": "Manila City"
+        }
+      ],
+      "de": [
+        {
+          "name": "Manila"
+        }
+      ],
+      "es": [
+        {
+          "name": "Manila"
+        }
+      ],
+      "fr": [
+        {
+          "name": "Manille"
+        }
+      ],
+      "it": [
+        {
+          "name": "Manila"
+        }
+      ],
+      "ja": [
+        {
+          "name": "マニラ"
+        }
+      ],
+      "ko": [
+        {
+          "name": "마닐라"
+        }
+      ],
+      "zh-Hant": [
+        {
+          "name": "馬尼拉"
+        }
+      ]
+    }
+  },
+  "Q3838": {
+    "geonameId": 2314302,
+    "names": {
+      "en": [
+        {
+          "name": "Kinshasa"
+        }
+      ],
+      "de": [
+        {
+          "name": "Kinshasa"
+        }
+      ],
+      "es": [
+        {
+          "name": "Kinsasa"
+        }
+      ],
+      "fr": [
+        {
+          "name": "Kinshasa"
+        }
+      ],
+      "it": [
+        {
+          "name": "Kinshasa"
+        }
+      ],
+      "ja": [
+        {
+          "name": "キンシャサ"
+        }
+      ],
+      "ko": [
+        {
+          "name": "킨샤사"
+        }
+      ],
+      "zh-Hant": [
+        {
+          "name": "金夏沙"
+        }
+      ]
+    }
+  },
+  "Q1858": {
+    "geonameId": 1581130,
+    "names": {
+      "en": [
+        {
+          "name": "Hanoi",
+          "pref": true
+        }
+      ],
+      "de": [
+        {
+          "name": "Hanoi"
+        }
+      ],
+      "es": [
+        {
+          "name": "Hanoi"
+        },
+        {
+          "name": "Hanói",
+          "pref": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "Hanoï",
+          "pref": true
+        }
+      ],
+      "it": [
+        {
+          "name": "Hanoi"
+        }
+      ],
+      "ja": [
+        {
+          "name": "ハノイ",
+          "pref": true
+        }
+      ],
+      "ko": [
+        {
+          "name": "하노이"
+        }
+      ],
+      "zh-Hant": [
+        {
+          "name": "河內"
+        }
+      ],
+      "zh-Hans": [
+        {
+          "name": "河內市"
+        }
+      ]
+    }
+  },
+  "Q3616": {
+    "geonameId": 112931,
+    "names": {
+      "en": [
+        {
+          "name": "Tehran"
+        }
+      ],
+      "de": [
+        {
+          "name": "Teheran"
+        }
+      ],
+      "es": [
+        {
+          "name": "Teherán"
+        }
+      ],
+      "fr": [
+        {
+          "name": "Téhéran"
+        }
+      ],
+      "it": [
+        {
+          "name": "Teheran"
+        }
+      ],
+      "ja": [
+        {
+          "name": "テヘラン"
+        }
+      ],
+      "ko": [
+        {
+          "name": "테헤란"
+        }
+      ],
+      "zh-Hant": [
+        {
+          "name": "德黑蘭"
+        }
+      ],
+      "zh-Hans": [
+        {
+          "name": "德黑兰"
+        }
+      ]
+    }
+  },
+  "Q3640": {
+    "geonameId": 323786,
+    "names": {
+      "en": [
+        {
+          "name": "Ankara"
+        }
+      ],
+      "de": [
+        {
+          "name": "Ankara"
+        }
+      ],
+      "es": [
+        {
+          "name": "Angora"
+        },
+        {
+          "name": "Ankara",
+          "pref": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "Ankara"
+        }
+      ],
+      "it": [
+        {
+          "name": "Ankara"
+        }
+      ],
+      "ja": [
+        {
+          "name": "アンカラ"
+        }
+      ],
+      "ko": [
+        {
+          "name": "앙카라"
+        }
+      ],
+      "zh-Hans": [
+        {
+          "name": "安卡拉"
+        }
+      ]
+    }
+  },
+  "Q64": {
+    "geonameId": 6547539,
+    "names": {
+      "en": [
+        {
+          "name": "Berlin",
+          "pref": true
+        }
+      ],
+      "de": [
+        {
+          "name": "Berlin",
+          "pref": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "Berlin",
+          "pref": true
+        }
+      ],
+      "it": [
+        {
+          "name": "Berlino",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q90": {
+    "geonameId": 2968815,
+    "names": {
+      "en": [
+        {
+          "name": "Paris Department",
+          "pref": true,
+          "short": true
+        }
+      ],
+      "de": [
+        {
+          "name": "Département Paris",
+          "pref": true,
+          "short": true
+        }
+      ],
+      "es": [
+        {
+          "name": "Departamento de París",
+          "pref": true,
+          "short": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "Département de Paris",
+          "pref": true,
+          "short": true
+        }
+      ],
+      "it": [
+        {
+          "name": "Provincia di Parigi",
+          "pref": true,
+          "short": true
+        }
+      ]
+    }
+  },
+  "Q84": {
+    "geonameId": 2643743,
+    "names": {
+      "en": [
+        {
+          "name": "London",
+          "pref": true
+        }
+      ],
+      "de": [
+        {
+          "name": "London"
+        }
+      ],
+      "es": [
+        {
+          "name": "Londres"
+        }
+      ],
+      "fr": [
+        {
+          "name": "Londres",
+          "pref": true,
+          "short": true
+        }
+      ],
+      "it": [
+        {
+          "name": "Londra"
+        }
+      ],
+      "ja": [
+        {
+          "name": "ロンドン"
+        }
+      ],
+      "ko": [
+        {
+          "name": "런던"
+        }
+      ],
+      "zh-Hant": [
+        {
+          "name": "倫敦"
+        }
+      ],
+      "zh-Hans": [
+        {
+          "name": "伦敦"
+        }
+      ]
+    }
+  },
+  "Q1861": {
+    "geonameId": 1609348,
+    "names": {
+      "en": [
+        {
+          "name": "Bangkok",
+          "pref": true
+        }
+      ],
+      "de": [
+        {
+          "name": "Bangkok"
+        }
+      ],
+      "es": [
+        {
+          "name": "Bangkok"
+        }
+      ],
+      "fr": [
+        {
+          "name": "Bangkok"
+        }
+      ],
+      "ja": [
+        {
+          "name": "バンコク"
+        }
+      ],
+      "zh-Hans": [
+        {
+          "name": "曼谷"
+        }
+      ]
+    }
+  },
+  "Q3926": {
+    "geonameId": 964137,
+    "names": {
+      "en": [
+        {
+          "name": "Pretoria"
+        }
+      ],
+      "de": [
+        {
+          "name": "Pretoria"
+        }
+      ],
+      "es": [
+        {
+          "name": "Pretoria"
+        }
+      ],
+      "fr": [
+        {
+          "name": "Pretoria"
+        }
+      ],
+      "it": [
+        {
+          "name": "Pretoria"
+        }
+      ],
+      "ja": [
+        {
+          "name": "プレトリア"
+        }
+      ],
+      "ko": [
+        {
+          "name": "프리토리아"
+        }
+      ],
+      "zh-Hant": [
+        {
+          "name": "普利托利亞"
+        }
+      ],
+      "zh-Hans": [
+        {
+          "name": "比勒陀利亞"
+        }
+      ]
+    }
+  },
+  "Q5465": {
+    "geonameId": 3369157,
+    "names": {
+      "en": [
+        {
+          "name": "Cape Town"
+        }
+      ],
+      "de": [
+        {
+          "name": "Kapstadt"
+        }
+      ],
+      "es": [
+        {
+          "name": "Ciudad del Cabo"
+        },
+        {
+          "name": "El Cabo"
+        }
+      ],
+      "fr": [
+        {
+          "name": "Le Cap"
+        }
+      ],
+      "it": [
+        {
+          "name": "Città del Capo",
+          "pref": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "ケープタウン"
+        }
+      ],
+      "ko": [
+        {
+          "name": "케이프타운"
+        }
+      ],
+      "zh-Hant": [
+        {
+          "name": "開普敦"
+        }
+      ]
+    }
+  },
+  "Q37701": {
+    "geonameId": 1018725,
+    "names": {
+      "en": [
+        {
+          "name": "Bloemfontein"
+        }
+      ],
+      "de": [
+        {
+          "name": "Bloemfontein"
+        }
+      ],
+      "es": [
+        {
+          "name": "Bloemfontein"
+        }
+      ],
+      "fr": [
+        {
+          "name": "Bloemfontein"
+        }
+      ],
+      "it": [
+        {
+          "name": "Bloemfontein"
+        }
+      ],
+      "ja": [
+        {
+          "name": "ブルームフォンテーン"
+        }
+      ],
+      "ko": [
+        {
+          "name": "블룸폰테인"
+        }
+      ],
+      "zh-Hans": [
+        {
+          "name": "布隆方丹"
+        }
+      ]
+    }
+  },
+  "Q220": {
+    "geonameId": 3169070,
+    "names": {
+      "en": [
+        {
+          "name": "Roma"
+        },
+        {
+          "name": "Rome",
+          "pref": true
+        }
+      ],
+      "de": [
+        {
+          "name": "Rom",
+          "pref": true
+        }
+      ],
+      "es": [
+        {
+          "name": "Roma"
+        }
+      ],
+      "fr": [
+        {
+          "name": "Rome",
+          "pref": true
+        }
+      ],
+      "it": [
+        {
+          "name": "Roma",
+          "pref": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "ローマ"
+        }
+      ],
+      "ko": [
+        {
+          "name": "로마"
+        }
+      ],
+      "zh-Hant": [
+        {
+          "name": "羅馬"
+        }
+      ],
+      "zh-Hans": [
+        {
+          "name": "罗马市"
+        }
+      ]
+    }
+  },
+  "Q3866": {
+    "geonameId": 160196,
+    "names": {
+      "en": [
+        {
+          "name": "Dodoma"
+        }
+      ],
+      "de": [
+        {
+          "name": "Dodoma"
+        }
+      ],
+      "es": [
+        {
+          "name": "Dodoma"
+        }
+      ],
+      "fr": [
+        {
+          "name": "Dodoma"
+        }
+      ],
+      "it": [
+        {
+          "name": "Dodoma"
+        }
+      ],
+      "ja": [
+        {
+          "name": "ドドマ"
+        }
+      ],
+      "ko": [
+        {
+          "name": "도도마"
+        }
+      ],
+      "zh-Hans": [
+        {
+          "name": "多多马"
+        }
+      ]
+    }
+  },
+  "Q37400": {
+    "geonameId": 6611854,
+    "names": {
+      "en": [
+        {
+          "name": "Naypyidaw"
+        },
+        {
+          "name": "Naypyitaw"
+        },
+        {
+          "name": "Nay Pyi Taw",
+          "pref": true
+        }
+      ],
+      "de": [
+        {
+          "name": "Naypyidaw"
+        }
+      ],
+      "fr": [
+        {
+          "name": "Naypyidaw"
+        }
+      ],
+      "ko": [
+        {
+          "name": "내피도"
+        },
+        {
+          "name": "네피도",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q2841": {
+    "geonameId": 3688689,
+    "names": {
+      "en": [
+        {
+          "name": "Bogotá"
+        }
+      ],
+      "de": [
+        {
+          "name": "Bogota"
+        },
+        {
+          "name": "Bogotá"
+        }
+      ],
+      "es": [
+        {
+          "name": "Bogotá"
+        }
+      ],
+      "fr": [
+        {
+          "name": "Bogota"
+        }
+      ],
+      "it": [
+        {
+          "name": "Bogotá"
+        }
+      ],
+      "ja": [
+        {
+          "name": "ボゴタ"
+        }
+      ],
+      "ko": [
+        {
+          "name": "보고타"
+        }
+      ],
+      "zh-Hant": [
+        {
+          "name": "波哥大"
+        }
+      ]
+    }
+  },
+  "Q8684": {
+    "geonameId": 1835848,
+    "names": {
+      "en": [
+        {
+          "name": "Seoul",
+          "pref": true
+        },
+        {
+          "name": "Seoul-si"
+        }
+      ],
+      "de": [
+        {
+          "name": "Seoul"
+        }
+      ],
+      "es": [
+        {
+          "name": "Seúl"
+        }
+      ],
+      "fr": [
+        {
+          "name": "Séoul"
+        }
+      ],
+      "it": [
+        {
+          "name": "Seul"
+        }
+      ],
+      "ja": [
+        {
+          "name": "ソウル"
+        },
+        {
+          "name": "ソウル特別市",
+          "pref": true
+        }
+      ],
+      "ko": [
+        {
+          "name": "서울"
+        },
+        {
+          "name": "서울시"
+        },
+        {
+          "name": "서울특별시",
+          "pref": true
+        }
+      ],
+      "zh-Hant": [
+        {
+          "name": "首爾"
+        }
+      ],
+      "zh-Hans": [
+        {
+          "name": "首尔"
+        },
+        {
+          "name": "首尔特别市",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q2807": {
+    "geonameId": 6359304,
+    "names": {
+      "en": [
+        {
+          "name": "Madrid",
+          "pref": true
+        }
+      ],
+      "de": [
+        {
+          "name": "Madrid",
+          "pref": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "Madrid",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q3870": {
+    "geonameId": 184745,
+    "names": {
+      "en": [
+        {
+          "name": "Nairobi"
+        }
+      ],
+      "de": [
+        {
+          "name": "Nairobi"
+        }
+      ],
+      "es": [
+        {
+          "name": "Nairobi"
+        }
+      ],
+      "fr": [
+        {
+          "name": "Nairobi"
+        }
+      ],
+      "it": [
+        {
+          "name": "Nairobi"
+        }
+      ],
+      "ja": [
+        {
+          "name": "ナイロビ"
+        }
+      ],
+      "ko": [
+        {
+          "name": "나이로비"
+        }
+      ],
+      "zh-Hans": [
+        {
+          "name": "奈洛比"
+        }
+      ]
+    }
+  },
+  "Q1486": {
+    "geonameId": 3435910,
+    "names": {
+      "en": [
+        {
+          "name": "Buenos Aires"
+        }
+      ],
+      "de": [
+        {
+          "name": "Buenos Aires"
+        }
+      ],
+      "es": [
+        {
+          "name": "Buenos Aires",
+          "pref": true
+        },
+        {
+          "name": "Ciudad Autónoma de Buenos Aires"
+        }
+      ],
+      "fr": [
+        {
+          "name": "Buenos Aires"
+        }
+      ],
+      "it": [
+        {
+          "name": "Buenos Aires"
+        }
+      ],
+      "ja": [
+        {
+          "name": "ブエノスアイレス"
+        }
+      ],
+      "ko": [
+        {
+          "name": "부에노스아이레스"
+        }
+      ],
+      "zh-Hant": [
+        {
+          "name": "布宜諾斯艾利斯"
+        }
+      ],
+      "zh-Hans": [
+        {
+          "name": "布宜诺斯艾利斯"
+        }
+      ]
+    }
+  },
+  "Q3894": {
+    "geonameId": 232422,
+    "names": {
+      "en": [
+        {
+          "name": "Kampala"
+        }
+      ],
+      "de": [
+        {
+          "name": "Kampala"
+        }
+      ],
+      "es": [
+        {
+          "name": "Kampala"
+        }
+      ],
+      "fr": [
+        {
+          "name": "Kampala"
+        }
+      ],
+      "it": [
+        {
+          "name": "Kampala"
+        }
+      ],
+      "ja": [
+        {
+          "name": "カンパラ"
+        }
+      ],
+      "ko": [
+        {
+          "name": "캄팔라"
+        }
+      ],
+      "zh-Hans": [
+        {
+          "name": "坎帕拉"
+        }
+      ]
+    }
+  },
+  "Q3561": {
+    "geonameId": 2507480,
+    "names": {
+      "en": [
+        {
+          "name": "Algiers"
+        }
+      ],
+      "de": [
+        {
+          "name": "Algier"
+        }
+      ],
+      "es": [
+        {
+          "name": "Argel"
+        }
+      ],
+      "fr": [
+        {
+          "name": "Alger",
+          "pref": true,
+          "short": true
+        }
+      ],
+      "it": [
+        {
+          "name": "Algeri"
+        }
+      ],
+      "ja": [
+        {
+          "name": "アルジェ"
+        }
+      ],
+      "ko": [
+        {
+          "name": "알제"
+        }
+      ],
+      "zh-Hant": [
+        {
+          "name": "阿爾及爾"
+        }
+      ]
+    }
+  },
+  "Q5838": {
+    "geonameId": 1138958,
+    "names": {
+      "en": [
+        {
+          "name": "Kabul"
+        }
+      ],
+      "de": [
+        {
+          "name": "Kabul"
+        }
+      ],
+      "es": [
+        {
+          "name": "Kabul"
+        }
+      ],
+      "fr": [
+        {
+          "name": "Kaboul"
+        }
+      ],
+      "it": [
+        {
+          "name": "Kabul"
+        }
+      ],
+      "ja": [
+        {
+          "name": "カーブル"
+        },
+        {
+          "name": "カブール"
+        }
+      ],
+      "ko": [
+        {
+          "name": "카불"
+        }
+      ],
+      "zh-Hans": [
+        {
+          "name": "喀布尔"
+        }
+      ]
+    }
+  },
+  "Q1899": {
+    "geonameId": 703448,
+    "names": {
+      "en": [
+        {
+          "name": "Kyiv",
+          "pref": true
+        }
+      ],
+      "de": [
+        {
+          "name": "Kiew"
+        },
+        {
+          "name": "Kyiw"
+        },
+        {
+          "name": "Kyjiw",
+          "pref": true
+        }
+      ],
+      "es": [
+        {
+          "name": "Kyiv"
+        }
+      ],
+      "fr": [
+        {
+          "name": "Kiev",
+          "pref": true
+        },
+        {
+          "name": "Kyiv"
+        }
+      ],
+      "it": [
+        {
+          "name": "Kyiv"
+        }
+      ],
+      "ja": [
+        {
+          "name": "キーウ"
+        }
+      ],
+      "ko": [
+        {
+          "name": "키예프"
+        }
+      ],
+      "zh-Hant": [
+        {
+          "name": "基輔"
+        }
+      ]
+    }
+  },
+  "Q1963": {
+    "geonameId": 379252,
+    "names": {
+      "en": [
+        {
+          "name": "Khartoum"
+        }
+      ],
+      "de": [
+        {
+          "name": "Khartum"
+        }
+      ],
+      "es": [
+        {
+          "name": "Jartum"
+        }
+      ],
+      "fr": [
+        {
+          "name": "Khartoum"
+        }
+      ],
+      "it": [
+        {
+          "name": "Khartum"
+        }
+      ],
+      "ja": [
+        {
+          "name": "ハルツーム"
+        }
+      ],
+      "ko": [
+        {
+          "name": "하르툼"
+        }
+      ],
+      "zh-Hans": [
+        {
+          "name": "喀土穆"
+        }
+      ]
+    }
+  },
+  "Q1530": {
+    "geonameId": 98182,
+    "names": {
+      "en": [
+        {
+          "name": "Baghdad"
+        }
+      ],
+      "de": [
+        {
+          "name": "Bagdad"
+        }
+      ],
+      "es": [
+        {
+          "name": "Bagdad"
+        }
+      ],
+      "fr": [
+        {
+          "name": "Bagdad"
+        }
+      ],
+      "it": [
+        {
+          "name": "Baghdad"
+        }
+      ],
+      "ja": [
+        {
+          "name": "バグダード"
+        }
+      ],
+      "ko": [
+        {
+          "name": "바그다드"
+        }
+      ],
+      "zh-Hant": [
+        {
+          "name": "巴格達"
+        }
+      ]
+    }
+  },
+  "Q270": {
+    "geonameId": 756135,
+    "names": {
+      "en": [
+        {
+          "name": "Warsaw"
+        }
+      ],
+      "de": [
+        {
+          "name": "Warschau"
+        }
+      ],
+      "es": [
+        {
+          "name": "Varsovia"
+        }
+      ],
+      "fr": [
+        {
+          "name": "Varsovie"
+        }
+      ],
+      "it": [
+        {
+          "name": "Varsavia"
+        }
+      ],
+      "ja": [
+        {
+          "name": "ワルシャワ"
+        }
+      ],
+      "ko": [
+        {
+          "name": "바르샤바"
+        }
+      ],
+      "zh-Hant": [
+        {
+          "name": "華沙"
+        }
+      ]
+    }
+  },
+  "Q1930": {
+    "geonameId": 6094817,
+    "names": {
+      "en": [
+        {
+          "name": "Ottawa"
+        }
+      ],
+      "de": [
+        {
+          "name": "Ottawa"
+        }
+      ],
+      "es": [
+        {
+          "name": "Ottawa"
+        }
+      ],
+      "fr": [
+        {
+          "name": "Ottawa"
+        }
+      ],
+      "it": [
+        {
+          "name": "Ottawa"
+        }
+      ],
+      "ja": [
+        {
+          "name": "オタワ"
+        }
+      ],
+      "ko": [
+        {
+          "name": "오타와"
+        }
+      ],
+      "zh-Hant": [
+        {
+          "name": "渥太華"
+        }
+      ]
+    }
+  },
+  "Q3551": {
+    "geonameId": 2538475,
+    "names": {
+      "en": [
+        {
+          "name": "Rabat"
+        }
+      ],
+      "de": [
+        {
+          "name": "Rabat"
+        }
+      ],
+      "es": [
+        {
+          "name": "Rabat",
+          "short": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "Rabat"
+        }
+      ],
+      "it": [
+        {
+          "name": "Rabat"
+        }
+      ],
+      "ja": [
+        {
+          "name": "ラバト"
+        }
+      ],
+      "ko": [
+        {
+          "name": "라바트"
+        }
+      ],
+      "zh-Hans": [
+        {
+          "name": "拉巴特"
+        }
+      ]
+    }
+  },
+  "Q3897": {
+    "geonameId": 2240449,
+    "names": {
+      "en": [
+        {
+          "name": "Luanda"
+        }
+      ],
+      "de": [
+        {
+          "name": "Luanda"
+        }
+      ],
+      "es": [
+        {
+          "name": "Luanda"
+        }
+      ],
+      "fr": [
+        {
+          "name": "Luanda"
+        }
+      ],
+      "it": [
+        {
+          "name": "Luanda"
+        }
+      ],
+      "ja": [
+        {
+          "name": "ルアンダ"
+        }
+      ],
+      "ko": [
+        {
+          "name": "루안다"
+        }
+      ],
+      "zh-Hant": [
+        {
+          "name": "盧安達"
+        }
+      ],
+      "zh-Hans": [
+        {
+          "name": "罗安达"
+        }
+      ]
+    }
+  },
+  "Q269": {
+    "geonameId": 1484839,
+    "names": {
+      "en": [
+        {
+          "name": "Tashkent",
+          "short": true
+        }
+      ],
+      "de": [
+        {
+          "name": "Taschkent"
+        }
+      ],
+      "es": [
+        {
+          "name": "Tashkent"
+        }
+      ],
+      "fr": [
+        {
+          "name": "Tachkent"
+        }
+      ],
+      "ja": [
+        {
+          "name": "タシュケント"
+        }
+      ]
+    }
+  },
+  "Q1865": {
+    "geonameId": 1735161,
+    "names": {
+      "en": [
+        {
+          "name": "KL"
+        },
+        {
+          "name": "Kuala Lumpur",
+          "pref": true
+        }
+      ],
+      "de": [
+        {
+          "name": "Kuala Lumpur"
+        }
+      ],
+      "es": [
+        {
+          "name": "Kuala Lumpur"
+        }
+      ],
+      "fr": [
+        {
+          "name": "Kuala Lumpur"
+        }
+      ],
+      "it": [
+        {
+          "name": "Kuala Lumpur"
+        }
+      ],
+      "ja": [
+        {
+          "name": "クアラルンプール"
+        }
+      ],
+      "ko": [
+        {
+          "name": "쿠알라룸푸르"
+        }
+      ],
+      "zh-Hans": [
+        {
+          "name": "吉隆坡"
+        }
+      ]
+    }
+  },
+  "Q2868": {
+    "geonameId": 3936456,
+    "names": {
+      "en": [
+        {
+          "name": "Lima"
+        }
+      ],
+      "de": [
+        {
+          "name": "Lima"
+        }
+      ],
+      "es": [
+        {
+          "name": "Lima"
+        }
+      ],
+      "fr": [
+        {
+          "name": "Lima"
+        }
+      ],
+      "it": [
+        {
+          "name": "Lima"
+        }
+      ],
+      "ja": [
+        {
+          "name": "リマ"
+        }
+      ],
+      "ko": [
+        {
+          "name": "리마"
+        }
+      ],
+      "zh-Hans": [
+        {
+          "name": "利馬"
+        }
+      ]
+    }
+  },
+  "Q3692": {
+    "geonameId": 108410,
+    "names": {
+      "en": [
+        {
+          "name": "Riyadh"
+        }
+      ],
+      "de": [
+        {
+          "name": "Riad"
+        }
+      ],
+      "es": [
+        {
+          "name": "Riad"
+        }
+      ],
+      "fr": [
+        {
+          "name": "Riyad"
+        }
+      ],
+      "it": [
+        {
+          "name": "Riyad"
+        }
+      ],
+      "ja": [
+        {
+          "name": "リヤド"
+        }
+      ],
+      "ko": [
+        {
+          "name": "리야드"
+        }
+      ],
+      "zh-Hans": [
+        {
+          "name": "利雅德"
+        }
+      ]
+    }
+  },
+  "Q3761": {
+    "geonameId": 2306104,
+    "names": {
+      "en": [
+        {
+          "name": "Accra"
+        }
+      ],
+      "de": [
+        {
+          "name": "Accra"
+        }
+      ],
+      "es": [
+        {
+          "name": "Accra"
+        }
+      ],
+      "fr": [
+        {
+          "name": "Accra"
+        }
+      ],
+      "it": [
+        {
+          "name": "Accra"
+        }
+      ],
+      "ja": [
+        {
+          "name": "アクラ"
+        }
+      ],
+      "ko": [
+        {
+          "name": "아크라"
+        }
+      ],
+      "zh-Hans": [
+        {
+          "name": "阿克拉"
+        }
+      ]
+    }
+  },
+  "Q3915": {
+    "geonameId": 1070940,
+    "names": {
+      "en": [
+        {
+          "name": "Antananarivo"
+        }
+      ],
+      "de": [
+        {
+          "name": "Antananarivo"
+        }
+      ],
+      "es": [
+        {
+          "name": "Antananarivo"
+        }
+      ],
+      "fr": [
+        {
+          "name": "Tananarive"
+        }
+      ],
+      "it": [
+        {
+          "name": "Antananarivo"
+        }
+      ],
+      "ja": [
+        {
+          "name": "アンタナナリボ"
+        }
+      ],
+      "ko": [
+        {
+          "name": "안타나나리보"
+        }
+      ],
+      "zh-Hans": [
+        {
+          "name": "塔那那利佛"
+        }
+      ]
+    }
+  },
+  "Q1533": {
+    "geonameId": 3646738,
+    "names": {
+      "en": [
+        {
+          "name": "Caracas"
+        }
+      ],
+      "de": [
+        {
+          "name": "Caracas"
+        }
+      ],
+      "es": [
+        {
+          "name": "Caracas",
+          "pref": true
+        },
+        {
+          "name": "Santiago de León de Caracas"
+        }
+      ],
+      "fr": [
+        {
+          "name": "Caracas"
+        }
+      ],
+      "it": [
+        {
+          "name": "Caracas"
+        }
+      ],
+      "ja": [
+        {
+          "name": "カラカス"
+        }
+      ],
+      "ko": [
+        {
+          "name": "카라카스"
+        }
+      ],
+      "zh-Hant": [
+        {
+          "name": "卡拉卡斯"
+        }
+      ]
+    }
+  },
+  "Q3768": {
+    "geonameId": 2279755,
+    "names": {
+      "en": [
+        {
+          "name": "Yamoussoukro"
+        }
+      ],
+      "de": [
+        {
+          "name": "Yamoussoukro"
+        }
+      ],
+      "es": [
+        {
+          "name": "Yamusukro"
+        }
+      ],
+      "fr": [
+        {
+          "name": "Yamoussoukro"
+        }
+      ],
+      "it": [
+        {
+          "name": "Yamoussoukro"
+        }
+      ],
+      "ja": [
+        {
+          "name": "ヤムスクロ"
+        }
+      ],
+      "ko": [
+        {
+          "name": "야무수크로"
+        }
+      ],
+      "zh-Hans": [
+        {
+          "name": "亚穆苏克罗"
+        }
+      ]
+    }
+  },
+  "Q3889": {
+    "geonameId": 1040652,
+    "names": {
+      "en": [
+        {
+          "name": "Maputo"
+        }
+      ],
+      "de": [
+        {
+          "name": "Maputo"
+        }
+      ],
+      "es": [
+        {
+          "name": "Maputo"
+        }
+      ],
+      "fr": [
+        {
+          "name": "Maputo"
+        }
+      ],
+      "it": [
+        {
+          "name": "Maputo"
+        }
+      ],
+      "ja": [
+        {
+          "name": "マプト"
+        }
+      ],
+      "ko": [
+        {
+          "name": "마푸토"
+        },
+        {
+          "name": "마푸투",
+          "pref": true
+        }
+      ],
+      "zh-Hans": [
+        {
+          "name": "马普托"
+        }
+      ]
+    }
+  },
+  "Q3037": {
+    "geonameId": 1283240,
+    "names": {
+      "en": [
+        {
+          "name": "Kathmandu"
+        }
+      ],
+      "de": [
+        {
+          "name": "Kathmandu"
+        }
+      ],
+      "es": [
+        {
+          "name": "Katmandú"
+        }
+      ],
+      "fr": [
+        {
+          "name": "Kathmandou"
+        },
+        {
+          "name": "Katmandou",
+          "pref": true
+        }
+      ],
+      "it": [
+        {
+          "name": "Kathmandu"
+        }
+      ],
+      "ja": [
+        {
+          "name": "カトマンズ"
+        }
+      ],
+      "ko": [
+        {
+          "name": "카트만두"
+        }
+      ],
+      "zh-Hant": [
+        {
+          "name": "加德滿都"
+        }
+      ]
+    }
+  },
+  "Q3808": {
+    "geonameId": 2220957,
+    "names": {
+      "en": [
+        {
+          "name": "Yaoundé"
+        }
+      ],
+      "de": [
+        {
+          "name": "Yaoundé"
+        }
+      ],
+      "es": [
+        {
+          "name": "Yaoundé"
+        },
+        {
+          "name": "Yaundé"
+        }
+      ],
+      "fr": [
+        {
+          "name": "Yaoundé"
+        }
+      ],
+      "it": [
+        {
+          "name": "Yaoundé"
+        }
+      ],
+      "ja": [
+        {
+          "name": "ヤウンデ"
+        }
+      ],
+      "ko": [
+        {
+          "name": "야운데"
+        }
+      ],
+      "zh-Hans": [
+        {
+          "name": "雅温得"
+        }
+      ]
+    }
+  },
+  "Q2471": {
+    "geonameId": 71137,
+    "names": {
+      "en": [
+        {
+          "name": "Sanaa",
+          "pref": true
+        }
+      ],
+      "de": [
+        {
+          "name": "Sana'a"
+        },
+        {
+          "name": "Sanaa",
+          "pref": true
+        }
+      ],
+      "es": [
+        {
+          "name": "Sanaá"
+        }
+      ],
+      "fr": [
+        {
+          "name": "Sanaa"
+        }
+      ],
+      "it": [
+        {
+          "name": "Sana'a"
+        }
+      ],
+      "ja": [
+        {
+          "name": "サヌア"
+        }
+      ],
+      "ko": [
+        {
+          "name": "사나"
+        }
+      ]
+    }
+  },
+  "Q131694": {
+    "geonameId": 415189,
+    "names": {
+      "en": [
+        {
+          "name": "Aden"
+        }
+      ],
+      "de": [
+        {
+          "name": "Aden"
+        }
+      ],
+      "es": [
+        {
+          "name": "Adén"
+        }
+      ],
+      "fr": [
+        {
+          "name": "Aden"
+        }
+      ],
+      "it": [
+        {
+          "name": "Aden"
+        }
+      ],
+      "ja": [
+        {
+          "name": "アデン"
+        }
+      ],
+      "ko": [
+        {
+          "name": "아덴"
+        }
+      ],
+      "zh-Hans": [
+        {
+          "name": "亞丁"
+        }
+      ]
+    }
+  },
+  "Q3114": {
+    "geonameId": 2172517,
+    "names": {
+      "en": [
+        {
+          "name": "Canberra"
+        }
+      ],
+      "de": [
+        {
+          "name": "Canberra"
+        }
+      ],
+      "es": [
+        {
+          "name": "Camberra"
+        },
+        {
+          "name": "Canberra",
+          "pref": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "Canberra"
+        }
+      ],
+      "it": [
+        {
+          "name": "Canberra"
+        }
+      ],
+      "ja": [
+        {
+          "name": "キャンベラ"
+        }
+      ],
+      "ko": [
+        {
+          "name": "캔버라"
+        }
+      ],
+      "zh-Hans": [
+        {
+          "name": "堪培拉"
+        }
+      ]
+    }
+  },
+  "Q18808": {
+    "geonameId": 1871856,
+    "names": {
+      "en": [
+        {
+          "name": "Pyongyang",
+          "pref": true
+        },
+        {
+          "name": "Pyongyang-si"
+        },
+        {
+          "name": "P'yŏngyang-si"
+        }
+      ],
+      "de": [
+        {
+          "name": "Pjöngjang"
+        }
+      ],
+      "es": [
+        {
+          "name": "Pionyang"
+        }
+      ],
+      "fr": [
+        {
+          "name": "Pyongyang"
+        }
+      ],
+      "ja": [
+        {
+          "name": "平壌"
+        }
+      ],
+      "ko": [
+        {
+          "name": "평양"
+        },
+        {
+          "name": "평양시"
+        },
+        {
+          "name": "평양직할시",
+          "pref": true
+        },
+        {
+          "name": "平壤"
+        },
+        {
+          "name": "平壤直轄市"
+        }
+      ]
+    }
+  },
+  "Q3766": {
+    "geonameId": 170654,
+    "names": {
+      "en": [
+        {
+          "name": "Damascus"
+        }
+      ],
+      "de": [
+        {
+          "name": "Damaskus"
+        }
+      ],
+      "es": [
+        {
+          "name": "Damasco",
+          "pref": true,
+          "short": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "Damas"
+        }
+      ],
+      "it": [
+        {
+          "name": "Damasco"
+        }
+      ],
+      "ja": [
+        {
+          "name": "ダマスカス"
+        }
+      ],
+      "ko": [
+        {
+          "name": "다마스쿠스"
+        }
+      ],
+      "zh-Hans": [
+        {
+          "name": "大马士革"
+        }
+      ]
+    }
+  },
+  "Q1867": {
+    "geonameId": 1668341,
+    "names": {
+      "en": [
+        {
+          "name": "Taipei",
+          "pref": true
+        }
+      ],
+      "de": [
+        {
+          "name": "Taipeh"
+        }
+      ],
+      "es": [
+        {
+          "name": "Taipei"
+        },
+        {
+          "name": "Taipéi",
+          "pref": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "Taipei"
+        }
+      ],
+      "it": [
+        {
+          "name": "Taipei"
+        }
+      ],
+      "ja": [
+        {
+          "name": "台北"
+        },
+        {
+          "name": "台北市"
+        }
+      ],
+      "ko": [
+        {
+          "name": "타이베이",
+          "pref": true
+        },
+        {
+          "name": "타이뻬이"
+        },
+        {
+          "name": "타이페이"
+        },
+        {
+          "name": "타이베이 시"
+        }
+      ],
+      "zh-Hant": [
+        {
+          "name": "臺北市"
+        }
+      ],
+      "zh-Hans": [
+        {
+          "name": "台北市",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q3777": {
+    "geonameId": 2357048,
+    "names": {
+      "en": [
+        {
+          "name": "Ouagadougou"
+        }
+      ],
+      "de": [
+        {
+          "name": "Ouagadougou"
+        }
+      ],
+      "es": [
+        {
+          "name": "Uagadugú"
+        }
+      ],
+      "fr": [
+        {
+          "name": "Ouagadougou"
+        }
+      ],
+      "it": [
+        {
+          "name": "Ouagadougou"
+        }
+      ],
+      "ja": [
+        {
+          "name": "ワガドゥグー"
+        }
+      ],
+      "ko": [
+        {
+          "name": "와가두구"
+        }
+      ],
+      "zh-Hans": [
+        {
+          "name": "瓦加杜古"
+        }
+      ]
+    }
+  },
+  "Q3703": {
+    "geonameId": 2460594,
+    "names": {
+      "en": [
+        {
+          "name": "Bamako"
+        }
+      ],
+      "de": [
+        {
+          "name": "Bamako"
+        }
+      ],
+      "es": [
+        {
+          "name": "Bamako"
+        }
+      ],
+      "fr": [
+        {
+          "name": "District de Bamako"
+        }
+      ],
+      "it": [
+        {
+          "name": "Bamako"
+        }
+      ],
+      "ja": [
+        {
+          "name": "バマコ"
+        }
+      ],
+      "ko": [
+        {
+          "name": "바마코"
+        }
+      ],
+      "zh-Hans": [
+        {
+          "name": "巴馬科"
+        }
+      ]
+    }
+  },
+  "Q3674": {
+    "geonameId": 2440485,
+    "names": {
+      "en": [
+        {
+          "name": "Niamey"
+        }
+      ],
+      "de": [
+        {
+          "name": "Niamey"
+        }
+      ],
+      "es": [
+        {
+          "name": "Niamey"
+        }
+      ],
+      "fr": [
+        {
+          "name": "Niamey"
+        }
+      ],
+      "it": [
+        {
+          "name": "Niamey"
+        }
+      ],
+      "ja": [
+        {
+          "name": "ニアメ"
+        }
+      ],
+      "ko": [
+        {
+          "name": "니아메"
+        }
+      ],
+      "zh-Hant": [
+        {
+          "name": "尼亞美"
+        }
+      ]
+    }
+  },
+  "Q35381": {
+    "geonameId": 1248991,
+    "names": {
+      "en": [
+        {
+          "name": "Colombo"
+        }
+      ],
+      "de": [
+        {
+          "name": "Colombo"
+        }
+      ],
+      "es": [
+        {
+          "name": "Colombo"
+        }
+      ],
+      "fr": [
+        {
+          "name": "Colombo"
+        }
+      ],
+      "it": [
+        {
+          "name": "Colombo"
+        }
+      ],
+      "ja": [
+        {
+          "name": "コロンボ"
+        }
+      ],
+      "ko": [
+        {
+          "name": "콜롬보"
+        }
+      ],
+      "zh-Hant": [
+        {
+          "name": "可倫坡"
+        }
+      ]
+    }
+  },
+  "Q41963": {
+    "geonameId": 1238992,
+    "names": {
+      "en": [
+        {
+          "name": "Kotte"
+        },
+        {
+          "name": "New Capital Territory"
+        },
+        {
+          "name": "Sri Jayewardenepura Kotte",
+          "pref": true
+        }
+      ],
+      "de": [
+        {
+          "name": "Sri Jayawardenepura"
+        }
+      ],
+      "ja": [
+        {
+          "name": "スリジャヤワルダナプラコッテ"
+        }
+      ],
+      "ko": [
+        {
+          "name": "스리자야와르다나푸라"
+        }
+      ]
+    }
+  },
+  "Q1520": {
+    "geonameId": 1526273,
+    "names": {
+      "en": [
+        {
+          "name": "Astana",
+          "pref": true
+        }
+      ],
+      "de": [
+        {
+          "name": "Astana",
+          "pref": true
+        }
+      ],
+      "es": [
+        {
+          "name": "Astaná",
+          "pref": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "Astana",
+          "pref": true
+        }
+      ],
+      "it": [
+        {
+          "name": "Astana",
+          "pref": true
+        }
+      ],
+      "ko": [
+        {
+          "name": "아스타나",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q3881": {
+    "geonameId": 909137,
+    "names": {
+      "en": [
+        {
+          "name": "Lusaka"
+        }
+      ],
+      "de": [
+        {
+          "name": "Lusaka"
+        }
+      ],
+      "es": [
+        {
+          "name": "Lusaka"
+        }
+      ],
+      "fr": [
+        {
+          "name": "Lusaka"
+        }
+      ],
+      "it": [
+        {
+          "name": "Lusaka"
+        }
+      ],
+      "ja": [
+        {
+          "name": "ルサカ"
+        }
+      ],
+      "ko": [
+        {
+          "name": "루사카"
+        }
+      ],
+      "zh-Hans": [
+        {
+          "name": "路沙卡"
+        }
+      ]
+    }
+  },
+  "Q2887": {
+    "geonameId": 3871336,
+    "names": {
+      "en": [
+        {
+          "name": "Santiago",
+          "pref": true
+        },
+        {
+          "name": "Santiago de Chile"
+        }
+      ],
+      "de": [
+        {
+          "name": "Santiago",
+          "pref": true
+        },
+        {
+          "name": "Santiago de Chile"
+        }
+      ],
+      "es": [
+        {
+          "name": "Santiago de Chile"
+        }
+      ],
+      "fr": [
+        {
+          "name": "Santiago",
+          "pref": true
+        },
+        {
+          "name": "Santiago du Chili"
+        }
+      ],
+      "it": [
+        {
+          "name": "Santiago del Cile"
+        }
+      ],
+      "ja": [
+        {
+          "name": "サンティアゴ"
+        }
+      ],
+      "ko": [
+        {
+          "name": "산티아고"
+        }
+      ],
+      "zh-Hant": [
+        {
+          "name": "聖地亞哥"
+        }
+      ],
+      "zh-Hans": [
+        {
+          "name": "圣地亚哥"
+        }
+      ]
+    }
+  },
+  "Q3659": {
+    "geonameId": 2427123,
+    "names": {
+      "en": [
+        {
+          "name": "N'Djamena",
+          "pref": true
+        }
+      ],
+      "de": [
+        {
+          "name": "Indschamina"
+        },
+        {
+          "name": "N’Djamena"
+        }
+      ],
+      "es": [
+        {
+          "name": "N'Djamena"
+        },
+        {
+          "name": "Yamena",
+          "pref": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "Ndjamena"
+        }
+      ],
+      "it": [
+        {
+          "name": "N'Djamena"
+        }
+      ],
+      "ja": [
+        {
+          "name": "ンジャメナ"
+        }
+      ],
+      "ko": [
+        {
+          "name": "은자메나"
+        }
+      ],
+      "zh-Hant": [
+        {
+          "name": "恩賈梅納"
+        }
+      ]
+    }
+  },
+  "Q19660": {
+    "geonameId": 683506,
+    "names": {
+      "en": [
+        {
+          "name": "Bucharest",
+          "pref": true
+        }
+      ],
+      "de": [
+        {
+          "name": "Bukarest"
+        }
+      ],
+      "es": [
+        {
+          "name": "Bucarest"
+        }
+      ],
+      "fr": [
+        {
+          "name": "Bucarest"
+        }
+      ],
+      "it": [
+        {
+          "name": "Bucarest"
+        }
+      ],
+      "ja": [
+        {
+          "name": "ブカレスト"
+        }
+      ],
+      "ko": [
+        {
+          "name": "부쿠레슈티"
+        }
+      ],
+      "zh-Hans": [
+        {
+          "name": "布加勒斯特"
+        }
+      ]
+    }
+  },
+  "Q3876": {
+    "geonameId": 927967,
+    "names": {
+      "en": [
+        {
+          "name": "Lilongwe"
+        }
+      ],
+      "de": [
+        {
+          "name": "Lilongwe"
+        }
+      ],
+      "es": [
+        {
+          "name": "Lilongüe"
+        },
+        {
+          "name": "Lilongwe"
+        }
+      ],
+      "fr": [
+        {
+          "name": "Lilongwe"
+        }
+      ],
+      "it": [
+        {
+          "name": "Lilongwe"
+        }
+      ],
+      "ja": [
+        {
+          "name": "リロングウェ"
+        }
+      ],
+      "ko": [
+        {
+          "name": "릴롱궤"
+        }
+      ],
+      "zh-Hans": [
+        {
+          "name": "利隆圭"
+        }
+      ]
+    }
+  },
+  "Q1850": {
+    "geonameId": 1821306,
+    "names": {
+      "en": [
+        {
+          "name": "Phnom Penh"
+        }
+      ],
+      "de": [
+        {
+          "name": "Phnom Penh"
+        }
+      ],
+      "es": [
+        {
+          "name": "Nom Pen"
+        },
+        {
+          "name": "Phon Phen"
+        }
+      ],
+      "fr": [
+        {
+          "name": "Phnom Penh"
+        }
+      ],
+      "it": [
+        {
+          "name": "Phnom Penh"
+        }
+      ],
+      "ja": [
+        {
+          "name": "プノンペン"
+        }
+      ],
+      "ko": [
+        {
+          "name": "프놈펜"
+        }
+      ],
+      "zh-Hans": [
+        {
+          "name": "金边"
+        }
+      ]
+    }
+  },
+  "Q1555": {
+    "geonameId": 3595529,
+    "names": {}
+  },
+  "Q727": {
+    "geonameId": 2759794,
+    "names": {
+      "en": [
+        {
+          "name": "Amsterdam"
+        }
+      ],
+      "de": [
+        {
+          "name": "Amsterdam"
+        }
+      ],
+      "es": [
+        {
+          "name": "Ámsterdam",
+          "pref": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "Amsterdam"
+        }
+      ],
+      "ja": [
+        {
+          "name": "Amusuterudamu"
+        },
+        {
+          "name": "アムステルダム"
+        }
+      ],
+      "ko": [
+        {
+          "name": "암스테르담"
+        },
+        {
+          "name": "Amseutereudam"
+        },
+        {
+          "name": "Amsŭt'erŭdam"
+        }
+      ],
+      "zh-Hant": [
+        {
+          "name": "阿姆斯特丹"
+        }
+      ]
+    }
+  },
+  "Q2900": {
+    "geonameId": 3652462,
+    "names": {
+      "en": [
+        {
+          "name": "Quito"
+        }
+      ],
+      "de": [
+        {
+          "name": "Quito"
+        }
+      ],
+      "es": [
+        {
+          "name": "Quito"
+        }
+      ],
+      "fr": [
+        {
+          "name": "Quito",
+          "pref": true,
+          "short": true
+        },
+        {
+          "name": "San Francisco de Quito"
+        }
+      ],
+      "it": [
+        {
+          "name": "Quito"
+        }
+      ],
+      "ja": [
+        {
+          "name": "キト"
+        }
+      ],
+      "ko": [
+        {
+          "name": "키토"
+        }
+      ],
+      "zh-Hans": [
+        {
+          "name": "基多"
+        }
+      ]
+    }
+  },
+  "Q3718": {
+    "geonameId": 2253354,
+    "names": {
+      "en": [
+        {
+          "name": "Dakar"
+        }
+      ],
+      "de": [
+        {
+          "name": "Dakar"
+        }
+      ],
+      "es": [
+        {
+          "name": "Dakar"
+        }
+      ],
+      "fr": [
+        {
+          "name": "Dakar"
+        }
+      ],
+      "it": [
+        {
+          "name": "Dakar"
+        }
+      ],
+      "ja": [
+        {
+          "name": "ダカール"
+        }
+      ],
+      "ko": [
+        {
+          "name": "다카르"
+        }
+      ],
+      "zh-Hans": [
+        {
+          "name": "達喀爾"
+        }
+      ]
+    }
+  },
+  "Q3921": {
+    "geonameId": 890298,
+    "names": {}
+  },
+  "Q3859": {
+    "geonameId": 202061,
+    "names": {
+      "en": [
+        {
+          "name": "Kigali"
+        }
+      ],
+      "de": [
+        {
+          "name": "Kigali"
+        }
+      ],
+      "es": [
+        {
+          "name": "Kigali"
+        }
+      ],
+      "fr": [
+        {
+          "name": "Kigali"
+        }
+      ],
+      "it": [
+        {
+          "name": "Kigali"
+        }
+      ],
+      "ja": [
+        {
+          "name": "キガリ"
+        }
+      ],
+      "ko": [
+        {
+          "name": "키갈리"
+        }
+      ],
+      "zh-Hans": [
+        {
+          "name": "吉佳利"
+        }
+      ]
+    }
+  },
+  "Q3799": {
+    "geonameId": 2392087,
+    "names": {
+      "en": [
+        {
+          "name": "Porto-Novo"
+        }
+      ],
+      "de": [
+        {
+          "name": "Porto Novo"
+        }
+      ],
+      "es": [
+        {
+          "name": "Porto Novo"
+        }
+      ],
+      "fr": [
+        {
+          "name": "Porto Novo"
+        }
+      ],
+      "it": [
+        {
+          "name": "Porto-Novo"
+        }
+      ],
+      "ja": [
+        {
+          "name": "ポルトノボ"
+        }
+      ],
+      "ko": [
+        {
+          "name": "포르토노보"
+        }
+      ],
+      "zh-Hans": [
+        {
+          "name": "新港"
+        },
+        {
+          "name": "波多诺伏"
+        }
+      ]
+    }
+  },
+  "Q167551": {
+    "geonameId": 426272,
+    "names": {
+      "en": [
+        {
+          "name": "Gitega"
+        }
+      ],
+      "de": [
+        {
+          "name": "Gitega"
+        }
+      ],
+      "es": [
+        {
+          "name": "Gitega"
+        }
+      ],
+      "it": [
+        {
+          "name": "Gitega"
+        }
+      ]
+    }
+  },
+  "Q3733": {
+    "geonameId": 2422465,
+    "names": {
+      "en": [
+        {
+          "name": "Conakry"
+        }
+      ],
+      "de": [
+        {
+          "name": "Conakry"
+        }
+      ],
+      "es": [
+        {
+          "name": "Conakry"
+        }
+      ],
+      "fr": [
+        {
+          "name": "Conakry"
+        }
+      ],
+      "it": [
+        {
+          "name": "Conakry"
+        }
+      ],
+      "ja": [
+        {
+          "name": "コナクリ"
+        }
+      ],
+      "ko": [
+        {
+          "name": "코나크리"
+        }
+      ]
+    }
+  },
+  "Q1947": {
+    "geonameId": 373303,
+    "names": {
+      "en": [
+        {
+          "name": "Juba"
+        }
+      ],
+      "de": [
+        {
+          "name": "Dschuba"
+        },
+        {
+          "name": "Juba",
+          "pref": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "Djouba"
+        }
+      ],
+      "ko": [
+        {
+          "name": "주바"
+        }
+      ]
+    }
+  },
+  "Q1491": {
+    "geonameId": 3911925,
+    "names": {
+      "en": [
+        {
+          "name": "La Paz",
+          "pref": true
+        }
+      ],
+      "de": [
+        {
+          "name": "La Paz",
+          "pref": true
+        }
+      ],
+      "es": [
+        {
+          "name": "Ciudad La Paz"
+        },
+        {
+          "name": "La Paz",
+          "pref": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "La Paz",
+          "pref": true
+        }
+      ],
+      "it": [
+        {
+          "name": "La Paz",
+          "pref": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "ラパス"
+        }
+      ],
+      "ko": [
+        {
+          "name": "라파스"
+        }
+      ],
+      "zh-Hans": [
+        {
+          "name": "拉巴斯"
+        }
+      ]
+    }
+  },
+  "Q2907": {
+    "geonameId": 3903987,
+    "names": {
+      "en": [
+        {
+          "name": "Sucre"
+        }
+      ],
+      "de": [
+        {
+          "name": "Sucre"
+        }
+      ],
+      "es": [
+        {
+          "name": "Sucre"
+        }
+      ],
+      "fr": [
+        {
+          "name": "Sucre"
+        }
+      ],
+      "it": [
+        {
+          "name": "Sucre"
+        }
+      ],
+      "ja": [
+        {
+          "name": "スクレ"
+        }
+      ],
+      "ko": [
+        {
+          "name": "수크레"
+        }
+      ],
+      "zh-Hans": [
+        {
+          "name": "苏克雷"
+        }
+      ]
+    }
+  },
+  "Q239": {
+    "geonameId": 2800866,
+    "names": {
+      "en": [
+        {
+          "name": "Brussels",
+          "pref": true,
+          "short": true
+        },
+        {
+          "name": "City of Brussels"
+        }
+      ],
+      "de": [
+        {
+          "name": "Brüssel"
+        }
+      ],
+      "es": [
+        {
+          "name": "Bruselas"
+        }
+      ],
+      "fr": [
+        {
+          "name": "Bruxelles",
+          "pref": true
+        }
+      ],
+      "it": [
+        {
+          "name": "Bruxelles"
+        },
+        {
+          "name": "Città di Bruxelles"
+        }
+      ],
+      "ja": [
+        {
+          "name": "ブリュッセル"
+        }
+      ],
+      "ko": [
+        {
+          "name": "브뤼셀"
+        }
+      ],
+      "zh-Hant": [
+        {
+          "name": "布魯塞爾"
+        }
+      ],
+      "zh-Hans": [
+        {
+          "name": "布鲁塞尔"
+        }
+      ]
+    }
+  },
+  "Q3572": {
+    "geonameId": 2464470,
+    "names": {
+      "en": [
+        {
+          "name": "Tunis"
+        }
+      ],
+      "de": [
+        {
+          "name": "Tunis"
+        }
+      ],
+      "es": [
+        {
+          "name": "Tunez"
+        },
+        {
+          "name": "Túnez",
+          "pref": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "Tunis"
+        }
+      ],
+      "it": [
+        {
+          "name": "Tunisi"
+        }
+      ],
+      "ja": [
+        {
+          "name": "チュニス"
+        }
+      ],
+      "ko": [
+        {
+          "name": "튀니스"
+        }
+      ],
+      "zh-Hans": [
+        {
+          "name": "突尼斯"
+        },
+        {
+          "name": "突尼斯市"
+        }
+      ]
+    }
+  },
+  "Q2449": {
+    "geonameId": 53654,
+    "names": {
+      "en": [
+        {
+          "name": "Mogadishu"
+        }
+      ],
+      "de": [
+        {
+          "name": "Mogadischu"
+        }
+      ],
+      "es": [
+        {
+          "name": "Mogadiscio"
+        }
+      ],
+      "fr": [
+        {
+          "name": "Mogadiscio"
+        }
+      ],
+      "it": [
+        {
+          "name": "Mogadiscio"
+        }
+      ],
+      "ja": [
+        {
+          "name": "モガディシュ"
+        }
+      ],
+      "ko": [
+        {
+          "name": "모가디슈"
+        }
+      ],
+      "zh-Hans": [
+        {
+          "name": "摩加迪休"
+        }
+      ]
+    }
+  },
+  "Q1563": {
+    "geonameId": 3553478,
+    "names": {
+      "en": [
+        {
+          "name": "Havana"
+        }
+      ],
+      "de": [
+        {
+          "name": "Havanna"
+        }
+      ],
+      "es": [
+        {
+          "name": "La Habana"
+        }
+      ],
+      "fr": [
+        {
+          "name": "La Havane"
+        }
+      ],
+      "it": [
+        {
+          "name": "L'Avana"
+        }
+      ],
+      "ja": [
+        {
+          "name": "ハバナ"
+        }
+      ],
+      "ko": [
+        {
+          "name": "아바나"
+        }
+      ],
+      "zh-Hans": [
+        {
+          "name": "哈瓦那"
+        }
+      ]
+    }
+  },
+  "Q34261": {
+    "geonameId": 3718427,
+    "names": {
+      "en": [
+        {
+          "name": "Port-au-Prince",
+          "pref": true
+        }
+      ],
+      "de": [
+        {
+          "name": "Port-au-Prince",
+          "pref": true
+        }
+      ],
+      "es": [
+        {
+          "name": "Puerto Príncipe",
+          "pref": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "Commune de Port-au-Prince"
+        },
+        {
+          "name": "Port-au-Prince",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q1085": {
+    "geonameId": 3067696,
+    "names": {
+      "en": [
+        {
+          "name": "Prague",
+          "pref": true
+        }
+      ],
+      "de": [
+        {
+          "name": "Prag",
+          "pref": true
+        }
+      ],
+      "es": [
+        {
+          "name": "Praga",
+          "pref": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "Prague",
+          "pref": true
+        }
+      ],
+      "it": [
+        {
+          "name": "Praga",
+          "pref": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "プラハ"
+        }
+      ],
+      "ko": [
+        {
+          "name": "프라하"
+        }
+      ],
+      "zh-Hans": [
+        {
+          "name": "布拉格"
+        }
+      ]
+    }
+  },
+  "Q34820": {
+    "geonameId": 3492908,
+    "names": {
+      "en": [
+        {
+          "name": "Santo Domingo",
+          "pref": true
+        },
+        {
+          "name": "Santo Domingo City"
+        }
+      ],
+      "de": [
+        {
+          "name": "Santo Domingo"
+        }
+      ],
+      "es": [
+        {
+          "name": "Santo Domingo"
+        }
+      ],
+      "fr": [
+        {
+          "name": "Saint Domingue"
+        }
+      ],
+      "ko": [
+        {
+          "name": "산토도밍고"
+        }
+      ],
+      "zh-Hans": [
+        {
+          "name": "聖多明哥"
+        }
+      ]
+    }
+  },
+  "Q1754": {
+    "geonameId": 2673730,
+    "names": {
+      "en": [
+        {
+          "name": "Stockholm"
+        }
+      ],
+      "de": [
+        {
+          "name": "Stockholm"
+        }
+      ],
+      "es": [
+        {
+          "name": "Estocolmo"
+        }
+      ],
+      "fr": [
+        {
+          "name": "Stockholm"
+        }
+      ],
+      "it": [
+        {
+          "name": "Stoccolma"
+        }
+      ],
+      "ja": [
+        {
+          "name": "ストックホルム"
+        }
+      ],
+      "ko": [
+        {
+          "name": "스톡홀름"
+        }
+      ],
+      "zh-Hant": [
+        {
+          "name": "斯德哥爾摩"
+        }
+      ],
+      "zh-Hans": [
+        {
+          "name": "斯德哥尔摩"
+        }
+      ]
+    }
+  },
+  "Q1524": {
+    "geonameId": 264371,
+    "names": {
+      "en": [
+        {
+          "name": "Athens"
+        }
+      ],
+      "de": [
+        {
+          "name": "Athen"
+        }
+      ],
+      "es": [
+        {
+          "name": "Atenas"
+        }
+      ],
+      "fr": [
+        {
+          "name": "Athènes"
+        }
+      ],
+      "it": [
+        {
+          "name": "Atene"
+        }
+      ],
+      "ja": [
+        {
+          "name": "アテネ"
+        }
+      ],
+      "ko": [
+        {
+          "name": "아테네"
+        },
+        {
+          "name": "아테네 시"
+        }
+      ],
+      "zh-Hans": [
+        {
+          "name": "雅典"
+        }
+      ]
+    }
+  },
+  "Q3805": {
+    "geonameId": 250441,
+    "names": {
+      "en": [
+        {
+          "name": "Amman"
+        }
+      ],
+      "de": [
+        {
+          "name": "Amman"
+        }
+      ],
+      "es": [
+        {
+          "name": "Amán",
+          "short": true
+        },
+        {
+          "name": "Ammán",
+          "pref": true,
+          "short": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "Amman"
+        }
+      ],
+      "it": [
+        {
+          "name": "Amman"
+        }
+      ],
+      "ja": [
+        {
+          "name": "アンマン"
+        }
+      ],
+      "ko": [
+        {
+          "name": "암만"
+        }
+      ],
+      "zh-Hans": [
+        {
+          "name": "安曼"
+        }
+      ]
+    }
+  },
+  "Q597": {
+    "geonameId": 2267057,
+    "names": {
+      "en": [
+        {
+          "name": "Lisbon",
+          "pref": true
+        }
+      ],
+      "de": [
+        {
+          "name": "Lissabon"
+        }
+      ],
+      "es": [
+        {
+          "name": "Lisboa"
+        }
+      ],
+      "fr": [
+        {
+          "name": "Lisbonne"
+        }
+      ],
+      "it": [
+        {
+          "name": "Lisbona"
+        }
+      ],
+      "ja": [
+        {
+          "name": "リスボン"
+        }
+      ],
+      "ko": [
+        {
+          "name": "리스본"
+        }
+      ]
+    }
+  },
+  "Q9248": {
+    "geonameId": 587081,
+    "names": {}
+  },
+  "Q1519": {
+    "geonameId": 292968,
+    "names": {
+      "en": [
+        {
+          "name": "Abu Dhabi",
+          "short": true
+        },
+        {
+          "name": "Abu Dhabi Island and Internal Islands City"
+        }
+      ],
+      "de": [
+        {
+          "name": "Abu Dhabi"
+        }
+      ],
+      "es": [
+        {
+          "name": "Abu Dabi"
+        }
+      ],
+      "fr": [
+        {
+          "name": "Abou Dabi"
+        }
+      ],
+      "it": [
+        {
+          "name": "Abu Dhabi"
+        }
+      ],
+      "ja": [
+        {
+          "name": "アブダビ"
+        }
+      ],
+      "ko": [
+        {
+          "name": "아부다비"
+        }
+      ],
+      "zh-Hans": [
+        {
+          "name": "阿布扎比"
+        }
+      ]
+    }
+  },
+  "Q1218": {
+    "geonameId": 281184,
+    "names": {
+      "en": [
+        {
+          "name": "Al-Quds"
+        },
+        {
+          "name": "Ariel"
+        },
+        {
+          "name": "Jerusalem",
+          "pref": true
+        },
+        {
+          "name": "Zion"
+        }
+      ],
+      "de": [
+        {
+          "name": "Al-Quds"
+        },
+        {
+          "name": "Jerusalem",
+          "pref": true
+        }
+      ],
+      "es": [
+        {
+          "name": "Jerusalén",
+          "pref": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "Jérusalem",
+          "pref": true
+        }
+      ],
+      "it": [
+        {
+          "name": "Gerusalemme",
+          "pref": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "エルサレム",
+          "pref": true
+        }
+      ],
+      "ko": [
+        {
+          "name": "예루살렘"
+        }
+      ],
+      "zh-Hans": [
+        {
+          "name": "耶路撒冷",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q1781": {
+    "geonameId": 3054643,
+    "names": {
+      "en": [
+        {
+          "name": "Budapest"
+        }
+      ],
+      "de": [
+        {
+          "name": "Budapest"
+        }
+      ],
+      "es": [
+        {
+          "name": "Budapest"
+        }
+      ],
+      "fr": [
+        {
+          "name": "Budapest"
+        }
+      ],
+      "it": [
+        {
+          "name": "Budapest"
+        }
+      ],
+      "ja": [
+        {
+          "name": "ブダペスト"
+        }
+      ],
+      "ko": [
+        {
+          "name": "부다페스트"
+        }
+      ],
+      "zh-Hans": [
+        {
+          "name": "布达佩斯"
+        }
+      ]
+    }
+  },
+  "Q9365": {
+    "geonameId": 1221873,
+    "names": {}
+  },
+  "Q70": {
+    "geonameId": 7285212,
+    "names": {
+      "en": [
+        {
+          "name": "Berne",
+          "pref": true,
+          "short": true
+        }
+      ],
+      "de": [
+        {
+          "name": "Bern",
+          "pref": true,
+          "short": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "Berne",
+          "pref": true,
+          "short": true
+        }
+      ],
+      "it": [
+        {
+          "name": "Berna",
+          "pref": true,
+          "short": true
+        }
+      ]
+    }
+  },
+  "Q2280": {
+    "geonameId": 625144,
+    "names": {
+      "en": [
+        {
+          "name": "Minsk"
+        }
+      ],
+      "de": [
+        {
+          "name": "Minsk"
+        }
+      ],
+      "es": [
+        {
+          "name": "Minsk"
+        }
+      ],
+      "fr": [
+        {
+          "name": "Minsk"
+        }
+      ],
+      "it": [
+        {
+          "name": "Minsk"
+        }
+      ],
+      "ja": [
+        {
+          "name": "ミンスク"
+        }
+      ],
+      "ko": [
+        {
+          "name": "민스크"
+        }
+      ],
+      "zh-Hans": [
+        {
+          "name": "明斯克"
+        }
+      ]
+    }
+  },
+  "Q1741": {
+    "geonameId": 2761369,
+    "names": {
+      "en": [
+        {
+          "name": "Vienna"
+        }
+      ],
+      "de": [
+        {
+          "name": "Wien",
+          "pref": true
+        }
+      ],
+      "es": [
+        {
+          "name": "Viena",
+          "pref": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "Vienne"
+        }
+      ],
+      "it": [
+        {
+          "name": "Vienna"
+        }
+      ],
+      "ja": [
+        {
+          "name": "ウィーン"
+        }
+      ],
+      "ko": [
+        {
+          "name": "빈",
+          "pref": true
+        },
+        {
+          "name": "비엔나"
+        }
+      ],
+      "zh-Hans": [
+        {
+          "name": "維也納"
+        }
+      ]
+    }
+  },
+  "Q36526": {
+    "geonameId": 2088122,
+    "names": {
+      "en": [
+        {
+          "name": "Port Moresby"
+        }
+      ],
+      "de": [
+        {
+          "name": "Port Moresby"
+        }
+      ],
+      "es": [
+        {
+          "name": "Puerto Moresby"
+        }
+      ],
+      "fr": [
+        {
+          "name": "Port Moresby"
+        }
+      ],
+      "it": [
+        {
+          "name": "Port Moresby"
+        }
+      ],
+      "ja": [
+        {
+          "name": "ポートモレスビー"
+        }
+      ],
+      "ko": [
+        {
+          "name": "포트모르즈비"
+        }
+      ],
+      "zh-Hans": [
+        {
+          "name": "莫尔兹比港"
+        }
+      ]
+    }
+  },
+  "Q3238": {
+    "geonameId": 3600949,
+    "names": {
+      "en": [
+        {
+          "name": "Tegucigalpa"
+        }
+      ],
+      "de": [
+        {
+          "name": "Tegucigalpa"
+        }
+      ],
+      "es": [
+        {
+          "name": "Tegucigalpa"
+        }
+      ],
+      "fr": [
+        {
+          "name": "Tegucigalpa"
+        }
+      ],
+      "it": [
+        {
+          "name": "Tegucigalpa"
+        }
+      ],
+      "ja": [
+        {
+          "name": "テグシガルパ"
+        }
+      ],
+      "ko": [
+        {
+          "name": "테구시갈파"
+        }
+      ],
+      "zh-Hans": [
+        {
+          "name": "德古斯加巴"
+        }
+      ]
+    }
+  },
+  "Q3792": {
+    "geonameId": 2365267,
+    "names": {
+      "en": [
+        {
+          "name": "Lomé",
+          "pref": true
+        }
+      ],
+      "de": [
+        {
+          "name": "Lomé",
+          "pref": true
+        }
+      ],
+      "es": [
+        {
+          "name": "Lomé"
+        }
+      ],
+      "fr": [
+        {
+          "name": "Lomé",
+          "pref": true
+        }
+      ],
+      "it": [
+        {
+          "name": "Lomé"
+        }
+      ],
+      "ja": [
+        {
+          "name": "ロメ"
+        }
+      ],
+      "ko": [
+        {
+          "name": "로메"
+        }
+      ],
+      "zh-Hans": [
+        {
+          "name": "洛美"
+        }
+      ]
+    }
+  },
+  "Q3780": {
+    "geonameId": 2409306,
+    "names": {
+      "en": [
+        {
+          "name": "Freetown"
+        }
+      ],
+      "de": [
+        {
+          "name": "Freetown"
+        }
+      ],
+      "es": [
+        {
+          "name": "Freetown"
+        }
+      ],
+      "fr": [
+        {
+          "name": "Freetown"
+        }
+      ],
+      "it": [
+        {
+          "name": "Freetown"
+        }
+      ],
+      "ja": [
+        {
+          "name": "フリータウン"
+        }
+      ],
+      "ko": [
+        {
+          "name": "프리타운"
+        }
+      ],
+      "zh-Hans": [
+        {
+          "name": "弗里敦"
+        },
+        {
+          "name": "自由市"
+        }
+      ]
+    }
+  },
+  "Q3579": {
+    "geonameId": 2210247,
+    "names": {
+      "en": [
+        {
+          "name": "Tripoli"
+        }
+      ],
+      "de": [
+        {
+          "name": "Tripolis"
+        }
+      ],
+      "es": [
+        {
+          "name": "Trípoli"
+        }
+      ],
+      "fr": [
+        {
+          "name": "Tripoli"
+        }
+      ],
+      "it": [
+        {
+          "name": "Tripoli"
+        }
+      ],
+      "ja": [
+        {
+          "name": "トリポリ"
+        }
+      ],
+      "ko": [
+        {
+          "name": "트리폴리"
+        }
+      ],
+      "zh-Hans": [
+        {
+          "name": "的黎波里"
+        }
+      ]
+    }
+  },
+  "Q9361": {
+    "geonameId": 1528334,
+    "names": {
+      "en": [
+        {
+          "name": "Bishkek"
+        }
+      ],
+      "de": [
+        {
+          "name": "Bischkek"
+        }
+      ],
+      "es": [
+        {
+          "name": "Bishkek"
+        }
+      ],
+      "fr": [
+        {
+          "name": "Bichkek"
+        }
+      ],
+      "ja": [
+        {
+          "name": "ビシュケク"
+        }
+      ]
+    }
+  },
+  "Q9326": {
+    "geonameId": 1651944,
+    "names": {
+      "en": [
+        {
+          "name": "Vientiane"
+        }
+      ],
+      "de": [
+        {
+          "name": "Vientiane"
+        }
+      ],
+      "es": [
+        {
+          "name": "Vientián"
+        },
+        {
+          "name": "Vientiane"
+        }
+      ],
+      "fr": [
+        {
+          "name": "Vientiane"
+        }
+      ],
+      "it": [
+        {
+          "name": "Vientiane"
+        }
+      ],
+      "ja": [
+        {
+          "name": "ヴィエンチャン"
+        },
+        {
+          "name": "ヴィエンチャン市"
+        }
+      ],
+      "ko": [
+        {
+          "name": "비엔티안"
+        }
+      ],
+      "zh-Hans": [
+        {
+          "name": "永珍"
+        }
+      ]
+    }
+  },
+  "Q2933": {
+    "geonameId": 3439389,
+    "names": {
+      "en": [
+        {
+          "name": "Asunción"
+        }
+      ],
+      "de": [
+        {
+          "name": "Asunción"
+        }
+      ],
+      "es": [
+        {
+          "name": "Asunción"
+        }
+      ],
+      "fr": [
+        {
+          "name": "Asunción"
+        }
+      ],
+      "it": [
+        {
+          "name": "Asunción"
+        }
+      ],
+      "ja": [
+        {
+          "name": "アスンシオン"
+        }
+      ],
+      "ko": [
+        {
+          "name": "아순시온"
+        }
+      ],
+      "zh-Hans": [
+        {
+          "name": "亞松森"
+        }
+      ]
+    }
+  },
+  "Q3711": {
+    "geonameId": 792680,
+    "names": {
+      "en": [
+        {
+          "name": "Belgrade",
+          "pref": true
+        }
+      ],
+      "de": [
+        {
+          "name": "Belgrad"
+        }
+      ],
+      "es": [
+        {
+          "name": "Belgrado"
+        }
+      ],
+      "fr": [
+        {
+          "name": "Belgrade"
+        }
+      ],
+      "it": [
+        {
+          "name": "Belgrado"
+        }
+      ],
+      "ja": [
+        {
+          "name": "ベオグラード"
+        }
+      ],
+      "ko": [
+        {
+          "name": "베오그라드"
+        }
+      ]
+    }
+  },
+  "Q472": {
+    "geonameId": 727011,
+    "names": {
+      "en": [
+        {
+          "name": "Sofia"
+        }
+      ],
+      "de": [
+        {
+          "name": "Sofia"
+        }
+      ],
+      "es": [
+        {
+          "name": "Sofía"
+        }
+      ],
+      "fr": [
+        {
+          "name": "Sofia"
+        }
+      ],
+      "it": [
+        {
+          "name": "Sofia"
+        }
+      ],
+      "ja": [
+        {
+          "name": "ソフィア"
+        }
+      ],
+      "ko": [
+        {
+          "name": "소피아"
+        }
+      ],
+      "zh-Hant": [
+        {
+          "name": "索菲亞"
+        }
+      ]
+    }
+  },
+  "Q3844": {
+    "geonameId": 2260535,
+    "names": {
+      "en": [
+        {
+          "name": "Brazzaville"
+        }
+      ],
+      "de": [
+        {
+          "name": "Brazzaville"
+        }
+      ],
+      "es": [
+        {
+          "name": "Brazzaville"
+        }
+      ],
+      "fr": [
+        {
+          "name": "Brazzaville"
+        }
+      ],
+      "it": [
+        {
+          "name": "Brazzaville"
+        }
+      ],
+      "ja": [
+        {
+          "name": "ブラザヴィル"
+        }
+      ],
+      "ko": [
+        {
+          "name": "브라자빌"
+        }
+      ]
+    }
+  },
+  "Q23438": {
+    "geonameId": 162183,
+    "names": {
+      "en": [
+        {
+          "name": "Ashgabat",
+          "pref": true
+        },
+        {
+          "name": "Ashkabad"
+        },
+        {
+          "name": "Ashkhabad"
+        }
+      ],
+      "de": [
+        {
+          "name": "Aschgabat",
+          "pref": true
+        },
+        {
+          "name": "Aşgabat"
+        }
+      ],
+      "es": [
+        {
+          "name": "Asjabad"
+        }
+      ],
+      "fr": [
+        {
+          "name": "Achgabat",
+          "pref": true
+        }
+      ],
+      "it": [
+        {
+          "name": "Aşgabat"
+        }
+      ],
+      "ja": [
+        {
+          "name": "アシガバート"
+        }
+      ],
+      "ko": [
+        {
+          "name": "아슈하바트",
+          "pref": true
+        },
+        {
+          "name": "아시가바트"
+        }
+      ],
+      "zh-Hans": [
+        {
+          "name": "阿什哈巴德"
+        }
+      ]
+    }
+  },
+  "Q3820": {
+    "geonameId": 276781,
+    "names": {
+      "en": [
+        {
+          "name": "Beirut"
+        }
+      ],
+      "de": [
+        {
+          "name": "Beirut"
+        }
+      ],
+      "es": [
+        {
+          "name": "Beirut"
+        }
+      ],
+      "fr": [
+        {
+          "name": "Beyrouth"
+        }
+      ],
+      "it": [
+        {
+          "name": "Beirut"
+        }
+      ],
+      "ja": [
+        {
+          "name": "ベイルート"
+        }
+      ],
+      "ko": [
+        {
+          "name": "베이루트"
+        }
+      ],
+      "zh-Hans": [
+        {
+          "name": "贝鲁特"
+        }
+      ]
+    }
+  },
+  "Q3110": {
+    "geonameId": 3583361,
+    "names": {
+      "en": [
+        {
+          "name": "San Salvador"
+        }
+      ],
+      "de": [
+        {
+          "name": "San Salvador"
+        }
+      ],
+      "es": [
+        {
+          "name": "San Salvador"
+        }
+      ],
+      "fr": [
+        {
+          "name": "Salvador"
+        },
+        {
+          "name": "San Salvador",
+          "pref": true
+        }
+      ],
+      "it": [
+        {
+          "name": "San Salvador"
+        }
+      ],
+      "ja": [
+        {
+          "name": "サンサルバドル"
+        }
+      ],
+      "ko": [
+        {
+          "name": "산살바도르"
+        }
+      ],
+      "zh-Hant": [
+        {
+          "name": "聖薩爾瓦多"
+        }
+      ]
+    }
+  },
+  "Q1748": {
+    "geonameId": 2618425,
+    "names": {
+      "en": [
+        {
+          "name": "Copenhagen"
+        }
+      ],
+      "de": [
+        {
+          "name": "Kopenhagen"
+        }
+      ],
+      "es": [
+        {
+          "name": "Copenhague"
+        }
+      ],
+      "fr": [
+        {
+          "name": "Copenhague"
+        }
+      ],
+      "it": [
+        {
+          "name": "Copenaghen"
+        }
+      ],
+      "ja": [
+        {
+          "name": "コペンハーゲン"
+        }
+      ],
+      "ko": [
+        {
+          "name": "코펜하겐"
+        }
+      ],
+      "zh-Hans": [
+        {
+          "name": "哥本哈根"
+        }
+      ]
+    }
+  },
+  "Q334": {
+    "geonameId": 1880251,
+    "names": {
+      "en": [
+        {
+          "name": "Republic of Singapore"
+        },
+        {
+          "name": "Singapore",
+          "pref": true
+        }
+      ],
+      "de": [
+        {
+          "name": "Republik Singapur"
+        },
+        {
+          "name": "Singapur",
+          "pref": true
+        }
+      ],
+      "es": [
+        {
+          "name": "Singapur",
+          "pref": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "Singapour",
+          "pref": true
+        }
+      ],
+      "it": [
+        {
+          "name": "Singapore",
+          "pref": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "シンガポール",
+          "pref": true
+        }
+      ],
+      "ko": [
+        {
+          "name": "싱가폴"
+        },
+        {
+          "name": "싱가포르",
+          "pref": true
+        }
+      ],
+      "zh-Hant": [
+        {
+          "name": "新加坡",
+          "pref": true
+        }
+      ],
+      "zh-Hans": [
+        {
+          "name": "新加坡共和国"
+        }
+      ]
+    }
+  },
+  "Q1757": {
+    "geonameId": 658225,
+    "names": {
+      "en": [
+        {
+          "name": "Helsinki"
+        }
+      ],
+      "de": [
+        {
+          "name": "Helsinki"
+        }
+      ],
+      "es": [
+        {
+          "name": "Helsinki"
+        }
+      ],
+      "fr": [
+        {
+          "name": "Helsinki"
+        }
+      ],
+      "it": [
+        {
+          "name": "Helsinki"
+        }
+      ],
+      "ja": [
+        {
+          "name": "ヘルシンキ"
+        }
+      ],
+      "ko": [
+        {
+          "name": "헬싱키"
+        }
+      ],
+      "zh-Hant": [
+        {
+          "name": "赫爾辛基"
+        }
+      ],
+      "zh-Hans": [
+        {
+          "name": "赫尔辛基"
+        }
+      ]
+    }
+  },
+  "Q585": {
+    "geonameId": 3143244,
+    "names": {
+      "en": [
+        {
+          "name": "Oslo"
+        }
+      ],
+      "de": [
+        {
+          "name": "Oslo"
+        }
+      ],
+      "es": [
+        {
+          "name": "Oslo"
+        }
+      ],
+      "fr": [
+        {
+          "name": "Oslo"
+        }
+      ],
+      "it": [
+        {
+          "name": "Oslo"
+        }
+      ],
+      "ja": [
+        {
+          "name": "オスロ"
+        }
+      ],
+      "ko": [
+        {
+          "name": "오슬로"
+        }
+      ],
+      "zh-Hant": [
+        {
+          "name": "奧斯陸"
+        }
+      ],
+      "zh-Hans": [
+        {
+          "name": "奥斯陆"
+        }
+      ]
+    }
+  },
+  "Q1780": {
+    "geonameId": 3060972,
+    "names": {
+      "en": [
+        {
+          "name": "Bratislava"
+        }
+      ],
+      "de": [
+        {
+          "name": "Bratislava",
+          "pref": true
+        },
+        {
+          "name": "Preßburg"
+        }
+      ],
+      "es": [
+        {
+          "name": "Bratislava"
+        }
+      ],
+      "fr": [
+        {
+          "name": "Bratislava",
+          "pref": true
+        },
+        {
+          "name": "Presbourg"
+        }
+      ],
+      "it": [
+        {
+          "name": "Bratislava"
+        }
+      ],
+      "ja": [
+        {
+          "name": "ブラチスラヴァ"
+        }
+      ],
+      "ko": [
+        {
+          "name": "브라티슬라바"
+        }
+      ],
+      "zh-Hans": [
+        {
+          "name": "布拉迪斯拉发"
+        }
+      ]
+    }
+  },
+  "Q23661": {
+    "geonameId": 2179537,
+    "names": {
+      "en": [
+        {
+          "name": "Wellington"
+        }
+      ],
+      "de": [
+        {
+          "name": "Wellington"
+        }
+      ],
+      "es": [
+        {
+          "name": "Wellington"
+        }
+      ],
+      "fr": [
+        {
+          "name": "Wellington"
+        }
+      ],
+      "it": [
+        {
+          "name": "Wellington"
+        }
+      ],
+      "ja": [
+        {
+          "name": "ウェリントン"
+        }
+      ],
+      "ko": [
+        {
+          "name": "웰링턴"
+        }
+      ],
+      "zh-Hans": [
+        {
+          "name": "惠灵顿"
+        }
+      ]
+    }
+  },
+  "Q3070": {
+    "geonameId": 3621849,
+    "names": {
+      "en": [
+        {
+          "name": "San José"
+        }
+      ],
+      "de": [
+        {
+          "name": "San Jose"
+        },
+        {
+          "name": "San José"
+        }
+      ],
+      "es": [
+        {
+          "name": "San José"
+        }
+      ],
+      "fr": [
+        {
+          "name": "San José"
+        }
+      ],
+      "it": [
+        {
+          "name": "San José"
+        }
+      ],
+      "ja": [
+        {
+          "name": "サンホセ"
+        }
+      ],
+      "ko": [
+        {
+          "name": "산호세"
+        }
+      ],
+      "zh-Hant": [
+        {
+          "name": "聖荷西"
+        }
+      ]
+    }
+  },
+  "Q158119": {
+    "geonameId": 282239,
+    "names": {
+      "en": [
+        {
+          "name": "Ramallah"
+        }
+      ],
+      "de": [
+        {
+          "name": "Ramallah"
+        }
+      ],
+      "es": [
+        {
+          "name": "Ramala"
+        }
+      ],
+      "fr": [
+        {
+          "name": "Ramallah"
+        }
+      ],
+      "it": [
+        {
+          "name": "Ramallah"
+        }
+      ],
+      "ja": [
+        {
+          "name": "ラマッラー"
+        }
+      ],
+      "ko": [
+        {
+          "name": "라말라"
+        }
+      ],
+      "zh-Hans": [
+        {
+          "name": "拉姆安拉"
+        }
+      ]
+    }
+  },
+  "Q212938": {
+    "geonameId": 7303419,
+    "names": {
+      "de": [
+        {
+          "name": "Ostjerusalem"
+        }
+      ],
+      "es": [
+        {
+          "name": "Jerusalén Este"
+        }
+      ],
+      "fr": [
+        {
+          "name": "Jérusalem-Est"
+        }
+      ],
+      "it": [
+        {
+          "name": "Gerusalemme Est"
+        }
+      ],
+      "ja": [
+        {
+          "name": "東エルサレム"
+        }
+      ],
+      "ko": [
+        {
+          "name": "동예루살렘"
+        }
+      ],
+      "zh-Hans": [
+        {
+          "name": "东耶路撒冷"
+        }
+      ]
+    }
+  },
+  "Q3748": {
+    "geonameId": 2274895,
+    "names": {
+      "en": [
+        {
+          "name": "Monrovia"
+        }
+      ],
+      "de": [
+        {
+          "name": "Monrovia"
+        }
+      ],
+      "es": [
+        {
+          "name": "Monrovia"
+        }
+      ],
+      "fr": [
+        {
+          "name": "Monrovia"
+        }
+      ],
+      "it": [
+        {
+          "name": "Monrovia"
+        }
+      ],
+      "ja": [
+        {
+          "name": "モンロビア"
+        }
+      ],
+      "ko": [
+        {
+          "name": "몬로비아"
+        }
+      ],
+      "zh-Hans": [
+        {
+          "name": "蒙罗维亚"
+        },
+        {
+          "name": "蒙羅維亞"
+        }
+      ]
+    }
+  },
+  "Q3832": {
+    "geonameId": 2389853,
+    "names": {
+      "en": [
+        {
+          "name": "Bangui"
+        }
+      ],
+      "de": [
+        {
+          "name": "Bangui"
+        }
+      ],
+      "es": [
+        {
+          "name": "Bangui"
+        }
+      ],
+      "fr": [
+        {
+          "name": "Bangui"
+        }
+      ],
+      "it": [
+        {
+          "name": "Bangui"
+        }
+      ],
+      "ja": [
+        {
+          "name": "バンギ"
+        }
+      ],
+      "ko": [
+        {
+          "name": "방기"
+        }
+      ],
+      "zh-Hans": [
+        {
+          "name": "班基"
+        }
+      ]
+    }
+  },
+  "Q1761": {
+    "geonameId": 2964574,
+    "names": {
+      "en": [
+        {
+          "name": "Dublin",
+          "pref": true
+        },
+        {
+          "name": "Dublin city"
+        }
+      ],
+      "de": [
+        {
+          "name": "Dublin"
+        }
+      ],
+      "es": [
+        {
+          "name": "Dublín",
+          "pref": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "Dublin"
+        }
+      ],
+      "it": [
+        {
+          "name": "Dublino"
+        }
+      ],
+      "ja": [
+        {
+          "name": "ダブリン"
+        }
+      ],
+      "ko": [
+        {
+          "name": "더블린"
+        }
+      ],
+      "zh-Hant": [
+        {
+          "name": "都柏林"
+        }
+      ]
+    }
+  },
+  "Q3274": {
+    "geonameId": 3617760,
+    "names": {
+      "es": [
+        {
+          "name": "Managua"
+        },
+        {
+          "name": "Municipio de Managua"
+        }
+      ]
+    }
+  },
+  "Q3826": {
+    "geonameId": 287286,
+    "names": {
+      "en": [
+        {
+          "name": "Muscat"
+        }
+      ],
+      "de": [
+        {
+          "name": "Maskat"
+        }
+      ],
+      "es": [
+        {
+          "name": "Mascate"
+        }
+      ],
+      "fr": [
+        {
+          "name": "Mascate"
+        }
+      ],
+      "it": [
+        {
+          "name": "Mascate"
+        },
+        {
+          "name": "Muscat"
+        }
+      ],
+      "ja": [
+        {
+          "name": "マスカット"
+        }
+      ],
+      "ko": [
+        {
+          "name": "무스카트"
+        }
+      ],
+      "zh-Hans": [
+        {
+          "name": "马斯喀特"
+        }
+      ]
+    }
+  },
+  "Q3688": {
+    "geonameId": 2377450,
+    "names": {
+      "en": [
+        {
+          "name": "Nouakchott"
+        }
+      ],
+      "de": [
+        {
+          "name": "Nouakchott"
+        }
+      ],
+      "es": [
+        {
+          "name": "Nuakchot"
+        }
+      ],
+      "fr": [
+        {
+          "name": "Nouakchott"
+        }
+      ],
+      "it": [
+        {
+          "name": "Nouakchott"
+        }
+      ],
+      "ja": [
+        {
+          "name": "ヌアクショット"
+        }
+      ],
+      "ko": [
+        {
+          "name": "누악쇼트"
+        }
+      ],
+      "zh-Hans": [
+        {
+          "name": "努瓦克肖特"
+        }
+      ]
+    }
+  },
+  "Q3306": {
+    "geonameId": 3703443,
+    "names": {
+      "en": [
+        {
+          "name": "Panama City",
+          "pref": true
+        }
+      ],
+      "de": [
+        {
+          "name": "Panama-Stadt"
+        }
+      ],
+      "es": [
+        {
+          "name": "Ciudad de Panamá"
+        },
+        {
+          "name": "Panamá",
+          "pref": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "Panamá"
+        }
+      ],
+      "it": [
+        {
+          "name": "Panamá"
+        }
+      ],
+      "ja": [
+        {
+          "name": "パナマシティ"
+        }
+      ],
+      "ko": [
+        {
+          "name": "파나마시티",
+          "pref": true
+        },
+        {
+          "name": "파나마 시"
+        }
+      ],
+      "zh-Hant": [
+        {
+          "name": "巴拿馬城"
+        }
+      ]
+    }
+  },
+  "Q35178": {
+    "geonameId": 285787,
+    "names": {
+      "en": [
+        {
+          "name": "Kuwait"
+        },
+        {
+          "name": "Kuwait City",
+          "pref": true
+        }
+      ],
+      "de": [
+        {
+          "name": "Kuwait-Stadt"
+        }
+      ],
+      "es": [
+        {
+          "name": "Ciudad de Kuwait"
+        },
+        {
+          "name": "Kuwait"
+        }
+      ],
+      "fr": [
+        {
+          "name": "Koweït"
+        }
+      ],
+      "it": [
+        {
+          "name": "Al-Kuwait"
+        },
+        {
+          "name": "Madinat al-Kuwait"
+        }
+      ],
+      "ja": [
+        {
+          "name": "クウェート市"
+        }
+      ],
+      "ko": [
+        {
+          "name": "쿠웨이트"
+        },
+        {
+          "name": "쿠웨이트시티",
+          "pref": true
+        }
+      ],
+      "zh-Hans": [
+        {
+          "name": "科威特市"
+        }
+      ]
+    }
+  },
+  "Q994": {
+    "geonameId": 611717,
+    "names": {
+      "en": [
+        {
+          "name": "Tbilisi"
+        }
+      ],
+      "de": [
+        {
+          "name": "Tiflis"
+        }
+      ],
+      "es": [
+        {
+          "name": "Tiflis"
+        }
+      ],
+      "fr": [
+        {
+          "name": "Tbilissi"
+        }
+      ],
+      "it": [
+        {
+          "name": "Tbilisi"
+        }
+      ],
+      "ja": [
+        {
+          "name": "トビリシ"
+        }
+      ],
+      "ko": [
+        {
+          "name": "트빌리시"
+        }
+      ],
+      "zh-Hans": [
+        {
+          "name": "第比利斯"
+        }
+      ]
+    }
+  },
+  "Q1435": {
+    "geonameId": 3186886,
+    "names": {
+      "en": [
+        {
+          "name": "Zagreb"
+        }
+      ],
+      "de": [
+        {
+          "name": "Zagreb",
+          "pref": true
+        }
+      ],
+      "es": [
+        {
+          "name": "Zagreb"
+        }
+      ],
+      "fr": [
+        {
+          "name": "Zagreb"
+        }
+      ],
+      "it": [
+        {
+          "name": "Zagabria"
+        }
+      ],
+      "ja": [
+        {
+          "name": "ザグレブ"
+        }
+      ],
+      "ko": [
+        {
+          "name": "자그레브"
+        }
+      ],
+      "zh-Hans": [
+        {
+          "name": "萨格勒布"
+        }
+      ]
+    }
+  },
+  "Q11194": {
+    "geonameId": 3191281,
+    "names": {
+      "en": [
+        {
+          "name": "Sarajevo"
+        }
+      ],
+      "de": [
+        {
+          "name": "Sarajevo"
+        }
+      ],
+      "es": [
+        {
+          "name": "Sarajevo"
+        }
+      ],
+      "fr": [
+        {
+          "name": "Sarajevo"
+        }
+      ],
+      "it": [
+        {
+          "name": "Sarajevo"
+        }
+      ],
+      "ja": [
+        {
+          "name": "サラエヴォ"
+        }
+      ],
+      "ko": [
+        {
+          "name": "사라예보"
+        }
+      ],
+      "zh-Hans": [
+        {
+          "name": "塞拉耶佛"
+        }
+      ]
+    }
+  },
+  "Q3642": {
+    "geonameId": 343300,
+    "names": {
+      "en": [
+        {
+          "name": "Asmara"
+        }
+      ],
+      "de": [
+        {
+          "name": "Asmara"
+        }
+      ],
+      "es": [
+        {
+          "name": "Asmara"
+        }
+      ],
+      "fr": [
+        {
+          "name": "Asmara"
+        }
+      ],
+      "it": [
+        {
+          "name": "Asmara"
+        }
+      ],
+      "ja": [
+        {
+          "name": "アスマラ"
+        }
+      ],
+      "ko": [
+        {
+          "name": "아스마라"
+        }
+      ],
+      "zh-Hant": [
+        {
+          "name": "阿斯馬拉"
+        }
+      ]
+    }
+  },
+  "Q1335": {
+    "geonameId": 3441575,
+    "names": {
+      "en": [
+        {
+          "name": "Montevideo",
+          "short": true
+        }
+      ],
+      "de": [
+        {
+          "name": "Montevideo"
+        }
+      ],
+      "es": [
+        {
+          "name": "Montevideo"
+        }
+      ],
+      "fr": [
+        {
+          "name": "Montevideo"
+        }
+      ],
+      "it": [
+        {
+          "name": "Montevideo"
+        }
+      ],
+      "ja": [
+        {
+          "name": "モンテビデオ"
+        }
+      ],
+      "ko": [
+        {
+          "name": "몬테비데오"
+        }
+      ],
+      "zh-Hans": [
+        {
+          "name": "蒙得维的亚"
+        },
+        {
+          "name": "蒙特維多"
+        }
+      ]
+    }
+  },
+  "Q23430": {
+    "geonameId": 2028462,
+    "names": {
+      "en": [
+        {
+          "name": "Ulaanbaatar",
+          "pref": true
+        },
+        {
+          "name": "Ulaan Baatar"
+        },
+        {
+          "name": "Ulan Bator"
+        }
+      ],
+      "de": [
+        {
+          "name": "Ulaanbaatar",
+          "pref": true
+        }
+      ],
+      "es": [
+        {
+          "name": "Ulán Bator",
+          "pref": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "Oulan-Bator"
+        }
+      ],
+      "it": [
+        {
+          "name": "Ulan Bator"
+        }
+      ],
+      "ja": [
+        {
+          "name": "ウランバートル"
+        }
+      ],
+      "ko": [
+        {
+          "name": "울란바타르"
+        },
+        {
+          "name": "울란바토르",
+          "pref": true
+        }
+      ],
+      "zh-Hans": [
+        {
+          "name": "乌兰巴托"
+        }
+      ]
+    }
+  },
+  "Q1953": {
+    "geonameId": 616051,
+    "names": {
+      "en": [
+        {
+          "name": "Yerevan"
+        }
+      ],
+      "de": [
+        {
+          "name": "Jerewan"
+        }
+      ],
+      "es": [
+        {
+          "name": "Ereván",
+          "pref": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "Erevan"
+        }
+      ],
+      "it": [
+        {
+          "name": "Erevan"
+        }
+      ],
+      "ja": [
+        {
+          "name": "イェレヴァン"
+        }
+      ],
+      "ko": [
+        {
+          "name": "예레반"
+        }
+      ],
+      "zh-Hant": [
+        {
+          "name": "葉里溫"
+        }
+      ]
+    }
+  },
+  "Q216": {
+    "geonameId": 593116,
+    "names": {
+      "en": [
+        {
+          "name": "Vilnius"
+        }
+      ],
+      "de": [
+        {
+          "name": "Vilnius",
+          "pref": true
+        }
+      ],
+      "es": [
+        {
+          "name": "Vilna"
+        }
+      ],
+      "fr": [
+        {
+          "name": "Vilnius"
+        }
+      ],
+      "it": [
+        {
+          "name": "Vilnius"
+        }
+      ],
+      "ja": [
+        {
+          "name": "ヴィリニュス"
+        }
+      ],
+      "ko": [
+        {
+          "name": "빌뉴스"
+        }
+      ],
+      "zh-Hans": [
+        {
+          "name": "维尔纽斯"
+        }
+      ]
+    }
+  },
+  "Q19689": {
+    "geonameId": 3183875,
+    "names": {
+      "en": [
+        {
+          "name": "Tirana",
+          "pref": true,
+          "short": true
+        }
+      ],
+      "de": [
+        {
+          "name": "Tirana"
+        }
+      ],
+      "es": [
+        {
+          "name": "Tirana"
+        }
+      ],
+      "fr": [
+        {
+          "name": "Tirana"
+        }
+      ],
+      "it": [
+        {
+          "name": "Tirana"
+        }
+      ],
+      "ja": [
+        {
+          "name": "ティラナ"
+        }
+      ],
+      "ko": [
+        {
+          "name": "티라나"
+        }
+      ],
+      "zh-Hans": [
+        {
+          "name": "地拉那"
+        }
+      ]
+    }
+  },
+  "Q34692": {
+    "geonameId": 3489854,
+    "names": {
+      "en": [
+        {
+          "name": "Kingston"
+        }
+      ],
+      "de": [
+        {
+          "name": "Kingston",
+          "pref": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "Kingston",
+          "pref": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "キングストン"
+        }
+      ],
+      "ko": [
+        {
+          "name": "킹스턴"
+        }
+      ],
+      "zh-Hans": [
+        {
+          "name": "京斯敦"
+        }
+      ]
+    }
+  },
+  "Q3726": {
+    "geonameId": 2413876,
+    "names": {
+      "en": [
+        {
+          "name": "Banjul",
+          "pref": true
+        },
+        {
+          "name": "Bathurst",
+          "colloq": true
+        }
+      ],
+      "de": [
+        {
+          "name": "Banjul"
+        }
+      ],
+      "es": [
+        {
+          "name": "Banjul"
+        }
+      ],
+      "fr": [
+        {
+          "name": "Banjul"
+        }
+      ],
+      "it": [
+        {
+          "name": "Banjul"
+        }
+      ],
+      "ja": [
+        {
+          "name": "バンジュール"
+        }
+      ],
+      "ko": [
+        {
+          "name": "반줄"
+        }
+      ],
+      "zh-Hans": [
+        {
+          "name": "班珠尔"
+        },
+        {
+          "name": "班竹"
+        }
+      ]
+    }
+  },
+  "Q3861": {
+    "geonameId": 290030,
+    "names": {
+      "en": [
+        {
+          "name": "Doha"
+        }
+      ],
+      "de": [
+        {
+          "name": "Doha"
+        }
+      ],
+      "es": [
+        {
+          "name": "Doha"
+        }
+      ],
+      "fr": [
+        {
+          "name": "Doha"
+        }
+      ],
+      "it": [
+        {
+          "name": "Doha"
+        }
+      ],
+      "ja": [
+        {
+          "name": "ドーハ"
+        }
+      ],
+      "ko": [
+        {
+          "name": "도하"
+        }
+      ],
+      "zh-Hans": [
+        {
+          "name": "多哈"
+        }
+      ]
+    }
+  },
+  "Q3935": {
+    "geonameId": 3352136,
+    "names": {
+      "en": [
+        {
+          "name": "Windhoek"
+        }
+      ],
+      "de": [
+        {
+          "name": "Windhoek",
+          "pref": true
+        }
+      ],
+      "es": [
+        {
+          "name": "Windhoek"
+        }
+      ],
+      "fr": [
+        {
+          "name": "Windhoek"
+        }
+      ],
+      "it": [
+        {
+          "name": "Windhoek"
+        }
+      ],
+      "ja": [
+        {
+          "name": "ウィントフック"
+        }
+      ],
+      "ko": [
+        {
+          "name": "빈트후크"
+        }
+      ],
+      "zh-Hans": [
+        {
+          "name": "温得和克"
+        }
+      ]
+    }
+  },
+  "Q3919": {
+    "geonameId": 933773,
+    "names": {
+      "en": [
+        {
+          "name": "Gaborone"
+        }
+      ],
+      "de": [
+        {
+          "name": "Gaborone"
+        }
+      ],
+      "es": [
+        {
+          "name": "Gaborone"
+        }
+      ],
+      "fr": [
+        {
+          "name": "Gaborone"
+        }
+      ],
+      "it": [
+        {
+          "name": "Gaborone"
+        }
+      ],
+      "ja": [
+        {
+          "name": "ハボローネ"
+        }
+      ],
+      "ko": [
+        {
+          "name": "가보로네"
+        }
+      ],
+      "zh-Hans": [
+        {
+          "name": "嘉柏隆里"
+        }
+      ]
+    }
+  },
+  "Q21197": {
+    "geonameId": 618426,
+    "names": {
+      "en": [
+        {
+          "name": "Chisinau"
+        },
+        {
+          "name": "Chișinău"
+        }
+      ],
+      "de": [
+        {
+          "name": "Chişinău"
+        },
+        {
+          "name": "Chișinău"
+        }
+      ],
+      "es": [
+        {
+          "name": "Chișinău"
+        }
+      ],
+      "fr": [
+        {
+          "name": "Chişinău"
+        }
+      ],
+      "it": [
+        {
+          "name": "Chişinău"
+        },
+        {
+          "name": "Chișinău"
+        }
+      ],
+      "ja": [
+        {
+          "name": "キシナウ"
+        }
+      ],
+      "ko": [
+        {
+          "name": "키시너우"
+        }
+      ]
+    }
+  },
+  "Q437": {
+    "geonameId": 3196359,
+    "names": {
+      "en": [
+        {
+          "name": "Ljubljana"
+        }
+      ],
+      "de": [
+        {
+          "name": "Ljubljana",
+          "pref": true
+        }
+      ],
+      "es": [
+        {
+          "name": "Liubliana"
+        }
+      ],
+      "fr": [
+        {
+          "name": "Ljubljana"
+        }
+      ],
+      "it": [
+        {
+          "name": "Lubiana"
+        }
+      ],
+      "ja": [
+        {
+          "name": "リュブリャナ"
+        }
+      ],
+      "ko": [
+        {
+          "name": "류블랴나"
+        }
+      ],
+      "zh-Hans": [
+        {
+          "name": "卢布尔雅那"
+        }
+      ]
+    }
+  },
+  "Q3825": {
+    "geonameId": 2399697,
+    "names": {
+      "en": [
+        {
+          "name": "Libreville"
+        }
+      ],
+      "de": [
+        {
+          "name": "Libreville"
+        }
+      ],
+      "es": [
+        {
+          "name": "Libreville"
+        }
+      ],
+      "fr": [
+        {
+          "name": "Libreville"
+        }
+      ],
+      "it": [
+        {
+          "name": "Libreville"
+        }
+      ],
+      "ja": [
+        {
+          "name": "リーブルヴィル"
+        }
+      ],
+      "ko": [
+        {
+          "name": "리브르빌"
+        }
+      ],
+      "zh-Hans": [
+        {
+          "name": "利伯维尔"
+        }
+      ]
+    }
+  },
+  "Q3909": {
+    "geonameId": 932505,
+    "names": {
+      "en": [
+        {
+          "name": "Maseru"
+        }
+      ],
+      "de": [
+        {
+          "name": "Maseru"
+        }
+      ],
+      "es": [
+        {
+          "name": "Maseru"
+        }
+      ],
+      "fr": [
+        {
+          "name": "Maseru"
+        }
+      ],
+      "it": [
+        {
+          "name": "Maseru"
+        }
+      ],
+      "ja": [
+        {
+          "name": "マセル"
+        }
+      ],
+      "ko": [
+        {
+          "name": "마세루"
+        }
+      ],
+      "zh-Hans": [
+        {
+          "name": "马塞卢"
+        }
+      ]
+    }
+  },
+  "Q3739": {
+    "geonameId": 2374776,
+    "names": {
+      "en": [
+        {
+          "name": "Bissau",
+          "short": true
+        },
+        {
+          "name": "Bissau Autonomous Region"
+        }
+      ],
+      "de": [
+        {
+          "name": "Bissau"
+        }
+      ],
+      "es": [
+        {
+          "name": "Bisáu"
+        }
+      ],
+      "fr": [
+        {
+          "name": "Bissau"
+        }
+      ],
+      "ja": [
+        {
+          "name": "ビサウ"
+        }
+      ]
+    }
+  },
+  "Q1140136": {
+    "geonameId": 2306898,
+    "names": {}
+  },
+  "Q1773": {
+    "geonameId": 456172,
+    "names": {
+      "en": [
+        {
+          "name": "Riga"
+        }
+      ],
+      "de": [
+        {
+          "name": "Riga"
+        }
+      ],
+      "es": [
+        {
+          "name": "Riga"
+        }
+      ],
+      "fr": [
+        {
+          "name": "Riga",
+          "pref": true
+        },
+        {
+          "name": "Rīga"
+        }
+      ],
+      "it": [
+        {
+          "name": "Riga"
+        }
+      ],
+      "ja": [
+        {
+          "name": "リガ"
+        }
+      ],
+      "ko": [
+        {
+          "name": "리가"
+        }
+      ]
+    }
+  },
+  "Q384": {
+    "geonameId": 785842,
+    "names": {
+      "en": [
+        {
+          "name": "Skopje"
+        }
+      ],
+      "de": [
+        {
+          "name": "Skopje"
+        }
+      ],
+      "es": [
+        {
+          "name": "Skopje"
+        }
+      ],
+      "fr": [
+        {
+          "name": "Skopje"
+        }
+      ],
+      "it": [
+        {
+          "name": "Skopje"
+        }
+      ],
+      "ja": [
+        {
+          "name": "スコピエ"
+        }
+      ],
+      "ko": [
+        {
+          "name": "스코페"
+        }
+      ],
+      "zh-Hans": [
+        {
+          "name": "斯科普里"
+        }
+      ]
+    }
+  },
+  "Q25270": {
+    "geonameId": 786714,
+    "names": {
+      "en": [
+        {
+          "name": "Prishtina"
+        },
+        {
+          "name": "Pristina",
+          "pref": true
+        }
+      ],
+      "es": [
+        {
+          "name": "Priština"
+        }
+      ],
+      "fr": [
+        {
+          "name": "Pristina",
+          "pref": true
+        },
+        {
+          "name": "Priština"
+        }
+      ],
+      "it": [
+        {
+          "name": "Prishtina"
+        },
+        {
+          "name": "Pristina"
+        },
+        {
+          "name": "Priština"
+        }
+      ],
+      "ja": [
+        {
+          "name": "プリシュティナ"
+        }
+      ],
+      "ko": [
+        {
+          "name": "프리슈티나"
+        }
+      ],
+      "zh-Hans": [
+        {
+          "name": "普里什蒂纳"
+        }
+      ]
+    }
+  },
+  "Q3882": {
+    "geonameId": 290340,
+    "names": {
+      "en": [
+        {
+          "name": "Manama"
+        }
+      ],
+      "de": [
+        {
+          "name": "Manama"
+        }
+      ],
+      "es": [
+        {
+          "name": "Manama"
+        }
+      ],
+      "fr": [
+        {
+          "name": "Manama"
+        }
+      ],
+      "it": [
+        {
+          "name": "Manama"
+        }
+      ],
+      "ja": [
+        {
+          "name": "マナーマ"
+        }
+      ],
+      "ko": [
+        {
+          "name": "마나마"
+        }
+      ],
+      "zh-Hans": [
+        {
+          "name": "麦纳麦"
+        }
+      ]
+    }
+  },
+  "Q9310": {
+    "geonameId": 1645457,
+    "names": {
+      "en": [
+        {
+          "name": "Dili"
+        }
+      ],
+      "de": [
+        {
+          "name": "Dili"
+        }
+      ],
+      "es": [
+        {
+          "name": "Dili"
+        }
+      ],
+      "fr": [
+        {
+          "name": "Dili"
+        }
+      ],
+      "it": [
+        {
+          "name": "Dili"
+        }
+      ],
+      "ja": [
+        {
+          "name": "ディリ"
+        }
+      ],
+      "ko": [
+        {
+          "name": "딜리"
+        }
+      ],
+      "zh-Hans": [
+        {
+          "name": "帝力"
+        }
+      ]
+    }
+  },
+  "Q1770": {
+    "geonameId": 588409,
+    "names": {
+      "en": [
+        {
+          "name": "Tallinn"
+        }
+      ],
+      "de": [
+        {
+          "name": "Tallinn",
+          "pref": true
+        }
+      ],
+      "es": [
+        {
+          "name": "Tallin"
+        }
+      ],
+      "fr": [
+        {
+          "name": "Tallinn"
+        }
+      ],
+      "it": [
+        {
+          "name": "Tallinn"
+        }
+      ],
+      "ja": [
+        {
+          "name": "タリン"
+        }
+      ],
+      "ko": [
+        {
+          "name": "탈린"
+        }
+      ],
+      "zh-Hans": [
+        {
+          "name": "塔林"
+        }
+      ]
+    }
+  },
+  "Q39178": {
+    "geonameId": 3573890,
+    "names": {
+      "en": [
+        {
+          "name": "Port of Spain"
+        }
+      ],
+      "de": [
+        {
+          "name": "Port-of-Spain"
+        }
+      ],
+      "es": [
+        {
+          "name": "Puerto España"
+        }
+      ],
+      "fr": [
+        {
+          "name": "Port-d'Espagne",
+          "pref": true
+        }
+      ],
+      "it": [
+        {
+          "name": "Port of Spain"
+        }
+      ],
+      "ja": [
+        {
+          "name": "ポートオブスペイン"
+        }
+      ],
+      "ko": [
+        {
+          "name": "포트오브스페인"
+        },
+        {
+          "name": "포트 오브 스페인"
+        }
+      ],
+      "zh-Hans": [
+        {
+          "name": "西班牙港"
+        }
+      ]
+    }
+  },
+  "Q3856": {
+    "geonameId": 146268,
+    "names": {
+      "en": [
+        {
+          "name": "Nicosia",
+          "pref": true
+        },
+        {
+          "name": "Nicosia (Lefkosia)"
+        }
+      ],
+      "de": [
+        {
+          "name": "Nikosia",
+          "pref": true
+        }
+      ],
+      "es": [
+        {
+          "name": "Nicosia"
+        }
+      ],
+      "fr": [
+        {
+          "name": "Nicosie"
+        }
+      ],
+      "it": [
+        {
+          "name": "Nicosia"
+        }
+      ],
+      "ja": [
+        {
+          "name": "ニコシア"
+        }
+      ],
+      "ko": [
+        {
+          "name": "니코시아"
+        }
+      ],
+      "zh-Hans": [
+        {
+          "name": "尼科西亚"
+        }
+      ]
+    }
+  },
+  "Q3929": {
+    "geonameId": 934154,
+    "names": {
+      "en": [
+        {
+          "name": "Port Louis"
+        }
+      ],
+      "de": [
+        {
+          "name": "Port Louis"
+        }
+      ],
+      "es": [
+        {
+          "name": "Puerto Louis"
+        }
+      ],
+      "fr": [
+        {
+          "name": "Port-Louis"
+        }
+      ],
+      "it": [
+        {
+          "name": "Port Louis"
+        }
+      ],
+      "ja": [
+        {
+          "name": "ポートルイス"
+        }
+      ],
+      "ko": [
+        {
+          "name": "포트루이스"
+        }
+      ],
+      "zh-Hans": [
+        {
+          "name": "路易港"
+        }
+      ]
+    }
+  },
+  "Q101418": {
+    "geonameId": 935048,
+    "names": {
+      "en": [
+        {
+          "name": "Lobamba"
+        }
+      ],
+      "es": [
+        {
+          "name": "Lobamba"
+        }
+      ],
+      "ja": [
+        {
+          "name": "ロバンバ"
+        }
+      ],
+      "ko": [
+        {
+          "name": "로밤바"
+        }
+      ],
+      "zh-Hans": [
+        {
+          "name": "洛班巴"
+        }
+      ]
+    }
+  },
+  "Q3904": {
+    "geonameId": 934985,
+    "names": {
+      "en": [
+        {
+          "name": "Mbabane"
+        }
+      ],
+      "de": [
+        {
+          "name": "Mbabane"
+        }
+      ],
+      "es": [
+        {
+          "name": "Mbabane"
+        }
+      ],
+      "fr": [
+        {
+          "name": "Mbabane"
+        }
+      ],
+      "it": [
+        {
+          "name": "Mbabane"
+        }
+      ],
+      "ja": [
+        {
+          "name": "ムババーネ"
+        }
+      ],
+      "ko": [
+        {
+          "name": "음바바네"
+        }
+      ],
+      "zh-Hans": [
+        {
+          "name": "墨巴本"
+        }
+      ]
+    }
+  },
+  "Q3604": {
+    "geonameId": 223817,
+    "names": {
+      "en": [
+        {
+          "name": "Djibouti"
+        }
+      ],
+      "de": [
+        {
+          "name": "Dschibuti"
+        }
+      ],
+      "es": [
+        {
+          "name": "Yibuti"
+        }
+      ],
+      "fr": [
+        {
+          "name": "Djibouti"
+        }
+      ],
+      "it": [
+        {
+          "name": "Gibuti"
+        }
+      ],
+      "ja": [
+        {
+          "name": "ジブチ市"
+        }
+      ],
+      "ko": [
+        {
+          "name": "지부티"
+        }
+      ],
+      "zh-Hans": [
+        {
+          "name": "吉布地市"
+        }
+      ]
+    }
+  },
+  "Q38807": {
+    "geonameId": 2198148,
+    "names": {
+      "en": [
+        {
+          "name": "Suva"
+        }
+      ],
+      "de": [
+        {
+          "name": "Suva"
+        }
+      ],
+      "es": [
+        {
+          "name": "Suva"
+        }
+      ],
+      "fr": [
+        {
+          "name": "Suva"
+        }
+      ],
+      "it": [
+        {
+          "name": "Suva"
+        }
+      ],
+      "ja": [
+        {
+          "name": "スバ"
+        }
+      ],
+      "ko": [
+        {
+          "name": "수바"
+        }
+      ],
+      "zh-Hant": [
+        {
+          "name": "蘇瓦"
+        }
+      ]
+    }
+  },
+  "Q3901": {
+    "geonameId": 921772,
+    "names": {
+      "en": [
+        {
+          "name": "Moroni"
+        }
+      ],
+      "de": [
+        {
+          "name": "Moroni"
+        }
+      ],
+      "es": [
+        {
+          "name": "Moroni"
+        }
+      ],
+      "fr": [
+        {
+          "name": "Moroni"
+        }
+      ],
+      "it": [
+        {
+          "name": "Moroni"
+        }
+      ],
+      "ja": [
+        {
+          "name": "モロニ"
+        }
+      ],
+      "ko": [
+        {
+          "name": "모로니"
+        }
+      ],
+      "zh-Hans": [
+        {
+          "name": "莫洛尼"
+        }
+      ]
+    }
+  },
+  "Q10717": {
+    "geonameId": 3378644,
+    "names": {
+      "en": [
+        {
+          "name": "Georgetown"
+        }
+      ],
+      "de": [
+        {
+          "name": "Georgetown"
+        }
+      ],
+      "es": [
+        {
+          "name": "Georgetown"
+        }
+      ],
+      "fr": [
+        {
+          "name": "Georgetown"
+        }
+      ],
+      "it": [
+        {
+          "name": "Georgetown"
+        }
+      ],
+      "ja": [
+        {
+          "name": "ジョージタウン"
+        }
+      ],
+      "ko": [
+        {
+          "name": "조지타운"
+        }
+      ],
+      "zh-Hans": [
+        {
+          "name": "乔治敦"
+        }
+      ]
+    }
+  },
+  "Q9270": {
+    "geonameId": 1252416,
+    "names": {
+      "en": [
+        {
+          "name": "Thimphu"
+        }
+      ],
+      "de": [
+        {
+          "name": "Thimphu"
+        }
+      ],
+      "es": [
+        {
+          "name": "Thimphu"
+        },
+        {
+          "name": "Timbu",
+          "pref": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "Thimphou"
+        }
+      ],
+      "it": [
+        {
+          "name": "Thimphu"
+        }
+      ],
+      "ja": [
+        {
+          "name": "ティンプー"
+        }
+      ],
+      "ko": [
+        {
+          "name": "팀부"
+        }
+      ],
+      "zh-Hans": [
+        {
+          "name": "廷布"
+        }
+      ]
+    }
+  },
+  "Q1842": {
+    "geonameId": 2960316,
+    "names": {
+      "en": [
+        {
+          "name": "Luxembourg",
+          "pref": true
+        },
+        {
+          "name": "Luxembourg City"
+        }
+      ],
+      "de": [
+        {
+          "name": "Luxemburg"
+        },
+        {
+          "name": "Stadt Luxemburg"
+        }
+      ],
+      "es": [
+        {
+          "name": "Ciudad de Luxemburgo"
+        },
+        {
+          "name": "Luxemburgo"
+        }
+      ],
+      "fr": [
+        {
+          "name": "Luxembourg",
+          "pref": true,
+          "short": true
+        },
+        {
+          "name": "Ville de Luxembourg"
+        }
+      ],
+      "it": [
+        {
+          "name": "Lussemburgo"
+        }
+      ],
+      "ja": [
+        {
+          "name": "ルクセンブルク"
+        }
+      ],
+      "ko": [
+        {
+          "name": "룩셈부르크"
+        }
+      ],
+      "zh-Hans": [
+        {
+          "name": "盧森堡市"
+        }
+      ]
+    }
+  },
+  "Q23564": {
+    "geonameId": 3193044,
+    "names": {
+      "en": [
+        {
+          "name": "Podgorica"
+        }
+      ],
+      "de": [
+        {
+          "name": "Podgorica"
+        }
+      ],
+      "es": [
+        {
+          "name": "Podgorica"
+        }
+      ],
+      "fr": [
+        {
+          "name": "Podgorica"
+        }
+      ],
+      "it": [
+        {
+          "name": "Podgorica"
+        }
+      ],
+      "ja": [
+        {
+          "name": "ポドゴリツァ"
+        }
+      ],
+      "ko": [
+        {
+          "name": "포드고리차"
+        }
+      ],
+      "zh-Hans": [
+        {
+          "name": "波德戈里察"
+        }
+      ]
+    }
+  },
+  "Q40921": {
+    "geonameId": 2108502,
+    "names": {
+      "en": [
+        {
+          "name": "Honiara"
+        }
+      ],
+      "de": [
+        {
+          "name": "Honiara"
+        }
+      ],
+      "es": [
+        {
+          "name": "Honiara"
+        }
+      ],
+      "fr": [
+        {
+          "name": "Honiara"
+        }
+      ],
+      "it": [
+        {
+          "name": "Honiara"
+        }
+      ],
+      "ja": [
+        {
+          "name": "ホニアラ"
+        }
+      ],
+      "ko": [
+        {
+          "name": "호니아라"
+        }
+      ],
+      "zh-Hans": [
+        {
+          "name": "霍尼亚拉"
+        },
+        {
+          "name": "霍尼亞拉"
+        }
+      ]
+    }
+  },
+  "Q3001": {
+    "geonameId": 3383330,
+    "names": {
+      "en": [
+        {
+          "name": "Paramaribo"
+        }
+      ],
+      "de": [
+        {
+          "name": "Paramaribo"
+        }
+      ],
+      "es": [
+        {
+          "name": "Paramaribo"
+        }
+      ],
+      "fr": [
+        {
+          "name": "Paramaribo"
+        }
+      ],
+      "it": [
+        {
+          "name": "Paramaribo"
+        }
+      ],
+      "ja": [
+        {
+          "name": "パラマリボ"
+        }
+      ],
+      "ko": [
+        {
+          "name": "파라마리보"
+        }
+      ],
+      "zh-Hans": [
+        {
+          "name": "帕拉马里博"
+        }
+      ]
+    }
+  },
+  "Q3751": {
+    "geonameId": 3374333,
+    "names": {
+      "en": [
+        {
+          "name": "Praia"
+        }
+      ],
+      "de": [
+        {
+          "name": "Praia"
+        }
+      ],
+      "es": [
+        {
+          "name": "Praia"
+        }
+      ],
+      "fr": [
+        {
+          "name": "Praia"
+        }
+      ],
+      "it": [
+        {
+          "name": "Praia"
+        }
+      ],
+      "ja": [
+        {
+          "name": "プライア"
+        }
+      ],
+      "ko": [
+        {
+          "name": "프라이아"
+        }
+      ],
+      "zh-Hant": [
+        {
+          "name": "培亞"
+        }
+      ]
+    }
+  },
+  "Q23800": {
+    "geonameId": 8334638,
+    "names": {
+      "en": [
+        {
+          "name": "Valletta"
+        }
+      ],
+      "de": [
+        {
+          "name": "Valletta"
+        }
+      ],
+      "es": [
+        {
+          "name": "Valletta"
+        }
+      ],
+      "fr": [
+        {
+          "name": "Valletta"
+        }
+      ],
+      "ja": [
+        {
+          "name": "ヴァレッタ"
+        }
+      ]
+    }
+  },
+  "Q9279": {
+    "geonameId": 1820906,
+    "names": {
+      "en": [
+        {
+          "name": "Bandar Seri Begawan"
+        }
+      ],
+      "de": [
+        {
+          "name": "Bandar Seri Begawan"
+        }
+      ],
+      "es": [
+        {
+          "name": "Bandar Seri Begawan"
+        }
+      ],
+      "fr": [
+        {
+          "name": "Bandar Seri Begawan"
+        }
+      ],
+      "it": [
+        {
+          "name": "Bandar Seri Begawan"
+        }
+      ],
+      "ja": [
+        {
+          "name": "バンダルスリブガワン"
+        }
+      ],
+      "ko": [
+        {
+          "name": "반다르스리브가완"
+        }
+      ],
+      "zh-Hans": [
+        {
+          "name": "斯里巴加湾市"
+        },
+        {
+          "name": "斯里巴加灣市"
+        }
+      ]
+    }
+  },
+  "Q9347": {
+    "geonameId": 1282027,
+    "names": {
+      "en": [
+        {
+          "name": "Malé"
+        }
+      ],
+      "de": [
+        {
+          "name": "Malé"
+        }
+      ],
+      "es": [
+        {
+          "name": "Malé"
+        }
+      ],
+      "fr": [
+        {
+          "name": "Malé"
+        }
+      ],
+      "it": [
+        {
+          "name": "Malé"
+        }
+      ],
+      "ja": [
+        {
+          "name": "マレ"
+        }
+      ],
+      "ko": [
+        {
+          "name": "말레"
+        }
+      ],
+      "zh-Hans": [
+        {
+          "name": "瑪律"
+        },
+        {
+          "name": "馬累"
+        },
+        {
+          "name": "马累"
+        }
+      ]
+    }
+  },
+  "Q3043": {
+    "geonameId": 3582672,
+    "names": {
+      "en": [
+        {
+          "name": "Belmopan"
+        }
+      ],
+      "de": [
+        {
+          "name": "Belmopan"
+        }
+      ],
+      "es": [
+        {
+          "name": "Belmopán"
+        }
+      ],
+      "fr": [
+        {
+          "name": "Belmopan"
+        }
+      ],
+      "it": [
+        {
+          "name": "Belmopan"
+        }
+      ],
+      "ja": [
+        {
+          "name": "ベルモパン"
+        }
+      ],
+      "ko": [
+        {
+          "name": "벨모판"
+        }
+      ],
+      "zh-Hant": [
+        {
+          "name": "貝爾墨邦"
+        }
+      ]
+    }
+  },
+  "Q2467": {
+    "geonameId": 3571824,
+    "names": {
+      "en": [
+        {
+          "name": "Nassau"
+        }
+      ],
+      "de": [
+        {
+          "name": "Nassau"
+        }
+      ],
+      "es": [
+        {
+          "name": "Nasáu"
+        }
+      ],
+      "fr": [
+        {
+          "name": "Nassau"
+        }
+      ],
+      "it": [
+        {
+          "name": "Nassau"
+        }
+      ],
+      "ja": [
+        {
+          "name": "ナッソー"
+        }
+      ],
+      "ko": [
+        {
+          "name": "나소"
+        },
+        {
+          "name": "나사우",
+          "pref": true
+        }
+      ],
+      "zh-Hans": [
+        {
+          "name": "拿骚"
+        }
+      ]
+    }
+  },
+  "Q1764": {
+    "geonameId": 3413831,
+    "names": {}
+  },
+  "Q36168": {
+    "geonameId": 3374036,
+    "names": {
+      "en": [
+        {
+          "name": "Bridgetown"
+        }
+      ],
+      "de": [
+        {
+          "name": "Bridgetown"
+        }
+      ],
+      "es": [
+        {
+          "name": "Bridgetown"
+        }
+      ],
+      "fr": [
+        {
+          "name": "Bridgetown"
+        }
+      ],
+      "it": [
+        {
+          "name": "Bridgetown"
+        }
+      ],
+      "ja": [
+        {
+          "name": "ブリッジタウン"
+        }
+      ],
+      "ko": [
+        {
+          "name": "브리지타운"
+        }
+      ]
+    }
+  },
+  "Q37806": {
+    "geonameId": 2135171,
+    "names": {
+      "en": [
+        {
+          "name": "Port Vila",
+          "pref": true
+        }
+      ],
+      "de": [
+        {
+          "name": "Port Vila"
+        }
+      ],
+      "es": [
+        {
+          "name": "Port Vila"
+        }
+      ],
+      "fr": [
+        {
+          "name": "Port-Vila"
+        }
+      ],
+      "it": [
+        {
+          "name": "Port Vila"
+        }
+      ],
+      "ja": [
+        {
+          "name": "ポートビラ"
+        }
+      ],
+      "ko": [
+        {
+          "name": "포트빌라"
+        }
+      ],
+      "zh-Hant": [
+        {
+          "name": "維拉港"
+        }
+      ]
+    }
+  },
+  "Q3932": {
+    "geonameId": 2410763,
+    "names": {
+      "en": [
+        {
+          "name": "São Tomé"
+        }
+      ],
+      "de": [
+        {
+          "name": "São Tomé"
+        }
+      ],
+      "es": [
+        {
+          "name": "Santo Tomé"
+        }
+      ],
+      "fr": [
+        {
+          "name": "São Tomé"
+        }
+      ],
+      "it": [
+        {
+          "name": "São Tomé"
+        }
+      ],
+      "ja": [
+        {
+          "name": "サントメ"
+        }
+      ],
+      "ko": [
+        {
+          "name": "상투메"
+        }
+      ],
+      "zh-Hans": [
+        {
+          "name": "圣多美"
+        }
+      ]
+    }
+  },
+  "Q36260": {
+    "geonameId": 4035413,
+    "names": {
+      "en": [
+        {
+          "name": "Apia"
+        }
+      ],
+      "de": [
+        {
+          "name": "Apia"
+        }
+      ],
+      "es": [
+        {
+          "name": "Apia"
+        }
+      ],
+      "fr": [
+        {
+          "name": "Apia"
+        }
+      ],
+      "it": [
+        {
+          "name": "Apia"
+        }
+      ],
+      "ja": [
+        {
+          "name": "アピア"
+        }
+      ],
+      "ko": [
+        {
+          "name": "아피아"
+        }
+      ],
+      "zh-Hans": [
+        {
+          "name": "阿皮亚"
+        }
+      ]
+    }
+  },
+  "Q41699": {
+    "geonameId": 3576812,
+    "names": {
+      "en": [
+        {
+          "name": "Castries"
+        }
+      ],
+      "de": [
+        {
+          "name": "Castries"
+        }
+      ],
+      "es": [
+        {
+          "name": "Castries"
+        }
+      ],
+      "fr": [
+        {
+          "name": "Castries"
+        }
+      ],
+      "it": [
+        {
+          "name": "Castries"
+        }
+      ],
+      "ja": [
+        {
+          "name": "カストリーズ"
+        }
+      ],
+      "ko": [
+        {
+          "name": "캐스트리스"
+        }
+      ],
+      "zh-Hans": [
+        {
+          "name": "卡斯特里"
+        }
+      ]
+    }
+  },
+  "Q3940": {
+    "geonameId": 241131,
+    "names": {
+      "en": [
+        {
+          "name": "Victoria"
+        }
+      ],
+      "de": [
+        {
+          "name": "Victoria"
+        }
+      ],
+      "es": [
+        {
+          "name": "Victoria"
+        }
+      ],
+      "fr": [
+        {
+          "name": "Victoria"
+        }
+      ],
+      "it": [
+        {
+          "name": "Victoria"
+        }
+      ],
+      "ja": [
+        {
+          "name": "ヴィクトリア"
+        }
+      ],
+      "ko": [
+        {
+          "name": "빅토리아"
+        }
+      ],
+      "zh-Hans": [
+        {
+          "name": "维多利亚"
+        }
+      ]
+    }
+  },
+  "Q41547": {
+    "geonameId": 3579925,
+    "names": {
+      "en": [
+        {
+          "name": "Saint George's"
+        },
+        {
+          "name": "St. George's"
+        }
+      ],
+      "de": [
+        {
+          "name": "St. George's"
+        }
+      ],
+      "es": [
+        {
+          "name": "Saint George's"
+        }
+      ],
+      "fr": [
+        {
+          "name": "Saint-Georges"
+        }
+      ],
+      "it": [
+        {
+          "name": "St. George's"
+        }
+      ],
+      "ja": [
+        {
+          "name": "セントジョージズ"
+        }
+      ],
+      "ko": [
+        {
+          "name": "세인트조지스"
+        }
+      ]
+    }
+  },
+  "Q41474": {
+    "geonameId": 3577887,
+    "names": {
+      "en": [
+        {
+          "name": "Kingstown"
+        }
+      ],
+      "de": [
+        {
+          "name": "Kingstown"
+        }
+      ],
+      "es": [
+        {
+          "name": "Kingstown"
+        }
+      ],
+      "fr": [
+        {
+          "name": "Kingstown"
+        }
+      ],
+      "it": [
+        {
+          "name": "Kingstown"
+        }
+      ],
+      "ja": [
+        {
+          "name": "キングスタウン"
+        }
+      ],
+      "ko": [
+        {
+          "name": "킹스타운"
+        }
+      ],
+      "zh-Hans": [
+        {
+          "name": "金斯敦"
+        }
+      ]
+    }
+  },
+  "Q38834": {
+    "geonameId": 4032402,
+    "names": {
+      "en": [
+        {
+          "name": "Nuku'alofa"
+        }
+      ],
+      "de": [
+        {
+          "name": "Nuku’alofa"
+        }
+      ],
+      "es": [
+        {
+          "name": "Nuku'alofa"
+        }
+      ],
+      "fr": [
+        {
+          "name": "Nuku'alofa"
+        }
+      ],
+      "it": [
+        {
+          "name": "Nuku'alofa"
+        }
+      ],
+      "ja": [
+        {
+          "name": "ヌクアロファ"
+        }
+      ],
+      "ko": [
+        {
+          "name": "누쿠알로파"
+        }
+      ],
+      "zh-Hans": [
+        {
+          "name": "努库阿洛法"
+        },
+        {
+          "name": "努庫阿洛發"
+        }
+      ]
+    }
+  },
+  "Q36262": {
+    "geonameId": 3576022,
+    "names": {
+      "en": [
+        {
+          "name": "Saint John's"
+        },
+        {
+          "name": "St John's",
+          "pref": true
+        },
+        {
+          "name": "St. John's"
+        }
+      ],
+      "de": [
+        {
+          "name": "Saint John's"
+        }
+      ],
+      "es": [
+        {
+          "name": "Saint John's"
+        }
+      ],
+      "fr": [
+        {
+          "name": "Saint John's"
+        }
+      ],
+      "it": [
+        {
+          "name": "Saint John's"
+        }
+      ],
+      "ja": [
+        {
+          "name": "セントジョンズ"
+        }
+      ],
+      "ko": [
+        {
+          "name": "세인트존스"
+        }
+      ],
+      "zh-Hans": [
+        {
+          "name": "圣约翰"
+        }
+      ]
+    }
+  },
+  "Q1863": {
+    "geonameId": 3041563,
+    "names": {
+      "en": [
+        {
+          "name": "Andorra la Vella"
+        }
+      ],
+      "de": [
+        {
+          "name": "Andorra la Vella"
+        }
+      ],
+      "es": [
+        {
+          "name": "Andorra la Vella"
+        }
+      ],
+      "fr": [
+        {
+          "name": "Andorre-la-Vieille"
+        }
+      ],
+      "it": [
+        {
+          "name": "Andorra la Vella"
+        }
+      ],
+      "ja": [
+        {
+          "name": "アンドラ・ラ・ヴェリャ"
+        }
+      ],
+      "ko": [
+        {
+          "name": "안도라라베야"
+        }
+      ],
+      "zh-Hant": [
+        {
+          "name": "安道爾城"
+        }
+      ]
+    }
+  },
+  "Q42751": {
+    "geonameId": 2081986,
+    "names": {
+      "en": [
+        {
+          "name": "Palikir",
+          "pref": true
+        }
+      ],
+      "de": [
+        {
+          "name": "Palikir"
+        }
+      ],
+      "es": [
+        {
+          "name": "Palikir"
+        }
+      ],
+      "fr": [
+        {
+          "name": "Palikir"
+        }
+      ],
+      "it": [
+        {
+          "name": "Palikir"
+        }
+      ],
+      "ja": [
+        {
+          "name": "パリキール"
+        }
+      ],
+      "ko": [
+        {
+          "name": "팔리키르"
+        }
+      ],
+      "zh-Hans": [
+        {
+          "name": "帕利基尔"
+        }
+      ]
+    }
+  },
+  "Q36281": {
+    "geonameId": 3575635,
+    "names": {
+      "en": [
+        {
+          "name": "Roseau"
+        }
+      ],
+      "de": [
+        {
+          "name": "Roseau"
+        }
+      ],
+      "es": [
+        {
+          "name": "Roseau"
+        }
+      ],
+      "fr": [
+        {
+          "name": "Roseau"
+        }
+      ],
+      "it": [
+        {
+          "name": "Roseau"
+        }
+      ],
+      "ja": [
+        {
+          "name": "ロゾー"
+        }
+      ],
+      "ko": [
+        {
+          "name": "로조"
+        }
+      ],
+      "zh-Hant": [
+        {
+          "name": "羅索"
+        }
+      ]
+    }
+  },
+  "Q12919": {
+    "geonameId": 2113779,
+    "names": {
+      "en": [
+        {
+          "name": "Majuro",
+          "pref": true
+        }
+      ],
+      "de": [
+        {
+          "name": "Majuro",
+          "pref": true
+        }
+      ],
+      "es": [
+        {
+          "name": "Majuro"
+        }
+      ],
+      "fr": [
+        {
+          "name": "Majuro"
+        }
+      ],
+      "ko": [
+        {
+          "name": "마주로"
+        }
+      ]
+    }
+  },
+  "Q41295": {
+    "geonameId": 3575551,
+    "names": {
+      "en": [
+        {
+          "name": "Basseterre"
+        }
+      ],
+      "de": [
+        {
+          "name": "Basseterre"
+        }
+      ],
+      "es": [
+        {
+          "name": "Basseterre"
+        }
+      ],
+      "fr": [
+        {
+          "name": "Basseterre"
+        }
+      ],
+      "it": [
+        {
+          "name": "Basseterre"
+        }
+      ],
+      "ja": [
+        {
+          "name": "バセテール"
+        }
+      ],
+      "ko": [
+        {
+          "name": "바스테르"
+        }
+      ],
+      "zh-Hans": [
+        {
+          "name": "巴斯特尔"
+        }
+      ]
+    }
+  },
+  "Q235": {
+    "geonameId": 2993457,
+    "names": {
+      "en": [
+        {
+          "name": "Monaco",
+          "pref": true,
+          "short": true
+        },
+        {
+          "name": "Principality of Monaco",
+          "pref": true
+        }
+      ],
+      "de": [
+        {
+          "name": "Monaco",
+          "pref": true
+        }
+      ],
+      "es": [
+        {
+          "name": "Mónaco",
+          "pref": true,
+          "short": true
+        },
+        {
+          "name": "Principado de Mónaco",
+          "pref": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "Monaco",
+          "pref": true
+        },
+        {
+          "name": "Principauté de Monaco"
+        }
+      ],
+      "it": [
+        {
+          "name": "Monaco",
+          "pref": true
+        },
+        {
+          "name": "Principato di Monaco"
+        }
+      ],
+      "ja": [
+        {
+          "name": "モナコ",
+          "pref": true
+        }
+      ],
+      "ko": [
+        {
+          "name": "모나코",
+          "pref": true
+        }
+      ],
+      "zh-Hant": [
+        {
+          "name": "摩納哥",
+          "pref": true
+        }
+      ],
+      "zh-Hans": [
+        {
+          "name": "摩纳哥",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q1844": {
+    "geonameId": 3042031,
+    "names": {}
+  },
+  "Q1848": {
+    "geonameId": 3345302,
+    "names": {
+      "en": [
+        {
+          "name": "San Marino"
+        }
+      ],
+      "de": [
+        {
+          "name": "San Marino"
+        }
+      ],
+      "es": [
+        {
+          "name": "San Marino"
+        }
+      ],
+      "fr": [
+        {
+          "name": "San Marino"
+        }
+      ],
+      "ja": [
+        {
+          "name": "サンマリノ"
+        }
+      ]
+    }
+  },
+  "Q515229": {
+    "geonameId": 8063361,
+    "names": {
+      "en": [
+        {
+          "name": "Ngerulmud"
+        }
+      ],
+      "ko": [
+        {
+          "name": "응게룰무드"
+        }
+      ]
+    }
+  },
+  "Q31026": {
+    "geonameId": 2110418,
+    "names": {
+      "en": [
+        {
+          "name": "Yaren District"
+        }
+      ],
+      "de": [
+        {
+          "name": "Yaren"
+        }
+      ],
+      "es": [
+        {
+          "name": "Yaren"
+        }
+      ],
+      "fr": [
+        {
+          "name": "Yaren"
+        }
+      ],
+      "it": [
+        {
+          "name": "Yaren"
+        }
+      ],
+      "ja": [
+        {
+          "name": "ヤレン地区"
+        }
+      ],
+      "ko": [
+        {
+          "name": "야렌구"
+        }
+      ],
+      "zh-Hans": [
+        {
+          "name": "亞倫區"
+        }
+      ]
+    }
+  },
+  "Q34126": {
+    "geonameId": 2110394,
+    "names": {
+      "en": [
+        {
+          "name": "Funafuti",
+          "pref": true
+        }
+      ],
+      "de": [
+        {
+          "name": "Funafuti",
+          "pref": true
+        }
+      ],
+      "es": [
+        {
+          "name": "Fongafale (atolón de Funafuti)"
+        }
+      ],
+      "fr": [
+        {
+          "name": "Funafuti"
+        }
+      ],
+      "ko": [
+        {
+          "name": "푸나푸티"
+        }
+      ]
+    }
+  },
+  "Q237": {
+    "geonameId": 3164670,
+    "names": {
+      "en": [
+        {
+          "name": "Holy See"
+        },
+        {
+          "name": "Holy See (Vatican City State)"
+        },
+        {
+          "name": "Vatican"
+        },
+        {
+          "name": "Vatican City",
+          "pref": true
+        },
+        {
+          "name": "Vatican City State"
+        },
+        {
+          "name": "Vatican City State (Holy See)"
+        },
+        {
+          "name": "Vatican Hill"
+        }
+      ],
+      "de": [
+        {
+          "name": "Staat der Vatikanstadt",
+          "pref": true
+        },
+        {
+          "name": "Vatikanstadt",
+          "pref": true,
+          "short": true
+        }
+      ],
+      "es": [
+        {
+          "name": "Ciudad del Vaticano",
+          "pref": true
+        },
+        {
+          "name": "El Vaticano"
+        },
+        {
+          "name": "Santa Sede"
+        },
+        {
+          "name": "Santa Sede (Estado de la Ciudad del Vaticano)"
+        }
+      ],
+      "fr": [
+        {
+          "name": "Saint-Siège (Etat de la Cité du Vatican)"
+        },
+        {
+          "name": "Saint-Siège (État de la Cité du Vatican)"
+        },
+        {
+          "name": "Vatican",
+          "pref": true,
+          "short": true
+        }
+      ],
+      "it": [
+        {
+          "name": "Città del Vaticano",
+          "pref": true
+        },
+        {
+          "name": "Città Vaticano",
+          "colloq": true
+        },
+        {
+          "name": "Colle Vaticano"
+        },
+        {
+          "name": "Santa Sede (Città del Vaticano)"
+        },
+        {
+          "name": "Stato della Città del Vaticano"
+        },
+        {
+          "name": "Vaticano",
+          "short": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "ローマ教皇庁 (バチカン市国)"
+        },
+        {
+          "name": "ローマ法王庁 (バチカン市国)",
+          "pref": true
+        }
+      ],
+      "ko": [
+        {
+          "name": "바티칸"
+        },
+        {
+          "name": "바티칸시티",
+          "pref": true
+        }
+      ],
+      "zh-Hant": [
+        {
+          "name": "梵蒂岡",
+          "pref": true
+        },
+        {
+          "name": "圣座（梵蒂冈）",
+          "pref": true
+        }
+      ],
+      "zh-Hans": [
+        {
+          "name": "梵蒂冈",
+          "pref": true
+        }
+      ]
+    }
+  }
+}
