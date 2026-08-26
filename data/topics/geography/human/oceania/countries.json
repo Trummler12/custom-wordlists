@@ -63,7 +63,7 @@
     },
     {
       "id": "no-coverage",
-      "match": ["Federated States of Micronesia","Fiji","French Polynesia","Kiribati","Marshall Islands","Nauru","New Caledonia","Niue","Norfolk Island","Palau","Papua New Guinea","Samoa","Solomon Islands","Tokelau","Tonga","Tuvalu","Wallis and Futuna"],
+      "match": ["Cook Islands","Federated States of Micronesia","Fiji","French Polynesia","Kiribati","Marshall Islands","Nauru","New Caledonia","Niue","Norfolk Island","Palau","Papua New Guinea","Samoa","Solomon Islands","Tokelau","Tonga","Tuvalu","Wallis and Futuna"],
       "count": true,
       "icon": "geoguessr",
       "reason": {
@@ -78,7 +78,7 @@
     },
     {
       "id": "rare-coverage",
-      "match": ["Cocos (Keeling) Islands","Vanuatu"],
+      "match": ["Cocos (Keeling) Islands","Pitcairn Islands","Vanuatu"],
       "count": true,
       "icon": "geoguessr",
       "reason": {

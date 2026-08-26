@@ -63,7 +63,7 @@
     },
     {
       "id": "no-coverage",
-      "match": ["Algeria","Angola","Benin","Burkina Faso","Burundi","Cabo Verde","Cameroon","Central African Republic","Chad","Comoros","Congo Republic","Democratic Republic of Congo","Djibouti","Equatorial Guinea","Eritrea","Ethiopia","Gabon","Guinea","Guinea-Bissau","Ivory Coast","Liberia","Libya","Malawi","Mauritania","Mauritius","Morocco","Mozambique","Niger","Saint Helena","Seychelles","Sierra Leone","Somalia","Somaliland","South Sudan","Sudan","The Gambia","Togo","Zambia","Zimbabwe"],
+      "match": ["Algeria","Angola","Benin","Burkina Faso","Burundi","Cabo Verde","Cameroon","Central African Republic","Chad","Comoros","Congo Republic","Democratic Republic of Congo","Djibouti","Equatorial Guinea","Eritrea","Ethiopia","Gabon","Guinea","Guinea-Bissau","Ivory Coast","Liberia","Libya","Malawi","Mauritania","Mauritius","Morocco","Mozambique","Niger","Saint Helena","Seychelles","Sierra Leone","Somalia","Somaliland","South Sudan","Sudan","The Gambia","Togo","Western Sahara","Zambia","Zimbabwe"],
       "count": true,
       "icon": "geoguessr",
       "reason": {
