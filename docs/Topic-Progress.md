@@ -35,10 +35,10 @@ The sections run in the order the app's own tree does, so the two can be read si
 ### Human
 
 - [x] **_Languages_**
-- [ ] Countries
-- [ ] Capitals
+- [x] **_Countries_**
+- [x] **_Capitals_**
 - [ ] Cities
-- [ ] [Selecting those three per continent as well as worldwide]
+- [x] [Per-continent and worldwide lists — live for Countries & Capitals; Cities join once added]
 
 Countries, capitals and cities are stored one folder per continent and read upward, so a world list and a continent's are the same entries at two grains rather than two lists.
 Cities go one level deeper again, per country.
