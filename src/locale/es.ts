@@ -112,6 +112,9 @@ export const es: UIStrings = {
     showEnglishEn: "Estos interruptores solo aparecen en idiomas distintos del inglés.",
     interfaceLang: "Idioma de la interfaz:",
     interfaceAuto: "Automático",
+    reset: "Restablecer ajustes{br}predeterminados",
+    resetConfirm: "Pulsa de nuevo para confirmar",
+    resetCancel: "Cancelar",
   },
   output: {
     label: "Resultado",

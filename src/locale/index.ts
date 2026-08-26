@@ -195,6 +195,14 @@ export interface SettingsStrings {
   /** Its first option, and the default: follow the list language where we have a
    *  dictionary for it. Kept short — it sits in a dropdown, not in a sentence. */
   interfaceAuto: string;
+  /** The reset button: drops every stored preference back to the shipped default.
+   *  Carries a `{br}` so it wraps predictably in the narrow menu. */
+  reset: string;
+  /** The armed label after the first click — a second click confirms, so the reset
+   *  is never one stray click away. */
+  resetConfirm: string;
+  /** Accessible name of the ✕ that disarms the reset without firing it. */
+  resetCancel: string;
 }
 
 /** The output panel and its counter. */

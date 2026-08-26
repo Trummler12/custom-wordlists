@@ -114,6 +114,9 @@ export const it: UIStrings = {
     showEnglishEn: "Questi interruttori compaiono solo per lingue diverse dall'inglese.",
     interfaceLang: "Lingua dell'interfaccia:",
     interfaceAuto: "Automatico",
+    reset: "Ripristina{br}le impostazioni",
+    resetConfirm: "Clicca di nuovo per confermare",
+    resetCancel: "Annulla",
   },
   output: {
     label: "Risultato",

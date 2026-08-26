@@ -108,6 +108,9 @@ export const ko: UIStrings = {
     showEnglishEn: "이 스위치는 영어가 아닌 언어에서만 나타납니다.",
     interfaceLang: "인터페이스 언어:",
     interfaceAuto: "자동",
+    reset: "설정{br}초기화",
+    resetConfirm: "다시 클릭하면 초기화",
+    resetCancel: "취소",
   },
   output: {
     label: "결과",

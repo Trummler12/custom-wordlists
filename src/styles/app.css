@@ -600,6 +600,46 @@ header {
   gap: 0.35rem;
   cursor: default;
 }
+/* Reset stands apart from the preferences above — a rule over it — and wears the
+   danger colour instead of the neutral chrome the rest of the menu uses. */
+.reset-row {
+  margin-top: 0.15rem;
+  padding-top: 0.5rem;
+  border-top: 1px solid var(--panel-border);
+  align-items: center;
+}
+.reset-btn {
+  flex: 1;
+  background: none;
+  border: 1px solid var(--danger);
+  border-radius: var(--radius-sm);
+  padding: 0.3rem 0.5rem;
+  color: var(--danger);
+  font: inherit;
+  line-height: 1.15;
+  text-align: center;
+  cursor: pointer;
+}
+.reset-btn:hover,
+.reset-btn:focus-visible,
+.reset-btn.armed {
+  background: var(--danger);
+  color: #fff;
+}
+.reset-cancel {
+  background: none;
+  border: none;
+  padding: 0 0.25rem;
+  color: var(--muted);
+  font-size: 1rem;
+  line-height: 1;
+  opacity: 0.7;
+  cursor: pointer;
+}
+.reset-cancel:hover,
+.reset-cancel:focus-visible {
+  opacity: 1;
+}
 .lang-btn {
   background: none;
   border: 1px solid var(--panel-border);

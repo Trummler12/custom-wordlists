@@ -108,6 +108,9 @@ export const ja: UIStrings = {
     showEnglishEn: "このスイッチは英語以外の言語でのみ表示されます。",
     interfaceLang: "表示言語:",
     interfaceAuto: "自動",
+    reset: "設定を{br}リセット",
+    resetConfirm: "もう一度クリックで確定",
+    resetCancel: "キャンセル",
   },
   output: {
     label: "出力",

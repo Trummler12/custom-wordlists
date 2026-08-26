@@ -5,12 +5,32 @@
   import { plain } from "../../locale/html/plain";
   import { overlays } from "../../state/overlays.svelte";
   import { settings } from "../../state/settings.svelte";
+  import { resetAllToDefault } from "../../state/reset";
+  import Msg from "../../locale/html/Msg.svelte";
   import TipMarker from "../common/TipMarker.svelte";
   import TipNote from "../common/TipNote.svelte";
 
   // Two instances, like the language picker it sits beside: one per layout, each
   // with its own open state.
   let { id }: { id: string } = $props();
+
+  // Reset is destructive and irreversible, so it takes two clicks: the first arms
+  // the button, the second fires. It disarms itself on a short timeout and whenever
+  // the menu closes, so a stray arm never lingers to catch the next open.
+  let armed = $state(false);
+  let disarmTimer: ReturnType<typeof setTimeout> | undefined;
+  function arm(): void {
+    armed = true;
+    clearTimeout(disarmTimer);
+    disarmTimer = setTimeout(() => (armed = false), 4000);
+  }
+  function disarm(): void {
+    armed = false;
+    clearTimeout(disarmTimer);
+  }
+  $effect(() => {
+    if (overlays.settingsMenu !== id) disarm();
+  });
 
   // The English toggles never appear while the interface is English. The setting
   // stays settable anyway — the language is going to change, and a control that
@@ -156,6 +176,25 @@
           </label>
         </div>
       {/if}
+      <!-- Destructive, so it sits apart from the preferences above it and is armed
+           before it fires. -->
+      <div class="setting-row reset-row">
+        {#if armed}
+          <button type="button" class="reset-btn armed" onclick={resetAllToDefault}>
+            {lang.ui.settings.resetConfirm}
+          </button>
+          <button
+            type="button"
+            class="reset-cancel"
+            aria-label={lang.ui.settings.resetCancel}
+            onclick={disarm}>✕</button
+          >
+        {:else}
+          <button type="button" class="reset-btn" onclick={arm}>
+            <Msg text={lang.ui.settings.reset} />
+          </button>
+        {/if}
+      </div>
     </div>
   {/if}
 </div>
