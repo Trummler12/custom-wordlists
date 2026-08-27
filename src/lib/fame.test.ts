@@ -1,6 +1,15 @@
 import { describe, expect, it } from "vitest";
-import { depthFromKey, fameGroups, nearestIndex, snapPositions, tierSizes } from "./fame";
-import type { Group } from "./types";
+import {
+  depthFromKey,
+  fameGroups,
+  nearestIndex,
+  rulerTip,
+  skipCollapsed,
+  snapPositions,
+  tierNoteAt,
+  tierSizes,
+} from "./fame";
+import type { Group, LocalizedString } from "./types";
 
 const tiered = (...sizes: number[]): Group => ({
   id: "g",
@@ -54,6 +63,48 @@ describe("snapPositions", () => {
     expect(a).toBeGreaterThan(0.15);
   });
 
+  it("all but touches the two stops around an interior empty tier", () => {
+    // A list whose tier boundaries come from outside — a population, a year — can
+    // have nothing in one band between two that do. Its stop stays, so a reader
+    // sees one stop carries two condition steps, but the gap shrinks to near zero
+    // so it claims none of the room a full tier would.
+    const pos = snapPositions(tiered(5, 0, 5));
+    expect(pos).toHaveLength(4);
+    for (let i = 1; i < pos.length; i++) expect(pos[i]).toBeGreaterThan(pos[i - 1]);
+    const emptyGap = pos[2] - pos[1];
+    expect(emptyGap).toBeGreaterThan(0);
+    expect(emptyGap).toBeLessThan(0.05);
+  });
+
+  it("collapses leading empty tiers onto the famous end", () => {
+    // Oceania has no country over 100M: its top bands are empty. They pile onto 0,
+    // so the first perceptible stop is the one that brings in real entries.
+    const pos = snapPositions(tiered(0, 0, 5, 5));
+    expect(pos).toHaveLength(5);
+    expect(pos[0]).toBe(0);
+    expect(pos[1]).toBe(0);
+    expect(pos[2]).toBe(0);
+    expect(pos[3]).toBeGreaterThan(0);
+    expect(pos.at(-1)).toBe(1);
+  });
+
+  it("collapses trailing empty tiers onto the least-famous end", () => {
+    const pos = snapPositions(tiered(5, 5, 0, 0));
+    expect(pos).toHaveLength(5);
+    expect(pos[2]).toBe(1);
+    expect(pos[3]).toBe(1);
+    expect(pos.at(-1)).toBe(1);
+    expect(pos[1]).toBeLessThan(1);
+  });
+
+  it("survives a group whose tiers are all empty", () => {
+    // Not a list anyone would write, but the sizes sum to zero and the spacing
+    // maths divides by that sum.
+    const pos = snapPositions(tiered(0, 0));
+    expect(pos[0]).toBe(0);
+    expect(pos.at(-1)).toBe(1);
+  });
+
   it("survives a group with no tiers at all", () => {
     // Unreachable through the schema, which requires a tier — but the function
     // is in lib/, where the next caller won't know that.
@@ -98,5 +149,102 @@ describe("depthFromKey", () => {
   it("returns null for anything else, so the caller leaves the event alone", () => {
     expect(depthFromKey(key("Tab"), 3, 5)).toBeNull();
     expect(depthFromKey(key("a"), 3, 5)).toBeNull();
+  });
+});
+
+describe("skipCollapsed", () => {
+  it("leaves a step alone when its stop is a pixel of its own", () => {
+    const pos = [0, 0.3, 0.6, 1];
+    expect(skipCollapsed(pos, 1, 2)).toBe(2);
+    expect(skipCollapsed(pos, 2, 1)).toBe(1);
+  });
+
+  it("steps past leading stops collapsed onto 0, so an arrow moves the thumb", () => {
+    // pos for tiered(0, 0, 5, 5): [0, 0, 0, x, 1]. From rest, one press should reach
+    // the first stop with a pixel of its own, not the invisible duplicate at 0.
+    const pos = snapPositions(tiered(0, 0, 5, 5));
+    expect(skipCollapsed(pos, 0, 1)).toBe(3);
+  });
+
+  it("steps back past trailing stops collapsed onto 1", () => {
+    // pos for tiered(5, 5, 0, 0): [0, x, 1, 1, 1] — depths 2, 3 and 4 share the far
+    // pixel and the same visible entries, so one press back from the end lands on
+    // depth 1, the first stop that actually moves the thumb and drops a real tier.
+    const pos = snapPositions(tiered(5, 5, 0, 0));
+    expect(skipCollapsed(pos, 4, 3)).toBe(1);
+  });
+
+  it("never leaves the range, so Home and End still reach the true ends", () => {
+    const pos = snapPositions(tiered(0, 0, 5));
+    expect(skipCollapsed(pos, 3, 0)).toBe(0);
+    expect(skipCollapsed(pos, 0, 3)).toBe(3);
+  });
+});
+
+describe("rulerTip", () => {
+  const resolve = (s: LocalizedString) => (typeof s === "string" ? s : s.en);
+  const g = (): Group => ({
+    ...tiered(2, 3),
+    tierConditions: ["100 million or more", "20 million or more"],
+    rulerTooltip: {
+      text: "Countries with {condition} inhabitants",
+      empty: "Ranked by population.",
+    },
+  });
+
+  it("is nothing for a list that declares none, so the caller can fall back", () => {
+    expect(rulerTip(tiered(2, 3), 1, resolve, "Selected:")).toBeUndefined();
+  });
+
+  it("says what the list is ordered by at rest, with no prefix", () => {
+    expect(rulerTip(g(), 0, resolve, "Selected:")).toBe("Ranked by population.");
+  });
+
+  it("prefixes the body and fills {condition} with the band just brought in", () => {
+    expect(rulerTip(g(), 1, resolve, "Selected:")).toBe(
+      "Selected: Countries with 100 million or more inhabitants",
+    );
+    expect(rulerTip(g(), 2, resolve, "Selected:")).toBe(
+      "Selected: Countries with 20 million or more inhabitants",
+    );
+  });
+
+  it("takes the prefix it is handed, so a mixed merge can say 'Mostly selected'", () => {
+    expect(rulerTip(g(), 1, resolve, "Mostly selected:")).toBe(
+      "Mostly selected: Countries with 100 million or more inhabitants",
+    );
+  });
+
+  it("drops the token when there are no conditions to fill it", () => {
+    const noConds: Group = {
+      ...tiered(2, 3),
+      rulerTooltip: { text: "{condition}", empty: "Ranked." },
+    };
+    expect(rulerTip(noConds, 1, resolve, "Selected:")).toBe("Selected: ");
+  });
+});
+
+describe("tierNoteAt", () => {
+  const g = (...notes: { fromTier: number; text: string }[]): Group => ({
+    ...tiered(3, 4, 5, 6),
+    tierNotes: notes,
+  });
+
+  it("says nothing until the ruler reaches the note", () => {
+    const one = g({ fromTier: 3, text: "thin down here" });
+    expect(tierNoteAt(one, 2)).toBeUndefined();
+    expect(tierNoteAt(one, 3)?.text).toBe("thin down here");
+    expect(tierNoteAt(one, 4)?.text).toBe("thin down here");
+  });
+
+  it("shows the deepest note that applies, not every one of them", () => {
+    const two = g({ fromTier: 2, text: "second" }, { fromTier: 4, text: "fourth" });
+    expect(tierNoteAt(two, 3)?.text).toBe("second");
+    expect(tierNoteAt(two, 4)?.text).toBe("fourth");
+  });
+
+  it("is nothing for a list that declares none", () => {
+    expect(tierNoteAt(tiered(3, 4), 2)).toBeUndefined();
+    expect(tierNoteAt(flat(10), 1)).toBeUndefined();
   });
 });

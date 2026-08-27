@@ -1,0 +1,15 @@
+{
+  "title": {
+    "en": "Europe",
+    "de": "Europa",
+    "es": "Europa",
+    "fr": "Europe",
+    "it": "Europa",
+    "ja": "ヨーロッパ",
+    "ko": "유럽",
+    "zh-Hans": "欧洲",
+    "zh-Hant": "歐洲"
+  },
+  "icon": "🌍",
+  "order": 3
+}

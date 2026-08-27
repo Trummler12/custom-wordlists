@@ -16,7 +16,7 @@ export const en: UIStrings = {
     wordsOf: (selected, total) => `${selected} of ${total} word${total === 1 ? "" : "s"}`,
   },
   names: {
-    form: { short: "short", long: "long", both: "both" },
+    form: { pref: "preferred", short: "short", long: "long", both: "both", all: "all" },
     formLabel: (group) => `Name form for ${group}`,
   },
   fame: {
@@ -25,6 +25,8 @@ export const en: UIStrings = {
       depth === 1 ? `top tier of ${total}` : `top ${depth} of ${total} tiers`,
     groupsDefined: (count) => `Fame groups defined: ${count}`,
     none: "No fame groups defined yet — see the Contribution Guide in the footer to propose some!",
+    selected: "Selected:",
+    mostlySelected: "Mostly selected:",
     toggle: (shown) => (shown ? "Hide this list's fame ruler" : "Show this list's fame ruler"),
     toggleAll: (allShown) => (allShown ? "Hide these fame rulers" : "Show these fame rulers"),
   },
@@ -34,12 +36,44 @@ export const en: UIStrings = {
     toggle: (omitted) =>
       omitted ? "Toggle to include these in your list" : "Toggle to leave these out",
     locked: "These are game data rather than words, so they can't be added.",
+    upTo: (n) => `Up to ${n}`,
     unknown: (n, primary, secondary) =>
-      `${n} entr${n === 1 ? "y" : "ies"} the source data has no ${primary}${secondary} name for`,
+      `Up to ${n} entr${n === 1 ? "y" : "ies"} the source data has no ${primary}${secondary} name for`,
     unknownHint: (omitted) =>
       omitted
         ? "Toggle to include these under their English names — the only ones known for them."
         : "Toggle to leave these out again.",
+    unknownTier: (tier, n) => `Tier ${tier}: ${n} entr${n === 1 ? "y" : "ies"}`,
+    tooLong: (n, maxLen) => `Up to ${n} name${n === 1 ? "" : "s"} longer than ${maxLen} characters`,
+    tooLongHint: (omitted) =>
+      omitted
+        ? "Toggle to include them anyway — skribbl.io won't take them, but another game might."
+        : "Toggle to leave them out again.",
+  },
+  coverage: {
+    label: "Geoguessr / Street View coverage",
+    all: "All countries",
+    withCoverage: "With official coverage",
+    reliable: "Reliable coverage only",
+  },
+  sovereignty: {
+    label: "Sovereignty & recognition",
+    wiki: "https://en.wikipedia.org/wiki/List_of_states_with_limited_recognition",
+    axisRow: "de jure",
+    axisCol: "de facto",
+    cols: ["Fully independent", "Partially autonomous"],
+    rows: ["Universally recognized", "Widely recognized", "Partially recognized", "Unrecognized"],
+    colDefs: [
+      "Runs its own borders, courts, army and taxes.",
+      "Has its own laws and parliament, but shares core powers — currency, defence, foreign policy — with another state.",
+    ],
+    rowDefs: [
+      "A UN member state, recognized by essentially every other.",
+      "Recognized by a large share of UN members, with some hold-outs.",
+      "Recognized by only a few states, though often with a strong functional or perceived presence.",
+      "Internationally regarded as part of another sovereign state.",
+    ],
+    regular: "Regular states",
   },
   language: {
     label: (current) => `Language: ${current}`,
@@ -69,6 +103,9 @@ export const en: UIStrings = {
     showEnglishEn: "These toggles only appear for languages other than English.",
     interfaceLang: "Interface language:",
     interfaceAuto: "Automatic",
+    reset: "Reset settings{br}to default",
+    resetConfirm: "Click again to confirm",
+    resetCancel: "Cancel",
   },
   output: {
     label: "Output",
@@ -82,8 +119,8 @@ export const en: UIStrings = {
     chars: "chars",
     belowMin: (min) => `· below skribbl minimum (${min})`,
     overMax: "· over the maximum",
-    excluded: (count, maxLen, list) =>
-      `${count} word${count === 1 ? "" : "s"} excluded (longer than ${maxLen} chars): ${list}`,
+    overLong: (count, maxLen) =>
+      `${count} word${count === 1 ? "" : "s"} longer than ${maxLen} characters`,
   },
   footer: {
     repository: "GitHub Repository",

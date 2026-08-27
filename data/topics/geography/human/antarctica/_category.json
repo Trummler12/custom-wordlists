@@ -1,0 +1,15 @@
+{
+  "title": {
+    "en": "Antarctica",
+    "de": "Antarktika",
+    "es": "Antártida",
+    "fr": "Antarctique",
+    "it": "Antartide",
+    "ja": "南極大陸",
+    "ko": "남극",
+    "zh-Hans": "南极洲",
+    "zh-Hant": "南極洲"
+  },
+  "icon": "❄️",
+  "order": 7
+}

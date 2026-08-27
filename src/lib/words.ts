@@ -99,37 +99,64 @@ export function isUnknownIn(e: WordEntry, lang: string): boolean {
  *  map { en, de, … } whose value is itself an entry — the latter is resolved by
  *  picking the language and recursing.
  *
- *  **The two shapes are not equivalent for a derived reading.** `transliterate`
- *  reads a leaf, so a map whose language holds a *name pair* has its Japanese one
- *  level further down than this can reach, and the entry falls through to English
- *  with its kana sitting inside it. Passing `derived` into the recursion does not
- *  help: the pair's halves are plain strings by then, and a plain string is neutral
- *  by definition — it would need a second traversal that romanizes an already
- *  resolved pair. No entry has that shape (all four romanized lists are flat maps
- *  of strings), so this is written down rather than built. */
+ *  A derived reading (a `-Latn` tag the list says it transliterates) is read off the
+ *  base-language sub-entry, whichever shape it is: a flat map's `ja` is a string, a
+ *  name-pair map's `ja` is a pair whose forms each transliterate (`romanizeWord`).
+ *  A form the table cannot read falls back to the Japanese itself, not to English,
+ *  so an uncovered name shows its kana/kanji and stands out rather than hiding as a
+ *  plausible-looking English word. */
 export function resolveWord(e: WordEntry, lang: string, derived = false): Word {
   if (typeof e === "string") return e;
   const obj = e as Record<string, unknown>;
-  if ("short" in obj && "long" in obj) {
+  if ("pref" in obj || "short" in obj || "long" in obj) {
+    // A name pair, possibly single-form: resolve each form the entry carries and
+    // leave the others absent, so `renderEntry` can bind or fall back per mode. Any
+    // `others` variants resolve to a flat list, for the `all` mode.
     const p = e as NamePair;
-    return {
-      short: resolveStr(p.short, lang, derived),
-      long: resolveStr(p.long, lang, derived),
-    };
+    const w: { pref?: string; short?: string; long?: string; others?: string[] } = {};
+    if (p.pref !== undefined) w.pref = resolveStr(p.pref, lang, derived);
+    if (p.short !== undefined) w.short = resolveStr(p.short, lang, derived);
+    if (p.long !== undefined) w.long = resolveStr(p.long, lang, derived);
+    if (p.others !== undefined) {
+      const list = Array.isArray(p.others) ? p.others : [p.others];
+      w.others = list.map((o) => resolveStr(o, lang, derived));
+    }
+    return w;
   }
   const map = e as Record<string, WordEntry>;
-  // Same fallback chain as a leaf: the language, then a reading derived from it
-  // where the list says its romaji are, then the closest tag, then English.
-  if (map[lang] === undefined && derived) {
-    const made = transliterate(map as Record<string, string>, lang);
-    if (made !== undefined) return made;
+  // A derived romaji reading comes off the base-language sub-entry — `ja` for a
+  // `ja-Latn` request — romanized form by form. This reaches into a name-pair `ja`
+  // that `transliterate` (which reads a leaf) cannot; a form the table can't read
+  // keeps its Japanese, so it shows kana/kanji rather than the English name.
+  if (map[lang] === undefined && derived && lang.toLowerCase().endsWith("-latn")) {
+    const base = baseTag(lang);
+    if (map[base] !== undefined) return romanizeWord(resolveWord(map[base], base));
   }
   const tag = map[lang] !== undefined ? lang : tagFor(map, lang);
   return resolveWord((tag !== undefined ? map[tag] : undefined) ?? map.en, lang);
 }
 
-/** The string(s) an entry contributes in a names mode. A pair whose two forms
- *  render identically collapses to one, so "both" can't produce a duplicate. */
+/** A resolved Japanese word turned to romaji, form by form. Each string that the
+ *  table can read becomes its reading; one it can't keeps its Japanese, so an
+ *  uncovered kanji surfaces as itself instead of silently borrowing a neighbour's
+ *  reading or the English name. The shape is preserved, so `renderEntry` binds the
+ *  modes exactly as it would for a sourced language. */
+function romanizeWord(w: Word): Word {
+  if (typeof w === "string") return toRomaji(w) ?? w;
+  const out: { pref?: string; short?: string; long?: string; others?: string[] } = {};
+  if (w.pref !== undefined) out.pref = toRomaji(w.pref) ?? w.pref;
+  if (w.short !== undefined) out.short = toRomaji(w.short) ?? w.short;
+  if (w.long !== undefined) out.long = toRomaji(w.long) ?? w.long;
+  if (w.others !== undefined) out.others = w.others.map((o) => toRomaji(o) ?? o);
+  return out;
+}
+
+/** The string(s) an entry contributes in a names mode. A single-form mode falls back
+ *  to `pref` when its own form is absent — and only to pref, so a `{ long }`-only
+ *  plate still drops out of `short` and a `{ short }`-only continent out of `long`,
+ *  exactly as before pref existed (there, pref is absent and the fallback is a no-op).
+ *  `both` emits the explicit pref, short and long (no fallback), `all` those plus every
+ *  `others` variant — both deduplicated, so a form shared across the three shows once. */
 export function renderEntry(
   e: WordEntry,
   mode: NamesMode,
@@ -138,22 +165,74 @@ export function renderEntry(
 ): string[] {
   const w = resolveWord(e, lang, derived);
   if (typeof w === "string") return [w];
-  if (mode === "short") return [w.short];
-  if (mode === "long") return [w.long];
-  return w.short === w.long ? [w.short] : [w.short, w.long];
+  if (mode === "pref") {
+    const v = w.pref ?? w.short ?? w.long;
+    return v !== undefined ? [v] : [];
+  }
+  if (mode === "short") {
+    const v = w.short ?? w.pref;
+    return v !== undefined ? [v] : [];
+  }
+  if (mode === "long") {
+    const v = w.long ?? w.pref;
+    return v !== undefined ? [v] : [];
+  }
+  if (mode === "all") {
+    const forms: string[] = [];
+    for (const v of [w.pref, w.short, w.long, ...(w.others ?? [])]) {
+      if (v !== undefined && !forms.includes(v)) forms.push(v);
+    }
+    return forms;
+  }
+  // both: pref, short and long — the explicit forms, deduplicated. Unlike the
+  // single-form modes it does not fall back, so a pref-less {short}/{long} pair still
+  // yields just its one form. Where all three differ (a country with a distinct short)
+  // it renders three, which is the point of the mode sitting below pref in the dropdown.
+  const forms: string[] = [];
+  for (const v of [w.pref, w.short, w.long]) {
+    if (v !== undefined && !forms.includes(v)) forms.push(v);
+  }
+  return forms;
 }
 
-/** Count of distinct rendered strings for a list of entries (without building the
- *  array): what the per-group and per-topic counters show. */
+/** The distinct strings a list contributes, first appearance first. */
+export function renderedForms(
+  entries: WordEntry[],
+  mode: NamesMode,
+  lang: string,
+  derived = false,
+): string[] {
+  const seen = new Set<string>();
+  for (const e of entries) for (const w of renderEntry(e, mode, lang, derived)) seen.add(w);
+  return [...seen];
+}
+
+/** How many of them the counters show. `maxLen` drops the forms too long for the
+ *  target game — see `TOO_LONG_RULE` in lib/omitted; leave it out to count all. */
 export function renderCount(
   entries: WordEntry[],
   mode: NamesMode,
   lang: string,
   derived = false,
+  maxLen?: number,
 ): number {
-  const seen = new Set<string>();
-  for (const e of entries) for (const w of renderEntry(e, mode, lang, derived)) seen.add(w);
-  return seen.size;
+  const forms = renderedForms(entries, mode, lang, derived);
+  return maxLen === undefined ? forms.length : forms.filter((w) => w.length <= maxLen).length;
+}
+
+/** The forms `maxLen` drops, for the panel that names them and offers them back.
+ *
+ *  Forms rather than entries, which is what sets this apart from every other
+ *  omission: an entry whose long form runs past the limit is perfectly usable
+ *  under its short one, so what leaves the list is one of its two names. */
+export function overlongForms(
+  entries: WordEntry[],
+  mode: NamesMode,
+  lang: string,
+  derived: boolean,
+  maxLen: number,
+): string[] {
+  return renderedForms(entries, mode, lang, derived).filter((w) => w.length > maxLen);
 }
 
 /** The entries a variant spells differently, as `base → variant` pairs.
@@ -181,7 +260,11 @@ export function variantPairs(
   for (const g of groups) {
     for (const e of [...(g.words ?? []), ...(g.tiers ?? []).flat()]) {
       if (typeof e === "string" || (e as Record<string, unknown>)[tag] === undefined) continue;
-      out.push({ from: renderEntry(e, "short", base)[0], to: renderEntry(e, "short", tag)[0] });
+      // Fall back to the long form for a short-less entry, so a single-form entry
+      // that ever carries a variant still yields a name rather than undefined.
+      const from = renderEntry(e, "short", base)[0] ?? renderEntry(e, "long", base)[0];
+      const to = renderEntry(e, "short", tag)[0] ?? renderEntry(e, "long", tag)[0];
+      out.push({ from, to });
     }
   }
   byTag.set(tag, out);
@@ -200,7 +283,13 @@ export interface DisplayName {
  *  row, needs no shape of its own. */
 export function displayName(e: WordEntry, lang: string): DisplayName {
   const w = resolveWord(e, lang);
-  return typeof w === "string" ? { short: w, long: w } : w;
+  if (typeof w === "string") return { short: w, long: w };
+  // A title is always two-form, but a single-form entry can reach this through
+  // an omission sample — fill the missing half from the present one so the row
+  // and its hover both have something to show.
+  const short = w.short ?? w.long!;
+  const long = w.long ?? w.short!;
+  return { short, long };
 }
 
 /** Whether any entry in the group has a short/long form — the condition for
@@ -208,6 +297,25 @@ export function displayName(e: WordEntry, lang: string): DisplayName {
 export function groupHasNames(g: Group, lang: string): boolean {
   const entries = groupEntries(g);
   return entries.some((e) => typeof resolveWord(e, lang) !== "string");
+}
+
+/** Whether any entry in the group carries a `pref` name — the condition for offering
+ *  the `pref` option (and defaulting to it) in that group's names dropdown. */
+export function groupHasPref(g: Group, lang: string): boolean {
+  return groupEntries(g).some((e) => {
+    const w = resolveWord(e, lang);
+    return typeof w !== "string" && w.pref !== undefined;
+  });
+}
+
+/** Whether any entry in the group carries an `others` variant — the condition for
+ *  offering the `all` option in that group's names dropdown, the way the ruler
+ *  tooltip appears only when it has something to say. */
+export function groupHasVariants(g: Group, lang: string): boolean {
+  return groupEntries(g).some((e) => {
+    const w = resolveWord(e, lang);
+    return typeof w !== "string" && w.others !== undefined && w.others.length > 0;
+  });
 }
 
 // Groups are immutable after load, so each group's flattened entries are cached

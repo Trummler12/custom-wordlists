@@ -1,0 +1,36 @@
+Pacific plate	太平洋板块
+African plate	非洲板块
+Antarctic plate	南极洲板块
+North American plate	北美洲板块
+Eurasian plate	欧亚大陆板块
+Somali plate	索马里板块
+Indian plate	印度板块
+Sunda plate	巽他板块
+Arabian plate	阿拉伯板块
+Okhotsk microplate	鄂霍次克板块
+Scotia plate	斯科舍板块
+Caroline plate	加洛林板块
+North Andes plate	北安地斯板块
+New Hebrides plate	新赫布里底板块
+Bird's Head plate	鸟首板块
+Kermadec plate	克马德克板块
+Woodlark plate	木百灵板块
+Mariana plate	马里亚纳板块
+North Bismarck plate	北俾斯麦板块
+Timor plate	帝汶板块
+Okinawa plate	冲绳板块
+South Bismarck plate	南俾斯麦板块
+Juan de Fuca plate	胡安·德富卡板块
+Tonga plate	汤加板块
+Balmoral Reef plate	巴尔莫勒尔礁板块
+South Sandwich plate	南桑威奇板块
+Easter microplate	复活节岛板块
+Conway Reef plate	康威礁板块
+Solomon Sea plate	所罗门海板块
+Niuafo'ou plate	纽阿福欧板块
+Rivera plate	里维拉板块
+Shetland plate	设得兰板块
+Futuna plate	富图纳板块
+Manus plate	马努斯板块
+Iranian plate	伊朗高原
+North Galapagos microplate	加拉帕戈斯板块

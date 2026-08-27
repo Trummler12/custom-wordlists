@@ -1,0 +1,104 @@
+{
+  "id": "south-america-countries",
+  "title": {"en":"Countries","de":"Länder","es":"Países","fr":"Pays","it":"Paesi","ja":"国","ko":"국가","zh-Hans":"国家","zh-Hant":"國家"},
+  "languages": ["en","de","es","fr","it","ja","ja-Latn","ko","zh-Hans","zh-Hant"],
+  "generatedRomaji": true,
+  "sources": [
+    "Names & variants: geonames country info and alternate names — https://www.geonames.org/countries/ (see scripts/geography/dump-geonames.mjs)",
+    "Population & tiers: Wikidata sovereign states (P31 Q3624078) — https://www.wikidata.org/wiki/Q3624078 (see scripts/geography/dump-country-data.mjs)"
+  ],
+  "lastUpdated": "2026-08-26",
+  "lastChecked": "2026-08-26",
+  "defaultNames": "pref",
+  "omitted": [
+    {
+      "id": "classic-autonomous",
+      "match": ["Falkland Islands"],
+      "count": true,
+      "icon": "sovereignty",
+      "cell": [4,2],
+      "reason": {
+        "en": "autonomous territories internationally regarded as part of a sovereign state",
+        "de": "autonome Gebiete, die international als Teil eines souveränen Staates gelten",
+        "es": "territorios autónomos considerados internacionalmente parte de un Estado soberano",
+        "fr": "territoires autonomes internationalement considérés comme partie d'un État souverain",
+        "it": "territori autonomi considerati a livello internazionale parte di uno Stato sovrano",
+        "ja": "国際的に主権国家の一部と見なされる自治地域",
+        "ko": "국제적으로 주권 국가의 일부로 여겨지는 자치 지역"
+      }
+    }
+  ],
+  "omittable": [
+    {
+      "id": "no-coverage",
+      "match": ["Guyana","Suriname","Venezuela"],
+      "count": true,
+      "icon": "geoguessr",
+      "reason": {
+        "en": "countries with no Google Street View coverage",
+        "de": "Länder ohne Google-Street-View-Abdeckung",
+        "es": "países sin cobertura de Google Street View",
+        "fr": "pays sans couverture Google Street View",
+        "it": "paesi senza copertura di Google Street View",
+        "ja": "Google ストリートビュー非対応の国",
+        "ko": "구글 스트리트 뷰가 없는 국가"
+      }
+    },
+    {
+      "id": "rare-coverage",
+      "match": ["Falkland Islands"],
+      "count": true,
+      "icon": "geoguessr",
+      "reason": {
+        "en": "countries with only sparse Street View coverage",
+        "de": "Länder mit nur spärlicher Street-View-Abdeckung",
+        "es": "países con cobertura de Street View muy escasa",
+        "fr": "pays à couverture Street View très rare",
+        "it": "paesi con copertura Street View molto scarsa",
+        "ja": "ストリートビューがまばらな国",
+        "ko": "스트리트 뷰가 드문 국가"
+      }
+    }
+  ],
+  "tiers": [
+    [
+      {"en":{"pref":"Brazil","others":["Federative Republic of Brazil"]},"de":"Brasilien","es":"Brasil","fr":"Brésil","it":"Brasile","ja":{"pref":"ブラジル","long":"ブラジル連邦共和国"},"ko":"브라질","zh-Hans":"巴西","zh-Hant":"巴西"}
+    ],
+
+    [
+      {"en":{"pref":"Colombia","others":["Republic of Colombia"]},"de":"Kolumbien","es":{"pref":"Colombia","others":["República de Colombia"]},"fr":"Colombie","it":"Colombia","ja":{"pref":"コロンビア","long":"コロンビア共和国"},"ko":"콜롬비아","zh-Hans":{"pref":"哥伦比亚","others":["哥伦比亚共和国"]},"zh-Hant":"哥倫比亞"},
+      {"en":{"pref":"Argentina","others":["Argentine Republic"]},"de":"Argentinien","es":{"pref":"Argentina","others":["República Argentina"]},"fr":"Argentine","it":"Argentina","ja":{"pref":"アルゼンチン","long":"アルゼンチン共和国"},"ko":"아르헨티나","zh-Hans":"阿根廷","zh-Hant":"阿根廷"},
+      {"en":{"pref":"Peru","others":["Republic of Peru"]},"de":"Peru","es":{"pref":"Perú","others":["República del Perú"]},"fr":"Pérou","it":"Perù","ja":{"pref":"ペルー","long":"ペルー共和国"},"ko":"페루","zh-Hans":"秘鲁","zh-Hant":"秘魯"},
+      {"en":{"pref":"Venezuela","others":["Bolivarian Republic of Venezuela","Republic of Venezuela","United States of Venezuela","Venezuela, Bolivarian Republic Of"]},"de":"Venezuela","es":{"pref":"Venezuela","others":["Estados Unidos de Venezuela","República Bolivariana de Venezuela","República de Venezuela"]},"fr":{"pref":"Vénézuéla","long":"Venezuela"},"it":"Venezuela","ja":{"pref":"ベネズエラ","long":"ベネズエラ共和国"},"ko":{"pref":"베네수엘라","long":"베네주엘라"},"zh-Hans":"委内瑞拉","zh-Hant":"委內瑞拉"}
+    ],
+
+    [
+      {"en":{"pref":"Chile","others":["Republic of Chile"]},"de":"Chile","es":{"pref":"Chile","others":["República de Chile"]},"fr":"Chili","it":"Cile","ja":{"pref":"チリ","long":"チリ共和国"},"ko":"칠레","zh-Hans":"智利","zh-Hant":"智利"},
+      {"en":{"pref":"Ecuador","others":["Republic of Ecuador"]},"de":"Ecuador","es":{"pref":"Ecuador","others":["República del Ecuador"]},"fr":"Équateur","it":"Ecuador","ja":{"pref":"エクアドル","long":"エクアドル共和国"},"ko":"에콰도르","zh-Hans":"厄瓜多尔","zh-Hant":"厄瓜多"},
+      {"en":{"pref":"Bolivia","others":["Bolivia (Plurinational State of)","Bolivia, Plurinational State Of","Plurinational State of Bolivia","Republic of Bolivia"]},"de":"Bolivien","es":{"pref":"Bolivia","others":["Estado Plurinacional de Bolivia","República de Bolivia"]},"fr":"Bolivie","it":"Bolivia","ja":{"pref":"ボリビア","long":"ボリビア共和国"},"ko":"볼리비아","zh-Hans":"玻利维亚","zh-Hant":"玻利維亞"},
+      {"en":{"pref":"Paraguay","others":["Republic of Paraguay"]},"de":"Paraguay","es":{"pref":"Paraguay","others":["República del Paraguay"]},"fr":"Paraguay","it":"Paraguay","ja":{"pref":"パラグアイ","long":"パラグアイ共和国"},"ko":"파라과이","zh-Hans":"巴拉圭","zh-Hant":"巴拉圭"}
+    ],
+
+    [
+      {"en":{"pref":"Uruguay","others":["Oriental Republic of Uruguay"]},"de":"Uruguay","es":{"pref":"Uruguay","others":["República Oriental del Uruguay"]},"fr":"Uruguay","it":"Uruguay","ja":{"pref":"ウルグアイ","long":"ウルグアイ共和国"},"ko":"우루과이","zh-Hans":"乌拉圭","zh-Hant":"烏拉圭"}
+    ],
+
+    [
+      {"en":"Guyana","fr":{"pref":"Guyana","others":["Guyane britannique"]},"ja":"ガイアナ","ko":"가이아나","zh-Hans":"圭亚那","zh-Hant":"蓋亞那"},
+      {"en":{"pref":"Suriname","others":["Republic of Suriname"]},"de":"Suriname","es":"Surinam","fr":{"pref":"Suriname","others":["Surinam"]},"it":"Suriname","ja":{"pref":"スリナム","long":"スリナム共和国"},"ko":"수리남","zh-Hans":"苏里南","zh-Hant":"蘇利南"},
+      {"en":{"pref":"Falkland Islands","others":["Colony of the Falkland Islands","Falkland Islands (Malvinas)"]},"de":"Falkland-Inseln","es":{"pref":"Islas Malvinas","others":["Islas Falkland (Malvinas)"]},"fr":{"pref":"îles Falkland (Malouines)","short":"Îles Malouines","others":["Îles Falkland"]},"it":"Isole Falkland","ja":"フォークランド諸島","ko":"포클랜드 제도","zh-Hant":{"pref":"福克蘭群島","long":"福克兰群岛"},"?":["zh-Hans"]}
+    ]
+  ],
+  "tierConditions": [
+    {"en":"100 million or more","de":"100 Millionen und mehr","es":"100 millones o más","fr":"100 millions ou plus","it":"100 milioni o più","ja":"1億以上","ko":"1억 이상","zh-Hans":"1亿及以上","zh-Hant":"1億及以上"},
+    {"en":"20 million or more","de":"20 Millionen und mehr","es":"20 millones o más","fr":"20 millions ou plus","it":"20 milioni o più","ja":"2000万以上","ko":"2000만 이상","zh-Hans":"2000万及以上","zh-Hant":"2000萬及以上"},
+    {"en":"5 million or more","de":"5 Millionen und mehr","es":"5 millones o más","fr":"5 millions ou plus","it":"5 milioni o più","ja":"500万以上","ko":"500만 이상","zh-Hans":"500万及以上","zh-Hant":"500萬及以上"},
+    {"en":"1 million or more","de":"1 Million und mehr","es":"1 millón o más","fr":"1 million ou plus","it":"1 milione o più","ja":"100万以上","ko":"100만 이상","zh-Hans":"100万及以上","zh-Hant":"100萬及以上"},
+    {"en":"more than 0","de":"mehr als 0","es":"más de 0","fr":"plus de 0","it":"più di 0","ja":"0より多い","ko":"0보다 많음","zh-Hans":"多于0","zh-Hant":"多於0"}
+  ],
+  "rulerTooltip": {
+    "text": {"en":"Countries with {condition} inhabitants","de":"Länder mit {condition} Einwohnern","es":"países con {condition} habitantes","fr":"pays comptant {condition} habitants","it":"paesi con {condition} abitanti","ja":"人口が{condition}の国","ko":"인구가 {condition}인 국가"},
+    "empty": {"en":"Ranked by population.","de":"Nach Einwohnerzahl geordnet.","es":"Ordenados por población.","fr":"Classés par population.","it":"Ordinati per popolazione.","ja":"人口順。","ko":"인구순 정렬."}
+  },
+  "inheritsUpwards": 1
+}

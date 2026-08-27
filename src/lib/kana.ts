@@ -71,15 +71,19 @@ const KANA: Record<string, string> = {
 };
 
 /** Marks that turn up inside a name and aren't plain full-width Latin. */
-const PUNCT: Record<string, string> = { "・": " ", "　": " ", "×": "x" };
+const PUNCT: Record<string, string> = { "・": " ", "　": " ", "×": "x", "、": ", " };
 
 /** Words this cannot spell out character by character, longest match first.
  *
  *  Every one is a compound whose reading is not the sum of its characters, so
- *  each is a claim about that word and not about the kanji in it. The twelve here
- *  are what the language list needs: `語` alone covers 170 of its 182 kanji names,
- *  and the rest name a place or a direction. */
+ *  each is a claim about that word and not about the kanji in it. Longest-first at
+ *  lookup means a compound beats the shorter words inside it (中国 before 国,
+ *  連邦共和国 as 連邦 then 共和国), so a suffix and the whole that contains it can
+ *  both live here. Two lists feed off this: the language names and the country /
+ *  capital names. */
 const WORDS: Record<string, string> = {
+  // The language list (see build-languages): 語 alone covers 170 of its 182 kanji
+  // names, the rest name a place or a direction.
   語: "go",
   中国: "chuugoku",
   韓国: "kankoku",
@@ -89,9 +93,58 @@ const WORDS: Record<string, string> = {
   南: "minami",
   北: "kita",
   西: "nishi",
+  東: "higashi",
   四川: "shisen",
   教会: "kyoukai",
   島: "tou",
+
+  // Country names (see build-country-data): the administrative tails of the formal
+  // `long` names. They recur across dozens of countries and compose left to right —
+  // 連邦共和国 is 連邦 + 共和国, 民主共和国 is 民主 + 共和国 — so each is one entry
+  // rather than one per country that ends in it.
+  国: "koku",
+  共和国: "kyouwakoku",
+  民主: "minshu",
+  人民: "jinmin",
+  社会: "shakai",
+  主義: "shugi",
+  王国: "oukoku",
+  公国: "koukoku",
+  連邦: "renpou",
+  連合: "rengou",
+  合衆国: "gasshuukoku",
+  首長国: "shuchoukoku",
+  中央: "chuuou",
+  中華: "chuuka",
+  諸島: "shotou",
+  // Capital names: the administrative tail on a city's formal name.
+  市: "shi",
+  都: "to",
+  特別: "tokubetsu",
+  地区: "chiku",
+  地域: "chiiki",
+  // Places written in kanji whose reading is not the sum of its characters. The
+  // foreign capitals take the reading a Japanese speaker gives them today (北京
+  // ペキン, 台北 タイペイ, 平壌 ピョンヤン), which is the katakana form written back
+  // in kanji.
+  台湾: "taiwan",
+  台灣: "taiwan",
+  香港: "honkon",
+  象牙: "zouge",
+  海岸: "kaigan",
+  赤道: "sekidou",
+  朝鮮: "chousen",
+  大韓民国: "daikanminkoku",
+  北京: "pekin",
+  台北: "taipei",
+  平壌: "pyonyan",
+  東京: "toukyou",
+  沿: "en",
+  旧: "kyuu",
+  及び: "oyobi",
+  法王: "houou",
+  教皇: "kyoukou",
+  庁: "chou",
 };
 
 /** Longest first, so 南部 is read before 南. */

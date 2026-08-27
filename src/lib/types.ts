@@ -1,6 +1,6 @@
 // Shapes of the generated manifest (data/index.json), produced by
 // scripts/build-index.mjs — the source of truth for the manifest types.
-// The topic-file types (Topic/Group/Preset) mirror schema/topic.schema.json.
+// The topic-file types (Topic/Group) mirror schema/topic.schema.json.
 
 /** One topic as summarized in the manifest — enough to render the tree. */
 export interface TopicSummary {
@@ -14,10 +14,6 @@ export interface TopicSummary {
   /** Path to the topic's JSON file, relative to data/topics/ (e.g.
    *  "animation/south-park.json" or "animation/spongebob/characters.json"). */
   path: string;
-  /** True when the topic is a lone file in a folder named after it. That layout is
-   *  how a topic says it expects to be split into subtopics later, so such a topic
-   *  keeps its expander and its group rows even while it has only one group. */
-  foldered?: boolean;
   /** Languages the topic fully supports. Absent means support is undeclared — the
    *  UI flags the topic (⚠️, even in English) until it's filled in. */
   languages?: string[];
@@ -29,8 +25,47 @@ export interface TopicSummary {
    *  (either value) also makes the topic its own ruler-visibility boundary; absent
    *  means it inherits from the nearest ancestor that declares it. See lib/rulers. */
   hideRulersByDefault?: boolean;
-  groupCount: number;
+  /** Whether this topic has no fame ruler at all — stronger than hiding it behind a
+   *  toggle. Inherited down the tree; the topic's own value wins. See lib/rulers. */
+  hideRulers?: boolean;
+  /** Just a number, passed through from the topic file: how many levels up this
+   *  leaf's list is also shown, merged with the same-named leaves it meets there.
+   *  1 for `countries.json`/`capitals.json` (meet one level up, under `human/`), 2
+   *  later for cities. Nothing to do with ids — resolving which leaves actually meet
+   *  is `synthesizeTopics`' job, one layer on. Absent = the leaf lives only where it
+   *  sits. */
+  inheritsUpwards?: number;
+  /** Populated by the frontend (`synthesizeTopics`), never read from a file: on a
+   *  SYNTHESIZED topic it holds the ids of the leaves that merge — the resolution
+   *  of their `inheritsUpwards` numbers into concrete contributors, which is where
+   *  ids first matter. Such a topic keeps no selection state of its own; its depth,
+   *  counts and fullness all delegate to these leaves, and it is left out of
+   *  category sums so they are not counted twice. Absent on every ordinary topic.
+   *  See lib/tree. */
+  contributors?: string[];
+  /** Icon-tagged controls this topic carries, `icon → ordered rules` — the Geoguessr
+   *  coverage filter is `{ geoguessr: [{ id: "no-coverage" }, { id: "rare-coverage" }] }`.
+   *  From build-index (a real topic) or copied from a contributor (a synthesized
+   *  one), so a control can be shown and synced without loading the file. A rule
+   *  carries its matrix `cell` where the icon renders as a grid (sovereignty) rather
+   *  than a linear ladder (coverage). Absent where the topic carries no such rule. */
+  controls?: Record<string, IconControl[]>;
   wordCount: number;
+}
+
+/** One rule inside a manifest `controls` ladder: its id, its matrix cell where the
+ *  control is a grid, and the names it matches where the control names them on
+ *  hover. Load-free — enough to render, drive and label the control from the
+ *  manifest alone. */
+export interface IconControl {
+  id: string;
+  cell?: [number, number];
+  names?: string[];
+  /** Present and true when the rule hides by default (declared in `omitted`). The
+   *  matrix reads it to know a toggled cell of this kind is shown, not hidden — the
+   *  inverse of a shown-by-default (`omittable`) cell. Absent on the common
+   *  shown-by-default rule. */
+  omit?: boolean;
 }
 
 /** Optional display metadata for a category node (from a `_category.json`). */
@@ -43,9 +78,17 @@ export interface CategoryMeta {
    *  *presence* (either value) makes the category an independent ruler-visibility
    *  boundary whose toggle governs its subtree down to the next declaring node. */
   hideRulersByDefault?: boolean;
+  /** Whether the topics in this category's subtree have no fame ruler at all.
+   *  Inherited down to the next declaring node. See lib/rulers. */
+  hideRulers?: boolean;
   /** Whether this category's row carries one toggle switching every list below it
    *  to English at once. See lib/english. */
   sharedEnglishToggle?: boolean;
+  /** Icon keys whose control this category surfaces on its own row and syncs across
+   *  its subtree — `["geoguessr"]` on `geography/human` gives one coverage radio
+   *  that commands every Countries/Capitals leaf below. Generic so any icon-tagged
+   *  control (see `Omission.icon`) can be lifted to a category. */
+  syncControls?: string[];
 }
 
 /** The generated manifest the frontend loads first. */
@@ -64,10 +107,22 @@ export type LangMap<T> = { en: T } & Record<string, T>;
  *  language map with an "en" base (languages equal to "en" are omitted). */
 export type LocalizedString = string | LangMap<string>;
 
-/** A short/long name entry; each field may itself be a LocalizedString. */
+/** A named-forms entry: a `pref` canonical name, a `short` and `long` form, and any
+ *  further `others`; each field may itself be a LocalizedString.
+ *
+ *  A bag of named forms, not a fixed couple: at least one of pref/short/long is
+ *  present. `pref` is the default and the fallback — a mode with no form of its own
+ *  falls back to it (`short` → pref, `long` → pref), so an entry need only spell out
+ *  short/long where they differ from it. With no pref the older binding holds: a
+ *  `{ short }` never loads under `long`, a `{ long }` never under `short` (see
+ *  `renderEntry`). `others` carries the variants that are none of pref/short/long
+ *  (Taiwan's further English names) — surfaced only by the `all` mode. Every field
+ *  localizes. */
 export interface NamePair {
-  short: LocalizedString;
-  long: LocalizedString;
+  pref?: LocalizedString;
+  short?: LocalizedString;
+  long?: LocalizedString;
+  others?: LocalizedString | LocalizedString[];
 }
 
 /** A word entry in a list: a localized string, a short/long name pair (each field
@@ -84,14 +139,48 @@ export type LangMapEntry = { en: string | NamePair; "?"?: string[] } & Record<
   string | NamePair | string[] | undefined
 >;
 
-/** A word resolved to the active language: a plain string or a short/long pair. */
-export type Word = string | { short: string; long: string };
+/** A word resolved to the active language: a plain string, or a named-forms object
+ *  carrying whichever of `pref`/`short`/`long` the entry had, plus `others` for the
+ *  `all` mode — each present exactly when the entry carried it. */
+export type Word = string | { pref?: string; short?: string; long?: string; others?: string[] };
 
-/** Which form(s) of a short/long name a group emits. Per group, default "long". */
-export type NamesMode = "short" | "long" | "both";
+/** Which form(s) of a named-forms entry a group emits. Per group, default "long"
+ *  (or "pref" for a list that has one). `pref` is the canonical name and the fallback
+ *  for short/long; `all` adds every `others` variant on top, deduplicated. `pref` and
+ *  `all` are offered only where a list actually carries one. */
+export type NamesMode = "pref" | "short" | "long" | "both" | "all";
 
 /** One family of entries a list deliberately leaves out. Every rule can be
  *  switched back on by the reader, so each needs a stable key. See lib/omitted. */
+/** Something about a list that only becomes true — or only matters — once the
+ *  reader's ruler has gone far enough down it.
+ *
+ *  For what no count can derive: that a tier's order means nothing because its
+ *  source publishes no figures, that its entries come from a thinner source than
+ *  the rest. Whatever *is* derivable stays in code, where it can't go stale. */
+export interface TierNote {
+  /** The ruler position from which this applies, one-based, counted from the
+   *  famous end. A statement about where the ruler stands, not an index. */
+  fromTier: number;
+  /** Absent means ℹ️ — ⚠️ stays reserved for what is unconfirmed. */
+  icon?: string;
+  text: LocalizedString;
+}
+
+/** The ruler's hover text — what the list is ordered by, and what the stop the
+ *  reader has dragged to has just selected. Replaces the bare "Fame groups
+ *  defined: n" for a list whose tiers came from an outside boundary. */
+export interface RulerTooltip {
+  /** Shown once the ruler has moved off rest. May carry `{condition}`, replaced
+   *  by `tierConditions[depth - 1]` — the lowest band the ruler has just brought
+   *  in ("everything with {condition} inhabitants"). */
+  text: LocalizedString;
+  /** Shown at the leftmost stop, where nothing is selected and so no condition is
+   *  in force: say instead what the list is ordered by, which is the one thing the
+   *  reader cannot yet read off a selection. */
+  empty: LocalizedString;
+}
+
 export interface Omission {
   /** Stable key for the reader's stored choice — the glob may be edited without
    *  resetting it. */
@@ -119,6 +208,25 @@ export interface Omission {
    *  only ever be a mistake (300 Dynamax Crystals named `★Sgr6879`). Rare: the
    *  default is that anything omitted can be asked back. */
   locked?: boolean;
+  /** When true, the panel label is prefixed with "up to N", N being how many
+   *  entries the rule matches. For a rule whose `reason` names a category rather
+   *  than a fixed set ("territories generally regarded as part of another state"),
+   *  where the count is worth having and not already in the wording — so the reason
+   *  is then phrased to read on from the count. A rule whose reason already states
+   *  its own number (Pokémon's "300 Dynamax Crystals") leaves this off. */
+  count?: boolean;
+  /** An icon key that lifts this rule out of the 🚫 panel into its own control.
+   *  Rules that share an icon form one ordered ladder (array order = strictness),
+   *  rendered as a radio group rather than independent checkboxes — the Geoguessr
+   *  coverage filter is `no-coverage` then `rare-coverage`, both `"geoguessr"`. The
+   *  frontend resolves the key to the actual glyph or image. */
+  icon?: string;
+  /** A cell `[row, col]` (1-based) in a 2D control, for an icon whose rules form a
+   *  matrix rather than a linear ladder. The sovereignty filter places each rule on
+   *  a de-jure recognition row and a de-facto control column; the control lets the
+   *  reader include a top-left-anchored staircase of cells at once. Absent for a
+   *  linear-ladder icon (coverage). See `SovereigntyMatrix` and C10 in the plan. */
+  cell?: [number, number];
 }
 
 /** A group of words: either a flat `words` list or ordered fame `tiers`. */
@@ -126,6 +234,12 @@ export interface Group {
   id: string;
   /** Display name, same shape as an entry — see `displayName` in lib/words. */
   title: WordEntry;
+  /** Which form of a short/long entry this group emits until the reader picks
+   *  another. Absent means `long`. A list of countries wants `short` — which is a
+   *  fact about that list rather than a preference, hence a field. */
+  defaultNames?: NamesMode;
+  /** Notes that appear once the ruler reaches far enough down — see `TierNote`. */
+  tierNotes?: TierNote[];
   /** What this list leaves out of its source, and why. Filtered by default; the
    *  reader may switch any of them back on (unless `locked`). */
   omitted?: Omission[];
@@ -135,18 +249,34 @@ export interface Group {
   omittable?: Omission[];
   words?: WordEntry[];
   tiers?: WordEntry[][];
+  /** What each tier's boundary is, one entry per tier, same length and order as
+   *  `tiers`. Names the outside cut a tiered list was built from (a population, an
+   *  area) so the ruler tooltip can say what was selected and an `inheritsUpwards`
+   *  family can be checked for drawing tier k the same way. Localized. Absent for a
+   *  list with no outside boundary. See schema/topic.schema.json. */
+  tierConditions?: LocalizedString[];
+  /** What the ruler's hover says — see `RulerTooltip`. Absent falls back to the
+   *  bare tier count. */
+  rulerTooltip?: RulerTooltip;
+  /** Present only on a SYNTHESIZED group (assembled by `topics.groupsOf` for an
+   *  inheritsUpwards topic): the contributor groups it was merged from, kept so a
+   *  later per-contributor view (⚙️/✂️) can regroup without the merge being
+   *  rewritten. Rendering and counts use the deduplicated `tiers`; this is the
+   *  provenance the merge must not throw away. See _untracked/docs/geography-architecture.md. */
+  sources?: { tid: string; group: Group }[];
   /** How many entries the list has no name for in the language it is being shown
-   *  in — see `unknownCount` in lib/omitted. Not a field of the file: `visibleGroup`
-   *  puts it on the view it hands back, because by then the entries it counts are
-   *  gone and only the view knows how many there were. */
-  unknownCount?: number;
-}
-
-/** A named bundle of group ids within a topic. */
-export interface Preset {
-  id: string;
-  title: string;
-  groups: string[];
+   *  in, one number per tier — see `unknownByTier` in lib/omitted. Not a field of
+   *  the file: `visibleGroup` puts it on the view it hands back, because by then
+   *  the entries it counts are gone and only the view knows how many there were.
+   *
+   *  Per tier so the reader's ruler can scope it — the panel reports what is
+   *  missing from the list they are taking, not from the file. */
+  unknownByTier?: number[];
+  /** Per declared rule id: how many entries it matches, and a sample of their
+   *  names for the hover — put here by `visibleGroup`, which sees the entries
+   *  before they are filtered, and merged across a family by `mergeGroups`. The
+   *  count feeds a rule's "up to N" label, the names its tooltip. */
+  omissionSummary?: Record<string, { count: number; names: string[] }>;
 }
 
 /** A single topic data file (data/topics/<…>/<file>.json). */
@@ -179,6 +309,9 @@ export interface Topic {
   /** Whether this topic's fame ruler starts hidden behind a toggle; its presence
    *  also marks the topic as its own ruler-visibility boundary. */
   hideRulersByDefault?: boolean;
+  /** Whether this topic has no fame ruler at all — no slider, no toggle. Inherited
+   *  down the tree; the topic's own value wins. See lib/rulers. */
+  hideRulers?: boolean;
   /** Where the entries came from — one string or a list of them, free-form so a
    *  label can precede the link ("German: https://…"). */
   sources?: string | string[];
@@ -192,6 +325,21 @@ export interface Topic {
   lastUpdated?: string;
   /** ISO date (YYYY-MM-DD) the list was last verified against its source. */
   lastChecked?: string;
-  groups: Group[];
-  presets?: Preset[];
+  // A topic carries its list directly, in the same shape a `Group` does;
+  // `topics.groupsOf` wraps it as the single group the rendering code consumes.
+  defaultNames?: NamesMode;
+  tierNotes?: TierNote[];
+  omitted?: Omission[];
+  omittable?: Omission[];
+  words?: WordEntry[];
+  tiers?: WordEntry[][];
+  tierConditions?: LocalizedString[];
+  rulerTooltip?: RulerTooltip;
+  /** How many levels up this leaf's list is also shown, merged with the same-named
+   *  leaves it meets there into one synthesized topic. `1` = the parent level (each
+   *  `<continent>/countries.json` meets the others one level up, under Human). `2`
+   *  would additionally merge two levels up (cities: per continent, then global). A
+   *  leaf keeps its own list where it sits AND contributes upward — an added field,
+   *  not an alternative to `tiers`/`words`. See schema/topic.schema.json. */
+  inheritsUpwards?: number;
 }

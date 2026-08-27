@@ -1,0 +1,86 @@
+Pacific plate	Pacific Plate
+African plate	African Plate
+Antarctic plate	Antarctic Plate
+North American plate	North American Plate
+Eurasian plate	Eurasian Plate
+Australian plate	Australian Plate
+South American plate	South American Plate
+Somali plate	Somali Plate
+Nazca plate	Nazca Plate
+Indian plate	Indian Plate
+Sunda plate	Sunda Plate
+Philippine Sea plate	Philippine Sea Plate
+Amur plate	Amurian Plate
+Arabian plate	Arabian Plate
+Okhotsk microplate	Okhotsk Plate
+Caribbean plate	Caribbean Plate
+Cocos plate	Cocos Plate
+Yangtze plate	Yangtze Plate
+Scotia plate	Scotia Plate
+Caroline plate	Caroline Plate
+North Andes plate	North Andes Plate
+Altiplano plate	Altiplano plate
+Banda Sea plate	Banda Sea Plate
+New Hebrides plate	New Hebrides Plate
+Anatolian plate	Anatolian Plate
+Bird's Head plate	Bird's Head Plate
+Burma plate	Burma Plate
+Kermadec plate	Kermadec Plate
+Woodlark plate	Woodlark Plate
+Mariana plate	Mariana Plate
+Molucca Sea plate	Molucca Sea Plate
+North Bismarck plate	North Bismarck Plate
+Timor plate	Timor Plate
+Okinawa plate	Okinawa Plate
+Aegean Sea plate	Aegean Sea Plate
+South Bismarck plate	South Bismarck Plate
+Panama plate	Panama Plate
+Juan de Fuca plate	Juan de Fuca Plate
+Tonga plate	Tonga Plate
+Balmoral Reef plate	Balmoral Reef Plate
+South Sandwich plate	South Sandwich Plate
+Easter microplate	Easter Plate
+Conway Reef plate	Conway Reef Plate
+Solomon Sea plate	Solomon Sea Plate
+Niuafo'ou plate	Niuafo'ou Plate
+Maoke plate	Maoke Plate
+Rivera plate	Rivera Plate
+Juan Fernández plate	Juan Fernández Plate
+Shetland plate	Shetland Plate
+Futuna plate	Futuna Plate
+Galápagos microplate	Galápagos microplate
+Manus plate	Manus Plate
+Indo-Australian plate	Indo-Australian Plate
+Lwandle plate	Lwandle Plate
+Rovuma plate	Rovuma Plate
+Victoria microplate	Victoria Microplate
+Danakil microplate	Danakil microplate
+East Antarctic plate	East Antarctic plate
+West Antarctic plate	West Antarctic plate
+Capricorn plate	Capricorn Plate
+Macquarie plate	Macquarie plate
+Gonâve microplate	Gonâve Microplate
+Hispaniola microplate	Hispaniola microplate
+North Hispaniola microplate	North Hispaniola microplate
+Puerto Rico-Virgin Islands microplate	Puerto Rico-Virgin Islands Microplate
+South Jamaica microplate	South Jamaica microplate
+Adriatic plate	Adriatic Plate
+Azores Plateau	Azores Plateau
+Hreppar microplate	Geological deformation of Iceland
+Iberian plate	Iberian plate
+Iranian plate	Iranian plateau
+Halmahera plate	Halmahera Plate
+Sangihe plate	Sangihe Plate
+Pelso plate	Pelso Plate
+Tisza plate	Tisza Plate
+Coiba plate	Coiba Plate
+Malpelo plate	Malpelo Plate
+Greenland plate	Greenland Plate
+Queen Elizabeth Islands Subplate	Queen Elizabeth Islands Subplate
+Explorer plate	Explorer Plate
+Gorda plate	Gorda Plate
+North Galapagos microplate	Galapagos Microplate
+Trobriand plate	Trobriand Plate
+Philippine Mobile Belt	Philippine Mobile Belt
+Madagascar plate	Madagascar Plate
+Falklands microplate	Falklands microplate

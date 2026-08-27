@@ -3,6 +3,9 @@ import {
   displayName,
   groupEntries,
   groupHasNames,
+  groupHasPref,
+  groupHasVariants,
+  overlongForms,
   renderCount,
   renderEntry,
   resolveStr,
@@ -66,6 +69,39 @@ describe("resolveWord", () => {
   it("falls back to en for a language the map doesn't carry", () => {
     expect(resolveWord({ en: "Ash", de: "Asch" }, "fr")).toBe("Ash");
   });
+
+  it("resolves a single-form pair to the one half it carries", () => {
+    expect(resolveWord({ short: "Asia" }, "en")).toEqual({ short: "Asia" });
+    expect(resolveWord({ long: "Pacific plate" }, "en")).toEqual({ long: "Pacific plate" });
+  });
+
+  it("recurses into a language map holding single-form pairs", () => {
+    const asia = { en: { short: "Asia" }, de: { short: "Asien" } };
+    expect(resolveWord(asia, "de")).toEqual({ short: "Asien" });
+    expect(resolveWord(asia, "fr")).toEqual({ short: "Asia" });
+  });
+
+  it("derives romaji off the base name pair of a language-major map", () => {
+    // A country entry: no ja-Latn key, so a derived read romanizes each Japanese
+    // form of the `ja` pair — the reading `transliterate` alone can't reach, since
+    // the map's `ja` is a pair, not a string.
+    const china = { en: { pref: "China" }, ja: { pref: "中国", others: ["中華人民共和国"] } };
+    expect(resolveWord(china, "ja-Latn", true)).toEqual({
+      pref: "Chuugoku",
+      others: ["Chuukajinminkyouwakoku"],
+    });
+  });
+
+  it("keeps the Japanese of a form the table can't read, not the English", () => {
+    // 手紙 is not in the dictionary, so its reading can't be derived; it must show
+    // itself rather than fall through to the English name and hide the gap.
+    const flat = { en: "Japanese", ja: "日本語" };
+    expect(resolveWord(flat, "ja-Latn", true)).toBe("Nihongo");
+    const miss = { en: "Letter", ja: "手紙" };
+    expect(resolveWord(miss, "ja-Latn", true)).toBe("手紙");
+    const pairMiss = { en: { pref: "Letter" }, ja: { pref: "手紙" } };
+    expect(resolveWord(pairMiss, "ja-Latn", true)).toEqual({ pref: "手紙" });
+  });
 });
 
 describe("renderEntry", () => {
@@ -86,6 +122,86 @@ describe("renderEntry", () => {
       expect(renderEntry("Charizard", mode, "en")).toEqual(["Charizard"]);
     }
   });
+
+  it("drops a short-only entry from long, and a long-only from short", () => {
+    // A continent with no eponymous plate, and a plate with no continent.
+    expect(renderEntry({ short: "Asia" }, "short", "en")).toEqual(["Asia"]);
+    expect(renderEntry({ short: "Asia" }, "long", "en")).toEqual([]);
+    expect(renderEntry({ short: "Asia" }, "both", "en")).toEqual(["Asia"]);
+    expect(renderEntry({ long: "Pacific plate" }, "long", "en")).toEqual(["Pacific plate"]);
+    expect(renderEntry({ long: "Pacific plate" }, "short", "en")).toEqual([]);
+    expect(renderEntry({ long: "Pacific plate" }, "both", "en")).toEqual(["Pacific plate"]);
+  });
+
+  it("adds the others only under 'all', deduplicated on top of short/long", () => {
+    // Taiwan's four English forms: short, long, and two further variants.
+    const tw = {
+      short: "Taiwan",
+      long: "Taiwan, Republic of China",
+      others: ["Taiwan R.O.C.", "Taiwan ROC"],
+    };
+    expect(renderEntry(tw, "short", "en")).toEqual(["Taiwan"]);
+    expect(renderEntry(tw, "both", "en")).toEqual(["Taiwan", "Taiwan, Republic of China"]);
+    expect(renderEntry(tw, "all", "en")).toEqual([
+      "Taiwan",
+      "Taiwan, Republic of China",
+      "Taiwan R.O.C.",
+      "Taiwan ROC",
+    ]);
+  });
+
+  it("takes a lone others string, and never repeats a form 'all' already carries", () => {
+    expect(renderEntry({ short: "HK", others: "HK" }, "all", "en")).toEqual(["HK"]);
+    expect(renderEntry({ short: "HK", long: "Hong Kong", others: "Hong Kong" }, "all", "en")).toEqual([
+      "HK",
+      "Hong Kong",
+    ]);
+  });
+
+  it("resolves the others in the active language", () => {
+    const e = { short: { en: "Cologne", de: "Köln" }, others: [{ en: "Colonia", de: "Domstadt" }] };
+    expect(renderEntry(e, "all", "de")).toEqual(["Köln", "Domstadt"]);
+    expect(renderEntry(e, "all", "en")).toEqual(["Cologne", "Colonia"]);
+  });
+
+  it("falls a mode with no form of its own back to pref — but only to pref", () => {
+    const e = { pref: "a", long: "bc" };
+    expect(renderEntry(e, "pref", "en")).toEqual(["a"]);
+    expect(renderEntry(e, "short", "en")).toEqual(["a"]); // short absent → pref
+    expect(renderEntry(e, "long", "en")).toEqual(["bc"]); // long present → itself
+    expect(renderEntry(e, "both", "en")).toEqual(["a", "bc"]);
+    expect(renderEntry(e, "all", "en")).toEqual(["a", "bc"]);
+  });
+
+  it("does not let a missing form fall past pref onto the other form", () => {
+    // No pref: a short-only entry stays out of long, a long-only out of short —
+    // the binding that predates pref, preserved because the pref fallback is absent.
+    expect(renderEntry({ short: "Asia" }, "long", "en")).toEqual([]);
+    expect(renderEntry({ long: "Pacific plate" }, "short", "en")).toEqual([]);
+  });
+
+  it("emits all three explicit forms under 'both' when they differ, no fallback", () => {
+    const e = { pref: "Democratic Republic of Congo", short: "DR Congo", long: "Democratic Republic of the Congo" };
+    expect(renderEntry(e, "both", "en")).toEqual([
+      "Democratic Republic of Congo",
+      "DR Congo",
+      "Democratic Republic of the Congo",
+    ]);
+    // A pref-less pair still yields just its two, so B11's continents/plates are unmoved.
+    expect(renderEntry({ short: "Asia" }, "both", "en")).toEqual(["Asia"]);
+    expect(renderEntry({ short: "A", long: "Alpha" }, "both", "en")).toEqual(["A", "Alpha"]);
+  });
+
+  it("emits pref, short, long and others under 'all', deduplicated", () => {
+    const e = { pref: "United States", long: "United States of America", others: ["USA", "America"] };
+    expect(renderEntry(e, "pref", "en")).toEqual(["United States"]);
+    expect(renderEntry(e, "all", "en")).toEqual([
+      "United States",
+      "United States of America",
+      "USA",
+      "America",
+    ]);
+  });
 });
 
 describe("renderCount", () => {
@@ -100,6 +216,27 @@ describe("renderCount", () => {
     const entries = [{ en: "Ash", de: "Asch" }, "Ash"];
     expect(renderCount(entries, "long", "en")).toBe(1);
     expect(renderCount(entries, "long", "de")).toBe(2);
+  });
+
+  it("drops the forms past maxLen, and counts all of them without one", () => {
+    const entries = [{ short: "Sandwich", long: "South Sandwich Plate" }];
+    expect(renderCount(entries, "both", "en")).toBe(2);
+    expect(renderCount(entries, "both", "en", false, 10)).toBe(1);
+  });
+});
+
+describe("overlongForms", () => {
+  // The entry survives its long form: that is what makes this a rule about forms
+  // rather than about entries, and why it cannot live in `visibleGroup`.
+  const entries = [{ short: "Sandwich", long: "South Sandwich Plate" }, "Manus Plate"];
+
+  it("names the forms past the limit and leaves the rest alone", () => {
+    expect(overlongForms(entries, "both", "en", false, 12)).toEqual(["South Sandwich Plate"]);
+    expect(overlongForms(entries, "short", "en", false, 12)).toEqual([]);
+  });
+
+  it("is empty when everything fits", () => {
+    expect(overlongForms(entries, "both", "en", false, 40)).toEqual([]);
   });
 });
 
@@ -119,6 +256,28 @@ describe("groupHasNames", () => {
     const g: Group = { id: "g", title: "G", words: ["Ash", { short: "A", long: "Alpha" }] };
     expect(groupHasNames(g, "en")).toBe(true);
     expect(groupHasNames({ id: "g", title: "G", words: ["Ash"] }, "en")).toBe(false);
+  });
+});
+
+describe("groupHasPref", () => {
+  it("is true only where an entry carries a pref name in that language", () => {
+    const withPref: Group = { id: "g", title: "G", words: ["Ash", { pref: "Taiwan", long: "Republic of China" }] };
+    expect(groupHasPref(withPref, "en")).toBe(true);
+    const plain: Group = { id: "g", title: "G", words: ["Ash", { short: "A", long: "Alpha" }] };
+    expect(groupHasPref(plain, "en")).toBe(false);
+  });
+});
+
+describe("groupHasVariants", () => {
+  it("is true only where an entry carries an others variant in that language", () => {
+    const withVar: Group = {
+      id: "g",
+      title: "G",
+      words: ["Ash", { short: "Taiwan", others: ["Taiwan ROC"] }],
+    };
+    expect(groupHasVariants(withVar, "en")).toBe(true);
+    const plain: Group = { id: "g", title: "G", words: ["Ash", { short: "A", long: "Alpha" }] };
+    expect(groupHasVariants(plain, "en")).toBe(false);
   });
 });
 

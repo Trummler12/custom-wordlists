@@ -1,0 +1,29 @@
+{
+  "id": "classics",
+  "title": {"en":"Classics (Mouse & Duck)","de":"Klassiker (Maus & Ente)"},
+  "icon": "🐭",
+  "description": "Disney characters (English names): the classic Mouse & Duck universe plus animated-film leads. Fame tiers by recognizability (tier 0 = most iconic).",
+  "tiers": [
+    [
+      {"en":"Mickey Mouse","de":"Micky Maus"},
+      "Donald Duck",
+      "Goofy",
+      "Pluto",
+      {"en":"Minnie Mouse","de":"Minnie Maus"},
+      "Daisy Duck",
+      {"en":"Scrooge McDuck","de":"Dagobert Duck"},
+      {"en":"Winnie the Pooh","de":"Winnie Puuh"}
+    ],
+
+    [
+      {"en":"Huey","de":"Tick"},
+      {"en":"Dewey","de":"Trick"},
+      {"en":"Louie","de":"Track"},
+      "Chip",
+      {"en":"Dale","de":"Chap"},
+      {"en":"Gyro Gearloose","de":"Daniel Düsentrieb"},
+      {"en":"Gladstone Gander","de":"Gustav Gans"},
+      {"en":"Beagle Boys","de":"Panzerknacker"}
+    ]
+  ]
+}

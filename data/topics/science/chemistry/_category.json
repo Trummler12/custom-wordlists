@@ -1,3 +1,11 @@
 {
-  "title": { "en": "Chemistry", "de": "Chemie" }
+  "title": {
+    "en": "Chemistry",
+    "de": "Chemie",
+    "es": "Química",
+    "fr": "Chimie",
+    "it": "Chimica",
+    "ja": "化学",
+    "ko": "화학"
+  }
 }

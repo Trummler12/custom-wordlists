@@ -1,0 +1,20 @@
+{
+  "id": "dc-villains",
+  "title": "Villains",
+  "icon": "🦹",
+  "description": "DC Comics superheroes and villains (language-neutral — names are the same across locales). Two groups; fame tiers by recognizability (tier 0 = most iconic).",
+  "tiers": [
+    [
+      "Joker",
+      "Harley Quinn",
+      "Lex Luthor"
+    ],
+
+    [
+      "Bane",
+      "Two-Face",
+      "Riddler",
+      "Catwoman"
+    ]
+  ]
+}

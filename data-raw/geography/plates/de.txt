@@ -1,0 +1,59 @@
+Pacific plate	Pazifische Platte
+African plate	Afrikanische Platte
+Antarctic plate	Antarktische Platte
+North American plate	Nordamerikanische Platte
+Eurasian plate	Eurasische Platte
+Australian plate	Australische Platte
+South American plate	Südamerikanische Platte
+Somali plate	Somaliaplatte
+Nazca plate	Nazca-Platte
+Indian plate	Indische Platte
+Sunda plate	Sundaplatte
+Philippine Sea plate	Philippinische Platte
+Amur plate	Amurplatte
+Arabian plate	Arabische Platte
+Okhotsk microplate	Ochotsk-Platte
+Caribbean plate	Karibische Platte
+Cocos plate	Cocosplatte
+Yangtze plate	Jangtseplatte
+Scotia plate	Scotia-Platte
+Caroline plate	Karolinenplatte
+North Andes plate	Nordandenplatte
+Altiplano plate	Altiplanoplatte
+Banda Sea plate	Bandaseeplatte
+New Hebrides plate	Neue-Hebriden-Platte
+Anatolian plate	Anatolische Platte
+Bird's Head plate	Bird's-Head-Platte
+Burma plate	Burma-Platte
+Kermadec plate	Kermadecplatte
+Woodlark plate	Woodlarkplatte
+Mariana plate	Marianenplatte
+Molucca Sea plate	Molukkenseeplatte
+North Bismarck plate	Nordbismarckplatte
+Timor plate	Timorplatte
+Okinawa plate	Okinawa-Platte
+Aegean Sea plate	Ägäische Platte
+South Bismarck plate	Südbismarckplatte
+Panama plate	Panamaplatte
+Juan de Fuca plate	Juan-de-Fuca-Platte
+Tonga plate	Tongaplatte
+Balmoral Reef plate	Balmoral-Riff-Platte
+South Sandwich plate	Sandwichplatte (tektonische Platte)
+Easter microplate	Osterplatte
+Conway Reef plate	Conway-Riff-Platte
+Solomon Sea plate	Salomonenseeplatte
+Niuafo'ou plate	Niuafo'ou-Platte
+Maoke plate	Maokeplatte
+Rivera plate	Riveraplatte
+Juan Fernández plate	Juan-Fernández-Platte
+Shetland plate	Shetland-Platte
+Futuna plate	Futuna Platte
+Galápagos microplate	Galapagosplatte
+Manus plate	Manusplatte
+Indo-Australian plate	Indisch-Australische Platte
+Gonâve microplate	Gônave-Mikroplatte
+Adriatic plate	Adriatische Platte
+Iranian plate	Iranisches Hochland
+Explorer plate	Explorer-Platte
+Gorda plate	Gordaplatte
+North Galapagos microplate	Galapagos Mikroplatte

@@ -17,7 +17,7 @@ export const it: UIStrings = {
     wordsOf: (selected, total) => `${selected} di ${total} parol${total === 1 ? "a" : "e"}`,
   },
   names: {
-    form: { short: "corto", long: "lungo", both: "entrambi" },
+    form: { pref: "preferito", short: "corto", long: "lungo", both: "entrambi", all: "tutti" },
     formLabel: (group) => `Forma del nome per ${group}`,
   },
   fame: {
@@ -26,6 +26,8 @@ export const it: UIStrings = {
       depth === 1 ? `primo livello di ${total}` : `primi ${depth} livelli di ${total}`,
     groupsDefined: (count) => `Gruppi di notorietà definiti: ${count}`,
     none: "Nessun gruppo di notorietà definito finora — vedi la Contribution Guide nel piè di pagina per proporne.",
+    selected: "Selezione:",
+    mostlySelected: "Selezione maggioritaria:",
     toggle: (shown) =>
       shown
         ? "Nascondi il righello di notorietà di questa lista"
@@ -39,12 +41,45 @@ export const it: UIStrings = {
     toggle: (omitted) =>
       omitted ? "Attiva per includerli nella tua lista" : "Attiva per tralasciarli",
     locked: "Sono dati di gioco e non parole, quindi non si possono aggiungere.",
+    upTo: (n) => `Fino a ${n}`,
     unknown: (n, primary, secondary) =>
-      `${n} voc${n === 1 ? "e" : "i"} senza nome in ${primary}${secondary} nei dati di origine`,
+      `Fino a ${n} voc${n === 1 ? "e" : "i"} senza nome in ${primary}${secondary} nei dati di origine`,
     unknownHint: (omitted) =>
       omitted
         ? "Attiva per includerle con il loro nome inglese, l'unico conosciuto."
         : "Attiva per tralasciarle di nuovo.",
+    unknownTier: (tier, n) => `Livello ${tier}: ${n} voc${n === 1 ? "e interessata" : "i interessate"}`,
+    tooLong: (n, maxLen) =>
+      `Fino a ${n} nom${n === 1 ? "e" : "i"} di oltre ${maxLen} caratteri`,
+    tooLongHint: (omitted) =>
+      omitted
+        ? "Attiva per includerli comunque: skribbl.io non li accetta, ma un altro gioco potrebbe."
+        : "Attiva per tralasciarli di nuovo.",
+  },
+  coverage: {
+    label: "Geoguessr / Copertura Street View",
+    all: "Tutti i paesi",
+    withCoverage: "Con copertura ufficiale",
+    reliable: "Solo copertura affidabile",
+  },
+  sovereignty: {
+    label: "Sovranità e riconoscimento",
+    wiki: "https://it.wikipedia.org/wiki/Stato_a_riconoscimento_limitato",
+    axisRow: "de iure",
+    axisCol: "de facto",
+    cols: ["Pienamente indipendente", "Parzialmente autonomo"],
+    rows: ["Riconoscimento universale", "Ampio riconoscimento", "Riconoscimento parziale", "Senza riconoscimento"],
+    colDefs: [
+      "Gestisce da sé confini, giustizia, esercito e tasse.",
+      "Ha leggi e parlamento propri, ma condivide competenze fondamentali — moneta, difesa, politica estera — con un altro Stato.",
+    ],
+    rowDefs: [
+      "Stato membro dell'ONU, riconosciuto da quasi tutti gli altri.",
+      "Riconosciuto da gran parte dei membri dell'ONU, con alcune eccezioni.",
+      "Riconosciuto solo da pochi Stati, spesso però con forte presenza funzionale o percepita.",
+      "Considerato a livello internazionale parte di un altro Stato sovrano.",
+    ],
+    regular: "Stati regolari",
   },
   language: {
     label: (current) => `Lingua: ${current}`,
@@ -79,6 +114,9 @@ export const it: UIStrings = {
     showEnglishEn: "Questi interruttori compaiono solo per lingue diverse dall'inglese.",
     interfaceLang: "Lingua dell'interfaccia:",
     interfaceAuto: "Automatico",
+    reset: "Ripristina{br}le impostazioni",
+    resetConfirm: "Clicca di nuovo per confermare",
+    resetCancel: "Annulla",
   },
   output: {
     label: "Risultato",
@@ -92,8 +130,8 @@ export const it: UIStrings = {
     chars: "caratteri",
     belowMin: (min) => `· sotto il minimo di skribbl (${min})`,
     overMax: "· oltre il massimo",
-    excluded: (count, maxLen, list) =>
-      `${count} parol${count === 1 ? "a esclusa" : "e escluse"} (più di ${maxLen} caratteri): ${list}`,
+    overLong: (count, maxLen) =>
+      `${count} parol${count === 1 ? "a" : "e"} di oltre ${maxLen} caratteri`,
   },
   footer: {
     repository: "Repository GitHub",

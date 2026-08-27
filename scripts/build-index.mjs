@@ -3,10 +3,9 @@
 // Every JSON file (except `_category.json`) is one topic. A folder is a CATEGORY
 // when it has a subfolder, a `_category.json`, or ≥2 topic files; otherwise a
 // folder holding a single topic file is a LEAF topic (id = folder name, the file
-// stem is free) and is marked `foldered`, since owning a folder is how a topic
-// says it expects to be split up later. Folders above a topic form a category path
-// (e.g. "gaming" or "gaming/pokemon"); a `_category.json` carries optional
-// display metadata (title / icon) for that category node.
+// stem is free). Folders above a topic form a category path (e.g. "gaming" or
+// "gaming/pokemon"); a `_category.json` carries optional display metadata
+// (title / icon) for that category node.
 // Generated file; never hand-edited. See docs/archive/PLANNING.md §4.1.
 import { readFile, writeFile, readdir } from "node:fs/promises";
 import { join, dirname, basename } from "node:path";
@@ -23,9 +22,11 @@ const CATEGORY_META = "_category.json";
 /** Words a topic contributes as the app shows it: omitted families out, each
  *  rule's stand-in in. The manifest count is what a topic row advertises before
  *  its file loads, so counting the raw list would make the number jump on load. */
+// A topic carries its list (words/tiers/omitted) directly.
 function countWords(topic) {
   let n = 0;
-  for (const group of topic.groups) {
+  {
+    const group = topic;
     const rules = (group.omitted ?? []).map((o) => ({
       res: [o.match].flat().map(globToRegExp),
       except: o.except ?? [],
@@ -43,6 +44,36 @@ function countWords(topic) {
     n += rules.filter((r) => r.as !== undefined).length;
   }
   return n;
+}
+
+/** Per-icon controls a topic carries: each icon-tagged omission rule, in file
+ *  order, grouped by its `icon`, kept as `{ id, cell?, omit? }`. The frontend
+ *  surfaces these as a control of their own (the Geoguessr radio, the sovereignty
+ *  matrix) and — put in the manifest — can render, drive and sync them across a
+ *  category without loading a single topic file; the `cell` carries a matrix rule's
+ *  place, and `omit` marks a rule that hides by default (declared in `omitted`), so
+ *  the matrix knows a toggled such cell is shown rather than hidden. */
+function controlsOf(topic) {
+  const out = {};
+  const tagged = [
+    ...(topic.omitted ?? []).map((rule) => ({ rule, omit: true })),
+    ...(topic.omittable ?? []).map((rule) => ({ rule, omit: false })),
+  ];
+  for (const { rule, omit } of tagged) {
+    if (!rule.icon) continue;
+    const entry = { id: rule.id };
+    // A matrix rule carries its cell and the names it matches, so the grid can
+    // place it and name its members on hover without loading the topic file.
+    if (rule.cell) {
+      entry.cell = rule.cell;
+      entry.names = Array.isArray(rule.match) ? rule.match : [rule.match];
+    }
+    // Only the hide-by-default rules carry the flag; a shown-by-default one is the
+    // common case and stays lean.
+    if (omit) entry.omit = true;
+    (out[rule.icon] ??= []).push(entry);
+  }
+  return out;
 }
 
 /** Where a sibling with no declared `order` sorts. A finite number rather than
@@ -100,7 +131,7 @@ async function collectTopics(segments) {
     const id = segments[segments.length - 1];
     const category = segments.slice(0, -1).join("/");
     return {
-      topics: [{ id, category, foldered: true, fileSegments: [...segments, jsonFiles[0]] }],
+      topics: [{ id, category, fileSegments: [...segments, jsonFiles[0]] }],
       categories: [],
     };
   }
@@ -113,7 +144,6 @@ async function collectTopics(segments) {
     topics.push({
       id: basename(file, ".json"),
       category: segments.join("/"),
-      foldered: false,
       fileSegments: [...segments, file],
     });
   }
@@ -142,8 +172,26 @@ async function readCategoryMeta(path) {
   // ruler-visibility boundary (shown by default, decoupled from ancestors), so
   // its presence must survive into the manifest.
   if (typeof data.hideRulersByDefault === "boolean") meta.hideRulersByDefault = data.hideRulersByDefault;
+  if (typeof data.hideRulers === "boolean") meta.hideRulers = data.hideRulers;
   if (data.sharedEnglishToggle) meta.sharedEnglishToggle = true;
+  // Icon keys whose control this category surfaces and syncs across its subtree
+  // (e.g. ["geoguessr"]). Generic on purpose — any icon-tagged control rides it.
+  if (Array.isArray(data.syncControls) && data.syncControls.length) meta.syncControls = data.syncControls;
   return meta;
+}
+
+// An `inheritsUpwards` family is several files with the same name (every
+// continent's `countries.json`), so stems are no longer unique on their own. Where
+// one repeats, the immediate parent folder qualifies it — `africa/countries.json`
+// becomes `africa-countries`, matching the file's own `id`. Unique stems are left
+// alone, so nothing else in the tree changes. Kept in sync with validate-data.mjs.
+function disambiguate(topics) {
+  const count = {};
+  for (const t of topics) count[t.id] = (count[t.id] ?? 0) + 1;
+  for (const t of topics) {
+    if (count[t.id] > 1) t.id = `${t.category.split("/").pop()}-${t.id}`;
+  }
+  return topics;
 }
 
 async function buildIndex() {
@@ -153,9 +201,10 @@ async function buildIndex() {
   } catch {
     throw new Error(`No topics directory at ${TOPICS_DIR}`);
   }
+  disambiguate(found.topics);
 
   const topics = [];
-  for (const { id, category, foldered, fileSegments } of found.topics) {
+  for (const { id, category, fileSegments } of found.topics) {
     const path = fileSegments.join("/");
     let data;
     try {
@@ -170,13 +219,19 @@ async function buildIndex() {
       path,
       title: data.title,
       icon: data.icon ?? null,
-      ...(foldered ? { foldered: true } : {}),
       // Either boolean is meaningful — a `false` marks a boundary too (see readCategoryMeta).
       ...(typeof data.hideRulersByDefault === "boolean" ? { hideRulersByDefault: data.hideRulersByDefault } : {}),
+      ...(typeof data.hideRulers === "boolean" ? { hideRulers: data.hideRulers } : {}),
       ...(data.languages ? { languages: data.languages } : {}),
       ...(data.usesEnglishFor ? { usesEnglishFor: data.usesEnglishFor } : {}),
       ...(data.generatedRomaji ? { generatedRomaji: true } : {}),
-      groupCount: data.groups.length,
+      // The tree synthesizes a merged topic for each family of same-named leaves
+      // that carry this; the manifest passes it through so that can happen without
+      // loading every file first. See src/lib/tree.ts.
+      ...(Number.isInteger(data.inheritsUpwards) ? { inheritsUpwards: data.inheritsUpwards } : {}),
+      // Icon-tagged rule ladders (e.g. the Geoguessr coverage filter), so the tree
+      // can show and sync them from the manifest alone. See src/components/topics.
+      ...(Object.keys(controlsOf(data)).length ? { controls: controlsOf(data) } : {}),
       wordCount: countWords(data),
     });
   }

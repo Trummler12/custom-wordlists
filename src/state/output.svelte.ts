@@ -17,13 +17,18 @@ class OutputState {
       // Through groupsOf, not data.groups: it is what applies each list's
       // omissions, and the output must agree with the counts beside it.
       for (const g of topics.groupsOf(t)) {
-        const mode = selection.modeOf(selection.key(t.id, g.id));
+        const mode = selection.modeOf(t.id, g);
         // Per topic, not per app: a topic switched to English emits English here
         // while the rest of the list follows the interface language.
         const code = lang.contentLang(t.id);
         const derived = lang.derivesRomaji(t.id);
+        // A list that hasn't been told otherwise leaves its over-long names out
+        // here, which is what keeps the counter below quiet: `excluded` can only
+        // fill up once someone has asked for them.
+        const cap = selection.capFor(t.id, g);
         for (const e of selection.entriesOf(t.id, g)) {
           for (const w of renderEntry(e, mode, code, derived)) {
+            if (cap !== undefined && w.length > cap) continue;
             if (!seen.has(w)) {
               seen.add(w);
               out.push(w);
@@ -35,17 +40,17 @@ class OutputState {
     return out;
   });
 
-  readonly included: string[] = $derived(
-    this.merged.filter((w) => w.length <= SKRIBBL.maxWordLen),
-  );
-  readonly excluded: string[] = $derived(
+  /** The names skribbl would refuse for their length. Reported, not removed: the
+   *  only way one reaches this list is that a reader switched its ✂️ rule off and
+   *  asked for it, and dropping it here would have quietly overruled them. */
+  readonly overlong: string[] = $derived(
     this.merged.filter((w) => w.length > SKRIBBL.maxWordLen),
   );
-  readonly text: string = $derived(this.included.join(SKRIBBL.separator));
+  readonly text: string = $derived(this.merged.join(SKRIBBL.separator));
   readonly charCount: number = $derived(this.text.length);
 
   // The counter only renders when merged is non-empty, so these need no guard.
-  readonly belowMin: boolean = $derived(this.included.length < SKRIBBL.minWords);
+  readonly belowMin: boolean = $derived(this.merged.length < SKRIBBL.minWords);
   readonly overMax: boolean = $derived(this.charCount > SKRIBBL.maxTotal);
 
   /** What the last copy attempt came to, for a moment afterwards. Three states

@@ -1,0 +1,81 @@
+{
+  "id": "north-america-capitals",
+  "title": {"en":"Capitals","de":"Hauptstädte","es":"Capitales","fr":"Capitales","it":"Capitali","ja":"首都","ko":"수도","zh-Hans":"首都","zh-Hant":"首都"},
+  "languages": ["en","de","es","fr","it","ja","ja-Latn","ko","zh-Hans","zh-Hant"],
+  "generatedRomaji": true,
+  "sources": [
+    "Names: Wikidata capitals (P36) of the sovereign states — https://www.wikidata.org/wiki/Property:P36 (see scripts/geography/dump-country-data.mjs)",
+    "Variants: geonames alternate names, linked via Wikidata GeoNames id (P1566) — https://www.geonames.org (see scripts/geography/dump-capital-geonames.mjs)"
+  ],
+  "lastUpdated": "2026-08-26",
+  "lastChecked": "2026-08-26",
+  "defaultNames": "pref",
+  "omittable": [
+    {
+      "id": "no-coverage",
+      "match": ["Basseterre","Belmopan","Bridgetown","Castries","Havana","Kingston","Kingstown","Managua","Nassau","Port of Spain","Port-au-Prince","Roseau","San Salvador","St. George's","Tegucigalpa"],
+      "count": true,
+      "icon": "geoguessr",
+      "reason": {
+        "en": "countries with no Google Street View coverage",
+        "de": "Länder ohne Google-Street-View-Abdeckung",
+        "es": "países sin cobertura de Google Street View",
+        "fr": "pays sans couverture Google Street View",
+        "it": "paesi senza copertura di Google Street View",
+        "ja": "Google ストリートビュー非対応の国",
+        "ko": "구글 스트리트 뷰가 없는 국가"
+      }
+    }
+  ],
+  "tiers": [
+    [
+      {"en":"Washington, D.C.","es":"Washington D. C.","fr":"Washington","it":"Washington","ja":"ワシントンD.C.","ko":"워싱턴 D.C.","zh-Hans":"华盛顿哥伦比亚特区","zh-Hant":"華盛頓哥倫比亞特區"},
+      {"en":"Mexico City","de":"Mexiko-Stadt","es":{"pref":"Ciudad de México","others":["El DF"]},"fr":"Mexico","it":"Città del Messico","ja":"メキシコシティ","ko":"멕시코시티","zh-Hans":{"pref":"墨西哥城","others":["墨西哥城市"]},"zh-Hant":"墨西哥城"}
+    ],
+
+    [
+      {"en":"Ottawa","ja":"オタワ","ko":"오타와","zh-Hans":"渥太华","zh-Hant":"渥太華"}
+    ],
+
+    [
+      {"en":"Guatemala City","de":"Guatemala-Stadt","es":"Ciudad de Guatemala","fr":"Guatemala","it":"Città del Guatemala","ja":"グアテマラシティ","ko":"과테말라시티","zh-Hans":"危地马拉城","zh-Hant":"瓜地馬拉市"},
+      {"en":"Havana","de":"Havanna","es":"La Habana","fr":"La Havane","it":"L'Avana","ja":"ハバナ","ko":"아바나","zh-Hans":"哈瓦那","zh-Hant":"哈瓦那"},
+      {"en":"Port-au-Prince","es":"Puerto Príncipe","fr":{"pref":"Port-au-Prince","others":["Commune de Port-au-Prince"]},"ja":"ポルトープランス","ko":"포르토프랭스","zh-Hant":"太子港","?":["zh-Hans"]},
+      {"en":{"pref":"Santo Domingo","others":["Santo Domingo City"]},"de":"Santo Domingo","es":"Santo Domingo","fr":{"pref":"Saint-Domingue","others":["Saint Domingue"]},"it":"Santo Domingo","ja":"サント・ドミンゴ","ko":"산토도밍고","zh-Hans":{"pref":"圣多明哥","others":["聖多明哥"]},"zh-Hant":"聖多明哥"},
+      {"en":"Tegucigalpa","ja":"テグシガルパ","ko":"테구시갈파","zh-Hans":{"pref":"特古西加尔巴","others":["德古斯加巴"]},"zh-Hant":"德古西加巴"},
+      {"en":"San Salvador","fr":{"pref":"San Salvador","others":["Salvador"]},"ja":"サンサルバドル","ko":"산살바도르","zh-Hans":"圣萨尔瓦多","zh-Hant":"聖薩爾瓦多"},
+      {"en":"San José","de":{"pref":"San José","others":["San Jose"]},"ja":"サンホセ","ko":"산호세","zh-Hans":"圣何塞","zh-Hant":"聖荷西"},
+      {"en":"Managua","es":{"pref":"Managua","others":["Municipio de Managua"]},"ja":"マナグア","ko":"마나과","zh-Hant":"馬納瓜","?":["zh-Hans"]}
+    ],
+
+    [
+      {"en":"Panama City","de":"Panama-Stadt","es":{"pref":"Ciudad de Panamá","others":["Panamá"]},"fr":{"pref":"Panama","others":["Panamá"]},"it":{"pref":"Panama","others":["Panamá"]},"ja":{"pref":"パナマ市","others":["パナマシティ"]},"ko":{"pref":"파나마시티","others":["파나마 시"]},"zh-Hans":"巴拿马城","zh-Hant":"巴拿馬城"},
+      {"en":"Kingston","ja":"キングストン","ko":"킹스턴","zh-Hans":{"pref":"金斯敦","others":["京斯敦"]},"zh-Hant":"京斯敦"},
+      {"en":"Port of Spain","de":{"pref":"Port of Spain","others":["Port-of-Spain"]},"es":"Puerto España","fr":"Port-d'Espagne","ja":"ポートオブスペイン","ko":{"pref":"포트오브스페인","others":["포트 오브 스페인"]},"zh-Hans":"西班牙港","zh-Hant":"西班牙港"}
+    ],
+
+    [
+      {"en":"Belmopan","es":"Belmopán","ja":"ベルモパン","ko":"벨모판","zh-Hans":"贝尔墨邦","zh-Hant":"貝爾墨邦"},
+      {"en":"Nassau","es":"Nasáu","ja":"ナッソー","ko":{"pref":"나소","others":["나사우"]},"zh-Hans":"拿骚","zh-Hant":"拿騷"},
+      {"en":"Bridgetown","ja":"ブリッジタウン","ko":"브리지타운","zh-Hant":"橋鎮","?":["zh-Hans"]},
+      {"en":"Castries","ja":"カストリーズ","ko":"캐스트리스","zh-Hans":"卡斯特里","zh-Hant":"卡斯特里"},
+      {"en":{"pref":"St. George's","others":["Saint George's"]},"de":{"pref":"St. George’s","others":["St. George's"]},"es":{"pref":"Saint George","others":["Saint George's"]},"fr":"Saint-Georges","it":{"pref":"Saint George's","others":["St. George's"]},"ja":"セントジョージズ","ko":"세인트조지스","?":["zh-Hans","zh-Hant"]},
+      {"en":"Kingstown","ja":"キングスタウン","ko":"킹스타운","zh-Hans":"金斯敦","?":["zh-Hant"]},
+      {"en":{"pref":"St. John's","others":["Saint John's","St John's"]},"de":"Saint John's","es":{"pref":"Saint John","others":["Saint John's"]},"fr":"Saint John's","it":"Saint John's","ja":{"pref":"セイント・ジョンズ","others":["セントジョンズ"]},"ko":"세인트존스","zh-Hans":"圣约翰","?":["zh-Hant"]},
+      {"en":"Roseau","ja":"ロゾー","ko":"로조","zh-Hans":"罗索","zh-Hant":{"pref":"羅梭","others":["羅索"]}},
+      {"en":"Basseterre","ja":"バセテール","ko":"바스테르","zh-Hans":"巴斯特尔","?":["zh-Hant"]}
+    ]
+  ],
+  "tierConditions": [
+    {"en":"100 million or more","de":"100 Millionen und mehr","es":"100 millones o más","fr":"100 millions ou plus","it":"100 milioni o più","ja":"1億以上","ko":"1억 이상","zh-Hans":"1亿及以上","zh-Hant":"1億及以上"},
+    {"en":"20 million or more","de":"20 Millionen und mehr","es":"20 millones o más","fr":"20 millions ou plus","it":"20 milioni o più","ja":"2000万以上","ko":"2000만 이상","zh-Hans":"2000万及以上","zh-Hant":"2000萬及以上"},
+    {"en":"5 million or more","de":"5 Millionen und mehr","es":"5 millones o más","fr":"5 millions ou plus","it":"5 milioni o più","ja":"500万以上","ko":"500만 이상","zh-Hans":"500万及以上","zh-Hant":"500萬及以上"},
+    {"en":"1 million or more","de":"1 Million und mehr","es":"1 millón o más","fr":"1 million ou plus","it":"1 milione o più","ja":"100万以上","ko":"100만 이상","zh-Hans":"100万及以上","zh-Hant":"100萬及以上"},
+    {"en":"more than 0","de":"mehr als 0","es":"más de 0","fr":"plus de 0","it":"più di 0","ja":"0より多い","ko":"0보다 많음","zh-Hans":"多于0","zh-Hant":"多於0"}
+  ],
+  "rulerTooltip": {
+    "text": {"en":"Capitals of countries with {condition} inhabitants","de":"Hauptstädte von Ländern mit {condition} Einwohnern","es":"capitales de países con {condition} habitantes","fr":"capitales de pays comptant {condition} habitants","it":"capitali di paesi con {condition} abitanti","ja":"人口が{condition}の国の首都","ko":"인구가 {condition}인 국가의 수도"},
+    "empty": {"en":"Ranked by their country's population.","de":"Nach Einwohnerzahl des Landes geordnet.","es":"Ordenadas por la población de su país.","fr":"Classées par la population de leur pays.","it":"Ordinate per la popolazione del loro paese.","ja":"国の人口順。","ko":"해당 국가의 인구순 정렬."}
+  },
+  "inheritsUpwards": 1
+}

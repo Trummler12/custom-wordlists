@@ -7,6 +7,8 @@ import {
   globToRegExp,
   isOmitted,
   isOnByDefault,
+  omissionSummary,
+  unknownByTier,
   unknownCount,
   visibleGroup,
 } from "./omitted";
@@ -274,6 +276,31 @@ describe("omittable rules", () => {
   });
 });
 
+describe("omissionSummary", () => {
+  it("counts each entry under the first rule that covers it, and samples the names", () => {
+    const g: Group = {
+      id: "x",
+      title: "X",
+      words: ["Kept", "★A", "★B", "Bisasam-Bonbon"],
+      omitted: [rule("★*", { id: "crystals" })],
+      omittable: [rule("*-Bonbon", { id: "candies" })],
+    };
+    const s = omissionSummary(g, "en");
+    expect(s.crystals).toEqual({ count: 2, names: ["★A", "★B"] });
+    expect(s.candies).toEqual({ count: 1, names: ["Bisasam-Bonbon"] });
+  });
+
+  it("counts over the entries as written, before anything is filtered", () => {
+    const g: Group = {
+      id: "x",
+      title: "X",
+      tiers: [["★A"], ["★B", "Kept"]],
+      omitted: [rule("★*", { id: "crystals" })],
+    };
+    expect(omissionSummary(g, "en").crystals.count).toBe(2);
+  });
+});
+
 describe("entries with no name in a language", () => {
   const g: Group = {
     id: "items",
@@ -301,18 +328,37 @@ describe("entries with no name in a language", () => {
   });
 
   it("reports the size of the family in both positions", () => {
-    expect(visibleGroup(g, [], "de").unknownCount).toBe(2);
-    expect(visibleGroup(g, ["?"], "de").unknownCount).toBe(2);
+    expect(visibleGroup(g, [], "de").unknownByTier).toEqual([2]);
+    expect(visibleGroup(g, ["?"], "de").unknownByTier).toEqual([2]);
     expect(unknownCount(g, "en")).toBe(0);
   });
 
-  it("does not report what a rule already left out", () => {
+  it("splits the count per tier, so a ruler can scope it", () => {
+    const tiered: Group = {
+      id: "plates",
+      title: "Plates",
+      tiers: [["Pacific Plate"], [{ en: "Manus Plate", "?": ["de"] }, { en: "Tonga Plate", "?": ["de"] }]],
+    };
+    expect(unknownByTier(tiered, "de")).toEqual([0, 2]);
+    expect(unknownCount(tiered, "de")).toBe(2);
+    // The reader who took only the famous tier is missing nothing.
+    expect(unknownByTier(tiered, "de").slice(0, 1).reduce((a, b) => a + b, 0)).toBe(0);
+  });
+
+  it("gives a flat group one bucket, which a depth of 1 addresses", () => {
+    expect(unknownByTier(g, "de")).toEqual([2]);
+    expect(unknownByTier(g, "en")).toEqual([0]);
+  });
+
+  it("counts entries with no name whether or not another rule also hides them", () => {
     const withJunk: Group = {
       ...g,
       words: [...g.words!, { en: "★And391", "?": ["de"] }],
     };
-    expect(unknownCount(withJunk, "de")).toBe(2);
-    expect(unknownCount(withJunk, "de", ["crystals"])).toBe(3);
+    // ★And391 is caught by the crystals rule as well, but the unknown count is about
+    // the language gap, not what any rule hides — so it counts either way. Counting
+    // and hiding are separate, which is what keeps this row's number steady.
+    expect(unknownCount(withJunk, "de")).toBe(3);
   });
 
   it("keeps `?` out of the forms a glob sees — it holds tags, not names", () => {

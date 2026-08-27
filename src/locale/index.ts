@@ -39,7 +39,7 @@ export interface TreeStrings {
 
 /** The short/long name-form dropdown. */
 export interface NamesStrings {
-  form: { short: string; long: string; both: string };
+  form: { pref: string; short: string; long: string; both: string; all: string };
   formLabel: (group: string) => string;
 }
 
@@ -52,6 +52,12 @@ export interface FameStrings {
   groupsDefined: (count: number) => string;
   /** Ruler tooltip for a list that hasn't — an invitation to rank it. */
   none: string;
+  /** The prefix a topic's `rulerTooltip.text` wears — what the ruler position has
+   *  selected, down to the condition the text then names. */
+  selected: string;
+  /** The same prefix for a merged topic whose contributors don't all sit at its
+   *  ruler position: most are there, not all. */
+  mostlySelected: string;
   /** Toggle a single list's fame ruler; label reflects the current state. */
   toggle: (shown: boolean) => string;
   /** Toggle from a category row all the rulers it governs; label on current state. */
@@ -66,13 +72,71 @@ export interface OmittedStrings {
   toggle: (omitted: boolean) => string;
   /** Why one rule's checkbox is disabled. */
   locked: string;
+  /** The "up to N" a counting rule leads with, its `reason` reading on from it —
+   *  an upper bound, since how many a click brings back depends on the ruler. */
+  upTo: (n: number) => string;
   /** The panel row for entries the list has no name for, and its hint — which,
    *  like `toggle`, says what a click would do. The language is named rather than
    *  referred to: the interface may be in a different one, and "no German names"
    *  under a German interface showing Korean lists would be a lie. In two halves,
-   *  as `usesEnglish` — see `splitName` in lib/languages. */
+   *  as `usesEnglish` — see `splitName` in lib/languages.
+   *
+   *  An upper bound rather than a plain count: `n` is what the whole list is
+   *  missing, and how many of them a click actually brings back depends on where
+   *  the reader's fame ruler stands. */
   unknown: (n: number, primary: string, secondary: string) => string;
   unknownHint: (omitted: boolean) => string;
+  /** One line of the hint's breakdown, for a ranked list: which fame tier the
+   *  missing names fall in, counted from the famous end as the ruler counts its
+   *  stops. The useful half of the bound above — it says how far down a reader
+   *  has to go before any of this concerns them. */
+  unknownTier: (tier: number, n: number) => string;
+  /** The panel row for names the target game would refuse for their length, and
+   *  its hint — which names them, since unlike the row above these have names.
+   *
+   *  Names rather than entries: what leaves the list is one form of an entry, and
+   *  the entry itself is fine under its other one. Also an upper bound, for the
+   *  same reason as `unknown`. */
+  tooLong: (n: number, maxLen: number) => string;
+  tooLongHint: (omitted: boolean) => string;
+}
+
+/** The Pegman filter behind its own button: a country has full Street View
+ *  coverage, only sparse coverage, or none — the reader picks how strict to be. */
+export interface CoverageStrings {
+  /** Button aria-label and popup heading. */
+  label: string;
+  /** The three strictness levels, from loosest to strictest. `all` keeps every
+   *  country; `withCoverage` (labelled "official") drops the uncovered ones but keeps
+   *  the sparse; `reliable` keeps only the fully covered. */
+  all: string;
+  withCoverage: string;
+  reliable: string;
+}
+
+/** The sovereignty & recognition matrix behind its own ✅ button: a grid of cells,
+ *  de-jure recognition down the rows, de-facto control across the columns, that the
+ *  reader fills as a top-left-anchored staircase. The cells are named by their row
+ *  and column, so only the axes and the always-on corner need words. */
+export interface SovereigntyStrings {
+  /** Button aria-label and popup heading. */
+  label: string;
+  /** A Wikipedia URL for this language's "states with limited recognition" article,
+   *  linked beside the heading. */
+  wiki: string;
+  /** The row and column axis names, for the corner cell (`de jure` down the rows,
+   *  `de facto` across the columns). */
+  axisRow: string;
+  axisCol: string;
+  /** The two column headers, most independent first. */
+  cols: [string, string];
+  /** The four row headers, most recognized first. */
+  rows: [string, string, string, string];
+  /** A fuller definition of each column and row, shown on the header's hover. */
+  colDefs: [string, string];
+  rowDefs: [string, string, string, string];
+  /** The always-on top-left cell (universally recognized, fully independent). */
+  regular: string;
 }
 
 /** The picker, the ⚠️/ℹ️ markers, and the per-list 🇬🇧 toggles. */
@@ -131,6 +195,14 @@ export interface SettingsStrings {
   /** Its first option, and the default: follow the list language where we have a
    *  dictionary for it. Kept short — it sits in a dropdown, not in a sentence. */
   interfaceAuto: string;
+  /** The reset button: drops every stored preference back to the shipped default.
+   *  Carries a `{br}` so it wraps predictably in the narrow menu. */
+  reset: string;
+  /** The armed label after the first click — a second click confirms, so the reset
+   *  is never one stray click away. */
+  resetConfirm: string;
+  /** Accessible name of the ✕ that disarms the reset without firing it. */
+  resetCancel: string;
 }
 
 /** The output panel and its counter. */
@@ -151,7 +223,11 @@ export interface OutputStrings {
   chars: string;
   belowMin: (min: number) => string;
   overMax: string;
-  excluded: (count: number, maxLen: number, list: string) => string;
+  /** How many of the words in the list skribbl would refuse for their length —
+   *  which can only happen where a reader switched the ✂️ rule off, so it states a
+   *  consequence rather than warning about a surprise. The words themselves are on
+   *  the hover, since the number is the part worth a line. */
+  overLong: (count: number, maxLen: number) => string;
 }
 
 /** The footer. */
@@ -173,6 +249,8 @@ export interface UIStrings {
   names: NamesStrings;
   fame: FameStrings;
   omitted: OmittedStrings;
+  coverage: CoverageStrings;
+  sovereignty: SovereigntyStrings;
   language: LanguageStrings;
   settings: SettingsStrings;
   output: OutputStrings;

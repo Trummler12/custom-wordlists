@@ -1,0 +1,197 @@
+Q148	People's Republic of China
+Q668	India
+Q30	United States
+Q252	Indonesia
+Q843	Pakistan
+Q155	Brazil
+Q1033	Nigeria
+Q902	Bangladesh
+Q159	Russia
+Q96	Mexico
+Q115	Ethiopia
+Q17	Japan
+Q79	Egypt
+Q928	Philippines
+Q974	Democratic Republic of the Congo
+Q881	Vietnam
+Q794	Iran
+Q43	Turkey
+Q183	Germany
+Q142	France
+Q145	United Kingdom
+Q869	Thailand
+Q258	South Africa
+Q38	Italy
+Q924	Tanzania
+Q836	Myanmar
+Q739	Colombia
+Q884	South Korea
+Q29	Spain
+Q114	Kenya
+Q414	Argentina
+Q1036	Uganda
+Q262	Algeria
+Q889	Afghanistan
+Q212	Ukraine
+Q1049	Sudan
+Q796	Iraq
+Q36	Poland
+Q16	Canada
+Q1028	Morocco
+Q916	Angola
+Q265	Uzbekistan
+Q833	Malaysia
+Q419	Peru
+Q851	Saudi Arabia
+Q117	Ghana
+Q1019	Madagascar
+Q717	Venezuela
+Q1008	Ivory Coast
+Q1029	Mozambique
+Q837	Nepal
+Q1009	Cameroon
+Q805	Yemen
+Q408	Australia
+Q423	North Korea
+Q858	Syria
+Q865	Taiwan
+Q965	Burkina Faso
+Q912	Mali
+Q1032	Niger
+Q854	Sri Lanka
+Q232	Kazakhstan
+Q953	Zambia
+Q298	Chile
+Q657	Chad
+Q218	Romania
+Q1020	Malawi
+Q424	Cambodia
+Q774	Guatemala
+Q29999	Kingdom of the Netherlands
+Q736	Ecuador
+Q1041	Senegal
+Q954	Zimbabwe
+Q1037	Rwanda
+Q962	Benin
+Q967	Burundi
+Q1006	Guinea
+Q958	South Sudan
+Q750	Bolivia
+Q31	Belgium
+Q948	Tunisia
+Q1045	Somalia
+Q241	Cuba
+Q790	Haiti
+Q213	Czech Republic
+Q786	Dominican Republic
+Q34	Sweden
+Q41	Greece
+Q810	Jordan
+Q45	Portugal
+Q227	Azerbaijan
+Q878	United Arab Emirates
+Q801	Israel
+Q28	Hungary
+Q863	Tajikistan
+Q39	Switzerland
+Q184	Belarus
+Q40	Austria
+Q691	Papua New Guinea
+Q783	Honduras
+Q945	Togo
+Q1044	Sierra Leone
+Q1016	Libya
+Q813	Kyrgyzstan
+Q819	Laos
+Q733	Paraguay
+Q403	Serbia
+Q219	Bulgaria
+Q971	Republic of the Congo
+Q874	Turkmenistan
+Q822	Lebanon
+Q792	El Salvador
+Q756617	Kingdom of Denmark
+Q334	Singapore
+Q33	Finland
+Q20	Norway
+Q214	Slovakia
+Q664	New Zealand
+Q800	Costa Rica
+Q219060	Palestine
+Q1014	Liberia
+Q929	Central African Republic
+Q27	Ireland
+Q811	Nicaragua
+Q842	Oman
+Q1025	Mauritania
+Q804	Panama
+Q817	Kuwait
+Q230	Georgia
+Q224	Croatia
+Q225	Bosnia and Herzegovina
+Q986	Eritrea
+Q77	Uruguay
+Q711	Mongolia
+Q399	Armenia
+Q37	Lithuania
+Q222	Albania
+Q766	Jamaica
+Q1005	The Gambia
+Q846	Qatar
+Q1030	Namibia
+Q963	Botswana
+Q217	Moldova
+Q215	Slovenia
+Q1000	Gabon
+Q1013	Lesotho
+Q1007	Guinea-Bissau
+Q983	Equatorial Guinea
+Q211	Latvia
+Q221	North Macedonia
+Q1246	Kosovo
+Q398	Bahrain
+Q574	Timor-Leste
+Q191	Estonia
+Q754	Trinidad and Tobago
+Q229	Cyprus
+Q1027	Mauritius
+Q1050	Eswatini
+Q977	Djibouti
+Q712	Fiji
+Q970	Comoros
+Q734	Guyana
+Q917	Bhutan
+Q32	Luxembourg
+Q236	Montenegro
+Q685	Solomon Islands
+Q730	Suriname
+Q1011	Cape Verde
+Q233	Malta
+Q921	Brunei
+Q826	Maldives
+Q242	Belize
+Q778	The Bahamas
+Q189	Iceland
+Q244	Barbados
+Q686	Vanuatu
+Q1039	São Tomé and Príncipe
+Q683	Samoa
+Q760	Saint Lucia
+Q710	Kiribati
+Q1042	Seychelles
+Q769	Grenada
+Q757	Saint Vincent and the Grenadines
+Q678	Tonga
+Q781	Antigua and Barbuda
+Q228	Andorra
+Q702	Federated States of Micronesia
+Q784	Dominica
+Q709	Marshall Islands
+Q763	Saint Kitts and Nevis
+Q235	Monaco
+Q347	Liechtenstein
+Q238	San Marino
+Q695	Palau
+Q697	Nauru
+Q672	Tuvalu
+Q237	Vatican City

@@ -31,5 +31,5 @@
     }
   }}
 >
-  {#each output.included as w (w)}<span class="chip">{w}</span>{/each}
+  {#each output.merged as w (w)}<span class="chip">{w}</span>{/each}
 </div>

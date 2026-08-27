@@ -1,0 +1,85 @@
+{
+  "id": "oceania-capitals",
+  "title": {"en":"Capitals","de":"Hauptstädte","es":"Capitales","fr":"Capitales","it":"Capitali","ja":"首都","ko":"수도","zh-Hans":"首都","zh-Hant":"首都"},
+  "languages": ["en","de","es","fr","it","ja","ja-Latn","ko","zh-Hans","zh-Hant"],
+  "generatedRomaji": true,
+  "sources": [
+    "Names: Wikidata capitals (P36) of the sovereign states — https://www.wikidata.org/wiki/Property:P36 (see scripts/geography/dump-country-data.mjs)",
+    "Variants: geonames alternate names, linked via Wikidata GeoNames id (P1566) — https://www.geonames.org (see scripts/geography/dump-capital-geonames.mjs)"
+  ],
+  "lastUpdated": "2026-08-26",
+  "lastChecked": "2026-08-26",
+  "defaultNames": "pref",
+  "omittable": [
+    {
+      "id": "no-coverage",
+      "match": ["Apia","Funafuti","Honiara","Majuro","Ngerulmud","Nukuʻalofa","Palikir","Port Moresby","South Tarawa","Suva","Yaren District"],
+      "count": true,
+      "icon": "geoguessr",
+      "reason": {
+        "en": "countries with no Google Street View coverage",
+        "de": "Länder ohne Google-Street-View-Abdeckung",
+        "es": "países sin cobertura de Google Street View",
+        "fr": "pays sans couverture Google Street View",
+        "it": "paesi senza copertura di Google Street View",
+        "ja": "Google ストリートビュー非対応の国",
+        "ko": "구글 스트리트 뷰가 없는 국가"
+      }
+    },
+    {
+      "id": "rare-coverage",
+      "match": ["Port Vila"],
+      "count": true,
+      "icon": "geoguessr",
+      "reason": {
+        "en": "countries with only sparse Street View coverage",
+        "de": "Länder mit nur spärlicher Street-View-Abdeckung",
+        "es": "países con cobertura de Street View muy escasa",
+        "fr": "pays à couverture Street View très rare",
+        "it": "paesi con copertura Street View molto scarsa",
+        "ja": "ストリートビューがまばらな国",
+        "ko": "스트리트 뷰가 드문 국가"
+      }
+    }
+  ],
+  "tiers": [
+    [],
+
+    [
+      {"en":"Canberra","es":{"pref":"Canberra","others":["Camberra"]},"ja":"キャンベラ","ko":"캔버라","zh-Hans":"堪培拉","zh-Hant":"坎培拉"}
+    ],
+
+    [
+      {"en":"Port Moresby","es":"Puerto Moresby","ja":"ポートモレスビー","ko":"포트모르즈비","zh-Hans":"莫尔兹比港","zh-Hant":"莫士比港"},
+      {"en":"Wellington","ja":"ウェリントン","ko":"웰링턴","zh-Hans":"惠灵顿","zh-Hant":"威靈頓"}
+    ],
+
+    [],
+
+    [
+      {"en":"Suva","ja":"スバ","ko":"수바","zh-Hans":"苏瓦","zh-Hant":"蘇瓦"},
+      {"en":"Honiara","ja":"ホニアラ","ko":"호니아라","zh-Hans":{"pref":"霍尼亚拉","others":["霍尼亞拉"]},"zh-Hant":"荷尼阿拉"},
+      {"en":"Port Vila","fr":"Port-Vila","ja":"ポートビラ","ko":"포트빌라","zh-Hans":"维拉港","zh-Hant":"維拉港"},
+      {"en":"Apia","ja":"アピア","ko":"아피아","zh-Hans":"阿皮亚","zh-Hant":"阿皮亞"},
+      {"en":"South Tarawa","es":"Tarawa Sur","fr":"Tarawa-Sud","it":"Tarawa Sud","ja":"サウス・タラワ","ko":"사우스타라와","zh-Hans":"南塔拉瓦","zh-Hant":"南塔拉瓦"},
+      {"en":{"pref":"Nukuʻalofa","others":["Nuku'alofa"]},"de":{"pref":"Nukuʻalofa","others":["Nuku’alofa"]},"es":{"pref":"Nukualofa","others":["Nuku'alofa"]},"ja":"ヌクアロファ","ko":"누쿠알로파","zh-Hans":{"pref":"努库阿洛法","others":["努庫阿洛發"]},"zh-Hant":"努库阿洛法"},
+      {"en":"Palikir","ja":"パリキール","ko":"팔리키르","zh-Hans":"帕利基尔","?":["zh-Hant"]},
+      {"en":"Majuro","ja":"マジュロ","ko":"마주로","zh-Hans":"马朱罗","zh-Hant":"馬久羅"},
+      {"en":"Ngerulmud","ja":"ンゲルルムッド","ko":"응게룰무드","zh-Hans":"恩吉鲁穆德","zh-Hant":"恩吉魯穆德"},
+      {"en":"Yaren District","de":"Yaren","es":"Yaren","fr":"Yaren","it":"Yaren","ja":"ヤレン地区","ko":"야렌구","zh-Hans":{"pref":"亚伦区","others":["亞倫區"]},"?":["zh-Hant"]},
+      {"en":"Funafuti","es":{"pref":"Funafuti","others":["Fongafale (atolón de Funafuti)"]},"ja":"フナフティ島","ko":"푸나푸티","?":["zh-Hans","zh-Hant"]}
+    ]
+  ],
+  "tierConditions": [
+    {"en":"100 million or more","de":"100 Millionen und mehr","es":"100 millones o más","fr":"100 millions ou plus","it":"100 milioni o più","ja":"1億以上","ko":"1억 이상","zh-Hans":"1亿及以上","zh-Hant":"1億及以上"},
+    {"en":"20 million or more","de":"20 Millionen und mehr","es":"20 millones o más","fr":"20 millions ou plus","it":"20 milioni o più","ja":"2000万以上","ko":"2000만 이상","zh-Hans":"2000万及以上","zh-Hant":"2000萬及以上"},
+    {"en":"5 million or more","de":"5 Millionen und mehr","es":"5 millones o más","fr":"5 millions ou plus","it":"5 milioni o più","ja":"500万以上","ko":"500만 이상","zh-Hans":"500万及以上","zh-Hant":"500萬及以上"},
+    {"en":"1 million or more","de":"1 Million und mehr","es":"1 millón o más","fr":"1 million ou plus","it":"1 milione o più","ja":"100万以上","ko":"100만 이상","zh-Hans":"100万及以上","zh-Hant":"100萬及以上"},
+    {"en":"more than 0","de":"mehr als 0","es":"más de 0","fr":"plus de 0","it":"più di 0","ja":"0より多い","ko":"0보다 많음","zh-Hans":"多于0","zh-Hant":"多於0"}
+  ],
+  "rulerTooltip": {
+    "text": {"en":"Capitals of countries with {condition} inhabitants","de":"Hauptstädte von Ländern mit {condition} Einwohnern","es":"capitales de países con {condition} habitantes","fr":"capitales de pays comptant {condition} habitants","it":"capitali di paesi con {condition} abitanti","ja":"人口が{condition}の国の首都","ko":"인구가 {condition}인 국가의 수도"},
+    "empty": {"en":"Ranked by their country's population.","de":"Nach Einwohnerzahl des Landes geordnet.","es":"Ordenadas por la población de su país.","fr":"Classées par la population de leur pays.","it":"Ordinate per la popolazione del loro paese.","ja":"国の人口順。","ko":"해당 국가의 인구순 정렬."}
+  },
+  "inheritsUpwards": 1
+}

@@ -1,20 +1,46 @@
 {
-  "id": "video-games",
-  "title": { "en": "Video Games", "de": "Videospiele" },
-  "icon": "🎮",
+  "id": "video-games-characters",
+  "title": "Characters",
+  "icon": "🎭",
   "description": "Iconic video-game characters across franchises (language-neutral — names are the same across locales). Fame tiers by recognizability (tier 0 = most iconic).",
-  "groups": [
-    {
-      "id": "characters",
-      "title": "Characters",
-      "tiers": [
-        ["Mario", "Luigi", "Link", "Pikachu", "Sonic", "Kirby", "Master Chief", "Kratos", "Lara Croft", "Pac-Man"],
-        ["Zelda", "Bowser", "Donkey Kong", "Yoshi", "Samus", "Steve", "Geralt", "Cloud", "Ryu", "Mega Man"],
-        ["Crash Bandicoot", "Spyro", "Sub-Zero", "Scorpion", "Nathan Drake", "Ezio", "Doomguy", "Gordon Freeman", "Solid Snake", "Sephiroth"]
-      ]
-    }
-  ],
-  "presets": [
-    { "id": "all", "title": "All characters", "groups": ["characters"] }
+  "tiers": [
+    [
+      "Mario",
+      "Luigi",
+      "Link",
+      "Pikachu",
+      "Sonic",
+      "Kirby",
+      "Master Chief",
+      "Kratos",
+      "Lara Croft",
+      "Pac-Man"
+    ],
+
+    [
+      "Zelda",
+      "Bowser",
+      "Donkey Kong",
+      "Yoshi",
+      "Samus",
+      "Steve",
+      "Geralt",
+      "Cloud",
+      "Ryu",
+      "Mega Man"
+    ],
+
+    [
+      "Crash Bandicoot",
+      "Spyro",
+      "Sub-Zero",
+      "Scorpion",
+      "Nathan Drake",
+      "Ezio",
+      "Doomguy",
+      "Gordon Freeman",
+      "Solid Snake",
+      "Sephiroth"
+    ]
   ]
 }

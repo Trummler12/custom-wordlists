@@ -1,0 +1,138 @@
+{
+  "id": "europe-capitals",
+  "title": {"en":"Capitals","de":"Hauptstädte","es":"Capitales","fr":"Capitales","it":"Capitali","ja":"首都","ko":"수도","zh-Hans":"首都","zh-Hant":"首都"},
+  "languages": ["en","de","es","fr","it","ja","ja-Latn","ko","zh-Hans","zh-Hant"],
+  "generatedRomaji": true,
+  "sources": [
+    "Names: Wikidata capitals (P36) of the sovereign states — https://www.wikidata.org/wiki/Property:P36 (see scripts/geography/dump-country-data.mjs)",
+    "Variants: geonames alternate names, linked via Wikidata GeoNames id (P1566) — https://www.geonames.org (see scripts/geography/dump-capital-geonames.mjs)"
+  ],
+  "lastUpdated": "2026-08-26",
+  "lastChecked": "2026-08-26",
+  "defaultNames": "pref",
+  "omittable": [
+    {
+      "id": "de-facto-recognized",
+      "match": ["Pristina"],
+      "count": true,
+      "icon": "sovereignty",
+      "cell": [2,1],
+      "reason": {
+        "en": "fully sovereign states recognized by many, though not all, UN members",
+        "de": "vollständig souveräne Staaten, von vielen, aber nicht allen UN-Mitgliedern anerkannt",
+        "es": "estados plenamente soberanos reconocidos por muchos, aunque no todos, los miembros de la ONU",
+        "fr": "états pleinement souverains reconnus par de nombreux membres de l'ONU, mais pas tous",
+        "it": "stati pienamente sovrani riconosciuti da molti, ma non tutti, i membri dell'ONU",
+        "ja": "全てではないが多くの国連加盟国に承認された、完全な主権国家",
+        "ko": "전부는 아니지만 다수의 유엔 회원국이 승인한 완전한 주권 국가"
+      }
+    },
+    {
+      "id": "no-coverage",
+      "match": ["Chișinău","Vatican City"],
+      "count": true,
+      "icon": "geoguessr",
+      "reason": {
+        "en": "countries with no Google Street View coverage",
+        "de": "Länder ohne Google-Street-View-Abdeckung",
+        "es": "países sin cobertura de Google Street View",
+        "fr": "pays sans couverture Google Street View",
+        "it": "paesi senza copertura di Google Street View",
+        "ja": "Google ストリートビュー非対応の国",
+        "ko": "구글 스트리트 뷰가 없는 국가"
+      }
+    },
+    {
+      "id": "rare-coverage",
+      "match": ["Minsk"],
+      "count": true,
+      "icon": "geoguessr",
+      "reason": {
+        "en": "countries with only sparse Street View coverage",
+        "de": "Länder mit nur spärlicher Street-View-Abdeckung",
+        "es": "países con cobertura de Street View muy escasa",
+        "fr": "pays à couverture Street View très rare",
+        "it": "paesi con copertura Street View molto scarsa",
+        "ja": "ストリートビューがまばらな国",
+        "ko": "스트리트 뷰가 드문 국가"
+      }
+    }
+  ],
+  "tiers": [
+    [
+      {"en":"Moscow","de":"Moskau","es":"Moscú","fr":"Moscou","it":"Mosca","ja":"モスクワ","ko":"모스크바","zh-Hans":"莫斯科","zh-Hant":"莫斯科"}
+    ],
+
+    [
+      {"en":"Ankara","es":{"pref":"Ankara","others":["Angora"]},"ja":"アンカラ","ko":"앙카라","zh-Hans":"安卡拉","zh-Hant":"安卡拉"},
+      {"en":"Berlin","es":"Berlín","it":"Berlino","ja":"ベルリン","ko":"베를린","zh-Hans":"柏林","zh-Hant":"柏林"},
+      {"en":{"pref":"Paris","short":"Paris Department"},"de":{"pref":"Paris","short":"Département Paris"},"es":{"pref":"París","short":"Departamento de París"},"fr":{"pref":"Paris","short":"Département de Paris"},"it":{"pref":"Parigi","short":"Provincia di Parigi"},"ja":"パリ","ko":"파리","zh-Hans":"巴黎","zh-Hant":"巴黎"},
+      {"en":"London","es":"Londres","fr":"Londres","it":"Londra","ja":"ロンドン","ko":"런던","zh-Hans":"伦敦","zh-Hant":"倫敦"},
+      {"en":{"pref":"Rome","others":["Roma"]},"de":"Rom","es":"Roma","fr":"Rome","it":"Roma","ja":"ローマ","ko":"로마","zh-Hans":{"pref":"罗马","others":["罗马市"]},"zh-Hant":"羅馬"},
+      {"en":"Madrid","ja":"マドリード","ko":"마드리드","zh-Hans":"马德里","zh-Hant":"馬德里"},
+      {"en":"Kyiv","de":{"pref":"Kiew","others":["Kyiw","Kyjiw"]},"es":{"pref":"Kiev","others":["Kyiv"]},"fr":{"pref":"Kiev","others":["Kyiv"]},"it":{"pref":"Kiev","others":["Kyiv"]},"ja":"キーウ","ko":{"pref":"키이우","others":["키예프"]},"zh-Hans":"基辅","zh-Hant":"基輔"},
+      {"en":"Warsaw","de":"Warschau","es":"Varsovia","fr":"Varsovie","it":"Varsavia","ja":"ワルシャワ","ko":"바르샤바","zh-Hans":"华沙","zh-Hant":"華沙"},
+      {"en":"Astana","es":"Astaná","ja":"アスタナ","ko":"아스타나","zh-Hans":"阿斯塔纳","zh-Hant":"阿斯塔納"}
+    ],
+
+    [
+      {"en":"Bucharest","de":"Bukarest","es":"Bucarest","fr":"Bucarest","it":"Bucarest","ja":"ブカレスト","ko":"부쿠레슈티","zh-Hans":"布加勒斯特","zh-Hant":"布加勒斯特"},
+      {"en":"Amsterdam","es":"Ámsterdam","ja":{"pref":"アムステルダム","others":["Amusuterudamu"]},"ko":{"pref":"암스테르담","others":["Amseutereudam","Amsŭt'erŭdam"]},"zh-Hans":"阿姆斯特丹","zh-Hant":"阿姆斯特丹"},
+      {"en":{"pref":"Brussels","others":["City of Brussels"]},"de":"Brüssel","es":"Bruselas","fr":"Bruxelles","it":{"pref":"Bruxelles","others":["Città di Bruxelles"]},"ja":{"pref":"ブリュッセル市","others":["ブリュッセル"]},"ko":"브뤼셀","zh-Hans":"布鲁塞尔","zh-Hant":"布魯塞爾"},
+      {"en":"Prague","de":"Prag","es":"Praga","it":"Praga","ja":"プラハ","ko":"프라하","zh-Hans":"布拉格","zh-Hant":"布拉格"},
+      {"en":"Stockholm","es":"Estocolmo","it":"Stoccolma","ja":"ストックホルム","ko":"스톡홀름","zh-Hans":"斯德哥尔摩","zh-Hant":"斯德哥爾摩"},
+      {"en":"Athens","de":"Athen","es":"Atenas","fr":"Athènes","it":"Atene","ja":"アテネ","ko":{"pref":"아테네","others":["아테네 시"]},"zh-Hans":"雅典","zh-Hant":"雅典"},
+      {"en":"Lisbon","de":"Lissabon","es":"Lisboa","fr":"Lisbonne","it":"Lisbona","ja":"リスボン","ko":"리스본","zh-Hans":"里斯本","zh-Hant":"里斯本"},
+      {"en":"Budapest","ja":"ブダペスト","ko":"부다페스트","zh-Hans":"布达佩斯","zh-Hant":"布達佩斯"},
+      {"en":{"pref":"Bern","short":"Berne"},"de":"Bern","es":"Berna","fr":"Berne","it":"Berna","ja":"ベルン","ko":"베른","zh-Hans":"伯尔尼","zh-Hant":"伯恩"},
+      {"en":"Minsk","ja":"ミンスク","ko":"민스크","zh-Hans":"明斯克","zh-Hant":"明斯克"},
+      {"en":"Vienna","de":"Wien","es":"Viena","fr":"Vienne","ja":"ウィーン","ko":{"pref":"빈","others":["비엔나"]},"zh-Hans":{"pref":"维也纳","others":["維也納"]},"zh-Hant":"維也納"},
+      {"en":"Belgrade","de":"Belgrad","es":"Belgrado","it":"Belgrado","ja":"ベオグラード","ko":"베오그라드","zh-Hans":"贝尔格莱德","zh-Hant":"貝爾格勒"},
+      {"en":"Sofia","es":"Sofía","ja":"ソフィア","ko":"소피아","zh-Hans":"索非亚","zh-Hant":"索菲亞"},
+      {"en":"Copenhagen","de":"Kopenhagen","es":"Copenhague","fr":"Copenhague","it":"Copenaghen","ja":"コペンハーゲン","ko":"코펜하겐","zh-Hans":"哥本哈根","zh-Hant":"哥本哈根"},
+      {"en":"Helsinki","ja":"ヘルシンキ","ko":"헬싱키","zh-Hans":"赫尔辛基","zh-Hant":"赫爾辛基"},
+      {"en":"Oslo","ja":"オスロ","ko":"오슬로","zh-Hans":"奥斯陆","zh-Hant":"奧斯陸"},
+      {"en":"Bratislava","de":{"pref":"Bratislava","others":["Preßburg"]},"fr":{"pref":"Bratislava","others":["Presbourg"]},"ja":"ブラチスラヴァ","ko":"브라티슬라바","zh-Hans":"布拉迪斯拉发","zh-Hant":"布拉提斯拉瓦"},
+      {"en":{"pref":"Dublin","others":["Dublin city"]},"de":"Dublin","es":"Dublín","fr":"Dublin","it":"Dublino","ja":"ダブリン","ko":"더블린","zh-Hant":"都柏林","?":["zh-Hans"]}
+    ],
+
+    [
+      {"en":"Tbilisi","de":"Tiflis","es":"Tiflis","fr":"Tbilissi","ja":"トビリシ","ko":"트빌리시","zh-Hans":"第比利斯","zh-Hant":"提比里斯"},
+      {"en":"Zagreb","it":"Zagabria","ja":"ザグレブ","ko":"자그레브","zh-Hans":"萨格勒布","zh-Hant":"札格雷布"},
+      {"en":"Sarajevo","ja":"サラエヴォ","ko":"사라예보","zh-Hans":{"pref":"萨拉热窝","others":["塞拉耶佛"]},"zh-Hant":"塞拉耶佛"},
+      {"en":"Vilnius","es":"Vilna","ja":{"pref":"ヴィルニュス","others":["ヴィリニュス"]},"ko":"빌뉴스","zh-Hans":"维尔纽斯","zh-Hant":"維爾紐斯"},
+      {"en":"Tirana","ja":"ティラナ","ko":"티라나","zh-Hans":"地拉那","zh-Hant":"地拉那"},
+      {"en":{"pref":"Chișinău","others":["Chisinau"]},"de":{"pref":"Chișinău / Kischinjow","others":["Chişinău","Chișinău"]},"es":{"pref":"Chisináu","others":["Chișinău"]},"fr":{"pref":"Chișinău","others":["Chişinău"]},"it":{"pref":"Chișinău","others":["Chişinău"]},"ja":"キシナウ","ko":"키시너우","zh-Hans":"基希讷乌","zh-Hant":"基希涅夫"},
+      {"en":"Ljubljana","es":"Liubliana","it":"Lubiana","ja":"リュブリャナ","ko":"류블랴나","zh-Hans":"卢布尔雅那","zh-Hant":"盧比安納"},
+      {"en":"Riga","fr":{"pref":"Riga","others":["Rīga"]},"ja":"リガ","ko":"리가","zh-Hans":"里加","zh-Hant":"里加"},
+      {"en":"Skopje","es":{"pref":"Skopie","others":["Skopje"]},"ja":"スコピエ","ko":"스코페","zh-Hans":"斯科普里","zh-Hant":"史高比耶"},
+      {"en":{"pref":"Pristina","others":["Prishtina"]},"de":"Pristina","es":{"pref":"Pristina","others":["Priština"]},"fr":{"pref":"Pristina","others":["Priština"]},"it":{"pref":"Priština","others":["Prishtina","Pristina"]},"ja":"プリシュティナ","ko":"프리슈티나","zh-Hans":"普里什蒂纳","zh-Hant":"普里斯提納"},
+      {"en":"Tallinn","es":"Tallin","ja":"タリン","ko":"탈린","zh-Hans":"塔林","zh-Hant":"塔林"},
+      {"en":{"pref":"Nicosia","others":["Nicosia (Lefkosia)"]},"de":"Nikosia","es":"Nicosia","fr":"Nicosie","it":"Nicosia","ja":"ニコシア","ko":"니코시아","zh-Hans":"尼科西亚","zh-Hant":"尼古西亞"}
+    ],
+
+    [
+      {"en":{"pref":"Luxembourg","others":["Luxembourg City"]},"de":{"pref":"Luxemburg","others":["Stadt Luxemburg"]},"es":{"pref":"Luxemburgo","others":["Ciudad de Luxemburgo"]},"fr":{"pref":"Luxembourg","others":["Ville de Luxembourg"]},"it":"Lussemburgo","ja":{"pref":"ルクセンブルク市","others":["ルクセンブルク"]},"ko":"룩셈부르크","zh-Hans":{"pref":"卢森堡市","others":["盧森堡市"]},"zh-Hant":"盧森堡市"},
+      {"en":"Podgorica","ja":"ポドゴリツァ","ko":"포드고리차","zh-Hans":"波德戈里察","zh-Hant":"波德戈里察"},
+      {"en":"Valletta","es":{"pref":"La Valeta","others":["Valletta"]},"fr":{"pref":"La Valette","others":["Valletta"]},"it":"La Valletta","ja":{"pref":"バレッタ","others":["ヴァレッタ"]},"ko":"발레타","zh-Hans":"瓦莱塔","zh-Hant":"瓦萊塔"},
+      {"en":"Reykjavík","es":"Reikiavik","fr":"Reykjavik","ja":"レイキャヴィーク","ko":"레이캬비크","zh-Hans":"雷克雅未克","zh-Hant":"雷克雅未克"},
+      {"en":"Andorra la Vella","es":{"pref":"Andorra la Vieja","others":["Andorra la Vella"]},"fr":"Andorre-la-Vieille","ja":{"pref":"アンドラ・ラ・ベリャ","others":["アンドラ・ラ・ヴェリャ"]},"ko":{"pref":"안도라라벨랴","others":["안도라라베야"]},"zh-Hans":"安道尔城","zh-Hant":{"pref":"老安道爾","others":["安道爾城"]}},
+      {"en":{"pref":"Monaco","others":["Principality of Monaco"]},"de":"Monaco","es":{"pref":"Mónaco","others":["Principado de Mónaco"]},"fr":{"pref":"Monaco","others":["Principauté de Monaco"]},"it":{"pref":"Principato di Monaco","others":["Monaco"]},"ja":"モナコ","ko":"모나코","zh-Hans":"摩纳哥","zh-Hant":"摩納哥"},
+      {"en":"Vaduz","ja":"ファドゥーツ","ko":"파두츠","zh-Hans":"瓦杜兹","zh-Hant":"華杜茲"},
+      {"en":"San Marino","fr":{"pref":"Saint-Marin","others":["San Marino"]},"it":"Città di San Marino","ja":{"pref":"サンマリノ市","others":["サンマリノ"]},"ko":"산마리노","zh-Hans":"圣马力诺","zh-Hant":"聖馬力諾"},
+      {"en":{"pref":"Vatican City","others":["Holy See","Holy See (Vatican City State)","Vatican","Vatican City State","Vatican City State (Holy See)","Vatican Hill"]},"de":{"pref":"Vatikanstadt","others":["Staat der Vatikanstadt"]},"es":{"pref":"Ciudad del Vaticano","others":["El Vaticano","Santa Sede","Santa Sede (Estado de la Ciudad del Vaticano)"]},"fr":{"pref":"Vatican","others":["Saint-Siège (Etat de la Cité du Vatican)","Saint-Siège (État de la Cité du Vatican)"]},"it":{"pref":"Città del Vaticano","short":"Vaticano","others":["Città Vaticano","Colle Vaticano","Santa Sede (Città del Vaticano)","Stato della Città del Vaticano"]},"ja":{"pref":"バチカン","others":["ローマ教皇庁 (バチカン市国)","ローマ法王庁 (バチカン市国)"]},"ko":{"pref":"바티칸 시국","others":["바티칸","바티칸시티"]},"zh-Hans":"梵蒂冈","zh-Hant":{"pref":"梵蒂岡","others":["圣座（梵蒂冈）"]}}
+    ]
+  ],
+  "tierConditions": [
+    {"en":"100 million or more","de":"100 Millionen und mehr","es":"100 millones o más","fr":"100 millions ou plus","it":"100 milioni o più","ja":"1億以上","ko":"1억 이상","zh-Hans":"1亿及以上","zh-Hant":"1億及以上"},
+    {"en":"20 million or more","de":"20 Millionen und mehr","es":"20 millones o más","fr":"20 millions ou plus","it":"20 milioni o più","ja":"2000万以上","ko":"2000만 이상","zh-Hans":"2000万及以上","zh-Hant":"2000萬及以上"},
+    {"en":"5 million or more","de":"5 Millionen und mehr","es":"5 millones o más","fr":"5 millions ou plus","it":"5 milioni o più","ja":"500万以上","ko":"500만 이상","zh-Hans":"500万及以上","zh-Hant":"500萬及以上"},
+    {"en":"1 million or more","de":"1 Million und mehr","es":"1 millón o más","fr":"1 million ou plus","it":"1 milione o più","ja":"100万以上","ko":"100만 이상","zh-Hans":"100万及以上","zh-Hant":"100萬及以上"},
+    {"en":"more than 0","de":"mehr als 0","es":"más de 0","fr":"plus de 0","it":"più di 0","ja":"0より多い","ko":"0보다 많음","zh-Hans":"多于0","zh-Hant":"多於0"}
+  ],
+  "rulerTooltip": {
+    "text": {"en":"Capitals of countries with {condition} inhabitants","de":"Hauptstädte von Ländern mit {condition} Einwohnern","es":"capitales de países con {condition} habitantes","fr":"capitales de pays comptant {condition} habitants","it":"capitali di paesi con {condition} abitanti","ja":"人口が{condition}の国の首都","ko":"인구가 {condition}인 국가의 수도"},
+    "empty": {"en":"Ranked by their country's population.","de":"Nach Einwohnerzahl des Landes geordnet.","es":"Ordenadas por la población de su país.","fr":"Classées par la population de leur pays.","it":"Ordinate per la popolazione del loro paese.","ja":"国の人口順。","ko":"해당 국가의 인구순 정렬."}
+  },
+  "inheritsUpwards": 1
+}

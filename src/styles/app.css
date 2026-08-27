@@ -66,7 +66,7 @@ header {
 .layout.single {
   grid-template-columns: 1fr;
 }
-@media (max-width: 40rem) {
+@media (max-width: 50rem) {
   .layout {
     grid-template-columns: 1fr;
   }
@@ -85,7 +85,7 @@ header {
   height: calc(100vh - 2 * var(--output-gap) - var(--footer-h));
   min-height: 0;
 }
-@media (max-width: 40rem) {
+@media (max-width: 50rem) {
   /* Stacked: don't pin the output; size it to its content. */
   .output {
     position: static;
@@ -145,7 +145,7 @@ header {
 .site-footer a {
   color: inherit;
 }
-@media (max-width: 40rem) {
+@media (max-width: 50rem) {
   main {
     padding-bottom: 0;
   }
@@ -168,6 +168,7 @@ header {
   align-items: center;
   gap: 0.4rem;
   margin: var(--gap-before-cat) 0 var(--gap-after-cat);
+  position: relative; /* anchor for the coverage popup, like .topic-row */
 }
 /* Only the first TOP-LEVEL category hugs the "Topics" heading. Nested first
    children (e.g. Science → Chemistry) keep the normal above-gap so they aren't
@@ -233,9 +234,9 @@ header {
   display: flex;
   align-items: baseline;
   gap: 0.5rem;
-  flex: 1;
-  /* Left inset trimmed to meet the expander above; the row gap is left alone, since
-     it also spaces the controls on the far side. */
+  /* Content-width, not flex:1 — so the Names dropdown sits against the title like
+     a group row's, rather than being pushed to the far side. `.meta`'s margin
+     still right-aligns the count. */
   padding: 0.5rem 0.2rem 0.5rem 0.1rem;
   cursor: pointer;
 }
@@ -312,30 +313,7 @@ header {
   margin: 0 0 0.15rem;
 }
 
-/* Groups (nested under a topic) */
-/* .topics ul (the list reset) already zeroes list-style and padding here, but
-   its margin:0 also outweighs a bare .groups (0,1,1 vs 0,1,0) and would drop
-   these group checkboxes to the left of their topic's. Scope to the topic-item
-   so this one-step indent wins. */
-.topic-item > .groups {
-  margin: 0 0 0.4rem 2.1rem;
-}
-.group {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.25rem 0.2rem;
-}
-.group-label {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  cursor: pointer;
-}
-.group .title {
-  font-weight: 500;
-}
-/* Per-group Names dropdown (short / long / both); only groups with name pairs. */
+/* Names dropdown (short / long / both); only on a list whose entries have name pairs. */
 .names-mode {
   font-size: 0.75rem;
   padding: 0 0.15rem;
@@ -622,6 +600,46 @@ header {
   gap: 0.35rem;
   cursor: default;
 }
+/* Reset stands apart from the preferences above — a rule over it — and wears the
+   danger colour instead of the neutral chrome the rest of the menu uses. */
+.reset-row {
+  margin-top: 0.15rem;
+  padding-top: 0.5rem;
+  border-top: 1px solid var(--panel-border);
+  align-items: center;
+}
+.reset-btn {
+  flex: 1;
+  background: none;
+  border: 1px solid var(--danger);
+  border-radius: var(--radius-sm);
+  padding: 0.3rem 0.5rem;
+  color: var(--danger);
+  font: inherit;
+  line-height: 1.15;
+  text-align: center;
+  cursor: pointer;
+}
+.reset-btn:hover,
+.reset-btn:focus-visible,
+.reset-btn.armed {
+  background: var(--danger);
+  color: #fff;
+}
+.reset-cancel {
+  background: none;
+  border: none;
+  padding: 0 0.25rem;
+  color: var(--muted);
+  font-size: 1rem;
+  line-height: 1;
+  opacity: 0.7;
+  cursor: pointer;
+}
+.reset-cancel:hover,
+.reset-cancel:focus-visible {
+  opacity: 1;
+}
 .lang-btn {
   background: none;
   border: 1px solid var(--panel-border);
@@ -687,7 +705,7 @@ header {
 .lang-name {
   flex: 1;
 }
-@media (max-width: 40rem) {
+@media (max-width: 50rem) {
   .lang-header-slot {
     display: flex;
   }

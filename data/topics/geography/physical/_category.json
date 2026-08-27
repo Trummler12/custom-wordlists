@@ -1,0 +1,13 @@
+{
+  "title": {
+    "en": {"short": "Physical", "long": "Physical Geography"},
+    "de": {"short": "Physisch", "long": "Physische Geografie"},
+    "es": {"short": "Física", "long": "Geografía física"},
+    "fr": {"short": "Physique", "long": "Géographie physique"},
+    "it": {"short": "Fisica", "long": "Geografia fisica"},
+    "ja": "自然地理学",
+    "ko": "자연지리"
+  },
+  "icon": "🏔️",
+  "order": 1
+}

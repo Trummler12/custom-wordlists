@@ -4,13 +4,31 @@
 // tells a reader what was left out.
 
 import type { Group, Omission, WordEntry } from "./types";
-import { isUnknownIn, UNKNOWN } from "./words";
+import { displayName, isUnknownIn, UNKNOWN } from "./words";
+
+/** How many matched names a rule's summary keeps for its hover — enough to fill the
+ *  panel's five-line excerpt (see RULE_TITLE_* in OmittedPanel), capped so a large
+ *  family doesn't stash hundreds. */
+const SAMPLE_CAP = 50;
 
 /** The reserved rule id for the entries no name is known for in a language. Not a
  *  rule in the file — it comes from the entries themselves — but a reader toggles
  *  it exactly like one, so it shares the panel and the stored choice. The
  *  validator rejects a declared rule that claims this id. */
 export const UNKNOWN_RULE = UNKNOWN;
+
+/** The reserved rule id for names longer than the target game accepts.
+ *
+ *  Reserved the same way, and toggled the same way, but it differs from every
+ *  other rule in two respects. It drops a *form* rather than an entry, so it
+ *  cannot be applied here — see `overlongForms` in lib/words. And it is a fact
+ *  about where the list is going rather than about where it came from, which is
+ *  why no topic file declares it: skribbl's limit is not the Pokédex's business.
+ *
+ *  Not `locked`, for the same reason it isn't declared. A list built for
+ *  something other than skribbl may want the long names, and refusing them would
+ *  be the app deciding what the reader's list is for. */
+export const TOO_LONG_RULE = ">";
 
 /** Every string an entry carries, across all its forms and languages. A rule
  *  matches an entry when any of these does: the junk is localized
@@ -22,11 +40,12 @@ export function entryForms(e: WordEntry): string[] {
   // A name pair localizes per field; anything else is a language map whose values
   // are themselves entries. Both bottom out in strings. `?` is not one of them: it
   // holds language codes, and a glob is here to match names, not tags.
+  const others = Array.isArray(obj.others) ? obj.others : obj.others !== undefined ? [obj.others] : [];
   const parts =
-    "short" in obj && "long" in obj
-      ? [obj.short, obj.long]
+    "pref" in obj || "short" in obj || "long" in obj
+      ? [obj.pref, obj.short, obj.long, ...others]
       : Object.entries(obj).filter(([k]) => k !== UNKNOWN).map(([, v]) => v);
-  return parts.flatMap((p) => entryForms(p as WordEntry));
+  return parts.filter((p) => p !== undefined).flatMap((p) => entryForms(p as WordEntry));
 }
 
 // Compiled once per rule object; the rules live as long as the topic file they
@@ -127,7 +146,7 @@ export function visibleGroup(
 ): Group {
   // Before anything else: counting the unknowns walks every entry, so a cache hit
   // has to be answered without it. The group filed under its own key is the
-  // "nothing applies" answer — it carries no `unknownCount` because there is none.
+  // "nothing applies" answer — it carries no `unknownByTier` because there is none.
   const key = `${lang}|${[...toggled].sort().join(",")}`;
   let byKey = views.get(g);
   if (!byKey) views.set(g, (byKey = new Map()));
@@ -135,13 +154,17 @@ export function visibleGroup(
   if (hit) return hit;
 
   const declared = !!g.omitted?.length || !!g.omittable?.length;
-  const unknown = unknownCount(g, lang, toggled);
+  const byTier = unknownByTier(g, lang);
+  const unknown = byTier.reduce((a, b) => a + b, 0);
   if (!declared && unknown === 0) {
     byKey.set(key, g);
     return g;
   }
 
   const rules = activeRules(g, toggled);
+  // Over the entries as written (before `keep` prunes them), so an on-by-default
+  // rule still reports how many it hides and which — the count and the tooltip.
+  const summary = declared ? omissionSummary(g, lang) : undefined;
   // Ticked by default, like a declared `omitted` rule: a reader who wants the
   // English placeholders back says so, and the id in `toggled` is that answer.
   const hideUnknown = unknown > 0 && !toggled.includes(UNKNOWN_RULE);
@@ -154,25 +177,63 @@ export function visibleGroup(
   const base: Group = g.tiers
     ? { ...g, tiers: appendToLast(g.tiers.map(keep), standIns) }
     : { ...g, words: [...keep(g.words ?? []), ...standIns] };
-  const view: Group = { ...base, unknownCount: unknown };
+  const view: Group = {
+    ...base,
+    unknownByTier: byTier,
+    ...(summary ? { omissionSummary: summary } : {}),
+  };
   byKey.set(key, view);
   return view;
 }
 
-/** How many entries this list has no name for in `lang`, counted after the rules
- *  in force — a family that was left out anyway shouldn't be reported twice, and
- *  the number moves when the reader brings one back.
+/** How many entries have no name in `lang`, one number per tier.
  *
- *  Independent of whether the reader is hiding them: the panel row states the size
- *  of the family in both positions. */
-export function unknownCount(g: Group, lang: string, toggled: readonly string[] = []): number {
-  if (lang === "en") return 0;
-  const rules = activeRules(g, toggled);
-  let n = 0;
-  for (const list of g.tiers ?? [g.words ?? []]) {
-    for (const e of list) if (isUnknownIn(e, lang) && !isOmitted(e, rules)) n++;
+ *  Counted over the list as written, independent of every other rule: whether an
+ *  entry is also caught by, say, the breakaway-states rule is a different question,
+ *  and tying the two made this row's visibility flicker with the others' checkboxes.
+ *  Counting and hiding are separate concerns — the count is what unhiding could at
+ *  most bring back ("up to N"), the hiding is applied elsewhere.
+ *
+ *  Per tier rather than as a total, because the reader's ruler decides how much
+ *  of the list they are actually taking, and a count over tiers they left behind
+ *  reports a gap they don't have. Splitting it here is what lets the panel scope
+ *  it: this function cannot ask for the depth — `visibleGroup` runs inside
+ *  `topics`, and `selection`, which holds the depth, is downstream of it.
+ *
+ *  A flat group is one tier holding everything, which `depthOf` addresses with
+ *  its 0-or-1, so the caller needs no special case either. */
+export function unknownByTier(g: Group, lang: string): number[] {
+  const lists = g.tiers ?? [g.words ?? []];
+  if (lang === "en") return lists.map(() => 0);
+  return lists.map((list) => list.filter((e) => isUnknownIn(e, lang)).length);
+}
+
+/** The same over the whole list — what filtering asks, since an entry is hidden
+ *  or not regardless of which tier it sits in. */
+export function unknownCount(g: Group, lang: string): number {
+  return unknownByTier(g, lang).reduce((a, b) => a + b, 0);
+}
+
+/** Per declared rule id, how many entries it matches and a sample of their names —
+ *  over the entries as written, before any are filtered, so an on-by-default rule
+ *  can still report what it hides. Each entry counts once, under the first rule
+ *  that covers it. Feeds a rule's "up to N" label and its hover. */
+export function omissionSummary(
+  g: Group,
+  lang: string,
+): Record<string, { count: number; names: string[] }> {
+  const rules = allRules(g);
+  const out: Record<string, { count: number; names: string[] }> = {};
+  for (const r of rules) out[r.id] = { count: 0, names: [] };
+  const entries = g.tiers ? g.tiers.flat() : g.words ?? [];
+  for (const e of entries) {
+    const rule = findOmission(e, rules);
+    if (!rule) continue;
+    const s = out[rule.id];
+    s.count++;
+    if (s.names.length < SAMPLE_CAP) s.names.push(displayName(e, lang).short);
   }
-  return n;
+  return out;
 }
 
 /** Stand-ins join the least famous tier: they represent a family that was pruned

@@ -1,0 +1,62 @@
+Pacific plate	Placca pacifica
+African plate	Placca africana
+Antarctic plate	Placca antartica
+North American plate	Placca nordamericana
+Eurasian plate	Placca euroasiatica
+Australian plate	Placca australiana
+South American plate	Placca sudamericana
+Somali plate	Placca somala
+Nazca plate	Placca di Nazca
+Indian plate	Placca indiana
+Sunda plate	Placca della Sonda
+Philippine Sea plate	Placca delle Filippine
+Amur plate	Placca dell'Amur
+Arabian plate	Placca araba
+Okhotsk microplate	Placca di Okhotsk
+Caribbean plate	Placca caraibica
+Cocos plate	Placca di Cocos
+Yangtze plate	Placca dello Yangtze
+Scotia plate	Placca di Scotia
+Caroline plate	Placca delle Caroline
+North Andes plate	Placca delle Ande del Nord
+Banda Sea plate	Placca del Mar di Banda
+New Hebrides plate	Placca delle Nuove Ebridi
+Anatolian plate	Placca anatolica
+Bird's Head plate	Placca di Bird's Head
+Burma plate	Placca birmana
+Kermadec plate	Placca Kermadec
+Woodlark plate	Placca Woodlark
+Mariana plate	Placca delle Marianne
+Molucca Sea plate	Placca del Mare delle Molucche
+North Bismarck plate	Placca delle Bismarck Nord
+Timor plate	Placca di Timor
+Okinawa plate	Placca di Okinawa
+Aegean Sea plate	Placca del Mar Egeo
+South Bismarck plate	Placca delle Bismark Sud
+Panama plate	Placca di Panama
+Juan de Fuca plate	Placca di Juan de Fuca
+Tonga plate	Placca delle Tonga
+Balmoral Reef plate	Placca del Reef Balmoral
+Easter microplate	Placca dell'Isola di Pasqua
+Conway Reef plate	Placca del Reef Conway
+Solomon Sea plate	Placca del Mare delle Salomone
+Niuafo'ou plate	Placca Niuafo'ou
+Maoke plate	Placca Maoke
+Rivera plate	Placca Rivera
+Juan Fernández plate	Placca Juan Fernández
+Shetland plate	Placca delle Shetland
+Manus plate	Placca di Manus
+Indo-Australian plate	Placca indo-australiana
+Lwandle plate	Placca di Lwandle
+Capricorn plate	Placca del Capricorno
+Gonâve microplate	Microplacca di Gonâve
+Adriatic plate	Placca adriatica
+Azores Plateau	Plateau delle Azzorre
+Iberian plate	Placca iberica
+Iranian plate	altopiano iranico
+Greenland plate	Placca della Groenlandia
+Explorer plate	Placca Explorer
+Gorda plate	Placca di Gorda
+North Galapagos microplate	Placca delle Galápagos
+Philippine Mobile Belt	Cintura mobile delle Filippine
+Madagascar plate	Placca del Madagascar

@@ -22,7 +22,7 @@ export const ko: UIStrings = {
     wordsOf: (selected, total) => `${total}개 중 ${selected}개 단어`,
   },
   names: {
-    form: { short: "짧게", long: "길게", both: "둘 다" },
+    form: { pref: "선호", short: "짧게", long: "길게", both: "둘 다", all: "모두" },
     formLabel: (group) => `${group}의 이름 형식`,
   },
   fame: {
@@ -30,6 +30,8 @@ export const ko: UIStrings = {
     valueText: (depth, total) => `${total}단계 중 상위 ${depth}단계`,
     groupsDefined: (count) => `정의된 인지도 그룹: ${count}`,
     none: "아직 정의된 인지도 그룹이 없습니다. 하단의 Contribution Guide에서 제안할 수 있습니다.",
+    selected: "선택됨:",
+    mostlySelected: "대부분 선택됨:",
     toggle: (shown) =>
       shown ? "이 목록의 인지도 슬라이더 숨기기" : "이 목록의 인지도 슬라이더 표시",
     toggleAll: (allShown) =>
@@ -40,12 +42,44 @@ export const ko: UIStrings = {
     title: "이 목록에서 제외됨:",
     toggle: (omitted) => (omitted ? "켜면 목록에 포함합니다" : "켜면 제외합니다"),
     locked: "단어가 아니라 게임 데이터라서 추가할 수 없습니다.",
+    upTo: (n) => `최대 ${n}개`,
     unknown: (n, primary, secondary) =>
-      `원본 데이터에 ${primary}${secondary} 이름이 없는 항목 ${n}개`,
+      `원본 데이터에 ${primary}${secondary} 이름이 없는 항목 최대 ${n}개`,
     unknownHint: (omitted) =>
       omitted
         ? "켜면 유일하게 알려진 영어 이름으로 포함합니다."
         : "켜면 다시 제외합니다.",
+    unknownTier: (tier, n) => `${tier}단계: ${n}개 해당`,
+    tooLong: (n, maxLen) => `${maxLen}자를 넘는 이름 최대 ${n}개`,
+    tooLongHint: (omitted) =>
+      omitted
+        ? "켜면 그래도 포함합니다. skribbl.io는 받지 않지만 다른 게임은 받을 수도 있습니다."
+        : "켜면 다시 제외합니다.",
+  },
+  coverage: {
+    label: "Geoguessr / 스트리트 뷰 지원",
+    all: "모든 국가",
+    withCoverage: "공식 지원 포함",
+    reliable: "안정적 지원만",
+  },
+  sovereignty: {
+    label: "주권과 승인",
+    wiki: "https://ko.wikipedia.org/wiki/미승인_국가_목록",
+    axisRow: "법률상",
+    axisCol: "사실상",
+    cols: ["완전 독립", "부분 자치"],
+    rows: ["보편적 승인", "폭넓은 승인", "부분적 승인", "미승인"],
+    colDefs: [
+      "국경·사법·군대·조세를 스스로 관장한다.",
+      "고유의 법률과 의회를 갖지만 통화·국방·외교 등 핵심 권한은 다른 국가와 공유한다.",
+    ],
+    rowDefs: [
+      "유엔 회원국으로, 사실상 모든 나라가 승인한다.",
+      "다수의 유엔 회원국이 승인하나 일부 반대가 있다.",
+      "소수 국가만 승인하지만 사실상·인식상 존재감이 큰 경우가 많다.",
+      "국제적으로 다른 주권 국가의 일부로 여겨진다.",
+    ],
+    regular: "일반 국가",
   },
   language: {
     label: (current) => `언어: ${current}`,
@@ -74,6 +108,9 @@ export const ko: UIStrings = {
     showEnglishEn: "이 스위치는 영어가 아닌 언어에서만 나타납니다.",
     interfaceLang: "인터페이스 언어:",
     interfaceAuto: "자동",
+    reset: "설정{br}초기화",
+    resetConfirm: "다시 클릭하면 초기화",
+    resetCancel: "취소",
   },
   output: {
     label: "결과",
@@ -87,8 +124,7 @@ export const ko: UIStrings = {
     chars: "글자",
     belowMin: (min) => `· skribbl 최소 개수(${min}) 미만`,
     overMax: "· 최대치 초과",
-    excluded: (count, maxLen, list) =>
-      `${maxLen}자를 넘어 ${count}개 단어를 제외했습니다: ${list}`,
+    overLong: (count, maxLen) => `${maxLen}자를 넘는 단어 ${count}개`,
   },
   footer: {
     repository: "GitHub 저장소",

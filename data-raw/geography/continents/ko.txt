@@ -1,0 +1,10 @@
+Africa	아프리카
+Antarctica	남극
+Asia	아시아
+Australia	오스트레일리아
+Eurasia	유라시아
+Europe	유럽
+India	인도
+North America	북아메리카
+Oceania	오세아니아
+South America	남아메리카

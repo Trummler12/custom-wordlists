@@ -1,20 +1,40 @@
 {
-  "id": "the-simpsons",
-  "title": { "en": "The Simpsons", "de": "Die Simpsons" },
-  "icon": "🍩",
+  "id": "the-simpsons-characters",
+  "title": "Characters",
+  "icon": "🎭",
   "description": "The Simpsons characters (language-neutral — these names are the same in the German dub). Fame tiers by recognizability (tier 0 = most iconic).",
-  "groups": [
-    {
-      "id": "characters",
-      "title": "Characters",
-      "tiers": [
-        ["Homer", "Bart", "Lisa", "Marge", "Maggie", "Ned Flanders", "Mr. Burns", "Moe"],
-        ["Milhouse", "Krusty", "Barney", "Apu", "Chief Wiggum", "Ralph", "Nelson", "Smithers"],
-        ["Otto", "Duffman", "Kang", "Kodos", "Patty", "Selma", "Lenny", "Carl"]
-      ]
-    }
-  ],
-  "presets": [
-    { "id": "all", "title": "All characters", "groups": ["characters"] }
+  "tiers": [
+    [
+      "Homer",
+      "Bart",
+      "Lisa",
+      "Marge",
+      "Maggie",
+      "Ned Flanders",
+      "Mr. Burns",
+      "Moe"
+    ],
+
+    [
+      "Milhouse",
+      "Krusty",
+      "Barney",
+      "Apu",
+      "Chief Wiggum",
+      "Ralph",
+      "Nelson",
+      "Smithers"
+    ],
+
+    [
+      "Otto",
+      "Duffman",
+      "Kang",
+      "Kodos",
+      "Patty",
+      "Selma",
+      "Lenny",
+      "Carl"
+    ]
   ]
 }

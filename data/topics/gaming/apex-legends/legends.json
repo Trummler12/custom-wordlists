@@ -1,20 +1,42 @@
 {
-  "id": "apex-legends",
-  "title": "Apex Legends",
-  "icon": "🎯",
+  "id": "legends",
+  "title": "Legends",
+  "icon": "🎭",
   "description": "Apex Legends playable legends (language-neutral — names are the same across locales). Fame tiers by recognizability (tier 0 = launch/most-played icons).",
-  "groups": [
-    {
-      "id": "legends",
-      "title": "Legends",
-      "tiers": [
-        ["Wraith", "Octane", "Pathfinder", "Bloodhound", "Lifeline", "Bangalore", "Gibraltar", "Mirage"],
-        ["Caustic", "Wattson", "Revenant", "Loba", "Horizon", "Valkyrie", "Crypto", "Rampart", "Seer"],
-        ["Fuse", "Ash", "Mad Maggie", "Newcastle", "Vantage", "Catalyst", "Ballistic", "Conduit", "Alter"]
-      ]
-    }
-  ],
-  "presets": [
-    { "id": "all", "title": "All legends", "groups": ["legends"] }
+  "tiers": [
+    [
+      "Wraith",
+      "Octane",
+      "Pathfinder",
+      "Bloodhound",
+      "Lifeline",
+      "Bangalore",
+      "Gibraltar",
+      "Mirage"
+    ],
+
+    [
+      "Caustic",
+      "Wattson",
+      "Revenant",
+      "Loba",
+      "Horizon",
+      "Valkyrie",
+      "Crypto",
+      "Rampart",
+      "Seer"
+    ],
+
+    [
+      "Fuse",
+      "Ash",
+      "Mad Maggie",
+      "Newcastle",
+      "Vantage",
+      "Catalyst",
+      "Ballistic",
+      "Conduit",
+      "Alter"
+    ]
   ]
 }

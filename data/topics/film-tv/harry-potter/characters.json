@@ -1,59 +1,50 @@
 {
-  "id": "harry-potter",
-  "title": "Harry Potter",
-  "icon": "⚡",
+  "id": "harry-potter-characters",
+  "title": {"en":"Characters","de":"Charaktere"},
+  "icon": "🎭",
   "description": "Harry Potter characters (English names). Fame tiers by recognizability (tier 0 = most iconic).",
-  "groups": [
-    {
-      "id": "characters",
-      "title": {"en":"Characters","de":"Charaktere"},
-      "tiers": [
-        [
-          "Harry Potter",
-          {"en":"Hermione Granger","de":"Hermine Granger"},
-          "Ron Weasley",
-          "Albus Dumbledore",
-          "Lord Voldemort",
-          "Severus Snape",
-          "Hagrid",
-          "Draco Malfoy",
-          "Sirius Black",
-          "Dobby"
-        ],
+  "tiers": [
+    [
+      "Harry Potter",
+      {"en":"Hermione Granger","de":"Hermine Granger"},
+      "Ron Weasley",
+      "Albus Dumbledore",
+      "Lord Voldemort",
+      "Severus Snape",
+      "Hagrid",
+      "Draco Malfoy",
+      "Sirius Black",
+      "Dobby"
+    ],
 
-        [
-          "Minerva McGonagall",
-          "Bellatrix Lestrange",
-          "Lucius Malfoy",
-          "Neville Longbottom",
-          "Luna Lovegood",
-          "Ginny Weasley",
-          "Fred Weasley",
-          "George Weasley",
-          "Remus Lupin",
-          "Dolores Umbridge",
-          "Cedric Diggory",
-          "Cho Chang"
-        ],
+    [
+      "Minerva McGonagall",
+      "Bellatrix Lestrange",
+      "Lucius Malfoy",
+      "Neville Longbottom",
+      "Luna Lovegood",
+      "Ginny Weasley",
+      "Fred Weasley",
+      "George Weasley",
+      "Remus Lupin",
+      "Dolores Umbridge",
+      "Cedric Diggory",
+      "Cho Chang"
+    ],
 
-        [
-          {"en":"Tom Riddle","de":"Tom Vorlost Riddle"},
-          "Peter Pettigrew",
-          "Molly Weasley",
-          "Arthur Weasley",
-          "Nymphadora Tonks",
-          "Mad-Eye Moody",
-          "Gilderoy Lockhart",
-          {"en":"Moaning Myrtle","de":"Maulende Myrte"},
-          {"en":"Nearly Headless Nick","de":"Der fast kopflose Nick"},
-          "Fleur Delacour",
-          "Viktor Krum",
-          "Horace Slughorn"
-        ]
-      ]
-    }
-  ],
-  "presets": [
-    {"id":"all","title":"All characters","groups":["characters"]}
+    [
+      {"en":"Tom Riddle","de":"Tom Vorlost Riddle"},
+      "Peter Pettigrew",
+      "Molly Weasley",
+      "Arthur Weasley",
+      "Nymphadora Tonks",
+      "Mad-Eye Moody",
+      "Gilderoy Lockhart",
+      {"en":"Moaning Myrtle","de":"Maulende Myrte"},
+      {"en":"Nearly Headless Nick","de":"Der fast kopflose Nick"},
+      "Fleur Delacour",
+      "Viktor Krum",
+      "Horace Slughorn"
+    ]
   ]
 }

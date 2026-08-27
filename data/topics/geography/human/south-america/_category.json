@@ -1,0 +1,15 @@
+{
+  "title": {
+    "en": "South America",
+    "de": "Südamerika",
+    "es": "América del Sur",
+    "fr": "Amérique du Sud",
+    "it": "America meridionale",
+    "ja": "南アメリカ",
+    "ko": "남아메리카",
+    "zh-Hans": "南美洲",
+    "zh-Hant": "南美洲"
+  },
+  "icon": "🌎",
+  "order": 5
+}

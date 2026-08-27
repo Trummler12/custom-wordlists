@@ -1,0 +1,130 @@
+{
+  "id": "africa-capitals",
+  "title": {"en":"Capitals","de":"Hauptstädte","es":"Capitales","fr":"Capitales","it":"Capitali","ja":"首都","ko":"수도","zh-Hans":"首都","zh-Hant":"首都"},
+  "languages": ["en","de","es","fr","it","ja","ja-Latn","ko","zh-Hans","zh-Hant"],
+  "generatedRomaji": true,
+  "sources": [
+    "Names: Wikidata capitals (P36) of the sovereign states — https://www.wikidata.org/wiki/Property:P36 (see scripts/geography/dump-country-data.mjs)",
+    "Variants: geonames alternate names, linked via Wikidata GeoNames id (P1566) — https://www.geonames.org (see scripts/geography/dump-capital-geonames.mjs)"
+  ],
+  "lastUpdated": "2026-08-26",
+  "lastChecked": "2026-08-26",
+  "defaultNames": "pref",
+  "omittable": [
+    {
+      "id": "no-coverage",
+      "match": ["Addis Ababa","Algiers","Asmara","Bangui","Banjul","Bissau","Brazzaville","Ciudad de la Paz","Conakry","Djibouti","Freetown","Gitega","Harare","Juba","Khartoum","Kinshasa","Libreville","Lilongwe","Lomé","Luanda","Lusaka","Maputo","Mogadishu","Monrovia","Moroni","N'Djamena","Niamey","Nouakchott","Ouagadougou","Port Louis","Porto-Novo","Praia","Rabat","Tripoli","Victoria","Yamoussoukro","Yaoundé"],
+      "count": true,
+      "icon": "geoguessr",
+      "reason": {
+        "en": "countries with no Google Street View coverage",
+        "de": "Länder ohne Google-Street-View-Abdeckung",
+        "es": "países sin cobertura de Google Street View",
+        "fr": "pays sans couverture Google Street View",
+        "it": "paesi senza copertura di Google Street View",
+        "ja": "Google ストリートビュー非対応の国",
+        "ko": "구글 스트리트 뷰가 없는 국가"
+      }
+    },
+    {
+      "id": "rare-coverage",
+      "match": ["Bamako","Cairo","Dodoma"],
+      "count": true,
+      "icon": "geoguessr",
+      "reason": {
+        "en": "countries with only sparse Street View coverage",
+        "de": "Länder mit nur spärlicher Street-View-Abdeckung",
+        "es": "países con cobertura de Street View muy escasa",
+        "fr": "pays à couverture Street View très rare",
+        "it": "paesi con copertura Street View molto scarsa",
+        "ja": "ストリートビューがまばらな国",
+        "ko": "스트리트 뷰가 드문 국가"
+      }
+    }
+  ],
+  "tiers": [
+    [
+      {"en":"Abuja","es":{"pref":"Abuya","others":["Abuja"]},"ja":"アブジャ","ko":"아부자","zh-Hans":"阿布贾","zh-Hant":"阿布加"},
+      {"en":"Addis Ababa","de":"Addis Abeba","es":"Adís Abeba","fr":"Addis-Abeba","it":"Addis Abeba","ja":"アディスアベバ","ko":"아디스아바바","zh-Hans":"亚的斯亚贝巴","zh-Hant":"阿迪斯阿貝巴"},
+      {"en":"Cairo","de":"Kairo","es":{"pref":"El Cairo","short":"Cairo"},"fr":"Le Caire","it":"Il Cairo","ja":"カイロ","ko":"카이로","zh-Hans":"开罗","zh-Hant":"開羅"},
+      {"en":"Kinshasa","es":"Kinsasa","ja":"キンシャサ","ko":"킨샤사","zh-Hans":"金沙萨","zh-Hant":"金夏沙"}
+    ],
+
+    [
+      {"en":"Pretoria","ja":"プレトリア","ko":"프리토리아","zh-Hans":{"pref":"比勒陀利亚","others":["比勒陀利亞"]},"zh-Hant":{"pref":"普勒托利亞","others":["普利托利亞"]}},
+      {"en":"Cape Town","de":"Kapstadt","es":{"pref":"Ciudad del Cabo","others":["El Cabo"]},"fr":"Le Cap","it":"Città del Capo","ja":"ケープタウン","ko":"케이프타운","zh-Hans":"开普敦","zh-Hant":"開普敦"},
+      {"en":"Bloemfontein","ja":"ブルームフォンテーン","ko":"블룸폰테인","zh-Hans":"布隆方丹","zh-Hant":"布隆方丹"},
+      {"en":"Dodoma","ja":"ドドマ","ko":"도도마","zh-Hans":"多多马","?":["zh-Hant"]},
+      {"en":"Nairobi","ja":"ナイロビ","ko":"나이로비","zh-Hans":{"pref":"内罗毕","others":["奈洛比"]},"zh-Hant":"奈洛比"},
+      {"en":"Kampala","ja":"カンパラ","ko":"캄팔라","zh-Hans":"坎帕拉","zh-Hant":"康培拉"},
+      {"en":"Algiers","de":"Algier","es":"Argel","fr":"Alger","it":"Algeri","ja":"アルジェ","ko":"알제","zh-Hans":"阿尔及尔","zh-Hant":"阿爾及爾"},
+      {"en":"Khartoum","de":{"pref":"Chartum","others":["Khartum"]},"es":"Jartum","it":"Khartum","ja":"ハルツーム","ko":"하르툼","zh-Hans":"喀土穆","zh-Hant":"喀土穆"},
+      {"en":"Rabat","ja":"ラバト","ko":"라바트","zh-Hans":"拉巴特","zh-Hant":"拉巴特"},
+      {"en":"Luanda","ja":"ルアンダ","ko":"루안다","zh-Hans":"罗安达","zh-Hant":{"pref":"魯安達","others":["盧安達"]}},
+      {"en":"Accra","es":{"pref":"Acra","others":["Accra"]},"ja":"アクラ","ko":"아크라","zh-Hans":"阿克拉","zh-Hant":"阿克拉"},
+      {"en":"Antananarivo","fr":{"pref":"Antananarivo","others":["Tananarive"]},"ja":"アンタナナリボ","ko":"안타나나리보","zh-Hans":"塔那那利佛","zh-Hant":"安塔那那利佛"},
+      {"en":"Yamoussoukro","es":"Yamusukro","ja":"ヤムスクロ","ko":"야무수크로","zh-Hans":"亚穆苏克罗","?":["zh-Hant"]},
+      {"en":"Maputo","ja":"マプト","ko":{"pref":"마푸투","others":["마푸토"]},"zh-Hans":"马普托","zh-Hant":"馬普托"},
+      {"en":"Yaoundé","es":{"pref":"Yaundé","others":["Yaoundé"]},"ja":"ヤウンデ","ko":"야운데","zh-Hans":"雅温得","zh-Hant":"雅溫得"},
+      {"en":"Ouagadougou","es":"Uagadugú","ja":"ワガドゥグー","ko":"와가두구","zh-Hans":"瓦加杜古","zh-Hant":"瓦加杜古"},
+      {"en":"Bamako","fr":{"pref":"Bamako","others":["District de Bamako"]},"ja":"バマコ","ko":"바마코","zh-Hans":{"pref":"巴马科","others":["巴馬科"]},"zh-Hant":"巴馬科"},
+      {"en":"Niamey","ja":"ニアメ","ko":"니아메","zh-Hans":"尼亚美","zh-Hant":{"pref":"尼阿美","others":["尼亞美"]}}
+    ],
+
+    [
+      {"en":"Lusaka","ja":"ルサカ","ko":"루사카","zh-Hans":{"pref":"卢萨卡","others":["路沙卡"]},"zh-Hant":"路沙卡"},
+      {"en":"N'Djamena","de":{"pref":"N’Djamena","others":["Indschamina"]},"es":{"pref":"Yamena","others":["N'Djamena"]},"fr":{"pref":"N'Djaména","others":["Ndjamena"]},"it":{"pref":"N’Djamena","others":["N'Djamena"]},"ja":"ンジャメナ","ko":"은자메나","zh-Hans":"恩贾梅纳","zh-Hant":"恩賈梅納"},
+      {"en":"Lilongwe","es":{"pref":"Lilongüe","others":["Lilongwe"]},"ja":"リロングウェ","ko":"릴롱궤","zh-Hans":"利隆圭","?":["zh-Hant"]},
+      {"en":"Dakar","ja":"ダカール","ko":"다카르","zh-Hans":{"pref":"达喀尔","others":["達喀爾"]},"zh-Hant":"達卡"},
+      {"en":"Harare","ja":"ハラレ","ko":"하라레","zh-Hans":"哈拉雷","zh-Hant":"哈拉雷"},
+      {"en":"Kigali","ja":"キガリ","ko":"키갈리","zh-Hans":{"pref":"基加利","others":["吉佳利"]},"?":["zh-Hant"]},
+      {"en":"Porto-Novo","de":{"pref":"Porto-Novo","others":["Porto Novo"]},"es":"Porto Novo","fr":{"pref":"Porto-Novo","others":["Porto Novo"]},"ja":"ポルトノボ","ko":"포르토노보","zh-Hans":{"pref":"波多诺伏","others":["新港"]},"?":["zh-Hant"]},
+      {"en":"Gitega","es":{"pref":"Guitega","others":["Gitega"]},"ja":"ギテガ","ko":"기테가","zh-Hans":"基特加","zh-Hant":"基特加"},
+      {"en":"Conakry","es":{"pref":"Conakri","others":["Conakry"]},"ja":"コナクリ","ko":"코나크리","zh-Hans":"科纳克里","zh-Hant":"柯那克里"},
+      {"en":"Juba","de":{"pref":"Juba","others":["Dschuba"]},"es":"Yuba","fr":"Djouba","it":"Giuba","ja":"ジュバ","ko":"주바","zh-Hans":"朱巴","?":["zh-Hant"]},
+      {"en":"Tunis","es":{"pref":"Túnez","others":["Tunez"]},"it":"Tunisi","ja":"チュニス","ko":"튀니스","zh-Hans":{"pref":"突尼斯市","others":["突尼斯"]},"zh-Hant":"突尼斯市"},
+      {"en":"Mogadishu","de":"Mogadischu","es":"Mogadiscio","fr":"Mogadiscio","it":"Mogadiscio","ja":"モガディシュ","ko":"모가디슈","zh-Hans":"摩加迪休","zh-Hant":"摩加迪休"},
+      {"en":"Lomé","ja":"ロメ","ko":"로메","zh-Hans":"洛美","zh-Hant":"洛美"},
+      {"en":"Freetown","ja":"フリータウン","ko":"프리타운","zh-Hans":{"pref":"弗里敦","others":["自由市"]},"zh-Hant":"自由城"},
+      {"en":"Tripoli","de":"Tripolis","es":"Trípoli","ja":"トリポリ","ko":"트리폴리","zh-Hans":"的黎波里","zh-Hant":"的黎波里"},
+      {"en":"Brazzaville","ja":"ブラザヴィル","ko":"브라자빌","zh-Hans":"布拉柴维尔","zh-Hant":"布拉柴維爾"},
+      {"en":"Monrovia","ja":"モンロビア","ko":"몬로비아","zh-Hans":{"pref":"蒙罗维亚","others":["蒙羅維亞"]},"?":["zh-Hant"]},
+      {"en":"Bangui","ja":"バンギ","ko":"방기","zh-Hans":{"pref":"班吉","others":["班基"]},"zh-Hant":"班基"}
+    ],
+
+    [
+      {"en":"Nouakchott","es":"Nuakchot","ja":"ヌアクショット","ko":"누악쇼트","zh-Hans":"努瓦克肖特","?":["zh-Hant"]},
+      {"en":"Asmara","ja":"アスマラ","ko":"아스마라","zh-Hans":"阿斯马拉","zh-Hant":"阿斯馬拉"},
+      {"en":{"pref":"Banjul","others":["Bathurst"]},"de":"Banjul","es":"Banjul","fr":"Banjul","it":"Banjul","ja":"バンジュール","ko":"반줄","zh-Hans":{"pref":"班珠尔","others":["班竹"]},"zh-Hant":"班珠爾"},
+      {"en":"Windhoek","ja":"ウィントフック","ko":"빈트후크","zh-Hans":"温得和克","zh-Hant":"溫得和克"},
+      {"en":"Gaborone","ja":"ハボローネ","ko":"가보로네","zh-Hans":{"pref":"哈博罗内","others":["嘉柏隆里"]},"zh-Hant":"嘉柏隆里"},
+      {"en":"Libreville","ja":"リーブルヴィル","ko":"리브르빌","zh-Hans":"利伯维尔","zh-Hant":"自由市"},
+      {"en":"Maseru","ja":"マセル","ko":"마세루","zh-Hans":"马塞卢","zh-Hant":"馬塞盧"},
+      {"en":{"pref":"Bissau","others":["Bissau Autonomous Region"]},"de":"Bissau","es":"Bisáu","fr":"Bissau","it":"Bissau","ja":"ビサウ","ko":"비사우","zh-Hans":"比绍","zh-Hant":"比索"},
+      {"en":"Ciudad de la Paz","ja":"ラパス","ko":"오얄라","?":["zh-Hans","zh-Hant"]},
+      {"en":"Port Louis","es":{"pref":"Port Louis","others":["Puerto Louis"]},"fr":"Port-Louis","ja":"ポートルイス","ko":"포트루이스","zh-Hans":"路易港","?":["zh-Hant"]},
+      {"en":"Lobamba","ja":"ロバンバ","ko":"로밤바","zh-Hans":"洛班巴","zh-Hant":"洛班巴"},
+      {"en":"Mbabane","ja":"ムババーネ","ko":"음바바네","zh-Hans":{"pref":"姆巴巴内","others":["墨巴本"]},"zh-Hant":"墨巴本"},
+      {"en":"Djibouti","de":"Dschibuti","es":{"pref":"Ciudad de Yibuti","others":["Yibuti"]},"it":"Gibuti","ja":"ジブチ市","ko":"지부티","zh-Hans":"吉布地市","?":["zh-Hant"]}
+    ],
+
+    [
+      {"en":"Moroni","ja":"モロニ","ko":"모로니","zh-Hans":"莫洛尼","?":["zh-Hant"]},
+      {"en":"Praia","ja":"プライア","ko":"프라이아","zh-Hans":"普拉亚","zh-Hant":{"pref":"普拉亞","others":["培亞"]}},
+      {"en":"São Tomé","es":"Santo Tomé","ja":"サントメ","ko":"상투메","zh-Hans":"圣多美","?":["zh-Hant"]},
+      {"en":"Victoria","ja":"ヴィクトリア","ko":"빅토리아","zh-Hans":"维多利亚","?":["zh-Hant"]}
+    ]
+  ],
+  "tierConditions": [
+    {"en":"100 million or more","de":"100 Millionen und mehr","es":"100 millones o más","fr":"100 millions ou plus","it":"100 milioni o più","ja":"1億以上","ko":"1억 이상","zh-Hans":"1亿及以上","zh-Hant":"1億及以上"},
+    {"en":"20 million or more","de":"20 Millionen und mehr","es":"20 millones o más","fr":"20 millions ou plus","it":"20 milioni o più","ja":"2000万以上","ko":"2000만 이상","zh-Hans":"2000万及以上","zh-Hant":"2000萬及以上"},
+    {"en":"5 million or more","de":"5 Millionen und mehr","es":"5 millones o más","fr":"5 millions ou plus","it":"5 milioni o più","ja":"500万以上","ko":"500만 이상","zh-Hans":"500万及以上","zh-Hant":"500萬及以上"},
+    {"en":"1 million or more","de":"1 Million und mehr","es":"1 millón o más","fr":"1 million ou plus","it":"1 milione o più","ja":"100万以上","ko":"100만 이상","zh-Hans":"100万及以上","zh-Hant":"100萬及以上"},
+    {"en":"more than 0","de":"mehr als 0","es":"más de 0","fr":"plus de 0","it":"più di 0","ja":"0より多い","ko":"0보다 많음","zh-Hans":"多于0","zh-Hant":"多於0"}
+  ],
+  "rulerTooltip": {
+    "text": {"en":"Capitals of countries with {condition} inhabitants","de":"Hauptstädte von Ländern mit {condition} Einwohnern","es":"capitales de países con {condition} habitantes","fr":"capitales de pays comptant {condition} habitants","it":"capitali di paesi con {condition} abitanti","ja":"人口が{condition}の国の首都","ko":"인구가 {condition}인 국가의 수도"},
+    "empty": {"en":"Ranked by their country's population.","de":"Nach Einwohnerzahl des Landes geordnet.","es":"Ordenadas por la población de su país.","fr":"Classées par la population de leur pays.","it":"Ordinate per la popolazione del loro paese.","ja":"国の人口順。","ko":"해당 국가의 인구순 정렬."}
+  },
+  "inheritsUpwards": 1
+}

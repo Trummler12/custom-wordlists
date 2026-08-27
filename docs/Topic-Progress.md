@@ -18,24 +18,30 @@ The sections run in the order the app's own tree does, so the two can be read si
 
 ### Chemistry
 
-- [x] _Elements_
+- [x] **_Elements_**
 
 ## Geography
 
+### Physical
+
+- [x] _Continents & Plates_
+- [ ] Oceans & Seas
+- [ ] Islands
+- [ ] Mountains
+- [ ] Deserts
+- [ ] Rivers & Lakes
+- [ ] Climate Zones
+
+### Human
+
 - [x] **_Languages_**
-- [ ] Countries
-- [ ] Capitals
+- [x] **_Countries_**
+- [x] **_Capitals_**
 - [ ] Cities
-- [ ] Continents & Plates
+- [x] [Per-continent and worldwide lists — live for Countries & Capitals; Cities join once added]
 
-### Continents
-
-1 folder for each of the 7 common Continents, including:
-
-- [ ] Countries
-- [ ] Capitals
-- [ ] Cities
-- [ ] Local Settings to include or exclude individual countries
+Countries, capitals and cities are stored one folder per continent and read upward, so a world list and a continent's are the same entries at two grains rather than two lists.
+Cities go one level deeper again, per country.
 
 _In the VERY long term, we might even expand downwards to individual Communities, but that might take years..._
 
@@ -97,6 +103,11 @@ _In the VERY long term, we might even expand downwards to individual Communities
 
 - [ ] Athletes
 - [ ] Sports
+
+## Culture
+
+- [ ] Mythology
+- [ ] Religions
 
 ---
 

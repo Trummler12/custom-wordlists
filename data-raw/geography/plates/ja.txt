@@ -1,0 +1,61 @@
+Pacific plate	太平洋プレート
+African plate	アフリカプレート
+Antarctic plate	南極プレート
+North American plate	北アメリカプレート
+Eurasian plate	ユーラシアプレート
+Australian plate	オーストラリアプレート
+South American plate	南アメリカプレート
+Somali plate	ソマリアプレート
+Nazca plate	ナスカプレート
+Indian plate	インドプレート
+Sunda plate	スンダプレート
+Philippine Sea plate	フィリピン海プレート
+Amur plate	アムールプレート
+Arabian plate	アラビアプレート
+Okhotsk microplate	オホーツクプレート
+Caribbean plate	カリブプレート
+Cocos plate	ココスプレート
+Yangtze plate	揚子江プレート
+Scotia plate	スコシアプレート
+Caroline plate	カロライナプレート
+North Andes plate	北アンデスプレート
+Banda Sea plate	バンダ海プレート
+New Hebrides plate	ニューヘブリデスプレート
+Anatolian plate	アナトリアプレート
+Bird's Head plate	バーズヘッドプレート
+Burma plate	ビルマプレート
+Kermadec plate	ケルマデックプレート
+Woodlark plate	ウッドラークプレート
+Mariana plate	マリアナプレート
+Molucca Sea plate	モルッカ海プレート
+North Bismarck plate	北ビスマルクプレート
+Timor plate	ティモールプレート
+Okinawa plate	沖縄プレート
+Aegean Sea plate	エーゲ海プレート
+South Bismarck plate	南ビスマルクプレート
+Panama plate	パナマプレート
+Juan de Fuca plate	ファンデフカプレート
+Tonga plate	トンガプレート
+Balmoral Reef plate	バルモーラル暗礁プレート
+South Sandwich plate	サンドウィッチプレート
+Easter microplate	イースタープレート
+Conway Reef plate	コンウェイ暗礁プレート
+Solomon Sea plate	ソロモン海プレート
+Niuafo'ou plate	ニウアフォプレート
+Maoke plate	マウケプレート
+Rivera plate	リベラプレート
+Juan Fernández plate	ファン・フェルナンデスプレート
+Shetland plate	シェトランドプレート
+Futuna plate	フツナプレート
+Manus plate	マヌスプレート
+Indo-Australian plate	インド・オーストラリアプレート
+Gonâve microplate	ゴナーヴ・マイクロプレート
+Adriatic plate	アプリアプレート
+Iranian plate	イラン高原
+Sangihe plate	サンギヘ・プレート
+Greenland plate	グリーンランドプレート
+Explorer plate	エクスプローラープレート
+Gorda plate	ゴルダプレート
+North Galapagos microplate	ガラパゴスプレート
+Philippine Mobile Belt	フィリピン変動帯
+Madagascar plate	マダガスカル・プレート

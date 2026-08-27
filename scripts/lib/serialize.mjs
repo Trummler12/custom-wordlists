@@ -20,17 +20,27 @@ const TOPIC_KEYS = [
   "usesEnglishFor",
   "generatedRomaji",
   "hideRulersByDefault",
+  "hideRulers",
   "sources",
   "corrections",
   "credits",
   "lastUpdated",
   "lastChecked",
-  "groups",
-  "presets",
+  // A flattened topic carries its list directly, in the same order a group would.
+  "defaultNames",
+  "tierNotes",
+  "omitted",
+  "omittable",
+  "words",
+  "tiers",
+  "tierConditions",
+  "rulerTooltip",
+  "inheritsUpwards",
 ];
 
-/** Field order within a group. `words` and `tiers` are mutually exclusive. */
-const GROUP_KEYS = ["id", "title", "omitted", "omittable", "words", "tiers"];
+/** Field order within a ruler tooltip. */
+const TOOLTIP_KEYS = ["text", "empty"];
+
 
 const line = (indent, text) => " ".repeat(indent) + text;
 
@@ -42,10 +52,15 @@ function block(items, indent, closeIndent) {
 }
 
 /** Field order within an omission rule. */
-const RULE_KEYS = ["id", "match", "as", "except", "locked", "reason"];
+const RULE_KEYS = ["id", "match", "as", "except", "locked", "count", "icon", "cell", "reason"];
 
-/** One omission rule per block rather than per line, with its `reason` opened up
- *  one language to a line.
+/** Field order within a tier note. */
+const NOTE_KEYS = ["fromTier", "icon", "text"];
+
+/** One object per block rather than per line, with its prose field opened up one
+ *  language to a line. `field` is the indent of the array's `"key":` line, so the
+ *  same shape serializes at group level (6) and, since the topics were flattened,
+ *  at topic level (2).
  *
  *  A rule used to fit on a line because it carried two languages. At seven it
  *  would run past any window, and these are prose sentences of uneven length —
@@ -53,56 +68,68 @@ const RULE_KEYS = ["id", "match", "as", "except", "locked", "reason"];
  *  translation changes, and a diff that should read as "the Spanish text moved"
  *  reads as three languages moving. One per line keeps a change where it
  *  belongs. */
-function ruleBlock(rules) {
+function proseBlock(items, order, prose, field) {
   const NL = "\n";
-  const body = rules
-    .map((rule) => {
-      const keys = [...RULE_KEYS, ...Object.keys(rule).filter((k) => !RULE_KEYS.includes(k))];
+  const brace = field + 2;
+  const inner = field + 4;
+  const body = items
+    .map((item) => {
+      const keys = [...order, ...Object.keys(item).filter((k) => !order.includes(k))];
       const fields = [];
       for (const key of keys) {
-        const value = rule[key];
+        const value = item[key];
         if (value === undefined) continue;
-        if (key === "reason" && value !== null && typeof value === "object") {
+        if (key === prose && value !== null && typeof value === "object") {
           const langs = Object.entries(value)
-            .map(([l, text]) => line(12, `${JSON.stringify(l)}: ${JSON.stringify(text)}`))
+            .map(([l, text]) => line(inner + 2, `${JSON.stringify(l)}: ${JSON.stringify(text)}`))
             .join(`,${NL}`);
-          fields.push(line(10, `"reason": {${NL}${langs}${NL}${line(10, "}")}`));
+          fields.push(line(inner, `${JSON.stringify(key)}: {${NL}${langs}${NL}${line(inner, "}")}`));
         } else {
-          fields.push(line(10, `${JSON.stringify(key)}: ${JSON.stringify(value)}`));
+          fields.push(line(inner, `${JSON.stringify(key)}: ${JSON.stringify(value)}`));
         }
       }
-      return [line(8, "{"), fields.join(`,${NL}`), line(8, "}")].join(NL);
+      return [line(brace, "{"), fields.join(`,${NL}`), line(brace, "}")].join(NL);
     })
     .join(`,${NL}`);
-  return `[${NL}${body}${NL}${line(6, "]")}`;
+  return `[${NL}${body}${NL}${line(field, "]")}`;
+}
+
+/** Tier conditions: one condition per line, its whole language map inline. Unlike
+ *  a rule's prose these are short parallel phrases, and reading tier 2 against tier
+ *  3 wants them stacked, not each spread over nine lines. */
+function condBlock(conds, field) {
+  const body = conds.map((c) => line(field + 2, JSON.stringify(c))).join(",\n");
+  return `[\n${body}\n${line(field, "]")}`;
+}
+
+/** A ruler tooltip: its two sentences one to a line, each language map inline —
+ *  the same reasoning as `condBlock`, they are short and read against each other. */
+function tooltipBlock(tt, field) {
+  const body = TOOLTIP_KEYS.filter((k) => tt[k] !== undefined)
+    .map((k) => line(field + 2, `${JSON.stringify(k)}: ${JSON.stringify(tt[k])}`))
+    .join(",\n");
+  return `{\n${body}\n${line(field, "}")}`;
 }
 
 /** Fame tiers: each tier its own multi-line array, a blank line between them, so
  *  the boundaries are visible in the file rather than only in the count. */
-function tierBlock(tiers) {
+function tierBlock(tiers, field) {
   const body = tiers
-    .map((tier) => line(8, block(tier, 10, 8)))
+    .map((tier) => line(field + 2, block(tier, field + 4, field + 2)))
     .join(",\n\n");
-  return `[\n${body}\n${line(6, "]")}`;
+  return `[\n${body}\n${line(field, "]")}`;
 }
 
-function serializeGroup(group, warn) {
-  const parts = [];
-  for (const key of GROUP_KEYS) {
-    const value = group[key];
-    if (value === undefined) continue;
-    if (key === "words") parts.push(line(6, `"words": ${block(value, 8, 6)}`));
-    else if (key === "tiers") parts.push(line(6, `"tiers": ${tierBlock(value)}`));
-    else if (key === "omitted" || key === "omittable") {
-      parts.push(line(6, `"${key}": ${ruleBlock(value)}`));
-    } else parts.push(line(6, `"${key}": ${JSON.stringify(value)}`));
-  }
-  for (const key of Object.keys(group)) {
-    if (GROUP_KEYS.includes(key)) continue;
-    warn(`group "${group.id}" has unknown key "${key}" — written through unformatted`);
-    parts.push(line(6, `"${key}": ${JSON.stringify(group[key])}`));
-  }
-  return `${line(4, "{")}\n${parts.join(",\n")}\n${line(4, "}")}`;
+/** Serialize one of the list-carrying fields at the given indent, or null when the
+ *  key is not one — shared by a group (field 6) and a flat topic (field 2). */
+function listField(key, value, field) {
+  if (key === "words") return `"words": ${block(value, field + 2, field)}`;
+  if (key === "tiers") return `"tiers": ${tierBlock(value, field)}`;
+  if (key === "tierConditions") return `"tierConditions": ${condBlock(value, field)}`;
+  if (key === "rulerTooltip") return `"rulerTooltip": ${tooltipBlock(value, field)}`;
+  if (key === "omitted" || key === "omittable") return `"${key}": ${proseBlock(value, RULE_KEYS, "reason", field)}`;
+  if (key === "tierNotes") return `"tierNotes": ${proseBlock(value, NOTE_KEYS, "text", field)}`;
+  return null;
 }
 
 /** Serialize a whole topic file, ending in a newline.
@@ -114,13 +141,11 @@ export function serializeTopic(topic, warn = (m) => console.warn(`serialize: ${m
     if (Array.isArray(value) && (key === "sources" || key === "credits") && value.length > 1) {
       // A list of sources reads as a list, one per line — they are long URLs.
       parts.push(line(2, `"${key}": ${block(value, 4, 2)}`));
-    } else if (key === "groups") {
-      const body = value.map((g) => serializeGroup(g, warn)).join(",\n");
-      parts.push(line(2, `"groups": [\n${body}\n${line(2, "]")}`));
-    } else if (key === "presets") {
-      parts.push(line(2, `"presets": ${block(value, 4, 2)}`));
     } else {
-      parts.push(line(2, `"${key}": ${JSON.stringify(value)}`));
+      // A topic's list fields serialize at topic indent; everything else is a
+      // scalar or small object that fits on its line.
+      const list = listField(key, value, 2);
+      parts.push(line(2, list ?? `"${key}": ${JSON.stringify(value)}`));
     }
   };
 
@@ -150,18 +175,16 @@ function sorted(topic) {
     for (const k of Object.keys(obj)) if (!keys.includes(k)) out[k] = obj[k];
     return out;
   };
-  const t = order(topic, TOPIC_KEYS);
-  if (t.groups) {
-    t.groups = t.groups.map((g) => {
-      const out = order(g, GROUP_KEYS);
-      // Rules are reordered on the way out too, so the comparison has to expect
-      // it — otherwise a file that merely lists `except` before `as` reads as
-      // data lost.
-      for (const key of ["omitted", "omittable"]) {
-        if (out[key]) out[key] = out[key].map((rule) => order(rule, RULE_KEYS));
-      }
-      return out;
-    });
-  }
-  return t;
+  // Rules and notes are reordered on the way out too, so the comparison has to
+  // expect it — otherwise a file that merely lists `except` before `as` reads as
+  // data lost. Applies wherever they live: in a group, or on a flattened topic.
+  const orderRules = (obj) => {
+    for (const key of ["omitted", "omittable"]) {
+      if (obj[key]) obj[key] = obj[key].map((rule) => order(rule, RULE_KEYS));
+    }
+    if (obj.tierNotes) obj.tierNotes = obj.tierNotes.map((n) => order(n, NOTE_KEYS));
+    if (obj.rulerTooltip) obj.rulerTooltip = order(obj.rulerTooltip, TOOLTIP_KEYS);
+    return obj;
+  };
+  return orderRules(order(topic, TOPIC_KEYS));
 }

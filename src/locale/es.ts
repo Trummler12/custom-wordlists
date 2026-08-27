@@ -17,7 +17,7 @@ export const es: UIStrings = {
     wordsOf: (selected, total) => `${selected} de ${total} palabra${total === 1 ? "" : "s"}`,
   },
   names: {
-    form: { short: "corto", long: "largo", both: "ambos" },
+    form: { pref: "preferido", short: "corto", long: "largo", both: "ambos", all: "todos" },
     formLabel: (group) => `Forma del nombre para ${group}`,
   },
   fame: {
@@ -26,6 +26,8 @@ export const es: UIStrings = {
       depth === 1 ? `nivel más alto de ${total}` : `${depth} niveles más altos de ${total}`,
     groupsDefined: (count) => `Grupos de fama definidos: ${count}`,
     none: "Aún no hay grupos de fama definidos: consulta la Contribution Guide en el pie de página para proponer algunos.",
+    selected: "Selección:",
+    mostlySelected: "Selección mayoritaria:",
     toggle: (shown) =>
       shown ? "Ocultar la regla de fama de esta lista" : "Mostrar la regla de fama de esta lista",
     toggleAll: (allShown) =>
@@ -37,12 +39,45 @@ export const es: UIStrings = {
     toggle: (omitted) =>
       omitted ? "Activar para incluirlos en tu lista" : "Activar para dejarlos fuera",
     locked: "Son datos del juego y no palabras, así que no se pueden incluir.",
+    upTo: (n) => `Hasta ${n}`,
     unknown: (n, primary, secondary) =>
-      `${n} entrada${n === 1 ? "" : "s"} sin nombre en ${primary}${secondary} en los datos de origen`,
+      `Hasta ${n} entrada${n === 1 ? "" : "s"} sin nombre en ${primary}${secondary} en los datos de origen`,
     unknownHint: (omitted) =>
       omitted
         ? "Activar para incluirlas con su nombre en inglés, el único que se conoce."
         : "Activar para volver a dejarlas fuera.",
+    unknownTier: (tier, n) => `Nivel ${tier}: ${n} entrada${n === 1 ? "" : "s"} afectada${n === 1 ? "" : "s"}`,
+    tooLong: (n, maxLen) =>
+      `Hasta ${n} nombre${n === 1 ? "" : "s"} de más de ${maxLen} caracteres`,
+    tooLongHint: (omitted) =>
+      omitted
+        ? "Activar para incluirlos de todos modos: skribbl.io no los acepta, pero otro juego sí podría."
+        : "Activar para volver a dejarlos fuera.",
+  },
+  coverage: {
+    label: "Geoguessr / Cobertura de Street View",
+    all: "Todos los países",
+    withCoverage: "Con cobertura oficial",
+    reliable: "Solo cobertura fiable",
+  },
+  sovereignty: {
+    label: "Soberanía y reconocimiento",
+    wiki: "https://es.wikipedia.org/wiki/Estado_con_reconocimiento_limitado",
+    axisRow: "de iure",
+    axisCol: "de facto",
+    cols: ["Plenamente independiente", "Parcialmente autónomo"],
+    rows: ["Reconocimiento universal", "Reconocimiento amplio", "Reconocimiento parcial", "Sin reconocimiento"],
+    colDefs: [
+      "Controla sus fronteras, justicia, ejército e impuestos.",
+      "Tiene leyes y parlamento propios, pero comparte competencias clave — moneda, defensa, política exterior — con otro Estado.",
+    ],
+    rowDefs: [
+      "Estado miembro de la ONU, reconocido por casi todos los demás.",
+      "Reconocido por una gran parte de los miembros de la ONU, con algunas excepciones.",
+      "Reconocido solo por unos pocos Estados, aunque a menudo con fuerte presencia funcional o percibida.",
+      "Considerado internacionalmente parte de otro Estado soberano.",
+    ],
+    regular: "Estados regulares",
   },
   language: {
     label: (current) => `Idioma: ${current}`,
@@ -77,6 +112,9 @@ export const es: UIStrings = {
     showEnglishEn: "Estos interruptores solo aparecen en idiomas distintos del inglés.",
     interfaceLang: "Idioma de la interfaz:",
     interfaceAuto: "Automático",
+    reset: "Restablecer ajustes{br}predeterminados",
+    resetConfirm: "Pulsa de nuevo para confirmar",
+    resetCancel: "Cancelar",
   },
   output: {
     label: "Resultado",
@@ -90,8 +128,8 @@ export const es: UIStrings = {
     chars: "caracteres",
     belowMin: (min) => `· por debajo del mínimo de skribbl (${min})`,
     overMax: "· por encima del máximo",
-    excluded: (count, maxLen, list) =>
-      `${count} palabra${count === 1 ? "" : "s"} excluida${count === 1 ? "" : "s"} (más de ${maxLen} caracteres): ${list}`,
+    overLong: (count, maxLen) =>
+      `${count} palabra${count === 1 ? "" : "s"} de más de ${maxLen} caracteres`,
   },
   footer: {
     repository: "Repositorio de GitHub",

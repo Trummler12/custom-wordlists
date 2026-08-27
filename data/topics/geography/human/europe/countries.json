@@ -1,0 +1,212 @@
+{
+  "id": "europe-countries",
+  "title": {"en":"Countries","de":"Länder","es":"Países","fr":"Pays","it":"Paesi","ja":"国","ko":"국가","zh-Hans":"国家","zh-Hant":"國家"},
+  "languages": ["en","de","es","fr","it","ja","ja-Latn","ko","zh-Hans","zh-Hant"],
+  "generatedRomaji": true,
+  "sources": [
+    "Names & variants: geonames country info and alternate names — https://www.geonames.org/countries/ (see scripts/geography/dump-geonames.mjs)",
+    "Population & tiers: Wikidata sovereign states (P31 Q3624078) — https://www.wikidata.org/wiki/Q3624078 (see scripts/geography/dump-country-data.mjs)"
+  ],
+  "lastUpdated": "2026-08-26",
+  "lastChecked": "2026-08-26",
+  "defaultNames": "pref",
+  "omitted": [
+    {
+      "id": "classic-autonomous",
+      "match": ["Faroe Islands","Gibraltar"],
+      "count": true,
+      "icon": "sovereignty",
+      "cell": [4,2],
+      "reason": {
+        "en": "autonomous territories internationally regarded as part of a sovereign state",
+        "de": "autonome Gebiete, die international als Teil eines souveränen Staates gelten",
+        "es": "territorios autónomos considerados internacionalmente parte de un Estado soberano",
+        "fr": "territoires autonomes internationalement considérés comme partie d'un État souverain",
+        "it": "territori autonomi considerati a livello internazionale parte di uno Stato sovrano",
+        "ja": "国際的に主権国家の一部と見なされる自治地域",
+        "ko": "국제적으로 주권 국가의 일부로 여겨지는 자치 지역"
+      }
+    }
+  ],
+  "omittable": [
+    {
+      "id": "asymmetric-autonomy",
+      "match": ["Guernsey","Isle of Man","Jersey","Åland"],
+      "count": true,
+      "icon": "sovereignty",
+      "cell": [1,2],
+      "reason": {
+        "en": "autonomous regions whose broad self-rule is internationally recognized",
+        "de": "autonome Regionen, deren weitreichende Selbstverwaltung völkerrechtlich anerkannt ist",
+        "es": "regiones autónomas cuyo amplio autogobierno está reconocido internacionalmente",
+        "fr": "régions autonomes dont la large autonomie est reconnue internationalement",
+        "it": "regioni autonome la cui ampia autonomia è riconosciuta a livello internazionale",
+        "ja": "広範な自治が国際的に認められている自治地域",
+        "ko": "폭넓은 자치가 국제적으로 인정된 자치 지역"
+      }
+    },
+    {
+      "id": "de-facto-narrow",
+      "match": ["Northern Cyprus"],
+      "count": true,
+      "icon": "sovereignty",
+      "cell": [3,1],
+      "reason": {
+        "en": "fully self-governing states recognized by only a few UN members",
+        "de": "vollständig selbstverwaltete Staaten, nur von wenigen UN-Mitgliedern anerkannt",
+        "es": "estados con autogobierno pleno reconocidos por solo unos pocos miembros de la ONU",
+        "fr": "états pleinement autonomes reconnus par seulement quelques membres de l'ONU",
+        "it": "stati pienamente autogovernati riconosciuti solo da pochi membri dell'ONU",
+        "ja": "ごく一部の国連加盟国のみに承認された、完全に自治を行う国家",
+        "ko": "소수의 유엔 회원국만이 승인한, 완전한 자치 국가"
+      }
+    },
+    {
+      "id": "de-facto-recognized",
+      "match": ["Kosovo"],
+      "count": true,
+      "icon": "sovereignty",
+      "cell": [2,1],
+      "reason": {
+        "en": "fully sovereign states recognized by many, though not all, UN members",
+        "de": "vollständig souveräne Staaten, von vielen, aber nicht allen UN-Mitgliedern anerkannt",
+        "es": "estados plenamente soberanos reconocidos por muchos, aunque no todos, los miembros de la ONU",
+        "fr": "états pleinement souverains reconnus par de nombreux membres de l'ONU, mais pas tous",
+        "it": "stati pienamente sovrani riconosciuti da molti, ma non tutti, i membri dell'ONU",
+        "ja": "全てではないが多くの国連加盟国に承認された、完全な主権国家",
+        "ko": "전부는 아니지만 다수의 유엔 회원국이 승인한 완전한 주권 국가"
+      }
+    },
+    {
+      "id": "pure-de-facto",
+      "match": ["Transnistria"],
+      "count": true,
+      "icon": "sovereignty",
+      "cell": [4,1],
+      "reason": {
+        "en": "self-declared states recognized by few or no UN members",
+        "de": "selbsterklärte Staaten, von wenigen oder keinen UN-Mitgliedern anerkannt",
+        "es": "estados autoproclamados reconocidos por pocos o ningún miembro de la ONU",
+        "fr": "états autoproclamés reconnus par peu ou aucun membre de l'ONU",
+        "it": "stati autoproclamati riconosciuti da pochi o nessun membro dell'ONU",
+        "ja": "国連加盟国のごく一部にしか、あるいは全く承認されない自称国家",
+        "ko": "유엔 회원국 중 극소수만이 또는 전혀 승인하지 않는 자칭 국가"
+      }
+    },
+    {
+      "id": "no-coverage",
+      "match": ["Guernsey","Moldova","Northern Cyprus","Transnistria","Vatican City"],
+      "count": true,
+      "icon": "geoguessr",
+      "reason": {
+        "en": "countries with no Google Street View coverage",
+        "de": "Länder ohne Google-Street-View-Abdeckung",
+        "es": "países sin cobertura de Google Street View",
+        "fr": "pays sans couverture Google Street View",
+        "it": "paesi senza copertura di Google Street View",
+        "ja": "Google ストリートビュー非対応の国",
+        "ko": "구글 스트리트 뷰가 없는 국가"
+      }
+    },
+    {
+      "id": "rare-coverage",
+      "match": ["Belarus"],
+      "count": true,
+      "icon": "geoguessr",
+      "reason": {
+        "en": "countries with only sparse Street View coverage",
+        "de": "Länder mit nur spärlicher Street-View-Abdeckung",
+        "es": "países con cobertura de Street View muy escasa",
+        "fr": "pays à couverture Street View très rare",
+        "it": "paesi con copertura Street View molto scarsa",
+        "ja": "ストリートビューがまばらな国",
+        "ko": "스트리트 뷰가 드문 국가"
+      }
+    }
+  ],
+  "tiers": [
+    [
+      {"en":{"pref":"Russia","others":["Russian Federation"]},"de":{"pref":"Russland","others":["Russische Föderation"]},"es":"Rusia","fr":"Russie","it":{"pref":"Russia","others":["Federazione Russa"]},"ja":"ロシア","ko":"러시아","zh-Hans":"俄罗斯","zh-Hant":{"pref":"俄羅斯","long":"俄罗斯"}}
+    ],
+
+    [
+      {"en":{"pref":"Republic of Türkiye","short":"Türkiye","others":["Turkey","Republic of Turkey"]},"de":"Türkei","es":"Turquía","fr":{"pref":"Turquie","others":["estroict de Sibyle"]},"it":"Turchia","ja":{"pref":"トルコ","long":"トルコ共和国"},"ko":"터키","zh-Hans":"土耳其","zh-Hant":"土耳其"},
+      {"en":{"pref":"Germany","long":"Federal Republic of Germany"},"de":{"pref":"Deutschland","long":"Bundesrepublik Deutschland","others":["Bundesrepublik"]},"es":"Alemania","fr":"Allemagne","it":"Germania","ja":{"pref":"ドイツ","long":"ドイツ連邦共和国"},"ko":"독일","zh-Hans":{"pref":"德国","others":["德意志联邦共和国"]},"zh-Hant":{"pref":"德國","others":["德意志聯邦共和國"]}},
+      {"en":"France","de":"Frankreich","es":"Francia","fr":{"pref":"France","others":["République Française"]},"it":"Francia","ja":{"pref":"フランス","long":"フランス共和国"},"ko":"프랑스","zh-Hans":"法国","zh-Hant":"法國"},
+      {"en":{"pref":"United Kingdom","others":["Britain","Great Britain","UK","U.K","U.K.","United Kingdom of Great Britain and Northern Ireland"]},"de":{"pref":"Vereinigtes Königreich","short":"UK","others":["Großbritannien und Nordirland","Vereinigte Königreich Großbritannien und Nordirland"]},"es":{"pref":"Reino Unido","others":["RU"]},"fr":{"pref":"Royaume-Uni","others":["R.-u."]},"it":{"pref":"Regno Unito","others":["UK"]},"ja":"英国","ko":"영국","zh-Hans":"英国","zh-Hant":"英國"},
+      {"en":{"pref":"Italy","others":["Italian Republic","Republic of Italy"]},"de":"Italien","es":{"pref":"Italia","others":["República Italiana"]},"fr":"Italie","it":{"pref":"Italia","others":["il Bel Paese","Repubblica Italiana"]},"ja":{"pref":"イタリア","long":"イタリア共和国"},"ko":"이탈리아","zh-Hans":"意大利","zh-Hant":"義大利"},
+      {"en":{"pref":"Spain","others":["Kingdom of Spain","Spanish State"]},"de":"Spanien","es":{"pref":"España","others":["Estado Español","la Madre Patria","La piel de toro","Reino de España"]},"fr":"Espagne","it":"Spagna","ja":"スペイン","ko":{"pref":"스페인","others":["에스파냐"]},"zh-Hans":"西班牙","zh-Hant":"西班牙"},
+      {"en":"Ukraine","es":"Ucrania","it":"Ucraina","ja":{"pref":"ウクライナ","long":"ウクライナ共和国"},"ko":"우크라이나","zh-Hans":"乌克兰","zh-Hant":"烏克蘭"},
+      {"en":{"pref":"Poland","others":["Republic of Poland"]},"de":"Polen","es":"Polonia","fr":"Pologne","it":"Polonia","ja":{"pref":"ポーランド","long":"ポーランド共和国"},"ko":"폴란드","zh-Hans":"波兰","zh-Hant":"波蘭"},
+      {"en":{"pref":"Kazakhstan","others":["Republic of Kazakhstan"]},"de":"Kasachstan","es":{"pref":"Kazajstán","long":"Kazajistán"},"fr":"Kazakhstan","it":"Kazakistan","ja":{"pref":"カザフスタン","long":"カザフスタン共和国"},"ko":"카자흐스탄","zh-Hans":"哈萨克斯坦","zh-Hant":"哈薩克"}
+    ],
+
+    [
+      {"en":"Romania","de":"Rumänien","es":"Rumanía","fr":"Roumanie","ja":"ルーマニア","ko":"루마니아","zh-Hans":"罗马尼亚","zh-Hant":"羅馬尼亞"},
+      {"en":{"pref":"Netherlands","long":"The Netherlands","others":["Holland"]},"de":"Niederlande","es":{"pref":"Holanda","long":"Países Bajos"},"fr":"Pays-Bas","it":{"pref":"Paesi Bassi","others":["Olanda"]},"ja":{"pref":"オランダ","long":"オランダ王国"},"ko":"네덜란드","zh-Hans":"荷兰","zh-Hant":"荷蘭"},
+      {"en":{"pref":"Belgium","others":["Kingdom of Belgium"]},"de":{"pref":"Belgien","others":["Königreich Belgien"]},"es":"Bélgica","fr":{"pref":"Belgique","others":["Royaume de Belgique"]},"it":"Belgio","ja":{"pref":"ベルギー","long":"ベルギー王国"},"ko":"벨기에","zh-Hans":"比利时","zh-Hant":"比利時"},
+      {"en":{"pref":"Czechia","long":"Czech Republic"},"de":{"pref":"Tschechien","others":["Tschechische Republik"]},"es":{"pref":"Chequia","long":"República Checa"},"fr":{"pref":"Tchéquie","long":"République tchèque"},"it":{"pref":"Cechia","others":["Repubblica Ceca"]},"ja":{"pref":"チェコ","long":"チェコ共和国"},"ko":{"pref":"체코","long":"체코공화국"},"zh-Hans":"捷克","zh-Hant":{"pref":"捷克","others":["捷克共和国"]}},
+      {"en":{"pref":"Sweden","others":["Kingdom of Sweden"]},"de":"Schweden","es":"Suecia","fr":"Suède","it":"Svezia","ja":{"pref":"スウェーデン","long":"スウェーデン王国"},"ko":"스웨덴","zh-Hans":"瑞典","zh-Hant":"瑞典"},
+      {"en":{"pref":"Greece","others":["Hellenic Republic"]},"de":"Griechenland","es":"Grecia","fr":"Grèce","it":"Grecia","ja":{"pref":"ギリシャ","long":"ギリシャ共和国"},"ko":"그리스","zh-Hans":"希腊","zh-Hant":"希臘"},
+      {"en":{"pref":"Portugal","others":["Portuguese Republic"]},"de":"Portugal","es":"Portugal","fr":"Portugal","it":"Portogallo","ja":{"pref":"ポルトガル","long":"ポルトガル共和国"},"ko":{"pref":"포르투갈","others":["포르트칼"]},"zh-Hans":"葡萄牙","zh-Hant":"葡萄牙"},
+      {"en":"Hungary","de":"Ungarn","es":"Hungría","fr":"Hongrie","it":"Ungheria","ja":{"pref":"ハンガリー","long":"ハンガリー共和国"},"ko":"헝가리","zh-Hans":"匈牙利","zh-Hant":"匈牙利"},
+      {"en":"Switzerland","de":{"pref":"Schweiz","others":["Schweizerische Eidgenossenschaft"]},"es":"Suiza","fr":{"pref":"Suisse","others":["Confédération Suisse"]},"it":{"pref":"Svizzera","others":["Confederazione Svizzera"]},"ja":{"pref":"スイス","long":"スイス連邦"},"ko":"스위스","zh-Hans":"瑞士","zh-Hant":"瑞士"},
+      {"en":{"pref":"Belarus","others":["Republic of Belarus"]},"de":"Belarus","es":"Bielorrusia","fr":{"pref":"Biélorussie","others":["Bélarus"]},"it":"Bielorussia","ja":{"pref":"ベラルーシ","long":"ベラルーシ共和国"},"ko":{"pref":"벨라루스","others":["베라루스","벨로루시"]},"zh-Hans":"白俄罗斯","zh-Hant":"白俄羅斯"},
+      {"en":{"pref":"Austria","others":["Republic of Austria"]},"de":{"pref":"Österreich","others":["Republik Österreich"]},"es":"Austria","fr":"Autriche","it":"Austria","ja":{"pref":"オーストリア","long":"オーストリア共和国"},"ko":"오스트리아","zh-Hans":"奥地利","zh-Hant":"奧地利"},
+      {"en":"Serbia","de":"Serbien","fr":"Serbie","ja":"セルビア","ko":"세르비아","zh-Hans":"塞尔维亚","zh-Hant":"塞爾維亞"},
+      {"en":{"pref":"Bulgaria","others":["Republic of Bulgaria"]},"de":"Bulgarien","es":"Bulgaria","fr":"Bulgarie","it":"Bulgaria","ja":{"pref":"ブルガリア","long":"ブルガリア共和国"},"ko":"불가리아","zh-Hans":"保加利亚","zh-Hant":"保加利亞"},
+      {"en":{"pref":"Denmark","others":["Kingdom of Denmark"]},"de":"Dänemark","es":"Dinamarca","fr":"Danemark","it":"Danimarca","ja":{"pref":"デンマーク","long":"デンマーク王国"},"ko":"덴마크","zh-Hans":"丹麦","zh-Hant":"丹麥"},
+      {"en":{"pref":"Finland","others":["Republic of Finland"]},"de":"Finnland","es":"Finlandia","fr":"Finlande","it":"Finlandia","ja":{"pref":"フィンランド","long":"フィンランド共和国"},"ko":"핀란드","zh-Hans":"芬兰","zh-Hant":"芬蘭"},
+      {"en":{"pref":"Norway","others":["Kingdom of Norway"]},"de":"Norwegen","es":"Noruega","fr":"Norvège","it":"Norvegia","ja":{"pref":"ノルウェー","long":"ノルウェー王国"},"ko":"노르웨이","zh-Hans":"挪威","zh-Hant":"挪威"},
+      {"en":{"pref":"Slovakia","others":["Slovak Republic"]},"de":{"pref":"Slowakei","long":"Slowakei (Slowakische Republik)"},"es":{"pref":"Eslovaquia","long":"República Eslovaca"},"fr":{"pref":"Slovaquie","others":["République slovaque"]},"it":{"pref":"Slovacchia","others":["Slovacchia (Repubblica Slovacca)"]},"ja":{"pref":"スロバキア","long":"スロバキア (スロバキア共和国)"},"ko":"슬로바키아","zh-Hans":"斯洛伐克","zh-Hant":{"pref":"斯洛伐克","long":"斯洛伐克共和国"}},
+      {"en":{"pref":"Ireland","others":["Republic of Ireland"]},"de":"Irland","es":{"pref":"Irlanda","long":"República de Irlanda"},"fr":"Irlande","it":{"pref":"Irlanda","others":["Repubblica d'Irlanda"]},"ja":"アイルランド","ko":"아일랜드","zh-Hans":{"pref":"爱尔兰","others":["爱尔兰共和国"]},"zh-Hant":"愛爾蘭"}
+    ],
+
+    [
+      {"en":"Georgia","de":"Georgien","fr":"Géorgie","ja":{"pref":"グルジア共和国","others":["グルジア"]},"ko":{"pref":"조지아","others":["그루지아","그루지야"]},"zh-Hans":"格鲁吉亚","zh-Hant":"喬治亞"},
+      {"en":{"pref":"Croatia","long":"Republic of Croatia"},"de":"Kroatien","es":"Croacia","fr":"Croatie","it":"Croazia","ja":{"pref":"クロアチア","long":"クロアチア共和国"},"ko":"크로아티아","zh-Hans":"克罗地亚","zh-Hant":"克羅埃西亞"},
+      {"en":"Bosnia and Herzegovina","de":"Bosnien und Herzegowina","es":{"pref":"Bosnia y Herzegovina","short":"Bosnia-Herzegovina"},"fr":{"pref":"Bosnie-Herzégovine","long":"Bosnie-et-Herzégovine"},"it":{"pref":"Bosnia ed Erzegovina","others":["Bosnia-Erzegovina"]},"ja":{"pref":"ボスニア・ヘルツェゴビナ","long":"ボスニア・ヘルツェゴビナ共和国"},"ko":{"pref":"보스니아 헤르체고비나","others":["보스니아","헤르체고비나","보스니아헤르체고비나"]},"zh-Hans":"波斯尼亚和黑塞哥维那","zh-Hant":{"pref":"波士尼亞與赫塞哥維納","others":["波斯尼亚和黑山共和国"]}},
+      {"en":{"pref":"Lithuania","long":"Republic of Lithuania"},"de":"Litauen","es":"Lituania","fr":"Lituanie","it":"Lituania","ja":{"pref":"リトアニア","long":"リトアニア共和国"},"ko":"리투아니아","zh-Hans":"立陶宛","zh-Hant":"立陶宛"},
+      {"en":{"pref":"Albania","others":["Republic of Albania"]},"de":"Albanien","es":"Albania","fr":"Albanie","it":"Albania","ja":{"pref":"アルバニア","long":"アルバニア共和国"},"ko":"알바니아","zh-Hans":"阿尔巴尼亚","zh-Hant":"阿爾巴尼亞"},
+      {"en":{"pref":"Moldova","long":"Republic of Moldova","others":["Moldova, Republic Of"]},"de":{"pref":"Republik Moldau","short":"Moldau","others":["Moldau (Republik Moldau)","Moldawien"]},"es":"Moldavia","fr":{"pref":"Moldavie","others":["Moldova","République de Moldavie"]},"it":"Moldavia","ja":{"pref":"モルドバ","long":"モルドバ共和国"},"ko":"몰도바","zh-Hans":"摩尔多瓦","zh-Hant":{"pref":"摩爾多瓦","others":["摩尔多瓦共和国"]}},
+      {"en":{"pref":"Slovenia","others":["Republic of Slovenia"]},"de":"Slowenien","es":"Eslovenia","fr":"Slovénie","it":"Slovenia","ja":"スロベニア","ko":"슬로베니아","zh-Hans":"斯洛文尼亚","zh-Hant":"斯洛維尼亞"},
+      {"en":{"pref":"Latvia","others":["Republic of Latvia"]},"de":"Lettland","es":"Letonia","fr":"Lettonie","it":"Lettonia","ja":{"pref":"ラトビア","long":"ラトビア共和国"},"ko":"라트비아","zh-Hans":"拉脱维亚","zh-Hant":"拉脫維亞"},
+      {"en":{"pref":"North Macedonia","others":["Peoples Republic of Macedonia","Republic of North Macedonia"]},"de":{"pref":"Nordmazedonien","others":["Republik Nordmazedonien"]},"es":{"pref":"Macedonia del Norte","others":["República de Macedonia del Norte"]},"fr":"Macédoine du Nord","it":{"pref":"Macedonia del Nord","others":["Ex Repubblica Jugoslava di Macedonia","Macedonia del Nord, Repubblica","Repubblica di Macedonia del Nord"]},"ja":{"pref":"北マケドニア","long":"マケドニア旧ユーゴスラビア共和国","others":["マケドニア共和国"]},"ko":{"pref":"북마케도니아","long":"마케도니아 공화국","others":["전 유고슬라비아 마케도니아"]},"zh-Hans":{"pref":"北马其顿","others":["馬其頓共和國"]},"zh-Hant":{"pref":"北馬其頓","long":"前南斯拉夫马其顿共和国"}},
+      {"en":{"pref":"Kosovo","others":["Republic of Kosovo"]},"de":"Kosovo","es":"Kosovo","fr":"Kosovo","it":{"pref":"Kosovo","others":["Cossovo"]},"ja":"コソボ","ko":{"pref":"코소보","long":"코소보 공화국"},"zh-Hans":"科索沃","zh-Hant":"科索沃"},
+      {"en":{"pref":"Estonia","others":["Republic of Estonia"]},"de":"Estland","es":"Estonia","fr":"Estonie","it":"Estonia","ja":{"pref":"エストニア","long":"エストニア共和国"},"ko":"에스토니아","zh-Hans":"爱沙尼亚","zh-Hant":"愛沙尼亞"},
+      {"en":{"pref":"Cyprus","others":["Republic of Cyprus"]},"de":{"pref":"Zypern","others":["Republik Zypern"]},"es":"Chipre","fr":"Chypre","it":"Cipro","ja":{"pref":"キプロス","long":"キプロス共和国"},"ko":{"pref":"키프로스","others":["사이프러스"]},"zh-Hans":"塞浦路斯","zh-Hant":"賽普勒斯"}
+    ],
+
+    [
+      {"en":{"pref":"Luxembourg","others":["Grand Duchy of Luxembourg"]},"de":{"pref":"Luxemburg","others":["Großherzogtum Luxemburg"]},"es":"Luxemburgo","fr":{"pref":"Luxembourg","others":["Grand-Duché de Luxembourg"]},"it":"Lussemburgo","ja":{"pref":"ルクセンブルク","others":["ルクセンブルグ"]},"ko":"룩셈부르크","zh-Hans":"卢森堡","zh-Hant":"盧森堡"},
+      {"en":{"pref":"Montenegro","others":["Republic of Montenegro","Socialist Republic of Montenegro"]},"de":"Montenegro","es":"Montenegro","fr":{"pref":"Monténégro","others":["République du Monténégro"]},"it":"Montenegro","ja":"モンテネグロ","ko":"몬테네그로","zh-Hans":"黑山","zh-Hant":{"pref":"蒙特內哥羅","long":"黑山共和国"}},
+      {"en":{"pref":"Malta","others":["Malta Island","Republic of Malta"]},"de":"Malta","es":{"pref":"Malta","others":["Isla de Malta"]},"fr":"Malte","it":"Malta","ja":{"pref":"マルタ","others":["マルタ島"]},"ko":"몰타","zh-Hans":"马耳他","zh-Hant":"馬爾他"},
+      {"en":{"pref":"Transnistria","others":["Administrative-Territorial Units of the Left Bank of the Dniester"]},"de":"Transnistrien","es":"Unidad territorial autónoma con un estatus jurídico especial Transnistria","fr":"Transnistrie","ja":"沿ドニエストル地域","ko":"트란스니스트리아 자치 영토 단위","zh-Hans":"德涅斯特河沿岸自治领土单位","?":["it","zh-Hant"]},
+      {"en":{"pref":"Northern Cyprus","others":["Turkish Republic of Northern Cyprus"]},"de":{"pref":"Nordzypern","others":["Türkische Republik Nordzypern"]},"fr":{"pref":"Chypre du Nord","others":["République turque de Chypre du Nord"]},"?":["es","it","ja","ko","zh-Hans","zh-Hant"]},
+      {"en":{"pref":"Iceland","others":["Republic of Iceland"]},"de":"Island","es":"Islandia","fr":"Islande","it":"Islanda","ja":{"pref":"アイスランド","long":"アイスランド共和国"},"ko":"아이슬란드","zh-Hans":"冰岛","zh-Hant":"冰島"},
+      {"en":"Jersey","fr":{"pref":"Jersey","others":["Bailliage de Jersey"]},"ja":"ジャージー","ko":"저지","zh-Hans":"泽西岛","zh-Hant":"澤西島"},
+      {"en":{"pref":"Andorra","others":["Principality of Andorra"]},"de":"Andorra","es":{"pref":"Andorra","long":"Principado de Andorra"},"fr":"Andorre","it":"Andorra","ja":"アンドラ","ko":"안도라","zh-Hans":"安道尔","zh-Hant":"安道爾"},
+      {"en":"Isle of Man","de":{"pref":"Isle of Man","short":"Insel Man"},"es":"Isla de Man","fr":{"pref":"Île de Man","others":["Man (Île)"]},"it":"Isola di Man","ja":"マン島","ko":{"pref":"맨섬","others":["맨 섬"]},"zh-Hans":"马恩岛","zh-Hant":{"pref":"曼島","long":"曼岛"}},
+      {"en":"Guernsey","es":"Guernesey","fr":{"pref":"Guernesey","others":["Bailliage de Guernesey"]},"ja":"ガーンジー","ko":"건지","zh-Hans":"根西岛","zh-Hant":"根息"},
+      {"en":"Faroe Islands","de":{"pref":"Färöer","others":["Färöer-Inseln"]},"es":"Islas Feroe","fr":{"pref":"Îles Féroé","others":["Iles Féroé"]},"it":"Isole Faroe","ja":"フェロー諸島","ko":{"pref":"페로제도","long":"페로 제도"},"zh-Hans":"法罗群岛","zh-Hant":"法羅群島"},
+      {"en":{"pref":"Monaco","long":"Principality of Monaco"},"de":"Monaco","es":{"pref":"Mónaco","long":"Principado de Mónaco"},"fr":{"pref":"Monaco","others":["Principauté de Monaco"]},"it":{"pref":"Monaco","others":["Principato di Monaco"]},"ja":"モナコ","ko":"모나코","zh-Hans":"摩纳哥","zh-Hant":"摩納哥"},
+      {"en":{"pref":"Liechtenstein","others":["Principality of Liechtenstein"]},"de":{"pref":"Liechtenstein","others":["Fürstentum Liechtenstein"]},"es":"Liechtenstein","fr":"Liechtenstein","it":{"pref":"Liechtenstein","others":["Principato del Liechtenstein"]},"ja":{"pref":"リヒテンシュタイン","long":"リヒテンシュタイン公国"},"ko":"리히텐슈타인","zh-Hans":"列支敦士登","zh-Hant":"列支敦斯登"},
+      {"en":"Gibraltar","it":"Gibilterra","ja":"ジブラルタル","ko":"지브롤터","zh-Hans":"直布罗陀","zh-Hant":"直布羅陀"},
+      {"en":"San Marino","fr":"Saint-Marin","it":{"pref":"San Marino","others":["Repubblica di San Marino"]},"ja":{"pref":"サンマリノ","long":"サンマリノ共和国"},"ko":"산마리노","zh-Hans":"圣马力诺","zh-Hant":"聖馬利諾"},
+      {"en":{"pref":"Åland","others":["Åland Islands","Aland Islands","Province of Åland"]},"de":{"pref":"Åland","others":["Alandinseln","Ålandinseln"]},"es":{"pref":"Islas Aland","others":["Islas Åland","Islas de Åland"]},"fr":{"pref":"Åland","others":["Îles Åland"]},"it":{"pref":"Isole Åland","others":["Isole Aland"]},"ja":"オーランド諸島","ko":"올란드 제도","zh-Hans":"奥兰群岛","zh-Hant":"奧蘭群島"},
+      {"en":{"pref":"Vatican City","others":["Holy See","Holy See (Vatican City State)","Vatican","Vatican City State","Vatican City State (Holy See)","Vatican Hill"]},"de":{"pref":"Vatikanstadt","long":"Staat der Vatikanstadt"},"es":{"pref":"Ciudad del Vaticano","others":["El Vaticano","Santa Sede","Santa Sede (Estado de la Ciudad del Vaticano)"]},"fr":{"pref":"Vatican","others":["Saint-Siège (Etat de la Cité du Vatican)","Saint-Siège (État de la Cité du Vatican)"]},"it":{"pref":"Città del Vaticano","short":"Vaticano","others":["Città Vaticano","Colle Vaticano","Santa Sede (Città del Vaticano)","Stato della Città del Vaticano"]},"ja":{"pref":"ローマ法王庁 (バチカン市国)","others":["ローマ教皇庁 (バチカン市国)"]},"ko":{"pref":"바티칸시티","others":["바티칸"]},"zh-Hans":"梵蒂冈","zh-Hant":{"pref":"梵蒂岡","long":"圣座（梵蒂冈）"}}
+    ]
+  ],
+  "tierConditions": [
+    {"en":"100 million or more","de":"100 Millionen und mehr","es":"100 millones o más","fr":"100 millions ou plus","it":"100 milioni o più","ja":"1億以上","ko":"1억 이상","zh-Hans":"1亿及以上","zh-Hant":"1億及以上"},
+    {"en":"20 million or more","de":"20 Millionen und mehr","es":"20 millones o más","fr":"20 millions ou plus","it":"20 milioni o più","ja":"2000万以上","ko":"2000만 이상","zh-Hans":"2000万及以上","zh-Hant":"2000萬及以上"},
+    {"en":"5 million or more","de":"5 Millionen und mehr","es":"5 millones o más","fr":"5 millions ou plus","it":"5 milioni o più","ja":"500万以上","ko":"500만 이상","zh-Hans":"500万及以上","zh-Hant":"500萬及以上"},
+    {"en":"1 million or more","de":"1 Million und mehr","es":"1 millón o más","fr":"1 million ou plus","it":"1 milione o più","ja":"100万以上","ko":"100만 이상","zh-Hans":"100万及以上","zh-Hant":"100萬及以上"},
+    {"en":"more than 0","de":"mehr als 0","es":"más de 0","fr":"plus de 0","it":"più di 0","ja":"0より多い","ko":"0보다 많음","zh-Hans":"多于0","zh-Hant":"多於0"}
+  ],
+  "rulerTooltip": {
+    "text": {"en":"Countries with {condition} inhabitants","de":"Länder mit {condition} Einwohnern","es":"países con {condition} habitantes","fr":"pays comptant {condition} habitants","it":"paesi con {condition} abitanti","ja":"人口が{condition}の国","ko":"인구가 {condition}인 국가"},
+    "empty": {"en":"Ranked by population.","de":"Nach Einwohnerzahl geordnet.","es":"Ordenados por población.","fr":"Classés par population.","it":"Ordinati per popolazione.","ja":"人口順。","ko":"인구순 정렬."}
+  },
+  "inheritsUpwards": 1
+}

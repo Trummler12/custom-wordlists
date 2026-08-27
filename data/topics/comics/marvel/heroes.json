@@ -1,0 +1,26 @@
+{
+  "id": "marvel-heroes",
+  "title": "Heroes",
+  "icon": "🦸",
+  "description": "Marvel Comics superheroes and villains (language-neutral — names are the same across locales). Two groups; fame tiers by recognizability (tier 0 = most iconic).",
+  "tiers": [
+    [
+      "Spider-Man",
+      "Iron Man",
+      "Captain America",
+      "Hulk",
+      "Thor",
+      "Wolverine",
+      "Deadpool"
+    ],
+
+    [
+      "Black Panther",
+      "Doctor Strange",
+      "Black Widow",
+      "Captain Marvel",
+      "Ant-Man",
+      "Star-Lord"
+    ]
+  ]
+}

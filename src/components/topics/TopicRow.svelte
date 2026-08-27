@@ -2,9 +2,11 @@
   import { onMount } from "svelte";
   import { setIndeterminate } from "../../lib/dom";
   import { canForceEnglish } from "../../lib/english";
+  import { tierNoteAt } from "../../lib/fame";
   import { baseTag, langSupport, splitName } from "../../lib/languages";
-  import { rulerControl } from "../../lib/rulers";
+  import { rulerControl, rulerHidden } from "../../lib/rulers";
   import type { TopicSummary } from "../../lib/types";
+  import { resolveStr } from "../../lib/words";
   import { langWarning } from "../../locale";
   import { lang } from "../../state/lang.svelte";
   import { selection } from "../../state/selection.svelte";
@@ -12,28 +14,26 @@
   import { topics } from "../../state/topics.svelte";
   import TipMarker from "../common/TipMarker.svelte";
   import TipNote from "../common/TipNote.svelte";
+  import { sovRules } from "../../lib/matrix";
+  import CoveragePanel from "./CoveragePanel.svelte";
   import FameDepthSlider from "./FameDepthSlider.svelte";
-  import GroupRow from "./GroupRow.svelte";
+  import SovereigntyMatrix from "./SovereigntyMatrix.svelte";
   import NamesModeSelect from "./NamesModeSelect.svelte";
   import OmittedPanel from "./OmittedPanel.svelte";
   import VariantPanel from "./VariantPanel.svelte";
 
   let { topic }: { topic: TopicSummary } = $props();
 
-  // A topic whose single group is the whole topic has nothing to expand into: the
-  // level would repeat the topic's own name and hold one ruler. That group is
-  // rendered on this row instead.
-  //
-  // Unless the topic owns a folder — that layout is how it says more subtopics are
-  // planned there, and an expander that comes and goes as the first of them lands
-  // would be worse than one that is briefly thin. Both facts come from the
-  // manifest, so the row knows its shape before the topic file arrives.
-  const solo = $derived(topic.groupCount === 1 && !topic.foldered);
-  const sole = $derived(solo ? topics.groupsOf(topic)[0] : undefined);
+  // A topic is its own single group — rendered on this row, ruler and all. Undefined
+  // until the file loads, which the guards below wait on.
+  const sole = $derived(topics.groupsOf(topic)[0]);
 
-  // A solo topic in a subtree that opted into ruler visibility gets a toggle to
+  // No ruler at all where a node on the path says so — no toggle, no slider.
+  // Stronger than the opt-in below, so it gates it.
+  const rulerGone = $derived(rulerHidden(topic, topics.categories));
+  // A topic in a subtree that opted into ruler visibility gets a toggle to
   // show/hide its inline ruler; absent = no control, the ruler is always shown.
-  const rulerOptIn = $derived(solo && rulerControl(topic, topics.categories) !== null);
+  const rulerOptIn = $derived(!rulerGone && rulerControl(topic, topics.categories) !== null);
   const rulerShown = $derived(selection.isRulerVisible(topic));
 
   // Behind a preference, and only where the switch would change something: not in
@@ -42,8 +42,37 @@
   const englishOptIn = $derived(settings.showEnglishToggle && canForceEnglish(topic, lang.current));
   const forcedEnglish = $derived(lang.isForcedEnglish(topic));
 
-  const open = $derived(!!selection.expanded[topic.id]);
+  // The Geoguessr coverage control, straight from the manifest — no file load. A
+  // synth commands its contributors (each with its own ladder); a plain topic, itself.
+  const coverage = $derived(topic.controls?.["geoguessr"]);
+  const coverageTargets = $derived(
+    topics.isSynth(topic.id)
+      ? topics
+          .contributorsOf(topic.id)
+          .map((c) => ({ tid: c.id, rules: (c.controls?.["geoguessr"] ?? []).map((r) => r.id) }))
+      : [{ tid: topic.id, rules: (coverage ?? []).map((r) => r.id) }],
+  );
+
+  // The sovereignty & recognition matrix, the same way — each rule carries its
+  // `[row, col]` cell, so the grid renders and drives load-free. Guarded on the
+  // targets, not `topic.controls`: a synth's controls are its first contributor's,
+  // and not every continent carries a sovereignty rule.
+  const sovTargets = $derived(
+    topics.isSynth(topic.id)
+      ? topics.contributorsOf(topic.id).map((c) => ({ tid: c.id, rules: sovRules(c.controls?.["sovereignty"]) }))
+      : [{ tid: topic.id, rules: sovRules(topic.controls?.["sovereignty"]) }],
+  );
+  const sovActive = $derived(sovTargets.some((t) => t.rules.length > 0));
+
   const name = $derived(topics.topicName(topic));
+  // The long form on hover, and its hitbox spans the icon too — so a topic with an
+  // empty row label (the Antarctica cricket, icon only) still reveals it.
+  const titleTip = $derived(name.short !== name.long ? name.long : undefined);
+
+  // The ruler a tier note talks about is the one on this row.
+  const tierTipId = $derived(`tier-${topic.id}`);
+  const tierNote = $derived(sole ? tierNoteAt(sole, selection.depthOf(topic.id, sole)) : undefined);
+  const tierText = $derived(tierNote ? resolveStr(tierNote.text, lang.uiLang) : "");
 
   // Null for a language the list carries: nothing to say. Composed once here rather
   // than in the marker, which needs the same text flattened for its aria-label.
@@ -75,29 +104,14 @@
 
   // Nothing else will trigger the load: there is no expander to click, and the
   // ruler can't be drawn without the tiers it snaps to.
-  onMount(() => {
-    if (solo) topics.ensure(topic);
-  });
+  onMount(() => topics.ensure(topic));
 </script>
 
 <div class="topic-item">
   <div class="topic-row">
-    {#if solo}
-      <!-- Keeps the checkbox column straight: it is the anchor the eye follows
-           down the tree, and it shouldn't shift by whether a topic has subgroups. -->
-      <span class="expander placeholder" aria-hidden="true">▸</span>
-    {:else}
-      <button
-        type="button"
-        class="expander"
-        aria-expanded={open}
-        aria-controls={`groups-${topic.id}`}
-        aria-label={lang.ui.tree.toggle(open, name.long)}
-        onclick={() => selection.toggleExpand(topic)}
-      >
-        {open ? "▾" : "▸"}
-      </button>
-    {/if}
+    <!-- Keeps the checkbox column straight: the placeholder holds the width a
+         category's expander occupies, so topic checkboxes line up under it. -->
+    <span class="expander placeholder" aria-hidden="true">▸</span>
     <label class="topic">
       <input
         type="checkbox"
@@ -105,14 +119,17 @@
         use:setIndeterminate={selection.topicPartial(topic)}
         onchange={() => selection.toggleTopic(topic)}
       />
-      <span class="icon" aria-hidden="true">{topic.icon ?? "•"}</span>
-      <span class="title" title={name.short !== name.long ? name.long : undefined}>
+      <span class="icon" aria-hidden="true" title={titleTip}>{topic.icon ?? "•"}</span>
+      <span class="title" title={titleTip}>
         {name.short}
       </span>
       {#if langNote}
         <TipMarker tipId={langTipId} icon={langNote.icon} text={langNote.text} />
       {/if}
     </label>
+    {#if tierNote}
+      <TipMarker tipId={tierTipId} icon={tierNote.icon ?? "ℹ️"} text={tierText} />
+    {/if}
     <!-- Both outside the <label>: a second form control inside it would leave the
          checkbox it names ambiguous, and the count isn't a name for anything. -->
     {#if sole}
@@ -120,6 +137,12 @@
     {/if}
     {#if sole}
       <OmittedPanel tid={topic.id} group={sole} />
+    {/if}
+    {#if coverage}
+      <CoveragePanel id={`coverage-${topic.id}`} targets={coverageTargets} />
+    {/if}
+    {#if sovActive}
+      <SovereigntyMatrix id={`sovereignty-${topic.id}`} targets={sovTargets} />
     {/if}
     <!-- Per topic, not per group: how a language spells a name is the same question
          in every group of a list. Shows itself only where the answers differ. -->
@@ -162,16 +185,11 @@
   {#if langNote}
     <TipNote id={langTipId} text={langNote.text} />
   {/if}
-
-  {#if sole && rulerShown}
-    <FameDepthSlider tid={topic.id} group={sole} />
+  {#if tierNote}
+    <TipNote id={tierTipId} text={tierText} />
   {/if}
 
-  {#if open && topics.data[topic.id]}
-    <ul class="groups" id={`groups-${topic.id}`}>
-      {#each topics.groupsOf(topic) as g (g.id)}
-        <GroupRow tid={topic.id} group={g} />
-      {/each}
-    </ul>
+  {#if sole && rulerShown && !rulerGone}
+    <FameDepthSlider tid={topic.id} group={sole} />
   {/if}
 </div>

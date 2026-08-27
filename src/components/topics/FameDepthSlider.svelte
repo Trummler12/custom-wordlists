@@ -1,6 +1,7 @@
 <script lang="ts">
-  import { fameGroups, snapPositions } from "../../lib/fame";
+  import { fameGroups, rulerTip, snapPositions } from "../../lib/fame";
   import type { Group } from "../../lib/types";
+  import { resolveStr } from "../../lib/words";
   import { lang } from "../../state/lang.svelte";
   import { overlays } from "../../state/overlays.svelte";
   import { selection } from "../../state/selection.svelte";
@@ -16,6 +17,17 @@
   // means a mouse. The invitation an unranked list carries is the one that has to
   // reach a phone, so that one gets the custom note.
   const ranked = $derived(fame > 1);
+  // What the ruler says on hover: the list's own line where it declares one (the
+  // condition just brought in, moving with the thumb), else the bare tier count.
+  // The prefix comes from the locale, and turns to "Mostly selected" when a merged
+  // topic's contributors don't all sit at this position.
+  const prefix = $derived(
+    selection.depthMixed(tid) ? lang.ui.fame.mostlySelected : lang.ui.fame.selected,
+  );
+  const tip = $derived(
+    rulerTip(group, depth, (s) => resolveStr(s, lang.uiLang), prefix) ??
+      lang.ui.fame.groupsDefined(fame),
+  );
   const tipId = $derived(`fame-${tid}-${group.id}`);
 </script>
 
@@ -33,7 +45,7 @@
     aria-valuetext={lang.ui.fame.valueText(depth, pos.length - 1)}
     aria-label={lang.ui.fame.depthLabel(topics.groupName(group).long)}
     aria-describedby={ranked ? undefined : tipId}
-    title={ranked ? lang.ui.fame.groupsDefined(fame) : undefined}
+    title={ranked ? tip : undefined}
     onpointerdown={(e) => {
       e.currentTarget.setPointerCapture(e.pointerId);
       selection.dragDepth(e, tid, group);

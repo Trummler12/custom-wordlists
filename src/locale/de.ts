@@ -17,7 +17,7 @@ export const de: UIStrings = {
     wordsOf: (selected, total) => `${selected} von ${total} ${total === 1 ? "Wort" : "Wörtern"}`,
   },
   names: {
-    form: { short: "kurz", long: "lang", both: "beide" },
+    form: { pref: "bevorzugt", short: "kurz", long: "lang", both: "beide", all: "alle" },
     formLabel: (group) => `Namensform für ${group}`,
   },
   fame: {
@@ -26,6 +26,8 @@ export const de: UIStrings = {
       depth === 1 ? `oberste von ${total} Stufen` : `oberste ${depth} von ${total} Stufen`,
     groupsDefined: (count) => `Fame-Gruppen definiert: ${count}`,
     none: "Noch keine Fame-Gruppen definiert — im Contribution Guide im Footer erfährst du, wie du welche vorschlagen kannst!",
+    selected: "Ausgewählt:",
+    mostlySelected: "Grösstenteils ausgewählt:",
     toggle: (shown) =>
       shown ? "Fame-Regler dieser Liste ausblenden" : "Fame-Regler dieser Liste einblenden",
     toggleAll: (allShown) =>
@@ -39,12 +41,45 @@ export const de: UIStrings = {
         ? "Umschalten, um diese in die Liste aufzunehmen"
         : "Umschalten, um diese wegzulassen",
     locked: "Das sind Spieldaten und keine Wörter, sie lassen sich nicht aufnehmen.",
+    upTo: (n) => `Bis zu ${n}`,
     unknown: (n, primary, secondary) =>
-      `${n} ${n === 1 ? "Eintrag" : "Einträge"} ohne Namen auf ${primary}${secondary} in den Ausgangsdaten`,
+      `Bis zu ${n} ${n === 1 ? "Eintrag" : "Einträge"} ohne Namen auf ${primary}${secondary} in den Ausgangsdaten`,
     unknownHint: (omitted) =>
       omitted
         ? "Umschalten, um deren englische Namen (Fallback) in die Liste zu lassen."
         : "Umschalten, um diese wieder wegzulassen.",
+    unknownTier: (tier, n) => `Stufe ${tier}: ${n} ${n === 1 ? "Eintrag" : "Einträge"} betroffen`,
+    tooLong: (n, maxLen) =>
+      `Bis zu ${n} ${n === 1 ? "Name" : "Namen"} mit mehr als ${maxLen} Zeichen`,
+    tooLongHint: (omitted) =>
+      omitted
+        ? "Umschalten, um sie trotzdem aufzunehmen — skribbl.io nimmt sie nicht an, ein anderes Spiel vielleicht schon."
+        : "Umschalten, um sie wieder wegzulassen.",
+  },
+  coverage: {
+    label: "Geoguessr / Street-View-Abdeckung",
+    all: "Alle Länder",
+    withCoverage: "Mit offizieller Abdeckung",
+    reliable: "Nur zuverlässige Abdeckung",
+  },
+  sovereignty: {
+    label: "Souveränität & Anerkennung",
+    wiki: "https://de.wikipedia.org/wiki/Liste_der_Gebiete_mit_begrenzter_Anerkennung_als_Staat",
+    axisRow: "de jure",
+    axisCol: "de facto",
+    cols: ["Vollständig unabhängig", "Teilweise autonom"],
+    rows: ["Universell anerkannt", "Überwiegend anerkannt", "Teilweise anerkannt", "Nicht anerkannt"],
+    colDefs: [
+      "Kontrolliert Grenzen, Justiz, Armee und Steuern selbst.",
+      "Hat eigene Gesetze und ein eigenes Parlament, teilt aber Kernbereiche — Währung, Verteidigung, Aussenpolitik — mit einem anderen Staat.",
+    ],
+    rowDefs: [
+      "UN-Mitgliedstaat, von praktisch allen anderen anerkannt.",
+      "Von einem grossen Teil der UN-Mitglieder anerkannt, mit einigen Verweigerern.",
+      "Nur von wenigen Staaten anerkannt, oft aber mit starker faktischer oder wahrgenommener Präsenz.",
+      "International als Teil eines anderen souveränen Staates betrachtet.",
+    ],
+    regular: "Reguläre Staaten",
   },
   language: {
     label: (current) => `Sprache: ${current}`,
@@ -82,6 +117,9 @@ export const de: UIStrings = {
     showEnglishEn: "Diese Schalter erscheinen nur bei anderen Sprachen als Englisch.",
     interfaceLang: "Sprache der Oberfläche:",
     interfaceAuto: "Automatisch",
+    reset: "Einstellungen{br}zurücksetzen",
+    resetConfirm: "Zum Bestätigen erneut klicken",
+    resetCancel: "Abbrechen",
   },
   output: {
     label: "Ausgabe",
@@ -95,8 +133,8 @@ export const de: UIStrings = {
     chars: "Zeichen",
     belowMin: (min) => `· unter skribbl-Minimum (${min})`,
     overMax: "· über dem Maximum",
-    excluded: (count, maxLen, list) =>
-      `${count} ${count === 1 ? "Wort" : "Wörter"} ausgeschlossen (länger als ${maxLen} Zeichen): ${list}`,
+    overLong: (count, maxLen) =>
+      `${count} ${count === 1 ? "Wort" : "Wörter"} mit mehr als ${maxLen} Zeichen`,
   },
   footer: {
     repository: "GitHub-Repository",

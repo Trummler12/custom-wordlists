@@ -2,18 +2,32 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://trummler12.github.io/custom-wordlists/schema/topic.schema.json",
   "title": "Topic",
-  "description": "One word-list topic (a single file; entries carry their own per-language forms). See docs/archive/PLANNING.md §4.",
+  "description": "One word-list topic (a single file; entries carry their own per-language forms). Carries its list directly: a flat `words` list or fame `tiers`. See docs/archive/PLANNING.md §4.",
   "type": "object",
   "additionalProperties": false,
-  "required": ["id", "title", "groups"],
+  "required": ["id", "title"],
+  "oneOf": [
+    { "required": ["words"] },
+    { "required": ["tiers"] }
+  ],
   "properties": {
     "id": {
       "allOf": [{ "$ref": "#/$defs/id" }],
       "description": "Kebab-case topic id; matches the topic's folder name (foldered) or file stem (flat)."
     },
     "title": {
-      "allOf": [{ "$ref": "#/$defs/word" }],
-      "description": "Display name, in the same shape as an entry: a plain string where the name is global (\"South Park\"), a language map where it translates ({ \"en\": \"SpongeBob SquarePants\", \"de\": \"SpongeBob Schwammkopf\" }), or a short/long pair — the app puts `short` on the row and `long` in a hover, so a long name needn't crowd the tree."
+      "oneOf": [
+        { "$ref": "#/$defs/word" },
+        { "const": "" },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["short", "long"],
+          "description": "An empty row label with a hover — for a topic that shows only its icon but still says something on hover (the Antarctica cricket).",
+          "properties": { "short": { "const": "" }, "long": { "$ref": "#/$defs/locString" } }
+        }
+      ],
+      "description": "Display name, in the same shape as an entry: a plain string where the name is global (\"South Park\"), a language map where it translates ({ \"en\": \"SpongeBob SquarePants\", \"de\": \"SpongeBob Schwammkopf\" }), or a short/long pair — the app puts `short` on the row and `long` in a hover, so a long name needn't crowd the tree. An empty string is allowed for a topic that is nothing but its icon, and an empty `short` with a `long` for one that shows only its icon but keeps a hover."
     },
     "icon": { "type": "string", "minLength": 1 },
     "description": { "type": "string" },
@@ -34,6 +48,10 @@
     "hideRulersByDefault": {
       "type": "boolean",
       "description": "When true, this topic's fame ruler starts hidden behind a toggle rather than shown — useful for a flat list whose ruler is just its checkbox (e.g. one Pokémon generation). Declaring the field (either value) also makes the topic its own ruler-visibility boundary, so no ancestor category's toggle flips it. Omitted: inherited from the nearest ancestor that declares it, else shown."
+    },
+    "hideRulers": {
+      "type": "boolean",
+      "description": "When true, this topic has no fame ruler at all — no slider and no 📏 toggle, not even expanded. Distinct from `hideRulersByDefault`, which only starts the ruler hidden behind a toggle that can still reveal it. For a list whose ruler would be meaningless (an empty joke topic). Inherited down the tree like `hideRulersByDefault`: the topic's own value wins, else the nearest ancestor category that declares it; a child may re-enable with `false`."
     },
     "sources": {
       "allOf": [{ "$ref": "#/$defs/stringOrList" }],
@@ -90,14 +108,55 @@
       "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
       "description": "ISO date (YYYY-MM-DD) the list was last verified against its source (even if unchanged). Lets us spot which lists are due for a currency re-check."
     },
-    "groups": {
+    "defaultNames": {
+      "type": "string",
+      "enum": ["pref", "short", "long", "both", "all"],
+      "description": "Flat-topic form of the group field of the same name — which form of a named-forms entry to emit until the reader picks another. Absent means `long` (a list of `pref`-bearing entries sets `pref`)."
+    },
+    "tierNotes": {
       "type": "array",
       "minItems": 1,
-      "items": { "$ref": "#/$defs/group" }
+      "description": "Flat-topic form of the group field — notes that appear once the ruler reaches far enough down. See `$defs/tierNote`.",
+      "items": { "$ref": "#/$defs/tierNote" }
     },
-    "presets": {
+    "omitted": {
       "type": "array",
-      "items": { "$ref": "#/$defs/preset" }
+      "minItems": 1,
+      "description": "Flat-topic form of the group field — families of entries this list hides from its source, filtered by default.",
+      "items": { "$ref": "#/$defs/omission" }
+    },
+    "omittable": {
+      "type": "array",
+      "minItems": 1,
+      "description": "Flat-topic form of the group field — families the list offers to leave out, present by default. Rule ids must be unique across both arrays.",
+      "items": { "$ref": "#/$defs/omission" }
+    },
+    "words": {
+      "type": "array",
+      "minItems": 0,
+      "description": "A flat list of entries carried directly on the topic (no `groups`). May be empty — a deliberate claim rather than an oversight. Mutually exclusive with `tiers` and `groups`.",
+      "items": { "$ref": "#/$defs/word" }
+    },
+    "tiers": {
+      "type": "array",
+      "minItems": 1,
+      "description": "Fame tiers carried directly on the topic (no `groups`), tier 0 = most famous. A tier may be empty. Mutually exclusive with `words` and `groups`.",
+      "items": {
+        "type": "array",
+        "items": { "$ref": "#/$defs/word" }
+      }
+    },
+    "tierConditions": {
+      "type": "array",
+      "minItems": 1,
+      "description": "Flat-topic form of the group field — one boundary per tier, same length as `tiers`. See the group's `tierConditions`.",
+      "items": { "$ref": "#/$defs/locString" }
+    },
+    "rulerTooltip": { "$ref": "#/$defs/rulerTooltip" },
+    "inheritsUpwards": {
+      "type": "integer",
+      "minimum": 1,
+      "description": "How many levels up this leaf's list is ALSO shown, merged with the same-named leaves it meets there into one synthesized topic (which has no file of its own). `1` merges at the parent level — every `<continent>/countries.json` meets the others one level up, forming a single \"Countries\" topic under `human/`, a sibling of `languages`. A leaf contributes at every intermediate level up to this number, so `2` (cities: `<country>/cities.json`) merges both per continent and globally. An ADDITIONAL field beside `tiers`/`words`, not an alternative: the leaf keeps its own list where it sits and contributes it upward. All same-named leaves in a family must declare identical `tierConditions`, so the composite tiers mean one thing — validate-data enforces it."
     }
   },
   "$defs": {
@@ -128,11 +187,19 @@
     "namePair": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["short", "long"],
-      "description": "An entry with a short (common) and long (full) name; the UI's per-group Names dropdown picks short / long / both. Each field may itself be a language map when only that part translates — the preferred form.",
+      "anyOf": [{ "required": ["pref"] }, { "required": ["short"] }, { "required": ["long"] }],
+      "description": "An entry with a `pref` canonical name and/or a short (common) and long (full) form, plus any further `others` variants; the UI's per-group Names dropdown picks pref / short / long / both, and `all` where a list carries `others`. Each field may itself be a language map when only that part translates — the preferred form. `pref` is the default and the fallback: a mode with no form of its own falls back to it, so an entry need only spell out short/long where they differ. With no pref, at least one of short/long must be present and omitting one binds the entry to the other mode, so a `{ short }` never loads under `long` and a `{ long }` never under `short` — how a continent with no eponymous plate, or a plate with no continent, drops out of the dropdown that doesn't fit it.",
       "properties": {
+        "pref": { "$ref": "#/$defs/locString" },
         "short": { "$ref": "#/$defs/locString" },
-        "long": { "$ref": "#/$defs/locString" }
+        "long": { "$ref": "#/$defs/locString" },
+        "others": {
+          "description": "Further name variants that are neither the shortest nor the longest form (Taiwan's additional English names) — a single string or a list, each localizing like short/long. Surfaced only by the `all` names mode.",
+          "oneOf": [
+            { "$ref": "#/$defs/locString" },
+            { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/locString" } }
+          ]
+        }
       }
     },
     "langMapEntry": {
@@ -193,63 +260,60 @@
         "locked": {
           "type": "boolean",
           "description": "When true, the reader can't switch this rule off: the panel shows its checkbox disabled. For a family that isn't words at all, where re-including it could only be an accident — the 300 Dynamax Crystals named `★Sgr6879` after Bright Star Catalogue entries. Rare by design: the default is that anything omitted can be asked back."
+        },
+        "count": {
+          "type": "boolean",
+          "description": "When true, the panel prefixes this rule's label with \"up to N\", N being how many entries it matches — for a rule whose reason names a category rather than a fixed set, where the number is worth having and the reason is phrased to read on from it. A reason that already states its own number (\"300 Dynamax Crystals\") leaves this off."
+        },
+        "icon": {
+          "type": "string",
+          "minLength": 1,
+          "description": "An icon key that lifts this rule out of the omitted panel into its own control. Rules sharing an icon form one ordered ladder (array order = strictness) and render as a radio group, not independent checkboxes — the Geoguessr coverage filter is `no-coverage` then `rare-coverage`, both `\"geoguessr\"`. The frontend resolves the key to a glyph or image."
+        },
+        "cell": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 2,
+          "items": { "type": "integer", "minimum": 1 },
+          "description": "A `[row, col]` cell (1-based) for an icon whose rules form a 2D matrix rather than a linear ladder. The sovereignty filter places each rule on a de-jure recognition row and a de-facto control column; the reader includes a top-left-anchored staircase of cells at once. Absent for a linear-ladder icon."
         }
       }
     },
-    "group": {
+    "rulerTooltip": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["id", "title"],
-      "description": "A subtopic; the smallest checkbox unit. Carries exactly one of `words` (flat) or `tiers` (fame-ordered).",
+      "required": ["text", "empty"],
+      "description": "What the fame ruler's hover says, replacing the bare \"Fame groups defined: n\" for a list whose tiers came from an outside boundary. `text` describes the selection once the ruler has moved; `empty` describes the ordering at rest, where nothing is selected yet.",
       "properties": {
-        "id": { "$ref": "#/$defs/id" },
-        "title": {
-          "allOf": [{ "$ref": "#/$defs/word" }],
-          "description": "Display name, same shape as a topic's."
+        "text": {
+          "allOf": [{ "$ref": "#/$defs/locString" }],
+          "description": "Shown once the ruler is off its leftmost stop. May contain the token `{condition}`, which the frontend replaces with `tierConditions[depth - 1]` — the boundary of the lowest tier the ruler has just brought in (\"Selected: everything with {condition} inhabitants\"). Localized here rather than in a locale file, like `tierNotes.text`, because it describes this list."
         },
-        "omitted": {
-          "type": "array",
-          "minItems": 1,
-          "description": "Families of entries this list hides from its source — junk nobody could draw, or numbered copies of one drawable thing. The entries stay in the file and are filtered on the way into the list, so a rule is always reversible and the ⌗ panel can say what was left out.",
-          "items": { "$ref": "#/$defs/omission" }
-        },
-        "omittable": {
-          "type": "array",
-          "minItems": 1,
-          "description": "Families the list OFFERS to leave out: same shape as `omitted`, opposite default. Present unless the reader ticks them off — for entries that are legitimate words but the first thing someone short of drawing room would cut (the 80 species candies). Rule ids must be unique across both arrays.",
-          "items": { "$ref": "#/$defs/omission" }
-        },
-        "words": {
-          "type": "array",
-          "minItems": 1,
-          "items": { "$ref": "#/$defs/word" }
-        },
-        "tiers": {
-          "type": "array",
-          "minItems": 1,
-          "description": "Ordered fame tiers, tier 0 = most famous; order within a tier is irrelevant.",
-          "items": {
-            "type": "array",
-            "minItems": 1,
-            "items": { "$ref": "#/$defs/word" }
-          }
+        "empty": {
+          "allOf": [{ "$ref": "#/$defs/locString" }],
+          "description": "Shown at the leftmost stop, where nothing is selected and no condition is in force. Says instead what the list is ordered by — the one thing a reader scouting the ruler before switching it on cannot read off a selection (\"Ranked by population.\")."
         }
-      },
-      "oneOf": [{ "required": ["words"] }, { "required": ["tiers"] }]
+      }
     },
-    "preset": {
+    "tierNote": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["id", "title", "groups"],
-      "description": "A named bundle of group ids (e.g. \"Include all\").",
+      "required": ["fromTier", "text"],
+      "description": "One note, shown from a given ruler position downwards.",
       "properties": {
-        "id": { "$ref": "#/$defs/id" },
-        "title": { "type": "string", "minLength": 1 },
-        "groups": {
-          "type": "array",
-          "minItems": 1,
-          "description": "References to group ids in this topic; referential integrity is checked by validate-data, not the schema.",
-          "items": { "$ref": "#/$defs/id" }
+        "fromTier": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "The ruler position from which the note applies, counted from the famous end as the ruler counts its stops — so 1 is the first tier and the note is always shown. One-based rather than an index into `tiers`, because it is a statement about where the ruler stands, and an off-by-one here would be invisible: the note would simply appear a tier too early. An unranked list has one position, like everywhere else."
+        },
+        "icon": {
+          "type": "string",
+          "minLength": 1,
+          "description": "The glyph that opens the note. Defaults to ℹ️, which is nearly always right: a tier note describes something deliberate. ⚠️ is reserved for what is unconfirmed — a language a list has not been checked in — and using it here would blur that."
+        },
+        "text": {
+          "allOf": [{ "$ref": "#/$defs/locString" }],
+          "description": "The note itself. Localized here rather than in a locale file for the same reason `reason` is: it describes this list's source, not the app. May carry `{br}` and `[text](url)` links (https only), resolved by src/locale/html."
         }
       }
     }

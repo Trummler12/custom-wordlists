@@ -22,7 +22,7 @@ export const ja: UIStrings = {
     wordsOf: (selected, total) => `${total}語中${selected}語`,
   },
   names: {
-    form: { short: "短い", long: "長い", both: "両方" },
+    form: { pref: "推奨", short: "短い", long: "長い", both: "両方", all: "すべて" },
     formLabel: (group) => `${group}の名前の形式`,
   },
   fame: {
@@ -30,6 +30,8 @@ export const ja: UIStrings = {
     valueText: (depth, total) => `${total}段階中の上位${depth}段階`,
     groupsDefined: (count) => `定義済みの知名度グループ: ${count}`,
     none: "知名度グループはまだ定義されていません。フッターの Contribution Guide から提案できます。",
+    selected: "選択中：",
+    mostlySelected: "大半を選択中：",
     toggle: (shown) =>
       shown ? "このリストの知名度スライダーを隠す" : "このリストの知名度スライダーを表示する",
     toggleAll: (allShown) =>
@@ -40,12 +42,44 @@ export const ja: UIStrings = {
     title: "このリストから除外:",
     toggle: (omitted) => (omitted ? "オンにしてリストに含める" : "オンにして除外する"),
     locked: "これらは単語ではなくゲームのデータなので、追加できません。",
+    upTo: (n) => `最大${n}件`,
     unknown: (n, primary, secondary) =>
-      `元データに${primary}${secondary}の名前がない項目が${n}件`,
+      `元データに${primary}${secondary}の名前がない項目が最大${n}件`,
     unknownHint: (omitted) =>
       omitted
         ? "オンにすると、唯一分かっている英語名で含めます。"
         : "オンにすると、再び除外します。",
+    unknownTier: (tier, n) => `第${tier}段階: ${n}件`,
+    tooLong: (n, maxLen) => `${maxLen}文字を超える名前が最大${n}件`,
+    tooLongHint: (omitted) =>
+      omitted
+        ? "オンにすると、それでも含めます。skribbl.io は受け付けませんが、他のゲームなら通るかもしれません。"
+        : "オンにすると、再び除外します。",
+  },
+  coverage: {
+    label: "Geoguessr / ストリートビューの対応",
+    all: "すべての国",
+    withCoverage: "公式対応あり",
+    reliable: "十分な対応のみ",
+  },
+  sovereignty: {
+    label: "主権と承認",
+    wiki: "https://ja.wikipedia.org/wiki/国家承認を得た国連非加盟の国と地域の一覧",
+    axisRow: "法律上",
+    axisCol: "事実上",
+    cols: ["完全独立", "部分的自治"],
+    rows: ["普遍的承認", "広範な承認", "部分的承認", "未承認"],
+    colDefs: [
+      "国境・司法・軍隊・徴税を自ら管理する。",
+      "独自の法律と議会を持つが、通貨・防衛・外交などの中核権限は他国と共有する。",
+    ],
+    rowDefs: [
+      "国連加盟国で、ほぼ全ての国に承認されている。",
+      "多くの国連加盟国に承認されているが、一部に反対がある。",
+      "少数の国にしか承認されていないが、事実上・認識上の存在感は大きいことが多い。",
+      "国際的に他の主権国家の一部と見なされている。",
+    ],
+    regular: "通常の国家",
   },
   language: {
     label: (current) => `言語: ${current}`,
@@ -74,6 +108,9 @@ export const ja: UIStrings = {
     showEnglishEn: "このスイッチは英語以外の言語でのみ表示されます。",
     interfaceLang: "表示言語:",
     interfaceAuto: "自動",
+    reset: "設定を{br}リセット",
+    resetConfirm: "もう一度クリックで確定",
+    resetCancel: "キャンセル",
   },
   output: {
     label: "出力",
@@ -87,8 +124,7 @@ export const ja: UIStrings = {
     chars: "文字",
     belowMin: (min) => `· skribbl の最小数(${min})未満`,
     overMax: "· 上限超過",
-    excluded: (count, maxLen, list) =>
-      `${maxLen}文字を超えるため${count}語を除外しました: ${list}`,
+    overLong: (count, maxLen) => `${maxLen}文字を超える単語が${count}件`,
   },
   footer: {
     repository: "GitHub リポジトリ",

@@ -39,7 +39,7 @@ function ordered(entry) {
 
 /** Every entry of a topic, tiers flattened. */
 function allEntries(topic) {
-  return topic.groups.flatMap((g) => [...(g.words ?? []), ...(g.tiers ?? []).flat()]);
+  return (topic.groups ?? [topic]).flatMap((g) => [...(g.words ?? []), ...(g.tiers ?? []).flat()]);
 }
 
 /** What a list would cost to romanize, without writing anything: the names this
@@ -86,7 +86,7 @@ async function main() {
 
   if (process.argv.includes("--strip")) {
     let removed = 0;
-    for (const group of topic.groups) {
+    for (const group of topic.groups ?? [topic]) {
       const strip = (e) => {
         if (typeof e === "string" || e[VARIANT] === undefined) return e;
         removed++;
@@ -107,7 +107,7 @@ async function main() {
   let noJapanese = 0;
   let unreadable = 0;
 
-  for (const group of topic.groups) {
+  for (const group of topic.groups ?? [topic]) {
     group.words = group.words.map((entry) => {
       if (typeof entry === "string") {
         // A plain string is the same name everywhere; its Japanese is its English.
