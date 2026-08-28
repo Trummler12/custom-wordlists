@@ -1,5 +1,5 @@
 # ==============================================================================
-# CONFIGURATION & USER PARAMETERS
+# CONFIGURATION & USER PARAMETERS (v5.2 - Step 2: Relation Matrix)
 # ==============================================================================
 
 # Target Mode: 
@@ -11,14 +11,26 @@
 [string]$DirectItemQID = "Q3624078"
 
 # Instance criteria for "Instances" mode:
-[string]$InstanceOfQID          = "Q3624078" # Main class (e.g., Q3624078 = Sovereign State, Q4022 = River, Q10864048 = Subdivision)
-[string]$ParentRelationProperty = ""        # Optional relation to parent (e.g., "P17" = country, "P36" = capital)
-[string]$ParentClassQID         = ""        # Optional parent class (e.g., "Q3624078" = Sovereign state)
+[string]$InstanceOfQID = "Q3624078" # Main class (e.g. Q3624078 = Sovereign State, Q4022 = River, Q5119 = Capital)
+[string]$ParentClassQID = ""         # Optional parent class (e.g. "Q3624078" = Sovereign State)
+
+# RELATIONS-MATRIX (Automatische Ermittlung der Beziehung zwischen Child & Parent)
+$RelationMatrix = @{
+    # Child QID  | Parents: Continent | Sovereign State    | Subdivision 1
+    "Q3624078"   = @{ "Q5107" = "P30" ; "Q3624078" = "x"   ; "Q10864048" = "x"   } # Sovereign State
+    "Q10864048"  = @{ "Q5107" = "x"   ; "Q3624078" = "P17" ; "Q10864048" = "P131"} # First-level Subdivision
+    "Q5119"      = @{ "Q5107" = "x"   ; "Q3624078" = "P36" ; "Q10864048" = "P36" } # Capital City
+    "Q486972"    = @{ "Q5107" = "x"   ; "Q3624078" = "P17" ; "Q10864048" = "P131"} # Human Settlement
+    "Q116126039" = @{ "Q5107" = "P30" ; "Q3624078" = "P17" ; "Q10864048" = "P131"} # Marine Water Body
+    "Q23397"     = @{ "Q5107" = "P30" ; "Q3624078" = "P17" ; "Q10864048" = "P131"} # Lake
+    "Q4022"      = @{ "Q5107" = "P30" ; "Q3624078" = "P17" ; "Q10864048" = "P131"} # River
+    "Q8502"      = @{ "Q5107" = "P30" ; "Q3624078" = "P17" ; "Q10864048" = "P131"} # Mountain
+}
 
 # Limits & Sorting (0 = no limit)
-[int]$Limit              = 0       # Max entities to process (e.g., 100 for Top 100)
-[string]$OrderByProperty = ""      # Optional sort property QID (e.g., "P2043" = length, "P1082" = population)
-[bool]$OrderDescending   = $true   # True = Highest/Longest first
+[int]$Limit               = 0        # Max entities to process (e.g., 100 for Top 100)
+[string]$OrderByProperty = ""       # Optional sort property QID (e.g., "P2043" = length, "P1082" = population)
+[bool]$OrderDescending   = $true    # True = Highest/Longest first
 
 # Processing & Rate Limiting Settings
 [int]$BatchSize             = 30
@@ -27,25 +39,7 @@
 # Output path (saved right next to this script)
 $ScriptDir  = if ($PSScriptRoot) { $PSScriptRoot } else { $PWD.Path }
 $OutputFile = Join-Path $ScriptDir "Wikidata_Property_Counts.csv"
-$UserAgent  = "WikidataGenericLabelCounter/5.0 (PowerShell/WikidataParser)"
-
-# ------------------------------------------------------------------------------
-# PRESETS (Uncomment ONE block to activate preset settings)
-# ------------------------------------------------------------------------------
-# PRESET 1: Sovereign States (Instances of Q3624078)
-# $TargetMode = "Instances"; $InstanceOfQID = "Q3624078"; $ParentRelationProperty = ""; $ParentClassQID = ""; $Limit = 0; $OrderByProperty = ""
-
-# PRESET 2: Direct analysis of Q3624078 itself (Properties ON the Sovereign State concept item)
-# $TargetMode = "DirectItem"; $DirectItemQID = "Q3624078"
-
-# PRESET 3: Capitals of Sovereign States (using capital relation P36)
-# $TargetMode = "Instances"; $InstanceOfQID = ""; $ParentRelationProperty = "P36"; $ParentClassQID = "Q3624078"; $Limit = 0; $OrderByProperty = ""
-
-# PRESET 4: First-Level Subdivisions (Q10864048) of Sovereign States
-# $TargetMode = "Instances"; $InstanceOfQID = "Q10864048"; $ParentRelationProperty = "P17"; $ParentClassQID = "Q3624078"; $Limit = 0; $OrderByProperty = ""
-
-# PRESET 5: Top 100 Longest Rivers Worldwide (Q4022 sorted by Length P2043)
-# $TargetMode = "Instances"; $InstanceOfQID = "Q4022"; $ParentRelationProperty = ""; $ParentClassQID = ""; $Limit = 100; $OrderByProperty = "P2043"
+$UserAgent  = "WikidataGenericLabelCounter/5.2 (PowerShell/WikidataParser)"
 
 # ------------------------------------------------------------------------------
 # BLACKLIST: URIs to ignore (e.g. schema descriptions)
@@ -100,17 +94,29 @@ if ($TargetMode -eq "DirectItem") {
     Write-Host "Direct item mode active. Analyzing single Q-Item: $DirectItemQID" -ForegroundColor Green
 }
 else {
-    # Build dynamic SPARQL selector
     $whereClauses = [System.Collections.Generic.List[string]]::new()
 
-    if ($ParentRelationProperty -eq "P36" -and $ParentClassQID) {
-        $whereClauses.Add("?parent wdt:P31 wd:$ParentClassQID .")
-        $whereClauses.Add("?parent wdt:P36 ?entity .")
-    }
-    elseif ($ParentRelationProperty -and $ParentClassQID) {
-        $whereClauses.Add("?parent wdt:P31 wd:$ParentClassQID .")
-        if ($InstanceOfQID) { $whereClauses.Add("?entity wdt:P31/wdt:P279* wd:$InstanceOfQID .") }
-        $whereClauses.Add("?entity wdt:$ParentRelationProperty ?parent .")
+    # Automatisches Bestimmen der Relation aus der Matrix bei gesetztem Parent
+    if ($ParentClassQID) {
+        if (-not $RelationMatrix.ContainsKey($InstanceOfQID) -or -not $RelationMatrix[$InstanceOfQID].ContainsKey($ParentClassQID)) {
+            Write-Error "FEHLER: Die Kombination Child [$InstanceOfQID] + Parent [$ParentClassQID] ist nicht in `$RelationMatrix definiert!"
+            exit
+        }
+        
+        $resolvedRel = $RelationMatrix[$InstanceOfQID][$ParentClassQID]
+        if ($resolvedRel -eq "x") {
+            Write-Error "FEHLER: Die Kombination Child [$InstanceOfQID] in Parent [$ParentClassQID] ist logisch ungültig ('x')!"
+            exit
+        }
+
+        if ($resolvedRel -eq "P36") {
+            $whereClauses.Add("?parent wdt:P31 wd:$ParentClassQID .")
+            $whereClauses.Add("?parent wdt:P36 ?entity .")
+        } else {
+            $whereClauses.Add("?parent wdt:P31 wd:$ParentClassQID .")
+            if ($InstanceOfQID) { $whereClauses.Add("?entity wdt:P31/wdt:P279* wd:$InstanceOfQID .") }
+            $whereClauses.Add("?entity wdt:$resolvedRel ?parent .")
+        }
     }
     elseif ($InstanceOfQID) {
         $whereClauses.Add("?entity wdt:P31/wdt:P279* wd:$InstanceOfQID .")
