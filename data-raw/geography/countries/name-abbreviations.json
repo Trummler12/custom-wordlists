@@ -1,0 +1,4 @@
+{
+  "_comment": "Abbreviations kept as drawable name forms even though they carry no lowercase letter. The build drops such code-like names (ISO or technical codes like NG / EC / ECU that Wikidata mis-files under P1813 short name — see _untracked/Prompts/Country_Code_Correct_Places.md) from every slot; the entries here are the genuine natural-language abbreviations (USA, UK) that stay. Extend from report-name-quality.md. See bucket-names.mjs (isCode) and build-country-data.mjs.",
+  "keep": ["USA", "UK", "UAE"]
+}

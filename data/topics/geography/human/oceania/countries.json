@@ -4,11 +4,11 @@
   "languages": ["en","de","es","fr","it","ja","ja-Latn","ko","zh-Hans","zh-Hant"],
   "generatedRomaji": true,
   "sources": [
-    "Names & variants: geonames country info and alternate names — https://www.geonames.org/countries/ (see scripts/geography/dump-geonames.mjs)",
-    "Population & tiers: Wikidata sovereign states (P31 Q3624078) — https://www.wikidata.org/wiki/Q3624078 (see scripts/geography/dump-country-data.mjs)"
+    "Names & variants: Wikidata labels, official names (P1448) and short names (P1813) — https://www.wikidata.org/wiki/Q3624078 (see scripts/geography/dump-country-data.mjs)",
+    "Population & tiers: Wikidata sovereign states (P1082 on P31 Q3624078) — https://www.wikidata.org/wiki/Q3624078 (see scripts/geography/dump-country-data.mjs)"
   ],
-  "lastUpdated": "2026-08-26",
-  "lastChecked": "2026-08-26",
+  "lastUpdated": "2026-08-31",
+  "lastChecked": "2026-08-31",
   "defaultNames": "pref",
   "omitted": [
     {
@@ -96,41 +96,41 @@
     [],
 
     [
-      {"en":"Australia","de":"Australien","fr":"Australie","ja":"オーストラリア","ko":{"pref":"호주","long":"오스트레일리아"},"zh-Hans":{"pref":"澳大利亚","others":["澳大利亞"]},"zh-Hant":"澳洲"}
+      {"en":"Australia","de":"Australien","fr":"Australie","ja":"オーストラリア","ko":{"pref":"호주","long":"오스트레일리아"},"zh-Hans":"澳大利亚","zh-Hant":"澳洲"}
     ],
 
     [
-      {"en":"Papua New Guinea","de":"Papua-Neuguinea","es":{"pref":"Papúa-Nueva Guinea","long":"Papúa Nueva Guinea"},"fr":"Papouasie-Nouvelle-Guinée","it":"Papua Nuova Guinea","ja":{"pref":"パプアニューギニア","long":"パプア・ニューギニア"},"ko":{"pref":"파푸아뉴기니","others":["파푸아 뉴기니"]},"zh-Hans":"巴布亚新几内亚","zh-Hant":"巴布亞紐幾內亞"},
+      {"en":"Papua New Guinea","de":"Papua-Neuguinea","es":"Papúa Nueva Guinea","fr":{"pref":"Papouasie-Nouvelle-Guinée","long":"l’État indépendant de Papouasie- Nouvelle-Guinée"},"it":"Papua Nuova Guinea","ja":"パプアニューギニア","ko":"파푸아뉴기니","zh-Hans":"巴布亚新几内亚","zh-Hant":"巴布亞紐幾內亞"},
       {"en":"New Zealand","de":"Neuseeland","es":"Nueva Zelanda","fr":"Nouvelle-Zélande","it":"Nuova Zelanda","ja":"ニュージーランド","ko":"뉴질랜드","zh-Hans":"新西兰","zh-Hant":"紐西蘭"}
     ],
 
     [],
 
     [
-      {"en":"Fiji","de":"Fidschi","es":"Fiyi","fr":{"pref":"Fidji","others":["Îles Fidji"]},"it":"Figi","ja":"フィジー","ko":"피지","zh-Hans":"斐济","zh-Hant":"斐濟"},
-      {"en":"Solomon Islands","de":{"pref":"Salomonen","others":["Salomoninseln","Solomon-Inseln"]},"es":{"pref":"Islas Salomón","others":["Salomón"]},"fr":{"pref":"Îles Salomon","others":["Iles Salomon","Salomon"]},"it":{"pref":"Isole Salomone","others":["Isole Solomon","Salomone, isole"]},"ja":"ソロモン諸島","ko":{"pref":"솔로몬 제도","others":["솔로몬"]},"zh-Hans":"所罗门群岛","zh-Hant":"索羅門群島"},
-      {"en":{"pref":"Vanuatu","others":["Republic of Vanuatu"]},"de":"Vanuatu","es":"Vanuatu","fr":{"pref":"Vanuatu","others":["République de Vanuatu"]},"it":"Vanuatu","ja":{"pref":"バヌアツ","long":"バヌアツ共和国"},"ko":"바누아투","zh-Hans":"瓦努阿图","zh-Hant":"萬那杜"},
-      {"en":{"pref":"New Caledonia","others":["Territory of New Caledonia and Dependencies"]},"de":"Neukaledonien","es":"Nueva Caledonia","fr":{"pref":"Nouvelle-Calédonie","others":["Territoire des Nouvelle-Calédonie et Dépendances"]},"it":"Nuova Caledonia","ja":"ニューカレドニア","ko":{"pref":"뉴칼레도니아","others":["누벨칼레도니"]},"zh-Hans":"新喀里多尼亚","zh-Hant":"新喀里多尼亞"},
-      {"en":"French Polynesia","de":"Französisch-Polynesien","es":"Polinesia Francesa","fr":{"pref":"Polynésie française","others":["Territoire de la Polynésie Française"]},"it":"Polinesia francese","ja":{"pref":"仏領ポリネシア","others":["フランス領ポリネシア"]},"ko":"프랑스령 폴리네시아","zh-Hans":"法属波利尼西亚","zh-Hant":"法屬玻里尼西亞"},
-      {"en":{"pref":"Samoa","others":["Independent State of Samoa"]},"de":"Samoa","es":"Samoa","fr":"Samoa","it":"Samoa","ja":{"pref":"サモア","others":["西サモア"]},"ko":"사모아","zh-Hans":"萨摩亚","zh-Hant":"薩摩亞"},
+      {"en":{"pref":"Fiji","long":"Republic of Fiji"},"de":"Fidschi","es":"Fiyi","fr":{"pref":"Fidji","long":"République des Fidji"},"it":"Figi","ja":"フィジー","ko":"피지","zh-Hans":"斐济","zh-Hant":"斐濟"},
+      {"en":"Solomon Islands","de":"Salomonen","es":"Islas Salomón","fr":{"pref":"Îles Salomon","long":"les Îles Salomon"},"it":"Isole Salomone","ja":"ソロモン諸島","ko":"솔로몬 제도","zh-Hans":"所罗门群岛","zh-Hant":"索羅門群島"},
+      {"en":{"pref":"Vanuatu","long":"Republic of Vanuatu"},"de":"Vanuatu","es":"Vanuatu","fr":{"pref":"Vanuatu","long":"la République du Vanuatu","others":["République du Vanuatu"]},"it":"Vanuatu","ja":"バヌアツ","ko":"바누아투","zh-Hans":"瓦努阿图","zh-Hant":"萬那杜"},
+      {"en":"French Polynesia","de":"Französisch-Polynesien","es":"Polinesia Francesa","fr":"Polynésie française","it":"Polinesia francese","ja":"フランス領ポリネシア","ko":"프랑스령 폴리네시아","zh-Hans":"法属波利尼西亚","zh-Hant":"法屬玻里尼西亞"},
+      {"en":"New Caledonia","de":"Neukaledonien","es":"Nueva Caledonia","fr":"Nouvelle-Calédonie","it":"Nuova Caledonia","ja":"ニューカレドニア","ko":"누벨칼레도니","zh-Hans":"新喀里多尼亚","zh-Hant":"新喀里多尼亞"},
+      {"en":{"pref":"Samoa","long":"Western Samoa"},"de":"Samoa","es":"Samoa","fr":{"pref":"Samoa","long":"État indépendant des Samoa"},"it":"Samoa","ja":"サモア","ko":"사모아","zh-Hans":"萨摩亚","zh-Hant":"薩摩亞"},
       {"en":"Guam","ja":"グアム","ko":"괌","zh-Hans":"关岛","zh-Hant":"關島"},
-      {"en":"Kiribati","ja":{"pref":"キリバス","long":"キリバス共和国"},"ko":{"pref":"키리바시","long":"키리바티"},"zh-Hans":"基里巴斯","zh-Hant":"吉里巴斯"},
-      {"en":"Tonga","ja":{"pref":"トンガ","long":"トンガ王国"},"ko":"통가","zh-Hans":"汤加","zh-Hant":"東加"},
-      {"en":{"pref":"Federated States of Micronesia","short":"Micronesia","others":["Micronesia, Federated States Of"]},"de":{"pref":"Mikronesien","others":["Föderierte Staaten von Mikronesien"]},"es":{"pref":"Micronesia","others":["Estados Federados de Micronesia"]},"fr":{"pref":"Micronésie","long":"États fédérés de Micronésie"},"it":{"pref":"Micronesia","others":["Stati Federati di Micronesia"]},"ja":"ミクロネシア連邦","ko":{"pref":"미크로네시아","others":["미크로네시아 연방"]},"zh-Hans":"密克罗尼西亚联邦","zh-Hant":{"pref":"密克羅尼西亞","long":"密克罗尼西亚"}},
-      {"en":"Northern Mariana Islands","de":"Nördliche Marianen","es":"Islas Marianas del Norte","fr":"Îles Mariannes du Nord","it":"Isole Marianne settentrionali","ja":"北マリアナ諸島","ko":{"pref":"북마리아나제도","others":["북마리아나 제도"]},"zh-Hant":{"pref":"北馬利安納群島","long":"北马里亚纳群岛"},"?":["zh-Hans"]},
-      {"en":"American Samoa","de":"Amerikanisch-Samoa","es":"Samoa Americana","fr":"Samoa américaines","it":"Samoa Americane","ja":"米領サモア","ko":{"pref":"아메리칸 사모아","others":["미국령 사모아"]},"zh-Hans":"美属萨摩亚","zh-Hant":"美屬薩摩亞"},
-      {"en":"Marshall Islands","de":{"pref":"Marshallinseln","long":"Marshall-Inseln"},"es":{"pref":"Islas Marshall","others":["Marshall"]},"fr":{"pref":"Îles Marshall","others":["Marshall, îles"]},"it":"Isole Marshall","ja":"マーシャル諸島","ko":"마셜 제도","zh-Hans":"马绍尔群岛","zh-Hant":"馬紹爾群島"},
-      {"en":"Palau","es":"Palaos","fr":"Palaos","ja":"パラオ","ko":"팔라우","zh-Hans":"帕劳","zh-Hant":"帛琉"},
-      {"en":"Cook Islands","de":"Cook-Inseln","es":"Islas Cook","fr":{"pref":"Îles Cook","others":["Iles Cook"]},"it":"Isole Cook","ja":"クック諸島","ko":{"pref":"쿡제도","long":"쿡 제도"},"zh-Hans":"库克群岛","zh-Hant":"庫克群島"},
-      {"en":{"pref":"Wallis and Futuna","others":["Wallis & Futuna"]},"de":"Wallis und Futuna","es":"Wallis y Futuna","fr":{"pref":"Wallis-et-Futuna","others":["Territoire des Îles Wallis et Futuna"]},"it":"Wallis e Futuna","ja":{"pref":"ウォリス・フツナ","long":"ワリー エ フトゥーナ諸島"},"ko":{"pref":"왈리스-푸투나 제도","others":["왈리스 퓌튀나"]},"zh-Hans":{"pref":"瓦利斯和富图纳","others":["瓦利斯和富圖納群島"]},"zh-Hant":"瓦利斯群島和富圖那群島"},
-      {"en":{"pref":"Nauru","others":["Republic of Nauru"]},"de":"Nauru","es":"Nauru","fr":"Nauru","it":"Nauru","ja":"ナウル","ko":"나우루","zh-Hans":"瑙鲁","zh-Hant":"諾魯"},
-      {"en":"Tuvalu","ja":"ツバル","ko":"투발루","zh-Hans":{"pref":"图瓦卢","others":["圖瓦盧"]},"zh-Hant":"吐瓦魯"},
-      {"en":"Niue","es":{"pref":"Niue","others":["Isla Niue"]},"fr":{"pref":"Niue","others":["Nioué","Niué"]},"ja":{"pref":"ニウエ","long":"ニウエ島"},"ko":"니우에","zh-Hans":{"pref":"纽埃","others":["紐埃"]},"zh-Hant":"紐埃島"},
-      {"en":"Norfolk Island","de":"Norfolkinsel","es":"Isla Norfolk","fr":{"pref":"Île Norfolk","others":["Ile de Norfolk","Norfolk, île"]},"it":"Isola Norfolk","ja":"ノーフォーク島","ko":{"pref":"노퍽섬","others":["노퍽 아일랜드"]},"zh-Hans":"诺福克岛","zh-Hant":"諾福克島"},
-      {"en":"Christmas Island","de":"Weihnachtsinsel","es":"Isla de Navidad","fr":{"pref":"Île Christmas","others":["Christmas, île","Territoire de l'Île Christmas"]},"it":"Isola Christmas","ja":"クリスマス島","ko":"크리스마스섬","zh-Hans":"圣诞岛","zh-Hant":"聖誕島"},
-      {"en":"Tokelau","ja":"トケラウ","ko":"토켈라우","zh-Hans":"托克劳","zh-Hant":"托克勞群島"},
-      {"en":"Cocos (Keeling) Islands","de":"Kokosinseln","es":"Islas Cocos","fr":{"pref":"Îles Cocos","others":["Îles Cocos (Keeling)","Territoire des îles Cocos"]},"it":{"pref":"Isole Cocos (Keeling)","short":"Isole Cocos"},"ja":"ココス(キーリング)諸島","ko":"코코스 제도","zh-Hans":"科科斯（基林）群岛","zh-Hant":{"pref":"科科斯群岛","long":"科克斯（基靈）群島"}},
-      {"en":"Pitcairn Islands","de":"Pitcairninseln","es":"Islas Pitcairn","fr":{"pref":"Îles Pitcairn","short":"Pitcairn"},"it":"Isole Pitcairn","ja":"ピトケアン諸島","ko":"핏케언 제도","zh-Hant":{"pref":"皮特肯群島","long":"皮特凯恩群岛"},"?":["zh-Hans"]}
+      {"en":{"pref":"Kiribati","long":"Republic of Kiribati"},"de":{"pref":"Kiribati","long":"Republik Kiribati"},"es":"Kiribati","fr":{"pref":"Kiribati","long":"la République des Kiribati"},"it":"Kiribati","ja":"キリバス","ko":"키리바시","zh-Hans":"基里巴斯","zh-Hant":"吉里巴斯"},
+      {"en":"Tonga","fr":{"pref":"Tonga","long":"le Royaume des Tonga"},"ja":"トンガ","ko":"통가","zh-Hans":"汤加","zh-Hant":"東加"},
+      {"en":"Federated States of Micronesia","de":{"pref":"Mikronesien","others":["Föderierte Staaten von Mikronesien"]},"es":{"pref":"Micronesia","others":["Estados Federados de Micronesia"]},"fr":{"pref":"Micronésie","long":"États fédérés de Micronésie"},"it":{"pref":"Micronesia","others":["Stati Federati di Micronesia"]},"ja":"ミクロネシア連邦","ko":{"pref":"미크로네시아","others":["미크로네시아 연방"]},"zh-Hans":"密克罗尼西亚联邦","zh-Hant":{"pref":"密克羅尼西亞","long":"密克罗尼西亚"}},
+      {"en":"Marshall Islands","de":"Marshallinseln","es":"Islas Marshall","fr":"Îles Marshall","it":"Isole Marshall","ja":"マーシャル諸島","ko":"마셜 제도","zh-Hans":"马绍尔群岛","zh-Hant":"馬紹爾群島"},
+      {"en":"American Samoa","de":"Amerikanisch-Samoa","es":"Samoa Americana","fr":"Samoa américaines","it":"Samoa Americane","ja":"アメリカ領サモア","ko":"아메리칸사모아","zh-Hans":"美属萨摩亚","zh-Hant":"美屬薩摩亞"},
+      {"en":{"pref":"Northern Mariana Islands","others":["Commonwealth of the Northern Mariana Islands"]},"de":"Nördliche Marianen","es":"Islas Marianas del Norte","fr":"îles Mariannes du Nord","it":"Isole Marianne Settentrionali","ja":"北マリアナ諸島","ko":"북마리아나 제도","zh-Hans":"北马里亚纳群岛","zh-Hant":"北馬里亞納群島"},
+      {"en":"Palau","es":"Palaos","fr":{"pref":"Palaos","long":"la République des Palaos"},"ja":"パラオ","ko":"팔라우","zh-Hans":"帕劳","zh-Hant":"帛琉"},
+      {"en":"Cook Islands","de":"Cookinseln","es":"Islas Cook","fr":"Îles Cook","it":"Isole Cook","ja":"クック諸島","ko":"쿡 제도","zh-Hans":"库克群岛","zh-Hant":"庫克群島"},
+      {"en":{"pref":"Nauru","long":"Republic of Naoero"},"de":"Nauru","es":"Nauru","fr":"Nauru","it":"Nauru","ja":"ナウル","ko":"나우루","zh-Hans":"瑙鲁","zh-Hant":"瑙魯"},
+      {"en":"Wallis and Futuna","de":"Wallis und Futuna","es":"Wallis y Futuna","fr":"Wallis-et-Futuna","it":"Wallis e Futuna","ja":"ウォリス・フツナ","ko":"왈리스 푸투나","zh-Hans":"瓦利斯和富图纳","zh-Hant":"瓦利斯和富圖納"},
+      {"en":"Tuvalu","fr":{"pref":"Tuvalu","long":"les Tuvalu"},"ja":"ツバル","ko":"투발루","zh-Hans":"图瓦卢","zh-Hant":"吐瓦魯"},
+      {"en":{"pref":"Norfolk Island","others":["Territory of Norfolk Island"]},"de":"Norfolkinsel","es":"Isla Norfolk","fr":"île Norfolk","it":"Isola Norfolk","ja":"ノーフォーク島","ko":"노퍽섬","zh-Hans":"诺福克岛","zh-Hant":"諾福克島"},
+      {"en":"Niue","ja":"ニウエ","ko":"니우에","zh-Hans":"纽埃","zh-Hant":"紐埃"},
+      {"en":"Christmas Island","de":"Weihnachtsinsel","es":"Isla de Navidad","fr":"île Christmas","it":"Isola di Natale","ja":"クリスマス島","ko":"크리스마스섬","zh-Hans":"聖誕島","?":["zh-Hant"]},
+      {"en":"Tokelau","ja":"トケラウ","ko":"토켈라우","zh-Hans":"托克劳","zh-Hant":"托克勞"},
+      {"en":{"pref":"Cocos (Keeling) Islands","others":["Cocos Islands"]},"de":"Kokosinseln","es":"islas Cocos","fr":"îles Cocos","it":"Isole Cocos","ja":"ココス諸島","ko":"코코스 제도","zh-Hans":"科科斯（基林）群岛","zh-Hant":"科科斯（基林）群島"},
+      {"en":{"pref":"Pitcairn Islands","others":["Pitcairn"]},"de":"Pitcairninseln","es":"Islas Pitcairn","fr":"îles Pitcairn","it":"Isole Pitcairn","ja":"ピトケアン諸島","ko":"핏케언 제도","zh-Hans":"皮特凯恩群岛","zh-Hant":"皮特肯群島"}
     ]
   ],
   "tierConditions": [

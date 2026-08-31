@@ -4,11 +4,11 @@
   "languages": ["en","de","es","fr","it","ja","ja-Latn","ko","zh-Hans","zh-Hant"],
   "generatedRomaji": true,
   "sources": [
-    "Names & variants: geonames country info and alternate names — https://www.geonames.org/countries/ (see scripts/geography/dump-geonames.mjs)",
-    "Population & tiers: Wikidata sovereign states (P31 Q3624078) — https://www.wikidata.org/wiki/Q3624078 (see scripts/geography/dump-country-data.mjs)"
+    "Names & variants: Wikidata labels, official names (P1448) and short names (P1813) — https://www.wikidata.org/wiki/Q3624078 (see scripts/geography/dump-country-data.mjs)",
+    "Population & tiers: Wikidata sovereign states (P1082 on P31 Q3624078) — https://www.wikidata.org/wiki/Q3624078 (see scripts/geography/dump-country-data.mjs)"
   ],
-  "lastUpdated": "2026-08-26",
-  "lastChecked": "2026-08-26",
+  "lastUpdated": "2026-08-31",
+  "lastChecked": "2026-08-31",
   "defaultNames": "pref",
   "omitted": [
     {
@@ -79,8 +79,8 @@
   ],
   "tiers": [
     [
-      {"en":{"pref":"United States","long":"United States of America","others":["America","USA"]},"de":{"pref":"Vereinigte Staaten","short":"USA","others":["Vereinigten Staaten von Amerika"]},"es":"Estados Unidos","fr":{"pref":"États-Unis","others":["USA"]},"it":{"pref":"Stati Uniti","others":["USA"]},"ja":"アメリカ","ko":"미국","zh-Hans":"美国","zh-Hant":"美國"},
-      {"en":{"pref":"Mexico","others":["Mexican Republic","United Mexican States"]},"de":"Mexiko","es":{"pref":"México","others":["el País Azteca","Estados Unidos Mexicanos","Méjico","Nueva España","República Mejicana"]},"fr":"Mexique","it":"Messico","ja":{"pref":"メキシコ","long":"メキシコ合衆国"},"ko":"멕시코","zh-Hans":"墨西哥","zh-Hant":"墨西哥"}
+      {"en":{"pref":"United States","short":"USA","long":"the United States of America"},"de":"Vereinigte Staaten","es":"Estados Unidos","fr":"États-Unis","it":"Stati Uniti","ja":"アメリカ","ko":"미국","zh-Hans":"美国","zh-Hant":"美國"},
+      {"en":{"pref":"Mexico","long":"United Mexican States"},"de":{"pref":"Mexiko","long":"Vereinigte Mexikanische Staaten"},"es":{"pref":"México","long":"Estados Unidos Mexicanos"},"fr":{"pref":"Mexique","long":"les États unis mexicains","others":["États-Unis mexicains"]},"it":"Messico","ja":{"pref":"メキシコ","long":"メキシコ合衆国"},"ko":{"pref":"멕시코","long":"멕시코 합중국"},"zh-Hans":"墨西哥","zh-Hant":"墨西哥"}
     ],
 
     [
@@ -88,47 +88,47 @@
     ],
 
     [
-      {"en":{"pref":"Guatemala","others":["Republic of Guatemala"]},"de":"Guatemala","es":{"pref":"Guatemala","others":["República de Guatemala"]},"fr":"Guatemala","it":"Guatemala","ja":"グアテマラ","ko":"과테말라","zh-Hans":"危地马拉","zh-Hant":"瓜地馬拉"},
-      {"en":{"pref":"Cuba","others":["Republic of Cuba"]},"de":"Kuba","es":{"pref":"Cuba","long":"República de Cuba","others":["Isla Juana"]},"fr":"Cuba","it":"Cuba","ja":{"pref":"キューバ","long":"キューバ共和国"},"ko":"쿠바","zh-Hans":"古巴","zh-Hant":"古巴"},
-      {"en":{"pref":"Haiti","others":["Republic of Haiti"]},"de":"Haiti","es":"Haití","fr":{"pref":"Haïti","others":["République d’Haïti"]},"it":"Haiti","ja":{"pref":"ハイチ","long":"ハイチ共和国"},"ko":{"pref":"아이티","others":["하이티"]},"zh-Hans":"海地","zh-Hant":"海地"},
-      {"en":"Dominican Republic","de":{"pref":"Dominikanische Republik","short":"Dom. Republik"},"es":{"pref":"República Dominicana","short":"Santo Domingo","long":"República de Santo Domingo","others":["Haití Español","Quisqueya"]},"fr":{"pref":"République dominicaine","others":["Dominicaine, république"]},"it":"Repubblica Dominicana","ja":"ドミニカ共和国","ko":{"pref":"도미니카 공화국","others":["도미니카공화국"]},"zh-Hans":"多明尼加","zh-Hant":{"pref":"多明尼加共和國","others":["多米尼加共和国"]}},
-      {"en":{"pref":"Honduras","others":["Republic of Honduras"]},"de":"Honduras","es":{"pref":"Honduras","others":["República de Honduras"]},"fr":"Honduras","it":"Honduras","ja":{"pref":"ホンジュラス","long":"ホンジュラス共和国"},"ko":"온두라스","zh-Hans":"洪都拉斯","zh-Hant":"宏都拉斯"},
-      {"en":{"pref":"El Salvador","others":["Republic of El Salvador"]},"de":"El Salvador","es":{"pref":"El Salvador","others":["República de El Salvador"]},"fr":{"pref":"Salvador","others":["El Salvador"]},"it":"El Salvador","ja":"エルサルバドル","ko":"엘살바도르","zh-Hans":"萨尔瓦多","zh-Hant":"薩爾瓦多"},
-      {"en":{"pref":"Costa Rica","others":["Republic of Costa Rica"]},"de":"Costa Rica","es":{"pref":"Costa Rica","others":["República de Costa Rica"]},"fr":"Costa Rica","it":"Costa Rica","ja":"コスタリカ","ko":"코스타리카","zh-Hans":"哥斯达黎加","zh-Hant":"哥斯大黎加"},
-      {"en":{"pref":"Nicaragua","others":["Republic of Nicaragua"]},"de":{"pref":"Nicaragua","others":["Nikaragua"]},"es":{"pref":"Nicaragua","others":["República de Nicaragua"]},"fr":"Nicaragua","it":"Nicaragua","ja":{"pref":"ニカラグア","long":"ニカラグア共和国"},"ko":"니카라과","zh-Hans":"尼加拉瓜","zh-Hant":"尼加拉瓜"}
+      {"en":"Guatemala","fr":{"pref":"Guatemala","long":"République du Guatémala"},"ja":"グアテマラ","ko":"과테말라","zh-Hans":"危地马拉","zh-Hant":"瓜地馬拉"},
+      {"en":{"pref":"Cuba","long":"Republic of Cuba"},"de":"Kuba","es":{"pref":"Cuba","long":"República de Cuba"},"fr":{"pref":"Cuba","long":"la République de Cuba"},"it":"Cuba","ja":"キューバ","ko":"쿠바","zh-Hans":"古巴","zh-Hant":"古巴"},
+      {"en":"Haiti","es":"Haití","fr":{"pref":"Haïti","long":"la République d’Haïti"},"ja":"ハイチ","ko":"아이티","zh-Hans":"海地","zh-Hant":"海地"},
+      {"en":"Dominican Republic","de":"Dominikanische Republik","es":"República Dominicana","fr":"République dominicaine","it":"Repubblica Dominicana","ja":"ドミニカ共和国","ko":"도미니카 공화국","zh-Hans":"多米尼加","zh-Hant":"多明尼加"},
+      {"en":"Honduras","fr":{"pref":"Honduras","long":"la République du Honduras"},"ja":"ホンジュラス","ko":"온두라스","zh-Hans":"洪都拉斯","zh-Hant":"宏都拉斯"},
+      {"en":"El Salvador","fr":{"pref":"Salvador","long":"la République du Salvador"},"ja":"エルサルバドル","ko":"엘살바도르","zh-Hans":"萨尔瓦多","zh-Hant":"薩爾瓦多"},
+      {"en":{"pref":"Costa Rica","long":"Republic of Costa Rica"},"de":"Costa Rica","es":"Costa Rica","fr":{"pref":"Costa Rica","long":"République du Costa Rica"},"it":"Costa Rica","ja":"コスタリカ","ko":"코스타리카","zh-Hans":"哥斯达黎加","zh-Hant":"哥斯大黎加"},
+      {"en":"Nicaragua","es":{"pref":"Nicaragua","long":"República de Nicaragua"},"fr":{"pref":"Nicaragua","long":"la République du Nicaragua"},"ja":"ニカラグア","ko":"니카라과","zh-Hans":"尼加拉瓜","zh-Hant":"尼加拉瓜"}
     ],
 
     [
-      {"en":{"pref":"Panama","others":["Republic of Panama"]},"de":"Panama","es":{"pref":"Panamá","others":["República de Panamá"]},"fr":{"pref":"Panama","others":["Panamá"]},"it":"Panamá","ja":"パナマ","ko":"파나마","zh-Hans":"巴拿马","zh-Hant":"巴拿馬"},
-      {"en":{"pref":"Puerto Rico","others":["Commonwealth of Puerto Rico"]},"de":"Puerto Rico","es":{"pref":"Puerto Rico","others":["Borinquen","Estado Libre Asociado de Puerto Rico"]},"fr":"Porto Rico","it":"Portorico","ja":"プエルトリコ","ko":"푸에르토리코","zh-Hant":"波多黎各","?":["zh-Hans"]},
+      {"en":"Panama","es":"Panamá","fr":{"pref":"Panama","long":"la République du Panama"},"ja":"パナマ","ko":"파나마","zh-Hans":"巴拿马","zh-Hant":"巴拿馬"},
+      {"en":{"pref":"Puerto Rico","others":["Commonwealth of Puerto Rico"]},"de":"Puerto Rico","es":{"pref":"Puerto Rico","long":"Estado Libre Asociado de Puerto Rico"},"fr":"Porto Rico","it":"Porto Rico","ja":"プエルトリコ","ko":"푸에르토리코","zh-Hans":"波多黎各","zh-Hant":"波多黎各"},
       {"en":"Jamaica","de":"Jamaika","fr":"Jamaïque","it":"Giamaica","ja":"ジャマイカ","ko":"자메이카","zh-Hans":"牙买加","zh-Hant":"牙買加"},
-      {"en":{"pref":"Trinidad and Tobago","others":["Trinidad & Tobago"]},"de":"Trinidad und Tobago","es":"Trinidad y Tobago","fr":{"pref":"Trinité-et-Tobago","others":["Trinidad et Tobago"]},"it":"Trinidad e Tobago","ja":{"pref":"トリニダード・トバゴ","long":"トリニダード・トバゴ共和国"},"ko":"트리니다드 토바고","zh-Hans":"特立尼达和多巴哥","zh-Hant":"千里達及托巴哥"}
+      {"en":"Trinidad and Tobago","de":"Trinidad und Tobago","es":"Trinidad y Tobago","fr":"Trinité-et-Tobago","it":"Trinidad e Tobago","ja":"トリニダード・トバゴ","ko":"트리니다드 토바고","zh-Hans":"特立尼达和多巴哥","zh-Hant":"千里達及托巴哥"}
     ],
 
     [
-      {"en":"Belize","es":"Belice","ja":"ベリーズ","ko":"벨리즈","zh-Hans":"伯利兹","zh-Hant":"貝里斯"},
-      {"en":{"pref":"Bahamas","others":["The Bahamas"]},"de":"Bahamas","es":"Bahamas","fr":"Bahamas","it":"Bahamas","ja":{"pref":"バハマ","long":"バハマ国"},"ko":"바하마","zh-Hans":"巴哈马","zh-Hant":"巴哈馬"},
-      {"en":"Barbados","fr":"Barbade","ja":"バルバドス","ko":"바베이도스","zh-Hans":"巴巴多斯","zh-Hant":"巴貝多"},
-      {"en":{"pref":"Saint Lucia","others":["St Lucia","St. Lucia"]},"de":"Saint Lucia","es":{"pref":"Santa Lucía","others":["Saint Lucia"]},"fr":"Sainte-Lucie","it":{"pref":"Santa Lucia","others":["Saint Lucia"]},"ja":"セントルシア","ko":{"pref":"세인트루시아","long":"세인트 루시아"},"zh-Hans":"圣卢西亚","zh-Hant":"聖露西亞"},
-      {"en":{"pref":"Curaçao","others":["Country of Curaçao"]},"de":"Curaçao","es":{"pref":"Curazao","long":"País de Curazao"},"fr":"Curaçao","it":{"pref":"Curaçao","others":["Curacao"]},"ja":"キュラソー","ko":"퀴라소","zh-Hans":"库拉索","zh-Hant":"庫拉索"},
-      {"en":"Grenada","es":"Granada","fr":"Grenade","ja":"グレナダ","ko":"그레나다","zh-Hans":"格林纳达","zh-Hant":"格瑞那達"},
-      {"en":{"pref":"Saint Vincent and the Grenadines","short":"St Vincent and Grenadines","others":["St. Vincent & Grenadines"]},"de":"St. Vincent und die Grenadinen","es":"San Vicente y las Granadinas","fr":"Saint-Vincent-et-les-Grenadines","it":{"pref":"Saint Vincent e Grenadine","others":["Saint Vincent e Grenadines"]},"ja":{"pref":"セントビンセント及びグレナディーン諸島","others":["セントビンセント・グレナディーン"]},"ko":{"pref":"세인트빈센트그레나딘","long":"세인트 빈센트 그레나딘","others":["세인트빈센트 그레나딘"]},"zh-Hans":"圣文森特和格林纳丁斯","zh-Hant":"聖文森及格瑞那丁"},
-      {"en":{"pref":"United States Virgin Islands","others":["U.S. Virgin Islands","Virgin Islands (US)"]},"de":"Amerikanische Jungferninseln","es":"Islas Vírgenes de EE. UU.","fr":{"pref":"Îles Vierges des États-Unis","short":"îles Vierges américaines"},"it":"Isole Vergini Americane","ja":"米領ヴァージン諸島","ko":"미국령 버진아일랜드","zh-Hans":"美属维尔京群岛","zh-Hant":{"pref":"美屬維京群島","long":"美属维京群岛"}},
-      {"en":{"pref":"Aruba","others":["Country of Aruba"]},"de":"Aruba","es":"Aruba","fr":"Aruba","it":"Aruba","ja":{"pref":"アルバ","long":"アルバ島"},"ko":"아루바","zh-Hans":{"pref":"阿鲁巴","others":["阿魯巴"]},"zh-Hant":"荷屬阿魯巴"},
-      {"en":{"pref":"Antigua and Barbuda","others":["Antigua & Barbuda"]},"de":"Antigua und Barbuda","es":"Antigua y Barbuda","fr":{"pref":"Antigua-et-Barbuda","others":["Antigue-et-Barbude"]},"it":"Antigua e Barbuda","ja":{"pref":"アンティグアバブーダ","long":"アンティグア・バーブーダ"},"ko":{"pref":"앤티가 바부다","others":["안티가 바부다"]},"zh-Hans":"安提瓜和巴布达","zh-Hant":"安地卡及巴布達"},
-      {"en":{"pref":"Dominica","others":["Commonwealth of Dominica"]},"de":"Dominica","es":"Dominica","fr":"Dominique","it":"Dominica","ja":"ドミニカ国","ko":{"pref":"도미니카","others":["도미니카 연방"]},"zh-Hans":"多米尼克","zh-Hant":"多米尼克"},
-      {"en":"Cayman Islands","de":"Kaimaninseln","es":"Islas Caimán","fr":{"pref":"Îles Caïmans","others":["Îles Caïman","Iles Caïmanes","Îles Caïmanes"]},"it":"Isole Cayman","ja":"ケイマン諸島","ko":{"pref":"케이맨제도","long":"케이맨 제도"},"zh-Hans":"开曼群岛","zh-Hant":"開曼群島"},
-      {"en":"Bermuda","de":{"pref":"Bermuda","others":["Bermudas"]},"es":"Bermudas","fr":"Bermudes","ja":{"pref":"バミューダ","others":["バミューダ諸島"]},"ko":"버뮤다","zh-Hans":"百慕大","zh-Hant":"百慕達"},
-      {"en":"Greenland","de":"Grönland","es":"Groenlandia","fr":"Groenland","it":"Groenlandia","ja":"グリーンランド","ko":{"pref":"그린란드","others":["그린랜드"]},"zh-Hans":"格陵兰","zh-Hant":"格陵蘭"},
-      {"en":{"pref":"Saint Kitts and Nevis","others":["St. Kitts and Nevis","St. Kitts & Nevis"]},"de":{"pref":"St. Kitts und Nevis","others":["Föderation St. Kitts und Nevis"]},"es":{"pref":"San Cristóbal y Nieves","others":["San Cristóbal y Nevis"]},"fr":{"pref":"Saint-Christophe-et-Niévès","others":["Saint-Kitts-et-Nevis"]},"it":{"pref":"Saint Kitts e Nevis","long":"Saint Christopher e Nevis"},"ja":{"pref":"セントクリストファー・ネビス","others":["セントクリストファー・ネイビス"]},"ko":{"pref":"세인트키츠 네비스","long":"세인트 키츠 네비스","others":["세인트크리스토퍼 네비스"]},"zh-Hans":{"pref":"圣基茨和尼维斯","others":["聖克里斯多福與尼維斯"]},"zh-Hant":"聖克里斯多福及尼維斯"},
-      {"en":{"pref":"Sint Maarten","others":["Country of Sint Maarten","Sint Maarten (Dutch Part)"]},"de":"Sint Maarten","es":{"pref":"Isla de San Martín","long":"Sint Maarten","others":["San Martín"]},"fr":{"pref":"Saint-Martin","long":"Saint-Martin (partie néerlandaise)","others":["État de Saint-Martin","Saint-Martin (Royaume des Pays-Bas)"]},"it":"Sint Maarten","ja":"シント・マールテン","ko":{"pref":"신트마르턴","others":["신트마르텐"]},"zh-Hans":{"pref":"圣马丁岛","long":"荷属圣马丁"},"zh-Hant":"荷屬聖馬丁"},
-      {"en":{"pref":"Turks and Caicos Islands","others":["Turks and Caicos"]},"de":"Turks- und Caicosinseln","es":"Islas Turcas y Caicos","fr":{"pref":"Îles Turques-et-Caïques","others":["îles Turks-et-Caïcos","Îles Turks et Caïques"]},"it":"Isole Turks e Caicos","ja":"タークス・カイコス諸島","ko":{"pref":"터크스 케이커스 제도","others":["터크스케이커스"]},"zh-Hans":"特克斯和凯科斯群岛","zh-Hant":"土克斯及開科斯群島"},
-      {"en":{"pref":"Saint Martin","others":["Saint-Martin Collectivity","Saint Martin (French Part)","St Martin","St. Martin","St. Martin (French Part)"]},"de":{"pref":"Saint-Martin","short":"St. Martin"},"es":{"pref":"San Martín","others":["Isla de San Martín"]},"fr":{"pref":"Saint-Martin","long":"Saint-Martin (Antilles françaises)","others":["Collectivité de Saint-Martin"]},"it":{"pref":"Saint Martin","others":["Saint-Martin"]},"ja":"サン・マルタン","ko":"생마르탱","zh-Hans":"法属圣马丁","zh-Hant":"法屬聖馬丁"},
-      {"en":{"pref":"British Virgin Islands","others":["Virgin Islands (British)"]},"de":"Britische Jungferninseln","es":{"pref":"Islas Vírgenes Británicas","short":"Islas Vírgenes"},"fr":{"pref":"Îles Vierges britanniques","short":"Îles Vierges"},"it":"Isole Vergini Britanniche","ja":{"pref":"英領ヴァージン諸島","others":["イギリス領ヴァージン諸島"]},"ko":{"pref":"영국령 버진아일랜드","long":"영국령 버진 아일랜드"},"zh-Hans":{"pref":"英属维尔京群岛","others":["英屬維爾京群島"]},"zh-Hant":{"pref":"英屬維京群島","long":"英属维京群岛"}},
-      {"en":"Anguilla","es":"Anguila","ja":"アンギラ","ko":{"pref":"앵귈라","others":["안길라"]},"zh-Hans":"安圭拉","zh-Hant":"安奎拉"},
-      {"en":"Montserrat","ja":{"pref":"モントセラト","long":"モントセラト島"},"ko":{"pref":"몬트세라트","others":["몬트세랫"]},"zh-Hans":"蒙特塞拉特","zh-Hant":{"pref":"蒙哲臘","long":"蒙塞拉特群岛"}},
-      {"en":{"pref":"Saint Barthélemy","others":["St. Barthélemy","Territorial collectivity of Saint-Barthélemy"]},"de":{"pref":"Saint-Barthélemy","short":"St. Barthélemy","others":["Sankt Bartholomäus"]},"es":"San Bartolomé","fr":{"pref":"Saint-Barthélemy","others":["Collectivité territoriale de Saint-Barthélemy"]},"it":{"pref":"Saint-Barthélemy","others":["San Bartolomeo"]},"ja":{"pref":"サン・バルテルミー","others":["サン・バルテルミー島"]},"ko":{"pref":"생바르텔레미","long":"생 바르텔르미"},"zh-Hans":{"pref":"圣巴泰勒米","others":["聖巴泰勒米島"]},"zh-Hant":"聖巴瑟米"},
-      {"en":{"pref":"Saint Pierre and Miquelon","others":["St. Pierre & Miquelon"]},"de":"St. Pierre und Miquelon","es":"San Pedro y Miquelón","fr":{"pref":"Saint-Pierre-et-Miquelon","short":"Saint-Pierre et Miquelon","others":["Collectivité Territoriale de Saint-Pierre et Miquelon","St-Pierre et Miquelon"]},"it":"Saint-Pierre e Miquelon","ja":"サンピエール島・ミクロン島","ko":{"pref":"생피에르 미클롱","long":"생피에르앤드미클롱","others":["생피에르에 미클롱"]},"zh-Hans":"圣皮埃尔和密克隆群岛","zh-Hant":"聖皮埃與密克隆群島"}
+      {"en":"Belize","es":"Belice","fr":{"pref":"Belize","long":"le Bélize"},"ja":"ベリーズ","ko":"벨리즈","zh-Hans":"伯利兹","zh-Hant":"貝里斯"},
+      {"en":{"pref":"Bahamas","others":["The Bahamas"]},"de":"Bahamas","es":"Bahamas","fr":{"pref":"Bahamas","long":"Commonwealth des Bahamas"},"it":"Bahamas","ja":"バハマ","ko":"바하마","zh-Hans":"巴哈马","zh-Hant":"巴哈馬"},
+      {"en":"Barbados","fr":{"pref":"Barbade","long":"la Barbade"},"ja":"バルバドス","ko":"바베이도스","zh-Hans":"巴巴多斯","zh-Hant":"巴貝多"},
+      {"en":"Saint Lucia","de":"St. Lucia","es":"Santa Lucía","fr":"Sainte-Lucie","ja":"セントルシア","ko":"세인트루시아","zh-Hans":"圣卢西亚","zh-Hant":"聖露西亞"},
+      {"en":"Curaçao","es":"Curazao","ja":"キュラソー","ko":"퀴라소","zh-Hans":"库拉索","zh-Hant":"古拉索"},
+      {"en":"Grenada","es":"Granada","fr":{"pref":"Grenade","long":"la Grenade"},"ja":"グレナダ","ko":"그레나다","zh-Hans":"格林纳达","zh-Hant":"格瑞那達"},
+      {"en":"Saint Vincent and the Grenadines","de":"St. Vincent und die Grenadinen","es":"San Vicente y las Granadinas","fr":"Saint-Vincent-et-les-Grenadines","it":"Saint Vincent e Grenadine","ja":"セントビンセント・グレナディーン","ko":{"pref":"세인트빈센트그레나딘","long":"세인트 빈센트 그레나딘","others":["세인트빈센트 그레나딘"]},"zh-Hans":"圣文森特和格林纳丁斯","zh-Hant":"聖文森及格瑞那丁"},
+      {"en":"Aruba","ja":"アルバ","ko":"아루바","zh-Hans":"阿鲁巴","zh-Hant":"阿魯巴"},
+      {"en":"Antigua and Barbuda","de":"Antigua und Barbuda","es":"Antigua y Barbuda","fr":"Antigua-et-Barbuda","it":"Antigua e Barbuda","ja":{"pref":"アンティグアバブーダ","long":"アンティグア・バーブーダ"},"ko":"앤티가 바부다","zh-Hans":"安提瓜和巴布达","zh-Hant":"安地卡及巴布達"},
+      {"en":"Cayman Islands","es":"Islas Caimán","fr":"îles Caïmans","it":"Isole Cayman","ja":"ケイマン諸島","ko":"케이맨 제도","zh-Hans":"开曼群岛","zh-Hant":"開曼群島"},
+      {"en":{"pref":"United States Virgin Islands","others":["U.S. Virgin Islands"]},"de":"Amerikanische Jungferninseln","es":"Islas Vírgenes de los Estados Unidos","fr":"îles Vierges des États-Unis","it":"Isole Vergini degli Stati Uniti","ja":"アメリカ領ヴァージン諸島","ko":"미국령 버진아일랜드","zh-Hans":"美属维尔京群岛","zh-Hant":"美屬維京群島"},
+      {"en":{"pref":"Dominica","long":"Commonwealth of Dominica"},"de":"Dominica","es":"Dominica","fr":{"pref":"Dominique","long":"Commonwealth de Dominique"},"it":"Dominica","ja":"ドミニカ国","ko":{"pref":"도미니카","others":["도미니카 연방"]},"zh-Hans":"多米尼克","zh-Hant":"多米尼克"},
+      {"en":"Bermuda","es":"Bermudas","fr":"Bermudes","ja":"バミューダ","ko":"버뮤다","zh-Hans":"百慕大","zh-Hant":"百慕達"},
+      {"en":"Greenland","de":"Grönland","es":"Groenlandia","fr":"Groenland","it":"Groenlandia","ja":"グリーンランド","ko":"그린란드","zh-Hans":"格陵兰","zh-Hant":"格陵蘭"},
+      {"en":"Saint Kitts and Nevis","de":"St. Kitts und Nevis","es":"San Cristóbal y Nieves","fr":{"pref":"Saint-Christophe-et-Niévès","long":"la Fédération de Saint-Christophe-et-Niévès"},"it":"Saint Kitts e Nevis","ja":{"pref":"セントクリストファー・ネビス","others":["セントクリストファー・ネイビス"]},"ko":"세인트키츠 네비스","zh-Hans":"圣基茨和尼维斯","zh-Hant":"聖克里斯多福及尼維斯"},
+      {"en":"Turks and Caicos Islands","de":"Turks- und Caicosinseln","es":"Islas Turcas y Caicos","fr":"Îles Turques et Caïques","it":"Turks e Caicos","ja":"タークス・カイコス諸島","ko":"터크스 케이커스 제도","zh-Hans":"特克斯和凯科斯群岛","zh-Hant":"土克凱可群島"},
+      {"en":"Sint Maarten","es":"San Martín","fr":"Saint-Martin","ja":"シント・マールテン","ko":"신트마르턴","zh-Hans":"荷属圣马丁","zh-Hant":"荷屬聖馬丁"},
+      {"en":"British Virgin Islands","de":"Britische Jungferninseln","es":"Islas Vírgenes Británicas","fr":"îles Vierges britanniques","it":"Isole Vergini Britanniche","ja":"イギリス領ヴァージン諸島","ko":"영국령 버진아일랜드","zh-Hans":"英属维尔京群岛","zh-Hant":"英屬維京群島"},
+      {"en":{"pref":"Saint Martin","others":["Saint-Martin"]},"de":"Saint-Martin","es":"San Martín","fr":{"pref":"Saint-Martin","long":"Collectivité de Saint-Martin"},"it":"Saint-Martin","ja":"サン・マルタン","ko":"생마르탱","zh-Hans":"法属圣马丁","zh-Hant":"法屬聖馬丁"},
+      {"en":"Anguilla","es":"Anguila","ja":"アンギラ","ko":"앵귈라","zh-Hans":"安圭拉","zh-Hant":"安吉拉"},
+      {"en":"Saint Barthélemy","de":"Saint-Barthélemy","es":"San Bartolomé","fr":{"pref":"Saint-Barthélemy","others":["Saint Barthélemy"]},"it":"Saint-Barthélemy","ja":"サン・バルテルミー島","ko":"생바르텔레미","zh-Hans":"圣巴泰勒米","zh-Hant":"聖巴瑟米"},
+      {"en":"Saint Pierre and Miquelon","de":"Saint-Pierre und Miquelon","es":"San Pedro y Miquelón","fr":"Saint-Pierre-et-Miquelon","it":"Saint-Pierre e Miquelon","ja":"サンピエール島・ミクロン島","ko":"생피에르 미클롱","zh-Hans":"圣皮埃尔和密克隆","zh-Hant":"聖皮埃與密克隆群島"},
+      {"en":"Montserrat","ja":"モントセラト","ko":"몬트세랫","zh-Hans":"蒙特塞拉特","zh-Hant":"蒙哲臘"}
     ]
   ],
   "tierConditions": [

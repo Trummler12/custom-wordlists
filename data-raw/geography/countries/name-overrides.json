@@ -1,0 +1,509 @@
+{
+  "_comment": "Curated name overrides for entities whose Wikidata rdfs:label is a formal or realm title (so the common drawable name has to be asserted) or is missing outright. Keyed by Wikidata Q-id then content tag; the value replaces the bucketed name for that language. Seeded from the prior geonames-backed build. See build-country-data.mjs.",
+  "Q148": {
+    "en": {
+      "pref": "China",
+      "others": [
+        "People's Republic of China",
+        "People’s Republic of China"
+      ]
+    },
+    "de": {
+      "pref": "China",
+      "others": [
+        "Volksrepublik China"
+      ]
+    },
+    "es": {
+      "pref": "China",
+      "long": "República Popular China"
+    },
+    "fr": {
+      "pref": "Chine",
+      "others": [
+        "République populaire de Chine"
+      ]
+    },
+    "ja": {
+      "pref": "中国",
+      "others": [
+        "中華人民共和国"
+      ]
+    },
+    "ko": {
+      "pref": "중국",
+      "others": [
+        "중화인민공화국"
+      ]
+    },
+    "zh-Hans": {
+      "pref": "中国",
+      "others": [
+        "中华人民共和国",
+        "中華人民共和國"
+      ]
+    },
+    "zh-Hant": "中國"
+  },
+  "Q30": {
+    "ja": "アメリカ"
+  },
+  "Q252": {
+    "zh-Hant": "印尼"
+  },
+  "Q902": {
+    "zh-Hant": "孟加拉"
+  },
+  "Q145": {
+    "ja": "英国"
+  },
+  "Q869": {
+    "ja": {
+      "pref": "タイ",
+      "others": [
+        "タイ王国"
+      ]
+    }
+  },
+  "Q258": {
+    "ja": {
+      "pref": "南アフリカ",
+      "others": [
+        "南アフリカ共和国"
+      ]
+    },
+    "ko": {
+      "pref": "남아프리카",
+      "long": "남아프리카 공화국",
+      "others": [
+        "남아공",
+        "남아프리카공화국"
+      ]
+    }
+  },
+  "Q884": {
+    "ja": {
+      "pref": "韓国",
+      "long": "大韓民国"
+    },
+    "zh-Hans": "韩国",
+    "zh-Hant": {
+      "pref": "南韓",
+      "long": "大韩民国"
+    }
+  },
+  "Q29": {
+    "ja": "スペイン"
+  },
+  "Q114": {
+    "zh-Hant": "肯亞"
+  },
+  "Q265": {
+    "zh-Hant": "烏茲別克"
+  },
+  "Q1008": {
+    "es": "Côte d’Ivoire",
+    "ja": {
+      "pref": "象牙海岸",
+      "others": [
+        "コートジボワール"
+      ]
+    }
+  },
+  "Q408": {
+    "ko": {
+      "pref": "호주",
+      "long": "오스트레일리아"
+    },
+    "zh-Hant": "澳洲"
+  },
+  "Q423": {
+    "ko": {
+      "pref": "북한",
+      "long": "조선민주주의인민공화국",
+      "others": [
+        "북조선",
+        "Chosŏn-minjujuŭi-inmin-konghwaguk"
+      ]
+    },
+    "zh-Hans": {
+      "pref": "朝鲜",
+      "others": [
+        "朝鲜民主主义人民共和国"
+      ]
+    },
+    "zh-Hant": {
+      "pref": "北韓",
+      "long": "朝鲜民主共和国"
+    }
+  },
+  "Q865": {
+    "es": "Taiwán",
+    "ja": {
+      "pref": "台湾",
+      "others": [
+        "台灣"
+      ]
+    },
+    "ko": {
+      "pref": "대만",
+      "others": [
+        "타이완",
+        "중화민국"
+      ]
+    },
+    "zh-Hans": "台湾",
+    "zh-Hant": "台灣"
+  },
+  "Q912": {
+    "ja": {
+      "pref": "マリ",
+      "others": [
+        "マリ共和国"
+      ]
+    }
+  },
+  "Q232": {
+    "es": {
+      "pref": "Kazajstán",
+      "long": "Kazajistán"
+    }
+  },
+  "Q29999": {
+    "en": {
+      "pref": "Netherlands",
+      "long": "The Netherlands",
+      "others": [
+        "Holland"
+      ]
+    },
+    "de": "Niederlande",
+    "es": {
+      "pref": "Holanda",
+      "long": "Países Bajos"
+    },
+    "fr": "Pays-Bas",
+    "it": {
+      "pref": "Paesi Bassi",
+      "others": [
+        "Olanda"
+      ]
+    },
+    "ja": {
+      "pref": "オランダ",
+      "long": "オランダ王国"
+    },
+    "ko": "네덜란드",
+    "zh-Hans": "荷兰",
+    "zh-Hant": "荷蘭"
+  },
+  "Q736": {
+    "zh-Hant": "厄瓜多"
+  },
+  "Q954": {
+    "es": {
+      "pref": "Zimbawe",
+      "long": "Zimbabue"
+    }
+  },
+  "Q958": {
+    "it": {
+      "pref": "Sud Sudan",
+      "others": [
+        "Sudan del Sud"
+      ]
+    }
+  },
+  "Q213": {
+    "en": {
+      "pref": "Czechia",
+      "long": "Czech Republic"
+    },
+    "es": {
+      "pref": "Chequia",
+      "long": "República Checa"
+    },
+    "it": {
+      "pref": "Cechia",
+      "others": [
+        "Repubblica Ceca"
+      ]
+    },
+    "ja": {
+      "pref": "チェコ",
+      "long": "チェコ共和国"
+    }
+  },
+  "Q863": {
+    "zh-Hant": "塔吉克"
+  },
+  "Q813": {
+    "fr": "Kirghizstan"
+  },
+  "Q756617": {
+    "en": {
+      "pref": "Denmark",
+      "others": [
+        "Kingdom of Denmark"
+      ]
+    },
+    "de": "Dänemark",
+    "es": "Dinamarca",
+    "fr": "Danemark",
+    "it": "Danimarca",
+    "ja": {
+      "pref": "デンマーク",
+      "long": "デンマーク王国"
+    },
+    "ko": "덴마크",
+    "zh-Hans": "丹麦",
+    "zh-Hant": "丹麥"
+  },
+  "Q20": {
+    "ja": {
+      "pref": "ノルウェー",
+      "long": "ノルウェー王国"
+    }
+  },
+  "Q219060": {
+    "fr": {
+      "pref": "Palestine",
+      "others": [
+        "État de Palestine"
+      ]
+    },
+    "it": {
+      "pref": "Palestina",
+      "others": [
+        "Stato di Palestina",
+        "Territori palestinesi"
+      ]
+    },
+    "ja": "パレスチナ"
+  },
+  "Q711": {
+    "ja": {
+      "pref": "モンゴル",
+      "others": [
+        "モンゴル国"
+      ]
+    },
+    "zh-Hant": "蒙古"
+  },
+  "Q1007": {
+    "ja": {
+      "pref": "ギニアビサウ",
+      "long": "ギニアビサウ共和国"
+    },
+    "ko": {
+      "pref": "기네비소",
+      "long": "기니비사우",
+      "others": [
+        "기네비쏘"
+      ]
+    }
+  },
+  "Q1246": {
+    "ja": "コソボ"
+  },
+  "Q574": {
+    "es": "Timor-Leste",
+    "fr": {
+      "pref": "Timor-Leste",
+      "others": [
+        "Timor Oriental",
+        "Timor-Oriental"
+      ]
+    }
+  },
+  "Q1050": {
+    "es": {
+      "pref": "Esuatini",
+      "others": [
+        "Swazilandia"
+      ]
+    }
+  },
+  "Q778": {
+    "en": {
+      "pref": "Bahamas",
+      "others": [
+        "The Bahamas"
+      ]
+    }
+  },
+  "Q757": {
+    "ko": {
+      "pref": "세인트빈센트그레나딘",
+      "long": "세인트 빈센트 그레나딘",
+      "others": [
+        "세인트빈센트 그레나딘"
+      ]
+    }
+  },
+  "Q781": {
+    "ja": {
+      "pref": "アンティグアバブーダ",
+      "long": "アンティグア・バーブーダ"
+    }
+  },
+  "Q702": {
+    "de": {
+      "pref": "Mikronesien",
+      "others": [
+        "Föderierte Staaten von Mikronesien"
+      ]
+    },
+    "es": {
+      "pref": "Micronesia",
+      "others": [
+        "Estados Federados de Micronesia"
+      ]
+    },
+    "fr": {
+      "pref": "Micronésie",
+      "long": "États fédérés de Micronésie"
+    },
+    "it": {
+      "pref": "Micronesia",
+      "others": [
+        "Stati Federati di Micronesia"
+      ]
+    },
+    "ko": {
+      "pref": "미크로네시아",
+      "others": [
+        "미크로네시아 연방"
+      ]
+    },
+    "zh-Hant": {
+      "pref": "密克羅尼西亞",
+      "long": "密克罗尼西亚"
+    }
+  },
+  "Q784": {
+    "ko": {
+      "pref": "도미니카",
+      "others": [
+        "도미니카 연방"
+      ]
+    }
+  },
+  "Q763": {
+    "ja": {
+      "pref": "セントクリストファー・ネビス",
+      "others": [
+        "セントクリストファー・ネイビス"
+      ]
+    }
+  },
+  "Q697": {
+    "de": "Nauru"
+  },
+  "Q26273": {
+    "zh-Hans": {
+      "pref": "圣马丁岛",
+      "long": "荷属圣马丁"
+    }
+  },
+  "Q785": {
+    "ko": "저지"
+  },
+  "Q25230": {
+    "ko": "건지"
+  },
+  "Q26988": {
+    "ko": {
+      "pref": "쿡제도",
+      "long": "쿡 제도"
+    }
+  },
+  "Q23334": {
+    "ko": "압하스"
+  },
+  "Q23681": {
+    "de": {
+      "pref": "Nordzypern",
+      "others": [
+        "Türkische Republik Nordzypern"
+      ]
+    }
+  },
+  "Q1183": {
+    "it": "Portorico"
+  },
+  "Q30971": {
+    "ja": {
+      "pref": "仏領ポリネシア",
+      "others": [
+        "フランス領ポリネシア"
+      ]
+    }
+  },
+  "Q16644": {
+    "ko": {
+      "pref": "북마리아나제도",
+      "others": [
+        "북마리아나 제도"
+      ]
+    }
+  },
+  "Q4628": {
+    "ko": {
+      "pref": "페로제도",
+      "long": "페로 제도"
+    }
+  },
+  "Q16641": {
+    "ja": "米領サモア"
+  },
+  "Q11703": {
+    "es": "Islas Vírgenes de EE. UU.",
+    "it": "Isole Vergini Americane",
+    "ja": "米領ヴァージン諸島"
+  },
+  "Q5785": {
+    "de": "Kaimaninseln",
+    "ko": {
+      "pref": "케이맨제도",
+      "long": "케이맨 제도"
+    }
+  },
+  "Q25305": {
+    "ja": {
+      "pref": "英領ヴァージン諸島",
+      "others": [
+        "イギリス領ヴァージン諸島"
+      ]
+    }
+  },
+  "Q25362": {
+    "ja": {
+      "pref": "サン・バルテルミー",
+      "others": [
+        "サン・バルテルミー島"
+      ]
+    }
+  },
+  "Q34617": {
+    "de": "St. Pierre und Miquelon"
+  },
+  "Q31063": {
+    "zh-Hant": "聖誕島"
+  },
+  "Q36004": {
+    "zh-Hant": {
+      "pref": "科科斯群岛",
+      "long": "科克斯（基靈）群島"
+    }
+  },
+  "Q3043": {
+    "zh-Hant": "貝爾墨邦"
+  },
+  "Q36262": {
+    "de": "Saint John's"
+  },
+  "Q30963": {
+    "zh-Hant": "京斯敦"
+  }
+}

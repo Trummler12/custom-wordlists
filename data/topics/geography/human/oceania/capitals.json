@@ -3,12 +3,9 @@
   "title": {"en":"Capitals","de":"Hauptstädte","es":"Capitales","fr":"Capitales","it":"Capitali","ja":"首都","ko":"수도","zh-Hans":"首都","zh-Hant":"首都"},
   "languages": ["en","de","es","fr","it","ja","ja-Latn","ko","zh-Hans","zh-Hant"],
   "generatedRomaji": true,
-  "sources": [
-    "Names: Wikidata capitals (P36) of the sovereign states — https://www.wikidata.org/wiki/Property:P36 (see scripts/geography/dump-country-data.mjs)",
-    "Variants: geonames alternate names, linked via Wikidata GeoNames id (P1566) — https://www.geonames.org (see scripts/geography/dump-capital-geonames.mjs)"
-  ],
-  "lastUpdated": "2026-08-26",
-  "lastChecked": "2026-08-26",
+  "sources": ["Names & variants: Wikidata labels, official and short names of the capitals (P36) — https://www.wikidata.org/wiki/Property:P36 (see scripts/geography/dump-country-data.mjs)"],
+  "lastUpdated": "2026-08-31",
+  "lastChecked": "2026-08-31",
   "defaultNames": "pref",
   "omittable": [
     {
@@ -46,7 +43,7 @@
     [],
 
     [
-      {"en":"Canberra","es":{"pref":"Canberra","others":["Camberra"]},"ja":"キャンベラ","ko":"캔버라","zh-Hans":"堪培拉","zh-Hant":"坎培拉"}
+      {"en":"Canberra","ja":"キャンベラ","ko":"캔버라","zh-Hans":"堪培拉","zh-Hant":"坎培拉"}
     ],
 
     [
@@ -58,16 +55,16 @@
 
     [
       {"en":"Suva","ja":"スバ","ko":"수바","zh-Hans":"苏瓦","zh-Hant":"蘇瓦"},
-      {"en":"Honiara","ja":"ホニアラ","ko":"호니아라","zh-Hans":{"pref":"霍尼亚拉","others":["霍尼亞拉"]},"zh-Hant":"荷尼阿拉"},
+      {"en":"Honiara","ja":"ホニアラ","ko":"호니아라","zh-Hans":"霍尼亚拉","zh-Hant":"荷尼阿拉"},
       {"en":"Port Vila","fr":"Port-Vila","ja":"ポートビラ","ko":"포트빌라","zh-Hans":"维拉港","zh-Hant":"維拉港"},
       {"en":"Apia","ja":"アピア","ko":"아피아","zh-Hans":"阿皮亚","zh-Hant":"阿皮亞"},
       {"en":"South Tarawa","es":"Tarawa Sur","fr":"Tarawa-Sud","it":"Tarawa Sud","ja":"サウス・タラワ","ko":"사우스타라와","zh-Hans":"南塔拉瓦","zh-Hant":"南塔拉瓦"},
-      {"en":{"pref":"Nukuʻalofa","others":["Nuku'alofa"]},"de":{"pref":"Nukuʻalofa","others":["Nuku’alofa"]},"es":{"pref":"Nukualofa","others":["Nuku'alofa"]},"ja":"ヌクアロファ","ko":"누쿠알로파","zh-Hans":{"pref":"努库阿洛法","others":["努庫阿洛發"]},"zh-Hant":"努库阿洛法"},
+      {"en":"Nukuʻalofa","es":"Nukualofa","ja":"ヌクアロファ","ko":"누쿠알로파","zh-Hans":"努库阿洛法","zh-Hant":"努库阿洛法"},
       {"en":"Palikir","ja":"パリキール","ko":"팔리키르","zh-Hans":"帕利基尔","?":["zh-Hant"]},
       {"en":"Majuro","ja":"マジュロ","ko":"마주로","zh-Hans":"马朱罗","zh-Hant":"馬久羅"},
       {"en":"Ngerulmud","ja":"ンゲルルムッド","ko":"응게룰무드","zh-Hans":"恩吉鲁穆德","zh-Hant":"恩吉魯穆德"},
-      {"en":"Yaren District","de":"Yaren","es":"Yaren","fr":"Yaren","it":"Yaren","ja":"ヤレン地区","ko":"야렌구","zh-Hans":{"pref":"亚伦区","others":["亞倫區"]},"?":["zh-Hant"]},
-      {"en":"Funafuti","es":{"pref":"Funafuti","others":["Fongafale (atolón de Funafuti)"]},"ja":"フナフティ島","ko":"푸나푸티","?":["zh-Hans","zh-Hant"]}
+      {"en":"Yaren District","de":"Yaren","es":"Yaren","fr":"Yaren","it":"Yaren","ja":"ヤレン地区","ko":"야렌구","zh-Hans":"亚伦区","?":["zh-Hant"]},
+      {"en":"Funafuti","ja":"フナフティ島","ko":"푸나푸티","zh-Hans":"富纳富提","?":["zh-Hant"]}
     ]
   ],
   "tierConditions": [

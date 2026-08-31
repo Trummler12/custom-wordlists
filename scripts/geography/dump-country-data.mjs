@@ -9,18 +9,18 @@
 // P576), the line "List of countries of the world" draws too; Greenland and Puerto Rico sit
 // outside it and are added back later as an omission rule, not here.
 //
-// country-names.json / capital-names.json hold every flagged name Wikidata carries, keyed by
-// Q-id: rdfs:label (the pref), P1448 (official) and P1813 (short), per language, in EVERY
-// language Wikidata has — no language filter, so a new content language is a build change,
-// never a re-dump. Bare skos:altLabel aliases are the discardable flood the buckets never
-// keep (see bucket-names.mjs), so they are not fetched. Casing and the one-continent pick
-// are the build's job (build-country-data.mjs), as with the elements.
+// country-names.json / capital-names.json are the faithful raw picture, keyed by Q-id: every
+// term Wikidata carries — rdfs:label (pref), skos:altLabel (alias), P1448 (official), P1813
+// (short) — for every language skribbl supports (base-tag filter, so zh / zh-hans / zh-cn,
+// pt / pt-br all ride in on their base). Nothing is filtered here on purpose: the build
+// decides which forms count and which languages it targets, so a missing or odd tag stays
+// visible in the raw file for report-name-quality.mjs to flag. Casing and the one-continent
+// pick are the build's job too (build-country-data.mjs), as with the elements.
 //
-// CURATED TERRITORIES TOO. The matrix territories (sovereign-territories.json) that are not
-// UN sovereign states are harvested alongside, so their names come from Wikidata like every
-// other. territory-structure.tsv resolves each curated territory to its Q-id, population and
-// capital, the join the build needs once the ISO/GeoNames handles the file still carries fall
-// away with GeoNames.
+// CURATED TERRITORIES TOO. The matrix territories (sovereign-territories.json, keyed by Q-id)
+// that are not UN sovereign states are harvested alongside, so their names come from Wikidata
+// like every other. territory-structure.tsv adds each one's population and capital, the
+// numbers the build needs beside the names.
 import { mkdir, writeFile, readFile } from "node:fs/promises";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -49,14 +49,25 @@ const STRUCTURE = `SELECT ?country
   OPTIONAL { ?country wdt:P36 ?capital. }
 } GROUP BY ?country`;
 
-/** Every flagged name for a chunk of items, all languages. `pref`/`official`/`short` are
- *  the three flags bucket-names.mjs reads; the language rides on each term's tag. */
+/** The languages skribbl officially supports (plus Chinese, a content language for the
+ *  lists). The query keeps any Wikidata tag whose base is one of these, so script and
+ *  regional variants (zh-hans, zh-cn, pt-br, sr-latn, nb) all come along. */
+const SKRIBBL = [
+  "en", "de", "bg", "cs", "da", "nl", "fi", "fr", "et", "el", "he", "hu", "it", "ja", "ko",
+  "lv", "mk", "nb", "nn", "no", "pt", "pl", "ro", "ru", "sr", "sk", "es", "sv", "tl", "tr", "zh",
+];
+
+/** Every term for a chunk of items in the supported languages. `pref`/`official`/`short` are
+ *  the flags the bucketer reads; `alias` (skos:altLabel) rides along unflagged for the report
+ *  and transparency. The language sits on each term's tag. */
 const NAMES = (values) => `SELECT ?item ?lang ?term ?type WHERE {
   VALUES ?item { ${values} }
   { ?item rdfs:label ?term. BIND("pref" AS ?type) }
+  UNION { ?item skos:altLabel ?term. BIND("alias" AS ?type) }
   UNION { ?item wdt:P1448 ?term. BIND("official" AS ?type) }
   UNION { ?item wdt:P1813 ?term. BIND("short" AS ?type) }
   BIND(LANG(?term) AS ?lang)
+  FILTER(REGEX(?lang, "^(${SKRIBBL.join("|")})(-|$)"))
 }`;
 
 /** SPARQL GET with retry on the transient statuses query.wikidata.org throws under load. */
@@ -113,33 +124,24 @@ async function dumpNames(qids, order, chunk = 20) {
   return out;
 }
 
-/** Resolve the curated territories to Wikidata: each keeps its curated name, gains its Q-id
- *  and, from Wikidata, population (P1082) and capital (P36). The curated file still addresses
- *  them by ISO (P297) or GeoNames id (P1566); this bridges that to the Q-id the build will use
- *  once GeoNames is gone. */
+/** The curated territories (sovereign-territories.json, keyed by Q-id), each with the
+ *  population (P1082) and capital (P36) Wikidata carries — the numbers the build needs
+ *  beside the names, so it holds no source but this and the curated cell/continent. */
 async function territories() {
   const curated = JSON.parse(await readFile(join(OUT, "sovereign-territories.json"), "utf8"));
   delete curated._comment;
-  const entries = Object.entries(curated);
-  const isoList = entries.filter(([, m]) => m.iso).map(([, m]) => m.iso);
-  const geoList = entries.filter(([, m]) => m.geonameId).map(([, m]) => String(m.geonameId));
-  const resolve = (bindVar, values, prop) =>
-    query(`SELECT ?item ?key (SAMPLE(?pop) AS ?population) (SAMPLE(?cap) AS ?capital) WHERE {
-      VALUES ?key { ${values.map((v) => `"${v}"`).join(" ")} }
-      ?item ${prop} ?key . OPTIONAL { ?item wdt:P1082 ?pop } OPTIONAL { ?item wdt:P36 ?cap }
-    } GROUP BY ?item ?key`);
-  const byKey = {};
-  for (const r of isoList.length ? await resolve("iso", isoList, "wdt:P297") : []) byKey[`iso:${r.key.value}`] = r;
-  for (const r of geoList.length ? await resolve("gid", geoList, "wdt:P1566") : []) byKey[`geo:${r.key.value}`] = r;
-  return entries.map(([name, m]) => {
-    const r = byKey[m.iso ? `iso:${m.iso}` : `geo:${m.geonameId}`];
-    return {
-      name,
-      qid: r ? qid(r.item.value) : null,
-      pop: r?.population ? Number(r.population.value) : null,
-      capital: r?.capital ? qid(r.capital.value) : null,
-    };
-  });
+  const qids = Object.keys(curated);
+  const rows = await query(`SELECT ?item (SAMPLE(?pop) AS ?population) (SAMPLE(?cap) AS ?capital) WHERE {
+    VALUES ?item { ${qids.map((q) => "wd:" + q).join(" ")} }
+    OPTIONAL { ?item wdt:P1082 ?pop } OPTIONAL { ?item wdt:P36 ?cap }
+  } GROUP BY ?item`);
+  const byQid = {};
+  for (const r of rows) byQid[qid(r.item.value)] = r;
+  return qids.map((q) => ({
+    qid: q,
+    pop: byQid[q]?.population ? Number(byQid[q].population.value) : null,
+    capital: byQid[q]?.capital ? qid(byQid[q].capital.value) : null,
+  }));
 }
 
 async function main() {
@@ -169,14 +171,12 @@ async function main() {
   );
   console.log(`countries — ${ranked.length}`);
 
-  // --- Territories: the curated matrix entries, resolved to Wikidata -----------
+  // --- Territories: population and capital for the curated matrix entries ------
   const terr = await territories();
-  const missing = terr.filter((t) => !t.qid).map((t) => t.name);
-  if (missing.length) throw new Error(`unresolved territories: ${missing.join(", ")}`);
   await writeFile(
     join(OUT, "territory-structure.tsv"),
-    "# name\tqid\tpopulation (P1082)\tcapital (P36)\n" +
-      terr.map((t) => [t.name, t.qid, t.pop ?? "", t.capital ?? ""].join("\t")).join("\n") + "\n",
+    "# qid\tpopulation (P1082)\tcapital (P36)\n" +
+      terr.map((t) => [t.qid, t.pop ?? "", t.capital ?? ""].join("\t")).join("\n") + "\n",
     "utf8",
   );
   console.log(`territories — ${terr.length}`);
