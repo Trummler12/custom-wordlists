@@ -7,8 +7,8 @@
     "Names & variants: Wikidata labels, official names (P1448) and short names (P1813) — https://www.wikidata.org/wiki/Q3624078 (see scripts/geography/dump-country-data.mjs)",
     "Population & tiers: Wikidata sovereign states (P1082 on P31 Q3624078) — https://www.wikidata.org/wiki/Q3624078 (see scripts/geography/dump-country-data.mjs)"
   ],
-  "lastUpdated": "2026-08-31",
-  "lastChecked": "2026-08-31",
+  "lastUpdated": "2026-09-01",
+  "lastChecked": "2026-09-01",
   "defaultNames": "pref",
   "omitted": [
     {
@@ -100,7 +100,7 @@
     ],
 
     [
-      {"en":"Papua New Guinea","de":"Papua-Neuguinea","es":"Papúa Nueva Guinea","fr":{"pref":"Papouasie-Nouvelle-Guinée","long":"l’État indépendant de Papouasie- Nouvelle-Guinée"},"it":"Papua Nuova Guinea","ja":"パプアニューギニア","ko":"파푸아뉴기니","zh-Hans":"巴布亚新几内亚","zh-Hant":"巴布亞紐幾內亞"},
+      {"en":{"pref":"Papua New Guinea","short":"PNG"},"de":{"pref":"Papua-Neuguinea","short":"PNG"},"es":{"pref":"Papúa Nueva Guinea","short":"PNG"},"fr":{"pref":"Papouasie-Nouvelle-Guinée","short":"PNG","long":"l’État indépendant de Papouasie- Nouvelle-Guinée"},"it":"Papua Nuova Guinea","ja":"パプアニューギニア","ko":"파푸아뉴기니","zh-Hans":"巴布亚新几内亚","zh-Hant":"巴布亞紐幾內亞"},
       {"en":"New Zealand","de":"Neuseeland","es":"Nueva Zelanda","fr":"Nouvelle-Zélande","it":"Nuova Zelanda","ja":"ニュージーランド","ko":"뉴질랜드","zh-Hans":"新西兰","zh-Hant":"紐西蘭"}
     ],
 
@@ -119,7 +119,7 @@
       {"en":"Federated States of Micronesia","de":{"pref":"Mikronesien","others":["Föderierte Staaten von Mikronesien"]},"es":{"pref":"Micronesia","others":["Estados Federados de Micronesia"]},"fr":{"pref":"Micronésie","long":"États fédérés de Micronésie"},"it":{"pref":"Micronesia","others":["Stati Federati di Micronesia"]},"ja":"ミクロネシア連邦","ko":{"pref":"미크로네시아","others":["미크로네시아 연방"]},"zh-Hans":"密克罗尼西亚联邦","zh-Hant":{"pref":"密克羅尼西亞","long":"密克罗尼西亚"}},
       {"en":"Marshall Islands","de":"Marshallinseln","es":"Islas Marshall","fr":"Îles Marshall","it":"Isole Marshall","ja":"マーシャル諸島","ko":"마셜 제도","zh-Hans":"马绍尔群岛","zh-Hant":"馬紹爾群島"},
       {"en":"American Samoa","de":"Amerikanisch-Samoa","es":"Samoa Americana","fr":"Samoa américaines","it":"Samoa Americane","ja":"アメリカ領サモア","ko":"아메리칸사모아","zh-Hans":"美属萨摩亚","zh-Hant":"美屬薩摩亞"},
-      {"en":{"pref":"Northern Mariana Islands","others":["Commonwealth of the Northern Mariana Islands"]},"de":"Nördliche Marianen","es":"Islas Marianas del Norte","fr":"îles Mariannes du Nord","it":"Isole Marianne Settentrionali","ja":"北マリアナ諸島","ko":"북마리아나 제도","zh-Hans":"北马里亚纳群岛","zh-Hant":"北馬里亞納群島"},
+      {"en":{"pref":"Northern Mariana Islands","others":["Commonwealth of the Northern Mariana Islands","CNMI"]},"de":"Nördliche Marianen","es":"Islas Marianas del Norte","fr":"îles Mariannes du Nord","it":"Isole Marianne Settentrionali","ja":"北マリアナ諸島","ko":"북마리아나 제도","zh-Hans":"北马里亚纳群岛","zh-Hant":"北馬里亞納群島"},
       {"en":"Palau","es":"Palaos","fr":{"pref":"Palaos","long":"la République des Palaos"},"ja":"パラオ","ko":"팔라우","zh-Hans":"帕劳","zh-Hant":"帛琉"},
       {"en":"Cook Islands","de":"Cookinseln","es":"Islas Cook","fr":"Îles Cook","it":"Isole Cook","ja":"クック諸島","ko":"쿡 제도","zh-Hans":"库克群岛","zh-Hant":"庫克群島"},
       {"en":{"pref":"Nauru","long":"Republic of Naoero"},"de":"Nauru","es":"Nauru","fr":"Nauru","it":"Nauru","ja":"ナウル","ko":"나우루","zh-Hans":"瑙鲁","zh-Hant":"瑙魯"},

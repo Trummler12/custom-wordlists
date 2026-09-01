@@ -4,8 +4,8 @@
   "languages": ["en","de","es","fr","it","ja","ja-Latn","ko","zh-Hans","zh-Hant"],
   "generatedRomaji": true,
   "sources": ["Names & variants: Wikidata labels, official and short names of the capitals (P36) — https://www.wikidata.org/wiki/Property:P36 (see scripts/geography/dump-country-data.mjs)"],
-  "lastUpdated": "2026-08-31",
-  "lastChecked": "2026-08-31",
+  "lastUpdated": "2026-09-01",
+  "lastChecked": "2026-09-01",
   "defaultNames": "pref",
   "omittable": [
     {
@@ -75,7 +75,7 @@
     [
       {"en":"Bucharest","de":"Bukarest","es":"Bucarest","fr":"Bucarest","it":"Bucarest","ja":"ブカレスト","ko":"부쿠레슈티","zh-Hans":"布加勒斯特","zh-Hant":"布加勒斯特"},
       {"en":"Amsterdam","es":"Ámsterdam","ja":"アムステルダム","ko":"암스테르담","zh-Hans":"阿姆斯特丹","zh-Hant":"阿姆斯特丹"},
-      {"en":"Brussels","de":"Brüssel","es":"Bruselas","fr":{"pref":"Bruxelles","long":"Ville de Bruxelles"},"it":"Bruxelles","ja":"ブリュッセル市","ko":"브뤼셀","zh-Hans":"布鲁塞尔","zh-Hant":"布魯塞爾"},
+      {"en":"Brussels","de":"Brüssel","es":"Bruselas","fr":{"pref":"Bruxelles","short":"BXL","long":"Ville de Bruxelles"},"it":"Bruxelles","ja":"ブリュッセル市","ko":"브뤼셀","zh-Hans":"布鲁塞尔","zh-Hant":"布魯塞爾"},
       {"en":"Prague","de":"Prag","es":"Praga","it":"Praga","ja":"プラハ","ko":"프라하","zh-Hans":"布拉格","zh-Hant":"布拉格"},
       {"en":"Stockholm","es":"Estocolmo","it":"Stoccolma","ja":"ストックホルム","ko":"스톡홀름","zh-Hans":"斯德哥尔摩","zh-Hant":"斯德哥爾摩"},
       {"en":"Athens","de":"Athen","es":"Atenas","fr":"Athènes","it":"Atene","ja":"アテネ","ko":"아테네","zh-Hans":"雅典","zh-Hant":"雅典"},

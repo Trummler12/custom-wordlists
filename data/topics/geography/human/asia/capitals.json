@@ -4,8 +4,8 @@
   "languages": ["en","de","es","fr","it","ja","ja-Latn","ko","zh-Hans","zh-Hant"],
   "generatedRomaji": true,
   "sources": ["Names & variants: Wikidata labels, official and short names of the capitals (P36) — https://www.wikidata.org/wiki/Property:P36 (see scripts/geography/dump-country-data.mjs)"],
-  "lastUpdated": "2026-08-31",
-  "lastChecked": "2026-08-31",
+  "lastUpdated": "2026-09-01",
+  "lastChecked": "2026-09-01",
   "defaultNames": "pref",
   "omittable": [
     {
@@ -71,7 +71,7 @@
       {"en":"Hanoi","es":"Hanói","fr":"Hanoï","ja":"ハノイ","ko":"하노이","zh-Hans":"河内","zh-Hant":"河內"},
       {"en":"Tehran","de":"Teheran","es":"Teherán","fr":"Téhéran","it":"Teheran","ja":"テヘラン","ko":"테헤란","zh-Hans":"德黑兰","zh-Hant":"德黑蘭"},
       {"en":"Ankara","ja":"アンカラ","ko":"앙카라","zh-Hans":"安卡拉","zh-Hant":"安卡拉"},
-      {"en":{"pref":"Bangkok","long":"Krung Thep Maha Nakhon"},"de":"Bangkok","es":"Bangkok","fr":"Bangkok","it":"Bangkok","ja":"バンコク","ko":"방콕","zh-Hans":"曼谷","zh-Hant":"曼谷"},
+      {"en":{"pref":"Bangkok","long":"Krung Thep Maha Nakhon","others":["BKK"]},"de":"Bangkok","es":"Bangkok","fr":"Bangkok","it":"Bangkok","ja":"バンコク","ko":"방콕","zh-Hans":"曼谷","zh-Hant":"曼谷"},
       {"en":"Naypyidaw","es":"Naipyidó","ja":"ネピドー","ko":"네피도","zh-Hans":"奈比多","zh-Hant":"奈比多"},
       {"en":"Seoul","es":"Seúl","fr":"Séoul","it":"Seul","ja":"ソウル特別市","ko":"서울특별시","zh-Hans":"首尔","zh-Hant":"首爾"},
       {"en":"Kabul","fr":"Kaboul","ja":"カーブル","ko":"카불","zh-Hans":"喀布尔","zh-Hant":"喀布爾"},

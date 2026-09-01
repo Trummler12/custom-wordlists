@@ -7,8 +7,8 @@
     "Names & variants: Wikidata labels, official names (P1448) and short names (P1813) — https://www.wikidata.org/wiki/Q3624078 (see scripts/geography/dump-country-data.mjs)",
     "Population & tiers: Wikidata sovereign states (P1082 on P31 Q3624078) — https://www.wikidata.org/wiki/Q3624078 (see scripts/geography/dump-country-data.mjs)"
   ],
-  "lastUpdated": "2026-08-31",
-  "lastChecked": "2026-08-31",
+  "lastUpdated": "2026-09-01",
+  "lastChecked": "2026-09-01",
   "defaultNames": "pref",
   "omitted": [
     {
@@ -97,11 +97,11 @@
       {"en":{"pref":"Nigeria","long":"Federal Republic of Nigeria"},"de":"Nigeria","es":"Nigeria","fr":{"pref":"Nigeria","long":"République fédérale du Nigéria"},"it":"Nigeria","ja":"ナイジェリア","ko":"나이지리아","zh-Hans":"尼日利亚","zh-Hant":"奈及利亞"},
       {"en":"Ethiopia","de":"Äthiopien","es":"Etiopía","fr":{"pref":"Éthiopie","long":"la République démocratique fédérale d’Éthiopie"},"it":"Etiopia","ja":"エチオピア","ko":"에티오피아","zh-Hans":"埃塞俄比亚","zh-Hant":"衣索比亞"},
       {"en":"Egypt","de":"Ägypten","es":"Egipto","fr":"Égypte","it":"Egitto","ja":"エジプト","ko":"이집트","zh-Hans":"埃及","zh-Hant":"埃及"},
-      {"en":"Democratic Republic of the Congo","de":"Demokratische Republik Kongo","es":"República Democrática del Congo","fr":{"pref":"république démocratique du Congo","others":["République démocratique du Congo"]},"it":"Repubblica Democratica del Congo","ja":"コンゴ民主共和国","ko":{"pref":"콩고 민주 공화국","short":"민주콩고"},"zh-Hans":{"pref":"刚果民主共和国","short":"民主刚果"},"zh-Hant":{"pref":"剛果民主共和國","short":"民主剛果"}}
+      {"en":{"pref":"Democratic Republic of the Congo","short":"DRC"},"de":"Demokratische Republik Kongo","es":{"pref":"República Democrática del Congo","short":"RDC"},"fr":{"pref":"république démocratique du Congo","short":"RDC","others":["République démocratique du Congo"]},"it":{"pref":"Repubblica Democratica del Congo","short":"RDC"},"ja":"コンゴ民主共和国","ko":{"pref":"콩고 민주 공화국","short":"민주콩고"},"zh-Hans":{"pref":"刚果民主共和国","short":"民主刚果"},"zh-Hant":{"pref":"剛果民主共和國","short":"民主剛果"}}
     ],
 
     [
-      {"en":{"pref":"South Africa","long":"Republic of South Africa"},"de":"Südafrika","es":"Sudáfrica","fr":"Afrique du Sud","it":"Sudafrica","ja":{"pref":"南アフリカ","others":["南アフリカ共和国"]},"ko":{"pref":"남아프리카","long":"남아프리카 공화국","others":["남아공","남아프리카공화국"]},"zh-Hans":"南非","zh-Hant":"南非"},
+      {"en":{"pref":"South Africa","short":"RSA","long":"Republic of South Africa"},"de":{"pref":"Südafrika","short":"RSA"},"es":"Sudáfrica","fr":"Afrique du Sud","it":"Sudafrica","ja":{"pref":"南アフリカ","others":["南アフリカ共和国"]},"ko":{"pref":"남아프리카","long":"남아프리카 공화국","others":["남아공","남아프리카공화국"]},"zh-Hans":"南非","zh-Hant":"南非"},
       {"en":"Tanzania","de":"Tansania","fr":{"pref":"Tanzanie","long":"République unie de Tanzanie"},"ja":"タンザニア","ko":"탄자니아","zh-Hans":"坦桑尼亚","zh-Hant":"坦尚尼亞"},
       {"en":{"pref":"Kenya","long":"Republic of Kenya"},"de":"Kenia","es":"Kenia","fr":"Kenya","it":"Kenya","ja":"ケニア","ko":"케냐","zh-Hans":"肯尼亚","zh-Hant":"肯亞"},
       {"en":"Uganda","fr":"Ouganda","ja":"ウガンダ","ko":"우간다","zh-Hans":"乌干达","zh-Hant":"烏干達"},
@@ -138,7 +138,7 @@
       {"en":"Somaliland","es":"Somalilandia","ja":"ソマリランド","ko":"소말릴란드","zh-Hans":"索马里兰","zh-Hant":"索馬利蘭"},
       {"en":{"pref":"Republic of the Congo","short":"Congo"},"de":"Republik Kongo","es":"Congo","fr":"République du Congo","it":"Repubblica del Congo","ja":"コンゴ共和国","ko":"콩고 공화국","zh-Hans":"刚果共和国","zh-Hant":"剛果共和國"},
       {"en":"Liberia","fr":{"pref":"Liberia","long":"la République du Libéria"},"it":{"pref":"Liberia","long":"Repubblica di Libèria"},"ja":"リベリア","ko":"라이베리아","zh-Hans":"利比里亚","zh-Hant":"賴比瑞亞"},
-      {"en":"Central African Republic","de":"Zentralafrikanische Republik","es":"República Centroafricana","fr":"République centrafricaine","it":"Repubblica Centrafricana","ja":{"pref":"中央アフリカ共和国","short":"中央アフリカ"},"ko":{"pref":"중앙아프리카 공화국","short":"중아공"},"zh-Hans":"中非共和国","zh-Hant":"中非共和國"}
+      {"en":{"pref":"Central African Republic","short":"CAR"},"de":"Zentralafrikanische Republik","es":{"pref":"República Centroafricana","short":"RCA"},"fr":{"pref":"République centrafricaine","short":"RCA"},"it":"Repubblica Centrafricana","ja":{"pref":"中央アフリカ共和国","short":"中央アフリカ"},"ko":{"pref":"중앙아프리카 공화국","short":"중아공"},"zh-Hans":"中非共和国","zh-Hant":"中非共和國"}
     ],
 
     [

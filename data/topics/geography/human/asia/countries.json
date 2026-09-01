@@ -7,8 +7,8 @@
     "Names & variants: Wikidata labels, official names (P1448) and short names (P1813) — https://www.wikidata.org/wiki/Q3624078 (see scripts/geography/dump-country-data.mjs)",
     "Population & tiers: Wikidata sovereign states (P1082 on P31 Q3624078) — https://www.wikidata.org/wiki/Q3624078 (see scripts/geography/dump-country-data.mjs)"
   ],
-  "lastUpdated": "2026-08-31",
-  "lastChecked": "2026-08-31",
+  "lastUpdated": "2026-09-01",
+  "lastChecked": "2026-09-01",
   "defaultNames": "pref",
   "omittable": [
     {
@@ -124,7 +124,7 @@
       {"en":"Turkey","de":"Türkei","es":"Turquía","fr":"Turquie","it":"Turchia","ja":"トルコ","ko":"튀르키예","zh-Hans":"土耳其","zh-Hant":"土耳其"},
       {"en":{"pref":"Thailand","long":"Kingdom of Thailand"},"de":{"pref":"Thailand","long":"Königreich Thailand"},"es":{"pref":"Tailandia","long":"Reino de Tailandia"},"fr":{"pref":"Thaïlande","long":"le Royaume de Thaïlande"},"it":"Tailandia","ja":{"pref":"タイ","others":["タイ王国"]},"ko":"태국","zh-Hans":"泰国","zh-Hant":"泰國"},
       {"en":{"pref":"Myanmar","long":"Socialist Republic of the Union of Burma","others":["Republic of the Union of Myanmar","Union of Burma","Union of Myanmar","Burma"]},"de":"Myanmar","es":{"pref":"Birmania","long":"República de la Unión de Myanmar"},"fr":{"pref":"Birmanie","long":"République de l’Union de Birmanie"},"it":{"pref":"Myanmar","long":"Repubblica dell'Unione della Birmania"},"ja":"ミャンマー","ko":"미얀마","zh-Hans":"缅甸","zh-Hant":"緬甸"},
-      {"en":{"pref":"South Korea","long":"Republic of Korea"},"de":"Südkorea","es":"Corea del Sur","fr":{"pref":"Corée du Sud","long":"République de Corée"},"it":"Corea del Sud","ja":{"pref":"韓国","long":"大韓民国"},"ko":{"pref":"대한민국","short":"한국","others":["大韓民國","남한"]},"zh-Hans":"韩国","zh-Hant":{"pref":"南韓","long":"大韩民国"}},
+      {"en":{"pref":"South Korea","short":"ROK","long":"Republic of Korea"},"de":"Südkorea","es":"Corea del Sur","fr":{"pref":"Corée du Sud","long":"République de Corée"},"it":"Corea del Sud","ja":{"pref":"韓国","long":"大韓民国"},"ko":{"pref":"대한민국","short":"한국","others":["大韓民國","남한"]},"zh-Hans":"韩国","zh-Hant":{"pref":"南韓","long":"大韩民国"}},
       {"en":{"pref":"Afghanistan","long":"Islamic Emirate of Afghanistan"},"de":"Afghanistan","es":"Afganistán","fr":"Afghanistan","it":"Afghanistan","ja":"アフガニスタン","ko":"아프가니스탄","zh-Hans":"阿富汗","zh-Hant":"阿富汗"},
       {"en":{"pref":"Iraq","long":"Republic of Iraq"},"de":"Irak","es":"Irak","fr":{"pref":"Irak","long":"la République d’Irak"},"it":"Iraq","ja":"イラク","ko":"이라크","zh-Hans":"伊拉克","zh-Hant":"伊拉克"},
       {"en":"Uzbekistan","de":"Usbekistan","es":"Uzbekistán","fr":"Ouzbékistan","ja":"ウズベキスタン","ko":"우즈베키스탄","zh-Hans":"乌兹别克斯坦","zh-Hant":"烏茲別克"},
@@ -132,9 +132,9 @@
       {"en":"Saudi Arabia","de":"Saudi-Arabien","es":"Arabia Saudí","fr":"Arabie saoudite","it":"Arabia Saudita","ja":"サウジアラビア","ko":"사우디아라비아","zh-Hans":"沙特阿拉伯","zh-Hant":"沙烏地阿拉伯"},
       {"en":"Nepal","fr":"Népal","ja":"ネパール","ko":"네팔","zh-Hans":"尼泊尔","zh-Hant":"尼泊爾"},
       {"en":"Yemen","de":"Jemen","fr":"Yémen","ja":"イエメン","ko":"예멘","zh-Hans":"也门","zh-Hant":"葉門"},
-      {"en":"North Korea","de":"Nordkorea","es":"Corea del Norte","fr":"Corée du Nord","it":"Corea del Nord","ja":{"pref":"朝鮮民主主義人民共和国","short":"北朝鮮"},"ko":{"pref":"북한","long":"조선민주주의인민공화국","others":["북조선","Chosŏn-minjujuŭi-inmin-konghwaguk"]},"zh-Hans":{"pref":"朝鲜","others":["朝鲜民主主义人民共和国"]},"zh-Hant":{"pref":"北韓","long":"朝鲜民主共和国"}},
+      {"en":{"pref":"North Korea","short":"DPRK"},"de":"Nordkorea","es":{"pref":"Corea del Norte","short":"RPDC"},"fr":{"pref":"Corée du Nord","short":"RPDC"},"it":{"pref":"Corea del Nord","short":"RPDC"},"ja":{"pref":"朝鮮民主主義人民共和国","short":"北朝鮮"},"ko":{"pref":"북한","long":"조선민주주의인민공화국","others":["북조선","Chosŏn-minjujuŭi-inmin-konghwaguk"]},"zh-Hans":{"pref":"朝鲜","others":["朝鲜民主主义人民共和国"]},"zh-Hant":{"pref":"北韓","long":"朝鲜民主共和国"}},
       {"en":{"pref":"Syria","long":"Syrian Arab Republic"},"de":"Syrien","es":"Siria","fr":{"pref":"Syrie","long":"la République arabe syrienne"},"it":"Siria","ja":"シリア","ko":"시리아","zh-Hans":"叙利亚","zh-Hant":"敘利亞"},
-      {"en":{"pref":"Taiwan","long":"Taiwan ROC"},"de":"Taiwan","es":"Taiwán","fr":"Taïwan","it":"Taiwan","ja":{"pref":"台湾","others":["台灣"]},"ko":{"pref":"대만","others":["타이완","중화민국"]},"zh-Hans":"台湾","zh-Hant":"台灣"},
+      {"en":{"pref":"Taiwan","short":"ROC","long":"Taiwan ROC"},"de":"Taiwan","es":"Taiwán","fr":"Taïwan","it":"Taiwan","ja":{"pref":"台湾","others":["台灣"]},"ko":{"pref":"대만","others":["타이완","중화민국"]},"zh-Hans":"台湾","zh-Hant":"台灣"},
       {"en":"Sri Lanka","fr":{"pref":"Sri Lanka","long":"la République socialiste démocratique de Sri Lanka"},"ja":"スリランカ","ko":"스리랑카","zh-Hans":"斯里兰卡","zh-Hant":"斯里蘭卡"},
       {"en":"Kazakhstan","de":"Kasachstan","es":{"pref":"Kazajstán","long":"Kazajistán"},"fr":{"pref":"Kazakhstan","long":"la République du Kazakhstan"},"it":"Kazakistan","ja":"カザフスタン","ko":"카자흐스탄","zh-Hans":"哈萨克斯坦","zh-Hant":"哈薩克"}
     ],
@@ -143,7 +143,7 @@
       {"en":{"pref":"Cambodia","long":"Kingdom of Cambodia"},"de":"Kambodscha","es":"Camboya","fr":{"pref":"Cambodge","long":"le Royaume du Cambodge"},"it":"Cambogia","ja":"カンボジア","ko":"캄보디아","zh-Hans":"柬埔寨","zh-Hant":"柬埔寨"},
       {"en":"Jordan","de":"Jordanien","es":"Jordania","fr":"Jordanie","it":"Giordania","ja":"ヨルダン","ko":"요르단","zh-Hans":"约旦","zh-Hant":"約旦"},
       {"en":"Azerbaijan","de":"Aserbaidschan","es":"Azerbaiyán","fr":"Azerbaïdjan","it":"Azerbaigian","ja":"アゼルバイジャン","ko":"아제르바이잔","zh-Hans":"阿塞拜疆","zh-Hant":"亞塞拜然"},
-      {"en":{"pref":"United Arab Emirates","short":"UAE"},"de":"Vereinigte Arabische Emirate","es":"Emiratos Árabes Unidos","fr":{"pref":"Émirats arabes unis","long":"les Émirats arabes unis"},"it":"Emirati Arabi Uniti","ja":{"pref":"アラブ首長国連邦","short":"ア首連"},"ko":"아랍에미리트","zh-Hans":"阿拉伯联合酋长国","zh-Hant":"阿拉伯聯合大公國"},
+      {"en":{"pref":"United Arab Emirates","short":"UAE"},"de":{"pref":"Vereinigte Arabische Emirate","short":"VAE"},"es":{"pref":"Emiratos Árabes Unidos","short":"EAU"},"fr":{"pref":"Émirats arabes unis","long":"les Émirats arabes unis"},"it":{"pref":"Emirati Arabi Uniti","short":"EAU"},"ja":{"pref":"アラブ首長国連邦","short":"ア首連"},"ko":"아랍에미리트","zh-Hans":"阿拉伯联合酋长国","zh-Hant":"阿拉伯聯合大公國"},
       {"en":"Israel","fr":"Israël","it":"Israele","ja":"イスラエル","ko":"이스라엘","zh-Hans":"以色列","zh-Hant":"以色列"},
       {"en":"Tajikistan","de":"Tadschikistan","es":"Tayikistán","fr":"Tadjikistan","it":"Tagikistan","ja":"タジキスタン","ko":"타지키스탄","zh-Hans":"塔吉克斯坦","zh-Hant":"塔吉克"},
       {"en":{"pref":"Hong Kong","others":["Hong Kong Special Administrative Region of the People's Republic of China"]},"de":"Hongkong","es":"Hong Kong","fr":"Hong Kong","it":"Hong Kong","ja":"香港","ko":"홍콩","zh-Hans":"香港","zh-Hant":"香港"},

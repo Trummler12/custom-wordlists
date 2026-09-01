@@ -506,8 +506,13 @@ async function main() {
       ([k]) => k !== "_comment",
     ),
   );
-  // Abbreviations that survive the code filter (USA, UK), from name-abbreviations.json.
-  const KEEP = new Set(JSON.parse(await readFile(join(RAW, "countries", "name-abbreviations.json"), "utf8")).keep);
+  // Abbreviations that survive the code filter: the legit ones (name-abbreviations.json) that
+  // also read as a word — 3+ letters, letters only, so U.S. / HK / UK stay out of the lists.
+  const KEEP = new Set(
+    JSON.parse(await readFile(join(RAW, "countries", "name-abbreviations.json"), "utf8")).legit.filter((s) =>
+      /^\p{Lu}{3,}$/u.test(s),
+    ),
+  );
 
   // Every dumped entity's names bucketed into pref/short/long/others per content language.
   const bucketByQid = new Map();

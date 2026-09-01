@@ -4,8 +4,8 @@
   "languages": ["en","de","es","fr","it","ja","ja-Latn","ko","zh-Hans","zh-Hant"],
   "generatedRomaji": true,
   "sources": ["Names & variants: Wikidata labels, official and short names of the capitals (P36) — https://www.wikidata.org/wiki/Property:P36 (see scripts/geography/dump-country-data.mjs)"],
-  "lastUpdated": "2026-08-31",
-  "lastChecked": "2026-08-31",
+  "lastUpdated": "2026-09-01",
+  "lastChecked": "2026-09-01",
   "defaultNames": "pref",
   "omittable": [
     {
@@ -27,7 +27,7 @@
   "tiers": [
     [
       {"en":{"pref":"Washington, D.C.","short":"Washington","long":"Washington, District of Columbia"},"de":"Washington, D.C.","es":"Washington D. C.","fr":"Washington","it":"Washington","ja":"ワシントンD.C.","ko":"워싱턴 D.C.","zh-Hans":"华盛顿哥伦比亚特区","zh-Hant":"華盛頓哥倫比亞特區"},
-      {"en":"Mexico City","de":"Mexiko-Stadt","es":"Ciudad de México","fr":"Mexico","it":"Città del Messico","ja":"メキシコシティ","ko":"멕시코시티","zh-Hans":"墨西哥城","zh-Hant":"墨西哥城"}
+      {"en":"Mexico City","de":"Mexiko-Stadt","es":{"pref":"Ciudad de México","short":"CDMX"},"fr":"Mexico","it":"Città del Messico","ja":"メキシコシティ","ko":"멕시코시티","zh-Hans":"墨西哥城","zh-Hant":"墨西哥城"}
     ],
 
     [
@@ -37,7 +37,7 @@
     [
       {"en":"Guatemala City","de":"Guatemala-Stadt","es":"Ciudad de Guatemala","fr":"Guatemala","it":"Città del Guatemala","ja":"グアテマラシティ","ko":"과테말라시티","zh-Hans":"危地马拉城","zh-Hant":"瓜地馬拉市"},
       {"en":"Havana","de":"Havanna","es":"La Habana","fr":"La Havane","it":"L'Avana","ja":"ハバナ","ko":"아바나","zh-Hans":"哈瓦那","zh-Hant":"哈瓦那"},
-      {"en":"Port-au-Prince","es":"Puerto Príncipe","ja":"ポルトープランス","ko":"포르토프랭스","zh-Hans":"太子港","zh-Hant":"太子港"},
+      {"en":"Port-au-Prince","es":"Puerto Príncipe","fr":{"pref":"Port-au-Prince","short":"PAP"},"ja":"ポルトープランス","ko":"포르토프랭스","zh-Hans":"太子港","zh-Hant":"太子港"},
       {"en":"Santo Domingo","fr":"Saint-Domingue","ja":"サント・ドミンゴ","ko":"산토도밍고","zh-Hans":"圣多明哥","zh-Hant":"聖多明哥"},
       {"en":"Tegucigalpa","ja":"テグシガルパ","ko":"테구시갈파","zh-Hans":"特古西加尔巴","zh-Hant":"德古西加巴"},
       {"en":"San Salvador","ja":"サンサルバドル","ko":"산살바도르","zh-Hans":"圣萨尔瓦多","zh-Hant":"聖薩爾瓦多"},

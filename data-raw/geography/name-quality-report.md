@@ -1,47 +1,12 @@
 # Name-quality report — data-raw/geography
 
-Generated 2026-08-31 by `scripts/geography/report-name-quality.mjs` (read-only). A worklist of the Wikidata issues the country and capital dumps hit — fix at the source, re-dump, and the entry here (and any override it carries) falls away.
+Generated 2026-09-01 by `scripts/geography/report-name-quality.mjs` (read-only). A worklist of the Wikidata issues the country and capital dumps hit — fix at the source, re-dump, and the entry here (and any override it carries) falls away.
 
-## Codes mis-filed as names — 58
+## Codes mis-filed as names — new — 0
 
-Filed under P1813 (short name) but really an ISO/technical code, so the build drops them; they belong in P297 (alpha-2) / P298 (alpha-3). Clean up on Wikidata.
+Code-like names (no lowercase) not yet reviewed into `name-abbreviations.json`. Each is either a genuine abbreviation to add to `legit`, or an ISO/technical code Wikidata mis-files under P1813 (belongs in P297 / P298) — add it to `acknowledged` once seen, and clean it up on Wikidata when you get to it.
 
-| entity | codes | Wikidata |
-| --- | --- | --- |
-| United States (country) | en:U.S. | [Q30](https://www.wikidata.org/wiki/Q30) |
-| Nigeria (country) | en:NG | [Q1033](https://www.wikidata.org/wiki/Q1033) |
-| Philippines (country) | en:PH, en:RP | [Q928](https://www.wikidata.org/wiki/Q928) |
-| Democratic Republic of the Congo (country) | en:DRC, de:DRK, es:RDC, fr:RDC, it:RDC | [Q974](https://www.wikidata.org/wiki/Q974) |
-| South Africa (country) | en:RSA, de:RSA | [Q258](https://www.wikidata.org/wiki/Q258) |
-| South Korea (country) | en:ROK | [Q884](https://www.wikidata.org/wiki/Q884) |
-| Malaysia (country) | en:MYS | [Q833](https://www.wikidata.org/wiki/Q833) |
-| Australia (country) | en:AUS | [Q408](https://www.wikidata.org/wiki/Q408) |
-| North Korea (country) | en:DPRK, de:DVRK, es:RPDC, fr:RPDC, it:RPDC | [Q423](https://www.wikidata.org/wiki/Q423) |
-| Taiwan (country) | en:TW, en:ROC, en:TWN | [Q865](https://www.wikidata.org/wiki/Q865) |
-| Ecuador (country) | en:EC, en:ECU, fr:ECU | [Q736](https://www.wikidata.org/wiki/Q736) |
-| United Arab Emirates (country) | de:VAE, es:EAU, fr:É.A.U., it:EAU | [Q878](https://www.wikidata.org/wiki/Q878) |
-| Papua New Guinea (country) | en:PNG, de:PNG, es:PNG, fr:PNG | [Q691](https://www.wikidata.org/wiki/Q691) |
-| Central African Republic (country) | en:CAR, es:RCA, fr:RCA | [Q929](https://www.wikidata.org/wiki/Q929) |
-| Nicaragua (country) | en:NIC | [Q811](https://www.wikidata.org/wiki/Q811) |
-| Mauritania (country) | fr:RIM | [Q1025](https://www.wikidata.org/wiki/Q1025) |
-| Bosnia and Herzegovina (country) | en:B&H, fr:BH | [Q225](https://www.wikidata.org/wiki/Q225) |
-| Antigua and Barbuda (country) | en:AG | [Q781](https://www.wikidata.org/wiki/Q781) |
-| Federated States of Micronesia (country) | en:FM | [Q702](https://www.wikidata.org/wiki/Q702) |
-| Marshall Islands (country) | en:MH | [Q709](https://www.wikidata.org/wiki/Q709) |
-| Palau (country) | en:PW | [Q695](https://www.wikidata.org/wiki/Q695) |
-| Isle of Man (country) | en:I.O.M. | [Q9676](https://www.wikidata.org/wiki/Q9676) |
-| Hong Kong (country) | en:HK, en:HKSAR | [Q8646](https://www.wikidata.org/wiki/Q8646) |
-| French Polynesia (country) | fr:TERRITOIRE DE LA POLYNESIE FRANCAISE | [Q30971](https://www.wikidata.org/wiki/Q30971) |
-| Northern Mariana Islands (country) | en:CNMI | [Q16644](https://www.wikidata.org/wiki/Q16644) |
-| Guam (country) | en:GU | [Q16635](https://www.wikidata.org/wiki/Q16635) |
-| American Samoa (country) | en:AS | [Q16641](https://www.wikidata.org/wiki/Q16641) |
-| United States Virgin Islands (country) | en:USVI | [Q11703](https://www.wikidata.org/wiki/Q11703) |
-| Mexico City (capital) | es:CDMX | [Q1489](https://www.wikidata.org/wiki/Q1489) |
-| Berlin (capital) | de:B | [Q64](https://www.wikidata.org/wiki/Q64) |
-| Bangkok (capital) | en:BKK | [Q1861](https://www.wikidata.org/wiki/Q1861) |
-| Brussels (capital) | fr:BXL | [Q239](https://www.wikidata.org/wiki/Q239) |
-| Port-au-Prince (capital) | fr:PAP | [Q34261](https://www.wikidata.org/wiki/Q34261) |
-| Vienna (capital) | de:W | [Q1741](https://www.wikidata.org/wiki/Q1741) |
+_None — every code-like name is reviewed._
 
 ## Missing names — content languages — 30 entities
 
@@ -146,3 +111,9 @@ Where `name-overrides.json` asserts a name because Wikidata's label is a formal/
 | Belmopan | zh-Hant | — | [Q3043](https://www.wikidata.org/wiki/Q3043) |
 | St. John's | de | — | [Q36262](https://www.wikidata.org/wiki/Q36262) |
 | Kingston | zh-Hant | — | [Q30963](https://www.wikidata.org/wiki/Q30963) |
+
+## Stale entries — safe to remove — 0
+
+Curated rules the data no longer needs — a Wikidata fix (or a dump change) landed, so these compensations do nothing now and can be deleted.
+
+_None._

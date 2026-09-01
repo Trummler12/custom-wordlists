@@ -7,8 +7,8 @@
     "Names & variants: Wikidata labels, official names (P1448) and short names (P1813) — https://www.wikidata.org/wiki/Q3624078 (see scripts/geography/dump-country-data.mjs)",
     "Population & tiers: Wikidata sovereign states (P1082 on P31 Q3624078) — https://www.wikidata.org/wiki/Q3624078 (see scripts/geography/dump-country-data.mjs)"
   ],
-  "lastUpdated": "2026-08-31",
-  "lastChecked": "2026-08-31",
+  "lastUpdated": "2026-09-01",
+  "lastChecked": "2026-09-01",
   "defaultNames": "pref",
   "omitted": [
     {
@@ -116,7 +116,7 @@
       {"en":"Aruba","ja":"アルバ","ko":"아루바","zh-Hans":"阿鲁巴","zh-Hant":"阿魯巴"},
       {"en":"Antigua and Barbuda","de":"Antigua und Barbuda","es":"Antigua y Barbuda","fr":"Antigua-et-Barbuda","it":"Antigua e Barbuda","ja":{"pref":"アンティグアバブーダ","long":"アンティグア・バーブーダ"},"ko":"앤티가 바부다","zh-Hans":"安提瓜和巴布达","zh-Hant":"安地卡及巴布達"},
       {"en":"Cayman Islands","es":"Islas Caimán","fr":"îles Caïmans","it":"Isole Cayman","ja":"ケイマン諸島","ko":"케이맨 제도","zh-Hans":"开曼群岛","zh-Hant":"開曼群島"},
-      {"en":{"pref":"United States Virgin Islands","others":["U.S. Virgin Islands"]},"de":"Amerikanische Jungferninseln","es":"Islas Vírgenes de los Estados Unidos","fr":"îles Vierges des États-Unis","it":"Isole Vergini degli Stati Uniti","ja":"アメリカ領ヴァージン諸島","ko":"미국령 버진아일랜드","zh-Hans":"美属维尔京群岛","zh-Hant":"美屬維京群島"},
+      {"en":{"pref":"United States Virgin Islands","others":["USVI","U.S. Virgin Islands"]},"de":"Amerikanische Jungferninseln","es":"Islas Vírgenes de los Estados Unidos","fr":"îles Vierges des États-Unis","it":"Isole Vergini degli Stati Uniti","ja":"アメリカ領ヴァージン諸島","ko":"미국령 버진아일랜드","zh-Hans":"美属维尔京群岛","zh-Hant":"美屬維京群島"},
       {"en":{"pref":"Dominica","long":"Commonwealth of Dominica"},"de":"Dominica","es":"Dominica","fr":{"pref":"Dominique","long":"Commonwealth de Dominique"},"it":"Dominica","ja":"ドミニカ国","ko":{"pref":"도미니카","others":["도미니카 연방"]},"zh-Hans":"多米尼克","zh-Hant":"多米尼克"},
       {"en":"Bermuda","es":"Bermudas","fr":"Bermudes","ja":"バミューダ","ko":"버뮤다","zh-Hans":"百慕大","zh-Hant":"百慕達"},
       {"en":"Greenland","de":"Grönland","es":"Groenlandia","fr":"Groenland","it":"Groenlandia","ja":"グリーンランド","ko":"그린란드","zh-Hans":"格陵兰","zh-Hant":"格陵蘭"},
