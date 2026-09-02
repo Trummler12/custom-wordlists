@@ -1,6 +1,6 @@
 # Name-quality report — data-raw/geography
 
-Generated 2026-09-01 by `scripts/geography/report-name-quality.mjs` (read-only). A worklist of the Wikidata issues the country and capital dumps hit — fix at the source, re-dump, and the entry here (and any override it carries) falls away.
+Generated 2026-09-02 by `scripts/geography/report-name-quality.mjs` (read-only). A worklist of the Wikidata issues the country and capital dumps hit — fix at the source, re-dump, and the entry here (and any override it carries) falls away.
 
 ## Codes mis-filed as names — new — 0
 
@@ -117,3 +117,23 @@ Where `name-overrides.json` asserts a name because Wikidata's label is a formal/
 Curated rules the data no longer needs — a Wikidata fix (or a dump change) landed, so these compensations do nothing now and can be deleted.
 
 _None._
+
+## Filtered from the build — for reference
+
+What the build drops from the raw dump over the content languages. Nothing is lost — the raw `country-names.json` / `capital-names.json` keep every term.
+
+**Unflagged aliases — 6158 drop(s), 5527 distinct.** `skos:altLabel` with no pref/official/short flag: ignored by design, the discardable flood (`Red China`, `Rotchina`, `cn`). Count only; a common name genuinely hiding here would need a label or short-name flag on Wikidata to surface.
+
+What is left — flagged code-like names that still get dropped — falls in two kinds, listed as `` `code` (langs) ``:
+
+### Invalid on Wikidata — 24
+
+Filed under P1813 (short name) but really an ISO/technical code, practically never spoken; they belong in P297 / P298. Reviewed into `name-abbreviations.json` `acknowledged`; clean up on Wikidata when convenient.
+
+`AG` (en); `AS` (en); `AUS` (en); `B` (de); `B&H` (en); `BH` (fr); `DRK` (de); `DVRK` (de); `EC` (en); `ECU` (en, fr); `FM` (en); `GU` (en); `HKSAR` (en); `MH` (en); `MYS` (en); `NG` (en); `NIC` (en); `PW` (en); `RIM` (fr); `RP` (en); `TERRITOIRE DE LA POLYNESIE FRANCAISE` (fr); `TW` (en); `TWN` (en); `W` (de)
+
+### Valid but unsuitable for skribbl — 5
+
+Genuine abbreviations, correct on Wikidata, but too short or punctuated to draw. Kept in `name-abbreviations.json` `legit` so the report stays quiet, yet dropped from the lists by the word rule (3+ letters, letters only).
+
+`HK` (en); `I.O.M.` (en); `PH` (en); `U.S.` (en); `É.A.U.` (fr)

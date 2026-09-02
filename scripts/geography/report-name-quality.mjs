@@ -66,6 +66,9 @@ const enOf = (qid, names) => {
 const codeRows = [];
 const missingRows = [];
 const seenCodes = new Set(); // every flagged code-like name the data carries, for the stale check
+// What the build drops, by reason, over the content languages — for the transparency summary.
+const aliasDrops = { n: 0, set: new Set() };
+const codeLangs = new Map(); // dropped code-like name => Set(content langs carrying it)
 for (const [kind, data] of [["country", countries], ["capital", capitals]]) {
   for (const [qid, v] of Object.entries(data)) {
     const label = enOf(qid, v.names);
@@ -74,8 +77,11 @@ for (const [kind, data] of [["country", countries], ["capital", capitals]]) {
     for (const lang of LANGS) {
       const list = pickLang(v.names, lang) ?? [];
       for (const e of list) {
-        if (!(e.short || e.official || e.pref) || !isCode(e.name)) continue;
+        const flagged = e.pref || e.official || e.short;
+        if (!flagged) { aliasDrops.n++; aliasDrops.set.add(e.name); continue; }
+        if (!isCode(e.name)) continue;
         seenCodes.add(e.name);
+        if (!KEEP.has(e.name)) (codeLangs.get(e.name) ?? codeLangs.set(e.name, new Set()).get(e.name)).add(lang);
         // flag only names not yet reviewed into legit or acknowledged
         if (!legit.has(e.name) && !acknowledged.has(e.name)) codes.push(`${lang}:${e.name}`);
       }
@@ -113,6 +119,14 @@ for (const [qid, m] of Object.entries(overrides)) {
   });
   overrideRows.push({ qid, label: enOf(qid, names), langs, promotable });
 }
+
+// The dropped code-like names, partitioned by review status, each with the langs carrying it.
+// (Unreviewed ones are the "Codes mis-filed as names — new" section above.)
+const wordSuitable = (s) => /^\p{Lu}{3,}$/u.test(s);
+const codeLine = (names) =>
+  names.sort().map((s) => `\`${esc(s)}\` (${[...codeLangs.get(s)].sort().join(", ")})`).join("; ");
+const invalidCodes = [...codeLangs.keys()].filter((s) => acknowledged.has(s));
+const unsuitableCodes = [...codeLangs.keys()].filter((s) => legit.has(s) && !wordSuitable(s));
 
 const today = new Date().toISOString().slice(0, 10);
 const md = [
@@ -161,12 +175,33 @@ const md = [
     : []),
   ...(staleAck.length + redundantOverrides.length ? [] : ["_None._"]),
   "",
+  "## Filtered from the build — for reference",
+  "",
+  "What the build drops from the raw dump over the content languages. Nothing is lost — the raw `country-names.json` / `capital-names.json` keep every term.",
+  "",
+  `**Unflagged aliases — ${aliasDrops.n} drop(s), ${aliasDrops.set.size} distinct.** \`skos:altLabel\` with no pref/official/short flag: ignored by design, the discardable flood (\`Red China\`, \`Rotchina\`, \`cn\`). Count only; a common name genuinely hiding here would need a label or short-name flag on Wikidata to surface.`,
+  "",
+  "What is left — flagged code-like names that still get dropped — falls in two kinds, listed as `` `code` (langs) ``:",
+  "",
+  `### Invalid on Wikidata — ${invalidCodes.length}`,
+  "",
+  "Filed under P1813 (short name) but really an ISO/technical code, practically never spoken; they belong in P297 / P298. Reviewed into `name-abbreviations.json` `acknowledged`; clean up on Wikidata when convenient.",
+  "",
+  invalidCodes.length ? codeLine(invalidCodes) : "_None._",
+  "",
+  `### Valid but unsuitable for skribbl — ${unsuitableCodes.length}`,
+  "",
+  "Genuine abbreviations, correct on Wikidata, but too short or punctuated to draw. Kept in `name-abbreviations.json` `legit` so the report stays quiet, yet dropped from the lists by the word rule (3+ letters, letters only).",
+  "",
+  unsuitableCodes.length ? codeLine(unsuitableCodes) : "_None._",
+  "",
 ].join("\n");
 
 await writeFile(join(RAW, "..", "name-quality-report.md"), md, "utf8");
 console.log(
   `new codes: ${codeRows.reduce((n, r) => n + r.codes.length, 0)} across ${codeRows.length} entities · ` +
     `missing: ${missingRows.length} entities · overrides: ${overrideRows.length} · ` +
-    `stale: ${staleAck.length} ack / ${redundantOverrides.length} overrides`,
+    `stale: ${staleAck.length} ack / ${redundantOverrides.length} overrides · ` +
+    `filtered codes: ${invalidCodes.length} invalid / ${unsuitableCodes.length} unsuitable`,
 );
 console.log("wrote data-raw/geography/name-quality-report.md");
