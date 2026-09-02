@@ -1,11 +1,11 @@
 {
   "id": "europe-capitals",
   "title": {"en":"Capitals","de":"Hauptstädte","es":"Capitales","fr":"Capitales","it":"Capitali","ja":"首都","ko":"수도","zh-Hans":"首都","zh-Hant":"首都"},
-  "languages": ["en","de","es","fr","it","ja","ja-Latn","ko","zh-Hans","zh-Hant"],
+  "languages": ["en","de","es","fr","it","ja","ja-Latn","ko","zh-Hans","zh-Hant","pt","ru","tr","pl","nl","bg","cs","da","et","fi","el","he","hu","lv","mk","no","ro","sr","sk","sv","tl"],
   "generatedRomaji": true,
   "sources": ["Names & variants: Wikidata labels, official and short names of the capitals (P36) — https://www.wikidata.org/wiki/Property:P36 (see scripts/geography/dump-country-data.mjs)"],
-  "lastUpdated": "2026-09-01",
-  "lastChecked": "2026-09-01",
+  "lastUpdated": "2026-09-02",
+  "lastChecked": "2026-09-02",
   "defaultNames": "pref",
   "omittable": [
     {
@@ -57,67 +57,67 @@
   ],
   "tiers": [
     [
-      {"en":"Moscow","de":"Moskau","es":"Moscú","fr":"Moscou","it":"Mosca","ja":"モスクワ","ko":"모스크바","zh-Hans":"莫斯科","zh-Hant":"莫斯科"}
+      {"en":"Moscow","de":"Moskau","es":"Moscú","fr":"Moscou","it":"Mosca","ja":"モスクワ","ko":"모스크바","zh-Hans":"莫斯科","zh-Hant":"莫斯科","pt":"Moscovo","ru":"Москва","tr":"Moskova","pl":"Moskwa","nl":"Moskou","bg":"Москва","cs":"Moskva","da":"Moskva","et":"Moskva","fi":"Moskova","el":"Μόσχα","he":"מוסקבה","hu":"Moszkva","lv":"Maskava","mk":"Москва","no":"Moskva","ro":"Moscova","sr":"Москва","sk":"Moskva","sv":"Moskva","tl":"Mosku"}
     ],
 
     [
-      {"en":"Ankara","ja":"アンカラ","ko":"앙카라","zh-Hans":"安卡拉","zh-Hant":"安卡拉"},
-      {"en":"Berlin","es":"Berlín","it":"Berlino","ja":"ベルリン","ko":"베를린","zh-Hans":"柏林","zh-Hant":"柏林"},
-      {"en":"Paris","es":"París","it":"Parigi","ja":"パリ","ko":"파리","zh-Hans":"巴黎","zh-Hant":"巴黎"},
-      {"en":"London","es":"Londres","fr":"Londres","it":"Londra","ja":"ロンドン","ko":"런던","zh-Hans":"伦敦","zh-Hant":"倫敦"},
-      {"en":"Rome","de":"Rom","es":"Roma","it":"Roma","ja":"ローマ","ko":"로마","zh-Hans":"罗马","zh-Hant":"羅馬"},
-      {"en":"Madrid","ja":"マドリード","ko":"마드리드","zh-Hans":"马德里","zh-Hant":"馬德里"},
-      {"en":"Kyiv","de":"Kiew","es":"Kiev","fr":"Kiev","it":"Kiev","ja":"キーウ","ko":"키이우","zh-Hans":"基辅","zh-Hant":"基輔"},
-      {"en":"Warsaw","de":"Warschau","es":"Varsovia","fr":"Varsovie","it":"Varsavia","ja":"ワルシャワ","ko":"바르샤바","zh-Hans":"华沙","zh-Hant":"華沙"},
-      {"en":"Astana","es":"Astaná","ja":"アスタナ","ko":"아스타나","zh-Hans":"阿斯塔纳","zh-Hant":"阿斯塔納"}
+      {"en":"Ankara","ja":"アンカラ","ko":"앙카라","zh-Hans":"安卡拉","zh-Hant":"安卡拉","pt":"Ancara","ru":"Анкара","bg":"Анкара","el":"Άγκυρα","he":"אנקרה","mk":"Анкара","sr":"Анкара"},
+      {"en":"Berlin","es":"Berlín","it":"Berlino","ja":"ベルリン","ko":"베를린","zh-Hans":"柏林","zh-Hant":"柏林","pt":"Berlim","ru":"Берлин","nl":"Berlijn","bg":"Берлин","cs":"Berlín","et":"Berliin","fi":"Berliini","el":"Βερολίνο","he":"ברלין","lv":"Berlīne","mk":"Берлин","sr":"Берлин","sk":"Berlín"},
+      {"en":"Paris","es":"París","it":"Parigi","ja":"パリ","ko":"파리","zh-Hans":"巴黎","zh-Hant":"巴黎","ru":"Париж","pl":"Paryż","nl":"Parijs","bg":"Париж","cs":"Paříž","et":"Pariis","fi":"Pariisi","el":"Παρίσι","he":"פריז","hu":"Párizs","lv":"Parīze","mk":"Париз","sr":"Париз","sk":"Paríž"},
+      {"en":"London","es":"Londres","fr":"Londres","it":"Londra","ja":"ロンドン","ko":"런던","zh-Hans":"伦敦","zh-Hant":"倫敦","pt":"Londres","ru":"Лондон","tr":"Londra","pl":"Londyn","nl":"Londen","bg":"Лондон","cs":"Londýn","fi":"Lontoo","el":"Λονδίνο","he":"לונדון","lv":"Londona","mk":"Лондон","ro":"Londra","sr":"Лондон","sk":"Londýn","tl":"Londres"},
+      {"en":"Rome","de":"Rom","es":"Roma","it":"Roma","ja":"ローマ","ko":"로마","zh-Hans":"罗马","zh-Hant":"羅馬","pt":"Roma","ru":"Рим","tr":"Roma","pl":"Rzym","bg":"Рим","cs":"Řím","da":"Rom","et":"Rooma","fi":"Rooma","el":"Ρώμη","he":"רומא","hu":"Róma","lv":"Roma","mk":"Рим","no":"Roma","ro":"Roma","sr":"Рим","sk":"Rím","sv":"Rom","tl":"Roma"},
+      {"en":"Madrid","ja":"マドリード","ko":"마드리드","zh-Hans":"马德里","zh-Hant":"馬德里","ru":"Мадрид","pl":"Madryt","bg":"Мадрид","el":"Μαδρίτη","he":"מדריד","lv":"Madride","mk":"Мадрид","sr":"Мадрид"},
+      {"en":"Kyiv","de":"Kiew","es":"Kiev","fr":"Kiev","it":"Kiev","ja":"キーウ","ko":"키이우","zh-Hans":"基辅","zh-Hant":"基輔","pt":"Kiev","ru":"Киев","tr":"Kiev","pl":"Kijów","nl":"Kiev","bg":"Киев","cs":"Kyjev","da":"Kijev","et":"Kiiev","fi":"Kiova","el":"Κίεβο","he":"קייב","hu":"Kijev","lv":"Kijiva","mk":"Киев","ro":"Kiev","sr":"Кијев","sk":"Kyjev","sv":"Kiev"},
+      {"en":"Warsaw","de":"Warschau","es":"Varsovia","fr":"Varsovie","it":"Varsavia","ja":"ワルシャワ","ko":"바르샤바","zh-Hans":"华沙","zh-Hant":"華沙","pt":"Varsóvia","ru":"Варшава","tr":"Varşova","pl":"Warszawa","nl":"Warschau","bg":"Варшава","cs":"Varšava","da":"Warszawa","et":"Varssavi","fi":"Varsova","el":"Βαρσοβία","he":"ורשה","hu":"Varsó","lv":"Varšava","mk":"Варшава","no":"Warszawa","ro":"Varșovia","sr":"Варшава","sk":"Varšava","sv":"Warszawa"},
+      {"en":"Astana","es":"Astaná","ja":"アスタナ","ko":"아스타나","zh-Hans":"阿斯塔纳","zh-Hant":"阿斯塔納","ru":"Астана","bg":"Астана","el":"Αστανά","he":"אסטנה","hu":"Asztana","mk":"Астана","sr":"Астана"}
     ],
 
     [
-      {"en":"Bucharest","de":"Bukarest","es":"Bucarest","fr":"Bucarest","it":"Bucarest","ja":"ブカレスト","ko":"부쿠레슈티","zh-Hans":"布加勒斯特","zh-Hant":"布加勒斯特"},
-      {"en":"Amsterdam","es":"Ámsterdam","ja":"アムステルダム","ko":"암스테르담","zh-Hans":"阿姆斯特丹","zh-Hant":"阿姆斯特丹"},
-      {"en":"Brussels","de":"Brüssel","es":"Bruselas","fr":{"pref":"Bruxelles","short":"BXL","long":"Ville de Bruxelles"},"it":"Bruxelles","ja":"ブリュッセル市","ko":"브뤼셀","zh-Hans":"布鲁塞尔","zh-Hant":"布魯塞爾"},
-      {"en":"Prague","de":"Prag","es":"Praga","it":"Praga","ja":"プラハ","ko":"프라하","zh-Hans":"布拉格","zh-Hant":"布拉格"},
-      {"en":"Stockholm","es":"Estocolmo","it":"Stoccolma","ja":"ストックホルム","ko":"스톡홀름","zh-Hans":"斯德哥尔摩","zh-Hant":"斯德哥爾摩"},
-      {"en":"Athens","de":"Athen","es":"Atenas","fr":"Athènes","it":"Atene","ja":"アテネ","ko":"아테네","zh-Hans":"雅典","zh-Hant":"雅典"},
-      {"en":"Lisbon","de":"Lissabon","es":"Lisboa","fr":"Lisbonne","it":"Lisbona","ja":"リスボン","ko":"리스본","zh-Hans":"里斯本","zh-Hant":"里斯本"},
-      {"en":"Budapest","ja":"ブダペスト","ko":"부다페스트","zh-Hans":"布达佩斯","zh-Hant":"布達佩斯"},
-      {"en":"Bern","es":"Berna","fr":"Berne","it":"Berna","ja":"ベルン","ko":"베른","zh-Hans":"伯尔尼","zh-Hant":"伯恩"},
-      {"en":"Minsk","ja":"ミンスク","ko":"민스크","zh-Hans":"明斯克","zh-Hant":"明斯克"},
-      {"en":"Vienna","de":"Wien","es":"Viena","fr":"Vienne","ja":"ウィーン","ko":"빈","zh-Hans":"维也纳","zh-Hant":"維也納"},
-      {"en":"Belgrade","de":"Belgrad","es":"Belgrado","it":"Belgrado","ja":"ベオグラード","ko":"베오그라드","zh-Hans":"贝尔格莱德","zh-Hant":"貝爾格勒"},
-      {"en":"Sofia","es":"Sofía","ja":"ソフィア","ko":"소피아","zh-Hans":"索非亚","zh-Hant":"索菲亞"},
-      {"en":"Copenhagen","de":"Kopenhagen","es":"Copenhague","fr":"Copenhague","it":"Copenaghen","ja":"コペンハーゲン","ko":"코펜하겐","zh-Hans":"哥本哈根","zh-Hant":"哥本哈根"},
-      {"en":"Helsinki","ja":"ヘルシンキ","ko":"헬싱키","zh-Hans":"赫尔辛基","zh-Hant":"赫爾辛基"},
-      {"en":"Oslo","ja":"オスロ","ko":"오슬로","zh-Hans":"奥斯陆","zh-Hant":"奧斯陸"},
-      {"en":"Bratislava","ja":"ブラチスラヴァ","ko":"브라티슬라바","zh-Hans":"布拉迪斯拉发","zh-Hant":"布拉提斯拉瓦"},
-      {"en":"Dublin","es":"Dublín","it":"Dublino","ja":"ダブリン","ko":"더블린","zh-Hans":"都柏林","zh-Hant":"都柏林"}
+      {"en":"Bucharest","de":"Bukarest","es":"Bucarest","fr":"Bucarest","it":"Bucarest","ja":"ブカレスト","ko":"부쿠레슈티","zh-Hans":"布加勒斯特","zh-Hant":"布加勒斯特","pt":"Bucareste","ru":"Бухарест","tr":"Bükreş","pl":"Bukareszt","nl":"Boekarest","bg":"Букурещ","cs":"Bukurešť","da":"Bukarest","et":"Bukarest","fi":"Bukarest","el":"Βουκουρέστι","he":"בוקרשט","hu":"Bukarest","lv":"Bukareste","mk":"Букурешт","no":"București","ro":"București","sr":"Букурешт","sk":"Bukurešť","sv":"Bukarest"},
+      {"en":"Amsterdam","es":"Ámsterdam","ja":"アムステルダム","ko":"암스테르담","zh-Hans":"阿姆斯特丹","zh-Hant":"阿姆斯特丹","pt":"Amesterdão","ru":"Амстердам","bg":"Амстердам","el":"Άμστερνταμ","he":"אמסטרדם","hu":"Amszterdam","lv":"Amsterdama","mk":"Амстердам","sr":"Амстердам"},
+      {"en":"Brussels","de":"Brüssel","es":"Bruselas","fr":{"pref":"Bruxelles","short":"BXL","long":"Ville de Bruxelles"},"it":"Bruxelles","ja":"ブリュッセル市","ko":"브뤼셀","zh-Hans":"布鲁塞尔","zh-Hant":"布魯塞爾","pt":"Bruxelas","ru":"Брюссель","tr":"Brüksel Şehri","pl":"Bruksela","nl":{"pref":"Brussel","short":"BXL","others":["Bru"]},"bg":"Брюксел","cs":"Brusel","da":"Bruxelles","et":"Brüssel","fi":"Bryssel","el":"Βρυξέλλες","he":"בריסל","hu":"Brüsszel","lv":"Brisele","mk":"Брисел","no":"Brussel","ro":"Bruxelles","sr":"Брисел","sk":"Brusel","sv":"Bryssel","tl":"Lungsod ng Bruselas"},
+      {"en":"Prague","de":"Prag","es":"Praga","it":"Praga","ja":"プラハ","ko":"프라하","zh-Hans":"布拉格","zh-Hant":"布拉格","pt":"Praga","ru":"Прага","tr":"Prag","pl":"Praga","nl":"Praag","bg":"Прага","cs":{"pref":"Praha","long":"hlavní město Praha"},"da":"Prag","et":"Praha","fi":"Praha","el":"Πράγα","he":"פראג","hu":"Prága","lv":"Prāga","mk":"Прага","no":"Praha","ro":"Praga","sr":"Праг","sk":"Praha","sv":"Prag","tl":"Praga"},
+      {"en":"Stockholm","es":"Estocolmo","it":"Stoccolma","ja":"ストックホルム","ko":"스톡홀름","zh-Hans":"斯德哥尔摩","zh-Hant":"斯德哥爾摩","pt":"Estocolmo","ru":"Стокгольм","pl":"Sztokholm","bg":"Стокхолм","fi":"Tukholma","el":"Στοκχόλμη","he":"סטוקהולם","lv":"Stokholma","mk":"Стокхолм","sr":"Стокхолм","sk":"Štokholm"},
+      {"en":"Athens","de":"Athen","es":"Atenas","fr":"Athènes","it":"Atene","ja":"アテネ","ko":"아테네","zh-Hans":"雅典","zh-Hant":"雅典","pt":"Atenas","ru":"Афины","tr":"Atina","pl":"Ateny","nl":"Athene","bg":"Атина","cs":"Athény","da":"Athen","et":"Ateena","fi":"Ateena","el":"Αθήνα","he":"אתונה","hu":"Athén","lv":"Atēnas","mk":"Атина","no":"Athen","ro":"Atena","sr":"Атина","sk":"Atény","sv":"Aten","tl":"Atenas"},
+      {"en":"Lisbon","de":"Lissabon","es":"Lisboa","fr":"Lisbonne","it":"Lisbona","ja":"リスボン","ko":"리스본","zh-Hans":"里斯本","zh-Hant":"里斯本","pt":"Lisboa","ru":"Лиссабон","tr":"Lizbon","pl":"Lizbona","nl":"Lissabon","bg":"Лисабон","cs":"Lisabon","da":"Lissabon","et":"Lissabon","fi":"Lissabon","el":"Λισαβόνα","he":"ליסבון","hu":"Lisszabon","lv":"Lisabona","mk":"Лисабон","no":"Lisboa","ro":"Lisabona","sr":"Лисабон","sk":"Lisabon","sv":"Lissabon","tl":"Lisboa"},
+      {"en":"Budapest","ja":"ブダペスト","ko":"부다페스트","zh-Hans":"布达佩斯","zh-Hant":"布達佩斯","pt":"Budapeste","ru":"Будапешт","tr":"Budapeşte","pl":"Budapeszt","nl":"Boedapest","bg":"Будапеща","cs":"Budapešť","el":"Βουδαπέστη","he":"בודפשט","lv":"Budapešta","mk":"Будимпешта","ro":"Budapesta","sr":"Будимпешта","sk":"Budapešť"},
+      {"en":"Bern","es":"Berna","fr":"Berne","it":"Berna","ja":"ベルン","ko":"베른","zh-Hans":"伯尔尼","zh-Hant":"伯恩","pt":"Berna","ru":"Берн","pl":"Berno","bg":"Берн","el":"Βέρνη","he":"ברן","lv":"Berne","mk":"Берн","ro":"Berna","sr":"Берн"},
+      {"en":"Minsk","ja":"ミンスク","ko":"민스크","zh-Hans":"明斯克","zh-Hant":"明斯克","ru":"Минск","pl":"Mińsk","bg":"Минск","el":"Μινσκ","he":"מינסק","hu":"Minszk","lv":"Minska","mk":"Минск","sr":"Минск"},
+      {"en":"Vienna","de":"Wien","es":"Viena","fr":"Vienne","ja":"ウィーン","ko":"빈","zh-Hans":"维也纳","zh-Hant":"維也納","pt":"Viena","ru":"Вена","tr":"Viyana","pl":"Wiedeń","nl":"Wenen","bg":"Виена","cs":"Vídeň","da":"Wien","et":"Viin","fi":"Wien","el":"Βιέννη","he":"וינה","hu":"Bécs","lv":"Vīne","mk":"Виена","no":"Wien","ro":"Viena","sr":"Беч","sk":"Viedeň","sv":"Wien","tl":"Viena"},
+      {"en":"Belgrade","de":"Belgrad","es":"Belgrado","it":"Belgrado","ja":"ベオグラード","ko":"베오그라드","zh-Hans":"贝尔格莱德","zh-Hant":"貝爾格勒","pt":"Belgrado","ru":"Белград","tr":"Belgrad","pl":"Belgrad","nl":"Belgrado","bg":"Белград","cs":"Bělehrad","da":"Beograd","et":"Belgrad","fi":"Belgrad","el":"Βελιγράδι","he":"בלגרד","hu":{"pref":"Belgrád","long":"Nándorfehérvár"},"lv":"Belgrada","mk":"Белград","no":"Beograd","ro":"Belgrad","sr":"Beograd","sk":"Belehrad","sv":"Belgrad"},
+      {"en":"Sofia","es":"Sofía","ja":"ソフィア","ko":"소피아","zh-Hans":"索非亚","zh-Hant":"索菲亞","pt":"Sófia","ru":"София","tr":"Sofya","bg":{"pref":"София","long":"Со́фия"},"cs":"Sofie","el":"Σόφια","he":"סופיה","hu":"Szófia","lv":"Sofija","mk":"Софија","sr":"Софија"},
+      {"en":"Copenhagen","de":"Kopenhagen","es":"Copenhague","fr":"Copenhague","it":"Copenaghen","ja":"コペンハーゲン","ko":"코펜하겐","zh-Hans":"哥本哈根","zh-Hant":"哥本哈根","pt":"Copenhaga","ru":"Копенгаген","tr":"Kopenhag","pl":"Kopenhaga","nl":"Kopenhagen","bg":"Копенхаген","cs":"Kodaň","da":"København","et":"Kopenhaagen","fi":"Kööpenhamina","el":"Κοπεγχάγη","he":"קופנהגן","hu":"Koppenhága","lv":"Kopenhāgena","mk":"Копенхаген","no":"København","ro":"Copenhaga","sr":"Копенхаген","sk":"Kodaň","sv":"Köpenhamn"},
+      {"en":"Helsinki","ja":"ヘルシンキ","ko":"헬싱키","zh-Hans":"赫尔辛基","zh-Hant":"赫爾辛基","pt":"Helsínquia","ru":"Хельсинки","bg":"Хелзинки","cs":"Helsinky","da":"Helsingfors","et":"Helsingi","fi":{"pref":"Helsinki","long":"Helsingin kaupunki"},"el":"Ελσίνκι","he":"הלסינקי","mk":"Хелсинки","no":"Helsingfors","sr":"Хелсинки","sv":{"pref":"Helsingfors","long":"Helsingfors stad"},"tl":"Lungsod ng Helsinki"},
+      {"en":"Oslo","ja":"オスロ","ko":"오슬로","zh-Hans":"奥斯陆","zh-Hant":"奧斯陸","ru":{"pref":"Осло","long":"Кристиания","others":["Христиания"]},"bg":"Осло","el":"Όσλο","he":"אוסלו","mk":"Осло","sr":"Осло"},
+      {"en":"Bratislava","ja":"ブラチスラヴァ","ko":"브라티슬라바","zh-Hans":"布拉迪斯拉发","zh-Hant":"布拉提斯拉瓦","ru":"Братислава","pl":"Bratysława","bg":"Братислава","el":"Μπρατισλάβα","he":"ברטיסלאבה","hu":"Pozsony","mk":"Братислава","sr":"Братислава"},
+      {"en":"Dublin","es":"Dublín","it":"Dublino","ja":"ダブリン","ko":"더블린","zh-Hans":"都柏林","zh-Hant":"都柏林","ru":"Дублин","bg":"Дъблин","el":"Δουβλίνο","he":"דבלין","lv":"Dublina","mk":"Даблин","sr":"Даблин"}
     ],
 
     [
-      {"en":"Tbilisi","de":"Tiflis","es":"Tiflis","fr":"Tbilissi","ja":"トビリシ","ko":"트빌리시","zh-Hans":"第比利斯","zh-Hant":"提比里斯"},
-      {"en":"Zagreb","it":"Zagabria","ja":"ザグレブ","ko":"자그레브","zh-Hans":"萨格勒布","zh-Hant":"札格雷布"},
-      {"en":"Sarajevo","ja":"サラエヴォ","ko":"사라예보","zh-Hans":"萨拉热窝","zh-Hant":"塞拉耶佛"},
-      {"en":"Vilnius","es":"Vilna","ja":"ヴィルニュス","ko":"빌뉴스","zh-Hans":"维尔纽斯","zh-Hant":"維爾紐斯"},
-      {"en":"Tirana","ja":"ティラナ","ko":"티라나","zh-Hans":"地拉那","zh-Hant":"地拉那"},
-      {"en":"Chișinău","de":"Chișinău / Kischinjow","es":"Chisináu","ja":"キシナウ","ko":"키시너우","zh-Hans":"基希讷乌","zh-Hant":"基希涅夫"},
-      {"en":"Ljubljana","es":"Liubliana","it":"Lubiana","ja":"リュブリャナ","ko":"류블랴나","zh-Hans":"卢布尔雅那","zh-Hant":"盧比安納"},
-      {"en":"Riga","ja":"リガ","ko":"리가","zh-Hans":"里加","zh-Hant":"里加"},
-      {"en":"Skopje","es":"Skopie","ja":"スコピエ","ko":"스코페","zh-Hans":"斯科普里","zh-Hant":"史高比耶"},
-      {"en":"Pristina","it":"Priština","ja":"プリシュティナ","ko":"프리슈티나","zh-Hans":"普里什蒂纳","zh-Hant":"普里斯提納"},
-      {"en":"Tallinn","es":"Tallin","ja":"タリン","ko":"탈린","zh-Hans":"塔林","zh-Hant":"塔林"},
-      {"en":"Nicosia","de":"Nikosia","fr":"Nicosie","ja":"ニコシア","ko":"니코시아","zh-Hans":"尼科西亚","zh-Hant":"尼古西亞"}
+      {"en":"Tbilisi","de":"Tiflis","es":"Tiflis","fr":"Tbilissi","ja":"トビリシ","ko":"트빌리시","zh-Hans":"第比利斯","zh-Hant":"提比里斯","pt":"Tiblíssi","ru":"Тбилиси","tr":"Tiflis","bg":"Тбилиси","et":"Thbilisi","el":"Τιφλίδα","he":"טביליסי","hu":"Tbiliszi","mk":"Тбилиси","sr":"Тбилиси"},
+      {"en":"Zagreb","it":"Zagabria","ja":"ザグレブ","ko":"자그레브","zh-Hans":"萨格勒布","zh-Hant":"札格雷布","ru":"Загреб","pl":"Zagrzeb","bg":"Загреб","cs":"Záhřeb","el":"Ζάγκρεμπ","he":"זאגרב","hu":"Zágráb","lv":"Zagreba","mk":"Загреб","sr":"Загреб","sk":"Záhreb","tl":"Lungsod ng Zagreb"},
+      {"en":"Sarajevo","ja":"サラエヴォ","ko":"사라예보","zh-Hans":"萨拉热窝","zh-Hant":"塞拉耶佛","ru":"Сараево","tr":"Saraybosna","pl":"Sarajewo","bg":"Сараево","el":"Σαράγιεβο","he":"סרייבו","hu":"Szarajevó","lv":"Sarajeva","mk":"Сараево","sr":"Сарајево"},
+      {"en":"Vilnius","es":"Vilna","ja":"ヴィルニュス","ko":"빌뉴스","zh-Hans":"维尔纽斯","zh-Hant":"維爾紐斯","ru":"Вильнюс","pl":"Wilno","bg":"Вилнюс","fi":"Vilna","el":"Βίλνιους","he":"וילנה","lv":"Viļņa","mk":"Вилнус","sr":"Вилњус"},
+      {"en":"Tirana","ja":"ティラナ","ko":"티라나","zh-Hans":"地拉那","zh-Hant":"地拉那","ru":"Тирана","tr":"Tiran","bg":"Тирана","el":"Τίρανα","he":"טירנה","lv":"Tirāna","mk":"Тирана","sr":"Тирана"},
+      {"en":"Chișinău","de":"Chișinău / Kischinjow","es":"Chisináu","ja":"キシナウ","ko":"키시너우","zh-Hans":"基希讷乌","zh-Hant":"基希涅夫","ru":"Кишинёв","tr":"Kişinev","pl":"Kiszyniów","nl":"Chisinau","bg":"Кишинев","cs":"Kišiněv","el":"Κισινάου","he":"קישינב","lv":"Kišiņeva","mk":"Кишињев","sr":"Кишињев","sk":"Kišiňov","tl":"Chişinău"},
+      {"en":"Ljubljana","es":"Liubliana","it":"Lubiana","ja":"リュブリャナ","ko":"류블랴나","zh-Hans":"卢布尔雅那","zh-Hant":"盧比安納","pt":"Liubliana","ru":"Любляна","pl":"Lublana","bg":"Любляна","cs":"Lublaň","el":"Λιουμπλιάνα","he":"ליובליאנה","lv":"Ļubļana","mk":"Љубљана","sr":"Љубљана","sk":"Ľubľana"},
+      {"en":"Riga","ja":"リガ","ko":"리가","zh-Hans":"里加","zh-Hant":"里加","ru":"Рига","pl":"Ryga","bg":"Рига","et":"Riia","fi":"Riika","el":"Ρίγα","he":"ריגה","lv":"Rīga","mk":"Рига","sr":"Рига"},
+      {"en":"Skopje","es":"Skopie","ja":"スコピエ","ko":"스코페","zh-Hans":"斯科普里","zh-Hant":"史高比耶","ru":"Скопье","tr":"Üsküp","bg":"Скопие","el":"Σκόπια","he":"סקופיה","hu":"Szkopje","mk":"Скопје","sr":"Скопље"},
+      {"en":"Pristina","it":"Priština","ja":"プリシュティナ","ko":"프리슈티나","zh-Hans":"普里什蒂纳","zh-Hant":"普里斯提納","ru":"Приштина","tr":"Priştine","pl":"Prisztina","bg":"Прищина","cs":"Priština","et":"Prishtina","el":"Πρίστινα","he":"פרישטינה","lv":"Priština","mk":"Приштина","no":"Priština","ro":"Priștina","sr":"Приштина","sk":"Priština","?":["tl"]},
+      {"en":"Tallinn","es":"Tallin","ja":"タリン","ko":"탈린","zh-Hans":"塔林","zh-Hant":"塔林","ru":"Таллин","bg":"Талин","fi":"Tallinna","el":"Τάλιν","he":"טאלין","lv":"Tallina","mk":"Талин","sr":"Талин"},
+      {"en":"Nicosia","de":"Nikosia","fr":"Nicosie","ja":"ニコシア","ko":"니코시아","zh-Hans":"尼科西亚","zh-Hant":"尼古西亞","pt":"Nicósia","ru":"Никосия","tr":"Lefkoşa","pl":"Nikozja","bg":"Никозия","cs":"Nikósie","et":"Nikosia","fi":"Nikosia","el":"Λευκωσία","he":"ניקוסיה","lv":"Nikosija","mk":"Никозија","no":"Nikosia","sr":"Никозија","sk":"Nikózia"}
     ],
 
     [
-      {"en":"Luxembourg","de":"Luxemburg","es":"Luxemburgo","it":"Lussemburgo","ja":"ルクセンブルク市","ko":"룩셈부르크","zh-Hans":"卢森堡市","zh-Hant":"盧森堡市"},
-      {"en":"Podgorica","ja":"ポドゴリツァ","ko":"포드고리차","zh-Hans":"波德戈里察","zh-Hant":"波德戈里察"},
-      {"en":"Valletta","es":"La Valeta","fr":"La Valette","it":"La Valletta","ja":"バレッタ","ko":"발레타","zh-Hans":"瓦莱塔","zh-Hant":"瓦萊塔"},
-      {"en":"Reykjavík","es":"Reikiavik","fr":"Reykjavik","ja":"レイキャヴィーク","ko":"레이캬비크","zh-Hans":"雷克雅未克","zh-Hant":"雷克雅未克"},
-      {"en":"Andorra la Vella","es":"Andorra la Vieja","fr":"Andorre-la-Vieille","ja":"アンドラ・ラ・ベリャ","ko":"안도라라벨랴","zh-Hans":"安道尔城","zh-Hant":"老安道爾"},
-      {"en":"Monaco","es":"Mónaco","fr":{"pref":"Monaco","long":"la Principauté de Monaco","others":["Fort-Hercule"]},"it":"Principato di Monaco","ja":"モナコ","ko":"모나코","zh-Hans":"摩纳哥","zh-Hant":"摩納哥"},
-      {"en":"Vaduz","ja":"ファドゥーツ","ko":"파두츠","zh-Hans":"瓦杜兹","zh-Hant":"華杜茲"},
-      {"en":"San Marino","fr":"Saint-Marin","it":"Città di San Marino","ja":"サンマリノ市","ko":"산마리노","zh-Hans":"圣马力诺","zh-Hant":"聖馬力諾"},
-      {"en":"Vatican City","de":"Vatikanstadt","es":"Ciudad del Vaticano","fr":"Vatican","it":{"pref":"Città del Vaticano","long":"Stato della Città del Vaticano"},"ja":"バチカン","ko":"바티칸 시국","zh-Hans":"梵蒂冈","zh-Hant":"梵蒂岡"}
+      {"en":"Luxembourg","de":"Luxemburg","es":"Luxemburgo","it":"Lussemburgo","ja":"ルクセンブルク市","ko":"룩셈부르크","zh-Hans":"卢森堡市","zh-Hant":"盧森堡市","pt":"Luxemburgo","ru":"Люксембург","tr":"Lüksemburg","pl":"Luksemburg","nl":"Luxemburg","bg":"Люксембург","cs":"Lucemburk","fi":"Luxemburg","el":"Λουξεμβούργο","he":"לוקסמבורג","lv":"Luksemburga","mk":"Луксембург","no":"Luxembourg by","ro":"Luxemburg","sr":"Луксембург","sk":"Luxemburg","sv":"Luxemburg","tl":"Lungsod ng Luxembourg"},
+      {"en":"Podgorica","ja":"ポドゴリツァ","ko":"포드고리차","zh-Hans":"波德戈里察","zh-Hant":"波德戈里察","ru":"Подгорица","bg":"Подгорица","el":"Ποντγκόριτσα","he":"פודגוריצה","mk":"Подгорица","sr":"Подгорица"},
+      {"en":"Valletta","es":"La Valeta","fr":"La Valette","it":"La Valletta","ja":"バレッタ","ko":"발레타","zh-Hans":"瓦莱塔","zh-Hant":"瓦萊塔","pt":"Valeta","ru":"Валлетта","bg":"Валета","el":"Βαλέτα","he":"ולטה","lv":"Valleta","mk":"Валета","sr":"Валета"},
+      {"en":"Reykjavík","es":"Reikiavik","fr":"Reykjavik","ja":"レイキャヴィーク","ko":"레이캬비크","zh-Hans":"雷克雅未克","zh-Hant":"雷克雅未克","ru":"Рейкьявик","nl":"Reykjavik","bg":"Рейкявик","da":"Reykjavik","el":"Ρέικιαβικ","he":"רייקיאוויק","lv":"Reikjavīka","mk":"Рејкјавик","sr":"Рејкјавик","tl":"Reykjavik"},
+      {"en":"Andorra la Vella","es":"Andorra la Vieja","fr":"Andorre-la-Vieille","ja":"アンドラ・ラ・ベリャ","ko":"안도라라벨랴","zh-Hans":"安道尔城","zh-Hant":"老安道爾","pt":"Andorra-a-Velha","ru":"Андорра-ла-Велья","pl":"Andora","bg":"Андора ла Веля","el":"Ανδόρρα λα Βέλια","he":"אנדורה לה ולה","lv":"Andora la Velja","mk":"Андора ла Веља","sr":"Андора ла Веља","sk":"Andorra","tl":"Lungsod ng Andorra la Vella"},
+      {"en":"Monaco","es":"Mónaco","fr":{"pref":"Monaco","long":"la Principauté de Monaco","others":["Fort-Hercule"]},"it":"Principato di Monaco","ja":"モナコ","ko":"모나코","zh-Hans":"摩纳哥","zh-Hant":"摩納哥","pt":"Mónaco","ru":"Монако","tr":"Monako","pl":"Monako","bg":"Монако","cs":"Monako","el":"Μονακό","he":"מונקו","lv":"Monako","mk":"Монако","sr":"Монако","sk":"Monako","sv":{"pref":"Monaco","long":"Furstendömet Monaco"}},
+      {"en":"Vaduz","ja":"ファドゥーツ","ko":"파두츠","zh-Hans":"瓦杜兹","zh-Hant":"華杜茲","ru":"Вадуц","bg":"Вадуц","el":"Βαντούζ","he":"ואדוץ","lv":"Vaduca","mk":"Вадуц","sr":"Вадуц"},
+      {"en":"San Marino","fr":"Saint-Marin","it":"Città di San Marino","ja":"サンマリノ市","ko":"산마리노","zh-Hans":"圣马力诺","zh-Hant":"聖馬力諾","ru":"Сан-Марино","bg":"Сан Марино","el":"Άγιος Μαρίνος","he":"סן מרינו","lv":"Sanmarīno","mk":"Сан Марино","sr":"Сан Марино","sk":"San Maríno"},
+      {"en":"Vatican City","de":"Vatikanstadt","es":"Ciudad del Vaticano","fr":"Vatican","it":{"pref":"Città del Vaticano","long":"Stato della Città del Vaticano"},"ja":"バチカン","ko":"바티칸 시국","zh-Hans":"梵蒂冈","zh-Hant":"梵蒂岡","pt":"Vaticano","ru":"Ватикан","tr":"Vatikan","pl":"Watykan","nl":"Vaticaanstad","bg":"Ватикан","cs":"Vatikán","da":"Vatikanstaten","et":"Vatikan","fi":"Vatikaani","el":"Βατικανό","he":"קריית הוותיקן","hu":"Vatikán","lv":"Vatikāns","mk":"Ватикан","no":"Vatikanstaten","ro":"Vatican","sr":"Ватикан","sk":"Vatikán","sv":"Vatikanstaten","tl":"Lungsod ng Batikano"}
     ]
   ],
   "tierConditions": [

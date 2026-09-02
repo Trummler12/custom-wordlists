@@ -21,6 +21,12 @@
 // realm title (China, the Kingdoms of the Netherlands and Denmark) or missing (St. John's),
 // name-overrides.json asserts the common drawable name — the only hand-set names here.
 //
+// TWO LANGUAGE SETS. Names are harvested for NAME_LANGS — skribbl's full set — so the data
+// is ready in every language the picker may later offer; the app's CONTENT_LANGS still gates
+// what a reader can pick, so the extra ones lie dormant. The locale-like strings (titles,
+// tier conditions, ruler tooltips, sovereignty/coverage reasons, continent names) stay on the
+// smaller LANGS and fall back to English, until the interface itself grows into them.
+//
 // SOVEREIGNTY & RECOGNITION, A 2D MATRIX (C10). Beyond the UN sovereign states the dump
 // yields, the lists carry the curated territories (sovereign-territories.json) placed in a
 // matrix: de-jure recognition (row) × de-facto control (column). Each non-regular cell is
@@ -48,16 +54,34 @@ const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..", "..");
 const RAW = join(ROOT, "data-raw", "geography");
 const OUT = join(ROOT, "data", "topics", "geography", "human");
 
+// The locale-like languages: the ones whose *strings* (titles, tier conditions, ruler
+// tooltips, sovereignty/coverage reasons, continent names) this script writes by hand.
+// Kept small on purpose — these are UI text, and grow with the interface, not the data.
 const LANGS = ["en", "de", "es", "fr", "it", "ja", "ko", "zh-Hans", "zh-Hant"];
+// The word-list output languages: skribbl's full set, so a country/capital *name* is
+// harvested for every language the picker may later offer. A superset of LANGS. Names
+// only — declaring a language here carries its names into the data, but the app's
+// CONTENT_LANGS still gates what a reader can pick, so the extra ones sit dormant until
+// the interface grows into them (see docs/Language-Roadmap.md, src/locale CONTENT_LANGS).
+const NAME_LANGS = [
+  ...LANGS,
+  "pt", "ru", "tr", "pl", "nl", "bg", "cs", "da", "et", "fi", "el", "he",
+  "hu", "lv", "mk", "no", "ro", "sr", "sk", "sv", "tl",
+];
 const TODAY = new Date().toISOString().slice(0, 10);
 
 /** Our content tag => the Wikidata tags to read it from, first hit wins. Wikidata files a
  *  Chinese name under any of zh / zh-cn / zh-tw / … as readily as under the explicit
- *  zh-hans / zh-hant, so the script slot needs a fallback chain; the Latin tags are 1:1. */
+ *  zh-hans / zh-hant, so the script slot needs a fallback chain; Norwegian rides nb/nn,
+ *  and Portuguese/Tagalog their regional siblings. The rest are 1:1. */
 const LANG_SRC = {
   en: ["en"], de: ["de"], es: ["es"], fr: ["fr"], it: ["it"], ja: ["ja"], ko: ["ko"],
   "zh-Hans": ["zh-hans", "zh-cn", "zh-sg", "zh-my", "zh"],
   "zh-Hant": ["zh-hant", "zh-tw", "zh-hk", "zh-mo"],
+  pt: ["pt", "pt-br", "pt-pt"], ru: ["ru"], tr: ["tr"], pl: ["pl"], nl: ["nl"],
+  bg: ["bg"], cs: ["cs"], da: ["da"], et: ["et"], fi: ["fi"], el: ["el"], he: ["he"],
+  hu: ["hu"], lv: ["lv"], mk: ["mk"], no: ["no", "nb", "nn"], ro: ["ro"], sr: ["sr"],
+  sk: ["sk"], sv: ["sv"], tl: ["tl", "fil"],
 };
 const pickLang = (names, tag) => {
   for (const s of LANG_SRC[tag]) if (names?.[s]?.length) return names[s];
@@ -68,7 +92,7 @@ const pickLang = (names, tag) => {
  *  abbreviation whitelist (USA, UK) that survives the code filter. */
 const bucketWiki = (names, keep) => {
   const out = {};
-  for (const lang of LANGS) {
+  for (const lang of NAME_LANGS) {
     const v = bucketLangWiki(pickLang(names, lang), keep);
     if (v !== undefined) out[lang] = v;
   }
@@ -452,6 +476,9 @@ async function readStructure() {
 
 async function readContinentNames() {
   const out = {};
+  // Locale languages only: the continent-name dump carries the 9 (its 28-language
+  // re-dump rides with the continents & plates batch), and the category title is
+  // locale-like text, so the app falls back to English for the rest.
   for (const lang of LANGS) {
     const text = await readFile(join(RAW, "continents", `${lang}.txt`), "utf8");
     for (const row of text.split(/\r?\n/).filter(Boolean)) {
@@ -468,7 +495,7 @@ function topic(id, title, tiers, sources, rulerTooltip, omitted, omittable, defa
     title,
     // ja-Latn is offered but not sourced: the reader opts into romaji and the app
     // derives it from the Japanese name at render (see generatedRomaji / lib/kana).
-    languages: LANGS.flatMap((l) => (l === "ja" ? ["ja", "ja-Latn"] : [l])),
+    languages: NAME_LANGS.flatMap((l) => (l === "ja" ? ["ja", "ja-Latn"] : [l])),
     generatedRomaji: true,
     sources,
     lastUpdated: TODAY,
@@ -526,7 +553,7 @@ async function main() {
     const b = buckets.get(qid) ?? {};
     const map = {};
     const unknown = [];
-    for (const lang of LANGS) {
+    for (const lang of NAME_LANGS) {
       const v = OVERRIDE[qid]?.[lang] ?? b[lang];
       if (v === undefined || v === "") {
         unknown.push(lang);
@@ -535,7 +562,7 @@ async function main() {
       map[lang] = v;
     }
     if (map.en === undefined) throw new Error(`no English name for ${qid}`);
-    for (const lang of LANGS) {
+    for (const lang of NAME_LANGS) {
       if (lang !== "en" && JSON.stringify(map[lang]) === JSON.stringify(map.en)) delete map[lang];
     }
     if (unknown.length) map["?"] = unknown;
@@ -581,7 +608,7 @@ async function main() {
     const extraEn = [...new Set(enForms(b).filter((n) => n !== m.en))];
     const map = { en: extraEn.length ? { pref: m.en, others: extraEn } : m.en };
     const unknown = [];
-    for (const lang of LANGS) {
+    for (const lang of NAME_LANGS) {
       if (lang === "en") continue;
       const v = b[lang];
       if (v === undefined || v === "") {
@@ -590,7 +617,7 @@ async function main() {
       }
       map[lang] = v;
     }
-    for (const lang of LANGS) {
+    for (const lang of NAME_LANGS) {
       if (lang !== "en" && JSON.stringify(map[lang]) === JSON.stringify(map.en)) delete map[lang];
     }
     if (unknown.length) map["?"] = unknown;
