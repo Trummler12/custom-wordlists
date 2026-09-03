@@ -3,7 +3,7 @@
 # ==============================================================================
 
 # Target criteria:
-[string]$InstanceOfQID  = "Q3624078"    # Main class (e.g. Q3624078 = Sovereign State, Q5119 = Capital City)
+[string]$InstanceOfQID  = "Q33742"    # Main class (e.g. Q3624078 = Sovereign State, Q5119 = Capital City)
 [string]$ParentClassQID = ""            # Optional parent class (e.g. "Q3624078" = Sovereign State)
 
 # Property Paths Array:
@@ -24,6 +24,8 @@ $RelationMatrix = @{
     "Q23397"     = @{ "Q5107" = "P30" ; "Q3624078" = "P17" ; "Q10864048" = "P131"} # Lake
     "Q4022"      = @{ "Q5107" = "P30" ; "Q3624078" = "P17" ; "Q10864048" = "P131"} # River
     "Q8502"      = @{ "Q5107" = "P30" ; "Q3624078" = "P17" ; "Q10864048" = "P131"} # Mountain
+    "Q20162172"  = @{ "Q5107" = "x"   ; "Q3624078" = "x"   ; "Q10864048" = "x"   } # Language
+    "Q1288568"   = @{ "Q5107" = "x"   ; "Q3624078" = "x"   ; "Q10864048" = "x"   } # Modern Language
 }
 
 # Limits & Processing Settings
