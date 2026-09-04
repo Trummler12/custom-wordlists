@@ -16,22 +16,26 @@
 // maps to Oceania rather than being dropped, because Fiji and Vanuatu carry only
 // it; Eurasia (Q5401) is dropped, its one bearer already listed under both halves.
 //
-// THREE FORMAL LABELS GET A SHORT NAME. Wikidata's label for China, the
-// Netherlands and Denmark is the formal one ("People's Republic of China"); the
-// drawable name is the short one, so those three become a short/long pair and the
-// group defaults to `short`. St. John's has no English label at all and gets one.
-// These are the only hand-set names here — everything else is the dump verbatim.
+// NAMES COME FROM THE DUMP, BUCKETED. Each language's Wikidata forms bucket into
+// pref/short/long/others (see bucket-names.mjs). Where Wikidata's label is a formal or
+// realm title (China, the Kingdoms of the Netherlands and Denmark) or missing (St. John's),
+// name-overrides.json asserts the common drawable name — the only hand-set names here.
 //
-// SOVEREIGNTY & RECOGNITION, A 2D MATRIX (C10). Beyond the 197 sovereign states the
-// dump yields, the lists carry territories placed in a matrix: de-jure recognition
-// (row) × de-facto control (column). Each non-regular cell is one `icon:"sovereignty"`
-// rule, so the frontend shows them as a grid the reader fills as a staircase; the
-// default staircase splits them into `omittable` (shown) and `omitted` (hidden). See
-// CELLS. The already present trio (Kosovo, Taiwan, Palestine) is only placed; the
-// rest are English-only placeholders (`?` for the other eight languages), filled by
-// the later geonames round so no name is typed twice. The trio also carry through to
-// the capitals (their capitals are in the dump); the placeholder territories have no
-// capital yet, so the rest of the capitals wait for that same round.
+// TWO LANGUAGE SETS. Names are harvested for NAME_LANGS — skribbl's full set — so the data
+// is ready in every language the picker may later offer; the app's CONTENT_LANGS still gates
+// what a reader can pick, so the extra ones lie dormant. The locale-like strings (titles,
+// tier conditions, ruler tooltips, sovereignty/coverage reasons, continent names) stay on the
+// smaller LANGS and fall back to English, until the interface itself grows into them.
+//
+// SOVEREIGNTY & RECOGNITION, A 2D MATRIX (C10). Beyond the UN sovereign states the dump
+// yields, the lists carry the curated territories (sovereign-territories.json) placed in a
+// matrix: de-jure recognition (row) × de-facto control (column). Each non-regular cell is
+// one `icon:"sovereignty"` rule, so the frontend shows them as a grid the reader fills as a
+// staircase; the default staircase splits them into `omittable` (shown) and `omitted`
+// (hidden). See CELLS. The recognised trio (Kosovo, Taiwan, Palestine) are already sovereign
+// states in the dump, so they take only their cell; the rest are their own entries, their
+// names harvested from Wikidata like every other. The trio's capitals are in the dump and
+// carry the cell through; the other territories' capitals stay out of the capitals lists.
 //
 // GEOGUESSR / STREET VIEW COVERAGE. Two more omittable rules, tagged with the
 // Pegman icon so the frontend shows them as a three-level radio (all / with
@@ -44,16 +48,75 @@ import { readFile, writeFile, mkdir } from "node:fs/promises";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 import { serializeTopic } from "../lib/serialize.mjs";
-import { bucketCountry, commonEn } from "./bucket-names.mjs";
+import { bucketLangWiki } from "./bucket-names.mjs";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..", "..");
 const RAW = join(ROOT, "data-raw", "geography");
 const OUT = join(ROOT, "data", "topics", "geography", "human");
 
+// The locale-like languages: the ones whose *strings* (titles, tier conditions, ruler
+// tooltips, sovereignty/coverage reasons, continent names) this script writes by hand.
+// Kept small on purpose — these are UI text, and grow with the interface, not the data.
 const LANGS = ["en", "de", "es", "fr", "it", "ja", "ko", "zh-Hans", "zh-Hant"];
+// The word-list output languages: skribbl's full set, so a country/capital *name* is
+// harvested for every language the picker may later offer. A superset of LANGS. Names
+// only — declaring a language here carries its names into the data, but the app's
+// CONTENT_LANGS still gates what a reader can pick, so the extra ones sit dormant until
+// the interface grows into them (see docs/Language-Roadmap.md, src/locale CONTENT_LANGS).
+const NAME_LANGS = [
+  ...LANGS,
+  "pt", "ru", "tr", "pl", "nl", "bg", "cs", "da", "et", "fi", "el", "he",
+  "hu", "lv", "mk", "no", "ro", "sr", "sk", "sv", "tl",
+];
 const TODAY = new Date().toISOString().slice(0, 10);
 
-/** P30 item → our folder. Insular Oceania folds into Oceania (see header); Eurasia
+/** Our content tag => the Wikidata tags to read it from, first hit wins. Wikidata files a
+ *  Chinese name under any of zh / zh-cn / zh-tw / … as readily as under the explicit
+ *  zh-hans / zh-hant, so the script slot needs a fallback chain; Norwegian rides nb/nn,
+ *  and Portuguese/Tagalog their regional siblings. The rest are 1:1. */
+const LANG_SRC = {
+  en: ["en"], de: ["de"], es: ["es"], fr: ["fr"], it: ["it"], ja: ["ja"], ko: ["ko"],
+  "zh-Hans": ["zh-hans", "zh-cn", "zh-sg", "zh-my", "zh"],
+  "zh-Hant": ["zh-hant", "zh-tw", "zh-hk", "zh-mo"],
+  pt: ["pt", "pt-br", "pt-pt"], ru: ["ru"], tr: ["tr"], pl: ["pl"], nl: ["nl"],
+  bg: ["bg"], cs: ["cs"], da: ["da"], et: ["et"], fi: ["fi"], el: ["el"], he: ["he"],
+  hu: ["hu"], lv: ["lv"], mk: ["mk"], no: ["no", "nb", "nn"], ro: ["ro"], sr: ["sr"],
+  sk: ["sk"], sv: ["sv"], tl: ["tl", "fil"],
+};
+const pickLang = (names, tag) => {
+  for (const s of LANG_SRC[tag]) if (names?.[s]?.length) return names[s];
+  return undefined;
+};
+
+/** One entity's dumped names (per Wikidata tag) bucketed into our content tags. `keep` is the
+ *  abbreviation whitelist (USA, UK) that survives the code filter. */
+const bucketWiki = (names, keep) => {
+  const out = {};
+  for (const lang of NAME_LANGS) {
+    const v = bucketLangWiki(pickLang(names, lang), keep);
+    if (v !== undefined) out[lang] = v;
+  }
+  return out;
+};
+
+/** The English name a bucketed entity draws by, for matching the coverage/recognition lists. */
+const enNameOf = (b) => {
+  const en = b?.en;
+  if (en === undefined) return undefined;
+  return typeof en === "string" ? en : en.pref ?? en.short ?? en.long;
+};
+
+/** Every English form of a bucketed entity — pref, short, long and others — since the
+ *  coverage lists spell a country however geohints happens to ({pref:"Czechia",
+ *  long:"Czech Republic"} must still match the "Czech Republic" line). */
+const enForms = (b) => {
+  const en = b?.en;
+  if (en === undefined) return [];
+  if (typeof en === "string") return [en];
+  return [en.pref, en.short, en.long, ...(en.others ?? [])].filter((s) => s !== undefined);
+};
+
+/** P30 item => our folder. Insular Oceania folds into Oceania (see header); Eurasia
  *  is absent on purpose, so it drops. */
 const CONTINENT = {
   Q15: "africa",
@@ -194,17 +257,6 @@ const RULER_CAPITALS = {
     ko: "해당 국가의 인구순 정렬.",
   },
 };
-
-/** Names the dump is missing outright — St. John's carries no English label. The
- *  formal-label states (China, Netherlands, Denmark) need no override anymore: the
- *  geonames bucket picks their common name as `pref` on its own. */
-const NAME_OVERRIDE = { "Q36262.en": "St. John's" };
-
-/** Structure rows the Wikidata dump left without an ISO code, mapped by hand so they
- *  still reach their geonames names: the Kingdom of Denmark (Q756617) carries none —
- *  the code belongs to Denmark proper. */
-const ISO_OVERRIDE = { Q756617: "DK" };
-
 
 /** The icon key that groups the sovereignty cells into one matrix control. */
 const SOVEREIGNTY = "sovereignty";
@@ -403,18 +455,6 @@ function coverageRules(items) {
   return rules;
 }
 
-async function readColumns(dir) {
-  const out = {};
-  for (const lang of LANGS) {
-    const text = await readFile(join(RAW, dir, `${lang}.txt`), "utf8");
-    for (const row of text.split(/\r?\n/).filter(Boolean)) {
-      const [key, name] = row.split("\t");
-      (out[key] ??= {})[lang] = name;
-    }
-  }
-  return out;
-}
-
 async function readStructure() {
   const text = await readFile(join(RAW, "countries", "structure.tsv"), "utf8");
   return text
@@ -436,6 +476,9 @@ async function readStructure() {
 
 async function readContinentNames() {
   const out = {};
+  // Locale languages only: the continent-name dump carries the 9 (its 28-language
+  // re-dump rides with the continents & plates batch), and the category title is
+  // locale-like text, so the app falls back to English for the rest.
   for (const lang of LANGS) {
     const text = await readFile(join(RAW, "continents", `${lang}.txt`), "utf8");
     for (const row of text.split(/\r?\n/).filter(Boolean)) {
@@ -446,37 +489,13 @@ async function readContinentNames() {
   return out;
 }
 
-/** A localized name map for one item, with the keys equal to English dropped and a
- *  `?` listing the languages it has no name in — the shape the dump produced for
- *  the continents. `shortByLang` (only the three formal states) turns each language
- *  into a short/long pair. */
-function entry(qid, names, shortByLang) {
-  const map = {};
-  const unknown = [];
-  for (const lang of LANGS) {
-    const long = NAME_OVERRIDE[`${qid}.${lang}`] ?? names?.[lang];
-    if (!long) {
-      unknown.push(lang);
-      continue;
-    }
-    const short = shortByLang?.[lang];
-    map[lang] = short && short !== long ? { short, long } : long;
-  }
-  if (map.en === undefined) throw new Error(`no English name for ${qid}`);
-  for (const lang of LANGS) {
-    if (lang !== "en" && JSON.stringify(map[lang]) === JSON.stringify(map.en)) delete map[lang];
-  }
-  if (unknown.length) map["?"] = unknown;
-  return map;
-}
-
 function topic(id, title, tiers, sources, rulerTooltip, omitted, omittable, defaultNames = "short") {
   return {
     id,
     title,
     // ja-Latn is offered but not sourced: the reader opts into romaji and the app
     // derives it from the Japanese name at render (see generatedRomaji / lib/kana).
-    languages: LANGS.flatMap((l) => (l === "ja" ? ["ja", "ja-Latn"] : [l])),
+    languages: NAME_LANGS.flatMap((l) => (l === "ja" ? ["ja", "ja-Latn"] : [l])),
     generatedRomaji: true,
     sources,
     lastUpdated: TODAY,
@@ -494,45 +513,48 @@ function topic(id, title, tiers, sources, rulerTooltip, omitted, omittable, defa
 }
 
 const SRC_COUNTRIES = [
-  "Names & variants: geonames country info and alternate names — https://www.geonames.org/countries/ (see scripts/geography/dump-geonames.mjs)",
-  "Population & tiers: Wikidata sovereign states (P31 Q3624078) — https://www.wikidata.org/wiki/Q3624078 (see scripts/geography/dump-country-data.mjs)",
+  "Names & variants: Wikidata labels, official names (P1448) and short names (P1813) — https://www.wikidata.org/wiki/Q3624078 (see scripts/geography/dump-country-data.mjs)",
+  "Population & tiers: Wikidata sovereign states (P1082 on P31 Q3624078) — https://www.wikidata.org/wiki/Q3624078 (see scripts/geography/dump-country-data.mjs)",
 ];
 const SRC_CAPITALS = [
-  "Names: Wikidata capitals (P36) of the sovereign states — https://www.wikidata.org/wiki/Property:P36 (see scripts/geography/dump-country-data.mjs)",
-  "Variants: geonames alternate names, linked via Wikidata GeoNames id (P1566) — https://www.geonames.org (see scripts/geography/dump-capital-geonames.mjs)",
+  "Names & variants: Wikidata labels, official and short names of the capitals (P36) — https://www.wikidata.org/wiki/Property:P36 (see scripts/geography/dump-country-data.mjs)",
 ];
 
 async function main() {
   const structure = await readStructure();
-  const countryNames = await readColumns("countries");
-  const capitalNames = await readColumns(join("countries", "capitals"));
+  const countryNames = JSON.parse(await readFile(join(RAW, "countries", "country-names.json"), "utf8"));
+  const capitalNames = JSON.parse(await readFile(join(RAW, "countries", "capital-names.json"), "utf8"));
   const continentNames = await readContinentNames();
   const official = await readOfficial();
-  const geo = JSON.parse(await readFile(join(RAW, "countries", "geonames-names.json"), "utf8"));
-  // geonames alternate names per capital QID (via Wikidata P1566 → getJSON), the
-  // capitals' equivalent of the country dump. The Wikidata label stays the pref; these
-  // add the short and the other spellings. See dump-capital-geonames.mjs.
-  const capGeo = JSON.parse(await readFile(join(RAW, "countries", "capital-geonames-names.json"), "utf8"));
+  // Curated overrides for entities whose Wikidata label is a formal/realm title or missing
+  // (name-overrides.json), keyed by Q-id then content tag. See its _comment.
+  const OVERRIDE = Object.fromEntries(
+    Object.entries(JSON.parse(await readFile(join(RAW, "countries", "name-overrides.json"), "utf8"))).filter(
+      ([k]) => k !== "_comment",
+    ),
+  );
+  // Abbreviations that survive the code filter: the legit ones (name-abbreviations.json) that
+  // also read as a word — 3+ letters, letters only, so U.S. / HK / UK stay out of the lists.
+  const KEEP = new Set(
+    JSON.parse(await readFile(join(RAW, "countries", "name-abbreviations.json"), "utf8")).legit.filter((s) =>
+      /^\p{Lu}{3,}$/u.test(s),
+    ),
+  );
 
-  // geonames names per country QID, bucketed into pref/short/long/others and matched
-  // to the Wikidata dump by ISO code. The names come from geonames — richer, several
-  // variants per language; population, tiers and continents stay Wikidata's.
-  const geoBucketByQid = new Map();
-  for (const c of structure) {
-    const iso = ISO_OVERRIDE[c.country] ?? c.iso;
-    if (iso && geo[iso]) geoBucketByQid.set(c.country, bucketCountry(geo[iso].names, iso, LANGS));
-  }
+  // Every dumped entity's names bucketed into pref/short/long/others per content language.
+  const bucketByQid = new Map();
+  for (const [qid, v] of Object.entries(countryNames)) bucketByQid.set(qid, bucketWiki(v.names, KEEP));
+  const capBucketByQid = new Map();
+  for (const [qid, v] of Object.entries(capitalNames)) capBucketByQid.set(qid, bucketWiki(v.names, KEEP));
 
-  /** A country's localized entry: names from its geonames bucket, the Wikidata dump as
-   *  the per-language fallback, languages equal to English dropped and the missing ones
-   *  listed under `?` — the same shape `entry` makes. */
-  const countryEntry = (qid) => {
-    const geoB = geoBucketByQid.get(qid);
-    const wiki = countryNames[qid];
+  /** A localized name map for one bucketed item: OVERRIDE wins, else the bucket; languages
+   *  equal to English dropped, the missing ones listed under `?`. */
+  const localized = (qid, buckets) => {
+    const b = buckets.get(qid) ?? {};
     const map = {};
     const unknown = [];
-    for (const lang of LANGS) {
-      const v = geoB?.[lang] ?? NAME_OVERRIDE[`${qid}.${lang}`] ?? wiki?.[lang];
+    for (const lang of NAME_LANGS) {
+      const v = OVERRIDE[qid]?.[lang] ?? b[lang];
       if (v === undefined || v === "") {
         unknown.push(lang);
         continue;
@@ -540,123 +562,72 @@ async function main() {
       map[lang] = v;
     }
     if (map.en === undefined) throw new Error(`no English name for ${qid}`);
-    for (const lang of LANGS) {
+    for (const lang of NAME_LANGS) {
       if (lang !== "en" && JSON.stringify(map[lang]) === JSON.stringify(map.en)) delete map[lang];
     }
     if (unknown.length) map["?"] = unknown;
     return map;
   };
+  const countryEntry = (qid) => localized(qid, bucketByQid);
 
-  /** The common English name for matching against the coverage and recognition lists:
-   *  the geonames English pref, or the Wikidata English name where geonames has none. */
-  const commonEnOf = (c) => commonEn(geoBucketByQid.get(c.country)) ?? countryNames[c.country]?.en;
+  // The English name (and every English form) a country matches the coverage/recognition
+  // lists by — OVERRIDE's common name (China's "China") winning over the bucket's formal label.
+  const bucketEn = (qid) => (OVERRIDE[qid]?.en !== undefined ? { en: OVERRIDE[qid].en } : bucketByQid.get(qid));
+  const commonEnOf = (c) => enNameOf(bucketEn(c.country));
+  const enFormsOf = (qid) => enForms(bucketEn(qid));
 
-  /** Every English form of a country — pref, short, long and the others — for matching
-   *  against the coverage lists, which spell a country however geohints happens to
-   *  ({pref:"Czechia", long:"Czech Republic"} must match the "Czech Republic" line). */
-  const enFormsOf = (c) => {
-    const en = geoBucketByQid.get(c.country)?.en;
-    if (en === undefined) {
-      const w = countryNames[c.country]?.en;
-      return w ? [w] : [];
-    }
-    if (typeof en === "string") return [en];
-    const others = en.others === undefined ? [] : Array.isArray(en.others) ? en.others : [en.others];
-    return [en.pref, en.short, en.long, ...others].filter((s) => s !== undefined);
-  };
-
-  // Territories beyond the ISO sovereign states (sovereign-territories.json), each placed
-  // in one C10 cell. Names come from geonames: by ISO from the country dump, or by
-  // geonameId from the territory dump for the six non-ISO ones. The recognised trio are
-  // already countries in the dump, so they take only their cell.
+  // Territories beyond the UN sovereign states (sovereign-territories.json, keyed by Q-id),
+  // each placed in one C10 cell. Names come from the same Wikidata dump; territory-structure
+  // adds each one's population and capital. The recognised trio are already sovereign states
+  // in the dump, so they take only their cell.
   const TERRITORIES = Object.fromEntries(
     Object.entries(JSON.parse(await readFile(join(RAW, "countries", "sovereign-territories.json"), "utf8"))).filter(
       ([k]) => k !== "_comment",
     ),
   );
-  const TERR_NAMES = JSON.parse(await readFile(join(RAW, "countries", "geonames-territories.json"), "utf8"));
-  const structureIsos = new Set(structure.map((c) => c.iso).filter(Boolean));
-  const isExisting = (m) => Boolean(m.iso && structureIsos.has(m.iso));
+  const terrStruct = {};
+  for (const line of (await readFile(join(RAW, "countries", "territory-structure.tsv"), "utf8")).split(/\r?\n/)) {
+    if (!line || line.startsWith("#")) continue;
+    const [q, pop, cap] = line.split("\t");
+    terrStruct[q] = { pop: pop ? Number(pop) : null, capital: cap || null };
+  }
+  const structureQids = new Set(structure.map((c) => c.country));
+  const isExisting = (qid) => structureQids.has(qid); // the trio are already sovereign states
   const territoriesOf = (folder) => Object.entries(TERRITORIES).filter(([, m]) => m.folder === folder);
-  const territoryPop = (m) => m.pop ?? (m.iso ? geo[m.iso]?.population : undefined) ?? 0;
+  const territoryPop = (qid, m) => m.pop ?? terrStruct[qid]?.pop ?? 0;
 
-  /** A territory's English forms — its curated name plus the geonames English variants —
-   *  for matching against the coverage lists, the same way `enFormsOf` does for a country. */
-  const territoryEnForms = (name, m) => {
-    const names = m.iso ? geo[m.iso]?.names : TERR_NAMES[m.geonameId]?.names;
-    const en = (names ? bucketCountry(names, m.iso ?? String(m.geonameId), LANGS) : {}).en;
-    const forms =
-      en === undefined
-        ? []
-        : typeof en === "string"
-          ? [en]
-          : [en.pref, en.short, en.long, ...(en.others ?? [])].filter((s) => s !== undefined);
-    return [name, ...forms.filter((n) => n !== name)];
-  };
+  /** A territory's English forms — its curated name plus Wikidata's English variants — for
+   *  matching against the coverage lists, the same way `enFormsOf` does for a country. */
+  const territoryEnForms = (qid, m) => [m.en, ...enForms(bucketByQid.get(qid)).filter((n) => n !== m.en)];
 
-  /** A territory's localized entry: the curated file key is the English name (geonames
-   *  labels Iraqi Kurdistan "Kurdistan" and Transnistria with its formal title), while
-   *  geonames supplies the other languages and the English variants (as `others`). */
-  const territoryEntry = (name, m) => {
-    const names = m.iso ? geo[m.iso]?.names : TERR_NAMES[m.geonameId]?.names;
-    const bucket = names ? bucketCountry(names, m.iso ?? String(m.geonameId), LANGS) : {};
-    const geoEn = bucket.en;
-    const enForms =
-      geoEn === undefined
-        ? []
-        : typeof geoEn === "string"
-          ? [geoEn]
-          : [geoEn.pref, geoEn.short, geoEn.long, ...(geoEn.others ?? [])].filter((s) => s !== undefined);
-    const extraEn = [...new Set(enForms.filter((n) => n !== name))];
-    const map = { en: extraEn.length ? { pref: name, others: extraEn } : name };
+  /** A territory's localized entry: the curated `en` is the drawable name (Wikidata labels
+   *  Iraqi Kurdistan "Kurdistan" and Transnistria with its formal title), its other English
+   *  forms trailing as `others`; every other language comes from the bucket. */
+  const territoryEntry = (qid, m) => {
+    const b = bucketByQid.get(qid) ?? {};
+    const extraEn = [...new Set(enForms(b).filter((n) => n !== m.en))];
+    const map = { en: extraEn.length ? { pref: m.en, others: extraEn } : m.en };
     const unknown = [];
-    for (const lang of LANGS) {
+    for (const lang of NAME_LANGS) {
       if (lang === "en") continue;
-      const v = bucket[lang];
+      const v = b[lang];
       if (v === undefined || v === "") {
         unknown.push(lang);
         continue;
       }
       map[lang] = v;
     }
-    for (const lang of LANGS) {
+    for (const lang of NAME_LANGS) {
       if (lang !== "en" && JSON.stringify(map[lang]) === JSON.stringify(map.en)) delete map[lang];
     }
     if (unknown.length) map["?"] = unknown;
     return map;
   };
 
-  /** A capital's localized entry: the Wikidata label is the pref in each language —
-   *  the drawable common name, unchanged — while geonames adds the short (where it
-   *  flags one) and the other spellings (Peking, Kiew, Washington, D.C.) as `others`,
-   *  surfaced by the `all` mode. Key-anchored like a territory, so enrichment never
-   *  moves the default name. Where a language has no label the geonames preferred name
-   *  stands in; where geonames has no entry at all (South Tarawa) the label is alone. */
-  const capitalEntry = (qid) => {
-    const geoNames = capGeo[qid]?.names ?? {};
-    const map = {};
-    const unknown = [];
-    for (const lang of LANGS) {
-      const variants = geoNames[lang] ?? [];
-      const pref = NAME_OVERRIDE[`${qid}.${lang}`] ?? capitalNames[qid]?.[lang] ?? variants.find((e) => e.pref)?.name ?? variants[0]?.name;
-      if (!pref) {
-        unknown.push(lang);
-        continue;
-      }
-      const short = variants.find((e) => e.short && e.name !== pref)?.name;
-      const others = [...new Set(variants.map((e) => e.name).filter((n) => n !== pref && n !== short))];
-      const pair = { pref };
-      if (short) pair.short = short;
-      if (others.length) pair.others = others;
-      map[lang] = pair.short || pair.others ? pair : pref;
-    }
-    if (map.en === undefined) throw new Error(`no English name for capital ${qid}`);
-    for (const lang of LANGS) {
-      if (lang !== "en" && JSON.stringify(map[lang]) === JSON.stringify(map.en)) delete map[lang];
-    }
-    if (unknown.length) map["?"] = unknown;
-    return map;
-  };
+  /** A capital's localized entry: the same bucketing as a country — the Wikidata label the
+   *  pref, its official/short forms filling short/long, the rest `others`. */
+  const capitalEntry = (qid) => localized(qid, capBucketByQid);
+  const capEnOf = (qid) => enNameOf(OVERRIDE[qid]?.en !== undefined ? { en: OVERRIDE[qid].en } : capBucketByQid.get(qid));
 
   // Each country to every continent it spans, deduplicated (Q538 and Q55643 both
   // map to oceania), sorted by population within a continent.
@@ -690,10 +661,10 @@ async function main() {
 
     // Real countries plus this continent's non-country territories, tiered by population
     // together — a territory then shows in its true band.
-    const newTerritories = territoriesOf(folder).filter(([, m]) => !isExisting(m));
+    const newTerritories = territoriesOf(folder).filter(([qid]) => !isExisting(qid));
     const items = [
       ...list.map((c) => ({ pop: c.pop, make: () => countryEntry(c.country) })),
-      ...newTerritories.map(([n, m]) => ({ pop: territoryPop(m), make: () => territoryEntry(n, m) })),
+      ...newTerritories.map(([qid, m]) => ({ pop: territoryPop(qid, m), make: () => territoryEntry(qid, m) })),
     ].sort((a, b) => b.pop - a.pop);
     const countryTiers = [[], [], [], [], []];
     for (const it of items) countryTiers[tierOf(it.pop)].push(it.make());
@@ -701,7 +672,7 @@ async function main() {
     // Coverage: each real country is fully covered, only sparsely (rare), or not at
     // all. The official list gives covered-or-not; the rare hand list overrides to
     // "covered but thin". Only none and rare become rules; the capitals inherit them,
-    // matched on the capital's own name (from the country → capital mapping).
+    // matched on the capital's own name (from the country => capital mapping).
     const classOfForms = (forms) => {
       if (forms.some((n) => RARE_COVERAGE.has(n))) return "rare";
       return forms.some((n) => official.has(n)) ? "full" : "none";
@@ -709,8 +680,8 @@ async function main() {
     // Countries and this continent's new territories alike: each is fully covered, only
     // sparsely (rare), or not at all. Territories carry no capital yet, so an empty list.
     const covSubjects = [
-      ...list.map((c) => ({ forms: enFormsOf(c), nm: commonEnOf(c), caps: c.capitals })),
-      ...newTerritories.map(([n, m]) => ({ forms: territoryEnForms(n, m), nm: n, caps: [] })),
+      ...list.map((c) => ({ forms: enFormsOf(c.country), nm: commonEnOf(c), caps: c.capitals })),
+      ...newTerritories.map(([qid, m]) => ({ forms: territoryEnForms(qid, m), nm: m.en, caps: [] })),
     ];
     const filtered = covSubjects
       .map((s) => ({ ...s, cls: classOfForms(s.forms) }))
@@ -719,7 +690,7 @@ async function main() {
     const capItems = [];
     for (const x of filtered) {
       for (const cap of x.caps) {
-        const nm = capitalNames[cap]?.en;
+        const nm = capEnOf(cap);
         if (nm) capItems.push({ match: nm, rare: x.cls === "rare" });
       }
     }
@@ -728,9 +699,8 @@ async function main() {
     // Sovereignty rules: every territory in this continent, matched by its English name
     // (a new territory's file key, the trio's common country name), sorted into the cells.
     const sovNames = {};
-    for (const [n, m] of territoriesOf(folder)) {
-      const c = isExisting(m) ? list.find((x) => x.iso === m.iso) : undefined;
-      (sovNames[m.cell] ??= []).push(c ? commonEnOf(c) : n);
+    for (const [qid, m] of territoriesOf(folder)) {
+      (sovNames[m.cell] ??= []).push(isExisting(qid) ? enNameOf(bucketEn(qid)) : m.en);
     }
     const { omitted, omittable } = cellRules(sovNames);
     await write(join(dir, "countries.json"), topic(`${folder}-countries`, T_COUNTRIES, countryTiers, SRC_COUNTRIES, RULER_COUNTRIES, omitted, [...omittable, ...covCountry], "pref"));
@@ -739,11 +709,11 @@ async function main() {
     // capital in the data — the placeholders have none yet — so the capitals carry
     // just those, matched on the capital's name, under the same cell as the country.
     const capSov = {};
-    for (const [, m] of territoriesOf(folder)) {
-      if (!isExisting(m)) continue; // only the trio have a capital in the dump
-      const c = list.find((x) => x.iso === m.iso);
+    for (const [qid, m] of territoriesOf(folder)) {
+      if (!isExisting(qid)) continue; // only the trio have a capital in the dump
+      const c = list.find((x) => x.country === qid);
       for (const cap of c?.capitals ?? []) {
-        const capNm = capitalNames[cap]?.en;
+        const capNm = capEnOf(cap);
         if (capNm) (capSov[m.cell] ??= []).push(capNm);
       }
     }

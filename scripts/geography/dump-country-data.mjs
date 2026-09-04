@@ -1,41 +1,27 @@
-// Writes data-raw/geography/countries/ — the raw material for the Countries and
-// Capitals topics.
+// Writes data-raw/geography/countries/ — the raw material for the Countries and Capitals
+// topics, harvested from Wikidata.
 //
 //   node scripts/geography/dump-country-data.mjs
 //
-// WHICH ITEMS. `wdt:P31 wd:Q3624078` (sovereign state), minus anything carrying a
-// dissolution date (`P576`) — the class holds the Russian Empire and its like, and
-// "still exists" is the whole difference between them and the 197 the UN counts.
-// That is the line "List of countries of the world" draws too; Greenland and
-// Puerto Rico are deliberately outside it and get added back later as an omission
-// rule, not here.
+// structure.tsv carries the numbers — ISO, population, continent, which capital belongs to
+// which country — split from the names so a new population estimate is a one-line diff.
+// Membership is sovereign states (P31 Q3624078) still in existence (no dissolution date
+// P576), the line "List of countries of the world" draws too; Greenland and Puerto Rico sit
+// outside it and are added back later as an omission rule, not here.
 //
-// TWO NAMES THE BUILD FIXES, NOT THE DUMP. Wikidata tags only the realm, "Kingdom
-// of Denmark" (Q756617), as the sovereign state — Q35 "Denmark" is a constituent
-// country — so the drawable short name is an override there. And St. John's
-// (Q36262, Antigua's capital) has no English label at all. Both are display
-// decisions, so they live in build-country-data.mjs beside the continent picks.
+// country-names.json / capital-names.json are the faithful raw picture, keyed by Q-id: every
+// term Wikidata carries — rdfs:label (pref), skos:altLabel (alias), P1448 (official), P1813
+// (short) — for every language skribbl supports (base-tag filter, so zh / zh-hans / zh-cn,
+// pt / pt-br all ride in on their base). Nothing is filtered here on purpose: the build
+// decides which forms count and which languages it targets, so a missing or odd tag stays
+// visible in the raw file for report-name-quality.mjs to flag. Casing and the one-continent
+// pick are the build's job too (build-country-data.mjs), as with the elements.
 //
-// KEYED BY Q-ID, NOT BY NAME. Every file below is keyed on the Wikidata item, the
-// one identifier that survives translation: `countries/<lang>.txt` maps the
-// country item to its name, `capitals/<lang>.txt` the capital item to its. A
-// capital has no ISO code and some share a name across countries, so a
-// language-invariant key has to be the item — and using it for both files keeps
-// the join between them a single kind of lookup.
-//
-// STRUCTURE AND NAMES APART. structure.tsv carries the numbers — population,
-// continent, which capital belongs to which country — and the name files carry
-// the names, so a new population estimate is a one-line diff instead of a churn
-// across 197 x 9 name columns. Same split as the plate and element dumps.
-//
-// CONTINENT IS RAW HERE. `P30` gives Turkey and Russia two values each, and the
-// five Pacific states a spurious "Insular Oceania" beside "Oceania". The dump
-// records every value as given; picking exactly one per country is the build
-// script's job (build-country-data.mjs), where the two genuine cases can be named.
-//
-// CASE IS THE SOURCE'S. English labels arrive as Wikidata's house style writes
-// them; the build script decides casing, as with the elements.
-import { mkdir, writeFile } from "node:fs/promises";
+// CURATED TERRITORIES TOO. The matrix territories (sovereign-territories.json, keyed by Q-id)
+// that are not UN sovereign states are harvested alongside, so their names come from Wikidata
+// like every other. territory-structure.tsv adds each one's population and capital, the
+// numbers the build needs beside the names.
+import { mkdir, writeFile, readFile } from "node:fs/promises";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -44,26 +30,12 @@ const OUT = join(ROOT, "data-raw", "geography", "countries");
 const ENDPOINT = "https://query.wikidata.org/sparql";
 const UA = { "User-Agent": "custom-wordlists/1.0 (https://github.com/Trummler12/custom-wordlists)" };
 
-/** Our spelling → Wikidata's, which lower-cases script subtags (`zh-Hans` →
- *  `zh-hans`). The nine content languages, same set as the other geography dumps. */
-const LANGS = {
-  en: "en",
-  de: "de",
-  es: "es",
-  fr: "fr",
-  it: "it",
-  ja: "ja",
-  ko: "ko",
-  "zh-Hans": "zh-hans",
-  "zh-Hant": "zh-hant",
-};
+const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
-const LANG_LIST = Object.values(LANGS).map((l) => `"${l}"`).join(", ");
-
-/** One row per country: ISO code, population, and the continents and capitals as
- *  they stand. `SAMPLE` collapses the odd country that ranks two population figures
- *  equally; `GROUP_CONCAT` keeps every continent and capital, since dropping either
- *  is a decision the build makes with the values in hand, not one to lose here. */
+/** One row per country: ISO code, population, and the continents and capitals as they
+ *  stand. `SAMPLE` collapses the odd country ranking two population figures equally;
+ *  `GROUP_CONCAT` keeps every continent and capital, since dropping either is a decision
+ *  the build makes with the values in hand, not one to lose here. */
 const STRUCTURE = `SELECT ?country
   (SAMPLE(?iso) AS ?isoCode)
   (SAMPLE(?pop) AS ?population)
@@ -77,49 +49,99 @@ const STRUCTURE = `SELECT ?country
   OPTIONAL { ?country wdt:P36 ?capital. }
 } GROUP BY ?country`;
 
-/** Labels for the countries themselves. */
-const COUNTRY_LABELS = `SELECT ?country ?lang (SAMPLE(?label) AS ?name) WHERE {
-  ?country wdt:P31 wd:Q3624078 ; rdfs:label ?label .
-  FILTER NOT EXISTS { ?country wdt:P576 []. }
-  BIND(LANG(?label) AS ?lang)
-  FILTER(?lang IN (${LANG_LIST}))
-} GROUP BY ?country ?lang`;
+/** The languages skribbl officially supports (plus Chinese, a content language for the
+ *  lists). The query keeps any Wikidata tag whose base is one of these, so script and
+ *  regional variants (zh-hans, zh-cn, pt-br, sr-latn, nb) all come along. */
+const SKRIBBL = [
+  "en", "de", "bg", "cs", "da", "nl", "fi", "fr", "et", "el", "he", "hu", "it", "ja", "ko",
+  "lv", "mk", "nb", "nn", "no", "pt", "pl", "ro", "ru", "sr", "sk", "es", "sv", "tl", "tr", "zh",
+];
 
-/** Labels for every capital any sovereign state names. */
-const CAPITAL_LABELS = `SELECT ?capital ?lang (SAMPLE(?label) AS ?name) WHERE {
-  ?country wdt:P31 wd:Q3624078 ; wdt:P36 ?capital .
-  FILTER NOT EXISTS { ?country wdt:P576 []. }
-  ?capital rdfs:label ?label .
-  BIND(LANG(?label) AS ?lang)
-  FILTER(?lang IN (${LANG_LIST}))
-} GROUP BY ?capital ?lang`;
+/** Every term for a chunk of items in the supported languages. `pref`/`official`/`short` are
+ *  the flags the bucketer reads; `alias` (skos:altLabel) rides along unflagged for the report
+ *  and transparency. The language sits on each term's tag. */
+const NAMES = (values) => `SELECT ?item ?lang ?term ?type WHERE {
+  VALUES ?item { ${values} }
+  { ?item rdfs:label ?term. BIND("pref" AS ?type) }
+  UNION { ?item skos:altLabel ?term. BIND("alias" AS ?type) }
+  UNION { ?item wdt:P1448 ?term. BIND("official" AS ?type) }
+  UNION { ?item wdt:P1813 ?term. BIND("short" AS ?type) }
+  BIND(LANG(?term) AS ?lang)
+  FILTER(REGEX(?lang, "^(${SKRIBBL.join("|")})(-|$)"))
+}`;
 
-async function query(sparql) {
+/** SPARQL GET with retry on the transient statuses query.wikidata.org throws under load. */
+async function query(sparql, tries = 5) {
   const url = `${ENDPOINT}?format=json&query=${encodeURIComponent(sparql)}`;
-  const res = await fetch(url, { headers: UA });
-  if (!res.ok) throw new Error(`HTTP ${res.status} ${res.statusText}`);
-  return (await res.json()).results.bindings;
+  for (let attempt = 1; ; attempt++) {
+    let res;
+    try {
+      res = await fetch(url, { headers: UA });
+    } catch (err) {
+      if (attempt >= tries) throw err;
+      await sleep(attempt * 2000);
+      continue;
+    }
+    if (res.ok) return (await res.json()).results.bindings;
+    if (attempt >= tries || ![429, 500, 502, 503, 504].includes(res.status)) {
+      throw new Error(`HTTP ${res.status} ${res.statusText}`);
+    }
+    await sleep(attempt * 2000);
+  }
 }
 
 /** `Q…` from a Wikidata entity URI. */
 const qid = (uri) => uri.replace(/^.*\/entity\//, "");
 
-/** `<item> ⇥ <label>` per line, one file per language, rows in `order`. The name
- *  files' shape, shared with the plate and element dumps. `keyVar` is the SPARQL
- *  variable holding the item — `country` or `capital`. */
-async function writeLabels(dir, rows, keyVar, order, total) {
-  await mkdir(dir, { recursive: true });
-  const rank = new Map(order.map((k, i) => [k, i]));
-  for (const [tag, wdLang] of Object.entries(LANGS)) {
-    const lines = rows
-      .filter((r) => r.lang.value === wdLang)
-      .map((r) => [qid(r[keyVar].value), r.name.value])
-      .filter(([k]) => rank.has(k))
-      .sort((a, b) => rank.get(a[0]) - rank.get(b[0]))
-      .map(([k, name]) => `${k}\t${name}`);
-    await writeFile(join(dir, `${tag}.txt`), lines.join("\n") + "\n", "utf8");
-    console.log(`  ${tag.padEnd(8)} ${String(lines.length).padStart(3)} of ${total}`);
+/** Fetch names for `qids` in chunks small enough to keep each query well under the endpoint's
+ *  limits, and fold them into `{ qid: { names: { lang: [{ name, pref?, official?, short? }] } } }`
+ *  in `order`. A name seen under several flags (Germany's "Deutschland" is pref and short)
+ *  becomes one entry carrying both. */
+async function dumpNames(qids, order, chunk = 20) {
+  const byItem = {};
+  for (let i = 0; i < qids.length; i += chunk) {
+    const values = qids.slice(i, i + chunk).map((q) => `wd:${q}`).join(" ");
+    const rows = await query(NAMES(values));
+    for (const r of rows) {
+      const lang = r.lang.value;
+      if (!lang) continue; // an untagged monolingual value is unusable without a language
+      const item = qid(r.item.value);
+      const langMap = (byItem[item] ??= {});
+      const nameMap = (langMap[lang] ??= {});
+      const entry = (nameMap[r.term.value] ??= { name: r.term.value });
+      entry[r.type.value] = true;
+    }
+    process.stdout.write(`  ${Math.min(i + chunk, qids.length)}/${qids.length}\r`);
+    await sleep(300);
   }
+  const out = {};
+  for (const q of order) {
+    const langMap = byItem[q] ?? {};
+    const names = {};
+    for (const lang of Object.keys(langMap).sort()) names[lang] = Object.values(langMap[lang]);
+    out[q] = { names };
+  }
+  return out;
+}
+
+/** The curated territories (sovereign-territories.json, keyed by Q-id), each with the
+ *  population (P1082) and capital (P36) Wikidata carries — the numbers the build needs
+ *  beside the names, so it holds no source but this and the curated cell/continent. */
+async function territories() {
+  const curated = JSON.parse(await readFile(join(OUT, "sovereign-territories.json"), "utf8"));
+  delete curated._comment;
+  const qids = Object.keys(curated);
+  const rows = await query(`SELECT ?item (SAMPLE(?pop) AS ?population) (SAMPLE(?cap) AS ?capital) WHERE {
+    VALUES ?item { ${qids.map((q) => "wd:" + q).join(" ")} }
+    OPTIONAL { ?item wdt:P1082 ?pop } OPTIONAL { ?item wdt:P36 ?cap }
+  } GROUP BY ?item`);
+  const byQid = {};
+  for (const r of rows) byQid[qid(r.item.value)] = r;
+  return qids.map((q) => ({
+    qid: q,
+    pop: byQid[q]?.population ? Number(byQid[q].population.value) : null,
+    capital: byQid[q]?.capital ? qid(byQid[q].capital.value) : null,
+  }));
 }
 
 async function main() {
@@ -127,8 +149,8 @@ async function main() {
 
   // --- Structure, and the country order everything else follows ---------------
   const structure = await query(STRUCTURE);
-  // Descending by population, so the file already reads in tier order and the
-  // build cuts thresholds down a sorted list. Missing population sorts last.
+  // Descending by population, so the file already reads in tier order and the build cuts
+  // thresholds down a sorted list. Missing population sorts last.
   const ranked = structure
     .map((r) => ({
       country: qid(r.country.value),
@@ -149,15 +171,27 @@ async function main() {
   );
   console.log(`countries — ${ranked.length}`);
 
-  // --- Names ------------------------------------------------------------------
-  const order = ranked.map((c) => c.country);
-  await writeLabels(OUT, await query(COUNTRY_LABELS), "country", order, ranked.length);
+  // --- Territories: population and capital for the curated matrix entries ------
+  const terr = await territories();
+  await writeFile(
+    join(OUT, "territory-structure.tsv"),
+    "# qid\tpopulation (P1082)\tcapital (P36)\n" +
+      terr.map((t) => [t.qid, t.pop ?? "", t.capital ?? ""].join("\t")).join("\n") + "\n",
+    "utf8",
+  );
+  console.log(`territories — ${terr.length}`);
 
-  // Capitals in the same country order, each country's capitals adjacent; a
-  // country with two contributes both, in P36 order.
-  const capitalOrder = [...new Set(ranked.flatMap((c) => c.capitals))];
+  // --- Names: sovereign states and territories share one file, keyed by Q-id ---
+  const countryOrder = [...new Set([...ranked.map((c) => c.country), ...terr.map((t) => t.qid)])];
+  const countryNames = await dumpNames(countryOrder, countryOrder);
+  await writeFile(join(OUT, "country-names.json"), JSON.stringify(countryNames, null, 2) + "\n", "utf8");
+
+  // Capitals in the same order, each country's capitals adjacent; a country with two
+  // contributes both, in P36 order. Territory capitals follow.
+  const capitalOrder = [...new Set([...ranked.flatMap((c) => c.capitals), ...terr.map((t) => t.capital).filter(Boolean)])];
   console.log(`capitals — ${capitalOrder.length}`);
-  await writeLabels(join(OUT, "capitals"), await query(CAPITAL_LABELS), "capital", capitalOrder, capitalOrder.length);
+  const capitalNames = await dumpNames(capitalOrder, capitalOrder);
+  await writeFile(join(OUT, "capital-names.json"), JSON.stringify(capitalNames, null, 2) + "\n", "utf8");
 }
 
 main().catch((err) => {

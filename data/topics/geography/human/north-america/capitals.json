@@ -1,19 +1,16 @@
 {
   "id": "north-america-capitals",
   "title": {"en":"Capitals","de":"Hauptstädte","es":"Capitales","fr":"Capitales","it":"Capitali","ja":"首都","ko":"수도","zh-Hans":"首都","zh-Hant":"首都"},
-  "languages": ["en","de","es","fr","it","ja","ja-Latn","ko","zh-Hans","zh-Hant"],
+  "languages": ["en","de","es","fr","it","ja","ja-Latn","ko","zh-Hans","zh-Hant","pt","ru","tr","pl","nl","bg","cs","da","et","fi","el","he","hu","lv","mk","no","ro","sr","sk","sv","tl"],
   "generatedRomaji": true,
-  "sources": [
-    "Names: Wikidata capitals (P36) of the sovereign states — https://www.wikidata.org/wiki/Property:P36 (see scripts/geography/dump-country-data.mjs)",
-    "Variants: geonames alternate names, linked via Wikidata GeoNames id (P1566) — https://www.geonames.org (see scripts/geography/dump-capital-geonames.mjs)"
-  ],
-  "lastUpdated": "2026-08-26",
-  "lastChecked": "2026-08-26",
+  "sources": ["Names & variants: Wikidata labels, official and short names of the capitals (P36) — https://www.wikidata.org/wiki/Property:P36 (see scripts/geography/dump-country-data.mjs)"],
+  "lastUpdated": "2026-09-02",
+  "lastChecked": "2026-09-02",
   "defaultNames": "pref",
   "omittable": [
     {
       "id": "no-coverage",
-      "match": ["Basseterre","Belmopan","Bridgetown","Castries","Havana","Kingston","Kingstown","Managua","Nassau","Port of Spain","Port-au-Prince","Roseau","San Salvador","St. George's","Tegucigalpa"],
+      "match": ["Basseterre","Belmopan","Bridgetown","Castries","Havana","Kingston","Kingstown","Managua","Nassau","Port of Spain","Port-au-Prince","Roseau","San Salvador","St. George's","St. John's","Tegucigalpa"],
       "count": true,
       "icon": "geoguessr",
       "reason": {
@@ -29,41 +26,41 @@
   ],
   "tiers": [
     [
-      {"en":"Washington, D.C.","es":"Washington D. C.","fr":"Washington","it":"Washington","ja":"ワシントンD.C.","ko":"워싱턴 D.C.","zh-Hans":"华盛顿哥伦比亚特区","zh-Hant":"華盛頓哥倫比亞特區"},
-      {"en":"Mexico City","de":"Mexiko-Stadt","es":{"pref":"Ciudad de México","others":["El DF"]},"fr":"Mexico","it":"Città del Messico","ja":"メキシコシティ","ko":"멕시코시티","zh-Hans":{"pref":"墨西哥城","others":["墨西哥城市"]},"zh-Hant":"墨西哥城"}
+      {"en":{"pref":"Washington, D.C.","short":"Washington","long":"Washington, District of Columbia"},"de":"Washington, D.C.","es":"Washington D. C.","fr":"Washington","it":"Washington","ja":"ワシントンD.C.","ko":"워싱턴 D.C.","zh-Hans":"华盛顿哥伦比亚特区","zh-Hant":"華盛頓哥倫比亞特區","pt":"Washington, D.C.","ru":"Вашингтон","tr":"Washington","pl":"Waszyngton","nl":"Washington D.C.","bg":"Вашингтон","cs":"Washington, D.C.","da":"Washington D.C.","et":"Washington","fi":"Washington","el":"Ουάσινγκτον","he":"וושינגטון די. סי.","hu":"Washington","lv":"Vašingtona","mk":"Вашингтон","no":"Washington D.C.","ro":"Washington, D.C.","sr":"Вашингтон","sk":"Washington D.C.","sv":"Washington, D.C.","tl":"Washington, D.C."},
+      {"en":"Mexico City","de":"Mexiko-Stadt","es":{"pref":"Ciudad de México","short":"CDMX"},"fr":"Mexico","it":"Città del Messico","ja":"メキシコシティ","ko":"멕시코시티","zh-Hans":"墨西哥城","zh-Hant":"墨西哥城","pt":"Cidade do México","ru":"Мехико","tr":"Meksiko","pl":"Meksyk","nl":"Mexico-Stad","bg":"Мексико","cs":"Ciudad de México","et":"México","fi":"México","el":"Πόλη του Μεξικού","he":"מקסיקו סיטי","hu":"Mexikóváros","lv":"Mehiko","mk":"Мексико","no":"Mexico by","ro":"Ciudad de México","sr":"Мексико Сити","sk":"Mexiko","tl":"Lungsod ng Mehiko"}
     ],
 
     [
-      {"en":"Ottawa","ja":"オタワ","ko":"오타와","zh-Hans":"渥太华","zh-Hant":"渥太華"}
+      {"en":{"pref":"Ottawa","long":"City of Ottawa"},"de":"Ottawa","es":"Ottawa","fr":"Ottawa","it":"Ottawa","ja":"オタワ","ko":"오타와","zh-Hans":"渥太华","zh-Hant":"渥太華","pt":"Ottawa","ru":"Оттава","tr":"Ottawa","pl":"Ottawa","nl":"Ottawa","bg":"Отава","cs":"Ottawa","da":"Ottawa","et":"Ottawa","fi":"Ottawa","el":"Οττάβα","he":"אוטווה","hu":"Ottawa","lv":"Otava","mk":"Отава","no":"Ottawa","ro":"Ottawa","sr":"Отава","sk":"Ottawa","sv":"Ottawa","tl":"Ottawa"}
     ],
 
     [
-      {"en":"Guatemala City","de":"Guatemala-Stadt","es":"Ciudad de Guatemala","fr":"Guatemala","it":"Città del Guatemala","ja":"グアテマラシティ","ko":"과테말라시티","zh-Hans":"危地马拉城","zh-Hant":"瓜地馬拉市"},
-      {"en":"Havana","de":"Havanna","es":"La Habana","fr":"La Havane","it":"L'Avana","ja":"ハバナ","ko":"아바나","zh-Hans":"哈瓦那","zh-Hant":"哈瓦那"},
-      {"en":"Port-au-Prince","es":"Puerto Príncipe","fr":{"pref":"Port-au-Prince","others":["Commune de Port-au-Prince"]},"ja":"ポルトープランス","ko":"포르토프랭스","zh-Hant":"太子港","?":["zh-Hans"]},
-      {"en":{"pref":"Santo Domingo","others":["Santo Domingo City"]},"de":"Santo Domingo","es":"Santo Domingo","fr":{"pref":"Saint-Domingue","others":["Saint Domingue"]},"it":"Santo Domingo","ja":"サント・ドミンゴ","ko":"산토도밍고","zh-Hans":{"pref":"圣多明哥","others":["聖多明哥"]},"zh-Hant":"聖多明哥"},
-      {"en":"Tegucigalpa","ja":"テグシガルパ","ko":"테구시갈파","zh-Hans":{"pref":"特古西加尔巴","others":["德古斯加巴"]},"zh-Hant":"德古西加巴"},
-      {"en":"San Salvador","fr":{"pref":"San Salvador","others":["Salvador"]},"ja":"サンサルバドル","ko":"산살바도르","zh-Hans":"圣萨尔瓦多","zh-Hant":"聖薩爾瓦多"},
-      {"en":"San José","de":{"pref":"San José","others":["San Jose"]},"ja":"サンホセ","ko":"산호세","zh-Hans":"圣何塞","zh-Hant":"聖荷西"},
-      {"en":"Managua","es":{"pref":"Managua","others":["Municipio de Managua"]},"ja":"マナグア","ko":"마나과","zh-Hant":"馬納瓜","?":["zh-Hans"]}
+      {"en":"Guatemala City","de":"Guatemala-Stadt","es":"Ciudad de Guatemala","fr":"Guatemala","it":"Città del Guatemala","ja":"グアテマラシティ","ko":"과테말라시티","zh-Hans":"危地马拉城","zh-Hant":"瓜地馬拉市","pt":"Cidade da Guatemala","ru":"Гватемала","tr":"Guatemala","pl":"Gwatemala","nl":"Guatemala-Stad","bg":"Гватемала","cs":"Ciudad de Guatemala","da":"Guatamala City","et":"Guatemala","fi":"Guatemala","el":"πόλη της Γουατεμάλας","he":"גואטמלה סיטי","hu":"Guatemalaváros","lv":"Gvatemala","mk":"Гватемала","no":"Guatemala by","ro":"Ciudad de Guatemala","sr":"Град Гватемала","sk":"Guatemala","tl":"Lungsod ng Guatemala"},
+      {"en":"Havana","de":"Havanna","es":"La Habana","fr":"La Havane","it":"L'Avana","ja":"ハバナ","ko":"아바나","zh-Hans":"哈瓦那","zh-Hant":"哈瓦那","ru":"Гавана","pl":"Hawana","bg":"Хавана","et":"Havanna","fi":"Havanna","el":"Αβάνα","he":"הוואנה","hu":"Havanna","mk":"Хавана","no":"Havanna","sr":"Хавана","sv":"Havanna","tl":"Abana"},
+      {"en":"Port-au-Prince","es":"Puerto Príncipe","fr":{"pref":"Port-au-Prince","short":"PAP"},"ja":"ポルトープランス","ko":"포르토프랭스","zh-Hans":"太子港","zh-Hant":"太子港","pt":"Porto Príncipe","ru":"Порт-о-Пренс","bg":"Порт о Пренс","el":"Πορ-ω-Πρενς","he":"פורט-או-פרנס","lv":"Portoprensa","mk":"Порт о Пренс","sr":"Порт о Пренс"},
+      {"en":"Santo Domingo","fr":"Saint-Domingue","ja":"サント・ドミンゴ","ko":"산토도밍고","zh-Hans":"圣多明哥","zh-Hant":"聖多明哥","pt":"São Domingos","ru":"Санто-Доминго","bg":"Санто Доминго","el":"Σάντο Ντομίγκο","he":"סנטו דומינגו","lv":"Santodomingo","mk":"Санто Доминго","sr":"Санто Доминго","tl":"Santo Domingo, Republikang Dominikano"},
+      {"en":"Tegucigalpa","ja":"テグシガルパ","ko":"테구시갈파","zh-Hans":"特古西加尔巴","zh-Hant":"德古西加巴","ru":"Тегусигальпа","bg":"Тегусигалпа","el":"Τεγκουσιγκάλπα","he":"טגוסיגלפה","lv":"Tegusigalpa","mk":"Тегусигалпа","sr":"Тегусигалпа"},
+      {"en":"San Salvador","ja":"サンサルバドル","ko":"산살바도르","zh-Hans":"圣萨尔瓦多","zh-Hant":"聖薩爾瓦多","ru":"Сан-Сальвадор","bg":"Сан Салвадор","el":"Σαν Σαλβαδόρ","he":"סן סלוודור","lv":"Sansalvadora","mk":"Сан Салвадор","sr":"Сан Салвадор"},
+      {"en":"San José","ja":"サンホセ","ko":"산호세","zh-Hans":"圣何塞","zh-Hant":"聖荷西","ru":"Сан-Хосе","bg":"Сан Хосе","el":"Σαν Χοσέ","he":"סן חוסה","lv":"Sanhosē","mk":"Сан Хосе","sr":"Сан Хосе","tl":"San José, Costa Rica"},
+      {"en":"Managua","ja":"マナグア","ko":"마나과","zh-Hans":"马那瓜","zh-Hant":"馬納瓜","ru":"Манагуа","bg":"Манагуа","el":"Μανάγκουα","he":"מנגואה","mk":"Манагва","sr":"Манагва"}
     ],
 
     [
-      {"en":"Panama City","de":"Panama-Stadt","es":{"pref":"Ciudad de Panamá","others":["Panamá"]},"fr":{"pref":"Panama","others":["Panamá"]},"it":{"pref":"Panama","others":["Panamá"]},"ja":{"pref":"パナマ市","others":["パナマシティ"]},"ko":{"pref":"파나마시티","others":["파나마 시"]},"zh-Hans":"巴拿马城","zh-Hant":"巴拿馬城"},
-      {"en":"Kingston","ja":"キングストン","ko":"킹스턴","zh-Hans":{"pref":"金斯敦","others":["京斯敦"]},"zh-Hant":"京斯敦"},
-      {"en":"Port of Spain","de":{"pref":"Port of Spain","others":["Port-of-Spain"]},"es":"Puerto España","fr":"Port-d'Espagne","ja":"ポートオブスペイン","ko":{"pref":"포트오브스페인","others":["포트 오브 스페인"]},"zh-Hans":"西班牙港","zh-Hant":"西班牙港"}
+      {"en":"Panama City","de":"Panama-Stadt","es":{"pref":"Ciudad de Panamá","short":"Panamá"},"fr":"Panama","it":"Panama","ja":"パナマ市","ko":"파나마시티","zh-Hans":"巴拿马城","zh-Hant":"巴拿馬城","pt":"Cidade do Panamá","ru":"Панама","tr":"Panama","pl":"Panama","nl":"Panama-Stad","bg":"Панама","cs":"Panamá","et":"Panamá","fi":"Panamá","el":"Πόλη του Παναμά","he":"פנמה סיטי","hu":"Panamaváros","lv":"Panama","mk":"Панама","no":"Panama by","ro":"Ciudad de Panamá","sr":"Панама","sk":"Panama","tl":"Lungsod ng Panama"},
+      {"en":"Kingston","ja":"キングストン","ko":"킹스턴","zh-Hans":"金斯敦","zh-Hant":"京斯敦","ru":"Кингстон","bg":"Кингстън","el":"Κίνγκστον","he":"קינגסטון","lv":"Kingstona","mk":"Кингстон","sr":"Кингстон"},
+      {"en":"Port of Spain","es":"Puerto España","fr":"Port-d'Espagne","ja":"ポートオブスペイン","ko":"포트오브스페인","zh-Hans":"西班牙港","zh-Hant":"西班牙港","ru":"Порт-оф-Спейн","bg":"Порт ъф Спейн","da":"Port-of-Spain","el":"Πορτ-οφ-Σπέιν","he":"פורט אוף ספיין","lv":"Portofspeina","mk":"Порт оф Спејн","sr":"Порт ов Спејн","tl":"Puwerto Espanya"}
     ],
 
     [
-      {"en":"Belmopan","es":"Belmopán","ja":"ベルモパン","ko":"벨모판","zh-Hans":"贝尔墨邦","zh-Hant":"貝爾墨邦"},
-      {"en":"Nassau","es":"Nasáu","ja":"ナッソー","ko":{"pref":"나소","others":["나사우"]},"zh-Hans":"拿骚","zh-Hant":"拿騷"},
-      {"en":"Bridgetown","ja":"ブリッジタウン","ko":"브리지타운","zh-Hant":"橋鎮","?":["zh-Hans"]},
-      {"en":"Castries","ja":"カストリーズ","ko":"캐스트리스","zh-Hans":"卡斯特里","zh-Hant":"卡斯特里"},
-      {"en":{"pref":"St. George's","others":["Saint George's"]},"de":{"pref":"St. George’s","others":["St. George's"]},"es":{"pref":"Saint George","others":["Saint George's"]},"fr":"Saint-Georges","it":{"pref":"Saint George's","others":["St. George's"]},"ja":"セントジョージズ","ko":"세인트조지스","?":["zh-Hans","zh-Hant"]},
-      {"en":"Kingstown","ja":"キングスタウン","ko":"킹스타운","zh-Hans":"金斯敦","?":["zh-Hant"]},
-      {"en":{"pref":"St. John's","others":["Saint John's","St John's"]},"de":"Saint John's","es":{"pref":"Saint John","others":["Saint John's"]},"fr":"Saint John's","it":"Saint John's","ja":{"pref":"セイント・ジョンズ","others":["セントジョンズ"]},"ko":"세인트존스","zh-Hans":"圣约翰","?":["zh-Hant"]},
-      {"en":"Roseau","ja":"ロゾー","ko":"로조","zh-Hans":"罗索","zh-Hant":{"pref":"羅梭","others":["羅索"]}},
-      {"en":"Basseterre","ja":"バセテール","ko":"바스테르","zh-Hans":"巴斯特尔","?":["zh-Hant"]}
+      {"en":"Belmopan","es":"Belmopán","ja":"ベルモパン","ko":"벨모판","zh-Hans":"贝尔墨邦","zh-Hant":"貝爾墨邦","ru":"Бельмопан","tr":"Belmopán","bg":"Белмопан","el":"Μπελμοπάν","he":"בלמופן","lv":"Belmopana","mk":"Белмопан","sr":"Белмопан"},
+      {"en":"Nassau","es":"Nasáu","ja":"ナッソー","ko":"나소","zh-Hans":"拿骚","zh-Hant":"拿騷","ru":"Нассау","bg":"Насау","el":"Νασσάου","he":"נסאו","lv":"Naso","mk":"Насау","sr":"Насау"},
+      {"en":"Bridgetown","ja":"ブリッジタウン","ko":"브리지타운","zh-Hans":"布里奇顿","zh-Hant":"橋鎮","ru":"Бриджтаун","bg":"Бриджтаун","el":"Μπριτζτάουν","he":"ברידג'טאון","lv":"Bridžtauna","mk":"Бриџтаун","sr":"Бриџтаун"},
+      {"en":"Castries","ja":"カストリーズ","ko":"캐스트리스","zh-Hans":"卡斯特里","zh-Hant":"卡斯特里","ru":"Кастри","bg":"Кастрийс","el":"Κάστρις","he":"קסטריז","lv":"Kastri","mk":"Кастри","sr":"Кастри"},
+      {"en":"St. George's","de":"St. George’s","es":"Saint George","fr":"Saint-Georges","it":"Saint George's","ja":"セントジョージズ","ko":"세인트조지스","zh-Hans":"圣乔治","pt":"São Jorge","ru":"Сент-Джорджес","tr":"Saint George's","pl":"Saint George's","nl":"Saint George's","bg":"Сейнт Джорджис","da":"Saint George's","et":"Saint George’s","fi":"St. George’s","el":"Σαιντ Τζόρτζις","he":"סנט ג'ורג'","hu":"St. George’s","lv":"Sentdžordžesa","mk":"Сент Џорџ","ro":"Saint George's","sr":"Сент Џорџиз","sk":"Saint George’s","sv":"Saint George's","?":["zh-Hant"]},
+      {"en":"Kingstown","ja":"キングスタウン","ko":"킹스타운","zh-Hans":"金斯敦","ru":"Кингстаун","bg":"Кингстаун","el":"Κίνγκσταουν","he":"קינגסטאון","lv":"Kingstauna","mk":"Кингстаун","sr":"Кингстаун","?":["zh-Hant"]},
+      {"en":"St. John's","de":"Saint John's","es":"Saint John","fr":"Saint John's","it":"Saint John's","ja":"セイント・ジョンズ","ko":"세인트존스","zh-Hans":"圣约翰","zh-Hant":"聖約翰斯","pt":"São João","ru":"Сент-Джонс","pl":"Saint John’s","nl":"Saint John's","bg":"Сейнт Джонс","fi":"St. John’s","el":"Σεντ Τζονς","he":"סנט ג'ונס","hu":"St. John’s","lv":"Sentdžonsa","mk":"Сент Џон","no":"Saint John's","sr":"Сент Џонс","sk":"Saint John’s","sv":"Saint John's, Antigua och Barbuda","?":["tr","da","et","ro","tl"]},
+      {"en":"Roseau","ja":"ロゾー","ko":"로조","zh-Hans":"罗索","zh-Hant":"羅梭","ru":"Розо","bg":"Розо","el":"Ροζό","he":"רוזו","lv":"Rozo","mk":"Розо","sr":"Розо"},
+      {"en":"Basseterre","ja":"バセテール","ko":"바스테르","zh-Hans":"巴斯特尔","ru":"Бастер","bg":"Бастер","el":"Μπαστέρ","he":"באסטר","lv":"Bastera","mk":"Бастер","sr":"Бастер","?":["zh-Hant"]}
     ]
   ],
   "tierConditions": [
