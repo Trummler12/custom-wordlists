@@ -170,6 +170,42 @@ allowed: Natural ∩ (Natural u Dead u Artificial u Historical)
 
 Artificial: 5
 
+### Modern
+
+<Table>
+
+#### Inlclusion Table Counts
+
+**Logic**:
+
+| era ▾ \ vitality ▸ | Living | Dead | Extinct |
+|---|---|---|---|
+| Modern | Natural \ (Dead ∪ Artificial ∪ Historical) | Dead \ (Extinct ∪ Historical) | Extinct \ Historical |
+| Historical | Historical \ (Dead ∪ Proto) | (Historical ∩ Dead) \ (Extinct ∪ Proto) | (Extinct ∩ Historical) \ Proto |
+| Proto | Proto \ Dead | (Proto ∩ Dead) \ Extinct | Proto ∩ Extinct |
+
+**Inclusive**:
+allowed: Natural ∪ (Dead u Artificial u Historical)
+
+| era ▾ \ vitality ▸ | Living | Dead | Extinct |
+|---|---|---|---|
+| Modern | 1213 | 124 | 810 |
+| Historical | 168 | 67 | 61 |
+| Proto | 347 | 2 | 2 |
+
+Artificial: 728
+
+**Exclusive**:
+allowed: Natural ∩ (Natural u Dead u Artificial u Historical)
+
+| era ▾ \ vitality ▸ | Living | Dead | Extinct |
+|---|---|---|---|
+| Modern | 1213 | 15 | 75 |
+| Historical | 16 | 3 | 9 |
+| Proto | 0 | 1 | 0 |
+
+Artificial: 5
+
 ### Large
 
 | Human | Modern | Natural | Dead | Extinct | Artificial | Constructed | Historical | Proto | Count | InspectItems |

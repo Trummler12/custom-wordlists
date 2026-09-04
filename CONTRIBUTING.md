@@ -125,7 +125,7 @@ Confirming that a locale reads fine is just as useful as correcting it, and neit
 ```bash
 npm install
 npm run dev        # dev server (runs build:index first, then vite)
-npm run build      # production build → dist/ (also runs build:index)
+npm run build      # production build => dist/ (also runs build:index)
 npm run validate   # data against the schema + the cross-checks under Option B
 npm run check      # frontend type-check
 npm test           # unit tests — CI runs this as its own gate

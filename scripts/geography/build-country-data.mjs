@@ -116,7 +116,7 @@ const enForms = (b) => {
   return [en.pref, en.short, en.long, ...(en.others ?? [])].filter((s) => s !== undefined);
 };
 
-/** P30 item → our folder. Insular Oceania folds into Oceania (see header); Eurasia
+/** P30 item => our folder. Insular Oceania folds into Oceania (see header); Eurasia
  *  is absent on purpose, so it drops. */
 const CONTINENT = {
   Q15: "africa",
@@ -672,7 +672,7 @@ async function main() {
     // Coverage: each real country is fully covered, only sparsely (rare), or not at
     // all. The official list gives covered-or-not; the rare hand list overrides to
     // "covered but thin". Only none and rare become rules; the capitals inherit them,
-    // matched on the capital's own name (from the country → capital mapping).
+    // matched on the capital's own name (from the country => capital mapping).
     const classOfForms = (forms) => {
       if (forms.some((n) => RARE_COVERAGE.has(n))) return "rare";
       return forms.some((n) => official.has(n)) ? "full" : "none";
