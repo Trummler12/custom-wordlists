@@ -31,7 +31,7 @@ Three npm scripts drive the geography-family topics — Continents & Plates, Lan
 
 | step | npm | scripts |
 | --- | --- | --- |
-| dump | `dump` | `dump-plate-data` · `dump-language-names` · `dump-country-data` — (re)harvest the raw name and number files from the plate sources, umpirsky/CLDR and Wikidata. |
+| dump | `dump` | `dump-plate-data` · `dump-language-data` · `dump-country-data` — (re)harvest the raw name, number and type files from the plate sources and Wikidata. |
 | check | `check:data` | `report-name-quality` — writes `data-raw/geography/name-quality-report.md`, a worklist of Wikidata issues to fix at the source. |
 | build | `build:data` | `build-continents` · `build-languages` · `build-country-data` — fill the topic JSONs from the dumps (`--write` to persist). |
 
