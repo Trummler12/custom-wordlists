@@ -30,6 +30,24 @@ export const UNKNOWN_RULE = UNKNOWN;
  *  be the app deciding what the reader's list is for. */
 export const TOO_LONG_RULE = ">";
 
+/** The icon whose rules form an INCLUDE control rather than a plain exclusion: overlapping,
+ *  default-off, union — an entry is shown as soon as ANY of the rules covering it is ticked
+ *  on (a language can be dead *and* historical, so ticking either brings it in). An entry no
+ *  such rule covers is the base, shown until the base box (below) is switched off. Only the
+ *  languages type panel uses it; coverage and sovereignty stay plain disjoint controls, so
+ *  nothing else changes. */
+export const INCLUDE_ICON = "language-type";
+
+/** The reserved id of an INCLUDE control's base checkbox — the entries no rule covers
+ *  ("living modern" for languages). Not declared in any file, toggled like a rule, but
+ *  default-OFF (the base shows until switched off), the mirror of the reserved rules above. */
+export const BASE_RULE = "~base";
+
+/** The INCLUDE-control rules a group carries (see `INCLUDE_ICON`), or none. */
+export function includeRules(g: Group): Omission[] {
+  return allRules(g).filter((r) => r.icon === INCLUDE_ICON);
+}
+
 /** Every string an entry carries, across all its forms and languages. A rule
  *  matches an entry when any of these does: the junk is localized
  *  (`Data Card 01` / `Datenkarte01`), so a pattern written in one language would
@@ -161,7 +179,20 @@ export function visibleGroup(
     return g;
   }
 
-  const rules = activeRules(g, toggled);
+  const active = activeRules(g, toggled);
+  // The INCLUDE control (the languages type panel) filters by UNION, not the standard
+  // "hidden if any active rule matches": its rules overlap, so an entry is shown as soon
+  // as ONE of the rules covering it is ticked on. It is handled apart from the plain rules
+  // — an entry no include rule covers is the base, shown until its box is switched off.
+  const incl = includeRules(g);
+  const rules = incl.length ? active.filter((r) => r.icon !== INCLUDE_ICON) : active;
+  const baseOff = incl.length > 0 && toggled.includes(BASE_RULE);
+  const included = (e: WordEntry): boolean => {
+    if (incl.length === 0) return true;
+    const forms = entryForms(e);
+    const matched = incl.filter((r) => patternsOf(r).some((re) => forms.some((f) => re.test(f))));
+    return matched.length ? matched.some((r) => toggled.includes(r.id)) : !baseOff;
+  };
   // Over the entries as written (before `keep` prunes them), so an on-by-default
   // rule still reports how many it hides and which — the count and the tooltip.
   const summary = declared ? omissionSummary(g, lang) : undefined;
@@ -169,7 +200,7 @@ export function visibleGroup(
   // English placeholders back says so, and the id in `toggled` is that answer.
   const hideUnknown = unknown > 0 && !toggled.includes(UNKNOWN_RULE);
   const keep = (list: WordEntry[]) =>
-    list.filter((e) => !isOmitted(e, rules) && !(hideUnknown && isUnknownIn(e, lang)));
+    list.filter((e) => included(e) && !isOmitted(e, rules) && !(hideUnknown && isUnknownIn(e, lang)));
   // One `as` per rule that is actually in force; a rule the reader switched back
   // on brings its own entries, and needs no stand-in.
   const standIns = rules.map((r) => r.as).filter((a): a is WordEntry => a !== undefined);

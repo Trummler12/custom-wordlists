@@ -8,7 +8,7 @@ import { loadManifest, loadTopic } from "../lib/data";
 import { buildTree, mergeGroups, synthesizeTopics, titleCase, type CatNode } from "../lib/tree";
 import type { CategoryMeta, Group, Topic, TopicSummary } from "../lib/types";
 import { baseTag, langSupport } from "../lib/languages";
-import { allRules, UNKNOWN_RULE, visibleGroup } from "../lib/omitted";
+import { allRules, BASE_RULE, includeRules, UNKNOWN_RULE, visibleGroup } from "../lib/omitted";
 import { displayName, type DisplayName } from "../lib/words";
 import { settings } from "./settings.svelte";
 import { lang } from "./lang.svelte";
@@ -160,13 +160,13 @@ class TopicsState {
     // shown in English, whatever the picker says — so it has no gaps to hide.
     const picked = lang.contentLang(t.id);
     const code = langSupport(t, baseTag(picked)) === "english" ? "en" : picked;
-    return groups.map((g) =>
-      visibleGroup(
-        g,
-        settings.toggledFor(t.id, g.id, [...allRules(g).map((o) => o.id), UNKNOWN_RULE]),
-        code,
-      ),
-    );
+    return groups.map((g) => {
+      // An INCLUDE control also has a base box (BASE_RULE), toggled like a rule but declared
+      // in no file, so it must be named here for its flip to reach visibleGroup.
+      const ids = [...allRules(g).map((o) => o.id), UNKNOWN_RULE];
+      if (includeRules(g).length) ids.push(BASE_RULE);
+      return visibleGroup(g, settings.toggledFor(t.id, g.id, ids), code);
+    });
   }
 
   /** The one merged group a synthesized topic shows — its contributors' visible
