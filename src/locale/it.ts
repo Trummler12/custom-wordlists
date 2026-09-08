@@ -62,6 +62,15 @@ export const it: UIStrings = {
     withCoverage: "Con copertura ufficiale",
     reliable: "Solo copertura affidabile",
   },
+  languageType: {
+    label: "Quali tipi di lingua includere",
+    base: "Lingue moderne vive",
+    notRecommended: "Poco adatto al disegno informale: assai meno noto di quanto suggerisca il numero di parlanti.",
+    toggle: (included) =>
+      included
+        ? "Spuntato — sono nell'elenco. Togli la spunta per escluderle."
+        : "Spunta per aggiungerle all'elenco.",
+  },
   sovereignty: {
     label: "Sovranità e riconoscimento",
     wiki: "https://it.wikipedia.org/wiki/Stato_a_riconoscimento_limitato",

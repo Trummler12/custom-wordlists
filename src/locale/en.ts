@@ -56,6 +56,15 @@ export const en: UIStrings = {
     withCoverage: "With official coverage",
     reliable: "Reliable coverage only",
   },
+  languageType: {
+    label: "Which language types to include",
+    base: "Living modern languages",
+    notRecommended: "A poor fit for casual drawing: far less familiar than its speaker numbers suggest.",
+    toggle: (included) =>
+      included
+        ? "Ticked — these are in the list. Untick to leave them out."
+        : "Tick to add these to the list.",
+  },
   sovereignty: {
     label: "Sovereignty & recognition",
     wiki: "https://en.wikipedia.org/wiki/List_of_states_with_limited_recognition",

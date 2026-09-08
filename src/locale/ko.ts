@@ -62,6 +62,13 @@ export const ko: UIStrings = {
     withCoverage: "공식 지원 포함",
     reliable: "안정적 지원만",
   },
+  languageType: {
+    label: "포함할 언어 유형",
+    base: "살아 있는 현대 언어",
+    notRecommended: "가벼운 그림 그리기에는 부적합 — 사용자 수에 비해 훨씬 덜 알려져 있습니다.",
+    toggle: (included) =>
+      included ? "선택됨 — 목록에 포함되어 있습니다. 해제하면 제외됩니다." : "선택하면 목록에 추가됩니다.",
+  },
   sovereignty: {
     label: "주권과 승인",
     wiki: "https://ko.wikipedia.org/wiki/미승인_국가_목록",

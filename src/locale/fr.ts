@@ -62,6 +62,15 @@ export const fr: UIStrings = {
     withCoverage: "Avec couverture officielle",
     reliable: "Couverture fiable uniquement",
   },
+  languageType: {
+    label: "Quels types de langues inclure",
+    base: "Langues modernes vivantes",
+    notRecommended: "Peu adapté au dessin détente : bien moins connu que son nombre de locuteurs ne le laisse penser.",
+    toggle: (included) =>
+      included
+        ? "Coché — elles sont dans la liste. Décochez pour les exclure."
+        : "Cochez pour les ajouter à la liste.",
+  },
   sovereignty: {
     label: "Souveraineté et reconnaissance",
     wiki: "https://fr.wikipedia.org/wiki/Liste_des_États_non_reconnus_internationalement",

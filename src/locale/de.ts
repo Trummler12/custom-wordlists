@@ -62,6 +62,15 @@ export const de: UIStrings = {
     withCoverage: "Mit offizieller Abdeckung",
     reliable: "Nur zuverlässige Abdeckung",
   },
+  languageType: {
+    label: "Welche Sprachtypen einbeziehen",
+    base: "Lebende moderne Sprachen",
+    notRecommended: "Für gemütliches Malen wenig geeignet: deutlich unbekannter, als die Sprecherzahl vermuten lässt.",
+    toggle: (included) =>
+      included
+        ? "Angehakt — diese sind in der Liste. Abwählen, um sie wegzulassen."
+        : "Anhaken, um diese zur Liste hinzuzufügen.",
+  },
   sovereignty: {
     label: "Souveränität & Anerkennung",
     wiki: "https://de.wikipedia.org/wiki/Liste_der_Gebiete_mit_begrenzter_Anerkennung_als_Staat",

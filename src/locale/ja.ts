@@ -62,6 +62,13 @@ export const ja: UIStrings = {
     withCoverage: "公式対応あり",
     reliable: "十分な対応のみ",
   },
+  languageType: {
+    label: "含める言語の種類",
+    base: "現代の生きた言語",
+    notRecommended: "カジュアルなお絵描きには不向き — 話者数の割に知名度が低い。",
+    toggle: (included) =>
+      included ? "選択中 — リストに含まれています。外すと除外します。" : "チェックするとリストに追加します。",
+  },
   sovereignty: {
     label: "主権と承認",
     wiki: "https://ja.wikipedia.org/wiki/国家承認を得た国連非加盟の国と地域の一覧",

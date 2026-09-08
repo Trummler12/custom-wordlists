@@ -17,6 +17,7 @@
   import { sovRules } from "../../lib/matrix";
   import CoveragePanel from "./CoveragePanel.svelte";
   import FameDepthSlider from "./FameDepthSlider.svelte";
+  import LanguageTypePanel from "./LanguageTypePanel.svelte";
   import SovereigntyMatrix from "./SovereigntyMatrix.svelte";
   import NamesModeSelect from "./NamesModeSelect.svelte";
   import OmittedPanel from "./OmittedPanel.svelte";
@@ -137,6 +138,9 @@
     {/if}
     {#if sole}
       <OmittedPanel tid={topic.id} group={sole} />
+    {/if}
+    {#if sole}
+      <LanguageTypePanel tid={topic.id} group={sole} />
     {/if}
     {#if coverage}
       <CoveragePanel id={`coverage-${topic.id}`} targets={coverageTargets} />

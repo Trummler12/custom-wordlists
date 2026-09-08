@@ -15,12 +15,20 @@ import { lang } from "./lang.svelte";
  *  A tip has no single host element: its marker and its note are siblings under
  *  whatever row they belong to, so both are named. The note is there for the one
  *  focusable thing a note can hold, the link inviting a romaji correction. */
-type OverlayKind = "lang" | "settings" | "omitted" | "coverage" | "sovereignty" | "tip";
+type OverlayKind =
+  | "lang"
+  | "settings"
+  | "omitted"
+  | "coverage"
+  | "languageType"
+  | "sovereignty"
+  | "tip";
 const HOSTS: Record<OverlayKind, string> = {
   lang: ".lang-picker",
   settings: ".settings-picker",
   omitted: ".omitted-host",
   coverage: ".coverage-host",
+  languageType: ".language-type-host",
   sovereignty: ".sovereignty-host",
   tip: ".tip-trigger, .tip-note",
 };
@@ -41,6 +49,7 @@ class OverlayState {
     settings: null,
     omitted: null,
     coverage: null,
+    languageType: null,
     sovereignty: null,
     tip: null,
   };
@@ -70,6 +79,8 @@ class OverlayState {
   omittedAbove = $state(false);
   /** And for the coverage popup — its own button on the same row. */
   coverageAbove = $state(false);
+  /** And for the language-type panel — its own ☑️ button on the same row. */
+  languageTypeAbove = $state(false);
   /** And for the sovereignty matrix — its own button on the same row. */
   sovereigntyAbove = $state(false);
 
@@ -122,6 +133,21 @@ class OverlayState {
     this.coverageAbove = opensUpward(trigger);
     this.coveragePanel = id;
     this.#remember("coverage", trigger);
+  };
+
+  // --- Language-type panel ---------------------------------------------------
+
+  /** Which list is showing its language-type inclusion checklist, keyed
+   *  `${topicId}:${groupId}` — the ☑️ button's popup, a sibling of the 🚫 panel. */
+  languageTypePanel = $state<string | null>(null);
+  toggleLanguageTypePanel = (id: string, trigger: Element): void => {
+    if (this.languageTypePanel === id) {
+      this.languageTypePanel = null;
+      return;
+    }
+    this.languageTypeAbove = opensUpward(trigger);
+    this.languageTypePanel = id;
+    this.#remember("languageType", trigger);
   };
 
   // --- Sovereignty matrix ----------------------------------------------------
@@ -212,6 +238,7 @@ class OverlayState {
     if (this.settingsMenu && !target?.closest?.(".settings-picker")) this.settingsMenu = null;
     if (this.omittedPanel && !target?.closest?.(".omitted-host")) this.omittedPanel = null;
     if (this.coveragePanel && !target?.closest?.(".coverage-host")) this.coveragePanel = null;
+    if (this.languageTypePanel && !target?.closest?.(".language-type-host")) this.languageTypePanel = null;
     if (this.sovereigntyPanel && !target?.closest?.(".sovereignty-host")) this.sovereigntyPanel = null;
     // Neither on the marker, whose own click toggles, nor inside the note: a note
     // exists to be read, and one carrying a link exists to be clicked — closing it
@@ -247,6 +274,7 @@ class OverlayState {
     else if (kind === "lang") this.langMenu = null;
     else if (kind === "settings") this.settingsMenu = null;
     else if (kind === "coverage") this.coveragePanel = null;
+    else if (kind === "languageType") this.languageTypePanel = null;
     else if (kind === "sovereignty") this.sovereigntyPanel = null;
     else this.omittedPanel = null;
     const back = this.#openers[kind];
@@ -271,6 +299,7 @@ class OverlayState {
     if (this.settingsMenu && inside(HOSTS.settings)) return "settings";
     if (this.omittedPanel && inside(HOSTS.omitted)) return "omitted";
     if (this.coveragePanel && inside(HOSTS.coverage)) return "coverage";
+    if (this.languageTypePanel && inside(HOSTS.languageType)) return "languageType";
     if (this.sovereigntyPanel && inside(HOSTS.sovereignty)) return "sovereignty";
     return null;
   }

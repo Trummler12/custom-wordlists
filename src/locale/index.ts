@@ -114,6 +114,22 @@ export interface CoverageStrings {
   reliable: string;
 }
 
+/** The language-type inclusion panel behind its own ☑️ button: a checklist of the
+ *  Wikidata types a language can carry — dead, dialect, family and so on — each
+ *  default-off, plus a base box for the living modern languages the list shows by
+ *  default. The type labels themselves come from the data (each rule's `reason`),
+ *  so only the frame is here. */
+export interface LanguageTypeStrings {
+  /** Button aria-label and popup heading. */
+  label: string;
+  /** The base checkbox — the living modern languages shown by default. */
+  base: string;
+  /** The 👎 marker's note: a type whose fame lags its speaker numbers. */
+  notRecommended: string;
+  /** A checkbox's hover, on whether ticking it adds the type or removes it. */
+  toggle: (included: boolean) => string;
+}
+
 /** The sovereignty & recognition matrix behind its own ✅ button: a grid of cells,
  *  de-jure recognition down the rows, de-facto control across the columns, that the
  *  reader fills as a top-left-anchored staircase. The cells are named by their row
@@ -250,6 +266,7 @@ export interface UIStrings {
   fame: FameStrings;
   omitted: OmittedStrings;
   coverage: CoverageStrings;
+  languageType: LanguageTypeStrings;
   sovereignty: SovereigntyStrings;
   language: LanguageStrings;
   settings: SettingsStrings;
