@@ -153,6 +153,11 @@
       "items": { "$ref": "#/$defs/locString" }
     },
     "rulerTooltip": { "$ref": "#/$defs/rulerTooltip" },
+    "extendFrom": {
+      "type": "integer",
+      "minimum": 1,
+      "description": "How many top tiers the fame ruler reaches by default. The languages list bottoms out at its ≥ 1M-speaker tiers and hides the long tail below until the reader lifts the cap (the ✅ panel's \"< 1M\" box, the reserved `~extend` toggle). Absent means the whole list is always reachable."
+    },
     "inheritsUpwards": {
       "type": "integer",
       "minimum": 1,

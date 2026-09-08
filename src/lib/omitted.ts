@@ -43,6 +43,12 @@ export const INCLUDE_ICON = "language-type";
  *  default-OFF (the base shows until switched off), the mirror of the reserved rules above. */
 export const BASE_RULE = "~base";
 
+/** The reserved id that extends a capped fame ruler. A group with `extendFrom` keeps only
+ *  its top tiers by default — the languages list bottoms out at ≥ 1M speakers — and this
+ *  toggle unbounds it to the whole list. Default-ON (i.e. capped) like the reserved rules,
+ *  so an untouched list stays capped; toggling it in the reader's choice lifts the cap. */
+export const EXTEND_RULE = "~extend";
+
 /** The INCLUDE-control rules a group carries (see `INCLUDE_ICON`), or none. */
 export function includeRules(g: Group): Omission[] {
   return allRules(g).filter((r) => r.icon === INCLUDE_ICON);
@@ -174,7 +180,10 @@ export function visibleGroup(
   const declared = !!g.omitted?.length || !!g.omittable?.length;
   const byTier = unknownByTier(g, lang);
   const unknown = byTier.reduce((a, b) => a + b, 0);
-  if (!declared && unknown === 0) {
+  // A capped ruler (extendFrom) also gives this group something to do, even with no rule
+  // and no gap — so it can't take the cheap "nothing applies" exit.
+  const capped = g.extendFrom != null && !!g.tiers && !toggled.includes(EXTEND_RULE);
+  if (!declared && unknown === 0 && !capped) {
     byKey.set(key, g);
     return g;
   }
@@ -208,9 +217,15 @@ export function visibleGroup(
   const base: Group = g.tiers
     ? { ...g, tiers: appendToLast(g.tiers.map(keep), standIns) }
     : { ...g, words: [...keep(g.words ?? []), ...standIns] };
+  // A capped ruler drops the tiers past `extendFrom` — the less-famous tail the reader
+  // has not asked for — so the ruler, the counts and the output all bottom out there,
+  // the ruler tooltip reading "1 million or more" rather than "more than 0". Tiers only.
+  const cap = <T>(a: T[] | undefined) => (capped ? a?.slice(0, g.extendFrom) : a);
   const view: Group = {
     ...base,
-    unknownByTier: byTier,
+    ...(capped && base.tiers ? { tiers: cap(base.tiers)! } : {}),
+    unknownByTier: cap(byTier)!,
+    ...(base.tierConditions ? { tierConditions: cap(base.tierConditions)! } : {}),
     ...(summary ? { omissionSummary: summary } : {}),
   };
   byKey.set(key, view);

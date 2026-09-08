@@ -4,6 +4,7 @@ import {
   allRules,
   BASE_RULE,
   entryForms,
+  EXTEND_RULE,
   findOmission,
   globToRegExp,
   INCLUDE_ICON,
@@ -255,6 +256,28 @@ describe("INCLUDE control (union inclusion)", () => {
   it("switches the base off, leaving only the ticked types", () => {
     expect(visibleGroup(langs(), [BASE_RULE, "constructed"]).words).toEqual(["Klingon"]);
     expect(visibleGroup(langs(), [BASE_RULE]).words).toEqual([]);
+  });
+});
+
+describe("extendFrom (a capped fame ruler)", () => {
+  const g = (): Group => ({
+    id: "languages",
+    title: "Languages",
+    tiers: [["English"], ["Welsh"], ["Cornish"]],
+    tierConditions: ["a", "b", "c"],
+    extendFrom: 2,
+  });
+
+  it("keeps only the top tiers — and their conditions — by default", () => {
+    const v = visibleGroup(g(), []);
+    expect(v.tiers).toEqual([["English"], ["Welsh"]]);
+    expect(v.tierConditions).toEqual(["a", "b"]);
+  });
+
+  it("lifts the cap when the extend toggle is on", () => {
+    const v = visibleGroup(g(), [EXTEND_RULE]);
+    expect(v.tiers).toEqual([["English"], ["Welsh"], ["Cornish"]]);
+    expect(v.tierConditions).toEqual(["a", "b", "c"]);
   });
 });
 

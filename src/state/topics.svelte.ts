@@ -8,7 +8,7 @@ import { loadManifest, loadTopic } from "../lib/data";
 import { buildTree, mergeGroups, synthesizeTopics, titleCase, type CatNode } from "../lib/tree";
 import type { CategoryMeta, Group, Topic, TopicSummary } from "../lib/types";
 import { baseTag, langSupport } from "../lib/languages";
-import { allRules, BASE_RULE, includeRules, UNKNOWN_RULE, visibleGroup } from "../lib/omitted";
+import { allRules, BASE_RULE, EXTEND_RULE, includeRules, UNKNOWN_RULE, visibleGroup } from "../lib/omitted";
 import { displayName, type DisplayName } from "../lib/words";
 import { settings } from "./settings.svelte";
 import { lang } from "./lang.svelte";
@@ -32,6 +32,7 @@ function normalizedGroups(data: Topic): Group[] {
       ...(data.tiers ? { tiers: data.tiers } : {}),
       ...(data.tierConditions ? { tierConditions: data.tierConditions } : {}),
       ...(data.rulerTooltip ? { rulerTooltip: data.rulerTooltip } : {}),
+      ...(data.extendFrom !== undefined ? { extendFrom: data.extendFrom } : {}),
     };
     synthGroups.set(data, (cached = [g]));
   }
@@ -161,10 +162,11 @@ class TopicsState {
     const picked = lang.contentLang(t.id);
     const code = langSupport(t, baseTag(picked)) === "english" ? "en" : picked;
     return groups.map((g) => {
-      // An INCLUDE control also has a base box (BASE_RULE), toggled like a rule but declared
-      // in no file, so it must be named here for its flip to reach visibleGroup.
+      // The reserved toggles (base box, ruler-cap lift) are toggled like a rule but declared
+      // in no file, so they must be named here for their flip to reach visibleGroup.
       const ids = [...allRules(g).map((o) => o.id), UNKNOWN_RULE];
       if (includeRules(g).length) ids.push(BASE_RULE);
+      if (g.extendFrom != null) ids.push(EXTEND_RULE);
       return visibleGroup(g, settings.toggledFor(t.id, g.id, ids), code);
     });
   }
