@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { BASE_RULE, includeRules } from "../../lib/omitted";
+  import { BASE_RULE, EXTEND_RULE, includeRules } from "../../lib/omitted";
   import type { Group, Omission } from "../../lib/types";
   import { resolveStr } from "../../lib/words";
   import Msg from "../../locale/html/Msg.svelte";
@@ -38,8 +38,12 @@
   // whose box is ticked is in the list, the base box ticked keeps the base shown.
   const included = (ruleId: string) => !selection.omitting(tid, group, ruleId);
   // The button reads "on" once the reader has changed anything from the default — a type
-  // switched in, or the base switched out.
-  const active = $derived(rules.some((r) => included(r.id)) || !included(BASE_RULE));
+  // switched in, the base switched out, or the ruler's <1M cap lifted.
+  const active = $derived(
+    rules.some((r) => included(r.id)) ||
+      !included(BASE_RULE) ||
+      (group.extendFrom != null && included(EXTEND_RULE)),
+  );
 </script>
 
 {#if rules.length > 0}
@@ -102,6 +106,22 @@
             {/each}
           </ul>
         {/each}
+        <!-- The ruler-range box, apart at the bottom: it lifts the default ≥ 1M cap rather
+             than folding a type in, so it reaches the long tail of every stratum at once. -->
+        {#if group.extendFrom != null}
+          <ul>
+            <li>
+              <label title={lang.ui.languageType.toggle(included(EXTEND_RULE))}>
+                <input
+                  type="checkbox"
+                  checked={included(EXTEND_RULE)}
+                  onchange={() => selection.toggleOmission(tid, group, EXTEND_RULE)}
+                />
+                <span>{lang.ui.languageType.submillion}</span>
+              </label>
+            </li>
+          </ul>
+        {/if}
       </div>
     {/if}
   </div>

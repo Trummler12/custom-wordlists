@@ -124,6 +124,8 @@ export interface LanguageTypeStrings {
   label: string;
   /** The base checkbox — the living modern languages shown by default. */
   base: string;
+  /** The last box: lift the ruler's default ≥ 1M cap to reach the whole list. */
+  submillion: string;
   /** The 👎 marker's note: a type whose fame lags its speaker numbers. */
   notRecommended: string;
   /** A checkbox's hover, on whether ticking it adds the type or removes it. */

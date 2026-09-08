@@ -119,6 +119,9 @@ const typesOf = (flags, code) => TYPES.filter((t) => t.flag(flags, code));
 // a ruler can default to, the rest the long tail a reader opts into. A language with no
 // speaker figure (Latin) tiers last, with a count of 0.
 const CUTS = [100e6, 30e6, 10e6, 3e6, 1e6, 300e3, 100e3, 30e3, 10e3, 3e3, 1e3];
+// How many tiers the ruler reaches by default — down to the million mark (the tiers below
+// are the long tail the reader opts into with the ✅ panel's "< 1M" box). See extendFrom.
+const EXTEND_FROM = CUTS.indexOf(1e6) + 1;
 const tierOf = (spk) => {
   const n = spk ?? 0;
   for (let i = 0; i < CUTS.length; i++) if (n >= CUTS[i]) return i;
@@ -315,6 +318,7 @@ async function main() {
     tiers,
     tierConditions: tierConditions(),
     rulerTooltip: RULER_TOOLTIP,
+    extendFrom: EXTEND_FROM,
   };
 
   const base = langs.filter((l) => !l.types.length).length;

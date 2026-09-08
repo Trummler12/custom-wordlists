@@ -65,6 +65,7 @@ export const it: UIStrings = {
   languageType: {
     label: "Quali tipi di lingua includere",
     base: "Lingue moderne vive",
+    submillion: "Anche lingue con meno di 1 milione di parlanti",
     notRecommended: "Poco adatto al disegno informale: assai meno noto di quanto suggerisca il numero di parlanti.",
     toggle: (included) =>
       included

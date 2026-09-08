@@ -65,6 +65,7 @@ export const ko: UIStrings = {
   languageType: {
     label: "포함할 언어 유형",
     base: "살아 있는 현대 언어",
+    submillion: "사용자 100만 명 미만 언어도 포함",
     notRecommended: "가벼운 그림 그리기에는 부적합 — 사용자 수에 비해 훨씬 덜 알려져 있습니다.",
     toggle: (included) =>
       included ? "선택됨 — 목록에 포함되어 있습니다. 해제하면 제외됩니다." : "선택하면 목록에 추가됩니다.",
