@@ -88,6 +88,10 @@ const FLAG_KEYS = [
  *  earned one, which is what tells a macrolanguage (zh) from a family label (ine). */
 const has639_1 = (code) => code.length === 2;
 
+/** The icon key that groups the type rules into one ✅ inclusion control (like the
+ *  countries' `geoguessr` / `sovereignty`). The frontend resolves it to the panel. */
+const TYPE_ICON = "language-type";
+
 /** The opt-in TYPES, one Wikidata class each — every one its own inclusion checkbox (the
  *  ✅ panel groups them only visually, in L3). A language carries a rule for EVERY type it
  *  matches, not just one: tick "dead" and every dead language comes, Latin (dead + historical)
@@ -283,11 +287,14 @@ async function main() {
 
   // One omitted rule per type that has a member, in TYPES (panel) order. `count` turns on
   // the "up to N" label; the reason reads on from it. All default-off — the reader includes
-  // a type by ticking it; the base is what remains shown when none is ticked.
+  // a type by ticking it; the base is what remains shown when none is ticked. The shared
+  // `icon` lifts them out of the 🚫 panel into their own ✅ inclusion control (union
+  // semantics, a synthesized base checkbox; see the language-type panel in the frontend).
   const omitted = TYPES.filter((t) => match[t.id].length).map((t) => ({
     id: t.id,
     match: match[t.id].slice().sort(),
     count: true,
+    icon: TYPE_ICON,
     reason: t.reason,
   }));
 

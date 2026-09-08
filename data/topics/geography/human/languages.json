@@ -9,14 +9,15 @@
     "Names & variants: Wikidata labels, official names (P1448) and short names (P1813) — https://www.wikidata.org/wiki/Q34770 (see scripts/geography/dump-language-data.mjs)",
     "Speakers & type: Wikidata number of speakers (P1098) and instance/subclass of the modern-language family (P31/P279*) — https://www.wikidata.org/wiki/Q34770 (see scripts/geography/dump-language-data.mjs)"
   ],
-  "lastUpdated": "2026-09-07",
-  "lastChecked": "2026-09-07",
+  "lastUpdated": "2026-09-08",
+  "lastChecked": "2026-09-08",
   "defaultNames": "pref",
   "omitted": [
     {
       "id": "dead",
       "match": ["Anserma","Atsahuaca","Atsugewi","Avestan","Baré","Carabayo","Cumanagota","Giyug","Hulung","Kanoê","Khoekhoe","Laragiya","Latin","Massachusett","Natchez","Ngarrindjeri","Nila","Northern Pomo","Old Prussian","Ouma","Paraujano","Piru","Tagish","Uru","Wangganguru","Wiradjuri","Yauna","Yaygir","Yola","Yugh","Zeem"],
       "count": true,
+      "icon": "language-type",
       "reason": {
         "en": "dead languages with no native speakers left",
         "de": "tote Sprachen ohne Muttersprachler",
@@ -33,6 +34,7 @@
       "id": "extinct",
       "match": ["Anserma","Atsahuaca","Atsugewi","Baré","Carabayo","Cumanagota","Giyug","Hulung","Kanoê","Khoekhoe","Laragiya","Massachusett","Natchez","Ngarrindjeri","Northern Pomo","Old Prussian","Ouma","Paraujano","Piru","Tagish","Uru","Wangganguru","Wiradjuri","Yauna","Yaygir","Yola","Yugh","Zeem"],
       "count": true,
+      "icon": "language-type",
       "reason": {
         "en": "extinct languages, no longer spoken at all",
         "de": "ausgestorbene Sprachen, die niemand mehr spricht",
@@ -49,6 +51,7 @@
       "id": "historical",
       "match": ["Avestan","Church Slavonic","Latin","Pali","Sanskrit","Syriac","Telengit"],
       "count": true,
+      "icon": "language-type",
       "reason": {
         "en": "historical stages of a language, known from the past",
         "de": "historische Sprachstufen, aus der Vergangenheit überliefert",
@@ -65,6 +68,7 @@
       "id": "dialect",
       "match": ["Afro-Seminole Creole","Alemannic","Algerian Arabic","Algherese","Alsatian","American English","Ami","Anguillian Creole","Aranese","Arbëresh","Aru Horchin","Ashti","Assyrian Neo-Aramaic","Asturian","Austrian German","Auvergnat","Bacanese Malay","Bahraini Gulf Arabic","Bajuvi dialect","Balkar dialect","Banawá","Bankal","Banyumasan","Baraba Tatar","Bavarian","Bhoti Kinnauri","Bokmål","Bravanese","Brazilian Portuguese","Brigasc","Bukharian","Burgenland Croatian","Capisnon","Cauqui","Central Atlas Tamazight","Central Pashto","Chaplino","Chelkan","Chipilo Venetian dialect","Ciamis Sundanese","Congo Swahili","Criollo haitiano en Chile","Cypriot Arabic","Cypriot Greek","Dari","Darwazi","Dhalwangu","Dhundari","Digor Ossetian","Drèents","Dungan","Dutch Low Saxon","East Franconian German","East Indian","Eastern Armenian","Eastern Balochi","Eastern Hongshuihe Zhuang","Egyptian Arabic","Emilian","Finnish Kalo","Forest Enets","Gallurese","Gansu Bonan","Gardiol","Gascon","Goan Konkani","Gosiute","Griko","Guemzek","Guernésiais","Guinean Portuguese","Gutnish","Hainanese","Hakka Chinese","Halych-Lutsk Karaim","Hangzhou dialect","Hazaragi","Heiltsuk","Heligolandic North Frisian","Hiberno-English","Hijazi Saudi","Hill Mari","Hindeloopen Frisian","Hokkaido Ainu","Huizhou dialect","Hutterite German","Indramayu Sundanese","Inuinnaqtun","Iranian Persian","Iraqi Arabic","Iron dialect","Ishkashimi","Jalait","Jarut","Judeo-Tat","Jèrriais","Kadar dialect","Kartujarra","Kelantan-Pattani Malay","Keshigten","Khalkha Mongolian","Kharchin","Khetrani","Khorchin","Khufi","Khuzestani Arabic","Kihnu keel","Kiswahili","Kongu Tamil","Koroshi","Kumandin","Kutchi language","Kwanyama","Languedocian","Larantuka Malay","Latgalian","Laura","Levai","Libyan Arabic","Limousin","Lishán Didán","Llanito","Louisiana French","Lummi dialect","Maltese English","Malvani Konkani","Manda","Maore","Mariupolitan Greek","Masovian","Meadow Mari","Medan Hokkien","Meänkieli","Monégasque","Moravian","Moroccan Arabic","Muna","Mwali Comorian","Mòcheno","Narym Southern Selkup","Ndonga","Ndzwani Comorian","Negeri Sembilan Malay","Ngazidja Comorian","Niihau dialect","Noakhali","Nor-Nakhichevan dialect","Norfuk","North Marquesan","Northern Mansi","Northern Pashto","Northern Uzbek","Northwestern Mari","Nubri","Occitan whistled from Aas","Ongniut","Oroshori","Paraguayan Guaraní","Phuthi","Pirahã","Piru","Podlachian","Pong","Prekmurje Slovene","Provençal","Puerto Rican Spanish","Puno Quechua","Putijarra","Pykobjê","Qinghai Bonan","Quebec French","Rakhine","Resian","Ripuarian","Sabah Malay","Saint Kitts Creole","Saint Pierre French","Sanʽani Arabic","Saraiki","Sassarese","Saterland Frisian","Saʽidi Arabic","Sercquiais","Serhedi","Servitka Romani","Seto","Shelta","Shuwa","Silesian German","South Azerbaijani","South Levantine Arabic","Southern Pashto","Southern Uzbek","Southwest Frisian","Standard Malay","Standard Persian","Standard Taiwanese Mandarin","Sudanese Arabic","Surinamese Javanese","Swabian","Swiss German","Sylt North Frisian","Tagalisa","Taiwanese Hokkien","Tajik","Tanapag","Tangshewi","Tarantino","Telengit","Tosk","Trakai Karaim","Trukhmen","Tuba","Tunisian Arabic","Urakhi dialect","Valencian","Võro","Wenzhounese","West Frisian Dutch","Western Abnaki","Western Aragonese","Western Armenian","Western Ligurian","Yola","Yue Chinese","Yulparitja","Yurmaty dialect","Zamboanga Chavacano","Zeelandic","Zuwara Berber","Äynu","Üdzümüchin","Влашский диалект","Иканско-карабулакский диалект","Шёшкупский диалект"],
       "count": true,
+      "icon": "language-type",
       "reason": {
         "en": "dialects of another language",
         "de": "Dialekte einer anderen Sprache",
@@ -81,6 +85,7 @@
       "id": "dialect-group",
       "match": ["Achomi","Alemannic","Balkan Gagauz","Balkan Romani","Baltic Romani","Braj Bhasha","Carpathian Romani","Central-Western Ligurian","Dakhanī","Eastern Balochi","Emilian","Emilian-Romagnol","Finland Swedish","Gutnish","Inuvialuktun","Judeo-Persian","Judeo-Tat","Lachian","Low German","Low Saxon","Luri","Maghrebi Arabic","Neapolitan language","Norman","North Azerbaijani","Persian","Scandoromani","Swiss German","Tuscan","Vlax Romani","Western Azerbaijani dialects","Western Ligurian"],
       "count": true,
+      "icon": "language-type",
       "reason": {
         "en": "groups of dialects",
         "de": "Gruppen von Dialekten",
@@ -97,6 +102,7 @@
       "id": "language-group",
       "match": ["Afroasiatic","Andamanese","Antillean Creole","Arawan","Athabaskan","Atlas (Amazigh)","Australian Aboriginal languages","Austronesian","Awan","Aymaran","Barawa","Benue–Congo","Berber","Bikol","Cajamarca–Cañaris Quechua","Candoshi-Chirino","Cham-Mona","Chicham","Chukotko-Kamchatkan","Coconucan","Czech–Slovak languages","Dravidian","Drèents","Dutch Low Saxon","East Slavic","Eastern Middle Atlas Berber","Eastern Sami","Emilian-Romagnol","Finnic","Frisian","Greek","Guajiboan","Hausa–Gwandara","Hmong–Mien","Indo-European","Indonesian languages","Inuit–Yupik–Unangan","Iroquoian languages","Jivaroan-Cahuapanan","Judaeo-Spanish","Judeo-Berber","Judæo-Italian","Karenic","Khanty","Khoisan","Kola Sámi","Konjo","Lechitic","Lenguas ecuatoriales","Lowland Peruvian Quechua","Macro-Tucanoan","Maghrebi Arabic","Maninka","Mirndi","Mixe","Mixtec","Mixtecan","Mosetenan","Moxo","Munda","Nahuatl","Nenets","Northeast Caucasian","Northern Indo-Aryan","Nubian","Omotic","Pama–Nyungan","Pamir","Pano-Tacanan","Panoan","Papuan","Paresi–Waura","Pomoan","Quechua I","Quechua II","Ronic","Ryukyuan","Saharan","Sanaga","Senufo","Sepik–Ramu","Sino-Tibetan","Slavic","South Bauchi","Southern Quechua","Suppire–Mamara","Sámi","Tacanan","Tanoan","Tati","Tibetic","Tibeto-Burman","Totonac","Trans–New Guinea","Tunen","Tupian","Turkic","Uru–Chipaya","Vietic","Wakashan","West Slavic","Zamucoan","Zapotec","Zenati languages"],
       "count": true,
+      "icon": "language-type",
       "reason": {
         "en": "language groups rather than a single language",
         "de": "Sprachgruppen statt einer einzelnen Sprache",
@@ -113,6 +119,7 @@
       "id": "language-family",
       "match": ["Afroasiatic","Andamanese","Antillean Creole","Arawan","Athabaskan","Atlas (Amazigh)","Australian Aboriginal languages","Austronesian","Awan","Aymaran","Barawa","Benue–Congo","Berber","Bikol","Cajamarca–Cañaris Quechua","Candoshi-Chirino","Cham-Mona","Chicham","Chukotko-Kamchatkan","Coconucan","Dravidian","Drèents","Dutch Low Saxon","East Slavic","Eastern Middle Atlas Berber","Eastern Sami","Emilian-Romagnol","Finnic","Frisian","Greek","Guajiboan","Hausa–Gwandara","Hmong–Mien","Indo-European","Indonesian languages","Inuit–Yupik–Unangan","Iroquoian languages","Jivaroan-Cahuapanan","Judaeo-Spanish","Karenic","Khanty","Khoisan","Konjo","Lechitic","Lenguas ecuatoriales","Lowland Peruvian Quechua","Macro-Tucanoan","Maghrebi Arabic","Mirndi","Mixe","Mixtec","Mixtecan","Mosetenan","Moxo","Munda","Northeast Caucasian","Northern Indo-Aryan","Nubian","Omotic","Pama–Nyungan","Pamir","Pano-Tacanan","Panoan","Paresi–Waura","Pomoan","Quechua I","Quechua II","Ronic","Ryukyuan","Saharan","Sanaga","Senufo","Sepik–Ramu","Sino-Tibetan","Slavic","South Bauchi","Southern Quechua","Suppire–Mamara","Sámi","Tacanan","Tanoan","Tati","Tibeto-Burman","Totonac","Trans–New Guinea","Tupian","Turkic","Uru–Chipaya","Vietic","Wakashan","West Slavic","Zamucoan","Zapotec","Zenati languages"],
       "count": true,
+      "icon": "language-type",
       "reason": {
         "en": "language families rather than a single language",
         "de": "Sprachfamilien statt einer einzelnen Sprache",
@@ -129,6 +136,7 @@
       "id": "constructed",
       "match": ["Eskayan","Esperanto","Ido","Interlingua","Interlingue","Interslavic","Klingon","Kotava","Lingua Franca Nova","Lingwa de Planeta","Novial","Slovio","Toki Pona","Volapük"],
       "count": true,
+      "icon": "language-type",
       "reason": {
         "en": "constructed languages, invented rather than grown",
         "de": "konstruierte Sprachen, erfunden statt gewachsen",
@@ -145,6 +153,7 @@
       "id": "fictional",
       "match": ["Klingon"],
       "count": true,
+      "icon": "language-type",
       "reason": {
         "en": "fictional languages from books, film and games",
         "de": "fiktive Sprachen aus Büchern, Film und Spielen",
