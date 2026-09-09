@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { isTransliterable, toRomaji } from "./kana";
+import { isTransliterable, toRomaji } from "./kana.mjs";
 
 describe("toRomaji", () => {
   it("reads a kana name one syllable at a time", () => {

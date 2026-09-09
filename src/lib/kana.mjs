@@ -1,8 +1,9 @@
 // Kana → Latin script, for the lists no source gives romaji for.
 //
-// Lives in src/ and is imported by BOTH the app (which transliterates at render
-// time) and the codemods under scripts/ — Node reads a .ts directly, so there is
-// one table rather than two that drift.
+// A plain ES module (JSDoc-typed) rather than TypeScript, so the one table serves
+// BOTH the app (which transliterates at render time) and the Node codemods and
+// checks under scripts/ — Node imports .mjs directly, .ts it cannot, so this is the
+// only shape that keeps a single table rather than two that drift.
 //
 // Mostly kana, and kana alone is mechanical: one character, one syllable. The
 // Pokémon items and moves hold no kanji at all — 0 of 2115 and 0 of 919 — so they
@@ -33,8 +34,9 @@
 // ビーダル → Beadaru), and nothing derives them from the kana. Where they exist
 // they win; this fills in only where they don't.
 
-/** Kana → romaji, longest key first at lookup so digraphs beat their halves. */
-const KANA: Record<string, string> = {
+/** Kana → romaji, longest key first at lookup so digraphs beat their halves.
+ *  @type {Record<string, string>} */
+const KANA = {
   あ: "a", い: "i", う: "u", え: "e", お: "o",
   か: "ka", き: "ki", く: "ku", け: "ke", こ: "ko",
   が: "ga", ぎ: "gi", ぐ: "gu", げ: "ge", ご: "go",
@@ -70,8 +72,9 @@ const KANA: Record<string, string> = {
   ゃ: "ya", ゅ: "yu", ょ: "yo", ゎ: "wa",
 };
 
-/** Marks that turn up inside a name and aren't plain full-width Latin. */
-const PUNCT: Record<string, string> = { "・": " ", "　": " ", "×": "x", "、": ", " };
+/** Marks that turn up inside a name and aren't plain full-width Latin.
+ *  @type {Record<string, string>} */
+const PUNCT = { "・": " ", "　": " ", "×": "x", "、": ", " };
 
 /** Words this cannot spell out character by character, longest match first.
  *
@@ -80,10 +83,11 @@ const PUNCT: Record<string, string> = { "・": " ", "　": " ", "×": "x", "、"
  *  lookup means a compound beats the shorter words inside it (中国 before 国,
  *  連邦共和国 as 連邦 then 共和国), so a suffix and the whole that contains it can
  *  both live here. Two lists feed off this: the language names and the country /
- *  capital names. */
-const WORDS: Record<string, string> = {
-  // The language list (see build-languages): 語 alone covers 170 of its 182 kanji
-  // names, the rest name a place or a direction.
+ *  capital names.
+ *  @type {Record<string, string>} */
+const WORDS = {
+  // The language list (see build-languages): 語 alone covers most of its kanji
+  // names; the rest name a type of language, a place, or a direction.
   語: "go",
   中国: "chuugoku",
   韓国: "kankoku",
@@ -97,6 +101,68 @@ const WORDS: Record<string, string> = {
   四川: "shisen",
   教会: "kyoukai",
   島: "tou",
+
+  // Language-type suffixes and qualifiers the Wikidata list added in bulk — dialects,
+  // groups, families, sign languages, "modern/standard", the compass regions. Each is
+  // a productive suffix rather than a one-off, so it composes with 語 and the rest
+  // (語族 → gozoku, 諸語 → shogo, アラビア語エジプト方言 → …hougen).
+  方言: "hougen",
+  手話: "shuwa",
+  諸: "sho",
+  族: "zoku",
+  派: "ha",
+  群: "gun",
+  現代: "gendai",
+  標準: "hyoujun",
+  民国: "minkoku",
+  北部: "hokubu",
+  中部: "chuubu",
+  東部: "toubu",
+  西部: "seibu",
+  中東: "chuutou",
+  低地: "teichi",
+  低: "tei",
+  上部: "joubu",
+  高地: "kouchi",
+  平原: "heigen",
+  山地: "sanchi",
+  牧地: "bokuchi",
+  海峡: "kaikyou",
+  露: "ro",
+  新: "shin",
+  台: "tai",
+  // Places the language names reach that the country/capital lists didn't: the
+  // Ryukyuan tongues, a few East-Asian regions, a French colony.
+  沖縄: "okinawa",
+  奄美: "amami",
+  大島: "ooshima",
+  琉球: "ryuukyuu",
+  八重山: "yaeyama",
+  与那国: "yonaguni",
+  喜界島: "kikaijima",
+  宮窪: "miyakubo",
+  北海道: "hokkaidou",
+  済州: "saishuu",
+  満洲: "manshuu",
+  海南: "kainan",
+  広東: "kanton",
+  客家: "hakka",
+  仏領: "futsuryou",
+  // The Sinitic topolects the list names by their standard on-reading, plus a few
+  // one-off terms. 閩南 as a whole so its 南 isn't read `minami`.
+  呉: "go",
+  晋: "shin",
+  湘: "shou",
+  粤: "etsu",
+  贛: "kan",
+  徽: "ki",
+  温州: "onshuu",
+  閩南: "binnan",
+  系: "kei",
+  地球: "chikyuu",
+  同: "dou",
+  標: "hyou",
+  赤: "aka",
 
   // Country names (see build-country-data): the administrative tails of the formal
   // `long` names. They recur across dozens of countries and compose left to right —
@@ -117,6 +183,7 @@ const WORDS: Record<string, string> = {
   中央: "chuuou",
   中華: "chuuka",
   諸島: "shotou",
+  領: "ryou", // the territory suffix: アメリカ領・イギリス領・フランス領 (…ヴァージン諸島)
   // Capital names: the administrative tail on a city's formal name.
   市: "shi",
   都: "to",
@@ -147,74 +214,100 @@ const WORDS: Record<string, string> = {
   庁: "chou",
 };
 
-/** Longest first, so 南部 is read before 南. */
+/** Longest first, so 南部 is read before 南.
+ *  @type {string[]} */
 const WORD_KEYS = Object.keys(WORDS).sort((a, b) => b.length - a.length);
 
 /** Names written in full-width Latin — Ｖジェネレート, ＧＢプレイヤー, ブリッジメールＳ
  *  — are common enough that refusing them would drop 421 of 3034. The block runs
- *  parallel to ASCII, so this is arithmetic like the kana above. */
-function widthNormalize(text: string): string {
+ *  parallel to ASCII, so this is arithmetic like the kana above.
+ *  @param {string} text @returns {string} */
+function widthNormalize(text) {
   return text.replace(/[！-～]/g, (c) => String.fromCharCode(c.charCodeAt(0) - 0xfee0));
 }
 
-/** Kept as they stand: they read the same in any script. */
+/** Kept as they stand: they read the same in any script.
+ *  @type {Set<string>} */
 const PASSTHROUGH = new Set(["♀", "♂", "★", "☆", "※", "…"]);
 
 const SMALL_TSU = "っ";
 const LONG = "ー";
 
 /** Katakana to hiragana, so one table serves both. Their blocks run in parallel,
- *  which is why this is arithmetic rather than a second map. */
-function toHiragana(text: string): string {
+ *  which is why this is arithmetic rather than a second map.
+ *  @param {string} text @returns {string} */
+function toHiragana(text) {
   return text.replace(/[ァ-ヶ]/g, (c) => String.fromCharCode(c.charCodeAt(0) - 0x60));
 }
 
-/** The word at `at`, if one starts there. */
-function wordAt(text: string, at: number): string | undefined {
+/** The word at `at`, if one starts there.
+ *  @param {string} text @param {number} at @returns {string | undefined} */
+function wordAt(text, at) {
   return WORD_KEYS.find((w) => text.startsWith(w, at));
 }
 
 /** Katakana folded to hiragana and full-width Latin brought down to ASCII — the
  *  one form both the readability check and the conversion work on. Done once and
- *  passed along rather than repeated in each, which is how the two would drift. */
-function normalize(text: string): string {
+ *  passed along rather than repeated in each, which is how the two would drift.
+ *  @param {string} text @returns {string} */
+function normalize(text) {
   return toHiragana(widthNormalize(text));
 }
 
-/** True for anything this can read: a word it knows, kana, the marks above, ASCII. */
-export function isTransliterable(text: string): boolean {
+/** True for anything this can read: a word it knows, kana, the marks above, ASCII.
+ *  @param {string} text @returns {boolean} */
+export function isTransliterable(text) {
   return canRead(normalize(text));
 }
 
-function canRead(src: string): boolean {
+/** The characters this can't read in an already-normalized string, after known
+ *  words are stripped — kana, marks and ASCII all pass, so what's left is the kanji
+ *  (or the like) WORDS is missing.
+ *  @param {string} src @returns {string[]} */
+function unread(src) {
   let rest = "";
   for (let i = 0; i < src.length; i++) {
     const word = wordAt(src, i);
     if (word) i += word.length - 1;
     else rest += src[i];
   }
-  return [...rest].every(
+  return [...rest].filter(
     (c) =>
-      KANA[c] !== undefined ||
-      PUNCT[c] !== undefined ||
-      PASSTHROUGH.has(c) ||
-      c === SMALL_TSU ||
-      c === LONG ||
-      /[\x20-\x7E]/.test(c),
+      KANA[c] === undefined &&
+      PUNCT[c] === undefined &&
+      !PASSTHROUGH.has(c) &&
+      c !== SMALL_TSU &&
+      c !== LONG &&
+      !/[\x20-\x7E]/.test(c),
   );
+}
+
+/** @param {string} src @returns {boolean} */
+function canRead(src) {
+  return unread(src).length === 0;
+}
+
+/** The characters that keep `text` from transliterating — what the WORDS table
+ *  would need for it. Empty when the name reads cleanly. Feeds the coverage report
+ *  (scripts/check-romaji), so its verdict is kana's own rather than a copy that drifts.
+ *  @param {string} text @returns {string[]} */
+export function unreadable(text) {
+  return unread(normalize(text));
 }
 
 /** Readings already worked out. The app derives at render time, and a render walks
  *  every entry of a list — 23 ms per pass over the 1795 Japanese item names, several
  *  passes per render — so without this the same two thousand names are re-read on
  *  every reactive change. Unbounded on purpose: the keys are the names a list holds,
- *  so the map is bounded by the data rather than by how long the page stays open. */
-const readings = new Map<string, string | undefined>();
+ *  so the map is bounded by the data rather than by how long the page stays open.
+ *  @type {Map<string, string | undefined>} */
+const readings = new Map();
 
 /** A kana name in Latin script, capitalized. Returns undefined for anything
  *  holding a character this cannot read — a kanji, most likely — rather than
- *  dropping it silently. */
-export function toRomaji(text: string): string | undefined {
+ *  dropping it silently.
+ *  @param {string} text @returns {string | undefined} */
+export function toRomaji(text) {
   let hit = readings.get(text);
   if (hit === undefined && !readings.has(text)) {
     hit = read(normalize(text));
@@ -223,8 +316,9 @@ export function toRomaji(text: string): string | undefined {
   return hit;
 }
 
-/** The conversion itself, on an already-normalized name. */
-function read(src: string): string | undefined {
+/** The conversion itself, on an already-normalized name.
+ *  @param {string} src @returns {string | undefined} */
+function read(src) {
   if (!canRead(src)) return undefined;
   let out = "";
   let pending = ""; // a small つ waiting for the consonant it doubles
@@ -273,13 +367,15 @@ function read(src: string): string | undefined {
 /** Latin script wants a space before an opening bracket; Japanese doesn't, its
  *  own brackets being full-width and carrying their own side-bearing. So
  *  `ノルウェー語(ブークモール)` arrives without one and reads as `Noruweego(…)`
- *  until it gets one. */
-function spaceBrackets(text: string): string {
+ *  until it gets one.
+ *  @param {string} text @returns {string} */
+function spaceBrackets(text) {
   return text.replace(/(\S)\(/g, "$1 (");
 }
 
 /** The name, and anything in brackets after it, start with a capital — both are
- *  names rather than sentences. */
-function capitalize(text: string): string {
+ *  names rather than sentences.
+ *  @param {string} text @returns {string} */
+function capitalize(text) {
   return text.replace(/(^|\()\s*([a-z])/g, (m) => m.toUpperCase());
 }
