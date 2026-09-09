@@ -58,6 +58,11 @@ export interface FameStrings {
   /** The same prefix for a merged topic whose contributors don't all sit at its
    *  ruler position: most are there, not all. */
   mostlySelected: string;
+  /** The parenthetical second line the ruler tooltip adds when a fame cap (the
+   *  languages "< 1M" box, unchecked) clamps the selection to its floor while a
+   *  deeper position stays stored — so the reader sees the setting a re-check
+   *  restores. Wraps the same "…with {condition}…" body the primary line uses. */
+  stored: (body: string) => string;
   /** Toggle a single list's fame ruler; label reflects the current state. */
   toggle: (shown: boolean) => string;
   /** Toggle from a category row all the rulers it governs; label on current state. */

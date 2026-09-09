@@ -28,6 +28,7 @@ export const fr: UIStrings = {
     none: "Aucun palier de notoriété défini pour l'instant — voir la Contribution Guide en pied de page pour en proposer.",
     selected: "Sélection :",
     mostlySelected: "Sélection majoritaire :",
+    stored: (body) => `(Enregistré : ${body})`,
     toggle: (shown) =>
       shown
         ? "Masquer la règle de notoriété de cette liste"

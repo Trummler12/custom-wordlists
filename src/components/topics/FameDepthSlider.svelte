@@ -12,7 +12,15 @@
 
   const depth = $derived(selection.depthOf(tid, group));
   const pos = $derived(snapPositions(group));
+  // What the thumb, the fill and the dots actually render at: the stored depth can
+  // outrun the visible tiers when a fame cap hides the tail (the languages "< 1M"
+  // box, unchecked), and `pos[depth]` would then be undefined — a thumb snapped to
+  // the far left. Clamped, it sits at the floor the cap allows, where the selection
+  // (correctly counted from the capped tiers) already is.
+  const shownDepth = $derived(Math.min(depth, pos.length - 1));
   const fame = $derived(fameGroups(group));
+  // The full, uncapped conditions, so the tooltip can name the deeper stored setting.
+  const rawGroup = $derived(topics.rawGroups(tid)[0]);
   // A ranked list can say so in a plain `title`: reading it means hovering, which
   // means a mouse. The invitation an unranked list carries is the one that has to
   // reach a phone, so that one gets the custom note.
@@ -25,8 +33,10 @@
     selection.depthMixed(tid) ? lang.ui.fame.mostlySelected : lang.ui.fame.selected,
   );
   const tip = $derived(
-    rulerTip(group, depth, (s) => resolveStr(s, lang.uiLang), prefix) ??
-      lang.ui.fame.groupsDefined(fame),
+    rulerTip(group, depth, (s) => resolveStr(s, lang.uiLang), prefix, {
+      conditions: rawGroup?.tierConditions,
+      wrap: lang.ui.fame.stored,
+    }) ?? lang.ui.fame.groupsDefined(fame),
   );
   const tipId = $derived(`fame-${tid}-${group.id}`);
 </script>
@@ -41,8 +51,8 @@
     tabindex="0"
     aria-valuemin="0"
     aria-valuemax={pos.length - 1}
-    aria-valuenow={depth}
-    aria-valuetext={lang.ui.fame.valueText(depth, pos.length - 1)}
+    aria-valuenow={shownDepth}
+    aria-valuetext={lang.ui.fame.valueText(shownDepth, pos.length - 1)}
     aria-label={lang.ui.fame.depthLabel(topics.groupName(group).long)}
     aria-describedby={ranked ? undefined : tipId}
     title={ranked ? tip : undefined}
@@ -63,18 +73,18 @@
     onkeydown={(e) => selection.keyDepth(e, tid, group)}
   >
     <span class="depth-rail"></span>
-    <span class="depth-fill" style="width: calc({pos[depth]} * (100% - 2 * var(--inset)))"
+    <span class="depth-fill" style="width: calc({pos[shownDepth]} * (100% - 2 * var(--inset)))"
     ></span>
     {#each pos as p, i (i)}
       <span
         class="depth-dot"
-        class:on={i > depth}
+        class:on={i > shownDepth}
         style="left: calc(var(--inset) + {p} * (100% - 2 * var(--inset)))"
       ></span>
     {/each}
     <span
       class="depth-thumb"
-      style="left: calc(var(--inset) + {pos[depth]} * (100% - 2 * var(--inset)))"
+      style="left: calc(var(--inset) + {pos[shownDepth]} * (100% - 2 * var(--inset)))"
     ></span>
   </div>
   <TipNote id={tipId} text={lang.ui.fame.none} />

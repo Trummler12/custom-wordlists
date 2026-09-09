@@ -28,6 +28,7 @@ export const es: UIStrings = {
     none: "Aún no hay grupos de fama definidos: consulta la Contribution Guide en el pie de página para proponer algunos.",
     selected: "Selección:",
     mostlySelected: "Selección mayoritaria:",
+    stored: (body) => `(Guardado: ${body})`,
     toggle: (shown) =>
       shown ? "Ocultar la regla de fama de esta lista" : "Mostrar la regla de fama de esta lista",
     toggleAll: (allShown) =>

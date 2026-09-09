@@ -32,6 +32,7 @@ export const ja: UIStrings = {
     none: "知名度グループはまだ定義されていません。フッターの Contribution Guide から提案できます。",
     selected: "選択中：",
     mostlySelected: "大半を選択中：",
+    stored: (body) => `（保存済み：${body}）`,
     toggle: (shown) =>
       shown ? "このリストの知名度スライダーを隠す" : "このリストの知名度スライダーを表示する",
     toggleAll: (allShown) =>

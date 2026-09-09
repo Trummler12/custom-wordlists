@@ -27,6 +27,7 @@ export const en: UIStrings = {
     none: "No fame groups defined yet — see the Contribution Guide in the footer to propose some!",
     selected: "Selected:",
     mostlySelected: "Mostly selected:",
+    stored: (body) => `(Stored: ${body})`,
     toggle: (shown) => (shown ? "Hide this list's fame ruler" : "Show this list's fame ruler"),
     toggleAll: (allShown) => (allShown ? "Hide these fame rulers" : "Show these fame rulers"),
   },

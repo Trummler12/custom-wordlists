@@ -28,6 +28,7 @@ export const it: UIStrings = {
     none: "Nessun gruppo di notorietà definito finora — vedi la Contribution Guide nel piè di pagina per proporne.",
     selected: "Selezione:",
     mostlySelected: "Selezione maggioritaria:",
+    stored: (body) => `(Memorizzato: ${body})`,
     toggle: (shown) =>
       shown
         ? "Nascondi il righello di notorietà di questa lista"

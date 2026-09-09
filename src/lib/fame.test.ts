@@ -222,6 +222,39 @@ describe("rulerTip", () => {
     };
     expect(rulerTip(noConds, 1, resolve, "Selected:")).toBe("Selected: ");
   });
+
+  it("clamps the primary to the last visible band rather than emptying the token", () => {
+    // A capped group (two conditions) with a stored depth past them — the "< 1M"
+    // case. Without the stored option, it still must not read an empty condition.
+    expect(rulerTip(g(), 9, resolve, "Selected:")).toBe(
+      "Selected: Countries with 20 million or more inhabitants",
+    );
+  });
+
+  it("adds a parenthesised stored line naming the deeper setting the cap hides", () => {
+    const full = [
+      "100 million or more",
+      "20 million or more",
+      "5 million or more",
+      "1 million or more",
+      "100,000 or more",
+    ];
+    const stored = { conditions: full, wrap: (b: string) => `(Stored: ${b})` };
+    expect(rulerTip(g(), 5, resolve, "Selected:", stored)).toBe(
+      "Selected: Countries with 20 million or more inhabitants\n" +
+        "(Stored: Countries with 100,000 or more inhabitants)",
+    );
+  });
+
+  it("adds no stored line when the depth is within the visible tiers", () => {
+    const stored = {
+      conditions: ["100 million or more", "20 million or more"],
+      wrap: (b: string) => `(Stored: ${b})`,
+    };
+    expect(rulerTip(g(), 2, resolve, "Selected:", stored)).toBe(
+      "Selected: Countries with 20 million or more inhabitants",
+    );
+  });
 });
 
 describe("tierNoteAt", () => {

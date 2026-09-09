@@ -117,20 +117,36 @@ export function skipCollapsed(pos: number[], current: number, target: number): n
  *  condition it has just brought in, or, at its leftmost stop, what it is ordered
  *  by. `resolve` renders a localized string in the interface language; `prefix` is
  *  the locale's "Selected:" (or "Mostly selected:") that opens the non-empty text.
- *  Returns undefined for a list with no `rulerTooltip`, so the caller can fall back. */
+ *  Returns undefined for a list with no `rulerTooltip`, so the caller can fall back.
+ *
+ *  `stored` handles the fame-cap case (the languages "< 1M" box, unchecked): the
+ *  reader's depth can outrun the visible tiers, so the primary line is clamped to
+ *  the floor the cap allows, and a second line names — in parentheses — the deeper
+ *  position still stored, which a re-check would restore. Its `conditions` are the
+ *  full, uncapped list; its `wrap` is the locale's "(Stored: …)". */
 export function rulerTip(
   g: Group,
   depth: number,
   resolve: (s: LocalizedString) => string,
   prefix: string,
+  stored?: { conditions?: LocalizedString[]; wrap: (body: string) => string },
 ): string | undefined {
   const rt = g.rulerTooltip;
   if (!rt) return undefined;
   // At rest nothing is selected, so the ordering line stands on its own — no prefix.
   if (depth <= 0) return resolve(rt.empty);
-  const cond = g.tierConditions?.[depth - 1];
-  const body = resolve(rt.text).replace("{condition}", cond ? resolve(cond) : "");
-  return `${prefix} ${body}`;
+  const conds = g.tierConditions ?? [];
+  const body = (cond: LocalizedString | undefined) =>
+    resolve(rt.text).replace("{condition}", cond ? resolve(cond) : "");
+  // Clamp to what the ruler can actually reach here: a capped group has fewer tiers
+  // than the stored depth, and reading past its conditions would leave the token empty.
+  const shown = Math.min(depth, conds.length);
+  const primary = `${prefix} ${body(conds[shown - 1])}`;
+  // Only when the cap is truly hiding a deeper stored setting — the condition exists
+  // in the full list but not in this capped group.
+  const deeper = stored?.conditions?.[depth - 1];
+  if (depth > conds.length && deeper) return `${primary}\n${stored!.wrap(body(deeper))}`;
+  return primary;
 }
 
 export function nearestIndex(pos: number[], frac: number): number {

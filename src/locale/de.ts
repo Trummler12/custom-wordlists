@@ -28,6 +28,7 @@ export const de: UIStrings = {
     none: "Noch keine Fame-Gruppen definiert — im Contribution Guide im Footer erfährst du, wie du welche vorschlagen kannst!",
     selected: "Ausgewählt:",
     mostlySelected: "Grösstenteils ausgewählt:",
+    stored: (body) => `(Gespeichert: ${body})`,
     toggle: (shown) =>
       shown ? "Fame-Regler dieser Liste ausblenden" : "Fame-Regler dieser Liste einblenden",
     toggleAll: (allShown) =>
