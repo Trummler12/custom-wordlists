@@ -28,6 +28,12 @@
   // A topic is its own single group — rendered on this row, ruler and all. Undefined
   // until the file loads, which the guards below wait on.
   const sole = $derived(topics.groupsOf(topic)[0]);
+  // The names-mode dropdown asks whether the list *has* short/long/pref/variant forms at
+  // all — a fact about the data, not the current selection — so it reads the unfiltered
+  // group, not `sole`. Otherwise deselecting a list down to nothing (the languages base
+  // box) would take the whole dropdown with it. A synth has no raw file of its own, so it
+  // keeps the merged group, which its omissions never empty.
+  const namesGroup = $derived(topics.isSynth(topic.id) ? sole : (topics.rawGroups(topic.id)[0] ?? sole));
 
   // No ruler at all where a node on the path says so — no toggle, no slider.
   // Stronger than the opt-in below, so it gates it.
@@ -134,7 +140,7 @@
     <!-- Both outside the <label>: a second form control inside it would leave the
          checkbox it names ambiguous, and the count isn't a name for anything. -->
     {#if sole}
-      <NamesModeSelect tid={topic.id} group={sole} label={name.long} />
+      <NamesModeSelect tid={topic.id} group={namesGroup} label={name.long} />
     {/if}
     {#if sole}
       <OmittedPanel tid={topic.id} group={sole} />
