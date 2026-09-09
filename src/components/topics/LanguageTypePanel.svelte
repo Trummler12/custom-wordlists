@@ -121,7 +121,9 @@
                     /></span
                   >
                   {#if NOT_RECOMMENDED.has(rule.id)}
-                    <span class="thumb">
+                    <!-- Empty title so the 👎 keeps its own tip alone: the label's
+                         "tick to add" title would otherwise show over it too. -->
+                    <span class="thumb" title="">
                       <TipMarker
                         tipId={notRecId(rule.id)}
                         icon="👎"
