@@ -189,6 +189,26 @@ const RULER_TOOLTIP = {
   },
 };
 
+// Sign languages are living, natural, single languages — base entries — but they draw
+// nothing like a spoken one, so the list offers them by default and lets the reader drop
+// them, a plain omittable in the 🚫 panel. Matched by the English name (any form matches).
+const SIGN_LANGUAGES = {
+  id: "sign-languages",
+  match: "* Sign Language",
+  count: true,
+  reason: {
+    en: "sign languages",
+    de: "Gebärdensprachen",
+    es: "lenguas de señas",
+    fr: "langues des signes",
+    it: "lingue dei segni",
+    ja: "手話",
+    ko: "수어",
+    "zh-Hans": "手语",
+    "zh-Hant": "手語",
+  },
+};
+
 const SOURCES = [
   "Names & variants: Wikidata labels, official names (P1448) and short names (P1813) — https://www.wikidata.org/wiki/Q34770 (see scripts/geography/dump-language-data.mjs)",
   "Speakers & type: Wikidata number of speakers (P1098) and instance/subclass of the modern-language family (P31/P279*) — https://www.wikidata.org/wiki/Q34770 (see scripts/geography/dump-language-data.mjs)",
@@ -315,6 +335,7 @@ async function main() {
     lastChecked: TODAY,
     defaultNames: "pref",
     omitted,
+    omittable: [SIGN_LANGUAGES],
     tiers,
     tierConditions: tierConditions(),
     rulerTooltip: RULER_TOOLTIP,

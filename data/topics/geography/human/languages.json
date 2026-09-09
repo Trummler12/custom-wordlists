@@ -9,8 +9,8 @@
     "Names & variants: Wikidata labels, official names (P1448) and short names (P1813) — https://www.wikidata.org/wiki/Q34770 (see scripts/geography/dump-language-data.mjs)",
     "Speakers & type: Wikidata number of speakers (P1098) and instance/subclass of the modern-language family (P31/P279*) — https://www.wikidata.org/wiki/Q34770 (see scripts/geography/dump-language-data.mjs)"
   ],
-  "lastUpdated": "2026-09-08",
-  "lastChecked": "2026-09-08",
+  "lastUpdated": "2026-09-09",
+  "lastChecked": "2026-09-09",
   "defaultNames": "pref",
   "omitted": [
     {
@@ -164,6 +164,24 @@
         "ko": "책·영화·게임 속 가공의 언어",
         "zh-Hans": "来自书籍、影视和游戏的虚构语言",
         "zh-Hant": "來自書籍、影視和遊戲的虛構語言"
+      }
+    }
+  ],
+  "omittable": [
+    {
+      "id": "sign-languages",
+      "match": "* Sign Language",
+      "count": true,
+      "reason": {
+        "en": "sign languages",
+        "de": "Gebärdensprachen",
+        "es": "lenguas de señas",
+        "fr": "langues des signes",
+        "it": "lingue dei segni",
+        "ja": "手話",
+        "ko": "수어",
+        "zh-Hans": "手语",
+        "zh-Hant": "手語"
       }
     }
   ],
