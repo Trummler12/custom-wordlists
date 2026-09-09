@@ -6,6 +6,8 @@
   import { lang } from "../../state/lang.svelte";
   import { overlays } from "../../state/overlays.svelte";
   import { selection } from "../../state/selection.svelte";
+  import TipMarker from "../common/TipMarker.svelte";
+  import TipNote from "../common/TipNote.svelte";
 
   // The language-type inclusion panel: one checkbox per Wikidata type the list carries,
   // each default-off, plus a base box for the living-modern languages no type covers. It
@@ -27,6 +29,12 @@
     ["constructed", "fictional"],
   ];
   const NOT_RECOMMENDED = new Set(["dialect-group", "language-group", "language-family"]);
+  // The 👎 opens a pinnable note. It is a `local` tip (see overlays): it renders as an overlay
+  // above the panel like any tip-note, but a scroll of the panel closes it (its trigger scrolls
+  // away under it) while a page scroll keeps it. Its note lives in the host, not the panel, so
+  // the panel's `overflow` can't clip it.
+  const notRecId = (ruleId: string) => `notrec-${tid}-${ruleId}`;
+  const notRecRules = $derived(rules.filter((r) => NOT_RECOMMENDED.has(r.id)));
   const grouped = $derived(
     GROUPS.map((ids) =>
       ids.map((i) => rules.find((r) => r.id === i)).filter((r): r is Omission => r !== undefined),
@@ -64,6 +72,7 @@
         class:above={overlays.languageTypeAbove}
         role="group"
         aria-label={lang.ui.languageType.label}
+        onscroll={overlays.onLocalScroll}
       >
         <p class="language-type-title">{lang.ui.languageType.label}</p>
         <!-- The base, shown by default, on its own so the gap sets it apart from the types. -->
@@ -95,11 +104,14 @@
                     /></span
                   >
                   {#if NOT_RECOMMENDED.has(rule.id)}
-                    <span
-                      class="thumb"
-                      title={lang.ui.languageType.notRecommended}
-                      aria-label={lang.ui.languageType.notRecommended}>👎</span
-                    >
+                    <span class="thumb">
+                      <TipMarker
+                        tipId={notRecId(rule.id)}
+                        icon="👎"
+                        text={lang.ui.languageType.notRecommended}
+                        local
+                      />
+                    </span>
                   {/if}
                 </label>
               </li>
@@ -124,6 +136,12 @@
         {/if}
       </div>
     {/if}
+    <!-- The 👎 notes: siblings of the panel, not children, so they overlay it (z-order) and
+         span the row from the positioned host rather than being clipped by the panel's
+         `overflow`. They are `local` tips (see the TipMarkers), closed on a panel scroll. -->
+    {#each notRecRules as rule (rule.id)}
+      <TipNote id={notRecId(rule.id)} text={lang.ui.languageType.notRecommended} local />
+    {/each}
   </div>
 {/if}
 

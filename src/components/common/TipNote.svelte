@@ -5,8 +5,9 @@
   // The note half of a tooltip; the trigger is whatever element carries the
   // matching `tip-trigger` class and opens `id`. Its parent has to be positioned,
   // since the note stretches across it — see the CSS for why it can't hang off the
-  // trigger itself.
-  let { id, text }: { id: string; text: string } = $props();
+  // trigger itself. A `local` note instead pins to its trigger's own place (overlays
+  // computes the fixed style), for a trigger sitting inside a scrolling popup.
+  let { id, text, local = false }: { id: string; text: string; local?: boolean } = $props();
 </script>
 
 {#if overlays.tip === id}
@@ -14,7 +15,15 @@
        that should interrupt whatever is being read. An unranked ruler points its
        aria-describedby at this note; the language warning instead carries the text
        in its own aria-label, where the note is a visual echo. -->
-  <p class="tip-note" class:above={overlays.tipAbove} class:pinned={overlays.tipPinned} {id} role="tooltip">
+  <p
+    class="tip-note"
+    class:above={overlays.tipAbove && !local}
+    class:pinned={overlays.tipPinned}
+    class:local
+    style={local ? overlays.tipStyle : ""}
+    {id}
+    role="tooltip"
+  >
     <!-- Says the note is staying, which is otherwise only discoverable by moving
          the cursor away and seeing what happens. `aria-hidden`: it marks a
          pointer affordance, and the trigger's `aria-expanded` already carries the

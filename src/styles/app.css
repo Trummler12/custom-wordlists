@@ -312,6 +312,18 @@ header {
   bottom: 100%;
   margin: 0 0 0.15rem;
 }
+/* A note anchored to a 👎 inside the scrolling language-type panel: overlays owns its
+   position (fixed, from the trigger's rect, via the inline style), so here we only undo the
+   full-row stretch, cap the width, and lift it above the panel (z-index 10). */
+.tip-note.local {
+  left: auto;
+  right: auto;
+  top: auto;
+  bottom: auto;
+  margin: 0;
+  max-width: min(18rem, 90vw);
+  z-index: 30;
+}
 
 /* Names dropdown (short / long / both); only on a list whose entries have name pairs. */
 .names-mode {
