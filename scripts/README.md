@@ -24,6 +24,7 @@ Contributors almost never need a 🔒 script: proposing or fixing a list goes th
 | `build-index.mjs` | `build:index` | Scans `data/topics/**` into `data/index.json`, the light manifest the frontend loads first. Runs automatically before `dev` and `build`. |
 | `validate-data.mjs` | `validate` | Checks every topic against the schema plus the cross-checks it can't express — inherited tier bands, duplicate words, declared languages, omission rules still live. Run before opening a PR. |
 | `check-wraps.mjs` | `check:wraps` | Flags mid-sentence line breaks in the project's Markdown (house style). Only reports, never fails. |
+| `check-romaji.mjs` | `check:romaji` | Lists the Japanese names on `generatedRomaji` lists that `src/lib/kana.mjs` can't yet read — the ones that fall back to raw kanji — and the missing characters. Only reports; run after adding such a list. Pass one topic's path to check just it. |
 
 ## 🔒 Geography, languages & plates
 
