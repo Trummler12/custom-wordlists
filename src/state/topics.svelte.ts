@@ -194,9 +194,36 @@ class TopicsState {
     return [assembled];
   }
 
-  /** Whether a topic is still fetching and has nothing to show yet. */
-  isLoading(t: TopicSummary): boolean {
-    return !!this.loadingById[t.id] && !this.data[t.id];
+  /** Whether a topic's data is available to count from — its own file loaded, or,
+   *  for a synth, every contributor's. What a row and a category count wait on
+   *  before showing anything but "loading": until then a topic's total is the
+   *  manifest's unfiltered `wordCount`, not the figure the list actually yields. */
+  isReady(t: TopicSummary): boolean {
+    if (this.isSynth(t.id)) return this.contributorsOf(t.id).every((c) => !!this.data[c.id]);
+    return !!this.data[t.id];
+  }
+
+  /** Whether every topic under a node is ready, so a category count shows "loading"
+   *  and then its final number in one step — never a partial sum ticking down as
+   *  files arrive. The manifest's `wordCount` fallback is unfiltered, so an unloaded
+   *  topic would otherwise inflate the parent until it lands. */
+  subtreeReady(ts: TopicSummary[]): boolean {
+    return ts.every((t) => this.isReady(t));
+  }
+
+  /** Load every topic's file in the background, so the counts everywhere settle to
+   *  their filtered value without the reader expanding a thing — the parent totals
+   *  are otherwise wrong (an unfiltered `wordCount` sum) until each child is opened.
+   *  Bounded concurrency keeps it off the initial render's back; `ensure` is
+   *  idempotent, so a row that loaded itself first is simply skipped. Fire-and-forget
+   *  from the app shell once the manifest is in. */
+  async warmAll(): Promise<void> {
+    const pending = this.all.filter((t) => !this.isSynth(t.id) && !this.data[t.id]);
+    let i = 0;
+    const worker = async (): Promise<void> => {
+      while (i < pending.length) await this.ensure(pending[i++]);
+    };
+    await Promise.all(Array.from({ length: Math.min(4, pending.length) }, worker));
   }
 
   // Display names in the active language. A title is a WordEntry, so resolving one

@@ -185,7 +185,7 @@
       class="meta"
       title={lang.ui.tree.wordsOf(selection.topicSelCount(topic), selection.topicTotal(topic))}
     >
-      {#if topics.isLoading(topic)}{lang.ui.tree.loadingShort}{:else}{selection.topicSelCount(
+      {#if !topics.isReady(topic)}{lang.ui.tree.loadingShort}{:else}{selection.topicSelCount(
           topic,
         )}/<span class="total">{selection.topicTotal(topic)}</span>{/if}
     </span>
