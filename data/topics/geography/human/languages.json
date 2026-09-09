@@ -19,15 +19,15 @@
       "count": true,
       "icon": "language-type",
       "reason": {
-        "en": "dead languages with no native speakers left",
-        "de": "tote Sprachen ohne Muttersprachler",
-        "es": "lenguas muertas, sin hablantes nativos",
-        "fr": "langues mortes, sans locuteurs natifs",
-        "it": "lingue morte, senza madrelingua",
-        "ja": "母語話者のいない死語",
-        "ko": "모어 화자가 없는 사멸 언어",
-        "zh-Hans": "没有母语者的已消亡语言",
-        "zh-Hant": "沒有母語者的已消亡語言"
+        "en": "[dead languages](https://www.wikidata.org/wiki/Q45762)",
+        "de": "[tote Sprachen](https://www.wikidata.org/wiki/Q45762)",
+        "es": "[lenguas muertas](https://www.wikidata.org/wiki/Q45762)",
+        "fr": "[langues mortes](https://www.wikidata.org/wiki/Q45762)",
+        "it": "[lingue morte](https://www.wikidata.org/wiki/Q45762)",
+        "ja": "[死語](https://www.wikidata.org/wiki/Q45762)",
+        "ko": "[사멸 언어](https://www.wikidata.org/wiki/Q45762)",
+        "zh-Hans": "[已消亡语言](https://www.wikidata.org/wiki/Q45762)",
+        "zh-Hant": "[已消亡語言](https://www.wikidata.org/wiki/Q45762)"
       }
     },
     {
@@ -36,15 +36,15 @@
       "count": true,
       "icon": "language-type",
       "reason": {
-        "en": "extinct languages, no longer spoken at all",
-        "de": "ausgestorbene Sprachen, die niemand mehr spricht",
-        "es": "lenguas extintas, que ya nadie habla",
-        "fr": "langues éteintes, que plus personne ne parle",
-        "it": "lingue estinte, che nessuno parla più",
-        "ja": "話す人がいなくなった消滅言語",
-        "ko": "쓰는 사람이 없어진 소멸 언어",
-        "zh-Hans": "已无人使用的灭绝语言",
-        "zh-Hant": "已無人使用的滅絕語言"
+        "en": "[extinct languages](https://www.wikidata.org/wiki/Q38058796)",
+        "de": "[ausgestorbene Sprachen](https://www.wikidata.org/wiki/Q38058796)",
+        "es": "[lenguas extintas](https://www.wikidata.org/wiki/Q38058796)",
+        "fr": "[langues éteintes](https://www.wikidata.org/wiki/Q38058796)",
+        "it": "[lingue estinte](https://www.wikidata.org/wiki/Q38058796)",
+        "ja": "[消滅言語](https://www.wikidata.org/wiki/Q38058796)",
+        "ko": "[소멸 언어](https://www.wikidata.org/wiki/Q38058796)",
+        "zh-Hans": "[灭绝语言](https://www.wikidata.org/wiki/Q38058796)",
+        "zh-Hant": "[滅絕語言](https://www.wikidata.org/wiki/Q38058796)"
       }
     },
     {
@@ -53,15 +53,15 @@
       "count": true,
       "icon": "language-type",
       "reason": {
-        "en": "historical stages of a language, known from the past",
-        "de": "historische Sprachstufen, aus der Vergangenheit überliefert",
-        "es": "etapas históricas de una lengua, documentadas del pasado",
-        "fr": "états historiques d'une langue, attestés du passé",
-        "it": "stadi storici di una lingua, attestati dal passato",
-        "ja": "過去に記録された、言語の歴史的段階",
-        "ko": "과거에 기록된 언어의 역사적 단계",
-        "zh-Hans": "见于过去记载的语言历史阶段",
-        "zh-Hant": "見於過去記載的語言歷史階段"
+        "en": "[historical languages](https://www.wikidata.org/wiki/Q2315359)",
+        "de": "[historische Sprachen](https://www.wikidata.org/wiki/Q2315359)",
+        "es": "[lenguas históricas](https://www.wikidata.org/wiki/Q2315359)",
+        "fr": "[langues historiques](https://www.wikidata.org/wiki/Q2315359)",
+        "it": "[lingue storiche](https://www.wikidata.org/wiki/Q2315359)",
+        "ja": "[歴史的言語](https://www.wikidata.org/wiki/Q2315359)",
+        "ko": "[역사적 언어](https://www.wikidata.org/wiki/Q2315359)",
+        "zh-Hans": "[历史语言](https://www.wikidata.org/wiki/Q2315359)",
+        "zh-Hant": "[歷史語言](https://www.wikidata.org/wiki/Q2315359)"
       }
     },
     {
@@ -70,15 +70,15 @@
       "count": true,
       "icon": "language-type",
       "reason": {
-        "en": "dialects of another language",
-        "de": "Dialekte einer anderen Sprache",
-        "es": "dialectos de otra lengua",
-        "fr": "dialectes d'une autre langue",
-        "it": "dialetti di un'altra lingua",
-        "ja": "他の言語の方言",
-        "ko": "다른 언어의 방언",
-        "zh-Hans": "另一种语言的方言",
-        "zh-Hant": "另一種語言的方言"
+        "en": "[dialects](https://www.wikidata.org/wiki/Q33384)",
+        "de": "[Dialekte](https://www.wikidata.org/wiki/Q33384)",
+        "es": "[dialectos](https://www.wikidata.org/wiki/Q33384)",
+        "fr": "[dialectes](https://www.wikidata.org/wiki/Q33384)",
+        "it": "[dialetti](https://www.wikidata.org/wiki/Q33384)",
+        "ja": "[方言](https://www.wikidata.org/wiki/Q33384)",
+        "ko": "[방언](https://www.wikidata.org/wiki/Q33384)",
+        "zh-Hans": "[方言](https://www.wikidata.org/wiki/Q33384)",
+        "zh-Hant": "[方言](https://www.wikidata.org/wiki/Q33384)"
       }
     },
     {
@@ -87,15 +87,15 @@
       "count": true,
       "icon": "language-type",
       "reason": {
-        "en": "groups of dialects",
-        "de": "Gruppen von Dialekten",
-        "es": "grupos de dialectos",
-        "fr": "groupes de dialectes",
-        "it": "gruppi di dialetti",
-        "ja": "方言の集まり",
-        "ko": "방언의 묶음",
-        "zh-Hans": "方言的集合",
-        "zh-Hant": "方言的集合"
+        "en": "[dialect groups](https://www.wikidata.org/wiki/Q1208380)",
+        "de": "[Dialektgruppen](https://www.wikidata.org/wiki/Q1208380)",
+        "es": "[grupos de dialectos](https://www.wikidata.org/wiki/Q1208380)",
+        "fr": "[groupes de dialectes](https://www.wikidata.org/wiki/Q1208380)",
+        "it": "[gruppi di dialetti](https://www.wikidata.org/wiki/Q1208380)",
+        "ja": "[方言群](https://www.wikidata.org/wiki/Q1208380)",
+        "ko": "[방언군](https://www.wikidata.org/wiki/Q1208380)",
+        "zh-Hans": "[方言群](https://www.wikidata.org/wiki/Q1208380)",
+        "zh-Hant": "[方言群](https://www.wikidata.org/wiki/Q1208380)"
       }
     },
     {
@@ -104,15 +104,15 @@
       "count": true,
       "icon": "language-type",
       "reason": {
-        "en": "language groups rather than a single language",
-        "de": "Sprachgruppen statt einer einzelnen Sprache",
-        "es": "grupos de lenguas, no una lengua concreta",
-        "fr": "groupes de langues plutôt qu'une langue unique",
-        "it": "gruppi di lingue anziché una singola lingua",
-        "ja": "個別の言語ではなく語群",
-        "ko": "개별 언어가 아니라 어군",
-        "zh-Hans": "语群，而非单一语言",
-        "zh-Hant": "語群，而非單一語言"
+        "en": "[language groups](https://www.wikidata.org/wiki/Q941501)",
+        "de": "[Sprachgruppen](https://www.wikidata.org/wiki/Q941501)",
+        "es": "[grupos de lenguas](https://www.wikidata.org/wiki/Q941501)",
+        "fr": "[groupes de langues](https://www.wikidata.org/wiki/Q941501)",
+        "it": "[gruppi di lingue](https://www.wikidata.org/wiki/Q941501)",
+        "ja": "[語群](https://www.wikidata.org/wiki/Q941501)",
+        "ko": "[어군](https://www.wikidata.org/wiki/Q941501)",
+        "zh-Hans": "[语群](https://www.wikidata.org/wiki/Q941501)",
+        "zh-Hant": "[語群](https://www.wikidata.org/wiki/Q941501)"
       }
     },
     {
@@ -121,15 +121,15 @@
       "count": true,
       "icon": "language-type",
       "reason": {
-        "en": "language families rather than a single language",
-        "de": "Sprachfamilien statt einer einzelnen Sprache",
-        "es": "familias de lenguas, no una lengua concreta",
-        "fr": "familles de langues plutôt qu'une langue unique",
-        "it": "famiglie di lingue anziché una singola lingua",
-        "ja": "個別の言語ではなく語族",
-        "ko": "개별 언어가 아니라 어족",
-        "zh-Hans": "语系，而非单一语言",
-        "zh-Hant": "語系，而非單一語言"
+        "en": "[language families](https://www.wikidata.org/wiki/Q25295)",
+        "de": "[Sprachfamilien](https://www.wikidata.org/wiki/Q25295)",
+        "es": "[familias de lenguas](https://www.wikidata.org/wiki/Q25295)",
+        "fr": "[familles de langues](https://www.wikidata.org/wiki/Q25295)",
+        "it": "[famiglie di lingue](https://www.wikidata.org/wiki/Q25295)",
+        "ja": "[語族](https://www.wikidata.org/wiki/Q25295)",
+        "ko": "[어족](https://www.wikidata.org/wiki/Q25295)",
+        "zh-Hans": "[语系](https://www.wikidata.org/wiki/Q25295)",
+        "zh-Hant": "[語系](https://www.wikidata.org/wiki/Q25295)"
       }
     },
     {
@@ -138,15 +138,15 @@
       "count": true,
       "icon": "language-type",
       "reason": {
-        "en": "constructed languages, invented rather than grown",
-        "de": "konstruierte Sprachen, erfunden statt gewachsen",
-        "es": "lenguas construidas, inventadas y no naturales",
-        "fr": "langues construites, inventées plutôt que naturelles",
-        "it": "lingue costruite, inventate anziché naturali",
-        "ja": "自然に生まれず作られた人工言語",
-        "ko": "자연적으로 생기지 않고 만들어진 인공어",
-        "zh-Hans": "人造语言，而非自然演变而来",
-        "zh-Hant": "人造語言，而非自然演變而來"
+        "en": "[constructed languages](https://www.wikidata.org/wiki/Q33215)",
+        "de": "[konstruierte Sprachen](https://www.wikidata.org/wiki/Q33215)",
+        "es": "[lenguas construidas](https://www.wikidata.org/wiki/Q33215)",
+        "fr": "[langues construites](https://www.wikidata.org/wiki/Q33215)",
+        "it": "[lingue costruite](https://www.wikidata.org/wiki/Q33215)",
+        "ja": "[人工言語](https://www.wikidata.org/wiki/Q33215)",
+        "ko": "[인공어](https://www.wikidata.org/wiki/Q33215)",
+        "zh-Hans": "[人造语言](https://www.wikidata.org/wiki/Q33215)",
+        "zh-Hant": "[人造語言](https://www.wikidata.org/wiki/Q33215)"
       }
     },
     {
@@ -155,15 +155,15 @@
       "count": true,
       "icon": "language-type",
       "reason": {
-        "en": "fictional languages from books, film and games",
-        "de": "fiktive Sprachen aus Büchern, Film und Spielen",
-        "es": "lenguas ficticias de libros, cine y videojuegos",
-        "fr": "langues fictives de livres, films et jeux",
-        "it": "lingue fittizie di libri, film e giochi",
-        "ja": "書籍・映画・ゲームの架空言語",
-        "ko": "책·영화·게임 속 가공의 언어",
-        "zh-Hans": "来自书籍、影视和游戏的虚构语言",
-        "zh-Hant": "來自書籍、影視和遊戲的虛構語言"
+        "en": "[fictional languages](https://www.wikidata.org/wiki/Q2623733)",
+        "de": "[fiktive Sprachen](https://www.wikidata.org/wiki/Q2623733)",
+        "es": "[lenguas ficticias](https://www.wikidata.org/wiki/Q2623733)",
+        "fr": "[langues fictives](https://www.wikidata.org/wiki/Q2623733)",
+        "it": "[lingue fittizie](https://www.wikidata.org/wiki/Q2623733)",
+        "ja": "[架空言語](https://www.wikidata.org/wiki/Q2623733)",
+        "ko": "[가공의 언어](https://www.wikidata.org/wiki/Q2623733)",
+        "zh-Hans": "[虚构语言](https://www.wikidata.org/wiki/Q2623733)",
+        "zh-Hant": "[虛構語言](https://www.wikidata.org/wiki/Q2623733)"
       }
     }
   ],
