@@ -88,6 +88,23 @@
             </label>
           </li>
         </ul>
+        <!-- The ruler-range box, right under the base rather than at the foot: most types
+             live below the default ≥ 1M floor, so without it ticking a type box below would
+             move the count by nothing. Its own item, set apart from the type groups. -->
+        {#if group.extendFrom != null}
+          <ul>
+            <li>
+              <label title={lang.ui.languageType.toggle(included(EXTEND_RULE))}>
+                <input
+                  type="checkbox"
+                  checked={included(EXTEND_RULE)}
+                  onchange={() => selection.toggleOmission(tid, group, EXTEND_RULE)}
+                />
+                <span>{lang.ui.languageType.submillion}</span>
+              </label>
+            </li>
+          </ul>
+        {/if}
         {#each grouped as g, gi (gi)}
           <ul>
             {#each g as rule (rule.id)}
@@ -118,22 +135,6 @@
             {/each}
           </ul>
         {/each}
-        <!-- The ruler-range box, apart at the bottom: it lifts the default ≥ 1M cap rather
-             than folding a type in, so it reaches the long tail of every stratum at once. -->
-        {#if group.extendFrom != null}
-          <ul>
-            <li>
-              <label title={lang.ui.languageType.toggle(included(EXTEND_RULE))}>
-                <input
-                  type="checkbox"
-                  checked={included(EXTEND_RULE)}
-                  onchange={() => selection.toggleOmission(tid, group, EXTEND_RULE)}
-                />
-                <span>{lang.ui.languageType.submillion}</span>
-              </label>
-            </li>
-          </ul>
-        {/if}
       </div>
     {/if}
     <!-- The 👎 notes: siblings of the panel, not children, so they overlay it (z-order) and
