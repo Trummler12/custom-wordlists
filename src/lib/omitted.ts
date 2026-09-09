@@ -54,12 +54,21 @@ export function includeRules(g: Group): Omission[] {
   return allRules(g).filter((r) => r.icon === INCLUDE_ICON);
 }
 
+// Memoized per entry object: an entry lives as long as the topic file it came
+// from, so a WeakMap keyed on it holds for the page — and the same entry is
+// re-matched on every omission toggle, so recomputing its forms each time was a
+// large share of the filtering cost. Callers only read the array (never mutate
+// it), so sharing one is safe. Strings are their own only form; nothing to cache.
+const formsCache = new WeakMap<object, string[]>();
+
 /** Every string an entry carries, across all its forms and languages. A rule
  *  matches an entry when any of these does: the junk is localized
  *  (`Data Card 01` / `Datenkarte01`), so a pattern written in one language would
  *  otherwise never see the other. */
 export function entryForms(e: WordEntry): string[] {
   if (typeof e === "string") return [e];
+  const cached = formsCache.get(e as object);
+  if (cached) return cached;
   const obj = e as Record<string, unknown>;
   // A name pair localizes per field; anything else is a language map whose values
   // are themselves entries. Both bottom out in strings. `?` is not one of them: it
@@ -69,12 +78,22 @@ export function entryForms(e: WordEntry): string[] {
     "pref" in obj || "short" in obj || "long" in obj
       ? [obj.pref, obj.short, obj.long, ...others]
       : Object.entries(obj).filter(([k]) => k !== UNKNOWN).map(([, v]) => v);
-  return parts.filter((p) => p !== undefined).flatMap((p) => entryForms(p as WordEntry));
+  const res = parts.filter((p) => p !== undefined).flatMap((p) => entryForms(p as WordEntry));
+  formsCache.set(e as object, res);
+  return res;
 }
 
-// Compiled once per rule object; the rules live as long as the topic file they
-// came from, so a WeakMap keyed on the rule is enough.
-const compiled = new WeakMap<Omission, RegExp[]>();
+/** A pattern is a glob only if it carries one of glob's metacharacters; every other
+ *  string `globToRegExp` escapes whole, so it matches exactly itself — which a set
+ *  membership test answers far more cheaply than an anchored regex. */
+const isGlobPattern = (s: string): boolean => /[*?[]/.test(s);
+
+/** A rule's `match` split for matching: the literal names as a set (the vast
+ *  majority — thousands of language names, no metacharacters) and the real globs
+ *  compiled to regexes. Compiled once per rule object; the rules live as long as
+ *  the topic file they came from, so a WeakMap keyed on the rule is enough. */
+type CompiledRule = { literals: Set<string>; globs: RegExp[] };
+const compiled = new WeakMap<Omission, CompiledRule>();
 
 /** A glob as a whole-name pattern: `*` any run, `?` one character, `[0-9]` a
  *  class. Globs rather than regexes because these are written by hand in JSON,
@@ -103,22 +122,31 @@ export function globToRegExp(glob: string): RegExp {
   return new RegExp(`^${out}$`, "u");
 }
 
-function patternsOf(rule: Omission): RegExp[] {
+function compiledOf(rule: Omission): CompiledRule {
   let res = compiled.get(rule);
   if (!res) {
-    res = (Array.isArray(rule.match) ? rule.match : [rule.match]).map(globToRegExp);
+    const arr = Array.isArray(rule.match) ? rule.match : [rule.match];
+    res = { literals: new Set(arr.filter((s) => !isGlobPattern(s))), globs: arr.filter(isGlobPattern).map(globToRegExp) };
     compiled.set(rule, res);
   }
   return res;
+}
+
+/** Whether any of an entry's forms matches this rule. The literal set answers most
+ *  of it — a name is in the list or it isn't — and only the rare glob falls through
+ *  to a regex scan. Equivalent to the old all-regex test: `globToRegExp` anchors and
+ *  escapes a literal, so matching it is exactly a set membership on the form. */
+export function ruleMatches(rule: Omission, forms: string[]): boolean {
+  const { literals, globs } = compiledOf(rule);
+  if (literals.size > 0 && forms.some((f) => literals.has(f))) return true;
+  return globs.length > 0 && globs.some((re) => forms.some((f) => re.test(f)));
 }
 
 /** The first rule that covers this entry, or undefined when none does. */
 export function findOmission(e: WordEntry, rules: Omission[]): Omission | undefined {
   const forms = entryForms(e);
   return rules.find(
-    (rule) =>
-      !rule.except?.some((x) => forms.includes(x)) &&
-      forms.some((f) => patternsOf(rule).some((re) => re.test(f))),
+    (rule) => !rule.except?.some((x) => forms.includes(x)) && ruleMatches(rule, forms),
   );
 }
 
@@ -199,7 +227,7 @@ export function visibleGroup(
   const included = (e: WordEntry): boolean => {
     if (incl.length === 0) return true;
     const forms = entryForms(e);
-    const matched = incl.filter((r) => patternsOf(r).some((re) => forms.some((f) => re.test(f))));
+    const matched = incl.filter((r) => ruleMatches(r, forms));
     return matched.length ? matched.some((r) => toggled.includes(r.id)) : !baseOff;
   };
   // Over the entries as written (before `keep` prunes them), so an on-by-default
