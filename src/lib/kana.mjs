@@ -163,6 +163,28 @@ const WORDS = {
   同: "dou",
   標: "hyou",
   赤: "aka",
+  // The last topolects and two country abbreviations. A bound Sino-Japanese compound
+  // reads its kanji on-reading, so 北/東 here are hoku/tou, not the isolated kita/higashi
+  // — hence the two-kanji entries that pin them.
+  閩北: "binhoku",
+  閩東: "bintou",
+  邕北: "youhoku",
+  東紅水河: "toukousuiga",
+  莆: "ho",
+  仙: "sen",
+  彝: "i",
+  載: "sai",
+  瓦: "ga",
+  五: "go",
+  屯: "ton",
+  回: "kai",
+  輝: "ki",
+  康: "kou",
+  家: "ka",
+  印: "in",
+  尼: "ni",
+  首: "shu",
+  連: "ren",
 
   // Country names (see build-country-data): the administrative tails of the formal
   // `long` names. They recur across dozens of countries and compose left to right —
