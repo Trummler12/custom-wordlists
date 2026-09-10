@@ -255,6 +255,18 @@ describe("rulerTip", () => {
       "Selected: Countries with 20 million or more inhabitants",
     );
   });
+
+  it("renders a condition's {br} second line as a newline", () => {
+    // A tier that folds its caveat into the condition rather than a separate note.
+    const g2: Group = {
+      ...tiered(1, 3),
+      tierConditions: ["Major plates{br}grouped by parent, not size"],
+      rulerTooltip: { text: "{condition}", empty: "Ranked." },
+    };
+    expect(rulerTip(g2, 1, resolve, "Selected:")).toBe(
+      "Selected: Major plates\ngrouped by parent, not size",
+    );
+  });
 });
 
 describe("tierNoteAt", () => {

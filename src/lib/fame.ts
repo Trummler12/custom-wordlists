@@ -133,8 +133,12 @@ export function rulerTip(
 ): string | undefined {
   const rt = g.rulerTooltip;
   if (!rt) return undefined;
+  // A condition may carry a `{br}` second line (a tier's caveat, folded into its
+  // wording rather than a separate note); the hover is a native `title`, so the break
+  // is a newline. Applied to every line the tooltip can hold.
+  const nl = (s: string) => s.replaceAll("{br}", "\n");
   // At rest nothing is selected, so the ordering line stands on its own — no prefix.
-  if (depth <= 0) return resolve(rt.empty);
+  if (depth <= 0) return nl(resolve(rt.empty));
   const conds = g.tierConditions ?? [];
   const body = (cond: LocalizedString | undefined) =>
     resolve(rt.text).replace("{condition}", cond ? resolve(cond) : "");
@@ -145,8 +149,8 @@ export function rulerTip(
   // Only when the cap is truly hiding a deeper stored setting — the condition exists
   // in the full list but not in this capped group.
   const deeper = stored?.conditions?.[depth - 1];
-  if (depth > conds.length && deeper) return `${primary}\n${stored!.wrap(body(deeper))}`;
-  return primary;
+  if (depth > conds.length && deeper) return nl(`${primary}\n${stored!.wrap(body(deeper))}`);
+  return nl(primary);
 }
 
 export function nearestIndex(pos: number[], frac: number): number {
