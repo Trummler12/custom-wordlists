@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import {
   depthFromKey,
+  depthFromPointer,
   fameGroups,
   nearestIndex,
   rulerTip,
@@ -123,6 +124,47 @@ describe("nearestIndex", () => {
 
   it("takes the lower stop when a position sits exactly between two", () => {
     expect(nearestIndex(pos, 0.375)).toBe(1);
+  });
+});
+
+describe("depthFromPointer", () => {
+  // A 108px track: INSET 8 on each side ⇒ span 92, so frac = (clientX - 8) / 92.
+  const ev = (clientX: number) =>
+    ({ clientX, currentTarget: { getBoundingClientRect: () => ({ left: 0, width: 108 }) } }) as unknown as PointerEvent;
+
+  it("selects the last tier when dragged past the right end, though it is empty", () => {
+    const g = tiered(3, 4, 0); // the empty last tier collapses onto the end
+    expect(depthFromPointer(ev(200), g)).toBe(3); // frac > 1 ⇒ n = tiers.length ⇒ full
+  });
+
+  it("keeps the last non-empty tier when the pointer stops at the end", () => {
+    const g = tiered(3, 4, 0);
+    // at frac 1 the collapsed stops 2 and 3 tie; the low tie-break holds depth 2.
+    expect(depthFromPointer(ev(100), g)).toBe(2);
+  });
+
+  it("is unchanged for a non-empty last tier: past the end and at the end both select all", () => {
+    const g = tiered(3, 4);
+    expect(depthFromPointer(ev(200), g)).toBe(2);
+    expect(depthFromPointer(ev(100), g)).toBe(2);
+  });
+
+  it("snaps to the nearest boundary within the rail", () => {
+    expect(depthFromPointer(ev(8), tiered(3, 4, 0))).toBe(0); // frac 0 ⇒ nothing selected
+  });
+
+  it("resolves a leading collapse (empty first tiers) to its inner edge from the rail", () => {
+    const g = tiered(0, 0, 2, 0, 24); // t0,t1 empty ⇒ N0,N1,N2 all at pos 0
+    // A pointer just right of the collapse lands on N2 (depth 2), not depth 0.
+    expect(depthFromPointer(ev(12), g)).toBe(2);
+  });
+
+  it("deselects all only when dragged past the left end", () => {
+    expect(depthFromPointer(ev(0), tiered(0, 0, 2, 0, 24))).toBe(0); // frac < 0
+  });
+
+  it("still deselects at the far left of a ruler with no empty first tier", () => {
+    expect(depthFromPointer(ev(9), tiered(3, 4))).toBe(0); // pos[1] > 0 ⇒ no inner bump
   });
 });
 
