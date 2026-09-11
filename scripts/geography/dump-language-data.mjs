@@ -151,8 +151,8 @@ async function dumpStructure(qids, chunk = 40) {
 }
 
 /** Fetch names for `qids` in chunks, folded into
- *  `{ qid: { name, code?, users?, names: { lang: [{ name, pref?, official?, short? }] } } }`
- *  in `order`. The leading `name` (English preferred label), `code` and `users` (P1098) are a
+ *  `{ qid: { name, users?, code?, names: { lang: [{ name, pref?, official?, short? }] } } }`
+ *  in `order`. The leading `name` (English preferred label), `users` (P1098) and `code` are a
  *  summary from `struct`, so a reader browsing the raw file sees what each entry is at a glance
  *  — the same shape the plate dump carries. The build reads them from language-structure.tsv,
  *  not here. */
@@ -194,8 +194,8 @@ async function dumpNames(qids, order, struct, chunk = 20) {
     const s = struct?.[q] ?? {};
     out[q] = {
       ...(name ? { name } : {}),
-      ...(s.code ? { code: s.code } : {}),
       ...(s.speakers != null ? { users: s.speakers } : {}),
+      ...(s.code ? { code: s.code } : {}),
       names,
     };
   }
