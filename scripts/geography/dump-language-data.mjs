@@ -89,7 +89,13 @@ const STRUCTURE = (values) => `SELECT ?item
   OPTIONAL { ?item wdt:P218 ?p218. }
   OPTIONAL { ?item wdt:P219 ?p219. }
   OPTIONAL { ?item wdt:P220 ?p220. }
-  OPTIONAL { ?item wdt:P1098 ?spk. }
+  # The HIGHEST speaker count ever recorded, not the preferred value: an extinct language
+  # (Latin) marks its "0 today" preferred, so wdt:P1098 would read 0 — read every statement
+  # and drop only the deprecated ones, then MAX above picks the peak.
+  OPTIONAL {
+    ?item p:P1098 ?spkStmt. ?spkStmt ps:P1098 ?spk.
+    ?spkStmt wikibase:rank ?spkRank. FILTER(?spkRank != wikibase:DeprecatedRank)
+  }
   ${FLAG_KEYS.map((k) => `BIND(EXISTS { ?item wdt:P31/wdt:P279* wd:${FLAG[k]} } AS ?${k})`).join("\n  ")}
 } GROUP BY ?item ${FLAG_KEYS.map((k) => `?${k}`).join(" ")}`;
 
@@ -162,7 +168,7 @@ async function dumpNames(qids, order, struct, chunk = 20) {
     const values = qids.slice(i, i + chunk).map((q) => `wd:${q}`).join(" ");
     const rows = await query(NAMES(values));
     for (const r of rows) {
-      const lang = r.lang.value;
+      const lang = r.lang?.value;
       if (!lang) continue; // an untagged monolingual value is unusable without a language
       const item = qid(r.item.value);
       const langMap = (byItem[item] ??= {});
