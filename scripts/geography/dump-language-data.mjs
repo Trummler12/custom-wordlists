@@ -151,8 +151,12 @@ async function dumpStructure(qids, chunk = 40) {
 }
 
 /** Fetch names for `qids` in chunks, folded into
- *  `{ qid: { names: { lang: [{ name, pref?, official?, short? }] } } }` in `order`. */
-async function dumpNames(qids, order, chunk = 20) {
+ *  `{ qid: { name, code?, users?, names: { lang: [{ name, pref?, official?, short? }] } } }`
+ *  in `order`. The leading `name` (English preferred label), `code` and `users` (P1098) are a
+ *  summary from `struct`, so a reader browsing the raw file sees what each entry is at a glance
+ *  — the same shape the plate dump carries. The build reads them from language-structure.tsv,
+ *  not here. */
+async function dumpNames(qids, order, struct, chunk = 20) {
   const byItem = {};
   for (let i = 0; i < qids.length; i += chunk) {
     const values = qids.slice(i, i + chunk).map((q) => `wd:${q}`).join(" ");
@@ -186,7 +190,14 @@ async function dumpNames(qids, order, chunk = 20) {
         .sort((a, b) => rank(a) - rank(b) || a.name.localeCompare(b.name))
         .map(canon);
     }
-    out[q] = { names };
+    const name = (names.en ?? []).find((t) => t.pref)?.name;
+    const s = struct?.[q] ?? {};
+    out[q] = {
+      ...(name ? { name } : {}),
+      ...(s.code ? { code: s.code } : {}),
+      ...(s.speakers != null ? { users: s.speakers } : {}),
+      names,
+    };
   }
   return out;
 }
@@ -216,7 +227,7 @@ async function main() {
   console.log(`\nstructure — ${ranked.length}`);
 
   const order = ranked.map((l) => l.lang);
-  const names = await dumpNames(order, order);
+  const names = await dumpNames(order, order, struct);
   await writeFile(join(OUT, "language-names.json"), JSON.stringify(names, null, 2) + "\n", "utf8");
   console.log(`\nnames — ${order.length}`);
 }
