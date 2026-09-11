@@ -26,7 +26,7 @@
     },
     {
       "id": "no-coverage",
-      "match": ["Chișinău"],
+      "match": ["Chișinău","Vatican City"],
       "count": true,
       "icon": "geoguessr",
       "reason": {
@@ -116,7 +116,8 @@
       {"en":"Andorra la Vella","es":"Andorra la Vieja","fr":"Andorre-la-Vieille","ja":"アンドラ・ラ・ベリャ","ko":"안도라라벨랴","zh-Hans":"安道尔城","zh-Hant":"老安道爾","pt":"Andorra-a-Velha","ru":"Андорра-ла-Велья","pl":"Andora","bg":"Андора ла Веля","el":"Ανδόρρα λα Βέλια","he":"אנדורה לה ולה","lv":"Andora la Velja","mk":"Андора ла Веља","sr":"Андора ла Веља","sk":"Andorra","tl":"Lungsod ng Andorra la Vella"},
       {"en":"Monaco","es":"Mónaco","fr":{"pref":"Monaco","long":"la Principauté de Monaco","others":["Fort-Hercule"]},"it":"Principato di Monaco","ja":"モナコ","ko":"모나코","zh-Hans":"摩纳哥","zh-Hant":"摩納哥","pt":"Mónaco","ru":"Монако","tr":"Monako","pl":"Monako","bg":"Монако","cs":"Monako","el":"Μονακό","he":"מונקו","lv":"Monako","mk":"Монако","sr":"Монако","sk":"Monako","sv":{"pref":"Monaco","long":"Furstendömet Monaco"}},
       {"en":"Vaduz","ja":"ファドゥーツ","ko":"파두츠","zh-Hans":"瓦杜兹","zh-Hant":"華杜茲","ru":"Вадуц","bg":"Вадуц","el":"Βαντούζ","he":"ואדוץ","lv":"Vaduca","mk":"Вадуц","sr":"Вадуц"},
-      {"en":"San Marino","fr":"Saint-Marin","it":"Città di San Marino","ja":"サンマリノ市","ko":"산마리노","zh-Hans":"圣马力诺","zh-Hant":"聖馬力諾","ru":"Сан-Марино","bg":"Сан Марино","el":"Άγιος Μαρίνος","he":"סן מרינו","lv":"Sanmarīno","mk":"Сан Марино","sr":"Сан Марино","sk":"San Maríno"}
+      {"en":"San Marino","fr":"Saint-Marin","it":"Città di San Marino","ja":"サンマリノ市","ko":"산마리노","zh-Hans":"圣马力诺","zh-Hant":"聖馬力諾","ru":"Сан-Марино","bg":"Сан Марино","el":"Άγιος Μαρίνος","he":"סן מרינו","lv":"Sanmarīno","mk":"Сан Марино","sr":"Сан Марино","sk":"San Maríno"},
+      {"en":"Vatican City","de":"Vatikanstadt","es":"Ciudad del Vaticano","fr":"Vatican","it":{"pref":"Città del Vaticano","long":"Stato della Città del Vaticano"},"ja":"バチカン","ko":"바티칸 시국","zh-Hans":"梵蒂冈","zh-Hant":"梵蒂岡","pt":"Vaticano","ru":"Ватикан","tr":"Vatikan","pl":"Watykan","nl":"Vaticaanstad","bg":"Ватикан","cs":"Vatikán","da":"Vatikanstaten","et":"Vatikan","fi":"Vatikaani","el":"Βατικανό","he":"קריית הוותיקן","hu":"Vatikán","lv":"Vatikāns","mk":"Ватикан","no":"Vatikanstaten","ro":"Vatican","sr":"Ватикан","sk":"Vatikán","sv":"Vatikanstaten","tl":"Lungsod ng Batikano"}
     ]
   ],
   "tierConditions": [

@@ -95,7 +95,7 @@
     },
     {
       "id": "no-coverage",
-      "match": ["Guernsey","Moldova","Northern Cyprus","Transnistria"],
+      "match": ["Guernsey","Moldova","Northern Cyprus","Transnistria","Vatican City"],
       "count": true,
       "icon": "geoguessr",
       "reason": {
@@ -193,7 +193,8 @@
       {"en":"Liechtenstein","de":{"pref":"Liechtenstein","long":"Fürstentum Liechtenstein"},"fr":{"pref":"Liechtenstein","long":"la Principauté du Liechtenstein"},"ja":"リヒテンシュタイン","ko":"리히텐슈타인","zh-Hans":"列支敦士登","zh-Hant":"列支敦斯登","ru":"Лихтенштейн","tr":"Lihtenştayn","bg":"Лихтенщайн","cs":"Lichtenštejnsko","el":"Λίχτενσταϊν","he":"ליכטנשטיין","lv":"Lihtenšteina","mk":"Лихтенштајн","no":"Fyrstedømmet Liechtenstein","sr":"Лихтенштајн","sk":"Lichtenštajnsko","sv":{"pref":"Liechtenstein","long":"Furstendömet Liechtenstein"}},
       {"en":"Gibraltar","it":"Gibilterra","ja":"ジブラルタル","ko":"지브롤터","zh-Hans":"直布罗陀","zh-Hant":"直布羅陀","ru":"Гибралтар","tr":"Cebelitarık","bg":"Гибралтар","el":"Γιβραλτάρ","he":"גיברלטר","hu":"Gibraltár","lv":"Gibraltārs","mk":"Гибралтар","sr":"Гибралтар","sk":"Gibraltár","tl":"Hibraltar"},
       {"en":"San Marino","fr":{"pref":"Saint-Marin","long":"la République de Saint-Marin"},"it":{"pref":"San Marino","long":"Repubblica di San Marino"},"ja":"サンマリノ","ko":"산마리노","zh-Hans":"圣马力诺","zh-Hant":"聖馬利諾","ru":"Сан-Марино","bg":"Сан Марино","el":"Άγιος Μαρίνος","he":"סן מרינו","lv":"Sanmarīno","mk":"Сан Марино","sr":"Сан Марино","sk":"San Maríno"},
-      {"en":"Åland","it":"Isole Åland","ja":"オーランド諸島","ko":"올란드 제도","zh-Hans":"奥兰","zh-Hant":"奧蘭","ru":"Аландские острова","pl":"Wyspy Alandzkie","bg":"Оландски острови","cs":"Alandy","et":"Ahvenamaa","fi":"Ahvenanmaan maakunta","el":"Ώλαντ","he":"אולנד","lv":"Olande","mk":"Оланд","ro":"Insulele Åland","sr":"Оландска острва","sk":"Alandy","tl":"Kapuluan ng Åland"}
+      {"en":"Åland","it":"Isole Åland","ja":"オーランド諸島","ko":"올란드 제도","zh-Hans":"奥兰","zh-Hant":"奧蘭","ru":"Аландские острова","pl":"Wyspy Alandzkie","bg":"Оландски острови","cs":"Alandy","et":"Ahvenamaa","fi":"Ahvenanmaan maakunta","el":"Ώλαντ","he":"אולנד","lv":"Olande","mk":"Оланд","ro":"Insulele Åland","sr":"Оландска острва","sk":"Alandy","tl":"Kapuluan ng Åland"},
+      {"en":"Vatican City","de":"Vatikanstadt","es":"Ciudad del Vaticano","fr":"Vatican","it":{"pref":"Città del Vaticano","long":"Stato della Città del Vaticano"},"ja":"バチカン","ko":"바티칸 시국","zh-Hans":"梵蒂冈","zh-Hant":"梵蒂岡","pt":"Vaticano","ru":"Ватикан","tr":"Vatikan","pl":"Watykan","nl":"Vaticaanstad","bg":"Ватикан","cs":"Vatikán","da":"Vatikanstaten","et":"Vatikan","fi":"Vatikaani","el":"Βατικανό","he":"קריית הוותיקן","hu":"Vatikán","lv":"Vatikāns","mk":"Ватикан","no":"Vatikanstaten","ro":"Vatican","sr":"Ватикан","sk":"Vatikán","sv":"Vatikanstaten","tl":"Lungsod ng Batikano"}
     ]
   ],
   "tierConditions": [
