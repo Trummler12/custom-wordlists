@@ -94,10 +94,14 @@ async function query(sparql, tries = 5) {
 const qid = (uri) => uri.replace(/^.*\/entity\//, "");
 
 /** Fetch names for `qids` in chunks small enough to keep each query well under the endpoint's
- *  limits, and fold them into `{ qid: { names: { lang: [{ name, pref?, official?, short? }] } } }`
- *  in `order`. A name seen under several flags (Germany's "Deutschland" is pref and short)
- *  becomes one entry carrying both. */
-async function dumpNames(qids, order, chunk = 20) {
+ *  limits, and fold them into
+ *  `{ qid: { name, population?, country?, code?, names: { lang: […] } } }` in `order`. A name
+ *  seen under several flags (Germany's "Deutschland" is pref and short) becomes one entry
+ *  carrying both. The leading `name` (English preferred label), `population` and `country`/`code`
+ *  from `meta` are a summary for the raw file's readers — the number sits by the name so it reads
+ *  as the entry's own; `country` only on a capital, naming the state it belongs to. The build
+ *  reads these from the structure, not here. */
+async function dumpNames(qids, order, meta, chunk = 20) {
   const byItem = {};
   for (let i = 0; i < qids.length; i += chunk) {
     const values = qids.slice(i, i + chunk).map((q) => `wd:${q}`).join(" ");
@@ -131,7 +135,15 @@ async function dumpNames(qids, order, chunk = 20) {
         .sort((a, b) => rank(a) - rank(b) || a.name.localeCompare(b.name))
         .map(canon);
     }
-    out[q] = { names };
+    const name = (names.en ?? []).find((t) => t.pref)?.name;
+    const m = meta?.[q] ?? {};
+    out[q] = {
+      ...(name ? { name } : {}),
+      ...(m.population != null ? { population: m.population } : {}),
+      ...(m.country ? { country: m.country } : {}),
+      ...(m.code ? { code: m.code } : {}),
+      names,
+    };
   }
   return out;
 }
@@ -143,9 +155,9 @@ async function territories() {
   const curated = JSON.parse(await readFile(join(OUT, "sovereign-territories.json"), "utf8"));
   delete curated._comment;
   const qids = Object.keys(curated);
-  const rows = await query(`SELECT ?item (SAMPLE(?pop) AS ?population) (SAMPLE(?cap) AS ?capital) WHERE {
+  const rows = await query(`SELECT ?item (SAMPLE(?pop) AS ?population) (SAMPLE(?cap) AS ?capital) (MIN(?i) AS ?iso) WHERE {
     VALUES ?item { ${qids.map((q) => "wd:" + q).join(" ")} }
-    OPTIONAL { ?item wdt:P1082 ?pop } OPTIONAL { ?item wdt:P36 ?cap }
+    OPTIONAL { ?item wdt:P1082 ?pop } OPTIONAL { ?item wdt:P36 ?cap } OPTIONAL { ?item wdt:P297 ?i }
   } GROUP BY ?item`);
   const byQid = {};
   for (const r of rows) byQid[qid(r.item.value)] = r;
@@ -153,7 +165,20 @@ async function territories() {
     qid: q,
     pop: byQid[q]?.population ? Number(byQid[q].population.value) : null,
     capital: byQid[q]?.capital ? qid(byQid[q].capital.value) : null,
+    iso: byQid[q]?.iso?.value ?? "",
   }));
+}
+
+/** City populations (P1082) for a list of capitals, the largest where an item carries
+ *  several, so a re-dump is deterministic. */
+async function capitalPops(qids) {
+  const out = {};
+  for (let i = 0; i < qids.length; i += 100) {
+    const values = qids.slice(i, i + 100).map((q) => `wd:${q}`).join(" ");
+    const rows = await query(`SELECT ?c (MAX(?p) AS ?pop) WHERE { VALUES ?c { ${values} } ?c wdt:P1082 ?p. } GROUP BY ?c`);
+    for (const r of rows) out[qid(r.c.value)] = Number(r.pop.value);
+  }
+  return out;
 }
 
 async function main() {
@@ -195,15 +220,31 @@ async function main() {
   console.log(`territories — ${terr.length}`);
 
   // --- Names: sovereign states and territories share one file, keyed by Q-id ---
+  // Each entry leads with its ISO code (P297) and population, from the structure above.
+  const countryMeta = {};
+  for (const c of ranked) countryMeta[c.country] = { code: c.iso || undefined, population: c.pop ?? undefined };
+  for (const t of terr) countryMeta[t.qid] = { code: t.iso || undefined, population: t.pop ?? undefined };
   const countryOrder = [...new Set([...ranked.map((c) => c.country), ...terr.map((t) => t.qid)])];
-  const countryNames = await dumpNames(countryOrder, countryOrder);
+  const countryNames = await dumpNames(countryOrder, countryOrder, countryMeta);
   await writeFile(join(OUT, "country-names.json"), JSON.stringify(countryNames, null, 2) + "\n", "utf8");
 
   // Capitals in the same order, each country's capitals adjacent; a country with two
-  // contributes both, in P36 order. Territory capitals follow.
+  // contributes both, in P36 order. Territory capitals follow. Each leads with the country it
+  // is a capital of — its English name and ISO code, so the bare code isn't a riddle — and its
+  // own city population (P1082).
   const capitalOrder = [...new Set([...ranked.flatMap((c) => c.capitals), ...terr.map((t) => t.capital).filter(Boolean)])];
   console.log(`capitals — ${capitalOrder.length}`);
-  const capitalNames = await dumpNames(capitalOrder, capitalOrder);
+  const capitalCountry = {};
+  for (const c of ranked) for (const cap of c.capitals) capitalCountry[cap] ??= c.country;
+  for (const t of terr) if (t.capital) capitalCountry[t.capital] ??= t.qid;
+  const capPop = await capitalPops(capitalOrder);
+  const capitalMeta = Object.fromEntries(
+    capitalOrder.map((cap) => {
+      const cq = capitalCountry[cap];
+      return [cap, { country: countryNames[cq]?.name, code: countryMeta[cq]?.code, population: capPop[cap] ?? undefined }];
+    }),
+  );
+  const capitalNames = await dumpNames(capitalOrder, capitalOrder, capitalMeta);
   await writeFile(join(OUT, "capital-names.json"), JSON.stringify(capitalNames, null, 2) + "\n", "utf8");
 }
 

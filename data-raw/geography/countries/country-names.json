@@ -1,5 +1,8 @@
 {
   "Q148": {
+    "name": "People's Republic of China",
+    "population": 1404890000,
+    "code": "CN",
     "names": {
       "bg": [
         {
@@ -686,6 +689,9 @@
     }
   },
   "Q668": {
+    "name": "India",
+    "population": 1326093247,
+    "code": "IN",
     "names": {
       "bg": [
         {
@@ -1215,6 +1221,9 @@
     }
   },
   "Q30": {
+    "name": "United States",
+    "population": 340110988,
+    "code": "US",
     "names": {
       "bg": [
         {
@@ -2226,6 +2235,9 @@
     }
   },
   "Q252": {
+    "name": "Indonesia",
+    "population": 275439000,
+    "code": "ID",
     "names": {
       "bg": [
         {
@@ -2667,6 +2679,9 @@
     }
   },
   "Q843": {
+    "name": "Pakistan",
+    "population": 223773700,
+    "code": "PK",
     "names": {
       "bg": [
         {
@@ -3065,6 +3080,9 @@
     }
   },
   "Q155": {
+    "name": "Brazil",
+    "population": 214211951,
+    "code": "BR",
     "names": {
       "bg": [
         {
@@ -3516,6 +3534,9 @@
     }
   },
   "Q1033": {
+    "name": "Nigeria",
+    "population": 211400708,
+    "code": "NG",
     "names": {
       "bg": [
         {
@@ -3918,6 +3939,9 @@
     }
   },
   "Q902": {
+    "name": "Bangladesh",
+    "population": 171466990,
+    "code": "BD",
     "names": {
       "bg": [
         {
@@ -4384,6 +4408,9 @@
     }
   },
   "Q159": {
+    "name": "Russia",
+    "population": 146119928,
+    "code": "RU",
     "names": {
       "bg": [
         {
@@ -4904,6 +4931,9 @@
     }
   },
   "Q96": {
+    "name": "Mexico",
+    "population": 132274416,
+    "code": "MX",
     "names": {
       "bg": [
         {
@@ -5473,6 +5503,9 @@
     }
   },
   "Q115": {
+    "name": "Ethiopia",
+    "population": 128691692,
+    "code": "ET",
     "names": {
       "bg": [
         {
@@ -5882,6 +5915,9 @@
     }
   },
   "Q17": {
+    "name": "Japan",
+    "population": 123802000,
+    "code": "JP",
     "names": {
       "bg": [
         {
@@ -6489,6 +6525,9 @@
     }
   },
   "Q79": {
+    "name": "Egypt",
+    "population": 114535772,
+    "code": "EG",
     "names": {
       "bg": [
         {
@@ -6987,6 +7026,9 @@
     }
   },
   "Q928": {
+    "name": "Philippines",
+    "population": 112729484,
+    "code": "PH",
     "names": {
       "bg": [
         {
@@ -7368,6 +7410,9 @@
     }
   },
   "Q974": {
+    "name": "Democratic Republic of the Congo",
+    "population": 105789731,
+    "code": "CD",
     "names": {
       "bg": [
         {
@@ -8060,6 +8105,9 @@
     }
   },
   "Q881": {
+    "name": "Vietnam",
+    "population": 96208984,
+    "code": "VN",
     "names": {
       "bg": [
         {
@@ -8631,6 +8679,9 @@
     }
   },
   "Q794": {
+    "name": "Iran",
+    "population": 92417700,
+    "code": "IR",
     "names": {
       "bg": [
         {
@@ -9064,6 +9115,9 @@
     }
   },
   "Q43": {
+    "name": "Turkey",
+    "population": 85372377,
+    "code": "TR",
     "names": {
       "bg": [
         {
@@ -9560,6 +9614,9 @@
     }
   },
   "Q183": {
+    "name": "Germany",
+    "population": 83577140,
+    "code": "DE",
     "names": {
       "bg": [
         {
@@ -10152,6 +10209,9 @@
     }
   },
   "Q142": {
+    "name": "France",
+    "population": 68605616,
+    "code": "FR",
     "names": {
       "bg": [
         {
@@ -10769,6 +10829,9 @@
     }
   },
   "Q145": {
+    "name": "United Kingdom",
+    "population": 67326569,
+    "code": "GB",
     "names": {
       "bg": [
         {
@@ -11594,6 +11657,9 @@
     }
   },
   "Q869": {
+    "name": "Thailand",
+    "population": 66188503,
+    "code": "TH",
     "names": {
       "bg": [
         {
@@ -12059,6 +12125,9 @@
     }
   },
   "Q258": {
+    "name": "South Africa",
+    "population": 62027503,
+    "code": "ZA",
     "names": {
       "bg": [
         {
@@ -12543,6 +12612,9 @@
     }
   },
   "Q38": {
+    "name": "Italy",
+    "population": 58850717,
+    "code": "IT",
     "names": {
       "bg": [
         {
@@ -13029,6 +13101,9 @@
     }
   },
   "Q924": {
+    "name": "Tanzania",
+    "population": 57310019,
+    "code": "TZ",
     "names": {
       "bg": [
         {
@@ -13393,6 +13468,9 @@
     }
   },
   "Q836": {
+    "name": "Myanmar",
+    "population": 53370609,
+    "code": "MM",
     "names": {
       "bg": [
         {
@@ -13971,6 +14049,9 @@
     }
   },
   "Q739": {
+    "name": "Colombia",
+    "population": 52321152,
+    "code": "CO",
     "names": {
       "bg": [
         {
@@ -14340,6 +14421,9 @@
     }
   },
   "Q884": {
+    "name": "South Korea",
+    "population": 51466201,
+    "code": "KR",
     "names": {
       "bg": [
         {
@@ -14995,6 +15079,9 @@
     }
   },
   "Q29": {
+    "name": "Spain",
+    "population": 48592909,
+    "code": "ES",
     "names": {
       "bg": [
         {
@@ -15473,6 +15560,9 @@
     }
   },
   "Q114": {
+    "name": "Kenya",
+    "population": 48468138,
+    "code": "KE",
     "names": {
       "bg": [
         {
@@ -15914,6 +16004,9 @@
     }
   },
   "Q414": {
+    "name": "Argentina",
+    "population": 47327407,
+    "code": "AR",
     "names": {
       "bg": [
         {
@@ -16351,6 +16444,9 @@
     }
   },
   "Q1036": {
+    "name": "Uganda",
+    "population": 47123531,
+    "code": "UG",
     "names": {
       "bg": [
         {
@@ -16736,6 +16832,9 @@
     }
   },
   "Q262": {
+    "name": "Algeria",
+    "population": 46164219,
+    "code": "DZ",
     "names": {
       "bg": [
         {
@@ -17192,6 +17291,9 @@
     }
   },
   "Q889": {
+    "name": "Afghanistan",
+    "population": 41454761,
+    "code": "AF",
     "names": {
       "bg": [
         {
@@ -17553,6 +17655,9 @@
     }
   },
   "Q212": {
+    "name": "Ukraine",
+    "population": 41167335,
+    "code": "UA",
     "names": {
       "bg": [
         {
@@ -17899,6 +18004,9 @@
     }
   },
   "Q1049": {
+    "name": "Sudan",
+    "population": 40533330,
+    "code": "SD",
     "names": {
       "bg": [
         {
@@ -18338,6 +18446,9 @@
     }
   },
   "Q796": {
+    "name": "Iraq",
+    "population": 38274618,
+    "code": "IQ",
     "names": {
       "bg": [
         {
@@ -18723,6 +18834,9 @@
     }
   },
   "Q36": {
+    "name": "Poland",
+    "population": 37563071,
+    "code": "PL",
     "names": {
       "bg": [
         {
@@ -19175,6 +19289,9 @@
     }
   },
   "Q16": {
+    "name": "Canada",
+    "population": 36991981,
+    "code": "CA",
     "names": {
       "bg": [
         {
@@ -19524,6 +19641,9 @@
     }
   },
   "Q1028": {
+    "name": "Morocco",
+    "population": 36828330,
+    "code": "MA",
     "names": {
       "bg": [
         {
@@ -19961,6 +20081,9 @@
     }
   },
   "Q916": {
+    "name": "Angola",
+    "population": 36749906,
+    "code": "AO",
     "names": {
       "bg": [
         {
@@ -20403,6 +20526,9 @@
     }
   },
   "Q265": {
+    "name": "Uzbekistan",
+    "population": 34915100,
+    "code": "UZ",
     "names": {
       "bg": [
         {
@@ -20823,6 +20949,9 @@
     }
   },
   "Q833": {
+    "name": "Malaysia",
+    "population": 34231700,
+    "code": "MY",
     "names": {
       "bg": [
         {
@@ -21185,6 +21314,9 @@
     }
   },
   "Q419": {
+    "name": "Peru",
+    "population": 34157732,
+    "code": "PE",
     "names": {
       "bg": [
         {
@@ -21602,6 +21734,9 @@
     }
   },
   "Q851": {
+    "name": "Saudi Arabia",
+    "population": 33000000,
+    "code": "SA",
     "names": {
       "bg": [
         {
@@ -22126,6 +22261,9 @@
     }
   },
   "Q117": {
+    "name": "Ghana",
+    "population": 32833031,
+    "code": "GH",
     "names": {
       "bg": [
         {
@@ -22510,6 +22648,9 @@
     }
   },
   "Q1019": {
+    "name": "Madagascar",
+    "population": 31964956,
+    "code": "MG",
     "names": {
       "bg": [
         {
@@ -22905,6 +23046,9 @@
     }
   },
   "Q717": {
+    "name": "Venezuela",
+    "population": 31250306,
+    "code": "VE",
     "names": {
       "bg": [
         {
@@ -23314,6 +23458,9 @@
     }
   },
   "Q1008": {
+    "name": "Ivory Coast",
+    "population": 31165654,
+    "code": "CI",
     "names": {
       "bg": [
         {
@@ -23785,6 +23932,9 @@
     }
   },
   "Q1029": {
+    "name": "Mozambique",
+    "population": 29668834,
+    "code": "MZ",
     "names": {
       "bg": [
         {
@@ -24192,6 +24342,9 @@
     }
   },
   "Q837": {
+    "name": "Nepal",
+    "population": 29164578,
+    "code": "NP",
     "names": {
       "bg": [
         {
@@ -24670,6 +24823,9 @@
     }
   },
   "Q1009": {
+    "name": "Cameroon",
+    "population": 28372687,
+    "code": "CM",
     "names": {
       "bg": [
         {
@@ -25069,6 +25225,9 @@
     }
   },
   "Q805": {
+    "name": "Yemen",
+    "population": 28250420,
+    "code": "YE",
     "names": {
       "bg": [
         {
@@ -25467,6 +25626,9 @@
     }
   },
   "Q408": {
+    "name": "Australia",
+    "population": 27614411,
+    "code": "AU",
     "names": {
       "bg": [
         {
@@ -25999,6 +26161,9 @@
     }
   },
   "Q423": {
+    "name": "North Korea",
+    "population": 26418204,
+    "code": "KP",
     "names": {
       "bg": [
         {
@@ -26681,6 +26846,9 @@
     }
   },
   "Q858": {
+    "name": "Syria",
+    "population": 23865423,
+    "code": "SY",
     "names": {
       "bg": [
         {
@@ -27078,6 +27246,9 @@
     }
   },
   "Q865": {
+    "name": "Taiwan",
+    "population": 23262544,
+    "code": "TW",
     "names": {
       "bg": [
         {
@@ -27971,6 +28142,9 @@
     }
   },
   "Q965": {
+    "name": "Burkina Faso",
+    "population": 23025776,
+    "code": "BF",
     "names": {
       "bg": [
         {
@@ -28341,6 +28515,9 @@
     }
   },
   "Q912": {
+    "name": "Mali",
+    "population": 22395489,
+    "code": "ML",
     "names": {
       "bg": [
         {
@@ -28739,6 +28916,9 @@
     }
   },
   "Q1032": {
+    "name": "Niger",
+    "population": 21477348,
+    "code": "NE",
     "names": {
       "bg": [
         {
@@ -29141,6 +29321,9 @@
     }
   },
   "Q854": {
+    "name": "Sri Lanka",
+    "population": 21444000,
+    "code": "LK",
     "names": {
       "bg": [
         {
@@ -29662,6 +29845,9 @@
     }
   },
   "Q232": {
+    "name": "Kazakhstan",
+    "population": 20139914,
+    "code": "KZ",
     "names": {
       "bg": [
         {
@@ -30160,6 +30346,9 @@
     }
   },
   "Q953": {
+    "name": "Zambia",
+    "population": 19610769,
+    "code": "ZM",
     "names": {
       "bg": [
         {
@@ -30506,6 +30695,9 @@
     }
   },
   "Q298": {
+    "name": "Chile",
+    "population": 19458000,
+    "code": "CL",
     "names": {
       "bg": [
         {
@@ -30896,6 +31088,9 @@
     }
   },
   "Q657": {
+    "name": "Chad",
+    "population": 19319064,
+    "code": "TD",
     "names": {
       "bg": [
         {
@@ -31309,6 +31504,9 @@
     }
   },
   "Q218": {
+    "name": "Romania",
+    "population": 19053815,
+    "code": "RO",
     "names": {
       "bg": [
         {
@@ -31624,6 +31822,9 @@
     }
   },
   "Q1020": {
+    "name": "Malawi",
+    "population": 17563749,
+    "code": "MW",
     "names": {
       "bg": [
         {
@@ -32017,6 +32218,9 @@
     }
   },
   "Q1006": {
+    "name": "Guinea",
+    "population": 17521167,
+    "code": "GN",
     "names": {
       "bg": [
         {
@@ -32469,6 +32673,9 @@
     }
   },
   "Q424": {
+    "name": "Cambodia",
+    "population": 17423880,
+    "code": "KH",
     "names": {
       "bg": [
         {
@@ -32924,6 +33131,9 @@
     }
   },
   "Q774": {
+    "name": "Guatemala",
+    "population": 17263239,
+    "code": "GT",
     "names": {
       "bg": [
         {
@@ -33348,6 +33558,9 @@
     }
   },
   "Q29999": {
+    "name": "Kingdom of the Netherlands",
+    "population": 17100715,
+    "code": "NL",
     "names": {
       "bg": [
         {
@@ -33735,6 +33948,9 @@
     }
   },
   "Q736": {
+    "name": "Ecuador",
+    "population": 16938986,
+    "code": "EC",
     "names": {
       "bg": [
         {
@@ -34280,6 +34496,9 @@
     }
   },
   "Q1041": {
+    "name": "Senegal",
+    "population": 16876720,
+    "code": "SN",
     "names": {
       "bg": [
         {
@@ -34641,6 +34860,9 @@
     }
   },
   "Q954": {
+    "name": "Zimbabwe",
+    "population": 15178979,
+    "code": "ZW",
     "names": {
       "bg": [
         {
@@ -35162,6 +35384,9 @@
     }
   },
   "Q1037": {
+    "name": "Rwanda",
+    "population": 14569341,
+    "code": "RW",
     "names": {
       "bg": [
         {
@@ -35547,6 +35772,9 @@
     }
   },
   "Q962": {
+    "name": "Benin",
+    "population": 14111034,
+    "code": "BJ",
     "names": {
       "bg": [
         {
@@ -35966,6 +36194,9 @@
     }
   },
   "Q967": {
+    "name": "Burundi",
+    "population": 13689450,
+    "code": "BI",
     "names": {
       "bg": [
         {
@@ -36367,6 +36598,9 @@
     }
   },
   "Q958": {
+    "name": "South Sudan",
+    "population": 12575714,
+    "code": "SS",
     "names": {
       "bg": [
         {
@@ -36779,6 +37013,9 @@
     }
   },
   "Q750": {
+    "name": "Bolivia",
+    "population": 12244159,
+    "code": "BO",
     "names": {
       "bg": [
         {
@@ -37148,6 +37385,9 @@
     }
   },
   "Q31": {
+    "name": "Belgium",
+    "population": 11825551,
+    "code": "BE",
     "names": {
       "bg": [
         {
@@ -37625,6 +37865,9 @@
     }
   },
   "Q948": {
+    "name": "Tunisia",
+    "population": 11565204,
+    "code": "TN",
     "names": {
       "bg": [
         {
@@ -38036,6 +38279,9 @@
     }
   },
   "Q1045": {
+    "name": "Somalia",
+    "population": 11031386,
+    "code": "SO",
     "names": {
       "bg": [
         {
@@ -38437,6 +38683,9 @@
     }
   },
   "Q241": {
+    "name": "Cuba",
+    "population": 10985974,
+    "code": "CU",
     "names": {
       "bg": [
         {
@@ -38815,6 +39064,9 @@
     }
   },
   "Q790": {
+    "name": "Haiti",
+    "population": 10981229,
+    "code": "HT",
     "names": {
       "bg": [
         {
@@ -39166,6 +39418,9 @@
     }
   },
   "Q213": {
+    "name": "Czech Republic",
+    "population": 10909500,
+    "code": "CZ",
     "names": {
       "bg": [
         {
@@ -39687,6 +39942,9 @@
     }
   },
   "Q786": {
+    "name": "Dominican Republic",
+    "population": 10760028,
+    "code": "DO",
     "names": {
       "bg": [
         {
@@ -40069,6 +40327,9 @@
     }
   },
   "Q34": {
+    "name": "Sweden",
+    "population": 10609460,
+    "code": "SE",
     "names": {
       "bg": [
         {
@@ -40532,6 +40793,9 @@
     }
   },
   "Q41": {
+    "name": "Greece",
+    "population": 10482487,
+    "code": "GR",
     "names": {
       "bg": [
         {
@@ -41109,6 +41373,9 @@
     }
   },
   "Q810": {
+    "name": "Jordan",
+    "population": 10428241,
+    "code": "JO",
     "names": {
       "bg": [
         {
@@ -41485,6 +41752,9 @@
     }
   },
   "Q45": {
+    "name": "Portugal",
+    "population": 10347892,
+    "code": "PT",
     "names": {
       "bg": [
         {
@@ -42005,6 +42275,9 @@
     }
   },
   "Q227": {
+    "name": "Azerbaijan",
+    "population": 10180770,
+    "code": "AZ",
     "names": {
       "bg": [
         {
@@ -42419,6 +42692,9 @@
     }
   },
   "Q878": {
+    "name": "United Arab Emirates",
+    "population": 9890400,
+    "code": "AE",
     "names": {
       "bg": [
         {
@@ -43043,6 +43319,9 @@
     }
   },
   "Q801": {
+    "name": "Israel",
+    "population": 9840000,
+    "code": "IL",
     "names": {
       "bg": [
         {
@@ -43503,6 +43782,9 @@
     }
   },
   "Q28": {
+    "name": "Hungary",
+    "population": 9603634,
+    "code": "HU",
     "names": {
       "bg": [
         {
@@ -43852,6 +44134,9 @@
     }
   },
   "Q863": {
+    "name": "Tajikistan",
+    "population": 9504000,
+    "code": "TJ",
     "names": {
       "bg": [
         {
@@ -44229,6 +44514,9 @@
     }
   },
   "Q39": {
+    "name": "Switzerland",
+    "population": 9104063,
+    "code": "CH",
     "names": {
       "bg": [
         {
@@ -44784,6 +45072,9 @@
     }
   },
   "Q184": {
+    "name": "Belarus",
+    "population": 9056080,
+    "code": "BY",
     "names": {
       "bg": [
         {
@@ -45355,6 +45646,9 @@
     }
   },
   "Q40": {
+    "name": "Austria",
+    "population": 8979894,
+    "code": "AT",
     "names": {
       "bg": [
         {
@@ -45764,6 +46058,9 @@
     }
   },
   "Q691": {
+    "name": "Papua New Guinea",
+    "population": 8935000,
+    "code": "PG",
     "names": {
       "bg": [
         {
@@ -46278,6 +46575,9 @@
     }
   },
   "Q783": {
+    "name": "Honduras",
+    "population": 8303771,
+    "code": "HN",
     "names": {
       "bg": [
         {
@@ -46672,6 +46972,9 @@
     }
   },
   "Q945": {
+    "name": "Togo",
+    "population": 7797694,
+    "code": "TG",
     "names": {
       "bg": [
         {
@@ -47008,6 +47311,9 @@
     }
   },
   "Q1044": {
+    "name": "Sierra Leone",
+    "population": 7557212,
+    "code": "SL",
     "names": {
       "bg": [
         {
@@ -47399,6 +47705,9 @@
     }
   },
   "Q1016": {
+    "name": "Libya",
+    "population": 7381023,
+    "code": "LY",
     "names": {
       "bg": [
         {
@@ -47741,6 +48050,9 @@
     }
   },
   "Q813": {
+    "name": "Kyrgyzstan",
+    "population": 7281800,
+    "code": "KG",
     "names": {
       "bg": [
         {
@@ -48257,6 +48569,9 @@
     }
   },
   "Q819": {
+    "name": "Laos",
+    "population": 6858160,
+    "code": "LA",
     "names": {
       "bg": [
         {
@@ -48731,6 +49046,9 @@
     }
   },
   "Q733": {
+    "name": "Paraguay",
+    "population": 6811297,
+    "code": "PY",
     "names": {
       "bg": [
         {
@@ -49061,6 +49379,9 @@
     }
   },
   "Q403": {
+    "name": "Serbia",
+    "population": 6605168,
+    "code": "RS",
     "names": {
       "bg": [
         {
@@ -49453,6 +49774,9 @@
     }
   },
   "Q219": {
+    "name": "Bulgaria",
+    "population": 6423207,
+    "code": "BG",
     "names": {
       "bg": [
         {
@@ -49961,6 +50285,9 @@
     }
   },
   "Q971": {
+    "name": "Republic of the Congo",
+    "population": 6142180,
+    "code": "CG",
     "names": {
       "bg": [
         {
@@ -50485,6 +50812,9 @@
     }
   },
   "Q874": {
+    "name": "Turkmenistan",
+    "population": 6117933,
+    "code": "TM",
     "names": {
       "bg": [
         {
@@ -50885,6 +51215,9 @@
     }
   },
   "Q822": {
+    "name": "Lebanon",
+    "population": 6100075,
+    "code": "LB",
     "names": {
       "bg": [
         {
@@ -51292,6 +51625,9 @@
     }
   },
   "Q792": {
+    "name": "El Salvador",
+    "population": 6029976,
+    "code": "SV",
     "names": {
       "bg": [
         {
@@ -51672,6 +52008,8 @@
     }
   },
   "Q756617": {
+    "name": "Kingdom of Denmark",
+    "population": 5930987,
     "names": {
       "bg": [
         {
@@ -52118,6 +52456,9 @@
     }
   },
   "Q334": {
+    "name": "Singapore",
+    "population": 5866139,
+    "code": "SG",
     "names": {
       "bg": [
         {
@@ -52622,6 +52963,9 @@
     }
   },
   "Q33": {
+    "name": "Finland",
+    "population": 5652881,
+    "code": "FI",
     "names": {
       "bg": [
         {
@@ -53050,6 +53394,9 @@
     }
   },
   "Q20": {
+    "name": "Norway",
+    "population": 5627400,
+    "code": "NO",
     "names": {
       "bg": [
         {
@@ -53523,6 +53870,9 @@
     }
   },
   "Q214": {
+    "name": "Slovakia",
+    "population": 5409407,
+    "code": "SK",
     "names": {
       "bg": [
         {
@@ -53991,6 +54341,9 @@
     }
   },
   "Q664": {
+    "name": "New Zealand",
+    "population": 5307800,
+    "code": "NZ",
     "names": {
       "bg": [
         {
@@ -54323,6 +54676,9 @@
     }
   },
   "Q800": {
+    "name": "Costa Rica",
+    "population": 5265575,
+    "code": "CR",
     "names": {
       "bg": [
         {
@@ -54711,6 +55067,9 @@
     }
   },
   "Q219060": {
+    "name": "Palestine",
+    "population": 5227193,
+    "code": "PS",
     "names": {
       "bg": [
         {
@@ -55237,6 +55596,9 @@
     }
   },
   "Q1014": {
+    "name": "Liberia",
+    "population": 5214030,
+    "code": "LR",
     "names": {
       "bg": [
         {
@@ -55617,6 +55979,9 @@
     }
   },
   "Q929": {
+    "name": "Central African Republic",
+    "population": 5152421,
+    "code": "CF",
     "names": {
       "bg": [
         {
@@ -56065,6 +56430,9 @@
     }
   },
   "Q27": {
+    "name": "Ireland",
+    "population": 5149139,
+    "code": "IE",
     "names": {
       "bg": [
         {
@@ -56654,6 +57022,9 @@
     }
   },
   "Q811": {
+    "name": "Nicaragua",
+    "population": 5142098,
+    "code": "NI",
     "names": {
       "bg": [
         {
@@ -57035,6 +57406,9 @@
     }
   },
   "Q842": {
+    "name": "Oman",
+    "population": 4829480,
+    "code": "OM",
     "names": {
       "bg": [
         {
@@ -57411,6 +57785,9 @@
     }
   },
   "Q1025": {
+    "name": "Mauritania",
+    "population": 4736139,
+    "code": "MR",
     "names": {
       "bg": [
         {
@@ -57825,6 +58202,9 @@
     }
   },
   "Q804": {
+    "name": "Panama",
+    "population": 4570133,
+    "code": "PA",
     "names": {
       "bg": [
         {
@@ -58211,6 +58591,9 @@
     }
   },
   "Q817": {
+    "name": "Kuwait",
+    "population": 4464000,
+    "code": "KW",
     "names": {
       "bg": [
         {
@@ -58577,6 +58960,9 @@
     }
   },
   "Q230": {
+    "name": "Georgia",
+    "population": 3929581,
+    "code": "GE",
     "names": {
       "bg": [
         {
@@ -59073,6 +59459,9 @@
     }
   },
   "Q224": {
+    "name": "Croatia",
+    "population": 3871833,
+    "code": "HR",
     "names": {
       "bg": [
         {
@@ -59520,6 +59909,9 @@
     }
   },
   "Q225": {
+    "name": "Bosnia and Herzegovina",
+    "population": 3816459,
+    "code": "BA",
     "names": {
       "bg": [
         {
@@ -60050,6 +60442,9 @@
     }
   },
   "Q986": {
+    "name": "Eritrea",
+    "population": 3497000,
+    "code": "ER",
     "names": {
       "bg": [
         {
@@ -60421,6 +60816,9 @@
     }
   },
   "Q77": {
+    "name": "Uruguay",
+    "population": 3444263,
+    "code": "UY",
     "names": {
       "bg": [
         {
@@ -60830,6 +61228,9 @@
     }
   },
   "Q711": {
+    "name": "Mongolia",
+    "population": 3409939,
+    "code": "MN",
     "names": {
       "bg": [
         {
@@ -61191,6 +61592,9 @@
     }
   },
   "Q399": {
+    "name": "Armenia",
+    "population": 2930450,
+    "code": "AM",
     "names": {
       "bg": [
         {
@@ -61623,6 +62027,9 @@
     }
   },
   "Q37": {
+    "name": "Lithuania",
+    "population": 2860002,
+    "code": "LT",
     "names": {
       "bg": [
         {
@@ -62021,6 +62428,9 @@
     }
   },
   "Q222": {
+    "name": "Albania",
+    "population": 2811655,
+    "code": "AL",
     "names": {
       "bg": [
         {
@@ -62433,6 +62843,9 @@
     }
   },
   "Q766": {
+    "name": "Jamaica",
+    "population": 2697983,
+    "code": "JM",
     "names": {
       "bg": [
         {
@@ -62765,6 +63178,9 @@
     }
   },
   "Q1005": {
+    "name": "The Gambia",
+    "population": 2639916,
+    "code": "GM",
     "names": {
       "bg": [
         {
@@ -63187,6 +63603,9 @@
     }
   },
   "Q846": {
+    "name": "Qatar",
+    "population": 2639211,
+    "code": "QA",
     "names": {
       "bg": [
         {
@@ -63604,6 +64023,9 @@
     }
   },
   "Q1030": {
+    "name": "Namibia",
+    "population": 2533794,
+    "code": "NA",
     "names": {
       "bg": [
         {
@@ -63988,6 +64410,9 @@
     }
   },
   "Q963": {
+    "name": "Botswana",
+    "population": 2480244,
+    "code": "BW",
     "names": {
       "bg": [
         {
@@ -64410,6 +64835,9 @@
     }
   },
   "Q217": {
+    "name": "Moldova",
+    "population": 2409207,
+    "code": "MD",
     "names": {
       "bg": [
         {
@@ -64854,6 +65282,9 @@
     }
   },
   "Q215": {
+    "name": "Slovenia",
+    "population": 2066880,
+    "code": "SI",
     "names": {
       "bg": [
         {
@@ -65305,6 +65736,9 @@
     }
   },
   "Q1000": {
+    "name": "Gabon",
+    "population": 2025137,
+    "code": "GA",
     "names": {
       "bg": [
         {
@@ -65754,6 +66188,9 @@
     }
   },
   "Q1013": {
+    "name": "Lesotho",
+    "population": 2007201,
+    "code": "LS",
     "names": {
       "bg": [
         {
@@ -66161,6 +66598,9 @@
     }
   },
   "Q1007": {
+    "name": "Guinea-Bissau",
+    "population": 1861283,
+    "code": "GW",
     "names": {
       "bg": [
         {
@@ -66564,6 +67004,9 @@
     }
   },
   "Q983": {
+    "name": "Equatorial Guinea",
+    "population": 1847549,
+    "code": "GQ",
     "names": {
       "bg": [
         {
@@ -66934,6 +67377,9 @@
     }
   },
   "Q211": {
+    "name": "Latvia",
+    "population": 1845096,
+    "code": "LV",
     "names": {
       "bg": [
         {
@@ -67355,6 +67801,9 @@
     }
   },
   "Q221": {
+    "name": "North Macedonia",
+    "population": 1836713,
+    "code": "MK",
     "names": {
       "bg": [
         {
@@ -68186,6 +68635,9 @@
     }
   },
   "Q1246": {
+    "name": "Kosovo",
+    "population": 1586659,
+    "code": "XK",
     "names": {
       "bg": [
         {
@@ -68702,6 +69154,9 @@
     }
   },
   "Q398": {
+    "name": "Bahrain",
+    "population": 1569666,
+    "code": "BH",
     "names": {
       "bg": [
         {
@@ -69121,6 +69576,9 @@
     }
   },
   "Q574": {
+    "name": "Timor-Leste",
+    "population": 1400638,
+    "code": "TL",
     "names": {
       "bg": [
         {
@@ -69555,6 +70013,9 @@
     }
   },
   "Q191": {
+    "name": "Estonia",
+    "population": 1369995,
+    "code": "EE",
     "names": {
       "bg": [
         {
@@ -70004,6 +70465,9 @@
     }
   },
   "Q754": {
+    "name": "Trinidad and Tobago",
+    "population": 1369125,
+    "code": "TT",
     "names": {
       "bg": [
         {
@@ -70375,6 +70839,9 @@
     }
   },
   "Q229": {
+    "name": "Cyprus",
+    "population": 1344976,
+    "code": "CY",
     "names": {
       "bg": [
         {
@@ -70843,6 +71310,9 @@
     }
   },
   "Q1027": {
+    "name": "Mauritius",
+    "population": 1264613,
+    "code": "MU",
     "names": {
       "bg": [
         {
@@ -71306,6 +71776,9 @@
     }
   },
   "Q1050": {
+    "name": "Eswatini",
+    "population": 1230506,
+    "code": "SZ",
     "names": {
       "bg": [
         {
@@ -71916,6 +72389,9 @@
     }
   },
   "Q977": {
+    "name": "Djibouti",
+    "population": 1152944,
+    "code": "DJ",
     "names": {
       "bg": [
         {
@@ -72306,6 +72782,9 @@
     }
   },
   "Q712": {
+    "name": "Fiji",
+    "population": 926276,
+    "code": "FJ",
     "names": {
       "bg": [
         {
@@ -72728,6 +73207,9 @@
     }
   },
   "Q970": {
+    "name": "Comoros",
+    "population": 902348,
+    "code": "KM",
     "names": {
       "bg": [
         {
@@ -73131,6 +73613,9 @@
     }
   },
   "Q734": {
+    "name": "Guyana",
+    "population": 878674,
+    "code": "GY",
     "names": {
       "bg": [
         {
@@ -73544,6 +74029,9 @@
     }
   },
   "Q917": {
+    "name": "Bhutan",
+    "population": 787424,
+    "code": "BT",
     "names": {
       "bg": [
         {
@@ -74005,6 +74493,9 @@
     }
   },
   "Q32": {
+    "name": "Luxembourg",
+    "population": 690959,
+    "code": "LU",
     "names": {
       "bg": [
         {
@@ -74577,6 +75068,9 @@
     }
   },
   "Q236": {
+    "name": "Montenegro",
+    "population": 617213,
+    "code": "ME",
     "names": {
       "bg": [
         {
@@ -74965,6 +75459,9 @@
     }
   },
   "Q685": {
+    "name": "Solomon Islands",
+    "population": 611343,
+    "code": "SB",
     "names": {
       "bg": [
         {
@@ -75331,6 +75828,9 @@
     }
   },
   "Q730": {
+    "name": "Suriname",
+    "population": 563402,
+    "code": "SR",
     "names": {
       "bg": [
         {
@@ -75756,6 +76256,9 @@
     }
   },
   "Q1011": {
+    "name": "Cape Verde",
+    "population": 555988,
+    "code": "CV",
     "names": {
       "bg": [
         {
@@ -76233,6 +76736,9 @@
     }
   },
   "Q233": {
+    "name": "Malta",
+    "population": 553214,
+    "code": "MT",
     "names": {
       "bg": [
         {
@@ -76607,6 +77113,9 @@
     }
   },
   "Q921": {
+    "name": "Brunei",
+    "population": 458949,
+    "code": "BN",
     "names": {
       "bg": [
         {
@@ -77086,6 +77595,9 @@
     }
   },
   "Q826": {
+    "name": "Maldives",
+    "population": 436330,
+    "code": "MV",
     "names": {
       "bg": [
         {
@@ -77533,6 +78045,9 @@
     }
   },
   "Q242": {
+    "name": "Belize",
+    "population": 411106,
+    "code": "BZ",
     "names": {
       "bg": [
         {
@@ -77874,6 +78389,9 @@
     }
   },
   "Q778": {
+    "name": "The Bahamas",
+    "population": 399440,
+    "code": "BS",
     "names": {
       "bg": [
         {
@@ -78249,6 +78767,9 @@
     }
   },
   "Q189": {
+    "name": "Iceland",
+    "population": 364260,
+    "code": "IS",
     "names": {
       "bg": [
         {
@@ -78610,6 +79131,9 @@
     }
   },
   "Q244": {
+    "name": "Barbados",
+    "population": 303431,
+    "code": "BB",
     "names": {
       "bg": [
         {
@@ -78937,6 +79461,9 @@
     }
   },
   "Q686": {
+    "name": "Vanuatu",
+    "population": 300019,
+    "code": "VU",
     "names": {
       "bg": [
         {
@@ -79287,6 +79814,9 @@
     }
   },
   "Q1039": {
+    "name": "São Tomé and Príncipe",
+    "population": 204327,
+    "code": "ST",
     "names": {
       "bg": [
         {
@@ -79738,6 +80268,9 @@
     }
   },
   "Q683": {
+    "name": "Samoa",
+    "population": 200010,
+    "code": "WS",
     "names": {
       "bg": [
         {
@@ -80183,6 +80716,9 @@
     }
   },
   "Q760": {
+    "name": "Saint Lucia",
+    "population": 167591,
+    "code": "LC",
     "names": {
       "bg": [
         {
@@ -80521,6 +81057,9 @@
     }
   },
   "Q710": {
+    "name": "Kiribati",
+    "population": 134518,
+    "code": "KI",
     "names": {
       "bg": [
         {
@@ -80893,6 +81432,9 @@
     }
   },
   "Q1042": {
+    "name": "Seychelles",
+    "population": 119773,
+    "code": "SC",
     "names": {
       "bg": [
         {
@@ -81338,6 +81880,9 @@
     }
   },
   "Q769": {
+    "name": "Grenada",
+    "population": 114299,
+    "code": "GD",
     "names": {
       "bg": [
         {
@@ -81660,6 +82205,9 @@
     }
   },
   "Q757": {
+    "name": "Saint Vincent and the Grenadines",
+    "population": 109897,
+    "code": "VC",
     "names": {
       "bg": [
         {
@@ -82040,6 +82588,9 @@
     }
   },
   "Q678": {
+    "name": "Tonga",
+    "population": 108020,
+    "code": "TO",
     "names": {
       "bg": [
         {
@@ -82369,6 +82920,9 @@
     }
   },
   "Q781": {
+    "name": "Antigua and Barbuda",
+    "population": 101489,
+    "code": "AG",
     "names": {
       "bg": [
         {
@@ -82692,6 +83246,9 @@
     }
   },
   "Q228": {
+    "name": "Andorra",
+    "population": 89752,
+    "code": "AD",
     "names": {
       "bg": [
         {
@@ -83108,6 +83665,9 @@
     }
   },
   "Q702": {
+    "name": "Federated States of Micronesia",
+    "population": 75817,
+    "code": "FM",
     "names": {
       "bg": [
         {
@@ -83521,6 +84081,9 @@
     }
   },
   "Q784": {
+    "name": "Dominica",
+    "population": 74656,
+    "code": "DM",
     "names": {
       "bg": [
         {
@@ -83917,6 +84480,9 @@
     }
   },
   "Q709": {
+    "name": "Marshall Islands",
+    "population": 53127,
+    "code": "MH",
     "names": {
       "bg": [
         {
@@ -84288,6 +84854,9 @@
     }
   },
   "Q763": {
+    "name": "Saint Kitts and Nevis",
+    "population": 46922,
+    "code": "KN",
     "names": {
       "bg": [
         {
@@ -84775,6 +85344,9 @@
     }
   },
   "Q235": {
+    "name": "Monaco",
+    "population": 38857,
+    "code": "MC",
     "names": {
       "bg": [
         {
@@ -85193,6 +85765,9 @@
     }
   },
   "Q347": {
+    "name": "Liechtenstein",
+    "population": 37922,
+    "code": "LI",
     "names": {
       "bg": [
         {
@@ -85647,6 +86222,9 @@
     }
   },
   "Q238": {
+    "name": "San Marino",
+    "population": 33600,
+    "code": "SM",
     "names": {
       "bg": [
         {
@@ -86136,6 +86714,9 @@
     }
   },
   "Q695": {
+    "name": "Palau",
+    "population": 21729,
+    "code": "PW",
     "names": {
       "bg": [
         {
@@ -86537,6 +87118,9 @@
     }
   },
   "Q697": {
+    "name": "Nauru",
+    "population": 13650,
+    "code": "NR",
     "names": {
       "bg": [
         {
@@ -86998,6 +87582,9 @@
     }
   },
   "Q672": {
+    "name": "Tuvalu",
+    "population": 10643,
+    "code": "TV",
     "names": {
       "bg": [
         {
@@ -87324,6 +87911,9 @@
     }
   },
   "Q237": {
+    "name": "Vatican City",
+    "population": 882,
+    "code": "VA",
     "names": {
       "bg": [
         {
@@ -87915,6 +88505,7 @@
     }
   },
   "Q41470": {
+    "name": "Kurdistan",
     "names": {
       "bg": [
         {
@@ -88235,6 +88826,9 @@
     }
   },
   "Q5689": {
+    "name": "Åland",
+    "population": 30836,
+    "code": "AX",
     "names": {
       "bg": [
         {
@@ -88858,6 +89452,9 @@
     }
   },
   "Q21203": {
+    "name": "Aruba",
+    "population": 106739,
+    "code": "AW",
     "names": {
       "bg": [
         {
@@ -89211,6 +89808,9 @@
     }
   },
   "Q25279": {
+    "name": "Curaçao",
+    "population": 152849,
+    "code": "CW",
     "names": {
       "bg": [
         {
@@ -89561,6 +90161,9 @@
     }
   },
   "Q26273": {
+    "name": "Sint Maarten",
+    "population": 43847,
+    "code": "SX",
     "names": {
       "bg": [
         {
@@ -89999,6 +90602,9 @@
     }
   },
   "Q9676": {
+    "name": "Isle of Man",
+    "population": 84523,
+    "code": "IM",
     "names": {
       "bg": [
         {
@@ -90392,6 +90998,9 @@
     }
   },
   "Q785": {
+    "name": "Jersey",
+    "population": 103267,
+    "code": "JE",
     "names": {
       "bg": [
         {
@@ -90657,6 +91266,9 @@
     }
   },
   "Q25230": {
+    "name": "Guernsey",
+    "population": 67787,
+    "code": "GG",
     "names": {
       "bg": [
         {
@@ -91212,6 +91824,9 @@
     }
   },
   "Q26988": {
+    "name": "Cook Islands",
+    "population": 14222,
+    "code": "CK",
     "names": {
       "bg": [
         {
@@ -91705,6 +92320,9 @@
     }
   },
   "Q34020": {
+    "name": "Niue",
+    "population": 1821,
+    "code": "NU",
     "names": {
       "bg": [
         {
@@ -92030,6 +92648,8 @@
     }
   },
   "Q23334": {
+    "name": "Abkhazia",
+    "population": 243564,
     "names": {
       "bg": [
         {
@@ -92586,6 +93206,8 @@
     }
   },
   "Q23427": {
+    "name": "South Ossetia",
+    "population": 56520,
     "names": {
       "bg": [
         {
@@ -93134,6 +93756,8 @@
     }
   },
   "Q23681": {
+    "name": "Northern Cyprus",
+    "population": 476214,
     "names": {
       "bg": [
         {
@@ -93950,6 +94574,9 @@
     }
   },
   "Q6250": {
+    "name": "Western Sahara",
+    "population": 612000,
+    "code": "EH",
     "names": {
       "bg": [
         {
@@ -94266,6 +94893,9 @@
     }
   },
   "Q8646": {
+    "name": "Hong Kong",
+    "population": 7413070,
+    "code": "HK",
     "names": {
       "bg": [
         {
@@ -94906,6 +95536,9 @@
     }
   },
   "Q14773": {
+    "name": "Macau",
+    "population": 682100,
+    "code": "MO",
     "names": {
       "bg": [
         {
@@ -95433,6 +96066,9 @@
     }
   },
   "Q1183": {
+    "name": "Puerto Rico",
+    "population": 3285874,
+    "code": "PR",
     "names": {
       "bg": [
         {
@@ -95807,6 +96443,9 @@
     }
   },
   "Q33788": {
+    "name": "New Caledonia",
+    "population": 278500,
+    "code": "NC",
     "names": {
       "bg": [
         {
@@ -96276,6 +96915,9 @@
     }
   },
   "Q30971": {
+    "name": "French Polynesia",
+    "population": 278786,
+    "code": "PF",
     "names": {
       "bg": [
         {
@@ -96625,6 +97267,9 @@
     }
   },
   "Q16644": {
+    "name": "Northern Mariana Islands",
+    "population": 47329,
+    "code": "MP",
     "names": {
       "bg": [
         {
@@ -96990,6 +97635,8 @@
     }
   },
   "Q34754": {
+    "name": "Somaliland",
+    "population": 6500000,
     "names": {
       "bg": [
         {
@@ -97348,6 +97995,7 @@
     }
   },
   "Q648767": {
+    "name": "Administrative-Territorial Units of the Left Bank of the Dniester",
     "names": {
       "cs": [
         {
@@ -97474,6 +98122,9 @@
     }
   },
   "Q223": {
+    "name": "Greenland",
+    "population": 56609,
+    "code": "GL",
     "names": {
       "bg": [
         {
@@ -97791,6 +98442,9 @@
     }
   },
   "Q4628": {
+    "name": "Faroe Islands",
+    "population": 54149,
+    "code": "FO",
     "names": {
       "bg": [
         {
@@ -99086,6 +99740,9 @@
     }
   },
   "Q16635": {
+    "name": "Guam",
+    "population": 153836,
+    "code": "GU",
     "names": {
       "bg": [
         {
@@ -99430,6 +100087,9 @@
     }
   },
   "Q16641": {
+    "name": "American Samoa",
+    "population": 49710,
+    "code": "AS",
     "names": {
       "bg": [
         {
@@ -99757,6 +100417,9 @@
     }
   },
   "Q11703": {
+    "name": "United States Virgin Islands",
+    "population": 87146,
+    "code": "VI",
     "names": {
       "bg": [
         {
@@ -100169,6 +100832,9 @@
     }
   },
   "Q23635": {
+    "name": "Bermuda",
+    "population": 65024,
+    "code": "BM",
     "names": {
       "bg": [
         {
@@ -100897,6 +101563,9 @@
     }
   },
   "Q5785": {
+    "name": "Cayman Islands",
+    "population": 88833,
+    "code": "KY",
     "names": {
       "bg": [
         {
@@ -101288,6 +101957,9 @@
     }
   },
   "Q18221": {
+    "name": "Turks and Caicos Islands",
+    "population": 44542,
+    "code": "TC",
     "names": {
       "bg": [
         {
@@ -101677,6 +102349,9 @@
     }
   },
   "Q25305": {
+    "name": "British Virgin Islands",
+    "population": 39369,
+    "code": "VG",
     "names": {
       "bg": [
         {
@@ -102273,6 +102948,9 @@
     }
   },
   "Q25228": {
+    "name": "Anguilla",
+    "population": 19079,
+    "code": "AI",
     "names": {
       "bg": [
         {
@@ -102690,6 +103368,9 @@
     }
   },
   "Q13353": {
+    "name": "Montserrat",
+    "population": 5440,
+    "code": "MS",
     "names": {
       "bg": [
         {
@@ -102975,6 +103656,9 @@
     }
   },
   "Q25362": {
+    "name": "Saint Barthélemy",
+    "population": 10124,
+    "code": "BL",
     "names": {
       "bg": [
         {
@@ -103541,6 +104225,9 @@
     }
   },
   "Q126125": {
+    "name": "Saint-Martin",
+    "population": 32358,
+    "code": "MF",
     "names": {
       "bg": [
         {
@@ -103899,6 +104586,9 @@
     }
   },
   "Q34617": {
+    "name": "Saint Pierre and Miquelon",
+    "population": 5974,
+    "code": "PM",
     "names": {
       "bg": [
         {
@@ -104502,6 +105192,9 @@
     }
   },
   "Q1410": {
+    "name": "Gibraltar",
+    "population": 34003,
+    "code": "GI",
     "names": {
       "bg": [
         {
@@ -104826,6 +105519,9 @@
     }
   },
   "Q192184": {
+    "name": "Saint Helena, Ascension and Tristan da Cunha",
+    "population": 5633,
+    "code": "SH",
     "names": {
       "bg": [
         {
@@ -105198,6 +105894,9 @@
     }
   },
   "Q9648": {
+    "name": "Falkland Islands",
+    "population": 4550,
+    "code": "FK",
     "names": {
       "bg": [
         {
@@ -105659,6 +106358,9 @@
     }
   },
   "Q35672": {
+    "name": "Pitcairn Islands",
+    "population": 50,
+    "code": "PN",
     "names": {
       "bg": [
         {
@@ -106119,6 +106821,9 @@
     }
   },
   "Q35555": {
+    "name": "Wallis and Futuna",
+    "population": 11558,
+    "code": "WF",
     "names": {
       "bg": [
         {
@@ -106678,6 +107383,9 @@
     }
   },
   "Q31057": {
+    "name": "Norfolk Island",
+    "population": 2188,
+    "code": "NF",
     "names": {
       "bg": [
         {
@@ -107173,6 +107881,9 @@
     }
   },
   "Q31063": {
+    "name": "Christmas Island",
+    "population": 1692,
+    "code": "CX",
     "names": {
       "bg": [
         {
@@ -107599,6 +108310,9 @@
     }
   },
   "Q36004": {
+    "name": "Cocos (Keeling) Islands",
+    "population": 602,
+    "code": "CC",
     "names": {
       "bg": [
         {
@@ -108256,6 +108970,9 @@
     }
   },
   "Q36823": {
+    "name": "Tokelau",
+    "population": 1499,
+    "code": "TK",
     "names": {
       "bg": [
         {

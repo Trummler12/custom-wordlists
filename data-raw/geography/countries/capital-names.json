@@ -1,5 +1,9 @@
 {
   "Q956": {
+    "name": "Beijing",
+    "population": 21893095,
+    "country": "People's Republic of China",
+    "code": "CN",
     "names": {
       "bg": [
         {
@@ -601,6 +605,10 @@
     }
   },
   "Q987": {
+    "name": "New Delhi",
+    "population": 249998,
+    "country": "India",
+    "code": "IN",
     "names": {
       "bg": [
         {
@@ -906,6 +914,10 @@
     }
   },
   "Q61": {
+    "name": "Washington, D.C.",
+    "population": 689545,
+    "country": "United States",
+    "code": "US",
     "names": {
       "bg": [
         {
@@ -1731,6 +1743,10 @@
     }
   },
   "Q3630": {
+    "name": "Jakarta",
+    "population": 11135191,
+    "country": "Indonesia",
+    "code": "ID",
     "names": {
       "bg": [
         {
@@ -2172,6 +2188,10 @@
     }
   },
   "Q1362": {
+    "name": "Islamabad",
+    "population": 1014825,
+    "country": "Pakistan",
+    "code": "PK",
     "names": {
       "bg": [
         {
@@ -2440,6 +2460,10 @@
     }
   },
   "Q93230": {
+    "name": "Rawalpindi",
+    "population": 2098231,
+    "country": "Pakistan",
+    "code": "PK",
     "names": {
       "bg": [
         {
@@ -2740,6 +2764,10 @@
     }
   },
   "Q2844": {
+    "name": "Brasília",
+    "population": 2996899,
+    "country": "Brazil",
+    "code": "BR",
     "names": {
       "bg": [
         {
@@ -3005,6 +3033,10 @@
     }
   },
   "Q3787": {
+    "name": "Abuja",
+    "population": 1693400,
+    "country": "Nigeria",
+    "code": "NG",
     "names": {
       "bg": [
         {
@@ -3146,6 +3178,10 @@
     }
   },
   "Q1354": {
+    "name": "Dhaka",
+    "population": 16800000,
+    "country": "Bangladesh",
+    "code": "BD",
     "names": {
       "bg": [
         {
@@ -3432,6 +3468,10 @@
     }
   },
   "Q649": {
+    "name": "Moscow",
+    "population": 13274285,
+    "country": "Russia",
+    "code": "RU",
     "names": {
       "bg": [
         {
@@ -3825,6 +3865,10 @@
     }
   },
   "Q1489": {
+    "name": "Mexico City",
+    "population": 9209944,
+    "country": "Mexico",
+    "code": "MX",
     "names": {
       "bg": [
         {
@@ -4188,6 +4232,10 @@
     }
   },
   "Q3624": {
+    "name": "Addis Ababa",
+    "population": 5704000,
+    "country": "Ethiopia",
+    "code": "ET",
     "names": {
       "bg": [
         {
@@ -4478,6 +4526,10 @@
     }
   },
   "Q1490": {
+    "name": "Tokyo",
+    "population": 14264798,
+    "country": "Japan",
+    "code": "JP",
     "names": {
       "bg": [
         {
@@ -5057,6 +5109,10 @@
     }
   },
   "Q85": {
+    "name": "Cairo",
+    "population": 9801536,
+    "country": "Egypt",
+    "code": "EG",
     "names": {
       "bg": [
         {
@@ -5363,6 +5419,10 @@
     }
   },
   "Q1461": {
+    "name": "Manila",
+    "population": 1902590,
+    "country": "Philippines",
+    "code": "PH",
     "names": {
       "bg": [
         {
@@ -5689,6 +5749,10 @@
     }
   },
   "Q3838": {
+    "name": "Kinshasa",
+    "population": 14565700,
+    "country": "Democratic Republic of the Congo",
+    "code": "CD",
     "names": {
       "bg": [
         {
@@ -5981,6 +6045,10 @@
     }
   },
   "Q1858": {
+    "name": "Hanoi",
+    "population": 8717600,
+    "country": "Vietnam",
+    "code": "VN",
     "names": {
       "bg": [
         {
@@ -6327,6 +6395,10 @@
     }
   },
   "Q3616": {
+    "name": "Tehran",
+    "population": 8693706,
+    "country": "Iran",
+    "code": "IR",
     "names": {
       "bg": [
         {
@@ -6617,6 +6689,10 @@
     }
   },
   "Q3640": {
+    "name": "Ankara",
+    "population": 5803482,
+    "country": "Turkey",
+    "code": "TR",
     "names": {
       "bg": [
         {
@@ -6920,6 +6996,10 @@
     }
   },
   "Q64": {
+    "name": "Berlin",
+    "population": 3782202,
+    "country": "Germany",
+    "code": "DE",
     "names": {
       "bg": [
         {
@@ -7309,6 +7389,10 @@
     }
   },
   "Q90": {
+    "name": "Paris",
+    "population": 2103778,
+    "country": "France",
+    "code": "FR",
     "names": {
       "bg": [
         {
@@ -7768,6 +7852,10 @@
     }
   },
   "Q84": {
+    "name": "London",
+    "population": 8799728,
+    "country": "United Kingdom",
+    "code": "GB",
     "names": {
       "bg": [
         {
@@ -8227,6 +8315,10 @@
     }
   },
   "Q1861": {
+    "name": "Bangkok",
+    "population": 5676648,
+    "country": "Thailand",
+    "code": "TH",
     "names": {
       "bg": [
         {
@@ -8586,6 +8678,10 @@
     }
   },
   "Q3926": {
+    "name": "Pretoria",
+    "population": 741651,
+    "country": "South Africa",
+    "code": "ZA",
     "names": {
       "bg": [
         {
@@ -8882,6 +8978,10 @@
     }
   },
   "Q5465": {
+    "name": "Cape Town",
+    "population": 3776313,
+    "country": "South Africa",
+    "code": "ZA",
     "names": {
       "bg": [
         {
@@ -9217,6 +9317,10 @@
     }
   },
   "Q37701": {
+    "name": "Bloemfontein",
+    "population": 256185,
+    "country": "South Africa",
+    "code": "ZA",
     "names": {
       "bg": [
         {
@@ -9503,6 +9607,10 @@
     }
   },
   "Q220": {
+    "name": "Rome",
+    "population": 2748109,
+    "country": "Italy",
+    "code": "IT",
     "names": {
       "bg": [
         {
@@ -9882,6 +9990,10 @@
     }
   },
   "Q3866": {
+    "name": "Dodoma",
+    "population": 213636,
+    "country": "Tanzania",
+    "code": "TZ",
     "names": {
       "bg": [
         {
@@ -10080,6 +10192,10 @@
     }
   },
   "Q37400": {
+    "name": "Naypyidaw",
+    "population": 1160242,
+    "country": "Myanmar",
+    "code": "MM",
     "names": {
       "bg": [
         {
@@ -10496,6 +10612,10 @@
     }
   },
   "Q2841": {
+    "name": "Bogotá",
+    "population": 8034649,
+    "country": "Colombia",
+    "code": "CO",
     "names": {
       "bg": [
         {
@@ -10849,6 +10969,10 @@
     }
   },
   "Q8684": {
+    "name": "Seoul",
+    "population": 9668465,
+    "country": "South Korea",
+    "code": "KR",
     "names": {
       "bg": [
         {
@@ -11346,6 +11470,10 @@
     }
   },
   "Q2807": {
+    "name": "Madrid",
+    "population": 3506730,
+    "country": "Spain",
+    "code": "ES",
     "names": {
       "bg": [
         {
@@ -11621,6 +11749,10 @@
     }
   },
   "Q3870": {
+    "name": "Nairobi",
+    "population": 5545000,
+    "country": "Kenya",
+    "code": "KE",
     "names": {
       "bg": [
         {
@@ -11911,6 +12043,10 @@
     }
   },
   "Q1486": {
+    "name": "Buenos Aires",
+    "population": 3121707,
+    "country": "Argentina",
+    "code": "AR",
     "names": {
       "bg": [
         {
@@ -12243,6 +12379,10 @@
     }
   },
   "Q3894": {
+    "name": "Kampala",
+    "population": 1680600,
+    "country": "Uganda",
+    "code": "UG",
     "names": {
       "bg": [
         {
@@ -12485,6 +12625,10 @@
     }
   },
   "Q3561": {
+    "name": "Algiers",
+    "population": 2364230,
+    "country": "Algeria",
+    "code": "DZ",
     "names": {
       "bg": [
         {
@@ -12735,6 +12879,10 @@
     }
   },
   "Q5838": {
+    "name": "Kabul",
+    "population": 5333284,
+    "country": "Afghanistan",
+    "code": "AF",
     "names": {
       "bg": [
         {
@@ -13049,6 +13197,10 @@
     }
   },
   "Q1899": {
+    "name": "Kyiv",
+    "population": 2952301,
+    "country": "Ukraine",
+    "code": "UA",
     "names": {
       "bg": [
         {
@@ -13485,6 +13637,10 @@
     }
   },
   "Q1963": {
+    "name": "Khartoum",
+    "population": 5345000,
+    "country": "Sudan",
+    "code": "SD",
     "names": {
       "bg": [
         {
@@ -13773,6 +13929,10 @@
     }
   },
   "Q1530": {
+    "name": "Baghdad",
+    "population": 8126755,
+    "country": "Iraq",
+    "code": "IQ",
     "names": {
       "bg": [
         {
@@ -14051,6 +14211,10 @@
     }
   },
   "Q270": {
+    "name": "Warsaw",
+    "population": 1862402,
+    "country": "Poland",
+    "code": "PL",
     "names": {
       "bg": [
         {
@@ -14382,6 +14546,10 @@
     }
   },
   "Q1930": {
+    "name": "Ottawa",
+    "population": 1017449,
+    "country": "Canada",
+    "code": "CA",
     "names": {
       "bg": [
         {
@@ -14714,6 +14882,10 @@
     }
   },
   "Q3551": {
+    "name": "Rabat",
+    "population": 515619,
+    "country": "Morocco",
+    "code": "MA",
     "names": {
       "bg": [
         {
@@ -14934,6 +15106,10 @@
     }
   },
   "Q3897": {
+    "name": "Luanda",
+    "population": 2487444,
+    "country": "Angola",
+    "code": "AO",
     "names": {
       "bg": [
         {
@@ -15297,6 +15473,10 @@
     }
   },
   "Q269": {
+    "name": "Tashkent",
+    "population": 2956384,
+    "country": "Uzbekistan",
+    "code": "UZ",
     "names": {
       "bg": [
         {
@@ -15641,6 +15821,10 @@
     }
   },
   "Q1865": {
+    "name": "Kuala Lumpur",
+    "population": 9000280,
+    "country": "Malaysia",
+    "code": "MY",
     "names": {
       "bg": [
         {
@@ -15953,6 +16137,10 @@
     }
   },
   "Q2868": {
+    "name": "Lima",
+    "population": 9943800,
+    "country": "Peru",
+    "code": "PE",
     "names": {
       "bg": [
         {
@@ -16240,6 +16428,10 @@
     }
   },
   "Q3692": {
+    "name": "Riyadh",
+    "population": 7009100,
+    "country": "Saudi Arabia",
+    "code": "SA",
     "names": {
       "bg": [
         {
@@ -16576,6 +16768,10 @@
     }
   },
   "Q3761": {
+    "name": "Accra",
+    "population": 1782150,
+    "country": "Ghana",
+    "code": "GH",
     "names": {
       "bg": [
         {
@@ -16804,6 +17000,10 @@
     }
   },
   "Q3915": {
+    "name": "Antananarivo",
+    "population": 1275207,
+    "country": "Madagascar",
+    "code": "MG",
     "names": {
       "bg": [
         {
@@ -17126,6 +17326,10 @@
     }
   },
   "Q1533": {
+    "name": "Caracas",
+    "population": 2245744,
+    "country": "Venezuela",
+    "code": "VE",
     "names": {
       "bg": [
         {
@@ -17447,6 +17651,10 @@
     }
   },
   "Q3768": {
+    "name": "Yamoussoukro",
+    "population": 340234,
+    "country": "Ivory Coast",
+    "code": "CI",
     "names": {
       "bg": [
         {
@@ -17667,6 +17875,10 @@
     }
   },
   "Q3889": {
+    "name": "Maputo",
+    "population": 1133200,
+    "country": "Mozambique",
+    "code": "MZ",
     "names": {
       "bg": [
         {
@@ -17930,6 +18142,10 @@
     }
   },
   "Q3037": {
+    "name": "Kathmandu",
+    "population": 845767,
+    "country": "Nepal",
+    "code": "NP",
     "names": {
       "bg": [
         {
@@ -18276,6 +18492,10 @@
     }
   },
   "Q3808": {
+    "name": "Yaoundé",
+    "population": 2440462,
+    "country": "Cameroon",
+    "code": "CM",
     "names": {
       "bg": [
         {
@@ -18553,6 +18773,10 @@
     }
   },
   "Q2471": {
+    "name": "Sanaa",
+    "population": 2957000,
+    "country": "Yemen",
+    "code": "YE",
     "names": {
       "bg": [
         {
@@ -18857,6 +19081,10 @@
     }
   },
   "Q131694": {
+    "name": "Aden",
+    "population": 1154410,
+    "country": "Yemen",
+    "code": "YE",
     "names": {
       "bg": [
         {
@@ -19155,6 +19383,10 @@
     }
   },
   "Q3114": {
+    "name": "Canberra",
+    "population": 381488,
+    "country": "Australia",
+    "code": "AU",
     "names": {
       "bg": [
         {
@@ -19440,6 +19672,10 @@
     }
   },
   "Q18808": {
+    "name": "Pyongyang",
+    "population": 2863000,
+    "country": "North Korea",
+    "code": "KP",
     "names": {
       "bg": [
         {
@@ -19797,6 +20033,10 @@
     }
   },
   "Q3766": {
+    "name": "Damascus",
+    "population": 2685360,
+    "country": "Syria",
+    "code": "SY",
     "names": {
       "bg": [
         {
@@ -20105,6 +20345,10 @@
     }
   },
   "Q1867": {
+    "name": "Taipei",
+    "population": 2442991,
+    "country": "Taiwan",
+    "code": "TW",
     "names": {
       "bg": [
         {
@@ -20566,6 +20810,10 @@
     }
   },
   "Q3777": {
+    "name": "Ouagadougou",
+    "population": 2453496,
+    "country": "Burkina Faso",
+    "code": "BF",
     "names": {
       "bg": [
         {
@@ -20831,6 +21079,10 @@
     }
   },
   "Q3703": {
+    "name": "Bamako",
+    "population": 4227569,
+    "country": "Mali",
+    "code": "ML",
     "names": {
       "bg": [
         {
@@ -21067,6 +21319,10 @@
     }
   },
   "Q3674": {
+    "name": "Niamey",
+    "population": 1496260,
+    "country": "Niger",
+    "code": "NE",
     "names": {
       "bg": [
         {
@@ -21310,6 +21566,10 @@
     }
   },
   "Q35381": {
+    "name": "Colombo",
+    "population": 647557,
+    "country": "Sri Lanka",
+    "code": "LK",
     "names": {
       "bg": [
         {
@@ -21612,6 +21872,10 @@
     }
   },
   "Q41963": {
+    "name": "Sri Jayawardenepura Kotte",
+    "population": 115826,
+    "country": "Sri Lanka",
+    "code": "LK",
     "names": {
       "bg": [
         {
@@ -22084,6 +22348,10 @@
     }
   },
   "Q1520": {
+    "name": "Astana",
+    "population": 1078362,
+    "country": "Kazakhstan",
+    "code": "KZ",
     "names": {
       "bg": [
         {
@@ -22767,6 +23035,10 @@
     }
   },
   "Q3881": {
+    "name": "Lusaka",
+    "population": 2467563,
+    "country": "Zambia",
+    "code": "ZM",
     "names": {
       "bg": [
         {
@@ -22986,6 +23258,10 @@
     }
   },
   "Q2887": {
+    "name": "Santiago",
+    "population": 6257516,
+    "country": "Chile",
+    "code": "CL",
     "names": {
       "bg": [
         {
@@ -23337,6 +23613,10 @@
     }
   },
   "Q3659": {
+    "name": "N'Djamena",
+    "population": 1092066,
+    "country": "Chad",
+    "code": "TD",
     "names": {
       "bg": [
         {
@@ -23622,6 +23902,10 @@
     }
   },
   "Q19660": {
+    "name": "Bucharest",
+    "population": 1716961,
+    "country": "Romania",
+    "code": "RO",
     "names": {
       "bg": [
         {
@@ -24233,6 +24517,10 @@
     }
   },
   "Q3876": {
+    "name": "Lilongwe",
+    "population": 989318,
+    "country": "Malawi",
+    "code": "MW",
     "names": {
       "bg": [
         {
@@ -24430,6 +24718,10 @@
     }
   },
   "Q3733": {
+    "name": "Conakry",
+    "population": 1667864,
+    "country": "Guinea",
+    "code": "GN",
     "names": {
       "bg": [
         {
@@ -24693,6 +24985,10 @@
     }
   },
   "Q1850": {
+    "name": "Phnom Penh",
+    "population": 2129371,
+    "country": "Cambodia",
+    "code": "KH",
     "names": {
       "bg": [
         {
@@ -24959,6 +25255,10 @@
     }
   },
   "Q1555": {
+    "name": "Guatemala City",
+    "population": 994938,
+    "country": "Guatemala",
+    "code": "GT",
     "names": {
       "bg": [
         {
@@ -25302,6 +25602,10 @@
     }
   },
   "Q727": {
+    "name": "Amsterdam",
+    "population": 921468,
+    "country": "Kingdom of the Netherlands",
+    "code": "NL",
     "names": {
       "bg": [
         {
@@ -25669,6 +25973,10 @@
     }
   },
   "Q2900": {
+    "name": "Quito",
+    "population": 1763275,
+    "country": "Ecuador",
+    "code": "EC",
     "names": {
       "bg": [
         {
@@ -25953,6 +26261,10 @@
     }
   },
   "Q3718": {
+    "name": "Dakar",
+    "population": 1438725,
+    "country": "Senegal",
+    "code": "SN",
     "names": {
       "bg": [
         {
@@ -26181,6 +26493,10 @@
     }
   },
   "Q3921": {
+    "name": "Harare",
+    "population": 2150000,
+    "country": "Zimbabwe",
+    "code": "ZW",
     "names": {
       "bg": [
         {
@@ -26438,6 +26754,10 @@
     }
   },
   "Q3859": {
+    "name": "Kigali",
+    "population": 1745555,
+    "country": "Rwanda",
+    "code": "RW",
     "names": {
       "bg": [
         {
@@ -26684,6 +27004,10 @@
     }
   },
   "Q3799": {
+    "name": "Porto-Novo",
+    "population": 234168,
+    "country": "Benin",
+    "code": "BJ",
     "names": {
       "bg": [
         {
@@ -26934,6 +27258,10 @@
     }
   },
   "Q167551": {
+    "name": "Gitega",
+    "population": 135467,
+    "country": "Burundi",
+    "code": "BI",
     "names": {
       "bg": [
         {
@@ -27232,6 +27560,10 @@
     }
   },
   "Q1947": {
+    "name": "Juba",
+    "population": 500088,
+    "country": "South Sudan",
+    "code": "SS",
     "names": {
       "bg": [
         {
@@ -27485,6 +27817,10 @@
     }
   },
   "Q1491": {
+    "name": "La Paz",
+    "population": 755732,
+    "country": "Bolivia",
+    "code": "BO",
     "names": {
       "bg": [
         {
@@ -27788,6 +28124,10 @@
     }
   },
   "Q2907": {
+    "name": "Sucre",
+    "population": 360544,
+    "country": "Bolivia",
+    "code": "BO",
     "names": {
       "bg": [
         {
@@ -28068,6 +28408,10 @@
     }
   },
   "Q239": {
+    "name": "Brussels",
+    "population": 195546,
+    "country": "Belgium",
+    "code": "BE",
     "names": {
       "bg": [
         {
@@ -28445,6 +28789,10 @@
     }
   },
   "Q3572": {
+    "name": "Tunis",
+    "population": 602560,
+    "country": "Tunisia",
+    "code": "TN",
     "names": {
       "bg": [
         {
@@ -28699,6 +29047,10 @@
     }
   },
   "Q2449": {
+    "name": "Mogadishu",
+    "population": 2120000,
+    "country": "Somalia",
+    "code": "SO",
     "names": {
       "bg": [
         {
@@ -28995,6 +29347,10 @@
     }
   },
   "Q1563": {
+    "name": "Havana",
+    "population": 2492618,
+    "country": "Cuba",
+    "code": "CU",
     "names": {
       "bg": [
         {
@@ -29422,6 +29778,10 @@
     }
   },
   "Q34261": {
+    "name": "Port-au-Prince",
+    "population": 987310,
+    "country": "Haiti",
+    "code": "HT",
     "names": {
       "bg": [
         {
@@ -29800,6 +30160,10 @@
     }
   },
   "Q1085": {
+    "name": "Prague",
+    "population": 1397880,
+    "country": "Czech Republic",
+    "code": "CZ",
     "names": {
       "bg": [
         {
@@ -30204,6 +30568,10 @@
     }
   },
   "Q34820": {
+    "name": "Santo Domingo",
+    "population": 2201941,
+    "country": "Dominican Republic",
+    "code": "DO",
     "names": {
       "bg": [
         {
@@ -30558,6 +30926,10 @@
     }
   },
   "Q1754": {
+    "name": "Stockholm",
+    "population": 984748,
+    "country": "Sweden",
+    "code": "SE",
     "names": {
       "bg": [
         {
@@ -30895,6 +31267,10 @@
     }
   },
   "Q1524": {
+    "name": "Athens",
+    "population": 643452,
+    "country": "Greece",
+    "code": "GR",
     "names": {
       "bg": [
         {
@@ -31170,6 +31546,10 @@
     }
   },
   "Q3805": {
+    "name": "Amman",
+    "population": 4007526,
+    "country": "Jordan",
+    "code": "JO",
     "names": {
       "bg": [
         {
@@ -31464,6 +31844,10 @@
     }
   },
   "Q597": {
+    "name": "Lisbon",
+    "population": 545796,
+    "country": "Portugal",
+    "code": "PT",
     "names": {
       "bg": [
         {
@@ -31727,6 +32111,10 @@
     }
   },
   "Q9248": {
+    "name": "Baku",
+    "population": 2300500,
+    "country": "Azerbaijan",
+    "code": "AZ",
     "names": {
       "bg": [
         {
@@ -32027,6 +32415,10 @@
     }
   },
   "Q1519": {
+    "name": "Abu Dhabi",
+    "population": 1570000,
+    "country": "United Arab Emirates",
+    "code": "AE",
     "names": {
       "bg": [
         {
@@ -32317,6 +32709,10 @@
     }
   },
   "Q1218": {
+    "name": "Jerusalem",
+    "population": 1050151,
+    "country": "Israel",
+    "code": "IL",
     "names": {
       "bg": [
         {
@@ -32756,6 +33152,10 @@
     }
   },
   "Q1781": {
+    "name": "Budapest",
+    "population": 1685209,
+    "country": "Hungary",
+    "code": "HU",
     "names": {
       "bg": [
         {
@@ -33195,6 +33595,10 @@
     }
   },
   "Q9365": {
+    "name": "Dushanbe",
+    "population": 948251,
+    "country": "Tajikistan",
+    "code": "TJ",
     "names": {
       "bg": [
         {
@@ -33507,6 +33911,10 @@
     }
   },
   "Q70": {
+    "name": "Bern",
+    "population": 136988,
+    "country": "Switzerland",
+    "code": "CH",
     "names": {
       "bg": [
         {
@@ -33857,6 +34265,10 @@
     }
   },
   "Q2280": {
+    "name": "Minsk",
+    "population": 1995091,
+    "country": "Belarus",
+    "code": "BY",
     "names": {
       "bg": [
         {
@@ -34157,6 +34569,10 @@
     }
   },
   "Q1741": {
+    "name": "Vienna",
+    "population": 2028289,
+    "country": "Austria",
+    "code": "AT",
     "names": {
       "bg": [
         {
@@ -34456,6 +34872,10 @@
     }
   },
   "Q36526": {
+    "name": "Port Moresby",
+    "population": 317374,
+    "country": "Papua New Guinea",
+    "code": "PG",
     "names": {
       "bg": [
         {
@@ -34850,6 +35270,10 @@
     }
   },
   "Q3238": {
+    "name": "Tegucigalpa",
+    "population": 1055729,
+    "country": "Honduras",
+    "code": "HN",
     "names": {
       "bg": [
         {
@@ -35113,6 +35537,10 @@
     }
   },
   "Q3792": {
+    "name": "Lomé",
+    "population": 2188376,
+    "country": "Togo",
+    "code": "TG",
     "names": {
       "bg": [
         {
@@ -35329,6 +35757,10 @@
     }
   },
   "Q3780": {
+    "name": "Freetown",
+    "population": 951000,
+    "country": "Sierra Leone",
+    "code": "SL",
     "names": {
       "bg": [
         {
@@ -35548,6 +35980,10 @@
     }
   },
   "Q3579": {
+    "name": "Tripoli",
+    "population": 1293016,
+    "country": "Libya",
+    "code": "LY",
     "names": {
       "bg": [
         {
@@ -35788,6 +36224,10 @@
     }
   },
   "Q9361": {
+    "name": "Bishkek",
+    "population": 1191000,
+    "country": "Kyrgyzstan",
+    "code": "KG",
     "names": {
       "bg": [
         {
@@ -36087,6 +36527,10 @@
     }
   },
   "Q9326": {
+    "name": "Vientiane",
+    "population": 948487,
+    "country": "Laos",
+    "code": "LA",
     "names": {
       "bg": [
         {
@@ -36447,6 +36891,10 @@
     }
   },
   "Q2933": {
+    "name": "Asunción",
+    "population": 462241,
+    "country": "Paraguay",
+    "code": "PY",
     "names": {
       "bg": [
         {
@@ -36766,6 +37214,10 @@
     }
   },
   "Q3711": {
+    "name": "Belgrade",
+    "population": 1197714,
+    "country": "Serbia",
+    "code": "RS",
     "names": {
       "bg": [
         {
@@ -37115,6 +37567,10 @@
     }
   },
   "Q472": {
+    "name": "Sofia",
+    "population": 1213134,
+    "country": "Bulgaria",
+    "code": "BG",
     "names": {
       "bg": [
         {
@@ -37441,6 +37897,10 @@
     }
   },
   "Q3844": {
+    "name": "Brazzaville",
+    "population": 2145783,
+    "country": "Republic of the Congo",
+    "code": "CG",
     "names": {
       "bg": [
         {
@@ -37651,6 +38111,10 @@
     }
   },
   "Q23438": {
+    "name": "Ashgabat",
+    "population": 1030063,
+    "country": "Turkmenistan",
+    "code": "TM",
     "names": {
       "bg": [
         {
@@ -38352,6 +38816,10 @@
     }
   },
   "Q3820": {
+    "name": "Beirut",
+    "population": 2421354,
+    "country": "Lebanon",
+    "code": "LB",
     "names": {
       "bg": [
         {
@@ -38618,6 +39086,10 @@
     }
   },
   "Q3110": {
+    "name": "San Salvador",
+    "population": 330543,
+    "country": "El Salvador",
+    "code": "SV",
     "names": {
       "bg": [
         {
@@ -38865,6 +39337,9 @@
     }
   },
   "Q1748": {
+    "name": "Copenhagen",
+    "population": 667099,
+    "country": "Kingdom of Denmark",
     "names": {
       "bg": [
         {
@@ -39282,6 +39757,10 @@
     }
   },
   "Q334": {
+    "name": "Singapore",
+    "population": 5866139,
+    "country": "Singapore",
+    "code": "SG",
     "names": {
       "bg": [
         {
@@ -39786,6 +40265,10 @@
     }
   },
   "Q1757": {
+    "name": "Helsinki",
+    "population": 694392,
+    "country": "Finland",
+    "code": "FI",
     "names": {
       "bg": [
         {
@@ -40122,6 +40605,10 @@
     }
   },
   "Q585": {
+    "name": "Oslo",
+    "population": 717710,
+    "country": "Norway",
+    "code": "NO",
     "names": {
       "bg": [
         {
@@ -40434,6 +40921,10 @@
     }
   },
   "Q1780": {
+    "name": "Bratislava",
+    "population": 480902,
+    "country": "Slovakia",
+    "code": "SK",
     "names": {
       "bg": [
         {
@@ -40767,6 +41258,10 @@
     }
   },
   "Q23661": {
+    "name": "Wellington",
+    "population": 216200,
+    "country": "New Zealand",
+    "code": "NZ",
     "names": {
       "bg": [
         {
@@ -41324,6 +41819,10 @@
     }
   },
   "Q3070": {
+    "name": "San José",
+    "population": 335007,
+    "country": "Costa Rica",
+    "code": "CR",
     "names": {
       "bg": [
         {
@@ -41663,6 +42162,10 @@
     }
   },
   "Q158119": {
+    "name": "Ramallah",
+    "population": 43880,
+    "country": "Palestine",
+    "code": "PS",
     "names": {
       "bg": [
         {
@@ -41981,6 +42484,10 @@
     }
   },
   "Q212938": {
+    "name": "East Jerusalem",
+    "population": 236000,
+    "country": "Palestine",
+    "code": "PS",
     "names": {
       "bg": [
         {
@@ -42303,6 +42810,10 @@
     }
   },
   "Q3748": {
+    "name": "Monrovia",
+    "population": 1761032,
+    "country": "Liberia",
+    "code": "LR",
     "names": {
       "bg": [
         {
@@ -42546,6 +43057,10 @@
     }
   },
   "Q3832": {
+    "name": "Bangui",
+    "population": 889231,
+    "country": "Central African Republic",
+    "code": "CF",
     "names": {
       "bg": [
         {
@@ -42787,6 +43302,10 @@
     }
   },
   "Q1761": {
+    "name": "Dublin",
+    "population": 592713,
+    "country": "Ireland",
+    "code": "IE",
     "names": {
       "bg": [
         {
@@ -43058,6 +43577,10 @@
     }
   },
   "Q3274": {
+    "name": "Managua",
+    "population": 937489,
+    "country": "Nicaragua",
+    "code": "NI",
     "names": {
       "bg": [
         {
@@ -43490,6 +44013,10 @@
     }
   },
   "Q3826": {
+    "name": "Muscat",
+    "population": 1421409,
+    "country": "Oman",
+    "code": "OM",
     "names": {
       "bg": [
         {
@@ -43766,6 +44293,10 @@
     }
   },
   "Q3688": {
+    "name": "Nouakchott",
+    "population": 1446761,
+    "country": "Mauritania",
+    "code": "MR",
     "names": {
       "bg": [
         {
@@ -44056,6 +44587,10 @@
     }
   },
   "Q3306": {
+    "name": "Panama City",
+    "population": 1540000,
+    "country": "Panama",
+    "code": "PA",
     "names": {
       "bg": [
         {
@@ -44433,6 +44968,10 @@
     }
   },
   "Q35178": {
+    "name": "Kuwait City",
+    "population": 2989000,
+    "country": "Kuwait",
+    "code": "KW",
     "names": {
       "bg": [
         {
@@ -44855,6 +45394,10 @@
     }
   },
   "Q994": {
+    "name": "Tbilisi",
+    "population": 1331485,
+    "country": "Georgia",
+    "code": "GE",
     "names": {
       "bg": [
         {
@@ -45223,6 +45766,10 @@
     }
   },
   "Q1435": {
+    "name": "Zagreb",
+    "population": 767131,
+    "country": "Croatia",
+    "code": "HR",
     "names": {
       "bg": [
         {
@@ -45501,6 +46048,10 @@
     }
   },
   "Q11194": {
+    "name": "Sarajevo",
+    "population": 275524,
+    "country": "Bosnia and Herzegovina",
+    "code": "BA",
     "names": {
       "bg": [
         {
@@ -45824,6 +46375,10 @@
     }
   },
   "Q3642": {
+    "name": "Asmara",
+    "population": 963000,
+    "country": "Eritrea",
+    "code": "ER",
     "names": {
       "bg": [
         {
@@ -46088,6 +46643,10 @@
     }
   },
   "Q1335": {
+    "name": "Montevideo",
+    "population": 1302954,
+    "country": "Uruguay",
+    "code": "UY",
     "names": {
       "bg": [
         {
@@ -46363,6 +46922,10 @@
     }
   },
   "Q23430": {
+    "name": "Ulaanbaatar",
+    "population": 1396288,
+    "country": "Mongolia",
+    "code": "MN",
     "names": {
       "bg": [
         {
@@ -46943,6 +47506,10 @@
     }
   },
   "Q1953": {
+    "name": "Yerevan",
+    "population": 1106300,
+    "country": "Armenia",
+    "code": "AM",
     "names": {
       "bg": [
         {
@@ -47317,6 +47884,10 @@
     }
   },
   "Q216": {
+    "name": "Vilnius",
+    "population": 581475,
+    "country": "Lithuania",
+    "code": "LT",
     "names": {
       "bg": [
         {
@@ -47681,6 +48252,10 @@
     }
   },
   "Q19689": {
+    "name": "Tirana",
+    "population": 389323,
+    "country": "Albania",
+    "code": "AL",
     "names": {
       "bg": [
         {
@@ -48047,6 +48622,10 @@
     }
   },
   "Q34692": {
+    "name": "Kingston",
+    "population": 937700,
+    "country": "Jamaica",
+    "code": "JM",
     "names": {
       "bg": [
         {
@@ -48338,6 +48917,10 @@
     }
   },
   "Q3726": {
+    "name": "Banjul",
+    "population": 31356,
+    "country": "The Gambia",
+    "code": "GM",
     "names": {
       "bg": [
         {
@@ -48578,6 +49161,10 @@
     }
   },
   "Q3861": {
+    "name": "Doha",
+    "population": 1186023,
+    "country": "Qatar",
+    "code": "QA",
     "names": {
       "bg": [
         {
@@ -48836,6 +49423,10 @@
     }
   },
   "Q3935": {
+    "name": "Windhoek",
+    "population": 486169,
+    "country": "Namibia",
+    "code": "NA",
     "names": {
       "bg": [
         {
@@ -49088,6 +49679,10 @@
     }
   },
   "Q3919": {
+    "name": "Gaborone",
+    "population": 235884,
+    "country": "Botswana",
+    "code": "BW",
     "names": {
       "bg": [
         {
@@ -49392,6 +49987,10 @@
     }
   },
   "Q21197": {
+    "name": "Chișinău",
+    "population": 567038,
+    "country": "Moldova",
+    "code": "MD",
     "names": {
       "bg": [
         {
@@ -50385,6 +50984,10 @@
     }
   },
   "Q437": {
+    "name": "Ljubljana",
+    "population": 284293,
+    "country": "Slovenia",
+    "code": "SI",
     "names": {
       "bg": [
         {
@@ -50715,6 +51318,10 @@
     }
   },
   "Q3825": {
+    "name": "Libreville",
+    "population": 899000,
+    "country": "Gabon",
+    "code": "GA",
     "names": {
       "bg": [
         {
@@ -50927,6 +51534,10 @@
     }
   },
   "Q3909": {
+    "name": "Maseru",
+    "population": 343541,
+    "country": "Lesotho",
+    "code": "LS",
     "names": {
       "bg": [
         {
@@ -51149,6 +51760,10 @@
     }
   },
   "Q3739": {
+    "name": "Bissau",
+    "population": 492004,
+    "country": "Guinea-Bissau",
+    "code": "GW",
     "names": {
       "bg": [
         {
@@ -51405,6 +52020,10 @@
     }
   },
   "Q1140136": {
+    "name": "Ciudad de la Paz",
+    "population": 2000,
+    "country": "Equatorial Guinea",
+    "code": "GQ",
     "names": {
       "bg": [
         {
@@ -51661,6 +52280,10 @@
     }
   },
   "Q1773": {
+    "name": "Riga",
+    "population": 588911,
+    "country": "Latvia",
+    "code": "LV",
     "names": {
       "bg": [
         {
@@ -51946,6 +52569,10 @@
     }
   },
   "Q384": {
+    "name": "Skopje",
+    "population": 422540,
+    "country": "North Macedonia",
+    "code": "MK",
     "names": {
       "bg": [
         {
@@ -52255,6 +52882,10 @@
     }
   },
   "Q25270": {
+    "name": "Pristina",
+    "population": 227466,
+    "country": "Kosovo",
+    "code": "XK",
     "names": {
       "bg": [
         {
@@ -52776,6 +53407,10 @@
     }
   },
   "Q3882": {
+    "name": "Manama",
+    "population": 297502,
+    "country": "Bahrain",
+    "code": "BH",
     "names": {
       "bg": [
         {
@@ -53052,6 +53687,10 @@
     }
   },
   "Q9310": {
+    "name": "Dili",
+    "population": 222323,
+    "country": "Timor-Leste",
+    "code": "TL",
     "names": {
       "bg": [
         {
@@ -53307,6 +53946,10 @@
     }
   },
   "Q1770": {
+    "name": "Tallinn",
+    "population": 457572,
+    "country": "Estonia",
+    "code": "EE",
     "names": {
       "bg": [
         {
@@ -53714,6 +54357,10 @@
     }
   },
   "Q39178": {
+    "name": "Port of Spain",
+    "population": 49031,
+    "country": "Trinidad and Tobago",
+    "code": "TT",
     "names": {
       "bg": [
         {
@@ -54097,6 +54744,10 @@
     }
   },
   "Q3856": {
+    "name": "Nicosia",
+    "population": 56848,
+    "country": "Cyprus",
+    "code": "CY",
     "names": {
       "bg": [
         {
@@ -54453,6 +55104,10 @@
     }
   },
   "Q3929": {
+    "name": "Port Louis",
+    "population": 149194,
+    "country": "Mauritius",
+    "code": "MU",
     "names": {
       "bg": [
         {
@@ -54707,6 +55362,10 @@
     }
   },
   "Q3904": {
+    "name": "Mbabane",
+    "population": 76218,
+    "country": "Eswatini",
+    "code": "SZ",
     "names": {
       "bg": [
         {
@@ -54934,6 +55593,10 @@
     }
   },
   "Q101418": {
+    "name": "Lobamba",
+    "population": 114585,
+    "country": "Eswatini",
+    "code": "SZ",
     "names": {
       "bg": [
         {
@@ -55176,6 +55839,10 @@
     }
   },
   "Q3604": {
+    "name": "Djibouti",
+    "population": 603900,
+    "country": "Djibouti",
+    "code": "DJ",
     "names": {
       "bg": [
         {
@@ -55454,6 +56121,10 @@
     }
   },
   "Q38807": {
+    "name": "Suva",
+    "population": 88271,
+    "country": "Fiji",
+    "code": "FJ",
     "names": {
       "bg": [
         {
@@ -55687,6 +56358,10 @@
     }
   },
   "Q3901": {
+    "name": "Moroni",
+    "population": 85400,
+    "country": "Comoros",
+    "code": "KM",
     "names": {
       "bg": [
         {
@@ -55879,6 +56554,10 @@
     }
   },
   "Q10717": {
+    "name": "Georgetown",
+    "population": 235017,
+    "country": "Guyana",
+    "code": "GY",
     "names": {
       "bg": [
         {
@@ -56106,6 +56785,10 @@
     }
   },
   "Q9270": {
+    "name": "Thimphu",
+    "population": 114551,
+    "country": "Bhutan",
+    "code": "BT",
     "names": {
       "bg": [
         {
@@ -56400,6 +57083,10 @@
     }
   },
   "Q1842": {
+    "name": "Luxembourg",
+    "population": 137678,
+    "country": "Luxembourg",
+    "code": "LU",
     "names": {
       "bg": [
         {
@@ -56748,6 +57435,10 @@
     }
   },
   "Q23564": {
+    "name": "Podgorica",
+    "population": 150977,
+    "country": "Montenegro",
+    "code": "ME",
     "names": {
       "bg": [
         {
@@ -57214,6 +57905,10 @@
     }
   },
   "Q40921": {
+    "name": "Honiara",
+    "population": 84520,
+    "country": "Solomon Islands",
+    "code": "SB",
     "names": {
       "bg": [
         {
@@ -57453,6 +58148,10 @@
     }
   },
   "Q3001": {
+    "name": "Paramaribo",
+    "population": 223757,
+    "country": "Suriname",
+    "code": "SR",
     "names": {
       "bg": [
         {
@@ -57704,6 +58403,10 @@
     }
   },
   "Q3751": {
+    "name": "Praia",
+    "population": 159050,
+    "country": "Cape Verde",
+    "code": "CV",
     "names": {
       "bg": [
         {
@@ -57952,6 +58655,10 @@
     }
   },
   "Q23800": {
+    "name": "Valletta",
+    "population": 6444,
+    "country": "Malta",
+    "code": "MT",
     "names": {
       "bg": [
         {
@@ -58490,6 +59197,10 @@
     }
   },
   "Q9279": {
+    "name": "Bandar Seri Begawan",
+    "population": 50000,
+    "country": "Brunei",
+    "code": "BN",
     "names": {
       "bg": [
         {
@@ -58780,6 +59491,10 @@
     }
   },
   "Q9347": {
+    "name": "Malé",
+    "population": 133019,
+    "country": "Maldives",
+    "code": "MV",
     "names": {
       "bg": [
         {
@@ -59034,6 +59749,10 @@
     }
   },
   "Q3043": {
+    "name": "Belmopan",
+    "population": 20754,
+    "country": "Belize",
+    "code": "BZ",
     "names": {
       "bg": [
         {
@@ -59273,6 +59992,10 @@
     }
   },
   "Q2467": {
+    "name": "Nassau",
+    "population": 227940,
+    "country": "The Bahamas",
+    "code": "BS",
     "names": {
       "bg": [
         {
@@ -59536,6 +60259,10 @@
     }
   },
   "Q1764": {
+    "name": "Reykjavík",
+    "population": 138772,
+    "country": "Iceland",
+    "code": "IS",
     "names": {
       "bg": [
         {
@@ -59938,6 +60665,10 @@
     }
   },
   "Q36168": {
+    "name": "Bridgetown",
+    "population": 98511,
+    "country": "Barbados",
+    "code": "BB",
     "names": {
       "bg": [
         {
@@ -60181,6 +60912,10 @@
     }
   },
   "Q37806": {
+    "name": "Port Vila",
+    "population": 49034,
+    "country": "Vanuatu",
+    "code": "VU",
     "names": {
       "bg": [
         {
@@ -60429,6 +61164,10 @@
     }
   },
   "Q3932": {
+    "name": "São Tomé",
+    "population": 65468,
+    "country": "São Tomé and Príncipe",
+    "code": "ST",
     "names": {
       "bg": [
         {
@@ -60643,6 +61382,10 @@
     }
   },
   "Q36260": {
+    "name": "Apia",
+    "population": 37708,
+    "country": "Samoa",
+    "code": "WS",
     "names": {
       "bg": [
         {
@@ -60868,6 +61611,10 @@
     }
   },
   "Q41699": {
+    "name": "Castries",
+    "population": 20000,
+    "country": "Saint Lucia",
+    "code": "LC",
     "names": {
       "bg": [
         {
@@ -61121,6 +61868,10 @@
     }
   },
   "Q131233": {
+    "name": "South Tarawa",
+    "population": 63439,
+    "country": "Kiribati",
+    "code": "KI",
     "names": {
       "bg": [
         {
@@ -61452,6 +62203,10 @@
     }
   },
   "Q3940": {
+    "name": "Victoria",
+    "population": 24701,
+    "country": "Seychelles",
+    "code": "SC",
     "names": {
       "bg": [
         {
@@ -61688,6 +62443,10 @@
     }
   },
   "Q41547": {
+    "name": "St. George's",
+    "population": 33734,
+    "country": "Grenada",
+    "code": "GD",
     "names": {
       "bg": [
         {
@@ -62031,6 +62790,10 @@
     }
   },
   "Q41474": {
+    "name": "Kingstown",
+    "population": 24518,
+    "country": "Saint Vincent and the Grenadines",
+    "code": "VC",
     "names": {
       "bg": [
         {
@@ -62236,6 +62999,10 @@
     }
   },
   "Q38834": {
+    "name": "Nukuʻalofa",
+    "population": 23221,
+    "country": "Tonga",
+    "code": "TO",
     "names": {
       "bg": [
         {
@@ -62602,6 +63369,9 @@
     }
   },
   "Q36262": {
+    "population": 21394,
+    "country": "Antigua and Barbuda",
+    "code": "AG",
     "names": {
       "bg": [
         {
@@ -62846,6 +63616,10 @@
     }
   },
   "Q1863": {
+    "name": "Andorra la Vella",
+    "population": 24042,
+    "country": "Andorra",
+    "code": "AD",
     "names": {
       "bg": [
         {
@@ -63102,6 +63876,10 @@
     }
   },
   "Q42751": {
+    "name": "Palikir",
+    "population": 6227,
+    "country": "Federated States of Micronesia",
+    "code": "FM",
     "names": {
       "bg": [
         {
@@ -63312,6 +64090,10 @@
     }
   },
   "Q36281": {
+    "name": "Roseau",
+    "population": 16571,
+    "country": "Dominica",
+    "code": "DM",
     "names": {
       "bg": [
         {
@@ -63551,6 +64333,10 @@
     }
   },
   "Q12919": {
+    "name": "Majuro",
+    "population": 30000,
+    "country": "Marshall Islands",
+    "code": "MH",
     "names": {
       "bg": [
         {
@@ -63773,6 +64559,10 @@
     }
   },
   "Q41295": {
+    "name": "Basseterre",
+    "population": 12920,
+    "country": "Saint Kitts and Nevis",
+    "code": "KN",
     "names": {
       "bg": [
         {
@@ -63985,6 +64775,10 @@
     }
   },
   "Q235": {
+    "name": "Monaco",
+    "population": 38857,
+    "country": "Monaco",
+    "code": "MC",
     "names": {
       "bg": [
         {
@@ -64403,6 +65197,10 @@
     }
   },
   "Q1844": {
+    "name": "Vaduz",
+    "population": 5668,
+    "country": "Liechtenstein",
+    "code": "LI",
     "names": {
       "bg": [
         {
@@ -64665,6 +65463,10 @@
     }
   },
   "Q1848": {
+    "name": "San Marino",
+    "population": 4040,
+    "country": "San Marino",
+    "code": "SM",
     "names": {
       "bg": [
         {
@@ -64950,6 +65752,10 @@
     }
   },
   "Q515229": {
+    "name": "Ngerulmud",
+    "population": 0,
+    "country": "Palau",
+    "code": "PW",
     "names": {
       "bg": [
         {
@@ -65171,6 +65977,10 @@
     }
   },
   "Q31026": {
+    "name": "Yaren District",
+    "population": 747,
+    "country": "Nauru",
+    "code": "NR",
     "names": {
       "bg": [
         {
@@ -65465,6 +66275,10 @@
     }
   },
   "Q34126": {
+    "name": "Funafuti",
+    "population": 6025,
+    "country": "Tuvalu",
+    "code": "TV",
     "names": {
       "bg": [
         {
@@ -65693,6 +66507,10 @@
     }
   },
   "Q237": {
+    "name": "Vatican City",
+    "population": 882,
+    "country": "Vatican City",
+    "code": "VA",
     "names": {
       "bg": [
         {
@@ -66274,6 +67092,10 @@
     }
   },
   "Q48329": {
+    "name": "Mariehamn",
+    "population": 11957,
+    "country": "Åland",
+    "code": "AX",
     "names": {
       "bg": [
         {
@@ -66635,6 +67457,10 @@
     }
   },
   "Q131243": {
+    "name": "Oranjestad",
+    "population": 28658,
+    "country": "Aruba",
+    "code": "AW",
     "names": {
       "bg": [
         {
@@ -66898,6 +67724,10 @@
     }
   },
   "Q132679": {
+    "name": "Willemstad",
+    "population": 136660,
+    "country": "Curaçao",
+    "code": "CW",
     "names": {
       "bg": [
         {
@@ -67184,6 +68014,10 @@
     }
   },
   "Q30958": {
+    "name": "Philipsburg",
+    "population": 1338,
+    "country": "Sint Maarten",
+    "code": "SX",
     "names": {
       "bg": [
         {
@@ -67354,6 +68188,10 @@
     }
   },
   "Q18569": {
+    "name": "Douglas",
+    "population": 26677,
+    "country": "Isle of Man",
+    "code": "IM",
     "names": {
       "bg": [
         {
@@ -67550,6 +68388,10 @@
     }
   },
   "Q147738": {
+    "name": "Saint Helier",
+    "population": 35822,
+    "country": "Jersey",
+    "code": "JE",
     "names": {
       "bg": [
         {
@@ -67912,6 +68754,9 @@
     }
   },
   "Q174262": {
+    "name": "Saint Peter Port",
+    "country": "Guernsey",
+    "code": "GG",
     "names": {
       "bg": [
         {
@@ -68190,6 +69035,10 @@
     }
   },
   "Q170482": {
+    "name": "Avarua",
+    "population": 4798,
+    "country": "Cook Islands",
+    "code": "CK",
     "names": {
       "bg": [
         {
@@ -68443,6 +69292,10 @@
     }
   },
   "Q30966": {
+    "name": "Alofi",
+    "population": 575,
+    "country": "Niue",
+    "code": "NU",
     "names": {
       "bg": [
         {
@@ -68646,6 +69499,9 @@
     }
   },
   "Q40811": {
+    "name": "Sokhumi",
+    "population": 65146,
+    "country": "Abkhazia",
     "names": {
       "bg": [
         {
@@ -69144,6 +70000,9 @@
     }
   },
   "Q2762100": {
+    "name": "North Nicosia",
+    "population": 61378,
+    "country": "Northern Cyprus",
     "names": {
       "cs": [
         {
@@ -69323,6 +70182,10 @@
     }
   },
   "Q41211": {
+    "name": "San Juan",
+    "population": 342259,
+    "country": "Puerto Rico",
+    "code": "PR",
     "names": {
       "bg": [
         {
@@ -69638,6 +70501,10 @@
     }
   },
   "Q9733": {
+    "name": "Nouméa",
+    "population": 96082,
+    "country": "New Caledonia",
+    "code": "NC",
     "names": {
       "bg": [
         {
@@ -69878,6 +70745,10 @@
     }
   },
   "Q130800": {
+    "name": "Papeete",
+    "population": 26654,
+    "country": "French Polynesia",
+    "code": "PF",
     "names": {
       "bg": [
         {
@@ -70163,6 +71034,10 @@
     }
   },
   "Q49755159": {
+    "name": "Saipan",
+    "population": 43385,
+    "country": "Northern Mariana Islands",
+    "code": "MP",
     "names": {
       "de": [
         {
@@ -70217,6 +71092,9 @@
     }
   },
   "Q168652": {
+    "name": "Hargeisa",
+    "population": 1227620,
+    "country": "Somaliland",
     "names": {
       "bg": [
         {
@@ -70527,6 +71405,10 @@
     }
   },
   "Q226": {
+    "name": "Nuuk",
+    "population": 18326,
+    "country": "Greenland",
+    "code": "GL",
     "names": {
       "bg": [
         {
@@ -71088,6 +71970,10 @@
     }
   },
   "Q10704": {
+    "name": "Tórshavn",
+    "population": 14038,
+    "country": "Faroe Islands",
+    "code": "FO",
     "names": {
       "bg": [
         {
@@ -71345,6 +72231,10 @@
     }
   },
   "Q30988": {
+    "name": "Hagåtña",
+    "population": 943,
+    "country": "Guam",
+    "code": "GU",
     "names": {
       "bg": [
         {
@@ -71767,6 +72657,10 @@
     }
   },
   "Q51678": {
+    "name": "Pago Pago",
+    "population": 3656,
+    "country": "American Samoa",
+    "code": "AS",
     "names": {
       "bg": [
         {
@@ -71995,6 +72889,10 @@
     }
   },
   "Q51681": {
+    "name": "Charlotte Amalie",
+    "population": 14477,
+    "country": "United States Virgin Islands",
+    "code": "VI",
     "names": {
       "bg": [
         {
@@ -72254,6 +73152,10 @@
     }
   },
   "Q30985": {
+    "name": "Hamilton",
+    "population": 3686,
+    "country": "Bermuda",
+    "code": "BM",
     "names": {
       "bg": [
         {
@@ -72485,6 +73387,10 @@
     }
   },
   "Q172996": {
+    "name": "George Town",
+    "population": 27704,
+    "country": "Cayman Islands",
+    "code": "KY",
     "names": {
       "bg": [
         {
@@ -72756,6 +73662,10 @@
     }
   },
   "Q34205": {
+    "name": "Cockburn Town",
+    "population": 4100,
+    "country": "Turks and Caicos Islands",
+    "code": "TC",
     "names": {
       "bg": [
         {
@@ -72947,6 +73857,10 @@
     }
   },
   "Q179431": {
+    "name": "Road Town",
+    "population": 12603,
+    "country": "British Virgin Islands",
+    "code": "VG",
     "names": {
       "bg": [
         {
@@ -73212,6 +74126,10 @@
     }
   },
   "Q30994": {
+    "name": "The Valley",
+    "population": 1067,
+    "country": "Anguilla",
+    "code": "AI",
     "names": {
       "bg": [
         {
@@ -73437,6 +74355,10 @@
     }
   },
   "Q30990": {
+    "name": "Plymouth",
+    "population": 0,
+    "country": "Montserrat",
+    "code": "MS",
     "names": {
       "bg": [
         {
@@ -73619,6 +74541,10 @@
     }
   },
   "Q34112": {
+    "name": "Gustavia",
+    "population": 9131,
+    "country": "Saint Barthélemy",
+    "code": "BL",
     "names": {
       "bg": [
         {
@@ -73864,6 +74790,10 @@
     }
   },
   "Q200605": {
+    "name": "Marigot",
+    "population": 5700,
+    "country": "Saint-Martin",
+    "code": "MF",
     "names": {
       "bg": [
         {
@@ -74150,6 +75080,10 @@
     }
   },
   "Q185678": {
+    "name": "Saint-Pierre",
+    "population": 5282,
+    "country": "Saint Pierre and Miquelon",
+    "code": "PM",
     "names": {
       "bg": [
         {
@@ -74586,6 +75520,10 @@
     }
   },
   "Q1410": {
+    "name": "Gibraltar",
+    "population": 34003,
+    "country": "Gibraltar",
+    "code": "GI",
     "names": {
       "bg": [
         {
@@ -74910,6 +75848,10 @@
     }
   },
   "Q30970": {
+    "name": "Jamestown",
+    "population": 714,
+    "country": "Saint Helena, Ascension and Tristan da Cunha",
+    "code": "SH",
     "names": {
       "bg": [
         {
@@ -75114,6 +76056,10 @@
     }
   },
   "Q12245": {
+    "name": "Stanley",
+    "population": 2121,
+    "country": "Falkland Islands",
+    "code": "FK",
     "names": {
       "bg": [
         {
@@ -75462,6 +76408,10 @@
     }
   },
   "Q48273": {
+    "name": "Adamstown",
+    "population": 50,
+    "country": "Pitcairn Islands",
+    "code": "PN",
     "names": {
       "bg": [
         {
@@ -75673,6 +76623,10 @@
     }
   },
   "Q31002": {
+    "name": "Mata-Utu",
+    "population": 1075,
+    "country": "Wallis and Futuna",
+    "code": "WF",
     "names": {
       "bg": [
         {
@@ -75928,6 +76882,9 @@
     }
   },
   "Q30963": {
+    "name": "Kingston",
+    "country": "Norfolk Island",
+    "code": "NF",
     "names": {
       "bg": [
         {
@@ -76126,6 +77083,10 @@
     }
   },
   "Q30980": {
+    "name": "Flying Fish Cove",
+    "population": 1599,
+    "country": "Christmas Island",
+    "code": "CX",
     "names": {
       "bg": [
         {
@@ -76370,6 +77331,10 @@
     }
   },
   "Q48675": {
+    "name": "West Island",
+    "population": 147,
+    "country": "Cocos (Keeling) Islands",
+    "code": "CC",
     "names": {
       "bg": [
         {
