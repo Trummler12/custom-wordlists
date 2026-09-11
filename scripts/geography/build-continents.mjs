@@ -266,9 +266,23 @@ const TIER3_NOTE = {
 /** Fold each tier's caveat into its condition as a `{br}` second line — the ruler tooltip
  *  renders it under the band it names (see `rulerTip`). Only tier 3 has one; tier 4's own
  *  wording ("of unknown classification") already says what it is. */
+/** The localized "Note:" that opens the folded second line — a blank line ({br}{br}) sets it
+ *  off from the condition, then the label, so the caveat reads as an aside rather than part of
+ *  the tier's name. */
+const NOTE_LABEL = {
+  en: "Note: ",
+  de: "Hinweis: ",
+  es: "Nota: ",
+  fr: "Note : ",
+  it: "Nota: ",
+  ja: "注：",
+  ko: "참고: ",
+};
 const tierConditionsWithNotes = TIER_CONDITIONS.map((cond, i) =>
   i === 3
-    ? Object.fromEntries(Object.entries(cond).map(([l, v]) => [l, TIER3_NOTE[l] ? `${v}{br}${TIER3_NOTE[l]}` : v]))
+    ? Object.fromEntries(
+        Object.entries(cond).map(([l, v]) => [l, TIER3_NOTE[l] ? `${v}{br}{br}${NOTE_LABEL[l] ?? ""}${TIER3_NOTE[l]}` : v]),
+      )
     : cond,
 );
 
