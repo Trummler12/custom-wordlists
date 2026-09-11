@@ -3,6 +3,9 @@
 // below; the frontend resolves the active one via strings(lang), falling back to
 // English for any language that has topic data but no UI translation yet.
 //
+// Topic content (titles, tier conditions, rule reasons) is translatable too but
+// lives with the build that bakes it, not here — see README.md for the full map.
+//
 // Grouped rather than flat, and a group is one of two things: a PLACE, when its
 // strings only ever appear there (header, tree, settings, output, footer), or a
 // FEATURE, when they follow a control that turns up on several rows (names, fame,
