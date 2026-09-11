@@ -7,8 +7,8 @@
     "Names & variants: Wikidata labels, official names (P1448) and short names (P1813) — https://www.wikidata.org/wiki/Q3624078 (see scripts/geography/dump-country-data.mjs)",
     "Population & tiers: Wikidata sovereign states (P1082 on P31 Q3624078) — https://www.wikidata.org/wiki/Q3624078 (see scripts/geography/dump-country-data.mjs)"
   ],
-  "lastUpdated": "2026-09-02",
-  "lastChecked": "2026-09-02",
+  "lastUpdated": "2026-09-11",
+  "lastChecked": "2026-09-11",
   "defaultNames": "pref",
   "omitted": [
     {

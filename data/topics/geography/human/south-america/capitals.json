@@ -4,8 +4,8 @@
   "languages": ["en","de","es","fr","it","ja","ja-Latn","ko","zh-Hans","zh-Hant","pt","ru","tr","pl","nl","bg","cs","da","et","fi","el","he","hu","lv","mk","no","ro","sr","sk","sv","tl"],
   "generatedRomaji": true,
   "sources": ["Names & variants: Wikidata labels, official and short names of the capitals (P36) — https://www.wikidata.org/wiki/Property:P36 (see scripts/geography/dump-country-data.mjs)"],
-  "lastUpdated": "2026-09-02",
-  "lastChecked": "2026-09-02",
+  "lastUpdated": "2026-09-11",
+  "lastChecked": "2026-09-11",
   "defaultNames": "pref",
   "omittable": [
     {
@@ -40,7 +40,7 @@
       {"en":"Santiago","de":"Santiago de Chile","es":"Santiago de Chile","it":"Santiago del Cile","ja":"サンティアゴ","ko":"산티아고","zh-Hans":"圣地亚哥","zh-Hant":"聖地牙哥","ru":"Сантьяго","bg":"Сантяго де Чиле","cs":"Santiago de Chile","da":"Santiago de Chile","fi":"Santiago de Chile","el":"Σαντιάγο","he":"סנטיאגו דה צ'ילה","hu":"Santiago de Chile","lv":"Santjago","mk":"Сантјаго","ro":"Santiago de Chile","sr":"Сантијаго де Чиле","sv":"Santiago de Chile","tl":"Santiago, Tsile"},
       {"en":"Quito","es":{"pref":"Quito","long":"San Francisco de Quito"},"ja":"キト","ko":"키토","zh-Hans":"基多","zh-Hant":"基多","ru":"Кито","bg":"Кито","el":"Κίτο","he":"קיטו","lv":"Kito","mk":"Кито","sr":"Кито"},
       {"en":"La Paz","ja":"ラパス","ko":"라파스","zh-Hans":"拉巴斯","zh-Hant":"拉巴斯","ru":"Ла-Пас","bg":"Ла Пас","el":"Λα Παζ","he":"לה פאס","lv":"Lapasa","mk":"Ла Пас","sr":"Ла Паз","tl":"Lungsod ng La Paz"},
-      {"en":"Sucre","es":{"pref":"Sucre","long":"Chuquisaca","others":["La Plata","Charcas"]},"ja":"スクレ","ko":"수크레","zh-Hans":"苏克雷","zh-Hant":"蘇克雷","ru":"Сукре","bg":"Сукре","el":"Σούκρε","he":"סוקרה","lv":"Sukre","mk":"Сукре","sr":"Сукре"},
+      {"en":"Sucre","es":{"pref":"Sucre","long":"Chuquisaca","others":["Charcas","La Plata"]},"ja":"スクレ","ko":"수크레","zh-Hans":"苏克雷","zh-Hant":"蘇克雷","ru":"Сукре","bg":"Сукре","el":"Σούκρε","he":"סוקרה","lv":"Sukre","mk":"Сукре","sr":"Сукре"},
       {"en":"Asunción","es":{"pref":"Asunción","long":"Nuestra Señora Santa María de la Asunción"},"fr":"Asuncion","ja":"アスンシオン","ko":"아순시온","zh-Hans":"亚松森","zh-Hant":"亞松森","pt":"Assunção","ru":"Асунсьон","bg":"Асунсион","el":"Ασουνσιόν","he":"אסונסיון","lv":"Asunsjona","mk":"Асунсион","sr":"Асунсион","tl":"Asuncion"}
     ],
 

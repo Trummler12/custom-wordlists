@@ -114,11 +114,23 @@ async function dumpNames(qids, order, chunk = 20) {
     process.stdout.write(`  ${Math.min(i + chunk, qids.length)}/${qids.length}\r`);
     await sleep(300);
   }
+  // Deterministic order so a re-dump diffs only on real change, not on the order WDQS
+  // happened to return terms — and their flags — in: preferred label first, then official,
+  // short, plain alias, alphabetical within each, and the flag keys themselves in that same
+  // fixed order. The build reads by flag regardless, so this is purely for the file's readers
+  // and its diffs.
+  const FLAGS = ["pref", "official", "short", "alias"];
+  const rank = (t) => FLAGS.findIndex((f) => t[f]);
+  const canon = (t) => ({ name: t.name, ...Object.fromEntries(FLAGS.filter((f) => t[f]).map((f) => [f, true])) });
   const out = {};
   for (const q of order) {
     const langMap = byItem[q] ?? {};
     const names = {};
-    for (const lang of Object.keys(langMap).sort()) names[lang] = Object.values(langMap[lang]);
+    for (const lang of Object.keys(langMap).sort()) {
+      names[lang] = Object.values(langMap[lang])
+        .sort((a, b) => rank(a) - rank(b) || a.name.localeCompare(b.name))
+        .map(canon);
+    }
     out[q] = { names };
   }
   return out;
@@ -150,7 +162,8 @@ async function main() {
   // --- Structure, and the country order everything else follows ---------------
   const structure = await query(STRUCTURE);
   // Descending by population, so the file already reads in tier order and the build cuts
-  // thresholds down a sorted list. Missing population sorts last.
+  // thresholds down a sorted list. Missing population sorts last; ties break by Q-id, so the
+  // order is deterministic — a re-dump doesn't reshuffle equal-population countries.
   const ranked = structure
     .map((r) => ({
       country: qid(r.country.value),
@@ -159,7 +172,7 @@ async function main() {
       continents: r.continents?.value ? r.continents.value.split("|").map(qid) : [],
       capitals: r.capitals?.value ? r.capitals.value.split("|").map(qid) : [],
     }))
-    .sort((a, b) => (b.pop ?? -1) - (a.pop ?? -1));
+    .sort((a, b) => (b.pop ?? -1) - (a.pop ?? -1) || a.country.localeCompare(b.country));
 
   const tsv = ranked.map((c) =>
     [c.country, c.iso, c.pop ?? "", c.continents.join("|"), c.capitals.join("|")].join("\t"),

@@ -128,16 +128,16 @@ const CONTINENT = {
   Q538: "oceania",
 };
 
-/** The landmass name in data-raw/geography/continents/, per folder — the source
- *  of each category's title, so the continent names are the dump's, not typed. */
+/** The landmass Q-id in data-raw/geography/continents/continent-names.json, per folder —
+ *  the source of each category's title, so the continent names are the dump's, not typed. */
 const LANDMASS = {
-  africa: "Africa",
-  asia: "Asia",
-  europe: "Europe",
-  "north-america": "North America",
-  "south-america": "South America",
-  oceania: "Oceania",
-  antarctica: "Antarctica",
+  africa: "Q15",
+  asia: "Q48",
+  europe: "Q46",
+  "north-america": "Q49",
+  "south-america": "Q18",
+  oceania: "Q55643",
+  antarctica: "Q51",
 };
 
 /** Region-centred globe per continent; ❄️ for the empty one. */
@@ -475,15 +475,18 @@ async function readStructure() {
 }
 
 async function readContinentNames() {
+  // The continent dump moved to a single Q-id-keyed JSON (rich `names` arrays) with the
+  // plates; read the preferred label per language from it. Locale languages only: the
+  // category title is locale-like text, so the app falls back to English for the rest,
+  // even though the dump now carries all 28.
+  const raw = JSON.parse(await readFile(join(RAW, "continents", "continent-names.json"), "utf8"));
   const out = {};
-  // Locale languages only: the continent-name dump carries the 9 (its 28-language
-  // re-dump rides with the continents & plates batch), and the category title is
-  // locale-like text, so the app falls back to English for the rest.
-  for (const lang of LANGS) {
-    const text = await readFile(join(RAW, "continents", `${lang}.txt`), "utf8");
-    for (const row of text.split(/\r?\n/).filter(Boolean)) {
-      const [key, name] = row.split("\t");
-      (out[key] ??= {})[lang] = name;
+  for (const [qid, v] of Object.entries(raw)) {
+    out[qid] = {};
+    for (const lang of LANGS) {
+      const arr = pickLang(v.names, lang);
+      const term = arr?.find((t) => t.pref) ?? arr?.[0];
+      if (term) out[qid][lang] = term.name;
     }
   }
   return out;
