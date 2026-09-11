@@ -170,18 +170,21 @@ async function dumpNames(qids, order, chunk = 20) {
     await sleep(300);
   }
   // Deterministic order so a re-dump diffs only on real change, not on the order WDQS
-  // happened to return terms in: preferred label first, then official, short, plain alias,
-  // and alphabetical within each. The build reads the `pref` regardless, so this is purely
-  // for the file's readers and its diffs.
-  const rank = (t) => (t.pref ? 0 : t.official ? 1 : t.short ? 2 : 3);
+  // happened to return terms — and their flags — in: preferred label first, then official,
+  // short, plain alias, alphabetical within each, and the flag keys themselves in that same
+  // fixed order. The build reads by flag regardless, so this is purely for the file's readers
+  // and its diffs.
+  const FLAGS = ["pref", "official", "short", "alias"];
+  const rank = (t) => FLAGS.findIndex((f) => t[f]);
+  const canon = (t) => ({ name: t.name, ...Object.fromEntries(FLAGS.filter((f) => t[f]).map((f) => [f, true])) });
   const out = {};
   for (const q of order) {
     const langMap = byItem[q] ?? {};
     const names = {};
     for (const lang of Object.keys(langMap).sort()) {
-      names[lang] = Object.values(langMap[lang]).sort(
-        (a, b) => rank(a) - rank(b) || a.name.localeCompare(b.name),
-      );
+      names[lang] = Object.values(langMap[lang])
+        .sort((a, b) => rank(a) - rank(b) || a.name.localeCompare(b.name))
+        .map(canon);
     }
     out[q] = { names };
   }

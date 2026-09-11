@@ -2975,8 +2975,8 @@
         },
         {
           "name": "англ.",
-          "alias": true,
-          "short": true
+          "short": true,
+          "alias": true
         },
         {
           "name": "английский",
@@ -5326,8 +5326,8 @@
       "ro": [
         {
           "name": "arabă",
-          "short": true,
-          "pref": true
+          "pref": true,
+          "short": true
         },
         {
           "name": "araba",
@@ -7761,8 +7761,8 @@
       "ro": [
         {
           "name": "bengaleză",
-          "alias": true,
-          "pref": true
+          "pref": true,
+          "alias": true
         },
         {
           "name": "bengala",
@@ -8309,8 +8309,8 @@
       "ro": [
         {
           "name": "portugheză",
-          "short": true,
-          "pref": true
+          "pref": true,
+          "short": true
         },
         {
           "name": "limba portugheză",
@@ -9162,8 +9162,8 @@
         },
         {
           "name": "французский",
-          "alias": true,
-          "short": true
+          "short": true,
+          "alias": true
         }
       ],
       "sk": [
@@ -9221,8 +9221,8 @@
       "tr": [
         {
           "name": "Fransızca",
-          "short": true,
-          "pref": true
+          "pref": true,
+          "short": true
         },
         {
           "name": "Fransız dili",
@@ -10391,8 +10391,8 @@
       "en": [
         {
           "name": "Indonesian",
-          "short": true,
-          "pref": true
+          "pref": true,
+          "short": true
         },
         {
           "name": "Bahasa",
@@ -10872,8 +10872,8 @@
         },
         {
           "name": "露語",
-          "alias": true,
-          "short": true
+          "short": true,
+          "alias": true
         },
         {
           "name": "露西亜語",
@@ -10897,8 +10897,8 @@
         },
         {
           "name": "로어",
-          "alias": true,
-          "short": true
+          "short": true,
+          "alias": true
         }
       ],
       "lv": [
@@ -14833,8 +14833,8 @@
       "ro": [
         {
           "name": "malaeză",
-          "alias": true,
-          "pref": true
+          "pref": true,
+          "alias": true
         },
         {
           "name": "limba malaieză",
@@ -15050,8 +15050,8 @@
       "en": [
         {
           "name": "German",
-          "short": true,
-          "pref": true
+          "pref": true,
+          "short": true
         },
         {
           "name": "Ger",
@@ -15234,8 +15234,8 @@
         },
         {
           "name": "niemiecki",
-          "alias": true,
-          "short": true
+          "short": true,
+          "alias": true
         }
       ],
       "pt": [
@@ -15295,8 +15295,8 @@
         },
         {
           "name": "немецкий",
-          "alias": true,
-          "short": true
+          "short": true,
+          "alias": true
         },
         {
           "name": "верхненемецкий",
@@ -18420,8 +18420,8 @@
       "pt-br": [
         {
           "name": "italiano",
-          "alias": true,
-          "pref": true
+          "pref": true,
+          "alias": true
         }
       ],
       "ro": [
@@ -20844,8 +20844,8 @@
       "es": [
         {
           "name": "lenguas tibetano-birmanas",
-          "alias": true,
-          "pref": true
+          "pref": true,
+          "alias": true
         },
         {
           "name": "lenguas tibetano birmanas",
@@ -22539,8 +22539,8 @@
       "he": [
         {
           "name": "פרסית",
-          "short": true,
-          "pref": true
+          "pref": true,
+          "short": true
         },
         {
           "name": "איראנית",
@@ -24526,8 +24526,8 @@
         },
         {
           "name": "polski",
-          "alias": true,
-          "short": true
+          "short": true,
+          "alias": true
         },
         {
           "name": "polszczyzna",
@@ -24600,8 +24600,8 @@
         },
         {
           "name": "польский",
-          "alias": true,
-          "short": true
+          "short": true,
+          "alias": true
         },
         {
           "name": "ензык польски",
@@ -29549,8 +29549,8 @@
       "en": [
         {
           "name": "Ukrainian",
-          "short": true,
-          "pref": true
+          "pref": true,
+          "short": true
         },
         {
           "name": "Ukrainian language",
@@ -29576,8 +29576,8 @@
       "es": [
         {
           "name": "ucraniano",
-          "short": true,
-          "pref": true
+          "pref": true,
+          "short": true
         },
         {
           "name": "idioma ucraniano",
@@ -30592,8 +30592,8 @@
       "fr": [
         {
           "name": "roumain",
-          "short": true,
-          "pref": true
+          "pref": true,
+          "short": true
         },
         {
           "name": "langue roumaine",
@@ -30619,8 +30619,8 @@
       "it": [
         {
           "name": "romeno",
-          "short": true,
-          "pref": true
+          "pref": true,
+          "short": true
         },
         {
           "name": "dacoromeno",
@@ -30748,8 +30748,8 @@
       "ro": [
         {
           "name": "română",
-          "short": true,
-          "pref": true
+          "pref": true,
+          "short": true
         },
         {
           "name": "daco-română",
@@ -32647,8 +32647,8 @@
       "sr": [
         {
           "name": "холандски",
-          "short": true,
-          "pref": true
+          "pref": true,
+          "short": true
         },
         {
           "name": "холандски језик",
@@ -36119,8 +36119,8 @@
       "es": [
         {
           "name": "serbocroata",
-          "short": true,
-          "pref": true
+          "pref": true,
+          "short": true
         },
         {
           "name": "croatoserbio",
@@ -37341,8 +37341,8 @@
       "ro": [
         {
           "name": "malgașă",
-          "alias": true,
-          "pref": true
+          "pref": true,
+          "alias": true
         },
         {
           "name": "limba malagașă",
@@ -43469,8 +43469,8 @@
       "en": [
         {
           "name": "Hijazi Saudi",
-          "alias": true,
-          "pref": true
+          "pref": true,
+          "alias": true
         },
         {
           "name": "Hejazi Saudi",
@@ -44778,8 +44778,8 @@
       "en": [
         {
           "name": "Sylheti",
-          "official": true,
-          "pref": true
+          "pref": true,
+          "official": true
         },
         {
           "name": "Syloti",
@@ -50163,8 +50163,8 @@
       "de": [
         {
           "name": "Tschechisch",
-          "short": true,
-          "pref": true
+          "pref": true,
+          "short": true
         },
         {
           "name": "Böhmisch",
@@ -51774,8 +51774,8 @@
       "en": [
         {
           "name": "Alemannic",
-          "short": true,
-          "pref": true
+          "pref": true,
+          "short": true
         },
         {
           "name": "Alemannic German",
@@ -55389,8 +55389,8 @@
       "pt": [
         {
           "name": "quíchua",
-          "short": true,
-          "pref": true
+          "pref": true,
+          "short": true
         }
       ],
       "pt-br": [
@@ -55408,8 +55408,8 @@
       "ru": [
         {
           "name": "кечуа",
-          "short": true,
-          "pref": true
+          "pref": true,
+          "short": true
         },
         {
           "name": "кечва",
@@ -61654,8 +61654,8 @@
       "es": [
         {
           "name": "croata",
-          "short": true,
-          "pref": true
+          "pref": true,
+          "short": true
         }
       ],
       "et": [
@@ -65719,8 +65719,8 @@
       "ro": [
         {
           "name": "daneză",
-          "short": true,
-          "pref": true
+          "pref": true,
+          "short": true
         },
         {
           "name": "limba daneză",
@@ -65887,8 +65887,8 @@
       "en": [
         {
           "name": "Slovak",
-          "short": true,
-          "pref": true
+          "pref": true,
+          "short": true
         },
         {
           "name": "Slovak language",
@@ -66096,8 +66096,8 @@
       "sk": [
         {
           "name": "slovenčina",
-          "short": true,
-          "pref": true
+          "pref": true,
+          "short": true
         },
         {
           "name": "slovenský jazyk",
@@ -72353,8 +72353,8 @@
         },
         {
           "name": "каталанский",
-          "alias": true,
-          "short": true
+          "short": true,
+          "alias": true
         },
         {
           "name": "каталонский",
@@ -89577,8 +89577,8 @@
         },
         {
           "name": "галисийский",
-          "alias": true,
-          "short": true
+          "short": true,
+          "alias": true
         }
       ],
       "sk": [
@@ -93018,8 +93018,8 @@
       "en": [
         {
           "name": "Kurukh",
-          "alias": true,
-          "pref": true
+          "pref": true,
+          "alias": true
         },
         {
           "name": "Kurukh bhasha",
@@ -96834,8 +96834,8 @@
       "en": [
         {
           "name": "Limburgish",
-          "alias": true,
-          "pref": true
+          "pref": true,
+          "alias": true
         },
         {
           "name": "Limburgan",
@@ -101079,8 +101079,8 @@
       "en": [
         {
           "name": "Bodo",
-          "alias": true,
-          "pref": true
+          "pref": true,
+          "alias": true
         },
         {
           "name": "Bodo (India)",
@@ -105415,8 +105415,8 @@
       "tr": [
         {
           "name": "Başkurtça",
-          "short": true,
-          "pref": true
+          "pref": true,
+          "short": true
         },
         {
           "name": "Bash.",
@@ -107970,8 +107970,8 @@
       "fr": [
         {
           "name": "tausug",
-          "alias": true,
-          "pref": true
+          "pref": true,
+          "alias": true
         },
         {
           "name": "ISO tsg",
@@ -112911,8 +112911,8 @@
       "ko": [
         {
           "name": "류큐어",
-          "alias": true,
-          "pref": true
+          "pref": true,
+          "alias": true
         },
         {
           "name": "류큐어족",
@@ -114016,8 +114016,8 @@
       "en": [
         {
           "name": "Kutchi language",
-          "alias": true,
-          "pref": true
+          "pref": true,
+          "alias": true
         },
         {
           "name": "Catchi",
@@ -126467,8 +126467,8 @@
         },
         {
           "name": "осетинский",
-          "alias": true,
-          "short": true
+          "short": true,
+          "alias": true
         }
       ],
       "sk": [
@@ -128196,8 +128196,8 @@
       "ro": [
         {
           "name": "malteză",
-          "alias": true,
-          "pref": true
+          "pref": true,
+          "alias": true
         }
       ],
       "ru": [
@@ -132065,8 +132065,8 @@
       "en": [
         {
           "name": "Adhola",
-          "alias": true,
-          "pref": true
+          "pref": true,
+          "alias": true
         },
         {
           "name": "Jopadhola",
@@ -140802,8 +140802,8 @@
         },
         {
           "name": "BSL",
-          "alias": true,
-          "short": true
+          "short": true,
+          "alias": true
         }
       ],
       "en-gb": [
@@ -149328,8 +149328,8 @@
         },
         {
           "name": "ASL",
-          "alias": true,
-          "short": true
+          "short": true,
+          "alias": true
         },
         {
           "name": "Ameslan",
@@ -164258,8 +164258,8 @@
       "es": [
         {
           "name": "idioma judeoespañol",
-          "alias": true,
-          "pref": true
+          "pref": true,
+          "alias": true
         },
         {
           "name": "djudezmo",
@@ -175901,8 +175901,8 @@
       "tr": [
         {
           "name": "Yahudi Gürcücesi",
-          "alias": true,
-          "pref": true
+          "pref": true,
+          "alias": true
         },
         {
           "name": "jge",
@@ -189043,8 +189043,8 @@
       "es": [
         {
           "name": "dialecto ligur intemelio",
-          "alias": true,
-          "pref": true
+          "pref": true,
+          "alias": true
         },
         {
           "name": "dialecto intemelio",
@@ -205674,8 +205674,8 @@
       "en": [
         {
           "name": "Lambayeque Quechua",
-          "alias": true,
-          "pref": true
+          "pref": true,
+          "alias": true
         },
         {
           "name": "Cañaris Quechua",
@@ -212645,8 +212645,8 @@
       "zh": [
         {
           "name": "西阿帕奇語",
-          "alias": true,
-          "pref": true
+          "pref": true,
+          "alias": true
         },
         {
           "name": "西阿帕契語",
@@ -234705,8 +234705,8 @@
         },
         {
           "name": "чукотский",
-          "alias": true,
-          "short": true
+          "short": true,
+          "alias": true
         },
         {
           "name": "ckt",
@@ -235102,13 +235102,13 @@
         },
         {
           "name": "KRSL",
-          "alias": true,
-          "short": true
+          "short": true,
+          "alias": true
         },
         {
           "name": "KSL",
-          "alias": true,
-          "short": true
+          "short": true,
+          "alias": true
         },
         {
           "name": "Kazakh Sign Language",
@@ -292424,8 +292424,8 @@
       "en": [
         {
           "name": "Anserma",
-          "alias": true,
-          "pref": true
+          "pref": true,
+          "alias": true
         },
         {
           "name": "Anserma language",
@@ -309314,8 +309314,8 @@
       "ja": [
         {
           "name": "サーク島語",
-          "alias": true,
-          "pref": true
+          "pref": true,
+          "alias": true
         },
         {
           "name": "サーク・フランス語",
@@ -312968,8 +312968,8 @@
         },
         {
           "name": "łacina",
-          "alias": true,
-          "short": true
+          "short": true,
+          "alias": true
         }
       ],
       "pt": [
@@ -312987,8 +312987,8 @@
       "ro": [
         {
           "name": "latină",
-          "short": true,
-          "pref": true
+          "pref": true,
+          "short": true
         },
         {
           "name": "limba latină",
@@ -313002,8 +313002,8 @@
         },
         {
           "name": "латынь",
-          "alias": true,
-          "short": true
+          "short": true,
+          "alias": true
         }
       ],
       "sk": [
