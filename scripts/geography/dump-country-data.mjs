@@ -107,7 +107,7 @@ async function dumpNames(qids, order, meta, chunk = 20) {
     const values = qids.slice(i, i + chunk).map((q) => `wd:${q}`).join(" ");
     const rows = await query(NAMES(values));
     for (const r of rows) {
-      const lang = r.lang.value;
+      const lang = r.lang?.value;
       if (!lang) continue; // an untagged monolingual value is unusable without a language
       const item = qid(r.item.value);
       const langMap = (byItem[item] ??= {});
