@@ -169,11 +169,20 @@ async function dumpNames(qids, order, chunk = 20) {
     process.stdout.write(`  names ${Math.min(i + chunk, qids.length)}/${qids.length}\r`);
     await sleep(300);
   }
+  // Deterministic order so a re-dump diffs only on real change, not on the order WDQS
+  // happened to return terms in: preferred label first, then official, short, plain alias,
+  // and alphabetical within each. The build reads the `pref` regardless, so this is purely
+  // for the file's readers and its diffs.
+  const rank = (t) => (t.pref ? 0 : t.official ? 1 : t.short ? 2 : 3);
   const out = {};
   for (const q of order) {
     const langMap = byItem[q] ?? {};
     const names = {};
-    for (const lang of Object.keys(langMap).sort()) names[lang] = Object.values(langMap[lang]);
+    for (const lang of Object.keys(langMap).sort()) {
+      names[lang] = Object.values(langMap[lang]).sort(
+        (a, b) => rank(a) - rank(b) || a.name.localeCompare(b.name),
+      );
+    }
     out[q] = { names };
   }
   return out;
@@ -187,10 +196,11 @@ async function main() {
   const struct = await dumpStructure(ids);
 
   // Descending by speakers, so the file reads in tier order and the build cuts thresholds
-  // down a sorted list. No figure sorts last (Latin's absent count).
+  // down a sorted list. No figure sorts last (Latin's absent count). Ties break by Q-id, so
+  // the order is deterministic — a re-dump doesn't reshuffle equal-count languages.
   const ranked = ids
     .map((q) => ({ lang: q, ...struct[q] }))
-    .sort((a, b) => (b.speakers ?? -1) - (a.speakers ?? -1));
+    .sort((a, b) => (b.speakers ?? -1) - (a.speakers ?? -1) || a.lang.localeCompare(b.lang));
 
   const tsv = ranked.map((l) =>
     [l.lang, l.code, l.speakers ?? "", ...FLAG_KEYS.map((k) => (l.flags[k] ? "1" : ""))].join("\t"),
