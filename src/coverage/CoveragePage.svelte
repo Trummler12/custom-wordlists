@@ -27,6 +27,9 @@
     area: "Area (km²)",
     users: "Users",
   };
+  // The two-script Chinese tags are far longer than the other codes and skew the columns;
+  // show a short badge in the header, the real code on hover (see the dotted underline).
+  const SHORT_LANG: Record<string, string> = { "zh-Hans": "zs", "zh-Hant": "zt" };
   const PAGE_SIZE = 100; // one screenful of rows; a size control is a later batch
 
   let data = $state<Coverage | null>(null);
@@ -122,7 +125,9 @@
             {/if}
             {#each data.meta.langs as lang}
               <th class="lang" class:here={lang === route.lang}>
-                <button class="sort" onclick={() => sortBy(lang)}>{lang}{arrow(lang)}</button>
+                <button class="sort" onclick={() => sortBy(lang)} title={SHORT_LANG[lang] ? lang : undefined}>
+                  <span class:abbr={!!SHORT_LANG[lang]}>{SHORT_LANG[lang] ?? lang}</span>{arrow(lang)}
+                </button>
               </th>
             {/each}
           </tr>
@@ -247,6 +252,33 @@
   .num {
     text-align: right;
   }
+  /* The header row and the Item column stay in view while scrolling the big grid; both
+     need an opaque background so the cells behind don't bleed through. */
+  thead th {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    background: Canvas;
+  }
+  th.item {
+    position: sticky;
+    left: 0;
+    z-index: 1;
+    background: Canvas;
+  }
+  thead th.item {
+    z-index: 3; /* the top-left corner is sticky on both axes */
+  }
+  /* A translucent grey layer lightens a dark cell and darkens a light one, so the hovered
+     row reads on the neutral cells and the green/red ones alike. */
+  tbody tr:hover td,
+  tbody tr:hover th {
+    box-shadow: inset 0 0 0 100px rgba(127, 127, 127, 0.18);
+  }
+  .abbr {
+    text-decoration: underline dotted;
+    text-underline-offset: 2px;
+  }
   .cell {
     text-align: center;
     color: #fff;
@@ -265,7 +297,7 @@
     opacity: 0.8;
   }
   .here {
-    outline: 2px solid #d4a017;
-    outline-offset: -2px;
+    outline: 3px solid #e3b23c; /* the URL language's column — a thicker yellow edge */
+    outline-offset: -3px;
   }
 </style>
