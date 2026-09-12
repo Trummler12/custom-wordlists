@@ -82,6 +82,16 @@ function serveData(): Plugin {
 // https://vite.dev/config/
 export default defineConfig(({ command }) => ({
   base: process.env.BASE_PATH ?? (command === "build" ? REPO_BASE : "/"),
+  // Two entries: the main app and the standalone "Language Coverage" page (strand W1),
+  // built as siblings so the coverage table's weight never ships to normal app visitors.
+  build: {
+    rollupOptions: {
+      input: {
+        main: fileURLToPath(new URL("./index.html", import.meta.url)),
+        coverage: fileURLToPath(new URL("./coverage.html", import.meta.url)),
+      },
+    },
+  },
   plugins: [svelte(), serveData()],
   test: {
     // Anything that runs without mounting: lib/ and the locale markup parser.
