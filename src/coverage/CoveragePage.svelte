@@ -46,10 +46,25 @@
   }
 
   if (route.topic) void load(route.topic);
+
+  // Switching topic is a plain navigation to its route (the entry reloads and refetches);
+  // the content language, if any, is carried across.
+  function goTopic(event: Event) {
+    const topic = (event.currentTarget as HTMLSelectElement).value;
+    if (topic) location.assign(`${base}coverage/${topic}${route.lang ? `/${route.lang}` : ""}`);
+  }
 </script>
 
 <header>
   <a class="home" href={base}>← Main App Page</a>
+  <div class="controls">
+    <label>Topic:
+      <select value={route.topic ?? ""} onchange={goTopic}>
+        {#if !route.topic}<option value="" disabled>—</option>{/if}
+        {#each COVERAGE_TOPICS as t}<option value={t}>{t}</option>{/each}
+      </select>
+    </label>
+  </div>
 </header>
 
 {#if !route.topic}
@@ -112,12 +127,29 @@
     font: 14px/1.4 system-ui, sans-serif;
   }
   header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
     padding: 0.6rem 1rem;
     border-bottom: 1px solid rgba(128, 128, 128, 0.35);
   }
   .home {
     text-decoration: none;
     opacity: 0.85;
+  }
+  .controls {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .controls label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+  }
+  .controls select {
+    font: inherit;
   }
   main {
     padding: 1rem;
@@ -165,7 +197,7 @@
     font-variant-emoji: text;
   }
   .cell.has {
-    background: #2e7d32; /* solid green — white mark on top */
+    background: #1b6e2e; /* solid green — white mark on top */
   }
   .cell:not(.has) {
     background: #c62828; /* solid red — same weight of mark, for symmetry */
