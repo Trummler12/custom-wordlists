@@ -9,6 +9,20 @@
       name="description"
       content="Which languages Wikidata already has a label for, per item — so you can fill the gaps."
     />
+    <script>
+      // The Pages 404 fallback (public/404.html) sends a deep link here as
+      // coverage.html?/coverage/<topic>/<lang>. Rewrite that back to the clean path
+      // before the app boots, so it reads location.pathname directly and the reader
+      // never sees the ?/ form. No-op in dev, where a middleware serves the real path.
+      (function () {
+        var s = window.location.search;
+        if (s.indexOf("?/") === 0) {
+          var path = s.slice(2).split("&")[0];
+          var base = window.location.pathname.replace(/coverage\.html$/, "");
+          window.history.replaceState(null, "", base + path + window.location.hash);
+        }
+      })();
+    </script>
   </head>
   <body>
     <div id="coverage"></div>

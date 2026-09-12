@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { resolveRoute, restoreFromQuery, segmentsToRoute, stripBase } from "./route";
+import { dropPrefix, resolveRoute, restoreFromQuery, segmentsToRoute, stripBase } from "./route";
 
 describe("stripBase", () => {
   it("drops the deploy base and empty segments", () => {
@@ -26,6 +26,15 @@ describe("restoreFromQuery", () => {
   });
 });
 
+describe("dropPrefix", () => {
+  it("drops a leading coverage/ prefix", () => {
+    expect(dropPrefix(["coverage", "countries", "de"])).toEqual(["countries", "de"]);
+  });
+  it("leaves prefix-less segments untouched", () => {
+    expect(dropPrefix(["countries", "de"])).toEqual(["countries", "de"]);
+  });
+});
+
 describe("segmentsToRoute", () => {
   it("keeps a known topic and its languages", () => {
     expect(segmentsToRoute(["capitals", "fr", "en"])).toEqual({ topic: "capitals", lang: "fr", uiLang: "en" });
@@ -39,15 +48,18 @@ describe("segmentsToRoute", () => {
 });
 
 describe("resolveRoute", () => {
-  it("reads a clean pathname", () => {
-    expect(resolveRoute("/custom-wordlists/languages/ja", "", "/custom-wordlists/")).toEqual({
+  it("reads a clean prefixed pathname", () => {
+    expect(resolveRoute("/custom-wordlists/coverage/languages/ja", "", "/custom-wordlists/")).toEqual({
       topic: "languages",
       lang: "ja",
       uiLang: null,
     });
   });
-  it("prefers a ?/ restore query over the pathname", () => {
-    expect(resolveRoute("/custom-wordlists/coverage.html", "?/countries/de/en", "/custom-wordlists/")).toEqual({
+  it("reads the dev root base", () => {
+    expect(resolveRoute("/coverage/capitals/fr", "", "/")).toEqual({ topic: "capitals", lang: "fr", uiLang: null });
+  });
+  it("prefers a ?/ restore query (carrying the coverage/ prefix) over the pathname", () => {
+    expect(resolveRoute("/custom-wordlists/coverage.html", "?/coverage/countries/de/en", "/custom-wordlists/")).toEqual({
       topic: "countries",
       lang: "de",
       uiLang: "en",

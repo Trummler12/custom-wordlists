@@ -6,7 +6,7 @@ import { defineConfig } from "vitest/config";
 import type { Plugin, ResolvedConfig } from "vite";
 import { svelte } from "@sveltejs/vite-plugin-svelte";
 import { createReadStream } from "node:fs";
-import { cp, stat } from "node:fs/promises";
+import { cp, readFile, stat } from "node:fs/promises";
 import { join, resolve, extname, relative, isAbsolute } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -79,6 +79,30 @@ function serveData(): Plugin {
   };
 }
 
+// In production the Pages 404 fallback (public/404.html) routes deep coverage links to
+// coverage.html; the dev server has no such 404, so this middleware serves the coverage
+// entry for any /coverage/<…> deep path, making the pretty URL work on localhost too.
+// /coverage.html itself and assets fall through to Vite.
+function serveCoverageRoutes(): Plugin {
+  const coverageHtml = fileURLToPath(new URL("./coverage.html", import.meta.url));
+  return {
+    name: "serve-coverage-routes",
+    configureServer(server) {
+      server.middlewares.use((req, res, next) => {
+        const path = (req.url ?? "").split("?")[0];
+        if (!path.startsWith("/coverage/")) return next();
+        readFile(coverageHtml, "utf8").then(
+          async (html) => {
+            res.setHeader("Content-Type", "text/html");
+            res.end(await server.transformIndexHtml(req.url ?? path, html, req.originalUrl));
+          },
+          () => next(),
+        );
+      });
+    },
+  };
+}
+
 // https://vite.dev/config/
 export default defineConfig(({ command }) => ({
   base: process.env.BASE_PATH ?? (command === "build" ? REPO_BASE : "/"),
@@ -92,7 +116,7 @@ export default defineConfig(({ command }) => ({
       },
     },
   },
-  plugins: [svelte(), serveData()],
+  plugins: [svelte(), serveData(), serveCoverageRoutes()],
   test: {
     // Anything that runs without mounting: lib/ and the locale markup parser.
     // The rule is "no DOM, no runes", not a folder — dom.ts is the one module
