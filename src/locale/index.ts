@@ -289,9 +289,12 @@ export interface CoveragePageStrings {
   item: string;
   /** The numeric column's header, chosen by the dataset's `numeric` key. */
   numeric: { population: string; area: string; users: string };
-  /** Pager controls (arrows are in the markup). */
+  /** Pager controls — the neutral ‹‹‹ ‹ › ››› glyphs are in the markup, these name them
+   *  (aria-label and hover) for the first, previous, next and last page. */
+  first: string;
   prev: string;
   next: string;
+  last: string;
   page: (current: number, total: number) => string;
   /** While a topic's data loads, and when it fails. */
   loading: (topic: string) => string;
