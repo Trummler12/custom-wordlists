@@ -268,6 +268,36 @@ export interface FooterStrings {
   helpOutAfter: string;
 }
 
+/** The standalone "Language Coverage" page (strand W1): its header controls, the table
+ *  chrome and the pager. A separate Vite entry renders it, but its text is app chrome like
+ *  any other, so it lives here (distinct from `CoverageStrings`, the Geoguessr filter). */
+export interface CoveragePageStrings {
+  /** The link back to the main app (an arrow precedes it in the markup). */
+  home: string;
+  /** The Topic dropdown's label. */
+  topicLabel: string;
+  /** The interface-language dropdown's aria-label — a 🌐 marks it visually. */
+  uiLanguage: string;
+  /** The page and index title. (Topic names are not here — they come from the topic
+   *  data via the manifest, so a title is defined once; see the page's `topicTitle`.) */
+  title: string;
+  /** The index page's prompt to pick a topic. */
+  intro: string;
+  /** The row count, e.g. "2,021 items". */
+  itemCount: (n: number) => string;
+  /** The first column's header. */
+  item: string;
+  /** The numeric column's header, chosen by the dataset's `numeric` key. */
+  numeric: { population: string; area: string; users: string };
+  /** Pager controls (arrows are in the markup). */
+  prev: string;
+  next: string;
+  page: (current: number, total: number) => string;
+  /** While a topic's data loads, and when it fails. */
+  loading: (topic: string) => string;
+  loadError: (topic: string, message: string) => string;
+}
+
 /** Every user-facing string the app chrome renders, keyed and typed. */
 export interface UIStrings {
   header: HeaderStrings;
@@ -282,6 +312,7 @@ export interface UIStrings {
   settings: SettingsStrings;
   output: OutputStrings;
   footer: FooterStrings;
+  coveragePage: CoveragePageStrings;
 }
 
 import { en } from "./en";
