@@ -3,6 +3,9 @@
 // below; the frontend resolves the active one via strings(lang), falling back to
 // English for any language that has topic data but no UI translation yet.
 //
+// Topic content (titles, tier conditions, rule reasons) is translatable too but
+// lives with the build that bakes it, not here — see README.md for the full map.
+//
 // Grouped rather than flat, and a group is one of two things: a PLACE, when its
 // strings only ever appear there (header, tree, settings, output, footer), or a
 // FEATURE, when they follow a control that turns up on several rows (names, fame,
@@ -58,6 +61,11 @@ export interface FameStrings {
   /** The same prefix for a merged topic whose contributors don't all sit at its
    *  ruler position: most are there, not all. */
   mostlySelected: string;
+  /** The parenthetical second line the ruler tooltip adds when a fame cap (the
+   *  languages "< 1M" box, unchecked) clamps the selection to its floor while a
+   *  deeper position stays stored — so the reader sees the setting a re-check
+   *  restores. Wraps the same "…with {condition}…" body the primary line uses. */
+  stored: (body: string) => string;
   /** Toggle a single list's fame ruler; label reflects the current state. */
   toggle: (shown: boolean) => string;
   /** Toggle from a category row all the rulers it governs; label on current state. */
@@ -112,6 +120,24 @@ export interface CoverageStrings {
   all: string;
   withCoverage: string;
   reliable: string;
+}
+
+/** The language-type inclusion panel behind its own ☑️ button: a checklist of the
+ *  Wikidata types a language can carry — dead, dialect, family and so on — each
+ *  default-off, plus a base box for the living modern languages the list shows by
+ *  default. The type labels themselves come from the data (each rule's `reason`),
+ *  so only the frame is here. */
+export interface LanguageTypeStrings {
+  /** Button aria-label and popup heading. */
+  label: string;
+  /** The base checkbox — the living modern languages shown by default. */
+  base: string;
+  /** The last box: lift the ruler's default ≥ 1M cap to reach the whole list. */
+  submillion: string;
+  /** The 👎 marker's note: a type whose fame lags its speaker numbers. */
+  notRecommended: string;
+  /** A checkbox's hover, on whether ticking it adds the type or removes it. */
+  toggle: (included: boolean) => string;
 }
 
 /** The sovereignty & recognition matrix behind its own ✅ button: a grid of cells,
@@ -242,6 +268,36 @@ export interface FooterStrings {
   helpOutAfter: string;
 }
 
+/** The standalone "Language Coverage" page (strand W1): its header controls, the table
+ *  chrome and the pager. A separate Vite entry renders it, but its text is app chrome like
+ *  any other, so it lives here (distinct from `CoverageStrings`, the Geoguessr filter). */
+export interface CoveragePageStrings {
+  /** The link back to the main app (an arrow precedes it in the markup). */
+  home: string;
+  /** The Topic dropdown's label. */
+  topicLabel: string;
+  /** The interface-language dropdown's aria-label — a 🌐 marks it visually. */
+  uiLanguage: string;
+  /** The page and index title. (Topic names are not here — they come from the topic
+   *  data via the manifest, so a title is defined once; see the page's `topicTitle`.) */
+  title: string;
+  /** The index page's prompt to pick a topic. */
+  intro: string;
+  /** The row count, e.g. "2,021 items". */
+  itemCount: (n: number) => string;
+  /** The first column's header. */
+  item: string;
+  /** The numeric column's header, chosen by the dataset's `numeric` key. */
+  numeric: { population: string; area: string; users: string };
+  /** Pager controls (arrows are in the markup). */
+  prev: string;
+  next: string;
+  page: (current: number, total: number) => string;
+  /** While a topic's data loads, and when it fails. */
+  loading: (topic: string) => string;
+  loadError: (topic: string, message: string) => string;
+}
+
 /** Every user-facing string the app chrome renders, keyed and typed. */
 export interface UIStrings {
   header: HeaderStrings;
@@ -250,11 +306,13 @@ export interface UIStrings {
   fame: FameStrings;
   omitted: OmittedStrings;
   coverage: CoverageStrings;
+  languageType: LanguageTypeStrings;
   sovereignty: SovereigntyStrings;
   language: LanguageStrings;
   settings: SettingsStrings;
   output: OutputStrings;
   footer: FooterStrings;
+  coveragePage: CoveragePageStrings;
 }
 
 import { en } from "./en";

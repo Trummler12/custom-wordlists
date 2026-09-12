@@ -32,6 +32,7 @@ export const ko: UIStrings = {
     none: "아직 정의된 인지도 그룹이 없습니다. 하단의 Contribution Guide에서 제안할 수 있습니다.",
     selected: "선택됨:",
     mostlySelected: "대부분 선택됨:",
+    stored: (body) => `(저장됨: ${body})`,
     toggle: (shown) =>
       shown ? "이 목록의 인지도 슬라이더 숨기기" : "이 목록의 인지도 슬라이더 표시",
     toggleAll: (allShown) =>
@@ -61,6 +62,14 @@ export const ko: UIStrings = {
     all: "모든 국가",
     withCoverage: "공식 지원 포함",
     reliable: "안정적 지원만",
+  },
+  languageType: {
+    label: "포함할 언어 유형",
+    base: "살아 있는 현대 언어",
+    submillion: "사용자 100만 명 미만 언어도 포함",
+    notRecommended: "가벼운 그림 그리기에는 부적합 — 사용자 수에 비해 훨씬 덜 알려져 있습니다.",
+    toggle: (included) =>
+      included ? "선택됨 — 목록에 포함되어 있습니다. 해제하면 제외됩니다." : "선택하면 목록에 추가됩니다.",
   },
   sovereignty: {
     label: "주권과 승인",
@@ -132,5 +141,20 @@ export const ko: UIStrings = {
     // The guide itself is English only, so the link keeps its name.
     contributionGuide: "Contribution Guide",
     helpOutAfter: "를 확인해 보세요.",
+  },
+  coveragePage: {
+    home: "메인 앱으로",
+    topicLabel: "주제:",
+    uiLanguage: "인터페이스 언어",
+    title: "언어 커버리지",
+    intro: "주제를 선택하면 각 항목에 대해 Wikidata가 어떤 언어의 레이블을 가지고 있는지 볼 수 있습니다.",
+    itemCount: (n) => `${n.toLocaleString()}개 항목`,
+    item: "항목",
+    numeric: { population: "인구", area: "면적 (km²)", users: "사용자" },
+    prev: "이전",
+    next: "다음",
+    page: (current, total) => `${total} 페이지 중 ${current} 페이지`,
+    loading: (topic) => `${topic} 불러오는 중…`,
+    loadError: (topic, message) => `${topic} 커버리지를 불러오지 못했습니다: ${message}`,
   },
 };

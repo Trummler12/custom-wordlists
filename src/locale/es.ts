@@ -28,6 +28,7 @@ export const es: UIStrings = {
     none: "Aún no hay grupos de fama definidos: consulta la Contribution Guide en el pie de página para proponer algunos.",
     selected: "Selección:",
     mostlySelected: "Selección mayoritaria:",
+    stored: (body) => `(Guardado: ${body})`,
     toggle: (shown) =>
       shown ? "Ocultar la regla de fama de esta lista" : "Mostrar la regla de fama de esta lista",
     toggleAll: (allShown) =>
@@ -59,6 +60,16 @@ export const es: UIStrings = {
     all: "Todos los países",
     withCoverage: "Con cobertura oficial",
     reliable: "Solo cobertura fiable",
+  },
+  languageType: {
+    label: "Qué tipos de lengua incluir",
+    base: "Lenguas modernas vivas",
+    submillion: "También lenguas con <1 millón de usuarios",
+    notRecommended: "Poco apropiado para dibujar de forma casual: mucho menos conocido de lo que sugiere su número de hablantes.",
+    toggle: (included) =>
+      included
+        ? "Marcado: están en la lista. Desmárcalo para excluirlas."
+        : "Márcalo para añadirlas a la lista.",
   },
   sovereignty: {
     label: "Soberanía y reconocimiento",
@@ -137,5 +148,20 @@ export const es: UIStrings = {
     // La guía solo existe en inglés, así que el enlace conserva su nombre.
     contributionGuide: "Contribution Guide",
     helpOutAfter: ".",
+  },
+  coveragePage: {
+    home: "Aplicación principal",
+    topicLabel: "Tema:",
+    uiLanguage: "Idioma de la interfaz",
+    title: "Cobertura de idiomas",
+    intro: "Elige un tema para ver para qué idiomas Wikidata ya tiene una etiqueta, por elemento.",
+    itemCount: (n) => `${n.toLocaleString()} elementos`,
+    item: "Elemento",
+    numeric: { population: "Población", area: "Área (km²)", users: "Usuarios" },
+    prev: "Anterior",
+    next: "Siguiente",
+    page: (current, total) => `Página ${current} / ${total}`,
+    loading: (topic) => `Cargando ${topic}…`,
+    loadError: (topic, message) => `No se pudo cargar la cobertura de ${topic}: ${message}`,
   },
 };

@@ -3,12 +3,16 @@
 //
 //   node scripts/geography/build-continents.mjs [--write]
 //
-// FOUR TIERS, THREE OF THEM MEASURED. Bird (2003) gives every plate in his model
+// FIVE TIERS, THREE OF THEM MEASURED. Bird (2003) gives every plate in his model
 // a share of the Earth's surface in steradians, and those shares add up to 4π —
 // one source, one column, no arithmetic of ours. Tiers 0 to 2 are cut from it.
 // Tier 3 is what the model does not contain: plates the English list names and
 // nobody has measured, so it is grouped by parent plate instead, which is the only
-// order that page gives them. The list says so itself, through `tierNotes`.
+// order that page gives them. Tier 4 is the Wikidata catch-all — everything P31 calls
+// a tectonic plate that the banded sources don't classify (mostly extinct plates),
+// filtered of junk and name-duplicates. Tier 3 says so itself, in a `{br}` second line
+// folded into its tier condition. Extinct plates additionally carry an `omitted` rule
+// that hides them by default.
 //
 // TIER 0 MERGES TWO LISTS. The seven continents and the seven major plates name
 // the same landmasses, so they are one tier of paired entries rather than two of
@@ -22,6 +26,7 @@
 // in tier 0, under short it shows one rank down as a plate among plates. Every
 // lower tier is plates only, left plain so a plate name shows in either dropdown.
 import { readFile, writeFile } from "node:fs/promises";
+import { writeCoverage } from "./coverage.mjs";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 import { serializeTopic } from "../lib/serialize.mjs";
@@ -30,7 +35,89 @@ const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..", "..");
 const RAW = join(ROOT, "data-raw", "geography");
 const TOPIC = join(ROOT, "data", "topics", "geography", "physical", "continents.json");
 
-const LANGS = ["en", "de", "es", "fr", "it", "ja", "ko", "zh-Hans", "zh-Hant"];
+// The word-list output languages: skribbl's full set, a superset of the nine the
+// locale-like strings (titles, tier conditions, tooltips, notes) use. Names only —
+// dormant until CONTENT_LANGS grows into them. Mirrors build-country-data / the dump.
+const NAME_LANGS = [
+  "en", "de", "es", "fr", "it", "ja", "ko", "zh-Hans", "zh-Hant",
+  "pt", "ru", "tr", "pl", "nl", "bg", "cs", "da", "et", "fi", "el", "he",
+  "hu", "lv", "mk", "no", "ro", "sr", "sk", "sv", "tl",
+];
+
+/** Our content tag → the raw Wikidata label tags the dump keyed `names` under, first hit
+ *  wins — the same chains the dump and build-country-data use (zh scripts, nb/nn, fil). */
+const LANG_SRC = {
+  en: ["en"], de: ["de"], es: ["es"], fr: ["fr"], it: ["it"], ja: ["ja"], ko: ["ko"],
+  "zh-Hans": ["zh-hans", "zh-cn", "zh-sg", "zh-my", "zh"],
+  "zh-Hant": ["zh-hant", "zh-tw", "zh-hk", "zh-mo"],
+  pt: ["pt", "pt-br", "pt-pt"], ru: ["ru"], tr: ["tr"], pl: ["pl"], nl: ["nl"],
+  bg: ["bg"], cs: ["cs"], da: ["da"], et: ["et"], fi: ["fi"], el: ["el"], he: ["he"],
+  hu: ["hu"], lv: ["lv"], mk: ["mk"], no: ["no", "nb", "nn"], ro: ["ro"], sr: ["sr"],
+  sk: ["sk"], sv: ["sv"], tl: ["tl", "fil"],
+};
+
+/** Curated departures for the Wikidata P31 catch-all (dump band "unknown"), which a
+ *  bare query can't clean itself. Q-ids, so a relabel upstream doesn't slip one past.
+ *  Dropped entirely: things Wikidata tags as a tectonic plate that are not one, and one
+ *  duplicate of a plate already present under another item. Name-level duplicates of a
+ *  banded plate (a redlink and its item) are dropped separately, by name, below. */
+const CATCHALL_DROP = new Set([
+  "Q1933940", // the concept "microplate", not a plate
+  "Q6058525", // "intraplate deformation", a process
+  "Q7853562", // no English label — nothing to show
+  "Q115534336", // "Central India Tectonic Zone", a zone, not a plate
+  "Q3906099", // "Jan Mayen Microcontinent", a continental fragment, not a plate
+  "Q19848929", // "European plate", a duplicate of the Eurasian plate
+  "Q17115739", // "Western Siberia Plate", duplicate of West Siberian Plate (Q25473407)
+]);
+
+/** Extinct / ancient plates — no longer active, subducted or accreted long ago.
+ *  Wikidata carries no signal for this (no end date, no "former plate" class), so the
+ *  list is by hand, verified against the geology. They still sit in their tier, but an
+ *  `omitted` rule hides them by default, the way the language list hides dead tongues. */
+const ANCIENT = new Set([
+  "Q902322", // Phoenix
+  "Q1059335", // Izanagi
+  "Q1203170", // Farallon
+  "Q1320205", // Kula
+  "Q3391669", // Bellingshausen
+  "Q5074185", // Charcot
+  "Q5120147", // Cimmerian
+  "Q13542800", // Baltica
+  "Q3391667", // Intermontane
+  "Q6886313", // Moa
+  "Q3391684", // Lhasa
+]);
+
+/** The `omitted` rule's line, filled with the count of ancient plates it hides. */
+const ANCIENT_REASON = {
+  en: "ancient and extinct plates",
+  de: "urzeitliche und erloschene Platten",
+  es: "placas antiguas y extintas",
+  fr: "plaques anciennes et éteintes",
+  it: "placche antiche ed estinte",
+  ja: "古代・消滅したプレート",
+  ko: "고대·소멸한 판",
+  "zh-Hans": "古代和已消亡的板块",
+  "zh-Hant": "古代和已消亡的板塊",
+};
+
+/** The landmasses the continent names are keyed under, Q-id per key — the same map the
+ *  dump lists, repeated here because the build's identity is the English key (TIER0,
+ *  structure.tsv) while the Wikidata dump is keyed by Q-id. Ten hand-picked items; the
+ *  plates reconcile by Q-id through structure.tsv, but these never move. */
+const LANDMASSES = {
+  Africa: "Q15",
+  Antarctica: "Q51",
+  Asia: "Q48",
+  Australia: "Q408",
+  Eurasia: "Q5401",
+  Europe: "Q46",
+  India: "Q668",
+  "North America": "Q49",
+  Oceania: "Q55643",
+  "South America": "Q18",
+};
 
 /** Tier 0, in the order it is shown: roughly by area, with each landmass beside
  *  the plate named after it.
@@ -136,6 +223,15 @@ const TIER_CONDITIONS = [
     ja: "微小プレート以上、測定の有無を問わず",
     ko: "미소판 이상, 측정 여부와 무관",
   },
+  {
+    en: "tectonic plates of unknown classification",
+    de: "tektonische Platten ohne bekannte Einordnung",
+    es: "placas tectónicas sin clasificación conocida",
+    fr: "plaques tectoniques sans classification connue",
+    it: "placche tettoniche senza classificazione nota",
+    ja: "分類不明の構造プレート",
+    ko: "분류가 알려지지 않은 판",
+  },
 ];
 
 /** The ruler's hover. `{condition}` is filled with the band above; at rest it
@@ -155,7 +251,9 @@ const RULER_TOOLTIP = {
   },
 };
 
-/** The note tier 3 raises about itself, once the ruler reaches it. */
+/** Tier 3's caveat, folded into its tier condition as a `{br}` second line rather than a
+ *  separate ℹ️ note (that glyph is the language lists' — transliteration and the like — and
+ *  the ruler tooltip already carries the condition). */
 const TIER3_NOTE = {
   en: "No area has ever been published for these plates, so this tier is grouped by the plate each sits under rather than ordered by size — and several of them are not their own encyclopedia article either.",
   de: "Für diese Platten wurde nie eine Fläche veröffentlicht, daher ist diese Stufe nach Mutterplatte gruppiert statt nach Grösse sortiert — und mehrere von ihnen haben nicht einmal einen eigenen Enzyklopädie-Artikel.",
@@ -166,7 +264,31 @@ const TIER3_NOTE = {
   ko: "이 판들은 면적이 공표된 적이 없어 이 단계는 크기순이 아니라 상위 판별로 묶여 있으며, 그중 몇몇은 독립된 문서조차 없습니다.",
 };
 
-/** `<key> ⇥ <name>` per line → `{ key: { lang: name } }`, tidied twice.
+/** Fold each tier's caveat into its condition as a `{br}` second line — the ruler tooltip
+ *  renders it under the band it names (see `rulerTip`). Only tier 3 has one; tier 4's own
+ *  wording ("of unknown classification") already says what it is. */
+/** The localized "Note:" that opens the folded second line — a blank line ({br}{br}) sets it
+ *  off from the condition, then the label, so the caveat reads as an aside rather than part of
+ *  the tier's name. */
+const NOTE_LABEL = {
+  en: "Note: ",
+  de: "Hinweis: ",
+  es: "Nota: ",
+  fr: "Note : ",
+  it: "Nota: ",
+  ja: "注：",
+  ko: "참고: ",
+};
+const tierConditionsWithNotes = TIER_CONDITIONS.map((cond, i) =>
+  i === 3
+    ? Object.fromEntries(
+        Object.entries(cond).map(([l, v]) => [l, TIER3_NOTE[l] ? `${v}{br}{br}${NOTE_LABEL[l] ?? ""}${TIER3_NOTE[l]}` : v]),
+      )
+    : cond,
+);
+
+/** A Wikidata label, tidied twice — the dump keeps them raw (a snapshot has no business
+ *  disagreeing with its source), so the curation is applied here on read.
  *
  *  CASE. Wikidata writes labels in the case its own house style asks for rather
  *  than the one the language uses — Spanish arrives as `placa euroasiática` beside
@@ -183,19 +305,31 @@ const TIER3_NOTE = {
  *
  *  Both are curation, so both live here rather than in the dump, which is a
  *  snapshot and has no business disagreeing with its source. */
-async function readDump(dir) {
+const tidy = (name) => {
+  const n = name.replace(/\s*[(（][^)）]*[)）]\s*$/, "");
+  return n.charAt(0).toUpperCase() + n.slice(1);
+};
+/** The preferred name a content tag reads from a dump item's rich `names` map — the first
+ *  of its Wikidata sources that carries a term, its `pref` label (else the first alias). */
+const prefName = (names, ourTag) => {
+  for (const src of LANG_SRC[ourTag]) {
+    const arr = names?.[src];
+    if (arr?.length) return (arr.find((t) => t.pref) ?? arr[0]).name;
+  }
+  return undefined;
+};
+/** A dump item (`{ name, area?, names }`) → our `{ tag: name }`, each name tidied. */
+const resolve = (item) => {
   const out = {};
-  for (const lang of LANGS) {
-    const text = await readFile(join(RAW, dir, `${lang}.txt`), "utf8");
-    // Split CRLF-tolerantly: a Windows-checked-out dump would otherwise leave a \r
-    // on every name and bake it into the JSON strings.
-    for (const row of text.split(/\r?\n/).filter(Boolean)) {
-      const [key, raw] = row.split("\t");
-      const name = raw.replace(/\s*[(（][^)）]*[)）]\s*$/, "");
-      (out[key] ??= {})[lang] = name.charAt(0).toUpperCase() + name.slice(1);
-    }
+  for (const tag of NAME_LANGS) {
+    const n = prefName(item?.names, tag);
+    if (n) out[tag] = tidy(n);
   }
   return out;
+};
+
+async function loadNames(dir, file) {
+  return JSON.parse(await readFile(join(RAW, dir, file), "utf8"));
 }
 
 async function readStructure() {
@@ -204,8 +338,8 @@ async function readStructure() {
     .split(/\r?\n/) // CRLF-tolerant, so the last column never keeps a trailing \r
     .filter((l) => l && !l.startsWith("#"))
     .map((l) => {
-      const [name, band, parent, wikidata, sr] = l.split("\t");
-      return { name, band, parent, wikidata, sr: sr ? Number(sr) : undefined };
+      const [name, band, parent, wikidata, sr, de] = l.split("\t");
+      return { name, band, parent, wikidata, sr: sr ? Number(sr) : undefined, de: de || undefined };
     });
 }
 
@@ -229,7 +363,7 @@ async function readStructure() {
 function entry(land, plate, lands, plates, bindSingle = false) {
   const map = {};
   const unknown = [];
-  for (const lang of LANGS) {
+  for (const lang of NAME_LANGS) {
     const short = land ? (OVERRIDES[`${land}.${lang}`] ?? lands[land]?.[lang]) : undefined;
     const long = plate ? (OVERRIDES[`${plate}.${lang}`] ?? plates[plate]?.[lang]) : undefined;
     const value =
@@ -250,7 +384,7 @@ function entry(land, plate, lands, plates, bindSingle = false) {
   if (map.en === undefined) throw new Error(`no English name for ${land ?? plate}`);
   // An absent key means "the same as English" — so a language that agrees with it
   // says so by keeping quiet, and only a real gap needs `?`.
-  for (const lang of LANGS) {
+  for (const lang of NAME_LANGS) {
     if (lang !== "en" && JSON.stringify(map[lang]) === JSON.stringify(map.en)) delete map[lang];
   }
   if (unknown.length) map["?"] = unknown;
@@ -258,9 +392,22 @@ function entry(land, plate, lands, plates, bindSingle = false) {
 }
 
 async function main() {
-  const lands = await readDump("continents");
-  const plates = await readDump("plates");
   const structure = await readStructure();
+  const continentNames = await loadNames("continents", "continent-names.json");
+  const plateNames = await loadNames("plates", "plate-names.json");
+  // The names, keyed by the English name the rest of the build works in. Continents map
+  // through LANDMASSES; plates join structure.tsv (name ↔ Q-id) to the Q-id-keyed dump,
+  // with a redlink's English name taken from its key and its German from the Bird column.
+  const lands = Object.fromEntries(
+    Object.entries(LANDMASSES).map(([key, qid]) => [key, resolve(continentNames[qid])]),
+  );
+  const plates = {};
+  for (const row of structure) {
+    const names = resolve(plateNames[row.wikidata]);
+    if (!names.en) names.en = tidy(row.name);
+    if (!names.de && row.de) names.de = tidy(row.de);
+    plates[row.name] = names;
+  }
 
   const inTier0 = new Set(TIER0.map((e) => e.plate).filter(Boolean));
   const stray = structure.filter((p) => p.band === "major" && !inTier0.has(p.name));
@@ -276,6 +423,22 @@ async function main() {
     entry(undefined, "Indo-Australian plate", lands, plates),
   ];
 
+  // The fifth tier: the Wikidata catch-all (dump band "unknown"), plates with no band and
+  // no area, so nothing places them above the floor. Drop the curated junk by Q-id, and
+  // any whose name already belongs to a banded plate — a redlink and its item differing
+  // only in case (Altiplano, Futuna), the item being the duplicate to lose.
+  const bandedNames = new Set(
+    structure.filter((p) => p.band !== "unknown").map((p) => p.name.toLowerCase()),
+  );
+  const catchall = structure.filter(
+    (p) =>
+      p.band === "unknown" &&
+      !CATCHALL_DROP.has(p.wikidata) &&
+      !bandedNames.has(p.name.toLowerCase()),
+  );
+  // The extinct ones among them, by their English name, for the `omitted` rule below.
+  const ancientNames = catchall.filter((p) => ANCIENT.has(p.wikidata)).map((p) => p.name);
+
   const tiers = [
     TIER0.map((e) => entry(e.land, e.plate, lands, plates, true)),
     [
@@ -284,11 +447,22 @@ async function main() {
     ],
     structure.filter((p) => p.band === "micro" && p.sr !== undefined),
     structure.filter((p) => p.band === "micro" && p.sr === undefined),
+    catchall,
   ].map((tier, i) =>
     i === 0
       ? tier
       : tier.map((p) => (p.name ? entry(undefined, p.name, lands, plates) : p)),
   );
+
+  // Extinct plates sit in the last tier like any other, but the 🚫 panel hides them by
+  // default — the way the language list hides dead tongues. An `omitted` rule matching
+  // their English names; the count reads "up to N", the ruler bounding how many return.
+  const ancientRule = {
+    id: "ancient",
+    match: ancientNames,
+    reason: ANCIENT_REASON,
+    count: true,
+  };
 
   const topic = {
     id: "continents",
@@ -296,7 +470,7 @@ async function main() {
     icon: "🗺️",
     description:
       "The continents and the tectonic plates, in one list: tier 0 pairs each landmass with the plate named after it, and the tiers below it walk down Bird's plate model by area until the plates run out of published ones.",
-    languages: LANGS,
+    languages: NAME_LANGS,
     sources: [
       "Grouping: https://en.wikipedia.org/wiki/List_of_tectonic_plates",
       "Areas: Bird (2003), An updated digital model of plate boundaries — via https://de.wikipedia.org/wiki/Liste_der_tektonischen_Platten",
@@ -305,18 +479,20 @@ async function main() {
     lastUpdated: new Date().toISOString().slice(0, 10),
     lastChecked: new Date().toISOString().slice(0, 10),
     defaultNames: "both",
-    tierNotes: [{ fromTier: 4, icon: "ℹ️", text: TIER3_NOTE }],
+    omitted: [ancientRule],
     tiers,
-    tierConditions: TIER_CONDITIONS,
+    tierConditions: tierConditionsWithNotes,
     rulerTooltip: RULER_TOOLTIP,
   };
 
   const text = serializeTopic(topic);
   console.log(`tiers: ${tiers.map((t) => t.length).join(" / ")} — ${tiers.flat().length} entries`);
-  for (const lang of LANGS.filter((l) => l !== "en")) {
+  for (const lang of NAME_LANGS.filter((l) => l !== "en")) {
     const missing = tiers.flat().filter((e) => (e["?"] ?? []).includes(lang)).length;
     console.log(`  ${lang.padEnd(8)} ${String(missing).padStart(3)} without a name`);
   }
+  await writeCoverage(ROOT, "continents", { ...continentNames, ...plateNames }, NAME_LANGS, LANG_SRC, "area", process.argv.includes("--write"));
+
   if (process.argv.includes("--write")) {
     await writeFile(TOPIC, text, "utf8");
     console.log(`wrote ${TOPIC}`);

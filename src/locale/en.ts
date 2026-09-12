@@ -27,6 +27,7 @@ export const en: UIStrings = {
     none: "No fame groups defined yet — see the Contribution Guide in the footer to propose some!",
     selected: "Selected:",
     mostlySelected: "Mostly selected:",
+    stored: (body) => `(Stored: ${body})`,
     toggle: (shown) => (shown ? "Hide this list's fame ruler" : "Show this list's fame ruler"),
     toggleAll: (allShown) => (allShown ? "Hide these fame rulers" : "Show these fame rulers"),
   },
@@ -55,6 +56,16 @@ export const en: UIStrings = {
     all: "All countries",
     withCoverage: "With official coverage",
     reliable: "Reliable coverage only",
+  },
+  languageType: {
+    label: "Which language types to include",
+    base: "Living modern languages",
+    submillion: "Also languages with <1 million users",
+    notRecommended: "A poor fit for casual drawing: far less familiar than its speaker numbers suggest.",
+    toggle: (included) =>
+      included
+        ? "Ticked — these are in the list. Untick to leave them out."
+        : "Tick to add these to the list.",
   },
   sovereignty: {
     label: "Sovereignty & recognition",
@@ -127,5 +138,20 @@ export const en: UIStrings = {
     helpOut: "Want to help with the project? Check out the",
     contributionGuide: "Contribution Guide",
     helpOutAfter: "!",
+  },
+  coveragePage: {
+    home: "Main App Page",
+    topicLabel: "Topic:",
+    uiLanguage: "Interface language",
+    title: "Language Coverage",
+    intro: "Pick a topic to see which languages Wikidata already has a label for, per item.",
+    itemCount: (n) => `${n.toLocaleString()} items`,
+    item: "Item",
+    numeric: { population: "Population", area: "Area (km²)", users: "Users" },
+    prev: "Prev",
+    next: "Next",
+    page: (current, total) => `Page ${current} / ${total}`,
+    loading: (topic) => `Loading ${topic}…`,
+    loadError: (topic, message) => `Could not load coverage for ${topic}: ${message}`,
   },
 };

@@ -8,7 +8,7 @@ import { loadManifest, loadTopic } from "../lib/data";
 import { buildTree, mergeGroups, synthesizeTopics, titleCase, type CatNode } from "../lib/tree";
 import type { CategoryMeta, Group, Topic, TopicSummary } from "../lib/types";
 import { baseTag, langSupport } from "../lib/languages";
-import { allRules, UNKNOWN_RULE, visibleGroup } from "../lib/omitted";
+import { allRules, BASE_RULE, EXTEND_RULE, includeRules, UNKNOWN_RULE, visibleGroup } from "../lib/omitted";
 import { displayName, type DisplayName } from "../lib/words";
 import { settings } from "./settings.svelte";
 import { lang } from "./lang.svelte";
@@ -32,6 +32,7 @@ function normalizedGroups(data: Topic): Group[] {
       ...(data.tiers ? { tiers: data.tiers } : {}),
       ...(data.tierConditions ? { tierConditions: data.tierConditions } : {}),
       ...(data.rulerTooltip ? { rulerTooltip: data.rulerTooltip } : {}),
+      ...(data.extendFrom !== undefined ? { extendFrom: data.extendFrom } : {}),
     };
     synthGroups.set(data, (cached = [g]));
   }
@@ -160,13 +161,14 @@ class TopicsState {
     // shown in English, whatever the picker says — so it has no gaps to hide.
     const picked = lang.contentLang(t.id);
     const code = langSupport(t, baseTag(picked)) === "english" ? "en" : picked;
-    return groups.map((g) =>
-      visibleGroup(
-        g,
-        settings.toggledFor(t.id, g.id, [...allRules(g).map((o) => o.id), UNKNOWN_RULE]),
-        code,
-      ),
-    );
+    return groups.map((g) => {
+      // The reserved toggles (base box, ruler-cap lift) are toggled like a rule but declared
+      // in no file, so they must be named here for their flip to reach visibleGroup.
+      const ids = [...allRules(g).map((o) => o.id), UNKNOWN_RULE];
+      if (includeRules(g).length) ids.push(BASE_RULE);
+      if (g.extendFrom != null) ids.push(EXTEND_RULE);
+      return visibleGroup(g, settings.toggledFor(t.id, g.id, ids), code);
+    });
   }
 
   /** The one merged group a synthesized topic shows — its contributors' visible
@@ -192,9 +194,36 @@ class TopicsState {
     return [assembled];
   }
 
-  /** Whether a topic is still fetching and has nothing to show yet. */
-  isLoading(t: TopicSummary): boolean {
-    return !!this.loadingById[t.id] && !this.data[t.id];
+  /** Whether a topic's data is available to count from — its own file loaded, or,
+   *  for a synth, every contributor's. What a row and a category count wait on
+   *  before showing anything but "loading": until then a topic's total is the
+   *  manifest's unfiltered `wordCount`, not the figure the list actually yields. */
+  isReady(t: TopicSummary): boolean {
+    if (this.isSynth(t.id)) return this.contributorsOf(t.id).every((c) => !!this.data[c.id]);
+    return !!this.data[t.id];
+  }
+
+  /** Whether every topic under a node is ready, so a category count shows "loading"
+   *  and then its final number in one step — never a partial sum ticking down as
+   *  files arrive. The manifest's `wordCount` fallback is unfiltered, so an unloaded
+   *  topic would otherwise inflate the parent until it lands. */
+  subtreeReady(ts: TopicSummary[]): boolean {
+    return ts.every((t) => this.isReady(t));
+  }
+
+  /** Load every topic's file in the background, so the counts everywhere settle to
+   *  their filtered value without the reader expanding a thing — the parent totals
+   *  are otherwise wrong (an unfiltered `wordCount` sum) until each child is opened.
+   *  Bounded concurrency keeps it off the initial render's back; `ensure` is
+   *  idempotent, so a row that loaded itself first is simply skipped. Fire-and-forget
+   *  from the app shell once the manifest is in. */
+  async warmAll(): Promise<void> {
+    const pending = this.all.filter((t) => !this.isSynth(t.id) && !this.data[t.id]);
+    let i = 0;
+    const worker = async (): Promise<void> => {
+      while (i < pending.length) await this.ensure(pending[i++]);
+    };
+    await Promise.all(Array.from({ length: Math.min(4, pending.length) }, worker));
   }
 
   // Display names in the active language. A title is a WordEntry, so resolving one

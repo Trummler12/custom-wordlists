@@ -18,6 +18,10 @@
   // Every topic below this node, precomputed with the tree — the checkbox and the
   // counter speak for the whole subtree, not just this level's own topics.
   const all = $derived(node.all);
+  // The count waits on the whole subtree: until every topic below has loaded, the
+  // total is an unfiltered `wordCount` sum that would tick down as files arrive, so
+  // the row shows "loading" and then the final number in one step (see subtreeReady).
+  const ready = $derived(topics.subtreeReady(all));
   const open = $derived(selection.catOpen(node));
   const name = $derived(topics.categoryName(node));
   const id = $derived("cat-" + (node.path.replace(/\//g, "-") || "root"));
@@ -134,7 +138,9 @@
   <!-- The ratio alone, since it reads the same in every language; the sentence it
        stands for is a hover away. The row needs the width for its controls. -->
   <span class="meta" title={lang.ui.tree.wordsOf(selection.catSel(all), selection.catTotal(all))}>
-    {selection.catSel(all)}/<span class="total">{selection.catTotal(all)}</span>
+    {#if !ready}{lang.ui.tree.loadingShort}{:else}{selection.catSel(all)}/<span class="total"
+        >{selection.catTotal(all)}</span
+      >{/if}
   </span>
 </div>
 {#if open}

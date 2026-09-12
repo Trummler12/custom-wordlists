@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import {
   depthFromKey,
+  depthFromPointer,
   fameGroups,
   nearestIndex,
   rulerTip,
@@ -126,6 +127,47 @@ describe("nearestIndex", () => {
   });
 });
 
+describe("depthFromPointer", () => {
+  // A 108px track: INSET 8 on each side ⇒ span 92, so frac = (clientX - 8) / 92.
+  const ev = (clientX: number) =>
+    ({ clientX, currentTarget: { getBoundingClientRect: () => ({ left: 0, width: 108 }) } }) as unknown as PointerEvent;
+
+  it("selects the last tier when dragged past the right end, though it is empty", () => {
+    const g = tiered(3, 4, 0); // the empty last tier collapses onto the end
+    expect(depthFromPointer(ev(200), g)).toBe(3); // frac > 1 ⇒ n = tiers.length ⇒ full
+  });
+
+  it("keeps the last non-empty tier when the pointer stops at the end", () => {
+    const g = tiered(3, 4, 0);
+    // at frac 1 the collapsed stops 2 and 3 tie; the low tie-break holds depth 2.
+    expect(depthFromPointer(ev(100), g)).toBe(2);
+  });
+
+  it("is unchanged for a non-empty last tier: past the end and at the end both select all", () => {
+    const g = tiered(3, 4);
+    expect(depthFromPointer(ev(200), g)).toBe(2);
+    expect(depthFromPointer(ev(100), g)).toBe(2);
+  });
+
+  it("snaps to the nearest boundary within the rail", () => {
+    expect(depthFromPointer(ev(8), tiered(3, 4, 0))).toBe(0); // frac 0 ⇒ nothing selected
+  });
+
+  it("resolves a leading collapse (empty first tiers) to its inner edge from the rail", () => {
+    const g = tiered(0, 0, 2, 0, 24); // t0,t1 empty ⇒ N0,N1,N2 all at pos 0
+    // A pointer just right of the collapse lands on N2 (depth 2), not depth 0.
+    expect(depthFromPointer(ev(12), g)).toBe(2);
+  });
+
+  it("deselects all only when dragged past the left end", () => {
+    expect(depthFromPointer(ev(0), tiered(0, 0, 2, 0, 24))).toBe(0); // frac < 0
+  });
+
+  it("still deselects at the far left of a ruler with no empty first tier", () => {
+    expect(depthFromPointer(ev(9), tiered(3, 4))).toBe(0); // pos[1] > 0 ⇒ no inner bump
+  });
+});
+
 describe("depthFromKey", () => {
   const key = (k: string) => ({ key: k }) as KeyboardEvent;
 
@@ -221,6 +263,51 @@ describe("rulerTip", () => {
       rulerTooltip: { text: "{condition}", empty: "Ranked." },
     };
     expect(rulerTip(noConds, 1, resolve, "Selected:")).toBe("Selected: ");
+  });
+
+  it("clamps the primary to the last visible band rather than emptying the token", () => {
+    // A capped group (two conditions) with a stored depth past them — the "< 1M"
+    // case. Without the stored option, it still must not read an empty condition.
+    expect(rulerTip(g(), 9, resolve, "Selected:")).toBe(
+      "Selected: Countries with 20 million or more inhabitants",
+    );
+  });
+
+  it("adds a parenthesised stored line naming the deeper setting the cap hides", () => {
+    const full = [
+      "100 million or more",
+      "20 million or more",
+      "5 million or more",
+      "1 million or more",
+      "100,000 or more",
+    ];
+    const stored = { conditions: full, wrap: (b: string) => `(Stored: ${b})` };
+    expect(rulerTip(g(), 5, resolve, "Selected:", stored)).toBe(
+      "Selected: Countries with 20 million or more inhabitants\n" +
+        "(Stored: Countries with 100,000 or more inhabitants)",
+    );
+  });
+
+  it("adds no stored line when the depth is within the visible tiers", () => {
+    const stored = {
+      conditions: ["100 million or more", "20 million or more"],
+      wrap: (b: string) => `(Stored: ${b})`,
+    };
+    expect(rulerTip(g(), 2, resolve, "Selected:", stored)).toBe(
+      "Selected: Countries with 20 million or more inhabitants",
+    );
+  });
+
+  it("renders a condition's {br} second line as a newline", () => {
+    // A tier that folds its caveat into the condition rather than a separate note.
+    const g2: Group = {
+      ...tiered(1, 3),
+      tierConditions: ["Major plates{br}grouped by parent, not size"],
+      rulerTooltip: { text: "{condition}", empty: "Ranked." },
+    };
+    expect(rulerTip(g2, 1, resolve, "Selected:")).toBe(
+      "Selected: Major plates\ngrouped by parent, not size",
+    );
   });
 });
 

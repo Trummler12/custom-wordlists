@@ -1,0 +1,11 @@
+{
+  "_comment": "How the build and report-name-quality.mjs treat all-caps code-like names (isCode in bucket-names.mjs). Two reviewed lists; anything in neither the report flags as a new, unreviewed case. `legit` = a genuine colloquial abbreviation, correct on Wikidata as a short name, so the report stays quiet — it also enters the word list, but only if it clears the skribbl-suitability rule (3+ letters, letters only: U.S. / HK / UK are legit yet stay out of lists). `acknowledged` = reviewed and not whitelisted (an ISO or technical code Wikidata mis-files under P1813, a shouty all-caps official name, or just too rare to use); the report stays quiet and it never enters a list. Extend both from the report and _untracked/Prompts/Whitelist_Colloquial_Abbreviations.md; report-name-quality.mjs flags acknowledged entries the data no longer carries, so a Wikidata fix lets them be removed.",
+  "legit": [
+    "BKK", "BXL", "CAR", "CDMX", "CNMI", "DPRK", "DRC", "EAU", "HK", "I.O.M.", "PAP", "PH",
+    "PNG", "RCA", "RDC", "ROC", "ROK", "RPDC", "RSA", "U.S.", "UAE", "UK", "USA", "USVI", "VAE", "É.A.U."
+  ],
+  "acknowledged": [
+    "AG", "AS", "AUS", "B", "B&H", "BH", "DRK", "DVRK", "EC", "ECU", "FM", "GU", "HKSAR", "MH",
+    "MYS", "NG", "NIC", "PW", "RIM", "RP", "TERRITOIRE DE LA POLYNESIE FRANCAISE", "TW", "TWN", "W"
+  ]
+}

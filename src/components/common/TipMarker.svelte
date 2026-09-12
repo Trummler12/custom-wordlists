@@ -4,8 +4,14 @@
 
   // The trigger half of a tooltip: a small glyph that opens `tipId`. The caller
   // renders the matching TipNote, and picks the glyph — ⚠️ where something is
-  // unconfirmed, ℹ️ where it is deliberate.
-  let { tipId, icon, text }: { tipId: string; icon: string; text: string } = $props();
+  // unconfirmed, ℹ️ where it is deliberate. `local` marks a note that lives inside a
+  // scrolling popup rather than across a row (see overlays.openTip / TipNote).
+  let {
+    tipId,
+    icon,
+    text,
+    local = false,
+  }: { tipId: string; icon: string; text: string; local?: boolean } = $props();
 </script>
 
 <!-- A button, not a bare span: a `title` tooltip needs a hover, which touch
@@ -20,9 +26,9 @@
   aria-expanded={overlays.tip === tipId}
   aria-controls={tipId}
   aria-label={plain(text)}
-  onpointerenter={(e) => overlays.tipEnter(e, tipId)}
+  onpointerenter={(e) => overlays.tipEnter(e, tipId, local)}
   onpointerleave={(e) => overlays.tipLeave(e)}
-  onfocus={(e) => overlays.tipFocus(e, tipId)}
+  onfocus={(e) => overlays.tipFocus(e, tipId, local)}
   onblur={overlays.releaseTip}
-  onclick={(e) => overlays.tipClick(e, tipId)}>{icon}</button
+  onclick={(e) => overlays.tipClick(e, tipId, local)}>{icon}</button
 >

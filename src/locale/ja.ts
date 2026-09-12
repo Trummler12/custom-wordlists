@@ -32,6 +32,7 @@ export const ja: UIStrings = {
     none: "知名度グループはまだ定義されていません。フッターの Contribution Guide から提案できます。",
     selected: "選択中：",
     mostlySelected: "大半を選択中：",
+    stored: (body) => `（保存済み：${body}）`,
     toggle: (shown) =>
       shown ? "このリストの知名度スライダーを隠す" : "このリストの知名度スライダーを表示する",
     toggleAll: (allShown) =>
@@ -61,6 +62,14 @@ export const ja: UIStrings = {
     all: "すべての国",
     withCoverage: "公式対応あり",
     reliable: "十分な対応のみ",
+  },
+  languageType: {
+    label: "含める言語の種類",
+    base: "現代の生きた言語",
+    submillion: "利用者100万人未満の言語も含める",
+    notRecommended: "カジュアルなお絵描きには不向き — 話者数の割に知名度が低い。",
+    toggle: (included) =>
+      included ? "選択中 — リストに含まれています。外すと除外します。" : "チェックするとリストに追加します。",
   },
   sovereignty: {
     label: "主権と承認",
@@ -132,5 +141,20 @@ export const ja: UIStrings = {
     // The guide itself is English only, so the link keeps its name.
     contributionGuide: "Contribution Guide",
     helpOutAfter: "をご覧ください。",
+  },
+  coveragePage: {
+    home: "メインアプリへ",
+    topicLabel: "トピック：",
+    uiLanguage: "表示言語",
+    title: "言語カバレッジ",
+    intro: "トピックを選ぶと、各項目についてWikidataがどの言語のラベルを持っているかを確認できます。",
+    itemCount: (n) => `${n.toLocaleString()} 項目`,
+    item: "項目",
+    numeric: { population: "人口", area: "面積 (km²)", users: "使用者数" },
+    prev: "前へ",
+    next: "次へ",
+    page: (current, total) => `${total} ページ中 ${current} ページ`,
+    loading: (topic) => `${topic}を読み込み中…`,
+    loadError: (topic, message) => `${topic}のカバレッジを読み込めませんでした：${message}`,
   },
 };

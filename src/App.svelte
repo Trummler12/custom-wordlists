@@ -14,7 +14,13 @@
     await topics.init();
     // Only once the manifest is there, as before: a failed load keeps the error
     // message in English rather than resolving a language nobody can act on.
-    if (!topics.error) lang.init();
+    if (!topics.error) {
+      lang.init();
+      // Warm every topic in the background so parent counts settle to their filtered
+      // value from the start, rather than showing an unfiltered sum that ticks down
+      // as the reader opens each category. Fire-and-forget: the tree renders now.
+      void topics.warmAll();
+    }
   });
 
   // `index.html` can only name one language, and the chrome renders in seven. A

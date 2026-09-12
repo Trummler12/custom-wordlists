@@ -258,6 +258,10 @@ export interface Group {
   /** What the ruler's hover says — see `RulerTooltip`. Absent falls back to the
    *  bare tier count. */
   rulerTooltip?: RulerTooltip;
+  /** How many top tiers the ruler reaches by default — the languages list keeps only its
+   *  ≥ 1M speakers until the reader lifts the cap (the reserved `EXTEND_RULE` toggle, see
+   *  lib/omitted). Absent means the whole list is always reachable. */
+  extendFrom?: number;
   /** Present only on a SYNTHESIZED group (assembled by `topics.groupsOf` for an
    *  inheritsUpwards topic): the contributor groups it was merged from, kept so a
    *  later per-contributor view (⚙️/✂️) can regroup without the merge being
@@ -335,6 +339,8 @@ export interface Topic {
   tiers?: WordEntry[][];
   tierConditions?: LocalizedString[];
   rulerTooltip?: RulerTooltip;
+  /** How many top tiers the ruler reaches by default — see `Group.extendFrom`. */
+  extendFrom?: number;
   /** How many levels up this leaf's list is also shown, merged with the same-named
    *  leaves it meets there into one synthesized topic. `1` = the parent level (each
    *  `<continent>/countries.json` meets the others one level up, under Human). `2`

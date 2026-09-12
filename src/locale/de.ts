@@ -28,6 +28,7 @@ export const de: UIStrings = {
     none: "Noch keine Fame-Gruppen definiert — im Contribution Guide im Footer erfährst du, wie du welche vorschlagen kannst!",
     selected: "Ausgewählt:",
     mostlySelected: "Grösstenteils ausgewählt:",
+    stored: (body) => `(Gespeichert: ${body})`,
     toggle: (shown) =>
       shown ? "Fame-Regler dieser Liste ausblenden" : "Fame-Regler dieser Liste einblenden",
     toggleAll: (allShown) =>
@@ -61,6 +62,16 @@ export const de: UIStrings = {
     all: "Alle Länder",
     withCoverage: "Mit offizieller Abdeckung",
     reliable: "Nur zuverlässige Abdeckung",
+  },
+  languageType: {
+    label: "Welche Sprachtypen einbeziehen",
+    base: "Lebende moderne Sprachen",
+    submillion: "Auch Sprachen mit <1 Million Nutzern",
+    notRecommended: "Für gemütliches Malen wenig geeignet: deutlich unbekannter, als die Sprecherzahl vermuten lässt.",
+    toggle: (included) =>
+      included
+        ? "Angehakt — diese sind in der Liste. Abwählen, um sie wegzulassen."
+        : "Anhaken, um diese zur Liste hinzuzufügen.",
   },
   sovereignty: {
     label: "Souveränität & Anerkennung",
@@ -142,5 +153,20 @@ export const de: UIStrings = {
     // Link label stays English — the guide itself is only available in English.
     contributionGuide: "Contribution Guide",
     helpOutAfter: "!",
+  },
+  coveragePage: {
+    home: "Zur Haupt-App",
+    topicLabel: "Thema:",
+    uiLanguage: "Oberflächensprache",
+    title: "Sprachabdeckung",
+    intro: "Wähle ein Thema, um zu sehen, für welche Sprachen Wikidata je Eintrag bereits eine Bezeichnung hat.",
+    itemCount: (n) => `${n.toLocaleString()} Einträge`,
+    item: "Eintrag",
+    numeric: { population: "Einwohner", area: "Fläche (km²)", users: "Nutzer" },
+    prev: "Zurück",
+    next: "Weiter",
+    page: (current, total) => `Seite ${current} / ${total}`,
+    loading: (topic) => `${topic} werden geladen…`,
+    loadError: (topic, message) => `Abdeckung für ${topic} konnte nicht geladen werden: ${message}`,
   },
 };
