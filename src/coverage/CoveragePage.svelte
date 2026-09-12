@@ -1,10 +1,13 @@
 <script lang="ts">
   // The "Language Coverage" page (strand W1). Reads the topic/lang from the URL, loads its
   // data/coverage/<topic>.json, and renders which languages Wikidata has a label for, per
-  // item — sortable by any column and paged. The sticky header/column, the UI-language
-  // dropdown and the localized chrome are later batches.
+  // item — sortable by any column, paged, its chrome localized and switchable in place.
   import { COVERAGE_TOPICS, resolveRoute, type CoverageTopic } from "./route";
   import { firstDir, sortItems, type SortKey, type SortState } from "./sort";
+  import { FALLBACK_LANG, strings, UI_LANGS } from "../locale";
+  import { loadManifest } from "../lib/data";
+  import { resolveStr } from "../lib/words";
+  import type { LocalizedString, Manifest, TopicSummary } from "../lib/types";
 
   interface CoverageItem {
     qid: string;
@@ -20,27 +23,59 @@
   const base = import.meta.env.BASE_URL;
   const route = resolveRoute(location.pathname, location.search, base);
 
-  // Human labels for the numeric column, by the meta.numeric key. English for now — the
-  // page chrome gets localized (a `coverage` locale block + the UI dropdown) in a later batch.
-  const NUMERIC_LABEL: Record<string, string> = {
-    population: "Population",
-    area: "Area (km²)",
-    users: "Users",
+  // The interface language: from the URL, else the content language as a fallback, else
+  // English — and switchable at runtime via the dropdown. Only the languages that have a
+  // dictionary are offered; anything else falls through strings() to English anyway.
+  const asUiLang = (l: string | null): string | null => (l && UI_LANGS.includes(l) ? l : null);
+  let uiLang = $state(asUiLang(route.uiLang) ?? asUiLang(route.lang) ?? FALLBACK_LANG);
+  const ui = $derived(strings(uiLang).coveragePage);
+  const numLabel = (key: string): string => (ui.numeric as Record<string, string>)[key] ?? key;
+
+  // Topic names come from the topic data, not a duplicated locale table (the "locale-like
+  // data" rule): the manifest carries each topic's localized title. languages/continents
+  // are 1:1 topics; countries/capitals are split across the per-continent topics, so any
+  // one of them stands in (their titles are identical). Continents uses its short form.
+  let manifest = $state<Manifest | null>(null);
+  loadManifest().then((m) => (manifest = m)).catch(() => {});
+  const TOPIC_MATCH: Record<CoverageTopic, (t: TopicSummary) => boolean> = {
+    languages: (t) => t.id === "languages",
+    continents: (t) => t.id === "continents",
+    countries: (t) => t.path.endsWith("countries.json"),
+    capitals: (t) => t.path.endsWith("capitals.json"),
   };
+  function topicTitle(topic: CoverageTopic, lang: string): string {
+    const summary = manifest?.topics.find(TOPIC_MATCH[topic]);
+    if (!summary) return topic; // manifest not in yet — the id shows briefly
+    const title = summary.title;
+    const loc: LocalizedString =
+      title && typeof title === "object" && "short" in title ? (title.short as LocalizedString) : (title as LocalizedString);
+    return resolveStr(loc, lang);
+  }
+  const topicName = $derived(route.topic ? topicTitle(route.topic, uiLang) : "");
+
+  // The dropdown lists each UI language under its own name (endonym), computed once.
+  const endonym = (code: string): string => {
+    try {
+      return new Intl.DisplayNames([code], { type: "language" }).of(code) ?? code;
+    } catch {
+      return code;
+    }
+  };
+  const uiLangOptions = UI_LANGS.map((code) => ({ code, name: endonym(code) }));
+
   // The two-script Chinese tags are far longer than the other codes and skew the columns;
   // show a short badge in the header, the real code on hover (see the dotted underline).
   const SHORT_LANG: Record<string, string> = { "zh-Hans": "zs", "zh-Hant": "zt" };
 
-  // Every column header carries the language's spelled-out name on hover, in the UI
-  // language with English the natural fallback. Intl.DisplayNames is the CLDR source the
-  // main app already uses, so no table of our own.
-  const langNamer = (() => {
+  // Column headers carry the language's spelled-out name on hover, in the current UI
+  // language (English the natural fallback), via the same CLDR source the main app uses.
+  const langNamer = $derived.by(() => {
     try {
-      return new Intl.DisplayNames([route.uiLang ?? "en", "en"], { type: "language" });
+      return new Intl.DisplayNames([uiLang, "en"], { type: "language" });
     } catch {
       return new Intl.DisplayNames(["en"], { type: "language" });
     }
-  })();
+  });
   const langName = (code: string): string => {
     try {
       return langNamer.of(code) ?? code;
@@ -51,6 +86,13 @@
   // A shortened zh tag shows its real code first, then the name on a second line.
   const langTitle = (lang: string): string => (SHORT_LANG[lang] ? `${lang}\n${langName(lang)}` : langName(lang));
   const PAGE_SIZE = 100; // one screenful of rows; a size control is a later batch
+
+  // The interface language is applied but not shown: the shareable URL stays
+  // <base>coverage/<topic>/<lang>. Drop any /<uiLang> segment or ?/ leftover once.
+  if (route.topic) {
+    const canonical = `${base}coverage/${route.topic}${route.lang ? `/${route.lang}` : ""}`;
+    if (location.pathname !== canonical || location.search) history.replaceState(null, "", canonical);
+  }
 
   let data = $state<Coverage | null>(null);
   let error = $state<string | null>(null);
@@ -97,12 +139,17 @@
 </script>
 
 <header>
-  <a class="home" href={base}>← Main App Page</a>
+  <a class="home" href={base}>← {ui.home}</a>
   <div class="controls">
-    <label>Topic:
+    <label>{ui.topicLabel}
       <select value={route.topic ?? ""} onchange={goTopic}>
         {#if !route.topic}<option value="" disabled>—</option>{/if}
-        {#each COVERAGE_TOPICS as t}<option value={t}>{t}</option>{/each}
+        {#each COVERAGE_TOPICS as t}<option value={t}>{topicTitle(t, uiLang)}</option>{/each}
+      </select>
+    </label>
+    <label class="uilang">🌐
+      <select bind:value={uiLang} aria-label={ui.uiLanguage}>
+        {#each uiLangOptions as opt}<option value={opt.code}>{opt.name}</option>{/each}
       </select>
     </label>
   </div>
@@ -110,28 +157,28 @@
 
 {#if !route.topic}
   <main class="index">
-    <h1>Language Coverage</h1>
-    <p>Pick a topic to see which languages Wikidata already carries a label for, per item.</p>
+    <h1>{ui.title}</h1>
+    <p>{ui.intro}</p>
     <ul>
       {#each COVERAGE_TOPICS as t}
-        <li><a href={topicHref(t)}>{t}</a></li>
+        <li><a href={topicHref(t)}>{topicTitle(t, uiLang)}</a></li>
       {/each}
     </ul>
   </main>
 {:else if error}
-  <main><p class="error">Could not load coverage for “{route.topic}”: {error}</p></main>
+  <main><p class="error">{ui.loadError(topicName, error)}</p></main>
 {:else if !data}
-  <main><p>Loading “{route.topic}” …</p></main>
+  <main><p>{ui.loading(topicName)}</p></main>
 {:else}
   <main>
-    <h1>Language Coverage — {data.meta.topic}</h1>
+    <h1>{ui.title} — {topicName}</h1>
     <div class="bar">
-      <span class="count">{data.items.length.toLocaleString()} items</span>
+      <span class="count">{ui.itemCount(data.items.length)}</span>
       {#if pageCount > 1}
         <span class="pager">
-          <button onclick={() => (page = Math.max(0, page - 1))} disabled={page === 0}>‹ Prev</button>
-          <span>Page {page + 1} / {pageCount}</span>
-          <button onclick={() => (page = Math.min(pageCount - 1, page + 1))} disabled={page >= pageCount - 1}>Next ›</button>
+          <button onclick={() => (page = Math.max(0, page - 1))} disabled={page === 0}>‹ {ui.prev}</button>
+          <span>{ui.page(page + 1, pageCount)}</span>
+          <button onclick={() => (page = Math.min(pageCount - 1, page + 1))} disabled={page >= pageCount - 1}>{ui.next} ›</button>
         </span>
       {/if}
     </div>
@@ -139,9 +186,9 @@
       <table>
         <thead>
           <tr>
-            <th class="item"><button class="sort" onclick={() => sortBy("name")}>Item{arrow("name")}</button></th>
+            <th class="item"><button class="sort" onclick={() => sortBy("name")}>{ui.item}{arrow("name")}</button></th>
             {#if data.meta.numeric}
-              <th class="num"><button class="sort" onclick={() => sortBy("num")}>{NUMERIC_LABEL[data.meta.numeric] ?? data.meta.numeric}{arrow("num")}</button></th>
+              <th class="num"><button class="sort" onclick={() => sortBy("num")}>{numLabel(data.meta.numeric)}{arrow("num")}</button></th>
             {/if}
             {#each data.meta.langs as lang}
               <th class="lang" class:here={lang === route.lang}>
