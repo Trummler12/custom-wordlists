@@ -159,12 +159,16 @@
   }
   .cell {
     text-align: center;
+    color: #fff;
+    font-weight: 600;
+    /* Keep the marks as plain text, never colour-font emoji, so they stay white. */
+    font-variant-emoji: text;
   }
   .cell.has {
-    background: rgba(46, 160, 67, 0.22);
+    background: #2e7d32; /* solid green — white mark on top */
   }
   .cell:not(.has) {
-    background: rgba(192, 57, 43, 0.22);
+    background: #c62828; /* solid red — same weight of mark, for symmetry */
   }
   .here {
     outline: 2px solid #d4a017;
