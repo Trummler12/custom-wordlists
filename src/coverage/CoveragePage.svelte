@@ -30,6 +30,26 @@
   // The two-script Chinese tags are far longer than the other codes and skew the columns;
   // show a short badge in the header, the real code on hover (see the dotted underline).
   const SHORT_LANG: Record<string, string> = { "zh-Hans": "zs", "zh-Hant": "zt" };
+
+  // Every column header carries the language's spelled-out name on hover, in the UI
+  // language with English the natural fallback. Intl.DisplayNames is the CLDR source the
+  // main app already uses, so no table of our own.
+  const langNamer = (() => {
+    try {
+      return new Intl.DisplayNames([route.uiLang ?? "en", "en"], { type: "language" });
+    } catch {
+      return new Intl.DisplayNames(["en"], { type: "language" });
+    }
+  })();
+  const langName = (code: string): string => {
+    try {
+      return langNamer.of(code) ?? code;
+    } catch {
+      return code;
+    }
+  };
+  // A shortened zh tag shows its real code first, then the name on a second line.
+  const langTitle = (lang: string): string => (SHORT_LANG[lang] ? `${lang}\n${langName(lang)}` : langName(lang));
   const PAGE_SIZE = 100; // one screenful of rows; a size control is a later batch
 
   let data = $state<Coverage | null>(null);
@@ -125,7 +145,7 @@
             {/if}
             {#each data.meta.langs as lang}
               <th class="lang" class:here={lang === route.lang}>
-                <button class="sort" onclick={() => sortBy(lang)} title={SHORT_LANG[lang] ? lang : undefined}>
+                <button class="sort" onclick={() => sortBy(lang)} title={langTitle(lang)}>
                   <span class:abbr={!!SHORT_LANG[lang]}>{SHORT_LANG[lang] ?? lang}</span>{arrow(lang)}
                 </button>
               </th>
@@ -236,15 +256,29 @@
     max-height: 80vh;
   }
   table {
-    border-collapse: collapse;
+    /* `separate`, not `collapse`: collapsed borders belong to the table, so a sticky
+       cell's background can't cover them (they bleed through) and the browser rebuilds the
+       border grid on every sticky repaint (scroll jank). With separate borders each cell
+       owns its own — right and bottom below, top/left on the outer edge — so the grid is a
+       clean single line and the sticky header/column stay put smoothly. */
+    --grid: rgba(128, 128, 128, 0.35);
+    border-collapse: separate;
+    border-spacing: 0;
     font-variant-numeric: tabular-nums;
   }
   th,
   td {
-    border: 1px solid rgba(128, 128, 128, 0.25);
+    border-right: 1px solid var(--grid);
+    border-bottom: 1px solid var(--grid);
     padding: 0.25rem 0.5rem;
     text-align: left;
     white-space: nowrap;
+  }
+  thead th {
+    border-top: 1px solid var(--grid); /* the grid's top edge */
+  }
+  th.item {
+    border-left: 1px solid var(--grid); /* the grid's left edge (the Item column) */
   }
   th.lang {
     text-align: center;
