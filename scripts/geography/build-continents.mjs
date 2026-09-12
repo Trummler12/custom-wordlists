@@ -26,6 +26,7 @@
 // in tier 0, under short it shows one rank down as a plate among plates. Every
 // lower tier is plates only, left plain so a plate name shows in either dropdown.
 import { readFile, writeFile } from "node:fs/promises";
+import { writeCoverage } from "./coverage.mjs";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 import { serializeTopic } from "../lib/serialize.mjs";
@@ -490,6 +491,8 @@ async function main() {
     const missing = tiers.flat().filter((e) => (e["?"] ?? []).includes(lang)).length;
     console.log(`  ${lang.padEnd(8)} ${String(missing).padStart(3)} without a name`);
   }
+  await writeCoverage(ROOT, "continents", { ...continentNames, ...plateNames }, NAME_LANGS, LANG_SRC, "area", process.argv.includes("--write"));
+
   if (process.argv.includes("--write")) {
     await writeFile(TOPIC, text, "utf8");
     console.log(`wrote ${TOPIC}`);

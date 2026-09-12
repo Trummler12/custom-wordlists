@@ -45,6 +45,7 @@
 // overrides the thin ones to "covered but sparse". The capitals inherit the same
 // rules, matched on the capital's own name.
 import { readFile, writeFile, mkdir } from "node:fs/promises";
+import { writeCoverage } from "./coverage.mjs";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 import { serializeTopic } from "../lib/serialize.mjs";
@@ -734,6 +735,10 @@ async function main() {
   }
 
   for (const s of summary) console.log(s);
+
+  const WRITE = process.argv.includes("--write");
+  await writeCoverage(ROOT, "countries", countryNames, NAME_LANGS, LANG_SRC, "population", WRITE);
+  await writeCoverage(ROOT, "capitals", capitalNames, NAME_LANGS, LANG_SRC, "population", WRITE);
 }
 
 const sumPop = (list) => list.reduce((n, c) => n + c.pop, 0);

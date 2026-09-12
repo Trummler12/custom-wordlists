@@ -29,6 +29,7 @@
 // LANGS. The name/bucket machinery mirrors that script; the review pass (Z) extracts the
 // shared half.
 import { readFile, writeFile } from "node:fs/promises";
+import { writeCoverage } from "./coverage.mjs";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 import { serializeTopic } from "../lib/serialize.mjs";
@@ -355,6 +356,8 @@ async function main() {
   console.log(`${langs.length} languages — ${base} base, ${langs.length - base} typed (${dropped} nameless, ${namesakes} namesakes dropped)`);
   console.log(`tiers: ${tiers.map((t) => t.length).join(" / ")}  (first 5 = >=1M)`);
   for (const t of TYPES) console.log(`  ${t.id.padEnd(16)} ${match[t.id].length}`);
+
+  await writeCoverage(ROOT, "languages", nameData, NAME_LANGS, LANG_SRC, "users", process.argv.includes("--write"));
 
   if (process.argv.includes("--write")) {
     await writeFile(TOPIC, serializeTopic(topic), "utf8");
