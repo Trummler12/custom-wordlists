@@ -1,13 +1,14 @@
 <script lang="ts">
-  // The "Language Coverage" page (strand W1) — first cut. Reads the topic/lang from the
-  // URL, loads its data/coverage/<topic>.json, and renders which languages Wikidata has a
-  // label for, per item. Sorting, pagination, the sticky header/column, the UI-language
-  // dropdown and the localized chrome are later batches; this establishes the pipeline.
+  // The "Language Coverage" page (strand W1). Reads the topic/lang from the URL, loads its
+  // data/coverage/<topic>.json, and renders which languages Wikidata has a label for, per
+  // item — sortable by any column and paged. The sticky header/column, the UI-language
+  // dropdown and the localized chrome are later batches.
   import { COVERAGE_TOPICS, resolveRoute, type CoverageTopic } from "./route";
+  import { firstDir, sortItems, type SortKey, type SortState } from "./sort";
 
   interface CoverageItem {
     qid: string;
-    name: string;
+    name?: string; // absent when Wikidata has no label in any covered language
     num?: number;
     miss?: string[];
   }
@@ -26,14 +27,31 @@
     area: "Area (km²)",
     users: "Users",
   };
-  const ROW_CAP = 100; // until pagination lands, cap the DOM so 2000+ language rows stay snappy
+  const PAGE_SIZE = 100; // one screenful of rows; a size control is a later batch
 
   let data = $state<Coverage | null>(null);
   let error = $state<string | null>(null);
 
+  // The URL's language starts "pre-clicked" (its gaps on top); with none, the most-gaps
+  // default order kicks in (see sort.ts).
+  let sort = $state<SortState>(route.lang ? { key: route.lang, dir: "desc" } : { key: null, dir: "desc" });
+  let page = $state(0);
+
+  const sorted = $derived(data ? sortItems(data.items, sort) : []);
+  const pageCount = $derived(Math.max(1, Math.ceil(sorted.length / PAGE_SIZE)));
+  const pageItems = $derived(sorted.slice(page * PAGE_SIZE, page * PAGE_SIZE + PAGE_SIZE));
+
   const wikidata = (qid: string) => `https://www.wikidata.org/wiki/${qid}`;
-  const topicHref = (t: string) => `${base}${t}`;
+  const topicHref = (t: string) => `${base}coverage/${t}`;
   const covered = (item: CoverageItem, lang: string) => !item.miss?.includes(lang);
+
+  // Clicking a header sorts by it: a new column takes its natural first direction, the
+  // active one flips. Any re-sort returns to the first page.
+  function sortBy(key: SortKey) {
+    sort = sort.key === key ? { key, dir: sort.dir === "asc" ? "desc" : "asc" } : { key, dir: firstDir(key) };
+    page = 0;
+  }
+  const arrow = (key: SortKey) => (sort.key !== key ? "" : sort.dir === "asc" ? " ▲" : " ▼");
 
   async function load(topic: CoverageTopic) {
     try {
@@ -82,29 +100,38 @@
 {:else if !data}
   <main><p>Loading “{route.topic}” …</p></main>
 {:else}
-  {@const shown = data.items.slice(0, ROW_CAP)}
   <main>
     <h1>Language Coverage — {data.meta.topic}</h1>
-    <p class="count">
-      {data.items.length.toLocaleString()} items
-      {#if data.items.length > ROW_CAP}(showing the first {ROW_CAP}; pagination is a later batch){/if}
-    </p>
+    <div class="bar">
+      <span class="count">{data.items.length.toLocaleString()} items</span>
+      {#if pageCount > 1}
+        <span class="pager">
+          <button onclick={() => (page = Math.max(0, page - 1))} disabled={page === 0}>‹ Prev</button>
+          <span>Page {page + 1} / {pageCount}</span>
+          <button onclick={() => (page = Math.min(pageCount - 1, page + 1))} disabled={page >= pageCount - 1}>Next ›</button>
+        </span>
+      {/if}
+    </div>
     <div class="scroll">
       <table>
         <thead>
           <tr>
-            <th class="item">Item</th>
-            {#if data.meta.numeric}<th class="num">{NUMERIC_LABEL[data.meta.numeric] ?? data.meta.numeric}</th>{/if}
+            <th class="item"><button class="sort" onclick={() => sortBy("name")}>Item{arrow("name")}</button></th>
+            {#if data.meta.numeric}
+              <th class="num"><button class="sort" onclick={() => sortBy("num")}>{NUMERIC_LABEL[data.meta.numeric] ?? data.meta.numeric}{arrow("num")}</button></th>
+            {/if}
             {#each data.meta.langs as lang}
-              <th class="lang" class:here={lang === route.lang}>{lang}</th>
+              <th class="lang" class:here={lang === route.lang}>
+                <button class="sort" onclick={() => sortBy(lang)}>{lang}{arrow(lang)}</button>
+              </th>
             {/each}
           </tr>
         </thead>
         <tbody>
-          {#each shown as item (item.qid)}
+          {#each pageItems as item (item.qid)}
             <tr>
               <th class="item" scope="row">
-                <a href={wikidata(item.qid)} target="_blank" rel="noopener noreferrer">{item.name}</a>
+                <a href={wikidata(item.qid)} target="_blank" rel="noopener noreferrer" class:noname={!item.name}>{item.name ?? item.qid}</a>
               </th>
               {#if data.meta.numeric}<td class="num">{item.num?.toLocaleString() ?? "—"}</td>{/if}
               {#each data.meta.langs as lang}
@@ -158,9 +185,40 @@
     font-size: 1.3rem;
     margin: 0 0 0.3rem;
   }
+  .bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin: 0 0 0.8rem;
+  }
   .count {
     opacity: 0.75;
-    margin: 0 0 0.8rem;
+  }
+  .pager {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .pager button {
+    font: inherit;
+    cursor: pointer;
+  }
+  .pager button:disabled {
+    cursor: default;
+    opacity: 0.5;
+  }
+  .sort {
+    width: 100%;
+    border: 0;
+    background: none;
+    color: inherit;
+    font: inherit;
+    font-weight: 600;
+    text-align: inherit;
+    cursor: pointer;
+    padding: 0;
+    white-space: nowrap;
   }
   .error {
     color: #c0392b;
@@ -201,6 +259,10 @@
   }
   .cell:not(.has) {
     background: #c62828; /* solid red — same weight of mark, for symmetry */
+  }
+  .noname {
+    font-style: italic; /* a bare Q-id: Wikidata has no label in any of these languages */
+    opacity: 0.8;
   }
   .here {
     outline: 2px solid #d4a017;
