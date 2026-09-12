@@ -176,9 +176,11 @@
       <span class="count">{ui.itemCount(data.items.length)}</span>
       {#if pageCount > 1}
         <span class="pager">
-          <button onclick={() => (page = Math.max(0, page - 1))} disabled={page === 0}>‹ {ui.prev}</button>
+          <button onclick={() => (page = 0)} disabled={page === 0} aria-label={ui.first} title={ui.first}>‹‹‹</button>
+          <button onclick={() => (page = Math.max(0, page - 1))} disabled={page === 0} aria-label={ui.prev} title={ui.prev}>‹</button>
           <span>{ui.page(page + 1, pageCount)}</span>
-          <button onclick={() => (page = Math.min(pageCount - 1, page + 1))} disabled={page >= pageCount - 1}>{ui.next} ›</button>
+          <button onclick={() => (page = Math.min(pageCount - 1, page + 1))} disabled={page >= pageCount - 1} aria-label={ui.next} title={ui.next}>›</button>
+          <button onclick={() => (page = pageCount - 1)} disabled={page >= pageCount - 1} aria-label={ui.last} title={ui.last}>›››</button>
         </span>
       {/if}
     </div>
