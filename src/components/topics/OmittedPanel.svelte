@@ -84,9 +84,13 @@
   // Absolute (origin-qualified): Msg only renders an http(s) link — a data file's reason
   // must not be able to produce a `javascript:` one — so a bare `/coverage/…` would fall
   // back to literal text. `location.origin + BASE_URL` gives the deployed URL either way.
+  //
+  // The active interface language rides along as the optional <uiLang> segment, so the
+  // coverage page opens in the same language the app is in (it applies it, then drops it
+  // from the shown URL). The <lang> before it is the content language the row is about.
   const coverageTopic = $derived(coverageTopicOf(topics.byId[tid] ?? topics.synthById[tid] ?? { id: tid, path: "" }));
   const coverageUrl = $derived(
-    `${location.origin}${import.meta.env.BASE_URL}coverage/${coverageTopic}/${baseTag(lang.contentLang(tid))}`,
+    `${location.origin}${import.meta.env.BASE_URL}coverage/${coverageTopic}/${baseTag(lang.contentLang(tid))}/${lang.uiLang}`,
   );
 
   // A declared rule's count and the names behind it (put on the group by
