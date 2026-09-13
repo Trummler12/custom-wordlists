@@ -107,6 +107,11 @@ export interface OmittedStrings {
    *  same reason as `unknown`. */
   tooLong: (n: number, maxLen: number) => string;
   tooLongHint: (omitted: boolean) => string;
+  /** Appended to the unknown-names row for a Wikidata-sourced topic: a link to that
+   *  topic's Language-Coverage page, where a reader can fill the gaps. Leads with an
+   *  em-dash separator and carries a `[text](url)` link, so it renders through html/Msg
+   *  (which opens it in a new tab). Absent on the row for any other topic. */
+  helpAdd: (url: string) => string;
 }
 
 /** The Pegman filter behind its own button: a country has full Street View

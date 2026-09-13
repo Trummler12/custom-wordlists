@@ -56,6 +56,7 @@ export const de: UIStrings = {
       omitted
         ? "Umschalten, um sie trotzdem aufzunehmen — skribbl.io nimmt sie nicht an, ein anderes Spiel vielleicht schon."
         : "Umschalten, um sie wieder wegzulassen.",
+    helpAdd: (url) => ` — [hilf mit, Fehlendes zu ergänzen!](${url})`,
   },
   coverage: {
     label: "Geoguessr / Street-View-Abdeckung",

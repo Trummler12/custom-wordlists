@@ -56,6 +56,7 @@ export const ko: UIStrings = {
       omitted
         ? "켜면 그래도 포함합니다. skribbl.io는 받지 않지만 다른 게임은 받을 수도 있습니다."
         : "켜면 다시 제외합니다.",
+    helpAdd: (url) => ` — [빠진 것을 채우는 데 힘을 보태 주세요](${url})`,
   },
   coverage: {
     label: "Geoguessr / 스트리트 뷰 지원",

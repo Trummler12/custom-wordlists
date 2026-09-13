@@ -56,6 +56,7 @@ export const fr: UIStrings = {
       omitted
         ? "Activer pour les inclure quand même : skribbl.io les refuse, mais un autre jeu peut les accepter."
         : "Activer pour les laisser de côté à nouveau.",
+    helpAdd: (url) => ` — [aide-nous à ajouter ce qui manque !](${url})`,
   },
   coverage: {
     label: "Geoguessr / Couverture Street View",

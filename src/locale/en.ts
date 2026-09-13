@@ -50,6 +50,7 @@ export const en: UIStrings = {
       omitted
         ? "Toggle to include them anyway — skribbl.io won't take them, but another game might."
         : "Toggle to leave them out again.",
+    helpAdd: (url) => ` — [help us add what's missing!](${url})`,
   },
   coverage: {
     label: "Geoguessr / Street View coverage",

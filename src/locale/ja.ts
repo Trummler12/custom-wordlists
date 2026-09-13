@@ -56,6 +56,7 @@ export const ja: UIStrings = {
       omitted
         ? "オンにすると、それでも含めます。skribbl.io は受け付けませんが、他のゲームなら通るかもしれません。"
         : "オンにすると、再び除外します。",
+    helpAdd: (url) => ` — [不足分の追加にご協力ください](${url})`,
   },
   coverage: {
     label: "Geoguessr / ストリートビューの対応",
