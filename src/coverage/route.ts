@@ -28,6 +28,21 @@ export interface Route {
   uiLang: string | null;
 }
 
+/** Which coverage topic a manifest topic feeds its data into, or null when it has no
+ *  coverage page. `languages`/`continents` are single 1:1 topics, matched by id;
+ *  `countries`/`capitals` are split across the per-continent leaves and recognised by
+ *  their file (`*countries.json`). A synthesized merge topic (the app's own "Countries"
+ *  row) carries no file — its id ends with the stem its contributors share
+ *  ("geography-human-countries"), so fall back to that. */
+export function coverageTopicOf(topic: { id: string; path: string }): CoverageTopic | null {
+  if (topic.id === "languages") return "languages";
+  if (topic.id === "continents") return "continents";
+  const key = topic.path || topic.id;
+  if (key.endsWith("countries.json") || key.endsWith("-countries")) return "countries";
+  if (key.endsWith("capitals.json") || key.endsWith("-capitals")) return "capitals";
+  return null;
+}
+
 /** Segments (already base-stripped, empties removed) => the route. */
 export function segmentsToRoute(segs: string[]): Route {
   const [topic, lang = null, uiLang = null] = segs;

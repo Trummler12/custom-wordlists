@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { dropPrefix, resolveRoute, restoreFromQuery, segmentsToRoute, stripBase } from "./route";
+import { coverageTopicOf, dropPrefix, resolveRoute, restoreFromQuery, segmentsToRoute, stripBase } from "./route";
 
 describe("stripBase", () => {
   it("drops the deploy base and empty segments", () => {
@@ -44,6 +44,24 @@ describe("segmentsToRoute", () => {
   });
   it("returns an empty route for no segments", () => {
     expect(segmentsToRoute([])).toEqual({ topic: null, lang: null, uiLang: null });
+  });
+});
+
+describe("coverageTopicOf", () => {
+  it("matches the 1:1 topics by id", () => {
+    expect(coverageTopicOf({ id: "languages", path: "geography/human/languages.json" })).toBe("languages");
+    expect(coverageTopicOf({ id: "continents", path: "geography/physical/continents.json" })).toBe("continents");
+  });
+  it("matches the per-continent leaves by their file", () => {
+    expect(coverageTopicOf({ id: "africa-countries", path: "geography/human/africa-countries.json" })).toBe("countries");
+    expect(coverageTopicOf({ id: "asia-capitals", path: "geography/human/asia-capitals.json" })).toBe("capitals");
+  });
+  it("matches a synthesized merge topic (no file) by its id stem", () => {
+    expect(coverageTopicOf({ id: "geography-human-countries", path: "" })).toBe("countries");
+    expect(coverageTopicOf({ id: "geography-human-capitals", path: "" })).toBe("capitals");
+  });
+  it("is null for a topic with no coverage page", () => {
+    expect(coverageTopicOf({ id: "pokemon", path: "gaming/pokemon.json" })).toBeNull();
   });
 });
 
