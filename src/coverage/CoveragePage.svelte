@@ -180,6 +180,7 @@
         <li><Msg text={ui.noteAdd} /></li>
         <li><Msg text={ui.noteLabelLister} /></li>
         <li><Msg text={ui.noteProtected} /></li>
+        <li><Msg text={ui.noteStale} /></li>
       </ul>
     </details>
     <div class="bar">
