@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { coverageTopicOf } from "../../coverage/route";
   import { baseTag, splitName } from "../../lib/languages";
   import { allRules, TOO_LONG_RULE, UNKNOWN_RULE } from "../../lib/omitted";
   import { SKRIBBL } from "../../lib/skribbl";
@@ -8,6 +9,7 @@
   import { lang } from "../../state/lang.svelte";
   import { overlays } from "../../state/overlays.svelte";
   import { selection } from "../../state/selection.svelte";
+  import { topics } from "../../state/topics.svelte";
 
   let { tid, group }: { tid: string; group: Group } = $props();
 
@@ -74,6 +76,18 @@
   // The language the entries are missing, named in the interface language —
   // the two can differ, and the row is about the former.
   const missing = $derived(splitName(lang.nameInUi(baseTag(lang.contentLang(tid)))));
+
+  // A Wikidata-sourced topic (Countries/Capitals/Languages/Continents) has a coverage
+  // page; the unknown row then invites the reader over to it to fill the gaps. The link
+  // carries the same missing language as the row, so its column lands pre-sorted.
+  //
+  // Absolute (origin-qualified): Msg only renders an http(s) link — a data file's reason
+  // must not be able to produce a `javascript:` one — so a bare `/coverage/…` would fall
+  // back to literal text. `location.origin + BASE_URL` gives the deployed URL either way.
+  const coverageTopic = $derived(coverageTopicOf(topics.byId[tid] ?? topics.synthById[tid] ?? { id: tid, path: "" }));
+  const coverageUrl = $derived(
+    `${location.origin}${import.meta.env.BASE_URL}coverage/${coverageTopic}/${baseTag(lang.contentLang(tid))}`,
+  );
 
   // A declared rule's count and the names behind it (put on the group by
   // `visibleGroup`, merged by `mergeGroups`). The count feeds a rule's "up to N"
@@ -144,7 +158,13 @@
                   checked={hidingUnknown}
                   onchange={() => selection.toggleOmission(tid, group, UNKNOWN_RULE)}
                 />
-                <span>{lang.ui.omitted.unknown(unknown, ...missing)}</span>
+                <!-- The coverage-page invite (a link, via Msg) rides in the same span,
+                     inline after the count, exactly as a rule's reason link does. -->
+                <span
+                  >{lang.ui.omitted.unknown(unknown, ...missing)}{#if coverageTopic}<Msg
+                      text={lang.ui.omitted.helpAdd(coverageUrl)}
+                    />{/if}</span
+                >
               </label>
             </li>
           {/if}
