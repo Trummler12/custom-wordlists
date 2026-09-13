@@ -8,6 +8,7 @@
   import { loadManifest } from "../lib/data";
   import { resolveStr } from "../lib/words";
   import type { LocalizedString, Manifest, TopicSummary } from "../lib/types";
+  import Msg from "../locale/html/Msg.svelte";
 
   interface CoverageItem {
     qid: string;
@@ -172,6 +173,15 @@
 {:else}
   <main>
     <h1>{ui.title} — {topicName}</h1>
+    <p class="lead"><Msg text={ui.lead} /></p>
+    <details class="notes">
+      <summary>{ui.notesTitle}</summary>
+      <ul>
+        <li><Msg text={ui.noteAdd} /></li>
+        <li><Msg text={ui.noteLabelLister} /></li>
+        <li><Msg text={ui.noteProtected} /></li>
+      </ul>
+    </details>
     <div class="bar">
       <span class="count">{ui.itemCount(data.items.length)}</span>
       {#if pageCount > 1}
@@ -258,6 +268,27 @@
   h1 {
     font-size: 1.3rem;
     margin: 0 0 0.3rem;
+  }
+  .lead {
+    max-width: 70ch;
+    margin: 0 0 0.6rem;
+    opacity: 0.9;
+  }
+  .notes {
+    max-width: 70ch;
+    margin: 0 0 0.9rem;
+  }
+  .notes summary {
+    cursor: pointer;
+    font-weight: 600;
+  }
+  .notes ul {
+    margin: 0.4rem 0 0;
+    padding-left: 1.2rem;
+  }
+  .notes li {
+    margin: 0.3rem 0;
+    opacity: 0.9;
   }
   .bar {
     display: flex;
