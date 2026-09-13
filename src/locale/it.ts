@@ -162,6 +162,7 @@ export const it: UIStrings = {
     noteAdd: "Apri una voce dalla prima colonna e, una volta effettuato l'accesso, aggiungi qualsiasi etichetta mancante di cui sei sicuro.",
     noteLabelLister: "Per aggiungere una lingua non elencata affatto, attiva il gadget labelLister nelle tue [preferenze di Wikidata](https://www.wikidata.org/wiki/Special:Preferences#mw-prefsection-gadgets), in Accessori; ogni voce mostrerà allora una «Labels list» (in alto a destra, sotto Strumenti) che accetta qualsiasi codice lingua.",
     noteProtected: "Alcune voci di Wikidata sono protette e possono essere modificate solo con un account vecchio almeno quattro giorni e con 100 o più modifiche.",
+    noteStale: "Tieni presente che questa tabella proviene da un dump manuale, quindi la copertura qui mostrata può essere indietro di diverse settimane rispetto allo stato attuale su Wikidata.",
     itemCount: (n) => `${n.toLocaleString()} voci`,
     item: "Voce",
     numeric: { population: "Popolazione", area: "Superficie (km²)", users: "Utenti" },

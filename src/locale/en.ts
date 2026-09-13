@@ -150,6 +150,7 @@ export const en: UIStrings = {
     noteAdd: "Open an item from the first column and, once logged in, add any missing label you're sure of.",
     noteLabelLister: "To add a language that isn't listed at all, enable the labelLister gadget in your [Wikidata preferences](https://www.wikidata.org/wiki/Special:Preferences#mw-prefsection-gadgets), under Gadgets; each item then shows a “Labels list” (top right, under Tools) that accepts any language code.",
     noteProtected: "Some Wikidata items are protected and need an account at least four days old with 100 or more edits to change.",
+    noteStale: "Note that this table comes from a manual dump, so the coverage shown here can lag the current state on Wikidata by up to several weeks.",
     itemCount: (n) => `${n.toLocaleString()} items`,
     item: "Item",
     numeric: { population: "Population", area: "Area (km²)", users: "Users" },

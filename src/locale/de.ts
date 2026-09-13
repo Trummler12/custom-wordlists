@@ -165,6 +165,7 @@ export const de: UIStrings = {
     noteAdd: "Öffne einen Eintrag über die erste Spalte und ergänze, einmal angemeldet, jede fehlende Bezeichnung, bei der du dir sicher bist.",
     noteLabelLister: "Um eine gar nicht aufgeführte Sprache zu ergänzen, aktiviere das labelLister-Gadget in deinen [Wikidata-Einstellungen](https://www.wikidata.org/wiki/Special:Preferences#mw-prefsection-gadgets) unter Helferlein; jeder Eintrag zeigt dann eine „Labels list“ (oben rechts unter Werkzeuge), die jeden Sprachcode annimmt.",
     noteProtected: "Manche Wikidata-Einträge sind geschützt und lassen sich nur mit einem Konto ändern, das mindestens vier Tage alt ist und 100 oder mehr Bearbeitungen hat.",
+    noteStale: "Beachte, dass diese Tabelle aus einem manuellen Dump stammt; die hier gezeigte Abdeckung kann dem aktuellen Stand auf Wikidata daher um bis zu mehrere Wochen hinterherhinken.",
     itemCount: (n) => `${n.toLocaleString()} Einträge`,
     item: "Eintrag",
     numeric: { population: "Einwohner", area: "Fläche (km²)", users: "Nutzer" },

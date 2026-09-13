@@ -160,6 +160,7 @@ export const es: UIStrings = {
     noteAdd: "Abre un elemento desde la primera columna y, una vez que hayas iniciado sesión, añade cualquier etiqueta que falte y de la que estés seguro.",
     noteLabelLister: "Para añadir un idioma que no aparece en absoluto, activa el accesorio labelLister en tus [preferencias de Wikidata](https://www.wikidata.org/wiki/Special:Preferences#mw-prefsection-gadgets), en Accesorios; cada elemento mostrará entonces una «Labels list» (arriba a la derecha, en Herramientas) que acepta cualquier código de idioma.",
     noteProtected: "Algunos elementos de Wikidata están protegidos y solo pueden modificarse con una cuenta de al menos cuatro días de antigüedad y con 100 o más ediciones.",
+    noteStale: "Ten en cuenta que esta tabla procede de un volcado manual, por lo que la cobertura que se muestra aquí puede ir por detrás del estado actual en Wikidata hasta varias semanas.",
     itemCount: (n) => `${n.toLocaleString()} elementos`,
     item: "Elemento",
     numeric: { population: "Población", area: "Área (km²)", users: "Usuarios" },

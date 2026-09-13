@@ -153,6 +153,7 @@ export const ja: UIStrings = {
     noteAdd: "最初の列から項目を開き、ログインのうえ、確信のある不足ラベルを追加してください。",
     noteLabelLister: "まったく掲載されていない言語を追加するには、[Wikidataの設定](https://www.wikidata.org/wiki/Special:Preferences#mw-prefsection-gadgets)の「ガジェット」でlabelListerガジェットを有効にしてください。すると各項目に「Labels list」（右上の「ツール」内）が表示され、任意の言語コードを受け付けます。",
     noteProtected: "一部のWikidata項目は保護されており、編集には作成から4日以上・100回以上編集したアカウントが必要です。",
+    noteStale: "この表は手動ダンプに基づくため、ここに表示されるカバレッジはWikidataの最新状態より最大で数週間遅れることがあります。",
     itemCount: (n) => `${n.toLocaleString()} 項目`,
     item: "項目",
     numeric: { population: "人口", area: "面積 (km²)", users: "使用者数" },
