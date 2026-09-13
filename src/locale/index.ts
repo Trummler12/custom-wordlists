@@ -283,6 +283,16 @@ export interface CoveragePageStrings {
   title: string;
   /** The index page's prompt to pick a topic. */
   intro: string;
+  /** The table view's lead paragraph: where the data comes from and what the table shows.
+   *  Carries a [Wikidata](url) link, so it renders through html/Msg. */
+  lead: string;
+  /** The "how to help" notes: a heading and three points — add a listed label, add a
+   *  language not listed at all (links to the gadget preferences), and the protection
+   *  caveat. Each renders through html/Msg. */
+  notesTitle: string;
+  noteAdd: string;
+  noteLabelLister: string;
+  noteProtected: string;
   /** The row count, e.g. "2,021 items". */
   itemCount: (n: number) => string;
   /** The first column's header. */
