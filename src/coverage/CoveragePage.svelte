@@ -2,12 +2,12 @@
   // The "Language Coverage" page (strand W1). Reads the topic/lang from the URL, loads its
   // data/coverage/<topic>.json, and renders which languages Wikidata has a label for, per
   // item — sortable by any column, paged, its chrome localized and switchable in place.
-  import { COVERAGE_TOPICS, resolveRoute, type CoverageTopic } from "./route";
+  import { COVERAGE_TOPICS, coverageTopicOf, resolveRoute, type CoverageTopic } from "./route";
   import { firstDir, sortItems, type SortKey, type SortState } from "./sort";
   import { FALLBACK_LANG, strings, UI_LANGS } from "../locale";
   import { loadManifest } from "../lib/data";
   import { resolveStr } from "../lib/words";
-  import type { LocalizedString, Manifest, TopicSummary } from "../lib/types";
+  import type { LocalizedString, Manifest } from "../lib/types";
   import Msg from "../locale/html/Msg.svelte";
 
   interface CoverageItem {
@@ -33,19 +33,14 @@
   const numLabel = (key: string): string => (ui.numeric as Record<string, string>)[key] ?? key;
 
   // Topic names come from the topic data, not a duplicated locale table (the "locale-like
-  // data" rule): the manifest carries each topic's localized title. languages/continents
-  // are 1:1 topics; countries/capitals are split across the per-continent topics, so any
-  // one of them stands in (their titles are identical). Continents uses its short form.
+  // data" rule): the manifest carries each topic's localized title. `coverageTopicOf` is the
+  // shared topic⇒coverage mapping (also drives the app's omission-row link); countries/
+  // capitals are split across the per-continent topics, so any one of them stands in (their
+  // titles are identical). Continents uses its short form.
   let manifest = $state<Manifest | null>(null);
   loadManifest().then((m) => (manifest = m)).catch(() => {});
-  const TOPIC_MATCH: Record<CoverageTopic, (t: TopicSummary) => boolean> = {
-    languages: (t) => t.id === "languages",
-    continents: (t) => t.id === "continents",
-    countries: (t) => t.path.endsWith("countries.json"),
-    capitals: (t) => t.path.endsWith("capitals.json"),
-  };
   function topicTitle(topic: CoverageTopic, lang: string): string {
-    const summary = manifest?.topics.find(TOPIC_MATCH[topic]);
+    const summary = manifest?.topics.find((t) => coverageTopicOf(t) === topic);
     if (!summary) return topic; // manifest not in yet — the id shows briefly
     const title = summary.title;
     const loc: LocalizedString =
