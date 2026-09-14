@@ -169,6 +169,8 @@ const TITLE = {
     it: "Continenti",
     ja: "大陸",
     ko: "대륙",
+    "zh-Hans": "大洲",
+    "zh-Hant": "大洲",
   },
   long: {
     en: "Continents & Plates",
@@ -178,6 +180,8 @@ const TITLE = {
     it: "Continenti e placche",
     ja: "大陸とプレート",
     ko: "대륙과 판",
+    "zh-Hans": "大洲与板块",
+    "zh-Hant": "大洲與板塊",
   },
 };
 
