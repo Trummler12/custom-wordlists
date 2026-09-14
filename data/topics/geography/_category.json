@@ -6,7 +6,9 @@
     "fr": "Géographie",
     "it": "Geografia",
     "ja": "地理",
-    "ko": "지리"
+    "ko": "지리",
+    "zh-Hans": "地理",
+    "zh-Hant": "地理"
   },
   "icon": "🌍",
   "order": 2

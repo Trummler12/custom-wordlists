@@ -6,7 +6,9 @@
     "fr": {"short": "Physique", "long": "Géographie physique"},
     "it": {"short": "Fisica", "long": "Geografia fisica"},
     "ja": "自然地理学",
-    "ko": "자연지리"
+    "ko": "자연지리",
+    "zh-Hans": {"short": "自然", "long": "自然地理"},
+    "zh-Hant": {"short": "自然", "long": "自然地理"}
   },
   "icon": "🏔️",
   "order": 1
