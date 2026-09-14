@@ -1,7 +1,9 @@
 {
   "title": {
     "en": "The Lord of the Rings",
-    "de": "Der Herr der Ringe"
+    "de": "Der Herr der Ringe",
+    "zh-Hans": "指环王",
+    "zh-Hant": "魔戒"
   },
   "icon": "💍"
 }

@@ -6,7 +6,9 @@
     "fr": "Sciences",
     "it": "Scienza",
     "ja": "科学",
-    "ko": "과학"
+    "ko": "과학",
+    "zh-Hans": "科学",
+    "zh-Hant": "科學"
   },
   "icon": "🔬",
   "order": 1

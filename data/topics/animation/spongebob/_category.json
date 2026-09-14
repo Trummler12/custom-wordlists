@@ -1,9 +1,15 @@
 {
   "title": {
-    "short": "SpongeBob",
+    "short": {
+      "en": "SpongeBob",
+      "zh-Hans": "海绵宝宝",
+      "zh-Hant": "海綿寶寶"
+    },
     "long": {
       "en": "SpongeBob SquarePants",
-      "de": "SpongeBob Schwammkopf"
+      "de": "SpongeBob Schwammkopf",
+      "zh-Hans": "海绵宝宝",
+      "zh-Hant": "海綿寶寶"
     }
   },
   "icon": "🧽"

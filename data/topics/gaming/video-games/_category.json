@@ -1,7 +1,9 @@
 {
   "title": {
     "en": "Video Games",
-    "de": "Videospiele"
+    "de": "Videospiele",
+    "zh-Hans": "电子游戏",
+    "zh-Hant": "電子遊戲"
   },
   "icon": "🎮"
 }

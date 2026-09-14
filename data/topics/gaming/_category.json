@@ -5,7 +5,9 @@
     "fr": "Jeux vidéo",
     "it": "Videogiochi",
     "ja": "ゲーム",
-    "ko": "게임"
+    "ko": "게임",
+    "zh-Hans": "游戏",
+    "zh-Hant": "遊戲"
   },
   "icon": "🎮",
   "order": 3

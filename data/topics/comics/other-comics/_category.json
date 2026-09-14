@@ -1,7 +1,9 @@
 {
   "title": {
     "en": "Other",
-    "de": "Andere"
+    "de": "Andere",
+    "zh-Hans": "其他",
+    "zh-Hant": "其他"
   },
   "icon": "💥"
 }

@@ -1,7 +1,9 @@
 {
   "title": {
     "en": "The Simpsons",
-    "de": "Die Simpsons"
+    "de": "Die Simpsons",
+    "zh-Hans": "辛普森一家",
+    "zh-Hant": "辛普森家庭"
   },
   "icon": "🍩"
 }
