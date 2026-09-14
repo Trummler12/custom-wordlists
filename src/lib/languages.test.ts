@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { langSupport, matchTag, splitName, tagChip } from "./languages";
+import { baseTag, langSupport, matchTag, splitName, tagChip } from "./languages";
 import type { TopicSummary } from "./types";
 
 const topic = (fields: Partial<TopicSummary>): TopicSummary => ({
@@ -53,6 +53,24 @@ describe("langSupport", () => {
     it("leaves nothing undeclared", () => {
       expect(langSupport(t, "xx")).not.toBe("undeclared");
     });
+  });
+});
+
+describe("baseTag", () => {
+  it("drops a region or a romanization for a support check", () => {
+    expect(baseTag("es-419")).toBe("es");
+    expect(baseTag("ja-Latn")).toBe("ja");
+    expect(baseTag("de")).toBe("de");
+  });
+
+  it("keeps the Chinese scripts, which are distinct languages", () => {
+    // zh-Hans/zh-Hant are listed in `languages` in their own right; collapsing them to
+    // `zh` matches neither and would wrongly trip the usesEnglishFor "*" wildcard.
+    expect(baseTag("zh-Hans")).toBe("zh-Hans");
+    expect(baseTag("zh-Hant")).toBe("zh-Hant");
+    const t = topic({ languages: ["en", "zh-Hans", "zh-Hant"], usesEnglishFor: ["*"] });
+    expect(langSupport(t, baseTag("zh-Hans"))).toBe("declared");
+    expect(langSupport(t, baseTag("zh-Hant"))).toBe("declared");
   });
 });
 
