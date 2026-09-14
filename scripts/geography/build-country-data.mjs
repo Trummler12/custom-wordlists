@@ -566,14 +566,14 @@ async function readStructure() {
 
 async function readContinentNames() {
   // The continent dump moved to a single Q-id-keyed JSON (rich `names` arrays) with the
-  // plates; read the preferred label per language from it. Locale languages only: the
-  // category title is locale-like text, so the app falls back to English for the rest,
-  // even though the dump now carries all 28.
+  // plates; read the preferred label per language from it. A continent name is a proper
+  // name the dump carries in every language, so the category title takes the full
+  // NAME_LANGS set — pre-filled and dormant like the country and capital names.
   const raw = JSON.parse(await readFile(join(RAW, "continents", "continent-names.json"), "utf8"));
   const out = {};
   for (const [qid, v] of Object.entries(raw)) {
     out[qid] = {};
-    for (const lang of LANGS) {
+    for (const lang of NAME_LANGS) {
       const arr = pickLang(v.names, lang);
       const term = arr?.find((t) => t.pref) ?? arr?.[0];
       if (term) out[qid][lang] = term.name;
@@ -831,7 +831,7 @@ async function main() {
 }
 
 const sumPop = (list) => list.reduce((n, c) => n + c.pop, 0);
-const pick = (names) => Object.fromEntries(LANGS.filter((l) => names?.[l]).map((l) => [l, names[l]]));
+const pick = (names) => Object.fromEntries(NAME_LANGS.filter((l) => names?.[l]).map((l) => [l, names[l]]));
 
 function category(title, icon, order) {
   return { title, icon, order };
