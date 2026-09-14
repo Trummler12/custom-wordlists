@@ -1,6 +1,6 @@
 {
   "id": "south-america-countries",
-  "title": {"en":"Countries","de":"Länder","es":"Países","fr":"Pays","it":"Paesi","ja":"国","ko":"국가","zh-Hans":"国家","zh-Hant":"國家"},
+  "title": {"en":"Countries","de":"Länder","es":"Países","fr":"Pays","it":"Paesi","ja":"国","ko":"국가","zh-Hans":"国家","zh-Hant":"國家","pt":"Países","ru":"Страны","tr":"Ülkeler","pl":"Kraje","nl":"Landen","bg":"Страни","cs":"Země","da":"Lande","et":"Riigid","fi":"Maat","el":"Χώρες","he":"מדינות","hu":"Országok","lv":"Valstis","mk":"Земји","no":"Land","ro":"Țări","sr":"Земље","sk":"Krajiny","sv":"Länder","tl":"Mga Bansa"},
   "languages": ["en","de","es","fr","it","ja","ja-Latn","ko","zh-Hans","zh-Hant","pt","ru","tr","pl","nl","bg","cs","da","et","fi","el","he","hu","lv","mk","no","ro","sr","sk","sv","tl"],
   "generatedRomaji": true,
   "sources": [

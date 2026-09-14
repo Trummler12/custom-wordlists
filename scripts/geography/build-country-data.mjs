@@ -23,9 +23,10 @@
 //
 // TWO LANGUAGE SETS. Names are harvested for NAME_LANGS — skribbl's full set — so the data
 // is ready in every language the picker may later offer; the app's CONTENT_LANGS still gates
-// what a reader can pick, so the extra ones lie dormant. The locale-like strings (titles,
-// tier conditions, ruler tooltips, sovereignty/coverage reasons, continent names) stay on the
-// smaller LANGS and fall back to English, until the interface itself grows into them.
+// what a reader can pick, so the extra ones lie dormant. The topic TITLES (T_COUNTRIES,
+// T_CAPITALS) carry that full set too, pre-filled and dormant; the other locale-like prose
+// (tier conditions, ruler tooltips, sovereignty/coverage reasons) stays on LANGS, the nine
+// official interface languages (Chinese in both scripts included).
 //
 // SOVEREIGNTY & RECOGNITION, A 2D MATRIX (C10). Beyond the UN sovereign states the dump
 // yields, the lists carry the curated territories (sovereign-territories.json) placed in a
@@ -210,8 +211,70 @@ function tierConditions() {
 }
 
 /** Topic titles, localized. Groups reuse them. */
-const T_COUNTRIES = { en: "Countries", de: "Länder", es: "Países", fr: "Pays", it: "Paesi", ja: "国", ko: "국가", "zh-Hans": "国家", "zh-Hant": "國家" };
-const T_CAPITALS = { en: "Capitals", de: "Hauptstädte", es: "Capitales", fr: "Capitales", it: "Capitali", ja: "首都", ko: "수도", "zh-Hans": "首都", "zh-Hant": "首都" };
+const T_COUNTRIES = {
+  en: "Countries",
+  de: "Länder",
+  es: "Países",
+  fr: "Pays",
+  it: "Paesi",
+  ja: "国",
+  ko: "국가",
+  "zh-Hans": "国家",
+  "zh-Hant": "國家",
+  pt: "Países",
+  ru: "Страны",
+  tr: "Ülkeler",
+  pl: "Kraje",
+  nl: "Landen",
+  bg: "Страни",
+  cs: "Země",
+  da: "Lande",
+  et: "Riigid",
+  fi: "Maat",
+  el: "Χώρες",
+  he: "מדינות",
+  hu: "Országok",
+  lv: "Valstis",
+  mk: "Земји",
+  no: "Land",
+  ro: "Țări",
+  sr: "Земље",
+  sk: "Krajiny",
+  sv: "Länder",
+  tl: "Mga Bansa"
+};
+const T_CAPITALS = {
+  en: "Capitals",
+  de: "Hauptstädte",
+  es: "Capitales",
+  fr: "Capitales",
+  it: "Capitali",
+  ja: "首都",
+  ko: "수도",
+  "zh-Hans": "首都",
+  "zh-Hant": "首都",
+  pt: "Capitais",
+  ru: "Столицы",
+  tr: "Başkentler",
+  pl: "Stolice",
+  nl: "Hoofdsteden",
+  bg: "Столици",
+  cs: "Hlavní města",
+  da: "Hovedstæder",
+  et: "Pealinnad",
+  fi: "Pääkaupungit",
+  el: "Πρωτεύουσες",
+  he: "ערי בירה",
+  hu: "Fővárosok",
+  lv: "Galvaspilsētas",
+  mk: "Главни градови",
+  no: "Hovedsteder",
+  ro: "Capitale",
+  sr: "Главни градови",
+  sk: "Hlavné mestá",
+  sv: "Huvudstäder",
+  tl: "Mga Kabisera"
+};
 
 /** The ruler hovers. `{condition}` is the population band just brought in; the
  *  empty text names the ordering at rest. The "Selected:" / "Mostly selected:"
