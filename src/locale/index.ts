@@ -342,43 +342,32 @@ import { fr } from "./fr";
 import { it } from "./it";
 import { ja } from "./ja";
 import { ko } from "./ko";
+import { zhHans } from "./zh-Hans";
+import { zhHant } from "./zh-Hant";
 
 /** Language that backs any locale without its own UI dictionary. */
 export const FALLBACK_LANG = "en";
 
-// Five of these are machine-written and unreviewed by a native speaker; the
-// contribution guide asks for proofreaders by name. Chinese is missing on
-// purpose: it is a content language because Pokémon has it, not a planned
-// interface language — see docs/Language-Roadmap.md.
-const UI: Record<string, UIStrings> = { en, de, es, fr, it, ja, ko };
+// Seven of these are machine-written and unreviewed by a native speaker; the
+// contribution guide asks for proofreaders by name. Chinese (both scripts) is an
+// official interface language now, not merely a content one — see
+// docs/Language-Roadmap.md.
+const UI: Record<string, UIStrings> = { en, de, es, fr, it, ja, ko, "zh-Hans": zhHans, "zh-Hant": zhHant };
 
-/** Languages the chrome can be rendered in — the ones with a dictionary above.
- *  Deliberately small: a list can be offered in a language long before anyone has
- *  translated the interface into it, which is the whole reason the two are
- *  separate settings. */
+/** Languages the chrome can be rendered in — the ones with a dictionary above. A
+ *  language is "official" once it has both a chrome dictionary and a picker slot, so
+ *  this is also `CONTENT_LANGS`: the two used to differ (a list could be offered before
+ *  its interface was translated) but no longer do. */
 export const UI_LANGS: string[] = Object.keys(UI).sort();
 
-/** Languages the app offers in its picker — the app-level curated set, not
- *  derived from topics; a topic missing the selected language falls back to en.
- *
- *  These are the tags the data actually uses, script and all: `zh-Hans` and
- *  `zh-Hant` are two lists, and a reader who wants Traditional should be able to
- *  say so rather than have a script guessed for them. Tags nobody offers still
- *  resolve — see `matchTag` — so a browser asking for `zh-CN` lands here anyway.
- *
- *  Alphabetical, which is also the order `matchTag` prefers when a bare tag has
- *  to be widened. */
-export const CONTENT_LANGS: string[] = [
-  "de",
-  "en",
-  "es",
-  "fr",
-  "it",
-  "ja",
-  "ko",
-  "zh-Hans",
-  "zh-Hant",
-];
+/** Languages the app offers in its picker. Same set as `UI_LANGS` — a language is
+ *  offered exactly when it is an official interface language — kept as its own name for
+ *  the readers that mean "the picker" (the 🌐 dropdown, `matchTag`). Alphabetical, which
+ *  is also the order `matchTag` prefers when a bare tag has to be widened; `zh-Hans` and
+ *  `zh-Hant` are two lists, script and all, so a reader who wants Traditional can say so
+ *  rather than have a script guessed. Tags nobody offers still resolve (see `matchTag`),
+ *  so a browser asking for `zh-CN` lands here anyway. */
+export const CONTENT_LANGS: string[] = UI_LANGS;
 
 /** UI strings for `lang`, falling back to English when it has no dictionary. */
 export function strings(lang: string): UIStrings {
