@@ -1,6 +1,6 @@
 {
   "id": "languages",
-  "title": {"en":"Languages","de":"Sprachen","es":"Idiomas","fr":"Langues","it":"Lingue","ja":"言語","ko":"언어","zh-Hans":"语言","zh-Hant":"語言"},
+  "title": {"en":"Languages","de":"Sprachen","es":"Idiomas","fr":"Langues","it":"Lingue","ja":"言語","ko":"언어","zh-Hans":"语言","zh-Hant":"語言","pt":"Idiomas","ru":"Языки","tr":"Diller","pl":"Języki","nl":"Talen","bg":"Езици","cs":"Jazyky","da":"Sprog","et":"Keeled","fi":"Kielet","el":"Γλώσσες","he":"שפות","hu":"Nyelvek","lv":"Valodas","mk":"Јазици","no":"Språk","ro":"Limbi","sr":"Језици","sk":"Jazyky","sv":"Språk","tl":"Mga Wika"},
   "icon": "🗣️",
   "description": "The world's languages, each named in every language skribbl offers. Fame tiers by speakers worldwide.",
   "languages": ["en","de","es","fr","it","ja","ja-Latn","ko","zh-Hans","zh-Hant","pt","ru","tr","pl","nl","bg","cs","da","et","fi","el","he","hu","lv","mk","no","ro","sr","sk","sv","tl"],
@@ -2232,8 +2232,8 @@
     {"en":"more than 0","de":"mehr als 0","es":"más de 0","fr":"plus de 0","it":"più di 0","ja":"0より多い","ko":"0보다 많음","zh-Hans":"多于0","zh-Hant":"多於0"}
   ],
   "rulerTooltip": {
-    "text": {"en":"Languages with {condition} speakers worldwide","de":"Sprachen mit {condition} Sprechern weltweit","es":"idiomas con {condition} hablantes en el mundo","fr":"langues comptant {condition} locuteurs dans le monde","it":"lingue con {condition} parlanti nel mondo","ja":"世界の話者数が{condition}の言語","ko":"전 세계 사용자 수가 {condition}인 언어"},
-    "empty": {"en":"Ranked by speakers worldwide.","de":"Nach Sprecherzahl weltweit geordnet.","es":"Ordenados por número de hablantes en el mundo.","fr":"Classées par nombre de locuteurs dans le monde.","it":"Ordinate per numero di parlanti nel mondo.","ja":"世界の話者数順。","ko":"전 세계 사용자 수 기준 정렬."}
+    "text": {"en":"Languages with {condition} speakers worldwide","de":"Sprachen mit {condition} Sprechern weltweit","es":"idiomas con {condition} hablantes en el mundo","fr":"langues comptant {condition} locuteurs dans le monde","it":"lingue con {condition} parlanti nel mondo","ja":"世界の話者数が{condition}の言語","ko":"전 세계 사용자 수가 {condition}인 언어","zh-Hans":"全球使用者为{condition}的语言","zh-Hant":"全球使用者為{condition}的語言"},
+    "empty": {"en":"Ranked by speakers worldwide.","de":"Nach Sprecherzahl weltweit geordnet.","es":"Ordenados por número de hablantes en el mundo.","fr":"Classées par nombre de locuteurs dans le monde.","it":"Ordinate per numero di parlanti nel mondo.","ja":"世界の話者数順。","ko":"전 세계 사용자 수 기준 정렬.","zh-Hans":"按全球使用者数排序。","zh-Hant":"按全球使用者數排序。"}
   },
   "extendFrom": 5
 }

@@ -174,7 +174,38 @@ function tierConditions() {
   return [...CUTS.map((_, i) => cond((l) => MORE[l](NUM[l][i]))), cond((l) => ABOVE_ZERO[l])];
 }
 
-const TITLE = { en: "Languages", de: "Sprachen", es: "Idiomas", fr: "Langues", it: "Lingue", ja: "言語", ko: "언어", "zh-Hans": "语言", "zh-Hant": "語言" };
+const TITLE = {
+  en: "Languages",
+  de: "Sprachen",
+  es: "Idiomas",
+  fr: "Langues",
+  it: "Lingue",
+  ja: "言語",
+  ko: "언어",
+  "zh-Hans": "语言",
+  "zh-Hant": "語言",
+  pt: "Idiomas",
+  ru: "Языки",
+  tr: "Diller",
+  pl: "Języki",
+  nl: "Talen",
+  bg: "Езици",
+  cs: "Jazyky",
+  da: "Sprog",
+  et: "Keeled",
+  fi: "Kielet",
+  el: "Γλώσσες",
+  he: "שפות",
+  hu: "Nyelvek",
+  lv: "Valodas",
+  mk: "Јазици",
+  no: "Språk",
+  ro: "Limbi",
+  sr: "Језици",
+  sk: "Jazyky",
+  sv: "Språk",
+  tl: "Mga Wika"
+};
 
 /** The ruler's hover. `{condition}` is the band just brought in; at rest it names the
  *  ordering. Seven UI languages, the two Chinese UIs falling back to English as elsewhere. */
@@ -187,6 +218,8 @@ const RULER_TOOLTIP = {
     it: "lingue con {condition} parlanti nel mondo",
     ja: "世界の話者数が{condition}の言語",
     ko: "전 세계 사용자 수가 {condition}인 언어",
+    "zh-Hans": "全球使用者为{condition}的语言",
+    "zh-Hant": "全球使用者為{condition}的語言",
   },
   empty: {
     en: "Ranked by speakers worldwide.",
@@ -196,6 +229,8 @@ const RULER_TOOLTIP = {
     it: "Ordinate per numero di parlanti nel mondo.",
     ja: "世界の話者数順。",
     ko: "전 세계 사용자 수 기준 정렬.",
+    "zh-Hans": "按全球使用者数排序。",
+    "zh-Hant": "按全球使用者數排序。",
   },
 };
 
