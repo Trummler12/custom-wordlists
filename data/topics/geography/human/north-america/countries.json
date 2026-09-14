@@ -24,7 +24,9 @@
         "fr": "territoires autonomes internationalement considérés comme partie d'un État souverain",
         "it": "territori autonomi considerati a livello internazionale parte di uno Stato sovrano",
         "ja": "国際的に主権国家の一部と見なされる自治地域",
-        "ko": "국제적으로 주권 국가의 일부로 여겨지는 자치 지역"
+        "ko": "국제적으로 주권 국가의 일부로 여겨지는 자치 지역",
+        "zh-Hans": "国际上被视为某主权国家一部分的自治地区",
+        "zh-Hant": "國際上被視為某主權國家一部分的自治地區"
       }
     }
   ],
@@ -42,7 +44,9 @@
         "fr": "régions autonomes dont la large autonomie est reconnue internationalement",
         "it": "regioni autonome la cui ampia autonomia è riconosciuta a livello internazionale",
         "ja": "広範な自治が国際的に認められている自治地域",
-        "ko": "폭넓은 자치가 국제적으로 인정된 자치 지역"
+        "ko": "폭넓은 자치가 국제적으로 인정된 자치 지역",
+        "zh-Hans": "拥有国际公认的广泛自治权的自治地区",
+        "zh-Hant": "擁有國際公認的廣泛自治權的自治地區"
       }
     },
     {
@@ -58,7 +62,9 @@
         "fr": "territoires très autonomes à présence internationale propre, que beaucoup prennent pour des pays à part entière",
         "it": "territori molto autonomi con una presenza internazionale propria, che molti scambiano per paesi a sé",
         "ja": "独自の国際的存在感を持ち、独自の国と見なされがちな高度な自治地域",
-        "ko": "독자적 국제적 존재감을 지녀 독립국으로 여겨지곤 하는 고도 자치 지역"
+        "ko": "독자적 국제적 존재감을 지녀 독립국으로 여겨지곤 하는 고도 자치 지역",
+        "zh-Hans": "拥有独特国际存在感、常被视为独立国家的高度自治地区",
+        "zh-Hant": "擁有獨特國際存在感、常被視為獨立國家的高度自治地區"
       }
     },
     {
@@ -73,7 +79,9 @@
         "fr": "pays sans couverture Google Street View",
         "it": "paesi senza copertura di Google Street View",
         "ja": "Google ストリートビュー非対応の国",
-        "ko": "구글 스트리트 뷰가 없는 국가"
+        "ko": "구글 스트리트 뷰가 없는 국가",
+        "zh-Hans": "没有 Google 街景覆盖的国家",
+        "zh-Hant": "沒有 Google 街景覆蓋的國家"
       }
     }
   ],
@@ -139,8 +147,8 @@
     {"en":"more than 0","de":"mehr als 0","es":"más de 0","fr":"plus de 0","it":"più di 0","ja":"0より多い","ko":"0보다 많음","zh-Hans":"多于0","zh-Hant":"多於0"}
   ],
   "rulerTooltip": {
-    "text": {"en":"Countries with {condition} inhabitants","de":"Länder mit {condition} Einwohnern","es":"países con {condition} habitantes","fr":"pays comptant {condition} habitants","it":"paesi con {condition} abitanti","ja":"人口が{condition}の国","ko":"인구가 {condition}인 국가"},
-    "empty": {"en":"Ranked by population.","de":"Nach Einwohnerzahl geordnet.","es":"Ordenados por población.","fr":"Classés par population.","it":"Ordinati per popolazione.","ja":"人口順。","ko":"인구순 정렬."}
+    "text": {"en":"Countries with {condition} inhabitants","de":"Länder mit {condition} Einwohnern","es":"países con {condition} habitantes","fr":"pays comptant {condition} habitants","it":"paesi con {condition} abitanti","ja":"人口が{condition}の国","ko":"인구가 {condition}인 국가","zh-Hans":"人口为{condition}的国家","zh-Hant":"人口為{condition}的國家"},
+    "empty": {"en":"Ranked by population.","de":"Nach Einwohnerzahl geordnet.","es":"Ordenados por población.","fr":"Classés par population.","it":"Ordinati per popolazione.","ja":"人口順。","ko":"인구순 정렬.","zh-Hans":"按人口排序。","zh-Hant":"按人口排序。"}
   },
   "inheritsUpwards": 1
 }

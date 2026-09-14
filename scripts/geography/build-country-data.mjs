@@ -227,6 +227,8 @@ const RULER_COUNTRIES = {
     it: "paesi con {condition} abitanti",
     ja: "人口が{condition}の国",
     ko: "인구가 {condition}인 국가",
+    "zh-Hans": "人口为{condition}的国家",
+    "zh-Hant": "人口為{condition}的國家",
   },
   empty: {
     en: "Ranked by population.",
@@ -236,6 +238,8 @@ const RULER_COUNTRIES = {
     it: "Ordinati per popolazione.",
     ja: "人口順。",
     ko: "인구순 정렬.",
+    "zh-Hans": "按人口排序。",
+    "zh-Hant": "按人口排序。",
   },
 };
 const RULER_CAPITALS = {
@@ -247,6 +251,8 @@ const RULER_CAPITALS = {
     it: "capitali di paesi con {condition} abitanti",
     ja: "人口が{condition}の国の首都",
     ko: "인구가 {condition}인 국가의 수도",
+    "zh-Hans": "人口为{condition}的国家的首都",
+    "zh-Hant": "人口為{condition}的國家的首都",
   },
   empty: {
     en: "Ranked by their country's population.",
@@ -256,6 +262,8 @@ const RULER_CAPITALS = {
     it: "Ordinate per la popolazione del loro paese.",
     ja: "国の人口順。",
     ko: "해당 국가의 인구순 정렬.",
+    "zh-Hans": "按所属国家的人口排序。",
+    "zh-Hant": "按所屬國家的人口排序。",
   },
 };
 
@@ -270,7 +278,7 @@ const SOVEREIGNTY = "sovereignty";
  *  default staircase — column 1 included through row 4, column 2 through row 3, so
  *  only the bottom-right cell (row 4, col 2) hides by default. Every
  *  reason opens lower-case with the countable noun so it reads on from the panel's
- *  "up to N"; seven UI languages, the two Chinese UIs falling back to English. */
+ *  "up to N"; the nine UI languages (Chinese in both scripts have their own now). */
 const CELLS = {
   "asymmetric-autonomy": {
     cell: [1, 2],
@@ -283,6 +291,8 @@ const CELLS = {
       it: "regioni autonome la cui ampia autonomia è riconosciuta a livello internazionale",
       ja: "広範な自治が国際的に認められている自治地域",
       ko: "폭넓은 자치가 국제적으로 인정된 자치 지역",
+      "zh-Hans": "拥有国际公认的广泛自治权的自治地区",
+      "zh-Hant": "擁有國際公認的廣泛自治權的自治地區",
     },
   },
   "de-facto-recognized": {
@@ -296,6 +306,8 @@ const CELLS = {
       it: "stati pienamente sovrani riconosciuti da molti, ma non tutti, i membri dell'ONU",
       ja: "全てではないが多くの国連加盟国に承認された、完全な主権国家",
       ko: "전부는 아니지만 다수의 유엔 회원국이 승인한 완전한 주권 국가",
+      "zh-Hans": "获得许多（但非全部）联合国成员国承认的完全主权国家",
+      "zh-Hant": "獲得許多（但非全部）聯合國成員國承認的完全主權國家",
     },
   },
   "free-association": {
@@ -309,6 +321,8 @@ const CELLS = {
       it: "stati in libera associazione con un altro, dal riconoscimento limitato",
       ja: "他国と自由連合を結ぶ、承認が限られた国",
       ko: "다른 나라와 자유연합을 맺은, 승인이 제한된 국가",
+      "zh-Hans": "与他国自由联合、获得有限承认的国家",
+      "zh-Hant": "與他國自由聯合、獲得有限承認的國家",
     },
   },
   "de-facto-narrow": {
@@ -322,6 +336,8 @@ const CELLS = {
       it: "stati pienamente autogovernati riconosciuti solo da pochi membri dell'ONU",
       ja: "ごく一部の国連加盟国のみに承認された、完全に自治を行う国家",
       ko: "소수의 유엔 회원국만이 승인한, 완전한 자치 국가",
+      "zh-Hans": "仅获少数联合国成员国承认的完全自治国家",
+      "zh-Hant": "僅獲少數聯合國成員國承認的完全自治國家",
     },
   },
   "special-status": {
@@ -335,6 +351,8 @@ const CELLS = {
       it: "territori molto autonomi con una presenza internazionale propria, che molti scambiano per paesi a sé",
       ja: "独自の国際的存在感を持ち、独自の国と見なされがちな高度な自治地域",
       ko: "독자적 국제적 존재감을 지녀 독립국으로 여겨지곤 하는 고도 자치 지역",
+      "zh-Hans": "拥有独特国际存在感、常被视为独立国家的高度自治地区",
+      "zh-Hant": "擁有獨特國際存在感、常被視為獨立國家的高度自治地區",
     },
   },
   "pure-de-facto": {
@@ -348,6 +366,8 @@ const CELLS = {
       it: "stati autoproclamati riconosciuti da pochi o nessun membro dell'ONU",
       ja: "国連加盟国のごく一部にしか、あるいは全く承認されない自称国家",
       ko: "유엔 회원국 중 극소수만이 또는 전혀 승인하지 않는 자칭 국가",
+      "zh-Hans": "仅获极少数或未获联合国成员国承认的自称国家",
+      "zh-Hant": "僅獲極少數或未獲聯合國成員國承認的自稱國家",
     },
   },
   "classic-autonomous": {
@@ -361,6 +381,8 @@ const CELLS = {
       it: "territori autonomi considerati a livello internazionale parte di uno Stato sovrano",
       ja: "国際的に主権国家の一部と見なされる自治地域",
       ko: "국제적으로 주권 국가의 일부로 여겨지는 자치 지역",
+      "zh-Hans": "国际上被视为某主权国家一部分的自治地区",
+      "zh-Hant": "國際上被視為某主權國家一部分的自治地區",
     },
   },
 };
@@ -407,7 +429,7 @@ const RARE_COVERAGE = new Set([
 ]);
 
 /** The two coverage reasons — lower-case leading noun, so the "up to N" the panel
- *  prepends reads on. Seven UI languages; the two Chinese UIs fall back to English. */
+ *  prepends reads on. The nine UI languages, Chinese in both scripts included. */
 const COVERAGE = {
   "no-coverage": {
     en: "countries with no Google Street View coverage",
@@ -417,6 +439,8 @@ const COVERAGE = {
     it: "paesi senza copertura di Google Street View",
     ja: "Google ストリートビュー非対応の国",
     ko: "구글 스트리트 뷰가 없는 국가",
+    "zh-Hans": "没有 Google 街景覆盖的国家",
+    "zh-Hant": "沒有 Google 街景覆蓋的國家",
   },
   "rare-coverage": {
     en: "countries with only sparse Street View coverage",
@@ -426,6 +450,8 @@ const COVERAGE = {
     it: "paesi con copertura Street View molto scarsa",
     ja: "ストリートビューがまばらな国",
     ko: "스트리트 뷰가 드문 국가",
+    "zh-Hans": "街景覆盖稀疏的国家",
+    "zh-Hant": "街景覆蓋稀疏的國家",
   },
 };
 
