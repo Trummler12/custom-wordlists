@@ -1,6 +1,6 @@
 {
   "id": "elements",
-  "title": {"short":{"en":"Elements","de":"Elemente"},"long":{"en":"Chemical Elements","de":"Chemische Elemente"}},
+  "title": {"short":{"en":"Elements","de":"Elemente","zh-Hans":"元素","zh-Hant":"元素"},"long":{"en":"Chemical Elements","de":"Chemische Elemente","zh-Hans":"化学元素","zh-Hant":"化學元素"}},
   "icon": "⚗️",
   "description": "The chemical elements. Fame tiers by what a player can draw of them, then by how current the name is where there is nothing to draw: tier 0 is the elements that are an everyday object themselves, tier 1 the ones a picture reaches with a second cue, tier 2 the familiar names nobody would recognize by sight, tier 3 the periodic table's remaining regulars, tier 4 the lanthanides, the actinides past uranium and the superheavy synthetics. Every cue is a thing rather than a word, so the ranking holds in each language the list is offered in.",
   "languages": ["en","de","es","fr","it","ja","ko","zh-Hans","zh-Hant"],

@@ -1,6 +1,6 @@
 {
   "id": "athletes",
-  "title": {"en":"Athletes","de":"Athleten"},
+  "title": {"en":"Athletes","de":"Athleten","zh-Hans":"运动员","zh-Hant":"運動員"},
   "icon": "🏅",
   "description": "Globally famous athletes across sports (language-neutral — proper names are the same across locales). Fame tiers by recognizability (tier 0 = most iconic).",
   "tiers": [

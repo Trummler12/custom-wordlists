@@ -1,6 +1,6 @@
 {
   "id": "sports",
-  "title": {"en":"Sports","de":"Sportarten"},
+  "title": {"en":"Sports","de":"Sportarten","zh-Hans":"体育","zh-Hant":"體育"},
   "icon": "🏟️",
   "description": "Olympic and mainstream sporting disciplines (English names). Fame tiers by popularity (tier 0 = most mainstream).",
   "tiers": [
