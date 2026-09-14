@@ -273,7 +273,11 @@ function wordAt(text, at) {
  *  passed along rather than repeated in each, which is how the two would drift.
  *  @param {string} text @returns {string} */
 function normalize(text) {
-  return toHiragana(widthNormalize(text));
+  // ＝ (full-width equals) and ゠ (the katakana double hyphen) join the parts of a compound
+  // foreign name — トラジャ＝サダン is Toraja-Sa'dan, サン＝テグジュペリ is Saint-Exupéry — so they
+  // read as a hyphen. Done before widthNormalize, which would otherwise fold ＝ into a bare
+  // ASCII "=" and pass it straight through.
+  return toHiragana(widthNormalize(text.replace(/[＝゠]/g, "-")));
 }
 
 /** True for anything this can read: a word it knows, kana, the marks above, ASCII.

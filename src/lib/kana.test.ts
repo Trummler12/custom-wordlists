@@ -41,6 +41,13 @@ describe("toRomaji", () => {
     expect(toRomaji("南ンデベレ語")).toBe("Minamindeberego");
   });
 
+  it("reads the double hyphen that joins a compound foreign name as a hyphen, not =", () => {
+    // ＝ / ゠ separate the parts of a borrowed compound name; width-normalizing ＝ to a
+    // bare ASCII "=" would leave it looking like an equation.
+    expect(toRomaji("トラジャ＝サダン語")).toBe("Toraja-sadango");
+    expect(toRomaji("ジョラ＝フォニィ語")).toBe("Jora-foniigo");
+  });
+
   it("spaces a bracket the way Latin script does, not the way Japanese does", () => {
     // The kana carries no space, its own brackets being full-width; the reading
     // is Latin script and wants one. Both halves are names, so both capitalize.
