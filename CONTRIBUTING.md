@@ -108,9 +108,9 @@ Comfortable with JSON and spotted a list posted in the [simple form](#option-a--
 2. **Hand over the JSON** as a **new issue** that references the original (`Refs #<number>`), or as a PR if you'd rather — **not** a buried follow-up comment, which is easy to lose. **Cross-link both ways** so the thread and the conversion stay connected.
 3. **Credit stays shared:** name both the original proposer and yourself in the topic's `credits`.
 
-## Looking for UI proofreaders — Spanish, French, Italian, Japanese, Korean
+## Looking for UI proofreaders — Spanish, French, Italian, Japanese, Korean, Chinese
 
-The interface now speaks nine languages' worth of word lists and seven languages of its own. Two of those seven were written by people who speak them. **The other five — Spanish, French, Italian, Japanese and Korean — were machine-written and have never been read by a native speaker.** They are a starting point, not a translation.
+The interface now speaks nine languages of its own, the same nine it offers word lists in. Two of those nine — English and German — were written by people who speak them. **The other seven — Spanish, French, Italian, Japanese, Korean, and Chinese in both scripts — were machine-written and have never been read by a native speaker.** They are a starting point, not a translation.
 
 If one of them is yours, we'd be glad of ten minutes of it. What's worth reporting:
 
