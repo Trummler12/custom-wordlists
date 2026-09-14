@@ -1,6 +1,6 @@
 {
   "id": "generation-4",
-  "title": {"short":{"en":"Gen IV","es":"Gen. IV","fr":"Gén. IV","it":"Gen. IV","ja":"第4世代","ko":"4세대"},"long":{"en":"Generation IV","es":"Generación IV","fr":"Génération IV","it":"Generazione IV","ja":"第4世代","ko":"4세대"}},
+  "title": {"short":{"en":"Gen IV","es":"Gen. IV","fr":"Gén. IV","it":"Gen. IV","ja":"第4世代","ko":"4세대","zh-Hans":"第四世代","zh-Hant":"第四世代"},"long":{"en":"Generation IV","es":"Generación IV","fr":"Génération IV","it":"Generazione IV","ja":"第4世代","ko":"4세대","zh-Hans":"第四世代","zh-Hant":"第四世代"}},
   "icon": "🔴",
   "description": "Generation IV Pokémon, in ten languages. Fame tiers from an empirical recognition rate (tier 0 = best known); a first pass from one quiz's results, meant to be refined.",
   "languages": ["de","en","es","es-419","fr","it","ja","ja-Latn","ko","zh-Hans","zh-Hant"],

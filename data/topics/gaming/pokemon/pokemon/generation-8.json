@@ -1,6 +1,6 @@
 {
   "id": "generation-8",
-  "title": {"short":{"en":"Gen VIII","es":"Gen. VIII","fr":"Gén. VIII","it":"Gen. VIII","ja":"第8世代","ko":"8세대"},"long":{"en":"Generation VIII","es":"Generación VIII","fr":"Génération VIII","it":"Generazione VIII","ja":"第8世代","ko":"8세대"}},
+  "title": {"short":{"en":"Gen VIII","es":"Gen. VIII","fr":"Gén. VIII","it":"Gen. VIII","ja":"第8世代","ko":"8세대","zh-Hans":"第八世代","zh-Hant":"第八世代"},"long":{"en":"Generation VIII","es":"Generación VIII","fr":"Génération VIII","it":"Generazione VIII","ja":"第8世代","ko":"8세대","zh-Hans":"第八世代","zh-Hant":"第八世代"}},
   "icon": "🔴",
   "description": "Generation VIII Pokémon, in ten languages. Fame tiers from an empirical recognition rate (tier 0 = best known); a first pass from one quiz's results, meant to be refined.",
   "languages": ["de","en","es","es-419","fr","it","ja","ja-Latn","ko","zh-Hans","zh-Hant"],

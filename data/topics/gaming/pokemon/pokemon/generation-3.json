@@ -1,6 +1,6 @@
 {
   "id": "generation-3",
-  "title": {"short":{"en":"Gen III","es":"Gen. III","fr":"Gén. III","it":"Gen. III","ja":"第3世代","ko":"3세대"},"long":{"en":"Generation III","es":"Generación III","fr":"Génération III","it":"Generazione III","ja":"第3世代","ko":"3세대"}},
+  "title": {"short":{"en":"Gen III","es":"Gen. III","fr":"Gén. III","it":"Gen. III","ja":"第3世代","ko":"3세대","zh-Hans":"第三世代","zh-Hant":"第三世代"},"long":{"en":"Generation III","es":"Generación III","fr":"Génération III","it":"Generazione III","ja":"第3世代","ko":"3세대","zh-Hans":"第三世代","zh-Hant":"第三世代"}},
   "icon": "🔴",
   "description": "Generation III Pokémon, in ten languages. Fame tiers from an empirical recognition rate (tier 0 = best known); a first pass from one quiz's results, meant to be refined.",
   "languages": ["de","en","es","es-419","fr","it","ja","ja-Latn","ko","zh-Hans","zh-Hant"],

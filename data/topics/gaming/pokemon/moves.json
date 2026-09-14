@@ -1,6 +1,6 @@
 {
   "id": "moves",
-  "title": {"en":"Moves","de":"Attacken","es":"Movimientos","fr":"Capacités","it":"Mosse","ja":"わざ","ko":"기술"},
+  "title": {"en":"Moves","de":"Attacken","es":"Movimientos","fr":"Capacités","it":"Mosse","ja":"わざ","ko":"기술","zh-Hans":"招式","zh-Hant":"招式"},
   "icon": "💥",
   "description": "Pokémon moves, in nine languages.",
   "languages": ["de","en","es","es-419","fr","it","ja","ja-Latn","ko","zh-Hans","zh-Hant"],
