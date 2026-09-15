@@ -60,5 +60,5 @@
     {/if}
   </div>
 
-  <SiteFooter />
+  <SiteFooter footer={lang.ui.footer} />
 </main>
