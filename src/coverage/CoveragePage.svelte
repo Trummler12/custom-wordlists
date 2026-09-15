@@ -9,6 +9,7 @@
   import { resolveStr } from "../lib/words";
   import type { LocalizedString, Manifest } from "../lib/types";
   import Msg from "../locale/html/Msg.svelte";
+  import { plainText } from "../locale/html/markup";
 
   interface CoverageItem {
     qid: string;
@@ -24,11 +25,28 @@
   const base = import.meta.env.BASE_URL;
   const route = resolveRoute(location.pathname, location.search, base);
 
-  // The interface language: from the URL, else the content language as a fallback, else
-  // English — and switchable at runtime via the dropdown. Only the languages that have a
-  // dictionary are offered; anything else falls through strings() to English anyway.
+  // The interface language: an explicit URL segment wins, else the reader's last choice
+  // (persisted below, since the canonical URL drops the segment), else the content language,
+  // else English — and switchable at runtime via the dropdown. Only the languages that have
+  // a dictionary are offered; anything else falls through strings() to English anyway.
   const asUiLang = (l: string | null): string | null => (l && UI_LANGS.includes(l) ? l : null);
-  let uiLang = $state(asUiLang(route.uiLang) ?? asUiLang(route.lang) ?? FALLBACK_LANG);
+  const UILANG_KEY = "wordlists:coverageUiLang";
+  const storedUiLang = (): string | null => {
+    try {
+      return asUiLang(localStorage.getItem(UILANG_KEY));
+    } catch {
+      return null; // private mode or storage disabled — fall through to the other sources
+    }
+  };
+  let uiLang = $state(asUiLang(route.uiLang) ?? storedUiLang() ?? asUiLang(route.lang) ?? FALLBACK_LANG);
+  // Remember the choice so a reload keeps it, rather than snapping back to the content language.
+  $effect(() => {
+    try {
+      localStorage.setItem(UILANG_KEY, uiLang);
+    } catch {
+      // ignore — nothing depends on the write succeeding
+    }
+  });
   const ui = $derived(strings(uiLang).coveragePage);
   const numLabel = (key: string): string => (ui.numeric as Record<string, string>)[key] ?? key;
 
@@ -114,6 +132,18 @@
   }
   const arrow = (key: SortKey) => (sort.key !== key ? "" : sort.dir === "asc" ? " ▲" : " ▼");
 
+  // The language columns group the official languages (UI_LANGS) to the left and the rest
+  // after — a stable partition, so each side keeps the dump's order and `en` stays leftmost.
+  // "UI languages only" drops the rest; otherwise a divider marks the boundary between them.
+  let uiOnly = $state(false);
+  const officialLangs = $derived((data?.meta.langs ?? []).filter((l) => UI_LANGS.includes(l)));
+  const otherLangs = $derived((data?.meta.langs ?? []).filter((l) => !UI_LANGS.includes(l)));
+  const displayLangs = $derived(uiOnly ? officialLangs : [...officialLangs, ...otherLangs]);
+  // The divider rides the last official column, and only while un-official ones follow it.
+  const dividerLang = $derived(
+    !uiOnly && otherLangs.length ? officialLangs[officialLangs.length - 1] : null,
+  );
+
   async function load(topic: CoverageTopic) {
     try {
       const res = await fetch(`${base}data/coverage/${topic}.json`);
@@ -180,15 +210,21 @@
     </details>
     <div class="bar">
       <span class="count">{ui.itemCount(data.items.length)}</span>
-      {#if pageCount > 1}
-        <span class="pager">
-          <button onclick={() => (page = 0)} disabled={page === 0} aria-label={ui.first} title={ui.first}>‹‹‹</button>
-          <button onclick={() => (page = Math.max(0, page - 1))} disabled={page === 0} aria-label={ui.prev} title={ui.prev}>‹</button>
-          <span>{ui.page(page + 1, pageCount)}</span>
-          <button onclick={() => (page = Math.min(pageCount - 1, page + 1))} disabled={page >= pageCount - 1} aria-label={ui.next} title={ui.next}>›</button>
-          <button onclick={() => (page = pageCount - 1)} disabled={page >= pageCount - 1} aria-label={ui.last} title={ui.last}>›››</button>
-        </span>
-      {/if}
+      <div class="bar-right">
+        <label class="uionly" title={plainText(ui.uiOnlyHint, "\n")}>
+          <input type="checkbox" bind:checked={uiOnly} />
+          {ui.uiOnly}
+        </label>
+        {#if pageCount > 1}
+          <span class="pager">
+            <button onclick={() => (page = 0)} disabled={page === 0} aria-label={ui.first} title={ui.first}>‹‹‹</button>
+            <button onclick={() => (page = Math.max(0, page - 1))} disabled={page === 0} aria-label={ui.prev} title={ui.prev}>‹</button>
+            <span>{ui.page(page + 1, pageCount)}</span>
+            <button onclick={() => (page = Math.min(pageCount - 1, page + 1))} disabled={page >= pageCount - 1} aria-label={ui.next} title={ui.next}>›</button>
+            <button onclick={() => (page = pageCount - 1)} disabled={page >= pageCount - 1} aria-label={ui.last} title={ui.last}>›››</button>
+          </span>
+        {/if}
+      </div>
     </div>
     <div class="scroll">
       <table>
@@ -198,8 +234,8 @@
             {#if data.meta.numeric}
               <th class="num"><button class="sort" onclick={() => sortBy("num")}>{numLabel(data.meta.numeric)}{arrow("num")}</button></th>
             {/if}
-            {#each data.meta.langs as lang}
-              <th class="lang" class:here={lang === route.lang}>
+            {#each displayLangs as lang (lang)}
+              <th class="lang" class:here={lang === route.lang} class:divider={lang === dividerLang}>
                 <button class="sort" onclick={() => sortBy(lang)} title={langTitle(lang)}>
                   <span class:abbr={!!SHORT_LANG[lang]}>{SHORT_LANG[lang] ?? lang}</span>{arrow(lang)}
                 </button>
@@ -214,8 +250,8 @@
                 <a href={wikidata(item.qid)} target="_blank" rel="noopener noreferrer" class:noname={!item.name}>{item.name ?? item.qid}</a>
               </th>
               {#if data.meta.numeric}<td class="num">{item.num?.toLocaleString() ?? "—"}</td>{/if}
-              {#each data.meta.langs as lang}
-                <td class="cell" class:has={covered(item, lang)} class:here={lang === route.lang}>
+              {#each displayLangs as lang (lang)}
+                <td class="cell" class:has={covered(item, lang)} class:here={lang === route.lang} class:divider={lang === dividerLang}>
                   {covered(item, lang) ? "✓" : "✗"}
                 </td>
               {/each}
@@ -295,6 +331,18 @@
   }
   .count {
     opacity: 0.75;
+  }
+  .bar-right {
+    display: inline-flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  .uionly {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    cursor: pointer;
+    white-space: nowrap;
   }
   .pager {
     display: inline-flex;
@@ -409,5 +457,11 @@
   .here {
     outline: 3px solid #e3b23c; /* the URL language's column — a thicker yellow edge */
     outline-offset: -3px;
+  }
+  /* The boundary between the official languages and the rest. A thicker, more opaque grey
+     than the 1px grid, so it reads as a divider in both themes; the yellow `.here` marker
+     is an outline painted on top, so it still wins where the two land on the same column. */
+  .divider {
+    border-right: 3px solid rgba(128, 128, 128, 0.85);
   }
 </style>
