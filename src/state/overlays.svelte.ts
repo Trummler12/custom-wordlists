@@ -15,12 +15,20 @@ import { lang } from "./lang.svelte";
  *  A tip has no single host element: its marker and its note are siblings under
  *  whatever row they belong to, so both are named. The note is there for the one
  *  focusable thing a note can hold, the link inviting a romaji correction. */
-type OverlayKind = "lang" | "settings" | "omitted" | "coverage" | "sovereignty" | "tip";
+type OverlayKind =
+  | "lang"
+  | "settings"
+  | "omitted"
+  | "coverage"
+  | "languageType"
+  | "sovereignty"
+  | "tip";
 const HOSTS: Record<OverlayKind, string> = {
   lang: ".lang-picker",
   settings: ".settings-picker",
   omitted: ".omitted-host",
   coverage: ".coverage-host",
+  languageType: ".language-type-host",
   sovereignty: ".sovereignty-host",
   tip: ".tip-trigger, .tip-note",
 };
@@ -41,6 +49,7 @@ class OverlayState {
     settings: null,
     omitted: null,
     coverage: null,
+    languageType: null,
     sovereignty: null,
     tip: null,
   };
@@ -70,6 +79,8 @@ class OverlayState {
   omittedAbove = $state(false);
   /** And for the coverage popup — its own button on the same row. */
   coverageAbove = $state(false);
+  /** And for the language-type panel — its own ☑️ button on the same row. */
+  languageTypeAbove = $state(false);
   /** And for the sovereignty matrix — its own button on the same row. */
   sovereigntyAbove = $state(false);
 
@@ -124,6 +135,21 @@ class OverlayState {
     this.#remember("coverage", trigger);
   };
 
+  // --- Language-type panel ---------------------------------------------------
+
+  /** Which list is showing its language-type inclusion checklist, keyed
+   *  `${topicId}:${groupId}` — the ☑️ button's popup, a sibling of the 🚫 panel. */
+  languageTypePanel = $state<string | null>(null);
+  toggleLanguageTypePanel = (id: string, trigger: Element): void => {
+    if (this.languageTypePanel === id) {
+      this.languageTypePanel = null;
+      return;
+    }
+    this.languageTypeAbove = opensUpward(trigger);
+    this.languageTypePanel = id;
+    this.#remember("languageType", trigger);
+  };
+
   // --- Sovereignty matrix ----------------------------------------------------
 
   /** Which list is showing its sovereignty & recognition matrix, keyed by the
@@ -141,16 +167,43 @@ class OverlayState {
 
   // --- Tooltips --------------------------------------------------------------
 
-  /** Show a note, flipping it above its row when there is more room upward. */
-  openTip = (id: string, trigger: Element, pinned = false): void => {
-    this.tipAbove = opensUpward(trigger);
+  /** A `local` note is anchored to a trigger sitting inside a scrolling popup (a 👎 in the
+   *  language-type panel), rather than spanning a row. It overlays the popup, fixed to the
+   *  trigger's own place so it flips and follows on a page scroll — but a scroll of the popup
+   *  itself closes it (its trigger slides out from under it). See onScroll / onLocalScroll. */
+  #tipLocal = false;
+  /** The fixed-position style for the open local note, computed from its trigger's rect —
+   *  read by TipNote. Empty for a row note, which the CSS positions on its own. */
+  tipStyle = $state("");
+
+  /** Pin a local note to its trigger: fixed to the viewport, its right edge under the
+   *  trigger's, above or below it by which viewport half the trigger sits in. */
+  #placeLocalTip(trigger: Element): void {
+    const r = trigger.getBoundingClientRect();
+    const above = r.bottom > window.innerHeight / 2;
+    this.tipAbove = above;
+    const right = Math.round(window.innerWidth - r.right);
+    const edge = above
+      ? `bottom:${Math.round(window.innerHeight - r.top + 4)}px`
+      : `top:${Math.round(r.bottom + 4)}px`;
+    this.tipStyle = `position:fixed;right:${right}px;${edge};`;
+  }
+
+  /** Show a note, flipping it above its row when there is more room upward — or, for a
+   *  `local` note, fixing it to its trigger's own place (see #placeLocalTip). */
+  openTip = (id: string, trigger: Element, pinned = false, local = false): void => {
+    if (local) this.#placeLocalTip(trigger);
+    else this.tipAbove = opensUpward(trigger);
     this.tip = id;
     this.tipPinned = pinned;
+    this.#tipLocal = local;
     this.#remember("tip", trigger);
   };
   closeTip = (): void => {
     this.tip = null;
     this.tipPinned = false;
+    this.#tipLocal = false;
+    this.tipStyle = "";
   };
   /** Close unless the note is pinned — what leaving the marker and losing focus
    *  both want, neither of them being a dismissal once the reader has asked for
@@ -165,25 +218,25 @@ class OverlayState {
   #holding(id: string): boolean {
     return this.tipPinned && this.tip === id;
   }
-  tipEnter = (e: PointerEvent, id: string): void => {
+  tipEnter = (e: PointerEvent, id: string, local = false): void => {
     if (e.pointerType !== "mouse" || this.#holding(id)) return;
-    this.openTip(id, e.currentTarget as Element);
+    this.openTip(id, e.currentTarget as Element, false, local);
   };
   tipLeave = (e: PointerEvent): void => {
     if (e.pointerType === "mouse") this.releaseTip();
   };
-  tipFocus = (e: FocusEvent, id: string): void => {
+  tipFocus = (e: FocusEvent, id: string, local = false): void => {
     // Only where a focus ring shows, which is to say: only for the keyboard, the
     // one input that has neither hover nor a click to open this with. It also
     // keeps out the focus a browser restores to the page on its own — returning to
     // a tab is not a request to see anything.
     const el = e.currentTarget as Element;
     if (this.#holding(id) || !focusIsVisible(el)) return;
-    this.openTip(id, el);
+    this.openTip(id, el, false, local);
   };
-  tipClick = (e: MouseEvent, id: string): void => {
+  tipClick = (e: MouseEvent, id: string, local = false): void => {
     if (!this.#holding(id)) {
-      this.openTip(id, e.currentTarget as Element, true);
+      this.openTip(id, e.currentTarget as Element, true, local);
       return;
     }
     // A second click unpins — but under a cursor the note stays up, because the
@@ -212,6 +265,7 @@ class OverlayState {
     if (this.settingsMenu && !target?.closest?.(".settings-picker")) this.settingsMenu = null;
     if (this.omittedPanel && !target?.closest?.(".omitted-host")) this.omittedPanel = null;
     if (this.coveragePanel && !target?.closest?.(".coverage-host")) this.coveragePanel = null;
+    if (this.languageTypePanel && !target?.closest?.(".language-type-host")) this.languageTypePanel = null;
     if (this.sovereigntyPanel && !target?.closest?.(".sovereignty-host")) this.sovereigntyPanel = null;
     // Neither on the marker, whose own click toggles, nor inside the note: a note
     // exists to be read, and one carrying a link exists to be clicked — closing it
@@ -224,7 +278,20 @@ class OverlayState {
    *  press elsewhere, Escape, or this. Which way it opened was read off its row's
    *  place in the viewport, and a scroll makes that answer stale as well. */
   onScroll = (): void => {
-    if (this.tipPinned) this.closeTip();
+    if (!this.tipPinned) return;
+    // A local note rides along with its popup on a PAGE scroll — it doesn't go stale, so it
+    // re-aims its above/below flip rather than closing. A row note closes, as it always has:
+    // its position was read off the row's place in the viewport, which the scroll makes stale.
+    if (this.#tipLocal) {
+      const t = this.#openers.tip;
+      if (t) this.#placeLocalTip(t);
+    } else this.closeTip();
+  };
+  /** A scroll of the popup a local note is anchored beside (the language-type panel), rather
+   *  than of the page: the note stays put while its trigger scrolls away under it, so the two
+   *  part ways and it closes — the local counterpart to the page scroll onScroll handles. */
+  onLocalScroll = (): void => {
+    if (this.#tipLocal) this.closeTip();
   };
   /** Escape closes the one overlay the focus is in — innermost first, and nothing
    *  else.
@@ -247,6 +314,7 @@ class OverlayState {
     else if (kind === "lang") this.langMenu = null;
     else if (kind === "settings") this.settingsMenu = null;
     else if (kind === "coverage") this.coveragePanel = null;
+    else if (kind === "languageType") this.languageTypePanel = null;
     else if (kind === "sovereignty") this.sovereigntyPanel = null;
     else this.omittedPanel = null;
     const back = this.#openers[kind];
@@ -271,6 +339,7 @@ class OverlayState {
     if (this.settingsMenu && inside(HOSTS.settings)) return "settings";
     if (this.omittedPanel && inside(HOSTS.omitted)) return "omitted";
     if (this.coveragePanel && inside(HOSTS.coverage)) return "coverage";
+    if (this.languageTypePanel && inside(HOSTS.languageType)) return "languageType";
     if (this.sovereigntyPanel && inside(HOSTS.sovereignty)) return "sovereignty";
     return null;
   }

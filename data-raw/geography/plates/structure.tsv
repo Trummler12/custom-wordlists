@@ -1,11 +1,4 @@
 # name	band	parent	wikidata	steradian (Bird 2003)	de (Bird table)
-Pacific plate	major		Q205411	2.57685	Pazifische Platte
-African plate	major		Q203548	1.44065	Afrikanische Platte
-Antarctic plate	major		Q501705	1.43268	Antarktische Platte
-North American plate	major		Q220305	1.36559	Nordamerikanische Platte
-Eurasian plate	major		Q188521	1.19630	Eurasische Platte
-Australian plate	major		Q783056	1.13294	Australische Platte
-South American plate	major		Q119490	1.03045	Südamerikanische Platte
 Somali plate	minor		Q1415528	0.47192	Somaliaplatte
 Nazca plate	minor		Q538867	0.39669	Nazca-Platte
 Indian plate	minor		Q499481	0.30637	Indische Platte
@@ -51,7 +44,14 @@ Shetland plate	micro	Antarctic plate	Q1200982	0.00178	Shetlandplatte
 Futuna plate	micro	Australian plate	Q1135772	0.00079	Futunaplatte
 Galápagos microplate	micro	Pacific plate		0.00036	Galapagosplatte
 Manus plate	micro	Pacific plate	Q1345043	0.00020	Manusplatte
+African plate	major		Q203548		
+Antarctic plate	major		Q501705		
+Eurasian plate	major		Q188521		
 Indo-Australian plate	major		Q844163		
+Australian plate	major		Q783056		
+North American plate	major		Q220305		
+Pacific plate	major		Q205411		
+South American plate	major		Q119490		
 Lwandle plate	micro	African plate	Q23581639		
 Rovuma plate	micro	African plate	Q25105221		
 Victoria microplate	micro	African plate	Q104863725		
@@ -85,3 +85,28 @@ Trobriand plate	micro	Pacific plate	Q121879187
 Philippine Mobile Belt	micro	Philippine Sea plate	Q4671480		
 Madagascar plate	micro	Somali plate	Q6726144		
 Falklands microplate	micro	South American plate			
+Phoenix Plate	unknown		Q902322		
+Izanagi Plate	unknown		Q1059335		
+Iranian Plate	unknown		Q1187892		
+Altiplano Plate	unknown		Q1200986		
+Farallon Plate	unknown		Q1203170		
+Kula Plate	unknown		Q1320205		
+microplate	unknown		Q1933940		
+Futuna Plate	unknown		Q2043096		
+Intermontane Plate	unknown		Q3391667		
+Bellingshausen Plate	unknown		Q3391669		
+Lhasa Plate	unknown		Q3391684		
+South Georgia Plate	unknown		Q3906097		
+Jan Mayen Microcontinent	unknown		Q3906099		
+Turan Plate	unknown		Q4465710		
+Charcot Plate	unknown		Q5074185		
+Cimmerian Plate	unknown		Q5120147		
+North Galapagos Microplate	unknown		Q5361664		
+Intraplate deformation	unknown		Q6058525		
+Moa Plate	unknown		Q6886313		
+Q7853562	unknown		Q7853562		
+Baltic plate	unknown		Q13542800		
+Western Siberia Plate	unknown		Q17115739		
+European plate	unknown		Q19848929		
+West Siberian Plate	unknown		Q25473407		
+Central India Tectonic Zone	unknown		Q115534336		

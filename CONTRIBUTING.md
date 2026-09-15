@@ -15,7 +15,7 @@ The [topic tracker](docs/Topic-Progress.md) shows what's already covered and wha
 
 ## Before you type out a list
 
-If your topic already exists as **structured data** — a public API, a Wikidata query, a CLDR export, a maintained list on GitHub — then please don't compile it by hand. The language list and the Pokémon lists were all built by script from sources like that, and a script does in one pass, in every language at once, what a spreadsheet does in an evening in one of them.
+If your topic already exists as **structured data** — a public API, a Wikidata query, a CLDR export, a maintained list on GitHub — then please don't compile it by hand. The language list and the Pokémon lists were all built by script from sources like that, and a script does in one pass, in every language at once, what a spreadsheet does in an evening in one of them. The scripts that do it, and how the data pipeline runs, are catalogued in [`scripts/README.md`](scripts/README.md).
 
 **A couple of links can be the entire contribution:** open a [Data source](https://github.com/Trummler12/custom-wordlists/issues/new?template=2-data-source.yml) issue and say what you found. Naming a source we can script beats a hand-typed list of the same topic — it arrives more complete, and it stays checkable against where it came from.
 
@@ -108,9 +108,9 @@ Comfortable with JSON and spotted a list posted in the [simple form](#option-a--
 2. **Hand over the JSON** as a **new issue** that references the original (`Refs #<number>`), or as a PR if you'd rather — **not** a buried follow-up comment, which is easy to lose. **Cross-link both ways** so the thread and the conversion stay connected.
 3. **Credit stays shared:** name both the original proposer and yourself in the topic's `credits`.
 
-## Looking for UI proofreaders — Spanish, French, Italian, Japanese, Korean
+## Looking for UI proofreaders — Spanish, French, Italian, Japanese, Korean, Chinese
 
-The interface now speaks nine languages' worth of word lists and seven languages of its own. Two of those seven were written by people who speak them. **The other five — Spanish, French, Italian, Japanese and Korean — were machine-written and have never been read by a native speaker.** They are a starting point, not a translation.
+The interface now speaks nine languages of its own, the same nine it offers word lists in. Two of those nine — English and German — were written by people who speak them. **The other seven — Spanish, French, Italian, Japanese, Korean, and Chinese in both scripts — were machine-written and have never been read by a native speaker.** They are a starting point, not a translation.
 
 If one of them is yours, we'd be glad of ten minutes of it. What's worth reporting:
 
@@ -125,7 +125,7 @@ Confirming that a locale reads fine is just as useful as correcting it, and neit
 ```bash
 npm install
 npm run dev        # dev server (runs build:index first, then vite)
-npm run build      # production build → dist/ (also runs build:index)
+npm run build      # production build => dist/ (also runs build:index)
 npm run validate   # data against the schema + the cross-checks under Option B
 npm run check      # frontend type-check
 npm test           # unit tests — CI runs this as its own gate

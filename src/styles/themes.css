@@ -31,7 +31,7 @@
     --muted: var(--color-gray-400);
     --muted-2: var(--color-gray-500);
     --border: var(--color-gray-800);
-    --panel-border: var(--color-gray-700);
+    --panel-border: var(--color-gray-550);
     --chip-bg: var(--color-slate-800);
     --chip-fg: var(--color-fog-100);
     --danger: var(--color-danger-soft);

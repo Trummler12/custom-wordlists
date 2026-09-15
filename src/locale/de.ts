@@ -28,6 +28,7 @@ export const de: UIStrings = {
     none: "Noch keine Fame-Gruppen definiert — im Contribution Guide im Footer erfährst du, wie du welche vorschlagen kannst!",
     selected: "Ausgewählt:",
     mostlySelected: "Grösstenteils ausgewählt:",
+    stored: (body) => `(Gespeichert: ${body})`,
     toggle: (shown) =>
       shown ? "Fame-Regler dieser Liste ausblenden" : "Fame-Regler dieser Liste einblenden",
     toggleAll: (allShown) =>
@@ -55,12 +56,23 @@ export const de: UIStrings = {
       omitted
         ? "Umschalten, um sie trotzdem aufzunehmen — skribbl.io nimmt sie nicht an, ein anderes Spiel vielleicht schon."
         : "Umschalten, um sie wieder wegzulassen.",
+    helpAdd: (url) => ` — [hilf mit, Fehlendes zu ergänzen!](${url})`,
   },
   coverage: {
     label: "Geoguessr / Street-View-Abdeckung",
     all: "Alle Länder",
     withCoverage: "Mit offizieller Abdeckung",
     reliable: "Nur zuverlässige Abdeckung",
+  },
+  languageType: {
+    label: "Welche Sprachtypen einbeziehen",
+    base: "Lebende moderne Sprachen",
+    submillion: "Auch Sprachen mit <1 Million Nutzern",
+    notRecommended: "Für gemütliches Malen wenig geeignet: deutlich unbekannter, als die Sprecherzahl vermuten lässt.",
+    toggle: (included) =>
+      included
+        ? "Angehakt — diese sind in der Liste. Abwählen, um sie wegzulassen."
+        : "Anhaken, um diese zur Liste hinzuzufügen.",
   },
   sovereignty: {
     label: "Souveränität & Anerkennung",
@@ -142,5 +154,30 @@ export const de: UIStrings = {
     // Link label stays English — the guide itself is only available in English.
     contributionGuide: "Contribution Guide",
     helpOutAfter: "!",
+  },
+  coveragePage: {
+    home: "Zur Haupt-App",
+    topicLabel: "Thema:",
+    uiLanguage: "Oberflächensprache",
+    title: "Sprachabdeckung",
+    intro: "Wähle ein Thema, um zu sehen, für welche Sprachen Wikidata je Eintrag bereits eine Bezeichnung hat.",
+    lead: "Die Inhalte dieses Themas stammen aus [Wikidata](https://www.wikidata.org/wiki/Wikidata:Main_Page). Die Tabelle zeigt, für welche Sprachen jeder Eintrag bereits eine Bezeichnung hat.",
+    notesTitle: "Wie du helfen kannst",
+    noteAdd: "Öffne einen Eintrag über die erste Spalte und ergänze, einmal angemeldet, jede fehlende Bezeichnung, bei der du dir sicher bist.",
+    noteLabelLister: "Um eine gar nicht aufgeführte Sprache zu ergänzen, aktiviere das labelLister-Gadget in deinen [Wikidata-Einstellungen](https://www.wikidata.org/wiki/Special:Preferences#mw-prefsection-gadgets) unter Helferlein; jeder Eintrag zeigt dann eine „Labels list“ (oben rechts unter Werkzeuge), die jeden Sprachcode annimmt.",
+    noteProtected: "Manche Wikidata-Einträge sind geschützt und lassen sich nur mit einem Konto ändern, das mindestens vier Tage alt ist und 100 oder mehr Bearbeitungen hat.",
+    noteStale: "Beachte, dass diese Tabelle aus einem manuellen Dump stammt; die hier gezeigte Abdeckung kann dem aktuellen Stand auf Wikidata daher um bis zu mehrere Wochen hinterherhinken.",
+    itemCount: (n) => `${n.toLocaleString()} Einträge`,
+    uiOnly: "Nur UI-Sprachen",
+    uiOnlyHint: "Die Rohdaten-Dumps decken bereits jede von skribbl.io unterstützte Sprache ab,{br}plus ein paar weitere mit vielen Nutzenden.{br}Die Daten unterstützen also schon jede geplante Sprache,{br}während die Oberfläche von uns Maintainern gepflegt wird und daher natürlich deutlich hinterher hinkt.{br}Zudem bringt es recht wenig, eine neue UI-Sprache einführen zu wollen,{br}während es noch kaum Themen gibt, welche diese Sprache überhaupt abdecken.{br}Aber je mehr mithelfen, desto früher werden neue Sprachen freigeschaltet!{br}=> Schau hierzu gerne in den Contribution Guide unten!",
+    item: "Eintrag",
+    numeric: { population: "Einwohner", area: "Fläche (km²)", users: "Nutzer" },
+    first: "Erste Seite",
+    prev: "Vorherige Seite",
+    next: "Nächste Seite",
+    last: "Letzte Seite",
+    page: (current, total) => `Seite ${current} / ${total}`,
+    loading: (topic) => `${topic} werden geladen…`,
+    loadError: (topic, message) => `Abdeckung für ${topic} konnte nicht geladen werden: ${message}`,
   },
 };

@@ -117,20 +117,40 @@ export function skipCollapsed(pos: number[], current: number, target: number): n
  *  condition it has just brought in, or, at its leftmost stop, what it is ordered
  *  by. `resolve` renders a localized string in the interface language; `prefix` is
  *  the locale's "Selected:" (or "Mostly selected:") that opens the non-empty text.
- *  Returns undefined for a list with no `rulerTooltip`, so the caller can fall back. */
+ *  Returns undefined for a list with no `rulerTooltip`, so the caller can fall back.
+ *
+ *  `stored` handles the fame-cap case (the languages "< 1M" box, unchecked): the
+ *  reader's depth can outrun the visible tiers, so the primary line is clamped to
+ *  the floor the cap allows, and a second line names — in parentheses — the deeper
+ *  position still stored, which a re-check would restore. Its `conditions` are the
+ *  full, uncapped list; its `wrap` is the locale's "(Stored: …)". */
 export function rulerTip(
   g: Group,
   depth: number,
   resolve: (s: LocalizedString) => string,
   prefix: string,
+  stored?: { conditions?: LocalizedString[]; wrap: (body: string) => string },
 ): string | undefined {
   const rt = g.rulerTooltip;
   if (!rt) return undefined;
+  // A condition may carry a `{br}` second line (a tier's caveat, folded into its
+  // wording rather than a separate note); the hover is a native `title`, so the break
+  // is a newline. Applied to every line the tooltip can hold.
+  const nl = (s: string) => s.replaceAll("{br}", "\n");
   // At rest nothing is selected, so the ordering line stands on its own — no prefix.
-  if (depth <= 0) return resolve(rt.empty);
-  const cond = g.tierConditions?.[depth - 1];
-  const body = resolve(rt.text).replace("{condition}", cond ? resolve(cond) : "");
-  return `${prefix} ${body}`;
+  if (depth <= 0) return nl(resolve(rt.empty));
+  const conds = g.tierConditions ?? [];
+  const body = (cond: LocalizedString | undefined) =>
+    resolve(rt.text).replace("{condition}", cond ? resolve(cond) : "");
+  // Clamp to what the ruler can actually reach here: a capped group has fewer tiers
+  // than the stored depth, and reading past its conditions would leave the token empty.
+  const shown = Math.min(depth, conds.length);
+  const primary = `${prefix} ${body(conds[shown - 1])}`;
+  // Only when the cap is truly hiding a deeper stored setting — the condition exists
+  // in the full list but not in this capped group.
+  const deeper = stored?.conditions?.[depth - 1];
+  if (depth > conds.length && deeper) return nl(`${primary}\n${stored!.wrap(body(deeper))}`);
+  return nl(primary);
 }
 
 export function nearestIndex(pos: number[], frac: number): number {
@@ -146,12 +166,36 @@ export function nearestIndex(pos: number[], frac: number): number {
   return best;
 }
 
-/** The depth a pointer at this position selects, snapped to a tier boundary. */
+/** The depth a pointer at this position selects, snapped to a tier boundary.
+ *
+ *  Empty tiers collapse onto an end (`snapPositions`), so several stops share the end's
+ *  pixel and the collapsed group's *inner* edge — the boundary next to the content — is
+ *  the one a reader means when they drag there. A trailing collapse already resolves to
+ *  its inner edge (`nearestIndex`'s low-index tie-break gives the last full tier at the
+ *  right end); a leading collapse does not (the same tie-break gives depth 0, not the
+ *  first content boundary), so it is bumped to its highest collapsed index here. The
+ *  outer edges — deselect-all past the left, select-all past the right — are the two
+ *  overshoots, and an empty last tier is only reachable that way.
+ *
+ *  A fame cap needs no special handling: the capped group's last visible tier is its
+ *  floor, so past-the-end lands there and never reaches into the hidden tail. */
 export function depthFromPointer(e: PointerEvent, g: Group): number {
   const rect = (e.currentTarget as HTMLElement).getBoundingClientRect();
   const span = rect.width - 2 * INSET_PX;
   const frac = span > 0 ? (e.clientX - rect.left - INSET_PX) / span : 0;
-  return nearestIndex(snapPositions(g), Math.min(1, Math.max(0, frac)));
+  const pos = snapPositions(g);
+  if (frac > 1) return pos.length - 1; // past the right end: select all, empty last tier and all
+  if (frac < 0) return 0; // past the left end: deselect all
+  const i = nearestIndex(pos, frac);
+  // A leading collapse sits at pos 0; approached from the rail, resolve it to its inner
+  // edge (the first content boundary) so that boundary is reachable — the mirror of the
+  // trailing collapse, which nearestIndex already resolves inward.
+  if (pos[i] === 0) {
+    let j = i;
+    while (j + 1 < pos.length && pos[j + 1] === 0) j++;
+    return j;
+  }
+  return i;
 }
 
 /** The depth a key press moves to, or null when the key isn't one of ours (in

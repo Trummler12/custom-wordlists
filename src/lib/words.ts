@@ -5,7 +5,7 @@
 
 import type { Group, LocalizedString, NamePair, NamesMode, Word, WordEntry } from "./types";
 import { baseTag, matchTag } from "./languages";
-import { toRomaji } from "./kana";
+import { toRomaji } from "./kana.mjs";
 
 /** The tag an entry carrying `keys` answers `lang` with, or undefined for none.
  *

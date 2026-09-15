@@ -1,7 +1,30 @@
 {
   "title": {
     "en": "The Simpsons",
-    "de": "Die Simpsons"
+    "de": "Die Simpsons",
+    "zh-Hans": "辛普森一家",
+    "zh-Hant": "辛普森家庭",
+    "es": "Los Simpson",
+    "fr": "Les Simpson",
+    "it": "I Simpson",
+    "ja": "ザ・シンプソンズ",
+    "ko": "심슨 가족",
+    "pt": "Os Simpsons",
+    "ru": "Симпсоны",
+    "pl": "Simpsonowie",
+    "bg": "Семейство Симпсън",
+    "cs": "Simpsonovi",
+    "et": "Simpsonid",
+    "fi": "Simpsonit",
+    "el": "Οι Σίμπσονς",
+    "he": "משפחת סימפסון",
+    "hu": "A Simpson család",
+    "lv": "Simpsoni",
+    "mk": "Симпсонови",
+    "ro": "Familia Simpson",
+    "sr": "Симпсонови",
+    "sk": "Simpsonovci",
+    "sv": "Simpsons"
   },
   "icon": "🍩"
 }

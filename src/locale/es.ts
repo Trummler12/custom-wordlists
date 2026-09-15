@@ -28,6 +28,7 @@ export const es: UIStrings = {
     none: "Aún no hay grupos de fama definidos: consulta la Contribution Guide en el pie de página para proponer algunos.",
     selected: "Selección:",
     mostlySelected: "Selección mayoritaria:",
+    stored: (body) => `(Guardado: ${body})`,
     toggle: (shown) =>
       shown ? "Ocultar la regla de fama de esta lista" : "Mostrar la regla de fama de esta lista",
     toggleAll: (allShown) =>
@@ -53,12 +54,23 @@ export const es: UIStrings = {
       omitted
         ? "Activar para incluirlos de todos modos: skribbl.io no los acepta, pero otro juego sí podría."
         : "Activar para volver a dejarlos fuera.",
+    helpAdd: (url) => ` — [¡ayúdanos a añadir lo que falta!](${url})`,
   },
   coverage: {
     label: "Geoguessr / Cobertura de Street View",
     all: "Todos los países",
     withCoverage: "Con cobertura oficial",
     reliable: "Solo cobertura fiable",
+  },
+  languageType: {
+    label: "Qué tipos de lengua incluir",
+    base: "Lenguas modernas vivas",
+    submillion: "También lenguas con <1 millón de usuarios",
+    notRecommended: "Poco apropiado para dibujar de forma casual: mucho menos conocido de lo que sugiere su número de hablantes.",
+    toggle: (included) =>
+      included
+        ? "Marcado: están en la lista. Desmárcalo para excluirlas."
+        : "Márcalo para añadirlas a la lista.",
   },
   sovereignty: {
     label: "Soberanía y reconocimiento",
@@ -137,5 +149,30 @@ export const es: UIStrings = {
     // La guía solo existe en inglés, así que el enlace conserva su nombre.
     contributionGuide: "Contribution Guide",
     helpOutAfter: ".",
+  },
+  coveragePage: {
+    home: "Aplicación principal",
+    topicLabel: "Tema:",
+    uiLanguage: "Idioma de la interfaz",
+    title: "Cobertura de idiomas",
+    intro: "Elige un tema para ver para qué idiomas Wikidata ya tiene una etiqueta, por elemento.",
+    lead: "El contenido de este tema proviene de [Wikidata](https://www.wikidata.org/wiki/Wikidata:Main_Page). La tabla muestra para qué idiomas ya existe una etiqueta en cada elemento.",
+    notesTitle: "Cómo ayudar",
+    noteAdd: "Abre un elemento desde la primera columna y, una vez que hayas iniciado sesión, añade cualquier etiqueta que falte y de la que estés seguro.",
+    noteLabelLister: "Para añadir un idioma que no aparece en absoluto, activa el accesorio labelLister en tus [preferencias de Wikidata](https://www.wikidata.org/wiki/Special:Preferences#mw-prefsection-gadgets), en Accesorios; cada elemento mostrará entonces una «Labels list» (arriba a la derecha, en Herramientas) que acepta cualquier código de idioma.",
+    noteProtected: "Algunos elementos de Wikidata están protegidos y solo pueden modificarse con una cuenta de al menos cuatro días de antigüedad y con 100 o más ediciones.",
+    noteStale: "Ten en cuenta que esta tabla procede de un volcado manual, por lo que la cobertura que se muestra aquí puede ir por detrás del estado actual en Wikidata hasta varias semanas.",
+    itemCount: (n) => `${n.toLocaleString()} elementos`,
+    uiOnly: "Solo idiomas de la interfaz",
+    uiOnlyHint: "Los volcados de datos brutos ya cubren todos los idiomas que admite skribbl.io,{br}además de algunos más con muchos usuarios.{br}Así que los datos ya admiten todos los idiomas previstos,{br}mientras que la interfaz la mantenemos los maintainers y, naturalmente, va muy por detrás.{br}Y tiene poco sentido querer añadir un nuevo idioma de interfaz{br}mientras apenas hay temas que cubran ese idioma.{br}Pero cuanta más gente ayude, antes se aprobarán nuevos idiomas.{br}=> Échale un vistazo a la Contribution Guide más abajo, ¡sin problema!",
+    item: "Elemento",
+    numeric: { population: "Población", area: "Área (km²)", users: "Usuarios" },
+    first: "Primera página",
+    prev: "Página anterior",
+    next: "Página siguiente",
+    last: "Última página",
+    page: (current, total) => `Página ${current} / ${total}`,
+    loading: (topic) => `Cargando ${topic}…`,
+    loadError: (topic, message) => `No se pudo cargar la cobertura de ${topic}: ${message}`,
   },
 };

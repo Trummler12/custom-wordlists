@@ -28,6 +28,7 @@ export const it: UIStrings = {
     none: "Nessun gruppo di notorietà definito finora — vedi la Contribution Guide nel piè di pagina per proporne.",
     selected: "Selezione:",
     mostlySelected: "Selezione maggioritaria:",
+    stored: (body) => `(Memorizzato: ${body})`,
     toggle: (shown) =>
       shown
         ? "Nascondi il righello di notorietà di questa lista"
@@ -55,12 +56,23 @@ export const it: UIStrings = {
       omitted
         ? "Attiva per includerli comunque: skribbl.io non li accetta, ma un altro gioco potrebbe."
         : "Attiva per tralasciarli di nuovo.",
+    helpAdd: (url) => ` — [aiutaci ad aggiungere ciò che manca!](${url})`,
   },
   coverage: {
     label: "Geoguessr / Copertura Street View",
     all: "Tutti i paesi",
     withCoverage: "Con copertura ufficiale",
     reliable: "Solo copertura affidabile",
+  },
+  languageType: {
+    label: "Quali tipi di lingua includere",
+    base: "Lingue moderne vive",
+    submillion: "Anche lingue con <1 milione di utenti",
+    notRecommended: "Poco adatto al disegno informale: assai meno noto di quanto suggerisca il numero di parlanti.",
+    toggle: (included) =>
+      included
+        ? "Spuntato — sono nell'elenco. Togli la spunta per escluderle."
+        : "Spunta per aggiungerle all'elenco.",
   },
   sovereignty: {
     label: "Sovranità e riconoscimento",
@@ -139,5 +151,30 @@ export const it: UIStrings = {
     // La guida esiste solo in inglese, quindi il link conserva il suo nome.
     contributionGuide: "Contribution Guide",
     helpOutAfter: "!",
+  },
+  coveragePage: {
+    home: "App principale",
+    topicLabel: "Argomento:",
+    uiLanguage: "Lingua dell'interfaccia",
+    title: "Copertura linguistica",
+    intro: "Scegli un argomento per vedere per quali lingue Wikidata ha già un'etichetta, per voce.",
+    lead: "I contenuti di questo argomento provengono da [Wikidata](https://www.wikidata.org/wiki/Wikidata:Main_Page). La tabella mostra per quali lingue ogni voce ha già un'etichetta.",
+    notesTitle: "Come contribuire",
+    noteAdd: "Apri una voce dalla prima colonna e, una volta effettuato l'accesso, aggiungi qualsiasi etichetta mancante di cui sei sicuro.",
+    noteLabelLister: "Per aggiungere una lingua non elencata affatto, attiva il gadget labelLister nelle tue [preferenze di Wikidata](https://www.wikidata.org/wiki/Special:Preferences#mw-prefsection-gadgets), in Accessori; ogni voce mostrerà allora una «Labels list» (in alto a destra, sotto Strumenti) che accetta qualsiasi codice lingua.",
+    noteProtected: "Alcune voci di Wikidata sono protette e possono essere modificate solo con un account vecchio almeno quattro giorni e con 100 o più modifiche.",
+    noteStale: "Tieni presente che questa tabella proviene da un dump manuale, quindi la copertura qui mostrata può essere indietro di diverse settimane rispetto allo stato attuale su Wikidata.",
+    itemCount: (n) => `${n.toLocaleString()} voci`,
+    uiOnly: "Solo lingue dell'interfaccia",
+    uiOnlyHint: "I dump di dati grezzi coprono già ogni lingua supportata da skribbl.io,{br}più qualcuna in più con molti utenti.{br}Quindi i dati supportano già ogni lingua prevista,{br}mentre l'interfaccia è curata da noi maintainer e naturalmente resta molto indietro.{br}E ha poco senso voler aggiungere una nuova lingua d'interfaccia{br}finché quasi nessun argomento copre quella lingua.{br}Ma più persone aiutano, prima vengono approvate nuove lingue.{br}=> Dai pure un'occhiata alla Contribution Guide qui sotto!",
+    item: "Voce",
+    numeric: { population: "Popolazione", area: "Superficie (km²)", users: "Utenti" },
+    first: "Prima pagina",
+    prev: "Pagina precedente",
+    next: "Pagina successiva",
+    last: "Ultima pagina",
+    page: (current, total) => `Pagina ${current} / ${total}`,
+    loading: (topic) => `Caricamento di ${topic}…`,
+    loadError: (topic, message) => `Impossibile caricare la copertura di ${topic}: ${message}`,
   },
 };
