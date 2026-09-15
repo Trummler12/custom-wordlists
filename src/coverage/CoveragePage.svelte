@@ -135,15 +135,15 @@
 
   // The language columns group the official languages (UI_LANGS) to the left and the rest
   // after — a stable partition, so each side keeps the dump's order and `en` stays leftmost.
-  // "UI languages only" drops the rest; otherwise a divider marks the boundary between them.
+  // The list is always complete: "UI languages only" dims the non-official columns (see
+  // `.dim`) rather than removing them, so the table's width stays constant (the width cap
+  // relies on it) and toggling shifts nothing. A divider marks the boundary.
   let uiOnly = $state(false);
-  const officialLangs = $derived((data?.meta.langs ?? []).filter((l) => UI_LANGS.includes(l)));
-  const otherLangs = $derived((data?.meta.langs ?? []).filter((l) => !UI_LANGS.includes(l)));
-  const displayLangs = $derived(uiOnly ? officialLangs : [...officialLangs, ...otherLangs]);
-  // The divider rides the last official column, and only while un-official ones follow it.
-  const dividerLang = $derived(
-    !uiOnly && otherLangs.length ? officialLangs[officialLangs.length - 1] : null,
-  );
+  const isOfficial = (l: string): boolean => UI_LANGS.includes(l);
+  const officialLangs = $derived((data?.meta.langs ?? []).filter(isOfficial));
+  const otherLangs = $derived((data?.meta.langs ?? []).filter((l) => !isOfficial(l)));
+  const displayLangs = $derived([...officialLangs, ...otherLangs]);
+  const dividerLang = $derived(otherLangs.length ? officialLangs[officialLangs.length - 1] : null);
 
   async function load(topic: CoverageTopic) {
     try {
@@ -197,6 +197,7 @@
 {:else if !data}
   <main><p>{ui.loading(topicName)}</p></main>
 {:else}
+  <div class="wrap" style:--lang-count={displayLangs.length}>
   <main>
     <h1>{ui.title} — {topicName}</h1>
     <p class="lead"><Msg text={ui.lead} /></p>
@@ -236,7 +237,7 @@
               <th class="num"><button class="sort" onclick={() => sortBy("num")}>{numLabel(data.meta.numeric)}{arrow("num")}</button></th>
             {/if}
             {#each displayLangs as lang (lang)}
-              <th class="lang" class:here={lang === route.lang} class:divider={lang === dividerLang}>
+              <th class="lang" class:here={lang === route.lang} class:divider={lang === dividerLang} class:dim={uiOnly && !isOfficial(lang)}>
                 <button class="sort" onclick={() => sortBy(lang)} title={langTitle(lang)}>
                   <span class:abbr={!!SHORT_LANG[lang]}>{SHORT_LANG[lang] ?? lang}</span>{arrow(lang)}
                 </button>
@@ -248,11 +249,11 @@
           {#each pageItems as item (item.qid)}
             <tr>
               <th class="item" scope="row">
-                <a href={wikidata(item.qid)} target="_blank" rel="noopener noreferrer" class:noname={!item.name}>{item.name ?? item.qid}</a>
+                <a href={wikidata(item.qid)} target="_blank" rel="noopener noreferrer" title={item.name ?? item.qid} class:noname={!item.name}>{item.name ?? item.qid}</a>
               </th>
               {#if data.meta.numeric}<td class="num">{item.num?.toLocaleString() ?? "—"}</td>{/if}
               {#each displayLangs as lang (lang)}
-                <td class="cell" class:has={covered(item, lang)} class:here={lang === route.lang} class:divider={lang === dividerLang}>
+                <td class="cell" class:has={covered(item, lang)} class:here={lang === route.lang} class:divider={lang === dividerLang} class:dim={uiOnly && !isOfficial(lang)}>
                   {covered(item, lang) ? "✓" : "✗"}
                 </td>
               {/each}
@@ -262,9 +263,9 @@
       </table>
     </div>
   </main>
+  <SiteFooter footer={strings(uiLang).footer} />
+  </div>
 {/if}
-
-<SiteFooter footer={strings(uiLang).footer} />
 
 <style>
   :global(body) {
@@ -296,6 +297,21 @@
   }
   .controls select {
     font: inherit;
+  }
+  /* The content is capped at roughly the table's natural full width and centred, so it does
+     not stretch edge-to-edge on very wide windows. The cap self-adjusts to the language count
+     (`--lang-count`, set on the element): Entry (~27ch, "Federal Republic of Germany") +
+     numeric + one ~3.5ch column per language, plus per-column padding/border, the main
+     padding, and a configurable buffer. A generous estimate — it fails safe (a little slack
+     in the numeric column on ultra-wide, never a premature horizontal scrollbar). */
+  .wrap {
+    --table-buffer: 0px; /* extra margin allowance around the table, tune as needed */
+    --dim-opacity: 0.42; /* how faint the non-official columns go under "UI languages only" */
+    max-width: calc(
+      28ch + 13ch + var(--lang-count, 30) * 3.5ch + (var(--lang-count, 30) + 2) * 1rem + 2rem +
+        var(--table-buffer, 0px)
+    );
+    margin-inline: auto;
   }
   main {
     padding: 1rem;
@@ -381,6 +397,7 @@
   .scroll {
     overflow: auto;
     max-height: 80vh;
+    margin-bottom: 0.25rem; /* clear space below the horizontal scrollbar, before the footer */
   }
   table {
     /* `separate`, not `collapse`: collapsed borders belong to the table, so a sticky
@@ -389,6 +406,7 @@
        owns its own — right and bottom below, top/left on the outer edge — so the grid is a
        clean single line and the sticky header/column stay put smoothly. */
     --grid: rgba(128, 128, 128, 0.35);
+    width: 100%; /* fill the capped wrapper; the numeric column (width:100%) absorbs the slack */
     border-collapse: separate;
     border-spacing: 0;
     font-variant-numeric: tabular-nums;
@@ -407,11 +425,25 @@
   th.item {
     border-left: 1px solid var(--grid); /* the grid's left edge (the Item column) */
   }
+  /* The Entry name is capped at the reference width and truncates with an ellipsis; the full
+     name sits on the link's `title`. A block-level link so the max-width and ellipsis take
+     hold (a table cell's own max-width is unreliable under table-layout:auto). */
+  th.item a {
+    display: block;
+    max-width: 28ch;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  /* The numeric column absorbs the leftover width, so the numeric + language columns sit as a
+     block flush against the right of the table (the columns move right, not their contents).
+     The numeric value keeps its conventional right alignment; the language cells stay centred. */
   th.lang {
     text-align: center;
   }
   .num {
     text-align: right;
+    width: 100%;
   }
   /* The header row and the Item column stay in view while scrolling the big grid; both
      need an opaque background so the cells behind don't bleed through. */
@@ -467,29 +499,19 @@
   .divider {
     border-right: 3px solid rgba(128, 128, 128, 0.85);
   }
-  /* The shared SiteFooter, styled for this page: an in-flow bar below the table rather
-     than the main app's fixed bottom chrome (this entry loads neither app.css nor its
-     theme vars). `:global` because the classes live in the child component's markup. */
-  :global(.site-footer) {
-    margin-top: 1rem;
-    border-top: 1px solid rgba(128, 128, 128, 0.35);
-    font-size: 0.85rem;
-    opacity: 0.85;
+  /* "UI languages only" fades the non-official columns instead of removing them, so the table
+     keeps its width and nothing shifts (`--dim-opacity`, set on .wrap, tunable). A body cell
+     fades whole — nothing sits behind it — but the sticky header would let the scrolled body
+     show through if its background went translucent too, so there only the label fades while
+     the opaque cell background stays put. */
+  .cell.dim {
+    opacity: var(--dim-opacity, 0.42);
   }
-  :global(.footer-inner) {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.25rem 1.5rem;
-    padding: 0.7rem 1rem;
+  thead th.lang.dim .sort {
+    opacity: var(--dim-opacity, 0.42);
   }
-  :global(.footer-help),
-  :global(.footer-repo) {
-    flex: 1 1 auto;
-  }
-  :global(.footer-repo) {
-    text-align: right;
-  }
-  :global(.site-footer a) {
-    color: inherit;
-  }
+  /* NOTE: the footer's own styling comes from app.css (imported by coverage/main.ts) — its
+     `.site-footer` rules win here, so page-local `:global(.site-footer)` overrides had no
+     effect and were removed. Reconciling the coverage footer (app.css's fixed bar vs. the
+     intended in-flow, cap-sharing one) is a Phase-Z cleanup item. */
 </style>
