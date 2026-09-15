@@ -10,6 +10,7 @@
   import type { LocalizedString, Manifest } from "../lib/types";
   import Msg from "../locale/html/Msg.svelte";
   import { plainText } from "../locale/html/markup";
+  import SiteFooter from "../components/layout/SiteFooter.svelte";
 
   interface CoverageItem {
     qid: string;
@@ -263,6 +264,8 @@
   </main>
 {/if}
 
+<SiteFooter footer={strings(uiLang).footer} />
+
 <style>
   :global(body) {
     color-scheme: light dark;
@@ -463,5 +466,30 @@
      is an outline painted on top, so it still wins where the two land on the same column. */
   .divider {
     border-right: 3px solid rgba(128, 128, 128, 0.85);
+  }
+  /* The shared SiteFooter, styled for this page: an in-flow bar below the table rather
+     than the main app's fixed bottom chrome (this entry loads neither app.css nor its
+     theme vars). `:global` because the classes live in the child component's markup. */
+  :global(.site-footer) {
+    margin-top: 1rem;
+    border-top: 1px solid rgba(128, 128, 128, 0.35);
+    font-size: 0.85rem;
+    opacity: 0.85;
+  }
+  :global(.footer-inner) {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem 1.5rem;
+    padding: 0.7rem 1rem;
+  }
+  :global(.footer-help),
+  :global(.footer-repo) {
+    flex: 1 1 auto;
+  }
+  :global(.footer-repo) {
+    text-align: right;
+  }
+  :global(.site-footer a) {
+    color: inherit;
   }
 </style>
