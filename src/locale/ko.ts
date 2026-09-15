@@ -156,6 +156,8 @@ export const ko: UIStrings = {
     noteProtected: "일부 Wikidata 항목은 보호되어 있어, 편집하려면 만든 지 4일 이상이고 편집 100회 이상인 계정이 필요합니다.",
     noteStale: "이 표는 수동 덤프에서 가져오므로, 여기에 표시된 커버리지는 Wikidata의 현재 상태보다 최대 몇 주까지 뒤처질 수 있습니다.",
     itemCount: (n) => `${n.toLocaleString()}개 항목`,
+    uiOnly: "UI 언어만",
+    uiOnlyHint: "원본 데이터 덤프에는 skribbl.io가 지원하는 모든 언어와{br}사용자가 많은 몇몇 언어가 이미 포함되어 있습니다.{br}그래서 데이터는 이미 모든 예정 언어를 지원하지만,{br}인터페이스는 저희 메인테이너가 관리하다 보니 당연히 훨씬 뒤처져 있습니다.{br}또한 해당 언어를 다루는 주제가 거의 없는 상태에서{br}새 UI 언어를 추가하려 해도 별 의미가 없습니다.{br}하지만 돕는 사람이 많아질수록 새 언어가 더 빨리 승인됩니다!{br}=> 아래의 Contribution Guide도 편하게 확인해 보세요!",
     item: "항목",
     numeric: { population: "인구", area: "면적 (km²)", users: "사용자" },
     first: "첫 페이지",

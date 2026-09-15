@@ -166,6 +166,8 @@ export const fr: UIStrings = {
     noteProtected: "Certains éléments de Wikidata sont protégés et ne peuvent être modifiés qu'avec un compte âgé d'au moins quatre jours et comptant 100 modifications ou plus.",
     noteStale: "Note que ce tableau provient d'un export manuel ; la couverture affichée ici peut donc accuser un retard de plusieurs semaines sur l'état actuel de Wikidata.",
     itemCount: (n) => `${n.toLocaleString()} éléments`,
+    uiOnly: "Langues de l'interface seulement",
+    uiOnlyHint: "Les données brutes couvrent déjà toutes les langues prises en charge par skribbl.io,{br}plus quelques autres à nombreux utilisateurs.{br}Les données prennent donc déjà en charge toutes les langues prévues,{br}tandis que l'interface est entretenue par nous, les mainteneurs, et accuse donc naturellement un net retard.{br}Et il ne sert pas à grand-chose de vouloir ajouter une nouvelle langue d'interface{br}tant que presque aucun sujet ne couvre cette langue.{br}Mais plus il y a d'aide, plus vite de nouvelles langues sont validées !{br}=> N'hésite pas à jeter un œil au Contribution Guide ci-dessous !",
     item: "Élément",
     numeric: { population: "Population", area: "Superficie (km²)", users: "Utilisateurs" },
     first: "Première page",

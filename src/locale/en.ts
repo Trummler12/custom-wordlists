@@ -153,6 +153,8 @@ export const en: UIStrings = {
     noteProtected: "Some Wikidata items are protected and need an account at least four days old with 100 or more edits to change.",
     noteStale: "Note that this table comes from a manual dump, so the coverage shown here can lag the current state on Wikidata by up to several weeks.",
     itemCount: (n) => `${n.toLocaleString()} items`,
+    uiOnly: "UI languages only",
+    uiOnlyHint: "The raw data dumps already cover every language skribbl.io supports,{br}plus a few more with many users.{br}So the data already supports every planned language,{br}while the interface is kept up by us maintainers and naturally lags well behind.{br}And there is little point in trying to add a new interface language{br}while barely any topics cover that language yet.{br}But the more people help, the sooner new languages are greenlit!{br}=> Feel free to check out the Contribution Guide below!",
     item: "Item",
     numeric: { population: "Population", area: "Area (km²)", users: "Users" },
     first: "First page",

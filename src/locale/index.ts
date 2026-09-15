@@ -302,6 +302,12 @@ export interface CoveragePageStrings {
   noteStale: string;
   /** The row count, e.g. "2,021 items". */
   itemCount: (n: number) => string;
+  /** The checkbox above the table that keeps only the official-language columns (the rest
+   *  are dumped for far more languages than the app itself offers), and its hover tooltip.
+   *  The tooltip carries `{br}` breaks, rendered as newlines in the plain `title` attribute
+   *  (not through html/Msg), so they fall at clause ends rather than mid-sentence. */
+  uiOnly: string;
+  uiOnlyHint: string;
   /** The first column's header. */
   item: string;
   /** The numeric column's header, chosen by the dataset's `numeric` key. */

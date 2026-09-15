@@ -156,6 +156,8 @@ export const zhHant: UIStrings = {
     noteProtected: "部分 Wikidata 項目受保護，需要註冊滿 4 天且編輯達 100 次以上的帳號才能修改。",
     noteStale: "此表基於手動傾印，因此這裡顯示的覆蓋率可能比 Wikidata 的最新狀態落後最多數週。",
     itemCount: (n) => `${n.toLocaleString()} 個項目`,
+    uiOnly: "僅介面語言",
+    uiOnlyHint: "原始資料傾印已經涵蓋 skribbl.io 支援的所有語言，{br}外加幾種使用者眾多的語言。{br}也就是說，資料其實已支援所有計畫中的語言，{br}而介面由我們維護者打理，自然明顯落後。{br}而且在幾乎沒有主題涵蓋某種語言時，{br}想新增該介面語言意義不大。{br}不過幫忙的人越多，新語言就能越早獲准！{br}=> 歡迎看看下方的 Contribution Guide！",
     item: "項目",
     numeric: { population: "人口", area: "面積 (km²)", users: "使用者" },
     first: "第一頁",

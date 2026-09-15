@@ -156,6 +156,8 @@ export const zhHans: UIStrings = {
     noteProtected: "部分 Wikidata 条目受保护，需要注册满 4 天且编辑达 100 次以上的账户才能修改。",
     noteStale: "此表基于手动转储，因此这里显示的覆盖率可能比 Wikidata 的最新状态落后最多数周。",
     itemCount: (n) => `${n.toLocaleString()} 个条目`,
+    uiOnly: "仅界面语言",
+    uiOnlyHint: "原始数据转储已经涵盖 skribbl.io 支持的所有语言，{br}外加几种用户众多的语言。{br}也就是说，数据其实已支持所有计划中的语言，{br}而界面由我们维护者打理，自然明显滞后。{br}而且在几乎没有主题覆盖某种语言时，{br}想新增该界面语言意义不大。{br}不过帮忙的人越多，新语言就能越早获批！{br}=> 欢迎看看下方的 Contribution Guide！",
     item: "条目",
     numeric: { population: "人口", area: "面积 (km²)", users: "使用者" },
     first: "第一页",

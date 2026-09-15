@@ -163,6 +163,8 @@ export const es: UIStrings = {
     noteProtected: "Algunos elementos de Wikidata están protegidos y solo pueden modificarse con una cuenta de al menos cuatro días de antigüedad y con 100 o más ediciones.",
     noteStale: "Ten en cuenta que esta tabla procede de un volcado manual, por lo que la cobertura que se muestra aquí puede ir por detrás del estado actual en Wikidata hasta varias semanas.",
     itemCount: (n) => `${n.toLocaleString()} elementos`,
+    uiOnly: "Solo idiomas de la interfaz",
+    uiOnlyHint: "Los volcados de datos brutos ya cubren todos los idiomas que admite skribbl.io,{br}además de algunos más con muchos usuarios.{br}Así que los datos ya admiten todos los idiomas previstos,{br}mientras que la interfaz la mantenemos los maintainers y, naturalmente, va muy por detrás.{br}Y tiene poco sentido querer añadir un nuevo idioma de interfaz{br}mientras apenas hay temas que cubran ese idioma.{br}Pero cuanta más gente ayude, antes se aprobarán nuevos idiomas.{br}=> Échale un vistazo a la Contribution Guide más abajo, ¡sin problema!",
     item: "Elemento",
     numeric: { population: "Población", area: "Área (km²)", users: "Usuarios" },
     first: "Primera página",

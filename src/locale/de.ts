@@ -168,6 +168,8 @@ export const de: UIStrings = {
     noteProtected: "Manche Wikidata-Einträge sind geschützt und lassen sich nur mit einem Konto ändern, das mindestens vier Tage alt ist und 100 oder mehr Bearbeitungen hat.",
     noteStale: "Beachte, dass diese Tabelle aus einem manuellen Dump stammt; die hier gezeigte Abdeckung kann dem aktuellen Stand auf Wikidata daher um bis zu mehrere Wochen hinterherhinken.",
     itemCount: (n) => `${n.toLocaleString()} Einträge`,
+    uiOnly: "Nur UI-Sprachen",
+    uiOnlyHint: "Die Rohdaten-Dumps decken bereits jede von skribbl.io unterstützte Sprache ab,{br}plus ein paar weitere mit vielen Nutzenden.{br}Die Daten unterstützen also schon jede geplante Sprache,{br}während die Oberfläche von uns Maintainern gepflegt wird und daher natürlich deutlich hinterher hinkt.{br}Zudem bringt es recht wenig, eine neue UI-Sprache einführen zu wollen,{br}während es noch kaum Themen gibt, welche diese Sprache überhaupt abdecken.{br}Aber je mehr mithelfen, desto früher werden neue Sprachen freigeschaltet!{br}=> Schau hierzu gerne in den Contribution Guide unten!",
     item: "Eintrag",
     numeric: { population: "Einwohner", area: "Fläche (km²)", users: "Nutzer" },
     first: "Erste Seite",
