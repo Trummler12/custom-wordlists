@@ -2,7 +2,7 @@
   "id": "antarctica",
   "title": {"short":"","long":{"en":"*crickets*","de":"*Grillenzirpen*","es":"*grillos*","fr":"*bruit de grillons*","it":"*grilli*","ja":"*シーン*","ko":"*귀뚜라미 소리*","zh-Hans":"*蟋蟀声*","zh-Hant":"*蟋蟀聲*","pt":"*grilos*","ru":"*стрёкот сверчков*","tr":"*cırcır böcekleri*","pl":"*cykanie świerszczy*","nl":"*krekels*","bg":"*звук на щурци*","cs":"*cvrčci*","da":"*fårekyllinger*","et":"*kilkide siristamine*","fi":"*sirkkojen siritystä*","el":"*γρύλοι*","he":"*צרצרים*","hu":"*tücsökciripelés*","lv":"*circeņu čirkšķi*","mk":"*цврчење на штурци*","no":"*sirisser*","ro":"*greieri*","sr":"*зрикавци*","sk":"*cvrčky*","sv":"*syrsor*","tl":"*mga kuliglig*"}},
   "icon": "🦗",
-  "languages": ["en","de","es","fr","it","ja","ko","zh-Hans","zh-Hant"],
+  "languages": ["en","de","es","fr","it","ja","ko","zh-Hans","zh-Hant","ru"],
   "hideRulers": true,
   "words": []
 }
