@@ -163,6 +163,11 @@ const tierOf = (pop) => {
 
 /** The five tier conditions, localized. The tooltip supplies "inhabitants", so the
  *  condition is the bare quantity — and CJK counts in 万/億, not millions. */
+// @migrate (PR plan §M, Batch 2): the locale-like prose below — NUM/MORE/ABOVE_ZERO (tier
+// conditions), RULER_COUNTRIES/CAPITALS, the CELLS sovereignty reasons and COVERAGE — moves
+// to src/locale/topics/. This script will then emit ids and band-keys instead of baking every
+// language, and adding a language becomes one file's work there. Titles (T_COUNTRIES etc.)
+// already carry all planned languages and stay put.
 const NUM = {
   en: ["100 million", "20 million", "5 million", "1 million"],
   de: ["100 Millionen", "20 Millionen", "5 Millionen", "1 Million"],

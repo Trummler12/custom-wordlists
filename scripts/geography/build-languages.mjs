@@ -111,6 +111,11 @@ const WD = "https://www.wikidata.org/wiki";
 const wd = (qid, labels) =>
   Object.fromEntries(Object.entries(labels).map(([lng, v]) => [lng, `[${v}](${WD}/${qid})`]));
 
+// @migrate (PR plan §M, Batch 2): the locale-like prose in this script — the TYPES reasons
+// (below), NUM/MORE/ABOVE_ZERO (tier conditions), RULER_TOOLTIP and SIGN_LANGUAGES — moves to
+// src/locale/topics/. This script will then emit ids and band-keys instead of baking every
+// language. The Wikidata link (Q-id) each TYPES reason carries stays here, composed around the
+// centralized label. TITLE already carries all planned languages and stays put.
 const TYPES = [
   { id: "dead", flag: (f) => f.dead, reason: wd("Q45762", { en: "dead languages", de: "tote Sprachen", es: "lenguas muertas", fr: "langues mortes", it: "lingue morte", ja: "死語", ko: "사멸 언어", "zh-Hans": "已消亡语言", "zh-Hant": "已消亡語言", ru: "мёртвые языки" }) },
   { id: "extinct", flag: (f) => f.extinct, reason: wd("Q38058796", { en: "extinct languages", de: "ausgestorbene Sprachen", es: "lenguas extintas", fr: "langues éteintes", it: "lingue estinte", ja: "消滅言語", ko: "소멸 언어", "zh-Hans": "灭绝语言", "zh-Hant": "滅絕語言", ru: "вымершие языки" }) },

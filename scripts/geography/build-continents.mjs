@@ -90,6 +90,10 @@ const ANCIENT = new Set([
 ]);
 
 /** The `omitted` rule's line, filled with the count of ancient plates it hides. */
+// @migrate (PR plan §M, Batch 2): the locale-like prose in this script — ANCIENT_REASON
+// (below), TIER_CONDITIONS, RULER_TOOLTIP, TIER3_NOTE and NOTE_LABEL — moves to
+// src/locale/topics/. This script will then emit ids instead of baking every language. TITLE
+// already carries all planned languages and stays put.
 const ANCIENT_REASON = {
   en: "ancient and extinct plates",
   de: "urzeitliche und erloschene Platten",
