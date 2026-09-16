@@ -161,13 +161,17 @@ const tierOf = (pop) => {
   return CUTS.length;
 };
 
+/** kebab id ("de-facto-recognized") to the camelCase prose key the topic-prose
+ *  dictionary uses ("deFactoRecognized"), so a rule can emit its reason as an id. */
+const camel = (s) => s.replace(/-([a-z])/g, (_, c) => c.toUpperCase());
+
 /** The five tier conditions, localized. The tooltip supplies "inhabitants", so the
  *  condition is the bare quantity — and CJK counts in 万/億, not millions. */
-// @migrate (PR plan §M, Batch 2): the locale-like prose below — NUM/MORE/ABOVE_ZERO (tier
-// conditions), RULER_COUNTRIES/CAPITALS, the CELLS sovereignty reasons and COVERAGE — moves
-// to src/locale/topics/. This script will then emit ids and band-keys instead of baking every
-// language, and adding a language becomes one file's work there. Titles (T_COUNTRIES etc.)
-// already carry all planned languages and stay put.
+// @migrate (PR plan §M, Batch 2b): NUM/MORE/ABOVE_ZERO (tier conditions) and RULER_COUNTRIES/
+// CAPITALS still bake every language; they move to src/locale/topics/ next, when the topic data
+// carries band keys and rulerTooltip ids. The sovereignty (CELLS) and coverage (COVERAGE)
+// reasons are already emitted as prose ids; their now-dead prose maps are removed in Batch 3.
+// Titles (T_COUNTRIES etc.) already carry all planned languages and stay put.
 const NUM = {
   en: ["100 million", "20 million", "5 million", "1 million"],
   de: ["100 Millionen", "20 Millionen", "5 Millionen", "1 Million"],
@@ -480,7 +484,7 @@ function cellRules(names) {
   const omittable = [];
   for (const id of Object.keys(names).sort()) {
     const c = CELLS[id];
-    const rule = { id, match: names[id].slice().sort(), count: true, icon: SOVEREIGNTY, cell: c.cell, reason: c.reason };
+    const rule = { id, match: names[id].slice().sort(), count: true, icon: SOVEREIGNTY, cell: c.cell, reason: `sovereignty.${camel(id)}` };
     (c.default === "omitted" ? omitted : omittable).push(rule);
   }
   return { omitted, omittable };
@@ -558,7 +562,7 @@ async function readOfficial() {
  *  its own); each rule is emitted only when it has a member. */
 function coverageRules(items) {
   const pick = (rare) => items.filter((i) => i.rare === rare).map((i) => i.match).sort();
-  const rule = (id, match) => ({ id, match, count: true, icon: PEGMAN, reason: COVERAGE[id] });
+  const rule = (id, match) => ({ id, match, count: true, icon: PEGMAN, reason: `coverage.${camel(id)}` });
   const rules = [];
   const none = pick(false);
   const rare = pick(true);

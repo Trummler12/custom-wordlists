@@ -17,18 +17,7 @@
       "count": true,
       "icon": "sovereignty",
       "cell": [4,2],
-      "reason": {
-        "en": "autonomous territories internationally regarded as part of a sovereign state",
-        "de": "autonome Gebiete, die international als Teil eines souveränen Staates gelten",
-        "es": "territorios autónomos considerados internacionalmente parte de un Estado soberano",
-        "fr": "territoires autonomes internationalement considérés comme partie d'un État souverain",
-        "it": "territori autonomi considerati a livello internazionale parte di uno Stato sovrano",
-        "ja": "国際的に主権国家の一部と見なされる自治地域",
-        "ko": "국제적으로 주권 국가의 일부로 여겨지는 자치 지역",
-        "zh-Hans": "国际上被视为某主权国家一部分的自治地区",
-        "zh-Hant": "國際上被視為某主權國家一部分的自治地區",
-        "ru": "автономные территории, на международном уровне считающиеся частью суверенного государства"
-      }
+      "reason": "sovereignty.classicAutonomous"
     }
   ],
   "omittable": [
@@ -38,18 +27,7 @@
       "count": true,
       "icon": "sovereignty",
       "cell": [4,1],
-      "reason": {
-        "en": "self-declared states recognized by few or no UN members",
-        "de": "selbsterklärte Staaten, von wenigen oder keinen UN-Mitgliedern anerkannt",
-        "es": "estados autoproclamados reconocidos por pocos o ningún miembro de la ONU",
-        "fr": "états autoproclamés reconnus par peu ou aucun membre de l'ONU",
-        "it": "stati autoproclamati riconosciuti da pochi o nessun membro dell'ONU",
-        "ja": "国連加盟国のごく一部にしか、あるいは全く承認されない自称国家",
-        "ko": "유엔 회원국 중 극소수만이 또는 전혀 승인하지 않는 자칭 국가",
-        "zh-Hans": "仅获极少数或未获联合国成员国承认的自称国家",
-        "zh-Hant": "僅獲極少數或未獲聯合國成員國承認的自稱國家",
-        "ru": "самопровозглашённые государства, признанные немногими членами ООН или не признанные вовсе"
-      }
+      "reason": "sovereignty.pureDeFacto"
     },
     {
       "id": "special-status",
@@ -57,54 +35,21 @@
       "count": true,
       "icon": "sovereignty",
       "cell": [3,2],
-      "reason": {
-        "en": "highly autonomous territories with a distinct international presence, often taken for countries of their own",
-        "de": "weitgehend autonome Gebiete mit eigenständigem internationalem Auftreten, die viele für eigene Länder halten",
-        "es": "territorios muy autónomos con presencia internacional propia, que muchos toman por países propios",
-        "fr": "territoires très autonomes à présence internationale propre, que beaucoup prennent pour des pays à part entière",
-        "it": "territori molto autonomi con una presenza internazionale propria, che molti scambiano per paesi a sé",
-        "ja": "独自の国際的存在感を持ち、独自の国と見なされがちな高度な自治地域",
-        "ko": "독자적 국제적 존재감을 지녀 독립국으로 여겨지곤 하는 고도 자치 지역",
-        "zh-Hans": "拥有独特国际存在感、常被视为独立国家的高度自治地区",
-        "zh-Hant": "擁有獨特國際存在感、常被視為獨立國家的高度自治地區",
-        "ru": "высокоавтономные территории с самостоятельным международным присутствием, которые часто принимают за отдельные страны"
-      }
+      "reason": "sovereignty.specialStatus"
     },
     {
       "id": "no-coverage",
       "match": ["Algeria","Angola","Benin","Burkina Faso","Burundi","Cameroon","Cape Verde","Central African Republic","Chad","Comoros","Democratic Republic of the Congo","Djibouti","Equatorial Guinea","Eritrea","Ethiopia","Gabon","Guinea","Guinea-Bissau","Ivory Coast","Liberia","Libya","Malawi","Mauritania","Mauritius","Morocco","Mozambique","Niger","Republic of the Congo","Saint Helena","Seychelles","Sierra Leone","Somalia","Somaliland","South Sudan","Sudan","The Gambia","Togo","Western Sahara","Zambia","Zimbabwe"],
       "count": true,
       "icon": "geoguessr",
-      "reason": {
-        "en": "countries with no Google Street View coverage",
-        "de": "Länder ohne Google-Street-View-Abdeckung",
-        "es": "países sin cobertura de Google Street View",
-        "fr": "pays sans couverture Google Street View",
-        "it": "paesi senza copertura di Google Street View",
-        "ja": "Google ストリートビュー非対応の国",
-        "ko": "구글 스트리트 뷰가 없는 국가",
-        "zh-Hans": "没有 Google 街景覆盖的国家",
-        "zh-Hant": "沒有 Google 街景覆蓋的國家",
-        "ru": "страны без покрытия Google Street View"
-      }
+      "reason": "coverage.noCoverage"
     },
     {
       "id": "rare-coverage",
       "match": ["Egypt","Mali","Tanzania"],
       "count": true,
       "icon": "geoguessr",
-      "reason": {
-        "en": "countries with only sparse Street View coverage",
-        "de": "Länder mit nur spärlicher Street-View-Abdeckung",
-        "es": "países con cobertura de Street View muy escasa",
-        "fr": "pays à couverture Street View très rare",
-        "it": "paesi con copertura Street View molto scarsa",
-        "ja": "ストリートビューがまばらな国",
-        "ko": "스트리트 뷰가 드문 국가",
-        "zh-Hans": "街景覆盖稀疏的国家",
-        "zh-Hant": "街景覆蓋稀疏的國家",
-        "ru": "страны лишь с редким покрытием Street View"
-      }
+      "reason": "coverage.rareCoverage"
     }
   ],
   "tiers": [

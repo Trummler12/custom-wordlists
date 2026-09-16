@@ -17,18 +17,7 @@
       "count": true,
       "icon": "sovereignty",
       "cell": [4,2],
-      "reason": {
-        "en": "autonomous territories internationally regarded as part of a sovereign state",
-        "de": "autonome Gebiete, die international als Teil eines souveränen Staates gelten",
-        "es": "territorios autónomos considerados internacionalmente parte de un Estado soberano",
-        "fr": "territoires autonomes internationalement considérés comme partie d'un État souverain",
-        "it": "territori autonomi considerati a livello internazionale parte di uno Stato sovrano",
-        "ja": "国際的に主権国家の一部と見なされる自治地域",
-        "ko": "국제적으로 주권 국가의 일부로 여겨지는 자치 지역",
-        "zh-Hans": "国际上被视为某主权国家一部分的自治地区",
-        "zh-Hant": "國際上被視為某主權國家一部分的自治地區",
-        "ru": "автономные территории, на международном уровне считающиеся частью суверенного государства"
-      }
+      "reason": "sovereignty.classicAutonomous"
     }
   ],
   "omittable": [
@@ -38,18 +27,7 @@
       "count": true,
       "icon": "sovereignty",
       "cell": [1,2],
-      "reason": {
-        "en": "autonomous regions whose broad self-rule is internationally recognized",
-        "de": "autonome Regionen, deren weitreichende Selbstverwaltung völkerrechtlich anerkannt ist",
-        "es": "regiones autónomas cuyo amplio autogobierno está reconocido internacionalmente",
-        "fr": "régions autonomes dont la large autonomie est reconnue internationalement",
-        "it": "regioni autonome la cui ampia autonomia è riconosciuta a livello internazionale",
-        "ja": "広範な自治が国際的に認められている自治地域",
-        "ko": "폭넓은 자치가 국제적으로 인정된 자치 지역",
-        "zh-Hans": "拥有国际公认的广泛自治权的自治地区",
-        "zh-Hant": "擁有國際公認的廣泛自治權的自治地區",
-        "ru": "автономные регионы, чьё широкое самоуправление признано на международном уровне"
-      }
+      "reason": "sovereignty.asymmetricAutonomy"
     },
     {
       "id": "de-facto-narrow",
@@ -57,18 +35,7 @@
       "count": true,
       "icon": "sovereignty",
       "cell": [3,1],
-      "reason": {
-        "en": "fully self-governing states recognized by only a few UN members",
-        "de": "vollständig selbstverwaltete Staaten, nur von wenigen UN-Mitgliedern anerkannt",
-        "es": "estados con autogobierno pleno reconocidos por solo unos pocos miembros de la ONU",
-        "fr": "états pleinement autonomes reconnus par seulement quelques membres de l'ONU",
-        "it": "stati pienamente autogovernati riconosciuti solo da pochi membri dell'ONU",
-        "ja": "ごく一部の国連加盟国のみに承認された、完全に自治を行う国家",
-        "ko": "소수의 유엔 회원국만이 승인한, 완전한 자치 국가",
-        "zh-Hans": "仅获少数联合国成员国承认的完全自治国家",
-        "zh-Hant": "僅獲少數聯合國成員國承認的完全自治國家",
-        "ru": "полностью самоуправляемые государства, признанные лишь несколькими членами ООН"
-      }
+      "reason": "sovereignty.deFactoNarrow"
     },
     {
       "id": "de-facto-recognized",
@@ -76,18 +43,7 @@
       "count": true,
       "icon": "sovereignty",
       "cell": [2,1],
-      "reason": {
-        "en": "fully sovereign states recognized by many, though not all, UN members",
-        "de": "vollständig souveräne Staaten, von vielen, aber nicht allen UN-Mitgliedern anerkannt",
-        "es": "estados plenamente soberanos reconocidos por muchos, aunque no todos, los miembros de la ONU",
-        "fr": "états pleinement souverains reconnus par de nombreux membres de l'ONU, mais pas tous",
-        "it": "stati pienamente sovrani riconosciuti da molti, ma non tutti, i membri dell'ONU",
-        "ja": "全てではないが多くの国連加盟国に承認された、完全な主権国家",
-        "ko": "전부는 아니지만 다수의 유엔 회원국이 승인한 완전한 주권 국가",
-        "zh-Hans": "获得许多（但非全部）联合国成员国承认的完全主权国家",
-        "zh-Hant": "獲得許多（但非全部）聯合國成員國承認的完全主權國家",
-        "ru": "полностью суверенные государства, признанные многими, хотя и не всеми, членами ООН"
-      }
+      "reason": "sovereignty.deFactoRecognized"
     },
     {
       "id": "pure-de-facto",
@@ -95,54 +51,21 @@
       "count": true,
       "icon": "sovereignty",
       "cell": [4,1],
-      "reason": {
-        "en": "self-declared states recognized by few or no UN members",
-        "de": "selbsterklärte Staaten, von wenigen oder keinen UN-Mitgliedern anerkannt",
-        "es": "estados autoproclamados reconocidos por pocos o ningún miembro de la ONU",
-        "fr": "états autoproclamés reconnus par peu ou aucun membre de l'ONU",
-        "it": "stati autoproclamati riconosciuti da pochi o nessun membro dell'ONU",
-        "ja": "国連加盟国のごく一部にしか、あるいは全く承認されない自称国家",
-        "ko": "유엔 회원국 중 극소수만이 또는 전혀 승인하지 않는 자칭 국가",
-        "zh-Hans": "仅获极少数或未获联合国成员国承认的自称国家",
-        "zh-Hant": "僅獲極少數或未獲聯合國成員國承認的自稱國家",
-        "ru": "самопровозглашённые государства, признанные немногими членами ООН или не признанные вовсе"
-      }
+      "reason": "sovereignty.pureDeFacto"
     },
     {
       "id": "no-coverage",
       "match": ["Guernsey","Moldova","Northern Cyprus","Transnistria","Vatican City"],
       "count": true,
       "icon": "geoguessr",
-      "reason": {
-        "en": "countries with no Google Street View coverage",
-        "de": "Länder ohne Google-Street-View-Abdeckung",
-        "es": "países sin cobertura de Google Street View",
-        "fr": "pays sans couverture Google Street View",
-        "it": "paesi senza copertura di Google Street View",
-        "ja": "Google ストリートビュー非対応の国",
-        "ko": "구글 스트리트 뷰가 없는 국가",
-        "zh-Hans": "没有 Google 街景覆盖的国家",
-        "zh-Hant": "沒有 Google 街景覆蓋的國家",
-        "ru": "страны без покрытия Google Street View"
-      }
+      "reason": "coverage.noCoverage"
     },
     {
       "id": "rare-coverage",
       "match": ["Belarus"],
       "count": true,
       "icon": "geoguessr",
-      "reason": {
-        "en": "countries with only sparse Street View coverage",
-        "de": "Länder mit nur spärlicher Street-View-Abdeckung",
-        "es": "países con cobertura de Street View muy escasa",
-        "fr": "pays à couverture Street View très rare",
-        "it": "paesi con copertura Street View molto scarsa",
-        "ja": "ストリートビューがまばらな国",
-        "ko": "스트리트 뷰가 드문 국가",
-        "zh-Hans": "街景覆盖稀疏的国家",
-        "zh-Hant": "街景覆蓋稀疏的國家",
-        "ru": "страны лишь с редким покрытием Street View"
-      }
+      "reason": "coverage.rareCoverage"
     }
   ],
   "tiers": [
