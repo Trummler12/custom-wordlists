@@ -42,11 +42,13 @@ const TODAY = new Date().toISOString().slice(0, 10);
 
 // The locale-like languages: the ones whose *strings* (title, tier conditions, ruler
 // tooltip, stratum reasons) this script writes by hand. Small on purpose — UI text.
-const LANGS = ["en", "de", "es", "fr", "it", "ja", "ko", "zh-Hans", "zh-Hant"];
+const LANGS = ["en", "de", "es", "fr", "it", "ja", "ko", "zh-Hans", "zh-Hant", "ru"];
 // The word-list output languages: skribbl's full set, so a language *name* is harvested
-// for every language the picker may later offer. A superset of LANGS. See build-country-data.
+// for every language the picker may later offer. A superset of LANGS, listed explicitly so
+// its order (which the coverage column order follows) stays put as LANGS grows. See
+// build-country-data.
 const NAME_LANGS = [
-  ...LANGS,
+  "en", "de", "es", "fr", "it", "ja", "ko", "zh-Hans", "zh-Hant",
   "pt", "ru", "tr", "pl", "nl", "bg", "cs", "da", "et", "fi", "el", "he",
   "hu", "lv", "mk", "no", "ro", "sr", "sk", "sv", "tl",
 ];
@@ -110,15 +112,15 @@ const wd = (qid, labels) =>
   Object.fromEntries(Object.entries(labels).map(([lng, v]) => [lng, `[${v}](${WD}/${qid})`]));
 
 const TYPES = [
-  { id: "dead", flag: (f) => f.dead, reason: wd("Q45762", { en: "dead languages", de: "tote Sprachen", es: "lenguas muertas", fr: "langues mortes", it: "lingue morte", ja: "死語", ko: "사멸 언어", "zh-Hans": "已消亡语言", "zh-Hant": "已消亡語言" }) },
-  { id: "extinct", flag: (f) => f.extinct, reason: wd("Q38058796", { en: "extinct languages", de: "ausgestorbene Sprachen", es: "lenguas extintas", fr: "langues éteintes", it: "lingue estinte", ja: "消滅言語", ko: "소멸 언어", "zh-Hans": "灭绝语言", "zh-Hant": "滅絕語言" }) },
-  { id: "historical", flag: (f) => f.historical, reason: wd("Q2315359", { en: "historical languages", de: "historische Sprachen", es: "lenguas históricas", fr: "langues historiques", it: "lingue storiche", ja: "歴史的言語", ko: "역사적 언어", "zh-Hans": "历史语言", "zh-Hant": "歷史語言" }) },
-  { id: "dialect", flag: (f) => f.dialect, reason: wd("Q33384", { en: "dialects", de: "Dialekte", es: "dialectos", fr: "dialectes", it: "dialetti", ja: "方言", ko: "방언", "zh-Hans": "方言", "zh-Hant": "方言" }) },
-  { id: "dialect-group", flag: (f) => f.dialectGroup, reason: wd("Q1208380", { en: "dialect groups", de: "Dialektgruppen", es: "grupos de dialectos", fr: "groupes de dialectes", it: "gruppi di dialetti", ja: "方言群", ko: "방언군", "zh-Hans": "方言群", "zh-Hant": "方言群" }) },
-  { id: "language-group", flag: (f, code) => f.langGroup && !has639_1(code), reason: wd("Q941501", { en: "language groups", de: "Sprachgruppen", es: "grupos de lenguas", fr: "groupes de langues", it: "gruppi di lingue", ja: "語群", ko: "어군", "zh-Hans": "语群", "zh-Hant": "語群" }) },
-  { id: "language-family", flag: (f, code) => f.langFamily && !has639_1(code), reason: wd("Q25295", { en: "language families", de: "Sprachfamilien", es: "familias de lenguas", fr: "familles de langues", it: "famiglie di lingue", ja: "語族", ko: "어족", "zh-Hans": "语系", "zh-Hant": "語系" }) },
-  { id: "constructed", flag: (f) => f.constructed, reason: wd("Q33215", { en: "constructed languages", de: "konstruierte Sprachen", es: "lenguas construidas", fr: "langues construites", it: "lingue costruite", ja: "人工言語", ko: "인공어", "zh-Hans": "人造语言", "zh-Hant": "人造語言" }) },
-  { id: "fictional", flag: (f) => f.fictional, reason: wd("Q2623733", { en: "fictional languages", de: "fiktive Sprachen", es: "lenguas ficticias", fr: "langues fictives", it: "lingue fittizie", ja: "架空言語", ko: "가공의 언어", "zh-Hans": "虚构语言", "zh-Hant": "虛構語言" }) },
+  { id: "dead", flag: (f) => f.dead, reason: wd("Q45762", { en: "dead languages", de: "tote Sprachen", es: "lenguas muertas", fr: "langues mortes", it: "lingue morte", ja: "死語", ko: "사멸 언어", "zh-Hans": "已消亡语言", "zh-Hant": "已消亡語言", ru: "мёртвые языки" }) },
+  { id: "extinct", flag: (f) => f.extinct, reason: wd("Q38058796", { en: "extinct languages", de: "ausgestorbene Sprachen", es: "lenguas extintas", fr: "langues éteintes", it: "lingue estinte", ja: "消滅言語", ko: "소멸 언어", "zh-Hans": "灭绝语言", "zh-Hant": "滅絕語言", ru: "вымершие языки" }) },
+  { id: "historical", flag: (f) => f.historical, reason: wd("Q2315359", { en: "historical languages", de: "historische Sprachen", es: "lenguas históricas", fr: "langues historiques", it: "lingue storiche", ja: "歴史的言語", ko: "역사적 언어", "zh-Hans": "历史语言", "zh-Hant": "歷史語言", ru: "исторические языки" }) },
+  { id: "dialect", flag: (f) => f.dialect, reason: wd("Q33384", { en: "dialects", de: "Dialekte", es: "dialectos", fr: "dialectes", it: "dialetti", ja: "方言", ko: "방언", "zh-Hans": "方言", "zh-Hant": "方言", ru: "диалекты" }) },
+  { id: "dialect-group", flag: (f) => f.dialectGroup, reason: wd("Q1208380", { en: "dialect groups", de: "Dialektgruppen", es: "grupos de dialectos", fr: "groupes de dialectes", it: "gruppi di dialetti", ja: "方言群", ko: "방언군", "zh-Hans": "方言群", "zh-Hant": "方言群", ru: "группы диалектов" }) },
+  { id: "language-group", flag: (f, code) => f.langGroup && !has639_1(code), reason: wd("Q941501", { en: "language groups", de: "Sprachgruppen", es: "grupos de lenguas", fr: "groupes de langues", it: "gruppi di lingue", ja: "語群", ko: "어군", "zh-Hans": "语群", "zh-Hant": "語群", ru: "языковые группы" }) },
+  { id: "language-family", flag: (f, code) => f.langFamily && !has639_1(code), reason: wd("Q25295", { en: "language families", de: "Sprachfamilien", es: "familias de lenguas", fr: "familles de langues", it: "famiglie di lingue", ja: "語族", ko: "어족", "zh-Hans": "语系", "zh-Hant": "語系", ru: "языковые семьи" }) },
+  { id: "constructed", flag: (f) => f.constructed, reason: wd("Q33215", { en: "constructed languages", de: "konstruierte Sprachen", es: "lenguas construidas", fr: "langues construites", it: "lingue costruite", ja: "人工言語", ko: "인공어", "zh-Hans": "人造语言", "zh-Hant": "人造語言", ru: "искусственные языки" }) },
+  { id: "fictional", flag: (f) => f.fictional, reason: wd("Q2623733", { en: "fictional languages", de: "fiktive Sprachen", es: "lenguas ficticias", fr: "langues fictives", it: "lingue fittizie", ja: "架空言語", ko: "가공의 언어", "zh-Hans": "虚构语言", "zh-Hant": "虛構語言", ru: "вымышленные языки" }) },
 ];
 /** The types a language carries — its inclusion checkboxes; empty means the living-modern base. */
 const typesOf = (flags, code) => TYPES.filter((t) => t.flag(flags, code));
@@ -150,6 +152,7 @@ const NUM = {
   ko: ["1억", "3000만", "1000만", "300만", "100만", "30만", "10만", "3만", "1만", "3000", "1000"],
   "zh-Hans": ["1亿", "3000万", "1000万", "300万", "100万", "30万", "10万", "3万", "1万", "3000", "1000"],
   "zh-Hant": ["1億", "3000萬", "1000萬", "300萬", "100萬", "30萬", "10萬", "3萬", "1萬", "3000", "1000"],
+  ru: ["100 миллионов", "30 миллионов", "10 миллионов", "3 миллиона", "1 миллион", "300 000", "100 000", "30 000", "10 000", "3000", "1000"],
 };
 const MORE = {
   en: (n) => `${n} or more`,
@@ -161,12 +164,14 @@ const MORE = {
   ko: (n) => `${n} 이상`,
   "zh-Hans": (n) => `${n}及以上`,
   "zh-Hant": (n) => `${n}及以上`,
+  ru: (n) => `${n} или больше`,
 };
 // The last tier is the cumulative floor — everything down to a single speaker — so its
 // honest bound is "more than 0", not "under 1,000", which would read as excluding the rest.
 const ABOVE_ZERO = {
   en: "more than 0", de: "mehr als 0", es: "más de 0", fr: "plus de 0", it: "più di 0",
   ja: "0より多い", ko: "0보다 많음", "zh-Hans": "多于0", "zh-Hant": "多於0",
+  ru: "больше 0",
 };
 /** `tierConditions`, one locString per tier (CUTS + the >0 floor). */
 function tierConditions() {
@@ -220,6 +225,7 @@ const RULER_TOOLTIP = {
     ko: "전 세계 사용자 수가 {condition}인 언어",
     "zh-Hans": "全球使用者为{condition}的语言",
     "zh-Hant": "全球使用者為{condition}的語言",
+    ru: "языки, на которых в мире говорят {condition}",
   },
   empty: {
     en: "Ranked by speakers worldwide.",
@@ -231,6 +237,7 @@ const RULER_TOOLTIP = {
     ko: "전 세계 사용자 수 기준 정렬.",
     "zh-Hans": "按全球使用者数排序。",
     "zh-Hant": "按全球使用者數排序。",
+    ru: "Упорядочено по числу носителей в мире.",
   },
 };
 
@@ -251,6 +258,7 @@ const SIGN_LANGUAGES = {
     ko: "수어",
     "zh-Hans": "手语",
     "zh-Hant": "手語",
+    ru: "жестовые языки",
   },
 };
 
