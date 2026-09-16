@@ -190,10 +190,16 @@ export interface Omission {
    *  differently per language — sometimes differently enough to need a second
    *  glob (`X-Angriff 2` and `Angriffplus2` are one family). */
   match: string | string[];
-  /** Why, in one phrase — the line the reader sees beside the checkbox. Lives
-   *  here rather than in a locale because it describes this list's source, not
-   *  the app; may carry `[text](url)` and `{br}`, resolved by locale/html. */
+  /** Why, in one phrase — the line the reader sees beside the checkbox. A bare
+   *  string is a prose id into the centralized topic-prose dictionary
+   *  ("sovereignty.deFactoRecognized"); a language map is a self-contained reason
+   *  that lives with its own list (the Pokémon one-offs). May carry `[text](url)`
+   *  and `{br}`, resolved by locale/html; see `resolveReason` in lib/words. */
   reason: LocalizedString;
+  /** A Wikidata entity id (`Q45762`) whose link wraps the resolved `reason` label,
+   *  for a reason that names a Wikidata concept (the language types). The label is
+   *  localized (prose id), the link is not, so `resolveReason` joins them. */
+  wd?: string;
   /** The name that stands for the family, where the source has none of its own
    *  (`Datenkarte01`…`27` → `Datenkarte`). Localized, because the base name is
    *  missing in every language, not just the one the pattern is written in. */

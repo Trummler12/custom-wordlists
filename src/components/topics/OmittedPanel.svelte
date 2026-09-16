@@ -4,7 +4,7 @@
   import { allRules, TOO_LONG_RULE, UNKNOWN_RULE } from "../../lib/omitted";
   import { SKRIBBL } from "../../lib/skribbl";
   import type { Group, Omission } from "../../lib/types";
-  import { groupEntries, overlongForms, resolveStr } from "../../lib/words";
+  import { groupEntries, overlongForms, resolveReason } from "../../lib/words";
   import Msg from "../../locale/html/Msg.svelte";
   import { lang } from "../../state/lang.svelte";
   import { overlays } from "../../state/overlays.svelte";
@@ -149,7 +149,7 @@
                 <span
                   >{#if rule.count && summaryOf(rule.id)}{lang.ui.omitted.upTo(
                       summaryOf(rule.id)!.count,
-                    )}{" "}{/if}<Msg text={resolveStr(rule.reason, lang.uiLang)} /></span
+                    )}{" "}{/if}<Msg text={resolveReason(rule.reason, lang.uiLang, rule.wd)} /></span
                 >
               </label>
             </li>

@@ -1,7 +1,7 @@
 <script lang="ts">
   import { BASE_RULE, EXTEND_RULE, includeRules } from "../../lib/omitted";
   import type { Group, Omission } from "../../lib/types";
-  import { resolveStr } from "../../lib/words";
+  import { resolveReason } from "../../lib/words";
   import Msg from "../../locale/html/Msg.svelte";
   import { lang } from "../../state/lang.svelte";
   import { overlays } from "../../state/overlays.svelte";
@@ -117,7 +117,7 @@
                   />
                   <span
                     >{lang.ui.omitted.upTo(countOf(rule))}{" "}<Msg
-                      text={resolveStr(rule.reason, lang.uiLang)}
+                      text={resolveReason(rule.reason, lang.uiLang, rule.wd)}
                     /></span
                   >
                   {#if NOT_RECOMMENDED.has(rule.id)}
