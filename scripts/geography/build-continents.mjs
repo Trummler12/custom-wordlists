@@ -100,6 +100,7 @@ const ANCIENT_REASON = {
   ko: "고대·소멸한 판",
   "zh-Hans": "古代和已消亡的板块",
   "zh-Hant": "古代和已消亡的板塊",
+  ru: "древние и исчезнувшие плиты",
 };
 
 /** The landmasses the continent names are keyed under, Q-id per key — the same map the
@@ -243,6 +244,7 @@ const TIER_CONDITIONS = [
     ko: "대륙과 주요 판",
     "zh-Hans": "大陆和主要板块",
     "zh-Hant": "大陸和主要板塊",
+    ru: "континенты и крупные плиты",
   },
   {
     en: "minor plates and larger",
@@ -254,6 +256,7 @@ const TIER_CONDITIONS = [
     ko: "소규모 판 이상",
     "zh-Hans": "小板块及以上",
     "zh-Hant": "小板塊及以上",
+    ru: "малые плиты и крупнее",
   },
   {
     en: "microplates with a measured area, and larger",
@@ -265,6 +268,7 @@ const TIER_CONDITIONS = [
     ko: "면적이 측정된 미소판 이상",
     "zh-Hans": "有实测面积的微板块及以上",
     "zh-Hant": "有實測面積的微板塊及以上",
+    ru: "микроплиты с измеренной площадью и крупнее",
   },
   {
     en: "microplates and larger, measured or not",
@@ -276,6 +280,7 @@ const TIER_CONDITIONS = [
     ko: "미소판 이상, 측정 여부와 무관",
     "zh-Hans": "微板块及以上，无论是否测量",
     "zh-Hant": "微板塊及以上，無論是否測量",
+    ru: "микроплиты и крупнее, измеренные или нет",
   },
   {
     en: "tectonic plates of unknown classification",
@@ -287,6 +292,7 @@ const TIER_CONDITIONS = [
     ko: "분류가 알려지지 않은 판",
     "zh-Hans": "分类未知的构造板块",
     "zh-Hant": "分類未知的構造板塊",
+    ru: "тектонические плиты неизвестной классификации",
   },
 ];
 
@@ -306,6 +312,7 @@ const RULER_TOOLTIP = {
     ko: "판 면적 순 (Bird 2003).",
     "zh-Hans": "按板块面积排序（Bird 2003）。",
     "zh-Hant": "按板塊面積排序（Bird 2003）。",
+    ru: "Упорядочено по площади плит (Bird 2003).",
   },
 };
 
@@ -322,6 +329,7 @@ const TIER3_NOTE = {
   ko: "이 판들은 면적이 공표된 적이 없어 이 단계는 크기순이 아니라 상위 판별로 묶여 있으며, 그중 몇몇은 독립된 문서조차 없습니다.",
   "zh-Hans": "这些板块从未公布过面积，因此本层按其所属板块分组，而非按大小排序——其中有几个甚至没有独立的百科条目。",
   "zh-Hant": "這些板塊從未公佈過面積，因此本層按其所屬板塊分組，而非按大小排序——其中有幾個甚至沒有獨立的百科條目。",
+  ru: "Для этих плит никогда не публиковалась площадь, поэтому этот уровень сгруппирован по родительской плите, а не упорядочен по размеру — и у нескольких из них даже нет отдельной энциклопедической статьи.",
 };
 
 /** Fold each tier's caveat into its condition as a `{br}` second line — the ruler tooltip
@@ -340,6 +348,7 @@ const NOTE_LABEL = {
   ko: "참고: ",
   "zh-Hans": "注：",
   "zh-Hant": "註：",
+  ru: "Примечание: ",
 };
 const tierConditionsWithNotes = TIER_CONDITIONS.map((cond, i) =>
   i === 3
