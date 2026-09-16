@@ -107,25 +107,26 @@ const TYPE_ICON = "language-type";
 // is a dead language?") is one click away rather than spelled out in the row, so the
 // checkbox reads "Up to N <type>" and no more. The link is safe inside the <label>:
 // an <a> is interactive content, so clicking it opens Wikidata without ticking the box.
-const WD = "https://www.wikidata.org/wiki";
-const wd = (qid, labels) =>
-  Object.fromEntries(Object.entries(labels).map(([lng, v]) => [lng, `[${v}](${WD}/${qid})`]));
+//
+// The label is a prose id (`languageType.<camel-of-id>`) resolved from src/locale/topics
+// at render; the Wikidata `wd` Q-id stays here (language-independent) and the frontend
+// wraps the resolved label in its link — see `resolveReason` in src/lib/words.
+const camel = (s) => s.replace(/-([a-z])/g, (_, c) => c.toUpperCase());
 
-// @migrate (PR plan §M, Batch 2): the locale-like prose in this script — the TYPES reasons
-// (below), NUM/MORE/ABOVE_ZERO (tier conditions), RULER_TOOLTIP and SIGN_LANGUAGES — moves to
-// src/locale/topics/. This script will then emit ids and band-keys instead of baking every
-// language. The Wikidata link (Q-id) each TYPES reason carries stays here, composed around the
-// centralized label. TITLE already carries all planned languages and stays put.
+// @migrate (PR plan §M, Batch 2b): NUM/MORE/ABOVE_ZERO (tier conditions) and RULER_TOOLTIP
+// still bake every language; they move to src/locale/topics next, when the topic data carries
+// band keys and rulerTooltip ids. The reasons (TYPES, SIGN_LANGUAGES) are already migrated.
+// TITLE already carries all planned languages and stays put.
 const TYPES = [
-  { id: "dead", flag: (f) => f.dead, reason: wd("Q45762", { en: "dead languages", de: "tote Sprachen", es: "lenguas muertas", fr: "langues mortes", it: "lingue morte", ja: "死語", ko: "사멸 언어", "zh-Hans": "已消亡语言", "zh-Hant": "已消亡語言", ru: "мёртвые языки" }) },
-  { id: "extinct", flag: (f) => f.extinct, reason: wd("Q38058796", { en: "extinct languages", de: "ausgestorbene Sprachen", es: "lenguas extintas", fr: "langues éteintes", it: "lingue estinte", ja: "消滅言語", ko: "소멸 언어", "zh-Hans": "灭绝语言", "zh-Hant": "滅絕語言", ru: "вымершие языки" }) },
-  { id: "historical", flag: (f) => f.historical, reason: wd("Q2315359", { en: "historical languages", de: "historische Sprachen", es: "lenguas históricas", fr: "langues historiques", it: "lingue storiche", ja: "歴史的言語", ko: "역사적 언어", "zh-Hans": "历史语言", "zh-Hant": "歷史語言", ru: "исторические языки" }) },
-  { id: "dialect", flag: (f) => f.dialect, reason: wd("Q33384", { en: "dialects", de: "Dialekte", es: "dialectos", fr: "dialectes", it: "dialetti", ja: "方言", ko: "방언", "zh-Hans": "方言", "zh-Hant": "方言", ru: "диалекты" }) },
-  { id: "dialect-group", flag: (f) => f.dialectGroup, reason: wd("Q1208380", { en: "dialect groups", de: "Dialektgruppen", es: "grupos de dialectos", fr: "groupes de dialectes", it: "gruppi di dialetti", ja: "方言群", ko: "방언군", "zh-Hans": "方言群", "zh-Hant": "方言群", ru: "группы диалектов" }) },
-  { id: "language-group", flag: (f, code) => f.langGroup && !has639_1(code), reason: wd("Q941501", { en: "language groups", de: "Sprachgruppen", es: "grupos de lenguas", fr: "groupes de langues", it: "gruppi di lingue", ja: "語群", ko: "어군", "zh-Hans": "语群", "zh-Hant": "語群", ru: "языковые группы" }) },
-  { id: "language-family", flag: (f, code) => f.langFamily && !has639_1(code), reason: wd("Q25295", { en: "language families", de: "Sprachfamilien", es: "familias de lenguas", fr: "familles de langues", it: "famiglie di lingue", ja: "語族", ko: "어족", "zh-Hans": "语系", "zh-Hant": "語系", ru: "языковые семьи" }) },
-  { id: "constructed", flag: (f) => f.constructed, reason: wd("Q33215", { en: "constructed languages", de: "konstruierte Sprachen", es: "lenguas construidas", fr: "langues construites", it: "lingue costruite", ja: "人工言語", ko: "인공어", "zh-Hans": "人造语言", "zh-Hant": "人造語言", ru: "искусственные языки" }) },
-  { id: "fictional", flag: (f) => f.fictional, reason: wd("Q2623733", { en: "fictional languages", de: "fiktive Sprachen", es: "lenguas ficticias", fr: "langues fictives", it: "lingue fittizie", ja: "架空言語", ko: "가공의 언어", "zh-Hans": "虚构语言", "zh-Hant": "虛構語言", ru: "вымышленные языки" }) },
+  { id: "dead", flag: (f) => f.dead, wd: "Q45762" },
+  { id: "extinct", flag: (f) => f.extinct, wd: "Q38058796" },
+  { id: "historical", flag: (f) => f.historical, wd: "Q2315359" },
+  { id: "dialect", flag: (f) => f.dialect, wd: "Q33384" },
+  { id: "dialect-group", flag: (f) => f.dialectGroup, wd: "Q1208380" },
+  { id: "language-group", flag: (f, code) => f.langGroup && !has639_1(code), wd: "Q941501" },
+  { id: "language-family", flag: (f, code) => f.langFamily && !has639_1(code), wd: "Q25295" },
+  { id: "constructed", flag: (f) => f.constructed, wd: "Q33215" },
+  { id: "fictional", flag: (f) => f.fictional, wd: "Q2623733" },
 ];
 /** The types a language carries — its inclusion checkboxes; empty means the living-modern base. */
 const typesOf = (flags, code) => TYPES.filter((t) => t.flag(flags, code));
@@ -253,18 +254,7 @@ const SIGN_LANGUAGES = {
   id: "sign-languages",
   match: "* Sign Language",
   count: true,
-  reason: {
-    en: "sign languages",
-    de: "Gebärdensprachen",
-    es: "lenguas de señas",
-    fr: "langues des signes",
-    it: "lingue dei segni",
-    ja: "手話",
-    ko: "수어",
-    "zh-Hans": "手语",
-    "zh-Hant": "手語",
-    ru: "жестовые языки",
-  },
+  reason: "signLanguages",
 };
 
 const SOURCES = [
@@ -376,7 +366,8 @@ async function main() {
     match: match[t.id].slice().sort(),
     count: true,
     icon: TYPE_ICON,
-    reason: t.reason,
+    reason: `languageType.${camel(t.id)}`,
+    wd: t.wd,
   }));
 
   const topic = {
