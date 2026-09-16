@@ -22,7 +22,7 @@ Two of these carry a second spelling rather than a second language: Japanese lis
 
 ## Interface
 
-Written so far: **English, German, Spanish, French, Italian, Japanese, Korean, and Chinese in both scripts** (`zh-Hans`, `zh-Hant`) — one file each, `src/locale/<code>.ts`. Every other language falls back to English, which is how Japanese and Korean can sit at rank 8 above and still have an interface: they arrived when the lists that needed them did, not when the ranking said so. A language is official once it has both an interface dictionary and a picker slot, so the two are added together now; the same nine are offered as list languages and as interface languages. Seven of the nine were machine-written and are [looking for proofreaders](../CONTRIBUTING.md#looking-for-ui-proofreaders--spanish-french-italian-japanese-korean-chinese).
+Written so far: **English, German, Spanish, French, Italian, Japanese, Korean, Chinese in both scripts** (`zh-Hans`, `zh-Hant`), **and Russian** — one file each, `src/locale/<code>.ts`. Every other language falls back to English, which is how Japanese and Korean can sit at rank 8 above and still have an interface: they arrived when the lists that needed them did, not when the ranking said so. A language is official once it has both an interface dictionary and a picker slot, so the two are added together now; the same ten are offered as list languages and as interface languages. Eight of the ten were machine-written and are [looking for proofreaders](../CONTRIBUTING.md#looking-for-ui-proofreaders--spanish-french-italian-japanese-korean-chinese-russian).
 
 ## Chinese, official but off the ranked list
 
