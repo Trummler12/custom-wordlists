@@ -8,7 +8,16 @@
 // The main app resolves a prose id ("sovereignty.deFactoRecognized") via `resolveProse`, and
 // reads the ruler/band pieces via `topicProse(lang)`. See the PR plan §M.
 
+import { de } from "./de";
 import { en } from "./en";
+import { es } from "./es";
+import { fr } from "./fr";
+import { it } from "./it";
+import { ja } from "./ja";
+import { ko } from "./ko";
+import { ru } from "./ru";
+import { zhHans } from "./zh-Hans";
+import { zhHant } from "./zh-Hant";
 
 /** The shape every locale's topic-prose dictionary implements — the id namespace. */
 export interface TopicProse {
@@ -61,9 +70,19 @@ export interface TopicProse {
 /** Language that backs any locale without its own topic-prose dictionary. */
 const FALLBACK = "en";
 
-// One entry per official interface language. Batch 1 adds de, es, fr, it, ja, ko,
-// zh-Hans, zh-Hant and ru; English is the reference and the fallback.
-const PROSE: Record<string, TopicProse> = { en };
+// One entry per official interface language; English is the reference and the fallback.
+const PROSE: Record<string, TopicProse> = {
+  en,
+  de,
+  es,
+  fr,
+  it,
+  ja,
+  ko,
+  "zh-Hans": zhHans,
+  "zh-Hant": zhHant,
+  ru,
+};
 
 /** A language's topic-prose dictionary, falling back to English. */
 export function topicProse(lang: string): TopicProse {
