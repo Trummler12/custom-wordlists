@@ -20,18 +20,7 @@
       "id": "ancient",
       "match": ["Phoenix Plate","Izanagi Plate","Farallon Plate","Kula Plate","Intermontane Plate","Bellingshausen Plate","Lhasa Plate","Charcot Plate","Cimmerian Plate","Moa Plate","Baltic plate"],
       "count": true,
-      "reason": {
-        "en": "ancient and extinct plates",
-        "de": "urzeitliche und erloschene Platten",
-        "es": "placas antiguas y extintas",
-        "fr": "plaques anciennes et éteintes",
-        "it": "placche antiche ed estinte",
-        "ja": "古代・消滅したプレート",
-        "ko": "고대·소멸한 판",
-        "zh-Hans": "古代和已消亡的板块",
-        "zh-Hant": "古代和已消亡的板塊",
-        "ru": "древние и исчезнувшие плиты"
-      }
+      "reason": "ancientPlates"
     }
   ],
   "tiers": [

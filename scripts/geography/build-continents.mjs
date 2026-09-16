@@ -89,23 +89,11 @@ const ANCIENT = new Set([
   "Q3391684", // Lhasa
 ]);
 
-/** The `omitted` rule's line, filled with the count of ancient plates it hides. */
-// @migrate (PR plan §M, Batch 2): the locale-like prose in this script — ANCIENT_REASON
-// (below), TIER_CONDITIONS, RULER_TOOLTIP, TIER3_NOTE and NOTE_LABEL — moves to
-// src/locale/topics/. This script will then emit ids instead of baking every language. TITLE
-// already carries all planned languages and stays put.
-const ANCIENT_REASON = {
-  en: "ancient and extinct plates",
-  de: "urzeitliche und erloschene Platten",
-  es: "placas antiguas y extintas",
-  fr: "plaques anciennes et éteintes",
-  it: "placche antiche ed estinte",
-  ja: "古代・消滅したプレート",
-  ko: "고대·소멸한 판",
-  "zh-Hans": "古代和已消亡的板块",
-  "zh-Hant": "古代和已消亡的板塊",
-  ru: "древние и исчезнувшие плиты",
-};
+// @migrate (PR plan §M, Batch 2b): the tier-condition prose in this script — TIER_CONDITIONS,
+// RULER_TOOLTIP, TIER3_NOTE and NOTE_LABEL — still bakes every language; it moves to
+// src/locale/topics/ next, when the topic data carries condition tokens. The ancient-plates
+// reason is already migrated (emitted as the `ancientPlates` prose id). TITLE already carries
+// all planned languages and stays put.
 
 /** The landmasses the continent names are keyed under, Q-id per key — the same map the
  *  dump lists, repeated here because the build's identity is the English key (TIER0,
@@ -535,7 +523,7 @@ async function main() {
   const ancientRule = {
     id: "ancient",
     match: ancientNames,
-    reason: ANCIENT_REASON,
+    reason: "ancientPlates",
     count: true,
   };
 
