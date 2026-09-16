@@ -350,15 +350,16 @@ import { ja } from "./ja";
 import { ko } from "./ko";
 import { zhHans } from "./zh-Hans";
 import { zhHant } from "./zh-Hant";
+import { ru } from "./ru";
 
 /** Language that backs any locale without its own UI dictionary. */
 export const FALLBACK_LANG = "en";
 
-// Seven of these are machine-written and unreviewed by a native speaker; the
+// Eight of these are machine-written and unreviewed by a native speaker; the
 // contribution guide asks for proofreaders by name. Chinese (both scripts) is an
 // official interface language now, not merely a content one — see
 // docs/Language-Roadmap.md.
-const UI: Record<string, UIStrings> = { en, de, es, fr, it, ja, ko, "zh-Hans": zhHans, "zh-Hant": zhHant };
+const UI: Record<string, UIStrings> = { en, de, es, fr, it, ja, ko, "zh-Hans": zhHans, "zh-Hant": zhHant, ru };
 
 /** Languages the chrome can be rendered in — the ones with a dictionary above. A
  *  language is "official" once it has both a chrome dictionary and a picker slot, so
