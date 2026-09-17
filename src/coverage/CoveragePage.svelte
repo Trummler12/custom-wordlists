@@ -268,11 +268,8 @@
 {/if}
 
 <style>
-  :global(body) {
-    color-scheme: light dark;
-    margin: 0;
-    font: 14px/1.4 system-ui, sans-serif;
-  }
+  /* The <body> baseline (margin, tighter font) lives in coverage.css — it cannot be
+     component-scoped. Everything below is scoped to this page. */
   header {
     display: flex;
     align-items: center;
@@ -510,8 +507,8 @@
   thead th.lang.dim .sort {
     opacity: var(--dim-opacity, 0.42);
   }
-  /* NOTE: the footer's own styling comes from app.css (imported by coverage/main.ts) — its
-     `.site-footer` rules win here, so page-local `:global(.site-footer)` overrides had no
-     effect and were removed. Reconciling the coverage footer (app.css's fixed bar vs. the
-     intended in-flow, cap-sharing one) is a Phase-Z cleanup item. */
+  /* NOTE: the footer styles itself now — they are colocated in SiteFooter.svelte, so this
+     page gets them without importing app.css. It still renders as the fixed bar SiteFooter
+     defines; reconciling the coverage footer (fixed vs. the intended in-flow, cap-sharing
+     one) is deferred to the W4c rework / Phase Z. */
 </style>
