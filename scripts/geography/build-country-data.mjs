@@ -165,63 +165,17 @@ const tierOf = (pop) => {
  *  dictionary uses ("deFactoRecognized"), so a rule can emit its reason as an id. */
 const camel = (s) => s.replace(/-([a-z])/g, (_, c) => c.toUpperCase());
 
-/** The five tier conditions, localized. The tooltip supplies "inhabitants", so the
- *  condition is the bare quantity — and CJK counts in 万/億, not millions. */
-// @migrate (PR plan §M, Batch 2b): NUM/MORE/ABOVE_ZERO (tier conditions) and RULER_COUNTRIES/
-// CAPITALS still bake every language; they move to src/locale/topics/ next, when the topic data
-// carries band keys and rulerTooltip ids. The sovereignty (CELLS) and coverage (COVERAGE)
-// reasons are already emitted as prose ids; their now-dead prose maps are removed in Batch 3.
-// Titles (T_COUNTRIES etc.) already carry all planned languages and stay put.
-const NUM = {
-  en: ["100 million", "20 million", "5 million", "1 million"],
-  de: ["100 Millionen", "20 Millionen", "5 Millionen", "1 Million"],
-  es: ["100 millones", "20 millones", "5 millones", "1 millón"],
-  fr: ["100 millions", "20 millions", "5 millions", "1 million"],
-  it: ["100 milioni", "20 milioni", "5 milioni", "1 milione"],
-  ja: ["1億", "2000万", "500万", "100万"],
-  ko: ["1억", "2000만", "500만", "100만"],
-  "zh-Hans": ["1亿", "2000万", "500万", "100万"],
-  "zh-Hant": ["1億", "2000萬", "500萬", "100萬"],
-  ru: ["100 миллионов", "20 миллионов", "5 миллионов", "1 миллион"],
-};
-const MORE = {
-  en: (n) => `${n} or more`,
-  de: (n) => `${n} und mehr`,
-  es: (n) => `${n} o más`,
-  fr: (n) => `${n} ou plus`,
-  it: (n) => `${n} o più`,
-  ja: (n) => `${n}以上`,
-  ko: (n) => `${n} 이상`,
-  "zh-Hans": (n) => `${n}及以上`,
-  "zh-Hant": (n) => `${n}及以上`,
-  ru: (n) => `${n} или больше`,
-};
-// The last tier is the cumulative floor: the ruler selects everything down to it,
-// so the honest bound is "more than 0", not "under 1 million" — which would read
-// as excluding the larger tiers the selection has in fact already swept in.
-const ABOVE_ZERO = {
-  en: "more than 0",
-  de: "mehr als 0",
-  es: "más de 0",
-  fr: "plus de 0",
-  it: "più di 0",
-  ja: "0より多い",
-  ko: "0보다 많음",
-  "zh-Hans": "多于0",
-  "zh-Hant": "多於0",
-  ru: "больше 0",
-};
-/** `tierConditions`, one locString per tier. */
-function tierConditions() {
-  const cond = (fn) => Object.fromEntries(LANGS.map((l) => [l, fn(l)]));
-  return [
-    cond((l) => MORE[l](NUM[l][0])),
-    cond((l) => MORE[l](NUM[l][1])),
-    cond((l) => MORE[l](NUM[l][2])),
-    cond((l) => MORE[l](NUM[l][3])),
-    cond((l) => ABOVE_ZERO[l]),
-  ];
-}
+// @migrate (PR plan §M, Batch 3): the number-band words and the "or more" / "more than 0"
+// formats now live in src/locale/topics (`bands` / `more` / `aboveZero`); this script emits
+// bare band-key tokens for tierConditions and prose ids for the ruler tooltip. Still dead here
+// (removed in Batch 3): the CELLS sovereignty reasons and COVERAGE prose maps (they interleave
+// with the live cell/default fields). Titles (T_COUNTRIES etc.) carry all planned languages.
+
+/** `tierConditions` as band-key tokens (same for countries and capitals): the four population
+ *  bands, then the cumulative floor. The frontend composes each into "<band> or more" or
+ *  "more than 0" from the topic-prose dictionary — see `resolveCondition` in src/locale/topics.
+ *  The floor token ">0" must match `FLOOR` there. */
+const tierConditions = () => ["100M", "20M", "5M", "1M", ">0"];
 
 /** Topic titles, localized. Groups reuse them. */
 const T_COUNTRIES = {
@@ -289,63 +243,12 @@ const T_CAPITALS = {
   tl: "Mga Kabisera"
 };
 
-/** The ruler hovers. `{condition}` is the population band just brought in; the
- *  empty text names the ordering at rest. The "Selected:" / "Mostly selected:"
- *  prefix is a locale string the frontend prepends, so the text is bare and carries
- *  no absolute — the list is what it is, "Countries with …", not "every country".
- *  Seven UI languages; the capitals are tiered by their country's population. */
-const RULER_COUNTRIES = {
-  text: {
-    en: "Countries with {condition} inhabitants",
-    de: "Länder mit {condition} Einwohnern",
-    es: "países con {condition} habitantes",
-    fr: "pays comptant {condition} habitants",
-    it: "paesi con {condition} abitanti",
-    ja: "人口が{condition}の国",
-    ko: "인구가 {condition}인 국가",
-    "zh-Hans": "人口为{condition}的国家",
-    "zh-Hant": "人口為{condition}的國家",
-    ru: "страны с населением {condition}",
-  },
-  empty: {
-    en: "Ranked by population.",
-    de: "Nach Einwohnerzahl geordnet.",
-    es: "Ordenados por población.",
-    fr: "Classés par population.",
-    it: "Ordinati per popolazione.",
-    ja: "人口順。",
-    ko: "인구순 정렬.",
-    "zh-Hans": "按人口排序。",
-    "zh-Hant": "按人口排序。",
-    ru: "Упорядочено по численности населения.",
-  },
-};
-const RULER_CAPITALS = {
-  text: {
-    en: "Capitals of countries with {condition} inhabitants",
-    de: "Hauptstädte von Ländern mit {condition} Einwohnern",
-    es: "capitales de países con {condition} habitantes",
-    fr: "capitales de pays comptant {condition} habitants",
-    it: "capitali di paesi con {condition} abitanti",
-    ja: "人口が{condition}の国の首都",
-    ko: "인구가 {condition}인 국가의 수도",
-    "zh-Hans": "人口为{condition}的国家的首都",
-    "zh-Hant": "人口為{condition}的國家的首都",
-    ru: "столицы стран с населением {condition}",
-  },
-  empty: {
-    en: "Ranked by their country's population.",
-    de: "Nach Einwohnerzahl des Landes geordnet.",
-    es: "Ordenadas por la población de su país.",
-    fr: "Classées par la population de leur pays.",
-    it: "Ordinate per la popolazione del loro paese.",
-    ja: "国の人口順。",
-    ko: "해당 국가의 인구순 정렬.",
-    "zh-Hans": "按所属国家的人口排序。",
-    "zh-Hant": "按所屬國家的人口排序。",
-    ru: "Упорядочено по населению страны.",
-  },
-};
+/** The ruler hovers, as prose ids resolved in the frontend (src/locale/topics `ruler.*`).
+ *  `text` carries `{condition}`, the population band just brought in; `empty` names the
+ *  ordering at rest. The "Selected:" / "Mostly selected:" prefix is a locale string the
+ *  frontend prepends. The capitals are tiered by their country's population. */
+const RULER_COUNTRIES = { text: "ruler.countries.text", empty: "ruler.countries.empty" };
+const RULER_CAPITALS = { text: "ruler.capitals.text", empty: "ruler.capitals.empty" };
 
 /** The icon key that groups the sovereignty cells into one matrix control. */
 const SOVEREIGNTY = "sovereignty";

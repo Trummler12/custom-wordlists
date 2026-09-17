@@ -100,15 +100,15 @@
     ]
   ],
   "tierConditions": [
-    {"en":"100 million or more","de":"100 Millionen und mehr","es":"100 millones o más","fr":"100 millions ou plus","it":"100 milioni o più","ja":"1億以上","ko":"1억 이상","zh-Hans":"1亿及以上","zh-Hant":"1億及以上","ru":"100 миллионов или больше"},
-    {"en":"20 million or more","de":"20 Millionen und mehr","es":"20 millones o más","fr":"20 millions ou plus","it":"20 milioni o più","ja":"2000万以上","ko":"2000만 이상","zh-Hans":"2000万及以上","zh-Hant":"2000萬及以上","ru":"20 миллионов или больше"},
-    {"en":"5 million or more","de":"5 Millionen und mehr","es":"5 millones o más","fr":"5 millions ou plus","it":"5 milioni o più","ja":"500万以上","ko":"500만 이상","zh-Hans":"500万及以上","zh-Hant":"500萬及以上","ru":"5 миллионов или больше"},
-    {"en":"1 million or more","de":"1 Million und mehr","es":"1 millón o más","fr":"1 million ou plus","it":"1 milione o più","ja":"100万以上","ko":"100만 이상","zh-Hans":"100万及以上","zh-Hant":"100萬及以上","ru":"1 миллион или больше"},
-    {"en":"more than 0","de":"mehr als 0","es":"más de 0","fr":"plus de 0","it":"più di 0","ja":"0より多い","ko":"0보다 많음","zh-Hans":"多于0","zh-Hant":"多於0","ru":"больше 0"}
+    "100M",
+    "20M",
+    "5M",
+    "1M",
+    ">0"
   ],
   "rulerTooltip": {
-    "text": {"en":"Countries with {condition} inhabitants","de":"Länder mit {condition} Einwohnern","es":"países con {condition} habitantes","fr":"pays comptant {condition} habitants","it":"paesi con {condition} abitanti","ja":"人口が{condition}の国","ko":"인구가 {condition}인 국가","zh-Hans":"人口为{condition}的国家","zh-Hant":"人口為{condition}的國家","ru":"страны с населением {condition}"},
-    "empty": {"en":"Ranked by population.","de":"Nach Einwohnerzahl geordnet.","es":"Ordenados por población.","fr":"Classés par population.","it":"Ordinati per popolazione.","ja":"人口順。","ko":"인구순 정렬.","zh-Hans":"按人口排序。","zh-Hant":"按人口排序。","ru":"Упорядочено по численности населения."}
+    "text": "ruler.countries.text",
+    "empty": "ruler.countries.empty"
   },
   "inheritsUpwards": 1
 }
