@@ -1,5 +1,5 @@
 // UI-chrome strings (everything the app itself renders — not topic content).
-// One dictionary per locale implements UIStrings — seven of them, listed in UI
+// One dictionary per locale implements UIStrings — the set listed in UI
 // below; the frontend resolves the active one via strings(lang), falling back to
 // English for any language that has topic data but no UI translation yet.
 //
@@ -351,15 +351,16 @@ import { ko } from "./ko";
 import { zhHans } from "./zh-Hans";
 import { zhHant } from "./zh-Hant";
 import { ru } from "./ru";
+import { pt } from "./pt";
 
 /** Language that backs any locale without its own UI dictionary. */
 export const FALLBACK_LANG = "en";
 
-// Eight of these are machine-written and unreviewed by a native speaker; the
+// All but English are machine-written and unreviewed by a native speaker; the
 // contribution guide asks for proofreaders by name. Chinese (both scripts) is an
 // official interface language now, not merely a content one — see
 // docs/Language-Roadmap.md.
-const UI: Record<string, UIStrings> = { en, de, es, fr, it, ja, ko, "zh-Hans": zhHans, "zh-Hant": zhHant, ru };
+const UI: Record<string, UIStrings> = { en, de, es, fr, it, ja, ko, "zh-Hans": zhHans, "zh-Hant": zhHant, ru, pt };
 
 /** Languages the chrome can be rendered in — the ones with a dictionary above. A
  *  language is "official" once it has both a chrome dictionary and a picker slot, so
