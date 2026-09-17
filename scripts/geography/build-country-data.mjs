@@ -165,11 +165,10 @@ const tierOf = (pop) => {
  *  dictionary uses ("deFactoRecognized"), so a rule can emit its reason as an id. */
 const camel = (s) => s.replace(/-([a-z])/g, (_, c) => c.toUpperCase());
 
-// @migrate (PR plan §M, Batch 3): the number-band words and the "or more" / "more than 0"
-// formats now live in src/locale/topics (`bands` / `more` / `aboveZero`); this script emits
-// bare band-key tokens for tierConditions and prose ids for the ruler tooltip. Still dead here
-// (removed in Batch 3): the CELLS sovereignty reasons and COVERAGE prose maps (they interleave
-// with the live cell/default fields). Titles (T_COUNTRIES etc.) carry all planned languages.
+// All the locale-like prose this script used to bake — the number-band words and their
+// "or more" / "more than 0" formats, the ruler tooltips, and the sovereignty (CELLS) and
+// coverage (COVERAGE) reasons — now lives in src/locale/topics (§M migration); the script
+// emits band-key tokens and prose ids. Titles (T_COUNTRIES etc.) carry all planned languages.
 
 /** `tierConditions` as band-key tokens (same for countries and capitals): the four population
  *  bands, then the cumulative floor. The frontend composes each into "<band> or more" or
@@ -259,122 +258,17 @@ const SOVEREIGNTY = "sovereignty";
  *  top-left `Reguläre Staaten` cell is the unruled base (every sovereign state no
  *  cell matches). `default` decides the array and, together, the cells form the
  *  default staircase — column 1 included through row 4, column 2 through row 3, so
- *  only the bottom-right cell (row 4, col 2) hides by default. Every
- *  reason opens lower-case with the countable noun so it reads on from the panel's
- *  "up to N"; the nine UI languages (Chinese in both scripts have their own now). */
+ *  only the bottom-right cell (row 4, col 2) hides by default. Each cell's reason is
+ *  emitted as a prose id (`sovereignty.<camel-of-key>`, see `cellRules`) and lives in
+ *  src/locale/topics; the reader-facing wording is there, not here. */
 const CELLS = {
-  "asymmetric-autonomy": {
-    cell: [1, 2],
-    default: "omittable",
-    reason: {
-      en: "autonomous regions whose broad self-rule is internationally recognized",
-      de: "autonome Regionen, deren weitreichende Selbstverwaltung völkerrechtlich anerkannt ist",
-      es: "regiones autónomas cuyo amplio autogobierno está reconocido internacionalmente",
-      fr: "régions autonomes dont la large autonomie est reconnue internationalement",
-      it: "regioni autonome la cui ampia autonomia è riconosciuta a livello internazionale",
-      ja: "広範な自治が国際的に認められている自治地域",
-      ko: "폭넓은 자치가 국제적으로 인정된 자치 지역",
-      "zh-Hans": "拥有国际公认的广泛自治权的自治地区",
-      "zh-Hant": "擁有國際公認的廣泛自治權的自治地區",
-      ru: "автономные регионы, чьё широкое самоуправление признано на международном уровне",
-    },
-  },
-  "de-facto-recognized": {
-    cell: [2, 1],
-    default: "omittable",
-    reason: {
-      en: "fully sovereign states recognized by many, though not all, UN members",
-      de: "vollständig souveräne Staaten, von vielen, aber nicht allen UN-Mitgliedern anerkannt",
-      es: "estados plenamente soberanos reconocidos por muchos, aunque no todos, los miembros de la ONU",
-      fr: "états pleinement souverains reconnus par de nombreux membres de l'ONU, mais pas tous",
-      it: "stati pienamente sovrani riconosciuti da molti, ma non tutti, i membri dell'ONU",
-      ja: "全てではないが多くの国連加盟国に承認された、完全な主権国家",
-      ko: "전부는 아니지만 다수의 유엔 회원국이 승인한 완전한 주권 국가",
-      "zh-Hans": "获得许多（但非全部）联合国成员国承认的完全主权国家",
-      "zh-Hant": "獲得許多（但非全部）聯合國成員國承認的完全主權國家",
-      ru: "полностью суверенные государства, признанные многими, хотя и не всеми, членами ООН",
-    },
-  },
-  "free-association": {
-    cell: [2, 2],
-    default: "omittable",
-    reason: {
-      en: "states in free association with another, with limited recognition",
-      de: "Staaten in freier Assoziation mit einem anderen, begrenzt anerkannt",
-      es: "estados en libre asociación con otro, de reconocimiento limitado",
-      fr: "états en libre association avec un autre, à reconnaissance limitée",
-      it: "stati in libera associazione con un altro, dal riconoscimento limitato",
-      ja: "他国と自由連合を結ぶ、承認が限られた国",
-      ko: "다른 나라와 자유연합을 맺은, 승인이 제한된 국가",
-      "zh-Hans": "与他国自由联合、获得有限承认的国家",
-      "zh-Hant": "與他國自由聯合、獲得有限承認的國家",
-      ru: "государства в свободной ассоциации с другим, с ограниченным признанием",
-    },
-  },
-  "de-facto-narrow": {
-    cell: [3, 1],
-    default: "omittable",
-    reason: {
-      en: "fully self-governing states recognized by only a few UN members",
-      de: "vollständig selbstverwaltete Staaten, nur von wenigen UN-Mitgliedern anerkannt",
-      es: "estados con autogobierno pleno reconocidos por solo unos pocos miembros de la ONU",
-      fr: "états pleinement autonomes reconnus par seulement quelques membres de l'ONU",
-      it: "stati pienamente autogovernati riconosciuti solo da pochi membri dell'ONU",
-      ja: "ごく一部の国連加盟国のみに承認された、完全に自治を行う国家",
-      ko: "소수의 유엔 회원국만이 승인한, 완전한 자치 국가",
-      "zh-Hans": "仅获少数联合国成员国承认的完全自治国家",
-      "zh-Hant": "僅獲少數聯合國成員國承認的完全自治國家",
-      ru: "полностью самоуправляемые государства, признанные лишь несколькими членами ООН",
-    },
-  },
-  "special-status": {
-    cell: [3, 2],
-    default: "omittable",
-    reason: {
-      en: "highly autonomous territories with a distinct international presence, often taken for countries of their own",
-      de: "weitgehend autonome Gebiete mit eigenständigem internationalem Auftreten, die viele für eigene Länder halten",
-      es: "territorios muy autónomos con presencia internacional propia, que muchos toman por países propios",
-      fr: "territoires très autonomes à présence internationale propre, que beaucoup prennent pour des pays à part entière",
-      it: "territori molto autonomi con una presenza internazionale propria, che molti scambiano per paesi a sé",
-      ja: "独自の国際的存在感を持ち、独自の国と見なされがちな高度な自治地域",
-      ko: "독자적 국제적 존재감을 지녀 독립국으로 여겨지곤 하는 고도 자치 지역",
-      "zh-Hans": "拥有独特国际存在感、常被视为独立国家的高度自治地区",
-      "zh-Hant": "擁有獨特國際存在感、常被視為獨立國家的高度自治地區",
-      ru: "высокоавтономные территории с самостоятельным международным присутствием, которые часто принимают за отдельные страны",
-    },
-  },
-  "pure-de-facto": {
-    cell: [4, 1],
-    default: "omittable",
-    reason: {
-      en: "self-declared states recognized by few or no UN members",
-      de: "selbsterklärte Staaten, von wenigen oder keinen UN-Mitgliedern anerkannt",
-      es: "estados autoproclamados reconocidos por pocos o ningún miembro de la ONU",
-      fr: "états autoproclamés reconnus par peu ou aucun membre de l'ONU",
-      it: "stati autoproclamati riconosciuti da pochi o nessun membro dell'ONU",
-      ja: "国連加盟国のごく一部にしか、あるいは全く承認されない自称国家",
-      ko: "유엔 회원국 중 극소수만이 또는 전혀 승인하지 않는 자칭 국가",
-      "zh-Hans": "仅获极少数或未获联合国成员国承认的自称国家",
-      "zh-Hant": "僅獲極少數或未獲聯合國成員國承認的自稱國家",
-      ru: "самопровозглашённые государства, признанные немногими членами ООН или не признанные вовсе",
-    },
-  },
-  "classic-autonomous": {
-    cell: [4, 2],
-    default: "omitted",
-    reason: {
-      en: "autonomous territories internationally regarded as part of a sovereign state",
-      de: "autonome Gebiete, die international als Teil eines souveränen Staates gelten",
-      es: "territorios autónomos considerados internacionalmente parte de un Estado soberano",
-      fr: "territoires autonomes internationalement considérés comme partie d'un État souverain",
-      it: "territori autonomi considerati a livello internazionale parte di uno Stato sovrano",
-      ja: "国際的に主権国家の一部と見なされる自治地域",
-      ko: "국제적으로 주권 국가의 일부로 여겨지는 자치 지역",
-      "zh-Hans": "国际上被视为某主权国家一部分的自治地区",
-      "zh-Hant": "國際上被視為某主權國家一部分的自治地區",
-      ru: "автономные территории, на международном уровне считающиеся частью суверенного государства",
-    },
-  },
+  "asymmetric-autonomy": { cell: [1, 2], default: "omittable" },
+  "de-facto-recognized": { cell: [2, 1], default: "omittable" },
+  "free-association": { cell: [2, 2], default: "omittable" },
+  "de-facto-narrow": { cell: [3, 1], default: "omittable" },
+  "special-status": { cell: [3, 2], default: "omittable" },
+  "pure-de-facto": { cell: [4, 1], default: "omittable" },
+  "classic-autonomous": { cell: [4, 2], default: "omitted" },
 };
 
 /** Build `omitted` / `omittable` sovereignty rules from a `{ cellId: [names] }`
@@ -418,34 +312,8 @@ const RARE_COVERAGE = new Set([
   "Pitcairn Islands",
 ]);
 
-/** The two coverage reasons — lower-case leading noun, so the "up to N" the panel
- *  prepends reads on. The nine UI languages, Chinese in both scripts included. */
-const COVERAGE = {
-  "no-coverage": {
-    en: "countries with no Google Street View coverage",
-    de: "Länder ohne Google-Street-View-Abdeckung",
-    es: "países sin cobertura de Google Street View",
-    fr: "pays sans couverture Google Street View",
-    it: "paesi senza copertura di Google Street View",
-    ja: "Google ストリートビュー非対応の国",
-    ko: "구글 스트리트 뷰가 없는 국가",
-    "zh-Hans": "没有 Google 街景覆盖的国家",
-    "zh-Hant": "沒有 Google 街景覆蓋的國家",
-    ru: "страны без покрытия Google Street View",
-  },
-  "rare-coverage": {
-    en: "countries with only sparse Street View coverage",
-    de: "Länder mit nur spärlicher Street-View-Abdeckung",
-    es: "países con cobertura de Street View muy escasa",
-    fr: "pays à couverture Street View très rare",
-    it: "paesi con copertura Street View molto scarsa",
-    ja: "ストリートビューがまばらな国",
-    ko: "스트리트 뷰가 드문 국가",
-    "zh-Hans": "街景覆盖稀疏的国家",
-    "zh-Hant": "街景覆蓋稀疏的國家",
-    ru: "страны лишь с редким покрытием Street View",
-  },
-};
+// The two coverage reasons ("no-coverage" / "rare-coverage") are emitted as prose ids
+// (`coverage.<camel-of-id>`, see `coverageRules`) and live in src/locale/topics.
 
 /** The official-coverage names, headers and footer stripped. A superset of our
  *  list (it carries dependencies too), read only as a membership test. */
