@@ -1,0 +1,26 @@
+/* base.css — shared style primitives: classes and element defaults used at several
+   independent sites (like components/common/, but for CSS). Anything that only makes
+   sense inside one component lives scoped in that component's <style> instead.
+   Loaded by both entries (app.css and coverage.css); @import themes so the semantic
+   tokens precede every rule below. First shared file in each entry's chain. */
+@import "./themes.css";
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  line-height: 1.5;
+}
+a {
+  color: inherit;
+}
+/* A danger/error text state, used independently by the topic status line and the
+   output counter — a shared utility, not one component's class. */
+.status.error,
+.warn {
+  color: var(--danger);
+}
