@@ -15,6 +15,7 @@ import { fr } from "./fr";
 import { it } from "./it";
 import { ja } from "./ja";
 import { ko } from "./ko";
+import { pt } from "./pt";
 import { ru } from "./ru";
 import { zhHans } from "./zh-Hans";
 import { zhHant } from "./zh-Hant";
@@ -79,6 +80,7 @@ const PROSE: Record<string, TopicProse> = {
   it,
   ja,
   ko,
+  pt,
   "zh-Hans": zhHans,
   "zh-Hant": zhHant,
   ru,

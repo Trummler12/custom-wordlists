@@ -2,7 +2,7 @@ import { describe, expect, it } from "vitest";
 import { resolveCondition, resolveProse, topicProse } from "./index";
 
 /** The interface languages that carry their own topic-prose dictionary. */
-const LANGS = ["en", "de", "es", "fr", "it", "ja", "ko", "zh-Hans", "zh-Hant", "ru"];
+const LANGS = ["en", "de", "es", "fr", "it", "ja", "ko", "pt", "zh-Hans", "zh-Hant", "ru"];
 
 /** Recursively collect the leaf paths of an object, so two dictionaries can be
  *  compared by shape rather than by (localized) value. */
