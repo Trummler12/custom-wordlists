@@ -146,44 +146,18 @@ const tierOf = (spk) => {
   return CUTS.length;
 };
 
-/** Speaker bands per tier boundary, localized — CJK counts in 億/万, not millions. The
- *  noun ("speakers") lives in the ruler tooltip, so these are bare quantities. */
-const NUM = {
-  en: ["100 million", "30 million", "10 million", "3 million", "1 million", "300,000", "100,000", "30,000", "10,000", "3,000", "1,000"],
-  de: ["100 Millionen", "30 Millionen", "10 Millionen", "3 Millionen", "1 Million", "300.000", "100.000", "30.000", "10.000", "3.000", "1.000"],
-  es: ["100 millones", "30 millones", "10 millones", "3 millones", "1 millón", "300 000", "100 000", "30 000", "10 000", "3000", "1000"],
-  fr: ["100 millions", "30 millions", "10 millions", "3 millions", "1 million", "300 000", "100 000", "30 000", "10 000", "3 000", "1 000"],
-  it: ["100 milioni", "30 milioni", "10 milioni", "3 milioni", "1 milione", "300.000", "100.000", "30.000", "10.000", "3.000", "1.000"],
-  ja: ["1億", "3000万", "1000万", "300万", "100万", "30万", "10万", "3万", "1万", "3000", "1000"],
-  ko: ["1억", "3000만", "1000만", "300만", "100만", "30만", "10만", "3만", "1만", "3000", "1000"],
-  "zh-Hans": ["1亿", "3000万", "1000万", "300万", "100万", "30万", "10万", "3万", "1万", "3000", "1000"],
-  "zh-Hant": ["1億", "3000萬", "1000萬", "300萬", "100萬", "30萬", "10萬", "3萬", "1萬", "3000", "1000"],
-  ru: ["100 миллионов", "30 миллионов", "10 миллионов", "3 миллиона", "1 миллион", "300 000", "100 000", "30 000", "10 000", "3000", "1000"],
-};
-const MORE = {
-  en: (n) => `${n} or more`,
-  de: (n) => `${n} und mehr`,
-  es: (n) => `${n} o más`,
-  fr: (n) => `${n} ou plus`,
-  it: (n) => `${n} o più`,
-  ja: (n) => `${n}以上`,
-  ko: (n) => `${n} 이상`,
-  "zh-Hans": (n) => `${n}及以上`,
-  "zh-Hant": (n) => `${n}及以上`,
-  ru: (n) => `${n} или больше`,
-};
-// The last tier is the cumulative floor — everything down to a single speaker — so its
-// honest bound is "more than 0", not "under 1,000", which would read as excluding the rest.
-const ABOVE_ZERO = {
-  en: "more than 0", de: "mehr als 0", es: "más de 0", fr: "plus de 0", it: "più di 0",
-  ja: "0より多い", ko: "0보다 많음", "zh-Hans": "多于0", "zh-Hant": "多於0",
-  ru: "больше 0",
-};
-/** `tierConditions`, one locString per tier (CUTS + the >0 floor). */
-function tierConditions() {
-  const cond = (fn) => Object.fromEntries(LANGS.map((l) => [l, fn(l)]));
-  return [...CUTS.map((_, i) => cond((l) => MORE[l](NUM[l][i]))), cond((l) => ABOVE_ZERO[l])];
-}
+// @migrate (PR plan §M, Batch 3): the band words and the "or more" / "more than 0" formats
+// now live in src/locale/topics (`bands` / `more` / `aboveZero`); this script emits bare
+// band-key tokens for tierConditions and prose ids for the ruler tooltip.
+
+/** A speaker cut to its band key ("100M", "300k"), the token the topic data carries per tier;
+ *  the frontend composes each into "<band> or more" / "more than 0" from the topic-prose
+ *  dictionary — see `resolveCondition` in src/locale/topics. Keys must match its `bands`. */
+const bandKey = (n) => (n >= 1e6 ? `${n / 1e6}M` : `${n / 1e3}k`);
+
+/** `tierConditions` as tokens: one band key per CUT, then the cumulative floor (">0" must
+ *  match `FLOOR` in src/locale/topics). */
+const tierConditions = () => [...CUTS.map(bandKey), ">0"];
 
 const TITLE = {
   en: "Languages",
@@ -218,34 +192,9 @@ const TITLE = {
   tl: "Mga Wika"
 };
 
-/** The ruler's hover. `{condition}` is the band just brought in; at rest it names the
- *  ordering. Seven UI languages, the two Chinese UIs falling back to English as elsewhere. */
-const RULER_TOOLTIP = {
-  text: {
-    en: "Languages with {condition} speakers worldwide",
-    de: "Sprachen mit {condition} Sprechern weltweit",
-    es: "idiomas con {condition} hablantes en el mundo",
-    fr: "langues comptant {condition} locuteurs dans le monde",
-    it: "lingue con {condition} parlanti nel mondo",
-    ja: "世界の話者数が{condition}の言語",
-    ko: "전 세계 사용자 수가 {condition}인 언어",
-    "zh-Hans": "全球使用者为{condition}的语言",
-    "zh-Hant": "全球使用者為{condition}的語言",
-    ru: "языки, на которых в мире говорят {condition}",
-  },
-  empty: {
-    en: "Ranked by speakers worldwide.",
-    de: "Nach Sprecherzahl weltweit geordnet.",
-    es: "Ordenados por número de hablantes en el mundo.",
-    fr: "Classées par nombre de locuteurs dans le monde.",
-    it: "Ordinate per numero di parlanti nel mondo.",
-    ja: "世界の話者数順。",
-    ko: "전 세계 사용자 수 기준 정렬.",
-    "zh-Hans": "按全球使用者数排序。",
-    "zh-Hant": "按全球使用者數排序。",
-    ru: "Упорядочено по числу носителей в мире.",
-  },
-};
+/** The ruler's hover, as prose ids resolved in the frontend (src/locale/topics `ruler.languages`).
+ *  `text` carries `{condition}`, the band just brought in; `empty` names the ordering at rest. */
+const RULER_TOOLTIP = { text: "ruler.languages.text", empty: "ruler.languages.empty" };
 
 // Sign languages are living, natural, single languages — base entries — but they draw
 // nothing like a spoken one, so the list offers them by default and lets the reader drop

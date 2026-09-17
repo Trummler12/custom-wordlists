@@ -2127,22 +2127,22 @@
     ]
   ],
   "tierConditions": [
-    {"en":"100 million or more","de":"100 Millionen und mehr","es":"100 millones o más","fr":"100 millions ou plus","it":"100 milioni o più","ja":"1億以上","ko":"1억 이상","zh-Hans":"1亿及以上","zh-Hant":"1億及以上","ru":"100 миллионов или больше"},
-    {"en":"30 million or more","de":"30 Millionen und mehr","es":"30 millones o más","fr":"30 millions ou plus","it":"30 milioni o più","ja":"3000万以上","ko":"3000만 이상","zh-Hans":"3000万及以上","zh-Hant":"3000萬及以上","ru":"30 миллионов или больше"},
-    {"en":"10 million or more","de":"10 Millionen und mehr","es":"10 millones o más","fr":"10 millions ou plus","it":"10 milioni o più","ja":"1000万以上","ko":"1000만 이상","zh-Hans":"1000万及以上","zh-Hant":"1000萬及以上","ru":"10 миллионов или больше"},
-    {"en":"3 million or more","de":"3 Millionen und mehr","es":"3 millones o más","fr":"3 millions ou plus","it":"3 milioni o più","ja":"300万以上","ko":"300만 이상","zh-Hans":"300万及以上","zh-Hant":"300萬及以上","ru":"3 миллиона или больше"},
-    {"en":"1 million or more","de":"1 Million und mehr","es":"1 millón o más","fr":"1 million ou plus","it":"1 milione o più","ja":"100万以上","ko":"100만 이상","zh-Hans":"100万及以上","zh-Hant":"100萬及以上","ru":"1 миллион или больше"},
-    {"en":"300,000 or more","de":"300.000 und mehr","es":"300 000 o más","fr":"300 000 ou plus","it":"300.000 o più","ja":"30万以上","ko":"30만 이상","zh-Hans":"30万及以上","zh-Hant":"30萬及以上","ru":"300 000 или больше"},
-    {"en":"100,000 or more","de":"100.000 und mehr","es":"100 000 o más","fr":"100 000 ou plus","it":"100.000 o più","ja":"10万以上","ko":"10만 이상","zh-Hans":"10万及以上","zh-Hant":"10萬及以上","ru":"100 000 или больше"},
-    {"en":"30,000 or more","de":"30.000 und mehr","es":"30 000 o más","fr":"30 000 ou plus","it":"30.000 o più","ja":"3万以上","ko":"3만 이상","zh-Hans":"3万及以上","zh-Hant":"3萬及以上","ru":"30 000 или больше"},
-    {"en":"10,000 or more","de":"10.000 und mehr","es":"10 000 o más","fr":"10 000 ou plus","it":"10.000 o più","ja":"1万以上","ko":"1만 이상","zh-Hans":"1万及以上","zh-Hant":"1萬及以上","ru":"10 000 или больше"},
-    {"en":"3,000 or more","de":"3.000 und mehr","es":"3000 o más","fr":"3 000 ou plus","it":"3.000 o più","ja":"3000以上","ko":"3000 이상","zh-Hans":"3000及以上","zh-Hant":"3000及以上","ru":"3000 или больше"},
-    {"en":"1,000 or more","de":"1.000 und mehr","es":"1000 o más","fr":"1 000 ou plus","it":"1.000 o più","ja":"1000以上","ko":"1000 이상","zh-Hans":"1000及以上","zh-Hant":"1000及以上","ru":"1000 или больше"},
-    {"en":"more than 0","de":"mehr als 0","es":"más de 0","fr":"plus de 0","it":"più di 0","ja":"0より多い","ko":"0보다 많음","zh-Hans":"多于0","zh-Hant":"多於0","ru":"больше 0"}
+    "100M",
+    "30M",
+    "10M",
+    "3M",
+    "1M",
+    "300k",
+    "100k",
+    "30k",
+    "10k",
+    "3k",
+    "1k",
+    ">0"
   ],
   "rulerTooltip": {
-    "text": {"en":"Languages with {condition} speakers worldwide","de":"Sprachen mit {condition} Sprechern weltweit","es":"idiomas con {condition} hablantes en el mundo","fr":"langues comptant {condition} locuteurs dans le monde","it":"lingue con {condition} parlanti nel mondo","ja":"世界の話者数が{condition}の言語","ko":"전 세계 사용자 수가 {condition}인 언어","zh-Hans":"全球使用者为{condition}的语言","zh-Hant":"全球使用者為{condition}的語言","ru":"языки, на которых в мире говорят {condition}"},
-    "empty": {"en":"Ranked by speakers worldwide.","de":"Nach Sprecherzahl weltweit geordnet.","es":"Ordenados por número de hablantes en el mundo.","fr":"Classées par nombre de locuteurs dans le monde.","it":"Ordinate per numero di parlanti nel mondo.","ja":"世界の話者数順。","ko":"전 세계 사용자 수 기준 정렬.","zh-Hans":"按全球使用者数排序。","zh-Hant":"按全球使用者數排序。","ru":"Упорядочено по числу носителей в мире."}
+    "text": "ruler.languages.text",
+    "empty": "ruler.languages.empty"
   },
   "extendFrom": 5
 }
