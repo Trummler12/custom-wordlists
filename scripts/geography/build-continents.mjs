@@ -89,11 +89,10 @@ const ANCIENT = new Set([
   "Q3391684", // Lhasa
 ]);
 
-// @migrate (PR plan §M, Batch 2b): the tier-condition prose in this script — TIER_CONDITIONS,
-// RULER_TOOLTIP, TIER3_NOTE and NOTE_LABEL — still bakes every language; it moves to
-// src/locale/topics/ next, when the topic data carries condition tokens. The ancient-plates
-// reason is already migrated (emitted as the `ancientPlates` prose id). TITLE already carries
-// all planned languages and stays put.
+// All the locale-like prose this script used to bake — the ancient-plates reason, the tier
+// conditions, the tier-3 note and its label, and the ruler tooltip — now lives in
+// src/locale/topics (§M migration); the script emits prose ids and condition tokens. TITLE
+// already carries all planned languages and stays put.
 
 /** The landmasses the continent names are keyed under, Q-id per key — the same map the
  *  dump lists, repeated here because the build's identity is the English key (TIER0,
@@ -220,135 +219,25 @@ const TITLE = {
   },
 };
 
-/** What each tier's cut is, named rather than numbered — the plates come banded
- *  (major / minor / micro), not by a threshold. Read cumulatively, as the ruler
- *  brings everything down to and including a band: the tooltip substitutes the
- *  lowest one just added. The nine UI languages, matching `TIER3_NOTE` (Chinese in
- *  both scripts has its own now). */
-const TIER_CONDITIONS = [
-  {
-    en: "continents and major plates",
-    de: "Kontinente und Grossplatten",
-    es: "continentes y placas mayores",
-    fr: "continents et plaques majeures",
-    it: "continenti e placche maggiori",
-    ja: "大陸と主要プレート",
-    ko: "대륙과 주요 판",
-    "zh-Hans": "大陆和主要板块",
-    "zh-Hant": "大陸和主要板塊",
-    ru: "континенты и крупные плиты",
-  },
-  {
-    en: "minor plates and larger",
-    de: "Kleinplatten und grösser",
-    es: "placas menores y mayores",
-    fr: "plaques mineures et au-delà",
-    it: "placche minori e maggiori",
-    ja: "小規模プレート以上",
-    ko: "소규모 판 이상",
-    "zh-Hans": "小板块及以上",
-    "zh-Hant": "小板塊及以上",
-    ru: "малые плиты и крупнее",
-  },
-  {
-    en: "microplates with a measured area, and larger",
-    de: "Mikroplatten mit gemessener Fläche und grösser",
-    es: "microplacas con superficie medida y mayores",
-    fr: "microplaques à superficie mesurée et au-delà",
-    it: "microplacche con superficie misurata e maggiori",
-    ja: "面積が測定された微小プレート以上",
-    ko: "면적이 측정된 미소판 이상",
-    "zh-Hans": "有实测面积的微板块及以上",
-    "zh-Hant": "有實測面積的微板塊及以上",
-    ru: "микроплиты с измеренной площадью и крупнее",
-  },
-  {
-    en: "microplates and larger, measured or not",
-    de: "Mikroplatten und grösser, ob gemessen oder nicht",
-    es: "microplacas y mayores, medidas o no",
-    fr: "microplaques et au-delà, mesurées ou non",
-    it: "microplacche e maggiori, misurate o no",
-    ja: "微小プレート以上、測定の有無を問わず",
-    ko: "미소판 이상, 측정 여부와 무관",
-    "zh-Hans": "微板块及以上，无论是否测量",
-    "zh-Hant": "微板塊及以上，無論是否測量",
-    ru: "микроплиты и крупнее, измеренные или нет",
-  },
-  {
-    en: "tectonic plates of unknown classification",
-    de: "tektonische Platten ohne bekannte Einordnung",
-    es: "placas tectónicas sin clasificación conocida",
-    fr: "plaques tectoniques sans classification connue",
-    it: "placche tettoniche senza classificazione nota",
-    ja: "分類不明の構造プレート",
-    ko: "분류가 알려지지 않은 판",
-    "zh-Hans": "分类未知的构造板块",
-    "zh-Hant": "分類未知的構造板塊",
-    ru: "тектонические плиты неизвестной классификации",
-  },
+/** What each tier's cut is, as a prose id ("continentTiers.<i>") resolved in the frontend
+ *  from src/locale/topics — the plates come banded (major / minor / micro), not by a
+ *  threshold, and the ruler reads them cumulatively, substituting the lowest band just
+ *  added. Tier 3 folds its caveat onto a `{br}{br}` second line via the "@<noteId>" tail
+ *  (see `resolveCondition`): kept out of a separate ℹ️ glyph by design — that glyph is the
+ *  language lists' (transliteration and the like), and the ruler already carries the band. */
+const tierConditionsWithNotes = [
+  "continentTiers.0",
+  "continentTiers.1",
+  "continentTiers.2",
+  "continentTiers.3@tier3Note",
+  "continentTiers.4",
 ];
 
-/** The ruler's hover. `{condition}` is filled with the band above; at rest it
- *  names what the list is sorted by, the one thing a selection can't show. The
- *  "Selected:" / "Mostly selected:" prefix is a locale string the frontend
- *  prepends (src/locale, src/lib/fame `rulerTip`), so the text here is bare. */
-const RULER_TOOLTIP = {
-  text: "{condition}",
-  empty: {
-    en: "Ordered by plate area (Bird 2003).",
-    de: "Nach Plattenfläche geordnet (Bird 2003).",
-    es: "Ordenadas por superficie de la placa (Bird 2003).",
-    fr: "Classées par superficie des plaques (Bird 2003).",
-    it: "Ordinate per superficie delle placche (Bird 2003).",
-    ja: "プレート面積順（Bird 2003）。",
-    ko: "판 면적 순 (Bird 2003).",
-    "zh-Hans": "按板块面积排序（Bird 2003）。",
-    "zh-Hant": "按板塊面積排序（Bird 2003）。",
-    ru: "Упорядочено по площади плит (Bird 2003).",
-  },
-};
-
-/** Tier 3's caveat, folded into its tier condition as a `{br}` second line rather than a
- *  separate ℹ️ note (that glyph is the language lists' — transliteration and the like — and
- *  the ruler tooltip already carries the condition). */
-const TIER3_NOTE = {
-  en: "No area has ever been published for these plates, so this tier is grouped by the plate each sits under rather than ordered by size — and several of them are not their own encyclopedia article either.",
-  de: "Für diese Platten wurde nie eine Fläche veröffentlicht, daher ist diese Stufe nach Mutterplatte gruppiert statt nach Grösse sortiert — und mehrere von ihnen haben nicht einmal einen eigenen Enzyklopädie-Artikel.",
-  es: "Nunca se ha publicado la superficie de estas placas, así que este nivel se agrupa por la placa a la que pertenece cada una en lugar de ordenarse por tamaño, y varias ni siquiera tienen artículo propio.",
-  fr: "Aucune superficie n'a jamais été publiée pour ces plaques : ce niveau est donc regroupé par plaque parente plutôt que classé par taille, et plusieurs d'entre elles n'ont même pas d'article propre.",
-  it: "Per queste placche non è mai stata pubblicata una superficie, quindi questo livello è raggruppato per placca madre anziché ordinato per dimensione, e diverse non hanno nemmeno una voce propria.",
-  ja: "これらのプレートの面積は公表されたことがないため、この段階は大きさ順ではなく所属するプレートごとにまとめてあります。独立した記事すらないものもいくつかあります。",
-  ko: "이 판들은 면적이 공표된 적이 없어 이 단계는 크기순이 아니라 상위 판별로 묶여 있으며, 그중 몇몇은 독립된 문서조차 없습니다.",
-  "zh-Hans": "这些板块从未公布过面积，因此本层按其所属板块分组，而非按大小排序——其中有几个甚至没有独立的百科条目。",
-  "zh-Hant": "這些板塊從未公佈過面積，因此本層按其所屬板塊分組，而非按大小排序——其中有幾個甚至沒有獨立的百科條目。",
-  ru: "Для этих плит никогда не публиковалась площадь, поэтому этот уровень сгруппирован по родительской плите, а не упорядочен по размеру — и у нескольких из них даже нет отдельной энциклопедической статьи.",
-};
-
-/** Fold each tier's caveat into its condition as a `{br}` second line — the ruler tooltip
- *  renders it under the band it names (see `rulerTip`). Only tier 3 has one; tier 4's own
- *  wording ("of unknown classification") already says what it is. */
-/** The localized "Note:" that opens the folded second line — a blank line ({br}{br}) sets it
- *  off from the condition, then the label, so the caveat reads as an aside rather than part of
- *  the tier's name. */
-const NOTE_LABEL = {
-  en: "Note: ",
-  de: "Hinweis: ",
-  es: "Nota: ",
-  fr: "Note : ",
-  it: "Nota: ",
-  ja: "注：",
-  ko: "참고: ",
-  "zh-Hans": "注：",
-  "zh-Hant": "註：",
-  ru: "Примечание: ",
-};
-const tierConditionsWithNotes = TIER_CONDITIONS.map((cond, i) =>
-  i === 3
-    ? Object.fromEntries(
-        Object.entries(cond).map(([l, v]) => [l, TIER3_NOTE[l] ? `${v}{br}{br}${NOTE_LABEL[l] ?? ""}${TIER3_NOTE[l]}` : v]),
-      )
-    : cond,
-);
+/** The ruler's hover, as prose ids resolved in the frontend (src/locale/topics `ruler.continents`).
+ *  `text` is "{condition}" — the band the ruler brought in stands alone; `empty` names the
+ *  ordering at rest. The "Selected:" / "Mostly selected:" prefix is a locale string the
+ *  frontend prepends (src/lib/fame `rulerTip`). */
+const RULER_TOOLTIP = { text: "ruler.continents.text", empty: "ruler.continents.empty" };
 
 /** A Wikidata label, tidied twice — the dump keeps them raw (a snapshot has no business
  *  disagreeing with its source), so the curation is applied here on read.
