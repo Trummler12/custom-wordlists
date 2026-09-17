@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { resolveProse, topicProse } from "./index";
+import { resolveCondition, resolveProse, topicProse } from "./index";
 
 /** The interface languages that carry their own topic-prose dictionary. */
 const LANGS = ["en", "de", "es", "fr", "it", "ja", "ko", "zh-Hans", "zh-Hant", "ru"];
@@ -42,5 +42,26 @@ describe("resolveProse", () => {
   });
   it("returns the id itself when it names nothing (a stale id fails visibly)", () => {
     expect(resolveProse("sovereignty.doesNotExist", "en")).toBe("sovereignty.doesNotExist");
+  });
+});
+
+describe("resolveCondition", () => {
+  it("wraps a band key in the locale's `more` format", () => {
+    expect(resolveCondition("100M", "en")).toBe("100 million or more");
+    expect(resolveCondition("1k", "en")).toBe("1,000 or more");
+    expect(resolveCondition("100M", "ja")).toBe("1億以上");
+    expect(resolveCondition("300k", "de")).toBe("300.000 und mehr");
+  });
+  it("renders the floor token as `aboveZero`", () => {
+    expect(resolveCondition(">0", "en")).toBe("more than 0");
+    expect(resolveCondition(">0", "ru")).toBe("больше 0");
+  });
+  it("resolves a plain prose id (the descriptive continent tiers)", () => {
+    expect(resolveCondition("continentTiers.0", "en")).toBe("continents and major plates");
+  });
+  it("folds a tier's note onto a {br}{br} second line via the @noteId tail", () => {
+    expect(resolveCondition("continentTiers.3@tier3Note", "en")).toBe(
+      "microplates and larger, measured or not{br}{br}Note: No area has ever been published for these plates, so this tier is grouped by the plate each sits under rather than ordered by size — and several of them are not their own encyclopedia article either.",
+    );
   });
 });

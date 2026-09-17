@@ -127,7 +127,8 @@ export function skipCollapsed(pos: number[], current: number, target: number): n
 export function rulerTip(
   g: Group,
   depth: number,
-  resolve: (s: LocalizedString) => string,
+  resolveText: (s: LocalizedString) => string,
+  resolveCond: (s: LocalizedString) => string,
   prefix: string,
   stored?: { conditions?: LocalizedString[]; wrap: (body: string) => string },
 ): string | undefined {
@@ -137,11 +138,13 @@ export function rulerTip(
   // wording rather than a separate note); the hover is a native `title`, so the break
   // is a newline. Applied to every line the tooltip can hold.
   const nl = (s: string) => s.replaceAll("{br}", "\n");
+  // `text`/`empty` are prose ids (the tooltip frame); the conditions are band-key / prose-id
+  // tokens (the band the ruler brought in) — two resolvers, since the two resolve differently.
   // At rest nothing is selected, so the ordering line stands on its own — no prefix.
-  if (depth <= 0) return nl(resolve(rt.empty));
+  if (depth <= 0) return nl(resolveText(rt.empty));
   const conds = g.tierConditions ?? [];
   const body = (cond: LocalizedString | undefined) =>
-    resolve(rt.text).replace("{condition}", cond ? resolve(cond) : "");
+    resolveText(rt.text).replace("{condition}", cond ? resolveCond(cond) : "");
   // Clamp to what the ruler can actually reach here: a capped group has fewer tiers
   // than the stored depth, and reading past its conditions would leave the token empty.
   const shown = Math.min(depth, conds.length);

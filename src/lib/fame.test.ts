@@ -224,6 +224,8 @@ describe("skipCollapsed", () => {
 });
 
 describe("rulerTip", () => {
+  // The fixtures use literal strings, so one resolver serves both the tooltip frame
+  // (text/empty) and the conditions — production splits them into resolveProse / resolveCondition.
   const resolve = (s: LocalizedString) => (typeof s === "string" ? s : s.en);
   const g = (): Group => ({
     ...tiered(2, 3),
@@ -235,24 +237,24 @@ describe("rulerTip", () => {
   });
 
   it("is nothing for a list that declares none, so the caller can fall back", () => {
-    expect(rulerTip(tiered(2, 3), 1, resolve, "Selected:")).toBeUndefined();
+    expect(rulerTip(tiered(2, 3), 1, resolve, resolve, "Selected:")).toBeUndefined();
   });
 
   it("says what the list is ordered by at rest, with no prefix", () => {
-    expect(rulerTip(g(), 0, resolve, "Selected:")).toBe("Ranked by population.");
+    expect(rulerTip(g(), 0, resolve, resolve, "Selected:")).toBe("Ranked by population.");
   });
 
   it("prefixes the body and fills {condition} with the band just brought in", () => {
-    expect(rulerTip(g(), 1, resolve, "Selected:")).toBe(
+    expect(rulerTip(g(), 1, resolve, resolve, "Selected:")).toBe(
       "Selected: Countries with 100 million or more inhabitants",
     );
-    expect(rulerTip(g(), 2, resolve, "Selected:")).toBe(
+    expect(rulerTip(g(), 2, resolve, resolve, "Selected:")).toBe(
       "Selected: Countries with 20 million or more inhabitants",
     );
   });
 
   it("takes the prefix it is handed, so a mixed merge can say 'Mostly selected'", () => {
-    expect(rulerTip(g(), 1, resolve, "Mostly selected:")).toBe(
+    expect(rulerTip(g(), 1, resolve, resolve, "Mostly selected:")).toBe(
       "Mostly selected: Countries with 100 million or more inhabitants",
     );
   });
@@ -262,13 +264,13 @@ describe("rulerTip", () => {
       ...tiered(2, 3),
       rulerTooltip: { text: "{condition}", empty: "Ranked." },
     };
-    expect(rulerTip(noConds, 1, resolve, "Selected:")).toBe("Selected: ");
+    expect(rulerTip(noConds, 1, resolve, resolve, "Selected:")).toBe("Selected: ");
   });
 
   it("clamps the primary to the last visible band rather than emptying the token", () => {
     // A capped group (two conditions) with a stored depth past them — the "< 1M"
     // case. Without the stored option, it still must not read an empty condition.
-    expect(rulerTip(g(), 9, resolve, "Selected:")).toBe(
+    expect(rulerTip(g(), 9, resolve, resolve, "Selected:")).toBe(
       "Selected: Countries with 20 million or more inhabitants",
     );
   });
@@ -282,7 +284,7 @@ describe("rulerTip", () => {
       "100,000 or more",
     ];
     const stored = { conditions: full, wrap: (b: string) => `(Stored: ${b})` };
-    expect(rulerTip(g(), 5, resolve, "Selected:", stored)).toBe(
+    expect(rulerTip(g(), 5, resolve, resolve, "Selected:", stored)).toBe(
       "Selected: Countries with 20 million or more inhabitants\n" +
         "(Stored: Countries with 100,000 or more inhabitants)",
     );
@@ -293,7 +295,7 @@ describe("rulerTip", () => {
       conditions: ["100 million or more", "20 million or more"],
       wrap: (b: string) => `(Stored: ${b})`,
     };
-    expect(rulerTip(g(), 2, resolve, "Selected:", stored)).toBe(
+    expect(rulerTip(g(), 2, resolve, resolve, "Selected:", stored)).toBe(
       "Selected: Countries with 20 million or more inhabitants",
     );
   });
@@ -305,7 +307,7 @@ describe("rulerTip", () => {
       tierConditions: ["Major plates{br}grouped by parent, not size"],
       rulerTooltip: { text: "{condition}", empty: "Ranked." },
     };
-    expect(rulerTip(g2, 1, resolve, "Selected:")).toBe(
+    expect(rulerTip(g2, 1, resolve, resolve, "Selected:")).toBe(
       "Selected: Major plates\ngrouped by parent, not size",
     );
   });

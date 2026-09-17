@@ -1,7 +1,8 @@
 <script lang="ts">
   import { fameGroups, rulerTip, snapPositions } from "../../lib/fame";
-  import type { Group } from "../../lib/types";
+  import type { Group, LocalizedString } from "../../lib/types";
   import { resolveStr } from "../../lib/words";
+  import { resolveCondition, resolveProse } from "../../locale/topics";
   import { lang } from "../../state/lang.svelte";
   import { overlays } from "../../state/overlays.svelte";
   import { selection } from "../../state/selection.svelte";
@@ -32,8 +33,15 @@
   const prefix = $derived(
     selection.depthMixed(tid) ? lang.ui.fame.mostlySelected : lang.ui.fame.selected,
   );
+  // The tooltip frame (`text`/`empty`) resolves as a prose id; the tier conditions as
+  // band-key / prose-id tokens. A literal language map (should any topic still carry one)
+  // still resolves through resolveStr, so the resolvers accept either form.
+  const asText = (s: LocalizedString) =>
+    typeof s === "string" ? resolveProse(s, lang.uiLang) : resolveStr(s, lang.uiLang);
+  const asCond = (s: LocalizedString) =>
+    typeof s === "string" ? resolveCondition(s, lang.uiLang) : resolveStr(s, lang.uiLang);
   const tip = $derived(
-    rulerTip(group, depth, (s) => resolveStr(s, lang.uiLang), prefix, {
+    rulerTip(group, depth, asText, asCond, prefix, {
       conditions: rawGroup?.tierConditions,
       wrap: lang.ui.fame.stored,
     }) ?? lang.ui.fame.groupsDefined(fame),

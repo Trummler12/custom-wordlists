@@ -100,3 +100,27 @@ export function resolveProse(id: string, lang: string): string {
   const base = walk(topicProse(FALLBACK));
   return typeof base === "string" ? base : id;
 }
+
+/** The token the cumulative floor tier carries — "more than 0", not "under the smallest
+ *  band", since the ruler has already swept in everything above it. Distinct from any
+ *  band key so `resolveCondition` can tell them apart. */
+export const FLOOR = ">0";
+
+/** Resolve a tier-condition token to `lang` — what the ruler tooltip names as the band it
+ *  has just brought in. Three forms, matching what the topic data now carries in place of a
+ *  baked all-language condition:
+ *   - a band key ("100M", "1k") ⇒ the band word wrapped by `more` ("100 million or more");
+ *   - the floor token (`FLOOR`) ⇒ `aboveZero`;
+ *   - a prose id ("continentTiers.0") ⇒ `resolveProse`, with an optional "@<noteId>" tail
+ *     folding a tier's caveat onto a `{br}{br}<noteLabel>` second line (the continents list's
+ *     tier-3 note, kept out of a separate ℹ️ glyph by design). */
+export function resolveCondition(token: string, lang: string): string {
+  const p = topicProse(lang);
+  if (token === FLOOR) return p.aboveZero;
+  if (Object.prototype.hasOwnProperty.call(p.bands, token)) return p.more(p.bands[token]);
+  const at = token.indexOf("@");
+  if (at !== -1) {
+    return `${resolveProse(token.slice(0, at), lang)}{br}{br}${p.noteLabel}${resolveProse(token.slice(at + 1), lang)}`;
+  }
+  return resolveProse(token, lang);
+}
