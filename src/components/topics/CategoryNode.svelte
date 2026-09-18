@@ -155,3 +155,37 @@
     {/each}
   </div>
 {/if}
+
+<style>
+  .category {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin: var(--gap-before-cat) 0 var(--gap-after-cat);
+    position: relative; /* anchor for the coverage popup, like .topic-row */
+  }
+  .category-title {
+    margin: 0;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--muted-2);
+  }
+  .category-title label {
+    cursor: pointer;
+  }
+  /* The category counter reads at the same size as the ones below it — this row is
+     quieter by colour, weight and letterspacing, and shrinking its digits too made it
+     look like a different kind of number. Its own line-height, though: at the shared
+     size the default 1.5 would make this the tallest box on the row and stretch it. */
+  .category .meta {
+    line-height: 1;
+  }
+  /* Nested tree level: indent a category's topics + subcategories, with a guide.
+     --tree-step (globals.css) is the total indent per level, split around the line. */
+  .cat-children {
+    margin-left: calc(var(--tree-step) / 2);
+    padding-left: calc(var(--tree-step) / 2);
+    border-left: 1px solid var(--border);
+  }
+</style>

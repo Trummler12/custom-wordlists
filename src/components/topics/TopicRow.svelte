@@ -203,3 +203,28 @@
     <FameDepthSlider tid={topic.id} group={sole} />
   {/if}
 </div>
+
+<style>
+  .topic-item {
+    position: relative; /* anchor for .tip-note */
+    border-bottom: 1px solid var(--border);
+  }
+  .topic-row {
+    display: flex;
+    align-items: baseline;
+    gap: 0.25rem;
+  }
+  .topic {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+    /* Content-width, not flex:1 — so the Names dropdown sits against the title like
+       a group row's, rather than being pushed to the far side. `.meta`'s margin
+       still right-aligns the count. */
+    padding: 0.5rem 0.2rem 0.5rem 0.1rem;
+    cursor: pointer;
+  }
+  .topic .title {
+    font-weight: 600;
+  }
+</style>

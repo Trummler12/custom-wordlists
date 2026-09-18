@@ -26,3 +26,56 @@
     {/if}
   </section>
 {/if}
+
+<style>
+  /* Tree-wide styling owned by the tree root. The rules below reach into the child
+     rows (CategoryNode / TopicRow) on purpose — hence `:global` — but stay confined to
+     `.topics`, so nothing leaks past the tree. Each row's own layout is in its component.
+
+     The expander column and the word-count meta are shared by both row kinds, so they
+     live here rather than being duplicated in each. */
+
+  /* Only the first TOP-LEVEL category hugs the "Topics" heading. Nested first children
+     (e.g. Science → Chemistry) keep the normal above-gap so they aren't cramped. */
+  .topics > :global(.category):first-of-type {
+    margin-top: 0.25rem;
+  }
+  /* Any list inside the tree (e.g. a panel's) drops the native list chrome. */
+  .topics :global(ul) {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .topics :global(.expander) {
+    background: none;
+    border: none;
+    cursor: pointer;
+    /* Tighter on the checkbox side only: the outer padding is this small glyph's tap
+       area and has to stay. */
+    padding: 0 0.1rem 0 0.25rem;
+    color: var(--muted-2);
+    font-size: 0.9rem;
+    line-height: 1;
+  }
+  /* Same box as the button, minus the arrow — so a topic that can't expand keeps the
+     column width a topic that can would occupy. */
+  .topics :global(.expander.placeholder) {
+    visibility: hidden;
+  }
+  .topics :global(.meta) {
+    margin-left: auto;
+    color: var(--muted-2);
+    font-size: 0.85rem;
+    /* Every digit one width, so the counts below each other line up as a column
+       rather than drifting with the number. */
+    font-variant-numeric: tabular-nums;
+  }
+  /* Right-aligning the row only lines up the right edge; the slash still moves with the
+     total's digit count. Reserving three digits and setting the total flush right inside
+     them fixes the slash too, leaving the blank width where it reads as breathing room. */
+  .topics :global(.meta .total) {
+    display: inline-block;
+    min-width: 4ch;
+    text-align: right;
+  }
+</style>
