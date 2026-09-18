@@ -97,3 +97,87 @@
   </div>
   <TipNote id={tipId} text={lang.ui.fame.none} />
 </div>
+
+<style>
+  /* Per-group fame-depth slider — a custom track so the snap markers can sit on the rail
+     and their spacing can mirror tier sizes (a native <input range> can do neither). Colours
+     come from the shared --range-* vars in themes.css. The thumb/fill/dot positions are set
+     inline (computed from the snap positions), so only the static chrome lives here. */
+  .group-depth {
+    position: relative; /* anchor for this ruler's .tip-note */
+    margin: 0.45rem 0 0.7rem 1.75rem;
+    width: 100%;
+    max-width: 16rem;
+  }
+  /* On the topic row itself, one level less of nesting than a group's ruler, so it lines
+     up under the topic title rather than under a group name that isn't there. Reaches up to
+     the parent TopicRow's .topic-item. */
+  :global(.topic-item) > .group-depth {
+    margin-left: 2.85rem;
+  }
+  .depth-track {
+    --inset: 8px; /* keeps the end dots off the rail edges; matches INSET_PX in App.svelte */
+    position: relative;
+    /* Own stacking context, so the dots/thumb z-indexes below stack only against each other
+       and can't escape to the root context (where they would paint over the fixed footer).
+       The ruler's tip-note is a sibling of the track, not a child, so it stays free to span rows. */
+    isolation: isolate;
+    height: 1rem; /* hit area; the visible rail is thinner */
+    cursor: pointer;
+    touch-action: none; /* let pointer drag work without scrolling */
+  }
+  .depth-rail,
+  .depth-fill {
+    position: absolute;
+    top: 50%;
+    height: 0.3rem;
+    border-radius: 999px;
+    transform: translateY(-50%);
+    pointer-events: none;
+  }
+  .depth-rail {
+    left: var(--inset);
+    right: var(--inset);
+    background: var(--range-track);
+  }
+  .depth-fill {
+    left: var(--inset);
+    background: var(--range-fill);
+  }
+  /* Inverted contrast on purpose: a dot on the blue fill is light, a dot on the grey track
+     is blue — so a marker stays visible on either side of the thumb. */
+  .depth-dot {
+    position: absolute;
+    top: 50%;
+    width: 0.34rem;
+    height: 0.34rem;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    background: var(--range-dot); /* left of the thumb, on the blue fill → light */
+    pointer-events: none;
+    z-index: 1;
+  }
+  .depth-dot.on {
+    background: var(--range-fill); /* right of the thumb, on the grey track → blue */
+  }
+  .depth-thumb {
+    position: absolute;
+    top: 50%;
+    width: 0.85rem;
+    height: 0.85rem;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    background: var(--range-fill);
+    border: 2px solid var(--range-thumb-ring);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.35);
+    pointer-events: none;
+    z-index: 2;
+  }
+  .depth-track:focus-visible {
+    outline: none;
+  }
+  .depth-track:focus-visible .depth-thumb {
+    outline: 2px solid var(--range-fill);
+    outline-offset: 2px;
+  }
+</style>
