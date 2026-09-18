@@ -55,30 +55,10 @@ header {
   }
 }
 
-/* Output panel: sticky and always full viewport height (minus --output-gap top +
-   bottom and the pinned footer), independent of the word count. The tall left
-   column keeps the sticky pinned through the whole page scroll. Flex column —
-   the chips grow and scroll inside, the counter stays at the bottom. */
-.output {
-  position: sticky;
-  top: var(--output-gap);
-  align-self: start;
-  display: flex;
-  flex-direction: column;
-  height: calc(100vh - 2 * var(--output-gap) - var(--footer-h));
-  min-height: 0;
-}
-@media (max-width: 50rem) {
-  /* Stacked: don't pin the output; size it to its content. */
-  .output {
-    position: static;
-    height: auto;
-  }
-  .chips {
-    flex: none;
-    max-height: min(24rem, calc(100vh - 6rem));
-  }
-}
+/* The output panel is a component: its sticky full-height column (.output), head
+   (.output-head/.head-actions), chips (.chips/.chip) and counter (.counter) are colocated
+   in components/output/. It is App.svelte's second grid column here; its own root does the
+   sticking. */
 
 /* The footer bar is a component now — its styling is colocated in
    components/layout/SiteFooter.svelte, so the coverage page (which also renders it)
@@ -239,21 +219,6 @@ header {
   cursor: not-allowed;
 }
 
-/* Output panel */
-.output-head {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-.head-actions {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-.head-actions > button {
-  padding: 0.35rem 0.9rem;
-  cursor: pointer;
-}
 
 /* Language picker (globe dropdown) — reused in the output head and (stacked
    layout only) in the top header. */
@@ -433,36 +398,4 @@ header {
     display: flex;
   }
 }
-.chips {
-  display: flex;
-  flex-wrap: wrap;
-  align-content: flex-start; /* pack chip rows at the top, don't spread them */
-  align-items: flex-start; /* keep each chip its natural height, not stretched */
-  gap: 0.35rem;
-  padding: 0.6rem;
-  border: 1px solid var(--panel-border);
-  border-radius: var(--radius);
-  /* Grow to fill the output panel; min-height:0 lets the chips scroll inside the
-     flex column instead of stretching it. The counter below stays visible. */
-  flex: 1 1 auto;
-  min-height: 0;
-  overflow-y: auto;
-  /* The chips box is the one area whose wheel must NOT chain to the page scroll. */
-  overscroll-behavior: contain;
-  cursor: text;
-}
-.chip {
-  background: var(--chip-bg);
-  color: var(--chip-fg);
-  border-radius: var(--radius-sm);
-  padding: 0.1rem 0.45rem;
-  font-size: 0.9rem;
-}
-.counter {
-  color: var(--muted);
-  font-size: 0.85rem;
-  margin: 0.6rem 0 0;
-}
-.counter.warn {
-  font-weight: 600;
-}
+/* .chips/.chip (WordChips) and .counter (OutputCounter) are colocated in components/output/. */
