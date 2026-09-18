@@ -57,7 +57,7 @@
       "allOf": [{ "$ref": "#/$defs/stringOrList" }],
       "description": "Where the entries came from — one string or a list of them. Free-form, so a label can precede the link (\"German: https://…\"); validate-data warns when an item contains no URL."
     },
-    "generatedRomaji": { "type": "boolean", "description": "True when this list's romaji were produced by transliterating its Japanese names rather than taken from a source that names them — see src/lib/kana.ts. A reading derived from kana is correct as a reading and may still not be how the name is officially spelled in Latin script, so the UI says where that is the case and invites a correction." },
+    "generatedRomaji": { "type": "boolean", "description": "True when this list's romaji were produced by transliterating its Japanese names rather than taken from a source that names them — see src/lib/kana.mjs. A reading derived from kana is correct as a reading and may still not be how the name is officially spelled in Latin script, so the UI says where that is the case and invites a correction." },
     "order": { "type": "integer", "description": "Where this sits among its siblings, lowest first. Undeclared sorts last, alphabetically — so ordering a few of them needs nothing on the rest. The tree is otherwise the file system's, which puts Animation first and Gaming sixth for no reason anyone chose." },
     "corrections": {
       "type": "array",
@@ -153,6 +153,11 @@
       "items": { "$ref": "#/$defs/locString" }
     },
     "rulerTooltip": { "$ref": "#/$defs/rulerTooltip" },
+    "extendFrom": {
+      "type": "integer",
+      "minimum": 1,
+      "description": "How many top tiers the fame ruler reaches by default. The languages list bottoms out at its ≥ 1M-speaker tiers and hides the long tail below until the reader lifts the cap (the ✅ panel's \"< 1M\" box, the reserved `~extend` toggle). Absent means the whole list is always reachable."
+    },
     "inheritsUpwards": {
       "type": "integer",
       "minimum": 1,
@@ -244,7 +249,12 @@
         },
         "reason": {
           "allOf": [{ "$ref": "#/$defs/locString" }],
-          "description": "Why they are out, in one phrase — the line beside the checkbox that can bring them back, so write it for the reader. Localized here rather than in a locale file because it describes this list's source, not the app: adding a word list never means editing en.ts. May carry `{br}` and `[text](url)` links (https only), resolved by src/locale/html."
+          "description": "Why they are out, in one phrase — the line beside the checkbox that can bring them back, so write it for the reader. A bare string is a prose id into the centralized topic-prose dictionary (src/locale/topics), for a reason shared across generated lists (\"sovereignty.deFactoRecognized\"); a language map is a self-contained reason that lives with its own list, for a one-off that describes that list's source (the Pokémon reasons). May carry `{br}` and `[text](url)` links (https only), resolved by src/locale/html."
+        },
+        "wd": {
+          "type": "string",
+          "pattern": "^Q[0-9]+$",
+          "description": "A Wikidata entity id whose link wraps the resolved `reason` label, for a reason that names a Wikidata concept (the language types). The label is localized (a prose id), the link is not, so the frontend joins them into `[label](url)` — see `resolveReason` in src/lib/words."
         },
         "as": {
           "allOf": [{ "$ref": "#/$defs/word" }],

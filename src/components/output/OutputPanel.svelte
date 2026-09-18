@@ -43,3 +43,40 @@
     <OutputCounter />
   {/if}
 </section>
+
+<style>
+  /* Sticky and always full viewport height (minus --output-gap top + bottom and the pinned
+     footer), independent of the word count. As App.svelte's second grid column, the tall left
+     column keeps it pinned through the whole page scroll. Flex column — the chips grow and
+     scroll inside, the counter stays at the bottom. */
+  .output {
+    position: sticky;
+    top: var(--output-gap);
+    align-self: start;
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh - 2 * var(--output-gap) - var(--footer-h));
+    min-height: 0;
+  }
+  @media (max-width: 50rem) {
+    /* Stacked: don't pin the output; size it to its content. */
+    .output {
+      position: static;
+      height: auto;
+    }
+  }
+  .output-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .head-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .head-actions > button {
+    padding: 0.35rem 0.9rem;
+    cursor: pointer;
+  }
+</style>

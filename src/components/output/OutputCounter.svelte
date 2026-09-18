@@ -20,3 +20,14 @@
     {lang.ui.output.overLong(output.overlong.length, SKRIBBL.maxWordLen)}
   </p>
 {/if}
+
+<style>
+  .counter {
+    color: var(--muted);
+    font-size: 0.85rem;
+    margin: 0.6rem 0 0;
+  }
+  .counter.warn {
+    font-weight: 600;
+  }
+</style>

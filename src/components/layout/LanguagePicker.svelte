@@ -45,3 +45,52 @@
     {/if}
   </div>
 {/if}
+
+<style>
+  .lang-picker {
+    position: relative;
+  }
+  /* The 🌐 button's box (.lang-btn) is shared with SettingsMenu's ⚙️, so it lives in
+     app.css; only the menu it opens is here. */
+  .lang-menu {
+    position: absolute;
+    top: calc(100% + 0.25rem);
+    right: 0;
+    z-index: 10;
+    margin: 0;
+    padding: 0.25rem;
+    min-width: 9rem;
+    list-style: none;
+    background: var(--chip-bg);
+    border: 1px solid var(--panel-border);
+    border-radius: var(--radius);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
+  }
+  .lang-menu button {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+    width: 100%;
+    padding: 0.3rem 0.5rem;
+    background: none;
+    border: none;
+    border-radius: var(--radius-sm);
+    color: inherit;
+    text-align: left;
+    cursor: pointer;
+  }
+  .lang-menu button:hover {
+    background: rgba(128, 128, 128, 0.18);
+  }
+  .lang-menu button.selected {
+    font-weight: 600;
+  }
+  .lang-code {
+    min-width: 1.7rem;
+    color: var(--muted-2);
+    font-size: 0.8rem;
+  }
+  .lang-name {
+    flex: 1;
+  }
+</style>

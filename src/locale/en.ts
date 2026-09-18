@@ -27,6 +27,7 @@ export const en: UIStrings = {
     none: "No fame groups defined yet — see the Contribution Guide in the footer to propose some!",
     selected: "Selected:",
     mostlySelected: "Mostly selected:",
+    stored: (body) => `(Stored: ${body})`,
     toggle: (shown) => (shown ? "Hide this list's fame ruler" : "Show this list's fame ruler"),
     toggleAll: (allShown) => (allShown ? "Hide these fame rulers" : "Show these fame rulers"),
   },
@@ -49,12 +50,23 @@ export const en: UIStrings = {
       omitted
         ? "Toggle to include them anyway — skribbl.io won't take them, but another game might."
         : "Toggle to leave them out again.",
+    helpAdd: (url) => ` — [help us add what's missing!](${url})`,
   },
   coverage: {
     label: "Geoguessr / Street View coverage",
     all: "All countries",
     withCoverage: "With official coverage",
     reliable: "Reliable coverage only",
+  },
+  languageType: {
+    label: "Which language types to include",
+    base: "Living modern languages",
+    submillion: "Also languages with <1 million users",
+    notRecommended: "A poor fit for casual drawing: far less familiar than its speaker numbers suggest.",
+    toggle: (included) =>
+      included
+        ? "Ticked — these are in the list. Untick to leave them out."
+        : "Tick to add these to the list.",
   },
   sovereignty: {
     label: "Sovereignty & recognition",
@@ -127,5 +139,30 @@ export const en: UIStrings = {
     helpOut: "Want to help with the project? Check out the",
     contributionGuide: "Contribution Guide",
     helpOutAfter: "!",
+  },
+  coveragePage: {
+    home: "Main App Page",
+    topicLabel: "Topic:",
+    uiLanguage: "Interface language",
+    title: "Language Coverage",
+    intro: "Pick a topic to see which languages Wikidata already has a label for, per item.",
+    lead: "This topic's contents come from [Wikidata](https://www.wikidata.org/wiki/Wikidata:Main_Page). The table shows which languages already have a label for each item.",
+    notesTitle: "How to help",
+    noteAdd: "Open an item from the first column and, once logged in, add any missing label you're sure of.",
+    noteLabelLister: "To add a language that isn't listed at all, enable the labelLister gadget in your [Wikidata preferences](https://www.wikidata.org/wiki/Special:Preferences#mw-prefsection-gadgets), under Gadgets; each item then shows a “Labels list” (top right, under Tools) that accepts any language code.",
+    noteProtected: "Some Wikidata items are protected and need an account at least four days old with 100 or more edits to change.",
+    noteStale: "Note that this table comes from a manual dump, so the coverage shown here can lag the current state on Wikidata by up to several weeks.",
+    itemCount: (n) => `${n.toLocaleString()} items`,
+    uiOnly: "UI languages only",
+    uiOnlyHint: "The raw data dumps already cover every language skribbl.io supports,{br}plus a few more with many users.{br}So the data already supports every planned language,{br}while the interface is kept up by us maintainers and naturally lags well behind.{br}And there is little point in trying to add a new interface language{br}while barely any topics cover that language yet.{br}But the more people help, the sooner new languages are greenlit!{br}=> Feel free to check out the Contribution Guide below!",
+    item: "Item",
+    numeric: { population: "Population", area: "Area (km²)", users: "Users" },
+    first: "First page",
+    prev: "Previous page",
+    next: "Next page",
+    last: "Last page",
+    page: (current, total) => `Page ${current} / ${total}`,
+    loading: (topic) => `Loading ${topic}…`,
+    loadError: (topic, message) => `Could not load coverage for ${topic}: ${message}`,
   },
 };

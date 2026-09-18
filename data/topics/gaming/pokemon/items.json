@@ -1,6 +1,36 @@
 {
   "id": "items",
-  "title": {"en":"Items","es":"Objetos","fr":"Objets","it":"Strumenti","ja":"どうぐ","ko":"도구"},
+  "title": {
+    "en": "Items",
+    "es": "Objetos",
+    "fr": "Objets",
+    "it": "Strumenti",
+    "ja": "どうぐ",
+    "ko": "도구",
+    "zh-Hans": "道具",
+    "zh-Hant": "道具",
+    "pt": "Itens",
+    "ru": "Предметы",
+    "tr": "Eşyalar",
+    "pl": "Przedmioty",
+    "nl": "Voorwerpen",
+    "bg": "Предмети",
+    "cs": "Předměty",
+    "da": "Genstande",
+    "et": "Esemed",
+    "fi": "Esineet",
+    "el": "Αντικείμενα",
+    "he": "חפצים",
+    "hu": "Tárgyak",
+    "lv": "Priekšmeti",
+    "mk": "Предмети",
+    "no": "Gjenstander",
+    "ro": "Obiecte",
+    "sr": "Предмети",
+    "sk": "Predmety",
+    "sv": "Föremål",
+    "tl": "Mga Item"
+  },
   "icon": "🎒",
   "description": "Pokémon items, in nine languages.",
   "languages": ["de","en","es","es-419","fr","it","ja","ja-Latn","ko","zh-Hans","zh-Hant"],
@@ -20,7 +50,10 @@
         "fr": "300 [Cristaux Dynamax](https://bulbapedia.bulbagarden.net/wiki/Dynamax_Crystal), chacun nommé d'après une étoile du Bright Star Catalogue ; douze seulement ont servi",
         "it": "300 [Cristalli Dynamax](https://bulbapedia.bulbagarden.net/wiki/Dynamax_Crystal), ognuno col nome di una stella del Bright Star Catalogue; solo dodici sono stati utilizzabili",
         "ja": "300個の[ダイマックスクリスタル](https://bulbapedia.bulbagarden.net/wiki/Dynamax_Crystal)。いずれもブライト・スター・カタログの星の名前で、実際に使えたのは12個だけ",
-        "ko": "300개의 [다이맥스 크리스탈](https://bulbapedia.bulbagarden.net/wiki/Dynamax_Crystal). 모두 밝은 별 목록의 별 이름이며, 실제로 쓸 수 있었던 것은 열두 개뿐"
+        "ko": "300개의 [다이맥스 크리스탈](https://bulbapedia.bulbagarden.net/wiki/Dynamax_Crystal). 모두 밝은 별 목록의 별 이름이며, 실제로 쓸 수 있었던 것은 열두 개뿐",
+        "zh-Hans": "300 个 [极巨化水晶](https://bulbapedia.bulbagarden.net/wiki/Dynamax_Crystal)，每个都以《亮星星表》中的一颗恒星命名；真正能用的只有十二个",
+        "zh-Hant": "300 個 [極巨化水晶](https://bulbapedia.bulbagarden.net/wiki/Dynamax_Crystal)，每個都以《亮星星表》中的一顆恆星命名；真正能用的只有十二個",
+        "ru": "300 [кристаллов Даймакс](https://bulbapedia.bulbagarden.net/wiki/Dynamax_Crystal), каждый назван в честь звезды из Каталога ярких звёзд; пригодными оказались лишь двенадцать"
       }
     },
     {
@@ -33,7 +66,10 @@
         "fr": "Doses plus fortes des [objets X](https://bulbapedia.bulbagarden.net/wiki/Battle_item#Effect), dessinées comme celles déjà listées",
         "it": "Dosi più forti degli [strumenti X](https://bulbapedia.bulbagarden.net/wiki/Battle_item#Effect), disegnate come quelle già presenti",
         "ja": "すでに載っている[Xシリーズ](https://bulbapedia.bulbagarden.net/wiki/Battle_item#Effect)の強力版。絵柄は同じ",
-        "ko": "이미 있는 [X 아이템](https://bulbapedia.bulbagarden.net/wiki/Battle_item#Effect)의 강화판. 그림은 같음"
+        "ko": "이미 있는 [X 아이템](https://bulbapedia.bulbagarden.net/wiki/Battle_item#Effect)의 강화판. 그림은 같음",
+        "zh-Hans": "已列出的 [X 系列道具](https://bulbapedia.bulbagarden.net/wiki/Battle_item#Effect)的加强版，绘图完全相同",
+        "zh-Hant": "已列出的 [X 系列道具](https://bulbapedia.bulbagarden.net/wiki/Battle_item#Effect)的加強版，繪圖完全相同",
+        "ru": "более сильные дозы [предметов X-](https://bulbapedia.bulbagarden.net/wiki/Battle_item#Effect), нарисованные так же, как уже перечисленные"
       }
     },
     {
@@ -47,7 +83,10 @@
         "fr": "Huit [clés de cabine](https://bulbapedia.bulbagarden.net/wiki/Key_to_Room_1) numérotées : la même épave dans Rubis/Saphir et dans son remake, un seul dessin",
         "it": "Otto [chiavi di cabina](https://bulbapedia.bulbagarden.net/wiki/Key_to_Room_1) numerate: lo stesso relitto in Rubino/Zaffiro e nel remake, un unico disegno",
         "ja": "番号違いの[船室のカギ](https://bulbapedia.bulbagarden.net/wiki/Key_to_Room_1)が8つ。ルビー・サファイアとそのリメイクで同じ沈没船、絵柄も1種類",
-        "ko": "번호만 다른 [선실 열쇠](https://bulbapedia.bulbagarden.net/wiki/Key_to_Room_1) 여덟 개. 루비·사파이어와 리메이크의 같은 난파선이며 그림도 하나"
+        "ko": "번호만 다른 [선실 열쇠](https://bulbapedia.bulbagarden.net/wiki/Key_to_Room_1) 여덟 개. 루비·사파이어와 리메이크의 같은 난파선이며 그림도 하나",
+        "zh-Hans": "八把仅编号不同的 [房间钥匙](https://bulbapedia.bulbagarden.net/wiki/Key_to_Room_1)——红宝石/蓝宝石及其重制版中的同一艘沉船，绘图也只有一张",
+        "zh-Hant": "八把僅編號不同的 [房間鑰匙](https://bulbapedia.bulbagarden.net/wiki/Key_to_Room_1)——紅寶石/藍寶石及其重製版中的同一艘沉船，繪圖也只有一張",
+        "ru": "восемь пронумерованных [ключей от кают](https://bulbapedia.bulbagarden.net/wiki/Key_to_Room_1) — то же затонувшее судно в Ruby/Sapphire и его ремейке, все с одним рисунком"
       }
     },
     {
@@ -61,7 +100,10 @@
         "fr": "Trois [bons](https://bulbapedia.bulbagarden.net/wiki/Coupon) identiques",
         "it": "Tre [coupon](https://bulbapedia.bulbagarden.net/wiki/Coupon) identici",
         "ja": "同じ[ひきかえけん](https://bulbapedia.bulbagarden.net/wiki/Coupon)が3つ",
-        "ko": "똑같은 [교환권](https://bulbapedia.bulbagarden.net/wiki/Coupon) 세 개"
+        "ko": "똑같은 [교환권](https://bulbapedia.bulbagarden.net/wiki/Coupon) 세 개",
+        "zh-Hans": "三张相同的 [兑换券](https://bulbapedia.bulbagarden.net/wiki/Coupon)",
+        "zh-Hant": "三張相同的 [兌換券](https://bulbapedia.bulbagarden.net/wiki/Coupon)",
+        "ru": "три одинаковых [купона](https://bulbapedia.bulbagarden.net/wiki/Coupon)"
       }
     },
     {
@@ -75,7 +117,10 @@
         "fr": "Trois copies numérotées d'une même [lettre](https://bulbapedia.bulbagarden.net/wiki/Gram)",
         "it": "Tre copie numerate della stessa [lettera](https://bulbapedia.bulbagarden.net/wiki/Gram)",
         "ja": "同じ[てがみ](https://bulbapedia.bulbagarden.net/wiki/Gram)の番号違いが3つ",
-        "ko": "같은 [편지](https://bulbapedia.bulbagarden.net/wiki/Gram)의 번호만 다른 사본 세 개"
+        "ko": "같은 [편지](https://bulbapedia.bulbagarden.net/wiki/Gram)의 번호만 다른 사본 세 개",
+        "zh-Hans": "同一封 [信件](https://bulbapedia.bulbagarden.net/wiki/Gram)的三个编号副本",
+        "zh-Hant": "同一封 [信件](https://bulbapedia.bulbagarden.net/wiki/Gram)的三個編號副本",
+        "ru": "три пронумерованные копии одного [письма](https://bulbapedia.bulbagarden.net/wiki/Gram)"
       }
     },
     {
@@ -89,7 +134,10 @@
         "fr": "Cinq tailles du même [Bonbon Exp.](https://bulbapedia.bulbagarden.net/wiki/Exp._Candy), de XS à XL",
         "it": "Cinque misure dello stesso [Caramella Esp.](https://bulbapedia.bulbagarden.net/wiki/Exp._Candy), da XS a XL",
         "ja": "同じ[けいけんアメ](https://bulbapedia.bulbagarden.net/wiki/Exp._Candy)のS〜XLの5サイズ",
-        "ko": "같은 [경험사탕](https://bulbapedia.bulbagarden.net/wiki/Exp._Candy)의 XS부터 XL까지 다섯 크기"
+        "ko": "같은 [경험사탕](https://bulbapedia.bulbagarden.net/wiki/Exp._Candy)의 XS부터 XL까지 다섯 크기",
+        "zh-Hans": "同一种 [经验糖果](https://bulbapedia.bulbagarden.net/wiki/Exp._Candy)的五种大小，从 XS 到 XL",
+        "zh-Hant": "同一種 [經驗糖果](https://bulbapedia.bulbagarden.net/wiki/Exp._Candy)的五種大小，從 XS 到 XL",
+        "ru": "пять размеров одной и той же [конфеты опыта](https://bulbapedia.bulbagarden.net/wiki/Exp._Candy), от XS до XL"
       }
     },
     {
@@ -102,7 +150,10 @@
         "fr": "Doses plus grandes des six [bonbons de statistique](https://bulbapedia.bulbagarden.net/wiki/Dynamax_Candy) déjà listés : Bonbon PV L et XL à côté du Bonbon PV",
         "it": "Dosi maggiori delle sei [caramelle statistica](https://bulbapedia.bulbagarden.net/wiki/Dynamax_Candy) già presenti: Caramella PS L e XL accanto alla Caramella PS",
         "ja": "すでに載っている6種の[能力アメ](https://bulbapedia.bulbagarden.net/wiki/Dynamax_Candy)の大きいサイズ。たいりょくアメLとXLがたいりょくアメの隣に並ぶ",
-        "ko": "이미 있는 여섯 [능력치 사탕](https://bulbapedia.bulbagarden.net/wiki/Dynamax_Candy)의 큰 용량. 체력사탕 L과 XL이 체력사탕 옆에 나란히"
+        "ko": "이미 있는 여섯 [능력치 사탕](https://bulbapedia.bulbagarden.net/wiki/Dynamax_Candy)의 큰 용량. 체력사탕 L과 XL이 체력사탕 옆에 나란히",
+        "zh-Hans": "已列出的六种 [能力糖果](https://bulbapedia.bulbagarden.net/wiki/Dynamax_Candy)的更大剂量——体力糖果 L 和 XL 就在体力糖果旁边",
+        "zh-Hant": "已列出的六種 [能力糖果](https://bulbapedia.bulbagarden.net/wiki/Dynamax_Candy)的更大劑量——體力糖果 L 和 XL 就在體力糖果旁邊",
+        "ru": "бо́льшие дозы шести уже перечисленных [конфет характеристик](https://bulbapedia.bulbagarden.net/wiki/Dynamax_Candy) — конфета здоровья L и XL рядом с конфетой здоровья"
       }
     },
     {
@@ -116,7 +167,10 @@
         "fr": "230 [CTs](https://bulbapedia.bulbagarden.net/wiki/TM) numérotées, toutes le même disque quelle que soit la capacité enseignée",
         "it": "230 [MT](https://bulbapedia.bulbagarden.net/wiki/TM) numerate, tutte lo stesso disco qualunque mossa insegnino",
         "ja": "番号違いの[わざマシン](https://bulbapedia.bulbagarden.net/wiki/TM)が230個。覚えるわざが何であれディスクは同じ",
-        "ko": "번호만 다른 [기술머신](https://bulbapedia.bulbagarden.net/wiki/TM) 230개. 어떤 기술을 가르치든 디스크는 하나"
+        "ko": "번호만 다른 [기술머신](https://bulbapedia.bulbagarden.net/wiki/TM) 230개. 어떤 기술을 가르치든 디스크는 하나",
+        "zh-Hans": "230 个仅编号不同的 [招式学习器](https://bulbapedia.bulbagarden.net/wiki/TM)，无论教什么招式都是同一张碟",
+        "zh-Hant": "230 個僅編號不同的 [招式學習器](https://bulbapedia.bulbagarden.net/wiki/TM)，無論教什麼招式都是同一張碟",
+        "ru": "230 пронумерованных [ТМ](https://bulbapedia.bulbagarden.net/wiki/TM), все с одним диском, какой бы приём они ни обучали"
       }
     },
     {
@@ -130,7 +184,10 @@
         "fr": "Huit [CSs](https://bulbapedia.bulbagarden.net/wiki/HM) numérotées, dessinées comme le disque de CT dans une autre couleur",
         "it": "Otto [MN](https://bulbapedia.bulbagarden.net/wiki/HM) numerate, disegnate come il disco MT in un altro colore",
         "ja": "番号違いの[ひでんマシン](https://bulbapedia.bulbagarden.net/wiki/HM)が8個。わざマシンのディスクの色違い",
-        "ko": "번호만 다른 [비전머신](https://bulbapedia.bulbagarden.net/wiki/HM) 여덟 개. 기술머신 디스크의 색만 다름"
+        "ko": "번호만 다른 [비전머신](https://bulbapedia.bulbagarden.net/wiki/HM) 여덟 개. 기술머신 디스크의 색만 다름",
+        "zh-Hans": "八个仅编号不同的 [秘传学习器](https://bulbapedia.bulbagarden.net/wiki/HM)，只是招式学习器碟片换了个颜色",
+        "zh-Hant": "八個僅編號不同的 [祕傳學習器](https://bulbapedia.bulbagarden.net/wiki/HM)，只是招式學習器碟片換了個顏色",
+        "ru": "восемь пронумерованных [СМ](https://bulbapedia.bulbagarden.net/wiki/HM), нарисованных как диск ТМ в другом цвете"
       }
     },
     {
@@ -144,7 +201,10 @@
         "fr": "100 [DTs](https://bulbapedia.bulbagarden.net/wiki/TR) numérotés, le disque à usage unique par lequel les jeux de Galar ont remplacé les CTs",
         "it": "100 [DT](https://bulbapedia.bulbagarden.net/wiki/TR) numerati, il disco monouso con cui i giochi di Galar hanno sostituito le MT",
         "ja": "番号違いの[わざレコード](https://bulbapedia.bulbagarden.net/wiki/TR)が100個。ガラル地方でわざマシンの代わりになった使い切りのレコード",
-        "ko": "번호만 다른 [기술레코드](https://bulbapedia.bulbagarden.net/wiki/TR) 100개. 가라르 지방에서 기술머신을 대신한 일회용 레코드"
+        "ko": "번호만 다른 [기술레코드](https://bulbapedia.bulbagarden.net/wiki/TR) 100개. 가라르 지방에서 기술머신을 대신한 일회용 레코드",
+        "zh-Hans": "100 个仅编号不同的 [招式记录](https://bulbapedia.bulbagarden.net/wiki/TR)，伽勒尔地区用来取代招式学习器的一次性记录",
+        "zh-Hant": "100 個僅編號不同的 [招式記錄](https://bulbapedia.bulbagarden.net/wiki/TR)，伽勒爾地區用來取代招式學習器的一次性記錄",
+        "ru": "100 пронумерованных [ТЗ](https://bulbapedia.bulbagarden.net/wiki/TR) — одноразовые записи, которыми игры Галара заменили ТМ"
       }
     },
     {
@@ -158,7 +218,10 @@
         "fr": "27 [Cartes Mémo](https://bulbapedia.bulbagarden.net/wiki/Data_Card) numérotées, chacune consignant une statistique différente du Pokéathlon",
         "it": "27 [Schede Dati](https://bulbapedia.bulbagarden.net/wiki/Data_Card) numerate, ognuna con una statistica diversa del Pokéathlon",
         "ja": "番号違いの[データカード](https://bulbapedia.bulbagarden.net/wiki/Data_Card)が27枚。それぞれポケスロンの別々の記録",
-        "ko": "번호만 다른 [데이터카드](https://bulbapedia.bulbagarden.net/wiki/Data_Card) 27장. 각각 포켓슬론의 다른 기록"
+        "ko": "번호만 다른 [데이터카드](https://bulbapedia.bulbagarden.net/wiki/Data_Card) 27장. 각각 포켓슬론의 다른 기록",
+        "zh-Hans": "27 张仅编号不同的 [数据卡](https://bulbapedia.bulbagarden.net/wiki/Data_Card)，各自记录不同的宝可梦铁人赛数据",
+        "zh-Hant": "27 張僅編號不同的 [資料卡](https://bulbapedia.bulbagarden.net/wiki/Data_Card)，各自記錄不同的寶可夢鐵人賽數據",
+        "ru": "27 пронумерованных [карт данных](https://bulbapedia.bulbagarden.net/wiki/Data_Card), каждая фиксирует свой показатель Покеатлона"
       }
     }
   ],
@@ -175,7 +238,10 @@
         "fr": "80 [bonbons d'espèce](https://bulbapedia.bulbagarden.net/wiki/Candy#Species-based_Candy), un par Pokémon : de vrais objets, mais ils noient les Pokémon eux-mêmes",
         "it": "80 [caramelle di specie](https://bulbapedia.bulbagarden.net/wiki/Candy#Species-based_Candy), una per Pokémon: strumenti veri, ma soffocano i Pokémon stessi",
         "ja": "ポケモンごとの[アメ](https://bulbapedia.bulbagarden.net/wiki/Candy#Species-based_Candy)が80種。実在するどうぐだが、ポケモン自体を埋もれさせてしまう",
-        "ko": "포켓몬마다 있는 [사탕](https://bulbapedia.bulbagarden.net/wiki/Candy#Species-based_Candy) 80종. 실제 도구지만 포켓몬 자체를 가려버림"
+        "ko": "포켓몬마다 있는 [사탕](https://bulbapedia.bulbagarden.net/wiki/Candy#Species-based_Candy) 80종. 실제 도구지만 포켓몬 자체를 가려버림",
+        "zh-Hans": "80 种 [专属糖果](https://bulbapedia.bulbagarden.net/wiki/Candy#Species-based_Candy)，每只宝可梦一种——虽是真正的道具，却会挤占宝可梦本身",
+        "zh-Hant": "80 種 [專屬糖果](https://bulbapedia.bulbagarden.net/wiki/Candy#Species-based_Candy)，每隻寶可夢一種——雖是真正的道具，卻會擠佔寶可夢本身",
+        "ru": "80 [видовых конфет](https://bulbapedia.bulbagarden.net/wiki/Candy#Species-based_Candy), по одной на покемона — настоящие предметы, но они вытесняют самих покемонов"
       }
     }
   ],

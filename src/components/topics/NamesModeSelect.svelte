@@ -38,3 +38,12 @@
     {/if}
   </select>
 {/if}
+
+<style>
+  /* The short/long/both dropdown; only on a list whose entries have name pairs. */
+  .names-mode {
+    font-size: 0.75rem;
+    padding: 0 0.15rem;
+    color: var(--muted);
+  }
+</style>

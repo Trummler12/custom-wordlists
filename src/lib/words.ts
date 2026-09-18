@@ -5,7 +5,8 @@
 
 import type { Group, LocalizedString, NamePair, NamesMode, Word, WordEntry } from "./types";
 import { baseTag, matchTag } from "./languages";
-import { toRomaji } from "./kana";
+import { toRomaji } from "./kana.mjs";
+import { resolveProse } from "../locale/topics";
 
 /** The tag an entry carrying `keys` answers `lang` with, or undefined for none.
  *
@@ -44,6 +45,23 @@ export function resolveStr(s: LocalizedString, lang: string, derived = false): s
   if (made !== undefined) return made;
   const tag = tagFor(s, lang);
   return tag !== undefined ? s[tag] : s.en;
+}
+
+/** The base of a Wikidata entity link — the language-type reasons wear one around
+ *  their (now centralized) label. Kept in step with `WD` in build-languages.mjs. */
+const WD = "https://www.wikidata.org/wiki";
+
+/** Resolve an omission rule's `reason` to `lang` for rendering through `Msg`.
+ *
+ *  A bare string is a prose id ("sovereignty.deFactoRecognized"), resolved through
+ *  the centralized topic-prose dictionary; a language map is a self-contained reason
+ *  that lives with its own list (the Pokémon one-offs), resolved in place. A `wd`
+ *  Q-id, present only where the label links to Wikidata, is composed back into the
+ *  `[label](url)` markdown the data used to bake — the label is now localized, the
+ *  link is not, so the two are joined here rather than in the data. */
+export function resolveReason(reason: LocalizedString, lang: string, wd?: string): string {
+  const label = typeof reason === "string" ? resolveProse(reason, lang) : resolveStr(reason, lang);
+  return wd ? `[${label}](${WD}/${wd})` : label;
 }
 
 /** The romaji of an entry that carries none, read off its Japanese name.

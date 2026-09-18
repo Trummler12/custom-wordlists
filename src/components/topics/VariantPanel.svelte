@@ -74,3 +74,16 @@
     {/if}
   </div>
 {/if}
+
+<style>
+  /* The side-by-side spellings a variant changes, inside the shared 🧹 panel (whose chrome
+     comes from TopicRow). Only the variant-specific bits are here. */
+  .variant-list > summary {
+    cursor: pointer;
+    margin-top: 0.35rem;
+    opacity: 0.85;
+  }
+  .variant-list .from {
+    opacity: 0.7;
+  }
+</style>

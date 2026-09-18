@@ -13,7 +13,7 @@
 // `depthOf` / `setDepth` present both as a depth, since every group has a ruler
 // and a ruler only speaks in depths; a flat group's is 0 or 1.
 
-import { allRules, isOnByDefault, TOO_LONG_RULE, UNKNOWN_RULE } from "../lib/omitted";
+import { allRules, BASE_RULE, isOnByDefault, TOO_LONG_RULE, UNKNOWN_RULE } from "../lib/omitted";
 import { SKRIBBL } from "../lib/skribbl";
 import { groupEntries, groupHasNames, renderCount } from "../lib/words";
 import { depthFromKey, depthFromPointer, skipCollapsed, snapPositions } from "../lib/fame";
@@ -236,7 +236,9 @@ class SelectionState {
     }
     const rule = allRules(g).find((r) => r.id === ruleId);
     if (rule?.locked) return true;
-    const onByDefault = rule ? isOnByDefault(g, rule) : true;
+    // A declared rule keeps its array's default; the reserved rules hide by default, but the
+    // INCLUDE base box is the exception — its base shows until switched off (see BASE_RULE).
+    const onByDefault = rule ? isOnByDefault(g, rule) : ruleId !== BASE_RULE;
     return onByDefault !== settings.isToggled(tid, g.id, ruleId);
   }
   /** Flip an omission rule. On a synthesized topic it commands every contributor

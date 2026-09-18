@@ -18,6 +18,10 @@
   // Every topic below this node, precomputed with the tree — the checkbox and the
   // counter speak for the whole subtree, not just this level's own topics.
   const all = $derived(node.all);
+  // The count waits on the whole subtree: until every topic below has loaded, the
+  // total is an unfiltered `wordCount` sum that would tick down as files arrive, so
+  // the row shows "loading" and then the final number in one step (see subtreeReady).
+  const ready = $derived(topics.subtreeReady(all));
   const open = $derived(selection.catOpen(node));
   const name = $derived(topics.categoryName(node));
   const id = $derived("cat-" + (node.path.replace(/\//g, "-") || "root"));
@@ -134,7 +138,9 @@
   <!-- The ratio alone, since it reads the same in every language; the sentence it
        stands for is a hover away. The row needs the width for its controls. -->
   <span class="meta" title={lang.ui.tree.wordsOf(selection.catSel(all), selection.catTotal(all))}>
-    {selection.catSel(all)}/<span class="total">{selection.catTotal(all)}</span>
+    {#if !ready}{lang.ui.tree.loadingShort}{:else}{selection.catSel(all)}/<span class="total"
+        >{selection.catTotal(all)}</span
+      >{/if}
   </span>
 </div>
 {#if open}
@@ -149,3 +155,37 @@
     {/each}
   </div>
 {/if}
+
+<style>
+  .category {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin: var(--gap-before-cat) 0 var(--gap-after-cat);
+    position: relative; /* anchor for the coverage popup, like .topic-row */
+  }
+  .category-title {
+    margin: 0;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--muted-2);
+  }
+  .category-title label {
+    cursor: pointer;
+  }
+  /* The category counter reads at the same size as the ones below it — this row is
+     quieter by colour, weight and letterspacing, and shrinking its digits too made it
+     look like a different kind of number. Its own line-height, though: at the shared
+     size the default 1.5 would make this the tallest box on the row and stretch it. */
+  .category .meta {
+    line-height: 1;
+  }
+  /* Nested tree level: indent a category's topics + subcategories, with a guide.
+     --tree-step (globals.css) is the total indent per level, split around the line. */
+  .cat-children {
+    margin-left: calc(var(--tree-step) / 2);
+    padding-left: calc(var(--tree-step) / 2);
+    border-left: 1px solid var(--border);
+  }
+</style>

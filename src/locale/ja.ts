@@ -32,6 +32,7 @@ export const ja: UIStrings = {
     none: "知名度グループはまだ定義されていません。フッターの Contribution Guide から提案できます。",
     selected: "選択中：",
     mostlySelected: "大半を選択中：",
+    stored: (body) => `（保存済み：${body}）`,
     toggle: (shown) =>
       shown ? "このリストの知名度スライダーを隠す" : "このリストの知名度スライダーを表示する",
     toggleAll: (allShown) =>
@@ -55,12 +56,21 @@ export const ja: UIStrings = {
       omitted
         ? "オンにすると、それでも含めます。skribbl.io は受け付けませんが、他のゲームなら通るかもしれません。"
         : "オンにすると、再び除外します。",
+    helpAdd: (url) => ` — [不足分の追加にご協力ください](${url})`,
   },
   coverage: {
     label: "Geoguessr / ストリートビューの対応",
     all: "すべての国",
     withCoverage: "公式対応あり",
     reliable: "十分な対応のみ",
+  },
+  languageType: {
+    label: "含める言語の種類",
+    base: "現代の生きた言語",
+    submillion: "利用者100万人未満の言語も含める",
+    notRecommended: "カジュアルなお絵描きには不向き — 話者数の割に知名度が低い。",
+    toggle: (included) =>
+      included ? "選択中 — リストに含まれています。外すと除外します。" : "チェックするとリストに追加します。",
   },
   sovereignty: {
     label: "主権と承認",
@@ -132,5 +142,30 @@ export const ja: UIStrings = {
     // The guide itself is English only, so the link keeps its name.
     contributionGuide: "Contribution Guide",
     helpOutAfter: "をご覧ください。",
+  },
+  coveragePage: {
+    home: "メインアプリへ",
+    topicLabel: "トピック：",
+    uiLanguage: "表示言語",
+    title: "言語カバレッジ",
+    intro: "トピックを選ぶと、各項目についてWikidataがどの言語のラベルを持っているかを確認できます。",
+    lead: "このトピックの内容は[Wikidata](https://www.wikidata.org/wiki/Wikidata:Main_Page)に由来します。表は各項目がどの言語のラベルをすでに持っているかを示します。",
+    notesTitle: "協力する方法",
+    noteAdd: "最初の列から項目を開き、ログインのうえ、確信のある不足ラベルを追加してください。",
+    noteLabelLister: "まったく掲載されていない言語を追加するには、[Wikidataの設定](https://www.wikidata.org/wiki/Special:Preferences#mw-prefsection-gadgets)の「ガジェット」でlabelListerガジェットを有効にしてください。すると各項目に「Labels list」（右上の「ツール」内）が表示され、任意の言語コードを受け付けます。",
+    noteProtected: "一部のWikidata項目は保護されており、編集には作成から4日以上・100回以上編集したアカウントが必要です。",
+    noteStale: "この表は手動ダンプに基づくため、ここに表示されるカバレッジはWikidataの最新状態より最大で数週間遅れることがあります。",
+    itemCount: (n) => `${n.toLocaleString()} 項目`,
+    uiOnly: "UI言語のみ",
+    uiOnlyHint: "生データのダンプには、skribbl.io が対応するすべての言語に加え、{br}利用者の多い言語もいくつか含まれています。{br}つまりデータはすでにすべての計画言語に対応していますが、{br}インターフェースは私たちメンテナーが手入れしているため、当然ながら大きく遅れています。{br}また、その言語を扱うトピックがまだほとんどない状態で{br}新しい UI 言語を増やそうとしても、あまり意味がありません。{br}ただし協力者が増えるほど、新しい言語が早く承認されます！{br}=> よければ下の Contribution Guide をご覧ください！",
+    item: "項目",
+    numeric: { population: "人口", area: "面積 (km²)", users: "使用者数" },
+    first: "最初のページ",
+    prev: "前のページ",
+    next: "次のページ",
+    last: "最後のページ",
+    page: (current, total) => `${total} ページ中 ${current} ページ`,
+    loading: (topic) => `${topic}を読み込み中…`,
+    loadError: (topic, message) => `${topic}のカバレッジを読み込めませんでした：${message}`,
   },
 };

@@ -33,3 +33,39 @@
 >
   {#each output.merged as w (w)}<span class="chip">{w}</span>{/each}
 </div>
+
+<style>
+  .chips {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start; /* pack chip rows at the top, don't spread them */
+    align-items: flex-start; /* keep each chip its natural height, not stretched */
+    gap: 0.35rem;
+    padding: 0.6rem;
+    border: 1px solid var(--panel-border);
+    border-radius: var(--radius);
+    /* Grow to fill the output panel; min-height:0 lets the chips scroll inside the flex
+       column instead of stretching it. The counter below stays visible. */
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow-y: auto;
+    /* The chips box is the one area whose wheel must NOT chain to the page scroll. */
+    overscroll-behavior: contain;
+    cursor: text;
+  }
+  /* Stacked layout: the box no longer fills a sticky column, so cap it and let it size to
+     content instead of growing (matches the .output un-pinning in OutputPanel). */
+  @media (max-width: 50rem) {
+    .chips {
+      flex: none;
+      max-height: min(24rem, calc(100vh - 6rem));
+    }
+  }
+  .chip {
+    background: var(--chip-bg);
+    color: var(--chip-fg);
+    border-radius: var(--radius-sm);
+    padding: 0.1rem 0.45rem;
+    font-size: 0.9rem;
+  }
+</style>
