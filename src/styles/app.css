@@ -63,70 +63,10 @@ h2 {
    TopicRow); the tree-wide shared primitives (the expander column, the word-count meta)
    live in TopicTree via `.topics :global(...)`. */
 
-/* A small glyph that opens a tip-note: ⚠️ where something is unconfirmed, ℹ️ where
-   it is deliberate. On a topic row and in the settings menu. */
-.tip-marker {
-  margin-left: 0.3rem;
-  background: none;
-  border: none;
-  padding: 0;
-  font: inherit;
-  font-size: 0.85rem;
-  line-height: 1;
-  cursor: help;
-}
-/* The note a tooltip trigger opens. Stretched across its positioned parent rather than
-   hung off the trigger itself: a trigger sits somewhere in the middle of a row of unknown
-   width, so any box anchored to it can leave the viewport on one side or the other. */
-.tip-note {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  right: 0;
-  z-index: 10;
-  margin: 0.15rem 0 0;
-  padding: 0.4rem 0.55rem;
-  font-size: 0.8rem;
-  font-weight: 400;
-  line-height: 1.35;
-  color: var(--chip-fg);
-  background: var(--chip-bg);
-  border: 1px solid var(--panel-border);
-  border-radius: var(--radius);
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
-}
-/* Room for the 📌, so a first line can't run under it. Only while pinned: an
-   unpinned note is the common case and shouldn't carry the gap for nothing. */
-.tip-note.pinned {
-  padding-right: 1.5rem;
-}
-.tip-pin {
-  position: absolute; /* .tip-note is the containing block */
-  top: 0.25rem;
-  right: 0.4rem;
-  font-size: 0.65rem;
-  line-height: 1;
-  opacity: 0.75;
-}
-/* Set when the trigger sits low in the viewport, where a note below it would be cut off
-   by the bottom edge — the vertical counterpart to the full-row stretch above. */
-.tip-note.above {
-  top: auto;
-  bottom: 100%;
-  margin: 0 0 0.15rem;
-}
-/* A note anchored to a 👎 inside the scrolling language-type panel: overlays owns its
-   position (fixed, from the trigger's rect, via the inline style), so here we only undo the
-   full-row stretch, cap the width, and lift it above the panel (z-index 10). */
-.tip-note.local {
-  left: auto;
-  right: auto;
-  top: auto;
-  bottom: auto;
-  margin: 0;
-  max-width: min(18rem, 90vw);
-  z-index: 30;
-}
+/* The tooltip marker/note are components: .tip-marker (TipMarker) and .tip-note + its
+   variants (TipNote) are colocated in components/common/. A .tip-note stretches across
+   its positioned parent — whichever component renders it (a topic row, a ruler, a panel)
+   supplies that anchor. */
 
 /* Most topic-row controls are colocated in their components: NamesModeSelect (.names-mode),
    FameDepthSlider (.group-depth/.depth-*), VariantPanel (.variant-list); the 📏/🇬🇧 row

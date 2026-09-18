@@ -32,3 +32,19 @@
   onblur={overlays.releaseTip}
   onclick={(e) => overlays.tipClick(e, tipId, local)}>{icon}</button
 >
+
+<style>
+  /* A small glyph that opens a tip-note: ⚠️ where something is unconfirmed, ℹ️ where it is
+     deliberate. On a topic row and in the settings menu. (.tip-trigger, alongside, is a
+     behaviour hook with no styling.) */
+  .tip-marker {
+    margin-left: 0.3rem;
+    background: none;
+    border: none;
+    padding: 0;
+    font: inherit;
+    font-size: 0.85rem;
+    line-height: 1;
+    cursor: help;
+  }
+</style>
