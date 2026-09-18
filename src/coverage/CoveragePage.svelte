@@ -215,7 +215,7 @@
       <div class="bar-right">
         <label class="uionly" title={plainText(ui.uiOnlyHint, "\n")}>
           <input type="checkbox" bind:checked={uiOnly} />
-          {ui.uiOnly}
+          <div class="uionly-text">{ui.uiOnly}</div>
         </label>
         {#if pageCount > 1}
           <span class="pager">
@@ -263,7 +263,7 @@
       </table>
     </div>
   </main>
-  <SiteFooter footer={strings(uiLang).footer} />
+  <SiteFooter footer={strings(uiLang).footer} flow />
   </div>
 {/if}
 
@@ -295,21 +295,25 @@
   .controls select {
     font: inherit;
   }
-  /* The content is capped at roughly the table's natural full width and centred, so it does
-     not stretch edge-to-edge on very wide windows. The cap self-adjusts to the language count
-     (`--lang-count`, set on the element): Entry (~27ch, "Federal Republic of Germany") +
-     numeric + one ~3.5ch column per language, plus per-column padding/border, the main
-     padding, and a configurable buffer. A generous estimate — it fails safe (a little slack
-     in the numeric column on ultra-wide, never a premature horizontal scrollbar). */
+  /* The loaded content (main + footer) is capped and centred at --content-cap ≈ the table's
+     natural full width, so wide windows don't stretch it and narrow ones scroll the table
+     rather than the cap forcing it. --content-cap is defined HERE, on .wrap, on purpose: it
+     reads --lang-count (set inline below from the data), and a custom property resolves its
+     nested var()s where it is DECLARED — defining it on <body> froze in <body>'s static count,
+     so the cap never tracked the data. On .wrap the real per-topic count drives it. Tunables:
+     --lang-col (one 2-char language column) and --table-buffer (extra slack). */
   .wrap {
-    --table-buffer: 0px; /* extra margin allowance around the table, tune as needed */
-    --dim-opacity: 0.42; /* how faint the non-official columns go under "UI languages only" */
-    max-width: calc(
-      28ch + 13ch + var(--lang-count, 30) * 3.5ch + (var(--lang-count, 30) + 2) * 1rem + 2rem +
-        var(--table-buffer, 0px)
+    --lang-col: 1.9ch;
+    --content-cap: calc(
+      28ch + 13ch + var(--lang-count) * var(--lang-col) + (var(--lang-count) + 2) * 1rem + 5rem
     );
+    --table-buffer: 0px; /* extra allowance around the table, tune as needed */
+    --dim-opacity: 0.42; /* how faint the non-official columns go under "UI languages only" */
+    max-width: calc(var(--content-cap) + var(--table-buffer, 0px));
     margin-inline: auto;
   }
+  /* The header stays a full-width top bar (home link + the topic/language selects); only the
+     loaded table below is capped. */
   main {
     padding: 1rem;
   }
@@ -359,6 +363,9 @@
     gap: 0.35rem;
     cursor: pointer;
     white-space: nowrap;
+  }
+  .uionly-text {
+    text-wrap: wrap;
   }
   .pager {
     display: inline-flex;
@@ -481,6 +488,7 @@
   }
   .cell:not(.has) {
     background: #c62828; /* solid red — same weight of mark, for symmetry */
+    font-size: smaller;
   }
   .noname {
     font-style: italic; /* a bare Q-id: Wikidata has no label in any of these languages */
@@ -507,8 +515,7 @@
   thead th.lang.dim .sort {
     opacity: var(--dim-opacity, 0.42);
   }
-  /* NOTE: the footer styles itself now — they are colocated in SiteFooter.svelte, so this
-     page gets them without importing app.css. It still renders as the fixed bar SiteFooter
-     defines; reconciling the coverage footer (fixed vs. the intended in-flow, cap-sharing
-     one) is deferred to the W4c rework / Phase Z. */
+  /* The footer is passed `flow` (see the markup), so SiteFooter renders it in-flow at the
+     bottom of the capped .wrap rather than as the app's fixed bar — it no longer overlaps the
+     table, and its inner width follows the content cap instead of the main app's 60rem. */
 </style>
