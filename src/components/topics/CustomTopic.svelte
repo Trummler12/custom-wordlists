@@ -3,18 +3,22 @@
   import { custom } from "../../state/custom.svelte";
   import { lang } from "../../state/lang.svelte";
   import { output } from "../../state/output.svelte";
+  import { overlays } from "../../state/overlays.svelte";
   import TipMarker from "../common/TipMarker.svelte";
   import TipNote from "../common/TipNote.svelte";
   import CustomOmittedPanel from "./CustomOmittedPanel.svelte";
 
-  // The reader's own word-list row, pinned to the foot of the tree (§X1). It carries
-  // no checkbox: the input drives the output directly, and what it contributes / drops
-  // is the counter and the 🚫 panel. Its title lines up with the "Topics" heading
-  // (no expander column), and it reuses the tree-root `.meta` styles by rendering
-  // inside `.topics`.
+  // The reader's own word-list row, pinned to the foot of the tree. No checkbox: the
+  // input drives the output directly, and what it contributes / drops is the counter
+  // and the 🚫 panel. Its title lines up with the "Topics" heading (no expander
+  // column), and it reuses the tree-root `.meta` styles by rendering inside `.topics`.
+  //
+  // §X2 adds the control cluster right of the textarea. The controls are declared as
+  // data — column (1 = left, 2 = right) and order (>=0 from the top, <0 anchored to
+  // the bottom) — so a later batch drops 💾 / 📤 / 📥 in as more entries, not markup.
 
-  const MAX_ROWS = 5; // X2 makes this adjustable (↕️ / − / +)
   const EXAMPLES = ["Apple", "Pear", "Orange"];
+  const CONFIRM_ID = "custom-clear-confirm";
 
   const breakdown = $derived(output.customBreakdown);
   // The dropdown offers the separators that occur; the one in force is always among
@@ -26,21 +30,89 @@
 
   let textarea = $state<HTMLTextAreaElement>();
 
+  interface CustomControl {
+    id: string;
+    icon: string;
+    column: 1 | 2;
+    order: number;
+    tooltip: () => string;
+    danger?: boolean;
+    active?: () => boolean;
+    enabled: () => boolean;
+    onClick: (e: MouseEvent) => void;
+  }
+
+  const controls: CustomControl[] = [
+    {
+      id: "fit",
+      icon: "↕️",
+      column: 2,
+      order: 0,
+      tooltip: () => lang.ui.custom.fitToggle,
+      active: () => custom.fitContent,
+      enabled: () => true,
+      onClick: () => custom.toggleFitContent(),
+    },
+    {
+      id: "shrink",
+      icon: "−",
+      column: 1,
+      order: 0,
+      tooltip: () => lang.ui.custom.fewerRows,
+      enabled: () => custom.canShrink,
+      onClick: () => custom.shrinkRows(),
+    },
+    {
+      id: "grow",
+      icon: "+",
+      column: 1,
+      order: 1,
+      tooltip: () => lang.ui.custom.moreRows,
+      enabled: () => custom.canGrow,
+      onClick: () => custom.growRows(),
+    },
+    {
+      id: "clear",
+      icon: "🗑️",
+      column: 1,
+      order: -1, // anchored to the bottom of its column
+      tooltip: () => lang.ui.custom.clearHint,
+      danger: true,
+      enabled: () => custom.input.length > 0,
+      // First click arms a confirm popover (a pinned tip) rather than clearing at once.
+      onClick: (e) => overlays.openTip(CONFIRM_ID, e.currentTarget as Element, true, true),
+    },
+  ];
+
+  // One column split into a top group (order >= 0) and a bottom group (order < 0),
+  // each sorted by order; the bottom group anchors to the foot of the column.
+  const colGroup = (col: number, bottom: boolean): CustomControl[] =>
+    controls
+      .filter((c) => c.column === col && (bottom ? c.order < 0 : c.order >= 0))
+      .sort((a, b) => a.order - b.order);
+
   function withCurrent(list: Separator[], cur: Separator): Separator[] {
     return list.includes(cur) ? list : [cur, ...list];
   }
   function sepLabel(s: Separator): string {
     return s === "\n" ? "\\n" : s === "\t" ? "\\t" : s;
   }
+  function confirmClear(): void {
+    custom.clear();
+    overlays.closeTip();
+  }
 
   // Grow the textarea to its content — or, while empty, to its placeholder — up to
-  // MAX_ROWS, then scroll. Driven by an $effect so it refits not only as the reader
-  // types but also when the separator changes the placeholder's line count (picking
-  // `\n` on an empty field turns the one-line example into a stacked block, which must
-  // resize the box at once, not only on the next reload). X2 replaces the fixed cap
-  // with the manual ↕️ / ± controls.
+  // `custom.maxRows`, then scroll; or, with ↕️ on, to the whole content uncapped.
+  // Driven by an $effect so it refits as the reader types, when the separator changes
+  // the placeholder's line count, and when the − / + / ↕️ controls change the cap.
   function fit(el: HTMLTextAreaElement): void {
     el.style.height = "auto";
+    if (custom.fitContent) {
+      el.style.height = `${el.scrollHeight}px`;
+      el.style.overflowY = "hidden";
+      return;
+    }
     const cs = getComputedStyle(el);
     const line = parseFloat(cs.lineHeight) || 20;
     const extra =
@@ -48,17 +120,34 @@
       parseFloat(cs.paddingBottom) +
       parseFloat(cs.borderTopWidth) +
       parseFloat(cs.borderBottomWidth);
-    const max = line * MAX_ROWS + extra;
+    const max = line * custom.maxRows + extra;
     el.style.height = `${Math.min(el.scrollHeight, max)}px`;
     el.style.overflowY = el.scrollHeight > max ? "auto" : "hidden";
   }
   $effect(() => {
-    // Deps: the text and the placeholder (via the separator) — refit on either.
+    // Deps: the text, the placeholder (via the separator), and the height controls.
     custom.input;
     custom.separator;
+    custom.maxRows;
+    custom.fitContent;
     if (textarea) fit(textarea);
   });
 </script>
+
+{#snippet control(c: CustomControl)}
+  <button
+    type="button"
+    class="ctl-btn"
+    class:danger={c.danger}
+    class:active={c.active?.()}
+    class:tip-trigger={c.id === "clear"}
+    disabled={!c.enabled()}
+    aria-pressed={c.active ? c.active() : undefined}
+    aria-label={c.tooltip()}
+    title={c.tooltip()}
+    onclick={(e) => c.onClick(e)}>{c.icon}</button
+  >
+{/snippet}
 
 <div class="custom-item">
   <div class="custom-row">
@@ -86,14 +175,38 @@
   </div>
   <!-- Outside the row, like a topic's marker note: it stretches the full width. -->
   <TipNote id="custom-info" text={lang.ui.custom.infoHint} />
-  <textarea
-    bind:this={textarea}
-    class="custom-input"
-    rows="1"
-    placeholder={placeholder}
-    value={custom.input}
-    oninput={(e) => custom.setInput(e.currentTarget.value)}
-  ></textarea>
+  <div class="custom-body">
+    <textarea
+      bind:this={textarea}
+      class="custom-input"
+      rows="1"
+      placeholder={placeholder}
+      value={custom.input}
+      oninput={(e) => custom.setInput(e.currentTarget.value)}
+    ></textarea>
+    <div class="ctl-grid">
+      {#each [1, 2] as col (col)}
+        <div class="ctl-col">
+          <div class="ctl-group">
+            {#each colGroup(col, false) as c (c.id)}{@render control(c)}{/each}
+          </div>
+          <div class="ctl-group">
+            {#each colGroup(col, true) as c (c.id)}{@render control(c)}{/each}
+          </div>
+        </div>
+      {/each}
+    </div>
+  </div>
+  <!-- The 🗑️ two-step confirm. Shares the tip overlay slot, so a press elsewhere,
+       Escape or a scroll dismisses it; `tip-note` keeps a click inside from closing it. -->
+  {#if overlays.tip === CONFIRM_ID}
+    <div class="tip-note confirm-pop" style={overlays.tipStyle} role="dialog" aria-label={lang.ui.custom.clearHint}>
+      <p class="confirm-msg">{lang.ui.custom.clearConfirm}</p>
+      <button type="button" class="confirm-btn" onclick={confirmClear}>
+        {lang.ui.custom.clearConfirmButton}
+      </button>
+    </div>
+  {/if}
 </div>
 
 <style>
@@ -130,11 +243,19 @@
     font: inherit;
     font-size: 0.85rem;
   }
-  .custom-input {
-    display: block;
-    width: 100%;
-    box-sizing: border-box;
+
+  /* The input and its control cluster, side by side. The controls stretch to the
+     input's height so the bottom-anchored ones (🗑️) sit at its foot. */
+  .custom-body {
+    display: flex;
+    align-items: stretch;
+    gap: 0.35rem;
     margin: 0 0 0.5rem;
+  }
+  .custom-input {
+    flex: 1;
+    min-width: 0;
+    box-sizing: border-box;
     padding: 0.35rem 0.45rem;
     font: inherit;
     font-size: 0.9rem;
@@ -143,8 +264,91 @@
     background: var(--chip-bg);
     border: 1px solid var(--panel-border);
     border-radius: var(--radius);
-    /* Height is the fit() effect's job; the X2 controls take it over. */
+    /* Height is the fit() effect's job. */
     resize: none;
     overflow-y: hidden;
+  }
+  .ctl-grid {
+    display: flex;
+    gap: 0.15rem;
+  }
+  .ctl-col {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* pushes the bottom group to the foot */
+    gap: 0.15rem;
+  }
+  .ctl-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+  }
+  .ctl-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.6rem;
+    height: 1.6rem;
+    padding: 0;
+    font: inherit;
+    font-size: 0.9rem;
+    line-height: 1;
+    color: var(--chip-fg);
+    background: var(--chip-bg);
+    border: 1px solid var(--panel-border);
+    border-radius: var(--radius);
+    cursor: pointer;
+  }
+  .ctl-btn:hover:not(:disabled),
+  .ctl-btn:focus-visible {
+    border-color: var(--muted-2);
+  }
+  .ctl-btn:disabled {
+    opacity: 0.4;
+    cursor: default;
+  }
+  .ctl-btn.active {
+    border-color: var(--muted-2);
+    box-shadow: inset 0 0 0 1px var(--muted-2);
+  }
+  .ctl-btn.danger {
+    background: rgba(200, 60, 60, 0.22);
+  }
+  .ctl-btn.danger:hover:not(:disabled),
+  .ctl-btn.danger:focus-visible {
+    background: rgba(200, 60, 60, 0.34);
+    border-color: rgba(200, 60, 60, 0.7);
+  }
+
+  /* The confirm popover. Position comes from overlays.tipStyle (fixed, anchored to
+     the 🗑️); the rest mirrors a tip-note's look. */
+  .confirm-pop {
+    max-width: min(18rem, 90vw);
+    padding: 0.5rem 0.6rem;
+    font-size: 0.8rem;
+    line-height: 1.35;
+    color: var(--chip-fg);
+    background: var(--chip-bg);
+    border: 1px solid var(--panel-border);
+    border-radius: var(--radius);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
+    z-index: 30;
+  }
+  .confirm-msg {
+    margin: 0 0 0.4rem;
+  }
+  .confirm-btn {
+    font: inherit;
+    font-size: 0.8rem;
+    padding: 0.25rem 0.5rem;
+    color: var(--chip-fg);
+    background: rgba(200, 60, 60, 0.22);
+    border: 1px solid rgba(200, 60, 60, 0.7);
+    border-radius: var(--radius);
+    cursor: pointer;
+  }
+  .confirm-btn:hover,
+  .confirm-btn:focus-visible {
+    background: rgba(200, 60, 60, 0.34);
   }
 </style>
