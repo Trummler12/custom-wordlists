@@ -19,6 +19,12 @@ import { SKRIBBL } from "../lib/skribbl";
 
 const STORAGE_KEY = "wordlists:custom";
 
+/** The input's height cap, in rows before it scrolls: the default and the range the
+ *  − / + controls step through (§X2). */
+export const MIN_ROWS = 5;
+export const MAX_ROWS = 20;
+const ROW_STEP = 5;
+
 class CustomState {
   /** The raw text in the input field. */
   input = $state("");
@@ -27,6 +33,10 @@ class CustomState {
   manualSeparator = $state<Separator | null>(null);
   /** Whether over-long items are kept anyway — the ✂️ rule switched off. */
   keepTooLong = $state(false);
+  /** How many rows the input grows to before it scrolls (§X2, the − / + controls). */
+  maxRows = $state(MIN_ROWS);
+  /** Whether the row cap is lifted and the input fits its whole content (↕️). */
+  fitContent = $state(false);
 
   constructor() {
     const s = read();
@@ -34,7 +44,14 @@ class CustomState {
     this.input = s.input ?? "";
     this.manualSeparator = isSeparator(s.separator) ? s.separator : null;
     this.keepTooLong = !!s.keepTooLong;
+    if (typeof s.maxRows === "number") this.maxRows = clampRows(s.maxRows);
+    this.fitContent = !!s.fitContent;
   }
+
+  /** Whether the − / + controls can still step (not at the range's end, and not
+   *  while ↕️ has lifted the cap). */
+  readonly canGrow: boolean = $derived(!this.fitContent && this.maxRows < MAX_ROWS);
+  readonly canShrink: boolean = $derived(!this.fitContent && this.maxRows > MIN_ROWS);
 
   /** The separator in force: a manual pick, else the most common in the input. */
   readonly separator: Separator = $derived(this.manualSeparator ?? detectSeparator(this.input));
@@ -54,6 +71,18 @@ class CustomState {
     this.keepTooLong = on;
     this.save();
   }
+  growRows(): void {
+    this.maxRows = clampRows(this.maxRows + ROW_STEP);
+    this.save();
+  }
+  shrinkRows(): void {
+    this.maxRows = clampRows(this.maxRows - ROW_STEP);
+    this.save();
+  }
+  toggleFitContent(): void {
+    this.fitContent = !this.fitContent;
+    this.save();
+  }
   clear(): void {
     this.input = "";
     this.manualSeparator = null;
@@ -71,7 +100,13 @@ class CustomState {
   }
 
   private save(): void {
-    write({ input: this.input, separator: this.separator, keepTooLong: this.keepTooLong });
+    write({
+      input: this.input,
+      separator: this.separator,
+      keepTooLong: this.keepTooLong,
+      maxRows: this.maxRows,
+      fitContent: this.fitContent,
+    });
   }
 }
 
@@ -79,9 +114,20 @@ function isSeparator(s: unknown): s is Separator {
   return typeof s === "string" && (SEPARATORS as readonly string[]).includes(s);
 }
 
+/** Snap a stored/stepped row cap into the [MIN_ROWS, MAX_ROWS] range. */
+function clampRows(n: number): number {
+  return Math.min(MAX_ROWS, Math.max(MIN_ROWS, n));
+}
+
 // localStorage throws in a few real setups (private mode, blocked storage), and a
 // lost custom input is never worth an error.
-type Stored = { input?: string; separator?: string; keepTooLong?: boolean };
+type Stored = {
+  input?: string;
+  separator?: string;
+  keepTooLong?: boolean;
+  maxRows?: number;
+  fitContent?: boolean;
+};
 function read(): Stored | null {
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
