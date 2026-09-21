@@ -9,8 +9,9 @@
 
   // The reader's own word-list row, pinned to the foot of the tree (§X1). It carries
   // no checkbox: the input drives the output directly, and what it contributes / drops
-  // is the counter and the 🚫 panel. Styled like a top-layer topic row, and it reuses
-  // the tree-root `.meta` / `.expander` styles by rendering inside `.topics`.
+  // is the counter and the 🚫 panel. Its title lines up with the "Topics" heading
+  // (no expander column), and it reuses the tree-root `.meta` styles by rendering
+  // inside `.topics`.
 
   const MAX_ROWS = 5; // X2 makes this adjustable (↕️ / − / +)
   const EXAMPLES = ["Apple", "Pear", "Orange"];
@@ -19,6 +20,11 @@
   // The dropdown offers the separators that occur; the one in force is always among
   // them, but keep it so the select can never show a blank value.
   const options = $derived(withCurrent(availableSeparators(custom.input), custom.separator));
+  // Illustrates the active separator in the empty field: inline for a visible
+  // character, a stacked block for newline / tab.
+  const placeholder = $derived(EXAMPLES.join(custom.separator) + custom.separator + "…");
+
+  let textarea = $state<HTMLTextAreaElement>();
 
   function withCurrent(list: Separator[], cur: Separator): Separator[] {
     return list.includes(cur) ? list : [cur, ...list];
@@ -26,37 +32,36 @@
   function sepLabel(s: Separator): string {
     return s === "\n" ? "\\n" : s === "\t" ? "\\t" : s;
   }
-  // Illustrates the active separator in the empty field: inline for a visible
-  // character, a stacked block for newline / tab.
-  const placeholder = $derived(EXAMPLES.join(custom.separator) + custom.separator + "…");
 
-  // Grow the textarea to its content up to MAX_ROWS, then scroll. X2 replaces the
-  // fixed cap with the manual ↕️ / ± controls.
-  function autosize(el: HTMLTextAreaElement) {
-    const fit = () => {
-      el.style.height = "auto";
-      const cs = getComputedStyle(el);
-      const line = parseFloat(cs.lineHeight) || 20;
-      const extra =
-        parseFloat(cs.paddingTop) +
-        parseFloat(cs.paddingBottom) +
-        parseFloat(cs.borderTopWidth) +
-        parseFloat(cs.borderBottomWidth);
-      const max = line * MAX_ROWS + extra;
-      el.style.height = `${Math.min(el.scrollHeight, max)}px`;
-      el.style.overflowY = el.scrollHeight > max ? "auto" : "hidden";
-    };
-    fit();
-    el.addEventListener("input", fit);
-    return { destroy: () => el.removeEventListener("input", fit) };
+  // Grow the textarea to its content — or, while empty, to its placeholder — up to
+  // MAX_ROWS, then scroll. Driven by an $effect so it refits not only as the reader
+  // types but also when the separator changes the placeholder's line count (picking
+  // `\n` on an empty field turns the one-line example into a stacked block, which must
+  // resize the box at once, not only on the next reload). X2 replaces the fixed cap
+  // with the manual ↕️ / ± controls.
+  function fit(el: HTMLTextAreaElement): void {
+    el.style.height = "auto";
+    const cs = getComputedStyle(el);
+    const line = parseFloat(cs.lineHeight) || 20;
+    const extra =
+      parseFloat(cs.paddingTop) +
+      parseFloat(cs.paddingBottom) +
+      parseFloat(cs.borderTopWidth) +
+      parseFloat(cs.borderBottomWidth);
+    const max = line * MAX_ROWS + extra;
+    el.style.height = `${Math.min(el.scrollHeight, max)}px`;
+    el.style.overflowY = el.scrollHeight > max ? "auto" : "hidden";
   }
+  $effect(() => {
+    // Deps: the text and the placeholder (via the separator) — refit on either.
+    custom.input;
+    custom.separator;
+    if (textarea) fit(textarea);
+  });
 </script>
 
 <div class="custom-item">
   <div class="custom-row">
-    <!-- Holds the width a category's expander occupies, so the title lines up with
-         the topic titles above. -->
-    <span class="expander placeholder" aria-hidden="true">▸</span>
     <span class="title">{lang.ui.custom.title}</span>
     <TipMarker tipId="custom-info" icon="ℹ️" text={lang.ui.custom.infoHint} />
     <CustomOmittedPanel />
@@ -82,12 +87,12 @@
   <!-- Outside the row, like a topic's marker note: it stretches the full width. -->
   <TipNote id="custom-info" text={lang.ui.custom.infoHint} />
   <textarea
+    bind:this={textarea}
     class="custom-input"
     rows="1"
     placeholder={placeholder}
     value={custom.input}
     oninput={(e) => custom.setInput(e.currentTarget.value)}
-    use:autosize
   ></textarea>
 </div>
 
@@ -104,7 +109,9 @@
     display: flex;
     align-items: baseline;
     gap: 0.25rem;
-    padding: 0.5rem 0.2rem 0.35rem 0.1rem;
+    /* No left inset: the title sits flush under the "Topics" heading, not indented
+       into the checkbox/expander column the topic rows use. */
+    padding: 0.5rem 0.2rem 0.35rem 0;
   }
   .custom-row .title {
     font-weight: 600;
@@ -136,7 +143,7 @@
     background: var(--chip-bg);
     border: 1px solid var(--panel-border);
     border-radius: var(--radius);
-    /* Height is the autosize action's job; the X2 controls take it over. */
+    /* Height is the fit() effect's job; the X2 controls take it over. */
     resize: none;
     overflow-y: hidden;
   }
