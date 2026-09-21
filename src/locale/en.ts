@@ -68,6 +68,12 @@ export const en: UIStrings = {
     localDupes: (n) => `${n} duplicate${n === 1 ? "" : "s"} across your custom lists`,
     globalDupes: (n) => `${n} duplicate${n === 1 ? "" : "s"} with the selected topics`,
     dupesHint: "Reported, not filtered — drop them from your input if you like.",
+    fitToggle: "Fit the input to its full height",
+    fewerRows: "Show fewer rows",
+    moreRows: "Show more rows",
+    clearHint: "Clear the custom input field",
+    clearConfirm: "You're about to empty the Custom input field.",
+    clearConfirmButton: "Click here to confirm",
   },
   coverage: {
     label: "Geoguessr / Street View coverage",

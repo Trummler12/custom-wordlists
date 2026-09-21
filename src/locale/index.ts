@@ -342,6 +342,16 @@ export interface CustomStrings {
   globalDupes: (n: number) => string;
   /** Why those duplicate rows can't be toggled. */
   dupesHint: string;
+  /** The ↕️ control: lift the row cap and fit the input to its whole content. */
+  fitToggle: string;
+  /** The − / + controls: show fewer / more rows before the input scrolls. */
+  fewerRows: string;
+  moreRows: string;
+  /** The 🗑️ control's hover label, and its two-step confirm — the message and the
+   *  button that carries out the clear. */
+  clearHint: string;
+  clearConfirm: string;
+  clearConfirmButton: string;
 }
 
 /** Every user-facing string the app chrome renders, keyed and typed. */

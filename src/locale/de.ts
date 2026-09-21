@@ -75,6 +75,12 @@ export const de: UIStrings = {
     localDupes: (n) => `${n} ${n === 1 ? "Duplikat" : "Duplikate"} über deine eigenen Listen hinweg`,
     globalDupes: (n) => `${n} ${n === 1 ? "Duplikat" : "Duplikate"} mit den ausgewählten Themen`,
     dupesHint: "Wird gemeldet, nicht gefiltert — entferne sie bei Bedarf aus deiner Eingabe.",
+    fitToggle: "Eingabefeld auf volle Höhe ausklappen",
+    fewerRows: "Weniger Zeilen anzeigen",
+    moreRows: "Mehr Zeilen anzeigen",
+    clearHint: "Eigene Eingabe leeren",
+    clearConfirm: "Du bist dabei, das eigene Eingabefeld zu leeren.",
+    clearConfirmButton: "Zum Bestätigen hier klicken",
   },
   coverage: {
     label: "Geoguessr / Street-View-Abdeckung",
