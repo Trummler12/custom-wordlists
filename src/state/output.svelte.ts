@@ -4,13 +4,16 @@
 
 import { SKRIBBL } from "../lib/skribbl";
 import { renderEntry } from "../lib/words";
+import { custom } from "./custom.svelte";
 import { lang } from "./lang.svelte";
 import { selection } from "./selection.svelte";
 import { topics } from "./topics.svelte";
 
 class OutputState {
-  /** Every selected group's words, de-duplicated, in manifest order. */
-  readonly merged: string[] = $derived.by(() => {
+  /** The selected topics' words, de-duplicated in manifest order — the output
+   *  before the Custom channel is appended. Its `seen` set is what that channel
+   *  checks its own words against, so global-dedup falls out of it for free. */
+  readonly nonCustom: { seen: Set<string>; words: string[] } = $derived.by(() => {
     const seen = new Set<string>();
     const out: string[] = [];
     for (const t of topics.all) {
@@ -37,8 +40,18 @@ class OutputState {
         }
       }
     }
-    return out;
+    return { seen, words: out };
   });
+
+  /** What the reader's own Custom list contributes and what it drops, classified
+   *  against `nonCustom.seen` — the single source both the output and the Custom
+   *  omission panel read, so the two can't disagree. */
+  readonly customBreakdown = $derived(custom.classify(this.nonCustom.seen));
+
+  /** Every selected group's words, de-duplicated, in manifest order, with the
+   *  reader's Custom entries appended after them (already unique and clear of the
+   *  above — see customBreakdown). */
+  readonly merged: string[] = $derived([...this.nonCustom.words, ...this.customBreakdown.kept]);
 
   /** The names skribbl would refuse for their length. Reported, not removed: the
    *  only way one reaches this list is that a reader switched its ✂️ rule off and
