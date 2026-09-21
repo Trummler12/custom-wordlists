@@ -52,6 +52,23 @@ export const en: UIStrings = {
         : "Toggle to leave them out again.",
     helpAdd: (url) => ` — [help us add what's missing!](${url})`,
   },
+  custom: {
+    title: "Custom",
+    infoHint:
+      "Use the input field below to add any additional list(s) of words you like.{br}" +
+      "The following rules apply:{br}" +
+      "- All items are separated by one separator character, kept consistent across the whole input.{br}" +
+      "- An item that itself contains the separator character must be wrapped in \"quotation marks\".{br}" +
+      "- Punctuation and other special characters are generally not recommended for skribbl.io.{br}" +
+      "- Items are trimmed of any leading and trailing whitespace.{br}" +
+      "- On every change, the separator is auto-detected as the most common separator character.",
+    separatorLabel: "Separator:",
+    separatorPick: "Separator character",
+    internalDupes: (n) => `${n} duplicate ${n === 1 ? "entry" : "entries"} within the list`,
+    localDupes: (n) => `${n} duplicate${n === 1 ? "" : "s"} across your custom lists`,
+    globalDupes: (n) => `${n} duplicate${n === 1 ? "" : "s"} with the selected topics`,
+    dupesHint: "Reported, not filtered — drop them from your input if you like.",
+  },
   coverage: {
     label: "Geoguessr / Street View coverage",
     all: "All countries",

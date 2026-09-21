@@ -1,4 +1,5 @@
 import type { UIStrings } from "./index";
+import { en } from "./en";
 
 /** Italian UI strings. Machine-written and unreviewed by a native speaker — see
  *  the proofreading note in CONTRIBUTING.md. */
@@ -58,6 +59,8 @@ export const it: UIStrings = {
         : "Attiva per tralasciarli di nuovo.",
     helpAdd: (url) => ` — [aiutaci ad aggiungere ciò che manca!](${url})`,
   },
+  // custom: English stopgap until the UI-language PR translates it (§X).
+  custom: en.custom,
   coverage: {
     label: "Geoguessr / Copertura Street View",
     all: "Tutti i paesi",

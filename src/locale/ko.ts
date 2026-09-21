@@ -1,4 +1,5 @@
 import type { UIStrings } from "./index";
+import { en } from "./en";
 
 /** Korean UI strings. Machine-written and unreviewed by a native speaker — see
  *  the proofreading note in CONTRIBUTING.md.
@@ -58,6 +59,8 @@ export const ko: UIStrings = {
         : "켜면 다시 제외합니다.",
     helpAdd: (url) => ` — [빠진 것을 채우는 데 힘을 보태 주세요](${url})`,
   },
+  // custom: English stopgap until the UI-language PR translates it (§X).
+  custom: en.custom,
   coverage: {
     label: "Geoguessr / 스트리트 뷰 지원",
     all: "모든 국가",

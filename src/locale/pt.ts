@@ -1,4 +1,5 @@
 import type { UIStrings } from "./index";
+import { en } from "./en";
 
 /** Portuguese UI strings. Machine-written and unreviewed by a native speaker — see the
  *  proofreading note in CONTRIBUTING.md. Written in a Brazilian register, the larger
@@ -58,6 +59,8 @@ export const pt: UIStrings = {
         : "Alternar para deixá-los de fora novamente.",
     helpAdd: (url) => ` — [ajude-nos a adicionar o que falta!](${url})`,
   },
+  // custom: English stopgap until the UI-language PR translates it (§X).
+  custom: en.custom,
   coverage: {
     label: "Cobertura do Geoguessr / Street View",
     all: "Todos os países",

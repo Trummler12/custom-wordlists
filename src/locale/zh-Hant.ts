@@ -1,4 +1,5 @@
 import type { UIStrings } from "./index";
+import { en } from "./en";
 
 /** Traditional Chinese UI strings (Taiwan vocabulary). Machine-written and unreviewed by
  *  a native speaker — see the proofreading note in CONTRIBUTING.md.
@@ -58,6 +59,8 @@ export const zhHant: UIStrings = {
         : "開啟以將其再次排除。",
     helpAdd: (url) => ` — [幫我們補齊缺少的部分！](${url})`,
   },
+  // custom: English stopgap until the UI-language PR translates it (§X).
+  custom: en.custom,
   coverage: {
     label: "Geoguessr / 街景覆蓋",
     all: "所有國家",

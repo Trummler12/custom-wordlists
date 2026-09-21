@@ -1,4 +1,5 @@
 import type { UIStrings } from "./index";
+import { en } from "./en";
 
 /** Japanese UI strings. Machine-written and unreviewed by a native speaker — see
  *  the proofreading note in CONTRIBUTING.md.
@@ -58,6 +59,8 @@ export const ja: UIStrings = {
         : "オンにすると、再び除外します。",
     helpAdd: (url) => ` — [不足分の追加にご協力ください](${url})`,
   },
+  // custom: English stopgap until the UI-language PR translates it (§X).
+  custom: en.custom,
   coverage: {
     label: "Geoguessr / ストリートビューの対応",
     all: "すべての国",

@@ -324,6 +324,26 @@ export interface CoveragePageStrings {
   loadError: (topic: string, message: string) => string;
 }
 
+/** The Custom word-list input row at the foot of the tree, and its 🚫 panel. */
+export interface CustomStrings {
+  /** The row's title — the "Custom" in "> Custom:". */
+  title: string;
+  /** The ℹ️ marker's note: how the input field is read. Carries `{br}` breaks and
+   *  renders through html/Msg. */
+  infoHint: string;
+  /** The label before the separator dropdown, and the dropdown's aria-label. */
+  separatorLabel: string;
+  separatorPick: string;
+  /** The 🚫 panel's rows for the reader's own duplicates: within this one list,
+   *  across the several active custom lists (X3), and against the selected topics.
+   *  Report-only — the count is the point — so their checkboxes are disabled. */
+  internalDupes: (n: number) => string;
+  localDupes: (n: number) => string;
+  globalDupes: (n: number) => string;
+  /** Why those duplicate rows can't be toggled. */
+  dupesHint: string;
+}
+
 /** Every user-facing string the app chrome renders, keyed and typed. */
 export interface UIStrings {
   header: HeaderStrings;
@@ -331,6 +351,7 @@ export interface UIStrings {
   names: NamesStrings;
   fame: FameStrings;
   omitted: OmittedStrings;
+  custom: CustomStrings;
   coverage: CoverageStrings;
   languageType: LanguageTypeStrings;
   sovereignty: SovereigntyStrings;

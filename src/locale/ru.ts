@@ -1,4 +1,5 @@
 import type { UIStrings } from "./index";
+import { en } from "./en";
 
 /** Russian UI strings. Machine-written and unreviewed by a native speaker — see the
  *  proofreading note in CONTRIBUTING.md.
@@ -68,6 +69,8 @@ export const ru: UIStrings = {
         : "Снова исключить их.",
     helpAdd: (url) => ` — [помогите добавить недостающее!](${url})`,
   },
+  // custom: English stopgap until the UI-language PR translates it (§X).
+  custom: en.custom,
   coverage: {
     label: "Geoguessr / покрытие Street View",
     all: "Все страны",

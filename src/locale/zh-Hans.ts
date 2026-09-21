@@ -1,4 +1,5 @@
 import type { UIStrings } from "./index";
+import { en } from "./en";
 
 /** Simplified Chinese UI strings. Machine-written and unreviewed by a native speaker —
  *  see the proofreading note in CONTRIBUTING.md.
@@ -58,6 +59,8 @@ export const zhHans: UIStrings = {
         : "打开以将其再次排除。",
     helpAdd: (url) => ` — [帮我们补全缺失的部分！](${url})`,
   },
+  // custom: English stopgap until the UI-language PR translates it (§X).
+  custom: en.custom,
   coverage: {
     label: "Geoguessr / 街景覆盖",
     all: "所有国家",

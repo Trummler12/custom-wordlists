@@ -58,6 +58,24 @@ export const de: UIStrings = {
         : "Umschalten, um sie wieder wegzulassen.",
     helpAdd: (url) => ` — [hilf mit, Fehlendes zu ergänzen!](${url})`,
   },
+  custom: {
+    title: "Eigene Liste",
+    infoHint:
+      "Nutze das Eingabefeld unten, um beliebige zusätzliche Wortlisten hinzuzufügen.{br}" +
+      "Es gelten folgende Regeln:{br}" +
+      "- Alle Einträge werden durch ein Trennzeichen getrennt, das über die gesamte Eingabe hinweg gleich bleibt.{br}" +
+      "- Ein Eintrag, der das Trennzeichen selbst enthält, muss in \"Anführungszeichen\" gesetzt werden.{br}" +
+      "- Satz- und andere Sonderzeichen sind für skribbl.io generell nicht empfohlen.{br}" +
+      "- Einträge werden von führenden und nachgestellten Leerzeichen befreit.{br}" +
+      "- Bei jeder Änderung wird das Trennzeichen automatisch als das häufigste Trennzeichen bestimmt.",
+    separatorLabel: "Trennzeichen:",
+    separatorPick: "Trennzeichen",
+    internalDupes: (n) =>
+      n === 1 ? "1 doppelter Eintrag innerhalb der Liste" : `${n} doppelte Einträge innerhalb der Liste`,
+    localDupes: (n) => `${n} ${n === 1 ? "Duplikat" : "Duplikate"} über deine eigenen Listen hinweg`,
+    globalDupes: (n) => `${n} ${n === 1 ? "Duplikat" : "Duplikate"} mit den ausgewählten Themen`,
+    dupesHint: "Wird gemeldet, nicht gefiltert — entferne sie bei Bedarf aus deiner Eingabe.",
+  },
   coverage: {
     label: "Geoguessr / Street-View-Abdeckung",
     all: "Alle Länder",
