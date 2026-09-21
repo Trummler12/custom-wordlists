@@ -2,6 +2,7 @@
   import { lang } from "../../state/lang.svelte";
   import { topics } from "../../state/topics.svelte";
   import CategoryNode from "./CategoryNode.svelte";
+  import CustomTopic from "./CustomTopic.svelte";
   import TopicRow from "./TopicRow.svelte";
 </script>
 
@@ -24,6 +25,8 @@
     {#if topics.topicError}
       <p class="status error">{topics.topicError}</p>
     {/if}
+    <!-- The reader's own list, pinned to the foot of the tree (§X). -->
+    <CustomTopic />
   </section>
 {/if}
 
