@@ -352,6 +352,37 @@ export interface CustomStrings {
   clearHint: string;
   clearConfirm: string;
   clearConfirmButton: string;
+  /** The 💾 saved-lists manager (§X3): the control's label, the panel title, and the
+   *  ℹ️ note beside the title explaining that storage is per-browser, per-device. */
+  listsLabel: string;
+  listsTitle: string;
+  listsInfo: string;
+  /** Per-tile controls (aria-label / hover): activate, rename, save-into, load-from,
+   *  delete, reorder, and the placeholder tile's save-as-new. */
+  listActivate: string;
+  listRename: string;
+  listSave: string;
+  listLoad: string;
+  listDelete: string;
+  listUp: string;
+  listDown: string;
+  listSaveNew: string;
+  /** The placeholder tile's controls are disabled; these name why on hover — the
+   *  separator and save keep their normal labels (`separatorPick` / `listSaveNew`). */
+  phActivate: string;
+  phRename: string;
+  phLoad: string;
+  phDelete: string;
+  phMove: string;
+  /** The tiles' two-step confirms, and the generic confirm / cancel buttons. */
+  listReplaceConfirm: (name: string) => string;
+  listDeleteConfirm: (name: string) => string;
+  listLoadConfirm: string;
+  confirm: string;
+  cancel: string;
+  /** The ⚠️ shown on a list (or the input) whose separator sits inside an item. */
+  listWarnTitle: string;
+  listWarnSeparator: string;
 }
 
 /** Every user-facing string the app chrome renders, keyed and typed. */

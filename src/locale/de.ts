@@ -81,6 +81,34 @@ export const de: UIStrings = {
     clearHint: "Eigene Eingabe leeren",
     clearConfirm: "Du bist dabei, das eigene Eingabefeld zu leeren.",
     clearConfirmButton: "Zum Bestätigen hier klicken",
+    listsLabel: "Gespeicherte Listen",
+    listsTitle: "Gespeicherte eigene Listen",
+    listsInfo:
+      "Zum Speichern von Custom-Listen wird der LocalStorage verwendet;{br}" +
+      "Jeder Browser unterhält seinen eigenen LocalStorage,{br}" +
+      "welcher getrennt ist von anderen Browsern oder Geräten;{br}" +
+      "Um deine Custom-Listen an einen anderen Ort mitzunehmen,{br}" +
+      "exportiere diese hier und importiere am Zielort.",
+    listActivate: "Diese Liste verwenden",
+    listRename: "Umbenennen",
+    listSave: "Aktuelle Eingabe in diese Liste speichern",
+    listLoad: "Diese Liste ins Eingabefeld laden",
+    listDelete: "Diese Liste löschen",
+    listUp: "Nach oben",
+    listDown: "Nach unten",
+    listSaveNew: "Aktuelle Eingabe als neue Liste speichern",
+    phActivate: "Platzhalter kann verwendet werden",
+    phRename: "Platzhalter kann nicht umbenannt werden",
+    phLoad: "Platzhalter kann nicht geladen werden",
+    phDelete: "Platzhalter kann nicht gelöscht werden",
+    phMove: "Platzhalter kann nicht verschoben werden",
+    listReplaceConfirm: (name) => `Die Liste "${name}" mit der aktuellen Eingabe ersetzen?`,
+    listDeleteConfirm: (name) => `Die Liste "${name}" löschen?`,
+    listLoadConfirm: "Das Eingabefeld mit dieser Liste überschreiben?",
+    confirm: "Bestätigen",
+    cancel: "Abbrechen",
+    listWarnTitle: "Diese eigene Liste hat Probleme:",
+    listWarnSeparator: "Das gewählte Trennzeichen kommt innerhalb eines Eintrags vor.",
   },
   coverage: {
     label: "Geoguessr / Street-View-Abdeckung",

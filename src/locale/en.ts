@@ -74,6 +74,34 @@ export const en: UIStrings = {
     clearHint: "Clear the custom input field",
     clearConfirm: "You're about to empty the Custom input field.",
     clearConfirmButton: "Click here to confirm",
+    listsLabel: "Saved lists",
+    listsTitle: "Saved custom lists",
+    listsInfo:
+      "Custom lists are stored in local storage.{br}" +
+      "Each browser keeps its own local storage,{br}" +
+      "separate from other browsers or devices.{br}" +
+      "To take your custom lists elsewhere,{br}" +
+      "export them here and import them at the destination.",
+    listActivate: "Use this list",
+    listRename: "Rename",
+    listSave: "Save the current input into this list",
+    listLoad: "Load this list into the input field",
+    listDelete: "Delete this list",
+    listUp: "Move up",
+    listDown: "Move down",
+    listSaveNew: "Save the current input as a new list",
+    phActivate: "Can use Placeholder",
+    phRename: "Can't rename Placeholder",
+    phLoad: "Can't load Placeholder",
+    phDelete: "Can't delete Placeholder",
+    phMove: "Can't move Placeholder",
+    listReplaceConfirm: (name) => `Replace the list "${name}" with the current input?`,
+    listDeleteConfirm: (name) => `Delete the list "${name}"?`,
+    listLoadConfirm: "Overwrite the input field with this list?",
+    confirm: "Confirm",
+    cancel: "Cancel",
+    listWarnTitle: "This custom list has problems:",
+    listWarnSeparator: "The selected separator character occurs inside an item.",
   },
   coverage: {
     label: "Geoguessr / Street View coverage",
