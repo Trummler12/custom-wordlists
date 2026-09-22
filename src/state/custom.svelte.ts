@@ -12,6 +12,7 @@ import {
   type CustomBreakdown,
   detectSeparator,
   parseItems,
+  type PortableList,
   type Separator,
   SEPARATORS,
   serializeItems,
@@ -178,6 +179,18 @@ class CustomState {
   }
   setListSeparator(id: number, sep: Separator): void {
     this.savedLists = this.savedLists.map((l) => (l.id === id ? { ...l, separator: sep } : l));
+    this.saveLists();
+  }
+  /** Append imported lists, each with a fresh id (ids are per-store, so an import
+   *  never collides with or overwrites an existing list). */
+  importLists(lists: readonly PortableList[]): void {
+    const added = lists.map((l) => ({
+      id: this.#nextId++,
+      name: l.name,
+      separator: l.separator,
+      items: [...l.items],
+    }));
+    this.savedLists = [...this.savedLists, ...added];
     this.saveLists();
   }
   /** Load a saved list back into the input field. The field is superseded only when
