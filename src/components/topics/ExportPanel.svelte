@@ -92,10 +92,15 @@
       aria-label={lang.ui.custom.exportTitle}
     >
       <p class="io-title">{lang.ui.custom.exportTitle}</p>
-      <label class="io-all">
-        <input type="checkbox" checked={allSelected} onchange={toggleAll} />
-        <span>{lang.ui.custom.selectAll}</span>
-      </label>
+      <!-- Doubles as the column header: the "Select all" toggle on the left (its hitbox
+           only its own text, not the whole row), the "Size" heading over the counts. -->
+      <div class="io-all">
+        <label class="io-all-label">
+          <input type="checkbox" checked={allSelected} onchange={toggleAll} />
+          <span>{lang.ui.custom.selectAll}</span>
+        </label>
+        <span class="io-head-size">{lang.ui.custom.importColSize}</span>
+      </div>
       <!-- The name is its own preview trigger, so it sits beside the checkbox rather than
            inside its label — a tap on the name shows the list, it does not toggle the tick. -->
       <ul onscroll={overlays.onLocalScroll}>
@@ -152,10 +157,22 @@
   .io-all {
     display: flex;
     align-items: center;
+    justify-content: space-between; /* toggle left, Size heading over the counts */
     gap: 0.3rem;
     font-size: 0.85rem;
     padding-bottom: 0.3rem;
     border-bottom: 1px solid var(--border);
+  }
+  /* Only the toggle's own text is a hitbox, not the full row out to the right edge. */
+  .io-all-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    cursor: pointer;
+  }
+  .io-head-size {
+    font-size: 0.8rem;
+    color: var(--muted-2);
   }
   ul {
     list-style: none;
