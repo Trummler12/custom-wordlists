@@ -487,4 +487,25 @@ function opensUpward(trigger: Element): boolean {
   return trigger.getBoundingClientRect().bottom > window.innerHeight / 2;
 }
 
+/** The `left` offset (px, relative to a popover panel's positioned host) that keeps the
+ *  panel inside the viewport while preferring to right-align it under that host.
+ *
+ *  The viewport is the hard bound, never the host's column: a panel wider than the room
+ *  to its left slides right — jutting into the Output column — rather than off the left
+ *  edge, which is the "clamped to col-topics" bug this fixes. On a roomy desktop the
+ *  preferred right-alignment already sits within the viewport, so nothing moves. Call it
+ *  after the panel has laid out, since it measures the rendered width; re-call on resize
+ *  and on any width change (a ResizeObserver). */
+export function clampPanelLeft(panel: HTMLElement): number {
+  const gutter = 8;
+  const vw = window.innerWidth;
+  const host = (panel.offsetParent as HTMLElement | null) ?? panel.parentElement ?? panel;
+  const hostRect = host.getBoundingClientRect();
+  const w = panel.offsetWidth;
+  // Prefer the panel's right edge under the host's right edge; clamp both sides to the
+  // viewport, the left gutter winning — so it can jut right past the host, never off-screen.
+  const vpLeft = Math.max(gutter, Math.min(hostRect.right - w, vw - gutter - w));
+  return Math.round(vpLeft - hostRect.left);
+}
+
 export const overlays = new OverlayState();
