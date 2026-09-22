@@ -23,6 +23,8 @@ type OverlayKind =
   | "languageType"
   | "sovereignty"
   | "savedLists"
+  | "exportLists"
+  | "importLists"
   | "tip";
 const HOSTS: Record<OverlayKind, string> = {
   lang: ".lang-picker",
@@ -32,6 +34,8 @@ const HOSTS: Record<OverlayKind, string> = {
   languageType: ".language-type-host",
   sovereignty: ".sovereignty-host",
   savedLists: ".saved-lists-host",
+  exportLists: ".export-lists-host",
+  importLists: ".import-lists-host",
   tip: ".tip-trigger, .tip-note",
 };
 
@@ -54,6 +58,8 @@ class OverlayState {
     languageType: null,
     sovereignty: null,
     savedLists: null,
+    exportLists: null,
+    importLists: null,
     tip: null,
   };
   #remember(kind: OverlayKind, trigger: Element | null | undefined): void {
@@ -182,6 +188,32 @@ class OverlayState {
     this.savedListsAbove = opensUpward(trigger);
     this.savedListsPanel = id;
     this.#remember("savedLists", trigger);
+  };
+
+  // --- Export / import panels (§X4b) -----------------------------------------
+
+  exportPanel = $state<string | null>(null);
+  exportAbove = $state(false);
+  toggleExportPanel = (id: string, trigger: Element): void => {
+    if (this.exportPanel === id) {
+      this.exportPanel = null;
+      return;
+    }
+    this.exportAbove = opensUpward(trigger);
+    this.exportPanel = id;
+    this.#remember("exportLists", trigger);
+  };
+
+  importPanel = $state<string | null>(null);
+  importAbove = $state(false);
+  toggleImportPanel = (id: string, trigger: Element): void => {
+    if (this.importPanel === id) {
+      this.importPanel = null;
+      return;
+    }
+    this.importAbove = opensUpward(trigger);
+    this.importPanel = id;
+    this.#remember("importLists", trigger);
   };
 
   // --- Tooltips --------------------------------------------------------------
@@ -321,6 +353,8 @@ class OverlayState {
     if (this.languageTypePanel && !target?.closest?.(".language-type-host")) this.languageTypePanel = null;
     if (this.sovereigntyPanel && !target?.closest?.(".sovereignty-host")) this.sovereigntyPanel = null;
     if (this.savedListsPanel && !target?.closest?.(".saved-lists-host")) this.savedListsPanel = null;
+    if (this.exportPanel && !target?.closest?.(".export-lists-host")) this.exportPanel = null;
+    if (this.importPanel && !target?.closest?.(".import-lists-host")) this.importPanel = null;
     // Neither on the marker, whose own click toggles, nor inside the note: a note
     // exists to be read, and one carrying a link exists to be clicked — closing it
     // here would take the link out of the document before the click reached it.
@@ -380,6 +414,8 @@ class OverlayState {
     else if (kind === "languageType") this.languageTypePanel = null;
     else if (kind === "sovereignty") this.sovereigntyPanel = null;
     else if (kind === "savedLists") this.savedListsPanel = null;
+    else if (kind === "exportLists") this.exportPanel = null;
+    else if (kind === "importLists") this.importPanel = null;
     else this.omittedPanel = null;
     const back = this.#openers[kind];
     if (back) void returnFocus(back);
@@ -406,6 +442,8 @@ class OverlayState {
     if (this.languageTypePanel && inside(HOSTS.languageType)) return "languageType";
     if (this.sovereigntyPanel && inside(HOSTS.sovereignty)) return "sovereignty";
     if (this.savedListsPanel && inside(HOSTS.savedLists)) return "savedLists";
+    if (this.exportPanel && inside(HOSTS.exportLists)) return "exportLists";
+    if (this.importPanel && inside(HOSTS.importLists)) return "importLists";
     return null;
   }
 }
