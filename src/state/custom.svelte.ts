@@ -180,14 +180,16 @@ class CustomState {
     this.savedLists = this.savedLists.map((l) => (l.id === id ? { ...l, separator: sep } : l));
     this.saveLists();
   }
-  /** Load a saved list back into the input field; the field then mirrors it, so it is
-   *  superseded until edited. */
+  /** Load a saved list back into the input field. The field is superseded only when
+   *  the source list is *active*: then the field mirrors a source already contributing,
+   *  so counting it too would double every word. Loading from an inactive list is just
+   *  a fresh copy to edit, and the field stays a source in its own right. */
   loadIntoInput(id: number): void {
     const l = this.savedLists.find((x) => x.id === id);
     if (!l) return;
     this.input = serializeItems(l.items, l.separator);
     this.manualSeparator = l.separator;
-    this.inputSuperseded = true;
+    this.inputSuperseded = this.isActive(id);
     this.save();
   }
 
