@@ -22,6 +22,7 @@ type OverlayKind =
   | "coverage"
   | "languageType"
   | "sovereignty"
+  | "savedLists"
   | "tip";
 const HOSTS: Record<OverlayKind, string> = {
   lang: ".lang-picker",
@@ -30,6 +31,7 @@ const HOSTS: Record<OverlayKind, string> = {
   coverage: ".coverage-host",
   languageType: ".language-type-host",
   sovereignty: ".sovereignty-host",
+  savedLists: ".saved-lists-host",
   tip: ".tip-trigger, .tip-note",
 };
 
@@ -51,6 +53,7 @@ class OverlayState {
     coverage: null,
     languageType: null,
     sovereignty: null,
+    savedLists: null,
     tip: null,
   };
   #remember(kind: OverlayKind, trigger: Element | null | undefined): void {
@@ -165,6 +168,22 @@ class OverlayState {
     this.#remember("sovereignty", trigger);
   };
 
+  // --- Saved-lists panel -----------------------------------------------------
+
+  /** Whether the reader's saved-lists manager (the 💾 button on the Custom row) is
+   *  open — one panel, so a single slot under a fixed id. */
+  savedListsPanel = $state<string | null>(null);
+  savedListsAbove = $state(false);
+  toggleSavedListsPanel = (id: string, trigger: Element): void => {
+    if (this.savedListsPanel === id) {
+      this.savedListsPanel = null;
+      return;
+    }
+    this.savedListsAbove = opensUpward(trigger);
+    this.savedListsPanel = id;
+    this.#remember("savedLists", trigger);
+  };
+
   // --- Tooltips --------------------------------------------------------------
 
   /** A `local` note is anchored to a trigger sitting inside a scrolling popup (a 👎 in the
@@ -176,17 +195,30 @@ class OverlayState {
    *  read by TipNote. Empty for a row note, which the CSS positions on its own. */
   tipStyle = $state("");
 
-  /** Pin a local note to its trigger: fixed to the viewport, its right edge under the
-   *  trigger's, above or below it by which viewport half the trigger sits in. */
+  /** Pin a local note to its trigger: fixed to the viewport, above or below it by which
+   *  viewport half the trigger sits in.
+   *
+   *  Horizontally it grows from the trigger toward whichever side has more room, and is
+   *  bounded by that room — so the viewport limits the width first, the content sizes
+   *  within it, and the trigger's edge is only the place it grows *from*, not a hard
+   *  cap. (The old version pinned the right edge under the trigger, which squeezed a
+   *  wide note between the trigger and the left edge.) */
   #placeLocalTip(trigger: Element): void {
     const r = trigger.getBoundingClientRect();
+    const gutter = 8;
+    const vw = window.innerWidth;
     const above = r.bottom > window.innerHeight / 2;
     this.tipAbove = above;
-    const right = Math.round(window.innerWidth - r.right);
     const edge = above
       ? `bottom:${Math.round(window.innerHeight - r.top + 4)}px`
       : `top:${Math.round(r.bottom + 4)}px`;
-    this.tipStyle = `position:fixed;right:${right}px;${edge};`;
+    const spaceRight = vw - r.left - gutter;
+    const spaceLeft = r.right - gutter;
+    const horiz =
+      spaceRight >= spaceLeft
+        ? `left:${Math.round(r.left)}px;max-width:${Math.round(spaceRight)}px`
+        : `right:${Math.round(vw - r.right)}px;max-width:${Math.round(spaceLeft)}px`;
+    this.tipStyle = `position:fixed;${horiz};${edge};`;
   }
 
   /** Show a note, flipping it above its row when there is more room upward — or, for a
@@ -267,6 +299,7 @@ class OverlayState {
     if (this.coveragePanel && !target?.closest?.(".coverage-host")) this.coveragePanel = null;
     if (this.languageTypePanel && !target?.closest?.(".language-type-host")) this.languageTypePanel = null;
     if (this.sovereigntyPanel && !target?.closest?.(".sovereignty-host")) this.sovereigntyPanel = null;
+    if (this.savedListsPanel && !target?.closest?.(".saved-lists-host")) this.savedListsPanel = null;
     // Neither on the marker, whose own click toggles, nor inside the note: a note
     // exists to be read, and one carrying a link exists to be clicked — closing it
     // here would take the link out of the document before the click reached it.
@@ -316,6 +349,7 @@ class OverlayState {
     else if (kind === "coverage") this.coveragePanel = null;
     else if (kind === "languageType") this.languageTypePanel = null;
     else if (kind === "sovereignty") this.sovereigntyPanel = null;
+    else if (kind === "savedLists") this.savedListsPanel = null;
     else this.omittedPanel = null;
     const back = this.#openers[kind];
     if (back) void returnFocus(back);
@@ -341,6 +375,7 @@ class OverlayState {
     if (this.coveragePanel && inside(HOSTS.coverage)) return "coverage";
     if (this.languageTypePanel && inside(HOSTS.languageType)) return "languageType";
     if (this.sovereigntyPanel && inside(HOSTS.sovereignty)) return "sovereignty";
+    if (this.savedListsPanel && inside(HOSTS.savedLists)) return "savedLists";
     return null;
   }
 }
