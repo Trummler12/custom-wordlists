@@ -115,6 +115,7 @@ export const de: UIStrings = {
     importColWith: "mit",
     importButton: "Auswahl importieren",
     importEmpty: "Keine gespeicherten Listen in dieser Datei.",
+    importDupesSecondary: (pct) => `Sekundär: ${pct}`,
     listReplaceConfirm: (name) => `Die Liste "${name}" mit der aktuellen Eingabe ersetzen?`,
     listDeleteConfirm: (name) => `Die Liste "${name}" löschen?`,
     listLoadConfirm: "Das Eingabefeld mit dieser Liste überschreiben?",
