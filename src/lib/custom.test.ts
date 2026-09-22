@@ -4,6 +4,9 @@ import {
   classifyCustom,
   DEFAULT_SEPARATOR,
   detectSeparator,
+  exportLists,
+  overlapStats,
+  parseImport,
   parseItems,
   separatorCounts,
   separatorInItems,
@@ -133,5 +136,43 @@ describe("separatorInItems", () => {
   it("is true only when an item contains the separator", () => {
     expect(separatorInItems(["a", "b"], ",")).toBe(false);
     expect(separatorInItems(["a,b", "c"], ",")).toBe(true);
+  });
+});
+
+describe("exportLists / parseImport", () => {
+  const lists = [
+    { name: "Fruit", separator: "," as const, items: ["Apple", "Pear"] },
+    { name: "Veg", separator: ";" as const, items: ["Carrot"] },
+  ];
+  it("round-trips through the export payload", () => {
+    expect(parseImport(exportLists(lists))).toEqual(lists);
+  });
+  it("returns nothing for a bad blob", () => {
+    expect(parseImport("not json")).toEqual([]);
+    expect(parseImport("{}")).toEqual([]);
+  });
+  it("drops malformed entries but keeps good ones", () => {
+    const blob = JSON.stringify({
+      version: 1,
+      lists: [
+        { name: "Good", separator: ",", items: ["a"] },
+        { name: "NoItems", separator: "," },
+        { name: "BadSep", separator: "?", items: ["a"] },
+        { separator: ",", items: ["a"] },
+      ],
+    });
+    expect(parseImport(blob)).toEqual([{ name: "Good", separator: ",", items: ["a"] }]);
+  });
+});
+
+describe("overlapStats", () => {
+  it("counts shared distinct items and each set's size", () => {
+    expect(overlapStats(["a", "b", "c"], ["b", "c", "d"])).toEqual({ shared: 2, sizeA: 3, sizeB: 3 });
+  });
+  it("de-duplicates before counting", () => {
+    expect(overlapStats(["a", "a", "b"], ["a"])).toEqual({ shared: 1, sizeA: 2, sizeB: 1 });
+  });
+  it("shares nothing with an empty list", () => {
+    expect(overlapStats(["a"], [])).toEqual({ shared: 0, sizeA: 1, sizeB: 0 });
   });
 });

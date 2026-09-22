@@ -186,3 +186,68 @@ export function serializeItems(items: readonly string[], sep: string): string {
 export function separatorInItems(items: readonly string[], sep: string): boolean {
   return items.some((it) => it.includes(sep));
 }
+
+// --- Import / export (§X4) ---------------------------------------------------
+// Saved lists move between browsers/devices as a JSON file: local storage is
+// per-browser, so this is the only bridge. The payload carries a version and the
+// bare lists (name / separator / items) — no ids, which are per-store and reassigned
+// on import.
+
+/** A saved list as it travels in an export file — the durable fields only. */
+export interface PortableList {
+  name: string;
+  separator: Separator;
+  items: string[];
+}
+
+const EXPORT_VERSION = 1;
+
+/** Serialize lists into the download payload. Pretty-printed: a reader may open the
+ *  file, and the size cost is nothing next to being legible. */
+export function exportLists(lists: readonly PortableList[]): string {
+  const payload = {
+    version: EXPORT_VERSION,
+    lists: lists.map((l) => ({ name: l.name, separator: l.separator, items: l.items })),
+  };
+  return JSON.stringify(payload, null, 2);
+}
+
+function isPortable(l: unknown): l is PortableList {
+  if (!l || typeof l !== "object") return false;
+  const r = l as Record<string, unknown>;
+  return (
+    typeof r.name === "string" &&
+    typeof r.separator === "string" &&
+    (SEPARATORS as readonly string[]).includes(r.separator) &&
+    Array.isArray(r.items) &&
+    r.items.every((it) => typeof it === "string")
+  );
+}
+
+/** Parse an import file back into lists, keeping only well-formed entries. Tolerant:
+ *  the file is user-supplied and may be truncated or hand-edited, so a bad blob or a
+ *  malformed entry is dropped rather than thrown. */
+export function parseImport(text: string): PortableList[] {
+  let data: unknown;
+  try {
+    data = JSON.parse(text);
+  } catch {
+    return [];
+  }
+  const lists = (data as Record<string, unknown> | null)?.lists;
+  return Array.isArray(lists) ? lists.filter(isPortable) : [];
+}
+
+/** The distinct-item overlap between two lists: how many items they share, and each
+ *  one's distinct size — enough for the import table's "Dupes %" (`shared / smaller`)
+ *  and its reverse-direction hover (`shared / larger`). */
+export function overlapStats(
+  a: readonly string[],
+  b: readonly string[],
+): { shared: number; sizeA: number; sizeB: number } {
+  const setA = new Set(a);
+  const setB = new Set(b);
+  let shared = 0;
+  for (const x of setA) if (setB.has(x)) shared++;
+  return { shared, sizeA: setA.size, sizeB: setB.size };
+}
