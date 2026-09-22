@@ -22,8 +22,8 @@ const STORAGE_KEY = "wordlists:custom";
 /** The input's height cap, in rows before it scrolls: the default and the range the
  *  − / + controls step through (§X2). */
 export const MIN_ROWS = 5;
-export const MAX_ROWS = 20;
-const ROW_STEP = 5;
+export const MAX_ROWS = 40;
+export const ROW_STEP = 5;
 
 class CustomState {
   /** The raw text in the input field. */

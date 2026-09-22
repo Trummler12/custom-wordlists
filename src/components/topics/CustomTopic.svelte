@@ -1,6 +1,6 @@
 <script lang="ts">
   import { availableSeparators, type Separator } from "../../lib/custom";
-  import { custom } from "../../state/custom.svelte";
+  import { custom, ROW_STEP } from "../../state/custom.svelte";
   import { lang } from "../../state/lang.svelte";
   import { output } from "../../state/output.svelte";
   import { overlays } from "../../state/overlays.svelte";
@@ -29,14 +29,36 @@
   const placeholder = $derived(EXAMPLES.join(custom.separator) + custom.separator + "…");
 
   let textarea = $state<HTMLTextAreaElement>();
+  // How many rows the content (or, while empty, the placeholder) needs — measured by
+  // `fit`, read by the grow control's `+` count.
+  let contentRows = $state(1);
+
+  // How far the set cap sits above the content, as `+` glyphs: one for the base, then
+  // one more per full row-step (ROW_STEP) the cap exceeds the content. Up to four `+`
+  // fit the icon, laid out two-per-line (the space is the line break); beyond that it
+  // reads "+N" (N = steps), which only widened range consts reach in practice. The
+  // control keeps stepping the height even once the cap already clears the content —
+  // this readout is how a reader sees by how much.
+  function plusIcon(): string {
+    const steps = Math.max(0, Math.floor((custom.maxRows - contentRows) / ROW_STEP));
+    if (steps <= 3) {
+      const n = steps + 1;
+      return n <= 2 ? "+".repeat(n) : `++ ${"+".repeat(n - 2)}`;
+    }
+    return `+${Math.min(steps, 9)}`;
+  }
 
   interface CustomControl {
     id: string;
-    icon: string;
+    /** A function so an icon can reflect live state — the grow control shows one `+`
+     *  per full row-step its cap sits above the content (see `plusIcon`). */
+    icon: () => string;
     column: 1 | 2;
     order: number;
     tooltip: () => string;
     danger?: boolean;
+    /** The icon holds several glyphs stacked over two lines — tighten its leading. */
+    stack?: boolean;
     active?: () => boolean;
     enabled: () => boolean;
     onClick: (e: MouseEvent) => void;
@@ -45,7 +67,7 @@
   const controls: CustomControl[] = [
     {
       id: "fit",
-      icon: "↕️",
+      icon: () => "↕️",
       column: 2,
       order: 0,
       tooltip: () => lang.ui.custom.fitToggle,
@@ -55,7 +77,7 @@
     },
     {
       id: "shrink",
-      icon: "−",
+      icon: () => "−",
       column: 1,
       order: 0,
       tooltip: () => lang.ui.custom.fewerRows,
@@ -64,16 +86,17 @@
     },
     {
       id: "grow",
-      icon: "+",
+      icon: () => plusIcon(),
       column: 1,
       order: 1,
+      stack: true,
       tooltip: () => lang.ui.custom.moreRows,
       enabled: () => custom.canGrow,
       onClick: () => custom.growRows(),
     },
     {
       id: "clear",
-      icon: "🗑️",
+      icon: () => "🗑️",
       column: 1,
       order: -1, // anchored to the bottom of its column
       tooltip: () => lang.ui.custom.clearHint,
@@ -108,11 +131,6 @@
   // the placeholder's line count, and when the − / + / ↕️ controls change the cap.
   function fit(el: HTMLTextAreaElement): void {
     el.style.height = "auto";
-    if (custom.fitContent) {
-      el.style.height = `${el.scrollHeight}px`;
-      el.style.overflowY = "hidden";
-      return;
-    }
     const cs = getComputedStyle(el);
     const line = parseFloat(cs.lineHeight) || 20;
     const extra =
@@ -120,9 +138,18 @@
       parseFloat(cs.paddingBottom) +
       parseFloat(cs.borderTopWidth) +
       parseFloat(cs.borderBottomWidth);
+    // `scrollHeight` at `height:auto` is the content's (or placeholder's) natural
+    // height; the grow control reads its row count.
+    const natural = el.scrollHeight;
+    contentRows = Math.max(1, Math.round((natural - extra) / line));
+    if (custom.fitContent) {
+      el.style.height = `${natural}px`;
+      el.style.overflowY = "hidden";
+      return;
+    }
     const max = line * custom.maxRows + extra;
-    el.style.height = `${Math.min(el.scrollHeight, max)}px`;
-    el.style.overflowY = el.scrollHeight > max ? "auto" : "hidden";
+    el.style.height = `${Math.min(natural, max)}px`;
+    el.style.overflowY = natural > max ? "auto" : "hidden";
   }
   $effect(() => {
     // Deps: the text, the placeholder (via the separator), and the height controls.
@@ -140,12 +167,13 @@
     class="ctl-btn"
     class:danger={c.danger}
     class:active={c.active?.()}
+    class:stacked={c.stack}
     class:tip-trigger={c.id === "clear"}
     disabled={!c.enabled()}
     aria-pressed={c.active ? c.active() : undefined}
     aria-label={c.tooltip()}
     title={c.tooltip()}
-    onclick={(e) => c.onClick(e)}>{c.icon}</button
+    onclick={(e) => c.onClick(e)}>{c.icon()}</button
   >
 {/snippet}
 
@@ -187,10 +215,10 @@
     <div class="ctl-grid">
       {#each [1, 2] as col (col)}
         <div class="ctl-col">
-          <div class="ctl-group">
+          <div class="ctl-group top">
             {#each colGroup(col, false) as c (c.id)}{@render control(c)}{/each}
           </div>
-          <div class="ctl-group">
+          <div class="ctl-group bottom">
             {#each colGroup(col, true) as c (c.id)}{@render control(c)}{/each}
           </div>
         </div>
@@ -283,6 +311,19 @@
     flex-direction: column;
     gap: 0.15rem;
   }
+  /* The controls try to stay in view while a tall input scrolls past: the top group
+     sticks near the top, the bottom group near the bottom, each free to slide within
+     the (full-height) column until the other end reaches it. */
+  .ctl-group.top {
+    position: sticky;
+    top: 0.3rem;
+  }
+  .ctl-group.bottom {
+    position: sticky;
+    /* Clear the pinned footer (--footer-h) so the bottom control doesn't come to
+       rest behind it — the top group needs no such offset, nothing overlays there. */
+    bottom: calc(var(--footer-h) + 0.3rem);
+  }
   .ctl-btn {
     display: inline-flex;
     align-items: center;
@@ -310,6 +351,14 @@
   .ctl-btn.active {
     border-color: var(--muted-2);
     box-shadow: inset 0 0 0 1px var(--muted-2);
+  }
+  /* An icon that stacks several glyphs over two lines (the grow control's `+`s): a
+     tight leading so the vertical gap between the rows matches the horizontal one —
+     a `+` is a small glyph, so its natural line box is far taller than it needs. */
+  .ctl-btn.stacked {
+    line-height: 0.7;
+    white-space: normal;
+    letter-spacing: 0.05em;
   }
   .ctl-btn.danger {
     background: rgba(200, 60, 60, 0.22);
