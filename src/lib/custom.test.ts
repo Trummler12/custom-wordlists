@@ -7,6 +7,7 @@ import {
   parseItems,
   separatorCounts,
   SEPARATORS,
+  serializeItems,
 } from "./custom";
 
 describe("separatorCounts", () => {
@@ -70,45 +71,39 @@ describe("parseItems", () => {
 describe("classifyCustom", () => {
   const seen = new Set<string>();
   it("keeps unique, in-cap items in order", () => {
-    const r = classifyCustom(["a", "b", "c"], { cap: 32, keepTooLong: false, seen });
+    const r = classifyCustom([["a", "b", "c"]], { cap: 32, keepTooLong: false, seen });
     expect(r.kept).toEqual(["a", "b", "c"]);
     expect(r.total).toBe(3);
     expect(r.internal.count).toBe(0);
   });
-  it("counts internal duplicates and keeps the first", () => {
-    const r = classifyCustom(["a", "b", "a"], { cap: 32, keepTooLong: false, seen });
+  it("counts internal duplicates within one source and keeps the first", () => {
+    const r = classifyCustom([["a", "b", "a"]], { cap: 32, keepTooLong: false, seen });
     expect(r.kept).toEqual(["a", "b"]);
     expect(r.internal.count).toBe(1);
     expect(r.internal.samples).toEqual(["a"]);
   });
+  it("counts local duplicates across sources, internal within one", () => {
+    // "b" repeats across the two sources (local); "c" repeats within the second (internal).
+    const r = classifyCustom([["a", "b"], ["b", "c", "c"]], { cap: 32, keepTooLong: false, seen });
+    expect(r.kept).toEqual(["a", "b", "c"]);
+    expect(r.local.count).toBe(1);
+    expect(r.internal.count).toBe(1);
+    expect(r.total).toBe(5);
+  });
   it("counts global duplicates against the seen set", () => {
-    const r = classifyCustom(["a", "b"], {
-      cap: 32,
-      keepTooLong: false,
-      seen: new Set(["a"]),
-    });
+    const r = classifyCustom([["a", "b"]], { cap: 32, keepTooLong: false, seen: new Set(["a"]) });
     expect(r.kept).toEqual(["b"]);
     expect(r.global.count).toBe(1);
   });
-  it("counts local duplicates against other custom sources", () => {
-    const r = classifyCustom(["a", "b"], {
-      cap: 32,
-      keepTooLong: false,
-      otherCustom: new Set(["a"]),
-      seen,
-    });
-    expect(r.kept).toEqual(["b"]);
-    expect(r.local.count).toBe(1);
-  });
   it("drops over-long items by default but always reports them", () => {
     const long = "x".repeat(40);
-    const r = classifyCustom(["a", long], { cap: 32, keepTooLong: false, seen });
+    const r = classifyCustom([["a", long]], { cap: 32, keepTooLong: false, seen });
     expect(r.kept).toEqual(["a"]);
     expect(r.tooLong.count).toBe(1);
   });
   it("keeps over-long items when the rule is switched off", () => {
     const long = "x".repeat(40);
-    const r = classifyCustom(["a", long], { cap: 32, keepTooLong: true, seen });
+    const r = classifyCustom([["a", long]], { cap: 32, keepTooLong: true, seen });
     expect(r.kept).toEqual(["a", long]);
     expect(r.tooLong.count).toBe(1);
   });
@@ -116,12 +111,19 @@ describe("classifyCustom", () => {
     const long = "x".repeat(40);
     // The over-long item is counted under tooLong, not as a global dup, even though
     // it also sits in `seen`.
-    const r = classifyCustom([long], {
-      cap: 32,
-      keepTooLong: false,
-      seen: new Set([long]),
-    });
+    const r = classifyCustom([[long]], { cap: 32, keepTooLong: false, seen: new Set([long]) });
     expect(r.tooLong.count).toBe(1);
     expect(r.global.count).toBe(0);
+  });
+});
+
+describe("serializeItems", () => {
+  it("round-trips with parseItems", () => {
+    const items = ["Apple", "Pear", "Orange"];
+    expect(parseItems(serializeItems(items, ","), ",")).toEqual(items);
+  });
+  it("quotes an item that contains the separator", () => {
+    expect(serializeItems(["a, b", "c"], ",")).toBe('"a, b",c');
+    expect(parseItems(serializeItems(["a, b", "c"], ","), ",")).toEqual(["a, b", "c"]);
   });
 });

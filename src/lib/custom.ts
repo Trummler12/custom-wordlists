@@ -117,55 +117,65 @@ function record(tier: OmissionTier, item: string): void {
   if (tier.samples.length < SAMPLE_CAP) tier.samples.push(item);
 }
 
-/** Classify parsed items into what the Custom channel keeps and what it drops, in
- *  the fixed precedence `>cap` => internal => local => global (each item counted
- *  once, under the first tier that catches it — the same "first rule wins" the
+/** Classify the active custom sources — the input field and/or the activated saved
+ *  lists, in the order they contribute — into what the Custom channel keeps and what
+ *  it drops, in the fixed precedence `>cap` => internal => local => global (each item
+ *  counted once, under the first tier that catches it, the "first rule wins" the
  *  curated lists' `omissionSummary` uses).
  *
  *  - `cap` is the game's max word length; `keepTooLong` reflects the reader's ✂️
  *    toggle (default off = drop the over-long ones).
- *  - `otherCustom` are strings already contributed by other active custom sources
- *    (the `local` tier — empty in X1, filled once several lists can be active).
- *  - `seen` are the words the non-custom output already holds (the `global` tier);
- *    reusing the output's own de-dup set makes global-dedup fall out for free. */
+ *  - `internal` = a duplicate within one source; `local` = a duplicate against an
+ *    earlier active source; `global` = a duplicate against `seen`, the words the
+ *    non-custom output already holds (reusing that set makes global-dedup free).
+ *
+ *  A single source (the input field alone) never fills the `local` tier — it is
+ *  what X1/X2 pass. */
 export function classifyCustom(
-  items: readonly string[],
-  opts: {
-    cap: number;
-    keepTooLong: boolean;
-    otherCustom?: ReadonlySet<string>;
-    seen: ReadonlySet<string>;
-  },
+  sources: readonly (readonly string[])[],
+  opts: { cap: number; keepTooLong: boolean; seen: ReadonlySet<string> },
 ): CustomBreakdown {
-  const { cap, keepTooLong, otherCustom, seen } = opts;
+  const { cap, keepTooLong, seen } = opts;
   const out: CustomBreakdown = {
     kept: [],
     tooLong: emptyTier(),
     internal: emptyTier(),
     local: emptyTier(),
     global: emptyTier(),
-    total: items.length,
+    total: 0,
   };
-  const mine = new Set<string>();
-  for (const item of items) {
-    if (item.length > cap) {
-      record(out.tooLong, item);
-      if (!keepTooLong) continue;
+  const keptSet = new Set<string>(); // across all sources — the local (cross-source) tier
+  for (const source of sources) {
+    const mine = new Set<string>(); // within this source — the internal tier
+    for (const item of source) {
+      out.total++;
+      if (item.length > cap) {
+        record(out.tooLong, item);
+        if (!keepTooLong) continue;
+      }
+      if (mine.has(item)) {
+        record(out.internal, item);
+        continue;
+      }
+      if (keptSet.has(item)) {
+        record(out.local, item);
+        continue;
+      }
+      if (seen.has(item)) {
+        record(out.global, item);
+        continue;
+      }
+      mine.add(item);
+      keptSet.add(item);
+      out.kept.push(item);
     }
-    if (mine.has(item)) {
-      record(out.internal, item);
-      continue;
-    }
-    if (otherCustom?.has(item)) {
-      record(out.local, item);
-      continue;
-    }
-    if (seen.has(item)) {
-      record(out.global, item);
-      continue;
-    }
-    mine.add(item);
-    out.kept.push(item);
   }
   return out;
+}
+
+/** Serialize items back into an input string on `sep` — the inverse of `parseItems`,
+ *  for loading a saved list into the field (📥). An item that contains the separator
+ *  is wrapped in quotes, exactly as the reader would have had to type it. */
+export function serializeItems(items: readonly string[], sep: string): string {
+  return items.map((it) => (it.includes(sep) ? `"${it}"` : it)).join(sep);
 }
