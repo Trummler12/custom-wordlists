@@ -2,7 +2,8 @@
   import { exportLists } from "../../lib/custom";
   import { custom } from "../../state/custom.svelte";
   import { lang } from "../../state/lang.svelte";
-  import { overlays } from "../../state/overlays.svelte";
+  import { clampPanelLeft, overlays } from "../../state/overlays.svelte";
+  import TipText from "../common/TipText.svelte";
 
   // The 📤 export control (§X4b): a panel that picks which saved lists to write to a
   // JSON file the reader downloads — the only way to move lists off this browser.
@@ -10,6 +11,7 @@
 
   const PANEL_ID = "export-lists";
   const open = $derived(overlays.exportPanel === PANEL_ID);
+  const PREVIEW = 8; // items named in a row's content preview
 
   let selected = $state<number[]>([]);
   // Start with every list ticked each time the panel opens.
@@ -27,6 +29,30 @@
   function toggleAll(): void {
     selected = allSelected ? [] : custom.savedLists.map((l) => l.id);
   }
+  function preview(items: string[]): string {
+    const head = items.slice(0, PREVIEW).join(", ");
+    return items.length > PREVIEW ? `${head}, …` : head;
+  }
+  // Keep the panel in the viewport: right-align it under its button, but let it jut
+  // into the Output column rather than off the left edge (clampPanelLeft). Re-placed on
+  // resize and whenever its own size changes (a ResizeObserver).
+  let panelEl = $state<HTMLElement>();
+  let panelLeft = $state<number | null>(null);
+  $effect(() => {
+    if (!open || !panelEl) {
+      panelLeft = null;
+      return;
+    }
+    const el = panelEl;
+    const place = () => (panelLeft = clampPanelLeft(el));
+    const ro = new ResizeObserver(place);
+    ro.observe(el);
+    window.addEventListener("resize", place);
+    return () => {
+      ro.disconnect();
+      window.removeEventListener("resize", place);
+    };
+  });
   function download(): void {
     const lists = custom.savedLists
       .filter((l) => selected.includes(l.id))
@@ -58,8 +84,10 @@
   >
   {#if open}
     <div
+      bind:this={panelEl}
       class="io-panel"
       class:above={overlays.exportAbove}
+      style={panelLeft == null ? "" : `left:${panelLeft}px;right:auto;`}
       role="group"
       aria-label={lang.ui.custom.exportTitle}
     >
@@ -68,13 +96,20 @@
         <input type="checkbox" checked={allSelected} onchange={toggleAll} />
         <span>{lang.ui.custom.selectAll}</span>
       </label>
-      <ul>
+      <!-- The name is its own preview trigger, so it sits beside the checkbox rather than
+           inside its label — a tap on the name shows the list, it does not toggle the tick. -->
+      <ul onscroll={overlays.onLocalScroll}>
         {#each custom.savedLists as l (l.id)}
           <li>
-            <label>
-              <input type="checkbox" checked={selected.includes(l.id)} onchange={() => toggle(l.id)} />
-              <span class="io-name">{l.name}</span>
-            </label>
+            <input
+              type="checkbox"
+              class="io-check"
+              checked={selected.includes(l.id)}
+              onchange={() => toggle(l.id)}
+              aria-label={l.name}
+            />
+            <TipText id={`export-preview-${l.id}`} text={preview(l.items)} label={l.name} maxWidth="12rem" />
+            <span class="io-size">{l.items.length}</span>
           </li>
         {/each}
       </ul>
@@ -133,16 +168,21 @@
     overflow-y: auto;
     overscroll-behavior: contain;
   }
-  li label {
+  li {
     display: flex;
     align-items: center;
-    gap: 0.3rem;
+    gap: 0.4rem;
     font-size: 0.85rem;
   }
-  .io-name {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+  .io-check {
+    flex: none;
+  }
+  /* The size sits at the row's right edge, so the counts line up as a column. */
+  .io-size {
+    margin-left: auto;
+    font-size: 0.8rem;
+    color: var(--muted-2);
+    font-variant-numeric: tabular-nums;
   }
   .io-action {
     margin-top: 0.3rem;
