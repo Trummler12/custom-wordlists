@@ -43,6 +43,7 @@
   onpointerdown={overlays.onPointerDown}
   onkeydown={overlays.onKeyDown}
   onscroll={overlays.onScroll}
+  onresize={overlays.onResize}
 />
 
 <main>
