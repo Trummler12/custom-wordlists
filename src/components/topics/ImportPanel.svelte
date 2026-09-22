@@ -1,8 +1,9 @@
 <script lang="ts">
   import { overlapStats, parseImport, type PortableList } from "../../lib/custom";
-  import { custom } from "../../state/custom.svelte";
+  import { custom, NAME_MAX } from "../../state/custom.svelte";
   import { lang } from "../../state/lang.svelte";
-  import { overlays } from "../../state/overlays.svelte";
+  import { clampPanelLeft, overlays } from "../../state/overlays.svelte";
+  import TipText from "../common/TipText.svelte";
 
   // The 📥 import control (§X4b): pick a file exported elsewhere, review its lists in a
   // table — name (editable, with a preview), size, and how much each overlaps an
@@ -62,18 +63,43 @@
     return items.length > PREVIEW ? `${head}, …` : head;
   }
   const pct = (x: number): string => `${Math.round(x * 100)}%`;
-  // The highest overlap with an existing saved list: its name, the share of the
-  // smaller set (Dupes %), and the share of the larger set (the reverse, on hover).
-  function bestMatch(items: string[]): { name: string; ratio: number; reverse: number } | null {
-    let best: { name: string; ratio: number; reverse: number } | null = null;
+  // The highest overlap with an existing saved list: its name and items (for the preview),
+  // the share of the smaller set (Dupes %), and the share of the larger set (the reverse,
+  // on hover).
+  type Match = { name: string; items: string[]; ratio: number; reverse: number };
+  function bestMatch(items: string[]): Match | null {
+    let best: Match | null = null;
     for (const l of custom.savedLists) {
       const { shared, sizeA, sizeB } = overlapStats(items, l.items);
       if (shared === 0) continue;
       const ratio = shared / Math.min(sizeA, sizeB);
-      if (!best || ratio > best.ratio) best = { name: l.name, ratio, reverse: shared / Math.max(sizeA, sizeB) };
+      if (!best || ratio > best.ratio) {
+        best = { name: l.name, items: l.items, ratio, reverse: shared / Math.max(sizeA, sizeB) };
+      }
     }
     return best;
   }
+  // Keep the panel in the viewport: right-align it under its button, but let it jut into
+  // the Output column rather than off the left edge (clampPanelLeft). Re-placed on resize
+  // and whenever its own size changes — the table appears once a file is picked and again
+  // as rows/names differ in width (a ResizeObserver).
+  let panelEl = $state<HTMLElement>();
+  let panelLeft = $state<number | null>(null);
+  $effect(() => {
+    if (!open || !panelEl) {
+      panelLeft = null;
+      return;
+    }
+    const el = panelEl;
+    const place = () => (panelLeft = clampPanelLeft(el));
+    const ro = new ResizeObserver(place);
+    ro.observe(el);
+    window.addEventListener("resize", place);
+    return () => {
+      ro.disconnect();
+      window.removeEventListener("resize", place);
+    };
+  });
   function dupeClass(ratio: number): string {
     if (ratio > 0.8) return "high";
     if (ratio > 0.5) return "mid";
@@ -103,8 +129,10 @@
   >
   {#if open}
     <div
+      bind:this={panelEl}
       class="io-panel"
       class:above={overlays.importAbove}
+      style={panelLeft == null ? "" : `left:${panelLeft}px;right:auto;`}
       role="group"
       aria-label={lang.ui.custom.importTitle}
     >
@@ -132,6 +160,7 @@
                   {#if editingIndex === i}
                     <input
                       class="io-nameedit"
+                      maxlength={NAME_MAX}
                       bind:value={editingName}
                       onblur={commitRename}
                       onkeydown={(e) => {
@@ -141,7 +170,7 @@
                       use:focusOnMount
                     />
                   {:else}
-                    <span class="io-name" title={preview(p.items)}>{p.name}</span>
+                    <TipText id={`import-preview-${i}`} text={preview(p.items)} label={p.name} maxWidth="9rem" />
                     <button type="button" class="mini" title={lang.ui.custom.listRename} onclick={() => startRename(i, p.name)}>✏️</button>
                   {/if}
                 </td>
@@ -149,7 +178,11 @@
                 <td class="num">
                   {#if m}<span class="dupe {dupeClass(m.ratio)}" title={pct(m.reverse)}>{pct(m.ratio)}</span>{:else}—{/if}
                 </td>
-                <td class="io-with">{m ? m.name : "—"}</td>
+                <td class="io-with">
+                  {#if m}
+                    <TipText id={`import-with-${i}`} text={preview(m.items)} label={m.name} maxWidth="9rem" />
+                  {:else}—{/if}
+                </td>
               </tr>
             {/each}
           </tbody>
@@ -222,13 +255,10 @@
     align-items: center;
     gap: 0.2rem;
   }
-  .io-name,
+  /* The name and best-match cells hold a TipText, which ellipsizes its own label; the
+     cell only caps how wide that may grow. */
   .io-with {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
     max-width: 9rem;
-    display: inline-block;
   }
   .io-nameedit {
     font: inherit;
