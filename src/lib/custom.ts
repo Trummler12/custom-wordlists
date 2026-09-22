@@ -179,3 +179,10 @@ export function classifyCustom(
 export function serializeItems(items: readonly string[], sep: string): string {
   return items.map((it) => (it.includes(sep) ? `"${it}"` : it)).join(sep);
 }
+
+/** Whether the chosen separator sits inside any item — the hint the saved-list ⚠️
+ *  reports: the separator is probably the wrong one, and the reader can pick one no
+ *  item contains. Advisory only; `serializeItems` still round-trips either way. */
+export function separatorInItems(items: readonly string[], sep: string): boolean {
+  return items.some((it) => it.includes(sep));
+}

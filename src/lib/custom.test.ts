@@ -6,6 +6,7 @@ import {
   detectSeparator,
   parseItems,
   separatorCounts,
+  separatorInItems,
   SEPARATORS,
   serializeItems,
 } from "./custom";
@@ -125,5 +126,12 @@ describe("serializeItems", () => {
   it("quotes an item that contains the separator", () => {
     expect(serializeItems(["a, b", "c"], ",")).toBe('"a, b",c');
     expect(parseItems(serializeItems(["a, b", "c"], ","), ",")).toEqual(["a, b", "c"]);
+  });
+});
+
+describe("separatorInItems", () => {
+  it("is true only when an item contains the separator", () => {
+    expect(separatorInItems(["a", "b"], ",")).toBe(false);
+    expect(separatorInItems(["a,b", "c"], ",")).toBe(true);
   });
 });
