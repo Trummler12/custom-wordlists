@@ -216,7 +216,7 @@
       <!-- The destructive actions' confirm, in its own popover (the tip slot), so a
            press elsewhere / Escape / scroll dismisses it and a click inside does not. -->
       {#if overlays.tip === CONFIRM_ID && pending}
-        <div class="tip-note confirm-pop" style={overlays.tipStyle} role="dialog">
+        <div class="tip-note local confirm-pop" style={overlays.tipStyle} role="dialog">
           <p class="confirm-msg">{confirmMessage(pending.kind, pending.name)}</p>
           <div class="confirm-actions">
             <button type="button" class="confirm-yes" onclick={confirmPending}>{lang.ui.custom.confirm}</button>
