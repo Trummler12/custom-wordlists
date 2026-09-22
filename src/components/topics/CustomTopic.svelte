@@ -7,6 +7,8 @@
   import TipMarker from "../common/TipMarker.svelte";
   import TipNote from "../common/TipNote.svelte";
   import CustomOmittedPanel from "./CustomOmittedPanel.svelte";
+  import ExportPanel from "./ExportPanel.svelte";
+  import ImportPanel from "./ImportPanel.svelte";
   import SavedListsPanel from "./SavedListsPanel.svelte";
 
   // The reader's own word-list row, pinned to the foot of the tree. No checkbox: the
@@ -231,10 +233,14 @@
           </div>
           <div class="ctl-group bottom">
             {#each colGroup(col, true) as c (c.id)}{@render control(c)}{/each}
-            <!-- The saved-lists manager is a panel, not a plain icon-button, so it is
-                 a component rather than a control descriptor; it lives at the foot of
-                 column 2 (where 📤 / 📥 will join it in X4). -->
-            {#if col === 2}<SavedListsPanel />{/if}
+            <!-- The saved-lists manager and the import/export controls are panels, not
+                 plain icon-buttons, so they are components rather than control
+                 descriptors; they stack at the foot of column 2 (📤 / 📥 above 💾). -->
+            {#if col === 2}
+              <ExportPanel />
+              <ImportPanel />
+              <SavedListsPanel />
+            {/if}
           </div>
         </div>
       {/each}
