@@ -391,6 +391,9 @@ export interface CustomStrings {
   importColWith: string;
   importButton: string;
   importEmpty: string;
+  /** The Dupes cell's persistent tooltip: the secondary overlap (share of the larger
+   *  set), spelled out rather than left as a bare number. */
+  importDupesSecondary: (pct: string) => string;
   /** The tiles' two-step confirms, and the generic confirm / cancel buttons. */
   listReplaceConfirm: (name: string) => string;
   listDeleteConfirm: (name: string) => string;
