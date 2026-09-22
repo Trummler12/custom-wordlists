@@ -38,6 +38,11 @@ export const MIN_ROWS = 5;
 export const MAX_ROWS = 40;
 export const ROW_STEP = 5;
 
+/** The most characters a list name a reader types may hold (a `maxlength` on the rename
+ *  fields). Names that arrive from an import may be longer and are kept as-is — the tiles
+ *  ellipsize an over-long name rather than the store shortening it. */
+export const NAME_MAX = 32;
+
 class CustomState {
   /** The raw text in the input field. */
   input = $state("");
