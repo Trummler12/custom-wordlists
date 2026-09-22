@@ -198,11 +198,14 @@ class OverlayState {
   /** Pin a local note to its trigger: fixed to the viewport, above or below it by which
    *  viewport half the trigger sits in.
    *
-   *  Horizontally it grows from the trigger toward whichever side has more room, and is
-   *  bounded by that room — so the viewport limits the width first, the content sizes
-   *  within it, and the trigger's edge is only the place it grows *from*, not a hard
-   *  cap. (The old version pinned the right edge under the trigger, which squeezed a
-   *  wide note between the trigger and the left edge.) */
+   *  Priority is width, then viewport, then the trigger. The note takes its content's
+   *  width (capped at the Topics-list column's width) and prefers to open leftward, its
+   *  right edge under the trigger's — but that anchor is only a soft orientation: a note
+   *  too wide for the room on its left slides right to stay in the viewport rather than
+   *  letting the trigger cap its width. The width isn't known until the content lays
+   *  out, so the leftward preference is set now and corrected on the next frame; the
+   *  common case (the note fits on the left) needs no correction. Re-placed on resize
+   *  (onResize), so it tracks the trigger through the centered layout's reflow. */
   #placeLocalTip(trigger: Element): void {
     const r = trigger.getBoundingClientRect();
     const gutter = 8;
@@ -212,13 +215,31 @@ class OverlayState {
     const edge = above
       ? `bottom:${Math.round(window.innerHeight - r.top + 4)}px`
       : `top:${Math.round(r.bottom + 4)}px`;
-    const spaceRight = vw - r.left - gutter;
-    const spaceLeft = r.right - gutter;
-    const horiz =
-      spaceRight >= spaceLeft
-        ? `left:${Math.round(r.left)}px;max-width:${Math.round(spaceRight)}px`
-        : `right:${Math.round(vw - r.right)}px;max-width:${Math.round(spaceLeft)}px`;
-    this.tipStyle = `position:fixed;${horiz};${edge};`;
+    const col = document.querySelector(".col-topics");
+    const maxWidth = Math.min(Math.round(col?.clientWidth ?? 320), vw - 2 * gutter);
+    // Positioned by `left`, never `right`: an out-of-flow element with `right` set and
+    // `left:auto` gets only the space from the viewport edge to that anchor as its
+    // shrink-to-fit width, which would cap the note at the room left of the trigger —
+    // the exact "hard-limited by the trigger" bug. `left` lets it size against the
+    // whole viewport, and the measured width then decides the leftward-opening offset.
+    const style = (left: number, hidden = false) =>
+      `position:fixed;left:${Math.round(left)}px;max-width:${maxWidth}px;${edge};${hidden ? "visibility:hidden;" : ""}`;
+    // First: let the note take its content width (up to maxWidth) against the full
+    // viewport, measured invisibly at the gutter so the interim spot never shows.
+    this.tipStyle = style(gutter, true);
+    requestAnimationFrame(() => {
+      if (!this.#tipLocal) return;
+      const note = document.querySelector(".tip-note.local");
+      if (!(note instanceof HTMLElement)) {
+        this.tipStyle = style(gutter); // reveal at the fallback rather than stay hidden
+        return;
+      }
+      const w = note.getBoundingClientRect().width;
+      // Open leftward — right edge under the trigger's — but keep the whole note in the
+      // viewport; a note too wide for the room on its left slides right (width wins).
+      const left = Math.max(gutter, Math.min(r.right - w, vw - gutter - w));
+      this.tipStyle = style(left);
+    });
   }
 
   /** Show a note, flipping it above its row when there is more room upward — or, for a
@@ -325,6 +346,15 @@ class OverlayState {
    *  part ways and it closes — the local counterpart to the page scroll onScroll handles. */
   onLocalScroll = (): void => {
     if (this.#tipLocal) this.closeTip();
+  };
+  /** A window resize reflows the centered layout, sliding the trigger under an open
+   *  local note; re-place it so it stays anchored to the trigger instead of drifting
+   *  with the viewport edge (a fixed note pinned by `right` moves at the full resize
+   *  delta while the centered content moves at half). */
+  onResize = (): void => {
+    if (!this.#tipLocal) return;
+    const t = this.#openers.tip;
+    if (t) this.#placeLocalTip(t);
   };
   /** Escape closes the one overlay the focus is in — innermost first, and nothing
    *  else.
