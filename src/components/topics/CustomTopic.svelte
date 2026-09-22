@@ -243,7 +243,7 @@
   <!-- The 🗑️ two-step confirm. Shares the tip overlay slot, so a press elsewhere,
        Escape or a scroll dismisses it; `tip-note` keeps a click inside from closing it. -->
   {#if overlays.tip === CONFIRM_ID}
-    <div class="tip-note confirm-pop" style={overlays.tipStyle} role="dialog" aria-label={lang.ui.custom.clearHint}>
+    <div class="tip-note local confirm-pop" style={overlays.tipStyle} role="dialog" aria-label={lang.ui.custom.clearHint}>
       <p class="confirm-msg">{lang.ui.custom.clearConfirm}</p>
       <div class="confirm-actions">
         <button type="button" class="confirm-btn" onclick={confirmClear}>{lang.ui.custom.clearConfirmButton}</button>
