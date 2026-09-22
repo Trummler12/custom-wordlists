@@ -374,6 +374,23 @@ export interface CustomStrings {
   phLoad: string;
   phDelete: string;
   phMove: string;
+  /** The 📤 export panel (§X4b): the control label, the panel title, the select-all
+   *  toggle, and the download button. */
+  exportLabel: string;
+  exportTitle: string;
+  selectAll: string;
+  exportDownload: string;
+  /** The 📥 import panel: the control label, title, the file-pick prompt, the table's
+   *  Name / Size / Dupes / with columns, the import button, and the empty-file note. */
+  importLabel: string;
+  importTitle: string;
+  importPick: string;
+  importColName: string;
+  importColSize: string;
+  importColDupes: string;
+  importColWith: string;
+  importButton: string;
+  importEmpty: string;
   /** The tiles' two-step confirms, and the generic confirm / cancel buttons. */
   listReplaceConfirm: (name: string) => string;
   listDeleteConfirm: (name: string) => string;
