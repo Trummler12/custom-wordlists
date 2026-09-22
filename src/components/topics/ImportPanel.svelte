@@ -3,6 +3,7 @@
   import { custom, NAME_MAX } from "../../state/custom.svelte";
   import { lang } from "../../state/lang.svelte";
   import { clampPanelLeft, overlays } from "../../state/overlays.svelte";
+  import TipNote from "../common/TipNote.svelte";
   import TipText from "../common/TipText.svelte";
 
   // The 📥 import control (§X4b): pick a file exported elsewhere, review its lists in a
@@ -176,7 +177,21 @@
                 </td>
                 <td class="num">{p.items.length}</td>
                 <td class="num">
-                  {#if m}<span class="dupe {dupeClass(m.ratio)}" title={pct(m.reverse)}>{pct(m.ratio)}</span>{:else}—{/if}
+                  {#if m}
+                    {@const dupeId = `import-dupe-${i}`}
+                    <button
+                      type="button"
+                      class="dupe {dupeClass(m.ratio)} tip-trigger"
+                      aria-expanded={overlays.tip === dupeId}
+                      aria-controls={dupeId}
+                      onpointerenter={(e) => overlays.tipEnter(e, dupeId, true)}
+                      onpointerleave={(e) => overlays.tipLeave(e)}
+                      onfocus={(e) => overlays.tipFocus(e, dupeId, true)}
+                      onblur={overlays.releaseTip}
+                      onclick={(e) => overlays.tipClick(e, dupeId, true)}>{pct(m.ratio)}</button
+                    >
+                    <TipNote id={dupeId} text={lang.ui.custom.importDupesSecondary(pct(m.reverse))} local />
+                  {:else}—{/if}
                 </td>
                 <td class="io-with">
                   {#if m}
@@ -273,6 +288,17 @@
     font-size: 0.8rem;
     line-height: 1;
     cursor: pointer;
+  }
+  /* The Dupes cell is a button (its persistent tooltip spells out the secondary overlap),
+     stripped back to plain coloured text. */
+  .dupe {
+    background: none;
+    border: none;
+    padding: 0;
+    font: inherit;
+    font-size: 0.82rem;
+    line-height: 1;
+    cursor: help;
   }
   /* Dupes % thresholds: the higher the overlap, the more an import repeats an existing
      list — worth a warmer warning. */
