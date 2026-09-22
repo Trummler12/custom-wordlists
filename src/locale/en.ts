@@ -108,6 +108,7 @@ export const en: UIStrings = {
     importColWith: "with",
     importButton: "Import selected",
     importEmpty: "No saved lists in this file.",
+    importDupesSecondary: (pct) => `Secondary: ${pct}`,
     listReplaceConfirm: (name) => `Replace the list "${name}" with the current input?`,
     listDeleteConfirm: (name) => `Delete the list "${name}"?`,
     listLoadConfirm: "Overwrite the input field with this list?",
