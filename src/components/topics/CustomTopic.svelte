@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { availableSeparators, type Separator } from "../../lib/custom";
+  import { availableSeparators, separatorInItems, type Separator } from "../../lib/custom";
   import { custom, ROW_STEP } from "../../state/custom.svelte";
   import { lang } from "../../state/lang.svelte";
   import { output } from "../../state/output.svelte";
@@ -7,6 +7,7 @@
   import TipMarker from "../common/TipMarker.svelte";
   import TipNote from "../common/TipNote.svelte";
   import CustomOmittedPanel from "./CustomOmittedPanel.svelte";
+  import SavedListsPanel from "./SavedListsPanel.svelte";
 
   // The reader's own word-list row, pinned to the foot of the tree. No checkbox: the
   // input drives the output directly, and what it contributes / drops is the counter
@@ -27,6 +28,12 @@
   // Illustrates the active separator in the empty field: inline for a visible
   // character, a stacked block for newline / tab.
   const placeholder = $derived(EXAMPLES.join(custom.separator) + custom.separator + "…");
+  // The same separator-in-an-item advisory the saved lists carry, for the live input.
+  const inputWarn = $derived(
+    separatorInItems(custom.items, custom.separator)
+      ? `${lang.ui.custom.listWarnTitle}{br}- ${lang.ui.custom.listWarnSeparator}`
+      : null,
+  );
 
   let textarea = $state<HTMLTextAreaElement>();
   // How many rows the content (or, while empty, the placeholder) needs — measured by
@@ -182,6 +189,9 @@
     <span class="title">{lang.ui.custom.title}</span>
     <TipMarker tipId="custom-info" icon="ℹ️" text={lang.ui.custom.infoHint} />
     <CustomOmittedPanel />
+    {#if inputWarn}
+      <TipMarker tipId="custom-warn" icon="⚠️" text={inputWarn} />
+    {/if}
     <span class="sep">
       <label class="sep-label" for="custom-sep">{lang.ui.custom.separatorLabel}</label>
       <select
@@ -203,6 +213,7 @@
   </div>
   <!-- Outside the row, like a topic's marker note: it stretches the full width. -->
   <TipNote id="custom-info" text={lang.ui.custom.infoHint} />
+  {#if inputWarn}<TipNote id="custom-warn" text={inputWarn} />{/if}
   <div class="custom-body">
     <textarea
       bind:this={textarea}
@@ -220,6 +231,10 @@
           </div>
           <div class="ctl-group bottom">
             {#each colGroup(col, true) as c (c.id)}{@render control(c)}{/each}
+            <!-- The saved-lists manager is a panel, not a plain icon-button, so it is
+                 a component rather than a control descriptor; it lives at the foot of
+                 column 2 (where 📤 / 📥 will join it in X4). -->
+            {#if col === 2}<SavedListsPanel />{/if}
           </div>
         </div>
       {/each}
@@ -230,9 +245,10 @@
   {#if overlays.tip === CONFIRM_ID}
     <div class="tip-note confirm-pop" style={overlays.tipStyle} role="dialog" aria-label={lang.ui.custom.clearHint}>
       <p class="confirm-msg">{lang.ui.custom.clearConfirm}</p>
-      <button type="button" class="confirm-btn" onclick={confirmClear}>
-        {lang.ui.custom.clearConfirmButton}
-      </button>
+      <div class="confirm-actions">
+        <button type="button" class="confirm-btn" onclick={confirmClear}>{lang.ui.custom.clearConfirmButton}</button>
+        <button type="button" class="confirm-cancel" onclick={() => overlays.closeTip()}>{lang.ui.custom.cancel}</button>
+      </div>
     </div>
   {/if}
 </div>
@@ -324,51 +340,6 @@
        rest behind it — the top group needs no such offset, nothing overlays there. */
     bottom: calc(var(--footer-h) + 0.3rem);
   }
-  .ctl-btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 1.6rem;
-    height: 1.6rem;
-    padding: 0;
-    font: inherit;
-    font-size: 0.9rem;
-    line-height: 1;
-    color: var(--chip-fg);
-    background: var(--chip-bg);
-    border: 1px solid var(--panel-border);
-    border-radius: var(--radius);
-    cursor: pointer;
-  }
-  .ctl-btn:hover:not(:disabled),
-  .ctl-btn:focus-visible {
-    border-color: var(--muted-2);
-  }
-  .ctl-btn:disabled {
-    opacity: 0.4;
-    cursor: default;
-  }
-  .ctl-btn.active {
-    border-color: var(--muted-2);
-    box-shadow: inset 0 0 0 1px var(--muted-2);
-  }
-  /* An icon that stacks several glyphs over two lines (the grow control's `+`s): a
-     tight leading so the vertical gap between the rows matches the horizontal one —
-     a `+` is a small glyph, so its natural line box is far taller than it needs. */
-  .ctl-btn.stacked {
-    line-height: 0.7;
-    white-space: normal;
-    letter-spacing: 0.05em;
-  }
-  .ctl-btn.danger {
-    background: rgba(200, 60, 60, 0.22);
-  }
-  .ctl-btn.danger:hover:not(:disabled),
-  .ctl-btn.danger:focus-visible {
-    background: rgba(200, 60, 60, 0.34);
-    border-color: rgba(200, 60, 60, 0.7);
-  }
-
   /* The confirm popover. Position comes from overlays.tipStyle (fixed, anchored to
      the 🗑️); the rest mirrors a tip-note's look. */
   .confirm-pop {
@@ -386,6 +357,10 @@
   .confirm-msg {
     margin: 0 0 0.4rem;
   }
+  .confirm-actions {
+    display: flex;
+    gap: 0.4rem;
+  }
   .confirm-btn {
     font: inherit;
     font-size: 0.8rem;
@@ -399,5 +374,15 @@
   .confirm-btn:hover,
   .confirm-btn:focus-visible {
     background: rgba(200, 60, 60, 0.34);
+  }
+  .confirm-cancel {
+    font: inherit;
+    font-size: 0.8rem;
+    padding: 0.25rem 0.5rem;
+    color: var(--chip-fg);
+    background: none;
+    border: 1px solid var(--panel-border);
+    border-radius: var(--radius);
+    cursor: pointer;
   }
 </style>
