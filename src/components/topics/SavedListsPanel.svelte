@@ -1,10 +1,11 @@
 <script lang="ts">
   import { SEPARATORS, separatorInItems, type Separator } from "../../lib/custom";
-  import { custom, type SavedList } from "../../state/custom.svelte";
+  import { custom, NAME_MAX, type SavedList } from "../../state/custom.svelte";
   import { lang } from "../../state/lang.svelte";
-  import { overlays } from "../../state/overlays.svelte";
+  import { clampPanelLeft, overlays } from "../../state/overlays.svelte";
   import TipMarker from "../common/TipMarker.svelte";
   import TipNote from "../common/TipNote.svelte";
+  import TipText from "../common/TipText.svelte";
 
   // The 💾 saved-lists manager (§X3): a control on the Custom cluster that opens a
   // panel of the reader's stored lists. Each tile activates its list into the output,
@@ -94,6 +95,26 @@
   function toggle(e: MouseEvent): void {
     overlays.toggleSavedListsPanel(PANEL_ID, e.currentTarget as Element);
   }
+  // Keep the panel in the viewport: right-align it under the 💾 button, but let it jut
+  // into the Output column rather than off the left edge (clampPanelLeft). Re-placed on
+  // resize and whenever its own size changes (a ResizeObserver).
+  let panelEl = $state<HTMLElement>();
+  let panelLeft = $state<number | null>(null);
+  $effect(() => {
+    if (!open || !panelEl) {
+      panelLeft = null;
+      return;
+    }
+    const el = panelEl;
+    const place = () => (panelLeft = clampPanelLeft(el));
+    const ro = new ResizeObserver(place);
+    ro.observe(el);
+    window.addEventListener("resize", place);
+    return () => {
+      ro.disconnect();
+      window.removeEventListener("resize", place);
+    };
+  });
 </script>
 
 {#snippet tile(list: SavedList | null, i: number)}
@@ -112,6 +133,7 @@
       {#if list && editingId === list.id}
         <input
           class="name-edit"
+          maxlength={NAME_MAX}
           bind:value={editingName}
           onkeydown={(e) => {
             if (e.key === "Enter") commitRename();
@@ -120,10 +142,12 @@
           onblur={commitRename}
           use:focusOnMount
         />
+      {:else if list}
+        <TipText id={`list-preview-${list.id}`} text={preview(list.items)} label={list.name} maxWidth="10rem" />
       {:else}
-        <span class="name" class:muted={!list} title={list ? preview(list.items) : undefined}>
-          {list ? list.name : `Custom List ${custom.savedLists.length + 1}`}
-        </span>
+        <span class="name muted">Custom List {custom.savedLists.length + 1}</span>
+      {/if}
+      {#if !list || editingId !== list.id}
         <button
           type="button"
           class="mini"
@@ -197,8 +221,10 @@
   >
   {#if open}
     <div
+      bind:this={panelEl}
       class="lists-panel"
       class:above={overlays.savedListsAbove}
+      style={panelLeft == null ? "" : `left:${panelLeft}px;right:auto;`}
       role="group"
       aria-label={lang.ui.custom.listsTitle}
     >
@@ -274,9 +300,9 @@
     display: flex;
     align-items: center;
     gap: 0.3rem;
+    font-size: 0.85rem; /* the base the name's TipText inherits, so it matches the row */
   }
   .name {
-    font-size: 0.85rem;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
