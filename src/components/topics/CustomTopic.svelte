@@ -283,7 +283,9 @@
     display: inline-flex;
     align-items: baseline;
     gap: 0.3rem;
-    margin-left: 0.5rem;
+    /* Pushed to the right of the row (the count trails it), rather than sitting just
+       after the markers on the left. */
+    margin-left: auto;
   }
   .sep-label {
     color: var(--muted-2);
@@ -345,6 +347,12 @@
     /* Clear the pinned footer (--footer-h) so the bottom control doesn't come to
        rest behind it — the top group needs no such offset, nothing overlays there. */
     bottom: calc(var(--footer-h) + 0.3rem);
+    /* This sticky box is a stacking context that traps the export/import/saved-lists
+       panels' own z-index. Lift it above the (transparent, later-in-DOM) sticky output
+       column so a panel jutting into Output covers it, instead of the output's border /
+       chips / headings painting back through the panel. Below the footer's z-index (20),
+       which must stay on top. */
+    z-index: 5;
   }
   /* The confirm popover. Position comes from overlays.tipStyle (fixed, anchored to
      the 🗑️); the rest mirrors a tip-note's look. */
