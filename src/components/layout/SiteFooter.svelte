@@ -5,12 +5,15 @@
   // page (a separate entry that never loads that state) can reuse this in its own
   // interface language. `flow` renders it in-flow (the coverage page wants it at the
   // bottom of its capped content) instead of the main app's fixed viewport-bottom bar.
-  let { footer, flow = false }: { footer: FooterStrings; flow?: boolean } = $props();
+  // `sticky` layers on `flow`: the footer stays in-flow (capped to the content), but pins to
+  // the viewport bottom while the page scrolls — the coverage page wants it always in view.
+  let { footer, flow = false, sticky = false }: { footer: FooterStrings; flow?: boolean; sticky?: boolean } =
+    $props();
 
   const REPO_URL = "https://github.com/Trummler12/custom-wordlists";
 </script>
 
-<footer class="site-footer" class:flow>
+<footer class="site-footer" class:flow class:sticky>
   <!-- Inner box repeats main's content width so the two ends line up with the
        topic column's left edge and the output panel's right edge. -->
   <div class="footer-inner">
@@ -92,6 +95,14 @@
   }
   .site-footer.flow .footer-inner {
     max-width: none;
+  }
+  /* Layered on `flow` (higher specificity wins the position): pin the in-flow footer to the
+     viewport bottom so it stays visible as the page scrolls. Its Canvas background keeps the
+     scrolled content from showing through; above the table's sticky header (z-index up to 3). */
+  .site-footer.flow.sticky {
+    position: sticky;
+    bottom: 0;
+    z-index: 5;
   }
   @media (max-width: 50rem) {
     /* Only the main app's fixed bar un-pins and full-bleeds here; the coverage page's `.flow`
