@@ -25,6 +25,7 @@ type OverlayKind =
   | "savedLists"
   | "exportLists"
   | "importLists"
+  | "customSettings"
   | "tip";
 const HOSTS: Record<OverlayKind, string> = {
   lang: ".lang-picker",
@@ -36,6 +37,7 @@ const HOSTS: Record<OverlayKind, string> = {
   savedLists: ".saved-lists-host",
   exportLists: ".export-lists-host",
   importLists: ".import-lists-host",
+  customSettings: ".custom-settings-host",
   tip: ".tip-trigger, .tip-note",
 };
 
@@ -60,6 +62,7 @@ class OverlayState {
     savedLists: null,
     exportLists: null,
     importLists: null,
+    customSettings: null,
     tip: null,
   };
   #remember(kind: OverlayKind, trigger: Element | null | undefined): void {
@@ -216,6 +219,22 @@ class OverlayState {
     this.#remember("importLists", trigger);
   };
 
+  // --- Custom settings panel (⚙️) --------------------------------------------
+
+  /** The ⚙️ on the Custom row — its own slot, like the panels above, so a hover
+   *  tooltip (which shares the single `tip` slot) can't dismiss it. */
+  customSettingsPanel = $state<string | null>(null);
+  customSettingsAbove = $state(false);
+  toggleCustomSettingsPanel = (id: string, trigger: Element): void => {
+    if (this.customSettingsPanel === id) {
+      this.customSettingsPanel = null;
+      return;
+    }
+    this.customSettingsAbove = opensUpward(trigger);
+    this.customSettingsPanel = id;
+    this.#remember("customSettings", trigger);
+  };
+
   // --- Tooltips --------------------------------------------------------------
 
   /** A `local` note is anchored to a trigger sitting inside a scrolling popup (a 👎 in the
@@ -355,6 +374,7 @@ class OverlayState {
     if (this.savedListsPanel && !target?.closest?.(".saved-lists-host")) this.savedListsPanel = null;
     if (this.exportPanel && !target?.closest?.(".export-lists-host")) this.exportPanel = null;
     if (this.importPanel && !target?.closest?.(".import-lists-host")) this.importPanel = null;
+    if (this.customSettingsPanel && !target?.closest?.(".custom-settings-host")) this.customSettingsPanel = null;
     // Neither on the marker, whose own click toggles, nor inside the note: a note
     // exists to be read, and one carrying a link exists to be clicked — closing it
     // here would take the link out of the document before the click reached it.
@@ -416,6 +436,7 @@ class OverlayState {
     else if (kind === "savedLists") this.savedListsPanel = null;
     else if (kind === "exportLists") this.exportPanel = null;
     else if (kind === "importLists") this.importPanel = null;
+    else if (kind === "customSettings") this.customSettingsPanel = null;
     else this.omittedPanel = null;
     const back = this.#openers[kind];
     if (back) void returnFocus(back);
@@ -444,6 +465,7 @@ class OverlayState {
     if (this.savedListsPanel && inside(HOSTS.savedLists)) return "savedLists";
     if (this.exportPanel && inside(HOSTS.exportLists)) return "exportLists";
     if (this.importPanel && inside(HOSTS.importLists)) return "importLists";
+    if (this.customSettingsPanel && inside(HOSTS.customSettings)) return "customSettings";
     return null;
   }
 }
