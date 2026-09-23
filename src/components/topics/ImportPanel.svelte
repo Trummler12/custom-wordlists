@@ -12,7 +12,6 @@
 
   const PANEL_ID = "import-lists";
   const open = $derived(overlays.importPanel === PANEL_ID);
-  const PREVIEW = 8;
 
   let chosen = $state(false); // a file has been picked (so "none found" can show)
   let parsed = $state<PortableList[]>([]);
@@ -58,10 +57,6 @@
       if (name) parsed = parsed.map((p, i) => (i === editingIndex ? { ...p, name } : p));
     }
     editingIndex = null;
-  }
-  function preview(items: string[]): string {
-    const head = items.slice(0, PREVIEW).join(", ");
-    return items.length > PREVIEW ? `${head}, …` : head;
   }
   const pct = (x: number): string => `${Math.round(x * 100)}%`;
   // The highest overlap with an existing saved list: its name and items (for the preview),
@@ -171,7 +166,7 @@
                       use:focusOnMount
                     />
                   {:else}
-                    <TipText id={`import-preview-${i}`} text={preview(p.items)} label={p.name} maxWidth="9rem" />
+                    <TipText id={`import-preview-${i}`} text={custom.preview(p.items)} label={p.name} maxWidth="9rem" />
                     <button type="button" class="mini" title={lang.ui.custom.listRename} onclick={() => startRename(i, p.name)}>✏️</button>
                   {/if}
                 </td>
@@ -195,7 +190,7 @@
                 </td>
                 <td class="io-with">
                   {#if m}
-                    <TipText id={`import-with-${i}`} text={preview(m.items)} label={m.name} maxWidth="9rem" />
+                    <TipText id={`import-with-${i}`} text={custom.preview(m.items)} label={m.name} maxWidth="9rem" />
                   {:else}—{/if}
                 </td>
               </tr>

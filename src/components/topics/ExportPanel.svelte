@@ -11,7 +11,6 @@
 
   const PANEL_ID = "export-lists";
   const open = $derived(overlays.exportPanel === PANEL_ID);
-  const PREVIEW = 8; // items named in a row's content preview
 
   let selected = $state<number[]>([]);
   // Start with every list ticked each time the panel opens.
@@ -28,10 +27,6 @@
   }
   function toggleAll(): void {
     selected = allSelected ? [] : custom.savedLists.map((l) => l.id);
-  }
-  function preview(items: string[]): string {
-    const head = items.slice(0, PREVIEW).join(", ");
-    return items.length > PREVIEW ? `${head}, …` : head;
   }
   // Keep the panel in the viewport: right-align it under its button, but let it jut
   // into the Output column rather than off the left edge (clampPanelLeft). Re-placed on
@@ -113,7 +108,7 @@
               onchange={() => toggle(l.id)}
               aria-label={l.name}
             />
-            <TipText id={`export-preview-${l.id}`} text={preview(l.items)} label={l.name} maxWidth="12rem" />
+            <TipText id={`export-preview-${l.id}`} text={custom.preview(l.items)} label={l.name} maxWidth="12rem" />
             <span class="io-size">{l.items.length}</span>
           </li>
         {/each}
