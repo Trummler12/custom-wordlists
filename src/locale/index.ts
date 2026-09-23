@@ -403,6 +403,12 @@ export interface CustomStrings {
   /** The ⚠️ shown on a list (or the input) whose separator sits inside an item. */
   listWarnTitle: string;
   listWarnSeparator: string;
+  /** The ⚙️ Custom settings: the control's label, the panel title, and the two preview-cap
+   *  fields — how many items a content preview lists, and how many characters it may run. */
+  settingsLabel: string;
+  settingsTitle: string;
+  maxPreviewItems: string;
+  maxPreviewChars: string;
 }
 
 /** Every user-facing string the app chrome renders, keyed and typed. */

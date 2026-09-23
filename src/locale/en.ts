@@ -116,6 +116,10 @@ export const en: UIStrings = {
     cancel: "Cancel",
     listWarnTitle: "This custom list has problems:",
     listWarnSeparator: "The selected separator character occurs inside an item.",
+    settingsLabel: "Custom settings",
+    settingsTitle: "Custom settings",
+    maxPreviewItems: "Max preview items",
+    maxPreviewChars: "Max preview characters",
   },
   coverage: {
     label: "Geoguessr / Street View coverage",

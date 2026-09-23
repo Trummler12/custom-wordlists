@@ -123,6 +123,10 @@ export const de: UIStrings = {
     cancel: "Abbrechen",
     listWarnTitle: "Diese eigene Liste hat Probleme:",
     listWarnSeparator: "Das gewählte Trennzeichen kommt innerhalb eines Eintrags vor.",
+    settingsLabel: "Custom-Einstellungen",
+    settingsTitle: "Custom-Einstellungen",
+    maxPreviewItems: "Max. Vorschau-Einträge",
+    maxPreviewChars: "Max. Vorschau-Zeichen",
   },
   coverage: {
     label: "Geoguessr / Street-View-Abdeckung",
