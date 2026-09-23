@@ -263,7 +263,7 @@
       </table>
     </div>
   </main>
-  <SiteFooter footer={strings(uiLang).footer} flow />
+  <SiteFooter footer={strings(uiLang).footer} flow sticky />
   </div>
 {/if}
 
@@ -271,11 +271,18 @@
   /* The <body> baseline (margin, tighter font) lives in coverage.css — it cannot be
      component-scoped. Everything below is scoped to this page. */
   header {
+    /* Pinned to the top so the home link + topic/language selects stay reachable while the
+       page scrolls. Opaque (Canvas = the page background) so the table doesn't show through,
+       and above everything below it — including the table's sticky header (z-index up to 3). */
+    position: sticky;
+    top: 0;
+    z-index: 10;
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 1rem;
     padding: 0.6rem 1rem;
+    background: Canvas;
     border-bottom: 1px solid rgba(128, 128, 128, 0.35);
   }
   .home {
