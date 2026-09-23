@@ -167,8 +167,57 @@
     custom.maxRows;
     custom.fitContent;
     if (textarea) fit(textarea);
+    // The column height just changed, which moves where the two sticky groups meet.
+    scheduleClamp();
   });
+
+  // Keep each column's two sticky groups from overlapping. CSS sticky can't see across
+  // siblings, so a group pulled toward a viewport edge by its sticky offset slides over
+  // the other group (which is riding at the column edge) instead of stopping at it. This
+  // eases the pulled group back toward the edge it came from until the overlap clears.
+  let ctlGrid = $state<HTMLElement>();
+  const GROUP_GAP = 3; // px kept between the groups when they meet (matches the control gap)
+  let clampRaf = 0;
+  function scheduleClamp(): void {
+    if (clampRaf) return;
+    clampRaf = requestAnimationFrame(() => {
+      clampRaf = 0;
+      clampSticky();
+    });
+  }
+  function clampSticky(): void {
+    if (!ctlGrid) return;
+    for (const col of ctlGrid.querySelectorAll<HTMLElement>(".ctl-col")) {
+      const top = col.querySelector<HTMLElement>(".ctl-group.top");
+      const bottom = col.querySelector<HTMLElement>(".ctl-group.bottom");
+      if (!top || !bottom) continue;
+      // Measure at rest — a stale transform would poison the reading.
+      top.style.transform = "";
+      bottom.style.transform = "";
+      const cr = col.getBoundingClientRect();
+      const tr = top.getBoundingClientRect();
+      const br = bottom.getBoundingClientRect();
+      const overlap = tr.bottom + GROUP_GAP - br.top;
+      if (overlap <= 0) continue;
+      // The overlap is the sticky-displaced (anchored) group intruding on the one riding at
+      // its column edge. Ease the anchored group back toward the edge it was pulled from —
+      // never past it (min with its displacement), so it comes to rest at the boundary
+      // rather than shoving the riding group over it. The column is always at least both
+      // groups tall, so this fully clears the overlap except at the extreme where the whole
+      // cluster is nearly scrolled off — there it stops at the boundary with a slight touch.
+      if (tr.top > cr.top + 1) {
+        // top group pulled down from the column top — let it slide back up
+        top.style.transform = `translateY(${-Math.min(overlap, tr.top - cr.top)}px)`;
+      } else if (br.bottom < cr.bottom - 1) {
+        // bottom group pulled up from the column bottom — let it slide back down
+        bottom.style.transform = `translateY(${Math.min(overlap, cr.bottom - br.bottom)}px)`;
+      }
+    }
+  }
+  $effect(() => () => cancelAnimationFrame(clampRaf));
 </script>
+
+<svelte:window onscroll={scheduleClamp} onresize={scheduleClamp} />
 
 {#snippet control(c: CustomControl)}
   <button
@@ -225,7 +274,7 @@
       value={custom.input}
       oninput={(e) => custom.setInput(e.currentTarget.value)}
     ></textarea>
-    <div class="ctl-grid">
+    <div class="ctl-grid" bind:this={ctlGrid}>
       {#each [1, 2] as col (col)}
         <div class="ctl-col">
           <div class="ctl-group top">
