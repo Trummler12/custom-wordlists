@@ -1,9 +1,16 @@
 <script lang="ts">
   import { availableSeparators, separatorInItems, type Separator } from "../../lib/custom";
-  import { custom, ROW_STEP } from "../../state/custom.svelte";
+  import {
+    custom,
+    PREVIEW_CHARS_MAX,
+    PREVIEW_CHARS_MIN,
+    PREVIEW_ITEMS_MAX,
+    PREVIEW_ITEMS_MIN,
+    ROW_STEP,
+  } from "../../state/custom.svelte";
   import { lang } from "../../state/lang.svelte";
   import { output } from "../../state/output.svelte";
-  import { overlays } from "../../state/overlays.svelte";
+  import { clampPanelLeft, overlays } from "../../state/overlays.svelte";
   import TipMarker from "../common/TipMarker.svelte";
   import TipNote from "../common/TipNote.svelte";
   import CustomOmittedPanel from "./CustomOmittedPanel.svelte";
@@ -22,6 +29,7 @@
 
   const EXAMPLES = ["Apple", "Pear", "Orange"];
   const CONFIRM_ID = "custom-clear-confirm";
+  const SETTINGS_ID = "custom-settings";
 
   const breakdown = $derived(output.customBreakdown);
   // The dropdown offers the separators that occur; the one in force is always among
@@ -133,6 +141,37 @@
     custom.clear();
     overlays.closeTip();
   }
+  // The ⚙️ Custom settings — its own overlay slot (not the shared tip slot), so a hover
+  // tooltip can't dismiss it; it dismisses on a press elsewhere / Escape / scroll like the
+  // export/import/saved-lists panels, and is positioned the same way (clampPanelLeft).
+  const settingsOpen = $derived(overlays.customSettingsPanel === SETTINGS_ID);
+  function toggleSettings(e: MouseEvent): void {
+    overlays.toggleCustomSettingsPanel(SETTINGS_ID, e.currentTarget as Element);
+  }
+  let settingsEl = $state<HTMLElement>();
+  let settingsLeft = $state<number | null>(null);
+  let settingsMaxW = $state<number | null>(null);
+  $effect(() => {
+    if (!settingsOpen || !settingsEl) {
+      settingsLeft = null;
+      settingsMaxW = null;
+      return;
+    }
+    const el = settingsEl;
+    const place = () => {
+      // fit-content, capped at the Topics column's width like the tip / confirm popovers.
+      const col = document.querySelector(".col-topics");
+      settingsMaxW = Math.min(col?.clientWidth ?? 320, window.innerWidth - 16);
+      settingsLeft = clampPanelLeft(el);
+    };
+    const ro = new ResizeObserver(place);
+    ro.observe(el);
+    window.addEventListener("resize", place);
+    return () => {
+      ro.disconnect();
+      window.removeEventListener("resize", place);
+    };
+  });
 
   // Grow the textarea to its content — or, while empty, to its placeholder — up to
   // `custom.maxRows`, then scroll; or, with ↕️ on, to the whole content uncapped.
@@ -257,6 +296,51 @@
         {/each}
       </select>
     </span>
+    <!-- The ⚙️ Custom settings, after the separator (so the gear doesn't read as part of it),
+         its own panel slot so a hover tooltip can't dismiss it. -->
+    <span class="custom-settings-host">
+      <button
+        type="button"
+        class="settings-btn"
+        aria-haspopup="dialog"
+        aria-expanded={settingsOpen}
+        aria-label={lang.ui.custom.settingsLabel}
+        title={lang.ui.custom.settingsLabel}
+        onclick={toggleSettings}>⚙️</button
+      >
+      {#if settingsOpen}
+        <div
+          bind:this={settingsEl}
+          class="settings-panel"
+          class:above={overlays.customSettingsAbove}
+          style={`${settingsMaxW == null ? "" : `max-width:${settingsMaxW}px;`}${settingsLeft == null ? "" : `left:${settingsLeft}px;right:auto;`}`}
+          role="dialog"
+          aria-label={lang.ui.custom.settingsTitle}
+        >
+          <p class="settings-title">{lang.ui.custom.settingsTitle}</p>
+          <label class="settings-row">
+            <span>{lang.ui.custom.maxPreviewItems}</span>
+            <input
+              type="number"
+              min={PREVIEW_ITEMS_MIN}
+              max={PREVIEW_ITEMS_MAX}
+              value={custom.maxPreviewItems}
+              onchange={(e) => custom.setMaxPreviewItems(e.currentTarget.valueAsNumber)}
+            />
+          </label>
+          <label class="settings-row">
+            <span>{lang.ui.custom.maxPreviewChars}</span>
+            <input
+              type="number"
+              min={PREVIEW_CHARS_MIN}
+              max={PREVIEW_CHARS_MAX}
+              value={custom.maxPreviewChars}
+              onchange={(e) => custom.setMaxPreviewChars(e.currentTarget.valueAsNumber)}
+            />
+          </label>
+        </div>
+      {/if}
+    </span>
     <!-- Kept / parsed, mirroring a topic row's selected / total. -->
     <span class="meta" title={lang.ui.tree.wordsOf(breakdown.kept.length, breakdown.total)}>
       {breakdown.kept.length}/<span class="total">{breakdown.total}</span>
@@ -332,9 +416,22 @@
     display: inline-flex;
     align-items: baseline;
     gap: 0.3rem;
-    /* Pushed to the right of the row (the count trails it), rather than sitting just
-       after the markers on the left. */
+    /* Leads the right-hand group (Separator · ⚙️ · count): the auto margin sits on the
+       first of them, so it and everything after are pushed to the right of the row. */
     margin-left: auto;
+  }
+  .custom-settings-host {
+    position: relative;
+    display: inline-flex;
+  }
+  .settings-btn {
+    background: none;
+    border: none;
+    padding: 0;
+    font: inherit;
+    font-size: 0.85rem;
+    line-height: 1;
+    cursor: pointer;
   }
   .sep-label {
     color: var(--muted-2);
@@ -403,8 +500,8 @@
        which must stay on top. */
     z-index: 5;
   }
-  /* The confirm popover. Position comes from overlays.tipStyle (fixed, anchored to
-     the 🗑️); the rest mirrors a tip-note's look. */
+  /* The 🗑️ confirm popover. Position comes from overlays.tipStyle (fixed, anchored to the
+     trigger); the rest mirrors a tip-note's look. */
   .confirm-pop {
     max-width: min(18rem, 90vw);
     padding: 0.5rem 0.6rem;
@@ -447,5 +544,46 @@
     border: 1px solid var(--panel-border);
     border-radius: var(--radius);
     cursor: pointer;
+  }
+  /* The ⚙️ panel — absolute under its host, viewport-clamped by `settingsLeft`; the flip and
+     look mirror the export/import panels. */
+  .settings-panel {
+    position: absolute;
+    top: calc(100% + 0.25rem);
+    /* left-anchored (JS sets the exact left): an out-of-flow box sized by `right` off this
+       small host would shrink to the host's width. `max-content` fits the content; the JS
+       `max-width` caps it at the Topics column, like the tip / confirm popovers. */
+    left: 0;
+    z-index: 20;
+    width: max-content;
+    max-width: min(28rem, 92vw); /* fallback before the JS col-topics cap lands */
+    padding: 0.5rem 0.6rem;
+    font-size: 0.8rem; /* the compact size the old tip-note popover inherited */
+    color: var(--chip-fg);
+    background: var(--chip-bg);
+    border: 1px solid var(--panel-border);
+    border-radius: var(--radius);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
+  }
+  .settings-panel.above {
+    top: auto;
+    bottom: calc(100% + 0.25rem);
+  }
+  .settings-title {
+    margin: 0 0 0.4rem;
+    font-weight: 600;
+    color: var(--muted-2);
+  }
+  .settings-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.6rem;
+    margin-top: 0.3rem;
+  }
+  .settings-row input {
+    width: 4.5rem;
+    font: inherit;
+    font-size: 0.8rem;
   }
 </style>
