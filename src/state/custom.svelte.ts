@@ -13,6 +13,7 @@ import {
   detectSeparator,
   parseItems,
   type PortableList,
+  previewText,
   type Separator,
   SEPARATORS,
   serializeItems,
@@ -43,6 +44,16 @@ export const ROW_STEP = 5;
  *  ellipsize an over-long name rather than the store shortening it. */
 export const NAME_MAX = 32;
 
+/** The reader-set caps for the content previews (the ⚙️ Custom settings): how many items a
+ *  preview lists and how long it may run, each with its range and default. `previewText`
+ *  (lib/custom) applies them; the panels reach them through `custom.preview`. */
+export const PREVIEW_ITEMS_MIN = 1;
+export const PREVIEW_ITEMS_MAX = 420;
+export const PREVIEW_ITEMS_DEFAULT = 42;
+export const PREVIEW_CHARS_MIN = 10;
+export const PREVIEW_CHARS_MAX = 2000;
+export const PREVIEW_CHARS_DEFAULT = 420;
+
 class CustomState {
   /** The raw text in the input field. */
   input = $state("");
@@ -55,6 +66,9 @@ class CustomState {
   maxRows = $state(MIN_ROWS);
   /** Whether the row cap is lifted and the input fits its whole content (↕️). */
   fitContent = $state(false);
+  /** The content-preview caps the persistent tooltips honour (⚙️ Custom settings). */
+  maxPreviewItems = $state(PREVIEW_ITEMS_DEFAULT);
+  maxPreviewChars = $state(PREVIEW_CHARS_DEFAULT);
   /** The reader's saved lists (§X3), in display order. */
   savedLists = $state<SavedList[]>([]);
   /** Which saved lists are active — contributing to the output beside the field. */
@@ -73,6 +87,8 @@ class CustomState {
       this.keepTooLong = !!s.keepTooLong;
       if (typeof s.maxRows === "number") this.maxRows = clampRows(s.maxRows);
       this.fitContent = !!s.fitContent;
+      if (typeof s.maxPreviewItems === "number") this.maxPreviewItems = clampPreviewItems(s.maxPreviewItems);
+      if (typeof s.maxPreviewChars === "number") this.maxPreviewChars = clampPreviewChars(s.maxPreviewChars);
       this.inputSuperseded = !!s.inputSuperseded;
     }
     const ls = readLists();
@@ -118,6 +134,18 @@ class CustomState {
   toggleFitContent(): void {
     this.fitContent = !this.fitContent;
     this.save();
+  }
+  setMaxPreviewItems(n: number): void {
+    if (Number.isFinite(n)) this.maxPreviewItems = clampPreviewItems(n);
+    this.save();
+  }
+  setMaxPreviewChars(n: number): void {
+    if (Number.isFinite(n)) this.maxPreviewChars = clampPreviewChars(n);
+    this.save();
+  }
+  /** A saved / imported list's content preview for the tooltips, under the reader's caps. */
+  preview(items: readonly string[]): string {
+    return previewText(items, this.maxPreviewItems, this.maxPreviewChars);
   }
   clear(): void {
     this.input = "";
@@ -241,6 +269,8 @@ class CustomState {
       keepTooLong: this.keepTooLong,
       maxRows: this.maxRows,
       fitContent: this.fitContent,
+      maxPreviewItems: this.maxPreviewItems,
+      maxPreviewChars: this.maxPreviewChars,
       inputSuperseded: this.inputSuperseded,
     });
   }
@@ -258,6 +288,15 @@ function clampRows(n: number): number {
   return Math.min(MAX_ROWS, Math.max(MIN_ROWS, n));
 }
 
+/** Snap the preview caps (integers) into their ranges — a stored or typed value may be out
+ *  of bounds or fractional. */
+function clampPreviewItems(n: number): number {
+  return Math.min(PREVIEW_ITEMS_MAX, Math.max(PREVIEW_ITEMS_MIN, Math.round(n)));
+}
+function clampPreviewChars(n: number): number {
+  return Math.min(PREVIEW_CHARS_MAX, Math.max(PREVIEW_CHARS_MIN, Math.round(n)));
+}
+
 // localStorage throws in a few real setups (private mode, blocked storage), and a
 // lost custom input is never worth an error.
 type Stored = {
@@ -266,6 +305,8 @@ type Stored = {
   keepTooLong?: boolean;
   maxRows?: number;
   fitContent?: boolean;
+  maxPreviewItems?: number;
+  maxPreviewChars?: number;
   inputSuperseded?: boolean;
 };
 function read(): Stored | null {
