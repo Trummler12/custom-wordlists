@@ -408,7 +408,7 @@
   .scroll {
     overflow: auto;
     max-height: 80vh;
-    margin-bottom: 0.25rem; /* clear space below the horizontal scrollbar, before the footer */
+    margin-bottom: -0.5rem; /* clear space below the horizontal scrollbar, before the footer */
   }
   table {
     /* `separate`, not `collapse`: collapsed borders belong to the table, so a sticky
