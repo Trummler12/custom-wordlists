@@ -251,3 +251,19 @@ export function overlapStats(
   for (const x of setA) if (setB.has(x)) shared++;
   return { shared, sizeA: setA.size, sizeB: setB.size };
 }
+
+/** A list's content preview for the persistent tooltips: the first `maxItems` items joined
+ *  by ", ", trimmed to `maxChars`, with a trailing ", …" when anything was left out. Both
+ *  caps are reader-set (the ⚙️ Custom settings). The character cut backs off to the last
+ *  whole item where it can, so the preview doesn't end mid-word; a single item longer than
+ *  the budget is hard-cut with a bare "…". */
+export function previewText(items: readonly string[], maxItems: number, maxChars: number): string {
+  const shown = items.slice(0, Math.max(1, maxItems));
+  const text = shown.join(", ");
+  if (text.length > maxChars) {
+    const cut = text.slice(0, maxChars);
+    const lastSep = cut.lastIndexOf(", ");
+    return lastSep > 0 ? `${cut.slice(0, lastSep)}, …` : `${cut.trimEnd()}…`;
+  }
+  return shown.length < items.length ? `${text}, …` : text;
+}

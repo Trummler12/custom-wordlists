@@ -8,6 +8,7 @@ import {
   overlapStats,
   parseImport,
   parseItems,
+  previewText,
   separatorCounts,
   separatorInItems,
   SEPARATORS,
@@ -174,5 +175,23 @@ describe("overlapStats", () => {
   });
   it("shares nothing with an empty list", () => {
     expect(overlapStats(["a"], [])).toEqual({ shared: 0, sizeA: 1, sizeB: 0 });
+  });
+});
+
+describe("previewText", () => {
+  it("joins the items when they fit both caps", () => {
+    expect(previewText(["Apple", "Pear", "Orange"], 42, 420)).toBe("Apple, Pear, Orange");
+  });
+  it("caps the item count and marks the remainder", () => {
+    expect(previewText(["a", "b", "c", "d"], 2, 420)).toBe("a, b, …");
+  });
+  it("caps the character length at a whole-item boundary", () => {
+    expect(previewText(["Apple", "Pear", "Orange"], 42, 15)).toBe("Apple, Pear, …");
+  });
+  it("hard-cuts a single item longer than the budget", () => {
+    expect(previewText(["Supercalifragilistic"], 42, 10)).toBe("Supercalif…");
+  });
+  it("shows at least one item even with maxItems below 1", () => {
+    expect(previewText(["only", "more"], 0, 420)).toBe("only, …");
   });
 });
