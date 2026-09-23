@@ -22,7 +22,6 @@
   const PANEL_ID = "saved-lists";
   const CONFIRM_ID = "saved-list-confirm";
   const open = $derived(overlays.savedListsPanel === PANEL_ID);
-  const PREVIEW = 8; // items named in a tile's hover preview
 
   // Inline rename + armed-confirm state, local to the open panel and reset on close.
   let editingId = $state<number | null>(null);
@@ -42,10 +41,6 @@
     return separatorInItems(items, sep)
       ? `${lang.ui.custom.listWarnTitle}{br}- ${lang.ui.custom.listWarnSeparator}`
       : null;
-  }
-  function preview(items: string[]): string {
-    const head = items.slice(0, PREVIEW).join(", ");
-    return items.length > PREVIEW ? `${head}, …` : head;
   }
   function focusOnMount(el: HTMLInputElement) {
     el.focus();
@@ -143,7 +138,7 @@
           use:focusOnMount
         />
       {:else if list}
-        <TipText id={`list-preview-${list.id}`} text={preview(list.items)} label={list.name} maxWidth="10rem" />
+        <TipText id={`list-preview-${list.id}`} text={custom.preview(list.items)} label={list.name} maxWidth="10rem" />
       {:else}
         <span class="name muted">Custom List {custom.savedLists.length + 1}</span>
       {/if}
