@@ -411,6 +411,14 @@
   }
   .custom-row .title {
     font-weight: 600;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  /* Only the title gives way; the markers, separator group and count keep their size. */
+  .custom-row > :not(.title) {
+    flex-shrink: 0;
   }
   .sep {
     display: inline-flex;

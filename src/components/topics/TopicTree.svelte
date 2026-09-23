@@ -72,9 +72,13 @@
     /* Every digit one width, so the counts below each other line up as a column
        rather than drifting with the number. */
     font-variant-numeric: tabular-nums;
+    /* The count is one unit: never let "/38" break onto a second line, and never shrink it
+       when the row is tight — the title gives way instead (an ellipsis in each row type). */
+    white-space: nowrap;
+    flex-shrink: 0;
   }
   /* Right-aligning the row only lines up the right edge; the slash still moves with the
-     total's digit count. Reserving three digits and setting the total flush right inside
+     total's digit count. Reserving four digits and setting the total flush right inside
      them fixes the slash too, leaving the blank width where it reads as breathing room. */
   .topics :global(.meta .total) {
     display: inline-block;

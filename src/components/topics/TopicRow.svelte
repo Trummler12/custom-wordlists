@@ -223,8 +223,23 @@
        still right-aligns the count. */
     padding: 0.5rem 0.2rem 0.5rem 0.1rem;
     cursor: pointer;
+    /* The one part that gives way when the row is too narrow: its title shrinks to an
+       ellipsis (below), rather than the count wrapping or the controls squeezing. */
+    min-width: 0;
+  }
+  .topic > :not(.title) {
+    flex-shrink: 0;
   }
   .topic .title {
     font-weight: 600;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  /* Everything on the row but the title keeps its size, so the title is where the slack
+     is taken. */
+  .topic-row > :not(.topic) {
+    flex-shrink: 0;
   }
 </style>

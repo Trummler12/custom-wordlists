@@ -164,8 +164,16 @@
     margin: var(--gap-before-cat) 0 var(--gap-after-cat);
     position: relative; /* anchor for the coverage popup, like .topic-row */
   }
+  /* Every control keeps its size; the title is where a narrow row takes its slack. */
+  .category > :not(.category-title) {
+    flex-shrink: 0;
+  }
   .category-title {
     margin: 0;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
     font-size: 0.75rem;
     text-transform: uppercase;
     letter-spacing: 0.05em;
