@@ -47,14 +47,20 @@ function run(): void {
   // stacked there is none, so the title ellipsis carries the shortfall alone.
   const single = window.matchMedia("(max-width: 50rem)").matches;
   const gutterMax = single ? 0 : (parseFloat(root.getPropertyValue("--layout-gap")) || 1.5) * rem;
-  // Headroom kept ahead of the clip point, so the title never overflow-hides in the frame
-  // before the fit lands. Small — it only has to cover a frame's worth of narrowing.
-  const buffer = 0.5 * rem;
+  // Layout headroom kept ahead of the clip point, so the title never overflow-hides in the
+  // frame before the fit lands. `transfer` is the slice of it hidden by the transform below,
+  // so the count rests at its natural gap from the controls instead of sitting `buffer`
+  // further out — tune either term.
+  const transfer = 1.0 * rem;
+  const buffer = 0.0 * rem + transfer;
 
   // Back to the rest state (full blank, no gutter) so the measure reads the real free space.
   for (const it of items) {
     if (it.total) it.total.style.minWidth = "";
-    if (it.meta) it.meta.style.marginRight = "";
+    if (it.meta) {
+      it.meta.style.marginRight = "";
+      it.meta.style.transform = "";
+    }
   }
   // Measure at rest: the count's reserve width, the free space ahead of it (its resolved
   // auto-margin), and how far the title already overflows if it does.
@@ -77,6 +83,13 @@ function run(): void {
     const blank = pressure > 0 ? Math.min(pressure, blankBudget) : 0;
     if (it.total) it.total.style.minWidth = blank > 0 ? `${totalW - blank}px` : "";
     const gutter = pressure > 0 ? Math.min(pressure - blank, gutterMax) : 0;
-    if (it.meta) it.meta.style.marginRight = gutter > 0 ? `${-gutter}px` : "";
+    if (!it.meta) continue;
+    it.meta.style.marginRight = gutter > 0 ? `${-gutter}px` : "";
+    // Hide up to `transfer` of the free space we just banked, so the count rests at its
+    // natural gap rather than `buffer` further out — a transform, so it costs no layout.
+    // Capped at the free space actually kept, so it never rides onto the controls.
+    const kept = free + Math.max(0, blank + gutter - deficit);
+    const shift = Math.min(Math.max(pressure, 0), transfer, kept);
+    it.meta.style.transform = shift > 0 ? `translateX(${-shift}px)` : "";
   }
 }
