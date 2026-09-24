@@ -24,6 +24,7 @@ export const ko: UIStrings = {
   },
   names: {
     form: { pref: "선호", short: "짧게", long: "길게", both: "둘 다", all: "모두" },
+    formHint: en.names.formHint, // English stopgap until the UI-language PR translates it.
     formLabel: (group) => `${group}의 이름 형식`,
   },
   fame: {

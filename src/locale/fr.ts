@@ -18,7 +18,8 @@ export const fr: UIStrings = {
     wordsOf: (selected, total) => `${selected} sur ${total} mot${total === 1 ? "" : "s"}`,
   },
   names: {
-    form: { pref: "préféré", short: "court", long: "long", both: "les deux", all: "tous" },
+    form: { pref: "préf.", short: "court", long: "long", both: "les deux", all: "tous" },
+    formHint: en.names.formHint, // English stopgap until the UI-language PR translates it.
     formLabel: (group) => `Forme du nom pour ${group}`,
   },
   fame: {

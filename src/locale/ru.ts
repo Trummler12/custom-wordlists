@@ -32,6 +32,7 @@ export const ru: UIStrings = {
   },
   names: {
     form: { pref: "основная", short: "краткая", long: "полная", both: "обе", all: "все" },
+    formHint: en.names.formHint, // English stopgap until the UI-language PR translates it.
     formLabel: (group) => `Форма имени для: ${group}`,
   },
   fame: {

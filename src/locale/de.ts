@@ -17,7 +17,14 @@ export const de: UIStrings = {
     wordsOf: (selected, total) => `${selected} von ${total} ${total === 1 ? "Wort" : "Wörtern"}`,
   },
   names: {
-    form: { pref: "bevorzugt", short: "kurz", long: "lang", both: "beide", all: "alle" },
+    form: { pref: "pref.", short: "kurz", long: "lang", both: "beide", all: "alle" },
+    formHint: {
+      short: "Kurze Namen bevorzugen",
+      long: "Volle/offizielle Namen bevorzugen",
+      both: "Kurze UND volle Namen verwenden",
+      pref: "Nur das primäre Label verwenden",
+      all: "ALLE verfügbaren Varianten verwenden",
+    },
     formLabel: (group) => `Namensform für ${group}`,
   },
   fame: {

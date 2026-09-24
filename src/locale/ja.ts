@@ -24,6 +24,7 @@ export const ja: UIStrings = {
   },
   names: {
     form: { pref: "推奨", short: "短い", long: "長い", both: "両方", all: "すべて" },
+    formHint: en.names.formHint, // English stopgap until the UI-language PR translates it.
     formLabel: (group) => `${group}の名前の形式`,
   },
   fame: {

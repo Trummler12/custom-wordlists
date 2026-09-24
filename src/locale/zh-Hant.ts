@@ -24,6 +24,7 @@ export const zhHant: UIStrings = {
   },
   names: {
     form: { pref: "偏好", short: "短", long: "長", both: "兩者", all: "全部" },
+    formHint: en.names.formHint, // English stopgap until the UI-language PR translates it.
     formLabel: (group) => `${group}的名稱形式`,
   },
   fame: {

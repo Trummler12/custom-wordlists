@@ -25,16 +25,18 @@
     onchange={(e) => selection.setMode(tid, group, e.currentTarget.value as NamesMode)}
   >
     {#if mixed}<option value="" hidden>{lang.ui.names.form[mode]}</option>{/if}
-    <option value="short">{lang.ui.names.form.short}</option>
-    <option value="long">{lang.ui.names.form.long}</option>
-    <option value="both">{lang.ui.names.form.both}</option>
+    <!-- Each option carries a native `title` (lang.ui.names.formHint) spelling out what the
+         form does — the labels themselves stay terse to keep the select narrow. -->
+    <option value="short" title={lang.ui.names.formHint.short}>{lang.ui.names.form.short}</option>
+    <option value="long" title={lang.ui.names.formHint.long}>{lang.ui.names.form.long}</option>
+    <option value="both" title={lang.ui.names.formHint.both}>{lang.ui.names.form.both}</option>
     <!-- `pref` sits below `both`, so the order reads that both and pref alike build on
          short/long — pref not above, where it would read as "even more than both". -->
     {#if groupHasPref(group, lang.current)}
-      <option value="pref">{lang.ui.names.form.pref}</option>
+      <option value="pref" title={lang.ui.names.formHint.pref}>{lang.ui.names.form.pref}</option>
     {/if}
     {#if groupHasVariants(group, lang.current)}
-      <option value="all">{lang.ui.names.form.all}</option>
+      <option value="all" title={lang.ui.names.formHint.all}>{lang.ui.names.form.all}</option>
     {/if}
   </select>
 {/if}

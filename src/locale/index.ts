@@ -43,6 +43,9 @@ export interface TreeStrings {
 /** The short/long name-form dropdown. */
 export interface NamesStrings {
   form: { pref: string; short: string; long: string; both: string; all: string };
+  /** A terse hint per form, carried as the `<option>`'s native `title` — what picking it
+   *  does, phrased for a group that actually has an entry in that form. */
+  formHint: { pref: string; short: string; long: string; both: string; all: string };
   formLabel: (group: string) => string;
 }
 
