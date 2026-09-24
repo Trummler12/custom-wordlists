@@ -5,7 +5,7 @@
   import { plain } from "../../locale/html/plain";
   import { overlays } from "../../state/overlays.svelte";
   import { settings } from "../../state/settings.svelte";
-  import { resetAllToDefault } from "../../state/reset";
+  import { resetSelectionSettings } from "../../state/reset";
   import Msg from "../../locale/html/Msg.svelte";
   import TipMarker from "../common/TipMarker.svelte";
   import TipNote from "../common/TipNote.svelte";
@@ -180,7 +180,7 @@
            before it fires. -->
       <div class="setting-row reset-row">
         {#if armed}
-          <button type="button" class="reset-btn armed" onclick={resetAllToDefault}>
+          <button type="button" class="reset-btn armed" onclick={resetSelectionSettings}>
             {lang.ui.settings.resetConfirm}
           </button>
           <button

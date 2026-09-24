@@ -229,7 +229,8 @@ export interface SettingsStrings {
   /** Its first option, and the default: follow the list language where we have a
    *  dictionary for it. Kept short — it sits in a dropdown, not in a sentence. */
   interfaceAuto: string;
-  /** The reset button: drops every stored preference back to the shipped default.
+  /** The reset button: drops the selection settings back to the shipped default (the
+   *  reader's custom lists, input and language are left untouched — see `state/reset`).
    *  Carries a `{br}` so it wraps predictably in the narrow menu. */
   reset: string;
   /** The armed label after the first click — a second click confirms, so the reset

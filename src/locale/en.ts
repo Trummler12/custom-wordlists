@@ -194,7 +194,7 @@ export const en: UIStrings = {
     showEnglishEn: "These toggles only appear for languages other than English.",
     interfaceLang: "Interface language:",
     interfaceAuto: "Automatic",
-    reset: "Reset settings{br}to default",
+    reset: "Reset selection settings{br}to default",
     resetConfirm: "Click again to confirm",
     resetCancel: "Cancel",
   },

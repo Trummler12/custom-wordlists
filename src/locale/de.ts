@@ -209,7 +209,7 @@ export const de: UIStrings = {
     showEnglishEn: "Diese Schalter erscheinen nur bei anderen Sprachen als Englisch.",
     interfaceLang: "Sprache der Oberfläche:",
     interfaceAuto: "Automatisch",
-    reset: "Einstellungen{br}zurücksetzen",
+    reset: "Auswahl-Einstellungen{br}zurücksetzen",
     resetConfirm: "Zum Bestätigen erneut klicken",
     resetCancel: "Abbrechen",
   },

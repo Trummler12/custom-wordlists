@@ -1,40 +1,34 @@
-// Clearing the stored preferences and reloading — the "reset to default" the
-// settings menu offers, and the way to see a changed default take effect without
-// opening a fresh browser profile.
+// Resetting the selection settings to their shipped defaults — the "reset" the settings
+// menu offers. It clears an explicit allowlist of keys, not "everything but a few
+// exceptions": the reader's saved custom lists and current input are their own data, not a
+// setting, and a broad prefix-wipe used to take them out along with the settings. So this
+// names exactly what it resets and spares the rest by default.
 //
-// Every key the app writes is under the `wordlists:` prefix (see settings.svelte
-// and lang.svelte), so clearing by prefix stays correct as new keys are added and
-// touches nothing another page on the origin stored — every key but the reset
-// exceptions (`PRESERVED_KEYS`). The reload is the reset's second half: it drops the
-// in-memory state and lets every store re-initialize from storage, which is a first
-// visit but for the preferences that were spared.
+// What it resets: the stored view/omission preferences (`wordlists:settings`) and the
+// script-variant picks (`wordlists:variants`). The reload is the reset's second half — the
+// in-memory selection (which topics are ticked, name modes, fame depths, expansion, rulers)
+// is never persisted, so clearing storage isn't what returns it to default; the reload is.
+//
+// What it keeps: the custom lists and input (`wordlists:custom*`) and the content /
+// interface language (`wordlists:lang` / `:uiLang`) — data and identity, not settings.
 
-import { LANGUAGE_STORAGE_KEYS } from "./lang.svelte";
+import { SETTINGS_STORAGE_KEY } from "./settings.svelte";
+import { VARIANT_STORAGE_KEY } from "./lang.svelte";
 
-const PREFIX = "wordlists:";
+/** The stored keys a selection-settings reset clears — and only these. A new selection
+ *  setting that should reset joins this list; a new store that holds the reader's own data
+ *  is spared automatically by not being on it. */
+const RESET_KEYS: readonly string[] = [SETTINGS_STORAGE_KEY, VARIANT_STORAGE_KEY];
 
-/** The stored keys a reset preserves rather than clears — the reset exceptions.
- *  The language choices are the whole of it today: a reader's content and interface
- *  language are who they are, not a preference they tuned, so a reset leaves them as
- *  they were. Deliberately an open list, not a fixed pair — a later preference that
- *  should outlive a reset joins here. (The script variant is not one of them: it
- *  returns to its default like the rest.) */
-const PRESERVED_KEYS: readonly string[] = [...LANGUAGE_STORAGE_KEYS];
-
-/** Drop every stored preference but the reset exceptions, and reload into the
- *  shipped defaults. */
-export function resetAllToDefault(): void {
-  const keep = new Set<string>(PRESERVED_KEYS);
+/** Reset the selection settings to the shipped defaults: drop the stored view/omission
+ *  preferences and script-variant picks, then reload so the in-memory selection returns to
+ *  default too. The reader's custom lists, input and language are left untouched. */
+export function resetSelectionSettings(): void {
   try {
-    const keys: string[] = [];
-    for (let i = 0; i < localStorage.length; i++) {
-      const k = localStorage.key(i);
-      if (k?.startsWith(PREFIX) && !keep.has(k)) keys.push(k);
-    }
-    for (const k of keys) localStorage.removeItem(k);
+    for (const k of RESET_KEYS) localStorage.removeItem(k);
   } catch {
-    // localStorage throws in a few real setups (private mode, blocked storage);
-    // the reload still drops the in-memory state, which is the visible half.
+    // localStorage throws in a few real setups (private mode, blocked storage); the reload
+    // still drops the in-memory selection, which is the visible half.
   }
   location.reload();
 }
