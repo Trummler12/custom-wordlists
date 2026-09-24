@@ -10,11 +10,16 @@
 export type Part =
   | { kind: "text"; text: string }
   | { kind: "br" }
-  | { kind: "link"; text: string; href: string };
+  | { kind: "link"; text: string; href: string }
+  | { kind: "b"; text: string }
+  | { kind: "i"; text: string };
 
-// `[text](url)`, non-greedy so two links on one line stay two links, and no
-// nesting: a label is text, not markup.
-const LINK = /\[([^\]]+)\]\(([^)\s]+)\)/g;
+// The inline spans, matched in one pass so they interleave correctly: a `[text](url)`
+// link, a `{b}bold{/b}` run, or an `{i}italic{/i}` run. All non-greedy, and none nests —
+// a span's content is plain text, like a link's label — so the emphasis markers are for
+// stressing a word, not composing markup. Which alternative matched is read off which
+// capture group is defined (label+href, else bold, else italic).
+const INLINE = /\[([^\]]+)\]\(([^)\s]+)\)|\{b\}([\s\S]*?)\{\/b\}|\{i\}([\s\S]*?)\{\/i\}/g;
 
 /** Only http(s) is renderable as a link. A data file is content, and content must
  *  not be able to produce `javascript:` — anything else falls back to plain text,
@@ -38,11 +43,19 @@ export function parseMarkup(text: string): Part[] {
   };
 
   let last = 0;
-  for (const m of text.matchAll(LINK)) {
-    const [whole, label, href] = m;
+  for (const m of text.matchAll(INLINE)) {
+    const [whole, label, href, bold, italic] = m;
     push(text.slice(last, m.index));
-    if (isSafeHref(href)) parts.push({ kind: "link", text: label, href });
-    else push(whole);
+    if (label !== undefined) {
+      // A link — but only http(s); anything else stays the literal text it was written as.
+      if (isSafeHref(href)) parts.push({ kind: "link", text: label, href });
+      else push(whole);
+    } else if (bold) {
+      parts.push({ kind: "b", text: bold });
+    } else if (italic) {
+      parts.push({ kind: "i", text: italic });
+    }
+    // An empty span ({b}{/b}) matched but held nothing — it simply contributes no part.
     last = m.index + whole.length;
   }
   push(text.slice(last));
