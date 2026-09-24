@@ -25,7 +25,7 @@ h2 {
 .layout {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 1.5rem;
+  gap: var(--layout-gap);
   align-items: start;
 }
 /* Left column: header + topic tree. min-width:0 keeps long names from pushing
