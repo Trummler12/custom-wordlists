@@ -5,6 +5,7 @@
   import { tierNoteAt } from "../../lib/fame";
   import { baseTag, langSupport, splitName } from "../../lib/languages";
   import { rulerControl, rulerHidden } from "../../lib/rulers";
+  import { cancelFit, scheduleFit } from "../../lib/rowfit";
   import type { TopicSummary } from "../../lib/types";
   import { resolveStr } from "../../lib/words";
   import { langWarning } from "../../locale";
@@ -112,10 +113,32 @@
   // Nothing else will trigger the load: there is no expander to click, and the
   // ruler can't be drawn without the tiers it snaps to.
   onMount(() => topics.ensure(topic));
+
+  // Overflow relief for a too-narrow row (rowfit.ts): re-fit on mount and whenever the
+  // content that decides the title's width shifts — the count's digits, the name, the
+  // language — and, via a ResizeObserver, on a column resize.
+  let rowEl = $state<HTMLDivElement>();
+  $effect(() => {
+    void selection.topicSelCount(topic);
+    void selection.topicTotal(topic);
+    void name.short;
+    void lang.uiLang;
+    if (rowEl) scheduleFit(rowEl, ".title");
+  });
+  $effect(() => {
+    if (!rowEl) return;
+    const el = rowEl;
+    const ro = new ResizeObserver(() => scheduleFit(el, ".title"));
+    ro.observe(el);
+    return () => {
+      ro.disconnect();
+      cancelFit(el);
+    };
+  });
 </script>
 
 <div class="topic-item">
-  <div class="topic-row">
+  <div class="topic-row" bind:this={rowEl}>
     <!-- Keeps the checkbox column straight: the placeholder holds the width a
          category's expander occupies, so topic checkboxes line up under it. -->
     <span class="expander placeholder" aria-hidden="true">▸</span>

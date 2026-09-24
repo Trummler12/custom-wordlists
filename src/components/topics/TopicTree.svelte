@@ -80,6 +80,9 @@
   /* Right-aligning the row only lines up the right edge; the slash still moves with the
      total's digit count. Reserving four digits and setting the total flush right inside
      them fixes the slash too, leaving the blank width where it reads as breathing room. */
+  /* The 4ch is the reset (full-blank) state; rowfit.ts narrows this inline, per pixel, when a
+     row can't fit its title — then slides the whole count (.meta) into the gutter — before the
+     title ellipsises. Neither touches the row's own width, so its ResizeObserver can't loop. */
   .topics :global(.meta .total) {
     display: inline-block;
     min-width: 4ch;

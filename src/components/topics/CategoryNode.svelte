@@ -2,6 +2,7 @@
   import { setIndeterminate } from "../../lib/dom";
   import { sharedEnglishTopics } from "../../lib/english";
   import { controlledTopics } from "../../lib/rulers";
+  import { cancelFit, scheduleFit } from "../../lib/rowfit";
   import type { CatNode } from "../../lib/tree";
   import { lang } from "../../state/lang.svelte";
   import { selection } from "../../state/selection.svelte";
@@ -58,9 +59,30 @@
           .map((t) => ({ tid: t.id, rules: sovRules(t.controls!["sovereignty"]) }))
       : [],
   );
+
+  // Overflow relief for a too-narrow row (rowfit.ts), the same as a topic row: re-fit on
+  // mount, on the count / name / language changing, and (ResizeObserver) on a column resize.
+  let rowEl = $state<HTMLDivElement>();
+  $effect(() => {
+    void selection.catSel(all);
+    void selection.catTotal(all);
+    void name.short;
+    void lang.uiLang;
+    if (rowEl) scheduleFit(rowEl, ".category-title");
+  });
+  $effect(() => {
+    if (!rowEl) return;
+    const el = rowEl;
+    const ro = new ResizeObserver(() => scheduleFit(el, ".category-title"));
+    ro.observe(el);
+    return () => {
+      ro.disconnect();
+      cancelFit(el);
+    };
+  });
 </script>
 
-<div class="category">
+<div class="category" bind:this={rowEl}>
   <button
     type="button"
     class="expander"
