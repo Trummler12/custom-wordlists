@@ -409,6 +409,12 @@ export interface CustomStrings {
   settingsTitle: string;
   maxPreviewItems: string;
   maxPreviewChars: string;
+  /** The two live examples under the cap fields — a short-skewed list (S, the item cap
+   *  bites first) and a long-skewed one (L, the character cap does): the name on each
+   *  preview-tooltip trigger, and the note's stand-in before any topic names have loaded. */
+  exampleListS: string;
+  exampleListL: string;
+  examplePreviewEmpty: string;
 }
 
 /** Every user-facing string the app chrome renders, keyed and typed. */

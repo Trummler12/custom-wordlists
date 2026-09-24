@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { onMount } from "svelte";
+  import { onMount, untrack } from "svelte";
   import { lang } from "./state/lang.svelte";
   import { overlays } from "./state/overlays.svelte";
   import { settings } from "./state/settings.svelte";
@@ -33,6 +33,15 @@
   // no single answer for them anyway.
   $effect(() => {
     document.documentElement.lang = lang.uiLang;
+  });
+
+  // Draw the ⚙️ Custom-settings example sample once the topics warm, and again whenever
+  // the primary language changes — the two "refresh" moments. `untrack` keeps the draw
+  // itself (which reads every topic's groups) from subscribing, so an omission toggle or a
+  // single topic's language override doesn't silently re-roll the sample.
+  $effect(() => {
+    lang.uiLang;
+    if (topics.warmed) untrack(() => topics.resampleExample());
   });
 </script>
 

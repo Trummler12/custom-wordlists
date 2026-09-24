@@ -120,6 +120,9 @@ export const en: UIStrings = {
     settingsTitle: "Custom settings",
     maxPreviewItems: "Max preview items",
     maxPreviewChars: "Max preview characters",
+    exampleListS: "Example list S",
+    exampleListL: "Example list L",
+    examplePreviewEmpty: "No topic names loaded yet.",
   },
   coverage: {
     label: "Geoguessr / Street View coverage",

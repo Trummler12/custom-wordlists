@@ -13,6 +13,8 @@
   import { clampPanelLeft, overlays } from "../../state/overlays.svelte";
   import TipMarker from "../common/TipMarker.svelte";
   import TipNote from "../common/TipNote.svelte";
+  import TipText from "../common/TipText.svelte";
+  import { topics } from "../../state/topics.svelte";
   import CustomOmittedPanel from "./CustomOmittedPanel.svelte";
   import ExportPanel from "./ExportPanel.svelte";
   import ImportPanel from "./ImportPanel.svelte";
@@ -338,6 +340,28 @@
               onchange={(e) => custom.setMaxPreviewChars(e.currentTarget.valueAsNumber)}
             />
           </label>
+          <!-- Two live examples: the very preview tooltip the caps govern, over a short-
+               skewed (S) and a long-skewed (L) sample — so a reader can watch the item cap
+               bite on S and the character cap on L. -->
+          <div class="settings-example">
+            <TipText
+              id="custom-example-s"
+              label={lang.ui.custom.exampleListS}
+              maxWidth="9rem"
+              text={topics.exampleNamesS.length
+                ? custom.preview(topics.exampleNamesS)
+                : lang.ui.custom.examplePreviewEmpty}
+            />
+            <span class="settings-example-sep" aria-hidden="true">|</span>
+            <TipText
+              id="custom-example-l"
+              label={lang.ui.custom.exampleListL}
+              maxWidth="9rem"
+              text={topics.exampleNamesL.length
+                ? custom.preview(topics.exampleNamesL)
+                : lang.ui.custom.examplePreviewEmpty}
+            />
+          </div>
         </div>
       {/if}
     </span>
@@ -593,5 +617,20 @@
     width: 4.5rem;
     font: inherit;
     font-size: 0.8rem;
+  }
+  /* The two examples sit under the cap fields, set off by a light rule: `S | L`, centred,
+     each a TipText that ellipsizes its own label. */
+  .settings-example {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    gap: 0.6rem;
+    margin-top: 0.5rem;
+    padding-top: 0.4rem;
+    border-top: 1px solid var(--panel-border);
+  }
+  .settings-example-sep {
+    color: var(--muted-2);
+    opacity: 0.6;
   }
 </style>

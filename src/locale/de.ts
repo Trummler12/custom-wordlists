@@ -127,6 +127,9 @@ export const de: UIStrings = {
     settingsTitle: "Custom-Einstellungen",
     maxPreviewItems: "Max. Vorschau-Einträge",
     maxPreviewChars: "Max. Vorschau-Zeichen",
+    exampleListS: "Beispielliste S",
+    exampleListL: "Beispielliste L",
+    examplePreviewEmpty: "Noch keine Themen-Namen geladen.",
   },
   coverage: {
     label: "Geoguessr / Street-View-Abdeckung",

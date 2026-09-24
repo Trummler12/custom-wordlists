@@ -9,7 +9,9 @@ import { buildTree, mergeGroups, synthesizeTopics, titleCase, type CatNode } fro
 import type { CategoryMeta, Group, Topic, TopicSummary } from "../lib/types";
 import { baseTag, langSupport } from "../lib/languages";
 import { allRules, BASE_RULE, EXTEND_RULE, includeRules, UNKNOWN_RULE, visibleGroup } from "../lib/omitted";
-import { displayName, type DisplayName } from "../lib/words";
+import { displayName, type DisplayName, groupEntries, renderedForms } from "../lib/words";
+import { SKRIBBL } from "../lib/skribbl";
+import { PREVIEW_ITEMS_MAX } from "./custom.svelte";
 import { settings } from "./settings.svelte";
 import { lang } from "./lang.svelte";
 
@@ -39,6 +41,32 @@ function normalizedGroups(data: Topic): Group[] {
   return cached;
 }
 
+/** How fast a name's sampling weight falls off per character away from the target length
+ *  — 0.85 keeps a gentle gradient (weight halves roughly every ~4 characters) rather than
+ *  collapsing onto the single target length. Tune for a steeper / flatter skew. */
+const LENGTH_DECAY = 1/3;
+
+/** A weighted draw of `k` distinct names from `pool`, favouring those whose character
+ *  length sits near `target`. Weight is `LENGTH_DECAY^|len − target|`, and the draw is
+ *  weighted sampling *without replacement* (Efraimidis–Spirakis: each item gets the key
+ *  `ln(u)/weight`, u ∈ (0,1), and the `k` largest keys win) — so a heavier item is likelier
+ *  but never certain, and no item repeats. The result is shuffled, since the keys would
+ *  otherwise order it. Robust when the target end is thin: with few long names, L simply
+ *  takes the longest there are and fills the rest with the next-longest. */
+function weightedByLength(pool: readonly string[], target: number, k: number): string[] {
+  const scored = pool.map((item) => ({
+    item,
+    key: Math.log(Math.random() || Number.MIN_VALUE) / LENGTH_DECAY ** Math.abs(item.length - target),
+  }));
+  scored.sort((a, b) => b.key - a.key);
+  const chosen = scored.slice(0, Math.min(k, scored.length)).map((s) => s.item);
+  for (let i = chosen.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [chosen[i], chosen[j]] = [chosen[j], chosen[i]];
+  }
+  return chosen;
+}
+
 class TopicsState {
   /** Every topic in the manifest, in manifest order. */
   all = $state<TopicSummary[]>([]);
@@ -53,6 +81,15 @@ class TopicsState {
   loadingById = $state<Record<string, boolean>>({});
   /** Last per-topic load failure. Not fatal: the rest of the tree still works. */
   topicError = $state<string | null>(null);
+  /** Flips true once `warmAll` has every topic's file in — the cue to draw the ⚙️
+   *  example sample from real data (see `resampleExample`). */
+  warmed = $state(false);
+  /** Two length-skewed draws of real topic names, the ⚙️ Custom settings' example
+   *  previews run the reader's caps on: `S` favours short names (so the *item* cap tends
+   *  to bite first), `L` favours long ones (so the *character* cap does). Refreshed on
+   *  load / language switch, not on every render — see `resampleExample`. */
+  exampleNamesS = $state<string[]>([]);
+  exampleNamesL = $state<string[]>([]);
 
   /** The synthesized topics an `inheritsUpwards` family calls for — no files of
    *  their own, hung in the tree beside their contributors. See lib/tree. */
@@ -224,6 +261,33 @@ class TopicsState {
       while (i < pending.length) await this.ensure(pending[i++]);
     };
     await Promise.all(Array.from({ length: Math.min(4, pending.length) }, worker));
+    this.warmed = true;
+  }
+
+  /** Draw the two ⚙️ example samples (S / L) from every selectable topic's names in its
+   *  content language. Omissions are already applied (it reads `groupsOf`, not the raw
+   *  file) and the game's length cap is enforced, so the pool is exactly what the output
+   *  would emit. Each sample is length-skewed — short-first for S, long-first for L — so a
+   *  reader can watch each preview cap bite in turn (see `weightedByLength`). Meant to run
+   *  once the topics have warmed and again on a primary-language switch, never on an
+   *  omission toggle, so callers invoke it untracked. */
+  resampleExample(): void {
+    const pool: string[] = [];
+    const seen = new Set<string>();
+    for (const t of this.all) {
+      const code = lang.contentLang(t.id);
+      const derived = lang.derivesRomaji(t.id);
+      for (const g of this.groupsOf(t)) {
+        for (const w of renderedForms(groupEntries(g), "short", code, derived)) {
+          if (w.length <= SKRIBBL.maxWordLen && !seen.has(w)) {
+            seen.add(w);
+            pool.push(w);
+          }
+        }
+      }
+    }
+    this.exampleNamesS = weightedByLength(pool, 4, PREVIEW_ITEMS_MAX);
+    this.exampleNamesL = weightedByLength(pool, SKRIBBL.maxWordLen, PREVIEW_ITEMS_MAX);
   }
 
   // Display names in the active language. A title is a WordEntry, so resolving one
