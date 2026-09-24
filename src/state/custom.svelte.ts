@@ -49,9 +49,9 @@ export const NAME_MAX = 32;
  *  (lib/custom) applies them; the panels reach them through `custom.preview`. */
 export const PREVIEW_ITEMS_MIN = 1;
 export const PREVIEW_ITEMS_MAX = 420;
-export const PREVIEW_ITEMS_DEFAULT = 42;
+export const PREVIEW_ITEMS_DEFAULT = 69;
 export const PREVIEW_CHARS_MIN = 10;
-export const PREVIEW_CHARS_MAX = 2000;
+export const PREVIEW_CHARS_MAX = 1337;
 export const PREVIEW_CHARS_DEFAULT = 420;
 
 class CustomState {
