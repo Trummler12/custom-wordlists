@@ -5,7 +5,7 @@
   import { plain } from "../../locale/html/plain";
   import { overlays } from "../../state/overlays.svelte";
   import { settings } from "../../state/settings.svelte";
-  import { resetAllToDefault } from "../../state/reset";
+  import { resetSelectionSettings } from "../../state/reset";
   import Msg from "../../locale/html/Msg.svelte";
   import TipMarker from "../common/TipMarker.svelte";
   import TipNote from "../common/TipNote.svelte";
@@ -180,7 +180,7 @@
            before it fires. -->
       <div class="setting-row reset-row">
         {#if armed}
-          <button type="button" class="reset-btn armed" onclick={resetAllToDefault}>
+          <button type="button" class="reset-btn armed" onclick={resetSelectionSettings}>
             {lang.ui.settings.resetConfirm}
           </button>
           <button
@@ -198,3 +198,113 @@
     </div>
   {/if}
 </div>
+
+<style>
+  .settings-picker {
+    position: relative;
+  }
+  /* Selecting a language that has a second way of being written puts a setting under the ⚙️
+     that exists for no other language. Three blinks say so, since nothing else on screen can.
+     The ⚙️ carries `.lang-btn` (its box comes from app.css); the nudge is toggled here. */
+  @keyframes nudge {
+    0%, 100% { transform: none; }
+    50% { transform: scale(1.25); filter: brightness(1.4); }
+  }
+  .lang-btn.nudge {
+    animation: nudge 0.45s ease-in-out 3;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .lang-btn.nudge {
+      animation: none;
+    }
+  }
+  /* Same box as the language menu it sits beside, but wider: these are sentences, not a
+     list of names. Preferences are unrelated, so they need air between them — a checkbox
+     and a dropdown read as one control otherwise. */
+  .settings-menu {
+    position: absolute;
+    top: calc(100% + 0.25rem);
+    right: 0;
+    z-index: 10;
+    width: max-content;
+    max-width: min(20rem, 80vw);
+    padding: 0.5rem 0.6rem;
+    background: var(--chip-bg);
+    border: 1px solid var(--panel-border);
+    border-radius: var(--radius);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
+    font-size: 0.85rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  /* One preference and whatever has to be said about it. Positioned, so its note spans this
+     row rather than the whole popover. */
+  .setting-row {
+    position: relative;
+    display: flex;
+    align-items: baseline;
+    gap: 0.25rem;
+  }
+  .setting {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+    cursor: pointer;
+  }
+  /* A preference that picks rather than toggles: "<label>: <dropdown>" on one line, wrapping
+     only when the popover's max-width forces it. The pointer stops at the dropdown — a
+     checkbox row is clickable across its whole label, and carrying that over here would
+     promise a second way to open the dropdown that clicking the text doesn't deliver. */
+  .setting select {
+    font: inherit;
+    max-width: 100%;
+    cursor: pointer;
+  }
+  .setting:has(select) {
+    flex-wrap: wrap;
+    row-gap: 0.25rem;
+    gap: 0.35rem;
+    cursor: default;
+  }
+  /* Reset stands apart from the preferences above — a rule over it — and wears the danger
+     colour instead of the neutral chrome the rest of the menu uses. */
+  .reset-row {
+    margin-top: 0.15rem;
+    padding-top: 0.5rem;
+    border-top: 1px solid var(--panel-border);
+    align-items: center;
+  }
+  .reset-btn {
+    flex: 1;
+    background: none;
+    border: 1px solid var(--danger);
+    border-radius: var(--radius-sm);
+    padding: 0.3rem 0.5rem;
+    color: var(--danger);
+    font: inherit;
+    line-height: 1.15;
+    text-align: center;
+    cursor: pointer;
+  }
+  .reset-btn:hover,
+  .reset-btn:focus-visible,
+  .reset-btn.armed {
+    background: var(--danger);
+    color: #fff;
+  }
+  .reset-cancel {
+    background: none;
+    border: none;
+    padding: 0 0.25rem;
+    color: var(--muted);
+    font-size: 1rem;
+    line-height: 1;
+    opacity: 0.7;
+    cursor: pointer;
+  }
+  .reset-cancel:hover,
+  .reset-cancel:focus-visible {
+    opacity: 1;
+  }
+</style>

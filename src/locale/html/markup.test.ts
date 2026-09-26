@@ -36,6 +36,33 @@ describe("parseMarkup", () => {
     expect(parts.map((p) => p.kind)).toEqual(["link", "br", "link"]);
   });
 
+  it("reads a {b}bold{/b} run and the text around it", () => {
+    expect(parseMarkup("use both {b}and{/b} more")).toEqual([
+      { kind: "text", text: "use both " },
+      { kind: "b", text: "and" },
+      { kind: "text", text: " more" },
+    ]);
+  });
+
+  it("reads an {i}italic{/i} run", () => {
+    expect(parseMarkup("{i}All{/i} variants")).toEqual([
+      { kind: "i", text: "All" },
+      { kind: "text", text: " variants" },
+    ]);
+  });
+
+  it("interleaves emphasis with a link and a break", () => {
+    const parts = parseMarkup("{b}a{/b} [x](https://x.example){br}{i}b{/i}");
+    expect(parts.map((p) => p.kind)).toEqual(["b", "text", "link", "br", "i"]);
+  });
+
+  it("drops an empty {b}{/b} span rather than emitting an empty run", () => {
+    expect(parseMarkup("a{b}{/b}b")).toEqual([
+      { kind: "text", text: "a" },
+      { kind: "text", text: "b" },
+    ]);
+  });
+
   describe("unsafe or malformed markup stays literal", () => {
     it("refuses a javascript: URL — a data file must not reach the DOM that way", () => {
       const parts = parseMarkup("[click](javascript:alert(1))");
@@ -57,6 +84,12 @@ describe("parseMarkup", () => {
     it("leaves bare brackets alone", () => {
       expect(parseMarkup("Rm. [1] Key")).toEqual([{ kind: "text", text: "Rm. [1] Key" }]);
     });
+
+    it("leaves an unclosed {b} alone", () => {
+      expect(parseMarkup("a {b}bold forever")).toEqual([
+        { kind: "text", text: "a {b}bold forever" },
+      ]);
+    });
   });
 });
 
@@ -71,5 +104,9 @@ describe("plainText", () => {
 
   it("leaves a string with no markup untouched", () => {
     expect(plainText("Just words")).toBe("Just words");
+  });
+
+  it("keeps the text of a bold/italic run and drops the markers", () => {
+    expect(plainText("use both {b}and{/b} {i}full{/i} names")).toBe("use both and full names");
   });
 });

@@ -1,4 +1,5 @@
 import type { UIStrings } from "./index";
+import { en } from "./en";
 
 /** Korean UI strings. Machine-written and unreviewed by a native speaker — see
  *  the proofreading note in CONTRIBUTING.md.
@@ -23,6 +24,7 @@ export const ko: UIStrings = {
   },
   names: {
     form: { pref: "선호", short: "짧게", long: "길게", both: "둘 다", all: "모두" },
+    formHint: en.names.formHint, // English stopgap until the UI-language PR translates it.
     formLabel: (group) => `${group}의 이름 형식`,
   },
   fame: {
@@ -32,6 +34,7 @@ export const ko: UIStrings = {
     none: "아직 정의된 인지도 그룹이 없습니다. 하단의 Contribution Guide에서 제안할 수 있습니다.",
     selected: "선택됨:",
     mostlySelected: "대부분 선택됨:",
+    stored: (body) => `(저장됨: ${body})`,
     toggle: (shown) =>
       shown ? "이 목록의 인지도 슬라이더 숨기기" : "이 목록의 인지도 슬라이더 표시",
     toggleAll: (allShown) =>
@@ -55,12 +58,23 @@ export const ko: UIStrings = {
       omitted
         ? "켜면 그래도 포함합니다. skribbl.io는 받지 않지만 다른 게임은 받을 수도 있습니다."
         : "켜면 다시 제외합니다.",
+    helpAdd: (url) => ` — [빠진 것을 채우는 데 힘을 보태 주세요](${url})`,
   },
+  // custom: English stopgap until the UI-language PR translates it (§X).
+  custom: en.custom,
   coverage: {
     label: "Geoguessr / 스트리트 뷰 지원",
     all: "모든 국가",
     withCoverage: "공식 지원 포함",
     reliable: "안정적 지원만",
+  },
+  languageType: {
+    label: "포함할 언어 유형",
+    base: "살아 있는 현대 언어",
+    submillion: "사용자 100만 명 미만 언어도 포함",
+    notRecommended: "가벼운 그림 그리기에는 부적합 — 사용자 수에 비해 훨씬 덜 알려져 있습니다.",
+    toggle: (included) =>
+      included ? "선택됨 — 목록에 포함되어 있습니다. 해제하면 제외됩니다." : "선택하면 목록에 추가됩니다.",
   },
   sovereignty: {
     label: "주권과 승인",
@@ -84,6 +98,16 @@ export const ko: UIStrings = {
   language: {
     label: (current) => `언어: ${current}`,
     menu: "언어",
+    // LB1 stopgaps: English until the translation pass.
+    panelTitle: en.language.panelTitle,
+    slot: en.language.slot,
+    slotHint: en.language.slotHint,
+    followPrimary: en.language.followPrimary,
+    showSecondaryBefore: en.language.showSecondaryBefore, showSecondaryAfter: en.language.showSecondaryAfter,
+    showSecondaryHint: en.language.showSecondaryHint,
+    secondaryMoot: en.language.secondaryMoot,
+    useSecondary: en.language.useSecondary,
+    useSecondaryAll: en.language.useSecondaryAll,
     unsupported: (language) => `${language}은(는) 아직 확인되지 않았습니다. 이 주제는 불완전할 수 있습니다.`,
     fallback: "번역이 없는 곳에는 영어가 사용됩니다.",
     usesEnglish: (primary, secondary) =>
@@ -92,9 +116,9 @@ export const ko: UIStrings = {
       romaji: "목록 항목에 로마자 사용",
       es419: "목록 항목에 라틴 아메리카 스페인어 사용",
     },
-    variantNote: { romaji: "장음을 모음 반복으로 적는 헵번식(Moomoomiruku).{br}워프로 로마자는 제공하지 않습니다. 공식 표기를 덮어쓰기 때문 — Batafurii가 아니라 Butterfree." },
+    variantNote: { romaji: "장음을 모음 반복으로 적는 헵번식(Moomoomiruku).{br}워프로 로마자는 지원하지 않습니다. 공식 표기(Batafurii가 아니라 Butterfree)와 충돌하기 때문입니다.{br}이 문제와 그로부터 생기는 문제들의 해결은 현재 범위를 벗어납니다." },
     generatedRomaji:
-      "이 로마자는 일본어 이름에서 자동 생성했습니다. 실제 표기와 다르면 [알려주세요](https://github.com/Trummler12/custom-wordlists/issues/new).",
+      "이 로마자는 일본어 이름에서 자동 생성했습니다. 실제 표기와 다르면 언제든 [알려주세요](https://github.com/Trummler12/custom-wordlists/issues/new)!",
     variantDiffers: (n) => `${n}개 항목의 표기가 다릅니다`,
     variantShowList: "어떤 항목인지 보기",
     useEnglish: (forced) =>
@@ -108,6 +132,11 @@ export const ko: UIStrings = {
     showEnglishEn: "이 스위치는 영어가 아닌 언어에서만 나타납니다.",
     interfaceLang: "인터페이스 언어:",
     interfaceAuto: "자동",
+    // LB1 stopgaps: English until the translation pass.
+    outputSeparator: en.settings.outputSeparator,
+    outputSeparatorHint: en.settings.outputSeparatorHint,
+    minChars: en.settings.minChars,
+    maxChars: en.settings.maxChars,
     reset: "설정{br}초기화",
     resetConfirm: "다시 클릭하면 초기화",
     resetCancel: "취소",
@@ -118,7 +147,7 @@ export const ko: UIStrings = {
     copied: "복사했습니다",
     copyFailed: "복사하지 못했습니다",
     copyManual: "목록을 선택했습니다. 직접 복사해 주세요.",
-    empty: "주제나 그룹을 선택하면 목록이 만들어집니다.",
+    empty: "주제, 카테고리 또는 사용자 목록을 선택하면 출력이 생성됩니다.",
     generatedList: "생성된 단어 목록",
     words: "단어",
     chars: "글자",
@@ -132,5 +161,34 @@ export const ko: UIStrings = {
     // The guide itself is English only, so the link keeps its name.
     contributionGuide: "Contribution Guide",
     helpOutAfter: "를 확인해 보세요.",
+  },
+  coveragePage: {
+    home: "메인 앱으로",
+    topicLabel: "주제:",
+    uiLanguage: "인터페이스 언어",
+    title: "언어 커버리지",
+    intro: "주제를 선택하면 각 항목에 대해 Wikidata가 어떤 언어의 레이블을 가지고 있는지 볼 수 있습니다.",
+    lead: "이 주제의 내용은 [Wikidata](https://www.wikidata.org/wiki/Wikidata:Main_Page)에서 가져옵니다. 표는 각 항목이 어떤 언어의 레이블을 이미 가지고 있는지 보여 줍니다.",
+    notesTitle: "돕는 방법",
+    noteAdd: "첫 번째 열에서 항목을 열고, 로그인한 뒤 확실한 누락 레이블을 추가해 주세요.",
+    noteLabelLister: "전혀 표시되지 않는 언어를 추가하려면 [Wikidata 환경 설정](https://www.wikidata.org/wiki/Special:Preferences#mw-prefsection-gadgets)으로 가서 가젯 탭에서 {i}labelLister{/i} 가젯을 켜세요. 그러면 각 항목에 「Labels list」(오른쪽 위 도구 아래)가 나타나 어떤 언어 코드든 받습니다.",
+    noteProtected: "일부 Wikidata 항목은 보호되어 있어, 편집하려면 만든 지 4일 이상이고 편집 100회 이상인 계정이 필요합니다.",
+    noteStale: "이 표는 수동 덤프에서 가져오므로, 여기에 표시된 커버리지는 Wikidata의 현재 상태보다 몇 주, 경우에 따라서는 몇 달까지 뒤처질 수 있습니다.",
+    itemCount: (n) => `${n.toLocaleString()}개 항목`,
+    uiOnly: "UI 언어만",
+    uiOnlyHint: "원본 데이터 덤프에는 skribbl.io가 지원하는 모든 언어와{br}사용자가 많은 몇몇 언어가 이미 포함되어 있습니다.{br}그래서 데이터는 이미 모든 예정 언어를 지원하지만,{br}인터페이스는 저희 메인테이너가 관리하다 보니 당연히 훨씬 뒤처져 있습니다.{br}또한 해당 언어를 다루는 주제가 거의 없는 상태에서{br}새 UI 언어를 추가하려 해도 별 의미가 없습니다.{br}하지만 돕는 사람이 많아질수록 새 언어가 더 빨리 승인됩니다!{br}=> 아래의 Contribution Guide도 편하게 확인해 보세요!",
+    item: "항목",
+    numeric: { population: "인구", area: "면적 (km²)", users: "사용자" },
+    first: "첫 페이지",
+    prev: "이전 페이지",
+    next: "다음 페이지",
+    last: "마지막 페이지",
+    page: (current, total) => `${total} 페이지 중 ${current} 페이지`,
+    // LB1 stopgaps: English until the translation pass.
+    pageJumpHint: en.coveragePage.pageJumpHint,
+    pageJumpInput: en.coveragePage.pageJumpInput,
+    pageNoNumeric: en.coveragePage.pageNoNumeric,
+    loading: (topic) => `${topic} 불러오는 중…`,
+    loadError: (topic, message) => `${topic} 커버리지를 불러오지 못했습니다: ${message}`,
   },
 };

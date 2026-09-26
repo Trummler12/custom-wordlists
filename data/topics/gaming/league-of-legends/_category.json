@@ -1,7 +1,18 @@
 {
   "title": {
-    "short": "LoL",
-    "long": "League of Legends"
+    "short": {
+      "en": "LoL"
+    },
+    "long": {
+      "en": "League of Legends",
+      "ja": "リーグ・オブ・レジェンド",
+      "ko": "리그 오브 레전드",
+      "zh-Hans": "英雄联盟",
+      "zh-Hant": "英雄聯盟",
+      "ru": "Лига Легенд",
+      "el": "Λίγκα των Θρύλων",
+      "he": "ליג אוף לג'נדס"
+    }
   },
   "icon": "⚔️"
 }

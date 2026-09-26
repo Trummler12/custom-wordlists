@@ -4,7 +4,9 @@
 //
 // One instance, reached through property access (see state/lang.svelte.ts for why).
 
-const STORAGE_KEY = "wordlists:settings";
+/** The one key this store persists under — exported so `reset` can clear exactly the
+ *  selection settings without wiping the reader's custom lists alongside them. */
+export const SETTINGS_STORAGE_KEY = "wordlists:settings";
 
 class SettingsState {
   /** Whether topic and category rows offer the switch to English entries. Off by
@@ -62,7 +64,7 @@ type Stored = { showEnglishToggle?: boolean; toggledOmissions?: Record<string, b
 
 function read(): Stored | null {
   try {
-    const raw = localStorage.getItem(STORAGE_KEY);
+    const raw = localStorage.getItem(SETTINGS_STORAGE_KEY);
     return raw ? JSON.parse(raw) : null;
   } catch {
     return null;
@@ -70,7 +72,7 @@ function read(): Stored | null {
 }
 function write(value: Stored): void {
   try {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(value));
+    localStorage.setItem(SETTINGS_STORAGE_KEY, JSON.stringify(value));
   } catch {
     /* storage unavailable — the choice just won't survive a reload */
   }

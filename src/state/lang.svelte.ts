@@ -12,12 +12,11 @@ import type { TopicSummary } from "../lib/types";
 
 const STORAGE_KEY = "wordlists:lang";
 const UI_STORAGE_KEY = "wordlists:uiLang";
-const VARIANT_STORAGE_KEY = "wordlists:variants";
-
-/** The keys the reader's language choices live under — the content language and the
- *  interface language. Grouped and exported so a settings reset can look them up by
- *  name rather than hard-code the strings (see `PRESERVED_KEYS` in `state/reset`). */
-export const LANGUAGE_STORAGE_KEYS = [STORAGE_KEY, UI_STORAGE_KEY] as const;
+/** The script-variant picks (e.g. romaji on for a Japanese list). Exported so a settings
+ *  reset can clear it as one of the selection settings (see `RESET_KEYS` in `state/reset`).
+ *  The language choices themselves (`wordlists:lang` / `:uiLang`) are deliberately NOT
+ *  exported for it — a reset leaves who the reader reads as untouched. */
+export const VARIANT_STORAGE_KEY = "wordlists:variants";
 
 /** The interface follows the list language unless told otherwise. */
 export const AUTO = "auto";

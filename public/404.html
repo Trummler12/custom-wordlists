@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Not found · Custom Wordlists</title>
+    <script>
+      // GitHub Pages serves this for any path with no file. Coverage deep links
+      // (<base>coverage/<topic>/<lang>) are ours: hand them to coverage.html with the
+      // path packed into a ?/ query the page restores, so the reader keeps the clean
+      // URL. Anything else is a genuine not-found and shows the message below.
+      (function () {
+        var base = "/custom-wordlists/";
+        var loc = window.location;
+        var rest = loc.pathname.indexOf(base) === 0 ? loc.pathname.slice(base.length) : loc.pathname.replace(/^\/+/, "");
+        if (rest.indexOf("coverage/") === 0) {
+          loc.replace(base + "coverage.html?/" + rest + loc.search.replace(/^\?/, "&") + loc.hash);
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <p>Page not found. <a href="/custom-wordlists/">Go to the app</a>.</p>
+  </body>
+</html>

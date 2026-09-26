@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { onMount } from "svelte";
+  import { onMount, untrack } from "svelte";
   import { lang } from "./state/lang.svelte";
   import { overlays } from "./state/overlays.svelte";
   import { settings } from "./state/settings.svelte";
@@ -14,7 +14,13 @@
     await topics.init();
     // Only once the manifest is there, as before: a failed load keeps the error
     // message in English rather than resolving a language nobody can act on.
-    if (!topics.error) lang.init();
+    if (!topics.error) {
+      lang.init();
+      // Warm every topic in the background so parent counts settle to their filtered
+      // value from the start, rather than showing an unfiltered sum that ticks down
+      // as the reader opens each category. Fire-and-forget: the tree renders now.
+      void topics.warmAll();
+    }
   });
 
   // `index.html` can only name one language, and the chrome renders in seven. A
@@ -28,6 +34,15 @@
   $effect(() => {
     document.documentElement.lang = lang.uiLang;
   });
+
+  // Draw the ⚙️ Custom-settings example sample once the topics warm, and again whenever
+  // the primary language changes — the two "refresh" moments. `untrack` keeps the draw
+  // itself (which reads every topic's groups) from subscribing, so an omission toggle or a
+  // single topic's language override doesn't silently re-roll the sample.
+  $effect(() => {
+    lang.uiLang;
+    if (topics.warmed) untrack(() => topics.resampleExample());
+  });
 </script>
 
 <!-- One set of window handlers for the whole app: every overlay closes the same
@@ -37,6 +52,7 @@
   onpointerdown={overlays.onPointerDown}
   onkeydown={overlays.onKeyDown}
   onscroll={overlays.onScroll}
+  onresize={overlays.onResize}
 />
 
 <main>
@@ -54,5 +70,5 @@
     {/if}
   </div>
 
-  <SiteFooter />
+  <SiteFooter footer={lang.ui.footer} />
 </main>

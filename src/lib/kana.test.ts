@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { isTransliterable, toRomaji } from "./kana";
+import { isTransliterable, toRomaji } from "./kana.mjs";
 
 describe("toRomaji", () => {
   it("reads a kana name one syllable at a time", () => {
@@ -39,6 +39,13 @@ describe("toRomaji", () => {
     // Longest match first, or 南部 would read as 南 + 部.
     expect(toRomaji("南部ソト語")).toBe("Nanbusotogo");
     expect(toRomaji("南ンデベレ語")).toBe("Minamindeberego");
+  });
+
+  it("reads the double hyphen that joins a compound foreign name as a hyphen, not =", () => {
+    // ＝ / ゠ separate the parts of a borrowed compound name; width-normalizing ＝ to a
+    // bare ASCII "=" would leave it looking like an equation.
+    expect(toRomaji("トラジャ＝サダン語")).toBe("Toraja-sadango");
+    expect(toRomaji("ジョラ＝フォニィ語")).toBe("Jora-foniigo");
   });
 
   it("spaces a bracket the way Latin script does, not the way Japanese does", () => {

@@ -16,7 +16,14 @@ export const en: UIStrings = {
     wordsOf: (selected, total) => `${selected} of ${total} word${total === 1 ? "" : "s"}`,
   },
   names: {
-    form: { pref: "preferred", short: "short", long: "long", both: "both", all: "all" },
+    form: { pref: "pref", short: "short", long: "long", both: "both", all: "all" },
+    formHint: {
+      short: "Prefer short names",
+      long: "Prefer full/official names",
+      both: "Use both short AND full names",
+      pref: "Use only the primary label",
+      all: "Use ALL available variants",
+    },
     formLabel: (group) => `Name form for ${group}`,
   },
   fame: {
@@ -27,6 +34,7 @@ export const en: UIStrings = {
     none: "No fame groups defined yet — see the Contribution Guide in the footer to propose some!",
     selected: "Selected:",
     mostlySelected: "Mostly selected:",
+    stored: (body) => `(Stored: ${body})`,
     toggle: (shown) => (shown ? "Hide this list's fame ruler" : "Show this list's fame ruler"),
     toggleAll: (allShown) => (allShown ? "Hide these fame rulers" : "Show these fame rulers"),
   },
@@ -49,12 +57,106 @@ export const en: UIStrings = {
       omitted
         ? "Toggle to include them anyway — skribbl.io won't take them, but another game might."
         : "Toggle to leave them out again.",
+    helpAdd: (url) => ` — [help us add what's missing!](${url})`,
+  },
+  custom: {
+    title: "Custom",
+    infoHint:
+      "Use the input field below to add word lists of your own.{br}" +
+      "The following rules apply:{br}" +
+      "- All items are separated by one separator character, kept consistent across the whole input.{br}" +
+      "- Avoid items that contain the separator character themselves.{br}" +
+      "- On every change to the content, the separator is auto-detected as the most common separator character.{br}" +
+      "- skribbl.io ignores punctuation, other special characters and leading or trailing spaces; some of these are already cleaned up right here.",
+    separatorLabel: "Separator:",
+    separatorPick: "Separator character",
+    internalDupes: (n) => `${n} duplicate ${n === 1 ? "entry" : "entries"} within the list`,
+    localDupes: (n) => `${n} duplicate${n === 1 ? "" : "s"} across your custom lists`,
+    globalDupes: (n) => `${n} duplicate${n === 1 ? "" : "s"} with the selected topics`,
+    dupesHint: "Reported, not filtered — drop them from your input if you like.",
+    dupesNote: "Duplicates are reduced to a single copy in the output.",
+    dupesNoteSave: "Duplicates within a list are also removed when it is saved.",
+    dupesSamples: {
+      internal: "Internal duplicates:",
+      local: "Duplicates across your lists:",
+      global: "Duplicates with the selected topics:",
+    },
+    fitToggle: "Fit the input to its full height",
+    fewerRows: "Show fewer rows",
+    moreRows: "Show more rows",
+    moreRowsOver: (steps) => `(${steps} step${steps === 1 ? "" : "s"} above the content height)`,
+    clearHint: "Clear the custom input field",
+    clearConfirm: "You're about to empty the Custom input field.",
+    clearConfirmButton: "Click here to confirm",
+    listsLabel: "Saved lists",
+    listsTitle: "Saved custom lists",
+    listsInfo:
+      "Custom lists are stored in local storage.{br}" +
+      "Each browser keeps its own local storage,{br}" +
+      "separate from other browsers or devices.{br}" +
+      "To take your custom lists elsewhere,{br}" +
+      "export them here and import them at the destination.{br}{br}" +
+      "{b}IMPORTANT{/b}: export your lists after every larger change " +
+      "and keep those exports as a backup; various browser actions " +
+      "can clear your local storage, and Safari even clears it automatically " +
+      "once a site has gone unvisited for 7 days.",
+    listActivate: "Use this list",
+    listRename: "Rename",
+    listSave: "Save the current input into this list",
+    listLoad: "Load this list into the input field",
+    listDelete: "Delete this list",
+    listUp: "Move up",
+    listDown: "Move down",
+    listSaveNew: "Save the current input as a new list",
+    phActivate: "CAN'T use Placeholder",
+    phRename: "CAN'T rename Placeholder",
+    phLoad: "CAN'T load Placeholder",
+    phDelete: "CAN'T delete Placeholder",
+    phMove: "CAN'T move Placeholder",
+    exportLabel: "Export lists",
+    exportTitle: "Export saved lists",
+    selectAll: "Select all",
+    exportDownload: "Download",
+    importLabel: "Import lists",
+    importTitle: "Import saved lists",
+    importPick: "Choose a file…",
+    importColName: "Name",
+    importColSize: "Size",
+    importColDupes: "Dupes",
+    importColWith: "with",
+    importButton: "Import selected",
+    importEmpty: "No saved lists in this file.",
+    importDupesSecondary: (pct) => `Secondary: ${pct}`,
+    listReplaceConfirm: (name) => `Replace the list "${name}" with the current input?`,
+    listDeleteConfirm: (name) => `Delete the list "${name}"?`,
+    listLoadConfirm: "Overwrite the input field with this list?",
+    confirm: "Confirm",
+    cancel: "Cancel",
+    listWarnTitle: "This custom list has problems:",
+    listWarnSeparator: "The selected separator character occurs inside an item.",
+    settingsLabel: "Custom settings",
+    settingsTitle: "Custom settings",
+    maxPreviewItems: "Max preview items",
+    maxPreviewChars: "Max preview characters",
+    exampleListS: "Example list S",
+    exampleListL: "Example list L",
+    examplePreviewEmpty: "No topic names loaded yet.",
   },
   coverage: {
     label: "Geoguessr / Street View coverage",
     all: "All countries",
     withCoverage: "With official coverage",
     reliable: "Reliable coverage only",
+  },
+  languageType: {
+    label: "Which language types to include",
+    base: "Living modern languages",
+    submillion: "Also languages with <1 million users",
+    notRecommended: "A poor fit for casual drawing: far less familiar than its speaker numbers suggest.",
+    toggle: (included) =>
+      included
+        ? "Ticked — these are in the list. Untick to leave them out."
+        : "Tick to add these to the list.",
   },
   sovereignty: {
     label: "Sovereignty & recognition",
@@ -65,7 +167,7 @@ export const en: UIStrings = {
     rows: ["Universally recognized", "Widely recognized", "Partially recognized", "Unrecognized"],
     colDefs: [
       "Runs its own borders, courts, army and taxes.",
-      "Has its own laws and parliament, but shares core powers — currency, defence, foreign policy — with another state.",
+      "Has its own laws and parliament, but shares core powers (currency, defence, foreign policy) with another state.",
     ],
     rowDefs: [
       "A UN member state, recognized by essentially every other.",
@@ -78,6 +180,18 @@ export const en: UIStrings = {
   language: {
     label: (current) => `Language: ${current}`,
     menu: "Language",
+    panelTitle: "Language settings",
+    slot: { primary: "Primary:", interface: "Interface:", fallback: "Fallback:" },
+    slotHint: {
+      primary: "Primary language for list items, and the default for most other language settings.",
+      interface: "Language used for the interface.",
+      fallback: "Used wherever the interface language is missing a label.",
+    },
+    followPrimary: "Same as primary",
+    showSecondaryBefore: "Show the option to use", showSecondaryAfter: "entries",
+    showSecondaryHint:
+      "Lets you use, for example, country names in your native language while using your preferred dub language for the names of series characters.",
+    secondaryMoot: "These toggles only appear while the primary and the secondary language differ.",
     unsupported: (language) => `Not confirmed for ${language} yet — this topic may be incomplete.`,
     fallback: "English is used where a translation is missing.",
     usesEnglish: (primary, secondary) => `${primary}${secondary} officially uses the English names too.`,
@@ -85,9 +199,9 @@ export const en: UIStrings = {
       romaji: "Use Romaji for list entries",
       es419: "Use Latin American Spanish for list entries",
     },
-    variantNote: { romaji: "Hepburn spellings with long vowels doubled (Moomoomiruku).{br}Wāpuro romaji is not offered: it would override official spellings — Butterfree, not Batafurii." },
+    variantNote: { romaji: "Hepburn spellings with long vowels doubled (Moomoomiruku).{br}Wāpuro romaji is NOT supported: it would conflict with official spellings (Butterfree, not Batafurii),{br}and solving that and the problems it leads to is out of scope for now." },
     generatedRomaji:
-      "These romaji were generated from the Japanese names. If one is spelled differently in practice, please [tell us](https://github.com/Trummler12/custom-wordlists/issues/new).",
+      "These romaji were generated from the Japanese names. If one is spelled differently in practice, feel free to [let us know](https://github.com/Trummler12/custom-wordlists/issues/new)!",
     variantDiffers: (n) => `${n} entr${n === 1 ? "y" : "ies"} spelled differently`,
     variantShowList: "Show which",
     useEnglish: (forced) =>
@@ -96,6 +210,12 @@ export const en: UIStrings = {
       allForced
         ? "Use these lists in the selected language"
         : "Use the English entries of these lists",
+    useSecondary: (forced, secondary) =>
+      forced ? "Use this list in the selected language" : `Use the entries of this list in ${secondary}`,
+    useSecondaryAll: (allForced, secondary) =>
+      allForced
+        ? "Use these lists in the selected language"
+        : `Use the entries of these lists in ${secondary}`,
   },
   settings: {
     label: "Settings",
@@ -103,7 +223,12 @@ export const en: UIStrings = {
     showEnglishEn: "These toggles only appear for languages other than English.",
     interfaceLang: "Interface language:",
     interfaceAuto: "Automatic",
-    reset: "Reset settings{br}to default",
+    outputSeparator: "Output separator:",
+    outputSeparatorHint:
+      "skribbl.io only accepts \",\" as the separator. The others only change what gets copied; the Output looks the same either way.",
+    minChars: "Min characters:",
+    maxChars: "Max characters:",
+    reset: "Reset selection settings{br}to default",
     resetConfirm: "Click again to confirm",
     resetCancel: "Cancel",
   },
@@ -113,7 +238,7 @@ export const en: UIStrings = {
     copied: "Copied!",
     copyFailed: "Copy failed",
     copyManual: "The list is selected — copy it yourself.",
-    empty: "Select topics or groups to build a list.",
+    empty: "Select topics, categories or custom lists to generate an output.",
     generatedList: "Generated word list",
     words: "words",
     chars: "chars",
@@ -124,8 +249,39 @@ export const en: UIStrings = {
   },
   footer: {
     repository: "GitHub Repository",
-    helpOut: "Want to help with the project? Check out the",
+    helpOut: "Want to help with the project? Feel free to check out the",
     contributionGuide: "Contribution Guide",
     helpOutAfter: "!",
+  },
+  coveragePage: {
+    home: "Main App Page",
+    topicLabel: "Topic:",
+    uiLanguage: "Interface language",
+    title: "Language Coverage",
+    intro: "Pick a topic to see which languages Wikidata already has a label for, per item.",
+    lead: "This topic's contents come from [Wikidata](https://www.wikidata.org/wiki/Wikidata:Main_Page). The table shows which languages already have a label for each item.",
+    notesTitle: "How to help",
+    noteAdd: "Open an item from the first column and, once logged in, add any missing label you're sure of.",
+    noteLabelLister: "To add a language that isn't listed at all, go to your [Wikidata preferences](https://www.wikidata.org/wiki/Special:Preferences#mw-prefsection-gadgets) and enable the {i}labelLister{/i} gadget in the \"Gadgets\" tab; each item then shows a “Labels list” (top right, under Tools) that accepts any language code.",
+    noteProtected: "Some Wikidata items are protected and need an account at least four days old with 100 or more edits to change.",
+    noteStale: "Note that this table comes from a manual dump, so the coverage shown here can lag the current state on Wikidata by up to several weeks or even months.",
+    itemCount: (n) => `${n.toLocaleString()} items`,
+    uiOnly: "UI languages only",
+    uiOnlyHint: "The raw data dumps already cover every language skribbl.io supports,{br}plus a few more with many users.{br}So the data already supports every planned language,{br}while the interface is kept up by us maintainers and naturally lags well behind.{br}And there is little point in trying to add a new interface language{br}while barely any topics cover that language yet.{br}But the more people help, the sooner new languages are greenlit!{br}=> Feel free to check out the Contribution Guide below!",
+    item: "Item",
+    numeric: { population: "Population", area: "Area (km²)", users: "Users" },
+    first: "First page",
+    prev: "Previous page",
+    next: "Next page",
+    last: "Last page",
+    page: (current, total) => `Page ${current} / ${total}`,
+    pageJumpHint: (numeric) =>
+      numeric
+        ? `Click: jump to a page, an entry name or a value in "${numeric}"`
+        : "Click: jump to a page or an entry name",
+    pageJumpInput: "Page, value or entry name",
+    pageNoNumeric: "This table has no numeric column.",
+    loading: (topic) => `Loading ${topic}…`,
+    loadError: (topic, message) => `Could not load coverage for ${topic}: ${message}`,
   },
 };

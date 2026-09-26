@@ -1,7 +1,10 @@
 // UI-chrome strings (everything the app itself renders — not topic content).
-// One dictionary per locale implements UIStrings — seven of them, listed in UI
+// One dictionary per locale implements UIStrings — the set listed in UI
 // below; the frontend resolves the active one via strings(lang), falling back to
 // English for any language that has topic data but no UI translation yet.
+//
+// Topic content (titles, tier conditions, rule reasons) is translatable too but
+// lives with the build that bakes it, not here — see README.md for the full map.
 //
 // Grouped rather than flat, and a group is one of two things: a PLACE, when its
 // strings only ever appear there (header, tree, settings, output, footer), or a
@@ -40,6 +43,9 @@ export interface TreeStrings {
 /** The short/long name-form dropdown. */
 export interface NamesStrings {
   form: { pref: string; short: string; long: string; both: string; all: string };
+  /** A terse hint per form, carried as the `<option>`'s native `title` — what picking it
+   *  does, phrased for a group that actually has an entry in that form. */
+  formHint: { pref: string; short: string; long: string; both: string; all: string };
   formLabel: (group: string) => string;
 }
 
@@ -58,6 +64,11 @@ export interface FameStrings {
   /** The same prefix for a merged topic whose contributors don't all sit at its
    *  ruler position: most are there, not all. */
   mostlySelected: string;
+  /** The parenthetical second line the ruler tooltip adds when a fame cap (the
+   *  languages "< 1M" box, unchecked) clamps the selection to its floor while a
+   *  deeper position stays stored — so the reader sees the setting a re-check
+   *  restores. Wraps the same "…with {condition}…" body the primary line uses. */
+  stored: (body: string) => string;
   /** Toggle a single list's fame ruler; label reflects the current state. */
   toggle: (shown: boolean) => string;
   /** Toggle from a category row all the rulers it governs; label on current state. */
@@ -99,6 +110,11 @@ export interface OmittedStrings {
    *  same reason as `unknown`. */
   tooLong: (n: number, maxLen: number) => string;
   tooLongHint: (omitted: boolean) => string;
+  /** Appended to the unknown-names row for a Wikidata-sourced topic: a link to that
+   *  topic's Language-Coverage page, where a reader can fill the gaps. Leads with an
+   *  em-dash separator and carries a `[text](url)` link, so it renders through html/Msg
+   *  (which opens it in a new tab). Absent on the row for any other topic. */
+  helpAdd: (url: string) => string;
 }
 
 /** The Pegman filter behind its own button: a country has full Street View
@@ -112,6 +128,24 @@ export interface CoverageStrings {
   all: string;
   withCoverage: string;
   reliable: string;
+}
+
+/** The language-type inclusion panel behind its own ☑️ button: a checklist of the
+ *  Wikidata types a language can carry — dead, dialect, family and so on — each
+ *  default-off, plus a base box for the living modern languages the list shows by
+ *  default. The type labels themselves come from the data (each rule's `reason`),
+ *  so only the frame is here. */
+export interface LanguageTypeStrings {
+  /** Button aria-label and popup heading. */
+  label: string;
+  /** The base checkbox — the living modern languages shown by default. */
+  base: string;
+  /** The last box: lift the ruler's default ≥ 1M cap to reach the whole list. */
+  submillion: string;
+  /** The 👎 marker's note: a type whose fame lags its speaker numbers. */
+  notRecommended: string;
+  /** A checkbox's hover, on whether ticking it adds the type or removes it. */
+  toggle: (included: boolean) => string;
 }
 
 /** The sovereignty & recognition matrix behind its own ✅ button: a grid of cells,
@@ -143,7 +177,22 @@ export interface SovereigntyStrings {
 export interface LanguageStrings {
   /** Globe-button aria-label, e.g. "Language: English". */
   label: (current: string) => string;
-  menu: string;
+  menu: string; // REMOVE(LB3): the 🌐 list becomes a panel titled by panelTitle
+  /** The 🌐 panel (§B): its title, the three language slots' labels (each reads as one
+   *  line with its dropdown, so it carries its own colon) and their persistent tooltips. */
+  panelTitle: string;
+  slot: { primary: string; interface: string; fallback: string };
+  slotHint: { primary: string; interface: string; fallback: string };
+  /** The Interface dropdown's first option, and its default: follow the Primary language. */
+  followPrimary: string;
+  /** The checkbox that reveals the per-list secondary-language toggles, around its bound
+   *  language dropdown: "<before> [dropdown] <after>" — split like `header.tagline*`, since
+   *  a locale may need words on either side of the control. */
+  showSecondaryBefore: string;
+  showSecondaryAfter: string;
+  showSecondaryHint: string;
+  /** Why that checkbox does nothing while the secondary language equals the primary one. */
+  secondaryMoot: string;
   /** Warning marker for a topic that doesn't fully support the selected language. */
   unsupported: (language: string) => string;
   /** Second half of that warning — see `langWarning()` for when it applies. */
@@ -175,9 +224,14 @@ export interface LanguageStrings {
   /** Opens the list of those entries, side by side. */
   variantShowList: string;
   /** Toggle a single list to English names; label reflects the current state. */
-  useEnglish: (forced: boolean) => string;
+  useEnglish: (forced: boolean) => string; // REMOVE(LB3): generalised to useSecondary
   /** Toggle from a category row every list it governs; label on current state. */
-  useEnglishAll: (allForced: boolean) => string;
+  useEnglishAll: (allForced: boolean) => string; // REMOVE(LB3): generalised to useSecondaryAll
+  /** Toggle a single list to the secondary language's names, and a category row's lists
+   *  all at once; the label reflects the current state. `secondary` is the language's name
+   *  in the interface language, placed as "entries **in** <name>" so it needs no declension. */
+  useSecondary: (forced: boolean, secondary: string) => string;
+  useSecondaryAll: (allForced: boolean, secondary: string) => string;
 }
 
 /** The ⚙️ popover. */
@@ -185,17 +239,25 @@ export interface SettingsStrings {
   /** Button aria-label and the menu's own label. */
   label: string;
   /** Label of the preference that reveals the per-list English toggles. */
-  showEnglish: string;
+  showEnglish: string; // REMOVE(LB3): moves to language.showSecondary*
   /** Why that preference does nothing while the interface is English. */
-  showEnglishEn: string;
+  showEnglishEn: string; // REMOVE(LB3): moves to language.secondaryMoot
   /** Label of the dropdown pinning the interface to one language. Reads as one
    *  line with its value ("Interface language: English"), so it carries its own
    *  colon — French and German don't punctuate one the same way. */
-  interfaceLang: string;
+  interfaceLang: string; // REMOVE(LB3): moves to language.slot.interface
   /** Its first option, and the default: follow the list language where we have a
    *  dictionary for it. Kept short — it sits in a dropdown, not in a sentence. */
-  interfaceAuto: string;
-  /** The reset button: drops every stored preference back to the shipped default.
+  interfaceAuto: string; // REMOVE(LB3): moves to language.followPrimary
+  /** The Output Separator dropdown (§G): its label (own colon) and persistent tooltip. The
+   *  separator only changes what gets copied, never how the Output looks. */
+  outputSeparator: string;
+  outputSeparatorHint: string;
+  /** The word-length bounds (§G); labels carry their own colon. */
+  minChars: string;
+  maxChars: string;
+  /** The reset button: drops the selection settings back to the shipped default (the
+   *  reader's custom lists, input and language are left untouched — see `state/reset`).
    *  Carries a `{br}` so it wraps predictably in the narrow menu. */
   reset: string;
   /** The armed label after the first click — a second click confirms, so the reset
@@ -242,6 +304,165 @@ export interface FooterStrings {
   helpOutAfter: string;
 }
 
+/** The standalone "Language Coverage" page (strand W1): its header controls, the table
+ *  chrome and the pager. A separate Vite entry renders it, but its text is app chrome like
+ *  any other, so it lives here (distinct from `CoverageStrings`, the Geoguessr filter). */
+export interface CoveragePageStrings {
+  /** The link back to the main app (an arrow precedes it in the markup). */
+  home: string;
+  /** The Topic dropdown's label. */
+  topicLabel: string;
+  /** The interface-language dropdown's aria-label — a 🌐 marks it visually. */
+  uiLanguage: string;
+  /** The page and index title. (Topic names are not here — they come from the topic
+   *  data via the manifest, so a title is defined once; see the page's `topicTitle`.) */
+  title: string;
+  /** The index page's prompt to pick a topic. */
+  intro: string;
+  /** The table view's lead paragraph: where the data comes from and what the table shows.
+   *  Carries a [Wikidata](url) link, so it renders through html/Msg. */
+  lead: string;
+  /** The "how to help" notes: a heading and four points — add a listed label, add a
+   *  language not listed at all (links to the gadget preferences), the protection
+   *  caveat, and the note that this table is a manual dump that may lag Wikidata.
+   *  Each renders through html/Msg. */
+  notesTitle: string;
+  noteAdd: string;
+  noteLabelLister: string;
+  noteProtected: string;
+  noteStale: string;
+  /** The row count, e.g. "2,021 items". */
+  itemCount: (n: number) => string;
+  /** The checkbox above the table that keeps only the official-language columns (the rest
+   *  are dumped for far more languages than the app itself offers), and its hover tooltip.
+   *  The tooltip carries `{br}` breaks, rendered as newlines in the plain `title` attribute
+   *  (not through html/Msg), so they fall at clause ends rather than mid-sentence. */
+  uiOnly: string;
+  uiOnlyHint: string;
+  /** The first column's header. */
+  item: string;
+  /** The numeric column's header, chosen by the dataset's `numeric` key. */
+  numeric: { population: string; area: string; users: string };
+  /** Pager controls — the neutral ‹‹‹ ‹ › ››› glyphs are in the markup, these name them
+   *  (aria-label and hover) for the first, previous, next and last page. */
+  first: string;
+  prev: string;
+  next: string;
+  last: string;
+  page: (current: number, total: number) => string;
+  /** The page-number jump (§H): the clickable page number's persistent tooltip — `numeric`
+   *  is the table's numeric column header, or null when it has none — the input's
+   *  aria-label, and the flash when a number can't be a page and there's no value to seek. */
+  pageJumpHint: (numeric: string | null) => string;
+  pageJumpInput: string;
+  pageNoNumeric: string;
+  /** While a topic's data loads, and when it fails. */
+  loading: (topic: string) => string;
+  loadError: (topic: string, message: string) => string;
+}
+
+/** The Custom word-list input row at the foot of the tree, and its 🚫 panel. */
+export interface CustomStrings {
+  /** The row's title — the "Custom" in "> Custom:". */
+  title: string;
+  /** The ℹ️ marker's note: how the input field is read. Carries `{br}` breaks and
+   *  renders through html/Msg. */
+  infoHint: string;
+  /** The label before the separator dropdown, and the dropdown's aria-label. */
+  separatorLabel: string;
+  separatorPick: string;
+  /** The 🚫 panel's rows for the reader's own duplicates: within this one list,
+   *  across the several active custom lists (X3), and against the selected topics.
+   *  Report-only — the count is the point — so their checkboxes are disabled. */
+  internalDupes: (n: number) => string;
+  localDupes: (n: number) => string;
+  globalDupes: (n: number) => string;
+  /** Why those duplicate rows can't be toggled. */
+  dupesHint: string; // REMOVE(LB2): split into dupesNote / dupesNoteSave / dupesSamples
+  /** The duplicate rows' hover, in parts the panel stacks one per line: what happens to
+   *  duplicates in the output (every type), what saving does on top (internal only), and
+   *  the per-type label that introduces the sample list below it. */
+  dupesNote: string;
+  dupesNoteSave: string;
+  dupesSamples: { internal: string; local: string; global: string };
+  /** The ↕️ control: lift the row cap and fit the input to its whole content. */
+  fitToggle: string;
+  /** The − / + controls: show fewer / more rows before the input scrolls. */
+  fewerRows: string;
+  moreRows: string;
+  /** Appended to `moreRows` while the cap already sits above the content: by how many
+   *  row-steps (the `+` glyphs' count, so the hover says what the icon shows). */
+  moreRowsOver: (steps: number) => string;
+  /** The 🗑️ control's hover label, and its two-step confirm — the message and the
+   *  button that carries out the clear. */
+  clearHint: string;
+  clearConfirm: string;
+  clearConfirmButton: string;
+  /** The 💾 saved-lists manager (§X3): the control's label, the panel title, and the
+   *  ℹ️ note beside the title explaining that storage is per-browser, per-device. */
+  listsLabel: string;
+  listsTitle: string;
+  listsInfo: string;
+  /** Per-tile controls (aria-label / hover): activate, rename, save-into, load-from,
+   *  delete, reorder, and the placeholder tile's save-as-new. */
+  listActivate: string;
+  listRename: string;
+  listSave: string;
+  listLoad: string;
+  listDelete: string;
+  listUp: string;
+  listDown: string;
+  listSaveNew: string;
+  /** The placeholder tile's controls are disabled; these name why on hover — the
+   *  separator and save keep their normal labels (`separatorPick` / `listSaveNew`). */
+  phActivate: string;
+  phRename: string;
+  phLoad: string;
+  phDelete: string;
+  phMove: string;
+  /** The 📤 export panel (§X4b): the control label, the panel title, the select-all
+   *  toggle, and the download button. */
+  exportLabel: string;
+  exportTitle: string;
+  selectAll: string;
+  exportDownload: string;
+  /** The 📥 import panel: the control label, title, the file-pick prompt, the table's
+   *  Name / Size / Dupes / with columns, the import button, and the empty-file note. */
+  importLabel: string;
+  importTitle: string;
+  importPick: string; // REMOVE(LB2): dead — the native file input labels itself in the browser's locale
+  importColName: string;
+  importColSize: string;
+  importColDupes: string;
+  importColWith: string;
+  importButton: string;
+  importEmpty: string;
+  /** The Dupes cell's persistent tooltip: the secondary overlap (share of the larger
+   *  set), spelled out rather than left as a bare number. */
+  importDupesSecondary: (pct: string) => string;
+  /** The tiles' two-step confirms, and the generic confirm / cancel buttons. */
+  listReplaceConfirm: (name: string) => string;
+  listDeleteConfirm: (name: string) => string;
+  listLoadConfirm: string;
+  confirm: string;
+  cancel: string;
+  /** The ⚠️ shown on a list (or the input) whose separator sits inside an item. */
+  listWarnTitle: string; // REMOVE(LB2): quoted separators are dropped, and the ⚠️ with them
+  listWarnSeparator: string; // REMOVE(LB2): see listWarnTitle
+  /** The ⚙️ Custom settings: the control's label, the panel title, and the two preview-cap
+   *  fields — how many items a content preview lists, and how many characters it may run. */
+  settingsLabel: string;
+  settingsTitle: string;
+  maxPreviewItems: string;
+  maxPreviewChars: string;
+  /** The two live examples under the cap fields — a short-skewed list (S, the item cap
+   *  bites first) and a long-skewed one (L, the character cap does): the name on each
+   *  preview-tooltip trigger, and the note's stand-in before any topic names have loaded. */
+  exampleListS: string;
+  exampleListL: string;
+  examplePreviewEmpty: string;
+}
+
 /** Every user-facing string the app chrome renders, keyed and typed. */
 export interface UIStrings {
   header: HeaderStrings;
@@ -249,12 +470,15 @@ export interface UIStrings {
   names: NamesStrings;
   fame: FameStrings;
   omitted: OmittedStrings;
+  custom: CustomStrings;
   coverage: CoverageStrings;
+  languageType: LanguageTypeStrings;
   sovereignty: SovereigntyStrings;
   language: LanguageStrings;
   settings: SettingsStrings;
   output: OutputStrings;
   footer: FooterStrings;
+  coveragePage: CoveragePageStrings;
 }
 
 import { en } from "./en";
@@ -264,43 +488,34 @@ import { fr } from "./fr";
 import { it } from "./it";
 import { ja } from "./ja";
 import { ko } from "./ko";
+import { zhHans } from "./zh-Hans";
+import { zhHant } from "./zh-Hant";
+import { ru } from "./ru";
+import { pt } from "./pt";
 
 /** Language that backs any locale without its own UI dictionary. */
 export const FALLBACK_LANG = "en";
 
-// Five of these are machine-written and unreviewed by a native speaker; the
-// contribution guide asks for proofreaders by name. Chinese is missing on
-// purpose: it is a content language because Pokémon has it, not a planned
-// interface language — see docs/Language-Roadmap.md.
-const UI: Record<string, UIStrings> = { en, de, es, fr, it, ja, ko };
+// All but English are machine-written and unreviewed by a native speaker; the
+// contribution guide asks for proofreaders by name. Chinese (both scripts) is an
+// official interface language now, not merely a content one — see
+// docs/Language-Roadmap.md.
+const UI: Record<string, UIStrings> = { en, de, es, fr, it, ja, ko, "zh-Hans": zhHans, "zh-Hant": zhHant, ru, pt };
 
-/** Languages the chrome can be rendered in — the ones with a dictionary above.
- *  Deliberately small: a list can be offered in a language long before anyone has
- *  translated the interface into it, which is the whole reason the two are
- *  separate settings. */
+/** Languages the chrome can be rendered in — the ones with a dictionary above. A
+ *  language is "official" once it has both a chrome dictionary and a picker slot, so
+ *  this is also `CONTENT_LANGS`: the two used to differ (a list could be offered before
+ *  its interface was translated) but no longer do. */
 export const UI_LANGS: string[] = Object.keys(UI).sort();
 
-/** Languages the app offers in its picker — the app-level curated set, not
- *  derived from topics; a topic missing the selected language falls back to en.
- *
- *  These are the tags the data actually uses, script and all: `zh-Hans` and
- *  `zh-Hant` are two lists, and a reader who wants Traditional should be able to
- *  say so rather than have a script guessed for them. Tags nobody offers still
- *  resolve — see `matchTag` — so a browser asking for `zh-CN` lands here anyway.
- *
- *  Alphabetical, which is also the order `matchTag` prefers when a bare tag has
- *  to be widened. */
-export const CONTENT_LANGS: string[] = [
-  "de",
-  "en",
-  "es",
-  "fr",
-  "it",
-  "ja",
-  "ko",
-  "zh-Hans",
-  "zh-Hant",
-];
+/** Languages the app offers in its picker. Same set as `UI_LANGS` — a language is
+ *  offered exactly when it is an official interface language — kept as its own name for
+ *  the readers that mean "the picker" (the 🌐 dropdown, `matchTag`). Alphabetical, which
+ *  is also the order `matchTag` prefers when a bare tag has to be widened; `zh-Hans` and
+ *  `zh-Hant` are two lists, script and all, so a reader who wants Traditional can say so
+ *  rather than have a script guessed. Tags nobody offers still resolve (see `matchTag`),
+ *  so a browser asking for `zh-CN` lands here anyway. */
+export const CONTENT_LANGS: string[] = UI_LANGS;
 
 /** UI strings for `lang`, falling back to English when it has no dictionary. */
 export function strings(lang: string): UIStrings {

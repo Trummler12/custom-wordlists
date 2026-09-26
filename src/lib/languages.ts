@@ -41,10 +41,16 @@ function isScript(sub: string): boolean {
   return /^[A-Za-z]{4}$/.test(sub);
 }
 
-/** The language a tag belongs to, without script or region — what a question
- *  about *support* asks, where a question about *rendering* wants the whole tag.
- *  A list carrying Japanese supports Japanese whether or not it has romaji. */
+/** The language a tag belongs to for a *support* question, where a question about
+ *  *rendering* wants the whole tag. A region (`419`, `CH`) or a romanization (`Latn`)
+ *  is a way of writing one language, so it drops: a list carrying Japanese supports
+ *  `ja-Latn`, and one carrying Spanish supports `es-419`. A non-romanization script
+ *  does NOT drop — `zh-Hans` and `zh-Hant` are separate languages the data lists in
+ *  their own right, not two spellings of one, so collapsing them to `zh` would both
+ *  lose the distinction and match neither (`languages` names the script tags). */
 export function baseTag(tag: string): string {
+  const sub = tag.split("-")[1];
+  if (sub && isScript(sub) && sub !== "Latn") return tag;
   return tag.split("-")[0];
 }
 

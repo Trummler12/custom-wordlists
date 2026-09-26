@@ -1,21 +1,8 @@
-/* Component and base styles, written against the semantic theme variables from
-   themes.css. Last file in the import chain; main.ts imports this one. */
-@import "./themes.css";
-
-/* Base */
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-body {
-  margin: 0;
-  font-family: var(--font-sans);
-  line-height: 1.5;
-}
-a {
-  color: inherit;
-}
+/* Main-app styles: the document frame, the two-column layout, and (for now) the
+   components the main app renders. The shared primitives (resets, body, links, .warn)
+   live in base.css; each component's own look is being colocated into its .svelte.
+   main.ts imports this one; @import base pulls the primitives + tokens in first. */
+@import "./base.css";
 
 /* The document scrolls as a whole — scroll anywhere to move the topic list; only
    the output's chips capture the wheel (they have their own overflow). The header
@@ -27,33 +14,18 @@ main {
   /* Bottom padding clears the pinned footer; the stacked layout drops it again. */
   padding: 0 1rem var(--footer-h);
 }
-h1 {
-  /* No top margin: the browser default would push the title below the output
-     column, which starts at --output-gap. */
-  margin-top: 0;
-  margin-bottom: 0.25rem;
-}
+/* h2 is a shared main-app element default (the "Topics" and "Output" section headings);
+   h1, .tagline and the <header> frame are colocated in PageHeader. */
 h2 {
   font-size: 1rem;
   margin: 0 0 0.5rem;
-}
-.tagline {
-  margin: 0;
-  color: var(--muted);
-}
-.status.error,
-.warn {
-  color: var(--danger);
-}
-header {
-  margin-bottom: 1rem;
 }
 
 /* Two-column layout (stacks on narrow screens). */
 .layout {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 1.5rem;
+  gap: var(--layout-gap);
   align-items: start;
 }
 /* Left column: header + topic tree. min-width:0 keeps long names from pushing
@@ -72,262 +44,40 @@ header {
   }
 }
 
-/* Output panel: sticky and always full viewport height (minus --output-gap top +
-   bottom and the pinned footer), independent of the word count. The tall left
-   column keeps the sticky pinned through the whole page scroll. Flex column —
-   the chips grow and scroll inside, the counter stays at the bottom. */
-.output {
-  position: sticky;
-  top: var(--output-gap);
-  align-self: start;
-  display: flex;
-  flex-direction: column;
-  height: calc(100vh - 2 * var(--output-gap) - var(--footer-h));
-  min-height: 0;
-}
-@media (max-width: 50rem) {
-  /* Stacked: don't pin the output; size it to its content. */
-  .output {
-    position: static;
-    height: auto;
-  }
-  .chips {
-    flex: none;
-    max-height: min(24rem, calc(100vh - 6rem));
-  }
-}
+/* The output panel is a component: its sticky full-height column (.output), head
+   (.output-head/.head-actions), chips (.chips/.chip) and counter (.counter) are colocated
+   in components/output/. It is App.svelte's second grid column here; its own root does the
+   sticking. */
 
-/* Footer: the repo links. Wide layout pins it to the viewport bottom so it stays
-   reachable beside the sticky output column (which reserves room for it above).
-   Stacked layout un-pins it, so it comes to rest below the output block and
-   scrolls with the page instead of following the viewport. */
-.site-footer {
-  position: fixed;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  /* Above the row-spanning tip-notes (z-index 10): they overlay the next row
-     but must stop at this opaque bar rather than paint through it. */
-  z-index: 20;
-  height: var(--footer-h);
-  display: flex;
-  align-items: center;
-  font-size: 0.85rem;
-  color: var(--muted);
-  /* Opaque so the scrolling left column passes behind it. `Canvas` is the
-     browser's own page background, which follows the color-scheme like the
-     rest of the page (body sets no background of its own). */
-  background: Canvas;
-  border-top: 1px solid var(--border);
-}
-/* Same content box as main, so the ends sit flush with the columns above. */
-.footer-inner {
-  width: 100%;
-  max-width: var(--content-max);
-  margin: 0 auto;
-  padding: 0 1rem;
-  display: flex;
-  /* Single line while the bar is a fixed --footer-h tall — a wrapped second
-     line would spill out of it. The stacked layout below re-enables wrapping,
-     where the bar grows with its content. */
-  flex-wrap: nowrap;
-  gap: 0.25rem 1.5rem;
-}
-/* Both halves grow equally, so each keeps its own edge alignment — and still
-   does once they wrap onto separate lines, where each spans the full width. */
-.footer-help,
-.footer-repo {
-  flex: 1 1 auto;
-}
-.footer-repo {
-  text-align: right;
-}
-.site-footer a {
-  color: inherit;
-}
+/* The footer bar is a component now — its styling is colocated in
+   components/layout/SiteFooter.svelte, so the coverage page (which also renders it)
+   gets it without importing this sheet. Only main's footer-clearance stays here,
+   since it belongs to the main-app document frame. */
 @media (max-width: 50rem) {
   main {
     padding-bottom: 0;
   }
-  .site-footer {
-    position: static;
-    height: auto;
-    /* Full-bleed border across the narrow viewport, despite main's padding. */
-    margin: 1rem -1rem 0;
-    padding: 0.6rem 0;
-  }
-  .footer-inner {
-    /* Height is free here, so the two halves may take a line each. */
-    flex-wrap: wrap;
-  }
 }
 
-/* Topic list */
-.category {
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
-  margin: var(--gap-before-cat) 0 var(--gap-after-cat);
-  position: relative; /* anchor for the coverage popup, like .topic-row */
-}
-/* Only the first TOP-LEVEL category hugs the "Topics" heading. Nested first
-   children (e.g. Science → Chemistry) keep the normal above-gap so they aren't
-   cramped against their parent header. */
-.topics > .category:first-of-type {
-  margin-top: 0.25rem;
-}
-.category-title {
-  margin: 0;
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: var(--muted-2);
-}
-.category-title label {
-  cursor: pointer;
-}
-/* The category counter reads at the same size as the ones below it — this row is
-   quieter by colour, weight and letterspacing, and shrinking its digits too made it
-   look like a different kind of number. Its own line-height, though: at the shared
-   size the default 1.5 would make this the tallest box on the row and stretch it. */
-.category .meta {
-  line-height: 1;
-}
-/* Nested tree level: indent a category's topics + subcategories, with a guide.
-   --tree-step (globals.css) is the total indent per level, split around the line. */
-.cat-children {
-  margin-left: calc(var(--tree-step) / 2);
-  padding-left: calc(var(--tree-step) / 2);
-  border-left: 1px solid var(--border);
-}
-.topics ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-.topic-item {
-  position: relative; /* anchor for .tip-note */
-  border-bottom: 1px solid var(--border);
-}
-.topic-row {
-  display: flex;
-  align-items: baseline;
-  gap: 0.25rem;
-}
-.expander {
-  background: none;
-  border: none;
-  cursor: pointer;
-  /* Tighter on the checkbox side only: the outer padding is this small glyph's tap
-     area and has to stay. */
-  padding: 0 0.1rem 0 0.25rem;
-  color: var(--muted-2);
-  font-size: 0.9rem;
-  line-height: 1;
-}
-/* Same box as the button, minus the arrow — so a topic that can't expand keeps the
-   column width a topic that can would occupy. */
-.expander.placeholder {
-  visibility: hidden;
-}
-.topic {
-  display: flex;
-  align-items: baseline;
-  gap: 0.5rem;
-  /* Content-width, not flex:1 — so the Names dropdown sits against the title like
-     a group row's, rather than being pushed to the far side. `.meta`'s margin
-     still right-aligns the count. */
-  padding: 0.5rem 0.2rem 0.5rem 0.1rem;
-  cursor: pointer;
-}
-.topic .title {
-  font-weight: 600;
-}
-.meta {
-  margin-left: auto;
-  color: var(--muted-2);
-  font-size: 0.85rem;
-  /* Every digit one width, so the counts below each other line up as a column
-     rather than drifting with the number. */
-  font-variant-numeric: tabular-nums;
-}
-/* Right-aligning the row only lines up the right edge; the slash still moves with
-   the total's digit count. Reserving three digits and setting the total flush right
-   inside them fixes the slash too, and leaves the blank width between slash and
-   number, where it reads as breathing room. Four digits simply outgrow it. */
-.meta .total {
-  display: inline-block;
-  min-width: 4ch;
-  text-align: right;
-}
-/* A small glyph that opens a tip-note: ⚠️ where something is unconfirmed, ℹ️ where
-   it is deliberate. On a topic row and in the settings menu. */
-.tip-marker {
-  margin-left: 0.3rem;
-  background: none;
-  border: none;
-  padding: 0;
-  font: inherit;
-  font-size: 0.85rem;
-  line-height: 1;
-  cursor: help;
-}
-/* The note a tooltip trigger opens. Stretched across its positioned parent rather than
-   hung off the trigger itself: a trigger sits somewhere in the middle of a row of unknown
-   width, so any box anchored to it can leave the viewport on one side or the other. */
-.tip-note {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  right: 0;
-  z-index: 10;
-  margin: 0.15rem 0 0;
-  padding: 0.4rem 0.55rem;
-  font-size: 0.8rem;
-  font-weight: 400;
-  line-height: 1.35;
-  color: var(--chip-fg);
-  background: var(--chip-bg);
-  border: 1px solid var(--panel-border);
-  border-radius: var(--radius);
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
-}
-/* Room for the 📌, so a first line can't run under it. Only while pinned: an
-   unpinned note is the common case and shouldn't carry the gap for nothing. */
-.tip-note.pinned {
-  padding-right: 1.5rem;
-}
-.tip-pin {
-  position: absolute; /* .tip-note is the containing block */
-  top: 0.25rem;
-  right: 0.4rem;
-  font-size: 0.65rem;
-  line-height: 1;
-  opacity: 0.75;
-}
-/* Set when the trigger sits low in the viewport, where a note below it would be cut off
-   by the bottom edge — the vertical counterpart to the full-row stretch above. */
-.tip-note.above {
-  top: auto;
-  bottom: 100%;
-  margin: 0 0 0.15rem;
-}
+/* The topic tree's styling is colocated in its components (TopicTree / CategoryNode /
+   TopicRow); the tree-wide shared primitives (the expander column, the word-count meta)
+   live in TopicTree via `.topics :global(...)`. */
 
-/* Names dropdown (short / long / both); only on a list whose entries have name pairs. */
-.names-mode {
-  font-size: 0.75rem;
-  padding: 0 0.15rem;
-  color: var(--muted);
-}
-/* Show/hide toggle for a list's fame ruler. A view option, not a selection, so a
-   quiet icon rather than a checkbox that would read as another thing to tick.
-   Opacity carries the state — full = shown, dim = mixed (category roll-up), faint
-   = hidden — since an emoji can't take a colour. */
-/* What a list leaves out: a 🧹 on the row, and the panel it opens. A panel and not
-   a tip-note, because it holds checkboxes and links — interactive content has no
-   business inside role="tooltip". */
-/* Deliberately not positioned: the panel below anchors to the row instead, the
-   same way .tip-note does and for the same reason. */
+/* The tooltip marker/note are components: .tip-marker (TipMarker) and .tip-note + its
+   variants (TipNote) are colocated in components/common/. A .tip-note stretches across
+   its positioned parent — whichever component renders it (a topic row, a ruler, a panel)
+   supplies that anchor. */
+
+/* Most topic-row controls are colocated in their components: NamesModeSelect (.names-mode),
+   FameDepthSlider (.group-depth/.depth-*), VariantPanel (.variant-list); the 📏/🇬🇧 row
+   toggles, shared by category and topic rows, sit in TopicTree with the other shared row
+   atoms. The one control kept here is the 🧹 overlay below — a sizeable primitive shared by
+   OmittedPanel AND VariantPanel (which reuses its slot and styling), too big to colocate in
+   their common parent without bloating it, so it stays a named main-app shared primitive.
+
+   A panel, not a tip-note, because it holds checkboxes and links — interactive content has
+   no business in role="tooltip". Not positioned off the 🧹 (which sits at an unknown x in a
+   row of unknown width): it stretches across the row, anchored to .topic-item, like .tip-note. */
 .omitted-host {
   display: contents;
 }
@@ -344,20 +94,16 @@ header {
 .omitted-btn:focus-visible {
   opacity: 1;
 }
-/* Stretched across the row rather than hung off the 🧹, which sits somewhere in a
-   row of unknown width — any box anchored to it can leave the viewport on one
-   side or the other. */
 .omitted-panel {
   position: absolute;
   top: 100%;
   left: 0;
   right: 0;
   z-index: 10;
-  /* A list can run long; it scrolls rather than pushing the row apart. Sized to
-     the viewport between two fixed bounds: below ~9rem the panel is a scrollbar
-     with a line in it, above ~24rem it is longer than any list has rules.
-     The middle term is what the flip leaves it — the panel only ever opens
-     downward from the top half — minus the footer bar it must not run under. */
+  /* A list can run long; it scrolls rather than pushing the row apart. Sized to the viewport
+     between two fixed bounds: below ~9rem a scrollbar with a line in it, above ~24rem longer
+     than any list has rules. The middle term is what the flip leaves it — opening downward
+     from the top half — minus the footer bar it must not run under. */
   max-height: clamp(9rem, calc(40vh - var(--footer-h)), 24rem);
   overflow-y: auto;
   /* Reaching the end of the list shouldn't start scrolling the column behind it. */
@@ -373,24 +119,64 @@ header {
   text-align: left;
   cursor: auto;
 }
-/* Set when the 🧹 sits below the middle of the viewport, where a panel below it
-   would be cut off by the bottom edge — the same flip as .tip-note.above, decided
-   by the same function. */
+/* Set when the 🧹 sits below the viewport middle, where a panel below would be cut off by the
+   bottom edge — the same flip as .tip-note.above, decided by the same function. */
 .omitted-panel.above {
   top: auto;
   bottom: 100%;
 }
-/* The side-by-side spellings a variant changes, inside the same panel. */
-.variant-list > summary {
-  cursor: pointer;
-  margin-top: 0.35rem;
-  opacity: 0.85;
-}
-.variant-list .from {
-  opacity: 0.7;
-}
 .omitted-title {
   margin: 0 0 0.35rem;
+}
+
+/* The Custom row's control buttons (§X2/§X3) — the ↕️ / − / + / 🗑️ cluster and the
+   💾 saved-lists trigger. A shared primitive here rather than in CustomTopic, so the
+   trigger inside SavedListsPanel wears the same button (a scoped rule wouldn't cross
+   into the child component). The layout (.ctl-grid / .ctl-col / .ctl-group) stays
+   with CustomTopic, which owns it. */
+.ctl-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.6rem;
+  height: 1.6rem;
+  padding: 0;
+  font: inherit;
+  font-size: 0.9rem;
+  line-height: 1;
+  color: var(--chip-fg);
+  background: var(--chip-bg);
+  border: 1px solid var(--panel-border);
+  border-radius: var(--radius);
+  cursor: pointer;
+}
+.ctl-btn:hover:not(:disabled),
+.ctl-btn:focus-visible {
+  border-color: var(--muted-2);
+}
+.ctl-btn:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+.ctl-btn.active {
+  border-color: var(--muted-2);
+  box-shadow: inset 0 0 0 1px var(--muted-2);
+}
+/* An icon that stacks several glyphs over two lines (the grow control's `+`s): a
+   tight leading so the vertical gap between the rows matches the horizontal one — a
+   `+` is a small glyph, so its natural line box is far taller than it needs. */
+.ctl-btn.stacked {
+  line-height: 0.7;
+  white-space: normal;
+  letter-spacing: 0.05em;
+}
+.ctl-btn.danger {
+  background: rgba(200, 60, 60, 0.22);
+}
+.ctl-btn.danger:hover:not(:disabled),
+.ctl-btn.danger:focus-visible {
+  background: rgba(200, 60, 60, 0.34);
+  border-color: rgba(200, 60, 60, 0.7);
 }
 .omitted-panel ul {
   list-style: none;
@@ -406,240 +192,18 @@ header {
   gap: 0.45rem;
   cursor: pointer;
 }
-/* A disabled rule keeps its full contrast — it is the most interesting line in
-   the panel, and the checkbox already says it can't be changed. */
+/* A disabled rule keeps its full contrast — the most interesting line in the panel, and the
+   checkbox already says it can't be changed. */
 .omitted-panel input:disabled {
   cursor: not-allowed;
 }
 
-/* The two row toggles: 📏 for a fame ruler's visibility, 🇬🇧 for a list's content
-   language. Both read their state as opacity — off is present but receded, so the
-   row doesn't change width when one is switched. */
-.ruler-toggle,
-.english-toggle {
-  background: none;
-  border: none;
-  padding: 0 0.2rem;
-  font-size: 0.8rem;
-  line-height: 1;
-  cursor: pointer;
-  opacity: 0.3;
-}
-.ruler-toggle.mixed,
-.english-toggle.mixed {
-  opacity: 0.6;
-}
-.ruler-toggle.shown,
-.english-toggle.on {
-  opacity: 1;
-}
 
-/* Per-group fame-depth slider — a custom track so the snap markers can sit on
-   the rail and their spacing can mirror tier sizes (a native <input range>
-   can do neither). Colours come from the shared --range-* vars in themes.css. */
-.group-depth {
-  position: relative; /* anchor for this ruler's .tip-note */
-  margin: 0.45rem 0 0.7rem 1.75rem;
-  width: 100%;
-  max-width: 16rem;
-}
-/* A single group's ruler, on the topic row itself. One level less of nesting than
-   the rule above, so it lines up under the topic title rather than under a group
-   name that isn't there. */
-.topic-item > .group-depth {
-  margin-left: 2.85rem;
-}
-.depth-track {
-  --inset: 8px; /* keeps the end dots off the rail edges; matches INSET_PX in App.svelte */
-  position: relative;
-  /* Own stacking context, so the dots/thumb z-indexes below stack only against
-     each other and can't escape to the root context (where they would paint over
-     the fixed footer). The ruler's tip-note is a sibling of the track, not a
-     child, so it stays free to span rows. */
-  isolation: isolate;
-  height: 1rem; /* hit area; the visible rail is thinner */
-  cursor: pointer;
-  touch-action: none; /* let pointer drag work without scrolling */
-}
-.depth-rail,
-.depth-fill {
-  position: absolute;
-  top: 50%;
-  height: 0.3rem;
-  border-radius: 999px;
-  transform: translateY(-50%);
-  pointer-events: none;
-}
-.depth-rail {
-  left: var(--inset);
-  right: var(--inset);
-  background: var(--range-track);
-}
-.depth-fill {
-  left: var(--inset);
-  background: var(--range-fill);
-}
-/* Inverted contrast on purpose: a dot on the blue fill is light, a dot on the
-   grey track is blue — so a marker stays visible on either side of the thumb. */
-.depth-dot {
-  position: absolute;
-  top: 50%;
-  width: 0.34rem;
-  height: 0.34rem;
-  border-radius: 50%;
-  transform: translate(-50%, -50%);
-  background: var(--range-dot); /* left of the thumb, on the blue fill → light */
-  pointer-events: none;
-  z-index: 1;
-}
-.depth-dot.on {
-  background: var(--range-fill); /* right of the thumb, on the grey track → blue */
-}
-.depth-thumb {
-  position: absolute;
-  top: 50%;
-  width: 0.85rem;
-  height: 0.85rem;
-  border-radius: 50%;
-  transform: translate(-50%, -50%);
-  background: var(--range-fill);
-  border: 2px solid var(--range-thumb-ring);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.35);
-  pointer-events: none;
-  z-index: 2;
-}
-.depth-track:focus-visible {
-  outline: none;
-}
-.depth-track:focus-visible .depth-thumb {
-  outline: 2px solid var(--range-fill);
-  outline-offset: 2px;
-}
-
-/* Output panel */
-.output-head {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-.head-actions {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-.head-actions > button {
-  padding: 0.35rem 0.9rem;
-  cursor: pointer;
-}
-
-/* Language picker (globe dropdown) — reused in the output head and (stacked
-   layout only) in the top header. */
-.title-row {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-.lang-header-slot {
-  display: none; /* shown only when the output stacks below — see media query */
-  margin-left: auto;
-  gap: 0.35rem;
-}
-.lang-picker,
-.settings-picker {
-  position: relative;
-}
-/* Same box as the language menu it sits beside, but wider: these are sentences,
-   not a list of names. */
-.settings-menu {
-  position: absolute;
-  top: calc(100% + 0.25rem);
-  right: 0;
-  z-index: 10;
-  width: max-content;
-  max-width: min(20rem, 80vw);
-  padding: 0.5rem 0.6rem;
-  background: var(--chip-bg);
-  border: 1px solid var(--panel-border);
-  border-radius: var(--radius);
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
-  font-size: 0.85rem;
-  /* Preferences are unrelated to one another, so they need air between them —
-     a checkbox and a dropdown read as one control otherwise. */
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-/* One preference and whatever has to be said about it. Positioned, so its note
-   spans this row rather than the whole popover. */
-.setting-row {
-  position: relative;
-  display: flex;
-  align-items: baseline;
-  gap: 0.25rem;
-}
-.setting {
-  display: flex;
-  align-items: baseline;
-  gap: 0.5rem;
-  cursor: pointer;
-}
-/* A preference that picks rather than toggles: "<label>: <dropdown>" on one line,
-   wrapping only when the popover's max-width forces it.
-
-   The pointer stops at the dropdown. A checkbox row is clickable across its whole
-   label, and carrying that over here would promise a second way to open the
-   dropdown that clicking the text doesn't deliver. */
-.setting select {
-  font: inherit;
-  max-width: 100%;
-  cursor: pointer;
-}
-.setting:has(select) {
-  flex-wrap: wrap;
-  row-gap: 0.25rem;
-  gap: 0.35rem;
-  cursor: default;
-}
-/* Reset stands apart from the preferences above — a rule over it — and wears the
-   danger colour instead of the neutral chrome the rest of the menu uses. */
-.reset-row {
-  margin-top: 0.15rem;
-  padding-top: 0.5rem;
-  border-top: 1px solid var(--panel-border);
-  align-items: center;
-}
-.reset-btn {
-  flex: 1;
-  background: none;
-  border: 1px solid var(--danger);
-  border-radius: var(--radius-sm);
-  padding: 0.3rem 0.5rem;
-  color: var(--danger);
-  font: inherit;
-  line-height: 1.15;
-  text-align: center;
-  cursor: pointer;
-}
-.reset-btn:hover,
-.reset-btn:focus-visible,
-.reset-btn.armed {
-  background: var(--danger);
-  color: #fff;
-}
-.reset-cancel {
-  background: none;
-  border: none;
-  padding: 0 0.25rem;
-  color: var(--muted);
-  font-size: 1rem;
-  line-height: 1;
-  opacity: 0.7;
-  cursor: pointer;
-}
-.reset-cancel:hover,
-.reset-cancel:focus-visible {
-  opacity: 1;
-}
+/* The header/picker/settings chrome is colocated in components/layout/: PageHeader (the
+   title row, header slot and tagline), LanguagePicker (the globe button menu) and
+   SettingsMenu (the gear popover, its setting and reset rows, and the gear nudge animation).
+   The one bit kept here is the button box below — shared by the globe (LanguagePicker) and
+   the gear (SettingsMenu), so a named shared primitive. */
 .lang-btn {
   background: none;
   border: 1px solid var(--panel-border);
@@ -649,97 +213,4 @@ header {
   line-height: 1;
   cursor: pointer;
 }
-/* Selecting a language that has a second way of being written puts a setting
-   under the gear that exists for no other language. Three blinks say so, since
-   nothing else on screen can. */
-@keyframes nudge {
-  0%, 100% { transform: none; }
-  50% { transform: scale(1.25); filter: brightness(1.4); }
-}
-.lang-btn.nudge {
-  animation: nudge 0.45s ease-in-out 3;
-}
-@media (prefers-reduced-motion: reduce) {
-  .lang-btn.nudge {
-    animation: none;
-  }
-}
-.lang-menu {
-  position: absolute;
-  top: calc(100% + 0.25rem);
-  right: 0;
-  z-index: 10;
-  margin: 0;
-  padding: 0.25rem;
-  min-width: 9rem;
-  list-style: none;
-  background: var(--chip-bg);
-  border: 1px solid var(--panel-border);
-  border-radius: var(--radius);
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
-}
-.lang-menu button {
-  display: flex;
-  align-items: baseline;
-  gap: 0.5rem;
-  width: 100%;
-  padding: 0.3rem 0.5rem;
-  background: none;
-  border: none;
-  border-radius: var(--radius-sm);
-  color: inherit;
-  text-align: left;
-  cursor: pointer;
-}
-.lang-menu button:hover {
-  background: rgba(128, 128, 128, 0.18);
-}
-.lang-menu button.selected {
-  font-weight: 600;
-}
-.lang-code {
-  min-width: 1.7rem;
-  color: var(--muted-2);
-  font-size: 0.8rem;
-}
-.lang-name {
-  flex: 1;
-}
-@media (max-width: 50rem) {
-  .lang-header-slot {
-    display: flex;
-  }
-}
-.chips {
-  display: flex;
-  flex-wrap: wrap;
-  align-content: flex-start; /* pack chip rows at the top, don't spread them */
-  align-items: flex-start; /* keep each chip its natural height, not stretched */
-  gap: 0.35rem;
-  padding: 0.6rem;
-  border: 1px solid var(--panel-border);
-  border-radius: var(--radius);
-  /* Grow to fill the output panel; min-height:0 lets the chips scroll inside the
-     flex column instead of stretching it. The counter below stays visible. */
-  flex: 1 1 auto;
-  min-height: 0;
-  overflow-y: auto;
-  /* The chips box is the one area whose wheel must NOT chain to the page scroll. */
-  overscroll-behavior: contain;
-  cursor: text;
-}
-.chip {
-  background: var(--chip-bg);
-  color: var(--chip-fg);
-  border-radius: var(--radius-sm);
-  padding: 0.1rem 0.45rem;
-  font-size: 0.9rem;
-}
-.counter {
-  color: var(--muted);
-  font-size: 0.85rem;
-  margin: 0.6rem 0 0;
-}
-.counter.warn {
-  font-weight: 600;
-}
+/* .chips/.chip (WordChips) and .counter (OutputCounter) are colocated in components/output/. */

@@ -2,6 +2,7 @@
   import { setIndeterminate } from "../../lib/dom";
   import { sharedEnglishTopics } from "../../lib/english";
   import { controlledTopics } from "../../lib/rulers";
+  import { cancelFit, scheduleFit } from "../../lib/rowfit";
   import type { CatNode } from "../../lib/tree";
   import { lang } from "../../state/lang.svelte";
   import { selection } from "../../state/selection.svelte";
@@ -18,6 +19,10 @@
   // Every topic below this node, precomputed with the tree — the checkbox and the
   // counter speak for the whole subtree, not just this level's own topics.
   const all = $derived(node.all);
+  // The count waits on the whole subtree: until every topic below has loaded, the
+  // total is an unfiltered `wordCount` sum that would tick down as files arrive, so
+  // the row shows "loading" and then the final number in one step (see subtreeReady).
+  const ready = $derived(topics.subtreeReady(all));
   const open = $derived(selection.catOpen(node));
   const name = $derived(topics.categoryName(node));
   const id = $derived("cat-" + (node.path.replace(/\//g, "-") || "root"));
@@ -54,9 +59,30 @@
           .map((t) => ({ tid: t.id, rules: sovRules(t.controls!["sovereignty"]) }))
       : [],
   );
+
+  // Overflow relief for a too-narrow row (rowfit.ts), the same as a topic row: re-fit on
+  // mount, on the count / name / language changing, and (ResizeObserver) on a column resize.
+  let rowEl = $state<HTMLDivElement>();
+  $effect(() => {
+    void selection.catSel(all);
+    void selection.catTotal(all);
+    void name.short;
+    void lang.uiLang;
+    if (rowEl) scheduleFit(rowEl, ".category-title");
+  });
+  $effect(() => {
+    if (!rowEl) return;
+    const el = rowEl;
+    const ro = new ResizeObserver(() => scheduleFit(el, ".category-title"));
+    ro.observe(el);
+    return () => {
+      ro.disconnect();
+      cancelFit(el);
+    };
+  });
 </script>
 
-<div class="category">
+<div class="category" bind:this={rowEl}>
   <button
     type="button"
     class="expander"
@@ -134,7 +160,9 @@
   <!-- The ratio alone, since it reads the same in every language; the sentence it
        stands for is a hover away. The row needs the width for its controls. -->
   <span class="meta" title={lang.ui.tree.wordsOf(selection.catSel(all), selection.catTotal(all))}>
-    {selection.catSel(all)}/<span class="total">{selection.catTotal(all)}</span>
+    {#if !ready}{lang.ui.tree.loadingShort}{:else}{selection.catSel(all)}/<span class="total"
+        >{selection.catTotal(all)}</span
+      >{/if}
   </span>
 </div>
 {#if open}
@@ -149,3 +177,45 @@
     {/each}
   </div>
 {/if}
+
+<style>
+  .category {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin: var(--gap-before-cat) 0 var(--gap-after-cat);
+    position: relative; /* anchor for the coverage popup, like .topic-row */
+  }
+  /* Every control keeps its size; the title is where a narrow row takes its slack. */
+  .category > :not(.category-title) {
+    flex-shrink: 0;
+  }
+  .category-title {
+    margin: 0;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--muted-2);
+  }
+  .category-title label {
+    cursor: pointer;
+  }
+  /* The category counter reads at the same size as the ones below it — this row is
+     quieter by colour, weight and letterspacing, and shrinking its digits too made it
+     look like a different kind of number. Its own line-height, though: at the shared
+     size the default 1.5 would make this the tallest box on the row and stretch it. */
+  .category .meta {
+    line-height: 1;
+  }
+  /* Nested tree level: indent a category's topics + subcategories, with a guide.
+     --tree-step (globals.css) is the total indent per level, split around the line. */
+  .cat-children {
+    margin-left: calc(var(--tree-step) / 2);
+    padding-left: calc(var(--tree-step) / 2);
+    border-left: 1px solid var(--border);
+  }
+</style>

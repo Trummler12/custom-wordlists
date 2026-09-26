@@ -15,13 +15,29 @@ import { lang } from "./lang.svelte";
  *  A tip has no single host element: its marker and its note are siblings under
  *  whatever row they belong to, so both are named. The note is there for the one
  *  focusable thing a note can hold, the link inviting a romaji correction. */
-type OverlayKind = "lang" | "settings" | "omitted" | "coverage" | "sovereignty" | "tip";
+type OverlayKind =
+  | "lang"
+  | "settings"
+  | "omitted"
+  | "coverage"
+  | "languageType"
+  | "sovereignty"
+  | "savedLists"
+  | "exportLists"
+  | "importLists"
+  | "customSettings"
+  | "tip";
 const HOSTS: Record<OverlayKind, string> = {
   lang: ".lang-picker",
   settings: ".settings-picker",
   omitted: ".omitted-host",
   coverage: ".coverage-host",
+  languageType: ".language-type-host",
   sovereignty: ".sovereignty-host",
+  savedLists: ".saved-lists-host",
+  exportLists: ".export-lists-host",
+  importLists: ".import-lists-host",
+  customSettings: ".custom-settings-host",
   tip: ".tip-trigger, .tip-note",
 };
 
@@ -41,7 +57,12 @@ class OverlayState {
     settings: null,
     omitted: null,
     coverage: null,
+    languageType: null,
     sovereignty: null,
+    savedLists: null,
+    exportLists: null,
+    importLists: null,
+    customSettings: null,
     tip: null,
   };
   #remember(kind: OverlayKind, trigger: Element | null | undefined): void {
@@ -70,6 +91,8 @@ class OverlayState {
   omittedAbove = $state(false);
   /** And for the coverage popup — its own button on the same row. */
   coverageAbove = $state(false);
+  /** And for the language-type panel — its own ☑️ button on the same row. */
+  languageTypeAbove = $state(false);
   /** And for the sovereignty matrix — its own button on the same row. */
   sovereigntyAbove = $state(false);
 
@@ -124,6 +147,21 @@ class OverlayState {
     this.#remember("coverage", trigger);
   };
 
+  // --- Language-type panel ---------------------------------------------------
+
+  /** Which list is showing its language-type inclusion checklist, keyed
+   *  `${topicId}:${groupId}` — the ☑️ button's popup, a sibling of the 🚫 panel. */
+  languageTypePanel = $state<string | null>(null);
+  toggleLanguageTypePanel = (id: string, trigger: Element): void => {
+    if (this.languageTypePanel === id) {
+      this.languageTypePanel = null;
+      return;
+    }
+    this.languageTypeAbove = opensUpward(trigger);
+    this.languageTypePanel = id;
+    this.#remember("languageType", trigger);
+  };
+
   // --- Sovereignty matrix ----------------------------------------------------
 
   /** Which list is showing its sovereignty & recognition matrix, keyed by the
@@ -139,18 +177,137 @@ class OverlayState {
     this.#remember("sovereignty", trigger);
   };
 
+  // --- Saved-lists panel -----------------------------------------------------
+
+  /** Whether the reader's saved-lists manager (the 💾 button on the Custom row) is
+   *  open — one panel, so a single slot under a fixed id. */
+  savedListsPanel = $state<string | null>(null);
+  savedListsAbove = $state(false);
+  toggleSavedListsPanel = (id: string, trigger: Element): void => {
+    if (this.savedListsPanel === id) {
+      this.savedListsPanel = null;
+      return;
+    }
+    this.savedListsAbove = opensUpward(trigger);
+    this.savedListsPanel = id;
+    this.#remember("savedLists", trigger);
+  };
+
+  // --- Export / import panels (§X4b) -----------------------------------------
+
+  exportPanel = $state<string | null>(null);
+  exportAbove = $state(false);
+  toggleExportPanel = (id: string, trigger: Element): void => {
+    if (this.exportPanel === id) {
+      this.exportPanel = null;
+      return;
+    }
+    this.exportAbove = opensUpward(trigger);
+    this.exportPanel = id;
+    this.#remember("exportLists", trigger);
+  };
+
+  importPanel = $state<string | null>(null);
+  importAbove = $state(false);
+  toggleImportPanel = (id: string, trigger: Element): void => {
+    if (this.importPanel === id) {
+      this.importPanel = null;
+      return;
+    }
+    this.importAbove = opensUpward(trigger);
+    this.importPanel = id;
+    this.#remember("importLists", trigger);
+  };
+
+  // --- Custom settings panel (⚙️) --------------------------------------------
+
+  /** The ⚙️ on the Custom row — its own slot, like the panels above, so a hover
+   *  tooltip (which shares the single `tip` slot) can't dismiss it. */
+  customSettingsPanel = $state<string | null>(null);
+  customSettingsAbove = $state(false);
+  toggleCustomSettingsPanel = (id: string, trigger: Element): void => {
+    if (this.customSettingsPanel === id) {
+      this.customSettingsPanel = null;
+      return;
+    }
+    this.customSettingsAbove = opensUpward(trigger);
+    this.customSettingsPanel = id;
+    this.#remember("customSettings", trigger);
+  };
+
   // --- Tooltips --------------------------------------------------------------
 
-  /** Show a note, flipping it above its row when there is more room upward. */
-  openTip = (id: string, trigger: Element, pinned = false): void => {
-    this.tipAbove = opensUpward(trigger);
+  /** A `local` note is anchored to a trigger sitting inside a scrolling popup (a 👎 in the
+   *  language-type panel), rather than spanning a row. It overlays the popup, fixed to the
+   *  trigger's own place so it flips and follows on a page scroll — but a scroll of the popup
+   *  itself closes it (its trigger slides out from under it). See onScroll / onLocalScroll. */
+  #tipLocal = false;
+  /** The fixed-position style for the open local note, computed from its trigger's rect —
+   *  read by TipNote. Empty for a row note, which the CSS positions on its own. */
+  tipStyle = $state("");
+
+  /** Pin a local note to its trigger: fixed to the viewport, above or below it by which
+   *  viewport half the trigger sits in.
+   *
+   *  Priority is width, then viewport, then the trigger. The note takes its content's
+   *  width (capped at the Topics-list column's width) and prefers to open leftward, its
+   *  right edge under the trigger's — but that anchor is only a soft orientation: a note
+   *  too wide for the room on its left slides right to stay in the viewport rather than
+   *  letting the trigger cap its width. The width isn't known until the content lays
+   *  out, so the leftward preference is set now and corrected on the next frame; the
+   *  common case (the note fits on the left) needs no correction. Re-placed on resize
+   *  (onResize), so it tracks the trigger through the centered layout's reflow. */
+  #placeLocalTip(trigger: Element): void {
+    const r = trigger.getBoundingClientRect();
+    const gutter = 8;
+    const vw = window.innerWidth;
+    const above = r.bottom > window.innerHeight / 2;
+    this.tipAbove = above;
+    const edge = above
+      ? `bottom:${Math.round(window.innerHeight - r.top + 4)}px`
+      : `top:${Math.round(r.bottom + 4)}px`;
+    const col = document.querySelector(".col-topics");
+    const maxWidth = Math.min(Math.round(col?.clientWidth ?? 320), vw - 2 * gutter);
+    // Positioned by `left`, never `right`: an out-of-flow element with `right` set and
+    // `left:auto` gets only the space from the viewport edge to that anchor as its
+    // shrink-to-fit width, which would cap the note at the room left of the trigger —
+    // the exact "hard-limited by the trigger" bug. `left` lets it size against the
+    // whole viewport, and the measured width then decides the leftward-opening offset.
+    const style = (left: number, hidden = false) =>
+      `position:fixed;left:${Math.round(left)}px;max-width:${maxWidth}px;${edge};${hidden ? "visibility:hidden;" : ""}`;
+    // First: let the note take its content width (up to maxWidth) against the full
+    // viewport, measured invisibly at the gutter so the interim spot never shows.
+    this.tipStyle = style(gutter, true);
+    requestAnimationFrame(() => {
+      if (!this.#tipLocal) return;
+      const note = document.querySelector(".tip-note.local");
+      if (!(note instanceof HTMLElement)) {
+        this.tipStyle = style(gutter); // reveal at the fallback rather than stay hidden
+        return;
+      }
+      const w = note.getBoundingClientRect().width;
+      // Open leftward — right edge under the trigger's — but keep the whole note in the
+      // viewport; a note too wide for the room on its left slides right (width wins).
+      const left = Math.max(gutter, Math.min(r.right - w, vw - gutter - w));
+      this.tipStyle = style(left);
+    });
+  }
+
+  /** Show a note, flipping it above its row when there is more room upward — or, for a
+   *  `local` note, fixing it to its trigger's own place (see #placeLocalTip). */
+  openTip = (id: string, trigger: Element, pinned = false, local = false): void => {
+    if (local) this.#placeLocalTip(trigger);
+    else this.tipAbove = opensUpward(trigger);
     this.tip = id;
     this.tipPinned = pinned;
+    this.#tipLocal = local;
     this.#remember("tip", trigger);
   };
   closeTip = (): void => {
     this.tip = null;
     this.tipPinned = false;
+    this.#tipLocal = false;
+    this.tipStyle = "";
   };
   /** Close unless the note is pinned — what leaving the marker and losing focus
    *  both want, neither of them being a dismissal once the reader has asked for
@@ -165,25 +322,25 @@ class OverlayState {
   #holding(id: string): boolean {
     return this.tipPinned && this.tip === id;
   }
-  tipEnter = (e: PointerEvent, id: string): void => {
+  tipEnter = (e: PointerEvent, id: string, local = false): void => {
     if (e.pointerType !== "mouse" || this.#holding(id)) return;
-    this.openTip(id, e.currentTarget as Element);
+    this.openTip(id, e.currentTarget as Element, false, local);
   };
   tipLeave = (e: PointerEvent): void => {
     if (e.pointerType === "mouse") this.releaseTip();
   };
-  tipFocus = (e: FocusEvent, id: string): void => {
+  tipFocus = (e: FocusEvent, id: string, local = false): void => {
     // Only where a focus ring shows, which is to say: only for the keyboard, the
     // one input that has neither hover nor a click to open this with. It also
     // keeps out the focus a browser restores to the page on its own — returning to
     // a tab is not a request to see anything.
     const el = e.currentTarget as Element;
     if (this.#holding(id) || !focusIsVisible(el)) return;
-    this.openTip(id, el);
+    this.openTip(id, el, false, local);
   };
-  tipClick = (e: MouseEvent, id: string): void => {
+  tipClick = (e: MouseEvent, id: string, local = false): void => {
     if (!this.#holding(id)) {
-      this.openTip(id, e.currentTarget as Element, true);
+      this.openTip(id, e.currentTarget as Element, true, local);
       return;
     }
     // A second click unpins — but under a cursor the note stays up, because the
@@ -212,7 +369,12 @@ class OverlayState {
     if (this.settingsMenu && !target?.closest?.(".settings-picker")) this.settingsMenu = null;
     if (this.omittedPanel && !target?.closest?.(".omitted-host")) this.omittedPanel = null;
     if (this.coveragePanel && !target?.closest?.(".coverage-host")) this.coveragePanel = null;
+    if (this.languageTypePanel && !target?.closest?.(".language-type-host")) this.languageTypePanel = null;
     if (this.sovereigntyPanel && !target?.closest?.(".sovereignty-host")) this.sovereigntyPanel = null;
+    if (this.savedListsPanel && !target?.closest?.(".saved-lists-host")) this.savedListsPanel = null;
+    if (this.exportPanel && !target?.closest?.(".export-lists-host")) this.exportPanel = null;
+    if (this.importPanel && !target?.closest?.(".import-lists-host")) this.importPanel = null;
+    if (this.customSettingsPanel && !target?.closest?.(".custom-settings-host")) this.customSettingsPanel = null;
     // Neither on the marker, whose own click toggles, nor inside the note: a note
     // exists to be read, and one carrying a link exists to be clicked — closing it
     // here would take the link out of the document before the click reached it.
@@ -224,7 +386,29 @@ class OverlayState {
    *  press elsewhere, Escape, or this. Which way it opened was read off its row's
    *  place in the viewport, and a scroll makes that answer stale as well. */
   onScroll = (): void => {
-    if (this.tipPinned) this.closeTip();
+    if (!this.tipPinned) return;
+    // A local note rides along with its popup on a PAGE scroll — it doesn't go stale, so it
+    // re-aims its above/below flip rather than closing. A row note closes, as it always has:
+    // its position was read off the row's place in the viewport, which the scroll makes stale.
+    if (this.#tipLocal) {
+      const t = this.#openers.tip;
+      if (t) this.#placeLocalTip(t);
+    } else this.closeTip();
+  };
+  /** A scroll of the popup a local note is anchored beside (the language-type panel), rather
+   *  than of the page: the note stays put while its trigger scrolls away under it, so the two
+   *  part ways and it closes — the local counterpart to the page scroll onScroll handles. */
+  onLocalScroll = (): void => {
+    if (this.#tipLocal) this.closeTip();
+  };
+  /** A window resize reflows the centered layout, sliding the trigger under an open
+   *  local note; re-place it so it stays anchored to the trigger instead of drifting
+   *  with the viewport edge (a fixed note pinned by `right` moves at the full resize
+   *  delta while the centered content moves at half). */
+  onResize = (): void => {
+    if (!this.#tipLocal) return;
+    const t = this.#openers.tip;
+    if (t) this.#placeLocalTip(t);
   };
   /** Escape closes the one overlay the focus is in — innermost first, and nothing
    *  else.
@@ -247,7 +431,12 @@ class OverlayState {
     else if (kind === "lang") this.langMenu = null;
     else if (kind === "settings") this.settingsMenu = null;
     else if (kind === "coverage") this.coveragePanel = null;
+    else if (kind === "languageType") this.languageTypePanel = null;
     else if (kind === "sovereignty") this.sovereigntyPanel = null;
+    else if (kind === "savedLists") this.savedListsPanel = null;
+    else if (kind === "exportLists") this.exportPanel = null;
+    else if (kind === "importLists") this.importPanel = null;
+    else if (kind === "customSettings") this.customSettingsPanel = null;
     else this.omittedPanel = null;
     const back = this.#openers[kind];
     if (back) void returnFocus(back);
@@ -271,7 +460,12 @@ class OverlayState {
     if (this.settingsMenu && inside(HOSTS.settings)) return "settings";
     if (this.omittedPanel && inside(HOSTS.omitted)) return "omitted";
     if (this.coveragePanel && inside(HOSTS.coverage)) return "coverage";
+    if (this.languageTypePanel && inside(HOSTS.languageType)) return "languageType";
     if (this.sovereigntyPanel && inside(HOSTS.sovereignty)) return "sovereignty";
+    if (this.savedListsPanel && inside(HOSTS.savedLists)) return "savedLists";
+    if (this.exportPanel && inside(HOSTS.exportLists)) return "exportLists";
+    if (this.importPanel && inside(HOSTS.importLists)) return "importLists";
+    if (this.customSettingsPanel && inside(HOSTS.customSettings)) return "customSettings";
     return null;
   }
 }
@@ -313,6 +507,27 @@ function focusIsVisible(el: Element): boolean {
  *  Shared by the tip-notes and the omissions panel so the two can't drift. */
 function opensUpward(trigger: Element): boolean {
   return trigger.getBoundingClientRect().bottom > window.innerHeight / 2;
+}
+
+/** The `left` offset (px, relative to a popover panel's positioned host) that keeps the
+ *  panel inside the viewport while preferring to right-align it under that host.
+ *
+ *  The viewport is the hard bound, never the host's column: a panel wider than the room
+ *  to its left slides right — jutting into the Output column — rather than off the left
+ *  edge, which is the "clamped to col-topics" bug this fixes. On a roomy desktop the
+ *  preferred right-alignment already sits within the viewport, so nothing moves. Call it
+ *  after the panel has laid out, since it measures the rendered width; re-call on resize
+ *  and on any width change (a ResizeObserver). */
+export function clampPanelLeft(panel: HTMLElement): number {
+  const gutter = 8;
+  const vw = window.innerWidth;
+  const host = (panel.offsetParent as HTMLElement | null) ?? panel.parentElement ?? panel;
+  const hostRect = host.getBoundingClientRect();
+  const w = panel.offsetWidth;
+  // Prefer the panel's right edge under the host's right edge; clamp both sides to the
+  // viewport, the left gutter winning — so it can jut right past the host, never off-screen.
+  const vpLeft = Math.max(gutter, Math.min(hostRect.right - w, vw - gutter - w));
+  return Math.round(vpLeft - hostRect.left);
 }
 
 export const overlays = new OverlayState();
