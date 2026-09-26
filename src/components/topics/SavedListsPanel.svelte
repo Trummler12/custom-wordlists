@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { SEPARATORS, separatorInItems, type Separator } from "../../lib/custom";
+  import { SEPARATORS, type Separator } from "../../lib/custom";
   import { custom, NAME_MAX, type SavedList } from "../../state/custom.svelte";
   import { lang } from "../../state/lang.svelte";
   import { clampPanelLeft, overlays } from "../../state/overlays.svelte";
@@ -36,11 +36,6 @@
 
   function sepLabel(s: Separator): string {
     return s === "\n" ? "\\n" : s === "\t" ? "\\t" : s;
-  }
-  function warnText(items: string[], sep: string): string | null {
-    return separatorInItems(items, sep)
-      ? `${lang.ui.custom.listWarnTitle}{br}- ${lang.ui.custom.listWarnSeparator}`
-      : null;
   }
   function focusOnMount(el: HTMLInputElement) {
     el.focus();
@@ -113,7 +108,6 @@
 </script>
 
 {#snippet tile(list: SavedList | null, i: number)}
-  {@const warn = list ? warnText(list.items, list.separator) : null}
   <li class="tile" class:placeholder={!list}>
     <div class="tile-main">
       <input
@@ -151,7 +145,6 @@
           onclick={() => list && startRename(list.id, list.name)}>✏️</button
         >
       {/if}
-      {#if list && warn}<TipMarker tipId={`list-warn-${list.id}`} icon="⚠️" text={warn} local />{/if}
       <span class="spacer"></span>
       <select
         class="tile-sep"
@@ -200,7 +193,6 @@
         >
       </span>
     </div>
-    {#if list && warn}<TipNote id={`list-warn-${list.id}`} text={warn} local />{/if}
   </li>
 {/snippet}
 

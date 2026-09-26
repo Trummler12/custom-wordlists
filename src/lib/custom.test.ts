@@ -10,7 +10,6 @@ import {
   parseItems,
   previewText,
   separatorCounts,
-  separatorInItems,
   SEPARATORS,
   serializeItems,
 } from "./custom";
@@ -21,9 +20,8 @@ describe("separatorCounts", () => {
     expect(c[","]).toBe(2);
     expect(c[";"]).toBe(1);
   });
-  it("ignores separators inside quotes", () => {
-    // The comma inside the quoted item is part of the item, not a boundary.
-    expect(separatorCounts('"a,b",c')[","]).toBe(1);
+  it("counts a separator inside quotes too — quotes are ordinary characters", () => {
+    expect(separatorCounts('"a,b",c')[","]).toBe(2);
   });
 });
 
@@ -59,11 +57,8 @@ describe("parseItems", () => {
   it("splits, trims and drops empties", () => {
     expect(parseItems("a, b ,, c ", ",")).toEqual(["a", "b", "c"]);
   });
-  it("keeps a separator inside quotes and strips the quotes", () => {
-    expect(parseItems('"a, b", c', ",")).toEqual(["a, b", "c"]);
-  });
-  it("handles an unterminated quote to the end", () => {
-    expect(parseItems('a, "b, c', ",")).toEqual(["a", "b, c"]);
+  it("splits on the separator even inside quotes, and keeps the quote marks", () => {
+    expect(parseItems('"a, b", c', ",")).toEqual(['"a', 'b"', "c"]);
   });
   it("splits newline lists", () => {
     expect(parseItems("Apple\nPear\n\nOrange", "\n")).toEqual(["Apple", "Pear", "Orange"]);
@@ -127,16 +122,9 @@ describe("serializeItems", () => {
     const items = ["Apple", "Pear", "Orange"];
     expect(parseItems(serializeItems(items, ","), ",")).toEqual(items);
   });
-  it("quotes an item that contains the separator", () => {
-    expect(serializeItems(["a, b", "c"], ",")).toBe('"a, b",c');
-    expect(parseItems(serializeItems(["a, b", "c"], ","), ",")).toEqual(["a, b", "c"]);
-  });
-});
-
-describe("separatorInItems", () => {
-  it("is true only when an item contains the separator", () => {
-    expect(separatorInItems(["a", "b"], ",")).toBe(false);
-    expect(separatorInItems(["a,b", "c"], ",")).toBe(true);
+  it("joins without quoting, so an item holding the separator splits on the way back", () => {
+    expect(serializeItems(["a, b", "c"], ",")).toBe("a, b,c");
+    expect(parseItems(serializeItems(["a, b", "c"], ","), ",")).toEqual(["a", "b", "c"]);
   });
 });
 

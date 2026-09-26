@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { availableSeparators, separatorInItems, type Separator } from "../../lib/custom";
+  import { availableSeparators, type Separator } from "../../lib/custom";
   import {
     custom,
     PREVIEW_CHARS_MAX,
@@ -40,12 +40,6 @@
   // Illustrates the active separator in the empty field: inline for a visible
   // character, a stacked block for newline / tab.
   const placeholder = $derived(EXAMPLES.join(custom.separator) + custom.separator + "…");
-  // The same separator-in-an-item advisory the saved lists carry, for the live input.
-  const inputWarn = $derived(
-    separatorInItems(custom.items, custom.separator)
-      ? `${lang.ui.custom.listWarnTitle}{br}- ${lang.ui.custom.listWarnSeparator}`
-      : null,
-  );
 
   let textarea = $state<HTMLTextAreaElement>();
   // How many rows the content (or, while empty, the placeholder) needs — measured by
@@ -281,9 +275,6 @@
     <span class="title">{lang.ui.custom.title}</span>
     <TipMarker tipId="custom-info" icon="ℹ️" text={lang.ui.custom.infoHint} />
     <CustomOmittedPanel />
-    {#if inputWarn}
-      <TipMarker tipId="custom-warn" icon="⚠️" text={inputWarn} />
-    {/if}
     <span class="sep">
       <label class="sep-label" for="custom-sep">{lang.ui.custom.separatorLabel}</label>
       <select
@@ -372,7 +363,6 @@
   </div>
   <!-- Outside the row, like a topic's marker note: it stretches the full width. -->
   <TipNote id="custom-info" text={lang.ui.custom.infoHint} />
-  {#if inputWarn}<TipNote id="custom-warn" text={inputWarn} />{/if}
   <div class="custom-body">
     <textarea
       bind:this={textarea}

@@ -22,18 +22,13 @@ export const DEFAULT_SEPARATOR: Separator = ",";
  *  excerpt, capped so a huge paste doesn't stash thousands. Mirrors lib/omitted. */
 const SAMPLE_CAP = 50;
 
-/** Occurrences of each separator in the raw text, counted OUTSIDE quoted spans —
- *  a comma inside `"a, b"` is part of an item, not a boundary, so it must not vote
- *  for the comma separator. */
+/** Occurrences of each separator in the raw text. Every occurrence counts: a quote
+ *  mark is an ordinary character here, since skribbl.io and its kind have no quoting
+ *  either — an item simply can't contain the separator. */
 export function separatorCounts(raw: string): Record<Separator, number> {
   const counts = Object.fromEntries(SEPARATORS.map((s) => [s, 0])) as Record<Separator, number>;
-  let inQuotes = false;
   for (const ch of raw) {
-    if (ch === '"') {
-      inQuotes = !inQuotes;
-      continue;
-    }
-    if (!inQuotes && (SEPARATORS as readonly string[]).includes(ch)) counts[ch as Separator]++;
+    if ((SEPARATORS as readonly string[]).includes(ch)) counts[ch as Separator]++;
   }
   return counts;
 }
@@ -57,33 +52,13 @@ export function availableSeparators(raw: string): Separator[] {
   return present.length ? present : [...SEPARATORS];
 }
 
-/** Split the raw text into trimmed, non-empty items on `sep`, honoring `"quotes"`:
- *  a `sep` inside a quoted span is kept as part of the item, and the quote marks
- *  themselves are stripped. An unterminated quote runs to the end of the input.
- *
- *  Deliberately small: a doubled `""` is two toggles (an empty quoted span), not an
- *  escaped quote — skribbl names don't carry quote characters, and the elaborate
- *  CSV rule would be machinery for a case that doesn't arise here. */
+/** Split the raw text into trimmed, non-empty items on `sep`. No quoting: the game the
+ *  list is for has none, so honouring `"a, b"` here would build an item it can't take. */
 export function parseItems(raw: string, sep: string): string[] {
-  const items: string[] = [];
-  let cur = "";
-  let inQuotes = false;
-  for (const ch of raw) {
-    if (ch === '"') {
-      inQuotes = !inQuotes;
-      continue;
-    }
-    if (ch === sep && !inQuotes) {
-      const t = cur.trim();
-      if (t) items.push(t);
-      cur = "";
-      continue;
-    }
-    cur += ch;
-  }
-  const last = cur.trim();
-  if (last) items.push(last);
-  return items;
+  return raw
+    .split(sep)
+    .map((s) => s.trim())
+    .filter(Boolean);
 }
 
 /** One reported omission group: how many items it caught and a sample of them. */
@@ -173,18 +148,11 @@ export function classifyCustom(
   return out;
 }
 
-/** Serialize items back into an input string on `sep` — the inverse of `parseItems`,
- *  for loading a saved list into the field (📥). An item that contains the separator
- *  is wrapped in quotes, exactly as the reader would have had to type it. */
+/** Serialize items back into an input string on `sep`, for loading a saved list into
+ *  the field (📥). The inverse of `parseItems` for any item free of `sep`; one that
+ *  contains it splits on the way back, as it would in the game. */
 export function serializeItems(items: readonly string[], sep: string): string {
-  return items.map((it) => (it.includes(sep) ? `"${it}"` : it)).join(sep);
-}
-
-/** Whether the chosen separator sits inside any item — the hint the saved-list ⚠️
- *  reports: the separator is probably the wrong one, and the reader can pick one no
- *  item contains. Advisory only; `serializeItems` still round-trips either way. */
-export function separatorInItems(items: readonly string[], sep: string): boolean {
-  return items.some((it) => it.includes(sep));
+  return items.join(sep);
 }
 
 // --- Import / export (§X4) ---------------------------------------------------

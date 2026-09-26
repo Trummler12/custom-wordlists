@@ -62,13 +62,12 @@ export const en: UIStrings = {
   custom: {
     title: "Custom",
     infoHint:
-      "Use the input field below to add any additional list(s) of words you like.{br}" +
+      "Use the input field below to add word lists of your own.{br}" +
       "The following rules apply:{br}" +
       "- All items are separated by one separator character, kept consistent across the whole input.{br}" +
-      "- An item that itself contains the separator character must be wrapped in \"quotation marks\".{br}" +
-      "- Punctuation and other special characters are generally not recommended for skribbl.io.{br}" +
-      "- Items are trimmed of any leading and trailing whitespace.{br}" +
-      "- On every change, the separator is auto-detected as the most common separator character.",
+      "- Avoid items that contain the separator character themselves.{br}" +
+      "- On every change to the content, the separator is auto-detected as the most common separator character.{br}" +
+      "- skribbl.io ignores punctuation, other special characters and leading or trailing spaces; some of these are already cleaned up right here.",
     separatorLabel: "Separator:",
     separatorPick: "Separator character",
     internalDupes: (n) => `${n} duplicate ${n === 1 ? "entry" : "entries"} within the list`,
