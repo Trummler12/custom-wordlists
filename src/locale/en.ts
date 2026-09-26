@@ -96,7 +96,11 @@ export const en: UIStrings = {
       "Each browser keeps its own local storage,{br}" +
       "separate from other browsers or devices.{br}" +
       "To take your custom lists elsewhere,{br}" +
-      "export them here and import them at the destination.",
+      "export them here and import them at the destination.{br}{br}" +
+      "{b}IMPORTANT{/b}: export your lists after every larger change " +
+      "and keep those exports as a backup; various browser actions " +
+      "can clear your local storage, and Safari even clears it automatically " +
+      "once a site has gone unvisited for 7 days.",
     listActivate: "Use this list",
     listRename: "Rename",
     listSave: "Save the current input into this list",
@@ -105,11 +109,11 @@ export const en: UIStrings = {
     listUp: "Move up",
     listDown: "Move down",
     listSaveNew: "Save the current input as a new list",
-    phActivate: "Can use Placeholder",
-    phRename: "Can't rename Placeholder",
-    phLoad: "Can't load Placeholder",
-    phDelete: "Can't delete Placeholder",
-    phMove: "Can't move Placeholder",
+    phActivate: "CAN'T use Placeholder",
+    phRename: "CAN'T rename Placeholder",
+    phLoad: "CAN'T load Placeholder",
+    phDelete: "CAN'T delete Placeholder",
+    phMove: "CAN'T move Placeholder",
     exportLabel: "Export lists",
     exportTitle: "Export saved lists",
     selectAll: "Select all",
@@ -164,7 +168,7 @@ export const en: UIStrings = {
     rows: ["Universally recognized", "Widely recognized", "Partially recognized", "Unrecognized"],
     colDefs: [
       "Runs its own borders, courts, army and taxes.",
-      "Has its own laws and parliament, but shares core powers — currency, defence, foreign policy — with another state.",
+      "Has its own laws and parliament, but shares core powers (currency, defence, foreign policy) with another state.",
     ],
     rowDefs: [
       "A UN member state, recognized by essentially every other.",
@@ -196,9 +200,9 @@ export const en: UIStrings = {
       romaji: "Use Romaji for list entries",
       es419: "Use Latin American Spanish for list entries",
     },
-    variantNote: { romaji: "Hepburn spellings with long vowels doubled (Moomoomiruku).{br}Wāpuro romaji is not offered: it would override official spellings — Butterfree, not Batafurii." },
+    variantNote: { romaji: "Hepburn spellings with long vowels doubled (Moomoomiruku).{br}Wāpuro romaji is NOT supported: it would conflict with official spellings (Butterfree, not Batafurii),{br}and solving that and the problems it leads to is out of scope for now." },
     generatedRomaji:
-      "These romaji were generated from the Japanese names. If one is spelled differently in practice, please [tell us](https://github.com/Trummler12/custom-wordlists/issues/new).",
+      "These romaji were generated from the Japanese names. If one is spelled differently in practice, feel free to [let us know](https://github.com/Trummler12/custom-wordlists/issues/new)!",
     variantDiffers: (n) => `${n} entr${n === 1 ? "y" : "ies"} spelled differently`,
     variantShowList: "Show which",
     useEnglish: (forced) =>
@@ -235,7 +239,7 @@ export const en: UIStrings = {
     copied: "Copied!",
     copyFailed: "Copy failed",
     copyManual: "The list is selected — copy it yourself.",
-    empty: "Select topics or groups to build a list.",
+    empty: "Select topics, categories or custom lists to generate an output.",
     generatedList: "Generated word list",
     words: "words",
     chars: "chars",
@@ -246,7 +250,7 @@ export const en: UIStrings = {
   },
   footer: {
     repository: "GitHub Repository",
-    helpOut: "Want to help with the project? Check out the",
+    helpOut: "Want to help with the project? Feel free to check out the",
     contributionGuide: "Contribution Guide",
     helpOutAfter: "!",
   },
@@ -259,9 +263,9 @@ export const en: UIStrings = {
     lead: "This topic's contents come from [Wikidata](https://www.wikidata.org/wiki/Wikidata:Main_Page). The table shows which languages already have a label for each item.",
     notesTitle: "How to help",
     noteAdd: "Open an item from the first column and, once logged in, add any missing label you're sure of.",
-    noteLabelLister: "To add a language that isn't listed at all, enable the labelLister gadget in your [Wikidata preferences](https://www.wikidata.org/wiki/Special:Preferences#mw-prefsection-gadgets), under Gadgets; each item then shows a “Labels list” (top right, under Tools) that accepts any language code.",
+    noteLabelLister: "To add a language that isn't listed at all, go to your [Wikidata preferences](https://www.wikidata.org/wiki/Special:Preferences#mw-prefsection-gadgets) and enable the {i}labelLister{/i} gadget in the \"Gadgets\" tab; each item then shows a “Labels list” (top right, under Tools) that accepts any language code.",
     noteProtected: "Some Wikidata items are protected and need an account at least four days old with 100 or more edits to change.",
-    noteStale: "Note that this table comes from a manual dump, so the coverage shown here can lag the current state on Wikidata by up to several weeks.",
+    noteStale: "Note that this table comes from a manual dump, so the coverage shown here can lag the current state on Wikidata by up to several weeks or even months.",
     itemCount: (n) => `${n.toLocaleString()} items`,
     uiOnly: "UI languages only",
     uiOnlyHint: "The raw data dumps already cover every language skribbl.io supports,{br}plus a few more with many users.{br}So the data already supports every planned language,{br}while the interface is kept up by us maintainers and naturally lags well behind.{br}And there is little point in trying to add a new interface language{br}while barely any topics cover that language yet.{br}But the more people help, the sooner new languages are greenlit!{br}=> Feel free to check out the Contribution Guide below!",

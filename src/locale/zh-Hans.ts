@@ -116,9 +116,9 @@ export const zhHans: UIStrings = {
       romaji: "列表条目使用罗马字",
       es419: "列表条目使用拉丁美洲西班牙语",
     },
-    variantNote: { romaji: "长音以重复元音表示的平文式罗马字（Moomoomiruku）。{br}不提供文字处理式罗马字，因为它会覆盖官方写法 — 是 Butterfree 而非 Batafurii。" },
+    variantNote: { romaji: "长音以重复元音表示的平文式罗马字（Moomoomiruku）。{br}不支持文字处理式罗马字：它会与官方写法冲突（是 Butterfree 而非 Batafurii），{br}而解决这一问题及其引发的后续问题目前超出了范围。" },
     generatedRomaji:
-      "这些罗马字由日语名称自动生成。若实际写法不同，请[告诉我们](https://github.com/Trummler12/custom-wordlists/issues/new)。",
+      "这些罗马字由日语名称自动生成。若实际写法不同，欢迎[告诉我们](https://github.com/Trummler12/custom-wordlists/issues/new)！",
     variantDiffers: (n) => `${n} 个条目的写法不同`,
     variantShowList: "查看是哪些条目",
     useEnglish: (forced) =>
@@ -147,7 +147,7 @@ export const zhHans: UIStrings = {
     copied: "已复制",
     copyFailed: "复制失败",
     copyManual: "已选中列表，请手动复制。",
-    empty: "选择主题或分组即可生成列表。",
+    empty: "选择主题、分类或自定义列表即可生成输出。",
     generatedList: "生成的单词列表",
     words: "单词",
     chars: "字符",
@@ -157,7 +157,7 @@ export const zhHans: UIStrings = {
   },
   footer: {
     repository: "GitHub 仓库",
-    helpOut: "想帮助这个项目吗？请看看",
+    helpOut: "想帮助这个项目吗？欢迎看看",
     // The guide itself is English only, so the link keeps its name.
     contributionGuide: "Contribution Guide",
     helpOutAfter: "。",
@@ -171,9 +171,9 @@ export const zhHans: UIStrings = {
     lead: "此主题的内容来自 [Wikidata](https://www.wikidata.org/wiki/Wikidata:Main_Page)。下表显示每个条目已拥有哪些语言的标签。",
     notesTitle: "如何帮忙",
     noteAdd: "从第一列打开一个条目，登录后补充你确定的缺失标签。",
-    noteLabelLister: "要添加完全未列出的语言，请在你的 [Wikidata 设置](https://www.wikidata.org/wiki/Special:Preferences#mw-prefsection-gadgets)中的“小工具”里启用 labelLister 小工具；之后每个条目会显示“Labels list”（右上角“工具”下），可接受任意语言代码。",
+    noteLabelLister: "要添加完全未列出的语言，请前往你的 [Wikidata 设置](https://www.wikidata.org/wiki/Special:Preferences#mw-prefsection-gadgets)，在“小工具”标签页中启用 {i}labelLister{/i} 小工具；之后每个条目会显示“Labels list”（右上角“工具”下），可接受任意语言代码。",
     noteProtected: "部分 Wikidata 条目受保护，需要注册满 4 天且编辑达 100 次以上的账户才能修改。",
-    noteStale: "此表基于手动转储，因此这里显示的覆盖率可能比 Wikidata 的最新状态落后最多数周。",
+    noteStale: "此表基于手动转储，因此这里显示的覆盖率可能比 Wikidata 的最新状态落后数周，甚至数月。",
     itemCount: (n) => `${n.toLocaleString()} 个条目`,
     uiOnly: "仅界面语言",
     uiOnlyHint: "原始数据转储已经涵盖 skribbl.io 支持的所有语言，{br}外加几种用户众多的语言。{br}也就是说，数据其实已支持所有计划中的语言，{br}而界面由我们维护者打理，自然明显滞后。{br}而且在几乎没有主题覆盖某种语言时，{br}想新增该界面语言意义不大。{br}不过帮忙的人越多，新语言就能越早获批！{br}=> 欢迎看看下方的 Contribution Guide！",

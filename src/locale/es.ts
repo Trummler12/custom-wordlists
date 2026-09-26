@@ -85,7 +85,7 @@ export const es: UIStrings = {
     rows: ["Reconocimiento universal", "Reconocimiento amplio", "Reconocimiento parcial", "Sin reconocimiento"],
     colDefs: [
       "Controla sus fronteras, justicia, ejército e impuestos.",
-      "Tiene leyes y parlamento propios, pero comparte competencias clave — moneda, defensa, política exterior — con otro Estado.",
+      "Tiene leyes y parlamento propios, pero comparte competencias clave (moneda, defensa, política exterior) con otro Estado.",
     ],
     rowDefs: [
       "Estado miembro de la ONU, reconocido por casi todos los demás.",
@@ -118,9 +118,9 @@ export const es: UIStrings = {
       romaji: "Usar romaji en las entradas de las listas",
       es419: "Usar el español latinoamericano en las entradas de las listas",
     },
-    variantNote: { romaji: "Grafía Hepburn con vocales largas dobladas (Moomoomiruku).{br}No se ofrece romaji wāpuro: sustituiría las grafías oficiales — Butterfree, no Batafurii." },
+    variantNote: { romaji: "Grafía Hepburn con vocales largas dobladas (Moomoomiruku).{br}El romaji wāpuro NO es compatible: entraría en conflicto con las grafías oficiales (Butterfree, no Batafurii),{br}y resolver eso y los problemas que conlleva queda fuera del alcance por ahora." },
     generatedRomaji:
-      "Estos romaji se generaron a partir de los nombres japoneses. Si alguno se escribe de otra forma, [avísanos](https://github.com/Trummler12/custom-wordlists/issues/new).",
+      "Estos romaji se generaron a partir de los nombres japoneses. Si alguno se escribe de otra forma, ¡no dudes en [avisarnos](https://github.com/Trummler12/custom-wordlists/issues/new)!",
     variantDiffers: (n) => `${n} entrada${n === 1 ? "" : "s"} se escribe${n === 1 ? "" : "n"} de otra forma`,
     variantShowList: "Ver cuáles",
     useEnglish: (forced) =>
@@ -153,7 +153,7 @@ export const es: UIStrings = {
     copied: "¡Copiado!",
     copyFailed: "No se pudo copiar",
     copyManual: "La lista está seleccionada: cópiala tú mismo.",
-    empty: "Selecciona temas o grupos para crear una lista.",
+    empty: "Selecciona temas, categorías o listas propias para generar una salida.",
     generatedList: "Lista de palabras generada",
     words: "palabras",
     chars: "caracteres",
@@ -164,7 +164,7 @@ export const es: UIStrings = {
   },
   footer: {
     repository: "Repositorio de GitHub",
-    helpOut: "¿Quieres ayudar con el proyecto? Echa un vistazo a la",
+    helpOut: "¿Quieres ayudar con el proyecto? No dudes en echar un vistazo a la",
     // La guía solo existe en inglés, así que el enlace conserva su nombre.
     contributionGuide: "Contribution Guide",
     helpOutAfter: ".",
@@ -178,9 +178,9 @@ export const es: UIStrings = {
     lead: "El contenido de este tema proviene de [Wikidata](https://www.wikidata.org/wiki/Wikidata:Main_Page). La tabla muestra para qué idiomas ya existe una etiqueta en cada elemento.",
     notesTitle: "Cómo ayudar",
     noteAdd: "Abre un elemento desde la primera columna y, una vez que hayas iniciado sesión, añade cualquier etiqueta que falte y de la que estés seguro.",
-    noteLabelLister: "Para añadir un idioma que no aparece en absoluto, activa el accesorio labelLister en tus [preferencias de Wikidata](https://www.wikidata.org/wiki/Special:Preferences#mw-prefsection-gadgets), en Accesorios; cada elemento mostrará entonces una «Labels list» (arriba a la derecha, en Herramientas) que acepta cualquier código de idioma.",
+    noteLabelLister: "Para añadir un idioma que no aparece en absoluto, ve a tus [preferencias de Wikidata](https://www.wikidata.org/wiki/Special:Preferences#mw-prefsection-gadgets) y activa el accesorio {i}labelLister{/i} en la pestaña «Accesorios»; cada elemento mostrará entonces una «Labels list» (arriba a la derecha, en Herramientas) que acepta cualquier código de idioma.",
     noteProtected: "Algunos elementos de Wikidata están protegidos y solo pueden modificarse con una cuenta de al menos cuatro días de antigüedad y con 100 o más ediciones.",
-    noteStale: "Ten en cuenta que esta tabla procede de un volcado manual, por lo que la cobertura que se muestra aquí puede ir por detrás del estado actual en Wikidata hasta varias semanas.",
+    noteStale: "Ten en cuenta que esta tabla procede de un volcado manual, por lo que la cobertura que se muestra aquí puede ir por detrás del estado actual en Wikidata hasta varias semanas o incluso meses.",
     itemCount: (n) => `${n.toLocaleString()} elementos`,
     uiOnly: "Solo idiomas de la interfaz",
     uiOnlyHint: "Los volcados de datos brutos ya cubren todos los idiomas que admite skribbl.io,{br}además de algunos más con muchos usuarios.{br}Así que los datos ya admiten todos los idiomas previstos,{br}mientras que la interfaz la mantenemos los maintainers y, naturalmente, va muy por detrás.{br}Y tiene poco sentido querer añadir un nuevo idioma de interfaz{br}mientras apenas hay temas que cubran ese idioma.{br}Pero cuanta más gente ayude, antes se aprobarán nuevos idiomas.{br}=> Échale un vistazo a la Contribution Guide más abajo, ¡sin problema!",
