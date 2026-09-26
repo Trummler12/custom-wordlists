@@ -100,6 +100,16 @@ export const pt: UIStrings = {
   language: {
     label: (current) => `Idioma: ${current}`,
     menu: "Idioma",
+    // LB1 stopgaps: English until the translation pass.
+    panelTitle: en.language.panelTitle,
+    slot: en.language.slot,
+    slotHint: en.language.slotHint,
+    followPrimary: en.language.followPrimary,
+    showSecondaryBefore: en.language.showSecondaryBefore, showSecondaryAfter: en.language.showSecondaryAfter,
+    showSecondaryHint: en.language.showSecondaryHint,
+    secondaryMoot: en.language.secondaryMoot,
+    useSecondary: en.language.useSecondary,
+    useSecondaryAll: en.language.useSecondaryAll,
     unsupported: (language) => `Ainda não confirmado para ${language} — este tópico pode estar incompleto.`,
     fallback: "O inglês é usado onde falta uma tradução.",
     usesEnglish: (primary, secondary) =>
@@ -126,6 +136,11 @@ export const pt: UIStrings = {
     showEnglishEn: "Estas opções aparecem apenas para idiomas diferentes do inglês.",
     interfaceLang: "Idioma da interface:",
     interfaceAuto: "Automático",
+    // LB1 stopgaps: English until the translation pass.
+    outputSeparator: en.settings.outputSeparator,
+    outputSeparatorHint: en.settings.outputSeparatorHint,
+    minChars: en.settings.minChars,
+    maxChars: en.settings.maxChars,
     reset: "Redefinir configurações{br}para o padrão",
     resetConfirm: "Clique novamente para confirmar",
     resetCancel: "Cancelar",
@@ -174,6 +189,10 @@ export const pt: UIStrings = {
     next: "Próxima página",
     last: "Última página",
     page: (current, total) => `Página ${current} / ${total}`,
+    // LB1 stopgaps: English until the translation pass.
+    pageJumpHint: en.coveragePage.pageJumpHint,
+    pageJumpInput: en.coveragePage.pageJumpInput,
+    pageNoNumeric: en.coveragePage.pageNoNumeric,
     loading: (topic) => `Carregando ${topic}…`,
     loadError: (topic, message) => `Não foi possível carregar a cobertura de ${topic}: ${message}`,
   },

@@ -98,6 +98,16 @@ export const zhHans: UIStrings = {
   language: {
     label: (current) => `语言：${current}`,
     menu: "语言",
+    // LB1 stopgaps: English until the translation pass.
+    panelTitle: en.language.panelTitle,
+    slot: en.language.slot,
+    slotHint: en.language.slotHint,
+    followPrimary: en.language.followPrimary,
+    showSecondaryBefore: en.language.showSecondaryBefore, showSecondaryAfter: en.language.showSecondaryAfter,
+    showSecondaryHint: en.language.showSecondaryHint,
+    secondaryMoot: en.language.secondaryMoot,
+    useSecondary: en.language.useSecondary,
+    useSecondaryAll: en.language.useSecondaryAll,
     unsupported: (language) => `${language}尚未确认，此主题可能不完整。`,
     fallback: "没有翻译时会使用英语。",
     usesEnglish: (primary, secondary) =>
@@ -122,6 +132,11 @@ export const zhHans: UIStrings = {
     showEnglishEn: "此开关仅在非英语语言下出现。",
     interfaceLang: "界面语言：",
     interfaceAuto: "自动",
+    // LB1 stopgaps: English until the translation pass.
+    outputSeparator: en.settings.outputSeparator,
+    outputSeparatorHint: en.settings.outputSeparatorHint,
+    minChars: en.settings.minChars,
+    maxChars: en.settings.maxChars,
     reset: "重置{br}设置",
     resetConfirm: "再次点击以确认",
     resetCancel: "取消",
@@ -169,6 +184,10 @@ export const zhHans: UIStrings = {
     next: "下一页",
     last: "最后一页",
     page: (current, total) => `第 ${current} 页 / 共 ${total} 页`,
+    // LB1 stopgaps: English until the translation pass.
+    pageJumpHint: en.coveragePage.pageJumpHint,
+    pageJumpInput: en.coveragePage.pageJumpInput,
+    pageNoNumeric: en.coveragePage.pageNoNumeric,
     loading: (topic) => `正在加载${topic}…`,
     loadError: (topic, message) => `无法加载${topic}的覆盖数据：${message}`,
   },

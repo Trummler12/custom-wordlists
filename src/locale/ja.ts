@@ -98,6 +98,16 @@ export const ja: UIStrings = {
   language: {
     label: (current) => `言語: ${current}`,
     menu: "言語",
+    // LB1 stopgaps: English until the translation pass.
+    panelTitle: en.language.panelTitle,
+    slot: en.language.slot,
+    slotHint: en.language.slotHint,
+    followPrimary: en.language.followPrimary,
+    showSecondaryBefore: en.language.showSecondaryBefore, showSecondaryAfter: en.language.showSecondaryAfter,
+    showSecondaryHint: en.language.showSecondaryHint,
+    secondaryMoot: en.language.secondaryMoot,
+    useSecondary: en.language.useSecondary,
+    useSecondaryAll: en.language.useSecondaryAll,
     unsupported: (language) => `${language}はまだ未確認です。このトピックは不完全かもしれません。`,
     fallback: "翻訳がない場合は英語が使われます。",
     usesEnglish: (primary, secondary) =>
@@ -122,6 +132,11 @@ export const ja: UIStrings = {
     showEnglishEn: "このスイッチは英語以外の言語でのみ表示されます。",
     interfaceLang: "表示言語:",
     interfaceAuto: "自動",
+    // LB1 stopgaps: English until the translation pass.
+    outputSeparator: en.settings.outputSeparator,
+    outputSeparatorHint: en.settings.outputSeparatorHint,
+    minChars: en.settings.minChars,
+    maxChars: en.settings.maxChars,
     reset: "設定を{br}リセット",
     resetConfirm: "もう一度クリックで確定",
     resetCancel: "キャンセル",
@@ -169,6 +184,10 @@ export const ja: UIStrings = {
     next: "次のページ",
     last: "最後のページ",
     page: (current, total) => `${total} ページ中 ${current} ページ`,
+    // LB1 stopgaps: English until the translation pass.
+    pageJumpHint: en.coveragePage.pageJumpHint,
+    pageJumpInput: en.coveragePage.pageJumpInput,
+    pageNoNumeric: en.coveragePage.pageNoNumeric,
     loading: (topic) => `${topic}を読み込み中…`,
     loadError: (topic, message) => `${topic}のカバレッジを読み込めませんでした：${message}`,
   },

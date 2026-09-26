@@ -98,6 +98,16 @@ export const zhHant: UIStrings = {
   language: {
     label: (current) => `語言：${current}`,
     menu: "語言",
+    // LB1 stopgaps: English until the translation pass.
+    panelTitle: en.language.panelTitle,
+    slot: en.language.slot,
+    slotHint: en.language.slotHint,
+    followPrimary: en.language.followPrimary,
+    showSecondaryBefore: en.language.showSecondaryBefore, showSecondaryAfter: en.language.showSecondaryAfter,
+    showSecondaryHint: en.language.showSecondaryHint,
+    secondaryMoot: en.language.secondaryMoot,
+    useSecondary: en.language.useSecondary,
+    useSecondaryAll: en.language.useSecondaryAll,
     unsupported: (language) => `${language}尚未確認，此主題可能不完整。`,
     fallback: "沒有翻譯時會使用英文。",
     usesEnglish: (primary, secondary) =>
@@ -122,6 +132,11 @@ export const zhHant: UIStrings = {
     showEnglishEn: "此開關僅在非英文語言下出現。",
     interfaceLang: "介面語言：",
     interfaceAuto: "自動",
+    // LB1 stopgaps: English until the translation pass.
+    outputSeparator: en.settings.outputSeparator,
+    outputSeparatorHint: en.settings.outputSeparatorHint,
+    minChars: en.settings.minChars,
+    maxChars: en.settings.maxChars,
     reset: "重設{br}設定",
     resetConfirm: "再次點擊以確認",
     resetCancel: "取消",
@@ -169,6 +184,10 @@ export const zhHant: UIStrings = {
     next: "下一頁",
     last: "最後一頁",
     page: (current, total) => `第 ${current} 頁 / 共 ${total} 頁`,
+    // LB1 stopgaps: English until the translation pass.
+    pageJumpHint: en.coveragePage.pageJumpHint,
+    pageJumpInput: en.coveragePage.pageJumpInput,
+    pageNoNumeric: en.coveragePage.pageNoNumeric,
     loading: (topic) => `正在載入${topic}…`,
     loadError: (topic, message) => `無法載入${topic}的覆蓋資料：${message}`,
   },

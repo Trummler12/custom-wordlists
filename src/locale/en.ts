@@ -75,9 +75,17 @@ export const en: UIStrings = {
     localDupes: (n) => `${n} duplicate${n === 1 ? "" : "s"} across your custom lists`,
     globalDupes: (n) => `${n} duplicate${n === 1 ? "" : "s"} with the selected topics`,
     dupesHint: "Reported, not filtered — drop them from your input if you like.",
+    dupesNote: "Duplicates are reduced to a single copy in the output.",
+    dupesNoteSave: "Duplicates within a list are also removed when it is saved.",
+    dupesSamples: {
+      internal: "Internal duplicates:",
+      local: "Duplicates across your lists:",
+      global: "Duplicates with the selected topics:",
+    },
     fitToggle: "Fit the input to its full height",
     fewerRows: "Show fewer rows",
     moreRows: "Show more rows",
+    moreRowsOver: (steps) => `(${steps} step${steps === 1 ? "" : "s"} above the content height)`,
     clearHint: "Clear the custom input field",
     clearConfirm: "You're about to empty the Custom input field.",
     clearConfirmButton: "Click here to confirm",
@@ -169,6 +177,18 @@ export const en: UIStrings = {
   language: {
     label: (current) => `Language: ${current}`,
     menu: "Language",
+    panelTitle: "Language settings",
+    slot: { primary: "Primary:", interface: "Interface:", fallback: "Fallback:" },
+    slotHint: {
+      primary: "Primary language for list items, and the default for most other language settings.",
+      interface: "Language used for the interface.",
+      fallback: "Used wherever the interface language is missing a label.",
+    },
+    followPrimary: "Same as primary",
+    showSecondaryBefore: "Show the option to use", showSecondaryAfter: "entries",
+    showSecondaryHint:
+      "Lets you use, for example, country names in your native language while using your preferred dub language for the names of series characters.",
+    secondaryMoot: "These toggles only appear while the primary and the secondary language differ.",
     unsupported: (language) => `Not confirmed for ${language} yet — this topic may be incomplete.`,
     fallback: "English is used where a translation is missing.",
     usesEnglish: (primary, secondary) => `${primary}${secondary} officially uses the English names too.`,
@@ -187,6 +207,12 @@ export const en: UIStrings = {
       allForced
         ? "Use these lists in the selected language"
         : "Use the English entries of these lists",
+    useSecondary: (forced, secondary) =>
+      forced ? "Use this list in the selected language" : `Use the entries of this list in ${secondary}`,
+    useSecondaryAll: (allForced, secondary) =>
+      allForced
+        ? "Use these lists in the selected language"
+        : `Use the entries of these lists in ${secondary}`,
   },
   settings: {
     label: "Settings",
@@ -194,6 +220,11 @@ export const en: UIStrings = {
     showEnglishEn: "These toggles only appear for languages other than English.",
     interfaceLang: "Interface language:",
     interfaceAuto: "Automatic",
+    outputSeparator: "Output separator:",
+    outputSeparatorHint:
+      "skribbl.io only accepts \",\" as the separator. The others only change what gets copied; the Output looks the same either way.",
+    minChars: "Min characters:",
+    maxChars: "Max characters:",
     reset: "Reset selection settings{br}to default",
     resetConfirm: "Click again to confirm",
     resetCancel: "Cancel",
@@ -241,6 +272,12 @@ export const en: UIStrings = {
     next: "Next page",
     last: "Last page",
     page: (current, total) => `Page ${current} / ${total}`,
+    pageJumpHint: (numeric) =>
+      numeric
+        ? `Click: jump to a page, an entry name or a value in "${numeric}"`
+        : "Click: jump to a page or an entry name",
+    pageJumpInput: "Page, value or entry name",
+    pageNoNumeric: "This table has no numeric column.",
     loading: (topic) => `Loading ${topic}…`,
     loadError: (topic, message) => `Could not load coverage for ${topic}: ${message}`,
   },
