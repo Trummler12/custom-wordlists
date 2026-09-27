@@ -245,12 +245,15 @@ class CustomState {
 
   /** The sources the channel classifies, in order: the active saved lists (in list
    *  order), then the input field unless it has been superseded. */
-  readonly effectiveSources: string[][] = $derived.by(() => {
-    const out: string[][] = [];
-    for (const l of this.savedLists) if (this.isActive(l.id)) out.push(l.items);
-    if (!this.inputSuperseded) out.push(this.items);
+  readonly effectiveNamed: { list: SavedList | null; items: string[] }[] = $derived.by(() => {
+    const out: { list: SavedList | null; items: string[] }[] = [];
+    for (const l of this.savedLists) if (this.isActive(l.id)) out.push({ list: l, items: l.items });
+    if (!this.inputSuperseded) out.push({ list: null, items: this.items });
     return out;
   });
+  /** The same sources as bare item lists — what the classifier takes. `list` null above
+   *  is the input field; the panels that name a source read `effectiveNamed`. */
+  readonly effectiveSources: string[][] = $derived(this.effectiveNamed.map((s) => s.items));
 
   /** What the Custom channel contributes and drops, against the words the rest of
    *  the output already holds (`seen`). Called by `output`, which owns that set. */

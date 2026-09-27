@@ -449,6 +449,16 @@ export interface CustomStrings {
   /** The ⚠️ shown on a list (or the input) whose separator sits inside an item. */
   listWarnTitle: string; // REMOVE(LB2): quoted separators are dropped, and the ⚠️ with them
   listWarnSeparator: string; // REMOVE(LB2): see listWarnTitle
+  /** The ⚠️ / ℹ️ panel of characters beyond letters, digits and spaces (§F2): the marker's
+   *  label, the two section headings (each with its own colon), and one character's ℹ️ note
+   *  — the removal advice (only for a character that isn't tolerated), the "lists
+   *  affected" lead-in, and the name the input field goes by among those lists. */
+  charsLabel: string;
+  charsIgnored: string;
+  charsTolerated: string;
+  charsRemove: string;
+  charsLists: string;
+  inputName: string;
   /** The ⚙️ Custom settings: the control's label, the panel title, and the two preview-cap
    *  fields — how many items a content preview lists, and how many characters it may run. */
   settingsLabel: string;

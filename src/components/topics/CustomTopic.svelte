@@ -15,6 +15,7 @@
   import TipNote from "../common/TipNote.svelte";
   import TipText from "../common/TipText.svelte";
   import { topics } from "../../state/topics.svelte";
+  import CustomCharsPanel from "./CustomCharsPanel.svelte";
   import CustomOmittedPanel from "./CustomOmittedPanel.svelte";
   import ExportPanel from "./ExportPanel.svelte";
   import ImportPanel from "./ImportPanel.svelte";
@@ -275,6 +276,7 @@
     <span class="title">{lang.ui.custom.title}</span>
     <TipMarker tipId="custom-info" icon="ℹ️" text={lang.ui.custom.infoHint} />
     <CustomOmittedPanel />
+    <CustomCharsPanel />
     <span class="sep">
       <label class="sep-label" for="custom-sep">{lang.ui.custom.separatorLabel}</label>
       <select

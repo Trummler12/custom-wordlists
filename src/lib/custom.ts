@@ -148,6 +148,56 @@ export function classifyCustom(
   return out;
 }
 
+/** Characters that are no letter, mark, digit or space but belong in real names often
+ *  enough that reporting them as a problem would be noise — measured on the curated
+ *  topics (hyphen ~2200×, apostrophes ~600×, dot ~260×, the CJK middle dots ~190×). The
+ *  one list to extend when a character turns out to be just as ordinary. */
+export const TOLERATED_CHARS: ReadonlySet<string> = new Set(["-", "'", "’", ".", "・", "·"]);
+
+/** Letters, combining marks and digits of any script, plus the plain space. The marks
+ *  matter: Devanagari, Thai or Hebrew vowel signs are code points of their own. */
+const WORD_CHAR = /[\p{L}\p{M}\p{N} ]/u;
+/** Whitespace other than the plain space, and control / format characters: invisible in
+ *  the field, so they are shown by code point instead. */
+const INVISIBLE = /[\p{Z}\p{C}]/u;
+
+/** One character the game will probably drop from the reader's items: how it reads in
+ *  the panel, how often it occurs, how often per source (index-aligned with the sources
+ *  passed in), and whether it is one of the ordinary ones in `TOLERATED_CHARS`. */
+export interface OddChar {
+  char: string;
+  label: string;
+  count: number;
+  perSource: number[];
+  tolerated: boolean;
+}
+
+/** The characters beyond letters, marks, digits and the space across `sources`, for the
+ *  Custom row's ⚠️ panel. Ordered: the ones worth removing first, then by count, so the
+ *  top of the panel is what most needs looking at. */
+export function oddChars(sources: readonly (readonly string[])[]): OddChar[] {
+  const found = new Map<string, OddChar>();
+  sources.forEach((items, si) => {
+    for (const item of items)
+      for (const char of item) {
+        if (WORD_CHAR.test(char)) continue;
+        let c = found.get(char);
+        if (!c) {
+          const label = INVISIBLE.test(char)
+            ? `U+${char.codePointAt(0)!.toString(16).toUpperCase().padStart(4, "0")}`
+            : char;
+          c = { char, label, count: 0, perSource: sources.map(() => 0), tolerated: TOLERATED_CHARS.has(char) };
+          found.set(char, c);
+        }
+        c.count++;
+        c.perSource[si]++;
+      }
+  });
+  return [...found.values()].sort(
+    (a, b) => Number(a.tolerated) - Number(b.tolerated) || b.count - a.count || a.char.localeCompare(b.char),
+  );
+}
+
 /** Serialize items back into an input string on `sep`, for loading a saved list into
  *  the field (📥). The inverse of `parseItems` for any item free of `sep`; one that
  *  contains it splits on the way back, as it would in the game. */

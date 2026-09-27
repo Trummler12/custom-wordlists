@@ -5,6 +5,7 @@ import {
   DEFAULT_SEPARATOR,
   detectSeparator,
   exportLists,
+  oddChars,
   overlapStats,
   parseImport,
   parseItems,
@@ -114,6 +115,30 @@ describe("classifyCustom", () => {
     const r = classifyCustom([[long]], { cap: 32, keepTooLong: false, seen: new Set([long]) });
     expect(r.tooLong.count).toBe(1);
     expect(r.global.count).toBe(0);
+  });
+});
+
+describe("oddChars", () => {
+  it("finds nothing in letters, digits and spaces of any script", () => {
+    expect(oddChars([["Apple Pie", "Ägypten 2", "東京", "Москва", "हिन्दी", "서울"]])).toEqual([]);
+  });
+  it("counts each character, overall and per source", () => {
+    const [q] = oddChars([['"a"', "b"], ['c"']]);
+    expect(q).toMatchObject({ char: '"', label: '"', count: 3, perSource: [2, 1], tolerated: false });
+  });
+  it("marks the ordinary name punctuation as tolerated", () => {
+    const r = oddChars([["Mint-Berry", "O'Connell", "Mr. X", "ガーディアン・デ"]]);
+    expect(r.map((c) => c.char).sort()).toEqual(["'", "-", ".", "・"].sort());
+    expect(r.every((c) => c.tolerated)).toBe(true);
+  });
+  it("puts the characters worth removing first, then orders by count", () => {
+    const r = oddChars([["a-b-c-d", "e(f)", "g!", "h!"]]);
+    expect(r.map((c) => c.char)).toEqual(["!", "(", ")", "-"]);
+  });
+  it("labels invisible characters by code point", () => {
+    const [nbsp] = oddChars([["a b"]]);
+    expect(nbsp.label).toBe("U+00A0");
+    expect(oddChars([["a​b"]])[0].label).toBe("U+200B");
   });
 });
 
