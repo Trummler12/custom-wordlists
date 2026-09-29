@@ -459,6 +459,12 @@ export interface CustomStrings {
   charsRemove: string;
   charsLists: string;
   inputName: string;
+  /** The third section's heading, the softer advice for a tolerated character, and a
+   *  bracket's lead line: lone (`char` without its `partner`) or part of a pair. */
+  charsAccepted: string;
+  charsRemoveMaybe: string;
+  charsLone: (char: string, partner: string) => string;
+  charsPaired: (open: string, close: string) => string;
   /** The ⚙️ Custom settings: the control's label, the panel title, and the two preview-cap
    *  fields — how many items a content preview lists, and how many characters it may run. */
   settingsLabel: string;

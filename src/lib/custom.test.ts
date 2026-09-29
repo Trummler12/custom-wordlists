@@ -10,6 +10,7 @@ import {
   parseImport,
   parseItems,
   previewText,
+  scanItem,
   separatorCounts,
   SEPARATORS,
   serializeItems,
@@ -124,21 +125,41 @@ describe("oddChars", () => {
   });
   it("counts each character, overall and per source", () => {
     const [q] = oddChars([['"a"', "b"], ['c"']]);
-    expect(q).toMatchObject({ char: '"', label: '"', count: 3, perSource: [2, 1], tolerated: false });
+    expect(q).toMatchObject({ char: '"', label: '"', count: 3, perSource: [2, 1], cls: "tolerated" });
   });
-  it("marks the ordinary name punctuation as tolerated", () => {
-    const r = oddChars([["Mint-Berry", "O'Connell", "Mr. X", "ガーディアン・デ"]]);
-    expect(r.map((c) => c.char).sort()).toEqual(["'", "-", ".", "・"].sort());
-    expect(r.every((c) => c.tolerated)).toBe(true);
+  it("accepts the ordinary name punctuation", () => {
+    const r = oddChars([["Mint-Berry", "O'Connell", "Mr. X", "ガーディアン・デ", "Nunu & Willump"]]);
+    expect(r.map((c) => c.char).sort()).toEqual(["&", "'", "-", ".", "・"].sort());
+    expect(r.every((c) => c.cls === "accepted")).toBe(true);
   });
-  it("puts the characters worth removing first, then orders by count", () => {
-    const r = oddChars([["a-b-c-d", "e(f)", "g!", "h!"]]);
-    expect(r.map((c) => c.char)).toEqual(["!", "(", ")", "-"]);
+  it("orders by class (ignored, tolerated, accepted), then by count", () => {
+    const r = oddChars([["a-b-c-d", '"e"', "g!", "h!"]]);
+    expect(r.map((c) => `${c.cls} ${c.char}`)).toEqual(['ignored !', 'tolerated "', "accepted -"]);
+  });
+  it("accepts a closed bracket pair and tolerates a lone bracket, listing both", () => {
+    const r = oddChars([["Cristal Z (Liam)", "xy ) bla ( adfa"]]);
+    const by = (cls: string, char: string) => r.find((c) => c.cls === cls && c.char === char)?.count;
+    expect(by("accepted", "(")).toBe(1);
+    expect(by("accepted", ")")).toBe(1);
+    expect(by("tolerated", "(")).toBe(1);
+    expect(by("tolerated", ")")).toBe(1);
+    expect(r.find((c) => c.char === "(")?.pair).toEqual(["(", ")"]);
   });
   it("labels invisible characters by code point", () => {
     const [nbsp] = oddChars([["a b"]]);
     expect(nbsp.label).toBe("U+00A0");
     expect(oddChars([["a​b"]])[0].label).toBe("U+200B");
+  });
+});
+
+describe("scanItem", () => {
+  it("resolves nested brackets and keeps each pair type apart", () => {
+    expect(scanItem("a (b [c] d) e").map((h) => h.cls)).toEqual(["accepted", "accepted", "accepted", "accepted"]);
+    expect(scanItem("(a]").map((h) => h.cls)).toEqual(["tolerated", "tolerated"]);
+  });
+  it("reports positions in code points", () => {
+    // 𝔸 is one letter but two UTF-16 units; the quote after it sits at code point 1.
+    expect(scanItem('𝔸"').map((h) => h.index)).toEqual([1]);
   });
 });
 

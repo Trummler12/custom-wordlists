@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { oddChars, type OddChar } from "../../lib/custom";
+  import { type CharClass, oddChars, type OddChar } from "../../lib/custom";
   import { custom } from "../../state/custom.svelte";
   import { lang } from "../../state/lang.svelte";
   import { overlays } from "../../state/overlays.svelte";
@@ -7,8 +7,9 @@
   import TipNote from "../common/TipNote.svelte";
 
   // The Custom row's character panel: a ⚠️ shows up once the input field or an active
-  // custom list holds a character skribbl.io will probably drop. Ordinary name punctuation
-  // alone raises nothing, since nearly every real list has a hyphen or an apostrophe.
+  // custom list holds a character skribbl.io will probably drop, or one that is only
+  // tolerated. Accepted name punctuation alone raises nothing, since nearly every real list
+  // has a hyphen or an apostrophe; it is still listed once the panel is open.
   //
   // Shares the `omitted` slot with the 🚫 beside it, so only one of the two is open at a
   // time. The 🔍 notes are siblings of the panel, not children, so its scroll can't clip them.
@@ -17,17 +18,35 @@
 
   const sources = $derived(custom.effectiveNamed);
   const chars = $derived(oddChars(sources.map((s) => s.items)));
-  const ignored = $derived(chars.filter((c) => !c.tolerated));
-  const tolerated = $derived(chars.filter((c) => c.tolerated));
+  const warn = $derived(chars.some((c) => c.cls !== "accepted"));
+  const sections = $derived(
+    (
+      [
+        ["ignored", lang.ui.custom.charsIgnored],
+        ["tolerated", lang.ui.custom.charsTolerated],
+        ["accepted", lang.ui.custom.charsAccepted],
+      ] as [CharClass, string][]
+    )
+      .map(([cls, heading]) => ({ cls, heading, items: chars.filter((c) => c.cls === cls) }))
+      .filter((s) => s.items.length > 0),
+  );
+  // A long list spreads over up to four columns instead of growing four times as tall.
+  const columns = (n: number): number => Math.min(4, Math.max(1, Math.ceil((n - 1) / 3)));
 
-  const tipId = (c: OddChar): string => `custom-char-${c.char.codePointAt(0)!.toString(16)}`;
+  const tipId = (c: OddChar): string => `custom-char-${c.cls}-${c.char.codePointAt(0)!.toString(16)}`;
   function note(c: OddChar): string {
+    const lead: string[] = [];
+    if (c.pair) {
+      const [o, cl] = c.pair;
+      lead.push(c.cls === "accepted" ? lang.ui.custom.charsPaired(o, cl) : lang.ui.custom.charsLone(c.char, c.char === o ? cl : o));
+    }
+    if (c.cls === "ignored") lead.push(lang.ui.custom.charsRemove);
+    if (c.cls === "tolerated") lead.push(lang.ui.custom.charsRemoveMaybe);
     const lists = sources
       .map((s, i) => ({ name: s.list?.name ?? lang.ui.custom.inputName, n: c.perSource[i] }))
       .filter((x) => x.n > 0)
       .map((x) => `- ${x.name} (${x.n})`);
-    const advice = c.tolerated ? [] : [lang.ui.custom.charsRemove];
-    return [...advice, lang.ui.custom.charsLists, ...lists].join("{br}");
+    return [...lead, lang.ui.custom.charsLists, ...lists].join("{br}");
   }
 </script>
 
@@ -39,7 +58,7 @@
   </li>
 {/snippet}
 
-{#if ignored.length}
+{#if warn}
   <div class="omitted-host">
     <button
       type="button"
@@ -57,20 +76,16 @@
         role="group"
         aria-label={lang.ui.custom.charsLabel}
       >
-        <p class="omitted-title">{lang.ui.custom.charsIgnored}</p>
-        <ul class="chars">
-          {#each ignored as c (c.char)}{@render row(c)}{/each}
-        </ul>
-        {#if tolerated.length}<hr />{/if}
-        {#if tolerated.length}
-          <p class="omitted-title">{lang.ui.custom.charsTolerated}</p>
-          <ul class="chars">
-            {#each tolerated as c (c.char)}{@render row(c)}{/each}
+        {#each sections as s, i (s.cls)}
+          {#if i > 0}<hr />{/if}
+          <p class="omitted-title">{s.heading}</p>
+          <ul class="chars" style:column-count={columns(s.items.length)}>
+            {#each s.items as c (tipId(c))}{@render row(c)}{/each}
           </ul>
-        {/if}
+        {/each}
       </div>
     {/if}
-    {#each chars as c (c.char)}
+    {#each chars as c (tipId(c))}
       <TipNote id={tipId(c)} text={note(c)} local />
     {/each}
   </div>
@@ -81,20 +96,23 @@
   .omitted-btn {
     opacity: 1;
   }
+  /* `column-count` (set inline) is the most columns a section may use; the min width caps it
+     further where the panel is narrow, so a phone gets fewer rather than cramped ones. */
+  .chars {
+    column-width: 5rem;
+    column-gap: 1rem;
+  }
   .chars li {
+    break-inside: avoid;
     display: flex;
     align-items: baseline;
     gap: 0.4rem;
     padding: 0.1rem 0;
   }
-  /* The character itself, boxed so a lone "." or "'" is still findable. */
+  /* A minimum width, so a lone "." or "'" still gets a box worth aiming at. */
   .chars code {
     min-width: 1.4em;
-    padding: 0 0.25rem;
     text-align: center;
-    font-size: 0.85rem;
-    border: 1px solid var(--panel-border);
-    border-radius: var(--radius);
   }
   .count {
     color: var(--muted-2);

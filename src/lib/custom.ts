@@ -22,11 +22,23 @@ export const DEFAULT_SEPARATOR: Separator = ",";
  *  excerpt, capped so a huge paste doesn't stash thousands. Mirrors lib/omitted. */
 const SAMPLE_CAP = 50;
 
-/** Characters that are no letter, mark, digit or space but belong in real names often
- *  enough that reporting them as a problem would be noise — measured on the curated
- *  topics (hyphen ~2200×, apostrophes ~600×, dot ~260×, the CJK middle dots ~190×). The
- *  one list to extend when a character turns out to be just as ordinary. */
-export const TOLERATED_CHARS: ReadonlySet<string> = new Set(["-", "–", "—", "'", "\"", "’", ".", ":", "&", "(", ")", "/", "・", "·"]);
+/** Characters that are no letter, mark, digit or space but are practically always part of
+ *  a real name (the curated topics carry ~2200 hyphens, ~600 apostrophes, ~260 dots): listed
+ *  in the ⚠️ panel, never reported as a problem, never offered for cleaning. */
+export const ACCEPTED_CHARS: ReadonlySet<string> = new Set(["-", "–", "—", "'", "’", ".", "·", "・", ":", "&", "/"]);
+/** Characters that can be wanted (`Dwayne "The Rock" Johnson`) but are as often a leftover,
+ *  e.g. of quoting the game doesn't have: they raise the ⚠️, and cleaning offers them unticked. */
+export const TOLERATED_CHARS: ReadonlySet<string> = new Set(['"']);
+/** Brackets are judged per occurrence rather than per character: one closed by its partner
+ *  belongs to the name (accepted), a lone one is tolerated. */
+export const BRACKET_PAIRS: readonly (readonly [string, string])[] = [
+  ["(", ")"],
+  ["（", "）"],
+  ["[", "]"],
+];
+
+/** How the ⚠️ panel files a character: worth removing, possibly wanted, or ordinary. */
+export type CharClass = "ignored" | "tolerated" | "accepted";
 
 /** Letters, combining marks and digits of any script, plus the plain space. The marks
  *  matter: Devanagari, Thai or Hebrew vowel signs are code points of their own. */
@@ -167,34 +179,73 @@ export function classifyCustom(
 export interface OddChar {
   char: string;
   label: string;
+  cls: CharClass;
+  /** The bracket pair the character belongs to, for a bracket. */
+  pair?: readonly [string, string];
   count: number;
   perSource: number[];
-  tolerated: boolean;
 }
 
+/** One odd character inside an item: its position (in code points), and its class. */
+export interface OddHit {
+  index: number;
+  char: string;
+  cls: CharClass;
+  pair?: readonly [string, string];
+}
+
+/** The odd characters of one item, classified. Brackets go through a stack per pair type,
+ *  so nesting resolves and `xy ) bla ( adfa` reads as two lone brackets. The panel's counts
+ *  and the save-time cleanup both read this, so they agree on which occurrence is which. */
+export function scanItem(item: string): OddHit[] {
+  const hits: OddHit[] = [];
+  const unclosed = new Map<string, number[]>(); // opener => its unclosed hits
+  [...item].forEach((char, index) => {
+    if (WORD_CHAR.test(char)) return;
+    const pair = BRACKET_PAIRS.find(([o, c]) => char === o || char === c);
+    if (!pair) {
+      const cls = ACCEPTED_CHARS.has(char) ? "accepted" : TOLERATED_CHARS.has(char) ? "tolerated" : "ignored";
+      hits.push({ index, char, cls });
+      return;
+    }
+    const hit: OddHit = { index, char, cls: "tolerated", pair };
+    const stack = unclosed.get(pair[0]) ?? [];
+    unclosed.set(pair[0], stack);
+    if (char === pair[0]) stack.push(hits.length);
+    else {
+      const opener = stack.pop();
+      if (opener !== undefined) hits[opener].cls = hit.cls = "accepted";
+    }
+    hits.push(hit);
+  });
+  return hits;
+}
+
+const CLASS_RANK: Record<CharClass, number> = { ignored: 0, tolerated: 1, accepted: 2 };
+
 /** The characters beyond letters, marks, digits and the space across `sources`, for the
- *  Custom row's ⚠️ panel. Ordered: the ones worth removing first, then by count, so the
- *  top of the panel is what most needs looking at. */
+ *  Custom row's ⚠️ panel — one entry per character and class, so a bracket can show up
+ *  both lone and paired. Ordered by class, then count, so the top is what most needs a look. */
 export function oddChars(sources: readonly (readonly string[])[]): OddChar[] {
   const found = new Map<string, OddChar>();
   sources.forEach((items, si) => {
     for (const item of items)
-      for (const char of item) {
-        if (WORD_CHAR.test(char)) continue;
-        let c = found.get(char);
+      for (const { char, cls, pair } of scanItem(item)) {
+        const key = `${cls}|${char}`;
+        let c = found.get(key);
         if (!c) {
           const label = INVISIBLE.test(char)
             ? `U+${char.codePointAt(0)!.toString(16).toUpperCase().padStart(4, "0")}`
             : char;
-          c = { char, label, count: 0, perSource: sources.map(() => 0), tolerated: TOLERATED_CHARS.has(char) };
-          found.set(char, c);
+          c = { char, label, cls, ...(pair ? { pair } : {}), count: 0, perSource: sources.map(() => 0) };
+          found.set(key, c);
         }
         c.count++;
         c.perSource[si]++;
       }
   });
   return [...found.values()].sort(
-    (a, b) => Number(a.tolerated) - Number(b.tolerated) || b.count - a.count || a.char.localeCompare(b.char),
+    (a, b) => CLASS_RANK[a.cls] - CLASS_RANK[b.cls] || b.count - a.count || a.char.localeCompare(b.char),
   );
 }
 
