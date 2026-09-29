@@ -6,15 +6,12 @@
   import TipMarker from "../common/TipMarker.svelte";
   import TipNote from "../common/TipNote.svelte";
 
-  // The Custom row's character panel (§F2): every character beyond letters, digits and
-  // spaces in the sources that reach the output. The marker is ⚠️ only while one of them
-  // is worth removing; ordinary name punctuation alone gets a quiet ℹ️, so the warning
-  // keeps its meaning on the many real lists that carry a hyphen or an apostrophe.
+  // The Custom row's character panel: a ⚠️ shows up once the input field or an active
+  // custom list holds a character skribbl.io will probably drop. Ordinary name punctuation
+  // alone raises nothing, since nearly every real list has a hyphen or an apostrophe.
   //
-  // Shares the `omitted` slot and `.omitted-*` classes with the 🚫 beside it, so the two
-  // open, flip and dismiss alike and only one is open at a time. The per-character ℹ️
-  // notes are `local` tips and siblings of the panel (as in LanguageTypePanel), so the
-  // panel's own scroll can't clip them.
+  // Shares the `omitted` slot with the 🚫 beside it, so only one of the two is open at a
+  // time. The 🔍 notes are siblings of the panel, not children, so its scroll can't clip them.
   const id = "custom-chars";
   const open = $derived(overlays.omittedPanel === id);
 
@@ -24,8 +21,6 @@
   const tolerated = $derived(chars.filter((c) => c.tolerated));
 
   const tipId = (c: OddChar): string => `custom-char-${c.char.codePointAt(0)!.toString(16)}`;
-  /** The ℹ️ note: the removal advice (not for a tolerated character), then each source that
-   *  holds the character, with how often. */
   function note(c: OddChar): string {
     const lists = sources
       .map((s, i) => ({ name: s.list?.name ?? lang.ui.custom.inputName, n: c.perSource[i] }))
@@ -40,21 +35,20 @@
   <li>
     <code>{c.label}</code>
     <span class="count">x{c.count}</span>
-    <TipMarker tipId={tipId(c)} icon="ℹ️" text={note(c)} local />
+    <TipMarker tipId={tipId(c)} icon="🔍" text={note(c)} local />
   </li>
 {/snippet}
 
-{#if chars.length}
+{#if ignored.length}
   <div class="omitted-host">
     <button
       type="button"
       class="omitted-btn"
-      class:warn={ignored.length > 0}
       aria-haspopup="true"
       aria-expanded={open}
       aria-label={lang.ui.custom.charsLabel}
       title={lang.ui.custom.charsLabel}
-      onclick={(e) => overlays.toggleOmittedPanel(id, e.currentTarget)}>{ignored.length ? "⚠️" : "ℹ️"}</button
+      onclick={(e) => overlays.toggleOmittedPanel(id, e.currentTarget)}>⚠️</button
     >
     {#if open}
       <div
@@ -63,13 +57,11 @@
         role="group"
         aria-label={lang.ui.custom.charsLabel}
       >
-        {#if ignored.length}
-          <p class="omitted-title">{lang.ui.custom.charsIgnored}</p>
-          <ul class="chars">
-            {#each ignored as c (c.char)}{@render row(c)}{/each}
-          </ul>
-        {/if}
-        {#if ignored.length && tolerated.length}<hr />{/if}
+        <p class="omitted-title">{lang.ui.custom.charsIgnored}</p>
+        <ul class="chars">
+          {#each ignored as c (c.char)}{@render row(c)}{/each}
+        </ul>
+        {#if tolerated.length}<hr />{/if}
         {#if tolerated.length}
           <p class="omitted-title">{lang.ui.custom.charsTolerated}</p>
           <ul class="chars">
@@ -85,8 +77,8 @@
 {/if}
 
 <style>
-  /* A warning reads at full strength; the shared button is dimmed for the quiet ℹ️. */
-  .omitted-btn.warn {
+  /* The shared 🚫 button is dimmed until hovered; a warning has to read at once. */
+  .omitted-btn {
     opacity: 1;
   }
   .chars li {
