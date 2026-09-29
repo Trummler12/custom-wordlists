@@ -56,6 +56,16 @@ describe("parseMarkup", () => {
     expect(parts.map((p) => p.kind)).toEqual(["b", "text", "link", "br", "i"]);
   });
 
+  it("reads a {code}code{/code} run", () => {
+    expect(parseMarkup("a {code}({/code}-{code}){/code} pair")).toEqual([
+      { kind: "text", text: "a " },
+      { kind: "code", text: "(" },
+      { kind: "text", text: "-" },
+      { kind: "code", text: ")" },
+      { kind: "text", text: " pair" },
+    ]);
+  });
+
   it("drops an empty {b}{/b} span rather than emitting an empty run", () => {
     expect(parseMarkup("a{b}{/b}b")).toEqual([
       { kind: "text", text: "a" },

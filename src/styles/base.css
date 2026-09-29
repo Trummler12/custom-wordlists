@@ -18,6 +18,15 @@ body {
 a {
   color: inherit;
 }
+/* Inline code, e.g. locale markup's {code}…{/code}: boxed, because a monospace face alone
+   doesn't set a lone bracket or quote apart from the text around it. */
+code {
+  padding: 0 0.2em;
+  font-family: ui-monospace, Consolas, monospace;
+  font-size: 0.9em;
+  border: 1px solid var(--panel-border);
+  border-radius: var(--radius);
+}
 /* A danger/error text state, used independently by the topic status line and the
    output counter — a shared utility, not one component's class. */
 .status.error,
