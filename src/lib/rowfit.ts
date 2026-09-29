@@ -48,9 +48,9 @@ function run(): void {
   const single = window.matchMedia("(max-width: 50rem)").matches;
   const gutterMax = single ? 0 : (parseFloat(root.getPropertyValue("--layout-gap")) || 1.5) * rem;
   // Layout headroom kept ahead of the clip point, so the title never overflow-hides in the
-  // frame before the fit lands. `transfer` is the slice of it hidden by the transform below,
-  // so the count rests at its natural gap from the controls instead of sitting `buffer`
-  // further out — tune either term.
+  // frame before the fit lands. `transfer` is the slice of it the reader never sees: banked
+  // as gutter and undone by a transform, so the count rests at its natural gap and every
+  // visible relief starts only where the title actually meets it. Tune either term.
   const transfer = 1.0 * rem;
   const buffer = 0.0 * rem + transfer;
 
@@ -76,20 +76,24 @@ function run(): void {
   for (const it of items) if (it.total) digit.set(it.total, it.total.clientWidth);
 
   // Pressure = how far into the buffer the free space has been eaten, plus any real overflow.
-  // Spend it on the blank first, then the gutter; the title clips for whatever is left over.
+  // Only the part past the buffer (`seen`) is relief the reader should see: the blank first,
+  // then the gutter, and the title clips for whatever is left over.
   for (const { it, totalW, free, deficit } of rest) {
     const pressure = buffer - free + deficit;
+    const seen = pressure - transfer;
     const blankBudget = it.total ? Math.max(0, totalW - (digit.get(it.total) ?? totalW)) : 0;
-    const blank = pressure > 0 ? Math.min(pressure, blankBudget) : 0;
+    const blank = Math.min(Math.max(seen, 0), blankBudget);
     if (it.total) it.total.style.minWidth = blank > 0 ? `${totalW - blank}px` : "";
-    const gutter = pressure > 0 ? Math.min(pressure - blank, gutterMax) : 0;
+    const slide = Math.min(Math.max(seen - blank, 0), gutterMax);
     if (!it.meta) continue;
-    it.meta.style.marginRight = gutter > 0 ? `${-gutter}px` : "";
-    // Hide up to `transfer` of the free space we just banked, so the count rests at its
-    // natural gap rather than `buffer` further out — a transform, so it costs no layout.
-    // Capped at the free space actually kept, so it never rides onto the controls.
-    const kept = free + Math.max(0, blank + gutter - deficit);
-    const shift = Math.min(Math.max(pressure, 0), transfer, kept);
-    it.meta.style.transform = shift > 0 ? `translateX(${-shift}px)` : "";
+    // The hidden headroom is banked as extra gutter, never as blank: a transform can undo a
+    // shift of the whole count but not a narrowing inside it, so taking it from the blank
+    // showed the blank shrinking a whole `transfer` early. Skipped once the title clips
+    // anyway, where there is no room to bank and the transform would ride onto the title.
+    const clipping = seen - blank - slide > 0;
+    const hidden = clipping ? 0 : Math.min(Math.max(pressure, 0), transfer);
+    const margin = slide + hidden;
+    it.meta.style.marginRight = margin > 0 ? `${-margin}px` : "";
+    it.meta.style.transform = hidden > 0 ? `translateX(${-hidden}px)` : "";
   }
 }
