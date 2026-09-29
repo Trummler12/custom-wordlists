@@ -139,7 +139,7 @@ export const en: UIStrings = {
     charsTolerated: "Tolerated characters:",
     charsRemove: "Please consider removing this character.",
     charsLists: "Lists affected:",
-    inputName: "Custom input",
+    inputName: "{i}Input field{/i}",
     settingsLabel: "Custom settings",
     settingsTitle: "Custom settings",
     maxPreviewItems: "Max preview items",
