@@ -22,6 +22,19 @@ export const DEFAULT_SEPARATOR: Separator = ",";
  *  excerpt, capped so a huge paste doesn't stash thousands. Mirrors lib/omitted. */
 const SAMPLE_CAP = 50;
 
+/** Characters that are no letter, mark, digit or space but belong in real names often
+ *  enough that reporting them as a problem would be noise — measured on the curated
+ *  topics (hyphen ~2200×, apostrophes ~600×, dot ~260×, the CJK middle dots ~190×). The
+ *  one list to extend when a character turns out to be just as ordinary. */
+export const TOLERATED_CHARS: ReadonlySet<string> = new Set(["-", "–", "—", "'", "\"", "’", ".", ":", "&", "(", ")", "/", "・", "·"]);
+
+/** Letters, combining marks and digits of any script, plus the plain space. The marks
+ *  matter: Devanagari, Thai or Hebrew vowel signs are code points of their own. */
+const WORD_CHAR = /[\p{L}\p{M}\p{N} ]/u;
+/** Whitespace other than the plain space, and control / format characters: invisible in
+ *  the field, so they are shown by code point instead. */
+const INVISIBLE = /[\p{Z}\p{C}]/u;
+
 /** Occurrences of each separator in the raw text. Every occurrence counts: a quote
  *  mark is an ordinary character here, since skribbl.io and its kind have no quoting
  *  either — an item simply can't contain the separator. */
@@ -147,19 +160,6 @@ export function classifyCustom(
   }
   return out;
 }
-
-/** Characters that are no letter, mark, digit or space but belong in real names often
- *  enough that reporting them as a problem would be noise — measured on the curated
- *  topics (hyphen ~2200×, apostrophes ~600×, dot ~260×, the CJK middle dots ~190×). The
- *  one list to extend when a character turns out to be just as ordinary. */
-export const TOLERATED_CHARS: ReadonlySet<string> = new Set(["-", "'", "’", ".", "・", "·"]);
-
-/** Letters, combining marks and digits of any script, plus the plain space. The marks
- *  matter: Devanagari, Thai or Hebrew vowel signs are code points of their own. */
-const WORD_CHAR = /[\p{L}\p{M}\p{N} ]/u;
-/** Whitespace other than the plain space, and control / format characters: invisible in
- *  the field, so they are shown by code point instead. */
-const INVISIBLE = /[\p{Z}\p{C}]/u;
 
 /** One character the game will probably drop from the reader's items: how it reads in
  *  the panel, how often it occurs, how often per source (index-aligned with the sources
