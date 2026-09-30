@@ -40,7 +40,7 @@
   const afterClean = $derived(cleaning ? findDupes(cleanItems(custom.items, new Set(cleanSel))) : null);
   const dropped = $derived(afterClean?.dupes.reduce((n, d) => n + d.copies - 1, 0) ?? 0);
   // Many characters spread over up to four columns rather than one long list.
-  const cleanColumns = (n: number): number => Math.min(4, Math.max(1, Math.ceil((n - 1) / 5)));
+  const cleanColumns = (n: number): number => Math.min(4, Math.max(1, Math.ceil(n / 5)));
   $effect(() => {
     if (!open) {
       editingId = null;
@@ -258,11 +258,11 @@
       <!-- The destructive actions' confirm, in its own popover (the tip slot), so a
            press elsewhere / Escape / scroll dismisses it and a click inside does not. -->
       {#if overlays.tip === CONFIRM_ID && pending}
-        <div class="tip-note local confirm-pop" style={overlays.tipStyle} role="dialog">
+        <div class="tip-note local confirm-pop" class:wide={pending.kind === "clean"} style={overlays.tipStyle} role="dialog">
           {#if pending.kind === "clean"}
             {#if offered.length}
               <p class="confirm-msg">{lang.ui.custom.cleanChars}</p>
-              <ul class="clean-chars" style:column-count={cleanColumns(offered.length)}>
+              <ul class="clean-chars" style:grid-template-columns={`repeat(${cleanColumns(offered.length)}, max-content)`}>
                 {#each offered as c (charKey(c))}
                   <li>
                     <label>
@@ -407,20 +407,27 @@
     box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
     z-index: 30;
   }
+  /* Room for up to four character columns. */
+  .confirm-pop.wide {
+    max-width: min(26rem, 90vw);
+  }
   .confirm-msg {
     margin: 0 0 0.4rem;
   }
   /* column-count (inline) is the most columns; the min width lets a narrow popover use fewer. */
+  /* A grid filling row by row, columns as wide as their content and flush left, so the
+     tolerated characters follow the problematic ones in reading order. `justify-items`
+     and an inline label keep each checkbox's click area to its own box and count. */
   .clean-chars {
-    column-width: 4rem;
-    column-gap: 0.8rem;
-    margin: 0 0 0.4rem;
-  }
-  .clean-chars li {
-    break-inside: avoid;
+    display: grid;
+    justify-content: start;
+    justify-items: start;
+    column-gap: 1rem;
+    row-gap: 0.15rem;
+    margin: 0 0 0.5rem;
   }
   .clean-chars label {
-    display: flex;
+    display: inline-flex;
     align-items: baseline;
     gap: 0.3rem;
     white-space: nowrap;

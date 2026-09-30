@@ -143,6 +143,7 @@ export const de: UIStrings = {
     listWarnSeparator: "Das gewählte Trennzeichen kommt innerhalb eines Eintrags vor.",
     charsLabel: "Zeichen, die skribbl.io vermutlich ignoriert",
     charsIgnored: "Zeichen, die skribbl.io vermutlich ignoriert:",
+    charsProblematic: "Problematische Zeichen:",
     charsTolerated: "Tolerierte Zeichen:",
     charsRemove: "Bitte erwäge, dieses Zeichen zu entfernen.",
     charsLists: "Betroffene Listen:",

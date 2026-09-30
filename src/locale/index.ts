@@ -455,6 +455,7 @@ export interface CustomStrings {
    *  affected" lead-in, and the name the input field goes by among those lists. */
   charsLabel: string;
   charsIgnored: string;
+  charsProblematic: string;
   charsTolerated: string;
   charsRemove: string;
   charsLists: string;

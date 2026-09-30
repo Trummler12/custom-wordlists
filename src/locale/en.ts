@@ -136,6 +136,7 @@ export const en: UIStrings = {
     listWarnSeparator: "The selected separator character occurs inside an item.",
     charsLabel: "Characters skribbl.io will probably ignore",
     charsIgnored: "Characters skribbl.io will probably ignore:",
+    charsProblematic: "Problematic characters:",
     charsTolerated: "Tolerated characters:",
     charsRemove: "Please consider removing this character.",
     charsLists: "Lists affected:",

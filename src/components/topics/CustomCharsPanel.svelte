@@ -22,7 +22,7 @@
   const sections = $derived(
     (
       [
-        ["ignored", lang.ui.custom.charsIgnored],
+        ["ignored", lang.ui.custom.charsProblematic],
         ["tolerated", lang.ui.custom.charsTolerated],
         ["accepted", lang.ui.custom.charsAccepted],
       ] as [CharClass, string][]
@@ -31,7 +31,7 @@
       .filter((s) => s.items.length > 0),
   );
   // A long list spreads over up to four columns instead of growing four times as tall.
-  const columns = (n: number): number => Math.min(4, Math.max(1, Math.ceil((n - 1) / 3)));
+  const columns = (n: number): number => Math.min(4, Math.max(1, Math.ceil(n / 3)));
 
   const tipId = (c: OddChar): string => `custom-char-${c.cls}-${c.char.codePointAt(0)!.toString(16)}`;
   function note(c: OddChar): string {
@@ -76,10 +76,11 @@
         role="group"
         aria-label={lang.ui.custom.charsLabel}
       >
+        <p class="omitted-title">{lang.ui.custom.charsIgnored}</p>
         {#each sections as s, i (s.cls)}
           {#if i > 0}<hr />{/if}
-          <p class="omitted-title">{s.heading}</p>
-          <ul class="chars" style:column-count={columns(s.items.length)}>
+          <p class="group-title">{s.heading}</p>
+          <ul class="chars" style:grid-template-columns={`repeat(${columns(s.items.length)}, max-content)`}>
             {#each s.items as c (tipId(c))}{@render row(c)}{/each}
           </ul>
         {/each}
@@ -98,12 +99,16 @@
   }
   /* `column-count` (set inline) is the most columns a section may use; the min width caps it
      further where the panel is narrow, so a phone gets fewer rather than cramped ones. */
+  /* A grid, not multi-column: it fills row by row, so the order reads left to right, and its
+     content-wide columns sit flush left at a fixed gap, so groups with different column
+     counts still line up. */
   .chars {
-    column-width: 5rem;
-    column-gap: 1rem;
+    display: grid;
+    justify-content: start;
+    justify-items: start;
+    column-gap: 1.2rem;
   }
   .chars li {
-    break-inside: avoid;
     display: flex;
     align-items: baseline;
     gap: 0.4rem;
@@ -117,6 +122,10 @@
   .count {
     color: var(--muted-2);
     font-variant-numeric: tabular-nums;
+  }
+  .group-title {
+    margin: 0 0 0.2rem;
+    color: var(--muted-2);
   }
   hr {
     border: none;
