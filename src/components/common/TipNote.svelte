@@ -18,7 +18,6 @@
   <p
     class="tip-note"
     class:above={overlays.tipAbove && !local}
-    class:pinned={overlays.tipPinned}
     class:local
     style={local ? overlays.tipStyle : ""}
     {id}
@@ -55,15 +54,11 @@
     border-radius: var(--radius);
     box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
   }
-  /* Room for the 📌, so a first line can't run under it. Only while pinned: an unpinned note
-     is the common case and shouldn't carry the gap for nothing. */
-  .tip-note.pinned {
-    padding-right: 1.5rem;
-  }
+  /* Floated into the text flow rather than set off by padding, so only the line or two beside
+     it make room; the rest of the note keeps its full width. */
   .tip-pin {
-    position: absolute; /* .tip-note is the containing block */
-    top: 0.25rem;
-    right: 0.4rem;
+    float: right;
+    margin: -0.15rem -0.2rem 0 0.4rem;
     font-size: 0.65rem;
     line-height: 1;
     opacity: 0.75;
