@@ -53,8 +53,9 @@
   // reads "+N" (N = steps), which only widened range consts reach in practice. The
   // control keeps stepping the height even once the cap already clears the content —
   // this readout is how a reader sees by how much.
+  const stepsOver = (): number => Math.max(0, Math.floor((custom.maxRows - contentRows) / ROW_STEP));
   function plusIcon(): string {
-    const steps = Math.max(0, Math.floor((custom.maxRows - contentRows) / ROW_STEP));
+    const steps = stepsOver();
     if (steps <= 3) {
       const n = steps + 1;
       return n <= 2 ? "+".repeat(n) : `++ ${"+".repeat(n - 2)}`;
@@ -104,7 +105,9 @@
       column: 1,
       order: 1,
       stack: true,
-      tooltip: () => lang.ui.custom.moreRows,
+      // The hover says in words what the extra `+` glyphs show.
+      tooltip: () =>
+        stepsOver() > 0 ? `${lang.ui.custom.moreRows} ${lang.ui.custom.moreRowsOver(stepsOver())}` : lang.ui.custom.moreRows,
       enabled: () => custom.canGrow,
       onClick: () => custom.growRows(),
     },
