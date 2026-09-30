@@ -15,6 +15,13 @@ export const SPANS = [
   { name: "b", tag: "strong", aliases: ["bold", "fett"] },
   { name: "i", tag: "em", aliases: ["italic", "kursiv"] },
   { name: "code", tag: "code", aliases: ["c"] },
+  { name: "u", tag: "u", aliases: ["underline"] },
+  { name: "s", tag: "s", aliases: ["strike", "strikethrough"] },
+  { name: "small", tag: "small", aliases: ["smaller", "xs"] },
+  { name: "mark", tag: "mark", aliases: ["marked"] },
+  { name: "ins", tag: "ins", aliases: ["inserted"] },
+  { name: "sub", tag: "sub", aliases: ["subscript"] },
+  { name: "sup", tag: "sup", aliases: ["superscript"] },
 ] as const;
 
 type SpanName = (typeof SPANS)[number]["name"];
