@@ -7,20 +7,45 @@
 // file — on an unescaped path to the DOM. Parsing to parts keeps the strings
 // plain data.
 
+/** The paired `{name}…{/name}` spans: one line per element. `name` is what a part's `kind`
+ *  says, `tag` the element it renders as, `aliases` further spellings a string may use for
+ *  the same span. Names are global, so an alias works in every locale, not just its own
+ *  language. Tags come only from here, never from a string, so no markup reaches the DOM. */
+export const SPANS = [
+  { name: "b", tag: "strong", aliases: ["bold", "fett"] },
+  { name: "i", tag: "em", aliases: ["italic", "kursiv"] },
+  { name: "code", tag: "code", aliases: ["c"] },
+] as const;
+
+type SpanName = (typeof SPANS)[number]["name"];
+
 export type Part =
   | { kind: "text"; text: string }
   | { kind: "br" }
   | { kind: "link"; text: string; href: string }
-  | { kind: "b"; text: string }
-  | { kind: "i"; text: string }
-  | { kind: "code"; text: string };
+  | { kind: SpanName; text: string };
 
-// The inline spans, matched in one pass so they interleave correctly: a `[text](url)`
-// link, or a `{b}bold{/b}`, `{i}italic{/i}` or `{code}code{/code}` run. All non-greedy,
-// and none nests — a span's content is plain text, like a link's label. Which alternative
-// matched is read off which capture group is defined, so the loop below depends on the
-// group order here.
-const INLINE = /\[([^\]]+)\]\(([^)\s]+)\)|\{b\}([\s\S]*?)\{\/b\}|\{i\}([\s\S]*?)\{\/i\}|\{code\}([\s\S]*?)\{\/code\}/g;
+/** The element a span part renders as. */
+export function spanTag(kind: SpanName): string {
+  return SPANS.find((s) => s.name === kind)!.tag;
+}
+
+const escape = (s: string): string => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+
+// One pass over every inline construct, so they interleave: a `[text](url)` link, or a span
+// whose closing name must repeat its opening one (`\k<o…>`), so `{b}x{/i}` stays literal.
+// Named groups, one pair per SPANS line, so nothing depends on alternative order. Non-greedy,
+// and nothing nests: a span's content is plain text, like a link's label.
+const INLINE = new RegExp(
+  [
+    String.raw`\[(?<label>[^\]]+)\]\((?<href>[^)\s]+)\)`,
+    ...SPANS.map((s, i) => {
+      const names = [s.name, ...s.aliases].map(escape).join("|");
+      return String.raw`\{(?<o${i}>${names})\}(?<t${i}>[\s\S]*?)\{\/\k<o${i}>\}`;
+    }),
+  ].join("|"),
+  "g",
+);
 
 /** Only http(s) is renderable as a link. A data file is content, and content must
  *  not be able to produce `javascript:` — anything else falls back to plain text,
@@ -45,20 +70,18 @@ export function parseMarkup(text: string): Part[] {
 
   let last = 0;
   for (const m of text.matchAll(INLINE)) {
-    const [whole, label, href, bold, italic, code] = m;
+    const whole = m[0];
+    const g = m.groups!;
     push(text.slice(last, m.index));
-    if (label !== undefined) {
+    if (g.label !== undefined) {
       // A link — but only http(s); anything else stays the literal text it was written as.
-      if (isSafeHref(href)) parts.push({ kind: "link", text: label, href });
+      if (isSafeHref(g.href)) parts.push({ kind: "link", text: g.label, href: g.href });
       else push(whole);
-    } else if (bold) {
-      parts.push({ kind: "b", text: bold });
-    } else if (italic) {
-      parts.push({ kind: "i", text: italic });
-    } else if (code) {
-      parts.push({ kind: "code", text: code });
+    } else {
+      const i = SPANS.findIndex((_, i) => g[`o${i}`] !== undefined);
+      // An empty span ({b}{/b}) matched but held nothing, so it contributes no part.
+      if (g[`t${i}`]) parts.push({ kind: SPANS[i].name, text: g[`t${i}`] });
     }
-    // An empty span ({b}{/b}) matched but held nothing — it simply contributes no part.
     last = m.index + whole.length;
   }
   push(text.slice(last));

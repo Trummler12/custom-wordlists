@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { parseMarkup, plainText } from "./markup";
+import { parseMarkup, plainText, SPANS } from "./markup";
 
 describe("parseMarkup", () => {
   it("returns plain text as one part", () => {
@@ -64,6 +64,22 @@ describe("parseMarkup", () => {
       { kind: "code", text: ")" },
       { kind: "text", text: " pair" },
     ]);
+  });
+
+  it("reads every alias as its span's canonical kind", () => {
+    for (const s of SPANS)
+      for (const n of [s.name, ...s.aliases])
+        expect(parseMarkup(`{${n}}x{/${n}}`)).toEqual([{ kind: s.name, text: "x" }]);
+  });
+
+  it("leaves a span closed under a different name literal", () => {
+    expect(parseMarkup("{b}x{/i}")).toEqual([{ kind: "text", text: "{b}x{/i}" }]);
+    expect(parseMarkup("{b}x{/bold}")).toEqual([{ kind: "text", text: "{b}x{/bold}" }]);
+  });
+
+  it("gives every span name to one span only", () => {
+    const names = SPANS.flatMap((s) => [s.name, ...s.aliases]);
+    expect(new Set(names).size).toBe(names.length);
   });
 
   it("drops an empty {b}{/b} span rather than emitting an empty run", () => {
