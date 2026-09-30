@@ -272,7 +272,7 @@ export const en: UIStrings = {
     lead: "This topic's contents come from [Wikidata](https://www.wikidata.org/wiki/Wikidata:Main_Page). The table shows which languages already have a label for each item.",
     notesTitle: "How to help",
     noteAdd: "Open an item from the first column and, once logged in, add any missing label you're sure of.",
-    noteLabelLister: "To add a language that {mark blue}isn't listed at all{/mark blue}, go to your [Wikidata preferences](https://www.wikidata.org/wiki/Special:Preferences#mw-prefsection-gadgets) and enable the {i}labelLister{/i} gadget in the \"Gadgets\" tab; each item then shows a “Labels list” (top right, under Tools) that accepts any language code.",
+    noteLabelLister: "To add a language that isn't listed at all, go to your [Wikidata preferences](https://www.wikidata.org/wiki/Special:Preferences#mw-prefsection-gadgets) and enable the {i}labelLister{/i} gadget in the \"Gadgets\" tab; each item then shows a “Labels list” (top right, under Tools) that accepts any language code.",
     noteProtected: "Some Wikidata items are protected and need an account at least four days old with 100 or more edits to change.",
     noteStale: "Note that this table comes from a manual dump, so the coverage shown here can lag the current state on Wikidata by up to several weeks or even months.",
     itemCount: (n) => `${n.toLocaleString()} items`,
