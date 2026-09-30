@@ -2,9 +2,11 @@ import { describe, expect, it } from "vitest";
 import {
   availableSeparators,
   classifyCustom,
+  cleanItems,
   DEFAULT_SEPARATOR,
   detectSeparator,
   exportLists,
+  findDupes,
   oddChars,
   overlapStats,
   parseImport,
@@ -160,6 +162,38 @@ describe("scanItem", () => {
   it("reports positions in code points", () => {
     // 𝔸 is one letter but two UTF-16 units; the quote after it sits at code point 1.
     expect(scanItem('𝔸"').map((h) => h.index)).toEqual([1]);
+  });
+});
+
+describe("cleanItems", () => {
+  const sel = (...keys: string[]) => new Set(keys);
+  it("deletes a selected character, or replaces a word-separating one with a space", () => {
+    expect(cleanItems(['Dwayne "The Rock" Johnson', "a#b"], sel('tolerated|"', "ignored|#"))).toEqual([
+      "Dwayne The Rock Johnson",
+      "ab",
+    ]);
+    expect(cleanItems(["x(y", "a|b"], sel("tolerated|(", "ignored||"))).toEqual(["x y", "a b"]);
+  });
+  it("removes a lone bracket but keeps a paired one", () => {
+    expect(cleanItems(["Cristal Z (Liam)", "xy ) bla ( adfa"], sel("tolerated|(", "tolerated|)"))).toEqual([
+      "Cristal Z (Liam)",
+      "xy bla adfa",
+    ]);
+  });
+  it("leaves unselected characters and drops items cleaned to nothing", () => {
+    expect(cleanItems(['"a"', "#", "b#"], sel("ignored|#"))).toEqual(['"a"', "b"]);
+  });
+});
+
+describe("findDupes", () => {
+  it("keeps the first of each and counts the copies of the repeated", () => {
+    expect(findDupes(["a", "b", "a", "c", "a", "b"])).toEqual({
+      unique: ["a", "b", "c"],
+      dupes: [
+        { text: "a", copies: 3 },
+        { text: "b", copies: 2 },
+      ],
+    });
   });
 });
 

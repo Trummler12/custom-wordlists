@@ -151,6 +151,9 @@ export const de: UIStrings = {
     charsRemoveMaybe: "Erwäge vielleicht, dieses Zeichen zu entfernen.",
     charsLone: (char, partner) => `Einsames {code}${char}{/code} ohne passendes {code}${partner}{/code};`,
     charsPaired: (open, close) => `Als Teil eines {code}${open}{/code}-{code}${close}{/code}-Paars.`,
+    cleanChars: "Deine eingegebene Liste enthält ungewöhnliche Sonderzeichen, die beim Speichern automatisch bereinigt werden können:",
+    cleanDupes: (n) =>
+      `Deine eingegebene Liste enthält ${n} ${n === 1 ? "internes Duplikat, das" : "interne Duplikate, die"} beim Speichern automatisch bereinigt ${n === 1 ? "wird" : "werden"}:`,
     settingsLabel: "Custom-Einstellungen",
     settingsTitle: "Custom-Einstellungen",
     maxPreviewItems: "Max. Vorschau-Einträge",

@@ -171,12 +171,12 @@ class CustomState {
 
   /** Save the current input as a new list and activate it; the field then mirrors it,
    *  so it is superseded until edited. */
-  saveNew(): void {
+  saveNew(items: readonly string[] = this.items): void {
     const list: SavedList = {
       id: this.#nextId++,
       name: this.placeholderName(),
       separator: this.separator,
-      items: [...this.items],
+      items: [...items],
     };
     this.savedLists = [...this.savedLists, list];
     this.activeIds = [...this.activeIds, list.id];
@@ -185,11 +185,24 @@ class CustomState {
     this.save();
   }
   /** Overwrite an existing list with the current input. */
-  replaceList(id: number): void {
+  replaceList(id: number, items: readonly string[] = this.items): void {
     this.savedLists = this.savedLists.map((l) =>
-      l.id === id ? { ...l, separator: this.separator, items: [...this.items] } : l,
+      l.id === id ? { ...l, separator: this.separator, items: [...items] } : l,
     );
     this.saveLists();
+  }
+  /** Save `items` (the input after the save-time cleanup) as a new list (`id` null) or over
+   *  an existing one. The field takes the cleaned text too: it mirrors what was saved, and
+   *  left unclean, its next edit would bring the removed characters back into the output. */
+  saveItems(id: number | null, items: readonly string[]): void {
+    const sep = this.separator;
+    if (items.length !== this.items.length || items.some((it, i) => it !== this.items[i])) {
+      this.input = serializeItems(items, sep);
+      this.manualSeparator = sep; // the cleaned text might now vote for another separator
+    }
+    if (id === null) this.saveNew(items);
+    else this.replaceList(id, items);
+    this.save();
   }
   renameList(id: number, name: string): void {
     this.savedLists = this.savedLists.map((l) => (l.id === id ? { ...l, name } : l));

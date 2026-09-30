@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { SEPARATORS, type Separator } from "../../lib/custom";
+  import { charKey, cleanItems, findDupes, oddChars, SEPARATORS, type Separator } from "../../lib/custom";
   import { custom, NAME_MAX, type SavedList } from "../../state/custom.svelte";
   import { lang } from "../../state/lang.svelte";
   import { clampPanelLeft, overlays } from "../../state/overlays.svelte";
@@ -26,7 +26,21 @@
   // Inline rename + armed-confirm state, local to the open panel and reset on close.
   let editingId = $state<number | null>(null);
   let editingName = $state("");
-  let pending = $state<{ kind: "replace" | "load" | "delete"; id: number; name: string } | null>(null);
+  let pending = $state<
+    | { kind: "replace" | "load" | "delete"; id: number; name: string }
+    | { kind: "clean"; id: number | null }
+    | null
+  >(null);
+  // The save-time cleanup: which offered characters the reader ticked (by charKey), and what
+  // saving would store under that choice — recomputed live, since removing a character can
+  // turn two entries into duplicates.
+  let cleanSel = $state<string[]>([]);
+  const cleaning = $derived(pending?.kind === "clean");
+  const offered = $derived(cleaning ? oddChars([custom.items]).filter((c) => c.cls !== "accepted") : []);
+  const afterClean = $derived(cleaning ? findDupes(cleanItems(custom.items, new Set(cleanSel))) : null);
+  const dropped = $derived(afterClean?.dupes.reduce((n, d) => n + d.copies - 1, 0) ?? 0);
+  // Many characters spread over up to four columns rather than one long list.
+  const cleanColumns = (n: number): number => Math.min(4, Math.max(1, Math.ceil((n - 1) / 5)));
   $effect(() => {
     if (!open) {
       editingId = null;
@@ -63,13 +77,28 @@
     if (custom.input.length === 0) custom.loadIntoInput(id);
     else arm("load", id, name, e);
   }
-  function confirmPending(): void {
-    if (pending) {
-      const { kind, id } = pending;
-      if (kind === "replace") custom.replaceList(id);
-      else if (kind === "load") custom.loadIntoInput(id);
-      else custom.deleteList(id);
+  // Saving (a new list, or a replace once confirmed) first offers the cleanup, but only when
+  // there is something to clean; the replace confirm then hands its popover over to it.
+  function startSave(id: number | null, e?: MouseEvent): void {
+    const chars = oddChars([custom.items]).filter((c) => c.cls !== "accepted");
+    if (chars.length === 0 && findDupes(custom.items).dupes.length === 0) {
+      custom.saveItems(id, custom.items);
+      pending = null;
+      overlays.closeTip();
+      return;
     }
+    cleanSel = chars.filter((c) => c.cls === "ignored").map(charKey);
+    pending = { kind: "clean", id };
+    if (e) overlays.openTip(CONFIRM_ID, e.currentTarget as Element, true, true);
+  }
+  function toggleClean(key: string): void {
+    cleanSel = cleanSel.includes(key) ? cleanSel.filter((k) => k !== key) : [...cleanSel, key];
+  }
+  function confirmPending(): void {
+    if (pending?.kind === "replace") return startSave(pending.id);
+    if (pending?.kind === "clean") custom.saveItems(pending.id, afterClean?.unique ?? custom.items);
+    else if (pending?.kind === "load") custom.loadIntoInput(pending.id);
+    else if (pending?.kind === "delete") custom.deleteList(pending.id);
     pending = null;
     overlays.closeTip();
   }
@@ -160,7 +189,7 @@
         class="mini tip-trigger"
         disabled={list ? false : custom.items.length === 0}
         title={list ? lang.ui.custom.listSave : lang.ui.custom.listSaveNew}
-        onclick={(e) => (list ? arm("replace", list.id, list.name, e) : custom.saveNew())}>💾</button
+        onclick={(e) => (list ? arm("replace", list.id, list.name, e) : startSave(null, e))}>💾</button
       >
       <button
         type="button"
@@ -230,7 +259,36 @@
            press elsewhere / Escape / scroll dismisses it and a click inside does not. -->
       {#if overlays.tip === CONFIRM_ID && pending}
         <div class="tip-note local confirm-pop" style={overlays.tipStyle} role="dialog">
-          <p class="confirm-msg">{confirmMessage(pending.kind, pending.name)}</p>
+          {#if pending.kind === "clean"}
+            {#if offered.length}
+              <p class="confirm-msg">{lang.ui.custom.cleanChars}</p>
+              <ul class="clean-chars" style:column-count={cleanColumns(offered.length)}>
+                {#each offered as c (charKey(c))}
+                  <li>
+                    <label>
+                      <input
+                        type="checkbox"
+                        checked={cleanSel.includes(charKey(c))}
+                        onchange={() => toggleClean(charKey(c))}
+                      />
+                      <code>{c.label}</code>
+                      <span class="count">x{c.count}</span>
+                    </label>
+                  </li>
+                {/each}
+              </ul>
+            {/if}
+            {#if afterClean?.dupes.length}
+              {#if offered.length}<hr />{/if}
+              <p class="confirm-msg">{lang.ui.custom.cleanDupes(dropped)}</p>
+              <p class="clean-dupes">
+                {#each afterClean.dupes as d, i (d.text)}{#if i > 0},{" "}{/if}<code>{d.text}</code
+                  >{#if d.copies > 2}{" "}(x{d.copies}){/if}{/each}
+              </p>
+            {/if}
+          {:else}
+            <p class="confirm-msg">{confirmMessage(pending.kind, pending.name)}</p>
+          {/if}
           <div class="confirm-actions">
             <button type="button" class="confirm-yes" onclick={confirmPending}>{lang.ui.custom.confirm}</button>
             <button type="button" class="confirm-no" onclick={cancelPending}>{lang.ui.custom.cancel}</button>
@@ -351,6 +409,44 @@
   }
   .confirm-msg {
     margin: 0 0 0.4rem;
+  }
+  /* column-count (inline) is the most columns; the min width lets a narrow popover use fewer. */
+  .clean-chars {
+    column-width: 4rem;
+    column-gap: 0.8rem;
+    margin: 0 0 0.4rem;
+  }
+  .clean-chars li {
+    break-inside: avoid;
+  }
+  .clean-chars label {
+    display: flex;
+    align-items: baseline;
+    gap: 0.3rem;
+    white-space: nowrap;
+  }
+  .clean-chars code {
+    min-width: 1.4em;
+    text-align: center;
+  }
+  .clean-chars .count {
+    color: var(--muted-2);
+    font-variant-numeric: tabular-nums;
+  }
+  /* A long list of duplicates stops after three lines; the count above says how many. */
+  .clean-dupes {
+    margin: 0 0 0.4rem;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    overflow: hidden;
+    overflow-wrap: anywhere;
+  }
+  .confirm-pop hr {
+    border: none;
+    border-top: 1px solid var(--panel-border);
+    margin: 0.4rem 0;
   }
   .confirm-actions {
     display: flex;

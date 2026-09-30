@@ -40,6 +40,10 @@ export const BRACKET_PAIRS: readonly (readonly [string, string])[] = [
 /** How the ⚠️ panel files a character: worth removing, possibly wanted, or ordinary. */
 export type CharClass = "ignored" | "tolerated" | "accepted";
 
+/** Characters that separate words, so cleaning replaces them with a space rather than
+ *  deleting them: `x(y` must not become `xy`, nor `21C/Delta` `21CDelta`. */
+export const SPACED_CHARS: ReadonlySet<string> = new Set([...BRACKET_PAIRS.flat(), "/", "\\", "|"]);
+
 /** Letters, combining marks and digits of any script, plus the plain space. The marks
  *  matter: Devanagari, Thai or Hebrew vowel signs are code points of their own. */
 const WORD_CHAR = /[\p{L}\p{M}\p{N} ]/u;
@@ -231,7 +235,7 @@ export function oddChars(sources: readonly (readonly string[])[]): OddChar[] {
   sources.forEach((items, si) => {
     for (const item of items)
       for (const { char, cls, pair } of scanItem(item)) {
-        const key = `${cls}|${char}`;
+        const key = charKey({ char, cls });
         let c = found.get(key);
         if (!c) {
           const label = INVISIBLE.test(char)
@@ -247,6 +251,42 @@ export function oddChars(sources: readonly (readonly string[])[]): OddChar[] {
   return [...found.values()].sort(
     (a, b) => CLASS_RANK[a.cls] - CLASS_RANK[b.cls] || b.count - a.count || a.char.localeCompare(b.char),
   );
+}
+
+/** The key one character-and-class goes by, e.g. in the save-time cleanup's selection: a
+ *  lone `(` and a paired one are different entries. */
+export function charKey(c: { char: string; cls: CharClass }): string {
+  return `${c.cls}|${c.char}`;
+}
+
+/** Clean `items` of the characters whose `charKey` is in `remove` — per occurrence, so a
+ *  selected lone `(` goes while a paired one stays. A word-separating character becomes a
+ *  space, anything else is deleted; then runs of spaces collapse, edges are trimmed and
+ *  items left empty are dropped. Duplicates are left for `findDupes`. */
+export function cleanItems(items: readonly string[], remove: ReadonlySet<string>): string[] {
+  const out: string[] = [];
+  for (const item of items) {
+    const hits = scanItem(item).filter((h) => remove.has(charKey(h)));
+    let text = item;
+    if (hits.length) {
+      const chars = [...item];
+      for (const h of hits) chars[h.index] = SPACED_CHARS.has(h.char) ? " " : "";
+      text = chars.join("").replace(/ {2,}/g, " ").trim();
+    }
+    if (text) out.push(text);
+  }
+  return out;
+}
+
+/** `items` without repeats (first occurrence kept, order kept), plus each repeated text
+ *  with how many copies it had — what the save-time confirm lists. */
+export function findDupes(items: readonly string[]): { unique: string[]; dupes: { text: string; copies: number }[] } {
+  const counts = new Map<string, number>();
+  for (const it of items) counts.set(it, (counts.get(it) ?? 0) + 1);
+  return {
+    unique: [...counts.keys()],
+    dupes: [...counts].filter(([, n]) => n > 1).map(([text, copies]) => ({ text, copies })),
+  };
 }
 
 /** Serialize items back into an input string on `sep`, for loading a saved list into

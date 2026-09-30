@@ -465,6 +465,10 @@ export interface CustomStrings {
   charsRemoveMaybe: string;
   charsLone: (char: string, partner: string) => string;
   charsPaired: (open: string, close: string) => string;
+  /** The save-time cleanup confirm: the characters it can remove (ticked by the reader), then
+   *  how many duplicate copies saving drops (`n` = the copies beyond the first). */
+  cleanChars: string;
+  cleanDupes: (n: number) => string;
   /** The ⚙️ Custom settings: the control's label, the panel title, and the two preview-cap
    *  fields — how many items a content preview lists, and how many characters it may run. */
   settingsLabel: string;
