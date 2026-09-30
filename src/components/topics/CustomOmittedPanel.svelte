@@ -20,8 +20,14 @@
   const tooLongTitle = $derived(
     [lang.ui.omitted.tooLongHint(hidingTooLong), b.tooLong.samples.join(", ")].join("\n"),
   );
-  const dupeTitle = (samples: string[]): string =>
-    samples.length ? [lang.ui.custom.dupesHint, samples.join(", ")].join("\n") : lang.ui.custom.dupesHint;
+  // One line per clause: a native tooltip keeps the newlines, and the save note only concerns
+  // duplicates inside one list (saving cleans those, not the ones between lists or topics).
+  const dupeTitle = (type: "internal" | "local" | "global", samples: string[]): string =>
+    [
+      lang.ui.custom.dupesNote,
+      ...(type === "internal" ? [lang.ui.custom.dupesNoteSave] : []),
+      ...(samples.length ? [lang.ui.custom.dupesSamples[type], samples.join(", ")] : []),
+    ].join("\n");
 
   const anything = $derived(
     b.tooLong.count > 0 || b.internal.count > 0 || b.local.count > 0 || b.global.count > 0,
@@ -52,7 +58,7 @@
                list, across the active custom lists (X3), then against the topics. -->
           {#if b.internal.count > 0}
             <li>
-              <label title={dupeTitle(b.internal.samples)}>
+              <label title={dupeTitle("internal", b.internal.samples)}>
                 <input type="checkbox" checked disabled />
                 <span>{lang.ui.custom.internalDupes(b.internal.count)}</span>
               </label>
@@ -60,7 +66,7 @@
           {/if}
           {#if b.local.count > 0}
             <li>
-              <label title={dupeTitle(b.local.samples)}>
+              <label title={dupeTitle("local", b.local.samples)}>
                 <input type="checkbox" checked disabled />
                 <span>{lang.ui.custom.localDupes(b.local.count)}</span>
               </label>
@@ -68,7 +74,7 @@
           {/if}
           {#if b.global.count > 0}
             <li>
-              <label title={dupeTitle(b.global.samples)}>
+              <label title={dupeTitle("global", b.global.samples)}>
                 <input type="checkbox" checked disabled />
                 <span>{lang.ui.custom.globalDupes(b.global.count)}</span>
               </label>
