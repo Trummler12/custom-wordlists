@@ -230,9 +230,9 @@
       const top = col.querySelector<HTMLElement>(".ctl-group.top");
       const bottom = col.querySelector<HTMLElement>(".ctl-group.bottom");
       if (!top || !bottom) continue;
-      // Measure at rest — a stale transform would poison the reading.
-      top.style.transform = "";
-      bottom.style.transform = "";
+      // Measure at rest: a stale offset would poison the reading.
+      top.style.top = "";
+      bottom.style.bottom = "";
       const cr = col.getBoundingClientRect();
       const tr = top.getBoundingClientRect();
       const br = bottom.getBoundingClientRect();
@@ -244,12 +244,17 @@
       // rather than shoving the riding group over it. The column is always at least both
       // groups tall, so this fully clears the overlap except at the extreme where the whole
       // cluster is nearly scrolled off — there it stops at the boundary with a slight touch.
+      // Through the sticky offset, not a transform: a transformed group would become the
+      // containing block of the fixed-position notes and confirms inside it, which then
+      // shrink to its width and land in the wrong place.
       if (tr.top > cr.top + 1) {
-        // top group pulled down from the column top — let it slide back up
-        top.style.transform = `translateY(${-Math.min(overlap, tr.top - cr.top)}px)`;
+        // top group pulled down from the column top: let it slide back up
+        const shift = Math.min(overlap, tr.top - cr.top);
+        top.style.top = `calc(${getComputedStyle(top).top} - ${shift}px)`;
       } else if (br.bottom < cr.bottom - 1) {
-        // bottom group pulled up from the column bottom — let it slide back down
-        bottom.style.transform = `translateY(${Math.min(overlap, cr.bottom - br.bottom)}px)`;
+        // bottom group pulled up from the column bottom: let it slide back down
+        const shift = Math.min(overlap, cr.bottom - br.bottom);
+        bottom.style.bottom = `calc(${getComputedStyle(bottom).bottom} - ${shift}px)`;
       }
     }
   }
@@ -281,7 +286,7 @@
     <CustomOmittedPanel />
     <CustomCharsPanel />
     <span class="sep">
-      <label class="sep-label" for="custom-sep">{lang.ui.custom.separatorLabel}</label>
+      <span class="sep-label">{lang.ui.custom.separatorLabel}</span>
       <select
         id="custom-sep"
         class="sep-select"
@@ -615,14 +620,21 @@
   }
   /* The two examples sit under the cap fields, set off by a light rule: `S | L`, centred,
      each a TipText that ellipsizes its own label. */
+  /* S flush left, L flush right, the bar centred between them. */
   .settings-example {
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
     align-items: baseline;
-    justify-content: center;
     gap: 0.6rem;
     margin-top: 0.5rem;
     padding-top: 0.4rem;
     border-top: 1px solid var(--panel-border);
+  }
+  .settings-example > :global(button:first-of-type) {
+    justify-self: start;
+  }
+  .settings-example > :global(button:last-of-type) {
+    justify-self: end;
   }
   .settings-example-sep {
     color: var(--muted-2);

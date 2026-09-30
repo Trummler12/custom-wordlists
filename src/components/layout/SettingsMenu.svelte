@@ -162,9 +162,10 @@
            picker itself uses. -->
       {#if UI_LANGS.length > 1}
         <div class="setting-row">
-          <label class="setting">
-            <span>{lang.ui.settings.interfaceLang}</span>
+          <div class="setting">
+            <span id={`${id}-ui-lang`}>{lang.ui.settings.interfaceLang}</span>
             <select
+              aria-labelledby={`${id}-ui-lang`}
               value={lang.uiPref}
               onchange={(e) => lang.setUiPref(e.currentTarget.value)}
             >
@@ -173,7 +174,7 @@
                 <option value={l}>{lang.name(l)}</option>
               {/each}
             </select>
-          </label>
+          </div>
         </div>
       {/if}
       <!-- Destructive, so it sits apart from the preferences above it and is armed
