@@ -7,8 +7,10 @@
 // file — on an unescaped path to the DOM. Parsing to parts keeps the strings
 // plain data.
 
-/** The paired `{name}…{/name}` spans: one line per element. `name` is what a part's `kind`
- *  says, `tag` the element it renders as, `aliases` further spellings a string may use for
+import { COLOR_SHADES, CSS_COLORS } from "./colors";
+
+/** The paired `{name}…{/name}` spans: one line per element. `name` is what a styled part's
+ *  `names` holds, `tag` the element it renders as, `aliases` further spellings a string may use for
  *  the same span. Names are global, so an alias works in every locale, not just its own
  *  language. Tags come only from here, never from a string, so no markup reaches the DOM. */
 export const SPANS = [
@@ -26,33 +28,76 @@ export const SPANS = [
 
 type SpanName = (typeof SPANS)[number]["name"];
 
+/** A styled run. Its opening tag is a space-separated token list: span names (each an
+ *  element, nested outer to inner in the order written), a colour for the text, and
+ *  `mark` optionally followed by a colour for its background: `{b red mark yellow}`. */
+export interface StyledPart {
+  kind: "span";
+  names: SpanName[];
+  color?: string;
+  bg?: string;
+  text: string;
+}
+
 export type Part =
   | { kind: "text"; text: string }
   | { kind: "br" }
   | { kind: "link"; text: string; href: string }
-  | { kind: SpanName; text: string };
+  | StyledPart;
 
-/** The element a span part renders as. */
-export function spanTag(kind: SpanName): string {
-  return SPANS.find((s) => s.name === kind)!.tag;
+/** The element a span name renders as. */
+export function spanTag(name: SpanName): string {
+  return SPANS.find((s) => s.name === name)!.tag;
 }
 
-const escape = (s: string): string => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+const BY_NAME = new Map<string, SpanName>(
+  SPANS.flatMap((s) => [s.name, ...s.aliases].map((n) => [n, s.name] as [string, SpanName])),
+);
+
+/** A colour at `tok[i]`, with an optional `light` / `dark` before it: its CSS value and the
+ *  index after it, or null when there is none. A lone `light` / `dark` is a theme's text
+ *  colour, which only makes sense for text (`asText`), not for a background. */
+function readColor(tok: string[], i: number, asText: boolean): { value: string; next: number } | null {
+  const shade = COLOR_SHADES[tok[i]];
+  const name = shade ? tok[i + 1] : tok[i];
+  if (name && CSS_COLORS.has(name))
+    return {
+      value: shade ? `color-mix(in srgb, ${name}, ${shade.mix})` : name,
+      next: shade ? i + 2 : i + 1,
+    };
+  return shade && asText ? { value: shade.text, next: i + 1 } : null;
+}
+
+/** Read an opening tag's token list, or null when any token is unknown, a span repeats, or
+ *  a second colour competes for the same slot — the tag then stays literal text. */
+function readStyle(open: string): Omit<StyledPart, "kind" | "text"> | null {
+  const tok = open.split(" ");
+  const style: Omit<StyledPart, "kind" | "text"> = { names: [] };
+  for (let i = 0; i < tok.length; ) {
+    const name = BY_NAME.get(tok[i]);
+    if (name) {
+      if (style.names.includes(name)) return null;
+      style.names.push(name);
+      i++;
+      if (name === "mark") {
+        const c = readColor(tok, i, false);
+        if (c) [style.bg, i] = [c.value, c.next];
+      }
+      continue;
+    }
+    const c = readColor(tok, i, true);
+    if (!c || style.color) return null;
+    [style.color, i] = [c.value, c.next];
+  }
+  return style;
+}
 
 // One pass over every inline construct, so they interleave: a `[text](url)` link, or a span
-// whose closing name must repeat its opening one (`\k<o…>`), so `{b}x{/i}` stays literal.
-// Named groups, one pair per SPANS line, so nothing depends on alternative order. Non-greedy,
-// and nothing nests: a span's content is plain text, like a link's label.
-const INLINE = new RegExp(
-  [
-    String.raw`\[(?<label>[^\]]+)\]\((?<href>[^)\s]+)\)`,
-    ...SPANS.map((s, i) => {
-      const names = [s.name, ...s.aliases].map(escape).join("|");
-      return String.raw`\{(?<o${i}>${names})\}(?<t${i}>[\s\S]*?)\{\/\k<o${i}>\}`;
-    }),
-  ].join("|"),
-  "g",
-);
+// whose closing tag repeats its opening one exactly (`\k<open>`), so `{b}x{/i}` stays
+// literal. The opening tag is validated after matching (readStyle). Non-greedy, and nothing
+// nests: a span's content is plain text, like a link's label.
+const INLINE =
+  /\[(?<label>[^\]]+)\]\((?<href>[^)\s]+)\)|\{(?<open>[a-z]+(?: [a-z]+)*)\}(?<body>[\s\S]*?)\{\/\k<open>\}/g;
 
 /** Only http(s) is renderable as a link. A data file is content, and content must
  *  not be able to produce `javascript:` — anything else falls back to plain text,
@@ -85,9 +130,10 @@ export function parseMarkup(text: string): Part[] {
       if (isSafeHref(g.href)) parts.push({ kind: "link", text: g.label, href: g.href });
       else push(whole);
     } else {
-      const i = SPANS.findIndex((_, i) => g[`o${i}`] !== undefined);
+      const style = readStyle(g.open);
+      if (!style) push(whole);
       // An empty span ({b}{/b}) matched but held nothing, so it contributes no part.
-      if (g[`t${i}`]) parts.push({ kind: SPANS[i].name, text: g[`t${i}`] });
+      else if (g.body) parts.push({ kind: "span", ...style, text: g.body });
     }
     last = m.index + whole.length;
   }

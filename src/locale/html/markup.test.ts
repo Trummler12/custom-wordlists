@@ -1,4 +1,5 @@
 import { describe, expect, it } from "vitest";
+import { COLOR_SHADES, CSS_COLORS } from "./colors";
 import { parseMarkup, plainText, SPANS } from "./markup";
 
 describe("parseMarkup", () => {
@@ -39,37 +40,37 @@ describe("parseMarkup", () => {
   it("reads a {b}bold{/b} run and the text around it", () => {
     expect(parseMarkup("use both {b}and{/b} more")).toEqual([
       { kind: "text", text: "use both " },
-      { kind: "b", text: "and" },
+      { kind: "span", names: ["b"], text: "and" },
       { kind: "text", text: " more" },
     ]);
   });
 
   it("reads an {i}italic{/i} run", () => {
     expect(parseMarkup("{i}All{/i} variants")).toEqual([
-      { kind: "i", text: "All" },
+      { kind: "span", names: ["i"], text: "All" },
       { kind: "text", text: " variants" },
     ]);
   });
 
   it("interleaves emphasis with a link and a break", () => {
     const parts = parseMarkup("{b}a{/b} [x](https://x.example){br}{i}b{/i}");
-    expect(parts.map((p) => p.kind)).toEqual(["b", "text", "link", "br", "i"]);
+    expect(parts.map((p) => p.kind)).toEqual(["span", "text", "link", "br", "span"]);
   });
 
   it("reads a {code}code{/code} run", () => {
     expect(parseMarkup("a {code}({/code}-{code}){/code} pair")).toEqual([
       { kind: "text", text: "a " },
-      { kind: "code", text: "(" },
+      { kind: "span", names: ["code"], text: "(" },
       { kind: "text", text: "-" },
-      { kind: "code", text: ")" },
+      { kind: "span", names: ["code"], text: ")" },
       { kind: "text", text: " pair" },
     ]);
   });
 
-  it("reads every alias as its span's canonical kind", () => {
+  it("reads every alias as its span's canonical name", () => {
     for (const s of SPANS)
       for (const n of [s.name, ...s.aliases])
-        expect(parseMarkup(`{${n}}x{/${n}}`)).toEqual([{ kind: s.name, text: "x" }]);
+        expect(parseMarkup(`{${n}}x{/${n}}`)).toEqual([{ kind: "span", names: [s.name], text: "x" }]);
   });
 
   it("leaves a span closed under a different name literal", () => {
@@ -77,9 +78,52 @@ describe("parseMarkup", () => {
     expect(parseMarkup("{b}x{/bold}")).toEqual([{ kind: "text", text: "{b}x{/bold}" }]);
   });
 
-  it("gives every span name to one span only", () => {
+  it("gives every span name to one span only, and none to a colour or shade", () => {
     const names = SPANS.flatMap((s) => [s.name, ...s.aliases]);
     expect(new Set(names).size).toBe(names.length);
+    expect(names.filter((n) => CSS_COLORS.has(n) || n in COLOR_SHADES)).toEqual([]);
+  });
+
+  describe("colours", () => {
+    it("colours the text", () => {
+      expect(parseMarkup("{red}x{/red}")).toEqual([{ kind: "span", names: [], color: "red", text: "x" }]);
+    });
+    it("marks with a background colour", () => {
+      expect(parseMarkup("{mark yellow}x{/mark yellow}")).toEqual([
+        { kind: "span", names: ["mark"], bg: "yellow", text: "x" },
+      ]);
+    });
+    it("combines text colour, mark background and further spans in one tag", () => {
+      expect(parseMarkup("{green mark cyan}x{/green mark cyan}")).toEqual([
+        { kind: "span", names: ["mark"], color: "green", bg: "cyan", text: "x" },
+      ]);
+      expect(parseMarkup("{b red u}x{/b red u}")).toEqual([
+        { kind: "span", names: ["b", "u"], color: "red", text: "x" },
+      ]);
+    });
+    it("shades a colour lighter or darker, leaving the mixing to the browser", () => {
+      expect(parseMarkup("{mark light green}x{/mark light green}")).toEqual([
+        { kind: "span", names: ["mark"], bg: "color-mix(in srgb, green, white 50%)", text: "x" },
+      ]);
+      expect(parseMarkup("{dark red}x{/dark red}")[0]).toMatchObject({ color: "color-mix(in srgb, red, black 40%)" });
+    });
+    it("reads a lone light / dark as that theme's text colour, for text only", () => {
+      expect(parseMarkup("{light mark red}x{/light mark red}")).toEqual([
+        { kind: "span", names: ["mark"], color: COLOR_SHADES.light.text, bg: "red", text: "x" },
+      ]);
+      expect(parseMarkup("{dark}x{/dark}")[0]).toMatchObject({ color: COLOR_SHADES.dark.text });
+      // As a background it would read as the opposite of its word, so it isn't one.
+      expect(parseMarkup("{mark light}x{/mark light}")).toEqual([
+        { kind: "span", names: ["mark"], color: COLOR_SHADES.light.text, text: "x" },
+      ]);
+    });
+    it("leaves unknown words, two text colours or a repeated span literal", () => {
+      for (const t of ["{blurple}x{/blurple}", "{red blue}x{/red blue}", "{b b}x{/b b}", "{light dark}x{/light dark}"])
+        expect(parseMarkup(t)).toEqual([{ kind: "text", text: t }]);
+    });
+    it("keeps the text of a coloured run in plain text", () => {
+      expect(plainText("a {green mark cyan}b{/green mark cyan} c")).toBe("a b c");
+    });
   });
 
   it("drops an empty {b}{/b} span rather than emitting an empty run", () => {
