@@ -213,7 +213,7 @@
     margin-top: 0.7rem;
   }
   .language-type-panel label {
-    display: flex;
+    display: inline-flex;
     align-items: baseline;
     gap: 0.45rem;
     cursor: pointer;

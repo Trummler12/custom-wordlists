@@ -165,7 +165,7 @@
     gap: 0.3rem;
   }
   .coverage-panel label {
-    display: flex;
+    display: inline-flex;
     align-items: baseline;
     gap: 0.45rem;
     cursor: pointer;

@@ -186,8 +186,10 @@ h2 {
   flex-direction: column;
   gap: 0.3rem;
 }
+/* inline-flex, not flex: a block-level label would stretch its click area across the whole
+   panel row, far past the text it names. */
 .omitted-panel label {
-  display: flex;
+  display: inline-flex;
   align-items: baseline;
   gap: 0.45rem;
   cursor: pointer;
