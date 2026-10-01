@@ -82,7 +82,8 @@ export interface CategoryMeta {
    *  Inherited down to the next declaring node. See lib/rulers. */
   hideRulers?: boolean;
   /** Whether this category's row carries one toggle switching every list below it
-   *  to English at once. See lib/english. */
+   *  to the reader's secondary language at once (English-only once, hence the name).
+   *  See lib/languages/secondary. */
   sharedEnglishToggle?: boolean;
   /** Icon keys whose control this category surfaces on its own row and syncs across
    *  its subtree — `["geoguessr"]` on `geography/human` gives one coverage radio
