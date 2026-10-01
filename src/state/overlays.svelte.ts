@@ -7,7 +7,6 @@
 // without its `this`.
 
 import { tick } from "svelte";
-import { lang } from "./lang.svelte";
 
 /** The overlays that remember what opened them, and what counts as being "in" one
  *  — how Escape works out which of them the focus is sitting in.
@@ -16,6 +15,7 @@ import { lang } from "./lang.svelte";
  *  whatever row they belong to, so both are named. The note is there for the one
  *  focusable thing a note can hold, the link inviting a romaji correction. */
 type OverlayKind =
+  | "langSelect"
   | "lang"
   | "settings"
   | "omitted"
@@ -28,6 +28,7 @@ type OverlayKind =
   | "customSettings"
   | "tip";
 const HOSTS: Record<OverlayKind, string> = {
+  langSelect: ".lang-select",
   lang: ".lang-picker",
   settings: ".settings-picker",
   omitted: ".omitted-host",
@@ -53,6 +54,7 @@ class OverlayState {
    *
    *  Not `$state`: read in event handlers, never rendered. */
   #openers: Record<OverlayKind, HTMLElement | null> = {
+    langSelect: null,
     lang: null,
     settings: null,
     omitted: null,
@@ -68,9 +70,12 @@ class OverlayState {
   #remember(kind: OverlayKind, trigger: Element | null | undefined): void {
     this.#openers[kind] = trigger instanceof HTMLElement ? trigger : null;
   }
-  /** Which language menu is open, by instance id, or null. Two pickers share the
-   *  language but each has its own trigger. */
+  /** Which 🌐 panel is open, by instance id, or null. Two panels share the
+   *  languages but each has its own trigger. */
   langMenu = $state<string | null>(null);
+  /** Which language list inside a 🌐 panel is open, by its id, or null. Its own slot
+   *  so that opening one leaves the panel around it standing. */
+  langSelect = $state<string | null>(null);
   /** Which settings menu is open, by instance id, or null — same two-instance
    *  arrangement as the language picker it sits beside. */
   settingsMenu = $state<string | null>(null);
@@ -100,11 +105,19 @@ class OverlayState {
 
   toggleLangMenu = (id: string, trigger?: Element): void => {
     this.langMenu = this.langMenu === id ? null : id;
+    this.langSelect = null;
     if (this.langMenu) this.#remember("lang", trigger);
   };
-  chooseLanguage = (l: string): void => {
-    this.langMenu = null;
-    lang.set(l);
+  toggleLangSelect = (id: string, trigger?: Element): void => {
+    this.langSelect = this.langSelect === id ? null : id;
+    if (this.langSelect) this.#remember("langSelect", trigger);
+  };
+  /** Close a language list after a pick, handing the focus back to its field: the
+   *  list leaves the document with the button that was clicked. */
+  closeLangSelect = (): void => {
+    this.langSelect = null;
+    const back = this.#openers.langSelect;
+    if (back) void returnFocus(back);
   };
 
   // --- Settings menu ---------------------------------------------------------
@@ -365,6 +378,7 @@ class OverlayState {
   onPointerDown = (e: PointerEvent): void => {
     this.#pointerType = e.pointerType;
     const target = e.target as Element | null;
+    if (this.langSelect && !target?.closest?.(".lang-select")) this.langSelect = null;
     if (this.langMenu && !target?.closest?.(".lang-picker")) this.langMenu = null;
     if (this.settingsMenu && !target?.closest?.(".settings-picker")) this.settingsMenu = null;
     if (this.omittedPanel && !target?.closest?.(".omitted-host")) this.omittedPanel = null;
@@ -428,7 +442,8 @@ class OverlayState {
     const kind = this.#focusedOverlay();
     if (!kind) return;
     if (kind === "tip") this.closeTip();
-    else if (kind === "lang") this.langMenu = null;
+    else if (kind === "langSelect") this.langSelect = null;
+    else if (kind === "lang") this.langMenu = this.langSelect = null;
     else if (kind === "settings") this.settingsMenu = null;
     else if (kind === "coverage") this.coveragePanel = null;
     else if (kind === "languageType") this.languageTypePanel = null;
@@ -456,6 +471,7 @@ class OverlayState {
     const loose = !active || active === document.body;
     const inside = (sel: string) => loose || !!active?.closest?.(sel);
     if (this.tip && inside(HOSTS.tip)) return "tip";
+    if (this.langSelect && inside(HOSTS.langSelect)) return "langSelect";
     if (this.langMenu && inside(HOSTS.lang)) return "lang";
     if (this.settingsMenu && inside(HOSTS.settings)) return "settings";
     if (this.omittedPanel && inside(HOSTS.omitted)) return "omitted";

@@ -14,6 +14,7 @@
 // it is a place, while `language.useEnglish` sits on every topic row, so it is a
 // feature. The group carries the prefix, so no key repeats it.
 
+import type { FlagType } from "./flags";
 import type { VariantId } from "./variants";
 
 /** The banner. */
@@ -183,7 +184,8 @@ export interface LanguageStrings {
   panelTitle: string;
   slot: { primary: string; interface: string; fallback: string };
   slotHint: { primary: string; interface: string; fallback: string };
-  /** The Interface dropdown's first option, and its default: follow the Primary language. */
+  /** The Interface dropdown's first option, and its default: follow the Primary language.
+   *  Carries markup (rendered through html/Msg). */
   followPrimary: string;
   /** The checkbox that reveals the per-list secondary-language toggles, around its bound
    *  language dropdown: "<before> [dropdown] <after>" — split like `header.tagline*`, since
@@ -193,6 +195,10 @@ export interface LanguageStrings {
   showSecondaryHint: string;
   /** Why that checkbox does nothing while the secondary language equals the primary one. */
   secondaryMoot: string;
+  /** The radio row choosing which kind of flag marks the per-list switch (label with its
+   *  own colon), and one name per kind. */
+  flagType: string;
+  flagTypes: Record<FlagType, string>;
   /** Warning marker for a topic that doesn't fully support the selected language. */
   unsupported: (language: string) => string;
   /** Second half of that warning — see `langWarning()` for when it applies. */

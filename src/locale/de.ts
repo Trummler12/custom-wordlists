@@ -208,11 +208,13 @@ export const de: UIStrings = {
       interface: "Sprache der Oberfläche.",
       fallback: "Wird überall dort verwendet, wo der Oberflächensprache ein Label fehlt.",
     },
-    followPrimary: "Wie Primärsprache",
+    followPrimary: "{i}Primär{/i}",
     showSecondaryBefore: "Option zum Verwenden von Einträgen auf", showSecondaryAfter: "anzeigen",
     showSecondaryHint:
       "Damit lassen sich z. B. Ländernamen in deiner Muttersprache, die Namen von Serienfiguren dagegen in deiner bevorzugten Synchronfassung verwenden.",
     secondaryMoot: "Diese Schalter erscheinen nur, solange sich Primär- und Zweitsprache unterscheiden.",
+    flagType: "Flaggentyp:",
+    flagTypes: { country: "Land", mixed: "Gemischt", linguistic: "Sprachlich" },
     unsupported: (language) =>
       `Für ${language} noch nicht bestätigt — dieses Thema ist evtl. unvollständig.`,
     fallback: "Fehlende Übersetzungen erscheinen auf Englisch.",

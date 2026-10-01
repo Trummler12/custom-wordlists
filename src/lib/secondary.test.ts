@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { canForceEnglish, englishControl, sharedEnglishTopics } from "./english";
+import { canForceSecondary, secondaryControl, sharedSecondaryTopics } from "./secondary";
 import type { CategoryMeta, TopicSummary } from "./types";
 
 const topic = (id: string, fields: Partial<TopicSummary> = {}): TopicSummary => ({
@@ -12,26 +12,32 @@ const topic = (id: string, fields: Partial<TopicSummary> = {}): TopicSummary => 
   ...fields,
 });
 
-describe("canForceEnglish", () => {
-  it("says no while English is the selected language", () => {
-    expect(canForceEnglish(topic("a", { languages: ["de", "en"] }), "en")).toBe(false);
+describe("canForceSecondary", () => {
+  it("says no while the secondary language is the selected one", () => {
+    expect(canForceSecondary(topic("a", { languages: ["de", "en"] }), "en", "en")).toBe(false);
+    expect(canForceSecondary(topic("a", { languages: ["de", "ja"] }), "ja", "ja")).toBe(false);
   });
 
   it("says no for a list whose names here already are the English ones", () => {
     const lol = topic("lol", { languages: ["de", "en"], usesEnglishFor: ["de"] });
-    expect(canForceEnglish(lol, "de")).toBe(false);
+    expect(canForceSecondary(lol, "de", "en")).toBe(false);
+  });
+
+  it("says yes for such a list when the secondary language is not English", () => {
+    const lol = topic("lol", { languages: ["de", "en", "ja"], usesEnglishFor: ["de"] });
+    expect(canForceSecondary(lol, "de", "ja")).toBe(true);
   });
 
   it("says yes for a list that has its own names", () => {
-    expect(canForceEnglish(topic("a", { languages: ["de", "en"] }), "de")).toBe(true);
+    expect(canForceSecondary(topic("a", { languages: ["de", "en"] }), "de", "en")).toBe(true);
   });
 
   it("says yes for an undeclared list — the field says nothing about its names", () => {
-    expect(canForceEnglish(topic("a"), "de")).toBe(true);
+    expect(canForceSecondary(topic("a"), "de", "en")).toBe(true);
   });
 });
 
-describe("englishControl", () => {
+describe("secondaryControl", () => {
   const categories: Record<string, CategoryMeta> = {
     gaming: { sharedEnglishToggle: true },
     "gaming/pokemon": {},
@@ -39,21 +45,21 @@ describe("englishControl", () => {
   };
 
   it("finds nothing when no ancestor declares one", () => {
-    expect(englishControl(topic("a", { category: "film-tv" }), categories)).toBeNull();
-    expect(englishControl(topic("a", { category: "" }), categories)).toBeNull();
+    expect(secondaryControl(topic("a", { category: "film-tv" }), categories)).toBeNull();
+    expect(secondaryControl(topic("a", { category: "" }), categories)).toBeNull();
   });
 
   it("finds the declaring ancestor", () => {
-    expect(englishControl(topic("a", { category: "gaming/pokemon" }), categories)).toBe("gaming");
+    expect(secondaryControl(topic("a", { category: "gaming/pokemon" }), categories)).toBe("gaming");
   });
 
   it("prefers the nearest one, so a subtree can take its lists back", () => {
     const t = topic("gen-1", { category: "gaming/pokemon/pokemon" });
-    expect(englishControl(t, categories)).toBe("gaming/pokemon/pokemon");
+    expect(secondaryControl(t, categories)).toBe("gaming/pokemon/pokemon");
   });
 });
 
-describe("sharedEnglishTopics", () => {
+describe("sharedSecondaryTopics", () => {
   const categories: Record<string, CategoryMeta> = {
     gaming: { sharedEnglishToggle: true },
     "gaming/pokemon/pokemon": { sharedEnglishToggle: true },
@@ -69,17 +75,17 @@ describe("sharedEnglishTopics", () => {
 
   it("governs only the descendants it is the nearest declaring ancestor of", () => {
     // The generations answer to the deeper category, not to `gaming`.
-    expect(sharedEnglishTopics("gaming", all, categories, "de")).toEqual([items]);
-    expect(sharedEnglishTopics("gaming/pokemon/pokemon", all, categories, "de")).toEqual([gen]);
+    expect(sharedSecondaryTopics("gaming", all, categories, "de", "en")).toEqual([items]);
+    expect(sharedSecondaryTopics("gaming/pokemon/pokemon", all, categories, "de", "en")).toEqual([gen]);
   });
 
   it("leaves out lists the switch wouldn't change", () => {
     // lol is a descendant of `gaming` but already uses the English names in de.
-    expect(sharedEnglishTopics("gaming", all, categories, "de")).not.toContain(lol);
+    expect(sharedSecondaryTopics("gaming", all, categories, "de", "en")).not.toContain(lol);
   });
 
   it("governs nothing at all while English is selected", () => {
-    expect(sharedEnglishTopics("gaming", all, categories, "en")).toEqual([]);
-    expect(sharedEnglishTopics("gaming/pokemon/pokemon", all, categories, "en")).toEqual([]);
+    expect(sharedSecondaryTopics("gaming", all, categories, "en", "en")).toEqual([]);
+    expect(sharedSecondaryTopics("gaming/pokemon/pokemon", all, categories, "en", "en")).toEqual([]);
   });
 });

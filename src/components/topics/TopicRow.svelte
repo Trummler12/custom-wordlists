@@ -1,7 +1,7 @@
 <script lang="ts">
   import { onMount } from "svelte";
   import { setIndeterminate } from "../../lib/dom";
-  import { canForceEnglish } from "../../lib/english";
+  import { canForceSecondary } from "../../lib/secondary";
   import { tierNoteAt } from "../../lib/fame";
   import { baseTag, langSupport, splitName } from "../../lib/languages";
   import { rulerControl, rulerHidden } from "../../lib/rulers";
@@ -18,6 +18,7 @@
   import { sovRules } from "../../lib/matrix";
   import CoveragePanel from "./CoveragePanel.svelte";
   import FameDepthSlider from "./FameDepthSlider.svelte";
+  import SecondaryMark from "./SecondaryMark.svelte";
   import LanguageTypePanel from "./LanguageTypePanel.svelte";
   import SovereigntyMatrix from "./SovereigntyMatrix.svelte";
   import NamesModeSelect from "./NamesModeSelect.svelte";
@@ -44,11 +45,13 @@
   const rulerOptIn = $derived(!rulerGone && rulerControl(topic, topics.categories) !== null);
   const rulerShown = $derived(selection.isRulerVisible(topic));
 
-  // Behind a preference, and only where the switch would change something: not in
-  // English, and not for a list whose names in this language are the English ones
-  // anyway. Nearly every row qualifies, which is why it is off by default.
-  const englishOptIn = $derived(settings.showEnglishToggle && canForceEnglish(topic, lang.current));
-  const forcedEnglish = $derived(lang.isForcedEnglish(topic));
+  // Behind a preference, and only where the switch would change something (see
+  // canForceSecondary). Nearly every row qualifies, which is why it is off by default.
+  const secondaryOptIn = $derived(
+    settings.showSecondaryToggle && canForceSecondary(topic, lang.current, lang.secondary),
+  );
+  const forced = $derived(lang.isForced(topic));
+  const forcedLabel = $derived(lang.ui.language.useSecondary(forced, lang.nameInUi(lang.secondary)));
 
   // The Geoguessr coverage control, straight from the manifest — no file load. A
   // synth commands its contributors (each with its own ladder); a plain topic, itself.
@@ -180,15 +183,15 @@
     <!-- Per topic, not per group: how a language spells a name is the same question
          in every group of a list. Shows itself only where the answers differ. -->
     <VariantPanel tid={topic.id} />
-    {#if englishOptIn}
+    {#if secondaryOptIn}
       <button
         type="button"
-        class="english-toggle"
-        class:on={forcedEnglish}
-        aria-pressed={forcedEnglish}
-        aria-label={lang.ui.language.useEnglish(forcedEnglish)}
-        title={lang.ui.language.useEnglish(forcedEnglish)}
-        onclick={() => lang.toggleEnglish(topic)}>🇬🇧</button
+        class="secondary-toggle"
+        class:on={forced}
+        aria-pressed={forced}
+        aria-label={forcedLabel}
+        title={forcedLabel}
+        onclick={() => lang.toggleForced(topic)}><SecondaryMark /></button
       >
     {/if}
     {#if rulerOptIn}

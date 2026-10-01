@@ -4,15 +4,20 @@
 //
 // One instance, reached through property access (see state/lang.svelte.ts for why).
 
+import { FLAG_TYPES, type FlagType } from "../locale/flags";
+
 /** The one key this store persists under — exported so `reset` can clear exactly the
  *  selection settings without wiping the reader's custom lists alongside them. */
 export const SETTINGS_STORAGE_KEY = "wordlists:settings";
 
 class SettingsState {
-  /** Whether topic and category rows offer the switch to English entries. Off by
-   *  default: almost every row qualifies for it, and a control that useful to a
-   *  few is still clutter to everyone else. */
-  showEnglishToggle = $state(false);
+  /** Whether topic and category rows offer the switch to the secondary language's
+   *  entries. Off by default: almost every row qualifies for it, and a control that
+   *  useful to a few is still clutter to everyone else. */
+  showSecondaryToggle = $state(false);
+
+  /** Which kind of flag that switch wears, where its language has more than one. */
+  flagType = $state<FlagType>("country");
 
   /** Omission rules the reader has flipped away from their default — keyed
    *  `${topicId}:${groupId}:${ruleId}`. One set covers both directions: an
@@ -23,12 +28,18 @@ class SettingsState {
   init(): void {
     const stored = read();
     if (!stored) return;
-    this.showEnglishToggle = !!stored.showEnglishToggle;
+    // Read under its old name too: it was the English-only switch before LB3.
+    this.showSecondaryToggle = !!(stored.showSecondaryToggle ?? stored.showEnglishToggle);
+    if (stored.flagType && FLAG_TYPES.includes(stored.flagType)) this.flagType = stored.flagType;
     this.toggledOmissions = stored.toggledOmissions ?? {};
   }
 
-  setShowEnglishToggle(on: boolean): void {
-    this.showEnglishToggle = on;
+  setShowSecondaryToggle(on: boolean): void {
+    this.showSecondaryToggle = on;
+    this.save();
+  }
+  setFlagType(type: FlagType): void {
+    this.flagType = type;
     this.save();
   }
 
@@ -52,7 +63,8 @@ class SettingsState {
 
   private save(): void {
     write({
-      showEnglishToggle: this.showEnglishToggle,
+      showSecondaryToggle: this.showSecondaryToggle,
+      flagType: this.flagType,
       toggledOmissions: this.toggledOmissions,
     });
   }
@@ -60,7 +72,13 @@ class SettingsState {
 
 // localStorage throws in a few real setups (private mode, blocked storage), and a
 // missing preference is never worth an error.
-type Stored = { showEnglishToggle?: boolean; toggledOmissions?: Record<string, boolean> };
+type Stored = {
+  showSecondaryToggle?: boolean;
+  /** The pre-LB3 name of `showSecondaryToggle`, only ever read. */
+  showEnglishToggle?: boolean;
+  flagType?: FlagType;
+  toggledOmissions?: Record<string, boolean>;
+};
 
 function read(): Stored | null {
   try {

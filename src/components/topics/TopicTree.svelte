@@ -89,14 +89,14 @@
     text-align: right;
   }
 
-  /* The two row toggles: 📏 for a fame ruler's visibility, 🇬🇧 for a list's content
+  /* The two row toggles: 📏 for a fame ruler's visibility, the flag for a list's content
      language — shared by category rows (CategoryNode) and topic rows (TopicRow), so they
      sit at the tree root. Both read their state as opacity (off is present but receded),
-     so the row keeps its width when one is switched; an emoji can't take a colour, and
+     so the row keeps its width when one is switched; an emoji or a flag can't take a colour, and
      opacity is the only channel — full = shown/on, dim = mixed (category roll-up), faint
      = hidden/off. */
   .topics :global(.ruler-toggle),
-  .topics :global(.english-toggle) {
+  .topics :global(.secondary-toggle) {
     background: none;
     border: none;
     padding: 0 0.2rem;
@@ -106,11 +106,11 @@
     opacity: 0.3;
   }
   .topics :global(.ruler-toggle.mixed),
-  .topics :global(.english-toggle.mixed) {
+  .topics :global(.secondary-toggle.mixed) {
     opacity: 0.6;
   }
   .topics :global(.ruler-toggle.shown),
-  .topics :global(.english-toggle.on) {
+  .topics :global(.secondary-toggle.on) {
     opacity: 1;
   }
 </style>

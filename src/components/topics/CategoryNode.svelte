@@ -1,6 +1,6 @@
 <script lang="ts">
   import { setIndeterminate } from "../../lib/dom";
-  import { sharedEnglishTopics } from "../../lib/english";
+  import { sharedSecondaryTopics } from "../../lib/secondary";
   import { controlledTopics } from "../../lib/rulers";
   import { cancelFit, scheduleFit } from "../../lib/rowfit";
   import type { CatNode } from "../../lib/tree";
@@ -11,6 +11,7 @@
   import { sovRules } from "../../lib/matrix";
   import CategoryNode from "./CategoryNode.svelte";
   import CoveragePanel from "./CoveragePanel.svelte";
+  import SecondaryMark from "./SecondaryMark.svelte";
   import SovereigntyMatrix from "./SovereigntyMatrix.svelte";
   import TopicRow from "./TopicRow.svelte";
 
@@ -32,13 +33,16 @@
   // carries a tri-state toggle rolling up over exactly these.
   const governed = $derived(controlledTopics(node.path, all, topics.categories));
 
-  // The lists this category's shared English toggle governs — empty unless it
+  // The lists this category's shared language toggle governs — empty unless it
   // declares sharedEnglishToggle and something below it would actually change.
-  const englishGoverned = $derived(
-    settings.showEnglishToggle
-      ? sharedEnglishTopics(node.path, all, topics.categories, lang.current)
+  const secondaryGoverned = $derived(
+    settings.showSecondaryToggle
+      ? sharedSecondaryTopics(node.path, all, topics.categories, lang.current, lang.secondary)
       : [],
   );
+  const allForced = $derived(lang.allForced(secondaryGoverned));
+  const someForced = $derived(lang.someForced(secondaryGoverned));
+  const forcedLabel = $derived(lang.ui.language.useSecondaryAll(allForced, lang.nameInUi(lang.secondary)));
 
   // The Geoguessr coverage control this category syncs (syncControls), commanding
   // every icon-carrying real leaf below at once. From the manifest — no file load,
@@ -108,26 +112,22 @@
         > {/if}<span title={name.short !== name.long ? name.long : undefined}>{name.short}</span>
     </label>
   </h3>
-  {#if englishGoverned.length > 0}
+  {#if secondaryGoverned.length > 0}
     <button
       type="button"
-      class="english-toggle"
-      class:on={lang.allForcedEnglish(englishGoverned)}
-      class:mixed={lang.someForcedEnglish(englishGoverned)}
-      aria-pressed={lang.allForcedEnglish(englishGoverned)
-        ? "true"
-        : lang.someForcedEnglish(englishGoverned)
-          ? "mixed"
-          : "false"}
-      aria-label={lang.ui.language.useEnglishAll(lang.allForcedEnglish(englishGoverned))}
-      title={lang.ui.language.useEnglishAll(lang.allForcedEnglish(englishGoverned))}
+      class="secondary-toggle"
+      class:on={allForced}
+      class:mixed={someForced}
+      aria-pressed={allForced ? "true" : someForced ? "mixed" : "false"}
+      aria-label={forcedLabel}
+      title={forcedLabel}
       onclick={() => {
         // Same reasoning as the ruler toggle below: a collapsed category shows
         // none of the rows this changes, so open it to show what happened.
-        lang.toggleCatEnglish(englishGoverned);
+        lang.toggleCatForced(secondaryGoverned);
         if (!open) selection.toggleCat(node);
       }}
-    >🇬🇧</button>
+    ><SecondaryMark /></button>
   {/if}
   {#if governed.length > 0}
     <button
