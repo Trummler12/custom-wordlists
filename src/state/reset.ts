@@ -10,7 +10,8 @@
 // is never persisted, so clearing storage isn't what returns it to default; the reload is.
 //
 // What it keeps: the custom lists and input (`wordlists:custom*`) and the content /
-// interface language (`wordlists:lang` / `:uiLang`) — data and identity, not settings.
+// interface / fallback / secondary language (`wordlists:lang` / `:uiLang` / `:fallbackLang` /
+// `:secondaryLang`) — data and identity, not settings.
 
 import { SETTINGS_STORAGE_KEY } from "./settings.svelte";
 import { VARIANT_STORAGE_KEY } from "./lang.svelte";
