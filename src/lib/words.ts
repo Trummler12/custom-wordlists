@@ -6,6 +6,7 @@
 import type { Group, LocalizedString, NamePair, NamesMode, Word, WordEntry } from "./types";
 import { baseTag, matchTag } from "./languages";
 import { toRomaji } from "./languages/kana.mjs";
+import { lengthClass, limitsOf, type LengthRules } from "./lengths";
 import { resolveProse } from "../locale/topics";
 
 /** The tag an entry carrying `keys` answers `lang` with, or undefined for none.
@@ -225,32 +226,38 @@ export function renderedForms(
   return [...seen];
 }
 
-/** How many of them the counters show. `maxLen` drops the forms too long for the
- *  target game — see `TOO_LONG_RULE` in lib/omitted; leave it out to count all. */
+/** How many of them the counters show. `keep` drops the forms the length rules
+ *  leave out (see `keepsForm` in lib/lengths); leave it out to count all. */
 export function renderCount(
   entries: WordEntry[],
   mode: NamesMode,
   lang: string,
   derived = false,
-  maxLen?: number,
+  keep?: (form: string) => boolean,
 ): number {
   const forms = renderedForms(entries, mode, lang, derived);
-  return maxLen === undefined ? forms.length : forms.filter((w) => w.length <= maxLen).length;
+  return keep === undefined ? forms.length : forms.filter(keep).length;
 }
 
-/** The forms `maxLen` drops, for the panel that names them and offers them back.
+/** The forms outside the character limits, for the panel that names them and offers
+ *  them back.
  *
  *  Forms rather than entries, which is what sets this apart from every other
  *  omission: an entry whose long form runs past the limit is perfectly usable
  *  under its short one, so what leaves the list is one of its two names. */
-export function overlongForms(
+export function outOfLimits(
   entries: WordEntry[],
   mode: NamesMode,
   lang: string,
   derived: boolean,
-  maxLen: number,
-): string[] {
-  return renderedForms(entries, mode, lang, derived).filter((w) => w.length > maxLen);
+  rules: Pick<LengthRules, "limits" | "script">,
+): { short: string[]; long: string[] } {
+  const out = { short: [] as string[], long: [] as string[] };
+  for (const w of renderedForms(entries, mode, lang, derived)) {
+    const cls = lengthClass(w, limitsOf(w, rules));
+    if (cls) out[cls].push(w);
+  }
+  return out;
 }
 
 /** The entries a variant spells differently, as `base → variant` pairs.

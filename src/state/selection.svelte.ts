@@ -13,8 +13,8 @@
 // `depthOf` / `setDepth` present both as a depth, since every group has a ruler
 // and a ruler only speaks in depths; a flat group's is 0 or 1.
 
-import { allRules, BASE_RULE, isOnByDefault, TOO_LONG_RULE, UNKNOWN_RULE } from "../lib/omitted";
-import { SKRIBBL } from "../lib/skribbl";
+import { keepsForm, type LengthRules } from "../lib/lengths";
+import { allRules, BASE_RULE, isOnByDefault, TOO_LONG_RULE, TOO_SHORT_RULE, UNKNOWN_RULE } from "../lib/omitted";
 import { groupEntries, groupHasNames, renderCount } from "../lib/words";
 import { depthFromKey, depthFromPointer, skipCollapsed, snapPositions } from "../lib/fame";
 import { rulerHiddenByDefault } from "../lib/rulers";
@@ -167,11 +167,21 @@ class SelectionState {
     return depth > 0 ? (g.words ?? []) : [];
   }
 
-  /** The length limit in force for this list, or none where the reader has asked
-   *  for the over-long names anyway. The counters have to know: a number beside a
-   *  row that disagrees with what the output holds is worse than either. */
-  capFor(tid: string, g: Group): number | undefined {
-    return settings.isToggled(tid, g.id, TOO_LONG_RULE) ? undefined : SKRIBBL.maxWordLen;
+  /** The length rules for this list: the limits for its language, and which of the
+   *  two rules the reader has left in force. The counters have to know: a number
+   *  beside a row that disagrees with what the output holds is worse than either. */
+  lengthRules(tid: string, g: Group): LengthRules {
+    return {
+      limits: settings.charLimits,
+      script: settings.scriptLimitsFor(lang.contentLang(tid)),
+      short: !settings.isToggled(tid, g.id, TOO_SHORT_RULE),
+      long: !settings.isToggled(tid, g.id, TOO_LONG_RULE),
+    };
+  }
+  /** The same as a filter, for counting and emitting. */
+  keepFor(tid: string, g: Group): (form: string) => boolean {
+    const rules = this.lengthRules(tid, g);
+    return (form) => keepsForm(form, rules);
   }
 
   groupTotal(tid: string, g: Group): number {
@@ -180,7 +190,7 @@ class SelectionState {
       this.modeOf(tid, g),
       lang.contentLang(tid),
       lang.derivesRomaji(tid),
-      this.capFor(tid, g),
+      this.keepFor(tid, g),
     );
   }
   groupSelCount(tid: string, g: Group): number {
@@ -189,7 +199,7 @@ class SelectionState {
       this.modeOf(tid, g),
       lang.contentLang(tid),
       lang.derivesRomaji(tid),
-      this.capFor(tid, g),
+      this.keepFor(tid, g),
     );
   }
 
@@ -218,6 +228,7 @@ class SelectionState {
     return (
       ruleId === UNKNOWN_RULE ||
       ruleId === TOO_LONG_RULE ||
+      ruleId === TOO_SHORT_RULE ||
       allRules(g).some((r) => r.id === ruleId)
     );
   }

@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { SKRIBBL } from "../../lib/skribbl";
   import { custom } from "../../state/custom.svelte";
   import { lang } from "../../state/lang.svelte";
   import { output } from "../../state/output.svelte";
@@ -7,8 +6,8 @@
 
   // The Custom row's 🚫 panel. Unlike a curated list's OmittedPanel it reads no
   // topic file: the rows are computed live from the reader's own input
-  // (output.customBreakdown, the same classification the output ran). The >32 rule
-  // is a real toggle; the duplicate rows only report — their checkboxes are disabled.
+  // (output.customBreakdown, the same classification the output ran). The length rules
+  // are real toggles; the duplicate rows only report — their checkboxes are disabled.
   //
   // Reuses the shared `.omitted-*` classes (app.css) and the `omitted` overlay slot,
   // so the panel styles, opens and dismisses exactly like a topic's.
@@ -20,6 +19,11 @@
   const tooLongTitle = $derived(
     [lang.ui.omitted.tooLongHint(hidingTooLong), b.tooLong.samples.join(", ")].join("\n"),
   );
+  const hidingTooShort = $derived(!custom.keepTooShort);
+  const tooShortTitle = $derived(
+    [lang.ui.omitted.tooShortHint(hidingTooShort), b.tooShort.samples.join(", ")].join("\n"),
+  );
+
   // One line per clause: a native tooltip keeps the newlines, and the save note only concerns
   // duplicates inside one list (saving cleans those, not the ones between lists or topics).
   const dupeTitle = (type: "internal" | "local" | "global", samples: string[]): string =>
@@ -30,7 +34,7 @@
     ].join("\n");
 
   const anything = $derived(
-    b.tooLong.count > 0 || b.internal.count > 0 || b.local.count > 0 || b.global.count > 0,
+    b.tooLong.count > 0 || b.tooShort.count > 0 || b.internal.count > 0 || b.local.count > 0 || b.global.count > 0,
   );
 </script>
 
@@ -80,8 +84,8 @@
               </label>
             </li>
           {/if}
-          <!-- The one real toggle: unchecking it keeps the over-long items in the
-               output (reported through output.overlong), like a topic's ✂️ rule. -->
+          <!-- The real toggles: unchecking one keeps those items in the output (an
+               over-long one reported through output.overlong), like a topic's rules. -->
           {#if b.tooLong.count > 0}
             <li>
               <label title={tooLongTitle}>
@@ -90,7 +94,19 @@
                   checked={hidingTooLong}
                   onchange={(e) => custom.setKeepTooLong(!e.currentTarget.checked)}
                 />
-                <span>{lang.ui.omitted.tooLong(b.tooLong.count, SKRIBBL.maxWordLen)}</span>
+                <span>{lang.ui.omitted.tooLong(b.tooLong.count, custom.lengths.limits.max)}</span>
+              </label>
+            </li>
+          {/if}
+          {#if b.tooShort.count > 0}
+            <li>
+              <label title={tooShortTitle}>
+                <input
+                  type="checkbox"
+                  checked={hidingTooShort}
+                  onchange={(e) => custom.setKeepTooShort(!e.currentTarget.checked)}
+                />
+                <span>{lang.ui.omitted.tooShort(b.tooShort.count, custom.lengths.limits.min)}</span>
               </label>
             </li>
           {/if}

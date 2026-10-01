@@ -30,6 +30,10 @@ export const UNKNOWN_RULE = UNKNOWN;
  *  be the app deciding what the reader's list is for. */
 export const TOO_LONG_RULE = ">";
 
+/** The reserved rule id for names shorter than the reader's minimum — the mirror of
+ *  `TOO_LONG_RULE`, and like it a rule about forms, hiding by default. */
+export const TOO_SHORT_RULE = "<";
+
 /** The icon whose rules form an INCLUDE control rather than a plain exclusion: overlapping,
  *  default-off, union — an entry is shown as soon as ANY of the rules covering it is ticked
  *  on (a language can be dead *and* historical, so ticking either brings it in). An entry no

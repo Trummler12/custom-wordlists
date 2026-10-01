@@ -1,10 +1,9 @@
 <script lang="ts">
   import { coverageTopicOf } from "../../coverage/route";
   import { baseTag, splitName } from "../../lib/languages";
-  import { allRules, TOO_LONG_RULE, UNKNOWN_RULE } from "../../lib/omitted";
-  import { SKRIBBL } from "../../lib/skribbl";
+  import { allRules, TOO_LONG_RULE, TOO_SHORT_RULE, UNKNOWN_RULE } from "../../lib/omitted";
   import type { Group, Omission } from "../../lib/types";
-  import { groupEntries, overlongForms, resolveReason } from "../../lib/words";
+  import { groupEntries, outOfLimits, resolveReason } from "../../lib/words";
   import Msg from "../../locale/html/Msg.svelte";
   import { lang } from "../../state/lang.svelte";
   import { overlays } from "../../state/overlays.svelte";
@@ -54,18 +53,28 @@
   // Named rather than counted per tier, unlike the row above: these have names —
   // that is the whole trouble with them — so the hint can show which, the way the
   // output counter used to before this became something a reader can switch.
-  const tooLong = $derived(
-    overlongForms(
+  const lengthRules = $derived(selection.lengthRules(tid, group));
+  const outside = $derived(
+    outOfLimits(
       groupEntries(group),
       selection.modeOf(tid, group),
       lang.contentLang(tid),
       lang.derivesRomaji(tid),
-      SKRIBBL.maxWordLen,
+      lengthRules,
     ),
   );
+  const tooLong = $derived(outside.long);
+  const tooShort = $derived(outside.short);
+  // The limits the list's own language answers to; a stray Latin name in a Japanese
+  // list follows the general ones, which the label doesn't spell out.
+  const shownLimits = $derived(lengthRules.script ?? lengthRules.limits);
   const hidingTooLong = $derived(selection.omitting(tid, group, TOO_LONG_RULE));
   const tooLongTitle = $derived(
     [lang.ui.omitted.tooLongHint(hidingTooLong), tooLong.join(", ")].join("\n"),
+  );
+  const hidingTooShort = $derived(selection.omitting(tid, group, TOO_SHORT_RULE));
+  const tooShortTitle = $derived(
+    [lang.ui.omitted.tooShortHint(hidingTooShort), tooShort.join(", ")].join("\n"),
   );
   const unknownTitle = $derived(
     [
@@ -113,7 +122,7 @@
   };
 </script>
 
-{#if rules.length > 0 || unknown > 0 || tooLong.length > 0}
+{#if rules.length > 0 || unknown > 0 || tooLong.length > 0 || tooShort.length > 0}
   <div class="omitted-host">
     <button
       type="button"
@@ -180,7 +189,19 @@
                   checked={hidingTooLong}
                   onchange={() => selection.toggleOmission(tid, group, TOO_LONG_RULE)}
                 />
-                <span>{lang.ui.omitted.tooLong(tooLong.length, SKRIBBL.maxWordLen)}</span>
+                <span>{lang.ui.omitted.tooLong(tooLong.length, shownLimits.max)}</span>
+              </label>
+            </li>
+          {/if}
+          {#if tooShort.length > 0}
+            <li>
+              <label title={tooShortTitle}>
+                <input
+                  type="checkbox"
+                  checked={hidingTooShort}
+                  onchange={() => selection.toggleOmission(tid, group, TOO_SHORT_RULE)}
+                />
+                <span>{lang.ui.omitted.tooShort(tooShort.length, shownLimits.min)}</span>
               </label>
             </li>
           {/if}

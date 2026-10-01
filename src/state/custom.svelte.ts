@@ -18,7 +18,9 @@ import {
   SEPARATORS,
   serializeItems,
 } from "../lib/custom";
-import { SKRIBBL } from "../lib/skribbl";
+import { DEFAULT_SCRIPT_LIMITS, type LengthRules } from "../lib/lengths";
+import { lang } from "./lang.svelte";
+import { settings } from "./settings.svelte";
 
 const STORAGE_KEY = "wordlists:custom";
 const LISTS_KEY = "wordlists:customLists";
@@ -60,8 +62,10 @@ class CustomState {
   /** A manual separator pick, cleared on the next edit so the field returns to
    *  auto-detection. Null = follow `detectSeparator(input)`. */
   manualSeparator = $state<Separator | null>(null);
-  /** Whether over-long items are kept anyway — the ✂️ rule switched off. */
+  /** Whether items outside the character limits are kept anyway — the length rules
+   *  switched off. */
   keepTooLong = $state(false);
+  keepTooShort = $state(false);
   /** How many rows the input grows to before it scrolls (§X2, the − / + controls). */
   maxRows = $state(MIN_ROWS);
   /** Whether the row cap is lifted and the input fits its whole content (↕️). */
@@ -85,6 +89,7 @@ class CustomState {
       this.input = s.input ?? "";
       this.manualSeparator = isSeparator(s.separator) ? s.separator : null;
       this.keepTooLong = !!s.keepTooLong;
+      this.keepTooShort = !!s.keepTooShort;
       if (typeof s.maxRows === "number") this.maxRows = clampRows(s.maxRows);
       this.fitContent = !!s.fitContent;
       if (typeof s.maxPreviewItems === "number") this.maxPreviewItems = clampPreviewItems(s.maxPreviewItems);
@@ -123,6 +128,21 @@ class CustomState {
     this.keepTooLong = on;
     this.save();
   }
+  setKeepTooShort(on: boolean): void {
+    this.keepTooShort = on;
+    this.save();
+  }
+
+  /** The limits the reader's items answer to. They have no language of their own, so
+   *  an item in Chinese, Japanese or Korean script takes the primary language's own
+   *  limits if it has some, else the secondary's, else the default ones. */
+  readonly lengths: Pick<LengthRules, "limits" | "script"> = $derived({
+    limits: settings.charLimits,
+    script:
+      settings.scriptLimitsFor(lang.current) ??
+      settings.scriptLimitsFor(lang.secondary) ??
+      DEFAULT_SCRIPT_LIMITS,
+  });
   growRows(): void {
     this.maxRows = clampRows(this.maxRows + ROW_STEP);
     this.save();
@@ -272,8 +292,9 @@ class CustomState {
    *  the output already holds (`seen`). Called by `output`, which owns that set. */
   classify(seen: ReadonlySet<string>): CustomBreakdown {
     return classifyCustom(this.effectiveSources, {
-      cap: SKRIBBL.maxWordLen,
+      lengths: this.lengths,
       keepTooLong: this.keepTooLong,
+      keepTooShort: this.keepTooShort,
       seen,
     });
   }
@@ -283,6 +304,7 @@ class CustomState {
       input: this.input,
       separator: this.separator,
       keepTooLong: this.keepTooLong,
+      keepTooShort: this.keepTooShort,
       maxRows: this.maxRows,
       fitContent: this.fitContent,
       maxPreviewItems: this.maxPreviewItems,
@@ -319,6 +341,7 @@ type Stored = {
   input?: string;
   separator?: string;
   keepTooLong?: boolean;
+  keepTooShort?: boolean;
   maxRows?: number;
   fitContent?: boolean;
   maxPreviewItems?: number;

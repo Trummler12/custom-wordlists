@@ -26,13 +26,13 @@ class OutputState {
         // while the rest of the list follows the interface language.
         const code = lang.contentLang(t.id);
         const derived = lang.derivesRomaji(t.id);
-        // A list that hasn't been told otherwise leaves its over-long names out
-        // here, which is what keeps the counter below quiet: `excluded` can only
-        // fill up once someone has asked for them.
-        const cap = selection.capFor(t.id, g);
+        // A list that hasn't been told otherwise leaves names outside the character
+        // limits out here, which is what keeps the counter below quiet: `overlong`
+        // can only fill up once someone has asked for them.
+        const keep = selection.keepFor(t.id, g);
         for (const e of selection.entriesOf(t.id, g)) {
           for (const w of renderEntry(e, mode, code, derived)) {
-            if (cap !== undefined && w.length > cap) continue;
+            if (!keep(w)) continue;
             if (!seen.has(w)) {
               seen.add(w);
               out.push(w);

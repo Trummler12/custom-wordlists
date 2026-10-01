@@ -9,6 +9,8 @@
 // list reports its omissions, so the numbers here feed a panel, not a filter that
 // hides its work.
 
+import { lengthClass, limitsOf, type LengthRules } from "./lengths";
+
 /** The separator characters the input offers, in menu order. A list is split on
  *  exactly one of them; `\n` / `\t` cover the paste-a-column case. */
 export const SEPARATORS = [",", ";", ":", "|", "\n", "\t"] as const;
@@ -105,9 +107,11 @@ export interface OmissionTier {
  *  `kept` are the survivors in first-seen order — what the output actually adds. */
 export interface CustomBreakdown {
   kept: string[];
-  /** Items longer than the game's cap. Counted always; kept only when the reader
-   *  switches the rule off (`keepTooLong`), mirroring the topics' ✂️ rule. */
+  /** Items over / under the character limits. Counted always; kept only when the
+   *  reader switches the rule off (`keepTooLong` / `keepTooShort`), mirroring the
+   *  topics' reserved length rules. */
   tooLong: OmissionTier;
+  tooShort: OmissionTier;
   /** Duplicates within this one source. */
   internal: OmissionTier;
   /** Duplicates against the other active custom sources (X3; empty until then). */
@@ -128,12 +132,12 @@ function record(tier: OmissionTier, item: string): void {
 
 /** Classify the active custom sources — the input field and/or the activated saved
  *  lists, in the order they contribute — into what the Custom channel keeps and what
- *  it drops, in the fixed precedence `>cap` => internal => local => global (each item
+ *  it drops, in the fixed precedence length => internal => local => global (each item
  *  counted once, under the first tier that catches it, the "first rule wins" the
  *  curated lists' `omissionSummary` uses).
  *
- *  - `cap` is the game's max word length; `keepTooLong` reflects the reader's ✂️
- *    toggle (default off = drop the over-long ones).
+ *  - `lengths` are the character limits (see lib/lengths); `keepTooLong` /
+ *    `keepTooShort` reflect the reader's toggles (default off = drop them).
  *  - `internal` = a duplicate within one source; `local` = a duplicate against an
  *    earlier active source; `global` = a duplicate against `seen`, the words the
  *    non-custom output already holds (reusing that set makes global-dedup free).
@@ -142,12 +146,18 @@ function record(tier: OmissionTier, item: string): void {
  *  what X1/X2 pass. */
 export function classifyCustom(
   sources: readonly (readonly string[])[],
-  opts: { cap: number; keepTooLong: boolean; seen: ReadonlySet<string> },
+  opts: {
+    lengths: Pick<LengthRules, "limits" | "script">;
+    keepTooLong: boolean;
+    keepTooShort?: boolean;
+    seen: ReadonlySet<string>;
+  },
 ): CustomBreakdown {
-  const { cap, keepTooLong, seen } = opts;
+  const { lengths, keepTooLong, keepTooShort = false, seen } = opts;
   const out: CustomBreakdown = {
     kept: [],
     tooLong: emptyTier(),
+    tooShort: emptyTier(),
     internal: emptyTier(),
     local: emptyTier(),
     global: emptyTier(),
@@ -158,9 +168,13 @@ export function classifyCustom(
     const mine = new Set<string>(); // within this source — the internal tier
     for (const item of source) {
       out.total++;
-      if (item.length > cap) {
+      const cls = lengthClass(item, limitsOf(item, lengths));
+      if (cls === "long") {
         record(out.tooLong, item);
         if (!keepTooLong) continue;
+      } else if (cls === "short") {
+        record(out.tooShort, item);
+        if (!keepTooShort) continue;
       }
       if (mine.has(item)) {
         record(out.internal, item);
