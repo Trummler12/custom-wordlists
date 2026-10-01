@@ -1,9 +1,13 @@
 <script lang="ts">
+  import { SEPARATORS, separatorLabel, type Separator } from "../../lib/custom";
   import { lang } from "../../state/lang.svelte";
   import { overlays } from "../../state/overlays.svelte";
   import { resetSelectionSettings } from "../../state/reset";
+  import { settings } from "../../state/settings.svelte";
   import Msg from "../../locale/html/Msg.svelte";
   import { pinBox } from "../common/pinBox";
+  import TipMarker from "../common/TipMarker.svelte";
+  import TipNote from "../common/TipNote.svelte";
 
   // Two instances, like the 🌐 panel it sits beside: one per layout, each
   // with its own open state.
@@ -42,7 +46,22 @@
   >⚙️</button>
   {#if overlays.settingsMenu === id}
     <div class="settings-menu" role="group" aria-label={lang.ui.settings.label} use:pinBox>
-      <!-- Destructive, so it is armed before it fires. -->
+      <div class="setting-row">
+        <!-- A caption, not a <label>: a label hands its hover to the dropdown, which
+             then lights up under a pointer that can't open it. -->
+        <span id={`${id}-out-sep`}>{lang.ui.settings.outputSeparator}</span>
+        <select
+          aria-labelledby={`${id}-out-sep`}
+          value={settings.outputSeparator}
+          onchange={(e) => settings.setOutputSeparator(e.currentTarget.value as Separator)}
+        >
+          {#each SEPARATORS as s (s)}<option value={s}>{separatorLabel(s)}</option>{/each}
+        </select>
+        <TipMarker tipId={`${id}-out-sep-hint`} icon="ℹ️" text={lang.ui.settings.outputSeparatorHint} />
+        <TipNote id={`${id}-out-sep-hint`} text={lang.ui.settings.outputSeparatorHint} />
+      </div>
+      <!-- Destructive, so it sits apart from the preferences above it and is armed
+           before it fires. -->
       <div class="reset-row">
         {#if armed}
           <button type="button" class="reset-btn armed" onclick={resetSelectionSettings}>
@@ -87,9 +106,25 @@
     flex-direction: column;
     gap: 0.5rem;
   }
-  /* Reset wears the danger colour instead of the neutral chrome the rest of the menu uses.
-     Once preferences join it, it takes a rule over it to stand apart from them. */
+  /* One preference and whatever has to be said about it. Positioned, so its note spans
+     this row rather than the whole popover. */
+  .setting-row {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.35rem;
+  }
+  .setting-row select {
+    font: inherit;
+    cursor: pointer;
+  }
+  /* Reset stands apart from the preferences above (a rule over it) and wears the danger
+     colour instead of the neutral chrome the rest of the menu uses. */
   .reset-row {
+    margin-top: 0.15rem;
+    padding-top: 0.5rem;
+    border-top: 1px solid var(--panel-border);
     display: flex;
     align-items: center;
     gap: 0.25rem;

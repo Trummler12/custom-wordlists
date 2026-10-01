@@ -5,6 +5,7 @@
 import { SKRIBBL } from "../lib/skribbl";
 import { renderEntry } from "../lib/words";
 import { custom } from "./custom.svelte";
+import { settings } from "./settings.svelte";
 import { lang } from "./lang.svelte";
 import { selection } from "./selection.svelte";
 import { topics } from "./topics.svelte";
@@ -59,7 +60,10 @@ class OutputState {
   readonly overlong: string[] = $derived(
     this.merged.filter((w) => w.length > SKRIBBL.maxWordLen),
   );
-  readonly text: string = $derived(this.merged.join(SKRIBBL.separator));
+  /** Names joined the way a copy hands them over — the button and a manual Ctrl+C
+   *  alike (see WordChips), so the two can't disagree. */
+  join = (words: readonly string[]): string => words.join(settings.outputSeparator);
+  readonly text: string = $derived(this.join(this.merged));
   readonly charCount: number = $derived(this.text.length);
 
   // The counter only renders when merged is non-empty, so these need no guard.

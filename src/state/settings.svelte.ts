@@ -4,6 +4,7 @@
 //
 // One instance, reached through property access (see state/lang.svelte.ts for why).
 
+import { SEPARATORS, type Separator } from "../lib/custom";
 import { FLAG_TYPES, type FlagType } from "../locale/flags";
 
 /** The one key this store persists under — exported so `reset` can clear exactly the
@@ -19,6 +20,10 @@ class SettingsState {
   /** Which kind of flag that switch wears, where its language has more than one. */
   flagType = $state<FlagType>("country");
 
+  /** What joins the Output's names when it is copied. Never changes how the Output
+   *  looks: skribbl.io wants a comma, the others are for pasting elsewhere. */
+  outputSeparator = $state<Separator>(",");
+
   /** Omission rules the reader has flipped away from their default — keyed
    *  `${topicId}:${groupId}:${ruleId}`. One set covers both directions: an
    *  `omitted` rule listed here is switched off, an `omittable` one switched on.
@@ -31,6 +36,9 @@ class SettingsState {
     // Read under its old name too: it was the English-only switch before LB3.
     this.showSecondaryToggle = !!(stored.showSecondaryToggle ?? stored.showEnglishToggle);
     if (stored.flagType && FLAG_TYPES.includes(stored.flagType)) this.flagType = stored.flagType;
+    if (stored.outputSeparator && SEPARATORS.includes(stored.outputSeparator)) {
+      this.outputSeparator = stored.outputSeparator;
+    }
     this.toggledOmissions = stored.toggledOmissions ?? {};
   }
 
@@ -40,6 +48,10 @@ class SettingsState {
   }
   setFlagType(type: FlagType): void {
     this.flagType = type;
+    this.save();
+  }
+  setOutputSeparator(s: Separator): void {
+    this.outputSeparator = s;
     this.save();
   }
 
@@ -65,6 +77,7 @@ class SettingsState {
     write({
       showSecondaryToggle: this.showSecondaryToggle,
       flagType: this.flagType,
+      outputSeparator: this.outputSeparator,
       toggledOmissions: this.toggledOmissions,
     });
   }
@@ -77,6 +90,7 @@ type Stored = {
   /** The pre-LB3 name of `showSecondaryToggle`, only ever read. */
   showEnglishToggle?: boolean;
   flagType?: FlagType;
+  outputSeparator?: Separator;
   toggledOmissions?: Record<string, boolean>;
 };
 
