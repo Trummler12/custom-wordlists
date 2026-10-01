@@ -14,6 +14,11 @@
 export const SEPARATORS = [",", ";", ":", "|", "\n", "\t"] as const;
 export type Separator = (typeof SEPARATORS)[number];
 
+/** A separator as a dropdown shows it: the invisible ones by their escape. */
+export function separatorLabel(s: Separator): string {
+  return s === "\n" ? "\\n" : s === "\t" ? "\\t" : s;
+}
+
 /** The fallback when nothing in the input votes for a separator (empty, a single
  *  item, or a tie): the game's own list separator, and the most common typed one. */
 export const DEFAULT_SEPARATOR: Separator = ",";

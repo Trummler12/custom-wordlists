@@ -14,6 +14,7 @@ import {
   previewText,
   scanItem,
   separatorCounts,
+  separatorLabel,
   SEPARATORS,
   serializeItems,
 } from "./custom";
@@ -26,6 +27,14 @@ describe("separatorCounts", () => {
   });
   it("counts a separator inside quotes too — quotes are ordinary characters", () => {
     expect(separatorCounts('"a,b",c')[","]).toBe(2);
+  });
+});
+
+describe("separatorLabel", () => {
+  it("shows a visible separator as itself and an invisible one by its escape", () => {
+    expect(separatorLabel(",")).toBe(",");
+    expect(separatorLabel("\n")).toBe("\\n");
+    expect(separatorLabel("\t")).toBe("\\t");
   });
 });
 

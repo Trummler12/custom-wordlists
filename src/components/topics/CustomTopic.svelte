@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { availableSeparators, type Separator } from "../../lib/custom";
+  import { availableSeparators, separatorLabel, type Separator } from "../../lib/custom";
   import {
     custom,
     PREVIEW_CHARS_MAX,
@@ -133,9 +133,6 @@
 
   function withCurrent(list: Separator[], cur: Separator): Separator[] {
     return list.includes(cur) ? list : [cur, ...list];
-  }
-  function sepLabel(s: Separator): string {
-    return s === "\n" ? "\\n" : s === "\t" ? "\\t" : s;
   }
   function confirmClear(): void {
     custom.clear();
@@ -295,7 +292,7 @@
         onchange={(e) => custom.setSeparator(e.currentTarget.value as Separator)}
       >
         {#each options as s (s)}
-          <option value={s}>{sepLabel(s)}</option>
+          <option value={s}>{separatorLabel(s)}</option>
         {/each}
       </select>
     </span>
