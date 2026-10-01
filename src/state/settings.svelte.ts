@@ -5,6 +5,7 @@
 // One instance, reached through property access (see state/lang.svelte.ts for why).
 
 import { SEPARATORS, type Separator } from "../lib/custom";
+import { DEFAULT_LIMITS, DEFAULT_SCRIPT_LIMITS, SCRIPT_LANGS, type Limits } from "../lib/lengths";
 import { FLAG_TYPES, type FlagType } from "../locale/flags";
 
 /** The one key this store persists under — exported so `reset` can clear exactly the
@@ -24,6 +25,11 @@ class SettingsState {
    *  looks: skribbl.io wants a comma, the others are for pasting elsewhere. */
   outputSeparator = $state<Separator>(",");
 
+  /** How short and how long a name may be (the reserved `<` / `>` rules), and the
+   *  same per language for those written a character per syllable (see lib/lengths). */
+  charLimits = $state<Limits>({ ...DEFAULT_LIMITS });
+  scriptLimits = $state<Record<string, Limits>>({});
+
   /** Omission rules the reader has flipped away from their default — keyed
    *  `${topicId}:${groupId}:${ruleId}`. One set covers both directions: an
    *  `omitted` rule listed here is switched off, an `omittable` one switched on.
@@ -39,6 +45,10 @@ class SettingsState {
     if (stored.outputSeparator && SEPARATORS.includes(stored.outputSeparator)) {
       this.outputSeparator = stored.outputSeparator;
     }
+    if (validLimits(stored.charLimits)) this.charLimits = stored.charLimits;
+    for (const [tag, l] of Object.entries(stored.scriptLimits ?? {})) {
+      if (SCRIPT_LANGS.includes(tag) && validLimits(l)) this.scriptLimits[tag] = l;
+    }
     this.toggledOmissions = stored.toggledOmissions ?? {};
   }
 
@@ -52,6 +62,21 @@ class SettingsState {
   }
   setOutputSeparator(s: Separator): void {
     this.outputSeparator = s;
+    this.save();
+  }
+
+  /** A language's own limits, or none where it follows the general ones. */
+  scriptLimitsFor(tag: string): Limits | undefined {
+    return SCRIPT_LANGS.includes(tag) ? (this.scriptLimits[tag] ?? DEFAULT_SCRIPT_LIMITS) : undefined;
+  }
+  /** Set one bound, general (`tag` omitted) or for one language. */
+  setLimit(bound: keyof Limits, value: number, tag?: string): void {
+    const cur = tag ? this.scriptLimitsFor(tag) : this.charLimits;
+    if (!cur || !Number.isInteger(value) || value < 1) return;
+    // The two bounds never cross: a minimum above the maximum would empty every list.
+    const next = bound === "min" ? { ...cur, min: Math.min(value, cur.max) } : { ...cur, max: Math.max(value, cur.min) };
+    if (tag) this.scriptLimits[tag] = next;
+    else this.charLimits = next;
     this.save();
   }
 
@@ -78,6 +103,8 @@ class SettingsState {
       showSecondaryToggle: this.showSecondaryToggle,
       flagType: this.flagType,
       outputSeparator: this.outputSeparator,
+      charLimits: this.charLimits,
+      scriptLimits: this.scriptLimits,
       toggledOmissions: this.toggledOmissions,
     });
   }
@@ -91,8 +118,15 @@ type Stored = {
   showEnglishToggle?: boolean;
   flagType?: FlagType;
   outputSeparator?: Separator;
+  charLimits?: Limits;
+  scriptLimits?: Record<string, Limits>;
   toggledOmissions?: Record<string, boolean>;
 };
+
+function validLimits(l: unknown): l is Limits {
+  const v = l as Limits | undefined;
+  return !!v && Number.isInteger(v.min) && Number.isInteger(v.max) && v.min >= 1 && v.max >= 1;
+}
 
 function read(): Stored | null {
   try {
