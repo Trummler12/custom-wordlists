@@ -1,4 +1,5 @@
 <script lang="ts">
+  import Msg from "../../locale/html/Msg.svelte";
   import { flagFor, flagsFor } from "../../locale/flags";
   import { plain } from "../../locale/html/plain";
   import { variantFor, type Variant } from "../../locale/variants";
@@ -90,16 +91,16 @@
       class:nudge
       aria-haspopup="true"
       aria-expanded={open}
-      aria-label={ui.label(lang.nameInUi(lang.current))}
+      aria-label={plain(ui.label(lang.nameInUi(lang.current)))}
       onclick={(e) => overlays.toggleLangMenu(id, e.currentTarget)}
     >🌐</button>
     {#if open}
-      <div class="lang-panel" role="group" aria-label={ui.panelTitle} use:pinBox>
-        <p class="panel-title">{ui.panelTitle}</p>
+      <div class="lang-panel" role="group" aria-label={plain(ui.panelTitle)} use:pinBox>
+        <p class="panel-title"><Msg text={ui.panelTitle} /></p>
         <div class="slots" use:holdCaptions>
           {#each slots as s (s)}
             <div class="slot-row">
-              <span class="slot-label" id={`${id}-slot-${s}`}>{ui.slot[s]}</span>
+              <span class="slot-label" id={`${id}-slot-${s}`}><Msg text={ui.slot[s]} /></span>
               <LanguageSelect
                 id={`${id}-${s}`}
                 labelledby={`${id}-slot-${s}`}
@@ -125,14 +126,14 @@
                dropdown sits between them, never inside one, so a click on it never ticks
                the checkbox. -->
           <div class="hang-body">
-            <label for={`${id}-secondary`} id={`${id}-secondary-before`}>{ui.showSecondaryBefore}</label>
+            <label for={`${id}-secondary`} id={`${id}-secondary-before`}><Msg text={ui.showSecondaryBefore} /></label>
             <LanguageSelect
               id={`${id}-secondary-lang`}
               labelledby={`${id}-secondary-before ${id}-secondary-after`}
               value={lang.secondary}
               onpick={(l) => lang.setSecondary(l)}
             />
-            <label for={`${id}-secondary`} id={`${id}-secondary-after`}>{ui.showSecondaryAfter}</label>
+            <label for={`${id}-secondary`} id={`${id}-secondary-after`}><Msg text={ui.showSecondaryAfter} /></label>
             <TipMarker tipId={`${id}-hint-secondary`} icon="ℹ️" text={ui.showSecondaryHint} />
             {#if moot}
               <TipMarker tipId={`${id}-moot`} icon="⚠️" text={ui.secondaryMoot} />
@@ -143,7 +144,7 @@
         </div>
         {#if settings.showSecondaryToggle && secondaryFlags.length > 1}
           <div class="setting-row hang" role="radiogroup" aria-labelledby={`${id}-flag-type`}>
-            <span id={`${id}-flag-type`}>{ui.flagType}</span>
+            <span id={`${id}-flag-type`}><Msg text={ui.flagType} /></span>
             <div class="flag-options">
               {#each secondaryFlags as f (f.type)}
                 <label class="setting">
@@ -154,7 +155,7 @@
                     onchange={() => settings.setFlagType(f.type)}
                   />
                   <img class="flag" src={f.url} alt="" />
-                  <span>{ui.flagTypes[f.type]}</span>
+                  <span><Msg text={ui.flagTypes[f.type]} /></span>
                 </label>
               {/each}
             </div>
@@ -167,7 +168,7 @@
               <input type="checkbox" checked={lang.variantOn(l)} onchange={() => lang.toggleVariant(l)} />
               <!-- `{br}` as a newline rather than a space: a browser tooltip honours
                    one, and two sentences on a line run off the side of the screen. -->
-              <span title={plain(ui.variantNote[v.id] ?? "", "\n")}>{ui.variant[v.id]}</span>
+              <span title={plain(ui.variantNote[v.id] ?? "", "\n")}><Msg text={ui.variant[v.id]} /></span>
             </label>
           </div>
         {/each}

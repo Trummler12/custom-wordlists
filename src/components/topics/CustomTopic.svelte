@@ -1,4 +1,6 @@
 <script lang="ts">
+  import Msg from "../../locale/html/Msg.svelte";
+  import { plain } from "../../locale/html/plain";
   import { availableSeparators, separatorLabel, type Separator } from "../../lib/custom";
   import {
     custom,
@@ -278,16 +280,16 @@
 
 <div class="custom-item">
   <div class="custom-row">
-    <span class="title">{lang.ui.custom.title}</span>
+    <span class="title"><Msg text={lang.ui.custom.title} /></span>
     <TipMarker tipId="custom-info" icon="ℹ️" text={lang.ui.custom.infoHint} />
     <CustomOmittedPanel />
     <CustomCharsPanel />
     <span class="sep">
-      <span class="sep-label">{lang.ui.custom.separatorLabel}</span>
+      <span class="sep-label"><Msg text={lang.ui.custom.separatorLabel} /></span>
       <select
         id="custom-sep"
         class="sep-select"
-        aria-label={lang.ui.custom.separatorPick}
+        aria-label={plain(lang.ui.custom.separatorPick)}
         value={custom.separator}
         onchange={(e) => custom.setSeparator(e.currentTarget.value as Separator)}
       >
@@ -304,8 +306,8 @@
         class="settings-btn"
         aria-haspopup="dialog"
         aria-expanded={settingsOpen}
-        aria-label={lang.ui.custom.settingsLabel}
-        title={lang.ui.custom.settingsLabel}
+        aria-label={plain(lang.ui.custom.settingsLabel)}
+        title={plain(lang.ui.custom.settingsLabel)}
         onclick={toggleSettings}>⚙️</button
       >
       {#if settingsOpen}
@@ -315,11 +317,11 @@
           class:above={overlays.customSettingsAbove}
           style={`${settingsMaxW == null ? "" : `max-width:${settingsMaxW}px;`}${settingsLeft == null ? "" : `left:${settingsLeft}px;right:auto;`}`}
           role="dialog"
-          aria-label={lang.ui.custom.settingsTitle}
+          aria-label={plain(lang.ui.custom.settingsTitle)}
         >
-          <p class="settings-title">{lang.ui.custom.settingsTitle}</p>
+          <p class="settings-title"><Msg text={lang.ui.custom.settingsTitle} /></p>
           <label class="settings-row">
-            <span>{lang.ui.custom.maxPreviewItems}</span>
+            <span><Msg text={lang.ui.custom.maxPreviewItems} /></span>
             <input
               type="number"
               min={PREVIEW_ITEMS_MIN}
@@ -329,7 +331,7 @@
             />
           </label>
           <label class="settings-row">
-            <span>{lang.ui.custom.maxPreviewChars}</span>
+            <span><Msg text={lang.ui.custom.maxPreviewChars} /></span>
             <input
               type="number"
               min={PREVIEW_CHARS_MIN}
@@ -364,7 +366,7 @@
       {/if}
     </span>
     <!-- Kept / parsed, mirroring a topic row's selected / total. -->
-    <span class="meta" title={lang.ui.tree.wordsOf(breakdown.kept.length, breakdown.total)}>
+    <span class="meta" title={plain(lang.ui.tree.wordsOf(breakdown.kept.length, breakdown.total))}>
       {breakdown.kept.length}/<span class="total">{breakdown.total}</span>
     </span>
   </div>
@@ -403,11 +405,11 @@
   <!-- The 🗑️ two-step confirm. Shares the tip overlay slot, so a press elsewhere,
        Escape or a scroll dismisses it; `tip-note` keeps a click inside from closing it. -->
   {#if overlays.tip === CONFIRM_ID}
-    <div class="tip-note local confirm-pop" style={overlays.tipStyle} role="dialog" aria-label={lang.ui.custom.clearHint}>
-      <p class="confirm-msg">{lang.ui.custom.clearConfirm}</p>
+    <div class="tip-note local confirm-pop" style={overlays.tipStyle} role="dialog" aria-label={plain(lang.ui.custom.clearHint)}>
+      <p class="confirm-msg"><Msg text={lang.ui.custom.clearConfirm} /></p>
       <div class="confirm-actions">
-        <button type="button" class="confirm-btn" onclick={confirmClear}>{lang.ui.custom.clearConfirmButton}</button>
-        <button type="button" class="confirm-cancel" onclick={() => overlays.closeTip()}>{lang.ui.custom.cancel}</button>
+        <button type="button" class="confirm-btn" onclick={confirmClear}><Msg text={lang.ui.custom.clearConfirmButton} /></button>
+        <button type="button" class="confirm-cancel" onclick={() => overlays.closeTip()}><Msg text={lang.ui.custom.cancel} /></button>
       </div>
     </div>
   {/if}

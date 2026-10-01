@@ -1,4 +1,5 @@
 <script lang="ts">
+  import Msg from "../../locale/html/Msg.svelte";
   import type { FooterStrings } from "../../locale";
 
   // The strings come in as a prop, not from the global `lang` state, so the coverage
@@ -18,18 +19,18 @@
        topic column's left edge and the output panel's right edge. -->
   <div class="footer-inner">
     <span class="footer-help">
-      {footer.helpOut}
+      <Msg text={footer.helpOut} />
       <a
         href={REPO_URL + "?tab=contributing-ov-file#contributing"}
         target="_blank"
-        rel="noopener noreferrer">{footer.contributionGuide}</a
-      >{footer.helpOutAfter}
+        rel="noopener noreferrer"><Msg text={footer.contributionGuide} /></a
+      ><Msg text={footer.helpOutAfter} />
     </span>
     <a
       class="footer-repo"
       href={REPO_URL + "#custom-wordlists"}
       target="_blank"
-      rel="noopener noreferrer">{footer.repository}</a
+      rel="noopener noreferrer"><Msg text={footer.repository} /></a
     >
   </div>
 </footer>

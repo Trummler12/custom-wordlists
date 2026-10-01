@@ -1,4 +1,6 @@
 <script lang="ts">
+  import Msg from "../../locale/html/Msg.svelte";
+  import { plain } from "../../locale/html/plain";
   import { charKey, cleanItems, findDupes, oddChars, SEPARATORS, type Separator } from "../../lib/custom";
   import { custom, NAME_MAX, type SavedList } from "../../state/custom.svelte";
   import { lang } from "../../state/lang.svelte";
@@ -144,8 +146,8 @@
         class="use"
         disabled={!list}
         checked={list ? custom.isActive(list.id) : false}
-        aria-label={list ? lang.ui.custom.listActivate : lang.ui.custom.phActivate}
-        title={list ? lang.ui.custom.listActivate : lang.ui.custom.phActivate}
+        aria-label={plain(list ? lang.ui.custom.listActivate : lang.ui.custom.phActivate)}
+        title={plain(list ? lang.ui.custom.listActivate : lang.ui.custom.phActivate)}
         onchange={() => list && custom.toggleActive(list.id)}
       />
       {#if list && editingId === list.id}
@@ -170,7 +172,7 @@
           type="button"
           class="mini"
           disabled={!list}
-          title={list ? lang.ui.custom.listRename : lang.ui.custom.phRename}
+          title={plain(list ? lang.ui.custom.listRename : lang.ui.custom.phRename)}
           onclick={() => list && startRename(list.id, list.name)}>✏️</button
         >
       {/if}
@@ -178,7 +180,7 @@
       <select
         class="tile-sep"
         disabled={!list}
-        aria-label={lang.ui.custom.separatorPick}
+        aria-label={plain(lang.ui.custom.separatorPick)}
         value={list ? list.separator : ","}
         onchange={(e) => list && custom.setListSeparator(list.id, e.currentTarget.value as Separator)}
       >
@@ -188,21 +190,21 @@
         type="button"
         class="mini tip-trigger"
         disabled={list ? false : custom.items.length === 0}
-        title={list ? lang.ui.custom.listSave : lang.ui.custom.listSaveNew}
+        title={plain(list ? lang.ui.custom.listSave : lang.ui.custom.listSaveNew)}
         onclick={(e) => (list ? arm("replace", list.id, list.name, e) : startSave(null, e))}>💾</button
       >
       <button
         type="button"
         class="mini tip-trigger"
         disabled={!list}
-        title={list ? lang.ui.custom.listLoad : lang.ui.custom.phLoad}
+        title={plain(list ? lang.ui.custom.listLoad : lang.ui.custom.phLoad)}
         onclick={(e) => list && loadOrConfirm(list.id, list.name, e)}>📥</button
       >
       <button
         type="button"
         class="mini danger tip-trigger"
         disabled={!list}
-        title={list ? lang.ui.custom.listDelete : lang.ui.custom.phDelete}
+        title={plain(list ? lang.ui.custom.listDelete : lang.ui.custom.phDelete)}
         onclick={(e) => list && arm("delete", list.id, list.name, e)}>🗑️</button
       >
       <span class="reorder">
@@ -210,14 +212,14 @@
           type="button"
           class="mini"
           disabled={!list || i === 0}
-          title={list ? lang.ui.custom.listUp : lang.ui.custom.phMove}
+          title={plain(list ? lang.ui.custom.listUp : lang.ui.custom.phMove)}
           onclick={() => list && custom.moveList(list.id, -1)}>▲</button
         >
         <button
           type="button"
           class="mini"
           disabled={!list || i === custom.savedLists.length - 1}
-          title={list ? lang.ui.custom.listDown : lang.ui.custom.phMove}
+          title={plain(list ? lang.ui.custom.listDown : lang.ui.custom.phMove)}
           onclick={() => list && custom.moveList(list.id, 1)}>▼</button
         >
       </span>
@@ -231,8 +233,8 @@
     class="ctl-btn"
     aria-haspopup="true"
     aria-expanded={open}
-    aria-label={lang.ui.custom.listsLabel}
-    title={lang.ui.custom.listsLabel}
+    aria-label={plain(lang.ui.custom.listsLabel)}
+    title={plain(lang.ui.custom.listsLabel)}
     onclick={toggle}>💾</button
   >
   {#if open}
@@ -242,10 +244,10 @@
       class:above={overlays.savedListsAbove}
       style={panelLeft == null ? "" : `left:${panelLeft}px;right:auto;`}
       role="group"
-      aria-label={lang.ui.custom.listsTitle}
+      aria-label={plain(lang.ui.custom.listsTitle)}
     >
       <p class="lists-title">
-        {lang.ui.custom.listsTitle}
+        <Msg text={lang.ui.custom.listsTitle} />
         <TipMarker tipId="lists-info" icon="ℹ️" text={lang.ui.custom.listsInfo} local />
       </p>
       <TipNote id="lists-info" text={lang.ui.custom.listsInfo} local />
@@ -261,7 +263,7 @@
         <div class="tip-note local confirm-pop" class:wide={pending.kind === "clean"} style={overlays.tipStyle} role="dialog">
           {#if pending.kind === "clean"}
             {#if offered.length}
-              <p class="confirm-msg">{lang.ui.custom.cleanChars}</p>
+              <p class="confirm-msg"><Msg text={lang.ui.custom.cleanChars} /></p>
               <ul class="clean-chars" style:grid-template-columns={`repeat(${cleanColumns(offered.length)}, max-content)`}>
                 {#each offered as c (charKey(c))}
                   <li>
@@ -280,7 +282,7 @@
             {/if}
             {#if afterClean?.dupes.length}
               {#if offered.length}<hr />{/if}
-              <p class="confirm-msg">{lang.ui.custom.cleanDupes(dropped)}</p>
+              <p class="confirm-msg"><Msg text={lang.ui.custom.cleanDupes(dropped)} /></p>
               <p class="clean-dupes">
                 {#each afterClean.dupes as d, i (d.text)}{#if i > 0},{" "}{/if}<code>{d.text}</code
                   >{#if d.copies > 2}{" "}(x{d.copies}){/if}{/each}
@@ -290,8 +292,8 @@
             <p class="confirm-msg">{confirmMessage(pending.kind, pending.name)}</p>
           {/if}
           <div class="confirm-actions">
-            <button type="button" class="confirm-yes" onclick={confirmPending}>{lang.ui.custom.confirm}</button>
-            <button type="button" class="confirm-no" onclick={cancelPending}>{lang.ui.custom.cancel}</button>
+            <button type="button" class="confirm-yes" onclick={confirmPending}><Msg text={lang.ui.custom.confirm} /></button>
+            <button type="button" class="confirm-no" onclick={cancelPending}><Msg text={lang.ui.custom.cancel} /></button>
           </div>
         </div>
       {/if}

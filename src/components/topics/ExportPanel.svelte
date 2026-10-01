@@ -1,4 +1,6 @@
 <script lang="ts">
+  import Msg from "../../locale/html/Msg.svelte";
+  import { plain } from "../../locale/html/plain";
   import { exportLists } from "../../lib/custom";
   import { custom } from "../../state/custom.svelte";
   import { lang } from "../../state/lang.svelte";
@@ -72,8 +74,8 @@
     class="ctl-btn"
     aria-haspopup="true"
     aria-expanded={open}
-    aria-label={lang.ui.custom.exportLabel}
-    title={lang.ui.custom.exportLabel}
+    aria-label={plain(lang.ui.custom.exportLabel)}
+    title={plain(lang.ui.custom.exportLabel)}
     disabled={custom.savedLists.length === 0}
     onclick={togglePanel}>📤</button
   >
@@ -84,17 +86,17 @@
       class:above={overlays.exportAbove}
       style={panelLeft == null ? "" : `left:${panelLeft}px;right:auto;`}
       role="group"
-      aria-label={lang.ui.custom.exportTitle}
+      aria-label={plain(lang.ui.custom.exportTitle)}
     >
-      <p class="io-title">{lang.ui.custom.exportTitle}</p>
+      <p class="io-title"><Msg text={lang.ui.custom.exportTitle} /></p>
       <!-- Doubles as the column header: the "Select all" toggle on the left (its hitbox
            only its own text, not the whole row), the "Size" heading over the counts. -->
       <div class="io-all">
         <label class="io-all-label">
           <input type="checkbox" checked={allSelected} onchange={toggleAll} />
-          <span>{lang.ui.custom.selectAll}</span>
+          <span><Msg text={lang.ui.custom.selectAll} /></span>
         </label>
-        <span class="io-head-size">{lang.ui.custom.importColSize}</span>
+        <span class="io-head-size"><Msg text={lang.ui.custom.importColSize} /></span>
       </div>
       <!-- The name is its own preview trigger, so it sits beside the checkbox rather than
            inside its label — a tap on the name shows the list, it does not toggle the tick. -->
@@ -114,7 +116,7 @@
         {/each}
       </ul>
       <button type="button" class="io-action" disabled={selected.length === 0} onclick={download}>
-        {lang.ui.custom.exportDownload}
+        <Msg text={lang.ui.custom.exportDownload} />
       </button>
     </div>
   {/if}

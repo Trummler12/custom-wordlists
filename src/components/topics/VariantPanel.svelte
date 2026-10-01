@@ -1,4 +1,6 @@
 <script lang="ts">
+  import Msg from "../../locale/html/Msg.svelte";
+  import { plain } from "../../locale/html/plain";
   import { baseTag } from "../../lib/languages";
   import { variantPairs } from "../../lib/words";
   import { variantFor } from "../../locale/variants";
@@ -33,8 +35,8 @@
       class="omitted-btn"
       aria-haspopup="true"
       aria-expanded={open}
-      aria-label={lang.ui.language.variant[variant.id]}
-      title={lang.ui.language.variant[variant.id]}
+      aria-label={plain(lang.ui.language.variant[variant.id])}
+      title={plain(lang.ui.language.variant[variant.id])}
       onclick={(e) => overlays.toggleOmittedPanel(id, e.currentTarget)}>{variant.icon}</button
     >
     {#if open}
@@ -42,7 +44,7 @@
         class="omitted-panel"
         class:above={overlays.omittedAbove}
         role="group"
-        aria-label={lang.ui.language.variant[variant.id]}
+        aria-label={plain(lang.ui.language.variant[variant.id])}
       >
         <ul>
           <li>
@@ -52,7 +54,7 @@
                 checked={lang.variantOnFor(tid)}
                 onchange={() => lang.toggleVariantFor(tid)}
               />
-              <span>{lang.ui.language.variant[variant.id]}</span>
+              <span><Msg text={lang.ui.language.variant[variant.id]} /></span>
             </label>
           </li>
         </ul>
@@ -60,7 +62,7 @@
              panel already handles its own height against the viewport. -->
         <details class="variant-list">
           <summary>
-            {lang.ui.language.variantDiffers(pairs.length)} — {lang.ui.language.variantShowList}
+            <Msg text={lang.ui.language.variantDiffers(pairs.length)} /> — <Msg text={lang.ui.language.variantShowList} />
           </summary>
           <!-- Unkeyed: the list is one fixed array rendered in order, never
                reordered or added to, and the only key available is a spelling —

@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { plain } from "../../locale/html/plain";
   import { fameGroups, rulerTip, snapPositions } from "../../lib/fame";
   import type { Group, LocalizedString } from "../../lib/types";
   import { resolveStr } from "../../lib/words";
@@ -61,7 +62,7 @@
     aria-valuemax={pos.length - 1}
     aria-valuenow={shownDepth}
     aria-valuetext={lang.ui.fame.valueText(shownDepth, pos.length - 1)}
-    aria-label={lang.ui.fame.depthLabel(topics.groupName(group).long)}
+    aria-label={plain(lang.ui.fame.depthLabel(topics.groupName(group).long))}
     aria-describedby={ranked ? undefined : tipId}
     title={ranked ? tip : undefined}
     onpointerdown={(e) => {

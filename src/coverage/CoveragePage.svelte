@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { plain } from "../locale/html/plain";
   // The "Language Coverage" page (strand W1). Reads the topic/lang from the URL, loads its
   // data/coverage/<topic>.json, and renders which languages Wikidata has a label for, per
   // item — sortable by any column, paged, its chrome localized and switchable in place.
@@ -175,16 +176,16 @@
 </script>
 
 <header>
-  <a class="home" href={base}>← {ui.home}</a>
+  <a class="home" href={base}>← <Msg text={ui.home} /></a>
   <div class="controls">
-    <label>{ui.topicLabel}
+    <label><Msg text={ui.topicLabel} />
       <select value={route.topic ?? ""} onchange={goTopic}>
         {#if !route.topic}<option value="" disabled>—</option>{/if}
         {#each COVERAGE_TOPICS as t}<option value={t}>{topicTitle(t, uiLang)}</option>{/each}
       </select>
     </label>
     <label class="uilang">🌐
-      <select bind:value={uiLang} aria-label={ui.uiLanguage}>
+      <select bind:value={uiLang} aria-label={plain(ui.uiLanguage)}>
         {#each uiLangOptions as opt}<option value={opt.code}>{opt.name}</option>{/each}
       </select>
     </label>
@@ -193,8 +194,8 @@
 
 {#if !route.topic}
   <main class="index">
-    <h1>{ui.title}</h1>
-    <p>{ui.intro}</p>
+    <h1><Msg text={ui.title} /></h1>
+    <p><Msg text={ui.intro} /></p>
     <ul>
       {#each COVERAGE_TOPICS as t}
         <li><a href={topicHref(t)}>{topicTitle(t, uiLang)}</a></li>
@@ -202,16 +203,16 @@
     </ul>
   </main>
 {:else if error}
-  <main><p class="error">{ui.loadError(topicName, error)}</p></main>
+  <main><p class="error"><Msg text={ui.loadError(topicName, error)} /></p></main>
 {:else if !data}
-  <main><p>{ui.loading(topicName)}</p></main>
+  <main><p><Msg text={ui.loading(topicName)} /></p></main>
 {:else}
   <div class="wrap" style:--lang-count={displayLangs.length}>
   <main>
-    <h1>{ui.title} — {topicName}</h1>
+    <h1><Msg text={ui.title} /> — {topicName}</h1>
     <p class="lead"><Msg text={ui.lead} /></p>
     <details class="notes">
-      <summary>{ui.notesTitle}</summary>
+      <summary><Msg text={ui.notesTitle} /></summary>
       <ul>
         <li><Msg text={ui.noteAdd} /></li>
         <li><Msg text={ui.noteLabelLister} /></li>
@@ -220,19 +221,19 @@
       </ul>
     </details>
     <div class="bar">
-      <span class="count">{ui.itemCount(data.items.length)}</span>
+      <span class="count"><Msg text={ui.itemCount(data.items.length)} /></span>
       <div class="bar-right">
         <label class="uionly" title={plainText(ui.uiOnlyHint, "\n")}>
           <input type="checkbox" bind:checked={uiOnly} />
-          <div class="uionly-text">{ui.uiOnly}</div>
+          <div class="uionly-text"><Msg text={ui.uiOnly} /></div>
         </label>
         {#if pageCount > 1}
           <span class="pager">
-            <button onclick={() => (page = 0)} disabled={page === 0} aria-label={ui.first} title={ui.first}>‹‹‹</button>
-            <button onclick={() => (page = Math.max(0, page - 1))} disabled={page === 0} aria-label={ui.prev} title={ui.prev}>‹</button>
-            <span>{ui.page(page + 1, pageCount)}</span>
-            <button onclick={() => (page = Math.min(pageCount - 1, page + 1))} disabled={page >= pageCount - 1} aria-label={ui.next} title={ui.next}>›</button>
-            <button onclick={() => (page = pageCount - 1)} disabled={page >= pageCount - 1} aria-label={ui.last} title={ui.last}>›››</button>
+            <button onclick={() => (page = 0)} disabled={page === 0} aria-label={plain(ui.first)} title={plain(ui.first)}>‹‹‹</button>
+            <button onclick={() => (page = Math.max(0, page - 1))} disabled={page === 0} aria-label={plain(ui.prev)} title={plain(ui.prev)}>‹</button>
+            <span><Msg text={ui.page(page + 1, pageCount)} /></span>
+            <button onclick={() => (page = Math.min(pageCount - 1, page + 1))} disabled={page >= pageCount - 1} aria-label={plain(ui.next)} title={plain(ui.next)}>›</button>
+            <button onclick={() => (page = pageCount - 1)} disabled={page >= pageCount - 1} aria-label={plain(ui.last)} title={plain(ui.last)}>›››</button>
           </span>
         {/if}
       </div>
@@ -241,9 +242,9 @@
       <table>
         <thead>
           <tr>
-            <th class="item"><button class="sort" onclick={() => sortBy("name")}>{ui.item}{arrow("name")}</button></th>
+            <th class="item"><button class="sort" onclick={() => sortBy("name")}><Msg text={ui.item} />{arrow("name")}</button></th>
             {#if data.meta.numeric}
-              <th class="num"><button class="sort" onclick={() => sortBy("num")}>{numLabel(data.meta.numeric)}{arrow("num")}</button></th>
+              <th class="num"><button class="sort" onclick={() => sortBy("num")}><Msg text={numLabel(data.meta.numeric)} />{arrow("num")}</button></th>
             {/if}
             {#each displayLangs as lang (lang)}
               <th class="lang" class:here={lang === route.lang} class:divider={lang === dividerLang} class:dim={uiOnly && !isOfficial(lang)}>

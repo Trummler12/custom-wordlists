@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { plain } from "../../locale/html/plain";
   import Msg from "../../locale/html/Msg.svelte";
   import { custom } from "../../state/custom.svelte";
   import { lang } from "../../state/lang.svelte";
@@ -18,24 +19,24 @@
   const b = $derived(output.customBreakdown);
   const hidingTooLong = $derived(!custom.keepTooLong);
   const tooLongTitle = $derived(
-    [lang.ui.omitted.tooLongHint(hidingTooLong), b.tooLong.samples.join(", ")].join("\n"),
+    [plain(lang.ui.omitted.tooLongHint(hidingTooLong), "\n"), b.tooLong.samples.join(", ")].join("\n"),
   );
   const sepRules = $derived(custom.outputSeparatorRules);
   const sepTitle = $derived(
-    [lang.ui.omitted.separatorHint(sepRules.omit, sepRules.remove), b.withSeparator.samples.join(", ")].join("\n"),
+    [plain(lang.ui.omitted.separatorHint(sepRules.omit, sepRules.remove), "\n"), b.withSeparator.samples.join(", ")].join("\n"),
   );
   const hidingTooShort = $derived(!custom.keepTooShort);
   const tooShortTitle = $derived(
-    [lang.ui.omitted.tooShortHint(hidingTooShort), b.tooShort.samples.join(", ")].join("\n"),
+    [plain(lang.ui.omitted.tooShortHint(hidingTooShort), "\n"), b.tooShort.samples.join(", ")].join("\n"),
   );
 
   // One line per clause: a native tooltip keeps the newlines, and the save note only concerns
   // duplicates inside one list (saving cleans those, not the ones between lists or topics).
   const dupeTitle = (type: "internal" | "local" | "global", samples: string[]): string =>
     [
-      lang.ui.custom.dupesNote,
-      ...(type === "internal" ? [lang.ui.custom.dupesNoteSave] : []),
-      ...(samples.length ? [lang.ui.custom.dupesSamples[type], samples.join(", ")] : []),
+      plain(lang.ui.custom.dupesNote, "\n"),
+      ...(type === "internal" ? [plain(lang.ui.custom.dupesNoteSave, "\n")] : []),
+      ...(samples.length ? [plain(lang.ui.custom.dupesSamples[type], "\n"), samples.join(", ")] : []),
     ].join("\n");
 
   const anything = $derived(
@@ -50,8 +51,8 @@
       class="omitted-btn"
       aria-haspopup="true"
       aria-expanded={open}
-      aria-label={lang.ui.omitted.label}
-      title={lang.ui.omitted.label}
+      aria-label={plain(lang.ui.omitted.label)}
+      title={plain(lang.ui.omitted.label)}
       onclick={(e) => overlays.toggleOmittedPanel(id, e.currentTarget)}>🚫</button
     >
     {#if open}
@@ -59,9 +60,9 @@
         class="omitted-panel"
         class:above={overlays.omittedAbove}
         role="group"
-        aria-label={lang.ui.omitted.label}
+        aria-label={plain(lang.ui.omitted.label)}
       >
-        <p class="omitted-title">{lang.ui.omitted.title}</p>
+        <p class="omitted-title"><Msg text={lang.ui.omitted.title} /></p>
         <ul>
           <!-- Duplicate rows, in the precedence they are classified: within this
                list, across the active custom lists (X3), then against the topics. -->
@@ -69,7 +70,7 @@
             <li>
               <label title={dupeTitle("internal", b.internal.samples)}>
                 <input type="checkbox" checked disabled />
-                <span>{lang.ui.custom.internalDupes(b.internal.count)}</span>
+                <span><Msg text={lang.ui.custom.internalDupes(b.internal.count)} /></span>
               </label>
             </li>
           {/if}
@@ -77,7 +78,7 @@
             <li>
               <label title={dupeTitle("local", b.local.samples)}>
                 <input type="checkbox" checked disabled />
-                <span>{lang.ui.custom.localDupes(b.local.count)}</span>
+                <span><Msg text={lang.ui.custom.localDupes(b.local.count)} /></span>
               </label>
             </li>
           {/if}
@@ -85,7 +86,7 @@
             <li>
               <label title={dupeTitle("global", b.global.samples)}>
                 <input type="checkbox" checked disabled />
-                <span>{lang.ui.custom.globalDupes(b.global.count)}</span>
+                <span><Msg text={lang.ui.custom.globalDupes(b.global.count)} /></span>
               </label>
             </li>
           {/if}
@@ -99,7 +100,7 @@
                   checked={hidingTooLong}
                   onchange={(e) => custom.setKeepTooLong(!e.currentTarget.checked)}
                 />
-                <span>{lang.ui.omitted.tooLong(b.tooLong.count, custom.lengths.limits.max)}</span>
+                <span><Msg text={lang.ui.omitted.tooLong(b.tooLong.count, custom.lengths.limits.max)} /></span>
               </label>
             </li>
           {/if}
@@ -119,7 +120,7 @@
                   checked={hidingTooShort}
                   onchange={(e) => custom.setKeepTooShort(!e.currentTarget.checked)}
                 />
-                <span>{lang.ui.omitted.tooShort(b.tooShort.count, custom.lengths.limits.min)}</span>
+                <span><Msg text={lang.ui.omitted.tooShort(b.tooShort.count, custom.lengths.limits.min)} /></span>
               </label>
             </li>
           {/if}

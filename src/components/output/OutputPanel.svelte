@@ -1,4 +1,6 @@
 <script lang="ts">
+  import Msg from "../../locale/html/Msg.svelte";
+  import { plain } from "../../locale/html/plain";
   import { lang } from "../../state/lang.svelte";
   import { output } from "../../state/output.svelte";
   import LanguagePicker from "../layout/LanguagePicker.svelte";
@@ -17,27 +19,27 @@
   }
 </script>
 
-<section class="output" aria-label={lang.ui.output.label}>
+<section class="output" aria-label={plain(lang.ui.output.label)}>
   <div class="output-head">
-    <h2>{lang.ui.output.label}</h2>
+    <h2><Msg text={lang.ui.output.label} /></h2>
     <div class="head-actions">
       <SettingsMenu id="output" />
       <LanguagePicker id="output" />
       <button type="button" onclick={copy} disabled={output.merged.length === 0}>
-        {#if output.copyState === "copied"}{lang.ui.output.copied}
-        {:else if output.copyState === "failed"}{lang.ui.output.copyFailed}
-        {:else}{lang.ui.output.copy}{/if}
+        {#if output.copyState === "copied"}<Msg text={lang.ui.output.copied} />
+        {:else if output.copyState === "failed"}<Msg text={lang.ui.output.copyFailed} />
+        {:else}<Msg text={lang.ui.output.copy} />{/if}
       </button>
     </div>
   </div>
 
   {#if output.merged.length === 0}
-    <p class="status">{lang.ui.output.empty}</p>
+    <p class="status"><Msg text={lang.ui.output.empty} /></p>
   {:else}
     <!-- `assertive`, unlike everything else here: it interrupts because the
          reader has just pressed a button and is owed an answer about it. -->
     {#if output.copyState === "failed"}
-      <p class="status" role="alert">{lang.ui.output.copyManual}</p>
+      <p class="status" role="alert"><Msg text={lang.ui.output.copyManual} /></p>
     {/if}
     <WordChips bind:this={chips} />
     <OutputCounter />

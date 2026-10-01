@@ -1,4 +1,6 @@
 <script lang="ts">
+  import Msg from "../../locale/html/Msg.svelte";
+  import { plain } from "../../locale/html/plain";
   import { type Cell, cellKey, includedAfterClick } from "../../lib/matrix";
   import { lang } from "../../state/lang.svelte";
   import { overlays } from "../../state/overlays.svelte";
@@ -81,7 +83,7 @@
         const cell: Cell = [ri + 1, ci + 1];
         const state = cellState(cell);
         const names = state === "regular" || state === "empty" ? [] : namesAt(cell);
-        const meaning = state === "regular" ? s.regular : `${rows[ri]} · ${cols[ci]}`;
+        const meaning = plain(state === "regular" ? s.regular : `${rows[ri]} · ${cols[ci]}`);
         return { cell, state, names, tip: names.join(", "), meaning };
       }),
     ),
@@ -98,8 +100,8 @@
       class="sovereignty-btn"
       aria-haspopup="true"
       aria-expanded={open}
-      aria-label={lang.ui.sovereignty.label}
-      title={lang.ui.sovereignty.label}
+      aria-label={plain(lang.ui.sovereignty.label)}
+      title={plain(lang.ui.sovereignty.label)}
       onclick={(e) => overlays.toggleSovereigntyPanel(id, e.currentTarget)}>✅</button
     >
     {#if open}
@@ -107,23 +109,23 @@
         class="sovereignty-panel"
         class:above={overlays.sovereigntyAbove}
         role="group"
-        aria-label={lang.ui.sovereignty.label}
+        aria-label={plain(lang.ui.sovereignty.label)}
       >
         <p class="sovereignty-title">
-          {s.label} (<a class="wiki" href={s.wiki} target="_blank" rel="noopener noreferrer">Wikipedia</a>)
+          <Msg text={s.label} /> (<a class="wiki" href={s.wiki} target="_blank" rel="noopener noreferrer">Wikipedia</a>)
         </p>
         <div class="sovereignty-grid" style="--cols:{COLS}">
           <!-- The corner names the two axes: de jure (▾) down the rows on the left,
                de facto (▸) across the columns on the right. -->
           <span class="corner">
-            <span class="axis-row">▾ {s.axisRow}</span>
-            <span class="axis-col">{s.axisCol} ▸</span>
+            <span class="axis-row">▾ <Msg text={s.axisRow} /></span>
+            <span class="axis-col"><Msg text={s.axisCol} /> ▸</span>
           </span>
           {#each cols as col, ci (col)}
-            <span class="col-head" title={s.colDefs[ci]}>{col}</span>
+            <span class="col-head" title={plain(s.colDefs[ci])}><Msg text={col} /></span>
           {/each}
           {#each grid as row, ri (ri)}
-            <span class="row-head" title={s.rowDefs[ri]}>{rows[ri]}</span>
+            <span class="row-head" title={plain(s.rowDefs[ri])}><Msg text={rows[ri]} /></span>
             {#each row as { cell, state, tip, meaning } (cellKey(cell))}
               <button
                 type="button"

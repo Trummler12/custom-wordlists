@@ -1,4 +1,6 @@
 <script lang="ts">
+  import Msg from "../../locale/html/Msg.svelte";
+  import { plain } from "../../locale/html/plain";
   import { lang } from "../../state/lang.svelte";
   import { topics } from "../../state/topics.svelte";
   import CategoryNode from "./CategoryNode.svelte";
@@ -7,14 +9,14 @@
 </script>
 
 {#if topics.loading}
-  <p class="status">{lang.ui.tree.loading}</p>
+  <p class="status"><Msg text={lang.ui.tree.loading} /></p>
 {:else if topics.error}
-  <p class="status error">{lang.ui.tree.loadError(topics.error)}</p>
+  <p class="status error"><Msg text={lang.ui.tree.loadError(topics.error)} /></p>
 {:else if topics.all.length === 0}
-  <p class="status">{lang.ui.tree.empty}</p>
+  <p class="status"><Msg text={lang.ui.tree.empty} /></p>
 {:else}
-  <section class="topics" aria-label={lang.ui.tree.topics}>
-    <h2>{lang.ui.tree.topics}</h2>
+  <section class="topics" aria-label={plain(lang.ui.tree.topics)}>
+    <h2><Msg text={lang.ui.tree.topics} /></h2>
     {#each topics.tree.topics as t (t.id)}
       <TopicRow topic={t} />
     {/each}

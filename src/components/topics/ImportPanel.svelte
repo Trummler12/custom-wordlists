@@ -1,4 +1,6 @@
 <script lang="ts">
+  import Msg from "../../locale/html/Msg.svelte";
+  import { plain } from "../../locale/html/plain";
   import { overlapStats, parseImport, type PortableList } from "../../lib/custom";
   import { custom, NAME_MAX } from "../../state/custom.svelte";
   import { lang } from "../../state/lang.svelte";
@@ -119,8 +121,8 @@
     class="ctl-btn"
     aria-haspopup="true"
     aria-expanded={open}
-    aria-label={lang.ui.custom.importLabel}
-    title={lang.ui.custom.importLabel}
+    aria-label={plain(lang.ui.custom.importLabel)}
+    title={plain(lang.ui.custom.importLabel)}
     onclick={togglePanel}>📥</button
   >
   {#if open}
@@ -130,21 +132,21 @@
       class:above={overlays.importAbove}
       style={panelLeft == null ? "" : `left:${panelLeft}px;right:auto;`}
       role="group"
-      aria-label={lang.ui.custom.importTitle}
+      aria-label={plain(lang.ui.custom.importTitle)}
     >
-      <p class="io-title">{lang.ui.custom.importTitle}</p>
+      <p class="io-title"><Msg text={lang.ui.custom.importTitle} /></p>
       <input type="file" accept=".json,application/json" onchange={onFile} />
       {#if chosen && parsed.length === 0}
-        <p class="io-empty">{lang.ui.custom.importEmpty}</p>
+        <p class="io-empty"><Msg text={lang.ui.custom.importEmpty} /></p>
       {:else if parsed.length > 0}
         <table class="io-table">
           <thead>
             <tr>
-              <th><input type="checkbox" checked={allSelected} onchange={toggleAll} title={lang.ui.custom.selectAll} /></th>
-              <th>{lang.ui.custom.importColName}</th>
-              <th>{lang.ui.custom.importColSize}</th>
-              <th>{lang.ui.custom.importColDupes}</th>
-              <th>{lang.ui.custom.importColWith}</th>
+              <th><input type="checkbox" checked={allSelected} onchange={toggleAll} title={plain(lang.ui.custom.selectAll)} /></th>
+              <th><Msg text={lang.ui.custom.importColName} /></th>
+              <th><Msg text={lang.ui.custom.importColSize} /></th>
+              <th><Msg text={lang.ui.custom.importColDupes} /></th>
+              <th><Msg text={lang.ui.custom.importColWith} /></th>
             </tr>
           </thead>
           <tbody>
@@ -167,7 +169,7 @@
                     />
                   {:else}
                     <TipText id={`import-preview-${i}`} text={custom.preview(p.items)} label={p.name} maxWidth="9rem" />
-                    <button type="button" class="mini" title={lang.ui.custom.listRename} onclick={() => startRename(i, p.name)}>✏️</button>
+                    <button type="button" class="mini" title={plain(lang.ui.custom.listRename)} onclick={() => startRename(i, p.name)}>✏️</button>
                   {/if}
                 </td>
                 <td class="num">{p.items.length}</td>
@@ -198,7 +200,7 @@
           </tbody>
         </table>
         <button type="button" class="io-action" disabled={selected.length === 0} onclick={doImport}>
-          {lang.ui.custom.importButton}
+          <Msg text={lang.ui.custom.importButton} />
         </button>
       {/if}
     </div>

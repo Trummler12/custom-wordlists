@@ -1,4 +1,6 @@
 <script lang="ts">
+  import Msg from "../../locale/html/Msg.svelte";
+  import { plain } from "../../locale/html/plain";
   import { type CharClass, oddChars, type OddChar } from "../../lib/custom";
   import { custom } from "../../state/custom.svelte";
   import { lang } from "../../state/lang.svelte";
@@ -65,8 +67,8 @@
       class="omitted-btn"
       aria-haspopup="true"
       aria-expanded={open}
-      aria-label={lang.ui.custom.charsLabel}
-      title={lang.ui.custom.charsLabel}
+      aria-label={plain(lang.ui.custom.charsLabel)}
+      title={plain(lang.ui.custom.charsLabel)}
       onclick={(e) => overlays.toggleOmittedPanel(id, e.currentTarget)}>⚠️</button
     >
     {#if open}
@@ -74,9 +76,9 @@
         class="omitted-panel"
         class:above={overlays.omittedAbove}
         role="group"
-        aria-label={lang.ui.custom.charsLabel}
+        aria-label={plain(lang.ui.custom.charsLabel)}
       >
-        <p class="omitted-title">{lang.ui.custom.charsIgnored}</p>
+        <p class="omitted-title"><Msg text={lang.ui.custom.charsIgnored} /></p>
         {#each sections as s, i (s.cls)}
           {#if i > 0}<hr />{/if}
           <p class="group-title">{s.heading}</p>

@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { plain } from "../../locale/html/plain";
   import { SEPARATORS, separatorLabel, type Separator } from "../../lib/custom";
   import { SCRIPT_LANGS, type Limits } from "../../lib/lengths";
   import { LINE_SEPARATORS } from "../../lib/separator";
@@ -80,15 +81,15 @@
     class="lang-btn"
     aria-haspopup="true"
     aria-expanded={overlays.settingsMenu === id}
-    aria-label={lang.ui.settings.label}
+    aria-label={plain(lang.ui.settings.label)}
     onclick={(e) => overlays.toggleSettingsMenu(id, e.currentTarget)}
   >⚙️</button>
   {#if overlays.settingsMenu === id}
-    <div class="settings-menu" role="group" aria-label={lang.ui.settings.label} use:pinBox>
+    <div class="settings-menu" role="group" aria-label={plain(lang.ui.settings.label)} use:pinBox>
       <div class="setting-row">
         <!-- A caption, not a <label>: a label hands its hover to the dropdown, which
              then lights up under a pointer that can't open it. -->
-        <span id={`${id}-out-sep`}>{lang.ui.settings.outputSeparator}</span>
+        <span id={`${id}-out-sep`}><Msg text={lang.ui.settings.outputSeparator} /></span>
         <select
           aria-labelledby={`${id}-out-sep`}
           value={settings.outputSeparator}
@@ -114,7 +115,7 @@
         {#snippet bounds(l: Limits, tag?: string)}
           {#each ["min", "max"] as const as bound (bound)}
             <label class="bound">
-              <span>{bound === "min" ? lang.ui.settings.minChars : lang.ui.settings.maxChars}</span>
+              <span><Msg text={bound === "min" ? lang.ui.settings.minChars : lang.ui.settings.maxChars} /></span>
               <input
                 type="number"
                 min="1"
@@ -136,7 +137,7 @@
           {/if}
         {/snippet}
         <div class="limit-row">
-          <span>{lang.ui.settings.charLimits}</span>
+          <span><Msg text={lang.ui.settings.charLimits} /></span>
           {@render bounds(settings.charLimits)}
           {@render overGame(settings.charLimits, "all")}
         </div>
@@ -160,12 +161,12 @@
       <div class="reset-row">
         {#if armed}
           <button type="button" class="reset-btn armed" onclick={resetSelectionSettings}>
-            {lang.ui.settings.resetConfirm}
+            <Msg text={lang.ui.settings.resetConfirm} />
           </button>
           <button
             type="button"
             class="reset-cancel"
-            aria-label={lang.ui.settings.resetCancel}
+            aria-label={plain(lang.ui.settings.resetCancel)}
             onclick={disarm}>✕</button
           >
         {:else}

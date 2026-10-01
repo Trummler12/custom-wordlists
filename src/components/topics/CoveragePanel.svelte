@@ -1,4 +1,6 @@
 <script lang="ts">
+  import Msg from "../../locale/html/Msg.svelte";
+  import { plain } from "../../locale/html/plain";
   import { lang } from "../../state/lang.svelte";
   import { overlays } from "../../state/overlays.svelte";
   import { settings } from "../../state/settings.svelte";
@@ -70,8 +72,8 @@
       class:on={level > 0}
       aria-haspopup="true"
       aria-expanded={open}
-      aria-label={lang.ui.coverage.label}
-      title={lang.ui.coverage.label}
+      aria-label={plain(lang.ui.coverage.label)}
+      title={plain(lang.ui.coverage.label)}
       onclick={(e) => overlays.toggleCoveragePanel(id, e.currentTarget)}
     >
       <img src={pegman} alt="" />
@@ -81,9 +83,9 @@
         class="coverage-panel"
         class:above={overlays.coverageAbove}
         role="radiogroup"
-        aria-label={lang.ui.coverage.label}
+        aria-label={plain(lang.ui.coverage.label)}
       >
-        <p class="coverage-title">{lang.ui.coverage.label}</p>
+        <p class="coverage-title"><Msg text={lang.ui.coverage.label} /></p>
         <ul>
           {#each levels as n (n)}
             <li>

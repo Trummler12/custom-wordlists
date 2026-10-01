@@ -1,4 +1,6 @@
 <script lang="ts">
+  import Msg from "../../locale/html/Msg.svelte";
+  import { plain } from "../../locale/html/plain";
   import { setIndeterminate } from "../../lib/dom";
   import { sharedSecondaryTopics } from "../../lib/languages/secondary";
   import { controlledTopics } from "../../lib/rulers";
@@ -42,7 +44,7 @@
   );
   const allForced = $derived(lang.allForced(secondaryGoverned));
   const someForced = $derived(lang.someForced(secondaryGoverned));
-  const forcedLabel = $derived(lang.ui.language.useSecondaryAll(allForced, lang.nameInUi(lang.secondary)));
+  const forcedLabel = $derived(plain(lang.ui.language.useSecondaryAll(allForced, lang.nameInUi(lang.secondary))));
 
   // The Geoguessr coverage control this category syncs (syncControls), commanding
   // every icon-carrying real leaf below at once. From the manifest — no file load,
@@ -92,7 +94,7 @@
     class="expander"
     aria-expanded={open}
     aria-controls={`${id}-children`}
-    aria-label={lang.ui.tree.toggle(open, name.long)}
+    aria-label={plain(lang.ui.tree.toggle(open, name.long))}
     onclick={() => selection.toggleCat(node)}
   >
     {open ? "▾" : "▸"}
@@ -140,8 +142,8 @@
         : selection.someRulersHidden(governed)
           ? "mixed"
           : "false"}
-      aria-label={lang.ui.fame.toggleAll(selection.allRulersShown(governed))}
-      title={lang.ui.fame.toggleAll(selection.allRulersShown(governed))}
+      aria-label={plain(lang.ui.fame.toggleAll(selection.allRulersShown(governed)))}
+      title={plain(lang.ui.fame.toggleAll(selection.allRulersShown(governed)))}
       onclick={() => {
         // A collapsed category renders none of its topic rows, so a toggle either
         // way leaves nothing visibly changed — open it to show the result (rulers
@@ -159,8 +161,8 @@
   {/if}
   <!-- The ratio alone, since it reads the same in every language; the sentence it
        stands for is a hover away. The row needs the width for its controls. -->
-  <span class="meta" title={lang.ui.tree.wordsOf(selection.catSel(all), selection.catTotal(all))}>
-    {#if !ready}{lang.ui.tree.loadingShort}{:else}{selection.catSel(all)}/<span class="total"
+  <span class="meta" title={plain(lang.ui.tree.wordsOf(selection.catSel(all), selection.catTotal(all)))}>
+    {#if !ready}<Msg text={lang.ui.tree.loadingShort} />{:else}{selection.catSel(all)}/<span class="total"
         >{selection.catTotal(all)}</span
       >{/if}
   </span>

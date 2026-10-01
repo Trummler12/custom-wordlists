@@ -1,4 +1,6 @@
 <script lang="ts">
+  import Msg from "../../locale/html/Msg.svelte";
+  import { plain } from "../../locale/html/plain";
   import { onMount } from "svelte";
   import { setIndeterminate } from "../../lib/dom";
   import { canForceSecondary } from "../../lib/languages/secondary";
@@ -51,7 +53,7 @@
     settings.showSecondaryToggle && canForceSecondary(topic, lang.current, lang.secondary),
   );
   const forced = $derived(lang.isForced(topic));
-  const forcedLabel = $derived(lang.ui.language.useSecondary(forced, lang.nameInUi(lang.secondary)));
+  const forcedLabel = $derived(plain(lang.ui.language.useSecondary(forced, lang.nameInUi(lang.secondary))));
 
   // The Geoguessr coverage control, straight from the manifest — no file load. A
   // synth commands its contributors (each with its own ladder); a plain topic, itself.
@@ -200,8 +202,8 @@
         class="ruler-toggle"
         class:shown={rulerShown}
         aria-pressed={rulerShown}
-        aria-label={lang.ui.fame.toggle(rulerShown)}
-        title={lang.ui.fame.toggle(rulerShown)}
+        aria-label={plain(lang.ui.fame.toggle(rulerShown))}
+        title={plain(lang.ui.fame.toggle(rulerShown))}
         onclick={() => selection.toggleRuler(topic)}
       >📏</button>
     {/if}
@@ -209,9 +211,9 @@
          stands for is a hover away. The row needs the width for its controls. -->
     <span
       class="meta"
-      title={lang.ui.tree.wordsOf(selection.topicSelCount(topic), selection.topicTotal(topic))}
+      title={plain(lang.ui.tree.wordsOf(selection.topicSelCount(topic), selection.topicTotal(topic)))}
     >
-      {#if !topics.isReady(topic)}{lang.ui.tree.loadingShort}{:else}{selection.topicSelCount(
+      {#if !topics.isReady(topic)}<Msg text={lang.ui.tree.loadingShort} />{:else}{selection.topicSelCount(
           topic,
         )}/<span class="total">{selection.topicTotal(topic)}</span>{/if}
     </span>

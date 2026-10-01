@@ -1,4 +1,5 @@
 <script lang="ts">
+  import Msg from "../../locale/html/Msg.svelte";
   import { lang } from "../../state/lang.svelte";
   import LanguagePicker from "./LanguagePicker.svelte";
   import SettingsMenu from "./SettingsMenu.svelte";
@@ -17,9 +18,9 @@
     </div>
   </div>
   <p class="tagline">
-    {lang.ui.header.taglineBefore}
+    <Msg text={lang.ui.header.taglineBefore} />
     <a href="https://skribbl.io" target="_blank" rel="noopener noreferrer">skribbl.io</a>
-    {lang.ui.header.taglineAfter}
+    <Msg text={lang.ui.header.taglineAfter} />
   </p>
 </header>
 

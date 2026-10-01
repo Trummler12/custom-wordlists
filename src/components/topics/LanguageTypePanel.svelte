@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { plain } from "../../locale/html/plain";
   import { BASE_RULE, EXTEND_RULE, includeRules } from "../../lib/omitted";
   import type { Group, Omission } from "../../lib/types";
   import { resolveReason } from "../../lib/words";
@@ -62,8 +63,8 @@
       class:on={active}
       aria-haspopup="true"
       aria-expanded={open}
-      aria-label={lang.ui.languageType.label}
-      title={lang.ui.languageType.label}
+      aria-label={plain(lang.ui.languageType.label)}
+      title={plain(lang.ui.languageType.label)}
       onclick={(e) => overlays.toggleLanguageTypePanel(id, e.currentTarget)}>☑️</button
     >
     {#if open}
@@ -71,20 +72,20 @@
         class="language-type-panel"
         class:above={overlays.languageTypeAbove}
         role="group"
-        aria-label={lang.ui.languageType.label}
+        aria-label={plain(lang.ui.languageType.label)}
         onscroll={overlays.onLocalScroll}
       >
-        <p class="language-type-title">{lang.ui.languageType.label}</p>
+        <p class="language-type-title"><Msg text={lang.ui.languageType.label} /></p>
         <!-- The base, shown by default, on its own so the gap sets it apart from the types. -->
         <ul>
           <li>
-            <label title={lang.ui.languageType.toggle(included(BASE_RULE))}>
+            <label title={plain(lang.ui.languageType.toggle(included(BASE_RULE)))}>
               <input
                 type="checkbox"
                 checked={included(BASE_RULE)}
                 onchange={() => selection.toggleOmission(tid, group, BASE_RULE)}
               />
-              <span>{lang.ui.languageType.base}</span>
+              <span><Msg text={lang.ui.languageType.base} /></span>
             </label>
           </li>
         </ul>
@@ -94,13 +95,13 @@
         {#if group.extendFrom != null}
           <ul>
             <li>
-              <label title={lang.ui.languageType.toggle(included(EXTEND_RULE))}>
+              <label title={plain(lang.ui.languageType.toggle(included(EXTEND_RULE)))}>
                 <input
                   type="checkbox"
                   checked={included(EXTEND_RULE)}
                   onchange={() => selection.toggleOmission(tid, group, EXTEND_RULE)}
                 />
-                <span>{lang.ui.languageType.submillion}</span>
+                <span><Msg text={lang.ui.languageType.submillion} /></span>
               </label>
             </li>
           </ul>
@@ -109,14 +110,14 @@
           <ul>
             {#each g as rule (rule.id)}
               <li>
-                <label title={lang.ui.languageType.toggle(included(rule.id))}>
+                <label title={plain(lang.ui.languageType.toggle(included(rule.id)))}>
                   <input
                     type="checkbox"
                     checked={included(rule.id)}
                     onchange={() => selection.toggleOmission(tid, group, rule.id)}
                   />
                   <span
-                    >{lang.ui.omitted.upTo(countOf(rule))}{" "}<Msg
+                    ><Msg text={lang.ui.omitted.upTo(countOf(rule))} />{" "}<Msg
                       text={resolveReason(rule.reason, lang.uiLang, rule.wd)}
                     /></span
                   >

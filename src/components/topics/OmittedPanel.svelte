@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { plain } from "../../locale/html/plain";
   import { coverageTopicOf } from "../../coverage/route";
   import { baseTag, splitName } from "../../lib/languages";
   import { allRules, SEPARATOR_RULE, TOO_LONG_RULE, TOO_SHORT_RULE, UNKNOWN_RULE } from "../../lib/omitted";
@@ -71,7 +72,7 @@
   const shownLimits = $derived(lengthRules.script ?? lengthRules.limits);
   const hidingTooLong = $derived(selection.omitting(tid, group, TOO_LONG_RULE));
   const tooLongTitle = $derived(
-    [lang.ui.omitted.tooLongHint(hidingTooLong), tooLong.join(", ")].join("\n"),
+    [plain(lang.ui.omitted.tooLongHint(hidingTooLong), "\n"), tooLong.join(", ")].join("\n"),
   );
   // Names holding the Output's separator — as the list has them, before the rule
   // strips or drops them, so the hover can show which.
@@ -85,16 +86,16 @@
     ).filter((w) => holdsSeparator(w, sepRules.sep)),
   );
   const sepTitle = $derived(
-    [lang.ui.omitted.separatorHint(sepRules.omit, sepRules.remove), withSep.join(", ")].join("\n"),
+    [plain(lang.ui.omitted.separatorHint(sepRules.omit, sepRules.remove), "\n"), withSep.join(", ")].join("\n"),
   );
   const hidingTooShort = $derived(selection.omitting(tid, group, TOO_SHORT_RULE));
   const tooShortTitle = $derived(
-    [lang.ui.omitted.tooShortHint(hidingTooShort), tooShort.join(", ")].join("\n"),
+    [plain(lang.ui.omitted.tooShortHint(hidingTooShort), "\n"), tooShort.join(", ")].join("\n"),
   );
   const unknownTitle = $derived(
     [
-      lang.ui.omitted.unknownHint(hidingUnknown),
-      ...affected.map(([t, n]) => lang.ui.omitted.unknownTier(t, n)),
+      plain(lang.ui.omitted.unknownHint(hidingUnknown), "\n"),
+      ...affected.map(([t, n]) => plain(lang.ui.omitted.unknownTier(t, n), "\n")),
     ].join("\n"),
   );
   // The language the entries are missing, named in the interface language —
@@ -123,7 +124,7 @@
   const summaryOf = (ruleId: string) => group.omissionSummary?.[ruleId];
   const ruleTitle = (rule: Omission, omitting: boolean) => {
     const info = summaryOf(rule.id);
-    const hint = rule.locked ? lang.ui.omitted.locked : lang.ui.omitted.toggle(omitting);
+    const hint = plain(rule.locked ? lang.ui.omitted.locked : lang.ui.omitted.toggle(omitting), "\n");
     if (!info?.names.length) return hint;
     const shown = info.names.slice(0, RULE_TITLE_LINES * RULE_TITLE_PER_LINE);
     const lines: string[] = [];
@@ -144,8 +145,8 @@
       class="omitted-btn"
       aria-haspopup="true"
       aria-expanded={open}
-      aria-label={lang.ui.omitted.label}
-      title={lang.ui.omitted.label}
+      aria-label={plain(lang.ui.omitted.label)}
+      title={plain(lang.ui.omitted.label)}
       onclick={(e) => overlays.toggleOmittedPanel(id, e.currentTarget)}>🚫</button
     >
     {#if open}
@@ -153,9 +154,9 @@
         class="omitted-panel"
         class:above={overlays.omittedAbove}
         role="group"
-        aria-label={lang.ui.omitted.label}
+        aria-label={plain(lang.ui.omitted.label)}
       >
-        <p class="omitted-title">{lang.ui.omitted.title}</p>
+        <p class="omitted-title"><Msg text={lang.ui.omitted.title} /></p>
         <ul>
           {#each rules as rule (rule.id)}
             {@const omitting = selection.omitting(tid, group, rule.id)}
@@ -171,9 +172,9 @@
                      which is the whole reason it is worth reading. A rule that opts
                      into a count leads with "up to N", the reason reading on from it. -->
                 <span
-                  >{#if rule.count && summaryOf(rule.id)}{lang.ui.omitted.upTo(
+                  >{#if rule.count && summaryOf(rule.id)}<Msg text={lang.ui.omitted.upTo(
                       summaryOf(rule.id)!.count,
-                    )}{" "}{/if}<Msg text={resolveReason(rule.reason, lang.uiLang, rule.wd)} /></span
+                    )} />{" "}{/if}<Msg text={resolveReason(rule.reason, lang.uiLang, rule.wd)} /></span
                 >
               </label>
             </li>
@@ -189,7 +190,7 @@
                 <!-- The coverage-page invite (a link, via Msg) rides in the same span,
                      inline after the count, exactly as a rule's reason link does. -->
                 <span
-                  >{lang.ui.omitted.unknown(unknown, ...missing)}{#if coverageTopic}<Msg
+                  ><Msg text={lang.ui.omitted.unknown(unknown, ...missing)} />{#if coverageTopic}<Msg
                       text={lang.ui.omitted.helpAdd(coverageUrl)}
                     />{/if}</span
                 >
@@ -204,7 +205,7 @@
                   checked={hidingTooLong}
                   onchange={() => selection.toggleOmission(tid, group, TOO_LONG_RULE)}
                 />
-                <span>{lang.ui.omitted.tooLong(tooLong.length, shownLimits.max)}</span>
+                <span><Msg text={lang.ui.omitted.tooLong(tooLong.length, shownLimits.max)} /></span>
               </label>
             </li>
           {/if}
@@ -228,7 +229,7 @@
                   checked={hidingTooShort}
                   onchange={() => selection.toggleOmission(tid, group, TOO_SHORT_RULE)}
                 />
-                <span>{lang.ui.omitted.tooShort(tooShort.length, shownLimits.min)}</span>
+                <span><Msg text={lang.ui.omitted.tooShort(tooShort.length, shownLimits.min)} /></span>
               </label>
             </li>
           {/if}

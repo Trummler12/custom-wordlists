@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { plain } from "../../locale/html/plain";
   import { selectAll } from "../../lib/dom";
   import { lang } from "../../state/lang.svelte";
   import { output } from "../../state/output.svelte";
@@ -34,7 +35,7 @@
   class="chips"
   role="textbox"
   aria-readonly="true"
-  aria-label={lang.ui.output.generatedList}
+  aria-label={plain(lang.ui.output.generatedList)}
   tabindex="0"
   onclick={(e) => selectAll(e.currentTarget)}
   oncopy={copySelection}
