@@ -117,7 +117,8 @@
     position: absolute;
     top: 100%;
     right: 0;
-    z-index: 11;
+    /* Under the tip notes (z-index 10): a note explains the very field this list may cover. */
+    z-index: 2;
     margin: 0;
     padding: 0.25rem;
     list-style: none;
