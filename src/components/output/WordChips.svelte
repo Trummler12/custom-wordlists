@@ -12,6 +12,19 @@
     node?.focus();
     if (node) selectAll(node);
   }
+
+  /** A manual copy hands over the selected names joined like the Copy button joins
+   *  them. Left to itself the browser would end every chip with a newline, since
+   *  each is a block of its own in the flex layout. A selection inside one chip is
+   *  part of a single name and keeps the browser's own copy. */
+  function copySelection(e: ClipboardEvent): void {
+    const sel = window.getSelection();
+    if (!sel || sel.isCollapsed) return;
+    const chips = [...node.querySelectorAll<HTMLElement>(".chip")].filter((c) => sel.containsNode(c, true));
+    if (chips.length < 2 || !e.clipboardData) return;
+    e.preventDefault();
+    e.clipboardData.setData("text/plain", output.join(chips.map((c) => c.textContent ?? "")));
+  }
 </script>
 
 <!-- Read-only per-word chips rather than a textarea, so M2 can colour words. It
@@ -24,6 +37,7 @@
   aria-label={lang.ui.output.generatedList}
   tabindex="0"
   onclick={(e) => selectAll(e.currentTarget)}
+  oncopy={copySelection}
   onkeydown={(e) => {
     if (e.key === "Enter" || e.key === " ") {
       e.preventDefault();
