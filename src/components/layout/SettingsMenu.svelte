@@ -1,5 +1,7 @@
 <script lang="ts">
   import { SEPARATORS, separatorLabel, type Separator } from "../../lib/custom";
+  import { SCRIPT_LANGS, type Limits } from "../../lib/lengths";
+  import { SKRIBBL } from "../../lib/skribbl";
   import { lang } from "../../state/lang.svelte";
   import { overlays } from "../../state/overlays.svelte";
   import { resetSelectionSettings } from "../../state/reset";
@@ -30,6 +32,42 @@
   $effect(() => {
     if (overlays.settingsMenu !== id) disarm();
   });
+
+  // A row of limits of their own for each language in play that is written a
+  // character per syllable: the primary one, and the secondary one while lists can
+  // be switched to it. Rows not shown still apply (see custom.lengths).
+  const scriptRows = $derived(
+    [lang.current, ...(settings.showSecondaryToggle ? [lang.secondary] : [])].filter(
+      (l, i, all) => SCRIPT_LANGS.includes(l) && all.indexOf(l) === i,
+    ),
+  );
+
+  /** Let a marker that doesn't fit the menu's held width look like the menu reaching
+   *  out for it, rather than resizing the menu or hanging in the air beside it: the
+   *  tab around it wears the menu's background, and its border is drawn only where
+   *  it sticks out (`--inside` is how much of it the menu already covers). */
+  function extendPanel(node: HTMLElement) {
+    const panel = node.closest<HTMLElement>(".settings-menu");
+    if (!panel) return;
+    const place = () => {
+      const inside = panel.getBoundingClientRect().right - node.getBoundingClientRect().left;
+      node.style.setProperty("--inside", `${Math.max(0, inside)}px`);
+    };
+    const ro = new ResizeObserver(place);
+    ro.observe(panel);
+    ro.observe(node);
+    place();
+    return { destroy: () => ro.disconnect() };
+  }
+
+  function setLimit(bound: keyof Limits, e: Event, tag?: string): void {
+    const input = e.currentTarget as HTMLInputElement;
+    settings.setLimit(bound, Number(input.value), tag);
+    // Show what was actually kept: a rejected or clamped value would otherwise stay
+    // in the field and disagree with the setting.
+    const kept = tag ? settings.scriptLimitsFor(tag) : settings.charLimits;
+    if (kept) input.value = String(kept[bound]);
+  }
 </script>
 
 <div class="settings-picker">
@@ -59,6 +97,51 @@
         </select>
         <TipMarker tipId={`${id}-out-sep-hint`} icon="ℹ️" text={lang.ui.settings.outputSeparatorHint} />
         <TipNote id={`${id}-out-sep-hint`} text={lang.ui.settings.outputSeparatorHint} />
+      </div>
+      <div class="limits">
+        {#snippet bounds(l: Limits, tag?: string)}
+          {#each ["min", "max"] as const as bound (bound)}
+            <label class="bound">
+              <span>{bound === "min" ? lang.ui.settings.minChars : lang.ui.settings.maxChars}</span>
+              <input
+                type="number"
+                min="1"
+                value={l[bound]}
+                onchange={(e) => setLimit(bound, e, tag)}
+              />
+            </label>
+          {/each}
+        {/snippet}
+        <!-- Above skribbl.io's own maximum, for the general limits and a language's alike. -->
+        {#snippet overGame(l: Limits, key: string)}
+          {#if l.max > SKRIBBL.maxWordLen}
+            <span class="over-slot">
+              <span class="over-tab" use:extendPanel>
+                <TipMarker tipId={`${id}-max-over-${key}`} icon="⚠️" text={lang.ui.settings.charMaxOver(SKRIBBL.maxWordLen)} />
+              </span>
+            </span>
+            <TipNote id={`${id}-max-over-${key}`} text={lang.ui.settings.charMaxOver(SKRIBBL.maxWordLen)} />
+          {/if}
+        {/snippet}
+        <div class="limit-row">
+          <span>{lang.ui.settings.charLimits}</span>
+          {@render bounds(settings.charLimits)}
+          {@render overGame(settings.charLimits, "all")}
+        </div>
+        {#each scriptRows as tag (tag)}
+          {@const l = settings.scriptLimitsFor(tag)}
+          {#if l}
+            <div class="limit-row">
+              <span
+                ><span title={tag}>{lang.name(tag)}</span>
+                <TipMarker tipId={`${id}-script-${tag}`} icon="ℹ️" text={lang.ui.settings.scriptLimitsHint} /></span
+              >
+              {@render bounds(l, tag)}
+              {@render overGame(l, tag)}
+              <TipNote id={`${id}-script-${tag}`} text={lang.ui.settings.scriptLimitsHint} />
+            </div>
+          {/if}
+        {/each}
       </div>
       <!-- Destructive, so it sits apart from the preferences above it and is armed
            before it fires. -->
@@ -118,6 +201,63 @@
   .setting-row select {
     font: inherit;
     cursor: pointer;
+  }
+  /* The limit rows share their columns, so the Min and Max fields line up under each
+     other whatever the captions' lengths. Each row is still a box of its own (subgrid),
+     which its note spans. */
+  .limits {
+    display: grid;
+    grid-template-columns: max-content max-content max-content auto;
+    align-items: center;
+    column-gap: 0.5rem;
+    row-gap: 0.35rem;
+  }
+  .limit-row {
+    position: relative;
+    display: grid;
+    grid-column: 1 / -1;
+    grid-template-columns: subgrid;
+    align-items: center;
+  }
+  .bound {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+  }
+  .bound input {
+    width: 3.2em;
+    font: inherit;
+  }
+  /* The tab `extendPanel` places: the menu's own background and corner, with a border
+     only along the part outside the menu. The background paints over the menu's own
+     right border there, which is what makes the two read as one shape. */
+  /* A cell of no width, so the marker never counts towards the menu's width: the menu
+     sizes itself to the fields alone, whether or not the marker is there when it opens.
+     The tab hangs out of it, centred on the row (an absolute child of a flex box keeps
+     the box's alignment). */
+  .over-slot {
+    position: relative;
+    display: flex;
+    align-items: center;
+    align-self: stretch;
+    width: 0;
+  }
+  .over-tab {
+    position: absolute;
+    left: 0;
+    display: inline-flex;
+    padding: 0.2rem 0.2rem 0.4rem 0.0rem;
+    background: var(--chip-bg);
+    border-radius: 0 var(--radius) var(--radius) 0;
+  }
+  .over-tab::before {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    border: 1px solid var(--panel-border);
+    border-radius: inherit;
+    clip-path: inset(0 0 0 calc(var(--inside, 100%) + 1px));
+    pointer-events: none;
   }
   /* Reset stands apart from the preferences above (a rule over it) and wears the danger
      colour instead of the neutral chrome the rest of the menu uses. */
