@@ -241,7 +241,7 @@ export const en: UIStrings = {
     interfaceAuto: "Automatic",
     outputSeparator: "Output separator:",
     outputSeparatorHint:
-      "skribbl.io only accepts \",\" as the separator. The others only change what gets copied; the Output looks the same either way.",
+      "skribbl.io only accepts {code},{/code} as the separator. The others only change what gets copied; the Output looks the same either way.",
     minChars: "Min characters:",
     maxChars: "Max characters:",
     reset: "Reset selection settings{br}to default",

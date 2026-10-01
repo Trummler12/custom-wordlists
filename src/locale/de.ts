@@ -258,7 +258,7 @@ export const de: UIStrings = {
     interfaceAuto: "Automatisch",
     outputSeparator: "Ausgabe-Trennzeichen:",
     outputSeparatorHint:
-      "skribbl.io akzeptiert nur \",\" als Trennzeichen. Die anderen ändern nur, was kopiert wird; die Ausgabe sieht in jedem Fall gleich aus.",
+      "skribbl.io akzeptiert nur {code},{/code} als Trennzeichen. Die anderen ändern nur, was kopiert wird; die Ausgabe sieht in jedem Fall gleich aus.",
     minChars: "Min. Zeichen:",
     maxChars: "Max. Zeichen:",
     reset: "Auswahl-Einstellungen{br}zurücksetzen",
