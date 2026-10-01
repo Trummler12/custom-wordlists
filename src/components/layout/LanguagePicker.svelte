@@ -185,7 +185,7 @@
     right: 0;
     z-index: 10;
     width: max-content;
-    max-width: min(24rem, 90vw);
+    max-width: min(20rem, 90vw);
     padding: 0.5rem 0.6rem;
     background: var(--chip-bg);
     border: 1px solid var(--panel-border);
