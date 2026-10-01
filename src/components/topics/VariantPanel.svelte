@@ -8,7 +8,9 @@
 
   let { tid }: { tid: string } = $props();
 
-  const variant = $derived(variantFor(lang.current));
+  // None while the list is switched to the secondary language: the per-list answer
+  // belongs to the primary language's variant, which the list then doesn't use.
+  const variant = $derived(lang.forceSecondary[tid] ? undefined : variantFor(lang.current));
   // Only entries carrying the tag, which is only the ones that deviate — the
   // enrichment writes a variant key nowhere else. So this count is the answer to
   // "does this variant matter here", and the panel appearing at all is half of it.
