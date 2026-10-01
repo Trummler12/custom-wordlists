@@ -56,6 +56,22 @@
     };
   });
 
+  /** Let the caption column grow while the panel is open, never shrink: switching the
+   *  interface language rewrites the captions, and fields that jump left and right with
+   *  every switch are hard to keep an eye on. Released when the panel closes. */
+  function holdCaptions(node: HTMLElement) {
+    let widest = 0;
+    const ro = new ResizeObserver(() => {
+      const first = parseFloat(getComputedStyle(node).gridTemplateColumns);
+      if (first > widest) {
+        widest = first;
+        node.style.setProperty("--caption-min", `${widest}px`);
+      }
+    });
+    for (const label of node.querySelectorAll(".slot-label")) ro.observe(label);
+    return { destroy: () => ro.disconnect() };
+  }
+
   const slots = ["primary", "interface", "fallback"] as const;
   const slotValue = (s: (typeof slots)[number]): string =>
     s === "primary" ? lang.current : s === "interface" ? lang.uiPref : lang.fallbackPref;
@@ -80,7 +96,7 @@
     {#if open}
       <div class="lang-panel" role="group" aria-label={ui.panelTitle} use:pinBox>
         <p class="panel-title">{ui.panelTitle}</p>
-        <div class="slots">
+        <div class="slots" use:holdCaptions>
           {#each slots as s (s)}
             <div class="slot-row">
               <span class="slot-label" id={`${id}-slot-${s}`}>{ui.slot[s]}</span>
@@ -97,49 +113,51 @@
           {/each}
         </div>
 
-        <div class="setting-row rule">
-          <label class="setting">
-            <input
-              id={`${id}-secondary`}
-              type="checkbox"
-              checked={settings.showSecondaryToggle}
-              onchange={(e) => settings.setShowSecondaryToggle(e.currentTarget.checked)}
-            />
-            <span id={`${id}-secondary-before`}>{ui.showSecondaryBefore}</span>
-          </label>
-          <!-- Beside the label rather than inside it, so a click on the list never
-               ticks the checkbox. The words after it get a label of their own. -->
-          <LanguageSelect
-            id={`${id}-secondary-lang`}
-            labelledby={`${id}-secondary-before ${id}-secondary-after`}
-            value={lang.secondary}
-            onpick={(l) => lang.setSecondary(l)}
+        <div class="setting-row hang rule">
+          <input
+            id={`${id}-secondary`}
+            type="checkbox"
+            checked={settings.showSecondaryToggle}
+            onchange={(e) => settings.setShowSecondaryToggle(e.currentTarget.checked)}
           />
-          <label class="setting" for={`${id}-secondary`} id={`${id}-secondary-after`}
-            >{ui.showSecondaryAfter}</label
-          >
-          <TipMarker tipId={`${id}-hint-secondary`} icon="ℹ️" text={ui.showSecondaryHint} />
+          <!-- Running text with the dropdown inline, so a wrapped line starts where the
+               first one does. The words on either side are labels of the checkbox; the
+               dropdown sits between them, never inside one, so a click on it never ticks
+               the checkbox. -->
+          <div class="hang-body">
+            <label for={`${id}-secondary`} id={`${id}-secondary-before`}>{ui.showSecondaryBefore}</label>
+            <LanguageSelect
+              id={`${id}-secondary-lang`}
+              labelledby={`${id}-secondary-before ${id}-secondary-after`}
+              value={lang.secondary}
+              onpick={(l) => lang.setSecondary(l)}
+            />
+            <label for={`${id}-secondary`} id={`${id}-secondary-after`}>{ui.showSecondaryAfter}</label>
+            <TipMarker tipId={`${id}-hint-secondary`} icon="ℹ️" text={ui.showSecondaryHint} />
+            {#if moot}
+              <TipMarker tipId={`${id}-moot`} icon="⚠️" text={ui.secondaryMoot} />
+            {/if}
+          </div>
           <TipNote id={`${id}-hint-secondary`} text={ui.showSecondaryHint} />
-          {#if moot}
-            <TipMarker tipId={`${id}-moot`} icon="⚠️" text={ui.secondaryMoot} />
-            <TipNote id={`${id}-moot`} text={ui.secondaryMoot} />
-          {/if}
+          {#if moot}<TipNote id={`${id}-moot`} text={ui.secondaryMoot} />{/if}
         </div>
         {#if settings.showSecondaryToggle && secondaryFlags.length > 1}
-          <div class="setting-row flag-row" role="radiogroup" aria-labelledby={`${id}-flag-type`}>
+          <div class="setting-row hang" role="radiogroup" aria-labelledby={`${id}-flag-type`}>
             <span id={`${id}-flag-type`}>{ui.flagType}</span>
-            {#each secondaryFlags as f (f.type)}
-              <label class="setting">
-                <input
-                  type="radio"
-                  name={`${id}-flag-type`}
-                  checked={shownFlag?.type === f.type}
-                  onchange={() => settings.setFlagType(f.type)}
-                />
-                <img class="flag" src={f.url} alt="" />
-                <span>{ui.flagTypes[f.type]}</span>
-              </label>
-            {/each}
+            <div class="flag-options">
+              {#each secondaryFlags as f (f.type)}
+                <label class="setting">
+                  <input
+                    type="radio"
+                    name={`${id}-flag-type`}
+                    checked={shownFlag?.type === f.type}
+                    onchange={() => settings.setFlagType(f.type)}
+                  />
+                  <img class="flag" src={f.url} alt="" />
+                  <span>{ui.flagTypes[f.type]}</span>
+                </label>
+              {/each}
+            </div>
           </div>
         {/if}
 
@@ -204,7 +222,7 @@
      lengths. Each row is still a box of its own (subgrid), which its note spans. */
   .slots {
     display: grid;
-    grid-template-columns: max-content max-content max-content;
+    grid-template-columns: minmax(var(--caption-min, 0px), max-content) max-content max-content;
     align-items: center;
     column-gap: 0.4rem;
     row-gap: 0.35rem;
@@ -237,8 +255,25 @@
     padding-top: 0.5rem;
     border-top: 1px solid var(--panel-border);
   }
-  .flag-row {
+  /* A hanging indent: whatever leads the row (a checkbox, a caption) keeps its column,
+     and every wrapped line starts where the first one does. */
+  .hang {
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    align-items: baseline;
+    column-gap: 0.4rem;
+  }
+  .hang-body {
+    line-height: 1.6;
+  }
+  .hang-body label {
+    cursor: pointer;
+  }
+  .flag-options {
+    display: flex;
+    flex-wrap: wrap;
     column-gap: 0.7rem;
+    row-gap: 0.25rem;
   }
   .flag {
     height: 0.8rem;
