@@ -48,7 +48,16 @@
       // ignore — nothing depends on the write succeeding
     }
   });
-  const ui = $derived(strings(uiLang).coveragePage);
+  // The fallback language the reader chose in the app's 🌐 panel, for labels the interface
+  // dictionary lacks. Read once: this page offers no control for it.
+  const fallbackLang = (() => {
+    try {
+      return asUiLang(localStorage.getItem("wordlists:fallbackLang")) ?? FALLBACK_LANG;
+    } catch {
+      return FALLBACK_LANG;
+    }
+  })();
+  const ui = $derived(strings(uiLang, fallbackLang).coveragePage);
   const numLabel = (key: string): string => (ui.numeric as Record<string, string>)[key] ?? key;
 
   // Topic names come from the topic data, not a duplicated locale table (the "locale-like
@@ -263,7 +272,7 @@
       </table>
     </div>
   </main>
-  <SiteFooter footer={strings(uiLang).footer} flow sticky />
+  <SiteFooter footer={strings(uiLang, fallbackLang).footer} flow sticky />
   </div>
 {/if}
 
