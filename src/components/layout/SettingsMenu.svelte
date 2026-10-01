@@ -1,6 +1,7 @@
 <script lang="ts">
   import { SEPARATORS, separatorLabel, type Separator } from "../../lib/custom";
   import { SCRIPT_LANGS, type Limits } from "../../lib/lengths";
+  import { LINE_SEPARATORS } from "../../lib/separator";
   import { SKRIBBL } from "../../lib/skribbl";
   import { lang } from "../../state/lang.svelte";
   import { overlays } from "../../state/overlays.svelte";
@@ -98,6 +99,17 @@
         <TipMarker tipId={`${id}-out-sep-hint`} icon="ℹ️" text={lang.ui.settings.outputSeparatorHint} />
         <TipNote id={`${id}-out-sep-hint`} text={lang.ui.settings.outputSeparatorHint} />
       </div>
+      <!-- No name can hold a line break or a tab, so for those there is nothing to remove. -->
+      {#if !LINE_SEPARATORS.includes(settings.outputSeparator)}
+        <label class="setting-row check">
+          <input
+            type="checkbox"
+            checked={settings.removeSeparator}
+            onchange={(e) => settings.setRemoveSeparator(e.currentTarget.checked)}
+          />
+          <span><Msg text={lang.ui.settings.removeSeparator(settings.outputSeparator)} /></span>
+        </label>
+      {/if}
       <div class="limits">
         {#snippet bounds(l: Limits, tag?: string)}
           {#each ["min", "max"] as const as bound (bound)}
@@ -197,6 +209,10 @@
     flex-wrap: wrap;
     align-items: center;
     gap: 0.35rem;
+  }
+  .setting-row.check {
+    width: fit-content;
+    cursor: pointer;
   }
   .setting-row select {
     font: inherit;
