@@ -63,6 +63,16 @@ export const de: UIStrings = {
       `Bis zu ${n} ${n === 1 ? "Name" : "Namen"} mit weniger als ${minLen} Zeichen`,
     tooShortHint: (omitted) =>
       omitted ? "Umschalten, um sie trotzdem aufzunehmen." : "Umschalten, um sie wieder wegzulassen.",
+    separatorIn: (n, sep, removing) =>
+      `Bis zu ${n} ${n === 1 ? "Name" : "Namen"}, ${n === 1 ? "der" : "die"} das gewählte Trennzeichen ({code}${sep}{/code}) ${removing ? (n === 1 ? "enthalten {i}würde{/i}" : "enthalten {i}würden{/i}") : n === 1 ? "enthält" : "enthalten"}`,
+    separatorHint: (omitted, removing) =>
+      omitted
+        ? removing
+          ? "Umschalten, um sie zu behalten, ohne das Trennzeichen."
+          : "Umschalten, um sie trotzdem aufzunehmen: skribbl.io würde sie am Trennzeichen auftrennen."
+        : removing
+          ? "Umschalten, um sie wegzulassen, statt das Trennzeichen zu entfernen."
+          : "Umschalten, um sie wieder wegzulassen.",
     tooLongHint: (omitted) =>
       omitted
         ? "Umschalten, um sie trotzdem aufzunehmen — skribbl.io nimmt sie nicht an, ein anderes Spiel vielleicht schon."
@@ -266,6 +276,7 @@ export const de: UIStrings = {
     charLimits: "Zeichenlimits:",
     minChars: "Min",
     maxChars: "Max",
+    removeSeparator: (sep) => `{code}${sep}{/code} aus Namen entfernen`,
     charMaxOver: (gameMax) => `skribbl.io akzeptiert höchstens ${gameMax} Zeichen pro Name.`,
     scriptLimitsHint:
       "Limits für Namen in der eigenen Schrift dieser Sprache, in der ein einzelnes Zeichen meist für (mindestens) eine ganze Silbe steht. Romaji und andere Namen in lateinischen Buchstaben folgen den allgemeinen Limits.",
@@ -287,6 +298,8 @@ export const de: UIStrings = {
     overMax: "· über dem Maximum",
     overLong: (count, maxLen) =>
       `${count} ${count === 1 ? "Wort" : "Wörter"} mit mehr als ${maxLen} Zeichen`,
+    splitting: (count, sep) =>
+      `${count} ${count === 1 ? "Wort" : "Wörter"} mit dem Trennzeichen "${sep}" (beim Einfügen aufgetrennt)`,
   },
   footer: {
     repository: "GitHub-Repository",

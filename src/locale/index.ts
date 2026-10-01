@@ -114,6 +114,11 @@ export interface OmittedStrings {
   /** The same for names under the minimum. */
   tooShort: (n: number, minLen: number) => string;
   tooShortHint: (omitted: boolean) => string;
+  /** Names holding the Output's separator. `removing`: the reader has it removed from
+   *  names (then the rule is off by default and the label says "would"). Carries
+   *  markup; render through html/Msg. The hint is a native tooltip, so plain text. */
+  separatorIn: (n: number, sep: string, removing: boolean) => string;
+  separatorHint: (omitted: boolean, removing: boolean) => string;
   /** Appended to the unknown-names row for a Wikidata-sourced topic: a link to that
    *  topic's Language-Coverage page, where a reader can fill the gaps. Leads with an
    *  em-dash separator and carries a `[text](url)` link, so it renders through html/Msg
@@ -268,6 +273,8 @@ export interface SettingsStrings {
   charLimits: string;
   minChars: string;
   maxChars: string;
+  /** The checkbox that removes the Output's separator from names. Carries markup. */
+  removeSeparator: (sep: string) => string;
   /** Warning beside a maximum above skribbl.io's own. */
   charMaxOver: (gameMax: number) => string;
   scriptLimitsHint: string;
@@ -305,6 +312,8 @@ export interface OutputStrings {
    *  consequence rather than warning about a surprise. The words themselves are on
    *  the hover, since the number is the part worth a line. */
   overLong: (count: number, maxLen: number) => string;
+  /** Names in the Output that hold its separator and will be split when pasted. */
+  splitting: (count: number, sep: string) => string;
 }
 
 /** The footer. */

@@ -56,6 +56,16 @@ export const en: UIStrings = {
     tooShort: (n, minLen) => `Up to ${n} name${n === 1 ? "" : "s"} shorter than ${minLen} characters`,
     tooShortHint: (omitted) =>
       omitted ? "Toggle to include them anyway." : "Toggle to leave them out again.",
+    separatorIn: (n, sep, removing) =>
+      `Up to ${n} name${n === 1 ? "" : "s"} that ${removing ? "{i}would{/i} contain" : "contain"} the chosen separator ({code}${sep}{/code})`,
+    separatorHint: (omitted, removing) =>
+      omitted
+        ? removing
+          ? "Toggle to keep them, with the separator removed."
+          : "Toggle to include them anyway: skribbl.io would split each of them at the separator."
+        : removing
+          ? "Toggle to leave them out instead of removing the separator."
+          : "Toggle to leave them out again.",
     tooLongHint: (omitted) =>
       omitted
         ? "Toggle to include them anyway — skribbl.io won't take them, but another game might."
@@ -248,6 +258,7 @@ export const en: UIStrings = {
     charLimits: "Character limits:",
     minChars: "Min",
     maxChars: "Max",
+    removeSeparator: (sep) => `Remove {code}${sep}{/code} found in names`,
     charMaxOver: (gameMax) => `skribbl.io accepts at most ${gameMax} characters per name.`,
     scriptLimitsHint:
       "Limits for names in this language's own script, where a single character usually stands for a whole syllable or word. Romaji and other names in Latin letters follow the general limits.",
@@ -269,6 +280,8 @@ export const en: UIStrings = {
     overMax: "· over the maximum",
     overLong: (count, maxLen) =>
       `${count} word${count === 1 ? "" : "s"} longer than ${maxLen} characters`,
+    splitting: (count, sep) =>
+      `${count} word${count === 1 ? "" : "s"} holding the separator "${sep}" (split apart when pasted)`,
   },
   footer: {
     repository: "GitHub Repository",
