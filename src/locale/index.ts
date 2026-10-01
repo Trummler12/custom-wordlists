@@ -1,7 +1,7 @@
 // UI-chrome strings (everything the app itself renders — not topic content).
-// One dictionary per locale implements UIStrings — the set listed in UI
-// below; the frontend resolves the active one via strings(lang), falling back to
-// English for any language that has topic data but no UI translation yet.
+// English and German implement UIStrings in full; the machine-written locales may
+// leave fields out, and strings(lang, fallback) fills each missing one from the
+// reader's fallback language, then from English.
 //
 // Topic content (titles, tier conditions, rule reasons) is translatable too but
 // lives with the build that bakes it, not here — see README.md for the full map.
@@ -514,14 +514,14 @@ import { zhHant } from "./zh-Hant";
 import { ru } from "./ru";
 import { pt } from "./pt";
 
-/** Language that backs any locale without its own UI dictionary. */
+/** The last resort for any label: the one dictionary that is always complete. */
 export const FALLBACK_LANG = "en";
 
 // All but English are machine-written and unreviewed by a native speaker; the
 // contribution guide asks for proofreaders by name. Chinese (both scripts) is an
 // official interface language now, not merely a content one — see
 // docs/Language-Roadmap.md.
-const UI: Record<string, UIStrings> = { en, de, es, fr, it, ja, ko, "zh-Hans": zhHans, "zh-Hant": zhHant, ru, pt };
+const UI: Record<string, LocaleDict> = { en, de, es, fr, it, ja, ko, "zh-Hans": zhHans, "zh-Hant": zhHant, ru, pt };
 
 /** Languages the chrome can be rendered in — the ones with a dictionary above. A
  *  language is "official" once it has both a chrome dictionary and a picker slot, so
@@ -538,9 +538,46 @@ export const UI_LANGS: string[] = Object.keys(UI).sort();
  *  so a browser asking for `zh-CN` lands here anyway. */
 export const CONTENT_LANGS: string[] = UI_LANGS;
 
-/** UI strings for `lang`, falling back to English when it has no dictionary. */
-export function strings(lang: string): UIStrings {
-  return UI[lang] ?? UI[FALLBACK_LANG];
+/** A dictionary that may leave labels out, down to single fields of a group. A
+ *  function or a tuple is one label, so it is either there or not. */
+export type DeepPartial<T> = T extends (...args: never[]) => unknown
+  ? T
+  : T extends readonly unknown[]
+    ? T
+    : T extends object
+      ? { [K in keyof T]?: DeepPartial<T[K]> }
+      : T;
+export type LocaleDict = DeepPartial<UIStrings>;
+
+function isGroup(v: unknown): v is Record<string, unknown> {
+  return typeof v === "object" && v !== null && !Array.isArray(v);
+}
+
+/** `over` laid onto `base`, field by field: a group missing one label keeps the
+ *  rest of its own instead of losing the whole group to the base. */
+export function overlay<T>(base: T, over: DeepPartial<T> | undefined): T {
+  if (!isGroup(base) || !isGroup(over)) return (over ?? base) as T;
+  const out: Record<string, unknown> = { ...base };
+  for (const [k, v] of Object.entries(over)) {
+    if (v !== undefined) out[k] = overlay(base[k], v);
+  }
+  return out as T;
+}
+
+// Every lookup of the same pair returns the same object, so a component reading
+// `lang.ui` doesn't see a new dictionary on every derivation.
+const merged = new Map<string, UIStrings>();
+
+/** UI strings for `lang`: each label from its dictionary, else from `fallback`'s,
+ *  else from English. The fallback may itself be partial, hence the third layer. */
+export function strings(lang: string, fallback: string = FALLBACK_LANG): UIStrings {
+  const key = `${lang}|${fallback}`;
+  let ui = merged.get(key);
+  if (!ui) {
+    ui = overlay<UIStrings>(overlay<UIStrings>(en, UI[fallback]), UI[lang]);
+    merged.set(key, ui);
+  }
+  return ui;
 }
 
 /** The full ⚠️ warning for a topic, in the active language. The fallback sentence
