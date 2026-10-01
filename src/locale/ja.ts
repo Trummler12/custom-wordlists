@@ -159,7 +159,7 @@ export const ja: LocaleDict = {
     uiOnly: "UI言語のみ",
     uiOnlyHint: "生データのダンプには、skribbl.io が対応するすべての言語に加え、{br}利用者の多い言語もいくつか含まれています。{br}つまりデータはすでにすべての計画言語に対応していますが、{br}インターフェースは私たちメンテナーが手入れしているため、当然ながら大きく遅れています。{br}また、その言語を扱うトピックがまだほとんどない状態で{br}新しい UI 言語を増やそうとしても、あまり意味がありません。{br}ただし協力者が増えるほど、新しい言語が早く承認されます！{br}=> よければ下の Contribution Guide をご覧ください！",
     item: "項目",
-    numeric: { population: "人口", area: "面積 (km²)", users: "使用者数" },
+    numeric: { population: "人口", area: "面積 (km{smaller sup}2{/smaller sup})", users: "使用者数" },
     first: "最初のページ",
     prev: "前のページ",
     next: "次のページ",

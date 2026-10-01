@@ -305,7 +305,7 @@ export const en: UIStrings = {
     uiOnly: "UI languages only",
     uiOnlyHint: "The raw data dumps already cover every language skribbl.io supports,{br}plus a few more with many users.{br}So the data already supports every planned language,{br}while the interface is kept up by us maintainers and naturally lags well behind.{br}And there is little point in trying to add a new interface language{br}while barely any topics cover that language yet.{br}But the more people help, the sooner new languages are greenlit!{br}=> Feel free to check out the Contribution Guide below!",
     item: "Item",
-    numeric: { population: "Population", area: "Area (km²)", users: "Users" },
+    numeric: { population: "Population", area: "Area (km{smaller sup}2{/smaller sup})", users: "Users" },
     first: "First page",
     prev: "Previous page",
     next: "Next page",

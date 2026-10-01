@@ -168,7 +168,7 @@ export const it: LocaleDict = {
     uiOnly: "Solo lingue dell'interfaccia",
     uiOnlyHint: "I dump di dati grezzi coprono già ogni lingua supportata da skribbl.io,{br}più qualcuna in più con molti utenti.{br}Quindi i dati supportano già ogni lingua prevista,{br}mentre l'interfaccia è curata da noi maintainer e naturalmente resta molto indietro.{br}E ha poco senso voler aggiungere una nuova lingua d'interfaccia{br}finché quasi nessun argomento copre quella lingua.{br}Ma più persone aiutano, prima vengono approvate nuove lingue.{br}=> Dai pure un'occhiata alla Contribution Guide qui sotto!",
     item: "Voce",
-    numeric: { population: "Popolazione", area: "Superficie (km²)", users: "Utenti" },
+    numeric: { population: "Popolazione", area: "Superficie (km{smaller sup}2{/smaller sup})", users: "Utenti" },
     first: "Prima pagina",
     prev: "Pagina precedente",
     next: "Pagina successiva",

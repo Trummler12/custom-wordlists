@@ -331,7 +331,7 @@ export const de: UIStrings = {
                 "Aber je mehr mithelfen, desto früher werden neue Sprachen freigeschaltet!{br}"+
                 "=> Schau hierzu gerne in den Contribution Guide unten!",
     item: "Eintrag",
-    numeric: { population: "Einwohner", area: "Fläche (km²)", users: "Nutzer" },
+    numeric: { population: "Einwohner", area: "Fläche (km{smaller sup}2{/smaller sup})", users: "Nutzer" },
     first: "Erste Seite",
     prev: "Vorherige Seite",
     next: "Nächste Seite",
