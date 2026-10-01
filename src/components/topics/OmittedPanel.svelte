@@ -1,9 +1,10 @@
 <script lang="ts">
   import { coverageTopicOf } from "../../coverage/route";
   import { baseTag, splitName } from "../../lib/languages";
-  import { allRules, TOO_LONG_RULE, TOO_SHORT_RULE, UNKNOWN_RULE } from "../../lib/omitted";
+  import { allRules, SEPARATOR_RULE, TOO_LONG_RULE, TOO_SHORT_RULE, UNKNOWN_RULE } from "../../lib/omitted";
+  import { holdsSeparator } from "../../lib/separator";
   import type { Group, Omission } from "../../lib/types";
-  import { groupEntries, outOfLimits, resolveReason } from "../../lib/words";
+  import { groupEntries, outOfLimits, renderedForms, resolveReason } from "../../lib/words";
   import Msg from "../../locale/html/Msg.svelte";
   import { lang } from "../../state/lang.svelte";
   import { overlays } from "../../state/overlays.svelte";
@@ -72,6 +73,20 @@
   const tooLongTitle = $derived(
     [lang.ui.omitted.tooLongHint(hidingTooLong), tooLong.join(", ")].join("\n"),
   );
+  // Names holding the Output's separator — as the list has them, before the rule
+  // strips or drops them, so the hover can show which.
+  const sepRules = $derived(selection.separatorRules(tid, group));
+  const withSep = $derived(
+    renderedForms(
+      groupEntries(group),
+      selection.modeOf(tid, group),
+      lang.contentLang(tid),
+      lang.derivesRomaji(tid),
+    ).filter((w) => holdsSeparator(w, sepRules.sep)),
+  );
+  const sepTitle = $derived(
+    [lang.ui.omitted.separatorHint(sepRules.omit, sepRules.remove), withSep.join(", ")].join("\n"),
+  );
   const hidingTooShort = $derived(selection.omitting(tid, group, TOO_SHORT_RULE));
   const tooShortTitle = $derived(
     [lang.ui.omitted.tooShortHint(hidingTooShort), tooShort.join(", ")].join("\n"),
@@ -122,7 +137,7 @@
   };
 </script>
 
-{#if rules.length > 0 || unknown > 0 || tooLong.length > 0 || tooShort.length > 0}
+{#if rules.length > 0 || unknown > 0 || tooLong.length > 0 || tooShort.length > 0 || withSep.length > 0}
   <div class="omitted-host">
     <button
       type="button"
@@ -190,6 +205,18 @@
                   onchange={() => selection.toggleOmission(tid, group, TOO_LONG_RULE)}
                 />
                 <span>{lang.ui.omitted.tooLong(tooLong.length, shownLimits.max)}</span>
+              </label>
+            </li>
+          {/if}
+          {#if withSep.length > 0}
+            <li>
+              <label title={sepTitle}>
+                <input
+                  type="checkbox"
+                  checked={sepRules.omit}
+                  onchange={() => selection.toggleOmission(tid, group, SEPARATOR_RULE)}
+                />
+                <span><Msg text={lang.ui.omitted.separatorIn(withSep.length, sepRules.sep, sepRules.remove)} /></span>
               </label>
             </li>
           {/if}

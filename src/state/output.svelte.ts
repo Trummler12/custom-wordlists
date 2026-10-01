@@ -3,6 +3,7 @@
 // short one despite being the point of the whole app.
 
 import { SKRIBBL } from "../lib/skribbl";
+import { holdsSeparator } from "../lib/separator";
 import { renderEntry } from "../lib/words";
 import { custom } from "./custom.svelte";
 import { settings } from "./settings.svelte";
@@ -29,10 +30,11 @@ class OutputState {
         // A list that hasn't been told otherwise leaves names outside the character
         // limits out here, which is what keeps the counter below quiet: `overlong`
         // can only fill up once someone has asked for them.
-        const keep = selection.keepFor(t.id, g);
+        const fit = selection.fitFor(t.id, g);
         for (const e of selection.entriesOf(t.id, g)) {
-          for (const w of renderEntry(e, mode, code, derived)) {
-            if (!keep(w)) continue;
+          for (const form of renderEntry(e, mode, code, derived)) {
+            const w = fit(form);
+            if (w === null) continue;
             if (!seen.has(w)) {
               seen.add(w);
               out.push(w);
@@ -59,6 +61,11 @@ class OutputState {
    *  asked for it, and dropping it here would have quietly overruled them. */
   readonly overlong: string[] = $derived(
     this.merged.filter((w) => w.length > SKRIBBL.maxWordLen),
+  );
+  /** Names that hold the separator and so come apart where the list is pasted. Like
+   *  `overlong`, only ever there because a reader let them in. */
+  readonly splitting: string[] = $derived(
+    this.merged.filter((w) => holdsSeparator(w, settings.outputSeparator)),
   );
   /** Names joined the way a copy hands them over — the button and a manual Ctrl+C
    *  alike (see WordChips), so the two can't disagree. */

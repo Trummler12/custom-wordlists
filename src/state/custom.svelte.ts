@@ -19,6 +19,7 @@ import {
   serializeItems,
 } from "../lib/custom";
 import { DEFAULT_SCRIPT_LIMITS, type LengthRules } from "../lib/lengths";
+import type { SeparatorRules } from "../lib/separator";
 import { lang } from "./lang.svelte";
 import { settings } from "./settings.svelte";
 
@@ -66,6 +67,8 @@ class CustomState {
    *  switched off. */
   keepTooLong = $state(false);
   keepTooShort = $state(false);
+  /** Whether the separator rule deviates from its default here (see SEPARATOR_RULE). */
+  separatorToggled = $state(false);
   /** How many rows the input grows to before it scrolls (§X2, the − / + controls). */
   maxRows = $state(MIN_ROWS);
   /** Whether the row cap is lifted and the input fits its whole content (↕️). */
@@ -90,6 +93,7 @@ class CustomState {
       this.manualSeparator = isSeparator(s.separator) ? s.separator : null;
       this.keepTooLong = !!s.keepTooLong;
       this.keepTooShort = !!s.keepTooShort;
+      this.separatorToggled = !!s.separatorToggled;
       if (typeof s.maxRows === "number") this.maxRows = clampRows(s.maxRows);
       this.fitContent = !!s.fitContent;
       if (typeof s.maxPreviewItems === "number") this.maxPreviewItems = clampPreviewItems(s.maxPreviewItems);
@@ -132,6 +136,17 @@ class CustomState {
     this.keepTooShort = on;
     this.save();
   }
+  toggleSeparatorRule(): void {
+    this.separatorToggled = !this.separatorToggled;
+    this.save();
+  }
+  /** How the reader's items treat the Output's separator: the global choices, and
+   *  this channel's own deviation from the rule's default. */
+  readonly outputSeparatorRules: SeparatorRules = $derived({
+    sep: settings.outputSeparator,
+    remove: settings.removeSeparator,
+    omit: settings.removeSeparator === this.separatorToggled,
+  });
 
   /** The limits the reader's items answer to. They have no language of their own, so
    *  an item in Chinese, Japanese or Korean script takes the primary language's own
@@ -295,6 +310,7 @@ class CustomState {
       lengths: this.lengths,
       keepTooLong: this.keepTooLong,
       keepTooShort: this.keepTooShort,
+      separator: this.outputSeparatorRules,
       seen,
     });
   }
@@ -305,6 +321,7 @@ class CustomState {
       separator: this.separator,
       keepTooLong: this.keepTooLong,
       keepTooShort: this.keepTooShort,
+      separatorToggled: this.separatorToggled,
       maxRows: this.maxRows,
       fitContent: this.fitContent,
       maxPreviewItems: this.maxPreviewItems,
@@ -342,6 +359,7 @@ type Stored = {
   separator?: string;
   keepTooLong?: boolean;
   keepTooShort?: boolean;
+  separatorToggled?: boolean;
   maxRows?: number;
   fitContent?: boolean;
   maxPreviewItems?: number;

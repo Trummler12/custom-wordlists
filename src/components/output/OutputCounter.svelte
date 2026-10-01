@@ -1,5 +1,7 @@
 <script lang="ts">
+  import { separatorLabel } from "../../lib/custom";
   import { SKRIBBL } from "../../lib/skribbl";
+  import { settings } from "../../state/settings.svelte";
   import { lang } from "../../state/lang.svelte";
   import { output } from "../../state/output.svelte";
 </script>
@@ -18,6 +20,11 @@
 {#if output.overlong.length > 0}
   <p class="status warn" title={output.overlong.join(", ")}>
     {lang.ui.output.overLong(output.overlong.length, SKRIBBL.maxWordLen)}
+  </p>
+{/if}
+{#if output.splitting.length > 0}
+  <p class="status warn" title={output.splitting.join(", ")}>
+    {lang.ui.output.splitting(output.splitting.length, separatorLabel(settings.outputSeparator))}
   </p>
 {/if}
 

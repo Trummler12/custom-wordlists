@@ -226,17 +226,25 @@ export function renderedForms(
   return [...seen];
 }
 
-/** How many of them the counters show. `keep` drops the forms the length rules
- *  leave out (see `keepsForm` in lib/lengths); leave it out to count all. */
+/** How many of them the counters show. `fit` turns each form into what the Output
+ *  would hold (null: left out), so a form the rules drop isn't counted and two that
+ *  end up the same are counted once — see `selection.fitFor`. Leave it out to count
+ *  them all as they are. */
 export function renderCount(
   entries: WordEntry[],
   mode: NamesMode,
   lang: string,
   derived = false,
-  keep?: (form: string) => boolean,
+  fit?: (form: string) => string | null,
 ): number {
   const forms = renderedForms(entries, mode, lang, derived);
-  return keep === undefined ? forms.length : forms.filter(keep).length;
+  if (fit === undefined) return forms.length;
+  const out = new Set<string>();
+  for (const w of forms) {
+    const f = fit(w);
+    if (f !== null) out.add(f);
+  }
+  return out.size;
 }
 
 /** The forms outside the character limits, for the panel that names them and offers

@@ -1,4 +1,5 @@
 <script lang="ts">
+  import Msg from "../../locale/html/Msg.svelte";
   import { custom } from "../../state/custom.svelte";
   import { lang } from "../../state/lang.svelte";
   import { output } from "../../state/output.svelte";
@@ -19,6 +20,10 @@
   const tooLongTitle = $derived(
     [lang.ui.omitted.tooLongHint(hidingTooLong), b.tooLong.samples.join(", ")].join("\n"),
   );
+  const sepRules = $derived(custom.outputSeparatorRules);
+  const sepTitle = $derived(
+    [lang.ui.omitted.separatorHint(sepRules.omit, sepRules.remove), b.withSeparator.samples.join(", ")].join("\n"),
+  );
   const hidingTooShort = $derived(!custom.keepTooShort);
   const tooShortTitle = $derived(
     [lang.ui.omitted.tooShortHint(hidingTooShort), b.tooShort.samples.join(", ")].join("\n"),
@@ -34,7 +39,7 @@
     ].join("\n");
 
   const anything = $derived(
-    b.tooLong.count > 0 || b.tooShort.count > 0 || b.internal.count > 0 || b.local.count > 0 || b.global.count > 0,
+    b.tooLong.count > 0 || b.tooShort.count > 0 || b.withSeparator.count > 0 || b.internal.count > 0 || b.local.count > 0 || b.global.count > 0,
   );
 </script>
 
@@ -95,6 +100,14 @@
                   onchange={(e) => custom.setKeepTooLong(!e.currentTarget.checked)}
                 />
                 <span>{lang.ui.omitted.tooLong(b.tooLong.count, custom.lengths.limits.max)}</span>
+              </label>
+            </li>
+          {/if}
+          {#if b.withSeparator.count > 0}
+            <li>
+              <label title={sepTitle}>
+                <input type="checkbox" checked={sepRules.omit} onchange={() => custom.toggleSeparatorRule()} />
+                <span><Msg text={lang.ui.omitted.separatorIn(b.withSeparator.count, sepRules.sep, sepRules.remove)} /></span>
               </label>
             </li>
           {/if}

@@ -128,6 +128,19 @@ describe("classifyCustom", () => {
     expect(kept.kept).toEqual(["ab", "abc"]);
     expect(kept.tooShort.count).toBe(1);
   });
+  it("strips the separator from an item, or leaves the item out, and always reports it", () => {
+    const separator = { sep: ",", remove: true, omit: false };
+    const r = classifyCustom([["Moroni, Comoros"]], { lengths: UP_TO_32, keepTooLong: false, separator, seen });
+    expect(r.kept).toEqual(["Moroni Comoros"]);
+    expect(r.withSeparator.count).toBe(1);
+    const left = classifyCustom([["Moroni, Comoros"]], {
+      lengths: UP_TO_32,
+      keepTooLong: false,
+      separator: { ...separator, omit: true },
+      seen,
+    });
+    expect(left.kept).toEqual([]);
+  });
   it("applies the precedence over-long => internal => local => global", () => {
     const long = "x".repeat(40);
     // The over-long item is counted under tooLong, not as a global dup, even though

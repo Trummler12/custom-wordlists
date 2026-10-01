@@ -14,7 +14,16 @@
 // and a ruler only speaks in depths; a flat group's is 0 or 1.
 
 import { keepsForm, type LengthRules } from "../lib/lengths";
-import { allRules, BASE_RULE, isOnByDefault, TOO_LONG_RULE, TOO_SHORT_RULE, UNKNOWN_RULE } from "../lib/omitted";
+import {
+  allRules,
+  BASE_RULE,
+  isOnByDefault,
+  SEPARATOR_RULE,
+  TOO_LONG_RULE,
+  TOO_SHORT_RULE,
+  UNKNOWN_RULE,
+} from "../lib/omitted";
+import { fitSeparator, type SeparatorRules } from "../lib/separator";
 import { groupEntries, groupHasNames, renderCount } from "../lib/words";
 import { depthFromKey, depthFromPointer, skipCollapsed, snapPositions } from "../lib/fame";
 import { rulerHiddenByDefault } from "../lib/rulers";
@@ -178,10 +187,23 @@ class SelectionState {
       long: !settings.isToggled(tid, g.id, TOO_LONG_RULE),
     };
   }
-  /** The same as a filter, for counting and emitting. */
-  keepFor(tid: string, g: Group): (form: string) => boolean {
-    const rules = this.lengthRules(tid, g);
-    return (form) => keepsForm(form, rules);
+  /** How this list treats names holding the Output's separator. */
+  separatorRules(tid: string, g: Group): SeparatorRules {
+    return {
+      sep: settings.outputSeparator,
+      remove: settings.removeSeparator,
+      omit: settings.removeSeparator === settings.isToggled(tid, g.id, SEPARATOR_RULE),
+    };
+  }
+  /** What one form becomes in the Output under this list's rules, or null where they
+   *  leave it out: the separator first, then the length of what is left. */
+  fitFor(tid: string, g: Group): (form: string) => string | null {
+    const sep = this.separatorRules(tid, g);
+    const lengths = this.lengthRules(tid, g);
+    return (form) => {
+      const f = fitSeparator(form, sep);
+      return f !== null && keepsForm(f, lengths) ? f : null;
+    };
   }
 
   groupTotal(tid: string, g: Group): number {
@@ -190,7 +212,7 @@ class SelectionState {
       this.modeOf(tid, g),
       lang.contentLang(tid),
       lang.derivesRomaji(tid),
-      this.keepFor(tid, g),
+      this.fitFor(tid, g),
     );
   }
   groupSelCount(tid: string, g: Group): number {
@@ -199,7 +221,7 @@ class SelectionState {
       this.modeOf(tid, g),
       lang.contentLang(tid),
       lang.derivesRomaji(tid),
-      this.keepFor(tid, g),
+      this.fitFor(tid, g),
     );
   }
 
@@ -229,6 +251,7 @@ class SelectionState {
       ruleId === UNKNOWN_RULE ||
       ruleId === TOO_LONG_RULE ||
       ruleId === TOO_SHORT_RULE ||
+      ruleId === SEPARATOR_RULE ||
       allRules(g).some((r) => r.id === ruleId)
     );
   }
@@ -249,7 +272,11 @@ class SelectionState {
     if (rule?.locked) return true;
     // A declared rule keeps its array's default; the reserved rules hide by default, but the
     // INCLUDE base box is the exception — its base shows until switched off (see BASE_RULE).
-    const onByDefault = rule ? isOnByDefault(g, rule) : ruleId !== BASE_RULE;
+    const onByDefault = rule
+      ? isOnByDefault(g, rule)
+      : ruleId === SEPARATOR_RULE
+        ? !settings.removeSeparator
+        : ruleId !== BASE_RULE;
     return onByDefault !== settings.isToggled(tid, g.id, ruleId);
   }
   /** Flip an omission rule. On a synthesized topic it commands every contributor

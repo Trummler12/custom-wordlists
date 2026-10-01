@@ -10,6 +10,7 @@
 // hides its work.
 
 import { lengthClass, limitsOf, type LengthRules } from "./lengths";
+import { fitSeparator, holdsSeparator, type SeparatorRules } from "./separator";
 
 /** The separator characters the input offers, in menu order. A list is split on
  *  exactly one of them; `\n` / `\t` cover the paste-a-column case. */
@@ -112,6 +113,9 @@ export interface CustomBreakdown {
    *  topics' reserved length rules. */
   tooLong: OmissionTier;
   tooShort: OmissionTier;
+  /** Items holding the Output's separator, before the separator rule made of them
+   *  what it does (see lib/separator). Counted always. */
+  withSeparator: OmissionTier;
   /** Duplicates within this one source. */
   internal: OmissionTier;
   /** Duplicates against the other active custom sources (X3; empty until then). */
@@ -150,14 +154,16 @@ export function classifyCustom(
     lengths: Pick<LengthRules, "limits" | "script">;
     keepTooLong: boolean;
     keepTooShort?: boolean;
+    separator?: SeparatorRules;
     seen: ReadonlySet<string>;
   },
 ): CustomBreakdown {
-  const { lengths, keepTooLong, keepTooShort = false, seen } = opts;
+  const { lengths, keepTooLong, keepTooShort = false, separator, seen } = opts;
   const out: CustomBreakdown = {
     kept: [],
     tooLong: emptyTier(),
     tooShort: emptyTier(),
+    withSeparator: emptyTier(),
     internal: emptyTier(),
     local: emptyTier(),
     global: emptyTier(),
@@ -166,8 +172,15 @@ export function classifyCustom(
   const keptSet = new Set<string>(); // across all sources — the local (cross-source) tier
   for (const source of sources) {
     const mine = new Set<string>(); // within this source — the internal tier
-    for (const item of source) {
+    for (const raw of source) {
       out.total++;
+      let item = raw;
+      if (separator && holdsSeparator(raw, separator.sep)) {
+        record(out.withSeparator, raw);
+        const fitted = fitSeparator(raw, separator);
+        if (fitted === null) continue;
+        item = fitted;
+      }
       const cls = lengthClass(item, limitsOf(item, lengths));
       if (cls === "long") {
         record(out.tooLong, item);

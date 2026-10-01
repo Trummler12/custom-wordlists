@@ -218,10 +218,15 @@ describe("renderCount", () => {
     expect(renderCount(entries, "long", "de")).toBe(2);
   });
 
-  it("drops the forms `keep` rejects, and counts all of them without one", () => {
+  it("drops the forms `fit` rejects, and counts all of them without one", () => {
     const entries = [{ short: "Sandwich", long: "South Sandwich Plate" }];
     expect(renderCount(entries, "both", "en")).toBe(2);
-    expect(renderCount(entries, "both", "en", false, (w) => w.length <= 10)).toBe(1);
+    expect(renderCount(entries, "both", "en", false, (w) => (w.length <= 10 ? w : null))).toBe(1);
+  });
+
+  it("counts forms that `fit` makes the same only once", () => {
+    const entries = ["Moroni, Comoros", "Moroni Comoros"];
+    expect(renderCount(entries, "long", "en", false, (w) => w.replace(",", ""))).toBe(1);
   });
 });
 
