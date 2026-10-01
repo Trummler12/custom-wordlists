@@ -1,5 +1,4 @@
-import type { UIStrings } from "./index";
-import { en } from "./en";
+import type { LocaleDict } from "./index";
 
 /** Russian UI strings. Machine-written and unreviewed by a native speaker — see the
  *  proofreading note in CONTRIBUTING.md.
@@ -16,7 +15,7 @@ const plural = (n: number, one: string, few: string, many: string): string => {
   return many;
 };
 
-export const ru: UIStrings = {
+export const ru: LocaleDict = {
   header: {
     taglineBefore: "Создавайте свои списки слов для",
     taglineAfter: "и похожих игр в слова.",
@@ -32,7 +31,6 @@ export const ru: UIStrings = {
   },
   names: {
     form: { pref: "основная", short: "краткая", long: "полная", both: "обе", all: "все" },
-    formHint: en.names.formHint, // English stopgap until the UI-language PR translates it.
     formLabel: (group) => `Форма имени для: ${group}`,
   },
   fame: {
@@ -70,8 +68,6 @@ export const ru: UIStrings = {
         : "Снова исключить их.",
     helpAdd: (url) => ` — [помогите добавить недостающее!](${url})`,
   },
-  // custom: English stopgap until the UI-language PR translates it (§X).
-  custom: en.custom,
   coverage: {
     label: "Geoguessr / покрытие Street View",
     all: "Все страны",
@@ -110,16 +106,6 @@ export const ru: UIStrings = {
   language: {
     label: (current) => `Язык: ${current}`,
     menu: "Язык",
-    // LB1 stopgaps: English until the translation pass.
-    panelTitle: en.language.panelTitle,
-    slot: en.language.slot,
-    slotHint: en.language.slotHint,
-    followPrimary: en.language.followPrimary,
-    showSecondaryBefore: en.language.showSecondaryBefore, showSecondaryAfter: en.language.showSecondaryAfter,
-    showSecondaryHint: en.language.showSecondaryHint,
-    secondaryMoot: en.language.secondaryMoot,
-    useSecondary: en.language.useSecondary,
-    useSecondaryAll: en.language.useSecondaryAll,
     unsupported: (language) => `Пока не подтверждено для языка «${language}» — эта тема может быть неполной.`,
     fallback: "Там, где перевода нет, используется английский.",
     usesEnglish: (primary, secondary) =>
@@ -146,11 +132,6 @@ export const ru: UIStrings = {
     showEnglishEn: "Эти переключатели появляются только для языков, отличных от английского.",
     interfaceLang: "Язык интерфейса:",
     interfaceAuto: "Автоматически",
-    // LB1 stopgaps: English until the translation pass.
-    outputSeparator: en.settings.outputSeparator,
-    outputSeparatorHint: en.settings.outputSeparatorHint,
-    minChars: en.settings.minChars,
-    maxChars: en.settings.maxChars,
     reset: "Сбросить настройки{br}по умолчанию",
     resetConfirm: "Нажмите ещё раз для подтверждения",
     resetCancel: "Отмена",
@@ -199,10 +180,6 @@ export const ru: UIStrings = {
     next: "Следующая страница",
     last: "Последняя страница",
     page: (current, total) => `Страница ${current} / ${total}`,
-    // LB1 stopgaps: English until the translation pass.
-    pageJumpHint: en.coveragePage.pageJumpHint,
-    pageJumpInput: en.coveragePage.pageJumpInput,
-    pageNoNumeric: en.coveragePage.pageNoNumeric,
     loading: (topic) => `Загрузка «${topic}»…`,
     loadError: (topic, message) => `Не удалось загрузить покрытие для «${topic}»: ${message}`,
   },

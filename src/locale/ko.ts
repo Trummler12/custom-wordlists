@@ -1,5 +1,4 @@
-import type { UIStrings } from "./index";
-import { en } from "./en";
+import type { LocaleDict } from "./index";
 
 /** Korean UI strings. Machine-written and unreviewed by a native speaker — see
  *  the proofreading note in CONTRIBUTING.md.
@@ -7,7 +6,7 @@ import { en } from "./en";
  *  Korean marks no plural, so the counters that other locales branch on read the
  *  same at one as at many. Where a particle would depend on the preceding sound,
  *  the phrasing avoids one — an inserted language name can end either way. */
-export const ko: UIStrings = {
+export const ko: LocaleDict = {
   header: {
     // The link sits between the two halves, and Korean puts it first.
     taglineBefore: "",
@@ -24,7 +23,6 @@ export const ko: UIStrings = {
   },
   names: {
     form: { pref: "선호", short: "짧게", long: "길게", both: "둘 다", all: "모두" },
-    formHint: en.names.formHint, // English stopgap until the UI-language PR translates it.
     formLabel: (group) => `${group}의 이름 형식`,
   },
   fame: {
@@ -60,8 +58,6 @@ export const ko: UIStrings = {
         : "켜면 다시 제외합니다.",
     helpAdd: (url) => ` — [빠진 것을 채우는 데 힘을 보태 주세요](${url})`,
   },
-  // custom: English stopgap until the UI-language PR translates it (§X).
-  custom: en.custom,
   coverage: {
     label: "Geoguessr / 스트리트 뷰 지원",
     all: "모든 국가",
@@ -98,16 +94,6 @@ export const ko: UIStrings = {
   language: {
     label: (current) => `언어: ${current}`,
     menu: "언어",
-    // LB1 stopgaps: English until the translation pass.
-    panelTitle: en.language.panelTitle,
-    slot: en.language.slot,
-    slotHint: en.language.slotHint,
-    followPrimary: en.language.followPrimary,
-    showSecondaryBefore: en.language.showSecondaryBefore, showSecondaryAfter: en.language.showSecondaryAfter,
-    showSecondaryHint: en.language.showSecondaryHint,
-    secondaryMoot: en.language.secondaryMoot,
-    useSecondary: en.language.useSecondary,
-    useSecondaryAll: en.language.useSecondaryAll,
     unsupported: (language) => `${language}은(는) 아직 확인되지 않았습니다. 이 주제는 불완전할 수 있습니다.`,
     fallback: "번역이 없는 곳에는 영어가 사용됩니다.",
     usesEnglish: (primary, secondary) =>
@@ -132,11 +118,6 @@ export const ko: UIStrings = {
     showEnglishEn: "이 스위치는 영어가 아닌 언어에서만 나타납니다.",
     interfaceLang: "인터페이스 언어:",
     interfaceAuto: "자동",
-    // LB1 stopgaps: English until the translation pass.
-    outputSeparator: en.settings.outputSeparator,
-    outputSeparatorHint: en.settings.outputSeparatorHint,
-    minChars: en.settings.minChars,
-    maxChars: en.settings.maxChars,
     reset: "설정{br}초기화",
     resetConfirm: "다시 클릭하면 초기화",
     resetCancel: "취소",
@@ -184,10 +165,6 @@ export const ko: UIStrings = {
     next: "다음 페이지",
     last: "마지막 페이지",
     page: (current, total) => `${total} 페이지 중 ${current} 페이지`,
-    // LB1 stopgaps: English until the translation pass.
-    pageJumpHint: en.coveragePage.pageJumpHint,
-    pageJumpInput: en.coveragePage.pageJumpInput,
-    pageNoNumeric: en.coveragePage.pageNoNumeric,
     loading: (topic) => `${topic} 불러오는 중…`,
     loadError: (topic, message) => `${topic} 커버리지를 불러오지 못했습니다: ${message}`,
   },

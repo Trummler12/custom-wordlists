@@ -1,5 +1,4 @@
-import type { UIStrings } from "./index";
-import { en } from "./en";
+import type { LocaleDict } from "./index";
 
 /** Simplified Chinese UI strings. Machine-written and unreviewed by a native speaker —
  *  see the proofreading note in CONTRIBUTING.md.
@@ -7,7 +6,7 @@ import { en } from "./en";
  *  Chinese marks no plural, so the counters that other locales branch on read the same
  *  at one as at many — and a name needs no article or ending, so the two halves of a
  *  display name are simply joined. */
-export const zhHans: UIStrings = {
+export const zhHans: LocaleDict = {
   header: {
     // The link sits between the two halves, and Chinese puts it first.
     taglineBefore: "",
@@ -24,7 +23,6 @@ export const zhHans: UIStrings = {
   },
   names: {
     form: { pref: "推荐", short: "短", long: "长", both: "两者", all: "全部" },
-    formHint: en.names.formHint, // English stopgap until the UI-language PR translates it.
     formLabel: (group) => `${group}的名称形式`,
   },
   fame: {
@@ -60,8 +58,6 @@ export const zhHans: UIStrings = {
         : "打开以将其再次排除。",
     helpAdd: (url) => ` — [帮我们补全缺失的部分！](${url})`,
   },
-  // custom: English stopgap until the UI-language PR translates it (§X).
-  custom: en.custom,
   coverage: {
     label: "Geoguessr / 街景覆盖",
     all: "所有国家",
@@ -98,16 +94,6 @@ export const zhHans: UIStrings = {
   language: {
     label: (current) => `语言：${current}`,
     menu: "语言",
-    // LB1 stopgaps: English until the translation pass.
-    panelTitle: en.language.panelTitle,
-    slot: en.language.slot,
-    slotHint: en.language.slotHint,
-    followPrimary: en.language.followPrimary,
-    showSecondaryBefore: en.language.showSecondaryBefore, showSecondaryAfter: en.language.showSecondaryAfter,
-    showSecondaryHint: en.language.showSecondaryHint,
-    secondaryMoot: en.language.secondaryMoot,
-    useSecondary: en.language.useSecondary,
-    useSecondaryAll: en.language.useSecondaryAll,
     unsupported: (language) => `${language}尚未确认，此主题可能不完整。`,
     fallback: "没有翻译时会使用英语。",
     usesEnglish: (primary, secondary) =>
@@ -132,11 +118,6 @@ export const zhHans: UIStrings = {
     showEnglishEn: "此开关仅在非英语语言下出现。",
     interfaceLang: "界面语言：",
     interfaceAuto: "自动",
-    // LB1 stopgaps: English until the translation pass.
-    outputSeparator: en.settings.outputSeparator,
-    outputSeparatorHint: en.settings.outputSeparatorHint,
-    minChars: en.settings.minChars,
-    maxChars: en.settings.maxChars,
     reset: "重置{br}设置",
     resetConfirm: "再次点击以确认",
     resetCancel: "取消",
@@ -184,10 +165,6 @@ export const zhHans: UIStrings = {
     next: "下一页",
     last: "最后一页",
     page: (current, total) => `第 ${current} 页 / 共 ${total} 页`,
-    // LB1 stopgaps: English until the translation pass.
-    pageJumpHint: en.coveragePage.pageJumpHint,
-    pageJumpInput: en.coveragePage.pageJumpInput,
-    pageNoNumeric: en.coveragePage.pageNoNumeric,
     loading: (topic) => `正在加载${topic}…`,
     loadError: (topic, message) => `无法加载${topic}的覆盖数据：${message}`,
   },

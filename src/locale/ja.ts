@@ -1,5 +1,4 @@
-import type { UIStrings } from "./index";
-import { en } from "./en";
+import type { LocaleDict } from "./index";
 
 /** Japanese UI strings. Machine-written and unreviewed by a native speaker — see
  *  the proofreading note in CONTRIBUTING.md.
@@ -7,7 +6,7 @@ import { en } from "./en";
  *  Japanese marks no plural, so the counters that other locales branch on read the
  *  same at one as at many — and the language name needs no article or ending, so
  *  the two halves of a display name are simply joined. */
-export const ja: UIStrings = {
+export const ja: LocaleDict = {
   header: {
     // The link sits between the two halves, and Japanese puts it first.
     taglineBefore: "",
@@ -24,7 +23,6 @@ export const ja: UIStrings = {
   },
   names: {
     form: { pref: "推奨", short: "短い", long: "長い", both: "両方", all: "すべて" },
-    formHint: en.names.formHint, // English stopgap until the UI-language PR translates it.
     formLabel: (group) => `${group}の名前の形式`,
   },
   fame: {
@@ -60,8 +58,6 @@ export const ja: UIStrings = {
         : "オンにすると、再び除外します。",
     helpAdd: (url) => ` — [不足分の追加にご協力ください](${url})`,
   },
-  // custom: English stopgap until the UI-language PR translates it (§X).
-  custom: en.custom,
   coverage: {
     label: "Geoguessr / ストリートビューの対応",
     all: "すべての国",
@@ -98,16 +94,6 @@ export const ja: UIStrings = {
   language: {
     label: (current) => `言語: ${current}`,
     menu: "言語",
-    // LB1 stopgaps: English until the translation pass.
-    panelTitle: en.language.panelTitle,
-    slot: en.language.slot,
-    slotHint: en.language.slotHint,
-    followPrimary: en.language.followPrimary,
-    showSecondaryBefore: en.language.showSecondaryBefore, showSecondaryAfter: en.language.showSecondaryAfter,
-    showSecondaryHint: en.language.showSecondaryHint,
-    secondaryMoot: en.language.secondaryMoot,
-    useSecondary: en.language.useSecondary,
-    useSecondaryAll: en.language.useSecondaryAll,
     unsupported: (language) => `${language}はまだ未確認です。このトピックは不完全かもしれません。`,
     fallback: "翻訳がない場合は英語が使われます。",
     usesEnglish: (primary, secondary) =>
@@ -132,11 +118,6 @@ export const ja: UIStrings = {
     showEnglishEn: "このスイッチは英語以外の言語でのみ表示されます。",
     interfaceLang: "表示言語:",
     interfaceAuto: "自動",
-    // LB1 stopgaps: English until the translation pass.
-    outputSeparator: en.settings.outputSeparator,
-    outputSeparatorHint: en.settings.outputSeparatorHint,
-    minChars: en.settings.minChars,
-    maxChars: en.settings.maxChars,
     reset: "設定を{br}リセット",
     resetConfirm: "もう一度クリックで確定",
     resetCancel: "キャンセル",
@@ -184,10 +165,6 @@ export const ja: UIStrings = {
     next: "次のページ",
     last: "最後のページ",
     page: (current, total) => `${total} ページ中 ${current} ページ`,
-    // LB1 stopgaps: English until the translation pass.
-    pageJumpHint: en.coveragePage.pageJumpHint,
-    pageJumpInput: en.coveragePage.pageJumpInput,
-    pageNoNumeric: en.coveragePage.pageNoNumeric,
     loading: (topic) => `${topic}を読み込み中…`,
     loadError: (topic, message) => `${topic}のカバレッジを読み込めませんでした：${message}`,
   },

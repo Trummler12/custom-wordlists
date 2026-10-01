@@ -1,12 +1,11 @@
-import type { UIStrings } from "./index";
-import { en } from "./en";
+import type { LocaleDict } from "./index";
 
 /** Portuguese UI strings. Machine-written and unreviewed by a native speaker — see the
  *  proofreading note in CONTRIBUTING.md. Written in a Brazilian register, the larger
  *  player base; the tag stays the generic `pt`, which `matchTag` widens pt-BR/pt-PT onto.
  *  Portuguese pluralizes like English (one vs. the rest), so the counters just branch on
  *  `n === 1` inline rather than through a helper. */
-export const pt: UIStrings = {
+export const pt: LocaleDict = {
   header: {
     taglineBefore: "Crie listas de palavras personalizadas para",
     taglineAfter: "e jogos de palavras semelhantes.",
@@ -22,7 +21,6 @@ export const pt: UIStrings = {
   },
   names: {
     form: { pref: "pref.", short: "curta", long: "longa", both: "ambas", all: "todas" },
-    formHint: en.names.formHint, // English stopgap until the UI-language PR translates it.
     formLabel: (group) => `Forma do nome para ${group}`,
   },
   fame: {
@@ -60,8 +58,6 @@ export const pt: UIStrings = {
         : "Alternar para deixá-los de fora novamente.",
     helpAdd: (url) => ` — [ajude-nos a adicionar o que falta!](${url})`,
   },
-  // custom: English stopgap until the UI-language PR translates it (§X).
-  custom: en.custom,
   coverage: {
     label: "Cobertura do Geoguessr / Street View",
     all: "Todos os países",
@@ -100,16 +96,6 @@ export const pt: UIStrings = {
   language: {
     label: (current) => `Idioma: ${current}`,
     menu: "Idioma",
-    // LB1 stopgaps: English until the translation pass.
-    panelTitle: en.language.panelTitle,
-    slot: en.language.slot,
-    slotHint: en.language.slotHint,
-    followPrimary: en.language.followPrimary,
-    showSecondaryBefore: en.language.showSecondaryBefore, showSecondaryAfter: en.language.showSecondaryAfter,
-    showSecondaryHint: en.language.showSecondaryHint,
-    secondaryMoot: en.language.secondaryMoot,
-    useSecondary: en.language.useSecondary,
-    useSecondaryAll: en.language.useSecondaryAll,
     unsupported: (language) => `Ainda não confirmado para ${language} — este tópico pode estar incompleto.`,
     fallback: "O inglês é usado onde falta uma tradução.",
     usesEnglish: (primary, secondary) =>
@@ -136,11 +122,6 @@ export const pt: UIStrings = {
     showEnglishEn: "Estas opções aparecem apenas para idiomas diferentes do inglês.",
     interfaceLang: "Idioma da interface:",
     interfaceAuto: "Automático",
-    // LB1 stopgaps: English until the translation pass.
-    outputSeparator: en.settings.outputSeparator,
-    outputSeparatorHint: en.settings.outputSeparatorHint,
-    minChars: en.settings.minChars,
-    maxChars: en.settings.maxChars,
     reset: "Redefinir configurações{br}para o padrão",
     resetConfirm: "Clique novamente para confirmar",
     resetCancel: "Cancelar",
@@ -189,10 +170,6 @@ export const pt: UIStrings = {
     next: "Próxima página",
     last: "Última página",
     page: (current, total) => `Página ${current} / ${total}`,
-    // LB1 stopgaps: English until the translation pass.
-    pageJumpHint: en.coveragePage.pageJumpHint,
-    pageJumpInput: en.coveragePage.pageJumpInput,
-    pageNoNumeric: en.coveragePage.pageNoNumeric,
     loading: (topic) => `Carregando ${topic}…`,
     loadError: (topic, message) => `Não foi possível carregar a cobertura de ${topic}: ${message}`,
   },

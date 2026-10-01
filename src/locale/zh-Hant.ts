@@ -1,5 +1,4 @@
-import type { UIStrings } from "./index";
-import { en } from "./en";
+import type { LocaleDict } from "./index";
 
 /** Traditional Chinese UI strings (Taiwan vocabulary). Machine-written and unreviewed by
  *  a native speaker — see the proofreading note in CONTRIBUTING.md.
@@ -7,7 +6,7 @@ import { en } from "./en";
  *  Chinese marks no plural, so the counters that other locales branch on read the same
  *  at one as at many — and a name needs no article or ending, so the two halves of a
  *  display name are simply joined. */
-export const zhHant: UIStrings = {
+export const zhHant: LocaleDict = {
   header: {
     // The link sits between the two halves, and Chinese puts it first.
     taglineBefore: "",
@@ -24,7 +23,6 @@ export const zhHant: UIStrings = {
   },
   names: {
     form: { pref: "偏好", short: "短", long: "長", both: "兩者", all: "全部" },
-    formHint: en.names.formHint, // English stopgap until the UI-language PR translates it.
     formLabel: (group) => `${group}的名稱形式`,
   },
   fame: {
@@ -60,8 +58,6 @@ export const zhHant: UIStrings = {
         : "開啟以將其再次排除。",
     helpAdd: (url) => ` — [幫我們補齊缺少的部分！](${url})`,
   },
-  // custom: English stopgap until the UI-language PR translates it (§X).
-  custom: en.custom,
   coverage: {
     label: "Geoguessr / 街景覆蓋",
     all: "所有國家",
@@ -98,16 +94,6 @@ export const zhHant: UIStrings = {
   language: {
     label: (current) => `語言：${current}`,
     menu: "語言",
-    // LB1 stopgaps: English until the translation pass.
-    panelTitle: en.language.panelTitle,
-    slot: en.language.slot,
-    slotHint: en.language.slotHint,
-    followPrimary: en.language.followPrimary,
-    showSecondaryBefore: en.language.showSecondaryBefore, showSecondaryAfter: en.language.showSecondaryAfter,
-    showSecondaryHint: en.language.showSecondaryHint,
-    secondaryMoot: en.language.secondaryMoot,
-    useSecondary: en.language.useSecondary,
-    useSecondaryAll: en.language.useSecondaryAll,
     unsupported: (language) => `${language}尚未確認，此主題可能不完整。`,
     fallback: "沒有翻譯時會使用英文。",
     usesEnglish: (primary, secondary) =>
@@ -132,11 +118,6 @@ export const zhHant: UIStrings = {
     showEnglishEn: "此開關僅在非英文語言下出現。",
     interfaceLang: "介面語言：",
     interfaceAuto: "自動",
-    // LB1 stopgaps: English until the translation pass.
-    outputSeparator: en.settings.outputSeparator,
-    outputSeparatorHint: en.settings.outputSeparatorHint,
-    minChars: en.settings.minChars,
-    maxChars: en.settings.maxChars,
     reset: "重設{br}設定",
     resetConfirm: "再次點擊以確認",
     resetCancel: "取消",
@@ -184,10 +165,6 @@ export const zhHant: UIStrings = {
     next: "下一頁",
     last: "最後一頁",
     page: (current, total) => `第 ${current} 頁 / 共 ${total} 頁`,
-    // LB1 stopgaps: English until the translation pass.
-    pageJumpHint: en.coveragePage.pageJumpHint,
-    pageJumpInput: en.coveragePage.pageJumpInput,
-    pageNoNumeric: en.coveragePage.pageNoNumeric,
     loading: (topic) => `正在載入${topic}…`,
     loadError: (topic, message) => `無法載入${topic}的覆蓋資料：${message}`,
   },

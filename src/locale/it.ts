@@ -1,9 +1,8 @@
-import type { UIStrings } from "./index";
-import { en } from "./en";
+import type { LocaleDict } from "./index";
 
 /** Italian UI strings. Machine-written and unreviewed by a native speaker — see
  *  the proofreading note in CONTRIBUTING.md. */
-export const it: UIStrings = {
+export const it: LocaleDict = {
   header: {
     taglineBefore: "Crea liste di parole personalizzate per",
     taglineAfter: "e giochi di parole simili.",
@@ -19,7 +18,6 @@ export const it: UIStrings = {
   },
   names: {
     form: { pref: "pref.", short: "corto", long: "lungo", both: "entrambi", all: "tutti" },
-    formHint: en.names.formHint, // English stopgap until the UI-language PR translates it.
     formLabel: (group) => `Forma del nome per ${group}`,
   },
   fame: {
@@ -60,8 +58,6 @@ export const it: UIStrings = {
         : "Attiva per tralasciarli di nuovo.",
     helpAdd: (url) => ` — [aiutaci ad aggiungere ciò che manca!](${url})`,
   },
-  // custom: English stopgap until the UI-language PR translates it (§X).
-  custom: en.custom,
   coverage: {
     label: "Geoguessr / Copertura Street View",
     all: "Tutti i paesi",
@@ -100,16 +96,6 @@ export const it: UIStrings = {
   language: {
     label: (current) => `Lingua: ${current}`,
     menu: "Lingua",
-    // LB1 stopgaps: English until the translation pass.
-    panelTitle: en.language.panelTitle,
-    slot: en.language.slot,
-    slotHint: en.language.slotHint,
-    followPrimary: en.language.followPrimary,
-    showSecondaryBefore: en.language.showSecondaryBefore, showSecondaryAfter: en.language.showSecondaryAfter,
-    showSecondaryHint: en.language.showSecondaryHint,
-    secondaryMoot: en.language.secondaryMoot,
-    useSecondary: en.language.useSecondary,
-    useSecondaryAll: en.language.useSecondaryAll,
     unsupported: (language) =>
       `Non ancora confermato per ${language} — questo argomento potrebbe essere incompleto.`,
     fallback: "Dove manca una traduzione viene usato l'inglese.",
@@ -140,11 +126,6 @@ export const it: UIStrings = {
     showEnglishEn: "Questi interruttori compaiono solo per lingue diverse dall'inglese.",
     interfaceLang: "Lingua dell'interfaccia:",
     interfaceAuto: "Automatico",
-    // LB1 stopgaps: English until the translation pass.
-    outputSeparator: en.settings.outputSeparator,
-    outputSeparatorHint: en.settings.outputSeparatorHint,
-    minChars: en.settings.minChars,
-    maxChars: en.settings.maxChars,
     reset: "Ripristina{br}le impostazioni",
     resetConfirm: "Clicca di nuovo per confermare",
     resetCancel: "Annulla",
@@ -193,10 +174,6 @@ export const it: UIStrings = {
     next: "Pagina successiva",
     last: "Ultima pagina",
     page: (current, total) => `Pagina ${current} / ${total}`,
-    // LB1 stopgaps: English until the translation pass.
-    pageJumpHint: en.coveragePage.pageJumpHint,
-    pageJumpInput: en.coveragePage.pageJumpInput,
-    pageNoNumeric: en.coveragePage.pageNoNumeric,
     loading: (topic) => `Caricamento di ${topic}…`,
     loadError: (topic, message) => `Impossibile caricare la copertura di ${topic}: ${message}`,
   },
