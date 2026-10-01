@@ -59,6 +59,10 @@ export const de: UIStrings = {
     unknownTier: (tier, n) => `Stufe ${tier}: ${n} ${n === 1 ? "Eintrag" : "Einträge"} betroffen`,
     tooLong: (n, maxLen) =>
       `Bis zu ${n} ${n === 1 ? "Name" : "Namen"} mit mehr als ${maxLen} Zeichen`,
+    tooShort: (n, minLen) =>
+      `Bis zu ${n} ${n === 1 ? "Name" : "Namen"} mit weniger als ${minLen} Zeichen`,
+    tooShortHint: (omitted) =>
+      omitted ? "Umschalten, um sie trotzdem aufzunehmen." : "Umschalten, um sie wieder wegzulassen.",
     tooLongHint: (omitted) =>
       omitted
         ? "Umschalten, um sie trotzdem aufzunehmen — skribbl.io nimmt sie nicht an, ein anderes Spiel vielleicht schon."
@@ -259,8 +263,12 @@ export const de: UIStrings = {
     outputSeparator: "Ausgabe-Trennzeichen:",
     outputSeparatorHint:
       "skribbl.io akzeptiert nur {code},{/code} als Trennzeichen. Die anderen ändern nur, was kopiert wird; die Ausgabe sieht in jedem Fall gleich aus.",
-    minChars: "Min. Zeichen:",
-    maxChars: "Max. Zeichen:",
+    charLimits: "Zeichenlimits:",
+    minChars: "Min",
+    maxChars: "Max",
+    charMaxOver: (gameMax) => `skribbl.io akzeptiert höchstens ${gameMax} Zeichen pro Name.`,
+    scriptLimitsHint:
+      "Limits für Namen in der eigenen Schrift dieser Sprache, in der ein einzelnes Zeichen meist für (mindestens) eine ganze Silbe steht. Romaji und andere Namen in lateinischen Buchstaben folgen den allgemeinen Limits.",
     reset: "Auswahl-Einstellungen{br}zurücksetzen",
     resetConfirm: "Zum Bestätigen erneut klicken",
     resetCancel: "Abbrechen",

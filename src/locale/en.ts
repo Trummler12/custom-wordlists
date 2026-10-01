@@ -53,6 +53,9 @@ export const en: UIStrings = {
         : "Toggle to leave these out again.",
     unknownTier: (tier, n) => `Tier ${tier}: ${n} entr${n === 1 ? "y" : "ies"}`,
     tooLong: (n, maxLen) => `Up to ${n} name${n === 1 ? "" : "s"} longer than ${maxLen} characters`,
+    tooShort: (n, minLen) => `Up to ${n} name${n === 1 ? "" : "s"} shorter than ${minLen} characters`,
+    tooShortHint: (omitted) =>
+      omitted ? "Toggle to include them anyway." : "Toggle to leave them out again.",
     tooLongHint: (omitted) =>
       omitted
         ? "Toggle to include them anyway — skribbl.io won't take them, but another game might."
@@ -242,8 +245,12 @@ export const en: UIStrings = {
     outputSeparator: "Output separator:",
     outputSeparatorHint:
       "skribbl.io only accepts {code},{/code} as the separator. The others only change what gets copied; the Output looks the same either way.",
-    minChars: "Min characters:",
-    maxChars: "Max characters:",
+    charLimits: "Character limits:",
+    minChars: "Min",
+    maxChars: "Max",
+    charMaxOver: (gameMax) => `skribbl.io accepts at most ${gameMax} characters per name.`,
+    scriptLimitsHint:
+      "Limits for names in this language's own script, where a single character usually stands for a whole syllable or word. Romaji and other names in Latin letters follow the general limits.",
     reset: "Reset selection settings{br}to default",
     resetConfirm: "Click again to confirm",
     resetCancel: "Cancel",

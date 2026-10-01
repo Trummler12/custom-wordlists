@@ -111,6 +111,9 @@ export interface OmittedStrings {
    *  same reason as `unknown`. */
   tooLong: (n: number, maxLen: number) => string;
   tooLongHint: (omitted: boolean) => string;
+  /** The same for names under the minimum. */
+  tooShort: (n: number, minLen: number) => string;
+  tooShortHint: (omitted: boolean) => string;
   /** Appended to the unknown-names row for a Wikidata-sourced topic: a link to that
    *  topic's Language-Coverage page, where a reader can fill the gaps. Leads with an
    *  em-dash separator and carries a `[text](url)` link, so it renders through html/Msg
@@ -259,9 +262,15 @@ export interface SettingsStrings {
    *  separator only changes what gets copied, never how the Output looks. */
   outputSeparator: string;
   outputSeparatorHint: string;
-  /** The word-length bounds (§G); labels carry their own colon. */
+  /** The character limits: the row's caption (own colon), then a short caption before
+   *  each number field. The rows for Chinese, Japanese and Korean are captioned with
+   *  the language's own name and share `scriptLimitsHint`. */
+  charLimits: string;
   minChars: string;
   maxChars: string;
+  /** Warning beside a maximum above skribbl.io's own. */
+  charMaxOver: (gameMax: number) => string;
+  scriptLimitsHint: string;
   /** The reset button: drops the selection settings back to the shipped default (the
    *  reader's custom lists, input and language are left untouched — see `state/reset`).
    *  Carries a `{br}` so it wraps predictably in the narrow menu. */
