@@ -1,6 +1,6 @@
 <script lang="ts">
   import { setIndeterminate } from "../../lib/dom";
-  import { sharedSecondaryTopics } from "../../lib/secondary";
+  import { sharedSecondaryTopics } from "../../lib/languages/secondary";
   import { controlledTopics } from "../../lib/rulers";
   import { cancelFit, scheduleFit } from "../../lib/rowfit";
   import type { CatNode } from "../../lib/tree";

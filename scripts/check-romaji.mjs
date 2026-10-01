@@ -4,7 +4,7 @@
 //   node scripts/check-romaji.mjs <path/to.json>  # just one
 //
 // A generatedRomaji list has no stored romaji: the app derives it from the ja name
-// at render (see src/lib/kana.mjs), and any name holding a kanji the dictionary
+// at render (see src/lib/languages/kana.mjs), and any name holding a kanji the dictionary
 // doesn't know falls back to the raw Japanese instead. This lists those names — and
 // the offending characters — so the WORDS table can be extended to cover them.
 // A report, not a gate: it exits 0 and is read, like report-name-quality.
@@ -12,7 +12,7 @@
 import { readdirSync, readFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
-import { isTransliterable, toRomaji, unreadable } from "../src/lib/kana.mjs";
+import { isTransliterable, toRomaji, unreadable } from "../src/lib/languages/kana.mjs";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 const TOPICS = join(ROOT, "data", "topics");

@@ -3,7 +3,7 @@
 // entries simply are the English names, so the UI can say that rather than leave a
 // reader wondering why a German list is full of English words.
 
-import type { TopicSummary } from "./types";
+import type { TopicSummary } from "../types";
 
 /** Declared: the list carries this language. English: it carries English, and says
  *  so is deliberate. Undeclared: nobody has confirmed the language either way. */

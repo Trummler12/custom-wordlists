@@ -1,7 +1,7 @@
 <script lang="ts">
   import { onMount } from "svelte";
   import { setIndeterminate } from "../../lib/dom";
-  import { canForceSecondary } from "../../lib/secondary";
+  import { canForceSecondary } from "../../lib/languages/secondary";
   import { tierNoteAt } from "../../lib/fame";
   import { baseTag, langSupport, splitName } from "../../lib/languages";
   import { rulerControl, rulerHidden } from "../../lib/rulers";

@@ -384,7 +384,7 @@ function topic(id, title, tiers, sources, rulerTooltip, omitted, omittable, defa
     id,
     title,
     // ja-Latn is offered but not sourced: the reader opts into romaji and the app
-    // derives it from the Japanese name at render (see generatedRomaji / lib/kana).
+    // derives it from the Japanese name at render (see generatedRomaji / lib/languages/kana).
     languages: NAME_LANGS.flatMap((l) => (l === "ja" ? ["ja", "ja-Latn"] : [l])),
     generatedRomaji: true,
     sources,

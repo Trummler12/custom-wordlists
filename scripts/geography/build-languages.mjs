@@ -325,7 +325,7 @@ async function main() {
     icon: "🗣️",
     description: "The world's languages, each named in every language skribbl offers. Fame tiers by speakers worldwide.",
     // ja-Latn is offered but not sourced: the reader opts into romaji, derived from the
-    // Japanese name at render (see generatedRomaji / lib/kana), as in the country lists.
+    // Japanese name at render (see generatedRomaji / lib/languages/kana), as in the country lists.
     languages: NAME_LANGS.flatMap((l) => (l === "ja" ? ["ja", "ja-Latn"] : [l])),
     generatedRomaji: true,
     sources: SOURCES,

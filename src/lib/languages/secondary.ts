@@ -1,9 +1,9 @@
 // Which lists may be switched to their entries in the reader's secondary language, and
 // where the control for doing so lives. The pure half of the per-topic content language.
 
-import { langSupport } from "./languages";
-import { ancestorPaths } from "./tree";
-import type { CategoryMeta, TopicSummary } from "./types";
+import { langSupport } from "./index";
+import { ancestorPaths } from "../tree";
+import type { CategoryMeta, TopicSummary } from "../types";
 
 /** Whether this topic may be switched to `secondary` while `primary` is selected. Two
  *  cases can't: the secondary language is the primary one, and a switch to English for

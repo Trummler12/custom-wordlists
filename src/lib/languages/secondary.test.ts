@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { canForceSecondary, secondaryControl, sharedSecondaryTopics } from "./secondary";
-import type { CategoryMeta, TopicSummary } from "./types";
+import type { CategoryMeta, TopicSummary } from "../types";
 
 const topic = (id: string, fields: Partial<TopicSummary> = {}): TopicSummary => ({
   id,

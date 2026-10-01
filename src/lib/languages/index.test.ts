@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
-import { baseTag, langSupport, matchTag, splitName, tagChip } from "./languages";
-import type { TopicSummary } from "./types";
+import { baseTag, langSupport, matchTag, splitName, tagChip } from "./index";
+import type { TopicSummary } from "../types";
 
 const topic = (fields: Partial<TopicSummary>): TopicSummary => ({
   id: "t",
