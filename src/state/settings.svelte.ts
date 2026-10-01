@@ -24,6 +24,9 @@ class SettingsState {
   /** What joins the Output's names when it is copied. Never changes how the Output
    *  looks: skribbl.io wants a comma, the others are for pasting elsewhere. */
   outputSeparator = $state<Separator>(",");
+  /** Whether a name holding that separator has it removed rather than left in (where
+   *  it would split the name in two). See lib/separator. */
+  removeSeparator = $state(true);
 
   /** How short and how long a name may be (the reserved `<` / `>` rules), and the
    *  same per language for those written a character per syllable (see lib/lengths). */
@@ -45,6 +48,7 @@ class SettingsState {
     if (stored.outputSeparator && SEPARATORS.includes(stored.outputSeparator)) {
       this.outputSeparator = stored.outputSeparator;
     }
+    if (typeof stored.removeSeparator === "boolean") this.removeSeparator = stored.removeSeparator;
     if (validLimits(stored.charLimits)) this.charLimits = stored.charLimits;
     for (const [tag, l] of Object.entries(stored.scriptLimits ?? {})) {
       if (SCRIPT_LANGS.includes(tag) && validLimits(l)) this.scriptLimits[tag] = l;
@@ -62,6 +66,11 @@ class SettingsState {
   }
   setOutputSeparator(s: Separator): void {
     this.outputSeparator = s;
+    this.save();
+  }
+
+  setRemoveSeparator(on: boolean): void {
+    this.removeSeparator = on;
     this.save();
   }
 
@@ -103,6 +112,7 @@ class SettingsState {
       showSecondaryToggle: this.showSecondaryToggle,
       flagType: this.flagType,
       outputSeparator: this.outputSeparator,
+      removeSeparator: this.removeSeparator,
       charLimits: this.charLimits,
       scriptLimits: this.scriptLimits,
       toggledOmissions: this.toggledOmissions,
@@ -118,6 +128,7 @@ type Stored = {
   showEnglishToggle?: boolean;
   flagType?: FlagType;
   outputSeparator?: Separator;
+  removeSeparator?: boolean;
   charLimits?: Limits;
   scriptLimits?: Record<string, Limits>;
   toggledOmissions?: Record<string, boolean>;
