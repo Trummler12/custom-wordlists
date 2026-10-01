@@ -6,8 +6,9 @@ Translatable text in this project lives in three places, deliberately kept apart
 
 Everything the app itself renders: headers, the topic tree, control labels, tooltips, settings, the footer. Keyed by a string id, consumed by the Svelte components, resolved at runtime.
 
-- `index.ts` — the `UIStrings` interface (the id namespace, grouped by place or feature), the `UI` registry, `strings(lang)` (falls back to English via `FALLBACK_LANG`), `CONTENT_LANGS` (the 🌐 picker's languages) and helpers like `langWarning`.
-- `en.ts` `de.ts` `es.ts` `fr.ts` `it.ts` `ja.ts` `ko.ts` — one dictionary per locale, each implementing `UIStrings`. English is the fallback every other locale falls back to.
+- `index.ts` — the `UIStrings` interface (the id namespace, grouped by place or feature), the `UI` registry, `strings(lang, fallback)` (fills each missing label from the reader's fallback language, then from English), `CONTENT_LANGS` (the 🌐 picker's languages) and helpers like `langWarning`.
+- `en.ts` `de.ts` `es.ts` `fr.ts` `it.ts` `ja.ts` `ko.ts` `pt.ts` `ru.ts` `zh-Hans.ts` `zh-Hant.ts` — one dictionary per locale. English and German implement `UIStrings` in full; the machine-written ones are a `LocaleDict` and simply leave out what is not translated yet (no copies of the English text).
+- `flags.ts` — which flag stands for which language (images and sources in `assets/flags/languages/`).
 - `variants.ts` — the written-two-ways languages (Romaji, Latin-American Spanish) and the toggle that switches the tag consulted first.
 - `html/` — `Msg.svelte` / `markup.ts` / `plain.ts` render a string that carries `{br}` and `[text](url)` markup, as HTML or as a plain string.
 
