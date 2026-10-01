@@ -120,7 +120,6 @@
     z-index: 11;
     margin: 0;
     padding: 0.25rem;
-    min-width: 9rem;
     list-style: none;
     background: var(--chip-bg);
     border: 1px solid var(--panel-border);
