@@ -340,8 +340,8 @@ export const de: UIStrings = {
     pageParts: (current, total) => ["", `Seite ${current}`, ` / ${total}`],
     pageJumpHint: (numeric) =>
       numeric
-        ? `Klick: zu einer Seite, einem Eintragsnamen oder einem Wert in „${numeric}“ springen`
-        : "Klick: zu einer Seite oder einem Eintragsnamen springen",
+        ? `Klick: zu einer Seite, einem (englischen) Eintragsnamen oder einem Wert in „${numeric}“ springen`
+        : "Klick: zu einer Seite oder einem (englischen) Eintragsnamen springen",
     pageJumpInput: "Seite, Wert oder Eintragsname",
     pageNoNumeric: "Diese Tabelle hat keine Zahlenspalte.",
     loading: (topic) => `${topic} werden geladen…`,

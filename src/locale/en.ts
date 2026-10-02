@@ -314,8 +314,8 @@ export const en: UIStrings = {
     pageParts: (current, total) => ["", `Page ${current}`, ` / ${total}`],
     pageJumpHint: (numeric) =>
       numeric
-        ? `Click: jump to a page, an entry name or a value in "${numeric}"`
-        : "Click: jump to a page or an entry name",
+        ? `Click: jump to a page, an (English) entry name or a value in "${numeric}"`
+        : "Click: jump to a page or an (English) entry name",
     pageJumpInput: "Page, value or entry name",
     pageNoNumeric: "This table has no numeric column.",
     loading: (topic) => `Loading ${topic}…`,
