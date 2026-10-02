@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { parseMarkup, spanTag, type StyledPart } from "./markup";
+  import { parseMarkup, scriptGlyphs, spanTag, type StyledPart } from "./markup";
 
   // Renders the inline markup a translatable string may carry: `{br}`, `[text](url)` and the
   // styled spans (./markup's SPANS plus colours). The tag set and its safety rules live
@@ -22,7 +22,17 @@
       style:color={own ? "inherit" : undefined}
       >{@render styled(part, i + 1)}</svelte:element
     >
-  {:else if part.color}<span style:color={part.color}>{part.text}</span>
+  {:else if part.color}<span style:color={part.color}>{@render body(part)}</span>
+  {:else}{@render body(part)}{/if}
+{/snippet}
+
+<!-- A raised or lowered number looks as written ("2" in a <sup>), but a copy picks up its
+     Unicode form ("²"), which survives pasting where the <sup> doesn't. The shown digits
+     are generated content, which a copy skips; the glyphs are real text, kept out of
+     sight. The empty alt text keeps a screen reader from reading both. -->
+{#snippet body(part: StyledPart)}
+  {@const glyphs = scriptGlyphs(part)}
+  {#if glyphs}<span class="copy-as" data-shown={part.text}><span class="glyphs">{glyphs}</span></span>
   {:else}{part.text}{/if}
 {/snippet}
 
@@ -35,3 +45,17 @@
   {:else if part.kind === "text"}{part.text}
   {:else}{@render styled(part, 0)}
   {/if}{/each}
+
+<style>
+  .copy-as::before {
+    content: attr(data-shown) / "";
+  }
+  .glyphs {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+</style>
