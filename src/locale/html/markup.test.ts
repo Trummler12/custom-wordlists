@@ -168,6 +168,15 @@ describe("plainText", () => {
     expect(plainText("see [PokéWiki](https://www.pokewiki.de/x)")).toBe("see PokéWiki");
   });
 
+  it("keeps raised and lowered digits as their Unicode forms", () => {
+    expect(plainText("Area (km{smaller sup}2{/smaller sup})")).toBe("Area (km²)");
+    expect(plainText("H{sub}2{/sub}O")).toBe("H₂O");
+  });
+
+  it("leaves a raised run alone that Unicode can't raise as a whole", () => {
+    expect(plainText("1{sup}st{/sup}")).toBe("1st");
+  });
+
   it("turns a line break into a space, so a screen reader reads one sentence", () => {
     expect(plainText("One{br}Two")).toBe("One Two");
   });

@@ -145,6 +145,25 @@ export function parseMarkup(text: string): Part[] {
  *  aria-label, title, placeholder. A link keeps its label and loses its URL. */
 export function plainText(text: string, br = " "): string {
   return parseMarkup(text)
-    .map((p) => (p.kind === "br" ? br : p.text))
+    .map((p) => (p.kind === "br" ? br : p.kind === "span" ? scripted(p) : p.text))
     .join("");
+}
+
+// What plain text can keep of a raised or lowered run: Unicode has its own digits (and a
+// few signs) for both, so "km{sup}2{/sup}" still reads km² in a native tooltip.
+const SUPER: Record<string, string> = { ...digits("⁰¹²³⁴⁵⁶⁷⁸⁹"), "+": "⁺", "-": "⁻", "=": "⁼", "(": "⁽", ")": "⁾" };
+const SUB: Record<string, string> = { ...digits("₀₁₂₃₄₅₆₇₈₉"), "+": "₊", "-": "₋", "=": "₌", "(": "₍", ")": "₎" };
+function digits(glyphs: string): Record<string, string> {
+  return Object.fromEntries([...glyphs].map((g, i) => [String(i), g]));
+}
+/** A raised or lowered run as its Unicode characters, or null where it is neither or
+ *  Unicode can't raise it as a whole. All or nothing: a half-converted run ("x²a")
+ *  reads worse than the plain one. Msg uses it for what a copy picks up. */
+export function scriptGlyphs(p: StyledPart): string | null {
+  const map = p.names.includes("sup") ? SUPER : p.names.includes("sub") ? SUB : null;
+  if (!map || ![...p.text].every((c) => c in map)) return null;
+  return [...p.text].map((c) => map[c]).join("");
+}
+function scripted(p: StyledPart): string {
+  return scriptGlyphs(p) ?? p.text;
 }
