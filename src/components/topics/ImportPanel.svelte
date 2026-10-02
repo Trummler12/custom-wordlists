@@ -5,8 +5,8 @@
   import { custom, NAME_MAX } from "../../state/custom.svelte";
   import { lang } from "../../state/lang.svelte";
   import { clampPanelLeft, overlays } from "../../state/overlays.svelte";
-  import TipNote from "../common/TipNote.svelte";
-  import TipText from "../common/TipText.svelte";
+  import TipNote from "../shared/TipNote.svelte";
+  import TipText from "../shared/TipText.svelte";
 
   // The 📥 import control (§X4b): pick a file exported elsewhere, review its lists in a
   // table — name (editable, with a preview), size, and how much each overlaps an

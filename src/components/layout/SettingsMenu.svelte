@@ -9,9 +9,9 @@
   import { resetSelectionSettings } from "../../state/reset";
   import { settings } from "../../state/settings.svelte";
   import Msg from "../../locale/html/Msg.svelte";
-  import { pinBox } from "../common/pinBox";
-  import TipMarker from "../common/TipMarker.svelte";
-  import TipNote from "../common/TipNote.svelte";
+  import { pinBox } from "../shared/pinBox";
+  import TipMarker from "../shared/TipMarker.svelte";
+  import TipNote from "../shared/TipNote.svelte";
 
   // Two instances, like the 🌐 panel it sits beside: one per layout, each
   // with its own open state.

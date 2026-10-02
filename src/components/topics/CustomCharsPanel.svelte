@@ -5,8 +5,8 @@
   import { custom } from "../../state/custom.svelte";
   import { lang } from "../../state/lang.svelte";
   import { overlays } from "../../state/overlays.svelte";
-  import TipMarker from "../common/TipMarker.svelte";
-  import TipNote from "../common/TipNote.svelte";
+  import TipMarker from "../shared/TipMarker.svelte";
+  import TipNote from "../shared/TipNote.svelte";
 
   // The Custom row's character panel: a ⚠️ shows up once the input field or an active
   // custom list holds a character skribbl.io will probably drop, or one that is only

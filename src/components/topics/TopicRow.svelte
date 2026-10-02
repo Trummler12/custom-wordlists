@@ -15,8 +15,8 @@
   import { selection } from "../../state/selection.svelte";
   import { settings } from "../../state/settings.svelte";
   import { topics } from "../../state/topics.svelte";
-  import TipMarker from "../common/TipMarker.svelte";
-  import TipNote from "../common/TipNote.svelte";
+  import TipMarker from "../shared/TipMarker.svelte";
+  import TipNote from "../shared/TipNote.svelte";
   import { sovRules } from "../../lib/matrix";
   import CoveragePanel from "./CoveragePanel.svelte";
   import FameDepthSlider from "./FameDepthSlider.svelte";

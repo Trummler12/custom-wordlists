@@ -6,9 +6,9 @@
   import { AUTO, lang } from "../../state/lang.svelte";
   import { overlays } from "../../state/overlays.svelte";
   import { settings } from "../../state/settings.svelte";
-  import { pinBox } from "../common/pinBox";
-  import TipMarker from "../common/TipMarker.svelte";
-  import TipNote from "../common/TipNote.svelte";
+  import { pinBox } from "../shared/pinBox";
+  import TipMarker from "../shared/TipMarker.svelte";
+  import TipNote from "../shared/TipNote.svelte";
   import LanguageSelect from "./LanguageSelect.svelte";
 
   // Two panels share the languages but each needs its own open/closed state, so

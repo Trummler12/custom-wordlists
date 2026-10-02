@@ -64,7 +64,7 @@ h2 {
    live in TopicTree via `.topics :global(...)`. */
 
 /* The tooltip marker/note are components: .tip-marker (TipMarker) and .tip-note + its
-   variants (TipNote) are colocated in components/common/. A .tip-note stretches across
+   variants (TipNote) are colocated in components/shared/. A .tip-note stretches across
    its positioned parent — whichever component renders it (a topic row, a ruler, a panel)
    supplies that anchor. */
 

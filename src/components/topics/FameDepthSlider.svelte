@@ -8,7 +8,7 @@
   import { overlays } from "../../state/overlays.svelte";
   import { selection } from "../../state/selection.svelte";
   import { topics } from "../../state/topics.svelte";
-  import TipNote from "../common/TipNote.svelte";
+  import TipNote from "../shared/TipNote.svelte";
 
   let { tid, group }: { tid: string; group: Group } = $props();
 

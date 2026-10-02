@@ -14,9 +14,9 @@
   import { lang } from "../../state/lang.svelte";
   import { output } from "../../state/output.svelte";
   import { clampPanelLeft, overlays } from "../../state/overlays.svelte";
-  import TipMarker from "../common/TipMarker.svelte";
-  import TipNote from "../common/TipNote.svelte";
-  import TipText from "../common/TipText.svelte";
+  import TipMarker from "../shared/TipMarker.svelte";
+  import TipNote from "../shared/TipNote.svelte";
+  import TipText from "../shared/TipText.svelte";
   import { topics } from "../../state/topics.svelte";
   import CustomCharsPanel from "./CustomCharsPanel.svelte";
   import CustomOmittedPanel from "./CustomOmittedPanel.svelte";

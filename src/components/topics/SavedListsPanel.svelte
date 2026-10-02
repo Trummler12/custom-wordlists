@@ -5,9 +5,9 @@
   import { custom, NAME_MAX, type SavedList } from "../../state/custom.svelte";
   import { lang } from "../../state/lang.svelte";
   import { clampPanelLeft, overlays } from "../../state/overlays.svelte";
-  import TipMarker from "../common/TipMarker.svelte";
-  import TipNote from "../common/TipNote.svelte";
-  import TipText from "../common/TipText.svelte";
+  import TipMarker from "../shared/TipMarker.svelte";
+  import TipNote from "../shared/TipNote.svelte";
+  import TipText from "../shared/TipText.svelte";
 
   // The 💾 saved-lists manager (§X3): a control on the Custom cluster that opens a
   // panel of the reader's stored lists. Each tile activates its list into the output,

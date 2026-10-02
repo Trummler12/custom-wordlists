@@ -5,7 +5,7 @@
   import { custom } from "../../state/custom.svelte";
   import { lang } from "../../state/lang.svelte";
   import { clampPanelLeft, overlays } from "../../state/overlays.svelte";
-  import TipText from "../common/TipText.svelte";
+  import TipText from "../shared/TipText.svelte";
 
   // The 📤 export control (§X4b): a panel that picks which saved lists to write to a
   // JSON file the reader downloads — the only way to move lists off this browser.

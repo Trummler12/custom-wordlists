@@ -7,8 +7,8 @@
   import { lang } from "../../state/lang.svelte";
   import { overlays } from "../../state/overlays.svelte";
   import { selection } from "../../state/selection.svelte";
-  import TipMarker from "../common/TipMarker.svelte";
-  import TipNote from "../common/TipNote.svelte";
+  import TipMarker from "../shared/TipMarker.svelte";
+  import TipNote from "../shared/TipNote.svelte";
 
   // The language-type inclusion panel: one checkbox per Wikidata type the list carries,
   // each default-off, plus a base box for the living-modern languages no type covers. It
