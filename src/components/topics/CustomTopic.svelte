@@ -2,6 +2,7 @@
   import Msg from "../../locale/html/Msg.svelte";
   import { plain } from "../../locale/html/plain";
   import { availableSeparators, separatorLabel, type Separator } from "../../lib/custom";
+  import { cancelFit, scheduleFit } from "../../lib/rowfit";
   import {
     custom,
     PREVIEW_CHARS_MAX,
@@ -258,6 +259,28 @@
     }
   }
   $effect(() => () => cancelAnimationFrame(clampRaf));
+
+  // The same overflow relief as a topic row (rowfit.ts), re-fitted when the count, the
+  // separator choices or the language change the widths, and on a column resize. The
+  // free space sits ahead of the separator, which leads the right-aligned group.
+  let rowEl = $state<HTMLDivElement>();
+  $effect(() => {
+    void breakdown.kept.length;
+    void breakdown.total;
+    void options.length;
+    void lang.uiLang;
+    if (rowEl) scheduleFit(rowEl, ".title", ".sep");
+  });
+  $effect(() => {
+    if (!rowEl) return;
+    const el = rowEl;
+    const ro = new ResizeObserver(() => scheduleFit(el, ".title", ".sep"));
+    ro.observe(el);
+    return () => {
+      ro.disconnect();
+      cancelFit(el);
+    };
+  });
 </script>
 
 <svelte:window onscroll={scheduleClamp} onresize={scheduleClamp} />
@@ -279,7 +302,7 @@
 {/snippet}
 
 <div class="custom-item">
-  <div class="custom-row">
+  <div class="custom-row" bind:this={rowEl}>
     <span class="title"><Msg text={lang.ui.custom.title} /></span>
     <TipMarker tipId="custom-info" icon="ℹ️" text={lang.ui.custom.infoHint} />
     <CustomOmittedPanel />
@@ -429,8 +452,9 @@
     align-items: baseline;
     gap: 0.25rem;
     /* No left inset: the title sits flush under the "Topics" heading, not indented
-       into the checkbox/expander column the topic rows use. */
-    padding: 0.5rem 0.2rem 0.35rem 0;
+       into the checkbox/expander column the topic rows use. No right one either, so
+       the count ends where every topic row's does. */
+    padding: 0.5rem 0 0.35rem 0;
   }
   .custom-row .title {
     font-weight: 600;
@@ -450,6 +474,11 @@
     /* Leads the right-hand group (Separator · ⚙️ · count): the auto margin sits on the
        first of them, so it and everything after are pushed to the right of the row. */
     margin-left: auto;
+  }
+  /* The count follows the group rather than pushing off on its own: a second auto
+     margin would split the free space and leave the group floating mid-row. */
+  .custom-row .meta {
+    margin-left: 0;
   }
   .custom-settings-host {
     position: relative;
