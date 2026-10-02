@@ -165,6 +165,7 @@ export const ko: LocaleDict = {
     next: "다음 페이지",
     last: "마지막 페이지",
     page: (current, total) => `${total} 페이지 중 ${current} 페이지`,
+    pageParts: (current, total) => [`${total} 페이지 중 `, `${current} 페이지`, ""],
     loading: (topic) => `${topic} 불러오는 중…`,
     loadError: (topic, message) => `${topic} 커버리지를 불러오지 못했습니다: ${message}`,
   },

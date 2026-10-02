@@ -165,6 +165,7 @@ export const zhHans: LocaleDict = {
     next: "下一页",
     last: "最后一页",
     page: (current, total) => `第 ${current} 页 / 共 ${total} 页`,
+    pageParts: (current, total) => ["", `第 ${current} 页`, ` / 共 ${total} 页`],
     loading: (topic) => `正在加载${topic}…`,
     loadError: (topic, message) => `无法加载${topic}的覆盖数据：${message}`,
   },

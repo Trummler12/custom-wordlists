@@ -373,7 +373,11 @@ export interface CoveragePageStrings {
   prev: string;
   next: string;
   last: string;
-  page: (current: number, total: number) => string;
+  page: (current: number, total: number) => string; // REMOVE(LB5): split into pageParts
+  /** The pager's "Page 3 / 21", in three pieces so the current-page piece can become the
+   *  jump field: [before, current, after], each in the language's own order ("21 ページ中 "
+   *  + "3 ページ" + ""). The number inside `current` is what gets marked as clickable. */
+  pageParts: (current: number, total: number) => [string, string, string];
   /** The page-number jump (§H): the clickable page number's persistent tooltip — `numeric`
    *  is the table's numeric column header, or null when it has none — the input's
    *  aria-label, and the flash when a number can't be a page and there's no value to seek. */

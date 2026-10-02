@@ -337,6 +337,7 @@ export const de: UIStrings = {
     next: "Nächste Seite",
     last: "Letzte Seite",
     page: (current, total) => `Seite ${current} / ${total}`,
+    pageParts: (current, total) => ["", `Seite ${current}`, ` / ${total}`],
     pageJumpHint: (numeric) =>
       numeric
         ? `Klick: zu einer Seite, einem Eintragsnamen oder einem Wert in „${numeric}“ springen`

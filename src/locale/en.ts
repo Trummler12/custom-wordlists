@@ -311,6 +311,7 @@ export const en: UIStrings = {
     next: "Next page",
     last: "Last page",
     page: (current, total) => `Page ${current} / ${total}`,
+    pageParts: (current, total) => ["", `Page ${current}`, ` / ${total}`],
     pageJumpHint: (numeric) =>
       numeric
         ? `Click: jump to a page, an entry name or a value in "${numeric}"`

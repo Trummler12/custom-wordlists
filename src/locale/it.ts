@@ -174,6 +174,7 @@ export const it: LocaleDict = {
     next: "Pagina successiva",
     last: "Ultima pagina",
     page: (current, total) => `Pagina ${current} / ${total}`,
+    pageParts: (current, total) => ["", `Pagina ${current}`, ` / ${total}`],
     loading: (topic) => `Caricamento di ${topic}…`,
     loadError: (topic, message) => `Impossibile caricare la copertura di ${topic}: ${message}`,
   },

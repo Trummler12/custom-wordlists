@@ -175,6 +175,7 @@ export const fr: LocaleDict = {
     next: "Page suivante",
     last: "Dernière page",
     page: (current, total) => `Page ${current} / ${total}`,
+    pageParts: (current, total) => ["", `Page ${current}`, ` / ${total}`],
     loading: (topic) => `Chargement de ${topic}…`,
     loadError: (topic, message) => `Impossible de charger la couverture de ${topic} : ${message}`,
   },

@@ -180,6 +180,7 @@ export const ru: LocaleDict = {
     next: "Следующая страница",
     last: "Последняя страница",
     page: (current, total) => `Страница ${current} / ${total}`,
+    pageParts: (current, total) => ["", `Страница ${current}`, ` / ${total}`],
     loading: (topic) => `Загрузка «${topic}»…`,
     loadError: (topic, message) => `Не удалось загрузить покрытие для «${topic}»: ${message}`,
   },

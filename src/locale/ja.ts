@@ -165,6 +165,7 @@ export const ja: LocaleDict = {
     next: "次のページ",
     last: "最後のページ",
     page: (current, total) => `${total} ページ中 ${current} ページ`,
+    pageParts: (current, total) => [`${total} ページ中 `, `${current} ページ`, ""],
     loading: (topic) => `${topic}を読み込み中…`,
     loadError: (topic, message) => `${topic}のカバレッジを読み込めませんでした：${message}`,
   },
