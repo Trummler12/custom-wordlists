@@ -14,11 +14,11 @@
 
   let { tid, group }: { tid: string; group: Group } = $props();
 
-  // A rule's hover wraps its matched names over up to five lines, this many to a
-  // line, before it trails off with an ellipsis — long enough to be useful (and a
-  // little funny) without listing a hundred countries.
-  const RULE_TITLE_LINES = 5;
-  const RULE_TITLE_PER_LINE = 10;
+  // A rule's hover lists this many of its matched names before it trails off with an
+  // ellipsis — long enough to be useful (and a little funny) without listing a hundred
+  // countries. One running line: the browser wraps a native tooltip at the viewport
+  // edge itself, and breaks of our own on top of that left ragged half-lines.
+  const RULE_TITLE_NAMES = 50;
 
   // Icon-tagged rules leave for a control of their own (CoveragePanel), so the 🚫
   // panel lists only the plain omissions.
@@ -126,15 +126,11 @@
     const info = summaryOf(rule.id);
     const hint = plain(rule.locked ? lang.ui.omitted.locked : lang.ui.omitted.toggle(omitting), "\n");
     if (!info?.names.length) return hint;
-    const shown = info.names.slice(0, RULE_TITLE_LINES * RULE_TITLE_PER_LINE);
-    const lines: string[] = [];
-    for (let i = 0; i < shown.length; i += RULE_TITLE_PER_LINE) {
-      lines.push(shown.slice(i, i + RULE_TITLE_PER_LINE).join(", "));
-    }
+    const shown = info.names.slice(0, RULE_TITLE_NAMES);
     // More matched than the sample shows (a big rule, or names deduplicated below
     // the count) — trail off, so the hover reads as an excerpt rather than the whole.
-    if (info.count > shown.length) lines[lines.length - 1] += ", …";
-    return [hint, ...lines].join("\n");
+    const more = info.count > shown.length ? ", …" : "";
+    return [hint, shown.join(", ") + more].join("\n");
   };
 </script>
 
