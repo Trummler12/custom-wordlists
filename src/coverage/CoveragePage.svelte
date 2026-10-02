@@ -1,10 +1,12 @@
 <script lang="ts">
-  import { plain } from "../locale/html/plain";
   // The "Language Coverage" page (strand W1). Reads the topic/lang from the URL, loads its
   // data/coverage/<topic>.json, and renders which languages Wikidata has a label for, per
   // item — sortable by any column, paged, its chrome localized and switchable in place.
   import { COVERAGE_TOPICS, coverageTopicOf, resolveRoute, type CoverageTopic } from "./route";
   import { firstDir, sortItems, type SortKey, type SortState } from "./sort";
+  import { nameLanding, numberLanding, parseJump } from "./jump";
+  import { tick } from "svelte";
+  import { plain } from "../locale/html/plain";
   import { FALLBACK_LANG, strings, UI_LANGS } from "../locale";
   import { loadManifest } from "../lib/data";
   import { resolveStr } from "../lib/words";
@@ -143,6 +145,76 @@
   }
   const arrow = (key: SortKey) => (sort.key !== key ? "" : sort.dir === "asc" ? " ▲" : " ▼");
 
+  // The pager's "Page n / m" is also a jump field. A page number in range goes there and
+  // leaves the order alone; any other number is a value of the numeric column (sorted
+  // largest first), anything else an entry name (sorted A→Z) — and the table lands
+  // where it would sort, with that row flashed.
+  let jumping = $state(false);
+  let jumpText = $state("");
+  let jumpError = $state(false);
+  let landed = $state<string | null>(null);
+  let errorTimer: ReturnType<typeof setTimeout> | undefined;
+  let landTimer: ReturnType<typeof setTimeout> | undefined;
+  // The field takes the place of the "Page 3" it replaces, at exactly that width: wide
+  // enough for nearly anything typed, and the pager around it doesn't move.
+  let currentEl = $state<HTMLElement>();
+  let jumpWidth = $state("");
+  const pageLabel = $derived.by(() => {
+    const [before, current, after] = ui.pageParts(page + 1, pageCount);
+    const no = String(page + 1);
+    return { before, current, after, no, at: current.indexOf(no) };
+  });
+
+  function startJump() {
+    jumpWidth = currentEl ? `${currentEl.getBoundingClientRect().width}px` : "";
+    jumpText = String(page + 1);
+    jumpError = false;
+    jumping = true;
+  }
+  function stopJump() {
+    jumping = false;
+    jumpError = false;
+    clearTimeout(errorTimer);
+  }
+  function land(index: number) {
+    page = Math.floor(index / PAGE_SIZE);
+    landed = sorted[index]?.qid ?? null;
+    clearTimeout(landTimer);
+    landTimer = setTimeout(() => (landed = null), 2000);
+    void tick().then(() => document.querySelector("tr.landed")?.scrollIntoView({ block: "center" }));
+  }
+  function commitJump() {
+    const target = parseJump(jumpText);
+    if (!target || !data) return stopJump();
+    if (target.kind === "number" && target.value >= 1 && target.value <= pageCount) {
+      page = target.value - 1;
+      return stopJump();
+    }
+    if (target.kind === "number" && !data.meta.numeric) {
+      // Nothing to read the number against: say so on the field for a moment.
+      jumpError = true;
+      clearTimeout(errorTimer);
+      errorTimer = setTimeout(() => (jumpError = false), 3000);
+      return;
+    }
+    stopJump();
+    if (target.kind === "number") {
+      sort = { key: "num", dir: "desc" };
+      land(numberLanding(sorted, target.value));
+    } else {
+      sort = { key: "name", dir: "asc" };
+      land(nameLanding(sorted, target.text));
+    }
+  }
+  function jumpKey(e: KeyboardEvent) {
+    if (e.key === "Enter") commitJump();
+    else if (e.key === "Escape") stopJump();
+  }
+  function focusSelect(node: HTMLInputElement) {
+    node.focus();
+    node.select();
+  }
+
   // The language columns group the official languages (UI_LANGS) to the left and the rest
   // after — a stable partition, so each side keeps the dump's order and `en` stays leftmost.
   // The list is always complete: "UI languages only" dims the non-official columns (see
@@ -231,7 +303,36 @@
           <span class="pager">
             <button onclick={() => (page = 0)} disabled={page === 0} aria-label={plain(ui.first)} title={plain(ui.first)}>‹‹‹</button>
             <button onclick={() => (page = Math.max(0, page - 1))} disabled={page === 0} aria-label={plain(ui.prev)} title={plain(ui.prev)}>‹</button>
-            <span><Msg text={ui.page(page + 1, pageCount)} /></span>
+            {#if jumping}
+              <span class="page-label"
+                >{pageLabel.before}<span class="jump"
+                  ><input
+                    class="jump-input"
+                    class:error={jumpError}
+                    style:width={jumpWidth}
+                    aria-label={plain(ui.pageJumpInput)}
+                    aria-invalid={jumpError}
+                    placeholder={plain(ui.pageJumpInput)}
+                    bind:value={jumpText}
+                    use:focusSelect
+                    onkeydown={jumpKey}
+                    onblur={stopJump}
+                  />{#if jumpError}<span class="jump-error" role="alert"><Msg text={ui.pageNoNumeric} /></span
+                    >{/if}</span
+                >{pageLabel.after}</span
+              >
+            {:else}
+              <!-- The whole label is the click target; only the number looks like one. -->
+              <button
+                class="page-jump"
+                title={plain(ui.pageJumpHint(data.meta.numeric ? numLabel(data.meta.numeric) : null), "\n")}
+                onclick={startJump}
+                >{pageLabel.before}<span bind:this={currentEl}
+                  >{#if pageLabel.at < 0}{pageLabel.current}{:else}{pageLabel.current.slice(0, pageLabel.at)}<span class="page-no">{pageLabel.no}</span
+                    >{pageLabel.current.slice(pageLabel.at + pageLabel.no.length)}{/if}</span
+                >{pageLabel.after}</button
+              >
+            {/if}
             <button onclick={() => (page = Math.min(pageCount - 1, page + 1))} disabled={page >= pageCount - 1} aria-label={plain(ui.next)} title={plain(ui.next)}>›</button>
             <button onclick={() => (page = pageCount - 1)} disabled={page >= pageCount - 1} aria-label={plain(ui.last)} title={plain(ui.last)}>›››</button>
           </span>
@@ -257,7 +358,7 @@
         </thead>
         <tbody>
           {#each pageItems as item (item.qid)}
-            <tr>
+            <tr class:landed={item.qid === landed}>
               <th class="item" scope="row">
                 <a href={wikidata(item.qid)} target="_blank" rel="noopener noreferrer" title={item.name ?? item.qid} class:noname={!item.name}>{item.name ?? item.qid}</a>
               </th>
@@ -392,6 +493,54 @@
   .pager button {
     font: inherit;
     cursor: pointer;
+  }
+  /* The page count reads as text and only hints at being a control: a soft outline around
+     the current number. */
+  .pager .page-jump {
+    border: 0;
+    background: none;
+    color: inherit;
+    padding: 0;
+  }
+  .page-no {
+    border: 1px solid color-mix(in srgb, currentColor 25%, transparent);
+    border-radius: 0.3rem;
+    padding: 0 0.3rem;
+  }
+  .pager .page-jump:hover .page-no,
+  .pager .page-jump:focus-visible .page-no {
+    border-color: color-mix(in srgb, currentColor 55%, transparent);
+  }
+  .jump {
+    position: relative;
+  }
+  .jump-input {
+    box-sizing: border-box;
+    font: inherit;
+    min-width: 0;
+  }
+  .jump-input.error {
+    outline: 2px solid var(--danger, #c0392b);
+    outline-offset: 0;
+  }
+  /* Under the field, so the pager doesn't jump sideways when it appears. */
+  .jump-error {
+    position: absolute;
+    top: calc(100% + 0.2rem);
+    right: 0;
+    white-space: nowrap;
+    color: var(--danger, #c0392b);
+    font-size: 0.85em;
+  }
+  /* The row a jump landed on, picked out for a moment. */
+  tbody tr.landed th,
+  tbody tr.landed td {
+    animation: landed 2s ease-out;
+  }
+  @keyframes landed {
+    from {
+      background: color-mix(in srgb, Highlight 45%, transparent);
+    }
   }
   .pager button:disabled {
     cursor: default;
