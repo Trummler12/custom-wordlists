@@ -69,6 +69,17 @@ class OverlayState {
   };
   #remember(kind: OverlayKind, trigger: Element | null | undefined): void {
     this.#openers[kind] = trigger instanceof HTMLElement ? trigger : null;
+    this.#opened[kind]++;
+  }
+  /** Bumped on every opening, so `opener` re-reads for a popup reopened elsewhere. */
+  #opened = $state<Record<OverlayKind, number>>({
+    langSelect: 0, lang: 0, settings: 0, omitted: 0, coverage: 0, languageType: 0, sovereignty: 0,
+    savedLists: 0, exportLists: 0, importLists: 0, customSettings: 0, tip: 0,
+  });
+  /** The control that opened a popup of this kind — what a popup places itself against. */
+  opener(kind: OverlayKind): HTMLElement | null {
+    void this.#opened[kind];
+    return this.#openers[kind];
   }
   /** Which 🌐 panel is open, by instance id, or null. Two panels share the
    *  languages but each has its own trigger. */
@@ -82,8 +93,6 @@ class OverlayState {
   /** The open tooltip's id, or null — at most one is open at a time. Ids double
    *  as the notes' DOM ids, so triggers can point `aria-controls` at them. */
   tip = $state<string | null>(null);
-  /** Whether that note sits above its row instead of below. */
-  tipAbove = $state(false);
   /** Whether the open note stays put instead of following the pointer.
    *
    *  A note can hold a link — the one inviting a romaji correction does — and a
@@ -92,14 +101,6 @@ class OverlayState {
    *  pins it, with a cursor exactly as with a finger, and it stays until it is
    *  dismissed. */
   tipPinned = $state(false);
-  /** The same for the omissions panel. */
-  omittedAbove = $state(false);
-  /** And for the coverage popup — its own button on the same row. */
-  coverageAbove = $state(false);
-  /** And for the language-type panel — its own ☑️ button on the same row. */
-  languageTypeAbove = $state(false);
-  /** And for the sovereignty matrix — its own button on the same row. */
-  sovereigntyAbove = $state(false);
 
   // --- Language menu ---------------------------------------------------------
 
@@ -140,7 +141,6 @@ class OverlayState {
       this.omittedPanel = null;
       return;
     }
-    this.omittedAbove = opensUpward(trigger);
     this.omittedPanel = id;
     this.#remember("omitted", trigger);
   };
@@ -155,7 +155,6 @@ class OverlayState {
       this.coveragePanel = null;
       return;
     }
-    this.coverageAbove = opensUpward(trigger);
     this.coveragePanel = id;
     this.#remember("coverage", trigger);
   };
@@ -170,7 +169,6 @@ class OverlayState {
       this.languageTypePanel = null;
       return;
     }
-    this.languageTypeAbove = opensUpward(trigger);
     this.languageTypePanel = id;
     this.#remember("languageType", trigger);
   };
@@ -185,7 +183,6 @@ class OverlayState {
       this.sovereigntyPanel = null;
       return;
     }
-    this.sovereigntyAbove = opensUpward(trigger);
     this.sovereigntyPanel = id;
     this.#remember("sovereignty", trigger);
   };
@@ -275,7 +272,6 @@ class OverlayState {
     const gutter = 8;
     const vw = window.innerWidth;
     const above = r.bottom > window.innerHeight / 2;
-    this.tipAbove = above;
     const edge = above
       ? `bottom:${Math.round(window.innerHeight - r.top + 4)}px`
       : `top:${Math.round(r.bottom + 4)}px`;
@@ -306,11 +302,10 @@ class OverlayState {
     });
   }
 
-  /** Show a note, flipping it above its row when there is more room upward — or, for a
-   *  `local` note, fixing it to its trigger's own place (see #placeLocalTip). */
+  /** Show a note: a row's is placed by the note itself (shared/placement), a `local`
+   *  one is fixed to its trigger's own place (see #placeLocalTip). */
   openTip = (id: string, trigger: Element, pinned = false, local = false): void => {
     if (local) this.#placeLocalTip(trigger);
-    else this.tipAbove = opensUpward(trigger);
     this.tip = id;
     this.tipPinned = pinned;
     this.#tipLocal = local;

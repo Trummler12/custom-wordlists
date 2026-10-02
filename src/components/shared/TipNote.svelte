@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { placement, rowPopup } from "./placement";
   import Msg from "../../locale/html/Msg.svelte";
   import { overlays } from "../../state/overlays.svelte";
 
@@ -17,7 +18,7 @@
        in its own aria-label, where the note is a visual echo. -->
   <p
     class="tip-note"
-    class:above={overlays.tipAbove && !local}
+    use:placement={rowPopup(local ? null : overlays.opener("tip"))}
     class:local
     style={local ? overlays.tipStyle : ""}
     {id}
@@ -33,17 +34,12 @@
 {/if}
 
 <style>
-  /* Stretched across its positioned parent rather than hung off the trigger itself: a
-     trigger sits somewhere in the middle of a row of unknown width, so any box anchored to
-     it can leave the viewport on one side or the other. The parent that positions it belongs
-     to whichever component renders this note. */
+  /* A row's note is placed like a row's panels (shared/placement, inline); a local note by
+     overlays (fixed, from its trigger's rect). */
   .tip-note {
     position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
     z-index: 10;
-    margin: 0.15rem 0 0;
+    margin: 0;
     padding: 0.4rem 0.55rem;
     font-size: 0.8rem;
     font-weight: 400;
@@ -63,22 +59,8 @@
     line-height: 1;
     opacity: 0.75;
   }
-  /* Set when the trigger sits low in the viewport, where a note below it would be cut off by
-     the bottom edge — the vertical counterpart to the full-row stretch above. */
-  .tip-note.above {
-    top: auto;
-    bottom: 100%;
-    margin: 0 0 0.15rem;
-  }
-  /* A note anchored to a 👎 inside the scrolling language-type panel: overlays owns its
-     position (fixed, from the trigger's rect, via the inline style), so here we only undo the
-     full-row stretch, cap the width, and lift it above the panel. */
+  /* Above the panel it belongs to. */
   .tip-note.local {
-    left: auto;
-    right: auto;
-    top: auto;
-    bottom: auto;
-    margin: 0;
     max-width: min(18rem, 90vw);
     z-index: 30;
   }

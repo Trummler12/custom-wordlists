@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { placement, rowPopup } from "../shared/placement";
   import Msg from "../../locale/html/Msg.svelte";
   import { plain } from "../../locale/html/plain";
   import { type Cell, cellKey, includedAfterClick } from "../../lib/matrix";
@@ -107,7 +108,7 @@
     {#if open}
       <div
         class="sovereignty-panel"
-        class:above={overlays.sovereigntyAbove}
+        use:placement={rowPopup(overlays.opener("sovereignty"))}
         role="group"
         aria-label={plain(lang.ui.sovereignty.label)}
       >
@@ -164,16 +165,10 @@
   .sovereignty-btn:focus-visible {
     opacity: 1;
   }
-  /* Stretched across the row rather than hung off the button, as the other panels
-     are, and for the same reason: the trigger sits at an unknown offset. */
+  /* Where it opens, how wide and how tall it may get: shared/placement, inline. */
   .sovereignty-panel {
     position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
     z-index: 10;
-    max-height: clamp(9rem, calc(60vh - var(--footer-h)), 30rem);
-    overflow: auto;
     overscroll-behavior: contain;
     padding: 0.5rem 0.6rem;
     background: var(--chip-bg);
@@ -185,10 +180,6 @@
     line-height: 1.3;
     text-align: left;
     cursor: auto;
-  }
-  .sovereignty-panel.above {
-    top: auto;
-    bottom: 100%;
   }
   .sovereignty-title {
     margin: 0 0 0.4rem;

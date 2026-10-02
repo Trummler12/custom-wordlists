@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { placement, rowPopup } from "../shared/placement";
   import { plain } from "../../locale/html/plain";
   import Msg from "../../locale/html/Msg.svelte";
   import { custom } from "../../state/custom.svelte";
@@ -58,7 +59,7 @@
     {#if open}
       <div
         class="omitted-panel"
-        class:above={overlays.omittedAbove}
+        use:placement={rowPopup(overlays.opener("omitted"))}
         role="group"
         aria-label={plain(lang.ui.omitted.label)}
       >

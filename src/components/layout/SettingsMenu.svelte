@@ -85,7 +85,7 @@
     onclick={(e) => overlays.toggleSettingsMenu(id, e.currentTarget)}
   >⚙️</button>
   {#if overlays.settingsMenu === id}
-    <div class="settings-menu" role="group" aria-label={plain(lang.ui.settings.label)} use:pinBox>
+    <div class="settings-menu" data-popup-frame role="group" aria-label={plain(lang.ui.settings.label)} use:pinBox>
       <div class="setting-row">
         <!-- A caption, not a <label>: a label hands its hover to the dropdown, which
              then lights up under a pointer that can't open it. -->

@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { placement, rowPopup } from "../shared/placement";
   import { plain } from "../../locale/html/plain";
   import { coverageTopicOf } from "../../coverage/route";
   import { baseTag, splitName } from "../../lib/languages";
@@ -148,7 +149,7 @@
     {#if open}
       <div
         class="omitted-panel"
-        class:above={overlays.omittedAbove}
+        use:placement={rowPopup(overlays.opener("omitted"))}
         role="group"
         aria-label={plain(lang.ui.omitted.label)}
       >

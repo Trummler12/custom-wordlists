@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { placement, rowPopup } from "../shared/placement";
   import { plain } from "../../locale/html/plain";
   import { BASE_RULE, EXTEND_RULE, includeRules } from "../../lib/omitted";
   import type { Group, Omission } from "../../lib/types";
@@ -70,7 +71,7 @@
     {#if open}
       <div
         class="language-type-panel"
-        class:above={overlays.languageTypeAbove}
+        use:placement={rowPopup(overlays.opener("languageType"))}
         role="group"
         aria-label={plain(lang.ui.languageType.label)}
         onscroll={overlays.onLocalScroll}
@@ -172,16 +173,10 @@
   .language-type-btn:focus-visible {
     opacity: 1;
   }
-  /* Stretched across the row rather than hung off the button, as the 🚫 panel is, and for
-     the same reason: the trigger sits at an unknown offset. */
+  /* Where it opens, how wide and how tall it may get: shared/placement, inline. */
   .language-type-panel {
     position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
     z-index: 10;
-    max-height: clamp(9rem, calc(40vh - var(--footer-h)), 24rem);
-    overflow-y: auto;
     overscroll-behavior: contain;
     padding: 0.5rem 0.6rem;
     background: var(--chip-bg);
@@ -193,10 +188,6 @@
     line-height: 1.35;
     text-align: left;
     cursor: auto;
-  }
-  .language-type-panel.above {
-    top: auto;
-    bottom: 100%;
   }
   .language-type-title {
     margin: 0 0 0.35rem;

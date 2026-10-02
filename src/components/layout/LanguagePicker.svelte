@@ -95,7 +95,7 @@
       onclick={(e) => overlays.toggleLangMenu(id, e.currentTarget)}
     >🌐</button>
     {#if open}
-      <div class="lang-panel" role="group" aria-label={plain(ui.panelTitle)} use:pinBox>
+      <div class="lang-panel" data-popup-frame role="group" aria-label={plain(ui.panelTitle)} use:pinBox>
         <p class="panel-title"><Msg text={ui.panelTitle} /></p>
         <div class="slots" use:holdCaptions>
           {#each slots as s (s)}
