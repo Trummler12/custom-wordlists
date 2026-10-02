@@ -7,10 +7,14 @@
 // the frame is the Topics column, so a box covers the column's content completely or not
 // at all) and keeps its right edge from ending left of its trigger, or it hangs leftward
 // from its trigger's right edge (a note inside a panel, a header menu). Either way it is
-// as wide as its content, up to a cap, and stays inside the viewport. Vertically it opens
-// towards the larger half of the viewport, or prefers above (confirmations, which want to
-// hold still), or always below (the header menus), and its height is capped to the room
-// on that side so it scrolls inside rather than off-screen.
+// as wide as its content, up to a cap, and stays inside the viewport; a scrollbar is
+// added to that width rather than taken from the content.
+//
+// Vertically it opens towards the side with more room, or prefers above (confirmations,
+// which want to hold still), or always below (the header menus), and keeps that side
+// until it closes. It is as tall as its content, up to half the viewport, and scrolls
+// inside beyond that. While the page scrolls it rides along with its anchor but stops at
+// the viewport's edges, so it never leaves the screen while open.
 
 export interface Box {
   left: number;
@@ -20,7 +24,7 @@ export interface Box {
 }
 
 export type Horizontal = "frame-left" | "trigger-right";
-export type Vertical = "half" | "prefer-above" | "below";
+export type Vertical = "more-room" | "prefer-above" | "below";
 
 export interface PlaceInput {
   /** The popup's horizontal bounds; its width also caps the popup's. */
@@ -37,6 +41,10 @@ export interface PlaceInput {
   vertical: Vertical;
   /** An extra width cap, for a popup that has no frame. */
   maxWidth?: number;
+  /** Width beyond the cap, for a scrollbar: it widens the popup to the right. */
+  extraWidth?: number;
+  /** The side chosen when it opened; once set, kept. */
+  locked?: boolean;
   /** Space between the popup and its anchor, and kept to the viewport's edges. */
   gap: number;
   gutter: number;
@@ -47,9 +55,8 @@ export interface Placement {
   left: number;
   maxWidth: number;
   above: boolean;
-  /** Viewport y of the edge that faces the anchor: the top when below, the bottom when
-   *  above. */
-  edge: number;
+  /** Viewport y of the popup's top edge, kept inside the viewport. */
+  top: number;
   maxHeight: number;
 }
 
@@ -59,30 +66,41 @@ export function place(input: PlaceInput): Placement {
   const caps = [vp.width - 2 * gutter];
   if (frame) caps.push(frame.right - frame.left);
   if (input.maxWidth !== undefined) caps.push(input.maxWidth);
-  const maxWidth = Math.max(0, Math.min(...caps));
+  const maxWidth = Math.max(0, Math.min(...caps)) + (input.extraWidth ?? 0);
   const width = Math.min(size.width, maxWidth);
+  // Placed by its content's width: a scrollbar is added on the right, so the content
+  // stays where it was when one appears.
+  const content = width - Math.min(input.extraWidth ?? 0, width);
   let left =
     input.horizontal === "frame-left" && frame
-      ? Math.max(frame.left, trigger.right - width)
-      : trigger.right - width;
+      ? Math.max(frame.left, trigger.right - content)
+      : trigger.right - content;
   left = Math.max(gutter, Math.min(left, vp.width - gutter - width));
 
-  const below = vp.height - vp.bottomInset - anchor.bottom - gap - gutter;
-  const above = anchor.top - gap - gutter;
-  const up =
-    input.vertical === "below"
-      ? false
-      : input.vertical === "prefer-above"
-        ? size.height <= above || above >= below
-        : anchor.bottom > vp.height / 2;
+  const floor = vp.height - vp.bottomInset - gutter;
+  const roomBelow = floor - anchor.bottom - gap;
+  const roomAbove = anchor.top - gap - gutter;
+  let up: boolean;
+  if (input.locked !== undefined) up = input.locked;
+  else if (input.vertical === "below") up = false;
+  else if (input.vertical === "prefer-above") {
+    // Above unless it doesn't fit there while its anchor sits high on the screen.
+    const high = (anchor.top + anchor.bottom) / 2 < vp.height / 2;
+    up = !(size.height > roomAbove && high);
+  } else up = roomAbove > roomBelow;
 
-  return {
-    left,
-    maxWidth,
-    above: up,
-    edge: up ? anchor.top - gap : anchor.bottom + gap,
-    maxHeight: Math.max(0, up ? above : below),
-  };
+  // On opening, also no taller than its side has room for, so it doesn't cover its anchor.
+  // Once open it rides the page scroll and stops at the edges, so half the viewport is
+  // the only cap left.
+  const half = vp.height / 2;
+  const room = up ? roomAbove : roomBelow;
+  const maxHeight = Math.max(0, input.locked === undefined ? Math.min(half, room) : half);
+
+  const height = Math.min(size.height, maxHeight);
+  const natural = up ? anchor.top - gap - height : anchor.bottom + gap;
+  const top = Math.max(gutter, Math.min(natural, floor - height));
+
+  return { left, maxWidth, above: up, top, maxHeight };
 }
 
 export interface PlacementOptions {
@@ -105,81 +123,152 @@ const GAP = 4;
 const GUTTER = 8;
 
 /** A box that opens off a tree row: framed by the Topics column (or by the menu it sits
- *  in), opening above or below the whole row item, towards the larger half. */
+ *  in), opening above or below the whole row item, towards the side with more room. */
 export function rowPopup(trigger: Element | null | undefined): PlacementOptions {
-  return { trigger, anchor: "container", frame: "auto", horizontal: "frame-left", vertical: "half" };
+  return { trigger, anchor: "container", frame: "auto", horizontal: "frame-left", vertical: "more-room" };
 }
 
-/** Place a popup and keep it placed while it is open: on mount, whenever it, its frame or
- *  its anchor changes size, and on a window resize — not on a page scroll, which an
- *  absolute popup rides along with anyway. Works for `position: absolute` (coordinates
+/** Place a popup and keep it placed while it is open: in full on mount, whenever it or
+ *  the Topics column changes size, and on a window resize; on a page scroll only its
+ *  vertical position, to keep it on screen. Works for `position: absolute` (coordinates
  *  relative to its containing block) and `position: fixed` (relative to the viewport). */
 export function placement(node: HTMLElement, options: PlacementOptions) {
   let opts = options;
   let raf = 0;
+  let scrollRaf = 0;
+  /** The side it opened on, kept until it closes. */
+  let locked: boolean | undefined;
+  /** Whether a scrollbar has shown up: its room stays reserved (`scrollbar-gutter`) so
+   *  the content doesn't rewrap as it comes and goes. Released on a change of the
+   *  viewport's width while there's nothing to scroll. */
+  let gutter = false;
+  let viewportWidth = window.innerWidth;
+  let last: Placement | null = null;
+  /** The size `run` left the popup at, so the observer can tell its own doing apart. */
+  let settled = { width: -1, height: -1 };
 
   const rect = (el: Element): Box => el.getBoundingClientRect();
+  const env = () => {
+    const root = getComputedStyle(document.documentElement);
+    const rem = parseFloat(root.fontSize) || 16;
+    const footer = (parseFloat(root.getPropertyValue("--footer-h")) || 0) * rem;
+    return { width: window.innerWidth, height: window.innerHeight, bottomInset: footer };
+  };
+  const anchorOf = (trigger: Element) =>
+    opts.anchor === "container" ? (node.offsetParent ?? trigger) : (opts.anchor ?? trigger);
+
+  // Into the containing block's coordinates: the viewport for a fixed popup, else the
+  // positioned ancestor's padding box. A side that opened above is held by its bottom, so
+  // the box grows away from its anchor as content arrives.
+  const writeVertical = (p: Placement, height: number) => {
+    const fixed = getComputedStyle(node).position === "fixed";
+    const cb = fixed ? null : (node.offsetParent as HTMLElement | null);
+    const cbTop = cb ? cb.getBoundingClientRect().top + cb.clientTop : 0;
+    const cbHeight = cb ? cb.clientHeight : window.innerHeight;
+    const top = p.top - cbTop;
+    node.style.top = p.above ? "auto" : `${Math.round(top)}px`;
+    node.style.bottom = p.above ? `${Math.round(cbHeight - top - height)}px` : "auto";
+  };
+
   const run = () => {
     raf = 0;
     const trigger = opts.trigger;
     if (!trigger) return;
-    const fixed = getComputedStyle(node).position === "fixed";
-    const anchor = opts.anchor === "container" ? (node.offsetParent ?? trigger) : (opts.anchor ?? trigger);
     const frameEl =
       opts.frame === "auto"
         ? (node.parentElement?.closest("[data-popup-frame]") ?? document.querySelector(".col-topics"))
         : opts.frame;
-    const footer = parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--footer-h")) || 0;
-    const rem = parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
+    const vp = env();
+    if (vp.width !== viewportWidth) {
+      viewportWidth = vp.width;
+      if (gutter && node.scrollHeight <= node.clientHeight + 1) gutter = false;
+    }
+    node.style.scrollbarGutter = gutter ? "stable" : "";
     const input: PlaceInput = {
       frame: frameEl ? rect(frameEl) : undefined,
       trigger: rect(trigger),
-      anchor: rect(anchor),
+      anchor: rect(anchorOf(trigger)),
       size: { width: 0, height: 0 },
-      viewport: { width: window.innerWidth, height: window.innerHeight, bottomInset: footer * rem },
+      viewport: vp,
       horizontal: opts.horizontal,
       vertical: opts.vertical,
       maxWidth: opts.maxWidth,
+      locked,
       gap: GAP,
       gutter: GUTTER,
     };
-    // The cap first, since it doesn't depend on the size; then the size the content takes
-    // under that cap, unclipped; then everything else.
-    const cap = place(input).maxWidth;
-    Object.assign(node.style, {
-      width: "max-content",
-      maxWidth: `${cap}px`,
-      maxHeight: "none",
-      left: "0px",
-      right: "auto",
-    });
+    // The cap first, since it doesn't depend on the size, widened by the scrollbar's room
+    // where there is one; then the size the content takes under it; then the rest.
+    Object.assign(node.style, { width: "max-content", maxHeight: "none", left: "0px", right: "auto" });
+    const cs = getComputedStyle(node);
+    const bar = gutter
+      ? node.offsetWidth - node.clientWidth - parseFloat(cs.borderLeftWidth) - parseFloat(cs.borderRightWidth)
+      : 0;
+    input.extraWidth = bar;
+    node.style.maxWidth = `${place(input).maxWidth}px`;
     const own = node.getBoundingClientRect();
     const p = place({ ...input, size: { width: own.width, height: own.height } });
+    locked = p.above;
+    last = p;
 
-    // Into the containing block's coordinates: the viewport for a fixed popup, else the
-    // positioned ancestor's padding box.
+    const fixed = cs.position === "fixed";
     const cb = fixed ? null : (node.offsetParent as HTMLElement | null);
-    const cbBox = cb ? cb.getBoundingClientRect() : { left: 0, top: 0, bottom: window.innerHeight };
-    const inset = cb ? { left: cb.clientLeft, top: cb.clientTop } : { left: 0, top: 0 };
-    const cbHeight = cb ? cb.clientHeight : window.innerHeight;
-    Object.assign(node.style, {
-      left: `${Math.round(p.left - cbBox.left - inset.left)}px`,
-      top: p.above ? "auto" : `${Math.round(p.edge - cbBox.top - inset.top)}px`,
-      bottom: p.above ? `${Math.round(cbHeight - (p.edge - cbBox.top - inset.top))}px` : "auto",
-      maxHeight: `${Math.floor(p.maxHeight)}px`,
-      overflowY: "auto",
-    });
+    const cbLeft = cb ? cb.getBoundingClientRect().left + cb.clientLeft : 0;
+    node.style.left = `${Math.round(p.left - cbLeft)}px`;
+    node.style.maxHeight = `${Math.floor(p.maxHeight)}px`;
+    node.style.overflowY = "auto";
+    writeVertical(p, Math.min(own.height, p.maxHeight));
     opts.onPlace?.(p);
+
+    // A scrollbar that just appeared gets its room in this same pass, before anything
+    // is painted without it.
+    if (!gutter && node.scrollHeight > node.clientHeight + 1) {
+      gutter = true;
+      run();
+      return;
+    }
+    settled = { width: node.offsetWidth, height: node.offsetHeight };
   };
+
+  // A page scroll moves the anchor; only the vertical position follows, clamped to the
+  // viewport by `place`. Nothing about the size changes, so nothing is re-measured.
+  const follow = () => {
+    scrollRaf = 0;
+    const trigger = opts.trigger;
+    if (!trigger || !last) return;
+    const height = node.getBoundingClientRect().height;
+    const p = place({
+      trigger: rect(trigger),
+      anchor: rect(anchorOf(trigger)),
+      size: { width: 0, height },
+      viewport: env(),
+      horizontal: opts.horizontal,
+      vertical: opts.vertical,
+      locked,
+      gap: GAP,
+      gutter: GUTTER,
+    });
+    writeVertical({ ...last, top: p.top }, height);
+  };
+
   const schedule = () => {
     if (!raf) raf = requestAnimationFrame(run);
+  };
+  const onScroll = () => {
+    if (!scrollRaf) scrollRaf = requestAnimationFrame(follow);
   };
 
   // Placed at once, before the first paint, so it never shows where it isn't going to be.
   run();
-  const ro = new ResizeObserver(schedule);
-  // The popup's own size and the column's: a resize of either moves it. The anchor's is
-  // covered by the window resize and by the popup re-rendering.
+  // Resize notes arrive after layout but before paint, so placing right there means a
+  // change of content (a scrollbar appearing, new options) is never shown unplaced. The
+  // popup's own settled size is skipped: that is `run`'s doing, not a change.
+  const ro = new ResizeObserver((entries) => {
+    const own = entries.every(
+      (e) => e.target === node && node.offsetWidth === settled.width && node.offsetHeight === settled.height,
+    );
+    if (!own) run();
+  });
   const observe = () => {
     ro.disconnect();
     ro.observe(node);
@@ -188,9 +277,15 @@ export function placement(node: HTMLElement, options: PlacementOptions) {
   };
   observe();
   window.addEventListener("resize", schedule);
+  window.addEventListener("scroll", onScroll, { passive: true });
 
   return {
     update(next: PlacementOptions) {
+      // A different trigger is a different opening: it chooses its side afresh.
+      if (next.trigger !== opts.trigger) {
+        locked = undefined;
+        gutter = false;
+      }
       opts = next;
       observe();
       schedule();
@@ -198,7 +293,9 @@ export function placement(node: HTMLElement, options: PlacementOptions) {
     destroy() {
       ro.disconnect();
       window.removeEventListener("resize", schedule);
+      window.removeEventListener("scroll", onScroll);
       cancelAnimationFrame(raf);
+      cancelAnimationFrame(scrollRaf);
     },
   };
 }
