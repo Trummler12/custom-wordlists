@@ -196,11 +196,14 @@
   }
   .sovereignty-grid {
     display: grid;
-    /* Row-header column takes what its content needs and shrinks to its min-content
-       (wrapping the labels) when the panel is tight; the corner's two axis strings
-       set that min-content, so they never lose their side-by-side room. The data
-       columns share the rest and carry the wider column headers, which wrap. */
-    grid-template-columns: minmax(min-content, max-content) repeat(var(--cols), minmax(3rem, 1fr));
+    /* The order things give way in a tight panel. The row-header column wants its full
+       width, and grid sizing serves it before the flexible columns. The data columns
+       share what is left evenly, never narrower than their longest header word
+       ("independiente"); one that hits that floor leaves the rest to the other. Only
+       once both sit at their floor does the row-header column shrink, wrapping its
+       labels one by one, down to its own min-content (set by the corner's two axis
+       strings, which keep their side-by-side room). */
+    grid-template-columns: minmax(min-content, max-content) repeat(var(--cols), minmax(min-content, 1fr));
     gap: 0.2rem;
     align-items: stretch;
   }
