@@ -93,7 +93,6 @@ export const zhHant: LocaleDict = {
   },
   language: {
     label: (current) => `語言：${current}`,
-    menu: "語言",
     unsupported: (language) => `${language}尚未確認，此主題可能不完整。`,
     fallback: "沒有翻譯時會使用英文。",
     usesEnglish: (primary, secondary) =>
@@ -107,17 +106,9 @@ export const zhHant: LocaleDict = {
       "這些羅馬字由日文名稱自動產生。若實際寫法不同，歡迎[告訴我們](https://github.com/Trummler12/custom-wordlists/issues/new)！",
     variantDiffers: (n) => `${n} 個項目的寫法不同`,
     variantShowList: "查看是哪些項目",
-    useEnglish: (forced) =>
-      forced ? "以所選語言顯示此清單" : "使用此清單的英文項目",
-    useEnglishAll: (allForced) =>
-      allForced ? "以所選語言顯示這些清單" : "使用這些清單的英文項目",
   },
   settings: {
     label: "設定",
-    showEnglish: "顯示使用英文項目的選項",
-    showEnglishEn: "此開關僅在非英文語言下出現。",
-    interfaceLang: "介面語言：",
-    interfaceAuto: "自動",
     reset: "重設{br}設定",
     resetConfirm: "再次點擊以確認",
     resetCancel: "取消",
@@ -164,7 +155,6 @@ export const zhHant: LocaleDict = {
     prev: "上一頁",
     next: "下一頁",
     last: "最後一頁",
-    page: (current, total) => `第 ${current} 頁 / 共 ${total} 頁`,
     pageParts: (current, total) => ["", `第 ${current} 頁`, ` / 共 ${total} 頁`],
     loading: (topic) => `正在載入${topic}…`,
     loadError: (topic, message) => `無法載入${topic}的覆蓋資料：${message}`,

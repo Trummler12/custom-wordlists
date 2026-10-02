@@ -95,7 +95,6 @@ export const fr: LocaleDict = {
   },
   language: {
     label: (current) => `Langue : ${current}`,
-    menu: "Langue",
     unsupported: (language) =>
       `Pas encore confirmé pour ${language} — ce thème est peut-être incomplet.`,
     fallback: "L'anglais est utilisé là où une traduction manque.",
@@ -112,21 +111,9 @@ export const fr: LocaleDict = {
       "Ces rōmaji ont été générés à partir des noms japonais. Si l'un d'eux s'écrit autrement, n'hésitez pas à [nous le dire](https://github.com/Trummler12/custom-wordlists/issues/new) !",
     variantDiffers: (n) => `${n} entrée${n === 1 ? "" : "s"} s’écri${n === 1 ? "t" : "vent"} autrement`,
     variantShowList: "Voir lesquelles",
-    useEnglish: (forced) =>
-      forced
-        ? "Utiliser cette liste dans la langue sélectionnée"
-        : "Utiliser les entrées anglaises de cette liste",
-    useEnglishAll: (allForced) =>
-      allForced
-        ? "Utiliser ces listes dans la langue sélectionnée"
-        : "Utiliser les entrées anglaises de ces listes",
   },
   settings: {
     label: "Paramètres",
-    showEnglish: "Afficher l'option d'utiliser les entrées anglaises",
-    showEnglishEn: "Ces interrupteurs n'apparaissent que pour les langues autres que l'anglais.",
-    interfaceLang: "Langue de l'interface :",
-    interfaceAuto: "Automatique",
     reset: "Réinitialiser{br}les réglages",
     resetConfirm: "Cliquez à nouveau pour confirmer",
     resetCancel: "Annuler",
@@ -174,7 +161,6 @@ export const fr: LocaleDict = {
     prev: "Page précédente",
     next: "Page suivante",
     last: "Dernière page",
-    page: (current, total) => `Page ${current} / ${total}`,
     pageParts: (current, total) => ["", `Page ${current}`, ` / ${total}`],
     loading: (topic) => `Chargement de ${topic}…`,
     loadError: (topic, message) => `Impossible de charger la couverture de ${topic} : ${message}`,

@@ -86,7 +86,6 @@ export const en: UIStrings = {
     internalDupes: (n) => `${n} duplicate ${n === 1 ? "entry" : "entries"} within an active custom list`,
     localDupes: (n) => `${n} duplicate${n === 1 ? "" : "s"} between your active custom lists`,
     globalDupes: (n) => `${n} duplicate${n === 1 ? "" : "s"} with the selected topics`,
-    dupesHint: "Reported, not filtered — drop them from your input if you like.",
     dupesNote: "Duplicates are reduced to a single copy in the output.",
     dupesNoteSave: "Duplicates within a list are also removed when it is saved.",
     dupesSamples: {
@@ -132,7 +131,6 @@ export const en: UIStrings = {
     exportDownload: "Download",
     importLabel: "Import lists",
     importTitle: "Import saved lists",
-    importPick: "Choose a file…",
     importColName: "Name",
     importColSize: "Size",
     importColDupes: "Dupes",
@@ -145,8 +143,6 @@ export const en: UIStrings = {
     listLoadConfirm: "Overwrite the input field with this list?",
     confirm: "Confirm",
     cancel: "Cancel",
-    listWarnTitle: "This custom list has problems:",
-    listWarnSeparator: "The selected separator character occurs inside an item.",
     charsLabel: "Characters skribbl.io will probably ignore",
     charsIgnored: "Characters skribbl.io will probably ignore:",
     charsProblematic: "Problematic characters:",
@@ -206,7 +202,6 @@ export const en: UIStrings = {
   },
   language: {
     label: (current) => `Language: ${current}`,
-    menu: "Language",
     panelTitle: "Language settings",
     slot: { primary: "Primary:", interface: "Interface:", fallback: "Fallback:" },
     slotHint: {
@@ -233,12 +228,6 @@ export const en: UIStrings = {
       "These romaji were generated from the Japanese names. If one is spelled differently in practice, feel free to [let us know](https://github.com/Trummler12/custom-wordlists/issues/new)!",
     variantDiffers: (n) => `${n} entr${n === 1 ? "y" : "ies"} spelled differently`,
     variantShowList: "Show which",
-    useEnglish: (forced) =>
-      forced ? "Use this list in the selected language" : "Use the English entries of this list",
-    useEnglishAll: (allForced) =>
-      allForced
-        ? "Use these lists in the selected language"
-        : "Use the English entries of these lists",
     useSecondary: (forced, secondary) =>
       forced ? "Use this list in the selected language" : `Use the entries of this list in ${secondary}`,
     useSecondaryAll: (allForced, secondary) =>
@@ -248,10 +237,6 @@ export const en: UIStrings = {
   },
   settings: {
     label: "Settings",
-    showEnglish: "Show the option to use English entries",
-    showEnglishEn: "These toggles only appear for languages other than English.",
-    interfaceLang: "Interface language:",
-    interfaceAuto: "Automatic",
     outputSeparator: "Output separator:",
     outputSeparatorHint:
       "skribbl.io only accepts {code},{/code} as the separator. The others only change what gets copied; the Output looks the same either way.",
@@ -310,7 +295,6 @@ export const en: UIStrings = {
     prev: "Previous page",
     next: "Next page",
     last: "Last page",
-    page: (current, total) => `Page ${current} / ${total}`,
     pageParts: (current, total) => ["", `Page ${current}`, ` / ${total}`],
     pageJumpHint: (numeric) =>
       numeric

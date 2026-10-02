@@ -93,7 +93,6 @@ export const ja: LocaleDict = {
   },
   language: {
     label: (current) => `言語: ${current}`,
-    menu: "言語",
     unsupported: (language) => `${language}はまだ未確認です。このトピックは不完全かもしれません。`,
     fallback: "翻訳がない場合は英語が使われます。",
     usesEnglish: (primary, secondary) =>
@@ -107,17 +106,9 @@ export const ja: LocaleDict = {
       "このローマ字は日本語名から自動生成したものです。実際の表記と違う場合は、お気軽に[お知らせください](https://github.com/Trummler12/custom-wordlists/issues/new)！",
     variantDiffers: (n) => `${n}件の項目が異なる表記です`,
     variantShowList: "どの項目か見る",
-    useEnglish: (forced) =>
-      forced ? "このリストを選択した言語で表示する" : "このリストの英語の項目を使う",
-    useEnglishAll: (allForced) =>
-      allForced ? "これらのリストを選択した言語で表示する" : "これらのリストの英語の項目を使う",
   },
   settings: {
     label: "設定",
-    showEnglish: "英語の項目を使う選択肢を表示する",
-    showEnglishEn: "このスイッチは英語以外の言語でのみ表示されます。",
-    interfaceLang: "表示言語:",
-    interfaceAuto: "自動",
     reset: "設定を{br}リセット",
     resetConfirm: "もう一度クリックで確定",
     resetCancel: "キャンセル",
@@ -164,7 +155,6 @@ export const ja: LocaleDict = {
     prev: "前のページ",
     next: "次のページ",
     last: "最後のページ",
-    page: (current, total) => `${total} ページ中 ${current} ページ`,
     pageParts: (current, total) => [`${total} ページ中 `, `${current} ページ`, ""],
     loading: (topic) => `${topic}を読み込み中…`,
     loadError: (topic, message) => `${topic}のカバレッジを読み込めませんでした：${message}`,

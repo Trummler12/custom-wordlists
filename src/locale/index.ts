@@ -10,9 +10,8 @@
 // strings only ever appear there (header, tree, settings, output, footer), or a
 // FEATURE, when they follow a control that turns up on several rows (names, fame,
 // omitted, language). Which one a string is can be read off the component tree —
-// `settings.showEnglish` labels a checkbox that exists in exactly one popover, so
-// it is a place, while `language.useEnglish` sits on every topic row, so it is a
-// feature. The group carries the prefix, so no key repeats it.
+// `settings.reset` labels a button that exists in exactly one popover, so it is a
+// place, while `language.useSecondary` sits on every topic row, so it is a feature. The group carries the prefix, so no key repeats it.
 
 import type { FlagType } from "./flags";
 import type { VariantId } from "./variants";
@@ -182,11 +181,10 @@ export interface SovereigntyStrings {
   regular: string;
 }
 
-/** The picker, the ⚠️/ℹ️ markers, and the per-list 🇬🇧 toggles. */
+/** The 🌐 panel, the ⚠️/ℹ️ markers, and the per-list language toggles. */
 export interface LanguageStrings {
   /** Globe-button aria-label, e.g. "Language: English". */
   label: (current: string) => string;
-  menu: string; // REMOVE(LB3): the 🌐 list becomes a panel titled by panelTitle
   /** The 🌐 panel (§B): its title, the three language slots' labels (each reads as one
    *  line with its dropdown, so it carries its own colon) and their persistent tooltips. */
   panelTitle: string;
@@ -237,10 +235,6 @@ export interface LanguageStrings {
   variantDiffers: (n: number) => string;
   /** Opens the list of those entries, side by side. */
   variantShowList: string;
-  /** Toggle a single list to English names; label reflects the current state. */
-  useEnglish: (forced: boolean) => string; // REMOVE(LB3): generalised to useSecondary
-  /** Toggle from a category row every list it governs; label on current state. */
-  useEnglishAll: (allForced: boolean) => string; // REMOVE(LB3): generalised to useSecondaryAll
   /** Toggle a single list to the secondary language's names, and a category row's lists
    *  all at once; the label reflects the current state. `secondary` is the language's name
    *  in the interface language, placed as "entries **in** <name>" so it needs no declension. */
@@ -252,17 +246,6 @@ export interface LanguageStrings {
 export interface SettingsStrings {
   /** Button aria-label and the menu's own label. */
   label: string;
-  /** Label of the preference that reveals the per-list English toggles. */
-  showEnglish: string; // REMOVE(LB3): moves to language.showSecondary*
-  /** Why that preference does nothing while the interface is English. */
-  showEnglishEn: string; // REMOVE(LB3): moves to language.secondaryMoot
-  /** Label of the dropdown pinning the interface to one language. Reads as one
-   *  line with its value ("Interface language: English"), so it carries its own
-   *  colon — French and German don't punctuate one the same way. */
-  interfaceLang: string; // REMOVE(LB3): moves to language.slot.interface
-  /** Its first option, and the default: follow the list language where we have a
-   *  dictionary for it. Kept short — it sits in a dropdown, not in a sentence. */
-  interfaceAuto: string; // REMOVE(LB3): moves to language.followPrimary
   /** The Output Separator dropdown (§G): its label (own colon) and persistent tooltip. The
    *  separator only changes what gets copied, never how the Output looks. */
   outputSeparator: string;
@@ -373,7 +356,6 @@ export interface CoveragePageStrings {
   prev: string;
   next: string;
   last: string;
-  page: (current: number, total: number) => string; // REMOVE(LB5): split into pageParts
   /** The pager's "Page 3 / 21", in three pieces so the current-page piece can become the
    *  jump field: [before, current, after], each in the language's own order ("21 ページ中 "
    *  + "3 ページ" + ""). The number inside `current` is what gets marked as clickable. */
@@ -405,8 +387,6 @@ export interface CustomStrings {
   internalDupes: (n: number) => string;
   localDupes: (n: number) => string;
   globalDupes: (n: number) => string;
-  /** Why those duplicate rows can't be toggled. */
-  dupesHint: string; // REMOVE(LB2): split into dupesNote / dupesNoteSave / dupesSamples
   /** The duplicate rows' hover, in parts the panel stacks one per line: what happens to
    *  duplicates in the output (every type), what saving does on top (internal only), and
    *  the per-type label that introduces the sample list below it. */
@@ -454,11 +434,10 @@ export interface CustomStrings {
   exportTitle: string;
   selectAll: string;
   exportDownload: string;
-  /** The 📥 import panel: the control label, title, the file-pick prompt, the table's
+  /** The 📥 import panel: the control label, title, the table's
    *  Name / Size / Dupes / with columns, the import button, and the empty-file note. */
   importLabel: string;
   importTitle: string;
-  importPick: string; // REMOVE(LB2): dead — the native file input labels itself in the browser's locale
   importColName: string;
   importColSize: string;
   importColDupes: string;
@@ -474,9 +453,6 @@ export interface CustomStrings {
   listLoadConfirm: string;
   confirm: string;
   cancel: string;
-  /** The ⚠️ shown on a list (or the input) whose separator sits inside an item. */
-  listWarnTitle: string; // REMOVE(LB2): quoted separators are dropped, and the ⚠️ with them
-  listWarnSeparator: string; // REMOVE(LB2): see listWarnTitle
   /** The ⚠️ / ℹ️ panel of characters beyond letters, digits and spaces (§F2): the marker's
    *  label, the two section headings (each with its own colon), and one character's ℹ️ note
    *  — the removal advice (only for a character that isn't tolerated), the "lists

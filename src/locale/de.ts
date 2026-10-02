@@ -94,7 +94,6 @@ export const de: UIStrings = {
       n === 1 ? "1 doppelter Eintrag innerhalb einer aktiven eigenen Liste" : `${n} doppelte Einträge innerhalb einer aktiven eigenen Liste`,
     localDupes: (n) => `${n} ${n === 1 ? "Duplikat" : "Duplikate"} zwischen deinen aktiven eigenen Listen`,
     globalDupes: (n) => `${n} ${n === 1 ? "Duplikat" : "Duplikate"} mit den ausgewählten Themen`,
-    dupesHint: "Duplikate werden für die Ausgabe automatisch auf je 1 Exemplar reduziert; Duplikate innerhalb einer Liste werden zusätzlich auch beim Speichern bereinigt. Interne Duplikate:",
     dupesNote: "Duplikate werden für die Ausgabe automatisch auf je 1 Exemplar reduziert.",
     dupesNoteSave: "Duplikate innerhalb einer Liste werden zusätzlich auch beim Speichern bereinigt.",
     dupesSamples: {
@@ -140,7 +139,6 @@ export const de: UIStrings = {
     exportDownload: "Herunterladen",
     importLabel: "Listen importieren",
     importTitle: "Gespeicherte Listen importieren",
-    importPick: "Datei wählen…",
     importColName: "Name",
     importColSize: "Grösse",
     importColDupes: "Dupes",
@@ -153,8 +151,6 @@ export const de: UIStrings = {
     listLoadConfirm: "Das Eingabefeld mit dieser Liste überschreiben?",
     confirm: "Bestätigen",
     cancel: "Abbrechen",
-    listWarnTitle: "Diese eigene Liste hat Probleme:",
-    listWarnSeparator: "Das gewählte Trennzeichen kommt innerhalb eines Eintrags vor.",
     charsLabel: "Zeichen, die skribbl.io vermutlich ignoriert",
     charsIgnored: "Zeichen, die skribbl.io vermutlich ignoriert:",
     charsProblematic: "Problematische Zeichen:",
@@ -214,7 +210,6 @@ export const de: UIStrings = {
   },
   language: {
     label: (current) => `Sprache: ${current}`,
-    menu: "Sprache",
     panelTitle: "Spracheinstellungen",
     slot: { primary: "Primär:", interface: "Oberfläche:", fallback: "Fallback:" },
     slotHint: {
@@ -249,14 +244,6 @@ export const de: UIStrings = {
       "Diese Romaji wurden aus den japanischen Namen erzeugt. Wird eines davon anders geschrieben, [sag uns gerne Bescheid](https://github.com/Trummler12/custom-wordlists/issues/new)!",
     variantDiffers: (n) => `${n} ${n === 1 ? "Eintrag wird" : "Einträge werden"} anders geschrieben`,
     variantShowList: "Welche?",
-    useEnglish: (forced) =>
-      forced
-        ? "Diese Liste in der gewählten Sprache verwenden"
-        : "Die englischen Einträge dieser Liste verwenden",
-    useEnglishAll: (allForced) =>
-      allForced
-        ? "Diese Listen in der gewählten Sprache verwenden"
-        : "Die englischen Einträge dieser Listen verwenden",
     useSecondary: (forced, secondary) =>
       forced ? "Diese Liste in der gewählten Sprache verwenden" : `Die Einträge dieser Liste auf ${secondary} verwenden`,
     useSecondaryAll: (allForced, secondary) =>
@@ -266,10 +253,6 @@ export const de: UIStrings = {
   },
   settings: {
     label: "Einstellungen",
-    showEnglish: "Option zum Verwenden englischer Einträge anzeigen",
-    showEnglishEn: "Diese Schalter erscheinen nur bei anderen Sprachen als Englisch.",
-    interfaceLang: "Sprache der Oberfläche:",
-    interfaceAuto: "Automatisch",
     outputSeparator: "Ausgabe-Trennzeichen:",
     outputSeparatorHint:
       "skribbl.io akzeptiert nur {code},{/code} als Trennzeichen. Die anderen ändern nur, was kopiert wird; die Ausgabe sieht in jedem Fall gleich aus.",
@@ -336,7 +319,6 @@ export const de: UIStrings = {
     prev: "Vorherige Seite",
     next: "Nächste Seite",
     last: "Letzte Seite",
-    page: (current, total) => `Seite ${current} / ${total}`,
     pageParts: (current, total) => ["", `Seite ${current}`, ` / ${total}`],
     pageJumpHint: (numeric) =>
       numeric

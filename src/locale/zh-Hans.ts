@@ -93,7 +93,6 @@ export const zhHans: LocaleDict = {
   },
   language: {
     label: (current) => `语言：${current}`,
-    menu: "语言",
     unsupported: (language) => `${language}尚未确认，此主题可能不完整。`,
     fallback: "没有翻译时会使用英语。",
     usesEnglish: (primary, secondary) =>
@@ -107,17 +106,9 @@ export const zhHans: LocaleDict = {
       "这些罗马字由日语名称自动生成。若实际写法不同，欢迎[告诉我们](https://github.com/Trummler12/custom-wordlists/issues/new)！",
     variantDiffers: (n) => `${n} 个条目的写法不同`,
     variantShowList: "查看是哪些条目",
-    useEnglish: (forced) =>
-      forced ? "以所选语言显示此列表" : "使用此列表的英语条目",
-    useEnglishAll: (allForced) =>
-      allForced ? "以所选语言显示这些列表" : "使用这些列表的英语条目",
   },
   settings: {
     label: "设置",
-    showEnglish: "显示使用英语条目的选项",
-    showEnglishEn: "此开关仅在非英语语言下出现。",
-    interfaceLang: "界面语言：",
-    interfaceAuto: "自动",
     reset: "重置{br}设置",
     resetConfirm: "再次点击以确认",
     resetCancel: "取消",
@@ -164,7 +155,6 @@ export const zhHans: LocaleDict = {
     prev: "上一页",
     next: "下一页",
     last: "最后一页",
-    page: (current, total) => `第 ${current} 页 / 共 ${total} 页`,
     pageParts: (current, total) => ["", `第 ${current} 页`, ` / 共 ${total} 页`],
     loading: (topic) => `正在加载${topic}…`,
     loadError: (topic, message) => `无法加载${topic}的覆盖数据：${message}`,

@@ -105,7 +105,6 @@ export const ru: LocaleDict = {
   },
   language: {
     label: (current) => `Язык: ${current}`,
-    menu: "Язык",
     unsupported: (language) => `Пока не подтверждено для языка «${language}» — эта тема может быть неполной.`,
     fallback: "Там, где перевода нет, используется английский.",
     usesEnglish: (primary, secondary) =>
@@ -119,19 +118,9 @@ export const ru: LocaleDict = {
       "Эти ромадзи сгенерированы из японских названий. Если где-то написание на практике другое, смело [сообщите нам](https://github.com/Trummler12/custom-wordlists/issues/new)!",
     variantDiffers: (n) => `${n} ${plural(n, "запись", "записи", "записей")} с другим написанием`,
     variantShowList: "Показать какие",
-    useEnglish: (forced) =>
-      forced ? "Показывать этот список на выбранном языке" : "Использовать английские записи этого списка",
-    useEnglishAll: (allForced) =>
-      allForced
-        ? "Показывать эти списки на выбранном языке"
-        : "Использовать английские записи этих списков",
   },
   settings: {
     label: "Настройки",
-    showEnglish: "Показать опцию использования английских записей",
-    showEnglishEn: "Эти переключатели появляются только для языков, отличных от английского.",
-    interfaceLang: "Язык интерфейса:",
-    interfaceAuto: "Автоматически",
     reset: "Сбросить настройки{br}по умолчанию",
     resetConfirm: "Нажмите ещё раз для подтверждения",
     resetCancel: "Отмена",
@@ -179,7 +168,6 @@ export const ru: LocaleDict = {
     prev: "Предыдущая страница",
     next: "Следующая страница",
     last: "Последняя страница",
-    page: (current, total) => `Страница ${current} / ${total}`,
     pageParts: (current, total) => ["", `Страница ${current}`, ` / ${total}`],
     loading: (topic) => `Загрузка «${topic}»…`,
     loadError: (topic, message) => `Не удалось загрузить покрытие для «${topic}»: ${message}`,

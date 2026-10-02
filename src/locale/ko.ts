@@ -93,7 +93,6 @@ export const ko: LocaleDict = {
   },
   language: {
     label: (current) => `언어: ${current}`,
-    menu: "언어",
     unsupported: (language) => `${language}은(는) 아직 확인되지 않았습니다. 이 주제는 불완전할 수 있습니다.`,
     fallback: "번역이 없는 곳에는 영어가 사용됩니다.",
     usesEnglish: (primary, secondary) =>
@@ -107,17 +106,9 @@ export const ko: LocaleDict = {
       "이 로마자는 일본어 이름에서 자동 생성했습니다. 실제 표기와 다르면 언제든 [알려주세요](https://github.com/Trummler12/custom-wordlists/issues/new)!",
     variantDiffers: (n) => `${n}개 항목의 표기가 다릅니다`,
     variantShowList: "어떤 항목인지 보기",
-    useEnglish: (forced) =>
-      forced ? "이 목록을 선택한 언어로 표시" : "이 목록의 영어 항목 사용",
-    useEnglishAll: (allForced) =>
-      allForced ? "이 목록들을 선택한 언어로 표시" : "이 목록들의 영어 항목 사용",
   },
   settings: {
     label: "설정",
-    showEnglish: "영어 항목을 사용하는 옵션 표시",
-    showEnglishEn: "이 스위치는 영어가 아닌 언어에서만 나타납니다.",
-    interfaceLang: "인터페이스 언어:",
-    interfaceAuto: "자동",
     reset: "설정{br}초기화",
     resetConfirm: "다시 클릭하면 초기화",
     resetCancel: "취소",
@@ -164,7 +155,6 @@ export const ko: LocaleDict = {
     prev: "이전 페이지",
     next: "다음 페이지",
     last: "마지막 페이지",
-    page: (current, total) => `${total} 페이지 중 ${current} 페이지`,
     pageParts: (current, total) => [`${total} 페이지 중 `, `${current} 페이지`, ""],
     loading: (topic) => `${topic} 불러오는 중…`,
     loadError: (topic, message) => `${topic} 커버리지를 불러오지 못했습니다: ${message}`,
