@@ -4,7 +4,8 @@
   import { overlapStats, parseImport, type PortableList } from "../../lib/custom";
   import { custom, NAME_MAX } from "../../state/custom.svelte";
   import { lang } from "../../state/lang.svelte";
-  import { clampPanelLeft, overlays } from "../../state/overlays.svelte";
+  import { overlays } from "../../state/overlays.svelte";
+  import { controlPopup, placement } from "../shared/placement";
   import TipNote from "../shared/TipNote.svelte";
   import TipText from "../shared/TipText.svelte";
 
@@ -77,27 +78,6 @@
     }
     return best;
   }
-  // Keep the panel in the viewport: right-align it under its button, but let it jut into
-  // the Output column rather than off the left edge (clampPanelLeft). Re-placed on resize
-  // and whenever its own size changes — the table appears once a file is picked and again
-  // as rows/names differ in width (a ResizeObserver).
-  let panelEl = $state<HTMLElement>();
-  let panelLeft = $state<number | null>(null);
-  $effect(() => {
-    if (!open || !panelEl) {
-      panelLeft = null;
-      return;
-    }
-    const el = panelEl;
-    const place = () => (panelLeft = clampPanelLeft(el));
-    const ro = new ResizeObserver(place);
-    ro.observe(el);
-    window.addEventListener("resize", place);
-    return () => {
-      ro.disconnect();
-      window.removeEventListener("resize", place);
-    };
-  });
   function dupeClass(ratio: number): string {
     if (ratio > 0.8) return "high";
     if (ratio > 0.5) return "mid";
@@ -127,10 +107,8 @@
   >
   {#if open}
     <div
-      bind:this={panelEl}
       class="io-panel"
-      class:above={overlays.importAbove}
-      style={panelLeft == null ? "" : `left:${panelLeft}px;right:auto;`}
+      use:placement={controlPopup(overlays.opener("importLists"))}
       role="group"
       aria-label={plain(lang.ui.custom.importTitle)}
     >
@@ -212,23 +190,17 @@
     position: relative;
     display: inline-flex;
   }
+  /* Where it opens, how wide and how tall it may get: shared/placement, inline. */
   .io-panel {
     position: absolute;
-    top: calc(100% + 0.25rem);
-    right: 0;
     z-index: 20;
     min-width: 22rem;
-    max-width: min(32rem, 94vw);
     padding: 0.5rem 0.6rem;
     color: var(--chip-fg);
     background: var(--chip-bg);
     border: 1px solid var(--panel-border);
     border-radius: var(--radius);
     box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
-  }
-  .io-panel.above {
-    top: auto;
-    bottom: calc(100% + 0.25rem);
   }
   .io-title {
     margin: 0 0 0.4rem;

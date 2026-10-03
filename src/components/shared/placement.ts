@@ -128,6 +128,12 @@ export function rowPopup(trigger: Element | null | undefined): PlacementOptions 
   return { trigger, anchor: "container", frame: "auto", horizontal: "frame-left", vertical: "more-room" };
 }
 
+/** A panel opened by a button on the Custom row: framed by the Topics column like a
+ *  row's, but opening off the button itself. */
+export function controlPopup(trigger: Element | null | undefined): PlacementOptions {
+  return { trigger, frame: "auto", horizontal: "frame-left", vertical: "more-room" };
+}
+
 /** Place a popup and keep it placed while it is open: in full on mount, whenever it or
  *  the Topics column changes size, and on a window resize; on a page scroll only its
  *  vertical position, to keep it on screen. Works for `position: absolute` (coordinates

@@ -192,13 +192,11 @@ class OverlayState {
   /** Whether the reader's saved-lists manager (the 💾 button on the Custom row) is
    *  open — one panel, so a single slot under a fixed id. */
   savedListsPanel = $state<string | null>(null);
-  savedListsAbove = $state(false);
   toggleSavedListsPanel = (id: string, trigger: Element): void => {
     if (this.savedListsPanel === id) {
       this.savedListsPanel = null;
       return;
     }
-    this.savedListsAbove = opensUpward(trigger);
     this.savedListsPanel = id;
     this.#remember("savedLists", trigger);
   };
@@ -206,25 +204,21 @@ class OverlayState {
   // --- Export / import panels (§X4b) -----------------------------------------
 
   exportPanel = $state<string | null>(null);
-  exportAbove = $state(false);
   toggleExportPanel = (id: string, trigger: Element): void => {
     if (this.exportPanel === id) {
       this.exportPanel = null;
       return;
     }
-    this.exportAbove = opensUpward(trigger);
     this.exportPanel = id;
     this.#remember("exportLists", trigger);
   };
 
   importPanel = $state<string | null>(null);
-  importAbove = $state(false);
   toggleImportPanel = (id: string, trigger: Element): void => {
     if (this.importPanel === id) {
       this.importPanel = null;
       return;
     }
-    this.importAbove = opensUpward(trigger);
     this.importPanel = id;
     this.#remember("importLists", trigger);
   };
@@ -234,13 +228,11 @@ class OverlayState {
   /** The ⚙️ on the Custom row — its own slot, like the panels above, so a hover
    *  tooltip (which shares the single `tip` slot) can't dismiss it. */
   customSettingsPanel = $state<string | null>(null);
-  customSettingsAbove = $state(false);
   toggleCustomSettingsPanel = (id: string, trigger: Element): void => {
     if (this.customSettingsPanel === id) {
       this.customSettingsPanel = null;
       return;
     }
-    this.customSettingsAbove = opensUpward(trigger);
     this.customSettingsPanel = id;
     this.#remember("customSettings", trigger);
   };
@@ -508,37 +500,6 @@ function focusIsVisible(el: Element): boolean {
   } catch {
     return true;
   }
-}
-
-/** Which way an overlay should open from its trigger. The middle of the viewport,
- *  not some fraction of it: whichever half the trigger is in, the other half is
- *  where the room is — and a box that opens the wrong way is cut off by an edge
- *  either way, so there is no reason to prefer one direction near the middle.
- *
- *  Shared by the tip-notes and the omissions panel so the two can't drift. */
-function opensUpward(trigger: Element): boolean {
-  return trigger.getBoundingClientRect().bottom > window.innerHeight / 2;
-}
-
-/** The `left` offset (px, relative to a popover panel's positioned host) that keeps the
- *  panel inside the viewport while preferring to right-align it under that host.
- *
- *  The viewport is the hard bound, never the host's column: a panel wider than the room
- *  to its left slides right — jutting into the Output column — rather than off the left
- *  edge, which is the "clamped to col-topics" bug this fixes. On a roomy desktop the
- *  preferred right-alignment already sits within the viewport, so nothing moves. Call it
- *  after the panel has laid out, since it measures the rendered width; re-call on resize
- *  and on any width change (a ResizeObserver). */
-export function clampPanelLeft(panel: HTMLElement): number {
-  const gutter = 8;
-  const vw = window.innerWidth;
-  const host = (panel.offsetParent as HTMLElement | null) ?? panel.parentElement ?? panel;
-  const hostRect = host.getBoundingClientRect();
-  const w = panel.offsetWidth;
-  // Prefer the panel's right edge under the host's right edge; clamp both sides to the
-  // viewport, the left gutter winning — so it can jut right past the host, never off-screen.
-  const vpLeft = Math.max(gutter, Math.min(hostRect.right - w, vw - gutter - w));
-  return Math.round(vpLeft - hostRect.left);
 }
 
 export const overlays = new OverlayState();

@@ -13,7 +13,8 @@
   } from "../../state/custom.svelte";
   import { lang } from "../../state/lang.svelte";
   import { output } from "../../state/output.svelte";
-  import { clampPanelLeft, overlays } from "../../state/overlays.svelte";
+  import { overlays } from "../../state/overlays.svelte";
+  import { controlPopup, placement } from "../shared/placement";
   import TipMarker from "../shared/TipMarker.svelte";
   import TipNote from "../shared/TipNote.svelte";
   import TipText from "../shared/TipText.svelte";
@@ -143,35 +144,11 @@
   }
   // The ⚙️ Custom settings — its own overlay slot (not the shared tip slot), so a hover
   // tooltip can't dismiss it; it dismisses on a press elsewhere / Escape / scroll like the
-  // export/import/saved-lists panels, and is positioned the same way (clampPanelLeft).
+  // export/import/saved-lists panels, and is positioned the same way (shared/placement).
   const settingsOpen = $derived(overlays.customSettingsPanel === SETTINGS_ID);
   function toggleSettings(e: MouseEvent): void {
     overlays.toggleCustomSettingsPanel(SETTINGS_ID, e.currentTarget as Element);
   }
-  let settingsEl = $state<HTMLElement>();
-  let settingsLeft = $state<number | null>(null);
-  let settingsMaxW = $state<number | null>(null);
-  $effect(() => {
-    if (!settingsOpen || !settingsEl) {
-      settingsLeft = null;
-      settingsMaxW = null;
-      return;
-    }
-    const el = settingsEl;
-    const place = () => {
-      // fit-content, capped at the Topics column's width like the tip / confirm popovers.
-      const col = document.querySelector(".col-topics");
-      settingsMaxW = Math.min(col?.clientWidth ?? 320, window.innerWidth - 16);
-      settingsLeft = clampPanelLeft(el);
-    };
-    const ro = new ResizeObserver(place);
-    ro.observe(el);
-    window.addEventListener("resize", place);
-    return () => {
-      ro.disconnect();
-      window.removeEventListener("resize", place);
-    };
-  });
 
   // Grow the textarea to its content — or, while empty, to its placeholder — up to
   // `custom.maxRows`, then scroll; or, with ↕️ on, to the whole content uncapped.
@@ -335,10 +312,8 @@
       >
       {#if settingsOpen}
         <div
-          bind:this={settingsEl}
           class="settings-panel"
-          class:above={overlays.customSettingsAbove}
-          style={`${settingsMaxW == null ? "" : `max-width:${settingsMaxW}px;`}${settingsLeft == null ? "" : `left:${settingsLeft}px;right:auto;`}`}
+          use:placement={controlPopup(overlays.opener("customSettings"))}
           role="dialog"
           aria-label={plain(lang.ui.custom.settingsTitle)}
         >
@@ -605,18 +580,11 @@
     border-radius: var(--radius);
     cursor: pointer;
   }
-  /* The ⚙️ panel — absolute under its host, viewport-clamped by `settingsLeft`; the flip and
+  /* The ⚙️ panel — placed by shared/placement (inline); the flip and
      look mirror the export/import panels. */
   .settings-panel {
     position: absolute;
-    top: calc(100% + 0.25rem);
-    /* left-anchored (JS sets the exact left): an out-of-flow box sized by `right` off this
-       small host would shrink to the host's width. `max-content` fits the content; the JS
-       `max-width` caps it at the Topics column, like the tip / confirm popovers. */
-    left: 0;
     z-index: 20;
-    width: max-content;
-    max-width: min(28rem, 92vw); /* fallback before the JS col-topics cap lands */
     padding: 0.5rem 0.6rem;
     font-size: 0.8rem; /* the compact size the old tip-note popover inherited */
     color: var(--chip-fg);
@@ -624,10 +592,6 @@
     border: 1px solid var(--panel-border);
     border-radius: var(--radius);
     box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
-  }
-  .settings-panel.above {
-    top: auto;
-    bottom: calc(100% + 0.25rem);
   }
   .settings-title {
     margin: 0 0 0.4rem;

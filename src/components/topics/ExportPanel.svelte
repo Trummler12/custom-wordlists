@@ -4,7 +4,8 @@
   import { exportLists } from "../../lib/custom";
   import { custom } from "../../state/custom.svelte";
   import { lang } from "../../state/lang.svelte";
-  import { clampPanelLeft, overlays } from "../../state/overlays.svelte";
+  import { overlays } from "../../state/overlays.svelte";
+  import { controlPopup, placement } from "../shared/placement";
   import TipText from "../shared/TipText.svelte";
 
   // The 📤 export control (§X4b): a panel that picks which saved lists to write to a
@@ -30,26 +31,6 @@
   function toggleAll(): void {
     selected = allSelected ? [] : custom.savedLists.map((l) => l.id);
   }
-  // Keep the panel in the viewport: right-align it under its button, but let it jut
-  // into the Output column rather than off the left edge (clampPanelLeft). Re-placed on
-  // resize and whenever its own size changes (a ResizeObserver).
-  let panelEl = $state<HTMLElement>();
-  let panelLeft = $state<number | null>(null);
-  $effect(() => {
-    if (!open || !panelEl) {
-      panelLeft = null;
-      return;
-    }
-    const el = panelEl;
-    const place = () => (panelLeft = clampPanelLeft(el));
-    const ro = new ResizeObserver(place);
-    ro.observe(el);
-    window.addEventListener("resize", place);
-    return () => {
-      ro.disconnect();
-      window.removeEventListener("resize", place);
-    };
-  });
   function download(): void {
     const lists = custom.savedLists
       .filter((l) => selected.includes(l.id))
@@ -81,10 +62,8 @@
   >
   {#if open}
     <div
-      bind:this={panelEl}
       class="io-panel"
-      class:above={overlays.exportAbove}
-      style={panelLeft == null ? "" : `left:${panelLeft}px;right:auto;`}
+      use:placement={controlPopup(overlays.opener("exportLists"))}
       role="group"
       aria-label={plain(lang.ui.custom.exportTitle)}
     >
@@ -127,23 +106,17 @@
     position: relative;
     display: inline-flex;
   }
+  /* Where it opens, how wide and how tall it may get: shared/placement, inline. */
   .io-panel {
     position: absolute;
-    top: calc(100% + 0.25rem);
-    right: 0;
     z-index: 20;
     min-width: 16rem;
-    max-width: min(24rem, 92vw);
     padding: 0.5rem 0.6rem;
     color: var(--chip-fg);
     background: var(--chip-bg);
     border: 1px solid var(--panel-border);
     border-radius: var(--radius);
     box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
-  }
-  .io-panel.above {
-    top: auto;
-    bottom: calc(100% + 0.25rem);
   }
   .io-title {
     margin: 0 0 0.4rem;

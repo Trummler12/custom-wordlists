@@ -4,7 +4,8 @@
   import { charKey, cleanItems, findDupes, oddChars, SEPARATORS, type Separator } from "../../lib/custom";
   import { custom, NAME_MAX, type SavedList } from "../../state/custom.svelte";
   import { lang } from "../../state/lang.svelte";
-  import { clampPanelLeft, overlays } from "../../state/overlays.svelte";
+  import { overlays } from "../../state/overlays.svelte";
+  import { controlPopup, placement } from "../shared/placement";
   import TipMarker from "../shared/TipMarker.svelte";
   import TipNote from "../shared/TipNote.svelte";
   import TipText from "../shared/TipText.svelte";
@@ -116,26 +117,6 @@
   function toggle(e: MouseEvent): void {
     overlays.toggleSavedListsPanel(PANEL_ID, e.currentTarget as Element);
   }
-  // Keep the panel in the viewport: right-align it under the 💾 button, but let it jut
-  // into the Output column rather than off the left edge (clampPanelLeft). Re-placed on
-  // resize and whenever its own size changes (a ResizeObserver).
-  let panelEl = $state<HTMLElement>();
-  let panelLeft = $state<number | null>(null);
-  $effect(() => {
-    if (!open || !panelEl) {
-      panelLeft = null;
-      return;
-    }
-    const el = panelEl;
-    const place = () => (panelLeft = clampPanelLeft(el));
-    const ro = new ResizeObserver(place);
-    ro.observe(el);
-    window.addEventListener("resize", place);
-    return () => {
-      ro.disconnect();
-      window.removeEventListener("resize", place);
-    };
-  });
 </script>
 
 {#snippet tile(list: SavedList | null, i: number)}
@@ -239,10 +220,8 @@
   >
   {#if open}
     <div
-      bind:this={panelEl}
       class="lists-panel"
-      class:above={overlays.savedListsAbove}
-      style={panelLeft == null ? "" : `left:${panelLeft}px;right:auto;`}
+      use:placement={controlPopup(overlays.opener("savedLists"))}
       role="group"
       aria-label={plain(lang.ui.custom.listsTitle)}
     >
@@ -306,23 +285,17 @@
     position: relative;
     display: inline-flex;
   }
+  /* Where it opens, how wide and how tall it may get: shared/placement, inline. */
   .lists-panel {
     position: absolute;
-    top: calc(100% + 0.25rem);
-    right: 0;
     z-index: 20;
     min-width: 22rem;
-    max-width: min(30rem, 92vw);
     padding: 0.5rem 0.6rem;
     color: var(--chip-fg);
     background: var(--chip-bg);
     border: 1px solid var(--panel-border);
     border-radius: var(--radius);
     box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
-  }
-  .lists-panel.above {
-    top: auto;
-    bottom: calc(100% + 0.25rem);
   }
   .lists-title {
     margin: 0 0 0.4rem;
