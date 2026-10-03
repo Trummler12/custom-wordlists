@@ -1,4 +1,51 @@
 {
-  "title": "Star Wars",
+  "title": {
+    "short": {
+      "en": "Star Wars",
+      "ja": "スター・ウォーズ",
+      "ko": "스타워즈",
+      "zh-Hans": "星球大战",
+      "zh-Hant": "星球大戰",
+      "ru": "Звёздные войны",
+      "pl": "Gwiezdne wojny",
+      "bg": "Междузвездни войни",
+      "et": "Tähtede sõda",
+      "he": "מלחמת הכוכבים",
+      "lv": "Zvaigžņu kari",
+      "mk": "Војна на ѕвездите",
+      "ro": "Războiul stelelor",
+      "sr": "Ратови звезда"
+    },
+    "long": {
+      "en": "Star Wars",
+      "de": "Star Wars (Krieg der Sterne)",
+      "es": "Star Wars (La guerra de las galaxias)",
+      "fr": "Star Wars (La Guerre des étoiles)",
+      "it": "Star Wars (Guerre stellari)",
+      "ja": "スター・ウォーズ",
+      "ko": "스타워즈",
+      "zh-Hans": "星球大战",
+      "zh-Hant": "星球大戰",
+      "pt": "Star Wars (A Guerra das Estrelas)",
+      "ru": "Звёздные войны",
+      "tr": "Star Wars (Yıldız Savaşları)",
+      "pl": "Gwiezdne wojny",
+      "bg": "Междузвездни войни",
+      "cs": "Star Wars (Hvězdné války)",
+      "da": "Star Wars (Stjernekrigen)",
+      "et": "Tähtede sõda",
+      "fi": "Star Wars (Tähtien sota)",
+      "el": "Star Wars (Ο Πόλεμος των Άστρων)",
+      "he": "מלחמת הכוכבים",
+      "hu": "Star Wars (Csillagok háborúja)",
+      "lv": "Zvaigžņu kari",
+      "mk": "Војна на ѕвездите",
+      "no": "Star Wars (Stjernekrigen)",
+      "ro": "Războiul stelelor",
+      "sr": "Ратови звезда",
+      "sk": "Star Wars (Hviezdne vojny)",
+      "sv": "Star Wars (Stjärnornas krig)"
+    }
+  },
   "icon": "🌌"
 }

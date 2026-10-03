@@ -82,7 +82,8 @@ export interface CategoryMeta {
    *  Inherited down to the next declaring node. See lib/rulers. */
   hideRulers?: boolean;
   /** Whether this category's row carries one toggle switching every list below it
-   *  to English at once. See lib/english. */
+   *  to the reader's secondary language at once (English-only once, hence the name).
+   *  See lib/languages/secondary. */
   sharedEnglishToggle?: boolean;
   /** Icon keys whose control this category surfaces on its own row and syncs across
    *  its subtree — `["geoguessr"]` on `geography/human` gives one coverage radio
@@ -190,10 +191,16 @@ export interface Omission {
    *  differently per language — sometimes differently enough to need a second
    *  glob (`X-Angriff 2` and `Angriffplus2` are one family). */
   match: string | string[];
-  /** Why, in one phrase — the line the reader sees beside the checkbox. Lives
-   *  here rather than in a locale because it describes this list's source, not
-   *  the app; may carry `[text](url)` and `{br}`, resolved by locale/html. */
+  /** Why, in one phrase — the line the reader sees beside the checkbox. A bare
+   *  string is a prose id into the centralized topic-prose dictionary
+   *  ("sovereignty.deFactoRecognized"); a language map is a self-contained reason
+   *  that lives with its own list (the Pokémon one-offs). May carry `[text](url)`
+   *  and `{br}`, resolved by locale/html; see `resolveReason` in lib/words. */
   reason: LocalizedString;
+  /** A Wikidata entity id (`Q45762`) whose link wraps the resolved `reason` label,
+   *  for a reason that names a Wikidata concept (the language types). The label is
+   *  localized (prose id), the link is not, so `resolveReason` joins them. */
+  wd?: string;
   /** The name that stands for the family, where the source has none of its own
    *  (`Datenkarte01`…`27` → `Datenkarte`). Localized, because the base name is
    *  missing in every language, not just the one the pattern is written in. */
@@ -258,6 +265,10 @@ export interface Group {
   /** What the ruler's hover says — see `RulerTooltip`. Absent falls back to the
    *  bare tier count. */
   rulerTooltip?: RulerTooltip;
+  /** How many top tiers the ruler reaches by default — the languages list keeps only its
+   *  ≥ 1M speakers until the reader lifts the cap (the reserved `EXTEND_RULE` toggle, see
+   *  lib/omitted). Absent means the whole list is always reachable. */
+  extendFrom?: number;
   /** Present only on a SYNTHESIZED group (assembled by `topics.groupsOf` for an
    *  inheritsUpwards topic): the contributor groups it was merged from, kept so a
    *  later per-contributor view (⚙️/✂️) can regroup without the merge being
@@ -335,6 +346,8 @@ export interface Topic {
   tiers?: WordEntry[][];
   tierConditions?: LocalizedString[];
   rulerTooltip?: RulerTooltip;
+  /** How many top tiers the ruler reaches by default — see `Group.extendFrom`. */
+  extendFrom?: number;
   /** How many levels up this leaf's list is also shown, merged with the same-named
    *  leaves it meets there into one synthesized topic. `1` = the parent level (each
    *  `<continent>/countries.json` meets the others one level up, under Human). `2`

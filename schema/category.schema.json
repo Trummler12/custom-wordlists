@@ -23,7 +23,7 @@
     },
     "sharedEnglishToggle": {
       "type": "boolean",
-      "description": "When true, this category's row carries one toggle switching every list below it to its English entries at once — for a category whose topics are variations of a single list (the nine Pokémon generations), where making the choice nine times is the same choice. The per-topic toggles stay available underneath. Governs down to the next category that declares the field."
+      "description": "When true, this category's row carries one toggle switching every list below it to its entries in the reader's secondary language (English by default) at once — for a category whose topics are variations of a single list (the nine Pokémon generations), where making the choice nine times is the same choice. The per-topic toggles stay available underneath. Governs down to the next category that declares the field."
     },
     "syncControls": {
       "type": "array",

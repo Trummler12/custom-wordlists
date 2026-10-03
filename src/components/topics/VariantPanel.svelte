@@ -1,4 +1,7 @@
 <script lang="ts">
+  import { placement, rowPopup } from "../shared/placement";
+  import Msg from "../../locale/html/Msg.svelte";
+  import { plain } from "../../locale/html/plain";
   import { baseTag } from "../../lib/languages";
   import { variantPairs } from "../../lib/words";
   import { variantFor } from "../../locale/variants";
@@ -8,7 +11,9 @@
 
   let { tid }: { tid: string } = $props();
 
-  const variant = $derived(variantFor(lang.current));
+  // None while the list is switched to the secondary language: the per-list answer
+  // belongs to the primary language's variant, which the list then doesn't use.
+  const variant = $derived(lang.forceSecondary[tid] ? undefined : variantFor(lang.current));
   // Only entries carrying the tag, which is only the ones that deviate — the
   // enrichment writes a variant key nowhere else. So this count is the answer to
   // "does this variant matter here", and the panel appearing at all is half of it.
@@ -31,16 +36,16 @@
       class="omitted-btn"
       aria-haspopup="true"
       aria-expanded={open}
-      aria-label={lang.ui.language.variant[variant.id]}
-      title={lang.ui.language.variant[variant.id]}
+      aria-label={plain(lang.ui.language.variant[variant.id])}
+      title={plain(lang.ui.language.variant[variant.id])}
       onclick={(e) => overlays.toggleOmittedPanel(id, e.currentTarget)}>{variant.icon}</button
     >
     {#if open}
       <div
         class="omitted-panel"
-        class:above={overlays.omittedAbove}
+        use:placement={rowPopup(overlays.opener("omitted"))}
         role="group"
-        aria-label={lang.ui.language.variant[variant.id]}
+        aria-label={plain(lang.ui.language.variant[variant.id])}
       >
         <ul>
           <li>
@@ -50,7 +55,7 @@
                 checked={lang.variantOnFor(tid)}
                 onchange={() => lang.toggleVariantFor(tid)}
               />
-              <span>{lang.ui.language.variant[variant.id]}</span>
+              <span><Msg text={lang.ui.language.variant[variant.id]} /></span>
             </label>
           </li>
         </ul>
@@ -58,7 +63,7 @@
              panel already handles its own height against the viewport. -->
         <details class="variant-list">
           <summary>
-            {lang.ui.language.variantDiffers(pairs.length)} — {lang.ui.language.variantShowList}
+            <Msg text={lang.ui.language.variantDiffers(pairs.length)} /> — <Msg text={lang.ui.language.variantShowList} />
           </summary>
           <!-- Unkeyed: the list is one fixed array rendered in order, never
                reordered or added to, and the only key available is a spelling —
@@ -74,3 +79,16 @@
     {/if}
   </div>
 {/if}
+
+<style>
+  /* The side-by-side spellings a variant changes, inside the shared 🧹 panel (whose chrome
+     comes from TopicRow). Only the variant-specific bits are here. */
+  .variant-list > summary {
+    cursor: pointer;
+    margin-top: 0.35rem;
+    opacity: 0.85;
+  }
+  .variant-list .from {
+    opacity: 0.7;
+  }
+</style>

@@ -44,7 +44,7 @@ See **[CONTRIBUTING.md](CONTRIBUTING.md)** for the details and the entry format,
 ```bash
 npm install
 npm run dev        # dev server (http://localhost:5173)
-npm run build      # production build → dist/
+npm run build      # production build => dist/
 npm run validate   # check data/topics/** against the schema
 npm run check      # type-check the frontend
 npm test           # unit tests — CI runs this as its own gate

@@ -7,7 +7,6 @@
 // without its `this`.
 
 import { tick } from "svelte";
-import { lang } from "./lang.svelte";
 
 /** The overlays that remember what opened them, and what counts as being "in" one
  *  — how Escape works out which of them the focus is sitting in.
@@ -15,13 +14,31 @@ import { lang } from "./lang.svelte";
  *  A tip has no single host element: its marker and its note are siblings under
  *  whatever row they belong to, so both are named. The note is there for the one
  *  focusable thing a note can hold, the link inviting a romaji correction. */
-type OverlayKind = "lang" | "settings" | "omitted" | "coverage" | "sovereignty" | "tip";
+type OverlayKind =
+  | "langSelect"
+  | "lang"
+  | "settings"
+  | "omitted"
+  | "coverage"
+  | "languageType"
+  | "sovereignty"
+  | "savedLists"
+  | "exportLists"
+  | "importLists"
+  | "customSettings"
+  | "tip";
 const HOSTS: Record<OverlayKind, string> = {
+  langSelect: ".lang-select",
   lang: ".lang-picker",
   settings: ".settings-picker",
   omitted: ".omitted-host",
   coverage: ".coverage-host",
+  languageType: ".language-type-host",
   sovereignty: ".sovereignty-host",
+  savedLists: ".saved-lists-host",
+  exportLists: ".export-lists-host",
+  importLists: ".import-lists-host",
+  customSettings: ".custom-settings-host",
   tip: ".tip-trigger, .tip-note",
 };
 
@@ -37,27 +54,45 @@ class OverlayState {
    *
    *  Not `$state`: read in event handlers, never rendered. */
   #openers: Record<OverlayKind, HTMLElement | null> = {
+    langSelect: null,
     lang: null,
     settings: null,
     omitted: null,
     coverage: null,
+    languageType: null,
     sovereignty: null,
+    savedLists: null,
+    exportLists: null,
+    importLists: null,
+    customSettings: null,
     tip: null,
   };
   #remember(kind: OverlayKind, trigger: Element | null | undefined): void {
     this.#openers[kind] = trigger instanceof HTMLElement ? trigger : null;
+    this.#opened[kind]++;
   }
-  /** Which language menu is open, by instance id, or null. Two pickers share the
-   *  language but each has its own trigger. */
+  /** Bumped on every opening, so `opener` re-reads for a popup reopened elsewhere. */
+  #opened = $state<Record<OverlayKind, number>>({
+    langSelect: 0, lang: 0, settings: 0, omitted: 0, coverage: 0, languageType: 0, sovereignty: 0,
+    savedLists: 0, exportLists: 0, importLists: 0, customSettings: 0, tip: 0,
+  });
+  /** The control that opened a popup of this kind — what a popup places itself against. */
+  opener(kind: OverlayKind): HTMLElement | null {
+    void this.#opened[kind];
+    return this.#openers[kind];
+  }
+  /** Which 🌐 panel is open, by instance id, or null. Two panels share the
+   *  languages but each has its own trigger. */
   langMenu = $state<string | null>(null);
+  /** Which language list inside a 🌐 panel is open, by its id, or null. Its own slot
+   *  so that opening one leaves the panel around it standing. */
+  langSelect = $state<string | null>(null);
   /** Which settings menu is open, by instance id, or null — same two-instance
    *  arrangement as the language picker it sits beside. */
   settingsMenu = $state<string | null>(null);
   /** The open tooltip's id, or null — at most one is open at a time. Ids double
    *  as the notes' DOM ids, so triggers can point `aria-controls` at them. */
   tip = $state<string | null>(null);
-  /** Whether that note sits above its row instead of below. */
-  tipAbove = $state(false);
   /** Whether the open note stays put instead of following the pointer.
    *
    *  A note can hold a link — the one inviting a romaji correction does — and a
@@ -66,22 +101,24 @@ class OverlayState {
    *  pins it, with a cursor exactly as with a finger, and it stays until it is
    *  dismissed. */
   tipPinned = $state(false);
-  /** The same for the omissions panel. */
-  omittedAbove = $state(false);
-  /** And for the coverage popup — its own button on the same row. */
-  coverageAbove = $state(false);
-  /** And for the sovereignty matrix — its own button on the same row. */
-  sovereigntyAbove = $state(false);
 
   // --- Language menu ---------------------------------------------------------
 
   toggleLangMenu = (id: string, trigger?: Element): void => {
     this.langMenu = this.langMenu === id ? null : id;
+    this.langSelect = null;
     if (this.langMenu) this.#remember("lang", trigger);
   };
-  chooseLanguage = (l: string): void => {
-    this.langMenu = null;
-    lang.set(l);
+  toggleLangSelect = (id: string, trigger?: Element): void => {
+    this.langSelect = this.langSelect === id ? null : id;
+    if (this.langSelect) this.#remember("langSelect", trigger);
+  };
+  /** Close a language list after a pick, handing the focus back to its field: the
+   *  list leaves the document with the button that was clicked. */
+  closeLangSelect = (): void => {
+    this.langSelect = null;
+    const back = this.#openers.langSelect;
+    if (back) void returnFocus(back);
   };
 
   // --- Settings menu ---------------------------------------------------------
@@ -104,7 +141,6 @@ class OverlayState {
       this.omittedPanel = null;
       return;
     }
-    this.omittedAbove = opensUpward(trigger);
     this.omittedPanel = id;
     this.#remember("omitted", trigger);
   };
@@ -119,9 +155,22 @@ class OverlayState {
       this.coveragePanel = null;
       return;
     }
-    this.coverageAbove = opensUpward(trigger);
     this.coveragePanel = id;
     this.#remember("coverage", trigger);
+  };
+
+  // --- Language-type panel ---------------------------------------------------
+
+  /** Which list is showing its language-type inclusion checklist, keyed
+   *  `${topicId}:${groupId}` — the ☑️ button's popup, a sibling of the 🚫 panel. */
+  languageTypePanel = $state<string | null>(null);
+  toggleLanguageTypePanel = (id: string, trigger: Element): void => {
+    if (this.languageTypePanel === id) {
+      this.languageTypePanel = null;
+      return;
+    }
+    this.languageTypePanel = id;
+    this.#remember("languageType", trigger);
   };
 
   // --- Sovereignty matrix ----------------------------------------------------
@@ -134,23 +183,77 @@ class OverlayState {
       this.sovereigntyPanel = null;
       return;
     }
-    this.sovereigntyAbove = opensUpward(trigger);
     this.sovereigntyPanel = id;
     this.#remember("sovereignty", trigger);
   };
 
+  // --- Saved-lists panel -----------------------------------------------------
+
+  /** Whether the reader's saved-lists manager (the 💾 button on the Custom row) is
+   *  open — one panel, so a single slot under a fixed id. */
+  savedListsPanel = $state<string | null>(null);
+  toggleSavedListsPanel = (id: string, trigger: Element): void => {
+    if (this.savedListsPanel === id) {
+      this.savedListsPanel = null;
+      return;
+    }
+    this.savedListsPanel = id;
+    this.#remember("savedLists", trigger);
+  };
+
+  // --- Export / import panels (§X4b) -----------------------------------------
+
+  exportPanel = $state<string | null>(null);
+  toggleExportPanel = (id: string, trigger: Element): void => {
+    if (this.exportPanel === id) {
+      this.exportPanel = null;
+      return;
+    }
+    this.exportPanel = id;
+    this.#remember("exportLists", trigger);
+  };
+
+  importPanel = $state<string | null>(null);
+  toggleImportPanel = (id: string, trigger: Element): void => {
+    if (this.importPanel === id) {
+      this.importPanel = null;
+      return;
+    }
+    this.importPanel = id;
+    this.#remember("importLists", trigger);
+  };
+
+  // --- Custom settings panel (⚙️) --------------------------------------------
+
+  /** The ⚙️ on the Custom row — its own slot, like the panels above, so a hover
+   *  tooltip (which shares the single `tip` slot) can't dismiss it. */
+  customSettingsPanel = $state<string | null>(null);
+  toggleCustomSettingsPanel = (id: string, trigger: Element): void => {
+    if (this.customSettingsPanel === id) {
+      this.customSettingsPanel = null;
+      return;
+    }
+    this.customSettingsPanel = id;
+    this.#remember("customSettings", trigger);
+  };
+
   // --- Tooltips --------------------------------------------------------------
 
-  /** Show a note, flipping it above its row when there is more room upward. */
-  openTip = (id: string, trigger: Element, pinned = false): void => {
-    this.tipAbove = opensUpward(trigger);
+  /** A `local` note sits inside a scrolling popup (a 👎 in the language-type panel) rather
+   *  than spanning a row. It follows a page scroll (shared/placement), but a scroll of the
+   *  popup itself closes it: its trigger slides out from under it. See onLocalScroll. */
+  #tipLocal = false;
+  /** Show a note; where it goes is the note's own business (shared/placement). */
+  openTip = (id: string, trigger: Element, pinned = false, local = false): void => {
     this.tip = id;
     this.tipPinned = pinned;
+    this.#tipLocal = local;
     this.#remember("tip", trigger);
   };
   closeTip = (): void => {
     this.tip = null;
     this.tipPinned = false;
+    this.#tipLocal = false;
   };
   /** Close unless the note is pinned — what leaving the marker and losing focus
    *  both want, neither of them being a dismissal once the reader has asked for
@@ -165,25 +268,25 @@ class OverlayState {
   #holding(id: string): boolean {
     return this.tipPinned && this.tip === id;
   }
-  tipEnter = (e: PointerEvent, id: string): void => {
+  tipEnter = (e: PointerEvent, id: string, local = false): void => {
     if (e.pointerType !== "mouse" || this.#holding(id)) return;
-    this.openTip(id, e.currentTarget as Element);
+    this.openTip(id, e.currentTarget as Element, false, local);
   };
   tipLeave = (e: PointerEvent): void => {
     if (e.pointerType === "mouse") this.releaseTip();
   };
-  tipFocus = (e: FocusEvent, id: string): void => {
+  tipFocus = (e: FocusEvent, id: string, local = false): void => {
     // Only where a focus ring shows, which is to say: only for the keyboard, the
     // one input that has neither hover nor a click to open this with. It also
     // keeps out the focus a browser restores to the page on its own — returning to
     // a tab is not a request to see anything.
     const el = e.currentTarget as Element;
     if (this.#holding(id) || !focusIsVisible(el)) return;
-    this.openTip(id, el);
+    this.openTip(id, el, false, local);
   };
-  tipClick = (e: MouseEvent, id: string): void => {
+  tipClick = (e: MouseEvent, id: string, local = false): void => {
     if (!this.#holding(id)) {
-      this.openTip(id, e.currentTarget as Element, true);
+      this.openTip(id, e.currentTarget as Element, true, local);
       return;
     }
     // A second click unpins — but under a cursor the note stays up, because the
@@ -208,11 +311,17 @@ class OverlayState {
   onPointerDown = (e: PointerEvent): void => {
     this.#pointerType = e.pointerType;
     const target = e.target as Element | null;
+    if (this.langSelect && !target?.closest?.(".lang-select")) this.langSelect = null;
     if (this.langMenu && !target?.closest?.(".lang-picker")) this.langMenu = null;
     if (this.settingsMenu && !target?.closest?.(".settings-picker")) this.settingsMenu = null;
     if (this.omittedPanel && !target?.closest?.(".omitted-host")) this.omittedPanel = null;
     if (this.coveragePanel && !target?.closest?.(".coverage-host")) this.coveragePanel = null;
+    if (this.languageTypePanel && !target?.closest?.(".language-type-host")) this.languageTypePanel = null;
     if (this.sovereigntyPanel && !target?.closest?.(".sovereignty-host")) this.sovereigntyPanel = null;
+    if (this.savedListsPanel && !target?.closest?.(".saved-lists-host")) this.savedListsPanel = null;
+    if (this.exportPanel && !target?.closest?.(".export-lists-host")) this.exportPanel = null;
+    if (this.importPanel && !target?.closest?.(".import-lists-host")) this.importPanel = null;
+    if (this.customSettingsPanel && !target?.closest?.(".custom-settings-host")) this.customSettingsPanel = null;
     // Neither on the marker, whose own click toggles, nor inside the note: a note
     // exists to be read, and one carrying a link exists to be clicked — closing it
     // here would take the link out of the document before the click reached it.
@@ -220,11 +329,17 @@ class OverlayState {
       this.closeTip();
     }
   };
-  /** A pinned note outlives the pointer, so it needs dismissals of its own: a
-   *  press elsewhere, Escape, or this. Which way it opened was read off its row's
-   *  place in the viewport, and a scroll makes that answer stale as well. */
+  /** A pinned note outlives the pointer, so it needs dismissals of its own: a press
+   *  elsewhere, Escape, or a page scroll. A local note (and a confirmation) rides the page
+   *  scroll with the panel it belongs to instead. */
   onScroll = (): void => {
-    if (this.tipPinned) this.closeTip();
+    if (this.tipPinned && !this.#tipLocal) this.closeTip();
+  };
+  /** A scroll of the popup a local note is anchored beside (the language-type panel), rather
+   *  than of the page: the note stays put while its trigger scrolls away under it, so the two
+   *  part ways and it closes — the local counterpart to the page scroll onScroll handles. */
+  onLocalScroll = (): void => {
+    if (this.#tipLocal) this.closeTip();
   };
   /** Escape closes the one overlay the focus is in — innermost first, and nothing
    *  else.
@@ -244,10 +359,16 @@ class OverlayState {
     const kind = this.#focusedOverlay();
     if (!kind) return;
     if (kind === "tip") this.closeTip();
-    else if (kind === "lang") this.langMenu = null;
+    else if (kind === "langSelect") this.langSelect = null;
+    else if (kind === "lang") this.langMenu = this.langSelect = null;
     else if (kind === "settings") this.settingsMenu = null;
     else if (kind === "coverage") this.coveragePanel = null;
+    else if (kind === "languageType") this.languageTypePanel = null;
     else if (kind === "sovereignty") this.sovereigntyPanel = null;
+    else if (kind === "savedLists") this.savedListsPanel = null;
+    else if (kind === "exportLists") this.exportPanel = null;
+    else if (kind === "importLists") this.importPanel = null;
+    else if (kind === "customSettings") this.customSettingsPanel = null;
     else this.omittedPanel = null;
     const back = this.#openers[kind];
     if (back) void returnFocus(back);
@@ -267,11 +388,17 @@ class OverlayState {
     const loose = !active || active === document.body;
     const inside = (sel: string) => loose || !!active?.closest?.(sel);
     if (this.tip && inside(HOSTS.tip)) return "tip";
+    if (this.langSelect && inside(HOSTS.langSelect)) return "langSelect";
     if (this.langMenu && inside(HOSTS.lang)) return "lang";
     if (this.settingsMenu && inside(HOSTS.settings)) return "settings";
     if (this.omittedPanel && inside(HOSTS.omitted)) return "omitted";
     if (this.coveragePanel && inside(HOSTS.coverage)) return "coverage";
+    if (this.languageTypePanel && inside(HOSTS.languageType)) return "languageType";
     if (this.sovereigntyPanel && inside(HOSTS.sovereignty)) return "sovereignty";
+    if (this.savedListsPanel && inside(HOSTS.savedLists)) return "savedLists";
+    if (this.exportPanel && inside(HOSTS.exportLists)) return "exportLists";
+    if (this.importPanel && inside(HOSTS.importLists)) return "importLists";
+    if (this.customSettingsPanel && inside(HOSTS.customSettings)) return "customSettings";
     return null;
   }
 }
@@ -303,16 +430,6 @@ function focusIsVisible(el: Element): boolean {
   } catch {
     return true;
   }
-}
-
-/** Which way an overlay should open from its trigger. The middle of the viewport,
- *  not some fraction of it: whichever half the trigger is in, the other half is
- *  where the room is — and a box that opens the wrong way is cut off by an edge
- *  either way, so there is no reason to prefer one direction near the middle.
- *
- *  Shared by the tip-notes and the omissions panel so the two can't drift. */
-function opensUpward(trigger: Element): boolean {
-  return trigger.getBoundingClientRect().bottom > window.innerHeight / 2;
 }
 
 export const overlays = new OverlayState();

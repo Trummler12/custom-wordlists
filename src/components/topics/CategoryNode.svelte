@@ -1,7 +1,10 @@
 <script lang="ts">
+  import Msg from "../../locale/html/Msg.svelte";
+  import { plain } from "../../locale/html/plain";
   import { setIndeterminate } from "../../lib/dom";
-  import { sharedEnglishTopics } from "../../lib/english";
+  import { sharedSecondaryTopics } from "../../lib/languages/secondary";
   import { controlledTopics } from "../../lib/rulers";
+  import { cancelFit, scheduleFit } from "../../lib/rowfit";
   import type { CatNode } from "../../lib/tree";
   import { lang } from "../../state/lang.svelte";
   import { selection } from "../../state/selection.svelte";
@@ -10,6 +13,7 @@
   import { sovRules } from "../../lib/matrix";
   import CategoryNode from "./CategoryNode.svelte";
   import CoveragePanel from "./CoveragePanel.svelte";
+  import SecondaryMark from "./SecondaryMark.svelte";
   import SovereigntyMatrix from "./SovereigntyMatrix.svelte";
   import TopicRow from "./TopicRow.svelte";
 
@@ -18,6 +22,10 @@
   // Every topic below this node, precomputed with the tree — the checkbox and the
   // counter speak for the whole subtree, not just this level's own topics.
   const all = $derived(node.all);
+  // The count waits on the whole subtree: until every topic below has loaded, the
+  // total is an unfiltered `wordCount` sum that would tick down as files arrive, so
+  // the row shows "loading" and then the final number in one step (see subtreeReady).
+  const ready = $derived(topics.subtreeReady(all));
   const open = $derived(selection.catOpen(node));
   const name = $derived(topics.categoryName(node));
   const id = $derived("cat-" + (node.path.replace(/\//g, "-") || "root"));
@@ -27,13 +35,16 @@
   // carries a tri-state toggle rolling up over exactly these.
   const governed = $derived(controlledTopics(node.path, all, topics.categories));
 
-  // The lists this category's shared English toggle governs — empty unless it
+  // The lists this category's shared language toggle governs — empty unless it
   // declares sharedEnglishToggle and something below it would actually change.
-  const englishGoverned = $derived(
-    settings.showEnglishToggle
-      ? sharedEnglishTopics(node.path, all, topics.categories, lang.current)
+  const secondaryGoverned = $derived(
+    settings.showSecondaryToggle
+      ? sharedSecondaryTopics(node.path, all, topics.categories, lang.current, lang.secondary)
       : [],
   );
+  const allForced = $derived(lang.allForced(secondaryGoverned));
+  const someForced = $derived(lang.someForced(secondaryGoverned));
+  const forcedLabel = $derived(plain(lang.ui.language.useSecondaryAll(allForced, lang.nameInUi(lang.secondary))));
 
   // The Geoguessr coverage control this category syncs (syncControls), commanding
   // every icon-carrying real leaf below at once. From the manifest — no file load,
@@ -54,15 +65,36 @@
           .map((t) => ({ tid: t.id, rules: sovRules(t.controls!["sovereignty"]) }))
       : [],
   );
+
+  // Overflow relief for a too-narrow row (rowfit.ts), the same as a topic row: re-fit on
+  // mount, on the count / name / language changing, and (ResizeObserver) on a column resize.
+  let rowEl = $state<HTMLDivElement>();
+  $effect(() => {
+    void selection.catSel(all);
+    void selection.catTotal(all);
+    void name.short;
+    void lang.uiLang;
+    if (rowEl) scheduleFit(rowEl, ".category-title");
+  });
+  $effect(() => {
+    if (!rowEl) return;
+    const el = rowEl;
+    const ro = new ResizeObserver(() => scheduleFit(el, ".category-title"));
+    ro.observe(el);
+    return () => {
+      ro.disconnect();
+      cancelFit(el);
+    };
+  });
 </script>
 
-<div class="category">
+<div class="category" bind:this={rowEl}>
   <button
     type="button"
     class="expander"
     aria-expanded={open}
     aria-controls={`${id}-children`}
-    aria-label={lang.ui.tree.toggle(open, name.long)}
+    aria-label={plain(lang.ui.tree.toggle(open, name.long))}
     onclick={() => selection.toggleCat(node)}
   >
     {open ? "▾" : "▸"}
@@ -82,26 +114,22 @@
         > {/if}<span title={name.short !== name.long ? name.long : undefined}>{name.short}</span>
     </label>
   </h3>
-  {#if englishGoverned.length > 0}
+  {#if secondaryGoverned.length > 0}
     <button
       type="button"
-      class="english-toggle"
-      class:on={lang.allForcedEnglish(englishGoverned)}
-      class:mixed={lang.someForcedEnglish(englishGoverned)}
-      aria-pressed={lang.allForcedEnglish(englishGoverned)
-        ? "true"
-        : lang.someForcedEnglish(englishGoverned)
-          ? "mixed"
-          : "false"}
-      aria-label={lang.ui.language.useEnglishAll(lang.allForcedEnglish(englishGoverned))}
-      title={lang.ui.language.useEnglishAll(lang.allForcedEnglish(englishGoverned))}
+      class="secondary-toggle"
+      class:on={allForced}
+      class:mixed={someForced}
+      aria-pressed={allForced ? "true" : someForced ? "mixed" : "false"}
+      aria-label={forcedLabel}
+      title={forcedLabel}
       onclick={() => {
         // Same reasoning as the ruler toggle below: a collapsed category shows
         // none of the rows this changes, so open it to show what happened.
-        lang.toggleCatEnglish(englishGoverned);
+        lang.toggleCatForced(secondaryGoverned);
         if (!open) selection.toggleCat(node);
       }}
-    >🇬🇧</button>
+    ><SecondaryMark /></button>
   {/if}
   {#if governed.length > 0}
     <button
@@ -114,8 +142,8 @@
         : selection.someRulersHidden(governed)
           ? "mixed"
           : "false"}
-      aria-label={lang.ui.fame.toggleAll(selection.allRulersShown(governed))}
-      title={lang.ui.fame.toggleAll(selection.allRulersShown(governed))}
+      aria-label={plain(lang.ui.fame.toggleAll(selection.allRulersShown(governed)))}
+      title={plain(lang.ui.fame.toggleAll(selection.allRulersShown(governed)))}
       onclick={() => {
         // A collapsed category renders none of its topic rows, so a toggle either
         // way leaves nothing visibly changed — open it to show the result (rulers
@@ -133,8 +161,10 @@
   {/if}
   <!-- The ratio alone, since it reads the same in every language; the sentence it
        stands for is a hover away. The row needs the width for its controls. -->
-  <span class="meta" title={lang.ui.tree.wordsOf(selection.catSel(all), selection.catTotal(all))}>
-    {selection.catSel(all)}/<span class="total">{selection.catTotal(all)}</span>
+  <span class="meta" title={plain(lang.ui.tree.wordsOf(selection.catSel(all), selection.catTotal(all)))}>
+    {#if !ready}<Msg text={lang.ui.tree.loadingShort} />{:else}{selection.catSel(all)}/<span class="total"
+        >{selection.catTotal(all)}</span
+      >{/if}
   </span>
 </div>
 {#if open}
@@ -149,3 +179,45 @@
     {/each}
   </div>
 {/if}
+
+<style>
+  .category {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin: var(--gap-before-cat) 0 var(--gap-after-cat);
+    position: relative; /* anchor for the coverage popup, like .topic-row */
+  }
+  /* Every control keeps its size; the title is where a narrow row takes its slack. */
+  .category > :not(.category-title) {
+    flex-shrink: 0;
+  }
+  .category-title {
+    margin: 0;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--muted-2);
+  }
+  .category-title label {
+    cursor: pointer;
+  }
+  /* The category counter reads at the same size as the ones below it — this row is
+     quieter by colour, weight and letterspacing, and shrinking its digits too made it
+     look like a different kind of number. Its own line-height, though: at the shared
+     size the default 1.5 would make this the tallest box on the row and stretch it. */
+  .category .meta {
+    line-height: 1;
+  }
+  /* Nested tree level: indent a category's topics + subcategories, with a guide.
+     --tree-step (globals.css) is the total indent per level, split around the line. */
+  .cat-children {
+    margin-left: calc(var(--tree-step) / 2);
+    padding-left: calc(var(--tree-step) / 2);
+    border-left: 1px solid var(--border);
+  }
+</style>
