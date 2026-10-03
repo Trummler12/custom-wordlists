@@ -3,7 +3,7 @@
   import TipNote from "./TipNote.svelte";
 
   // A run of text that doubles as a persistent-tooltip trigger: hovering or tapping it
-  // opens a `local` note (position owned by overlays) that shows `text`. Used for the
+  // opens a `local` note (placed by shared/placement) that shows `text`. Used for the
   // saved-lists / import / export content previews, where a touch reader has no hover
   // `title` to fall back on and needs a tap target to see what a list holds. The label
   // ellipsizes; `maxWidth` caps how wide it grows before it does.

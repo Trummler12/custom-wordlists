@@ -134,6 +134,19 @@ export function controlPopup(trigger: Element | null | undefined): PlacementOpti
   return { trigger, frame: "auto", horizontal: "frame-left", vertical: "more-room" };
 }
 
+/** A note inside a panel (a 🔍, a 👎): hung leftward from its marker, as wide as the
+ *  Topics column at most, towards the side with more room. Fixed, so a scrolling panel
+ *  doesn't clip it. */
+export function localNote(trigger: Element | null | undefined): PlacementOptions {
+  return { trigger, frame: "auto", horizontal: "trigger-right", vertical: "more-room" };
+}
+
+/** A confirmation: like a local note, but above its button unless that fails high on the
+ *  page — it carries consequences, so it holds as still as it can. */
+export function confirmPopup(trigger: Element | null | undefined): PlacementOptions {
+  return { ...localNote(trigger), vertical: "prefer-above" };
+}
+
 /** Place a popup and keep it placed while it is open: in full on mount, whenever it or
  *  the Topics column changes size, and on a window resize; on a page scroll only its
  *  vertical position, to keep it on screen. Works for `position: absolute` (coordinates

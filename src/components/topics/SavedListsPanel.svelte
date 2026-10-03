@@ -5,7 +5,7 @@
   import { custom, NAME_MAX, type SavedList } from "../../state/custom.svelte";
   import { lang } from "../../state/lang.svelte";
   import { overlays } from "../../state/overlays.svelte";
-  import { controlPopup, placement } from "../shared/placement";
+  import { confirmPopup, controlPopup, placement } from "../shared/placement";
   import TipMarker from "../shared/TipMarker.svelte";
   import TipNote from "../shared/TipNote.svelte";
   import TipText from "../shared/TipText.svelte";
@@ -239,7 +239,7 @@
       <!-- The destructive actions' confirm, in its own popover (the tip slot), so a
            press elsewhere / Escape / scroll dismisses it and a click inside does not. -->
       {#if overlays.tip === CONFIRM_ID && pending}
-        <div class="tip-note local confirm-pop" class:wide={pending.kind === "clean"} style={overlays.tipStyle} role="dialog">
+        <div class="tip-note local confirm-pop" use:placement={confirmPopup(overlays.opener("tip"))} role="dialog">
           {#if pending.kind === "clean"}
             {#if offered.length}
               <p class="confirm-msg"><Msg text={lang.ui.custom.cleanChars} /></p>
@@ -369,9 +369,9 @@
     font-size: 0.6rem;
   }
 
-  /* The confirm popover — position from overlays.tipStyle, look mirrors a tip-note. */
+  /* The confirm popover — placed by shared/placement (fixed), look mirrors a tip-note. */
   .confirm-pop {
-    max-width: min(18rem, 90vw);
+    position: fixed;
     padding: 0.5rem 0.6rem;
     font-size: 0.8rem;
     line-height: 1.35;
@@ -381,10 +381,6 @@
     border-radius: var(--radius);
     box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
     z-index: 30;
-  }
-  /* Room for up to four character columns. */
-  .confirm-pop.wide {
-    max-width: min(26rem, 90vw);
   }
   .confirm-msg {
     margin: 0 0 0.4rem;

@@ -14,7 +14,7 @@
   import { lang } from "../../state/lang.svelte";
   import { output } from "../../state/output.svelte";
   import { overlays } from "../../state/overlays.svelte";
-  import { controlPopup, placement } from "../shared/placement";
+  import { confirmPopup, controlPopup, placement } from "../shared/placement";
   import TipMarker from "../shared/TipMarker.svelte";
   import TipNote from "../shared/TipNote.svelte";
   import TipText from "../shared/TipText.svelte";
@@ -403,7 +403,7 @@
   <!-- The 🗑️ two-step confirm. Shares the tip overlay slot, so a press elsewhere,
        Escape or a scroll dismisses it; `tip-note` keeps a click inside from closing it. -->
   {#if overlays.tip === CONFIRM_ID}
-    <div class="tip-note local confirm-pop" style={overlays.tipStyle} role="dialog" aria-label={plain(lang.ui.custom.clearHint)}>
+    <div class="tip-note local confirm-pop" use:placement={confirmPopup(overlays.opener("tip"))} role="dialog" aria-label={plain(lang.ui.custom.clearHint)}>
       <p class="confirm-msg"><Msg text={lang.ui.custom.clearConfirm} /></p>
       <div class="confirm-actions">
         <button type="button" class="confirm-btn" onclick={confirmClear}><Msg text={lang.ui.custom.clearConfirmButton} /></button>
@@ -535,10 +535,10 @@
        which must stay on top. */
     z-index: 5;
   }
-  /* The 🗑️ confirm popover. Position comes from overlays.tipStyle (fixed, anchored to the
-     trigger); the rest mirrors a tip-note's look. */
+  /* The 🗑️ confirm popover: placed by shared/placement (fixed, so the sticky controls don't
+     carry it); the rest mirrors a tip-note's look. */
   .confirm-pop {
-    max-width: min(18rem, 90vw);
+    position: fixed;
     padding: 0.5rem 0.6rem;
     font-size: 0.8rem;
     line-height: 1.35;

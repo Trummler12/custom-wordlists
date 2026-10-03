@@ -239,65 +239,12 @@ class OverlayState {
 
   // --- Tooltips --------------------------------------------------------------
 
-  /** A `local` note is anchored to a trigger sitting inside a scrolling popup (a 👎 in the
-   *  language-type panel), rather than spanning a row. It overlays the popup, fixed to the
-   *  trigger's own place so it flips and follows on a page scroll — but a scroll of the popup
-   *  itself closes it (its trigger slides out from under it). See onScroll / onLocalScroll. */
+  /** A `local` note sits inside a scrolling popup (a 👎 in the language-type panel) rather
+   *  than spanning a row. It follows a page scroll (shared/placement), but a scroll of the
+   *  popup itself closes it: its trigger slides out from under it. See onLocalScroll. */
   #tipLocal = false;
-  /** The fixed-position style for the open local note, computed from its trigger's rect —
-   *  read by TipNote. Empty for a row note, which the CSS positions on its own. */
-  tipStyle = $state("");
-
-  /** Pin a local note to its trigger: fixed to the viewport, above or below it by which
-   *  viewport half the trigger sits in.
-   *
-   *  Priority is width, then viewport, then the trigger. The note takes its content's
-   *  width (capped at the Topics-list column's width) and prefers to open leftward, its
-   *  right edge under the trigger's — but that anchor is only a soft orientation: a note
-   *  too wide for the room on its left slides right to stay in the viewport rather than
-   *  letting the trigger cap its width. The width isn't known until the content lays
-   *  out, so the leftward preference is set now and corrected on the next frame; the
-   *  common case (the note fits on the left) needs no correction. Re-placed on resize
-   *  (onResize), so it tracks the trigger through the centered layout's reflow. */
-  #placeLocalTip(trigger: Element): void {
-    const r = trigger.getBoundingClientRect();
-    const gutter = 8;
-    const vw = window.innerWidth;
-    const above = r.bottom > window.innerHeight / 2;
-    const edge = above
-      ? `bottom:${Math.round(window.innerHeight - r.top + 4)}px`
-      : `top:${Math.round(r.bottom + 4)}px`;
-    const col = document.querySelector(".col-topics");
-    const maxWidth = Math.min(Math.round(col?.clientWidth ?? 320), vw - 2 * gutter);
-    // Positioned by `left`, never `right`: an out-of-flow element with `right` set and
-    // `left:auto` gets only the space from the viewport edge to that anchor as its
-    // shrink-to-fit width, which would cap the note at the room left of the trigger —
-    // the exact "hard-limited by the trigger" bug. `left` lets it size against the
-    // whole viewport, and the measured width then decides the leftward-opening offset.
-    const style = (left: number, hidden = false) =>
-      `position:fixed;left:${Math.round(left)}px;max-width:${maxWidth}px;${edge};${hidden ? "visibility:hidden;" : ""}`;
-    // First: let the note take its content width (up to maxWidth) against the full
-    // viewport, measured invisibly at the gutter so the interim spot never shows.
-    this.tipStyle = style(gutter, true);
-    requestAnimationFrame(() => {
-      if (!this.#tipLocal) return;
-      const note = document.querySelector(".tip-note.local");
-      if (!(note instanceof HTMLElement)) {
-        this.tipStyle = style(gutter); // reveal at the fallback rather than stay hidden
-        return;
-      }
-      const w = note.getBoundingClientRect().width;
-      // Open leftward — right edge under the trigger's — but keep the whole note in the
-      // viewport; a note too wide for the room on its left slides right (width wins).
-      const left = Math.max(gutter, Math.min(r.right - w, vw - gutter - w));
-      this.tipStyle = style(left);
-    });
-  }
-
-  /** Show a note: a row's is placed by the note itself (shared/placement), a `local`
-   *  one is fixed to its trigger's own place (see #placeLocalTip). */
+  /** Show a note; where it goes is the note's own business (shared/placement). */
   openTip = (id: string, trigger: Element, pinned = false, local = false): void => {
-    if (local) this.#placeLocalTip(trigger);
     this.tip = id;
     this.tipPinned = pinned;
     this.#tipLocal = local;
@@ -307,7 +254,6 @@ class OverlayState {
     this.tip = null;
     this.tipPinned = false;
     this.#tipLocal = false;
-    this.tipStyle = "";
   };
   /** Close unless the note is pinned — what leaving the marker and losing focus
    *  both want, neither of them being a dismissal once the reader has asked for
@@ -383,33 +329,17 @@ class OverlayState {
       this.closeTip();
     }
   };
-  /** A pinned note outlives the pointer, so it needs dismissals of its own: a
-   *  press elsewhere, Escape, or this. Which way it opened was read off its row's
-   *  place in the viewport, and a scroll makes that answer stale as well. */
+  /** A pinned note outlives the pointer, so it needs dismissals of its own: a press
+   *  elsewhere, Escape, or a page scroll. A local note (and a confirmation) rides the page
+   *  scroll with the panel it belongs to instead. */
   onScroll = (): void => {
-    if (!this.tipPinned) return;
-    // A local note rides along with its popup on a PAGE scroll — it doesn't go stale, so it
-    // re-aims its above/below flip rather than closing. A row note closes, as it always has:
-    // its position was read off the row's place in the viewport, which the scroll makes stale.
-    if (this.#tipLocal) {
-      const t = this.#openers.tip;
-      if (t) this.#placeLocalTip(t);
-    } else this.closeTip();
+    if (this.tipPinned && !this.#tipLocal) this.closeTip();
   };
   /** A scroll of the popup a local note is anchored beside (the language-type panel), rather
    *  than of the page: the note stays put while its trigger scrolls away under it, so the two
    *  part ways and it closes — the local counterpart to the page scroll onScroll handles. */
   onLocalScroll = (): void => {
     if (this.#tipLocal) this.closeTip();
-  };
-  /** A window resize reflows the centered layout, sliding the trigger under an open
-   *  local note; re-place it so it stays anchored to the trigger instead of drifting
-   *  with the viewport edge (a fixed note pinned by `right` moves at the full resize
-   *  delta while the centered content moves at half). */
-  onResize = (): void => {
-    if (!this.#tipLocal) return;
-    const t = this.#openers.tip;
-    if (t) this.#placeLocalTip(t);
   };
   /** Escape closes the one overlay the focus is in — innermost first, and nothing
    *  else.

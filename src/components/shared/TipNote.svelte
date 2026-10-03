@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { placement, rowPopup } from "./placement";
+  import { localNote, placement, rowPopup } from "./placement";
   import Msg from "../../locale/html/Msg.svelte";
   import { overlays } from "../../state/overlays.svelte";
 
@@ -18,9 +18,8 @@
        in its own aria-label, where the note is a visual echo. -->
   <p
     class="tip-note"
-    use:placement={rowPopup(local ? null : overlays.opener("tip"))}
+    use:placement={local ? localNote(overlays.opener("tip")) : rowPopup(overlays.opener("tip"))}
     class:local
-    style={local ? overlays.tipStyle : ""}
     {id}
     role="tooltip"
   >
@@ -59,9 +58,9 @@
     line-height: 1;
     opacity: 0.75;
   }
-  /* Above the panel it belongs to. */
+  /* Fixed, so the scrolling panel it belongs to doesn't clip it, and above that panel. */
   .tip-note.local {
-    max-width: min(18rem, 90vw);
+    position: fixed;
     z-index: 30;
   }
 </style>
