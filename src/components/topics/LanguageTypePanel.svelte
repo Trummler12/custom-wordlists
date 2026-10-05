@@ -70,7 +70,7 @@
     >
     {#if open}
       <div
-        class="language-type-panel"
+        class="popup language-type-panel"
         use:placement={rowPopup(overlays.opener("languageType"))}
         role="group"
         aria-label={plain(lang.ui.languageType.label)}
@@ -173,21 +173,10 @@
   .language-type-btn:focus-visible {
     opacity: 1;
   }
-  /* Where it opens, how wide and how tall it may get: shared/placement, inline. */
   .language-type-panel {
-    position: absolute;
-    z-index: 10;
-    overscroll-behavior: contain;
-    padding: 0.5rem 0.6rem;
-    background: var(--chip-bg);
-    border: 1px solid var(--panel-border);
-    border-radius: var(--radius);
-    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
     font-size: 0.8rem;
     font-weight: 400;
     line-height: 1.35;
-    text-align: left;
-    cursor: auto;
   }
   .language-type-title {
     margin: 0 0 0.35rem;

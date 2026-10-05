@@ -312,7 +312,7 @@
       >
       {#if settingsOpen}
         <div
-          class="settings-panel"
+          class="popup settings-panel"
           use:placement={controlPopup(overlays.opener("customSettings"))}
           role="dialog"
           aria-label={plain(lang.ui.custom.settingsTitle)}
@@ -403,7 +403,7 @@
   <!-- The 🗑️ two-step confirm. Shares the tip overlay slot, so a press elsewhere,
        Escape or a scroll dismisses it; `tip-note` keeps a click inside from closing it. -->
   {#if overlays.tip === CONFIRM_ID}
-    <div class="tip-note local confirm-pop" use:placement={confirmPopup(overlays.opener("tip"))} role="dialog" aria-label={plain(lang.ui.custom.clearHint)}>
+    <div class="popup tip-note local confirm-pop" use:placement={confirmPopup(overlays.opener("tip"))} role="dialog" aria-label={plain(lang.ui.custom.clearHint)}>
       <p class="confirm-msg"><Msg text={lang.ui.custom.clearConfirm} /></p>
       <div class="confirm-actions">
         <button type="button" class="confirm-btn" onclick={confirmClear}><Msg text={lang.ui.custom.clearConfirmButton} /></button>
@@ -539,14 +539,8 @@
      carry it); the rest mirrors a tip-note's look. */
   .confirm-pop {
     position: fixed;
-    padding: 0.5rem 0.6rem;
     font-size: 0.8rem;
     line-height: 1.35;
-    color: var(--chip-fg);
-    background: var(--chip-bg);
-    border: 1px solid var(--panel-border);
-    border-radius: var(--radius);
-    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
     z-index: 30;
   }
   .confirm-msg {
@@ -583,15 +577,8 @@
   /* The ⚙️ panel — placed by shared/placement (inline); the flip and
      look mirror the export/import panels. */
   .settings-panel {
-    position: absolute;
     z-index: 20;
-    padding: 0.5rem 0.6rem;
     font-size: 0.8rem; /* the compact size the old tip-note popover inherited */
-    color: var(--chip-fg);
-    background: var(--chip-bg);
-    border: 1px solid var(--panel-border);
-    border-radius: var(--radius);
-    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
   }
   .settings-title {
     margin: 0 0 0.4rem;

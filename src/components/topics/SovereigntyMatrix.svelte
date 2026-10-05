@@ -107,7 +107,7 @@
     >
     {#if open}
       <div
-        class="sovereignty-panel"
+        class="popup sovereignty-panel"
         use:placement={rowPopup(overlays.opener("sovereignty"))}
         role="group"
         aria-label={plain(lang.ui.sovereignty.label)}
@@ -165,21 +165,10 @@
   .sovereignty-btn:focus-visible {
     opacity: 1;
   }
-  /* Where it opens, how wide and how tall it may get: shared/placement, inline. */
   .sovereignty-panel {
-    position: absolute;
-    z-index: 10;
-    overscroll-behavior: contain;
-    padding: 0.5rem 0.6rem;
-    background: var(--chip-bg);
-    border: 1px solid var(--panel-border);
-    border-radius: var(--radius);
-    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
     font-size: 0.8rem;
     font-weight: 400;
     line-height: 1.3;
-    text-align: left;
-    cursor: auto;
   }
   .sovereignty-title {
     margin: 0 0 0.4rem;

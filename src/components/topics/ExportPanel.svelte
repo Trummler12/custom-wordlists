@@ -62,7 +62,7 @@
   >
   {#if open}
     <div
-      class="io-panel"
+      class="popup io-panel"
       use:placement={controlPopup(overlays.opener("exportLists"))}
       role="group"
       aria-label={plain(lang.ui.custom.exportTitle)}
@@ -106,17 +106,9 @@
     position: relative;
     display: inline-flex;
   }
-  /* Where it opens, how wide and how tall it may get: shared/placement, inline. */
   .io-panel {
-    position: absolute;
     z-index: 20;
     min-width: 16rem;
-    padding: 0.5rem 0.6rem;
-    color: var(--chip-fg);
-    background: var(--chip-bg);
-    border: 1px solid var(--panel-border);
-    border-radius: var(--radius);
-    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
   }
   .io-title {
     margin: 0 0 0.4rem;

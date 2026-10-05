@@ -58,7 +58,7 @@
     >
     {#if open}
       <div
-        class="omitted-panel"
+        class="popup omitted-panel"
         use:placement={rowPopup(overlays.opener("omitted"))}
         role="group"
         aria-label={plain(lang.ui.omitted.label)}

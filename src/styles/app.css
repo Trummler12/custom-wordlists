@@ -1,40 +1,32 @@
-/* Main-app styles: the document frame, the two-column layout, and (for now) the
-   components the main app renders. The shared primitives (resets, body, links, .warn)
-   live in base.css; each component's own look is being colocated into its .svelte.
-   main.ts imports this one; @import base pulls the primitives + tokens in first. */
+/* Main-app styles: the document frame, the two-column layout, and the few primitives
+   several independent components share. Everything else lives scoped in its component;
+   base.css (imported first) holds what the coverage page shares too. */
 @import "./base.css";
 
-/* The document scrolls as a whole — scroll anywhere to move the topic list; only
-   the output's chips capture the wheel (they have their own overflow). The header
-   lives in the left column so the output panel can span the full viewport height
-   from the very top. */
+/* The document scrolls as a whole; only the output's chips capture the wheel. */
 main {
   max-width: var(--content-max);
   margin: var(--output-gap) auto;
-  /* Bottom padding clears the pinned footer; the stacked layout drops it again. */
+  /* Clears the pinned footer; the stacked layout drops it again. */
   padding: 0 1rem var(--footer-h);
 }
-/* h2 is a shared main-app element default (the "Topics" and "Output" section headings);
-   h1, .tagline and the <header> frame are colocated in PageHeader. */
+/* The "Topics" and "Output" section headings. */
 h2 {
   font-size: 1rem;
   margin: 0 0 0.5rem;
 }
 
-/* Two-column layout (stacks on narrow screens). */
 .layout {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: var(--layout-gap);
   align-items: start;
 }
-/* Left column: header + topic tree. min-width:0 keeps long names from pushing
-   the grid track wider than its 1fr share. */
+/* min-width: 0 keeps long names from pushing the track past its 1fr share. */
 .col-topics {
   min-width: 0;
 }
-/* While loading / on error / with no topics the output column isn't rendered —
-   collapse to one column so the header + status aren't stuck at half width. */
+/* No output column while loading, on an error or without topics. */
 .layout.single {
   grid-template-columns: 1fr;
 }
@@ -42,42 +34,33 @@ h2 {
   .layout {
     grid-template-columns: 1fr;
   }
-}
-
-/* The output panel is a component: its sticky full-height column (.output), head
-   (.output-head/.head-actions), chips (.chips/.chip) and counter (.counter) are colocated
-   in components/output/. It is App.svelte's second grid column here; its own root does the
-   sticking. */
-
-/* The footer bar is a component now — its styling is colocated in
-   components/layout/SiteFooter.svelte, so the coverage page (which also renders it)
-   gets it without importing this sheet. Only main's footer-clearance stays here,
-   since it belongs to the main-app document frame. */
-@media (max-width: 50rem) {
   main {
     padding-bottom: 0;
   }
 }
 
-/* The topic tree's styling is colocated in its components (TopicTree / CategoryNode /
-   TopicRow); the tree-wide shared primitives (the expander column, the word-count meta)
-   live in TopicTree via `.topics :global(...)`. */
+/* Every popup's box: the tree's panels and notes, the Custom row's panels, the notes and
+   confirmations inside them. Where one goes and how big it gets is shared/placement's;
+   its font, layer and anything else of its own stay with its component. */
+.popup {
+  position: absolute;
+  z-index: 10;
+  padding: 0.5rem 0.6rem;
+  color: var(--chip-fg);
+  background: var(--chip-bg);
+  border: 1px solid var(--panel-border);
+  border-radius: var(--radius);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
+  text-align: left;
+  cursor: auto;
+  /* Reaching the end of a long list shouldn't start scrolling the page behind it. */
+  overscroll-behavior: contain;
+}
 
-/* The tooltip marker/note are components: .tip-marker (TipMarker) and .tip-note + its
-   variants (TipNote) are colocated in components/shared/. A .tip-note stretches across
-   its positioned parent — whichever component renders it (a topic row, a ruler, a panel)
-   supplies that anchor. */
-
-/* Most topic-row controls are colocated in their components: NamesModeSelect (.names-mode),
-   FameDepthSlider (.group-depth/.depth-*), VariantPanel (.variant-list); the 📏/🇬🇧 row
-   toggles, shared by category and topic rows, sit in TopicTree with the other shared row
-   atoms. The one control kept here is the 🧹 overlay below — a sizeable primitive shared by
-   OmittedPanel AND VariantPanel (which reuses its slot and styling), too big to colocate in
-   their common parent without bloating it, so it stays a named main-app shared primitive.
-
-   A panel, not a tip-note, because it holds checkboxes and links — interactive content has
-   no business in role="tooltip". Not positioned off the 🧹 (which sits at an unknown x in a
-   row of unknown width): it stretches across the row, anchored to .topic-item, like .tip-note. */
+/* The checklist panel behind a row's 🚫, worn by four components (OmittedPanel,
+   VariantPanel, CustomCharsPanel, CustomOmittedPanel) with no single parent to hold it.
+   A panel rather than a note, since it holds checkboxes and links, which have no
+   business in role="tooltip". */
 .omitted-host {
   display: contents;
 }
@@ -94,32 +77,37 @@ h2 {
 .omitted-btn:focus-visible {
   opacity: 1;
 }
-/* Where it opens, how wide and how tall it may get: shared/placement, inline. */
 .omitted-panel {
-  position: absolute;
-  z-index: 10;
-  /* Reaching the end of the list shouldn't start scrolling the column behind it. */
-  overscroll-behavior: contain;
-  padding: 0.5rem 0.6rem;
-  background: var(--chip-bg);
-  border: 1px solid var(--panel-border);
-  border-radius: var(--radius);
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
   font-size: 0.8rem;
   font-weight: 400;
   line-height: 1.35;
-  text-align: left;
-  cursor: auto;
 }
 .omitted-title {
   margin: 0 0 0.35rem;
 }
+.omitted-panel ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+/* inline-flex, not flex: a block-level label would stretch its click area across the
+   whole panel, far past the text it names. */
+.omitted-panel label {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.45rem;
+  cursor: pointer;
+}
+/* A disabled rule keeps its full contrast: the checkbox already says it can't change. */
+.omitted-panel input:disabled {
+  cursor: not-allowed;
+}
 
-/* The Custom row's control buttons (§X2/§X3) — the ↕️ / − / + / 🗑️ cluster and the
-   💾 saved-lists trigger. A shared primitive here rather than in CustomTopic, so the
-   trigger inside SavedListsPanel wears the same button (a scoped rule wouldn't cross
-   into the child component). The layout (.ctl-grid / .ctl-col / .ctl-group) stays
-   with CustomTopic, which owns it. */
+/* The Custom row's control buttons. Here rather than in CustomTopic, so the 💾 inside
+   SavedListsPanel wears the same button (a scoped rule doesn't reach a child). */
 .ctl-btn {
   display: inline-flex;
   align-items: center;
@@ -148,9 +136,8 @@ h2 {
   border-color: var(--muted-2);
   box-shadow: inset 0 0 0 1px var(--muted-2);
 }
-/* An icon that stacks several glyphs over two lines (the grow control's `+`s): a
-   tight leading so the vertical gap between the rows matches the horizontal one — a
-   `+` is a small glyph, so its natural line box is far taller than it needs. */
+/* The grow control stacks its `+`s over two lines; a `+` is a small glyph, so its
+   natural line box leaves far too wide a gap between the rows. */
 .ctl-btn.stacked {
   line-height: 0.7;
   white-space: normal;
@@ -164,34 +151,8 @@ h2 {
   background: rgba(200, 60, 60, 0.34);
   border-color: rgba(200, 60, 60, 0.7);
 }
-.omitted-panel ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 0.3rem;
-}
-/* inline-flex, not flex: a block-level label would stretch its click area across the whole
-   panel row, far past the text it names. */
-.omitted-panel label {
-  display: inline-flex;
-  align-items: baseline;
-  gap: 0.45rem;
-  cursor: pointer;
-}
-/* A disabled rule keeps its full contrast — the most interesting line in the panel, and the
-   checkbox already says it can't be changed. */
-.omitted-panel input:disabled {
-  cursor: not-allowed;
-}
 
-
-/* The header/picker/settings chrome is colocated in components/layout/: PageHeader (the
-   title row, header slot and tagline), LanguagePicker (the globe button menu) and
-   SettingsMenu (the gear popover, its setting and reset rows, and the gear nudge animation).
-   The one bit kept here is the button box below — shared by the globe (LanguagePicker) and
-   the gear (SettingsMenu), so a named shared primitive. */
+/* The 🌐 and ⚙️ buttons, worn by LanguagePicker and SettingsMenu alike. */
 .lang-btn {
   background: none;
   border: 1px solid var(--panel-border);
@@ -201,4 +162,3 @@ h2 {
   line-height: 1;
   cursor: pointer;
 }
-/* .chips/.chip (WordChips) and .counter (OutputCounter) are colocated in components/output/. */

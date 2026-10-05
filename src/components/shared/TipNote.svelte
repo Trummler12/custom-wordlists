@@ -17,7 +17,7 @@
        aria-describedby at this note; the language warning instead carries the text
        in its own aria-label, where the note is a visual echo. -->
   <p
-    class="tip-note"
+    class="popup tip-note"
     use:placement={local ? localNote(overlays.opener("tip")) : rowPopup(overlays.opener("tip"))}
     class:local
     {id}
@@ -36,18 +36,11 @@
   /* A row's note is placed like a row's panels (shared/placement, inline); a local note by
      overlays (fixed, from its trigger's rect). */
   .tip-note {
-    position: absolute;
-    z-index: 10;
     margin: 0;
     padding: 0.4rem 0.55rem;
     font-size: 0.8rem;
     font-weight: 400;
     line-height: 1.35;
-    color: var(--chip-fg);
-    background: var(--chip-bg);
-    border: 1px solid var(--panel-border);
-    border-radius: var(--radius);
-    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
   }
   /* Floated into the text flow rather than set off by padding, so only the line or two beside
      it make room; the rest of the note keeps its full width. */

@@ -81,7 +81,7 @@
     </button>
     {#if open}
       <div
-        class="coverage-panel"
+        class="popup coverage-panel"
         use:placement={rowPopup(overlays.opener("coverage"))}
         role="radiogroup"
         aria-label={plain(lang.ui.coverage.label)}
@@ -130,21 +130,10 @@
     height: 0.8rem;
     display: block;
   }
-  /* Where it opens, how wide and how tall it may get: shared/placement, inline. */
   .coverage-panel {
-    position: absolute;
-    z-index: 10;
-    overscroll-behavior: contain;
-    padding: 0.5rem 0.6rem;
-    background: var(--chip-bg);
-    border: 1px solid var(--panel-border);
-    border-radius: var(--radius);
-    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
     font-size: 0.8rem;
     font-weight: 400;
     line-height: 1.35;
-    text-align: left;
-    cursor: auto;
   }
   .coverage-title {
     margin: 0 0 0.35rem;
