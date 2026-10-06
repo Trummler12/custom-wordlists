@@ -17,6 +17,26 @@
   async function copy(): Promise<void> {
     if (!(await output.copy())) chips?.select();
   }
+
+  /** The Copy button may grow to fit "Copied!" but never shrinks back, so the ⚙️ and 🌐
+   *  beside it don't shift each time it flashes. A new interface language starts over. */
+  function holdGrowth(node: HTMLElement) {
+    let widest = 0;
+    const ro = new ResizeObserver(() => {
+      const w = node.getBoundingClientRect().width;
+      if (w > widest) {
+        widest = w;
+        node.style.minWidth = `${w}px`;
+      }
+    });
+    ro.observe(node);
+    $effect(() => {
+      void lang.uiLang;
+      widest = 0;
+      node.style.minWidth = "";
+    });
+    return { destroy: () => ro.disconnect() };
+  }
 </script>
 
 <section class="output" aria-label={plain(lang.ui.output.label)}>
@@ -25,7 +45,7 @@
     <div class="head-actions">
       <SettingsMenu id="output" />
       <LanguagePicker id="output" />
-      <button type="button" onclick={copy} disabled={output.merged.length === 0}>
+      <button type="button" use:holdGrowth onclick={copy} disabled={output.merged.length === 0}>
         {#if output.copyState === "copied"}<Msg text={lang.ui.output.copied} />
         {:else if output.copyState === "failed"}<Msg text={lang.ui.output.copyFailed} />
         {:else}<Msg text={lang.ui.output.copy} />{/if}
