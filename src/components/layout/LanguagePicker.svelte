@@ -137,7 +137,12 @@
               id={`${id}-secondary-lang`}
               labelledby={`${id}-secondary-before ${id}-secondary-after`}
               value={lang.secondary}
-              onpick={(l) => lang.setSecondary(l)}
+              onpick={(l) => {
+                // Picking a language says the reader wants the option, so it ticks the
+                // box too, even for the language already picked.
+                lang.setSecondary(l);
+                settings.setShowSecondaryToggle(true);
+              }}
             />
             <label for={`${id}-secondary`} id={`${id}-secondary-after`}><Msg text={ui.showSecondaryAfter} /></label>
             <TipMarker tipId={`${id}-hint-secondary`} icon="ℹ️" text={ui.showSecondaryHint} />
