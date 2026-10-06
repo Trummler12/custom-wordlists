@@ -5,7 +5,7 @@
 // One instance, reached through property access (see state/lang.svelte.ts for why).
 
 import { loadManifest, loadTopic } from "../lib/data";
-import { buildTree, mergeGroups, synthesizeTopics, titleCase, type CatNode } from "../lib/tree";
+import { buildTree, mergeGroups, pruneTree, synthesizeTopics, titleCase, type CatNode } from "../lib/tree";
 import type { CategoryMeta, Group, Topic, TopicSummary } from "../lib/types";
 import { baseTag, langSupport } from "../lib/languages";
 import { allRules, BASE_RULE, EXTEND_RULE, includeRules, UNKNOWN_RULE, visibleGroup } from "../lib/omitted";
@@ -95,6 +95,26 @@ class TopicsState {
    *  their own, hung in the tree beside their contributors. See lib/tree. */
   readonly synths = $derived(synthesizeTopics(this.all));
   readonly tree: CatNode = $derived(buildTree([...this.all, ...this.synths]));
+
+  /** Flagged topics kept on screen although the setting no longer shows them: they were
+   *  selected when it changed, and pulling a selected list out from under the reader
+   *  would leave its words in the Output with no row to undo them. `selection` fills and
+   *  empties it (see `holdSelected` / `releaseGrace`). */
+  graced = $state<string[]>([]);
+
+  /** The tree the Topics list renders: the incomplete / planned topics only where the
+   *  "Show … topics" setting or the grace above lets them through. */
+  readonly visibleTree: CatNode = $derived.by(() => {
+    const graced = new Set(this.graced);
+    return pruneTree(this.tree, (t) => this.shownBySetting(t) || graced.has(t.id));
+  });
+
+  /** Whether the setting alone shows this topic. */
+  shownBySetting(t: TopicSummary): boolean {
+    const kind = t.plannedTopic ? "planned" : t.incompleteTopic ? "incomplete" : null;
+    if (!kind) return true;
+    return settings.showTopics && (settings.showTopicsKind === "all" || settings.showTopicsKind === kind);
+  }
 
   /** Real topics by id, for resolving a synthesized topic's contributors. */
   readonly byId: Record<string, TopicSummary> = $derived(
