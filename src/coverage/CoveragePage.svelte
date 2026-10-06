@@ -250,17 +250,21 @@
 <header>
   <a class="home" href={base}>← <Msg text={ui.home} /></a>
   <div class="controls">
-    <label><Msg text={ui.topicLabel} />
-      <select value={route.topic ?? ""} onchange={goTopic}>
+    <!-- Captions, not <label>s: a label hands its hover to the dropdown, which then
+         lights up under a pointer that can't open it. -->
+    <span class="control"
+      ><span id="coverage-topic-label"><Msg text={ui.topicLabel} /></span>
+      <select aria-labelledby="coverage-topic-label" value={route.topic ?? ""} onchange={goTopic}>
         {#if !route.topic}<option value="" disabled>—</option>{/if}
         {#each COVERAGE_TOPICS as t}<option value={t}>{topicTitle(t, uiLang)}</option>{/each}
-      </select>
-    </label>
-    <label class="uilang">🌐
+      </select></span
+    >
+    <span class="control uilang"
+      ><span aria-hidden="true">🌐</span>
       <select bind:value={uiLang} aria-label={plain(ui.uiLanguage)}>
         {#each uiLangOptions as opt}<option value={opt.code}>{opt.name}</option>{/each}
-      </select>
-    </label>
+      </select></span
+    >
   </div>
 </header>
 
@@ -405,7 +409,7 @@
     align-items: center;
     gap: 0.75rem;
   }
-  .controls label {
+  .controls .control {
     display: inline-flex;
     align-items: center;
     gap: 0.35rem;
