@@ -324,6 +324,12 @@ async function main() {
     title: TITLE,
     icon: "🗣️",
     description: "The world's languages, each named in every language skribbl offers. Fame tiers by speakers worldwide.",
+    generated: "fully",
+    dataOrigin: "Wikidata",
+    filePaths: {
+      "scripts/geography/": ["dump-language-data.mjs", "build-languages.mjs"],
+      "data-raw/geography/": "languages/",
+    },
     // ja-Latn is offered but not sourced: the reader opts into romaji, derived from the
     // Japanese name at render (see generatedRomaji / lib/languages/kana), as in the country lists.
     languages: NAME_LANGS.flatMap((l) => (l === "ja" ? ["ja", "ja-Latn"] : [l])),

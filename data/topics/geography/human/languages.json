@@ -3,6 +3,12 @@
   "title": {"en":"Languages","de":"Sprachen","es":"Idiomas","fr":"Langues","it":"Lingue","ja":"言語","ko":"언어","zh-Hans":"语言","zh-Hant":"語言","pt":"Idiomas","ru":"Языки","tr":"Diller","pl":"Języki","nl":"Talen","bg":"Езици","cs":"Jazyky","da":"Sprog","et":"Keeled","fi":"Kielet","el":"Γλώσσες","he":"שפות","hu":"Nyelvek","lv":"Valodas","mk":"Јазици","no":"Språk","ro":"Limbi","sr":"Језици","sk":"Jazyky","sv":"Språk","tl":"Mga Wika"},
   "icon": "🗣️",
   "description": "The world's languages, each named in every language skribbl offers. Fame tiers by speakers worldwide.",
+  "generated": "fully",
+  "dataOrigin": "Wikidata",
+  "filePaths": {
+    "scripts/geography/": ["dump-language-data.mjs","build-languages.mjs"],
+    "data-raw/geography/": "languages/"
+  },
   "languages": ["en","de","es","fr","it","ja","ja-Latn","ko","zh-Hans","zh-Hant","pt","ru","tr","pl","nl","bg","cs","da","et","fi","el","he","hu","lv","mk","no","ro","sr","sk","sv","tl"],
   "generatedRomaji": true,
   "sources": [
