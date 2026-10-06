@@ -7,7 +7,7 @@
   import { lang } from "../../state/lang.svelte";
   import { overlays } from "../../state/overlays.svelte";
   import { resetSelectionSettings } from "../../state/reset";
-  import { settings } from "../../state/settings.svelte";
+  import { settings, TOPIC_KINDS, type TopicKind } from "../../state/settings.svelte";
   import Msg from "../../locale/html/Msg.svelte";
   import { menuPopup, placement } from "../shared/placement";
   import TipMarker from "../shared/TipMarker.svelte";
@@ -162,6 +162,33 @@
           {/if}
         {/each}
       </div>
+      <!-- The words on either side label the checkbox; the dropdown sits between them,
+           never inside one, so picking a kind never ticks the box. -->
+      <div class="setting-row">
+        <input
+          id={`${id}-show-topics`}
+          type="checkbox"
+          checked={settings.showTopics}
+          onchange={(e) => settings.setShowTopics(e.currentTarget.checked)}
+        />
+        {#if lang.ui.settings.showTopicsBefore}
+          <label for={`${id}-show-topics`} id={`${id}-show-topics-before`}
+            ><Msg text={lang.ui.settings.showTopicsBefore} /></label
+          >
+        {/if}
+        <select
+          aria-labelledby={`${id}-show-topics-before ${id}-show-topics-after`}
+          value={settings.showTopicsKind}
+          onchange={(e) => settings.setShowTopicsKind(e.currentTarget.value as TopicKind)}
+        >
+          {#each TOPIC_KINDS as k (k)}<option value={k}>{plain(lang.ui.settings.showTopicsKind[k])}</option>{/each}
+        </select>
+        <label for={`${id}-show-topics`} id={`${id}-show-topics-after`}
+          ><Msg text={lang.ui.settings.showTopicsAfter} /></label
+        >
+        <TipMarker tipId={`${id}-show-topics-hint`} icon="ℹ️" text={lang.ui.settings.showTopicsHint} />
+        <TipNote id={`${id}-show-topics-hint`} text={lang.ui.settings.showTopicsHint} />
+      </div>
       <!-- Destructive, so it sits apart from the preferences above it and is armed
            before it fires. -->
       <div class="reset-row">
@@ -210,7 +237,8 @@
     width: fit-content;
     cursor: pointer;
   }
-  .setting-row select {
+  .setting-row select,
+  .setting-row label {
     font: inherit;
     cursor: pointer;
   }
