@@ -28,8 +28,8 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --muted: var(--color-gray-400);
-    --muted-2: var(--color-gray-500);
+    --muted: var(--color-gray-100);
+    --muted-2: var(--color-gray-300);
     --border: var(--color-gray-600);
     --panel-border: var(--color-gray-550);
     --chip-bg: var(--color-slate-800);
