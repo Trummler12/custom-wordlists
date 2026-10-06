@@ -38,9 +38,10 @@ class SettingsState {
   scriptLimits = $state<Record<string, Limits>>({});
 
   /** Whether the Topics list also shows the topics marked incomplete or planned, and
-   *  which of them. The kind is kept while the box is off, so ticking it again brings
-   *  back the same choice. */
-  showTopics = $state(false);
+   *  which of them. On by default: hiding the incomplete ones leaves half the top-level
+   *  categories standing empty. The kind is kept while the box is off, so ticking it
+   *  again brings back the same choice. */
+  showTopics = $state(true);
   showTopicsKind = $state<TopicKind>("incomplete");
 
   /** Omission rules the reader has flipped away from their default — keyed
