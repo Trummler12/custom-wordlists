@@ -311,22 +311,24 @@ class SelectionState {
     return this.topicSelCount(t) > 0 && !this.topicFull(t);
   }
 
-  /** A category's topics minus the synthesized ones. A synthesized topic re-lists
-   *  its contributors, which already sit in the same subtree, so counting or
-   *  toggling it alongside them would double every country. */
-  private real(ts: TopicSummary[]): TopicSummary[] {
-    return ts.filter((t) => !topics.isSynth(t.id));
+  /** The topics a category speaks for. Not a synthesized one: it re-lists its
+   *  contributors, which already sit in the same subtree, so counting or toggling it
+   *  alongside them would double every country. Not a planned one, which can't be
+   *  selected. And not one with nothing in it (Antarctica's 0/0), or a category whose
+   *  every other topic is selected could never read as full. */
+  private counted(ts: TopicSummary[]): TopicSummary[] {
+    return ts.filter((t) => !topics.isSynth(t.id) && !t.plannedTopic && this.topicTotal(t) > 0);
   }
 
   catTotal(ts: TopicSummary[]): number {
-    return this.real(ts).reduce((n, t) => n + this.topicTotal(t), 0);
+    return this.counted(ts).reduce((n, t) => n + this.topicTotal(t), 0);
   }
   catSel(ts: TopicSummary[]): number {
-    return this.real(ts).reduce((n, t) => n + this.topicSelCount(t), 0);
+    return this.counted(ts).reduce((n, t) => n + this.topicSelCount(t), 0);
   }
   catFull(ts: TopicSummary[]): boolean {
-    const real = this.real(ts);
-    return real.length > 0 && real.every((t) => this.topicFull(t));
+    const counted = this.counted(ts);
+    return counted.length > 0 && counted.every((t) => this.topicFull(t));
   }
   catPartial(ts: TopicSummary[]): boolean {
     return this.catSel(ts) > 0 && !this.catFull(ts);
@@ -410,11 +412,33 @@ class SelectionState {
   async toggleCategory(ts: TopicSummary[]): Promise<void> {
     // Only the real topics: a synthesized one just re-lists members already here,
     // and toggling both would fight over the same contributors.
-    const real = this.real(ts);
-    const on = !this.catFull(real);
-    const loaded = await Promise.all(real.map((t) => topics.data[t.id] ?? topics.ensure(t)));
-    real.forEach((t, i) => loaded[i] && this.setTopic(t, on));
+    const counted = this.counted(ts);
+    const on = !this.catFull(counted);
+    const loaded = await Promise.all(counted.map((t) => topics.data[t.id] ?? topics.ensure(t)));
+    counted.forEach((t, i) => loaded[i] && this.setTopic(t, on));
   }
+
+  // --- Grace for flagged topics ----------------------------------------------
+  // A change of the "Show … topics" setting never hides a selected list (see
+  // `topics.graced`); it goes once it is deselected and the page has scrolled, the
+  // same moment a pinned note closes.
+
+  /** Before the setting changes: keep every flagged topic that is selected. */
+  holdSelected(): void {
+    const held = [...topics.all, ...topics.synths]
+      .filter((t) => (t.incompleteTopic || t.plannedTopic) && this.topicSelCount(t) > 0)
+      .map((t) => t.id);
+    if (held.length) topics.graced = [...new Set([...topics.graced, ...held])];
+  }
+  /** On a page scroll: let go of the graced topics that are no longer selected. */
+  releaseGrace = (): void => {
+    if (topics.graced.length === 0) return;
+    const kept = topics.graced.filter((id) => {
+      const t = topics.byId[id] ?? topics.synthById[id];
+      return !!t && this.topicSelCount(t) > 0;
+    });
+    if (kept.length !== topics.graced.length) topics.graced = kept;
+  };
 
   // --- Ruler visibility ------------------------------------------------------
   // Purely a view option: which fame rulers are shown, independent of what is
