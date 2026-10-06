@@ -164,7 +164,9 @@
         {/each}
       </div>
       <!-- The words on either side label the checkbox; the dropdown sits between them,
-           never inside one, so picking a kind never ticks the box. -->
+           never inside one, so opening it doesn't tick the box. Changing the kind does.
+           OPTIONAL TODO: re-picking the same kind too, like the secondary language's
+           dropdown in the 🌐 panel; a native <select> reports no re-pick (docs/BACKLOG.md). -->
       <div class="setting-row">
         <input
           id={`${id}-show-topics`}
@@ -186,6 +188,7 @@
           onchange={(e) => {
             selection.holdSelected();
             settings.setShowTopicsKind(e.currentTarget.value as TopicKind);
+            settings.setShowTopics(true);
           }}
         >
           {#each TOPIC_KINDS as k (k)}<option value={k}>{plain(lang.ui.settings.showTopicsKind[k])}</option>{/each}
