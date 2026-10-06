@@ -256,6 +256,11 @@ async function main() {
     if (topic.id !== id) {
       errors.push(`${rel}: id "${topic.id}" does not match location "${id}"`);
     }
+    // A planned topic is incomplete by definition, so carrying both says nothing more
+    // and leaves it unclear which of the two the visibility setting should go by.
+    if (topic.incompleteTopic && topic.plannedTopic) {
+      errors.push(`${rel}: incompleteTopic and plannedTopic exclude each other (planned already implies incomplete)`);
+    }
 
     // Gather this leaf into every family it contributes to (one per level up to
     // `inheritsUpwards`), keyed by the meeting category and the shared file stem.

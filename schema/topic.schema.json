@@ -58,6 +58,8 @@
       "description": "Where the entries came from — one string or a list of them. Free-form, so a label can precede the link (\"German: https://…\"); validate-data warns when an item contains no URL."
     },
     "generatedRomaji": { "type": "boolean", "description": "True when this list's romaji were produced by transliterating its Japanese names rather than taken from a source that names them — see src/lib/languages/kana.mjs. A reading derived from kana is correct as a reading and may still not be how the name is officially spelled in Latin script, so the UI says where that is the case and invites a correction." },
+    "incompleteTopic": { "const": true, "description": "Marks a list that is still missing entries a reader would expect. The Topics list hides it unless the reader asks to see incomplete topics, and marks it 🚧 with a call for help where it is shown. Absent = complete. Topics only: a category's state follows from its children. Never together with `plannedTopic`, which already implies it." },
+    "plannedTopic": { "const": true, "description": "Marks a topic that is announced but not ready: hidden unless the reader asks to see planned topics, and where shown it is marked 📅 and cannot be selected, whatever entries the file already holds. Switching it to `incompleteTopic` is what releases it. Absent = ready." },
     "order": { "type": "integer", "description": "Where this sits among its siblings, lowest first. Undeclared sorts last, alphabetically — so ordering a few of them needs nothing on the rest. The tree is otherwise the file system's, which puts Animation first and Gaming sixth for no reason anyone chose." },
     "corrections": {
       "type": "array",

@@ -225,6 +225,8 @@ async function buildIndex() {
       ...(data.languages ? { languages: data.languages } : {}),
       ...(data.usesEnglishFor ? { usesEnglishFor: data.usesEnglishFor } : {}),
       ...(data.generatedRomaji ? { generatedRomaji: true } : {}),
+      ...(data.incompleteTopic ? { incompleteTopic: true } : {}),
+      ...(data.plannedTopic ? { plannedTopic: true } : {}),
       // The tree synthesizes a merged topic for each family of same-named leaves
       // that carry this; the manifest passes it through so that can happen without
       // loading every file first. See src/lib/tree.ts.

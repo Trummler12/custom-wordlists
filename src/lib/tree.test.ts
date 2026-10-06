@@ -105,6 +105,24 @@ describe("synthesizeTopics", () => {
     expect(synth.languages).toEqual(["en", "de"]); // fr/ja/es each missing from some member
   });
 
+  it("is as unfinished as its least finished member", () => {
+    const [complete] = synthesizeTopics(countries);
+    expect(complete.incompleteTopic).toBeUndefined();
+    expect(complete.plannedTopic).toBeUndefined();
+
+    const [incomplete] = synthesizeTopics([...countries.slice(1), { ...countries[0], incompleteTopic: true }]);
+    expect(incomplete.incompleteTopic).toBe(true);
+    expect(incomplete.plannedTopic).toBeUndefined();
+
+    const [planned] = synthesizeTopics([
+      { ...countries[0], incompleteTopic: true },
+      { ...countries[1], plannedTopic: true },
+      countries[2],
+    ]);
+    expect(planned.plannedTopic).toBe(true);
+    expect(planned.incompleteTopic).toBeUndefined();
+  });
+
   it("keeps different file stems apart", () => {
     const synths = synthesizeTopics([
       leaf("geography/human/africa", "countries", 1),

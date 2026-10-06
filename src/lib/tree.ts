@@ -84,6 +84,12 @@ export function synthesizeTopics(topics: TopicSummary[]): TopicSummary[] {
       // Romaji is derived per contributor and merged in; the synth carries the flag
       // too so its own row derives it and shows the ℹ️ note (see derivedRomaji).
       ...(first.generatedRomaji ? { generatedRomaji: true } : {}),
+      // A merge is only as finished as its least finished member.
+      ...(contributors.some((c) => c.plannedTopic)
+        ? { plannedTopic: true }
+        : contributors.some((c) => c.incompleteTopic)
+          ? { incompleteTopic: true }
+          : {}),
       contributors: contributors.map((c) => c.id),
       // Pre-load baseline only; once the members load, `topics.groupsOf` gives the
       // deduplicated count (transcontinentals merged), which is what the row shows.

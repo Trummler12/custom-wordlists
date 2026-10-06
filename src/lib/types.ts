@@ -21,6 +21,11 @@ export interface TopicSummary {
   usesEnglishFor?: string[];
   /** Whether this list's romaji were transliterated rather than sourced. */
   generatedRomaji?: boolean;
+  /** A list still missing entries: hidden unless the reader shows incomplete topics. */
+  incompleteTopic?: boolean;
+  /** An announced topic that is not ready: hidden unless the reader shows planned
+   *  topics, and never selectable. */
+  plannedTopic?: boolean;
   /** Whether this topic's fame ruler starts hidden behind a toggle. Its *presence*
    *  (either value) also makes the topic its own ruler-visibility boundary; absent
    *  means it inherits from the nearest ancestor that declares it. See lib/rulers. */
@@ -317,6 +322,10 @@ export interface Topic {
    *  than taken from a source that names them. Correct as readings, not necessarily
    *  as spellings — the UI says so and asks for corrections. */
   generatedRomaji?: boolean;
+  /** Still missing entries; see `incompleteTopic` in schema/topic.schema.json. */
+  incompleteTopic?: boolean;
+  /** Announced but not ready, and not selectable; see the schema. */
+  plannedTopic?: boolean;
   /** Whether this topic's fame ruler starts hidden behind a toggle; its presence
    *  also marks the topic as its own ruler-visibility boundary. */
   hideRulersByDefault?: boolean;
