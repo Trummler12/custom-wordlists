@@ -64,6 +64,12 @@
   },
   "icon": "🔴",
   "description": "Generation V Pokémon, in ten languages. Fame tiers from an empirical recognition rate (tier 0 = best known); a first pass from one quiz's results, meant to be refined.",
+  "generated": ["names","tiers"],
+  "dataOrigin": ["PokéAPI","Sporcle"],
+  "filePaths": {
+    "data-raw/gaming/pokemon/pokemon/": "gen-5/",
+    "scripts/": "tier-by-fame.mjs"
+  },
   "languages": ["de","en","es","es-419","fr","it","ja","ja-Latn","ko","zh-Hans","zh-Hant"],
   "usesEnglishFor": ["*"],
   "sources": [
