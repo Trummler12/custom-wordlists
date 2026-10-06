@@ -90,11 +90,6 @@ export interface CategoryMeta {
    *  to the reader's secondary language at once (English-only once, hence the name).
    *  See lib/languages/secondary. */
   sharedEnglishToggle?: boolean;
-  /** Icon keys whose control this category surfaces on its own row and syncs across
-   *  its subtree — `["geoguessr"]` on `geography/human` gives one coverage radio
-   *  that commands every Countries/Capitals leaf below. Generic so any icon-tagged
-   *  control (see `Omission.icon`) can be lifted to a category. */
-  syncControls?: string[];
 }
 
 /** The generated manifest the frontend loads first. */

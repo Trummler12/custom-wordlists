@@ -32,6 +32,5 @@
     "tl": {"short": "Tao", "long": "Heograpiyang Pantao"}
   },
   "icon": "🏙️",
-  "order": 2,
-  "syncControls": ["geoguessr", "sovereignty"]
+  "order": 2
 }

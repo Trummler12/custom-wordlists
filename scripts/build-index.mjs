@@ -174,9 +174,6 @@ async function readCategoryMeta(path) {
   if (typeof data.hideRulersByDefault === "boolean") meta.hideRulersByDefault = data.hideRulersByDefault;
   if (typeof data.hideRulers === "boolean") meta.hideRulers = data.hideRulers;
   if (data.sharedEnglishToggle) meta.sharedEnglishToggle = true;
-  // Icon keys whose control this category surfaces and syncs across its subtree
-  // (e.g. ["geoguessr"]). Generic on purpose — any icon-tagged control rides it.
-  if (Array.isArray(data.syncControls) && data.syncControls.length) meta.syncControls = data.syncControls;
   return meta;
 }
 
