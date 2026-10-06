@@ -85,6 +85,11 @@
   /* The 4ch is the reset (full-blank) state; rowfit.ts narrows this inline, per pixel, when a
      row can't fit its title — then slides the whole count (.meta) into the gutter — before the
      title ellipsises. Neither touches the row's own width, so its ResizeObserver can't loop. */
+  /* A planned topic's count, and a category's with nothing but planned topics: present,
+     but nothing to pick. */
+  .topics :global(.meta.disabled) {
+    color: var(--disabled);
+  }
   .topics :global(.meta .total) {
     display: inline-block;
     min-width: 4ch;

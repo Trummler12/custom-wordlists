@@ -9,6 +9,7 @@
   import { rulerControl, rulerHidden } from "../../lib/rulers";
   import { cancelFit, scheduleFit } from "../../lib/rowfit";
   import type { TopicSummary } from "../../lib/types";
+  import { CONTRIBUTING_URL } from "../../lib/links";
   import { resolveStr } from "../../lib/words";
   import { langWarning } from "../../locale";
   import { lang } from "../../state/lang.svelte";
@@ -115,6 +116,18 @@
     }
   });
 
+  // A planned topic is announced, not offered: its row says so and nothing on it acts.
+  const planned = $derived(!!topic.plannedTopic);
+  const plannedTitle = $derived(planned ? plain(lang.ui.tree.plannedUnselectable) : undefined);
+  const statusTipId = $derived(`status-${topic.id}`);
+  const statusNote = $derived(
+    planned
+      ? { icon: "📅", text: lang.ui.tree.plannedTopic(CONTRIBUTING_URL) }
+      : topic.incompleteTopic
+        ? { icon: "🚧", text: lang.ui.tree.incompleteTopic(CONTRIBUTING_URL) }
+        : null,
+  );
+
   // Nothing else will trigger the load: there is no expander to click, and the
   // ruler can't be drawn without the tiers it snaps to.
   onMount(() => topics.ensure(topic));
@@ -147,10 +160,12 @@
     <!-- Keeps the checkbox column straight: the placeholder holds the width a
          category's expander occupies, so topic checkboxes line up under it. -->
     <span class="expander placeholder" aria-hidden="true">▸</span>
-    <label class="topic">
+    <label class="topic" class:planned>
       <input
         type="checkbox"
         checked={selection.topicFull(topic)}
+        disabled={planned}
+        title={plannedTitle}
         use:setIndeterminate={selection.topicPartial(topic)}
         onchange={() => selection.toggleTopic(topic)}
       />
@@ -161,57 +176,68 @@
       {#if langNote}
         <TipMarker tipId={langTipId} icon={langNote.icon} text={langNote.text} />
       {/if}
+      {#if statusNote}
+        <TipMarker tipId={statusTipId} icon={statusNote.icon} text={statusNote.text} />
+      {/if}
     </label>
-    {#if tierNote}
-      <TipMarker tipId={tierTipId} icon={tierNote.icon ?? "ℹ️"} text={tierText} />
-    {/if}
-    <!-- Both outside the <label>: a second form control inside it would leave the
-         checkbox it names ambiguous, and the count isn't a name for anything. -->
-    {#if sole}
-      <NamesModeSelect tid={topic.id} group={namesGroup} label={name.long} />
-    {/if}
-    {#if sole}
-      <OmittedPanel tid={topic.id} group={sole} />
-    {/if}
-    {#if sole}
-      <LanguageTypePanel tid={topic.id} group={sole} />
-    {/if}
-    {#if coverage}
-      <CoveragePanel id={`coverage-${topic.id}`} targets={coverageTargets} />
-    {/if}
-    {#if sovActive}
-      <SovereigntyMatrix id={`sovereignty-${topic.id}`} targets={sovTargets} />
-    {/if}
-    <!-- Per topic, not per group: how a language spells a name is the same question
-         in every group of a list. Shows itself only where the answers differ. -->
-    <VariantPanel tid={topic.id} />
-    {#if secondaryOptIn}
-      <button
-        type="button"
-        class="secondary-toggle"
-        class:on={forced}
-        aria-pressed={forced}
-        aria-label={forcedLabel}
-        title={forcedLabel}
-        onclick={() => lang.toggleForced(topic)}><SecondaryMark /></button
-      >
-    {/if}
-    {#if rulerOptIn}
-      <button
-        type="button"
-        class="ruler-toggle"
-        class:shown={rulerShown}
-        aria-pressed={rulerShown}
-        aria-label={plain(lang.ui.fame.toggle(rulerShown))}
-        title={plain(lang.ui.fame.toggle(rulerShown))}
-        onclick={() => selection.toggleRuler(topic)}
-      >📏</button>
+    <!-- Everything that configures or ranks a list, none of which a planned one offers. -->
+    {#if !planned}
+      {#if tierNote}
+        <TipMarker tipId={tierTipId} icon={tierNote.icon ?? "ℹ️"} text={tierText} />
+      {/if}
+      <!-- Both outside the <label>: a second form control inside it would leave the
+           checkbox it names ambiguous, and the count isn't a name for anything. -->
+      {#if sole}
+        <NamesModeSelect tid={topic.id} group={namesGroup} label={name.long} />
+      {/if}
+      {#if sole}
+        <OmittedPanel tid={topic.id} group={sole} />
+      {/if}
+      {#if sole}
+        <LanguageTypePanel tid={topic.id} group={sole} />
+      {/if}
+      {#if coverage}
+        <CoveragePanel id={`coverage-${topic.id}`} targets={coverageTargets} />
+      {/if}
+      {#if sovActive}
+        <SovereigntyMatrix id={`sovereignty-${topic.id}`} targets={sovTargets} />
+      {/if}
+      <!-- Per topic, not per group: how a language spells a name is the same question
+           in every group of a list. Shows itself only where the answers differ. -->
+      <VariantPanel tid={topic.id} />
+      {#if secondaryOptIn}
+        <button
+          type="button"
+          class="secondary-toggle"
+          class:on={forced}
+          aria-pressed={forced}
+          aria-label={forcedLabel}
+          title={forcedLabel}
+          onclick={() => lang.toggleForced(topic)}><SecondaryMark /></button
+        >
+      {/if}
+      {#if rulerOptIn}
+        <button
+          type="button"
+          class="ruler-toggle"
+          class:shown={rulerShown}
+          aria-pressed={rulerShown}
+          aria-label={plain(lang.ui.fame.toggle(rulerShown))}
+          title={plain(lang.ui.fame.toggle(rulerShown))}
+          onclick={() => selection.toggleRuler(topic)}
+        >📏</button>
+      {/if}
     {/if}
     <!-- The ratio alone, since it reads the same in every language; the sentence it
          stands for is a hover away. The row needs the width for its controls. -->
     <span
       class="meta"
-      title={plain(lang.ui.tree.wordsOf(selection.topicSelCount(topic), selection.topicTotal(topic)))}
+      class:disabled={planned}
+      title={plain(
+        planned
+          ? lang.ui.tree.plannedUnselectable
+          : lang.ui.tree.wordsOf(selection.topicSelCount(topic), selection.topicTotal(topic)),
+      )}
     >
       {#if !topics.isReady(topic)}<Msg text={lang.ui.tree.loadingShort} />{:else}{selection.topicSelCount(
           topic,
@@ -223,11 +249,14 @@
   {#if langNote}
     <TipNote id={langTipId} text={langNote.text} />
   {/if}
-  {#if tierNote}
+  {#if statusNote}
+    <TipNote id={statusTipId} text={statusNote.text} />
+  {/if}
+  {#if tierNote && !planned}
     <TipNote id={tierTipId} text={tierText} />
   {/if}
 
-  {#if sole && rulerShown && !rulerGone}
+  {#if sole && rulerShown && !rulerGone && !planned}
     <FameDepthSlider tid={topic.id} group={sole} />
   {/if}
 </div>
@@ -254,6 +283,9 @@
     /* The one part that gives way when the row is too narrow: its title shrinks to an
        ellipsis (below), rather than the count wrapping or the controls squeezing. */
     min-width: 0;
+  }
+  .topic.planned {
+    cursor: default;
   }
   .topic > :not(.title) {
     flex-shrink: 0;
