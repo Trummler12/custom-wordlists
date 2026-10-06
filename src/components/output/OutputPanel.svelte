@@ -18,25 +18,6 @@
     if (!(await output.copy())) chips?.select();
   }
 
-  /** The Copy button may grow (to fit "Copy failed") but never shrinks back, so the ⚙️ and 🌐
-   *  beside it don't shift each time it flashes. A new interface language starts over. */
-  function holdGrowth(node: HTMLElement) {
-    let widest = 0;
-    const ro = new ResizeObserver(() => {
-      const w = node.getBoundingClientRect().width;
-      if (w > widest) {
-        widest = w;
-        node.style.minWidth = `${w}px`;
-      }
-    });
-    ro.observe(node);
-    $effect(() => {
-      void lang.uiLang;
-      widest = 0;
-      node.style.minWidth = "";
-    });
-    return { destroy: () => ro.disconnect() };
-  }
 </script>
 
 <section class="output" aria-label={plain(lang.ui.output.label)}>
@@ -47,7 +28,7 @@
       <LanguagePicker id="output" />
       <!-- "Copy" and "Copied!" share one grid cell, only the current one visible, so the
            button is as wide as the longer of the two from the start. -->
-      <button type="button" class="copy-btn" use:holdGrowth onclick={copy} disabled={output.merged.length === 0}>
+      <button type="button" class="copy-btn" onclick={copy} disabled={output.merged.length === 0}>
         <span class="copy-label" class:shown={output.copyState === "idle"}><Msg text={lang.ui.output.copy} /></span>
         <span class="copy-label" class:shown={output.copyState === "copied"}><Msg text={lang.ui.output.copied} /></span>
         {#if output.copyState === "failed"}<span class="copy-label shown"><Msg text={lang.ui.output.copyFailed} /></span>{/if}
