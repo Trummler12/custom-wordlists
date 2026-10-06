@@ -192,7 +192,10 @@ async function main() {
   }
 
   group.words = [...enriched, ...added];
-  topic.languages = [...new Set(Object.values(TAG))].sort();
+  // `ja-Latn` isn't in the dumps for these lists: the app derives it from the kana
+  // (generatedRomaji), so a list that offers it keeps offering it.
+  const derived = (topic.languages ?? []).filter((l) => l === "ja-Latn");
+  topic.languages = [...new Set([...Object.values(TAG), ...derived])].sort();
   topic.sources = [...new Set([...[topic.sources ?? []].flat(), "Names: https://pokeapi.co"])];
   if (topic.sources.length === 1) topic.sources = topic.sources[0];
 
