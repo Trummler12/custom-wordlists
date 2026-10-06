@@ -228,17 +228,22 @@ export function buildTree(topics: TopicSummary[]): CatNode {
  *  whatever they hold, so a whole subject never vanishes from the list. A new tree with
  *  `all` refilled, so everything that sums a category speaks for what is on screen. */
 export function pruneTree(root: CatNode, shown: (t: TopicSummary) => boolean): CatNode {
+  // A branch nothing was taken from is handed back as it was, so its rows see the same
+  // node and don't re-render when a topic elsewhere comes or goes.
   const prune = (node: CatNode, depth: number): CatNode | null => {
     const topics = node.topics.filter(shown);
     const children = node.children
       .map((c) => prune(c, depth + 1))
       .filter((c): c is CatNode => c !== null);
     if (depth > 1 && topics.length === 0 && children.length === 0) return null;
-    return { name: node.name, path: node.path, topics, children, all: [] };
+    const same =
+      topics.length === node.topics.length &&
+      children.length === node.children.length &&
+      children.every((c, i) => c === node.children[i]);
+    if (same) return node;
+    return { name: node.name, path: node.path, topics, children, all: topics.concat(...children.map((c) => c.all)) };
   };
-  const pruned = prune(root, 0)!;
-  fillAll(pruned);
-  return pruned;
+  return prune(root, 0)!;
 }
 
 /** A category path's ancestors, deepest first: "a/b/c" → ["a/b/c","a/b","a"]. In

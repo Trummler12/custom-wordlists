@@ -292,6 +292,14 @@ describe("pruneTree", () => {
     expect(ids(pruned.all)).toEqual(["heroes", "villains", "south-park"]);
   });
 
+  it("hands back the branches nothing was taken from", () => {
+    const pruned = pruneTree(root, hiding("spongebob"));
+    expect(pruned.children[0]).toBe(root.children[0]); // comics, untouched
+    expect(pruned.children[1]).not.toBe(root.children[1]); // animation lost a topic
+    expect(pruned.children[1].children[0]).toBe(root.children[1].children[0]); // south-park
+    expect(pruneTree(root, () => true)).toBe(root);
+  });
+
   it("leaves the tree it was given untouched", () => {
     pruneTree(root, () => false);
     expect(root.all).toHaveLength(5);
