@@ -2,6 +2,7 @@
   import { onMount, untrack } from "svelte";
   import { lang } from "./state/lang.svelte";
   import { overlays } from "./state/overlays.svelte";
+  import { selection } from "./state/selection.svelte";
   import { settings } from "./state/settings.svelte";
   import { topics } from "./state/topics.svelte";
   import PageHeader from "./components/layout/PageHeader.svelte";
@@ -46,12 +47,16 @@
 </script>
 
 <!-- One set of window handlers for the whole app: every overlay closes the same
-     way. Scroll is there for the pinned tip-note alone, which is the one overlay
-     that outlives the pointer that opened it. -->
+     way. Scroll is there for the pinned tip-note, the one overlay that outlives the
+     pointer that opened it, and lets go of the flagged topics kept on screen after
+     their deselection (selection.releaseGrace) at that same moment. -->
 <svelte:window
   onpointerdown={overlays.onPointerDown}
   onkeydown={overlays.onKeyDown}
-  onscroll={overlays.onScroll}
+  onscroll={() => {
+    overlays.onScroll();
+    selection.releaseGrace();
+  }}
 />
 
 <main>

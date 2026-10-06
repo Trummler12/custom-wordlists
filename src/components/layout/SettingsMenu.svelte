@@ -7,6 +7,7 @@
   import { lang } from "../../state/lang.svelte";
   import { overlays } from "../../state/overlays.svelte";
   import { resetSelectionSettings } from "../../state/reset";
+  import { selection } from "../../state/selection.svelte";
   import { settings, TOPIC_KINDS, type TopicKind } from "../../state/settings.svelte";
   import Msg from "../../locale/html/Msg.svelte";
   import { menuPopup, placement } from "../shared/placement";
@@ -169,7 +170,10 @@
           id={`${id}-show-topics`}
           type="checkbox"
           checked={settings.showTopics}
-          onchange={(e) => settings.setShowTopics(e.currentTarget.checked)}
+          onchange={(e) => {
+            selection.holdSelected();
+            settings.setShowTopics(e.currentTarget.checked);
+          }}
         />
         {#if lang.ui.settings.showTopicsBefore}
           <label for={`${id}-show-topics`} id={`${id}-show-topics-before`}
@@ -179,7 +183,10 @@
         <select
           aria-labelledby={`${id}-show-topics-before ${id}-show-topics-after`}
           value={settings.showTopicsKind}
-          onchange={(e) => settings.setShowTopicsKind(e.currentTarget.value as TopicKind)}
+          onchange={(e) => {
+            selection.holdSelected();
+            settings.setShowTopicsKind(e.currentTarget.value as TopicKind);
+          }}
         >
           {#each TOPIC_KINDS as k (k)}<option value={k}>{plain(lang.ui.settings.showTopicsKind[k])}</option>{/each}
         </select>
