@@ -17,10 +17,10 @@
 {:else}
   <section class="topics" aria-label={plain(lang.ui.tree.topics)}>
     <h2><Msg text={lang.ui.tree.topics} /></h2>
-    {#each topics.tree.topics as t (t.id)}
+    {#each topics.visibleTree.topics as t (t.id)}
       <TopicRow topic={t} />
     {/each}
-    {#each topics.tree.children as node (node.path)}
+    {#each topics.visibleTree.children as node (node.path)}
       <CategoryNode {node} />
     {/each}
     <!-- A failed topic load is not fatal: the rest of the tree still works. -->
