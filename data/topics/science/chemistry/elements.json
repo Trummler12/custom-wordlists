@@ -68,6 +68,12 @@
   },
   "icon": "⚗️",
   "description": "The chemical elements. Fame tiers by what a player can draw of them, then by how current the name is where there is nothing to draw: tier 0 is the elements that are an everyday object themselves, tier 1 the ones a picture reaches with a second cue, tier 2 the familiar names nobody would recognize by sight, tier 3 the periodic table's remaining regulars, tier 4 the lanthanides, the actinides past uranium and the superheavy synthetics. Every cue is a thing rather than a word, so the ranking holds in each language the list is offered in.",
+  "generated": ["names"],
+  "dataOrigin": "Wikidata",
+  "filePaths": {
+    "scripts/science/": ["dump-element-names.mjs","build-elements.mjs"],
+    "data-raw/science/": "elements/"
+  },
   "languages": ["en","de","es","fr","it","ja","ko","zh-Hans","zh-Hant"],
   "sources": "Names: Wikidata, the 118 items with an atomic number that are instances of https://www.wikidata.org/wiki/Q11344 — see scripts/science/dump-element-names.mjs for the query",
   "lastUpdated": "2026-08-16",

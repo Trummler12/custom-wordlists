@@ -136,6 +136,16 @@ async function main() {
     return;
   }
 
+  // Only the names are this script's; the tiers stay editorial.
+  Object.assign(topic, {
+    generated: ["names"],
+    dataOrigin: "Wikidata",
+    filePaths: {
+      "scripts/science/": ["dump-element-names.mjs", "build-elements.mjs"],
+      "data-raw/science/": "elements/",
+    },
+  });
+
   if (process.argv.includes("--write")) {
     await writeFile(TOPIC, serializeTopic(topic), "utf8");
     console.log(`  written → ${TOPIC}`);
