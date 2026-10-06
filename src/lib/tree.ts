@@ -42,6 +42,15 @@ function intersectLangs(contributors: TopicSummary[]): string[] | undefined {
   return declared[0].filter((l) => declared.every((set) => set.includes(l)));
 }
 
+/** The `dataOrigin` all contributors share, or undefined where they differ or one has
+ *  none: a merge can only claim a source every one of its parts has. */
+function sharedOrigin(contributors: TopicSummary[]): string | string[] | undefined {
+  const first = contributors[0]?.dataOrigin;
+  if (first === undefined) return undefined;
+  const key = JSON.stringify(first);
+  return contributors.every((c) => JSON.stringify(c.dataOrigin) === key) ? first : undefined;
+}
+
 /** The synthesized topics an `inheritsUpwards` family calls for: one merged topic
  *  per (meeting level, file stem), hung at that level as a sibling of the ordinary
  *  topics there. It holds no file and no state — a control surface over the
@@ -71,6 +80,7 @@ export function synthesizeTopics(topics: TopicSummary[]): TopicSummary[] {
     const stem = key.slice(sep + 2);
     const first = contributors[0];
     const languages = intersectLangs(contributors);
+    const origin = sharedOrigin(contributors);
     synths.push({
       id: synthId(meet, stem),
       title: first.title,
@@ -84,6 +94,8 @@ export function synthesizeTopics(topics: TopicSummary[]): TopicSummary[] {
       // Romaji is derived per contributor and merged in; the synth carries the flag
       // too so its own row derives it and shows the ℹ️ note (see derivedRomaji).
       ...(first.generatedRomaji ? { generatedRomaji: true } : {}),
+      // Where the merged names come from, as long as every member agrees.
+      ...(origin ? { dataOrigin: origin } : {}),
       // A merge is only as finished as its least finished member.
       ...(contributors.some((c) => c.plannedTopic)
         ? { plannedTopic: true }

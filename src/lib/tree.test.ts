@@ -123,6 +123,15 @@ describe("synthesizeTopics", () => {
     expect(planned.incompleteTopic).toBeUndefined();
   });
 
+  it("carries the dataOrigin its members share, and none where they differ", () => {
+    const wd = countries.map((c) => ({ ...c, dataOrigin: "Wikidata" }));
+    expect(synthesizeTopics(wd)[0].dataOrigin).toBe("Wikidata");
+    const lists = countries.map((c) => ({ ...c, dataOrigin: ["Wikidata", "Wikipedia"] }));
+    expect(synthesizeTopics(lists)[0].dataOrigin).toEqual(["Wikidata", "Wikipedia"]);
+    expect(synthesizeTopics([...wd.slice(1), { ...wd[0], dataOrigin: "PokéAPI" }])[0].dataOrigin).toBeUndefined();
+    expect(synthesizeTopics([...wd.slice(1), countries[0]])[0].dataOrigin).toBeUndefined();
+  });
+
   it("keeps different file stems apart", () => {
     const synths = synthesizeTopics([
       leaf("geography/human/africa", "countries", 1),
