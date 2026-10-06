@@ -48,20 +48,35 @@ describe("segmentsToRoute", () => {
 });
 
 describe("coverageTopicOf", () => {
-  it("matches the 1:1 topics by id", () => {
-    expect(coverageTopicOf({ id: "languages", path: "geography/human/languages.json" })).toBe("languages");
-    expect(coverageTopicOf({ id: "continents", path: "geography/physical/continents.json" })).toBe("continents");
+  const wd = "Wikidata";
+  it("matches the 1:1 topics by their file", () => {
+    expect(coverageTopicOf({ id: "languages", path: "geography/human/languages.json", dataOrigin: wd })).toBe("languages");
+    expect(
+      coverageTopicOf({
+        id: "continents",
+        path: "geography/physical/continents.json",
+        dataOrigin: ["Wikidata", "Wikipedia", "Bird (2003)"],
+      }),
+    ).toBe("continents");
   });
   it("matches the per-continent leaves by their file", () => {
-    expect(coverageTopicOf({ id: "africa-countries", path: "geography/human/africa-countries.json" })).toBe("countries");
-    expect(coverageTopicOf({ id: "asia-capitals", path: "geography/human/asia-capitals.json" })).toBe("capitals");
+    expect(coverageTopicOf({ id: "africa-countries", path: "geography/human/africa/countries.json", dataOrigin: wd })).toBe(
+      "countries",
+    );
+    expect(
+      coverageTopicOf({ id: "north-america-capitals", path: "geography/human/north-america/capitals.json", dataOrigin: wd }),
+    ).toBe("capitals");
   });
-  it("matches a synthesized merge topic (no file) by its id stem", () => {
-    expect(coverageTopicOf({ id: "geography-human-countries", path: "" })).toBe("countries");
-    expect(coverageTopicOf({ id: "geography-human-capitals", path: "" })).toBe("capitals");
+  it("matches a synthesized merge topic (no file) by its id", () => {
+    expect(coverageTopicOf({ id: "geography-human-countries", path: "", dataOrigin: wd })).toBe("countries");
+    expect(coverageTopicOf({ id: "geography-human-capitals", path: "", dataOrigin: wd })).toBe("capitals");
   });
-  it("is null for a topic with no coverage page", () => {
-    expect(coverageTopicOf({ id: "pokemon", path: "gaming/pokemon.json" })).toBeNull();
+  it("is null for a topic whose names don't come from Wikidata", () => {
+    expect(coverageTopicOf({ id: "africa-countries", path: "geography/human/africa/countries.json" })).toBeNull();
+    expect(coverageTopicOf({ id: "items", path: "gaming/pokemon/items.json", dataOrigin: "PokéAPI" })).toBeNull();
+  });
+  it("is null for a Wikidata topic with no coverage page", () => {
+    expect(coverageTopicOf({ id: "elements", path: "science/chemistry/elements.json", dataOrigin: wd })).toBeNull();
   });
 });
 

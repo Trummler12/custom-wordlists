@@ -28,19 +28,21 @@ export interface Route {
   uiLang: string | null;
 }
 
-/** Which coverage topic a manifest topic feeds its data into, or null when it has no
- *  coverage page. `languages`/`continents` are single 1:1 topics, matched by id;
- *  `countries`/`capitals` are split across the per-continent leaves and recognised by
- *  their file (`*countries.json`). A synthesized merge topic (the app's own "Countries"
- *  row) carries no file — its id ends with the stem its contributors share
- *  ("geography-human-countries"), so fall back to that. */
-export function coverageTopicOf(topic: { id: string; path: string }): CoverageTopic | null {
-  if (topic.id === "languages") return "languages";
-  if (topic.id === "continents") return "continents";
-  const key = topic.path || topic.id;
-  if (key.endsWith("countries.json") || key.endsWith("-countries")) return "countries";
-  if (key.endsWith("capitals.json") || key.endsWith("-capitals")) return "capitals";
-  return null;
+/** Which coverage page a manifest topic feeds, or null when it has none. Only a topic
+ *  whose names come from Wikidata (its `dataOrigin`) can have one, and then the page is
+ *  named after the list: the file stem, or for a synthesized merge topic, which has no
+ *  file, its id ("geography-human-countries"), whichever ends in the list's name. The
+ *  per-continent leaves (`africa/countries.json`) and the merge above them all feed
+ *  the one "countries" page. */
+export function coverageTopicOf(topic: {
+  id: string;
+  path: string;
+  dataOrigin?: string | string[];
+}): CoverageTopic | null {
+  if (![topic.dataOrigin ?? []].flat().includes("Wikidata")) return null;
+  const stem = (topic.path.split("/").pop() ?? "").replace(/\.json$/, "") || topic.id;
+  const name = stem.split("-").pop() ?? "";
+  return TOPICS.has(name) ? (name as CoverageTopic) : null;
 }
 
 /** Segments (already base-stripped, empties removed) => the route. */
