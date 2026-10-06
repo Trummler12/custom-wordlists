@@ -6,6 +6,11 @@
   "type": "object",
   "additionalProperties": false,
   "required": ["id", "title"],
+  "dependentRequired": {
+    "generated": ["filePaths"],
+    "dataOrigin": ["generated"],
+    "filePaths": ["generated"]
+  },
   "oneOf": [
     { "required": ["words"] },
     { "required": ["tiers"] }
@@ -31,6 +36,28 @@
     },
     "icon": { "type": "string", "minLength": 1 },
     "description": { "type": "string" },
+    "generated": {
+      "oneOf": [
+        { "const": "fully" },
+        {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "enum": ["entries", "names", "tiers", "omissions"] }
+        }
+      ],
+      "description": "What a script produced, so a contributor knows what not to edit by hand without checking its source first. `\"fully\"`: a script writes the whole file, and hand edits are lost on its next run. Otherwise the parts it produced: `entries` (which entries exist), `names` (their per-language forms), `tiers` (grouping and order), `omissions` (`omitted` / `omittable`). It holds even where the script has since gone (the Pokémon generations' names). Absent = made by hand. Requires `filePaths`."
+    },
+    "dataOrigin": {
+      "allOf": [{ "$ref": "#/$defs/stringOrList" }],
+      "description": "Where the generated parts came from, as machine-readable tags (\"Wikidata\", \"PokéAPI\"), one or a list. Unlike the free-form `sources` citations, the app reads it: a Wikidata-sourced list links to its language coverage page. Only together with `generated`; validate-data warns on an unfamiliar tag."
+    },
+    "filePaths": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": { "allOf": [{ "$ref": "#/$defs/stringOrList" }] },
+      "description": "The files and folders that produced this topic, as directory prefix => file(s) or folder(s): `{ \"scripts/geography/\": [\"dump-country-data.mjs\", \"build-country-data.mjs\"], \"data-raw/geography/countries/\": \"country-names.json\" }`. A `data-raw/` folder is enough; its single dump files needn't be listed. Orientation for contributors only: never read by code and kept out of the manifest. Only together with `generated`, which requires it."
+    },
     "languages": {
       "type": "array",
       "minItems": 1,

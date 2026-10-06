@@ -21,6 +21,10 @@ export interface TopicSummary {
   usesEnglishFor?: string[];
   /** Whether this list's romaji were transliterated rather than sourced. */
   generatedRomaji?: boolean;
+  /** What a script produced; see `Topic.generated`. */
+  generated?: Generated;
+  /** Where the generated parts came from, e.g. "Wikidata". */
+  dataOrigin?: string | string[];
   /** A list still missing entries: hidden unless the reader shows incomplete topics. */
   incompleteTopic?: boolean;
   /** An announced topic that is not ready: hidden unless the reader shows planned
@@ -299,12 +303,25 @@ export type Correction = { entry: string; why: string } & Record<
   string | { old: string; new: string } | undefined
 >;
 
+/** The parts of a topic file a script produced, short of all of it. */
+export type GeneratedPart = "entries" | "names" | "tiers" | "omissions";
+/** `"fully"` where a script writes the whole file. See schema/topic.schema.json. */
+export type Generated = "fully" | GeneratedPart[];
+
 export interface Topic {
   id: string;
   /** Display name, same shape as an entry — see `displayName` in lib/words. */
   title: WordEntry;
   icon?: string;
   description?: string;
+  /** What a script produced, so it isn't edited by hand without checking its source.
+   *  Absent = made by hand. */
+  generated?: Generated;
+  /** Where the generated parts came from, as tags ("Wikidata", "PokéAPI"). */
+  dataOrigin?: string | string[];
+  /** The files and folders that produced the topic, directory prefix => names. For
+   *  contributors; the app never reads it. */
+  filePaths?: Record<string, string | string[]>;
   /** Languages this topic fully supports. Absent means support is undeclared (the
    *  UI shows a ⚠️ marker); declare the languages to confirm support — including
    *  for a language-neutral list whose entries read the same in every locale. */
