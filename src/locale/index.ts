@@ -261,6 +261,13 @@ export interface SettingsStrings {
   /** Warning beside a maximum above skribbl.io's own. */
   charMaxOver: (gameMax: number) => string;
   scriptLimitsHint: string;
+  /** The checkbox revealing the topics marked incomplete or planned, around its bound
+   *  dropdown: "<before> [kind] <after>", split like `language.showSecondary*`. The kinds
+   *  are the dropdown's options, so they can't carry markup. */
+  showTopicsBefore: string;
+  showTopicsAfter: string;
+  showTopicsKind: { incomplete: string; planned: string; all: string };
+  showTopicsHint: string;
   /** The reset button: drops the selection settings back to the shipped default (the
    *  reader's custom lists, input and language are left untouched — see `state/reset`).
    *  Carries a `{br}` so it wraps predictably in the narrow menu. */

@@ -263,6 +263,11 @@ export const de: UIStrings = {
     charMaxOver: (gameMax) => `skribbl.io akzeptiert höchstens ${gameMax} Zeichen pro Name.`,
     scriptLimitsHint:
       "Limits für Namen in der eigenen Schrift dieser Sprache, in der ein einzelnes Zeichen meist für (mindestens) eine ganze Silbe steht. Romaji und andere Namen in lateinischen Buchstaben folgen den allgemeinen Limits.",
+    showTopicsBefore: "",
+    showTopicsAfter: "Themen anzeigen",
+    showTopicsKind: { incomplete: "Unvollständige", planned: "Geplante", all: "Alle" },
+    showTopicsHint:
+      "Unvollständigen Themen fehlen noch Einträge. Geplante Themen sind angekündigt, aber noch nicht auswählbar.",
     reset: "Auswahl-Einstellungen{br}zurücksetzen",
     resetConfirm: "Zum Bestätigen erneut klicken",
     resetCancel: "Abbrechen",

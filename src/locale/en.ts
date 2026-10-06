@@ -247,6 +247,11 @@ export const en: UIStrings = {
     charMaxOver: (gameMax) => `skribbl.io accepts at most ${gameMax} characters per name.`,
     scriptLimitsHint:
       "Limits for names in this language's own script, where a single character usually stands for a whole syllable or word. Romaji and other names in Latin letters follow the general limits.",
+    showTopicsBefore: "Show",
+    showTopicsAfter: "topics",
+    showTopicsKind: { incomplete: "incomplete", planned: "planned", all: "all" },
+    showTopicsHint:
+      "Incomplete topics are still missing entries. Planned topics are announced but can't be selected yet.",
     reset: "Reset selection settings{br}to default",
     resetConfirm: "Click again to confirm",
     resetCancel: "Cancel",
