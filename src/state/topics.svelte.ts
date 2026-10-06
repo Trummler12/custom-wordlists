@@ -5,7 +5,7 @@
 // One instance, reached through property access (see state/lang.svelte.ts for why).
 
 import { loadManifest, loadTopic } from "../lib/data";
-import { buildTree, mergeGroups, pruneTree, synthesizeTopics, titleCase, type CatNode } from "../lib/tree";
+import { buildTree, liftControls, mergeGroups, pruneTree, synthesizeTopics, titleCase, type CatNode } from "../lib/tree";
 import type { CategoryMeta, Group, Topic, TopicSummary } from "../lib/types";
 import { baseTag, langSupport } from "../lib/languages";
 import { allRules, BASE_RULE, EXTEND_RULE, includeRules, UNKNOWN_RULE, visibleGroup } from "../lib/omitted";
@@ -96,6 +96,10 @@ class TopicsState {
   readonly synths = $derived(synthesizeTopics(this.all));
   readonly tree: CatNode = $derived(buildTree([...this.all, ...this.synths]));
 
+  /** Which icon controls each category surfaces and syncs, lifted from the topics that
+   *  carry them (see lib/tree's liftControls). */
+  readonly liftedControls: Record<string, string[]> = $derived(liftControls(this.all));
+
   /** Flagged topics kept on screen although the setting no longer shows them: they were
    *  selected when it changed, and pulling a selected list out from under the reader
    *  would leave its words in the Output with no row to undo them. `selection` fills and
@@ -108,6 +112,14 @@ class TopicsState {
     const graced = new Set(this.graced);
     return pruneTree(this.tree, (t) => this.shownBySetting(t) || graced.has(t.id));
   });
+
+  /** The topics a category's lifted `icon` control commands: every carrier below it,
+   *  shown or not, so a hidden one is in step when it reappears. Never a planned one. */
+  carriersUnder(path: string, icon: string): TopicSummary[] {
+    return this.all.filter(
+      (t) => !t.plannedTopic && t.controls?.[icon] && (t.category === path || t.category.startsWith(`${path}/`)),
+    );
+  }
 
   /** Whether the setting alone shows this topic. */
   shownBySetting(t: TopicSummary): boolean {
