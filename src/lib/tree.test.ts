@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { ancestorPaths, buildTree, catDepth, mergeGroups, synthesizeTopics, titleCase } from "./tree";
+import { ancestorPaths, buildTree, catDepth, mergeGroups, pruneTree, synthesizeTopics, titleCase } from "./tree";
 import type { Group, TopicSummary } from "./types";
 
 const topic = (id: string, category: string): TopicSummary => ({
@@ -253,6 +253,48 @@ describe("mergeGroups", () => {
       count: 2,
       names: ["Transnistria", "Abkhazia"],
     });
+  });
+});
+
+describe("pruneTree", () => {
+  const root = buildTree([
+    topic("heroes", "comics/dc"),
+    topic("villains", "comics/dc"),
+    topic("south-park", "animation/south-park"),
+    topic("spongebob", "animation/spongebob"),
+    topic("loose", ""),
+  ]);
+  const ids = (ts: TopicSummary[]) => ts.map((t) => t.id);
+  const hiding = (...hidden: string[]) => (t: TopicSummary) => !hidden.includes(t.id);
+
+  it("keeps everything when every topic is shown", () => {
+    const pruned = pruneTree(root, () => true);
+    expect(ids(pruned.all)).toEqual(ids(root.all));
+    expect(pruned.children.map((c) => c.path)).toEqual(["comics", "animation"]);
+  });
+
+  it("drops a category once nothing below it is shown", () => {
+    const animation = pruneTree(root, hiding("spongebob")).children[1];
+    expect(animation.children.map((c) => c.path)).toEqual(["animation/south-park"]);
+    expect(ids(animation.all)).toEqual(["south-park"]);
+  });
+
+  it("keeps a top-level category even when it is empty", () => {
+    const comics = pruneTree(root, hiding("heroes", "villains")).children[0];
+    expect(comics.path).toBe("comics");
+    expect(comics.children).toEqual([]);
+    expect(comics.all).toEqual([]);
+  });
+
+  it("filters the root's own topics and refills its `all`", () => {
+    const pruned = pruneTree(root, hiding("loose", "spongebob"));
+    expect(pruned.topics).toEqual([]);
+    expect(ids(pruned.all)).toEqual(["heroes", "villains", "south-park"]);
+  });
+
+  it("leaves the tree it was given untouched", () => {
+    pruneTree(root, () => false);
+    expect(root.all).toHaveLength(5);
   });
 });
 

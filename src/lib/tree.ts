@@ -223,6 +223,24 @@ export function buildTree(topics: TopicSummary[]): CatNode {
   return root;
 }
 
+/** The tree as the reader sees it: only the topics `shown` lets through, and only the
+ *  categories that still hold one of them somewhere below. The top-level categories stay
+ *  whatever they hold, so a whole subject never vanishes from the list. A new tree with
+ *  `all` refilled, so everything that sums a category speaks for what is on screen. */
+export function pruneTree(root: CatNode, shown: (t: TopicSummary) => boolean): CatNode {
+  const prune = (node: CatNode, depth: number): CatNode | null => {
+    const topics = node.topics.filter(shown);
+    const children = node.children
+      .map((c) => prune(c, depth + 1))
+      .filter((c): c is CatNode => c !== null);
+    if (depth > 1 && topics.length === 0 && children.length === 0) return null;
+    return { name: node.name, path: node.path, topics, children, all: [] };
+  };
+  const pruned = prune(root, 0)!;
+  fillAll(pruned);
+  return pruned;
+}
+
 /** A category path's ancestors, deepest first: "a/b/c" → ["a/b/c","a/b","a"]. In
  *  that order because the features that walk it want the nearest declaring
  *  ancestor, not the outermost. */
