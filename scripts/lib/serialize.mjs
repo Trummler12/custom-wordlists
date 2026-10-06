@@ -1,5 +1,6 @@
 // The house style for a topic file, in one place: one entry per line, one blank
-// line between fame tiers, everything else inline. Shared by every codemod that
+// line between fame tiers, the title laid out by shape (see titleText), everything
+// else inline. The same for a category's `_category.json` (serializeCategory). Shared by every codemod that
 // writes `data/topics/**`, so none of them can round-trip a file into a smaller
 // one than it read.
 //
@@ -126,6 +127,41 @@ function tierBlock(tiers, field) {
   return `[\n${body}\n${line(field, "]")}`;
 }
 
+/** A one-line object in the spaced style the per-language lines use:
+ *  `{ "short": "North America", "long": "North and Central America" }`. */
+const spaced = (obj) =>
+  `{ ${Object.entries(obj)
+    .map(([k, v]) => `${JSON.stringify(k)}: ${JSON.stringify(v)}`)
+    .join(", ")} }`;
+
+/** A title (or any name in the same shape), laid out by its shape. A plain string is
+ *  one line. A short/long pair gives each half a line of its own. A language map whose
+ *  values are pairs (language outside) gives every language a line. A plain language
+ *  map is one line in a topic, where the file has plenty else to read; in a category
+ *  (`perLanguage`), where the title is nearly all there is, it is a line per language,
+ *  and so are the halves of a pair. */
+function titleText(title, field, perLanguage = false) {
+  if (typeof title === "string") return JSON.stringify(title);
+  const lines = (entries, inner) =>
+    `{\n${entries.map(([k, v]) => line(inner, `${JSON.stringify(k)}: ${v}`)).join(",\n")}\n${line(inner - 2, "}")}`;
+  const value = (v, inner) =>
+    typeof v === "string" ? JSON.stringify(v) : perLanguage ? lines(Object.entries(v).map(([l, s]) => [l, JSON.stringify(s)]), inner) : JSON.stringify(v);
+  if ("short" in title || "long" in title) {
+    return lines(
+      ["short", "long"].filter((k) => title[k] !== undefined).map((k) => [k, value(title[k], field + 4)]),
+      field + 2,
+    );
+  }
+  const inverted = Object.values(title).some((v) => typeof v === "object");
+  if (inverted || perLanguage) {
+    return lines(
+      Object.entries(title).map(([l, v]) => [l, typeof v === "object" ? spaced(v) : JSON.stringify(v)]),
+      field + 2,
+    );
+  }
+  return JSON.stringify(title);
+}
+
 /** Serialize one of the list-carrying fields at the given indent, or null when the
  *  key is not one — shared by a group (field 6) and a flat topic (field 2). */
 function listField(key, value, field) {
@@ -147,6 +183,8 @@ export function serializeTopic(topic, warn = (m) => console.warn(`serialize: ${m
     if (Array.isArray(value) && (key === "sources" || key === "credits") && value.length > 1) {
       // A list of sources reads as a list, one per line — they are long URLs.
       parts.push(line(2, `"${key}": ${block(value, 4, 2)}`));
+    } else if (key === "title") {
+      parts.push(line(2, `"title": ${titleText(value, 2)}`));
     } else if (key === "filePaths") {
       // One directory to a line, so the files read as a list grouped by folder.
       const dirs = Object.entries(value).map(([dir, files]) => line(4, `${JSON.stringify(dir)}: ${JSON.stringify(files)}`));
@@ -172,6 +210,29 @@ export function serializeTopic(topic, warn = (m) => console.warn(`serialize: ${m
   // A serializer that loses data is the failure mode worth spending a check on.
   if (JSON.stringify(JSON.parse(text)) !== JSON.stringify(sorted(topic))) {
     throw new Error(`serialize: "${topic.id}" did not round-trip`);
+  }
+  return text;
+}
+
+/** Field order for a category's `_category.json`, mirroring schema/category.schema.json. */
+const CATEGORY_KEYS = ["title", "icon", "order", "hideRulersByDefault", "hideRulers", "sharedEnglishToggle"];
+
+/** Serialize a category sidecar, ending in a newline: its title a line per language,
+ *  everything else inline. An unknown key is written through and reported, as for a
+ *  topic. */
+export function serializeCategory(meta, warn = (m) => console.warn(`serialize: ${m}`)) {
+  const keys = [...CATEGORY_KEYS.filter((k) => meta[k] !== undefined)];
+  for (const k of Object.keys(meta)) {
+    if (CATEGORY_KEYS.includes(k)) continue;
+    warn(`category has unknown key "${k}" — written through unformatted`);
+    keys.push(k);
+  }
+  const parts = keys.map((k) =>
+    line(2, `"${k}": ${k === "title" ? titleText(meta[k], 2, true) : JSON.stringify(meta[k])}`),
+  );
+  const text = `{\n${parts.join(",\n")}\n}\n`;
+  if (JSON.stringify(JSON.parse(text)) !== JSON.stringify(Object.fromEntries(keys.map((k) => [k, meta[k]])))) {
+    throw new Error("serialize: a category did not round-trip");
   }
   return text;
 }
