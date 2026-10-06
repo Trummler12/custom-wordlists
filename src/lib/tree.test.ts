@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { ancestorPaths, buildTree, catDepth, mergeGroups, pruneTree, synthesizeTopics, titleCase } from "./tree";
+import { ancestorPaths, buildTree, catDepth, liftControls, mergeGroups, pruneTree, synthesizeTopics, titleCase } from "./tree";
 import type { Group, TopicSummary } from "./types";
 
 const topic = (id: string, category: string): TopicSummary => ({
@@ -303,6 +303,56 @@ describe("pruneTree", () => {
   it("leaves the tree it was given untouched", () => {
     pruneTree(root, () => false);
     expect(root.all).toHaveLength(5);
+  });
+});
+
+describe("liftControls", () => {
+  const carrying = (category: string, stem: string, icons: string[], extra: Partial<TopicSummary> = {}) =>
+    leaf(category, stem, 1, {
+      controls: Object.fromEntries(icons.map((i) => [i, [{ id: "rule" }]])),
+      ...extra,
+    });
+
+  it("lifts a control to the deepest category holding all its carriers", () => {
+    expect(
+      liftControls([
+        carrying("geography/human/africa", "countries", ["geoguessr", "sovereignty"]),
+        carrying("geography/human/africa", "capitals", ["geoguessr"]),
+        carrying("geography/human/asia", "countries", ["geoguessr", "sovereignty"]),
+      ]),
+    ).toEqual({ "geography/human": ["geoguessr", "sovereignty"] });
+  });
+
+  it("lifts higher once a carrier appears in another branch", () => {
+    expect(
+      liftControls([
+        carrying("geography/human/africa", "countries", ["geoguessr"]),
+        carrying("geography/human/asia", "countries", ["geoguessr"]),
+        carrying("geography/physical", "rivers", ["geoguessr"]),
+      ]),
+    ).toEqual({ geography: ["geoguessr"] });
+  });
+
+  it("keeps two carriers in one category on that category", () => {
+    expect(
+      liftControls([
+        carrying("geography/human/africa", "countries", ["geoguessr"]),
+        carrying("geography/human/africa", "capitals", ["geoguessr"]),
+      ]),
+    ).toEqual({ "geography/human/africa": ["geoguessr"] });
+  });
+
+  it("lifts nothing for a single carrier, across top-level categories, or for planned ones", () => {
+    expect(liftControls([carrying("geography/human", "languages", ["language-type"])])).toEqual({});
+    expect(
+      liftControls([carrying("geography", "countries", ["geoguessr"]), carrying("sports", "venues", ["geoguessr"])]),
+    ).toEqual({});
+    expect(
+      liftControls([
+        carrying("geography/human/africa", "countries", ["geoguessr"]),
+        carrying("geography/physical", "rivers", ["geoguessr"], { plannedTopic: true }),
+      ]),
+    ).toEqual({});
   });
 });
 

@@ -246,6 +246,37 @@ export function pruneTree(root: CatNode, shown: (t: TopicSummary) => boolean): C
   return prune(root, 0)!;
 }
 
+/** Where each icon control (the Geoguessr coverage, the sovereignty matrix) is lifted to,
+ *  as category path => icon keys: the deepest category holding every topic that carries
+ *  it, so one control there commands them all. Only where at least two carry it (a single
+ *  carrier's own control already does the job) and below the top of the tree (there is
+ *  no row above the top-level categories). Planned topics don't count; what is currently
+ *  shown doesn't matter either, so the control stays put while topics come and go. */
+export function liftControls(topics: TopicSummary[]): Record<string, string[]> {
+  const carriers = new Map<string, string[][]>();
+  for (const t of topics) {
+    if (t.contributors || t.plannedTopic) continue;
+    for (const icon of Object.keys(t.controls ?? {})) {
+      let cats = carriers.get(icon);
+      if (!cats) carriers.set(icon, (cats = []));
+      cats.push(t.category.split("/").filter(Boolean));
+    }
+  }
+  const lifted: Record<string, string[]> = {};
+  for (const [icon, cats] of carriers) {
+    if (cats.length < 2) continue;
+    let common = cats[0];
+    for (const segs of cats.slice(1)) {
+      let i = 0;
+      while (i < common.length && i < segs.length && common[i] === segs[i]) i++;
+      common = common.slice(0, i);
+    }
+    if (common.length === 0) continue;
+    (lifted[common.join("/")] ??= []).push(icon);
+  }
+  return lifted;
+}
+
 /** A category path's ancestors, deepest first: "a/b/c" → ["a/b/c","a/b","a"]. In
  *  that order because the features that walk it want the nearest declaring
  *  ancestor, not the outermost. */
