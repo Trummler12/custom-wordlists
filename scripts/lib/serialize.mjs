@@ -40,6 +40,7 @@ const TOPIC_KEYS = [
   "tiers",
   "tierConditions",
   "rulerTooltip",
+  "extendFrom",
   "inheritsUpwards",
 ];
 
@@ -146,6 +147,10 @@ export function serializeTopic(topic, warn = (m) => console.warn(`serialize: ${m
     if (Array.isArray(value) && (key === "sources" || key === "credits") && value.length > 1) {
       // A list of sources reads as a list, one per line — they are long URLs.
       parts.push(line(2, `"${key}": ${block(value, 4, 2)}`));
+    } else if (key === "filePaths") {
+      // One directory to a line, so the files read as a list grouped by folder.
+      const dirs = Object.entries(value).map(([dir, files]) => line(4, `${JSON.stringify(dir)}: ${JSON.stringify(files)}`));
+      parts.push(line(2, `"filePaths": {\n${dirs.join(",\n")}\n${line(2, "}")}`));
     } else {
       // A topic's list fields serialize at topic indent; everything else is a
       // scalar or small object that fits on its line.
