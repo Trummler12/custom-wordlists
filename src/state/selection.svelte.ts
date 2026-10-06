@@ -311,13 +311,19 @@ class SelectionState {
     return this.topicSelCount(t) > 0 && !this.topicFull(t);
   }
 
-  /** The topics a category speaks for. Not a synthesized one: it re-lists its
-   *  contributors, which already sit in the same subtree, so counting or toggling it
-   *  alongside them would double every country. Not a planned one, which can't be
-   *  selected. And not one with nothing in it (Antarctica's 0/0), or a category whose
-   *  every other topic is selected could never read as full. */
+  /** The topics a category's checkbox acts on. Not a synthesized one: it re-lists its
+   *  contributors, which already sit in the same subtree, so toggling it alongside them
+   *  would fight over every country. Not a planned one, which can't be selected. */
+  private selectable(ts: TopicSummary[]): TopicSummary[] {
+    return ts.filter((t) => !topics.isSynth(t.id) && !t.plannedTopic);
+  }
+  /** The topics a category speaks for: the selectable ones, minus those with nothing in
+   *  them (Antarctica's 0/0), or a category whose every other topic is selected could
+   *  never read as full. Unless empty ones are all it has: then it speaks for them. */
   private counted(ts: TopicSummary[]): TopicSummary[] {
-    return ts.filter((t) => !topics.isSynth(t.id) && !t.plannedTopic && this.topicTotal(t) > 0);
+    const selectable = this.selectable(ts);
+    const filled = selectable.filter((t) => this.topicTotal(t) > 0);
+    return filled.length ? filled : selectable;
   }
 
   catTotal(ts: TopicSummary[]): number {
@@ -410,12 +416,12 @@ class SelectionState {
     this.setTopic(t, !this.topicFull(t));
   }
   async toggleCategory(ts: TopicSummary[]): Promise<void> {
-    // Only the real topics: a synthesized one just re-lists members already here,
-    // and toggling both would fight over the same contributors.
-    const counted = this.counted(ts);
-    const on = !this.catFull(counted);
-    const loaded = await Promise.all(counted.map((t) => topics.data[t.id] ?? topics.ensure(t)));
-    counted.forEach((t, i) => loaded[i] && this.setTopic(t, on));
+    // Whether it fills is decided by the counted topics, but the empty ones go along:
+    // ticking Human ticks Antarctica too.
+    const on = !this.catFull(ts);
+    const targets = this.selectable(ts);
+    const loaded = await Promise.all(targets.map((t) => topics.data[t.id] ?? topics.ensure(t)));
+    targets.forEach((t, i) => loaded[i] && this.setTopic(t, on));
   }
 
   // --- Grace for flagged topics ----------------------------------------------
