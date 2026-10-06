@@ -379,10 +379,22 @@ async function readContinentNames() {
   return out;
 }
 
+/** What every file this script writes says about where it came from (see `generated`
+ *  in schema/topic.schema.json): all of it, from these. */
+const PROVENANCE = {
+  generated: "fully",
+  dataOrigin: "Wikidata",
+  filePaths: {
+    "scripts/geography/": ["dump-country-data.mjs", "build-country-data.mjs"],
+    "data-raw/geography/": "countries/",
+  },
+};
+
 function topic(id, title, tiers, sources, rulerTooltip, omitted, omittable, defaultNames = "short") {
   return {
     id,
     title,
+    ...PROVENANCE,
     // ja-Latn is offered but not sourced: the reader opts into romaji and the app
     // derives it from the Japanese name at render (see generatedRomaji / lib/languages/kana).
     languages: NAME_LANGS.flatMap((l) => (l === "ja" ? ["ja", "ja-Latn"] : [l])),
@@ -678,6 +690,9 @@ function cricket() {
       },
     },
     icon: "🦗",
+    // Written here, but by hand: nothing in it comes from a source.
+    generated: "fully",
+    filePaths: { "scripts/geography/": "build-country-data.mjs" },
     languages: LANGS,
     hideRulers: true,
     words: [],
