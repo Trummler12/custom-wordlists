@@ -33,6 +33,7 @@
   },
   "icon": "🏟️",
   "description": "Olympic and mainstream sporting disciplines (English names). Fame tiers by popularity (tier 0 = most mainstream).",
+  "incompleteTopic": true,
   "tiers": [
     [
       {"en":"Athletics","de":"Leichtathletik"},

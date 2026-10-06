@@ -34,6 +34,7 @@
   },
   "icon": "🎭",
   "description": "Iconic video-game characters across franchises (language-neutral — names are the same across locales). Fame tiers by recognizability (tier 0 = most iconic).",
+  "incompleteTopic": true,
   "tiers": [
     [
       "Mario",

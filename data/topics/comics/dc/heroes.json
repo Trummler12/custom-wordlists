@@ -34,6 +34,7 @@
   },
   "icon": "🦸",
   "description": "DC Comics superheroes and villains (language-neutral — names are the same across locales). Two groups; fame tiers by recognizability (tier 0 = most iconic).",
+  "incompleteTopic": true,
   "tiers": [
     [
       "Batman",

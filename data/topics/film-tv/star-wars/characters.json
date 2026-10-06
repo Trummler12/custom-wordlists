@@ -34,6 +34,7 @@
   },
   "icon": "🎭",
   "description": "Star Wars characters (language-neutral — proper names are the same across locales; bare names used where titles would differ, e.g. \"Leia\"). Fame tiers by recognizability (tier 0 = most iconic).",
+  "incompleteTopic": true,
   "tiers": [
     [
       "Darth Vader",

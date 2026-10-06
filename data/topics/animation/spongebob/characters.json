@@ -34,6 +34,7 @@
   },
   "icon": "🎭",
   "description": "SpongeBob SquarePants characters (English names). Fame tiers by recognizability (tier 0 = most iconic).",
+  "incompleteTopic": true,
   "tiers": [
     [
       "SpongeBob",

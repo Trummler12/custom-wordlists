@@ -34,6 +34,7 @@
   },
   "icon": "🎭",
   "description": "The Simpsons characters (language-neutral — these names are the same in the German dub). Fame tiers by recognizability (tier 0 = most iconic).",
+  "incompleteTopic": true,
   "tiers": [
     [
       "Homer",
