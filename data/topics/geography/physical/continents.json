@@ -6,6 +6,12 @@
   },
   "icon": "🗺️",
   "description": "The continents and the tectonic plates, in one list: tier 0 pairs each landmass with the plate named after it, and the tiers below it walk down Bird's plate model by area until the plates run out of published ones.",
+  "generated": "fully",
+  "dataOrigin": ["Wikidata","Wikipedia","Bird (2003)"],
+  "filePaths": {
+    "scripts/geography/": ["dump-plate-data.mjs","build-continents.mjs"],
+    "data-raw/geography/": ["continents/","plates/"]
+  },
   "languages": ["en","de","es","fr","it","ja","ko","zh-Hans","zh-Hant","pt","ru","tr","pl","nl","bg","cs","da","et","fi","el","he","hu","lv","mk","no","ro","sr","sk","sv","tl"],
   "sources": [
     "Grouping: https://en.wikipedia.org/wiki/List_of_tectonic_plates",

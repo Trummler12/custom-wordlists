@@ -422,6 +422,12 @@ async function main() {
     icon: "🗺️",
     description:
       "The continents and the tectonic plates, in one list: tier 0 pairs each landmass with the plate named after it, and the tiers below it walk down Bird's plate model by area until the plates run out of published ones.",
+    generated: "fully",
+    dataOrigin: ["Wikidata", "Wikipedia", "Bird (2003)"],
+    filePaths: {
+      "scripts/geography/": ["dump-plate-data.mjs", "build-continents.mjs"],
+      "data-raw/geography/": ["continents/", "plates/"],
+    },
     languages: NAME_LANGS,
     sources: [
       "Grouping: https://en.wikipedia.org/wiki/List_of_tectonic_plates",
