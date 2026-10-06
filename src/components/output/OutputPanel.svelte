@@ -18,7 +18,7 @@
     if (!(await output.copy())) chips?.select();
   }
 
-  /** The Copy button may grow to fit "Copied!" but never shrinks back, so the ⚙️ and 🌐
+  /** The Copy button may grow (to fit "Copy failed") but never shrinks back, so the ⚙️ and 🌐
    *  beside it don't shift each time it flashes. A new interface language starts over. */
   function holdGrowth(node: HTMLElement) {
     let widest = 0;
@@ -45,10 +45,12 @@
     <div class="head-actions">
       <SettingsMenu id="output" />
       <LanguagePicker id="output" />
-      <button type="button" use:holdGrowth onclick={copy} disabled={output.merged.length === 0}>
-        {#if output.copyState === "copied"}<Msg text={lang.ui.output.copied} />
-        {:else if output.copyState === "failed"}<Msg text={lang.ui.output.copyFailed} />
-        {:else}<Msg text={lang.ui.output.copy} />{/if}
+      <!-- "Copy" and "Copied!" share one grid cell, only the current one visible, so the
+           button is as wide as the longer of the two from the start. -->
+      <button type="button" class="copy-btn" use:holdGrowth onclick={copy} disabled={output.merged.length === 0}>
+        <span class="copy-label" class:shown={output.copyState === "idle"}><Msg text={lang.ui.output.copy} /></span>
+        <span class="copy-label" class:shown={output.copyState === "copied"}><Msg text={lang.ui.output.copied} /></span>
+        {#if output.copyState === "failed"}<span class="copy-label shown"><Msg text={lang.ui.output.copyFailed} /></span>{/if}
       </button>
     </div>
   </div>
@@ -100,5 +102,17 @@
   .head-actions > button {
     padding: 0.35rem 0.9rem;
     cursor: pointer;
+  }
+  .copy-btn {
+    display: inline-grid;
+    justify-items: center;
+  }
+  /* Hidden, not removed: a hidden label still takes its width, and isn't read out. */
+  .copy-label {
+    grid-area: 1 / 1;
+    visibility: hidden;
+  }
+  .copy-label.shown {
+    visibility: visible;
   }
 </style>
