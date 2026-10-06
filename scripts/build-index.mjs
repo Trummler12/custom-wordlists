@@ -224,6 +224,10 @@ async function buildIndex() {
       ...(data.generatedRomaji ? { generatedRomaji: true } : {}),
       ...(data.incompleteTopic ? { incompleteTopic: true } : {}),
       ...(data.plannedTopic ? { plannedTopic: true } : {}),
+      // Provenance the app reads (`dataOrigin` decides the coverage link); `filePaths`
+      // is for contributors only and stays in the file.
+      ...(data.generated ? { generated: data.generated } : {}),
+      ...(data.dataOrigin ? { dataOrigin: data.dataOrigin } : {}),
       // The tree synthesizes a merged topic for each family of same-named leaves
       // that carry this; the manifest passes it through so that can happen without
       // loading every file first. See src/lib/tree.ts.
