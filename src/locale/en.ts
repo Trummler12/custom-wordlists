@@ -14,6 +14,13 @@ export const en: UIStrings = {
     toggle: (expanded, title) => `${expanded ? "Collapse" : "Expand"} ${title}`,
     loadingShort: "loading…",
     wordsOf: (selected, total) => `${selected} of ${total} word${total === 1 ? "" : "s"}`,
+    incompleteTopic: (url) => `This topic is marked as incomplete.{br}[Help us add what's missing!](${url})`,
+    plannedTopic: (url) => `This topic is planned, but not ready yet.{br}[Help us prepare its data!](${url})`,
+    incompleteCategory: (url) =>
+      `This category contains topics that are marked as incomplete.{br}[Help us add what's missing!](${url})`,
+    plannedCategory: (url) =>
+      `This category contains planned topics that aren't ready yet.{br}[Help us prepare their data!](${url})`,
+    plannedUnselectable: "Planned topics can't be selected yet",
   },
   names: {
     form: { pref: "pref", short: "short", long: "long", both: "both", all: "all" },

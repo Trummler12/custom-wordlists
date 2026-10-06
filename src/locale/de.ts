@@ -15,6 +15,14 @@ export const de: UIStrings = {
     toggle: (expanded, title) => `${title} ${expanded ? "einklappen" : "ausklappen"}`,
     loadingShort: "lädt…",
     wordsOf: (selected, total) => `${selected} von ${total} ${total === 1 ? "Wort" : "Wörtern"}`,
+    incompleteTopic: (url) =>
+      `Dieses Thema ist als unvollständig markiert.{br}[Hilf uns, das Fehlende zu ergänzen!](${url})`,
+    plannedTopic: (url) => `Dieses Thema ist geplant, aber noch nicht bereit.{br}[Hilf uns, seine Daten vorzubereiten!](${url})`,
+    incompleteCategory: (url) =>
+      `Diese Kategorie enthält Themen, die als unvollständig markiert sind.{br}[Hilf uns, das Fehlende zu ergänzen!](${url})`,
+    plannedCategory: (url) =>
+      `Diese Kategorie enthält geplante Themen, die noch nicht bereit sind.{br}[Hilf uns, ihre Daten vorzubereiten!](${url})`,
+    plannedUnselectable: "Geplante Themen können noch nicht ausgewählt werden",
   },
   names: {
     form: { pref: "pref.", short: "kurz", long: "lang", both: "beide", all: "alle" },

@@ -38,6 +38,15 @@ export interface TreeStrings {
   /** Selection meta, e.g. "12 of 30 words" (topic, group and category rows).
    *  A list of one is a list of one word, not "1 of 1 words". */
   wordsOf: (selected: number, total: number) => string;
+  /** The 🚧 / 📅 notes on a topic marked incomplete / planned, and on a category holding
+   *  such topics; each ends in a link to the contribution guide (`url`). Carry markup. */
+  incompleteTopic: (url: string) => string;
+  plannedTopic: (url: string) => string;
+  incompleteCategory: (url: string) => string;
+  plannedCategory: (url: string) => string;
+  /** Hover on a planned topic's disabled checkbox and greyed count, in place of
+   *  `wordsOf`. */
+  plannedUnselectable: string;
 }
 
 /** The short/long name-form dropdown. */
