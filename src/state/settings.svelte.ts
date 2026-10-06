@@ -12,6 +12,10 @@ import { FLAG_TYPES, type FlagType } from "../locale/flags";
  *  selection settings without wiping the reader's custom lists alongside them. */
 export const SETTINGS_STORAGE_KEY = "wordlists:settings";
 
+/** Which of the flagged topics "Show … topics" reveals. */
+export const TOPIC_KINDS = ["incomplete", "planned", "all"] as const;
+export type TopicKind = (typeof TOPIC_KINDS)[number];
+
 class SettingsState {
   /** Whether topic and category rows offer the switch to the secondary language's
    *  entries. Off by default: almost every row qualifies for it, and a control that
@@ -33,6 +37,12 @@ class SettingsState {
   charLimits = $state<Limits>({ ...DEFAULT_LIMITS });
   scriptLimits = $state<Record<string, Limits>>({});
 
+  /** Whether the Topics list also shows the topics marked incomplete or planned, and
+   *  which of them. The kind is kept while the box is off, so ticking it again brings
+   *  back the same choice. */
+  showTopics = $state(false);
+  showTopicsKind = $state<TopicKind>("incomplete");
+
   /** Omission rules the reader has flipped away from their default — keyed
    *  `${topicId}:${groupId}:${ruleId}`. One set covers both directions: an
    *  `omitted` rule listed here is switched off, an `omittable` one switched on.
@@ -53,6 +63,10 @@ class SettingsState {
     for (const [tag, l] of Object.entries(stored.scriptLimits ?? {})) {
       if (SCRIPT_LANGS.includes(tag) && validLimits(l)) this.scriptLimits[tag] = l;
     }
+    if (typeof stored.showTopics === "boolean") this.showTopics = stored.showTopics;
+    if (stored.showTopicsKind && TOPIC_KINDS.includes(stored.showTopicsKind)) {
+      this.showTopicsKind = stored.showTopicsKind;
+    }
     this.toggledOmissions = stored.toggledOmissions ?? {};
   }
 
@@ -71,6 +85,15 @@ class SettingsState {
 
   setRemoveSeparator(on: boolean): void {
     this.removeSeparator = on;
+    this.save();
+  }
+
+  setShowTopics(on: boolean): void {
+    this.showTopics = on;
+    this.save();
+  }
+  setShowTopicsKind(kind: TopicKind): void {
+    this.showTopicsKind = kind;
     this.save();
   }
 
@@ -115,6 +138,8 @@ class SettingsState {
       removeSeparator: this.removeSeparator,
       charLimits: this.charLimits,
       scriptLimits: this.scriptLimits,
+      showTopics: this.showTopics,
+      showTopicsKind: this.showTopicsKind,
       toggledOmissions: this.toggledOmissions,
     });
   }
@@ -131,6 +156,8 @@ type Stored = {
   removeSeparator?: boolean;
   charLimits?: Limits;
   scriptLimits?: Record<string, Limits>;
+  showTopics?: boolean;
+  showTopicsKind?: TopicKind;
   toggledOmissions?: Record<string, boolean>;
 };
 
