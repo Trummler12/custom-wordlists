@@ -9,6 +9,8 @@
   /* Semantic tokens — light theme (default) */
   --muted: var(--color-gray-600);
   --muted-2: var(--color-gray-550);
+  /* What can't be used yet, a step quieter than --muted-2 (a planned topic's count). */
+  --disabled: var(--color-gray-400);
   --border: var(--color-gray-200);
   --panel-border: var(--color-gray-300);
   --chip-bg: var(--color-gray-100);
@@ -30,6 +32,7 @@
   :root {
     --muted: var(--color-gray-100);
     --muted-2: var(--color-gray-300);
+    --disabled: var(--color-gray-500);
     --border: var(--color-gray-600);
     --panel-border: var(--color-gray-550);
     --chip-bg: var(--color-slate-800);
