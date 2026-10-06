@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { menuPopup, placement } from "../shared/placement";
   import { tagChip } from "../../lib/languages";
   import Msg from "../../locale/html/Msg.svelte";
   import { lang } from "../../state/lang.svelte";
@@ -58,7 +59,11 @@
          buttons are reached with Tab, like the buttons they are. Announcing a
          menu and then behaving otherwise is worse for a screen-reader user than
          announcing nothing, so the roles are gone rather than half-kept. -->
-    <ul class="lang-menu" aria-labelledby={labelledby}>
+    <ul
+      class="popup lang-menu"
+      aria-labelledby={labelledby}
+      use:placement={menuPopup(overlays.opener("langSelect"))}
+    >
       {#if lead}
         <li>
           <button
@@ -114,18 +119,11 @@
   }
   /* The list the 🌐 button used to open, unchanged but for hanging flush under its field. */
   .lang-menu {
-    position: absolute;
-    top: 100%;
-    right: 0;
     /* Under the tip notes (z-index 10): a note explains the very field this list may cover. */
     z-index: 2;
     margin: 0;
     padding: 0.25rem;
     list-style: none;
-    background: var(--chip-bg);
-    border: 1px solid var(--panel-border);
-    border-radius: var(--radius);
-    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
     font-size: 1rem;
   }
   .lang-menu button {

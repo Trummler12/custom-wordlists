@@ -6,7 +6,7 @@
   import { AUTO, lang } from "../../state/lang.svelte";
   import { overlays } from "../../state/overlays.svelte";
   import { settings } from "../../state/settings.svelte";
-  import { pinBox } from "../shared/pinBox";
+  import { menuPopup, placement } from "../shared/placement";
   import TipMarker from "../shared/TipMarker.svelte";
   import TipNote from "../shared/TipNote.svelte";
   import LanguageSelect from "./LanguageSelect.svelte";
@@ -95,7 +95,13 @@
       onclick={(e) => overlays.toggleLangMenu(id, e.currentTarget)}
     >🌐</button>
     {#if open}
-      <div class="lang-panel" data-popup-frame role="group" aria-label={plain(ui.panelTitle)} use:pinBox>
+      <div
+        class="popup lang-panel"
+        data-popup-frame
+        role="group"
+        aria-label={plain(ui.panelTitle)}
+        use:placement={menuPopup(overlays.opener("lang"), { maxWidthRem: 20, menu: true })}
+      >
         <p class="panel-title"><Msg text={ui.panelTitle} /></p>
         <div class="slots" use:holdCaptions>
           {#each slots as s (s)}
@@ -199,17 +205,6 @@
   }
   /* Same box as the ⚙️ menu beside it. */
   .lang-panel {
-    position: absolute;
-    top: calc(100% + 0.25rem);
-    right: 0;
-    z-index: 10;
-    width: max-content;
-    max-width: min(20rem, 90vw);
-    padding: 0.5rem 0.6rem;
-    background: var(--chip-bg);
-    border: 1px solid var(--panel-border);
-    border-radius: var(--radius);
-    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
     font-size: 0.85rem;
     display: flex;
     flex-direction: column;

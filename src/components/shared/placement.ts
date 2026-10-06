@@ -114,7 +114,16 @@ export interface PlacementOptions {
   frame?: Element | null | "auto";
   horizontal: Horizontal;
   vertical: Vertical;
+  /** A width cap in px, for a popup that has no frame. */
   maxWidth?: number;
+  /** Keep the width it opened with while it is open. Switching the interface language
+   *  rewrites a menu's labels, and a box sized to them would jump under the cursor using
+   *  it; a resize of the viewport releases it, since that is a real layout change. */
+  holdWidth?: boolean;
+  /** Whether it scrolls inside past half the viewport. A header menu doesn't: what it
+   *  holds (a dropdown list, a note, the ⚠️ tab) reaches out of it, and a scroll area
+   *  would clip all of that. */
+  scroll?: boolean;
   /** Told where it went, for a popup whose look depends on the side (an arrow, a margin). */
   onPlace?: (p: Placement) => void;
 }
@@ -147,6 +156,23 @@ export function confirmPopup(trigger: Element | null | undefined): PlacementOpti
   return { ...localNote(trigger), vertical: "prefer-above" };
 }
 
+/** A header menu or the list a field in it opens: hung leftward from its button, always
+ *  below it, `maxWidthRem` wide at most. */
+export function menuPopup(
+  trigger: Element | null | undefined,
+  { maxWidthRem, menu = false }: { maxWidthRem?: number; menu?: boolean } = {},
+): PlacementOptions {
+  const rem = parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
+  return {
+    trigger,
+    horizontal: "trigger-right",
+    vertical: "below",
+    maxWidth: maxWidthRem === undefined ? undefined : maxWidthRem * rem,
+    holdWidth: menu,
+    scroll: !menu,
+  };
+}
+
 /** Place a popup and keep it placed while it is open: in full on mount, whenever it or
  *  the Topics column changes size, and on a window resize; on a page scroll only its
  *  vertical position, to keep it on screen. Works for `position: absolute` (coordinates
@@ -165,6 +191,8 @@ export function placement(node: HTMLElement, options: PlacementOptions) {
   let last: Placement | null = null;
   /** The size `run` left the popup at, so the observer can tell its own doing apart. */
   let settled = { width: -1, height: -1 };
+  /** The width a `holdWidth` popup opened with; null until it has opened. */
+  let held: number | null = null;
 
   const rect = (el: Element): Box => el.getBoundingClientRect();
   const env = () => {
@@ -200,8 +228,10 @@ export function placement(node: HTMLElement, options: PlacementOptions) {
     const vp = env();
     if (vp.width !== viewportWidth) {
       viewportWidth = vp.width;
+      held = null;
       if (gutter && node.scrollHeight <= node.clientHeight + 1) gutter = false;
     }
+    const scroll = opts.scroll ?? true;
     node.style.scrollbarGutter = gutter ? "stable" : "";
     const input: PlaceInput = {
       frame: frameEl ? rect(frameEl) : undefined,
@@ -218,7 +248,12 @@ export function placement(node: HTMLElement, options: PlacementOptions) {
     };
     // The cap first, since it doesn't depend on the size, widened by the scrollbar's room
     // where there is one; then the size the content takes under it; then the rest.
-    Object.assign(node.style, { width: "max-content", maxHeight: "none", left: "0px", right: "auto" });
+    Object.assign(node.style, {
+      width: held === null ? "max-content" : `${held}px`,
+      maxHeight: "none",
+      left: "0px",
+      right: "auto",
+    });
     const cs = getComputedStyle(node);
     const bar = gutter
       ? node.offsetWidth - node.clientWidth - parseFloat(cs.borderLeftWidth) - parseFloat(cs.borderRightWidth)
@@ -226,6 +261,7 @@ export function placement(node: HTMLElement, options: PlacementOptions) {
     input.extraWidth = bar;
     node.style.maxWidth = `${place(input).maxWidth}px`;
     const own = node.getBoundingClientRect();
+    if (opts.holdWidth && held === null) held = own.width;
     const p = place({ ...input, size: { width: own.width, height: own.height } });
     locked = p.above;
     last = p;
@@ -234,14 +270,14 @@ export function placement(node: HTMLElement, options: PlacementOptions) {
     const cb = fixed ? null : (node.offsetParent as HTMLElement | null);
     const cbLeft = cb ? cb.getBoundingClientRect().left + cb.clientLeft : 0;
     node.style.left = `${Math.round(p.left - cbLeft)}px`;
-    node.style.maxHeight = `${Math.floor(p.maxHeight)}px`;
-    node.style.overflowY = "auto";
-    writeVertical(p, Math.min(own.height, p.maxHeight));
+    node.style.maxHeight = scroll ? `${Math.floor(p.maxHeight)}px` : "";
+    node.style.overflowY = scroll ? "auto" : "";
+    writeVertical(p, scroll ? Math.min(own.height, p.maxHeight) : own.height);
     opts.onPlace?.(p);
 
     // A scrollbar that just appeared gets its room in this same pass, before anything
     // is painted without it.
-    if (!gutter && node.scrollHeight > node.clientHeight + 1) {
+    if (scroll && !gutter && node.scrollHeight > node.clientHeight + 1) {
       gutter = true;
       run();
       return;
@@ -293,6 +329,10 @@ export function placement(node: HTMLElement, options: PlacementOptions) {
     ro.observe(node);
     const col = document.querySelector(".col-topics");
     if (col) ro.observe(col);
+    // A held menu stays under its button when the button moves: the Copy button beside
+    // the ⚙️ changes width with its "Copied!", which shifts the ⚙️ and the 🌐 with it.
+    const around = opts.holdWidth ? opts.trigger?.parentElement?.parentElement : null;
+    if (around) ro.observe(around);
   };
   observe();
   window.addEventListener("resize", schedule);
@@ -304,6 +344,7 @@ export function placement(node: HTMLElement, options: PlacementOptions) {
       if (next.trigger !== opts.trigger) {
         locked = undefined;
         gutter = false;
+        held = null;
       }
       opts = next;
       observe();

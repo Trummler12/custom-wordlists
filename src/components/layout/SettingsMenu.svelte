@@ -9,7 +9,7 @@
   import { resetSelectionSettings } from "../../state/reset";
   import { settings } from "../../state/settings.svelte";
   import Msg from "../../locale/html/Msg.svelte";
-  import { pinBox } from "../shared/pinBox";
+  import { menuPopup, placement } from "../shared/placement";
   import TipMarker from "../shared/TipMarker.svelte";
   import TipNote from "../shared/TipNote.svelte";
 
@@ -85,7 +85,13 @@
     onclick={(e) => overlays.toggleSettingsMenu(id, e.currentTarget)}
   >⚙️</button>
   {#if overlays.settingsMenu === id}
-    <div class="settings-menu" data-popup-frame role="group" aria-label={plain(lang.ui.settings.label)} use:pinBox>
+    <div
+      class="popup settings-menu"
+      data-popup-frame
+      role="group"
+      aria-label={plain(lang.ui.settings.label)}
+      use:placement={menuPopup(overlays.opener("settings"), { maxWidthRem: 20, menu: true })}
+    >
       <div class="setting-row">
         <!-- A caption, not a <label>: a label hands its hover to the dropdown, which
              then lights up under a pointer that can't open it. -->
@@ -186,17 +192,6 @@
   /* Same box as the 🌐 panel beside it. Preferences are unrelated, so they need air
      between them — a checkbox and a dropdown read as one control otherwise. */
   .settings-menu {
-    position: absolute;
-    top: calc(100% + 0.25rem);
-    right: 0;
-    z-index: 10;
-    width: max-content;
-    max-width: min(20rem, 80vw);
-    padding: 0.5rem 0.6rem;
-    background: var(--chip-bg);
-    border: 1px solid var(--panel-border);
-    border-radius: var(--radius);
-    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
     font-size: 0.85rem;
     display: flex;
     flex-direction: column;
