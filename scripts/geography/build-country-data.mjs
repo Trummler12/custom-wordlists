@@ -49,7 +49,7 @@ import { readFile, writeFile, mkdir } from "node:fs/promises";
 import { writeCoverage } from "./coverage.mjs";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
-import { serializeTopic } from "../lib/serialize.mjs";
+import { serializeCategory, serializeTopic } from "../lib/serialize.mjs";
 import { bucketLangWiki } from "./bucket-names.mjs";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..", "..");
@@ -549,8 +549,11 @@ async function main() {
     const dir = join(OUT, folder);
     await mkdir(dir, { recursive: true });
 
-    // Category label, from the continent dump.
-    const catTitle = pick(continentNames[LANDMASS[folder]]);
+    // Category label, from the continent dump, unless the file already has one: a
+    // title may have been given a long form by hand ("North and Central America"),
+    // which the dump knows nothing of.
+    const existing = await readFile(join(dir, "_category.json"), "utf8").then(JSON.parse, () => null);
+    const catTitle = existing?.title ?? pick(continentNames[LANDMASS[folder]]);
     await write(join(dir, "_category.json"), category(catTitle, ICON[folder], i + 1));
 
     if (folder === "antarctica") {
@@ -700,7 +703,7 @@ function cricket() {
 }
 
 async function write(path, data) {
-  const text = path.endsWith("_category.json") ? JSON.stringify(data, null, 2) + "\n" : serializeTopic(data);
+  const text = path.endsWith("_category.json") ? serializeCategory(data) : serializeTopic(data);
   if (process.argv.includes("--write")) {
     await writeFile(path, text, "utf8");
   }
