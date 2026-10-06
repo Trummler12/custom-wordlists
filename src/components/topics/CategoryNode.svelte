@@ -5,7 +5,10 @@
   import { sharedSecondaryTopics } from "../../lib/languages/secondary";
   import { controlledTopics } from "../../lib/rulers";
   import { cancelFit, scheduleFit } from "../../lib/rowfit";
-  import type { CatNode } from "../../lib/tree";
+  import { CONTRIBUTING_URL } from "../../lib/links";
+  import { catDepth, type CatNode } from "../../lib/tree";
+  import TipMarker from "../shared/TipMarker.svelte";
+  import TipNote from "../shared/TipNote.svelte";
   import { lang } from "../../state/lang.svelte";
   import { selection } from "../../state/selection.svelte";
   import { settings } from "../../state/settings.svelte";
@@ -66,6 +69,30 @@
       : [],
   );
 
+  // The 🚧 / 📅 a category wears for the flagged topics in it, on the deepest row still
+  // on screen: collapsed, it speaks for everything below; open, only for its own topics,
+  // since the rows below carry their own. A top-level category with nothing shown takes
+  // them from its hidden topics, the only way it can say why it is empty.
+  const flagged = $derived.by(() => {
+    if (all.length === 0 && catDepth(node) === 0) {
+      return topics.all.filter((t) => t.category === node.path || t.category.startsWith(`${node.path}/`));
+    }
+    return open ? node.topics : all;
+  });
+  const statusNotes = $derived(
+    [
+      flagged.some((t) => t.incompleteTopic)
+        ? { kind: "incomplete", icon: "🚧", text: lang.ui.tree.incompleteCategory(CONTRIBUTING_URL) }
+        : null,
+      flagged.some((t) => t.plannedTopic)
+        ? { kind: "planned", icon: "📅", text: lang.ui.tree.plannedCategory(CONTRIBUTING_URL) }
+        : null,
+    ].filter((n) => n !== null),
+  );
+  // Nothing to select where every topic below is planned.
+  const allPlanned = $derived(all.length > 0 && all.every((t) => t.plannedTopic));
+  const plannedTitle = $derived(allPlanned ? plain(lang.ui.tree.plannedUnselectable) : undefined);
+
   // Overflow relief for a too-narrow row (rowfit.ts), the same as a topic row: re-fit on
   // mount, on the count / name / language changing, and (ResizeObserver) on a column resize.
   let rowEl = $state<HTMLDivElement>();
@@ -103,6 +130,8 @@
     type="checkbox"
     {id}
     checked={selection.catFull(all)}
+    disabled={allPlanned}
+    title={plannedTitle}
     use:setIndeterminate={selection.catPartial(all)}
     onchange={() => selection.toggleCategory(all)}
   />
@@ -114,6 +143,9 @@
         > {/if}<span title={name.short !== name.long ? name.long : undefined}>{name.short}</span>
     </label>
   </h3>
+  {#each statusNotes as n (n.kind)}
+    <TipMarker tipId={`${id}-${n.kind}`} icon={n.icon} text={n.text} />
+  {/each}
   {#if secondaryGoverned.length > 0}
     <button
       type="button"
@@ -161,11 +193,20 @@
   {/if}
   <!-- The ratio alone, since it reads the same in every language; the sentence it
        stands for is a hover away. The row needs the width for its controls. -->
-  <span class="meta" title={plain(lang.ui.tree.wordsOf(selection.catSel(all), selection.catTotal(all)))}>
+  <span
+    class="meta"
+    class:disabled={allPlanned}
+    title={plain(
+      allPlanned ? lang.ui.tree.plannedUnselectable : lang.ui.tree.wordsOf(selection.catSel(all), selection.catTotal(all)),
+    )}
+  >
     {#if !ready}<Msg text={lang.ui.tree.loadingShort} />{:else}{selection.catSel(all)}/<span class="total"
         >{selection.catTotal(all)}</span
       >{/if}
   </span>
+  {#each statusNotes as n (n.kind)}
+    <TipNote id={`${id}-${n.kind}`} text={n.text} />
+  {/each}
 </div>
 {#if open}
   <!-- One nesting level per category, so gaming/pokemon/pokemon sits inside
