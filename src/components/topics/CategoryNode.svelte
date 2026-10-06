@@ -49,24 +49,20 @@
   const someForced = $derived(lang.someForced(secondaryGoverned));
   const forcedLabel = $derived(plain(lang.ui.language.useSecondaryAll(allForced, lang.nameInUi(lang.secondary))));
 
-  // The Geoguessr coverage control this category syncs (syncControls), commanding
-  // every icon-carrying real leaf below at once. From the manifest — no file load,
-  // and synth topics are skipped so a country isn't counted through both.
+  // The icon controls lifted to this category (topics.liftedControls), each commanding
+  // every carrier below at once. Shown only while one of them is on screen, but it
+  // commands the hidden ones too. From the manifest, no file load.
+  const liftedFor = (icon: string) =>
+    (topics.liftedControls[node.path] ?? []).includes(icon) &&
+    all.some((t) => !topics.isSynth(t.id) && !t.plannedTopic && t.controls?.[icon])
+      ? topics.carriersUnder(node.path, icon)
+      : [];
   const coverageTargets = $derived(
-    (topics.categories[node.path]?.syncControls ?? []).includes("geoguessr")
-      ? all
-          .filter((t) => !topics.isSynth(t.id) && t.controls?.["geoguessr"])
-          .map((t) => ({ tid: t.id, rules: t.controls!["geoguessr"].map((r) => r.id) }))
-      : [],
+    liftedFor("geoguessr").map((t) => ({ tid: t.id, rules: t.controls!["geoguessr"].map((r) => r.id) })),
   );
-
-  // The sovereignty matrix this category syncs, same shape — each rule with its cell.
+  // The sovereignty matrix, same shape: each rule with its cell.
   const sovTargets = $derived(
-    (topics.categories[node.path]?.syncControls ?? []).includes("sovereignty")
-      ? all
-          .filter((t) => !topics.isSynth(t.id) && t.controls?.["sovereignty"])
-          .map((t) => ({ tid: t.id, rules: sovRules(t.controls!["sovereignty"]) }))
-      : [],
+    liftedFor("sovereignty").map((t) => ({ tid: t.id, rules: sovRules(t.controls!["sovereignty"]) })),
   );
 
   // The 🚧 / 📅 a category wears for the flagged topics in it, on the deepest row still
