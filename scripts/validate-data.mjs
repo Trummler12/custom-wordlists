@@ -7,8 +7,9 @@
 //   4. omission rules still describe the list (no stale rule, no self-matching `as`)
 //   5. `usesEnglishFor` doesn't contradict what the entries actually carry
 //   6. category folder names are kebab-case (like ids)
-// Plus non-fatal warnings: a `sources` entry that carries no URL, and a
-// `usesEnglishFor` language missing from `languages`.
+// Plus non-fatal warnings: a `sources` entry that carries no URL, a
+// `usesEnglishFor` language missing from `languages`, and a `dataOrigin` tag not
+// in KNOWN_ORIGINS.
 // Every JSON file (except `_category.json`) is one topic; a folder is a category
 // when it has a subfolder, a `_category.json`, or ≥2 topic files, else a folder
 // with one topic file is a leaf topic. Exits non-zero on any problem. See docs/archive/PLANNING.md §4.1.
@@ -32,6 +33,9 @@ const KEBAB_RE = /^[a-z0-9]+(-[a-z0-9]+)*$/;
 // `sources` items are free-form so they can carry a label ("German: https://…"),
 // hence a loose "is there a link in here at all" check rather than a URL pattern.
 const URL_RE = /https?:\/\/\S/;
+// The `dataOrigin` tags in use. An unfamiliar one is only a warning: it is most likely
+// a typo of one of these, but a new source is a legitimate reason to extend the list.
+const KNOWN_ORIGINS = ["Wikidata", "Wikipedia", "PokéAPI", "Sporcle", "Bird (2003)"];
 // Sidecar filename holding a category node's display metadata (never a topic).
 const CATEGORY_META = "_category.json";
 
@@ -404,6 +408,9 @@ async function main() {
     const sources = topic.sources == null ? [] : [topic.sources].flat();
     for (const s of sources) {
       if (!URL_RE.test(s)) warnings.push(`${rel}: source has no URL — "${s}"`);
+    }
+    for (const o of [topic.dataOrigin ?? []].flat()) {
+      if (!KNOWN_ORIGINS.includes(o)) warnings.push(`${rel}: unfamiliar dataOrigin "${o}" (known: ${KNOWN_ORIGINS.join(", ")})`);
     }
   }
 
