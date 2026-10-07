@@ -20,6 +20,8 @@ Use the relative File Paths/Links provided on the Items listed in the [Overview 
 
 **What a status is measured against.** For a topic we already have, the fairest measure is how many of *our* entries Wikidata could supply (`_scripts/vs-topic.mjs`), not how many items it holds in total. For a planned one, the members found against the real number (a franchise wiki, the official count).
 
+**Rated by how cleanly results classify.** An omission rule never reduces what a reader can select, it adds to it: a meaningful class that isn't wanted by default (historical countries, discontinued Olympic sports, child disciplines) is a candidate `omitted` / `omittable` rule, not ballast. So a query is judged by how well its results split into the base list plus such classes, each with a stable id and the parameters that separate it; only what is no entry of the topic at all goes on an exclusion list, kept visible in `data-raw/`.
+
 **List definitions are a starting point, not the answer.** A list item's *is a list of* (P360) and its qualifiers often name a property the members don't use (SpongeBob's characters are linked by *present in work*, P1441, while the definition asks for *part of the series*, P179), or no qualifier at all. So members are counted by every usual link to the work, its series, universe or franchise (P1441, P1080, P179, P8345, P361), and by class with subclasses (`_scripts/members.mjs`).
 
 **Truthy statements, not all statements.** The Query Builder counts every P31 statement, ended and deprecated ones included; for current things (countries) the truthy `wdt:P31` figure is the relevant one (`_scripts/count.mjs` prints both).
@@ -33,6 +35,9 @@ Use the relative File Paths/Links provided on the Items listed in the [Overview 
 - `members.mjs <class> <work>… [--list]`: instances of a class linked to the works by any of the usual properties, per property.
 - `vs-topic.mjs <topic.json> <class> <work>… [--missing]`: how many of a curated topic's entries are among those members (by full name, or by first name).
 - `classes.mjs <work>…`: the classes the linked items are instances of, most common first (to find a list's class when nothing defines one).
+- `olympics.mjs`: the Olympic sports per Games and per edition, with sitelinks and parent sports.
+- `fame.mjs <QID>… [--from file]`: sitelinks against 12 months of English pageviews, with Spearman's rho.
+- `historical.mjs [--min N]`: candidate queries for historical countries against a reference set.
 - `count.mjs <class>…`: instances of a class: truthy, with subclasses, all statements.
 - `hub.mjs`: rebuilds this file's overview and every file's navigation from the headings (run after changing a status).
 
@@ -156,3 +161,9 @@ Use the relative File Paths/Links provided on the Items listed in the [Overview 
 - [Olympics](./sports/Olympics.md#navigation)
   - ❌[Athletes](./sports/Olympics.md#athletes)
   - ➕[Sports](./sports/Olympics.md#sports)
+
+<!-- @agent(#35) from #38 · 2026-10-07 · OPEN
+Decided: Wikidata stores names that read the same everywhere as a language-independent `mul` label, often without per-language labels (South Park has no `en` one). The dump queries fetch a fixed language list without `mul`. Checked: no current topic loses an `en` name (0 of 2,021 languages, 0 of 243 countries), but 35 languages and 12 countries carry a `mul` label and may show false gaps in other languages (coverage pages, the "no name in this language" counts).
+Ask: consider `mul` as the last link of every LANG_SRC chain when the dump machinery is touched (V / Z); a coverage cell resolved through `mul` might count as covered.
+Refs: _untracked/docs/Queries/README.md, Method, "Labels: mul too"
+-->

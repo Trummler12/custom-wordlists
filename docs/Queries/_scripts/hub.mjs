@@ -66,5 +66,9 @@ for (const [category, folder] of CATEGORIES) {
   }
   out.push("");
 }
+// Agent mail that concerns no single topic sits at the end of the hub (see the agent
+// protocol); the rebuilt overview must not swallow it.
+const mail = readme.slice(readme.indexOf("## Overview")).match(/<!--[\s\S]*?-->/g) ?? [];
+if (mail.length) out.push(mail.join("\n\n"), "");
 writeFileSync(join(ROOT, "README.md"), out.join("\n"));
 console.log("hub: README overview and file navigations rebuilt");
