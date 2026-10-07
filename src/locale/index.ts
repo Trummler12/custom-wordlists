@@ -365,7 +365,7 @@ export interface CoveragePageStrings {
   /** The first column's header. */
   item: string;
   /** The numeric column's header, chosen by the dataset's `numeric` key. */
-  numeric: { population: string; area: string; users: string };
+  numeric: { population: string; area: string; users: string; atomicNumber: string };
   /** Pager controls — the neutral ‹‹‹ ‹ › ››› glyphs are in the markup, these name them
    *  (aria-label and hover) for the first, previous, next and last page. */
   first: string;
