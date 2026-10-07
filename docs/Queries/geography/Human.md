@@ -64,11 +64,16 @@ SELECT DISTINCT ?item ?links WHERE {
 **Possible split by era:** 902 of the 929 carry a dissolution year (P576): before 500: 118, 500 to 1500: 209, 1500 to 1900: 257, after 1900: 318. Enough for sub-rules (e.g. `ancient-states`, `medieval-states`, `modern-former-states`) or tiers, should one rule prove too coarse.  
 **Rating:** usable; the rule can be built from this query.
 
-<!-- @agent(#35) from #38 · 2026-10-07 · OPEN
-Decided: (Trummler) historical countries are a candidate omitted rule, also offered in the Sovereignty & recognition matrix; analysed in "Candidate rule: historical countries" above. Proposed id `historical-countries`: P31/P279* historical country (Q3024240), at least 30 sitelinks (929 items, 34 of 36 well-known historical states; Carthage and Assyria need a visible inclusion list). 902 of them carry a dissolution year (P576), enough to split by era or tier if one rule is too coarse. One current country is also typed historical country and must be kept out.
-Ask: nothing yet; tell me when the rule gets planned (and whether you want era sub-rules), and I'll pin down the inclusion list and the sitelink threshold.
-Refs: _untracked/docs/Queries/geography/Human.md, "Candidate rule: historical countries"; _scripts/historical.mjs
--->
+### Spans and continents (for the century slider)
+
+**Items:** 930 (the 929 at ≥ 30 sitelinks, plus Carthage, Q6343, from the inclusion list; Assyria is the *Assyrian Empire*, Q41137, already among them). Tool: `_scripts/historical-spans.mjs`.  
+**Date coverage:** inception (P571) 901, dissolved (P576) 903, start time (P580) 29, end time (P582) 24. Taking P571 else P580 as the start and P576 else P582 as the end: 23 lack a start, 22 an end, 14 both. No item starts after it ends, none ends after 2026.  
+**Start centuries:** sparse before the 13th century BC (31 items spread over 61st to 14th century BC), then 4 to 15 per century until the 1st century AD, 16 to 49 per century from the 5th to the 18th, then 110 in the 19th, 207 in the 20th, 3 in the 21st.  
+**End centuries:** from the 23rd century BC; up to 12 per century before AD, 3 to 60 per century after, then 131 in the 19th, 305 in the 20th, 13 in the 21st.  
+**Earliest bucket:** "11th century BC or earlier" would hold 45 starts, about the load of an ordinary century in the Middle Ages; "13th century BC or earlier" 31.  
+**Continents:** P30 on the item for 771, via the capital (P36) for 18 more; 141 have neither, but 124 of those carry coordinates (P625, on the item or its capital) that could place them; 17 remain. 26 items span several continents.  
+**Dates to check rather than special-case:** some starts are a settlement's or a legend's, not the state's: Ugarit (6000 BC, the city's first settlement; the kingdom is c. 1450 to 1185 BC), Ancient Egypt (4000 BC), Gojoseon (2333 BC, the legendary founding), Xia dynasty (2205 BC, semi-legendary). Candidates for referenced corrections on Wikidata once sources are found; the rest of the 18 starts before 2000 BC (Ebla, Elam, Akkadian Empire, Third Dynasty of Ur, …) look plausible.
+
 
 ## ✅Capitals
 

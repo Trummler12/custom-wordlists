@@ -12,6 +12,8 @@ import { labels, sparql } from "./wd.mjs";
 
 const SUMMER = "Q159821";
 const WINTER = "Q82414";
+// The current programme (latest Summer and Winter editions), the next announced one, and the
+// previous ones for context. Missing per-edition data is fixed on Wikidata, not here.
 const EDITIONS = { 2024: "Q995653", 2026: "Q4630399", 2028: "Q1451505", 2022: "Q193074", 2020: "Q181278" };
 
 const base = await sparql(`SELECT DISTINCT ?sport ?games WHERE {

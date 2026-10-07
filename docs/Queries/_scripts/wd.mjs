@@ -11,8 +11,8 @@ const UA = "custom-wordlists-analysis/1.0 (https://github.com/Trummler12/custom-
 const CACHE = join(dirname(fileURLToPath(import.meta.url)), "..", "_data", "cache");
 
 /** The bindings of a SELECT query, each flattened to `{ var: value }`. Cached by query
- *  text; pass `{ fresh: true }` to bypass the cache. */
-export async function sparql(query, { fresh = false } = {}) {
+ *  text; pass `{ fresh: true }`, or run with WD_FRESH=1, to bypass it (after an edit to Wikidata). */
+export async function sparql(query, { fresh = process.env.WD_FRESH === "1" } = {}) {
   const key = createHash("sha1").update(query).digest("hex").slice(0, 16);
   const file = join(CACHE, `${key}.json`);
   if (!fresh) {

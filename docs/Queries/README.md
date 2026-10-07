@@ -26,11 +26,28 @@ Use the relative File Paths/Links provided on the Items listed in the [Overview 
 
 **Truthy statements, not all statements.** The Query Builder counts every P31 statement, ended and deprecated ones included; for current things (countries) the truthy `wdt:P31` figure is the relevant one (`_scripts/count.mjs` prints both).
 
-**Labels: `mul` too.** Names that read the same in every language ("South Park") are often stored only as the language-independent `mul` label, with no `en` one; a query that asks for `en` alone misses them.
+**Labels: `mul` too.** Names that read the same in every language ("South Park") are often stored only as the language-independent `mul` label, with no `en` one; a query that asks for `en` alone misses them. Our shared dump module (`scripts/lib/wikidata.mjs`) closes the chain of every Latin-script language with `mul`, not of ja, ko, zh, ru, bg, el, he, mk or sr, where a Latin name would be a wrong one rather than a missing one; a coverage cell resolved through `mul` counts as covered.
+
+**Gaps are fixed on Wikidata, not worked around.** Where an item lacks a statement or carries a wrong one, the fix is an edit to Wikidata, never a hard-coded QID or a special case in a query. Edits go through [QuickStatements](https://quickstatements.toolforge.org/#/batch), prepared here and imported by Trummler:
+
+- What to fill in: [QuickStatements.md](./QuickStatements.md) lists the reference properties, qualifiers, properties and classes we use, with their Wikidata labels, and the syntax.
+- Only what is certain beyond doubt. Every added or changed statement carries a reference: the source URL (`S854`) and the retrieval date (`S813`), plus *stated in* (`S248`) where the source has an item; two independent sources where one could be doubted. Qualifiers wherever they belong (start / end time, point in time, …).
+- Additions first. Removing a statement (`-Q…|P…|Q…`) only when it is certainly wrong, and in a batch of its own.
+- One file per subject: `_data/QuickStatements/<date>_<topic>-<subject>.txt`. Its first line is the batch name (English; it goes into the "Batch name" field, not into the commands), the rest nothing but commands (QuickStatements has no comments). The topic's section says what each batch does, why, from which sources, and whether it is **pending** or **imported**.
+- After the import: re-run the check, note the result in the section, delete the batch file.
+
+**Research can go to Gemini, QIDs never.** Finding sources for a statement is a good task to delegate (a prompt in `_untracked/Prompts/`), but Gemini invents QIDs; every QID is resolved by a query here, and a prompt that needs some names them itself.
+
+**Keeping the analysis lean.**
+
+- A newer **Check** replaces the older one in its section (the history is in git).
+- Once a list is ✅ in use, its section shrinks to what building it needs: the final query, the rules (id, parameters), pointers to the exclusion / override lists, the last check. Comparisons that led there go into a collapsed `<details>` or away.
+- `_data/` is a cache: anything in it can be deleted and rebuilt with the scripts, the QuickStatements batches excepted until imported.
+- Agent mail ends with the agent that has nothing left to add: instead of replying, it carries the outcome into its own records (here: the analysis text) and deletes the whole thread.
 
 <details><summary><i>the scripts in <code>_scripts/</code></i></summary>
 
-- `wd.mjs`: the SPARQL call (User-Agent, retry, a cache in `_data/cache`) and `labels()` (en, else mul).
+- `wd.mjs`: the SPARQL call (User-Agent, retry, a cache in `_data/cache`; `WD_FRESH=1` bypasses it after an edit to Wikidata) and `labels()` (en, else mul).
 - `listdef.mjs <list-QID>…`: a list item's P360 definitions and what each matches (exact class, with subclasses, any class).
 - `members.mjs <class> <work>… [--list]`: instances of a class linked to the works by any of the usual properties, per property.
 - `vs-topic.mjs <topic.json> <class> <work>… [--missing]`: how many of a curated topic's entries are among those members (by full name, or by first name).
@@ -38,6 +55,8 @@ Use the relative File Paths/Links provided on the Items listed in the [Overview 
 - `olympics.mjs`: the Olympic sports per Games and per edition, with sitelinks and parent sports.
 - `fame.mjs <QID>… [--from file]`: sitelinks against 12 months of English pageviews, with Spearman's rho.
 - `historical.mjs [--min N]`: candidate queries for historical countries against a reference set.
+- `historical-spans.mjs [--min N]`: the candidates' date coverage, start / end centuries and continents.
+- `qs-reference.mjs`: regenerates `QuickStatements.md` with labels fetched from Wikidata.
 - `count.mjs <class>…`: instances of a class: truthy, with subclasses, all statements.
 - `hub.mjs`: rebuilds this file's overview and every file's navigation from the headings (run after changing a status).
 
@@ -161,9 +180,3 @@ Use the relative File Paths/Links provided on the Items listed in the [Overview 
 - [Olympics](./sports/Olympics.md#navigation)
   - ❌[Athletes](./sports/Olympics.md#athletes)
   - ➕[Sports](./sports/Olympics.md#sports)
-
-<!-- @agent(#35) from #38 · 2026-10-07 · OPEN
-Decided: Wikidata stores names that read the same everywhere as a language-independent `mul` label, often without per-language labels (South Park has no `en` one). The dump queries fetch a fixed language list without `mul`. Checked: no current topic loses an `en` name (0 of 2,021 languages, 0 of 243 countries), but 35 languages and 12 countries carry a `mul` label and may show false gaps in other languages (coverage pages, the "no name in this language" counts).
-Ask: consider `mul` as the last link of every LANG_SRC chain when the dump machinery is touched (V / Z); a coverage cell resolved through `mul` might count as covered.
-Refs: _untracked/docs/Queries/README.md, Method, "Labels: mul too"
--->
