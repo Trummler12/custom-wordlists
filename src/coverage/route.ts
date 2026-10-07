@@ -14,7 +14,7 @@
 const PREFIX = "coverage";
 
 /** The Wikidata-sourced topics that have a coverage dataset (data/coverage/<topic>.json). */
-export const COVERAGE_TOPICS = ["countries", "capitals", "languages", "continents"] as const;
+export const COVERAGE_TOPICS = ["countries", "capitals", "languages", "continents", "elements"] as const;
 export type CoverageTopic = (typeof COVERAGE_TOPICS)[number];
 
 const TOPICS = new Set<string>(COVERAGE_TOPICS);

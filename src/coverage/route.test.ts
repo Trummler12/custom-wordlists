@@ -75,8 +75,11 @@ describe("coverageTopicOf", () => {
     expect(coverageTopicOf({ id: "africa-countries", path: "geography/human/africa/countries.json" })).toBeNull();
     expect(coverageTopicOf({ id: "items", path: "gaming/pokemon/items.json", dataOrigin: "PokéAPI" })).toBeNull();
   });
+  it("matches a single topic outside geography", () => {
+    expect(coverageTopicOf({ id: "elements", path: "science/chemistry/elements.json", dataOrigin: wd })).toBe("elements");
+  });
   it("is null for a Wikidata topic with no coverage page", () => {
-    expect(coverageTopicOf({ id: "elements", path: "science/chemistry/elements.json", dataOrigin: wd })).toBeNull();
+    expect(coverageTopicOf({ id: "athletes", path: "sports/olympia/athletes.json", dataOrigin: wd })).toBeNull();
   });
 });
 
