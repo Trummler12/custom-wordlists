@@ -20,8 +20,14 @@ export const NAME_LANGS = [
 /** Our content tag => the Wikidata label tags to read it from, first hit wins. Wikidata
  *  splits some languages by region or script where we don't (Chinese by region, Norwegian
  *  into Bokmål and Nynorsk, Tagalog under Filipino). `zh` comes last for Simplified: it is
- *  not reliably Simplified, so it only fills a gap. */
-export const LANG_SRC = {
+ *  not reliably Simplified, so it only fills a gap.
+ *
+ *  `mul` closes the chain of every language written in Latin letters: a name that reads
+ *  the same everywhere ("South Park") is often stored only there. Not for the others,
+ *  where the same name is written in their own script (サウスパーク, Саут Парк), so a
+ *  Latin `mul` label would be a wrong name rather than a missing one. */
+const LATIN = ["en", "de", "es", "fr", "it", "pt", "tr", "pl", "nl", "cs", "da", "et", "fi", "hu", "lv", "no", "ro", "sk", "sv", "tl"];
+const CHAINS = {
   en: ["en"], de: ["de"], es: ["es"], fr: ["fr"], it: ["it"], ja: ["ja"], ko: ["ko"],
   "zh-Hans": ["zh-hans", "zh-cn", "zh-sg", "zh-my", "zh"],
   "zh-Hant": ["zh-hant", "zh-tw", "zh-hk", "zh-mo"],
@@ -30,6 +36,9 @@ export const LANG_SRC = {
   hu: ["hu"], lv: ["lv"], mk: ["mk"], no: ["no", "nb", "nn"], ro: ["ro"], sr: ["sr"],
   sk: ["sk"], sv: ["sv"], tl: ["tl", "fil"],
 };
+export const LANG_SRC = Object.fromEntries(
+  Object.entries(CHAINS).map(([tag, chain]) => [tag, LATIN.includes(tag) ? [...chain, "mul"] : chain]),
+);
 
 /** Every Wikidata tag LANG_SRC reads, which is all a dump needs to fetch. */
 export const WD_TAGS = [...new Set(Object.values(LANG_SRC).flat())];
