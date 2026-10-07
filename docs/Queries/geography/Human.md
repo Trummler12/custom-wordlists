@@ -37,6 +37,8 @@ What Wikidata offers for the Human Geography topics, and how far it can serve as
 | [sovereign state](https://www.wikidata.org/wiki/Q3624078) | 448 | 844 | 206 (201) | 422 (405) |
 | [country](https://www.wikidata.org/wiki/Q6256) | 277 | 1258 | 217 (214) | 757 (738) |
 
+**Check (2026-10-07):** *Sovereign state* (Q3624078) has 200 instances counting current (truthy) statements and 448 counting every P31 statement, ended and deprecated ones included; the Query Builder counts the latter, hence its higher figures. *Country* (Q6256): 217 and 278. For a list of current countries the truthy figures are the ones that matter.
+
 ## ✅Capitals
 
 *Not analyzed yet.*

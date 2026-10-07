@@ -21,7 +21,7 @@ What Wikidata offers for the Pokémon (Games) topics, and how far it can serve a
 - ✖️[Moves](#️moves)
 - ✖️[Characters](#️characters)
 - ➕[Locations](#locations)
-- 🔵[Video Games](#video-games)
+- ➕[Video Games](#video-games)
 
 ## ☑️Pokémon
 
@@ -179,6 +179,8 @@ SELECT DISTINCT ?item ?itemLabel WHERE {
 ```
 (1232 results; Total - 4 = exactly matching expectations)
 
+**Check (2026-10-07):** 1,235 species via `P31/P279*` (1,236 before); the class itself is never used directly (0).
+
 ## ☑️Abilities
 
 **Associated List:** -  
@@ -194,6 +196,8 @@ SELECT DISTINCT ?item ?itemLabel WHERE {
 
 => Needs a mapping file, ideally generated once, by this rule: `for each ability: load every Pokémon species that has it; of those, take the lowest generation in "first appearance (Q8563381)"`
 
+**Check (2026-10-07):** 314, unchanged.
+
 ## ✖️Items
 
 **Associated List:** -  
@@ -208,6 +212,8 @@ SELECT DISTINCT ?item ?itemLabel WHERE {
 - all berries and several item classes seem to be missing;
 - needs extensive contributions before it can be used.
 
+**Check (2026-10-07):** 330 with subclasses (22 direct), unchanged.
+
 ## ✖️Moves
 
 **Associated List:** -  
@@ -218,6 +224,8 @@ SELECT DISTINCT ?item ?itemLabel WHERE {
 **Results:** 678  
 **Rating:** the same as for the items.
 
+**Check (2026-10-07):** 678 with subclasses (1 direct), unchanged.
+
 ## ✖️Characters
 
 **Associated List:** [list of Pokémon characters (Q379199)](https://www.wikidata.org/wiki/Q379199)  
@@ -226,6 +234,8 @@ SELECT DISTINCT ?item ?itemLabel WHERE {
 **Query:** none specific yet (to follow)  
 **Results:** just over 100  
 **Rating:** the worst case so far as far as completeness goes.
+
+**Check (2026-10-07):** The definition finds 308 with subclasses (11 without), more than the "just over 100" above; 313 characters are linked to the Pokémon universe, anime, series or Adventures overall. Still far below the thousands of named characters.
 
 ## ➕Locations
 
@@ -236,9 +246,14 @@ SELECT DISTINCT ?item ?itemLabel WHERE {
 **Results:** 282  
 **Rating:** worth considering, but the generation seems to be missing everywhere.
 
-## 🔵Video Games
+**Check (2026-10-07):** 282 with subclasses (154 direct), unchanged.
+
+## ➕Video Games
 
 **Associated List:** [list of Pokémon video games (Q99485876)](https://www.wikidata.org/wiki/Q99485876)  
 **Definition:** [is a list of](https://www.wikidata.org/wiki/Property:P360): [video game](https://www.wikidata.org/wiki/Q7889), [part of](https://www.wikidata.org/wiki/Property:P361): [Pokémon video games](https://www.wikidata.org/wiki/Q1079748)
+
+**Check (2026-10-07):** The definition (*part of* = Pokémon video games) matches no video game; 103 games are linked via *media franchise* (P8345) = Pokémon (Q864).  
+**Rating:** ➕ (was 🔵), assuming the real number is a little above that.
 
 ## [to Navigation](#navigation)

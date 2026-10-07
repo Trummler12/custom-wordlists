@@ -15,20 +15,25 @@ What Wikidata offers for the The Simpsons topics, and how far it can serve as th
 ## Navigation
 
 [Animation](../README.md#animation)
-- ✖️[Characters](#️characters)
+- ➕[Characters](#characters)
 - 🔵[Locations](#locations)
 - ❌[Episodes](#episodes)
 - ✖️[Video Games](#️video-games)
 
-## ✖️Characters
+## ➕Characters
 
 **Associated List:** [list of The Simpsons characters (Q267149)](https://www.wikidata.org/wiki/Q267149)  
 **Definition:** [is a list of](https://www.wikidata.org/wiki/Property:P360): [character](https://www.wikidata.org/wiki/Q95074), [present in work](https://www.wikidata.org/wiki/Property:P1441): [The Simpsons](https://www.wikidata.org/wiki/Q886)
+
+**Check (2026-10-07):** 331 characters are linked (P1441 / P1080 / P8345 to The Simpsons, its universe or franchise); the definition's class query finds 1 without subclasses and 321 with them. All 24 of our entries are among them (9 by full name, 15 by first name).  
+**Rating:** ➕ (was ✖️).
 
 ## 🔵Locations
 
 **Associated List:** [list of The Simpsons locations (Q3526785)](https://www.wikidata.org/wiki/Q3526785)  
 **Definition:** [is a list of](https://www.wikidata.org/wiki/Property:P360): [fictional location](https://www.wikidata.org/wiki/Q3895768), [from narrative universe](https://www.wikidata.org/wiki/Property:P1080): [The Simpsons universe](https://www.wikidata.org/wiki/Q61468436)
+
+**Check (2026-10-07):** 29 fictional locations, linked via *from narrative universe* (P1080); the definition finds 0 without subclasses and 29 with them. Not yet compared with the real number.
 
 ## ❌Episodes
 
@@ -41,5 +46,7 @@ What Wikidata offers for the The Simpsons topics, and how far it can serve as th
 **Associated List:** [list of The Simpsons video games (Q2458013)](https://www.wikidata.org/wiki/Q2458013)  
 **Definition:** [is a list of](https://www.wikidata.org/wiki/Property:P360): [video game](https://www.wikidata.org/wiki/Q7889)  
 **Assessment:** List definition is incomplete
+
+**Check (2026-10-07):** The definition has no qualifier, so it matches every video game (178,131). 27 games are linked via *media franchise* (P8345) = The Simpsons (Q7764350); not yet compared with the real number.
 
 ## [to Navigation](#navigation)

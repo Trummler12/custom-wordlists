@@ -16,6 +16,28 @@ Use the relative File Paths/Links provided on the Items listed in the [Overview 
 ❌ Wikidata **not viable** at all  
 ❓ Viability not yet clear
 
+## Method
+
+**What a status is measured against.** For a topic we already have, the fairest measure is how many of *our* entries Wikidata could supply (`_scripts/vs-topic.mjs`), not how many items it holds in total. For a planned one, the members found against the real number (a franchise wiki, the official count).
+
+**List definitions are a starting point, not the answer.** A list item's *is a list of* (P360) and its qualifiers often name a property the members don't use (SpongeBob's characters are linked by *present in work*, P1441, while the definition asks for *part of the series*, P179), or no qualifier at all. So members are counted by every usual link to the work, its series, universe or franchise (P1441, P1080, P179, P8345, P361), and by class with subclasses (`_scripts/members.mjs`).
+
+**Truthy statements, not all statements.** The Query Builder counts every P31 statement, ended and deprecated ones included; for current things (countries) the truthy `wdt:P31` figure is the relevant one (`_scripts/count.mjs` prints both).
+
+**Labels: `mul` too.** Names that read the same in every language ("South Park") are often stored only as the language-independent `mul` label, with no `en` one; a query that asks for `en` alone misses them.
+
+<details><summary><i>the scripts in <code>_scripts/</code></i></summary>
+
+- `wd.mjs`: the SPARQL call (User-Agent, retry, a cache in `_data/cache`) and `labels()` (en, else mul).
+- `listdef.mjs <list-QID>…`: a list item's P360 definitions and what each matches (exact class, with subclasses, any class).
+- `members.mjs <class> <work>… [--list]`: instances of a class linked to the works by any of the usual properties, per property.
+- `vs-topic.mjs <topic.json> <class> <work>… [--missing]`: how many of a curated topic's entries are among those members (by full name, or by first name).
+- `classes.mjs <work>…`: the classes the linked items are instances of, most common first (to find a list's class when nothing defines one).
+- `count.mjs <class>…`: instances of a class: truthy, with subclasses, all statements.
+- `hub.mjs`: rebuilds this file's overview and every file's navigation from the headings (run after changing a status).
+
+</details>
+
 ## Overview
 
 ### Animation
@@ -26,12 +48,12 @@ Use the relative File Paths/Links provided on the Items listed in the [Overview 
   - ❌[Episodes](./animation/South_Park.md#episodes)
   - 🔵[Video Games](./animation/South_Park.md#video-games)
 - [SpongeBob SquarePants](./animation/SpongeBob.md#navigation)
-  - ✖️[Characters](./animation/SpongeBob.md#️characters)
+  - ➕[Characters](./animation/SpongeBob.md#characters)
   - 🔵[Locations](./animation/SpongeBob.md#locations)
   - ❌[Episodes](./animation/SpongeBob.md#episodes)
   - ✖️[Video Games](./animation/SpongeBob.md#️video-games)
 - [The Simpsons](./animation/The_Simpsons.md#navigation)
-  - ✖️[Characters](./animation/The_Simpsons.md#️characters)
+  - ➕[Characters](./animation/The_Simpsons.md#characters)
   - 🔵[Locations](./animation/The_Simpsons.md#locations)
   - ❌[Episodes](./animation/The_Simpsons.md#episodes)
   - ✖️[Video Games](./animation/The_Simpsons.md#️video-games)
@@ -39,13 +61,13 @@ Use the relative File Paths/Links provided on the Items listed in the [Overview 
 ### Anime
 
 - [Dragon Ball](./anime/Dragon_Ball.md#navigation)
-  - ✖️[Characters](./anime/Dragon_Ball.md#️characters)
+  - ➕[Characters](./anime/Dragon_Ball.md#characters)
   - ✖️[Locations](./anime/Dragon_Ball.md#️locations)
   - ❌[Episodes](./anime/Dragon_Ball.md#episodes)
   - 🔵[Films](./anime/Dragon_Ball.md#films)
-  - 🔵[Video Games](./anime/Dragon_Ball.md#video-games)
+  - ✖️[Video Games](./anime/Dragon_Ball.md#️video-games)
 - [One Piece](./anime/One_Piece.md#navigation)
-  - ✖️[Characters](./anime/One_Piece.md#️characters)
+  - ➕[Characters](./anime/One_Piece.md#characters)
   - ✖️[Animals/Species/Races](./anime/One_Piece.md#️animalsspeciesraces)
   - ✖️[Affiliations](./anime/One_Piece.md#️affiliations)
   - ✖️[Devil Fruits](./anime/One_Piece.md#️devil-fruits)
@@ -53,12 +75,12 @@ Use the relative File Paths/Links provided on the Items listed in the [Overview 
   - ✖️[Islands](./anime/One_Piece.md#️islands)
   - ❌[Episodes](./anime/One_Piece.md#episodes)
   - 🔵[Films](./anime/One_Piece.md#films)
-  - 🔵[Video Games](./anime/One_Piece.md#video-games)
+  - ✖️[Video Games](./anime/One_Piece.md#️video-games)
 - [Pokémon (Anime)](./anime/Pokemon.md#navigation)
   - ✖️[Characters](./anime/Pokemon.md#️characters)
   - ➕[Locations](./anime/Pokemon.md#locations)
   - ❌[Episodes](./anime/Pokemon.md#episodes)
-  - 🔵[Openings (theme songs)](./anime/Pokemon.md#openings-theme-songs)
+  - ✖️[Openings (theme songs)](./anime/Pokemon.md#️openings-theme-songs)
   - 🔵[Films](./anime/Pokemon.md#films)
   - 🔵[Video Games](./anime/Pokemon.md#video-games)
 
@@ -88,11 +110,11 @@ Use the relative File Paths/Links provided on the Items listed in the [Overview 
 ### Gaming
 
 - [Apex Legends](./gaming/Apex_Legends.md#navigation)
-  - ❓[Legends](./gaming/Apex_Legends.md#legends)
-  - 🔵[Characters](./gaming/Apex_Legends.md#characters)
-  - 🔵[Weapons](./gaming/Apex_Legends.md#weapons)
+  - ✖️[Legends](./gaming/Apex_Legends.md#️legends)
+  - ✖️[Characters](./gaming/Apex_Legends.md#️characters)
+  - ✖️[Weapons](./gaming/Apex_Legends.md#️weapons)
 - [League of Legends](./gaming/League_of_Legends.md#navigation)
-  - ❓[Champions](./gaming/League_of_Legends.md#champions)
+  - ➕[Champions](./gaming/League_of_Legends.md#champions)
   - ❓[Legacy Champions](./gaming/League_of_Legends.md#legacy-champions)
   - ✖️[Characters](./gaming/League_of_Legends.md#️characters)
 - [Pokémon (Games)](./gaming/Pokemon.md#navigation)
@@ -102,7 +124,7 @@ Use the relative File Paths/Links provided on the Items listed in the [Overview 
   - ✖️[Moves](./gaming/Pokemon.md#️moves)
   - ✖️[Characters](./gaming/Pokemon.md#️characters)
   - ➕[Locations](./gaming/Pokemon.md#locations)
-  - 🔵[Video Games](./gaming/Pokemon.md#video-games)
+  - ➕[Video Games](./gaming/Pokemon.md#video-games)
 - [Video Games](./gaming/Video_Games.md#navigation)
 
 ### Geography

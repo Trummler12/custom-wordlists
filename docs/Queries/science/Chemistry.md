@@ -41,4 +41,6 @@ SELECT DISTINCT ?item ?itemLabel WHERE {
 **Results:** 118  
 **Rating:** **perfect**
 
+**Check (2026-10-07):** The query above still gives exactly 118. Without its MINUS, *chemical element* has 174 instances: the hypothetical ones it filters out.
+
 ## [to Navigation](#navigation)
