@@ -57,6 +57,8 @@ Use the relative File Paths/Links provided on the Items listed in the [Overview 
 - `vs-topic.mjs <topic.json> <class> <work>… [--missing]`: how many of a curated topic's entries are among those members (by full name, or by first name).
 - `classes.mjs <work>…`: the classes the linked items are instances of, most common first (to find a list's class when nothing defines one).
 - `olympics.mjs`: the Olympic sports per Games and per edition, with sitelinks and parent sports.
+- `athletes.mjs`: how complete Olympic athletes are (Olympedia IDs, participations, medal qualifiers, sitelinks).
+- `multisport.mjs`: the sports of other multi-sport events and their overlap with the Olympic ones.
 - `fame.mjs <QID>… [--from file]`: sitelinks against 12 months of English pageviews, with Spearman's rho.
 - `historical.mjs [--min N]`: candidate queries for historical countries against a reference set.
 - `historical-spans.mjs [--min N]`: the candidates' date coverage, start / end centuries and continents.
@@ -263,8 +265,10 @@ Use the relative File Paths/Links provided on the Items listed in the [Overview 
 ### Sports
 
 - [Olympics](./sports/Olympics.md#navigation)
-  - ❌[Athletes](./sports/Olympics.md#athletes)
-  - ➕[Sports](./sports/Olympics.md#sports)
+  - ✅[Summer Sports](./sports/Olympics.md#summer-sports)
+  - ➕[Summer Athletes](./sports/Olympics.md#summer-athletes)
+  - ☑️[Winter Sports](./sports/Olympics.md#️winter-sports)
+  - ➕[Winter Athletes](./sports/Olympics.md#winter-athletes)
 
 #### Candidates
 
@@ -275,4 +279,8 @@ Use the relative File Paths/Links provided on the Items listed in the [Overview 
 - Formula 1 Circuits
 - Tennis Players
 - Non-Olympic Sports
+- Paralympics
+- World Games
+- Commonwealth Games
+- Asian Games
 - Olympic Host Cities

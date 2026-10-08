@@ -23,16 +23,28 @@ export async function sparql(query, { fresh = process.env.WD_FRESH === "1" } = {
     }
   }
   for (let attempt = 0; ; attempt++) {
-    const res = await fetch(`${ENDPOINT}?format=json&query=${encodeURIComponent(query)}`, {
-      headers: { "User-Agent": UA, Accept: "application/sparql-results+json" },
-    });
-    if (res.status === 429 || res.status >= 500) {
-      if (attempt >= 4) throw new Error(`HTTP ${res.status} after ${attempt + 1} attempts`);
+    const retry = async (why) => {
+      if (attempt >= 4) throw new Error(`${why} after ${attempt + 1} attempts`);
       await new Promise((r) => setTimeout(r, 2000 * 2 ** attempt));
+    };
+    let res, body;
+    // The server also drops the connection mid-answer (a timed-out query), which surfaces
+    // as a thrown fetch, not as a status.
+    try {
+      res = await fetch(`${ENDPOINT}?format=json&query=${encodeURIComponent(query)}`, {
+        headers: { "User-Agent": UA, Accept: "application/sparql-results+json" },
+      });
+      if (res.ok) body = await res.json();
+    } catch (err) {
+      await retry(`connection lost (${err.message})`);
+      continue;
+    }
+    if (res.status === 429 || res.status >= 500) {
+      await retry(`HTTP ${res.status}`);
       continue;
     }
     if (!res.ok) throw new Error(`HTTP ${res.status}: ${(await res.text()).slice(0, 300)}`);
-    const rows = (await res.json()).results.bindings.map((b) =>
+    const rows = body.results.bindings.map((b) =>
       Object.fromEntries(Object.entries(b).map(([k, v]) => [k, v.value.replace("http://www.wikidata.org/entity/", "")])),
     );
     await mkdir(CACHE, { recursive: true });

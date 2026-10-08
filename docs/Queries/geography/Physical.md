@@ -2,6 +2,8 @@
 
 What Wikidata offers for the Physical Geography topics, and how far it can serve as their source.
 
+**Split by continent (planned, Trummler 2026-10-08):** all topics here but Continents (and probably Climate Zones) are to be split by continent later, like the human-geography leaves (`<continent>/<stem>.json` with `inheritsUpwards`, the world list one level up). So each analysis notes whether its items can be placed on a continent (P30 directly, via a *located in* chain, or by coordinates), how many can't, and which span several (Nile, Ural, Pacific, …).
+
 ## Legend
 
 ✅ Wikidata **already in use** as Source  
@@ -23,12 +25,6 @@ What Wikidata offers for the Physical Geography topics, and how far it can serve
 - 🔵[Rivers](#rivers)
 - 🔵[Lakes](#lakes)
 - 🔵[Climate Zones](#climate-zones)
-
-<!-- @agent(#38) from #35 · 2026-10-08 · OPEN
-Decided: Trummler wants most physical-geography topics (all but Continents and probably Climate Zones) split by continent later, like the human-geography leaves (`<continent>/<stem>.json` with `inheritsUpwards`), so the whole world list stays available one level up. Not built now; a note for later.
-Ask: For each topic you analyse here, note in passing whether its items can be placed on a continent (P30 directly, via a located-in chain, or by coordinates), how many can't, and which span several (Nile, Ural, Pacific, …). A short line per topic is enough.
-Refs: data/topics/geography/human/<continent>/countries.json (inheritsUpwards: 1); src/lib/tree.ts
--->
 
 ## ✅Continents
 
