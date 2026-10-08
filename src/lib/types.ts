@@ -44,6 +44,10 @@ export interface TopicSummary {
    *  is `synthesizeTopics`' job, one layer on. Absent = the leaf lives only where it
    *  sits. */
   inheritsUpwards?: number;
+  /** How many of the first `inheritsUpwards` levels merge nothing, as if the leaf sat
+   *  that many levels higher: the Olympic seasons' lists meet past `olympia/`, where
+   *  the other rubrics' lists meet. Absent = 0. */
+  skipInherit?: number;
   /** Populated by the frontend (`synthesizeTopics`), never read from a file: on a
    *  SYNTHESIZED topic it holds the ids of the leaves that merge — the resolution
    *  of their `inheritsUpwards` numbers into concrete contributors, which is where
@@ -376,4 +380,6 @@ export interface Topic {
    *  leaf keeps its own list where it sits AND contributes upward — an added field,
    *  not an alternative to `tiers`/`words`. See schema/topic.schema.json. */
   inheritsUpwards?: number;
+  /** How many of those first levels merge nothing (see `TopicSummary.skipInherit`). */
+  skipInherit?: number;
 }

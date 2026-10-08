@@ -232,6 +232,7 @@ async function buildIndex() {
       // that carry this; the manifest passes it through so that can happen without
       // loading every file first. See src/lib/tree.ts.
       ...(Number.isInteger(data.inheritsUpwards) ? { inheritsUpwards: data.inheritsUpwards } : {}),
+      ...(Number.isInteger(data.skipInherit) ? { skipInherit: data.skipInherit } : {}),
       // Icon-tagged rule ladders (e.g. the Geoguessr coverage filter), so the tree
       // can show and sync them from the manifest alone. See src/components/topics.
       ...(Object.keys(controlsOf(data)).length ? { controls: controlsOf(data) } : {}),

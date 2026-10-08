@@ -86,6 +86,16 @@ describe("synthesizeTopics", () => {
     leaf("geography/human/europe", "countries", 1, { languages: ["en", "de", "es"] }),
   ];
 
+  it("skips the first skipInherit levels, merging only further up", () => {
+    const seasons = [
+      leaf("sports/olympia/summer", "sports", 2, { skipInherit: 1 }),
+      leaf("sports/olympia/winter", "sports", 2, { skipInherit: 1 }),
+    ];
+    const synths = synthesizeTopics(seasons);
+    expect(synths.map((s) => s.category)).toEqual(["sports"]);
+    expect(synths[0].contributors).toEqual(["summer-sports", "winter-sports"]);
+  });
+
   it("merges same-named leaves into one topic at the meeting level", () => {
     const [synth, ...rest] = synthesizeTopics(countries);
     expect(rest).toHaveLength(0);

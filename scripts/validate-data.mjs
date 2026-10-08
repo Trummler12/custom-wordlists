@@ -266,12 +266,16 @@ async function main() {
       errors.push(`${rel}: incompleteTopic and plannedTopic exclude each other (planned already implies incomplete)`);
     }
 
+    if (topic.skipInherit !== undefined && !(topic.skipInherit < (topic.inheritsUpwards ?? 0))) {
+      errors.push(`${rel}: skipInherit (${topic.skipInherit}) must be smaller than inheritsUpwards (${topic.inheritsUpwards ?? "absent"})`);
+    }
+
     // Gather this leaf into every family it contributes to (one per level up to
     // `inheritsUpwards`), keyed by the meeting category and the shared file stem.
     if (Number.isInteger(topic.inheritsUpwards) && topic.inheritsUpwards >= 1) {
       const stem = basename(fileSegments[fileSegments.length - 1], ".json");
       const segs = category.split("/").filter(Boolean);
-      for (let k = 1; k <= topic.inheritsUpwards && k <= segs.length; k++) {
+      for (let k = (topic.skipInherit ?? 0) + 1; k <= topic.inheritsUpwards && k <= segs.length; k++) {
         const key = `${segs.slice(0, segs.length - k).join("/")}::${stem}`;
         let fam = families.get(key);
         if (!fam) families.set(key, (fam = []));

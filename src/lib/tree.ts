@@ -58,14 +58,15 @@ function sharedOrigin(contributors: TopicSummary[]): string | string[] | undefin
  *  list and `selection` delegates every action to those leaves.
  *
  *  A leaf contributes at every level from 1 up to its `inheritsUpwards`, so a
- *  `2` shows up merged twice (cities: per continent and globally). */
+ *  `2` shows up merged twice (cities: per continent and globally), except the first
+ *  `skipInherit` levels. */
 export function synthesizeTopics(topics: TopicSummary[]): TopicSummary[] {
   const families = new Map<string, TopicSummary[]>();
   for (const t of topics) {
     if (!t.inheritsUpwards) continue;
     const stem = stemOf(t.path);
     const segs = t.category.split("/").filter(Boolean);
-    for (let k = 1; k <= t.inheritsUpwards && k <= segs.length; k++) {
+    for (let k = (t.skipInherit ?? 0) + 1; k <= t.inheritsUpwards && k <= segs.length; k++) {
       const meet = segs.slice(0, segs.length - k).join("/");
       const key = `${meet}::${stem}`;
       let family = families.get(key);

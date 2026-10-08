@@ -43,6 +43,7 @@ const TOPIC_KEYS = [
   "rulerTooltip",
   "extendFrom",
   "inheritsUpwards",
+  "skipInherit",
 ];
 
 /** Field order within a ruler tooltip. */
