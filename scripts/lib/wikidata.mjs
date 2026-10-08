@@ -71,9 +71,15 @@ export async function sparql(query) {
   return (await getJson(`${SPARQL}?${new URLSearchParams({ format: "json", query })}`)).results.bindings;
 }
 
-/** The labels and aliases of `ids` in every tag LANG_SRC reads, plus how many Wikipedias
- *  and sister projects link each item (`sitelinks`, a rough measure of how widely known it
- *  is). `{ qid: { sitelinks, names: { <wd-tag>: [{ name, pref } | { name, alias }] } } }`,
+/** A Wikipedia's site id ("dewiki", "zh_yuewiki"), as opposed to a sister project's
+ *  ("dewikiquote") or a non-language wiki's ("commonswiki"). */
+const NOT_WIKIPEDIA = ["commonswiki", "specieswiki", "metawiki", "mediawikiwiki", "wikidatawiki", "sourceswiki", "wikifunctionswiki", "outreachwiki", "incubatorwiki"];
+const isWikipedia = (site) => /^[a-z_]+wiki$/.test(site) && !NOT_WIKIPEDIA.includes(site);
+
+/** The labels and aliases of `ids` in every tag LANG_SRC reads, plus in how many language
+ *  editions of Wikipedia each item has an article (`wikipedias`, a rough measure of how
+ *  widely known it is; sister projects such as Commons or Wikiquote don't count).
+ *  `{ qid: { wikipedias, names: { <wd-tag>: [{ name, pref } | { name, alias }] } } }`,
  *  the label first in each tag: the shape coverage.mjs and the builds read. Through the
  *  entity API rather than SPARQL, which has no cheap way to fetch many items' terms. */
 export async function terms(ids) {
@@ -95,7 +101,7 @@ export async function terms(ids) {
         const aliases = (e.aliases?.[tag] ?? []).map((a) => ({ name: a.value, alias: true }));
         if (label || aliases.length) names[tag] = [...(label ? [{ name: label, pref: true }] : []), ...aliases];
       }
-      out[q] = { sitelinks: Object.keys(e.sitelinks ?? {}).length, names };
+      out[q] = { wikipedias: Object.keys(e.sitelinks ?? {}).filter(isWikipedia).length, names };
     }
     await sleep(300);
   }
