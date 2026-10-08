@@ -1,8 +1,8 @@
-import type { TopicProse } from "./index";
+import type { TopicProseDict } from "./index";
 
 /** Korean topic prose. Mirrors `en.ts`; the wording is transcribed from the geography build
  *  scripts (see the PR plan §M). */
-export const ko: TopicProse = {
+export const ko: TopicProseDict = {
   sovereignty: {
     asymmetricAutonomy: "폭넓은 자치가 국제적으로 인정된 자치 지역",
     deFactoRecognized: "전부는 아니지만 다수의 유엔 회원국이 승인한 완전한 주권 국가",

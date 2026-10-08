@@ -8,6 +8,7 @@
 // The main app resolves a prose id ("sovereignty.deFactoRecognized") via `resolveProse`, and
 // reads the ruler/band pieces via `topicProse(lang)`. See the PR plan §M.
 
+import { overlay, type DeepPartial } from "../index";
 import { de } from "./de";
 import { en } from "./en";
 import { es } from "./es";
@@ -46,6 +47,8 @@ export interface TopicProse {
     constructed: string;
     fictional: string;
   };
+  /** Olympic sports rule reasons. */
+  olympics: { discontinued: string; futureDisciplines: string; childDiscipline: string };
   signLanguages: string;
   ancientPlates: string;
   /** The continents list's tier conditions, one per tier (descriptive, not number bands). */
@@ -59,6 +62,7 @@ export interface TopicProse {
     capitals: { text: string; empty: string };
     languages: { text: string; empty: string };
     continents: { text: string; empty: string };
+    sports: { text: string; empty: string };
   };
   /** Number-band words, keyed (e.g. "100M"); the topic data carries the key per tier. */
   bands: Record<string, string>;
@@ -68,11 +72,16 @@ export interface TopicProse {
   aboveZero: string;
 }
 
+/** What a locale other than English supplies: any part of it, down to single fields. The
+ *  rest comes from English, as for the interface strings, so a new topic's prose is written
+ *  in English first and translated later. */
+export type TopicProseDict = DeepPartial<TopicProse>;
+
 /** Language that backs any locale without its own topic-prose dictionary. */
 const FALLBACK = "en";
 
 // One entry per official interface language; English is the reference and the fallback.
-const PROSE: Record<string, TopicProse> = {
+const PROSE: Record<string, TopicProseDict> = {
   en,
   de,
   es,
@@ -86,9 +95,15 @@ const PROSE: Record<string, TopicProse> = {
   ru,
 };
 
-/** A language's topic-prose dictionary, falling back to English. */
+// One merged object per language, so repeated lookups hand back the same dictionary.
+const merged = new Map<string, TopicProse>();
+
+/** A language's topic-prose dictionary, each field falling back to English. */
 export function topicProse(lang: string): TopicProse {
-  return PROSE[lang] ?? PROSE[FALLBACK];
+  if (lang === FALLBACK || !PROSE[lang]) return en;
+  let prose = merged.get(lang);
+  if (!prose) merged.set(lang, (prose = overlay<TopicProse>(en, PROSE[lang])));
+  return prose;
 }
 
 /** Resolve a dotted prose id ("sovereignty.deFactoRecognized") to `lang`, falling back to

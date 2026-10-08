@@ -1,8 +1,8 @@
-import type { TopicProse } from "./index";
+import type { TopicProseDict } from "./index";
 
 /** Portuguese topic prose. Mirrors `en.ts`; the wording follows the reference, in the same
  *  Brazilian register as the chrome dictionary (see the PR plan §M). */
-export const pt: TopicProse = {
+export const pt: TopicProseDict = {
   sovereignty: {
     asymmetricAutonomy: "regiões autônomas cujo amplo autogoverno é reconhecido internacionalmente",
     deFactoRecognized: "estados plenamente soberanos reconhecidos por muitos, embora não todos, membros da ONU",

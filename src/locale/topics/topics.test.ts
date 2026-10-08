@@ -40,6 +40,10 @@ describe("resolveProse", () => {
   it("falls back to English when the language has no dictionary yet", () => {
     expect(resolveProse("signLanguages", "xx")).toBe("sign languages");
   });
+  it("falls back to English per field where a locale lacks just that one", () => {
+    expect(resolveProse("ruler.sports.text", "fr")).toBe(topicProse("en").ruler.sports.text);
+    expect(topicProse("fr").ruler.countries.text).not.toBe(topicProse("en").ruler.countries.text);
+  });
   it("returns the id itself when it names nothing (a stale id fails visibly)", () => {
     expect(resolveProse("sovereignty.doesNotExist", "en")).toBe("sovereignty.doesNotExist");
   });

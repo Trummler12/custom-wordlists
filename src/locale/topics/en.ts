@@ -34,6 +34,12 @@ export const en: TopicProse = {
     constructed: "constructed languages",
     fictional: "fictional languages",
   },
+  // The Olympic sports rules (RULES in build-olympic-sports); they read on from "up to N".
+  olympics: {
+    discontinued: "sports no longer held at the Games",
+    futureDisciplines: "sports added for Games still to come",
+    childDiscipline: "disciplines of another sport on the list",
+  },
   signLanguages: "sign languages",
   ancientPlates: "ancient and extinct plates",
   // The continent list's tier conditions (was build-continents `TIER_CONDITIONS`), one per
@@ -58,6 +64,10 @@ export const en: TopicProse = {
     },
     languages: { text: "Languages with {condition} speakers worldwide", empty: "Ranked by speakers worldwide." },
     continents: { text: "{condition}", empty: "Ordered by plate area (Bird 2003)." },
+    sports: {
+      text: "Sports with an article in {condition} Wikipedias",
+      empty: "Ranked by how many Wikipedias have an article on them.",
+    },
   },
   // The number-band words (was the `NUM` arrays), keyed so the topic data can carry a bare
   // band key per tier and the frontend composes `more(bands[key])`. CJK counts in 億/万,
@@ -76,6 +86,12 @@ export const en: TopicProse = {
     "10k": "10,000",
     "3k": "3,000",
     "1k": "1,000",
+    // Article counts, for the Olympic sports.
+    "100": "100",
+    "80": "80",
+    "60": "60",
+    "40": "40",
+    "20": "20",
   },
   // The tier-condition wrappers (was `MORE` / `ABOVE_ZERO`). `more` wraps a band word; the
   // cumulative floor reads "more than 0" rather than "under the smallest band".

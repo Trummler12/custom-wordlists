@@ -1,8 +1,8 @@
-import type { TopicProse } from "./index";
+import type { TopicProseDict } from "./index";
 
 /** German topic prose. Mirrors `en.ts`; the wording is transcribed from the geography build
  *  scripts (see the PR plan §M). */
-export const de: TopicProse = {
+export const de: TopicProseDict = {
   sovereignty: {
     asymmetricAutonomy: "autonome Regionen, deren weitreichende Selbstverwaltung völkerrechtlich anerkannt ist",
     deFactoRecognized: "vollständig souveräne Staaten, von vielen, aber nicht allen UN-Mitgliedern anerkannt",
@@ -27,6 +27,11 @@ export const de: TopicProse = {
     constructed: "konstruierte Sprachen",
     fictional: "fiktive Sprachen",
   },
+  olympics: {
+    discontinued: "Sportarten, die nicht mehr an den Spielen ausgetragen werden",
+    futureDisciplines: "Sportarten, die für kommende Spiele neu aufgenommen sind",
+    childDiscipline: "Disziplinen einer anderen Sportart der Liste",
+  },
   signLanguages: "Gebärdensprachen",
   ancientPlates: "urzeitliche und erloschene Platten",
   continentTiers: [
@@ -46,6 +51,10 @@ export const de: TopicProse = {
     },
     languages: { text: "Sprachen mit {condition} Sprechern weltweit", empty: "Nach Sprecherzahl weltweit geordnet." },
     continents: { text: "{condition}", empty: "Nach Plattenfläche geordnet (Bird 2003)." },
+    sports: {
+      text: "Sportarten mit einem Artikel in {condition} Wikipedias",
+      empty: "Danach geordnet, wie viele Wikipedias einen Artikel dazu haben.",
+    },
   },
   bands: {
     "100M": "100 Millionen",

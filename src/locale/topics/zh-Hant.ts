@@ -1,8 +1,8 @@
-import type { TopicProse } from "./index";
+import type { TopicProseDict } from "./index";
 
 /** Traditional Chinese topic prose. Mirrors `en.ts`; the wording is transcribed from the
  *  geography build scripts (see the PR plan §M). */
-export const zhHant: TopicProse = {
+export const zhHant: TopicProseDict = {
   sovereignty: {
     asymmetricAutonomy: "擁有國際公認的廣泛自治權的自治地區",
     deFactoRecognized: "獲得許多（但非全部）聯合國成員國承認的完全主權國家",

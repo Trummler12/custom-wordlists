@@ -1,8 +1,8 @@
-import type { TopicProse } from "./index";
+import type { TopicProseDict } from "./index";
 
 /** Japanese topic prose. Mirrors `en.ts`; the wording is transcribed from the geography build
  *  scripts (see the PR plan §M). */
-export const ja: TopicProse = {
+export const ja: TopicProseDict = {
   sovereignty: {
     asymmetricAutonomy: "広範な自治が国際的に認められている自治地域",
     deFactoRecognized: "全てではないが多くの国連加盟国に承認された、完全な主権国家",

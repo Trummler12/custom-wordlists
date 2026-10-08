@@ -1,8 +1,8 @@
-import type { TopicProse } from "./index";
+import type { TopicProseDict } from "./index";
 
 /** French topic prose. Mirrors `en.ts`; the wording is transcribed from the geography build
  *  scripts (see the PR plan §M). */
-export const fr: TopicProse = {
+export const fr: TopicProseDict = {
   sovereignty: {
     asymmetricAutonomy: "régions autonomes dont la large autonomie est reconnue internationalement",
     deFactoRecognized: "états pleinement souverains reconnus par de nombreux membres de l'ONU, mais pas tous",
