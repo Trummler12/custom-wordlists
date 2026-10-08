@@ -58,6 +58,7 @@ Use the relative File Paths/Links provided on the Items listed in the [Overview 
 - `classes.mjs <work>…`: the classes the linked items are instances of, most common first (to find a list's class when nothing defines one).
 - `olympics.mjs`: the Olympic sports per Games and per edition, with sitelinks and parent sports.
 - `athletes.mjs`: how complete Olympic athletes are (Olympedia IDs, participations, medal qualifiers, sitelinks).
+- `athlete-tiers.mjs`, `athlete-dump-size.mjs`: athletes per fame tier and season (language Wikipedias), and the raw dump's size per floor.
 - `multisport.mjs`: the sports of other multi-sport events and their overlap with the Olympic ones.
 - `fame.mjs <QID>… [--from file]`: sitelinks against 12 months of English pageviews, with Spearman's rho.
 - `historical.mjs [--min N]`: candidate queries for historical countries against a reference set.

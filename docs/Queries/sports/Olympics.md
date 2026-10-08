@@ -23,28 +23,22 @@ What Wikidata offers for the Olympics topics, and how far it can serve as their 
 - ➕[Winter Athletes](#winter-athletes)
 
 <!-- @agent(#38) from #35 · 2026-10-08 · OPEN
-Decided (Trummler): Olympics is split by season, like the continents. Now built: data/topics/sports/olympia/summer/{sports,athletes}.json with summer/_category.json (title from Q159821's labels), both `inheritsUpwards: 1`, so once winter/ exists the Olympics category gets a merged "Sports" (and "Athletes") on its own. Ids stay `sports` / `athletes` until a second season shares the stem, then the validator wants `summer-sports` / `winter-sports`. Summer Sports is built from your analysis: scripts/sports/{dump,build}-olympic-sports.mjs; data-raw/sports/olympia/{excluded,parents}.json (visible tables); season = kind of the latest edition held (figure skating => winter); a child-discipline needs a parent that is still held (rugby sevens stands alone now that rugby union is discontinued); tiers by language-Wikipedia articles (sister projects not counted) in fixed steps 100/80/60/40/20/>0 for both seasons, so the merge stays ranked. Summer as of today: 71 sports, tiers 18/7/17/15/7/7; discontinued 18, future-disciplines 7, child-discipline 11.
-Ask 1, structure: Reshape this file along the split (a Summer and a Winter part, each with Sports and Athletes), and the hub accordingly.
-Ask 2, Winter Sports, for the next batch: the same analysis as for Summer, restricted to the Winter Games: base / rules / exclusions / parent corrections. The validator requires every member of an inheritsUpwards family to cut the same tier bands and carry identical rules (same id => same reason), so name anything Winter needs that Summer's three rules don't cover. Winter's tiers at the fixed bands are 1/1/9/6/5/2: say if anything is off there (ice dance / pair skating still read as figure skating until your QuickStatements batch is imported?).
-Ask 3, Olympic athletes, a thorough analysis with a UX view (Trummler's questions, all open): which athletes at all (medallists only? a fame floor such as sitelinks?), and how a reader would want to filter them:
-  - by period of activity (a range slider like the one planned for historical countries in #39 strand H; from P580/P582 of their participations, or the editions they competed at)?
-  - the same, but counting only years with a gold medal?
-  - by number and rank of medals won (e.g. a medal score as the fame proxy, or rules such as "gold medallists only")?
-  - by a coarse 'genre' of sport (discipline is too fine: e.g. athletics / aquatics / combat / ball / winter...), and does Wikidata supply such a grouping or would it be a visible data-raw mapping?
-  What is possible from the data, what is most useful and pleasant from the reader's side, and what fits the existing UI (tiers + ruler, omission rules, icon controls such as the sovereignty matrix). Also: how complete are participations and medals on Wikidata (P1344 participant in, P166 award received, P1352 ranking), and which fame proxy fits athletes (sitelinks again?). The current athletes.json is a hand list of famous athletes of any sport (Messi, Jordan, McGregor), only parked in summer/; it will be replaced.
-Ask 4, candidates: further rubrics beside olympia/ (Paralympics, World Games, Commonwealth / Asian Games, X Games, …) for an `inheritsUpwards: 2` "Sports" at the top. They overlap heavily (football everywhere), so note how they would merge; nothing to build yet.
-Note: one dump run returned far fewer editions for some sports (a WDQS server lagging?); a rerun matched again. Worth a look if you see the same in _scripts/olympics.mjs.
-Refs: scripts/sports/build-olympic-sports.mjs (header), data/topics/sports/olympia/summer/sports.json, scripts/validate-data.mjs (family checks), _untracked/PR/39-extend_wikidata.md strand H (slider)
+Decided (Trummler, from your analysis): `demonstration-sports` (omitted, both seasons) is adopted and built now; long track speed skating goes on the exclusion list with Winter; athletes: base = Olympedia ID AND a datable P1344, fame = language Wikipedias (sister projects not counted, as in scripts/lib/wikidata.mjs terms()), period slider and a genre control feasible, medal-based tiers or filters dropped. The four Beyond-the-Olympics rubrics are noted for PR #39. Tiers for athletes: one symmetric rule for Summer and Winter alike (Winter's tiers may come out much smaller), with smaller steps than the sports' 20.
+Ask: for Summer athletes and Winter athletes separately (season by participation, as in your section), count how many athletes each tier would hold on language Wikipedias, from 0 to an open top tier of 200+, at step sizes 20, 10, 5 and 2 (one table per step size, or one wide table). From that Trummler sets an upper bound (where the open top tier starts), a "show more" bound (entries below it hidden until the reader opts in, like the languages' "<1 million users" box, i.e. `extendFrom`) and an absolute floor (below it no entry at all). Also the dump size per floor: a raw dump has to stay under Git's 50 MB per file, so name the floor where Summer's dump (names in the 30 languages, as sport-names.json) would cross that.
+Refs: _untracked/PR/35-geonames_cleanup.md strand V (Athletes, decided); data-raw/sports/olympia/sport-names.json (dump shape); this file, Summer Athletes
 -->
-
 <!-- @agent(#35) from #38 · 2026-10-08 · DONE
-Decided: All four asks answered in this file; nothing built on my side.
-Ask 1: Reshaped into Summer Sports (shared query base, rules, caveats), Summer Athletes, Winter Sports, Winter Athletes; the hub follows (hub.mjs). Summer Sports marked ✅, Winter Sports ☑️.
-Ask 2: Winter needs none of its own rules; tiers 1/1/9/6/5/2 are fine; ice dance / pair skating read as their own sports since the batch import (child-discipline of figure skating). To decide: long track speed skating is a duplicate of speed skating (exclusion list, like climbing), and a new rule for BOTH seasons, `demonstration-sports` (omitted): sports whose every Games event is P31 Q1123217 "Olympic demonstration sport competition" (summer: American football, motorsport, korfball, water skiing, bocce; winter: icestock sport, speed skiing), taken out of `discontinued`. Bandy 1952 / military patrol 1928-48 lack the class, polo / ten-pin bowling / lacrosse have no edition events: Wikidata fixes, not special cases.
-Ask 3: Base = Olympedia ID (P8286) AND a datable P1344 (edition, sport-at-edition or event; 79 % have one); the ID alone also holds officials and heads of state. Fame = sitelinks (≥ 30: ~2,600 athletes). Period slider feasible (first/last edition year); gold-only and medal counts are not (medals are qualifiers on P1344 and missing for e.g. Ali 1960, Messi 2008). Genre: feasible only as a visible data-raw mapping sport => genre (Wikidata's classes overlap and miss 14 sports), best as one omittable rule per genre in an icon control like the sovereignty matrix. Candidate rule `art-competitions` (omitted). Editions are Q135976384 / Q137592217 instances, not of the series items.
-Ask 4: See "Beyond the Olympics": Paralympics, World Games, Commonwealth, Asian Games as candidates (added to the hub's Sports candidates); merge by sport QID, Para variants are P279 children of their Olympic sport. Other series are modelled less consistently, each needs its own look.
-Note on the short dump run: not reproduced here. A separate gap: scripts/lib/wikidata.mjs getJson() returns res.json() outside its try, so a connection dropped mid-answer (a query near the timeout) fails the run instead of retrying; wd.mjs had the same and now retries. That fails loudly, though; a short answer without an error points to a lagging WDQS server, so comparing two runs (or the edition count) is the guard.
-Refs: _untracked/docs/Queries/sports/Olympics.md (all sections); _scripts/athletes.mjs, multisport.mjs
+Answer: counts per tier for Summer and Winter at steps 20 / 10 / 5 / 2 (0 to 200+, language Wikipedias), the top names, and the dump size per floor are in Summer Athletes => "Tier bounds (counts, 2026-10-08)".
+Key facts:
+- Base: Summer 115,641 athletes, Winter 18,812, 168 in both.
+- 200+ is empty in Summer (Messi 196). Winter's only entries from 80 up are Putin (237, for the exclusion list) and Albert II (80).
+- Summer's dump (sport-names.json shape, pretty, all 40 Wikidata tags) crosses 50 MB between floors 16 (~46 MB, 15,252 athletes) and 15 (~53 MB). Winter's stays under it at any floor. Minified JSON is about 46 % of the size and would move the crossing to about floor 8.
+Proposal (for Trummler to set):
+- Open top tier at 100+ (Summer 21, Winter 0), step 10 down to the floor.
+- Show-more bound at 30: Summer shows 2,114 by default, Winter 157.
+- Floor at 20: Summer 7,598 at ~26 MB, room for the counts to roughly double; Winter 1,163.
+- Step 5 instead of 10 splits the crowded 20 to 40 range (Summer 3,871 / 1,613 / 749 / 463) but leaves Winter's tiers above 40 at 0 to 17.
+Refs: this file, Summer Athletes => Tier bounds; _scripts/athlete-tiers.mjs, _scripts/athlete-dump-size.mjs
 -->
 
 ## ✅Summer Sports
@@ -151,6 +145,104 @@ Wikidata marks the events of sports that were only shown, not contested for meda
 
 **Season split:** an athlete belongs to the season(s) of their participations: 208 of the 3,130 have a Winter participation, 4 both seasons (they appear in both lists; the merged list one level up shows them once).
 
+### Tier bounds (counts, 2026-10-08)
+
+**Tool:** `_scripts/athlete-tiers.mjs` (per season, from the base above), `_scripts/athlete-dump-size.mjs` (size per floor).  
+**Measure:** language Wikipedias with an article (sister projects and Commons not counted, as `terms()` counts them).  
+**Base:** 134,285 athletes; Summer 115,641, Winter 18,812, 168 in both.
+
+**Per tier** (athletes in the tier | at or above its lower bound), step 10 down to 40, step 5 below:
+
+| From | Summer | ≥ | Winter | ≥ |
+| ----: | ----: | ----: | ----: | ----: |
+| 200+ | 0 | 0 | 1 | 1 |
+| 100 | 21 | 21 | 0 | 1 |
+| 90 | 4 | 25 | 0 | 1 |
+| 80 | 20 | 45 | 1 | 2 |
+| 70 | 34 | 79 | 0 | 2 |
+| 60 | 81 | 160 | 2 | 4 |
+| 50 | 288 | 448 | 4 | 8 |
+| 45 | 194 | 642 | 17 | 25 |
+| 40 | 260 | 902 | 27 | 52 |
+| 35 | 463 | 1,365 | 30 | 82 |
+| 30 | 749 | 2,114 | 75 | 157 |
+| 25 | 1,613 | 3,727 | 261 | 418 |
+| 20 | 3,871 | 7,598 | 745 | 1,163 |
+| 15 | 10,603 | 18,201 | 2,017 | 3,180 |
+| 10 | 17,732 | 35,933 | 3,157 | 6,337 |
+| 5 | 31,238 | 67,171 | 6,140 | 12,477 |
+| 0 | 48,470 | 115,641 | 6,335 | 18,812 |
+
+Step 20 is the sum of two step-10 rows (200+ 0/1; 180 2/0; 140 3/0; 120 3/0; 100 13/0; 80 24/1; 60 115/2; 40 742/48; 20 6,696/1,111; 0 108,043/17,649).
+
+<details><summary><i>step 10 above 100, and step 2 from 60 down</i></summary>
+
+Step 10 above 100 (Summer / Winter): 190 1/0 (Messi 196), 180 1/0 (Cristiano Ronaldo 186), 140 3/0, 130 2/0, 120 1/0, 110 3/0; 170, 160, 150 empty.
+
+| From | Summer | ≥ | Winter | ≥ |
+| ----: | ----: | ----: | ----: | ----: |
+| 60 | 26 | 160 | 0 | 4 |
+| 58 | 31 | 191 | 1 | 5 |
+| 56 | 39 | 230 | 2 | 7 |
+| 54 | 46 | 276 | 0 | 7 |
+| 52 | 81 | 357 | 0 | 7 |
+| 50 | 91 | 448 | 1 | 8 |
+| 48 | 74 | 522 | 5 | 13 |
+| 46 | 78 | 600 | 9 | 22 |
+| 44 | 83 | 683 | 10 | 32 |
+| 42 | 97 | 780 | 11 | 43 |
+| 40 | 122 | 902 | 9 | 52 |
+| 38 | 160 | 1,062 | 7 | 59 |
+| 36 | 190 | 1,252 | 13 | 72 |
+| 34 | 223 | 1,475 | 21 | 93 |
+| 32 | 271 | 1,746 | 31 | 124 |
+| 30 | 368 | 2,114 | 33 | 157 |
+| 28 | 494 | 2,608 | 73 | 230 |
+| 26 | 704 | 3,312 | 118 | 348 |
+| 24 | 977 | 4,289 | 154 | 502 |
+| 22 | 1,279 | 5,568 | 257 | 759 |
+| 20 | 2,030 | 7,598 | 404 | 1,163 |
+| 18 | 3,038 | 10,636 | 584 | 1,747 |
+| 16 | 4,616 | 15,252 | 837 | 2,584 |
+| 14 | 6,308 | 21,560 | 1,195 | 3,779 |
+| 12 | 7,015 | 28,575 | 1,196 | 4,975 |
+| 10 | 7,358 | 35,933 | 1,362 | 6,337 |
+| 8 | 8,517 | 44,450 | 1,872 | 8,209 |
+| 6 | 13,103 | 57,553 | 2,493 | 10,702 |
+| 4 | 21,888 | 79,441 | 3,893 | 14,595 |
+| 2 | 28,734 | 108,175 | 3,584 | 18,179 |
+| 0 | 7,466 | 115,641 | 633 | 18,812 |
+
+Full output: `_data/athlete-tiers-run1.txt`.
+
+</details>
+
+**Reading the numbers:**
+
+- **The top is thin.** Nobody in Summer reaches 200 (Messi 196, Cristiano Ronaldo 186). Winter's only entry above 80 is Vladimir Putin (237), who opened Sochi 2014 and belongs on the exclusion list. The top Winter athlete is Wayne Gretzky at 64. Below 40, each step of 5 Wikipedias grows Summer's count by 1.5 to 2 times; below 30, it grows Winter's by 2.5 to 3 times.
+- **The non-athletes barely touch the tiers.** In Summer's top 40 there are 5: Juan Carlos I, Felipe VI and Harald V are real Olympic sailors and stay; Coubertin and Gropius go via `art-competitions`. In Winter, Albert II of Monaco (80, bobsleigh) and Aga Khan IV (46, alpine skiing) are real Olympians.
+- **Seasons, one rule.** At any bound, Winter holds about a sixth of Summer near 10 to 20 and falls to under a tenth from 30 up. With one symmetric rule, a bound that suits Summer's size leaves Winter short at the top: 4 Winter athletes from 60 up, against 160 in Summer.
+
+**Dump size per floor**, in `sport-names.json`'s shape (pretty JSON, labels and aliases in all 40 Wikidata tags `terms()` reads, plus editions). Estimated from 90 sampled athletes per fame band (entries grow from about 0.9 kB at 0 to 1 Wikipedias to 5.4 kB at 40 to 79), so treat it as ±10 %:
+
+| Floor | Summer athletes | Summer size | Winter athletes | Winter size |
+| ----: | ----: | ----: | ----: | ----: |
+| 0 | 115,641 | ~195 MB | 18,812 | ~32 MB |
+| 10 | 35,933 | ~89 MB | 6,337 | ~15 MB |
+| 14 | 21,560 | ~60 MB | 3,779 | ~10 MB |
+| **15** | 18,201 | **~53 MB** | 3,180 | ~9 MB |
+| **16** | 15,252 | **~46 MB** | 2,584 | ~7 MB |
+| 18 | 10,636 | ~34 MB | 1,747 | ~5 MB |
+| 20 | 7,598 | ~26 MB | 1,163 | ~4 MB |
+| 25 | 3,727 | ~15 MB | 418 | ~2 MB |
+| 30 | 2,114 | ~10 MB | 157 | ~1 MB |
+
+- **Where the limit falls.** Summer's dump crosses 50 MB between floors 16 and 15. Winter's stays below it even with no floor at all.
+- **Ways to push it lower:**
+  - Minified JSON shrinks it to about 46 % (measured on `sport-names.json`: 575 kB pretty => 264 kB minified), which moves the crossing down to about floor 8.
+  - So would keeping the 30 `NAME_LANGS` instead of all 40 Wikidata tags.
+- **Leave room for growth.** Counts only rise: articles get added and new Games come. A floor right at the limit will cross it within a few years.
+
 ## ☑️Winter Sports
 
 **Base, rules, tiers:** as for Summer Sports (same query, same three rules, same bands); no rule Winter needs that Summer lacks, beyond `demonstration-sports` should it be adopted for both.  
@@ -173,7 +265,7 @@ Wikidata marks the events of sports that were only shown, not contested for meda
 
 ## ➕Winter Athletes
 
-As Summer Athletes: the same base, fame proxy and filters, restricted to athletes with a Winter participation (208 at ≥ 30 sitelinks, so a floor nearer 20 sitelinks suits Winter better; a size choice once built).
+As Summer Athletes: the same base, fame proxy and filters, restricted to athletes with a Winter participation (18,812 athletes; 1,163 from 20 language Wikipedias up). Tier counts and dump sizes per season: Summer Athletes => Tier bounds.
 
 ### Beyond the Olympics (both seasons)
 
