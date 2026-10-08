@@ -20,7 +20,7 @@ type OverlayKind =
   | "settings"
   | "omitted"
   | "coverage"
-  | "languageType"
+  | "inclusion"
   | "sovereignty"
   | "savedLists"
   | "exportLists"
@@ -33,7 +33,7 @@ const HOSTS: Record<OverlayKind, string> = {
   settings: ".settings-picker",
   omitted: ".omitted-host",
   coverage: ".coverage-host",
-  languageType: ".language-type-host",
+  inclusion: ".inclusion-host",
   sovereignty: ".sovereignty-host",
   savedLists: ".saved-lists-host",
   exportLists: ".export-lists-host",
@@ -59,7 +59,7 @@ class OverlayState {
     settings: null,
     omitted: null,
     coverage: null,
-    languageType: null,
+    inclusion: null,
     sovereignty: null,
     savedLists: null,
     exportLists: null,
@@ -73,7 +73,7 @@ class OverlayState {
   }
   /** Bumped on every opening, so `opener` re-reads for a popup reopened elsewhere. */
   #opened = $state<Record<OverlayKind, number>>({
-    langSelect: 0, lang: 0, settings: 0, omitted: 0, coverage: 0, languageType: 0, sovereignty: 0,
+    langSelect: 0, lang: 0, settings: 0, omitted: 0, coverage: 0, inclusion: 0, sovereignty: 0,
     savedLists: 0, exportLists: 0, importLists: 0, customSettings: 0, tip: 0,
   });
   /** The control that opened a popup of this kind — what a popup places itself against. */
@@ -159,18 +159,18 @@ class OverlayState {
     this.#remember("coverage", trigger);
   };
 
-  // --- Language-type panel ---------------------------------------------------
+  // --- Inclusion panel --------------------------------------------------------
 
-  /** Which list is showing its language-type inclusion checklist, keyed
-   *  `${topicId}:${groupId}` — the ☑️ button's popup, a sibling of the 🚫 panel. */
-  languageTypePanel = $state<string | null>(null);
-  toggleLanguageTypePanel = (id: string, trigger: Element): void => {
-    if (this.languageTypePanel === id) {
-      this.languageTypePanel = null;
+  /** Which inclusion checklist is open, keyed `${icon}-${topicId}-${groupId}`: the ☑️
+   *  button's popup, the counterpart of the 🚫 panel. */
+  inclusionPanel = $state<string | null>(null);
+  toggleInclusionPanel = (id: string, trigger: Element): void => {
+    if (this.inclusionPanel === id) {
+      this.inclusionPanel = null;
       return;
     }
-    this.languageTypePanel = id;
-    this.#remember("languageType", trigger);
+    this.inclusionPanel = id;
+    this.#remember("inclusion", trigger);
   };
 
   // --- Sovereignty matrix ----------------------------------------------------
@@ -239,7 +239,7 @@ class OverlayState {
 
   // --- Tooltips --------------------------------------------------------------
 
-  /** A `local` note sits inside a scrolling popup (a 👎 in the language-type panel) rather
+  /** A `local` note sits inside a scrolling popup (a 👎 in the languages' inclusion panel) rather
    *  than spanning a row. It follows a page scroll (shared/placement), but a scroll of the
    *  popup itself closes it: its trigger slides out from under it. See onLocalScroll. */
   #tipLocal = false;
@@ -316,7 +316,7 @@ class OverlayState {
     if (this.settingsMenu && !target?.closest?.(".settings-picker")) this.settingsMenu = null;
     if (this.omittedPanel && !target?.closest?.(".omitted-host")) this.omittedPanel = null;
     if (this.coveragePanel && !target?.closest?.(".coverage-host")) this.coveragePanel = null;
-    if (this.languageTypePanel && !target?.closest?.(".language-type-host")) this.languageTypePanel = null;
+    if (this.inclusionPanel && !target?.closest?.(".inclusion-host")) this.inclusionPanel = null;
     if (this.sovereigntyPanel && !target?.closest?.(".sovereignty-host")) this.sovereigntyPanel = null;
     if (this.savedListsPanel && !target?.closest?.(".saved-lists-host")) this.savedListsPanel = null;
     if (this.exportPanel && !target?.closest?.(".export-lists-host")) this.exportPanel = null;
@@ -335,7 +335,7 @@ class OverlayState {
   onScroll = (): void => {
     if (this.tipPinned && !this.#tipLocal) this.closeTip();
   };
-  /** A scroll of the popup a local note is anchored beside (the language-type panel), rather
+  /** A scroll of the popup a local note is anchored beside (the languages' inclusion panel), rather
    *  than of the page: the note stays put while its trigger scrolls away under it, so the two
    *  part ways and it closes — the local counterpart to the page scroll onScroll handles. */
   onLocalScroll = (): void => {
@@ -363,7 +363,7 @@ class OverlayState {
     else if (kind === "lang") this.langMenu = this.langSelect = null;
     else if (kind === "settings") this.settingsMenu = null;
     else if (kind === "coverage") this.coveragePanel = null;
-    else if (kind === "languageType") this.languageTypePanel = null;
+    else if (kind === "inclusion") this.inclusionPanel = null;
     else if (kind === "sovereignty") this.sovereigntyPanel = null;
     else if (kind === "savedLists") this.savedListsPanel = null;
     else if (kind === "exportLists") this.exportPanel = null;
@@ -393,7 +393,7 @@ class OverlayState {
     if (this.settingsMenu && inside(HOSTS.settings)) return "settings";
     if (this.omittedPanel && inside(HOSTS.omitted)) return "omitted";
     if (this.coveragePanel && inside(HOSTS.coverage)) return "coverage";
-    if (this.languageTypePanel && inside(HOSTS.languageType)) return "languageType";
+    if (this.inclusionPanel && inside(HOSTS.inclusion)) return "inclusion";
     if (this.sovereigntyPanel && inside(HOSTS.sovereignty)) return "sovereignty";
     if (this.savedListsPanel && inside(HOSTS.savedLists)) return "savedLists";
     if (this.exportPanel && inside(HOSTS.exportLists)) return "exportLists";

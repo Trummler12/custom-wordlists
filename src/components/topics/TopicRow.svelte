@@ -22,7 +22,7 @@
   import CoveragePanel from "./CoveragePanel.svelte";
   import FameDepthSlider from "./FameDepthSlider.svelte";
   import SecondaryMark from "./SecondaryMark.svelte";
-  import LanguageTypePanel from "./LanguageTypePanel.svelte";
+  import InclusionPanel, { PANELS } from "./InclusionPanel.svelte";
   import SovereigntyMatrix from "./SovereigntyMatrix.svelte";
   import NamesModeSelect from "./NamesModeSelect.svelte";
   import OmittedPanel from "./OmittedPanel.svelte";
@@ -194,7 +194,9 @@
         <OmittedPanel tid={topic.id} group={sole} />
       {/if}
       {#if sole}
-        <LanguageTypePanel tid={topic.id} group={sole} />
+        {#each Object.keys(PANELS) as icon (icon)}
+          <InclusionPanel tid={topic.id} group={sole} {icon} />
+        {/each}
       {/if}
       {#if coverage}
         <CoveragePanel id={`coverage-${topic.id}`} targets={coverageTargets} />

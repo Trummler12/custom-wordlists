@@ -188,6 +188,9 @@ export const en: UIStrings = {
         ? "Ticked — these are in the list. Untick to leave them out."
         : "Tick to add these to the list.",
   },
+  sportType: {
+    label: "Which sports to include",
+  },
   sovereignty: {
     label: "Sovereignty & recognition",
     wiki: "https://en.wikipedia.org/wiki/List_of_states_with_limited_recognition",

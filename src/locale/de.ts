@@ -197,6 +197,9 @@ export const de: UIStrings = {
         ? "Angehakt — diese sind in der Liste. Abwählen, um sie wegzulassen."
         : "Anhaken, um diese zur Liste hinzuzufügen.",
   },
+  sportType: {
+    label: "Welche Sportarten einbeziehen",
+  },
   sovereignty: {
     label: "Souveränität & Anerkennung",
     wiki: "https://de.wikipedia.org/wiki/Liste_der_Gebiete_mit_begrenzter_Anerkennung_als_Staat",

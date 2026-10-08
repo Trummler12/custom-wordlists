@@ -161,8 +161,16 @@ export interface LanguageTypeStrings {
   submillion: string;
   /** The 👎 marker's note: a type whose fame lags its speaker numbers. */
   notRecommended: string;
-  /** A checkbox's hover, on whether ticking it adds the type or removes it. */
+  /** A checkbox's hover, on whether ticking it adds the type or removes it. Every
+   *  inclusion panel uses it, not only the languages'. */
   toggle: (included: boolean) => string;
+}
+
+/** The Olympic sports' inclusion panel (☑️): the rule labels come from the data, so
+ *  only the heading is here. */
+export interface SportTypeStrings {
+  /** Button aria-label and popup heading. */
+  label: string;
 }
 
 /** The sovereignty & recognition matrix behind its own ✅ button: a grid of cells,
@@ -514,6 +522,7 @@ export interface UIStrings {
   custom: CustomStrings;
   coverage: CoverageStrings;
   languageType: LanguageTypeStrings;
+  sportType: SportTypeStrings;
   sovereignty: SovereigntyStrings;
   language: LanguageStrings;
   settings: SettingsStrings;
