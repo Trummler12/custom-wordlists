@@ -20,7 +20,7 @@ What Wikidata offers for the Pokémon (Anime) topics, and how far it can serve a
 - ❌[Episodes](#episodes)
 - ✖️[Openings (theme songs)](#️openings-theme-songs)
 - 🔵[Films](#films)
-- 🔵[Video Games](#video-games)
+- ➕[Video Games](#video-games)
 
 ## ✖️Characters
 
@@ -36,7 +36,7 @@ What Wikidata offers for the Pokémon (Anime) topics, and how far it can serve a
 
 ## ➕Locations
 
-See [Trummler's notes (Google Doc, "Zwischenablage" tab)](https://docs.google.com/document/d/1FmHUFd_HhF9qeK_ovqPblFOsA0ndm855N6PObTmbGdU/edit?tab=t.ifn1g2nhradd#heading=h.hp63fkisvf4d); not migrated yet.
+**Sibling:** [Pokémon (Games): Locations](../gaming/Pokemon.md#locations), the same list; analyzed there.
 
 ## ❌Episodes
 
@@ -60,8 +60,8 @@ See [Trummler's notes (Google Doc, "Zwischenablage" tab)](https://docs.google.co
 
 **Check (2026-10-07):** 25 films via the definition with subclasses (1 without), 26 linked to the series overall. Not yet compared with the real number.
 
-## 🔵Video Games
+## ➕Video Games
 
-See [Trummler's notes (Google Doc, "Zwischenablage" tab)](https://docs.google.com/document/d/1FmHUFd_HhF9qeK_ovqPblFOsA0ndm855N6PObTmbGdU/edit?tab=t.ifn1g2nhradd#heading=h.lp0di9fzcm4q); not migrated yet.
+**Sibling:** [Pokémon (Games): Video Games](../gaming/Pokemon.md#video-games), the same list; analyzed there.
 
 ## [to Navigation](#navigation)

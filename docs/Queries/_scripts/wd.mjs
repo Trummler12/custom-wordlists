@@ -45,6 +45,13 @@ export async function sparql(query, { fresh = process.env.WD_FRESH === "1" } = {
  *  `mul` label: names that read the same everywhere ("South Park") are often stored
  *  only there. */
 export async function labels(ids) {
+  ids = [...new Set(ids)];
+  // Chunked: a few hundred ids already overflow the GET request's URI.
+  if (ids.length > 200) {
+    const out = {};
+    for (let i = 0; i < ids.length; i += 200) Object.assign(out, await labels(ids.slice(i, i + 200)));
+    return out;
+  }
   if (!ids.length) return {};
   const rows = await sparql(
     `SELECT ?id ?en ?mul WHERE { VALUES ?id { ${ids.map((i) => `wd:${i}`).join(" ")} }

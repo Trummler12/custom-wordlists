@@ -239,6 +239,8 @@ SELECT DISTINCT ?item ?itemLabel WHERE {
 
 ## ➕Locations
 
+**Sibling:** [Pokémon (Anime): Locations](../anime/Pokemon.md#locations)
+
 **Associated List:** [list of locations in Pokémon (Q32860793)](https://www.wikidata.org/wiki/Q32860793)  
 **Definition:** [is a list of](https://www.wikidata.org/wiki/Property:P360): Pokémon fictional location  
 **Released so far (per Google's AI answer):** "There is no official, exact single global count for non-route, non-cave, and non-region Pokémon towns, cities, and standalone landmarks across all nine generations, but individual major regions typically feature around 10 to 19 towns and cities each"  
@@ -249,6 +251,8 @@ SELECT DISTINCT ?item ?itemLabel WHERE {
 **Check (2026-10-07):** 282 with subclasses (154 direct), unchanged.
 
 ## ➕Video Games
+
+**Sibling:** [Pokémon (Anime): Video Games](../anime/Pokemon.md#video-games)
 
 **Associated List:** [list of Pokémon video games (Q99485876)](https://www.wikidata.org/wiki/Q99485876)  
 **Definition:** [is a list of](https://www.wikidata.org/wiki/Property:P360): [video game](https://www.wikidata.org/wiki/Q7889), [part of](https://www.wikidata.org/wiki/Property:P361): [Pokémon video games](https://www.wikidata.org/wiki/Q1079748)

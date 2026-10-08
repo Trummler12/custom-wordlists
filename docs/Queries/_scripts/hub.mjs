@@ -29,6 +29,14 @@ const STATUS = /^(\p{Extended_Pictographic}️?)?(.*)$/u;
 const readme = readFileSync(join(ROOT, "README.md"), "utf8").replace(/\r/g, "");
 const order = [...readme.matchAll(/^- \[[^\]]*\]\(\.\/([^)#]+)#navigation\)/gm)].map((m) => m[1]);
 
+// Each category may end in a hand-kept "#### Candidates" list (topics proposed, not yet
+// analyzed); it is carried over as it stands.
+const overview = readme.slice(readme.indexOf("## Overview"));
+const candidates = (category) => {
+  const part = overview.split(/^(?=### )/m).find((p) => p.startsWith(`### ${category}\n`)) ?? "";
+  return part.replace(/<!--[\s\S]*$/, "").match(/^#### Candidates\n[\s\S]*/m)?.[0].trimEnd();
+};
+
 const out = [readme.slice(0, readme.indexOf("## Overview")).trimEnd(), "", "## Overview", ""];
 for (const [category, folder] of CATEGORIES) {
   const files = readdirSync(join(ROOT, folder))
@@ -64,11 +72,13 @@ for (const [category, folder] of CATEGORIES) {
       out.push(`  - ${status}[${name}](./${path}#${slug(s.heading)})`);
     }
   }
+  const kept = candidates(category);
+  if (kept) out.push("", kept);
   out.push("");
 }
 // Agent mail that concerns no single topic sits at the end of the hub (see the agent
 // protocol); the rebuilt overview must not swallow it.
-const mail = readme.slice(readme.indexOf("## Overview")).match(/<!--[\s\S]*?-->/g) ?? [];
+const mail = overview.match(/<!--[\s\S]*?-->/g) ?? [];
 if (mail.length) out.push(mail.join("\n\n"), "");
 writeFileSync(join(ROOT, "README.md"), out.join("\n"));
 console.log("hub: README overview and file navigations rebuilt");

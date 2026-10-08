@@ -22,6 +22,10 @@ Use the relative File Paths/Links provided on the Items listed in the [Overview 
 
 **Rated by how cleanly results classify.** An omission rule never reduces what a reader can select, it adds to it: a meaningful class that isn't wanted by default (historical countries, discontinued Olympic sports, child disciplines) is a candidate `omitted` / `omittable` rule, not ballast. So a query is judged by how well its results split into the base list plus such classes, each with a stable id and the parameters that separate it; only what is no entry of the topic at all goes on an exclusion list, kept visible in `data-raw/`.
 
+**Does the split itself hold?** A category or topic boundary of ours (DC vs Marvel, a franchise's games vs its anime) only works if Wikidata can draw it too, by a property or a class. Where it can't, the analysis says so and proposes merging the topics or another criterion that Wikidata does carry. The same goes for a category that doesn't fit beside its siblings (see [Video Games](./gaming/Video_Games.md#navigation)).
+
+**Candidates.** Each category in the overview ends in a list of proposed topics. Trummler approves one by marking its line (e.g. ☑️); it then becomes an analyzable topic in the fitting file.
+
 **List definitions are a starting point, not the answer.** A list item's *is a list of* (P360) and its qualifiers often name a property the members don't use (SpongeBob's characters are linked by *present in work*, P1441, while the definition asks for *part of the series*, P179), or no qualifier at all. So members are counted by every usual link to the work, its series, universe or franchise (P1441, P1080, P179, P8345, P361), and by class with subclasses (`_scripts/members.mjs`).
 
 **Truthy statements, not all statements.** The Query Builder counts every P31 statement, ended and deprecated ones included; for current things (countries) the truthy `wdt:P31` figure is the relevant one (`_scripts/count.mjs` prints both).
@@ -57,6 +61,7 @@ Use the relative File Paths/Links provided on the Items listed in the [Overview 
 - `historical.mjs [--min N]`: candidate queries for historical countries against a reference set.
 - `historical-spans.mjs [--min N]`: the candidates' date coverage, start / end centuries and continents.
 - `qs-reference.mjs`: regenerates `QuickStatements.md` with labels fetched from Wikidata.
+- `territories.mjs [--min N]`: the curated sovereignty-matrix territories' classes per cell, and what each class would add.
 - `count.mjs <class>…`: instances of a class: truthy, with subclasses, all statements.
 - `hub.mjs`: rebuilds this file's overview and every file's navigation from the headings (run after changing a status).
 
@@ -82,6 +87,17 @@ Use the relative File Paths/Links provided on the Items listed in the [Overview 
   - ❌[Episodes](./animation/The_Simpsons.md#episodes)
   - ✖️[Video Games](./animation/The_Simpsons.md#️video-games)
 
+#### Candidates
+
+- Family Guy
+- Futurama
+- Rick and Morty
+- Avatar: The Last Airbender
+- Gravity Falls
+- Looney Tunes
+- Scooby-Doo
+- Tom and Jerry
+
 ### Anime
 
 - [Dragon Ball](./anime/Dragon_Ball.md#navigation)
@@ -106,7 +122,20 @@ Use the relative File Paths/Links provided on the Items listed in the [Overview 
   - ❌[Episodes](./anime/Pokemon.md#episodes)
   - ✖️[Openings (theme songs)](./anime/Pokemon.md#️openings-theme-songs)
   - 🔵[Films](./anime/Pokemon.md#films)
-  - 🔵[Video Games](./anime/Pokemon.md#video-games)
+  - ➕[Video Games](./anime/Pokemon.md#video-games)
+
+#### Candidates
+
+- Naruto
+- Attack on Titan
+- Demon Slayer
+- My Hero Academia
+- Sailor Moon
+- Death Note
+- Digimon
+- Yu-Gi-Oh!
+- JoJo's Bizarre Adventure
+- Studio Ghibli
 
 ### Comics
 
@@ -119,6 +148,14 @@ Use the relative File Paths/Links provided on the Items listed in the [Overview 
 - [Other Comics](./comics/Other_Comics.md#navigation)
   - [Characters](./comics/Other_Comics.md#characters)
 
+#### Candidates
+
+- Asterix
+- The Adventures of Tintin
+- Peanuts
+- Garfield
+- Lucky Luke
+
 ### Film & TV
 
 - [Disney](./film-tv/Disney.md#navigation)
@@ -130,6 +167,17 @@ Use the relative File Paths/Links provided on the Items listed in the [Overview 
   - [Characters](./film-tv/Lord_of_the_Rings.md#characters)
 - [Star Wars](./film-tv/Star_Wars.md#navigation)
   - [Characters](./film-tv/Star_Wars.md#characters)
+
+#### Candidates
+
+- Pixar
+- DreamWorks Animation
+- Marvel Cinematic Universe
+- Star Trek
+- James Bond
+- Game of Thrones
+- Jurassic Park
+- Doctor Who
 
 ### Gaming
 
@@ -151,6 +199,19 @@ Use the relative File Paths/Links provided on the Items listed in the [Overview 
   - ➕[Video Games](./gaming/Pokemon.md#video-games)
 - [Video Games](./gaming/Video_Games.md#navigation)
 
+#### Candidates
+
+- Super Mario
+- The Legend of Zelda
+- Minecraft
+- Sonic the Hedgehog
+- Super Smash Bros.
+- Overwatch
+- Dota 2
+- Valorant
+- Genshin Impact
+- Fortnite
+
 ### Geography
 
 - [Human Geography](./geography/Human.md#navigation)
@@ -170,13 +231,48 @@ Use the relative File Paths/Links provided on the Items listed in the [Overview 
   - 🔵[Lakes](./geography/Physical.md#lakes)
   - 🔵[Climate Zones](./geography/Physical.md#climate-zones)
 
+#### Candidates
+
+- Volcanoes
+- Mountain Ranges
+- Waterfalls
+- Peninsulas
+- Straits & Canals
+- National Parks
+- World Heritage Sites
+- Currencies
+
 ### Science
 
 - [Chemistry](./science/Chemistry.md#navigation)
   - ☑️[Chemical Elements](./science/Chemistry.md#️chemical-elements)
+
+#### Candidates
+
+- Planets & Dwarf Planets
+- Moons
+- Constellations
+- Stars
+- Dinosaurs
+- Animals
+- Human Bones
+- Organs
+- SI Units
+- Minerals
 
 ### Sports
 
 - [Olympics](./sports/Olympics.md#navigation)
   - ❌[Athletes](./sports/Olympics.md#athletes)
   - ➕[Sports](./sports/Olympics.md#sports)
+
+#### Candidates
+
+- Football Clubs
+- NBA Teams
+- NFL Teams
+- Formula 1 Drivers
+- Formula 1 Circuits
+- Tennis Players
+- Non-Olympic Sports
+- Olympic Host Cities

@@ -18,6 +18,21 @@ What Wikidata offers for the Olympics topics, and how far it can serve as their 
 - ❌[Athletes](#athletes)
 - ➕[Sports](#sports)
 
+<!-- @agent(#38) from #35 · 2026-10-08 · OPEN
+Decided (Trummler): Olympics is split by season, like the continents. Now built: data/topics/sports/olympia/summer/{sports,athletes}.json with summer/_category.json (title from Q159821's labels), both `inheritsUpwards: 1`, so once winter/ exists the Olympics category gets a merged "Sports" (and "Athletes") on its own. Ids stay `sports` / `athletes` until a second season shares the stem, then the validator wants `summer-sports` / `winter-sports`. Summer Sports is built from your analysis: scripts/sports/{dump,build}-olympic-sports.mjs; data-raw/sports/olympia/{excluded,parents}.json (visible tables); season = kind of the latest edition held (figure skating => winter); a child-discipline needs a parent that is still held (rugby sevens stands alone now that rugby union is discontinued); tiers by language-Wikipedia articles (sister projects not counted) in fixed steps 100/80/60/40/20/>0 for both seasons, so the merge stays ranked. Summer as of today: 71 sports, tiers 18/7/17/15/7/7; discontinued 18, future-disciplines 7, child-discipline 11.
+Ask 1, structure: Reshape this file along the split (a Summer and a Winter part, each with Sports and Athletes), and the hub accordingly.
+Ask 2, Winter Sports, for the next batch: the same analysis as for Summer, restricted to the Winter Games: base / rules / exclusions / parent corrections. The validator requires every member of an inheritsUpwards family to cut the same tier bands and carry identical rules (same id => same reason), so name anything Winter needs that Summer's three rules don't cover. Winter's tiers at the fixed bands are 1/1/9/6/5/2: say if anything is off there (ice dance / pair skating still read as figure skating until your QuickStatements batch is imported?).
+Ask 3, Olympic athletes, a thorough analysis with a UX view (Trummler's questions, all open): which athletes at all (medallists only? a fame floor such as sitelinks?), and how a reader would want to filter them:
+  - by period of activity (a range slider like the one planned for historical countries in #39 strand H; from P580/P582 of their participations, or the editions they competed at)?
+  - the same, but counting only years with a gold medal?
+  - by number and rank of medals won (e.g. a medal score as the fame proxy, or rules such as "gold medallists only")?
+  - by a coarse 'genre' of sport (discipline is too fine: e.g. athletics / aquatics / combat / ball / winter...), and does Wikidata supply such a grouping or would it be a visible data-raw mapping?
+  What is possible from the data, what is most useful and pleasant from the reader's side, and what fits the existing UI (tiers + ruler, omission rules, icon controls such as the sovereignty matrix). Also: how complete are participations and medals on Wikidata (P1344 participant in, P166 award received, P1352 ranking), and which fame proxy fits athletes (sitelinks again?). The current athletes.json is a hand list of famous athletes of any sport (Messi, Jordan, McGregor), only parked in summer/; it will be replaced.
+Ask 4, candidates: further rubrics beside olympia/ (Paralympics, World Games, Commonwealth / Asian Games, X Games, …) for an `inheritsUpwards: 2` "Sports" at the top. They overlap heavily (football everywhere), so note how they would merge; nothing to build yet.
+Note: one dump run returned far fewer editions for some sports (a WDQS server lagging?); a rerun matched again. Worth a look if you see the same in _scripts/olympics.mjs.
+Refs: scripts/sports/build-olympic-sports.mjs (header), data/topics/sports/olympia/summer/sports.json, scripts/validate-data.mjs (family checks), _untracked/PR/39-extend_wikidata.md strand H (slider)
+-->
+
 ## ❌Athletes
 
 *Not analyzed yet.*

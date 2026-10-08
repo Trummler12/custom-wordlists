@@ -39,6 +39,41 @@ What Wikidata offers for the Human Geography topics, and how far it can serve as
 
 **Check (2026-10-07):** *Sovereign state* (Q3624078) has 200 instances counting current (truthy) statements and 448 counting every P31 statement, ended and deprecated ones included; the Query Builder counts the latter, hence its higher figures. *Country* (Q6256): 217 and 278. The truthy figures are the current countries; the difference is mostly former states, which are not ballast but the candidate rule below.
 
+### Build query and the sovereignty matrix
+
+**Build query** (#35, `scripts/geography/dump-country-data.mjs`): truthy `wdt:P31 wd:Q3624078` without a dissolution date (P576), i.e. the UN sovereign states.  
+**Territories beyond them:** a curated list (`data-raw/geography/countries/sovereign-territories.json`, 48 items keyed by QID), each placed in one cell of the Sovereignty & recognition matrix; names, populations and capitals come from Wikidata by those QIDs.
+
+**Could classes carry the matrix?** (`_scripts/territories.mjs`: the curated items' classes, and each class's members with ≥ 20 sitelinks and no P576)
+
+| Cell (default) | Curated | Classes that match | What the classes add |
+| :---- | :---- | :---- | :---- |
+| classic-autonomous (omitted) | 23 | British Overseas Territories (Q46395) 10 of 14; external territory of Australia (Q11687019) 3 of 7; overseas collectivity of France (Q719487) 4 of 6; unincorporated territory of the US (Q783733) 3 of 7; autonomous country within the Kingdom of Denmark (Q66724388) 2; Tokelau only *dependent territory* | South Georgia, Akrotiri and Dhekelia, British Indian Ocean Territory, British Antarctic Territory, Heard and McDonald, Coral Sea, Ashmore and Cartier, Australian Antarctic Territory, Wake, Johnston |
+| asymmetric-autonomy (omittable) | 8 | Crown Dependencies (Q185086) 3 of 8; country of the Kingdom of the Netherlands (Q15304003) 3; Åland and the Kurdistan Region only *autonomous region* | Sark, Alderney, Herm, Jethou, Brecqhou (parts of the Bailiwick of Guernsey, typed as Crown Dependencies themselves) |
+| free-association (omittable) | 2 | associated state (Q1138279), exactly | - |
+| special-status (omittable) | 7 | special administrative region of China (Q779415) and commonwealth (Q609591, Puerto Rico and the Northern Marianas), each exactly; New Caledonia and French Polynesia share *overseas collectivity of France* with four classic-autonomous ones; Western Sahara only *disputed territory* (92 members) | - |
+| de-facto-recognized / -narrow / pure-de-facto (omittable) | 3 / 3 / 2 | state with limited recognition (Q10711424) holds all 8 (Abkhazia and Transnistria only through their polity items, see below) | Israel (a sovereign state anyway), Sahrawi Republic, Ambazonia, Western Togoland; without the sitelink filter 16 more, mostly minor or defunct entities lacking a P576 |
+
+**The three de-facto rows** sort in the right order by diplomatic relations (P530): Kosovo 76, Palestine 32, Taiwan 14 | Northern Cyprus 9, Abkhazia 7, South Ossetia 5 | Transnistria 2, Somaliland 0. But P530 counts relations, not recognitions, is incomplete (the Sahrawi Republic, recognized by dozens of states, has 9) and leaves too narrow a gap (14 vs 9) for a threshold.  
+**Population** doesn't separate the uninhabited additions either: Pitcairn (50, curated) lies below Wake Island (100), the military territories (Akrotiri and Dhekelia 18,000, British Indian Ocean Territory 3,000) above it.  
+**Not in the matrix, though inhabited:** the French overseas departments (Réunion, Guadeloupe, Martinique; integral parts of France), the Caribbean Netherlands (Bonaire etc.), and the two military territories. A conscious choice, noted here in case a cell should take them.  
+**Verdict:** the curated list stays the source of the matrix. The classes above serve as its completeness check: a new member of one of them is a territory to place or to leave out on purpose.  
+**Wikidata fix candidate:** Sark, Alderney, Herm, Jethou and Brecqhou carry *instance of: Crown Dependencies*, though only the bailiwick they belong to is one; a removal batch, prepared once the sources are clear.
+
+**Curated QIDs pointing to the wrong item** (handed to #35): three curated territories name a region item rather than the polity the cell means. The polity item carries the population and capital that are hand-filled today:
+
+| Curated | QID now | Polity item | Population | Capital |
+| :---- | :---- | :---- | :---- | :---- |
+| Iraqi Kurdistan | Q41470 *Kurdistan* (the whole cultural region, 152 sitelinks) | Q205047 *Kurdistan Region of Iraq* (102) | 6,171,083 (2020) | Erbil |
+| Transnistria | Q648767 *Administrative-Territorial Units of the Left Bank of the Dniester* (Moldova's unit, 22) | Q907112 *Transnistria* (168) | 367,776 (2024) | Tiraspol |
+| Abkhazia | Q23334 *Abkhazia* (historical region, 18) | Q31354462 *Republic of Abkhazia* (211) | 244,000 (2025) | Sokhumi |
+
+<!-- @agent(#35) from #38 · 2026-10-08 · OPEN
+Decided: Analysed whether Wikidata classes could carry the sovereignty matrix. They can't fully (the de-facto rows and New Caledonia / French Polynesia need judgment), so sovereign-territories.json stays the source; the classes serve as a completeness check. But three of its QIDs point to region items, not the polity the cell means: Iraqi Kurdistan Q41470 (the whole cultural region) => Q205047; Transnistria Q648767 (Moldova's administrative unit) => Q907112; Abkhazia Q23334 (historical region, 18 sitelinks) => Q31354462 (211). The polity items carry population and capital (Q205047 6,171,083 / Erbil, Q907112 367,776 / Tiraspol, Q31354462 244,000 / Sokhumi), so the two hand-kept `pop` estimates can go, and their names come from far better-labelled items.
+Ask: Swap the three QIDs in data-raw/geography/countries/sovereign-territories.json (and wherever they are keyed), drop the two `pop` fields, re-dump and re-build; check the `en` overrides still fit.
+Refs: _untracked/docs/Queries/geography/Human.md, section "Countries", subsection "Build query and the sovereignty matrix"; tool _untracked/docs/Queries/_scripts/territories.mjs
+-->
+
 ### Candidate rule: historical countries
 
 **Rule:** `historical-countries`, omitted (hidden by default, tick to include); also offered as an option in the Sovereignty & recognition matrix (Trummler, 2026-10-07).  
