@@ -233,6 +233,10 @@
           "pref": true
         },
         {
+          "name": "Beiping",
+          "alias": true
+        },
+        {
           "name": "Pe-king",
           "alias": true
         },
@@ -937,11 +941,15 @@
       ],
       "da": [
         {
-          "name": "Washington D.C.",
+          "name": "Washington, D.C.",
           "pref": true
         },
         {
           "name": "Washington",
+          "alias": true
+        },
+        {
+          "name": "Washington D.C.",
           "alias": true
         },
         {
@@ -6997,7 +7005,7 @@
   },
   "Q64": {
     "name": "Berlin",
-    "population": 3782202,
+    "population": 3700577,
     "country": "Germany",
     "code": "DE",
     "names": {
@@ -8455,6 +8463,18 @@
         {
           "name": "בנגקוק",
           "pref": true
+        },
+        {
+          "name": "באנגקוק",
+          "alias": true
+        },
+        {
+          "name": "בנקוק",
+          "alias": true
+        },
+        {
+          "name": "קְרוּנְגְ-טֶפּ-מַהָנָאכוֹן אָמוֹן-רַטָנָאקוֹסִין מַהִינְטָרָה-יוּתָאיָה מַהָאדִילוֹקְפוֹפּ נוֹפַרָאט-רַצַ'טָאנִי-בּוּרִירוֹם אוּדוֹם-רַצָ'נִיוְוֶט-מַהָאסָטַן אָמוֹן-פִימַנָוּוָאטָן - סַטִיט סָקַטַטִיָּה-וִיצָאנוּ-קַמְפְּרָאסִיט",
+          "alias": true
         }
       ],
       "hu": [
@@ -19066,7 +19086,19 @@
           "pref": true
         }
       ],
+      "zh-cn": [
+        {
+          "name": "萨那",
+          "pref": true
+        }
+      ],
       "zh-hk": [
+        {
+          "name": "薩那",
+          "pref": true
+        }
+      ],
+      "zh-mo": [
         {
           "name": "薩那",
           "pref": true
@@ -23474,12 +23506,6 @@
           "pref": true
         }
       ],
-      "no": [
-        {
-          "name": "Santiago",
-          "pref": true
-        }
-      ],
       "pl": [
         {
           "name": "Santiago",
@@ -26807,10 +26833,6 @@
         },
         {
           "name": "Kigali City",
-          "alias": true
-        },
-        {
-          "name": "Kigali Province",
           "alias": true
         }
       ],
@@ -31365,10 +31387,6 @@
         {
           "name": "Athènes",
           "pref": true
-        },
-        {
-          "name": "Athenes",
-          "alias": true
         }
       ],
       "he": [
@@ -32120,6 +32138,10 @@
         {
           "name": "Баку",
           "pref": true
+        },
+        {
+          "name": "Бакъ",
+          "alias": true
         }
       ],
       "cs": [
@@ -33153,7 +33175,7 @@
   },
   "Q1781": {
     "name": "Budapest",
-    "population": 1685209,
+    "population": 1675777,
     "country": "Hungary",
     "code": "HU",
     "names": {
@@ -37579,10 +37601,6 @@
           "official": true
         },
         {
-          "name": "Со́фия",
-          "short": true
-        },
-        {
           "name": "Сердика",
           "alias": true
         },
@@ -39192,6 +39210,10 @@
         {
           "name": "サンサルバドル",
           "pref": true
+        },
+        {
+          "name": "サン・サルバドル",
+          "alias": true
         }
       ],
       "ko": [
@@ -39381,6 +39403,10 @@
         },
         {
           "name": "Köbenhavn",
+          "alias": true
+        },
+        {
+          "name": "Kongens København",
           "alias": true
         }
       ],
@@ -40616,36 +40642,6 @@
           "pref": true
         }
       ],
-      "cs": [
-        {
-          "name": "Oslo",
-          "pref": true
-        }
-      ],
-      "da": [
-        {
-          "name": "Oslo",
-          "pref": true
-        }
-      ],
-      "de": [
-        {
-          "name": "Oslo",
-          "pref": true
-        }
-      ],
-      "de-at": [
-        {
-          "name": "Oslo",
-          "pref": true
-        }
-      ],
-      "de-ch": [
-        {
-          "name": "Oslo",
-          "pref": true
-        }
-      ],
       "el": [
         {
           "name": "Όσλο",
@@ -40666,13 +40662,7 @@
           "alias": true
         }
       ],
-      "en-ca": [
-        {
-          "name": "Oslo",
-          "pref": true
-        }
-      ],
-      "en-gb": [
+      "en-us": [
         {
           "name": "Oslo",
           "pref": true
@@ -40680,30 +40670,8 @@
       ],
       "es": [
         {
-          "name": "Oslo",
-          "pref": true
-        },
-        {
           "name": "Cristianía",
           "alias": true
-        }
-      ],
-      "et": [
-        {
-          "name": "Oslo",
-          "pref": true
-        }
-      ],
-      "fi": [
-        {
-          "name": "Oslo",
-          "pref": true
-        }
-      ],
-      "fr": [
-        {
-          "name": "Oslo",
-          "pref": true
         }
       ],
       "he": [
@@ -40714,18 +40682,6 @@
         {
           "name": "כריסטיאניה",
           "alias": true
-        }
-      ],
-      "hu": [
-        {
-          "name": "Oslo",
-          "pref": true
-        }
-      ],
-      "it": [
-        {
-          "name": "Oslo",
-          "pref": true
         }
       ],
       "ja": [
@@ -40762,10 +40718,6 @@
       ],
       "lv": [
         {
-          "name": "Oslo",
-          "pref": true
-        },
-        {
           "name": "Kristiānija",
           "alias": true
         }
@@ -40779,50 +40731,7 @@
       "nb": [
         {
           "name": "Oslo",
-          "pref": true,
           "official": true
-        }
-      ],
-      "nl": [
-        {
-          "name": "Oslo",
-          "pref": true
-        }
-      ],
-      "nn": [
-        {
-          "name": "Oslo",
-          "pref": true
-        }
-      ],
-      "no": [
-        {
-          "name": "Oslo",
-          "pref": true
-        }
-      ],
-      "pl": [
-        {
-          "name": "Oslo",
-          "pref": true
-        }
-      ],
-      "pt": [
-        {
-          "name": "Oslo",
-          "pref": true
-        }
-      ],
-      "pt-br": [
-        {
-          "name": "Oslo",
-          "pref": true
-        }
-      ],
-      "ro": [
-        {
-          "name": "Oslo",
-          "pref": true
         }
       ],
       "ru": [
@@ -40842,12 +40751,6 @@
           "alias": true
         }
       ],
-      "sk": [
-        {
-          "name": "Oslo",
-          "pref": true
-        }
-      ],
       "sr": [
         {
           "name": "Осло",
@@ -40857,24 +40760,6 @@
       "sr-ec": [
         {
           "name": "Осло",
-          "pref": true
-        }
-      ],
-      "sv": [
-        {
-          "name": "Oslo",
-          "pref": true
-        }
-      ],
-      "tl": [
-        {
-          "name": "Oslo",
-          "pref": true
-        }
-      ],
-      "tr": [
-        {
-          "name": "Oslo",
           "pref": true
         }
       ],
@@ -41848,10 +41733,6 @@
           "pref": true
         },
         {
-          "name": "San Jose",
-          "alias": true
-        },
-        {
           "name": "San José (Costa Rica)",
           "alias": true
         }
@@ -41872,42 +41753,18 @@
         {
           "name": "San José",
           "pref": true
-        },
-        {
-          "name": "San Jose",
-          "alias": true
-        },
-        {
-          "name": "San José, Costa Rica",
-          "alias": true
         }
       ],
       "en-ca": [
         {
           "name": "San José",
           "pref": true
-        },
-        {
-          "name": "San Jose",
-          "alias": true
-        },
-        {
-          "name": "San José, Costa Rica",
-          "alias": true
         }
       ],
       "en-gb": [
         {
           "name": "San José",
           "pref": true
-        },
-        {
-          "name": "San Jose",
-          "alias": true
-        },
-        {
-          "name": "San José, Costa Rica",
-          "alias": true
         }
       ],
       "es": [
@@ -41918,10 +41775,6 @@
         },
         {
           "name": "Chepe",
-          "alias": true
-        },
-        {
-          "name": "San Jose",
           "alias": true
         }
       ],
@@ -41941,10 +41794,6 @@
         {
           "name": "San José",
           "pref": true
-        },
-        {
-          "name": "San Jose",
-          "alias": true
         }
       ],
       "he": [
@@ -42027,14 +41876,6 @@
           "pref": true
         },
         {
-          "name": "San Jose",
-          "alias": true
-        },
-        {
-          "name": "San José, Costa Rica",
-          "alias": true
-        },
-        {
           "name": "São José",
           "alias": true
         },
@@ -42047,10 +41888,6 @@
         {
           "name": "San José",
           "pref": true
-        },
-        {
-          "name": "San Jose",
-          "alias": true
         },
         {
           "name": "São José",
@@ -42085,14 +41922,6 @@
         {
           "name": "San José",
           "pref": true
-        },
-        {
-          "name": "San Jose",
-          "alias": true
-        },
-        {
-          "name": "San José, Costa Rica",
-          "alias": true
         }
       ],
       "tl": [
@@ -43576,402 +43405,480 @@
       ]
     }
   },
-  "Q3274": {
+  "Q131546626": {
     "name": "Managua",
-    "population": 937489,
     "country": "Nicaragua",
     "code": "NI",
     "names": {
       "bg": [
         {
-          "name": "Манагуа",
+          "name": "Манагуа (град)",
           "pref": true
+        },
+        {
+          "name": "Манагуа",
+          "alias": true
         }
       ],
       "cs": [
         {
-          "name": "Managua",
-          "pref": true
+          "name": "Managua (City)",
+          "pref": true,
+          "alias": true
         },
         {
-          "name": "Obec Managua",
+          "name": "Managua",
+          "alias": true
+        },
+        {
+          "name": "Město Managua (City)",
           "alias": true
         }
       ],
       "da": [
         {
-          "name": "Managua",
-          "pref": true
+          "name": "Managua (City)",
+          "pref": true,
+          "alias": true
         },
         {
-          "name": "Kommune Managua",
+          "name": "Byen Managua (City)",
+          "alias": true
+        },
+        {
+          "name": "Managua",
           "alias": true
         }
       ],
       "de": [
         {
           "name": "Managua",
-          "pref": true
-        },
-        {
-          "name": "Gemeinde Managua",
+          "pref": true,
           "alias": true
         },
         {
-          "name": "Gemeinde von Managua",
+          "name": "Managua (City)",
           "alias": true
         },
         {
-          "name": "Managua (Gemeinde)",
+          "name": "Stadt Managua (City)",
           "alias": true
         }
       ],
       "de-ch": [
         {
-          "name": "Managua",
+          "name": "Managua (City)",
           "pref": true
         }
       ],
       "el": [
         {
-          "name": "Μανάγκουα",
-          "pref": true
-        },
-        {
-          "name": "Δήμος Μανάγκουα",
+          "name": "Μανάγκουα (πόλη)",
+          "pref": true,
           "alias": true
         },
         {
-          "name": "Μανάγκουα (δήμος)",
+          "name": "Μανάγκουα",
           "alias": true
         }
       ],
       "en": [
         {
           "name": "Managua",
-          "pref": true
-        },
-        {
-          "name": "Managua Municipality",
+          "pref": true,
           "alias": true
         },
         {
-          "name": "Managua, Nicaragua",
+          "name": "City of Managua",
           "alias": true
         },
         {
-          "name": "Municipality of Managua",
+          "name": "City of Managua (City)",
+          "alias": true
+        },
+        {
+          "name": "Managua (City)",
+          "alias": true
+        },
+        {
+          "name": "Managua City",
+          "alias": true
+        },
+        {
+          "name": "Santiago de Managua",
           "alias": true
         }
       ],
       "en-ca": [
         {
-          "name": "Managua",
+          "name": "Managua (City)",
           "pref": true
         }
       ],
       "en-gb": [
         {
-          "name": "Managua",
+          "name": "Managua (City)",
           "pref": true
         }
       ],
       "en-us": [
         {
-          "name": "Managua",
-          "pref": true
+          "name": "Managua (City)",
+          "pref": true,
+          "alias": true
         },
         {
-          "name": "Municipality of Managua",
+          "name": "City of Managua (City)",
+          "alias": true
+        },
+        {
+          "name": "Managua",
           "alias": true
         }
       ],
       "es": [
         {
           "name": "Managua",
-          "pref": true
-        },
-        {
-          "name": "Managua (Municipio)",
+          "pref": true,
           "alias": true
         },
         {
-          "name": "Municipio de Managua",
+          "name": "Ciudad de Managua",
+          "alias": true
+        },
+        {
+          "name": "Ciudad de Managua (City)",
+          "alias": true
+        },
+        {
+          "name": "Managua (City)",
           "alias": true
         }
       ],
       "et": [
         {
-          "name": "Managua",
-          "pref": true
+          "name": "Managua (City)",
+          "pref": true,
+          "alias": true
         },
         {
-          "name": "Managua vald",
+          "name": "Managua (City) linn",
           "alias": true
         }
       ],
       "fi": [
         {
-          "name": "Managua",
-          "pref": true
+          "name": "Managua (City)",
+          "pref": true,
+          "alias": true
         },
         {
-          "name": "Managua (kunta)",
+          "name": "Managua",
+          "alias": true
+        },
+        {
+          "name": "Managua (City) (kaupunki)",
           "alias": true
         }
       ],
       "fr": [
         {
-          "name": "Managua",
-          "pref": true
-        },
-        {
-          "name": "Managua (municipalité)",
+          "name": "Managua (City)",
+          "pref": true,
           "alias": true
         },
         {
-          "name": "Municipalité de Managua",
+          "name": "Managua",
+          "alias": true
+        },
+        {
+          "name": "Ville de Managua (City)",
           "alias": true
         }
       ],
       "he": [
         {
+          "name": "מנגואה (עיר)",
+          "pref": true,
+          "alias": true
+        },
+        {
           "name": "מנגואה",
-          "pref": true
+          "alias": true
         }
       ],
       "hu": [
         {
-          "name": "Managua",
-          "pref": true
+          "name": "Managua (City)",
+          "pref": true,
+          "alias": true
         },
         {
-          "name": "Managua község",
+          "name": "Managua",
+          "alias": true
+        },
+        {
+          "name": "Managua (City) város",
           "alias": true
         }
       ],
       "it": [
         {
+          "name": "Managua (City)",
+          "pref": true,
+          "alias": true
+        },
+        {
+          "name": "Città di Managua (City)",
+          "alias": true
+        },
+        {
           "name": "Managua",
-          "pref": true
-        },
-        {
-          "name": "Comune di Managua",
-          "alias": true
-        },
-        {
-          "name": "Managua (comune)",
-          "alias": true
-        },
-        {
-          "name": "Municipalità di Managua",
           "alias": true
         }
       ],
       "ja": [
         {
-          "name": "マナグア",
+          "name": "マナグア（都市）",
           "pref": true
         },
         {
-          "name": "マナグア（自治体）",
-          "alias": true
-        },
-        {
-          "name": "マナグア自治体",
+          "name": "マナグア",
           "alias": true
         }
       ],
       "ko": [
         {
-          "name": "마나과",
+          "name": "마나과(도시)",
           "pref": true
+        },
+        {
+          "name": "마나과",
+          "alias": true
         }
       ],
       "lv": [
         {
-          "name": "Managua",
-          "pref": true
+          "name": "Managua (City)",
+          "pref": true,
+          "alias": true
         },
         {
-          "name": "Managua pašvaldība",
+          "name": "Managua",
+          "alias": true
+        },
+        {
+          "name": "Managua (City) pilsēta",
           "alias": true
         }
       ],
       "mk": [
         {
-          "name": "Манагва",
+          "name": "Манагуа (град)",
           "pref": true
+        },
+        {
+          "name": "Манагуа",
+          "alias": true
         }
       ],
       "nb": [
         {
-          "name": "Managua",
-          "pref": true
+          "name": "Managua (City)",
+          "pref": true,
+          "alias": true
         },
         {
-          "name": "Municipality of Managua",
+          "name": "City of Managua (City)",
+          "alias": true
+        },
+        {
+          "name": "Managua",
           "alias": true
         }
       ],
       "nl": [
         {
-          "name": "Managua",
-          "pref": true
-        },
-        {
-          "name": "Gemeente Managua",
+          "name": "Managua (City)",
+          "pref": true,
           "alias": true
         },
         {
-          "name": "Managua (gemeente)",
+          "name": "Managua",
+          "alias": true
+        },
+        {
+          "name": "Stad Managua (City)",
           "alias": true
         }
       ],
       "nn": [
         {
-          "name": "Managua",
-          "pref": true
+          "name": "Managua (City)",
+          "pref": true,
+          "alias": true
         },
         {
-          "name": "Municipality of Managua",
+          "name": "City of Managua (City)",
+          "alias": true
+        },
+        {
+          "name": "Managua",
           "alias": true
         }
       ],
       "pl": [
         {
-          "name": "Managua",
-          "pref": true
+          "name": "Managua (City)",
+          "pref": true,
+          "alias": true
         },
         {
-          "name": "Gmina Managua",
+          "name": "Managua",
+          "alias": true
+        },
+        {
+          "name": "Miasto Managua (City)",
           "alias": true
         }
       ],
       "pt": [
         {
-          "name": "Managua",
-          "pref": true
-        },
-        {
-          "name": "Managua (município)",
+          "name": "Managua (City)",
+          "pref": true,
           "alias": true
         },
         {
-          "name": "Município de Managua",
+          "name": "Cidade de Managua (City)",
+          "alias": true
+        },
+        {
+          "name": "Managua",
           "alias": true
         }
       ],
       "pt-br": [
         {
-          "name": "Managua",
-          "pref": true
+          "name": "Managua (City)",
+          "pref": true,
+          "alias": true
         },
         {
-          "name": "Municipality of Managua",
+          "name": "City of Managua (City)",
           "alias": true
         }
       ],
       "ro": [
         {
-          "name": "Managua",
-          "pref": true
+          "name": "Managua (City)",
+          "pref": true,
+          "alias": true
         },
         {
-          "name": "Comuna Managua",
+          "name": "Managua",
+          "alias": true
+        },
+        {
+          "name": "Orașul Managua (City)",
           "alias": true
         }
       ],
       "ru": [
         {
-          "name": "Манагуа",
+          "name": "Манагуа (город)",
           "pref": true
         },
         {
-          "name": "Манагуа (муниципалитет)",
-          "alias": true
-        },
-        {
-          "name": "Муниципалитет Манагуа",
+          "name": "Манагуа",
           "alias": true
         }
       ],
       "sk": [
         {
-          "name": "Managua",
-          "pref": true
+          "name": "Managua (City)",
+          "pref": true,
+          "alias": true
         },
         {
-          "name": "Obec Managua",
+          "name": "Managua",
+          "alias": true
+        },
+        {
+          "name": "Mesto Managua (City)",
           "alias": true
         }
       ],
       "sr": [
         {
-          "name": "Манагва",
+          "name": "Манагуа (град)",
           "pref": true
+        },
+        {
+          "name": "Манагуа",
+          "alias": true
+        }
+      ],
+      "sr-ec": [
+        {
+          "name": "Манагуа (град)",
+          "pref": true
+        },
+        {
+          "name": "Манагуа",
+          "alias": true
         }
       ],
       "sr-el": [
         {
-          "name": "Managua",
-          "pref": true
+          "name": "Managua (City)",
+          "pref": true,
+          "alias": true
         },
         {
-          "name": "Opština Managua",
+          "name": "Managua",
           "alias": true
         }
       ],
       "sv": [
         {
+          "name": "Managua (City)",
+          "pref": true,
+          "alias": true
+        },
+        {
           "name": "Managua",
-          "pref": true
-        },
-        {
-          "name": "Kommunen Managua",
           "alias": true
         },
         {
-          "name": "Managua (kommun)",
-          "alias": true
-        },
-        {
-          "name": "Managua kommun",
+          "name": "Staden Managua (City)",
           "alias": true
         }
       ],
       "tl": [
         {
-          "name": "Managua",
+          "name": "Managua (City)",
           "pref": true
         }
       ],
       "tr": [
         {
-          "name": "Managua",
-          "pref": true
+          "name": "Managua (City)",
+          "pref": true,
+          "alias": true
         },
         {
-          "name": "Managua belediyesi",
+          "name": "Managua",
+          "alias": true
+        },
+        {
+          "name": "Managua (City) şehri",
           "alias": true
         }
       ],
       "zh": [
         {
-          "name": "馬納瓜",
+          "name": "马那瓜（城市）",
           "pref": true
-        },
-        {
-          "name": "馬拿瓜",
-          "alias": true
-        },
-        {
-          "name": "馬納瓜（市镇）",
-          "alias": true
-        },
-        {
-          "name": "馬納瓜市镇",
-          "alias": true
         },
         {
           "name": "马那瓜",
@@ -43980,33 +43887,65 @@
       ],
       "zh-cn": [
         {
-          "name": "马那瓜",
+          "name": "马那瓜（城市）",
           "pref": true
+        },
+        {
+          "name": "马那瓜",
+          "alias": true
+        }
+      ],
+      "zh-hans": [
+        {
+          "name": "马那瓜 (城市)",
+          "pref": true
+        },
+        {
+          "name": "马那瓜",
+          "alias": true
+        },
+        {
+          "name": "马那瓜市",
+          "alias": true
         }
       ],
       "zh-hant": [
         {
-          "name": "馬納瓜",
+          "name": "馬那瓜（城市）",
           "pref": true
         },
         {
-          "name": "馬拿瓜",
+          "name": "馬那瓜",
           "alias": true
         }
       ],
       "zh-hk": [
         {
-          "name": "馬拿瓜",
+          "name": "馬那瓜（城市）",
           "pref": true
+        },
+        {
+          "name": "馬那瓜",
+          "alias": true
+        }
+      ],
+      "zh-sg": [
+        {
+          "name": "马那瓜 (城市)",
+          "pref": true
+        },
+        {
+          "name": "马那瓜",
+          "alias": true
         }
       ],
       "zh-tw": [
         {
-          "name": "馬納瓜",
+          "name": "馬那瓜（城市）",
           "pref": true
         },
         {
-          "name": "馬拿瓜",
+          "name": "馬那瓜",
           "alias": true
         }
       ]
@@ -45495,6 +45434,14 @@
         {
           "name": "Thbilisi",
           "pref": true
+        },
+        {
+          "name": "Tbilisi",
+          "alias": true
+        },
+        {
+          "name": "Tiflis",
+          "alias": true
         }
       ],
       "fi": [
@@ -46682,6 +46629,10 @@
         {
           "name": "Montevideo",
           "pref": true
+        },
+        {
+          "name": "Montevideo, Uruguay",
+          "alias": true
         }
       ],
       "en-ca": [
@@ -54753,6 +54704,14 @@
         {
           "name": "Никозия",
           "pref": true
+        },
+        {
+          "name": "Лефкосия",
+          "alias": true
+        },
+        {
+          "name": "Лефкоша",
+          "alias": true
         }
       ],
       "cs": [
@@ -58656,7 +58615,7 @@
   },
   "Q23800": {
     "name": "Valletta",
-    "population": 6444,
+    "population": 5197,
     "country": "Malta",
     "code": "MT",
     "names": {
@@ -67091,6 +67050,503 @@
       ]
     }
   },
+  "Q132754": {
+    "name": "Erbil",
+    "population": 846000,
+    "country": "Kurdistan Region of Iraq",
+    "names": {
+      "bg": [
+        {
+          "name": "Арбил",
+          "pref": true
+        },
+        {
+          "name": "Ербил",
+          "alias": true
+        },
+        {
+          "name": "Ирбил",
+          "alias": true
+        }
+      ],
+      "cs": [
+        {
+          "name": "Irbíl",
+          "pref": true
+        },
+        {
+          "name": "Arbela",
+          "alias": true
+        },
+        {
+          "name": "Arbil",
+          "alias": true
+        },
+        {
+          "name": "Arbíl",
+          "alias": true
+        },
+        {
+          "name": "Erbil",
+          "alias": true
+        },
+        {
+          "name": "Erbíl",
+          "alias": true
+        },
+        {
+          "name": "Irbil",
+          "alias": true
+        }
+      ],
+      "da": [
+        {
+          "name": "Arbil",
+          "pref": true
+        },
+        {
+          "name": "Erbil",
+          "alias": true
+        },
+        {
+          "name": "Hewler",
+          "alias": true
+        },
+        {
+          "name": "Hewlêr",
+          "alias": true
+        },
+        {
+          "name": "Irbil",
+          "alias": true
+        }
+      ],
+      "de": [
+        {
+          "name": "Erbil",
+          "pref": true
+        },
+        {
+          "name": "Arbil",
+          "alias": true
+        },
+        {
+          "name": "Erbîl",
+          "alias": true
+        },
+        {
+          "name": "Irbil",
+          "alias": true
+        }
+      ],
+      "el": [
+        {
+          "name": "Ερμπίλ",
+          "pref": true
+        },
+        {
+          "name": "Άρβηλα",
+          "alias": true
+        },
+        {
+          "name": "Αρμπίλ",
+          "alias": true
+        },
+        {
+          "name": "Ιρμπίλ",
+          "alias": true
+        }
+      ],
+      "en": [
+        {
+          "name": "Erbil",
+          "pref": true
+        },
+        {
+          "name": "Arbela",
+          "alias": true
+        },
+        {
+          "name": "Arbil",
+          "alias": true
+        },
+        {
+          "name": "Hawler",
+          "alias": true
+        },
+        {
+          "name": "Hewler",
+          "alias": true
+        },
+        {
+          "name": "Irbil",
+          "alias": true
+        }
+      ],
+      "es": [
+        {
+          "name": "Erbil",
+          "pref": true
+        },
+        {
+          "name": "Arbela",
+          "alias": true
+        }
+      ],
+      "et": [
+        {
+          "name": "Arbīl",
+          "pref": true
+        },
+        {
+          "name": "Arbil",
+          "alias": true
+        },
+        {
+          "name": "Irbil",
+          "alias": true
+        }
+      ],
+      "fi": [
+        {
+          "name": "Arbil",
+          "pref": true
+        },
+        {
+          "name": "Arbela",
+          "alias": true
+        },
+        {
+          "name": "Arbīl",
+          "alias": true
+        },
+        {
+          "name": "Hawler",
+          "alias": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "Erbil",
+          "pref": true
+        },
+        {
+          "name": "Arbelès",
+          "alias": true
+        },
+        {
+          "name": "Arbèles",
+          "alias": true
+        },
+        {
+          "name": "Arbil",
+          "alias": true
+        },
+        {
+          "name": "Irbil",
+          "alias": true
+        }
+      ],
+      "he": [
+        {
+          "name": "ארביל",
+          "pref": true
+        }
+      ],
+      "hu": [
+        {
+          "name": "Erbíl",
+          "pref": true
+        }
+      ],
+      "it": [
+        {
+          "name": "Erbil",
+          "pref": true
+        },
+        {
+          "name": "Arbil",
+          "alias": true
+        },
+        {
+          "name": "Hewlêr",
+          "alias": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "アルビール",
+          "pref": true
+        },
+        {
+          "name": "アルビル",
+          "alias": true
+        },
+        {
+          "name": "エルビル",
+          "alias": true
+        }
+      ],
+      "ko": [
+        {
+          "name": "아르빌",
+          "pref": true
+        },
+        {
+          "name": "에르빌",
+          "alias": true
+        },
+        {
+          "name": "이르빌",
+          "alias": true
+        }
+      ],
+      "lv": [
+        {
+          "name": "Erbīla",
+          "pref": true
+        }
+      ],
+      "mk": [
+        {
+          "name": "Ербил",
+          "pref": true
+        }
+      ],
+      "nb": [
+        {
+          "name": "Arbil",
+          "pref": true
+        },
+        {
+          "name": "Arbela",
+          "alias": true
+        },
+        {
+          "name": "Erbil",
+          "alias": true
+        }
+      ],
+      "nl": [
+        {
+          "name": "Arbil",
+          "pref": true
+        },
+        {
+          "name": "Erbil",
+          "alias": true
+        },
+        {
+          "name": "Hewler",
+          "alias": true
+        },
+        {
+          "name": "Hewlêr",
+          "alias": true
+        },
+        {
+          "name": "Irbil",
+          "alias": true
+        }
+      ],
+      "nn": [
+        {
+          "name": "Arbil",
+          "pref": true
+        }
+      ],
+      "pl": [
+        {
+          "name": "Irbil",
+          "pref": true
+        },
+        {
+          "name": "Arbela",
+          "alias": true
+        },
+        {
+          "name": "Arbil",
+          "alias": true
+        }
+      ],
+      "pt": [
+        {
+          "name": "Arbil",
+          "pref": true
+        },
+        {
+          "name": "Arbelas",
+          "alias": true
+        },
+        {
+          "name": "Irbil",
+          "alias": true
+        }
+      ],
+      "ro": [
+        {
+          "name": "Arbil",
+          "pref": true
+        }
+      ],
+      "ru": [
+        {
+          "name": "Эрбиль",
+          "pref": true
+        },
+        {
+          "name": "Арбела",
+          "alias": true
+        },
+        {
+          "name": "Ирбиль",
+          "alias": true
+        },
+        {
+          "name": "Урбиллум",
+          "alias": true
+        }
+      ],
+      "sk": [
+        {
+          "name": "Arbíl",
+          "pref": true
+        }
+      ],
+      "sr": [
+        {
+          "name": "Ербил",
+          "pref": true
+        }
+      ],
+      "sr-ec": [
+        {
+          "name": "Ербил",
+          "pref": true
+        }
+      ],
+      "sr-el": [
+        {
+          "name": "Erbil",
+          "pref": true
+        }
+      ],
+      "sv": [
+        {
+          "name": "Arbil",
+          "pref": true
+        },
+        {
+          "name": "Arba-Ilu",
+          "alias": true
+        },
+        {
+          "name": "Arba-llu",
+          "alias": true
+        },
+        {
+          "name": "Arbela",
+          "alias": true
+        },
+        {
+          "name": "Arbīl",
+          "alias": true
+        },
+        {
+          "name": "Erbil",
+          "alias": true
+        },
+        {
+          "name": "Hawler",
+          "alias": true
+        },
+        {
+          "name": "Hewler",
+          "alias": true
+        },
+        {
+          "name": "Hewlêr",
+          "alias": true
+        },
+        {
+          "name": "Irbil",
+          "alias": true
+        }
+      ],
+      "tr": [
+        {
+          "name": "Erbil",
+          "pref": true
+        },
+        {
+          "name": "Arbela",
+          "alias": true
+        },
+        {
+          "name": "Hawler",
+          "alias": true
+        },
+        {
+          "name": "Hewler",
+          "alias": true
+        },
+        {
+          "name": "Hewlêr",
+          "alias": true
+        },
+        {
+          "name": "İrbil",
+          "alias": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "埃尔比勒",
+          "pref": true
+        },
+        {
+          "name": "埃爾比勒",
+          "alias": true
+        }
+      ],
+      "zh-cn": [
+        {
+          "name": "埃尔比勒",
+          "pref": true
+        }
+      ],
+      "zh-hans": [
+        {
+          "name": "埃尔比勒",
+          "pref": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "艾比爾",
+          "pref": true
+        }
+      ],
+      "zh-hk": [
+        {
+          "name": "艾比爾",
+          "pref": true
+        }
+      ],
+      "zh-sg": [
+        {
+          "name": "埃尔比勒",
+          "pref": true
+        }
+      ],
+      "zh-tw": [
+        {
+          "name": "阿爾貝拉",
+          "pref": true
+        }
+      ]
+    }
+  },
   "Q48329": {
     "name": "Mariehamn",
     "population": 11957,
@@ -69501,7 +69957,7 @@
   "Q40811": {
     "name": "Sokhumi",
     "population": 65146,
-    "country": "Abkhazia",
+    "country": "Republic of Abkhazia",
     "names": {
       "bg": [
         {
@@ -69620,6 +70076,10 @@
         },
         {
           "name": "Sukhumi",
+          "alias": true
+        },
+        {
+          "name": "Tskhumi",
           "alias": true
         }
       ],
@@ -69995,6 +70455,502 @@
         {
           "name": "蘇呼米",
           "pref": true
+        }
+      ]
+    }
+  },
+  "Q79863": {
+    "name": "Tskhinval",
+    "population": 32699,
+    "country": "South Ossetia",
+    "names": {
+      "bg": [
+        {
+          "name": "Цхинвали",
+          "pref": true
+        },
+        {
+          "name": "Цхинвал",
+          "alias": true
+        }
+      ],
+      "cs": [
+        {
+          "name": "Cchinvali",
+          "pref": true
+        },
+        {
+          "name": "Cchinval",
+          "alias": true
+        }
+      ],
+      "da": [
+        {
+          "name": "Tskhinvali",
+          "pref": true
+        }
+      ],
+      "de": [
+        {
+          "name": "Zchinwali",
+          "pref": true
+        },
+        {
+          "name": "Staliniri",
+          "alias": true
+        },
+        {
+          "name": "Tschinwali",
+          "alias": true
+        },
+        {
+          "name": "Tskhinvali",
+          "alias": true
+        },
+        {
+          "name": "Zchinwal",
+          "alias": true
+        }
+      ],
+      "el": [
+        {
+          "name": "Τσχινβάλι",
+          "pref": true
+        }
+      ],
+      "en": [
+        {
+          "name": "Tskhinval",
+          "pref": true
+        },
+        {
+          "name": "Chreba",
+          "alias": true
+        },
+        {
+          "name": "Cxinval",
+          "alias": true
+        },
+        {
+          "name": "Krtskhilvani",
+          "alias": true
+        },
+        {
+          "name": "Krtskhinvali",
+          "alias": true
+        },
+        {
+          "name": "Staliniri",
+          "alias": true
+        },
+        {
+          "name": "Tskhinvali",
+          "alias": true
+        }
+      ],
+      "es": [
+        {
+          "name": "Tsjinval",
+          "pref": true
+        },
+        {
+          "name": "Chinvali",
+          "alias": true
+        },
+        {
+          "name": "Chreba",
+          "alias": true
+        },
+        {
+          "name": "Staliniri",
+          "alias": true
+        },
+        {
+          "name": "Tsjinvali",
+          "alias": true
+        },
+        {
+          "name": "Tskhinval",
+          "alias": true
+        },
+        {
+          "name": "Tskhinvali",
+          "alias": true
+        },
+        {
+          "name": "Tskinvali",
+          "alias": true
+        }
+      ],
+      "et": [
+        {
+          "name": "Tshinvali",
+          "pref": true
+        }
+      ],
+      "fi": [
+        {
+          "name": "Tskhinvali",
+          "pref": true
+        },
+        {
+          "name": "Tshinval",
+          "alias": true
+        },
+        {
+          "name": "Tshinvali",
+          "alias": true
+        },
+        {
+          "name": "Tšinvali",
+          "alias": true
+        },
+        {
+          "name": "Tskhinval",
+          "alias": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "Tskhinvali",
+          "pref": true
+        },
+        {
+          "name": "Chreba",
+          "alias": true
+        },
+        {
+          "name": "Staliniri",
+          "alias": true
+        },
+        {
+          "name": "Tshinvali",
+          "alias": true
+        },
+        {
+          "name": "Tskhinval",
+          "alias": true
+        },
+        {
+          "name": "Цхинвал",
+          "alias": true
+        },
+        {
+          "name": "ცხინვალი",
+          "alias": true
+        }
+      ],
+      "he": [
+        {
+          "name": "צחינוואלי",
+          "pref": true
+        },
+        {
+          "name": "סטאלינרי",
+          "alias": true
+        },
+        {
+          "name": "סטלינירי",
+          "alias": true
+        },
+        {
+          "name": "צ'רבה",
+          "alias": true
+        },
+        {
+          "name": "צחינבאלי",
+          "alias": true
+        },
+        {
+          "name": "צחינבלי",
+          "alias": true
+        },
+        {
+          "name": "צחינוואל",
+          "alias": true
+        },
+        {
+          "name": "צחינוולי",
+          "alias": true
+        }
+      ],
+      "hu": [
+        {
+          "name": "Chinvali",
+          "pref": true
+        }
+      ],
+      "it": [
+        {
+          "name": "Tskhinvali",
+          "pref": true
+        },
+        {
+          "name": "Chinvali",
+          "alias": true
+        },
+        {
+          "name": "Chreba",
+          "alias": true
+        },
+        {
+          "name": "Staliniri",
+          "alias": true
+        },
+        {
+          "name": "Tskhinval",
+          "alias": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "ツヒンヴァリ",
+          "pref": true
+        },
+        {
+          "name": "ツヒンバリ",
+          "alias": true
+        },
+        {
+          "name": "ツヒンワリ",
+          "alias": true
+        }
+      ],
+      "ko": [
+        {
+          "name": "츠힌발리",
+          "pref": true
+        },
+        {
+          "name": "쯔힌발리",
+          "alias": true
+        }
+      ],
+      "lv": [
+        {
+          "name": "Chinvala",
+          "pref": true
+        },
+        {
+          "name": "Chinvali",
+          "alias": true
+        }
+      ],
+      "mk": [
+        {
+          "name": "Цхинвали",
+          "pref": true
+        }
+      ],
+      "nb": [
+        {
+          "name": "Tskhinvali",
+          "pref": true
+        },
+        {
+          "name": "Staliniri",
+          "alias": true
+        }
+      ],
+      "nl": [
+        {
+          "name": "Tschinvali",
+          "pref": true
+        },
+        {
+          "name": "Stalinir",
+          "alias": true
+        }
+      ],
+      "nn": [
+        {
+          "name": "Tskhinvali",
+          "pref": true
+        },
+        {
+          "name": "Cchinvali",
+          "alias": true
+        },
+        {
+          "name": "Cxinvali",
+          "alias": true
+        },
+        {
+          "name": "Tjreba",
+          "alias": true
+        }
+      ],
+      "pl": [
+        {
+          "name": "Cchinwali",
+          "pref": true
+        },
+        {
+          "name": "Staliniri",
+          "alias": true
+        }
+      ],
+      "pt": [
+        {
+          "name": "Tskhinvali",
+          "pref": true
+        },
+        {
+          "name": "Tesquinváli",
+          "alias": true
+        }
+      ],
+      "pt-br": [
+        {
+          "name": "Tskhinvali",
+          "pref": true
+        }
+      ],
+      "ro": [
+        {
+          "name": "Țhinvali",
+          "pref": true
+        },
+        {
+          "name": "Ţhinvali",
+          "alias": true
+        },
+        {
+          "name": "Ţinvali",
+          "alias": true
+        },
+        {
+          "name": "Ținvali",
+          "alias": true
+        },
+        {
+          "name": "Tskhinvali",
+          "alias": true
+        }
+      ],
+      "ru": [
+        {
+          "name": "Цхинвал",
+          "pref": true,
+          "short": true
+        },
+        {
+          "name": "Сталинир",
+          "alias": true
+        },
+        {
+          "name": "Сталинири",
+          "alias": true
+        },
+        {
+          "name": "Цхинвали",
+          "alias": true
+        }
+      ],
+      "sk": [
+        {
+          "name": "Cchinvali",
+          "pref": true
+        },
+        {
+          "name": "Cchinval",
+          "alias": true
+        }
+      ],
+      "sr": [
+        {
+          "name": "Цхинвали",
+          "pref": true
+        },
+        {
+          "name": "Ћинвали",
+          "alias": true
+        },
+        {
+          "name": "Чкинвали",
+          "alias": true
+        },
+        {
+          "name": "Шинвали",
+          "alias": true
+        }
+      ],
+      "sv": [
+        {
+          "name": "Tschinvali",
+          "pref": true
+        },
+        {
+          "name": "Tschinval",
+          "alias": true
+        }
+      ],
+      "tl": [
+        {
+          "name": "Tskhinvali",
+          "pref": true
+        }
+      ],
+      "tr": [
+        {
+          "name": "Tshinvali",
+          "pref": true
+        },
+        {
+          "name": "Şinval",
+          "alias": true
+        },
+        {
+          "name": "Şinvali",
+          "alias": true
+        },
+        {
+          "name": "Staliniri",
+          "alias": true
+        },
+        {
+          "name": "Tshinval",
+          "alias": true
+        },
+        {
+          "name": "Tskhinvali",
+          "alias": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "茨欣瓦利",
+          "pref": true
+        },
+        {
+          "name": "茨辛瓦利",
+          "alias": true
+        },
+        {
+          "name": "茲辛瓦利",
+          "alias": true
+        }
+      ],
+      "zh-cn": [
+        {
+          "name": "茨欣瓦利",
+          "pref": true
+        }
+      ],
+      "zh-hans": [
+        {
+          "name": "茨欣瓦利",
+          "pref": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "茨欣瓦利",
+          "pref": true
+        },
+        {
+          "name": "茲辛瓦利",
+          "alias": true
         }
       ]
     }
@@ -71399,6 +72355,322 @@
       "zh-tw": [
         {
           "name": "哈爾格薩",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q132572": {
+    "name": "Tiraspol",
+    "population": 133807,
+    "country": "Transnistria",
+    "names": {
+      "bg": [
+        {
+          "name": "Тираспол",
+          "pref": true
+        }
+      ],
+      "cs": [
+        {
+          "name": "Tiraspol",
+          "pref": true
+        }
+      ],
+      "da": [
+        {
+          "name": "Tiraspol",
+          "pref": true
+        }
+      ],
+      "de": [
+        {
+          "name": "Tiraspol",
+          "pref": true
+        }
+      ],
+      "el": [
+        {
+          "name": "Τιράσπολ",
+          "pref": true
+        }
+      ],
+      "en": [
+        {
+          "name": "Tiraspol",
+          "pref": true
+        },
+        {
+          "name": "Tyraspol",
+          "alias": true
+        }
+      ],
+      "en-gb": [
+        {
+          "name": "Tiraspol",
+          "pref": true
+        }
+      ],
+      "es": [
+        {
+          "name": "Tiráspol",
+          "pref": true
+        },
+        {
+          "name": "Tiraspol",
+          "alias": true
+        }
+      ],
+      "et": [
+        {
+          "name": "Tiraspol",
+          "pref": true
+        }
+      ],
+      "fi": [
+        {
+          "name": "Tiraspol",
+          "pref": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "Tiraspol",
+          "pref": true
+        },
+        {
+          "name": "Municipalité de Tiraspol",
+          "alias": true
+        }
+      ],
+      "he": [
+        {
+          "name": "טירספול",
+          "pref": true
+        },
+        {
+          "name": "טרעשפּיל",
+          "alias": true
+        }
+      ],
+      "hu": [
+        {
+          "name": "Tiraszpol",
+          "pref": true
+        }
+      ],
+      "it": [
+        {
+          "name": "Tiraspol",
+          "pref": true
+        },
+        {
+          "name": "Tiraspoli",
+          "alias": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "ティラスポリ",
+          "pref": true
+        },
+        {
+          "name": "チラスポリ",
+          "alias": true
+        },
+        {
+          "name": "ティラスポール",
+          "alias": true
+        }
+      ],
+      "ko": [
+        {
+          "name": "티라스폴",
+          "pref": true
+        }
+      ],
+      "lv": [
+        {
+          "name": "Tiraspole",
+          "pref": true
+        },
+        {
+          "name": "Тирасполь",
+          "alias": true
+        }
+      ],
+      "mk": [
+        {
+          "name": "Тираспол",
+          "pref": true
+        }
+      ],
+      "nb": [
+        {
+          "name": "Tiraspol",
+          "pref": true
+        }
+      ],
+      "nl": [
+        {
+          "name": "Tiraspol",
+          "pref": true
+        }
+      ],
+      "nn": [
+        {
+          "name": "Tiraspol",
+          "pref": true
+        },
+        {
+          "name": "Тирáсполь",
+          "alias": true
+        }
+      ],
+      "pl": [
+        {
+          "name": "Tyraspol",
+          "pref": true
+        },
+        {
+          "name": "Region Tyraspol",
+          "alias": true
+        },
+        {
+          "name": "Tiraspol",
+          "alias": true
+        }
+      ],
+      "pt": [
+        {
+          "name": "Tiraspol",
+          "pref": true
+        },
+        {
+          "name": "Tiráspol",
+          "alias": true
+        }
+      ],
+      "ro": [
+        {
+          "name": "Tiraspol",
+          "pref": true,
+          "official": true
+        }
+      ],
+      "ru": [
+        {
+          "name": "Тирасполь",
+          "pref": true
+        },
+        {
+          "name": "Tiraspol'",
+          "alias": true
+        },
+        {
+          "name": "Столица Приднестровской Молдавской Республики",
+          "alias": true
+        },
+        {
+          "name": "Столица Приднестровья",
+          "alias": true
+        },
+        {
+          "name": "Тиришполя",
+          "alias": true
+        }
+      ],
+      "sk": [
+        {
+          "name": "Tiraspol",
+          "pref": true
+        },
+        {
+          "name": "Tiraspoľ",
+          "alias": true
+        },
+        {
+          "name": "Tyraspoľ",
+          "alias": true
+        }
+      ],
+      "sr": [
+        {
+          "name": "Тираспољ",
+          "pref": true
+        },
+        {
+          "name": "Тираспол",
+          "alias": true
+        }
+      ],
+      "sr-ec": [
+        {
+          "name": "Тираспољ",
+          "pref": true
+        }
+      ],
+      "sr-el": [
+        {
+          "name": "Tiraspolj",
+          "pref": true
+        }
+      ],
+      "sv": [
+        {
+          "name": "Tiraspol",
+          "pref": true
+        }
+      ],
+      "tr": [
+        {
+          "name": "Tiraspol",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "蒂拉斯波尔",
+          "pref": true
+        }
+      ],
+      "zh-cn": [
+        {
+          "name": "蒂拉斯波尔",
+          "pref": true
+        }
+      ],
+      "zh-hans": [
+        {
+          "name": "蒂拉斯波尔",
+          "pref": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "提拉斯浦",
+          "pref": true
+        },
+        {
+          "name": "蒂拉斯波爾",
+          "alias": true
+        }
+      ],
+      "zh-hk": [
+        {
+          "name": "提拉斯堡",
+          "pref": true
+        }
+      ],
+      "zh-sg": [
+        {
+          "name": "蒂拉斯波尔",
+          "pref": true
+        }
+      ],
+      "zh-tw": [
+        {
+          "name": "提拉斯浦",
           "pref": true
         }
       ]

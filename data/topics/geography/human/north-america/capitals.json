@@ -10,8 +10,8 @@
   "languages": ["en","de","es","fr","it","ja","ja-Latn","ko","zh-Hans","zh-Hant","pt","ru","tr","pl","nl","bg","cs","da","et","fi","el","he","hu","lv","mk","no","ro","sr","sk","sv","tl"],
   "generatedRomaji": true,
   "sources": ["Names & variants: Wikidata labels, official and short names of the capitals (P36) — https://www.wikidata.org/wiki/Property:P36 (see scripts/geography/dump-country-data.mjs)"],
-  "lastUpdated": "2026-09-11",
-  "lastChecked": "2026-09-11",
+  "lastUpdated": "2026-10-08",
+  "lastChecked": "2026-10-08",
   "defaultNames": "pref",
   "omittable": [
     {
@@ -24,7 +24,7 @@
   ],
   "tiers": [
     [
-      {"en":{"pref":"Washington, D.C.","short":"Washington","long":"Washington, District of Columbia"},"de":"Washington, D.C.","es":"Washington D. C.","fr":"Washington","it":"Washington","ja":"ワシントンD.C.","ko":"워싱턴 D.C.","zh-Hans":"华盛顿哥伦比亚特区","zh-Hant":"華盛頓哥倫比亞特區","pt":"Washington, D.C.","ru":"Вашингтон","tr":"Washington","pl":"Waszyngton","nl":"Washington D.C.","bg":"Вашингтон","cs":"Washington, D.C.","da":"Washington D.C.","et":"Washington","fi":"Washington","el":"Ουάσινγκτον","he":"וושינגטון די. סי.","hu":"Washington","lv":"Vašingtona","mk":"Вашингтон","no":"Washington D.C.","ro":"Washington, D.C.","sr":"Вашингтон","sk":"Washington D.C.","sv":"Washington, D.C.","tl":"Washington, D.C."},
+      {"en":{"pref":"Washington, D.C.","short":"Washington","long":"Washington, District of Columbia"},"de":"Washington, D.C.","es":"Washington D. C.","fr":"Washington","it":"Washington","ja":"ワシントンD.C.","ko":"워싱턴 D.C.","zh-Hans":"华盛顿哥伦比亚特区","zh-Hant":"華盛頓哥倫比亞特區","pt":"Washington, D.C.","ru":"Вашингтон","tr":"Washington","pl":"Waszyngton","nl":"Washington D.C.","bg":"Вашингтон","cs":"Washington, D.C.","da":"Washington, D.C.","et":"Washington","fi":"Washington","el":"Ουάσινγκτον","he":"וושינגטון די. סי.","hu":"Washington","lv":"Vašingtona","mk":"Вашингтон","no":"Washington D.C.","ro":"Washington, D.C.","sr":"Вашингтон","sk":"Washington D.C.","sv":"Washington, D.C.","tl":"Washington, D.C."},
       {"en":"Mexico City","de":"Mexiko-Stadt","es":{"pref":"Ciudad de México","short":"CDMX"},"fr":"Mexico","it":"Città del Messico","ja":"メキシコシティ","ko":"멕시코시티","zh-Hans":"墨西哥城","zh-Hant":"墨西哥城","pt":"Cidade do México","ru":"Мехико","tr":"Meksiko","pl":"Meksyk","nl":"Mexico-Stad","bg":"Мексико","cs":"Ciudad de México","et":"México","fi":"México","el":"Πόλη του Μεξικού","he":"מקסיקו סיטי","hu":"Mexikóváros","lv":"Mehiko","mk":"Мексико","no":"Mexico by","ro":"Ciudad de México","sr":"Мексико Сити","sk":"Mexiko","tl":"Lungsod ng Mehiko"}
     ],
 
@@ -40,7 +40,7 @@
       {"en":"Tegucigalpa","ja":"テグシガルパ","ko":"테구시갈파","zh-Hans":"特古西加尔巴","zh-Hant":"德古西加巴","ru":"Тегусигальпа","bg":"Тегусигалпа","el":"Τεγκουσιγκάλπα","he":"טגוסיגלפה","lv":"Tegusigalpa","mk":"Тегусигалпа","sr":"Тегусигалпа"},
       {"en":"San Salvador","ja":"サンサルバドル","ko":"산살바도르","zh-Hans":"圣萨尔瓦多","zh-Hant":"聖薩爾瓦多","ru":"Сан-Сальвадор","bg":"Сан Салвадор","el":"Σαν Σαλβαδόρ","he":"סן סלוודור","lv":"Sansalvadora","mk":"Сан Салвадор","sr":"Сан Салвадор"},
       {"en":"San José","ja":"サンホセ","ko":"산호세","zh-Hans":"圣何塞","zh-Hant":"聖荷西","ru":"Сан-Хосе","bg":"Сан Хосе","el":"Σαν Χοσέ","he":"סן חוסה","lv":"Sanhosē","mk":"Сан Хосе","sr":"Сан Хосе","tl":"San José, Costa Rica"},
-      {"en":"Managua","ja":"マナグア","ko":"마나과","zh-Hans":"马那瓜","zh-Hant":"馬納瓜","ru":"Манагуа","bg":"Манагуа","el":"Μανάγκουα","he":"מנגואה","mk":"Манагва","sr":"Манагва"}
+      {"en":"Managua","fr":"Managua (City)","it":"Managua (City)","ja":"マナグア（都市）","ko":"마나과(도시)","zh-Hans":"马那瓜 (城市)","zh-Hant":"馬那瓜（城市）","pt":"Managua (City)","ru":"Манагуа (город)","tr":"Managua (City)","pl":"Managua (City)","nl":"Managua (City)","bg":"Манагуа (град)","cs":"Managua (City)","da":"Managua (City)","et":"Managua (City)","fi":"Managua (City)","el":"Μανάγκουα (πόλη)","he":"מנגואה (עיר)","hu":"Managua (City)","lv":"Managua (City)","mk":"Манагуа (град)","no":"Managua (City)","ro":"Managua (City)","sr":"Манагуа (град)","sk":"Managua (City)","sv":"Managua (City)","tl":"Managua (City)"}
     ],
 
     [

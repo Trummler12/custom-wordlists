@@ -1376,7 +1376,8 @@
       "el": [
         {
           "name": "Ηνωμένες Πολιτείες Αμερικής",
-          "pref": true
+          "pref": true,
+          "alias": true
         },
         {
           "name": "Αμερική",
@@ -1396,10 +1397,6 @@
         },
         {
           "name": "Η.Π.Α.",
-          "alias": true
-        },
-        {
-          "name": "Ηνωμένες Πολιτείες",
           "alias": true
         },
         {
@@ -2709,6 +2706,10 @@
         {
           "name": "Pakistan",
           "pref": true
+        },
+        {
+          "name": "Islamische Republik Pakistan",
+          "alias": true
         }
       ],
       "de-at": [
@@ -2867,6 +2868,10 @@
         {
           "name": "파키스탄",
           "pref": true
+        },
+        {
+          "name": "파키스탄 이슬람 공화국",
+          "alias": true
         }
       ],
       "lv": [
@@ -2925,6 +2930,10 @@
         {
           "name": "Paquistão",
           "pref": true
+        },
+        {
+          "name": "República Islâmica do Paquistão",
+          "alias": true
         }
       ],
       "pt-br": [
@@ -4121,11 +4130,19 @@
           "alias": true
         },
         {
+          "name": "バングラデシュ人民共和国",
+          "alias": true
+        },
+        {
           "name": "バングラデシュ人民共和國",
           "alias": true
         },
         {
           "name": "バングラデッシュ",
+          "alias": true
+        },
+        {
+          "name": "孟",
           "alias": true
         },
         {
@@ -7667,11 +7684,8 @@
       ],
       "fr": [
         {
-          "name": "république démocratique du Congo",
-          "pref": true
-        },
-        {
           "name": "République démocratique du Congo",
+          "pref": true,
           "official": true
         },
         {
@@ -7688,7 +7702,7 @@
           "alias": true
         },
         {
-          "name": "Rep. Dem. Congo",
+          "name": "Rep. Dem. du Congo",
           "alias": true
         },
         {
@@ -9615,7 +9629,7 @@
   },
   "Q183": {
     "name": "Germany",
-    "population": 83577140,
+    "population": 83467117,
     "code": "DE",
     "names": {
       "bg": [
@@ -10642,7 +10656,7 @@
       ],
       "tl": [
         {
-          "name": "Pransiya",
+          "name": "Fransiya",
           "pref": true
         },
         {
@@ -10655,6 +10669,10 @@
         },
         {
           "name": "Pransia",
+          "alias": true
+        },
+        {
+          "name": "Pransiya",
           "alias": true
         },
         {
@@ -12861,12 +12879,6 @@
         }
       ],
       "nn": [
-        {
-          "name": "Italia",
-          "pref": true
-        }
-      ],
-      "no": [
         {
           "name": "Italia",
           "pref": true
@@ -20770,12 +20782,6 @@
           "pref": true
         }
       ],
-      "no": [
-        {
-          "name": "Usbekistan",
-          "pref": true
-        }
-      ],
       "pl": [
         {
           "name": "Uzbekistan",
@@ -22779,11 +22785,14 @@
         },
         {
           "name": "République de Madagascar",
-          "official": true,
+          "official": true
+        },
+        {
+          "name": "la république de Madagascar",
           "alias": true
         },
         {
-          "name": "la République de Madagascar",
+          "name": "république de Madagascar",
           "alias": true
         }
       ],
@@ -25066,12 +25075,6 @@
           "pref": true
         }
       ],
-      "no": [
-        {
-          "name": "Kamerun",
-          "pref": true
-        }
-      ],
       "pl": [
         {
           "name": "Kamerun",
@@ -26549,12 +26552,6 @@
           "pref": true
         }
       ],
-      "no": [
-        {
-          "name": "Nord-Korea",
-          "pref": true
-        }
-      ],
       "pl": [
         {
           "name": "Korea Północna",
@@ -26908,7 +26905,7 @@
           "alias": true
         },
         {
-          "name": "Surya",
+          "name": "Sūriyā",
           "alias": true
         }
       ],
@@ -27356,21 +27353,6 @@
           "alias": true
         },
         {
-          "name": "Taiwan ROC",
-          "short": true,
-          "alias": true
-        },
-        {
-          "name": "TW",
-          "short": true,
-          "alias": true
-        },
-        {
-          "name": "TWN",
-          "short": true,
-          "alias": true
-        },
-        {
           "name": "China, Republic of",
           "alias": true
         },
@@ -27407,7 +27389,19 @@
           "alias": true
         },
         {
+          "name": "Taiwan ROC",
+          "alias": true
+        },
+        {
           "name": "The ROC",
+          "alias": true
+        },
+        {
+          "name": "TW",
+          "alias": true
+        },
+        {
+          "name": "TWN",
           "alias": true
         }
       ],
@@ -27584,8 +27578,7 @@
       "fr": [
         {
           "name": "Taïwan",
-          "pref": true,
-          "short": true
+          "pref": true
         },
         {
           "name": "Chine nationaliste",
@@ -27646,10 +27639,6 @@
         {
           "name": "中華民国",
           "pref": true
-        },
-        {
-          "name": "台湾",
-          "short": true
         },
         {
           "name": "チャイニーズ・タイペイ",
@@ -27862,11 +27851,6 @@
           "pref": true
         },
         {
-          "name": "Тайвань",
-          "short": true,
-          "alias": true
-        },
-        {
           "name": "Китайская Республика Тайвань",
           "alias": true
         },
@@ -27876,6 +27860,10 @@
         },
         {
           "name": "Республика Китай",
+          "alias": true
+        },
+        {
+          "name": "Тайвань",
           "alias": true
         },
         {
@@ -28118,11 +28106,6 @@
           "official": true
         },
         {
-          "name": "臺灣",
-          "short": true,
-          "alias": true
-        },
-        {
           "name": "中華台北",
           "alias": true
         },
@@ -28136,6 +28119,10 @@
         },
         {
           "name": "台灣",
+          "alias": true
+        },
+        {
+          "name": "臺灣",
           "alias": true
         }
       ]
@@ -32302,6 +32289,12 @@
           "pref": true
         }
       ],
+      "en-us": [
+        {
+          "name": "Guinea",
+          "pref": true
+        }
+      ],
       "es": [
         {
           "name": "Guinea",
@@ -33788,15 +33781,15 @@
       ],
       "pl": [
         {
-          "name": "Holandia",
+          "name": "Królestwo Niderlandów",
           "pref": true
         },
         {
-          "name": "Koninkrijk der Nederlanden",
+          "name": "Holandia",
           "alias": true
         },
         {
-          "name": "Królestwo Niderlandów",
+          "name": "Koninkrijk der Nederlanden",
           "alias": true
         },
         {
@@ -34271,12 +34264,6 @@
         {
           "name": "Ekvator",
           "alias": true
-        }
-      ],
-      "no": [
-        {
-          "name": "Ecuador",
-          "pref": true
         }
       ],
       "pl": [
@@ -41790,10 +41777,6 @@
         {
           "name": "Portugiesische Republik",
           "alias": true
-        },
-        {
-          "name": "PRT",
-          "alias": true
         }
       ],
       "de-at": [
@@ -41830,10 +41813,6 @@
         {
           "name": "Portuguese Republic",
           "alias": true
-        },
-        {
-          "name": "PRT",
-          "alias": true
         }
       ],
       "en-ca": [
@@ -41852,10 +41831,6 @@
         {
           "name": "Portugal",
           "pref": true
-        },
-        {
-          "name": "🇵🇹",
-          "alias": true
         }
       ],
       "es": [
@@ -41865,10 +41840,6 @@
         },
         {
           "name": "República de Portugal",
-          "alias": true
-        },
-        {
-          "name": "República Portuguesa",
           "alias": true
         }
       ],
@@ -41889,10 +41860,6 @@
         },
         {
           "name": "Portugalin tasavalta",
-          "alias": true
-        },
-        {
-          "name": "República Portuguesa",
           "alias": true
         }
       ],
@@ -41926,10 +41893,6 @@
         {
           "name": "Portogallo",
           "pref": true
-        },
-        {
-          "name": "PRT",
-          "alias": true
         }
       ],
       "ja": [
@@ -41948,15 +41911,7 @@
           "pref": true
         },
         {
-          "name": "🇵🇹",
-          "alias": true
-        },
-        {
           "name": "POR",
-          "alias": true
-        },
-        {
-          "name": "PRT",
           "alias": true
         },
         {
@@ -41996,14 +41951,6 @@
         {
           "name": "Portugese Republiek",
           "alias": true
-        },
-        {
-          "name": "PRT",
-          "alias": true
-        },
-        {
-          "name": "PT",
-          "alias": true
         }
       ],
       "nn": [
@@ -42026,12 +41973,7 @@
         },
         {
           "name": "República Portuguesa",
-          "official": true,
-          "alias": true
-        },
-        {
-          "name": "🇵🇹",
-          "alias": true
+          "official": true
         },
         {
           "name": "pt",
@@ -42044,15 +41986,7 @@
           "pref": true
         },
         {
-          "name": "🇵🇹",
-          "alias": true
-        },
-        {
           "name": "pt",
-          "alias": true
-        },
-        {
-          "name": "República Portuguesa",
           "alias": true
         }
       ],
@@ -42070,10 +42004,6 @@
         {
           "name": "Португалия",
           "pref": true
-        },
-        {
-          "name": "Portugal",
-          "alias": true
         },
         {
           "name": "Португальская Республика",
@@ -46130,15 +46060,10 @@
         },
         {
           "name": "PNG",
-          "short": true,
-          "alias": true
+          "short": true
         },
         {
           "name": "Independent State of Papua New Guinea",
-          "alias": true
-        },
-        {
-          "name": "pg",
           "alias": true
         }
       ],
@@ -46161,14 +46086,6 @@
         },
         {
           "name": "Independent State of Papua New Guinea",
-          "alias": true
-        },
-        {
-          "name": "pg",
-          "alias": true
-        },
-        {
-          "name": "PNG",
           "alias": true
         }
       ],
@@ -46226,8 +46143,7 @@
         },
         {
           "name": "PNG",
-          "short": true,
-          "alias": true
+          "short": true
         },
         {
           "name": "État indépendant de Papouasie-Nouvelle-Guinée",
@@ -46235,10 +46151,6 @@
         },
         {
           "name": "Papouasie-nouvelle-Guinée",
-          "alias": true
-        },
-        {
-          "name": "pg",
           "alias": true
         },
         {
@@ -46336,10 +46248,6 @@
         {
           "name": "PG",
           "alias": true
-        },
-        {
-          "name": "PNG",
-          "alias": true
         }
       ],
       "nn": [
@@ -46365,14 +46273,6 @@
         },
         {
           "name": "Estado Independente da Papua-Nova Guiné",
-          "alias": true
-        },
-        {
-          "name": "pg",
-          "alias": true
-        },
-        {
-          "name": "PNG",
           "alias": true
         }
       ],
@@ -46434,14 +46334,6 @@
           "pref": true
         },
         {
-          "name": "pg",
-          "alias": true
-        },
-        {
-          "name": "PNG",
-          "alias": true
-        },
-        {
           "name": "Независна Држава Папуа Нова Гвинеја",
           "alias": true
         }
@@ -46450,14 +46342,6 @@
         {
           "name": "Папуа Нова Гвинеја",
           "pref": true
-        },
-        {
-          "name": "pg",
-          "alias": true
-        },
-        {
-          "name": "PNG",
-          "alias": true
         },
         {
           "name": "Независна Држава Папуа Нова Гвинеја",
@@ -49547,6 +49431,14 @@
         {
           "name": "セルビア共和国",
           "alias": true
+        },
+        {
+          "name": "塞爾維",
+          "alias": true
+        },
+        {
+          "name": "塞爾維亜",
+          "alias": true
         }
       ],
       "ko": [
@@ -49781,8 +49673,7 @@
       "bg": [
         {
           "name": "България",
-          "pref": true,
-          "official": true
+          "pref": true
         },
         {
           "name": "Княжество България",
@@ -49791,6 +49682,11 @@
         {
           "name": "Народна република България",
           "official": true
+        },
+        {
+          "name": "Република България",
+          "official": true,
+          "alias": true
         },
         {
           "name": "Република България Republika Bǎlgarija",
@@ -49806,10 +49702,6 @@
         },
         {
           "name": "БГ",
-          "alias": true
-        },
-        {
-          "name": "Република България",
           "alias": true
         }
       ],
@@ -55127,14 +55019,6 @@
           "pref": true
         },
         {
-          "name": "Palestinian Authority",
-          "alias": true
-        },
-        {
-          "name": "Palestinian National Authority",
-          "alias": true
-        },
-        {
           "name": "PSE",
           "alias": true
         },
@@ -57799,6 +57683,10 @@
         {
           "name": "Mauritánie",
           "pref": true
+        },
+        {
+          "name": "Mauretánie",
+          "alias": true
         }
       ],
       "da": [
@@ -59272,6 +59160,10 @@
         {
           "name": "Georgia",
           "pref": true
+        },
+        {
+          "name": "Georgien",
+          "alias": true
         }
       ],
       "nl": [
@@ -59287,12 +59179,6 @@
       "nn": [
         {
           "name": "Georgia",
-          "pref": true
-        }
-      ],
-      "no": [
-        {
-          "name": "Georgien",
           "pref": true
         }
       ],
@@ -60063,11 +59949,6 @@
           "pref": true
         },
         {
-          "name": "la Bosnie-Herzégovine",
-          "official": true,
-          "alias": true
-        },
-        {
           "name": "BH",
           "short": true
         },
@@ -60085,6 +59966,10 @@
         },
         {
           "name": "Bosnie-et-Herzégovine",
+          "alias": true
+        },
+        {
+          "name": "la Bosnie-Herzégovine",
           "alias": true
         }
       ],
@@ -60252,8 +60137,7 @@
       "sk": [
         {
           "name": "Bosna a Hercegovina",
-          "pref": true,
-          "official": true
+          "pref": true
         }
       ],
       "sr": [
@@ -68143,7 +68027,7 @@
           "pref": true
         },
         {
-          "name": "マケドニア",
+          "name": "FYROM",
           "alias": true
         },
         {
@@ -71713,7 +71597,7 @@
       ],
       "tr": [
         {
-          "name": "Morityus",
+          "name": "Mauritius",
           "pref": true
         }
       ],
@@ -79319,12 +79203,6 @@
           "pref": true
         }
       ],
-      "no": [
-        {
-          "name": "Barbados",
-          "pref": true
-        }
-      ],
       "pl": [
         {
           "name": "Barbados",
@@ -84915,10 +84793,6 @@
           "alias": true
         },
         {
-          "name": "SKN",
-          "alias": true
-        },
-        {
           "name": "St Kitts & Nevis",
           "alias": true
         },
@@ -84988,10 +84862,6 @@
         },
         {
           "name": "Fédération de Saint-Christophe-et-Niévès",
-          "alias": true
-        },
-        {
-          "name": "KN",
           "alias": true
         },
         {
@@ -85126,14 +84996,6 @@
         },
         {
           "name": "Federatie van Saint Kitts en Nevis",
-          "alias": true
-        },
-        {
-          "name": "KN",
-          "alias": true
-        },
-        {
-          "name": "KNA",
           "alias": true
         },
         {
@@ -86223,7 +86085,7 @@
   },
   "Q238": {
     "name": "San Marino",
-    "population": 33600,
+    "population": 34167,
     "code": "SM",
     "names": {
       "bg": [
@@ -87187,10 +87049,6 @@
           "alias": true
         },
         {
-          "name": "nr",
-          "alias": true
-        },
-        {
           "name": "Pleasant Island",
           "alias": true
         },
@@ -87222,10 +87080,6 @@
         },
         {
           "name": "Naurú",
-          "alias": true
-        },
-        {
-          "name": "nr",
           "alias": true
         },
         {
@@ -87272,10 +87126,6 @@
         },
         {
           "name": "Naoero",
-          "alias": true
-        },
-        {
-          "name": "NR",
           "alias": true
         }
       ],
@@ -87361,7 +87211,7 @@
           "alias": true
         },
         {
-          "name": "NR",
+          "name": "Republiek Naoëro",
           "alias": true
         },
         {
@@ -87385,10 +87235,6 @@
           "pref": true
         },
         {
-          "name": "nr",
-          "alias": true
-        },
-        {
           "name": "Pleasant Island",
           "alias": true
         },
@@ -87403,19 +87249,11 @@
           "pref": true
         },
         {
-          "name": "🇳🇷",
-          "alias": true
-        },
-        {
           "name": "Ilha Aprazível",
           "alias": true
         },
         {
           "name": "Nauru",
-          "alias": true
-        },
-        {
-          "name": "nr",
           "alias": true
         },
         {
@@ -87513,10 +87351,6 @@
         {
           "name": "瑙鲁",
           "pref": true
-        },
-        {
-          "name": "🇳🇷",
-          "alias": true
         },
         {
           "name": "瑙魯",
@@ -88494,28 +88328,19 @@
       ]
     }
   },
-  "Q141191391": {
-    "names": {
-      "fr": [
-        {
-          "name": "Empire français",
-          "pref": true
-        }
-      ]
-    }
-  },
-  "Q41470": {
-    "name": "Kurdistan",
+  "Q205047": {
+    "name": "Kurdistan Region of Iraq",
+    "population": 6171083,
     "names": {
       "bg": [
         {
-          "name": "Кюрдистан",
+          "name": "Иракски Кюрдистан",
           "pref": true
         }
       ],
       "cs": [
         {
-          "name": "Kurdistán",
+          "name": "Irácký Kurdistán",
           "pref": true
         }
       ],
@@ -88525,161 +88350,267 @@
           "pref": true
         },
         {
-          "name": "Beth-Nahrin",
+          "name": "Irakisk Kurdistan",
           "alias": true
         },
         {
-          "name": "Øvre mesopotamien",
+          "name": "Iraqi Kurdistan",
+          "alias": true
+        },
+        {
+          "name": "Region Kurdistan",
+          "alias": true
+        },
+        {
+          "name": "Regionen Kurdistan",
           "alias": true
         }
       ],
       "de": [
         {
-          "name": "Kurdistan",
+          "name": "Autonome Region Kurdistan",
           "pref": true
+        },
+        {
+          "name": "Kurdische Autonome Region",
+          "alias": true
+        },
+        {
+          "name": "Region Kurdistan-Irak",
+          "alias": true
+        },
+        {
+          "name": "Süd-Kurdistan",
+          "alias": true
+        },
+        {
+          "name": "Südkurdistan",
+          "alias": true
         }
       ],
       "el": [
         {
-          "name": "Κουρδιστάν",
+          "name": "Ιρακινό Κουρδιστάν",
           "pref": true
         }
       ],
       "en": [
         {
-          "name": "Kurdistan",
+          "name": "Kurdistan Region of Iraq",
           "pref": true
         },
         {
-          "name": "Curdistan",
+          "name": "Iraqi Kurdistan region",
           "alias": true
         },
         {
-          "name": "Great Kurdistan",
+          "name": "KRI",
           "alias": true
         },
         {
-          "name": "Greater Kurdistan",
+          "name": "Kurdistan (Iraq)",
           "alias": true
         },
         {
-          "name": "Kūrdistān",
+          "name": "Kurdistan Region",
           "alias": true
-        }
-      ],
-      "en-us": [
+        },
         {
-          "name": "Kurdistan",
-          "pref": true
+          "name": "Region of Kurdistan",
+          "alias": true
+        },
+        {
+          "name": "South Kurdistan",
+          "alias": true
+        },
+        {
+          "name": "Southern Region of Kurdistan",
+          "alias": true
         }
       ],
       "es": [
         {
-          "name": "Kurdistán",
-          "pref": true
-        },
-        {
-          "name": "Curdistán",
+          "name": "Kurdistán del Sur",
           "alias": true
         },
         {
-          "name": "Región Cultural Kurda",
+          "name": "Kurdistan Iraqui",
+          "alias": true
+        },
+        {
+          "name": "Kurdistan iraquí",
+          "alias": true
+        },
+        {
+          "name": "Kurdistán iraqui",
+          "alias": true
+        },
+        {
+          "name": "Kurdistán Sur",
+          "alias": true
+        },
+        {
+          "name": "Region Autonoma Kurda",
+          "alias": true
+        },
+        {
+          "name": "Region Autónoma Kurda",
+          "alias": true
+        },
+        {
+          "name": "Región Autónoma Kurda",
+          "alias": true
+        },
+        {
+          "name": "Region de Kurdistan",
+          "alias": true
+        },
+        {
+          "name": "Region de Kurdistán",
+          "alias": true
+        },
+        {
+          "name": "Región de Kurdistan",
+          "alias": true
+        },
+        {
+          "name": "Región de Kurdistán",
           "alias": true
         }
       ],
       "et": [
         {
-          "name": "Kurdistan",
+          "name": "Iraagi Kurdistan",
           "pref": true
         }
       ],
       "fi": [
         {
-          "name": "Kurdistan",
+          "name": "Irakin Kurdistan",
           "pref": true
+        },
+        {
+          "name": "Kurdistanin autonominen alue",
+          "alias": true
         }
       ],
       "fr": [
         {
-          "name": "Kurdistan",
+          "name": "Kurdistan irakien",
           "pref": true
+        },
+        {
+          "name": "Regione del Curdistan",
+          "alias": true
         }
       ],
       "he": [
         {
-          "name": "כורדיסטן",
+          "name": "כורדיסטן העיראקית",
           "pref": true
-        },
-        {
-          "name": "כורדיסטאן",
-          "alias": true
-        },
-        {
-          "name": "כורדיסתאן",
-          "alias": true
-        },
-        {
-          "name": "קורדיסטן",
-          "alias": true
         }
       ],
       "hu": [
         {
-          "name": "Kurdisztán",
+          "name": "Iraki Kurdisztán",
           "pref": true
+        },
+        {
+          "name": "Dél-Kurdisztán",
+          "alias": true
+        },
+        {
+          "name": "Kurdisztáni Autonóm Régió",
+          "alias": true
+        },
+        {
+          "name": "Kurdisztáni Tartomány",
+          "alias": true
         }
       ],
       "it": [
         {
-          "name": "Kurdistan",
+          "name": "Regione del Kurdistan",
           "pref": true
-        },
-        {
-          "name": "Curdistan",
-          "alias": true
         }
       ],
       "ja": [
         {
-          "name": "クルディスタン",
+          "name": "クルディスタン地域",
           "pref": true
         },
         {
-          "name": "エジドハン",
+          "name": "イラククルディスタン",
           "alias": true
         },
         {
-          "name": "クルジスタン",
+          "name": "イラクのクルディスタン",
           "alias": true
         },
         {
-          "name": "クルディア",
+          "name": "イラク領クルディスタン",
           "alias": true
         },
         {
-          "name": "クルディスターン",
+          "name": "クルディスタン自治区",
           "alias": true
         },
         {
-          "name": "クルド人地域",
+          "name": "クルディスタン議長委員会",
+          "alias": true
+        },
+        {
+          "name": "クルド人自治区",
+          "alias": true
+        },
+        {
+          "name": "クルド人自治政府",
+          "alias": true
+        },
+        {
+          "name": "クルド自治区",
+          "alias": true
+        },
+        {
+          "name": "バシュル",
           "alias": true
         }
       ],
       "ko": [
         {
-          "name": "쿠르디스탄",
+          "name": "쿠르드 자치구",
           "pref": true
+        },
+        {
+          "name": "쿠르드 자치정부",
+          "alias": true
+        },
+        {
+          "name": "쿠르드 자치주",
+          "alias": true
+        },
+        {
+          "name": "쿠르드인 자치구",
+          "alias": true
+        },
+        {
+          "name": "쿠르드족 자치구",
+          "alias": true
         }
       ],
       "lv": [
         {
-          "name": "Kurdistāna",
+          "name": "Kurdistānas reģions",
           "pref": true
+        },
+        {
+          "name": "Dienvidkurdistāna",
+          "alias": true
         }
       ],
       "mk": [
         {
-          "name": "Курдистан",
+          "name": "Ирачки Курдистан",
           "pref": true
         }
       ],
@@ -88689,27 +88620,35 @@
           "pref": true
         },
         {
-          "name": "Kurdar",
+          "name": "Irakisk Kurdistan",
           "alias": true
         },
         {
-          "name": "Kurder",
+          "name": "Kurdiske autonome region",
           "alias": true
         }
       ],
       "nl": [
         {
-          "name": "Koerdistan",
+          "name": "Koerdische Autonome Regio",
           "pref": true
         },
         {
-          "name": "Koerdestan",
+          "name": "Iraaks-Koerdistan",
+          "alias": true
+        },
+        {
+          "name": "Republiek Zuid Koerdistan",
+          "alias": true
+        },
+        {
+          "name": "Republiek Zuid-Koerdistan",
           "alias": true
         }
       ],
       "nn": [
         {
-          "name": "Kurdistan",
+          "name": "Kurdistan i Irak",
           "pref": true
         }
       ],
@@ -88717,109 +88656,215 @@
         {
           "name": "Kurdystan",
           "pref": true
+        },
+        {
+          "name": "Kurdyjski Okręg Autonomiczny",
+          "alias": true
+        },
+        {
+          "name": "Region Kurdystanu",
+          "alias": true
         }
       ],
       "pt": [
         {
-          "name": "Curdistão",
+          "name": "Curdistão iraquiano",
           "pref": true
         },
         {
-          "name": "Grande Curdistão",
+          "name": "Região Autônoma do Curdistão",
           "alias": true
         }
       ],
       "ro": [
         {
-          "name": "Kurdistan",
+          "name": "Kurdistanul Irakian",
           "pref": true
+        },
+        {
+          "name": "Regiunea Kurdistan din Irak",
+          "alias": true
         }
       ],
       "ru": [
         {
-          "name": "Курдистан",
+          "name": "Иракский Курдистан",
           "pref": true
+        },
+        {
+          "name": "Автономный регион Иракский Курдистан",
+          "alias": true
+        },
+        {
+          "name": "Курдистан",
+          "alias": true
+        },
+        {
+          "name": "Курдский автономный регион",
+          "alias": true
         }
       ],
       "sk": [
         {
-          "name": "Kurdistan",
+          "name": "Iracký Kurdistan",
           "pref": true
         }
       ],
       "sr": [
         {
-          "name": "Курдистан",
+          "name": "Јужни Курдистан",
           "pref": true
         },
         {
-          "name": "Kurdewarí",
+          "name": "Ирачки Курдистан",
           "alias": true
         },
         {
-          "name": "Регион Курдистан",
+          "name": "Курдистан",
           "alias": true
+        }
+      ],
+      "sr-ec": [
+        {
+          "name": "Јужни Курдистан",
+          "pref": true
+        }
+      ],
+      "sr-el": [
+        {
+          "name": "Južni Kurdistan",
+          "pref": true
         }
       ],
       "sv": [
         {
-          "name": "Kurdistan",
+          "name": "Irakiska Kurdistan",
           "pref": true
         },
         {
-          "name": "PDK",
+          "name": "Södra Kurdistan",
           "alias": true
+        }
+      ],
+      "tl": [
+        {
+          "name": "Awtonomong Rehiyon ng Kurdistan",
+          "pref": true
         }
       ],
       "tr": [
         {
-          "name": "Kürdistan",
+          "name": "Kürdistan Bölgesel Yönetimi",
           "pref": true
+        },
+        {
+          "name": "IBKY",
+          "alias": true
+        },
+        {
+          "name": "IKBY",
+          "alias": true
+        },
+        {
+          "name": "Irak Bölgesel Özerk Kürt Yönetimi",
+          "alias": true
+        },
+        {
+          "name": "Irak Kürdistan",
+          "alias": true
+        },
+        {
+          "name": "Irak Kurdistan Özerk Bölgesi",
+          "alias": true
+        },
+        {
+          "name": "Irak Kürdistan Özerk Bölgesi",
+          "alias": true
+        },
+        {
+          "name": "Irak Kürdistanı",
+          "alias": true
+        },
+        {
+          "name": "Irak kürdistanı bölgesi",
+          "alias": true
+        },
+        {
+          "name": "Kürdistan Bölge Yönetimi",
+          "alias": true
+        },
+        {
+          "name": "Kürdistan Bölgesel Hükûmeti",
+          "alias": true
+        },
+        {
+          "name": "Kürdistan otonom Bölgesi",
+          "alias": true
+        },
+        {
+          "name": "Kürdistan otonomus Bölgesi",
+          "alias": true
+        },
+        {
+          "name": "Kürdistan Özerk Bölgesi",
+          "alias": true
+        },
+        {
+          "name": "Kürt Özerk Bölgesi",
+          "alias": true
+        },
+        {
+          "name": "Kuzey Irak Kürt Özerk Bölgesi",
+          "alias": true
         }
       ],
       "zh": [
         {
-          "name": "庫爾德斯坦",
+          "name": "库尔德斯坦地区",
           "pref": true
         },
         {
-          "name": "库尔德斯坦",
+          "name": "伊拉克库尔德斯坦",
           "alias": true
         },
         {
-          "name": "库尔德斯坦国",
+          "name": "庫爾德斯坦地區",
           "alias": true
-        },
+        }
+      ],
+      "zh-cn": [
         {
-          "name": "庫德斯坦",
-          "alias": true
+          "name": "库尔德斯坦地区",
+          "pref": true
         }
       ],
       "zh-hans": [
         {
-          "name": "库尔德斯坦",
+          "name": "库尔德斯坦地区",
           "pref": true
         }
       ],
       "zh-hant": [
         {
-          "name": "庫德斯坦",
+          "name": "庫爾德斯坦地區",
           "pref": true
-        },
-        {
-          "name": "庫爾德斯坦",
-          "alias": true
         }
       ],
       "zh-hk": [
         {
-          "name": "庫爾德斯坦",
+          "name": "庫爾德斯坦地區",
+          "pref": true
+        }
+      ],
+      "zh-sg": [
+        {
+          "name": "库尔德斯坦地区",
           "pref": true
         }
       ],
       "zh-tw": [
         {
-          "name": "庫德斯坦",
+          "name": "庫德斯坦地區",
           "pref": true
         }
       ]
@@ -91117,6 +91162,12 @@
           "alias": true
         }
       ],
+      "et": [
+        {
+          "name": "Jersey",
+          "pref": true
+        }
+      ],
       "fr": [
         {
           "name": "Jersey",
@@ -91862,10 +91913,6 @@
           "pref": true
         },
         {
-          "name": "Cook Islands",
-          "alias": true
-        },
-        {
           "name": "Cook øerne",
           "alias": true
         },
@@ -91885,10 +91932,6 @@
         },
         {
           "name": "Cook Inseln",
-          "alias": true
-        },
-        {
-          "name": "Cook Islands",
           "alias": true
         },
         {
@@ -91921,10 +91964,6 @@
           "alias": true
         },
         {
-          "name": "COK",
-          "alias": true
-        },
-        {
           "name": "Cook Group",
           "alias": true
         },
@@ -91943,20 +91982,12 @@
         {
           "name": "Cooki saared",
           "pref": true
-        },
-        {
-          "name": "COK",
-          "alias": true
         }
       ],
       "fi": [
         {
           "name": "Cookinsaaret",
           "pref": true
-        },
-        {
-          "name": "COK",
-          "alias": true
         },
         {
           "name": "Cook-saaret",
@@ -91982,10 +92013,6 @@
         },
         {
           "name": "Cook",
-          "alias": true
-        },
-        {
-          "name": "Cook Islands",
           "alias": true
         },
         {
@@ -92045,10 +92072,6 @@
           "pref": true
         },
         {
-          "name": "COK",
-          "alias": true
-        },
-        {
           "name": "Kuka salas",
           "alias": true
         }
@@ -92065,10 +92088,6 @@
           "pref": true
         },
         {
-          "name": "Cook Islands",
-          "alias": true
-        },
-        {
           "name": "Cook-øyene",
           "alias": true
         }
@@ -92079,19 +92098,7 @@
           "pref": true
         },
         {
-          "name": "CK",
-          "alias": true
-        },
-        {
-          "name": "COK",
-          "alias": true
-        },
-        {
           "name": "Cook Eilanden",
-          "alias": true
-        },
-        {
-          "name": "Cook Islands",
           "alias": true
         }
       ],
@@ -92099,10 +92106,6 @@
         {
           "name": "Cookøyane",
           "pref": true
-        },
-        {
-          "name": "Cook Islands",
-          "alias": true
         },
         {
           "name": "Cook-øyane",
@@ -92191,10 +92194,6 @@
           "pref": true
         },
         {
-          "name": "Cook Islands",
-          "alias": true
-        },
-        {
           "name": "Herveyöarna",
           "alias": true
         }
@@ -92210,10 +92209,6 @@
         },
         {
           "name": "Arkipelagong Cook",
-          "alias": true
-        },
-        {
-          "name": "Cook Islands",
           "alias": true
         },
         {
@@ -92244,10 +92239,6 @@
         },
         {
           "name": "Cook Adası",
-          "alias": true
-        },
-        {
-          "name": "Cook Islands",
           "alias": true
         }
       ],
@@ -92647,9 +92638,9 @@
       ]
     }
   },
-  "Q23334": {
-    "name": "Abkhazia",
-    "population": 243564,
+  "Q31354462": {
+    "name": "Republic of Abkhazia",
+    "population": 244000,
     "names": {
       "bg": [
         {
@@ -92659,94 +92650,94 @@
       ],
       "cs": [
         {
-          "name": "Abcházie",
+          "name": "Abchazská republika",
           "pref": true
         },
         {
-          "name": "Abchazie",
+          "name": "Abcházie",
           "alias": true
         }
       ],
       "da": [
         {
-          "name": "Abkhasien",
+          "name": "Republikken Abkhasien",
           "pref": true
-        },
-        {
-          "name": "Abchasien",
-          "alias": true
         }
       ],
       "de": [
         {
-          "name": "Abchasien",
+          "name": "Republik Abchasien",
           "pref": true
-        },
-        {
-          "name": "Abschasien",
-          "alias": true
-        },
-        {
-          "name": "Egrisi-Abchasien",
-          "alias": true
-        },
-        {
-          "name": "GE-AB",
-          "alias": true
         }
       ],
       "el": [
         {
           "name": "Αμπχαζία",
           "pref": true
+        },
+        {
+          "name": "Δημοκρατία της Αμπχαζίας",
+          "alias": true
         }
       ],
       "en": [
         {
-          "name": "Abkhazia",
+          "name": "Republic of Abkhazia",
           "pref": true
         },
         {
-          "name": "Abchasia",
+          "name": "Abkhazia",
           "alias": true
         },
         {
-          "name": "Abkazia",
-          "alias": true
-        },
-        {
-          "name": "Abkhasia",
+          "name": "Abkhazian Republic",
           "alias": true
         },
         {
           "name": "Abkhaziya",
           "alias": true
+        },
+        {
+          "name": "Apsny",
+          "alias": true
+        },
+        {
+          "name": "Aṗsny",
+          "alias": true
+        },
+        {
+          "name": "Aṗsny Ahwyntqarra",
+          "alias": true
+        },
+        {
+          "name": "Respublika Abkhaziya",
+          "alias": true
+        },
+        {
+          "name": "The Republic of Abkhazia",
+          "alias": true
         }
       ],
       "es": [
         {
-          "name": "Abjasia",
+          "name": "República de Abjasia",
           "pref": true
+        },
+        {
+          "name": "Abjasia",
+          "alias": true
         }
       ],
       "et": [
         {
           "name": "Abhaasia",
           "pref": true
-        },
-        {
-          "name": "GE-AB",
-          "alias": true
         }
       ],
       "fi": [
         {
           "name": "Abhasia",
           "pref": true
-        },
-        {
-          "name": "Abhasian tasavalta",
-          "alias": true
         }
       ],
       "fr": [
@@ -92755,79 +92746,43 @@
           "pref": true
         },
         {
-          "name": "Abasci",
-          "alias": true
-        },
-        {
-          "name": "Aphsny",
-          "alias": true
-        },
-        {
-          "name": "Apkhazeti",
-          "alias": true
-        },
-        {
-          "name": "Абхазия",
-          "alias": true
-        },
-        {
-          "name": "Аҧсны",
-          "alias": true
-        },
-        {
-          "name": "აფხაზეთი",
+          "name": "république d'Abkhazie",
           "alias": true
         }
       ],
       "he": [
         {
-          "name": "אבחזיה",
+          "name": "הרפובליקה של אבחזיה",
           "pref": true
         },
         {
-          "name": "אבחאזיה",
-          "alias": true
-        },
-        {
-          "name": "אבכזיה",
+          "name": "רפובליקת אבחזיה",
           "alias": true
         }
       ],
       "hu": [
         {
-          "name": "Abházia",
+          "name": "Abház Köztársaság",
           "pref": true
         },
         {
-          "name": "Abchazia",
+          "name": "Abházia",
           "alias": true
         }
       ],
       "it": [
         {
-          "name": "Abcasia",
+          "name": "Repubblica d'Abcasia",
           "pref": true
         },
         {
-          "name": "Abcazia",
-          "alias": true
-        },
-        {
-          "name": "Abhcazia",
-          "alias": true
-        },
-        {
-          "name": "Abkazia",
-          "alias": true
-        },
-        {
-          "name": "Abkhazia",
+          "name": "Abcasia",
           "alias": true
         }
       ],
       "ja": [
         {
-          "name": "アブハジア",
+          "name": "アブハジア共和国",
           "pref": true
         },
         {
@@ -92837,34 +92792,14 @@
       ],
       "ko": [
         {
-          "name": "압하지야",
-          "pref": true
-        },
-        {
-          "name": "압하스",
-          "alias": true
-        },
-        {
-          "name": "압하스 공화국",
-          "alias": true
-        },
-        {
-          "name": "압하지아",
-          "alias": true
-        },
-        {
           "name": "압하지야 공화국",
-          "alias": true
+          "pref": true
         }
       ],
       "lv": [
         {
           "name": "Abhāzija",
           "pref": true
-        },
-        {
-          "name": "Abhāzijas Republika",
-          "alias": true
         }
       ],
       "mk": [
@@ -92877,74 +92812,18 @@
         {
           "name": "Abkhasia",
           "pref": true
-        },
-        {
-          "name": "Abkasia",
-          "alias": true
-        },
-        {
-          "name": "Abkazia",
-          "alias": true
-        },
-        {
-          "name": "Abkhasar",
-          "alias": true
-        },
-        {
-          "name": "Abkhaser",
-          "alias": true
-        },
-        {
-          "name": "Abkhazia",
-          "alias": true
         }
       ],
       "nl": [
         {
           "name": "Abchazië",
           "pref": true
-        },
-        {
-          "name": "Abchazie",
-          "alias": true
-        },
-        {
-          "name": "Abkhazia",
-          "alias": true
         }
       ],
       "nn": [
         {
           "name": "Abkhasia",
           "pref": true
-        },
-        {
-          "name": "Abchasia",
-          "alias": true
-        },
-        {
-          "name": "Abhazia",
-          "alias": true
-        },
-        {
-          "name": "Abkasia",
-          "alias": true
-        },
-        {
-          "name": "Abkhazeti",
-          "alias": true
-        },
-        {
-          "name": "Abkhazia",
-          "alias": true
-        },
-        {
-          "name": "Apkhazeti",
-          "alias": true
-        },
-        {
-          "name": "Apsny",
-          "alias": true
         }
       ],
       "pl": [
@@ -92955,69 +92834,39 @@
       ],
       "pt": [
         {
-          "name": "Abecásia",
+          "name": "República da Abecásia",
           "pref": true
         },
         {
-          "name": "Abcásia",
-          "alias": true
-        },
-        {
-          "name": "Abcázia",
-          "alias": true
-        },
-        {
-          "name": "Abecázia",
-          "alias": true
-        },
-        {
-          "name": "Abkasia",
-          "alias": true
-        },
-        {
-          "name": "Abkasios",
-          "alias": true
-        },
-        {
-          "name": "Abkhasia",
-          "alias": true
-        },
-        {
-          "name": "Abkhazia",
-          "alias": true
-        },
-        {
-          "name": "Abkházia",
-          "alias": true
-        },
-        {
-          "name": "Abkhazskaia",
-          "alias": true
-        }
-      ],
-      "pt-br": [
-        {
           "name": "Abecásia",
-          "pref": true
+          "alias": true
         }
       ],
       "ro": [
         {
           "name": "Abhazia",
           "pref": true
+        },
+        {
+          "name": "Republica Abhazia",
+          "alias": true
         }
       ],
       "ru": [
         {
-          "name": "Абхазия",
+          "name": "Республика Абхазия",
           "pref": true
         },
         {
-          "name": "Авагос",
+          "name": "Абхазия",
           "alias": true
         },
         {
-          "name": "Апсны",
+          "name": "Абхазия (государство)",
+          "alias": true
+        },
+        {
+          "name": "Абхазия (непризнанное государство)",
           "alias": true
         }
       ],
@@ -93033,173 +92882,55 @@
           "pref": true
         }
       ],
-      "sr-ec": [
-        {
-          "name": "Абхазија",
-          "pref": true
-        }
-      ],
       "sv": [
         {
-          "name": "Abchazien",
+          "name": "Republiken Abchazien",
           "pref": true
-        },
-        {
-          "name": "Abchasien",
-          "alias": true
-        },
-        {
-          "name": "Abhasien",
-          "alias": true
-        },
-        {
-          "name": "Abhazien",
-          "alias": true
-        },
-        {
-          "name": "Abkasien",
-          "alias": true
-        },
-        {
-          "name": "Abkazien",
-          "alias": true
-        },
-        {
-          "name": "Abkhasien",
-          "alias": true
-        },
-        {
-          "name": "Abkhazia",
-          "alias": true
-        },
-        {
-          "name": "Abkhazien",
-          "alias": true
         }
       ],
       "tl": [
         {
-          "name": "Abkasya",
-          "pref": true
-        },
-        {
-          "name": "Abkasia",
-          "alias": true
-        },
-        {
-          "name": "Abkasiya",
-          "alias": true
-        },
-        {
-          "name": "Abkasyan",
-          "alias": true
-        },
-        {
-          "name": "Abkasyana",
-          "alias": true
-        },
-        {
-          "name": "Abkasyanes",
-          "alias": true
-        },
-        {
-          "name": "Abkasyanesa",
-          "alias": true
-        },
-        {
-          "name": "Abkasyano",
-          "alias": true
-        },
-        {
-          "name": "Abkhasia",
-          "alias": true
-        },
-        {
-          "name": "Abkhasiya",
-          "alias": true
-        },
-        {
-          "name": "Abkhasya",
-          "alias": true
-        },
-        {
-          "name": "Abkhasyana",
-          "alias": true
-        },
-        {
-          "name": "Abkhasyano",
-          "alias": true
-        },
-        {
           "name": "Abkhazia",
-          "alias": true
-        },
-        {
-          "name": "Abkhazian",
-          "alias": true
-        },
-        {
-          "name": "Taga-Abkasya",
-          "alias": true
-        },
-        {
-          "name": "Taga-Abkhazia",
-          "alias": true
+          "pref": true
         }
       ],
       "tr": [
         {
-          "name": "Abhazya",
+          "name": "Abhazya Cumhuriyeti",
           "pref": true
         },
         {
-          "name": "Abazistan",
-          "alias": true
-        },
-        {
-          "name": "Abhazya Cumhuriyeti",
-          "alias": true
-        },
-        {
-          "name": "Abkhazia",
+          "name": "Abhazya",
           "alias": true
         }
       ],
       "zh": [
         {
-          "name": "阿布哈茲",
+          "name": "阿布哈茲共和國",
           "pref": true
         },
         {
-          "name": "阿布哈兹",
+          "name": "阿布哈濟亞",
           "alias": true
         },
         {
-          "name": "阿布哈濟亞",
+          "name": "阿布哈茲",
           "alias": true
         }
       ],
       "zh-hans": [
         {
-          "name": "阿布哈兹",
+          "name": "阿布哈兹共和国",
           "pref": true
+        },
+        {
+          "name": "阿布哈兹",
+          "alias": true
         }
       ],
       "zh-hant": [
         {
-          "name": "阿布哈茲",
-          "pref": true
-        }
-      ],
-      "zh-hk": [
-        {
-          "name": "阿布哈茲",
-          "pref": true
-        }
-      ],
-      "zh-tw": [
-        {
-          "name": "阿布哈茲",
+          "name": "阿布哈茲共和國",
           "pref": true
         }
       ]
@@ -93757,7 +93488,7 @@
   },
   "Q23681": {
     "name": "Northern Cyprus",
-    "population": 476214,
+    "population": 489308,
     "names": {
       "bg": [
         {
@@ -94444,9 +94175,13 @@
       ],
       "tr": [
         {
+          "name": "Kuzey Kıbrıs",
+          "pref": true
+        },
+        {
           "name": "Kuzey Kıbrıs Türk Cumhuriyeti",
-          "pref": true,
-          "official": true
+          "official": true,
+          "alias": true
         },
         {
           "name": "K. Kıbrıs",
@@ -94466,10 +94201,6 @@
         },
         {
           "name": "KKTC",
-          "alias": true
-        },
-        {
-          "name": "Kuzey Kıbrıs",
           "alias": true
         }
       ],
@@ -97994,41 +97725,289 @@
       ]
     }
   },
-  "Q648767": {
-    "name": "Administrative-Territorial Units of the Left Bank of the Dniester",
+  "Q907112": {
+    "name": "Transnistria",
+    "population": 367776,
     "names": {
+      "bg": [
+        {
+          "name": "Приднестровие",
+          "pref": true
+        },
+        {
+          "name": "Приднестровска молдавска република",
+          "alias": true
+        },
+        {
+          "name": "Транснистрия",
+          "alias": true
+        }
+      ],
       "cs": [
         {
-          "name": "Autonomní územně správní jednotka se zvláštním statusem Podněstří",
+          "name": "Podněstří",
           "pref": true
+        },
+        {
+          "name": "Podněsteří",
+          "alias": true
+        },
+        {
+          "name": "Podněsterská moldavská republika",
+          "alias": true
+        },
+        {
+          "name": "Podněsterská Moldavská republika",
+          "alias": true
+        },
+        {
+          "name": "Podněsterská republika",
+          "alias": true
+        },
+        {
+          "name": "Podněstersko",
+          "alias": true
+        },
+        {
+          "name": "Zadněstersko",
+          "alias": true
         }
       ],
       "da": [
         {
-          "name": "Administrative territoriale enheder på venstre bred af Dnestr",
+          "name": "Transnistrien",
           "pref": true
+        },
+        {
+          "name": "Dnestrrepublikken",
+          "alias": true
+        },
+        {
+          "name": "PMR",
+          "alias": true
+        },
+        {
+          "name": "Pridnestrovien",
+          "alias": true
+        }
+      ],
+      "de": [
+        {
+          "name": "Pridnestrowien",
+          "pref": true,
+          "alias": true
+        },
+        {
+          "name": "Dnjestr-Republik",
+          "alias": true
+        },
+        {
+          "name": "MD-SN",
+          "alias": true
+        },
+        {
+          "name": "PMR",
+          "alias": true
+        },
+        {
+          "name": "Pridnestrovie",
+          "alias": true
+        },
+        {
+          "name": "Pridnestrovskaia Moldavskaia Respublica",
+          "alias": true
+        },
+        {
+          "name": "Pridnestrowische Moldauische Republik",
+          "alias": true
+        },
+        {
+          "name": "Pridnestrowje",
+          "alias": true
+        },
+        {
+          "name": "Pridnestrowskaja Mldawskaja Respublika",
+          "alias": true
+        },
+        {
+          "name": "Transdnestrien",
+          "alias": true
+        },
+        {
+          "name": "Transdniestrien",
+          "alias": true
+        },
+        {
+          "name": "Transnistrien",
+          "alias": true
+        }
+      ],
+      "el": [
+        {
+          "name": "Υπερδνειστερία",
+          "pref": true
+        },
+        {
+          "name": "Τρανσνίστρια",
+          "alias": true
         }
       ],
       "en": [
         {
-          "name": "Administrative-Territorial Units of the Left Bank of the Dniester",
+          "name": "Transnistria",
+          "pref": true
+        },
+        {
+          "name": "Moldavian Republic of Transdniestria",
+          "alias": true
+        },
+        {
+          "name": "PMR",
+          "alias": true
+        },
+        {
+          "name": "Pridnestria",
+          "alias": true
+        },
+        {
+          "name": "Pridnestrovia",
+          "alias": true
+        },
+        {
+          "name": "Pridnestrovian Moldavian Republic",
+          "alias": true
+        },
+        {
+          "name": "Pridnestrovie",
+          "alias": true
+        },
+        {
+          "name": "Republic of Pridnestrovie",
+          "alias": true
+        },
+        {
+          "name": "Trans-Dniestr",
+          "alias": true
+        },
+        {
+          "name": "Transdniester",
+          "alias": true
+        },
+        {
+          "name": "Transdniestria",
+          "alias": true
+        },
+        {
+          "name": "Transdniestrian Moldavian Republic",
+          "alias": true
+        },
+        {
+          "name": "Transnistrian Moldavian Republic",
+          "alias": true
+        }
+      ],
+      "en-gb": [
+        {
+          "name": "Transnistria",
           "pref": true
         }
       ],
       "es": [
         {
-          "name": "Unidad territorial autónoma con un estatus jurídico especial Transnistria",
+          "name": "Transnistria",
           "pref": true
         },
         {
-          "name": "Unidad territorial autonoma con un estatus juridico especial Transnistria",
+          "name": "Cisdniéster",
+          "alias": true
+        },
+        {
+          "name": "Pridnestrovia",
+          "alias": true
+        },
+        {
+          "name": "Pridnestrovie",
+          "alias": true
+        },
+        {
+          "name": "Pridniestrovia",
+          "alias": true
+        },
+        {
+          "name": "República Moldava de Transnistria",
+          "alias": true
+        },
+        {
+          "name": "República Moldava Pridnestrovia",
+          "alias": true
+        },
+        {
+          "name": "República Moldava Pridnestroviana",
+          "alias": true
+        },
+        {
+          "name": "Trans-Dniester",
+          "alias": true
+        },
+        {
+          "name": "Trans-Dniéster",
+          "alias": true
+        },
+        {
+          "name": "Transdniéster",
+          "alias": true
+        },
+        {
+          "name": "Transdniestria",
+          "alias": true
+        },
+        {
+          "name": "Transniéster",
+          "alias": true
+        },
+        {
+          "name": "Transnitria",
           "alias": true
         }
       ],
       "et": [
         {
-          "name": "Dnestri vasakkalda autonoomne territoriaalüksus",
+          "name": "Transnistria",
           "pref": true
+        },
+        {
+          "name": "Dnestri-äärne Vabariik",
+          "alias": true
+        },
+        {
+          "name": "Stânga Nistrului",
+          "alias": true
+        }
+      ],
+      "fi": [
+        {
+          "name": "Transnistria",
+          "pref": true
+        },
+        {
+          "name": "Dnestria",
+          "alias": true
+        },
+        {
+          "name": "Transdnestria",
+          "alias": true
+        },
+        {
+          "name": "Transdniestr",
+          "alias": true
+        },
+        {
+          "name": "Transnistrian kriisi",
+          "alias": true
+        },
+        {
+          "name": "Transnistrian tasavalta",
+          "alias": true
         }
       ],
       "fr": [
@@ -98037,85 +98016,736 @@
           "pref": true
         },
         {
-          "name": "Unités administratives territoriales de la rive gauche du Dniestr",
+          "name": "Pridniestrovie",
+          "alias": true
+        },
+        {
+          "name": "république moldave du Dniestr",
+          "alias": true
+        },
+        {
+          "name": "Transdniestrie",
+          "alias": true
+        },
+        {
+          "name": "Transnistrie (État)",
+          "alias": true
+        }
+      ],
+      "he": [
+        {
+          "name": "טרנסניסטריה",
+          "pref": true
+        },
+        {
+          "name": "טראנסניסטריה",
+          "alias": true
+        }
+      ],
+      "hu": [
+        {
+          "name": "Dnyeszter Menti Köztársaság",
+          "pref": true
+        },
+        {
+          "name": "Dnyeszter Menti Moldáv Köztársaság",
+          "alias": true
+        },
+        {
+          "name": "Dnyeszter-mellék",
+          "alias": true
+        },
+        {
+          "name": "Dnyeszteren Túli Köztársaság",
+          "alias": true
+        },
+        {
+          "name": "Dnyeszteren Túli Terület",
+          "alias": true
+        },
+        {
+          "name": "Transznisztria",
           "alias": true
         }
       ],
       "it": [
         {
-          "name": "unità amministrative territoriali della sponda sinistra del Dnestr",
+          "name": "Transnistria",
           "pref": true
+        },
+        {
+          "name": "Pridnestrovie",
+          "alias": true
+        },
+        {
+          "name": "Pridniestrovie",
+          "alias": true
+        },
+        {
+          "name": "Repubblica Moldava della Transnistria",
+          "alias": true
+        },
+        {
+          "name": "Repubblica Moldava di Pridniestrov",
+          "alias": true
+        },
+        {
+          "name": "Transdnestria",
+          "alias": true
+        },
+        {
+          "name": "Transdniestr",
+          "alias": true
+        },
+        {
+          "name": "Transdniestria",
+          "alias": true
+        },
+        {
+          "name": "Transdnistria",
+          "alias": true
         }
       ],
       "ja": [
         {
-          "name": "沿ドニエストル地域",
+          "name": "沿ドニエストル共和国",
           "pref": true
+        },
+        {
+          "name": "トランスドニエストル",
+          "alias": true
+        },
+        {
+          "name": "トランスドニエストル・ソビエト社会主義共和国",
+          "alias": true
+        },
+        {
+          "name": "トランスニストリア",
+          "alias": true
+        },
+        {
+          "name": "トランスニストリア・ソビエト社会主義共和国",
+          "alias": true
+        },
+        {
+          "name": "沿ドニエステル",
+          "alias": true
+        },
+        {
+          "name": "沿ドニエストル",
+          "alias": true
+        },
+        {
+          "name": "沿ドニエストル・ソビエト社会主義共和国",
+          "alias": true
+        },
+        {
+          "name": "沿ドニエストル・モルダビア・ソビエト社会主義共和国",
+          "alias": true
+        },
+        {
+          "name": "沿ドニエストル・モルドバ共和国",
+          "alias": true
+        },
+        {
+          "name": "沿ドニエストル＝モルダビア・ソビエト社会主義共和国",
+          "alias": true
         }
       ],
       "ko": [
         {
-          "name": "트란스니스트리아 자치 영토 단위",
+          "name": "트란스니스트리아",
           "pref": true
+        },
+        {
+          "name": "트란스니스트리아 몰도바 공화국",
+          "alias": true
+        }
+      ],
+      "ko-kp": [
+        {
+          "name": "쁘리드네스뜨로비예",
+          "pref": true
+        }
+      ],
+      "lv": [
+        {
+          "name": "Piedņestras Moldāvu Republika",
+          "pref": true
+        },
+        {
+          "name": "Piedņestra (valsts)",
+          "alias": true
+        },
+        {
+          "name": "Piedņestras Moldāvijas PSR",
+          "alias": true
+        },
+        {
+          "name": "Piedņestras Moldāvijas Republika",
+          "alias": true
+        },
+        {
+          "name": "Piedņestras Moldāvu PSR",
+          "alias": true
+        },
+        {
+          "name": "Piedņestras Moldāvu republika",
+          "alias": true
+        },
+        {
+          "name": "Piedņestras MR",
+          "alias": true
+        },
+        {
+          "name": "Piedņestras republika",
+          "alias": true
+        },
+        {
+          "name": "Piedņestras Republika",
+          "alias": true
+        },
+        {
+          "name": "Piedņestras valsts",
+          "alias": true
+        }
+      ],
+      "mk": [
+        {
+          "name": "Приднестровие",
+          "pref": true
+        },
+        {
+          "name": "Приднестарска Молдавска Република",
+          "alias": true
+        },
+        {
+          "name": "Трансднестар",
+          "alias": true
+        },
+        {
+          "name": "Трансднестарска Република",
+          "alias": true
+        },
+        {
+          "name": "Трансднестрија",
+          "alias": true
+        },
+        {
+          "name": "Транснистрија",
+          "alias": true
         }
       ],
       "nb": [
-        {
-          "name": "Administrativt territoriale enheter på venstre bredd av Dnestr",
-          "pref": true
-        }
-      ],
-      "nn": [
-        {
-          "name": "Venstre breidd av Dnister",
-          "pref": true
-        }
-      ],
-      "pt": [
-        {
-          "name": "Unidade territorial autónoma da Transnístria",
-          "pref": true
-        }
-      ],
-      "ro": [
         {
           "name": "Transnistria",
           "pref": true
         },
         {
-          "name": "Unitățile administrativ-teritoriale din stînga Nistrului",
-          "official": true
-        },
-        {
-          "name": "Stînga Nistrului",
+          "name": "Transdjnestr",
           "alias": true
         },
         {
-          "name": "UAT Stînga Nistrului",
+          "name": "Transdnjestr",
+          "alias": true
+        }
+      ],
+      "nl": [
+        {
+          "name": "Transnistrië",
+          "pref": true
+        },
+        {
+          "name": "Pridnestrovie",
           "alias": true
         },
         {
-          "name": "UATSN",
+          "name": "Pridnestrovische Moldavische Republiek",
           "alias": true
         },
         {
-          "name": "Unitățile administrativ-teritoriale din Stînga Nistrului",
+          "name": "Pridnestrovskaia Moldavskaia Respublica",
+          "alias": true
+        },
+        {
+          "name": "Trans-Dnjestrie",
+          "alias": true
+        },
+        {
+          "name": "Trans-Dnjestrië",
+          "alias": true
+        },
+        {
+          "name": "Trans-Nistrie",
+          "alias": true
+        },
+        {
+          "name": "Trans-Nistrië",
+          "alias": true
+        },
+        {
+          "name": "Transdnestrie",
+          "alias": true
+        },
+        {
+          "name": "Transdnestrië",
+          "alias": true
+        },
+        {
+          "name": "Transdniestrie",
+          "alias": true
+        },
+        {
+          "name": "Transdniestrië",
+          "alias": true
+        },
+        {
+          "name": "Transdnjestrie",
+          "alias": true
+        },
+        {
+          "name": "Transdnjestrië",
+          "alias": true
+        },
+        {
+          "name": "Transnistrie",
+          "alias": true
+        }
+      ],
+      "nn": [
+        {
+          "name": "Transnistria",
+          "pref": true
+        },
+        {
+          "name": "Den priednestrovisk-moldoviske republikken",
+          "alias": true
+        },
+        {
+          "name": "Den priednestroviske moldoviske republikken",
+          "alias": true
+        },
+        {
+          "name": "Pridnestrovie",
+          "alias": true
+        },
+        {
+          "name": "Trans-Dniester",
+          "alias": true
+        },
+        {
+          "name": "Transdniestria",
+          "alias": true
+        }
+      ],
+      "pl": [
+        {
+          "name": "Naddniestrze",
+          "pref": true
+        },
+        {
+          "name": "Naddniestrzańska Republika Mołdawska",
+          "alias": true
+        },
+        {
+          "name": "Republika Naddniestrza",
+          "alias": true
+        },
+        {
+          "name": "Republika Naddniestrzańska",
+          "alias": true
+        }
+      ],
+      "pt": [
+        {
+          "name": "Transnístria",
+          "pref": true
+        },
+        {
+          "name": "Pridnestróvia",
+          "alias": true
+        },
+        {
+          "name": "República Moldava da Pridnestróvia",
+          "alias": true
+        },
+        {
+          "name": "República Moldava Transdniestriana",
+          "alias": true
+        },
+        {
+          "name": "República Moldava Transnístria",
+          "alias": true
+        },
+        {
+          "name": "República Moldávia Transdniéstriana",
+          "alias": true
+        },
+        {
+          "name": "República Moldávia Transnístria",
+          "alias": true
+        },
+        {
+          "name": "República Moldávia Transnistriana",
+          "alias": true
+        },
+        {
+          "name": "República Moldova Transdniestriana",
+          "alias": true
+        },
+        {
+          "name": "República Moldova Transnístria",
+          "alias": true
+        },
+        {
+          "name": "República Moldova Transnistriana",
+          "alias": true
+        },
+        {
+          "name": "República Pridnestrovian Moldávia",
+          "alias": true
+        },
+        {
+          "name": "Transdniestre",
+          "alias": true
+        },
+        {
+          "name": "Transdniestria",
+          "alias": true
+        },
+        {
+          "name": "Transdniéstria",
+          "alias": true
+        },
+        {
+          "name": "Transdnistria",
+          "alias": true
+        },
+        {
+          "name": "Transdnístria",
+          "alias": true
+        }
+      ],
+      "pt-br": [
+        {
+          "name": "Transnístria",
+          "pref": true
+        },
+        {
+          "name": "República Moldava Peridniestriana",
+          "alias": true
+        },
+        {
+          "name": "RMP",
+          "alias": true
+        },
+        {
+          "name": "Transdniestre",
+          "alias": true
+        },
+        {
+          "name": "Transdniéstria",
+          "alias": true
+        },
+        {
+          "name": "Transdnístria",
+          "alias": true
+        }
+      ],
+      "ro": [
+        {
+          "name": "Transnistria",
+          "pref": true,
+          "short": true
+        },
+        {
+          "name": "Republica Moldovenească Nistreană",
+          "official": true,
+          "alias": true
+        },
+        {
+          "name": "Pridnestrovie",
+          "alias": true
+        },
+        {
+          "name": "Republica Moldovenească Pridnestroviană",
+          "alias": true
+        },
+        {
+          "name": "RMN",
           "alias": true
         }
       ],
       "ru": [
         {
-          "name": "Административно-территориальные единицы левобережья Днестра",
+          "name": "Приднестровская Молдавская Республика",
           "pref": true
         },
         {
           "name": "Приднестровье",
+          "short": true,
+          "alias": true
+        },
+        {
+          "name": "Левобережье Днестра",
+          "alias": true
+        },
+        {
+          "name": "ПМР",
+          "alias": true
+        },
+        {
+          "name": "Поднестровье",
+          "alias": true
+        },
+        {
+          "name": "Приднестровская Молдавская республика",
+          "alias": true
+        },
+        {
+          "name": "Приднестровская республика",
+          "alias": true
+        },
+        {
+          "name": "Приднестровско-Молдавская республика",
+          "alias": true
+        }
+      ],
+      "sk": [
+        {
+          "name": "Podnestersko",
+          "pref": true
+        },
+        {
+          "name": "Podnesterská moldavská republika",
+          "alias": true
+        }
+      ],
+      "sr": [
+        {
+          "name": "Придњестровље",
+          "pref": true
+        },
+        {
+          "name": "Придњестовље",
+          "alias": true
+        },
+        {
+          "name": "Придњестовље (политички ентитет)",
+          "alias": true
+        },
+        {
+          "name": "Придњестровље (политички ентитет)",
+          "alias": true
+        },
+        {
+          "name": "Придњестровска Молдавска Република",
+          "alias": true
+        },
+        {
+          "name": "Трансдњестар",
+          "alias": true
+        },
+        {
+          "name": "Трансдњестровље",
+          "alias": true
+        },
+        {
+          "name": "Транснистрија",
+          "alias": true
+        }
+      ],
+      "sv": [
+        {
+          "name": "Transnistrien",
+          "pref": true
+        },
+        {
+          "name": "Dnestrien",
+          "alias": true
+        },
+        {
+          "name": "Dnestriska moldaviska republiken",
+          "alias": true
+        },
+        {
+          "name": "Pridnestrovie",
+          "alias": true
+        },
+        {
+          "name": "Trans-Dnestrien",
+          "alias": true
+        },
+        {
+          "name": "Transdnjestrien",
+          "alias": true
+        }
+      ],
+      "tl": [
+        {
+          "name": "Transnistria",
+          "pref": true
+        }
+      ],
+      "tr": [
+        {
+          "name": "Transdinyester",
+          "pref": true
+        },
+        {
+          "name": "Pridnestrovian Moldova Cumhuriyeti",
+          "alias": true
+        },
+        {
+          "name": "Pridnestrovian Moldovya Cumhuriyeti",
+          "alias": true
+        },
+        {
+          "name": "Pridnestrovie",
+          "alias": true
+        },
+        {
+          "name": "Trans Dniester",
+          "alias": true
+        },
+        {
+          "name": "Trans-Dniester",
+          "alias": true
+        },
+        {
+          "name": "Transdinyester Özerk Cumhuriyeti",
+          "alias": true
+        },
+        {
+          "name": "Transnistria",
           "alias": true
         }
       ],
       "zh": [
         {
-          "name": "德涅斯特河沿岸自治领土单位",
+          "name": "德涅斯特河沿岸",
+          "pref": true
+        },
+        {
+          "name": "德东岸问题",
+          "alias": true
+        },
+        {
+          "name": "德东问题",
+          "alias": true
+        },
+        {
+          "name": "德左",
+          "alias": true
+        },
+        {
+          "name": "德左共和國",
+          "alias": true
+        },
+        {
+          "name": "德左问题",
+          "alias": true
+        },
+        {
+          "name": "德涅斯特河东岸共和国",
+          "alias": true
+        },
+        {
+          "name": "德涅斯特河左岸",
+          "alias": true
+        },
+        {
+          "name": "德涅斯特河左岸共和国",
+          "alias": true
+        },
+        {
+          "name": "德涅斯特河東岸共和國",
+          "alias": true
+        },
+        {
+          "name": "德涅斯特河沿岸共和国",
+          "alias": true
+        },
+        {
+          "name": "德涅斯特河沿岸摩尔达维亚共和国",
+          "alias": true
+        },
+        {
+          "name": "德涅斯特里亞",
+          "alias": true
+        }
+      ],
+      "zh-cn": [
+        {
+          "name": "德涅斯特河沿岸",
+          "pref": true
+        }
+      ],
+      "zh-hans": [
+        {
+          "name": "德涅斯特河沿岸",
+          "pref": true
+        },
+        {
+          "name": "外涅斯特里亚",
+          "alias": true
+        },
+        {
+          "name": "外涅斯特里亚共和国",
+          "alias": true
+        },
+        {
+          "name": "德左",
+          "alias": true
+        },
+        {
+          "name": "德左共和国",
+          "alias": true
+        },
+        {
+          "name": "德涅斯特河东岸",
+          "alias": true
+        },
+        {
+          "name": "德涅斯特河东岸共和国",
+          "alias": true
+        },
+        {
+          "name": "德涅斯特河左岸",
+          "alias": true
+        },
+        {
+          "name": "德涅斯特河左岸共和国",
+          "alias": true
+        },
+        {
+          "name": "德涅斯特河沿岸共和国",
+          "alias": true
+        },
+        {
+          "name": "德涅斯特河沿岸摩尔达维亚共和国",
+          "alias": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "聶斯特河沿岸",
+          "pref": true
+        },
+        {
+          "name": "德涅斯特河沿岸",
+          "alias": true
+        }
+      ],
+      "zh-hk": [
+        {
+          "name": "德涅斯特河沿岸",
+          "pref": true
+        }
+      ],
+      "zh-tw": [
+        {
+          "name": "聶斯特河沿岸",
           "pref": true
         }
       ]
@@ -100856,10 +101486,6 @@
           "pref": true
         },
         {
-          "name": "Bermuda",
-          "alias": true
-        },
-        {
           "name": "Bermudské ostrovy",
           "alias": true
         },
@@ -100937,10 +101563,6 @@
           "alias": true
         },
         {
-          "name": "Bermudas",
-          "alias": true
-        },
-        {
           "name": "Bermudian Islands",
           "alias": true
         },
@@ -101001,10 +101623,6 @@
           "pref": true
         },
         {
-          "name": "Bermuda",
-          "alias": true
-        },
-        {
           "name": "Isla Saint David's",
           "alias": true
         },
@@ -101039,10 +101657,6 @@
         {
           "name": "Bermuda",
           "pref": true
-        },
-        {
-          "name": "BMU",
-          "alias": true
         }
       ],
       "fr": [
@@ -101171,15 +101785,7 @@
           "alias": true
         },
         {
-          "name": "Bermudas",
-          "alias": true
-        },
-        {
           "name": "Bermudu Salas",
-          "alias": true
-        },
-        {
-          "name": "BMU",
           "alias": true
         }
       ],
@@ -101201,15 +101807,7 @@
           "alias": true
         },
         {
-          "name": "Bermuda",
-          "alias": true
-        },
-        {
           "name": "Bermúda",
-          "alias": true
-        },
-        {
-          "name": "Bermudas",
           "alias": true
         },
         {
@@ -101285,10 +101883,6 @@
         {
           "name": "Bermuda",
           "pref": true
-        },
-        {
-          "name": "BMU",
-          "alias": true
         }
       ],
       "nl": [
@@ -101299,18 +101893,6 @@
         {
           "name": "Bermuda-eilanden",
           "alias": true
-        },
-        {
-          "name": "Bermudas",
-          "alias": true
-        },
-        {
-          "name": "BM",
-          "alias": true
-        },
-        {
-          "name": "BMU",
-          "alias": true
         }
       ],
       "nn": [
@@ -101320,10 +101902,6 @@
         },
         {
           "name": "Bermudaøyane",
-          "alias": true
-        },
-        {
-          "name": "Bermudas",
           "alias": true
         }
       ],
@@ -101446,10 +102024,6 @@
         {
           "name": "Bermudaöarna",
           "alias": true
-        },
-        {
-          "name": "Bermudas",
-          "alias": true
         }
       ],
       "tl": [
@@ -101516,10 +102090,6 @@
         {
           "name": "百慕大",
           "pref": true
-        },
-        {
-          "name": "Bermuda",
-          "alias": true
         },
         {
           "name": "百幕達",
