@@ -53,12 +53,13 @@ async function getJson(url, tries = 5) {
     let res;
     try {
       res = await fetch(url, { headers: UA });
+      // The body inside the try too: a connection dropped mid-answer fails here.
+      if (res.ok) return await res.json();
     } catch (err) {
       if (attempt >= tries) throw err;
       await sleep(attempt * 2000);
       continue;
     }
-    if (res.ok) return res.json();
     if (attempt >= tries || ![429, 500, 502, 503, 504].includes(res.status)) {
       throw new Error(`HTTP ${res.status} ${res.statusText} — ${url.slice(0, 120)}`);
     }
