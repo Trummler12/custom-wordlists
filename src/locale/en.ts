@@ -307,6 +307,7 @@ export const en: UIStrings = {
       area: "Area (km{smaller sup}2{/smaller sup})",
       users: "Users",
       atomicNumber: "Atomic number",
+      wikipedias: "Wikipedias",
     },
     first: "First page",
     prev: "Previous page",

@@ -332,6 +332,7 @@ export const de: UIStrings = {
       area: "Fläche (km{smaller sup}2{/smaller sup})",
       users: "Nutzer",
       atomicNumber: "Ordnungszahl",
+      wikipedias: "Wikipedias",
     },
     first: "Erste Seite",
     prev: "Vorherige Seite",
