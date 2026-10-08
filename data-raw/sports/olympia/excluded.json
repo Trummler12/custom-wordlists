@@ -1,0 +1,19 @@
+{
+  "_comment": "Items the Olympic sports dump finds that are no sport of the topic, kept out of every rule. Keyed by Wikidata Q-id; `en` names it, `why` says why it is out. Read by scripts/sports/build-olympic-sports.mjs; analysis in PR #38 (sports/Olympics.md).",
+
+  "Q212434":    { "en": "Olympic sport",                    "why": "the class itself" },
+
+  "Q141568352": { "en": "art competition as Olympic sport", "why": "not a sport" },
+  "Q141163315": { "en": "(no label)",                       "why": "not a sport" },
+
+  "Q8421":      { "en": "aeronautics",                      "why": "a prize, not an event" },
+  "Q36908":     { "en": "mountaineering",                   "why": "a prize, not an event" },
+
+  "Q61065":     { "en": "water sport",                      "why": "an umbrella" },
+  "Q15621650":  { "en": "skiing",                           "why": "an umbrella" },
+
+  "Q22857":     { "en": "climbing",                         "why": "duplicates sport climbing" },
+
+  "Q4179462":   { "en": "ladies' singles",                  "why": "an event, not a sport" },
+  "Q4305887":   { "en": "men's singles",                    "why": "an event, not a sport" }
+}
