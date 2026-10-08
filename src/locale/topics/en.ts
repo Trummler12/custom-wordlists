@@ -37,6 +37,7 @@ export const en: TopicProse = {
   // The Olympic sports rules (RULES in build-olympic-sports); they read on from "up to N".
   olympics: {
     discontinued: "sports no longer held at the Games",
+    demonstrationSports: "sports only ever shown as a demonstration, never for medals",
     futureDisciplines: "sports added for Games still to come",
     childDiscipline: "disciplines of another sport on the list",
   },

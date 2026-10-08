@@ -48,7 +48,12 @@ export interface TopicProse {
     fictional: string;
   };
   /** Olympic sports rule reasons. */
-  olympics: { discontinued: string; futureDisciplines: string; childDiscipline: string };
+  olympics: {
+    discontinued: string;
+    demonstrationSports: string;
+    futureDisciplines: string;
+    childDiscipline: string;
+  };
   signLanguages: string;
   ancientPlates: string;
   /** The continents list's tier conditions, one per tier (descriptive, not number bands). */

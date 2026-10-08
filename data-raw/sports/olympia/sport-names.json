@@ -37,6 +37,9 @@
       "2024-07-26 summer",
       "2028-07-14 summer"
     ],
+    "demonstrations": [
+      "1896-04-06 summer"
+    ],
     "names": {
       "en": [
         {
@@ -496,6 +499,10 @@
       "2024-07-26 summer",
       "2028-07-14 summer"
     ],
+    "demonstrations": [
+      "1904-07-01 summer",
+      "1924-05-04 summer"
+    ],
     "names": {
       "en": [
         {
@@ -842,6 +849,10 @@
       "2021-07-24 summer",
       "2024-07-26 summer",
       "2028-07-14 summer"
+    ],
+    "demonstrations": [
+      "1968-10-12 summer",
+      "1984-07-28 summer"
     ],
     "parents": [
       "Q212434"
@@ -1786,6 +1797,14 @@
       "2021-07-24 summer",
       "2028-07-14 summer"
     ],
+    "demonstrations": [
+      "1912-05-05 summer",
+      "1936-08-01 summer",
+      "1956-11-22 summer",
+      "1964-10-10 summer",
+      "1984-07-28 summer",
+      "1988-09-17 summer"
+    ],
     "parents": [
       "Q212434"
     ],
@@ -2571,6 +2590,14 @@
       "2024-07-26 summer",
       "2028-07-14 summer"
     ],
+    "demonstrations": [
+      "1984-07-28 summer",
+      "1988-09-17 summer",
+      "1992-07-25 summer",
+      "1996-07-20 summer",
+      "2000-09-15 summer",
+      "2004-08-13 summer"
+    ],
     "parents": [
       "Q212434"
     ],
@@ -2868,6 +2895,9 @@
       "2021-07-24 summer",
       "2024-07-26 summer",
       "2028-07-14 summer"
+    ],
+    "demonstrations": [
+      "1988-09-17 summer"
     ],
     "parents": [
       "Q212434"
@@ -3711,6 +3741,10 @@
       "2028-07-14 summer",
       "2032-07-23 summer"
     ],
+    "demonstrations": [
+      "1972-08-26 summer",
+      "1988-09-17 summer"
+    ],
     "parents": [
       "Q212434"
     ],
@@ -4012,6 +4046,10 @@
       "2021-07-24 summer",
       "2024-07-26 summer",
       "2028-07-14 summer"
+    ],
+    "demonstrations": [
+      "1988-09-17 summer",
+      "1992-07-25 summer"
     ],
     "parents": [
       "Q212434"
@@ -4832,6 +4870,9 @@
       "2024-07-26 summer",
       "2028-07-14 summer"
     ],
+    "demonstrations": [
+      "1952-07-19 summer"
+    ],
     "names": {
       "en": [
         {
@@ -5514,10 +5555,8 @@
     "wikipedias": 109,
     "games": [],
     "editions": [
-      "1948-07-29 summer",
-      "1952-07-19 summer",
-      "1956-11-22 summer",
       "2016-08-05 summer",
+      "2021-07-24 summer",
       "2024-07-26 summer",
       "2028-07-14 summer"
     ],
@@ -6801,6 +6840,9 @@
       "summer"
     ],
     "editions": [
+      "1932-07-30 summer"
+    ],
+    "demonstrations": [
       "1932-07-30 summer"
     ],
     "names": {
@@ -9805,6 +9847,11 @@
       "2026-02-06 winter",
       "2030-02-01 winter"
     ],
+    "demonstrations": [
+      "1932-02-04 winter",
+      "1988-02-13 winter",
+      "1992-02-08 winter"
+    ],
     "parents": [
       "Q212434"
     ],
@@ -12671,6 +12718,9 @@
       "2021-07-24 summer",
       "2024-07-26 summer",
       "2028-07-14 summer"
+    ],
+    "demonstrations": [
+      "1992-07-25 summer"
     ],
     "parents": [
       "Q1734"
@@ -15767,7 +15817,27 @@
     "wikipedias": 69,
     "games": [],
     "editions": [
+      "1924-01-25 winter",
+      "1928-02-11 winter",
+      "1932-02-04 winter",
+      "1936-02-06 winter",
+      "1948-01-30 winter",
+      "1952-02-14 winter",
+      "1956-01-26 winter",
+      "1960-02-18 winter",
+      "1964-01-29 winter",
+      "1968-02-06 winter",
+      "1972-02-03 winter",
+      "1976-02-04 winter",
+      "1980-02-14 winter",
+      "1984-02-08 winter",
+      "1988-02-13 winter",
+      "1992-02-08 winter",
+      "1994-02-12 winter",
+      "1998-02-07 winter",
+      "2002-02-08 winter",
       "2006-02-10 winter",
+      "2014-02-07 winter",
       "2018-02-09 winter",
       "2022-02-04 winter",
       "2026-02-06 winter",
@@ -18533,8 +18603,6 @@
     "wikipedias": 63,
     "games": [],
     "editions": [
-      "2012-07-27 summer",
-      "2016-08-05 summer",
       "2024-07-26 summer"
     ],
     "parents": [
@@ -19142,7 +19210,27 @@
     "wikipedias": 62,
     "games": [],
     "editions": [
+      "1924-01-25 winter",
+      "1928-02-11 winter",
+      "1932-02-04 winter",
+      "1936-02-06 winter",
+      "1948-01-30 winter",
+      "1952-02-14 winter",
+      "1956-01-26 winter",
+      "1960-02-18 winter",
+      "1964-01-29 winter",
+      "1968-02-06 winter",
+      "1972-02-03 winter",
+      "1976-02-04 winter",
+      "1980-02-14 winter",
+      "1984-02-08 winter",
+      "1988-02-13 winter",
+      "1992-02-08 winter",
+      "1994-02-12 winter",
+      "1998-02-07 winter",
+      "2002-02-08 winter",
       "2006-02-10 winter",
+      "2014-02-07 winter",
       "2018-02-09 winter",
       "2022-02-04 winter",
       "2026-02-06 winter",
@@ -19844,6 +19932,7 @@
       "1998-02-07 winter",
       "2002-02-08 winter",
       "2006-02-10 winter",
+      "2022-02-04 winter",
       "2026-02-06 winter",
       "2030-02-01 winter"
     ],
@@ -20527,6 +20616,7 @@
     "games": [],
     "editions": [
       "2016-08-05 summer",
+      "2021-07-24 summer",
       "2024-07-26 summer",
       "2026-02-06 winter"
     ],
@@ -21633,6 +21723,9 @@
       "2024-07-26 summer",
       "2028-07-14 summer"
     ],
+    "demonstrations": [
+      "1908-04-27 summer"
+    ],
     "parents": [
       "Q212434"
     ],
@@ -22000,6 +22093,9 @@
       "2022-02-04 winter",
       "2026-02-06 winter"
     ],
+    "demonstrations": [
+      "1988-02-13 winter"
+    ],
     "parents": [
       "Q192431",
       "Q212434"
@@ -22342,6 +22438,14 @@
     "wikipedias": 54,
     "games": [],
     "editions": [
+      "1968-02-06 winter",
+      "1972-02-03 winter",
+      "1976-02-04 winter",
+      "1980-02-14 winter",
+      "1984-02-08 winter",
+      "1988-02-13 winter",
+      "1992-02-08 winter",
+      "1994-02-12 winter",
       "2006-02-10 winter",
       "2018-02-09 winter",
       "2022-02-04 winter",
@@ -23735,6 +23839,10 @@
       "1900-05-14 summer",
       "1936-08-01 summer"
     ],
+    "demonstrations": [
+      "1900-05-14 summer",
+      "1936-08-01 summer"
+    ],
     "names": {
       "en": [
         {
@@ -24007,6 +24115,10 @@
       "summer"
     ],
     "editions": [
+      "1920-04-20 summer",
+      "1928-07-28 summer"
+    ],
+    "demonstrations": [
       "1920-04-20 summer",
       "1928-07-28 summer"
     ],
@@ -24694,8 +24806,6 @@
     "wikipedias": 46,
     "games": [],
     "editions": [
-      "2012-07-27 summer",
-      "2016-08-05 summer",
       "2024-07-26 summer"
     ],
     "parents": [
@@ -24945,6 +25055,9 @@
       "summer"
     ],
     "editions": [
+      "1972-08-26 summer"
+    ],
+    "demonstrations": [
       "1972-08-26 summer"
     ],
     "parents": [
@@ -25278,24 +25391,6 @@
     "wikipedias": 45,
     "games": [],
     "editions": [
-      "1912-05-05 summer",
-      "1920-04-20 summer",
-      "1924-05-04 summer",
-      "1928-07-28 summer",
-      "1960-08-25 summer",
-      "1964-10-10 summer",
-      "1968-10-12 summer",
-      "1972-08-26 summer",
-      "1980-07-19 summer",
-      "1984-07-28 summer",
-      "1988-09-17 summer",
-      "1992-07-25 summer",
-      "1996-07-20 summer",
-      "2000-09-15 summer",
-      "2004-08-13 summer",
-      "2008-08-08 summer",
-      "2012-07-27 summer",
-      "2016-08-05 summer",
       "2021-07-24 summer",
       "2024-07-26 summer"
     ],
@@ -25669,6 +25764,11 @@
       "1968-10-12 summer",
       "1992-07-25 summer"
     ],
+    "demonstrations": [
+      "1924-05-04 summer",
+      "1968-10-12 summer",
+      "1992-07-25 summer"
+    ],
     "names": {
       "en": [
         {
@@ -25995,8 +26095,6 @@
     "wikipedias": 43,
     "games": [],
     "editions": [
-      "2012-07-27 summer",
-      "2016-08-05 summer",
       "2021-07-24 summer",
       "2024-07-26 summer"
     ],
@@ -26883,26 +26981,6 @@
     "wikipedias": 41,
     "games": [],
     "editions": [
-      "1900-05-14 summer",
-      "1904-07-01 summer",
-      "1908-04-27 summer",
-      "1920-04-20 summer",
-      "1924-05-04 summer",
-      "1928-07-28 summer",
-      "1948-07-29 summer",
-      "1960-08-25 summer",
-      "1964-10-10 summer",
-      "1968-10-12 summer",
-      "1972-08-26 summer",
-      "1980-07-19 summer",
-      "1984-07-28 summer",
-      "1988-09-17 summer",
-      "1992-07-25 summer",
-      "1996-07-20 summer",
-      "2000-09-15 summer",
-      "2004-08-13 summer",
-      "2012-07-27 summer",
-      "2016-08-05 summer",
       "2021-07-24 summer",
       "2024-07-26 summer"
     ],
@@ -27820,9 +27898,6 @@
     "wikipedias": 37,
     "games": [],
     "editions": [
-      "2008-08-08 summer",
-      "2012-07-27 summer",
-      "2016-08-05 summer",
       "2021-07-24 summer",
       "2024-07-26 summer"
     ],
@@ -28731,6 +28806,9 @@
       "2024-07-26 summer",
       "2028-07-14 summer"
     ],
+    "demonstrations": [
+      "1924-05-04 summer"
+    ],
     "parents": [
       "Q61065"
     ],
@@ -29435,6 +29513,9 @@
     "editions": [
       "1900-05-14 summer"
     ],
+    "demonstrations": [
+      "1900-05-14 summer"
+    ],
     "names": {
       "en": [
         {
@@ -29736,6 +29817,9 @@
     ],
     "editions": [
       "1908-04-27 summer",
+      "1924-05-04 summer"
+    ],
+    "demonstrations": [
       "1924-05-04 summer"
     ],
     "names": {
@@ -30052,6 +30136,10 @@
       "1936-02-06 winter",
       "1964-01-29 winter"
     ],
+    "demonstrations": [
+      "1936-02-06 winter",
+      "1964-01-29 winter"
+    ],
     "parents": [
       "Q212434"
     ],
@@ -30321,6 +30409,9 @@
       "winter"
     ],
     "editions": [
+      "1992-02-08 winter"
+    ],
+    "demonstrations": [
       "1992-02-08 winter"
     ],
     "names": {
@@ -30664,6 +30755,9 @@
     "editions": [
       "1900-05-14 summer",
       "1908-04-27 summer"
+    ],
+    "demonstrations": [
+      "1900-05-14 summer"
     ],
     "parents": [
       "Q5367"
@@ -31693,6 +31787,7 @@
     "games": [],
     "editions": [
       "2016-08-05 summer",
+      "2021-07-24 summer",
       "2024-07-26 summer"
     ],
     "parents": [

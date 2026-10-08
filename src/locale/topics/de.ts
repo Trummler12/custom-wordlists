@@ -29,6 +29,7 @@ export const de: TopicProseDict = {
   },
   olympics: {
     discontinued: "Sportarten, die nicht mehr an den Spielen ausgetragen werden",
+    demonstrationSports: "Sportarten, die nur als Demonstration gezeigt wurden, nie um Medaillen",
     futureDisciplines: "Sportarten, die für kommende Spiele neu aufgenommen sind",
     childDiscipline: "Disziplinen einer anderen Sportart der Liste",
   },

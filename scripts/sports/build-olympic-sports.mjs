@@ -15,6 +15,8 @@
 // CLASSES, read off the editions' dates, never off a year written here ("current" is the
 // latest Summer and the latest Winter edition that has begun):
 //   - `discontinued` (omitted): not held at the current edition of its season or later;
+//   - `demonstration-sports` (omitted): the same, and every edition it was at showed it only
+//     as a demonstration, never for medals;
 //   - `future-disciplines` (omittable): held only at an edition still to come;
 //   - `child-discipline` (omittable): held now, and a discipline of another listed sport;
 //   - the rest is the base list.
@@ -40,12 +42,15 @@ const SEASONS = ["summer"];
 /** Lowest article count per tier; the last tier takes every sport with any article. */
 const BANDS = [100, 80, 60, 40, 20];
 
-/** Rule order as the panel lists them, with whether each is hidden by default. */
+/** Rule order as the panel lists them, with whether each is hidden by default. All of them
+ *  sit in the sports' inclusion panel (☑️), not the 🚫 one. */
 const RULES = [
   { id: "discontinued", omitted: true, reason: "olympics.discontinued" },
+  { id: "demonstration-sports", omitted: true, reason: "olympics.demonstrationSports" },
   { id: "future-disciplines", omitted: false, reason: "olympics.futureDisciplines" },
   { id: "child-discipline", omitted: false, reason: "olympics.childDiscipline" },
 ];
+const PANEL_ICON = "sport-type";
 
 const ICON = { summer: "☀️", winter: "❄️" };
 
@@ -113,7 +118,10 @@ async function main() {
     return dump[q].editions.some((e) => e.endsWith(season) && e >= from[season] && e <= to);
   };
   const classOf = (q) => {
-    if (!heldSince(q, current)) return "discontinued";
+    if (!heldSince(q, current)) {
+      const demos = new Set(dump[q].demonstrations ?? []);
+      return dump[q].editions.length && dump[q].editions.every((e) => demos.has(e)) ? "demonstration-sports" : "discontinued";
+    }
     if (!heldSince(q, current, `${today}~`)) return "future-disciplines";
     // Only a parent still held counts: rugby sevens is the Games' rugby now that rugby
     // union is gone, so it stands on its own.
@@ -142,7 +150,7 @@ async function main() {
       coverage[q] = { ...s, name: typeof entry === "string" ? entry : entry.en };
     }
 
-    const ruleOf = (r) => ({ id: r.id, match: rules[r.id].sort(), count: true, reason: r.reason });
+    const ruleOf = (r) => ({ id: r.id, match: rules[r.id].sort(), count: true, reason: r.reason, icon: PANEL_ICON });
     const kept = RULES.filter((r) => rules[r.id].length);
     const topic = {
       // A stem held by one file is its id; once two seasons share it, each takes its prefix.

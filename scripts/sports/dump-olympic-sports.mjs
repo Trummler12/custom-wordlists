@@ -12,7 +12,10 @@
 //
 // WHICH EDITIONS. Every Summer and Winter Games edition with a start date, and per edition
 // the sports of the events that are part of it or of an event that is. The build reads
-// "current" and "upcoming" off the dates, so nothing here names a year.
+// "current" and "upcoming" off the dates, so nothing here names a year. An edition whose
+// event for a sport (the "X at the Games" item) is an Olympic demonstration sport competition
+// (Q1123217) is also listed under `demonstrations`; a single demonstration event inside an
+// official sport (open foil, 1908) leaves the sport official there.
 //
 // It also writes games-names.json, the labels the Summer and Winter categories are titled
 // with: the series' own (the long title) and the season's (the short one).
@@ -32,6 +35,8 @@ const SERIES = { summer: "Q159821", winter: "Q82414" };
 /** The seasons themselves, whose labels are the categories' short titles. */
 const SEASON = { summer: "Q1313", winter: "Q1311" };
 const EDITION_CLASS = { summer: "Q135976384", winter: "Q137592217" };
+/** Olympic demonstration sport competition: an event shown at the Games, not for medals. */
+const DEMONSTRATION = "Q1123217";
 
 async function main() {
   const base = await sparql(`SELECT DISTINCT ?sport ?games WHERE {
@@ -41,7 +46,7 @@ async function main() {
   const sports = new Map();
   for (const r of base) {
     const q = qid(r.sport.value);
-    if (!sports.has(q)) sports.set(q, { games: new Set(), editions: new Set() });
+    if (!sports.has(q)) sports.set(q, { games: new Set(), editions: new Set(), demonstrations: new Set() });
     sports.get(q).games.add(qid(r.games.value) === SERIES.summer ? "summer" : "winter");
   }
 
@@ -61,6 +66,13 @@ async function main() {
     { ?ev wdt:P361 ?ed } UNION { ?ev wdt:P361/wdt:P361 ?ed }
     ?ev wdt:P641 ?sport .
   }`);
+  // Asked apart: testing every event of the held query for the class times the query out.
+  const demos = await sparql(`SELECT DISTINCT ?ed ?sport WHERE {
+    VALUES ?kind { wd:${EDITION_CLASS.summer} wd:${EDITION_CLASS.winter} }
+    ?ev wdt:P31 wd:${DEMONSTRATION} ; wdt:P641 ?sport ; wdt:P361 ?ed .
+    ?ed wdt:P31 ?kind .
+  }`);
+  const isDemo = new Set(demos.map((r) => `${qid(r.ed.value)} ${qid(r.sport.value)}`));
   // An edition's events also name the disciplines the series level leaves out (ski jumping,
   // BMX, ice dance), so the current and upcoming editions add their sports to the list. Older
   // ones only date it: their single events name finer things (high jump, 1500 metres) that
@@ -76,8 +88,9 @@ async function main() {
     const ed = editionOf.get(qid(r.ed.value));
     if (!ed) continue;
     const q = qid(r.sport.value);
-    if (!sports.has(q) && ed >= since) sports.set(q, { games: new Set(), editions: new Set() });
+    if (!sports.has(q) && ed >= since) sports.set(q, { games: new Set(), editions: new Set(), demonstrations: new Set() });
     sports.get(q)?.editions.add(ed);
+    if (isDemo.has(`${qid(r.ed.value)} ${q}`)) sports.get(q)?.demonstrations.add(ed);
   }
 
   // The listed sports another one is a discipline of, by subclass or part-of.
@@ -98,11 +111,13 @@ async function main() {
   // Most widely known first, so the file reads like the list it becomes.
   for (const q of ids.sort((a, b) => byId[b].wikipedias - byId[a].wikipedias || a.localeCompare(b))) {
     const s = sports.get(q);
+    const demonstrations = [...s.demonstrations].sort();
     out[q] = {
       name: labelFor(byId[q].names, "en") ?? q,
       wikipedias: byId[q].wikipedias,
       games: [...s.games].sort(),
       editions: [...s.editions].sort(),
+      ...(demonstrations.length ? { demonstrations } : {}),
       ...(parents.has(q) ? { parents: parents.get(q).sort() } : {}),
       names: byId[q].names,
     };

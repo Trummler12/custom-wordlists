@@ -20,9 +20,17 @@
   "omitted": [
     {
       "id": "discontinued",
-      "match": ["Amateur wrestling","American football","Basque pelota","Bocce","Croquet","Field lacrosse","Jeu de paume","Karate","Korfball","Motorsport","Polo","Powerboating","Rackets","Roque","Rugby union","Ten-pin bowling","Tug of war","Water skiing"],
+      "match": ["Amateur wrestling","Basque pelota","Croquet","Field lacrosse","Jeu de paume","Karate","Polo","Powerboating","Rackets","Roque","Rugby union","Ten-pin bowling","Tug of war"],
       "count": true,
+      "icon": "sport-type",
       "reason": "olympics.discontinued"
+    },
+    {
+      "id": "demonstration-sports",
+      "match": ["American football","Bocce","Korfball","Motorsport","Water skiing"],
+      "count": true,
+      "icon": "sport-type",
+      "reason": "olympics.demonstrationSports"
     }
   ],
   "omittable": [
@@ -30,12 +38,14 @@
       "id": "future-disciplines",
       "match": ["Baseball","Coastal rowing","Cricket","Flag football","Lacrosse","Softball","Squash"],
       "count": true,
+      "icon": "sport-type",
       "reason": "olympics.futureDisciplines"
     },
     {
       "id": "child-discipline",
       "match": ["3x3 basketball","Artistic gymnastics","BMX","Beach volleyball","Marathon","Marathon swimming","Mountain biking","Rhythmic gymnastics","Road bicycle racing","Track cycling","Trampoline gymnastics"],
       "count": true,
+      "icon": "sport-type",
       "reason": "olympics.childDiscipline"
     }
   ],
