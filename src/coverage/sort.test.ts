@@ -24,10 +24,14 @@ describe("sortItems", () => {
     expect(ids(sortItems(items, { key: null, dir: "desc" }))).toEqual(["Q3", "Q4", "Q1", "Q2"]);
   });
 
-  it("a language column puts its missing labels on top, fewest other gaps first", () => {
-    // de missing: Q1, Q2 (top); present: Q3, Q4. Within top, fewest gaps first => Q1 (1) then Q2 (3).
-    // Within present, fewest gaps first => Q3 (0) then Q4 (1) — the easy wins rise.
-    expect(ids(sortItems(items, { key: "de", dir: "desc" }))).toEqual(["Q1", "Q2", "Q3", "Q4"]);
+  it("a language column puts its missing labels on top, fewest gaps first, and the fully covered last", () => {
+    // de missing: Q1, Q2 (top), fewest gaps first => Q1 (1) then Q2 (3).
+    // de present: Q3, Q4, most gaps first => Q4 (1) then Q3 (0), so the fully covered row ends the table.
+    expect(ids(sortItems(items, { key: "de", dir: "desc" }))).toEqual(["Q1", "Q2", "Q4", "Q3"]);
+  });
+
+  it("a reversed language column mirrors that order", () => {
+    expect(ids(sortItems(items, { key: "de", dir: "asc" }))).toEqual(["Q3", "Q4", "Q2", "Q1"]);
   });
 
   it("the numeric column, descending, breaks ties by name", () => {

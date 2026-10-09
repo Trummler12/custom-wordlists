@@ -35,9 +35,10 @@ interface Criterion {
 
 // The ordered criteria for a sort state. The clicked column leads; shared tie-breakers —
 // fewest gaps, then largest number, then name, then id — follow so the order is total and
-// stable regardless of the input order. Fewest-gaps-first means that under an active
-// language column the "easy wins" rise: entities missing that language but otherwise well
-// covered sit above ones missing many.
+// stable regardless of the input order. Under a language column the gaps count signed, so
+// its missing labels run from the easy wins (otherwise well covered) to the hard cases and
+// the rows that have it from the most other gaps to none: the fully covered sink to the
+// end. A reversed click mirrors that.
 function criteria(state: SortState): Criterion[] {
   const name = (i: SortableItem) => (i.name ?? "").toLowerCase();
   const byName: Criterion = { of: name, dir: "asc" };
@@ -48,7 +49,9 @@ function criteria(state: SortState): Criterion[] {
   if (state.key === "num") return [{ of: (i) => i.num ?? -Infinity, dir: state.dir }, byName, byId];
   if (state.key === null) return [byGaps, byNum, byName, byId];
   const lang = state.key;
-  return [{ of: (i) => (isMissing(i, lang) ? 1 : 0), dir: state.dir }, byGaps, byNum, byName, byId];
+  const signedGaps = (i: SortableItem) => (isMissing(i, lang) ? missingCount(i) : -missingCount(i));
+  const flip: SortDir = state.dir === "desc" ? "asc" : "desc";
+  return [{ of: (i) => (isMissing(i, lang) ? 1 : 0), dir: state.dir }, { of: signedGaps, dir: flip }, byNum, byName, byId];
 }
 
 const cmp = (a: number | string, b: number | string): number =>
