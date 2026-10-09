@@ -3,5 +3,6 @@
     "en": { "short": "Summer", "long": "Summer Paralympics" },
     "de": { "short": "Sommer", "long": "Sommer-Paralympics" }
   },
-  "icon": "☀️"
+  "icon": "☀️",
+  "unfoldsWithParent": true
 }

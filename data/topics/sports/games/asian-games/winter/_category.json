@@ -3,5 +3,6 @@
     "en": { "short": "Winter", "long": "Asian Winter Games" },
     "de": { "short": "Winter", "long": "Winter-Asienspiele" }
   },
-  "icon": "❄️"
+  "icon": "❄️",
+  "unfoldsWithParent": true
 }

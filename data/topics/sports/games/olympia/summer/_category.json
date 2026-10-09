@@ -31,5 +31,6 @@
     "sv": { "short": "Sommar", "long": "Olympiska sommarspelen" },
     "tl": { "short": "Tag-init", "long": "Palarong Olimpiko sa Tag-init" }
   },
-  "icon": "☀️"
+  "icon": "☀️",
+  "unfoldsWithParent": true
 }

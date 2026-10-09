@@ -31,5 +31,6 @@
     "sv": { "short": "Vinter", "long": "Olympiska vinterspelen" },
     "tl": { "short": "Taglamig", "long": "Palarong Olimpiko sa Taglamig" }
   },
-  "icon": "❄️"
+  "icon": "❄️",
+  "unfoldsWithParent": true
 }

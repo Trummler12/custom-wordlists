@@ -3,5 +3,6 @@
     "en": { "short": "Winter", "long": "Winter Paralympics" },
     "de": { "short": "Winter", "long": "Winter-Paralympics" }
   },
-  "icon": "❄️"
+  "icon": "❄️",
+  "unfoldsWithParent": true
 }

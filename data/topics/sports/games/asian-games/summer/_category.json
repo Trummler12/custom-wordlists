@@ -3,5 +3,6 @@
     "en": { "short": "Summer", "long": "Asian Games" },
     "de": { "short": "Sommer", "long": "Asienspiele" }
   },
-  "icon": "☀️"
+  "icon": "☀️",
+  "unfoldsWithParent": true
 }
