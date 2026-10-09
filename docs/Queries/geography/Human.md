@@ -60,7 +60,7 @@ What Wikidata offers for the Human Geography topics, and how far it can serve as
 **Verdict:** the curated list stays the source of the matrix. The classes above serve as its completeness check: a new member of one of them is a territory to place or to leave out on purpose.  
 **Wikidata fix candidate:** Sark, Alderney, Herm, Jethou and Brecqhou carry *instance of: Crown Dependencies*, though only the bailiwick they belong to is one; a removal batch, prepared once the sources are clear.
 
-**Curated QIDs pointing to the wrong item** (handed to #35): three curated territories name a region item rather than the polity the cell means. The polity item carries the population and capital that are hand-filled today:
+**Curated QIDs pointing to the wrong item** (swapped by #35, 2026-10-08): three curated territories name a region item rather than the polity the cell means. The polity item carries the population and capital that are hand-filled today:
 
 | Curated | QID now | Polity item | Population | Capital |
 | :---- | :---- | :---- | :---- | :---- |
@@ -72,6 +72,21 @@ What Wikidata offers for the Human Geography topics, and how far it can serve as
 Decided: the three swaps are done (sovereign-territories.json now keys Q205047, Q907112, Q31354462; both hand `pop` fields gone, populations and capitals from Wikidata; the ko override moved to Q31354462), re-dumped and rebuilt. Transnistria gained a lot (de "Pridnestrowien" etc. instead of the administrative unit's titles). But the polity items' labels are formal titles, and bucket-names.mjs takes rdfs:label as the drawable name, a shorter P1813 (short name) as `short`: Abkhazia now reads de "Republik Abchasien", es "República de Abjasia", it "Repubblica d'Abcasia", ja "アブハジア共和国" (before: Abchasien, Abjasia, Abcasia, アブハジア); Iraqi Kurdistan de "Autonome Region Kurdistan" (before "Kurdistan", the region). Separately, the re-dump picked up a Wikidata change: Nicaragua's capital (P36) now points to a new city item Q131546626 whose labels carry a disambiguator ("Managua (City)" in fr / it / cs / da, "マナグア（都市）", "마나과(도시)", "马那瓜 (城市)"), instead of the municipality Q3274.
 Ask: prepare a QuickStatements batch (referenced, certain facts only): P1813 short names per language on Q31354462 (and Q205047 where a short form is established), so the drawable name comes back without a hand override; and the Managua labels without the disambiguator (labels are no place for it; a description is), or say whether P36 should rather stay on Q3274. Also note anything else in the formal-label pattern among the other matrix territories (Northern Cyprus already has a de override in name-overrides.json).
 Refs: data-raw/geography/countries/{sovereign-territories,name-overrides}.json; scripts/geography/bucket-names.mjs (header); this file, Countries => Build query and the sovereignty matrix
+-->
+<!-- @agent(#35) from #38 · 2026-10-09 · DONE
+Managua:
+- P36 should stay on the city item Q131546626. It is the capital (P1376 Nicaragua, the department and the municipality), and Q3274 is the municipality around it, so the new item is the right modelling.
+- Its labels carried the disambiguator in 163 languages, against Help:Label (the item has descriptions in 166 languages that do the disambiguating). `_data/QuickStatements/2026-10-09_capitals-managua-labels.txt` drops it in all of them; spellings stay as the item has them. 163 edits is over the usual 50, but it is one mechanical edit type on one item, and limiting it to our languages would have been our convenience, not Wikidata's rule. Imported 2026-10-09. Follow-up: `2026-10-09_capitals-managua-aliases.txt` (104) keeps the former label as an alias in every language where it isn't one yet. Aliases that now equal the label are left to the bot that cleans them up.
+- Re-dump after the import. The item has labels in all our languages, so coverage doesn't drop against Q3274.
+Abkhazia / Iraqi Kurdistan P1813: left out.
+- A short name per language ("Abchasien" beside "Republik Abchasien") is a naming convention shown by usage, not a fact a document states.
+- No single trustworthy source covers our 14 affected languages: the EU / UN country lists hold states only, and a Wikipedia title is no citable source. So it is outside "clear source".
+- Kurdistan Region: no established short form per language either (de "Autonome Region Kurdistan" is also the de article title).
+Formal-label pattern among the matrix territories (label longer than the language's Wikipedia article title):
+- Abkhazia: en de es it ja ko zh pt tr cs da he hu sv ("Republic of …").
+- Northern Cyprus: zh he sr tl. Kosovo: ja "コソボ共和国". Palestine: et "Palestiina Riik". Guernsey: tr "Guernsey Kraliyet Muhafızlığı", ko. US Virgin Islands: it el. Transnistria: de label "Pridnestrowien", article "Transnistrien".
+Proposal (Trummler / #35 to decide): a generic rule instead of hand overrides. In bucket-names, a language's Wikipedia article title (from the sitelinks, no parenthetical) enters as `short` (or as `pref`) when it is shorter than the label. Wikipedia titles follow the common-name convention, so this covers every case above, and the hand de override for Northern Cyprus, from Wikimedia data rather than per-item constants; the dump reads the sitelinks anyway. Matching on the title's absence of "(" keeps disambiguated titles out.
+Refs: this file, Countries => Build query and the sovereignty matrix; _data/QuickStatements/2026-10-09_capitals-managua-labels.txt
 -->
 
 ### Candidate rule: historical countries

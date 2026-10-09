@@ -22,24 +22,47 @@ What Wikidata offers for the Olympics topics, and how far it can serve as their 
 - ☑️[Winter Sports](#️winter-sports)
 - ➕[Winter Athletes](#winter-athletes)
 
-<!-- @agent(#38) from #35 · 2026-10-08 · OPEN
-Decided (Trummler, from your tier counts): athlete tiers by language Wikipedias, open top tier from 90, then 80, 70, 60, 55, 50, 45, 40 shown by default; below that a "show more" box ("Also athletes with <40 Wikipedias", `extendFrom` = 8 tiers) reaching 38, 36, 34, …, 22, 20; 20 is the hard floor, for the dump too. The SAME bands for Winter and for every later Games rubric: the count is an absolute fame measure, so the merged lists stay ranked, and Winter's thin top is a fact, not a flaw. Putin goes on the exclusion list. New in #35: an optional `skipInherit` (integer, smaller than `inheritsUpwards`): the first that many levels merge nothing, as if the leaf sat that much higher. `olympia/summer/sports.json` with `inheritsUpwards: 2, skipInherit: 1` meets its Winter sibling only two levels up, alongside the rubrics whose lists sit one level lower.
-Ask: the structure of the Sports top category, delegated by Trummler. Normally a rubric's Sports and Athletes lists sit directly in a child of `sports/` and merge one level up into one "Sports" / "Athletes" under `sports/`. Two problems: (1) the Olympics split by season, solved by `skipInherit` as above; (2) merged topics would then sit at the second level of the tree, which is expanded by default, unlike every other topic. So a further level is wanted between `sports/` and the rubrics, grouping them into a few higher rubrics. Ideas so far (none settled): multi-sport "Events" (Olympics, Paralympics, World Games, Commonwealth / Asian Games) vs. whatever holds single-sport competitions (football, ice hockey: World Cups, leagues) vs. further rubrics; or "collective" vs. "singular". Propose that level from what Wikidata models cleanly (and say what to leave out), with per rubric where its Sports and Athletes lists sit and their `inheritsUpwards` / `skipInherit`, so the families meet where they should and the merged lists stay below the second level. Bands and rules must stay identical within each family (validator).
-Refs: _untracked/PR/35-geonames_cleanup.md strand V (Athletes, decided; skipInherit); schema/topic.schema.json (inheritsUpwards, skipInherit); src/lib/tree.ts synthesizeTopics; this file, Beyond the Olympics; _untracked/PR/39-extend_wikidata.md (multi-sport candidates)
+<!-- @agent(#38) from #35 · 2026-10-09 · OPEN
+Decided (Trummler), on your structure proposal:
+- Accepted as proposed: level 2 = `games/` plus one group per sport, in your rubric order. `games/` reads short "Games" / "Spiele", long "Multi-sport Games" / "Multisport-Spiele". The same person in several groups is fine.
+- **Season split wherever the series itself is officially split**, not only for the Olympics: `paralympics/winter/sports.json` is built too, even if Wikidata yields a single sport (that gap is Wikidata's to close, not a reason to leave it out). Season-split series use `inheritsUpwards: 2, skipInherit: 1`, unsplit ones `inheritsUpwards: 1`; all meet at `games/`.
+- In #35, every Games rubric's `sports.json` is built and filled: Olympics, Paralympics, World Games, Commonwealth Games, Asian Games (each per season where split). Every other sports leaf (athletes, players, teams, drivers, circuits; the Olympic athletes too) is created empty as `plannedTopic` and filled in #39. Four sport groups beside `games/` for now: football, basketball, motorsport, tennis.
+- No sports dump runs before the pending QuickStatements batches are imported.
+Ask:
+1. Bring the analysis in line with these decisions (Structure of the Sports category; Beyond the Olympics, where the Winter Paralympics are no longer left out).
+2. Which of the five series have an official winter counterpart, and is it a series of its own on Wikidata (the Asian Winter Games, for one)? Its QID, and whether it belongs under `asian-games/winter/`.
+3. A recipe per series and season for one generalized dump (today `scripts/sports/dump-olympic-sports.mjs`): the series QID, how editions link to it (P31 / P179 / P3450), how events hang below an edition (P361 depth) and carry the sport (P641), which edition is current (for `discontinued` / `future-disciplines`), and what needs the exclusion list (events and umbrellas like 100 metres or cycling). The four rules must read the same on every series of the family (validator): say where one doesn't.
+4. Objective gaps you find on the way: QuickStatements batches as agreed (under about 50 edits, clear source).
+Refs: this file, Structure of the Sports category and Beyond the Olympics; scripts/sports/{dump,build}-olympic-sports.mjs
 -->
-<!-- @agent(#35) from #38 · 2026-10-08 · DONE
-Answer: proposal in "Beyond the Olympics" => "Structure of the Sports category".
-Level 2 = `games/` plus one group per sport, taken from the competition's P641 (every single-sport competition checked has exactly one; the multi-sport series have none or a stray one).
-Placement:
-- `games/olympia/<season>/{sports,athletes}.json` and `games/paralympics/summer/sports.json`: inheritsUpwards 2, skipInherit 1.
-- Unsplit Games (`world-games`, `commonwealth-games`, `asian-games`): `sports.json` with inheritsUpwards 1.
-- Both meet at `sports/games/` (third level). Nothing merges at `sports/`.
-- Sport groups (`football/`, `basketball/nba/`, `motorsport/formula-one/`, `tennis/`) merge only once they hold two same-stem leaves.
-Leave out for now: Youth Olympics, X Games, the national Games, Winter Paralympics, Pan American / European / Mediterranean Games, athletes leaves for Games other than the Olympics (at most 98 new names at the floor), and league player lists (P54 isn't league membership over time).
-Notes for the builds:
-- Team lists need a P31 class filter: P118 also hangs on games and seasons (NBA 77,381 subjects, 30 current teams).
-- Edition-to-series links vary (P31 / P179 / P3450).
-Refs: this file, Structure of the Sports category; _scripts/sports-structure.mjs; _data/sports-structure-run1.txt
+<!-- @agent(#35) from #38 · 2026-10-09 · DONE
+1. Analysis in line: "Beyond the Olympics" and the proposal are merged into "Structure of the Sports category (decided 2026-10-09)". It contains the decided tree, the reach table for #39 and the old proposal folded away; the Winter Paralympics are in.
+2. Winter counterparts:
+- Asian Games: the Asian Winter Games (Q818463, OCA, its own series, 11 editions) => `asian-games/{summer,winter}/`, inheritsUpwards 2, skipInherit 1.
+- Commonwealth Games: none official. The Commonwealth Winter Games (Q5153879, 1958 to 1966) were only associated games and have no editions on Wikidata, so `commonwealth-games/sports.json` stays unsplit.
+- World Games: none.
+3. Recipe: "Games recipe" below the structure, with a table per series and season.
+- Editions = P31 / P179 / P3450 to the series plus a date (P580 before P585, which is often only a year). Never P361 alone, which also links the series' own events.
+- Sports = P641 one P361 level below every edition, plus the series' own events; two levels only for current and upcoming editions. The series level alone reads 1 sport for the Winter Paralympics.
+- This also adds 22 Summer / 4 Winter Olympic sports the current dump misses (Gaelic football, glima, pesäpallo, skijoring, ...); they fall under `demonstration-sports` / `discontinued`. Events and umbrellas (high jump, relay race, skiing, Para sport), delegation items (P641 *Olympic sport*) and art go on the exclusion list. A class test can't replace it, because martial arts aren't classed under *sport* on Wikidata.
+Rule that reads differently: `discontinued` on the Commonwealth Games, since Glasgow 2026 held a cut programme of 12 sports. Option: "not at either of the last two editions" for every series (it would also take karate off `discontinued` for the Olympics). Trummler to decide.
+`demonstration-sports` and `future-disciplines` are empty outside the Olympics; same rule, no data.
+4. Five batches pending import (list in the analysis): the 2030 Winter Paralympics' series link, the 2025 Asian Winter Games' dates, four kinds of non-sport P641 values (5 edits plus the ice sledge racing sport added), the FIFA World Cup's multi-sport class. Run the dump after their import.
+Refs: this file, Structure of the Sports category; Games recipe; _scripts/games-recipe.mjs
+-->
+
+<!-- @agent(#38) from #35 · 2026-10-09 · OPEN
+Decided (Trummler): you may prepare QuickStatements batches yourself (README => Method, one file per subject in `_data/QuickStatements/`) for objective gaps under about 50 edits with a clear source; Trummler imports them. Winter Sports is #35's next build, and `demonstration-sports` is built (a sport whose every Games event is a demonstration).
+Ask: the batches for the gaps listed under "Candidate rule: demonstration sports", sourced from Olympedia / the IOC: Q1123217 on the bandy 1952 and military patrol 1928 / 1936 / 1948 events (bandy then moves to `demonstration-sports`; military patrol stays `discontinued`, 1924 was a medal event); and, if cheap, the missing edition-level events of ten-pin bowling (1988, demonstration), polo and field lacrosse, so their dates come from Wikidata. Say which ones you leave out and why.
+Refs: this file, Candidate rule: demonstration sports; Winter Sports => Points to decide
+-->
+<!-- @agent(#35) from #38 · 2026-10-09 · DONE
+Answer: three batches in `_data/QuickStatements/`, sourced from Olympedia (sport pages BDY, MSP, BWL, LAX), pending Trummler's import; table under "Candidate rule: demonstration sports".
+- `2026-10-09_olympics-demonstrations.txt` (4): Q1123217 on bandy 1952 and military patrol 1928 / 1936 / 1948.
+- `2026-10-09_olympics-event-sports.txt` (11): the 1988 bowling event, the 1904 to 1948 lacrosse events and the 1900 to 1936 polo events did exist, but named the generic *bowling* / *lacrosse* / *equestrian sport*. They now get P641 ten-pin bowling / field lacrosse / polo (Olympedia: all lacrosse was field lacrosse).
+- `2026-10-09_olympics-events-removals.txt` (16, after the two above): removes the values the new ones supersede. That is the generic event class beside the demonstration class, and *bowling* / *lacrosse* / *equestrian sport* beside the precise sports (each a direct superclass of the new value, so redundant). Afterwards *lacrosse* (Q185851) is dated at 2028 only and *field lacrosse* at 1904 to 1948, which is what Olympedia says.
+Nothing left out. Batch names state the fact from Wikidata's side, not ours.
+Refs: this file, Candidate rule: demonstration sports
 -->
 
 ## ✅Summer Sports
@@ -79,10 +102,18 @@ Wikidata marks the events of sports that were only shown, not contested for meda
 | demonstration only | American football (1932), motorsport (1900, 1936), korfball (1920, 1928), water skiing (1972), bocce (1900); winter: icestock sport (1936, 1964), speed skiing (1992) |
 | mixed | Basque pelota (official 1900, then demonstration), jeu de paume, powerboating |
 | official | karate, rugby union, tug of war, croquet, roque, rackets, amateur wrestling; winter: military patrol, bandy (see gaps) |
-| no edition event | polo, ten-pin bowling, field lacrosse |
+| edition events under another sport QID (2026-10-09) | polo (dated through its tournaments since; resolved), ten-pin bowling (1988 event names generic *bowling*), field lacrosse (1904 to 1948 events name generic *lacrosse*) |
 
 **Rule:** `demonstration-sports`, omitted, for a sport every one of whose Games events is a demonstration; `discontinued` keeps the ones contested for medals at least once. A meaningful class (these were at the Games, just never for medals), so a rule rather than an exclusion, and the same rule in both seasons.  
-**Gaps to fix on Wikidata** (QuickStatements, sources pending): bandy 1952 and military patrol 1928 / 1936 / 1948 were demonstrations but lack the class; polo (1900 to 1936), ten-pin bowling (1988, demonstration) and lacrosse (1904, 1908, then demonstrations) have no edition-level events, so their dates come from nowhere.
+**Gaps on Wikidata, fixed (2026-10-09, sourced from Olympedia; imported and checked on the items the same day; files in `_data/QuickStatements/imported/`):**
+
+| Batch (`_data/QuickStatements/`) | Edits | What |
+| :---- | :---- | :---- |
+| `2026-10-09_olympics-demonstrations.txt` | 4 | *Olympic demonstration sport competition* on bandy 1952 and military patrol 1928 / 1936 / 1948 (military patrol 1924 was a medal event, so it stays `discontinued`; bandy becomes `demonstration-sports`) |
+| `2026-10-09_olympics-event-sports.txt` | 11 | P641 *ten-pin bowling* on the 1988 bowling event, *field lacrosse* on the five lacrosse events 1904 to 1948 (Olympedia: all were field lacrosse), *polo* on the five polo events 1900 to 1936 (they named *equestrian sport*) |
+| `2026-10-09_olympics-events-removals.txt` (after the two above) | 16 | removes the superseded values: the generic *Olympic sports discipline event* beside the demonstration class (on the four events and lacrosse 1948), and *bowling* / *lacrosse* / *equestrian sport* beside *ten-pin bowling* / *field lacrosse* / *polo*; each is a direct superclass of the new value |
+
+**Polo** was already dated through its tournaments, which name polo; the edition events get the precise value all the same, since Wikidata wants the most specific one.
 
 ### Caveats
 
@@ -262,115 +293,121 @@ Full output: `_data/athlete-tiers-run1.txt`.
 
 - **Long track speed skating** (14 Wikipedias) is the Olympic discipline called *speed skating* (60): a duplicate rather than a child, like climbing / sport climbing. Proposed: exclusion list ("duplicates speed skating"), so speed skating stands for it and short track stays its child.
 - **Nordic skiing** is an umbrella with its own events (24 editions), consistent with cycle sport and gymnastics in Summer: base, with its three disciplines as children. Fine as is.
-- **Demonstration sports:** icestock sport and speed skiing would move from `discontinued` to `demonstration-sports`, bandy too once its 1952 event carries the class.
+- **Demonstration sports:** icestock sport and speed skiing would move from `discontinued` to `demonstration-sports`, bandy too once its 1952 event carries the class (batch pending, see Candidate rule: demonstration sports).
 
 ## ➕Winter Athletes
 
 As Summer Athletes: the same base, fame proxy and filters, restricted to athletes with a Winter participation (18,812 athletes; 1,163 from 20 language Wikipedias up). Tier counts and dump sizes per season: Summer Athletes => Tier bounds.
 
-### Beyond the Olympics (both seasons)
+### Structure of the Sports category (decided 2026-10-09)
 
-**Other multi-sport events** for an `inheritsUpwards: 2` "Sports" above `olympia/` (not to build yet). Tool: `_scripts/multisport.mjs`, sports via the series' events or its editions' events:
+**Decided** (Trummler with #35, from the proposal of 2026-10-08):
 
-| Series | Sports found | Also Olympic |
+- Level 2 holds `games/` ("Games" / "Spiele", long "Multi-sport Games" / "Multisport-Spiele") and one group per sport (football, basketball, motorsport, tennis for now).
+- A series is split by season wherever it is officially split. Season-split series use `inheritsUpwards: 2, skipInherit: 1`, unsplit ones `inheritsUpwards: 1`. All of them meet at `sports/games/`, and nothing merges at `sports/`.
+- **#35 builds** every Games rubric's `sports.json`. **#39 fills** every other leaf (athletes, players, teams, drivers, circuits, the Olympic athletes too), which #35 creates empty as `plannedTopic`.
+
+```text
+sports/
+  games/                                    Merged here: "Sports" (built), "Athletes" (planned)
+    olympia/{summer,winter}/sports.json     inheritsUpwards 2, skipInherit 1 (athletes.json planned)
+    paralympics/{summer,winter}/sports.json inheritsUpwards 2, skipInherit 1
+    asian-games/{summer,winter}/sports.json inheritsUpwards 2, skipInherit 1
+    world-games/sports.json                 inheritsUpwards 1
+    commonwealth-games/sports.json          inheritsUpwards 1
+  football/ basketball/ motorsport/ tennis/ planned leaves only
+```
+
+**Winter counterparts** of the five series:
+
+| Series | Official winter counterpart | On Wikidata |
 | :---- | :---- | :---- |
-| Commonwealth Games (Q178340) | 48 | 36 |
-| European Games (Q641572) | 30 | 27 |
-| Asian Games (Q483463) | 25 | 19 |
-| World Games (Q673097) | 24 | 8 |
-| Summer Youth Olympics (Q3178415) | 15 | 14 |
-| Pan American Games (Q230186) | 14 | 11 |
-| Summer Paralympics (Q3327913) | 10 | 3 |
-| Winter Youth Olympics (Q3178414) | 7 | 7 |
-| Winter Paralympics (Q3317976) | 1 | 0 |
-| X Games (Q527512) | 0 | 0 |
+| Olympics | Winter Olympic Games | Q82414, its own series |
+| Paralympics | Winter Paralympic Games | Q3317976, its own series |
+| Asian Games | **Asian Winter Games** (Olympic Council of Asia) | Q818463, its own series with 11 editions => `asian-games/winter/` |
+| Commonwealth Games | none: the Commonwealth Winter Games (St. Moritz 1958 to 1966) were only "associated games" of the federation, not its own | Q5153879, without editions; not a season of the series |
+| World Games | none | |
 
-**Coverage:** uneven. The Paralympics hold 22 sports, the World Games over 30, the X Games' events aren't linked this way at all; these series are modelled less consistently than the Olympics, so each needs its own look before it can be built.  
-**Merging:** by sport QID, so football is one entry however many rubrics hold it. The 42 non-Olympic sports found are mostly World Games sports (fistball, orienteering, sumo, canoe polo, …), Commonwealth ones (netball, bowls), Asian Games ones (xiangqi, dragon boat) and Para variants (wheelchair basketball, Para judo). The Para variants are subclasses (P279) of their Olympic sport (wheelchair basketball, Para judo, Para athletics, para taekwondo, adaptive wrestling, Para cross-country skiing; not dartchery or powerlifting), so they would fall under a `child-discipline`-like rule rather than stand beside it; the finds also include events and umbrellas (100 metres, long jump, cycling) for an exclusion list, as with the Olympics.  
-**Candidates in order of value:** Paralympics (a season split like the Olympics, few new names but a known event), World Games (the most new sports), Commonwealth Games (netball, bowls), Asian Games; the Youth Olympics add little (beach handball).
-
-### Structure of the Sports category (proposal, 2026-10-08)
-
-**The problem.** Every topic elsewhere sits at least two levels down (`<category>/<rubric>/<topic>`, or deeper like `geography/human/africa/countries.json`). A list merged directly under `sports/` would be the only topic on the second, default-expanded level. So a grouping level is needed between `sports/` and the rubrics, and every merge has to land at or below it.  
-**Tool:** `_scripts/sports-structure.mjs` (people per candidate rubric, and how many clear the athletes' floor of 20 language Wikipedias; output `_data/sports-structure-run1.txt`).
-
-**What Wikidata separates cleanly:**
-
-- **The competition's sport (P641).** Every single-sport competition checked has exactly one: FIFA World Cup, UEFA Champions League, Premier League, La Liga => football; NBA => basketball; NFL => American football; MLB => baseball; Wimbledon => tennis; Formula One => auto racing; Tour de France => road bicycle racing.
-  - The multi-sport series have none (Commonwealth, Asian, World Games) or a stray one (Summer Olympics: archery, 3x3 basketball, figure skating; Winter Olympics: *winter sport*).
-  - So "one sport or several" is a clean split.
-- **The class of a multi-sport edition.** Editions of other Games are instances of *multi-sport event* (Q167170). The Olympic editions have their own classes instead.
-- **The series level is untidy.**
-  - Editions link to their series four different ways: P31 for the Paralympics and the Tour de France, P179 for the Commonwealth Games, P3450 for the Asian and World Games, and both for the World Cup.
-  - The series' own classes are mixed, so a group can't come from a class query: the FIFA World Cup is typed *recurring international multi-sports competition*, while the Olympics and the Commonwealth Games are not. Which rubrics exist stays a curated choice, as it already is.
-
-**Who each candidate reaches** (people with a participation, or a player of a league's team; then those with ≥ 20 Wikipedias, and how many of those are Olympians anyway):
+**Who the leaves would reach** (2026-10-08, `_scripts/sports-structure.mjs`; people with a participation, then those with ≥ 20 Wikipedias, and how many of those are Olympians anyway):
 
 | Rubric | People | ≥ 20 | Olympians among them |
 | :---- | ----: | ----: | ----: |
 | Summer / Winter Olympics | 115,641 / 18,812 | 7,598 / 1,163 | (all) |
 | Summer / Winter Paralympics | 4,751 / 733 | 21 / 3 | 10 / 1 |
-| Summer / Winter Youth Olympics | 1,109 / 2,257 | 41 / 24 | 34 / 19 |
 | World Games | 399 | 12 | 9 |
 | Commonwealth Games | 7,934 | 345 | 317 |
 | Asian Games | 7,832 | 564 | 466 |
-| Pan American Games | 3,883 | 137 | 113 |
-| European Games / Mediterranean Games | 587 / 1,539 | 41 / 72 | 35 / 64 |
-| FIFA World Cup | 9,075 | **5,700** | 922 |
+| FIFA World Cup | 9,075 | 5,700 | 922 |
 | Premier League / La Liga / Serie A / Bundesliga (all-time players) | 14,543 / 8,325 / 11,061 / 6,106 | 2,290 / 1,959 / 1,703 / 1,356 | 228 / 280 / 275 / 154 |
 | NBA / NHL / NFL / MLB (all-time players) | 4,332 / 8,135 / 20,809 / 16,838 | 738 / 189 / 76 / 54 | 227 / 145 / 11 / 7 |
 | Formula One drivers / tennis players (occupation) | 1,075 / 15,875 | 512 / 1,053 | 3 / 648 |
-| Tour de France | 1,105 | 341 | 214 |
 
-What this means for the athletes lists:
+**For #39's people leaves:**
+- Under the absolute bands, a Para athletes list stays tiny (21 at the floor). The other Games add at most 98 new names each beyond the Olympics.
+- League player lists aren't clean: a club's P54 players include its seasons outside the league.
+- Team lists need a P31 filter, because P118 also hangs on games and seasons (the NBA has 77,381 P118 subjects but 30 current teams). Football clubs are classed under *sports club*, not *sports team*, so their filter needs both classes.
 
-- **Other Games add few famous athletes.** The Asian Games add the most beyond the Olympics: 98 at the floor. The Paralympics have 21 athletes at the floor in Summer and 3 in Winter. Under the absolute bands, Para athletes can't have a list of their own.
-- **The famous non-Olympians are in single-sport competitions:** footballers (World Cup 5,700 at the floor, only 922 of them Olympians), Formula One drivers (3 Olympians among 512), NFL and MLB players.
+<details><summary><i>the proposal as sent (2026-10-08): why Games beside groups by sport</i></summary>
 
-**Proposal: Games beside one group per sport.**
+- **The competition's sport (P641)** is clean: every single-sport competition checked has exactly one (FIFA World Cup, Champions League, Premier League, La Liga => football; NBA => basketball; NFL => American football; MLB => baseball; Wimbledon => tennis; Formula One => auto racing; Tour de France => road bicycle racing). The multi-sport series have none or a stray one, so "one sport or several" is a clean split, and level 2 mirrors the franchises of the other categories.
+- **The series level is untidy** (classes mixed, editions linked four ways), so which rubrics exist stays a curated choice.
+- **Left out then:** Youth Olympics (only Olympic sports, 41 / 24 athletes at the floor), X Games (no events linked), the national Games, Pan American / European / Mediterranean Games (few new sports, at most 24 new athletes). The Winter Paralympics, also left out then, are in since the decision: their thin data is Wikidata's gap to close.
+- Earlier sport counts per series (`_scripts/multisport.mjs`, series- and edition-level events): Commonwealth 48, European 30, Asian 25, World Games 24, Summer Youth 15, Pan American 14, Summer Paralympics 10, Winter Youth 7, Winter Paralympics 1, X Games 0. The edition-level recipe below reads far more.
 
-```text
-sports/
-  games/                                   Merged here: "Sports", "Athletes" (level 3)
-    olympia/summer/{sports,athletes}.json  inheritsUpwards 2, skipInherit 1
-    olympia/winter/{sports,athletes}.json  inheritsUpwards 2, skipInherit 1
-    paralympics/summer/sports.json         inheritsUpwards 2, skipInherit 1
-    world-games/sports.json                inheritsUpwards 1
-    commonwealth-games/sports.json         inheritsUpwards 1
-    asian-games/sports.json                inheritsUpwards 1
-  football/                                Merged here (once two rubrics hold one): "Players", "Clubs"
-    world-cup/{players,teams}.json         players: inheritsUpwards 1; teams = national teams, own stem
-    clubs.json                             or one leaf per league, inheritsUpwards 1
-  basketball/nba/teams.json                single rubric: no inheritsUpwards
-  american-football/nfl/teams.json
-  motorsport/formula-one/{drivers,circuits}.json
-  tennis/players.json
-```
+</details>
 
-**How the pieces fit:**
+### Games recipe (one generalized dump, 2026-10-09)
 
-- **Groups.** Level 2 holds `games/` and one group per sport, taken from the competitions' P641. That mirrors the other categories, where level 2 is a franchise (`gaming/pokemon/`, `comics/dc/`). A sport group only appears once a rubric of that sport is built, so the list grows with the candidates (Football Clubs, NBA / NFL Teams, Formula One Drivers / Circuits, Tennis Players).
-- **Families meet at the group, never at `sports/`.** So no merge lands on the second level.
-  - The season-split Games use `inheritsUpwards: 2, skipInherit: 1`, which skips the series level. Unsplit Games use `inheritsUpwards: 1`. Both meet at `sports/games/`.
-  - There is no "all athletes" list across groups: Messi appears in Games Athletes and in Football Players.
-- **Bands.** Families are per group (`games::athletes`, `football::players`, …). The validator therefore only binds bands inside a group. Using the athletes' absolute bands for every people list keeps the lists comparable anyway.
-- **Seasons stay below the series** (`olympia/summer/`), not as a group of their own. A Games group split by season would separate the merged "Sports" again.
+**Tool:** `_scripts/games-recipe.mjs` (output `_data/games-recipe-run1.txt`).
 
-**Leave out (for now):**
+| Series / season | QID | Editions link by | Dated editions | Current => next | Sports from edition events, depth 1 / 2 / together | Series-level events' sports | At the current edition |
+| :---- | :---- | :---- | ----: | :---- | :---- | ----: | ----: |
+| Olympics summer | Q159821 | P3450 (3 also P179) | 37 | 2024 Paris => 2028 | 101 / 78 / 115 | 66 | 47 |
+| Olympics winter | Q82414 | P3450 (1 also P179) | 30 | 2026 => 2030 | 29 / 22 / 33 | 20 | 23 |
+| Paralympics summer | Q3327913 | P31 (1 also P3450) | 19 | 2024 => 2028 | 53 / 43 / 57 | 10 | 25 |
+| Paralympics winter | Q3317976 | P31 | 16 | 2026 => 2034 (2030 unlinked: batch) | 19 / 10 / 20 | 1 | 8 |
+| World Games | Q673097 | P3450 | 13 | 2025 Chengdu => 2029 | 93 / 44 / 94 | 24 | 48 |
+| Commonwealth Games | Q178340 | P179 (21), P3450 (4), P31 (2) | 26 | 2026 Glasgow => 2030 | 40 / 36 / 47 | 14 | 12 |
+| Asian Games (summer) | Q483463 | P3450 | 22 | 2026 Aichi-Nagoya => 2030 | 72 / 76 / 91 | 25 | 55 |
+| Asian Winter Games | Q818463 | P3450 (1 P31) | 11 | 2025 Harbin => 2029 | 14 / 16 / 19 | 13 | 7 |
 
-- **Youth Olympics:** only Olympic sports, and 41 / 24 athletes at the floor, mostly Olympians.
-- **X Games:** no events linked.
-- **The national Games** (Japan's National Sports Festival, China's National Games, …), although they are typed *multi-sport event*.
-- **Winter Paralympics:** 1 sport found, 3 athletes.
-- **Pan American, European and Mediterranean Games:** few sports that aren't Olympic, and at most 24 new athletes.
-- **Athletes leaves for any Games but the Olympics:** at most 98 new names each. The Games' value is their sports.
-- **League player lists:** a club's P54 players include its seasons outside the league (promotion, relegation), so "played in the Premier League" can't be read off cleanly. Club and team lists are clean once a class filter is added:
-  - P118 also hangs on games and seasons: the NBA has 77,381 P118 subjects, but 30 teams that aren't dissolved once P31 is restricted to *sports team*.
-  - Football clubs are classed under *sports club* rather than *sports team*, so their filter needs both classes.
+**The recipe, the same for every series:**
 
-**QuickStatements candidates** (sources pending):
+1. **Editions** are the items linked to the series by P31, P179 or P3450 that carry a date. Read P580 first: P585 is often only a year (2024-01-01).
+   - Never by P361 alone, because P361 also links the series' own events: "finswimming at the World Games", a 1920 "Antwerp Ceremony" under the Winter Games, two such items under the Summer Paralympics.
+   - Editions without any event: the cancelled 1916 / 1940 / 1944 Olympics, the 2022 Asian Winter Games that never took place, and announced ones.
+2. **Sports** are the P641 of the events one P361 level below every edition, plus the series' own events (P361 the series). Two levels below only for the current and upcoming editions, as #35 does for the Olympics today: at older editions that level names single events (high jump).
+   - The series level alone reads almost nothing outside the Olympics (Winter Paralympics: 1 sport), so the edition level is the base everywhere.
+   - **For the Olympics this adds sports the current dump misses:** 22 in Summer and 4 in Winter that were held once, mostly as demonstrations (Gaelic football and hurling 1904, glima 1912, canne de combat 1924, gliding and field handball 1936, pesäpallo 1952, Australian rules football 1956, budō 1964, wushu 2008, ballooning and pigeon racing 1900; skijoring, sled dog racing, winter pentathlon, Para alpine skiing 1984). They then fall under `demonstration-sports` or `discontinued`.
+3. **Current edition** is the latest edition begun, and `discontinued` / `future-disciplines` read off it as for the Olympics. Asian Winter Games 2025 carried only a year (batch below).
+4. **Exclusion list**, per series in the same visible file:
+   - delegation items ("Germany at the 1956 Summer Olympics", P641 *Olympic sport*);
+   - art competitions;
+   - single events (high jump, relay race);
+   - umbrellas (*skiing*, *Para sport*).
+   - A class test can't do it: taekwondo, karate, jujutsu, aikido, dragon boat and flying disc aren't classed under *sport* on Wikidata (martial arts and the like). That is modelling, not an error.
 
-- FIFA World Cup as *recurring international multi-sports competition*, and the 2018 World Cup as *expansion add-on* (the video game's DLC);
-- the Summer Olympics' stray P641 values.
+**Where a rule reads differently:**
+
+- **`discontinued` on the Commonwealth Games.** Glasgow 2026 held a cut programme (12 sports read, against 40 at depth 1 overall). So hockey, cricket, squash, badminton and others read as discontinued, though the federation hasn't dropped them. Neither a generic rule nor Wikidata data can tell a trimmed edition from a dropped sport. Two options:
+  - "Not held at either of the last two editions", the same for every series. For the Olympics this would also keep karate (2020 only) out of `discontinued`.
+  - Accept the reading as the data says it.
+- **`demonstration-sports`** only finds members at the Olympics: no other series classes its demonstration events. Same rule, empty elsewhere.
+- **`future-disciplines`** needs the next edition's events. Only the Olympics have them yet (2028, part of 2030), so it is empty elsewhere.
+- **`child-discipline`** reads the same: the Para variants are P279 children of their Olympic sport, but a parent counts only within the same list, so wheelchair basketball stays base in the Paralympics list.
+
+**Wikidata batches from this pass** (`_data/QuickStatements/`, pending import):
+
+| Batch | Edits | What |
+| :---- | ----: | :---- |
+| `2026-10-09_paralympics-2030-winter-series.txt` | 1 | the 2030 Winter Paralympics as an edition (P31) of the Winter Paralympic Games, like the other editions (IPC) |
+| `2026-10-09_asian-winter-games-2025-dates.txt` | 2 | start and end date of the 2025 Asian Winter Games, 7 to 14 February 2025 (Olympic Council of Asia) |
+| `2026-10-09_paralympics-ice-sledge-racing.txt` | 1 | P641 *ice sledge racing* on the 1994 ice sledge speed racing event, which named the sled (IPC results) |
+| `2026-10-09_games-sport-values-removals.txt` | 6 | P641 values that are no sport: the sled (after the batch above), the event class "men's 100 metre backstroke S10" (twice), a competition item on two rhythmic gymnastics events that also name the sport, *culture shock* on the 2002 Commonwealth Games' cultural programme |
+| `2026-10-09_fifa-world-cup-class-removal.txt` | 1 | the FIFA World Cup as *recurring international multi-sports competition*: it is a single-sport competition |
+
+**Left as they are:**
+- The Summer Olympics' stray P641 values (archery, 3x3 basketball, figure skating) on the series item. They are wrong as a description, but a series of many sports has no single value to put instead; a manual cleanup, not a batch.
+- The cultural programme's *sport competition* class: its right class is a judgement call.
 
 ## [to Navigation](#navigation)
