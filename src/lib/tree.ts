@@ -2,7 +2,7 @@
 // the `inheritsUpwards` synthesis: which merged topics to hang in it, and how to
 // assemble one from its contributors.
 
-import type { Group, Omission, TopicSummary, WordEntry } from "./types";
+import type { CategoryMeta, Group, Omission, TopicSummary, WordEntry } from "./types";
 import { renderEntry } from "./words";
 
 /** One level of the category tree. Renders as a single collapsible node showing
@@ -302,6 +302,22 @@ export function ancestorPaths(category: string): string[] {
 
 /** Depth of a node below the root: top-level categories are 0. */
 export const catDepth = (node: CatNode): number => node.path.split("/").length - 1;
+
+/** Whether a category starts open: the top level does, and so does every
+ *  `unfoldsWithParent` category whose parent starts open. */
+export function opensByDefault(path: string, categories: Record<string, CategoryMeta>): boolean {
+  const cut = path.lastIndexOf("/");
+  if (cut < 0) return true;
+  return !!categories[path]?.unfoldsWithParent && opensByDefault(path.slice(0, cut), categories);
+}
+
+/** The categories that open along with `node`: its `unfoldsWithParent` children,
+ *  and theirs in turn. */
+export function unfoldingWith(node: CatNode, categories: Record<string, CategoryMeta>): string[] {
+  return node.children
+    .filter((c) => categories[c.path]?.unfoldsWithParent)
+    .flatMap((c) => [c.path, ...unfoldingWith(c, categories)]);
+}
 
 /** Fallback display name for a category with no `_category.json` title. */
 export const titleCase = (seg: string): string =>

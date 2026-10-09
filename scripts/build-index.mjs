@@ -174,6 +174,7 @@ async function readCategoryMeta(path) {
   if (typeof data.hideRulersByDefault === "boolean") meta.hideRulersByDefault = data.hideRulersByDefault;
   if (typeof data.hideRulers === "boolean") meta.hideRulers = data.hideRulers;
   if (data.sharedEnglishToggle) meta.sharedEnglishToggle = true;
+  if (data.unfoldsWithParent) meta.unfoldsWithParent = true;
   return meta;
 }
 

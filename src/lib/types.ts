@@ -98,6 +98,8 @@ export interface CategoryMeta {
    *  to the reader's secondary language at once (English-only once, hence the name).
    *  See lib/languages/secondary. */
   sharedEnglishToggle?: boolean;
+  /** Whether this category opens together with its parent. See lib/tree `unfoldingWith`. */
+  unfoldsWithParent?: boolean;
 }
 
 /** The generated manifest the frontend loads first. */

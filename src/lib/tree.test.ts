@@ -1,5 +1,16 @@
 import { describe, expect, it } from "vitest";
-import { ancestorPaths, buildTree, catDepth, liftControls, mergeGroups, pruneTree, synthesizeTopics, titleCase } from "./tree";
+import {
+  ancestorPaths,
+  buildTree,
+  catDepth,
+  liftControls,
+  mergeGroups,
+  opensByDefault,
+  pruneTree,
+  synthesizeTopics,
+  titleCase,
+  unfoldingWith,
+} from "./tree";
 import type { Group, TopicSummary } from "./types";
 
 const topic = (id: string, category: string): TopicSummary => ({
@@ -382,6 +393,33 @@ describe("catDepth", () => {
     expect(catDepth(gaming)).toBe(0);
     expect(catDepth(gaming.children[0])).toBe(1);
     expect(catDepth(gaming.children[0].children[0])).toBe(2);
+  });
+});
+
+describe("unfoldsWithParent", () => {
+  const categories = {
+    "sports/games/olympia/summer": { unfoldsWithParent: true },
+    "sports/games/olympia/winter": { unfoldsWithParent: true },
+    "geography/human": { unfoldsWithParent: true },
+  };
+
+  it("opens the flagged children along with their parent, and only those", () => {
+    const root = buildTree([
+      topic("a", "sports/games/olympia/summer"),
+      topic("b", "sports/games/olympia/winter"),
+      topic("c", "sports/games/world-games"),
+    ]);
+    const games = root.children[0].children[0];
+    const olympia = games.children.find((c) => c.path.endsWith("olympia"))!;
+    expect(unfoldingWith(olympia, categories)).toEqual(["sports/games/olympia/summer", "sports/games/olympia/winter"]);
+    expect(unfoldingWith(games, categories)).toEqual([]);
+  });
+
+  it("starts a flagged category open only below one that starts open", () => {
+    expect(opensByDefault("sports", categories)).toBe(true);
+    expect(opensByDefault("geography/human", categories)).toBe(true);
+    expect(opensByDefault("sports/games", categories)).toBe(false);
+    expect(opensByDefault("sports/games/olympia/summer", categories)).toBe(false);
   });
 });
 

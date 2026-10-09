@@ -216,7 +216,7 @@ export function serializeTopic(topic, warn = (m) => console.warn(`serialize: ${m
 }
 
 /** Field order for a category's `_category.json`, mirroring schema/category.schema.json. */
-const CATEGORY_KEYS = ["title", "icon", "order", "hideRulersByDefault", "hideRulers", "sharedEnglishToggle"];
+const CATEGORY_KEYS = ["title", "icon", "order", "hideRulersByDefault", "hideRulers", "unfoldsWithParent", "sharedEnglishToggle"];
 
 /** Serialize a category sidecar, ending in a newline: its title a line per language,
  *  everything else inline. An unknown key is written through and reported, as for a

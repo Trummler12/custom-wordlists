@@ -27,7 +27,7 @@ import { fitSeparator, type SeparatorRules } from "../lib/separator";
 import { groupEntries, groupHasNames, renderCount } from "../lib/words";
 import { depthFromKey, depthFromPointer, skipCollapsed, snapPositions } from "../lib/fame";
 import { rulerHiddenByDefault } from "../lib/rulers";
-import { catDepth, type CatNode } from "../lib/tree";
+import { opensByDefault, unfoldingWith, type CatNode } from "../lib/tree";
 import type { Group, NamesMode, TopicSummary, WordEntry } from "../lib/types";
 import { lang } from "./lang.svelte";
 import { settings } from "./settings.svelte";
@@ -92,10 +92,12 @@ class SelectionState {
   /** Only top-level categories start open, so the second level (gaming → pokemon)
    *  shows up but its contents stay collapsed until the user drills in. */
   catOpen(node: CatNode): boolean {
-    return this.catExpanded[node.path] ?? catDepth(node) === 0;
+    return this.catExpanded[node.path] ?? opensByDefault(node.path, topics.categories);
   }
   toggleCat(node: CatNode): void {
-    this.catExpanded[node.path] = !this.catOpen(node);
+    const open = !this.catOpen(node);
+    this.catExpanded[node.path] = open;
+    if (open) for (const path of unfoldingWith(node, topics.categories)) this.catExpanded[path] = true;
   }
 
   // --- Names mode ------------------------------------------------------------
