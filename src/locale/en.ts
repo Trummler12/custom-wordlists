@@ -14,6 +14,7 @@ export const en: UIStrings = {
     toggle: (expanded, title) => `${expanded ? "Collapse" : "Expand"} ${title}`,
     loadingShort: "loading…",
     wordsOf: (selected, total) => `${selected} of ${total} word${total === 1 ? "" : "s"}`,
+    duplicatesRemoved: (count) => `${count} duplicate${count === 1 ? "" : "s"} removed`,
     incompleteTopic: (url) => `This topic is marked as incomplete.{br}[Help us add what's missing!](${url})`,
     plannedTopic: (url) => `This topic is planned, but not ready yet.{br}[Help us prepare its data!](${url})`,
     incompleteCategory: (url) =>

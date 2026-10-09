@@ -15,6 +15,7 @@ export const de: UIStrings = {
     toggle: (expanded, title) => `${title} ${expanded ? "einklappen" : "ausklappen"}`,
     loadingShort: "lädt…",
     wordsOf: (selected, total) => `${selected} von ${total} ${total === 1 ? "Wort" : "Wörtern"}`,
+    duplicatesRemoved: (count) => `${count} ${count === 1 ? "Duplikat" : "Duplikate"} entfernt`,
     incompleteTopic: (url) =>
       `Dieses Thema ist als unvollständig markiert.{br}[Hilf uns, das Fehlende zu ergänzen!](${url})`,
     plannedTopic: (url) => `Dieses Thema ist geplant, aber noch nicht bereit.{br}[Hilf uns, seine Daten vorzubereiten!](${url})`,

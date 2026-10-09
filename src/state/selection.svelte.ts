@@ -305,6 +305,13 @@ class SelectionState {
     const gs = topics.groupsOf(t);
     return gs.length ? gs.reduce((n, g) => n + this.groupTotal(t.id, g), 0) : t.wordCount;
   }
+  /** How many entries a merged topic counts once that its lists hold more than once (football
+   *  sits in five Games lists): the gap between its members' totals and its own. */
+  topicDuplicates(t: TopicSummary): number {
+    if (!topics.isSynth(t.id)) return 0;
+    const sum = topics.contributorsOf(t.id).reduce((n, c) => n + this.topicTotal(c), 0);
+    return Math.max(0, sum - this.topicTotal(t));
+  }
   topicFull(t: TopicSummary): boolean {
     const gs = topics.groupsOf(t);
     return gs.length > 0 && gs.every((g) => this.groupFull(t.id, g));

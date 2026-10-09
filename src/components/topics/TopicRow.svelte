@@ -119,6 +119,14 @@
   // A planned topic is announced, not offered: its row says so and nothing on it acts.
   const planned = $derived(!!topic.plannedTopic);
   const plannedTitle = $derived(planned ? plain(lang.ui.tree.plannedUnselectable) : undefined);
+  // A merged topic counts the entries its lists share once, so its total falls short of
+  // theirs; the hover says by how much.
+  const countTitle = $derived.by(() => {
+    const words = plain(lang.ui.tree.wordsOf(selection.topicSelCount(topic), selection.topicTotal(topic)));
+    const dupes = topics.isReady(topic) ? selection.topicDuplicates(topic) : 0;
+    return dupes ? `${words}
+${plain(lang.ui.tree.duplicatesRemoved(dupes))}` : words;
+  });
   const statusTipId = $derived(`status-${topic.id}`);
   const statusNote = $derived(
     planned
@@ -235,11 +243,7 @@
     <span
       class="meta"
       class:disabled={planned}
-      title={plain(
-        planned
-          ? lang.ui.tree.plannedUnselectable
-          : lang.ui.tree.wordsOf(selection.topicSelCount(topic), selection.topicTotal(topic)),
-      )}
+      title={planned ? plannedTitle : countTitle}
     >
       {#if !topics.isReady(topic)}<Msg text={lang.ui.tree.loadingShort} />{:else}{selection.topicSelCount(
           topic,
