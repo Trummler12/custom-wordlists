@@ -1,6 +1,6 @@
 # Name-quality report — data-raw/geography
 
-Generated 2026-09-02 by `scripts/geography/report-name-quality.mjs` (read-only). A worklist of the Wikidata issues the country and capital dumps hit — fix at the source, re-dump, and the entry here (and any override it carries) falls away.
+Generated 2026-10-09 by `scripts/geography/report-name-quality.mjs` (read-only). A worklist of the Wikidata issues the country and capital dumps hit — fix at the source, re-dump, and the entry here (and any override it carries) falls away.
 
 ## Codes mis-filed as names — new — 0
 
@@ -14,9 +14,8 @@ No usable name in these languages, so the list falls back to English (⚠️ in 
 
 | entity | missing | Wikidata |
 | --- | --- | --- |
-| Q141191391 (country) | en, de, es, it, ja, ko, zh-Hans, zh-Hant | [Q141191391](https://www.wikidata.org/wiki/Q141191391) |
+| Iraqi Kurdistan (country) | es | [Q205047](https://www.wikidata.org/wiki/Q205047) |
 | Jersey (country) | de, es, it | [Q785](https://www.wikidata.org/wiki/Q785) |
-| Transnistria (country) | de, zh-Hant | [Q648767](https://www.wikidata.org/wiki/Q648767) |
 | Abuja (capital) | de, it | [Q3787](https://www.wikidata.org/wiki/Q3787) |
 | Dodoma (capital) | zh-Hant | [Q3866](https://www.wikidata.org/wiki/Q3866) |
 | Sri Jayawardenepura Kotte (capital) | zh-Hant | [Q41963](https://www.wikidata.org/wiki/Q41963) |
@@ -24,6 +23,7 @@ No usable name in these languages, so the list falls back to English (⚠️ in 
 | Kigali (capital) | zh-Hant | [Q3859](https://www.wikidata.org/wiki/Q3859) |
 | Porto-Novo (capital) | zh-Hant | [Q3799](https://www.wikidata.org/wiki/Q3799) |
 | Juba (capital) | zh-Hant | [Q1947](https://www.wikidata.org/wiki/Q1947) |
+| Oslo (capital) | de, es, fr, it | [Q585](https://www.wikidata.org/wiki/Q585) |
 | Ciudad de la Paz (capital) | zh-Hant | [Q1140136](https://www.wikidata.org/wiki/Q1140136) |
 | Moroni (capital) | zh-Hant | [Q3901](https://www.wikidata.org/wiki/Q3901) |
 | São Tomé (capital) | zh-Hant | [Q3932](https://www.wikidata.org/wiki/Q3932) |
@@ -37,7 +37,7 @@ No usable name in these languages, so the list falls back to English (⚠️ in 
 | Philipsburg (capital) | zh-Hant | [Q30958](https://www.wikidata.org/wiki/Q30958) |
 | Alofi (capital) | zh-Hant | [Q30966](https://www.wikidata.org/wiki/Q30966) |
 | North Nicosia (capital) | zh-Hant | [Q2762100](https://www.wikidata.org/wiki/Q2762100) |
-| Saipan (capital) | de, es, it, ja, ko, zh-Hans, zh-Hant | [Q49755159](https://www.wikidata.org/wiki/Q49755159) |
+| Saipan (capital) | es, it, ja, ko, zh-Hans, zh-Hant | [Q49755159](https://www.wikidata.org/wiki/Q49755159) |
 | Cockburn Town (capital) | zh-Hant | [Q34205](https://www.wikidata.org/wiki/Q34205) |
 | The Valley (capital) | zh-Hant | [Q30994](https://www.wikidata.org/wiki/Q30994) |
 | Plymouth (capital) | zh-Hant | [Q30990](https://www.wikidata.org/wiki/Q30990) |
@@ -51,7 +51,7 @@ Where `name-overrides.json` asserts a name because Wikidata's label is a formal/
 
 | entity | overridden langs | promotable | Wikidata |
 | --- | --- | --- | --- |
-| China | en, de, es, fr, ja, ko, zh-Hans, zh-Hant | fr, ko, zh-Hans, zh-Hant | [Q148](https://www.wikidata.org/wiki/Q148) |
+| China | en, de, es, fr, ja, ko, zh-Hans, zh-Hant | en, fr, ko, zh-Hans, zh-Hant | [Q148](https://www.wikidata.org/wiki/Q148) |
 | United States | ja | ja | [Q30](https://www.wikidata.org/wiki/Q30) |
 | Indonesia | zh-Hant | — | [Q252](https://www.wikidata.org/wiki/Q252) |
 | Bangladesh | zh-Hant | zh-Hant | [Q902](https://www.wikidata.org/wiki/Q902) |
@@ -65,7 +65,7 @@ Where `name-overrides.json` asserts a name because Wikidata's label is a formal/
 | Ivory Coast | es, ja | — | [Q1008](https://www.wikidata.org/wiki/Q1008) |
 | Australia | ko, zh-Hant | ko, zh-Hant | [Q408](https://www.wikidata.org/wiki/Q408) |
 | North Korea | ko, zh-Hans, zh-Hant | ko, zh-Hans, zh-Hant | [Q423](https://www.wikidata.org/wiki/Q423) |
-| Taiwan | es, ja, ko, zh-Hans, zh-Hant | es, ja, ko, zh-Hans, zh-Hant | [Q865](https://www.wikidata.org/wiki/Q865) |
+| Taiwan | es, ja, ko, zh-Hans, zh-Hant | es, ko, zh-Hans, zh-Hant | [Q865](https://www.wikidata.org/wiki/Q865) |
 | Mali | ja | ja | [Q912](https://www.wikidata.org/wiki/Q912) |
 | Kazakhstan | es | — | [Q232](https://www.wikidata.org/wiki/Q232) |
 | Netherlands | en, de, es, fr, it, ja, ko, zh-Hans, zh-Hant | en, de, fr, it | [Q29999](https://www.wikidata.org/wiki/Q29999) |
@@ -80,7 +80,7 @@ Where `name-overrides.json` asserts a name because Wikidata's label is a formal/
 | Palestine | fr, it, ja | fr, it | [Q219060](https://www.wikidata.org/wiki/Q219060) |
 | Mongolia | ja, zh-Hant | ja, zh-Hant | [Q711](https://www.wikidata.org/wiki/Q711) |
 | Guinea-Bissau | ja, ko | ja | [Q1007](https://www.wikidata.org/wiki/Q1007) |
-| Kosovo | ja | — | [Q1246](https://www.wikidata.org/wiki/Q1246) |
+| Kosovo | ja | ja | [Q1246](https://www.wikidata.org/wiki/Q1246) |
 | Timor-Leste | es, fr | — | [Q574](https://www.wikidata.org/wiki/Q574) |
 | Eswatini | es | es | [Q1050](https://www.wikidata.org/wiki/Q1050) |
 | Bahamas | en | en | [Q778](https://www.wikidata.org/wiki/Q778) |
@@ -94,7 +94,7 @@ Where `name-overrides.json` asserts a name because Wikidata's label is a formal/
 | Jersey | ko | ko | [Q785](https://www.wikidata.org/wiki/Q785) |
 | Guernsey | ko | ko | [Q25230](https://www.wikidata.org/wiki/Q25230) |
 | Cook Islands | ko | ko | [Q26988](https://www.wikidata.org/wiki/Q26988) |
-| Abkhazia | ko | ko | [Q23334](https://www.wikidata.org/wiki/Q23334) |
+| Abkhazia | ko | — | [Q31354462](https://www.wikidata.org/wiki/Q31354462) |
 | Northern Cyprus | de | de | [Q23681](https://www.wikidata.org/wiki/Q23681) |
 | Puerto Rico | it | it | [Q1183](https://www.wikidata.org/wiki/Q1183) |
 | French Polynesia | ja | ja | [Q30971](https://www.wikidata.org/wiki/Q30971) |
@@ -112,25 +112,25 @@ Where `name-overrides.json` asserts a name because Wikidata's label is a formal/
 | St. John's | de | — | [Q36262](https://www.wikidata.org/wiki/Q36262) |
 | Kingston | zh-Hant | — | [Q30963](https://www.wikidata.org/wiki/Q30963) |
 
-## Stale entries — safe to remove — 0
+## Stale entries — safe to remove — 2
 
 Curated rules the data no longer needs — a Wikidata fix (or a dump change) landed, so these compensations do nothing now and can be deleted.
 
-_None._
+- `name-abbreviations.json` **acknowledged** no longer in the data: `TW`, `TWN`
 
 ## Filtered from the build — for reference
 
 What the build drops from the raw dump over the content languages. Nothing is lost — the raw `country-names.json` / `capital-names.json` keep every term.
 
-**Unflagged aliases — 6158 drop(s), 5527 distinct.** `skos:altLabel` with no pref/official/short flag: ignored by design, the discardable flood (`Red China`, `Rotchina`, `cn`). Count only; a common name genuinely hiding here would need a label or short-name flag on Wikidata to surface.
+**Unflagged aliases — 6551 drop(s), 5875 distinct.** `skos:altLabel` with no pref/official/short flag: ignored by design, the discardable flood (`Red China`, `Rotchina`, `cn`). Count only; a common name genuinely hiding here would need a label or short-name flag on Wikidata to surface.
 
 What is left — flagged code-like names that still get dropped — falls in two kinds, listed as `` `code` (langs) ``:
 
-### Invalid on Wikidata — 24
+### Invalid on Wikidata — 22
 
 Filed under P1813 (short name) but really an ISO/technical code, practically never spoken; they belong in P297 / P298. Reviewed into `name-abbreviations.json` `acknowledged`; clean up on Wikidata when convenient.
 
-`AG` (en); `AS` (en); `AUS` (en); `B` (de); `B&H` (en); `BH` (fr); `DRK` (de); `DVRK` (de); `EC` (en); `ECU` (en, fr); `FM` (en); `GU` (en); `HKSAR` (en); `MH` (en); `MYS` (en); `NG` (en); `NIC` (en); `PW` (en); `RIM` (fr); `RP` (en); `TERRITOIRE DE LA POLYNESIE FRANCAISE` (fr); `TW` (en); `TWN` (en); `W` (de)
+`AG` (en); `AS` (en); `AUS` (en); `B` (de); `B&H` (en); `BH` (fr); `DRK` (de); `DVRK` (de); `EC` (en); `ECU` (en, fr); `FM` (en); `GU` (en); `HKSAR` (en); `MH` (en); `MYS` (en); `NG` (en); `NIC` (en); `PW` (en); `RIM` (fr); `RP` (en); `TERRITOIRE DE LA POLYNESIE FRANCAISE` (fr); `W` (de)
 
 ### Valid but unsuitable for skribbl — 5
 

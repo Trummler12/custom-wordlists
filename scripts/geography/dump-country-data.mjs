@@ -11,7 +11,8 @@
 //
 // country-names.json / capital-names.json are the faithful raw picture, keyed by Q-id: every
 // term Wikidata carries — rdfs:label (pref), skos:altLabel (alias), P1448 (official), P1813
-// (short) — for every language skribbl supports (base-tag filter, so zh / zh-hans / zh-cn,
+// (short), and the title of the item's article in that language's Wikipedia (title) — for
+// every language skribbl supports (base-tag filter, so zh / zh-hans / zh-cn,
 // pt / pt-br all ride in on their base). Nothing is filtered here on purpose: the build
 // decides which forms count and which languages it targets, so a missing or odd tag stays
 // visible in the raw file for report-name-quality.mjs to flag. Casing and the one-continent
@@ -59,7 +60,8 @@ const SKRIBBL = [
 
 /** Every term for a chunk of items in the supported languages. `pref`/`official`/`short` are
  *  the flags the bucketer reads; `alias` (skos:altLabel) rides along unflagged for the report
- *  and transparency. The language sits on each term's tag. */
+ *  and transparency. The language sits on each term's tag. The article titles (`title`) come
+ *  from the entity API instead (articleTitles): through SPARQL they time out. */
 const NAMES = (values) => `SELECT ?item ?lang ?term ?type WHERE {
   VALUES ?item { ${values} }
   { ?item rdfs:label ?term. BIND("pref" AS ?type) }
@@ -77,17 +79,51 @@ async function query(sparql, tries = 5) {
     let res;
     try {
       res = await fetch(url, { headers: UA });
+      // The body inside the try too: an answer cut off mid-way (a query timing out after
+      // its headers went out) fails here.
+      if (res.ok) return (await res.json()).results.bindings;
     } catch (err) {
       if (attempt >= tries) throw err;
       await sleep(attempt * 2000);
       continue;
     }
-    if (res.ok) return (await res.json()).results.bindings;
     if (attempt >= tries || ![429, 500, 502, 503, 504].includes(res.status)) {
       throw new Error(`HTTP ${res.status} ${res.statusText}`);
     }
     await sleep(attempt * 2000);
   }
+}
+
+/** Each item's Wikipedia article titles in the supported languages, as `{ Q…: { tag: title } }`
+ *  (`dewiki` => `de`, `zh_min_nanwiki` and other sub-tags of no supported base left out). */
+async function articleTitles(qids) {
+  const out = {};
+  for (let i = 0; i < qids.length; i += 45) {
+    const url = `https://www.wikidata.org/w/api.php?${new URLSearchParams({
+      format: "json",
+      action: "wbgetentities",
+      props: "sitelinks",
+      ids: qids.slice(i, i + 45).join("|"),
+    })}`;
+    for (let attempt = 1; ; attempt++) {
+      try {
+        const res = await fetch(url, { headers: UA });
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        for (const [q, e] of Object.entries((await res.json()).entities)) {
+          for (const [site, link] of Object.entries(e.sitelinks ?? {})) {
+            const tag = site.match(/^([a-z]+)wiki$/)?.[1];
+            if (tag && SKRIBBL.includes(tag)) (out[q] ??= {})[tag] = link.title;
+          }
+        }
+        break;
+      } catch (err) {
+        if (attempt >= 5) throw err;
+        await sleep(attempt * 2000);
+      }
+    }
+    await sleep(300);
+  }
+  return out;
 }
 
 /** `Q…` from a Wikidata entity URI. */
@@ -118,12 +154,18 @@ async function dumpNames(qids, order, meta, chunk = 20) {
     process.stdout.write(`  ${Math.min(i + chunk, qids.length)}/${qids.length}\r`);
     await sleep(300);
   }
+  for (const [item, titles] of Object.entries(await articleTitles(qids))) {
+    for (const [lang, title] of Object.entries(titles)) {
+      const nameMap = ((byItem[item] ??= {})[lang] ??= {});
+      (nameMap[title] ??= { name: title }).title = true;
+    }
+  }
   // Deterministic order so a re-dump diffs only on real change, not on the order WDQS
   // happened to return terms — and their flags — in: preferred label first, then official,
-  // short, plain alias, alphabetical within each, and the flag keys themselves in that same
-  // fixed order. The build reads by flag regardless, so this is purely for the file's readers
-  // and its diffs.
-  const FLAGS = ["pref", "official", "short", "alias"];
+  // short, article title, plain alias, alphabetical within each, and the flag keys themselves
+  // in that same fixed order. The build reads by flag regardless, so this is purely for the
+  // file's readers and its diffs.
+  const FLAGS = ["pref", "official", "short", "title", "alias"];
   const rank = (t) => FLAGS.findIndex((f) => t[f]);
   const canon = (t) => ({ name: t.name, ...Object.fromEntries(FLAGS.filter((f) => t[f]).map((f) => [f, true])) });
   const out = {};
