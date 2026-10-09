@@ -63,6 +63,7 @@ Use the relative File Paths/Links provided on the Items listed in the [Overview 
 - `games-recipe.mjs`: per Games series and season, how editions link to it, how events carry their sport, the current edition, and P641 values that are no sport.
 - `capitals.mjs`: the truthy capitals (P36) of the build's countries: how many per country, ended or qualified statements, the values' classes, back-links (P1376), population, and labels with a disambiguator.
 - `languages.mjs`: the build's language membership (class path plus code or speaker gate) against membership by ISO 639 code: what each loses, by sitelinks and class, and preferred P31 statements that hide a class.
+- `continents.mjs [structure.tsv]`: the continent class against the build's hand list, the plate class and its subclasses, the banded plates' items (typed, area) against the catch-all, and labels with a disambiguator.
 - `multisport.mjs`: the sports of other multi-sport events and their overlap with the Olympic ones.
 - `fame.mjs <QID>… [--from file]`: sitelinks against 12 months of English pageviews, with Spearman's rho.
 - `historical.mjs [--min N]`: candidate queries for historical countries against a reference set.
