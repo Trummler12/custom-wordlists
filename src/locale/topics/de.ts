@@ -27,7 +27,7 @@ export const de: TopicProseDict = {
     constructed: "konstruierte Sprachen",
     fictional: "fiktive Sprachen",
   },
-  olympics: {
+  games: {
     discontinued: "Sportarten, die nicht mehr an den Spielen ausgetragen werden",
     demonstrationSports: "Sportarten, die nur als Demonstration gezeigt wurden, nie um Medaillen",
     futureDisciplines: "Sportarten, die für kommende Spiele neu aufgenommen sind",

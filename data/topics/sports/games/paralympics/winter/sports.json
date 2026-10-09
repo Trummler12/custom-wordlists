@@ -2,7 +2,82 @@
   "id": "paralympics-winter-sports",
   "title": {"en":"Sports","de":"Sportarten","zh-Hans":"体育","zh-Hant":"體育","es":"Deportes","it":"Sport","ja":"スポーツ","ko":"스포츠","pt":"Desporto","ru":"Спорт","tr":"Spor","pl":"Sport","nl":"Sport","bg":"Спорт","cs":"Sport","da":"Sport","et":"Sport","fi":"Urheilu","el":"Αθλητισμός","he":"ספורט","hu":"Sport","lv":"Sports","mk":"Спорт","no":"Sport","ro":"Sport","sr":"Спорт","sk":"Šport","sv":"Sport","tl":"Palakasan"},
   "icon": "🏟️",
-  "description": "Every sport held at the Winter Paralympics, from Wikidata.",
-  "plannedTopic": true,
-  "words": []
+  "description": "Every sport held at the Winter Paralympic Games: current, past and announced. Fame tiers by how many Wikipedias have an article on the sport (tier 0 = most widely covered).",
+  "generated": "fully",
+  "dataOrigin": "Wikidata",
+  "filePaths": {
+    "scripts/sports/": ["dump-games-sports.mjs","build-games-sports.mjs"],
+    "data-raw/sports/": "games/"
+  },
+  "languages": ["en","de","es","fr","it","ja","ko","zh-Hans","zh-Hant","pt","ru","tr","pl","nl","bg","cs","da","et","fi","el","he","hu","lv","mk","no","ro","sr","sk","sv","tl"],
+  "incompleteTopic": true,
+  "sources": [
+    "Sports & names: Wikidata, the sport (P641) of every event that is part of an edition of the Winter Paralympic Games — https://www.wikidata.org/wiki/Q3317976 (see scripts/sports/dump-games-sports.mjs)",
+    "Tiers: how many language editions of Wikipedia have an article on the sport, from its Wikidata sitelinks — https://www.wikidata.org/wiki/Help:Sitelinks"
+  ],
+  "lastUpdated": "2026-10-09",
+  "lastChecked": "2026-10-09",
+  "omitted": [
+    {
+      "id": "discontinued",
+      "match": ["Ice sledge racing"],
+      "count": true,
+      "icon": "sport-type",
+      "reason": "games.discontinued"
+    }
+  ],
+  "omittable": [
+    {
+      "id": "child-discipline",
+      "match": ["Para alpine skiing","Para biathlon","Para cross-country skiing","Para ice hockey","Para snowboard","Wheelchair curling"],
+      "count": true,
+      "icon": "sport-type",
+      "reason": "games.childDiscipline"
+    }
+  ],
+  "tiers": [
+    [
+      {"en":"Ice hockey","de":"Eishockey","es":"Hockey sobre hielo","fr":"Hockey sur glace","it":"Hockey su ghiaccio","ja":"アイスホッケー","ko":"아이스하키","zh-Hans":"冰球","zh-Hant":"冰球","pt":"Hóquei no gelo","ru":"Хоккей с шайбой","tr":"Buz hokeyi","pl":"Hokej na lodzie","nl":"Ijshockey","bg":"Хокей на лед","cs":"Lední hokej","da":"Ishockey","et":"Jäähoki","fi":"Jääkiekko","el":"Χόκεϊ επί πάγου","he":"הוקי קרח","hu":"Jégkorong","lv":"Hokejs","mk":"Хокеј на мраз","no":"Ishockey","ro":"Hochei pe gheață","sr":"Хокеј на леду","sk":"Ľadový hokej","sv":"Ishockey","?":["tl"]}
+    ],
+
+    [
+      {"en":"Curling","ja":"カーリング","ko":"컬링","zh-Hans":"冰壶","zh-Hant":"冰壺","ru":"Кёрлинг","tr":"Körling","bg":"Кърлинг","et":"Jääkeegel","el":"Κέρλινγκ","he":"קרלינג","lv":"Kērlings","mk":"Карлинг","sr":"Керлинг","?":["tl"]}
+    ],
+
+    [
+      {"en":"Biathlon","es":"Biatlón","ja":"バイアスロン","ko":"바이애슬론","zh-Hans":"冬季两项","zh-Hant":"冬季兩項","pt":"Biatlo","ru":"Биатлон","tr":"Biatlon","nl":"Biatlon","bg":"Биатлон","cs":"Biatlon","da":"Skiskydning","et":"Laskesuusatamine","fi":"Ampumahiihto","el":"Δίαθλο","he":"ביאתלון","hu":"Biatlon","lv":"Biatlons","mk":"Биатлон","no":"Skiskyting","ro":"Biatlon","sr":"Биатлон","sk":"Biatlon","sv":"Skidskytte","?":["tl"]},
+      {"en":"Snowboarding","de":"Snowboarden","fr":"Snowboard","it":"Snowboard","ja":"スノーボード","ko":"스노보드","zh-Hans":"单板滑雪","zh-Hant":"單板滑雪","pt":"Snowboard","ru":"Сноуборд","nl":"Snowboarden","bg":"Сноубординг","et":"Lumelauasõit","fi":"Lumilautailu","el":"Χιονοσανίδα","he":"גלישת שלג","hu":"Hódeszka","lv":"Snovbords","mk":"Скијање на даска","no":"Snøbrettkjøring","ro":"Snow-boarding","sr":"Сноубординг","sk":"Snoubording","sv":"Snowboard","tl":"Snowboard"},
+      {"en":"Alpine skiing","de":"Ski Alpin","es":"Esquí alpino","fr":"Ski alpin","it":"Sci alpino","ja":"アルペンスキー","ko":"알파인 스키","zh-Hans":"高山滑雪","zh-Hant":"高山滑雪","pt":"Esqui alpino","ru":"Горнолыжный спорт","tr":"Alp disiplini","pl":"Narciarstwo alpejskie","nl":"Alpineskiën","bg":"Ски алпийски дисциплини","cs":"Alpské lyžování","da":"Alpine discipliner","et":"Mäesuusatamine","fi":"Alppihiihto","el":"Αλπικό σκι","he":"סקי אלפיני","hu":"Alpesisí","lv":"Kalnu slēpošana","mk":"Алпско скијање","no":"Alpint","ro":"Schi alpin","sr":"Алпско скијање","sv":"Alpin skidsport","?":["sk","tl"]},
+      {"en":"Cross-country skiing","de":"Skilanglauf","es":"Esquí de fondo","fr":"Ski de fond","it":"Sci di fondo","ja":"クロスカントリースキー","ko":"크로스컨트리 스키","zh-Hans":"越野滑雪","zh-Hant":"越野滑雪","pt":"Esqui de fundo","ru":"Лыжные гонки","tr":"Kayaklı koşu","pl":"Biegi narciarskie","nl":"Langlaufen","bg":"Ски бягане","cs":"Běh na lyžích","da":"Langrend","et":"Murdmaasuusatamine","fi":"Maastohiihto","el":"Χιονοδρομία αντοχής","he":"סקי למרחקים","hu":"Sífutás","lv":"Distanču slēpošana","mk":"Скијачко трчање","no":"Langrenn","ro":"Schi fond","sr":"Скијашко трчање","sk":"Bežecké lyžovanie","sv":"Längdåkning","?":["tl"]}
+    ],
+
+    [],
+
+    [
+      {"en":"Para ice hockey","de":"Para-Eishockey","es":"Hockey sobre hielo adaptado","fr":"Para-hockey sur glace","it":"Hockey su slittino","ja":"アイススレッジホッケー","ko":"파라 아이스하키","zh-Hans":"雪橇曲棍球","pt":"Hóquei em trenó","ru":"Следж-хоккей","tr":"Kızak hokeyi","pl":"Hokej na lodzie na siedząco","nl":"Sledgehockey","cs":"Para hokej","et":"Kelguhoki","fi":"Kelkkajääkiekko","he":"פארא הוקי קרח","lv":"Para ledus hokejs","no":"Kjelkehockey","sk":"Sledge hokej","sv":"Paraishockey","?":["zh-Hant","bg","da","el","hu","mk","ro","sr","tl"]},
+      {"en":"Wheelchair curling","de":"Rollstuhlcurling","es":"Curling en silla de ruedas","fr":"Curling handisport","it":"Curling in carrozzina","ja":"車いすカーリング","ko":"휠체어 컬링","zh-Hans":"轮椅冰壶","zh-Hant":"輪椅冰壺","ru":"Кёрлинг на колясках","tr":"Tekerlekli sandalye körlingi","pl":"Curling na wózkach","nl":"Rolstoelcurling","da":"Kørestolscurling","et":"Ratastoolikurling","fi":"Pyörätuolicurling","lv":"Ratiņkērlings","no":"Rullestolcurling","sr":"Керлинг у колицима","sv":"Rullstolscurling","?":["pt","bg","cs","el","he","hu","mk","ro","sk","tl"]}
+    ],
+
+    [
+      {"en":"Para biathlon","es":"Biatlón adaptado","fr":"Biathlon handisport","it":"Biathlon paralimpico","zh-Hans":"残疾冬季两项","zh-Hant":"殘疾冬季兩項","ru":"Паралимпийский биатлон","nl":"Biatlon op de Paralympische Winterspelen","cs":"Parabiatlon","et":"Paralaskesuusatamine","fi":"Para-ampumahiihto","no":"Paraskiskyting","?":["de","ja","ko","pt","tr","pl","bg","da","el","he","hu","lv","mk","ro","sr","sk","sv","tl"]},
+      {"en":"Para alpine skiing","de":"Krückenskifahren","es":"Esquí alpino adaptado","fr":"Ski alpin handisport","it":"Sci alpino paralimpico","ja":"パラリンピックのアルペンスキー","zh-Hans":"残疾人高山滑雪","pt":"Esqui alpino paralímpico","ru":"Пара-горнолыжный спорт","nl":"Alpineskiën op de Paralympische Winterspelen","et":"Paramäesuusatamine","fi":"Para-alppihiihto","he":"סקי אלפיני פאראלימפי","no":"Paraalpint","sv":"Alpin paraskidåkning","?":["ko","zh-Hant","tr","pl","bg","cs","da","el","hu","lv","mk","ro","sr","sk","tl"]},
+      {"en":"Para cross-country skiing","de":"Langlaufschlitten","es":"Esquí de fondo adaptado","fr":"Para ski de fond","it":"Sci di fondo paralimpico","ja":"パラリンピックのクロスカントリースキー","nl":"Langlaufen op de Paralympische Winterspelen","et":"Paramurdmaasuusatamine","fi":"Paramaastohiihto","no":"Paralangrenn","?":["ko","zh-Hans","zh-Hant","pt","ru","tr","pl","bg","cs","da","el","he","hu","lv","mk","ro","sr","sk","sv","tl"]},
+      {"en":"Ice sledge racing","es":"Carreras de trineos de hielo","fr":"Course sur luge","it":"Corsa su slittino da ghiaccio","ja":"アイススレッジスピードレース","ko":"아이스 슬레지 레이싱","pt":"Corrida de trenó no gelo","ru":"Гонки на санях","nl":"Priksleën","no":"Ispigging","sv":"Iskälke","?":["de","zh-Hans","zh-Hant","tr","pl","bg","cs","da","et","fi","el","he","hu","lv","mk","ro","sr","sk","tl"]},
+      {"en":"Para snowboard","es":"Snowboard adaptado","fr":"Parasnowboard","it":"Snowboard paralimpico","ja":"パラリンピックのスノーボード","ko":"파라 스노보드","zh-Hans":"残疾人单板滑雪","ru":"Парасноуборд","et":"Paralumelauasõit","?":["de","zh-Hant","pt","tr","pl","nl","bg","cs","da","fi","el","he","hu","lv","mk","no","ro","sr","sk","sv","tl"]}
+    ]
+  ],
+  "tierConditions": [
+    "100",
+    "80",
+    "60",
+    "40",
+    "20",
+    ">0"
+  ],
+  "rulerTooltip": {
+    "text": "ruler.sports.text",
+    "empty": "ruler.sports.empty"
+  },
+  "inheritsUpwards": 2,
+  "skipInherit": 1
 }

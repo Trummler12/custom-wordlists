@@ -2,7 +2,121 @@
   "id": "paralympics-summer-sports",
   "title": {"en":"Sports","de":"Sportarten","zh-Hans":"体育","zh-Hant":"體育","es":"Deportes","it":"Sport","ja":"スポーツ","ko":"스포츠","pt":"Desporto","ru":"Спорт","tr":"Spor","pl":"Sport","nl":"Sport","bg":"Спорт","cs":"Sport","da":"Sport","et":"Sport","fi":"Urheilu","el":"Αθλητισμός","he":"ספורט","hu":"Sport","lv":"Sports","mk":"Спорт","no":"Sport","ro":"Sport","sr":"Спорт","sk":"Šport","sv":"Sport","tl":"Palakasan"},
   "icon": "🏟️",
-  "description": "Every sport held at the Summer Paralympics, from Wikidata.",
-  "plannedTopic": true,
-  "words": []
+  "description": "Every sport held at the Summer Paralympic Games: current, past and announced. Fame tiers by how many Wikipedias have an article on the sport (tier 0 = most widely covered).",
+  "generated": "fully",
+  "dataOrigin": "Wikidata",
+  "filePaths": {
+    "scripts/sports/": ["dump-games-sports.mjs","build-games-sports.mjs"],
+    "data-raw/sports/": "games/"
+  },
+  "languages": ["en","de","es","fr","it","ja","ko","zh-Hans","zh-Hant","pt","ru","tr","pl","nl","bg","cs","da","et","fi","el","he","hu","lv","mk","no","ro","sr","sk","sv","tl"],
+  "incompleteTopic": true,
+  "sources": [
+    "Sports & names: Wikidata, the sport (P641) of every event that is part of an edition of the Summer Paralympic Games — https://www.wikidata.org/wiki/Q3327913 (see scripts/sports/dump-games-sports.mjs)",
+    "Tiers: how many language editions of Wikipedia have an article on the sport, from its Wikidata sitelinks — https://www.wikidata.org/wiki/Help:Sitelinks"
+  ],
+  "lastUpdated": "2026-10-09",
+  "lastChecked": "2026-10-09",
+  "omitted": [
+    {
+      "id": "discontinued",
+      "match": ["Adaptive wrestling","Bowls","CP football","Dartchery","Futsal","Marathon","Road bicycle racing","Sailing","Snooker","Standing volleyball"],
+      "count": true,
+      "icon": "sport-type",
+      "reason": "games.discontinued"
+    }
+  ],
+  "omittable": [
+    {
+      "id": "child-discipline",
+      "match": ["Blind soccer","Para archery","Para association football","Para athletics","Para badminton","Para cycling","Para equestrian","Para judo","Para powerlifting","Para swimming","Para table tennis","Para taekwondo","Para triathlon","Shooting Para sport","Sitting volleyball","Wheelchair basketball","Wheelchair fencing","Wheelchair rugby"],
+      "count": true,
+      "icon": "sport-type",
+      "reason": "games.childDiscipline"
+    }
+  ],
+  "tiers": [
+    [
+      {"en":"Association football","de":"Fußball","es":"Fútbol","fr":"Football","it":"Calcio","ja":"サッカー","ko":"축구","zh-Hans":"足球","zh-Hant":"足球","pt":"Futebol","ru":"Футбол","tr":"Futbol","pl":"Piłka nożna","nl":"Voetbal","bg":"Футбол","cs":"Fotbal","da":"Fodbold","et":"Jalgpall","fi":"Jalkapallo","el":"Ποδόσφαιρο","he":"כדורגל","hu":"Labdarúgás","lv":"Futbols","mk":"Фудбал","no":"Fotball","ro":"Fotbal","sr":"Фудбал","sk":"Futbal","sv":"Fotboll","tl":"Futbol"},
+      {"en":"Basketball","es":"Baloncesto","fr":"Basket-ball","it":"Pallacanestro","ja":"バスケットボール","ko":"농구","zh-Hans":"篮球","zh-Hant":"籃球","pt":"Basquetebol","ru":"Баскетбол","tr":"Basketbol","pl":"Koszykówka","nl":"Basketbal","bg":"Баскетбол","cs":"Basketbal","et":"Korvpall","fi":"Koripallo","el":"Καλαθοσφαίριση","he":"כדורסל","hu":"Kosárlabda","lv":"Basketbols","mk":"Кошарка","ro":"Baschet","sr":"Кошарка","sk":"Basketbal","sv":"Basket","tl":"Basketbol"},
+      {"en":"Volleyball","es":"Voleibol","fr":"Volley-ball","it":"Pallavolo","ja":"バレーボール","ko":"배구","zh-Hans":"排球","zh-Hant":"排球","pt":"Voleibol","ru":"Волейбол","tr":"Voleybol","pl":"Piłka siatkowa","nl":"Volleybal","bg":"Волейбол","cs":"Volejbal","et":"Võrkpall","fi":"Lentopallo","el":"Πετοσφαίριση","he":"כדורעף","hu":"Röplabda","lv":"Volejbols","mk":"Одбојка","ro":"Volei","sr":"Одбојка","sk":"Volejbal","sv":"Volleyboll","tl":"Balibol"},
+      {"en":"Athletics","de":"Leichtathletik","es":"Atletismo","fr":"Athlétisme","it":"Atletica leggera","ja":"陸上競技","ko":"육상","zh-Hans":"田径","zh-Hant":"田徑","pt":"Atletismo","ru":"Лёгкая атлетика","tr":"Atletizm","pl":"Lekkoatletyka","nl":"Atletiek","bg":"Лека атлетика","cs":"Atletika","da":"Atletik","et":"Kergejõustik","fi":"Yleisurheilu","el":"Στίβος","he":"אתלטיקה","hu":"Könnyűatlétika","lv":"Vieglatlētika","mk":"Атлетика","no":"Friidrett","ro":"Atletism","sr":"Атлетика","sk":"Atletika","sv":"Friidrott","tl":"Atletika"},
+      {"en":"Judo","ja":"柔道","ko":"유도","zh-Hans":"柔道","zh-Hant":"柔道","ru":"Дзюдо","bg":"Джудо","et":"Džuudo","el":"Τζούντο","he":"ג'ודו","hu":"Cselgáncs","lv":"Džudo","mk":"Џудо","sr":"Џудо","sk":"Džudo","tl":"Hudo"},
+      {"en":"Badminton","es":"Bádminton","ja":"バドミントン","ko":"배드민턴","zh-Hans":"羽毛球","zh-Hant":"羽毛球","pt":"Badmínton","ru":"Бадминтон","bg":"Бадминтон","et":"Sulgpall","fi":"Sulkapallo","el":"Αντιπτέριση","he":"בדמינטון","hu":"Tollaslabda","lv":"Badmintons","mk":"Бадминтон","sr":"Бадминтон","sk":"Bedminton"},
+      {"en":"Taekwondo","ja":"テコンドー","ko":"태권도","zh-Hans":"跆拳道","zh-Hant":"跆拳道","ru":"Тхэквондо","bg":"Таекуондо","el":"Τάε Κβον Ντο","he":"טאקוונדו","lv":"Tekvondo","mk":"Теквондо","sr":"Теквондо"},
+      {"en":"Marathon","de":"Marathonlauf","es":"Maratón","it":"Maratona","ja":"マラソン","ko":"마라톤","zh-Hans":"马拉松","zh-Hant":"馬拉松","pt":"Maratona","ru":"Марафон","tr":"Maraton","pl":"Bieg maratoński","bg":"Маратон","cs":"Maratonský běh","da":"Maratonløb","et":"Maraton","fi":"Maraton","el":"Μαραθώνιος","he":"ריצת מרתון","hu":"Maraton","lv":"Maratons","mk":"Маратон","no":"Maraton","ro":"Maraton","sr":"Маратон","sk":"Maratón","sv":"Maraton","?":["tl"]},
+      {"en":"Table tennis","de":"Tischtennis","es":"Tenis de mesa","fr":"Tennis de table","it":"Tennistavolo","ja":"卓球","ko":"탁구","zh-Hans":"乒乓球","zh-Hant":"乒乓球","pt":"Tênis de mesa","ru":"Настольный теннис","tr":"Masa tenisi","pl":"Tenis stołowy","nl":"Tafeltennis","bg":"Тенис на маса","cs":"Stolní tenis","da":"Bordtennis","et":"Lauatennis","fi":"Pöytätennis","el":"Επιτραπέζια αντισφαίριση","he":"טניס שולחן","hu":"Asztalitenisz","lv":"Galda teniss","mk":"Пинг-понг","no":"Bordtennis","ro":"Tenis de masă","sr":"Стони тенис","sk":"Stolný tenis","sv":"Bordtennis","tl":"Pingpong"}
+    ],
+
+    [
+      {"en":"Fencing","de":"Fechten","es":"Esgrima","fr":"Escrime","it":"Scherma","ja":"フェンシング","ko":"펜싱","zh-Hans":"击剑","zh-Hant":"擊劍","pt":"Esgrima","ru":"Фехтование","tr":"Eskrim","pl":"Szermierka","nl":"Schermen","bg":"Фехтовка","cs":"Sportovní šerm","da":"Fægtning","et":"Vehklemine","fi":"Miekkailu","el":"Ξιφασκία","he":"סיף","hu":"Vívás","lv":"Paukošana","mk":"Мечувалство","no":"Fekting","ro":"Scrimă","sr":"Мачевање","sk":"Športový šerm","sv":"Fäktning","tl":"Eskrima"},
+      {"en":"Archery","de":"Bogenschießen","es":"Tiro con arco","fr":"Tir à l'arc","it":"Tiro con l'arco","ja":"アーチェリー","ko":"궁술","zh-Hans":"射箭","zh-Hant":"射箭","pt":"Tiro com arco","ru":"Стрельба из лука","tr":"Okçuluk","pl":"Łucznictwo","nl":"Boogschieten","bg":"Стрелба с лък","cs":"Lukostřelba","da":"Bueskydning","et":"Vibusport","fi":"Jousiammunta","el":"Τοξοβολία","he":"קשתות","hu":"Íjászat","lv":"Loka šaušana","mk":"Стреличарство","no":"Bueskyting","ro":"Tir cu arcul","sr":"Стреличарство","sk":"Lukostreľba","sv":"Bågskytte","tl":"Pamamana"},
+      {"en":"Weightlifting","de":"Gewichtheben","es":"Halterofilia","fr":"Haltérophilie","it":"Sollevamento pesi","ja":"重量挙げ","ko":"역도","zh-Hans":"举重","zh-Hant":"舉重","pt":"Halterofilismo","ru":"Тяжёлая атлетика","tr":"Halter","pl":"Podnoszenie ciężarów","nl":"Gewichtheffen","bg":"Вдигане на тежести","cs":"Vzpírání","da":"Vægtløftning","et":"Tõstesport","fi":"Painonnosto","el":"Άρση βαρών","he":"הרמת משקולות","hu":"Súlyemelés","lv":"Svarcelšana","mk":"Кревање тегови","no":"Vektløfting","ro":"Haltere","sr":"Дизање тегова","sk":"Vzpieranie","sv":"Tyngdlyftning","?":["tl"]},
+      {"en":"Snooker","ja":"スヌーカー","ko":"스누커","zh-Hans":"斯诺克","zh-Hant":"司諾克","pt":"Sinuca inglesa","ru":"Снукер","bg":"Снукър","et":"Snuuker","el":"Σνούκερ","he":"סנוקר","hu":"Sznúker","lv":"Snūkers","mk":"Снукер","sr":"Снукер","?":["tl"]}
+    ],
+
+    [
+      {"en":"Futsal","es":"Fútbol sala","it":"Calcio a 5","ja":"フットサル","ko":"풋살","zh-Hans":"室内五人制足球","zh-Hant":"室內五人制足球","ru":"Футзал","nl":"Zaalvoetbal","bg":"Футзал","el":"Ποδόσφαιρο σάλας","he":"קטרגל","lv":"Telpu futbols","mk":"Футсал","sr":"Футсал","?":["et","tl"]},
+      {"en":"Triathlon","es":"Triatlón","ja":"トライアスロン","ko":"트라이애슬론","zh-Hans":"三项全能","zh-Hant":"三項全能","pt":"Triatlo","ru":"Триатлон","tr":"Triatlon","nl":"Triatlon","bg":"Триатлон","cs":"Triatlon","da":"Triatlon","et":"Triatlon","el":"Τρίαθλο","he":"טריאתלון","hu":"Triatlon","lv":"Triatlons","mk":"Триатлон","no":"Triatlon","ro":"Triatlon","sr":"Триатлон","sk":"Triatlon","?":["tl"]},
+      {"en":"Shooting sports","de":"Sportschießen","es":"Tiro deportivo","fr":"Tir sportif","it":"Tiro","ja":"射撃競技","ko":"사격","zh-Hans":"射击运动","zh-Hant":"射擊運動","pt":"Desportos de tiro","ru":"Стрелковый спорт","tr":"Atıcılık sporları","pl":"Strzelectwo","nl":"Schietsport","bg":"Спортна стрелба","cs":"Sportovní střelba","da":"Skydesport","et":"Laskesport","fi":"Ampumaurheilu","el":"Σκοποβολή","he":"ירי ספורטיבי","hu":"Sportlövészet","lv":"Šaušana","mk":"Стрелаштво","no":"Skytesport","ro":"Tir sportiv","sr":"Стрељаштво","sk":"Športová streľba","sv":"Sportskytte","?":["tl"]},
+      {"en":"Rugby union","es":"Rugby a 15","fr":"Rugby à XV","it":"Rugby a 15","ja":"ラグビーユニオン","ko":"럭비 유니언","zh-Hans":"联合式橄榄球","zh-Hant":"聯合式橄欖球","pt":"Râguebi de quinze","ru":"Регби-15","tr":"Ragbi birliği","el":"Ράγκμπι γιούνιον","he":"רוגבי יוניון","hu":"Uniós rögbi","lv":"Regbijs-15","mk":"Рагби","ro":"Rugby în 15","sr":"Рагби јунион","?":["bg","et","tl"]},
+      {"en":"Competitive swimming","de":"Schwimmsport","es":"Natación","fr":"Natation sportive","it":"Nuoto","ja":"競泳","ko":"수영","zh-Hans":"竞技游泳","zh-Hant":"競技游泳","pt":"Natação desportiva","ru":"Плавание","tr":"Yüzme","pl":"Pływanie sportowe","nl":"Zwemsport","bg":"Плуване","cs":"Plavání","da":"Konkurrencesvømning","et":"Ujumine","fi":"Uinti","el":"Κολύμβηση","he":"שחייה תחרותית","hu":"Versenyúszás","lv":"Peldēšana","mk":"Пливање","no":"Svømming","ro":"Înot competitiv","sr":"Пливање","sk":"Športové plávanie","sv":"Tävlingssimning","?":["tl"]}
+    ],
+
+    [
+      {"en":"Cycle sport","de":"Radsport","es":"Ciclismo de competición","fr":"Sport cycliste","it":"Ciclismo","ja":"自転車競技","ko":"자전거 경기","zh-Hans":"自行车运动","zh-Hant":"腳踏車運動","pt":"Ciclismo de competição","ru":"Велоспорт","tr":"Bisiklet sporu","pl":"Kolarstwo","nl":"Wielersport","bg":"Колоездене","cs":"Sportovní cyklistika","da":"Cykelsport","et":"Jalgrattasport","fi":"Kilpapyöräily","el":"Ποδηλασία","he":"מרוץ אופניים","hu":"Kerékpársport","lv":"Riteņbraukšanas sports","mk":"Велосипедски спорт","no":"Sykkelsport","ro":"Ciclism","sr":"Бициклистички спорт","sk":"Športová cyklistika","sv":"Cykelsport","?":["tl"]},
+      {"en":"Powerlifting","de":"Kraftdreikampf","es":"Levantamiento de potencia","fr":"Force athlétique","ja":"パワーリフティング","ko":"파워리프팅","zh-Hans":"健力","zh-Hant":"健力","pt":"Levantamento de peso básico","ru":"Пауэрлифтинг","pl":"Trójbój siłowy","bg":"Силов трибой","cs":"Silový trojboj","da":"Styrkeløft","et":"Jõutõstmine","fi":"Voimanosto","el":"Δυναμικό τρίαθλο","he":"הרמת כוח","hu":"Erőemelés","lv":"Spēka trīscīņa","no":"Styrkeløft","sr":"Пауерлифтинг","sv":"Styrkelyft","?":["mk","sk","tl"]},
+      {"en":"Road bicycle racing","de":"Straßenradsport","es":"Ciclismo en ruta","fr":"Cyclisme sur route","it":"Ciclismo su strada","ja":"自転車ロードレース","ko":"도로 자전거 경기","zh-Hans":"公路自行车赛","zh-Hant":"公路自行車賽","pt":"Ciclismo de estrada","ru":"Шоссейный велоспорт","tr":"Yol bisikleti yarışı","pl":"Kolarstwo szosowe","nl":"Wegwielrennen","cs":"Silniční cyklistika","da":"Landevejscykling","et":"Maanteesõit","fi":"Maantiepyöräily","el":"Ποδηλασία δρόμου","he":"מרוץ אופני כביש","hu":"Országútikerékpár-versenyzés","lv":"Šosejas riteņbraukšana","mk":"Друмски велосипедизам","no":"Landeveissykling","ro":"Ciclism rutier","sr":"Друмски бициклизам","sv":"Landsvägscykling","?":["bg","sk","tl"]},
+      {"en":"Sailing","de":"Regattasegeln","es":"Vela","fr":"Voile","it":"Vela","ja":"セーリング","ko":"세일링","zh-Hans":"帆船运动","zh-Hant":"帆船運動","pt":"Vela","ru":"Парусный спорт","tr":"Yelken","pl":"Regaty żeglarskie","nl":"Zeilen","cs":"Jachting","da":"Kapsejlads","et":"Purjesport","fi":"Kilpapurjehdus","el":"Ιστιοπλοΐα","he":"שיט תחרותי","hu":"Vitorlázás","lv":"Burāšana","no":"Seiling","ro":"Iahting","sr":"Спортско једрење","sk":"Jachting","sv":"Kappsegling","?":["bg","mk","tl"]},
+      {"en":"Goalball","es":"Golbol","it":"Pallarete","ja":"ゴールボール","ko":"골볼","zh-Hans":"盲人门球","zh-Hant":"盲人門球","pt":"Golbol","ru":"Голбол","bg":"Голбал","fi":"Maalipallo","el":"Γκόλμπολ","he":"כדורשער","hu":"Csörgőlabda","lv":"Golbols","sr":"Голбол","?":["et","mk","ro","sk"]},
+      {"en":"Boccia","es":"Bochas adaptadas","ja":"ボッチャ","ko":"보치아","zh-Hans":"地板滾球","zh-Hant":"地板滾球","ru":"Бочча","el":"Μπότσα","he":"בוצ'ה","hu":"Bocsa","lv":"Boča","sr":"Боћање за особе са инвалидитетом","?":["bg","mk"]}
+    ],
+
+    [
+      {"en":"Bowls","de":"Rasenbowlen","fr":"Boulingrin","ja":"ローンボウルズ","ko":"론볼","zh-Hans":"草地滾球","zh-Hant":"草地滾球","pt":"Lawn bowls","ru":"Игра в боулз","et":"Murukeegel","fi":"Nurmikeilailu","he":"כדורת דשא","mk":"Боулс","?":["bg","da","el","hu","lv","ro","sr","sk","tl"]},
+      {"en":"Wheelchair basketball","de":"Rollstuhlbasketball","es":"Baloncesto en silla de rueda","fr":"Basket-ball en fauteuil roulant","it":"Pallacanestro in carrozzina","ja":"車いすバスケットボール","ko":"휠체어 농구","zh-Hans":"輪椅籃球","zh-Hant":"輪椅籃球","pt":"Basquetebol em cadeira de rodas","ru":"Баскетбол на колясках","tr":"Tekerlekli sandalye basketbolu","pl":"Koszykówka na wózkach","nl":"Rolstoelbasketbal","cs":"Basketbal na vozíku","da":"Kørestolsbasketball","fi":"Pyörätuolikoripallo","el":"Καλαθοσφαίριση με αμαξίδιο","he":"כדורסל נכים","mk":"Кошарка во инвалидски колички","no":"Rullestolbasketball","sr":"Кошарка у колицима","sv":"Rullstolsbasket","?":["bg","et","hu","lv","ro","sk","tl"]},
+      {"en":"Equestrian sport","de":"Pferdesport","es":"Deporte ecuestre","fr":"Sport équestre","it":"Sport equestre","ja":"乗馬","ko":"승마","zh-Hans":"马术运动","zh-Hant":"馬術運動","pt":"Desporto equestre","ru":"Конный спорт","pl":"Sport jeździecki","nl":"Paardensport","bg":"Конен спорт","cs":"Jezdecký sport","da":"Hestesport","et":"Ratsasport","fi":"Hevosurheilu","el":"Ιππικό αγώνισμα","he":"רכיבה תחרותית","hu":"Lovassport","mk":"Коњички спорт","no":"Hestesport","ro":"Sporturi ecvestre","sr":"Коњички спорт","sk":"Jazdecký šport","sv":"Hästsport","?":["tr","lv","tl"]},
+      {"en":"Sitting volleyball","de":"Sitzvolleyball","es":"Voleibol sentado","fr":"Volley-ball assis","it":"Pallavolo paralimpica","ja":"シッティングバレーボール","ko":"좌식 배구","zh-Hans":"坐式排球","pt":"Voleibol paralímpico","ru":"Волейбол сидя","tr":"Oturarak voleybol","pl":"Siatkówka na siedząco","nl":"Zitvolleybal","cs":"Volejbal v sedě","da":"Siddende volleyball","fi":"Istumalentopallo","el":"Καθιστό Βόλεϊ","he":"כדורעף בישיבה","hu":"Ülőröplabda","lv":"Sēdvolejbols","no":"Sittende volleyball","sr":"Седећа одбојка","sv":"Sittande volleyboll","?":["zh-Hant","bg","et","mk","ro","sk","tl"]},
+      {"en":"Wheelchair tennis","de":"Rollstuhltennis","es":"Tenis en silla de ruedas","fr":"Tennis en fauteuil roulant","it":"Tennis in carrozzina","ja":"車いすテニス","ko":"휠체어 테니스","zh-Hans":"轮椅网球","pt":"Ténis em cadeira de rodas","ru":"Теннис на инвалидных колясках","tr":"Tekerlekli sandalye tenisi","pl":"Tenis na wózkach","nl":"Rolstoeltennis","cs":"Tenis na vozíku","da":"Rullestolstennis","fi":"Pyörätuolitennis","he":"טניס כסאות גלגלים","no":"Rullestoltennis","sr":"Тенис у колицима","sv":"Rullstolstennis","?":["zh-Hant","bg","et","el","hu","lv","mk","ro","sk","tl"]},
+      {"en":"Wheelchair rugby","de":"Rollstuhlrugby","es":"Rugby en silla de ruedas","fr":"Rugby-fauteuil","it":"Rugby in carrozzina","ja":"車いすラグビー","ko":"휠체어 럭비","zh-Hans":"轮椅榄球","zh-Hant":"輪椅欖球","pt":"Rugby em cadeira de rodas","tr":"Tekerlekli sandalye ragbisi","pl":"Rugby na wózkach","nl":"Quad rugby","da":"Kørestolsrugby","fi":"Pyörätuolirugby","el":"Ράγκμπι με αμαξίδιο","he":"רוגבי נכים","hu":"Kerekesszékes rögbi","no":"Rullestolrugby","sr":"Рагби у колицима","sv":"Rullstolsrugby","?":["ru","bg","cs","et","lv","mk","ro","sk","tl"]},
+      {"en":"Wheelchair fencing","de":"Rollstuhlfechten","es":"Esgrima en silla de ruedas","fr":"Escrime handisport","it":"Scherma in carrozzina","ja":"車いすフェンシング","ko":"휠체어 펜싱","zh-Hans":"輪椅劍擊","pt":"Esgrima em cadeira de rodas","ru":"Паралимпийское фехтование","pl":"Szermierka na wózkach","nl":"Rolstoelschermen","fi":"Pyörätuolimiekkailu","el":"Ξιφασκία με αμαξίδιο","he":"סיוף בכסאות גלגלים","no":"Rullestolfekting","ro":"Scrimă în fotoliu rulant","sr":"Мачевање у колицима","sv":"Rullstolsfäktning","?":["zh-Hant","tr","bg","cs","da","et","hu","lv","mk","sk","tl"]},
+      {"en":"Para athletics","de":"Para Leichtathletik","es":"Atletismo adaptado","fr":"Athlétisme handisport","it":"Atletica leggera paralimpica","ja":"パラ陸上競技","zh-Hans":"残奥会田径比赛","zh-Hant":"殘奧會田徑比賽","pt":"Atletismo paralímpico","ru":"Паралимпийская лёгкая атлетика","tr":"Para atletizm","nl":"G-atletiek","cs":"Atletika handicapovaných","fi":"Vammaisyleisurheilu","he":"אתלטיקה פאראלימפית","hu":"Paraatlétika","no":"Parafriidrett","sr":"Параолимпијска атлетика","sv":"Paralympisk friidrott","?":["ko","pl","bg","da","et","el","lv","mk","ro","sk","tl"]},
+      {"en":"Blind soccer","de":"Blindenfußball","es":"Fútbol 5 adaptado","fr":"Cécifoot","it":"Calcio a 5 per ciechi","ja":"ブラインドサッカー","ko":"5인제 시각장애인 축구","zh-Hans":"盲人足球","zh-Hant":"盲人足球","pt":"Futebol de cinco","ru":"Футбол для незрячих","da":"Blindefodbold","fi":"Näkövammaisten jalkapallo","el":"Ποδόσφαιρο τυφλών","he":"כדורגל לעיוורים","no":"Blindefotball","sr":"Фудбал за слепе","sv":"Blindfotboll","?":["tr","pl","nl","bg","cs","et","hu","lv","mk","ro","sk","tl"]}
+    ],
+
+    [
+      {"en":"Para cycling","de":"Paracycling","es":"Ciclismo adaptado","fr":"Cyclisme handisport","it":"Paraciclismo","ja":"パラサイクリング","zh-Hans":"帕拉單車","pt":"Paraciclismo","ru":"Паравелоспорт","pl":"Parakolarstwo","nl":"Para-cycling","cs":"Handbiking","da":"Paracykling","he":"מרוץ אופני יד פראלימפיים","no":"Parasykling","sv":"Paracykel","?":["ko","zh-Hant","tr","bg","et","fi","el","hu","lv","mk","ro","sr","sk","tl"]},
+      {"en":"Para triathlon","de":"Paratriathlon","es":"Paratriatlón","fr":"Paratriathlon","it":"Paratriathlon","ja":"パラトライアスロン","zh-Hans":"帕拉鐵人三項","pt":"Paratriatlo","ru":"Паратриатлон","nl":"Paratriathlon","da":"Paratriathlon","fi":"Paratriathlon","no":"Paratriatlon","sr":"Паратриатлон","sv":"Paratriathlon","?":["ko","zh-Hant","tr","pl","bg","cs","et","el","he","hu","lv","mk","ro","sk","tl"]},
+      {"en":"CP football","de":"CP-Fußball","es":"Fútbol 7 adaptado","fr":"Football à 7","it":"Calcio a 7-un-lato","ja":"CPサッカー","ko":"7인제 뇌성마비장애인 축구","zh-Hans":"7人制（脑瘫）足球","pt":"Futebol de sete","ru":"Футбол 7х7","pl":"Piłka nożna siedmioosobowa","nl":"Football 7-a-side","fi":"CP-jalkapallo","sv":"7 A Side","?":["zh-Hant","tr","bg","cs","da","et","el","he","hu","lv","mk","no","ro","sr","sk","tl"]},
+      {"en":"Para badminton","de":"Parabadminton","es":"Bádminton adaptado","fr":"Parabadminton","it":"Parabadminton","ja":"パラバドミントン","zh-Hans":"傷殘羽毛球","ru":"Парабадминтон","pl":"Parabadminton","sr":"Парабадминтон","sv":"Parabadminton","?":["ko","zh-Hant","pt","tr","nl","bg","cs","da","et","fi","el","he","hu","lv","mk","no","ro","sk","tl"]},
+      {"en":"Para judo","es":"Judo paralímpico","fr":"Judo handisport","it":"Judo paralimpico","ja":"パラ柔道","zh-Hans":"盲人柔道","pt":"Judo paralímpico","ru":"Паралимпийское дзюдо","nl":"Parajudo","no":"Judo","sr":"Параџудо","?":["ko","zh-Hant","tr","pl","bg","cs","da","et","fi","el","he","hu","lv","mk","ro","sk","sv","tl"]},
+      {"en":"Para table tennis","es":"Tenis de mesa adaptado","fr":"Tennis de table","it":"Tennistavolo paralimpico","ja":"パラ卓球","ko":"파라 탁구","zh-Hans":"残疾人乒乓球","pt":"Tênis de mesa paralímpico","ru":"Паралимпийский настольный теннис","tr":"Para masa tenisi","nl":"Tafeltennis voor gehandicapten","cs":"Stolní tenis handicapovaných","he":"טניס שולחן פאראלימפי","no":"Bordtennis","ro":"Para tenis de masă","sr":"Парастони тенис","sv":"Parabordtennis","?":["de","zh-Hant","pl","bg","da","et","fi","el","hu","lv","mk","sk","tl"]},
+      {"en":"Para swimming","es":"Natación adaptada","fr":"Natation handisport","it":"Nuoto paralimpico","ja":"パラリンピック競泳","zh-Hans":"帕拉林匹克游泳","pt":"Natação paralímpica","ru":"Паралимпийское плавание","nl":"Zwemmen voor gehandicapten","cs":"Paraplavání","he":"שחייה פאראלימפית","hu":"Paraúszás","sv":"Parasimning","?":["de","ko","zh-Hant","tr","pl","bg","da","et","fi","el","lv","mk","no","ro","sr","sk","tl"]},
+      {"en":"Para equestrian","de":"Behindertenreitsport","es":"Paraecuestre","fr":"Para équitation","it":"Equitazione paralimpica","ja":"パラ馬術競技","zh-Hans":"馬術 (殘奧會)","pl":"Parajeździectwo","cs":"Para jezdectví","fi":"Vammaisratsastus","he":"רכיבה על סוסים פראלימפית","no":"Hestesport","sv":"Pararidning","?":["ko","zh-Hant","pt","ru","tr","nl","bg","da","et","el","hu","lv","mk","ro","sr","sk","tl"]},
+      {"en":"Para canoe","de":"Paracanoe","es":"Piragüismo adaptado","fr":"Paracanoë","it":"Paracanoa","ja":"パラカヌー","zh-Hans":"帕運輕艇","pt":"Paracanoagem","ru":"Параканоэ","el":"Παρακάνοε","he":"קאנו פאראלימפי","no":"Padling","sr":"Паракану","sv":"Parakanot","?":["ko","zh-Hant","tr","pl","nl","bg","cs","da","et","fi","hu","lv","mk","ro","sk","tl"]},
+      {"en":"Para powerlifting","es":"Levantamiento de potencia adaptado","fr":"Haltérophilie handisport","it":"Pesistica paralimpica","zh-Hans":"殘疾力量舉重","pt":"Levantamento de peso paralímpico","ru":"Паралимпийский пауэрлифтинг","el":"Άρση βαρών σε πάγκο","no":"Styrkeløft","?":["de","ja","ko","zh-Hant","tr","pl","nl","bg","cs","da","et","fi","he","hu","lv","mk","ro","sr","sk","sv","tl"]},
+      {"en":"Para taekwondo","de":"Para-Taekwondo","es":"Taekwondo adaptado","fr":"Para-taekwondo","ja":"パラテコンドー","ko":"장애인 태권도","ru":"Паратхэквондо","tr":"Para tekvando","he":"פארא-טאקוונדו","no":"Para-taekwondo","sr":"Паратеквондо","sv":"Parataekwondo","?":["it","zh-Hans","zh-Hant","pt","pl","nl","bg","cs","da","et","fi","el","hu","lv","mk","ro","sk","tl"]},
+      {"en":"Shooting Para sport","es":"Tiro deportivo adaptado","fr":"Tir sportif handisport","it":"Tiro a segno paralimpico","ja":"パラ射撃","pt":"Tiro paralímpico","ru":"Паралимпийская стрельба","tr":"Para atıcılık","nl":"Schietsport op de Paralympische Zomerspelen","he":"קליעה פראלימפית","no":"Skyting","sr":"Параолимпијско стрељаштво","?":["de","ko","zh-Hans","zh-Hant","pl","bg","cs","da","et","fi","el","hu","lv","mk","ro","sk","sv","tl"]},
+      {"en":"Para rowing","de":"Pararudern","es":"Remo adaptado","fr":"Aviron handisport","it":"Canottaggio paralimpico","ja":"パラローイング","pt":"Remo paralímpico","he":"חתירת נכים","no":"Para-roing","sr":"Параолимпијско веслање","?":["ko","zh-Hans","zh-Hant","ru","tr","pl","nl","bg","cs","da","et","fi","el","hu","lv","mk","ro","sk","sv","tl"]},
+      {"en":"Para association football","de":"Paralympischer Fußball","es":"Fútbol para ciegos","fr":"Football paralympique","it":"Calcio paraolimpico","ja":"障がい者サッカー","zh-Hans":"5人制（盲人）足球","pt":"Futebol paralímpico","ru":"Паралимпийский футбол","tr":"Engelli futbolu","nl":"Paravoetbal","fi":"CP-jalkapallo","?":["ko","zh-Hant","pl","bg","cs","da","et","el","he","hu","lv","mk","no","ro","sr","sk","sv","tl"]},
+      {"en":"Para archery","de":"Para-Bogenschießen","es":"Tiro con arco adaptado","fr":"Tir à l'arc handisport","it":"Tiro con l'arco paralimpico","ja":"パラアーチェリー","zh-Hans":"射箭 (殘奧會)","zh-Hant":"帕拉射箭","ru":"Паралимпийская стрельба из лука","cs":"Para lukostřelba","he":"קשתות נכים","no":"Bueskyting","sv":"Paralmympiskt bågskytte","?":["ko","pt","tr","pl","nl","bg","da","et","fi","el","hu","lv","mk","ro","sr","sk","tl"]},
+      {"en":"Standing volleyball","de":"Standvolleyball","fr":"Volley-ball debout","ru":"Волейбол стоя","?":["es","it","ja","ko","zh-Hans","zh-Hant","pt","tr","pl","nl","bg","cs","da","et","fi","el","he","hu","lv","mk","no","ro","sr","sk","sv","tl"]},
+      {"en":"Dartchery","it":"Tiro del dardo","?":["de","fr","ja","ko","zh-Hans","zh-Hant","pt","ru","tr","pl","nl","bg","cs","da","et","fi","el","he","hu","lv","mk","no","ro","sr","sk","sv","tl"]},
+      {"en":"Adaptive wrestling","es":"Lucha adaptada","it":"Lotta adattata","ru":"Адаптивная борьба","?":["de","fr","ja","ko","zh-Hans","zh-Hant","pt","tr","pl","nl","bg","cs","da","et","fi","el","he","hu","lv","mk","no","ro","sr","sk","sv","tl"]}
+    ]
+  ],
+  "tierConditions": [
+    "100",
+    "80",
+    "60",
+    "40",
+    "20",
+    ">0"
+  ],
+  "rulerTooltip": {
+    "text": "ruler.sports.text",
+    "empty": "ruler.sports.empty"
+  },
+  "inheritsUpwards": 2,
+  "skipInherit": 1
 }

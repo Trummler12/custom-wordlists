@@ -1,0 +1,4346 @@
+{
+  "olympia/summer": {
+    "qid": "Q159821",
+    "names": {
+      "en": [
+        {
+          "name": "Summer Olympic Games",
+          "pref": true
+        },
+        {
+          "name": "Summer Olympics",
+          "alias": true
+        }
+      ],
+      "de": [
+        {
+          "name": "Olympische Sommerspiele",
+          "pref": true
+        },
+        {
+          "name": "Sommerolympiade",
+          "alias": true
+        }
+      ],
+      "es": [
+        {
+          "name": "Juegos Olímpicos de Verano",
+          "pref": true
+        },
+        {
+          "name": "Juegos Olimpicos de Verano",
+          "alias": true
+        },
+        {
+          "name": "Olimpíadas de Verano",
+          "alias": true
+        },
+        {
+          "name": "Juegos Olímpicos intercalados",
+          "alias": true
+        },
+        {
+          "name": "Olimpiadas de Verano",
+          "alias": true
+        },
+        {
+          "name": "Juegos Olimpicos intercalados",
+          "alias": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "Jeux olympiques d’été",
+          "pref": true
+        },
+        {
+          "name": "JO d'été",
+          "alias": true
+        },
+        {
+          "name": "Jeux olympiques d'été",
+          "alias": true
+        }
+      ],
+      "it": [
+        {
+          "name": "Giochi olimpici estivi",
+          "pref": true
+        },
+        {
+          "name": "Olimpiadi estive",
+          "alias": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "夏季オリンピック",
+          "pref": true
+        },
+        {
+          "name": "オリンピアード競技大会",
+          "alias": true
+        },
+        {
+          "name": "夏季五輪",
+          "alias": true
+        }
+      ],
+      "ko": [
+        {
+          "name": "하계 올림픽",
+          "pref": true
+        },
+        {
+          "name": "하계 올림픽 대회",
+          "alias": true
+        },
+        {
+          "name": "하계 올림픽 경기 대회",
+          "alias": true
+        },
+        {
+          "name": "하계올림픽",
+          "alias": true
+        }
+      ],
+      "zh-hans": [
+        {
+          "name": "夏季奥林匹克运动会",
+          "pref": true
+        }
+      ],
+      "zh-cn": [
+        {
+          "name": "夏季奥林匹克运动会",
+          "pref": true
+        }
+      ],
+      "zh-sg": [
+        {
+          "name": "夏季奥林匹克运动会",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "夏季奥林匹克运动会",
+          "pref": true
+        },
+        {
+          "name": "夏季奥运会",
+          "alias": true
+        },
+        {
+          "name": "夏奥会",
+          "alias": true
+        },
+        {
+          "name": "夏季奧運會",
+          "alias": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "夏季奧林匹克運動會",
+          "pref": true
+        }
+      ],
+      "zh-tw": [
+        {
+          "name": "夏季奧林匹克運動會",
+          "pref": true
+        }
+      ],
+      "zh-hk": [
+        {
+          "name": "夏季奧林匹克運動會",
+          "pref": true
+        }
+      ],
+      "pt": [
+        {
+          "name": "Jogos Olímpicos de Verão",
+          "pref": true
+        }
+      ],
+      "pt-br": [
+        {
+          "name": "Jogos Olímpicos de Verão",
+          "pref": true
+        },
+        {
+          "name": "Olimpíadas",
+          "alias": true
+        },
+        {
+          "name": "Olimpíadas de Verão",
+          "alias": true
+        }
+      ],
+      "ru": [
+        {
+          "name": "летние Олимпийские игры",
+          "pref": true
+        },
+        {
+          "name": "летняя Олимпиада",
+          "alias": true
+        }
+      ],
+      "tr": [
+        {
+          "name": "Yaz Olimpiyat Oyunları",
+          "pref": true
+        },
+        {
+          "name": "Yaz olimpiyatları",
+          "alias": true
+        }
+      ],
+      "pl": [
+        {
+          "name": "Letnie igrzyska olimpijskie",
+          "pref": true
+        }
+      ],
+      "nl": [
+        {
+          "name": "Olympische Zomerspelen",
+          "pref": true
+        },
+        {
+          "name": "Zomerspelen",
+          "alias": true
+        }
+      ],
+      "bg": [
+        {
+          "name": "Летни олимпийски игри",
+          "pref": true
+        }
+      ],
+      "cs": [
+        {
+          "name": "letní olympijské hry",
+          "pref": true
+        },
+        {
+          "name": "LOH",
+          "alias": true
+        },
+        {
+          "name": "letní olympiáda",
+          "alias": true
+        }
+      ],
+      "da": [
+        {
+          "name": "sommer-OL",
+          "pref": true
+        },
+        {
+          "name": "Sommerolympiade",
+          "alias": true
+        },
+        {
+          "name": "Sommer OL",
+          "alias": true
+        },
+        {
+          "name": "De olympiske sommerlege",
+          "alias": true
+        },
+        {
+          "name": "Olympiske sommerlege",
+          "alias": true
+        }
+      ],
+      "et": [
+        {
+          "name": "suveolümpiamängud",
+          "pref": true
+        },
+        {
+          "name": "Kaasaegsed suveolümpiamängud",
+          "alias": true
+        }
+      ],
+      "fi": [
+        {
+          "name": "kesäolympialaiset",
+          "pref": true
+        },
+        {
+          "name": "olympiakesäkisat",
+          "alias": true
+        },
+        {
+          "name": "olympialaiset kesäkisat",
+          "alias": true
+        }
+      ],
+      "el": [
+        {
+          "name": "Θερινοί Ολυμπιακοί Αγώνες",
+          "pref": true
+        }
+      ],
+      "he": [
+        {
+          "name": "משחקי הקיץ האולימפיים",
+          "pref": true
+        }
+      ],
+      "hu": [
+        {
+          "name": "nyári olimpiai játékok",
+          "pref": true
+        },
+        {
+          "name": "nyári olimpia",
+          "alias": true
+        }
+      ],
+      "lv": [
+        {
+          "name": "vasaras olimpiskās spēles",
+          "pref": true
+        }
+      ],
+      "mk": [
+        {
+          "name": "Летни олимписки игри",
+          "pref": true
+        },
+        {
+          "name": "Летна олимпијада",
+          "alias": true
+        },
+        {
+          "name": "ЛОИ",
+          "alias": true
+        }
+      ],
+      "nb": [
+        {
+          "name": "olympiske sommerleker",
+          "pref": true
+        },
+        {
+          "name": "de olympiske sommerleker",
+          "alias": true
+        },
+        {
+          "name": "sommer-OL",
+          "alias": true
+        }
+      ],
+      "nn": [
+        {
+          "name": "olympiske sommarleikar",
+          "pref": true
+        },
+        {
+          "name": "sumar-OL",
+          "alias": true
+        },
+        {
+          "name": "olympiske sommarleikane",
+          "alias": true
+        },
+        {
+          "name": "sommar-OL",
+          "alias": true
+        },
+        {
+          "name": "dei olympiske sommarleikane",
+          "alias": true
+        }
+      ],
+      "ro": [
+        {
+          "name": "Jocuri Olimpice de vară",
+          "pref": true
+        },
+        {
+          "name": "Jocurile Olimpice de Vară",
+          "alias": true
+        },
+        {
+          "name": "Olimpiadă de vară",
+          "alias": true
+        }
+      ],
+      "sr": [
+        {
+          "name": "Летње олимпијске игре",
+          "pref": true
+        },
+        {
+          "name": "ЛОИ",
+          "alias": true
+        }
+      ],
+      "sk": [
+        {
+          "name": "Letné olympijské hry",
+          "pref": true
+        },
+        {
+          "name": "LOH",
+          "alias": true
+        }
+      ],
+      "sv": [
+        {
+          "name": "Olympiska sommarspelen",
+          "pref": true
+        },
+        {
+          "name": "Sommar-OS",
+          "alias": true
+        }
+      ],
+      "tl": [
+        {
+          "name": "Palarong Olimpiko sa Tag-init",
+          "pref": true
+        }
+      ]
+    },
+    "season": {
+      "en": [
+        {
+          "name": "summer",
+          "pref": true
+        },
+        {
+          "name": "summer season",
+          "alias": true
+        },
+        {
+          "name": "summertime season",
+          "alias": true
+        },
+        {
+          "name": "Summer",
+          "alias": true
+        }
+      ],
+      "de": [
+        {
+          "name": "Sommer",
+          "pref": true
+        },
+        {
+          "name": "Sommerzeit",
+          "alias": true
+        },
+        {
+          "name": "Sommersaison",
+          "alias": true
+        }
+      ],
+      "es": [
+        {
+          "name": "verano",
+          "pref": true
+        },
+        {
+          "name": "estío",
+          "alias": true
+        },
+        {
+          "name": "Verano",
+          "alias": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "été",
+          "pref": true
+        }
+      ],
+      "it": [
+        {
+          "name": "estate",
+          "pref": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "夏",
+          "pref": true
+        }
+      ],
+      "ko": [
+        {
+          "name": "여름",
+          "pref": true
+        },
+        {
+          "name": "하계",
+          "alias": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "夏季",
+          "pref": true
+        },
+        {
+          "name": "舊愛來作客",
+          "alias": true
+        },
+        {
+          "name": "熱人",
+          "alias": true
+        },
+        {
+          "name": "夏天",
+          "alias": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "夏季",
+          "pref": true
+        },
+        {
+          "name": "夏天",
+          "alias": true
+        }
+      ],
+      "pt": [
+        {
+          "name": "verão",
+          "pref": true
+        },
+        {
+          "name": "estio",
+          "alias": true
+        }
+      ],
+      "pt-br": [
+        {
+          "name": "Verão",
+          "pref": true
+        }
+      ],
+      "ru": [
+        {
+          "name": "лето",
+          "pref": true
+        }
+      ],
+      "tr": [
+        {
+          "name": "yaz",
+          "pref": true
+        }
+      ],
+      "pl": [
+        {
+          "name": "lato",
+          "pref": true
+        }
+      ],
+      "nl": [
+        {
+          "name": "zomer",
+          "pref": true
+        },
+        {
+          "name": "zomerperiode",
+          "alias": true
+        },
+        {
+          "name": "zomerseizoen",
+          "alias": true
+        }
+      ],
+      "bg": [
+        {
+          "name": "Лято",
+          "pref": true
+        }
+      ],
+      "cs": [
+        {
+          "name": "léto",
+          "pref": true
+        }
+      ],
+      "da": [
+        {
+          "name": "sommer",
+          "pref": true
+        }
+      ],
+      "et": [
+        {
+          "name": "suvi",
+          "pref": true
+        }
+      ],
+      "fi": [
+        {
+          "name": "kesä",
+          "pref": true
+        }
+      ],
+      "el": [
+        {
+          "name": "καλοκαίρι",
+          "pref": true
+        }
+      ],
+      "he": [
+        {
+          "name": "קיץ",
+          "pref": true
+        }
+      ],
+      "hu": [
+        {
+          "name": "nyár",
+          "pref": true
+        }
+      ],
+      "lv": [
+        {
+          "name": "vasara",
+          "pref": true
+        }
+      ],
+      "mk": [
+        {
+          "name": "лето",
+          "pref": true
+        }
+      ],
+      "nb": [
+        {
+          "name": "sommer",
+          "pref": true
+        }
+      ],
+      "nn": [
+        {
+          "name": "sommar",
+          "pref": true
+        },
+        {
+          "name": "sumar",
+          "alias": true
+        }
+      ],
+      "ro": [
+        {
+          "name": "vară",
+          "pref": true
+        },
+        {
+          "name": "sezonul de vară",
+          "alias": true
+        },
+        {
+          "name": "sezonul verii",
+          "alias": true
+        },
+        {
+          "name": "vara",
+          "alias": true
+        }
+      ],
+      "sr": [
+        {
+          "name": "лето",
+          "pref": true
+        }
+      ],
+      "sk": [
+        {
+          "name": "leto",
+          "pref": true
+        }
+      ],
+      "sv": [
+        {
+          "name": "sommar",
+          "pref": true
+        },
+        {
+          "name": "sommaren",
+          "alias": true
+        },
+        {
+          "name": "sommarsäsong",
+          "alias": true
+        },
+        {
+          "name": "sommarsäsongen",
+          "alias": true
+        }
+      ],
+      "tl": [
+        {
+          "name": "Tag-init",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "olympia/winter": {
+    "qid": "Q82414",
+    "names": {
+      "en": [
+        {
+          "name": "Winter Olympic Games",
+          "pref": true
+        },
+        {
+          "name": "Winter Olympics",
+          "alias": true
+        },
+        {
+          "name": "Olympic Winter Games",
+          "alias": true
+        }
+      ],
+      "de": [
+        {
+          "name": "Olympische Winterspiele",
+          "pref": true
+        },
+        {
+          "name": "Winterolympiade",
+          "alias": true
+        },
+        {
+          "name": "Winterspiele",
+          "alias": true
+        }
+      ],
+      "es": [
+        {
+          "name": "Juegos Olímpicos de Invierno",
+          "pref": true
+        },
+        {
+          "name": "Juegos Olimpicos de invierno",
+          "alias": true
+        },
+        {
+          "name": "Olimpíadas de Invierno",
+          "alias": true
+        },
+        {
+          "name": "Olimpiada invernal",
+          "alias": true
+        },
+        {
+          "name": "Olimpiadas de Invierno",
+          "alias": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "Jeux olympiques d’hiver",
+          "pref": true
+        },
+        {
+          "name": "JO d'hiver",
+          "alias": true
+        },
+        {
+          "name": "Jeux olympiques d'hiver",
+          "alias": true
+        }
+      ],
+      "it": [
+        {
+          "name": "Giochi olimpici invernali",
+          "pref": true
+        },
+        {
+          "name": "Olimpiadi Invernali",
+          "alias": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "冬季オリンピック",
+          "pref": true
+        },
+        {
+          "name": "オリンピック冬季競技大会",
+          "alias": true
+        },
+        {
+          "name": "冬季五輪",
+          "alias": true
+        }
+      ],
+      "ko": [
+        {
+          "name": "동계 올림픽",
+          "pref": true
+        },
+        {
+          "name": "동계올림픽",
+          "alias": true
+        },
+        {
+          "name": "동계 올림픽 대회",
+          "alias": true
+        }
+      ],
+      "zh-hans": [
+        {
+          "name": "冬季奥林匹克运动会",
+          "pref": true
+        },
+        {
+          "name": "冬季奥运会",
+          "alias": true
+        },
+        {
+          "name": "冬奥",
+          "alias": true
+        },
+        {
+          "name": "冬季奥运",
+          "alias": true
+        }
+      ],
+      "zh-cn": [
+        {
+          "name": "冬季奥林匹克运动会",
+          "pref": true
+        },
+        {
+          "name": "冬季奥运会",
+          "alias": true
+        },
+        {
+          "name": "冬奥",
+          "alias": true
+        },
+        {
+          "name": "冬季奥运",
+          "alias": true
+        }
+      ],
+      "zh-sg": [
+        {
+          "name": "冬季奥林匹克运动会",
+          "pref": true
+        },
+        {
+          "name": "冬季奥运会",
+          "alias": true
+        },
+        {
+          "name": "冬奥",
+          "alias": true
+        },
+        {
+          "name": "冬季奥运",
+          "alias": true
+        }
+      ],
+      "zh-my": [
+        {
+          "name": "冬季奥林匹克运动会",
+          "pref": true
+        },
+        {
+          "name": "冬季奥运会",
+          "alias": true
+        },
+        {
+          "name": "冬奥",
+          "alias": true
+        },
+        {
+          "name": "冬季奥运",
+          "alias": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "冬季奥林匹克运动会",
+          "pref": true
+        },
+        {
+          "name": "冬奥会",
+          "alias": true
+        },
+        {
+          "name": "冬季奧運",
+          "alias": true
+        },
+        {
+          "name": "冬奧",
+          "alias": true
+        },
+        {
+          "name": "冬季奥运会",
+          "alias": true
+        },
+        {
+          "name": "冬季奧林匹克運動會",
+          "alias": true
+        },
+        {
+          "name": "冬季奧運會",
+          "alias": true
+        },
+        {
+          "name": "冬奥",
+          "alias": true
+        },
+        {
+          "name": "冬季奥运",
+          "alias": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "冬季奧林匹克運動會",
+          "pref": true
+        },
+        {
+          "name": "冬季奧運會",
+          "alias": true
+        },
+        {
+          "name": "冬奧",
+          "alias": true
+        },
+        {
+          "name": "冬季奧運",
+          "alias": true
+        }
+      ],
+      "zh-tw": [
+        {
+          "name": "冬季奧林匹克運動會",
+          "pref": true
+        },
+        {
+          "name": "冬季奧運會",
+          "alias": true
+        },
+        {
+          "name": "冬奧",
+          "alias": true
+        },
+        {
+          "name": "冬季奧運",
+          "alias": true
+        }
+      ],
+      "zh-hk": [
+        {
+          "name": "冬季奧林匹克運動會",
+          "pref": true
+        },
+        {
+          "name": "冬季奧運會",
+          "alias": true
+        },
+        {
+          "name": "冬奧",
+          "alias": true
+        },
+        {
+          "name": "冬季奧運",
+          "alias": true
+        }
+      ],
+      "zh-mo": [
+        {
+          "name": "冬季奧林匹克運動會",
+          "pref": true
+        },
+        {
+          "name": "冬季奧運會",
+          "alias": true
+        },
+        {
+          "name": "冬奧",
+          "alias": true
+        },
+        {
+          "name": "冬季奧運",
+          "alias": true
+        }
+      ],
+      "pt": [
+        {
+          "name": "Jogos Olímpicos de Inverno",
+          "pref": true
+        },
+        {
+          "name": "Olimpíadas de Inverno",
+          "alias": true
+        }
+      ],
+      "pt-br": [
+        {
+          "name": "Jogos Olímpicos de Inverno",
+          "pref": true
+        },
+        {
+          "name": "Olimpíadas de Inverno",
+          "alias": true
+        }
+      ],
+      "ru": [
+        {
+          "name": "зимние Олимпийские игры",
+          "pref": true
+        },
+        {
+          "name": "ЗОИ",
+          "alias": true
+        },
+        {
+          "name": "белая Олимпиада",
+          "alias": true
+        },
+        {
+          "name": "зимняя Олимпиада",
+          "alias": true
+        },
+        {
+          "name": "зимние Олимпиады",
+          "alias": true
+        }
+      ],
+      "tr": [
+        {
+          "name": "Kış Olimpiyat Oyunları",
+          "pref": true
+        },
+        {
+          "name": "Kış Olimpiyatları",
+          "alias": true
+        }
+      ],
+      "pl": [
+        {
+          "name": "Zimowe igrzyska olimpijskie",
+          "pref": true
+        },
+        {
+          "name": "Olimpiada zimowa",
+          "alias": true
+        },
+        {
+          "name": "ZIO",
+          "alias": true
+        }
+      ],
+      "nl": [
+        {
+          "name": "Olympische Winterspelen",
+          "pref": true
+        },
+        {
+          "name": "Winterspelen",
+          "alias": true
+        }
+      ],
+      "bg": [
+        {
+          "name": "Зимни олимпийски игри",
+          "pref": true
+        },
+        {
+          "name": "Зимна Олимпиада",
+          "alias": true
+        }
+      ],
+      "cs": [
+        {
+          "name": "zimní olympijské hry",
+          "pref": true
+        },
+        {
+          "name": "ZOH",
+          "alias": true
+        },
+        {
+          "name": "zimní olympiáda",
+          "alias": true
+        }
+      ],
+      "da": [
+        {
+          "name": "Vinter-OL",
+          "pref": true
+        },
+        {
+          "name": "Olympiske Vinterlege",
+          "alias": true
+        },
+        {
+          "name": "De Olympiske Vinterlege",
+          "alias": true
+        },
+        {
+          "name": "Vinter OL",
+          "alias": true
+        },
+        {
+          "name": "Vinterolympiade",
+          "alias": true
+        }
+      ],
+      "et": [
+        {
+          "name": "taliolümpiamängud",
+          "pref": true
+        }
+      ],
+      "fi": [
+        {
+          "name": "talviolympialaiset",
+          "pref": true
+        },
+        {
+          "name": "olympiatalvikisat",
+          "alias": true
+        },
+        {
+          "name": "olympialaiset talvikisat",
+          "alias": true
+        }
+      ],
+      "el": [
+        {
+          "name": "Χειμερινοί Ολυμπιακοί Αγώνες",
+          "pref": true
+        }
+      ],
+      "he": [
+        {
+          "name": "משחקי החורף האולימפיים",
+          "pref": true
+        },
+        {
+          "name": "אולימפיאדת חורף",
+          "alias": true
+        },
+        {
+          "name": "אולימפיאדת החורף",
+          "alias": true
+        }
+      ],
+      "hu": [
+        {
+          "name": "téli olimpiai játékok",
+          "pref": true
+        }
+      ],
+      "lv": [
+        {
+          "name": "ziemas olimpiskās spēles",
+          "pref": true
+        }
+      ],
+      "mk": [
+        {
+          "name": "Зимски олимписки игри",
+          "pref": true
+        }
+      ],
+      "nb": [
+        {
+          "name": "olympiske vinterleker",
+          "pref": true
+        },
+        {
+          "name": "de olympiske vinterlekene",
+          "alias": true
+        },
+        {
+          "name": "de olympiske vinterleker",
+          "alias": true
+        },
+        {
+          "name": "vinter-OL",
+          "alias": true
+        }
+      ],
+      "nn": [
+        {
+          "name": "olympiske vinterleikar",
+          "pref": true
+        },
+        {
+          "name": "dei olympiske vinterleikane",
+          "alias": true
+        },
+        {
+          "name": "olympiske vinterleikane",
+          "alias": true
+        },
+        {
+          "name": "vinter-OL",
+          "alias": true
+        }
+      ],
+      "ro": [
+        {
+          "name": "Jocurile Olimpice de iarnă",
+          "pref": true
+        },
+        {
+          "name": "Jocurile Olimpice de Iarnă",
+          "alias": true
+        }
+      ],
+      "sr": [
+        {
+          "name": "Зимске олимпијске игре",
+          "pref": true
+        },
+        {
+          "name": "ЗОИ",
+          "alias": true
+        }
+      ],
+      "sk": [
+        {
+          "name": "Zimné olympijské hry",
+          "pref": true
+        },
+        {
+          "name": "ZOH",
+          "alias": true
+        }
+      ],
+      "sv": [
+        {
+          "name": "Olympiska vinterspelen",
+          "pref": true
+        },
+        {
+          "name": "Vinter OS",
+          "alias": true
+        },
+        {
+          "name": "Vinter-OS",
+          "alias": true
+        },
+        {
+          "name": "Internationella vintersportveckan",
+          "alias": true
+        }
+      ],
+      "tl": [
+        {
+          "name": "Palarong Olimpiko sa Taglamig",
+          "pref": true
+        }
+      ]
+    },
+    "season": {
+      "en": [
+        {
+          "name": "winter",
+          "pref": true
+        },
+        {
+          "name": "winter season",
+          "alias": true
+        },
+        {
+          "name": "wintertime",
+          "alias": true
+        },
+        {
+          "name": "wintertime season",
+          "alias": true
+        }
+      ],
+      "de": [
+        {
+          "name": "Winter",
+          "pref": true
+        },
+        {
+          "name": "Wintersaison",
+          "alias": true
+        },
+        {
+          "name": "Winterzeit",
+          "alias": true
+        }
+      ],
+      "es": [
+        {
+          "name": "invierno",
+          "pref": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "hiver",
+          "pref": true
+        }
+      ],
+      "it": [
+        {
+          "name": "inverno",
+          "pref": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "冬",
+          "pref": true
+        }
+      ],
+      "ko": [
+        {
+          "name": "겨울",
+          "pref": true
+        },
+        {
+          "name": "동계",
+          "alias": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "冬季",
+          "pref": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "冬季",
+          "pref": true
+        },
+        {
+          "name": "冬天",
+          "alias": true
+        }
+      ],
+      "pt": [
+        {
+          "name": "inverno",
+          "pref": true
+        }
+      ],
+      "pt-br": [
+        {
+          "name": "Inverno",
+          "pref": true
+        }
+      ],
+      "ru": [
+        {
+          "name": "зима",
+          "pref": true
+        }
+      ],
+      "tr": [
+        {
+          "name": "kış",
+          "pref": true
+        }
+      ],
+      "pl": [
+        {
+          "name": "zima",
+          "pref": true
+        }
+      ],
+      "nl": [
+        {
+          "name": "winter",
+          "pref": true
+        },
+        {
+          "name": "winterperiode",
+          "alias": true
+        },
+        {
+          "name": "winterseizoen",
+          "alias": true
+        }
+      ],
+      "bg": [
+        {
+          "name": "Зима",
+          "pref": true
+        }
+      ],
+      "cs": [
+        {
+          "name": "zima",
+          "pref": true
+        }
+      ],
+      "da": [
+        {
+          "name": "vinter",
+          "pref": true
+        }
+      ],
+      "et": [
+        {
+          "name": "talv",
+          "pref": true
+        }
+      ],
+      "fi": [
+        {
+          "name": "talvi",
+          "pref": true
+        }
+      ],
+      "el": [
+        {
+          "name": "χειμώνας",
+          "pref": true
+        }
+      ],
+      "he": [
+        {
+          "name": "חורף",
+          "pref": true
+        }
+      ],
+      "hu": [
+        {
+          "name": "tél",
+          "pref": true
+        }
+      ],
+      "lv": [
+        {
+          "name": "ziema",
+          "pref": true
+        }
+      ],
+      "mk": [
+        {
+          "name": "зима",
+          "pref": true
+        }
+      ],
+      "nb": [
+        {
+          "name": "vinter",
+          "pref": true
+        },
+        {
+          "name": "Vinter",
+          "alias": true
+        }
+      ],
+      "nn": [
+        {
+          "name": "vinter",
+          "pref": true
+        },
+        {
+          "name": "vetter",
+          "alias": true
+        }
+      ],
+      "ro": [
+        {
+          "name": "iarnă",
+          "pref": true
+        },
+        {
+          "name": "sezonul de iarnă",
+          "alias": true
+        },
+        {
+          "name": "ierni",
+          "alias": true
+        },
+        {
+          "name": "sezonul iernii",
+          "alias": true
+        }
+      ],
+      "sr": [
+        {
+          "name": "зима",
+          "pref": true
+        }
+      ],
+      "sk": [
+        {
+          "name": "zima",
+          "pref": true
+        }
+      ],
+      "sv": [
+        {
+          "name": "vinter",
+          "pref": true
+        },
+        {
+          "name": "vintersäsong",
+          "alias": true
+        },
+        {
+          "name": "vintersäsongen",
+          "alias": true
+        },
+        {
+          "name": "vintern",
+          "alias": true
+        }
+      ],
+      "tl": [
+        {
+          "name": "Taglamig",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "paralympics/summer": {
+    "qid": "Q3327913",
+    "names": {
+      "en": [
+        {
+          "name": "Summer Paralympic Games",
+          "pref": true
+        },
+        {
+          "name": "Summer Paralympics",
+          "alias": true
+        }
+      ],
+      "de": [
+        {
+          "name": "Paralympische Sommerspiele",
+          "pref": true
+        }
+      ],
+      "es": [
+        {
+          "name": "Juegos Paralímpicos de Verano",
+          "pref": true
+        },
+        {
+          "name": "Juegos Paralimpicos de Verano",
+          "alias": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "Jeux paralympiques d'été",
+          "pref": true
+        }
+      ],
+      "it": [
+        {
+          "name": "Giochi paralimpici estivi",
+          "pref": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "夏季パラリンピック",
+          "pref": true
+        }
+      ],
+      "ko": [
+        {
+          "name": "하계 패럴림픽",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "夏季帕拉林匹克運動會",
+          "pref": true
+        }
+      ],
+      "pt": [
+        {
+          "name": "Jogos Paralímpicos de Verão",
+          "pref": true
+        }
+      ],
+      "ru": [
+        {
+          "name": "Летние Паралимпийские игры",
+          "pref": true
+        },
+        {
+          "name": "Паралимпийские летние игры",
+          "alias": true
+        },
+        {
+          "name": "Летняя Паралимпиада",
+          "alias": true
+        }
+      ],
+      "pl": [
+        {
+          "name": "Letnie igrzyska paraolimpijskie",
+          "pref": true
+        }
+      ],
+      "nl": [
+        {
+          "name": "Paralympische Zomerspelen",
+          "pref": true
+        }
+      ],
+      "cs": [
+        {
+          "name": "letní paralympijské hry",
+          "pref": true
+        }
+      ],
+      "da": [
+        {
+          "name": "Sommer-PL",
+          "pref": true
+        }
+      ],
+      "fi": [
+        {
+          "name": "kesäparalympialaiset",
+          "pref": true
+        }
+      ],
+      "el": [
+        {
+          "name": "Θερινοί Παραολυμπιακοί Αγώνες",
+          "pref": true
+        }
+      ],
+      "nb": [
+        {
+          "name": "paralympiske sommerleker",
+          "pref": true
+        }
+      ],
+      "ro": [
+        {
+          "name": "Jocurile Paralimpice de vară",
+          "pref": true
+        }
+      ],
+      "sr": [
+        {
+          "name": "Летње параолимпијске игре",
+          "pref": true
+        }
+      ],
+      "sv": [
+        {
+          "name": "Paralympiska sommarspelen",
+          "pref": true
+        }
+      ]
+    },
+    "season": {
+      "en": [
+        {
+          "name": "summer",
+          "pref": true
+        },
+        {
+          "name": "summer season",
+          "alias": true
+        },
+        {
+          "name": "summertime season",
+          "alias": true
+        },
+        {
+          "name": "Summer",
+          "alias": true
+        }
+      ],
+      "de": [
+        {
+          "name": "Sommer",
+          "pref": true
+        },
+        {
+          "name": "Sommerzeit",
+          "alias": true
+        },
+        {
+          "name": "Sommersaison",
+          "alias": true
+        }
+      ],
+      "es": [
+        {
+          "name": "verano",
+          "pref": true
+        },
+        {
+          "name": "estío",
+          "alias": true
+        },
+        {
+          "name": "Verano",
+          "alias": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "été",
+          "pref": true
+        }
+      ],
+      "it": [
+        {
+          "name": "estate",
+          "pref": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "夏",
+          "pref": true
+        }
+      ],
+      "ko": [
+        {
+          "name": "여름",
+          "pref": true
+        },
+        {
+          "name": "하계",
+          "alias": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "夏季",
+          "pref": true
+        },
+        {
+          "name": "舊愛來作客",
+          "alias": true
+        },
+        {
+          "name": "熱人",
+          "alias": true
+        },
+        {
+          "name": "夏天",
+          "alias": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "夏季",
+          "pref": true
+        },
+        {
+          "name": "夏天",
+          "alias": true
+        }
+      ],
+      "pt": [
+        {
+          "name": "verão",
+          "pref": true
+        },
+        {
+          "name": "estio",
+          "alias": true
+        }
+      ],
+      "pt-br": [
+        {
+          "name": "Verão",
+          "pref": true
+        }
+      ],
+      "ru": [
+        {
+          "name": "лето",
+          "pref": true
+        }
+      ],
+      "tr": [
+        {
+          "name": "yaz",
+          "pref": true
+        }
+      ],
+      "pl": [
+        {
+          "name": "lato",
+          "pref": true
+        }
+      ],
+      "nl": [
+        {
+          "name": "zomer",
+          "pref": true
+        },
+        {
+          "name": "zomerperiode",
+          "alias": true
+        },
+        {
+          "name": "zomerseizoen",
+          "alias": true
+        }
+      ],
+      "bg": [
+        {
+          "name": "Лято",
+          "pref": true
+        }
+      ],
+      "cs": [
+        {
+          "name": "léto",
+          "pref": true
+        }
+      ],
+      "da": [
+        {
+          "name": "sommer",
+          "pref": true
+        }
+      ],
+      "et": [
+        {
+          "name": "suvi",
+          "pref": true
+        }
+      ],
+      "fi": [
+        {
+          "name": "kesä",
+          "pref": true
+        }
+      ],
+      "el": [
+        {
+          "name": "καλοκαίρι",
+          "pref": true
+        }
+      ],
+      "he": [
+        {
+          "name": "קיץ",
+          "pref": true
+        }
+      ],
+      "hu": [
+        {
+          "name": "nyár",
+          "pref": true
+        }
+      ],
+      "lv": [
+        {
+          "name": "vasara",
+          "pref": true
+        }
+      ],
+      "mk": [
+        {
+          "name": "лето",
+          "pref": true
+        }
+      ],
+      "nb": [
+        {
+          "name": "sommer",
+          "pref": true
+        }
+      ],
+      "nn": [
+        {
+          "name": "sommar",
+          "pref": true
+        },
+        {
+          "name": "sumar",
+          "alias": true
+        }
+      ],
+      "ro": [
+        {
+          "name": "vară",
+          "pref": true
+        },
+        {
+          "name": "sezonul de vară",
+          "alias": true
+        },
+        {
+          "name": "sezonul verii",
+          "alias": true
+        },
+        {
+          "name": "vara",
+          "alias": true
+        }
+      ],
+      "sr": [
+        {
+          "name": "лето",
+          "pref": true
+        }
+      ],
+      "sk": [
+        {
+          "name": "leto",
+          "pref": true
+        }
+      ],
+      "sv": [
+        {
+          "name": "sommar",
+          "pref": true
+        },
+        {
+          "name": "sommaren",
+          "alias": true
+        },
+        {
+          "name": "sommarsäsong",
+          "alias": true
+        },
+        {
+          "name": "sommarsäsongen",
+          "alias": true
+        }
+      ],
+      "tl": [
+        {
+          "name": "Tag-init",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "paralympics/winter": {
+    "qid": "Q3317976",
+    "names": {
+      "en": [
+        {
+          "name": "Winter Paralympic Games",
+          "pref": true
+        },
+        {
+          "name": "Winter Paralympics",
+          "alias": true
+        }
+      ],
+      "de": [
+        {
+          "name": "Winter-Paralympics",
+          "pref": true
+        }
+      ],
+      "es": [
+        {
+          "name": "Juegos Paralímpicos de Invierno",
+          "pref": true
+        },
+        {
+          "name": "Juegos Paralimpicos de Invierno",
+          "alias": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "Jeux paralympiques d'hiver",
+          "pref": true
+        }
+      ],
+      "it": [
+        {
+          "name": "Giochi paralimpici invernali",
+          "pref": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "冬季パラリンピック",
+          "pref": true
+        }
+      ],
+      "ko": [
+        {
+          "name": "동계 패럴림픽",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "冬季帕拉林匹克運動會",
+          "pref": true
+        }
+      ],
+      "pt": [
+        {
+          "name": "Jogos Paralímpicos de Inverno",
+          "pref": true
+        },
+        {
+          "name": "Paraolimpíadas de Inverno",
+          "alias": true
+        }
+      ],
+      "pt-br": [
+        {
+          "name": "Jogos Paralímpicos de Inverno",
+          "pref": true
+        }
+      ],
+      "ru": [
+        {
+          "name": "зимние Паралимпийские игры",
+          "pref": true
+        }
+      ],
+      "pl": [
+        {
+          "name": "Zimowe igrzyska paraolimpijskie",
+          "pref": true
+        }
+      ],
+      "cs": [
+        {
+          "name": "zimní paralympijské hry",
+          "pref": true
+        }
+      ],
+      "et": [
+        {
+          "name": "Taliparalümpiamängud",
+          "pref": true
+        }
+      ],
+      "fi": [
+        {
+          "name": "talviparalympialaiset",
+          "pref": true
+        }
+      ],
+      "lv": [
+        {
+          "name": "Ziemas paraolimpiskās spēles",
+          "pref": true
+        }
+      ],
+      "nb": [
+        {
+          "name": "paralympiske vinterleker",
+          "pref": true
+        }
+      ],
+      "sr": [
+        {
+          "name": "Зимске параолимпијске игре",
+          "pref": true
+        }
+      ],
+      "sv": [
+        {
+          "name": "Paralympiska vinterspelen",
+          "pref": true
+        }
+      ]
+    },
+    "season": {
+      "en": [
+        {
+          "name": "winter",
+          "pref": true
+        },
+        {
+          "name": "winter season",
+          "alias": true
+        },
+        {
+          "name": "wintertime",
+          "alias": true
+        },
+        {
+          "name": "wintertime season",
+          "alias": true
+        }
+      ],
+      "de": [
+        {
+          "name": "Winter",
+          "pref": true
+        },
+        {
+          "name": "Wintersaison",
+          "alias": true
+        },
+        {
+          "name": "Winterzeit",
+          "alias": true
+        }
+      ],
+      "es": [
+        {
+          "name": "invierno",
+          "pref": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "hiver",
+          "pref": true
+        }
+      ],
+      "it": [
+        {
+          "name": "inverno",
+          "pref": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "冬",
+          "pref": true
+        }
+      ],
+      "ko": [
+        {
+          "name": "겨울",
+          "pref": true
+        },
+        {
+          "name": "동계",
+          "alias": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "冬季",
+          "pref": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "冬季",
+          "pref": true
+        },
+        {
+          "name": "冬天",
+          "alias": true
+        }
+      ],
+      "pt": [
+        {
+          "name": "inverno",
+          "pref": true
+        }
+      ],
+      "pt-br": [
+        {
+          "name": "Inverno",
+          "pref": true
+        }
+      ],
+      "ru": [
+        {
+          "name": "зима",
+          "pref": true
+        }
+      ],
+      "tr": [
+        {
+          "name": "kış",
+          "pref": true
+        }
+      ],
+      "pl": [
+        {
+          "name": "zima",
+          "pref": true
+        }
+      ],
+      "nl": [
+        {
+          "name": "winter",
+          "pref": true
+        },
+        {
+          "name": "winterperiode",
+          "alias": true
+        },
+        {
+          "name": "winterseizoen",
+          "alias": true
+        }
+      ],
+      "bg": [
+        {
+          "name": "Зима",
+          "pref": true
+        }
+      ],
+      "cs": [
+        {
+          "name": "zima",
+          "pref": true
+        }
+      ],
+      "da": [
+        {
+          "name": "vinter",
+          "pref": true
+        }
+      ],
+      "et": [
+        {
+          "name": "talv",
+          "pref": true
+        }
+      ],
+      "fi": [
+        {
+          "name": "talvi",
+          "pref": true
+        }
+      ],
+      "el": [
+        {
+          "name": "χειμώνας",
+          "pref": true
+        }
+      ],
+      "he": [
+        {
+          "name": "חורף",
+          "pref": true
+        }
+      ],
+      "hu": [
+        {
+          "name": "tél",
+          "pref": true
+        }
+      ],
+      "lv": [
+        {
+          "name": "ziema",
+          "pref": true
+        }
+      ],
+      "mk": [
+        {
+          "name": "зима",
+          "pref": true
+        }
+      ],
+      "nb": [
+        {
+          "name": "vinter",
+          "pref": true
+        },
+        {
+          "name": "Vinter",
+          "alias": true
+        }
+      ],
+      "nn": [
+        {
+          "name": "vinter",
+          "pref": true
+        },
+        {
+          "name": "vetter",
+          "alias": true
+        }
+      ],
+      "ro": [
+        {
+          "name": "iarnă",
+          "pref": true
+        },
+        {
+          "name": "sezonul de iarnă",
+          "alias": true
+        },
+        {
+          "name": "ierni",
+          "alias": true
+        },
+        {
+          "name": "sezonul iernii",
+          "alias": true
+        }
+      ],
+      "sr": [
+        {
+          "name": "зима",
+          "pref": true
+        }
+      ],
+      "sk": [
+        {
+          "name": "zima",
+          "pref": true
+        }
+      ],
+      "sv": [
+        {
+          "name": "vinter",
+          "pref": true
+        },
+        {
+          "name": "vintersäsong",
+          "alias": true
+        },
+        {
+          "name": "vintersäsongen",
+          "alias": true
+        },
+        {
+          "name": "vintern",
+          "alias": true
+        }
+      ],
+      "tl": [
+        {
+          "name": "Taglamig",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "asian-games/summer": {
+    "qid": "Q483463",
+    "names": {
+      "en": [
+        {
+          "name": "Asian Games",
+          "pref": true
+        }
+      ],
+      "de": [
+        {
+          "name": "Asienspiele",
+          "pref": true
+        },
+        {
+          "name": "Panasiatische Spiele",
+          "alias": true
+        },
+        {
+          "name": "Asien-Spiele",
+          "alias": true
+        },
+        {
+          "name": "Asian Games",
+          "alias": true
+        }
+      ],
+      "es": [
+        {
+          "name": "Juegos Asiáticos",
+          "pref": true
+        },
+        {
+          "name": "Juegos Asiaticos",
+          "alias": true
+        },
+        {
+          "name": "Asian Games",
+          "alias": true
+        },
+        {
+          "name": "Juegos de Asia",
+          "alias": true
+        },
+        {
+          "name": "Asiad",
+          "alias": true
+        },
+        {
+          "name": "Juegos Asiad",
+          "alias": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "Jeux asiatiques",
+          "pref": true
+        },
+        {
+          "name": "Jeux Panasiatiques",
+          "alias": true
+        },
+        {
+          "name": "Jeux d'Asie",
+          "alias": true
+        }
+      ],
+      "it": [
+        {
+          "name": "Giochi asiatici",
+          "pref": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "アジア競技大会",
+          "pref": true
+        },
+        {
+          "name": "アジア大会",
+          "alias": true
+        },
+        {
+          "name": "夏季アジア大会",
+          "alias": true
+        }
+      ],
+      "ko": [
+        {
+          "name": "아시안 게임",
+          "pref": true
+        },
+        {
+          "name": "아시아 경기대회",
+          "alias": true
+        },
+        {
+          "name": "아시안게임",
+          "alias": true
+        },
+        {
+          "name": "아시아드",
+          "alias": true
+        },
+        {
+          "name": "아시아경기대회",
+          "alias": true
+        },
+        {
+          "name": "하계 아시안 게임",
+          "alias": true
+        },
+        {
+          "name": "아시아 경기 대회",
+          "alias": true
+        }
+      ],
+      "zh-hans": [
+        {
+          "name": "亚洲运动会",
+          "pref": true
+        },
+        {
+          "name": "亚运会",
+          "alias": true
+        },
+        {
+          "name": "亚运",
+          "alias": true
+        }
+      ],
+      "zh-cn": [
+        {
+          "name": "亚洲运动会",
+          "pref": true
+        },
+        {
+          "name": "亚运会",
+          "alias": true
+        },
+        {
+          "name": "亚运",
+          "alias": true
+        }
+      ],
+      "zh-sg": [
+        {
+          "name": "亚洲运动会",
+          "pref": true
+        },
+        {
+          "name": "亚运会",
+          "alias": true
+        },
+        {
+          "name": "亚运",
+          "alias": true
+        }
+      ],
+      "zh-my": [
+        {
+          "name": "亚洲运动会",
+          "pref": true
+        },
+        {
+          "name": "亚运会",
+          "alias": true
+        },
+        {
+          "name": "亚运",
+          "alias": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "亚洲运动会",
+          "pref": true
+        },
+        {
+          "name": "亚运会",
+          "alias": true
+        },
+        {
+          "name": "亞洲運動會",
+          "alias": true
+        },
+        {
+          "name": "亞運會",
+          "alias": true
+        },
+        {
+          "name": "亞運",
+          "alias": true
+        },
+        {
+          "name": "亚运",
+          "alias": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "亞洲運動會",
+          "pref": true
+        },
+        {
+          "name": "亞運會",
+          "alias": true
+        },
+        {
+          "name": "亞運",
+          "alias": true
+        }
+      ],
+      "zh-tw": [
+        {
+          "name": "亞洲運動會",
+          "pref": true
+        },
+        {
+          "name": "亞運會",
+          "alias": true
+        },
+        {
+          "name": "亞運",
+          "alias": true
+        }
+      ],
+      "zh-hk": [
+        {
+          "name": "亞洲運動會",
+          "pref": true
+        },
+        {
+          "name": "亞運會",
+          "alias": true
+        },
+        {
+          "name": "亞運",
+          "alias": true
+        }
+      ],
+      "zh-mo": [
+        {
+          "name": "亞洲運動會",
+          "pref": true
+        },
+        {
+          "name": "亞運會",
+          "alias": true
+        },
+        {
+          "name": "亞運",
+          "alias": true
+        }
+      ],
+      "pt": [
+        {
+          "name": "Jogos Asiáticos",
+          "pref": true
+        }
+      ],
+      "ru": [
+        {
+          "name": "Азиатские игры",
+          "pref": true
+        },
+        {
+          "name": "Летние Азиатские игры",
+          "alias": true
+        }
+      ],
+      "tr": [
+        {
+          "name": "Asya Oyunları",
+          "pref": true
+        }
+      ],
+      "pl": [
+        {
+          "name": "Igrzyska azjatyckie",
+          "pref": true
+        }
+      ],
+      "nl": [
+        {
+          "name": "Aziatische Spelen",
+          "pref": true
+        },
+        {
+          "name": "Asian Games",
+          "alias": true
+        }
+      ],
+      "cs": [
+        {
+          "name": "Asijské hry",
+          "pref": true
+        }
+      ],
+      "da": [
+        {
+          "name": "Asian Games",
+          "pref": true
+        },
+        {
+          "name": "Asienlegene",
+          "alias": true
+        },
+        {
+          "name": "De asiatiske lege",
+          "alias": true
+        },
+        {
+          "name": "Asien-legene",
+          "alias": true
+        },
+        {
+          "name": "Asiaden",
+          "alias": true
+        },
+        {
+          "name": "Asiatiske lege",
+          "alias": true
+        }
+      ],
+      "et": [
+        {
+          "name": "Aasia mängud",
+          "pref": true
+        }
+      ],
+      "fi": [
+        {
+          "name": "Aasian kisat",
+          "pref": true
+        },
+        {
+          "name": "Asian Games",
+          "alias": true
+        }
+      ],
+      "el": [
+        {
+          "name": "Ασιατικοί Αγώνες",
+          "pref": true
+        }
+      ],
+      "he": [
+        {
+          "name": "משחקי אסיה",
+          "pref": true
+        },
+        {
+          "name": "המשחקים האסייאתיים",
+          "alias": true
+        },
+        {
+          "name": "המשחקים האסיאתיים",
+          "alias": true
+        },
+        {
+          "name": "המשחקים האסיאתים",
+          "alias": true
+        },
+        {
+          "name": "אסיאדה",
+          "alias": true
+        },
+        {
+          "name": "המשחקים האסייתים",
+          "alias": true
+        }
+      ],
+      "hu": [
+        {
+          "name": "Ázsia-játékok",
+          "pref": true
+        },
+        {
+          "name": "ázsiai játékok",
+          "alias": true
+        }
+      ],
+      "lv": [
+        {
+          "name": "Āzijas spēles",
+          "pref": true
+        }
+      ],
+      "nb": [
+        {
+          "name": "Asialekene",
+          "pref": true
+        },
+        {
+          "name": "De asiatiske leker",
+          "alias": true
+        },
+        {
+          "name": "Asia-lekene",
+          "alias": true
+        }
+      ],
+      "nn": [
+        {
+          "name": "Asialeikene",
+          "pref": true
+        }
+      ],
+      "ro": [
+        {
+          "name": "Jocurile Asiatice",
+          "pref": true
+        }
+      ],
+      "sr": [
+        {
+          "name": "Азијске игре",
+          "pref": true
+        }
+      ],
+      "sk": [
+        {
+          "name": "Ázijské hry",
+          "pref": true
+        }
+      ],
+      "sv": [
+        {
+          "name": "Asiatiska spelen",
+          "pref": true
+        }
+      ],
+      "tl": [
+        {
+          "name": "Palarong Asyano",
+          "pref": true
+        }
+      ]
+    },
+    "season": {
+      "en": [
+        {
+          "name": "summer",
+          "pref": true
+        },
+        {
+          "name": "summer season",
+          "alias": true
+        },
+        {
+          "name": "summertime season",
+          "alias": true
+        },
+        {
+          "name": "Summer",
+          "alias": true
+        }
+      ],
+      "de": [
+        {
+          "name": "Sommer",
+          "pref": true
+        },
+        {
+          "name": "Sommerzeit",
+          "alias": true
+        },
+        {
+          "name": "Sommersaison",
+          "alias": true
+        }
+      ],
+      "es": [
+        {
+          "name": "verano",
+          "pref": true
+        },
+        {
+          "name": "estío",
+          "alias": true
+        },
+        {
+          "name": "Verano",
+          "alias": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "été",
+          "pref": true
+        }
+      ],
+      "it": [
+        {
+          "name": "estate",
+          "pref": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "夏",
+          "pref": true
+        }
+      ],
+      "ko": [
+        {
+          "name": "여름",
+          "pref": true
+        },
+        {
+          "name": "하계",
+          "alias": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "夏季",
+          "pref": true
+        },
+        {
+          "name": "舊愛來作客",
+          "alias": true
+        },
+        {
+          "name": "熱人",
+          "alias": true
+        },
+        {
+          "name": "夏天",
+          "alias": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "夏季",
+          "pref": true
+        },
+        {
+          "name": "夏天",
+          "alias": true
+        }
+      ],
+      "pt": [
+        {
+          "name": "verão",
+          "pref": true
+        },
+        {
+          "name": "estio",
+          "alias": true
+        }
+      ],
+      "pt-br": [
+        {
+          "name": "Verão",
+          "pref": true
+        }
+      ],
+      "ru": [
+        {
+          "name": "лето",
+          "pref": true
+        }
+      ],
+      "tr": [
+        {
+          "name": "yaz",
+          "pref": true
+        }
+      ],
+      "pl": [
+        {
+          "name": "lato",
+          "pref": true
+        }
+      ],
+      "nl": [
+        {
+          "name": "zomer",
+          "pref": true
+        },
+        {
+          "name": "zomerperiode",
+          "alias": true
+        },
+        {
+          "name": "zomerseizoen",
+          "alias": true
+        }
+      ],
+      "bg": [
+        {
+          "name": "Лято",
+          "pref": true
+        }
+      ],
+      "cs": [
+        {
+          "name": "léto",
+          "pref": true
+        }
+      ],
+      "da": [
+        {
+          "name": "sommer",
+          "pref": true
+        }
+      ],
+      "et": [
+        {
+          "name": "suvi",
+          "pref": true
+        }
+      ],
+      "fi": [
+        {
+          "name": "kesä",
+          "pref": true
+        }
+      ],
+      "el": [
+        {
+          "name": "καλοκαίρι",
+          "pref": true
+        }
+      ],
+      "he": [
+        {
+          "name": "קיץ",
+          "pref": true
+        }
+      ],
+      "hu": [
+        {
+          "name": "nyár",
+          "pref": true
+        }
+      ],
+      "lv": [
+        {
+          "name": "vasara",
+          "pref": true
+        }
+      ],
+      "mk": [
+        {
+          "name": "лето",
+          "pref": true
+        }
+      ],
+      "nb": [
+        {
+          "name": "sommer",
+          "pref": true
+        }
+      ],
+      "nn": [
+        {
+          "name": "sommar",
+          "pref": true
+        },
+        {
+          "name": "sumar",
+          "alias": true
+        }
+      ],
+      "ro": [
+        {
+          "name": "vară",
+          "pref": true
+        },
+        {
+          "name": "sezonul de vară",
+          "alias": true
+        },
+        {
+          "name": "sezonul verii",
+          "alias": true
+        },
+        {
+          "name": "vara",
+          "alias": true
+        }
+      ],
+      "sr": [
+        {
+          "name": "лето",
+          "pref": true
+        }
+      ],
+      "sk": [
+        {
+          "name": "leto",
+          "pref": true
+        }
+      ],
+      "sv": [
+        {
+          "name": "sommar",
+          "pref": true
+        },
+        {
+          "name": "sommaren",
+          "alias": true
+        },
+        {
+          "name": "sommarsäsong",
+          "alias": true
+        },
+        {
+          "name": "sommarsäsongen",
+          "alias": true
+        }
+      ],
+      "tl": [
+        {
+          "name": "Tag-init",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "asian-games/winter": {
+    "qid": "Q818463",
+    "names": {
+      "en": [
+        {
+          "name": "Asian Winter Games",
+          "pref": true
+        }
+      ],
+      "de": [
+        {
+          "name": "Winter-Asienspiele",
+          "pref": true
+        },
+        {
+          "name": "Winterasienspiele",
+          "alias": true
+        },
+        {
+          "name": "Asienwinterspiele",
+          "alias": true
+        },
+        {
+          "name": "Asiatische Winterspiele",
+          "alias": true
+        }
+      ],
+      "es": [
+        {
+          "name": "Juegos Asiáticos de Invierno",
+          "pref": true
+        },
+        {
+          "name": "Juegos Asiaticos de Invierno",
+          "alias": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "Jeux asiatiques d'hiver",
+          "pref": true
+        },
+        {
+          "name": "Jeux panasiatiques d'hiver",
+          "alias": true
+        },
+        {
+          "name": "Jeux asiatiques d’hiver",
+          "alias": true
+        },
+        {
+          "name": "Asiades d'hiver",
+          "alias": true
+        }
+      ],
+      "it": [
+        {
+          "name": "Giochi asiatici invernali",
+          "pref": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "アジア冬季競技大会",
+          "pref": true
+        },
+        {
+          "name": "冬季アジア大会",
+          "alias": true
+        }
+      ],
+      "ko": [
+        {
+          "name": "동계 아시안 게임",
+          "pref": true
+        },
+        {
+          "name": "동계 아시안게임",
+          "alias": true
+        }
+      ],
+      "zh-hans": [
+        {
+          "name": "亚洲冬季运动会",
+          "pref": true
+        }
+      ],
+      "zh-cn": [
+        {
+          "name": "亚洲冬季运动会",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "亞洲冬季運動會",
+          "pref": true
+        },
+        {
+          "name": "冬亞運",
+          "alias": true
+        },
+        {
+          "name": "亞冬運",
+          "alias": true
+        },
+        {
+          "name": "亚洲冬季运动会",
+          "alias": true
+        },
+        {
+          "name": "亚冬会",
+          "alias": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "亞洲冬季運動會",
+          "pref": true
+        }
+      ],
+      "zh-hk": [
+        {
+          "name": "亞洲冬季運動會",
+          "pref": true
+        }
+      ],
+      "pt": [
+        {
+          "name": "Jogos Asiáticos de Inverno",
+          "pref": true
+        }
+      ],
+      "ru": [
+        {
+          "name": "Зимние Азиатские игры",
+          "pref": true
+        }
+      ],
+      "tr": [
+        {
+          "name": "Asya Kış Oyunları",
+          "pref": true
+        }
+      ],
+      "pl": [
+        {
+          "name": "Zimowe igrzyska azjatyckie",
+          "pref": true
+        }
+      ],
+      "nl": [
+        {
+          "name": "Aziatische Winterspelen",
+          "pref": true
+        }
+      ],
+      "cs": [
+        {
+          "name": "Asijské zimní hry",
+          "pref": true
+        }
+      ],
+      "et": [
+        {
+          "name": "Aasia talimängud",
+          "pref": true
+        }
+      ],
+      "fi": [
+        {
+          "name": "Aasian talvikisat",
+          "pref": true
+        }
+      ],
+      "el": [
+        {
+          "name": "Χειμερινοί Ασιατικοί Αγώνες",
+          "pref": true
+        }
+      ],
+      "lv": [
+        {
+          "name": "Āzijas ziemas spēles",
+          "pref": true
+        }
+      ],
+      "nb": [
+        {
+          "name": "Asiatiske vinterleker",
+          "pref": true
+        }
+      ],
+      "sk": [
+        {
+          "name": "Ázijské zimné hry",
+          "pref": true
+        }
+      ],
+      "sv": [
+        {
+          "name": "Asiatiska vinterspelen",
+          "pref": true
+        },
+        {
+          "name": "Asian Winter Games",
+          "alias": true
+        }
+      ],
+      "tl": [
+        {
+          "name": "Palarong Taglamig ng Asya",
+          "pref": true
+        }
+      ]
+    },
+    "season": {
+      "en": [
+        {
+          "name": "winter",
+          "pref": true
+        },
+        {
+          "name": "winter season",
+          "alias": true
+        },
+        {
+          "name": "wintertime",
+          "alias": true
+        },
+        {
+          "name": "wintertime season",
+          "alias": true
+        }
+      ],
+      "de": [
+        {
+          "name": "Winter",
+          "pref": true
+        },
+        {
+          "name": "Wintersaison",
+          "alias": true
+        },
+        {
+          "name": "Winterzeit",
+          "alias": true
+        }
+      ],
+      "es": [
+        {
+          "name": "invierno",
+          "pref": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "hiver",
+          "pref": true
+        }
+      ],
+      "it": [
+        {
+          "name": "inverno",
+          "pref": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "冬",
+          "pref": true
+        }
+      ],
+      "ko": [
+        {
+          "name": "겨울",
+          "pref": true
+        },
+        {
+          "name": "동계",
+          "alias": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "冬季",
+          "pref": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "冬季",
+          "pref": true
+        },
+        {
+          "name": "冬天",
+          "alias": true
+        }
+      ],
+      "pt": [
+        {
+          "name": "inverno",
+          "pref": true
+        }
+      ],
+      "pt-br": [
+        {
+          "name": "Inverno",
+          "pref": true
+        }
+      ],
+      "ru": [
+        {
+          "name": "зима",
+          "pref": true
+        }
+      ],
+      "tr": [
+        {
+          "name": "kış",
+          "pref": true
+        }
+      ],
+      "pl": [
+        {
+          "name": "zima",
+          "pref": true
+        }
+      ],
+      "nl": [
+        {
+          "name": "winter",
+          "pref": true
+        },
+        {
+          "name": "winterperiode",
+          "alias": true
+        },
+        {
+          "name": "winterseizoen",
+          "alias": true
+        }
+      ],
+      "bg": [
+        {
+          "name": "Зима",
+          "pref": true
+        }
+      ],
+      "cs": [
+        {
+          "name": "zima",
+          "pref": true
+        }
+      ],
+      "da": [
+        {
+          "name": "vinter",
+          "pref": true
+        }
+      ],
+      "et": [
+        {
+          "name": "talv",
+          "pref": true
+        }
+      ],
+      "fi": [
+        {
+          "name": "talvi",
+          "pref": true
+        }
+      ],
+      "el": [
+        {
+          "name": "χειμώνας",
+          "pref": true
+        }
+      ],
+      "he": [
+        {
+          "name": "חורף",
+          "pref": true
+        }
+      ],
+      "hu": [
+        {
+          "name": "tél",
+          "pref": true
+        }
+      ],
+      "lv": [
+        {
+          "name": "ziema",
+          "pref": true
+        }
+      ],
+      "mk": [
+        {
+          "name": "зима",
+          "pref": true
+        }
+      ],
+      "nb": [
+        {
+          "name": "vinter",
+          "pref": true
+        },
+        {
+          "name": "Vinter",
+          "alias": true
+        }
+      ],
+      "nn": [
+        {
+          "name": "vinter",
+          "pref": true
+        },
+        {
+          "name": "vetter",
+          "alias": true
+        }
+      ],
+      "ro": [
+        {
+          "name": "iarnă",
+          "pref": true
+        },
+        {
+          "name": "sezonul de iarnă",
+          "alias": true
+        },
+        {
+          "name": "ierni",
+          "alias": true
+        },
+        {
+          "name": "sezonul iernii",
+          "alias": true
+        }
+      ],
+      "sr": [
+        {
+          "name": "зима",
+          "pref": true
+        }
+      ],
+      "sk": [
+        {
+          "name": "zima",
+          "pref": true
+        }
+      ],
+      "sv": [
+        {
+          "name": "vinter",
+          "pref": true
+        },
+        {
+          "name": "vintersäsong",
+          "alias": true
+        },
+        {
+          "name": "vintersäsongen",
+          "alias": true
+        },
+        {
+          "name": "vintern",
+          "alias": true
+        }
+      ],
+      "tl": [
+        {
+          "name": "Taglamig",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "commonwealth-games": {
+    "qid": "Q178340",
+    "names": {
+      "en": [
+        {
+          "name": "Commonwealth Games",
+          "pref": true
+        },
+        {
+          "name": "British Empire Games",
+          "alias": true
+        },
+        {
+          "name": "British Empire and Commonwealth Games",
+          "alias": true
+        },
+        {
+          "name": "British Commonwealth Games",
+          "alias": true
+        }
+      ],
+      "de": [
+        {
+          "name": "Commonwealth Games",
+          "pref": true
+        },
+        {
+          "name": "British Empire Games",
+          "alias": true
+        },
+        {
+          "name": "British Empire and Commonwealth Games",
+          "alias": true
+        },
+        {
+          "name": "Festival of Empire",
+          "alias": true
+        },
+        {
+          "name": "Commonwealthspiele",
+          "alias": true
+        },
+        {
+          "name": "British Commonwealth Games",
+          "alias": true
+        },
+        {
+          "name": "Commonwealth-Spiele",
+          "alias": true
+        }
+      ],
+      "es": [
+        {
+          "name": "Juegos de la Mancomunidad",
+          "pref": true
+        },
+        {
+          "name": "Juegos de la Commonwealth",
+          "alias": true
+        },
+        {
+          "name": "Juegos del Imperio Britanico",
+          "alias": true
+        },
+        {
+          "name": "Juegos del Imperio Británico",
+          "alias": true
+        },
+        {
+          "name": "Commonwealth Games",
+          "alias": true
+        },
+        {
+          "name": "Eleccion de la sede de los Juegos de la Mancomunidad",
+          "alias": true
+        },
+        {
+          "name": "Elección de la sede de los Juegos de la Mancomunidad",
+          "alias": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "Jeux du Commonwealth",
+          "pref": true
+        },
+        {
+          "name": "Commonwealth games",
+          "alias": true
+        },
+        {
+          "name": "Jeux de l'Empire Britannique",
+          "alias": true
+        },
+        {
+          "name": "Jeux de l'Empire Britannique et du Commonwealth",
+          "alias": true
+        },
+        {
+          "name": "Jeux du Commonwealth Britannique",
+          "alias": true
+        }
+      ],
+      "it": [
+        {
+          "name": "Giochi del Commonwealth",
+          "pref": true
+        },
+        {
+          "name": "Commonwealth Games",
+          "alias": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "コモンウェルスゲームズ",
+          "pref": true
+        },
+        {
+          "name": "コモンウェルスゲームズ連盟",
+          "alias": true
+        },
+        {
+          "name": "コモンウェルスゲーム",
+          "alias": true
+        },
+        {
+          "name": "イギリス連邦競技大会",
+          "alias": true
+        },
+        {
+          "name": "英連邦大会",
+          "alias": true
+        },
+        {
+          "name": "英連邦競技大会",
+          "alias": true
+        },
+        {
+          "name": "コモンウェルス・ゲームズ",
+          "alias": true
+        }
+      ],
+      "ko": [
+        {
+          "name": "코먼웰스 게임",
+          "pref": true
+        },
+        {
+          "name": "영연방 경기대회",
+          "alias": true
+        },
+        {
+          "name": "영연방경기대회",
+          "alias": true
+        },
+        {
+          "name": "영국 연방 게임",
+          "alias": true
+        },
+        {
+          "name": "커먼웰스 게임즈",
+          "alias": true
+        },
+        {
+          "name": "영연방 경기 대회",
+          "alias": true
+        },
+        {
+          "name": "커먼웰스 게임",
+          "alias": true
+        }
+      ],
+      "zh-hans": [
+        {
+          "name": "英联邦运动会",
+          "pref": true
+        }
+      ],
+      "zh-cn": [
+        {
+          "name": "英联邦运动会",
+          "pref": true
+        }
+      ],
+      "zh-sg": [
+        {
+          "name": "共和联邦运动会",
+          "pref": true
+        }
+      ],
+      "zh-my": [
+        {
+          "name": "共和联邦运动会",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "英聯邦運動會",
+          "pref": true
+        },
+        {
+          "name": "共和联邦运动会",
+          "alias": true
+        },
+        {
+          "name": "大英帝国运动会",
+          "alias": true
+        },
+        {
+          "name": "不列顛英聯邦運動會",
+          "alias": true
+        },
+        {
+          "name": "大英帝國運動會",
+          "alias": true
+        },
+        {
+          "name": "不列颠英联邦运动会",
+          "alias": true
+        },
+        {
+          "name": "大英國協運動會",
+          "alias": true
+        },
+        {
+          "name": "大英国协运动会",
+          "alias": true
+        },
+        {
+          "name": "共和聯邦運動會",
+          "alias": true
+        },
+        {
+          "name": "The Commonwealth Games",
+          "alias": true
+        },
+        {
+          "name": "大英帝國英聯邦運動會",
+          "alias": true
+        },
+        {
+          "name": "大英帝国英联邦运动会",
+          "alias": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "大英國協運動會",
+          "pref": true
+        }
+      ],
+      "zh-tw": [
+        {
+          "name": "大英國協運動會",
+          "pref": true
+        }
+      ],
+      "zh-hk": [
+        {
+          "name": "英聯邦運動會",
+          "pref": true
+        }
+      ],
+      "zh-mo": [
+        {
+          "name": "英聯邦運動會",
+          "pref": true
+        }
+      ],
+      "pt": [
+        {
+          "name": "Jogos da Commonwealth",
+          "pref": true
+        },
+        {
+          "name": "Jogos da Comunidade",
+          "alias": true
+        },
+        {
+          "name": "Jogos da Comunidade Britânica",
+          "alias": true
+        },
+        {
+          "name": "Jogos do Império Britânico e da Comunidade",
+          "alias": true
+        },
+        {
+          "name": "Jogos do Império Britânico",
+          "alias": true
+        },
+        {
+          "name": "Jogos Commonwealth",
+          "alias": true
+        },
+        {
+          "name": "Commonwealth Games",
+          "alias": true
+        }
+      ],
+      "ru": [
+        {
+          "name": "Игры Содружества",
+          "pref": true
+        },
+        {
+          "name": "Игры Федерации Содружества наций",
+          "alias": true
+        },
+        {
+          "name": "Игры Британской империи",
+          "alias": true
+        }
+      ],
+      "tr": [
+        {
+          "name": "İngiliz Milletler Topluluğu Oyunları",
+          "pref": true
+        },
+        {
+          "name": "Commonwealth Games",
+          "alias": true
+        },
+        {
+          "name": "İngiliz Milletler Topluluğu Oyunları Federasyonu",
+          "alias": true
+        },
+        {
+          "name": "Uluslar Topluluğu Oyunları",
+          "alias": true
+        }
+      ],
+      "pl": [
+        {
+          "name": "Igrzyska Wspólnoty Narodów",
+          "pref": true
+        },
+        {
+          "name": "Igrzyska Brytyjskiej Wspólnoty Narodów",
+          "alias": true
+        },
+        {
+          "name": "Igrzyska Imperium Brytyjskiego i Wspólnoty Brytyjskiej",
+          "alias": true
+        },
+        {
+          "name": "Commonwealth Games",
+          "alias": true
+        },
+        {
+          "name": "Igrzyska Imperium Brytyjskiego",
+          "alias": true
+        },
+        {
+          "name": "Igrzyska Wspólnoty Brytyjskiej",
+          "alias": true
+        },
+        {
+          "name": "Igrzyska Wspólnoty",
+          "alias": true
+        }
+      ],
+      "nl": [
+        {
+          "name": "Gemenebestspelen",
+          "pref": true
+        },
+        {
+          "name": "Commonwealth Games",
+          "alias": true
+        },
+        {
+          "name": "Gemenebest Spelen",
+          "alias": true
+        }
+      ],
+      "cs": [
+        {
+          "name": "Hry Commonwealthu",
+          "pref": true
+        },
+        {
+          "name": "Hry Britského společenství",
+          "alias": true
+        }
+      ],
+      "da": [
+        {
+          "name": "Commonwealth Games",
+          "pref": true
+        },
+        {
+          "name": "British Empire Games",
+          "alias": true
+        }
+      ],
+      "et": [
+        {
+          "name": "Rahvaste Ühenduse mängud",
+          "pref": true
+        },
+        {
+          "name": "Briti Ühenduse mängud",
+          "alias": true
+        }
+      ],
+      "fi": [
+        {
+          "name": "Kansainyhteisön kisat",
+          "pref": true
+        },
+        {
+          "name": "Brittiläisen kansanyhteisön kisat",
+          "alias": true
+        },
+        {
+          "name": "Kansanyhteisön kisat",
+          "alias": true
+        },
+        {
+          "name": "Brittiläisen kansainyhteisön kisat",
+          "alias": true
+        },
+        {
+          "name": "Kansainyhteisön mestaruuskilpailut",
+          "alias": true
+        },
+        {
+          "name": "Brittiläisen imperiumin kisat",
+          "alias": true
+        },
+        {
+          "name": "Commonwealth Games",
+          "alias": true
+        },
+        {
+          "name": "Kansainyhteisön kilpailut",
+          "alias": true
+        }
+      ],
+      "el": [
+        {
+          "name": "Αγώνες της Κοινοπολιτείας",
+          "pref": true
+        }
+      ],
+      "he": [
+        {
+          "name": "משחקי חבר העמים הבריטי",
+          "pref": true
+        },
+        {
+          "name": "משחקי חבר העמים",
+          "alias": true
+        }
+      ],
+      "hu": [
+        {
+          "name": "nemzetközösségi játékok",
+          "pref": true
+        }
+      ],
+      "lv": [
+        {
+          "name": "Nāciju Sadraudzības spēles",
+          "pref": true
+        },
+        {
+          "name": "Commonwealth Games",
+          "alias": true
+        }
+      ],
+      "mk": [
+        {
+          "name": "Комонвелтски игри",
+          "pref": true
+        },
+        {
+          "name": "Игри на Британската Империја",
+          "alias": true
+        }
+      ],
+      "nb": [
+        {
+          "name": "Samveldelekene",
+          "pref": true
+        },
+        {
+          "name": "Commonwealth-lekene",
+          "alias": true
+        },
+        {
+          "name": "Samvelde-lekene",
+          "alias": true
+        },
+        {
+          "name": "British Empire Games",
+          "alias": true
+        },
+        {
+          "name": "Commonwealth Games",
+          "alias": true
+        }
+      ],
+      "nn": [
+        {
+          "name": "Samveldeleikane",
+          "pref": true
+        }
+      ],
+      "ro": [
+        {
+          "name": "Jocurile Federatie",
+          "pref": true
+        }
+      ],
+      "sr": [
+        {
+          "name": "Игре Комонвелта",
+          "pref": true
+        }
+      ],
+      "sv": [
+        {
+          "name": "Samväldesspelen",
+          "pref": true
+        },
+        {
+          "name": "British Empire Games",
+          "alias": true
+        },
+        {
+          "name": "Brittiska samväldesspelen",
+          "alias": true
+        },
+        {
+          "name": "British Commonwealth Games",
+          "alias": true
+        },
+        {
+          "name": "Brittiska imperie- och samväldesspelen",
+          "alias": true
+        },
+        {
+          "name": "British Empire and Commonwealth Games",
+          "alias": true
+        },
+        {
+          "name": "Brittiska imperiespelen",
+          "alias": true
+        },
+        {
+          "name": "Commonwealth Games",
+          "alias": true
+        }
+      ]
+    }
+  },
+  "world-games": {
+    "qid": "Q673097",
+    "names": {
+      "en": [
+        {
+          "name": "World Games",
+          "pref": true
+        },
+        {
+          "name": "The World Games",
+          "alias": true
+        }
+      ],
+      "de": [
+        {
+          "name": "World Games",
+          "pref": true
+        },
+        {
+          "name": "Worldgames",
+          "alias": true
+        }
+      ],
+      "es": [
+        {
+          "name": "Juegos Mundiales",
+          "pref": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "Jeux mondiaux",
+          "pref": true
+        }
+      ],
+      "it": [
+        {
+          "name": "Giochi mondiali",
+          "pref": true
+        },
+        {
+          "name": "World Games",
+          "alias": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "ワールドゲームズ",
+          "pref": true
+        }
+      ],
+      "ko": [
+        {
+          "name": "월드 게임",
+          "pref": true
+        },
+        {
+          "name": "카를스루에 월드 게임",
+          "alias": true
+        },
+        {
+          "name": "월드게임",
+          "alias": true
+        },
+        {
+          "name": "월드 게임즈",
+          "alias": true
+        },
+        {
+          "name": "월드 게임스",
+          "alias": true
+        }
+      ],
+      "zh-hans": [
+        {
+          "name": "世界运动会",
+          "pref": true
+        }
+      ],
+      "zh-cn": [
+        {
+          "name": "世界运动会",
+          "pref": true
+        }
+      ],
+      "zh-sg": [
+        {
+          "name": "世界运动会",
+          "pref": true
+        }
+      ],
+      "zh-my": [
+        {
+          "name": "世界运动会",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "世界運動會",
+          "pref": true
+        },
+        {
+          "name": "世運",
+          "alias": true
+        },
+        {
+          "name": "世運會",
+          "alias": true
+        },
+        {
+          "name": "世界运动会",
+          "alias": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "世界運動會",
+          "pref": true
+        }
+      ],
+      "zh-tw": [
+        {
+          "name": "世界運動會",
+          "pref": true
+        }
+      ],
+      "zh-hk": [
+        {
+          "name": "世界運動會",
+          "pref": true
+        }
+      ],
+      "zh-mo": [
+        {
+          "name": "世界運動會",
+          "pref": true
+        }
+      ],
+      "pt": [
+        {
+          "name": "Jogos Mundiais",
+          "pref": true
+        },
+        {
+          "name": "World Games",
+          "alias": true
+        }
+      ],
+      "ru": [
+        {
+          "name": "Всемирные игры",
+          "pref": true
+        }
+      ],
+      "tr": [
+        {
+          "name": "Dünya Oyunları",
+          "pref": true
+        }
+      ],
+      "pl": [
+        {
+          "name": "World Games",
+          "pref": true
+        }
+      ],
+      "nl": [
+        {
+          "name": "Wereldspelen",
+          "pref": true
+        },
+        {
+          "name": "World Games",
+          "alias": true
+        }
+      ],
+      "bg": [
+        {
+          "name": "Световни игри",
+          "pref": true
+        }
+      ],
+      "cs": [
+        {
+          "name": "Světové hry",
+          "pref": true
+        },
+        {
+          "name": "World Games",
+          "alias": true
+        }
+      ],
+      "da": [
+        {
+          "name": "World Games",
+          "pref": true
+        }
+      ],
+      "fi": [
+        {
+          "name": "World Games",
+          "pref": true
+        }
+      ],
+      "el": [
+        {
+          "name": "Παγκόσμιοι Αγώνες",
+          "pref": true
+        }
+      ],
+      "he": [
+        {
+          "name": "משחקי העולם",
+          "pref": true
+        }
+      ],
+      "hu": [
+        {
+          "name": "Világjátékok",
+          "pref": true
+        }
+      ],
+      "nb": [
+        {
+          "name": "Verdenslekene",
+          "pref": true
+        },
+        {
+          "name": "World Games",
+          "alias": true
+        }
+      ],
+      "sr": [
+        {
+          "name": "Светске игре",
+          "pref": true
+        }
+      ],
+      "sk": [
+        {
+          "name": "Svetové hry",
+          "pref": true
+        }
+      ],
+      "sv": [
+        {
+          "name": "World Games",
+          "pref": true
+        }
+      ]
+    }
+  }
+}

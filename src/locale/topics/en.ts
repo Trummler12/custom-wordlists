@@ -34,8 +34,8 @@ export const en: TopicProse = {
     constructed: "constructed languages",
     fictional: "fictional languages",
   },
-  // The Olympic sports rules (RULES in build-olympic-sports); they read on from "up to N".
-  olympics: {
+  // The Games sports rules (RULES in build-games-sports); they read on from "up to N".
+  games: {
     discontinued: "sports no longer held at the Games",
     demonstrationSports: "sports only ever shown as a demonstration, never for medals",
     futureDisciplines: "sports added for Games still to come",

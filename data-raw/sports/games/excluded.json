@@ -1,0 +1,50 @@
+{
+  "_comment": "Items the Games sports dump finds that are no sport of the topic, kept out of every rule. Keyed by Wikidata Q-id; `en` names it, `why` says why it is out. Read by scripts/sports/build-games-sports.mjs; analysis in PR #38 (sports/Olympics.md).",
+
+  "Q212434":    { "en": "Olympic sport",                    "why": "the class itself" },
+
+  "Q141568352": { "en": "art competition as Olympic sport", "why": "not a sport" },
+  "Q141163315": { "en": "(no label)",                       "why": "not a sport" },
+
+  "Q8421":      { "en": "aeronautics",                      "why": "a prize, not an event" },
+  "Q36908":     { "en": "mountaineering",                   "why": "a prize, not an event" },
+
+  "Q61065":     { "en": "water sport",                      "why": "an umbrella" },
+  "Q15621650":  { "en": "skiing",                           "why": "an umbrella" },
+
+  "Q22857":     { "en": "climbing",                         "why": "duplicates sport climbing" },
+  "Q17165362":  { "en": "long track speed skating",         "why": "duplicates speed skating" },
+
+  "Q4179462":   { "en": "ladies' singles",                  "why": "an event, not a sport" },
+  "Q4305887":   { "en": "men's singles",                    "why": "an event, not a sport" },
+
+  "Q3590901":   { "en": "(no label)",                       "why": "not a sport" },
+
+  "Q130949":    { "en": "skiing",                           "why": "an umbrella" },
+  "Q204686":    { "en": "winter sport",                     "why": "an umbrella" },
+  "Q814517":    { "en": "Para sport",                       "why": "an umbrella" },
+  "Q589184":    { "en": "Paralympic sport",                 "why": "an umbrella" },
+  "Q5378":      { "en": "rugby",                            "why": "an umbrella" },
+  "Q53121":     { "en": "cycling",                          "why": "an umbrella" },
+  "Q2164355":   { "en": "roller sport",                     "why": "an umbrella" },
+  "Q3440462":   { "en": "roller hockey",                    "why": "an umbrella" },
+
+  "Q20856109":  { "en": "canoeing",                         "why": "duplicates canoeing and kayaking" },
+  "Q2891117":   { "en": "dragon boat sport",                "why": "duplicates dragon boat" },
+  "Q79077125":  { "en": "dragon boat racing",               "why": "duplicates dragon boat" },
+  "Q27672886":  { "en": "flying disc sports",               "why": "duplicates flying disc" },
+  "Q10751894":  { "en": "lifesaving",                       "why": "duplicates life saving as a sport" },
+
+  "Q165704":    { "en": "high jump",                        "why": "an event, not a sport" },
+  "Q180935":    { "en": "shot put",                         "why": "an event, not a sport" },
+  "Q185027":    { "en": "pole vault",                       "why": "an event, not a sport" },
+  "Q187204":    { "en": "triple jump",                      "why": "an event, not a sport" },
+  "Q184865":    { "en": "hammer throw",                     "why": "an event, not a sport" },
+  "Q624482":    { "en": "sprinting",                        "why": "an event, not a sport" },
+  "Q537769":    { "en": "hurdling",                         "why": "an event, not a sport" },
+  "Q327742":    { "en": "relay race",                       "why": "an event, not a sport" },
+  "Q4117409":   { "en": "slalom skiing",                    "why": "an event, not a sport" },
+  "Q338208":    { "en": "giant slalom",                     "why": "an event, not a sport" },
+  "Q1129021":   { "en": "super-G",                          "why": "an event, not a sport" },
+  "Q774176":    { "en": "Keirin",                           "why": "an event, not a sport" }
+}

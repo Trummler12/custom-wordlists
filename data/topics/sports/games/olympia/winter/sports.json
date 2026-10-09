@@ -6,13 +6,13 @@
   "generated": "fully",
   "dataOrigin": "Wikidata",
   "filePaths": {
-    "scripts/sports/": ["dump-olympic-sports.mjs","build-olympic-sports.mjs"],
-    "data-raw/sports/": "olympia/"
+    "scripts/sports/": ["dump-games-sports.mjs","build-games-sports.mjs"],
+    "data-raw/sports/": "games/"
   },
   "languages": ["en","de","es","fr","it","ja","ko","zh-Hans","zh-Hant","pt","ru","tr","pl","nl","bg","cs","da","et","fi","el","he","hu","lv","mk","no","ro","sr","sk","sv","tl"],
   "incompleteTopic": true,
   "sources": [
-    "Sports & names: Wikidata, the sport (P641) of every event that is part of the Winter Olympic Games — https://www.wikidata.org/wiki/Q82414 (see scripts/sports/dump-olympic-sports.mjs)",
+    "Sports & names: Wikidata, the sport (P641) of every event that is part of an edition of the Winter Olympic Games — https://www.wikidata.org/wiki/Q82414 (see scripts/sports/dump-games-sports.mjs)",
     "Tiers: how many language editions of Wikipedia have an article on the sport, from its Wikidata sitelinks — https://www.wikidata.org/wiki/Help:Sitelinks"
   ],
   "lastUpdated": "2026-10-09",
@@ -20,17 +20,17 @@
   "omitted": [
     {
       "id": "discontinued",
-      "match": ["Bandy","Military patrol"],
+      "match": ["Military patrol","Sled dog racing"],
       "count": true,
       "icon": "sport-type",
-      "reason": "olympics.discontinued"
+      "reason": "games.discontinued"
     },
     {
       "id": "demonstration-sports",
-      "match": ["Icestock sport","Speed skiing"],
+      "match": ["Bandy","Icestock sport","Para alpine skiing","Skijoring","Speed skiing","Winter pentathlon"],
       "count": true,
       "icon": "sport-type",
-      "reason": "olympics.demonstrationSports"
+      "reason": "games.demonstrationSports"
     }
   ],
   "omittable": [
@@ -39,7 +39,7 @@
       "match": ["Cross-country skiing","Ice dance","Nordic combined","Pair skating","Short-track speed skating","Ski jumping"],
       "count": true,
       "icon": "sport-type",
-      "reason": "olympics.childDiscipline"
+      "reason": "games.childDiscipline"
     }
   ],
   "tiers": [
@@ -81,7 +81,11 @@
     ],
 
     [
-      {"en":"Pair skating","de":"Paarlauf","fr":"Patinage en couple","it":"Pattinaggio artistico su ghiaccio a coppie","ja":"ペアスケーティング","ko":"페어 스케이팅","zh-Hans":"双人滑","zh-Hant":"雙人滑","pt":"Patinação de duplas","ru":"Парное фигурное катание","pl":"Pary sportowe","nl":"Paarrijden","cs":"Sportovní dvojice","et":"Paarissõit","fi":"Pariluistelu","hu":"Páros műkorcsolya","lv":"Pāru slidošana","no":"Parløp","ro":"Patinaj artistic pe perechi","sr":"Спортски парови","sk":"Športové dvojice","sv":"Paråkning","?":["es","tr","bg","da","el","he","mk","tl"]}
+      {"en":"Skijoring","de":"Skijöring","es":"Skijöring","fr":"Ski joëring","it":"Skijöring","ja":"スキージョアリング","pt":"Skijöring","ru":"Скиджоринг","pl":"Skijöring","nl":"Skijøring","cs":"Skijöring","da":"Skijøring","hu":"Síjöring","lv":"Skijorings","sk":"Skijöring","sv":"Tolkning","?":["ko","zh-Hans","zh-Hant","tr","bg","et","fi","el","he","mk","no","ro","sr","tl"]},
+      {"en":"Pair skating","de":"Paarlauf","fr":"Patinage en couple","it":"Pattinaggio artistico su ghiaccio a coppie","ja":"ペアスケーティング","ko":"페어 스케이팅","zh-Hans":"双人滑","zh-Hant":"雙人滑","pt":"Patinação de duplas","ru":"Парное фигурное катание","pl":"Pary sportowe","nl":"Paarrijden","cs":"Sportovní dvojice","et":"Paarissõit","fi":"Pariluistelu","hu":"Páros műkorcsolya","lv":"Pāru slidošana","no":"Parløp","ro":"Patinaj artistic pe perechi","sr":"Спортски парови","sk":"Športové dvojice","sv":"Paråkning","?":["es","tr","bg","da","el","he","mk","tl"]},
+      {"en":"Sled dog racing","de":"Schlittenhundesport","es":"Carrera de trineo con perros","fr":"Course de chiens de traîneaux","it":"Corsa con i cani da slitta","ja":"犬ぞりレース","ko":"개썰매 경주","zh-Hans":"狗拉雪橇比賽","ru":"Гонка на собачьих упряжках","tr":"Kızaklı köpek yarışı","pl":"Wyścig psich zaprzęgów","nl":"Sledehondenrace","cs":"Závody psích spřežení","da":"Hundeslædeløb","fi":"Valjakkourheilu","he":"מרוץ מזחלות","hu":"Kutyaszánhúzás","mk":"Трка на кучешки санки","no":"Sledehundkjøring","ro":"Cursă cu sănii trase de câini","sk":"Závody psích záprahov","sv":"Slädhundskapplöpning","?":["zh-Hant","pt","bg","et","el","lv","sr","tl"]},
+      {"en":"Para alpine skiing","de":"Krückenskifahren","es":"Esquí alpino adaptado","fr":"Ski alpin handisport","it":"Sci alpino paralimpico","ja":"パラリンピックのアルペンスキー","zh-Hans":"残疾人高山滑雪","pt":"Esqui alpino paralímpico","ru":"Пара-горнолыжный спорт","nl":"Alpineskiën op de Paralympische Winterspelen","et":"Paramäesuusatamine","fi":"Para-alppihiihto","he":"סקי אלפיני פאראלימפי","no":"Paraalpint","sv":"Alpin paraskidåkning","?":["ko","zh-Hant","tr","pl","bg","cs","da","el","hu","lv","mk","ro","sr","sk","tl"]},
+      {"en":"Winter pentathlon","es":"Pentatlón de invierno","fr":"Pentathlon d'hiver","ru":"Зимнее пятиборье","pl":"Pięciobój zimowy","?":["de","it","ja","ko","zh-Hans","zh-Hant","pt","tr","nl","bg","cs","da","et","fi","el","he","hu","lv","mk","no","ro","sr","sk","sv","tl"]}
     ]
   ],
   "tierConditions": [

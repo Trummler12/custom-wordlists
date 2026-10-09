@@ -47,8 +47,8 @@ export interface TopicProse {
     constructed: string;
     fictional: string;
   };
-  /** Olympic sports rule reasons. */
-  olympics: {
+  /** The Games sports lists' rule reasons. */
+  games: {
     discontinued: string;
     demonstrationSports: string;
     futureDisciplines: string;
