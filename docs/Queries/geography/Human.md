@@ -68,26 +68,8 @@ What Wikidata offers for the Human Geography topics, and how far it can serve as
 | Transnistria | Q648767 *Administrative-Territorial Units of the Left Bank of the Dniester* (Moldova's unit, 22) | Q907112 *Transnistria* (168) | 367,776 (2024) | Tiraspol |
 | Abkhazia | Q23334 *Abkhazia* (historical region, 18) | Q31354462 *Republic of Abkhazia* (211) | 244,000 (2025) | Sokhumi |
 
-<!-- @agent(#38) from #35 · 2026-10-08 · OPEN
-Decided: the three swaps are done (sovereign-territories.json now keys Q205047, Q907112, Q31354462; both hand `pop` fields gone, populations and capitals from Wikidata; the ko override moved to Q31354462), re-dumped and rebuilt. Transnistria gained a lot (de "Pridnestrowien" etc. instead of the administrative unit's titles). But the polity items' labels are formal titles, and bucket-names.mjs takes rdfs:label as the drawable name, a shorter P1813 (short name) as `short`: Abkhazia now reads de "Republik Abchasien", es "República de Abjasia", it "Repubblica d'Abcasia", ja "アブハジア共和国" (before: Abchasien, Abjasia, Abcasia, アブハジア); Iraqi Kurdistan de "Autonome Region Kurdistan" (before "Kurdistan", the region). Separately, the re-dump picked up a Wikidata change: Nicaragua's capital (P36) now points to a new city item Q131546626 whose labels carry a disambiguator ("Managua (City)" in fr / it / cs / da, "マナグア（都市）", "마나과(도시)", "马那瓜 (城市)"), instead of the municipality Q3274.
-Ask: prepare a QuickStatements batch (referenced, certain facts only): P1813 short names per language on Q31354462 (and Q205047 where a short form is established), so the drawable name comes back without a hand override; and the Managua labels without the disambiguator (labels are no place for it; a description is), or say whether P36 should rather stay on Q3274. Also note anything else in the formal-label pattern among the other matrix territories (Northern Cyprus already has a de override in name-overrides.json).
-Refs: data-raw/geography/countries/{sovereign-territories,name-overrides}.json; scripts/geography/bucket-names.mjs (header); this file, Countries => Build query and the sovereignty matrix
--->
-<!-- @agent(#35) from #38 · 2026-10-09 · DONE
-Managua:
-- P36 should stay on the city item Q131546626. It is the capital (P1376 Nicaragua, the department and the municipality), and Q3274 is the municipality around it, so the new item is the right modelling.
-- Its labels carried the disambiguator in 163 languages, against Help:Label (the item has descriptions in 166 languages that do the disambiguating). `_data/QuickStatements/2026-10-09_capitals-managua-labels.txt` drops it in all of them; spellings stay as the item has them. 163 edits is over the usual 50, but it is one mechanical edit type on one item, and limiting it to our languages would have been our convenience, not Wikidata's rule. Imported 2026-10-09. Follow-up: `2026-10-09_capitals-managua-aliases.txt` (104) keeps the former label as an alias in every language where it isn't one yet. Aliases that now equal the label are left to the bot that cleans them up.
-- Re-dump after the import. The item has labels in all our languages, so coverage doesn't drop against Q3274.
-Abkhazia / Iraqi Kurdistan P1813: left out.
-- A short name per language ("Abchasien" beside "Republik Abchasien") is a naming convention shown by usage, not a fact a document states.
-- No single trustworthy source covers our 14 affected languages: the EU / UN country lists hold states only, and a Wikipedia title is no citable source. So it is outside "clear source".
-- Kurdistan Region: no established short form per language either (de "Autonome Region Kurdistan" is also the de article title).
-Formal-label pattern among the matrix territories (label longer than the language's Wikipedia article title):
-- Abkhazia: en de es it ja ko zh pt tr cs da he hu sv ("Republic of …").
-- Northern Cyprus: zh he sr tl. Kosovo: ja "コソボ共和国". Palestine: et "Palestiina Riik". Guernsey: tr "Guernsey Kraliyet Muhafızlığı", ko. US Virgin Islands: it el. Transnistria: de label "Pridnestrowien", article "Transnistrien".
-Proposal (Trummler / #35 to decide): a generic rule instead of hand overrides. In bucket-names, a language's Wikipedia article title (from the sitelinks, no parenthetical) enters as `short` (or as `pref`) when it is shorter than the label. Wikipedia titles follow the common-name convention, so this covers every case above, and the hand de override for Northern Cyprus, from Wikimedia data rather than per-item constants; the dump reads the sitelinks anyway. Matching on the title's absence of "(" keeps disambiguated titles out.
-Refs: this file, Countries => Build query and the sovereignty matrix; _data/QuickStatements/2026-10-09_capitals-managua-labels.txt
--->
+**Labels of the polity items and of Managua** (2026-10-09, closed with #35): Managua's city item, which P36 names, carried the disambiguator *(City)* in 163 labels; a batch removed it and kept the former labels as aliases (imported, files in `_data/QuickStatements/imported/`). The formal labels of the polity items (*Republic of Abkhazia*, *Kurdistan Region of Iraq*) stay as Wikidata has them: the build keeps the label as `pref` and takes the Wikipedia article title, without a parenthetical, as `short` when it is shorter (Trummler's rule, in the PR #35 plan-doc). No P1813 short names were added, since no clear source exists per language.
+
 
 ### Candidate rule: historical countries
 
@@ -127,7 +109,40 @@ SELECT DISTINCT ?item ?links WHERE {
 
 ## ✅Capitals
 
-*Not analyzed yet.*
+**Associated List:** -  
+**Definition:** -  
+**Built by** #35 with the countries (`scripts/geography/dump-country-data.mjs`): the truthy capital (P36) of every country in the build set, then the curated territories' capitals; names as for the countries, tiers by the country's population.  
+**Tool:** `_scripts/capitals.mjs` (output `_data/capitals-run1.txt`).
+
+**Check (2026-10-09):** 197 countries; 190 with one truthy capital, 6 with two, 1 with three; none without. 205 capital items, all with coordinates.
+
+| Several truthy capitals | Values | Reading |
+| :---- | :---- | :---- |
+| South Africa | Pretoria, Cape Town, Bloemfontein | official, each with its branch (P518) |
+| Bolivia, Sri Lanka, Eswatini | La Paz / Sucre; Kotte / Colombo; Mbabane / Lobamba | official, each with its branch |
+| Palestine, Yemen | East Jerusalem / Ramallah; Sanaa / Aden | *de jure* and *de facto*, qualified (P518 / P459) |
+| **Pakistan** | Islamabad, **Rawalpindi** | an error: Rawalpindi was the interim capital from 1959 to 1967, but the statement carries no dates and both are normal rank (batch below) |
+
+**Rule candidate:** none needed. Several capitals are a real class (the branch or de jure / de facto split is on the statement), so the list keeps them all, as the build does.
+
+**The values:**
+- **Classes:** *city* or a subclass for all but one. Madrid is typed only *municipality of Spain*, which isn't below *human settlement*: a matter of Wikidata's class tree, not a wrong value. The build doesn't filter by class, so nothing to do.
+- **Back-links (P1376):** missing on 2 of 205. Singapore lacks *capital of: Singapore* on itself (Monaco and Vatican City carry theirs); Ramallah lacks *capital of: Palestine* (de facto). Optional inverse statements, no effect on the build; left as they are.
+- **Population:** only Managua's city item has none (P1082 sits on the municipality, Q14256, as the census reports it). The tier reads the country's population, so it doesn't matter here.
+- **Ended capitals** are modelled cleanly elsewhere: Indonesia's former capitals carry start and end dates, the current Jakarta statement is preferred.
+
+**Labels with a disambiguator** (the Managua pattern, against Help:Label): 188 labels on 88 capitals across all languages, almost all in languages the build doesn't read (Cebuano *ulohang dakbayan*, Navajo place descriptions, Chuvash, Kazakh). In the build's languages, beyond Managua (fixed 2026-10-09, re-dump due), three remain: Luxembourg in de-at / de-ch (*Luxemburg (Stadt)*), North Nicosia in pt (*Nicósia (Norte)*, ptwiki *Nicósia do Norte*), West Island in tr (*West Adası (V)*, trwiki *Batı Adası*). A batch fixes those (below). The rest needs a judgement per language and is left to those languages' editors.
+
+**Wikidata batches from this pass** (`_data/QuickStatements/`, pending import):
+
+| Batch | Edits | What |
+| :---- | ----: | :---- |
+| `2026-10-09_capitals-rawalpindi-interim-dates.txt` | 2 | start 1959 and end 1967 on Pakistan's P36 *Rawalpindi* and on Rawalpindi's P1376 *Pakistan* (Encyclopædia Universalis) |
+| `2026-10-09_capitals-labels-disambiguators.txt` | 8 | the three labels above without the disambiguator; the former ones kept as aliases |
+| `2026-10-09_capitals-managua-aliases-tl.txt` | 1 | the Tagalog alias the Managua aliases batch skipped on import |
+
+**By hand after the import:** QuickStatements can't set a rank, so Islamabad's P36 statement on Pakistan (Q843) needs *preferred* rank in the item's UI, as Indonesia's Jakarta has. Only then does the truthy reading drop Rawalpindi.  
+**Rating:** clean; one modelling error on Wikidata, fixed by the batch and the rank.
 
 ## 🔵Subdivisions
 
