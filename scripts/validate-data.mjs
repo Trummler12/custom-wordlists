@@ -43,14 +43,23 @@ const CATEGORY_META = "_category.json";
 const groupsOf = (topic) => [topic];
 
 // Where a stem repeats (every continent's `countries.json`), the immediate parent
-// folder qualifies the id — matching the file's own `id` and build-index.mjs.
+// folder qualifies the id, and the next one up where that still repeats — matching
+// the file's own `id` and build-index.mjs.
 function disambiguate(topics) {
-  const count = {};
-  for (const t of topics) count[t.id] = (count[t.id] ?? 0) + 1;
-  for (const t of topics) {
-    if (count[t.id] > 1) t.id = `${t.category.split("/").pop()}-${t.id}`;
+  const stems = new Map(topics.map((t) => [t, t.id]));
+  for (let depth = 1; ; depth++) {
+    const count = {};
+    for (const t of topics) count[t.id] = (count[t.id] ?? 0) + 1;
+    let grew = false;
+    for (const t of topics) {
+      const segs = t.category.split("/").filter(Boolean);
+      if (count[t.id] > 1 && depth <= segs.length) {
+        t.id = [...segs.slice(-depth), stems.get(t)].join("-");
+        grew = true;
+      }
+    }
+    if (!grew) return topics;
   }
-  return topics;
 }
 
 /**

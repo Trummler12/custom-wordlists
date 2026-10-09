@@ -180,15 +180,25 @@ async function readCategoryMeta(path) {
 // An `inheritsUpwards` family is several files with the same name (every
 // continent's `countries.json`), so stems are no longer unique on their own. Where
 // one repeats, the immediate parent folder qualifies it — `africa/countries.json`
-// becomes `africa-countries`, matching the file's own `id`. Unique stems are left
-// alone, so nothing else in the tree changes. Kept in sync with validate-data.mjs.
+// becomes `africa-countries`, matching the file's own `id` — and where that still
+// repeats (every Games season's `summer/sports.json`), the next folder up too:
+// `olympia-summer-sports`. Unique stems are left alone, so nothing else in the tree
+// changes. Kept in sync with validate-data.mjs.
 function disambiguate(topics) {
-  const count = {};
-  for (const t of topics) count[t.id] = (count[t.id] ?? 0) + 1;
-  for (const t of topics) {
-    if (count[t.id] > 1) t.id = `${t.category.split("/").pop()}-${t.id}`;
+  const stems = new Map(topics.map((t) => [t, t.id]));
+  for (let depth = 1; ; depth++) {
+    const count = {};
+    for (const t of topics) count[t.id] = (count[t.id] ?? 0) + 1;
+    let grew = false;
+    for (const t of topics) {
+      const segs = t.category.split("/").filter(Boolean);
+      if (count[t.id] > 1 && depth <= segs.length) {
+        t.id = [...segs.slice(-depth), stems.get(t)].join("-");
+        grew = true;
+      }
+    }
+    if (!grew) return topics;
   }
-  return topics;
 }
 
 async function buildIndex() {
