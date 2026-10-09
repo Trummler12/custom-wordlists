@@ -64,6 +64,8 @@ Use the relative File Paths/Links provided on the Items listed in the [Overview 
 - `capitals.mjs`: the truthy capitals (P36) of the build's countries: how many per country, ended or qualified statements, the values' classes, back-links (P1376), population, and labels with a disambiguator.
 - `languages.mjs`: the build's language membership (class path plus code or speaker gate) against membership by ISO 639 code: what each loses, by sitelinks and class, and preferred P31 statements that hide a class.
 - `continents.mjs [structure.tsv]`: the continent class against the build's hand list, the plate class and its subclasses, the banded plates' items (typed, area) against the catch-all, and labels with a disambiguator.
+- `elements.mjs`: the element membership (one item per atomic number) and the labels in the build's languages: gaps down each fallback chain, invisible characters, disambiguators, Simplified Chinese read from `zh`, and labels against the language's article title.
+- `pokemon.mjs [topic folder]`: sitelinks against the editorial fame tiers per generation (Spearman), Wikidata's labels against the official names in our lists, and the labels in the languages without an official release.
 - `multisport.mjs`: the sports of other multi-sport events and their overlap with the Olympic ones.
 - `fame.mjs <QID>… [--from file]`: sitelinks against 12 months of English pageviews, with Spearman's rho.
 - `historical.mjs [--min N]`: candidate queries for historical countries against a reference set.
@@ -253,7 +255,7 @@ Use the relative File Paths/Links provided on the Items listed in the [Overview 
 ### Science
 
 - [Chemistry](./science/Chemistry.md#navigation)
-  - ☑️[Chemical Elements](./science/Chemistry.md#️chemical-elements)
+  - ✅[Chemical Elements](./science/Chemistry.md#chemical-elements)
 
 #### Candidates
 

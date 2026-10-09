@@ -68,7 +68,7 @@ The 26 plate items outside the bands, by what they are:
 
 **Labels with a disambiguator:** two in the build's languages: South Sandwich Plate de *Sandwichplatte (tektonische Platte)* (the case the build's `tidy()` strips) and Azores Plateau ru *Асориш (плато)*. Batch below.
 
-**Wikidata batches from this pass** (awaiting import; files in `_data/QuickStatements/`):
+**Wikidata batches from this pass** (imported and checked on the items 2026-10-09; files in `_data/QuickStatements/imported/`):
 
 | Batch | Edits | What |
 | :---- | ----: | :---- |
@@ -76,12 +76,12 @@ The 26 plate items outside the bands, by what they are:
 | `2026-10-09_plates-labels-disambiguators.txt` | 4 | the two labels above without the disambiguator; the former ones kept as aliases |
 | `2026-10-09_west-siberian-plate-merge.txt` | 1 | merge Q25473407 into Q17115739 |
 
-After the import the catch-all loses *microplate* and *intraplate deformation*, so two `CATCHALL_DROP` entries become unnecessary, and the duplicate West Siberian item goes.  
+With the import the catch-all loses *microplate* and *intraplate deformation*, so two `CATCHALL_DROP` entries become unnecessary, and the duplicate West Siberian item goes.  
 **Rating:** clean for names, as designed. The class tree around *tectonic plate* had three misuses (batched); the catch-all still holds non-plates that only sourced class changes can clear.
 
 <!-- @agent(#35) from #38 · 2026-10-09 · OPEN
-Decided: Continents analysed (this file, Continents). Three batches await Trummler's import: class misuses (microplate, intraplate deformation, Indian Plate as a class), two disambiguated labels, the West Siberian duplicate merged.
-Ask: (1) the European plate Q19848929 is an extinct plate, not a duplicate of the Eurasian: move it from CATCHALL_DROP to ANCIENT; (2) structure.tsv maps North Galapagos microplate to Q1200979 (the Galápagos microplate; the right item is Q5361664) and Iranian plate to Q237660 (the plateau; the plate is Q1187892), and leaves Galápagos microplate (Q1200979) and Altiplano plate (Q1200986) without their items; (3) after the import, drop microplate and intraplate deformation from CATCHALL_DROP; (4) for Trummler: the Americas as a tier-0 short-only entry?
+Decided: Continents analysed (this file, Continents). Three batches imported and checked (2026-10-09): class misuses (microplate, intraplate deformation, Indian Plate as a class), two disambiguated labels, the West Siberian duplicate merged.
+Ask: (1) the European plate Q19848929 is an extinct plate, not a duplicate of the Eurasian: move it from CATCHALL_DROP to ANCIENT; (2) structure.tsv maps North Galapagos microplate to Q1200979 (the Galápagos microplate; the right item is Q5361664) and Iranian plate to Q237660 (the plateau; the plate is Q1187892), and leaves Galápagos microplate (Q1200979) and Altiplano plate (Q1200986) without their items; (3) drop microplate and intraplate deformation from CATCHALL_DROP; (4) for Trummler: the Americas as a tier-0 short-only entry?
 Refs: this file, Continents => What the catch-all collects; _scripts/continents.mjs
 -->
 

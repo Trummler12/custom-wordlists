@@ -181,6 +181,54 @@ SELECT DISTINCT ?item ?itemLabel WHERE {
 
 **Check (2026-10-07):** 1,235 species via `P31/P279*` (1,236 before); the class itself is never used directly (0).
 
+**Built by** #35 from PokéAPI, not from Wikidata: `scripts/pokemon/` (names in the 11 languages the games ship in, `ja-Latn` derived), tiers per generation from Sporcle's guess rates. The two questions for this pass (plan doc, step 4): a number for the fame tiers, and how official each language's labels are.  
+**Tool:** `_scripts/pokemon.mjs` (output `_data/pokemon-run1.txt`).
+
+**Check (2026-10-09):** 1,232 species items carry a generation; all 1,025 entries of our generation lists match one by English name.
+
+### Fame: sitelinks don't replace the tiers
+
+Sitelinks against our tiers, per generation (Spearman's rho, negative = more sitelinks in the higher tiers; median sitelinks from tier 1 to tier 6):
+
+| Gen | rho | Median per tier |
+| ---: | ---: | :---- |
+| 1 | -0.68 | 35 / 17 / 13 / 13 / 11 / 10 |
+| 2 | -0.51 | 15 / 12 / 7 / 7 / 7 / 7 |
+| 3 | -0.37 | 12 / 8 / 8 / 6 / 6 / 5 |
+| 4 | -0.42 | 11 / 7 / 6 / 7 / 5 / 5 |
+| 5 | -0.45 | 7 / 5 / 4 / 3 / 3 / 3 |
+| 6 | -0.46 | 5 / 5 / 4 / 3 / 3 / 3 |
+| 7 | -0.28 | 5 / 3 / 3 / 3 / 3 / 3 |
+| 8 | -0.28 | 4 / 3 / 2 / 2 / 2 / 2 |
+| 9 | -0.50 | 4 / 3 / 2 / 3 / 2 / 2 |
+
+The direction is right everywhere, but from generation 5 on most species have 2 to 5 sitelinks (median over all 5; 840 of 1,025 below 10), so the number can't separate the lower tiers. The editorial tiers stay; sitelinks could at most break ties in generations 1 and 2. Pageviews could be finer (enwiki and jawiki hold a sitelink for over 1,160 species, on enwiki mostly to redirects into the lists), but they aren't Wikidata data and would need a measurement of their own: a candidate, not done here.
+
+### Labels: official where the games are released, and only there
+
+**The languages the games ship in** (the build's 11): Wikidata's labels are nearly complete and match the official names on 1,011 to 1,025 of 1,025 per language. The differences, by side:
+- **Wikidata wrong** (batched, 20 edits): de Araquanid *Aranesto* (*Aranestro*); fr *Parécool*, *Feuilloutan*, *Troixhydre*, *Émolga* (*Parecool*, *Feuiloutan*, *Trioxhydre*, *Emolga*) and the English *Boldore* / *Durant* where French has *Géolithe* / *Fermite*; it Iron Treads *Solcoferro* (*Solcoferreo*); seven Korean labels (Poliwhirl, Tangela, Blissey, Pignite, Joltik, Xerneas, Cyclizar, the last one carrying another Pokémon's name); zh-Hant Cofagrigus, Runerigus and Kingambit with the Simplified-region names (*迭失棺*, *迭失板*, *仆斬將軍* against *死神棺*, *死神板*, *仆刀將軍*).
+- **Our data wrong** (PokéAPI): zh-Hans Minun *負电拍拍* and Iron Treads *铁轍迹* each carry one Traditional character; Wikidata's *负电拍拍* and *铁辙迹* are right. A `corrections` entry each (message below).
+- **Neither:** Porygon2 and Porygon-Z with a full-width or half-width digit / letter (ja, ko, zh-Hans), and *豔* / *艷* in Espathra's zh-Hant name: variant characters, not different names.
+
+**Every other language** has no official names: the games were never released in them, and players there use the English ones. Wikidata agrees: cs (809 labels), nl (812), sk (662), nb (249) and the smaller ones repeat the English name, apart from a few slips (tr *Paras (Pokémon)*, pt *Família de Wailmer*, both batched). Where labels differ, they are transliterations of the English or Japanese names, used by fan sites and some anime dubs: all 134 ru labels (*Чармандер*), all 357 he labels, 9 of 15 el, and single bg / mk / sr / lv labels.
+
+**Answer to the question:** the explicit list of sufficiently official languages is exactly the build's: en, de, fr, es (and es-419), it, ja (and the derived ja-Latn), ko, zh-Hans, zh-Hant. Every other language shows the English name, which is already what an absent key means. No threshold is needed, and Wikidata's transliterations stay out.
+
+**Wikidata batch from this pass** (awaiting import; file in `_data/QuickStatements/`):
+
+| Batch | Edits | What |
+| :---- | ----: | :---- |
+| `2026-10-09_pokemon-species-labels.txt` | 20 | the 18 labels above in the official languages set to the official name, plus tr *Paras* and pt *Wailmer*; no aliases kept, since the old labels are typos or another species' or region's name |
+
+**Rating:** ☑️ stands. Wikidata could supply the names (as good as PokéAPI after this batch, and better on two Chinese names), but not the fame.
+
+<!-- @agent(#35) from #38 · 2026-10-09 · OPEN
+Decided: Pokémon checked against Wikidata (this file, Pokémon). PokéAPI stays the source; fame stays editorial (sitelinks too coarse past gen 2); the official languages are exactly the build's 11, every other language falls back to English as it does now.
+Ask: two zh-Hans names in our lists carry a Traditional character (PokéAPI's error): Minun 負电拍拍 => 负电拍拍 (generation-3) and Iron Treads 铁轍迹 => 铁辙迹 (generation-9); a `corrections` entry each.
+Refs: this file, Pokémon => Labels: official where the games are released, and only there
+-->
+
 ## ☑️Abilities
 
 **Associated List:** -  

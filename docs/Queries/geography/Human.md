@@ -190,7 +190,7 @@ Measured against ISO 639 codes: 122 items with an ISO 639-1 or 639-2 code are ou
 | typed only *standard variety* or *pluricentric language variant*, which aren't below any accepted class | Serbian (175), Bosnian (140), Montenegrin (104), Filipino (90) |
 | typed only *language* (Q34770), the top class, which isn't accepted | Mandarin (135), Kalmyk (78), Banjar (68), Sorbian (83), Central Bikol, Cham, South Estonian, … |
 | typed only *sign language* or *creole* | 12 sign languages (New Zealand, Auslan, Quebec, Dutch, Ukrainian, …), Chavacano (53) |
-| a preferred P31 hides the accepted classes (Wikidata issue, below) | **Hindi** (224) |
+| a preferred P31 hid the accepted classes (Wikidata issue, below; fixed 2026-10-09) | **Hindi** (224) |
 | in a type class, but with neither an ISO 639-1 code nor a speaker count: the gate drops them | Ancient Greek (156), Coptic, Gothic, Old English, Egyptian, Akkadian, Old Norse, Sumerian, Hittite, Ge'ez, Phoenician, Middle English, Old French, Elamite (each 64 to 112) |
 | collective codes for families (no loss: they would only feed the family type) | Romance, Germanic, Semitic, Celtic, Indo-Aryan, Iranian, Bantu, Mayan, … |
 
@@ -218,7 +218,7 @@ Wikidata keeps macrolanguage, individual language and standard apart. All of the
 ### Wikidata issue: Hindi
 
 Hindi (Q1568) carries *instance of: register* (Q286576) with **preferred** rank and no reference, beside *language* and *modern language* (normal rank, referenced). A preferred rank on one class hides the others from the truthy reading, so every query by class misses Hindi. The classes aren't alternatives, so the preferred rank has no basis (Help:Ranking; a bot already removed another unnecessary preferred rank on Hindi in 2025).  
-**Fix by hand** (QuickStatements can't set ranks): set that statement's rank to normal.  
+**Fixed by hand** (QuickStatements can't set ranks): Trummler set that statement's rank to normal; checked on the item 2026-10-09. Hindi now reads *language* and *modern language* again and enters the membership with #35's next re-dump.  
 Other ISO 639-1 items with a preferred P31 (Turkish, Pali, Sanskrit) keep an accepted class in the truthy reading, so they are harmless.
 
 **Rating:** usable, but the membership query misses languages it should hold; the code-based union above fixes that without hand-kept QIDs.
