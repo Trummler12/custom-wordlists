@@ -103,7 +103,12 @@ async function main() {
   const fixedParents = await readJson(join(RAW, "parents.json"));
   const today = new Date().toISOString().slice(0, 10);
 
-  const listed = Object.keys(dump).filter((q) => /^Q\d+$/.test(q) && !excluded[q]);
+  // An exclusion with `lists` holds only there: wushu was no Olympic sport, but is an
+  // Asian Games one.
+  const listsIn = (q) => dump[q].lists.filter((l) => !excluded[q]?.lists?.includes(l));
+  const listed = Object.keys(dump).filter(
+    (q) => /^Q\d+$/.test(q) && (!excluded[q] || excluded[q].lists) && listsIn(q).length,
+  );
   const listOf = (edition) => edition.slice(11);
   const seriesOf = (list) => list.split("/")[0];
 
@@ -111,7 +116,7 @@ async function main() {
   const listsOf = new Map();
   for (const q of listed) {
     const bySeries = new Map();
-    for (const list of dump[q].lists) {
+    for (const list of listsIn(q)) {
       const prev = bySeries.get(seriesOf(list));
       const latest = (l) => dump[q].editions.filter((e) => listOf(e) === l).at(-1) ?? "";
       if (!prev || latest(list) > latest(prev) || (latest(list) === latest(prev) && list > prev)) {

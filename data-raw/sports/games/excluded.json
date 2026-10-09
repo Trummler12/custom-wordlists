@@ -1,5 +1,5 @@
 {
-  "_comment": "Items the Games sports dump finds that are no sport of the topic, kept out of every rule. Keyed by Wikidata Q-id; `en` names it, `why` says why it is out. Read by scripts/sports/build-games-sports.mjs; analysis in PR #38 (sports/Olympics.md).",
+  "_comment": "Items the Games sports dump finds that are no sport of the topic, kept out of every rule. Keyed by Wikidata Q-id; `en` names it, `why` says why it is out; `lists`, where present, limits it to those lists. Read by scripts/sports/build-games-sports.mjs; analysis in PR #38 (sports/Olympics.md).",
 
   "Q212434":    { "en": "Olympic sport",                    "why": "the class itself" },
 
@@ -17,6 +17,9 @@
 
   "Q4179462":   { "en": "ladies' singles",                  "why": "an event, not a sport" },
   "Q4305887":   { "en": "men's singles",                    "why": "an event, not a sport" },
+
+  "Q2142411":   { "en": "fast chess",                       "why": "exhibition at or beside the Games, never in the Olympic programme", "lists": ["olympia/summer"] },
+  "Q3479346":   { "en": "wushu",                            "why": "exhibition at or beside the Games, never in the Olympic programme", "lists": ["olympia/summer"] },
 
   "Q3590901":   { "en": "(no label)",                       "why": "not a sport" },
 
