@@ -38,7 +38,7 @@ Three npm scripts drive the geography-family topics — Continents & Plates, Lan
 
 Supporting, not run directly:
 
-- `bucket-names.mjs` — the shared rule that turns one entity's flagged Wikidata names (`rdfs:label` / P1448 official / P1813 short) into the `{ pref, short?, long?, others? }` shape. Imported by the country dump, build and report.
+- `bucket-names.mjs` — the shared rule that turns one entity's flagged Wikidata names (`rdfs:label` / P1448 official / P1813 short / Wikipedia article title) into the `{ pref, short?, long?, others? }` shape. Imported by the country dump, build and report.
 
 The country / capital names also draw on two raw-data files, kept as data rather than inline so they can be edited by hand:
 
