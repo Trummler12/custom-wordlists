@@ -1,5 +1,5 @@
 {
-  "id": "sports",
+  "id": "olympia-summer-sports",
   "title": {"en":"Sports","de":"Sportarten","zh-Hans":"体育","zh-Hant":"體育","es":"Deportes","it":"Sport","ja":"スポーツ","ko":"스포츠","pt":"Desporto","ru":"Спорт","tr":"Spor","pl":"Sport","nl":"Sport","bg":"Спорт","cs":"Sport","da":"Sport","et":"Sport","fi":"Urheilu","el":"Αθλητισμός","he":"ספורט","hu":"Sport","lv":"Sports","mk":"Спорт","no":"Sport","ro":"Sport","sr":"Спорт","sk":"Šport","sv":"Sport","tl":"Palakasan"},
   "icon": "🏟️",
   "description": "Every sport held at the Summer Olympic Games: current, past and announced. Fame tiers by how many Wikipedias have an article on the sport (tier 0 = most widely covered).",
@@ -15,8 +15,8 @@
     "Sports & names: Wikidata, the sport (P641) of every event that is part of the Summer Olympic Games — https://www.wikidata.org/wiki/Q159821 (see scripts/sports/dump-olympic-sports.mjs)",
     "Tiers: how many language editions of Wikipedia have an article on the sport, from its Wikidata sitelinks — https://www.wikidata.org/wiki/Help:Sitelinks"
   ],
-  "lastUpdated": "2026-10-08",
-  "lastChecked": "2026-10-08",
+  "lastUpdated": "2026-10-09",
+  "lastChecked": "2026-10-09",
   "omitted": [
     {
       "id": "discontinued",
@@ -151,5 +151,6 @@
     "text": "ruler.sports.text",
     "empty": "ruler.sports.empty"
   },
-  "inheritsUpwards": 1
+  "inheritsUpwards": 2,
+  "skipInherit": 1
 }

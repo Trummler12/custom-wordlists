@@ -1,4 +1,4 @@
-// Writes the Olympic sports topics (data/topics/sports/olympia/<season>/sports.json), their
+// Writes the Olympic sports topics (data/topics/sports/games/olympia/<season>/sports.json), their
 // categories' titles, and the sports' language coverage page data (data/coverage/sports.json),
 // all from what scripts/sports/dump-olympic-sports.mjs writes.
 //
@@ -25,7 +25,7 @@
 // Summer and Winter lists cut at the same counts and their merge above them stays ranked.
 //
 // The analysis behind this: _untracked/docs/Queries/sports/Olympics.md (PR #38).
-import { readFile, writeFile } from "node:fs/promises";
+import { mkdir, readFile, writeFile } from "node:fs/promises";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 import { writeCoverage } from "../geography/coverage.mjs";
@@ -34,10 +34,9 @@ import { LANG_SRC, NAME_LANGS, labelFor } from "../lib/wikidata.mjs";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..", "..");
 const RAW = join(ROOT, "data-raw", "sports", "olympia");
-const OUT = join(ROOT, "data", "topics", "sports", "olympia");
+const OUT = join(ROOT, "data", "topics", "sports", "games", "olympia");
 
-/** The seasons built so far. Winter follows once its analysis is in. */
-const SEASONS = ["summer"];
+const SEASONS = ["summer", "winter"];
 
 /** Lowest article count per tier; the last tier takes every sport with any article. */
 const BANDS = [100, 80, 60, 40, 20];
@@ -131,6 +130,7 @@ async function main() {
   };
 
   const coverage = {};
+  let first; // the first season's topic, whose title a new season starts from
   for (const season of SEASONS) {
     const ids = listed.filter((q) => seasonOf(dump[q]) === season);
     const path = join(OUT, season, "sports.json");
@@ -153,9 +153,9 @@ async function main() {
     const ruleOf = (r) => ({ id: r.id, match: rules[r.id].sort(), count: true, reason: r.reason, icon: PANEL_ICON });
     const kept = RULES.filter((r) => rules[r.id].length);
     const topic = {
-      // A stem held by one file is its id; once two seasons share it, each takes its prefix.
-      id: SEASONS.length > 1 ? `${season}-sports` : "sports",
-      title: old?.title ?? { en: "Sports", de: "Sportarten" },
+      // Ids are global: every Games rubric holds a sports.json.
+      id: `olympia-${season}-sports`,
+      title: old?.title ?? first?.title ?? { en: "Sports", de: "Sportarten" },
       icon: old?.icon ?? "🏟️",
       description: `Every sport held at the ${labelFor(games[season].names, "en")}: current, past and announced. Fame tiers by how many Wikipedias have an article on the sport (tier 0 = most widely covered).`,
       generated: "fully",
@@ -178,8 +178,11 @@ async function main() {
       tiers,
       tierConditions: [...BANDS.map(String), ">0"],
       rulerTooltip: { text: "ruler.sports.text", empty: "ruler.sports.empty" },
-      inheritsUpwards: 1,
+      // Past olympia/ to games/, where every Games rubric's list meets.
+      inheritsUpwards: 2,
+      skipInherit: 1,
     };
+    first ??= topic;
     // A rebuild that changes nothing keeps its dates.
     const text = serializeTopic(topic);
     if (old && serializeTopic({ ...old, lastUpdated: topic.lastUpdated, lastChecked: topic.lastChecked }) !== text) {
@@ -192,6 +195,7 @@ async function main() {
     if (gaps.length) console.log(`  no name (${gaps.length}): ${gaps.map((e) => `${e.en} [${e["?"].join(" ")}]`).join(", ")}`);
 
     if (write) {
+      await mkdir(join(OUT, season), { recursive: true });
       await writeFile(path, serializeTopic(topic), "utf8");
       const catPath = join(OUT, season, "_category.json");
       const cat = await readJson(catPath).catch(() => ({}));

@@ -13,6 +13,7 @@
   "Q15621650":  { "en": "skiing",                           "why": "an umbrella" },
 
   "Q22857":     { "en": "climbing",                         "why": "duplicates sport climbing" },
+  "Q17165362":  { "en": "long track speed skating",         "why": "duplicates speed skating" },
 
   "Q4179462":   { "en": "ladies' singles",                  "why": "an event, not a sport" },
   "Q4305887":   { "en": "men's singles",                    "why": "an event, not a sport" }
