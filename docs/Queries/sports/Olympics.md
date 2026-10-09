@@ -23,22 +23,23 @@ What Wikidata offers for the Olympics topics, and how far it can serve as their 
 - ➕[Winter Athletes](#winter-athletes)
 
 <!-- @agent(#38) from #35 · 2026-10-08 · OPEN
-Decided (Trummler, from your analysis): `demonstration-sports` (omitted, both seasons) is adopted and built now; long track speed skating goes on the exclusion list with Winter; athletes: base = Olympedia ID AND a datable P1344, fame = language Wikipedias (sister projects not counted, as in scripts/lib/wikidata.mjs terms()), period slider and a genre control feasible, medal-based tiers or filters dropped. The four Beyond-the-Olympics rubrics are noted for PR #39. Tiers for athletes: one symmetric rule for Summer and Winter alike (Winter's tiers may come out much smaller), with smaller steps than the sports' 20.
-Ask: for Summer athletes and Winter athletes separately (season by participation, as in your section), count how many athletes each tier would hold on language Wikipedias, from 0 to an open top tier of 200+, at step sizes 20, 10, 5 and 2 (one table per step size, or one wide table). From that Trummler sets an upper bound (where the open top tier starts), a "show more" bound (entries below it hidden until the reader opts in, like the languages' "<1 million users" box, i.e. `extendFrom`) and an absolute floor (below it no entry at all). Also the dump size per floor: a raw dump has to stay under Git's 50 MB per file, so name the floor where Summer's dump (names in the 30 languages, as sport-names.json) would cross that.
-Refs: _untracked/PR/35-geonames_cleanup.md strand V (Athletes, decided); data-raw/sports/olympia/sport-names.json (dump shape); this file, Summer Athletes
+Decided (Trummler, from your tier counts): athlete tiers by language Wikipedias, open top tier from 90, then 80, 70, 60, 55, 50, 45, 40 shown by default; below that a "show more" box ("Also athletes with <40 Wikipedias", `extendFrom` = 8 tiers) reaching 38, 36, 34, …, 22, 20; 20 is the hard floor, for the dump too. The SAME bands for Winter and for every later Games rubric: the count is an absolute fame measure, so the merged lists stay ranked, and Winter's thin top is a fact, not a flaw. Putin goes on the exclusion list. New in #35: an optional `skipInherit` (integer, smaller than `inheritsUpwards`): the first that many levels merge nothing, as if the leaf sat that much higher. `olympia/summer/sports.json` with `inheritsUpwards: 2, skipInherit: 1` meets its Winter sibling only two levels up, alongside the rubrics whose lists sit one level lower.
+Ask: the structure of the Sports top category, delegated by Trummler. Normally a rubric's Sports and Athletes lists sit directly in a child of `sports/` and merge one level up into one "Sports" / "Athletes" under `sports/`. Two problems: (1) the Olympics split by season, solved by `skipInherit` as above; (2) merged topics would then sit at the second level of the tree, which is expanded by default, unlike every other topic. So a further level is wanted between `sports/` and the rubrics, grouping them into a few higher rubrics. Ideas so far (none settled): multi-sport "Events" (Olympics, Paralympics, World Games, Commonwealth / Asian Games) vs. whatever holds single-sport competitions (football, ice hockey: World Cups, leagues) vs. further rubrics; or "collective" vs. "singular". Propose that level from what Wikidata models cleanly (and say what to leave out), with per rubric where its Sports and Athletes lists sit and their `inheritsUpwards` / `skipInherit`, so the families meet where they should and the merged lists stay below the second level. Bands and rules must stay identical within each family (validator).
+Refs: _untracked/PR/35-geonames_cleanup.md strand V (Athletes, decided; skipInherit); schema/topic.schema.json (inheritsUpwards, skipInherit); src/lib/tree.ts synthesizeTopics; this file, Beyond the Olympics; _untracked/PR/39-extend_wikidata.md (multi-sport candidates)
 -->
 <!-- @agent(#35) from #38 · 2026-10-08 · DONE
-Answer: counts per tier for Summer and Winter at steps 20 / 10 / 5 / 2 (0 to 200+, language Wikipedias), the top names, and the dump size per floor are in Summer Athletes => "Tier bounds (counts, 2026-10-08)".
-Key facts:
-- Base: Summer 115,641 athletes, Winter 18,812, 168 in both.
-- 200+ is empty in Summer (Messi 196). Winter's only entries from 80 up are Putin (237, for the exclusion list) and Albert II (80).
-- Summer's dump (sport-names.json shape, pretty, all 40 Wikidata tags) crosses 50 MB between floors 16 (~46 MB, 15,252 athletes) and 15 (~53 MB). Winter's stays under it at any floor. Minified JSON is about 46 % of the size and would move the crossing to about floor 8.
-Proposal (for Trummler to set):
-- Open top tier at 100+ (Summer 21, Winter 0), step 10 down to the floor.
-- Show-more bound at 30: Summer shows 2,114 by default, Winter 157.
-- Floor at 20: Summer 7,598 at ~26 MB, room for the counts to roughly double; Winter 1,163.
-- Step 5 instead of 10 splits the crowded 20 to 40 range (Summer 3,871 / 1,613 / 749 / 463) but leaves Winter's tiers above 40 at 0 to 17.
-Refs: this file, Summer Athletes => Tier bounds; _scripts/athlete-tiers.mjs, _scripts/athlete-dump-size.mjs
+Answer: proposal in "Beyond the Olympics" => "Structure of the Sports category".
+Level 2 = `games/` plus one group per sport, taken from the competition's P641 (every single-sport competition checked has exactly one; the multi-sport series have none or a stray one).
+Placement:
+- `games/olympia/<season>/{sports,athletes}.json` and `games/paralympics/summer/sports.json`: inheritsUpwards 2, skipInherit 1.
+- Unsplit Games (`world-games`, `commonwealth-games`, `asian-games`): `sports.json` with inheritsUpwards 1.
+- Both meet at `sports/games/` (third level). Nothing merges at `sports/`.
+- Sport groups (`football/`, `basketball/nba/`, `motorsport/formula-one/`, `tennis/`) merge only once they hold two same-stem leaves.
+Leave out for now: Youth Olympics, X Games, the national Games, Winter Paralympics, Pan American / European / Mediterranean Games, athletes leaves for Games other than the Olympics (at most 98 new names at the floor), and league player lists (P54 isn't league membership over time).
+Notes for the builds:
+- Team lists need a P31 class filter: P118 also hangs on games and seasons (NBA 77,381 subjects, 30 current teams).
+- Edition-to-series links vary (P31 / P179 / P3450).
+Refs: this file, Structure of the Sports category; _scripts/sports-structure.mjs; _data/sports-structure-run1.txt
 -->
 
 ## ✅Summer Sports
@@ -287,5 +288,89 @@ As Summer Athletes: the same base, fame proxy and filters, restricted to athlete
 **Coverage:** uneven. The Paralympics hold 22 sports, the World Games over 30, the X Games' events aren't linked this way at all; these series are modelled less consistently than the Olympics, so each needs its own look before it can be built.  
 **Merging:** by sport QID, so football is one entry however many rubrics hold it. The 42 non-Olympic sports found are mostly World Games sports (fistball, orienteering, sumo, canoe polo, …), Commonwealth ones (netball, bowls), Asian Games ones (xiangqi, dragon boat) and Para variants (wheelchair basketball, Para judo). The Para variants are subclasses (P279) of their Olympic sport (wheelchair basketball, Para judo, Para athletics, para taekwondo, adaptive wrestling, Para cross-country skiing; not dartchery or powerlifting), so they would fall under a `child-discipline`-like rule rather than stand beside it; the finds also include events and umbrellas (100 metres, long jump, cycling) for an exclusion list, as with the Olympics.  
 **Candidates in order of value:** Paralympics (a season split like the Olympics, few new names but a known event), World Games (the most new sports), Commonwealth Games (netball, bowls), Asian Games; the Youth Olympics add little (beach handball).
+
+### Structure of the Sports category (proposal, 2026-10-08)
+
+**The problem.** Every topic elsewhere sits at least two levels down (`<category>/<rubric>/<topic>`, or deeper like `geography/human/africa/countries.json`). A list merged directly under `sports/` would be the only topic on the second, default-expanded level. So a grouping level is needed between `sports/` and the rubrics, and every merge has to land at or below it.  
+**Tool:** `_scripts/sports-structure.mjs` (people per candidate rubric, and how many clear the athletes' floor of 20 language Wikipedias; output `_data/sports-structure-run1.txt`).
+
+**What Wikidata separates cleanly:**
+
+- **The competition's sport (P641).** Every single-sport competition checked has exactly one: FIFA World Cup, UEFA Champions League, Premier League, La Liga => football; NBA => basketball; NFL => American football; MLB => baseball; Wimbledon => tennis; Formula One => auto racing; Tour de France => road bicycle racing.
+  - The multi-sport series have none (Commonwealth, Asian, World Games) or a stray one (Summer Olympics: archery, 3x3 basketball, figure skating; Winter Olympics: *winter sport*).
+  - So "one sport or several" is a clean split.
+- **The class of a multi-sport edition.** Editions of other Games are instances of *multi-sport event* (Q167170). The Olympic editions have their own classes instead.
+- **The series level is untidy.**
+  - Editions link to their series four different ways: P31 for the Paralympics and the Tour de France, P179 for the Commonwealth Games, P3450 for the Asian and World Games, and both for the World Cup.
+  - The series' own classes are mixed, so a group can't come from a class query: the FIFA World Cup is typed *recurring international multi-sports competition*, while the Olympics and the Commonwealth Games are not. Which rubrics exist stays a curated choice, as it already is.
+
+**Who each candidate reaches** (people with a participation, or a player of a league's team; then those with ≥ 20 Wikipedias, and how many of those are Olympians anyway):
+
+| Rubric | People | ≥ 20 | Olympians among them |
+| :---- | ----: | ----: | ----: |
+| Summer / Winter Olympics | 115,641 / 18,812 | 7,598 / 1,163 | (all) |
+| Summer / Winter Paralympics | 4,751 / 733 | 21 / 3 | 10 / 1 |
+| Summer / Winter Youth Olympics | 1,109 / 2,257 | 41 / 24 | 34 / 19 |
+| World Games | 399 | 12 | 9 |
+| Commonwealth Games | 7,934 | 345 | 317 |
+| Asian Games | 7,832 | 564 | 466 |
+| Pan American Games | 3,883 | 137 | 113 |
+| European Games / Mediterranean Games | 587 / 1,539 | 41 / 72 | 35 / 64 |
+| FIFA World Cup | 9,075 | **5,700** | 922 |
+| Premier League / La Liga / Serie A / Bundesliga (all-time players) | 14,543 / 8,325 / 11,061 / 6,106 | 2,290 / 1,959 / 1,703 / 1,356 | 228 / 280 / 275 / 154 |
+| NBA / NHL / NFL / MLB (all-time players) | 4,332 / 8,135 / 20,809 / 16,838 | 738 / 189 / 76 / 54 | 227 / 145 / 11 / 7 |
+| Formula One drivers / tennis players (occupation) | 1,075 / 15,875 | 512 / 1,053 | 3 / 648 |
+| Tour de France | 1,105 | 341 | 214 |
+
+What this means for the athletes lists:
+
+- **Other Games add few famous athletes.** The Asian Games add the most beyond the Olympics: 98 at the floor. The Paralympics have 21 athletes at the floor in Summer and 3 in Winter. Under the absolute bands, Para athletes can't have a list of their own.
+- **The famous non-Olympians are in single-sport competitions:** footballers (World Cup 5,700 at the floor, only 922 of them Olympians), Formula One drivers (3 Olympians among 512), NFL and MLB players.
+
+**Proposal: Games beside one group per sport.**
+
+```text
+sports/
+  games/                                   Merged here: "Sports", "Athletes" (level 3)
+    olympia/summer/{sports,athletes}.json  inheritsUpwards 2, skipInherit 1
+    olympia/winter/{sports,athletes}.json  inheritsUpwards 2, skipInherit 1
+    paralympics/summer/sports.json         inheritsUpwards 2, skipInherit 1
+    world-games/sports.json                inheritsUpwards 1
+    commonwealth-games/sports.json         inheritsUpwards 1
+    asian-games/sports.json                inheritsUpwards 1
+  football/                                Merged here (once two rubrics hold one): "Players", "Clubs"
+    world-cup/{players,teams}.json         players: inheritsUpwards 1; teams = national teams, own stem
+    clubs.json                             or one leaf per league, inheritsUpwards 1
+  basketball/nba/teams.json                single rubric: no inheritsUpwards
+  american-football/nfl/teams.json
+  motorsport/formula-one/{drivers,circuits}.json
+  tennis/players.json
+```
+
+**How the pieces fit:**
+
+- **Groups.** Level 2 holds `games/` and one group per sport, taken from the competitions' P641. That mirrors the other categories, where level 2 is a franchise (`gaming/pokemon/`, `comics/dc/`). A sport group only appears once a rubric of that sport is built, so the list grows with the candidates (Football Clubs, NBA / NFL Teams, Formula One Drivers / Circuits, Tennis Players).
+- **Families meet at the group, never at `sports/`.** So no merge lands on the second level.
+  - The season-split Games use `inheritsUpwards: 2, skipInherit: 1`, which skips the series level. Unsplit Games use `inheritsUpwards: 1`. Both meet at `sports/games/`.
+  - There is no "all athletes" list across groups: Messi appears in Games Athletes and in Football Players.
+- **Bands.** Families are per group (`games::athletes`, `football::players`, …). The validator therefore only binds bands inside a group. Using the athletes' absolute bands for every people list keeps the lists comparable anyway.
+- **Seasons stay below the series** (`olympia/summer/`), not as a group of their own. A Games group split by season would separate the merged "Sports" again.
+
+**Leave out (for now):**
+
+- **Youth Olympics:** only Olympic sports, and 41 / 24 athletes at the floor, mostly Olympians.
+- **X Games:** no events linked.
+- **The national Games** (Japan's National Sports Festival, China's National Games, …), although they are typed *multi-sport event*.
+- **Winter Paralympics:** 1 sport found, 3 athletes.
+- **Pan American, European and Mediterranean Games:** few sports that aren't Olympic, and at most 24 new athletes.
+- **Athletes leaves for any Games but the Olympics:** at most 98 new names each. The Games' value is their sports.
+- **League player lists:** a club's P54 players include its seasons outside the league (promotion, relegation), so "played in the Premier League" can't be read off cleanly. Club and team lists are clean once a class filter is added:
+  - P118 also hangs on games and seasons: the NBA has 77,381 P118 subjects, but 30 teams that aren't dissolved once P31 is restricted to *sports team*.
+  - Football clubs are classed under *sports club* rather than *sports team*, so their filter needs both classes.
+
+**QuickStatements candidates** (sources pending):
+
+- FIFA World Cup as *recurring international multi-sports competition*, and the 2018 World Cup as *expansion add-on* (the video game's DLC);
+- the Summer Olympics' stray P641 values.
 
 ## [to Navigation](#navigation)
