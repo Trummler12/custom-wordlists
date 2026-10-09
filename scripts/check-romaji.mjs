@@ -7,7 +7,7 @@
 // at render (see src/lib/languages/kana.mjs), and any name holding a kanji the dictionary
 // doesn't know falls back to the raw Japanese instead. This lists those names — and
 // the offending characters — so the WORDS table can be extended to cover them.
-// A report, not a gate: it exits 0 and is read, like report-name-quality.
+// A report, not a gate: it exits 0 and is read.
 
 import { readdirSync, readFileSync } from "node:fs";
 import { dirname, join } from "node:path";

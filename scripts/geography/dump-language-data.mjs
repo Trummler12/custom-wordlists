@@ -66,8 +66,8 @@ const SKRIBBL = [
 ];
 
 /** Every term for a chunk of items in the supported languages. `pref`/`official`/`short` are
- *  the flags the bucketer reads; `alias` (skos:altLabel) rides along unflagged for the report
- *  and transparency. The language sits on each term's tag. */
+ *  the flags the bucketer reads; `alias` (skos:altLabel) rides along unflagged for
+ *  transparency. The language sits on each term's tag. */
 const NAMES = (values) => `SELECT ?item ?lang ?term ?type WHERE {
   VALUES ?item { ${values} }
   { ?item rdfs:label ?term. BIND("pref" AS ?type) }

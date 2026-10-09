@@ -12,7 +12,7 @@ Contributors almost never need a 🔒 script: proposing or fixing a list goes th
 ## Contents
 
 - [🔧 Everyday](#-everyday) — npm-wired, safe any time
-- [🔒 Geography, languages & plates](#-geography-languages--plates) — the `dump` / `check:data` / `build:data` pipeline
+- [🔒 Geography, languages & plates](#-geography-languages--plates) — the `dump` / `build:data` pipeline
 - [🔒 Other topic pipelines](#-other-topic-pipelines) — elements, Pokémon
 - [🔒 One-off codemods & analysis](#-one-off-codemods--analysis)
 - [Shared library](#shared-library)
@@ -28,17 +28,16 @@ Contributors almost never need a 🔒 script: proposing or fixing a list goes th
 
 ## 🔒 Geography, languages & plates
 
-Three npm scripts drive the geography-family topics — Continents & Plates, Languages, Countries & Capitals — end to end. The raw dumps and the override / abbreviation files live under [`data-raw/geography/`](../data-raw/geography).
+Two npm scripts drive the geography-family topics — Continents & Plates, Languages, Countries & Capitals — end to end. The raw dumps and the override / abbreviation files live under [`data-raw/geography/`](../data-raw/geography).
 
 | step | npm | scripts |
 | --- | --- | --- |
 | dump | `dump` | `dump-plate-data` · `dump-language-data` · `dump-country-data` — (re)harvest the raw name, number and type files from the plate sources and Wikidata. |
-| check | `check:data` | `report-name-quality` — writes `data-raw/geography/name-quality-report.md`, a worklist of Wikidata issues to fix at the source. |
 | build | `build:data` | `build-continents` · `build-languages` · `build-country-data` — fill the topic JSONs from the dumps (`--write` to persist). |
 
 Supporting, not run directly:
 
-- `bucket-names.mjs` — the shared rule that turns one entity's flagged Wikidata names (`rdfs:label` / P1448 official / P1813 short / Wikipedia article title) into the `{ pref, short?, long?, others? }` shape. Imported by the country dump, build and report.
+- `bucket-names.mjs` — the shared rule that turns one entity's flagged Wikidata names (`rdfs:label` / P1448 official / P1813 short / Wikipedia article title) into the `{ pref, short?, long?, others? }` shape. Imported by the country dump and build.
 
 The country / capital names also draw on two raw-data files, kept as data rather than inline so they can be edited by hand:
 

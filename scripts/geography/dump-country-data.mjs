@@ -15,7 +15,7 @@
 // every language skribbl supports (base-tag filter, so zh / zh-hans / zh-cn,
 // pt / pt-br all ride in on their base). Nothing is filtered here on purpose: the build
 // decides which forms count and which languages it targets, so a missing or odd tag stays
-// visible in the raw file for report-name-quality.mjs to flag. Casing and the one-continent
+// visible in the raw file. Casing and the one-continent
 // pick are the build's job too (build-country-data.mjs), as with the elements.
 //
 // CURATED TERRITORIES TOO. The matrix territories (sovereign-territories.json, keyed by Q-id)
@@ -59,8 +59,8 @@ const SKRIBBL = [
 ];
 
 /** Every term for a chunk of items in the supported languages. `pref`/`official`/`short` are
- *  the flags the bucketer reads; `alias` (skos:altLabel) rides along unflagged for the report
- *  and transparency. The language sits on each term's tag. The article titles (`title`) come
+ *  the flags the bucketer reads; `alias` (skos:altLabel) rides along unflagged for
+ *  transparency. The language sits on each term's tag. The article titles (`title`) come
  *  from the entity API instead (articleTitles): through SPARQL they time out. */
 const NAMES = (values) => `SELECT ?item ?lang ?term ?type WHERE {
   VALUES ?item { ${values} }

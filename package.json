@@ -12,7 +12,6 @@
     "typecheck:node": "tsc -p tsconfig.node.json --noEmit",
     "test": "vitest run",
     "dump": "node scripts/geography/dump-plate-data.mjs && node scripts/geography/dump-language-data.mjs && node scripts/geography/dump-country-data.mjs",
-    "check:data": "node scripts/geography/report-name-quality.mjs",
     "build:data": "node scripts/geography/build-continents.mjs --write && node scripts/geography/build-languages.mjs --write && node scripts/geography/build-country-data.mjs --write",
     "build:index": "node scripts/build-index.mjs",
     "validate": "node scripts/validate-data.mjs",
