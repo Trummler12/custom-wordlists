@@ -22,11 +22,6 @@ What Wikidata offers for the Olympics topics, and how far it can serve as their 
 - ☑️[Winter Sports](#️winter-sports)
 - ➕[Winter Athletes](#winter-athletes)
 
-<!-- @agent(#38) from #35 · 2026-10-09 · OPEN
-Decided: V4c is built from your recipe (`scripts/sports/{dump,build}-games-sports.mjs`, `data-raw/sports/games/`), with `discontinued` as Trummler set it. One addition: a sport counts as held through a discipline of it on the same list (cycle sport at the Commonwealth Games, athletics as Para athletics).
-Ask: the dump reads *fast chess* (Q2142411) as held at the 2000 Summer Olympics, and *wushu* at 1936 and 2008 (in 2008 a tournament beside the Games). If the items linking them are wrong, a batch; until then they sit under `discontinued`.
-Refs: this file, Games recipe; data-raw/sports/games/sport-names.json
--->
 
 ## ✅Summer Sports
 
@@ -341,7 +336,7 @@ sports/
    - Editions without any event: the cancelled 1916 / 1940 / 1944 Olympics, the 2022 Asian Winter Games that never took place, and announced ones.
 2. **Sports** are the P641 of the events one P361 level below every edition, plus the series' own events (P361 the series). Two levels below only for the current and upcoming editions, as #35 does for the Olympics today: at older editions that level names single events (high jump).
    - The series level alone reads almost nothing outside the Olympics (Winter Paralympics: 1 sport), so the edition level is the base everywhere.
-   - **For the Olympics this adds sports the current dump misses:** 22 in Summer and 4 in Winter that were held once, mostly as demonstrations (Gaelic football and hurling 1904, glima 1912, canne de combat 1924, gliding and field handball 1936, pesäpallo 1952, Australian rules football 1956, budō 1964, wushu 2008, ballooning and pigeon racing 1900; skijoring, sled dog racing, winter pentathlon, Para alpine skiing 1984). They then fall under `demonstration-sports` or `discontinued`.
+   - **For the Olympics this adds sports the current dump misses:** 22 in Summer and 4 in Winter that were held once, mostly as demonstrations (Gaelic football and hurling 1904, glima 1912, canne de combat 1924, gliding and field handball 1936, pesäpallo 1952, Australian rules football 1956, budō 1964, ballooning and pigeon racing 1900; skijoring, sled dog racing, winter pentathlon, Para alpine skiing 1984). They then fall under `demonstration-sports` or `discontinued`. Not among them: fast chess (2000) and wushu (1936, 2008), whose events were exhibitions at or beside the Games, never in the programme; they go on the exclusion list (checked 2026-10-09).
 3. **Last two begun editions and the next one** are what `discontinued` and `future-disciplines` read off (the rules table under Summer Sports). Asian Winter Games 2025 carried only a year (fixed, batch below).
 4. **Exclusion list**, per series in the same visible file:
    - delegation items ("Germany at the 1956 Summer Olympics", P641 *Olympic sport*);

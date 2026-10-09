@@ -112,16 +112,16 @@ SELECT DISTINCT ?item ?links WHERE {
 **Associated List:** -  
 **Definition:** -  
 **Built by** #35 with the countries (`scripts/geography/dump-country-data.mjs`): the truthy capital (P36) of every country in the build set, then the curated territories' capitals; names as for the countries, tiers by the country's population.  
-**Tool:** `_scripts/capitals.mjs` (output `_data/capitals-run1.txt`).
+**Tool:** `_scripts/capitals.mjs` (output `_data/capitals-run1.txt`, after the fixes `capitals-run2.txt`).
 
-**Check (2026-10-09):** 197 countries; 190 with one truthy capital, 6 with two, 1 with three; none without. 205 capital items, all with coordinates.
+**Check (2026-10-09, after the fixes below):** 197 countries; 191 with one truthy capital, 5 with two, 1 with three; none without, and no truthy capital with a past end date. 205 capital items, all with coordinates.
 
 | Several truthy capitals | Values | Reading |
 | :---- | :---- | :---- |
 | South Africa | Pretoria, Cape Town, Bloemfontein | official, each with its branch (P518) |
 | Bolivia, Sri Lanka, Eswatini | La Paz / Sucre; Kotte / Colombo; Mbabane / Lobamba | official, each with its branch |
 | Palestine, Yemen | East Jerusalem / Ramallah; Sanaa / Aden | *de jure* and *de facto*, qualified (P518 / P459) |
-| **Pakistan** | Islamabad, **Rawalpindi** | an error: Rawalpindi was the interim capital from 1959 to 1967, but the statement carries no dates and both are normal rank (batch below) |
+| **Pakistan** | Islamabad, **Rawalpindi** | was an error: Rawalpindi, the interim capital from 1959 to 1967, carried no dates and both were normal rank. Fixed 2026-10-09 (batch below, Islamabad set preferred by hand); now one capital |
 
 **Rule candidate:** none needed. Several capitals are a real class (the branch or de jure / de facto split is on the statement), so the list keeps them all, as the build does.
 
@@ -133,7 +133,7 @@ SELECT DISTINCT ?item ?links WHERE {
 
 **Labels with a disambiguator** (the Managua pattern, against Help:Label): 188 labels on 88 capitals across all languages, almost all in languages the build doesn't read (Cebuano *ulohang dakbayan*, Navajo place descriptions, Chuvash, Kazakh). In the build's languages, beyond Managua (fixed 2026-10-09, re-dump due), three remain: Luxembourg in de-at / de-ch (*Luxemburg (Stadt)*), North Nicosia in pt (*Nicósia (Norte)*, ptwiki *Nicósia do Norte*), West Island in tr (*West Adası (V)*, trwiki *Batı Adası*). A batch fixes those (below). The rest needs a judgement per language and is left to those languages' editors.
 
-**Wikidata batches from this pass** (`_data/QuickStatements/`, pending import):
+**Wikidata batches from this pass** (imported and checked on the items 2026-10-09; files in `_data/QuickStatements/imported/`):
 
 | Batch | Edits | What |
 | :---- | ----: | :---- |
@@ -141,8 +141,14 @@ SELECT DISTINCT ?item ?links WHERE {
 | `2026-10-09_capitals-labels-disambiguators.txt` | 8 | the three labels above without the disambiguator; the former ones kept as aliases |
 | `2026-10-09_capitals-managua-aliases-tl.txt` | 1 | the Tagalog alias the Managua aliases batch skipped on import |
 
-**By hand after the import:** QuickStatements can't set a rank, so Islamabad's P36 statement on Pakistan (Q843) needs *preferred* rank in the item's UI, as Indonesia's Jakarta has. Only then does the truthy reading drop Rawalpindi.  
-**Rating:** clean; one modelling error on Wikidata, fixed by the batch and the rank.
+**By hand:** QuickStatements can't set a rank, so Islamabad's P36 statement on Pakistan (Q843) was set *preferred* in the item's UI (done 2026-10-09), as Indonesia's current Jakarta statement already was.  
+**Rating:** clean; the one modelling error on Wikidata is fixed. The build picks it up with the next re-dump.
+
+<!-- @agent(#38) from #35 · 2026-10-09 · OPEN
+Decided: the article-title rule is built (bucket-names.mjs: a language's Wikipedia title enters as `short` when shorter than the label, else as `others`; disambiguated titles drop out). Your capital batches and the Managua labels came in with the re-dump.
+Ask: the pt label of Hargeisa (the capital of Somaliland) reads "JHHargeisa", a typo; a one-edit batch. Note also that Oslo's de / es / fr / it labels now sit only in `mul`, which the geo dump doesn't read yet (#35's strand Z), so no batch there.
+Refs: this file, Capitals; data-raw/geography/countries/capital-names.json
+-->
 
 ## 🔵Subdivisions
 
@@ -158,6 +164,59 @@ SELECT DISTINCT ?item ?links WHERE {
 
 ## ✅Languages
 
-*Not analyzed yet.*
+**Associated List:** -  
+**Definition:** -  
+**Built by** #35: `scripts/geography/{dump-language-data,build-languages}.mjs`. **Membership:** an item whose class path (P31/P279*) reaches *modern language* (Q1288568), *modern natural language* (Q138638548) or one of the ten type classes, and that carries an ISO 639-1 code (P218) or a positive speaker count (P1098). **Types** (dead, extinct, historical, dialect, dialect group, language group, language family, constructed, fictional) are opt-in rules; a two-letter code exempts an item from the group and family types. **Tiers** by speakers, 100M down to 1k.  
+**Tool:** `_scripts/languages.mjs` (output `_data/languages-run1.txt`).
+
+**Check (2026-10-09):** 2,026 members (2,021 in #35's dump), 1,610 of them base, 304 base languages at a million speakers or more.
+
+<!-- @agent(#35) from #38 · 2026-10-09 · OPEN
+Decided: nothing yet; Trummler to confirm before you act. The language membership misses Hindi, Serbian, Bosnian, Montenegrin, Filipino, Mandarin and 12 sign languages, and the gate drops Ancient Greek, Old English, Gothic and the like (Languages => Membership by class loses major languages). Hindi is a Wikidata rank issue, fixed by hand; the rest is the class whitelist.
+Ask: consider the code-based union (today's set plus every ISO 639-1 / 639-2 item plus ISO 639-3 items with speakers; a short exclusion list for `sgn` / `art`), and extending the two-letter exemption to dialect / dialect group (Persian, Tajik, Bokmål hidden today). Re-dump after Trummler's rank fix on Hindi either way.
+Refs: this file, Languages; _scripts/languages.mjs
+-->
+
+### Membership by class loses major languages
+
+Measured against ISO 639 codes: 122 items with an ISO 639-1 or 639-2 code are outside the membership, 19 of them with 100 or more sitelinks; so are 35 items with an ISO 639-3 code and a speaker count.
+
+| Why it falls out | Languages (sitelinks) |
+| :---- | :---- |
+| typed only *standard variety* or *pluricentric language variant*, which aren't below any accepted class | Serbian (175), Bosnian (140), Montenegrin (104), Filipino (90) |
+| typed only *language* (Q34770), the top class, which isn't accepted | Mandarin (135), Kalmyk (78), Banjar (68), Sorbian (83), Central Bikol, Cham, South Estonian, … |
+| typed only *sign language* or *creole* | 12 sign languages (New Zealand, Auslan, Quebec, Dutch, Ukrainian, …), Chavacano (53) |
+| a preferred P31 hides the accepted classes (Wikidata issue, below) | **Hindi** (224) |
+| in a type class, but with neither an ISO 639-1 code nor a speaker count: the gate drops them | Ancient Greek (156), Coptic, Gothic, Old English, Egyptian, Akkadian, Old Norse, Sumerian, Hittite, Ge'ez, Phoenician, Middle English, Old French, Elamite (each 64 to 112) |
+| collective codes for families (no loss: they would only feed the family type) | Romance, Germanic, Semitic, Celtic, Indo-Aryan, Iranian, Bantu, Mayan, … |
+
+**Cleaner membership** (proposal for #35): keep today's set and add every item with an ISO 639-1 or 639-2 code, and every item with an ISO 639-3 code and a positive speaker count. ISO 639 codes name languages, macrolanguages and collectives, never a class decision, so no further class has to be whitelisted. The classes keep their job of typing: Serbian, Filipino, Mandarin and the sign languages land in the base, Ancient Greek and the others under their dead / historical type.
+
+- **Exclusion list** for collective codes that name a kind of language, not a language: *sign language* (Q34228, `sgn`), *constructed language* (Q33215, `art`), and the other three items typed *type of language*.
+- **New namesake pairs** to expect: Mandarin beside Standard Chinese, Moldovan (typed only *register*) beside Romanian.
+
+### Several items for one language
+
+Wikidata keeps macrolanguage, individual language and standard apart. All of them are real items, and their names differ, so the build's namesake step doesn't merge them. The base shows them side by side:
+
+| Language | Items in the base |
+| :---- | :---- |
+| Chinese | Chinese (zh, 1.3G), Standard Chinese (cmn, 897M); Mandarin would join |
+| Arabic | Arabic (ar, 422M), Standard Arabic (arb, 335M), Modern Standard Arabic (no code) |
+| Indonesian | Indonesian (id, 199M), Standard Indonesian (no code, 270M) |
+| Persian | New Persian (no code, 96M) in the base; **Persian (fa) itself is hidden**, typed *dialect group* |
+| Hindustani | Hindustani (no code, 490M), Urdu (ur); Hindi missing (above) |
+| Levantine Arabic | Levantine Arabic and North Levantine Arabic, both with `apc` (ISO 639-3 merged South Levantine into `apc`; the older item kept the code) |
+
+- **The two-letter exemption** covers only the group and family types. Six items with an ISO 639-1 code are hidden as *dialect* or *dialect group*: Persian (70M), Tajik (14M), Bokmål (4M), Ndonga, Kwanyama, and Iron Ossetic (`os`, which ISO 639-3 now names *Iron Ossetic*, so the code rightly sits on the dialect item). Extending the exemption to dialect and dialect group would put them in the base, Persian above all.
+- **Base entries without any ISO code:** 23, five of them at a million speakers or more (Hindustani, Standard Indonesian, New Persian, Cantonese, Hindko). A rule `uncoded-varieties` (omittable) would take the standard and register duplicates out of the default view without dropping them. It is a candidate only; whether the duplicates are ballast is Trummler's call.
+
+### Wikidata issue: Hindi
+
+Hindi (Q1568) carries *instance of: register* (Q286576) with **preferred** rank and no reference, beside *language* and *modern language* (normal rank, referenced). A preferred rank on one class hides the others from the truthy reading, so every query by class misses Hindi. The classes aren't alternatives, so the preferred rank has no basis (Help:Ranking; a bot already removed another unnecessary preferred rank on Hindi in 2025).  
+**Fix by hand** (QuickStatements can't set ranks): set that statement's rank to normal.  
+Other ISO 639-1 items with a preferred P31 (Turkish, Pali, Sanskrit) keep an accepted class in the truthy reading, so they are harmless.
+
+**Rating:** usable, but the membership query misses languages it should hold; the code-based union above fixes that without hand-kept QIDs.
 
 ## [to Navigation](#navigation)

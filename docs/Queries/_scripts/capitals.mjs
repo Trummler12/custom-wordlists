@@ -33,7 +33,10 @@ for (const n of Object.keys(by).filter((n) => n !== "1"))
   for (const c of by[n]) console.log(`  ${L[c]} (${c}): ${[...truthy.get(c)].map((q) => `${L[q]} (${q})`).join(", ") || "-"}`);
 
 const now = new Date().toISOString();
-const endedTruthy = stmts.filter((r) => truthy.get(r.c).has(r.cap) && r.end && r.end < now);
+// By the statement's own rank: a capital held twice (Jakarta before 1946 and since 1950)
+// would otherwise count its ended statement as truthy.
+const isTruthy = (r) => rank(r) === (best[r.c].includes("Preferred") ? "Preferred" : "Normal");
+const endedTruthy = stmts.filter((r) => isTruthy(r) && r.end && r.end < now);
 console.log(`truthy statements with a past end date: ${endedTruthy.length}`);
 for (const r of endedTruthy) console.log(`  ${L[r.c]}: ${L[r.cap]} (${r.cap}) ended ${r.end.slice(0, 10)}, rank ${rank(r)}`);
 const roles = stmts.filter((r) => r.role && truthy.get(r.c).has(r.cap));
