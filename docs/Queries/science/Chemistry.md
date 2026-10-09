@@ -55,7 +55,7 @@ SELECT DISTINCT ?item ?itemLabel WHERE {
 - **Label against article title:** 88 differ beyond case. Most are a regional standard, not an error: pt labels follow European Portuguese (*arsénio*), ptwiki Brazilian (*Arsênio*); Italian *xeno* and Dutch *titaan* / *uraan* are the standard names beside their articles' *Xenon* / *Titanium* / *Uranium*. Tagalog has no settled chemical names: about 40 tl labels and tlwiki titles disagree, often an English word against a Tagalog form. That needs a Tagalog speaker, not a batch.
 - **Errors**, batched: the placeholder names IUPAC replaced in 2016 still stand as labels (tr *ununtriyum* and *ununseptiyum*, da *ununpentium*, tl *Ununquadium* and *ununoctium*); the nl label of zirconium is *zirkoon*, the mineral zircon; fr *prométhéum* is the old spelling of *prométhium*.
 
-**Wikidata batch from this pass** (awaiting import; file in `_data/QuickStatements/`):
+**Wikidata batch from this pass** (imported and checked on the items 2026-10-09; file in `_data/QuickStatements/imported/`):
 
 | Batch | Edits | What |
 | :---- | ----: | :---- |

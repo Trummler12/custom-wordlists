@@ -215,7 +215,7 @@ The direction is right everywhere, but from generation 5 on most species have 2 
 
 **Answer to the question:** the explicit list of sufficiently official languages is exactly the build's: en, de, fr, es (and es-419), it, ja (and the derived ja-Latn), ko, zh-Hans, zh-Hant. Every other language shows the English name, which is already what an absent key means. No threshold is needed, and Wikidata's transliterations stay out.
 
-**Wikidata batch from this pass** (awaiting import; file in `_data/QuickStatements/`):
+**Wikidata batch from this pass** (imported and checked on the items 2026-10-09; file in `_data/QuickStatements/imported/`):
 
 | Batch | Edits | What |
 | :---- | ----: | :---- |
