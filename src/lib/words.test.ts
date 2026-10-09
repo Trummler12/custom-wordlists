@@ -328,9 +328,11 @@ describe("unknownLangs / isUnknownIn", () => {
     expect(isUnknownIn(filled, "ko")).toBe(true);
   });
 
-  it("never counts English — it is the base every entry has", () => {
-    expect(isUnknownIn({ en: "x", "?": ["en"] }, "en")).toBe(false);
-    expect(isUnknownIn({ en: "x", "?": ["en"] }, "en-GB")).toBe(false);
+  it("counts English despite its stand-in, which every entry must carry", () => {
+    expect(isUnknownIn({ en: "x", "?": ["en"] }, "en")).toBe(true);
+    expect(isUnknownIn({ en: "x", "?": ["en"] }, "en-GB")).toBe(true);
+    expect(isUnknownIn({ en: "x", "en-GB": "y", "?": ["en"] }, "en-GB")).toBe(false);
+    expect(isUnknownIn({ en: "x", "?": ["de"] }, "en")).toBe(false);
   });
 
   it("asks a variant tag about the language it varies from", () => {

@@ -96,8 +96,9 @@ export function unknownLangs(e: WordEntry): readonly string[] {
 
 /** Whether the list has no name for this entry in `lang`. An own key wins: a name
  *  filled in by hand outranks a gap the bulk source reported, so correcting one
- *  entry needs no edit to the `?` beside it. English never counts as unknown — it
- *  is the base every entry has.
+ *  entry needs no edit to the `?` beside it. Except in English: every entry needs an
+ *  `en`, so one the source has no English name for carries a stand-in there, and
+ *  only the `?` tells it apart.
  *
  *  The two halves ask about different things, which is why one takes the whole tag
  *  and the other only its language. Having a name is a property of the *language*:
@@ -109,8 +110,8 @@ export function unknownLangs(e: WordEntry): readonly string[] {
 export function isUnknownIn(e: WordEntry, lang: string): boolean {
   if (typeof e === "string") return false;
   const base = baseTag(lang);
-  if (base === "en") return false;
-  return (e as Record<string, unknown>)[lang] === undefined && unknownLangs(e).includes(base);
+  const own = lang !== "en" && (e as Record<string, unknown>)[lang] !== undefined;
+  return !own && unknownLangs(e).includes(base);
 }
 
 /** Resolve an entry to `lang`. Two equivalent shapes are accepted: the preferred

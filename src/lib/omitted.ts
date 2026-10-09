@@ -288,7 +288,6 @@ export function visibleGroup(
  *  its 0-or-1, so the caller needs no special case either. */
 export function unknownByTier(g: Group, lang: string): number[] {
   const lists = g.tiers ?? [g.words ?? []];
-  if (lang === "en") return lists.map(() => 0);
   return lists.map((list) => list.filter((e) => isUnknownIn(e, lang)).length);
 }
 

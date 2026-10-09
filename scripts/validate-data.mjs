@@ -359,7 +359,7 @@ async function main() {
     for (const group of groupsOf(topic)) {
       for (const e of [...(group.words ?? []), ...(group.tiers ?? []).flat()]) {
         for (const l of unknownLangs(e)) {
-          if (e[l] !== undefined) {
+          if (l !== "en" && e[l] !== undefined) {
             warnings.push(`${rel}: "${entryKey(e)}" lists "${l}" as unknown but has a name for it`);
           }
         }

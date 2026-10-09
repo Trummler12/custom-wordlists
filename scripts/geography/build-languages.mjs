@@ -234,16 +234,17 @@ async function main() {
    *  a Q-item with no name in any supported language — it cannot be a word, so it drops.
    *  Where a name exists but not an English one (a handful of obscure, default-hidden
    *  dialects), the first available language's name stands in, so the list never shows a
-   *  bare Q-id. */
+   *  bare Q-id, and `?` still lists `en`: the stand-in is no English name. */
   const entryOf = (qid) => {
     const b = bucketWiki(nameData[qid]?.names ?? {});
+    const unknown = [];
     if (b.en === undefined) {
       const firstLang = NAME_LANGS.find((l) => b[l] !== undefined);
       if (firstLang === undefined) return null;
       b.en = b[firstLang];
+      unknown.push("en");
     }
     const map = { en: b.en };
-    const unknown = [];
     for (const lang of NAME_LANGS) {
       if (lang === "en") continue;
       const v = b[lang];
