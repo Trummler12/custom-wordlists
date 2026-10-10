@@ -1,0 +1,32 @@
+{
+  "title": {
+    "en": "Commonwealth Games",
+    "de": "Commonwealth Games",
+    "es": "Juegos de la Mancomunidad",
+    "fr": "Jeux du Commonwealth",
+    "it": "Giochi del Commonwealth",
+    "ja": "コモンウェルスゲームズ",
+    "ko": "코먼웰스 게임",
+    "zh-Hans": "英联邦运动会",
+    "zh-Hant": "大英國協運動會",
+    "pt": "Jogos da Commonwealth",
+    "ru": "Игры Содружества",
+    "tr": "İngiliz Milletler Topluluğu Oyunları",
+    "pl": "Igrzyska Wspólnoty Narodów",
+    "nl": "Gemenebestspelen",
+    "cs": "Hry Commonwealthu",
+    "da": "Commonwealth Games",
+    "et": "Rahvaste Ühenduse mängud",
+    "fi": "Kansainyhteisön kisat",
+    "el": "Αγώνες της Κοινοπολιτείας",
+    "he": "משחקי חבר העמים הבריטי",
+    "hu": "Nemzetközösségi játékok",
+    "lv": "Nāciju Sadraudzības spēles",
+    "mk": "Комонвелтски игри",
+    "no": "Samveldelekene",
+    "ro": "Jocurile Federatie",
+    "sr": "Игре Комонвелта",
+    "sv": "Samväldesspelen"
+  },
+  "order": 4
+}

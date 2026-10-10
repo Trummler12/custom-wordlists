@@ -1,0 +1,105 @@
+{
+  "id": "olympia-winter-sports",
+  "title": {"en":"Sports","de":"Sportarten","zh-Hans":"体育","zh-Hant":"體育","es":"Deportes","it":"Sport","ja":"スポーツ","ko":"스포츠","pt":"Desporto","ru":"Спорт","tr":"Spor","pl":"Sport","nl":"Sport","bg":"Спорт","cs":"Sport","da":"Sport","et":"Sport","fi":"Urheilu","el":"Αθλητισμός","he":"ספורט","hu":"Sport","lv":"Sports","mk":"Спорт","no":"Sport","ro":"Sport","sr":"Спорт","sk":"Šport","sv":"Sport","tl":"Palakasan"},
+  "icon": "🏟️",
+  "description": "Every sport held at the Winter Olympic Games: current, past and announced. Fame tiers by how many Wikipedias have an article on the sport (tier 0 = most widely covered).",
+  "generated": "fully",
+  "dataOrigin": "Wikidata",
+  "filePaths": {
+    "scripts/sports/": ["dump-games-sports.mjs","build-games-sports.mjs"],
+    "data-raw/sports/": "games/"
+  },
+  "languages": ["en","de","es","fr","it","ja","ko","zh-Hans","zh-Hant","pt","ru","tr","pl","nl","bg","cs","da","et","fi","el","he","hu","lv","mk","no","ro","sr","sk","sv","tl"],
+  "incompleteTopic": true,
+  "sources": [
+    "Sports & names: Wikidata, the sport (P641) of every event that is part of an edition of the Winter Olympic Games — https://www.wikidata.org/wiki/Q82414 (see scripts/sports/dump-games-sports.mjs)",
+    "Tiers: how many language editions of Wikipedia have an article on the sport, from its Wikidata sitelinks — https://www.wikidata.org/wiki/Help:Sitelinks"
+  ],
+  "lastUpdated": "2026-10-09",
+  "lastChecked": "2026-10-09",
+  "omitted": [
+    {
+      "id": "discontinued",
+      "match": ["Military patrol","Sled dog racing"],
+      "count": true,
+      "icon": "sport-type",
+      "reason": "games.discontinued"
+    },
+    {
+      "id": "demonstration-sports",
+      "match": ["Bandy","Icestock sport","Para alpine skiing","Skijoring","Speed skiing","Winter pentathlon"],
+      "count": true,
+      "icon": "sport-type",
+      "reason": "games.demonstrationSports"
+    }
+  ],
+  "omittable": [
+    {
+      "id": "child-discipline",
+      "match": ["Cross-country skiing","Ice dance","Nordic combined","Pair skating","Short-track speed skating","Ski jumping"],
+      "count": true,
+      "icon": "sport-type",
+      "reason": "games.childDiscipline"
+    }
+  ],
+  "tiers": [
+    [
+      {"en":"Ice hockey","de":"Eishockey","es":"Hockey sobre hielo","fr":"Hockey sur glace","it":"Hockey su ghiaccio","ja":"アイスホッケー","ko":"아이스하키","zh-Hans":"冰球","zh-Hant":"冰球","pt":"Hóquei no gelo","ru":"Хоккей с шайбой","tr":"Buz hokeyi","pl":"Hokej na lodzie","nl":"Ijshockey","bg":"Хокей на лед","cs":"Lední hokej","da":"Ishockey","et":"Jäähoki","fi":"Jääkiekko","el":"Χόκεϊ επί πάγου","he":"הוקי קרח","hu":"Jégkorong","lv":"Hokejs","mk":"Хокеј на мраз","no":"Ishockey","ro":"Hochei pe gheață","sr":"Хокеј на леду","sk":"Ľadový hokej","sv":"Ishockey","?":["tl"]}
+    ],
+
+    [
+      {"en":"Curling","ja":"カーリング","ko":"컬링","zh-Hans":"冰壶","zh-Hant":"冰壺","ru":"Кёрлинг","tr":"Körling","bg":"Кърлинг","et":"Jääkeegel","el":"Κέρλινγκ","he":"קרלינג","lv":"Kērlings","mk":"Карлинг","sr":"Керлинг","?":["tl"]}
+    ],
+
+    [
+      {"en":"Figure skating","de":"Eiskunstlauf","es":"Patinaje artístico sobre hielo","fr":"Patinage artistique","it":"Pattinaggio di figura","ja":"フィギュアスケート","ko":"피겨스케이팅","zh-Hans":"花样滑冰","zh-Hant":"花樣滑冰","pt":"Patinagem artística no gelo","ru":"Фигурное катание","tr":"Artistik buz pateni","pl":"Łyżwiarstwo figurowe","nl":"Kunstschaatsen","bg":"Фигурно пързаляне","cs":"Krasobruslení","da":"Kunstskøjteløb","et":"Iluuisutamine","fi":"Taitoluistelu","el":"Καλλιτεχνικό πατινάζ","he":"החלקה אמנותית","hu":"Műkorcsolya","lv":"Daiļslidošana","mk":"Уметничко лизгање","no":"Kunstløp","ro":"Patinaj artistic","sr":"Уметничко клизање","sk":"Krasokorčuľovanie","sv":"Konståkning","tl":"Masining na paglalayag sa yelo"},
+      {"en":"Biathlon","es":"Biatlón","ja":"バイアスロン","ko":"바이애슬론","zh-Hans":"冬季两项","zh-Hant":"冬季兩項","pt":"Biatlo","ru":"Биатлон","tr":"Biatlon","nl":"Biatlon","bg":"Биатлон","cs":"Biatlon","da":"Skiskydning","et":"Laskesuusatamine","fi":"Ampumahiihto","el":"Δίαθλο","he":"ביאתלון","hu":"Biatlon","lv":"Biatlons","mk":"Биатлон","no":"Skiskyting","ro":"Biatlon","sr":"Биатлон","sk":"Biatlon","sv":"Skidskytte","?":["tl"]},
+      {"en":"Bobsleigh","de":"Bobsport","it":"Bob","ja":"ボブスレー","ko":"봅슬레이","zh-Hans":"有舵雪橇","zh-Hant":"有舵雪橇","ru":"Бобслей","tr":"Bobsled","pl":"Bobsleje","nl":"Bobsleeën","bg":"Бобслей","cs":"Bobování","da":"Bobslæde","et":"Bobisõit","fi":"Rattikelkkailu","el":"Αγωνιστικό έλκηθρο","he":"מזחלות","hu":"Bob","lv":"Bobslejs","mk":"Брб","ro":"Bob","sr":"Боб","sk":"Boby","sv":"Bob","tl":"Bobsley"},
+      {"en":"Snowboarding","de":"Snowboarden","fr":"Snowboard","it":"Snowboard","ja":"スノーボード","ko":"스노보드","zh-Hans":"单板滑雪","zh-Hant":"單板滑雪","pt":"Snowboard","ru":"Сноуборд","nl":"Snowboarden","bg":"Сноубординг","et":"Lumelauasõit","fi":"Lumilautailu","el":"Χιονοσανίδα","he":"גלישת שלג","hu":"Hódeszka","lv":"Snovbords","mk":"Скијање на даска","no":"Snøbrettkjøring","ro":"Snow-boarding","sr":"Сноубординг","sk":"Snoubording","sv":"Snowboard","tl":"Snowboard"},
+      {"en":"Alpine skiing","de":"Ski Alpin","es":"Esquí alpino","fr":"Ski alpin","it":"Sci alpino","ja":"アルペンスキー","ko":"알파인 스키","zh-Hans":"高山滑雪","zh-Hant":"高山滑雪","pt":"Esqui alpino","ru":"Горнолыжный спорт","tr":"Alp disiplini","pl":"Narciarstwo alpejskie","nl":"Alpineskiën","bg":"Ски алпийски дисциплини","cs":"Alpské lyžování","da":"Alpine discipliner","et":"Mäesuusatamine","fi":"Alppihiihto","el":"Αλπικό σκι","he":"סקי אלפיני","hu":"Alpesisí","lv":"Kalnu slēpošana","mk":"Алпско скијање","no":"Alpint","ro":"Schi alpin","sr":"Алпско скијање","sv":"Alpin skidsport","?":["sk","tl"]},
+      {"en":"Ski jumping","de":"Skispringen","es":"Salto de esquí","fr":"Saut à ski","it":"Salto con gli sci","ja":"スキージャンプ","ko":"스키점프","zh-Hans":"跳台滑雪","zh-Hant":"跳台滑雪","pt":"Salto de esqui","ru":"Прыжки на лыжах с трамплина","tr":"Kayakla atlama","pl":"Skoki narciarskie","nl":"Schansspringen","bg":"Ски скокове","cs":"Skoky na lyžích","da":"Skihop","et":"Suusahüpped","fi":"Mäkihyppy","el":"Άλμα με σκι","he":"קפיצות סקי","hu":"Síugrás","lv":"Tramplīnlēkšana","mk":"Скијачки скокови","no":"Skihopping","ro":"Sărituri cu schiurile","sr":"Скијашки скокови","sk":"Skoky na lyžiach","sv":"Backhoppning","?":["tl"]},
+      {"en":"Bandy","ja":"バンディ","ko":"밴디","zh-Hans":"班迪球","zh-Hant":"班迪球","ru":"Хоккей с мячом","bg":"Хокей с топка","et":"Jääpall","fi":"Jääpallo","el":"Μπάντι","he":"בנדי","hu":"Jéglabda","lv":"Bendijs","mk":"Бенди","sr":"Bendi","sk":"Bandyhokej","?":["tl"]},
+      {"en":"Cross-country skiing","de":"Skilanglauf","es":"Esquí de fondo","fr":"Ski de fond","it":"Sci di fondo","ja":"クロスカントリースキー","ko":"크로스컨트리 스키","zh-Hans":"越野滑雪","zh-Hant":"越野滑雪","pt":"Esqui de fundo","ru":"Лыжные гонки","tr":"Kayaklı koşu","pl":"Biegi narciarskie","nl":"Langlaufen","bg":"Ски бягане","cs":"Běh na lyžích","da":"Langrend","et":"Murdmaasuusatamine","fi":"Maastohiihto","el":"Χιονοδρομία αντοχής","he":"סקי למרחקים","hu":"Sífutás","lv":"Distanču slēpošana","mk":"Скијачко трчање","no":"Langrenn","ro":"Schi fond","sr":"Скијашко трчање","sk":"Bežecké lyžovanie","sv":"Längdåkning","?":["tl"]},
+      {"en":"Speed skating","de":"Eisschnelllauf","es":"Patinaje de velocidad","fr":"Patinage de vitesse","it":"Pattinaggio di velocità su ghiaccio","ja":"スピードスケート","ko":"스피드스케이팅","zh-Hans":"速度滑冰","zh-Hant":"競速滑冰","pt":"Patinação de velocidade no gelo","ru":"Конькобежный спорт","tr":"Sürat pateni","pl":"Łyżwiarstwo szybkie","nl":"Wedstrijdschaatsen","bg":"Бързо пързаляне с кънки","cs":"Rychlobruslení","da":"Hurtigløb på skøjter","et":"Kiiruisutamine","fi":"Pikaluistelu","el":"Παγοδρομία ταχύτητας","he":"החלקה מהירה על הקרח","hu":"Gyorskorcsolya","lv":"Ātrslidošana","mk":"Брзо лизгање","no":"Hurtigløp på skøyter","ro":"Patinaj viteză","sr":"Брзо клизање","sk":"Rýchlokorčuľovanie","sv":"Hastighetsåkning på skridskor","?":["tl"]}
+    ],
+
+    [
+      {"en":"Skeleton","ja":"スケルトン","ko":"스켈레톤","zh-Hans":"俯式冰橇","zh-Hant":"俯式冰橇","ru":"Скелетон","bg":"Скелетон","el":"Σκέλετον","he":"סקלטון","hu":"Szkeleton","lv":"Skeletons","mk":"Скелетон","sr":"Скелетон","sk":"Skelton","?":["tl"]},
+      {"en":"Luge","de":"Rennrodeln","fr":"Luge de course","it":"Slittino","ja":"リュージュ","ko":"루지","zh-Hans":"无舵雪橇","zh-Hant":"無舵雪橇","ru":"Санный спорт","tr":"Kızak","pl":"Saneczkarstwo","nl":"Rodelen","bg":"Спортни шейни","cs":"Saně","da":"Kælk","et":"Kelgutamine","fi":"Ohjaskelkkailu","el":"Λουτζ","he":"לוז'","hu":"Szánkó","lv":"Kamaniņu braukšana","mk":"Санкање","no":"Aking","ro":"Sanie","sr":"Санкање","sv":"Rodel","?":["sk"]},
+      {"en":"Short-track speed skating","de":"Shorttrack","es":"Patinaje de velocidad sobre pista corta","fr":"Patinage de vitesse sur piste courte","it":"Short track","ja":"ショートトラックスピードスケート","ko":"쇼트트랙","zh-Hans":"短道速滑","zh-Hant":"短道競速滑冰","pt":"Patinagem de velocidade de pista curta","ru":"Шорт-трек","tr":"Kısa kulvar sürat pateni","pl":"Short track","nl":"Shorttrack","bg":"Шорттрек","cs":"Short track","da":"Kortbaneløb på skøjter","et":"Lühirajauisutamine","fi":"Kaukalopikaluistelu","el":"Πατινάζ ταχύτητας μικρής πίστας","he":"החלקה מהירה על הקרח במסלול קצר","hu":"Rövidpályás gyorskorcsolya","lv":"Šorttreks","mk":"Брзо лизгање на кратки патеки","no":"Kortbaneløp","ro":"Patinaj viteză pe pistă scurtă","sr":"Брзо клизање на кратким стазама","sk":"Šortrek","sv":"Short track","?":["tl"]},
+      {"en":"Nordic combined","de":"Nordische Kombination","es":"Combinada nórdica","fr":"Combiné nordique","it":"Combinata nordica","ja":"ノルディック複合","ko":"노르딕 복합","zh-Hans":"北欧两项","zh-Hant":"北歐混合式滑雪","pt":"Combinado nórdico","ru":"Лыжное двоеборье","tr":"Kuzey kombine","pl":"Kombinacja norweska","nl":"Noordse combinatie","bg":"Северна комбинация","cs":"Severská kombinace","da":"Nordisk kombineret","et":"Kahevõistlus","fi":"Yhdistetty","el":"Βορινό σύνθετο","he":"סקי נורדי משולב","hu":"Északi összetett","lv":"Ziemeļu divcīņa","mk":"Нордиска комбинација","no":"Kombinert","ro":"Combinata nordică","sr":"Нордијска комбинација","sk":"Severská kombinace","sv":"Nordisk kombination","?":["tl"]},
+      {"en":"Freestyle skiing","de":"Freestyle-Skiing","es":"Esquí acrobático","fr":"Ski acrobatique","it":"Sci acrobatico","ja":"フリースタイルスキー","ko":"프리스타일 스키","zh-Hans":"自由式滑雪","zh-Hant":"自由式滑雪","pt":"Esqui estilo livre","ru":"Фристайл","tr":"Serbest stil kayak","pl":"Narciarstwo dowolne","nl":"Freestyleskiën","bg":"Ски свободен стил","cs":"Akrobatické lyžování","da":"Freestyleskiløb","et":"Vigursuusatamine","fi":"Freestylehiihto","el":"Ελεύθερο σκι","he":"סקי בסגנון חופשי","hu":"Síakrobatika","lv":"Frīstails","mk":"Слободно скијање","no":"Freestylekjøring","ro":"Schi acrobatic","sr":"Скијање слободним стилом","sv":"Freestyle","?":["sk","tl"]},
+      {"en":"Nordic skiing","de":"Ski Nordisch","es":"Esquí nórdico","fr":"Ski nordique","it":"Sci nordico","ja":"ノルディック・スキー","ko":"노르딕 스키","zh-Hans":"北欧滑雪","zh-Hant":"北歐滑雪","pt":"Esqui nórdico","ru":"Северные дисциплины","tr":"Kuzey disiplini","pl":"Narciarstwo klasyczne","nl":"Noords skiën","bg":"Ски северни дисциплини","cs":"Klasické lyžování","da":"Nordiske discipliner","et":"Põhja suusaalad","fi":"Pohjoismaiset hiihtolajit","el":"Βορινό σκι","he":"סקי נורדי","hu":"Északisí","mk":"Нордиско скијање","no":"Nordiske grener","ro":"Schi nordic","sr":"Нордијско скијање","sv":"Nordisk skidsport","?":["lv","sk","tl"]}
+    ],
+
+    [
+      {"en":"Ice dance","de":"Eistanz","es":"Danza sobre hielo","fr":"Danse sur glace","it":"Danza su ghiaccio","ja":"アイスダンス","ko":"아이스 댄싱","zh-Hans":"冰舞","zh-Hant":"冰舞","pt":"Dança no gelo","ru":"Спортивные танцы на льду","tr":"Buz dansı","pl":"Pary taneczne (łyżwiarstwo)","cs":"Tance na ledě","da":"Isdans","et":"Jäätants","fi":"Jäätanssi","el":"Χορός στον πάγο","he":"ריקוד קרח","hu":"Jégtánc","mk":"Лизгачко танцување","no":"Isdans","sr":"Плес на леду","sk":"Tance na ľade","sv":"Isdans","tl":"Pagsasayaw sa yelo","?":["nl","bg","lv","ro"]},
+      {"en":"Ski mountaineering","de":"Skibergsteigen","es":"Esquí de travesía","fr":"Ski de randonnée","it":"Sci alpinismo","ja":"山岳スキー","ko":"스키 등산","zh-Hans":"登山滑雪","zh-Hant":"登山滑雪","pt":"Esqui-alpinismo","ru":"Ски-альпинизм","pl":"Skialpinizm","nl":"Toerskiën","bg":"Ски алпинизъм","cs":"Skialpinismus","da":"Skimountaineering","et":"Suusamägironimine","fi":"Vuorihiihto","he":"סקי הרים","hu":"Túrasízés","lv":"Slēpošanas alpīnisms","mk":"Скијачко планинарство","no":"Randonnée","ro":"Schi alpinism","sk":"Skialpinizmus","sv":"Skidalpinism","?":["tr","el","sr","tl"]},
+      {"en":"Icestock sport","de":"Stockschießen","es":"Ice stock sport","fr":"Eisstock","it":"Stock sport","ja":"アイス・ストック・スポーツ","ko":"바이에른 컬링","zh-Hans":"冰上滑盤","pt":"Ice stock sport","ru":"Айсшток","pl":"Ice stock","nl":"Ijsstokschieten","cs":"Metaná","da":"Isstok","fi":"Jääkolkka","no":"Isstock","sv":"Isstock","?":["zh-Hant","tr","bg","et","el","he","hu","lv","mk","ro","sr","sk","tl"]},
+      {"en":"Speed skiing","de":"Geschwindigkeitsskifahren","es":"Esquí de velocidad","fr":"Ski de vitesse","it":"Sci di velocità","ja":"スピードスキー","ko":"스피드 스키","pt":"Esqui de velocidade","ru":"Cоревнования на скорость","tr":"Hızlı kayak","pl":"Narciarstwo szybkie","nl":"Speedskiën","cs":"Rychlostní lyžování","fi":"Nopeuslasku","he":"סקי מהירות","mk":"Брзо скијање","no":"Speedskiing","sr":"Брзо скијање","sv":"Speedski","?":["zh-Hans","zh-Hant","bg","et","el","hu","lv","ro","sk","tl"]},
+      {"en":"Military patrol","de":"Militärpatrouille","es":"Patrulla militar","fr":"Patrouille militaire","it":"Pattuglia militare","ja":"ミリタリーパトロール","ko":"밀리터리 패트롤","pt":"Patrulha militar","ru":"Соревнования военных патрулей","tr":"Askerî devriye","pl":"Patrol wojskowy","cs":"Závod vojenských hlídek","da":"Militært patruljeløb","fi":"Sotilaspartiohiihto","mk":"Воена извидница","no":"Militært patruljeløp","sv":"Militärpatrull","?":["zh-Hans","zh-Hant","nl","bg","et","el","he","lv","ro","sr","sk","tl"]}
+    ],
+
+    [
+      {"en":"Skijoring","de":"Skijöring","es":"Skijöring","fr":"Ski joëring","it":"Skijöring","ja":"スキージョアリング","pt":"Skijöring","ru":"Скиджоринг","pl":"Skijöring","nl":"Skijøring","cs":"Skijöring","da":"Skijøring","hu":"Síjöring","lv":"Skijorings","sk":"Skijöring","sv":"Tolkning","?":["ko","zh-Hans","zh-Hant","tr","bg","et","fi","el","he","mk","no","ro","sr","tl"]},
+      {"en":"Pair skating","de":"Paarlauf","fr":"Patinage en couple","it":"Pattinaggio artistico su ghiaccio a coppie","ja":"ペアスケーティング","ko":"페어 스케이팅","zh-Hans":"双人滑","zh-Hant":"雙人滑","pt":"Patinação de duplas","ru":"Парное фигурное катание","pl":"Pary sportowe","nl":"Paarrijden","cs":"Sportovní dvojice","et":"Paarissõit","fi":"Pariluistelu","hu":"Páros műkorcsolya","lv":"Pāru slidošana","no":"Parløp","ro":"Patinaj artistic pe perechi","sr":"Спортски парови","sk":"Športové dvojice","sv":"Paråkning","?":["es","tr","bg","da","el","he","mk","tl"]},
+      {"en":"Sled dog racing","de":"Schlittenhundesport","es":"Carrera de trineo con perros","fr":"Course de chiens de traîneaux","it":"Corsa con i cani da slitta","ja":"犬ぞりレース","ko":"개썰매 경주","zh-Hans":"狗拉雪橇比賽","ru":"Гонка на собачьих упряжках","tr":"Kızaklı köpek yarışı","pl":"Wyścig psich zaprzęgów","nl":"Sledehondenrace","cs":"Závody psích spřežení","da":"Hundeslædeløb","fi":"Valjakkourheilu","he":"מרוץ מזחלות","hu":"Kutyaszánhúzás","mk":"Трка на кучешки санки","no":"Sledehundkjøring","ro":"Cursă cu sănii trase de câini","sk":"Závody psích záprahov","sv":"Slädhundskapplöpning","?":["zh-Hant","pt","bg","et","el","lv","sr","tl"]},
+      {"en":"Para alpine skiing","de":"Krückenskifahren","es":"Esquí alpino adaptado","fr":"Ski alpin handisport","it":"Sci alpino paralimpico","ja":"パラリンピックのアルペンスキー","zh-Hans":"残疾人高山滑雪","pt":"Esqui alpino paralímpico","ru":"Пара-горнолыжный спорт","nl":"Alpineskiën op de Paralympische Winterspelen","et":"Paramäesuusatamine","fi":"Para-alppihiihto","he":"סקי אלפיני פאראלימפי","no":"Paraalpint","sv":"Alpin paraskidåkning","?":["ko","zh-Hant","tr","pl","bg","cs","da","el","hu","lv","mk","ro","sr","sk","tl"]},
+      {"en":"Winter pentathlon","es":"Pentatlón de invierno","fr":"Pentathlon d'hiver","ru":"Зимнее пятиборье","pl":"Pięciobój zimowy","?":["de","it","ja","ko","zh-Hans","zh-Hant","pt","tr","nl","bg","cs","da","et","fi","el","he","hu","lv","mk","no","ro","sr","sk","sv","tl"]}
+    ]
+  ],
+  "tierConditions": [
+    "100",
+    "80",
+    "60",
+    "40",
+    "20",
+    ">0"
+  ],
+  "rulerTooltip": {
+    "text": "ruler.sports.text",
+    "empty": "ruler.sports.empty"
+  },
+  "inheritsUpwards": 2,
+  "skipInherit": 1
+}

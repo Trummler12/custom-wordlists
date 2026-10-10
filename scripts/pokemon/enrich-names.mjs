@@ -192,7 +192,10 @@ async function main() {
   }
 
   group.words = [...enriched, ...added];
-  topic.languages = [...new Set(Object.values(TAG))].sort();
+  // `ja-Latn` isn't in the dumps for these lists: the app derives it from the kana
+  // (generatedRomaji), so a list that offers it keeps offering it.
+  const derived = (topic.languages ?? []).filter((l) => l === "ja-Latn");
+  topic.languages = [...new Set([...Object.values(TAG), ...derived])].sort();
   topic.sources = [...new Set([...[topic.sources ?? []].flat(), "Names: https://pokeapi.co"])];
   if (topic.sources.length === 1) topic.sources = topic.sources[0];
 
@@ -208,6 +211,17 @@ async function main() {
     const shown = tag === "en" ? all.length : named;
     console.log(`  ${tag.padEnd(8)} ${String(shown).padStart(6)} ${String(gaps).padStart(8)}`);
   }
+
+  // The names are this script's, and so are the entries `--add-new` brings in; the
+  // tiers stay editorial.
+  Object.assign(topic, {
+    generated: ["entries", "names"],
+    dataOrigin: "PokéAPI",
+    filePaths: {
+      "scripts/pokemon/": ["dump-names.mjs", "enrich-names.mjs"],
+      "data-raw/gaming/pokemon/": `${list}/`,
+    },
+  });
 
   if (process.argv.includes("--write")) {
     await writeFile(TOPIC, serializeTopic(topic), "utf8");

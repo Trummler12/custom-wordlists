@@ -1,0 +1,13 @@
+/* coverage.css — the Language-Coverage page's own document frame. Loaded only by the
+   coverage entry (coverage/main.ts); the main app never sees it, and — crucially — this
+   entry no longer pulls in app.css, so the coverage page stops inheriting the main app's
+   shell and component rules (which used to fight its own styles). @import base for the
+   shared primitives + tokens. The page's structural styles are scoped in CoveragePage.svelte;
+   only the things that cannot be component-scoped (the <body> baseline) live here. */
+@import "./base.css";
+
+/* This page runs a touch tighter than the main app's 16px/1.5 baseline. */
+body {
+  font-size: 14px;
+  line-height: 1.4;
+}

@@ -2,7 +2,7 @@
 // the `inheritsUpwards` synthesis: which merged topics to hang in it, and how to
 // assemble one from its contributors.
 
-import type { Group, Omission, TopicSummary, WordEntry } from "./types";
+import type { CategoryMeta, Group, Omission, TopicSummary, WordEntry } from "./types";
 import { renderEntry } from "./words";
 
 /** One level of the category tree. Renders as a single collapsible node showing
@@ -42,6 +42,15 @@ function intersectLangs(contributors: TopicSummary[]): string[] | undefined {
   return declared[0].filter((l) => declared.every((set) => set.includes(l)));
 }
 
+/** The `dataOrigin` all contributors share, or undefined where they differ or one has
+ *  none: a merge can only claim a source every one of its parts has. */
+function sharedOrigin(contributors: TopicSummary[]): string | string[] | undefined {
+  const first = contributors[0]?.dataOrigin;
+  if (first === undefined) return undefined;
+  const key = JSON.stringify(first);
+  return contributors.every((c) => JSON.stringify(c.dataOrigin) === key) ? first : undefined;
+}
+
 /** The synthesized topics an `inheritsUpwards` family calls for: one merged topic
  *  per (meeting level, file stem), hung at that level as a sibling of the ordinary
  *  topics there. It holds no file and no state — a control surface over the
@@ -49,14 +58,15 @@ function intersectLangs(contributors: TopicSummary[]): string[] | undefined {
  *  list and `selection` delegates every action to those leaves.
  *
  *  A leaf contributes at every level from 1 up to its `inheritsUpwards`, so a
- *  `2` shows up merged twice (cities: per continent and globally). */
+ *  `2` shows up merged twice (cities: per continent and globally), except the first
+ *  `skipInherit` levels. */
 export function synthesizeTopics(topics: TopicSummary[]): TopicSummary[] {
   const families = new Map<string, TopicSummary[]>();
   for (const t of topics) {
     if (!t.inheritsUpwards) continue;
     const stem = stemOf(t.path);
     const segs = t.category.split("/").filter(Boolean);
-    for (let k = 1; k <= t.inheritsUpwards && k <= segs.length; k++) {
+    for (let k = (t.skipInherit ?? 0) + 1; k <= t.inheritsUpwards && k <= segs.length; k++) {
       const meet = segs.slice(0, segs.length - k).join("/");
       const key = `${meet}::${stem}`;
       let family = families.get(key);
@@ -71,6 +81,7 @@ export function synthesizeTopics(topics: TopicSummary[]): TopicSummary[] {
     const stem = key.slice(sep + 2);
     const first = contributors[0];
     const languages = intersectLangs(contributors);
+    const origin = sharedOrigin(contributors);
     synths.push({
       id: synthId(meet, stem),
       title: first.title,
@@ -84,6 +95,14 @@ export function synthesizeTopics(topics: TopicSummary[]): TopicSummary[] {
       // Romaji is derived per contributor and merged in; the synth carries the flag
       // too so its own row derives it and shows the ℹ️ note (see derivedRomaji).
       ...(first.generatedRomaji ? { generatedRomaji: true } : {}),
+      // Where the merged names come from, as long as every member agrees.
+      ...(origin ? { dataOrigin: origin } : {}),
+      // A merge is only as finished as its least finished member.
+      ...(contributors.some((c) => c.plannedTopic)
+        ? { plannedTopic: true }
+        : contributors.some((c) => c.incompleteTopic)
+          ? { incompleteTopic: true }
+          : {}),
       contributors: contributors.map((c) => c.id),
       // Pre-load baseline only; once the members load, `topics.groupsOf` gives the
       // deduplicated count (transcontinentals merged), which is what the row shows.
@@ -217,6 +236,60 @@ export function buildTree(topics: TopicSummary[]): CatNode {
   return root;
 }
 
+/** The tree as the reader sees it: only the topics `shown` lets through, and only the
+ *  categories that still hold one of them somewhere below. The top-level categories stay
+ *  whatever they hold, so a whole subject never vanishes from the list. A new tree with
+ *  `all` refilled, so everything that sums a category speaks for what is on screen. */
+export function pruneTree(root: CatNode, shown: (t: TopicSummary) => boolean): CatNode {
+  // A branch nothing was taken from is handed back as it was, so its rows see the same
+  // node and don't re-render when a topic elsewhere comes or goes.
+  const prune = (node: CatNode, depth: number): CatNode | null => {
+    const topics = node.topics.filter(shown);
+    const children = node.children
+      .map((c) => prune(c, depth + 1))
+      .filter((c): c is CatNode => c !== null);
+    if (depth > 1 && topics.length === 0 && children.length === 0) return null;
+    const same =
+      topics.length === node.topics.length &&
+      children.length === node.children.length &&
+      children.every((c, i) => c === node.children[i]);
+    if (same) return node;
+    return { name: node.name, path: node.path, topics, children, all: topics.concat(...children.map((c) => c.all)) };
+  };
+  return prune(root, 0)!;
+}
+
+/** Where each icon control (the Geoguessr coverage, the sovereignty matrix) is lifted to,
+ *  as category path => icon keys: the deepest category holding every topic that carries
+ *  it, so one control there commands them all. Only where at least two carry it (a single
+ *  carrier's own control already does the job) and below the top of the tree (there is
+ *  no row above the top-level categories). Planned topics don't count; what is currently
+ *  shown doesn't matter either, so the control stays put while topics come and go. */
+export function liftControls(topics: TopicSummary[]): Record<string, string[]> {
+  const carriers = new Map<string, string[][]>();
+  for (const t of topics) {
+    if (t.contributors || t.plannedTopic) continue;
+    for (const icon of Object.keys(t.controls ?? {})) {
+      let cats = carriers.get(icon);
+      if (!cats) carriers.set(icon, (cats = []));
+      cats.push(t.category.split("/").filter(Boolean));
+    }
+  }
+  const lifted: Record<string, string[]> = {};
+  for (const [icon, cats] of carriers) {
+    if (cats.length < 2) continue;
+    let common = cats[0];
+    for (const segs of cats.slice(1)) {
+      let i = 0;
+      while (i < common.length && i < segs.length && common[i] === segs[i]) i++;
+      common = common.slice(0, i);
+    }
+    if (common.length === 0) continue;
+    (lifted[common.join("/")] ??= []).push(icon);
+  }
+  return lifted;
+}
+
 /** A category path's ancestors, deepest first: "a/b/c" → ["a/b/c","a/b","a"]. In
  *  that order because the features that walk it want the nearest declaring
  *  ancestor, not the outermost. */
@@ -229,6 +302,22 @@ export function ancestorPaths(category: string): string[] {
 
 /** Depth of a node below the root: top-level categories are 0. */
 export const catDepth = (node: CatNode): number => node.path.split("/").length - 1;
+
+/** Whether a category starts open: the top level does, and so does every
+ *  `unfoldsWithParent` category whose parent starts open. */
+export function opensByDefault(path: string, categories: Record<string, CategoryMeta>): boolean {
+  const cut = path.lastIndexOf("/");
+  if (cut < 0) return true;
+  return !!categories[path]?.unfoldsWithParent && opensByDefault(path.slice(0, cut), categories);
+}
+
+/** The categories that open along with `node`: its `unfoldsWithParent` children,
+ *  and theirs in turn. */
+export function unfoldingWith(node: CatNode, categories: Record<string, CategoryMeta>): string[] {
+  return node.children
+    .filter((c) => categories[c.path]?.unfoldsWithParent)
+    .flatMap((c) => [c.path, ...unfoldingWith(c, categories)]);
+}
 
 /** Fallback display name for a category with no `_category.json` title. */
 export const titleCase = (seg: string): string =>

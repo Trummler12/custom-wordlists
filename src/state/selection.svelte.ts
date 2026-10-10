@@ -13,12 +13,21 @@
 // `depthOf` / `setDepth` present both as a depth, since every group has a ruler
 // and a ruler only speaks in depths; a flat group's is 0 or 1.
 
-import { allRules, isOnByDefault, TOO_LONG_RULE, UNKNOWN_RULE } from "../lib/omitted";
-import { SKRIBBL } from "../lib/skribbl";
+import { keepsForm, type LengthRules } from "../lib/lengths";
+import {
+  allRules,
+  BASE_RULE,
+  isOnByDefault,
+  SEPARATOR_RULE,
+  TOO_LONG_RULE,
+  TOO_SHORT_RULE,
+  UNKNOWN_RULE,
+} from "../lib/omitted";
+import { fitSeparator, type SeparatorRules } from "../lib/separator";
 import { groupEntries, groupHasNames, renderCount } from "../lib/words";
 import { depthFromKey, depthFromPointer, skipCollapsed, snapPositions } from "../lib/fame";
 import { rulerHiddenByDefault } from "../lib/rulers";
-import { catDepth, type CatNode } from "../lib/tree";
+import { opensByDefault, unfoldingWith, type CatNode } from "../lib/tree";
 import type { Group, NamesMode, TopicSummary, WordEntry } from "../lib/types";
 import { lang } from "./lang.svelte";
 import { settings } from "./settings.svelte";
@@ -83,10 +92,12 @@ class SelectionState {
   /** Only top-level categories start open, so the second level (gaming → pokemon)
    *  shows up but its contents stay collapsed until the user drills in. */
   catOpen(node: CatNode): boolean {
-    return this.catExpanded[node.path] ?? catDepth(node) === 0;
+    return this.catExpanded[node.path] ?? opensByDefault(node.path, topics.categories);
   }
   toggleCat(node: CatNode): void {
-    this.catExpanded[node.path] = !this.catOpen(node);
+    const open = !this.catOpen(node);
+    this.catExpanded[node.path] = open;
+    if (open) for (const path of unfoldingWith(node, topics.categories)) this.catExpanded[path] = true;
   }
 
   // --- Names mode ------------------------------------------------------------
@@ -167,11 +178,34 @@ class SelectionState {
     return depth > 0 ? (g.words ?? []) : [];
   }
 
-  /** The length limit in force for this list, or none where the reader has asked
-   *  for the over-long names anyway. The counters have to know: a number beside a
-   *  row that disagrees with what the output holds is worse than either. */
-  capFor(tid: string, g: Group): number | undefined {
-    return settings.isToggled(tid, g.id, TOO_LONG_RULE) ? undefined : SKRIBBL.maxWordLen;
+  /** The length rules for this list: the limits for its language, and which of the
+   *  two rules the reader has left in force. The counters have to know: a number
+   *  beside a row that disagrees with what the output holds is worse than either. */
+  lengthRules(tid: string, g: Group): LengthRules {
+    return {
+      limits: settings.charLimits,
+      script: settings.scriptLimitsFor(lang.contentLang(tid)),
+      short: !settings.isToggled(tid, g.id, TOO_SHORT_RULE),
+      long: !settings.isToggled(tid, g.id, TOO_LONG_RULE),
+    };
+  }
+  /** How this list treats names holding the Output's separator. */
+  separatorRules(tid: string, g: Group): SeparatorRules {
+    return {
+      sep: settings.outputSeparator,
+      remove: settings.removeSeparator,
+      omit: settings.removeSeparator === settings.isToggled(tid, g.id, SEPARATOR_RULE),
+    };
+  }
+  /** What one form becomes in the Output under this list's rules, or null where they
+   *  leave it out: the separator first, then the length of what is left. */
+  fitFor(tid: string, g: Group): (form: string) => string | null {
+    const sep = this.separatorRules(tid, g);
+    const lengths = this.lengthRules(tid, g);
+    return (form) => {
+      const f = fitSeparator(form, sep);
+      return f !== null && keepsForm(f, lengths) ? f : null;
+    };
   }
 
   groupTotal(tid: string, g: Group): number {
@@ -180,7 +214,7 @@ class SelectionState {
       this.modeOf(tid, g),
       lang.contentLang(tid),
       lang.derivesRomaji(tid),
-      this.capFor(tid, g),
+      this.fitFor(tid, g),
     );
   }
   groupSelCount(tid: string, g: Group): number {
@@ -189,7 +223,7 @@ class SelectionState {
       this.modeOf(tid, g),
       lang.contentLang(tid),
       lang.derivesRomaji(tid),
-      this.capFor(tid, g),
+      this.fitFor(tid, g),
     );
   }
 
@@ -218,6 +252,8 @@ class SelectionState {
     return (
       ruleId === UNKNOWN_RULE ||
       ruleId === TOO_LONG_RULE ||
+      ruleId === TOO_SHORT_RULE ||
+      ruleId === SEPARATOR_RULE ||
       allRules(g).some((r) => r.id === ruleId)
     );
   }
@@ -236,7 +272,13 @@ class SelectionState {
     }
     const rule = allRules(g).find((r) => r.id === ruleId);
     if (rule?.locked) return true;
-    const onByDefault = rule ? isOnByDefault(g, rule) : true;
+    // A declared rule keeps its array's default; the reserved rules hide by default, but the
+    // INCLUDE base box is the exception — its base shows until switched off (see BASE_RULE).
+    const onByDefault = rule
+      ? isOnByDefault(g, rule)
+      : ruleId === SEPARATOR_RULE
+        ? !settings.removeSeparator
+        : ruleId !== BASE_RULE;
     return onByDefault !== settings.isToggled(tid, g.id, ruleId);
   }
   /** Flip an omission rule. On a synthesized topic it commands every contributor
@@ -263,6 +305,13 @@ class SelectionState {
     const gs = topics.groupsOf(t);
     return gs.length ? gs.reduce((n, g) => n + this.groupTotal(t.id, g), 0) : t.wordCount;
   }
+  /** How many entries a merged topic counts once that its lists hold more than once (football
+   *  sits in five Games lists): the gap between its members' totals and its own. */
+  topicDuplicates(t: TopicSummary): number {
+    if (!topics.isSynth(t.id)) return 0;
+    const sum = topics.contributorsOf(t.id).reduce((n, c) => n + this.topicTotal(c), 0);
+    return Math.max(0, sum - this.topicTotal(t));
+  }
   topicFull(t: TopicSummary): boolean {
     const gs = topics.groupsOf(t);
     return gs.length > 0 && gs.every((g) => this.groupFull(t.id, g));
@@ -271,22 +320,30 @@ class SelectionState {
     return this.topicSelCount(t) > 0 && !this.topicFull(t);
   }
 
-  /** A category's topics minus the synthesized ones. A synthesized topic re-lists
-   *  its contributors, which already sit in the same subtree, so counting or
-   *  toggling it alongside them would double every country. */
-  private real(ts: TopicSummary[]): TopicSummary[] {
-    return ts.filter((t) => !topics.isSynth(t.id));
+  /** The topics a category's checkbox acts on. Not a synthesized one: it re-lists its
+   *  contributors, which already sit in the same subtree, so toggling it alongside them
+   *  would fight over every country. Not a planned one, which can't be selected. */
+  private selectable(ts: TopicSummary[]): TopicSummary[] {
+    return ts.filter((t) => !topics.isSynth(t.id) && !t.plannedTopic);
+  }
+  /** The topics a category speaks for: the selectable ones, minus those with nothing in
+   *  them (Antarctica's 0/0), or a category whose every other topic is selected could
+   *  never read as full. Unless empty ones are all it has: then it speaks for them. */
+  private counted(ts: TopicSummary[]): TopicSummary[] {
+    const selectable = this.selectable(ts);
+    const filled = selectable.filter((t) => this.topicTotal(t) > 0);
+    return filled.length ? filled : selectable;
   }
 
   catTotal(ts: TopicSummary[]): number {
-    return this.real(ts).reduce((n, t) => n + this.topicTotal(t), 0);
+    return this.counted(ts).reduce((n, t) => n + this.topicTotal(t), 0);
   }
   catSel(ts: TopicSummary[]): number {
-    return this.real(ts).reduce((n, t) => n + this.topicSelCount(t), 0);
+    return this.counted(ts).reduce((n, t) => n + this.topicSelCount(t), 0);
   }
   catFull(ts: TopicSummary[]): boolean {
-    const real = this.real(ts);
-    return real.length > 0 && real.every((t) => this.topicFull(t));
+    const counted = this.counted(ts);
+    return counted.length > 0 && counted.every((t) => this.topicFull(t));
   }
   catPartial(ts: TopicSummary[]): boolean {
     return this.catSel(ts) > 0 && !this.catFull(ts);
@@ -368,13 +425,35 @@ class SelectionState {
     this.setTopic(t, !this.topicFull(t));
   }
   async toggleCategory(ts: TopicSummary[]): Promise<void> {
-    // Only the real topics: a synthesized one just re-lists members already here,
-    // and toggling both would fight over the same contributors.
-    const real = this.real(ts);
-    const on = !this.catFull(real);
-    const loaded = await Promise.all(real.map((t) => topics.data[t.id] ?? topics.ensure(t)));
-    real.forEach((t, i) => loaded[i] && this.setTopic(t, on));
+    // Whether it fills is decided by the counted topics, but the empty ones go along:
+    // ticking Human ticks Antarctica too.
+    const on = !this.catFull(ts);
+    const targets = this.selectable(ts);
+    const loaded = await Promise.all(targets.map((t) => topics.data[t.id] ?? topics.ensure(t)));
+    targets.forEach((t, i) => loaded[i] && this.setTopic(t, on));
   }
+
+  // --- Grace for flagged topics ----------------------------------------------
+  // A change of the "Show … topics" setting never hides a selected list (see
+  // `topics.graced`); it goes once it is deselected and the page has scrolled, the
+  // same moment a pinned note closes.
+
+  /** Before the setting changes: keep every flagged topic that is selected. */
+  holdSelected(): void {
+    const held = [...topics.all, ...topics.synths]
+      .filter((t) => (t.incompleteTopic || t.plannedTopic) && this.topicSelCount(t) > 0)
+      .map((t) => t.id);
+    if (held.length) topics.graced = [...new Set([...topics.graced, ...held])];
+  }
+  /** On a page scroll: let go of the graced topics that are no longer selected. */
+  releaseGrace = (): void => {
+    if (topics.graced.length === 0) return;
+    const kept = topics.graced.filter((id) => {
+      const t = topics.byId[id] ?? topics.synthById[id];
+      return !!t && this.topicSelCount(t) > 0;
+    });
+    if (kept.length !== topics.graced.length) topics.graced = kept;
+  };
 
   // --- Ruler visibility ------------------------------------------------------
   // Purely a view option: which fame rulers are shown, independent of what is

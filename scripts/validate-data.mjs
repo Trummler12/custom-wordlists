@@ -7,8 +7,9 @@
 //   4. omission rules still describe the list (no stale rule, no self-matching `as`)
 //   5. `usesEnglishFor` doesn't contradict what the entries actually carry
 //   6. category folder names are kebab-case (like ids)
-// Plus non-fatal warnings: a `sources` entry that carries no URL, and a
-// `usesEnglishFor` language missing from `languages`.
+// Plus non-fatal warnings: a `sources` entry that carries no URL, a
+// `usesEnglishFor` language missing from `languages`, and a `dataOrigin` tag not
+// in KNOWN_ORIGINS.
 // Every JSON file (except `_category.json`) is one topic; a folder is a category
 // when it has a subfolder, a `_category.json`, or ≥2 topic files, else a folder
 // with one topic file is a leaf topic. Exits non-zero on any problem. See docs/archive/PLANNING.md §4.1.
@@ -32,6 +33,9 @@ const KEBAB_RE = /^[a-z0-9]+(-[a-z0-9]+)*$/;
 // `sources` items are free-form so they can carry a label ("German: https://…"),
 // hence a loose "is there a link in here at all" check rather than a URL pattern.
 const URL_RE = /https?:\/\/\S/;
+// The `dataOrigin` tags in use. An unfamiliar one is only a warning: it is most likely
+// a typo of one of these, but a new source is a legitimate reason to extend the list.
+const KNOWN_ORIGINS = ["Wikidata", "Wikipedia", "PokéAPI", "Sporcle", "Bird (2003)"];
 // Sidecar filename holding a category node's display metadata (never a topic).
 const CATEGORY_META = "_category.json";
 
@@ -39,14 +43,23 @@ const CATEGORY_META = "_category.json";
 const groupsOf = (topic) => [topic];
 
 // Where a stem repeats (every continent's `countries.json`), the immediate parent
-// folder qualifies the id — matching the file's own `id` and build-index.mjs.
+// folder qualifies the id, and the next one up where that still repeats — matching
+// the file's own `id` and build-index.mjs.
 function disambiguate(topics) {
-  const count = {};
-  for (const t of topics) count[t.id] = (count[t.id] ?? 0) + 1;
-  for (const t of topics) {
-    if (count[t.id] > 1) t.id = `${t.category.split("/").pop()}-${t.id}`;
+  const stems = new Map(topics.map((t) => [t, t.id]));
+  for (let depth = 1; ; depth++) {
+    const count = {};
+    for (const t of topics) count[t.id] = (count[t.id] ?? 0) + 1;
+    let grew = false;
+    for (const t of topics) {
+      const segs = t.category.split("/").filter(Boolean);
+      if (count[t.id] > 1 && depth <= segs.length) {
+        t.id = [...segs.slice(-depth), stems.get(t)].join("-");
+        grew = true;
+      }
+    }
+    if (!grew) return topics;
   }
-  return topics;
 }
 
 /**
@@ -256,13 +269,22 @@ async function main() {
     if (topic.id !== id) {
       errors.push(`${rel}: id "${topic.id}" does not match location "${id}"`);
     }
+    // A planned topic is incomplete by definition, so carrying both says nothing more
+    // and leaves it unclear which of the two the visibility setting should go by.
+    if (topic.incompleteTopic && topic.plannedTopic) {
+      errors.push(`${rel}: incompleteTopic and plannedTopic exclude each other (planned already implies incomplete)`);
+    }
+
+    if (topic.skipInherit !== undefined && !(topic.skipInherit < (topic.inheritsUpwards ?? 0))) {
+      errors.push(`${rel}: skipInherit (${topic.skipInherit}) must be smaller than inheritsUpwards (${topic.inheritsUpwards ?? "absent"})`);
+    }
 
     // Gather this leaf into every family it contributes to (one per level up to
     // `inheritsUpwards`), keyed by the meeting category and the shared file stem.
     if (Number.isInteger(topic.inheritsUpwards) && topic.inheritsUpwards >= 1) {
       const stem = basename(fileSegments[fileSegments.length - 1], ".json");
       const segs = category.split("/").filter(Boolean);
-      for (let k = 1; k <= topic.inheritsUpwards && k <= segs.length; k++) {
+      for (let k = (topic.skipInherit ?? 0) + 1; k <= topic.inheritsUpwards && k <= segs.length; k++) {
         const key = `${segs.slice(0, segs.length - k).join("/")}::${stem}`;
         let fam = families.get(key);
         if (!fam) families.set(key, (fam = []));
@@ -337,7 +359,7 @@ async function main() {
     for (const group of groupsOf(topic)) {
       for (const e of [...(group.words ?? []), ...(group.tiers ?? []).flat()]) {
         for (const l of unknownLangs(e)) {
-          if (e[l] !== undefined) {
+          if (l !== "en" && e[l] !== undefined) {
             warnings.push(`${rel}: "${entryKey(e)}" lists "${l}" as unknown but has a name for it`);
           }
         }
@@ -399,6 +421,9 @@ async function main() {
     const sources = topic.sources == null ? [] : [topic.sources].flat();
     for (const s of sources) {
       if (!URL_RE.test(s)) warnings.push(`${rel}: source has no URL — "${s}"`);
+    }
+    for (const o of [topic.dataOrigin ?? []].flat()) {
+      if (!KNOWN_ORIGINS.includes(o)) warnings.push(`${rel}: unfamiliar dataOrigin "${o}" (known: ${KNOWN_ORIGINS.join(", ")})`);
     }
   }
 

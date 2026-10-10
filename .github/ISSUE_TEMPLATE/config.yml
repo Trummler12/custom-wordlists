@@ -11,19 +11,23 @@ contact_links:
     # `?tab=contributing-ov-file` renders the guide in the repo's own Contributing tab;
     # the `blob/main` URL drops the reader into the raw file view instead.
     url: https://github.com/Trummler12/custom-wordlists?tab=contributing-ov-file
-    about: How to propose word lists and fixes (Option A via issues, or Option B via a PR).
-  - name: 💡 Worked example — simple (plain text)
-    url: https://github.com/Trummler12/custom-wordlists/issues/17
-    about: A full proposal as plain names under fame groups — the lowest-effort form.
-  - name: 🧩 Worked example — JSON (ready to paste)
-    url: https://github.com/Trummler12/custom-wordlists/issues/26
-    about: The same list shaped like the data file, so a maintainer can drop it straight in.
+    about: How to help — on Wikidata first, then by proposing topics; hand-written lists last.
+  - name: 🌐 Language coverage — which names Wikidata still lacks
+    # Sports as the example for now; swap for South Park, One Piece or similar once built from Wikidata.
+    url: https://trummler12.github.io/custom-wordlists/coverage/sports
+    about: Per item and language, the names missing on Wikidata. Every one added there reaches the lists.
   - name: 🗺️ Topic tracker — what's covered and what's planned
     url: https://github.com/Trummler12/custom-wordlists/blob/main/docs/Topic-Progress.md
     about: Check here first — your topic may already be covered or in progress.
   - name: 🌍 Language roadmap
     url: https://github.com/Trummler12/custom-wordlists/blob/main/docs/Language-Roadmap.md
     about: Which languages are planned, and in what order.
-  - name: 🗣️ Looking for UI proofreaders — ES, FR, IT, JA, KO
-    url: https://github.com/Trummler12/custom-wordlists/blob/main/CONTRIBUTING.md#looking-for-ui-proofreaders--spanish-french-italian-japanese-korean
-    about: Five interface languages were machine-written and never read by a native speaker.
+  - name: 🗣️ Looking for UI proofreaders — ES, FR, IT, JA, KO, ZH, RU, PT
+    url: https://github.com/Trummler12/custom-wordlists/blob/main/CONTRIBUTING.md#looking-for-ui-proofreaders--spanish-french-italian-japanese-korean-chinese-russian-portuguese
+    about: Nine interface languages were machine-written and never read by a native speaker.
+  - name: 💡 Worked example (hand-written list) — simple
+    url: https://github.com/Trummler12/custom-wordlists/issues/17
+    about: A full proposal as plain names under fame groups — the lowest-effort form.
+  - name: 🧩 Worked example (hand-written list) — JSON
+    url: https://github.com/Trummler12/custom-wordlists/issues/26
+    about: The same list shaped like the data file, so a maintainer can drop it straight in.

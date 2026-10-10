@@ -1,5 +1,6 @@
 // Fills data/topics/science/chemistry/elements.json with the names that
-// scripts/science/dump-element-names.mjs writes.
+// scripts/science/dump-element-names.mjs writes, and writes the elements' language
+// coverage page data (data/coverage/elements.json).
 //
 //   node scripts/science/build-elements.mjs [--write]
 //
@@ -12,7 +13,8 @@
 // THE JOIN IS THE ENGLISH NAME, as everywhere else in this repo: an entry's `en`
 // form is its identity. That works here without a single exception — the 118
 // Wikidata labels and the 118 names in the file match one for one, IUPAC
-// spellings and all (aluminium, caesium, sulfur).
+// spellings and all (aluminium, caesium, sulfur). The English name leads to the
+// atomic number, and the number to every other language.
 //
 // ENGLISH IS NOT REWRITTEN. Wikidata lower-cases its English labels by house
 // rule, and the list has always carried them capitalized. Since `en` is the join
@@ -32,35 +34,21 @@
 // `Oganesson` matched and vanished while French `oganesson` differed by one
 // letter and stayed, leaving one word stored three different ways.
 //
-// SIMPLIFIED CHINESE FALLS BACK TO `zh`. Eight elements have no `zh-hans` label
-// and do have a `zh` one. `zh` is not reliably Simplified — iron is `鐵` there,
-// the Traditional form — so the fallback is reported per element rather than
-// applied in silence, and a name where `zh` and `zh-Hant` agree is one to look at
-// twice. For these eight they disagree except for xenon, whose `氙` is the same
-// character in both scripts.
-import { readFile, writeFile, readdir } from "node:fs/promises";
+// EACH LANGUAGE READS DOWN ITS FALLBACK CHAIN (LANG_SRC in scripts/lib/wikidata.mjs):
+// Norwegian from Bokmål, Portuguese from its Brazilian label, and so on. Simplified
+// Chinese ends on `zh`, which is not reliably Simplified (iron is `鐵` there, the
+// Traditional form), so every name taken from it is reported rather than applied in
+// silence; one where `zh` and `zh-Hant` agree is one to look at twice.
+import { readFile, writeFile } from "node:fs/promises";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
+import { writeCoverage } from "../geography/coverage.mjs";
 import { serializeTopic } from "../lib/serialize.mjs";
+import { LANG_SRC, NAME_LANGS, labelFor } from "../lib/wikidata.mjs";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..", "..");
-const DUMPS = join(ROOT, "data-raw", "science", "elements");
+const DUMP = join(ROOT, "data-raw", "science", "elements", "element-names.json");
 const TOPIC = join(ROOT, "data", "topics", "science", "chemistry", "elements.json");
-
-/** The languages that end up in the file, in the order they are written. `zh` is
- *  not among them: it exists only as Simplified Chinese's fallback. */
-const LANGS = ["en", "de", "es", "fr", "it", "ja", "ko", "zh-Hans", "zh-Hant"];
-
-/** One dump: atomic number → name. */
-async function readDump(tag) {
-  const text = await readFile(join(DUMPS, `${tag}.txt`), "utf8");
-  const out = new Map();
-  for (const line of text.split("\n")) {
-    const [z, name] = line.split("\t");
-    if (name) out.set(Number(z), name.trim());
-  }
-  return out;
-}
 
 /** An entry's English name — its identity, whatever shape the entry has. */
 const englishOf = (entry) => (typeof entry === "string" ? entry : entry.en);
@@ -78,15 +66,11 @@ function capitalize(name) {
 }
 
 async function main() {
-  const files = (await readdir(DUMPS)).filter((f) => f.endsWith(".txt"));
-  const dumps = new Map();
-  for (const f of files) dumps.set(f.slice(0, -4), await readDump(f.slice(0, -4)));
-
-  // English is the bridge from a name in the file to an atomic number in the
-  // dumps, so it is the one dump this cannot run without.
-  const en = dumps.get("en");
-  if (!en) throw new Error("no en.txt — run dump-element-names.mjs first");
-  const zByName = new Map([...en].map(([z, name]) => [name.toLowerCase(), z]));
+  const dump = JSON.parse(await readFile(DUMP, "utf8"));
+  // The English label is the bridge from a name in the file to an element in the dump.
+  const byName = new Map(
+    Object.values(dump).map((el) => [(labelFor(el.names, "en") ?? "").toLowerCase(), el]),
+  );
 
   const topic = JSON.parse(await readFile(TOPIC, "utf8"));
   // A flat topic is its own group; a grouped one still has exactly the one.
@@ -98,18 +82,19 @@ async function main() {
 
   const enrich = (entry) => {
     const name = englishOf(entry);
-    const z = zByName.get(name.toLowerCase());
-    if (z === undefined) {
+    const el = byName.get(name.toLowerCase());
+    if (el === undefined) {
       missing.push(name);
       return entry;
     }
     const out = { en: name };
     const unknown = [];
-    for (const tag of LANGS.slice(1)) {
-      let value = dumps.get(tag)?.get(z);
-      if (!value && tag === "zh-Hans") {
-        value = dumps.get("zh")?.get(z);
-        if (value) fallbacks.push(`${name}: zh-Hans ← zh "${value}" (zh-Hant "${dumps.get("zh-Hant")?.get(z)}")`);
+    for (const tag of NAME_LANGS.slice(1)) {
+      // Labels can carry invisible format characters (a stray left-to-right mark before
+      // helium in Simplified Chinese), which no one types and the game would not match.
+      const value = labelFor(el.names, tag)?.replace(/\p{Cf}/gu, "").trim() || undefined;
+      if (tag === "zh-Hans" && value && !LANG_SRC[tag].slice(0, -1).some((s) => el.names[s])) {
+        fallbacks.push(`${name}: zh-Hans <= zh "${value}" (zh-Hant "${labelFor(el.names, "zh-Hant")}")`);
       }
       if (!value) unknown.push(tag);
       // An absent key already says "same as en" — see the schema's langMapEntry.
@@ -125,9 +110,9 @@ async function main() {
   };
 
   group.tiers = group.tiers.map((tier) => tier.map(enrich));
-  topic.languages = LANGS;
+  topic.languages = NAME_LANGS;
 
-  console.log(`build-elements: ${group.tiers.flat().length} entries, ${LANGS.length} languages`);
+  console.log(`build-elements: ${group.tiers.flat().length} entries, ${NAME_LANGS.length} languages`);
   if (fallbacks.length) console.log(`  zh fallback (${fallbacks.length}):\n    ${fallbacks.join("\n    ")}`);
   if (gaps.length) console.log(`  no name at all (${gaps.length}):\n    ${gaps.join("\n    ")}`);
   if (missing.length) {
@@ -135,6 +120,21 @@ async function main() {
     process.exitCode = 1;
     return;
   }
+
+  // Only the names are this script's; the tiers stay editorial.
+  Object.assign(topic, {
+    generated: ["names"],
+    dataOrigin: "Wikidata",
+    filePaths: {
+      "scripts/science/": ["dump-element-names.mjs", "build-elements.mjs"],
+      "data-raw/science/": "elements/",
+    },
+  });
+
+  // The coverage page lists every element the dump holds, by atomic number.
+  // Its first column capitalized like the list, not in the source's lower case.
+  const listed = Object.fromEntries(Object.entries(dump).map(([q, el]) => [q, { ...el, name: capitalize(el.name) }]));
+  await writeCoverage(ROOT, "elements", listed, NAME_LANGS, LANG_SRC, "atomicNumber", process.argv.includes("--write"));
 
   if (process.argv.includes("--write")) {
     await writeFile(TOPIC, serializeTopic(topic), "utf8");

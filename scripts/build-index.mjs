@@ -174,24 +174,32 @@ async function readCategoryMeta(path) {
   if (typeof data.hideRulersByDefault === "boolean") meta.hideRulersByDefault = data.hideRulersByDefault;
   if (typeof data.hideRulers === "boolean") meta.hideRulers = data.hideRulers;
   if (data.sharedEnglishToggle) meta.sharedEnglishToggle = true;
-  // Icon keys whose control this category surfaces and syncs across its subtree
-  // (e.g. ["geoguessr"]). Generic on purpose — any icon-tagged control rides it.
-  if (Array.isArray(data.syncControls) && data.syncControls.length) meta.syncControls = data.syncControls;
+  if (data.unfoldsWithParent) meta.unfoldsWithParent = true;
   return meta;
 }
 
 // An `inheritsUpwards` family is several files with the same name (every
 // continent's `countries.json`), so stems are no longer unique on their own. Where
 // one repeats, the immediate parent folder qualifies it — `africa/countries.json`
-// becomes `africa-countries`, matching the file's own `id`. Unique stems are left
-// alone, so nothing else in the tree changes. Kept in sync with validate-data.mjs.
+// becomes `africa-countries`, matching the file's own `id` — and where that still
+// repeats (every Games season's `summer/sports.json`), the next folder up too:
+// `olympia-summer-sports`. Unique stems are left alone, so nothing else in the tree
+// changes. Kept in sync with validate-data.mjs.
 function disambiguate(topics) {
-  const count = {};
-  for (const t of topics) count[t.id] = (count[t.id] ?? 0) + 1;
-  for (const t of topics) {
-    if (count[t.id] > 1) t.id = `${t.category.split("/").pop()}-${t.id}`;
+  const stems = new Map(topics.map((t) => [t, t.id]));
+  for (let depth = 1; ; depth++) {
+    const count = {};
+    for (const t of topics) count[t.id] = (count[t.id] ?? 0) + 1;
+    let grew = false;
+    for (const t of topics) {
+      const segs = t.category.split("/").filter(Boolean);
+      if (count[t.id] > 1 && depth <= segs.length) {
+        t.id = [...segs.slice(-depth), stems.get(t)].join("-");
+        grew = true;
+      }
+    }
+    if (!grew) return topics;
   }
-  return topics;
 }
 
 async function buildIndex() {
@@ -225,10 +233,17 @@ async function buildIndex() {
       ...(data.languages ? { languages: data.languages } : {}),
       ...(data.usesEnglishFor ? { usesEnglishFor: data.usesEnglishFor } : {}),
       ...(data.generatedRomaji ? { generatedRomaji: true } : {}),
+      ...(data.incompleteTopic ? { incompleteTopic: true } : {}),
+      ...(data.plannedTopic ? { plannedTopic: true } : {}),
+      // Provenance the app reads (`dataOrigin` decides the coverage link); `filePaths`
+      // is for contributors only and stays in the file.
+      ...(data.generated ? { generated: data.generated } : {}),
+      ...(data.dataOrigin ? { dataOrigin: data.dataOrigin } : {}),
       // The tree synthesizes a merged topic for each family of same-named leaves
       // that carry this; the manifest passes it through so that can happen without
       // loading every file first. See src/lib/tree.ts.
       ...(Number.isInteger(data.inheritsUpwards) ? { inheritsUpwards: data.inheritsUpwards } : {}),
+      ...(Number.isInteger(data.skipInherit) ? { skipInherit: data.skipInherit } : {}),
       // Icon-tagged rule ladders (e.g. the Geoguessr coverage filter), so the tree
       // can show and sync them from the manifest alone. See src/components/topics.
       ...(Object.keys(controlsOf(data)).length ? { controls: controlsOf(data) } : {}),

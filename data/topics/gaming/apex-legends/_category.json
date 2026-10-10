@@ -1,4 +1,12 @@
 {
-  "title": "Apex Legends",
+  "title": {
+    "en": "Apex Legends",
+    "ja": "エーペックスレジェンズ",
+    "ko": "에이펙스 레전드",
+    "zh-Hans": "Apex 英雄",
+    "zh-Hant": "Apex 英雄",
+    "ru": "Апекс Леджендс",
+    "he": "אפקס לג'נדס"
+  },
   "icon": "🎯"
 }

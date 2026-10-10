@@ -1,0 +1,3870 @@
+{
+  "Q15": {
+    "name": "Africa",
+    "area": 29648481,
+    "names": {
+      "en": [
+        {
+          "name": "Africa",
+          "pref": true
+        },
+        {
+          "name": "African continent",
+          "alias": true
+        }
+      ],
+      "el": [
+        {
+          "name": "Αφρική",
+          "pref": true
+        }
+      ],
+      "sk": [
+        {
+          "name": "Afrika",
+          "pref": true
+        }
+      ],
+      "tl": [
+        {
+          "name": "Aprika",
+          "pref": true
+        }
+      ],
+      "mk": [
+        {
+          "name": "Африка",
+          "pref": true
+        }
+      ],
+      "es": [
+        {
+          "name": "África",
+          "pref": true
+        },
+        {
+          "name": "Africa",
+          "alias": true
+        },
+        {
+          "name": "continente africano",
+          "alias": true
+        }
+      ],
+      "zh-sg": [
+        {
+          "name": "非洲",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "非洲",
+          "pref": true
+        },
+        {
+          "name": "非洲大陸",
+          "alias": true
+        },
+        {
+          "name": "黑暗大陸",
+          "alias": true
+        },
+        {
+          "name": "黑暗的大陸",
+          "alias": true
+        },
+        {
+          "name": "陽光之地",
+          "alias": true
+        }
+      ],
+      "nl": [
+        {
+          "name": "Afrika",
+          "pref": true
+        },
+        {
+          "name": "Afrikaans continent",
+          "alias": true
+        }
+      ],
+      "he": [
+        {
+          "name": "אפריקה",
+          "pref": true
+        }
+      ],
+      "ro": [
+        {
+          "name": "Africa",
+          "pref": true
+        },
+        {
+          "name": "continentul african",
+          "alias": true
+        }
+      ],
+      "da": [
+        {
+          "name": "Afrika",
+          "pref": true
+        }
+      ],
+      "lv": [
+        {
+          "name": "Āfrika",
+          "pref": true
+        }
+      ],
+      "pt-br": [
+        {
+          "name": "África",
+          "pref": true
+        },
+        {
+          "name": "continente africano",
+          "alias": true
+        }
+      ],
+      "pt": [
+        {
+          "name": "África",
+          "pref": true
+        },
+        {
+          "name": "continente africano",
+          "alias": true
+        }
+      ],
+      "ru": [
+        {
+          "name": "Африка",
+          "pref": true
+        }
+      ],
+      "nb": [
+        {
+          "name": "Afrika",
+          "pref": true
+        }
+      ],
+      "de": [
+        {
+          "name": "Afrika",
+          "pref": true
+        },
+        {
+          "name": "afrikanischer Kontinent",
+          "alias": true
+        }
+      ],
+      "zh-cn": [
+        {
+          "name": "非洲",
+          "pref": true
+        }
+      ],
+      "et": [
+        {
+          "name": "Aafrika",
+          "pref": true
+        }
+      ],
+      "zh-tw": [
+        {
+          "name": "非洲",
+          "pref": true
+        }
+      ],
+      "nn": [
+        {
+          "name": "Afrika",
+          "pref": true
+        },
+        {
+          "name": "det afrikanske kontinentet",
+          "alias": true
+        }
+      ],
+      "zh-mo": [
+        {
+          "name": "非洲",
+          "pref": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "Afrique",
+          "pref": true
+        },
+        {
+          "name": "continent africain",
+          "alias": true
+        }
+      ],
+      "fi": [
+        {
+          "name": "Afrikka",
+          "pref": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "非洲",
+          "pref": true
+        }
+      ],
+      "zh-my": [
+        {
+          "name": "非洲",
+          "pref": true
+        }
+      ],
+      "zh-hans": [
+        {
+          "name": "非洲",
+          "pref": true
+        }
+      ],
+      "sv": [
+        {
+          "name": "Afrika",
+          "pref": true
+        }
+      ],
+      "bg": [
+        {
+          "name": "Африка",
+          "pref": true
+        }
+      ],
+      "it": [
+        {
+          "name": "Africa",
+          "pref": true
+        }
+      ],
+      "hu": [
+        {
+          "name": "Afrika",
+          "pref": true
+        }
+      ],
+      "tr": [
+        {
+          "name": "Afrika",
+          "pref": true
+        },
+        {
+          "name": "Afrika kıtası",
+          "alias": true
+        }
+      ],
+      "pl": [
+        {
+          "name": "Afryka",
+          "pref": true
+        }
+      ],
+      "cs": [
+        {
+          "name": "Afrika",
+          "pref": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "アフリカ",
+          "pref": true
+        },
+        {
+          "name": "アフリカ大陸",
+          "alias": true
+        },
+        {
+          "name": "阿弗利加",
+          "alias": true
+        },
+        {
+          "name": "阿弗利加大陸",
+          "alias": true
+        },
+        {
+          "name": "阿州",
+          "alias": true
+        },
+        {
+          "name": "阿洲",
+          "alias": true
+        },
+        {
+          "name": "阿",
+          "alias": true
+        }
+      ],
+      "ko": [
+        {
+          "name": "아프리카",
+          "pref": true
+        },
+        {
+          "name": "아불리가",
+          "alias": true
+        },
+        {
+          "name": "아주",
+          "alias": true
+        },
+        {
+          "name": "검은 대륙",
+          "alias": true
+        }
+      ],
+      "sr": [
+        {
+          "name": "Африка",
+          "pref": true
+        },
+        {
+          "name": "Афрички континент",
+          "alias": true
+        }
+      ],
+      "zh-hk": [
+        {
+          "name": "非洲",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q51": {
+    "name": "Antarctica",
+    "area": 13720000,
+    "names": {
+      "sk": [
+        {
+          "name": "Antarktída",
+          "pref": true
+        }
+      ],
+      "mk": [
+        {
+          "name": "Антарктик",
+          "pref": true
+        }
+      ],
+      "es": [
+        {
+          "name": "Antártida",
+          "pref": true
+        },
+        {
+          "name": "Antártica",
+          "alias": true
+        },
+        {
+          "name": "continente austral",
+          "alias": true
+        },
+        {
+          "name": "continente antártico",
+          "alias": true
+        },
+        {
+          "name": "Antártico",
+          "alias": true
+        },
+        {
+          "name": "Antártida o Antártica",
+          "alias": true
+        },
+        {
+          "name": "Antártica o Antártida",
+          "alias": true
+        }
+      ],
+      "zh-sg": [
+        {
+          "name": "南极洲",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "南極洲",
+          "pref": true
+        }
+      ],
+      "ro": [
+        {
+          "name": "Antarctica",
+          "pref": true
+        }
+      ],
+      "da": [
+        {
+          "name": "Antarktis",
+          "pref": true
+        }
+      ],
+      "lv": [
+        {
+          "name": "Antarktīda",
+          "pref": true
+        }
+      ],
+      "pt": [
+        {
+          "name": "Antártida",
+          "pref": true
+        },
+        {
+          "name": "continente austral",
+          "alias": true
+        }
+      ],
+      "zh-my": [
+        {
+          "name": "南极洲",
+          "pref": true
+        }
+      ],
+      "ru": [
+        {
+          "name": "Антарктида",
+          "pref": true
+        }
+      ],
+      "tl": [
+        {
+          "name": "Antarctica",
+          "pref": true
+        },
+        {
+          "name": "Antartida",
+          "alias": true
+        }
+      ],
+      "nl": [
+        {
+          "name": "Antarctica",
+          "pref": true
+        }
+      ],
+      "de": [
+        {
+          "name": "Antarktika",
+          "pref": true
+        },
+        {
+          "name": "Südkontinent",
+          "alias": true
+        },
+        {
+          "name": "antarktischer Kontinent",
+          "alias": true
+        },
+        {
+          "name": "Antarktis",
+          "alias": true
+        }
+      ],
+      "en": [
+        {
+          "name": "Antarctica",
+          "pref": true
+        }
+      ],
+      "zh-cn": [
+        {
+          "name": "南极洲",
+          "pref": true
+        }
+      ],
+      "et": [
+        {
+          "name": "Antarktis",
+          "pref": true
+        }
+      ],
+      "zh-tw": [
+        {
+          "name": "南極洲",
+          "pref": true
+        }
+      ],
+      "nn": [
+        {
+          "name": "Antarktis",
+          "pref": true
+        }
+      ],
+      "zh-mo": [
+        {
+          "name": "南极洲",
+          "pref": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "Antarctique",
+          "pref": true
+        },
+        {
+          "name": "continent austral",
+          "alias": true
+        },
+        {
+          "name": "continent blanc",
+          "alias": true
+        }
+      ],
+      "fi": [
+        {
+          "name": "Etelämanner",
+          "pref": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "南極洲",
+          "pref": true
+        }
+      ],
+      "nb": [
+        {
+          "name": "Antarktika",
+          "pref": true
+        }
+      ],
+      "zh-hans": [
+        {
+          "name": "南极洲",
+          "pref": true
+        }
+      ],
+      "sv": [
+        {
+          "name": "Antarktis",
+          "pref": true
+        }
+      ],
+      "bg": [
+        {
+          "name": "Антарктида",
+          "pref": true
+        }
+      ],
+      "he": [
+        {
+          "name": "אנטארקטיקה",
+          "pref": true
+        }
+      ],
+      "hu": [
+        {
+          "name": "Antarktika",
+          "pref": true
+        }
+      ],
+      "it": [
+        {
+          "name": "Antartide",
+          "pref": true
+        }
+      ],
+      "ko": [
+        {
+          "name": "남극",
+          "pref": true
+        }
+      ],
+      "zh-hk": [
+        {
+          "name": "南極洲",
+          "pref": true
+        }
+      ],
+      "pl": [
+        {
+          "name": "Antarktyda",
+          "pref": true
+        }
+      ],
+      "el": [
+        {
+          "name": "Ανταρκτική",
+          "pref": true
+        }
+      ],
+      "pt-br": [
+        {
+          "name": "Antártida",
+          "pref": true
+        },
+        {
+          "name": "Antártica",
+          "alias": true
+        }
+      ],
+      "cs": [
+        {
+          "name": "Antarktida",
+          "pref": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "南極大陸",
+          "pref": true
+        }
+      ],
+      "tr": [
+        {
+          "name": "Antarktika",
+          "pref": true
+        },
+        {
+          "name": "Antarktika kıtası",
+          "alias": true
+        }
+      ],
+      "sr": [
+        {
+          "name": "Антарктик",
+          "pref": true
+        },
+        {
+          "name": "Антарктика",
+          "alias": true
+        },
+        {
+          "name": "Антартик",
+          "alias": true
+        },
+        {
+          "name": "Арктик",
+          "alias": true
+        }
+      ]
+    }
+  },
+  "Q48": {
+    "name": "Asia",
+    "area": 44614500,
+    "names": {
+      "el": [
+        {
+          "name": "Ασία",
+          "pref": true
+        }
+      ],
+      "sk": [
+        {
+          "name": "Ázia",
+          "pref": true
+        }
+      ],
+      "tl": [
+        {
+          "name": "Asya",
+          "pref": true
+        }
+      ],
+      "mk": [
+        {
+          "name": "Азија",
+          "pref": true
+        }
+      ],
+      "es": [
+        {
+          "name": "Asia",
+          "pref": true
+        },
+        {
+          "name": "continente asiático",
+          "alias": true
+        },
+        {
+          "name": "continente de Asia",
+          "alias": true
+        },
+        {
+          "name": "Asia continental",
+          "alias": true
+        }
+      ],
+      "zh-sg": [
+        {
+          "name": "亚洲",
+          "pref": true
+        },
+        {
+          "name": "亚细亚",
+          "alias": true
+        }
+      ],
+      "zh-hk": [
+        {
+          "name": "亞洲",
+          "pref": true
+        }
+      ],
+      "nl": [
+        {
+          "name": "Azië",
+          "pref": true
+        },
+        {
+          "name": "Azie",
+          "alias": true
+        },
+        {
+          "name": "Aziatische continent",
+          "alias": true
+        }
+      ],
+      "he": [
+        {
+          "name": "אסיה",
+          "pref": true
+        }
+      ],
+      "ro": [
+        {
+          "name": "Asia",
+          "pref": true
+        }
+      ],
+      "da": [
+        {
+          "name": "Asien",
+          "pref": true
+        },
+        {
+          "name": "ondskabens kontinent",
+          "alias": true
+        }
+      ],
+      "lv": [
+        {
+          "name": "Āzija",
+          "pref": true
+        }
+      ],
+      "pt-br": [
+        {
+          "name": "Ásia",
+          "pref": true
+        },
+        {
+          "name": "continente asiático",
+          "alias": true
+        }
+      ],
+      "pt": [
+        {
+          "name": "Ásia",
+          "pref": true
+        },
+        {
+          "name": "continente asiático",
+          "alias": true
+        }
+      ],
+      "zh-my": [
+        {
+          "name": "亚洲",
+          "pref": true
+        },
+        {
+          "name": "亚细亚",
+          "alias": true
+        }
+      ],
+      "ru": [
+        {
+          "name": "Азия",
+          "pref": true
+        }
+      ],
+      "de": [
+        {
+          "name": "Asien",
+          "pref": true
+        },
+        {
+          "name": "asiatischer Kontinent",
+          "alias": true
+        }
+      ],
+      "en": [
+        {
+          "name": "Asia",
+          "pref": true
+        },
+        {
+          "name": "Asian continent",
+          "alias": true
+        },
+        {
+          "name": "Continental Asia",
+          "alias": true
+        }
+      ],
+      "zh-cn": [
+        {
+          "name": "亚洲",
+          "pref": true
+        },
+        {
+          "name": "亚细亚",
+          "alias": true
+        }
+      ],
+      "et": [
+        {
+          "name": "Aasia",
+          "pref": true
+        }
+      ],
+      "zh-tw": [
+        {
+          "name": "亞洲",
+          "pref": true
+        }
+      ],
+      "nn": [
+        {
+          "name": "Asia",
+          "pref": true
+        }
+      ],
+      "zh-mo": [
+        {
+          "name": "亞洲",
+          "pref": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "Asie",
+          "pref": true
+        },
+        {
+          "name": "continent asiatique",
+          "alias": true
+        },
+        {
+          "name": "Asie continentale",
+          "alias": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "亞洲",
+          "pref": true
+        },
+        {
+          "name": "日出之地",
+          "alias": true
+        },
+        {
+          "name": "東日洲",
+          "alias": true
+        },
+        {
+          "name": "亞细亞",
+          "alias": true
+        }
+      ],
+      "fi": [
+        {
+          "name": "Aasia",
+          "pref": true
+        },
+        {
+          "name": "Asia",
+          "alias": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "亞洲",
+          "pref": true
+        }
+      ],
+      "nb": [
+        {
+          "name": "Asia",
+          "pref": true
+        }
+      ],
+      "zh-hans": [
+        {
+          "name": "亚洲",
+          "pref": true
+        },
+        {
+          "name": "亚细亚",
+          "alias": true
+        }
+      ],
+      "sv": [
+        {
+          "name": "Asien",
+          "pref": true
+        },
+        {
+          "name": "Asia",
+          "alias": true
+        }
+      ],
+      "bg": [
+        {
+          "name": "Азия",
+          "pref": true
+        }
+      ],
+      "it": [
+        {
+          "name": "Asia",
+          "pref": true
+        }
+      ],
+      "hu": [
+        {
+          "name": "Ázsia",
+          "pref": true
+        }
+      ],
+      "tr": [
+        {
+          "name": "Asya",
+          "pref": true
+        },
+        {
+          "name": "Asya kıtası",
+          "alias": true
+        }
+      ],
+      "pl": [
+        {
+          "name": "Azja",
+          "pref": true
+        },
+        {
+          "name": "kontynent azjatycki",
+          "alias": true
+        }
+      ],
+      "cs": [
+        {
+          "name": "Asie",
+          "pref": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "アジア",
+          "pref": true
+        },
+        {
+          "name": "亜細亜",
+          "alias": true
+        },
+        {
+          "name": "亜州",
+          "alias": true
+        },
+        {
+          "name": "亜",
+          "alias": true
+        },
+        {
+          "name": "アズィヤ",
+          "alias": true
+        }
+      ],
+      "ko": [
+        {
+          "name": "아시아",
+          "pref": true
+        },
+        {
+          "name": "아세아",
+          "alias": true
+        }
+      ],
+      "sr": [
+        {
+          "name": "Азија",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q408": {
+    "name": "Australia",
+    "area": 7692024,
+    "names": {
+      "el": [
+        {
+          "name": "Αυστραλία",
+          "pref": true
+        }
+      ],
+      "mk": [
+        {
+          "name": "Австралија",
+          "pref": true
+        }
+      ],
+      "sk": [
+        {
+          "name": "Austrália",
+          "pref": true
+        },
+        {
+          "name": "Austrálsky zväz",
+          "alias": true
+        }
+      ],
+      "tl": [
+        {
+          "name": "Australya",
+          "pref": true
+        },
+        {
+          "name": "Awstralya",
+          "alias": true
+        },
+        {
+          "name": "Komonwelt ng Australia",
+          "alias": true
+        },
+        {
+          "name": "Komonwelt ng Australya",
+          "alias": true
+        }
+      ],
+      "es": [
+        {
+          "name": "Australia",
+          "pref": true
+        },
+        {
+          "name": "Mancomunidad de Australia",
+          "alias": true
+        }
+      ],
+      "hu": [
+        {
+          "name": "Ausztrália",
+          "pref": true
+        },
+        {
+          "name": "Ausztrál Államszövetség",
+          "alias": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "澳大利亚",
+          "pref": true
+        },
+        {
+          "name": "澳洲",
+          "alias": true
+        },
+        {
+          "name": "澳大利亞",
+          "alias": true
+        },
+        {
+          "name": "澳大利亚联邦",
+          "alias": true
+        },
+        {
+          "name": "澳大利亞聯邦",
+          "alias": true
+        },
+        {
+          "name": "澳州联邦",
+          "alias": true
+        },
+        {
+          "name": "澳州聯邦",
+          "alias": true
+        },
+        {
+          "name": "澳",
+          "alias": true
+        }
+      ],
+      "nl": [
+        {
+          "name": "Australië",
+          "pref": true
+        },
+        {
+          "name": "Gemenebest Australië",
+          "alias": true
+        },
+        {
+          "name": "Gemenebest van Australië",
+          "alias": true
+        }
+      ],
+      "he": [
+        {
+          "name": "אוסטרליה",
+          "pref": true
+        }
+      ],
+      "ro": [
+        {
+          "name": "Australia",
+          "pref": true
+        },
+        {
+          "name": "Țara de la antipozi",
+          "alias": true
+        },
+        {
+          "name": "Țara de la Antipozi",
+          "alias": true
+        },
+        {
+          "name": "Uniunea Australiei",
+          "alias": true
+        }
+      ],
+      "da": [
+        {
+          "name": "Australien",
+          "pref": true
+        }
+      ],
+      "lv": [
+        {
+          "name": "Austrālija",
+          "pref": true
+        }
+      ],
+      "pt-br": [
+        {
+          "name": "Austrália",
+          "pref": true
+        }
+      ],
+      "pt": [
+        {
+          "name": "Austrália",
+          "pref": true
+        },
+        {
+          "name": "Comunidade da Austrália",
+          "alias": true
+        }
+      ],
+      "ru": [
+        {
+          "name": "Австралия",
+          "pref": true
+        },
+        {
+          "name": "Австралийский Союз",
+          "alias": true
+        },
+        {
+          "name": "Австралийский союз",
+          "alias": true
+        }
+      ],
+      "de": [
+        {
+          "name": "Australien",
+          "pref": true
+        },
+        {
+          "name": "Commonwealth von Australien",
+          "alias": true
+        }
+      ],
+      "en": [
+        {
+          "name": "Australia",
+          "pref": true
+        },
+        {
+          "name": "Commonwealth of Australia",
+          "alias": true
+        },
+        {
+          "name": "Straya",
+          "alias": true
+        },
+        {
+          "name": "Aussieland",
+          "alias": true
+        },
+        {
+          "name": "Oz",
+          "alias": true
+        },
+        {
+          "name": "Stralia",
+          "alias": true
+        },
+        {
+          "name": "New Holland",
+          "alias": true
+        },
+        {
+          "name": "New Hollandia",
+          "alias": true
+        },
+        {
+          "name": "Nova Hollandia",
+          "alias": true
+        },
+        {
+          "name": "Down Under",
+          "alias": true
+        },
+        {
+          "name": "Stria",
+          "alias": true
+        },
+        {
+          "name": "The Commonwealth of Australia",
+          "alias": true
+        },
+        {
+          "name": "'Straya",
+          "alias": true
+        }
+      ],
+      "et": [
+        {
+          "name": "Austraalia",
+          "pref": true
+        },
+        {
+          "name": "Austraalia Ühendus",
+          "alias": true
+        }
+      ],
+      "zh-tw": [
+        {
+          "name": "澳洲",
+          "pref": true
+        },
+        {
+          "name": "澳大利亞",
+          "alias": true
+        }
+      ],
+      "nn": [
+        {
+          "name": "Australia",
+          "pref": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "Australie",
+          "pref": true
+        },
+        {
+          "name": "Commonwealth d'Australie",
+          "alias": true
+        },
+        {
+          "name": "Nouvelle-Hollande",
+          "alias": true
+        },
+        {
+          "name": "l'Australie",
+          "alias": true
+        }
+      ],
+      "fi": [
+        {
+          "name": "Australia",
+          "pref": true
+        },
+        {
+          "name": "Australian liittovaltio",
+          "alias": true
+        },
+        {
+          "name": "Australian yhteisö",
+          "alias": true
+        },
+        {
+          "name": "Australian kansainyhteisö",
+          "alias": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "澳大利亞",
+          "pref": true
+        },
+        {
+          "name": "澳洲",
+          "alias": true
+        },
+        {
+          "name": "澳大利亞聯邦",
+          "alias": true
+        }
+      ],
+      "nb": [
+        {
+          "name": "Australia",
+          "pref": true
+        }
+      ],
+      "zh-hans": [
+        {
+          "name": "澳大利亚",
+          "pref": true
+        },
+        {
+          "name": "澳大利亚联邦",
+          "alias": true
+        }
+      ],
+      "sv": [
+        {
+          "name": "Australien",
+          "pref": true
+        },
+        {
+          "name": "Australia",
+          "alias": true
+        },
+        {
+          "name": "Australiska statsförbundet",
+          "alias": true
+        },
+        {
+          "name": "Samväldet Australien",
+          "alias": true
+        }
+      ],
+      "bg": [
+        {
+          "name": "Австралия",
+          "pref": true
+        }
+      ],
+      "it": [
+        {
+          "name": "Australia",
+          "pref": true
+        },
+        {
+          "name": "Commonwealth dell'Australia",
+          "alias": true
+        }
+      ],
+      "tr": [
+        {
+          "name": "Avustralya",
+          "pref": true
+        }
+      ],
+      "pl": [
+        {
+          "name": "Australia",
+          "pref": true
+        }
+      ],
+      "cs": [
+        {
+          "name": "Austrálie",
+          "pref": true
+        },
+        {
+          "name": "Australské společenství",
+          "alias": true
+        },
+        {
+          "name": "Australský svaz",
+          "alias": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "オーストラリア",
+          "pref": true
+        },
+        {
+          "name": "豪州",
+          "alias": true
+        },
+        {
+          "name": "オーストラリア連邦",
+          "alias": true
+        }
+      ],
+      "ko": [
+        {
+          "name": "오스트레일리아",
+          "pref": true
+        },
+        {
+          "name": "호주",
+          "alias": true
+        }
+      ],
+      "sr": [
+        {
+          "name": "Аустралија",
+          "pref": true
+        },
+        {
+          "name": "Федерација Аустралије",
+          "alias": true
+        }
+      ],
+      "zh-hk": [
+        {
+          "name": "澳洲",
+          "pref": true
+        }
+      ],
+      "zh-cn": [
+        {
+          "name": "澳大利亚",
+          "pref": true
+        },
+        {
+          "name": "澳大利亚联邦",
+          "alias": true
+        }
+      ],
+      "zh-sg": [
+        {
+          "name": "澳大利亚",
+          "pref": true
+        }
+      ],
+      "zh-my": [
+        {
+          "name": "澳大利亚",
+          "pref": true
+        }
+      ],
+      "zh-mo": [
+        {
+          "name": "澳洲",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q5401": {
+    "name": "Eurasia",
+    "area": 54759000,
+    "names": {
+      "de": [
+        {
+          "name": "Eurasien",
+          "pref": true
+        }
+      ],
+      "nb": [
+        {
+          "name": "Eurasia",
+          "pref": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "Eurasie",
+          "pref": true
+        }
+      ],
+      "en": [
+        {
+          "name": "Eurasia",
+          "pref": true
+        },
+        {
+          "name": "Euroasia",
+          "alias": true
+        }
+      ],
+      "it": [
+        {
+          "name": "Eurasia",
+          "pref": true
+        }
+      ],
+      "bg": [
+        {
+          "name": "Евразия",
+          "pref": true
+        }
+      ],
+      "cs": [
+        {
+          "name": "Eurasie",
+          "pref": true
+        }
+      ],
+      "da": [
+        {
+          "name": "Eurasien",
+          "pref": true
+        }
+      ],
+      "el": [
+        {
+          "name": "Ευρασία",
+          "pref": true
+        }
+      ],
+      "es": [
+        {
+          "name": "Eurasia",
+          "pref": true
+        },
+        {
+          "name": "Viejo Mundo",
+          "alias": true
+        },
+        {
+          "name": "Europa y Asia",
+          "alias": true
+        },
+        {
+          "name": "Euroasia",
+          "alias": true
+        },
+        {
+          "name": "supercontinente de Eurasia",
+          "alias": true
+        },
+        {
+          "name": "Euroasiático",
+          "alias": true
+        },
+        {
+          "name": "Supercontinente euroasiático",
+          "alias": true
+        },
+        {
+          "name": "Supercontinente eurasiático",
+          "alias": true
+        },
+        {
+          "name": "Continente de Eurasia",
+          "alias": true
+        },
+        {
+          "name": "Continente eurasiático",
+          "alias": true
+        },
+        {
+          "name": "Continente euroasiático",
+          "alias": true
+        }
+      ],
+      "et": [
+        {
+          "name": "Euraasia",
+          "pref": true
+        }
+      ],
+      "fi": [
+        {
+          "name": "Euraasia",
+          "pref": true
+        }
+      ],
+      "he": [
+        {
+          "name": "אירואסיה",
+          "pref": true
+        }
+      ],
+      "hu": [
+        {
+          "name": "Eurázsia",
+          "pref": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "ユーラシア",
+          "pref": true
+        },
+        {
+          "name": "ユーラシア大陸",
+          "alias": true
+        }
+      ],
+      "ko": [
+        {
+          "name": "유라시아",
+          "pref": true
+        }
+      ],
+      "lv": [
+        {
+          "name": "Eirāzija",
+          "pref": true
+        }
+      ],
+      "mk": [
+        {
+          "name": "Евроазија",
+          "pref": true
+        }
+      ],
+      "nl": [
+        {
+          "name": "Eurazië",
+          "pref": true
+        }
+      ],
+      "nn": [
+        {
+          "name": "Eurasia",
+          "pref": true
+        }
+      ],
+      "pl": [
+        {
+          "name": "Eurazja",
+          "pref": true
+        }
+      ],
+      "pt": [
+        {
+          "name": "Eurásia",
+          "pref": true
+        },
+        {
+          "name": "Categoria:Eurásia",
+          "alias": true
+        }
+      ],
+      "ro": [
+        {
+          "name": "Eurasia",
+          "pref": true
+        }
+      ],
+      "ru": [
+        {
+          "name": "Евразия",
+          "pref": true
+        }
+      ],
+      "sk": [
+        {
+          "name": "Eurázia",
+          "pref": true
+        }
+      ],
+      "sr": [
+        {
+          "name": "Евроазија",
+          "pref": true
+        }
+      ],
+      "sv": [
+        {
+          "name": "Eurasien",
+          "pref": true
+        },
+        {
+          "name": "Eurasia",
+          "alias": true
+        },
+        {
+          "name": "Euroasien",
+          "alias": true
+        },
+        {
+          "name": "Euroasia",
+          "alias": true
+        }
+      ],
+      "tr": [
+        {
+          "name": "Avrasya",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "歐亞大陸",
+          "pref": true
+        }
+      ],
+      "pt-br": [
+        {
+          "name": "Eurásia",
+          "pref": true
+        }
+      ],
+      "tl": [
+        {
+          "name": "Eurasya",
+          "pref": true
+        }
+      ],
+      "zh-tw": [
+        {
+          "name": "歐亞大陸",
+          "pref": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "歐亞大陸",
+          "pref": true
+        }
+      ],
+      "zh-hk": [
+        {
+          "name": "歐亞大陸",
+          "pref": true
+        }
+      ],
+      "zh-mo": [
+        {
+          "name": "歐亞大陸",
+          "pref": true
+        }
+      ],
+      "zh-cn": [
+        {
+          "name": "亚欧大陆",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q46": {
+    "name": "Europe",
+    "area": 10186000,
+    "names": {
+      "el": [
+        {
+          "name": "Ευρώπη",
+          "pref": true
+        },
+        {
+          "name": "Γηραιά ήπειρος",
+          "alias": true
+        },
+        {
+          "name": "Γηραιά",
+          "alias": true
+        },
+        {
+          "name": "Ευρώπη (ήπειρος)",
+          "alias": true
+        }
+      ],
+      "sk": [
+        {
+          "name": "Európa",
+          "pref": true
+        }
+      ],
+      "tl": [
+        {
+          "name": "Europa",
+          "pref": true
+        }
+      ],
+      "mk": [
+        {
+          "name": "Европа",
+          "pref": true
+        }
+      ],
+      "es": [
+        {
+          "name": "Europa",
+          "pref": true
+        },
+        {
+          "name": "continente europeo",
+          "alias": true
+        }
+      ],
+      "zh-sg": [
+        {
+          "name": "欧洲",
+          "pref": true
+        },
+        {
+          "name": "欧罗巴",
+          "alias": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "欧洲",
+          "pref": true
+        },
+        {
+          "name": "欧罗巴",
+          "alias": true
+        },
+        {
+          "name": "日落之地",
+          "alias": true
+        },
+        {
+          "name": "西日洲",
+          "alias": true
+        }
+      ],
+      "he": [
+        {
+          "name": "אירופה",
+          "pref": true
+        }
+      ],
+      "ro": [
+        {
+          "name": "Europa",
+          "pref": true
+        },
+        {
+          "name": "continentul european",
+          "alias": true
+        },
+        {
+          "name": "Europa (continent)",
+          "alias": true
+        },
+        {
+          "name": "bătrânul continent",
+          "alias": true
+        }
+      ],
+      "da": [
+        {
+          "name": "Europa",
+          "pref": true
+        }
+      ],
+      "lv": [
+        {
+          "name": "Eiropa",
+          "pref": true
+        }
+      ],
+      "pt": [
+        {
+          "name": "Europa",
+          "pref": true
+        },
+        {
+          "name": "continente europeu",
+          "alias": true
+        }
+      ],
+      "zh-my": [
+        {
+          "name": "欧洲",
+          "pref": true
+        },
+        {
+          "name": "欧罗巴",
+          "alias": true
+        }
+      ],
+      "ru": [
+        {
+          "name": "Европа",
+          "pref": true
+        },
+        {
+          "name": "Европа (часть света)",
+          "alias": true
+        },
+        {
+          "name": "Европа (континент)",
+          "alias": true
+        },
+        {
+          "name": "Европейский континент",
+          "alias": true
+        }
+      ],
+      "nb": [
+        {
+          "name": "Europa",
+          "pref": true
+        }
+      ],
+      "nl": [
+        {
+          "name": "Europa",
+          "pref": true
+        },
+        {
+          "name": "Europees continent",
+          "alias": true
+        },
+        {
+          "name": "oude continent",
+          "alias": true
+        }
+      ],
+      "de": [
+        {
+          "name": "Europa",
+          "pref": true
+        },
+        {
+          "name": "Alter Kontinent",
+          "alias": true
+        },
+        {
+          "name": "Die alte Welt",
+          "alias": true
+        },
+        {
+          "name": "Europäischer Kontinent",
+          "alias": true
+        }
+      ],
+      "en": [
+        {
+          "name": "Europe",
+          "pref": true
+        },
+        {
+          "name": "European continent",
+          "alias": true
+        },
+        {
+          "name": "The Old Continent",
+          "alias": true
+        },
+        {
+          "name": "European Continent",
+          "alias": true
+        },
+        {
+          "name": "European Peninsula",
+          "alias": true
+        },
+        {
+          "name": "Old Continent",
+          "alias": true
+        }
+      ],
+      "zh-cn": [
+        {
+          "name": "欧洲",
+          "pref": true
+        },
+        {
+          "name": "欧罗巴",
+          "alias": true
+        }
+      ],
+      "et": [
+        {
+          "name": "Euroopa",
+          "pref": true
+        },
+        {
+          "name": "kontinent",
+          "alias": true
+        }
+      ],
+      "zh-tw": [
+        {
+          "name": "歐洲",
+          "pref": true
+        },
+        {
+          "name": "歐羅巴",
+          "alias": true
+        }
+      ],
+      "nn": [
+        {
+          "name": "Europa",
+          "pref": true
+        },
+        {
+          "name": "det europeiske kontinentet",
+          "alias": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "Europe",
+          "pref": true
+        },
+        {
+          "name": "continent européen",
+          "alias": true
+        },
+        {
+          "name": "Vieux Continent",
+          "alias": true
+        }
+      ],
+      "fi": [
+        {
+          "name": "Eurooppa",
+          "pref": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "歐洲",
+          "pref": true
+        },
+        {
+          "name": "歐羅巴",
+          "alias": true
+        }
+      ],
+      "zh-mo": [
+        {
+          "name": "歐洲",
+          "pref": true
+        },
+        {
+          "name": "歐羅巴",
+          "alias": true
+        }
+      ],
+      "zh-hans": [
+        {
+          "name": "欧洲",
+          "pref": true
+        },
+        {
+          "name": "欧罗巴",
+          "alias": true
+        }
+      ],
+      "sv": [
+        {
+          "name": "Europa",
+          "pref": true
+        }
+      ],
+      "bg": [
+        {
+          "name": "Европа",
+          "pref": true
+        }
+      ],
+      "it": [
+        {
+          "name": "Europa",
+          "pref": true
+        },
+        {
+          "name": "Vecchio continente",
+          "alias": true
+        }
+      ],
+      "hu": [
+        {
+          "name": "Európa",
+          "pref": true
+        }
+      ],
+      "tr": [
+        {
+          "name": "Avrupa",
+          "pref": true
+        },
+        {
+          "name": "Avrupa kıtası",
+          "alias": true
+        },
+        {
+          "name": "Eski Kıta",
+          "alias": true
+        }
+      ],
+      "pl": [
+        {
+          "name": "Europa",
+          "pref": true
+        },
+        {
+          "name": "Stary Kontynent",
+          "alias": true
+        }
+      ],
+      "pt-br": [
+        {
+          "name": "Europa",
+          "pref": true
+        },
+        {
+          "name": "continente europeu",
+          "alias": true
+        }
+      ],
+      "cs": [
+        {
+          "name": "Evropa",
+          "pref": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "ヨーロッパ",
+          "pref": true
+        },
+        {
+          "name": "欧州",
+          "alias": true
+        },
+        {
+          "name": "欧羅巴",
+          "alias": true
+        },
+        {
+          "name": "欧",
+          "alias": true
+        },
+        {
+          "name": "ヨーロッパ州",
+          "alias": true
+        }
+      ],
+      "ko": [
+        {
+          "name": "유럽",
+          "pref": true
+        },
+        {
+          "name": "구라파",
+          "alias": true
+        },
+        {
+          "name": "구주",
+          "alias": true
+        }
+      ],
+      "sr": [
+        {
+          "name": "Европа",
+          "pref": true
+        }
+      ],
+      "zh-hk": [
+        {
+          "name": "歐洲",
+          "pref": true
+        },
+        {
+          "name": "歐羅巴",
+          "alias": true
+        }
+      ]
+    }
+  },
+  "Q668": {
+    "name": "India",
+    "area": 3287263,
+    "names": {
+      "mk": [
+        {
+          "name": "Индија",
+          "pref": true
+        }
+      ],
+      "sk": [
+        {
+          "name": "India",
+          "pref": true
+        },
+        {
+          "name": "Indická republika",
+          "alias": true
+        }
+      ],
+      "es": [
+        {
+          "name": "India",
+          "pref": true
+        },
+        {
+          "name": "República de la India",
+          "alias": true
+        },
+        {
+          "name": "La India",
+          "alias": true
+        }
+      ],
+      "zh-sg": [
+        {
+          "name": "印度",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "印度",
+          "pref": true
+        },
+        {
+          "name": "印",
+          "alias": true
+        },
+        {
+          "name": "天竺",
+          "alias": true
+        },
+        {
+          "name": "身毒",
+          "alias": true
+        },
+        {
+          "name": "贤督",
+          "alias": true
+        },
+        {
+          "name": "賢豆",
+          "alias": true
+        },
+        {
+          "name": "神督",
+          "alias": true
+        }
+      ],
+      "he": [
+        {
+          "name": "הודו",
+          "pref": true
+        }
+      ],
+      "ro": [
+        {
+          "name": "India",
+          "pref": true
+        },
+        {
+          "name": "Republica India",
+          "alias": true
+        }
+      ],
+      "da": [
+        {
+          "name": "Indien",
+          "pref": true
+        }
+      ],
+      "sv": [
+        {
+          "name": "Indien",
+          "pref": true
+        },
+        {
+          "name": "Republiken Indien",
+          "alias": true
+        }
+      ],
+      "lv": [
+        {
+          "name": "Indija",
+          "pref": true
+        }
+      ],
+      "pt-br": [
+        {
+          "name": "Índia",
+          "pref": true
+        }
+      ],
+      "pt": [
+        {
+          "name": "Índia",
+          "pref": true
+        }
+      ],
+      "zh-my": [
+        {
+          "name": "印度",
+          "pref": true
+        }
+      ],
+      "ru": [
+        {
+          "name": "Индия",
+          "pref": true
+        },
+        {
+          "name": "Республика Индия",
+          "alias": true
+        },
+        {
+          "name": "Бхарат",
+          "alias": true
+        }
+      ],
+      "tl": [
+        {
+          "name": "India",
+          "pref": true
+        },
+        {
+          "name": "Indiya",
+          "alias": true
+        }
+      ],
+      "nl": [
+        {
+          "name": "India",
+          "pref": true
+        },
+        {
+          "name": "Republiek India",
+          "alias": true
+        },
+        {
+          "name": "Hindustan",
+          "alias": true
+        },
+        {
+          "name": "Bharatvarsh",
+          "alias": true
+        }
+      ],
+      "de": [
+        {
+          "name": "Indien",
+          "pref": true
+        }
+      ],
+      "en": [
+        {
+          "name": "India",
+          "pref": true
+        },
+        {
+          "name": "Republic of India",
+          "alias": true
+        },
+        {
+          "name": "Bharatvarsh",
+          "alias": true
+        },
+        {
+          "name": "Hindustan",
+          "alias": true
+        },
+        {
+          "name": "Bharata",
+          "alias": true
+        },
+        {
+          "name": "Hindoostan",
+          "alias": true
+        },
+        {
+          "name": "Indostan",
+          "alias": true
+        },
+        {
+          "name": "Bharat Ganarajya",
+          "alias": true
+        },
+        {
+          "name": "Al Hind",
+          "alias": true
+        },
+        {
+          "name": "Tianzhu",
+          "alias": true
+        },
+        {
+          "name": "Tenjiku",
+          "alias": true
+        }
+      ],
+      "zh-cn": [
+        {
+          "name": "印度",
+          "pref": true
+        }
+      ],
+      "et": [
+        {
+          "name": "India",
+          "pref": true
+        },
+        {
+          "name": "India Vabariik",
+          "alias": true
+        }
+      ],
+      "zh-tw": [
+        {
+          "name": "印度",
+          "pref": true
+        }
+      ],
+      "nn": [
+        {
+          "name": "India",
+          "pref": true
+        }
+      ],
+      "zh-mo": [
+        {
+          "name": "印度",
+          "pref": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "Inde",
+          "pref": true
+        },
+        {
+          "name": "République d'Inde",
+          "alias": true
+        },
+        {
+          "name": "République de l'Inde",
+          "alias": true
+        },
+        {
+          "name": "Hindustan",
+          "alias": true
+        },
+        {
+          "name": "Bharatvarsh",
+          "alias": true
+        },
+        {
+          "name": "Indostan",
+          "alias": true
+        }
+      ],
+      "fi": [
+        {
+          "name": "Intia",
+          "pref": true
+        },
+        {
+          "name": "Intian tasavalta",
+          "alias": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "印度",
+          "pref": true
+        }
+      ],
+      "nb": [
+        {
+          "name": "India",
+          "pref": true
+        },
+        {
+          "name": "Republikken India",
+          "alias": true
+        }
+      ],
+      "zh-hans": [
+        {
+          "name": "印度",
+          "pref": true
+        }
+      ],
+      "bg": [
+        {
+          "name": "Индия",
+          "pref": true
+        },
+        {
+          "name": "Република Индия",
+          "alias": true
+        }
+      ],
+      "it": [
+        {
+          "name": "India",
+          "pref": true
+        },
+        {
+          "name": "Repubblica dell'India",
+          "alias": true
+        }
+      ],
+      "hu": [
+        {
+          "name": "India",
+          "pref": true
+        },
+        {
+          "name": "Indiai Köztársaság",
+          "alias": true
+        }
+      ],
+      "tr": [
+        {
+          "name": "Hindistan",
+          "pref": true
+        },
+        {
+          "name": "Hindistan Cumhuriyeti",
+          "alias": true
+        },
+        {
+          "name": "Bharat Ganarajya",
+          "alias": true
+        },
+        {
+          "name": "Bharata",
+          "alias": true
+        },
+        {
+          "name": "Bharatvarsh",
+          "alias": true
+        }
+      ],
+      "pl": [
+        {
+          "name": "Indie",
+          "pref": true
+        },
+        {
+          "name": "Republika Indii",
+          "alias": true
+        }
+      ],
+      "el": [
+        {
+          "name": "Ινδία",
+          "pref": true
+        },
+        {
+          "name": "Δημοκρατία της Ινδίας",
+          "alias": true
+        },
+        {
+          "name": "Μπχαράτ",
+          "alias": true
+        },
+        {
+          "name": "Ινδοστάν",
+          "alias": true
+        },
+        {
+          "name": "Χιντουστάν",
+          "alias": true
+        },
+        {
+          "name": "Μπχαράτβαρς",
+          "alias": true
+        },
+        {
+          "name": "Αρυαβάρτ",
+          "alias": true
+        },
+        {
+          "name": "Τζαμπούντβιπ",
+          "alias": true
+        }
+      ],
+      "cs": [
+        {
+          "name": "Indie",
+          "pref": true
+        },
+        {
+          "name": "Indická republika",
+          "alias": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "インド",
+          "pref": true
+        },
+        {
+          "name": "インド共和国",
+          "alias": true
+        },
+        {
+          "name": "印度",
+          "alias": true
+        },
+        {
+          "name": "印",
+          "alias": true
+        },
+        {
+          "name": "ブハラトゥ",
+          "alias": true
+        },
+        {
+          "name": "天竺",
+          "alias": true
+        },
+        {
+          "name": "インディア",
+          "alias": true
+        },
+        {
+          "name": "インド国",
+          "alias": true
+        },
+        {
+          "name": "バーラト",
+          "alias": true
+        }
+      ],
+      "ko": [
+        {
+          "name": "인도",
+          "pref": true
+        },
+        {
+          "name": "인디아",
+          "alias": true
+        },
+        {
+          "name": "인도 공화국",
+          "alias": true
+        },
+        {
+          "name": "바라트",
+          "alias": true
+        },
+        {
+          "name": "힌두스탄",
+          "alias": true
+        }
+      ],
+      "sr": [
+        {
+          "name": "Индија",
+          "pref": true
+        }
+      ],
+      "zh-hk": [
+        {
+          "name": "印度",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q49": {
+    "name": "North America",
+    "area": 21329947,
+    "names": {
+      "fr": [
+        {
+          "name": "Amérique du Nord",
+          "pref": true
+        },
+        {
+          "name": "Amérique du Nord (Q19464773) plus Amérique centrale (Q27611)",
+          "alias": true
+        },
+        {
+          "name": "Île de la Tortue",
+          "alias": true
+        }
+      ],
+      "it": [
+        {
+          "name": "America del Nord",
+          "pref": true
+        },
+        {
+          "name": "Nord America",
+          "alias": true
+        },
+        {
+          "name": "Continente nord-americano",
+          "alias": true
+        },
+        {
+          "name": "North America",
+          "alias": true
+        },
+        {
+          "name": "Nord-America",
+          "alias": true
+        },
+        {
+          "name": "Continente nordamericano",
+          "alias": true
+        },
+        {
+          "name": "Nordamericano",
+          "alias": true
+        },
+        {
+          "name": "America Settentrionale e Centrale",
+          "alias": true
+        },
+        {
+          "name": "Nordamerica",
+          "alias": true
+        },
+        {
+          "name": "Subcontinente nordamericano",
+          "alias": true
+        }
+      ],
+      "nb": [
+        {
+          "name": "Nord-Amerika",
+          "pref": true
+        }
+      ],
+      "es": [
+        {
+          "name": "América del Norte",
+          "pref": true
+        },
+        {
+          "name": "America del Norte y America Central",
+          "alias": true
+        },
+        {
+          "name": "Norteamérica",
+          "alias": true
+        },
+        {
+          "name": "América septentrional",
+          "alias": true
+        },
+        {
+          "name": "Norte América",
+          "alias": true
+        },
+        {
+          "name": "Norteamerica",
+          "alias": true
+        }
+      ],
+      "de": [
+        {
+          "name": "Nordamerika",
+          "pref": true
+        }
+      ],
+      "ru": [
+        {
+          "name": "Северная Америка",
+          "pref": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "北アメリカ",
+          "pref": true
+        },
+        {
+          "name": "北米",
+          "alias": true
+        }
+      ],
+      "nl": [
+        {
+          "name": "Noord-Amerika",
+          "pref": true
+        }
+      ],
+      "bg": [
+        {
+          "name": "Северна Америка",
+          "pref": true
+        }
+      ],
+      "cs": [
+        {
+          "name": "Severní Amerika",
+          "pref": true
+        }
+      ],
+      "da": [
+        {
+          "name": "Nordamerika",
+          "pref": true
+        }
+      ],
+      "el": [
+        {
+          "name": "Βόρεια Αμερική",
+          "pref": true
+        }
+      ],
+      "et": [
+        {
+          "name": "Põhja-Ameerika manner",
+          "pref": true
+        }
+      ],
+      "fi": [
+        {
+          "name": "Pohjois-Amerikka",
+          "pref": true
+        }
+      ],
+      "he": [
+        {
+          "name": "אמריקה הצפונית",
+          "pref": true
+        },
+        {
+          "name": "צפון אמריקה",
+          "alias": true
+        },
+        {
+          "name": "צפון-אמריקה",
+          "alias": true
+        }
+      ],
+      "hu": [
+        {
+          "name": "Észak-Amerika",
+          "pref": true
+        }
+      ],
+      "ko": [
+        {
+          "name": "북아메리카",
+          "pref": true
+        },
+        {
+          "name": "북미",
+          "alias": true
+        }
+      ],
+      "lv": [
+        {
+          "name": "Ziemeļamerika",
+          "pref": true
+        }
+      ],
+      "mk": [
+        {
+          "name": "Северна Америка",
+          "pref": true
+        }
+      ],
+      "nn": [
+        {
+          "name": "Nord-Amerika",
+          "pref": true
+        }
+      ],
+      "pl": [
+        {
+          "name": "Ameryka Północna",
+          "pref": true
+        },
+        {
+          "name": "NA",
+          "alias": true
+        },
+        {
+          "name": "AP",
+          "alias": true
+        }
+      ],
+      "pt": [
+        {
+          "name": "América do Norte e América Central",
+          "pref": true
+        }
+      ],
+      "ro": [
+        {
+          "name": "America de Nord",
+          "pref": true
+        }
+      ],
+      "sk": [
+        {
+          "name": "Severná Amerika",
+          "pref": true
+        }
+      ],
+      "sr": [
+        {
+          "name": "Северна Америка",
+          "pref": true
+        }
+      ],
+      "sv": [
+        {
+          "name": "Nordamerika",
+          "pref": true
+        }
+      ],
+      "tl": [
+        {
+          "name": "Hilagang Amerika",
+          "pref": true
+        },
+        {
+          "name": "kontinente sa Kaamerikahan",
+          "alias": true
+        }
+      ],
+      "tr": [
+        {
+          "name": "Kuzey Amerika",
+          "pref": true
+        },
+        {
+          "name": "Kuzey Amerika kıtası",
+          "alias": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "北美洲",
+          "pref": true
+        },
+        {
+          "name": "北美",
+          "alias": true
+        }
+      ],
+      "zh-cn": [
+        {
+          "name": "北美洲",
+          "pref": true
+        },
+        {
+          "name": "北美",
+          "alias": true
+        }
+      ],
+      "zh-tw": [
+        {
+          "name": "北美洲",
+          "pref": true
+        },
+        {
+          "name": "北美",
+          "alias": true
+        }
+      ],
+      "zh-sg": [
+        {
+          "name": "北美洲",
+          "pref": true
+        },
+        {
+          "name": "北美",
+          "alias": true
+        }
+      ],
+      "zh-mo": [
+        {
+          "name": "北美洲",
+          "pref": true
+        },
+        {
+          "name": "北美",
+          "alias": true
+        }
+      ],
+      "zh-hans": [
+        {
+          "name": "北美洲",
+          "pref": true
+        },
+        {
+          "name": "北美",
+          "alias": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "北美洲",
+          "pref": true
+        },
+        {
+          "name": "北美",
+          "alias": true
+        }
+      ],
+      "zh-hk": [
+        {
+          "name": "北美洲",
+          "pref": true
+        },
+        {
+          "name": "北美",
+          "alias": true
+        }
+      ],
+      "zh-my": [
+        {
+          "name": "北美洲",
+          "pref": true
+        },
+        {
+          "name": "北美",
+          "alias": true
+        }
+      ],
+      "en": [
+        {
+          "name": "North America",
+          "pref": true
+        },
+        {
+          "name": "NA",
+          "alias": true
+        },
+        {
+          "name": "Turtle Island",
+          "alias": true
+        },
+        {
+          "name": "North and Central America",
+          "alias": true
+        },
+        {
+          "name": "N. America",
+          "alias": true
+        },
+        {
+          "name": "North American continent",
+          "alias": true
+        },
+        {
+          "name": "North america",
+          "alias": true
+        },
+        {
+          "name": "North-America",
+          "alias": true
+        },
+        {
+          "name": "North America (continent)",
+          "alias": true
+        },
+        {
+          "name": "North America (region)",
+          "alias": true
+        },
+        {
+          "name": "North America (Americas)",
+          "alias": true
+        },
+        {
+          "name": "North American Continent",
+          "alias": true
+        },
+        {
+          "name": "N america",
+          "alias": true
+        },
+        {
+          "name": "003 (UN M.49 code)",
+          "alias": true
+        },
+        {
+          "name": "N America",
+          "alias": true
+        },
+        {
+          "name": "Amérique du Nord",
+          "alias": true
+        },
+        {
+          "name": "N Am",
+          "alias": true
+        },
+        {
+          "name": "North Am",
+          "alias": true
+        },
+        {
+          "name": "NoAm",
+          "alias": true
+        },
+        {
+          "name": "NOAM",
+          "alias": true
+        },
+        {
+          "name": "North Amer",
+          "alias": true
+        }
+      ],
+      "pt-br": [
+        {
+          "name": "América do Norte",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q55643": {
+    "name": "Oceania",
+    "area": 8486460,
+    "names": {
+      "ru": [
+        {
+          "name": "Австралия и Океания",
+          "pref": true
+        },
+        {
+          "name": "Океания и Австралия",
+          "alias": true
+        },
+        {
+          "name": "Океания",
+          "alias": true
+        }
+      ],
+      "sk": [
+        {
+          "name": "Oceánia",
+          "pref": true
+        },
+        {
+          "name": "Austrália a Oceánia",
+          "alias": true
+        }
+      ],
+      "hu": [
+        {
+          "name": "Ausztrália és Óceánia",
+          "pref": true
+        },
+        {
+          "name": "Óceánia",
+          "alias": true
+        },
+        {
+          "name": "Óceánia és Ausztrália",
+          "alias": true
+        }
+      ],
+      "cs": [
+        {
+          "name": "Oceánie",
+          "pref": true
+        },
+        {
+          "name": "Austrálie a Oceánie",
+          "alias": true
+        },
+        {
+          "name": "Oceánie a Austrálie",
+          "alias": true
+        }
+      ],
+      "en": [
+        {
+          "name": "Oceania",
+          "pref": true
+        },
+        {
+          "name": "Oceania and Australia",
+          "alias": true
+        },
+        {
+          "name": "Australia and Oceania",
+          "alias": true
+        },
+        {
+          "name": "Moana Oceania",
+          "alias": true
+        }
+      ],
+      "pl": [
+        {
+          "name": "Oceania i Australia",
+          "pref": true
+        },
+        {
+          "name": "Australia i Oceania",
+          "alias": true
+        }
+      ],
+      "de": [
+        {
+          "name": "Ozeanien",
+          "pref": true
+        },
+        {
+          "name": "Australien und Ozeanien",
+          "alias": true
+        },
+        {
+          "name": "Ozeanien und Australien",
+          "alias": true
+        }
+      ],
+      "ro": [
+        {
+          "name": "Oceania și Australia",
+          "pref": true
+        },
+        {
+          "name": "Australia și Oceaniaa",
+          "alias": true
+        }
+      ],
+      "es": [
+        {
+          "name": "Oceanía",
+          "pref": true
+        },
+        {
+          "name": "Australia y Oceania",
+          "alias": true
+        },
+        {
+          "name": "Oceania y Australia",
+          "alias": true
+        },
+        {
+          "name": "Australia y Oceanía",
+          "alias": true
+        },
+        {
+          "name": "Oceanía y Australia",
+          "alias": true
+        }
+      ],
+      "et": [
+        {
+          "name": "Okeaania ja Austraalia",
+          "pref": true
+        },
+        {
+          "name": "Austraalia ja Okeaania",
+          "alias": true
+        }
+      ],
+      "sv": [
+        {
+          "name": "Oceanien",
+          "pref": true
+        },
+        {
+          "name": "Australien och Oceanien",
+          "alias": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "Océanie",
+          "pref": true
+        },
+        {
+          "name": "Océanie et Australie",
+          "alias": true
+        },
+        {
+          "name": "Australie et Océanie",
+          "alias": true
+        }
+      ],
+      "fi": [
+        {
+          "name": "Oseania",
+          "pref": true
+        },
+        {
+          "name": "Australia ja Oseania",
+          "alias": true
+        },
+        {
+          "name": "Oseania ja Australia",
+          "alias": true
+        }
+      ],
+      "nl": [
+        {
+          "name": "Oceanië",
+          "pref": true
+        },
+        {
+          "name": "Australië en Oceanië",
+          "alias": true
+        },
+        {
+          "name": "Oceanië en Australië",
+          "alias": true
+        }
+      ],
+      "el": [
+        {
+          "name": "Ωκεανία",
+          "pref": true
+        },
+        {
+          "name": "Αυστραλία και Ωκεανία",
+          "alias": true
+        },
+        {
+          "name": "Ωκεανία και Αυστραλία",
+          "alias": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "大洋洲",
+          "pref": true
+        },
+        {
+          "name": "澳大利亚和大洋洲",
+          "alias": true
+        },
+        {
+          "name": "澳洲和大洋洲",
+          "alias": true
+        },
+        {
+          "name": "澳大利亞和大洋洲",
+          "alias": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "オセアニア",
+          "pref": true
+        },
+        {
+          "name": "大洋州",
+          "alias": true
+        },
+        {
+          "name": "オセアニア州",
+          "alias": true
+        }
+      ],
+      "sr": [
+        {
+          "name": "Океанија и Аустралија",
+          "pref": true
+        },
+        {
+          "name": "Аустралија и Океанија",
+          "alias": true
+        }
+      ],
+      "pt": [
+        {
+          "name": "Oceania",
+          "pref": true
+        }
+      ],
+      "nn": [
+        {
+          "name": "Oseania",
+          "pref": true
+        }
+      ],
+      "it": [
+        {
+          "name": "Oceania",
+          "pref": true
+        }
+      ],
+      "tl": [
+        {
+          "name": "Oseaniya",
+          "pref": true
+        }
+      ],
+      "ko": [
+        {
+          "name": "오세아니아",
+          "pref": true
+        }
+      ],
+      "lv": [
+        {
+          "name": "Austrālija un Okeānija",
+          "pref": true
+        },
+        {
+          "name": "Okeānija un Austrālija",
+          "alias": true
+        }
+      ],
+      "mk": [
+        {
+          "name": "Океанија",
+          "pref": true
+        }
+      ],
+      "bg": [
+        {
+          "name": "Океания",
+          "pref": true
+        }
+      ],
+      "tr": [
+        {
+          "name": "Okyanusya",
+          "pref": true
+        },
+        {
+          "name": "Okyanusya ve Avustralya",
+          "alias": true
+        },
+        {
+          "name": "Avustralya ve Okyanusya",
+          "alias": true
+        }
+      ],
+      "he": [
+        {
+          "name": "אוקיאניה",
+          "pref": true
+        },
+        {
+          "name": "אוסטרליה",
+          "alias": true
+        }
+      ],
+      "zh-hk": [
+        {
+          "name": "大洋洲",
+          "pref": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "大洋洲",
+          "pref": true
+        },
+        {
+          "name": "澳大利亞和大洋洲",
+          "alias": true
+        }
+      ],
+      "nb": [
+        {
+          "name": "Oseania",
+          "pref": true
+        }
+      ],
+      "zh-tw": [
+        {
+          "name": "大洋洲",
+          "pref": true
+        },
+        {
+          "name": "澳大利亞和大洋洲",
+          "alias": true
+        }
+      ],
+      "da": [
+        {
+          "name": "Oceanien",
+          "pref": true
+        }
+      ],
+      "zh-hans": [
+        {
+          "name": "大洋洲",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q18": {
+    "name": "South America",
+    "area": 17461112,
+    "names": {
+      "de": [
+        {
+          "name": "Südamerika",
+          "pref": true
+        },
+        {
+          "name": "Süd-Amerika",
+          "alias": true
+        }
+      ],
+      "en": [
+        {
+          "name": "South America",
+          "pref": true
+        },
+        {
+          "name": "S. America",
+          "alias": true
+        },
+        {
+          "name": "South American continent",
+          "alias": true
+        },
+        {
+          "name": "S America",
+          "alias": true
+        }
+      ],
+      "it": [
+        {
+          "name": "America meridionale",
+          "pref": true
+        },
+        {
+          "name": "Sud America",
+          "alias": true
+        },
+        {
+          "name": "Sudamerica",
+          "alias": true
+        },
+        {
+          "name": "America del Sud",
+          "alias": true
+        }
+      ],
+      "pl": [
+        {
+          "name": "Ameryka Południowa",
+          "pref": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "Amérique du Sud",
+          "pref": true
+        },
+        {
+          "name": "Amérique méridionale",
+          "alias": true
+        }
+      ],
+      "ru": [
+        {
+          "name": "Южная Америка",
+          "pref": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "南アメリカ",
+          "pref": true
+        },
+        {
+          "name": "南米",
+          "alias": true
+        },
+        {
+          "name": "南アメリカ州",
+          "alias": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "南美洲",
+          "pref": true
+        },
+        {
+          "name": "南美",
+          "alias": true
+        }
+      ],
+      "es": [
+        {
+          "name": "América del Sur",
+          "pref": true
+        },
+        {
+          "name": "Sudamérica",
+          "alias": true
+        },
+        {
+          "name": "Suramérica",
+          "alias": true
+        },
+        {
+          "name": "Sudamerica",
+          "alias": true
+        },
+        {
+          "name": "América del Sud",
+          "alias": true
+        },
+        {
+          "name": "América meridional",
+          "alias": true
+        }
+      ],
+      "nl": [
+        {
+          "name": "Zuid-Amerika",
+          "pref": true
+        }
+      ],
+      "bg": [
+        {
+          "name": "Южна Америка",
+          "pref": true
+        }
+      ],
+      "cs": [
+        {
+          "name": "Jižní Amerika",
+          "pref": true
+        }
+      ],
+      "da": [
+        {
+          "name": "Sydamerika",
+          "pref": true
+        }
+      ],
+      "el": [
+        {
+          "name": "Νότια Αμερική",
+          "pref": true
+        }
+      ],
+      "et": [
+        {
+          "name": "Lõuna-Ameerika manner",
+          "pref": true
+        }
+      ],
+      "fi": [
+        {
+          "name": "Etelä-Amerikka",
+          "pref": true
+        }
+      ],
+      "he": [
+        {
+          "name": "אמריקה הדרומית",
+          "pref": true
+        },
+        {
+          "name": "דרום אמריקה",
+          "alias": true
+        },
+        {
+          "name": "דרום-אמריקה",
+          "alias": true
+        }
+      ],
+      "hu": [
+        {
+          "name": "Dél-Amerika",
+          "pref": true
+        }
+      ],
+      "ko": [
+        {
+          "name": "남아메리카",
+          "pref": true
+        },
+        {
+          "name": "남미",
+          "alias": true
+        }
+      ],
+      "lv": [
+        {
+          "name": "Dienvidamerika",
+          "pref": true
+        }
+      ],
+      "mk": [
+        {
+          "name": "Јужна Америка",
+          "pref": true
+        }
+      ],
+      "nn": [
+        {
+          "name": "Sør-Amerika",
+          "pref": true
+        },
+        {
+          "name": "Syd-Amerika",
+          "alias": true
+        }
+      ],
+      "pt": [
+        {
+          "name": "América do Sul",
+          "pref": true
+        }
+      ],
+      "ro": [
+        {
+          "name": "America de Sud",
+          "pref": true
+        }
+      ],
+      "sk": [
+        {
+          "name": "Južná Amerika",
+          "pref": true
+        }
+      ],
+      "sr": [
+        {
+          "name": "Јужна Америка",
+          "pref": true
+        },
+        {
+          "name": "Јужноамерички континент",
+          "alias": true
+        }
+      ],
+      "sv": [
+        {
+          "name": "Sydamerika",
+          "pref": true
+        }
+      ],
+      "tl": [
+        {
+          "name": "Timog Amerika",
+          "pref": true
+        }
+      ],
+      "tr": [
+        {
+          "name": "Güney Amerika",
+          "pref": true
+        },
+        {
+          "name": "Güney Amerika kıtası",
+          "alias": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "南美洲",
+          "pref": true
+        },
+        {
+          "name": "南美",
+          "alias": true
+        }
+      ],
+      "zh-cn": [
+        {
+          "name": "南美洲",
+          "pref": true
+        },
+        {
+          "name": "南美",
+          "alias": true
+        }
+      ],
+      "zh-hans": [
+        {
+          "name": "南美洲",
+          "pref": true
+        },
+        {
+          "name": "南美",
+          "alias": true
+        }
+      ],
+      "nb": [
+        {
+          "name": "Sør-Amerika",
+          "pref": true
+        },
+        {
+          "name": "Syd-Amerika",
+          "alias": true
+        }
+      ],
+      "zh-sg": [
+        {
+          "name": "南美洲",
+          "pref": true
+        },
+        {
+          "name": "南美",
+          "alias": true
+        }
+      ],
+      "zh-my": [
+        {
+          "name": "南美洲",
+          "pref": true
+        },
+        {
+          "name": "南美",
+          "alias": true
+        }
+      ],
+      "zh-hk": [
+        {
+          "name": "南美洲",
+          "pref": true
+        },
+        {
+          "name": "南美",
+          "alias": true
+        }
+      ],
+      "zh-tw": [
+        {
+          "name": "南美洲",
+          "pref": true
+        },
+        {
+          "name": "南美",
+          "alias": true
+        }
+      ],
+      "zh-mo": [
+        {
+          "name": "南美洲",
+          "pref": true
+        },
+        {
+          "name": "南美",
+          "alias": true
+        }
+      ],
+      "pt-br": [
+        {
+          "name": "América do Sul",
+          "pref": true
+        },
+        {
+          "name": "continente sul-americano",
+          "alias": true
+        }
+      ]
+    }
+  }
+}
