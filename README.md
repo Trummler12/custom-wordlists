@@ -11,7 +11,7 @@ Build your own custom word lists for **[skribbl.io](https://skribbl.io)**, Coden
 - **Topics & groups** — browse a category tree, select whole topics or individual groups.
 - **Fame depth** — a slider per group includes only the top-N fame tiers, so you can keep a list to just the iconic entries or go all the way into the deep cuts.
 - **Name forms** — entries with a short/long name (e.g. *Cartman* / *Eric Cartman*) can be emitted as short, long, or both at once.
-- **Languages** — pick which language the lists come out in (nine, Chinese counting twice for its two scripts) and, as a separate setting, which one the app itself speaks (seven). Entries fall back to English where a translation isn't there yet, and the row says so with a ⚠️.
+- **Languages** — pick which language the lists come out in and, as a separate setting, which one the app itself speaks (eleven each, Chinese counting twice for its two scripts). Entries fall back to English where a translation isn't there yet, and the row says so with a ⚠️.
 - **Per-list overrides** — put a single list back to English while the rest stay in your language, or read Japanese lists as romaji and Spanish ones in their Latin American forms.
 - **What a list leaves out** — a 🧹 panel names the families a list filters out (numbered junk, things nobody could draw) and hands any of them back if you want them.
 - **skribbl-ready output** — de-duplicated, with live word/character counts and the skribbl limits checked for you.
@@ -30,14 +30,13 @@ The obvious next steps are finishing the **lists** that exist, adding the ones t
 
 ## Contributing
 
-Contributions are very welcome: new lists, fixes to existing ones, better fame ordering, or missing languages.
-**You don't need to write any code:** the easiest way is to open an issue. And if your topic already exists as structured data somewhere — an API, a dataset, a repo — then a couple of links are the whole contribution, because a script builds the list from them in every language at once.
+Contributions are very welcome, and **you don't need to write any code.** More and more lists are built by script from [Wikidata](https://www.wikidata.org/), in every language at once, so:
 
-- **Option A (preferred): [open an issue](https://github.com/Trummler12/custom-wordlists/issues).** Use the *Word list*, *Data source* or *Correction / small fix* template. Share a whole list either **simply** (just names under fame groups) or as **ready-to-paste JSON** — whichever suits you. Discuss and refine it in the Issues' thread; a maintainer turns accepted proposals into the data files.
-- **Option B: fork & PR.** Prefer to edit the JSON yourself? Go for it.
-- **Option C: help convert a list.** Turn a list someone posted in the simple form into JSON.
+- **Improve the data on Wikidata (recommended).** Each topic built from it has a [coverage page](https://trummler12.github.io/custom-wordlists/coverage/sports) showing which names are still missing per language. Every one added there reaches the lists with the next dump.
+- **Propose a topic built from Wikidata**, ideally with a Query Builder link, via a [*Data source*](https://github.com/Trummler12/custom-wordlists/issues/new?template=1-data-source.yml) issue.
+- **Hand-written lists** are still welcome for topics Wikidata can't carry, but they are the costly route for everyone.
 
-See **[CONTRIBUTING.md](CONTRIBUTING.md)** for the details and the entry format, and the worked examples for **list proposals**: [simple (#17)](https://github.com/Trummler12/custom-wordlists/issues/17) · [JSON (#26)](https://github.com/Trummler12/custom-wordlists/issues/26).
+See **[CONTRIBUTING.md](CONTRIBUTING.md)** for the details.
 
 ## Local development
 
@@ -76,4 +75,4 @@ Svelte 5 (runes) · Vite · TypeScript, deployed as a static site to GitHub Page
 
 The code is [MIT](LICENSE).
 
-The word lists are collections of **names** — characters, creatures, places and the like — compiled from public sources such as fandom wikis; no descriptions or other prose is copied from them. Ideally each topic file names its own sources in its `sources` field, and whoever compiled it in `credits` — that part is still work in progress. Many lists are only sketched out so far, with no source worth naming yet. If you hold rights to something here and would rather it weren't, open an issue and it comes out.
+The word lists are collections of **names** — characters, creatures, places and the like — compiled from public sources: more and more of them from [Wikidata](https://www.wikidata.org/) (CC0), others from sources such as fandom wikis; no descriptions or other prose is copied from them. Ideally each topic file names its own sources in its `sources` field, and whoever compiled it in `credits` — that part is still work in progress. Many lists are only sketched out so far, with no source worth naming yet. If you hold rights to something here and would rather it weren't, open an issue and it comes out.
