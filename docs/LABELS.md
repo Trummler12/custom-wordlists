@@ -19,14 +19,14 @@ Applied automatically by the form. Exactly one per issue.
 
 | Label | Applied by | Meaning |
 |---|---|---|
-| `List 📋` | `1-word-list.yml` | A whole word list: new, a full rework, or a new language |
-| `Data 📊` | `2-data-source.yml` | Links to structured data a list can be generated from |
+| `Data 📊` | `1-data-source.yml` | A topic (or a change to one) built from Wikidata or other structured data — the recommended way |
+| `List 📋` | `2-word-list.yml` | A hand-written word list: new, a full rework, or a new language |
 | `Correction 🔧` | `3-correction.yml` | A wrong or missing entry, a fame-group tweak, a translation |
 | `Code 💻` | `4-bug.yml`, `5-improvement.yml` | The app itself — site, UI, build |
 
 `Correction 🔧` is deliberately content-only. A wrong entry in a list is not a `Bug 🐛`; keeping them apart is what makes `Bug 🐛` usable as a filter for "the app is broken".
 
-`Data 📊` is a type rather than a kind, even though a data source always *becomes* a list. What arrives is different in kind from a list: links, not entries. Keeping it out of `List 📋` is also what stops `Needs JSON 🧩` from firing on it — see below, that job is gated on the `List 📋` label, and a data issue has no entries to look at.
+`Data 📊` is a type rather than a kind, even though a data source always *becomes* a list. What arrives is different in kind from a list: a query or links, not entries. Keeping it out of `List 📋` is also what stops `Needs JSON 🧩` from firing on it — see below, that job is gated on the `List 📋` label, and a data issue has no entries to look at.
 
 ## Kind — what shape it takes
 
@@ -35,18 +35,18 @@ On the word-list and data-source forms this is a *Kind* dropdown, and the labeli
 | Label | From | Meaning |
 |---|---|---|
 | `New 🆕` | `List 📋`, `Data 📊` | A topic that wasn't covered yet |
-| `Rework 🛠️` | `List 📋` | A full overhaul of an existing list |
+| `Rework 🛠️` | `List 📋`, `Data 📊` | A full overhaul of an existing list, or a different query for it |
 | `Language 🌐` | `List 📋`, `Data 📊` | Adds or fixes a language |
 | `Bug 🐛` | `4-bug.yml` | Something doesn't work as it should |
 | `Improvement ⚙️` | `5-improvement.yml` | A concrete proposal for how something could work better |
 
-Both forms with a dropdown spell it `Kind of proposal` and spell the options the same way, so the workflow reads one heading and a new form costs it no change. The data form offers no `Rework`: a data source doesn't overhaul a list, it replaces one or fills a language in one.
+Both forms with a dropdown spell it `Kind of proposal` and spell the options the same way, so the workflow reads one heading and a new form costs it no change.
 
 `Idea 💡` is **not** in the dropdown on purpose: an open-ended idea versus a concrete proposal is a distinction the reporter shouldn't have to agonise over. Apply it on triage when something turns out to be more of a direction than a proposal.
 
 ## Conversion — from a simple list to JSON
 
-A `List 📋` can arrive in two shapes (see [CONTRIBUTING.md](../CONTRIBUTING.md)): the *simple* plain-text form, or ready-to-paste *JSON*. These two labels track a simple submission on its way to becoming data — kept apart from `help wanted` on purpose, so that promise ("never applied automatically") stays intact.
+A hand-written `List 📋` can arrive in two shapes (see [CONTRIBUTING.md](../CONTRIBUTING.md)): the *simple* plain-text form, or ready-to-paste *JSON*. These two labels track a simple submission on its way to becoming data — kept apart from `help wanted` on purpose, so that promise ("never applied automatically") stays intact.
 
 | Label | Applied by | Meaning |
 |---|---|---|
