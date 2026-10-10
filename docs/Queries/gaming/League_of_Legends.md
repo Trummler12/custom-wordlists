@@ -42,7 +42,7 @@ What Wikidata offers for the League of Legends topics, and how far it can serve 
 **Labels:** Wikidata names the champions in ja (157), ko (162) and ru (154), elsewhere hardly at all (de 17, fr 12, zh-Hant 11, zh 10, es 8, zh-Hans 0). Five carry a disambiguator (fr Caitlyn, Warwick; it Viktor; vi Jinx, Vi), and so does it *Pentakill (gruppo musicale)*; batched.  
 **The better name source is Riot's own:** Data Dragon publishes every champion's official name in 28 locales (cs, de, el, es, fr, hu, id, it, ja, ko, pl, pt-BR, ro, ru, th, tr, vi, zh-CN, zh-TW, …), one request per locale. It covers what our list lacks (ja, ko, zh-Hans, zh-Hant, ru, el and the rest) with official names, which Wikidata can't match.
 
-**Wikidata batches from this pass** (awaiting import; files in `_data/QuickStatements/`):
+**Wikidata batches from this pass** (imported and checked on the items 2026-10-10: the eight new items are Q141680380 to Q141680399, each with its references; files in `_data/QuickStatements/imported/`):
 
 | Batch | Edits | What |
 | :---- | ----: | :---- |
@@ -52,7 +52,7 @@ What Wikidata offers for the League of Legends topics, and how far it can serve 
 **Rating:** ➕ stands: membership complete after the batch, by the P1441 link. Names come better from Data Dragon, fame from Sporcle.
 
 <!-- @agent(#35) from #38 · 2026-10-09 · OPEN
-Decided: LoL champions checked (this file, Champions). Membership on Wikidata is complete once the creation batch is imported (P1441 League of Legends); fame stays with Sporcle.
+Decided: LoL champions checked (this file, Champions). Membership on Wikidata is complete: the creation batch is imported (2026-10-10), all 173 champions carry P1441 League of Legends; fame stays with Sporcle.
 Ask: for the names, consider Riot's Data Dragon instead of Wikidata: https://ddragon.leagueoflegends.com/cdn/<version>/data/<locale>/champion.json gives the official name of all 173 champions in 28 locales (versions at /api/versions.json, locales at /cdn/languages.json); our list carries en and de only.
 Refs: this file, Champions
 -->

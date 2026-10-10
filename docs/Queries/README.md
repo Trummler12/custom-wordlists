@@ -67,6 +67,7 @@ Use the relative File Paths/Links provided on the Items listed in the [Overview 
 - `elements.mjs`: the element membership (one item per atomic number) and the labels in the build's languages: gaps down each fallback chain, invisible characters, disambiguators, Simplified Chinese read from `zh`, and labels against the language's article title.
 - `pokemon.mjs [topic folder]`: sitelinks against the editorial fame tiers per generation (Spearman), Wikidata's labels against the official names in our lists, and the labels in the languages without an official release.
 - `lol.mjs [champions.json]`: the items linked to League of Legends or its universe, by property, against our champions; their classes, sitelinks and label coverage.
+- `southpark.mjs [characters.json]`: the items linked to South Park against our characters per tier, the classes and the couples / families among them, sitelinks per tier, de labels, the families and the video games.
 - `multisport.mjs`: the sports of other multi-sport events and their overlap with the Olympic ones.
 - `fame.mjs <QID>… [--from file]`: sitelinks against 12 months of English pageviews, with Spearman's rho.
 - `historical.mjs [--min N]`: candidate queries for historical countries against a reference set.
@@ -86,7 +87,7 @@ Use the relative File Paths/Links provided on the Items listed in the [Overview 
   - ✖️[Characters](./animation/South_Park.md#️characters)
   - ✖️[Families](./animation/South_Park.md#️families)
   - ❌[Episodes](./animation/South_Park.md#episodes)
-  - 🔵[Video Games](./animation/South_Park.md#video-games)
+  - ➕[Video Games](./animation/South_Park.md#video-games)
 - [SpongeBob SquarePants](./animation/SpongeBob.md#navigation)
   - ➕[Characters](./animation/SpongeBob.md#characters)
   - 🔵[Locations](./animation/SpongeBob.md#locations)
