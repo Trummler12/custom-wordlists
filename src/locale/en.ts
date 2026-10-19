@@ -214,14 +214,14 @@ export const en: UIStrings = {
   language: {
     label: (current) => `Language: ${current}`,
     panelTitle: "Language settings",
-    slot: { primary: "Primary:", interface: "Interface:", fallback: "Fallback:" },
+    slot: { primary: "Primary:", interface: "Interface:", fallback: "UI Fallback:" },
     slotHint: {
       primary: "Primary language for list items, and the default for most other language settings.",
-      interface: "Language used for the interface.",
-      fallback: "Used wherever the interface language is missing a label.",
+      interface: "Language used for the interface in particular.",
+      fallback: "In case the interface language is missing a locale.{br}In case this {i}also{/i} fails, the app falls back to English.",
     },
     followPrimary: "{i}Primary{/i}",
-    showSecondaryBefore: "Show the option to use", showSecondaryAfter: "entries",
+    showSecondaryBefore: "Show the option to use", showSecondaryAfter: "entries instead",
     showSecondaryHint:
       "Lets you use, for example, country names in your native language while using your preferred dub language for the names of series characters.",
     secondaryMoot: "These toggles only appear while the primary and the secondary language differ.",
