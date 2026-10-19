@@ -40,13 +40,15 @@ Use the relative File Paths/Links provided on the Items listed in the [Overview 
 - One file per subject: `_data/QuickStatements/<date>_<topic>-<subject>.txt`. Its first line is the batch name (English; it goes into the "Batch name" field, not into the commands), the rest nothing but commands (QuickStatements has no comments). The topic's section says what each batch does, why, from which sources, and whether it is **pending** or **imported**.
 - After the import: re-run the check, note the result in the section, delete the batch file.
 
-**Research can go to Gemini, QIDs never.** Finding sources for a statement is a good task to delegate (a prompt in `_untracked/Prompts/`), but Gemini invents QIDs; every QID is resolved by a query here, and a prompt that needs some names them itself.
+**Research can go to Gemini, QIDs never.** Finding sources for a statement is a good task to delegate (a prompt file per topic in `_data/Prompts/`, a `# <title>` with Topic, Goal and Outcome fields, then `## Prompt n: <title>` and `## Answer n` in turn (Gemini's answers use h3 and below); Trummler relays each prompt and pastes the answer; a file whose research is settled moves to `_data/Prompts/done/`, and back out if a follow-up turns up), but Gemini invents QIDs and URLs: every QID is resolved by a query here (a prompt that needs some names them itself), and every fact is checked on the source before it goes into a batch, by fetching the page, not by trusting the link (a missing page can still answer 200). Every analysis asks where a gap has no source at hand and a prompt would find one: missing items, a spelling to settle, a name form the data lacks.
+
+**Schema proposals where a topic would gain.** Where Wikidata or the research shows something our data model can't hold yet (a former name, a full name beside the short one), the analysis proposes the change in the topic's section, as a message to #35, who builds it. Rare, and only where it enriches the topic.
 
 **Keeping the analysis lean.**
 
 - A newer **Check** replaces the older one in its section (the history is in git).
 - Once a list is ✅ in use, its section shrinks to what building it needs: the final query, the rules (id, parameters), pointers to the exclusion / override lists, the last check. Comparisons that led there go into a collapsed `<details>` or away.
-- `_data/` is a cache: anything in it can be deleted and rebuilt with the scripts, the QuickStatements batches excepted until imported.
+- `_data/` is a cache: anything in it can be deleted and rebuilt with the scripts, except the research prompts (`_data/Prompts/`) and the QuickStatements batches until imported.
 - Agent mail ends with the agent that has nothing left to add: instead of replying, it carries the outcome into its own records (here: the analysis text) and deletes the whole thread.
 
 <details><summary><i>the scripts in <code>_scripts/</code></i></summary>

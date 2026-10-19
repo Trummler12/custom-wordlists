@@ -17,11 +17,12 @@ const forms = (e) => typeof e === "string" ? [e] : [en(e.long), e.en, en(e.short
 const key = (s) => s.toLowerCase().replace(/^(mr|ms|mrs|dr)\.? /, "").replace(/[^\p{L}\p{N}]/gu, "");
 
 const rows = await sparql(`SELECT ?i ?l ?n ?p WHERE { VALUES ?p { wdt:P1441 wdt:P1080 wdt:P8345 } ?i ?p wd:${SP} ; wikibase:sitelinks ?n .
-  OPTIONAL { ?i rdfs:label ?l FILTER(LANG(?l) = "en") } }`, { fresh: true });
+  OPTIONAL { ?i rdfs:label ?l FILTER(LANG(?l) IN ("en", "mul")) } }`, { fresh: true });
 const items = {};
 for (const r of rows) (items[r.i] ??= { en: r.l ?? r.i, n: Number(r.n), props: new Set() }).props.add(r.p.replace(/^.*\//, ""));
-const alias = await sparql(`SELECT ?i ?a WHERE { ?i wdt:P1441 wd:${SP} ; skos:altLabel ?a FILTER(LANG(?a) = "en") }`, { fresh: true });
+const alias = await sparql(`SELECT ?i ?a WHERE { ?i wdt:P1441 wd:${SP} ; skos:altLabel ?a FILTER(LANG(?a) IN ("en", "mul")) }`, { fresh: true });
 const byKey = new Map();
+// Names that read the same everywhere are often `mul` only, so labels and aliases take both.
 // The 2023 special (Q123024716) has its own versions of Cartman, Kenny and the town under the same names.
 const special = new Set((await sparql(`SELECT ?i WHERE { ?i wdt:P1441 wd:Q123024716 }`)).map((r) => r.i));
 for (const [q, it] of Object.entries(items)) if (!special.has(q)) { byKey.set(key(it.en), q); const first = it.en.split(" ")[0]; if (!byKey.has(key(first))) byKey.set(key(first), q); }
