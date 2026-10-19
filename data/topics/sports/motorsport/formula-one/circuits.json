@@ -1,0 +1,8 @@
+{
+  "id": "circuits",
+  "title": {"en":"Circuits","de":"Rennstrecken"},
+  "icon": "🛣️",
+  "description": "Formula One circuits, from Wikidata; built in PR #39.",
+  "plannedTopic": true,
+  "words": []
+}

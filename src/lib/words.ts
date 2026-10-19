@@ -5,7 +5,9 @@
 
 import type { Group, LocalizedString, NamePair, NamesMode, Word, WordEntry } from "./types";
 import { baseTag, matchTag } from "./languages";
-import { toRomaji } from "./kana";
+import { toRomaji } from "./languages/kana.mjs";
+import { lengthClass, limitsOf, type LengthRules } from "./lengths";
+import { resolveProse } from "../locale/topics";
 
 /** The tag an entry carrying `keys` answers `lang` with, or undefined for none.
  *
@@ -46,6 +48,23 @@ export function resolveStr(s: LocalizedString, lang: string, derived = false): s
   return tag !== undefined ? s[tag] : s.en;
 }
 
+/** The base of a Wikidata entity link — the language-type reasons wear one around
+ *  their (now centralized) label. Kept in step with `WD` in build-languages.mjs. */
+const WD = "https://www.wikidata.org/wiki";
+
+/** Resolve an omission rule's `reason` to `lang` for rendering through `Msg`.
+ *
+ *  A bare string is a prose id ("sovereignty.deFactoRecognized"), resolved through
+ *  the centralized topic-prose dictionary; a language map is a self-contained reason
+ *  that lives with its own list (the Pokémon one-offs), resolved in place. A `wd`
+ *  Q-id, present only where the label links to Wikidata, is composed back into the
+ *  `[label](url)` markdown the data used to bake — the label is now localized, the
+ *  link is not, so the two are joined here rather than in the data. */
+export function resolveReason(reason: LocalizedString, lang: string, wd?: string): string {
+  const label = typeof reason === "string" ? resolveProse(reason, lang) : resolveStr(reason, lang);
+  return wd ? `[${label}](${WD}/${wd})` : label;
+}
+
 /** The romaji of an entry that carries none, read off its Japanese name.
  *
  *  After the entry's own key and before every fallback: a stored `ja-Latn` still
@@ -77,8 +96,9 @@ export function unknownLangs(e: WordEntry): readonly string[] {
 
 /** Whether the list has no name for this entry in `lang`. An own key wins: a name
  *  filled in by hand outranks a gap the bulk source reported, so correcting one
- *  entry needs no edit to the `?` beside it. English never counts as unknown — it
- *  is the base every entry has.
+ *  entry needs no edit to the `?` beside it. Except in English: every entry needs an
+ *  `en`, so one the source has no English name for carries a stand-in there, and
+ *  only the `?` tells it apart.
  *
  *  The two halves ask about different things, which is why one takes the whole tag
  *  and the other only its language. Having a name is a property of the *language*:
@@ -90,8 +110,8 @@ export function unknownLangs(e: WordEntry): readonly string[] {
 export function isUnknownIn(e: WordEntry, lang: string): boolean {
   if (typeof e === "string") return false;
   const base = baseTag(lang);
-  if (base === "en") return false;
-  return (e as Record<string, unknown>)[lang] === undefined && unknownLangs(e).includes(base);
+  const own = lang !== "en" && (e as Record<string, unknown>)[lang] !== undefined;
+  return !own && unknownLangs(e).includes(base);
 }
 
 /** Resolve an entry to `lang`. Two equivalent shapes are accepted: the preferred
@@ -207,32 +227,46 @@ export function renderedForms(
   return [...seen];
 }
 
-/** How many of them the counters show. `maxLen` drops the forms too long for the
- *  target game — see `TOO_LONG_RULE` in lib/omitted; leave it out to count all. */
+/** How many of them the counters show. `fit` turns each form into what the Output
+ *  would hold (null: left out), so a form the rules drop isn't counted and two that
+ *  end up the same are counted once — see `selection.fitFor`. Leave it out to count
+ *  them all as they are. */
 export function renderCount(
   entries: WordEntry[],
   mode: NamesMode,
   lang: string,
   derived = false,
-  maxLen?: number,
+  fit?: (form: string) => string | null,
 ): number {
   const forms = renderedForms(entries, mode, lang, derived);
-  return maxLen === undefined ? forms.length : forms.filter((w) => w.length <= maxLen).length;
+  if (fit === undefined) return forms.length;
+  const out = new Set<string>();
+  for (const w of forms) {
+    const f = fit(w);
+    if (f !== null) out.add(f);
+  }
+  return out.size;
 }
 
-/** The forms `maxLen` drops, for the panel that names them and offers them back.
+/** The forms outside the character limits, for the panel that names them and offers
+ *  them back.
  *
  *  Forms rather than entries, which is what sets this apart from every other
  *  omission: an entry whose long form runs past the limit is perfectly usable
  *  under its short one, so what leaves the list is one of its two names. */
-export function overlongForms(
+export function outOfLimits(
   entries: WordEntry[],
   mode: NamesMode,
   lang: string,
   derived: boolean,
-  maxLen: number,
-): string[] {
-  return renderedForms(entries, mode, lang, derived).filter((w) => w.length > maxLen);
+  rules: Pick<LengthRules, "limits" | "script">,
+): { short: string[]; long: string[] } {
+  const out = { short: [] as string[], long: [] as string[] };
+  for (const w of renderedForms(entries, mode, lang, derived)) {
+    const cls = lengthClass(w, limitsOf(w, rules));
+    if (cls) out[cls].push(w);
+  }
+  return out;
 }
 
 /** The entries a variant spells differently, as `base → variant` pairs.

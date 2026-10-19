@@ -1,0 +1,52 @@
+name: 📊 Data source — a topic from Wikidata or other structured data
+description: Propose a topic (or a change to one) that a script builds from Wikidata, an API or a dataset.
+title: "📊 <Topic> — <what the data covers>"
+labels: ["Data 📊"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        The recommended way to propose a topic: name where its items come from, and a script builds the list in every language at once. Wikidata comes first; a public API or a maintained dataset works too. See [Propose a topic built from Wikidata](https://github.com/Trummler12/custom-wordlists/blob/main/CONTRIBUTING.md#propose-a-topic-built-from-wikidata) for what helps most.
+
+        **No entries needed here.** A missing name on a topic that's already built from Wikidata is best added on Wikidata itself (see its coverage page).
+  - type: input
+    id: topic
+    attributes:
+      label: Topic
+      placeholder: e.g. chemical elements
+    validations:
+      required: true
+  - type: dropdown
+    id: kind
+    attributes:
+      label: Kind of proposal
+      options:
+        - New — a topic that isn't covered yet
+        - Rework — a different query for an existing topic
+        - Language — data that fills a language on an existing list
+    validations:
+      required: true
+  - type: textarea
+    id: query
+    attributes:
+      label: Query
+      description: What finds the items. Ideally a [Wikidata Query Builder](https://query.wikidata.org/querybuilder/?uselang=en) link; a SPARQL query, or just the class and property in words, work too. For another source, its links, one per line.
+      placeholder: |
+        https://query.wikidata.org/querybuilder/?uselang=en#…
+        or: instance of (P31) sovereign state (Q3624078)
+    validations:
+      required: true
+  - type: textarea
+    id: leave-out
+    attributes:
+      label: What to leave out
+      description: The "Without" conditions, split in two — what doesn't belong to the topic at all, and what a reader might merely want hidden by default (historical, discontinued, …). The latter becomes a switch, not a removal.
+    validations:
+      required: false
+  - type: textarea
+    id: notes
+    attributes:
+      label: Fame & notes
+      description: Anything that ranks the items by fame (otherwise we use the number of Wikipedias covering each), which languages it covers, open questions. Guesses are welcome; we check before building anything.
+    validations:
+      required: false

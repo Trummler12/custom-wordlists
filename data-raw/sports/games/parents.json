@@ -1,0 +1,11 @@
+{
+  "_comment": "Corrections to the parent sport Wikidata gives (subclass of / part of), where the Games treat it otherwise. Keyed by Wikidata Q-id; `parent` is the Q-id of the sport it is a discipline of, or null for a sport of its own. Read by scripts/sports/build-games-sports.mjs; analysis in PR #38 (sports/Olympics.md).",
+
+  "Q108429":   { "en": "archery",           "parent": null,     "why": "a sport of its own at the Games, not shooting" },
+  "Q7735":     { "en": "diving",            "parent": null,     "why": "a sport of its own at the Games, not swimming" },
+  "Q270102":   { "en": "rugby sevens",      "parent": null,     "why": "a sport of its own at the Games, not rugby union" },
+  "Q692853":   { "en": "flag football",     "parent": null,     "why": "a sport of its own at the Games, not American football" },
+  "Q11420":    { "en": "judo",              "parent": null,     "why": "a sport of its own at the Games, not budō" },
+  "Q40244":    { "en": "marathon",          "parent": "Q542",   "why": "an athletics event" },
+  "Q17143662": { "en": "marathon swimming", "parent": "Q31920", "why": "a swimming event" }
+}

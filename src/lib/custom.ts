@@ -1,0 +1,410 @@
+// The pure core behind the Custom word-list input row (§X1). The row's UI,
+// persistence and output wiring live elsewhere (state/custom, components/topics/
+// CustomTopic); everything here is a pure function of the raw text and the chosen
+// separator, so it is unit-tested in isolation.
+//
+// A reader pastes a list of their own — comma-, newline- or otherwise-separated —
+// and it joins the output after every real topic. What that costs them in dropped
+// items (too long for the game, or duplicated) is reported the same way a curated
+// list reports its omissions, so the numbers here feed a panel, not a filter that
+// hides its work.
+
+import { lengthClass, limitsOf, type LengthRules } from "./lengths";
+import { fitSeparator, holdsSeparator, type SeparatorRules } from "./separator";
+
+/** The separator characters the input offers, in menu order. A list is split on
+ *  exactly one of them; `\n` / `\t` cover the paste-a-column case. */
+export const SEPARATORS = [",", ";", ":", "|", "\n", "\t"] as const;
+export type Separator = (typeof SEPARATORS)[number];
+
+/** A separator as a dropdown shows it: the invisible ones by their escape. */
+export function separatorLabel(s: Separator): string {
+  return s === "\n" ? "\\n" : s === "\t" ? "\\t" : s;
+}
+
+/** The fallback when nothing in the input votes for a separator (empty, a single
+ *  item, or a tie): the game's own list separator, and the most common typed one. */
+export const DEFAULT_SEPARATOR: Separator = ",";
+
+/** How many matched names a tier keeps for its hover — enough to fill the panel's
+ *  excerpt, capped so a huge paste doesn't stash thousands. Mirrors lib/omitted. */
+const SAMPLE_CAP = 50;
+
+/** Characters that are no letter, mark, digit or space but are practically always part of
+ *  a real name (the curated topics carry ~2200 hyphens, ~600 apostrophes, ~260 dots): listed
+ *  in the ⚠️ panel, never reported as a problem, never offered for cleaning. */
+export const ACCEPTED_CHARS: ReadonlySet<string> = new Set(["-", "–", "—", "'", "’", ".", "·", "・", ":", "&", "/"]);
+/** Characters that can be wanted (`Dwayne "The Rock" Johnson`) but are as often a leftover,
+ *  e.g. of quoting the game doesn't have: they raise the ⚠️, and cleaning offers them unticked. */
+export const TOLERATED_CHARS: ReadonlySet<string> = new Set(['"']);
+/** Brackets are judged per occurrence rather than per character: one closed by its partner
+ *  belongs to the name (accepted), a lone one is tolerated. */
+export const BRACKET_PAIRS: readonly (readonly [string, string])[] = [
+  ["(", ")"],
+  ["（", "）"],
+  ["[", "]"],
+];
+
+/** How the ⚠️ panel files a character: worth removing, possibly wanted, or ordinary. */
+export type CharClass = "ignored" | "tolerated" | "accepted";
+
+/** Characters that separate words, so cleaning replaces them with a space rather than
+ *  deleting them: `x(y` must not become `xy`, nor `21C/Delta` `21CDelta`. */
+export const SPACED_CHARS: ReadonlySet<string> = new Set([...BRACKET_PAIRS.flat(), "/", "\\", "|"]);
+
+/** Letters, combining marks and digits of any script, plus the plain space. The marks
+ *  matter: Devanagari, Thai or Hebrew vowel signs are code points of their own. */
+const WORD_CHAR = /[\p{L}\p{M}\p{N} ]/u;
+/** Whitespace other than the plain space, and control / format characters: invisible in
+ *  the field, so they are shown by code point instead. */
+const INVISIBLE = /[\p{Z}\p{C}]/u;
+
+/** Occurrences of each separator in the raw text. Every occurrence counts: a quote
+ *  mark is an ordinary character here, since skribbl.io and its kind have no quoting
+ *  either — an item simply can't contain the separator. */
+export function separatorCounts(raw: string): Record<Separator, number> {
+  const counts = Object.fromEntries(SEPARATORS.map((s) => [s, 0])) as Record<Separator, number>;
+  for (const ch of raw) {
+    if ((SEPARATORS as readonly string[]).includes(ch)) counts[ch as Separator]++;
+  }
+  return counts;
+}
+
+/** The separator the input auto-selects: the most common one. A tie at the top, or
+ *  none present at all, falls back to `,` — an arbitrary winner would flip the split
+ *  under the reader as they type. */
+export function detectSeparator(raw: string): Separator {
+  const counts = separatorCounts(raw);
+  const max = Math.max(...SEPARATORS.map((s) => counts[s]));
+  if (max === 0) return DEFAULT_SEPARATOR;
+  const top = SEPARATORS.filter((s) => counts[s] === max);
+  return top.length === 1 ? top[0] : DEFAULT_SEPARATOR;
+}
+
+/** The separators the dropdown may switch to: those that occur at least once — or,
+ *  when none does, all of them (so an empty field can still be re-pointed). */
+export function availableSeparators(raw: string): Separator[] {
+  const counts = separatorCounts(raw);
+  const present = SEPARATORS.filter((s) => counts[s] > 0);
+  return present.length ? present : [...SEPARATORS];
+}
+
+/** Split the raw text into trimmed, non-empty items on `sep`. No quoting: the game the
+ *  list is for has none, so honouring `"a, b"` here would build an item it can't take. */
+export function parseItems(raw: string, sep: string): string[] {
+  return raw
+    .split(sep)
+    .map((s) => s.trim())
+    .filter(Boolean);
+}
+
+/** One reported omission group: how many items it caught and a sample of them. */
+export interface OmissionTier {
+  count: number;
+  samples: string[];
+}
+
+/** The Custom channel's contribution and what it left out, in the panel's terms.
+ *  `kept` are the survivors in first-seen order — what the output actually adds. */
+export interface CustomBreakdown {
+  kept: string[];
+  /** Items over / under the character limits. Counted always; kept only when the
+   *  reader switches the rule off (`keepTooLong` / `keepTooShort`), mirroring the
+   *  topics' reserved length rules. */
+  tooLong: OmissionTier;
+  tooShort: OmissionTier;
+  /** Items holding the Output's separator, before the separator rule made of them
+   *  what it does (see lib/separator). Counted always. */
+  withSeparator: OmissionTier;
+  /** Duplicates within this one source. */
+  internal: OmissionTier;
+  /** Duplicates against the other active custom sources (X3; empty until then). */
+  local: OmissionTier;
+  /** Duplicates against the non-custom output already emitted (the `seen` set). */
+  global: OmissionTier;
+  /** Every parsed item, for the `n/m` counter (kept.length / total). */
+  total: number;
+}
+
+function emptyTier(): OmissionTier {
+  return { count: 0, samples: [] };
+}
+function record(tier: OmissionTier, item: string): void {
+  tier.count++;
+  if (tier.samples.length < SAMPLE_CAP) tier.samples.push(item);
+}
+
+/** Classify the active custom sources — the input field and/or the activated saved
+ *  lists, in the order they contribute — into what the Custom channel keeps and what
+ *  it drops, in the fixed precedence length => internal => local => global (each item
+ *  counted once, under the first tier that catches it, the "first rule wins" the
+ *  curated lists' `omissionSummary` uses).
+ *
+ *  - `lengths` are the character limits (see lib/lengths); `keepTooLong` /
+ *    `keepTooShort` reflect the reader's toggles (default off = drop them).
+ *  - `internal` = a duplicate within one source; `local` = a duplicate against an
+ *    earlier active source; `global` = a duplicate against `seen`, the words the
+ *    non-custom output already holds (reusing that set makes global-dedup free).
+ *
+ *  A single source (the input field alone) never fills the `local` tier — it is
+ *  what X1/X2 pass. */
+export function classifyCustom(
+  sources: readonly (readonly string[])[],
+  opts: {
+    lengths: Pick<LengthRules, "limits" | "script">;
+    keepTooLong: boolean;
+    keepTooShort?: boolean;
+    separator?: SeparatorRules;
+    seen: ReadonlySet<string>;
+  },
+): CustomBreakdown {
+  const { lengths, keepTooLong, keepTooShort = false, separator, seen } = opts;
+  const out: CustomBreakdown = {
+    kept: [],
+    tooLong: emptyTier(),
+    tooShort: emptyTier(),
+    withSeparator: emptyTier(),
+    internal: emptyTier(),
+    local: emptyTier(),
+    global: emptyTier(),
+    total: 0,
+  };
+  const keptSet = new Set<string>(); // across all sources — the local (cross-source) tier
+  for (const source of sources) {
+    const mine = new Set<string>(); // within this source — the internal tier
+    for (const raw of source) {
+      out.total++;
+      let item = raw;
+      if (separator && holdsSeparator(raw, separator.sep)) {
+        record(out.withSeparator, raw);
+        const fitted = fitSeparator(raw, separator);
+        if (fitted === null) continue;
+        item = fitted;
+      }
+      const cls = lengthClass(item, limitsOf(item, lengths));
+      if (cls === "long") {
+        record(out.tooLong, item);
+        if (!keepTooLong) continue;
+      } else if (cls === "short") {
+        record(out.tooShort, item);
+        if (!keepTooShort) continue;
+      }
+      if (mine.has(item)) {
+        record(out.internal, item);
+        continue;
+      }
+      if (keptSet.has(item)) {
+        record(out.local, item);
+        continue;
+      }
+      if (seen.has(item)) {
+        record(out.global, item);
+        continue;
+      }
+      mine.add(item);
+      keptSet.add(item);
+      out.kept.push(item);
+    }
+  }
+  return out;
+}
+
+/** One character the game will probably drop from the reader's items: how it reads in
+ *  the panel, how often it occurs, how often per source (index-aligned with the sources
+ *  passed in), and whether it is one of the ordinary ones in `TOLERATED_CHARS`. */
+export interface OddChar {
+  char: string;
+  label: string;
+  cls: CharClass;
+  /** The bracket pair the character belongs to, for a bracket. */
+  pair?: readonly [string, string];
+  count: number;
+  perSource: number[];
+}
+
+/** One odd character inside an item: its position (in code points), and its class. */
+export interface OddHit {
+  index: number;
+  char: string;
+  cls: CharClass;
+  pair?: readonly [string, string];
+}
+
+/** The odd characters of one item, classified. Brackets go through a stack per pair type,
+ *  so nesting resolves and `xy ) bla ( adfa` reads as two lone brackets. The panel's counts
+ *  and the save-time cleanup both read this, so they agree on which occurrence is which. */
+export function scanItem(item: string): OddHit[] {
+  const hits: OddHit[] = [];
+  const unclosed = new Map<string, number[]>(); // opener => its unclosed hits
+  [...item].forEach((char, index) => {
+    if (WORD_CHAR.test(char)) return;
+    const pair = BRACKET_PAIRS.find(([o, c]) => char === o || char === c);
+    if (!pair) {
+      const cls = ACCEPTED_CHARS.has(char) ? "accepted" : TOLERATED_CHARS.has(char) ? "tolerated" : "ignored";
+      hits.push({ index, char, cls });
+      return;
+    }
+    const hit: OddHit = { index, char, cls: "tolerated", pair };
+    const stack = unclosed.get(pair[0]) ?? [];
+    unclosed.set(pair[0], stack);
+    if (char === pair[0]) stack.push(hits.length);
+    else {
+      const opener = stack.pop();
+      if (opener !== undefined) hits[opener].cls = hit.cls = "accepted";
+    }
+    hits.push(hit);
+  });
+  return hits;
+}
+
+const CLASS_RANK: Record<CharClass, number> = { ignored: 0, tolerated: 1, accepted: 2 };
+
+/** The characters beyond letters, marks, digits and the space across `sources`, for the
+ *  Custom row's ⚠️ panel — one entry per character and class, so a bracket can show up
+ *  both lone and paired. Ordered by class, then count, so the top is what most needs a look. */
+export function oddChars(sources: readonly (readonly string[])[]): OddChar[] {
+  const found = new Map<string, OddChar>();
+  sources.forEach((items, si) => {
+    for (const item of items)
+      for (const { char, cls, pair } of scanItem(item)) {
+        const key = charKey({ char, cls });
+        let c = found.get(key);
+        if (!c) {
+          const label = INVISIBLE.test(char)
+            ? `U+${char.codePointAt(0)!.toString(16).toUpperCase().padStart(4, "0")}`
+            : char;
+          c = { char, label, cls, ...(pair ? { pair } : {}), count: 0, perSource: sources.map(() => 0) };
+          found.set(key, c);
+        }
+        c.count++;
+        c.perSource[si]++;
+      }
+  });
+  return [...found.values()].sort(
+    (a, b) => CLASS_RANK[a.cls] - CLASS_RANK[b.cls] || b.count - a.count || a.char.localeCompare(b.char),
+  );
+}
+
+/** The key one character-and-class goes by, e.g. in the save-time cleanup's selection: a
+ *  lone `(` and a paired one are different entries. */
+export function charKey(c: { char: string; cls: CharClass }): string {
+  return `${c.cls}|${c.char}`;
+}
+
+/** Clean `items` of the characters whose `charKey` is in `remove` — per occurrence, so a
+ *  selected lone `(` goes while a paired one stays. A word-separating character becomes a
+ *  space, anything else is deleted; then runs of spaces collapse, edges are trimmed and
+ *  items left empty are dropped. Duplicates are left for `findDupes`. */
+export function cleanItems(items: readonly string[], remove: ReadonlySet<string>): string[] {
+  const out: string[] = [];
+  for (const item of items) {
+    const hits = scanItem(item).filter((h) => remove.has(charKey(h)));
+    let text = item;
+    if (hits.length) {
+      const chars = [...item];
+      for (const h of hits) chars[h.index] = SPACED_CHARS.has(h.char) ? " " : "";
+      text = chars.join("").replace(/ {2,}/g, " ").trim();
+    }
+    if (text) out.push(text);
+  }
+  return out;
+}
+
+/** `items` without repeats (first occurrence kept, order kept), plus each repeated text
+ *  with how many copies it had — what the save-time confirm lists. */
+export function findDupes(items: readonly string[]): { unique: string[]; dupes: { text: string; copies: number }[] } {
+  const counts = new Map<string, number>();
+  for (const it of items) counts.set(it, (counts.get(it) ?? 0) + 1);
+  return {
+    unique: [...counts.keys()],
+    dupes: [...counts].filter(([, n]) => n > 1).map(([text, copies]) => ({ text, copies })),
+  };
+}
+
+/** Serialize items back into an input string on `sep`, for loading a saved list into
+ *  the field (📥). The inverse of `parseItems` for any item free of `sep`; one that
+ *  contains it splits on the way back, as it would in the game. */
+export function serializeItems(items: readonly string[], sep: string): string {
+  return items.join(sep);
+}
+
+// --- Import / export (§X4) ---------------------------------------------------
+// Saved lists move between browsers/devices as a JSON file: local storage is
+// per-browser, so this is the only bridge. The payload carries a version and the
+// bare lists (name / separator / items) — no ids, which are per-store and reassigned
+// on import.
+
+/** A saved list as it travels in an export file — the durable fields only. */
+export interface PortableList {
+  name: string;
+  separator: Separator;
+  items: string[];
+}
+
+const EXPORT_VERSION = 1;
+
+/** Serialize lists into the download payload. Pretty-printed: a reader may open the
+ *  file, and the size cost is nothing next to being legible. */
+export function exportLists(lists: readonly PortableList[]): string {
+  const payload = {
+    version: EXPORT_VERSION,
+    lists: lists.map((l) => ({ name: l.name, separator: l.separator, items: l.items })),
+  };
+  return JSON.stringify(payload, null, 2);
+}
+
+function isPortable(l: unknown): l is PortableList {
+  if (!l || typeof l !== "object") return false;
+  const r = l as Record<string, unknown>;
+  return (
+    typeof r.name === "string" &&
+    typeof r.separator === "string" &&
+    (SEPARATORS as readonly string[]).includes(r.separator) &&
+    Array.isArray(r.items) &&
+    r.items.every((it) => typeof it === "string")
+  );
+}
+
+/** Parse an import file back into lists, keeping only well-formed entries. Tolerant:
+ *  the file is user-supplied and may be truncated or hand-edited, so a bad blob or a
+ *  malformed entry is dropped rather than thrown. */
+export function parseImport(text: string): PortableList[] {
+  let data: unknown;
+  try {
+    data = JSON.parse(text);
+  } catch {
+    return [];
+  }
+  const lists = (data as Record<string, unknown> | null)?.lists;
+  return Array.isArray(lists) ? lists.filter(isPortable) : [];
+}
+
+/** The distinct-item overlap between two lists: how many items they share, and each
+ *  one's distinct size — enough for the import table's "Dupes %" (`shared / smaller`)
+ *  and its reverse-direction hover (`shared / larger`). */
+export function overlapStats(
+  a: readonly string[],
+  b: readonly string[],
+): { shared: number; sizeA: number; sizeB: number } {
+  const setA = new Set(a);
+  const setB = new Set(b);
+  let shared = 0;
+  for (const x of setA) if (setB.has(x)) shared++;
+  return { shared, sizeA: setA.size, sizeB: setB.size };
+}
+
+/** A list's content preview for the persistent tooltips: the first `maxItems` items joined
+ *  by ", ", trimmed to `maxChars`, with a trailing ", …" when anything was left out. Both
+ *  caps are reader-set (the ⚙️ Custom settings). The character cut backs off to the last
+ *  whole item where it can, so the preview doesn't end mid-word; a single item longer than
+ *  the budget is hard-cut with a bare "…". */
+export function previewText(items: readonly string[], maxItems: number, maxChars: number): string {
+  const shown = items.slice(0, Math.max(1, maxItems));
+  const text = shown.join(", ");
+  if (text.length > maxChars) {
+    const cut = text.slice(0, maxChars);
+    const lastSep = cut.lastIndexOf(", ");
+    return lastSep > 0 ? `${cut.slice(0, lastSep)}, …` : `${cut.trimEnd()}…`;
+  }
+  return shown.length < items.length ? `${text}, …` : text;
+}

@@ -1,0 +1,33 @@
+{
+  "title": {
+    "en": "Motorsport",
+    "de": "Motorsport",
+    "es": "Deporte de motor",
+    "fr": "Sport mécanique",
+    "it": "Sport motoristici",
+    "ja": "モータースポーツ",
+    "ko": "모터스포츠",
+    "zh-Hans": "動力運動",
+    "zh-Hant": "動力運動",
+    "pt": "Desporto motorizado",
+    "ru": "Моторный вид спорта",
+    "tr": "Motor sporları",
+    "pl": "Sport motorowy",
+    "nl": "Gemotoriseerde sport",
+    "cs": "Motoristický sport",
+    "da": "Motorsport",
+    "et": "Motosport",
+    "fi": "Moottoriurheilu",
+    "el": "Μηχανοκίνητος αθλητισμός",
+    "he": "ספורט מוטורי",
+    "hu": "Motorsport",
+    "lv": "Motorsports",
+    "mk": "Мотоспорт",
+    "no": "Motorsport",
+    "ro": "Sport cu motor",
+    "sr": "Мото-спорт",
+    "sv": "Motorsport"
+  },
+  "icon": "🏎️",
+  "order": 4
+}

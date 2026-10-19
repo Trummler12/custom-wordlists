@@ -1,0 +1,9910 @@
+{
+  "Q188521": {
+    "name": "Eurasian Plate",
+    "names": {
+      "zh-hans": [
+        {
+          "name": "欧亚大陆板块",
+          "pref": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "歐亞大陸板塊",
+          "pref": true
+        }
+      ],
+      "zh-hk": [
+        {
+          "name": "歐亞大陸板塊",
+          "pref": true
+        }
+      ],
+      "zh-cn": [
+        {
+          "name": "欧亚大陆板块",
+          "pref": true
+        }
+      ],
+      "zh-sg": [
+        {
+          "name": "欧亚大陆板块",
+          "pref": true
+        }
+      ],
+      "zh-tw": [
+        {
+          "name": "歐亞大陸板塊",
+          "pref": true
+        }
+      ],
+      "pl": [
+        {
+          "name": "Płyta eurazjatycka",
+          "pref": true
+        },
+        {
+          "name": "Płyta Euroazjatycka",
+          "alias": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "plaque eurasienne",
+          "pref": true
+        },
+        {
+          "name": "Eurasie",
+          "alias": true
+        },
+        {
+          "name": "plaque eurasiatique",
+          "alias": true
+        },
+        {
+          "name": "plaque européenne",
+          "alias": true
+        }
+      ],
+      "he": [
+        {
+          "name": "הלוח האירואסייתי",
+          "pref": true
+        },
+        {
+          "name": "הלוח האירו אסיאתי",
+          "alias": true
+        },
+        {
+          "name": "הלוח האירו-אסיאתי",
+          "alias": true
+        },
+        {
+          "name": "הלוח האירו-אסייתי",
+          "alias": true
+        }
+      ],
+      "ko": [
+        {
+          "name": "유라시아판",
+          "pref": true
+        }
+      ],
+      "es": [
+        {
+          "name": "placa euroasiática",
+          "pref": true
+        }
+      ],
+      "it": [
+        {
+          "name": "Placca euroasiatica",
+          "pref": true
+        },
+        {
+          "name": "Placca eurasiatica",
+          "alias": true
+        },
+        {
+          "name": "Placca asiatica",
+          "alias": true
+        }
+      ],
+      "et": [
+        {
+          "name": "Euraasia laam",
+          "pref": true
+        }
+      ],
+      "de": [
+        {
+          "name": "Eurasische Platte",
+          "pref": true
+        },
+        {
+          "name": "Europäische Platte",
+          "alias": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "ユーラシアプレート",
+          "pref": true
+        },
+        {
+          "name": "ユーラシアンプレート",
+          "alias": true
+        },
+        {
+          "name": "欧亜プレート",
+          "alias": true
+        }
+      ],
+      "nl": [
+        {
+          "name": "Euraziatische Plaat",
+          "pref": true
+        },
+        {
+          "name": "Europese plaat",
+          "alias": true
+        },
+        {
+          "name": "Eurazische plaat",
+          "alias": true
+        },
+        {
+          "name": "Aziatische Plaat",
+          "alias": true
+        },
+        {
+          "name": "Euro-Aziatische plaat",
+          "alias": true
+        }
+      ],
+      "sv": [
+        {
+          "name": "Eurasiska kontinentalplattan",
+          "pref": true
+        },
+        {
+          "name": "Eurasiska plattan",
+          "alias": true
+        }
+      ],
+      "pt": [
+        {
+          "name": "Placa eurasiática",
+          "pref": true
+        },
+        {
+          "name": "Placa eurasiana",
+          "alias": true
+        },
+        {
+          "name": "Placa euro-asiática",
+          "alias": true
+        },
+        {
+          "name": "Placa euroasiática",
+          "alias": true
+        }
+      ],
+      "sk": [
+        {
+          "name": "Eurázijská platňa",
+          "pref": true
+        }
+      ],
+      "ru": [
+        {
+          "name": "Евразийская плита",
+          "pref": true
+        }
+      ],
+      "en": [
+        {
+          "name": "Eurasian Plate",
+          "pref": true
+        },
+        {
+          "name": "Eurasia Plate",
+          "alias": true
+        }
+      ],
+      "fi": [
+        {
+          "name": "Euraasian laatta",
+          "pref": true
+        }
+      ],
+      "nn": [
+        {
+          "name": "Den eurasiske plata",
+          "pref": true
+        },
+        {
+          "name": "Den eurasiske kontinentalplata",
+          "alias": true
+        }
+      ],
+      "cs": [
+        {
+          "name": "Eurasijská deska",
+          "pref": true
+        },
+        {
+          "name": "Euroasijská deska",
+          "alias": true
+        }
+      ],
+      "da": [
+        {
+          "name": "Eurasiske Plade",
+          "pref": true
+        }
+      ],
+      "tr": [
+        {
+          "name": "Avrasya Levhası",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "歐亞大陸板塊",
+          "pref": true
+        },
+        {
+          "name": "歐亞板塊",
+          "alias": true
+        },
+        {
+          "name": "亚欧大陆板块",
+          "alias": true
+        },
+        {
+          "name": "亚欧板块",
+          "alias": true
+        }
+      ],
+      "nb": [
+        {
+          "name": "Den eurasiske kontinentalplaten",
+          "pref": true
+        },
+        {
+          "name": "Eurasiaplaten",
+          "alias": true
+        },
+        {
+          "name": "Eurasiske platen",
+          "alias": true
+        },
+        {
+          "name": "Den eurasiske kontinentalplata",
+          "alias": true
+        },
+        {
+          "name": "Den eurasiske plate",
+          "alias": true
+        },
+        {
+          "name": "Den eurasiske kontinentalplate",
+          "alias": true
+        }
+      ],
+      "sr": [
+        {
+          "name": "Евроазијска плоча",
+          "pref": true
+        }
+      ],
+      "bg": [
+        {
+          "name": "Евроазиатска плоча",
+          "pref": true
+        }
+      ],
+      "hu": [
+        {
+          "name": "Eurázsiai-lemez",
+          "pref": true
+        }
+      ],
+      "el": [
+        {
+          "name": "Ευρασιατική πλάκα",
+          "pref": true
+        }
+      ],
+      "mk": [
+        {
+          "name": "Евроазиска Плоча",
+          "pref": true
+        }
+      ],
+      "ro": [
+        {
+          "name": "Placa Eurasiatică",
+          "pref": true
+        },
+        {
+          "name": "Placa Eurasia",
+          "alias": true
+        }
+      ]
+    }
+  },
+  "Q220305": {
+    "name": "North American Plate",
+    "names": {
+      "zh-hans": [
+        {
+          "name": "北美洲板块",
+          "pref": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "北美洲板塊",
+          "pref": true
+        }
+      ],
+      "zh-hk": [
+        {
+          "name": "北美洲板塊",
+          "pref": true
+        }
+      ],
+      "zh-cn": [
+        {
+          "name": "北美洲板块",
+          "pref": true
+        }
+      ],
+      "zh-sg": [
+        {
+          "name": "北美洲板块",
+          "pref": true
+        }
+      ],
+      "zh-tw": [
+        {
+          "name": "北美洲板塊",
+          "pref": true
+        }
+      ],
+      "pl": [
+        {
+          "name": "Płyta północnoamerykańska",
+          "pref": true
+        }
+      ],
+      "ko": [
+        {
+          "name": "북미판",
+          "pref": true
+        },
+        {
+          "name": "북아메리카판",
+          "alias": true
+        }
+      ],
+      "he": [
+        {
+          "name": "הלוח הצפון-אמריקאי",
+          "pref": true
+        },
+        {
+          "name": "הלוח הצפון אמריקאי",
+          "alias": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "plaque nord-américaine",
+          "pref": true
+        }
+      ],
+      "es": [
+        {
+          "name": "Placa Norteamericana",
+          "pref": true
+        }
+      ],
+      "it": [
+        {
+          "name": "Placca nordamericana",
+          "pref": true
+        },
+        {
+          "name": "Zolla nordamericana",
+          "alias": true
+        }
+      ],
+      "et": [
+        {
+          "name": "Põhja-Ameerika laam",
+          "pref": true
+        }
+      ],
+      "de": [
+        {
+          "name": "Nordamerikanische Platte",
+          "pref": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "北アメリカプレート",
+          "pref": true
+        },
+        {
+          "name": "北米プレート",
+          "alias": true
+        }
+      ],
+      "nl": [
+        {
+          "name": "Noord-Amerikaanse Plaat",
+          "pref": true
+        }
+      ],
+      "sv": [
+        {
+          "name": "Nordamerikanska kontinentalplattan",
+          "pref": true
+        },
+        {
+          "name": "Nordamerikanska plattan",
+          "alias": true
+        }
+      ],
+      "pt": [
+        {
+          "name": "Placa Norte-Americana",
+          "pref": true
+        },
+        {
+          "name": "Plana norte-americana",
+          "alias": true
+        },
+        {
+          "name": "Placa Norte americana",
+          "alias": true
+        },
+        {
+          "name": "Placa da América do Norte",
+          "alias": true
+        }
+      ],
+      "sk": [
+        {
+          "name": "Severoamerická platňa",
+          "pref": true
+        }
+      ],
+      "ru": [
+        {
+          "name": "Северо-Американская плита",
+          "pref": true
+        }
+      ],
+      "en": [
+        {
+          "name": "North American Plate",
+          "pref": true
+        }
+      ],
+      "cs": [
+        {
+          "name": "Severoamerická deska",
+          "pref": true
+        }
+      ],
+      "da": [
+        {
+          "name": "Nordamerikanske Plade",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "北美洲板塊",
+          "pref": true
+        },
+        {
+          "name": "北美板塊",
+          "alias": true
+        }
+      ],
+      "nb": [
+        {
+          "name": "Den nordamerikanske kontinentalplaten",
+          "pref": true
+        },
+        {
+          "name": "Den nordamerikanske plate",
+          "alias": true
+        },
+        {
+          "name": "Den Nord-Amerikanske plate",
+          "alias": true
+        },
+        {
+          "name": "Den nordamerikanske platen",
+          "alias": true
+        },
+        {
+          "name": "Den nordamerikanske kontinentalplate",
+          "alias": true
+        }
+      ],
+      "nn": [
+        {
+          "name": "Den nordamerikanske plata",
+          "pref": true
+        }
+      ],
+      "bg": [
+        {
+          "name": "Северноамериканска плоча",
+          "pref": true
+        }
+      ],
+      "tr": [
+        {
+          "name": "Kuzey Amerika levhası",
+          "pref": true
+        }
+      ],
+      "hu": [
+        {
+          "name": "Észak-amerikai-lemez",
+          "pref": true
+        }
+      ],
+      "el": [
+        {
+          "name": "Βορειοαμερικάνικη πλάκα",
+          "pref": true
+        }
+      ],
+      "sr": [
+        {
+          "name": "Северноамеричка плоча",
+          "pref": true
+        }
+      ],
+      "mk": [
+        {
+          "name": "Северноамериканска Плоча",
+          "pref": true
+        }
+      ],
+      "fi": [
+        {
+          "name": "Pohjois-Amerikan laatta",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q119490": {
+    "name": "South American Plate",
+    "names": {
+      "de": [
+        {
+          "name": "Südamerikanische Platte",
+          "pref": true
+        }
+      ],
+      "cs": [
+        {
+          "name": "Jihoamerická deska",
+          "pref": true
+        }
+      ],
+      "en": [
+        {
+          "name": "South American Plate",
+          "pref": true
+        },
+        {
+          "name": "South America Plate",
+          "alias": true
+        }
+      ],
+      "es": [
+        {
+          "name": "Placa Sudamericana",
+          "pref": true
+        }
+      ],
+      "et": [
+        {
+          "name": "Lõuna-Ameerika laam",
+          "pref": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "plaque sud-américaine",
+          "pref": true
+        }
+      ],
+      "ko": [
+        {
+          "name": "남아메리카판",
+          "pref": true
+        }
+      ],
+      "ru": [
+        {
+          "name": "Южно-Американская плита",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "南美洲板块",
+          "pref": true
+        }
+      ],
+      "pt": [
+        {
+          "name": "Placa Sul-Americana",
+          "pref": true
+        }
+      ],
+      "it": [
+        {
+          "name": "Placca sudamericana",
+          "pref": true
+        }
+      ],
+      "sv": [
+        {
+          "name": "Sydamerikanska kontinentalplattan",
+          "pref": true
+        }
+      ],
+      "sk": [
+        {
+          "name": "Juhoamerická platňa",
+          "pref": true
+        }
+      ],
+      "nl": [
+        {
+          "name": "Zuid-Amerikaanse Plaat",
+          "pref": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "南アメリカプレート",
+          "pref": true
+        }
+      ],
+      "pl": [
+        {
+          "name": "Płyta południowoamerykańska",
+          "pref": true
+        }
+      ],
+      "he": [
+        {
+          "name": "הלוח הדרום-אמריקאי",
+          "pref": true
+        }
+      ],
+      "nb": [
+        {
+          "name": "Den søramerikanske kontinentalplaten",
+          "pref": true
+        },
+        {
+          "name": "Den søramerikanske kontinentalplate",
+          "alias": true
+        }
+      ],
+      "fi": [
+        {
+          "name": "Etelä-Amerikan laatta",
+          "pref": true
+        }
+      ],
+      "nn": [
+        {
+          "name": "Den søramerikanske plata",
+          "pref": true
+        }
+      ],
+      "bg": [
+        {
+          "name": "Южноамериканска плоча",
+          "pref": true
+        }
+      ],
+      "tr": [
+        {
+          "name": "Güney Amerika levhası",
+          "pref": true
+        }
+      ],
+      "sr": [
+        {
+          "name": "Јужноамеричка плоча",
+          "pref": true
+        }
+      ],
+      "hu": [
+        {
+          "name": "Dél-amerikai-lemez",
+          "pref": true
+        }
+      ],
+      "el": [
+        {
+          "name": "Νοτιοαμερικανική πλάκα",
+          "pref": true
+        }
+      ],
+      "da": [
+        {
+          "name": "Sydamerikanske kontinentalplade",
+          "pref": true
+        }
+      ],
+      "mk": [
+        {
+          "name": "Јужноамериканска Плоча",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q538867": {
+    "name": "Nazca Plate",
+    "area": 16101505,
+    "names": {
+      "it": [
+        {
+          "name": "Placca di Nazca",
+          "pref": true
+        }
+      ],
+      "cs": [
+        {
+          "name": "Deska Nazca",
+          "pref": true
+        }
+      ],
+      "de": [
+        {
+          "name": "Nazca-Platte",
+          "pref": true
+        }
+      ],
+      "en": [
+        {
+          "name": "Nazca Plate",
+          "pref": true
+        }
+      ],
+      "es": [
+        {
+          "name": "Placa de Nazca",
+          "pref": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "plaque de Nazca",
+          "pref": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "ナスカプレート",
+          "pref": true
+        }
+      ],
+      "ko": [
+        {
+          "name": "나스카 플레이트",
+          "pref": true
+        }
+      ],
+      "nl": [
+        {
+          "name": "Nazcaplaat",
+          "pref": true
+        }
+      ],
+      "pl": [
+        {
+          "name": "Płyta Nazca",
+          "pref": true
+        }
+      ],
+      "pt": [
+        {
+          "name": "Placa de Nazca",
+          "pref": true
+        }
+      ],
+      "ru": [
+        {
+          "name": "Плита Наска",
+          "pref": true
+        }
+      ],
+      "sk": [
+        {
+          "name": "Platňa Nazca",
+          "pref": true
+        }
+      ],
+      "sv": [
+        {
+          "name": "Nazcaplattan",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "纳斯卡板块",
+          "pref": true
+        }
+      ],
+      "et": [
+        {
+          "name": "Nazca laam",
+          "pref": true
+        }
+      ],
+      "nb": [
+        {
+          "name": "Nazcaplaten",
+          "pref": true
+        }
+      ],
+      "fi": [
+        {
+          "name": "Nazcalaatta",
+          "pref": true
+        }
+      ],
+      "pt-br": [
+        {
+          "name": "Placa de Nazca",
+          "pref": true
+        }
+      ],
+      "he": [
+        {
+          "name": "לוח נסקה",
+          "pref": true
+        }
+      ],
+      "hu": [
+        {
+          "name": "Nazca-lemez",
+          "pref": true
+        }
+      ],
+      "bg": [
+        {
+          "name": "Назка плоча",
+          "pref": true
+        }
+      ],
+      "tr": [
+        {
+          "name": "Nazca levhası",
+          "pref": true
+        }
+      ],
+      "el": [
+        {
+          "name": "πλάκα Νάζκα",
+          "pref": true
+        }
+      ],
+      "da": [
+        {
+          "name": "Nazcapladen",
+          "pref": true
+        }
+      ],
+      "nn": [
+        {
+          "name": "Nazcaplata",
+          "pref": true
+        }
+      ],
+      "mk": [
+        {
+          "name": "Насканска Плоча",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q501705": {
+    "name": "Antarctic Plate",
+    "names": {
+      "zh-hans": [
+        {
+          "name": "南极洲板块",
+          "pref": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "南極洲板塊",
+          "pref": true
+        }
+      ],
+      "zh-hk": [
+        {
+          "name": "南極洲板塊",
+          "pref": true
+        }
+      ],
+      "pl": [
+        {
+          "name": "Płyta antarktyczna",
+          "pref": true
+        }
+      ],
+      "he": [
+        {
+          "name": "הלוח האנטארקטי",
+          "pref": true
+        }
+      ],
+      "ko": [
+        {
+          "name": "남극판",
+          "pref": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "plaque antarctique",
+          "pref": true
+        },
+        {
+          "name": "Plaque antartique",
+          "alias": true
+        },
+        {
+          "name": "Antarctique",
+          "alias": true
+        }
+      ],
+      "es": [
+        {
+          "name": "Placa Antártica",
+          "pref": true
+        },
+        {
+          "name": "Placa Antartica",
+          "alias": true
+        }
+      ],
+      "it": [
+        {
+          "name": "Placca antartica",
+          "pref": true
+        }
+      ],
+      "et": [
+        {
+          "name": "Antarktika laam",
+          "pref": true
+        }
+      ],
+      "de": [
+        {
+          "name": "Antarktische Platte",
+          "pref": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "南極プレート",
+          "pref": true
+        }
+      ],
+      "nl": [
+        {
+          "name": "Antarctische Plaat",
+          "pref": true
+        }
+      ],
+      "pt": [
+        {
+          "name": "Placa da Antártica",
+          "pref": true
+        },
+        {
+          "name": "Placa antártica",
+          "alias": true
+        },
+        {
+          "name": "Placa da antártida",
+          "alias": true
+        },
+        {
+          "name": "Placa antárctica",
+          "alias": true
+        }
+      ],
+      "sk": [
+        {
+          "name": "Antarktická platňa",
+          "pref": true
+        }
+      ],
+      "ru": [
+        {
+          "name": "Антарктическая плита",
+          "pref": true
+        }
+      ],
+      "en": [
+        {
+          "name": "Antarctic Plate",
+          "pref": true
+        }
+      ],
+      "fi": [
+        {
+          "name": "Antarktiksen laatta",
+          "pref": true
+        }
+      ],
+      "cs": [
+        {
+          "name": "Antarktická deska",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "南極洲板塊",
+          "pref": true
+        },
+        {
+          "name": "南極板塊",
+          "alias": true
+        }
+      ],
+      "nn": [
+        {
+          "name": "Den antarktiske plata",
+          "pref": true
+        }
+      ],
+      "bg": [
+        {
+          "name": "Антарктическа плоча",
+          "pref": true
+        }
+      ],
+      "sr": [
+        {
+          "name": "Антарктичка плоча",
+          "pref": true
+        }
+      ],
+      "sv": [
+        {
+          "name": "Antarktiska kontinentalplattan",
+          "pref": true
+        }
+      ],
+      "el": [
+        {
+          "name": "Ανταρκτική πλάκα",
+          "pref": true
+        },
+        {
+          "name": "Πλάκα της Ανταρκτικής",
+          "alias": true
+        }
+      ],
+      "tr": [
+        {
+          "name": "Antarktika levhası",
+          "pref": true
+        }
+      ],
+      "nb": [
+        {
+          "name": "Den antarktiske kontinentalplaten",
+          "pref": true
+        }
+      ],
+      "hu": [
+        {
+          "name": "Antarktiszi-lemez",
+          "pref": true
+        }
+      ],
+      "mk": [
+        {
+          "name": "Антарктичка Плоча",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q205411": {
+    "name": "Pacific Plate",
+    "names": {
+      "zh-hans": [
+        {
+          "name": "太平洋板块",
+          "pref": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "太平洋板塊",
+          "pref": true
+        }
+      ],
+      "zh-hk": [
+        {
+          "name": "太平洋板塊",
+          "pref": true
+        }
+      ],
+      "zh-cn": [
+        {
+          "name": "太平洋板块",
+          "pref": true
+        }
+      ],
+      "zh-sg": [
+        {
+          "name": "太平洋板块",
+          "pref": true
+        }
+      ],
+      "zh-tw": [
+        {
+          "name": "太平洋板塊",
+          "pref": true
+        }
+      ],
+      "pl": [
+        {
+          "name": "Płyta pacyficzna",
+          "pref": true
+        }
+      ],
+      "he": [
+        {
+          "name": "הלוח הפסיפי",
+          "pref": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "plaque pacifique",
+          "pref": true
+        },
+        {
+          "name": "Pacifique",
+          "alias": true
+        },
+        {
+          "name": "plaque du Pacifique",
+          "alias": true
+        }
+      ],
+      "ko": [
+        {
+          "name": "태평양판",
+          "pref": true
+        }
+      ],
+      "es": [
+        {
+          "name": "Placa Pacífica",
+          "pref": true
+        },
+        {
+          "name": "Placa Pacifica",
+          "alias": true
+        },
+        {
+          "name": "Placa del Pacifico",
+          "alias": true
+        },
+        {
+          "name": "Placa del Pacífico",
+          "alias": true
+        }
+      ],
+      "it": [
+        {
+          "name": "Placca pacifica",
+          "pref": true
+        },
+        {
+          "name": "Placca del Pacifico",
+          "alias": true
+        }
+      ],
+      "et": [
+        {
+          "name": "Vaikse ookeani laam",
+          "pref": true
+        }
+      ],
+      "de": [
+        {
+          "name": "Pazifische Platte",
+          "pref": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "太平洋プレート",
+          "pref": true
+        },
+        {
+          "name": "パシフィックプレート",
+          "alias": true
+        }
+      ],
+      "sv": [
+        {
+          "name": "Stillahavsplattan",
+          "pref": true
+        },
+        {
+          "name": "Stilla havsplattan",
+          "alias": true
+        }
+      ],
+      "nl": [
+        {
+          "name": "Pacifische Plaat",
+          "pref": true
+        }
+      ],
+      "pt": [
+        {
+          "name": "Placa do Pacífico",
+          "pref": true
+        },
+        {
+          "name": "Placa pacífica",
+          "alias": true
+        }
+      ],
+      "sk": [
+        {
+          "name": "Pacifická platňa",
+          "pref": true
+        },
+        {
+          "name": "Tichomorská platňa",
+          "alias": true
+        }
+      ],
+      "ru": [
+        {
+          "name": "Тихоокеанская плита",
+          "pref": true
+        }
+      ],
+      "en": [
+        {
+          "name": "Pacific Plate",
+          "pref": true
+        }
+      ],
+      "cs": [
+        {
+          "name": "Pacifická deska",
+          "pref": true
+        },
+        {
+          "name": "Tichomořská deska",
+          "alias": true
+        }
+      ],
+      "da": [
+        {
+          "name": "Stillehavspladen",
+          "pref": true
+        }
+      ],
+      "pt-br": [
+        {
+          "name": "Placa do Pacífico",
+          "pref": true
+        }
+      ],
+      "sr": [
+        {
+          "name": "Тихоокеанска плоча",
+          "pref": true
+        },
+        {
+          "name": "Пацифичка плоча",
+          "alias": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "太平洋板塊",
+          "pref": true
+        },
+        {
+          "name": "太平洋海板塊",
+          "alias": true
+        }
+      ],
+      "nb": [
+        {
+          "name": "Stillehavsplaten",
+          "pref": true
+        }
+      ],
+      "nn": [
+        {
+          "name": "Stillehavsplata",
+          "pref": true
+        }
+      ],
+      "tr": [
+        {
+          "name": "Pasifik levhası",
+          "pref": true
+        }
+      ],
+      "bg": [
+        {
+          "name": "Тихоокеанска плоча",
+          "pref": true
+        }
+      ],
+      "hu": [
+        {
+          "name": "Csendes-óceáni-lemez",
+          "pref": true
+        }
+      ],
+      "el": [
+        {
+          "name": "Ειρηνική πλάκα",
+          "pref": true
+        },
+        {
+          "name": "πλάκα του Ειρηνικού",
+          "alias": true
+        }
+      ],
+      "fi": [
+        {
+          "name": "Tyynenmeren laatta",
+          "pref": true
+        }
+      ],
+      "mk": [
+        {
+          "name": "Тихоокеанска Плоча",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q386615": {
+    "name": "Cocos Plate",
+    "area": 2931790,
+    "names": {
+      "it": [
+        {
+          "name": "Placca di Cocos",
+          "pref": true
+        }
+      ],
+      "cs": [
+        {
+          "name": "Kokosová deska",
+          "pref": true
+        }
+      ],
+      "de": [
+        {
+          "name": "Cocosplatte",
+          "pref": true
+        }
+      ],
+      "en": [
+        {
+          "name": "Cocos Plate",
+          "pref": true
+        }
+      ],
+      "es": [
+        {
+          "name": "Placa de Cocos",
+          "pref": true
+        }
+      ],
+      "et": [
+        {
+          "name": "Cocose laam",
+          "pref": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "plaque de Cocos",
+          "pref": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "ココスプレート",
+          "pref": true
+        }
+      ],
+      "ko": [
+        {
+          "name": "코코스판",
+          "pref": true
+        }
+      ],
+      "nl": [
+        {
+          "name": "Cocosplaat",
+          "pref": true
+        }
+      ],
+      "pl": [
+        {
+          "name": "Płyta kokosowa",
+          "pref": true
+        }
+      ],
+      "pt": [
+        {
+          "name": "Placa de Cocos",
+          "pref": true
+        }
+      ],
+      "ru": [
+        {
+          "name": "Плита Кокос",
+          "pref": true
+        }
+      ],
+      "sk": [
+        {
+          "name": "Kokosová platňa",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "科科斯板块",
+          "pref": true
+        }
+      ],
+      "bg": [
+        {
+          "name": "Кокосова плоча",
+          "pref": true
+        }
+      ],
+      "sv": [
+        {
+          "name": "Cocosplattan",
+          "pref": true
+        }
+      ],
+      "el": [
+        {
+          "name": "πλάκα Κόκος",
+          "pref": true
+        }
+      ],
+      "nb": [
+        {
+          "name": "Cocosplaten",
+          "pref": true
+        }
+      ],
+      "nn": [
+        {
+          "name": "Cocosplata",
+          "pref": true
+        }
+      ],
+      "tr": [
+        {
+          "name": "Cocos levhası",
+          "pref": true
+        }
+      ],
+      "he": [
+        {
+          "name": "לוח קוקוס",
+          "pref": true
+        }
+      ],
+      "fi": [
+        {
+          "name": "Kookossaaren laatta",
+          "pref": true
+        }
+      ],
+      "mk": [
+        {
+          "name": "Кокоска Плоча",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q339748": {
+    "name": "Philippine Sea Plate",
+    "area": 5442665,
+    "names": {
+      "en": [
+        {
+          "name": "Philippine Sea Plate",
+          "pref": true
+        },
+        {
+          "name": "Philippne Sea Plate",
+          "alias": true
+        }
+      ],
+      "de": [
+        {
+          "name": "Philippinische Platte",
+          "pref": true
+        }
+      ],
+      "es": [
+        {
+          "name": "Placa Filipina",
+          "pref": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "plaque philippine",
+          "pref": true
+        }
+      ],
+      "he": [
+        {
+          "name": "הלוח הפיליפיני",
+          "pref": true
+        }
+      ],
+      "it": [
+        {
+          "name": "Placca delle Filippine",
+          "pref": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "フィリピン海プレート",
+          "pref": true
+        }
+      ],
+      "ko": [
+        {
+          "name": "필리핀해판",
+          "pref": true
+        }
+      ],
+      "nl": [
+        {
+          "name": "Filipijnse Plaat",
+          "pref": true
+        }
+      ],
+      "pl": [
+        {
+          "name": "Płyta filipińska",
+          "pref": true
+        }
+      ],
+      "pt": [
+        {
+          "name": "Placa das Filipinas",
+          "pref": true
+        }
+      ],
+      "ru": [
+        {
+          "name": "Филиппинская плита",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "菲律宾板块",
+          "pref": true
+        }
+      ],
+      "ro": [
+        {
+          "name": "Placa Filipinelor",
+          "pref": true
+        }
+      ],
+      "bg": [
+        {
+          "name": "Филипинска плоча",
+          "pref": true
+        }
+      ],
+      "tr": [
+        {
+          "name": "Filipin levhası",
+          "pref": true
+        }
+      ],
+      "sv": [
+        {
+          "name": "Filippinska plattan",
+          "pref": true
+        }
+      ],
+      "nb": [
+        {
+          "name": "Filippinerplaten",
+          "pref": true
+        }
+      ],
+      "nn": [
+        {
+          "name": "Filippinerplata",
+          "pref": true
+        }
+      ],
+      "cs": [
+        {
+          "name": "filipínská deska",
+          "pref": true
+        }
+      ],
+      "mk": [
+        {
+          "name": "Филипинска Плоча",
+          "pref": true
+        }
+      ],
+      "hu": [
+        {
+          "name": "Fülöp-lemez",
+          "pref": true
+        }
+      ],
+      "zh-hk": [
+        {
+          "name": "菲律賓板塊",
+          "pref": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "菲律賓板塊",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q203548": {
+    "name": "African Plate",
+    "names": {
+      "zh-hans": [
+        {
+          "name": "非洲板块",
+          "pref": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "非洲板塊",
+          "pref": true
+        }
+      ],
+      "zh-hk": [
+        {
+          "name": "非洲板塊",
+          "pref": true
+        }
+      ],
+      "zh-cn": [
+        {
+          "name": "非洲板块",
+          "pref": true
+        }
+      ],
+      "zh-sg": [
+        {
+          "name": "非洲板块",
+          "pref": true
+        }
+      ],
+      "zh-tw": [
+        {
+          "name": "非洲板塊",
+          "pref": true
+        }
+      ],
+      "pl": [
+        {
+          "name": "płyta afrykańska",
+          "pref": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "plaque africaine",
+          "pref": true
+        },
+        {
+          "name": "Afrique",
+          "alias": true
+        },
+        {
+          "name": "plaque tectonique africaine",
+          "alias": true
+        }
+      ],
+      "he": [
+        {
+          "name": "הלוח האפריקאי",
+          "pref": true
+        },
+        {
+          "name": "הלוח של אפריקה",
+          "alias": true
+        },
+        {
+          "name": "הלוח האפריקני",
+          "alias": true
+        }
+      ],
+      "ko": [
+        {
+          "name": "아프리카판",
+          "pref": true
+        }
+      ],
+      "es": [
+        {
+          "name": "Placa Africana",
+          "pref": true
+        },
+        {
+          "name": "Placa tectónica africana",
+          "alias": true
+        },
+        {
+          "name": "Placa tectonica africana",
+          "alias": true
+        }
+      ],
+      "it": [
+        {
+          "name": "Placca africana",
+          "pref": true
+        },
+        {
+          "name": "Scudo africano",
+          "alias": true
+        }
+      ],
+      "et": [
+        {
+          "name": "Aafrika laam",
+          "pref": true
+        }
+      ],
+      "de": [
+        {
+          "name": "Afrikanische Platte",
+          "pref": true
+        },
+        {
+          "name": "Nubische Platte",
+          "alias": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "アフリカプレート",
+          "pref": true
+        }
+      ],
+      "nl": [
+        {
+          "name": "Afrikaanse Plaat",
+          "pref": true
+        }
+      ],
+      "sv": [
+        {
+          "name": "Afrikanska kontinentalplattan",
+          "pref": true
+        },
+        {
+          "name": "Afrikanska plattan",
+          "alias": true
+        }
+      ],
+      "pt": [
+        {
+          "name": "Placa africana",
+          "pref": true
+        },
+        {
+          "name": "Placa da áfrica",
+          "alias": true
+        }
+      ],
+      "sk": [
+        {
+          "name": "Africká platňa",
+          "pref": true
+        }
+      ],
+      "ru": [
+        {
+          "name": "Африканская плита",
+          "pref": true
+        },
+        {
+          "name": "Африканская континентальная плита",
+          "alias": true
+        }
+      ],
+      "en": [
+        {
+          "name": "African Plate",
+          "pref": true
+        }
+      ],
+      "fi": [
+        {
+          "name": "Afrikan laatta",
+          "pref": true
+        }
+      ],
+      "cs": [
+        {
+          "name": "Africká deska",
+          "pref": true
+        }
+      ],
+      "da": [
+        {
+          "name": "Afrikanske Plade",
+          "pref": true
+        }
+      ],
+      "sr": [
+        {
+          "name": "Афричка плоча",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "非洲板块",
+          "pref": true
+        },
+        {
+          "name": "非洲版塊",
+          "alias": true
+        }
+      ],
+      "nb": [
+        {
+          "name": "Den afrikanske kontinentalplaten",
+          "pref": true
+        },
+        {
+          "name": "Den afrikanske plate",
+          "alias": true
+        },
+        {
+          "name": "Afrikanske plate",
+          "alias": true
+        },
+        {
+          "name": "Den afrikanske kontinentalplate",
+          "alias": true
+        }
+      ],
+      "nn": [
+        {
+          "name": "Den afrikanske plata",
+          "pref": true
+        }
+      ],
+      "tr": [
+        {
+          "name": "Afrika levhası",
+          "pref": true
+        }
+      ],
+      "bg": [
+        {
+          "name": "Африканска плоча",
+          "pref": true
+        }
+      ],
+      "hu": [
+        {
+          "name": "Afrikai-lemez",
+          "pref": true
+        }
+      ],
+      "el": [
+        {
+          "name": "Αφρικανική πλάκα",
+          "pref": true
+        }
+      ],
+      "mk": [
+        {
+          "name": "Африканска Плоча",
+          "pref": true
+        },
+        {
+          "name": "Нубиска Плоча",
+          "alias": true
+        }
+      ]
+    }
+  },
+  "Q331093": {
+    "name": "Arabian Plate",
+    "area": 4904040,
+    "names": {
+      "zh-hans": [
+        {
+          "name": "阿拉伯板块",
+          "pref": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "阿拉伯板塊",
+          "pref": true
+        }
+      ],
+      "zh-hk": [
+        {
+          "name": "阿拉伯板塊",
+          "pref": true
+        }
+      ],
+      "zh-cn": [
+        {
+          "name": "阿拉伯板块",
+          "pref": true
+        }
+      ],
+      "zh-sg": [
+        {
+          "name": "阿拉伯板块",
+          "pref": true
+        }
+      ],
+      "zh-tw": [
+        {
+          "name": "阿拉伯板塊",
+          "pref": true
+        }
+      ],
+      "pl": [
+        {
+          "name": "Płyta arabska",
+          "pref": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "plaque arabique",
+          "pref": true
+        }
+      ],
+      "ko": [
+        {
+          "name": "아라비아판",
+          "pref": true
+        }
+      ],
+      "he": [
+        {
+          "name": "הלוח הערבי",
+          "pref": true
+        },
+        {
+          "name": "לוח ערב",
+          "alias": true
+        }
+      ],
+      "es": [
+        {
+          "name": "Placa arábiga",
+          "pref": true
+        },
+        {
+          "name": "Placa Arabiga",
+          "alias": true
+        }
+      ],
+      "it": [
+        {
+          "name": "Placca araba",
+          "pref": true
+        },
+        {
+          "name": "Placca arabica",
+          "alias": true
+        }
+      ],
+      "de": [
+        {
+          "name": "Arabische Platte",
+          "pref": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "アラビアプレート",
+          "pref": true
+        }
+      ],
+      "nl": [
+        {
+          "name": "Arabische Plaat",
+          "pref": true
+        }
+      ],
+      "sv": [
+        {
+          "name": "Arabiska plattan",
+          "pref": true
+        }
+      ],
+      "pt": [
+        {
+          "name": "Placa Arábica",
+          "pref": true
+        },
+        {
+          "name": "Placa da arábia",
+          "alias": true
+        }
+      ],
+      "ru": [
+        {
+          "name": "Аравийская платформа",
+          "pref": true
+        },
+        {
+          "name": "Аравийская плита",
+          "alias": true
+        }
+      ],
+      "en": [
+        {
+          "name": "Arabian Plate",
+          "pref": true
+        }
+      ],
+      "tr": [
+        {
+          "name": "Arap levhası",
+          "pref": true
+        }
+      ],
+      "fi": [
+        {
+          "name": "Arabian laatta",
+          "pref": true
+        }
+      ],
+      "cs": [
+        {
+          "name": "Arabská deska",
+          "pref": true
+        },
+        {
+          "name": "Arabská tektonická deska",
+          "alias": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "阿拉伯板块",
+          "pref": true
+        },
+        {
+          "name": "阿拉伯版塊",
+          "alias": true
+        }
+      ],
+      "nn": [
+        {
+          "name": "Den arabiske plata",
+          "pref": true
+        }
+      ],
+      "sk": [
+        {
+          "name": "Arabská platňa",
+          "pref": true
+        }
+      ],
+      "bg": [
+        {
+          "name": "Арабска плоча",
+          "pref": true
+        }
+      ],
+      "hu": [
+        {
+          "name": "Arábiai lemez",
+          "pref": true
+        }
+      ],
+      "el": [
+        {
+          "name": "Αραβική πλάκα",
+          "pref": true
+        }
+      ],
+      "nb": [
+        {
+          "name": "Den arabiske platen",
+          "pref": true
+        }
+      ],
+      "sr": [
+        {
+          "name": "Арабијска плоча",
+          "pref": true
+        }
+      ],
+      "ro": [
+        {
+          "name": "Placa Arabă",
+          "pref": true
+        }
+      ],
+      "mk": [
+        {
+          "name": "Арапска Плоча",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q844163": {
+    "name": "Indo-Australian Plate",
+    "names": {
+      "pt": [
+        {
+          "name": "Placa indo-australiana",
+          "pref": true
+        },
+        {
+          "name": "Placa indiana",
+          "alias": true
+        },
+        {
+          "name": "Placa Australiana",
+          "alias": true
+        }
+      ],
+      "pl": [
+        {
+          "name": "Płyta indoaustralijska",
+          "pref": true
+        }
+      ],
+      "ko": [
+        {
+          "name": "인도-오스트레일리아판",
+          "pref": true
+        },
+        {
+          "name": "호주 판",
+          "alias": true
+        },
+        {
+          "name": "오스트레일리아판",
+          "alias": true
+        },
+        {
+          "name": "호주판",
+          "alias": true
+        },
+        {
+          "name": "오스트레일리아 판",
+          "alias": true
+        }
+      ],
+      "es": [
+        {
+          "name": "Placa Indoaustraliana",
+          "pref": true
+        },
+        {
+          "name": "Placa Australiana",
+          "alias": true
+        },
+        {
+          "name": "Placa de Australia",
+          "alias": true
+        }
+      ],
+      "en": [
+        {
+          "name": "Indo-Australian Plate",
+          "pref": true
+        }
+      ],
+      "it": [
+        {
+          "name": "Placca indo-australiana",
+          "pref": true
+        },
+        {
+          "name": "Placca australiana",
+          "alias": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "インド・オーストラリアプレート",
+          "pref": true
+        },
+        {
+          "name": "オーストラリアプレート",
+          "alias": true
+        }
+      ],
+      "da": [
+        {
+          "name": "Indo-Australske Plade",
+          "pref": true
+        }
+      ],
+      "sr": [
+        {
+          "name": "Индо-аустралијска плоча",
+          "pref": true
+        }
+      ],
+      "nn": [
+        {
+          "name": "Den indoaustralske plata",
+          "pref": true
+        }
+      ],
+      "de": [
+        {
+          "name": "Indisch-Australische Platte",
+          "pref": true
+        }
+      ],
+      "nb": [
+        {
+          "name": "Den indoaustralske kontinentalplaten",
+          "pref": true
+        },
+        {
+          "name": "Den indoaustralske kontinentalplate",
+          "alias": true
+        }
+      ],
+      "nl": [
+        {
+          "name": "Indo-Australian Plate",
+          "pref": true
+        }
+      ],
+      "bg": [
+        {
+          "name": "Индийско-австралийска плоча",
+          "pref": true
+        }
+      ],
+      "hu": [
+        {
+          "name": "Ausztrál-indiai-lemez",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "印度-澳洲板塊",
+          "pref": true
+        },
+        {
+          "name": "印澳板塊",
+          "alias": true
+        }
+      ],
+      "tr": [
+        {
+          "name": "Hint-Avustralya levhası",
+          "pref": true
+        }
+      ],
+      "sv": [
+        {
+          "name": "Indoaustraliska kontinentalplattan",
+          "pref": true
+        }
+      ],
+      "ru": [
+        {
+          "name": "Индо-Австралийская плита",
+          "pref": true
+        }
+      ],
+      "el": [
+        {
+          "name": "Ινδοαυστραλιανή πλάκα",
+          "pref": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "plaque indo-australienne",
+          "pref": true
+        }
+      ],
+      "fi": [
+        {
+          "name": "Indo-Australian laatta",
+          "pref": true
+        }
+      ],
+      "mk": [
+        {
+          "name": "Индоавстралиска Плоча",
+          "pref": true
+        }
+      ],
+      "he": [
+        {
+          "name": "הלוח ההודי-אוסטרלי",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q783056": {
+    "name": "Australian Plate",
+    "names": {
+      "ru": [
+        {
+          "name": "Австралийская плита",
+          "pref": true
+        },
+        {
+          "name": "Индо-Австралийская плита",
+          "alias": true
+        }
+      ],
+      "de": [
+        {
+          "name": "Australische Platte",
+          "pref": true
+        },
+        {
+          "name": "Indisch-australische Platte",
+          "alias": true
+        },
+        {
+          "name": "Indo-Australische Platte",
+          "alias": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "plaque australienne",
+          "pref": true
+        },
+        {
+          "name": "Australie (plaque tectonique)",
+          "alias": true
+        },
+        {
+          "name": "Archipel Indo-Australien",
+          "alias": true
+        }
+      ],
+      "da": [
+        {
+          "name": "Australske Plade",
+          "pref": true
+        }
+      ],
+      "sk": [
+        {
+          "name": "Austrálska platňa",
+          "pref": true
+        }
+      ],
+      "cs": [
+        {
+          "name": "Australská deska",
+          "pref": true
+        },
+        {
+          "name": "Indo-australská deska",
+          "alias": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "印度-澳洲板塊",
+          "pref": true
+        },
+        {
+          "name": "印度-澳大利亞板塊",
+          "alias": true
+        },
+        {
+          "name": "印澳板塊",
+          "alias": true
+        }
+      ],
+      "nl": [
+        {
+          "name": "Australische Plaat",
+          "pref": true
+        },
+        {
+          "name": "Australische plaat",
+          "alias": true
+        },
+        {
+          "name": "Indo-Australische Plaat",
+          "alias": true
+        }
+      ],
+      "pl": [
+        {
+          "name": "Płyta australijska",
+          "pref": true
+        }
+      ],
+      "it": [
+        {
+          "name": "Placca australiana",
+          "pref": true
+        }
+      ],
+      "en": [
+        {
+          "name": "Australian Plate",
+          "pref": true
+        }
+      ],
+      "pt": [
+        {
+          "name": "Placa australiana",
+          "pref": true
+        }
+      ],
+      "sr": [
+        {
+          "name": "Аустралијска плоча",
+          "pref": true
+        }
+      ],
+      "bg": [
+        {
+          "name": "Австралийска плоча",
+          "pref": true
+        }
+      ],
+      "sv": [
+        {
+          "name": "Australiska plattan",
+          "pref": true
+        }
+      ],
+      "tr": [
+        {
+          "name": "Avustralya levhası",
+          "pref": true
+        }
+      ],
+      "nb": [
+        {
+          "name": "Den australske platen",
+          "pref": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "オーストラリアプレート",
+          "pref": true
+        }
+      ],
+      "ko": [
+        {
+          "name": "오스트레일리아판",
+          "pref": true
+        }
+      ],
+      "el": [
+        {
+          "name": "Αυστραλιανή πλάκα",
+          "pref": true
+        }
+      ],
+      "es": [
+        {
+          "name": "placa Australiana",
+          "pref": true
+        }
+      ],
+      "nn": [
+        {
+          "name": "Den australske plata",
+          "pref": true
+        }
+      ],
+      "he": [
+        {
+          "name": "הלוח האוסטרלי",
+          "pref": true
+        }
+      ],
+      "mk": [
+        {
+          "name": "Австралиска Плоча",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q969490": {
+    "name": "Burma Plate",
+    "area": 515488,
+    "names": {
+      "es": [
+        {
+          "name": "Placa de Birmania",
+          "pref": true
+        }
+      ],
+      "de": [
+        {
+          "name": "Burma-Platte",
+          "pref": true
+        }
+      ],
+      "en": [
+        {
+          "name": "Burma Plate",
+          "pref": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "plaque birmane",
+          "pref": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "ビルマプレート",
+          "pref": true
+        }
+      ],
+      "ko": [
+        {
+          "name": "버마판",
+          "pref": true
+        }
+      ],
+      "lv": [
+        {
+          "name": "Birmas plātne",
+          "pref": true
+        }
+      ],
+      "pl": [
+        {
+          "name": "Płyta birmańska",
+          "pref": true
+        }
+      ],
+      "ru": [
+        {
+          "name": "Бирманская плита",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "緬甸板塊",
+          "pref": true
+        }
+      ],
+      "pt": [
+        {
+          "name": "Placa da Birmânia",
+          "pref": true
+        }
+      ],
+      "bg": [
+        {
+          "name": "Плоча Бирма",
+          "pref": true
+        }
+      ],
+      "it": [
+        {
+          "name": "Placca birmana",
+          "pref": true
+        }
+      ],
+      "sv": [
+        {
+          "name": "Burmaplattan",
+          "pref": true
+        },
+        {
+          "name": "Burmesiska plattan",
+          "alias": true
+        }
+      ],
+      "nb": [
+        {
+          "name": "Burmaplaten",
+          "pref": true
+        }
+      ],
+      "nn": [
+        {
+          "name": "Burmaplata",
+          "pref": true
+        }
+      ],
+      "mk": [
+        {
+          "name": "Бурманска Плоча",
+          "pref": true
+        }
+      ],
+      "he": [
+        {
+          "name": "בורמה",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q499481": {
+    "name": "Indian Plate",
+    "area": 12435448,
+    "names": {
+      "zh-hans": [
+        {
+          "name": "印度板块",
+          "pref": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "印度板塊",
+          "pref": true
+        }
+      ],
+      "zh-hk": [
+        {
+          "name": "印度板塊",
+          "pref": true
+        }
+      ],
+      "pl": [
+        {
+          "name": "Płyta indyjska",
+          "pref": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "plaque indienne",
+          "pref": true
+        },
+        {
+          "name": "Inde",
+          "alias": true
+        }
+      ],
+      "he": [
+        {
+          "name": "הלוח ההודי",
+          "pref": true
+        }
+      ],
+      "ko": [
+        {
+          "name": "인도판",
+          "pref": true
+        }
+      ],
+      "es": [
+        {
+          "name": "Placa Índica",
+          "pref": true
+        },
+        {
+          "name": "Placa indica",
+          "alias": true
+        },
+        {
+          "name": "Placa India",
+          "alias": true
+        },
+        {
+          "name": "Placa de Índia",
+          "alias": true
+        },
+        {
+          "name": "Placa de India",
+          "alias": true
+        }
+      ],
+      "lv": [
+        {
+          "name": "Indijas plātne",
+          "pref": true
+        }
+      ],
+      "it": [
+        {
+          "name": "Placca indiana",
+          "pref": true
+        },
+        {
+          "name": "Placca tettonica dell'India",
+          "alias": true
+        }
+      ],
+      "de": [
+        {
+          "name": "Indische Platte",
+          "pref": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "インドプレート",
+          "pref": true
+        }
+      ],
+      "nl": [
+        {
+          "name": "Indische Plaat",
+          "pref": true
+        }
+      ],
+      "sk": [
+        {
+          "name": "Indická platňa",
+          "pref": true
+        }
+      ],
+      "ru": [
+        {
+          "name": "Индостанская плита",
+          "pref": true
+        },
+        {
+          "name": "Индостанская платформа",
+          "alias": true
+        },
+        {
+          "name": "Индийская континентальная плита",
+          "alias": true
+        },
+        {
+          "name": "Индийская плита",
+          "alias": true
+        }
+      ],
+      "en": [
+        {
+          "name": "Indian Plate",
+          "pref": true
+        }
+      ],
+      "fi": [
+        {
+          "name": "Intian laatta",
+          "pref": true
+        }
+      ],
+      "cs": [
+        {
+          "name": "Indická deska",
+          "pref": true
+        }
+      ],
+      "da": [
+        {
+          "name": "Indiske Plade",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "印度板块",
+          "pref": true
+        }
+      ],
+      "nb": [
+        {
+          "name": "Den indiske platen",
+          "pref": true
+        },
+        {
+          "name": "Den indiske kontinentalplate",
+          "alias": true
+        },
+        {
+          "name": "Den indiske kontinentalplaten",
+          "alias": true
+        }
+      ],
+      "tr": [
+        {
+          "name": "Hint levhası",
+          "pref": true
+        }
+      ],
+      "pt": [
+        {
+          "name": "Placa indiana",
+          "pref": true
+        }
+      ],
+      "bg": [
+        {
+          "name": "Индийска плоча",
+          "pref": true
+        }
+      ],
+      "sv": [
+        {
+          "name": "Indiska plattan",
+          "pref": true
+        }
+      ],
+      "nn": [
+        {
+          "name": "Den indiske plata",
+          "pref": true
+        }
+      ],
+      "el": [
+        {
+          "name": "Ινδική πλάκα",
+          "pref": true
+        }
+      ],
+      "mk": [
+        {
+          "name": "Индиска Плоча",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q1046074": {
+    "name": "Scotia Plate",
+    "area": 1700706,
+    "names": {
+      "pt": [
+        {
+          "name": "Placa de Scotia",
+          "pref": true
+        }
+      ],
+      "zh-hans": [
+        {
+          "name": "斯科舍板块",
+          "pref": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "斯科舍板塊",
+          "pref": true
+        }
+      ],
+      "zh-hk": [
+        {
+          "name": "斯科舍板塊",
+          "pref": true
+        }
+      ],
+      "pl": [
+        {
+          "name": "Płyta Scotia",
+          "pref": true
+        }
+      ],
+      "ko": [
+        {
+          "name": "스코샤판",
+          "pref": true
+        },
+        {
+          "name": "스코티아판",
+          "alias": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "plaque Scotia",
+          "pref": true
+        },
+        {
+          "name": "Écosse",
+          "alias": true
+        },
+        {
+          "name": "Scotia",
+          "alias": true
+        },
+        {
+          "name": "Plaque écossaise",
+          "alias": true
+        }
+      ],
+      "ru": [
+        {
+          "name": "Плита Скотия",
+          "pref": true
+        }
+      ],
+      "en": [
+        {
+          "name": "Scotia Plate",
+          "pref": true
+        }
+      ],
+      "es": [
+        {
+          "name": "Placa Scotia",
+          "pref": true
+        },
+        {
+          "name": "Placa Escocesa",
+          "alias": true
+        }
+      ],
+      "it": [
+        {
+          "name": "Placca di Scotia",
+          "pref": true
+        },
+        {
+          "name": "Placca Scotia",
+          "alias": true
+        }
+      ],
+      "et": [
+        {
+          "name": "Scotia laam",
+          "pref": true
+        },
+        {
+          "name": "Drake'i laam",
+          "alias": true
+        }
+      ],
+      "de": [
+        {
+          "name": "Scotia-Platte",
+          "pref": true
+        },
+        {
+          "name": "Scotiaplatte",
+          "alias": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "スコシアプレート",
+          "pref": true
+        }
+      ],
+      "nl": [
+        {
+          "name": "Scotiaplaat",
+          "pref": true
+        },
+        {
+          "name": "Scotia-plaat",
+          "alias": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "斯科舍板块",
+          "pref": true
+        }
+      ],
+      "bg": [
+        {
+          "name": "Плоча Скотия",
+          "pref": true
+        }
+      ],
+      "sv": [
+        {
+          "name": "Scotiaplattan",
+          "pref": true
+        }
+      ],
+      "nb": [
+        {
+          "name": "Scotiaplaten",
+          "pref": true
+        }
+      ],
+      "nn": [
+        {
+          "name": "Scotiaplata",
+          "pref": true
+        }
+      ],
+      "mk": [
+        {
+          "name": "Скошанска Плоча",
+          "pref": true
+        }
+      ],
+      "he": [
+        {
+          "name": "לוח סקוטיה",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q673071": {
+    "name": "Caribbean Plate",
+    "area": 2964667,
+    "names": {
+      "it": [
+        {
+          "name": "Placca caraibica",
+          "pref": true
+        }
+      ],
+      "cs": [
+        {
+          "name": "Karibská deska",
+          "pref": true
+        }
+      ],
+      "da": [
+        {
+          "name": "Caribiske Plade",
+          "pref": true
+        }
+      ],
+      "de": [
+        {
+          "name": "Karibische Platte",
+          "pref": true
+        }
+      ],
+      "en": [
+        {
+          "name": "Caribbean Plate",
+          "pref": true
+        }
+      ],
+      "es": [
+        {
+          "name": "Placa del Caribe",
+          "pref": true
+        }
+      ],
+      "et": [
+        {
+          "name": "Kariibi laam",
+          "pref": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "plaque caraïbe",
+          "pref": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "カリブプレート",
+          "pref": true
+        }
+      ],
+      "ko": [
+        {
+          "name": "카리브판",
+          "pref": true
+        }
+      ],
+      "nl": [
+        {
+          "name": "Caribische Plaat",
+          "pref": true
+        }
+      ],
+      "pl": [
+        {
+          "name": "Płyta karaibska",
+          "pref": true
+        }
+      ],
+      "pt": [
+        {
+          "name": "Placa do Caribe",
+          "pref": true
+        }
+      ],
+      "ru": [
+        {
+          "name": "Карибская плита",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "加勒比板块",
+          "pref": true
+        }
+      ],
+      "nb": [
+        {
+          "name": "Den karibiske platen",
+          "pref": true
+        },
+        {
+          "name": "Den karibiske plate",
+          "alias": true
+        }
+      ],
+      "sk": [
+        {
+          "name": "Karibská platňa",
+          "pref": true
+        }
+      ],
+      "bg": [
+        {
+          "name": "Карибска плоча",
+          "pref": true
+        }
+      ],
+      "sv": [
+        {
+          "name": "Karibiska plattan",
+          "pref": true
+        }
+      ],
+      "he": [
+        {
+          "name": "הלוח הקריבי",
+          "pref": true
+        }
+      ],
+      "el": [
+        {
+          "name": "Καραϊβική πλάκα",
+          "pref": true
+        }
+      ],
+      "tr": [
+        {
+          "name": "Karayip levhası",
+          "pref": true
+        }
+      ],
+      "fi": [
+        {
+          "name": "Karibian laatta",
+          "pref": true
+        }
+      ],
+      "sr": [
+        {
+          "name": "Karipska ploča",
+          "pref": true
+        }
+      ],
+      "nn": [
+        {
+          "name": "Den karibiske plata",
+          "pref": true
+        }
+      ],
+      "ro": [
+        {
+          "name": "Placa Caraibelor",
+          "pref": true
+        }
+      ],
+      "mk": [
+        {
+          "name": "Карипска Плоча",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q1139220": {
+    "name": "Okhotsk Plate",
+    "area": 3036917,
+    "names": {
+      "zh-hans": [
+        {
+          "name": "鄂霍次克板块",
+          "pref": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "鄂霍次克板塊",
+          "pref": true
+        }
+      ],
+      "zh-hk": [
+        {
+          "name": "鄂霍次克板塊",
+          "pref": true
+        }
+      ],
+      "pl": [
+        {
+          "name": "Płyta ochocka",
+          "pref": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "plaque d'Okhotsk",
+          "pref": true
+        },
+        {
+          "name": "Okhotsk",
+          "alias": true
+        }
+      ],
+      "ru": [
+        {
+          "name": "Охотская плита",
+          "pref": true
+        }
+      ],
+      "ko": [
+        {
+          "name": "오호츠크판",
+          "pref": true
+        }
+      ],
+      "he": [
+        {
+          "name": "לוח אוחוצק",
+          "pref": true
+        }
+      ],
+      "es": [
+        {
+          "name": "Placa de Ojotsk",
+          "pref": true
+        },
+        {
+          "name": "Placa de Okhotsk",
+          "alias": true
+        }
+      ],
+      "en": [
+        {
+          "name": "Okhotsk Plate",
+          "pref": true
+        }
+      ],
+      "it": [
+        {
+          "name": "Placca di Okhotsk",
+          "pref": true
+        },
+        {
+          "name": "Placca di Ochotsk",
+          "alias": true
+        },
+        {
+          "name": "Placca di Ohotsk",
+          "alias": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "オホーツクプレート",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "鄂霍次克板块",
+          "pref": true
+        },
+        {
+          "name": "鄂霍次克板塊",
+          "alias": true
+        }
+      ],
+      "pt": [
+        {
+          "name": "Placa de Okhotsk",
+          "pref": true
+        }
+      ],
+      "bg": [
+        {
+          "name": "Охотска плоча",
+          "pref": true
+        }
+      ],
+      "de": [
+        {
+          "name": "Ochotsk-Platte",
+          "pref": true
+        }
+      ],
+      "sv": [
+        {
+          "name": "Ochotska plattan",
+          "pref": true
+        }
+      ],
+      "nb": [
+        {
+          "name": "Okhotskplaten",
+          "pref": true
+        }
+      ],
+      "nn": [
+        {
+          "name": "Okhotskplata",
+          "pref": true
+        }
+      ],
+      "mk": [
+        {
+          "name": "Охотска Плоча",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q481751": {
+    "name": "Amurian Plate",
+    "area": 5303442,
+    "names": {
+      "ru": [
+        {
+          "name": "Амурская плита",
+          "pref": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "plaque de l'Amour",
+          "pref": true
+        },
+        {
+          "name": "Amour (plaque tectonique)",
+          "alias": true
+        },
+        {
+          "name": "Plaque de l'amour",
+          "alias": true
+        }
+      ],
+      "en": [
+        {
+          "name": "Amurian Plate",
+          "pref": true
+        },
+        {
+          "name": "China Plate",
+          "alias": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "阿穆尔板块",
+          "pref": true
+        },
+        {
+          "name": "黑龍江陸板塊",
+          "alias": true
+        }
+      ],
+      "de": [
+        {
+          "name": "Amurplatte",
+          "pref": true
+        },
+        {
+          "name": "Chinesische Platte",
+          "alias": true
+        }
+      ],
+      "ko": [
+        {
+          "name": "아무르판",
+          "pref": true
+        }
+      ],
+      "it": [
+        {
+          "name": "Placca dell'Amur",
+          "pref": true
+        }
+      ],
+      "cs": [
+        {
+          "name": "Amurská deska",
+          "pref": true
+        }
+      ],
+      "pl": [
+        {
+          "name": "Płyta amurska",
+          "pref": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "アムールプレート",
+          "pref": true
+        }
+      ],
+      "es": [
+        {
+          "name": "Placa Amuria",
+          "pref": true
+        }
+      ],
+      "he": [
+        {
+          "name": "הלוח האמורי",
+          "pref": true
+        },
+        {
+          "name": "לוח אמור",
+          "alias": true
+        }
+      ],
+      "sk": [
+        {
+          "name": "Amurská platňa",
+          "pref": true
+        }
+      ],
+      "bg": [
+        {
+          "name": "Амурска плоча",
+          "pref": true
+        }
+      ],
+      "sv": [
+        {
+          "name": "Amurplattan",
+          "pref": true
+        }
+      ],
+      "nb": [
+        {
+          "name": "Amurplaten",
+          "pref": true
+        }
+      ],
+      "nn": [
+        {
+          "name": "Amurplata",
+          "pref": true
+        }
+      ],
+      "pt": [
+        {
+          "name": "Placa de Amur",
+          "pref": true
+        }
+      ],
+      "mk": [
+        {
+          "name": "Амурска Плоча",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q1415528": {
+    "name": "Somali Plate",
+    "area": 19155063,
+    "names": {
+      "zh-hans": [
+        {
+          "name": "索马里板块",
+          "pref": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "索馬里板塊",
+          "pref": true
+        }
+      ],
+      "zh-hk": [
+        {
+          "name": "索馬里板塊",
+          "pref": true
+        }
+      ],
+      "pt": [
+        {
+          "name": "Placa somali",
+          "pref": true
+        },
+        {
+          "name": "Placa da Somália",
+          "alias": true
+        }
+      ],
+      "pl": [
+        {
+          "name": "Płyta somalijska",
+          "pref": true
+        }
+      ],
+      "ru": [
+        {
+          "name": "Сомалийская плита",
+          "pref": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "plaque somalienne",
+          "pref": true
+        },
+        {
+          "name": "Somalie",
+          "alias": true
+        }
+      ],
+      "es": [
+        {
+          "name": "Placa Somalí",
+          "pref": true
+        },
+        {
+          "name": "Placa Somali",
+          "alias": true
+        }
+      ],
+      "en": [
+        {
+          "name": "Somali Plate",
+          "pref": true
+        }
+      ],
+      "it": [
+        {
+          "name": "Placca somala",
+          "pref": true
+        }
+      ],
+      "de": [
+        {
+          "name": "Somaliaplatte",
+          "pref": true
+        },
+        {
+          "name": "Somaliplatte",
+          "alias": true
+        },
+        {
+          "name": "Somali-Platte",
+          "alias": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "ソマリアプレート",
+          "pref": true
+        }
+      ],
+      "nl": [
+        {
+          "name": "Somalische Plaat",
+          "pref": true
+        }
+      ],
+      "nn": [
+        {
+          "name": "Den somaliske plata",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "索马里板块",
+          "pref": true
+        }
+      ],
+      "bg": [
+        {
+          "name": "Сомалийска плоча",
+          "pref": true
+        }
+      ],
+      "sv": [
+        {
+          "name": "Somaliska plattan",
+          "pref": true
+        }
+      ],
+      "el": [
+        {
+          "name": "Σομαλική πλάκα",
+          "pref": true
+        }
+      ],
+      "he": [
+        {
+          "name": "הלוח הסומלי",
+          "pref": true
+        }
+      ],
+      "ko": [
+        {
+          "name": "소말리아판",
+          "pref": true
+        }
+      ],
+      "nb": [
+        {
+          "name": "Den somaliske platen",
+          "pref": true
+        }
+      ],
+      "hu": [
+        {
+          "name": "Szomáliai-lemez",
+          "pref": true
+        }
+      ],
+      "mk": [
+        {
+          "name": "Сомалиска Плоча",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q1144881": {
+    "name": "Sunda Plate",
+    "area": 8916326,
+    "names": {
+      "zh-hans": [
+        {
+          "name": "巽他板块",
+          "pref": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "巽他板塊",
+          "pref": true
+        }
+      ],
+      "zh-hk": [
+        {
+          "name": "巽他板塊",
+          "pref": true
+        }
+      ],
+      "pl": [
+        {
+          "name": "Płyta sundajska",
+          "pref": true
+        }
+      ],
+      "ko": [
+        {
+          "name": "순다판",
+          "pref": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "plaque de la Sonde",
+          "pref": true
+        },
+        {
+          "name": "Sonde",
+          "alias": true
+        }
+      ],
+      "ru": [
+        {
+          "name": "Зондская плита",
+          "pref": true
+        }
+      ],
+      "es": [
+        {
+          "name": "Placa de la Sonda",
+          "pref": true
+        },
+        {
+          "name": "Placa de Sunda",
+          "alias": true
+        }
+      ],
+      "en": [
+        {
+          "name": "Sunda Plate",
+          "pref": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "スンダプレート",
+          "pref": true
+        }
+      ],
+      "cs": [
+        {
+          "name": "Sundská deska",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "巽他板塊",
+          "pref": true
+        }
+      ],
+      "sk": [
+        {
+          "name": "Sundská platňa",
+          "pref": true
+        }
+      ],
+      "pt": [
+        {
+          "name": "Placa da Sonda",
+          "pref": true
+        }
+      ],
+      "bg": [
+        {
+          "name": "Плоча Сунда",
+          "pref": true
+        }
+      ],
+      "it": [
+        {
+          "name": "Placca della Sonda",
+          "pref": true
+        }
+      ],
+      "sv": [
+        {
+          "name": "Sundaplattan",
+          "pref": true
+        }
+      ],
+      "nl": [
+        {
+          "name": "Soendaplaat",
+          "pref": true
+        },
+        {
+          "name": "Sundaplaat",
+          "alias": true
+        }
+      ],
+      "nb": [
+        {
+          "name": "Sundaplaten",
+          "pref": true
+        }
+      ],
+      "nn": [
+        {
+          "name": "Sundaplata",
+          "pref": true
+        }
+      ],
+      "de": [
+        {
+          "name": "Sundaplatte",
+          "pref": true
+        }
+      ],
+      "mk": [
+        {
+          "name": "Сундска Плоча",
+          "pref": true
+        }
+      ],
+      "he": [
+        {
+          "name": "סונדה",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q1200519": {
+    "name": "Tonga Plate",
+    "area": 253685,
+    "names": {
+      "zh-hans": [
+        {
+          "name": "汤加板块",
+          "pref": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "湯加板塊",
+          "pref": true
+        }
+      ],
+      "zh-hk": [
+        {
+          "name": "湯加板塊",
+          "pref": true
+        }
+      ],
+      "zh-tw": [
+        {
+          "name": "東加板塊",
+          "pref": true
+        }
+      ],
+      "pt": [
+        {
+          "name": "Placa de Tonga",
+          "pref": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "トンガプレート",
+          "pref": true
+        }
+      ],
+      "pl": [
+        {
+          "name": "Płyta Tonga",
+          "pref": true
+        }
+      ],
+      "ko": [
+        {
+          "name": "통가판",
+          "pref": true
+        }
+      ],
+      "ru": [
+        {
+          "name": "Плита Тонга",
+          "pref": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "plaque des Tonga",
+          "pref": true
+        },
+        {
+          "name": "Tonga",
+          "alias": true
+        }
+      ],
+      "en": [
+        {
+          "name": "Tonga Plate",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "汤加板块",
+          "pref": true
+        }
+      ],
+      "bg": [
+        {
+          "name": "Плоча Тонга",
+          "pref": true
+        }
+      ],
+      "it": [
+        {
+          "name": "Placca delle Tonga",
+          "pref": true
+        }
+      ],
+      "es": [
+        {
+          "name": "Placa de Tonga",
+          "pref": true
+        }
+      ],
+      "nb": [
+        {
+          "name": "Tongaplaten",
+          "pref": true
+        }
+      ],
+      "nn": [
+        {
+          "name": "Tongaplata",
+          "pref": true
+        }
+      ],
+      "mk": [
+        {
+          "name": "Тонганска Плоча",
+          "pref": true
+        }
+      ],
+      "de": [
+        {
+          "name": "Tongaplatte",
+          "pref": true
+        }
+      ],
+      "nl": [
+        {
+          "name": "Tongaplaat",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q1200508": {
+    "name": "Rivera Plate",
+    "area": 101068,
+    "names": {
+      "zh-hans": [
+        {
+          "name": "里维拉板块",
+          "pref": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "里維拉板塊",
+          "pref": true
+        }
+      ],
+      "zh-hk": [
+        {
+          "name": "里維拉板塊",
+          "pref": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "リベラプレート",
+          "pref": true
+        }
+      ],
+      "pl": [
+        {
+          "name": "Płyta Rivera",
+          "pref": true
+        }
+      ],
+      "ko": [
+        {
+          "name": "리베라판",
+          "pref": true
+        }
+      ],
+      "ru": [
+        {
+          "name": "Плита Ривера",
+          "pref": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "plaque Rivera",
+          "pref": true
+        },
+        {
+          "name": "Rivera",
+          "alias": true
+        }
+      ],
+      "es": [
+        {
+          "name": "Placa de Rivera",
+          "pref": true
+        }
+      ],
+      "en": [
+        {
+          "name": "Rivera Plate",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "里维拉板块",
+          "pref": true
+        }
+      ],
+      "bg": [
+        {
+          "name": "Плоча Ривера",
+          "pref": true
+        }
+      ],
+      "it": [
+        {
+          "name": "Placca Rivera",
+          "pref": true
+        }
+      ],
+      "de": [
+        {
+          "name": "Riveraplatte",
+          "pref": true
+        }
+      ],
+      "nb": [
+        {
+          "name": "Riveraplaten",
+          "pref": true
+        }
+      ],
+      "nn": [
+        {
+          "name": "Riveraplata",
+          "pref": true
+        }
+      ],
+      "he": [
+        {
+          "name": "לוח ריביירה",
+          "pref": true
+        }
+      ],
+      "fi": [
+        {
+          "name": "Riveran laatta",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q1340601": {
+    "name": "New Hebrides Plate",
+    "area": 643346,
+    "names": {
+      "zh-hans": [
+        {
+          "name": "新赫布里底板块",
+          "pref": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "新赫布里底板塊",
+          "pref": true
+        }
+      ],
+      "zh-hk": [
+        {
+          "name": "新赫布里底板塊",
+          "pref": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "ニューヘブリデスプレート",
+          "pref": true
+        }
+      ],
+      "pl": [
+        {
+          "name": "Płyta nowohebrydzka",
+          "pref": true
+        }
+      ],
+      "ru": [
+        {
+          "name": "Новогебридская плита",
+          "pref": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "plaque des Nouvelles-Hébrides",
+          "pref": true
+        },
+        {
+          "name": "Nouvelles-Hébrides",
+          "alias": true
+        }
+      ],
+      "ko": [
+        {
+          "name": "뉴헤브리디스판",
+          "pref": true
+        }
+      ],
+      "en": [
+        {
+          "name": "New Hebrides Plate",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "新赫布里底板块",
+          "pref": true
+        },
+        {
+          "name": "新海布里地板塊",
+          "alias": true
+        }
+      ],
+      "bg": [
+        {
+          "name": "Плоча Нови Хебриди",
+          "pref": true
+        }
+      ],
+      "it": [
+        {
+          "name": "Placca delle Nuove Ebridi",
+          "pref": true
+        }
+      ],
+      "nb": [
+        {
+          "name": "Ny-Hebriderplaten",
+          "pref": true
+        }
+      ],
+      "nn": [
+        {
+          "name": "Ny-Hebriderplata",
+          "pref": true
+        }
+      ],
+      "pt": [
+        {
+          "name": "Placa das Novas Hébridas",
+          "pref": true
+        }
+      ],
+      "mk": [
+        {
+          "name": "Новохебридска Плоча",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q1361799": {
+    "name": "Caroline Plate",
+    "area": 1528200,
+    "names": {
+      "zh-hans": [
+        {
+          "name": "加洛林板块",
+          "pref": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "加洛林板塊",
+          "pref": true
+        }
+      ],
+      "zh-hk": [
+        {
+          "name": "加洛林板塊",
+          "pref": true
+        }
+      ],
+      "de": [
+        {
+          "name": "Karolinenplatte",
+          "pref": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "カロライナプレート",
+          "pref": true
+        },
+        {
+          "name": "カロリンプレート",
+          "alias": true
+        }
+      ],
+      "pl": [
+        {
+          "name": "Płyta karolińska",
+          "pref": true
+        }
+      ],
+      "ko": [
+        {
+          "name": "캐롤라인판",
+          "pref": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "plaque des Carolines",
+          "pref": true
+        },
+        {
+          "name": "Carolines",
+          "alias": true
+        }
+      ],
+      "en": [
+        {
+          "name": "Caroline Plate",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "加洛林板塊",
+          "pref": true
+        }
+      ],
+      "es": [
+        {
+          "name": "Placa de las Carolinas",
+          "pref": true
+        }
+      ],
+      "bg": [
+        {
+          "name": "Каролинска плоча",
+          "pref": true
+        }
+      ],
+      "it": [
+        {
+          "name": "Placca delle Caroline",
+          "pref": true
+        }
+      ],
+      "sv": [
+        {
+          "name": "Karolinerplattan",
+          "pref": true
+        }
+      ],
+      "nb": [
+        {
+          "name": "Karolinerplaten",
+          "pref": true
+        }
+      ],
+      "nn": [
+        {
+          "name": "Karolinerplata",
+          "pref": true
+        }
+      ],
+      "he": [
+        {
+          "name": "לוח קרוליין",
+          "pref": true
+        }
+      ],
+      "pt": [
+        {
+          "name": "Placa das Carolinas",
+          "pref": true
+        }
+      ],
+      "mk": [
+        {
+          "name": "Каролинска Плоча",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q1135772": {
+    "name": "Futuna Plate",
+    "area": 32066,
+    "names": {
+      "zh-hans": [
+        {
+          "name": "富图纳板块",
+          "pref": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "富圖納板塊",
+          "pref": true
+        }
+      ],
+      "zh-hk": [
+        {
+          "name": "富圖納板塊",
+          "pref": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "フツナプレート",
+          "pref": true
+        }
+      ],
+      "pl": [
+        {
+          "name": "Płyta Futuna",
+          "pref": true
+        }
+      ],
+      "ko": [
+        {
+          "name": "푸투나판",
+          "pref": true
+        }
+      ],
+      "en": [
+        {
+          "name": "Futuna Plate",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "富圖納板塊",
+          "pref": true
+        }
+      ],
+      "ru": [
+        {
+          "name": "Плита Футуна",
+          "pref": true
+        }
+      ],
+      "bg": [
+        {
+          "name": "Плоча Футуна",
+          "pref": true
+        }
+      ],
+      "nb": [
+        {
+          "name": "Futunaplaten",
+          "pref": true
+        }
+      ],
+      "nn": [
+        {
+          "name": "Futunaplata",
+          "pref": true
+        }
+      ],
+      "mk": [
+        {
+          "name": "Футунска Плоча",
+          "pref": true
+        }
+      ],
+      "de": [
+        {
+          "name": "Futuna Platte",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q1345056": {
+    "name": "Kermadec Plate",
+    "area": 505341,
+    "names": {
+      "zh-hans": [
+        {
+          "name": "克马德克板块",
+          "pref": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "克馬德克板塊",
+          "pref": true
+        }
+      ],
+      "zh-hk": [
+        {
+          "name": "克馬德克板塊",
+          "pref": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "ケルマデックプレート",
+          "pref": true
+        }
+      ],
+      "pl": [
+        {
+          "name": "Płyta Kermadec",
+          "pref": true
+        }
+      ],
+      "ru": [
+        {
+          "name": "Плита Кермадек",
+          "pref": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "Plaque des Kermadec",
+          "pref": true
+        },
+        {
+          "name": "Kermadec",
+          "alias": true
+        }
+      ],
+      "ko": [
+        {
+          "name": "케르마데크판",
+          "pref": true
+        }
+      ],
+      "en": [
+        {
+          "name": "Kermadec Plate",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "克馬德克板塊",
+          "pref": true
+        }
+      ],
+      "bg": [
+        {
+          "name": "Плоча Кермадек",
+          "pref": true
+        }
+      ],
+      "it": [
+        {
+          "name": "Placca Kermadec",
+          "pref": true
+        }
+      ],
+      "nb": [
+        {
+          "name": "Kermadecplaten",
+          "pref": true
+        }
+      ],
+      "nn": [
+        {
+          "name": "Kermadecplata",
+          "pref": true
+        }
+      ],
+      "mk": [
+        {
+          "name": "Кермадечка Плоча",
+          "pref": true
+        }
+      ],
+      "tr": [
+        {
+          "name": "Kermadec levhası",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q643183": {
+    "name": "Maoke Plate",
+    "area": 115275,
+    "names": {
+      "fr": [
+        {
+          "name": "plaque Maoke",
+          "pref": true
+        }
+      ],
+      "en": [
+        {
+          "name": "Maoke Plate",
+          "pref": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "マウケプレート",
+          "pref": true
+        }
+      ],
+      "ko": [
+        {
+          "name": "마오케판",
+          "pref": true
+        }
+      ],
+      "pl": [
+        {
+          "name": "Płyta Maoke",
+          "pref": true
+        }
+      ],
+      "ru": [
+        {
+          "name": "Плита Маоке",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "毛克板塊",
+          "pref": true
+        }
+      ],
+      "es": [
+        {
+          "name": "Placa de Maoke",
+          "pref": true
+        }
+      ],
+      "bg": [
+        {
+          "name": "Плоча Маоке",
+          "pref": true
+        }
+      ],
+      "it": [
+        {
+          "name": "Placca Maoke",
+          "pref": true
+        }
+      ],
+      "nb": [
+        {
+          "name": "Maokeplaten",
+          "pref": true
+        }
+      ],
+      "nn": [
+        {
+          "name": "Maokeplata",
+          "pref": true
+        }
+      ],
+      "mk": [
+        {
+          "name": "Маочка Плоча",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q1200973": {
+    "name": "Niuafo'ou Plate",
+    "area": 124204,
+    "names": {
+      "zh-hans": [
+        {
+          "name": "纽阿福欧板块",
+          "pref": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "紐阿福歐板塊",
+          "pref": true
+        }
+      ],
+      "zh-hk": [
+        {
+          "name": "紐阿福歐板塊",
+          "pref": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "ニウアフォプレート",
+          "pref": true
+        }
+      ],
+      "pl": [
+        {
+          "name": "Płyta Niuafo'ou",
+          "pref": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "Plaque de Niuafo'ou",
+          "pref": true
+        },
+        {
+          "name": "Niuafo'ou",
+          "alias": true
+        }
+      ],
+      "ko": [
+        {
+          "name": "니우아포우판",
+          "pref": true
+        }
+      ],
+      "ru": [
+        {
+          "name": "Плита Ниуафооу",
+          "pref": true
+        }
+      ],
+      "en": [
+        {
+          "name": "Niuafo'ou Plate",
+          "pref": true
+        }
+      ],
+      "it": [
+        {
+          "name": "Placca Niuafo'ou",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "紐阿福歐板塊",
+          "pref": true
+        }
+      ],
+      "bg": [
+        {
+          "name": "Плоча Ниуафооу",
+          "pref": true
+        }
+      ],
+      "nb": [
+        {
+          "name": "Niuafo'ou-platen",
+          "pref": true
+        }
+      ],
+      "nn": [
+        {
+          "name": "Niuafo'ou-plata",
+          "pref": true
+        }
+      ],
+      "mk": [
+        {
+          "name": "Ниуафооуанска Плоча",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q951362": {
+    "name": "Panama Plate",
+    "area": 273574,
+    "names": {
+      "fr": [
+        {
+          "name": "plaque de Panama",
+          "pref": true
+        }
+      ],
+      "en": [
+        {
+          "name": "Panama Plate",
+          "pref": true
+        }
+      ],
+      "es": [
+        {
+          "name": "Placa de Panamá",
+          "pref": true
+        },
+        {
+          "name": "Placa de Panama",
+          "alias": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "パナマプレート",
+          "pref": true
+        }
+      ],
+      "ko": [
+        {
+          "name": "파나마판",
+          "pref": true
+        }
+      ],
+      "pl": [
+        {
+          "name": "Płyta panamska",
+          "pref": true
+        }
+      ],
+      "ru": [
+        {
+          "name": "Панамская плита",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "巴拿馬板塊",
+          "pref": true
+        }
+      ],
+      "bg": [
+        {
+          "name": "Панамска плоча",
+          "pref": true
+        }
+      ],
+      "it": [
+        {
+          "name": "Placca di Panama",
+          "pref": true
+        }
+      ],
+      "he": [
+        {
+          "name": "לוח פנמה",
+          "pref": true
+        }
+      ],
+      "nb": [
+        {
+          "name": "Panamaplaten",
+          "pref": true
+        }
+      ],
+      "nn": [
+        {
+          "name": "Panamaplata",
+          "pref": true
+        }
+      ],
+      "mk": [
+        {
+          "name": "Панамска Плоча",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q1200982": {
+    "name": "Shetland Plate",
+    "area": 72250,
+    "names": {
+      "zh-hans": [
+        {
+          "name": "设得兰板块",
+          "pref": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "設得蘭板塊",
+          "pref": true
+        }
+      ],
+      "zh-hk": [
+        {
+          "name": "設得蘭板塊",
+          "pref": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "シェトランドプレート",
+          "pref": true
+        }
+      ],
+      "pl": [
+        {
+          "name": "Płyta szetlandzka",
+          "pref": true
+        }
+      ],
+      "ko": [
+        {
+          "name": "셰틀랜드판",
+          "pref": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "plaque des Shetland",
+          "pref": true
+        },
+        {
+          "name": "Shetland",
+          "alias": true
+        }
+      ],
+      "ru": [
+        {
+          "name": "Шетландская плита",
+          "pref": true
+        }
+      ],
+      "en": [
+        {
+          "name": "Shetland Plate",
+          "pref": true
+        },
+        {
+          "name": "South Shetland Block",
+          "alias": true
+        }
+      ],
+      "it": [
+        {
+          "name": "Placca delle Shetland",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "設得蘭板塊",
+          "pref": true
+        }
+      ],
+      "es": [
+        {
+          "name": "Placa de Shetland",
+          "pref": true
+        }
+      ],
+      "bg": [
+        {
+          "name": "Шетландска плоча",
+          "pref": true
+        }
+      ],
+      "he": [
+        {
+          "name": "לוח שטלנד",
+          "pref": true
+        }
+      ],
+      "nb": [
+        {
+          "name": "Shetlandplaten",
+          "pref": true
+        }
+      ],
+      "nn": [
+        {
+          "name": "Shetlandplata",
+          "pref": true
+        }
+      ],
+      "de": [
+        {
+          "name": "Shetland-Platte",
+          "pref": true
+        },
+        {
+          "name": "Shetlandplatte",
+          "alias": true
+        },
+        {
+          "name": "SP",
+          "alias": true
+        }
+      ]
+    }
+  },
+  "Q1050177": {
+    "name": "Woodlark Plate",
+    "area": 452980,
+    "names": {
+      "zh-hans": [
+        {
+          "name": "木百灵板块",
+          "pref": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "木百靈板塊",
+          "pref": true
+        }
+      ],
+      "zh-hk": [
+        {
+          "name": "木百靈板塊",
+          "pref": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "ウッドラークプレート",
+          "pref": true
+        }
+      ],
+      "pl": [
+        {
+          "name": "Płyta Woodlark",
+          "pref": true
+        }
+      ],
+      "ko": [
+        {
+          "name": "우들라크판",
+          "pref": true
+        }
+      ],
+      "en": [
+        {
+          "name": "Woodlark Plate",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "木百靈板塊",
+          "pref": true
+        }
+      ],
+      "es": [
+        {
+          "name": "Placa Woodlark",
+          "pref": true
+        }
+      ],
+      "bg": [
+        {
+          "name": "Плоча Вудларк",
+          "pref": true
+        }
+      ],
+      "nb": [
+        {
+          "name": "Woodlarkplaten",
+          "pref": true
+        }
+      ],
+      "nn": [
+        {
+          "name": "Woodlarkplata",
+          "pref": true
+        }
+      ],
+      "ru": [
+        {
+          "name": "плита Вудларк",
+          "pref": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "plaque Woodlark",
+          "pref": true
+        },
+        {
+          "name": "Woodlark",
+          "alias": true
+        }
+      ],
+      "it": [
+        {
+          "name": "Placca Woodlark",
+          "pref": true
+        }
+      ],
+      "mk": [
+        {
+          "name": "Вудларкова Плоча",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q2323550": {
+    "name": "Yangtze Plate",
+    "area": 2201988,
+    "names": {
+      "ru": [
+        {
+          "name": "Плита Янцзы",
+          "pref": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "plaque du Yangtsé",
+          "pref": true
+        },
+        {
+          "name": "Yangtsé",
+          "alias": true
+        },
+        {
+          "name": "Plaque du Yangtse",
+          "alias": true
+        }
+      ],
+      "it": [
+        {
+          "name": "Placca dello Yangtze",
+          "pref": true
+        }
+      ],
+      "es": [
+        {
+          "name": "Placa Yangtsé",
+          "pref": true
+        },
+        {
+          "name": "Placa Yangtse",
+          "alias": true
+        }
+      ],
+      "ko": [
+        {
+          "name": "양쯔판",
+          "pref": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "揚子江プレート",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "华南板块",
+          "pref": true
+        },
+        {
+          "name": "长江板块",
+          "alias": true
+        },
+        {
+          "name": "扬子板块",
+          "alias": true
+        },
+        {
+          "name": "扬子地块",
+          "alias": true
+        },
+        {
+          "name": "华南地块",
+          "alias": true
+        }
+      ],
+      "en": [
+        {
+          "name": "Yangtze Plate",
+          "pref": true
+        }
+      ],
+      "pl": [
+        {
+          "name": "Płyta Jangcy",
+          "pref": true
+        }
+      ],
+      "bg": [
+        {
+          "name": "Плоча Яндзъ",
+          "pref": true
+        }
+      ],
+      "sv": [
+        {
+          "name": "Yangtzeplattan",
+          "pref": true
+        }
+      ],
+      "nb": [
+        {
+          "name": "Jangtseplaten",
+          "pref": true
+        }
+      ],
+      "nn": [
+        {
+          "name": "Jangtseplata",
+          "pref": true
+        }
+      ],
+      "he": [
+        {
+          "name": "לוח יאנגצה",
+          "pref": true
+        }
+      ],
+      "de": [
+        {
+          "name": "Jangtseplatte",
+          "pref": true
+        }
+      ],
+      "pt": [
+        {
+          "name": "Placa do Yangtzé",
+          "pref": true
+        }
+      ],
+      "mk": [
+        {
+          "name": "Јангцекјаншка Плоча",
+          "pref": true
+        },
+        {
+          "name": "Јужнокинеска Плоча",
+          "alias": true
+        }
+      ]
+    }
+  },
+  "Q2073887": {
+    "name": "Gonâve Microplate",
+    "names": {
+      "pl": [
+        {
+          "name": "Mikropłyta Gonâve",
+          "pref": true
+        }
+      ],
+      "ru": [
+        {
+          "name": "Гонав",
+          "pref": true
+        },
+        {
+          "name": "Плита Гонав",
+          "alias": true
+        }
+      ],
+      "en": [
+        {
+          "name": "Gonâve Microplate",
+          "pref": true
+        },
+        {
+          "name": "Gonave Microplate",
+          "alias": true
+        }
+      ],
+      "bg": [
+        {
+          "name": "Микроплоча Гонава",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "戈納夫板塊",
+          "pref": true
+        }
+      ],
+      "it": [
+        {
+          "name": "Microplacca di Gonâve",
+          "pref": true
+        }
+      ],
+      "de": [
+        {
+          "name": "Gônave-Mikroplatte",
+          "pref": true
+        }
+      ],
+      "es": [
+        {
+          "name": "Placa de Gonâve",
+          "pref": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "Microplaque de la Gonâve",
+          "pref": true
+        }
+      ],
+      "ko": [
+        {
+          "name": "고나브 미판",
+          "pref": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "ゴナーヴ・マイクロプレート",
+          "pref": true
+        }
+      ],
+      "mk": [
+        {
+          "name": "Гонавска Плоча",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q23581639": {
+    "name": "Lwandle Plate",
+    "names": {
+      "en": [
+        {
+          "name": "Lwandle Plate",
+          "pref": true
+        }
+      ],
+      "it": [
+        {
+          "name": "Placca di Lwandle",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "盧萬德勒板塊",
+          "pref": true
+        }
+      ],
+      "pl": [
+        {
+          "name": "Płyta Lwandle",
+          "pref": true
+        }
+      ],
+      "mk": [
+        {
+          "name": "Луандлевска Плоча",
+          "pref": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "Plaque Lwandle",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q23579442": {
+    "name": "Capricorn Plate",
+    "names": {
+      "en": [
+        {
+          "name": "Capricorn Plate",
+          "pref": true
+        }
+      ],
+      "bg": [
+        {
+          "name": "Плоча Козирог",
+          "pref": true
+        }
+      ],
+      "it": [
+        {
+          "name": "Placca del Capricorno",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "摩羯座板塊",
+          "pref": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "plaque du Capricorne",
+          "pref": true
+        }
+      ],
+      "mk": [
+        {
+          "name": "Јарчева Плоча",
+          "pref": true
+        }
+      ],
+      "he": [
+        {
+          "name": "לוח קפריקורן",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q25105221": {
+    "name": "Rovuma Plate",
+    "names": {
+      "en": [
+        {
+          "name": "Rovuma Plate",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "魯伍馬板塊",
+          "pref": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "魯伍馬板塊",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q104863725": {
+    "name": "Victoria Microplate",
+    "names": {
+      "en": [
+        {
+          "name": "Victoria Microplate",
+          "pref": true
+        },
+        {
+          "name": "Victoria Plate",
+          "alias": true
+        }
+      ],
+      "mk": [
+        {
+          "name": "Викториска Плоча",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q130362464": {
+    "name": "Puerto Rico-Virgin Islands Microplate",
+    "names": {
+      "en": [
+        {
+          "name": "Puerto Rico-Virgin Islands Microplate",
+          "pref": true
+        }
+      ],
+      "es": [
+        {
+          "name": "Placa de Puerto Rico-Islas Vírgenes",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q134706473": {
+    "name": "Danakil microplate",
+    "names": {
+      "en": [
+        {
+          "name": "Danakil microplate",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q237660": {
+    "name": "Iranian plateau",
+    "names": {
+      "zh-hans": [
+        {
+          "name": "伊朗高原",
+          "pref": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "伊朗高原",
+          "pref": true
+        }
+      ],
+      "zh-hk": [
+        {
+          "name": "伊朗高原",
+          "pref": true
+        }
+      ],
+      "zh-cn": [
+        {
+          "name": "伊朗高原",
+          "pref": true
+        }
+      ],
+      "zh-sg": [
+        {
+          "name": "伊朗高原",
+          "pref": true
+        }
+      ],
+      "zh-tw": [
+        {
+          "name": "伊朗高原",
+          "pref": true
+        }
+      ],
+      "pl": [
+        {
+          "name": "Wyżyna Irańska",
+          "pref": true
+        }
+      ],
+      "ko": [
+        {
+          "name": "이란고원",
+          "pref": true
+        },
+        {
+          "name": "페르시아 고원",
+          "alias": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "Plateau Iranien",
+          "pref": true
+        }
+      ],
+      "es": [
+        {
+          "name": "Meseta iraní",
+          "pref": true
+        },
+        {
+          "name": "Altiplano Iraní",
+          "alias": true
+        },
+        {
+          "name": "Llanura iraní",
+          "alias": true
+        },
+        {
+          "name": "Meseta de Irán",
+          "alias": true
+        },
+        {
+          "name": "Meseta persa",
+          "alias": true
+        },
+        {
+          "name": "Meseta irani",
+          "alias": true
+        },
+        {
+          "name": "Meseta de Iran",
+          "alias": true
+        },
+        {
+          "name": "Altiplano Irani",
+          "alias": true
+        },
+        {
+          "name": "Llanura irani",
+          "alias": true
+        }
+      ],
+      "it": [
+        {
+          "name": "altopiano iranico",
+          "pref": true
+        },
+        {
+          "name": "Altopiano persiano",
+          "alias": true
+        }
+      ],
+      "et": [
+        {
+          "name": "Iraani mägismaa",
+          "pref": true
+        },
+        {
+          "name": "Iraani kiltmaa",
+          "alias": true
+        }
+      ],
+      "de": [
+        {
+          "name": "Iranisches Hochland",
+          "pref": true
+        },
+        {
+          "name": "Hochland von Iran",
+          "alias": true
+        },
+        {
+          "name": "Iranisches Plateau",
+          "alias": true
+        },
+        {
+          "name": "Persisches Hochland",
+          "alias": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "イラン高原",
+          "pref": true
+        },
+        {
+          "name": "ペルシア高原",
+          "alias": true
+        },
+        {
+          "name": "ペルシャ高原",
+          "alias": true
+        },
+        {
+          "name": "ペルシヤ高原",
+          "alias": true
+        }
+      ],
+      "en": [
+        {
+          "name": "Iranian plateau",
+          "pref": true
+        },
+        {
+          "name": "Plateau of Iran",
+          "alias": true
+        },
+        {
+          "name": "Persian plateau",
+          "alias": true
+        }
+      ],
+      "nl": [
+        {
+          "name": "Hoogland van Iran",
+          "pref": true
+        },
+        {
+          "name": "Iraans Plateau",
+          "alias": true
+        },
+        {
+          "name": "Het Iraanse Plateau",
+          "alias": true
+        },
+        {
+          "name": "Iraanse Plateau",
+          "alias": true
+        }
+      ],
+      "pt": [
+        {
+          "name": "Planalto iraniano",
+          "pref": true
+        },
+        {
+          "name": "Planalto do Irã",
+          "alias": true
+        }
+      ],
+      "ru": [
+        {
+          "name": "Иранское нагорье",
+          "pref": true
+        },
+        {
+          "name": "Иранское плато",
+          "alias": true
+        }
+      ],
+      "tr": [
+        {
+          "name": "İran platosu",
+          "pref": true
+        }
+      ],
+      "cs": [
+        {
+          "name": "Íránská vysočina",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "伊朗高原",
+          "pref": true
+        },
+        {
+          "name": "波斯高原",
+          "alias": true
+        }
+      ],
+      "mk": [
+        {
+          "name": "Иранска Висорамнина",
+          "pref": true
+        }
+      ],
+      "nb": [
+        {
+          "name": "Det iranske høylandet",
+          "pref": true
+        }
+      ],
+      "bg": [
+        {
+          "name": "Иранска планинска земя",
+          "pref": true
+        },
+        {
+          "name": "Иранско плато",
+          "alias": true
+        }
+      ],
+      "el": [
+        {
+          "name": "Ιρανικό υψίπεδο",
+          "pref": true
+        }
+      ],
+      "sr": [
+        {
+          "name": "Иранска висораван",
+          "pref": true
+        }
+      ],
+      "hu": [
+        {
+          "name": "Iráni-fennsík",
+          "pref": true
+        }
+      ],
+      "sk": [
+        {
+          "name": "Iránska plošina",
+          "pref": true
+        }
+      ],
+      "da": [
+        {
+          "name": "Den iranske højslette",
+          "pref": true
+        }
+      ],
+      "he": [
+        {
+          "name": "הרמה האיראנית",
+          "pref": true
+        }
+      ],
+      "sv": [
+        {
+          "name": "Iranska högplatån",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q860385": {
+    "name": "Juan de Fuca Plate",
+    "area": 256527,
+    "names": {
+      "pt": [
+        {
+          "name": "Placa Juan de Fuca",
+          "pref": true
+        }
+      ],
+      "zh-hans": [
+        {
+          "name": "胡安·德富卡板块",
+          "pref": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "胡安·德富卡板塊",
+          "pref": true
+        }
+      ],
+      "zh-hk": [
+        {
+          "name": "胡安·德富卡板塊",
+          "pref": true
+        }
+      ],
+      "pl": [
+        {
+          "name": "Płyta Juan de Fuca",
+          "pref": true
+        }
+      ],
+      "ko": [
+        {
+          "name": "후안데푸카판",
+          "pref": true
+        },
+        {
+          "name": "후안 데 푸카 판",
+          "alias": true
+        }
+      ],
+      "ru": [
+        {
+          "name": "Плита Хуан де Фука",
+          "pref": true
+        }
+      ],
+      "he": [
+        {
+          "name": "לוח חואן דה פוקה",
+          "pref": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "plaque Juan de Fuca",
+          "pref": true
+        },
+        {
+          "name": "Juan de Fuca",
+          "alias": true
+        }
+      ],
+      "en": [
+        {
+          "name": "Juan de Fuca Plate",
+          "pref": true
+        }
+      ],
+      "es": [
+        {
+          "name": "Placa de Juan de Fuca",
+          "pref": true
+        },
+        {
+          "name": "Placa Juan de Fuca",
+          "alias": true
+        }
+      ],
+      "it": [
+        {
+          "name": "Placca di Juan de Fuca",
+          "pref": true
+        },
+        {
+          "name": "Placca Juan de Fuca",
+          "alias": true
+        }
+      ],
+      "de": [
+        {
+          "name": "Juan-de-Fuca-Platte",
+          "pref": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "ファンデフカプレート",
+          "pref": true
+        },
+        {
+          "name": "ファンデフーカプレート",
+          "alias": true
+        }
+      ],
+      "nl": [
+        {
+          "name": "Juan de Fucaplaat",
+          "pref": true
+        },
+        {
+          "name": "Juan De Fuca-plaat",
+          "alias": true
+        }
+      ],
+      "sv": [
+        {
+          "name": "Juan de Fuca-plattan",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "胡安·德富卡板块",
+          "pref": true
+        }
+      ],
+      "bg": [
+        {
+          "name": "Плоча Хуан де Фука",
+          "pref": true
+        }
+      ],
+      "tr": [
+        {
+          "name": "Juan de Fuca levhası",
+          "pref": true
+        }
+      ],
+      "nb": [
+        {
+          "name": "Juan de Fuca-platen",
+          "pref": true
+        }
+      ],
+      "nn": [
+        {
+          "name": "Juan de Fuca-plata",
+          "pref": true
+        }
+      ],
+      "mk": [
+        {
+          "name": "Хуан де Фука",
+          "pref": true
+        }
+      ],
+      "cs": [
+        {
+          "name": "deska Juan de Fuca",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q1947556": {
+    "name": "Gorda Plate",
+    "names": {
+      "nl": [
+        {
+          "name": "Gordaplaat",
+          "pref": true
+        }
+      ],
+      "en": [
+        {
+          "name": "Gorda Plate",
+          "pref": true
+        }
+      ],
+      "es": [
+        {
+          "name": "Placa de Gorda",
+          "pref": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "Plaque Gorda",
+          "pref": true
+        }
+      ],
+      "it": [
+        {
+          "name": "Placca di Gorda",
+          "pref": true
+        }
+      ],
+      "pl": [
+        {
+          "name": "Płyta Gorda",
+          "pref": true
+        }
+      ],
+      "pt": [
+        {
+          "name": "Placa de Gorda",
+          "pref": true
+        }
+      ],
+      "ru": [
+        {
+          "name": "Плита Горда",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "戈尔达板块",
+          "pref": true
+        }
+      ],
+      "he": [
+        {
+          "name": "לוח גורדה",
+          "pref": true
+        }
+      ],
+      "bg": [
+        {
+          "name": "Плоча Горда",
+          "pref": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "ゴルダプレート",
+          "pref": true
+        }
+      ],
+      "de": [
+        {
+          "name": "Gordaplatte",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q1384554": {
+    "name": "Explorer Plate",
+    "names": {
+      "ru": [
+        {
+          "name": "Плита Исследователя",
+          "pref": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "plaque Explorer",
+          "pref": true
+        },
+        {
+          "name": "Explorer",
+          "alias": true
+        }
+      ],
+      "en": [
+        {
+          "name": "Explorer Plate",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "探险家板块",
+          "pref": true
+        }
+      ],
+      "pl": [
+        {
+          "name": "Płyta Explorer",
+          "pref": true
+        }
+      ],
+      "de": [
+        {
+          "name": "Explorer-Platte",
+          "pref": true
+        }
+      ],
+      "it": [
+        {
+          "name": "Placca Explorer",
+          "pref": true
+        }
+      ],
+      "es": [
+        {
+          "name": "Placa del Explorador",
+          "pref": true
+        },
+        {
+          "name": "Placa del explorador",
+          "alias": true
+        }
+      ],
+      "bg": [
+        {
+          "name": "Плоча Експлорер",
+          "pref": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "エクスプローラープレート",
+          "pref": true
+        },
+        {
+          "name": "エクスプローラプレート",
+          "alias": true
+        }
+      ],
+      "mk": [
+        {
+          "name": "Истражувачка Плоча",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q259207": {
+    "name": "Anatolian Plate",
+    "area": 575561,
+    "names": {
+      "en": [
+        {
+          "name": "Anatolian Plate",
+          "pref": true
+        }
+      ],
+      "de": [
+        {
+          "name": "Anatolische Platte",
+          "pref": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "plaque anatolienne",
+          "pref": true
+        }
+      ],
+      "it": [
+        {
+          "name": "Placca anatolica",
+          "pref": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "アナトリアプレート",
+          "pref": true
+        }
+      ],
+      "ko": [
+        {
+          "name": "아나톨리아판",
+          "pref": true
+        }
+      ],
+      "nl": [
+        {
+          "name": "Anatolische Plaat",
+          "pref": true
+        }
+      ],
+      "pl": [
+        {
+          "name": "Płyta anatolijska",
+          "pref": true
+        }
+      ],
+      "pt": [
+        {
+          "name": "Placa da Anatólia",
+          "pref": true
+        }
+      ],
+      "ru": [
+        {
+          "name": "Анатолийская плита",
+          "pref": true
+        }
+      ],
+      "tr": [
+        {
+          "name": "Anadolu Yaylası",
+          "pref": true
+        },
+        {
+          "name": "Anadolu Levhası",
+          "alias": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "安那托利亞板塊",
+          "pref": true
+        }
+      ],
+      "es": [
+        {
+          "name": "Placa de Anatolia",
+          "pref": true
+        }
+      ],
+      "bg": [
+        {
+          "name": "Анатолска плоча",
+          "pref": true
+        }
+      ],
+      "sv": [
+        {
+          "name": "Anatoliska plattan",
+          "pref": true
+        },
+        {
+          "name": "Anatoliska kontinentalplattan",
+          "alias": true
+        }
+      ],
+      "el": [
+        {
+          "name": "Πλάκα της Ανατολίας",
+          "pref": true
+        }
+      ],
+      "ro": [
+        {
+          "name": "Placa Anatolia",
+          "pref": true
+        }
+      ],
+      "nb": [
+        {
+          "name": "Anatoliaplaten",
+          "pref": true
+        }
+      ],
+      "nn": [
+        {
+          "name": "Anatoliaplata",
+          "pref": true
+        }
+      ],
+      "cs": [
+        {
+          "name": "anatolská deska",
+          "pref": true
+        }
+      ],
+      "he": [
+        {
+          "name": "הלוח האנטולי",
+          "pref": true
+        },
+        {
+          "name": "הלוח האנאטולי",
+          "alias": true
+        }
+      ],
+      "sk": [
+        {
+          "name": "Anatolská platňa",
+          "pref": true
+        }
+      ],
+      "mk": [
+        {
+          "name": "Анадолска Плоча",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q376417": {
+    "name": "Adriatic Plate",
+    "names": {
+      "sk": [
+        {
+          "name": "Apulská platňa",
+          "pref": true
+        },
+        {
+          "name": "Adriatická platňa",
+          "alias": true
+        }
+      ],
+      "ru": [
+        {
+          "name": "Адриатическая плита",
+          "pref": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "plaque adriatique",
+          "pref": true
+        },
+        {
+          "name": "Apulie",
+          "alias": true
+        },
+        {
+          "name": "plaque apulienne",
+          "alias": true
+        },
+        {
+          "name": "Adriatique",
+          "alias": true
+        }
+      ],
+      "en": [
+        {
+          "name": "Adriatic Plate",
+          "pref": true
+        },
+        {
+          "name": "Apulian Plate",
+          "alias": true
+        }
+      ],
+      "nl": [
+        {
+          "name": "Adriatische Plaat",
+          "pref": true
+        },
+        {
+          "name": "Apulische plaat",
+          "alias": true
+        },
+        {
+          "name": "Adriatische plaat",
+          "alias": true
+        },
+        {
+          "name": "Apulische Plaat",
+          "alias": true
+        }
+      ],
+      "de": [
+        {
+          "name": "Adriatische Platte",
+          "pref": true
+        },
+        {
+          "name": "Apulische Platte",
+          "alias": true
+        },
+        {
+          "name": "Adriasporn",
+          "alias": true
+        },
+        {
+          "name": "Adriatischer Indenter",
+          "alias": true
+        }
+      ],
+      "it": [
+        {
+          "name": "Placca adriatica",
+          "pref": true
+        }
+      ],
+      "pl": [
+        {
+          "name": "Płyta adriatycka",
+          "pref": true
+        }
+      ],
+      "he": [
+        {
+          "name": "הלוח האדריאטי",
+          "pref": true
+        }
+      ],
+      "hu": [
+        {
+          "name": "Apuliai-lemez",
+          "pref": true
+        }
+      ],
+      "cs": [
+        {
+          "name": "Jaderská deska",
+          "pref": true
+        }
+      ],
+      "bg": [
+        {
+          "name": "Апулианска плоча",
+          "pref": true
+        },
+        {
+          "name": "Адриатическа плоча",
+          "alias": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "アプリアプレート",
+          "pref": true
+        },
+        {
+          "name": "アドリアプレート",
+          "alias": true
+        },
+        {
+          "name": "アドリア海プレート",
+          "alias": true
+        }
+      ],
+      "es": [
+        {
+          "name": "Placa Apuliana o Adriática",
+          "pref": true
+        },
+        {
+          "name": "placa adriática",
+          "alias": true
+        },
+        {
+          "name": "placa apuliana",
+          "alias": true
+        },
+        {
+          "name": "Placa Apuliana o Adriatica",
+          "alias": true
+        },
+        {
+          "name": "placa adriatica",
+          "alias": true
+        }
+      ],
+      "sv": [
+        {
+          "name": "Adriatiska plattan",
+          "pref": true
+        },
+        {
+          "name": "Apuliska plattan",
+          "alias": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "亞得里亞板塊",
+          "pref": true
+        },
+        {
+          "name": "亞德里亞海板塊",
+          "alias": true
+        }
+      ],
+      "pt": [
+        {
+          "name": "Placa do Adriático",
+          "pref": true
+        }
+      ],
+      "tr": [
+        {
+          "name": "Adriyatik levhası",
+          "pref": true
+        }
+      ],
+      "mk": [
+        {
+          "name": "Јадранска Плоча",
+          "pref": true
+        },
+        {
+          "name": "Апулиска Плоча",
+          "alias": true
+        }
+      ]
+    }
+  },
+  "Q1200979": {
+    "name": "Galapagos Microplate",
+    "names": {
+      "pt": [
+        {
+          "name": "Placa das Galápagos",
+          "pref": true
+        },
+        {
+          "name": "Placa de Galápagos",
+          "alias": true
+        }
+      ],
+      "zh-hans": [
+        {
+          "name": "加拉帕戈斯板块",
+          "pref": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "加拉帕戈斯板塊",
+          "pref": true
+        }
+      ],
+      "zh-hk": [
+        {
+          "name": "加拉帕戈斯板塊",
+          "pref": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "ガラパゴスプレート",
+          "pref": true
+        }
+      ],
+      "pl": [
+        {
+          "name": "Mikropłyta Galapagos",
+          "pref": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "plaque des Galápagos",
+          "pref": true
+        },
+        {
+          "name": "Galápagos Nord",
+          "alias": true
+        },
+        {
+          "name": "Galapagos",
+          "alias": true
+        },
+        {
+          "name": "Galápagos",
+          "alias": true
+        },
+        {
+          "name": "plaque des Galapagos",
+          "alias": true
+        }
+      ],
+      "ru": [
+        {
+          "name": "Галапагосская микроплита",
+          "pref": true
+        }
+      ],
+      "ko": [
+        {
+          "name": "갈라파고스 미판",
+          "pref": true
+        }
+      ],
+      "en": [
+        {
+          "name": "Galapagos Microplate",
+          "pref": true
+        }
+      ],
+      "it": [
+        {
+          "name": "Placca delle Galápagos",
+          "pref": true
+        },
+        {
+          "name": "Microplacca delle Galápagos",
+          "alias": true
+        },
+        {
+          "name": "Placca delle Galapagos",
+          "alias": true
+        },
+        {
+          "name": "Microplacca delle Galapagos",
+          "alias": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "加拉帕戈斯板塊",
+          "pref": true
+        },
+        {
+          "name": "加拉帕戈斯海隆",
+          "alias": true
+        }
+      ],
+      "bg": [
+        {
+          "name": "Галапагоска микроплоча",
+          "pref": true
+        }
+      ],
+      "nb": [
+        {
+          "name": "Galápagosplaten",
+          "pref": true
+        }
+      ],
+      "nn": [
+        {
+          "name": "Galápagosplata",
+          "pref": true
+        }
+      ],
+      "es": [
+        {
+          "name": "Placa de Galápagos",
+          "pref": true
+        }
+      ],
+      "de": [
+        {
+          "name": "Galapagos Mikroplatte",
+          "pref": true
+        },
+        {
+          "name": "Galapagos Platte",
+          "alias": true
+        }
+      ]
+    }
+  },
+  "Q1361645": {
+    "name": "South Sandwich Plate",
+    "area": 184277,
+    "names": {
+      "zh-hans": [
+        {
+          "name": "南桑威奇板块",
+          "pref": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "南桑威奇板塊",
+          "pref": true
+        }
+      ],
+      "zh-hk": [
+        {
+          "name": "南桑威奇板塊",
+          "pref": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "サンドウィッチプレート",
+          "pref": true
+        },
+        {
+          "name": "サウス・サンドウィッチプレート",
+          "alias": true
+        }
+      ],
+      "pl": [
+        {
+          "name": "Płyta Sandwich",
+          "pref": true
+        }
+      ],
+      "ko": [
+        {
+          "name": "사우스샌드위치판",
+          "pref": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "plaque des Sandwich",
+          "pref": true
+        },
+        {
+          "name": "Sandwich",
+          "alias": true
+        }
+      ],
+      "en": [
+        {
+          "name": "South Sandwich Plate",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "南桑威奇板块",
+          "pref": true
+        },
+        {
+          "name": "南三明治板塊",
+          "alias": true
+        }
+      ],
+      "es": [
+        {
+          "name": "Placa de Sandwich",
+          "pref": true
+        }
+      ],
+      "nl": [
+        {
+          "name": "Sandwichplaat",
+          "pref": true
+        }
+      ],
+      "bg": [
+        {
+          "name": "Южносандвичева плоча",
+          "pref": true
+        }
+      ],
+      "nb": [
+        {
+          "name": "Sør-Sandwichplaten",
+          "pref": true
+        }
+      ],
+      "nn": [
+        {
+          "name": "Sør-Sandwichplata",
+          "pref": true
+        }
+      ],
+      "de": [
+        {
+          "name": "Sandwichplatte (tektonische Platte)",
+          "pref": true
+        }
+      ],
+      "mk": [
+        {
+          "name": "Јужносендвичка Плоча",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q1344950": {
+    "name": "Easter Plate",
+    "area": 166823,
+    "names": {
+      "zh-hans": [
+        {
+          "name": "复活节岛板块",
+          "pref": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "復活節島板塊",
+          "pref": true
+        }
+      ],
+      "zh-hk": [
+        {
+          "name": "復活節島板塊",
+          "pref": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "イースタープレート",
+          "pref": true
+        }
+      ],
+      "pl": [
+        {
+          "name": "Płyta Wyspy Wielkanocnej",
+          "pref": true
+        }
+      ],
+      "ko": [
+        {
+          "name": "이스터판",
+          "pref": true
+        }
+      ],
+      "ru": [
+        {
+          "name": "Плита острова Пасхи",
+          "pref": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "plaque de l'île de Pâques",
+          "pref": true
+        },
+        {
+          "name": "Plaque de l'ile de Paques",
+          "alias": true
+        },
+        {
+          "name": "Île de Pâques",
+          "alias": true
+        }
+      ],
+      "en": [
+        {
+          "name": "Easter Plate",
+          "pref": true
+        }
+      ],
+      "it": [
+        {
+          "name": "Placca dell'Isola di Pasqua",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "复活节岛板块",
+          "pref": true
+        }
+      ],
+      "nl": [
+        {
+          "name": "Easter Plate",
+          "pref": true
+        }
+      ],
+      "bg": [
+        {
+          "name": "Плоча Ийстър",
+          "pref": true
+        }
+      ],
+      "nb": [
+        {
+          "name": "Påskeøyplaten",
+          "pref": true
+        }
+      ],
+      "nn": [
+        {
+          "name": "Påskeøyplata",
+          "pref": true
+        }
+      ],
+      "es": [
+        {
+          "name": "Placa de Pascua",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q1340339": {
+    "name": "Solomon Sea Plate",
+    "area": 128669,
+    "names": {
+      "zh-hans": [
+        {
+          "name": "所罗门海板块",
+          "pref": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "所羅門海板塊",
+          "pref": true
+        }
+      ],
+      "zh-hk": [
+        {
+          "name": "所羅門海板塊",
+          "pref": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "ソロモン海プレート",
+          "pref": true
+        }
+      ],
+      "pl": [
+        {
+          "name": "Płyta Morza Salomona",
+          "pref": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "plaque de la mer des Salomon",
+          "pref": true
+        },
+        {
+          "name": "Mer des Salomon",
+          "alias": true
+        }
+      ],
+      "ko": [
+        {
+          "name": "솔로몬해판",
+          "pref": true
+        }
+      ],
+      "ru": [
+        {
+          "name": "Плита Соломонова моря",
+          "pref": true
+        }
+      ],
+      "en": [
+        {
+          "name": "Solomon Sea Plate",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "所羅門海板塊",
+          "pref": true
+        }
+      ],
+      "bg": [
+        {
+          "name": "Соломонова плоча",
+          "pref": true
+        }
+      ],
+      "it": [
+        {
+          "name": "Placca del Mare delle Salomone",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q1200497": {
+    "name": "Bird's Head Plate",
+    "area": 525636,
+    "names": {
+      "zh-hans": [
+        {
+          "name": "鸟首板块",
+          "pref": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "鳥首板塊",
+          "pref": true
+        }
+      ],
+      "zh-hk": [
+        {
+          "name": "鳥首板塊",
+          "pref": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "バーズヘッドプレート",
+          "pref": true
+        }
+      ],
+      "pl": [
+        {
+          "name": "Płyta Ptasiej Głowy",
+          "pref": true
+        }
+      ],
+      "ko": [
+        {
+          "name": "새의 머리 판",
+          "pref": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "plaque de Bird's Head",
+          "pref": true
+        },
+        {
+          "name": "Bird's Head",
+          "alias": true
+        }
+      ],
+      "ru": [
+        {
+          "name": "Плита Птичья голова",
+          "pref": true
+        }
+      ],
+      "es": [
+        {
+          "name": "Placa Cabeza de Pájaro",
+          "pref": true
+        },
+        {
+          "name": "Placa Cabeza de Pajaro",
+          "alias": true
+        }
+      ],
+      "en": [
+        {
+          "name": "Bird's Head Plate",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "鳥首板塊",
+          "pref": true
+        }
+      ],
+      "bg": [
+        {
+          "name": "Плоча Птича глава",
+          "pref": true
+        }
+      ],
+      "it": [
+        {
+          "name": "Placca di Bird's Head",
+          "pref": true
+        }
+      ],
+      "nb": [
+        {
+          "name": "Fuglehodeplaten",
+          "pref": true
+        }
+      ],
+      "nn": [
+        {
+          "name": "Fuglehovudplata",
+          "pref": true
+        }
+      ],
+      "he": [
+        {
+          "name": "לוח ראש הציפור",
+          "pref": true
+        }
+      ],
+      "mk": [
+        {
+          "name": "Птицоглавска Плоча",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q944310": {
+    "name": "Banda Sea Plate",
+    "area": 696112,
+    "names": {
+      "fr": [
+        {
+          "name": "plaque de la mer de Banda",
+          "pref": true
+        }
+      ],
+      "en": [
+        {
+          "name": "Banda Sea Plate",
+          "pref": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "バンダ海プレート",
+          "pref": true
+        }
+      ],
+      "ko": [
+        {
+          "name": "반다해판",
+          "pref": true
+        }
+      ],
+      "pl": [
+        {
+          "name": "Płyta Morza Banda",
+          "pref": true
+        }
+      ],
+      "ru": [
+        {
+          "name": "Плита моря Банда",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "班達海板塊",
+          "pref": true
+        }
+      ],
+      "es": [
+        {
+          "name": "Placa del Mar de Banda",
+          "pref": true
+        }
+      ],
+      "bg": [
+        {
+          "name": "Плоча Банда",
+          "pref": true
+        }
+      ],
+      "it": [
+        {
+          "name": "Placca del Mar di Banda",
+          "pref": true
+        }
+      ],
+      "nb": [
+        {
+          "name": "Bandaplaten",
+          "pref": true
+        }
+      ],
+      "nn": [
+        {
+          "name": "Bandaplata",
+          "pref": true
+        }
+      ],
+      "mk": [
+        {
+          "name": "Бандска Плоча",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q1200968": {
+    "name": "Timor Plate",
+    "area": 353130,
+    "names": {
+      "zh-hans": [
+        {
+          "name": "帝汶板块",
+          "pref": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "帝汶板塊",
+          "pref": true
+        }
+      ],
+      "zh-hk": [
+        {
+          "name": "帝汶板塊",
+          "pref": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "ティモールプレート",
+          "pref": true
+        }
+      ],
+      "pl": [
+        {
+          "name": "Płyta timorska",
+          "pref": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "plaque de Timor",
+          "pref": true
+        },
+        {
+          "name": "Timor",
+          "alias": true
+        }
+      ],
+      "ko": [
+        {
+          "name": "티모르판",
+          "pref": true
+        }
+      ],
+      "ru": [
+        {
+          "name": "Тиморская плита",
+          "pref": true
+        }
+      ],
+      "en": [
+        {
+          "name": "Timor Plate",
+          "pref": true
+        }
+      ],
+      "es": [
+        {
+          "name": "Placa de Timor",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "帝汶板塊",
+          "pref": true
+        }
+      ],
+      "bg": [
+        {
+          "name": "Плоча Тимор",
+          "pref": true
+        }
+      ],
+      "it": [
+        {
+          "name": "Placca di Timor",
+          "pref": true
+        }
+      ],
+      "nb": [
+        {
+          "name": "Timorplaten",
+          "pref": true
+        }
+      ],
+      "nn": [
+        {
+          "name": "Timorplata",
+          "pref": true
+        }
+      ],
+      "mk": [
+        {
+          "name": "Тиморска Плоча",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q945014": {
+    "name": "Aegean Sea Plate",
+    "area": 321876,
+    "names": {
+      "it": [
+        {
+          "name": "Placca del Mar Egeo",
+          "pref": true
+        }
+      ],
+      "en": [
+        {
+          "name": "Aegean Sea Plate",
+          "pref": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "plaque de la mer Égée",
+          "pref": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "エーゲ海プレート",
+          "pref": true
+        }
+      ],
+      "ko": [
+        {
+          "name": "에게해판",
+          "pref": true
+        }
+      ],
+      "pl": [
+        {
+          "name": "Płyta egejska",
+          "pref": true
+        }
+      ],
+      "pt": [
+        {
+          "name": "Placa Helênica",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "愛琴海板塊",
+          "pref": true
+        }
+      ],
+      "de": [
+        {
+          "name": "Ägäische Platte",
+          "pref": true
+        },
+        {
+          "name": "Hellenische Platte",
+          "alias": true
+        }
+      ],
+      "es": [
+        {
+          "name": "Placa del Mar Egeo",
+          "pref": true
+        }
+      ],
+      "bg": [
+        {
+          "name": "Егейска плоча",
+          "pref": true
+        }
+      ],
+      "nl": [
+        {
+          "name": "Egeïsche Plaat",
+          "pref": true
+        }
+      ],
+      "sv": [
+        {
+          "name": "Egeiska plattan",
+          "pref": true
+        }
+      ],
+      "fi": [
+        {
+          "name": "Egeanmeren laatta",
+          "pref": true
+        }
+      ],
+      "el": [
+        {
+          "name": "Πλάκα του Αιγαίου Πελάγους",
+          "pref": true
+        }
+      ],
+      "ro": [
+        {
+          "name": "Placa Mării Egee",
+          "pref": true
+        }
+      ],
+      "nb": [
+        {
+          "name": "Den egeiske platen",
+          "pref": true
+        }
+      ],
+      "nn": [
+        {
+          "name": "Den egeiske plata",
+          "pref": true
+        }
+      ],
+      "ru": [
+        {
+          "name": "Эгейская плита",
+          "pref": true
+        }
+      ],
+      "tr": [
+        {
+          "name": "Ege Denizi levhası",
+          "pref": true
+        }
+      ],
+      "mk": [
+        {
+          "name": "Егејска Плоча",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q2363051": {
+    "name": "Balmoral Reef Plate",
+    "area": 195236,
+    "names": {
+      "zh-hans": [
+        {
+          "name": "巴尔莫勒尔礁板块",
+          "pref": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "巴爾莫勒爾礁板塊",
+          "pref": true
+        }
+      ],
+      "zh-hk": [
+        {
+          "name": "巴爾莫勒爾礁板塊",
+          "pref": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "バルモーラル暗礁プレート",
+          "pref": true
+        }
+      ],
+      "pl": [
+        {
+          "name": "Płyta Rafy Balmoral",
+          "pref": true
+        }
+      ],
+      "ko": [
+        {
+          "name": "밸모랄 환초판",
+          "pref": true
+        }
+      ],
+      "ru": [
+        {
+          "name": "Плита рифа Балморал",
+          "pref": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "plaque du récif Balmoral",
+          "pref": true
+        },
+        {
+          "name": "Plaque du recif Balmoral",
+          "alias": true
+        },
+        {
+          "name": "Récif Balmoral",
+          "alias": true
+        }
+      ],
+      "en": [
+        {
+          "name": "Balmoral Reef Plate",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "巴爾莫勒爾礁板塊",
+          "pref": true
+        }
+      ],
+      "bg": [
+        {
+          "name": "Плоча Балморал",
+          "pref": true
+        }
+      ],
+      "it": [
+        {
+          "name": "Placca del Reef Balmoral",
+          "pref": true
+        }
+      ],
+      "nb": [
+        {
+          "name": "Balmoral Reef-platen",
+          "pref": true
+        }
+      ],
+      "nn": [
+        {
+          "name": "Balmoral Reef-plata",
+          "pref": true
+        }
+      ],
+      "es": [
+        {
+          "name": "Placa del Arrecife Balmoral",
+          "pref": true
+        }
+      ],
+      "mk": [
+        {
+          "name": "Балморалска Плоча",
+          "pref": true
+        }
+      ],
+      "de": [
+        {
+          "name": "Balmoral-Riff-Platte",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q1344980": {
+    "name": "Conway Reef Plate",
+    "area": 144499,
+    "names": {
+      "zh-hans": [
+        {
+          "name": "康威礁板块",
+          "pref": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "康威礁板塊",
+          "pref": true
+        }
+      ],
+      "zh-hk": [
+        {
+          "name": "康威礁板塊",
+          "pref": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "コンウェイ暗礁プレート",
+          "pref": true
+        }
+      ],
+      "pl": [
+        {
+          "name": "Płyta Rafy Conway",
+          "pref": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "Plaque du récif Conway",
+          "pref": true
+        },
+        {
+          "name": "Plaque du recif Conway",
+          "alias": true
+        },
+        {
+          "name": "Récif Conway",
+          "alias": true
+        }
+      ],
+      "ko": [
+        {
+          "name": "콘웨이 환초판",
+          "pref": true
+        }
+      ],
+      "ru": [
+        {
+          "name": "Плита рифа Конвей",
+          "pref": true
+        }
+      ],
+      "en": [
+        {
+          "name": "Conway Reef Plate",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "康威礁板塊",
+          "pref": true
+        }
+      ],
+      "bg": [
+        {
+          "name": "Плоча Конуей",
+          "pref": true
+        }
+      ],
+      "it": [
+        {
+          "name": "Placca del Reef Conway",
+          "pref": true
+        }
+      ],
+      "nb": [
+        {
+          "name": "Conway Reef-platen",
+          "pref": true
+        }
+      ],
+      "nn": [
+        {
+          "name": "Conway Reef-plata",
+          "pref": true
+        }
+      ],
+      "es": [
+        {
+          "name": "Placa del Arrecife de Conway",
+          "pref": true
+        }
+      ],
+      "mk": [
+        {
+          "name": "Конвејска Плоча",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q588314": {
+    "name": "Juan Fernández Plate",
+    "area": 97821,
+    "names": {
+      "it": [
+        {
+          "name": "Placca Juan Fernández",
+          "pref": true
+        }
+      ],
+      "en": [
+        {
+          "name": "Juan Fernández Plate",
+          "pref": true
+        },
+        {
+          "name": "Juan Fernandez Plate",
+          "alias": true
+        }
+      ],
+      "es": [
+        {
+          "name": "Placa de Juan Fernández",
+          "pref": true
+        },
+        {
+          "name": "Placa de Juan Fernandez",
+          "alias": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "plaque Juan Fernández",
+          "pref": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "ファン・フェルナンデスプレート",
+          "pref": true
+        }
+      ],
+      "ko": [
+        {
+          "name": "후안페르난데스판",
+          "pref": true
+        }
+      ],
+      "pl": [
+        {
+          "name": "Płyta Juan Fernandez",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "胡安·斐南迪茲板塊",
+          "pref": true
+        }
+      ],
+      "bg": [
+        {
+          "name": "Плоча Хуан Фернандес",
+          "pref": true
+        }
+      ],
+      "nb": [
+        {
+          "name": "Juan Fernández-platen",
+          "pref": true
+        }
+      ],
+      "nn": [
+        {
+          "name": "Juan Fernández-plata",
+          "pref": true
+        }
+      ],
+      "de": [
+        {
+          "name": "Juan-Fernández-Platte",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q1345043": {
+    "name": "Manus Plate",
+    "area": 8118,
+    "names": {
+      "zh-hans": [
+        {
+          "name": "马努斯板块",
+          "pref": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "馬努斯板塊",
+          "pref": true
+        }
+      ],
+      "zh-hk": [
+        {
+          "name": "馬努斯板塊",
+          "pref": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "マヌスプレート",
+          "pref": true
+        }
+      ],
+      "pl": [
+        {
+          "name": "Płyta Manus",
+          "pref": true
+        }
+      ],
+      "ru": [
+        {
+          "name": "Плита Манус",
+          "pref": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "plaque de Manus",
+          "pref": true
+        },
+        {
+          "name": "Manus",
+          "alias": true
+        }
+      ],
+      "ko": [
+        {
+          "name": "마누스판",
+          "pref": true
+        }
+      ],
+      "en": [
+        {
+          "name": "Manus Plate",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "馬努斯板塊",
+          "pref": true
+        }
+      ],
+      "de": [
+        {
+          "name": "Manusplatte",
+          "pref": true
+        }
+      ],
+      "es": [
+        {
+          "name": "Placa de Manus",
+          "pref": true
+        }
+      ],
+      "bg": [
+        {
+          "name": "Плоча Манус",
+          "pref": true
+        }
+      ],
+      "it": [
+        {
+          "name": "Placca di Manus",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q1200990": {
+    "name": "Mariana Plate",
+    "area": 420915,
+    "names": {
+      "pt": [
+        {
+          "name": "Placa das Marianas",
+          "pref": true
+        }
+      ],
+      "zh-hans": [
+        {
+          "name": "马里亚纳板块",
+          "pref": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "馬里亞納板塊",
+          "pref": true
+        }
+      ],
+      "zh-hk": [
+        {
+          "name": "馬里亞納板塊",
+          "pref": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "マリアナプレート",
+          "pref": true
+        }
+      ],
+      "pl": [
+        {
+          "name": "Płyta mariańska",
+          "pref": true
+        }
+      ],
+      "ko": [
+        {
+          "name": "마리아나판",
+          "pref": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "plaque des Mariannes",
+          "pref": true
+        },
+        {
+          "name": "Mariannes",
+          "alias": true
+        }
+      ],
+      "ru": [
+        {
+          "name": "Марианская плита",
+          "pref": true
+        }
+      ],
+      "en": [
+        {
+          "name": "Mariana Plate",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "馬里亞納板塊",
+          "pref": true
+        }
+      ],
+      "bg": [
+        {
+          "name": "Марианска плоча",
+          "pref": true
+        }
+      ],
+      "it": [
+        {
+          "name": "Placca delle Marianne",
+          "pref": true
+        }
+      ],
+      "nb": [
+        {
+          "name": "Marianerplaten",
+          "pref": true
+        }
+      ],
+      "nn": [
+        {
+          "name": "Marianerplata",
+          "pref": true
+        }
+      ],
+      "mk": [
+        {
+          "name": "Маријанска Плоча",
+          "pref": true
+        }
+      ],
+      "he": [
+        {
+          "name": "לוח מריאנה",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q2657846": {
+    "name": "Molucca Sea Plate",
+    "area": 418073,
+    "names": {
+      "ja": [
+        {
+          "name": "モルッカ海プレート",
+          "pref": true
+        }
+      ],
+      "pl": [
+        {
+          "name": "Płyta Morza Moluckiego",
+          "pref": true
+        }
+      ],
+      "ru": [
+        {
+          "name": "Плита Молуккского моря",
+          "pref": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "plaque de la mer des Moluques",
+          "pref": true
+        },
+        {
+          "name": "Mer des Moluques",
+          "alias": true
+        }
+      ],
+      "en": [
+        {
+          "name": "Molucca Sea Plate",
+          "pref": true
+        }
+      ],
+      "es": [
+        {
+          "name": "Placa del Mar de las Molucas",
+          "pref": true
+        }
+      ],
+      "bg": [
+        {
+          "name": "Молукска плоча",
+          "pref": true
+        }
+      ],
+      "it": [
+        {
+          "name": "Placca del Mare delle Molucche",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "摩鹿加海板塊",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q1340352": {
+    "name": "North Andes Plate",
+    "area": 971716,
+    "names": {
+      "zh-hans": [
+        {
+          "name": "北安地斯板块",
+          "pref": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "北安地斯板塊",
+          "pref": true
+        }
+      ],
+      "zh-hk": [
+        {
+          "name": "北安地斯板塊",
+          "pref": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "北アンデスプレート",
+          "pref": true
+        }
+      ],
+      "pl": [
+        {
+          "name": "Płyta północnoandyjska",
+          "pref": true
+        }
+      ],
+      "ru": [
+        {
+          "name": "Северноандская плита",
+          "pref": true
+        }
+      ],
+      "ko": [
+        {
+          "name": "북안데스판",
+          "pref": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "plaque des Andes du Nord",
+          "pref": true
+        },
+        {
+          "name": "Andes du Nord",
+          "alias": true
+        }
+      ],
+      "en": [
+        {
+          "name": "North Andes Plate",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "北安地斯板塊",
+          "pref": true
+        }
+      ],
+      "es": [
+        {
+          "name": "Placa de los Andes del Norte",
+          "pref": true
+        }
+      ],
+      "pt": [
+        {
+          "name": "Placa do Norte dos Andes",
+          "pref": true
+        }
+      ],
+      "bg": [
+        {
+          "name": "Плоча Северни Анди",
+          "pref": true
+        }
+      ],
+      "it": [
+        {
+          "name": "Placca delle Ande del Nord",
+          "pref": true
+        }
+      ],
+      "nb": [
+        {
+          "name": "Den nordandiske platen",
+          "pref": true
+        }
+      ],
+      "mk": [
+        {
+          "name": "Северноандска Плоча",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q1371610": {
+    "name": "North Bismarck Plate",
+    "area": 388037,
+    "names": {
+      "zh-hans": [
+        {
+          "name": "北俾斯麦板块",
+          "pref": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "北俾斯麥板塊",
+          "pref": true
+        }
+      ],
+      "zh-hk": [
+        {
+          "name": "北俾斯麥板塊",
+          "pref": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "北ビスマルクプレート",
+          "pref": true
+        }
+      ],
+      "pl": [
+        {
+          "name": "Płyta Bismarcka północna",
+          "pref": true
+        }
+      ],
+      "ko": [
+        {
+          "name": "북비스마르크판",
+          "pref": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "plaque de Bismarck Nord",
+          "pref": true
+        },
+        {
+          "name": "Bismarck Nord",
+          "alias": true
+        }
+      ],
+      "en": [
+        {
+          "name": "North Bismarck Plate",
+          "pref": true
+        }
+      ],
+      "de": [
+        {
+          "name": "Nordbismarckplatte",
+          "pref": true
+        }
+      ],
+      "ru": [
+        {
+          "name": "Северная плита Бисмарка",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "北俾斯麥板塊",
+          "pref": true
+        }
+      ],
+      "nl": [
+        {
+          "name": "North Bismarck Plate",
+          "pref": true
+        }
+      ],
+      "bg": [
+        {
+          "name": "Плоча Северен Бисмарк",
+          "pref": true
+        }
+      ],
+      "it": [
+        {
+          "name": "Placca delle Bismarck Nord",
+          "pref": true
+        }
+      ],
+      "nb": [
+        {
+          "name": "Nord-Bismarckplaten",
+          "pref": true
+        }
+      ],
+      "nn": [
+        {
+          "name": "Nord-Bismarckplata",
+          "pref": true
+        }
+      ],
+      "mk": [
+        {
+          "name": "Севернобизмаркова Плоча",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q1201001": {
+    "name": "Okinawa Plate",
+    "area": 325529,
+    "names": {
+      "zh-hans": [
+        {
+          "name": "冲绳板块",
+          "pref": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "沖繩板塊",
+          "pref": true
+        }
+      ],
+      "zh-hk": [
+        {
+          "name": "沖繩板塊",
+          "pref": true
+        }
+      ],
+      "de": [
+        {
+          "name": "Okinawa-Platte",
+          "pref": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "沖縄プレート",
+          "pref": true
+        }
+      ],
+      "pl": [
+        {
+          "name": "Płyta okinawska",
+          "pref": true
+        }
+      ],
+      "ko": [
+        {
+          "name": "오키나와판",
+          "pref": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "plaque d'Okinawa",
+          "pref": true
+        },
+        {
+          "name": "Okinawa",
+          "alias": true
+        }
+      ],
+      "ru": [
+        {
+          "name": "Окинавская плита",
+          "pref": true
+        }
+      ],
+      "he": [
+        {
+          "name": "לוח אוקינאווה",
+          "pref": true
+        }
+      ],
+      "en": [
+        {
+          "name": "Okinawa Plate",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "沖繩板塊",
+          "pref": true
+        }
+      ],
+      "es": [
+        {
+          "name": "Placa de Okinawa",
+          "pref": true
+        }
+      ],
+      "bg": [
+        {
+          "name": "Плоча Окинава",
+          "pref": true
+        }
+      ],
+      "it": [
+        {
+          "name": "Placca di Okinawa",
+          "pref": true
+        }
+      ],
+      "sv": [
+        {
+          "name": "Okinawaplattan",
+          "pref": true
+        }
+      ],
+      "pt": [
+        {
+          "name": "Placa de Okinawa",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q1344938": {
+    "name": "South Bismarck Plate",
+    "area": 309293,
+    "names": {
+      "zh-hans": [
+        {
+          "name": "南俾斯麦板块",
+          "pref": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "南俾斯麥板塊",
+          "pref": true
+        }
+      ],
+      "zh-hk": [
+        {
+          "name": "南俾斯麥板塊",
+          "pref": true
+        }
+      ],
+      "pl": [
+        {
+          "name": "Płyta Bismarcka południowa",
+          "pref": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "plaque de Bismarck Sud",
+          "pref": true
+        },
+        {
+          "name": "Bismarck Sud",
+          "alias": true
+        }
+      ],
+      "ko": [
+        {
+          "name": "남비스마르크판",
+          "pref": true
+        }
+      ],
+      "ru": [
+        {
+          "name": "Южная плита Бисмарка",
+          "pref": true
+        }
+      ],
+      "en": [
+        {
+          "name": "South Bismarck Plate",
+          "pref": true
+        }
+      ],
+      "it": [
+        {
+          "name": "Placca delle Bismark Sud",
+          "pref": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "南ビスマルクプレート",
+          "pref": true
+        }
+      ],
+      "de": [
+        {
+          "name": "Südbismarckplatte",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "南俾斯麥板塊",
+          "pref": true
+        }
+      ],
+      "bg": [
+        {
+          "name": "Плоча Южен Бисмарк",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q4671480": {
+    "name": "Philippine Mobile Belt",
+    "names": {
+      "pl": [
+        {
+          "name": "Mobilna strefa Filipin",
+          "pref": true
+        }
+      ],
+      "ko": [
+        {
+          "name": "필리핀 변동대",
+          "pref": true
+        }
+      ],
+      "en": [
+        {
+          "name": "Philippine Mobile Belt",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "菲律宾移动板块",
+          "pref": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "フィリピン変動帯",
+          "pref": true
+        }
+      ],
+      "it": [
+        {
+          "name": "Cintura mobile delle Filippine",
+          "pref": true
+        }
+      ],
+      "mk": [
+        {
+          "name": "Филипински Подвижен Појас",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q5643256": {
+    "name": "Halmahera Plate",
+    "names": {
+      "en": [
+        {
+          "name": "Halmahera Plate",
+          "pref": true
+        }
+      ],
+      "bg": [
+        {
+          "name": "Плоча Халмахера",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "哈馬黑拉板塊",
+          "pref": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "哈馬黑拉板塊",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q6726144": {
+    "name": "Madagascar Plate",
+    "names": {
+      "en": [
+        {
+          "name": "Madagascar Plate",
+          "pref": true
+        }
+      ],
+      "bg": [
+        {
+          "name": "Мадагаскарска плоча",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "馬達加斯加板塊",
+          "pref": true
+        }
+      ],
+      "it": [
+        {
+          "name": "Placca del Madagascar",
+          "pref": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "マダガスカル・プレート",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q5604222": {
+    "name": "Greenland Plate",
+    "names": {
+      "en": [
+        {
+          "name": "Greenland Plate",
+          "pref": true
+        }
+      ],
+      "it": [
+        {
+          "name": "Placca della Groenlandia",
+          "pref": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "plaque du Groenland",
+          "pref": true
+        }
+      ],
+      "sv": [
+        {
+          "name": "Grönländska plattan",
+          "pref": true
+        }
+      ],
+      "es": [
+        {
+          "name": "Placa de Groenlandia",
+          "pref": true
+        }
+      ],
+      "bg": [
+        {
+          "name": "Гренландска плоча",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "格陵蘭板塊",
+          "pref": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "グリーンランドプレート",
+          "pref": true
+        }
+      ],
+      "pt": [
+        {
+          "name": "Placa da Gronelândia",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q2105037": {
+    "name": "Iberian plate",
+    "names": {
+      "nl": [
+        {
+          "name": "Iberische Plaat",
+          "pref": true
+        }
+      ],
+      "en": [
+        {
+          "name": "Iberian plate",
+          "pref": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "Plaque ibérique",
+          "pref": true
+        }
+      ],
+      "es": [
+        {
+          "name": "placa ibérica",
+          "pref": true
+        },
+        {
+          "name": "Placa iberica",
+          "alias": true
+        }
+      ],
+      "bg": [
+        {
+          "name": "Иберска плоча",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "伊比利亞板塊",
+          "pref": true
+        }
+      ],
+      "it": [
+        {
+          "name": "Placca iberica",
+          "pref": true
+        }
+      ],
+      "ko": [
+        {
+          "name": "이베리아판",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q941323": {
+    "name": "Pelso Plate",
+    "names": {
+      "hu": [
+        {
+          "name": "Pelso-blokk",
+          "pref": true
+        }
+      ],
+      "en": [
+        {
+          "name": "Pelso Plate",
+          "pref": true
+        }
+      ],
+      "bg": [
+        {
+          "name": "Плоча Пелсо",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "佩索板塊",
+          "pref": true
+        }
+      ],
+      "mk": [
+        {
+          "name": "Пелсовска Плоча",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q1321456": {
+    "name": "Tisza Plate",
+    "names": {
+      "en": [
+        {
+          "name": "Tisza Plate",
+          "pref": true
+        }
+      ],
+      "hu": [
+        {
+          "name": "Tisza mikrokontinens",
+          "pref": true
+        }
+      ],
+      "bg": [
+        {
+          "name": "Плоча Тиса",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "蒂薩板塊",
+          "pref": true
+        }
+      ],
+      "lv": [
+        {
+          "name": "Tisas plātne",
+          "pref": true
+        }
+      ],
+      "pl": [
+        {
+          "name": "Płyta Tisza",
+          "pref": true
+        }
+      ],
+      "mk": [
+        {
+          "name": "Тиса плоча",
+          "pref": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "蒂薩板塊",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q7418004": {
+    "name": "Sangihe Plate",
+    "names": {
+      "en": [
+        {
+          "name": "Sangihe Plate",
+          "pref": true
+        }
+      ],
+      "bg": [
+        {
+          "name": "Плоча Сангихе",
+          "pref": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "サンギヘ・プレート",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q28224929": {
+    "name": "Geological deformation of Iceland",
+    "names": {
+      "en": [
+        {
+          "name": "Geological deformation of Iceland",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q39058577": {
+    "name": "Malpelo Plate",
+    "names": {
+      "en": [
+        {
+          "name": "Malpelo Plate",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "馬爾佩洛板塊",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q55607867": {
+    "name": "Coiba Plate",
+    "names": {
+      "en": [
+        {
+          "name": "Coiba Plate",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q60755163": {
+    "name": "Azores Plateau",
+    "names": {
+      "en": [
+        {
+          "name": "Azores Plateau",
+          "pref": true
+        }
+      ],
+      "it": [
+        {
+          "name": "Plateau delle Azzorre",
+          "pref": true
+        }
+      ],
+      "pt": [
+        {
+          "name": "Plataforma dos Açores",
+          "pref": true
+        }
+      ],
+      "es": [
+        {
+          "name": "Meseta de las Azores",
+          "pref": true
+        }
+      ],
+      "ru": [
+        {
+          "name": "Асориш (плато)",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q65041789": {
+    "name": "Queen Elizabeth Islands Subplate",
+    "names": {
+      "en": [
+        {
+          "name": "Queen Elizabeth Islands Subplate",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q121879187": {
+    "name": "Trobriand Plate",
+    "names": {
+      "en": [
+        {
+          "name": "Trobriand Plate",
+          "pref": true
+        }
+      ],
+      "mk": [
+        {
+          "name": "Тробријанска Плоча",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q902322": {
+    "name": "Phoenix Plate",
+    "names": {
+      "ko": [
+        {
+          "name": "피닉스판",
+          "pref": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "plaque de Phœnix",
+          "pref": true
+        },
+        {
+          "name": "Phœnix",
+          "alias": true
+        },
+        {
+          "name": "plaque de Phoenix",
+          "alias": true
+        }
+      ],
+      "en": [
+        {
+          "name": "Phoenix Plate",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "菲尼克斯板塊",
+          "pref": true
+        },
+        {
+          "name": "鳳凰板塊",
+          "alias": true
+        },
+        {
+          "name": "菲尼克斯板块",
+          "alias": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "フェニックスプレート",
+          "pref": true
+        }
+      ],
+      "it": [
+        {
+          "name": "Placca di Phoenix",
+          "pref": true
+        }
+      ],
+      "zh-cn": [
+        {
+          "name": "菲尼克斯板块",
+          "pref": true
+        }
+      ],
+      "zh-hans": [
+        {
+          "name": "菲尼克斯板块",
+          "pref": true
+        }
+      ],
+      "es": [
+        {
+          "name": "Placa de Phoenix",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q1059335": {
+    "name": "Izanagi Plate",
+    "names": {
+      "zh-hans": [
+        {
+          "name": "伊邪那岐板块",
+          "pref": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "伊邪那岐板塊",
+          "pref": true
+        }
+      ],
+      "zh-hk": [
+        {
+          "name": "伊邪那岐板塊",
+          "pref": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "イザナギプレート",
+          "pref": true
+        }
+      ],
+      "ko": [
+        {
+          "name": "이자나기판",
+          "pref": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "plaque Izanagi",
+          "pref": true
+        },
+        {
+          "name": "Izanagi",
+          "alias": true
+        }
+      ],
+      "en": [
+        {
+          "name": "Izanagi Plate",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "伊邪那岐板块",
+          "pref": true
+        }
+      ],
+      "it": [
+        {
+          "name": "Placca Izanagi",
+          "pref": true
+        }
+      ],
+      "es": [
+        {
+          "name": "placa de Izanagi",
+          "pref": true
+        }
+      ],
+      "mk": [
+        {
+          "name": "Изанашка Плоча",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q1187892": {
+    "name": "Iranian Plate",
+    "names": {
+      "zh-hans": [
+        {
+          "name": "伊朗板块",
+          "pref": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "伊朗板塊",
+          "pref": true
+        }
+      ],
+      "zh-hk": [
+        {
+          "name": "伊朗板塊",
+          "pref": true
+        }
+      ],
+      "de": [
+        {
+          "name": "Iranische Platte",
+          "pref": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "イランプレート",
+          "pref": true
+        }
+      ],
+      "pl": [
+        {
+          "name": "Płyta irańska",
+          "pref": true
+        }
+      ],
+      "ko": [
+        {
+          "name": "이란판",
+          "pref": true
+        }
+      ],
+      "en": [
+        {
+          "name": "Iranian Plate",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "伊朗板塊",
+          "pref": true
+        }
+      ],
+      "bg": [
+        {
+          "name": "Иранска плоча",
+          "pref": true
+        }
+      ],
+      "mk": [
+        {
+          "name": "Иранска Плоча",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q1200986": {
+    "name": "Altiplano Plate",
+    "names": {
+      "zh-hans": [
+        {
+          "name": "阿尔蒂普拉诺板块",
+          "pref": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "阿爾蒂普拉諾板塊",
+          "pref": true
+        }
+      ],
+      "zh-hk": [
+        {
+          "name": "阿爾蒂普拉諾板塊",
+          "pref": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "アルティプラーノプレート",
+          "pref": true
+        }
+      ],
+      "pl": [
+        {
+          "name": "Płyta altiplano",
+          "pref": true
+        }
+      ],
+      "ko": [
+        {
+          "name": "알티플라노판",
+          "pref": true
+        }
+      ],
+      "ru": [
+        {
+          "name": "Плита Альтиплано",
+          "pref": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "plaque de l'Altiplano",
+          "pref": true
+        },
+        {
+          "name": "Altiplano",
+          "alias": true
+        }
+      ],
+      "en": [
+        {
+          "name": "Altiplano Plate",
+          "pref": true
+        }
+      ],
+      "it": [
+        {
+          "name": "Placca Altiplano",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "阿爾蒂普拉諾板塊",
+          "pref": true
+        }
+      ],
+      "nn": [
+        {
+          "name": "Altiplanoplata",
+          "pref": true
+        }
+      ],
+      "es": [
+        {
+          "name": "Placa del Altiplano",
+          "pref": true
+        }
+      ],
+      "pt": [
+        {
+          "name": "Placa do Altiplano",
+          "pref": true
+        }
+      ],
+      "nb": [
+        {
+          "name": "Altiplanoplaten",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q1203170": {
+    "name": "Farallon Plate",
+    "names": {
+      "zh-hans": [
+        {
+          "name": "法拉龙板块",
+          "pref": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "法拉龍板塊",
+          "pref": true
+        }
+      ],
+      "zh-hk": [
+        {
+          "name": "法拉龍板塊",
+          "pref": true
+        }
+      ],
+      "pl": [
+        {
+          "name": "Płyta Farallon",
+          "pref": true
+        }
+      ],
+      "ko": [
+        {
+          "name": "패럴론판",
+          "pref": true
+        }
+      ],
+      "ru": [
+        {
+          "name": "Плита Фараллон",
+          "pref": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "plaque Farallon",
+          "pref": true
+        },
+        {
+          "name": "Farallon",
+          "alias": true
+        }
+      ],
+      "en": [
+        {
+          "name": "Farallon Plate",
+          "pref": true
+        }
+      ],
+      "es": [
+        {
+          "name": "Placa de Farallón",
+          "pref": true
+        },
+        {
+          "name": "Placa farallon",
+          "alias": true
+        },
+        {
+          "name": "Placa farallón",
+          "alias": true
+        },
+        {
+          "name": "Placa de Farallon",
+          "alias": true
+        }
+      ],
+      "nl": [
+        {
+          "name": "Farallonplaat",
+          "pref": true
+        }
+      ],
+      "sr": [
+        {
+          "name": "Фаралонска плоча",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "法拉龙板块",
+          "pref": true
+        },
+        {
+          "name": "法拉龍板塊",
+          "alias": true
+        }
+      ],
+      "he": [
+        {
+          "name": "לוח פרלון",
+          "pref": true
+        }
+      ],
+      "de": [
+        {
+          "name": "Farallon-Platte",
+          "pref": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "ファラロンプレート",
+          "pref": true
+        },
+        {
+          "name": "ファラロン・プレート",
+          "alias": true
+        },
+        {
+          "name": "ファロラン・プレート",
+          "alias": true
+        }
+      ],
+      "it": [
+        {
+          "name": "Placca Farallon",
+          "pref": true
+        }
+      ],
+      "fi": [
+        {
+          "name": "Farallonin laatta",
+          "pref": true
+        }
+      ],
+      "mk": [
+        {
+          "name": "Фараљонска Плоча",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q1320205": {
+    "name": "Kula Plate",
+    "names": {
+      "fr": [
+        {
+          "name": "Plaque de Kula",
+          "pref": true
+        },
+        {
+          "name": "Kula",
+          "alias": true
+        }
+      ],
+      "ko": [
+        {
+          "name": "쿨라판",
+          "pref": true
+        }
+      ],
+      "ru": [
+        {
+          "name": "Плита Кула",
+          "pref": true
+        }
+      ],
+      "en": [
+        {
+          "name": "Kula Plate",
+          "pref": true
+        }
+      ],
+      "es": [
+        {
+          "name": "Placa de Kula",
+          "pref": true
+        }
+      ],
+      "bg": [
+        {
+          "name": "Плоча Кула",
+          "pref": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "クラプレート",
+          "pref": true
+        }
+      ],
+      "it": [
+        {
+          "name": "Placca di Kula",
+          "pref": true
+        }
+      ],
+      "he": [
+        {
+          "name": "לוח קולה",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "庫拉板塊",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q1933940": {
+    "name": "microplate",
+    "names": {
+      "de": [
+        {
+          "name": "Mikroplatte",
+          "pref": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "マイクロプレート",
+          "pref": true
+        }
+      ],
+      "pl": [
+        {
+          "name": "Mikropłyta",
+          "pref": true
+        }
+      ],
+      "en": [
+        {
+          "name": "microplate",
+          "pref": true
+        }
+      ],
+      "cs": [
+        {
+          "name": "mikrodeska",
+          "pref": true
+        }
+      ],
+      "mk": [
+        {
+          "name": "микроплоча",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q2043096": {
+    "name": "Futuna Plate",
+    "names": {
+      "ru": [
+        {
+          "name": "Футуна",
+          "pref": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "plaque de Futuna",
+          "pref": true
+        },
+        {
+          "name": "Futuna",
+          "alias": true
+        }
+      ],
+      "es": [
+        {
+          "name": "Placa de Futuna",
+          "pref": true
+        }
+      ],
+      "it": [
+        {
+          "name": "Placca Futuna",
+          "pref": true
+        }
+      ],
+      "en": [
+        {
+          "name": "Futuna Plate",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q3391667": {
+    "name": "Intermontane Plate",
+    "names": {
+      "fr": [
+        {
+          "name": "plaque Intermontane",
+          "pref": true
+        },
+        {
+          "name": "Intermontane",
+          "alias": true
+        }
+      ],
+      "en": [
+        {
+          "name": "Intermontane Plate",
+          "pref": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "インターモンテンプレート",
+          "pref": true
+        }
+      ],
+      "it": [
+        {
+          "name": "Placca intermontana",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "山間板塊",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q3391669": {
+    "name": "Bellingshausen Plate",
+    "names": {
+      "ru": [
+        {
+          "name": "Плита Беллинсгаузена",
+          "pref": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "plaque Bellingshausen",
+          "pref": true
+        },
+        {
+          "name": "Bellingshausen",
+          "alias": true
+        }
+      ],
+      "en": [
+        {
+          "name": "Bellingshausen Plate",
+          "pref": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "ベリングスハウゼンプレート",
+          "pref": true
+        }
+      ],
+      "it": [
+        {
+          "name": "Placca Bellingshausen",
+          "pref": true
+        }
+      ],
+      "he": [
+        {
+          "name": "לוח בלינגסהאוזן",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "別林斯高晉板塊",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q3391684": {
+    "name": "Lhasa Plate",
+    "names": {
+      "fr": [
+        {
+          "name": "plaque de Lhassa",
+          "pref": true
+        },
+        {
+          "name": "Lhassa",
+          "alias": true
+        }
+      ],
+      "en": [
+        {
+          "name": "Lhasa Plate",
+          "pref": true
+        },
+        {
+          "name": "Lhasa Block",
+          "alias": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "拉薩板塊",
+          "pref": true
+        },
+        {
+          "name": "拉薩地塊",
+          "alias": true
+        },
+        {
+          "name": "喀拉昆仑—拉萨地块",
+          "alias": true
+        },
+        {
+          "name": "拉萨地块",
+          "alias": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "ラサプレート",
+          "pref": true
+        }
+      ],
+      "it": [
+        {
+          "name": "Placca di Lhasa",
+          "pref": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "喀拉崑崙—拉薩地塊",
+          "pref": true
+        }
+      ],
+      "zh-hans": [
+        {
+          "name": "喀拉昆仑—拉萨地块",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q3906097": {
+    "name": "South Georgia Plate",
+    "names": {
+      "it": [
+        {
+          "name": "Placca della Georgia del Sud",
+          "pref": true
+        }
+      ],
+      "en": [
+        {
+          "name": "South Georgia Plate",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q3906099": {
+    "name": "Jan Mayen Microcontinent",
+    "names": {
+      "it": [
+        {
+          "name": "Placca di Jan Mayen",
+          "pref": true
+        }
+      ],
+      "nl": [
+        {
+          "name": "Plaat van Jan Mayen",
+          "pref": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "ヤンマイエンプレート",
+          "pref": true
+        },
+        {
+          "name": "ヤン・マイエンプレート",
+          "alias": true
+        }
+      ],
+      "en": [
+        {
+          "name": "Jan Mayen Microcontinent",
+          "pref": true
+        }
+      ],
+      "nb": [
+        {
+          "name": "Jan Mayen mikrokontinent",
+          "pref": true
+        }
+      ],
+      "pt": [
+        {
+          "name": "Microcontinente Jan Mayen",
+          "pref": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "Microcontinent Jan Mayen",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q4465710": {
+    "name": "Turan Plate",
+    "names": {
+      "ru": [
+        {
+          "name": "Туранская плита",
+          "pref": true
+        }
+      ],
+      "tr": [
+        {
+          "name": "Turan Ovası",
+          "pref": true
+        }
+      ],
+      "en": [
+        {
+          "name": "Turan Plate",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q5074185": {
+    "name": "Charcot Plate",
+    "names": {
+      "en": [
+        {
+          "name": "Charcot Plate",
+          "pref": true
+        }
+      ],
+      "it": [
+        {
+          "name": "Placca Charcot",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "夏科板塊",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q5120147": {
+    "name": "Cimmerian Plate",
+    "names": {
+      "en": [
+        {
+          "name": "Cimmerian Plate",
+          "pref": true
+        }
+      ],
+      "ru": [
+        {
+          "name": "Киммерийская плита",
+          "pref": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "plaque cimmérienne",
+          "pref": true
+        }
+      ],
+      "hu": [
+        {
+          "name": "Kimmériai lemez",
+          "pref": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "基梅里板塊",
+          "pref": true
+        }
+      ],
+      "zh-cn": [
+        {
+          "name": "基梅里板块",
+          "pref": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "キンメリアプレート",
+          "pref": true
+        }
+      ],
+      "it": [
+        {
+          "name": "Placca cimmeriana",
+          "pref": true
+        }
+      ],
+      "fi": [
+        {
+          "name": "Kimmerian laatta",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q5361664": {
+    "name": "North Galapagos Microplate",
+    "names": {
+      "ja": [
+        {
+          "name": "北ガラパゴスプレート",
+          "pref": true
+        }
+      ],
+      "ko": [
+        {
+          "name": "북갈라파고스 미판",
+          "pref": true
+        }
+      ],
+      "en": [
+        {
+          "name": "North Galapagos Microplate",
+          "pref": true
+        }
+      ],
+      "bg": [
+        {
+          "name": "Северногалапагоска микроплоча",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "北加拉帕戈斯板塊",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q6058525": {
+    "name": "Intraplate deformation",
+    "names": {
+      "en": [
+        {
+          "name": "Intraplate deformation",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "板内变形",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q6886313": {
+    "name": "Moa Plate",
+    "names": {
+      "en": [
+        {
+          "name": "Moa Plate",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "莫阿板塊",
+          "pref": true
+        }
+      ],
+      "it": [
+        {
+          "name": "Placca Moa",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q7853562": {
+    "names": {
+      "ru": [
+        {
+          "name": "Тимано-Печорская плита",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q13542800": {
+    "name": "Baltic plate",
+    "names": {
+      "en": [
+        {
+          "name": "Baltic plate",
+          "pref": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "バルトプレート",
+          "pref": true
+        }
+      ],
+      "it": [
+        {
+          "name": "Placca baltica",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q17115739": {
+    "name": "Western Siberia Plate",
+    "names": {
+      "ru": [
+        {
+          "name": "Западно-Сибирская плита",
+          "pref": true
+        }
+      ],
+      "en": [
+        {
+          "name": "Western Siberia Plate",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q19848929": {
+    "name": "European plate",
+    "names": {
+      "en": [
+        {
+          "name": "European plate",
+          "pref": true
+        }
+      ],
+      "nl": [
+        {
+          "name": "Europese Plaat",
+          "pref": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "plaque européenne",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q25473407": {
+    "name": "West Siberian Plate",
+    "names": {
+      "en": [
+        {
+          "name": "West Siberian Plate",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q115534336": {
+    "name": "Central India Tectonic Zone",
+    "names": {
+      "de": [
+        {
+          "name": "Central India Tectonic Zone",
+          "pref": true
+        },
+        {
+          "name": "CITZ",
+          "alias": true
+        }
+      ],
+      "en": [
+        {
+          "name": "Central India Tectonic Zone",
+          "pref": true
+        },
+        {
+          "name": "CITZ",
+          "alias": true
+        }
+      ]
+    }
+  }
+}
