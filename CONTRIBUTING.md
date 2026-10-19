@@ -2,30 +2,61 @@
 
 Thanks for helping with the project!
 
-More and more word lists here are built by script from [Wikidata](https://www.wikidata.org/), in every language at once. So the most effective help happens there: a label or an item added on Wikidata reaches the app with the next data dump, in that language and for everyone else using Wikidata too.
+Most of our word lists are built from [Wikidata](https://www.wikidata.org/) and aim to carry [every Language Skribbl.io supports](https://skribbl-io.fandom.com/wiki/Supported_Languages) (plus some more) right from the get-go, so we only need to extend the Locales when building (technical) support for a new UI Language.  
+So the **most effective help** happens there: a label or an item added on **Wikidata** reaches the app with the next data dump, in that language and for everyone else using Wikidata too.
 
 ## What's worth contributing
 
 - **Missing names on Wikidata** for a topic that is already built from it: a label in your language, a missing item, a wrong statement.
-- **A new topic, or a change to one, that Wikidata can carry:** say which items belong to it and which don't.
+- **A new topic, or a change to one, that Wikidata can carry:** say which items belong to it and which don't (based on Wikidata Statements).
 - **A wrong entry** in a list, or one that sits in the wrong fame tier.
 - Anything about the **tool itself**: a bug, or an idea for how it could work better.
 - **Proofreading** one of the machine-written interface languages.
 
+<!-- Might at some point be worth replacing with docs/Queries/README.md ... or simple cross-linking might already be enough, since they both serve different purposes -->
 The [topic tracker](docs/Topic-Progress.md) shows what's already covered and what's planned. Worth a look before proposing a new topic.
 
-## Improve the data on Wikidata (recommended)
+## a) Improve the data on Wikidata (recommended)
 
-Every topic built from Wikidata has a **coverage page** that shows, per item, which languages still lack a name, with the easy wins sorted to the top. Take [Sports](https://trummler12.github.io/custom-wordlists/coverage/sports) as an example; the index there lists every such topic.
+On a Topic built from Wikidata, you may find an **Omission entry** mentioning "items with no \<language\> names", followed by a "help us add what's missing!" with a URL behind:  
+![1791791568552](assets/docs/Missing_lang_screenshot.png)  
 <!-- Example coverage page: Sports for now; swap for South Park, One Piece or a similar topic once one of those is built from Wikidata. -->
+This URL leads you to a page that presents you a table showing the **language Coverage** across ALL items coming from the Wikidata Dump this Topic is built from[1]; Take [Sports](https://trummler12.github.io/custom-wordlists/coverage/sports) as an example;  
+A red "✗" marks a label that's not defined yet;
+You may also navigate to other Topics' Coverage Pages via the "Topic:" selector in the top right;  
+Every Topic built from Wikidata has such a Coverage Page.
 
-Open an item from the table and, once logged in to Wikidata, add what's missing. The page's "How to help" notes cover the details (languages Wikidata doesn't list yet, protected items). A few ground rules:
+Open an item from the table and, once logged in to Wikidata, add what's missing. The page's "How to help" notes cover the most important details. A few ground rules:
 
-- Only add what you're sure of, ideally with a source.
-- Fix a gap on Wikidata rather than asking us to work around it: a fix there helps every project that reads the data, and it survives the next dump.
+- Only add what you're sure of, ideally based on a trustworthy source.
+- Fix a gap on Wikidata rather than asking us to work around it: a fix there helps every project that reads the data.
 - Our dumps are run by hand, so a fix takes a while to show up in the app.
 
-## Propose a topic built from Wikidata
+<!-- At some point, the "only example" might be updated -->
+[1] Note: Most Topics have their own Dump, but some exceptions share a Dump with other sibling topics, sports/games/<game>/sports being the only example so far.
+
+### Improve Wikidata data beyond Labels
+
+It's perfectly fine when most contributers **limit** themselves **to updating labels** since that's where the majority of all manual work takes place;  
+And even though this Application doesn't use them, you're happily invited to **update Description & Aliases as well** when you're already at it, since they're often either empty, inconsistent or even confusing ^^
+
+Now, when it comes to **Statements**, it starts to become increasingly technical, but in case you're still interested, here's the most important Statements you can update:
+
+- **official name (P1448)**: Serves as a basis for "long" variants on some (non-real-human) items,
+  - with "start time (P580)" and "end time (P582)" as optional qualifiers in case the item underwent a renaming (for example on Countries such as "White Russia"/"Belarus" or for LoL Champions with a legacy name)
+- **short name (P1813)**: Serves as a basis for "short" variants (in case the most _popular_ variant is shorter than the primary/official Label)
+- **family name (P734)** & **given name (P735)** for characters & humans,
+  - with "series ordinal (P1545)" in cases with multiple given and/or family names
+
+^That basically covers everything we rely on in terms of **_quality_**;  
+
+The **_quantity_** on the other hand relies on the completeness of the items themselves as well as their Statements we filter based on; And what those Statements (+even Qualifiers in some cases) _are_ differs from Topic to Topic;  
+However, since the _logical_ completeness & correctness of Data often is highly objective and quite easy to automatically check via test query scripts, this is a task perfect to be delegated to an AI agent; BUT: of course you can't just blindly let an AI agent roam loose and risk hallucinating stuff; any updates this way shall only happen with the explicit instruction that any resulting [QuickStatements Batches](https://quickstatements.toolforge.org/#/batch) shall only consist of data updates when accompanied by some trustworthy independant reference(s) whenever the presence of a source makes sense;  
+In case you're interested in some insight in this regard, you may check out the [landing 'page'](https://github.com/Trummler12/custom-wordlists/blob/docs/wikidata_analysis/docs/Queries/README.md) of this whole background analysis
+
+## b) Propose a topic built from Wikidata
+
+
 
 Open a [**Data source**](https://github.com/Trummler12/custom-wordlists/issues/new?template=1-data-source.yml) issue. The best proposal names the query that finds the topic's items, ideally as a ready-made [Wikidata Query Builder](https://query.wikidata.org/querybuilder/?uselang=en) link:
 
