@@ -1,0 +1,93 @@
+Pokémon: the cosmetic forms (3/18)
+CREATE
+LAST|Len|"Unown Y"
+LAST|Lde|"Icognito Y"
+LAST|Lfr|"Zarbi Y"
+LAST|Den|"form of Unown"
+LAST|P31|Q56707539|S854|"https://pokeapi.co/api/v2/pokemon-form/unown-y/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P361|Q2037718|S854|"https://pokeapi.co/api/v2/pokemon-form/unown-y/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P4584|Q27118900|S854|"https://pokeapi.co/api/v2/pokemon-form/unown-y/"|S813|+2026-10-20T00:00:00Z/11
+CREATE
+LAST|Len|"Unown Z"
+LAST|Lde|"Icognito Z"
+LAST|Lfr|"Zarbi Z"
+LAST|Den|"form of Unown"
+LAST|P31|Q56707539|S854|"https://pokeapi.co/api/v2/pokemon-form/unown-z/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P361|Q2037718|S854|"https://pokeapi.co/api/v2/pokemon-form/unown-z/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P4584|Q27118900|S854|"https://pokeapi.co/api/v2/pokemon-form/unown-z/"|S813|+2026-10-20T00:00:00Z/11
+CREATE
+LAST|Len|"Unown !"
+LAST|Lde|"Icognito !"
+LAST|Lfr|"Zarbi !"
+LAST|Den|"form of Unown"
+LAST|P31|Q56707539|S854|"https://pokeapi.co/api/v2/pokemon-form/unown-exclamation/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P361|Q2037718|S854|"https://pokeapi.co/api/v2/pokemon-form/unown-exclamation/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P4584|Q27118889|S854|"https://pokeapi.co/api/v2/pokemon-form/unown-exclamation/"|S813|+2026-10-20T00:00:00Z/11
+CREATE
+LAST|Len|"Unown ?"
+LAST|Lde|"Icognito ?"
+LAST|Lfr|"Zarbi ?"
+LAST|Den|"form of Unown"
+LAST|P31|Q56707539|S854|"https://pokeapi.co/api/v2/pokemon-form/unown-question/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P361|Q2037718|S854|"https://pokeapi.co/api/v2/pokemon-form/unown-question/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P4584|Q27118889|S854|"https://pokeapi.co/api/v2/pokemon-form/unown-question/"|S813|+2026-10-20T00:00:00Z/11
+CREATE
+LAST|Len|"Arceus Bug Type"
+LAST|Lde|"Arceus Käfer"
+LAST|Ade|"Arceus (Käfer)"
+LAST|Lfr|"Arceus Insecte"
+LAST|Den|"form of Arceus"
+LAST|Aen|"Bug Arceus"
+LAST|P31|Q56707539|S854|"https://pokeapi.co/api/v2/pokemon-form/arceus-bug/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P361|Q1334381|S854|"https://pokeapi.co/api/v2/pokemon-form/arceus-bug/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P4584|Q27118795|S854|"https://pokeapi.co/api/v2/pokemon-form/arceus-bug/"|S813|+2026-10-20T00:00:00Z/11
+CREATE
+LAST|Len|"Arceus Dark Type"
+LAST|Lde|"Arceus Unlicht"
+LAST|Ade|"Arceus (Unlicht)"
+LAST|Lfr|"Arceus Ténèbres"
+LAST|Den|"form of Arceus"
+LAST|Aen|"Dark Arceus"
+LAST|P31|Q56707539|S854|"https://pokeapi.co/api/v2/pokemon-form/arceus-dark/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P361|Q1334381|S854|"https://pokeapi.co/api/v2/pokemon-form/arceus-dark/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P4584|Q27118795|S854|"https://pokeapi.co/api/v2/pokemon-form/arceus-dark/"|S813|+2026-10-20T00:00:00Z/11
+CREATE
+LAST|Len|"Arceus Dragon Type"
+LAST|Lde|"Arceus Drache"
+LAST|Ade|"Arceus (Drache)"
+LAST|Lfr|"Arceus Dragon"
+LAST|Den|"form of Arceus"
+LAST|Aen|"Dragon Arceus"
+LAST|P31|Q56707539|S854|"https://pokeapi.co/api/v2/pokemon-form/arceus-dragon/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P361|Q1334381|S854|"https://pokeapi.co/api/v2/pokemon-form/arceus-dragon/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P4584|Q27118795|S854|"https://pokeapi.co/api/v2/pokemon-form/arceus-dragon/"|S813|+2026-10-20T00:00:00Z/11
+CREATE
+LAST|Len|"Arceus Electric Type"
+LAST|Lde|"Arceus Elektro"
+LAST|Ade|"Arceus (Elektro)"
+LAST|Lfr|"Arceus Électrik"
+LAST|Den|"form of Arceus"
+LAST|Aen|"Electric Arceus"
+LAST|P31|Q56707539|S854|"https://pokeapi.co/api/v2/pokemon-form/arceus-electric/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P361|Q1334381|S854|"https://pokeapi.co/api/v2/pokemon-form/arceus-electric/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P4584|Q27118795|S854|"https://pokeapi.co/api/v2/pokemon-form/arceus-electric/"|S813|+2026-10-20T00:00:00Z/11
+CREATE
+LAST|Len|"Arceus Fighting Type"
+LAST|Lde|"Arceus Kampf"
+LAST|Ade|"Arceus (Kampf)"
+LAST|Lfr|"Arceus Combat"
+LAST|Den|"form of Arceus"
+LAST|Aen|"Fighting Arceus"
+LAST|P31|Q56707539|S854|"https://pokeapi.co/api/v2/pokemon-form/arceus-fighting/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P361|Q1334381|S854|"https://pokeapi.co/api/v2/pokemon-form/arceus-fighting/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P4584|Q27118795|S854|"https://pokeapi.co/api/v2/pokemon-form/arceus-fighting/"|S813|+2026-10-20T00:00:00Z/11
+CREATE
+LAST|Len|"Arceus Fire Type"
+LAST|Lde|"Arceus Feuer"
+LAST|Ade|"Arceus (Feuer)"
+LAST|Lfr|"Arceus Feu"
+LAST|Den|"form of Arceus"
+LAST|Aen|"Fire Arceus"
+LAST|P31|Q56707539|S854|"https://pokeapi.co/api/v2/pokemon-form/arceus-fire/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P361|Q1334381|S854|"https://pokeapi.co/api/v2/pokemon-form/arceus-fire/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P4584|Q27118795|S854|"https://pokeapi.co/api/v2/pokemon-form/arceus-fire/"|S813|+2026-10-20T00:00:00Z/11

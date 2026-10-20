@@ -1,0 +1,99 @@
+Pokémon: the cosmetic forms (1/18)
+CREATE
+LAST|Len|"Xerneas Active Mode"
+LAST|Lde|"Xerneas Aktiv-Modus"
+LAST|Ade|"Xerneas (Aktiv)"
+LAST|Lfr|"Xerneas Déchaîné"
+LAST|Den|"form of Xerneas"
+LAST|Aen|"Active Xerneas"
+LAST|P31|Q56707539|S854|"https://pokeapi.co/api/v2/pokemon-form/xerneas-active/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P361|Q12524951|S854|"https://pokeapi.co/api/v2/pokemon-form/xerneas-active/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P4584|Q27065429|S854|"https://pokeapi.co/api/v2/pokemon-form/xerneas-active/"|S813|+2026-10-20T00:00:00Z/11
+CREATE
+LAST|Len|"Unown B"
+LAST|Lde|"Icognito B"
+LAST|Lfr|"Zarbi B"
+LAST|Den|"form of Unown"
+LAST|P31|Q56707539|S854|"https://pokeapi.co/api/v2/pokemon-form/unown-b/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P361|Q2037718|S854|"https://pokeapi.co/api/v2/pokemon-form/unown-b/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P4584|Q27118900|S854|"https://pokeapi.co/api/v2/pokemon-form/unown-b/"|S813|+2026-10-20T00:00:00Z/11
+CREATE
+LAST|Len|"Unown C"
+LAST|Lde|"Icognito C"
+LAST|Lfr|"Zarbi C"
+LAST|Den|"form of Unown"
+LAST|P31|Q56707539|S854|"https://pokeapi.co/api/v2/pokemon-form/unown-c/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P361|Q2037718|S854|"https://pokeapi.co/api/v2/pokemon-form/unown-c/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P4584|Q27118900|S854|"https://pokeapi.co/api/v2/pokemon-form/unown-c/"|S813|+2026-10-20T00:00:00Z/11
+CREATE
+LAST|Len|"Unown D"
+LAST|Lde|"Icognito D"
+LAST|Lfr|"Zarbi D"
+LAST|Den|"form of Unown"
+LAST|P31|Q56707539|S854|"https://pokeapi.co/api/v2/pokemon-form/unown-d/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P361|Q2037718|S854|"https://pokeapi.co/api/v2/pokemon-form/unown-d/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P4584|Q27118900|S854|"https://pokeapi.co/api/v2/pokemon-form/unown-d/"|S813|+2026-10-20T00:00:00Z/11
+CREATE
+LAST|Len|"Unown E"
+LAST|Lde|"Icognito E"
+LAST|Lfr|"Zarbi E"
+LAST|Den|"form of Unown"
+LAST|P31|Q56707539|S854|"https://pokeapi.co/api/v2/pokemon-form/unown-e/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P361|Q2037718|S854|"https://pokeapi.co/api/v2/pokemon-form/unown-e/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P4584|Q27118900|S854|"https://pokeapi.co/api/v2/pokemon-form/unown-e/"|S813|+2026-10-20T00:00:00Z/11
+CREATE
+LAST|Len|"Unown F"
+LAST|Lde|"Icognito F"
+LAST|Lfr|"Zarbi F"
+LAST|Den|"form of Unown"
+LAST|P31|Q56707539|S854|"https://pokeapi.co/api/v2/pokemon-form/unown-f/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P361|Q2037718|S854|"https://pokeapi.co/api/v2/pokemon-form/unown-f/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P4584|Q27118900|S854|"https://pokeapi.co/api/v2/pokemon-form/unown-f/"|S813|+2026-10-20T00:00:00Z/11
+CREATE
+LAST|Len|"Unown G"
+LAST|Lde|"Icognito G"
+LAST|Lfr|"Zarbi G"
+LAST|Den|"form of Unown"
+LAST|P31|Q56707539|S854|"https://pokeapi.co/api/v2/pokemon-form/unown-g/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P361|Q2037718|S854|"https://pokeapi.co/api/v2/pokemon-form/unown-g/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P4584|Q27118900|S854|"https://pokeapi.co/api/v2/pokemon-form/unown-g/"|S813|+2026-10-20T00:00:00Z/11
+CREATE
+LAST|Len|"Unown H"
+LAST|Lde|"Icognito H"
+LAST|Lfr|"Zarbi H"
+LAST|Den|"form of Unown"
+LAST|P31|Q56707539|S854|"https://pokeapi.co/api/v2/pokemon-form/unown-h/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P361|Q2037718|S854|"https://pokeapi.co/api/v2/pokemon-form/unown-h/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P4584|Q27118900|S854|"https://pokeapi.co/api/v2/pokemon-form/unown-h/"|S813|+2026-10-20T00:00:00Z/11
+CREATE
+LAST|Len|"Unown I"
+LAST|Lde|"Icognito I"
+LAST|Lfr|"Zarbi I"
+LAST|Den|"form of Unown"
+LAST|P31|Q56707539|S854|"https://pokeapi.co/api/v2/pokemon-form/unown-i/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P361|Q2037718|S854|"https://pokeapi.co/api/v2/pokemon-form/unown-i/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P4584|Q27118900|S854|"https://pokeapi.co/api/v2/pokemon-form/unown-i/"|S813|+2026-10-20T00:00:00Z/11
+CREATE
+LAST|Len|"Unown J"
+LAST|Lde|"Icognito J"
+LAST|Lfr|"Zarbi J"
+LAST|Den|"form of Unown"
+LAST|P31|Q56707539|S854|"https://pokeapi.co/api/v2/pokemon-form/unown-j/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P361|Q2037718|S854|"https://pokeapi.co/api/v2/pokemon-form/unown-j/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P4584|Q27118900|S854|"https://pokeapi.co/api/v2/pokemon-form/unown-j/"|S813|+2026-10-20T00:00:00Z/11
+CREATE
+LAST|Len|"Unown K"
+LAST|Lde|"Icognito K"
+LAST|Lfr|"Zarbi K"
+LAST|Den|"form of Unown"
+LAST|P31|Q56707539|S854|"https://pokeapi.co/api/v2/pokemon-form/unown-k/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P361|Q2037718|S854|"https://pokeapi.co/api/v2/pokemon-form/unown-k/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P4584|Q27118900|S854|"https://pokeapi.co/api/v2/pokemon-form/unown-k/"|S813|+2026-10-20T00:00:00Z/11
+CREATE
+LAST|Len|"Unown L"
+LAST|Lde|"Icognito L"
+LAST|Lfr|"Zarbi L"
+LAST|Den|"form of Unown"
+LAST|P31|Q56707539|S854|"https://pokeapi.co/api/v2/pokemon-form/unown-l/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P361|Q2037718|S854|"https://pokeapi.co/api/v2/pokemon-form/unown-l/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P4584|Q27118900|S854|"https://pokeapi.co/api/v2/pokemon-form/unown-l/"|S813|+2026-10-20T00:00:00Z/11

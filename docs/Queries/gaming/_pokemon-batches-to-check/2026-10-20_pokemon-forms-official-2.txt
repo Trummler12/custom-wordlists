@@ -1,0 +1,108 @@
+Pokémon: forms listed in the official Pokédex that Wikidata lacks (2/4)
+CREATE
+LAST|Len|"Sawsbuck Autumn Form"
+LAST|Lde|"Kronjuwild Herbstform"
+LAST|Ade|"Kronjuwild (Herbst)"
+LAST|Lfr|"Haydaim Automne"
+LAST|Den|"form of Sawsbuck"
+LAST|Aen|"Autumn Sawsbuck"
+LAST|P31|Q56707539|S854|"https://zukan.pokemon.co.jp/detail/0586-2"|S813|+2026-10-20T00:00:00Z/11
+LAST|P361|Q3951175|S854|"https://zukan.pokemon.co.jp/detail/0586-2"|S813|+2026-10-20T00:00:00Z/11
+LAST|P4584|Q27118381|S854|"https://pokeapi.co/api/v2/pokemon-form/sawsbuck-autumn/"|S813|+2026-10-20T00:00:00Z/11
+CREATE
+LAST|Len|"Sawsbuck Winter Form"
+LAST|Lde|"Kronjuwild Winterform"
+LAST|Ade|"Kronjuwild (Winter)"
+LAST|Lfr|"Haydaim Hiver"
+LAST|Den|"form of Sawsbuck"
+LAST|Aen|"Winter Sawsbuck"
+LAST|P31|Q56707539|S854|"https://zukan.pokemon.co.jp/detail/0586-3"|S813|+2026-10-20T00:00:00Z/11
+LAST|P361|Q3951175|S854|"https://zukan.pokemon.co.jp/detail/0586-3"|S813|+2026-10-20T00:00:00Z/11
+LAST|P4584|Q27118381|S854|"https://pokeapi.co/api/v2/pokemon-form/sawsbuck-winter/"|S813|+2026-10-20T00:00:00Z/11
+CREATE
+LAST|Len|"Keldeo Resolute Form"
+LAST|Lde|"Keldeo Resolutform"
+LAST|Ade|"Keldeo (Resolut)"
+LAST|Lfr|"Keldeo Décidé"
+LAST|Den|"form of Keldeo"
+LAST|Aen|"Resolute Keldeo"
+LAST|P31|Q56707539|S854|"https://zukan.pokemon.co.jp/detail/0647-1"|S813|+2026-10-20T00:00:00Z/11
+LAST|P361|Q3194838|S854|"https://zukan.pokemon.co.jp/detail/0647-1"|S813|+2026-10-20T00:00:00Z/11
+LAST|P4584|Q27118381|S854|"https://pokeapi.co/api/v2/pokemon-form/keldeo-resolute/"|S813|+2026-10-20T00:00:00Z/11
+CREATE
+LAST|Len|"Female Meowstic"
+LAST|Lde|"Psiaugon ♀"
+LAST|Lfr|"Mistigrix Femelle"
+LAST|Den|"form of Meowstic"
+LAST|P31|Q56707539|S854|"https://zukan.pokemon.co.jp/detail/0678-1"|S813|+2026-10-20T00:00:00Z/11
+LAST|P361|Q16577854|S854|"https://zukan.pokemon.co.jp/detail/0678-1"|S813|+2026-10-20T00:00:00Z/11
+LAST|P4584|Q27065429|S854|"https://pokeapi.co/api/v2/pokemon-form/meowstic-female/"|S813|+2026-10-20T00:00:00Z/11
+CREATE
+LAST|Len|"Aegislash Blade Forme"
+LAST|Lde|"Durengard Klingenform"
+LAST|Ade|"Durengard (Klinge)"
+LAST|Lfr|"Exagide Assaut"
+LAST|Den|"form of Aegislash"
+LAST|Aen|"Blade Aegislash"
+LAST|P31|Q56707539|S854|"https://zukan.pokemon.co.jp/detail/0681-1"|S813|+2026-10-20T00:00:00Z/11
+LAST|P361|Q16524649|S854|"https://zukan.pokemon.co.jp/detail/0681-1"|S813|+2026-10-20T00:00:00Z/11
+LAST|P4584|Q27065429|S854|"https://pokeapi.co/api/v2/pokemon-form/aegislash-blade/"|S813|+2026-10-20T00:00:00Z/11
+CREATE
+LAST|Len|"Oricorio Pom-Pom Style"
+LAST|Lde|"Choreogel Cheerleading-Stil"
+LAST|Ade|"Choreogel (Cheerleading)"
+LAST|Lfr|"Plumeline Style Pom-Pom"
+LAST|Den|"form of Oricorio"
+LAST|Aen|"Pom-pom Oricorio"
+LAST|P31|Q56707539|S854|"https://zukan.pokemon.co.jp/detail/0741-1"|S813|+2026-10-20T00:00:00Z/11
+LAST|P361|Q26206534|S854|"https://zukan.pokemon.co.jp/detail/0741-1"|S813|+2026-10-20T00:00:00Z/11
+LAST|P4584|Q26945334|S854|"https://pokeapi.co/api/v2/pokemon-form/oricorio-pom-pom/"|S813|+2026-10-20T00:00:00Z/11
+CREATE
+LAST|Len|"Oricorio Pa’u Style"
+LAST|Lde|"Choreogel Hula-Stil"
+LAST|Ade|"Choreogel (Hula)"
+LAST|Lfr|"Plumeline Style Hula"
+LAST|Den|"form of Oricorio"
+LAST|Aen|"Pa’u Oricorio"
+LAST|P31|Q56707539|S854|"https://zukan.pokemon.co.jp/detail/0741-2"|S813|+2026-10-20T00:00:00Z/11
+LAST|P361|Q26206534|S854|"https://zukan.pokemon.co.jp/detail/0741-2"|S813|+2026-10-20T00:00:00Z/11
+LAST|P4584|Q26945334|S854|"https://pokeapi.co/api/v2/pokemon-form/oricorio-pau/"|S813|+2026-10-20T00:00:00Z/11
+CREATE
+LAST|Len|"Oricorio Sensu Style"
+LAST|Lde|"Choreogel Buyo-Stil"
+LAST|Ade|"Choreogel (Buyo)"
+LAST|Lfr|"Plumeline Style Buyō"
+LAST|Den|"form of Oricorio"
+LAST|Aen|"Sensu Oricorio"
+LAST|P31|Q56707539|S854|"https://zukan.pokemon.co.jp/detail/0741-3"|S813|+2026-10-20T00:00:00Z/11
+LAST|P361|Q26206534|S854|"https://zukan.pokemon.co.jp/detail/0741-3"|S813|+2026-10-20T00:00:00Z/11
+LAST|P4584|Q26945334|S854|"https://pokeapi.co/api/v2/pokemon-form/oricorio-sensu/"|S813|+2026-10-20T00:00:00Z/11
+CREATE
+LAST|Len|"Wishiwashi School Form"
+LAST|Lde|"Lusardin Schwarmform"
+LAST|Ade|"Lusardin (Schwarm)"
+LAST|Lfr|"Froussardine Forme Banc"
+LAST|Den|"form of Wishiwashi"
+LAST|Aen|"School Wishiwashi"
+LAST|P31|Q56707539|S854|"https://zukan.pokemon.co.jp/detail/0746-1"|S813|+2026-10-20T00:00:00Z/11
+LAST|P361|Q26251296|S854|"https://zukan.pokemon.co.jp/detail/0746-1"|S813|+2026-10-20T00:00:00Z/11
+LAST|P4584|Q26945334|S854|"https://pokeapi.co/api/v2/pokemon-form/wishiwashi-school/"|S813|+2026-10-20T00:00:00Z/11
+CREATE
+LAST|Len|"Minior Red Core"
+LAST|Lde|"Meteno Roter Kern"
+LAST|Ade|"Meteno (Rot)"
+LAST|Lfr|"Météno Noyeau Rouge"
+LAST|Den|"form of Minior"
+LAST|Aen|"Red Core Minior"
+LAST|P31|Q56707539|S854|"https://zukan.pokemon.co.jp/detail/0774-1"|S813|+2026-10-20T00:00:00Z/11
+LAST|P361|Q26206540|S854|"https://zukan.pokemon.co.jp/detail/0774-1"|S813|+2026-10-20T00:00:00Z/11
+LAST|P4584|Q26945334|S854|"https://pokeapi.co/api/v2/pokemon-form/minior-red/"|S813|+2026-10-20T00:00:00Z/11
+CREATE
+LAST|Len|"Magearna Original Color"
+LAST|Lde|"Magearna"
+LAST|Lfr|"Magearna Couleur du Passé"
+LAST|Den|"form of Magearna"
+LAST|Aen|"Original Magearna"
+LAST|P31|Q56707539|S854|"https://zukan.pokemon.co.jp/detail/0801-1"|S813|+2026-10-20T00:00:00Z/11
+LAST|P361|Q24041783|S854|"https://zukan.pokemon.co.jp/detail/0801-1"|S813|+2026-10-20T00:00:00Z/11
+LAST|P4584|Q26945334|S854|"https://pokeapi.co/api/v2/pokemon-form/magearna-original/"|S813|+2026-10-20T00:00:00Z/11

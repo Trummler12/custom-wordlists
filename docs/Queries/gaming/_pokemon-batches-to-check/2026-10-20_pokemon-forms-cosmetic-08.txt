@@ -1,0 +1,101 @@
+Pokémon: the cosmetic forms (8/18)
+CREATE
+LAST|Len|"Floette White Flower"
+LAST|Lde|"Floette Weißblütler"
+LAST|Ade|"Floette (Weiß)"
+LAST|Lfr|"Floette Blanc"
+LAST|Den|"form of Floette"
+LAST|Aen|"White Floette"
+LAST|P31|Q56707539|S854|"https://pokeapi.co/api/v2/pokemon-form/floette-white/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P361|Q16556294|S854|"https://pokeapi.co/api/v2/pokemon-form/floette-white/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P4584|Q27065429|S854|"https://pokeapi.co/api/v2/pokemon-form/floette-white/"|S813|+2026-10-20T00:00:00Z/11
+CREATE
+LAST|Len|"Florges Yellow Flower"
+LAST|Lde|"Florges Gelbblütler"
+LAST|Ade|"Florges (Gelb)"
+LAST|Lfr|"Florges Jaune"
+LAST|Den|"form of Florges"
+LAST|Aen|"Yellow Florges"
+LAST|P31|Q56707539|S854|"https://pokeapi.co/api/v2/pokemon-form/florges-yellow/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P361|Q16556309|S854|"https://pokeapi.co/api/v2/pokemon-form/florges-yellow/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P4584|Q27065429|S854|"https://pokeapi.co/api/v2/pokemon-form/florges-yellow/"|S813|+2026-10-20T00:00:00Z/11
+CREATE
+LAST|Len|"Florges Orange Flower"
+LAST|Lde|"Florges Orangeblütler"
+LAST|Ade|"Florges (Orange)"
+LAST|Lfr|"Florges Orange"
+LAST|Den|"form of Florges"
+LAST|Aen|"Orange Florges"
+LAST|P31|Q56707539|S854|"https://pokeapi.co/api/v2/pokemon-form/florges-orange/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P361|Q16556309|S854|"https://pokeapi.co/api/v2/pokemon-form/florges-orange/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P4584|Q27065429|S854|"https://pokeapi.co/api/v2/pokemon-form/florges-orange/"|S813|+2026-10-20T00:00:00Z/11
+CREATE
+LAST|Len|"Florges Blue Flower"
+LAST|Lde|"Florges Blaublütler"
+LAST|Ade|"Florges (Blau)"
+LAST|Lfr|"Florges Bleu"
+LAST|Den|"form of Florges"
+LAST|Aen|"Blue Florges"
+LAST|P31|Q56707539|S854|"https://pokeapi.co/api/v2/pokemon-form/florges-blue/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P361|Q16556309|S854|"https://pokeapi.co/api/v2/pokemon-form/florges-blue/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P4584|Q27065429|S854|"https://pokeapi.co/api/v2/pokemon-form/florges-blue/"|S813|+2026-10-20T00:00:00Z/11
+CREATE
+LAST|Len|"Florges White Flower"
+LAST|Lde|"Florges Weißblütler"
+LAST|Ade|"Florges (Weiß)"
+LAST|Lfr|"Florges Blanc"
+LAST|Den|"form of Florges"
+LAST|Aen|"White Florges"
+LAST|P31|Q56707539|S854|"https://pokeapi.co/api/v2/pokemon-form/florges-white/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P361|Q16556309|S854|"https://pokeapi.co/api/v2/pokemon-form/florges-white/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P4584|Q27065429|S854|"https://pokeapi.co/api/v2/pokemon-form/florges-white/"|S813|+2026-10-20T00:00:00Z/11
+CREATE
+LAST|Len|"Furfrou Heart Trim"
+LAST|Lde|"Coiffwaff Herzchenschnitt"
+LAST|Ade|"Coiffwaff (Herzchen)"
+LAST|Lfr|"Couafarel Cœur"
+LAST|Den|"form of Furfrou"
+LAST|Aen|"Heart Furfrou"
+LAST|P31|Q56707539|S854|"https://pokeapi.co/api/v2/pokemon-form/furfrou-heart/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P361|Q16557928|S854|"https://pokeapi.co/api/v2/pokemon-form/furfrou-heart/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P4584|Q27065429|S854|"https://pokeapi.co/api/v2/pokemon-form/furfrou-heart/"|S813|+2026-10-20T00:00:00Z/11
+CREATE
+LAST|Len|"Furfrou Star Trim"
+LAST|Lde|"Coiffwaff Sternchenschnitt"
+LAST|Ade|"Coiffwaff (Sternchen)"
+LAST|Lfr|"Couafarel Étoile"
+LAST|Den|"form of Furfrou"
+LAST|Aen|"Star Furfrou"
+LAST|P31|Q56707539|S854|"https://pokeapi.co/api/v2/pokemon-form/furfrou-star/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P361|Q16557928|S854|"https://pokeapi.co/api/v2/pokemon-form/furfrou-star/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P4584|Q27065429|S854|"https://pokeapi.co/api/v2/pokemon-form/furfrou-star/"|S813|+2026-10-20T00:00:00Z/11
+CREATE
+LAST|Len|"Furfrou Diamond Trim"
+LAST|Lde|"Coiffwaff Diamantenschnitt"
+LAST|Ade|"Coiffwaff (Diamanten)"
+LAST|Lfr|"Couafarel Diamant"
+LAST|Den|"form of Furfrou"
+LAST|Aen|"Diamond Furfrou"
+LAST|P31|Q56707539|S854|"https://pokeapi.co/api/v2/pokemon-form/furfrou-diamond/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P361|Q16557928|S854|"https://pokeapi.co/api/v2/pokemon-form/furfrou-diamond/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P4584|Q27065429|S854|"https://pokeapi.co/api/v2/pokemon-form/furfrou-diamond/"|S813|+2026-10-20T00:00:00Z/11
+CREATE
+LAST|Len|"Furfrou Debutante Trim"
+LAST|Lde|"Coiffwaff Fräuleinschnitt"
+LAST|Ade|"Coiffwaff (Fräulein)"
+LAST|Lfr|"Couafarel Demoiselle"
+LAST|Den|"form of Furfrou"
+LAST|Aen|"Debutante Furfrou"
+LAST|P31|Q56707539|S854|"https://pokeapi.co/api/v2/pokemon-form/furfrou-debutante/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P361|Q16557928|S854|"https://pokeapi.co/api/v2/pokemon-form/furfrou-debutante/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P4584|Q27065429|S854|"https://pokeapi.co/api/v2/pokemon-form/furfrou-debutante/"|S813|+2026-10-20T00:00:00Z/11
+CREATE
+LAST|Len|"Furfrou Matron Trim"
+LAST|Lde|"Coiffwaff Damenschnitt"
+LAST|Ade|"Coiffwaff (Damen)"
+LAST|Lfr|"Couafarel Madame"
+LAST|Den|"form of Furfrou"
+LAST|Aen|"Matron Furfrou"
+LAST|P31|Q56707539|S854|"https://pokeapi.co/api/v2/pokemon-form/furfrou-matron/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P361|Q16557928|S854|"https://pokeapi.co/api/v2/pokemon-form/furfrou-matron/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P4584|Q27065429|S854|"https://pokeapi.co/api/v2/pokemon-form/furfrou-matron/"|S813|+2026-10-20T00:00:00Z/11

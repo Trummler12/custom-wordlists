@@ -1,0 +1,100 @@
+Pokémon: the cosmetic forms (5/18)
+CREATE
+LAST|Len|"Pichu Spiky-eared"
+LAST|Lde|"Strubbelohr-Pichu"
+LAST|Lfr|"Pichu Troizépi"
+LAST|Den|"form of Pichu"
+LAST|Aen|"Spiky-eared Pichu"
+LAST|P31|Q56707539|S854|"https://pokeapi.co/api/v2/pokemon-form/pichu-spiky-eared/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P361|Q2070694|S854|"https://pokeapi.co/api/v2/pokemon-form/pichu-spiky-eared/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P4584|Q27118795|S854|"https://pokeapi.co/api/v2/pokemon-form/pichu-spiky-eared/"|S813|+2026-10-20T00:00:00Z/11
+CREATE
+LAST|Len|"Genesect Douse Drive"
+LAST|Lde|"Genesect Aquamodul"
+LAST|Ade|"Genesect (Aquamodul)"
+LAST|Lfr|"Genesect Aqua"
+LAST|Den|"form of Genesect"
+LAST|Aen|"Douse Genesect"
+LAST|P31|Q56707539|S854|"https://pokeapi.co/api/v2/pokemon-form/genesect-douse/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P361|Q2699291|S854|"https://pokeapi.co/api/v2/pokemon-form/genesect-douse/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P4584|Q27118381|S854|"https://pokeapi.co/api/v2/pokemon-form/genesect-douse/"|S813|+2026-10-20T00:00:00Z/11
+CREATE
+LAST|Len|"Genesect Shock Drive"
+LAST|Lde|"Genesect Blitzmodul"
+LAST|Ade|"Genesect (Blitzmodul)"
+LAST|Lfr|"Genesect Choc"
+LAST|Den|"form of Genesect"
+LAST|Aen|"Shock Genesect"
+LAST|P31|Q56707539|S854|"https://pokeapi.co/api/v2/pokemon-form/genesect-shock/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P361|Q2699291|S854|"https://pokeapi.co/api/v2/pokemon-form/genesect-shock/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P4584|Q27118381|S854|"https://pokeapi.co/api/v2/pokemon-form/genesect-shock/"|S813|+2026-10-20T00:00:00Z/11
+CREATE
+LAST|Len|"Genesect Burn Drive"
+LAST|Lde|"Genesect Flammenmodul"
+LAST|Ade|"Genesect (Flammenmodul)"
+LAST|Lfr|"Genesect Pyro"
+LAST|Den|"form of Genesect"
+LAST|Aen|"Burn Genesect"
+LAST|P31|Q56707539|S854|"https://pokeapi.co/api/v2/pokemon-form/genesect-burn/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P361|Q2699291|S854|"https://pokeapi.co/api/v2/pokemon-form/genesect-burn/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P4584|Q27118381|S854|"https://pokeapi.co/api/v2/pokemon-form/genesect-burn/"|S813|+2026-10-20T00:00:00Z/11
+CREATE
+LAST|Len|"Genesect Chill Drive"
+LAST|Lde|"Genesect Gefriermodul"
+LAST|Ade|"Genesect (Gefriermodul)"
+LAST|Lfr|"Genesect Cryo"
+LAST|Den|"form of Genesect"
+LAST|Aen|"Chill Genesect"
+LAST|P31|Q56707539|S854|"https://pokeapi.co/api/v2/pokemon-form/genesect-chill/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P361|Q2699291|S854|"https://pokeapi.co/api/v2/pokemon-form/genesect-chill/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P4584|Q27118381|S854|"https://pokeapi.co/api/v2/pokemon-form/genesect-chill/"|S813|+2026-10-20T00:00:00Z/11
+CREATE
+LAST|Len|"Arceus Fairy Type"
+LAST|Lde|"Arceus Fee"
+LAST|Ade|"Arceus (Fee)"
+LAST|Lfr|"Arceus Fée"
+LAST|Den|"form of Arceus"
+LAST|Aen|"Fairy Arceus"
+LAST|P31|Q56707539|S854|"https://pokeapi.co/api/v2/pokemon-form/arceus-fairy/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P361|Q1334381|S854|"https://pokeapi.co/api/v2/pokemon-form/arceus-fairy/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P4584|Q27065429|S854|"https://pokeapi.co/api/v2/pokemon-form/arceus-fairy/"|S813|+2026-10-20T00:00:00Z/11
+CREATE
+LAST|Len|"Vivillon Icy Snow Pattern"
+LAST|Lde|"Vivillon Frostmuster"
+LAST|Ade|"Vivillon (Frost)"
+LAST|Lfr|"Prismillon Blizzard"
+LAST|Den|"form of Vivillon"
+LAST|Aen|"Icy Snow Vivillon"
+LAST|P31|Q56707539|S854|"https://pokeapi.co/api/v2/pokemon-form/vivillon-icy-snow/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P361|Q13580505|S854|"https://pokeapi.co/api/v2/pokemon-form/vivillon-icy-snow/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P4584|Q27065429|S854|"https://pokeapi.co/api/v2/pokemon-form/vivillon-icy-snow/"|S813|+2026-10-20T00:00:00Z/11
+CREATE
+LAST|Len|"Vivillon Polar Pattern"
+LAST|Lde|"Vivillon Schneefeldmuster"
+LAST|Ade|"Vivillon (Schnee)"
+LAST|Lfr|"Prismillon Banquise"
+LAST|Den|"form of Vivillon"
+LAST|Aen|"Polar Vivillon"
+LAST|P31|Q56707539|S854|"https://pokeapi.co/api/v2/pokemon-form/vivillon-polar/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P361|Q13580505|S854|"https://pokeapi.co/api/v2/pokemon-form/vivillon-polar/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P4584|Q27065429|S854|"https://pokeapi.co/api/v2/pokemon-form/vivillon-polar/"|S813|+2026-10-20T00:00:00Z/11
+CREATE
+LAST|Len|"Vivillon Tundra Pattern"
+LAST|Lde|"Vivillon Flockenmuster"
+LAST|Ade|"Vivillon (Flocken)"
+LAST|Lfr|"Prismillon Glace"
+LAST|Den|"form of Vivillon"
+LAST|Aen|"Tundra Vivillon"
+LAST|P31|Q56707539|S854|"https://pokeapi.co/api/v2/pokemon-form/vivillon-tundra/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P361|Q13580505|S854|"https://pokeapi.co/api/v2/pokemon-form/vivillon-tundra/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P4584|Q27065429|S854|"https://pokeapi.co/api/v2/pokemon-form/vivillon-tundra/"|S813|+2026-10-20T00:00:00Z/11
+CREATE
+LAST|Len|"Vivillon Continental Pattern"
+LAST|Lde|"Vivillon Kontinentalmuster"
+LAST|Ade|"Vivillon (Kontinental)"
+LAST|Lfr|"Prismillon Continent"
+LAST|Den|"form of Vivillon"
+LAST|Aen|"Continental Vivillon"
+LAST|P31|Q56707539|S854|"https://pokeapi.co/api/v2/pokemon-form/vivillon-continental/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P361|Q13580505|S854|"https://pokeapi.co/api/v2/pokemon-form/vivillon-continental/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P4584|Q27065429|S854|"https://pokeapi.co/api/v2/pokemon-form/vivillon-continental/"|S813|+2026-10-20T00:00:00Z/11

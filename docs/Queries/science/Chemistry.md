@@ -61,6 +61,8 @@ SELECT DISTINCT ?item ?itemLabel WHERE {
 | :---- | ----: | :---- |
 | `2026-10-09_elements-labels.txt` | 13 | the seven labels above, named as the language's Wikipedia article; the placeholders and the old spelling kept as aliases, *zirkoon* not (it names another thing) |
 
+**Second pass (2026-10-20):** `elements.mjs` again (`_data/elements-run2.txt`): 118, no gaps, no invisible characters or disambiguators; the batched labels hold. Label and article title now differ on 81 (88 before), 48 of them in Tagalog. Tagalog is the one open point and needs a source, not a judgement: Researched (2026-10-20, settled; `_data/Prompts/done/Elements_Tagalog_Names.md`, Gemini): there is no official Filipino list of element names (the KWF only sets spelling rules), and Philippine schools teach chemistry in English. The names Gemini then gave are derived from spelling rules, not quoted from a source (*luryo* for curium, *ruterpodyo*), so they can't back a label. The `tl` labels stay as they are until a Tagalog speaker or a printed source settles them. No schema proposal: the element symbol (P246) would be a name form, but not one anyone draws or guesses in skribbl.
+
 **Rating:** still perfect for membership; the names were 7 labels short of clean (batched), Tagalog is the one weak language.
 
 ## [to Navigation](#navigation)

@@ -1,0 +1,101 @@
+Pokémon: the cosmetic forms (7/18)
+CREATE
+LAST|Len|"Vivillon Sun Pattern"
+LAST|Lde|"Vivillon Sonnenmuster"
+LAST|Ade|"Vivillon (Sonne)"
+LAST|Lfr|"Prismillon Zénith"
+LAST|Den|"form of Vivillon"
+LAST|Aen|"Sun Vivillon"
+LAST|P31|Q56707539|S854|"https://pokeapi.co/api/v2/pokemon-form/vivillon-sun/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P361|Q13580505|S854|"https://pokeapi.co/api/v2/pokemon-form/vivillon-sun/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P4584|Q27065429|S854|"https://pokeapi.co/api/v2/pokemon-form/vivillon-sun/"|S813|+2026-10-20T00:00:00Z/11
+CREATE
+LAST|Len|"Vivillon Ocean Pattern"
+LAST|Lde|"Vivillon Ozeanmuster"
+LAST|Ade|"Vivillon (Ozean)"
+LAST|Lfr|"Prismillon Soleil Levant"
+LAST|Den|"form of Vivillon"
+LAST|Aen|"Ocean Vivillon"
+LAST|P31|Q56707539|S854|"https://pokeapi.co/api/v2/pokemon-form/vivillon-ocean/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P361|Q13580505|S854|"https://pokeapi.co/api/v2/pokemon-form/vivillon-ocean/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P4584|Q27065429|S854|"https://pokeapi.co/api/v2/pokemon-form/vivillon-ocean/"|S813|+2026-10-20T00:00:00Z/11
+CREATE
+LAST|Len|"Vivillon Jungle Pattern"
+LAST|Lde|"Vivillon Dschungelmuster"
+LAST|Ade|"Vivillon (Dschungel)"
+LAST|Lfr|"Prismillon Jungle"
+LAST|Den|"form of Vivillon"
+LAST|Aen|"Jungle Vivillon"
+LAST|P31|Q56707539|S854|"https://pokeapi.co/api/v2/pokemon-form/vivillon-jungle/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P361|Q13580505|S854|"https://pokeapi.co/api/v2/pokemon-form/vivillon-jungle/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P4584|Q27065429|S854|"https://pokeapi.co/api/v2/pokemon-form/vivillon-jungle/"|S813|+2026-10-20T00:00:00Z/11
+CREATE
+LAST|Len|"Flabébé Yellow Flower"
+LAST|Lde|"Flabébé Gelbblütler"
+LAST|Ade|"Flabébé (Gelb)"
+LAST|Lfr|"Flabébé Jaune"
+LAST|Den|"form of Flabébé"
+LAST|Aen|"Yellow Flabébé"
+LAST|P31|Q56707539|S854|"https://pokeapi.co/api/v2/pokemon-form/flabebe-yellow/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P361|Q16556244|S854|"https://pokeapi.co/api/v2/pokemon-form/flabebe-yellow/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P4584|Q27065429|S854|"https://pokeapi.co/api/v2/pokemon-form/flabebe-yellow/"|S813|+2026-10-20T00:00:00Z/11
+CREATE
+LAST|Len|"Flabébé Orange Flower"
+LAST|Lde|"Flabébé Orangeblütler"
+LAST|Ade|"Flabébé (Orange)"
+LAST|Lfr|"Flabébé Orange"
+LAST|Den|"form of Flabébé"
+LAST|Aen|"Orange Flabébé"
+LAST|P31|Q56707539|S854|"https://pokeapi.co/api/v2/pokemon-form/flabebe-orange/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P361|Q16556244|S854|"https://pokeapi.co/api/v2/pokemon-form/flabebe-orange/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P4584|Q27065429|S854|"https://pokeapi.co/api/v2/pokemon-form/flabebe-orange/"|S813|+2026-10-20T00:00:00Z/11
+CREATE
+LAST|Len|"Flabébé Blue Flower"
+LAST|Lde|"Flabébé Blaublütler"
+LAST|Ade|"Flabébé (Blau)"
+LAST|Lfr|"Flabébé Bleu"
+LAST|Den|"form of Flabébé"
+LAST|Aen|"Blue Flabébé"
+LAST|P31|Q56707539|S854|"https://pokeapi.co/api/v2/pokemon-form/flabebe-blue/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P361|Q16556244|S854|"https://pokeapi.co/api/v2/pokemon-form/flabebe-blue/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P4584|Q27065429|S854|"https://pokeapi.co/api/v2/pokemon-form/flabebe-blue/"|S813|+2026-10-20T00:00:00Z/11
+CREATE
+LAST|Len|"Flabébé White Flower"
+LAST|Lde|"Flabébé Weißblütler"
+LAST|Ade|"Flabébé (Weiß)"
+LAST|Lfr|"Flabébé Blanc"
+LAST|Den|"form of Flabébé"
+LAST|Aen|"White Flabébé"
+LAST|P31|Q56707539|S854|"https://pokeapi.co/api/v2/pokemon-form/flabebe-white/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P361|Q16556244|S854|"https://pokeapi.co/api/v2/pokemon-form/flabebe-white/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P4584|Q27065429|S854|"https://pokeapi.co/api/v2/pokemon-form/flabebe-white/"|S813|+2026-10-20T00:00:00Z/11
+CREATE
+LAST|Len|"Floette Yellow Flower"
+LAST|Lde|"Floette Gelbblütler"
+LAST|Ade|"Floette (Gelb)"
+LAST|Lfr|"Floette Jaune"
+LAST|Den|"form of Floette"
+LAST|Aen|"Yellow Floette"
+LAST|P31|Q56707539|S854|"https://pokeapi.co/api/v2/pokemon-form/floette-yellow/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P361|Q16556294|S854|"https://pokeapi.co/api/v2/pokemon-form/floette-yellow/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P4584|Q27065429|S854|"https://pokeapi.co/api/v2/pokemon-form/floette-yellow/"|S813|+2026-10-20T00:00:00Z/11
+CREATE
+LAST|Len|"Floette Orange Flower"
+LAST|Lde|"Floette Orangeblütler"
+LAST|Ade|"Floette (Orange)"
+LAST|Lfr|"Floette Orange"
+LAST|Den|"form of Floette"
+LAST|Aen|"Orange Floette"
+LAST|P31|Q56707539|S854|"https://pokeapi.co/api/v2/pokemon-form/floette-orange/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P361|Q16556294|S854|"https://pokeapi.co/api/v2/pokemon-form/floette-orange/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P4584|Q27065429|S854|"https://pokeapi.co/api/v2/pokemon-form/floette-orange/"|S813|+2026-10-20T00:00:00Z/11
+CREATE
+LAST|Len|"Floette Blue Flower"
+LAST|Lde|"Floette Blaublütler"
+LAST|Ade|"Floette (Blau)"
+LAST|Lfr|"Floette Bleu"
+LAST|Den|"form of Floette"
+LAST|Aen|"Blue Floette"
+LAST|P31|Q56707539|S854|"https://pokeapi.co/api/v2/pokemon-form/floette-blue/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P361|Q16556294|S854|"https://pokeapi.co/api/v2/pokemon-form/floette-blue/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P4584|Q27065429|S854|"https://pokeapi.co/api/v2/pokemon-form/floette-blue/"|S813|+2026-10-20T00:00:00Z/11

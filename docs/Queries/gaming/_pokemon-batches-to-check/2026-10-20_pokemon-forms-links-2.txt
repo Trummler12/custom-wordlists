@@ -1,0 +1,8 @@
+Pokémon: forms linked to their species (2/2)
+Q141421894|P361|Q116698545|S854|"https://zukan.pokemon.co.jp/detail/0931"|S813|+2026-10-20T00:00:00Z/11
+Q141421895|P361|Q116698545|S854|"https://zukan.pokemon.co.jp/detail/0931-1"|S813|+2026-10-20T00:00:00Z/11
+Q141421898|P361|Q115117784|S854|"https://zukan.pokemon.co.jp/detail/0999"|S813|+2026-10-20T00:00:00Z/11
+Q55737009|P361|Q27915721|S854|"https://zukan.pokemon.co.jp/detail/0800-1"|S813|+2026-10-20T00:00:00Z/11
+Q55737141|P361|Q27915721|S854|"https://zukan.pokemon.co.jp/detail/0800-2"|S813|+2026-10-20T00:00:00Z/11
+Q99662864|P361|Q3702793|S854|"https://zukan.pokemon.co.jp/detail/0555-3"|S813|+2026-10-20T00:00:00Z/11
+Q132714791|P361|Q2469793|S854|"https://zukan.pokemon.co.jp/detail/0128-1"|S813|+2026-10-20T00:00:00Z/11

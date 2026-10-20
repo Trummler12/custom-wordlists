@@ -1,0 +1,96 @@
+Pokémon: the officially named default forms (1/6)
+CREATE
+LAST|Len|"Deoxys Normal Forme"
+LAST|Lde|"Deoxys Normalform"
+LAST|Lfr|"Deoxys Normal"
+LAST|Den|"form of Deoxys"
+LAST|Aen|"Normal Deoxys"
+LAST|P31|Q56707539|S854|"https://zukan.pokemon.co.jp/detail/0386"|S813|+2026-10-20T00:00:00Z/11
+LAST|P361|Q1149851|S854|"https://zukan.pokemon.co.jp/detail/0386"|S813|+2026-10-20T00:00:00Z/11
+LAST|P4584|Q27118889|S854|"https://pokeapi.co/api/v2/pokemon-species/386/"|S813|+2026-10-20T00:00:00Z/11
+CREATE
+LAST|Len|"Burmy Plant Cloak"
+LAST|Lde|"Burmy Pflanzenumhang"
+LAST|Ade|"Burmy (Pflanze)"
+LAST|Lfr|"Cheniti Plante"
+LAST|Den|"form of Burmy"
+LAST|Aen|"Plant Burmy"
+LAST|P31|Q56707539|S854|"https://zukan.pokemon.co.jp/detail/0412"|S813|+2026-10-20T00:00:00Z/11
+LAST|P361|Q2720866|S854|"https://zukan.pokemon.co.jp/detail/0412"|S813|+2026-10-20T00:00:00Z/11
+LAST|P4584|Q27118795|S854|"https://pokeapi.co/api/v2/pokemon-species/412/"|S813|+2026-10-20T00:00:00Z/11
+CREATE
+LAST|Len|"Cherrim Overcast Form"
+LAST|Lde|"Kinoso Wolkenform"
+LAST|Ade|"Kinoso (Wolken)"
+LAST|Lfr|"Ceriflor Couvert"
+LAST|Den|"form of Cherrim"
+LAST|Aen|"Overcast Cherrim"
+LAST|P31|Q56707539|S854|"https://zukan.pokemon.co.jp/detail/0421"|S813|+2026-10-20T00:00:00Z/11
+LAST|P361|Q2517453|S854|"https://zukan.pokemon.co.jp/detail/0421"|S813|+2026-10-20T00:00:00Z/11
+LAST|P4584|Q27118795|S854|"https://pokeapi.co/api/v2/pokemon-species/421/"|S813|+2026-10-20T00:00:00Z/11
+CREATE
+LAST|Len|"Shellos West Sea"
+LAST|Lde|"Westliches Schalellos"
+LAST|Lfr|"Sancoki Occident"
+LAST|Den|"form of Shellos"
+LAST|Aen|"West Shellos"
+LAST|P31|Q56707539|S854|"https://zukan.pokemon.co.jp/detail/0422"|S813|+2026-10-20T00:00:00Z/11
+LAST|P361|Q2573482|S854|"https://zukan.pokemon.co.jp/detail/0422"|S813|+2026-10-20T00:00:00Z/11
+LAST|P4584|Q27118795|S854|"https://pokeapi.co/api/v2/pokemon-species/422/"|S813|+2026-10-20T00:00:00Z/11
+CREATE
+LAST|Len|"Gastrodon West Sea"
+LAST|Lde|"Westliches Gastrodon"
+LAST|Lfr|"Tritosor Occident"
+LAST|Den|"form of Gastrodon"
+LAST|Aen|"West Gastrodon"
+LAST|P31|Q56707539|S854|"https://zukan.pokemon.co.jp/detail/0423"|S813|+2026-10-20T00:00:00Z/11
+LAST|P361|Q2311762|S854|"https://zukan.pokemon.co.jp/detail/0423"|S813|+2026-10-20T00:00:00Z/11
+LAST|P4584|Q27118795|S854|"https://pokeapi.co/api/v2/pokemon-species/423/"|S813|+2026-10-20T00:00:00Z/11
+CREATE
+LAST|Len|"Darmanitan Standard Mode"
+LAST|Lde|"Flampivian Normalmodus"
+LAST|Lfr|"Darumacho Normal"
+LAST|Den|"form of Darmanitan"
+LAST|Aen|"Standard Darmanitan"
+LAST|P31|Q56707539|S854|"https://zukan.pokemon.co.jp/detail/0555"|S813|+2026-10-20T00:00:00Z/11
+LAST|P361|Q3702793|S854|"https://zukan.pokemon.co.jp/detail/0555"|S813|+2026-10-20T00:00:00Z/11
+LAST|P4584|Q27118381|S854|"https://pokeapi.co/api/v2/pokemon-species/555/"|S813|+2026-10-20T00:00:00Z/11
+CREATE
+LAST|Len|"Deerling Spring Form"
+LAST|Lde|"Sesokitz Frühlingsform"
+LAST|Ade|"Sesokitz (Frühling)"
+LAST|Lfr|"Vivaldaim Printemps"
+LAST|Den|"form of Deerling"
+LAST|Aen|"Spring Deerling"
+LAST|P31|Q56707539|S854|"https://zukan.pokemon.co.jp/detail/0585"|S813|+2026-10-20T00:00:00Z/11
+LAST|P361|Q3704689|S854|"https://zukan.pokemon.co.jp/detail/0585"|S813|+2026-10-20T00:00:00Z/11
+LAST|P4584|Q27118381|S854|"https://pokeapi.co/api/v2/pokemon-species/585/"|S813|+2026-10-20T00:00:00Z/11
+CREATE
+LAST|Len|"Sawsbuck Spring Form"
+LAST|Lde|"Kronjuwild Frühlingsform"
+LAST|Ade|"Kronjuwild (Frühling)"
+LAST|Lfr|"Haydaim Printemps"
+LAST|Den|"form of Sawsbuck"
+LAST|Aen|"Spring Sawsbuck"
+LAST|P31|Q56707539|S854|"https://zukan.pokemon.co.jp/detail/0586"|S813|+2026-10-20T00:00:00Z/11
+LAST|P361|Q3951175|S854|"https://zukan.pokemon.co.jp/detail/0586"|S813|+2026-10-20T00:00:00Z/11
+LAST|P4584|Q27118381|S854|"https://pokeapi.co/api/v2/pokemon-species/586/"|S813|+2026-10-20T00:00:00Z/11
+CREATE
+LAST|Len|"Tornadus Incarnate Forme"
+LAST|Lde|"Boreos Inkarnationsform"
+LAST|Lfr|"Boréas Avatar"
+LAST|Den|"form of Tornadus"
+LAST|Aen|"Incarnate Tornadus"
+LAST|P31|Q56707539|S854|"https://zukan.pokemon.co.jp/detail/0641"|S813|+2026-10-20T00:00:00Z/11
+LAST|P361|Q3993881|S854|"https://zukan.pokemon.co.jp/detail/0641"|S813|+2026-10-20T00:00:00Z/11
+LAST|P4584|Q27118381|S854|"https://pokeapi.co/api/v2/pokemon-species/641/"|S813|+2026-10-20T00:00:00Z/11
+CREATE
+LAST|Len|"Tornadus Therian Forme"
+LAST|Lde|"Boreos Tiergeistform"
+LAST|Ade|"Boreos (Tiergeist)"
+LAST|Lfr|"Boréas Totémique"
+LAST|Den|"form of Tornadus"
+LAST|Aen|"Therian Tornadus"
+LAST|P31|Q56707539|S854|"https://zukan.pokemon.co.jp/detail/0641-1"|S813|+2026-10-20T00:00:00Z/11
+LAST|P361|Q3993881|S854|"https://zukan.pokemon.co.jp/detail/0641-1"|S813|+2026-10-20T00:00:00Z/11
+LAST|P4584|Q27118381|S854|"https://pokeapi.co/api/v2/pokemon-species/641/"|S813|+2026-10-20T00:00:00Z/11

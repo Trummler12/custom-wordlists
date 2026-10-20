@@ -1,0 +1,101 @@
+Pokémon: the cosmetic forms (9/18)
+CREATE
+LAST|Len|"Furfrou Dandy Trim"
+LAST|Lde|"Coiffwaff Kavaliersschnitt"
+LAST|Ade|"Coiffwaff (Kavalier)"
+LAST|Lfr|"Couafarel Monsieur"
+LAST|Den|"form of Furfrou"
+LAST|Aen|"Dandy Furfrou"
+LAST|P31|Q56707539|S854|"https://pokeapi.co/api/v2/pokemon-form/furfrou-dandy/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P361|Q16557928|S854|"https://pokeapi.co/api/v2/pokemon-form/furfrou-dandy/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P4584|Q27065429|S854|"https://pokeapi.co/api/v2/pokemon-form/furfrou-dandy/"|S813|+2026-10-20T00:00:00Z/11
+CREATE
+LAST|Len|"Furfrou La Reine Trim"
+LAST|Lde|"Coiffwaff Königinnenschnitt"
+LAST|Ade|"Coiffwaff (Königin)"
+LAST|Lfr|"Couafarel Reine"
+LAST|Den|"form of Furfrou"
+LAST|Aen|"La Reine Furfrou"
+LAST|P31|Q56707539|S854|"https://pokeapi.co/api/v2/pokemon-form/furfrou-la-reine/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P361|Q16557928|S854|"https://pokeapi.co/api/v2/pokemon-form/furfrou-la-reine/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P4584|Q27065429|S854|"https://pokeapi.co/api/v2/pokemon-form/furfrou-la-reine/"|S813|+2026-10-20T00:00:00Z/11
+CREATE
+LAST|Len|"Furfrou Kabuki Trim"
+LAST|Lde|"Coiffwaff Kabuki-Schnitt"
+LAST|Ade|"Coiffwaff (Kabuki)"
+LAST|Lfr|"Couafarel Kabuki"
+LAST|Den|"form of Furfrou"
+LAST|Aen|"Kabuki Furfrou"
+LAST|P31|Q56707539|S854|"https://pokeapi.co/api/v2/pokemon-form/furfrou-kabuki/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P361|Q16557928|S854|"https://pokeapi.co/api/v2/pokemon-form/furfrou-kabuki/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P4584|Q27065429|S854|"https://pokeapi.co/api/v2/pokemon-form/furfrou-kabuki/"|S813|+2026-10-20T00:00:00Z/11
+CREATE
+LAST|Len|"Furfrou Pharaoh Trim"
+LAST|Lde|"Coiffwaff Herrscherschnitt"
+LAST|Ade|"Coiffwaff (Herrscher)"
+LAST|Lfr|"Couafarel Pharaon"
+LAST|Den|"form of Furfrou"
+LAST|Aen|"Pharaoh Furfrou"
+LAST|P31|Q56707539|S854|"https://pokeapi.co/api/v2/pokemon-form/furfrou-pharaoh/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P361|Q16557928|S854|"https://pokeapi.co/api/v2/pokemon-form/furfrou-pharaoh/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P4584|Q27065429|S854|"https://pokeapi.co/api/v2/pokemon-form/furfrou-pharaoh/"|S813|+2026-10-20T00:00:00Z/11
+CREATE
+LAST|Len|"Pumpkaboo Small Size"
+LAST|Lde|"Irrbis Größe S"
+LAST|Ade|"Irrbis (S)"
+LAST|Lfr|"Pitrouille Mini"
+LAST|Den|"form of Pumpkaboo"
+LAST|Aen|"Small Pumpkaboo"
+LAST|P31|Q56707539|S854|"https://pokeapi.co/api/v2/pokemon-form/pumpkaboo-small/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P361|Q16592958|S854|"https://pokeapi.co/api/v2/pokemon-form/pumpkaboo-small/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P4584|Q27065429|S854|"https://pokeapi.co/api/v2/pokemon-form/pumpkaboo-small/"|S813|+2026-10-20T00:00:00Z/11
+CREATE
+LAST|Len|"Pumpkaboo Large Size"
+LAST|Lde|"Irrbis Größe L"
+LAST|Ade|"Irrbis (L)"
+LAST|Lfr|"Pitrouille Maxi"
+LAST|Den|"form of Pumpkaboo"
+LAST|Aen|"Large Pumpkaboo"
+LAST|P31|Q56707539|S854|"https://pokeapi.co/api/v2/pokemon-form/pumpkaboo-large/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P361|Q16592958|S854|"https://pokeapi.co/api/v2/pokemon-form/pumpkaboo-large/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P4584|Q27065429|S854|"https://pokeapi.co/api/v2/pokemon-form/pumpkaboo-large/"|S813|+2026-10-20T00:00:00Z/11
+CREATE
+LAST|Len|"Pumpkaboo Super Size"
+LAST|Lde|"Irrbis Größe XL"
+LAST|Ade|"Irrbis (XL)"
+LAST|Lfr|"Pitrouille Ultra"
+LAST|Den|"form of Pumpkaboo"
+LAST|Aen|"Super Pumpkaboo"
+LAST|P31|Q56707539|S854|"https://pokeapi.co/api/v2/pokemon-form/pumpkaboo-super/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P361|Q16592958|S854|"https://pokeapi.co/api/v2/pokemon-form/pumpkaboo-super/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P4584|Q27065429|S854|"https://pokeapi.co/api/v2/pokemon-form/pumpkaboo-super/"|S813|+2026-10-20T00:00:00Z/11
+CREATE
+LAST|Len|"Gourgeist Small Size"
+LAST|Lde|"Pumpdjinn Größe S"
+LAST|Ade|"Pumpdjinn (S)"
+LAST|Lfr|"Banshitrouye Mini"
+LAST|Den|"form of Gourgeist"
+LAST|Aen|"Small Gourgeist"
+LAST|P31|Q56707539|S854|"https://pokeapi.co/api/v2/pokemon-form/gourgeist-small/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P361|Q16561499|S854|"https://pokeapi.co/api/v2/pokemon-form/gourgeist-small/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P4584|Q27065429|S854|"https://pokeapi.co/api/v2/pokemon-form/gourgeist-small/"|S813|+2026-10-20T00:00:00Z/11
+CREATE
+LAST|Len|"Gourgeist Large Size"
+LAST|Lde|"Pumpdjinn Größe L"
+LAST|Ade|"Pumpdjinn (L)"
+LAST|Lfr|"Banshitrouye Maxi"
+LAST|Den|"form of Gourgeist"
+LAST|Aen|"Large Gourgeist"
+LAST|P31|Q56707539|S854|"https://pokeapi.co/api/v2/pokemon-form/gourgeist-large/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P361|Q16561499|S854|"https://pokeapi.co/api/v2/pokemon-form/gourgeist-large/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P4584|Q27065429|S854|"https://pokeapi.co/api/v2/pokemon-form/gourgeist-large/"|S813|+2026-10-20T00:00:00Z/11
+CREATE
+LAST|Len|"Gourgeist Super Size"
+LAST|Lde|"Pumpdjinn Größe XL"
+LAST|Ade|"Pumpdjinn (XL)"
+LAST|Lfr|"Banshitrouye Ultra"
+LAST|Den|"form of Gourgeist"
+LAST|Aen|"Super Gourgeist"
+LAST|P31|Q56707539|S854|"https://pokeapi.co/api/v2/pokemon-form/gourgeist-super/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P361|Q16561499|S854|"https://pokeapi.co/api/v2/pokemon-form/gourgeist-super/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P4584|Q27065429|S854|"https://pokeapi.co/api/v2/pokemon-form/gourgeist-super/"|S813|+2026-10-20T00:00:00Z/11

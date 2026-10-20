@@ -1,0 +1,29 @@
+Pokémon: the officially named default forms (6/6)
+CREATE
+LAST|Len|"Arceus Normal Type"
+LAST|Lde|"Arceus Normal"
+LAST|Lfr|"Arceus Normal"
+LAST|Den|"form of Arceus"
+LAST|Aen|"Normal Arceus"
+LAST|P31|Q56707539|S854|"https://pokeapi.co/api/v2/pokemon-form/arceus-normal/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P361|Q1334381|S854|"https://pokeapi.co/api/v2/pokemon-form/arceus-normal/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P4584|Q27118795|S854|"https://pokeapi.co/api/v2/pokemon-species/493/"|S813|+2026-10-20T00:00:00Z/11
+CREATE
+LAST|Len|"Xerneas Neutral Mode"
+LAST|Lde|"Xerneas Ruhe-Modus"
+LAST|Ade|"Xerneas (Ruhe)"
+LAST|Lfr|"Xerneas Paisible"
+LAST|Den|"form of Xerneas"
+LAST|Aen|"Neutral Xerneas"
+LAST|P31|Q56707539|S854|"https://pokeapi.co/api/v2/pokemon-form/xerneas-neutral/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P361|Q12524951|S854|"https://pokeapi.co/api/v2/pokemon-form/xerneas-neutral/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P4584|Q27065429|S854|"https://pokeapi.co/api/v2/pokemon-species/716/"|S813|+2026-10-20T00:00:00Z/11
+CREATE
+LAST|Len|"Alcremie Vanilla Cream Strawberry Sweet"
+LAST|Lde|"Pokusan Vanille-Creme Zucker-Erdbeere"
+LAST|Lfr|"Charmilly Lait Vanille Fraise en Sucre"
+LAST|Den|"form of Alcremie"
+LAST|Aen|"Vanilla Cream Strawberry Sweet Alcremie"
+LAST|P31|Q56707539|S854|"https://pokeapi.co/api/v2/pokemon-form/alcremie-vanilla-cream-strawberry-sweet/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P361|Q66309869|S854|"https://pokeapi.co/api/v2/pokemon-form/alcremie-vanilla-cream-strawberry-sweet/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P4584|Q61951126|S854|"https://pokeapi.co/api/v2/pokemon-species/869/"|S813|+2026-10-20T00:00:00Z/11

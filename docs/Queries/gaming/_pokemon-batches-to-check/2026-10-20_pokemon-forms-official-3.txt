@@ -1,0 +1,106 @@
+Pokémon: forms listed in the official Pokédex that Wikidata lacks (3/4)
+CREATE
+LAST|Len|"Sinistea Antique Form"
+LAST|Lde|"Fatalitee Originalform"
+LAST|Ade|"Fatalitee (Original)"
+LAST|Lfr|"Théffroi Authentique"
+LAST|Den|"form of Sinistea"
+LAST|Aen|"Antique Sinistea"
+LAST|P31|Q56707539|S854|"https://zukan.pokemon.co.jp/detail/0854-1"|S813|+2026-10-20T00:00:00Z/11
+LAST|P361|Q79408088|S854|"https://zukan.pokemon.co.jp/detail/0854-1"|S813|+2026-10-20T00:00:00Z/11
+LAST|P4584|Q61951126|S854|"https://pokeapi.co/api/v2/pokemon-form/sinistea-antique/"|S813|+2026-10-20T00:00:00Z/11
+CREATE
+LAST|Len|"Polteageist Antique Form"
+LAST|Lde|"Mortipot Originalform"
+LAST|Ade|"Mortipot (Original)"
+LAST|Lfr|"Polthégeist Authentique"
+LAST|Den|"form of Polteageist"
+LAST|Aen|"Antique Polteageist"
+LAST|P31|Q56707539|S854|"https://zukan.pokemon.co.jp/detail/0855-1"|S813|+2026-10-20T00:00:00Z/11
+LAST|P361|Q68409329|S854|"https://zukan.pokemon.co.jp/detail/0855-1"|S813|+2026-10-20T00:00:00Z/11
+LAST|P4584|Q61951126|S854|"https://pokeapi.co/api/v2/pokemon-form/polteageist-antique/"|S813|+2026-10-20T00:00:00Z/11
+CREATE
+LAST|Len|"Eiscue Noice Face"
+LAST|Lde|"Kubuin Wohlfühlkopf"
+LAST|Ade|"Kubuin (Wohlfühlkopf)"
+LAST|Lfr|"Bekaglaçon Tête Dégel"
+LAST|Den|"form of Eiscue"
+LAST|Aen|"Noice Eiscue"
+LAST|P31|Q56707539|S854|"https://zukan.pokemon.co.jp/detail/0875-1"|S813|+2026-10-20T00:00:00Z/11
+LAST|P361|Q78548464|S854|"https://zukan.pokemon.co.jp/detail/0875-1"|S813|+2026-10-20T00:00:00Z/11
+LAST|P4584|Q61951126|S854|"https://pokeapi.co/api/v2/pokemon-form/eiscue-noice/"|S813|+2026-10-20T00:00:00Z/11
+CREATE
+LAST|Len|"Female Indeedee"
+LAST|Lde|"Servol ♀"
+LAST|Lfr|"Wimessir Femelle"
+LAST|Den|"form of Indeedee"
+LAST|P31|Q56707539|S854|"https://zukan.pokemon.co.jp/detail/0876-1"|S813|+2026-10-20T00:00:00Z/11
+LAST|P361|Q78548083|S854|"https://zukan.pokemon.co.jp/detail/0876-1"|S813|+2026-10-20T00:00:00Z/11
+LAST|P4584|Q61951126|S854|"https://pokeapi.co/api/v2/pokemon-form/indeedee-female/"|S813|+2026-10-20T00:00:00Z/11
+CREATE
+LAST|Len|"Morpeko Hangry Mode"
+LAST|Lde|"Morpeko Kohldampfmuster"
+LAST|Ade|"Morpeko (Kohldampf)"
+LAST|Lfr|"Morpeko Affamé"
+LAST|Den|"form of Morpeko"
+LAST|Aen|"Hangry Morpeko"
+LAST|P31|Q56707539|S854|"https://zukan.pokemon.co.jp/detail/0877-1"|S813|+2026-10-20T00:00:00Z/11
+LAST|P361|Q66316814|S854|"https://zukan.pokemon.co.jp/detail/0877-1"|S813|+2026-10-20T00:00:00Z/11
+LAST|P4584|Q61951126|S854|"https://pokeapi.co/api/v2/pokemon-form/morpeko-hangry/"|S813|+2026-10-20T00:00:00Z/11
+CREATE
+LAST|Len|"Urshifu Rapid Strike Style"
+LAST|Lde|"Wulaosu Fließender Stil"
+LAST|Ade|"Wulaosu (Fließend)"
+LAST|Lfr|"Shifours Style Mille Poings"
+LAST|Den|"form of Urshifu"
+LAST|Aen|"Rapid Strike Urshifu"
+LAST|P31|Q56707539|S854|"https://zukan.pokemon.co.jp/detail/0892-1"|S813|+2026-10-20T00:00:00Z/11
+LAST|P361|Q97224215|S854|"https://zukan.pokemon.co.jp/detail/0892-1"|S813|+2026-10-20T00:00:00Z/11
+LAST|P4584|Q61951126|S854|"https://pokeapi.co/api/v2/pokemon-form/urshifu-rapid-strike/"|S813|+2026-10-20T00:00:00Z/11
+CREATE
+LAST|Len|"Female Basculegion"
+LAST|Lde|"Salmagnis ♀"
+LAST|Lfr|"Paragruel Femelle"
+LAST|Den|"form of Basculegion"
+LAST|P31|Q56707539|S854|"https://zukan.pokemon.co.jp/detail/0902-1"|S813|+2026-10-20T00:00:00Z/11
+LAST|P361|Q108150859|S854|"https://zukan.pokemon.co.jp/detail/0902-1"|S813|+2026-10-20T00:00:00Z/11
+LAST|P4584|Q61951126|S854|"https://pokeapi.co/api/v2/pokemon-form/basculegion-female/"|S813|+2026-10-20T00:00:00Z/11
+CREATE
+LAST|Len|"Female Oinkologne"
+LAST|Lfr|"Fragroin Femelle"
+LAST|Den|"form of Oinkologne"
+LAST|P31|Q56707539|S854|"https://zukan.pokemon.co.jp/detail/0916-1"|S813|+2026-10-20T00:00:00Z/11
+LAST|P361|Q116698509|S854|"https://zukan.pokemon.co.jp/detail/0916-1"|S813|+2026-10-20T00:00:00Z/11
+LAST|P4584|Q111033398|S854|"https://pokeapi.co/api/v2/pokemon-form/oinkologne-female/"|S813|+2026-10-20T00:00:00Z/11
+CREATE
+LAST|Len|"Maushold Family of Four"
+LAST|Lfr|"Famignol Famille de Quatre"
+LAST|Den|"form of Maushold"
+LAST|Aen|"Maushold (Family of Four)"
+LAST|P31|Q56707539|S854|"https://zukan.pokemon.co.jp/detail/0925-1"|S813|+2026-10-20T00:00:00Z/11
+LAST|P361|Q116698531|S854|"https://zukan.pokemon.co.jp/detail/0925-1"|S813|+2026-10-20T00:00:00Z/11
+LAST|P4584|Q111033398|S854|"https://pokeapi.co/api/v2/pokemon-form/maushold-family-of-four/"|S813|+2026-10-20T00:00:00Z/11
+CREATE
+LAST|Len|"Palafin Hero Form"
+LAST|Lfr|"Superdofin Forme Super"
+LAST|Den|"form of Palafin"
+LAST|Aen|"Hero Form Palafin"
+LAST|P31|Q56707539|S854|"https://zukan.pokemon.co.jp/detail/0964-1"|S813|+2026-10-20T00:00:00Z/11
+LAST|P361|Q116698775|S854|"https://zukan.pokemon.co.jp/detail/0964-1"|S813|+2026-10-20T00:00:00Z/11
+LAST|P4584|Q111033398|S854|"https://pokeapi.co/api/v2/pokemon-form/palafin-hero/"|S813|+2026-10-20T00:00:00Z/11
+CREATE
+LAST|Len|"Tatsugiri Droopy Form"
+LAST|Lfr|"Nigirigon Forme Affalée"
+LAST|Den|"form of Tatsugiri"
+LAST|Aen|"Droopy Form Tatsugiri"
+LAST|P31|Q56707539|S854|"https://zukan.pokemon.co.jp/detail/0978-1"|S813|+2026-10-20T00:00:00Z/11
+LAST|P361|Q116699139|S854|"https://zukan.pokemon.co.jp/detail/0978-1"|S813|+2026-10-20T00:00:00Z/11
+LAST|P4584|Q111033398|S854|"https://pokeapi.co/api/v2/pokemon-form/tatsugiri-droopy/"|S813|+2026-10-20T00:00:00Z/11
+CREATE
+LAST|Len|"Tatsugiri Stretchy Form"
+LAST|Lfr|"Nigirigon Forme Raide"
+LAST|Den|"form of Tatsugiri"
+LAST|Aen|"Stretchy Form Tatsugiri"
+LAST|P31|Q56707539|S854|"https://zukan.pokemon.co.jp/detail/0978-2"|S813|+2026-10-20T00:00:00Z/11
+LAST|P361|Q116699139|S854|"https://zukan.pokemon.co.jp/detail/0978-2"|S813|+2026-10-20T00:00:00Z/11
+LAST|P4584|Q111033398|S854|"https://pokeapi.co/api/v2/pokemon-form/tatsugiri-stretchy/"|S813|+2026-10-20T00:00:00Z/11

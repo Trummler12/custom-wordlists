@@ -1,0 +1,100 @@
+Pokémon: the officially named default forms (3/6)
+CREATE
+LAST|Len|"Wishiwashi Solo Form"
+LAST|Lde|"Lusardin Einzelform"
+LAST|Lfr|"Froussardine Forme Solitaire"
+LAST|Den|"form of Wishiwashi"
+LAST|Aen|"Solo Wishiwashi"
+LAST|P31|Q56707539|S854|"https://zukan.pokemon.co.jp/detail/0746"|S813|+2026-10-20T00:00:00Z/11
+LAST|P361|Q26251296|S854|"https://zukan.pokemon.co.jp/detail/0746"|S813|+2026-10-20T00:00:00Z/11
+LAST|P4584|Q26945334|S854|"https://pokeapi.co/api/v2/pokemon-species/746/"|S813|+2026-10-20T00:00:00Z/11
+CREATE
+LAST|Len|"Silvally Type: Normal"
+LAST|Lde|"Amigento Typ: Normal"
+LAST|Lfr|"Silvallié Type : Normal"
+LAST|Den|"form of Silvally"
+LAST|P31|Q56707539|S854|"https://zukan.pokemon.co.jp/detail/0773"|S813|+2026-10-20T00:00:00Z/11
+LAST|P361|Q27299994|S854|"https://zukan.pokemon.co.jp/detail/0773"|S813|+2026-10-20T00:00:00Z/11
+LAST|P4584|Q26945334|S854|"https://pokeapi.co/api/v2/pokemon-species/773/"|S813|+2026-10-20T00:00:00Z/11
+CREATE
+LAST|Len|"Minior Meteor Form"
+LAST|Lde|"Meteno Meteorform"
+LAST|Lfr|"Météno Forme Météore"
+LAST|Den|"form of Minior"
+LAST|P31|Q56707539|S854|"https://zukan.pokemon.co.jp/detail/0774"|S813|+2026-10-20T00:00:00Z/11
+LAST|P361|Q26206540|S854|"https://zukan.pokemon.co.jp/detail/0774"|S813|+2026-10-20T00:00:00Z/11
+LAST|P4584|Q26945334|S854|"https://pokeapi.co/api/v2/pokemon-species/774/"|S813|+2026-10-20T00:00:00Z/11
+CREATE
+LAST|Len|"Mimikyu Disguised Form"
+LAST|Lde|"Mimigma Verkleidete Form"
+LAST|Ade|"Mimigma (Getarnt)"
+LAST|Lfr|"Mimiqui Déguisé"
+LAST|Den|"form of Mimikyu"
+LAST|Aen|"Disguised Mimikyu"
+LAST|P31|Q56707539|S854|"https://zukan.pokemon.co.jp/detail/0778"|S813|+2026-10-20T00:00:00Z/11
+LAST|P361|Q25918172|S854|"https://zukan.pokemon.co.jp/detail/0778"|S813|+2026-10-20T00:00:00Z/11
+LAST|P4584|Q26945334|S854|"https://pokeapi.co/api/v2/pokemon-species/778/"|S813|+2026-10-20T00:00:00Z/11
+CREATE
+LAST|Len|"Sinistea Phony Form"
+LAST|Lde|"Fatalitee Fälschungsform"
+LAST|Ade|"Fatalitee (Fälschung)"
+LAST|Lfr|"Théffroi Contrefaçon"
+LAST|Den|"form of Sinistea"
+LAST|Aen|"Phony Sinistea"
+LAST|P31|Q56707539|S854|"https://zukan.pokemon.co.jp/detail/0854"|S813|+2026-10-20T00:00:00Z/11
+LAST|P361|Q79408088|S854|"https://zukan.pokemon.co.jp/detail/0854"|S813|+2026-10-20T00:00:00Z/11
+LAST|P4584|Q61951126|S854|"https://pokeapi.co/api/v2/pokemon-species/854/"|S813|+2026-10-20T00:00:00Z/11
+CREATE
+LAST|Len|"Polteageist Phony Form"
+LAST|Lde|"Mortipot Fälschungsform"
+LAST|Ade|"Mortipot (Fälschung)"
+LAST|Lfr|"Polthégeist Contrefaçon"
+LAST|Den|"form of Polteageist"
+LAST|Aen|"Phony Polteageist"
+LAST|P31|Q56707539|S854|"https://zukan.pokemon.co.jp/detail/0855"|S813|+2026-10-20T00:00:00Z/11
+LAST|P361|Q68409329|S854|"https://zukan.pokemon.co.jp/detail/0855"|S813|+2026-10-20T00:00:00Z/11
+LAST|P4584|Q61951126|S854|"https://pokeapi.co/api/v2/pokemon-species/855/"|S813|+2026-10-20T00:00:00Z/11
+CREATE
+LAST|Len|"Eiscue Ice Face"
+LAST|Lde|"Kubuin Tiefkühlkopf"
+LAST|Ade|"Kubuin (Tiefkühlkopf)"
+LAST|Lfr|"Bekaglaçon Tête de Gel"
+LAST|Den|"form of Eiscue"
+LAST|Aen|"Ice Eiscue"
+LAST|P31|Q56707539|S854|"https://zukan.pokemon.co.jp/detail/0875"|S813|+2026-10-20T00:00:00Z/11
+LAST|P361|Q78548464|S854|"https://zukan.pokemon.co.jp/detail/0875"|S813|+2026-10-20T00:00:00Z/11
+LAST|P4584|Q61951126|S854|"https://pokeapi.co/api/v2/pokemon-species/875/"|S813|+2026-10-20T00:00:00Z/11
+CREATE
+LAST|Len|"Male Indeedee"
+LAST|Lde|"Servol ♂"
+LAST|Lfr|"Wimessir Mâle"
+LAST|Den|"form of Indeedee"
+LAST|P31|Q56707539|S854|"https://zukan.pokemon.co.jp/detail/0876"|S813|+2026-10-20T00:00:00Z/11
+LAST|P361|Q78548083|S854|"https://zukan.pokemon.co.jp/detail/0876"|S813|+2026-10-20T00:00:00Z/11
+LAST|P4584|Q61951126|S854|"https://pokeapi.co/api/v2/pokemon-species/876/"|S813|+2026-10-20T00:00:00Z/11
+CREATE
+LAST|Len|"Morpeko Full Belly Mode"
+LAST|Lde|"Morpeko Pappsattmuster"
+LAST|Ade|"Morpeko (Pappsattmuster)"
+LAST|Lfr|"Morpeko Rassasié"
+LAST|Den|"form of Morpeko"
+LAST|Aen|"Full Belly Morpeko"
+LAST|P31|Q56707539|S854|"https://zukan.pokemon.co.jp/detail/0877"|S813|+2026-10-20T00:00:00Z/11
+LAST|P361|Q66316814|S854|"https://zukan.pokemon.co.jp/detail/0877"|S813|+2026-10-20T00:00:00Z/11
+LAST|P4584|Q61951126|S854|"https://pokeapi.co/api/v2/pokemon-species/877/"|S813|+2026-10-20T00:00:00Z/11
+CREATE
+LAST|Len|"Zacian Hero of Many Battles"
+LAST|Lde|"Zacian Heldenhafter Krieger"
+LAST|Lfr|"Zacian Héros Aguerri"
+LAST|Den|"form of Zacian"
+LAST|P31|Q56707539|S854|"https://zukan.pokemon.co.jp/detail/0888"|S813|+2026-10-20T00:00:00Z/11
+LAST|P361|Q64569431|S854|"https://zukan.pokemon.co.jp/detail/0888"|S813|+2026-10-20T00:00:00Z/11
+LAST|P4584|Q61951126|S854|"https://pokeapi.co/api/v2/pokemon-species/888/"|S813|+2026-10-20T00:00:00Z/11
+CREATE
+LAST|Len|"Zamazenta Hero of Many Battles"
+LAST|Lde|"Zamazenta Heldenhafter Krieger"
+LAST|Lfr|"Zamazenta Héros Aguerri"
+LAST|Den|"form of Zamazenta"
+LAST|P31|Q56707539|S854|"https://zukan.pokemon.co.jp/detail/0889"|S813|+2026-10-20T00:00:00Z/11
+LAST|P361|Q64576285|S854|"https://zukan.pokemon.co.jp/detail/0889"|S813|+2026-10-20T00:00:00Z/11
+LAST|P4584|Q61951126|S854|"https://pokeapi.co/api/v2/pokemon-species/889/"|S813|+2026-10-20T00:00:00Z/11

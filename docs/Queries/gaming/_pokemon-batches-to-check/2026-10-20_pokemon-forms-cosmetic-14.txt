@@ -1,0 +1,100 @@
+Pokémon: the cosmetic forms (14/18)
+CREATE
+LAST|Len|"Alcremie Ruby Swirl Berry Sweet"
+LAST|Lde|"Pokusan Ruby-Mix Zucker-Beere"
+LAST|Lfr|"Charmilly Mélange Ruby Baie en Sucre"
+LAST|Den|"form of Alcremie"
+LAST|Aen|"Ruby Swirl Berry Sweet Alcremie"
+LAST|P31|Q56707539|S854|"https://pokeapi.co/api/v2/pokemon-form/alcremie-ruby-swirl-berry-sweet/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P361|Q66309869|S854|"https://pokeapi.co/api/v2/pokemon-form/alcremie-ruby-swirl-berry-sweet/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P4584|Q61951126|S854|"https://pokeapi.co/api/v2/pokemon-form/alcremie-ruby-swirl-berry-sweet/"|S813|+2026-10-20T00:00:00Z/11
+CREATE
+LAST|Len|"Alcremie Caramel Swirl Berry Sweet"
+LAST|Lde|"Pokusan Karamell-Mix Zucker-Beere"
+LAST|Lfr|"Charmilly Mélange Caramel Baie en Sucre"
+LAST|Den|"form of Alcremie"
+LAST|Aen|"Caramel Swirl Berry Sweet Alcremie"
+LAST|P31|Q56707539|S854|"https://pokeapi.co/api/v2/pokemon-form/alcremie-caramel-swirl-berry-sweet/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P361|Q66309869|S854|"https://pokeapi.co/api/v2/pokemon-form/alcremie-caramel-swirl-berry-sweet/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P4584|Q61951126|S854|"https://pokeapi.co/api/v2/pokemon-form/alcremie-caramel-swirl-berry-sweet/"|S813|+2026-10-20T00:00:00Z/11
+CREATE
+LAST|Len|"Alcremie Rainbow Swirl Berry Sweet"
+LAST|Lde|"Pokusan Trio-Mix Zucker-Beere"
+LAST|Lfr|"Charmilly Mélange Tricolore Baie en Sucre"
+LAST|Den|"form of Alcremie"
+LAST|Aen|"Rainbow Swirl Berry Sweet Alcremie"
+LAST|P31|Q56707539|S854|"https://pokeapi.co/api/v2/pokemon-form/alcremie-rainbow-swirl-berry-sweet/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P361|Q66309869|S854|"https://pokeapi.co/api/v2/pokemon-form/alcremie-rainbow-swirl-berry-sweet/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P4584|Q61951126|S854|"https://pokeapi.co/api/v2/pokemon-form/alcremie-rainbow-swirl-berry-sweet/"|S813|+2026-10-20T00:00:00Z/11
+CREATE
+LAST|Len|"Alcremie Vanilla Cream Love Sweet"
+LAST|Lde|"Pokusan Vanille-Creme Zucker-Herz"
+LAST|Lfr|"Charmilly Lait Vanille Cœur en Sucre"
+LAST|Den|"form of Alcremie"
+LAST|Aen|"Vanilla Cream Love Sweet Alcremie"
+LAST|P31|Q56707539|S854|"https://pokeapi.co/api/v2/pokemon-form/alcremie-vanilla-cream-love-sweet/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P361|Q66309869|S854|"https://pokeapi.co/api/v2/pokemon-form/alcremie-vanilla-cream-love-sweet/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P4584|Q61951126|S854|"https://pokeapi.co/api/v2/pokemon-form/alcremie-vanilla-cream-love-sweet/"|S813|+2026-10-20T00:00:00Z/11
+CREATE
+LAST|Len|"Alcremie Ruby Cream Love Sweet"
+LAST|Lde|"Pokusan Ruby-Creme Zucker-Herz"
+LAST|Lfr|"Charmilly Lait Ruby Cœur en Sucre"
+LAST|Den|"form of Alcremie"
+LAST|Aen|"Ruby Cream Love Sweet Alcremie"
+LAST|P31|Q56707539|S854|"https://pokeapi.co/api/v2/pokemon-form/alcremie-ruby-cream-love-sweet/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P361|Q66309869|S854|"https://pokeapi.co/api/v2/pokemon-form/alcremie-ruby-cream-love-sweet/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P4584|Q61951126|S854|"https://pokeapi.co/api/v2/pokemon-form/alcremie-ruby-cream-love-sweet/"|S813|+2026-10-20T00:00:00Z/11
+CREATE
+LAST|Len|"Alcremie Matcha Cream Love Sweet"
+LAST|Lde|"Pokusan Matcha-Creme Zucker-Herz"
+LAST|Lfr|"Charmilly Lait Matcha Cœur en Sucre"
+LAST|Den|"form of Alcremie"
+LAST|Aen|"Matcha Cream Love Sweet Alcremie"
+LAST|P31|Q56707539|S854|"https://pokeapi.co/api/v2/pokemon-form/alcremie-matcha-cream-love-sweet/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P361|Q66309869|S854|"https://pokeapi.co/api/v2/pokemon-form/alcremie-matcha-cream-love-sweet/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P4584|Q61951126|S854|"https://pokeapi.co/api/v2/pokemon-form/alcremie-matcha-cream-love-sweet/"|S813|+2026-10-20T00:00:00Z/11
+CREATE
+LAST|Len|"Alcremie Mint Cream Love Sweet"
+LAST|Lde|"Pokusan Minz-Creme Zucker-Herz"
+LAST|Lfr|"Charmilly Lait Menthe Cœur en Sucre"
+LAST|Den|"form of Alcremie"
+LAST|Aen|"Mint Cream Love Sweet Alcremie"
+LAST|P31|Q56707539|S854|"https://pokeapi.co/api/v2/pokemon-form/alcremie-mint-cream-love-sweet/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P361|Q66309869|S854|"https://pokeapi.co/api/v2/pokemon-form/alcremie-mint-cream-love-sweet/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P4584|Q61951126|S854|"https://pokeapi.co/api/v2/pokemon-form/alcremie-mint-cream-love-sweet/"|S813|+2026-10-20T00:00:00Z/11
+CREATE
+LAST|Len|"Alcremie Lemon Cream Love Sweet"
+LAST|Lde|"Pokusan Zitronen-Creme Zucker-Herz"
+LAST|Lfr|"Charmilly Lait Citron Cœur en Sucre"
+LAST|Den|"form of Alcremie"
+LAST|Aen|"Lemon Cream Love Sweet Alcremie"
+LAST|P31|Q56707539|S854|"https://pokeapi.co/api/v2/pokemon-form/alcremie-lemon-cream-love-sweet/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P361|Q66309869|S854|"https://pokeapi.co/api/v2/pokemon-form/alcremie-lemon-cream-love-sweet/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P4584|Q61951126|S854|"https://pokeapi.co/api/v2/pokemon-form/alcremie-lemon-cream-love-sweet/"|S813|+2026-10-20T00:00:00Z/11
+CREATE
+LAST|Len|"Alcremie Salted Cream Love Sweet"
+LAST|Lde|"Pokusan Salz-Creme Zucker-Herz"
+LAST|Lfr|"Charmilly Lait Salé Cœur en Sucre"
+LAST|Den|"form of Alcremie"
+LAST|Aen|"Salted Cream Love Sweet Alcremie"
+LAST|P31|Q56707539|S854|"https://pokeapi.co/api/v2/pokemon-form/alcremie-salted-cream-love-sweet/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P361|Q66309869|S854|"https://pokeapi.co/api/v2/pokemon-form/alcremie-salted-cream-love-sweet/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P4584|Q61951126|S854|"https://pokeapi.co/api/v2/pokemon-form/alcremie-salted-cream-love-sweet/"|S813|+2026-10-20T00:00:00Z/11
+CREATE
+LAST|Len|"Alcremie Ruby Swirl Love Sweet"
+LAST|Lde|"Pokusan Ruby-Mix Zucker-Herz"
+LAST|Lfr|"Charmilly Mélange Ruby Cœur en Sucre"
+LAST|Den|"form of Alcremie"
+LAST|Aen|"Ruby Swirl Love Sweet Alcremie"
+LAST|P31|Q56707539|S854|"https://pokeapi.co/api/v2/pokemon-form/alcremie-ruby-swirl-love-sweet/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P361|Q66309869|S854|"https://pokeapi.co/api/v2/pokemon-form/alcremie-ruby-swirl-love-sweet/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P4584|Q61951126|S854|"https://pokeapi.co/api/v2/pokemon-form/alcremie-ruby-swirl-love-sweet/"|S813|+2026-10-20T00:00:00Z/11
+CREATE
+LAST|Len|"Alcremie Caramel Swirl Love Sweet"
+LAST|Lde|"Pokusan Karamell-Mix Zucker-Herz"
+LAST|Lfr|"Charmilly Mélange Caramel Cœur en Sucre"
+LAST|Den|"form of Alcremie"
+LAST|Aen|"Caramel Swirl Love Sweet Alcremie"
+LAST|P31|Q56707539|S854|"https://pokeapi.co/api/v2/pokemon-form/alcremie-caramel-swirl-love-sweet/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P361|Q66309869|S854|"https://pokeapi.co/api/v2/pokemon-form/alcremie-caramel-swirl-love-sweet/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P4584|Q61951126|S854|"https://pokeapi.co/api/v2/pokemon-form/alcremie-caramel-swirl-love-sweet/"|S813|+2026-10-20T00:00:00Z/11

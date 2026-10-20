@@ -1,0 +1,100 @@
+Pokémon: the cosmetic forms (13/18)
+CREATE
+LAST|Len|"Alcremie Salted Cream Strawberry Sweet"
+LAST|Lde|"Pokusan Salz-Creme Zucker-Erdbeere"
+LAST|Lfr|"Charmilly Lait Salé Fraise en Sucre"
+LAST|Den|"form of Alcremie"
+LAST|Aen|"Salted Cream Strawberry Sweet Alcremie"
+LAST|P31|Q56707539|S854|"https://pokeapi.co/api/v2/pokemon-form/alcremie-salted-cream-strawberry-sweet/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P361|Q66309869|S854|"https://pokeapi.co/api/v2/pokemon-form/alcremie-salted-cream-strawberry-sweet/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P4584|Q61951126|S854|"https://pokeapi.co/api/v2/pokemon-form/alcremie-salted-cream-strawberry-sweet/"|S813|+2026-10-20T00:00:00Z/11
+CREATE
+LAST|Len|"Alcremie Ruby Swirl Strawberry Sweet"
+LAST|Lde|"Pokusan Ruby-Mix Zucker-Erdbeere"
+LAST|Lfr|"Charmilly Mélange Ruby Fraise en Sucre"
+LAST|Den|"form of Alcremie"
+LAST|Aen|"Ruby Swirl Strawberry Sweet Alcremie"
+LAST|P31|Q56707539|S854|"https://pokeapi.co/api/v2/pokemon-form/alcremie-ruby-swirl-strawberry-sweet/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P361|Q66309869|S854|"https://pokeapi.co/api/v2/pokemon-form/alcremie-ruby-swirl-strawberry-sweet/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P4584|Q61951126|S854|"https://pokeapi.co/api/v2/pokemon-form/alcremie-ruby-swirl-strawberry-sweet/"|S813|+2026-10-20T00:00:00Z/11
+CREATE
+LAST|Len|"Alcremie Caramel Swirl Strawberry Sweet"
+LAST|Lde|"Pokusan Karamell-Mix Zucker-Erdbeere"
+LAST|Lfr|"Charmilly Mélange Caramel Fraise en Sucre"
+LAST|Den|"form of Alcremie"
+LAST|Aen|"Caramel Swirl Strawberry Sweet Alcremie"
+LAST|P31|Q56707539|S854|"https://pokeapi.co/api/v2/pokemon-form/alcremie-caramel-swirl-strawberry-sweet/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P361|Q66309869|S854|"https://pokeapi.co/api/v2/pokemon-form/alcremie-caramel-swirl-strawberry-sweet/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P4584|Q61951126|S854|"https://pokeapi.co/api/v2/pokemon-form/alcremie-caramel-swirl-strawberry-sweet/"|S813|+2026-10-20T00:00:00Z/11
+CREATE
+LAST|Len|"Alcremie Rainbow Swirl Strawberry Sweet"
+LAST|Lde|"Pokusan Trio-Mix Zucker-Erdbeere"
+LAST|Lfr|"Charmilly Mélange Tricolore Fraise en Sucre"
+LAST|Den|"form of Alcremie"
+LAST|Aen|"Rainbow Swirl Strawberry Sweet Alcremie"
+LAST|P31|Q56707539|S854|"https://pokeapi.co/api/v2/pokemon-form/alcremie-rainbow-swirl-strawberry-sweet/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P361|Q66309869|S854|"https://pokeapi.co/api/v2/pokemon-form/alcremie-rainbow-swirl-strawberry-sweet/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P4584|Q61951126|S854|"https://pokeapi.co/api/v2/pokemon-form/alcremie-rainbow-swirl-strawberry-sweet/"|S813|+2026-10-20T00:00:00Z/11
+CREATE
+LAST|Len|"Zarude Dada"
+LAST|Lde|"Zarude Papa-Form"
+LAST|Lfr|"Zarude Papa"
+LAST|Den|"form of Zarude"
+LAST|Aen|"Dada Zarude"
+LAST|P31|Q56707539|S854|"https://pokeapi.co/api/v2/pokemon-form/zarude-dada/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P361|Q89103866|S854|"https://pokeapi.co/api/v2/pokemon-form/zarude-dada/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P4584|Q61951126|S854|"https://pokeapi.co/api/v2/pokemon-form/zarude-dada/"|S813|+2026-10-20T00:00:00Z/11
+CREATE
+LAST|Len|"Alcremie Vanilla Cream Berry Sweet"
+LAST|Lde|"Pokusan Vanille-Creme Zucker-Beere"
+LAST|Lfr|"Charmilly Lait Vanille Baie en Sucre"
+LAST|Den|"form of Alcremie"
+LAST|Aen|"Vanilla Cream Berry Sweet Alcremie"
+LAST|P31|Q56707539|S854|"https://pokeapi.co/api/v2/pokemon-form/alcremie-vanilla-cream-berry-sweet/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P361|Q66309869|S854|"https://pokeapi.co/api/v2/pokemon-form/alcremie-vanilla-cream-berry-sweet/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P4584|Q61951126|S854|"https://pokeapi.co/api/v2/pokemon-form/alcremie-vanilla-cream-berry-sweet/"|S813|+2026-10-20T00:00:00Z/11
+CREATE
+LAST|Len|"Alcremie Ruby Cream Berry Sweet"
+LAST|Lde|"Pokusan Ruby-Creme Zucker-Beere"
+LAST|Lfr|"Charmilly Lait Ruby Baie en Sucre"
+LAST|Den|"form of Alcremie"
+LAST|Aen|"Ruby Cream Berry Sweet Alcremie"
+LAST|P31|Q56707539|S854|"https://pokeapi.co/api/v2/pokemon-form/alcremie-ruby-cream-berry-sweet/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P361|Q66309869|S854|"https://pokeapi.co/api/v2/pokemon-form/alcremie-ruby-cream-berry-sweet/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P4584|Q61951126|S854|"https://pokeapi.co/api/v2/pokemon-form/alcremie-ruby-cream-berry-sweet/"|S813|+2026-10-20T00:00:00Z/11
+CREATE
+LAST|Len|"Alcremie Matcha Cream Berry Sweet"
+LAST|Lde|"Pokusan Matcha-Creme Zucker-Beere"
+LAST|Lfr|"Charmilly Lait Matcha Baie en Sucre"
+LAST|Den|"form of Alcremie"
+LAST|Aen|"Matcha Cream Berry Sweet Alcremie"
+LAST|P31|Q56707539|S854|"https://pokeapi.co/api/v2/pokemon-form/alcremie-matcha-cream-berry-sweet/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P361|Q66309869|S854|"https://pokeapi.co/api/v2/pokemon-form/alcremie-matcha-cream-berry-sweet/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P4584|Q61951126|S854|"https://pokeapi.co/api/v2/pokemon-form/alcremie-matcha-cream-berry-sweet/"|S813|+2026-10-20T00:00:00Z/11
+CREATE
+LAST|Len|"Alcremie Mint Cream Berry Sweet"
+LAST|Lde|"Pokusan Minz-Creme Zucker-Beere"
+LAST|Lfr|"Charmilly Lait Menthe Baie en Sucre"
+LAST|Den|"form of Alcremie"
+LAST|Aen|"Mint Cream Berry Sweet Alcremie"
+LAST|P31|Q56707539|S854|"https://pokeapi.co/api/v2/pokemon-form/alcremie-mint-cream-berry-sweet/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P361|Q66309869|S854|"https://pokeapi.co/api/v2/pokemon-form/alcremie-mint-cream-berry-sweet/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P4584|Q61951126|S854|"https://pokeapi.co/api/v2/pokemon-form/alcremie-mint-cream-berry-sweet/"|S813|+2026-10-20T00:00:00Z/11
+CREATE
+LAST|Len|"Alcremie Lemon Cream Berry Sweet"
+LAST|Lde|"Pokusan Zitronen-Creme Zucker-Beere"
+LAST|Lfr|"Charmilly Lait Citron Baie en Sucre"
+LAST|Den|"form of Alcremie"
+LAST|Aen|"Lemon Cream Berry Sweet Alcremie"
+LAST|P31|Q56707539|S854|"https://pokeapi.co/api/v2/pokemon-form/alcremie-lemon-cream-berry-sweet/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P361|Q66309869|S854|"https://pokeapi.co/api/v2/pokemon-form/alcremie-lemon-cream-berry-sweet/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P4584|Q61951126|S854|"https://pokeapi.co/api/v2/pokemon-form/alcremie-lemon-cream-berry-sweet/"|S813|+2026-10-20T00:00:00Z/11
+CREATE
+LAST|Len|"Alcremie Salted Cream Berry Sweet"
+LAST|Lde|"Pokusan Salz-Creme Zucker-Beere"
+LAST|Lfr|"Charmilly Lait Salé Baie en Sucre"
+LAST|Den|"form of Alcremie"
+LAST|Aen|"Salted Cream Berry Sweet Alcremie"
+LAST|P31|Q56707539|S854|"https://pokeapi.co/api/v2/pokemon-form/alcremie-salted-cream-berry-sweet/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P361|Q66309869|S854|"https://pokeapi.co/api/v2/pokemon-form/alcremie-salted-cream-berry-sweet/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P4584|Q61951126|S854|"https://pokeapi.co/api/v2/pokemon-form/alcremie-salted-cream-berry-sweet/"|S813|+2026-10-20T00:00:00Z/11

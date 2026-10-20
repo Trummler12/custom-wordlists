@@ -1,0 +1,94 @@
+Pokémon: the officially named default forms (2/6)
+CREATE
+LAST|Len|"Thundurus Incarnate Forme"
+LAST|Lde|"Voltolos Inkarnationsform"
+LAST|Lfr|"Fulguris Avatar"
+LAST|Den|"form of Thundurus"
+LAST|Aen|"Incarnate Thundurus"
+LAST|P31|Q56707539|S854|"https://zukan.pokemon.co.jp/detail/0642"|S813|+2026-10-20T00:00:00Z/11
+LAST|P361|Q3990967|S854|"https://zukan.pokemon.co.jp/detail/0642"|S813|+2026-10-20T00:00:00Z/11
+LAST|P4584|Q27118381|S854|"https://pokeapi.co/api/v2/pokemon-species/642/"|S813|+2026-10-20T00:00:00Z/11
+CREATE
+LAST|Len|"Thundurus Therian Forme"
+LAST|Lde|"Voltolos Tiergeistform"
+LAST|Ade|"Voltolos (Tiergeist)"
+LAST|Lfr|"Fulguris Totémique"
+LAST|Den|"form of Thundurus"
+LAST|Aen|"Therian Thundurus"
+LAST|P31|Q56707539|S854|"https://zukan.pokemon.co.jp/detail/0642-1"|S813|+2026-10-20T00:00:00Z/11
+LAST|P361|Q3990967|S854|"https://zukan.pokemon.co.jp/detail/0642-1"|S813|+2026-10-20T00:00:00Z/11
+LAST|P4584|Q27118381|S854|"https://pokeapi.co/api/v2/pokemon-species/642/"|S813|+2026-10-20T00:00:00Z/11
+CREATE
+LAST|Len|"Landorus Incarnate Forme"
+LAST|Lde|"Demeteros Inkarnationsform"
+LAST|Lfr|"Démétéros Avatar"
+LAST|Den|"form of Landorus"
+LAST|Aen|"Incarnate Landorus"
+LAST|P31|Q56707539|S854|"https://zukan.pokemon.co.jp/detail/0645"|S813|+2026-10-20T00:00:00Z/11
+LAST|P361|Q4799212|S854|"https://zukan.pokemon.co.jp/detail/0645"|S813|+2026-10-20T00:00:00Z/11
+LAST|P4584|Q27118381|S854|"https://pokeapi.co/api/v2/pokemon-species/645/"|S813|+2026-10-20T00:00:00Z/11
+CREATE
+LAST|Len|"Landorus Therian Forme"
+LAST|Lde|"Demeteros Tiergeistform"
+LAST|Ade|"Demeteros (Tiergeist)"
+LAST|Lfr|"Démétéros Totémique"
+LAST|Den|"form of Landorus"
+LAST|Aen|"Therian Landorus"
+LAST|P31|Q56707539|S854|"https://zukan.pokemon.co.jp/detail/0645-1"|S813|+2026-10-20T00:00:00Z/11
+LAST|P361|Q4799212|S854|"https://zukan.pokemon.co.jp/detail/0645-1"|S813|+2026-10-20T00:00:00Z/11
+LAST|P4584|Q27118381|S854|"https://pokeapi.co/api/v2/pokemon-species/645/"|S813|+2026-10-20T00:00:00Z/11
+CREATE
+LAST|Len|"Enamorus Incarnate Forme"
+LAST|Lde|"Cupidos Inkarnationsform"
+LAST|Lfr|"Amovénus Avatar"
+LAST|Den|"form of Enamorus"
+LAST|Aen|"Incarnate Enamorus"
+LAST|P31|Q56707539|S854|"https://zukan.pokemon.co.jp/detail/0905"|S813|+2026-10-20T00:00:00Z/11
+LAST|P361|Q110879767|S854|"https://zukan.pokemon.co.jp/detail/0905"|S813|+2026-10-20T00:00:00Z/11
+LAST|P4584|Q61951126|S854|"https://pokeapi.co/api/v2/pokemon-species/905/"|S813|+2026-10-20T00:00:00Z/11
+CREATE
+LAST|Len|"Enamorus Therian Forme"
+LAST|Lde|"Cupidos Tiergeistform"
+LAST|Lfr|"Amovénus Totémique"
+LAST|Den|"form of Enamorus"
+LAST|Aen|"Therian Enamorus"
+LAST|P31|Q56707539|S854|"https://zukan.pokemon.co.jp/detail/0905-1"|S813|+2026-10-20T00:00:00Z/11
+LAST|P361|Q110879767|S854|"https://zukan.pokemon.co.jp/detail/0905-1"|S813|+2026-10-20T00:00:00Z/11
+LAST|P4584|Q61951126|S854|"https://pokeapi.co/api/v2/pokemon-species/905/"|S813|+2026-10-20T00:00:00Z/11
+CREATE
+LAST|Len|"Keldeo Ordinary Form"
+LAST|Lde|"Keldeo Standardform"
+LAST|Lfr|"Keldeo Normal"
+LAST|Den|"form of Keldeo"
+LAST|Aen|"Ordinary Keldeo"
+LAST|P31|Q56707539|S854|"https://zukan.pokemon.co.jp/detail/0647"|S813|+2026-10-20T00:00:00Z/11
+LAST|P361|Q3194838|S854|"https://zukan.pokemon.co.jp/detail/0647"|S813|+2026-10-20T00:00:00Z/11
+LAST|P4584|Q27118381|S854|"https://pokeapi.co/api/v2/pokemon-species/647/"|S813|+2026-10-20T00:00:00Z/11
+CREATE
+LAST|Len|"Male Meowstic"
+LAST|Lde|"Psiaugon ♂"
+LAST|Lfr|"Mistigrix Mâle"
+LAST|Den|"form of Meowstic"
+LAST|P31|Q56707539|S854|"https://zukan.pokemon.co.jp/detail/0678"|S813|+2026-10-20T00:00:00Z/11
+LAST|P361|Q16577854|S854|"https://zukan.pokemon.co.jp/detail/0678"|S813|+2026-10-20T00:00:00Z/11
+LAST|P4584|Q27065429|S854|"https://pokeapi.co/api/v2/pokemon-species/678/"|S813|+2026-10-20T00:00:00Z/11
+CREATE
+LAST|Len|"Aegislash Shield Forme"
+LAST|Lde|"Durengard Schildform"
+LAST|Ade|"Durengard (Schild)"
+LAST|Lfr|"Exagide Parade"
+LAST|Den|"form of Aegislash"
+LAST|Aen|"Shield Aegislash"
+LAST|P31|Q56707539|S854|"https://zukan.pokemon.co.jp/detail/0681"|S813|+2026-10-20T00:00:00Z/11
+LAST|P361|Q16524649|S854|"https://zukan.pokemon.co.jp/detail/0681"|S813|+2026-10-20T00:00:00Z/11
+LAST|P4584|Q27065429|S854|"https://pokeapi.co/api/v2/pokemon-species/681/"|S813|+2026-10-20T00:00:00Z/11
+CREATE
+LAST|Len|"Oricorio Baile Style"
+LAST|Lde|"Choreogel Flamenco-Stil"
+LAST|Ade|"Choreogel (Flamenco)"
+LAST|Lfr|"Plumeline Style Flamenco"
+LAST|Den|"form of Oricorio"
+LAST|Aen|"Baile Oricorio"
+LAST|P31|Q56707539|S854|"https://zukan.pokemon.co.jp/detail/0741"|S813|+2026-10-20T00:00:00Z/11
+LAST|P361|Q26206534|S854|"https://zukan.pokemon.co.jp/detail/0741"|S813|+2026-10-20T00:00:00Z/11
+LAST|P4584|Q26945334|S854|"https://pokeapi.co/api/v2/pokemon-species/741/"|S813|+2026-10-20T00:00:00Z/11

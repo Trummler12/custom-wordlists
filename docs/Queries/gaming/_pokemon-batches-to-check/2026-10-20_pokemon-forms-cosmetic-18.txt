@@ -1,0 +1,37 @@
+Pokémon: the cosmetic forms (18/18)
+CREATE
+LAST|Len|"Alcremie Salted Cream Ribbon Sweet"
+LAST|Lde|"Pokusan Salz-Creme Zucker-Schleife"
+LAST|Lfr|"Charmilly Lait Salé Ruban en Sucre"
+LAST|Den|"form of Alcremie"
+LAST|Aen|"Salted Cream Ribbon Sweet Alcremie"
+LAST|P31|Q56707539|S854|"https://pokeapi.co/api/v2/pokemon-form/alcremie-salted-cream-ribbon-sweet/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P361|Q66309869|S854|"https://pokeapi.co/api/v2/pokemon-form/alcremie-salted-cream-ribbon-sweet/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P4584|Q61951126|S854|"https://pokeapi.co/api/v2/pokemon-form/alcremie-salted-cream-ribbon-sweet/"|S813|+2026-10-20T00:00:00Z/11
+CREATE
+LAST|Len|"Alcremie Ruby Swirl Ribbon Sweet"
+LAST|Lde|"Pokusan Ruby-Mix Zucker-Schleife"
+LAST|Lfr|"Charmilly Mélange Ruby Ruban en Sucre"
+LAST|Den|"form of Alcremie"
+LAST|Aen|"Ruby Swirl Ribbon Sweet Alcremie"
+LAST|P31|Q56707539|S854|"https://pokeapi.co/api/v2/pokemon-form/alcremie-ruby-swirl-ribbon-sweet/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P361|Q66309869|S854|"https://pokeapi.co/api/v2/pokemon-form/alcremie-ruby-swirl-ribbon-sweet/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P4584|Q61951126|S854|"https://pokeapi.co/api/v2/pokemon-form/alcremie-ruby-swirl-ribbon-sweet/"|S813|+2026-10-20T00:00:00Z/11
+CREATE
+LAST|Len|"Alcremie Caramel Swirl Ribbon Sweet"
+LAST|Lde|"Pokusan Karamell-Mix Zucker-Schleife"
+LAST|Lfr|"Charmilly Mélange Caramel Ruban en Sucre"
+LAST|Den|"form of Alcremie"
+LAST|Aen|"Caramel Swirl Ribbon Sweet Alcremie"
+LAST|P31|Q56707539|S854|"https://pokeapi.co/api/v2/pokemon-form/alcremie-caramel-swirl-ribbon-sweet/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P361|Q66309869|S854|"https://pokeapi.co/api/v2/pokemon-form/alcremie-caramel-swirl-ribbon-sweet/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P4584|Q61951126|S854|"https://pokeapi.co/api/v2/pokemon-form/alcremie-caramel-swirl-ribbon-sweet/"|S813|+2026-10-20T00:00:00Z/11
+CREATE
+LAST|Len|"Alcremie Rainbow Swirl Ribbon Sweet"
+LAST|Lde|"Pokusan Trio-Mix Zucker-Schleife"
+LAST|Lfr|"Charmilly Mélange Tricolore Ruban en Sucre"
+LAST|Den|"form of Alcremie"
+LAST|Aen|"Rainbow Swirl Ribbon Sweet Alcremie"
+LAST|P31|Q56707539|S854|"https://pokeapi.co/api/v2/pokemon-form/alcremie-rainbow-swirl-ribbon-sweet/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P361|Q66309869|S854|"https://pokeapi.co/api/v2/pokemon-form/alcremie-rainbow-swirl-ribbon-sweet/"|S813|+2026-10-20T00:00:00Z/11
+LAST|P4584|Q61951126|S854|"https://pokeapi.co/api/v2/pokemon-form/alcremie-rainbow-swirl-ribbon-sweet/"|S813|+2026-10-20T00:00:00Z/11

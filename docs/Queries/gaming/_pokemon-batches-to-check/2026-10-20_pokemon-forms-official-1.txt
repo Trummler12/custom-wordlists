@@ -1,0 +1,107 @@
+Pokémon: forms listed in the official Pokédex that Wikidata lacks (1/4)
+CREATE
+LAST|Len|"Burmy Sandy Cloak"
+LAST|Lde|"Burmy Sandumhang"
+LAST|Ade|"Burmy (Sand)"
+LAST|Lfr|"Cheniti Sable"
+LAST|Den|"form of Burmy"
+LAST|Aen|"Sandy Burmy"
+LAST|P31|Q56707539|S854|"https://zukan.pokemon.co.jp/detail/0412-1"|S813|+2026-10-20T00:00:00Z/11
+LAST|P361|Q2720866|S854|"https://zukan.pokemon.co.jp/detail/0412-1"|S813|+2026-10-20T00:00:00Z/11
+LAST|P4584|Q27118795|S854|"https://pokeapi.co/api/v2/pokemon-form/burmy-sandy/"|S813|+2026-10-20T00:00:00Z/11
+CREATE
+LAST|Len|"Burmy Trash Cloak"
+LAST|Lde|"Burmy Lumpenumhang"
+LAST|Ade|"Burmy (Lumpen)"
+LAST|Lfr|"Cheniti Déchet"
+LAST|Den|"form of Burmy"
+LAST|Aen|"Trash Burmy"
+LAST|P31|Q56707539|S854|"https://zukan.pokemon.co.jp/detail/0412-2"|S813|+2026-10-20T00:00:00Z/11
+LAST|P361|Q2720866|S854|"https://zukan.pokemon.co.jp/detail/0412-2"|S813|+2026-10-20T00:00:00Z/11
+LAST|P4584|Q27118795|S854|"https://pokeapi.co/api/v2/pokemon-form/burmy-trash/"|S813|+2026-10-20T00:00:00Z/11
+CREATE
+LAST|Len|"Cherrim Sunshine Form"
+LAST|Lde|"Kinoso Sonnenform"
+LAST|Ade|"Kinoso (Sonne)"
+LAST|Lfr|"Ceriflor Ensoleillé"
+LAST|Den|"form of Cherrim"
+LAST|Aen|"Sunshine Cherrim"
+LAST|P31|Q56707539|S854|"https://zukan.pokemon.co.jp/detail/0421-1"|S813|+2026-10-20T00:00:00Z/11
+LAST|P361|Q2517453|S854|"https://zukan.pokemon.co.jp/detail/0421-1"|S813|+2026-10-20T00:00:00Z/11
+LAST|P4584|Q27118795|S854|"https://pokeapi.co/api/v2/pokemon-form/cherrim-sunshine/"|S813|+2026-10-20T00:00:00Z/11
+CREATE
+LAST|Len|"Shellos East Sea"
+LAST|Lde|"Östliches Schalellos"
+LAST|Lfr|"Sancoki Orient"
+LAST|Den|"form of Shellos"
+LAST|Aen|"East Shellos"
+LAST|P31|Q56707539|S854|"https://zukan.pokemon.co.jp/detail/0422-1"|S813|+2026-10-20T00:00:00Z/11
+LAST|P361|Q2573482|S854|"https://zukan.pokemon.co.jp/detail/0422-1"|S813|+2026-10-20T00:00:00Z/11
+LAST|P4584|Q27118795|S854|"https://pokeapi.co/api/v2/pokemon-form/shellos-east/"|S813|+2026-10-20T00:00:00Z/11
+CREATE
+LAST|Len|"Gastrodon East Sea"
+LAST|Lde|"Östliches Gastrodon"
+LAST|Lfr|"Tritosor Orient"
+LAST|Den|"form of Gastrodon"
+LAST|Aen|"East Gastrodon"
+LAST|P31|Q56707539|S854|"https://zukan.pokemon.co.jp/detail/0423-1"|S813|+2026-10-20T00:00:00Z/11
+LAST|P361|Q2311762|S854|"https://zukan.pokemon.co.jp/detail/0423-1"|S813|+2026-10-20T00:00:00Z/11
+LAST|P4584|Q27118795|S854|"https://pokeapi.co/api/v2/pokemon-form/gastrodon-east/"|S813|+2026-10-20T00:00:00Z/11
+CREATE
+LAST|Len|"Dialga Origin Forme"
+LAST|Lde|"Ur-Dialga"
+LAST|Lfr|"Dialga Originel"
+LAST|Den|"form of Dialga"
+LAST|Aen|"Origin Dialga"
+LAST|P31|Q56707539|S854|"https://zukan.pokemon.co.jp/detail/0483-1"|S813|+2026-10-20T00:00:00Z/11
+LAST|P361|Q1191156|S854|"https://zukan.pokemon.co.jp/detail/0483-1"|S813|+2026-10-20T00:00:00Z/11
+LAST|P4584|Q61951126|S854|"https://pokeapi.co/api/v2/pokemon-form/dialga-origin/"|S813|+2026-10-20T00:00:00Z/11
+CREATE
+LAST|Len|"Palkia Origin Forme"
+LAST|Lde|"Ur-Palkia"
+LAST|Lfr|"Palkia Originel"
+LAST|Den|"form of Palkia"
+LAST|Aen|"Origin Palkia"
+LAST|P31|Q56707539|S854|"https://zukan.pokemon.co.jp/detail/0484-1"|S813|+2026-10-20T00:00:00Z/11
+LAST|P361|Q1351499|S854|"https://zukan.pokemon.co.jp/detail/0484-1"|S813|+2026-10-20T00:00:00Z/11
+LAST|P4584|Q61951126|S854|"https://pokeapi.co/api/v2/pokemon-form/palkia-origin/"|S813|+2026-10-20T00:00:00Z/11
+CREATE
+LAST|Len|"Deerling Summer Form"
+LAST|Lde|"Sesokitz Sommerform"
+LAST|Ade|"Sesokitz (Sommer)"
+LAST|Lfr|"Vivaldaim Été"
+LAST|Den|"form of Deerling"
+LAST|Aen|"Summer Deerling"
+LAST|P31|Q56707539|S854|"https://zukan.pokemon.co.jp/detail/0585-1"|S813|+2026-10-20T00:00:00Z/11
+LAST|P361|Q3704689|S854|"https://zukan.pokemon.co.jp/detail/0585-1"|S813|+2026-10-20T00:00:00Z/11
+LAST|P4584|Q27118381|S854|"https://pokeapi.co/api/v2/pokemon-form/deerling-summer/"|S813|+2026-10-20T00:00:00Z/11
+CREATE
+LAST|Len|"Deerling Autumn Form"
+LAST|Lde|"Sesokitz Herbstform"
+LAST|Ade|"Sesokitz (Herbst)"
+LAST|Lfr|"Vivaldaim Automne"
+LAST|Den|"form of Deerling"
+LAST|Aen|"Autumn Deerling"
+LAST|P31|Q56707539|S854|"https://zukan.pokemon.co.jp/detail/0585-2"|S813|+2026-10-20T00:00:00Z/11
+LAST|P361|Q3704689|S854|"https://zukan.pokemon.co.jp/detail/0585-2"|S813|+2026-10-20T00:00:00Z/11
+LAST|P4584|Q27118381|S854|"https://pokeapi.co/api/v2/pokemon-form/deerling-autumn/"|S813|+2026-10-20T00:00:00Z/11
+CREATE
+LAST|Len|"Deerling Winter Form"
+LAST|Lde|"Sesokitz Winterform"
+LAST|Ade|"Sesokitz (Winter)"
+LAST|Lfr|"Vivaldaim Hiver"
+LAST|Den|"form of Deerling"
+LAST|Aen|"Winter Deerling"
+LAST|P31|Q56707539|S854|"https://zukan.pokemon.co.jp/detail/0585-3"|S813|+2026-10-20T00:00:00Z/11
+LAST|P361|Q3704689|S854|"https://zukan.pokemon.co.jp/detail/0585-3"|S813|+2026-10-20T00:00:00Z/11
+LAST|P4584|Q27118381|S854|"https://pokeapi.co/api/v2/pokemon-form/deerling-winter/"|S813|+2026-10-20T00:00:00Z/11
+CREATE
+LAST|Len|"Sawsbuck Summer Form"
+LAST|Lde|"Kronjuwild Sommerform"
+LAST|Ade|"Kronjuwild (Sommer)"
+LAST|Lfr|"Haydaim Été"
+LAST|Den|"form of Sawsbuck"
+LAST|Aen|"Summer Sawsbuck"
+LAST|P31|Q56707539|S854|"https://zukan.pokemon.co.jp/detail/0586-1"|S813|+2026-10-20T00:00:00Z/11
+LAST|P361|Q3951175|S854|"https://zukan.pokemon.co.jp/detail/0586-1"|S813|+2026-10-20T00:00:00Z/11
+LAST|P4584|Q27118381|S854|"https://pokeapi.co/api/v2/pokemon-form/sawsbuck-summer/"|S813|+2026-10-20T00:00:00Z/11

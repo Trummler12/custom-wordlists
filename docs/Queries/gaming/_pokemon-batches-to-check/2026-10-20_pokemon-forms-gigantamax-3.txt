@@ -1,0 +1,67 @@
+Pokémon: the Gigantamax forms of the official Pokédex (3/3)
+CREATE
+LAST|Len|"Gigantamax Centiskorch"
+LAST|Lde|"Gigadynamax-Infernopod"
+LAST|Lfr|"Scolocendre Gigamax"
+LAST|Den|"Gigantamax form of Centiskorch"
+LAST|P31|Q107639880|S854|"https://zukan.pokemon.co.jp/detail/0851-1"|S813|+2026-10-20T00:00:00Z/11
+LAST|P361|Q79335562|S854|"https://zukan.pokemon.co.jp/detail/0851-1"|S813|+2026-10-20T00:00:00Z/11
+LAST|P4584|Q61951126|S854|"https://pokeapi.co/api/v2/pokemon-form/centiskorch-gmax/"|S813|+2026-10-20T00:00:00Z/11
+CREATE
+LAST|Len|"Gigantamax Hatterene"
+LAST|Lde|"Gigadynamax-Silembrim"
+LAST|Lfr|"Sorcilence Gigamax"
+LAST|Den|"Gigantamax form of Hatterene"
+LAST|P31|Q107639880|S854|"https://zukan.pokemon.co.jp/detail/0858-1"|S813|+2026-10-20T00:00:00Z/11
+LAST|P361|Q79969227|S854|"https://zukan.pokemon.co.jp/detail/0858-1"|S813|+2026-10-20T00:00:00Z/11
+LAST|P4584|Q61951126|S854|"https://pokeapi.co/api/v2/pokemon-form/hatterene-gmax/"|S813|+2026-10-20T00:00:00Z/11
+CREATE
+LAST|Len|"Gigantamax Grimmsnarl"
+LAST|Lde|"Gigadynamax-Olangaar"
+LAST|Lfr|"Angoliath Gigamax"
+LAST|Den|"Gigantamax form of Grimmsnarl"
+LAST|P31|Q107639880|S854|"https://zukan.pokemon.co.jp/detail/0861-1"|S813|+2026-10-20T00:00:00Z/11
+LAST|P361|Q79270144|S854|"https://zukan.pokemon.co.jp/detail/0861-1"|S813|+2026-10-20T00:00:00Z/11
+LAST|P4584|Q61951126|S854|"https://pokeapi.co/api/v2/pokemon-form/grimmsnarl-gmax/"|S813|+2026-10-20T00:00:00Z/11
+CREATE
+LAST|Len|"Gigantamax Alcremie"
+LAST|Lde|"Gigadynamax-Pokusan"
+LAST|Lfr|"Charmilly Gigamax"
+LAST|Den|"Gigantamax form of Alcremie"
+LAST|P31|Q107639880|S854|"https://zukan.pokemon.co.jp/detail/0869-1"|S813|+2026-10-20T00:00:00Z/11
+LAST|P361|Q66309869|S854|"https://zukan.pokemon.co.jp/detail/0869-1"|S813|+2026-10-20T00:00:00Z/11
+LAST|P4584|Q61951126|S854|"https://pokeapi.co/api/v2/pokemon-form/alcremie-gmax/"|S813|+2026-10-20T00:00:00Z/11
+CREATE
+LAST|Len|"Gigantamax Copperajah"
+LAST|Lde|"Gigadynamax-Patinaraja"
+LAST|Lfr|"Pachyradjah Gigamax"
+LAST|Den|"Gigantamax form of Copperajah"
+LAST|P31|Q107639880|S854|"https://zukan.pokemon.co.jp/detail/0879-1"|S813|+2026-10-20T00:00:00Z/11
+LAST|P361|Q78546333|S854|"https://zukan.pokemon.co.jp/detail/0879-1"|S813|+2026-10-20T00:00:00Z/11
+LAST|P4584|Q61951126|S854|"https://pokeapi.co/api/v2/pokemon-form/copperajah-gmax/"|S813|+2026-10-20T00:00:00Z/11
+CREATE
+LAST|Len|"Gigantamax Duraludon"
+LAST|Lde|"Gigadynamax-Duraludon"
+LAST|Lfr|"Duralugon Gigamax"
+LAST|Den|"Gigantamax form of Duraludon"
+LAST|P31|Q107639880|S854|"https://zukan.pokemon.co.jp/detail/0884-1"|S813|+2026-10-20T00:00:00Z/11
+LAST|P361|Q66357280|S854|"https://zukan.pokemon.co.jp/detail/0884-1"|S813|+2026-10-20T00:00:00Z/11
+LAST|P4584|Q61951126|S854|"https://pokeapi.co/api/v2/pokemon-form/duraludon-gmax/"|S813|+2026-10-20T00:00:00Z/11
+CREATE
+LAST|Len|"Gigantamax Single Strike Urshifu"
+LAST|Lde|"Gigadynamax-Wulaosu Gigadynamax-Form"
+LAST|Ade|"Gigadynamax-Wulaosu (Fokussiert)"
+LAST|Lfr|"Shifours Style Poing Final Gigamax"
+LAST|Den|"Gigantamax form of Urshifu"
+LAST|P31|Q107639880|S854|"https://zukan.pokemon.co.jp/detail/0892-2"|S813|+2026-10-20T00:00:00Z/11
+LAST|P361|Q97224215|S854|"https://zukan.pokemon.co.jp/detail/0892-2"|S813|+2026-10-20T00:00:00Z/11
+LAST|P4584|Q61951126|S854|"https://pokeapi.co/api/v2/pokemon-form/urshifu-single-strike-gmax/"|S813|+2026-10-20T00:00:00Z/11
+CREATE
+LAST|Len|"Gigantamax Rapid Strike Urshifu"
+LAST|Lde|"Gigadynamax-Wulaosu Gigadynamax-Form"
+LAST|Ade|"Gigadynamax-Wulaosu (Fließend)"
+LAST|Lfr|"Shifours Style Mille Poings Gigamax"
+LAST|Den|"Gigantamax form of Urshifu"
+LAST|P31|Q107639880|S854|"https://zukan.pokemon.co.jp/detail/0892-3"|S813|+2026-10-20T00:00:00Z/11
+LAST|P361|Q97224215|S854|"https://zukan.pokemon.co.jp/detail/0892-3"|S813|+2026-10-20T00:00:00Z/11
+LAST|P4584|Q61951126|S854|"https://pokeapi.co/api/v2/pokemon-form/urshifu-rapid-strike-gmax/"|S813|+2026-10-20T00:00:00Z/11
