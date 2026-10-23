@@ -16,10 +16,10 @@ What Wikidata offers for the Dragon Ball topics, and how far it can serve as the
 
 [Anime](../README.md#anime)
 - ➕[Characters](#characters)
-- ✖️[Locations](#️locations)
+- ✖️[Locations](#locations)
 - ❌[Episodes](#episodes)
 - 🔵[Films](#films)
-- ✖️[Video Games](#️video-games)
+- ✖️[Video Games](#video-games)
 
 ## ➕Characters
 
@@ -29,7 +29,7 @@ What Wikidata offers for the Dragon Ball topics, and how far it can serve as the
 **Check (2026-10-07):** 156 characters are linked to Dragon Ball, its series, universe or franchise (mostly via *from narrative universe*, P1080); the definition alone finds 0 without subclasses and 26 with them. All 24 of our Dragon Ball Z entries are among them.  
 **Rating:** ➕ (was ✖️).
 
-## ✖️Locations
+## ✖Locations
 
 **Associated List:** [Locations of Dragon Ball (Q3238315)](https://www.wikidata.org/wiki/Q3238315)  
 **Definition:** [is a list of](https://www.wikidata.org/wiki/Property:P360): [fictional location](https://www.wikidata.org/wiki/Q3895768)  
@@ -51,7 +51,7 @@ What Wikidata offers for the Dragon Ball topics, and how far it can serve as the
 
 **Check (2026-10-07):** 24 films via *part of the series* (P179) = Dragon Ball (Q16515139). Not yet compared with the real number.
 
-## ✖️Video Games
+## ✖Video Games
 
 **Associated List:** [list of Dragon Ball video games (Q371057)](https://www.wikidata.org/wiki/Q371057)  
 **Definition:** [is a list of](https://www.wikidata.org/wiki/Property:P360): [video game](https://www.wikidata.org/wiki/Q7889), [part of the series](https://www.wikidata.org/wiki/Property:P179): [Dragon Ball](https://www.wikidata.org/wiki/Q16515147), [takes place in fictional universe](https://www.wikidata.org/wiki/Property:P1434): [Dragon Ball universe](https://www.wikidata.org/wiki/Q3551230), [media franchise](https://www.wikidata.org/wiki/Property:P8345): [Dragon Ball](https://www.wikidata.org/wiki/Q2020)

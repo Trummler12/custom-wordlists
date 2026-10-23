@@ -1,5 +1,0 @@
-Pokémon forms: label corrections (1/2)
-Q141792722|Lde|"Gigadynamax-Riffex Hochform"
-Q141792727|Lde|"Gigadynamax-Riffex Tiefform"
-Q141792819|Lde|"Gigadynamax-Wulaosu Fokussierter Stil"
-Q141792821|Lde|"Gigadynamax-Wulaosu Fließender Stil"

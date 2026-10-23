@@ -17,7 +17,7 @@ What Wikidata offers for the League of Legends topics, and how far it can serve 
 [Gaming](../README.md#gaming)
 - ➕[Champions](#champions)
 - ❓[Legacy Champions](#legacy-champions)
-- ✖️[Characters](#️characters)
+- ✖️[Characters](#characters)
 
 ## ➕Champions
 
@@ -88,7 +88,7 @@ Refs: this file, Champions, "Name forms beyond short / long"; _data/Prompts/done
 
 **Open (2026-10-10):** not settled by the `old` form; Trummler discusses the topic in PR #39, perhaps before its phase Z.
 
-## ✖️Characters
+## ✖Characters
 
 **Associated List:** [list of League of Legends characters (Q17042404)](https://www.wikidata.org/wiki/Q17042404)  
 **Definition:** -  

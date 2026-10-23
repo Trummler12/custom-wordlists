@@ -15,12 +15,12 @@ What Wikidata offers for the South Park topics, and how far it can serve as thei
 ## Navigation
 
 [Animation](../README.md#animation)
-- ✖️[Characters](#️characters)
-- ✖️[Families](#️families)
+- ✖️[Characters](#characters)
+- ✖️[Families](#families)
 - ❌[Episodes](#episodes)
 - ➕[Video Games](#video-games)
 
-## ✖️Characters
+## ✖Characters
 
 **Associated List:** [list of South Park characters (Q47226)](https://www.wikidata.org/wiki/Q47226)  
 **Definition:** [is a list of](https://www.wikidata.org/wiki/Property:P360): [character](https://www.wikidata.org/wiki/Q95074), [present in work](https://www.wikidata.org/wiki/Property:P1441): [South Park](https://www.wikidata.org/wiki/Q16538)
@@ -80,7 +80,7 @@ What Wikidata offers for the South Park topics, and how far it can serve as thei
 - **Research (2026-10-12, settled):** Gemini (`_data/Prompts/done/South_Park_Name_Forms.md`), each answer checked. Confirmed: Sharon's maiden name *Kimble* is spoken in *My Future Self n' Me* (Q375402; "Mom, your maiden name is Kimble", per the fan wiki's script); Kenny is *Dr. Kenneth McCormick* in *Post COVID*; the official episode page of *White People Renovating Houses* spells *Darryl* (his own page mostly *Darrel*); *Gerblanski*. No source for the middle names Wikidata holds (Stan's *David*, Butters' and Clyde's *James*, Tweek's *William*): neither page names them. Not settled, so left out: *Mr. Kim* appears only in the script's stage directions, the dialogue says *Lu Kim* or *Mr. Lu Kim*; *PC Principal* is *Peter Charles* officially and *Peter "PC Principal" Charles* in the fan wiki, which hints at *Charles* as his family name, but no official source says so. Two spellings for PR #39's list: *Ned Gerblanski* (ours *Gerblansky*) and *Jimmy Valmer* (Wikidata's label still *Volmer*).
 - **Check after the imports (2026-10-20):** all four name-form files and the portrayals batch are on Wikidata: P1813 on the tier 1 to 3 characters, Butters, Pip and Chef by P1449, the new family names on their characters (Kyle's family item replaced), Sharon's *married name* and *Sharon Kimble*, the four unsourced middle names gone. `southpark.mjs` (`_data/southpark-run4.txt`): 148 items linked, 84 of our 136 match, tiers 1 to 3 at 56 of 57 (only Shelly, a spelling question for PR #39).
 
-## ✖️Families
+## ✖Families
 
 **Associated List:** [list of South Park families (Q47286)](https://www.wikidata.org/wiki/Q47286)  
 **Definition:** -  

@@ -15,15 +15,15 @@ What Wikidata offers for the Pokémon (Games) topics, and how far it can serve a
 ## Navigation
 
 [Gaming](../README.md#gaming)
-- ☑️[Pokémon](#️pokémon)
-- ☑️[Abilities](#️abilities)
-- ✖️[Items](#️items)
-- ✖️[Moves](#️moves)
-- ✖️[Characters](#️characters)
+- ☑️[Pokémon](#pokémon)
+- ☑️[Abilities](#abilities)
+- ✖️[Items](#items)
+- ✖️[Moves](#moves)
+- ✖️[Characters](#characters)
 - ➕[Locations](#locations)
 - ➕[Video Games](#video-games)
 
-## ☑️Pokémon
+## ☑Pokémon
 
 **Associated List:** [list of Pokémon species (Q236209)](https://www.wikidata.org/wiki/Q236209)  
 **Definition:** [is a list of](https://www.wikidata.org/wiki/Property:P360): [Pokémon species](https://www.wikidata.org/wiki/Q3966183)  
@@ -271,6 +271,7 @@ The direction is right everywhere, but from generation 5 on most species have 2 
   - **Labels:** species plus form, the games' display as an alias, as in the official batches. de names from Pokéwiki where PokéAPI lacks them or has them wrong: Alcremie's 62 as *Pokusan <Creme> <Zucker-…>*, the cosplay Pikachus (*Rocker-*, *Damen-*, *Star-*, *Professoren-*, *Wrestler-*, *Cosplay-Pikachu*), *Ash-Quajutsu*, *Partner-Pikachu* / *-Evoli*, *Zarude Papa-Form*; *Vivillion* and *Noyeau* corrected.
   - **Checks:** a full-text search for every label and alias found no existing item.
 - **Label corrections** (`2026-10-20_pokemon-forms-labels-{1,2}.txt`): a parenthetical display in the de name had made the four Toxtricity and Urshifu Gigantamax labels *Gigadynamax-Riffex Gigadynamax-Form* (and *-Wulaosu*), the form lost; *Magearna Original Color* got the bare species name in de; and PokéAPI has no de names for the female Oinkologne, Maushold, Palafin, Tatsugiri, Dudunsparce, Poltchageist and Sinistcha forms (taken from Pokéwiki: *Viererfamilie*, *Heldenform*, *Hängende* / *Gestreckte Form*, *Dreisegmentform*, *Kostbarkeitsform*, *Edle Form*). One more PokéAPI slip, fr *Météno Noyeau Rouge* (*Noyau*). All PokéAPI errors found so far, drafted as a report for its maintainers: `PokemonAPI.md` (temporary).
+- **Check after the imports (2026-10-23):** all 318 created items and 130 edits of the 37 form batches are on Wikidata, each label, alias, description, statement and reference URL as written. One correction had slipped through when the label batch was split; it follows as `2026-10-23_pokemon-forms-label-magearna.txt` (de *Magearna Originalfarbe*). Every form item now links to its species, except the two shared Forces of Nature items (*Incarnate Forme*, *Therian Forme*), which stay as they are.
 
 <!-- @agent(#35) from #38 · 2026-10-20 · OPEN
 Decided (Trummler, 2026-10-20): MissingNo. joins generation 1 as a standard entry, the one glitch species and the one exception; the cosmetic forms (Vivillon, Alcremie, Unown, …) get an omitted rule of their own, `cosmetic-forms`, and Wikidata items typed *different form of Pokémon* like every other form. Proposed by #38, to confirm with Trummler: all forms as omitted rules, grouped by the official Japanese Pokédex (zukan.pokemon.co.jp lists 277 forms as entries): `mega-evolutions` (Mega and Primal), `gigantamax`, `regional-forms`, `special-forms` (the other forms the official Pokédex lists), and `cosmetic-forms` for the sets it doesn't list one by one (Alcremie, Unown, Vivillon, Arceus, Pikachu's caps, Minior, Furfrou, the Flabébé line, …). Totem Pokémon are no forms.
@@ -286,7 +287,7 @@ Ask: two zh-Hans names in our lists carry a Traditional character (PokéAPI's er
 Refs: this file, Pokémon => Labels: official where the games are released, and only there
 -->
 
-## ☑️Abilities
+## ☑Abilities
 
 **Associated List:** -  
 **Definition:** -  
@@ -303,7 +304,7 @@ Refs: this file, Pokémon => Labels: official where the games are released, and 
 
 **Check (2026-10-07):** 314, unchanged.
 
-## ✖️Items
+## ✖Items
 
 **Associated List:** -  
 **Definition:** -  
@@ -319,7 +320,7 @@ Refs: this file, Pokémon => Labels: official where the games are released, and 
 
 **Check (2026-10-07):** 330 with subclasses (22 direct), unchanged.
 
-## ✖️Moves
+## ✖Moves
 
 **Associated List:** -  
 **Definition:** -  
@@ -331,14 +332,14 @@ Refs: this file, Pokémon => Labels: official where the games are released, and 
 
 **Check (2026-10-07):** 678 with subclasses (1 direct), unchanged.
 
-## ✖️Characters
+## ✖Characters
 
 **Associated List:** [list of Pokémon characters (Q379199)](https://www.wikidata.org/wiki/Q379199)  
 **Definition:** [is a list of](https://www.wikidata.org/wiki/Property:P360): [character](https://www.wikidata.org/wiki/Q95074), [from narrative universe](https://www.wikidata.org/wiki/Property:P1080): [Pokémon universe](https://www.wikidata.org/wiki/Q17562848)  
 **Named characters so far (per Google's AI answer):** game-exclusive ~900 to 1,000+, anime-exclusive ~1,500 to 2,000+, "neither" (manga and other media exclusives) ~300 to 500+  
 **Query:** none specific yet (to follow)  
 **Results:** just over 100  
-**Rating:** the worst case so far as far as completeness goes.
+**Rating:** the worst case so far as completeness goes.
 
 **Check (2026-10-07):** The definition finds 308 with subclasses (11 without), more than the "just over 100" above; 313 characters are linked to the Pokémon universe, anime, series or Adventures overall. Still far below the thousands of named characters.
 

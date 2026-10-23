@@ -15,14 +15,14 @@ What Wikidata offers for the Pokémon (Anime) topics, and how far it can serve a
 ## Navigation
 
 [Anime](../README.md#anime)
-- ✖️[Characters](#️characters)
+- ✖️[Characters](#characters)
 - ➕[Locations](#locations)
 - ❌[Episodes](#episodes)
-- ✖️[Openings (theme songs)](#️openings-theme-songs)
+- ✖️[Openings (theme songs)](#openings-theme-songs)
 - 🔵[Films](#films)
 - ➕[Video Games](#video-games)
 
-## ✖️Characters
+## ✖Characters
 
 **Associated List:** [list of Pokémon anime characters (Q1138546)](https://www.wikidata.org/wiki/Q1138546)  
 **Definition:** [is a list of](https://www.wikidata.org/wiki/Property:P360): [anime character](https://www.wikidata.org/wiki/Q80447738), [present in work](https://www.wikidata.org/wiki/Property:P1441): [Pokémon](https://www.wikidata.org/wiki/Q239937)
@@ -44,7 +44,7 @@ What Wikidata offers for the Pokémon (Anime) topics, and how far it can serve a
 **Definition:** [is a list of](https://www.wikidata.org/wiki/Property:P360): [television series episode](https://www.wikidata.org/wiki/Q21191270), [part of the series](https://www.wikidata.org/wiki/Property:P179): [Pokémon](https://www.wikidata.org/wiki/Q846649)  
 **Assessment:** Barely anyone knows individual Episodes’ Titles; Also, “Original Series” may imply “Horizons” might be behind another list - the definition however doesn’t distinguish (needs checking)
 
-## ✖️Openings (theme songs)
+## ✖Openings (theme songs)
 
 **Associated List:** [list of Pokémon theme songs (Q4189250)](https://www.wikidata.org/wiki/Q4189250)  
 **Definition:** [is a list of](https://www.wikidata.org/wiki/Property:P360): [theme music](https://www.wikidata.org/wiki/Q1193470), [used by](https://www.wikidata.org/wiki/Property:P1535): [Pokémon](https://www.wikidata.org/wiki/Q239937)  

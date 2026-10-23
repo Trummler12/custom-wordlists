@@ -19,7 +19,7 @@ What Wikidata offers for the Olympics topics, and how far it can serve as their 
 [Sports](../README.md#sports)
 - ✅[Summer Sports](#summer-sports)
 - ➕[Summer Athletes](#summer-athletes)
-- ☑️[Winter Sports](#️winter-sports)
+- ☑️[Winter Sports](#winter-sports)
 - ➕[Winter Athletes](#winter-athletes)
 
 
@@ -233,7 +233,7 @@ Full output: `_data/athlete-tiers-run1.txt`.
   - So would keeping the 30 `NAME_LANGS` instead of all 40 Wikidata tags.
 - **Leave room for growth.** Counts only rise: articles get added and new Games come. A floor right at the limit will cross it within a few years.
 
-## ☑️Winter Sports
+## ☑Winter Sports
 
 **Base, rules, tiers:** as for Summer Sports (same query, same three rules, same bands); no rule Winter needs that Summer lacks, beyond `demonstration-sports` should it be adopted for both.  
 **Check (2026-10-08), with #35's rules on its dump:** 24 sports, tiers 1/1/9/6/5/2 (ice hockey | curling | figure skating … speed skating | skeleton … nordic skiing | ice dance, ski mountaineering, icestock, speed skiing, military patrol | pair skating, long track speed skating).

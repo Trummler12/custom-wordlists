@@ -18,7 +18,7 @@ What Wikidata offers for the SpongeBob SquarePants topics, and how far it can se
 - ➕[Characters](#characters)
 - 🔵[Locations](#locations)
 - ❌[Episodes](#episodes)
-- ✖️[Video Games](#️video-games)
+- ✖️[Video Games](#video-games)
 
 ## ➕Characters
 
@@ -41,7 +41,7 @@ What Wikidata offers for the SpongeBob SquarePants topics, and how far it can se
 **Definition:** [is a list of](https://www.wikidata.org/wiki/Property:P360): [television series episode](https://www.wikidata.org/wiki/Q21191270), [part of the series](https://www.wikidata.org/wiki/Property:P179): [SpongeBob SquarePants](https://www.wikidata.org/wiki/Q83279)  
 **Assessment:** Barely anyone knows individual Episodes’ Titles.
 
-## ✖️Video Games
+## ✖Video Games
 
 **Associated List:** [SpongeBob SquarePants video games (Q1727636)](https://www.wikidata.org/wiki/Q1727636)  
 **Definition:** -  

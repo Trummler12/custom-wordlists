@@ -16,14 +16,14 @@ What Wikidata offers for the One Piece topics, and how far it can serve as their
 
 [Anime](../README.md#anime)
 - ➕[Characters](#characters)
-- ✖️[Animals/Species/Races](#️animalsspeciesraces)
-- ✖️[Affiliations](#️affiliations)
-- ✖️[Devil Fruits](#️devil-fruits)
-- ✖️[Locations](#️locations)
-- ✖️[Islands](#️islands)
+- ✖️[Animals/Species/Races](#animalsspeciesraces)
+- ✖️[Affiliations](#affiliations)
+- ✖️[Devil Fruits](#devil-fruits)
+- ✖️[Locations](#locations)
+- ✖️[Islands](#islands)
 - ❌[Episodes](#episodes)
 - 🔵[Films](#films)
-- ✖️[Video Games](#️video-games)
+- ✖️[Video Games](#video-games)
 
 ## ➕Characters
 
@@ -33,19 +33,19 @@ What Wikidata offers for the One Piece topics, and how far it can serve as their
 **Check (2026-10-07):** 1,090 characters are linked via *present in work* (P1441); the definition finds 0 without subclasses and 1,036 with them (they are typed *anime character* / *manga character*).  
 **Rating:** ➕ (was ✖️): a large share of the named cast.
 
-## ✖️Animals/Species/Races
+## ✖Animals/Species/Races
 
 **Associated List:** -  
 **Definition:** -  
 **Assessment:** No lists defined yet
 
-## ✖️Affiliations
+## ✖Affiliations
 
 **Associated List:** -  
 **Definition:** -  
 **Assessment:** No list defined yet
 
-## ✖️Devil Fruits
+## ✖Devil Fruits
 
 **Associated List:** -  
 **Definition:** -  
@@ -54,7 +54,7 @@ What Wikidata offers for the One Piece topics, and how far it can serve as their
 
 **Check (2026-10-07):** The class Devil Fruit (Q1156774) has no instances: the individual fruits are not on Wikidata.
 
-## ✖️Locations
+## ✖Locations
 
 **Associated List:** -  
 **Definition:** -  
@@ -63,7 +63,7 @@ What Wikidata offers for the One Piece topics, and how far it can serve as their
 **Check (2026-10-07):** 18 fictional locations are linked.  
 **Rating:** stays ✖️.
 
-## ✖️Islands
+## ✖Islands
 
 **Associated List:** -  
 **Definition:** -  
@@ -82,7 +82,7 @@ What Wikidata offers for the One Piece topics, and how far it can serve as their
 
 **Check (2026-10-07):** 10 films are linked via *part of the series* (P179), but none is typed *animated feature film* as the definition expects, so its query finds 0.
 
-## ✖️Video Games
+## ✖Video Games
 
 **Associated List:** [list of One Piece video games (Q2628654)](https://www.wikidata.org/wiki/Q2628654)  
 **Definition:** [is a list of](https://www.wikidata.org/wiki/Property:P360): [video game](https://www.wikidata.org/wiki/Q7889), [part of the series](https://www.wikidata.org/wiki/Property:P179): [One Piece](https://www.wikidata.org/wiki/Q13199126)
