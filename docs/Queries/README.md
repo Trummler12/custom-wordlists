@@ -150,14 +150,14 @@ Use the relative File Paths/Links provided on the Items listed in the [Overview 
 ### Film & TV
 
 - [Disney](./film-tv/Disney.md#navigation)
-  - [Animated Films](./film-tv/Disney.md#animated-films)
-  - [Classics](./film-tv/Disney.md#classics)
+  - ➕[Animated Films](./film-tv/Disney.md#animated-films)
+  - ➕[Classics](./film-tv/Disney.md#classics)
 - [Harry Potter](./film-tv/Harry_Potter.md#navigation)
-  - [Characters](./film-tv/Harry_Potter.md#characters)
+  - ➕[Characters](./film-tv/Harry_Potter.md#characters)
 - [The Lord of the Rings](./film-tv/Lord_of_the_Rings.md#navigation)
-  - [Characters](./film-tv/Lord_of_the_Rings.md#characters)
+  - ➕[Characters](./film-tv/Lord_of_the_Rings.md#characters)
 - [Star Wars](./film-tv/Star_Wars.md#navigation)
-  - [Characters](./film-tv/Star_Wars.md#characters)
+  - ➕[Characters](./film-tv/Star_Wars.md#characters)
 
 #### Candidates
 
@@ -274,6 +274,12 @@ Use the relative File Paths/Links provided on the Items listed in the [Overview 
 - Asian Games
 - Olympic Host Cities
 
+<!-- @agent(#35) from #38 · 2026-10-23 · OPEN
+Decided: Film & TV analysed. Every curated character of Harry Potter, The Lord of the Rings, Star Wars and Disney's animated films is on Wikidata, 14 of 16 Disney classics; sitelinks follow our tiers (Spearman 0.62 to 0.89), so they can rank candidates for these incomplete topics, while the tiers stay editorial.
+Ask: when you build these topics from Wikidata, take each file's Query (P1441 / P1080 / P8345 to the franchise's works, class character Q95074 with subclasses); add groups of fictional characters (Q14514600) where our lists hold one (Beagle Boys); for Disney's animated films two rule candidates (cameos whose own P8345 isn't Disney's; members of the Mouse & Duck universes, who belong to Classics); Chip and Dale reach the Classics only through their pair (P361 Chip 'n' Dale, Q403138). Disney gets restructured (Trummler, 2026-10-23): three lines `mickey/`, `disney/` (the canon) and `pixar/` with the entry type as topic, merged one level up, franchise nodes inside a line from at least 10 named characters, of them 5 well-known (Trummler, 2026-10-25, yours to change), which by Gemini's counts gives nearly every feature film a node; the plan and the counts are at the top of film-tv/Disney.md, so build Disney from that, not from today's two topics. No hurry.
+Refs: film-tv/Disney.md, Harry_Potter.md, Lord_of_the_Rings.md, Star_Wars.md
+-->
+
 ## Method
 
 **What a status is measured against.** For a topic we already have, the fairest measure is how many of *our* entries Wikidata could supply (`_scripts/vs-topic.mjs`), not how many items it holds in total. For a planned one, the members found against the real number (a franchise wiki, the official count).
@@ -315,6 +321,7 @@ Use the relative File Paths/Links provided on the Items listed in the [Overview 
 - `listdef.mjs <list-QID>…`: a list item's P360 definitions and what each matches (exact class, with subclasses, any class).
 - `members.mjs <class> <work>… [--list]`: instances of a class linked to the works by any of the usual properties, per property.
 - `vs-topic.mjs <topic.json> <class> <work>… [--missing]`: how many of a curated topic's entries are among those members (by full name, or by first name).
+- `topic-rank.mjs <topic.json> <class> <work>… [--top N]`: the members ranked by sitelinks, where our entries fall (per tier, Spearman), and the best-known members our list lacks; groups of fictional characters included and marked.
 - `classes.mjs <work>…`: the classes the linked items are instances of, most common first (to find a list's class when nothing defines one).
 - `olympics.mjs`: the Olympic sports per Games and per edition, with sitelinks and parent sports.
 - `athletes.mjs`: how complete Olympic athletes are (Olympedia IDs, participations, medal qualifiers, sitelinks).
