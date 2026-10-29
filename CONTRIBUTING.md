@@ -2,6 +2,9 @@
 
 Thanks for helping with the project!
 
+<!-- REWORDING (the "so we only need to extend the Locales" link chains two separate ideas; a split, keep or discard):
+"Most of our word lists are built from [Wikidata](https://www.wikidata.org/), which delivers [every language Skribbl.io supports](https://skribbl-io.fandom.com/wiki/Supported_Languages) (and a few more) in a single dump. The lists themselves therefore need no per-language work; only the interface (the Locales) has to be extended when a new UI language is added."
+-->
 Most of our word lists are built from [Wikidata](https://www.wikidata.org/) and aim to carry [every Language Skribbl.io supports](https://skribbl-io.fandom.com/wiki/Supported_Languages) (plus some more) right from the get-go, so we only need to extend the Locales when building (technical) support for a new UI Language.  
 So the **most effective help** happens there: a label or an item added on **Wikidata** reaches the app with the next data dump, in that language and for everyone else using Wikidata too.
 
@@ -16,7 +19,7 @@ So the **most effective help** happens there: a label or an item added on **Wiki
 <!-- Might at some point be worth replacing with docs/Queries/README.md ... or simple cross-linking might already be enough, since they both serve different purposes -->
 The [topic tracker](docs/Topic-Progress.md) shows what's already covered and what's planned. Worth a look before proposing a new topic.
 
-## a) Improve the data on Wikidata (recommended)
+## Improve the data on Wikidata (recommended)
 
 On a Topic built from Wikidata, you may find an **Omission entry** mentioning "items with no \<language\> names", followed by a "help us add what's missing!" with a URL behind:  
 ![1791791568552](assets/docs/Missing_lang_screenshot.png)  
@@ -33,14 +36,14 @@ Open an item from the table and, once logged in to Wikidata, add what's missing.
 - Our dumps are run by hand, so a fix takes a while to show up in the app.
 
 <!-- At some point, the "only example" might be updated -->
-[1] Note: Most Topics have their own Dump, but some exceptions share a Dump with other sibling topics, sports/games/<game>/sports being the only example so far.
+[1] Note: Most Topics have their own Dump, but some exceptions share a Dump with other sibling topics, `sports/games/<game>/sports` being the only example so far.
 
 ### Improve Wikidata data beyond Labels
 
-It's perfectly fine when most contributers **limit** themselves **to updating labels** since that's where the majority of all manual work takes place;  
+It's perfectly fine when most contributors **limit** themselves **to updating labels** since that's where the majority of all manual work takes place;  
 And even though this Application doesn't use them, you're happily invited to **update Description & Aliases as well** when you're already at it, since they're often either empty, inconsistent or even confusing ^^
 
-Now, when it comes to **Statements**, it starts to become increasingly technical, but in case you're still interested, here's the most important Statements you can update:
+Now, when it comes to **Statements**, it starts to become increasingly technical, but in case you're still interested, here are the most important statements you can update:
 
 - **official name (P1448)**: Serves as a basis for "long" variants on some (non-real-human) items,
   - with "start time (P580)" and "end time (P582)" as optional qualifiers in case the item underwent a renaming (for example on Countries such as "White Russia"/"Belarus" or for LoL Champions with a legacy name)
@@ -51,14 +54,20 @@ Now, when it comes to **Statements**, it starts to become increasingly technical
 ^That basically covers everything we rely on in terms of **_quality_**;  
 
 The **_quantity_** on the other hand relies on the completeness of the items themselves as well as their Statements we filter based on; And what those Statements (+even Qualifiers in some cases) _are_ differs from Topic to Topic;  
-However, since the _logical_ completeness & correctness of Data often is highly objective and quite easy to automatically check via test query scripts, this is a task perfect to be delegated to an AI agent; BUT: of course you can't just blindly let an AI agent roam loose and risk hallucinating stuff; any updates this way shall only happen with the explicit instruction that any resulting [QuickStatements Batches](https://quickstatements.toolforge.org/#/batch) shall only consist of data updates when accompanied by some trustworthy independant reference(s) whenever the presence of a source makes sense;  
+<!-- REWORDING (this one sentence runs very long; a split into two, keep or discard):
+"The _logical_ completeness and correctness of the data is often highly objective and easy to check automatically via test query scripts, which makes it a task well suited to an AI agent. But an agent can't be let loose to hallucinate: any updates this way must carry the explicit instruction that the resulting [QuickStatements batches](https://quickstatements.toolforge.org/#/batch) only consist of data backed by a trustworthy, independent reference wherever a source makes sense."
+-->
+However, since the _logical_ completeness & correctness of Data often is highly objective and quite easy to automatically check via test query scripts, this is a task perfect to be delegated to an AI agent; BUT: of course you can't just blindly let an AI agent roam loose and risk hallucinating stuff; any updates this way shall only happen with the explicit instruction that any resulting [QuickStatements Batches](https://quickstatements.toolforge.org/#/batch) shall only consist of data updates when accompanied by some trustworthy independent reference(s) whenever the presence of a source makes sense;  
 In case you're interested in some insight in this regard, you may check out the [landing 'page'](https://github.com/Trummler12/custom-wordlists/blob/docs/wikidata_analysis/docs/Queries/README.md) of this whole background analysis
 
-## b) Propose a topic built from Wikidata
+## Propose a topic built from Wikidata
 
+Before a topic is fully supported it passes through a few stages: it first shows up as a *Candidate* in the [Wikidata analysis](https://github.com/Trummler12/custom-wordlists/blob/docs/wikidata_analysis/docs/Queries/README.md), gets promoted to an evaluation of its own, and once it looks promising it turns into a planned, then a built topic (*Planned* and *Incomplete* are often skipped straight past). The [topic tracker](docs/Topic-Progress.md) shows where each one stands, usually trailing the analysis a little.
+<!-- Candidate list lives on PR #38's branch until it merges; switch to a relative docs/Queries/README.md link then. -->
 
+If you just want a topic to exist, open a [**Topic Request**](https://github.com/Trummler12/custom-wordlists/issues/new?template=0-topic-request.yml) issue, or 👍 an existing one to push it up the queue. No query or list needed; this is also how a topic still in the analysis phase gets moved forward.
 
-Open a [**Data source**](https://github.com/Trummler12/custom-wordlists/issues/new?template=1-data-source.yml) issue. The best proposal names the query that finds the topic's items, ideally as a ready-made [Wikidata Query Builder](https://query.wikidata.org/querybuilder/?uselang=en) link:
+If you already know the query, open a [**Data source**](https://github.com/Trummler12/custom-wordlists/issues/new?template=1-data-source.yml) issue instead. The best proposal names the query that finds the topic's items, ideally as a ready-made [Wikidata Query Builder](https://query.wikidata.org/querybuilder/?uselang=en) link:
 
 - **"With"** conditions say what makes an item part of the topic: its class (*instance of*, `P31`), or the work or series it belongs to (*part of the series*, `P179`; *present in work*, `P1441`).
 - **"Without"** conditions say what to leave out. Please tell apart what doesn't belong at all from what a reader might merely want hidden by default (historical countries, discontinued sports): the latter becomes a rule the reader can switch, not a removal.
@@ -68,7 +77,7 @@ For example, [this query](https://w.wiki/XnJo) finds the countries: sovereign st
 <!-- Example query: the countries, which match our dump one to one; swap it along with the coverage example above if a better one turns up. -->
 <!-- Once PR #38 has merged: link docs/Queries/README.md here, the analyses of what Wikidata covers per topic and how we file edits through QuickStatements. -->
 
-The same form takes other structured sources too, such as a public API or a maintained dataset: a couple of links can be the whole contribution.
+The Data source form takes other structured sources too, such as a public API or a maintained dataset: a couple of links can be the whole contribution.
 
 ## Corrections
 
@@ -121,7 +130,7 @@ Prefer to edit the data yourself:
    - `"usesEnglishFor"` names the languages among those whose entries simply *are* the English names — League of Legends champions are called the same in German. The app then shows an ℹ️ rather than leaving a reader to wonder why a German list is full of English words. Use `"*"` for a list that is English in every language you haven't named in `"languages"`.
    - Entries must be unique within a topic, and the topic's `"id"` must match its file stem (or, for a topic alone in its own folder, the folder name).
    - `"sources"` (where the entries came from) and `"credits"` (who compiled them) are optional and free-form — a single string or a list. A label may precede the link, e.g. `"German: https://…"`. Please fill in `"sources"` for a new list.
-   - `"omitted"` lists families of entries the list hides from its source — junk nobody could draw, or numbered copies of one drawable thing. **The entries stay in the file**: they are filtered on the way into the list, so every rule is reversible and the app can show a 🧹 panel saying what was left out and offering it back.
+   - `"omitted"` lists families of entries the list hides from its source — junk nobody could draw, or numbered copies of one drawable thing. **The entries stay in the file**: they are filtered on the way into the list, so every rule is reversible and the app can show a 🚫 panel saying what was left out and offering it back.
 
      ```json
      "omitted": [
