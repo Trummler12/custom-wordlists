@@ -62,12 +62,14 @@ In case you're interested in some insight in this regard, you may check out the 
 
 ## Propose a topic built from Wikidata
 
-Before a topic is fully supported it passes through a few stages: it first shows up as a *Candidate* in the [Wikidata analysis](https://github.com/Trummler12/custom-wordlists/blob/docs/wikidata_analysis/docs/Queries/README.md), gets promoted to an evaluation of its own, and once it looks promising it turns into a planned, then a built topic (*Planned* and *Incomplete* are often skipped straight past). The [topic tracker](docs/Topic-Progress.md) shows where each one stands, usually trailing the analysis a little.
+Before a topic is fully supported it passes through a few stages:
 <!-- Candidate list lives on PR #38's branch until it merges; switch to a relative docs/Queries/README.md link then. -->
+1. it first shows up as a *Candidate* in the [Wikidata analysis](https://github.com/Trummler12/custom-wordlists/blob/docs/wikidata_analysis/docs/Queries/README.md),
+2. gets promoted to an evaluation of its own,
+3. and once it looks promising it turns into a planned, then a built topic (*Planned* and *Incomplete* are often skipped straight past).
+4. The [topic tracker](docs/Topic-Progress.md) shows where each one stands, usually trailing the analysis and sometimes even the live Topics a little.
 
-If you just want a topic to exist, open a [**Topic Request**](https://github.com/Trummler12/custom-wordlists/issues/new?template=0-topic-request.yml) issue, or 👍 an existing one to push it up the queue. No query or list needed; this is also how a topic still in the analysis phase gets moved forward.
-
-If you already know the query, open a [**Data source**](https://github.com/Trummler12/custom-wordlists/issues/new?template=1-data-source.yml) issue instead. The best proposal names the query that finds the topic's items, ideally as a ready-made [Wikidata Query Builder](https://query.wikidata.org/querybuilder/?uselang=en) link:
+Open a [**Data source**](https://github.com/Trummler12/custom-wordlists/issues/new?template=1-data-source.yml) issue. The best proposal names the query that finds the topic's items, ideally as a ready-made [Wikidata Query Builder](https://query.wikidata.org/querybuilder/?uselang=en) link:
 
 - **"With"** conditions say what makes an item part of the topic: its class (*instance of*, `P31`), or the work or series it belongs to (*part of the series*, `P179`; *present in work*, `P1441`).
 - **"Without"** conditions say what to leave out. Please tell apart what doesn't belong at all from what a reader might merely want hidden by default (historical countries, discontinued sports): the latter becomes a rule the reader can switch, not a removal.
@@ -78,6 +80,12 @@ For example, [this query](https://w.wiki/XnJo) finds the countries: sovereign st
 <!-- Once PR #38 has merged: link docs/Queries/README.md here, the analyses of what Wikidata covers per topic and how we file edits through QuickStatements. -->
 
 The Data source form takes other structured sources too, such as a public API or a maintained dataset: a couple of links can be the whole contribution.
+
+### Request a topic instead (less technical)
+
+Not comfortable with queries? Just name the topic you'd like via a [**Topic Request**](https://github.com/Trummler12/custom-wordlists/issues/new?template=0-topic-request.yml) issue, or 👍 an [existing one](https://github.com/Trummler12/custom-wordlists/issues?q=is%3Aissue+state%3Aopen+label%3A%22Topic+Request+%F0%9F%97%B3%EF%B8%8F%22) to make it show anticipation.  
+No query or list needed, and it is also how a [topic still in the analysis phase](https://github.com/Trummler12/custom-wordlists/blob/docs/wikidata_analysis/docs/Queries/README.md#wikidata-query-analysis) can get moved forward more quickly.  
+Please check first that it isn't already covered or requested (the app's "Show `all` topics", or the [topic tracker](docs/Topic-Progress.md)).
 
 ## Corrections
 
