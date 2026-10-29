@@ -235,10 +235,10 @@
   }
   .sov-cell.in,
   .sov-cell.regular {
-    background: #1f6f43; /* dark green — provisional, pending a palette token */
+    background: var(--fill-in);
   }
   .sov-cell.out {
-    background: #8f2d2d; /* dark red — provisional, pending a palette token */
+    background: var(--fill-out);
   }
   .sov-cell.regular {
     cursor: default;

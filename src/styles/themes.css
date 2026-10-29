@@ -26,6 +26,12 @@
   --range-track: var(--color-gray-300);
   --range-dot: #ffffff;
   --range-thumb-ring: #ffffff;
+
+  /* Status-fill chips: a solid green/red box with a white ✓/✗ on top (the sovereignty
+     matrix cells, the coverage table cells). The glyph carries the meaning, not the hue,
+     so the pair is colour-blind safe and one value serves both themes. */
+  --fill-in: var(--color-green-700);
+  --fill-out: var(--color-red-600);
 }
 
 @media (prefers-color-scheme: dark) {

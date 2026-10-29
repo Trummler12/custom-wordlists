@@ -654,10 +654,10 @@
     font-variant-emoji: text;
   }
   .cell.has {
-    background: #1b6e2e; /* solid green — white mark on top */
+    background: var(--fill-in); /* solid green, white mark on top */
   }
   .cell:not(.has) {
-    background: #c62828; /* solid red — same weight of mark, for symmetry */
+    background: var(--fill-out); /* solid red, same weight of mark, for symmetry */
     font-size: smaller;
   }
   .noname {
