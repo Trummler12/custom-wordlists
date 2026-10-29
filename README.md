@@ -45,6 +45,7 @@ Most lists are built from [Wikidata](https://www.wikidata.org/): one dump ideall
 
 - **Improve the data on Wikidata (recommended).** Each topic built from it has a [coverage page](https://trummler12.github.io/custom-wordlists/coverage/sports) showing which names are still missing per language. Every one added there reaches the lists with the next dump update.
 - **Propose a topic built from Wikidata**, ideally with a Query Builder link, via a [*Data source*](https://github.com/Trummler12/custom-wordlists/issues/new?template=1-data-source.yml) issue.
+- **[Request a Topic](https://github.com/Trummler12/custom-wordlists/issues/new?template=0-topic-request.yml)** (a less technical alternative to the former): just name the topic you'd like, or 👍 an [existing request](https://github.com/Trummler12/custom-wordlists/issues?q=is%3Aissue+state%3Aopen+label%3A%22Topic+Request+%F0%9F%97%B3%EF%B8%8F%22).
 - **Hand-written lists** are still welcome for topics Wikidata can't carry, but they are the costly route for everyone.
 
 See **[CONTRIBUTING.md](CONTRIBUTING.md)** for details.
