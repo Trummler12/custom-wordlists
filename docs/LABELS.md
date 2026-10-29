@@ -19,12 +19,15 @@ Applied automatically by the form. Exactly one per issue.
 
 | Label | Applied by | Meaning |
 |---|---|---|
+| `Topic Request 🗳️` | `0-topic-request.yml` | A wish for a topic to be built (or an upvote of one): no query or list, just demand — its 👍 count sets the priority |
 | `Data 📊` | `1-data-source.yml` | A topic (or a change to one) built from Wikidata or other structured data — the recommended way |
 | `List 📋` | `2-word-list.yml` | A hand-written word list: new, a full rework, or a new language |
 | `Correction 🔧` | `3-correction.yml` | A wrong or missing entry, a fame-group tweak, a translation |
 | `Code 💻` | `4-bug.yml`, `5-improvement.yml` | The app itself — site, UI, build |
 
 `Correction 🔧` is deliberately content-only. A wrong entry in a list is not a `Bug 🐛`; keeping them apart is what makes `Bug 🐛` usable as a filter for "the app is broken".
+
+`Topic Request 🗳️` is the lowest-barrier form: no query and no entries, just "I'd like this topic". It is a demand signal rather than material to work from, so what counts is the 👍 count, which ranks requested topics against one another. [`.github/workflows/topic-request-upvote.yml`](../.github/workflows/topic-request-upvote.yml) seeds each new one with a single 👍, so a request starts at one vote without its author upvoting their own issue. A request graduates into a `Data 📊` issue once someone has a query for it.
 
 `Data 📊` is a type rather than a kind, even though a data source always *becomes* a list. What arrives is different in kind from a list: a query or links, not entries. Keeping it out of `List 📋` is also what stops `Needs JSON 🧩` from firing on it — see below, that job is gated on the `List 📋` label, and a data issue has no entries to look at.
 
