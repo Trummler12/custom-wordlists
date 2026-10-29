@@ -1,0 +1,29 @@
+# Seed every Topic Request with one 👍, so its vote count starts at 1 without the author
+# having to upvote their own issue (which feels odd). The reaction count is what moves a
+# requested topic up the queue; see docs/LABELS.md and CONTRIBUTING.md.
+name: Topic Request upvote
+
+on:
+  issues:
+    types: [opened]
+
+permissions:
+  issues: write
+
+jobs:
+  upvote:
+    # The Topic Request form applies its label on creation, so it is already on the
+    # `opened` payload. Full label name (emoji included) to match, like labels.yml does.
+    if: "contains(github.event.issue.labels.*.name, 'Topic Request 🗳️')"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/github-script@v7
+        with:
+          script: |
+            await github.rest.reactions.createForIssue({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              content: "+1",
+            });
+            core.info("Seeded Topic Request with a 👍");
