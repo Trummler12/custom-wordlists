@@ -18,7 +18,7 @@
     "Names: https://pokeapi.co",
     "Fame: https://de.sporcle.com/games/SparknightSyzygy/pokemon-gen-ix"
   ],
-  "corrections": [{"entry":"Flamigo","zh-Hans":{"old":"纏红鹤","new":"缠红鹤"},"why":"PokéAPI mixes the Traditional 纏 into the Simplified name"},{"entry":"Iron Boulder","zh-Hans":{"old":"鐵磐岩","new":"铁磐岩"},"zh-Hant":{"old":"铁磐岩","new":"鐵磐岩"},"why":"PokéAPI has the two scripts the wrong way round"},{"entry":"Iron Crown","zh-Hans":{"old":"鐵頭殼","new":"铁头壳"},"zh-Hant":{"old":"铁头壳","new":"鐵頭殼"},"why":"PokéAPI has the two scripts the wrong way round"}],
+  "corrections": [{"entry":"Flamigo","zh-Hans":{"old":"纏红鹤","new":"缠红鹤"},"why":"PokéAPI mixes the Traditional 纏 into the Simplified name"},{"entry":"Iron Boulder","zh-Hans":{"old":"鐵磐岩","new":"铁磐岩"},"zh-Hant":{"old":"铁磐岩","new":"鐵磐岩"},"why":"PokéAPI has the two scripts the wrong way round"},{"entry":"Iron Crown","zh-Hans":{"old":"鐵頭殼","new":"铁头壳"},"zh-Hant":{"old":"铁头壳","new":"鐵頭殼"},"why":"PokéAPI has the two scripts the wrong way round"},{"entry":"Iron Treads","zh-Hans":{"old":"铁轍迹","new":"铁辙迹"},"why":"PokéAPI mixes the Traditional 轍 into the Simplified name"}],
   "tiers": [
     [
       {"en":"Sprigatito","de":"Felori","fr":"Poussacha","ja":"ニャオハ","ja-Latn":"Nyahoja","ko":"나오하","zh-Hans":"新叶喵","zh-Hant":"新葉喵"},
@@ -45,7 +45,7 @@
 
     [
       {"en":"Pawmo","de":"Pamamo","fr":"Pohmotte","ja":"パモット","ja-Latn":"Pamot","ko":"빠모트","zh-Hans":"布土拨","zh-Hant":"布土撥"},
-      {"en":"Iron Treads","de":"Eisenrad","es":"Ferrodada","fr":"Roue-de-Fer","it":"Solcoferreo","ja":"テツノワダチ","ja-Latn":"Tetsunowadachi","ko":"무쇠바퀴","zh-Hans":"铁轍迹","zh-Hant":"鐵轍跡"},
+      {"en":"Iron Treads","de":"Eisenrad","es":"Ferrodada","fr":"Roue-de-Fer","it":"Solcoferreo","ja":"テツノワダチ","ja-Latn":"Tetsunowadachi","ko":"무쇠바퀴","zh-Hans":"铁辙迹","zh-Hant":"鐵轍跡"},
       {"en":"Roaring Moon","de":"Donnersichel","es":"Bramaluna","fr":"Rugit-Lune","it":"Lunaruggente","ja":"トドロクツキ","ja-Latn":"Todorokutsuki","ko":"고동치는달","zh-Hans":"轰鸣月","zh-Hant":"轟鳴月"},
       {"en":"Iron Bundle","de":"Eisenbündel","es":"Ferrosaco","fr":"Hotte-de-Fer","it":"Saccoferreo","ja":"テツノツツミ","ja-Latn":"Tetsunotsutsumi","ko":"무쇠보따리","zh-Hans":"铁包袱","zh-Hant":"鐵包袱"},
       {"en":"Oinkologne","de":"Fragrunz","fr":"Fragroin","ja":"パフュートン","ja-Latn":"Perfuton","ko":"퍼퓨돈","zh-Hans":"飘香豚","zh-Hant":"飄香豚"},

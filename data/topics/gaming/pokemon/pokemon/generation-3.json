@@ -18,6 +18,7 @@
     "Names: https://pokeapi.co",
     "Fame: https://de.sporcle.com/games/g/pokemongen3"
   ],
+  "corrections": [{"entry":"Minun","zh-Hans":{"old":"負电拍拍","new":"负电拍拍"},"why":"PokéAPI mixes the Traditional 負 into the Simplified name"}],
   "tiers": [
     [
       {"en":"Mudkip","de":"Hydropi","fr":"Gobou","ja":"ミズゴロウ","ja-Latn":"Mizugorou","ko":"물짱이","zh-Hans":"水跃鱼","zh-Hant":"水躍魚"},
@@ -98,7 +99,7 @@
       {"en":"Plusle","fr":"Posipi","ja":"プラスル","ja-Latn":"Prasle","ko":"플러시","zh-Hans":"正电拍拍","zh-Hant":"正電拍拍"},
       {"en":"Vibrava","fr":"Vibraninf","ja":"ビブラーバ","ko":"비브라바","zh-Hans":"超音波幼虫","zh-Hant":"超音波幼蟲"},
       {"en":"Solrock","de":"Sonnfel","fr":"Solaroc","ja":"ソルロック","ko":"솔록","zh-Hans":"太阳岩","zh-Hant":"太陽岩"},
-      {"en":"Minun","fr":"Négapi","ja":"マイナン","ko":"마이농","zh-Hans":"負电拍拍","zh-Hant":"負電拍拍"},
+      {"en":"Minun","fr":"Négapi","ja":"マイナン","ko":"마이농","zh-Hans":"负电拍拍","zh-Hant":"負電拍拍"},
       {"en":"Lunatone","de":"Lunastein","fr":"Séléroc","ja":"ルナトーン","ko":"루나톤","zh-Hans":"月石","zh-Hant":"月石"},
       {"en":"Sharpedo","de":"Tohaido","ja":"サメハダー","ja-Latn":"Samehader","ko":"샤크니아","zh-Hans":"巨牙鲨","zh-Hant":"巨牙鯊"},
       {"en":"Torkoal","de":"Qurtel","fr":"Chartor","ja":"コータス","ja-Latn":"Cotoise","ko":"코터스","zh-Hans":"煤炭龟","zh-Hant":"煤炭龜"},
