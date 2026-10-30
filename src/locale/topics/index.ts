@@ -56,6 +56,7 @@ export interface TopicProse {
   };
   signLanguages: string;
   ancientPlates: string;
+  paleocontinents: string;
   /** The continents list's tier conditions, one per tier (descriptive, not number bands). */
   continentTiers: string[];
   tier3Note: string;

@@ -10,7 +10,7 @@
   "dataOrigin": ["Wikidata","Wikipedia","Bird (2003)"],
   "filePaths": {
     "scripts/geography/": ["dump-plate-data.mjs","build-continents.mjs"],
-    "data-raw/geography/": ["continents/","plates/"]
+    "data-raw/geography/": ["continents/","plates/","paleocontinents/"]
   },
   "languages": ["en","de","es","fr","it","ja","ko","zh-Hans","zh-Hant","pt","ru","tr","pl","nl","bg","cs","da","et","fi","el","he","hu","lv","mk","no","ro","sr","sk","sv","tl"],
   "sources": [
@@ -27,6 +27,12 @@
       "match": ["Phoenix Plate","Izanagi Plate","Farallon Plate","Kula Plate","Bellingshausen Plate","Charcot Plate","Cimmerian Plate","Moa Plate","Baltic plate","European plate"],
       "count": true,
       "reason": "ancientPlates"
+    },
+    {
+      "id": "paleocontinents",
+      "match": ["Pangaea","Gondwana","Laurasia","Rodinia","Pannotia","Laurentia","Siberia","Baltica","Vaalbara","Avalonia","Sahul","Euramerica","Columbia","Kenorland","Ur","Laramidia","Cimmeria","Nena","Atlantica","Arctica","Appalachia","South China","Mauritia","Asiamerica","Balkanatolia","Greater Adria","Armorica","Argoland","Protolaurasia"],
+      "count": true,
+      "reason": "paleocontinents"
     }
   ],
   "tiers": [
@@ -145,7 +151,36 @@
       {"en":"Cimmerian Plate","fr":"Plaque cimmérienne","it":"Placca cimmeriana","ja":"キンメリアプレート","zh-Hans":"基梅里板块","zh-Hant":"基梅里板塊","ru":"Киммерийская плита","fi":"Kimmerian laatta","hu":"Kimmériai lemez","?":["de","es","ko","pt","tr","pl","nl","bg","cs","da","et","el","he","lv","mk","no","ro","sr","sk","sv","tl"]},
       {"en":"Moa Plate","it":"Placca Moa","zh-Hans":"莫阿板塊","?":["de","es","fr","ja","ko","zh-Hant","pt","ru","tr","pl","nl","bg","cs","da","et","fi","el","he","hu","lv","mk","no","ro","sr","sk","sv","tl"]},
       {"en":"Baltic plate","it":"Placca baltica","ja":"バルトプレート","?":["de","es","fr","ko","zh-Hans","zh-Hant","pt","ru","tr","pl","nl","bg","cs","da","et","fi","el","he","hu","lv","mk","no","ro","sr","sk","sv","tl"]},
-      {"en":"European plate","fr":"Plaque européenne","nl":"Europese Plaat","?":["de","es","it","ja","ko","zh-Hans","zh-Hant","pt","ru","tr","pl","bg","cs","da","et","fi","el","he","hu","lv","mk","no","ro","sr","sk","sv","tl"]}
+      {"en":"European plate","fr":"Plaque européenne","nl":"Europese Plaat","?":["de","es","it","ja","ko","zh-Hans","zh-Hant","pt","ru","tr","pl","bg","cs","da","et","fi","el","he","hu","lv","mk","no","ro","sr","sk","sv","tl"]},
+      {"en":"Pangaea","es":"Pangea","fr":"Pangée","it":"Pangea","ja":"パンゲア大陸","ko":"판게아","zh-Hans":"盤古大陸","zh-Hant":"盤古大陸","pt":"Pangeia","ru":"Пангея","tr":"Pangea","pl":"Pangea","nl":"Pangea","bg":"Пангея","cs":"Pangea","da":"Pangæa","fi":"Pangea","el":"Παγγαία","he":"פנגיאה","hu":"Pangea","lv":"Pangeja","mk":"Пангеја","no":"Pangea","ro":"Pangeea","sr":"Пангеа","sk":"Pangea"},
+      {"en":"Gondwana","ja":"ゴンドワナ大陸","ko":"곤드와나","zh-Hans":"冈瓦那大陆","ru":"Гондвана","tr":"Gondvana","bg":"Гондвана","da":"Gondwanaland","el":"Γκοντβάνα","he":"גונדוונה","lv":"Gondvāna","mk":"Гондвана","sr":"Гондвана","?":["zh-Hant"]},
+      {"en":"Laurasia","fr":"Laurasie","ja":"ローラシア大陸","ko":"로라시아","zh-Hans":"劳亚大陆","zh-Hant":"勞亞大陸","pt":"Laurásia","ru":"Лавразия","pl":"Laurazja","nl":"Laurazië","bg":"Лавразия","cs":"Laurasie","da":"Laurasien","et":"Lauraasia","fi":"Lauraasia","el":"Λαυρασία","he":"לאוראסיה","hu":"Laurázsia","lv":"Laurāzija","mk":"Лавразија","sr":"Лауразија","sk":"Laurázia","sv":"Laurasien","tl":"Laurasya"},
+      {"en":"Rodinia","ja":"ロディニア大陸","ko":"로디니아","zh-Hans":"罗迪尼亚大陆","zh-Hant":"羅迪尼亞大陸","pt":"Rodínia","ru":"Родиния","tr":"Rodinya","bg":"Родиния","cs":"Rodinie","he":"רודיניה","mk":"Родинија","sr":"Родина","?":["et","el","lv","tl"]},
+      {"en":"Pannotia","ja":"パノティア大陸","ko":"판노티아","zh-Hans":"潘诺西亚大陆","zh-Hant":"潘諾西亞大陸","pt":"Panótia","ru":"Паннотия","tr":"Panotya","pl":"Pannocja","bg":"Панотия","cs":"Pannotie","el":"Παννότια","he":"פנוטיה","mk":"Панотија","sr":"Панотија","?":["et","lv"]},
+      {"en":"Laurentia","ja":"ローレンシア大陸","ko":"로렌시아","zh-Hans":"劳伦大陆","zh-Hant":"勞倫大陸","pt":"Laurência","ru":"Лаврентия","tr":"Kuzey Amerika Kratonu","pl":"Laurencja","bg":"Лаврентия","cs":"Laurentie","el":"Λαυρεντία","he":"לאורנטיה","mk":"Лаврентија","ro":"Laurenția","?":["da","fi","hu","lv","sr","tl"]},
+      {"en":"Siberia","de":"Sibiria","fr":"Sibéria","ja":"シベリア大陸","ko":"시베리아 대륙","zh-Hans":"西伯利亚大陆","zh-Hant":"西伯利亞大陸","ru":"Сибирская платформа","tr":"Sibirya","pl":"Platforma syberyjska","nl":"Siberisch Kraton","bg":"Сибирска платформа","cs":"Sibiř","no":"Angaraland","ro":"Placa Siberiană","?":["pt","da","et","fi","el","he","hu","lv","mk","sr","sk","tl"]},
+      {"en":"Baltica","es":"Báltica","ja":"バルティカ大陸","ko":"발티카","zh-Hans":"波羅地大陸","pt":"Báltica","ru":"Фенносарматия","tr":"Baltika","pl":"Bałtyka","cs":"Baltika","da":"Baltika","et":"Baltika","he":"בלטיקה","hu":"Baltika","lv":"Baltika","mk":"Балтика","sk":"Baltika","sv":"Baltika","?":["zh-Hant","bg","el","sr","tl"]},
+      {"en":"Vaalbara","es":"Vaalbará","ja":"バールバラ大陸","zh-Hans":"瓦巴拉大陸","ru":"Ваальбара","pl":"Walbara","el":"Βααλβάρη","he":"ולברה","?":["ko","zh-Hant","bg","da","et","lv","mk","sr","sk","tl"]},
+      {"en":"Avalonia","ja":"アバロニア大陸","zh-Hans":"阿瓦隆尼亚大陆","zh-Hant":"阿瓦隆尼亞大陸","pt":"Avalónia","ru":"Авалония","tr":"Avalonya","pl":"Awalonia","cs":"Avalonie","mk":"Авалонија","?":["ko","bg","et","fi","el","he","hu","lv","sr","sk","tl"]},
+      {"en":"Sahul","ja":"サフル","ru":"Сахул","nl":"Sahoel","bg":"Сахул","fi":"Meganesia","el":"Σαχούλ","he":"סאהול","hu":"Szahul","mk":"Сахул","?":["it","ko","zh-Hans","zh-Hant","pt","tr","da","et","lv","no","ro","sr","sk","sv","tl"]},
+      {"en":"Euramerica","de":"Laurussia","es":"Euramérica","fr":"Laurussia","ja":"ユーラメリカ大陸","ko":"유라메리카","zh-Hans":"欧美大陆","zh-Hant":"歐美大陸","pt":"Euramérica","ru":"Лавруссия","pl":"Laurosja","nl":"Euramerika","bg":"Евроамерика","cs":"Euramerika","fi":"Euramerikka","el":"Ευρωαμερική","he":"אירואמריקה","no":"Euramerika","sk":"Euramerika","?":["tr","da","et","hu","lv","mk","sr","sv","tl"]},
+      {"en":"Columbia","ja":"コロンビア大陸","ko":"컬럼비아","zh-Hans":"哥伦比亚大陆","zh-Hant":"哥倫比亞大陸","ru":"Нуна","tr":"Kolombiya","pl":"Kolumbia","he":"קולומביה","?":["bg","cs","da","et","el","lv","mk","ro","sr","sk","tl"]},
+      {"en":"Kenorland","it":"Kenorlandia","ja":"ケノーランド大陸","zh-Hans":"凱諾蘭大陸","ru":"Кенорленд","he":"קנורלנד","?":["ko","zh-Hant","bg","cs","da","et","el","hu","lv","mk","sr","sk"]},
+      {"en":"Ur","ja":"ウル大陸","ko":"우르","zh-Hans":"烏爾大陸","ru":"Ур","no":"Kontinentet Ur","?":["zh-Hant","bg","da","et","el","he","hu","lv","mk","ro","sr","tl"]},
+      {"en":"Laramidia","ja":"ララミディア大陸","zh-Hans":"拉臘米迪亞","zh-Hant":"拉臘米迪亞","ru":"Ларамидия","tr":"Laramidya","cs":"Laramidie","he":"לרמידיה","?":["ko","bg","da","et","fi","el","hu","lv","mk","no","ro","sr","sk","sv","tl"]},
+      {"en":"Cimmeria","fr":"Plaque cimmérienne","ja":"キンメリアプレート","ko":"시미어이어","zh-Hans":"基梅里板块","zh-Hant":"基梅里板塊","pt":"Placa cimeriana","ru":"Киммерийская плита","tr":"Kimmeriya","pl":"Kimmeria","hu":"Kimméria","mk":"Кимерија","no":"Kimmeria","?":["bg","cs","da","et","fi","el","he","lv","ro","sr","sk","sv","tl"]},
+      {"en":"Nena","ja":"ヌーナ大陸","zh-Hans":"妮娜大陆","zh-Hant":"妮娜大陸","ru":"Нена","no":"Superkontinentet Nena","?":["ko","bg","da","et","fi","el","he","hu","lv","mk","ro","sr","sk","tl"]},
+      {"en":"Atlantica","es":"Atlántica","ja":"アトランティカ大陸","ko":"아틀란티카","zh-Hans":"大西洋大陆","pt":"Atlântica","ru":"Атлантика","no":"Atlantika","sv":"Atlantika","?":["zh-Hant","tr","pl","bg","cs","da","et","fi","el","he","hu","lv","mk","ro","sr","sk","tl"]},
+      {"en":"Arctica","ja":"アークティカ大陸","ko":"북극대륙","zh-Hans":"北極大陸","pt":"Ártica","ru":"Арктида","no":"Arktika","sv":"Arktika","?":["zh-Hant","tr","pl","bg","cs","da","et","fi","el","he","hu","lv","mk","ro","sr","sk","tl"]},
+      {"en":"Appalachia","ja":"アパラチア大陸","zh-Hans":"阿帕拉契亞","ru":"Аппалачия","cs":"Appalačie","sv":"Appalacherna","?":["de","ko","zh-Hant","tr","bg","da","et","fi","el","he","hu","lv","mk","no","ro","sr","sk","tl"]},
+      {"en":"South China","de":"Südchinakraton","es":"China del Sur","it":"Cratone della Cina del Sud","ko":"남중국 강괴","zh-Hans":"扬子克拉通","zh-Hant":"揚子克拉通","ru":"Южно-Китайская платформа","cs":"Jižní Čína","?":["fr","ja","pt","tr","pl","nl","bg","da","et","fi","el","he","hu","lv","mk","no","ro","sr","sk","sv","tl"]},
+      {"en":"Mauritia","ja":"モーリシア","ko":"모리티아","ru":"Мавриция","?":["zh-Hans","zh-Hant","tr","nl","bg","cs","da","et","fi","el","he","lv","mk","no","ro","sr","sk","sv","tl"]},
+      {"en":"Asiamerica","es":"Asiamérica","fr":"Asiamérique","zh-Hans":"亚美大陆","pt":"Asiamérica","ru":"Азиамерика","no":"Asiamerika","?":["de","ja","ko","zh-Hant","tr","pl","bg","cs","da","et","fi","el","he","hu","lv","mk","ro","sr","sk","sv","tl"]},
+      {"en":"Balkanatolia","fr":"Balkanatolie","tr":"Balkanadolu","?":["de","it","ja","ko","zh-Hans","zh-Hant","ru","pl","nl","bg","cs","da","et","fi","el","he","hu","lv","mk","no","sr","sk","sv","tl"]},
+      {"en":"Greater Adria","es":"Gran Adria","ja":"大アドリア大陸","pt":"Grande Adria","bg":"Голяма Адрия","?":["de","fr","it","ko","zh-Hans","zh-Hant","ru","tr","pl","nl","cs","da","et","fi","el","he","hu","lv","mk","no","ro","sr","sk","sv","tl"]},
+      {"en":"Armorica","zh-Hans":"阿莫里坎地體","ru":"Арморика","pl":"Armoryka","?":["ja","ko","zh-Hant","pt","tr","bg","cs","da","et","fi","el","he","hu","lv","mk","no","ro","sr","sk","sv","tl"]},
+      {"en":"Argoland","es":"Argolandia","pt":"Argolândia","ru":"Арголанд","?":["de","fr","it","ja","ko","zh-Hans","zh-Hant","tr","pl","nl","bg","cs","da","et","fi","el","he","hu","lv","mk","no","ro","sr","sk","sv","tl"]},
+      {"en":"Protolaurasia","zh-Hans":"原劳亚大陆","zh-Hant":"原勞亞大陸","nl":"Protolaurazië","cs":"Protolaurasie","sk":"Protolaurázia","?":["de","es","fr","ja","ko","pt","ru","tr","pl","bg","da","et","fi","el","he","hu","lv","mk","no","ro","sr","sv","tl"]}
     ]
   ],
   "tierConditions": [

@@ -8,11 +8,12 @@
 // one source, one column, no arithmetic of ours. Tiers 0 to 2 are cut from it.
 // Tier 3 is what the model does not contain: plates the English list names and
 // nobody has measured, so it is grouped by parent plate instead, which is the only
-// order that page gives them. Tier 4 is the Wikidata catch-all — everything P31 calls
-// a tectonic plate that the banded sources don't classify (mostly extinct plates),
-// filtered of junk and name-duplicates. Tier 3 says so itself, in a `{br}` second line
-// folded into its tier condition. Extinct plates additionally carry an `omitted` rule
-// that hides them by default.
+// order that page gives them. Tier 4 is the floor — everything outside Bird's measured model:
+// the Wikidata catch-all (every P31 tectonic plate the banded sources don't classify, mostly
+// extinct plates, filtered of junk and name-duplicates) plus the paleocontinents (P31
+// paleocontinent, from their own dump), vanished landmasses that were never plates. Tier 3 says
+// its caveat itself, in a `{br}` second line folded into its tier condition. Extinct plates and
+// paleocontinents each carry an `omitted` rule that hides them by default.
 //
 // TIER 0 MERGES TWO LISTS. The seven continents and the seven major plates name
 // the same landmasses, so they are one tier of paired entries rather than two of
@@ -391,6 +392,21 @@ async function main() {
   const ancient = new Set([...former, ...ANCIENT_HAND]);
   const ancientNames = catchall.filter((p) => ancient.has(p.wikidata)).map((p) => p.name);
 
+  // Paleocontinents (their own dump, P31 paleocontinent) — vanished landmasses, not plates, so
+  // they come from paleocontinent-names.json rather than the plate catch-all. Already sitelink-
+  // ordered; the build keeps that order, appends them to the floor tier beside the extinct
+  // plates, and hides them by default with their own rule.
+  const paleoRaw = JSON.parse(await readFile(join(RAW, "paleocontinents", "paleocontinent-names.json"), "utf8"));
+  const paleoNames = {};
+  const paleoOrder = [];
+  for (const item of Object.values(paleoRaw)) {
+    const names = resolve(item);
+    if (!names.en) continue; // no English name ⇒ nothing to show, as with the catch-all
+    paleoNames[names.en] = names;
+    paleoOrder.push(names.en);
+  }
+  const paleoEntries = paleoOrder.map((n) => entry(undefined, n, lands, paleoNames));
+
   const tiers = [
     TIER0.map((e) => entry(e.land, e.plate, lands, plates, true)),
     [
@@ -405,6 +421,9 @@ async function main() {
       ? tier
       : tier.map((p) => (p.name ? entry(undefined, p.name, lands, plates) : p)),
   );
+  // The paleocontinents join the floor tier, after the catch-all plates — they share the
+  // "outside the measured model" band and, like the extinct plates, hide by default.
+  tiers[tiers.length - 1].push(...paleoEntries);
 
   // Extinct plates sit in the last tier like any other, but the 🚫 panel hides them by
   // default — the way the language list hides dead tongues. An `omitted` rule matching
@@ -413,6 +432,14 @@ async function main() {
     id: "ancient",
     match: ancientNames,
     reason: "ancientPlates",
+    count: true,
+  };
+  // Paleocontinents hide by default too, their own rule beside the extinct plates — the panel
+  // names them apart (they are landmasses, not plates), and the count reads "up to N".
+  const paleoRule = {
+    id: "paleocontinents",
+    match: paleoOrder,
+    reason: "paleocontinents",
     count: true,
   };
 
@@ -426,7 +453,7 @@ async function main() {
     dataOrigin: ["Wikidata", "Wikipedia", "Bird (2003)"],
     filePaths: {
       "scripts/geography/": ["dump-plate-data.mjs", "build-continents.mjs"],
-      "data-raw/geography/": ["continents/", "plates/"],
+      "data-raw/geography/": ["continents/", "plates/", "paleocontinents/"],
     },
     languages: NAME_LANGS,
     sources: [
@@ -437,7 +464,7 @@ async function main() {
     lastUpdated: new Date().toISOString().slice(0, 10),
     lastChecked: new Date().toISOString().slice(0, 10),
     defaultNames: "both",
-    omitted: [ancientRule],
+    omitted: [ancientRule, paleoRule],
     tiers,
     tierConditions: tierConditionsWithNotes,
     rulerTooltip: RULER_TOOLTIP,
@@ -449,7 +476,7 @@ async function main() {
     const missing = tiers.flat().filter((e) => (e["?"] ?? []).includes(lang)).length;
     console.log(`  ${lang.padEnd(8)} ${String(missing).padStart(3)} without a name`);
   }
-  await writeCoverage(ROOT, "continents", { ...continentNames, ...plateNames }, NAME_LANGS, LANG_SRC, "area", process.argv.includes("--write"));
+  await writeCoverage(ROOT, "continents", { ...continentNames, ...plateNames, ...paleoRaw }, NAME_LANGS, LANG_SRC, "area", process.argv.includes("--write"));
 
   if (process.argv.includes("--write")) {
     await writeFile(TOPIC, text, "utf8");

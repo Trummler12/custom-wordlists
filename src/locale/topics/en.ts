@@ -43,6 +43,7 @@ export const en: TopicProse = {
   },
   signLanguages: "sign languages",
   ancientPlates: "ancient and extinct plates",
+  paleocontinents: "paleocontinents and former supercontinents",
   // The continent list's tier conditions (was build-continents `TIER_CONDITIONS`), one per
   // tier — these are descriptive, not number bands, so they migrate as plain strings.
   continentTiers: [
@@ -50,7 +51,7 @@ export const en: TopicProse = {
     "minor plates and larger",
     "microplates with a measured area, and larger",
     "microplates and larger, measured or not",
-    "tectonic plates of unknown classification",
+    "unclassified and extinct plates, and paleocontinents",
   ],
   tier3Note: "No area has ever been published for these plates, so this tier is grouped by the plate each sits under rather than ordered by size — and several of them are not their own encyclopedia article either.",
   noteLabel: "Note: ",

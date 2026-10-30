@@ -27,8 +27,10 @@
 //    twenty are matched by name through REDLINKS below, since there is no item
 //    to match them by.
 //
-// WHAT IS NOT HERE. Ancient plates (the en page's last section) — the list is
-// about plates that exist, and how to carry the extinct ones is still open.
+// WHAT WAS ONCE NOT HERE, NOW IS. The extinct plates (the en page's last section) arrive as a
+// Wikidata class in former-plates.json, and the paleocontinents — vanished landmasses that were
+// never tectonic plates — in their own paleocontinent-names.json. Both land in the build's floor
+// tier, hidden by default.
 import { mkdir, writeFile } from "node:fs/promises";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -253,6 +255,26 @@ async function formerPlateItems() {
   return (await wdqs("SELECT ?i WHERE { ?i wdt:P31 wd:Q141789550. }")).map((b) => b.i.value.split("/").pop());
 }
 
+/** The sitelink floor a paleocontinent clears to be worth listing — the long tail of obscure
+ *  cratons and terranes is filtered the way fame is judged elsewhere, by how many Wikipedias
+ *  carry the article. Five keeps Pangaea, Gondwana, Laurasia, Rodinia and their peers. */
+const MIN_PALEO_SITELINKS = 5;
+
+/** Paleocontinents (P31 paleocontinent Q2284298) with at least MIN_PALEO_SITELINKS sitelinks,
+ *  most-linked first. They are NOT tectonic plates, so they never appear in the plate catch-all
+ *  (tectonicPlateItems) and need their own dump; the build tiers them into the floor beside the
+ *  extinct plates and hides them by default. The sitelink count rides along so the build keeps
+ *  this order without re-querying. */
+async function paleocontinentItems() {
+  const rows = await wdqs(
+    "SELECT ?i (COUNT(DISTINCT ?s) AS ?n) WHERE { ?i wdt:P31 wd:Q2284298. OPTIONAL { ?s schema:about ?i. } } GROUP BY ?i",
+  );
+  return rows
+    .map((b) => ({ id: b.i.value.split("/").pop(), sitelinks: Number(b.n.value) }))
+    .filter((r) => r.sitelinks >= MIN_PALEO_SITELINKS)
+    .sort((a, b) => b.sitelinks - a.sitelinks || a.id.localeCompare(b.id));
+}
+
 /** Surface areas (km²) from Wikidata P2046, for the items that carry one. An item with
  *  several P2046 values (with and without islands, say) keeps the largest, so a re-dump is
  *  deterministic rather than taking whichever row WDQS returned last. */
@@ -390,6 +412,25 @@ async function main() {
   const former = (await formerPlateItems()).sort();
   await writeFile(join(OUT, "plates", "former-plates.json"), JSON.stringify(former, null, 2) + "\n", "utf8");
   console.log(`former tectonic plates (P31 Q141789550): ${former.length}`);
+
+  // Paleocontinents, their own dump (P31 paleocontinent) — vanished landmasses, not plates.
+  // Keyed by Q-id like the rest, in sitelink order, each carrying its sitelink count so the
+  // build ranks them without re-querying. No area: a paleocontinent has no present-day extent.
+  const paleo = await paleocontinentItems();
+  const paleoTerms = await termsFor(paleo.map((p) => p.id));
+  const paleoNames = Object.fromEntries(
+    paleo.map((p) => {
+      const rich = paleoTerms[p.id] ?? {};
+      const name = (rich.en ?? []).find((t) => t.pref)?.name;
+      return [p.id, { ...(name ? { name } : {}), sitelinks: p.sitelinks, names: rich }];
+    }),
+  );
+  await writeNames(join(OUT, "paleocontinents", "paleocontinent-names.json"), paleoNames);
+  logCoverage(
+    `paleocontinents (P31 Q2284298, >= ${MIN_PALEO_SITELINKS} sitelinks) — ${paleo.length}`,
+    paleoNames,
+    paleo.map((p) => p.id),
+  );
 
   const unmatched = bird.filter((r) => ![...byItem.values(), ...byName.values()].includes(r));
   if (unmatched.length) console.log("Bird rows unmatched:", unmatched.map((r) => r.de).join(", "));
