@@ -131,13 +131,13 @@ Use the relative File Paths/Links provided on the Items listed in the [Overview 
 ### Comics
 
 - [DC](./comics/DC.md#navigation)
-  - [Heroes](./comics/DC.md#heroes)
-  - [Villains](./comics/DC.md#villains)
+  - ➕[Heroes](./comics/DC.md#heroes)
+  - ➕[Villains](./comics/DC.md#villains)
 - [Marvel](./comics/Marvel.md#navigation)
-  - [Heroes](./comics/Marvel.md#heroes)
-  - [Villains](./comics/Marvel.md#villains)
+  - ➕[Heroes](./comics/Marvel.md#heroes)
+  - ➕[Villains](./comics/Marvel.md#villains)
 - [Other Comics](./comics/Other_Comics.md#navigation)
-  - [Characters](./comics/Other_Comics.md#characters)
+  - ✖️[Characters](./comics/Other_Comics.md#characters)
 
 #### Candidates
 
@@ -208,13 +208,13 @@ Use the relative File Paths/Links provided on the Items listed in the [Overview 
 - [Human Geography](./geography/Human.md#navigation)
   - ✅[Countries](./geography/Human.md#countries)
   - ✅[Capitals](./geography/Human.md#capitals)
-  - 🔵[Subdivisions](./geography/Human.md#subdivisions)
-  - 🔵[Sub-Capitals](./geography/Human.md#sub-capitals)
-  - 🔵[Cities](./geography/Human.md#cities)
+  - ➕[Subdivisions](./geography/Human.md#subdivisions)
+  - ➕[Sub-Capitals](./geography/Human.md#sub-capitals)
+  - ➕[Cities](./geography/Human.md#cities)
   - ✅[Languages](./geography/Human.md#languages)
 - [Physical Geography](./geography/Physical.md#navigation)
   - ✅[Continents](./geography/Physical.md#continents)
-  - 🔵[Oceans & Seas](./geography/Physical.md#oceans--seas)
+  - ➕[Oceans & Seas](./geography/Physical.md#oceans--seas)
   - 🔵[Islands](./geography/Physical.md#islands)
   - 🔵[Mountains](./geography/Physical.md#mountains)
   - 🔵[Deserts](./geography/Physical.md#deserts)
@@ -278,6 +278,12 @@ Use the relative File Paths/Links provided on the Items listed in the [Overview 
 Decided: Film & TV analysed. Every curated character of Harry Potter, The Lord of the Rings, Star Wars and Disney's animated films is on Wikidata, 14 of 16 Disney classics; sitelinks follow our tiers (Spearman 0.62 to 0.89), so they can rank candidates for these incomplete topics, while the tiers stay editorial.
 Ask: when you build these topics from Wikidata, take each file's Query (P1441 / P1080 / P8345 to the franchise's works, class character Q95074 with subclasses); add groups of fictional characters (Q14514600) where our lists hold one (Beagle Boys); for Disney's animated films two rule candidates (cameos whose own P8345 isn't Disney's; members of the Mouse & Duck universes, who belong to Classics); Chip and Dale reach the Classics only through their pair (P361 Chip 'n' Dale, Q403138). Disney gets restructured (Trummler, 2026-10-23): three lines `mickey/`, `disney/` (the canon) and `pixar/` with the entry type as topic, merged one level up, franchise nodes inside a line from at least 10 named characters, of them 5 well-known (Trummler, 2026-10-25, yours to change), which by Gemini's counts gives nearly every feature film a node; the plan and the counts are at the top of film-tv/Disney.md, so build Disney from that, not from today's two topics. No hurry.
 Refs: film-tv/Disney.md, Harry_Potter.md, Lord_of_the_Rings.md, Star_Wars.md
+-->
+
+<!-- @agent(#35) from #38 · 2026-10-26 · OPEN
+Decided: Animation, Anime and Comics analysed. SpongeBob and The Simpsons: every curated character found, sitelinks follow our tiers (Spearman 0.87 / 0.94); each file has a Query (series, universe, or a work of the franchise) and an exclusion class (the SpongeBob musical's roles; the Simpsons' prank-call names). Dragon Ball: one franchise query; our DBZ list spans the whole franchise (Beerus, Broly) and Wikidata can't separate the series, so the folder becomes anime/dragon-ball/ (decided by Trummler, 2026-10-27). Two more groups planned (Trummler, 2026-10-27): *Present in* (one checkbox per sub-series, all but Movies ticked; an entry shows when any ticked series holds it: the INCLUDE control's union logic, generalized from `language-type`, with default-ticked rules) plus a box per manga, unticked by default, which makes `manga-only` (spoilers) the boxes' default rather than a rule of its own; and the `omitted` rule `anime-original` (filler: entries whose works all adapt a manga of the franchise while the entry is in no manga; renamed from `anime-only`), whose ℹ️ lists the adapting works. Both read Wikidata only: P1441 per character and work, and *based on* (P144) per work, which already marks the adaptations (*Dragon Ball*, *Z* => manga, *Kai* => *Z*; films => franchise; *GT*, *Daima*, *Super* => nothing), so the ℹ️ list is generated, not a hand-kept field. *Present in* belongs to the franchise node and is not inherited upwards (a parent merging several franchises has no common set of works). Design in anime/Dragon_Ball.md; the data is being researched. Rule `manga-only` designed: no P1441 to an anime work of the franchise (anime TV series / anime film / OVA / TV special); a mention counts as an appearance, so no further split; Dragon Ball lacks the link on 59 members (sources being researched), One Piece already draws it (36 manga-only). With it: anime/_category.json short "Anime", long "Anime & Manga" (Trummler, 2026-10-23). DC and Marvel: members by universe (DC Q1152150, Marvel Q2246088), all ours found; Wikidata has no hero / villain line (45 of 1,837 DC characters typed superhero, none at Marvel), so comics/dc/characters.json and comics/marvel/characters.json replace heroes / villains (decided by Trummler, 2026-10-27); a role group has no Wikidata basis (team membership fails on our own entries), see comics/DC.md. Other Comics: every franchise gets its own folder, no size bar and no others/ folder (decided by Trummler, 2026-10-27): a visibility ruler with an eye handle on the category node (between title and word count) folds every child franchise with no entry down to the chosen tier into one *Others* node at render time. No new schema field: `inheritsUpwards` already forces identical `tierConditions` across the family, so a small franchise (Corto Maltese) simply has empty top tiers. Same ruler for Anime, Animation, Film & TV and Gaming.
+Ask: when you build these topics, take each file's Query and its exclusion class; plan the *Present in* group (with manga boxes), the `anime-original` rule, the anime category title and the eye ruler (`depth-fill` handle as an eye) on the category nodes. No hurry.
+Refs: animation/SpongeBob.md, animation/The_Simpsons.md, anime/Dragon_Ball.md, anime/One_Piece.md, comics/DC.md, comics/Marvel.md, comics/Other_Comics.md
 -->
 
 ## Method

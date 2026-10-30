@@ -17,9 +17,9 @@ What Wikidata offers for the Human Geography topics, and how far it can serve as
 [Geography](../README.md#geography)
 - ✅[Countries](#countries)
 - ✅[Capitals](#capitals)
-- 🔵[Subdivisions](#subdivisions)
-- 🔵[Sub-Capitals](#sub-capitals)
-- 🔵[Cities](#cities)
+- ➕[Subdivisions](#subdivisions)
+- ➕[Sub-Capitals](#sub-capitals)
+- ➕[Cities](#cities)
 - ✅[Languages](#languages)
 
 ## ✅Countries
@@ -155,17 +155,55 @@ Refs: this file, Countries => Candidate rule: historical countries (Second pass)
 
 **Rating:** clean; the one modelling error on Wikidata is fixed. The build picks it up with the next re-dump.
 
-## 🔵Subdivisions
+## ➕Subdivisions
 
-*Not analyzed yet.*
+**Associated List:** -  
+**Definition:** -  
+**Tool:** `_scripts/subdivisions.mjs`.
 
-## 🔵Sub-Capitals
+**Base (proposed, 2026-10-30):** an ISO 3166-2 code (P300) that is current (a statement without an end time: codes change, China's went from CN-11 to CN-BJ in 2017), on an item not dissolved (P576), not inside another coded subdivision (P131 to an item that carries a code itself, a country excepted: the UK carries GB-UKM, which would hide England), and not a country or dependency itself (an ISO 3166-1 code, P297: Greenland is DK-GL, Aruba NL-AW, Hong Kong CN-HK; they belong to Countries). That gives **3,812 subdivisions in 206 countries**.
 
-*Not analyzed yet.*
+| | Count | Note |
+| :---- | ----: | :---- |
+| items with an ISO 3166-2 code | 5,453 | |
+| current, not dissolved | 5,029 | |
+| the base (top level, no country) | 3,812 | |
+| class *first-level administrative country subdivision* (Q10864048), not dissolved | 5,151 | for comparison |
+| in both | 3,420 | |
 
-## 🔵Cities
+**The class is no base, but its odd members are modelled correctly.** Georgia (Q230) is in it through P31 *republic of the Soviet Union* with start 1921 and end 1991, a past membership with its time qualifiers; a query reading the class must skip P31 statements that carry an end time (P582), as the base does for codes. Istanbul and Ankara are in it as *metropolitan municipality in Turkey*, while the ISO codes sit on separate province items (TR-34 Istanbul Province, Q534799; TR-06 Ankara Province, Q2297724), so the base takes the provinces. Where city and first-level unit are one item, the code is on it: Berlin (DE-BE), Hamburg (DE-HH), Bogotá (CO-DC) are in the base, as they should be. 1,731 class members have no current code; 392 base members are not in the class, most of them capital cities with a first-level status of their own (Paris, Kyiv, Budapest, Oslo, Zagreb).
+**What ISO calls the top level differs by country:** Slovenia's 213 municipalities, Malta's 68 local councils, North Macedonia's 75 and Lithuania's 70 stand beside the 51 US states and 47 Japanese prefectures; ISO lists only one level for some countries, two for others (Equatorial Guinea's 2 regions above its provinces). **Fame (decided by Trummler, 2026-10-30):** the tiers come from the country's population divided by its number of base subdivisions, the mean size of a subdivision there; an entry is in when its country's mean is above the chosen bound. Every subdivision of a country shares its tier, US states (about 6.6 million each) high, Slovenian municipalities (about 10,000) low, which puts them where Swiss second-level units would be. Points for the build: countries whose ISO list mixes sizes keep one mean for all (the UK's 137 entries put England, Scotland, Wales, Northern Ireland and even Great Britain, GB-GBN, beside London boroughs; ISO lists the nations and GB-GBN as groupings, so the UK may need its own count); the count must be the base's, not ISO's total, since nested levels are left out.
+**Subdivisions inside a city (proposal, Trummler, 2026-10-30):** a first-level subdivision that lies in a city or metropolitan region is replaced, for the count and as an entry, by that city (if the city is not itself inside another); the official subdivisions it replaces stay in the topic under an `omitted` rule, and the substitute cities need an `omittable` one. Measured: 73 base subdivisions lie in a settlement (P131, up to two steps), 36 of them in the UK, 33 of those London's boroughs in Greater London (Q23306); then Prague's districts (16 in CZ); the rest are single cases, some of them misplaced P131 values. So the rule mainly turns London's boroughs into London. It does not settle the UK as a whole: its other entries are England, Scotland, Wales, Northern Ireland and Great Britain beside unitary authorities and counties, since those carry no P131 to a coded parent. **Nesting through the whole P131 chain** (agreed with Trummler, 2026-10-30, as the reader-friendly way): an entry is dropped when any ancestor (P131+, not a country) carries a current code, not only its direct parent. The base goes from 3,812 to 3,622, and the counts come out as a reader would expect: the UK from 137 to 6 (England, Scotland, Wales, Northern Ireland, plus GB-GBN *Great Britain*, an ISO grouping, and GB-STY), Hungary 41 => 20 (19 counties and Budapest; the cities with county rights go), Czechia 30 => 14 regions, Iceland 14 => 8 regions, Turkey 87 => 81 provinces, Switzerland 28 => 26 cantons, Italy 21 => 20 regions, Estonia 17 => 15 counties, Thailand 78 => 77, Argentina 25 => 24, Nigeria 38 => 37 (36 states and the capital territory). London's boroughs leave with the rest of England's authorities, so the city rule above is no longer needed for them. **Where it goes wrong, and why** (checked 2026-10-30): Kenya 45 => 42, since the counties still have P131 to the eight provinces abolished in 2013, which carry no dissolution date and a code without an end (research: `_data/Prompts/Kenya_Former_Provinces.md`); Guyana 10 => 5, since *Guayana Esequiba* (Q816253, the area west of the Essequibo that Venezuela claims) had P131 to the six regions it spans, a link in the wrong direction that closes a loop (the regions carry P131 *Guyana* with preferred rank, besides *Venezuela* and *Guayana Esequiba*); Papua New Guinea 22 => 19, since its Southern Region had P131 *Port Moresby*, which lies in it. Batch `2026-10-30_p131-inverted.txt` (7 removals, pending import) takes out the wrong-way links. A rule-side guard worth keeping all the same: follow only best-rank P131 (`wdt:`) and stop at a cycle. GB-STY (South Tyneside) lies under England and goes with the chain rule; it was left in the test run (~ presumably a query block that came back empty). GB-GBN (a grouping, not a unit) is for an exclusion. A few countries gain entries (Luxembourg 7 => 12 cantons, Montenegro 23 => 25, Morocco 12 => 14, Congo-Kinshasa 25 => 27), where the one-step rule had counted a parent with an old code.
+**Noise:** codes that are no ISO 3166-2 codes (GZZ, C4866, SS010101, the former YU and CS), and a city carrying its county's code (Oxford, Q34217, holds GB-OXF, Oxfordshire's). Few, fixable one by one.
+**Rating:** ➕ (was 🔵): the base is clean once the four conditions hold; the level question is a design decision, not a gap.
 
-*Not analyzed yet.*
+## ➕Sub-Capitals
+
+**Associated List:** -  
+**Definition:** -  
+**Base:** the capital (P36) of each subdivision of the base above: **3,103 of the 3,812** (81 %).
+**Where it is missing:** a unit without an official capital has none to name (Trummler: then it has none); where one exists and Wikidata lacks it, the gap is to be filled. Countries with the most missing: Slovenia 154 of 213, Malta 68 of 68, the Maldives, the Seychelles and the Marshall Islands (all), Kenya 8 of 45, Indonesia 8 of 45; which of them have an official capital is still to be sorted out, country by country.
+**Rating:** ➕ (was 🔵).
+
+## ➕Cities
+
+**Associated List:** -  
+**Definition:** -  
+**Tool:** `_scripts/cities.mjs`, `_scripts/city-parts.mjs`.
+
+**Base (proposed, 2026-10-30):** a *human settlement* (Q486972 or a class under it) with a population (P1082) at or above a floor, not dissolved, and not an agglomeration: an item with a class under *metropolitan area* (Q1907114), *urban agglomeration* (Q159313), *conurbation* (Q245260) or *urban area* (Q702492) is dropped unless it is a city by a class other than *megacity* (Q174844) or *metropolis* (Q200250). Those two sit under *city* on Wikidata but name a size, which agglomerations reach too: Greater Mexico City is a *megacity* and a *metropolitan area* (correctly, a megacity being an agglomeration of ten million), Tokyo and Shanghai are *megacities* and *big cities*. The class *city* (Q515) alone is narrower: it holds 4,011 of the 6,535 settlements of 100,000 and more.
+
+| Population floor | Items with that population | Settlements | Without agglomerations | In the class *city* |
+| ----: | ----: | ----: | ----: | ----: |
+| 10,000,000 | 827 | 66 | 33 | 38 |
+| 1,000,000 | 5,739 | 996 | 686 | 659 |
+| 100,000 | 28,833 | 7,648 | 6,518 | 4,011 |
+
+**Checked against 18 cities a reader expects** (Tokyo, Delhi, Shanghai, São Paulo, Mexico City, Cairo, Mumbai, Beijing, New York, London, Paris, Berlin, Moscow, Istanbul, Lagos, Munich, Zurich, Sydney): all 18 are in, each as a settlement and a city, and none is dropped as an agglomeration; Greater Mexico City, the New York metropolitan area, Greater Buenos Aires, Greater Rio de Janeiro and Metro Manila are.
+**Fame (decided by Trummler, 2026-10-30):** tiers by population. What is wrong or against Wikidata's conventions gets fixed on Wikidata first; only what remains is the build's concern.
+**Not wrong, but a design point:** a Chinese prefecture-level city is one item for the whole administrative unit, and its population is that of the unit (Guangzhou 18.7 million, Shenyang 9.1, "permanent population" 2020; Baoding 11.5, Linyi 11.0); Wikidata carries no separate urban figure for them: 292 of the 294 qualify their population with *applies to part: permanent population* (a count, not an area), 12 have an *urban population* (P6343). By population they rank above Berlin: 19 of the 33 settlements of ten million and more are Chinese. **Proposed (Trummler, 2026-10-30):** an inclusion setting "Put Chinese cities one tier lower", for the reason the data gives; the class picks them out (prefecture-level city Q748149, sub-provincial and county-level cities, direct-administered municipality). The same effect, less strongly, has Turkey's metropolitan municipalities, which now span their whole province (Istanbul 15.7 million).
+**Parts of a city** (Trummler, 2026-10-30: the city itself, not its parts and not the larger unit around it): a settlement inside another base settlement (P131, up to two steps) is dropped, unless the two share their name (the larger one's English label equals or contains the smaller one's): then the smaller one is the city itself and stays, and the larger unit around it goes. Of the 6,518 settlements from 100,000, 1,246 lie inside another; 67 of those pairs share the name, so 63 enclosing units go (Tokyo Metropolis, Q1490, for the 23-ward city of Tokyo, Q7473516; City of Belgrade for Belgrade; Bordeaux Métropole for Bordeaux; Bangladesh's upazilas for their towns) and 1,135 parts go (Brooklyn in New York City, Pudong, Kowloon, Soweto, China's county-level cities in their prefecture-level city). 5,330 settlements remain, 658 of them from 1 million. Checked: Johannesburg, Cape Town, Manila, Beijing, Istanbul, Shanghai, New York City and the 23-ward Tokyo stay; Brooklyn and Tokyo Metropolis go. Where a city has no item apart from its larger unit (China's prefecture-level cities, Istanbul's metropolitan municipality), that unit is the city's item and stays.
+**Rating:** ➕ (was 🔵): the base holds with the agglomeration rule and the child rule.
 
 ## ✅Languages
 
