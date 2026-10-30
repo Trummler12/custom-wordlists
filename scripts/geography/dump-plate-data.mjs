@@ -244,6 +244,15 @@ async function tectonicPlateItems() {
   return (await wdqs("SELECT ?i WHERE { ?i wdt:P31 wd:Q215680. }")).map((b) => b.i.value.split("/").pop());
 }
 
+/** Every item Wikidata types P31 former tectonic plate (Q141789550) — the extinct-plate
+ *  class #38 created. The build reads this list for the `ancient` rule instead of a hand
+ *  list, so a plate becoming (or ceasing to be) former is a Wikidata edit, not a code one.
+ *  A former plate is only shown if it is also a catch-all plate (P31 tectonic plate); the
+ *  ones typed former alone (e.g. the Danakil microplate) never enter the list. */
+async function formerPlateItems() {
+  return (await wdqs("SELECT ?i WHERE { ?i wdt:P31 wd:Q141789550. }")).map((b) => b.i.value.split("/").pop());
+}
+
 /** Surface areas (km²) from Wikidata P2046, for the items that carry one. An item with
  *  several P2046 values (with and without islands, say) keeps the largest, so a re-dump is
  *  deterministic rather than taking whichever row WDQS returned last. */
@@ -375,6 +384,12 @@ async function main() {
     `plates — ${ranked.length} banded (${bird.length} with a Bird area) + ${extraKeys.length} Wikidata catch-all`,
   );
   logCoverage("plate name coverage:", plateNames, nameIds);
+
+  // The extinct-plate class, for the build's `ancient` rule (see formerPlateItems). Kept
+  // apart from the names, like structure.tsv: a classification, not a label.
+  const former = (await formerPlateItems()).sort();
+  await writeFile(join(OUT, "plates", "former-plates.json"), JSON.stringify(former, null, 2) + "\n", "utf8");
+  console.log(`former tectonic plates (P31 Q141789550): ${former.length}`);
 
   const unmatched = bird.filter((r) => ![...byItem.values(), ...byName.values()].includes(r));
   if (unmatched.length) console.log("Bird rows unmatched:", unmatched.map((r) => r.de).join(", "));

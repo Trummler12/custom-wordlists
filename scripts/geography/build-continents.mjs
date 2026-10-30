@@ -58,35 +58,32 @@ const LANG_SRC = {
 
 /** Curated departures for the Wikidata P31 catch-all (dump band "unknown"), which a
  *  bare query can't clean itself. Q-ids, so a relabel upstream doesn't slip one past.
- *  Dropped entirely: things Wikidata tags as a tectonic plate that are not one, and one
- *  duplicate of a plate already present under another item. Name-level duplicates of a
- *  banded plate (a redlink and its item) are dropped separately, by name, below. */
+ *  Dropped entirely: things Wikidata tags as a tectonic plate that are not one. Name-level
+ *  duplicates of a banded plate (a redlink and its item) are dropped separately, by name,
+ *  below. The non-plates #38 reclassified upstream (microplate, intraplate deformation,
+ *  the Central India zone, the Western Siberia duplicate) have left the catch-all on their
+ *  own and no longer need an entry here; the extinct European plate moved to `ancient`. */
 const CATCHALL_DROP = new Set([
-  "Q1933940", // the concept "microplate", not a plate
-  "Q6058525", // "intraplate deformation", a process
   "Q7853562", // no English label — nothing to show
-  "Q115534336", // "Central India Tectonic Zone", a zone, not a plate
   "Q3906099", // "Jan Mayen Microcontinent", a continental fragment, not a plate
-  "Q19848929", // "European plate", a duplicate of the Eurasian plate
-  "Q17115739", // "Western Siberia Plate", duplicate of West Siberian Plate (Q25473407)
+  "Q17115739", // "Western Siberia Plate" — the duplicate item of the West Siberian plate;
+  //              its twin (Q25473407) was reclassified upstream, so only this is left, and it stays dropped
 ]);
 
-/** Extinct / ancient plates — no longer active, subducted or accreted long ago.
- *  Wikidata carries no signal for this (no end date, no "former plate" class), so the
- *  list is by hand, verified against the geology. They still sit in their tier, but an
- *  `omitted` rule hides them by default, the way the language list hides dead tongues. */
-const ANCIENT = new Set([
+/** Extinct / ancient plates — no longer active, subducted or accreted long ago. The set is
+ *  Wikidata's *former tectonic plate* class (Q141789550, from former-plates.json, written by
+ *  the dump) plus a hand list of the few not yet typed there, each pending a source (#38).
+ *  A former plate only shows if it is also a catch-all plate; the rest never enter the list.
+ *  They sit in their tier, but an `omitted` rule hides them by default, the way the language
+ *  list hides dead tongues. */
+const ANCIENT_HAND = new Set([
   "Q902322", // Phoenix
-  "Q1059335", // Izanagi
-  "Q1203170", // Farallon
   "Q1320205", // Kula
-  "Q3391669", // Bellingshausen
   "Q5074185", // Charcot
   "Q5120147", // Cimmerian
-  "Q13542800", // Baltica
-  "Q3391667", // Intermontane
+  "Q13542800", // Baltic
   "Q6886313", // Moa
-  "Q3391684", // Lhasa
+  "Q19848929", // European
 ]);
 
 // All the locale-like prose this script used to bake — the ancient-plates reason, the tier
@@ -388,8 +385,11 @@ async function main() {
       !CATCHALL_DROP.has(p.wikidata) &&
       !bandedNames.has(p.name.toLowerCase()),
   );
-  // The extinct ones among them, by their English name, for the `omitted` rule below.
-  const ancientNames = catchall.filter((p) => ANCIENT.has(p.wikidata)).map((p) => p.name);
+  // The extinct ones among them, by their English name, for the `omitted` rule below. The
+  // set is the dump's *former tectonic plate* class plus the not-yet-typed hand list.
+  const former = JSON.parse(await readFile(join(RAW, "plates", "former-plates.json"), "utf8"));
+  const ancient = new Set([...former, ...ANCIENT_HAND]);
+  const ancientNames = catchall.filter((p) => ancient.has(p.wikidata)).map((p) => p.name);
 
   const tiers = [
     TIER0.map((e) => entry(e.land, e.plate, lands, plates, true)),

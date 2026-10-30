@@ -24,7 +24,7 @@
   "omitted": [
     {
       "id": "ancient",
-      "match": ["Phoenix Plate","Izanagi Plate","Farallon Plate","Kula Plate","Bellingshausen Plate","Charcot Plate","Cimmerian Plate","Moa Plate","Baltic plate"],
+      "match": ["Phoenix Plate","Izanagi Plate","Farallon Plate","Kula Plate","Bellingshausen Plate","Charcot Plate","Cimmerian Plate","Moa Plate","Baltic plate","European plate"],
       "count": true,
       "reason": "ancientPlates"
     }
@@ -144,7 +144,8 @@
       {"en":"Charcot Plate","it":"Placca Charcot","zh-Hans":"夏科板塊","?":["de","es","fr","ja","ko","zh-Hant","pt","ru","tr","pl","nl","bg","cs","da","et","fi","el","he","hu","lv","mk","no","ro","sr","sk","sv","tl"]},
       {"en":"Cimmerian Plate","fr":"Plaque cimmérienne","it":"Placca cimmeriana","ja":"キンメリアプレート","zh-Hans":"基梅里板块","zh-Hant":"基梅里板塊","ru":"Киммерийская плита","fi":"Kimmerian laatta","hu":"Kimmériai lemez","?":["de","es","ko","pt","tr","pl","nl","bg","cs","da","et","el","he","lv","mk","no","ro","sr","sk","sv","tl"]},
       {"en":"Moa Plate","it":"Placca Moa","zh-Hans":"莫阿板塊","?":["de","es","fr","ja","ko","zh-Hant","pt","ru","tr","pl","nl","bg","cs","da","et","fi","el","he","hu","lv","mk","no","ro","sr","sk","sv","tl"]},
-      {"en":"Baltic plate","it":"Placca baltica","ja":"バルトプレート","?":["de","es","fr","ko","zh-Hans","zh-Hant","pt","ru","tr","pl","nl","bg","cs","da","et","fi","el","he","hu","lv","mk","no","ro","sr","sk","sv","tl"]}
+      {"en":"Baltic plate","it":"Placca baltica","ja":"バルトプレート","?":["de","es","fr","ko","zh-Hans","zh-Hant","pt","ru","tr","pl","nl","bg","cs","da","et","fi","el","he","hu","lv","mk","no","ro","sr","sk","sv","tl"]},
+      {"en":"European plate","fr":"Plaque européenne","nl":"Europese Plaat","?":["de","es","it","ja","ko","zh-Hans","zh-Hant","pt","ru","tr","pl","bg","cs","da","et","fi","el","he","hu","lv","mk","no","ro","sr","sk","sv","tl"]}
     ]
   ],
   "tierConditions": [
