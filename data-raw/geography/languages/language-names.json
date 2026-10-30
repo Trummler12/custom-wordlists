@@ -1522,7 +1522,7 @@
     "names": {
       "bg": [
         {
-          "name": "Китайски език",
+          "name": "китайски език",
           "pref": true
         }
       ],
@@ -2298,6 +2298,10 @@
         {
           "name": "angielski",
           "alias": true
+        },
+        {
+          "name": "angielszczyzna",
+          "alias": true
         }
       ],
       "pt": [
@@ -2638,6 +2642,12 @@
         {
           "name": "Pǔtōnghuà",
           "alias": true
+        }
+      ],
+      "et": [
+        {
+          "name": "Põhjahiina keel",
+          "pref": true
         }
       ],
       "fi": [
@@ -4242,6 +4252,10 @@
         {
           "name": "język arabski",
           "pref": true
+        },
+        {
+          "name": "arabski",
+          "alias": true
         }
       ],
       "pt": [
@@ -5394,6 +5408,379 @@
       ]
     }
   },
+  "Q1568": {
+    "name": "Hindi",
+    "users": 341000000,
+    "code": "hi",
+    "names": {
+      "bg": [
+        {
+          "name": "хинди",
+          "pref": true
+        }
+      ],
+      "cs": [
+        {
+          "name": "hindština",
+          "pref": true
+        }
+      ],
+      "da": [
+        {
+          "name": "hindi",
+          "pref": true
+        }
+      ],
+      "de": [
+        {
+          "name": "Hindi",
+          "pref": true
+        }
+      ],
+      "de-ch": [
+        {
+          "name": "Hindi",
+          "pref": true
+        }
+      ],
+      "el": [
+        {
+          "name": "Χίντι",
+          "pref": true
+        }
+      ],
+      "en": [
+        {
+          "name": "Hindi",
+          "pref": true
+        },
+        {
+          "name": "Hindi language",
+          "alias": true
+        },
+        {
+          "name": "Modern Standard Hindi",
+          "alias": true
+        }
+      ],
+      "en-ca": [
+        {
+          "name": "Hindi",
+          "pref": true
+        }
+      ],
+      "en-gb": [
+        {
+          "name": "Hindi",
+          "pref": true
+        }
+      ],
+      "es": [
+        {
+          "name": "hindi",
+          "pref": true
+        },
+        {
+          "name": "hindu",
+          "alias": true
+        },
+        {
+          "name": "hindú",
+          "alias": true
+        },
+        {
+          "name": "hindustani",
+          "alias": true
+        },
+        {
+          "name": "hindustaní",
+          "alias": true
+        },
+        {
+          "name": "idioma hindi",
+          "alias": true
+        },
+        {
+          "name": "lengua hindi",
+          "alias": true
+        }
+      ],
+      "et": [
+        {
+          "name": "hindi keel",
+          "pref": true
+        }
+      ],
+      "fi": [
+        {
+          "name": "hindi",
+          "pref": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "hindi",
+          "pref": true
+        }
+      ],
+      "he": [
+        {
+          "name": "הינדי",
+          "pref": true
+        },
+        {
+          "name": "הודית",
+          "alias": true
+        },
+        {
+          "name": "הינדית",
+          "alias": true
+        }
+      ],
+      "hu": [
+        {
+          "name": "hindi",
+          "pref": true
+        },
+        {
+          "name": "hindi nyelv",
+          "alias": true
+        }
+      ],
+      "it": [
+        {
+          "name": "hindī",
+          "pref": true
+        },
+        {
+          "name": "hindi standard",
+          "alias": true
+        },
+        {
+          "name": "lingua hindi",
+          "alias": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "ヒンディー語",
+          "pref": true
+        },
+        {
+          "name": "ヒンディー",
+          "alias": true
+        },
+        {
+          "name": "ヒンディ語",
+          "alias": true
+        },
+        {
+          "name": "現代標準ヒンディー語",
+          "alias": true
+        }
+      ],
+      "ko": [
+        {
+          "name": "힌디어",
+          "pref": true
+        }
+      ],
+      "lv": [
+        {
+          "name": "hindi",
+          "pref": true
+        }
+      ],
+      "mk": [
+        {
+          "name": "хинди",
+          "pref": true
+        },
+        {
+          "name": "хинди јазик",
+          "alias": true
+        },
+        {
+          "name": "хиндиски јазик",
+          "alias": true
+        }
+      ],
+      "nb": [
+        {
+          "name": "hindi",
+          "pref": true
+        }
+      ],
+      "nl": [
+        {
+          "name": "Hindi",
+          "pref": true
+        }
+      ],
+      "nn": [
+        {
+          "name": "hindi",
+          "pref": true
+        }
+      ],
+      "pl": [
+        {
+          "name": "język hindi",
+          "pref": true
+        }
+      ],
+      "pt": [
+        {
+          "name": "língua hindi",
+          "pref": true
+        }
+      ],
+      "pt-br": [
+        {
+          "name": "língua hindi",
+          "pref": true
+        }
+      ],
+      "ro": [
+        {
+          "name": "hindi",
+          "pref": true
+        },
+        {
+          "name": "limba hindi",
+          "alias": true
+        }
+      ],
+      "ru": [
+        {
+          "name": "хинди",
+          "pref": true
+        }
+      ],
+      "sk": [
+        {
+          "name": "hindčina",
+          "pref": true
+        }
+      ],
+      "sr": [
+        {
+          "name": "хинди",
+          "pref": true
+        },
+        {
+          "name": "хинди језик",
+          "alias": true
+        },
+        {
+          "name": "хиндски језик",
+          "alias": true
+        }
+      ],
+      "sr-ec": [
+        {
+          "name": "хинди",
+          "pref": true
+        },
+        {
+          "name": "хинди језик",
+          "alias": true
+        },
+        {
+          "name": "хиндски језик",
+          "alias": true
+        }
+      ],
+      "sv": [
+        {
+          "name": "hindi",
+          "pref": true
+        }
+      ],
+      "tl": [
+        {
+          "name": "Wikang Hindi",
+          "pref": true
+        }
+      ],
+      "tr": [
+        {
+          "name": "Hintçe",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "印地語",
+          "pref": true
+        }
+      ],
+      "zh-cn": [
+        {
+          "name": "印地语",
+          "pref": true
+        }
+      ],
+      "zh-hans": [
+        {
+          "name": "印地语",
+          "pref": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "印地語",
+          "pref": true
+        }
+      ],
+      "zh-hk": [
+        {
+          "name": "印地語",
+          "pref": true
+        },
+        {
+          "name": "北印度語",
+          "alias": true
+        },
+        {
+          "name": "印度語",
+          "alias": true
+        }
+      ],
+      "zh-mo": [
+        {
+          "name": "印地語",
+          "pref": true
+        }
+      ],
+      "zh-my": [
+        {
+          "name": "印地语",
+          "pref": true
+        }
+      ],
+      "zh-sg": [
+        {
+          "name": "印地语",
+          "pref": true
+        }
+      ],
+      "zh-tw": [
+        {
+          "name": "印地語",
+          "pref": true
+        },
+        {
+          "name": "北印度語",
+          "alias": true
+        },
+        {
+          "name": "印度語",
+          "alias": true
+        }
+      ]
+    }
+  },
   "Q122602987": {
     "name": "Standard Arabic",
     "users": 335000000,
@@ -5512,6 +5899,327 @@
         },
         {
           "name": "standardni arapski jezik",
+          "alias": true
+        }
+      ]
+    }
+  },
+  "Q56467": {
+    "name": "Modern Standard Arabic",
+    "users": 335000000,
+    "names": {
+      "cs": [
+        {
+          "name": "Moderní standardní arabština",
+          "pref": true
+        }
+      ],
+      "de": [
+        {
+          "name": "modernes Hocharabisch",
+          "pref": true
+        }
+      ],
+      "en": [
+        {
+          "name": "Modern Standard Arabic",
+          "pref": true
+        },
+        {
+          "name": "MSA",
+          "short": true,
+          "alias": true
+        },
+        {
+          "name": "Modern Arabic",
+          "alias": true
+        },
+        {
+          "name": "Modern Literary Arabic",
+          "alias": true
+        },
+        {
+          "name": "Modern Written Arabic",
+          "alias": true
+        },
+        {
+          "name": "MWA",
+          "alias": true
+        },
+        {
+          "name": "Standard Arabic",
+          "alias": true
+        }
+      ],
+      "en-ca": [
+        {
+          "name": "Modern Standard Arabic",
+          "pref": true
+        }
+      ],
+      "en-gb": [
+        {
+          "name": "Modern Standard Arabic",
+          "pref": true
+        }
+      ],
+      "en-us": [
+        {
+          "name": "Larabci wanda ya dace da zamani",
+          "pref": true
+        }
+      ],
+      "es": [
+        {
+          "name": "árabe estándar moderno",
+          "pref": true
+        },
+        {
+          "name": "arabe estandar",
+          "alias": true
+        },
+        {
+          "name": "arabe estándar",
+          "alias": true
+        },
+        {
+          "name": "árabe estandar",
+          "alias": true
+        },
+        {
+          "name": "árabe estándar",
+          "alias": true
+        },
+        {
+          "name": "arabe estandar moderno",
+          "alias": true
+        },
+        {
+          "name": "arabe estándar moderno",
+          "alias": true
+        },
+        {
+          "name": "árabe estandar moderno",
+          "alias": true
+        },
+        {
+          "name": "arabe moderno",
+          "alias": true
+        },
+        {
+          "name": "árabe moderno",
+          "alias": true
+        }
+      ],
+      "fi": [
+        {
+          "name": "standardiarabia",
+          "pref": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "arabe standard moderne",
+          "pref": true
+        },
+        {
+          "name": "arabe litteral",
+          "alias": true
+        },
+        {
+          "name": "arabe littéral",
+          "alias": true
+        },
+        {
+          "name": "arabe standard",
+          "alias": true
+        }
+      ],
+      "he": [
+        {
+          "name": "ערבית תקנית מודרנית",
+          "pref": true
+        },
+        {
+          "name": "ערבית סטנדרטית מודרנית",
+          "alias": true
+        }
+      ],
+      "it": [
+        {
+          "name": "arabo standard",
+          "pref": true
+        },
+        {
+          "name": "arabo moderno standard",
+          "alias": true
+        },
+        {
+          "name": "fusha",
+          "alias": true
+        },
+        {
+          "name": "lingua araba moderna standard",
+          "alias": true
+        },
+        {
+          "name": "lingua araba standard",
+          "alias": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "現代標準アラビア語",
+          "pref": true
+        }
+      ],
+      "ko": [
+        {
+          "name": "현대 표준 아랍어",
+          "pref": true
+        }
+      ],
+      "lv": [
+        {
+          "name": "Standarta arābu valoda",
+          "pref": true
+        }
+      ],
+      "mk": [
+        {
+          "name": "Литературен арапски јазик",
+          "pref": true
+        }
+      ],
+      "nb": [
+        {
+          "name": "moderne standardarabisk",
+          "pref": true
+        },
+        {
+          "name": "Moderne Standard Arabisk",
+          "alias": true
+        },
+        {
+          "name": "MSA",
+          "alias": true
+        }
+      ],
+      "nl": [
+        {
+          "name": "Modern Standaardarabisch",
+          "pref": true
+        },
+        {
+          "name": "Arabisch (arb)",
+          "alias": true
+        }
+      ],
+      "pl": [
+        {
+          "name": "współczesny standardowy arabski",
+          "pref": true
+        },
+        {
+          "name": "MSA",
+          "alias": true
+        },
+        {
+          "name": "MWA",
+          "alias": true
+        },
+        {
+          "name": "Współczesny pisemny język arabski",
+          "alias": true
+        },
+        {
+          "name": "Współczesny standardowy język arabski",
+          "alias": true
+        }
+      ],
+      "pt": [
+        {
+          "name": "árabe moderno padrão",
+          "pref": true
+        },
+        {
+          "name": "árabe padrão moderno",
+          "alias": true
+        }
+      ],
+      "ro": [
+        {
+          "name": "arabă standard modernă",
+          "pref": true
+        },
+        {
+          "name": "araba standard modernă",
+          "alias": true
+        },
+        {
+          "name": "limba arabă standard modernă",
+          "alias": true
+        }
+      ],
+      "ru": [
+        {
+          "name": "арабский литературный язык",
+          "pref": true
+        },
+        {
+          "name": "Литературный арабский язык",
+          "alias": true
+        },
+        {
+          "name": "Современный стандартный арабский язык",
+          "alias": true
+        },
+        {
+          "name": "Фусха",
+          "alias": true
+        }
+      ],
+      "sk": [
+        {
+          "name": "Moderná štandardná arabčina",
+          "pref": true
+        }
+      ],
+      "sr": [
+        {
+          "name": "модерни стандардни арапски",
+          "pref": true
+        }
+      ],
+      "sr-el": [
+        {
+          "name": "moderni standardni arapski",
+          "pref": true
+        }
+      ],
+      "tr": [
+        {
+          "name": "Fasih Arapça",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "现代标准阿拉伯语",
+          "pref": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "現代標準阿拉伯語",
+          "pref": true
+        },
+        {
+          "name": "書面阿拉伯語",
+          "alias": true
+        },
+        {
+          "name": "標準阿拉伯語",
           "alias": true
         }
       ]
@@ -7143,7 +7851,19 @@
           "alias": true
         },
         {
+          "name": "en-US",
+          "alias": true
+        },
+        {
+          "name": "English (United States of America)",
+          "alias": true
+        },
+        {
           "name": "English (United States)",
+          "alias": true
+        },
+        {
+          "name": "English of the United States of America",
           "alias": true
         },
         {
@@ -7157,9 +7877,27 @@
         {
           "name": "US English",
           "alias": true
+        }
+      ],
+      "en-gb": [
+        {
+          "name": "American English",
+          "pref": true
         },
         {
-          "name": "USA English",
+          "name": "English (United States of America)",
+          "alias": true
+        },
+        {
+          "name": "English (United States)",
+          "alias": true
+        },
+        {
+          "name": "English (US)",
+          "alias": true
+        },
+        {
+          "name": "US English",
           "alias": true
         }
       ],
@@ -7231,15 +7969,15 @@
           "alias": true
         },
         {
+          "name": "inglés dos EUA",
+          "alias": true
+        },
+        {
           "name": "ingles estadounidense",
           "alias": true
         },
         {
           "name": "inglés norteamericano",
-          "alias": true
-        },
-        {
-          "name": "inglés USA",
           "alias": true
         }
       ],
@@ -7259,6 +7997,14 @@
         {
           "name": "anglais américain",
           "pref": true
+        },
+        {
+          "name": "anglais des É-U",
+          "alias": true
+        },
+        {
+          "name": "anglais des États-Unis",
+          "alias": true
         }
       ],
       "he": [
@@ -7293,8 +8039,16 @@
       ],
       "ja": [
         {
-          "name": "アメリカ英語",
+          "name": "アメリカ合衆国英語",
           "pref": true
+        },
+        {
+          "name": "アメリカ英語",
+          "alias": true
+        },
+        {
+          "name": "合衆国英語",
+          "alias": true
         },
         {
           "name": "米語",
@@ -7356,6 +8110,26 @@
         },
         {
           "name": "amerykański angielski",
+          "alias": true
+        },
+        {
+          "name": "amerykański język angielski",
+          "alias": true
+        },
+        {
+          "name": "angielski (Stany Zjednoczone)",
+          "alias": true
+        },
+        {
+          "name": "angielski (USA)",
+          "alias": true
+        },
+        {
+          "name": "język angielski (Stany Zjednoczone)",
+          "alias": true
+        },
+        {
+          "name": "język angielski (USA)",
           "alias": true
         }
       ],
@@ -7499,8 +8273,7 @@
       "zh-hant": [
         {
           "name": "美式英語",
-          "pref": true,
-          "alias": true
+          "pref": true
         },
         {
           "name": "美國英語",
@@ -10412,7 +11185,7 @@
     "names": {
       "bg": [
         {
-          "name": "Индонезийски език",
+          "name": "индонезийски език",
           "pref": true
         }
       ],
@@ -11854,23 +12627,23 @@
     "names": {
       "bg": [
         {
-          "name": "Панджабски език",
+          "name": "панджабски език",
           "pref": true
         },
         {
-          "name": "Панджаби",
+          "name": "панджаби",
           "alias": true
         },
         {
-          "name": "Панджабски",
+          "name": "панджабски",
           "alias": true
         },
         {
-          "name": "Пенджабски",
+          "name": "пенджабски",
           "alias": true
         },
         {
-          "name": "Пенджабски език",
+          "name": "пенджабски език",
           "alias": true
         }
       ],
@@ -13339,6 +14112,12 @@
           "pref": true
         }
       ],
+      "sv": [
+        {
+          "name": "nypersiska",
+          "pref": true
+        }
+      ],
       "tr": [
         {
           "name": "Yeni Farsça",
@@ -14150,6 +14929,10 @@
           "alias": true
         },
         {
+          "name": "marāṭhi",
+          "alias": true
+        },
+        {
           "name": "marthi",
           "alias": true
         },
@@ -14488,7 +15271,7 @@
       ],
       "el": [
         {
-          "name": "τουρκικά",
+          "name": "Τουρκικά",
           "pref": true
         },
         {
@@ -16053,7 +16836,7 @@
     "names": {
       "bg": [
         {
-          "name": "Малайски език",
+          "name": "малайски език",
           "pref": true
         }
       ],
@@ -17024,7 +17807,7 @@
     "names": {
       "bg": [
         {
-          "name": "Тамилски език",
+          "name": "тамилски език",
           "pref": true
         }
       ],
@@ -18608,6 +19391,10 @@
           "short": true
         },
         {
+          "name": "Farsi",
+          "alias": true
+        },
+        {
           "name": "Farsi language",
           "alias": true
         },
@@ -18947,11 +19734,15 @@
           "pref": true
         },
         {
-          "name": "дари",
+          "name": "персијски",
           "alias": true
         },
         {
           "name": "фарси",
+          "alias": true
+        },
+        {
+          "name": "фарси језик",
           "alias": true
         }
       ],
@@ -19299,8 +20090,7 @@
       "pt-br": [
         {
           "name": "italiano",
-          "pref": true,
-          "alias": true
+          "pref": true
         }
       ],
       "ro": [
@@ -22969,6 +23759,10 @@
           "alias": true
         },
         {
+          "name": "Naija pidgin",
+          "alias": true
+        },
+        {
           "name": "NPE",
           "alias": true
         },
@@ -23173,6 +23967,12 @@
           "pref": true
         }
       ],
+      "sv": [
+        {
+          "name": "västtchadiska språk A.1",
+          "pref": true
+        }
+      ],
       "zh": [
         {
           "name": "豪萨-关达拉语",
@@ -23218,6 +24018,10 @@
         {
           "name": "Jin",
           "pref": true
+        },
+        {
+          "name": "Jin Chinese",
+          "alias": true
         },
         {
           "name": "Jin language",
@@ -23579,11 +24383,11 @@
       ],
       "it": [
         {
-          "name": "romaní",
+          "name": "romanì",
           "pref": true
         },
         {
-          "name": "lingua romaní",
+          "name": "lingua romanì",
           "alias": true
         },
         {
@@ -23888,6 +24692,10 @@
           "alias": true
         },
         {
+          "name": "טגאלוג",
+          "alias": true
+        },
+        {
           "name": "טגלוג",
           "alias": true
         },
@@ -24092,11 +24900,15 @@
       ],
       "sv": [
         {
-          "name": "tagalska",
+          "name": "tagalog",
           "pref": true
         },
         {
           "name": "tagaliska",
+          "alias": true
+        },
+        {
+          "name": "tagalska",
           "alias": true
         }
       ],
@@ -24111,6 +24923,10 @@
         }
       ],
       "tr": [
+        {
+          "name": "Tagalogca",
+          "pref": true
+        },
         {
           "name": "Tagalog dili",
           "alias": true
@@ -25456,11 +26272,19 @@
       ],
       "pl": [
         {
-          "name": "Dialekt algierski",
+          "name": "dialekt algierski",
           "pref": true
         },
         {
           "name": "algierski arabski",
+          "alias": true
+        },
+        {
+          "name": "dialekt algierski arabski",
+          "alias": true
+        },
+        {
+          "name": "język algierski arabski",
           "alias": true
         }
       ],
@@ -26373,6 +27197,16 @@
           "pref": true
         }
       ],
+      "sv": [
+        {
+          "name": "lechitiska språk",
+          "pref": true
+        },
+        {
+          "name": "lekhitiska språk",
+          "alias": true
+        }
+      ],
       "tr": [
         {
           "name": "Leh dilleri",
@@ -27073,7 +27907,7 @@
     "names": {
       "bg": [
         {
-          "name": "Малаялам",
+          "name": "малаялам",
           "pref": true
         }
       ],
@@ -27411,11 +28245,11 @@
       ],
       "ro": [
         {
-          "name": "limba malayalam",
+          "name": "malayalam",
           "pref": true
         },
         {
-          "name": "malayalam",
+          "name": "limba malayalam",
           "alias": true
         }
       ],
@@ -28773,6 +29607,18 @@
         {
           "name": "ukraiņu valoda",
           "pref": true
+        },
+        {
+          "name": "ua",
+          "alias": true
+        },
+        {
+          "name": "ukr",
+          "alias": true
+        },
+        {
+          "name": "ukrainska",
+          "alias": true
         }
       ],
       "mk": [
@@ -29293,6 +30139,10 @@
         {
           "name": "oriya",
           "pref": true
+        },
+        {
+          "name": "odia",
+          "alias": true
         }
       ],
       "tl": [
@@ -30006,6 +30856,16 @@
           "name": "缅甸语",
           "pref": true
         }
+      ],
+      "zh-tw": [
+        {
+          "name": "緬甸語",
+          "pref": true
+        },
+        {
+          "name": "bur",
+          "alias": true
+        }
       ]
     }
   },
@@ -30627,6 +31487,12 @@
           "pref": true
         }
       ],
+      "sv": [
+        {
+          "name": "nordliga indoariska språk",
+          "pref": true
+        }
+      ],
       "tr": [
         {
           "name": "Kuzey Hint-Aryan dilleri",
@@ -30885,6 +31751,12 @@
       "pt": [
         {
           "name": "Árabe marroquino",
+          "pref": true
+        }
+      ],
+      "ro": [
+        {
+          "name": "arabă marocană",
           "pref": true
         }
       ],
@@ -32114,6 +32986,10 @@
         {
           "name": "język amharski",
           "pref": true
+        },
+        {
+          "name": "amharski",
+          "alias": true
         }
       ],
       "pt": [
@@ -34008,15 +34884,15 @@
       ],
       "nb": [
         {
-          "name": "Fulfulde",
+          "name": "fulfulde",
           "pref": true
         },
         {
-          "name": "Fula",
+          "name": "fula",
           "alias": true
         },
         {
-          "name": "Fulfulde språk",
+          "name": "fulfulde språk",
           "alias": true
         }
       ],
@@ -34948,7 +35824,11 @@
           "pref": true
         },
         {
-          "name": "Langue gan",
+          "name": "kan",
+          "alias": true
+        },
+        {
+          "name": "langue gan",
           "alias": true
         }
       ],
@@ -35530,10 +36410,6 @@
         {
           "name": "クルド語",
           "pref": true
-        },
-        {
-          "name": "kur",
-          "alias": true
         }
       ],
       "ko": [
@@ -35698,10 +36574,6 @@
         {
           "name": "Kürtçe",
           "pref": true
-        },
-        {
-          "name": "ku",
-          "alias": true
         },
         {
           "name": "Kürdi",
@@ -37242,6 +38114,22 @@
         },
         {
           "name": "塞克語",
+          "alias": true
+        },
+        {
+          "name": "波克塞語",
+          "alias": true
+        },
+        {
+          "name": "波克黑塞語",
+          "alias": true
+        },
+        {
+          "name": "波斯尼亚-克罗地亚-塞尔维亚语",
+          "alias": true
+        },
+        {
+          "name": "波斯尼亚-克罗地亚-黑山-塞尔维亚语",
           "alias": true
         }
       ],
@@ -40164,7 +41052,7 @@
       ],
       "sv": [
         {
-          "name": "zhuang",
+          "name": "zhuang-språk",
           "pref": true
         }
       ],
@@ -40492,6 +41380,12 @@
       "zh": [
         {
           "name": "土库曼语",
+          "pref": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "土庫曼語",
           "pref": true
         }
       ]
@@ -41656,7 +42550,7 @@
     "names": {
       "bg": [
         {
-          "name": "Синхалски език",
+          "name": "синхалски език",
           "pref": true
         }
       ],
@@ -42907,6 +43801,14 @@
           "alias": true
         },
         {
+          "name": "Azerbaijani Turkish",
+          "alias": true
+        },
+        {
+          "name": "Azeri Turkish",
+          "alias": true
+        },
+        {
           "name": "South Azerbaijani language",
           "alias": true
         },
@@ -42999,6 +43901,10 @@
         {
           "name": "южноазербайджанский язык",
           "pref": true
+        },
+        {
+          "name": "тюркский язык",
+          "alias": true
         },
         {
           "name": "тюркче",
@@ -44159,6 +45065,10 @@
         {
           "name": "nordkurdiska",
           "pref": true
+        },
+        {
+          "name": "kurmanji",
+          "alias": true
         }
       ],
       "tr": [
@@ -45528,6 +46438,10 @@
         {
           "name": "таџички језик",
           "pref": true
+        },
+        {
+          "name": "таџички персијски језик",
+          "alias": true
         }
       ],
       "sv": [
@@ -46601,6 +47515,10 @@
         {
           "name": "grec",
           "pref": true
+        },
+        {
+          "name": "el",
+          "alias": true
         },
         {
           "name": "langue grecque",
@@ -48419,7 +49337,7 @@
           "pref": true
         },
         {
-          "name": "Kinyarwanda",
+          "name": "kinyarwanda",
           "alias": true
         }
       ],
@@ -48605,11 +49523,15 @@
           "pref": true
         },
         {
-          "name": "マレーシア・マレー人",
+          "name": "マレーシア・マレー語",
           "alias": true
         },
         {
           "name": "マレーシア語",
+          "alias": true
+        },
+        {
+          "name": "マレー語",
           "alias": true
         }
       ],
@@ -49059,6 +49981,16 @@
         },
         {
           "name": "Nianja",
+          "alias": true
+        }
+      ],
+      "ro": [
+        {
+          "name": "chewa",
+          "pref": true
+        },
+        {
+          "name": "limba chewa",
           "alias": true
         }
       ],
@@ -50109,6 +51041,10 @@
         {
           "name": "język akan",
           "pref": true
+        },
+        {
+          "name": "akan",
+          "alias": true
         }
       ],
       "pt": [
@@ -50372,7 +51308,7 @@
       ],
       "ru": [
         {
-          "name": "Северноминьский язык",
+          "name": "северноминьский язык",
           "pref": true
         }
       ],
@@ -50951,6 +51887,10 @@
         {
           "name": "jiddisch",
           "pref": true
+        },
+        {
+          "name": "judetyska",
+          "alias": true
         }
       ],
       "tl": [
@@ -52506,6 +53446,30 @@
         {
           "name": "język afrikaans",
           "pref": true
+        },
+        {
+          "name": "afrikaans",
+          "alias": true
+        },
+        {
+          "name": "afrykanerski",
+          "alias": true
+        },
+        {
+          "name": "afrykanerszczyzna",
+          "alias": true
+        },
+        {
+          "name": "burski",
+          "alias": true
+        },
+        {
+          "name": "język afrykanerski",
+          "alias": true
+        },
+        {
+          "name": "język burski",
+          "alias": true
         }
       ],
       "pt": [
@@ -53331,6 +54295,18 @@
         {
           "name": "dialekt alemański",
           "alias": true
+        },
+        {
+          "name": "dialekt szwajcarski niemiecki",
+          "alias": true
+        },
+        {
+          "name": "język szwajcarski niemiecki",
+          "alias": true
+        },
+        {
+          "name": "szwajcarski niemiecki",
+          "alias": true
         }
       ],
       "pt": [
@@ -53911,15 +54887,15 @@
       ],
       "sr": [
         {
-          "name": "Дари језик",
+          "name": "дари језик",
           "pref": true
         },
         {
-          "name": "Авгански персијски језик",
+          "name": "авгански персијски језик",
           "alias": true
         },
         {
-          "name": "Дари персијски језик",
+          "name": "дари персијски језик",
           "alias": true
         }
       ],
@@ -55629,6 +56605,14 @@
           "alias": true
         },
         {
+          "name": "Iloco",
+          "alias": true
+        },
+        {
+          "name": "Ilokano",
+          "alias": true
+        },
+        {
           "name": "Ilokano language",
           "alias": true
         },
@@ -57085,6 +58069,18 @@
         {
           "name": "kečvu valoda",
           "pref": true
+        },
+        {
+          "name": "kečua valoda",
+          "alias": true
+        },
+        {
+          "name": "kečvu makrovaloda",
+          "alias": true
+        },
+        {
+          "name": "kečvu valodas",
+          "alias": true
         }
       ],
       "mk": [
@@ -57767,6 +58763,10 @@
           "alias": true
         },
         {
+          "name": "ilongo burgués",
+          "alias": true
+        },
+        {
           "name": "ilongo hiligaíno",
           "alias": true
         },
@@ -57800,6 +58800,10 @@
         },
         {
           "name": "lengua yligueýna",
+          "alias": true
+        },
+        {
+          "name": "ylongo burgués",
           "alias": true
         }
       ],
@@ -59976,6 +60980,20 @@
           "pref": true
         }
       ],
+      "ro": [
+        {
+          "name": "mooré",
+          "pref": true
+        },
+        {
+          "name": "moore",
+          "alias": true
+        },
+        {
+          "name": "mossi",
+          "alias": true
+        }
+      ],
       "ru": [
         {
           "name": "мооре",
@@ -59999,6 +61017,10 @@
         },
         {
           "name": "moore",
+          "alias": true
+        },
+        {
+          "name": "mossi",
           "alias": true
         }
       ],
@@ -62749,6 +63771,64 @@
       ]
     }
   },
+  "Q107548681": {
+    "name": "Noakhali",
+    "users": 7000000,
+    "code": "oak",
+    "names": {
+      "de": [
+        {
+          "name": "Noakhalische Sprache",
+          "pref": true
+        },
+        {
+          "name": "noakhalische Sprache",
+          "alias": true
+        }
+      ],
+      "en": [
+        {
+          "name": "Noakhali",
+          "pref": true,
+          "alias": true
+        },
+        {
+          "name": "Noakhailla",
+          "alias": true
+        },
+        {
+          "name": "Noakhali Bengali",
+          "alias": true
+        },
+        {
+          "name": "Noakhalia",
+          "alias": true
+        },
+        {
+          "name": "Noakhalian",
+          "alias": true
+        },
+        {
+          "name": "Noakhalian language",
+          "alias": true
+        },
+        {
+          "name": "Noakhaliyo",
+          "alias": true
+        },
+        {
+          "name": "oak",
+          "alias": true
+        }
+      ],
+      "en-gb": [
+        {
+          "name": "Noakhali",
+          "pref": true
+        }
+      ]
+    }
+  },
   "Q33328": {
     "name": "Finnic",
     "users": 7000000,
@@ -63226,6 +64306,16 @@
         {
           "name": "Língua tumbuka",
           "pref": true
+        }
+      ],
+      "ro": [
+        {
+          "name": "tumbuka",
+          "pref": true
+        },
+        {
+          "name": "limba tumbuka",
+          "alias": true
         }
       ],
       "ru": [
@@ -65875,6 +66965,10 @@
         {
           "name": "albán",
           "pref": true
+        },
+        {
+          "name": "albán nyelv",
+          "alias": true
         }
       ],
       "it": [
@@ -65933,6 +67027,10 @@
         {
           "name": "język albański",
           "pref": true
+        },
+        {
+          "name": "albański",
+          "alias": true
         },
         {
           "name": "gjuha shqipe",
@@ -66403,6 +67501,12 @@
       "sr": [
         {
           "name": "Тибетски језици",
+          "pref": true
+        }
+      ],
+      "sv": [
+        {
+          "name": "tibetiska språk",
           "pref": true
         }
       ],
@@ -69731,6 +70835,10 @@
         {
           "name": "suomen kieli",
           "alias": true
+        },
+        {
+          "name": "suomenkieli",
+          "alias": true
         }
       ],
       "fr": [
@@ -70667,7 +71775,7 @@
     "names": {
       "bg": [
         {
-          "name": "Каталонски език",
+          "name": "каталонски език",
           "pref": true
         }
       ],
@@ -73894,6 +75002,12 @@
     "users": 5000000,
     "code": "gpe",
     "names": {
+      "cs": [
+        {
+          "name": "ghanská pidžin angličtina",
+          "pref": true
+        }
+      ],
       "en": [
         {
           "name": "Ghanaian Pidgin English",
@@ -74296,10 +75410,6 @@
         {
           "name": "Paraguayan Guaraní",
           "pref": true
-        },
-        {
-          "name": "gug",
-          "alias": true
         }
       ],
       "en-gb": [
@@ -74354,10 +75464,6 @@
         {
           "name": "Paraguay Guaranísi",
           "pref": true
-        },
-        {
-          "name": "gug",
-          "alias": true
         }
       ]
     }
@@ -74705,6 +75811,12 @@
     "name": "Saharan",
     "users": 4600000,
     "names": {
+      "cs": [
+        {
+          "name": "saharské jazyky",
+          "pref": true
+        }
+      ],
       "de": [
         {
           "name": "Saharanisch",
@@ -76018,8 +77130,12 @@
       ],
       "da": [
         {
-          "name": "Setswana",
+          "name": "setswana",
           "pref": true
+        },
+        {
+          "name": "tswana",
+          "alias": true
         }
       ],
       "de": [
@@ -76352,6 +77468,10 @@
         {
           "name": "setswana",
           "pref": true
+        },
+        {
+          "name": "tswana",
+          "alias": true
         }
       ],
       "tl": [
@@ -76673,19 +77793,19 @@
       ],
       "lv": [
         {
-          "name": "Gvaranu valoda",
+          "name": "gvaranu valoda",
           "pref": true
         },
         {
-          "name": "Guarani valoda",
+          "name": "guarani valoda",
           "alias": true
         },
         {
-          "name": "Guaranu valoda",
+          "name": "guaranu valoda",
           "alias": true
         },
         {
-          "name": "Gvarani valoda",
+          "name": "gvarani valoda",
           "alias": true
         }
       ],
@@ -77536,7 +78656,7 @@
       ],
       "sv": [
         {
-          "name": "Pulaar",
+          "name": "pulaar",
           "pref": true
         }
       ],
@@ -77569,7 +78689,7 @@
     }
   },
   "Q242648": {
-    "name": "Emilian-Romagnol",
+    "name": "Emilian–Romagnol",
     "users": 4400000,
     "names": {
       "de": [
@@ -77590,15 +78710,27 @@
       ],
       "en": [
         {
-          "name": "Emilian-Romagnol",
+          "name": "Emilian–Romagnol",
           "pref": true
+        },
+        {
+          "name": "Emilian-Romagnol",
+          "alias": true
         },
         {
           "name": "Emilian-Romagnol language",
           "alias": true
         },
         {
+          "name": "Emilian–Romagnol language",
+          "alias": true
+        },
+        {
           "name": "Emiliano-Romagnolo",
+          "alias": true
+        },
+        {
+          "name": "Emiliano–Romagnolo",
           "alias": true
         },
         {
@@ -79697,7 +80829,7 @@
       ],
       "es": [
         {
-          "name": "Idioma sotho septentrional",
+          "name": "idioma sotho septentrional",
           "pref": true
         },
         {
@@ -79935,6 +81067,10 @@
         {
           "name": "nordsotho",
           "pref": true
+        },
+        {
+          "name": "sepedi",
+          "alias": true
         }
       ],
       "tr": [
@@ -80219,11 +81355,11 @@
       ],
       "nn": [
         {
-          "name": "norsk bokmål",
+          "name": "bokmål",
           "pref": true
         },
         {
-          "name": "bokmål",
+          "name": "norsk bokmål",
           "alias": true
         }
       ],
@@ -81280,11 +82416,11 @@
           "pref": true
         },
         {
-          "name": "ay",
+          "name": "aimara valoda",
           "alias": true
         },
         {
-          "name": "aym",
+          "name": "aimaru",
           "alias": true
         }
       ],
@@ -83854,6 +84990,18 @@
         {
           "name": "język aceh",
           "pref": true
+        },
+        {
+          "name": "aceh",
+          "alias": true
+        },
+        {
+          "name": "acziński",
+          "alias": true
+        },
+        {
+          "name": "język acziński",
+          "alias": true
         }
       ],
       "pt": [
@@ -86805,6 +87953,12 @@
           "pref": true
         }
       ],
+      "sv": [
+        {
+          "name": "toskanska",
+          "pref": true
+        }
+      ],
       "tl": [
         {
           "name": "Toscano",
@@ -87517,6 +88671,24 @@
         {
           "name": "Abron",
           "pref": true
+        }
+      ],
+      "pl": [
+        {
+          "name": "dialekt abroński",
+          "pref": true
+        },
+        {
+          "name": "abron",
+          "alias": true
+        },
+        {
+          "name": "abroński",
+          "alias": true
+        },
+        {
+          "name": "dialekt abron",
+          "alias": true
         }
       ],
       "pt": [
@@ -89902,7 +91074,7 @@
           "pref": true
         },
         {
-          "name": "bachtiarische Sprache",
+          "name": "bachtiarischer Dialekt",
           "alias": true
         }
       ],
@@ -92849,6 +94021,12 @@
           "pref": true
         }
       ],
+      "lv": [
+        {
+          "name": "Nīderlandes lejassakšu valoda",
+          "pref": true
+        }
+      ],
       "mk": [
         {
           "name": "холандски долносаксонски",
@@ -95238,6 +96416,10 @@
         {
           "name": "курух",
           "pref": true
+        },
+        {
+          "name": "ораон",
+          "alias": true
         }
       ],
       "sk": [
@@ -96509,7 +97691,7 @@
       ],
       "he": [
         {
-          "name": "סכסונית עילית",
+          "name": "סקסונית עילית",
           "pref": true
         }
       ],
@@ -97186,8 +98368,16 @@
     "names": {
       "bg": [
         {
-          "name": "Науатъл",
+          "name": "науатъл",
           "pref": true
+        },
+        {
+          "name": "ацтекски език",
+          "alias": true
+        },
+        {
+          "name": "език науатъл",
+          "alias": true
         }
       ],
       "cs": [
@@ -97198,24 +98388,60 @@
         {
           "name": "aztéčtina",
           "alias": true
+        },
+        {
+          "name": "jazyk nahuatl",
+          "alias": true
         }
       ],
       "da": [
         {
-          "name": "Nahuatl",
+          "name": "nahuatl",
           "pref": true
+        },
+        {
+          "name": "aztekisk",
+          "alias": true
+        },
+        {
+          "name": "nahuatlsprog",
+          "alias": true
         }
       ],
       "de": [
         {
           "name": "Nahuatl",
           "pref": true
+        },
+        {
+          "name": "Aztekisch",
+          "alias": true
+        },
+        {
+          "name": "Mexikanisch",
+          "alias": true
+        },
+        {
+          "name": "Nahuatl-Sprache",
+          "alias": true
         }
       ],
       "el": [
         {
-          "name": "Νάουατλ γλώσσα",
+          "name": "νάουατλ",
           "pref": true
+        },
+        {
+          "name": "αζτεκική γλώσσα",
+          "alias": true
+        },
+        {
+          "name": "γλώσσα νάουατλ",
+          "alias": true
+        },
+        {
+          "name": "ναουατλέζικα",
+          "alias": true
         }
       ],
       "en": [
@@ -97268,18 +98494,174 @@
         {
           "name": "Nahuatl",
           "pref": true
+        },
+        {
+          "name": "Aztec",
+          "alias": true
+        },
+        {
+          "name": "Aztec language",
+          "alias": true
+        },
+        {
+          "name": "Mexican",
+          "alias": true
+        },
+        {
+          "name": "Mexican language",
+          "alias": true
+        },
+        {
+          "name": "Mexicano",
+          "alias": true
+        },
+        {
+          "name": "Mexicano language",
+          "alias": true
+        },
+        {
+          "name": "Nāhuatl",
+          "alias": true
+        },
+        {
+          "name": "Nahuatl language",
+          "alias": true
+        },
+        {
+          "name": "Nāhuatl language",
+          "alias": true
+        },
+        {
+          "name": "Nahuatl languages",
+          "alias": true
         }
       ],
       "en-gb": [
         {
           "name": "Nahuatl",
           "pref": true
+        },
+        {
+          "name": "Aztec",
+          "alias": true
+        },
+        {
+          "name": "Aztec language",
+          "alias": true
+        },
+        {
+          "name": "Mexican",
+          "alias": true
+        },
+        {
+          "name": "Mexican language",
+          "alias": true
+        },
+        {
+          "name": "Mexicano",
+          "alias": true
+        },
+        {
+          "name": "Mexicano language",
+          "alias": true
+        },
+        {
+          "name": "Nāhuatl",
+          "alias": true
+        },
+        {
+          "name": "Nahuatl language",
+          "alias": true
+        },
+        {
+          "name": "Nāhuatl language",
+          "alias": true
+        },
+        {
+          "name": "Nahuatl languages",
+          "alias": true
+        }
+      ],
+      "en-us": [
+        {
+          "name": "Nahuatl",
+          "pref": true
+        },
+        {
+          "name": "Aztec",
+          "alias": true
+        },
+        {
+          "name": "Aztec language",
+          "alias": true
+        },
+        {
+          "name": "Mexican",
+          "alias": true
+        },
+        {
+          "name": "Mexican language",
+          "alias": true
+        },
+        {
+          "name": "Mexicano",
+          "alias": true
+        },
+        {
+          "name": "Mexicano language",
+          "alias": true
+        },
+        {
+          "name": "Nāhuatl",
+          "alias": true
+        },
+        {
+          "name": "Nahuatl language",
+          "alias": true
+        },
+        {
+          "name": "Nāhuatl language",
+          "alias": true
+        },
+        {
+          "name": "Nahuatl languages",
+          "alias": true
         }
       ],
       "es": [
         {
           "name": "náhuatl",
           "pref": true
+        },
+        {
+          "name": "idioma náhuatl",
+          "alias": true
+        },
+        {
+          "name": "lengua náhuatl",
+          "alias": true
+        },
+        {
+          "name": "mexicano",
+          "alias": true
+        },
+        {
+          "name": "nahuatl",
+          "alias": true
+        }
+      ],
+      "es-419": [
+        {
+          "name": "náhuatl",
+          "pref": true
+        },
+        {
+          "name": "idioma náhuatl",
+          "alias": true
+        },
+        {
+          "name": "lengua náhuatl",
+          "alias": true
         },
         {
           "name": "mexicano",
@@ -97294,6 +98676,14 @@
         {
           "name": "nahua keel",
           "pref": true
+        },
+        {
+          "name": "nahuatl",
+          "alias": true
+        },
+        {
+          "name": "nahuatli keel",
+          "alias": true
         }
       ],
       "fi": [
@@ -97314,6 +98704,18 @@
         {
           "name": "nahuatl",
           "pref": true
+        },
+        {
+          "name": "aztèque",
+          "alias": true
+        },
+        {
+          "name": "langue mexicaine",
+          "alias": true
+        },
+        {
+          "name": "langue nahuatl",
+          "alias": true
         }
       ],
       "he": [
@@ -97323,6 +98725,10 @@
         },
         {
           "name": "אזטק",
+          "alias": true
+        },
+        {
+          "name": "אצטקית",
           "alias": true
         },
         {
@@ -97336,15 +98742,28 @@
         {
           "name": "נאואטל",
           "alias": true
+        },
+        {
+          "name": "שפת נאוואטל",
+          "alias": true
         }
       ],
       "hu": [
         {
-          "name": "azték",
-          "pref": true
+          "name": "navatl",
+          "pref": true,
+          "alias": true
         },
         {
-          "name": "navatl",
+          "name": "azték nyelv",
+          "alias": true
+        },
+        {
+          "name": "nahuatl",
+          "alias": true
+        },
+        {
+          "name": "navatl nyelv",
           "alias": true
         }
       ],
@@ -97352,6 +98771,14 @@
         {
           "name": "nahuatl",
           "pref": true
+        },
+        {
+          "name": "azteco",
+          "alias": true
+        },
+        {
+          "name": "lingua messicana",
+          "alias": true
         },
         {
           "name": "lingua nahuatl",
@@ -97362,19 +98789,32 @@
         {
           "name": "ナワトル語",
           "pref": true
+        },
+        {
+          "name": "アステカ語",
+          "alias": true
+        },
+        {
+          "name": "ナワトル",
+          "alias": true
         }
       ],
       "ko": [
         {
-          "name": "나우아틀어",
-          "pref": true
+          "name": "나와틀어",
+          "pref": true,
+          "alias": true
         },
         {
-          "name": "나와틀어",
+          "name": "나와틀",
           "alias": true
         },
         {
           "name": "나후아틀어",
+          "alias": true
+        },
+        {
+          "name": "아즈텍어",
           "alias": true
         }
       ],
@@ -97386,15 +98826,24 @@
         {
           "name": "acteku valoda",
           "alias": true
+        },
+        {
+          "name": "navatlu",
+          "alias": true
         }
       ],
       "mk": [
         {
-          "name": "ацтечки јазик",
-          "pref": true
+          "name": "наватл",
+          "pref": true,
+          "alias": true
         },
         {
-          "name": "наватл",
+          "name": "ацтечки јазик",
+          "alias": true
+        },
+        {
+          "name": "наватлски јазик",
           "alias": true
         }
       ],
@@ -97402,6 +98851,10 @@
         {
           "name": "nahuatl",
           "pref": true
+        },
+        {
+          "name": "nahuatlspråk",
+          "alias": true
         }
       ],
       "nl": [
@@ -97410,7 +98863,15 @@
           "pref": true
         },
         {
+          "name": "Azteeks",
+          "alias": true
+        },
+        {
           "name": "Mexicaans",
+          "alias": true
+        },
+        {
+          "name": "Nahuatl-taal",
           "alias": true
         }
       ],
@@ -97418,12 +98879,24 @@
         {
           "name": "nahuatl",
           "pref": true
+        },
+        {
+          "name": "nahuatlspråk",
+          "alias": true
         }
       ],
       "pl": [
         {
           "name": "język nahuatl",
           "pref": true
+        },
+        {
+          "name": "język aztecki",
+          "alias": true
+        },
+        {
+          "name": "nahuatl",
+          "alias": true
         }
       ],
       "pt": [
@@ -97436,11 +98909,23 @@
           "alias": true
         },
         {
+          "name": "língua nauatle",
+          "alias": true
+        },
+        {
           "name": "mexicano",
           "alias": true
         },
         {
+          "name": "nahuatl",
+          "alias": true
+        },
+        {
           "name": "nāhuatl",
+          "alias": true
+        },
+        {
+          "name": "náuatle",
           "alias": true
         }
       ],
@@ -97454,11 +98939,23 @@
           "alias": true
         },
         {
+          "name": "língua náuatle",
+          "alias": true
+        },
+        {
           "name": "mexicano",
           "alias": true
         },
         {
+          "name": "nahuatl",
+          "alias": true
+        },
+        {
           "name": "nāhuatl",
+          "alias": true
+        },
+        {
+          "name": "nauatle",
           "alias": true
         }
       ],
@@ -97468,14 +98965,23 @@
           "pref": true
         },
         {
+          "name": "limba aztecă",
+          "alias": true
+        },
+        {
           "name": "nahuatl",
           "alias": true
         }
       ],
       "ru": [
         {
-          "name": "астекские языки",
-          "pref": true
+          "name": "науатль",
+          "pref": true,
+          "alias": true
+        },
+        {
+          "name": "ацтекская группа языков",
+          "alias": true
         },
         {
           "name": "ацтекские языки",
@@ -97490,15 +98996,19 @@
           "alias": true
         },
         {
+          "name": "науаские языки",
+          "alias": true
+        },
+        {
           "name": "науаский",
           "alias": true
         },
         {
-          "name": "науатль",
+          "name": "нахуатль",
           "alias": true
         },
         {
-          "name": "нахуатль",
+          "name": "язык науатль",
           "alias": true
         }
       ],
@@ -97506,42 +99016,200 @@
         {
           "name": "náhuatl",
           "pref": true
+        },
+        {
+          "name": "jazyk náhuatl",
+          "alias": true
+        },
+        {
+          "name": "nahuatl",
+          "alias": true
         }
       ],
       "sr": [
         {
           "name": "наватл",
           "pref": true
+        },
+        {
+          "name": "астечки језик",
+          "alias": true
+        },
+        {
+          "name": "наватлски језик",
+          "alias": true
+        }
+      ],
+      "sr-ec": [
+        {
+          "name": "наватл",
+          "pref": true
+        },
+        {
+          "name": "астечки језик",
+          "alias": true
+        },
+        {
+          "name": "наватлски језик",
+          "alias": true
+        }
+      ],
+      "sr-el": [
+        {
+          "name": "navatl",
+          "pref": true
+        },
+        {
+          "name": "astečki jezik",
+          "alias": true
+        },
+        {
+          "name": "navatlski jezik",
+          "alias": true
         }
       ],
       "sv": [
         {
           "name": "nahuatl",
           "pref": true
+        },
+        {
+          "name": "aztekiska",
+          "alias": true
+        },
+        {
+          "name": "nahuatlspråk",
+          "alias": true
         }
       ],
       "tl": [
         {
-          "name": "Wikang Nahuatl",
+          "name": "wikang Nahuatl",
           "pref": true
+        },
+        {
+          "name": "Nahuatl",
+          "alias": true
+        },
+        {
+          "name": "wikang Astek",
+          "alias": true
         }
       ],
       "tr": [
         {
           "name": "Nahuatl",
           "pref": true
+        },
+        {
+          "name": "Aztek dili",
+          "alias": true
+        },
+        {
+          "name": "Aztekçe",
+          "alias": true
+        },
+        {
+          "name": "Nahuatl dili",
+          "alias": true
         }
       ],
       "zh": [
         {
           "name": "納瓦特爾語",
           "pref": true
+        },
+        {
+          "name": "納瓦特語",
+          "alias": true
+        },
+        {
+          "name": "阿茲特克語",
+          "alias": true
+        }
+      ],
+      "zh-cn": [
+        {
+          "name": "纳瓦特尔语",
+          "pref": true
+        },
+        {
+          "name": "纳瓦特语",
+          "alias": true
+        },
+        {
+          "name": "阿兹特克语",
+          "alias": true
+        }
+      ],
+      "zh-hans": [
+        {
+          "name": "纳瓦特尔语",
+          "pref": true
+        },
+        {
+          "name": "纳瓦特语",
+          "alias": true
+        },
+        {
+          "name": "阿兹特克语",
+          "alias": true
         }
       ],
       "zh-hant": [
         {
           "name": "納瓦特爾語",
           "pref": true
+        },
+        {
+          "name": "納瓦特語",
+          "alias": true
+        },
+        {
+          "name": "阿茲特克語",
+          "alias": true
+        }
+      ],
+      "zh-hk": [
+        {
+          "name": "納瓦特爾語",
+          "pref": true
+        },
+        {
+          "name": "納瓦特語",
+          "alias": true
+        },
+        {
+          "name": "阿茲特克語",
+          "alias": true
+        }
+      ],
+      "zh-sg": [
+        {
+          "name": "纳瓦特尔语",
+          "pref": true
+        },
+        {
+          "name": "纳瓦特语",
+          "alias": true
+        },
+        {
+          "name": "阿兹特克语",
+          "alias": true
+        }
+      ],
+      "zh-tw": [
+        {
+          "name": "納瓦特爾語",
+          "pref": true
+        },
+        {
+          "name": "納瓦特語",
+          "alias": true
+        },
+        {
+          "name": "阿茲特克語",
+          "alias": true
         }
       ]
     }
@@ -97809,6 +99477,12 @@
       "ru": [
         {
           "name": "рохинджа",
+          "pref": true
+        }
+      ],
+      "sv": [
+        {
+          "name": "rohingya",
           "pref": true
         }
       ],
@@ -99493,6 +101167,26 @@
         {
           "name": "język afar",
           "pref": true
+        },
+        {
+          "name": "afar",
+          "alias": true
+        },
+        {
+          "name": "danakil",
+          "alias": true
+        },
+        {
+          "name": "danakilski",
+          "alias": true
+        },
+        {
+          "name": "język danakil",
+          "alias": true
+        },
+        {
+          "name": "język danakilski",
+          "alias": true
         }
       ],
       "pt": [
@@ -99631,6 +101325,10 @@
         },
         {
           "name": "Kabardian language",
+          "alias": true
+        },
+        {
+          "name": "Kabardian-Circassian",
           "alias": true
         },
         {
@@ -100955,6 +102653,36 @@
       ]
     }
   },
+  "Q113587457": {
+    "name": "Siak Malay",
+    "users": 1500000,
+    "names": {
+      "en": [
+        {
+          "name": "Siak Malay",
+          "pref": true
+        },
+        {
+          "name": "Siak Malay language",
+          "alias": true
+        }
+      ],
+      "ru": [
+        {
+          "name": "малайский округа Сиак",
+          "pref": true
+        },
+        {
+          "name": "сиакский диалект малайского языка",
+          "alias": true
+        },
+        {
+          "name": "сиакский малайский",
+          "alias": true
+        }
+      ]
+    }
+  },
   "Q14549": {
     "name": "Scots",
     "users": 1500000,
@@ -101915,7 +103643,7 @@
       ],
       "pl": [
         {
-          "name": "Język khandesi",
+          "name": "język khandesi",
           "pref": true
         }
       ],
@@ -106163,7 +107891,7 @@
       ],
       "da": [
         {
-          "name": "Sardisk",
+          "name": "sardisk",
           "pref": true
         }
       ],
@@ -108777,6 +110505,34 @@
         {
           "name": "język acholi",
           "pref": true
+        },
+        {
+          "name": "acholi",
+          "alias": true
+        },
+        {
+          "name": "aczolijski",
+          "alias": true
+        },
+        {
+          "name": "akoli",
+          "alias": true
+        },
+        {
+          "name": "gang",
+          "alias": true
+        },
+        {
+          "name": "język aczolijski",
+          "alias": true
+        },
+        {
+          "name": "język akoli",
+          "alias": true
+        },
+        {
+          "name": "język gang",
+          "alias": true
         }
       ],
       "pt": [
@@ -110338,6 +112094,12 @@
           "pref": true
         }
       ],
+      "sv": [
+        {
+          "name": "magindanao",
+          "pref": true
+        }
+      ],
       "tl": [
         {
           "name": "wikang Maguindanao",
@@ -111488,6 +113250,10 @@
           "alias": true
         },
         {
+          "name": "ilongo campesino",
+          "alias": true
+        },
+        {
           "name": "ilongo harayo",
           "alias": true
         },
@@ -111501,6 +113267,10 @@
         },
         {
           "name": "lengua ylonga haraya",
+          "alias": true
+        },
+        {
+          "name": "ylongo campesino",
           "alias": true
         },
         {
@@ -112360,6 +114130,12 @@
         {
           "name": "języki nubijskie",
           "alias": true
+        }
+      ],
+      "pt": [
+        {
+          "name": "Línguas núbias",
+          "pref": true
         }
       ],
       "ru": [
@@ -113688,6 +115464,30 @@
       "zh-hant": [
         {
           "name": "加羅語",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q6086949": {
+    "name": "Rumelian Turkish",
+    "users": 1000000,
+    "names": {
+      "en": [
+        {
+          "name": "Rumelian Turkish",
+          "pref": true
+        }
+      ],
+      "ru": [
+        {
+          "name": "Балканские диалекты турецкого языка",
+          "pref": true
+        }
+      ],
+      "tr": [
+        {
+          "name": "Rumeli ağızları",
           "pref": true
         }
       ]
@@ -116272,7 +118072,7 @@
     "names": {
       "da": [
         {
-          "name": "Dayak Ngaju",
+          "name": "dayak ngaju",
           "pref": true
         }
       ],
@@ -116304,7 +118104,7 @@
       ],
       "es": [
         {
-          "name": "Dayak Ngaju",
+          "name": "dayak ngaju",
           "pref": true
         }
       ],
@@ -116394,8 +118194,12 @@
       ],
       "sv": [
         {
-          "name": "Dayak Ngaju",
+          "name": "dayak ngaju",
           "pref": true
+        },
+        {
+          "name": "ngaju dayak",
+          "alias": true
         }
       ],
       "tl": [
@@ -120114,6 +121918,12 @@
           "pref": true
         }
       ],
+      "sv": [
+        {
+          "name": "maranao",
+          "pref": true
+        }
+      ],
       "tl": [
         {
           "name": "Wikang Mëranaw",
@@ -121107,7 +122917,7 @@
     }
   },
   "Q3450749": {
-    "name": "Rakhine",
+    "name": "Arakanese Language",
     "users": 765000,
     "code": "rki",
     "names": {
@@ -121125,7 +122935,7 @@
       ],
       "en": [
         {
-          "name": "Rakhine",
+          "name": "Arakanese Language",
           "pref": true
         },
         {
@@ -121183,8 +122993,12 @@
       ],
       "pl": [
         {
-          "name": "Język arakański",
+          "name": "język arakański",
           "pref": true
+        },
+        {
+          "name": "arakański",
+          "alias": true
         }
       ],
       "pt": [
@@ -122226,103 +124040,3065 @@
     }
   },
   "Q33287": {
+    "name": "Ga",
     "users": 745000,
     "code": "gaa",
-    "names": {}
+    "names": {
+      "cs": [
+        {
+          "name": "Gaština",
+          "pref": true
+        }
+      ],
+      "de": [
+        {
+          "name": "Ga",
+          "pref": true
+        },
+        {
+          "name": "Acra",
+          "alias": true
+        }
+      ],
+      "en": [
+        {
+          "name": "Ga",
+          "pref": true
+        },
+        {
+          "name": "Gã",
+          "alias": true
+        },
+        {
+          "name": "Ga language",
+          "alias": true
+        },
+        {
+          "name": "Gã language",
+          "alias": true
+        },
+        {
+          "name": "gaa",
+          "alias": true
+        }
+      ],
+      "en-gb": [
+        {
+          "name": "Ga",
+          "pref": true
+        }
+      ],
+      "es": [
+        {
+          "name": "Idioma ga",
+          "pref": true
+        }
+      ],
+      "et": [
+        {
+          "name": "gaa keel",
+          "pref": true
+        }
+      ],
+      "fi": [
+        {
+          "name": "ga",
+          "pref": true
+        },
+        {
+          "name": "gan kieli",
+          "alias": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "ga",
+          "pref": true
+        },
+        {
+          "name": "gã",
+          "alias": true
+        },
+        {
+          "name": "gaa",
+          "alias": true
+        },
+        {
+          "name": "langue ga",
+          "alias": true
+        }
+      ],
+      "he": [
+        {
+          "name": "גה",
+          "pref": true
+        }
+      ],
+      "it": [
+        {
+          "name": "lingua ga",
+          "pref": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "ガ語",
+          "pref": true
+        },
+        {
+          "name": "gaa",
+          "alias": true
+        },
+        {
+          "name": "ガー語",
+          "alias": true
+        }
+      ],
+      "ko": [
+        {
+          "name": "가어",
+          "pref": true
+        },
+        {
+          "name": "가 어",
+          "alias": true
+        }
+      ],
+      "nb": [
+        {
+          "name": "ga",
+          "pref": true
+        }
+      ],
+      "nl": [
+        {
+          "name": "Ga",
+          "pref": true
+        }
+      ],
+      "nn": [
+        {
+          "name": "ga",
+          "pref": true
+        }
+      ],
+      "pl": [
+        {
+          "name": "Język ga",
+          "pref": true
+        }
+      ],
+      "ru": [
+        {
+          "name": "Га",
+          "pref": true
+        }
+      ],
+      "sk": [
+        {
+          "name": "gačtina",
+          "pref": true
+        },
+        {
+          "name": "jazyk ga",
+          "alias": true
+        }
+      ],
+      "sv": [
+        {
+          "name": "ga",
+          "pref": true
+        }
+      ],
+      "tr": [
+        {
+          "name": "Ga",
+          "pref": true
+        },
+        {
+          "name": "gaa",
+          "alias": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "加语",
+          "pref": true
+        },
+        {
+          "name": "嘎语",
+          "alias": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "加語",
+          "pref": true
+        }
+      ]
+    }
   },
   "Q28378": {
+    "name": "Angika",
     "users": 740000,
     "code": "anp",
-    "names": {}
+    "names": {
+      "cs": [
+        {
+          "name": "angština",
+          "pref": true
+        },
+        {
+          "name": "angika",
+          "alias": true
+        }
+      ],
+      "de": [
+        {
+          "name": "Angika",
+          "pref": true
+        }
+      ],
+      "el": [
+        {
+          "name": "Γλώσσα Ανγκίκα",
+          "pref": true
+        }
+      ],
+      "en": [
+        {
+          "name": "Angika",
+          "pref": true
+        },
+        {
+          "name": "Angika language",
+          "alias": true
+        },
+        {
+          "name": "anp",
+          "alias": true
+        }
+      ],
+      "en-ca": [
+        {
+          "name": "Angika",
+          "pref": true
+        }
+      ],
+      "en-gb": [
+        {
+          "name": "Angika",
+          "pref": true
+        }
+      ],
+      "es": [
+        {
+          "name": "Idioma angika",
+          "pref": true
+        }
+      ],
+      "fi": [
+        {
+          "name": "angika",
+          "pref": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "angika",
+          "pref": true
+        },
+        {
+          "name": "anp",
+          "alias": true
+        }
+      ],
+      "it": [
+        {
+          "name": "lingua angika",
+          "pref": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "アンギカ語",
+          "pref": true
+        },
+        {
+          "name": "anp",
+          "alias": true
+        }
+      ],
+      "ko": [
+        {
+          "name": "앙기카어",
+          "pref": true
+        },
+        {
+          "name": "anp",
+          "alias": true
+        }
+      ],
+      "mk": [
+        {
+          "name": "ангика",
+          "pref": true
+        }
+      ],
+      "nl": [
+        {
+          "name": "Angika",
+          "pref": true
+        }
+      ],
+      "pl": [
+        {
+          "name": "język angika",
+          "pref": true
+        },
+        {
+          "name": "angika",
+          "alias": true
+        }
+      ],
+      "pt": [
+        {
+          "name": "Língua angika",
+          "pref": true
+        }
+      ],
+      "ru": [
+        {
+          "name": "ангика",
+          "pref": true
+        }
+      ],
+      "sk": [
+        {
+          "name": "angština",
+          "pref": true
+        }
+      ],
+      "sv": [
+        {
+          "name": "angika",
+          "pref": true
+        }
+      ],
+      "tl": [
+        {
+          "name": "Wikang Angika",
+          "pref": true
+        }
+      ],
+      "tr": [
+        {
+          "name": "anp",
+          "alias": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "昂加语",
+          "pref": true
+        },
+        {
+          "name": "昂加语文学",
+          "alias": true
+        }
+      ],
+      "zh-cn": [
+        {
+          "name": "昂加语",
+          "pref": true
+        }
+      ],
+      "zh-hans": [
+        {
+          "name": "昂加语",
+          "pref": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "昂加語",
+          "pref": true
+        }
+      ]
+    }
   },
   "Q56516": {
+    "name": "Hani",
     "users": 740000,
     "code": "hni",
-    "names": {}
+    "names": {
+      "en": [
+        {
+          "name": "Hani",
+          "pref": true
+        },
+        {
+          "name": "Hani language",
+          "alias": true
+        }
+      ],
+      "en-gb": [
+        {
+          "name": "Hani",
+          "pref": true
+        }
+      ],
+      "et": [
+        {
+          "name": "Hani keel",
+          "pref": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "hani",
+          "pref": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "ハニ語",
+          "pref": true
+        },
+        {
+          "name": "哈尼語",
+          "alias": true
+        }
+      ],
+      "ko": [
+        {
+          "name": "하니어",
+          "pref": true
+        }
+      ],
+      "pl": [
+        {
+          "name": "Język hani",
+          "pref": true
+        }
+      ],
+      "pt": [
+        {
+          "name": "Língua hani",
+          "pref": true
+        }
+      ],
+      "ru": [
+        {
+          "name": "Хани",
+          "pref": true
+        }
+      ],
+      "tl": [
+        {
+          "name": "Wikang Hani",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "哈尼语",
+          "pref": true
+        },
+        {
+          "name": "哈尼語",
+          "alias": true
+        },
+        {
+          "name": "阿卡语",
+          "alias": true
+        }
+      ]
+    }
   },
   "Q2520717": {
+    "name": "Ronga",
     "users": 722000,
     "code": "rng",
-    "names": {}
+    "names": {
+      "de": [
+        {
+          "name": "XiRonga",
+          "pref": true
+        },
+        {
+          "name": "Chironga",
+          "alias": true
+        },
+        {
+          "name": "GiRonga",
+          "alias": true
+        },
+        {
+          "name": "Ronga",
+          "alias": true
+        },
+        {
+          "name": "ShiRonga",
+          "alias": true
+        }
+      ],
+      "en": [
+        {
+          "name": "Ronga",
+          "pref": true
+        },
+        {
+          "name": "Ronga language",
+          "alias": true
+        }
+      ],
+      "en-gb": [
+        {
+          "name": "Ronga",
+          "pref": true
+        }
+      ],
+      "es": [
+        {
+          "name": "Xironga",
+          "pref": true
+        },
+        {
+          "name": "GiRonga",
+          "alias": true
+        },
+        {
+          "name": "Ronga",
+          "alias": true
+        },
+        {
+          "name": "ShiRonga",
+          "alias": true
+        },
+        {
+          "name": "Xilandi",
+          "alias": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "ronga",
+          "pref": true
+        },
+        {
+          "name": "chironga",
+          "alias": true
+        },
+        {
+          "name": "xironga",
+          "alias": true
+        }
+      ],
+      "it": [
+        {
+          "name": "lingua ronga",
+          "pref": true
+        },
+        {
+          "name": "Ronga",
+          "alias": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "ロンガ語",
+          "pref": true
+        }
+      ],
+      "pl": [
+        {
+          "name": "Język ronga",
+          "pref": true
+        },
+        {
+          "name": "Język chironga",
+          "alias": true
+        },
+        {
+          "name": "Język czironga",
+          "alias": true
+        }
+      ],
+      "pt": [
+        {
+          "name": "Língua ronga",
+          "pref": true
+        },
+        {
+          "name": "Chironga",
+          "alias": true
+        },
+        {
+          "name": "Gironga",
+          "alias": true
+        },
+        {
+          "name": "Landins",
+          "alias": true
+        },
+        {
+          "name": "Ronga",
+          "alias": true
+        },
+        {
+          "name": "Shironga",
+          "alias": true
+        },
+        {
+          "name": "VaRonga",
+          "alias": true
+        },
+        {
+          "name": "Xirhonga",
+          "alias": true
+        },
+        {
+          "name": "XiRonga",
+          "alias": true
+        }
+      ],
+      "ru": [
+        {
+          "name": "Ронга (язык)",
+          "pref": true
+        }
+      ],
+      "tl": [
+        {
+          "name": "Wikang Ronga",
+          "pref": true
+        }
+      ],
+      "tr": [
+        {
+          "name": "Ronga",
+          "pref": true
+        },
+        {
+          "name": "rng",
+          "alias": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "龍加語",
+          "pref": true
+        }
+      ]
+    }
   },
   "Q1353320": {
+    "name": "Shina",
     "users": 720200,
     "code": "scl",
-    "names": {}
+    "names": {
+      "de": [
+        {
+          "name": "Shina",
+          "pref": true
+        }
+      ],
+      "el": [
+        {
+          "name": "Σίνα γλώσσα",
+          "pref": true
+        }
+      ],
+      "en": [
+        {
+          "name": "Shina",
+          "pref": true
+        },
+        {
+          "name": "Shina language",
+          "alias": true
+        }
+      ],
+      "en-gb": [
+        {
+          "name": "Shina",
+          "pref": true
+        }
+      ],
+      "es": [
+        {
+          "name": "Idioma shina",
+          "pref": true
+        }
+      ],
+      "et": [
+        {
+          "name": "šina keel",
+          "pref": true
+        }
+      ],
+      "fi": [
+        {
+          "name": "šina",
+          "pref": true
+        },
+        {
+          "name": "Shinan kieli",
+          "alias": true
+        },
+        {
+          "name": "šinan kieli",
+          "alias": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "shina",
+          "pref": true
+        },
+        {
+          "name": "langue shina",
+          "alias": true
+        }
+      ],
+      "he": [
+        {
+          "name": "שינה",
+          "pref": true
+        }
+      ],
+      "it": [
+        {
+          "name": "lingua shina",
+          "pref": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "シナー語",
+          "pref": true
+        }
+      ],
+      "ko": [
+        {
+          "name": "시나어",
+          "pref": true
+        }
+      ],
+      "lv": [
+        {
+          "name": "Šīnu valoda",
+          "pref": true
+        }
+      ],
+      "mk": [
+        {
+          "name": "шински јазик",
+          "pref": true
+        }
+      ],
+      "nb": [
+        {
+          "name": "Shina",
+          "pref": true
+        }
+      ],
+      "pl": [
+        {
+          "name": "Język szina",
+          "pref": true
+        }
+      ],
+      "pt": [
+        {
+          "name": "Língua shina",
+          "pref": true
+        }
+      ],
+      "ru": [
+        {
+          "name": "шина",
+          "pref": true
+        },
+        {
+          "name": "язык шина",
+          "alias": true
+        }
+      ],
+      "sv": [
+        {
+          "name": "shina",
+          "pref": true
+        }
+      ],
+      "tr": [
+        {
+          "name": "scl",
+          "alias": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "希尼亚语",
+          "pref": true
+        }
+      ],
+      "zh-hans": [
+        {
+          "name": "希尼亚语",
+          "pref": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "希尼亞語",
+          "pref": true
+        },
+        {
+          "name": "希納語",
+          "alias": true
+        }
+      ]
+    }
   },
   "Q13354": {
+    "name": "Yucatec Maya",
     "users": 706000,
     "code": "yua",
-    "names": {}
+    "names": {
+      "cs": [
+        {
+          "name": "Yukatéčtina",
+          "pref": true
+        }
+      ],
+      "da": [
+        {
+          "name": "Yukatansk maya",
+          "pref": true
+        }
+      ],
+      "de": [
+        {
+          "name": "Mayathan",
+          "pref": true
+        },
+        {
+          "name": "Màaya t'àan",
+          "alias": true
+        },
+        {
+          "name": "Maya-Sprache",
+          "alias": true
+        },
+        {
+          "name": "Mayu-Sprach",
+          "alias": true
+        },
+        {
+          "name": "Yucatano",
+          "alias": true
+        },
+        {
+          "name": "Yucateco",
+          "alias": true
+        },
+        {
+          "name": "Yukatekisch",
+          "alias": true
+        },
+        {
+          "name": "Yukatekisches Maya",
+          "alias": true
+        }
+      ],
+      "el": [
+        {
+          "name": "γλώσσα Μάγια",
+          "pref": true
+        }
+      ],
+      "en": [
+        {
+          "name": "Yucatec Maya",
+          "pref": true
+        },
+        {
+          "name": "Maaya",
+          "alias": true
+        },
+        {
+          "name": "Maya language",
+          "alias": true
+        },
+        {
+          "name": "Yucatec",
+          "alias": true
+        },
+        {
+          "name": "Yucatec Maya language",
+          "alias": true
+        },
+        {
+          "name": "Yucatec Mayan",
+          "alias": true
+        },
+        {
+          "name": "Yucateco",
+          "alias": true
+        },
+        {
+          "name": "Yukatek Maya",
+          "alias": true
+        }
+      ],
+      "en-ca": [
+        {
+          "name": "Yucatec Maya",
+          "pref": true
+        }
+      ],
+      "en-gb": [
+        {
+          "name": "Yucatec Maya",
+          "pref": true
+        }
+      ],
+      "es": [
+        {
+          "name": "maya",
+          "pref": true
+        },
+        {
+          "name": "maya peninsular",
+          "alias": true
+        },
+        {
+          "name": "maya yucateco",
+          "alias": true
+        },
+        {
+          "name": "yucateco",
+          "alias": true
+        }
+      ],
+      "et": [
+        {
+          "name": "Maaja keel",
+          "pref": true
+        }
+      ],
+      "fi": [
+        {
+          "name": "jukatek",
+          "pref": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "maya yucatèque",
+          "pref": true
+        },
+        {
+          "name": "maya",
+          "alias": true
+        },
+        {
+          "name": "maya péninsulaire",
+          "alias": true
+        }
+      ],
+      "he": [
+        {
+          "name": "שפת יוקטן",
+          "pref": true
+        },
+        {
+          "name": "שפת מאיה",
+          "alias": true
+        }
+      ],
+      "hu": [
+        {
+          "name": "jukaték-maja",
+          "pref": true
+        },
+        {
+          "name": "jukaték-maja nyelv",
+          "alias": true
+        }
+      ],
+      "it": [
+        {
+          "name": "maya yucateco",
+          "pref": true
+        },
+        {
+          "name": "lingua maya",
+          "alias": true
+        },
+        {
+          "name": "lingua maya yucateca",
+          "alias": true
+        },
+        {
+          "name": "lingua yucateca",
+          "alias": true
+        },
+        {
+          "name": "yucateco",
+          "alias": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "ユカテコ語",
+          "pref": true
+        }
+      ],
+      "ko": [
+        {
+          "name": "유카텍어",
+          "pref": true
+        }
+      ],
+      "mk": [
+        {
+          "name": "Јукатански јазик",
+          "pref": true
+        }
+      ],
+      "nb": [
+        {
+          "name": "Yukatansk maya",
+          "pref": true
+        }
+      ],
+      "nl": [
+        {
+          "name": "Yucateeks",
+          "pref": true
+        },
+        {
+          "name": "Yucateeks Maya",
+          "alias": true
+        }
+      ],
+      "nn": [
+        {
+          "name": "Yukatansk maya",
+          "pref": true
+        }
+      ],
+      "pl": [
+        {
+          "name": "język maya",
+          "pref": true
+        }
+      ],
+      "pt": [
+        {
+          "name": "Iucateque",
+          "pref": true
+        }
+      ],
+      "pt-br": [
+        {
+          "name": "Iucateque",
+          "pref": true
+        }
+      ],
+      "ro": [
+        {
+          "name": "Yucatec",
+          "pref": true
+        }
+      ],
+      "ru": [
+        {
+          "name": "юкатекский язык",
+          "pref": true
+        },
+        {
+          "name": "юкатанский язык",
+          "alias": true
+        }
+      ],
+      "sk": [
+        {
+          "name": "yukatecká maya",
+          "pref": true
+        }
+      ],
+      "sr": [
+        {
+          "name": "мајатан",
+          "pref": true
+        }
+      ],
+      "sr-ec": [
+        {
+          "name": "мајатан",
+          "pref": true
+        }
+      ],
+      "sr-el": [
+        {
+          "name": "majatan",
+          "pref": true
+        }
+      ],
+      "sv": [
+        {
+          "name": "yukatek",
+          "pref": true
+        },
+        {
+          "name": "yukatekiska",
+          "alias": true
+        }
+      ],
+      "tl": [
+        {
+          "name": "Yukatekong Maya",
+          "pref": true
+        }
+      ],
+      "tr": [
+        {
+          "name": "Yukatek Mayacası",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "猶加敦馬雅語",
+          "pref": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "猶加敦馬雅語",
+          "pref": true
+        },
+        {
+          "name": "猶加敦語",
+          "alias": true
+        }
+      ],
+      "zh-tw": [
+        {
+          "name": "猶加敦馬雅語",
+          "pref": true
+        },
+        {
+          "name": "猶加敦語",
+          "alias": true
+        }
+      ]
+    }
   },
   "Q32174903": {
+    "name": "Zamboanga Chavacano",
     "users": 700000,
-    "names": {}
+    "names": {
+      "en": [
+        {
+          "name": "Zamboanga Chavacano",
+          "pref": true
+        },
+        {
+          "name": "Chavacano of Zamboanga",
+          "alias": true
+        },
+        {
+          "name": "Zamboanga Chabacano",
+          "alias": true
+        }
+      ],
+      "es": [
+        {
+          "name": "zamboangueño",
+          "pref": true
+        },
+        {
+          "name": "chabacano zamboangueño",
+          "alias": true
+        },
+        {
+          "name": "dialecto zamboangueño",
+          "alias": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "chavacano de Zamboanga",
+          "pref": true
+        }
+      ],
+      "sv": [
+        {
+          "name": "zamboangachavacano",
+          "pref": true
+        }
+      ]
+    }
   },
   "Q3305477": {
+    "name": "Guyanese Creole",
     "users": 700000,
     "code": "gyn",
-    "names": {}
+    "names": {
+      "en": [
+        {
+          "name": "Guyanese Creole",
+          "pref": true
+        },
+        {
+          "name": "Creolese",
+          "alias": true
+        },
+        {
+          "name": "Guyanese Creole English",
+          "alias": true
+        }
+      ],
+      "es": [
+        {
+          "name": "Criollo guyanés",
+          "pref": true
+        },
+        {
+          "name": "Criollo guyanes",
+          "alias": true
+        }
+      ],
+      "fi": [
+        {
+          "name": "guyanan kreoli",
+          "pref": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "créole guyanien",
+          "pref": true
+        }
+      ],
+      "it": [
+        {
+          "name": "Creolo della Guyana",
+          "pref": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "ガイアナ・クレオール語",
+          "pref": true
+        }
+      ],
+      "pl": [
+        {
+          "name": "język kreolski gujański",
+          "pref": true
+        }
+      ],
+      "pt": [
+        {
+          "name": "Crioulo da Guiana",
+          "pref": true
+        },
+        {
+          "name": "Língua crioula guianense",
+          "alias": true
+        }
+      ],
+      "ro": [
+        {
+          "name": "Creola guyaneză",
+          "pref": true
+        }
+      ],
+      "ru": [
+        {
+          "name": "гайанский креольский язык",
+          "pref": true
+        },
+        {
+          "name": "гайанский язык",
+          "alias": true
+        }
+      ],
+      "sv": [
+        {
+          "name": "guyansk kreol",
+          "pref": true
+        }
+      ],
+      "tr": [
+        {
+          "name": "Guyana Kreolu",
+          "pref": true
+        },
+        {
+          "name": "gyn",
+          "alias": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "圭亚那克里奥尔语",
+          "pref": true
+        },
+        {
+          "name": "圭亚那混合语",
+          "alias": true
+        },
+        {
+          "name": "圭亞那克里奧爾語",
+          "alias": true
+        }
+      ],
+      "zh-cn": [
+        {
+          "name": "圭亚那克里奥尔语",
+          "pref": true
+        }
+      ],
+      "zh-hans": [
+        {
+          "name": "圭亚那克里奥尔语",
+          "pref": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "蓋亞那克里奧爾語",
+          "pref": true
+        },
+        {
+          "name": "圭亞那克里奧爾英語",
+          "alias": true
+        }
+      ],
+      "zh-tw": [
+        {
+          "name": "蓋亞那克里奧爾語",
+          "pref": true
+        }
+      ]
+    }
   },
   "Q34024": {
+    "name": "Picard",
     "users": 700000,
     "code": "pcd",
-    "names": {}
+    "names": {
+      "bg": [
+        {
+          "name": "Пикардски език",
+          "pref": true
+        }
+      ],
+      "cs": [
+        {
+          "name": "pikardština",
+          "pref": true
+        }
+      ],
+      "da": [
+        {
+          "name": "Pikardisk",
+          "pref": true
+        }
+      ],
+      "de": [
+        {
+          "name": "Picardisch",
+          "pref": true
+        },
+        {
+          "name": "picardische Sprache",
+          "alias": true
+        },
+        {
+          "name": "Pikardisch",
+          "alias": true
+        },
+        {
+          "name": "pikardische Sprache",
+          "alias": true
+        }
+      ],
+      "el": [
+        {
+          "name": "γλώσσα πικάρ",
+          "pref": true
+        }
+      ],
+      "en": [
+        {
+          "name": "Picard",
+          "pref": true
+        },
+        {
+          "name": "Picard language",
+          "alias": true
+        }
+      ],
+      "en-gb": [
+        {
+          "name": "Picard",
+          "pref": true
+        }
+      ],
+      "es": [
+        {
+          "name": "picardo",
+          "pref": true
+        },
+        {
+          "name": "Idioma picardo",
+          "alias": true
+        }
+      ],
+      "fi": [
+        {
+          "name": "picardi",
+          "pref": true
+        },
+        {
+          "name": "picardin kieli",
+          "alias": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "picard",
+          "pref": true
+        },
+        {
+          "name": "accent-picard",
+          "alias": true
+        },
+        {
+          "name": "langue picarde",
+          "alias": true
+        },
+        {
+          "name": "patois",
+          "alias": true
+        },
+        {
+          "name": "picart",
+          "alias": true
+        }
+      ],
+      "he": [
+        {
+          "name": "פיקארד",
+          "pref": true
+        }
+      ],
+      "hu": [
+        {
+          "name": "pikárd",
+          "pref": true
+        }
+      ],
+      "it": [
+        {
+          "name": "piccardo",
+          "pref": true
+        },
+        {
+          "name": "lingua piccarda",
+          "alias": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "ピカルディ語",
+          "pref": true
+        }
+      ],
+      "ko": [
+        {
+          "name": "피카르디어",
+          "pref": true
+        }
+      ],
+      "lv": [
+        {
+          "name": "Pikardu valoda",
+          "pref": true
+        }
+      ],
+      "mk": [
+        {
+          "name": "пикардски јазик",
+          "pref": true
+        }
+      ],
+      "nb": [
+        {
+          "name": "pikardisk",
+          "pref": true
+        }
+      ],
+      "nl": [
+        {
+          "name": "Picardisch",
+          "pref": true
+        }
+      ],
+      "pl": [
+        {
+          "name": "język pikardyjski",
+          "pref": true
+        },
+        {
+          "name": "dialekt pikardyjski",
+          "alias": true
+        }
+      ],
+      "pt": [
+        {
+          "name": "picardo",
+          "pref": true
+        },
+        {
+          "name": "língua picarda",
+          "alias": true
+        }
+      ],
+      "ro": [
+        {
+          "name": "picardă",
+          "pref": true
+        },
+        {
+          "name": "limba picardă",
+          "alias": true
+        }
+      ],
+      "ru": [
+        {
+          "name": "пикардский язык",
+          "pref": true
+        },
+        {
+          "name": "пикардийский диалект",
+          "alias": true
+        },
+        {
+          "name": "пикардийский язык",
+          "alias": true
+        },
+        {
+          "name": "пикардский диалект",
+          "alias": true
+        },
+        {
+          "name": "пикардский патуа",
+          "alias": true
+        },
+        {
+          "name": "пикардское наречие",
+          "alias": true
+        },
+        {
+          "name": "руши",
+          "alias": true
+        },
+        {
+          "name": "северный патуа",
+          "alias": true
+        },
+        {
+          "name": "шти",
+          "alias": true
+        }
+      ],
+      "sv": [
+        {
+          "name": "pikardiska",
+          "pref": true
+        }
+      ],
+      "tr": [
+        {
+          "name": "Picardie lehçesi",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "皮卡第语",
+          "pref": true
+        }
+      ]
+    }
   },
   "Q35602": {
+    "name": "Hawaiian Pidgin",
     "users": 700000,
     "code": "hwc",
-    "names": {}
+    "names": {
+      "cs": [
+        {
+          "name": "Havajská kreolština",
+          "pref": true
+        }
+      ],
+      "de": [
+        {
+          "name": "Hawaii Creole English",
+          "pref": true
+        },
+        {
+          "name": "Hawaii-Kreolenglisch",
+          "alias": true
+        }
+      ],
+      "en": [
+        {
+          "name": "Hawaiian Pidgin",
+          "pref": true
+        },
+        {
+          "name": "Hawai‘i Creole",
+          "alias": true
+        },
+        {
+          "name": "Hawai'i Creole English",
+          "alias": true
+        },
+        {
+          "name": "Hawai'i Pidgin",
+          "alias": true
+        },
+        {
+          "name": "Hawaian Creole English",
+          "alias": true
+        },
+        {
+          "name": "Hawaiian creole English",
+          "alias": true
+        },
+        {
+          "name": "Hawaiian Pidgin English",
+          "alias": true
+        },
+        {
+          "name": "HCE",
+          "alias": true
+        },
+        {
+          "name": "ōlelo paʻi ʻai",
+          "alias": true
+        },
+        {
+          "name": "Pidgin",
+          "alias": true
+        }
+      ],
+      "es": [
+        {
+          "name": "Pidgin hawaiano",
+          "pref": true
+        }
+      ],
+      "et": [
+        {
+          "name": "Hawaii pidžin",
+          "pref": true
+        },
+        {
+          "name": "havai pidžin",
+          "alias": true
+        }
+      ],
+      "fi": [
+        {
+          "name": "havaijin pidginenglanti",
+          "pref": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "créole hawaïen",
+          "pref": true
+        },
+        {
+          "name": "Creole hawaiien",
+          "alias": true
+        },
+        {
+          "name": "Créole Hawaiien",
+          "alias": true
+        },
+        {
+          "name": "Pidgin hawaiien",
+          "alias": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "ハワイ・クレオール英語",
+          "pref": true
+        },
+        {
+          "name": "ピジン言語",
+          "alias": true
+        }
+      ],
+      "pl": [
+        {
+          "name": "Język kreolski hawajski",
+          "pref": true
+        },
+        {
+          "name": "Pidżyn hawajski",
+          "alias": true
+        }
+      ],
+      "sk": [
+        {
+          "name": "havajský pidžin",
+          "pref": true
+        }
+      ],
+      "sv": [
+        {
+          "name": "hawaiiansk pidginengelska",
+          "pref": true
+        }
+      ],
+      "tr": [
+        {
+          "name": "Hawai'i Kreolu",
+          "pref": true
+        },
+        {
+          "name": "hwc",
+          "alias": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "夏威夷英語",
+          "pref": true
+        },
+        {
+          "name": "夏威夷克里奧爾語",
+          "alias": true
+        },
+        {
+          "name": "夏威夷混雜英語",
+          "alias": true
+        },
+        {
+          "name": "夏威夷英文",
+          "alias": true
+        }
+      ],
+      "zh-hk": [
+        {
+          "name": "夏威夷英語",
+          "pref": true
+        }
+      ],
+      "zh-sg": [
+        {
+          "name": "夏威夷英语",
+          "pref": true
+        }
+      ]
+    }
   },
   "Q35947": {
+    "name": "Kokborok",
     "users": 700000,
     "code": "trp",
-    "names": {}
+    "names": {
+      "bg": [
+        {
+          "name": "Кокборок",
+          "pref": true
+        }
+      ],
+      "de": [
+        {
+          "name": "Kokborok",
+          "pref": true
+        }
+      ],
+      "en": [
+        {
+          "name": "Kokborok",
+          "pref": true
+        },
+        {
+          "name": "Kokborok language",
+          "alias": true
+        }
+      ],
+      "es": [
+        {
+          "name": "idioma kokborok",
+          "pref": true
+        },
+        {
+          "name": "idioma borok",
+          "alias": true
+        },
+        {
+          "name": "idioma tripuri",
+          "alias": true
+        }
+      ],
+      "et": [
+        {
+          "name": "kokboroki keel",
+          "pref": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "borok",
+          "pref": true
+        },
+        {
+          "name": "kokborok",
+          "alias": true
+        },
+        {
+          "name": "tripuri",
+          "alias": true
+        }
+      ],
+      "it": [
+        {
+          "name": "borok",
+          "pref": true
+        },
+        {
+          "name": "Kokborok",
+          "alias": true
+        },
+        {
+          "name": "Tripuri",
+          "alias": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "コクバラ語",
+          "pref": true
+        }
+      ],
+      "ko": [
+        {
+          "name": "콕보록어",
+          "pref": true
+        }
+      ],
+      "mk": [
+        {
+          "name": "кокборок",
+          "pref": true
+        },
+        {
+          "name": "трипурски јазик",
+          "alias": true
+        }
+      ],
+      "nb": [
+        {
+          "name": "Kokborok",
+          "pref": true
+        }
+      ],
+      "nl": [
+        {
+          "name": "Kokborok",
+          "pref": true
+        }
+      ],
+      "nn": [
+        {
+          "name": "Kokborok",
+          "pref": true
+        }
+      ],
+      "pl": [
+        {
+          "name": "Język kokborok",
+          "pref": true
+        },
+        {
+          "name": "Język tripuri",
+          "alias": true
+        },
+        {
+          "name": "Kokborok",
+          "alias": true
+        }
+      ],
+      "pt": [
+        {
+          "name": "Língua kokborok",
+          "pref": true
+        }
+      ],
+      "ru": [
+        {
+          "name": "кокборок",
+          "pref": true
+        },
+        {
+          "name": "Трипури",
+          "alias": true
+        }
+      ],
+      "tl": [
+        {
+          "name": "Wikang Kokborok",
+          "pref": true
+        }
+      ],
+      "tr": [
+        {
+          "name": "Kokborok",
+          "pref": true
+        },
+        {
+          "name": "Kok Borok",
+          "alias": true
+        },
+        {
+          "name": "trp",
+          "alias": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "科克博罗克语",
+          "pref": true
+        },
+        {
+          "name": "博羅克語",
+          "alias": true
+        },
+        {
+          "name": "特里普利语",
+          "alias": true
+        },
+        {
+          "name": "特里普拉語",
+          "alias": true
+        },
+        {
+          "name": "特里普拉语",
+          "alias": true
+        },
+        {
+          "name": "特里普里語",
+          "alias": true
+        },
+        {
+          "name": "特里普里语",
+          "alias": true
+        }
+      ],
+      "zh-cn": [
+        {
+          "name": "科克博罗克语",
+          "pref": true
+        }
+      ],
+      "zh-hans": [
+        {
+          "name": "科克博罗克语",
+          "pref": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "廓博羅克語",
+          "pref": true
+        },
+        {
+          "name": "特里普里語",
+          "alias": true
+        }
+      ]
+    }
   },
   "Q36948": {
+    "name": "Tai Lü",
     "users": 700000,
     "code": "khb",
-    "names": {}
+    "names": {
+      "de": [
+        {
+          "name": "Tai Lü",
+          "pref": true
+        }
+      ],
+      "en": [
+        {
+          "name": "Tai Lü",
+          "pref": true
+        },
+        {
+          "name": "Dai Lue",
+          "alias": true
+        },
+        {
+          "name": "Lü",
+          "alias": true
+        },
+        {
+          "name": "Tai Lü language",
+          "alias": true
+        },
+        {
+          "name": "Tai Lue",
+          "alias": true
+        },
+        {
+          "name": "Xishuangbanna Dai",
+          "alias": true
+        }
+      ],
+      "es": [
+        {
+          "name": "Tai Lü",
+          "pref": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "lü",
+          "pref": true
+        },
+        {
+          "name": "Lu",
+          "alias": true
+        },
+        {
+          "name": "Thaï Lu",
+          "alias": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "タイ・ルー語",
+          "pref": true
+        }
+      ],
+      "ko": [
+        {
+          "name": "타이루어",
+          "pref": true
+        }
+      ],
+      "nl": [
+        {
+          "name": "Lü",
+          "pref": true
+        }
+      ],
+      "pl": [
+        {
+          "name": "Język tai lue",
+          "pref": true
+        }
+      ],
+      "ru": [
+        {
+          "name": "Лы (язык)",
+          "pref": true
+        }
+      ],
+      "sv": [
+        {
+          "name": "tai lü",
+          "pref": true
+        }
+      ],
+      "tl": [
+        {
+          "name": "Wikang Tai Lü",
+          "pref": true
+        }
+      ],
+      "tr": [
+        {
+          "name": "Tay Lü dili",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "傣仂語",
+          "pref": true
+        },
+        {
+          "name": "傣仂语",
+          "alias": true
+        },
+        {
+          "name": "傣泐语",
+          "alias": true
+        },
+        {
+          "name": "西雙版納傣語",
+          "alias": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "傣仂語",
+          "pref": true
+        }
+      ]
+    }
   },
   "Q934738": {
+    "name": "Hlai",
     "users": 700000,
     "code": "lic",
-    "names": {}
+    "names": {
+      "en": [
+        {
+          "name": "Hlai",
+          "pref": true
+        },
+        {
+          "name": "Hlai language",
+          "alias": true
+        }
+      ],
+      "en-gb": [
+        {
+          "name": "Hlai",
+          "pref": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "hlaï",
+          "pref": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "リー語",
+          "pref": true
+        }
+      ],
+      "pl": [
+        {
+          "name": "Język hlai",
+          "pref": true
+        }
+      ],
+      "ru": [
+        {
+          "name": "ли",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "黎语",
+          "pref": true
+        }
+      ]
+    }
   },
   "Q3437661": {
+    "name": "Luguru",
     "users": 692000,
     "code": "ruf",
-    "names": {}
+    "names": {
+      "en": [
+        {
+          "name": "Luguru",
+          "pref": true
+        },
+        {
+          "name": "Luguru language",
+          "alias": true
+        }
+      ],
+      "en-gb": [
+        {
+          "name": "Luguru",
+          "pref": true
+        }
+      ],
+      "he": [
+        {
+          "name": "לוגורו",
+          "pref": true
+        },
+        {
+          "name": "לוגולו",
+          "alias": true
+        },
+        {
+          "name": "רוגורו",
+          "alias": true
+        },
+        {
+          "name": "שפת לוגורו",
+          "alias": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "ルグル語",
+          "pref": true
+        }
+      ],
+      "pl": [
+        {
+          "name": "Język ruguru",
+          "pref": true
+        }
+      ],
+      "ru": [
+        {
+          "name": "Лугуру (язык)",
+          "pref": true
+        }
+      ],
+      "tl": [
+        {
+          "name": "Wikang Luguru",
+          "pref": true
+        }
+      ],
+      "tr": [
+        {
+          "name": "ruf",
+          "alias": true
+        }
+      ]
+    }
   },
   "Q35744": {
+    "name": "Krio",
     "users": 692000,
     "code": "kri",
-    "names": {}
+    "names": {
+      "cs": [
+        {
+          "name": "Krio",
+          "pref": true
+        }
+      ],
+      "de": [
+        {
+          "name": "Krio",
+          "pref": true
+        }
+      ],
+      "en": [
+        {
+          "name": "Krio",
+          "pref": true
+        },
+        {
+          "name": "kri",
+          "alias": true
+        },
+        {
+          "name": "Krio language",
+          "alias": true
+        },
+        {
+          "name": "Sierra Leonean Creole",
+          "alias": true
+        }
+      ],
+      "en-gb": [
+        {
+          "name": "Krio",
+          "pref": true
+        }
+      ],
+      "es": [
+        {
+          "name": "Criollo sierraleonés",
+          "pref": true
+        }
+      ],
+      "et": [
+        {
+          "name": "Krio keel",
+          "pref": true
+        }
+      ],
+      "fi": [
+        {
+          "name": "krio",
+          "pref": true
+        },
+        {
+          "name": "krion kieli",
+          "alias": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "krio",
+          "pref": true
+        }
+      ],
+      "hu": [
+        {
+          "name": "krio",
+          "pref": true
+        },
+        {
+          "name": "krio nyelv",
+          "alias": true
+        }
+      ],
+      "it": [
+        {
+          "name": "lingua krio",
+          "pref": true
+        },
+        {
+          "name": "Krio",
+          "alias": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "クリオ語",
+          "pref": true
+        }
+      ],
+      "ko": [
+        {
+          "name": "크리오",
+          "pref": true
+        }
+      ],
+      "nl": [
+        {
+          "name": "Krio",
+          "pref": true
+        }
+      ],
+      "pl": [
+        {
+          "name": "Język krio",
+          "pref": true
+        }
+      ],
+      "pt": [
+        {
+          "name": "Língua krio",
+          "pref": true
+        }
+      ],
+      "ru": [
+        {
+          "name": "Крио",
+          "pref": true
+        },
+        {
+          "name": "Язык крио",
+          "alias": true
+        }
+      ],
+      "sk": [
+        {
+          "name": "kričina",
+          "pref": true
+        }
+      ],
+      "sv": [
+        {
+          "name": "krio",
+          "pref": true
+        }
+      ],
+      "tr": [
+        {
+          "name": "kri",
+          "alias": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "塞拉利昂克里奥尔语",
+          "pref": true
+        },
+        {
+          "name": "獅子山克里奧爾語",
+          "alias": true
+        }
+      ],
+      "zh-cn": [
+        {
+          "name": "塞拉利昂克里奥尔语",
+          "pref": true
+        }
+      ],
+      "zh-hans": [
+        {
+          "name": "塞拉利昂克里奥尔语",
+          "pref": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "獅子山克里奧爾語",
+          "pref": true
+        }
+      ]
+    }
   },
   "Q626210": {
+    "name": "Mambwe-Lungu",
     "users": 674000,
     "code": "mgr",
-    "names": {}
+    "names": {
+      "de": [
+        {
+          "name": "Mambwe-Lungu",
+          "pref": true
+        }
+      ],
+      "en": [
+        {
+          "name": "Mambwe-Lungu",
+          "pref": true
+        },
+        {
+          "name": "Mambwe-Lungu language",
+          "alias": true
+        }
+      ],
+      "en-gb": [
+        {
+          "name": "Mambwe-Lungu",
+          "pref": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "mambwe",
+          "pref": true
+        },
+        {
+          "name": "mambwe-lungu",
+          "alias": true
+        }
+      ],
+      "it": [
+        {
+          "name": "mambwe",
+          "pref": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "マンブウェ語",
+          "pref": true
+        }
+      ],
+      "nl": [
+        {
+          "name": "Mambwe-Lungu",
+          "pref": true
+        },
+        {
+          "name": "Lungu",
+          "alias": true
+        }
+      ],
+      "pl": [
+        {
+          "name": "Język mambwe-lungu",
+          "pref": true
+        }
+      ],
+      "pt": [
+        {
+          "name": "Mambwe",
+          "pref": true
+        }
+      ],
+      "ru": [
+        {
+          "name": "Мамбве-лунгу",
+          "pref": true
+        }
+      ],
+      "tl": [
+        {
+          "name": "Wikang Mambwe-Lungu",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "曼布韋",
+          "pref": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "曼布韋",
+          "pref": true
+        }
+      ]
+    }
   },
   "Q36503": {
+    "name": "Nobiin",
     "users": 669000,
     "code": "fia",
-    "names": {}
+    "names": {
+      "de": [
+        {
+          "name": "Nobiin",
+          "pref": true
+        },
+        {
+          "name": "Nilnubisch",
+          "alias": true
+        }
+      ],
+      "en": [
+        {
+          "name": "Nobiin",
+          "pref": true
+        },
+        {
+          "name": "Nobiin language",
+          "alias": true
+        }
+      ],
+      "en-gb": [
+        {
+          "name": "Nobiin",
+          "pref": true
+        }
+      ],
+      "es": [
+        {
+          "name": "Idioma nobiin",
+          "pref": true
+        },
+        {
+          "name": "Mahas",
+          "alias": true
+        },
+        {
+          "name": "Mahas-Fiadidja",
+          "alias": true
+        },
+        {
+          "name": "Nile Nubian",
+          "alias": true
+        },
+        {
+          "name": "Nobiin",
+          "alias": true
+        }
+      ],
+      "et": [
+        {
+          "name": "Nuubia keel",
+          "pref": true
+        }
+      ],
+      "fi": [
+        {
+          "name": "nobiin",
+          "pref": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "nobiin",
+          "pref": true
+        }
+      ],
+      "hu": [
+        {
+          "name": "nobiin",
+          "pref": true
+        },
+        {
+          "name": "mahasz",
+          "alias": true
+        },
+        {
+          "name": "mahasz nyelv",
+          "alias": true
+        },
+        {
+          "name": "nobiin nyelv",
+          "alias": true
+        }
+      ],
+      "it": [
+        {
+          "name": "lingua nobiin",
+          "pref": true
+        },
+        {
+          "name": "nubiano",
+          "alias": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "ノビイン語",
+          "pref": true
+        }
+      ],
+      "ko": [
+        {
+          "name": "노빈어",
+          "pref": true
+        }
+      ],
+      "nl": [
+        {
+          "name": "Nobiin",
+          "pref": true
+        }
+      ],
+      "pt": [
+        {
+          "name": "Língua nobiin",
+          "pref": true
+        }
+      ],
+      "ro": [
+        {
+          "name": "limba nobiin",
+          "pref": true
+        }
+      ],
+      "ru": [
+        {
+          "name": "Нобин",
+          "pref": true
+        }
+      ],
+      "tl": [
+        {
+          "name": "Wikang Nobiin",
+          "pref": true
+        }
+      ],
+      "tr": [
+        {
+          "name": "Nübyece",
+          "pref": true
+        },
+        {
+          "name": "fia",
+          "alias": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "诺宾语",
+          "pref": true
+        }
+      ],
+      "zh-cn": [
+        {
+          "name": "诺宾语",
+          "pref": true
+        }
+      ],
+      "zh-hans": [
+        {
+          "name": "诺宾语",
+          "pref": true
+        }
+      ]
+    }
   },
   "Q3788739": {
+    "name": "Shambala",
     "users": 664000,
     "code": "ksb",
-    "names": {}
+    "names": {
+      "en": [
+        {
+          "name": "Shambala",
+          "pref": true
+        },
+        {
+          "name": "Shambala language",
+          "alias": true
+        }
+      ],
+      "en-gb": [
+        {
+          "name": "Shambala",
+          "pref": true
+        }
+      ],
+      "fi": [
+        {
+          "name": "shambala",
+          "pref": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "shambala",
+          "pref": true
+        }
+      ],
+      "he": [
+        {
+          "name": "שמבלה",
+          "pref": true
+        },
+        {
+          "name": "שמבאלה",
+          "alias": true
+        },
+        {
+          "name": "שמבלית",
+          "alias": true
+        },
+        {
+          "name": "שפת שמבלה",
+          "alias": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "サンバー語",
+          "pref": true
+        }
+      ],
+      "nl": [
+        {
+          "name": "Shambala",
+          "pref": true
+        }
+      ],
+      "pl": [
+        {
+          "name": "Język sambala",
+          "pref": true
+        },
+        {
+          "name": "Język kisambaa",
+          "alias": true
+        },
+        {
+          "name": "Język kishambaa",
+          "alias": true
+        },
+        {
+          "name": "Język kishambala",
+          "alias": true
+        },
+        {
+          "name": "Język sambaa",
+          "alias": true
+        },
+        {
+          "name": "Język shambaa",
+          "alias": true
+        },
+        {
+          "name": "Język shambala",
+          "alias": true
+        }
+      ],
+      "tl": [
+        {
+          "name": "Wikang Shambala",
+          "pref": true
+        }
+      ],
+      "tr": [
+        {
+          "name": "ksb",
+          "alias": true
+        }
+      ]
+    }
   },
   "Q36556": {
+    "name": "Tai Nüa",
     "users": 650000,
     "code": "tdd",
-    "names": {}
+    "names": {
+      "de": [
+        {
+          "name": "Tai Nüa",
+          "pref": true
+        }
+      ],
+      "en": [
+        {
+          "name": "Tai Nüa",
+          "pref": true
+        },
+        {
+          "name": "Chinese Shan language",
+          "alias": true
+        },
+        {
+          "name": "Dehong Dai language",
+          "alias": true
+        },
+        {
+          "name": "Tai Kong language",
+          "alias": true
+        },
+        {
+          "name": "Tai Le language",
+          "alias": true
+        },
+        {
+          "name": "Tai Mau language",
+          "alias": true
+        },
+        {
+          "name": "Tai Na language",
+          "alias": true
+        },
+        {
+          "name": "Tai Nüa language",
+          "alias": true
+        }
+      ],
+      "en-gb": [
+        {
+          "name": "Tai Nüa",
+          "pref": true
+        }
+      ],
+      "es": [
+        {
+          "name": "tai nüa",
+          "pref": true
+        },
+        {
+          "name": "Tai Le",
+          "alias": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "tai nüa",
+          "pref": true
+        }
+      ],
+      "it": [
+        {
+          "name": "tai nüa",
+          "pref": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "タイ・ヌア語",
+          "pref": true
+        },
+        {
+          "name": "Tai Nüa語",
+          "alias": true
+        },
+        {
+          "name": "タイ・ロン語",
+          "alias": true
+        },
+        {
+          "name": "タイカダイ語",
+          "alias": true
+        },
+        {
+          "name": "徳宏語",
+          "alias": true
+        }
+      ],
+      "ko": [
+        {
+          "name": "따이느아어",
+          "pref": true
+        }
+      ],
+      "mk": [
+        {
+          "name": "тајнујски јазик",
+          "pref": true
+        }
+      ],
+      "nl": [
+        {
+          "name": "Tai Nüa",
+          "pref": true
+        }
+      ],
+      "pl": [
+        {
+          "name": "Język tai neua",
+          "pref": true
+        }
+      ],
+      "pt": [
+        {
+          "name": "Tai nüa",
+          "pref": true
+        }
+      ],
+      "ru": [
+        {
+          "name": "Тай-ныа",
+          "pref": true
+        }
+      ],
+      "sv": [
+        {
+          "name": "Tai nüa",
+          "pref": true
+        },
+        {
+          "name": "Tai le",
+          "alias": true
+        }
+      ],
+      "tl": [
+        {
+          "name": "Wikang Tai Nüa",
+          "pref": true
+        }
+      ],
+      "tr": [
+        {
+          "name": "tdd",
+          "alias": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "傣那语",
+          "pref": true
+        },
+        {
+          "name": "傣哪語",
+          "alias": true
+        },
+        {
+          "name": "傣哪语",
+          "alias": true
+        },
+        {
+          "name": "傣纳语",
+          "alias": true
+        }
+      ],
+      "zh-hans": [
+        {
+          "name": "傣那语",
+          "pref": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "傣那語",
+          "pref": true
+        }
+      ]
+    }
   },
   "Q3915207": {
+    "name": "Tai Daeng",
     "users": 650000,
     "code": "tyr",
-    "names": {}
+    "names": {
+      "en": [
+        {
+          "name": "Tai Daeng",
+          "pref": true
+        },
+        {
+          "name": "Tai Daeng language",
+          "alias": true
+        }
+      ],
+      "en-gb": [
+        {
+          "name": "Tai Daeng",
+          "pref": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "tay deng",
+          "pref": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "赤タイ語",
+          "pref": true
+        }
+      ],
+      "pl": [
+        {
+          "name": "Język tai daeng",
+          "pref": true
+        }
+      ],
+      "ru": [
+        {
+          "name": "Красно-тайский язык",
+          "pref": true
+        }
+      ],
+      "tl": [
+        {
+          "name": "Wikang Tai Daeng",
+          "pref": true
+        }
+      ],
+      "tr": [
+        {
+          "name": "tyr",
+          "alias": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "泰丹語",
+          "pref": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "泰丹語",
+          "pref": true
+        }
+      ]
+    }
   },
   "Q33919": {
     "name": "Kui",
@@ -124802,6 +129578,10 @@
         {
           "name": "mauricijština",
           "pref": true
+        },
+        {
+          "name": "Mauricijská kreolština",
+          "alias": true
         }
       ],
       "de": [
@@ -124936,8 +129716,12 @@
       ],
       "sv": [
         {
-          "name": "Mauritiuskreol",
+          "name": "mauritisk kreol",
           "pref": true
+        },
+        {
+          "name": "Mauritiuskreol",
+          "alias": true
         }
       ],
       "tr": [
@@ -126687,6 +131471,26 @@
         {
           "name": "język adygejski",
           "pref": true
+        },
+        {
+          "name": "adygejski",
+          "alias": true
+        },
+        {
+          "name": "dolnoczerkieski",
+          "alias": true
+        },
+        {
+          "name": "język dolnoczerkieski",
+          "alias": true
+        },
+        {
+          "name": "język zachodnioczerkieski",
+          "alias": true
+        },
+        {
+          "name": "zachodnioczerkieski",
+          "alias": true
         }
       ],
       "pt": [
@@ -127108,11 +131912,11 @@
       ],
       "ro": [
         {
-          "name": "limba siriacă",
+          "name": "siriacă",
           "pref": true
         },
         {
-          "name": "siriacă",
+          "name": "limba siriacă",
           "alias": true
         }
       ],
@@ -127168,39 +131972,11 @@
           "alias": true
         },
         {
-          "name": "östarameiska språk",
-          "alias": true
-        },
-        {
           "name": "syriac",
           "alias": true
         },
         {
           "name": "syrianska",
-          "alias": true
-        },
-        {
-          "name": "syriolog",
-          "alias": true
-        },
-        {
-          "name": "syriologi",
-          "alias": true
-        },
-        {
-          "name": "syrisk litteratur",
-          "alias": true
-        },
-        {
-          "name": "syriskan",
-          "alias": true
-        },
-        {
-          "name": "syrolog",
-          "alias": true
-        },
-        {
-          "name": "syrologi",
           "alias": true
         }
       ],
@@ -127819,7 +132595,7 @@
       ],
       "da": [
         {
-          "name": "Krimtatarisk",
+          "name": "krimtatarisk",
           "pref": true
         }
       ],
@@ -129339,19 +134115,19 @@
       ],
       "da": [
         {
-          "name": "Žemaitisk",
+          "name": "žemaitisk",
           "pref": true
         },
         {
-          "name": "Samogitisk",
+          "name": "samogitisk",
           "alias": true
         },
         {
-          "name": "Zemaitisk",
+          "name": "zemaitisk",
           "alias": true
         },
         {
-          "name": "Ẑemaitisk",
+          "name": "ẑemaitisk",
           "alias": true
         }
       ],
@@ -129415,7 +134191,7 @@
       ],
       "es": [
         {
-          "name": "Idioma samogitiano",
+          "name": "idioma samogitiano",
           "pref": true
         },
         {
@@ -129429,7 +134205,7 @@
       ],
       "et": [
         {
-          "name": "Žemaidi keel",
+          "name": "žemaidi keel",
           "pref": true
         }
       ],
@@ -129553,7 +134329,7 @@
       ],
       "lv": [
         {
-          "name": "Žemaišu dialekts",
+          "name": "žemaišu dialekts",
           "pref": true
         },
         {
@@ -129573,7 +134349,7 @@
       ],
       "nl": [
         {
-          "name": "Samogitisch",
+          "name": "samogitisch",
           "pref": true
         },
         {
@@ -129631,8 +134407,12 @@
       ],
       "sk": [
         {
-          "name": "Žemajtské nárečie",
+          "name": "žemajčina",
           "pref": true
+        },
+        {
+          "name": "žemajtské nárečie",
+          "alias": true
         }
       ],
       "sv": [
@@ -133692,10 +138472,6 @@
         {
           "name": "Bable",
           "alias": true
-        },
-        {
-          "name": "Leonese",
-          "alias": true
         }
       ],
       "en-ca": [
@@ -134357,6 +139133,16 @@
           "name": "雅庫特語",
           "alias": true
         }
+      ],
+      "zh-hant": [
+        {
+          "name": "薩哈語",
+          "pref": true
+        },
+        {
+          "name": "雅庫特語",
+          "alias": true
+        }
       ]
     }
   },
@@ -134811,6 +139597,16 @@
         {
           "name": "Língua kumyk",
           "pref": true
+        }
+      ],
+      "ro": [
+        {
+          "name": "cumakă",
+          "pref": true
+        },
+        {
+          "name": "limba cumakă",
+          "alias": true
         }
       ],
       "ru": [
@@ -136008,35 +140804,35 @@
           "pref": true
         },
         {
-          "name": "Srana",
+          "name": "srana",
           "alias": true
         },
         {
-          "name": "Sranan Tongo",
+          "name": "sranan tongo",
           "alias": true
         },
         {
-          "name": "Sranang",
+          "name": "sranang",
           "alias": true
         },
         {
-          "name": "Sranang Tongo",
+          "name": "sranang tongo",
           "alias": true
         },
         {
-          "name": "Sranantongo",
+          "name": "sranantongo",
           "alias": true
         },
         {
-          "name": "Surinaams",
+          "name": "surinaams",
           "alias": true
         },
         {
-          "name": "Surinamesiska",
+          "name": "surinamesiska",
           "alias": true
         },
         {
-          "name": "Taki-Taki",
+          "name": "taki-taki",
           "alias": true
         }
       ],
@@ -136417,6 +141213,12 @@
         {
           "name": "гадданы",
           "alias": true
+        }
+      ],
+      "sv": [
+        {
+          "name": "ibanag",
+          "pref": true
         }
       ],
       "tl": [
@@ -136806,7 +141608,7 @@
     "names": {
       "bg": [
         {
-          "name": "Люксембургски език",
+          "name": "люксембургски език",
           "pref": true
         }
       ],
@@ -137767,6 +142569,22 @@
         {
           "name": "hojsanu valodas",
           "pref": true
+        },
+        {
+          "name": "ķhoisu valodas",
+          "alias": true
+        },
+        {
+          "name": "khojsanu valodas",
+          "alias": true
+        },
+        {
+          "name": "khoju-sanu valodas",
+          "alias": true
+        },
+        {
+          "name": "kojsanu valodas",
+          "alias": true
         }
       ],
       "mk": [
@@ -139110,7 +143928,7 @@
     }
   },
   "Q36809": {
-    "name": "Tzotzil",
+    "name": "tzotzil",
     "users": 350000,
     "code": "tzo",
     "names": {
@@ -139128,11 +143946,11 @@
       ],
       "en": [
         {
-          "name": "Tzotzil",
+          "name": "tzotzil",
           "pref": true
         },
         {
-          "name": "Tzotzil language",
+          "name": "tzotzil language",
           "alias": true
         }
       ],
@@ -140601,7 +145419,7 @@
       ],
       "da": [
         {
-          "name": "Burjatisk",
+          "name": "burjatisk",
           "pref": true
         }
       ],
@@ -143228,6 +148046,12 @@
       "pt": [
         {
           "name": "Língua lotuko",
+          "pref": true
+        }
+      ],
+      "ru": [
+        {
+          "name": "Лотухо",
           "pref": true
         }
       ],
@@ -145861,7 +150685,7 @@
           "alias": true
         },
         {
-          "name": "Tuvinska språket",
+          "name": "tuvinska språket",
           "alias": true
         },
         {
@@ -146072,6 +150896,12 @@
       "es": [
         {
           "name": "Idioma balti",
+          "pref": true
+        }
+      ],
+      "et": [
+        {
+          "name": "Balti keel",
           "pref": true
         }
       ],
@@ -148279,6 +153109,18 @@
         {
           "name": "język ao",
           "pref": true
+        },
+        {
+          "name": "ao",
+          "alias": true
+        },
+        {
+          "name": "ao naga",
+          "alias": true
+        },
+        {
+          "name": "język ao naga",
+          "alias": true
         }
       ],
       "pt": [
@@ -149430,6 +154272,18 @@
         {
           "name": "amerykański język migowy",
           "pref": true
+        },
+        {
+          "name": "AJM",
+          "alias": true
+        },
+        {
+          "name": "amerykański migowy",
+          "alias": true
+        },
+        {
+          "name": "ASL",
+          "alias": true
         }
       ],
       "pt": [
@@ -149862,6 +154716,12 @@
       "cs": [
         {
           "name": "gaskoňština",
+          "pref": true
+        }
+      ],
+      "da": [
+        {
+          "name": "gasconsk",
           "pref": true
         }
       ],
@@ -150873,6 +155733,10 @@
         {
           "name": "dzongkha",
           "pref": true
+        },
+        {
+          "name": "bhutanesiska",
+          "alias": true
         }
       ],
       "tl": [
@@ -152112,7 +156976,7 @@
           "alias": true
         },
         {
-          "name": "langue arpitan",
+          "name": "langue arpitane",
           "alias": true
         },
         {
@@ -152172,7 +157036,11 @@
           "pref": true
         },
         {
-          "name": "FRP",
+          "name": "フランコ・プロヴァンサル語",
+          "alias": true
+        },
+        {
+          "name": "フランコ・プロヴァンス語",
           "alias": true
         }
       ],
@@ -153322,8 +158190,108 @@
       ],
       "pl": [
         {
-          "name": "Język amis",
+          "name": "język amis",
           "pref": true
+        },
+        {
+          "name": "ami",
+          "alias": true
+        },
+        {
+          "name": "amia",
+          "alias": true
+        },
+        {
+          "name": "amis",
+          "alias": true
+        },
+        {
+          "name": "amiski",
+          "alias": true
+        },
+        {
+          "name": "bakurut",
+          "alias": true
+        },
+        {
+          "name": "język ami",
+          "alias": true
+        },
+        {
+          "name": "język amia",
+          "alias": true
+        },
+        {
+          "name": "język amiski",
+          "alias": true
+        },
+        {
+          "name": "język bakurut",
+          "alias": true
+        },
+        {
+          "name": "język lam-si-hoan",
+          "alias": true
+        },
+        {
+          "name": "język maran",
+          "alias": true
+        },
+        {
+          "name": "język pagcah",
+          "alias": true
+        },
+        {
+          "name": "język pangcah",
+          "alias": true
+        },
+        {
+          "name": "język pangczański",
+          "alias": true
+        },
+        {
+          "name": "język pangtsah",
+          "alias": true
+        },
+        {
+          "name": "język sabari",
+          "alias": true
+        },
+        {
+          "name": "język tanah",
+          "alias": true
+        },
+        {
+          "name": "lam-si-hoan",
+          "alias": true
+        },
+        {
+          "name": "maran",
+          "alias": true
+        },
+        {
+          "name": "pagcah",
+          "alias": true
+        },
+        {
+          "name": "pangcah",
+          "alias": true
+        },
+        {
+          "name": "pangczański",
+          "alias": true
+        },
+        {
+          "name": "pangtsah",
+          "alias": true
+        },
+        {
+          "name": "sabari",
+          "alias": true
+        },
+        {
+          "name": "tanah",
+          "alias": true
         }
       ],
       "pt": [
@@ -156216,6 +161184,10 @@
         {
           "name": "język abchaski",
           "pref": true
+        },
+        {
+          "name": "abchaski",
+          "alias": true
         }
       ],
       "pt": [
@@ -157253,7 +162225,7 @@
       ],
       "sv": [
         {
-          "name": "Miskito",
+          "name": "miskito",
           "pref": true
         }
       ],
@@ -159768,8 +164740,12 @@
       ],
       "mk": [
         {
-          "name": "навахо",
+          "name": "навашки јазик",
           "pref": true
+        },
+        {
+          "name": "навахо",
+          "alias": true
         }
       ],
       "nb": [
@@ -161593,6 +166569,10 @@
         {
           "name": "fit",
           "alias": true
+        },
+        {
+          "name": "tornedalsfinska",
+          "alias": true
         }
       ],
       "tr": [
@@ -162737,6 +167717,12 @@
       "ru": [
         {
           "name": "Геррерский науатль",
+          "pref": true
+        }
+      ],
+      "sv": [
+        {
+          "name": "Guerrero-nahuatl",
           "pref": true
         }
       ],
@@ -168043,6 +173029,12 @@
           "pref": true
         }
       ],
+      "it": [
+        {
+          "name": "Creolo beliziano",
+          "pref": true
+        }
+      ],
       "ja": [
         {
           "name": "ベリーズ・クレオール語",
@@ -168556,6 +173548,10 @@
         },
         {
           "name": "lengua ibaloy",
+          "alias": true
+        },
+        {
+          "name": "lengua ivadoy",
           "alias": true
         }
       ],
@@ -169909,43 +174905,21 @@
           "pref": true
         },
         {
-          "name": "Eastern Tatar",
-          "alias": true
-        },
-        {
-          "name": "Eastern Tatar dialect",
-          "alias": true
-        },
-        {
-          "name": "Siberian",
-          "alias": true
-        },
-        {
-          "name": "Siberian language",
-          "alias": true
-        },
-        {
           "name": "Siberian Tatar language",
-          "alias": true
-        },
-        {
-          "name": "Sibir",
-          "alias": true
-        },
-        {
-          "name": "Sibir language",
-          "alias": true
-        },
-        {
-          "name": "Sybyr",
-          "alias": true
-        },
-        {
-          "name": "Sybyr language",
           "alias": true
         }
       ],
       "en-gb": [
+        {
+          "name": "Siberian Tatar",
+          "pref": true
+        },
+        {
+          "name": "Siberian",
+          "alias": true
+        }
+      ],
+      "en-us": [
         {
           "name": "Siberian Tatar",
           "pref": true
@@ -169955,18 +174929,6 @@
         {
           "name": "tártaro de Siberia",
           "pref": true
-        },
-        {
-          "name": "Idioma sibero",
-          "alias": true
-        },
-        {
-          "name": "Idioma sibir",
-          "alias": true
-        },
-        {
-          "name": "Idioma sibiro",
-          "alias": true
         }
       ],
       "fr": [
@@ -170037,18 +174999,6 @@
           "pref": true
         },
         {
-          "name": "сибирский диалект",
-          "alias": true
-        },
-        {
-          "name": "сибирский диалект татарского языка",
-          "alias": true
-        },
-        {
-          "name": "сибирский язык",
-          "alias": true
-        },
-        {
           "name": "сибирскотатарский язык",
           "alias": true
         }
@@ -170057,14 +175007,6 @@
         {
           "name": "сибирскотатарски језик",
           "pref": true
-        },
-        {
-          "name": "сибирски дијалекат",
-          "alias": true
-        },
-        {
-          "name": "сибирски дијалект",
-          "alias": true
         },
         {
           "name": "сибирски језик",
@@ -170083,11 +175025,8 @@
       ],
       "tr": [
         {
-          "name": "Sibirya Tatarcası",
-          "pref": true
-        },
-        {
-          "name": "Sibir Tatarcası",
+          "name": "Sibirce",
+          "pref": true,
           "alias": true
         },
         {
@@ -170296,8 +175235,16 @@
       ],
       "pl": [
         {
-          "name": "Dialekt arbaryjski",
+          "name": "dialekt arbaryjski",
           "pref": true
+        },
+        {
+          "name": "arbaryjski",
+          "alias": true
+        },
+        {
+          "name": "arbaryjski albański",
+          "alias": true
         }
       ],
       "pt": [
@@ -173010,6 +177957,18 @@
         }
       ],
       "zh": [
+        {
+          "name": "埃爾齊亞語",
+          "pref": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "埃爾齊亞語",
+          "pref": true
+        }
+      ],
+      "zh-tw": [
         {
           "name": "埃爾齊亞語",
           "pref": true
@@ -175959,6 +180918,10 @@
           "pref": true
         },
         {
+          "name": "aramaico",
+          "alias": true
+        },
+        {
           "name": "Arameo turabdínico",
           "alias": true
         },
@@ -176412,7 +181375,7 @@
       ],
       "sv": [
         {
-          "name": "Cia-Cia",
+          "name": "cia-cia",
           "pref": true
         }
       ],
@@ -180281,6 +185244,123 @@
       ]
     }
   },
+  "Q14531212": {
+    "name": "Semnani",
+    "users": 68700,
+    "code": "smy",
+    "names": {
+      "de": [
+        {
+          "name": "Semnani",
+          "pref": true
+        }
+      ],
+      "en": [
+        {
+          "name": "Semnani",
+          "pref": true
+        },
+        {
+          "name": "Semnani language",
+          "alias": true
+        },
+        {
+          "name": "Semnani-Biyabuneki",
+          "alias": true
+        }
+      ],
+      "en-gb": [
+        {
+          "name": "Semnani",
+          "pref": true
+        }
+      ],
+      "fi": [
+        {
+          "name": "semnani",
+          "pref": true
+        },
+        {
+          "name": "semnanin kieli",
+          "alias": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "semnani",
+          "pref": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "セムナーン語",
+          "pref": true
+        }
+      ],
+      "pl": [
+        {
+          "name": "Język semnani",
+          "pref": true
+        }
+      ],
+      "ru": [
+        {
+          "name": "Семнанский язык",
+          "pref": true
+        }
+      ],
+      "sk": [
+        {
+          "name": "semnančina",
+          "pref": true
+        }
+      ],
+      "sv": [
+        {
+          "name": "Semnani",
+          "pref": true
+        }
+      ],
+      "tl": [
+        {
+          "name": "Wikang Semnani",
+          "pref": true
+        }
+      ],
+      "tr": [
+        {
+          "name": "Simnanca",
+          "pref": true
+        },
+        {
+          "name": "smy",
+          "alias": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "塞姆纳尼语",
+          "pref": true
+        },
+        {
+          "name": "塞姆納尼語",
+          "alias": true
+        }
+      ],
+      "zh-hans": [
+        {
+          "name": "塞姆纳尼语",
+          "pref": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "塞姆納尼語",
+          "pref": true
+        }
+      ]
+    }
+  },
   "Q34128": {
     "name": "Tahitian",
     "users": 68000,
@@ -180482,6 +185562,12 @@
         {
           "name": "Língua taitiana",
           "alias": true
+        }
+      ],
+      "ro": [
+        {
+          "name": "tahitiana",
+          "pref": true
         }
       ],
       "ru": [
@@ -181447,6 +186533,12 @@
       "es": [
         {
           "name": "Idioma Libido",
+          "pref": true
+        }
+      ],
+      "et": [
+        {
+          "name": "Marako keel",
           "pref": true
         }
       ],
@@ -183904,6 +188996,12 @@
           "alias": true
         }
       ],
+      "sv": [
+        {
+          "name": "iberisk romani",
+          "pref": true
+        }
+      ],
       "tr": [
         {
           "name": "Caló",
@@ -184483,6 +189581,32 @@
           "pref": true
         }
       ],
+      "pl": [
+        {
+          "name": "język aguaruna",
+          "pref": true
+        },
+        {
+          "name": "aguaruna",
+          "alias": true
+        },
+        {
+          "name": "awajún",
+          "alias": true
+        },
+        {
+          "name": "dialekt aguaruna",
+          "alias": true
+        },
+        {
+          "name": "dialekt awajún",
+          "alias": true
+        },
+        {
+          "name": "język awajún",
+          "alias": true
+        }
+      ],
       "pt": [
         {
           "name": "Língua aguaruna",
@@ -184856,11 +189980,11 @@
       ],
       "lv": [
         {
-          "name": "Grenlandiešu valoda",
+          "name": "grenlandiešu valoda",
           "pref": true
         },
         {
-          "name": "Inuitu valoda",
+          "name": "inuitu valoda",
           "alias": true
         },
         {
@@ -184868,11 +189992,11 @@
           "alias": true
         },
         {
-          "name": "Kalāhlisuta",
+          "name": "kalāhlisuta",
           "alias": true
         },
         {
-          "name": "Kalālisuta valoda",
+          "name": "kalālisuta valoda",
           "alias": true
         }
       ],
@@ -185385,6 +190509,10 @@
         },
         {
           "name": "アボリジニ語",
+          "alias": true
+        },
+        {
+          "name": "オーストラリア諸語",
           "alias": true
         }
       ],
@@ -187979,6 +193107,30 @@
         {
           "name": "język abazyński",
           "pref": true
+        },
+        {
+          "name": "abaza",
+          "alias": true
+        },
+        {
+          "name": "abazańszczyzna",
+          "alias": true
+        },
+        {
+          "name": "abazyjski",
+          "alias": true
+        },
+        {
+          "name": "abazyński",
+          "alias": true
+        },
+        {
+          "name": "język abaza",
+          "alias": true
+        },
+        {
+          "name": "język abazyjski",
+          "alias": true
         }
       ],
       "pt": [
@@ -188317,6 +193469,12 @@
           "pref": true
         }
       ],
+      "sv": [
+        {
+          "name": "yaeyama",
+          "pref": true
+        }
+      ],
       "tr": [
         {
           "name": "Yaeyamaca",
@@ -188555,13 +193713,13 @@
     }
   },
   "Q1089151": {
-    "name": "Sri Lanka Malay language",
+    "name": "Sri Lanka Malay",
     "users": 46000,
     "code": "sci",
     "names": {
       "en": [
         {
-          "name": "Sri Lanka Malay language",
+          "name": "Sri Lanka Malay",
           "pref": true
         },
         {
@@ -188569,7 +193727,7 @@
           "alias": true
         },
         {
-          "name": "Sri Lanka Malay",
+          "name": "Sri Lanka Malay language",
           "alias": true
         },
         {
@@ -189833,10 +194991,6 @@
         {
           "name": "ハカス語",
           "pref": true
-        },
-        {
-          "name": "kjh",
-          "alias": true
         }
       ],
       "ko": [
@@ -189942,10 +195096,6 @@
         },
         {
           "name": "Hakas türkçesi",
-          "alias": true
-        },
-        {
-          "name": "kjh",
           "alias": true
         }
       ],
@@ -190720,7 +195870,7 @@
     "names": {
       "bg": [
         {
-          "name": "Романш",
+          "name": "Романшки",
           "pref": true
         }
       ],
@@ -192444,6 +197594,12 @@
         {
           "name": "центральный ацтекский язык",
           "alias": true
+        }
+      ],
+      "sv": [
+        {
+          "name": "centralnahuatl",
+          "pref": true
         }
       ],
       "tr": [
@@ -196081,6 +201237,12 @@
           "pref": true
         }
       ],
+      "he": [
+        {
+          "name": "דנדי",
+          "pref": true
+        }
+      ],
       "ja": [
         {
           "name": "デンディ語",
@@ -199188,6 +204350,12 @@
         {
           "name": "aghoul",
           "alias": true
+        }
+      ],
+      "he": [
+        {
+          "name": "אגולית",
+          "pref": true
         }
       ],
       "it": [
@@ -202358,8 +207526,20 @@
       ],
       "pl": [
         {
-          "name": "Język gahuku",
+          "name": "język alekano",
           "pref": true
+        },
+        {
+          "name": "alekano",
+          "alias": true
+        },
+        {
+          "name": "gahuku",
+          "alias": true
+        },
+        {
+          "name": "język gahuku",
+          "alias": true
         }
       ],
       "ru": [
@@ -203527,6 +208707,10 @@
         },
         {
           "name": "Yurak",
+          "alias": true
+        },
+        {
+          "name": "Yurak languages",
           "alias": true
         }
       ],
@@ -206015,23 +211199,23 @@
           "pref": true
         },
         {
-          "name": "Anishinaabemovin",
+          "name": "anishinaabemovin",
           "alias": true
         },
         {
-          "name": "Anishinaabemowin",
+          "name": "anishinaabemowin",
           "alias": true
         },
         {
-          "name": "Anishinabemovin",
+          "name": "anishinabemovin",
           "alias": true
         },
         {
-          "name": "Anishinabemowin",
+          "name": "anishinabemowin",
           "alias": true
         },
         {
-          "name": "Ojibwe",
+          "name": "ojibwe",
           "alias": true
         }
       ],
@@ -207392,131 +212576,6 @@
       ]
     }
   },
-  "Q530384": {
-    "name": "Dakota",
-    "users": 20000,
-    "code": "dak",
-    "names": {
-      "de": [
-        {
-          "name": "Dakota",
-          "pref": true
-        }
-      ],
-      "en": [
-        {
-          "name": "Dakota",
-          "pref": true
-        },
-        {
-          "name": "Dakota language",
-          "alias": true
-        }
-      ],
-      "en-ca": [
-        {
-          "name": "Dakota",
-          "pref": true
-        }
-      ],
-      "en-gb": [
-        {
-          "name": "Dakota",
-          "pref": true
-        }
-      ],
-      "es": [
-        {
-          "name": "Dakota",
-          "pref": true
-        }
-      ],
-      "et": [
-        {
-          "name": "dakota keel",
-          "pref": true
-        }
-      ],
-      "fi": [
-        {
-          "name": "dakota",
-          "pref": true
-        },
-        {
-          "name": "dakotan kieli",
-          "alias": true
-        }
-      ],
-      "fr": [
-        {
-          "name": "dakota",
-          "pref": true
-        }
-      ],
-      "he": [
-        {
-          "name": "דקוטה (שפה)",
-          "pref": true
-        }
-      ],
-      "it": [
-        {
-          "name": "lingua dakota",
-          "pref": true
-        }
-      ],
-      "ja": [
-        {
-          "name": "ダコタ語",
-          "pref": true
-        }
-      ],
-      "nl": [
-        {
-          "name": "Dakota",
-          "pref": true
-        }
-      ],
-      "ru": [
-        {
-          "name": "дакота",
-          "pref": true
-        }
-      ],
-      "sv": [
-        {
-          "name": "Dakota",
-          "pref": true
-        }
-      ],
-      "tr": [
-        {
-          "name": "Dakota",
-          "pref": true
-        },
-        {
-          "name": "dak",
-          "alias": true
-        }
-      ],
-      "zh": [
-        {
-          "name": "達科他語",
-          "pref": true
-        },
-        {
-          "name": "达科他语",
-          "alias": true
-        }
-      ],
-      "zh-hans": [
-        {
-          "name": "达科他语",
-          "pref": true
-        }
-      ]
-    }
-  },
   "Q56586": {
     "name": "Wargli",
     "users": 20000,
@@ -208269,6 +213328,18 @@
         {
           "name": "język aragoński",
           "pref": true
+        },
+        {
+          "name": "arogański",
+          "alias": true
+        },
+        {
+          "name": "arogańszczyzna",
+          "alias": true
+        },
+        {
+          "name": "dialekt arogański",
+          "alias": true
         }
       ],
       "pt": [
@@ -210008,11 +215079,11 @@
           "pref": true
         },
         {
-          "name": "Belauiska",
+          "name": "belauiska",
           "alias": true
         },
         {
-          "name": "Palauanska",
+          "name": "palauanska",
           "alias": true
         }
       ],
@@ -210592,6 +215663,12 @@
           "pref": true
         }
       ],
+      "pl": [
+        {
+          "name": "język Jeniszów",
+          "alias": true
+        }
+      ],
       "pt": [
         {
           "name": "Língua yeniche",
@@ -210982,7 +216059,7 @@
       ],
       "sk": [
         {
-          "name": "sarikolčina",
+          "name": "sarikoli",
           "pref": true
         }
       ],
@@ -212223,11 +217300,11 @@
       ],
       "sv": [
         {
-          "name": "Svanetiska",
+          "name": "svanetiska",
           "pref": true
         },
         {
-          "name": "Svanuri",
+          "name": "svanuri",
           "alias": true
         }
       ],
@@ -214537,6 +219614,12 @@
       "sr": [
         {
           "name": "кикаи језик",
+          "pref": true
+        }
+      ],
+      "sv": [
+        {
+          "name": "kikai",
           "pref": true
         }
       ],
@@ -219575,7 +224658,7 @@
       ],
       "lv": [
         {
-          "name": "Krī valoda",
+          "name": "krī valoda",
           "pref": true
         },
         {
@@ -220151,11 +225234,11 @@
       ],
       "ru": [
         {
-          "name": "Оджи-кри",
+          "name": "оджи-кри",
           "pref": true
         },
         {
-          "name": "Оджи-кри (язык)",
+          "name": "оджи-кри (язык)",
           "alias": true
         }
       ],
@@ -221763,6 +226846,12 @@
           "pref": true
         }
       ],
+      "sv": [
+        {
+          "name": "nordamami",
+          "pref": true
+        }
+      ],
       "zh": [
         {
           "name": "北奄美大島語",
@@ -222633,6 +227722,12 @@
         {
           "name": "Bislama",
           "alias": true
+        }
+      ],
+      "da": [
+        {
+          "name": "bislama",
+          "pref": true
         }
       ],
       "de": [
@@ -224717,8 +229812,12 @@
       ],
       "pt": [
         {
-          "name": "Língua aquém",
+          "name": "língua xavante",
           "pref": true
+        },
+        {
+          "name": "a'uwẽ",
+          "alias": true
         },
         {
           "name": "A’uwen",
@@ -224747,6 +229846,16 @@
         {
           "name": "Línguas aqüéns",
           "alias": true
+        },
+        {
+          "name": "xavante",
+          "alias": true
+        }
+      ],
+      "pt-br": [
+        {
+          "name": "língua xavante",
+          "pref": true
         }
       ],
       "ru": [
@@ -235940,7 +241049,7 @@
       ],
       "ru": [
         {
-          "name": "Аджиэ",
+          "name": "Андьиэ",
           "pref": true
         }
       ],
@@ -240346,6 +245455,12 @@
           "alias": true
         }
       ],
+      "mk": [
+        {
+          "name": "арандски јазик",
+          "pref": true
+        }
+      ],
       "nl": [
         {
           "name": "Arrernte",
@@ -240544,6 +245659,20 @@
     "name": "Moxo",
     "users": 4500,
     "names": {
+      "de": [
+        {
+          "name": "Mojeño",
+          "pref": true
+        },
+        {
+          "name": "Moxa",
+          "alias": true
+        },
+        {
+          "name": "Moxo",
+          "alias": true
+        }
+      ],
       "en": [
         {
           "name": "Moxo",
@@ -241764,6 +246893,10 @@
         },
         {
           "name": "Tsasi",
+          "alias": true
+        },
+        {
+          "name": "Xóõ language",
           "alias": true
         },
         {
@@ -246384,6 +251517,10 @@
           "alias": true
         },
         {
+          "name": "toki pona",
+          "alias": true
+        },
+        {
           "name": "Tokipona",
           "alias": true
         }
@@ -246665,6 +251802,131 @@
       "zh-tw": [
         {
           "name": "道本語",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q530384": {
+    "name": "Dakota",
+    "users": 3100,
+    "code": "dak",
+    "names": {
+      "de": [
+        {
+          "name": "Dakota",
+          "pref": true
+        }
+      ],
+      "en": [
+        {
+          "name": "Dakota",
+          "pref": true
+        },
+        {
+          "name": "Dakota language",
+          "alias": true
+        }
+      ],
+      "en-ca": [
+        {
+          "name": "Dakota",
+          "pref": true
+        }
+      ],
+      "en-gb": [
+        {
+          "name": "Dakota",
+          "pref": true
+        }
+      ],
+      "es": [
+        {
+          "name": "Dakota",
+          "pref": true
+        }
+      ],
+      "et": [
+        {
+          "name": "dakota keel",
+          "pref": true
+        }
+      ],
+      "fi": [
+        {
+          "name": "dakota",
+          "pref": true
+        },
+        {
+          "name": "dakotan kieli",
+          "alias": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "dakota",
+          "pref": true
+        }
+      ],
+      "he": [
+        {
+          "name": "דקוטה (שפה)",
+          "pref": true
+        }
+      ],
+      "it": [
+        {
+          "name": "lingua dakota",
+          "pref": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "ダコタ語",
+          "pref": true
+        }
+      ],
+      "nl": [
+        {
+          "name": "Dakota",
+          "pref": true
+        }
+      ],
+      "ru": [
+        {
+          "name": "дакота",
+          "pref": true
+        }
+      ],
+      "sv": [
+        {
+          "name": "Dakota",
+          "pref": true
+        }
+      ],
+      "tr": [
+        {
+          "name": "Dakota",
+          "pref": true
+        },
+        {
+          "name": "dak",
+          "alias": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "達科他語",
+          "pref": true
+        },
+        {
+          "name": "达科他语",
+          "alias": true
+        }
+      ],
+      "zh-hans": [
+        {
+          "name": "达科他语",
           "pref": true
         }
       ]
@@ -249183,6 +254445,12 @@
           "pref": true
         }
       ],
+      "lv": [
+        {
+          "name": "Džērsiešu valoda",
+          "pref": true
+        }
+      ],
       "mk": [
         {
           "name": "џерсиски дијалект",
@@ -249439,6 +254707,12 @@
       "sk": [
         {
           "name": "šorčina",
+          "pref": true
+        }
+      ],
+      "sv": [
+        {
+          "name": "sjoriska",
           "pref": true
         }
       ],
@@ -251096,6 +256370,32 @@
           "pref": true
         }
       ],
+      "pl": [
+        {
+          "name": "język arawak",
+          "pref": true
+        },
+        {
+          "name": "arawacki",
+          "alias": true
+        },
+        {
+          "name": "arawak",
+          "alias": true
+        },
+        {
+          "name": "język arawacki",
+          "alias": true
+        },
+        {
+          "name": "język lokono",
+          "alias": true
+        },
+        {
+          "name": "lokono",
+          "alias": true
+        }
+      ],
       "pt": [
         {
           "name": "lokono",
@@ -251271,6 +256571,12 @@
         {
           "name": "дахлак",
           "alias": true
+        }
+      ],
+      "sv": [
+        {
+          "name": "dahalik",
+          "pref": true
         }
       ],
       "tr": [
@@ -251846,7 +257152,7 @@
       ],
       "ru": [
         {
-          "name": "Алгонквинский язык",
+          "name": "алгонквинский язык",
           "pref": true
         }
       ],
@@ -257649,7 +262955,15 @@
           "alias": true
         },
         {
+          "name": "Khoibu Naga language",
+          "alias": true
+        },
+        {
           "name": "Uipo",
+          "alias": true
+        },
+        {
+          "name": "Uipo Khoibu",
           "alias": true
         },
         {
@@ -258008,6 +263322,12 @@
       "sr": [
         {
           "name": "Јужни амами-ошима језик",
+          "pref": true
+        }
+      ],
+      "sv": [
+        {
+          "name": "sydamami",
           "pref": true
         }
       ],
@@ -261841,6 +267161,12 @@
           "alias": true
         }
       ],
+      "et": [
+        {
+          "name": "Vaju keel",
+          "pref": true
+        }
+      ],
       "fr": [
         {
           "name": "wayu",
@@ -264959,7 +270285,7 @@
   "Q1186896": {
     "name": "Nawat",
     "users": 1135,
-    "code": "nah",
+    "code": "ppl",
     "names": {
       "cs": [
         {
@@ -266076,11 +271402,11 @@
           "pref": true
         },
         {
-          "name": "Ostjaksamojediska",
+          "name": "ostjaksamojediska",
           "alias": true
         },
         {
-          "name": "Sölkupska",
+          "name": "sölkupska",
           "alias": true
         }
       ],
@@ -268452,6 +273778,12 @@
           "alias": true
         }
       ],
+      "da": [
+        {
+          "name": "istriotisk",
+          "pref": true
+        }
+      ],
       "de": [
         {
           "name": "Istriotisch",
@@ -268592,6 +273924,12 @@
         {
           "name": "Istrioto",
           "alias": true
+        }
+      ],
+      "he": [
+        {
+          "name": "איסטריוט",
+          "pref": true
         }
       ],
       "it": [
@@ -269081,8 +274419,44 @@
       ],
       "pl": [
         {
-          "name": "Język arapaho",
+          "name": "język arapaho",
           "pref": true
+        },
+        {
+          "name": "arapahijski",
+          "alias": true
+        },
+        {
+          "name": "arapaho",
+          "alias": true
+        },
+        {
+          "name": "arapahoński",
+          "alias": true
+        },
+        {
+          "name": "arrapahoe",
+          "alias": true
+        },
+        {
+          "name": "inuna-ina",
+          "alias": true
+        },
+        {
+          "name": "język arapahijski",
+          "alias": true
+        },
+        {
+          "name": "język arapahoński",
+          "alias": true
+        },
+        {
+          "name": "język arrapahoe",
+          "alias": true
+        },
+        {
+          "name": "język inuna-ina",
+          "alias": true
         }
       ],
       "pt": [
@@ -272284,7 +277658,6 @@
   "Q7684320": {
     "name": "Taos",
     "users": 800,
-    "code": "twf",
     "names": {
       "de": [
         {
@@ -283957,327 +289330,6 @@
       ]
     }
   },
-  "Q56467": {
-    "name": "Modern Standard Arabic",
-    "users": 335,
-    "names": {
-      "cs": [
-        {
-          "name": "Moderní standardní arabština",
-          "pref": true
-        }
-      ],
-      "de": [
-        {
-          "name": "modernes Hocharabisch",
-          "pref": true
-        }
-      ],
-      "en": [
-        {
-          "name": "Modern Standard Arabic",
-          "pref": true
-        },
-        {
-          "name": "MSA",
-          "short": true,
-          "alias": true
-        },
-        {
-          "name": "Modern Arabic",
-          "alias": true
-        },
-        {
-          "name": "Modern Literary Arabic",
-          "alias": true
-        },
-        {
-          "name": "Modern Written Arabic",
-          "alias": true
-        },
-        {
-          "name": "MWA",
-          "alias": true
-        },
-        {
-          "name": "Standard Arabic",
-          "alias": true
-        }
-      ],
-      "en-ca": [
-        {
-          "name": "Modern Standard Arabic",
-          "pref": true
-        }
-      ],
-      "en-gb": [
-        {
-          "name": "Modern Standard Arabic",
-          "pref": true
-        }
-      ],
-      "en-us": [
-        {
-          "name": "Larabci wanda ya dace da zamani",
-          "pref": true
-        }
-      ],
-      "es": [
-        {
-          "name": "árabe estándar moderno",
-          "pref": true
-        },
-        {
-          "name": "arabe estandar",
-          "alias": true
-        },
-        {
-          "name": "arabe estándar",
-          "alias": true
-        },
-        {
-          "name": "árabe estandar",
-          "alias": true
-        },
-        {
-          "name": "árabe estándar",
-          "alias": true
-        },
-        {
-          "name": "arabe estandar moderno",
-          "alias": true
-        },
-        {
-          "name": "arabe estándar moderno",
-          "alias": true
-        },
-        {
-          "name": "árabe estandar moderno",
-          "alias": true
-        },
-        {
-          "name": "arabe moderno",
-          "alias": true
-        },
-        {
-          "name": "árabe moderno",
-          "alias": true
-        }
-      ],
-      "fi": [
-        {
-          "name": "standardiarabia",
-          "pref": true
-        }
-      ],
-      "fr": [
-        {
-          "name": "arabe standard moderne",
-          "pref": true
-        },
-        {
-          "name": "arabe litteral",
-          "alias": true
-        },
-        {
-          "name": "arabe littéral",
-          "alias": true
-        },
-        {
-          "name": "arabe standard",
-          "alias": true
-        }
-      ],
-      "he": [
-        {
-          "name": "ערבית תקנית מודרנית",
-          "pref": true
-        },
-        {
-          "name": "ערבית סטנדרטית מודרנית",
-          "alias": true
-        }
-      ],
-      "it": [
-        {
-          "name": "arabo standard",
-          "pref": true
-        },
-        {
-          "name": "arabo moderno standard",
-          "alias": true
-        },
-        {
-          "name": "fusha",
-          "alias": true
-        },
-        {
-          "name": "lingua araba moderna standard",
-          "alias": true
-        },
-        {
-          "name": "lingua araba standard",
-          "alias": true
-        }
-      ],
-      "ja": [
-        {
-          "name": "現代標準アラビア語",
-          "pref": true
-        }
-      ],
-      "ko": [
-        {
-          "name": "현대 표준 아랍어",
-          "pref": true
-        }
-      ],
-      "lv": [
-        {
-          "name": "Standarta arābu valoda",
-          "pref": true
-        }
-      ],
-      "mk": [
-        {
-          "name": "Литературен арапски јазик",
-          "pref": true
-        }
-      ],
-      "nb": [
-        {
-          "name": "moderne standardarabisk",
-          "pref": true
-        },
-        {
-          "name": "Moderne Standard Arabisk",
-          "alias": true
-        },
-        {
-          "name": "MSA",
-          "alias": true
-        }
-      ],
-      "nl": [
-        {
-          "name": "Modern Standaardarabisch",
-          "pref": true
-        },
-        {
-          "name": "Arabisch (arb)",
-          "alias": true
-        }
-      ],
-      "pl": [
-        {
-          "name": "współczesny standardowy arabski",
-          "pref": true
-        },
-        {
-          "name": "MSA",
-          "alias": true
-        },
-        {
-          "name": "MWA",
-          "alias": true
-        },
-        {
-          "name": "Współczesny pisemny język arabski",
-          "alias": true
-        },
-        {
-          "name": "Współczesny standardowy język arabski",
-          "alias": true
-        }
-      ],
-      "pt": [
-        {
-          "name": "árabe moderno padrão",
-          "pref": true
-        },
-        {
-          "name": "árabe padrão moderno",
-          "alias": true
-        }
-      ],
-      "ro": [
-        {
-          "name": "arabă standard modernă",
-          "pref": true
-        },
-        {
-          "name": "araba standard modernă",
-          "alias": true
-        },
-        {
-          "name": "limba arabă standard modernă",
-          "alias": true
-        }
-      ],
-      "ru": [
-        {
-          "name": "арабский литературный язык",
-          "pref": true
-        },
-        {
-          "name": "Литературный арабский язык",
-          "alias": true
-        },
-        {
-          "name": "Современный стандартный арабский язык",
-          "alias": true
-        },
-        {
-          "name": "Фусха",
-          "alias": true
-        }
-      ],
-      "sk": [
-        {
-          "name": "Moderná štandardná arabčina",
-          "pref": true
-        }
-      ],
-      "sr": [
-        {
-          "name": "модерни стандардни арапски",
-          "pref": true
-        }
-      ],
-      "sr-el": [
-        {
-          "name": "moderni standardni arapski",
-          "pref": true
-        }
-      ],
-      "tr": [
-        {
-          "name": "Fasih Arapça",
-          "pref": true
-        }
-      ],
-      "zh": [
-        {
-          "name": "现代标准阿拉伯语",
-          "pref": true
-        }
-      ],
-      "zh-hant": [
-        {
-          "name": "現代標準阿拉伯語",
-          "pref": true
-        },
-        {
-          "name": "書面阿拉伯語",
-          "alias": true
-        },
-        {
-          "name": "標準阿拉伯語",
-          "alias": true
-        }
-      ]
-    }
-  },
   "Q3299145": {
     "name": "Matis",
     "users": 320,
@@ -285079,6 +290131,12 @@
           "alias": true
         }
       ],
+      "da": [
+        {
+          "name": "enaresamisk",
+          "pref": true
+        }
+      ],
       "de": [
         {
           "name": "Inarisamisch",
@@ -285602,6 +290660,57 @@
       "tr": [
         {
           "name": "yee",
+          "alias": true
+        }
+      ]
+    }
+  },
+  "Q427300": {
+    "name": "Aulua",
+    "users": 300,
+    "code": "aul",
+    "names": {
+      "en": [
+        {
+          "name": "Aulua",
+          "pref": true
+        },
+        {
+          "name": "Aulua language",
+          "alias": true
+        }
+      ],
+      "en-gb": [
+        {
+          "name": "Aulua",
+          "pref": true
+        }
+      ],
+      "et": [
+        {
+          "name": "aulua keel",
+          "pref": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "aulua",
+          "pref": true
+        }
+      ],
+      "ru": [
+        {
+          "name": "Аулуа",
+          "pref": true
+        }
+      ],
+      "tr": [
+        {
+          "name": "Aulua",
+          "pref": true
+        },
+        {
+          "name": "aul",
           "alias": true
         }
       ]
@@ -289503,6 +294612,10 @@
         {
           "name": "język aleucki",
           "pref": true
+        },
+        {
+          "name": "aleucki",
+          "alias": true
         }
       ],
       "pt": [
@@ -290457,6 +295570,12 @@
       "ko": [
         {
           "name": "건지어",
+          "pref": true
+        }
+      ],
+      "lv": [
+        {
+          "name": "Gērnsiešu valoda",
           "pref": true
         }
       ],
@@ -294898,6 +300017,12 @@
           "pref": true
         }
       ],
+      "lv": [
+        {
+          "name": "Unzerdeičs",
+          "pref": true
+        }
+      ],
       "nl": [
         {
           "name": "Unserdeutsch",
@@ -295057,6 +300182,26 @@
         {
           "name": "język alabama",
           "pref": true
+        },
+        {
+          "name": "alabama",
+          "alias": true
+        },
+        {
+          "name": "alabamski",
+          "alias": true
+        },
+        {
+          "name": "alibamu",
+          "alias": true
+        },
+        {
+          "name": "język alabamski",
+          "alias": true
+        },
+        {
+          "name": "język alibamu",
+          "alias": true
         }
       ],
       "pt": [
@@ -297521,6 +302666,16 @@
           "pref": true
         }
       ],
+      "pl": [
+        {
+          "name": "język araona",
+          "pref": true
+        },
+        {
+          "name": "araona",
+          "alias": true
+        }
+      ],
       "ru": [
         {
           "name": "Араона",
@@ -298275,64 +303430,6 @@
       ]
     }
   },
-  "Q107548681": {
-    "name": "Noakhali",
-    "users": 70,
-    "code": "oak",
-    "names": {
-      "de": [
-        {
-          "name": "Noakhalische Sprache",
-          "pref": true
-        },
-        {
-          "name": "noakhalische Sprache",
-          "alias": true
-        }
-      ],
-      "en": [
-        {
-          "name": "Noakhali",
-          "pref": true,
-          "alias": true
-        },
-        {
-          "name": "Noakhailla",
-          "alias": true
-        },
-        {
-          "name": "Noakhali Bengali",
-          "alias": true
-        },
-        {
-          "name": "Noakhalia",
-          "alias": true
-        },
-        {
-          "name": "Noakhalian",
-          "alias": true
-        },
-        {
-          "name": "Noakhalian language",
-          "alias": true
-        },
-        {
-          "name": "Noakhaliyo",
-          "alias": true
-        },
-        {
-          "name": "oak",
-          "alias": true
-        }
-      ],
-      "en-gb": [
-        {
-          "name": "Noakhali",
-          "pref": true
-        }
-      ]
-    }
-  },
   "Q23855": {
     "name": "Anus",
     "users": 70,
@@ -298918,6 +304015,10 @@
         {
           "name": "wymysöriska",
           "pref": true
+        },
+        {
+          "name": "vilamoviska",
+          "alias": true
         }
       ],
       "zh": [
@@ -299775,7 +304876,7 @@
       ],
       "ru": [
         {
-          "name": "Кайюга",
+          "name": "кайюга",
           "pref": true
         }
       ],
@@ -299922,11 +305023,11 @@
       ],
       "ru": [
         {
-          "name": "Онейда",
+          "name": "онейда",
           "pref": true
         },
         {
-          "name": "Онайда",
+          "name": "онайда",
           "alias": true
         }
       ],
@@ -301339,19 +306440,19 @@
           "pref": true
         },
         {
-          "name": "Fornpreussiska",
+          "name": "fornpreussiska",
           "alias": true
         },
         {
-          "name": "Ostpreussiska",
+          "name": "ostpreussiska",
           "alias": true
         },
         {
-          "name": "Preussiska",
+          "name": "preussiska",
           "alias": true
         },
         {
-          "name": "Prussiska",
+          "name": "prussiska",
           "alias": true
         }
       ],
@@ -301921,6 +307022,42 @@
         {
           "name": "西方語",
           "alias": true
+        }
+      ]
+    }
+  },
+  "Q4242936": {
+    "name": "Crimean Karaim",
+    "users": 50,
+    "names": {
+      "en": [
+        {
+          "name": "Crimean Karaim",
+          "pref": true
+        },
+        {
+          "name": "Crimean Karaim language",
+          "alias": true
+        },
+        {
+          "name": "Eastern Karaim",
+          "alias": true
+        }
+      ],
+      "ru": [
+        {
+          "name": "крымский диалект караимского языка",
+          "pref": true
+        },
+        {
+          "name": "Караимско-крымский язык",
+          "alias": true
+        }
+      ],
+      "tr": [
+        {
+          "name": "Kırım Karaycası",
+          "pref": true
         }
       ]
     }
@@ -303287,7 +308424,7 @@
       ],
       "ru": [
         {
-          "name": "Онондага",
+          "name": "онондага",
           "pref": true
         }
       ],
@@ -303323,6 +308460,10 @@
         },
         {
           "name": "Comox language",
+          "alias": true
+        },
+        {
+          "name": "Sliammon language",
           "alias": true
         }
       ],
@@ -309159,7 +314300,23 @@
           "pref": true
         },
         {
+          "name": "ajnoski",
+          "alias": true
+        },
+        {
+          "name": "ajnu",
+          "alias": true
+        },
+        {
+          "name": "ajnuski",
+          "alias": true
+        },
+        {
           "name": "język ajnoski",
+          "alias": true
+        },
+        {
+          "name": "język ajnu",
           "alias": true
         }
       ],
@@ -311027,8 +316184,7 @@
       "ja": [
         {
           "name": "サーク島語",
-          "pref": true,
-          "alias": true
+          "pref": true
         },
         {
           "name": "サーク・フランス語",
@@ -311038,6 +316194,12 @@
       "mk": [
         {
           "name": "сарчки дијалект",
+          "pref": true
+        }
+      ],
+      "nb": [
+        {
+          "name": "Sercquiais",
           "pref": true
         }
       ],
@@ -312683,15 +317845,23 @@
       ],
       "es": [
         {
-          "name": "ayapanecaca",
+          "name": "ayapaneco",
           "pref": true
         },
         {
-          "name": "Ayapa popo",
+          "name": "idioma ayapaneco",
           "alias": true
         },
         {
-          "name": "idioma ayapacaca",
+          "name": "lengua ayapenca",
+          "alias": true
+        },
+        {
+          "name": "zoque de Ayapa",
+          "alias": true
+        },
+        {
+          "name": "zoque de Tabasco",
           "alias": true
         }
       ],
@@ -313915,6 +319085,12 @@
       "nl": [
         {
           "name": "Mawayana",
+          "pref": true
+        }
+      ],
+      "pl": [
+        {
+          "name": "Język mawayana",
           "pref": true
         }
       ],
@@ -315546,11 +320722,11 @@
       ],
       "da": [
         {
-          "name": "Pali",
+          "name": "pali",
           "pref": true
         },
         {
-          "name": "Pāli",
+          "name": "pāli",
           "alias": true
         }
       ],
