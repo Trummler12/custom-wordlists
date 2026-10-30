@@ -1,0 +1,117 @@
+languageType,languageTypeLabel,languageTypeDescription,usageCount
+http://www.wikidata.org/entity/Q34770,language,"particular system of communication, often named for the region or peoples that use it",13466
+http://www.wikidata.org/entity/Q20162172,human language,"set of all languages currently or formerly spoken, written, or signed by humans (excluding computer languages and mathematical/logically-formal languages)",9427
+http://www.wikidata.org/entity/Q1288568,modern language,language in current use,7113
+http://www.wikidata.org/entity/Q33742,natural language,"language naturally spoken by humans, as opposed to ""constructed"" and ""formal"" languages",1337
+http://www.wikidata.org/entity/Q45762,dead language,"language that is no longer the native language of any community, even if it is still in use",1067
+http://www.wikidata.org/entity/Q38058796,extinct language,language that no longer has any first-language or second-language speakers,873
+http://www.wikidata.org/entity/Q3247505,artificial language,language specially made for a purpose; non-natural language,733
+http://www.wikidata.org/entity/Q33215,constructed language,"human language whose phonology, grammar, and vocabulary have been consciously devised for human or human-like communication",729
+http://www.wikidata.org/entity/Q2315359,historical language,"language used in a historical period, but distinct from related modern forms",647
+http://www.wikidata.org/entity/Q206577,proto-language,postulated common ancestor of a language family,351
+http://www.wikidata.org/entity/Q133253514,contact language,language which is created via contact between languages or language varieties,330
+http://www.wikidata.org/entity/Q184767,signed language,"linguistic grouping composed of sign languages, signal languages, and manually-coded languages",292
+http://www.wikidata.org/entity/Q34228,sign language,language which uses manual communication and body language to convey meaning,290
+http://www.wikidata.org/entity/Q19682167,pidgin or creole,linguistic units based on several other idioms,210
+http://www.wikidata.org/entity/Q19860,Indo-European,"language family native to western and southern Eurasia— Europe, Iran and India",209
+http://www.wikidata.org/entity/Q771861,Eurasiatic,proposed language macrofamily,209
+http://www.wikidata.org/entity/Q12348793,auxiliary language,"non-native language, natural or artificial, that is learned and used for some particular aim or use",170
+http://www.wikidata.org/entity/Q1790577,planned language,consciously designed human language,160
+http://www.wikidata.org/entity/Q33612,Japonic,language family,158
+http://www.wikidata.org/entity/Q5287,Japanese,language spoken in East Asia,158
+http://www.wikidata.org/entity/Q1246128,Japanese dialect,dialect in the Japanese language,157
+http://www.wikidata.org/entity/Q1078597,artistic language,language constructed for aesthetic reasons,156
+http://www.wikidata.org/entity/Q436240,ancient language,language originated in times that may be referred to as ancient,153
+http://www.wikidata.org/entity/Q153795,Eastern Nilotic,language family,138
+http://www.wikidata.org/entity/Q513408,Nilotic,small language family of East Africa,138
+http://www.wikidata.org/entity/Q33705,Nilo-Saharan,language family,138
+http://www.wikidata.org/entity/Q2036148,Eastern Sudanic,proposed language family,138
+http://www.wikidata.org/entity/Q56326,Karamojong,language spoken by the Karamojong people in Northeast Uganda,138
+http://www.wikidata.org/entity/Q33289,creole,stable natural languages that have developed from a pidgin,125
+http://www.wikidata.org/entity/Q2623733,fictional language,constructed languages that have been created as part of a fictional setting,115
+http://www.wikidata.org/entity/Q4085712,unwritten language,languages without letters,115
+http://www.wikidata.org/entity/Q1149626,written language,language which has a writing system and a written component,95
+http://www.wikidata.org/entity/Q80839,lingua franca,language used to facilitate communication between groups without a common native language,90
+http://www.wikidata.org/entity/Q33478,Latino-Faliscan,Italic language family consisting of Latin and Faliscan,87
+http://www.wikidata.org/entity/Q33694,mixed language,"language which is created by intensive contact between two or more languages, which does not clearly derive primarily from one language",87
+http://www.wikidata.org/entity/Q913431,Italo-Celtic,hypothetical grouping of the Italic and Celtic language families,87
+http://www.wikidata.org/entity/Q131848,Italic,subfamily of the Indo-European language family spoken by Italic peoples,87
+http://www.wikidata.org/entity/Q33831,pidgin,simplified language that develops between groups of people that do not have a language in common,84
+http://www.wikidata.org/entity/Q131862578,planned auxiliary language,constructed language devised to enable or facilitate a particular aim or use,78
+http://www.wikidata.org/entity/Q399495,standard language,language variety used by a population in their public discourse (for public purposes); standardized language that has at least one standard variety besides its other varieties; variety that has undergone standardization,72
+http://www.wikidata.org/entity/Q19814,Romance,"group of Indo-European languages, direct descendants of Vulgar Latin",67
+http://www.wikidata.org/entity/Q112608,Italo-Western,branch of the Romance languages,67
+http://www.wikidata.org/entity/Q2714388,Western Romance,subdivision of the Romance languages,63
+http://www.wikidata.org/entity/Q954321,Gallo-Iberian,"proposed branch of Western Romance broadly consisting of Gallo-Romance and Iberian Romance, typically when Pyrenean–Mozarabic is not included in either branch",62
+http://www.wikidata.org/entity/Q10953859,world language,language that is spoken internationally and often learned as a second language,61
+http://www.wikidata.org/entity/Q838296,international auxiliary language,language meant for communication between people from different nations who do not share a common first language,61
+http://www.wikidata.org/entity/Q500394,Gallo-Romance,"branch of Gallo-Iberian broadly consisting of Gallo-Italic, Gallo-Rhaetian, and Moselle Romance, or narrowly consisting of Franco-Provençal and Oïl",54
+http://www.wikidata.org/entity/Q8785,Armenian,Indo-European language,53
+http://www.wikidata.org/entity/Q137260493,Armenian dialect,varieties of the Armenian language,53
+http://www.wikidata.org/entity/Q599958,Occitano-Romance,Gallo-Romance language family,52
+http://www.wikidata.org/entity/Q1097949,literary language,"form of a language used in its literary writing, either a non-standard dialect or standardized variety of the language",48
+http://www.wikidata.org/entity/Q839470,sacred language,language that is cultivated for religious reasons,46
+http://www.wikidata.org/entity/Q778873,koiné language,contact language from mutually intelligible dialects of the same language,40
+http://www.wikidata.org/entity/Q7026,Catalan,Western Romance language,40
+http://www.wikidata.org/entity/Q3025977,Catalan dialect,varieties of the Catalan language,39
+http://www.wikidata.org/entity/Q455374,regiolect,"supradialectal, regionally-determined vernacular language variety, using substrate from various local dialects and preserving certain standard language features",35
+http://www.wikidata.org/entity/Q33956,unclassified language,language whose genetic affiliation with other languages has not been established,33
+http://www.wikidata.org/entity/Q963760,Esperantido,"type of constructed language, based on Esperanto",33
+http://www.wikidata.org/entity/Q85380120,Southern European language,language group,32
+http://www.wikidata.org/entity/Q21200,Germanic languages,branch of the Indo-European language family,32
+http://www.wikidata.org/entity/Q26721,West Germanic languages,group of languages,31
+http://www.wikidata.org/entity/Q278379,a priori language,constructed language whose vocabulary has been invented from scratch,26
+http://www.wikidata.org/entity/Q3462602,argot,secret language variety which is intentionally obscure to people outside a group,25
+http://www.wikidata.org/entity/Q645304,indigenous language,language that is native to a region and spoken by indigenous peoples,24
+http://www.wikidata.org/entity/Q98791755,Asian languages,languages originating in or spoken in Asia,24
+http://www.wikidata.org/entity/Q147356,Balto-Slavic,branch of the Indo-European language family,23
+http://www.wikidata.org/entity/Q30134,North Sea Germanic,group of North West Germanic languages,21
+http://www.wikidata.org/entity/Q23526,Slavic,subfamily of Indo-European languages,21
+http://www.wikidata.org/entity/Q1132460,zonal auxiliary language,languages made to bridge a language group,21
+http://www.wikidata.org/entity/Q150352,foreign language,non-native language,20
+http://www.wikidata.org/entity/Q397,Latin,Indo-European language of the Italic branch,20
+http://www.wikidata.org/entity/Q124561028,specific language as a second or foreign language,,20
+http://www.wikidata.org/entity/Q125421,second language,language spoken in addition to one's first language,20
+http://www.wikidata.org/entity/Q1346342,Anglic,group of languages including English and Scots,19
+http://www.wikidata.org/entity/Q1860,English,West Germanic language,19
+http://www.wikidata.org/entity/Q5329170,Anglo-Frisian,group of West Germanic languages,19
+http://www.wikidata.org/entity/Q1322198,spoken language,language produced orally,18
+http://www.wikidata.org/entity/Q1575129,controlled language,subset of a natural language,17
+http://www.wikidata.org/entity/Q1248221,Neo-Latin,form of the Latin language used from the 14th century to present,17
+http://www.wikidata.org/entity/Q470775,a posteriori language,constructed language whose elements are borrowed from or based on existing languages,15
+http://www.wikidata.org/entity/Q33514,Indo-Iranian,branch of the Indo-European language family,14
+http://www.wikidata.org/entity/Q107866441,deaf sign language,,14
+http://www.wikidata.org/entity/Q3915038,village sign language,local indigenous sign language,14
+http://www.wikidata.org/entity/Q1808730,manually coded language,signed phonetic representations of verbal languages,13
+http://www.wikidata.org/entity/Q335214,endangered language,language that is at risk of falling out of use,12
+http://www.wikidata.org/entity/Q14185,Occitan,Romance language of Western Europe,12
+http://www.wikidata.org/entity/Q61566,minority language,language spoken by a minority of the population of a territory,12
+http://www.wikidata.org/entity/Q106937689,South Germanic,,12
+http://www.wikidata.org/entity/Q2285130,signal language,established system for communicating nonverbally through signals,12
+http://www.wikidata.org/entity/Q3706547,Occitan dialects,,12
+http://www.wikidata.org/entity/Q33527,Iranian,branch of the Indo-Iranian languages in the Indo-European language family,11
+http://www.wikidata.org/entity/Q52040,High German,West Germanic language family,11
+http://www.wikidata.org/entity/Q56356571,New Persian,modern stage of the Persian language,11
+http://www.wikidata.org/entity/Q949344,macrofamily,proposed genetic relationship grouping together language families,11
+http://www.wikidata.org/entity/Q188,German,West Germanic language,11
+http://www.wikidata.org/entity/Q12858101,dialects of English,regional differences in both pronunciation and orthography of the English language,11
+http://www.wikidata.org/entity/Q9168,Persian,Western Iranian language,11
+http://www.wikidata.org/entity/Q129850,Western Iranian,branch of the Iranian languages,11
+http://www.wikidata.org/entity/Q390424,Southwestern Iranian,language family,11
+http://www.wikidata.org/entity/Q684488,Slavic microlanguages,linguistic concept,10
+http://www.wikidata.org/entity/Q34113,Uralic,language family prevalent in northern Eurasia,10
+http://www.wikidata.org/entity/Q33328,Finnic,language family of north-eastern Europe,10
+http://www.wikidata.org/entity/Q1412,Finnish,Finno-Ugric language mostly spoken in Finland,10
+http://www.wikidata.org/entity/Q45961,Sino-Tibetan,language family native to Asia,10
+http://www.wikidata.org/entity/Q23492,official language,language given special status in some polity,10
+http://www.wikidata.org/entity/Q97690709,Sino-Tibetan-Indo-European,hypothesized language macrofamily proposing a genetic relationship between the SIno-Tibetan and the Indo-European language families,10
+http://www.wikidata.org/entity/Q7850,Chinese,language group of the Sinitic languages,10
+http://www.wikidata.org/entity/Q7524744,Sino-Austronesian,proposed language family suggested by Laurent Sagart in 1990 combining Sino-Tibetan and Austronesian languages,10
+http://www.wikidata.org/entity/Q13192321,languages of the Earth,overview of human languages spoken on the Earth,10
+http://www.wikidata.org/entity/Q1036511,vernacular,common speech variety of a specific population,10
+http://www.wikidata.org/entity/Q4316069,undeciphered language,language or writing script that is not understood,10
+http://www.wikidata.org/entity/Q79890,Finno-Ugric,language family,10
+http://www.wikidata.org/entity/Q161240,Finno-Permic,language family,10
+http://www.wikidata.org/entity/Q21663239,Persian dialect,one of the many dialects of the Persian language,10
+http://www.wikidata.org/entity/Q161236,Finno-Volgaic,language family,10
+http://www.wikidata.org/entity/Q163652,Finno-Samic,language family,10

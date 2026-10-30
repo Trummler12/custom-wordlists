@@ -1,0 +1,4366 @@
+{
+  "Q4398": {
+    "name": "Pangaea",
+    "sitelinks": 105,
+    "names": {
+      "de": [
+        {
+          "name": "Pangaea",
+          "pref": true
+        },
+        {
+          "name": "Pangäa",
+          "alias": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "Pangée",
+          "pref": true
+        }
+      ],
+      "en": [
+        {
+          "name": "Pangaea",
+          "pref": true
+        },
+        {
+          "name": "Pangea",
+          "alias": true
+        },
+        {
+          "name": "Pangæa",
+          "alias": true
+        }
+      ],
+      "bg": [
+        {
+          "name": "Пангея",
+          "pref": true
+        }
+      ],
+      "cs": [
+        {
+          "name": "Pangea",
+          "pref": true
+        }
+      ],
+      "da": [
+        {
+          "name": "Pangæa",
+          "pref": true
+        }
+      ],
+      "el": [
+        {
+          "name": "Παγγαία",
+          "pref": true
+        }
+      ],
+      "es": [
+        {
+          "name": "Pangea",
+          "pref": true
+        }
+      ],
+      "et": [
+        {
+          "name": "Pangaea",
+          "pref": true
+        }
+      ],
+      "fi": [
+        {
+          "name": "Pangea",
+          "pref": true
+        },
+        {
+          "name": "Pangaia",
+          "alias": true
+        },
+        {
+          "name": "Pangaea",
+          "alias": true
+        }
+      ],
+      "he": [
+        {
+          "name": "פנגיאה",
+          "pref": true
+        }
+      ],
+      "hu": [
+        {
+          "name": "Pangea",
+          "pref": true
+        },
+        {
+          "name": "Pangæa",
+          "alias": true
+        }
+      ],
+      "it": [
+        {
+          "name": "Pangea",
+          "pref": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "パンゲア大陸",
+          "pref": true
+        }
+      ],
+      "ko": [
+        {
+          "name": "판게아",
+          "pref": true
+        }
+      ],
+      "lv": [
+        {
+          "name": "Pangeja",
+          "pref": true
+        }
+      ],
+      "nl": [
+        {
+          "name": "Pangea",
+          "pref": true
+        }
+      ],
+      "nn": [
+        {
+          "name": "Pangea",
+          "pref": true
+        }
+      ],
+      "pl": [
+        {
+          "name": "Pangea",
+          "pref": true
+        }
+      ],
+      "pt": [
+        {
+          "name": "Pangeia",
+          "pref": true
+        }
+      ],
+      "ro": [
+        {
+          "name": "Pangeea",
+          "pref": true
+        },
+        {
+          "name": "Pangea",
+          "alias": true
+        }
+      ],
+      "ru": [
+        {
+          "name": "Пангея",
+          "pref": true
+        }
+      ],
+      "sk": [
+        {
+          "name": "Pangea",
+          "pref": true
+        }
+      ],
+      "sr": [
+        {
+          "name": "Пангеа",
+          "pref": true
+        }
+      ],
+      "sv": [
+        {
+          "name": "Pangaea",
+          "pref": true
+        },
+        {
+          "name": "Pangea",
+          "alias": true
+        }
+      ],
+      "tl": [
+        {
+          "name": "Pangaea",
+          "pref": true
+        }
+      ],
+      "tr": [
+        {
+          "name": "Pangea",
+          "pref": true
+        },
+        {
+          "name": "Pangaea",
+          "alias": true
+        },
+        {
+          "name": "Pangæa",
+          "alias": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "盤古大陸",
+          "pref": true
+        },
+        {
+          "name": "潘基亚超大陆",
+          "alias": true
+        }
+      ],
+      "zh-cn": [
+        {
+          "name": "盤古大陸",
+          "pref": true
+        }
+      ],
+      "zh-hans": [
+        {
+          "name": "盤古大陸",
+          "pref": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "盤古大陸",
+          "pref": true
+        },
+        {
+          "name": "泛大陸",
+          "alias": true
+        }
+      ],
+      "nb": [
+        {
+          "name": "Pangea",
+          "pref": true
+        }
+      ],
+      "mk": [
+        {
+          "name": "Пангеја",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q80583": {
+    "name": "Gondwana",
+    "sitelinks": 100,
+    "names": {
+      "zh": [
+        {
+          "name": "冈瓦那大陆",
+          "pref": true
+        },
+        {
+          "name": "冈瓦纳大陆",
+          "alias": true
+        },
+        {
+          "name": "南方大陆",
+          "alias": true
+        },
+        {
+          "name": "冈瓦纳古陆",
+          "alias": true
+        },
+        {
+          "name": "冈瓦纳",
+          "alias": true
+        }
+      ],
+      "pl": [
+        {
+          "name": "Gondwana",
+          "pref": true
+        }
+      ],
+      "es": [
+        {
+          "name": "Gondwana",
+          "pref": true
+        },
+        {
+          "name": "Gondawa",
+          "alias": true
+        }
+      ],
+      "hu": [
+        {
+          "name": "Gondwana",
+          "pref": true
+        }
+      ],
+      "et": [
+        {
+          "name": "Gondwana",
+          "pref": true
+        },
+        {
+          "name": "Gondvana",
+          "alias": true
+        }
+      ],
+      "sv": [
+        {
+          "name": "Gondwana",
+          "pref": true
+        },
+        {
+          "name": "Gondwanaland",
+          "alias": true
+        }
+      ],
+      "nl": [
+        {
+          "name": "Gondwana",
+          "pref": true
+        },
+        {
+          "name": "Gondwanaland",
+          "alias": true
+        }
+      ],
+      "pt": [
+        {
+          "name": "Gondwana",
+          "pref": true
+        },
+        {
+          "name": "Gonduana",
+          "alias": true
+        }
+      ],
+      "ru": [
+        {
+          "name": "Гондвана",
+          "pref": true
+        }
+      ],
+      "sr": [
+        {
+          "name": "Гондвана",
+          "pref": true
+        }
+      ],
+      "tr": [
+        {
+          "name": "Gondvana",
+          "pref": true
+        },
+        {
+          "name": "Gondwana",
+          "alias": true
+        }
+      ],
+      "fi": [
+        {
+          "name": "Gondwana",
+          "pref": true
+        },
+        {
+          "name": "Gondwanamaa",
+          "alias": true
+        },
+        {
+          "name": "Gondwanamanner",
+          "alias": true
+        },
+        {
+          "name": "Gondwanaland",
+          "alias": true
+        }
+      ],
+      "nn": [
+        {
+          "name": "Gondwana",
+          "pref": true
+        },
+        {
+          "name": "Gondwanaland",
+          "alias": true
+        }
+      ],
+      "tl": [
+        {
+          "name": "Gondwana",
+          "pref": true
+        }
+      ],
+      "da": [
+        {
+          "name": "Gondwanaland",
+          "pref": true
+        },
+        {
+          "name": "Gondwana",
+          "alias": true
+        }
+      ],
+      "ko": [
+        {
+          "name": "곤드와나",
+          "pref": true
+        },
+        {
+          "name": "곤드와나 대륙",
+          "alias": true
+        }
+      ],
+      "he": [
+        {
+          "name": "גונדוונה",
+          "pref": true
+        },
+        {
+          "name": "גונדונה",
+          "alias": true
+        },
+        {
+          "name": "גוונדנה",
+          "alias": true
+        },
+        {
+          "name": "גונדוואנה",
+          "alias": true
+        },
+        {
+          "name": "גונדבאנה",
+          "alias": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "Gondwana",
+          "pref": true
+        },
+        {
+          "name": "Protogondwana",
+          "alias": true
+        }
+      ],
+      "lv": [
+        {
+          "name": "Gondvāna",
+          "pref": true
+        },
+        {
+          "name": "Gondvana",
+          "alias": true
+        }
+      ],
+      "it": [
+        {
+          "name": "Gondwana",
+          "pref": true
+        }
+      ],
+      "de": [
+        {
+          "name": "Gondwana",
+          "pref": true
+        },
+        {
+          "name": "Gondwanaland",
+          "alias": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "ゴンドワナ大陸",
+          "pref": true
+        },
+        {
+          "name": "ゴンドワナランド",
+          "alias": true
+        },
+        {
+          "name": "ゴンドワナ",
+          "alias": true
+        },
+        {
+          "name": "ゴンドワナ超大陸",
+          "alias": true
+        }
+      ],
+      "en": [
+        {
+          "name": "Gondwana",
+          "pref": true
+        },
+        {
+          "name": "Gondwanaland",
+          "alias": true
+        }
+      ],
+      "sk": [
+        {
+          "name": "Gondwana",
+          "pref": true
+        }
+      ],
+      "ro": [
+        {
+          "name": "Gondwana",
+          "pref": true
+        }
+      ],
+      "cs": [
+        {
+          "name": "Gondwana",
+          "pref": true
+        }
+      ],
+      "bg": [
+        {
+          "name": "Гондвана",
+          "pref": true
+        }
+      ],
+      "nb": [
+        {
+          "name": "Gondwana",
+          "pref": true
+        },
+        {
+          "name": "Gondwanaland",
+          "alias": true
+        }
+      ],
+      "el": [
+        {
+          "name": "Γκοντβάνα",
+          "pref": true
+        }
+      ],
+      "mk": [
+        {
+          "name": "Гондвана",
+          "pref": true
+        },
+        {
+          "name": "Гондваналенд",
+          "alias": true
+        }
+      ]
+    }
+  },
+  "Q132033": {
+    "name": "Laurasia",
+    "sitelinks": 84,
+    "names": {
+      "zh-hans": [
+        {
+          "name": "劳亚大陆",
+          "pref": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "勞亞大陸",
+          "pref": true
+        }
+      ],
+      "zh-hk": [
+        {
+          "name": "勞亞大陸",
+          "pref": true
+        }
+      ],
+      "zh-cn": [
+        {
+          "name": "劳亚大陆",
+          "pref": true
+        }
+      ],
+      "zh-sg": [
+        {
+          "name": "劳亚大陆",
+          "pref": true
+        }
+      ],
+      "zh-tw": [
+        {
+          "name": "勞亞大陸",
+          "pref": true
+        }
+      ],
+      "pl": [
+        {
+          "name": "Laurazja",
+          "pref": true
+        }
+      ],
+      "es": [
+        {
+          "name": "Laurasia",
+          "pref": true
+        }
+      ],
+      "hu": [
+        {
+          "name": "Laurázsia",
+          "pref": true
+        }
+      ],
+      "et": [
+        {
+          "name": "Lauraasia",
+          "pref": true
+        },
+        {
+          "name": "Laurussia",
+          "alias": true
+        }
+      ],
+      "sv": [
+        {
+          "name": "Laurasien",
+          "pref": true
+        }
+      ],
+      "nl": [
+        {
+          "name": "Laurazië",
+          "pref": true
+        }
+      ],
+      "pt": [
+        {
+          "name": "Laurásia",
+          "pref": true
+        }
+      ],
+      "ru": [
+        {
+          "name": "Лавразия",
+          "pref": true
+        }
+      ],
+      "tr": [
+        {
+          "name": "Laurasia",
+          "pref": true
+        },
+        {
+          "name": "Lavrasya",
+          "alias": true
+        }
+      ],
+      "fi": [
+        {
+          "name": "Lauraasia",
+          "pref": true
+        }
+      ],
+      "nn": [
+        {
+          "name": "Laurasia",
+          "pref": true
+        }
+      ],
+      "da": [
+        {
+          "name": "Laurasien",
+          "pref": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "Laurasie",
+          "pref": true
+        },
+        {
+          "name": "Laurasia",
+          "alias": true
+        }
+      ],
+      "ko": [
+        {
+          "name": "로라시아",
+          "pref": true
+        },
+        {
+          "name": "로라시아 대륙",
+          "alias": true
+        }
+      ],
+      "he": [
+        {
+          "name": "לאוראסיה",
+          "pref": true
+        },
+        {
+          "name": "לוריסה",
+          "alias": true
+        }
+      ],
+      "it": [
+        {
+          "name": "Laurasia",
+          "pref": true
+        }
+      ],
+      "de": [
+        {
+          "name": "Laurasia",
+          "pref": true
+        },
+        {
+          "name": "Laurasien",
+          "alias": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "ローラシア大陸",
+          "pref": true
+        },
+        {
+          "name": "ローラシア",
+          "alias": true
+        }
+      ],
+      "en": [
+        {
+          "name": "Laurasia",
+          "pref": true
+        }
+      ],
+      "sk": [
+        {
+          "name": "Laurázia",
+          "pref": true
+        }
+      ],
+      "ro": [
+        {
+          "name": "Laurasia",
+          "pref": true
+        }
+      ],
+      "cs": [
+        {
+          "name": "Laurasie",
+          "pref": true
+        }
+      ],
+      "bg": [
+        {
+          "name": "Лавразия",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "劳亚大陆",
+          "pref": true
+        },
+        {
+          "name": "勞亞古陸",
+          "alias": true
+        },
+        {
+          "name": "勞亞古大陸",
+          "alias": true
+        }
+      ],
+      "sr": [
+        {
+          "name": "Лауразија",
+          "pref": true
+        },
+        {
+          "name": "Северноатлантско копно",
+          "alias": true
+        },
+        {
+          "name": "Сјеверноатлантско копно",
+          "alias": true
+        }
+      ],
+      "nb": [
+        {
+          "name": "Laurasia",
+          "pref": true
+        },
+        {
+          "name": "Euramerika",
+          "alias": true
+        }
+      ],
+      "lv": [
+        {
+          "name": "Laurāzija",
+          "pref": true
+        }
+      ],
+      "mk": [
+        {
+          "name": "Лавразија",
+          "pref": true
+        }
+      ],
+      "el": [
+        {
+          "name": "Λαυρασία",
+          "pref": true
+        }
+      ],
+      "tl": [
+        {
+          "name": "Laurasya",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q185161": {
+    "name": "Rodinia",
+    "sitelinks": 55,
+    "names": {
+      "zh-hans": [
+        {
+          "name": "罗迪尼亚大陆",
+          "pref": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "羅迪尼亞大陸",
+          "pref": true
+        }
+      ],
+      "zh-hk": [
+        {
+          "name": "羅迪尼亞大陸",
+          "pref": true
+        }
+      ],
+      "zh-cn": [
+        {
+          "name": "罗迪尼亚大陆",
+          "pref": true
+        }
+      ],
+      "zh-sg": [
+        {
+          "name": "罗迪尼亚大陆",
+          "pref": true
+        }
+      ],
+      "zh-tw": [
+        {
+          "name": "羅迪尼亞大陸",
+          "pref": true
+        }
+      ],
+      "pl": [
+        {
+          "name": "Rodinia",
+          "pref": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "Rodinia",
+          "pref": true
+        }
+      ],
+      "he": [
+        {
+          "name": "רודיניה",
+          "pref": true
+        }
+      ],
+      "ko": [
+        {
+          "name": "로디니아",
+          "pref": true
+        },
+        {
+          "name": "로디니아 초대륙",
+          "alias": true
+        },
+        {
+          "name": "로디니아 대륙",
+          "alias": true
+        }
+      ],
+      "es": [
+        {
+          "name": "Rodinia",
+          "pref": true
+        }
+      ],
+      "hu": [
+        {
+          "name": "Rodinia",
+          "pref": true
+        }
+      ],
+      "it": [
+        {
+          "name": "Rodinia",
+          "pref": true
+        }
+      ],
+      "de": [
+        {
+          "name": "Rodinia",
+          "pref": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "ロディニア大陸",
+          "pref": true
+        },
+        {
+          "name": "ロディニア超大陸",
+          "alias": true
+        },
+        {
+          "name": "ロディニア",
+          "alias": true
+        }
+      ],
+      "en": [
+        {
+          "name": "Rodinia",
+          "pref": true
+        }
+      ],
+      "sv": [
+        {
+          "name": "Rodinia",
+          "pref": true
+        }
+      ],
+      "nl": [
+        {
+          "name": "Rodinia",
+          "pref": true
+        },
+        {
+          "name": "Rodinie",
+          "alias": true
+        },
+        {
+          "name": "Rodinië",
+          "alias": true
+        }
+      ],
+      "pt": [
+        {
+          "name": "Rodínia",
+          "pref": true
+        }
+      ],
+      "sk": [
+        {
+          "name": "Rodinia",
+          "pref": true
+        },
+        {
+          "name": "Rodínia",
+          "alias": true
+        }
+      ],
+      "ru": [
+        {
+          "name": "Родиния",
+          "pref": true
+        }
+      ],
+      "tr": [
+        {
+          "name": "Rodinya",
+          "pref": true
+        },
+        {
+          "name": "Rodinia",
+          "alias": true
+        }
+      ],
+      "ro": [
+        {
+          "name": "Rodinia",
+          "pref": true
+        }
+      ],
+      "fi": [
+        {
+          "name": "Rodinia",
+          "pref": true
+        }
+      ],
+      "nn": [
+        {
+          "name": "Rodinia",
+          "pref": true
+        }
+      ],
+      "cs": [
+        {
+          "name": "Rodinie",
+          "pref": true
+        },
+        {
+          "name": "Rodinia",
+          "alias": true
+        }
+      ],
+      "da": [
+        {
+          "name": "Rodinia",
+          "pref": true
+        }
+      ],
+      "sr": [
+        {
+          "name": "Родина",
+          "pref": true
+        },
+        {
+          "name": "Родинија",
+          "alias": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "羅迪尼亞大陸",
+          "pref": true
+        },
+        {
+          "name": "羅迪尼亞",
+          "alias": true
+        },
+        {
+          "name": "羅丁尼亞",
+          "alias": true
+        },
+        {
+          "name": "罗迪尼亚超大陆",
+          "alias": true
+        }
+      ],
+      "nb": [
+        {
+          "name": "Rodinia",
+          "pref": true
+        },
+        {
+          "name": "Rhodinia",
+          "alias": true
+        },
+        {
+          "name": "Rodina",
+          "alias": true
+        }
+      ],
+      "mk": [
+        {
+          "name": "Родинија",
+          "pref": true
+        }
+      ],
+      "bg": [
+        {
+          "name": "Родиния",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q208078": {
+    "name": "Pannotia",
+    "sitelinks": 45,
+    "names": {
+      "zh-hans": [
+        {
+          "name": "潘诺西亚大陆",
+          "pref": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "潘諾西亞大陸",
+          "pref": true
+        }
+      ],
+      "zh-hk": [
+        {
+          "name": "潘諾西亞大陸",
+          "pref": true
+        }
+      ],
+      "zh-cn": [
+        {
+          "name": "潘诺西亚大陆",
+          "pref": true
+        }
+      ],
+      "zh-sg": [
+        {
+          "name": "潘诺西亚大陆",
+          "pref": true
+        }
+      ],
+      "zh-tw": [
+        {
+          "name": "潘諾西亞大陸",
+          "pref": true
+        }
+      ],
+      "pl": [
+        {
+          "name": "Pannocja",
+          "pref": true
+        }
+      ],
+      "ko": [
+        {
+          "name": "판노티아",
+          "pref": true
+        },
+        {
+          "name": "파노티아",
+          "alias": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "Pannotia",
+          "pref": true
+        },
+        {
+          "name": "Pannotie",
+          "alias": true
+        }
+      ],
+      "es": [
+        {
+          "name": "Pannotia",
+          "pref": true
+        }
+      ],
+      "hu": [
+        {
+          "name": "Pannotia",
+          "pref": true
+        }
+      ],
+      "it": [
+        {
+          "name": "Pannotia",
+          "pref": true
+        }
+      ],
+      "de": [
+        {
+          "name": "Pannotia",
+          "pref": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "パノティア大陸",
+          "pref": true
+        },
+        {
+          "name": "パノチア大陸",
+          "alias": true
+        }
+      ],
+      "nl": [
+        {
+          "name": "Pannotia",
+          "pref": true
+        },
+        {
+          "name": "Pannotie",
+          "alias": true
+        },
+        {
+          "name": "Pannotië",
+          "alias": true
+        }
+      ],
+      "sv": [
+        {
+          "name": "Pannotia",
+          "pref": true
+        }
+      ],
+      "pt": [
+        {
+          "name": "Panótia",
+          "pref": true
+        },
+        {
+          "name": "Pannotia",
+          "alias": true
+        }
+      ],
+      "sk": [
+        {
+          "name": "Pannotia",
+          "pref": true
+        },
+        {
+          "name": "Vendský superkontinent",
+          "alias": true
+        }
+      ],
+      "ru": [
+        {
+          "name": "Паннотия",
+          "pref": true
+        }
+      ],
+      "en": [
+        {
+          "name": "Pannotia",
+          "pref": true
+        },
+        {
+          "name": "Vendian supercontinent",
+          "alias": true
+        },
+        {
+          "name": "Greater Gondwana",
+          "alias": true
+        },
+        {
+          "name": "Pan-African supercontinent",
+          "alias": true
+        }
+      ],
+      "tr": [
+        {
+          "name": "Panotya",
+          "pref": true
+        }
+      ],
+      "fi": [
+        {
+          "name": "Pannotia",
+          "pref": true
+        }
+      ],
+      "nn": [
+        {
+          "name": "Pannotia",
+          "pref": true
+        }
+      ],
+      "cs": [
+        {
+          "name": "Pannotie",
+          "pref": true
+        },
+        {
+          "name": "Pannotia",
+          "alias": true
+        }
+      ],
+      "tl": [
+        {
+          "name": "Pannotia",
+          "pref": true
+        }
+      ],
+      "sr": [
+        {
+          "name": "Панотија",
+          "pref": true
+        },
+        {
+          "name": "Вендијан",
+          "alias": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "潘諾西亞大陸",
+          "pref": true
+        },
+        {
+          "name": "潘諾西亞",
+          "alias": true
+        }
+      ],
+      "da": [
+        {
+          "name": "Pannotia",
+          "pref": true
+        }
+      ],
+      "mk": [
+        {
+          "name": "Панотија",
+          "pref": true
+        }
+      ],
+      "he": [
+        {
+          "name": "פנוטיה",
+          "pref": true
+        }
+      ],
+      "bg": [
+        {
+          "name": "Панотия",
+          "pref": true
+        }
+      ],
+      "ro": [
+        {
+          "name": "Pannotia",
+          "pref": true
+        }
+      ],
+      "el": [
+        {
+          "name": "Παννότια",
+          "pref": true
+        },
+        {
+          "name": "Παν-Αφρικανική υπερήπειρος",
+          "alias": true
+        },
+        {
+          "name": "υπερήπειρος Γκοντβάνα",
+          "alias": true
+        },
+        {
+          "name": "Βένδια υπερήπειρος",
+          "alias": true
+        }
+      ]
+    }
+  },
+  "Q858071": {
+    "name": "Laurentia",
+    "sitelinks": 41,
+    "names": {
+      "zh-hans": [
+        {
+          "name": "劳伦大陆",
+          "pref": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "勞倫大陸",
+          "pref": true
+        }
+      ],
+      "zh-hk": [
+        {
+          "name": "勞倫大陸",
+          "pref": true
+        }
+      ],
+      "pt": [
+        {
+          "name": "Laurência",
+          "pref": true
+        },
+        {
+          "name": "Laurentia",
+          "alias": true
+        }
+      ],
+      "pl": [
+        {
+          "name": "Laurencja",
+          "pref": true
+        },
+        {
+          "name": "Laurentia",
+          "alias": true
+        },
+        {
+          "name": "Kraton północnoamerykański",
+          "alias": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "Laurentia",
+          "pref": true
+        },
+        {
+          "name": "Craton nord-américain",
+          "alias": true
+        }
+      ],
+      "ru": [
+        {
+          "name": "Лаврентия",
+          "pref": true
+        },
+        {
+          "name": "Северо-Американская платформа",
+          "alias": true
+        }
+      ],
+      "ko": [
+        {
+          "name": "로렌시아",
+          "pref": true
+        },
+        {
+          "name": "로렌시아 대륙",
+          "alias": true
+        }
+      ],
+      "es": [
+        {
+          "name": "Laurentia",
+          "pref": true
+        }
+      ],
+      "en": [
+        {
+          "name": "Laurentia",
+          "pref": true
+        },
+        {
+          "name": "North American Craton",
+          "alias": true
+        }
+      ],
+      "it": [
+        {
+          "name": "Laurentia",
+          "pref": true
+        },
+        {
+          "name": "Laurenzia",
+          "alias": true
+        }
+      ],
+      "et": [
+        {
+          "name": "Laurentia",
+          "pref": true
+        }
+      ],
+      "de": [
+        {
+          "name": "Laurentia",
+          "pref": true
+        }
+      ],
+      "nn": [
+        {
+          "name": "Laurentia",
+          "pref": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "ローレンシア大陸",
+          "pref": true
+        },
+        {
+          "name": "ローレンシア超大陸",
+          "alias": true
+        }
+      ],
+      "cs": [
+        {
+          "name": "Laurentie",
+          "pref": true
+        },
+        {
+          "name": "Severoamerický kratón",
+          "alias": true
+        },
+        {
+          "name": "Laurentia",
+          "alias": true
+        }
+      ],
+      "bg": [
+        {
+          "name": "Лаврентия",
+          "pref": true
+        }
+      ],
+      "nl": [
+        {
+          "name": "Laurentia",
+          "pref": true
+        },
+        {
+          "name": "Laurentie",
+          "alias": true
+        },
+        {
+          "name": "Laurentië",
+          "alias": true
+        }
+      ],
+      "he": [
+        {
+          "name": "לאורנטיה",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "勞倫大陸",
+          "pref": true
+        }
+      ],
+      "nb": [
+        {
+          "name": "Laurentia",
+          "pref": true
+        }
+      ],
+      "sv": [
+        {
+          "name": "Laurentia",
+          "pref": true
+        }
+      ],
+      "ro": [
+        {
+          "name": "Laurenția",
+          "pref": true
+        }
+      ],
+      "sk": [
+        {
+          "name": "Laurentia",
+          "pref": true
+        }
+      ],
+      "tr": [
+        {
+          "name": "Kuzey Amerika Kratonu",
+          "pref": true
+        }
+      ],
+      "mk": [
+        {
+          "name": "Лаврентија",
+          "pref": true
+        }
+      ],
+      "el": [
+        {
+          "name": "Λαυρεντία",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q926051": {
+    "name": "Siberia",
+    "sitelinks": 39,
+    "names": {
+      "zh-hans": [
+        {
+          "name": "西伯利亚大陆",
+          "pref": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "西伯利亞大陸",
+          "pref": true
+        }
+      ],
+      "zh-hk": [
+        {
+          "name": "西伯利亞大陸",
+          "pref": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "Sibéria",
+          "pref": true
+        }
+      ],
+      "ru": [
+        {
+          "name": "Сибирская платформа",
+          "pref": true
+        },
+        {
+          "name": "Сибирь",
+          "alias": true
+        },
+        {
+          "name": "Ангарида",
+          "alias": true
+        },
+        {
+          "name": "Восточно-Сибирская платформа",
+          "alias": true
+        }
+      ],
+      "es": [
+        {
+          "name": "Siberia",
+          "pref": true
+        }
+      ],
+      "en": [
+        {
+          "name": "Siberia",
+          "pref": true
+        },
+        {
+          "name": "Angarida",
+          "alias": true
+        },
+        {
+          "name": "Siberian craton",
+          "alias": true
+        },
+        {
+          "name": "Siberian platform",
+          "alias": true
+        }
+      ],
+      "it": [
+        {
+          "name": "Siberia",
+          "pref": true
+        }
+      ],
+      "de": [
+        {
+          "name": "Sibiria",
+          "pref": true
+        },
+        {
+          "name": "Angaraland",
+          "alias": true
+        }
+      ],
+      "nn": [
+        {
+          "name": "Siberia",
+          "pref": true
+        },
+        {
+          "name": "Kontinentet Sibir",
+          "alias": true
+        },
+        {
+          "name": "Angaraland",
+          "alias": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "シベリア大陸",
+          "pref": true
+        }
+      ],
+      "cs": [
+        {
+          "name": "Sibiř",
+          "pref": true
+        },
+        {
+          "name": "Sibiřská deska",
+          "alias": true
+        },
+        {
+          "name": "Sibiřská platforma",
+          "alias": true
+        }
+      ],
+      "bg": [
+        {
+          "name": "Сибирска платформа",
+          "pref": true
+        }
+      ],
+      "sv": [
+        {
+          "name": "Siberia",
+          "pref": true
+        },
+        {
+          "name": "Sibirien",
+          "alias": true
+        }
+      ],
+      "nl": [
+        {
+          "name": "Siberisch Kraton",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "西伯利亞大陸",
+          "pref": true
+        },
+        {
+          "name": "西伯利亞克拉通",
+          "alias": true
+        },
+        {
+          "name": "安加拉古陸",
+          "alias": true
+        }
+      ],
+      "nb": [
+        {
+          "name": "Angaraland",
+          "pref": true
+        },
+        {
+          "name": "Angara-kratonet",
+          "alias": true
+        },
+        {
+          "name": "Aldanskjoldet",
+          "alias": true
+        },
+        {
+          "name": "Sibirske kraton",
+          "alias": true
+        },
+        {
+          "name": "Jakutaiskjoldet",
+          "alias": true
+        },
+        {
+          "name": "Sibir-kratonet",
+          "alias": true
+        },
+        {
+          "name": "Angaraskjoldet",
+          "alias": true
+        },
+        {
+          "name": "Yakutai Shield",
+          "alias": true
+        },
+        {
+          "name": "Angara-skjoldet",
+          "alias": true
+        },
+        {
+          "name": "Anabarskjoldet",
+          "alias": true
+        }
+      ],
+      "ro": [
+        {
+          "name": "Placa Siberiană",
+          "pref": true
+        }
+      ],
+      "ko": [
+        {
+          "name": "시베리아 대륙",
+          "pref": true
+        }
+      ],
+      "pl": [
+        {
+          "name": "Platforma syberyjska",
+          "pref": true
+        }
+      ],
+      "tr": [
+        {
+          "name": "Sibirya (kıta)",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q805735": {
+    "name": "Baltica",
+    "sitelinks": 38,
+    "names": {
+      "ru": [
+        {
+          "name": "Фенносарматия",
+          "pref": true
+        },
+        {
+          "name": "Балтика",
+          "alias": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "Baltica",
+          "pref": true
+        }
+      ],
+      "en": [
+        {
+          "name": "Baltica",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "波羅地大陸",
+          "pref": true
+        }
+      ],
+      "pt": [
+        {
+          "name": "Báltica",
+          "pref": true
+        }
+      ],
+      "nn": [
+        {
+          "name": "Baltica",
+          "pref": true
+        }
+      ],
+      "de": [
+        {
+          "name": "Baltica",
+          "pref": true
+        },
+        {
+          "name": "Fennosarmatia",
+          "alias": true
+        },
+        {
+          "name": "Ureuropa",
+          "alias": true
+        },
+        {
+          "name": "Fennosarmatien",
+          "alias": true
+        },
+        {
+          "name": "Fennosarmat",
+          "alias": true
+        },
+        {
+          "name": "Fennosarmatisch",
+          "alias": true
+        }
+      ],
+      "ko": [
+        {
+          "name": "발티카",
+          "pref": true
+        },
+        {
+          "name": "발티카 대륙",
+          "alias": true
+        }
+      ],
+      "sv": [
+        {
+          "name": "Baltika",
+          "pref": true
+        }
+      ],
+      "it": [
+        {
+          "name": "Baltica",
+          "pref": true
+        }
+      ],
+      "pl": [
+        {
+          "name": "Bałtyka",
+          "pref": true
+        },
+        {
+          "name": "Baltika",
+          "alias": true
+        }
+      ],
+      "cs": [
+        {
+          "name": "Baltika",
+          "pref": true
+        },
+        {
+          "name": "Baltica",
+          "alias": true
+        }
+      ],
+      "nl": [
+        {
+          "name": "Baltica",
+          "pref": true
+        },
+        {
+          "name": "Balthica",
+          "alias": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "バルティカ大陸",
+          "pref": true
+        },
+        {
+          "name": "バルチック大陸",
+          "alias": true
+        }
+      ],
+      "es": [
+        {
+          "name": "Báltica",
+          "pref": true
+        },
+        {
+          "name": "Baltica",
+          "alias": true
+        }
+      ],
+      "nb": [
+        {
+          "name": "Baltica",
+          "pref": true
+        },
+        {
+          "name": "Det fennoskandiske skjold",
+          "alias": true
+        },
+        {
+          "name": "Baltika",
+          "alias": true
+        },
+        {
+          "name": "Baltikske skjold",
+          "alias": true
+        },
+        {
+          "name": "Fennoskandiske skjold",
+          "alias": true
+        }
+      ],
+      "et": [
+        {
+          "name": "Baltika (manner)",
+          "pref": true
+        }
+      ],
+      "fi": [
+        {
+          "name": "Baltica",
+          "pref": true
+        }
+      ],
+      "hu": [
+        {
+          "name": "Baltika",
+          "pref": true
+        }
+      ],
+      "da": [
+        {
+          "name": "Baltika",
+          "pref": true
+        }
+      ],
+      "lv": [
+        {
+          "name": "Baltika",
+          "pref": true
+        }
+      ],
+      "ro": [
+        {
+          "name": "Baltica",
+          "pref": true
+        }
+      ],
+      "he": [
+        {
+          "name": "בלטיקה",
+          "pref": true
+        }
+      ],
+      "sk": [
+        {
+          "name": "Baltika",
+          "pref": true
+        }
+      ],
+      "tr": [
+        {
+          "name": "Baltika",
+          "pref": true
+        }
+      ],
+      "mk": [
+        {
+          "name": "Балтика",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q1342109": {
+    "name": "Vaalbara",
+    "sitelinks": 35,
+    "names": {
+      "pt": [
+        {
+          "name": "Vaalbara",
+          "pref": true
+        }
+      ],
+      "pl": [
+        {
+          "name": "Walbara",
+          "pref": true
+        }
+      ],
+      "ru": [
+        {
+          "name": "Ваальбара",
+          "pref": true
+        },
+        {
+          "name": "Ваалбара",
+          "alias": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "Vaalbara",
+          "pref": true
+        }
+      ],
+      "en": [
+        {
+          "name": "Vaalbara",
+          "pref": true
+        }
+      ],
+      "es": [
+        {
+          "name": "Vaalbará",
+          "pref": true
+        },
+        {
+          "name": "Vaalbara",
+          "alias": true
+        }
+      ],
+      "tr": [
+        {
+          "name": "Vaalbara",
+          "pref": true
+        }
+      ],
+      "it": [
+        {
+          "name": "Vaalbara",
+          "pref": true
+        }
+      ],
+      "de": [
+        {
+          "name": "Vaalbara",
+          "pref": true
+        }
+      ],
+      "nn": [
+        {
+          "name": "Vaalbara",
+          "pref": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "バールバラ大陸",
+          "pref": true
+        }
+      ],
+      "nl": [
+        {
+          "name": "Vaalbara",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "瓦巴拉大陸",
+          "pref": true
+        }
+      ],
+      "sv": [
+        {
+          "name": "Vaalbara",
+          "pref": true
+        }
+      ],
+      "cs": [
+        {
+          "name": "Vaalbara",
+          "pref": true
+        }
+      ],
+      "he": [
+        {
+          "name": "ולברה",
+          "pref": true
+        }
+      ],
+      "el": [
+        {
+          "name": "Βααλβάρη",
+          "pref": true
+        }
+      ],
+      "ro": [
+        {
+          "name": "Vaalbara",
+          "pref": true
+        }
+      ],
+      "fi": [
+        {
+          "name": "Vaalbara",
+          "pref": true
+        }
+      ],
+      "hu": [
+        {
+          "name": "Vaalbara",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q510087": {
+    "name": "Avalonia",
+    "sitelinks": 31,
+    "names": {
+      "pt": [
+        {
+          "name": "Avalónia",
+          "pref": true
+        }
+      ],
+      "zh-hans": [
+        {
+          "name": "阿瓦隆尼亚大陆",
+          "pref": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "阿瓦隆尼亞大陸",
+          "pref": true
+        }
+      ],
+      "zh-hk": [
+        {
+          "name": "阿瓦隆尼亞大陸",
+          "pref": true
+        }
+      ],
+      "pl": [
+        {
+          "name": "Awalonia",
+          "pref": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "Avalonia",
+          "pref": true
+        },
+        {
+          "name": "Avalonie",
+          "alias": true
+        }
+      ],
+      "es": [
+        {
+          "name": "Avalonia",
+          "pref": true
+        }
+      ],
+      "en": [
+        {
+          "name": "Avalonia",
+          "pref": true
+        }
+      ],
+      "it": [
+        {
+          "name": "Avalonia",
+          "pref": true
+        }
+      ],
+      "de": [
+        {
+          "name": "Avalonia",
+          "pref": true
+        }
+      ],
+      "nn": [
+        {
+          "name": "Avalonia",
+          "pref": true
+        }
+      ],
+      "cs": [
+        {
+          "name": "Avalonie",
+          "pref": true
+        }
+      ],
+      "sv": [
+        {
+          "name": "Avalonia",
+          "pref": true
+        }
+      ],
+      "nl": [
+        {
+          "name": "Avalonia",
+          "pref": true
+        },
+        {
+          "name": "Avalonië",
+          "alias": true
+        },
+        {
+          "name": "Avalonie",
+          "alias": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "阿瓦隆尼亞大陸",
+          "pref": true
+        }
+      ],
+      "nb": [
+        {
+          "name": "Avalonia",
+          "pref": true
+        }
+      ],
+      "ru": [
+        {
+          "name": "Авалония",
+          "pref": true
+        }
+      ],
+      "da": [
+        {
+          "name": "Avalonia",
+          "pref": true
+        }
+      ],
+      "ro": [
+        {
+          "name": "Avalonia",
+          "pref": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "アバロニア大陸",
+          "pref": true
+        },
+        {
+          "name": "アヴァロニア",
+          "alias": true
+        },
+        {
+          "name": "アヴァロニア大陸",
+          "alias": true
+        }
+      ],
+      "tr": [
+        {
+          "name": "Avalonya",
+          "pref": true
+        }
+      ],
+      "mk": [
+        {
+          "name": "Авалонија",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q56276943": {
+    "name": "Sahul",
+    "sitelinks": 31,
+    "names": {
+      "en": [
+        {
+          "name": "Sahul",
+          "pref": true
+        },
+        {
+          "name": "Sahul-land",
+          "alias": true
+        },
+        {
+          "name": "Maganesia",
+          "alias": true
+        },
+        {
+          "name": "Papualand",
+          "alias": true
+        },
+        {
+          "name": "Greater Australia",
+          "alias": true
+        },
+        {
+          "name": "Australia and New Guinea together",
+          "alias": true
+        },
+        {
+          "name": "Australia connected to New Guinea",
+          "alias": true
+        }
+      ],
+      "cs": [
+        {
+          "name": "Sahul",
+          "pref": true
+        }
+      ],
+      "fi": [
+        {
+          "name": "Meganesia",
+          "pref": true
+        }
+      ],
+      "nl": [
+        {
+          "name": "Sahoel",
+          "pref": true
+        }
+      ],
+      "ru": [
+        {
+          "name": "Сахул",
+          "pref": true
+        }
+      ],
+      "bg": [
+        {
+          "name": "Сахул",
+          "pref": true
+        }
+      ],
+      "de": [
+        {
+          "name": "Sahul",
+          "pref": true
+        }
+      ],
+      "es": [
+        {
+          "name": "Sahul",
+          "pref": true
+        },
+        {
+          "name": "continente australiano",
+          "alias": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "Sahul",
+          "pref": true
+        }
+      ],
+      "hu": [
+        {
+          "name": "Szahul",
+          "pref": true
+        }
+      ],
+      "pl": [
+        {
+          "name": "Sahul",
+          "pref": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "サフル",
+          "pref": true
+        },
+        {
+          "name": "サフル大陸",
+          "alias": true
+        },
+        {
+          "name": "サフルランド",
+          "alias": true
+        }
+      ],
+      "mk": [
+        {
+          "name": "Сахул",
+          "pref": true
+        }
+      ],
+      "he": [
+        {
+          "name": "סאהול",
+          "pref": true
+        }
+      ],
+      "el": [
+        {
+          "name": "Σαχούλ",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q863356": {
+    "name": "Euramerica",
+    "sitelinks": 30,
+    "names": {
+      "zh-hans": [
+        {
+          "name": "欧美大陆",
+          "pref": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "歐美大陸",
+          "pref": true
+        }
+      ],
+      "zh-hk": [
+        {
+          "name": "歐美大陸",
+          "pref": true
+        }
+      ],
+      "pt": [
+        {
+          "name": "Euramérica",
+          "pref": true
+        },
+        {
+          "name": "Laurussia",
+          "alias": true
+        }
+      ],
+      "sk": [
+        {
+          "name": "Euramerika",
+          "pref": true
+        },
+        {
+          "name": "Laurusia",
+          "alias": true
+        },
+        {
+          "name": "Laurussia",
+          "alias": true
+        },
+        {
+          "name": "Starý červený kontinent",
+          "alias": true
+        }
+      ],
+      "pl": [
+        {
+          "name": "Laurosja",
+          "pref": true
+        },
+        {
+          "name": "Laurussia",
+          "alias": true
+        },
+        {
+          "name": "Laureuropa",
+          "alias": true
+        },
+        {
+          "name": "Euroameryka",
+          "alias": true
+        },
+        {
+          "name": "Eurameryka",
+          "alias": true
+        }
+      ],
+      "ru": [
+        {
+          "name": "Лавруссия",
+          "pref": true
+        },
+        {
+          "name": "Еврамерика",
+          "alias": true
+        },
+        {
+          "name": "Евроамерика",
+          "alias": true
+        },
+        {
+          "name": "Еврамерика-Лавразия",
+          "alias": true
+        },
+        {
+          "name": "Каледония",
+          "alias": true
+        },
+        {
+          "name": "Древний красный материк",
+          "alias": true
+        },
+        {
+          "name": "материк Древнего красного песчаника",
+          "alias": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "Laurussia",
+          "pref": true
+        },
+        {
+          "name": "Euramerica",
+          "alias": true
+        },
+        {
+          "name": "Euramérique",
+          "alias": true
+        },
+        {
+          "name": "Euramerique",
+          "alias": true
+        }
+      ],
+      "ko": [
+        {
+          "name": "유라메리카",
+          "pref": true
+        }
+      ],
+      "es": [
+        {
+          "name": "Euramérica",
+          "pref": true
+        },
+        {
+          "name": "Laurussia",
+          "alias": true
+        },
+        {
+          "name": "Laurusia",
+          "alias": true
+        },
+        {
+          "name": "Continente de las Viejas Areniscas Rojas",
+          "alias": true
+        },
+        {
+          "name": "Euramerica",
+          "alias": true
+        },
+        {
+          "name": "Euroamerica",
+          "alias": true
+        },
+        {
+          "name": "Euroamérica",
+          "alias": true
+        },
+        {
+          "name": "Laurrusia",
+          "alias": true
+        }
+      ],
+      "en": [
+        {
+          "name": "Euramerica",
+          "pref": true
+        },
+        {
+          "name": "Laurussia",
+          "alias": true
+        },
+        {
+          "name": "Old Red Continent",
+          "alias": true
+        },
+        {
+          "name": "Old Red Sandstone Continent",
+          "alias": true
+        }
+      ],
+      "fi": [
+        {
+          "name": "Euramerikka",
+          "pref": true
+        },
+        {
+          "name": "Laurussia",
+          "alias": true
+        }
+      ],
+      "it": [
+        {
+          "name": "Euramerica",
+          "pref": true
+        },
+        {
+          "name": "Laurussia",
+          "alias": true
+        }
+      ],
+      "de": [
+        {
+          "name": "Laurussia",
+          "pref": true
+        },
+        {
+          "name": "Old-Red-Kontinent",
+          "alias": true
+        },
+        {
+          "name": "Euramerika",
+          "alias": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "ユーラメリカ大陸",
+          "pref": true
+        },
+        {
+          "name": "ユーラメリカ",
+          "alias": true
+        },
+        {
+          "name": "ラウルシア大陸",
+          "alias": true
+        }
+      ],
+      "nn": [
+        {
+          "name": "Euramerika",
+          "pref": true
+        },
+        {
+          "name": "Laurussia",
+          "alias": true
+        },
+        {
+          "name": "Det gamle raude kontinentet",
+          "alias": true
+        }
+      ],
+      "cs": [
+        {
+          "name": "Euramerika",
+          "pref": true
+        },
+        {
+          "name": "Laurusie",
+          "alias": true
+        },
+        {
+          "name": "Laurussia",
+          "alias": true
+        },
+        {
+          "name": "Starý červený kontinent",
+          "alias": true
+        },
+        {
+          "name": "Laurussie",
+          "alias": true
+        }
+      ],
+      "bg": [
+        {
+          "name": "Евроамерика",
+          "pref": true
+        }
+      ],
+      "nl": [
+        {
+          "name": "Euramerika",
+          "pref": true
+        },
+        {
+          "name": "Laurussia",
+          "alias": true
+        },
+        {
+          "name": "Old Red Sandstonecontinent",
+          "alias": true
+        },
+        {
+          "name": "Old Red Sandstone Continent",
+          "alias": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "歐美大陸",
+          "pref": true
+        },
+        {
+          "name": "勞倫西亞大陸",
+          "alias": true
+        },
+        {
+          "name": "老紅砂岩大陸",
+          "alias": true
+        }
+      ],
+      "ro": [
+        {
+          "name": "Euramerica",
+          "pref": true
+        }
+      ],
+      "el": [
+        {
+          "name": "Ευρωαμερική",
+          "pref": true
+        }
+      ],
+      "pt-br": [
+        {
+          "name": "Euramérica",
+          "pref": true
+        }
+      ],
+      "he": [
+        {
+          "name": "אירואמריקה",
+          "pref": true
+        },
+        {
+          "name": "אירו-אמריקה",
+          "alias": true
+        }
+      ]
+    }
+  },
+  "Q870505": {
+    "name": "Columbia",
+    "sitelinks": 30,
+    "names": {
+      "zh-hans": [
+        {
+          "name": "哥伦比亚大陆",
+          "pref": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "哥倫比亞大陸",
+          "pref": true
+        }
+      ],
+      "zh-hk": [
+        {
+          "name": "哥倫比亞大陸",
+          "pref": true
+        }
+      ],
+      "pt": [
+        {
+          "name": "Columbia",
+          "pref": true
+        }
+      ],
+      "ru": [
+        {
+          "name": "Нуна",
+          "pref": true
+        },
+        {
+          "name": "Колумбия",
+          "alias": true
+        },
+        {
+          "name": "Хадсонленд",
+          "alias": true
+        },
+        {
+          "name": "Колумбия (суперконтинент)",
+          "alias": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "Columbia",
+          "pref": true
+        },
+        {
+          "name": "Nuna",
+          "alias": true
+        },
+        {
+          "name": "Hudsonie",
+          "alias": true
+        },
+        {
+          "name": "Hudsonland",
+          "alias": true
+        }
+      ],
+      "ko": [
+        {
+          "name": "컬럼비아",
+          "pref": true
+        },
+        {
+          "name": "초대륙 콜롬비아",
+          "alias": true
+        },
+        {
+          "name": "콜롬비아",
+          "alias": true
+        }
+      ],
+      "en": [
+        {
+          "name": "Columbia",
+          "pref": true
+        },
+        {
+          "name": "Columbia (supercontinent)",
+          "alias": true
+        },
+        {
+          "name": "Nuna",
+          "alias": true
+        },
+        {
+          "name": "Hudsonland",
+          "alias": true
+        }
+      ],
+      "es": [
+        {
+          "name": "Columbia",
+          "pref": true
+        }
+      ],
+      "tr": [
+        {
+          "name": "Kolombiya",
+          "pref": true
+        }
+      ],
+      "it": [
+        {
+          "name": "Columbia",
+          "pref": true
+        },
+        {
+          "name": "Nuna",
+          "alias": true
+        },
+        {
+          "name": "Hudsonia",
+          "alias": true
+        },
+        {
+          "name": "Hudsonland",
+          "alias": true
+        }
+      ],
+      "de": [
+        {
+          "name": "Columbia",
+          "pref": true
+        }
+      ],
+      "nn": [
+        {
+          "name": "Columbia",
+          "pref": true
+        },
+        {
+          "name": "superkontinentet Columbia",
+          "alias": true
+        },
+        {
+          "name": "Columbia-kontinentet",
+          "alias": true
+        },
+        {
+          "name": "Nuna",
+          "alias": true
+        },
+        {
+          "name": "superkontinentet Nuna",
+          "alias": true
+        },
+        {
+          "name": "Nuna-kontinentet",
+          "alias": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "コロンビア大陸",
+          "pref": true
+        },
+        {
+          "name": "コロンビア超大陸",
+          "alias": true
+        },
+        {
+          "name": "ハドソンランド",
+          "alias": true
+        }
+      ],
+      "nl": [
+        {
+          "name": "Columbia",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "哥倫比亞大陸",
+          "pref": true
+        }
+      ],
+      "hu": [
+        {
+          "name": "Columbia",
+          "pref": true
+        }
+      ],
+      "pl": [
+        {
+          "name": "Kolumbia",
+          "pref": true
+        }
+      ],
+      "sv": [
+        {
+          "name": "Columbia",
+          "pref": true
+        }
+      ],
+      "nb": [
+        {
+          "name": "Columbia",
+          "pref": true
+        }
+      ],
+      "he": [
+        {
+          "name": "קולומביה (יבשת-על)",
+          "pref": true
+        }
+      ],
+      "fi": [
+        {
+          "name": "Columbia",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q634216": {
+    "name": "Kenorland",
+    "sitelinks": 29,
+    "names": {
+      "nl": [
+        {
+          "name": "Kenorland",
+          "pref": true
+        }
+      ],
+      "de": [
+        {
+          "name": "Kenorland",
+          "pref": true
+        }
+      ],
+      "en": [
+        {
+          "name": "Kenorland",
+          "pref": true
+        }
+      ],
+      "es": [
+        {
+          "name": "Kenorland",
+          "pref": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "Kenorland",
+          "pref": true
+        }
+      ],
+      "it": [
+        {
+          "name": "Kenorlandia",
+          "pref": true
+        }
+      ],
+      "nn": [
+        {
+          "name": "Kenorland",
+          "pref": true
+        }
+      ],
+      "pl": [
+        {
+          "name": "Kenorland",
+          "pref": true
+        }
+      ],
+      "pt": [
+        {
+          "name": "Kenorland",
+          "pref": true
+        }
+      ],
+      "ru": [
+        {
+          "name": "Кенорленд",
+          "pref": true
+        }
+      ],
+      "tr": [
+        {
+          "name": "Kenorland",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "凱諾蘭大陸",
+          "pref": true
+        }
+      ],
+      "sv": [
+        {
+          "name": "Kenorland",
+          "pref": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "ケノーランド大陸",
+          "pref": true
+        }
+      ],
+      "he": [
+        {
+          "name": "קנורלנד",
+          "pref": true
+        }
+      ],
+      "ro": [
+        {
+          "name": "Kenorland",
+          "pref": true
+        }
+      ],
+      "fi": [
+        {
+          "name": "Kenorland",
+          "pref": true
+        }
+      ],
+      "tl": [
+        {
+          "name": "Kenorland",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q747022": {
+    "name": "Ur",
+    "sitelinks": 29,
+    "names": {
+      "de": [
+        {
+          "name": "Ur",
+          "pref": true
+        }
+      ],
+      "cs": [
+        {
+          "name": "Ur",
+          "pref": true
+        }
+      ],
+      "en": [
+        {
+          "name": "Ur",
+          "pref": true
+        }
+      ],
+      "es": [
+        {
+          "name": "Ur",
+          "pref": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "Ur",
+          "pref": true
+        }
+      ],
+      "it": [
+        {
+          "name": "Ur",
+          "pref": true
+        }
+      ],
+      "ko": [
+        {
+          "name": "우르",
+          "pref": true
+        }
+      ],
+      "nn": [
+        {
+          "name": "Kontinentet Ur",
+          "pref": true
+        }
+      ],
+      "pt": [
+        {
+          "name": "Ur",
+          "pref": true
+        }
+      ],
+      "ru": [
+        {
+          "name": "Ур",
+          "pref": true
+        }
+      ],
+      "sk": [
+        {
+          "name": "Ur",
+          "pref": true
+        }
+      ],
+      "tr": [
+        {
+          "name": "Ur",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "烏爾大陸",
+          "pref": true
+        }
+      ],
+      "sv": [
+        {
+          "name": "Ur",
+          "pref": true
+        }
+      ],
+      "nl": [
+        {
+          "name": "Ur",
+          "pref": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "ウル大陸",
+          "pref": true
+        }
+      ],
+      "fi": [
+        {
+          "name": "Ur",
+          "pref": true
+        }
+      ],
+      "pl": [
+        {
+          "name": "Ur",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q775183": {
+    "name": "Laramidia",
+    "sitelinks": 27,
+    "names": {
+      "en": [
+        {
+          "name": "Laramidia",
+          "pref": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "Laramidia",
+          "pref": true
+        }
+      ],
+      "pl": [
+        {
+          "name": "Laramidia",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "拉臘米迪亞",
+          "pref": true
+        }
+      ],
+      "nl": [
+        {
+          "name": "Laramidia",
+          "pref": true
+        }
+      ],
+      "ru": [
+        {
+          "name": "Ларамидия",
+          "pref": true
+        }
+      ],
+      "es": [
+        {
+          "name": "Laramidia",
+          "pref": true
+        }
+      ],
+      "it": [
+        {
+          "name": "Laramidia",
+          "pref": true
+        }
+      ],
+      "he": [
+        {
+          "name": "לרמידיה",
+          "pref": true
+        }
+      ],
+      "de": [
+        {
+          "name": "Laramidia",
+          "pref": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "ララミディア大陸",
+          "pref": true
+        }
+      ],
+      "cs": [
+        {
+          "name": "Laramidie",
+          "pref": true
+        }
+      ],
+      "pt": [
+        {
+          "name": "Laramidia",
+          "pref": true
+        },
+        {
+          "name": "Laramídia",
+          "alias": true
+        }
+      ],
+      "tr": [
+        {
+          "name": "Laramidya",
+          "pref": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "拉臘米迪亞",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q262025": {
+    "name": "Cimmeria",
+    "sitelinks": 22,
+    "names": {
+      "hu": [
+        {
+          "name": "Kimméria",
+          "pref": true
+        }
+      ],
+      "de": [
+        {
+          "name": "Cimmeria",
+          "pref": true
+        }
+      ],
+      "en": [
+        {
+          "name": "Cimmeria",
+          "pref": true
+        }
+      ],
+      "es": [
+        {
+          "name": "Cimmeria",
+          "pref": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "Plaque cimmérienne",
+          "pref": true
+        }
+      ],
+      "it": [
+        {
+          "name": "Cimmeria",
+          "pref": true
+        }
+      ],
+      "nl": [
+        {
+          "name": "Cimmeria",
+          "pref": true
+        }
+      ],
+      "nn": [
+        {
+          "name": "Kimmeria",
+          "pref": true
+        }
+      ],
+      "pl": [
+        {
+          "name": "Kimmeria",
+          "pref": true
+        }
+      ],
+      "pt": [
+        {
+          "name": "Placa cimeriana",
+          "pref": true
+        }
+      ],
+      "ru": [
+        {
+          "name": "Киммерийская плита",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "辛梅利亞大陸",
+          "pref": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "基梅里板塊",
+          "pref": true
+        }
+      ],
+      "zh-cn": [
+        {
+          "name": "基梅里板块",
+          "pref": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "キンメリアプレート",
+          "pref": true
+        },
+        {
+          "name": "キンメリア大陸",
+          "alias": true
+        }
+      ],
+      "tr": [
+        {
+          "name": "Kimmeriya",
+          "pref": true
+        }
+      ],
+      "mk": [
+        {
+          "name": "Кимерија",
+          "pref": true
+        }
+      ],
+      "ko": [
+        {
+          "name": "시미어이어",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q554196": {
+    "name": "Nena",
+    "sitelinks": 21,
+    "names": {
+      "zh-hans": [
+        {
+          "name": "妮娜大陆",
+          "pref": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "妮娜大陸",
+          "pref": true
+        }
+      ],
+      "zh-hk": [
+        {
+          "name": "妮娜大陸",
+          "pref": true
+        }
+      ],
+      "pt": [
+        {
+          "name": "Nena",
+          "pref": true
+        }
+      ],
+      "en": [
+        {
+          "name": "Nena",
+          "pref": true
+        },
+        {
+          "name": "Neuna",
+          "alias": true
+        },
+        {
+          "name": "Nena (supercontinent)",
+          "alias": true
+        }
+      ],
+      "es": [
+        {
+          "name": "Nena",
+          "pref": true
+        }
+      ],
+      "tr": [
+        {
+          "name": "Nena",
+          "pref": true
+        }
+      ],
+      "it": [
+        {
+          "name": "Nena",
+          "pref": true
+        }
+      ],
+      "de": [
+        {
+          "name": "Nena",
+          "pref": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "ヌーナ大陸",
+          "pref": true
+        },
+        {
+          "name": "ヌーナ",
+          "alias": true
+        },
+        {
+          "name": "ヌーナ超大陸",
+          "alias": true
+        },
+        {
+          "name": "ネーナ大陸",
+          "alias": true
+        }
+      ],
+      "nn": [
+        {
+          "name": "Superkontinentet Nena",
+          "pref": true
+        }
+      ],
+      "nl": [
+        {
+          "name": "Nena",
+          "pref": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "Nena",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "妮娜大陸",
+          "pref": true
+        }
+      ],
+      "sv": [
+        {
+          "name": "Nena",
+          "pref": true
+        }
+      ],
+      "ru": [
+        {
+          "name": "Нена",
+          "pref": true
+        }
+      ],
+      "cs": [
+        {
+          "name": "Nena",
+          "pref": true
+        }
+      ],
+      "pl": [
+        {
+          "name": "Nena (superkontynent)",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q756479": {
+    "name": "Atlantica",
+    "sitelinks": 21,
+    "names": {
+      "ru": [
+        {
+          "name": "Атлантика (континент)",
+          "pref": true
+        }
+      ],
+      "en": [
+        {
+          "name": "Atlantica",
+          "pref": true
+        }
+      ],
+      "nn": [
+        {
+          "name": "Atlantika",
+          "pref": true
+        }
+      ],
+      "pt": [
+        {
+          "name": "Atlântica",
+          "pref": true
+        }
+      ],
+      "de": [
+        {
+          "name": "Atlantica",
+          "pref": true
+        }
+      ],
+      "it": [
+        {
+          "name": "Atlantica",
+          "pref": true
+        },
+        {
+          "name": "Atlantica (continente)",
+          "alias": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "アトランティカ大陸",
+          "pref": true
+        }
+      ],
+      "es": [
+        {
+          "name": "Atlántica",
+          "pref": true
+        },
+        {
+          "name": "Atlántica (supercontinente)",
+          "alias": true
+        },
+        {
+          "name": "Atlantica",
+          "alias": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "Atlantica",
+          "pref": true
+        }
+      ],
+      "nl": [
+        {
+          "name": "Atlantica",
+          "pref": true
+        }
+      ],
+      "sv": [
+        {
+          "name": "Atlantika",
+          "pref": true
+        }
+      ],
+      "ko": [
+        {
+          "name": "아틀란티카",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "大西洋大陆",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q638206": {
+    "name": "Arctica",
+    "sitelinks": 20,
+    "names": {
+      "zh": [
+        {
+          "name": "北極大陸",
+          "pref": true
+        }
+      ],
+      "nn": [
+        {
+          "name": "Arktika",
+          "pref": true
+        },
+        {
+          "name": "Arctica",
+          "alias": true
+        }
+      ],
+      "nl": [
+        {
+          "name": "Arctica",
+          "pref": true
+        }
+      ],
+      "de": [
+        {
+          "name": "Arctica",
+          "pref": true
+        }
+      ],
+      "it": [
+        {
+          "name": "Arctica",
+          "pref": true
+        }
+      ],
+      "en": [
+        {
+          "name": "Arctica",
+          "pref": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "Arctica",
+          "pref": true
+        }
+      ],
+      "sv": [
+        {
+          "name": "Arktika",
+          "pref": true
+        },
+        {
+          "name": "Arctica",
+          "alias": true
+        }
+      ],
+      "ru": [
+        {
+          "name": "Арктида",
+          "pref": true
+        },
+        {
+          "name": "Арктика",
+          "alias": true
+        }
+      ],
+      "pt": [
+        {
+          "name": "Ártica",
+          "pref": true
+        }
+      ],
+      "es": [
+        {
+          "name": "Arctica",
+          "pref": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "アークティカ大陸",
+          "pref": true
+        },
+        {
+          "name": "Arctica大陸",
+          "alias": true
+        },
+        {
+          "name": "北極大陸",
+          "alias": true
+        }
+      ],
+      "ko": [
+        {
+          "name": "북극대륙",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q2858595": {
+    "name": "Appalachia",
+    "sitelinks": 15,
+    "names": {
+      "fr": [
+        {
+          "name": "Appalachia",
+          "pref": true
+        }
+      ],
+      "en": [
+        {
+          "name": "Appalachia",
+          "pref": true
+        }
+      ],
+      "sv": [
+        {
+          "name": "Appalacherna (Mesozoikum)",
+          "pref": true
+        }
+      ],
+      "pl": [
+        {
+          "name": "Appalachia",
+          "pref": true
+        }
+      ],
+      "nl": [
+        {
+          "name": "Appalachia",
+          "pref": true
+        }
+      ],
+      "es": [
+        {
+          "name": "Appalachia",
+          "pref": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "アパラチア大陸",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "阿帕拉契亞",
+          "pref": true
+        },
+        {
+          "name": "阿帕拉契亞古陸",
+          "alias": true
+        },
+        {
+          "name": "阿帕拉契亞古陆",
+          "alias": true
+        },
+        {
+          "name": "阿巴拉契亚",
+          "alias": true
+        },
+        {
+          "name": "阿巴拉契亚古陆",
+          "alias": true
+        },
+        {
+          "name": "阿帕拉契古陸",
+          "alias": true
+        }
+      ],
+      "cs": [
+        {
+          "name": "Appalačie",
+          "pref": true
+        }
+      ],
+      "ru": [
+        {
+          "name": "Аппалачия",
+          "pref": true
+        }
+      ],
+      "pt": [
+        {
+          "name": "Appalachia (continente)",
+          "pref": true
+        }
+      ],
+      "it": [
+        {
+          "name": "Appalachia",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q1050273": {
+    "name": "South China",
+    "sitelinks": 14,
+    "names": {
+      "zh-hans": [
+        {
+          "name": "扬子克拉通",
+          "pref": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "揚子克拉通",
+          "pref": true
+        }
+      ],
+      "zh-hk": [
+        {
+          "name": "揚子克拉通",
+          "pref": true
+        }
+      ],
+      "cs": [
+        {
+          "name": "Jižní Čína",
+          "pref": true
+        },
+        {
+          "name": "Jihočínský masív",
+          "alias": true
+        }
+      ],
+      "ru": [
+        {
+          "name": "Южно-Китайская платформа",
+          "pref": true
+        }
+      ],
+      "es": [
+        {
+          "name": "China del Sur",
+          "pref": true
+        },
+        {
+          "name": "Sur de China",
+          "alias": true
+        }
+      ],
+      "en": [
+        {
+          "name": "South China",
+          "pref": true
+        },
+        {
+          "name": "South China Block",
+          "alias": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "扬子克拉通",
+          "pref": true
+        },
+        {
+          "name": "扬子板塊",
+          "alias": true
+        },
+        {
+          "name": "長江板塊",
+          "alias": true
+        },
+        {
+          "name": "扬子板块",
+          "alias": true
+        }
+      ],
+      "de": [
+        {
+          "name": "Südchinakraton",
+          "pref": true
+        },
+        {
+          "name": "Yangtze-Kraton",
+          "alias": true
+        }
+      ],
+      "it": [
+        {
+          "name": "cratone della Cina del Sud",
+          "pref": true
+        }
+      ],
+      "ko": [
+        {
+          "name": "남중국 강괴",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q5345037": {
+    "name": "Mauritia",
+    "sitelinks": 14,
+    "names": {
+      "hu": [
+        {
+          "name": "Mauritia",
+          "pref": true
+        }
+      ],
+      "en": [
+        {
+          "name": "Mauritia",
+          "pref": true
+        }
+      ],
+      "es": [
+        {
+          "name": "Mauritia",
+          "pref": true
+        }
+      ],
+      "ko": [
+        {
+          "name": "모리티아",
+          "pref": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "Mauritia",
+          "pref": true
+        }
+      ],
+      "de": [
+        {
+          "name": "Mauritia",
+          "pref": true
+        }
+      ],
+      "pl": [
+        {
+          "name": "Mauritia",
+          "pref": true
+        }
+      ],
+      "it": [
+        {
+          "name": "Mauritia",
+          "pref": true
+        }
+      ],
+      "pt": [
+        {
+          "name": "Mauritia",
+          "pref": true
+        }
+      ],
+      "ru": [
+        {
+          "name": "Мавриция",
+          "pref": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "モーリシア",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q2567614": {
+    "name": "Asiamerica",
+    "sitelinks": 12,
+    "names": {
+      "nn": [
+        {
+          "name": "Asiamerika",
+          "pref": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "Asiamérique",
+          "pref": true
+        }
+      ],
+      "en": [
+        {
+          "name": "Asiamerica",
+          "pref": true
+        }
+      ],
+      "it": [
+        {
+          "name": "Asiamerica",
+          "pref": true
+        }
+      ],
+      "nl": [
+        {
+          "name": "Asiamerica",
+          "pref": true
+        }
+      ],
+      "nb": [
+        {
+          "name": "Asiamerika",
+          "pref": true
+        }
+      ],
+      "pt": [
+        {
+          "name": "Asiamérica",
+          "pref": true
+        }
+      ],
+      "es": [
+        {
+          "name": "Asiamérica",
+          "pref": true
+        },
+        {
+          "name": "Asiamerica",
+          "alias": true
+        }
+      ],
+      "ru": [
+        {
+          "name": "Азиамерика",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "亚美大陆",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q110996688": {
+    "name": "Balkanatolia",
+    "sitelinks": 9,
+    "names": {
+      "en": [
+        {
+          "name": "Balkanatolia",
+          "pref": true
+        }
+      ],
+      "tr": [
+        {
+          "name": "Balkanadolu",
+          "pref": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "Balkanatolie",
+          "pref": true
+        },
+        {
+          "name": "Balkanatolia",
+          "alias": true
+        }
+      ],
+      "pt": [
+        {
+          "name": "Balkanatolia",
+          "pref": true
+        }
+      ],
+      "es": [
+        {
+          "name": "Balkanatolia",
+          "pref": true
+        }
+      ],
+      "ro": [
+        {
+          "name": "Balkanatolia",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q67480852": {
+    "name": "Greater Adria",
+    "sitelinks": 8,
+    "names": {
+      "en": [
+        {
+          "name": "Greater Adria",
+          "pref": true
+        }
+      ],
+      "pt": [
+        {
+          "name": "Grande Adria",
+          "pref": true
+        }
+      ],
+      "es": [
+        {
+          "name": "Gran Adria",
+          "pref": true
+        }
+      ],
+      "bg": [
+        {
+          "name": "Голяма Адрия",
+          "pref": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "大アドリア大陸",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q688887": {
+    "name": "Armorica",
+    "sitelinks": 8,
+    "names": {
+      "fr": [
+        {
+          "name": "Armorica",
+          "pref": true
+        },
+        {
+          "name": "Cadomia",
+          "alias": true
+        }
+      ],
+      "de": [
+        {
+          "name": "Armorica",
+          "pref": true
+        },
+        {
+          "name": "Armorika",
+          "alias": true
+        },
+        {
+          "name": "Cadomia",
+          "alias": true
+        }
+      ],
+      "nl": [
+        {
+          "name": "Armorica",
+          "pref": true
+        }
+      ],
+      "en": [
+        {
+          "name": "Armorica",
+          "pref": true
+        }
+      ],
+      "ru": [
+        {
+          "name": "Арморика",
+          "pref": true
+        }
+      ],
+      "es": [
+        {
+          "name": "Armorica",
+          "pref": true
+        }
+      ],
+      "it": [
+        {
+          "name": "Armorica",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "阿莫里坎地體",
+          "pref": true
+        }
+      ],
+      "pl": [
+        {
+          "name": "Armoryka (geologia)",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q123411922": {
+    "name": "Argoland",
+    "sitelinks": 5,
+    "names": {
+      "en": [
+        {
+          "name": "Argoland",
+          "pref": true
+        }
+      ],
+      "pt": [
+        {
+          "name": "Argolândia",
+          "pref": true
+        }
+      ],
+      "es": [
+        {
+          "name": "Argolandia",
+          "pref": true
+        }
+      ],
+      "ru": [
+        {
+          "name": "Арголанд",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q2262090": {
+    "name": "Protolaurasia",
+    "sitelinks": 5,
+    "names": {
+      "zh-hans": [
+        {
+          "name": "原劳亚大陆",
+          "pref": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "原勞亞大陸",
+          "pref": true
+        }
+      ],
+      "zh-hk": [
+        {
+          "name": "原勞亞大陸",
+          "pref": true
+        }
+      ],
+      "cs": [
+        {
+          "name": "Protolaurasie",
+          "pref": true
+        }
+      ],
+      "sk": [
+        {
+          "name": "Protolaurázia",
+          "pref": true
+        }
+      ],
+      "it": [
+        {
+          "name": "Protolaurasia",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "原勞亞大陸",
+          "pref": true
+        },
+        {
+          "name": "原劳亚大陆",
+          "alias": true
+        }
+      ],
+      "en": [
+        {
+          "name": "Protolaurasia",
+          "pref": true
+        }
+      ],
+      "nl": [
+        {
+          "name": "Protolaurazië",
+          "pref": true
+        }
+      ]
+    }
+  }
+}

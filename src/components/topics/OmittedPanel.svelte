@@ -1,21 +1,25 @@
 <script lang="ts">
+  import { placement, rowPopup } from "../shared/placement";
+  import { plain } from "../../locale/html/plain";
+  import { coverageTopicOf } from "../../coverage/route";
   import { baseTag, splitName } from "../../lib/languages";
-  import { allRules, TOO_LONG_RULE, UNKNOWN_RULE } from "../../lib/omitted";
-  import { SKRIBBL } from "../../lib/skribbl";
+  import { allRules, SEPARATOR_RULE, TOO_LONG_RULE, TOO_SHORT_RULE, UNKNOWN_RULE } from "../../lib/omitted";
+  import { holdsSeparator } from "../../lib/separator";
   import type { Group, Omission } from "../../lib/types";
-  import { groupEntries, overlongForms, resolveStr } from "../../lib/words";
+  import { groupEntries, outOfLimits, renderedForms, resolveReason } from "../../lib/words";
   import Msg from "../../locale/html/Msg.svelte";
   import { lang } from "../../state/lang.svelte";
   import { overlays } from "../../state/overlays.svelte";
   import { selection } from "../../state/selection.svelte";
+  import { topics } from "../../state/topics.svelte";
 
   let { tid, group }: { tid: string; group: Group } = $props();
 
-  // A rule's hover wraps its matched names over up to five lines, this many to a
-  // line, before it trails off with an ellipsis — long enough to be useful (and a
-  // little funny) without listing a hundred countries.
-  const RULE_TITLE_LINES = 5;
-  const RULE_TITLE_PER_LINE = 10;
+  // A rule's hover lists this many of its matched names before it trails off with an
+  // ellipsis — long enough to be useful (and a little funny) without listing a hundred
+  // countries. One running line: the browser wraps a native tooltip at the viewport
+  // edge itself, and breaks of our own on top of that left ragged half-lines.
+  const RULE_TITLE_NAMES = 50;
 
   // Icon-tagged rules leave for a control of their own (CoveragePanel), so the 🚫
   // panel lists only the plain omissions.
@@ -52,28 +56,68 @@
   // Named rather than counted per tier, unlike the row above: these have names —
   // that is the whole trouble with them — so the hint can show which, the way the
   // output counter used to before this became something a reader can switch.
-  const tooLong = $derived(
-    overlongForms(
+  const lengthRules = $derived(selection.lengthRules(tid, group));
+  const outside = $derived(
+    outOfLimits(
       groupEntries(group),
       selection.modeOf(tid, group),
       lang.contentLang(tid),
       lang.derivesRomaji(tid),
-      SKRIBBL.maxWordLen,
+      lengthRules,
     ),
   );
+  const tooLong = $derived(outside.long);
+  const tooShort = $derived(outside.short);
+  // The limits the list's own language answers to; a stray Latin name in a Japanese
+  // list follows the general ones, which the label doesn't spell out.
+  const shownLimits = $derived(lengthRules.script ?? lengthRules.limits);
   const hidingTooLong = $derived(selection.omitting(tid, group, TOO_LONG_RULE));
   const tooLongTitle = $derived(
-    [lang.ui.omitted.tooLongHint(hidingTooLong), tooLong.join(", ")].join("\n"),
+    [plain(lang.ui.omitted.tooLongHint(hidingTooLong), "\n"), tooLong.join(", ")].join("\n"),
+  );
+  // Names holding the Output's separator — as the list has them, before the rule
+  // strips or drops them, so the hover can show which.
+  const sepRules = $derived(selection.separatorRules(tid, group));
+  const withSep = $derived(
+    renderedForms(
+      groupEntries(group),
+      selection.modeOf(tid, group),
+      lang.contentLang(tid),
+      lang.derivesRomaji(tid),
+    ).filter((w) => holdsSeparator(w, sepRules.sep)),
+  );
+  const sepTitle = $derived(
+    [plain(lang.ui.omitted.separatorHint(sepRules.omit, sepRules.remove), "\n"), withSep.join(", ")].join("\n"),
+  );
+  const hidingTooShort = $derived(selection.omitting(tid, group, TOO_SHORT_RULE));
+  const tooShortTitle = $derived(
+    [plain(lang.ui.omitted.tooShortHint(hidingTooShort), "\n"), tooShort.join(", ")].join("\n"),
   );
   const unknownTitle = $derived(
     [
-      lang.ui.omitted.unknownHint(hidingUnknown),
-      ...affected.map(([t, n]) => lang.ui.omitted.unknownTier(t, n)),
+      plain(lang.ui.omitted.unknownHint(hidingUnknown), "\n"),
+      ...affected.map(([t, n]) => plain(lang.ui.omitted.unknownTier(t, n), "\n")),
     ].join("\n"),
   );
   // The language the entries are missing, named in the interface language —
   // the two can differ, and the row is about the former.
   const missing = $derived(splitName(lang.nameInUi(baseTag(lang.contentLang(tid)))));
+
+  // A Wikidata-sourced topic (Countries/Capitals/Languages/Continents) has a coverage
+  // page; the unknown row then invites the reader over to it to fill the gaps. The link
+  // carries the same missing language as the row, so its column lands pre-sorted.
+  //
+  // Absolute (origin-qualified): Msg only renders an http(s) link — a data file's reason
+  // must not be able to produce a `javascript:` one — so a bare `/coverage/…` would fall
+  // back to literal text. `location.origin + BASE_URL` gives the deployed URL either way.
+  //
+  // The active interface language rides along as the optional <uiLang> segment, so the
+  // coverage page opens in the same language the app is in (it applies it, then drops it
+  // from the shown URL). The <lang> before it is the content language the row is about.
+  const coverageTopic = $derived(coverageTopicOf(topics.byId[tid] ?? topics.synthById[tid] ?? { id: tid, path: "" }));
+  const coverageUrl = $derived(
+    `${location.origin}${import.meta.env.BASE_URL}coverage/${coverageTopic}/${baseTag(lang.contentLang(tid))}/${lang.uiLang}`,
+  );
 
   // A declared rule's count and the names behind it (put on the group by
   // `visibleGroup`, merged by `mergeGroups`). The count feeds a rule's "up to N"
@@ -81,39 +125,35 @@
   const summaryOf = (ruleId: string) => group.omissionSummary?.[ruleId];
   const ruleTitle = (rule: Omission, omitting: boolean) => {
     const info = summaryOf(rule.id);
-    const hint = rule.locked ? lang.ui.omitted.locked : lang.ui.omitted.toggle(omitting);
+    const hint = plain(rule.locked ? lang.ui.omitted.locked : lang.ui.omitted.toggle(omitting), "\n");
     if (!info?.names.length) return hint;
-    const shown = info.names.slice(0, RULE_TITLE_LINES * RULE_TITLE_PER_LINE);
-    const lines: string[] = [];
-    for (let i = 0; i < shown.length; i += RULE_TITLE_PER_LINE) {
-      lines.push(shown.slice(i, i + RULE_TITLE_PER_LINE).join(", "));
-    }
+    const shown = info.names.slice(0, RULE_TITLE_NAMES);
     // More matched than the sample shows (a big rule, or names deduplicated below
     // the count) — trail off, so the hover reads as an excerpt rather than the whole.
-    if (info.count > shown.length) lines[lines.length - 1] += ", …";
-    return [hint, ...lines].join("\n");
+    const more = info.count > shown.length ? ", …" : "";
+    return [hint, shown.join(", ") + more].join("\n");
   };
 </script>
 
-{#if rules.length > 0 || unknown > 0 || tooLong.length > 0}
+{#if rules.length > 0 || unknown > 0 || tooLong.length > 0 || tooShort.length > 0 || withSep.length > 0}
   <div class="omitted-host">
     <button
       type="button"
       class="omitted-btn"
       aria-haspopup="true"
       aria-expanded={open}
-      aria-label={lang.ui.omitted.label}
-      title={lang.ui.omitted.label}
+      aria-label={plain(lang.ui.omitted.label)}
+      title={plain(lang.ui.omitted.label)}
       onclick={(e) => overlays.toggleOmittedPanel(id, e.currentTarget)}>🚫</button
     >
     {#if open}
       <div
-        class="omitted-panel"
-        class:above={overlays.omittedAbove}
+        class="popup omitted-panel"
+        use:placement={rowPopup(overlays.opener("omitted"))}
         role="group"
-        aria-label={lang.ui.omitted.label}
+        aria-label={plain(lang.ui.omitted.label)}
       >
-        <p class="omitted-title">{lang.ui.omitted.title}</p>
+        <p class="omitted-title"><Msg text={lang.ui.omitted.title} /></p>
         <ul>
           {#each rules as rule (rule.id)}
             {@const omitting = selection.omitting(tid, group, rule.id)}
@@ -129,9 +169,9 @@
                      which is the whole reason it is worth reading. A rule that opts
                      into a count leads with "up to N", the reason reading on from it. -->
                 <span
-                  >{#if rule.count && summaryOf(rule.id)}{lang.ui.omitted.upTo(
+                  >{#if rule.count && summaryOf(rule.id)}<Msg text={lang.ui.omitted.upTo(
                       summaryOf(rule.id)!.count,
-                    )}{" "}{/if}<Msg text={resolveStr(rule.reason, lang.uiLang)} /></span
+                    )} />{" "}{/if}<Msg text={resolveReason(rule.reason, lang.uiLang, rule.wd)} /></span
                 >
               </label>
             </li>
@@ -144,7 +184,13 @@
                   checked={hidingUnknown}
                   onchange={() => selection.toggleOmission(tid, group, UNKNOWN_RULE)}
                 />
-                <span>{lang.ui.omitted.unknown(unknown, ...missing)}</span>
+                <!-- The coverage-page invite (a link, via Msg) rides in the same span,
+                     inline after the count, exactly as a rule's reason link does. -->
+                <span
+                  ><Msg text={lang.ui.omitted.unknown(unknown, ...missing)} />{#if coverageTopic}<Msg
+                      text={lang.ui.omitted.helpAdd(coverageUrl)}
+                    />{/if}</span
+                >
               </label>
             </li>
           {/if}
@@ -156,7 +202,31 @@
                   checked={hidingTooLong}
                   onchange={() => selection.toggleOmission(tid, group, TOO_LONG_RULE)}
                 />
-                <span>{lang.ui.omitted.tooLong(tooLong.length, SKRIBBL.maxWordLen)}</span>
+                <span><Msg text={lang.ui.omitted.tooLong(tooLong.length, shownLimits.max)} /></span>
+              </label>
+            </li>
+          {/if}
+          {#if withSep.length > 0}
+            <li>
+              <label title={sepTitle}>
+                <input
+                  type="checkbox"
+                  checked={sepRules.omit}
+                  onchange={() => selection.toggleOmission(tid, group, SEPARATOR_RULE)}
+                />
+                <span><Msg text={lang.ui.omitted.separatorIn(withSep.length, sepRules.sep, sepRules.remove)} /></span>
+              </label>
+            </li>
+          {/if}
+          {#if tooShort.length > 0}
+            <li>
+              <label title={tooShortTitle}>
+                <input
+                  type="checkbox"
+                  checked={hidingTooShort}
+                  onchange={() => selection.toggleOmission(tid, group, TOO_SHORT_RULE)}
+                />
+                <span><Msg text={lang.ui.omitted.tooShort(tooShort.length, shownLimits.min)} /></span>
               </label>
             </li>
           {/if}

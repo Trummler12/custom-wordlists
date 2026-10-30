@@ -4,13 +4,45 @@
 //
 // One instance, reached through property access (see state/lang.svelte.ts for why).
 
-const STORAGE_KEY = "wordlists:settings";
+import { SEPARATORS, type Separator } from "../lib/custom";
+import { DEFAULT_LIMITS, DEFAULT_SCRIPT_LIMITS, SCRIPT_LANGS, type Limits } from "../lib/lengths";
+import { FLAG_TYPES, type FlagType } from "../locale/flags";
+
+/** The one key this store persists under — exported so `reset` can clear exactly the
+ *  selection settings without wiping the reader's custom lists alongside them. */
+export const SETTINGS_STORAGE_KEY = "wordlists:settings";
+
+/** Which of the flagged topics "Show … topics" reveals. */
+export const TOPIC_KINDS = ["incomplete", "planned", "all"] as const;
+export type TopicKind = (typeof TOPIC_KINDS)[number];
 
 class SettingsState {
-  /** Whether topic and category rows offer the switch to English entries. Off by
-   *  default: almost every row qualifies for it, and a control that useful to a
-   *  few is still clutter to everyone else. */
-  showEnglishToggle = $state(false);
+  /** Whether topic and category rows offer the switch to the secondary language's
+   *  entries. Off by default: almost every row qualifies for it, and a control that
+   *  useful to a few is still clutter to everyone else. */
+  showSecondaryToggle = $state(false);
+
+  /** Which kind of flag that switch wears, where its language has more than one. */
+  flagType = $state<FlagType>("country");
+
+  /** What joins the Output's names when it is copied. Never changes how the Output
+   *  looks: skribbl.io wants a comma, the others are for pasting elsewhere. */
+  outputSeparator = $state<Separator>(",");
+  /** Whether a name holding that separator has it removed rather than left in (where
+   *  it would split the name in two). See lib/separator. */
+  removeSeparator = $state(true);
+
+  /** How short and how long a name may be (the reserved `<` / `>` rules), and the
+   *  same per language for those written a character per syllable (see lib/lengths). */
+  charLimits = $state<Limits>({ ...DEFAULT_LIMITS });
+  scriptLimits = $state<Record<string, Limits>>({});
+
+  /** Whether the Topics list also shows the topics marked incomplete or planned, and
+   *  which of them. On by default: hiding the incomplete ones leaves half the top-level
+   *  categories standing empty. The kind is kept while the box is off, so ticking it
+   *  again brings back the same choice. */
+  showTopics = $state(true);
+  showTopicsKind = $state<TopicKind>("incomplete");
 
   /** Omission rules the reader has flipped away from their default — keyed
    *  `${topicId}:${groupId}:${ruleId}`. One set covers both directions: an
@@ -21,12 +53,63 @@ class SettingsState {
   init(): void {
     const stored = read();
     if (!stored) return;
-    this.showEnglishToggle = !!stored.showEnglishToggle;
+    // Read under its old name too: it was the English-only switch before LB3.
+    this.showSecondaryToggle = !!(stored.showSecondaryToggle ?? stored.showEnglishToggle);
+    if (stored.flagType && FLAG_TYPES.includes(stored.flagType)) this.flagType = stored.flagType;
+    if (stored.outputSeparator && SEPARATORS.includes(stored.outputSeparator)) {
+      this.outputSeparator = stored.outputSeparator;
+    }
+    if (typeof stored.removeSeparator === "boolean") this.removeSeparator = stored.removeSeparator;
+    if (validLimits(stored.charLimits)) this.charLimits = stored.charLimits;
+    for (const [tag, l] of Object.entries(stored.scriptLimits ?? {})) {
+      if (SCRIPT_LANGS.includes(tag) && validLimits(l)) this.scriptLimits[tag] = l;
+    }
+    if (typeof stored.showTopics === "boolean") this.showTopics = stored.showTopics;
+    if (stored.showTopicsKind && TOPIC_KINDS.includes(stored.showTopicsKind)) {
+      this.showTopicsKind = stored.showTopicsKind;
+    }
     this.toggledOmissions = stored.toggledOmissions ?? {};
   }
 
-  setShowEnglishToggle(on: boolean): void {
-    this.showEnglishToggle = on;
+  setShowSecondaryToggle(on: boolean): void {
+    this.showSecondaryToggle = on;
+    this.save();
+  }
+  setFlagType(type: FlagType): void {
+    this.flagType = type;
+    this.save();
+  }
+  setOutputSeparator(s: Separator): void {
+    this.outputSeparator = s;
+    this.save();
+  }
+
+  setRemoveSeparator(on: boolean): void {
+    this.removeSeparator = on;
+    this.save();
+  }
+
+  setShowTopics(on: boolean): void {
+    this.showTopics = on;
+    this.save();
+  }
+  setShowTopicsKind(kind: TopicKind): void {
+    this.showTopicsKind = kind;
+    this.save();
+  }
+
+  /** A language's own limits, or none where it follows the general ones. */
+  scriptLimitsFor(tag: string): Limits | undefined {
+    return SCRIPT_LANGS.includes(tag) ? (this.scriptLimits[tag] ?? DEFAULT_SCRIPT_LIMITS) : undefined;
+  }
+  /** Set one bound, general (`tag` omitted) or for one language. */
+  setLimit(bound: keyof Limits, value: number, tag?: string): void {
+    const cur = tag ? this.scriptLimitsFor(tag) : this.charLimits;
+    if (!cur || !Number.isInteger(value) || value < 1) return;
+    // The two bounds never cross: a minimum above the maximum would empty every list.
+    const next = bound === "min" ? { ...cur, min: Math.min(value, cur.max) } : { ...cur, max: Math.max(value, cur.min) };
+    if (tag) this.scriptLimits[tag] = next;
+    else this.charLimits = next;
     this.save();
   }
 
@@ -50,7 +133,14 @@ class SettingsState {
 
   private save(): void {
     write({
-      showEnglishToggle: this.showEnglishToggle,
+      showSecondaryToggle: this.showSecondaryToggle,
+      flagType: this.flagType,
+      outputSeparator: this.outputSeparator,
+      removeSeparator: this.removeSeparator,
+      charLimits: this.charLimits,
+      scriptLimits: this.scriptLimits,
+      showTopics: this.showTopics,
+      showTopicsKind: this.showTopicsKind,
       toggledOmissions: this.toggledOmissions,
     });
   }
@@ -58,11 +148,28 @@ class SettingsState {
 
 // localStorage throws in a few real setups (private mode, blocked storage), and a
 // missing preference is never worth an error.
-type Stored = { showEnglishToggle?: boolean; toggledOmissions?: Record<string, boolean> };
+type Stored = {
+  showSecondaryToggle?: boolean;
+  /** The pre-LB3 name of `showSecondaryToggle`, only ever read. */
+  showEnglishToggle?: boolean;
+  flagType?: FlagType;
+  outputSeparator?: Separator;
+  removeSeparator?: boolean;
+  charLimits?: Limits;
+  scriptLimits?: Record<string, Limits>;
+  showTopics?: boolean;
+  showTopicsKind?: TopicKind;
+  toggledOmissions?: Record<string, boolean>;
+};
+
+function validLimits(l: unknown): l is Limits {
+  const v = l as Limits | undefined;
+  return !!v && Number.isInteger(v.min) && Number.isInteger(v.max) && v.min >= 1 && v.max >= 1;
+}
 
 function read(): Stored | null {
   try {
-    const raw = localStorage.getItem(STORAGE_KEY);
+    const raw = localStorage.getItem(SETTINGS_STORAGE_KEY);
     return raw ? JSON.parse(raw) : null;
   } catch {
     return null;
@@ -70,7 +177,7 @@ function read(): Stored | null {
 }
 function write(value: Stored): void {
   try {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(value));
+    localStorage.setItem(SETTINGS_STORAGE_KEY, JSON.stringify(value));
   } catch {
     /* storage unavailable — the choice just won't survive a reload */
   }

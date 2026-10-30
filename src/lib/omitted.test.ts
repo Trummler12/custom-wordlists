@@ -2,9 +2,13 @@ import { describe, expect, it } from "vitest";
 import {
   activeRules,
   allRules,
+  BASE_RULE,
   entryForms,
+  EXTEND_RULE,
   findOmission,
   globToRegExp,
+  INCLUDE_ICON,
+  includeRules,
   isOmitted,
   isOnByDefault,
   omissionSummary,
@@ -215,6 +219,65 @@ describe("visibleGroup", () => {
       omitted: [rule("Karte*", { as: "Karte" })],
     };
     expect(visibleGroup(tiered, []).tiers).toEqual([["Pikachu"], ["Bidoof", "Karte"]]);
+  });
+});
+
+describe("INCLUDE control (union inclusion)", () => {
+  // Latin is dead AND historical, Sanskrit only historical, Klingon constructed; German
+  // carries no type, so it is the base. Every type rule shares the INCLUDE icon.
+  const langs = (): Group => ({
+    id: "languages",
+    title: "Languages",
+    words: ["German", "Latin", "Klingon", "Sanskrit"],
+    omitted: [
+      rule("Latin", { id: "dead", icon: INCLUDE_ICON }),
+      rule(["Latin", "Sanskrit"], { id: "historical", icon: INCLUDE_ICON }),
+      rule("Klingon", { id: "constructed", icon: INCLUDE_ICON }),
+    ],
+  });
+
+  it("finds the icon rules, and only those", () => {
+    expect(includeRules(langs()).map((r) => r.id)).toEqual(["dead", "historical", "constructed"]);
+  });
+
+  it("shows only the base by default — every typed entry is hidden", () => {
+    expect(visibleGroup(langs(), []).words).toEqual(["German"]);
+  });
+
+  it("ticking a type includes its members, and nothing a different type owns alone", () => {
+    expect(visibleGroup(langs(), ["dead"]).words).toEqual(["German", "Latin"]);
+  });
+
+  it("shows an entry as soon as ANY of its types is on (union, overlaps included)", () => {
+    // Latin is dead+historical, so 'historical' brings it in too — beside Sanskrit.
+    expect(visibleGroup(langs(), ["historical"]).words).toEqual(["German", "Latin", "Sanskrit"]);
+  });
+
+  it("switches the base off, leaving only the ticked types", () => {
+    expect(visibleGroup(langs(), [BASE_RULE, "constructed"]).words).toEqual(["Klingon"]);
+    expect(visibleGroup(langs(), [BASE_RULE]).words).toEqual([]);
+  });
+});
+
+describe("extendFrom (a capped fame ruler)", () => {
+  const g = (): Group => ({
+    id: "languages",
+    title: "Languages",
+    tiers: [["English"], ["Welsh"], ["Cornish"]],
+    tierConditions: ["a", "b", "c"],
+    extendFrom: 2,
+  });
+
+  it("keeps only the top tiers — and their conditions — by default", () => {
+    const v = visibleGroup(g(), []);
+    expect(v.tiers).toEqual([["English"], ["Welsh"]]);
+    expect(v.tierConditions).toEqual(["a", "b"]);
+  });
+
+  it("lifts the cap when the extend toggle is on", () => {
+    const v = visibleGroup(g(), [EXTEND_RULE]);
+    expect(v.tiers).toEqual([["English"], ["Welsh"], ["Cornish"]]);
+    expect(v.tierConditions).toEqual(["a", "b", "c"]);
   });
 });
 

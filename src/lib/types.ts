@@ -21,6 +21,15 @@ export interface TopicSummary {
   usesEnglishFor?: string[];
   /** Whether this list's romaji were transliterated rather than sourced. */
   generatedRomaji?: boolean;
+  /** What a script produced; see `Topic.generated`. */
+  generated?: Generated;
+  /** Where the generated parts came from, e.g. "Wikidata". */
+  dataOrigin?: string | string[];
+  /** A list still missing entries: hidden unless the reader shows incomplete topics. */
+  incompleteTopic?: boolean;
+  /** An announced topic that is not ready: hidden unless the reader shows planned
+   *  topics, and never selectable. */
+  plannedTopic?: boolean;
   /** Whether this topic's fame ruler starts hidden behind a toggle. Its *presence*
    *  (either value) also makes the topic its own ruler-visibility boundary; absent
    *  means it inherits from the nearest ancestor that declares it. See lib/rulers. */
@@ -35,6 +44,10 @@ export interface TopicSummary {
    *  is `synthesizeTopics`' job, one layer on. Absent = the leaf lives only where it
    *  sits. */
   inheritsUpwards?: number;
+  /** How many of the first `inheritsUpwards` levels merge nothing, as if the leaf sat
+   *  that many levels higher: the Olympic seasons' lists meet past `olympia/`, where
+   *  the other rubrics' lists meet. Absent = 0. */
+  skipInherit?: number;
   /** Populated by the frontend (`synthesizeTopics`), never read from a file: on a
    *  SYNTHESIZED topic it holds the ids of the leaves that merge — the resolution
    *  of their `inheritsUpwards` numbers into concrete contributors, which is where
@@ -82,13 +95,11 @@ export interface CategoryMeta {
    *  Inherited down to the next declaring node. See lib/rulers. */
   hideRulers?: boolean;
   /** Whether this category's row carries one toggle switching every list below it
-   *  to English at once. See lib/english. */
+   *  to the reader's secondary language at once (English-only once, hence the name).
+   *  See lib/languages/secondary. */
   sharedEnglishToggle?: boolean;
-  /** Icon keys whose control this category surfaces on its own row and syncs across
-   *  its subtree — `["geoguessr"]` on `geography/human` gives one coverage radio
-   *  that commands every Countries/Capitals leaf below. Generic so any icon-tagged
-   *  control (see `Omission.icon`) can be lifted to a category. */
-  syncControls?: string[];
+  /** Whether this category opens together with its parent. See lib/tree `unfoldingWith`. */
+  unfoldsWithParent?: boolean;
 }
 
 /** The generated manifest the frontend loads first. */
@@ -190,10 +201,16 @@ export interface Omission {
    *  differently per language — sometimes differently enough to need a second
    *  glob (`X-Angriff 2` and `Angriffplus2` are one family). */
   match: string | string[];
-  /** Why, in one phrase — the line the reader sees beside the checkbox. Lives
-   *  here rather than in a locale because it describes this list's source, not
-   *  the app; may carry `[text](url)` and `{br}`, resolved by locale/html. */
+  /** Why, in one phrase — the line the reader sees beside the checkbox. A bare
+   *  string is a prose id into the centralized topic-prose dictionary
+   *  ("sovereignty.deFactoRecognized"); a language map is a self-contained reason
+   *  that lives with its own list (the Pokémon one-offs). May carry `[text](url)`
+   *  and `{br}`, resolved by locale/html; see `resolveReason` in lib/words. */
   reason: LocalizedString;
+  /** A Wikidata entity id (`Q45762`) whose link wraps the resolved `reason` label,
+   *  for a reason that names a Wikidata concept (the language types). The label is
+   *  localized (prose id), the link is not, so `resolveReason` joins them. */
+  wd?: string;
   /** The name that stands for the family, where the source has none of its own
    *  (`Datenkarte01`…`27` → `Datenkarte`). Localized, because the base name is
    *  missing in every language, not just the one the pattern is written in. */
@@ -258,6 +275,10 @@ export interface Group {
   /** What the ruler's hover says — see `RulerTooltip`. Absent falls back to the
    *  bare tier count. */
   rulerTooltip?: RulerTooltip;
+  /** How many top tiers the ruler reaches by default — the languages list keeps only its
+   *  ≥ 1M speakers until the reader lifts the cap (the reserved `EXTEND_RULE` toggle, see
+   *  lib/omitted). Absent means the whole list is always reachable. */
+  extendFrom?: number;
   /** Present only on a SYNTHESIZED group (assembled by `topics.groupsOf` for an
    *  inheritsUpwards topic): the contributor groups it was merged from, kept so a
    *  later per-contributor view (⚙️/✂️) can regroup without the merge being
@@ -288,12 +309,25 @@ export type Correction = { entry: string; why: string } & Record<
   string | { old: string; new: string } | undefined
 >;
 
+/** The parts of a topic file a script produced, short of all of it. */
+export type GeneratedPart = "entries" | "names" | "tiers" | "omissions";
+/** `"fully"` where a script writes the whole file. See schema/topic.schema.json. */
+export type Generated = "fully" | GeneratedPart[];
+
 export interface Topic {
   id: string;
   /** Display name, same shape as an entry — see `displayName` in lib/words. */
   title: WordEntry;
   icon?: string;
   description?: string;
+  /** What a script produced, so it isn't edited by hand without checking its source.
+   *  Absent = made by hand. */
+  generated?: Generated;
+  /** Where the generated parts came from, as tags ("Wikidata", "PokéAPI"). */
+  dataOrigin?: string | string[];
+  /** The files and folders that produced the topic, directory prefix => names. For
+   *  contributors; the app never reads it. */
+  filePaths?: Record<string, string | string[]>;
   /** Languages this topic fully supports. Absent means support is undeclared (the
    *  UI shows a ⚠️ marker); declare the languages to confirm support — including
    *  for a language-neutral list whose entries read the same in every locale. */
@@ -306,6 +340,10 @@ export interface Topic {
    *  than taken from a source that names them. Correct as readings, not necessarily
    *  as spellings — the UI says so and asks for corrections. */
   generatedRomaji?: boolean;
+  /** Still missing entries; see `incompleteTopic` in schema/topic.schema.json. */
+  incompleteTopic?: boolean;
+  /** Announced but not ready, and not selectable; see the schema. */
+  plannedTopic?: boolean;
   /** Whether this topic's fame ruler starts hidden behind a toggle; its presence
    *  also marks the topic as its own ruler-visibility boundary. */
   hideRulersByDefault?: boolean;
@@ -335,6 +373,8 @@ export interface Topic {
   tiers?: WordEntry[][];
   tierConditions?: LocalizedString[];
   rulerTooltip?: RulerTooltip;
+  /** How many top tiers the ruler reaches by default — see `Group.extendFrom`. */
+  extendFrom?: number;
   /** How many levels up this leaf's list is also shown, merged with the same-named
    *  leaves it meets there into one synthesized topic. `1` = the parent level (each
    *  `<continent>/countries.json` meets the others one level up, under Human). `2`
@@ -342,4 +382,6 @@ export interface Topic {
    *  leaf keeps its own list where it sits AND contributes upward — an added field,
    *  not an alternative to `tiers`/`words`. See schema/topic.schema.json. */
   inheritsUpwards?: number;
+  /** How many of those first levels merge nothing (see `TopicSummary.skipInherit`). */
+  skipInherit?: number;
 }

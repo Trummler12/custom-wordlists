@@ -19,6 +19,8 @@
   --color-blue-400: #6f9bff;
   --color-danger: #b00020;
   --color-danger-soft: #ff7a7a;
+  --color-green-700: #1b6e2e;
+  --color-red-600: #c62828;
 
   /* Non-color globals */
   --font-sans: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
@@ -34,6 +36,9 @@
   --gap-after-cat: 0.2rem;
   /* Content width shared by <main> and the footer bar, so their edges line up. */
   --content-max: 60rem;
+  /* Gap between the two layout columns (topics | output). Named so the row-fit's
+     gutter-slide (rowfit.ts) can reach exactly to the output column's edge. */
+  --layout-gap: 1.5rem;
   /* Space kept above and below the full-height sticky output panel. */
   --output-gap: 1rem;
   /* Height of the pinned footer bar. The sticky output panel subtracts it from

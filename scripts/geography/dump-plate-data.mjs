@@ -27,8 +27,10 @@
 //    twenty are matched by name through REDLINKS below, since there is no item
 //    to match them by.
 //
-// WHAT IS NOT HERE. Ancient plates (the en page's last section) — the list is
-// about plates that exist, and how to carry the extinct ones is still open.
+// WHAT WAS ONCE NOT HERE, NOW IS. The extinct plates (the en page's last section) arrive as a
+// Wikidata class in former-plates.json, and the paleocontinents — vanished landmasses that were
+// never tectonic plates — in their own paleocontinent-names.json. Both land in the build's floor
+// tier, hidden by default.
 import { mkdir, writeFile } from "node:fs/promises";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -37,18 +39,30 @@ const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..", "..");
 const OUT = join(ROOT, "data-raw", "geography");
 const UA = { "User-Agent": "custom-wordlists/1.0 (https://github.com/Trummler12/custom-wordlists)" };
 
-/** Our spelling → Wikidata's, which lower-cases script subtags. */
-const LANGS = {
-  en: "en",
-  de: "de",
-  es: "es",
-  fr: "fr",
-  it: "it",
-  ja: "ja",
-  ko: "ko",
-  "zh-Hans": "zh-hans",
-  "zh-Hant": "zh-hant",
+/** The word-list output languages: skribbl's full set, a superset of the nine the
+ *  locale-like strings use. Names only — declaring one here carries its names into the
+ *  data; the app's CONTENT_LANGS still gates what a reader can pick, so the extra ones
+ *  sit dormant until the interface grows into them. Mirrors build-country-data. */
+const NAME_LANGS = [
+  "en", "de", "es", "fr", "it", "ja", "ko", "zh-Hans", "zh-Hant",
+  "pt", "ru", "tr", "pl", "nl", "bg", "cs", "da", "et", "fi", "el", "he",
+  "hu", "lv", "mk", "no", "ro", "sr", "sk", "sv", "tl",
+];
+
+/** Our content tag → the Wikidata label tags to read it from, first hit wins — the same
+ *  chains build-country-data uses (Chinese scripts, Norwegian nb/nn, Tagalog fil). */
+const LANG_SRC = {
+  en: ["en"], de: ["de"], es: ["es"], fr: ["fr"], it: ["it"], ja: ["ja"], ko: ["ko"],
+  "zh-Hans": ["zh-hans", "zh-cn", "zh-sg", "zh-my", "zh"],
+  "zh-Hant": ["zh-hant", "zh-tw", "zh-hk", "zh-mo"],
+  pt: ["pt", "pt-br", "pt-pt"], ru: ["ru"], tr: ["tr"], pl: ["pl"], nl: ["nl"],
+  bg: ["bg"], cs: ["cs"], da: ["da"], et: ["et"], fi: ["fi"], el: ["el"], he: ["he"],
+  hu: ["hu"], lv: ["lv"], mk: ["mk"], no: ["no", "nb", "nn"], ro: ["ro"], sr: ["sr"],
+  sk: ["sk"], sv: ["sv"], tl: ["tl", "fil"],
 };
+/** Every Wikidata label tag to request, flattened from the chains above. The build reads
+ *  the preferred name for a content tag by walking these sources (see LANG_SRC there). */
+const WD_TAGS = [...new Set(Object.values(LANG_SRC).flat())];
 
 /** The landmasses, by hand. `P31 wd:Q5107` answers with fifteen items and most of
  *  them are noise — *African Continent* beside *Africa*, *Turtle Island*,
@@ -194,41 +208,119 @@ async function itemsFor(host, titles) {
   return out;
 }
 
-async function labelsFor(ids) {
+/** Wikidata terms for a chunk of items: the preferred label and every alias, keyed by the
+ *  raw Wikidata language tag as arrays of `{ name, pref? | alias? }` — the rich shape the
+ *  country and language dumps use, so a reader sees every form a plate is known by. Only
+ *  the tags Wikidata actually carries appear; the build reads the pref through LANG_SRC. */
+async function termsFor(ids) {
   const out = {};
   for (let i = 0; i < ids.length; i += 45) {
     const r = await api("www.wikidata.org", {
       action: "wbgetentities",
-      props: "labels",
-      languages: Object.values(LANGS).join("|"),
+      props: "labels|aliases",
+      languages: WD_TAGS.join("|"),
       ids: ids.slice(i, i + 45).join("|"),
     });
-    for (const [q, e] of Object.entries(r.entities)) out[q] = e.labels ?? {};
+    for (const [q, e] of Object.entries(r.entities)) {
+      const rich = {};
+      for (const [tag, l] of Object.entries(e.labels ?? {})) (rich[tag] ??= []).push({ name: l.value, pref: true });
+      for (const [tag, arr] of Object.entries(e.aliases ?? {}))
+        for (const a of arr) (rich[tag] ??= []).push({ name: a.value, alias: true });
+      out[q] = rich;
+    }
   }
   return out;
 }
 
-/** `<key> ⇥ <name>` per line, the shape the other dumps use. */
-async function writeColumns(dir, keys, nameOf, total) {
-  await mkdir(dir, { recursive: true });
-  for (const [tag, wd] of Object.entries(LANGS)) {
-    const lines = keys.map((k) => [k, nameOf(k, wd)]).filter(([, n]) => n);
-    await writeFile(join(dir, `${tag}.txt`), lines.map((l) => l.join("\t")).join("\n") + "\n", "utf8");
-    console.log(`  ${tag.padEnd(8)} ${String(lines.length).padStart(3)} of ${total}`);
-  }
+/** A WDQS SPARQL query, returning its result bindings. */
+async function wdqs(query) {
+  const url = `https://query.wikidata.org/sparql?${new URLSearchParams({ format: "json", query })}`;
+  const res = await fetch(url, { headers: UA });
+  if (!res.ok) throw new Error(`WDQS HTTP ${res.status} ${res.statusText}`);
+  return (await res.json()).results.bindings;
 }
+
+/** Every Wikidata item that is P31 tectonic plate (Q215680) — the catch-all the English
+ *  list doesn't band. WDQS rather than the article API: many have no article to reach. */
+async function tectonicPlateItems() {
+  return (await wdqs("SELECT ?i WHERE { ?i wdt:P31 wd:Q215680. }")).map((b) => b.i.value.split("/").pop());
+}
+
+/** Every item Wikidata types P31 former tectonic plate (Q141789550) — the extinct-plate
+ *  class #38 created. The build reads this list for the `ancient` rule instead of a hand
+ *  list, so a plate becoming (or ceasing to be) former is a Wikidata edit, not a code one.
+ *  A former plate is only shown if it is also a catch-all plate (P31 tectonic plate); the
+ *  ones typed former alone (e.g. the Danakil microplate) never enter the list. */
+async function formerPlateItems() {
+  return (await wdqs("SELECT ?i WHERE { ?i wdt:P31 wd:Q141789550. }")).map((b) => b.i.value.split("/").pop());
+}
+
+/** The sitelink floor a paleocontinent clears to be worth listing — the long tail of obscure
+ *  cratons and terranes is filtered the way fame is judged elsewhere, by how many Wikipedias
+ *  carry the article. Five keeps Pangaea, Gondwana, Laurasia, Rodinia and their peers. */
+const MIN_PALEO_SITELINKS = 5;
+
+/** Paleocontinents (P31 paleocontinent Q2284298) with at least MIN_PALEO_SITELINKS sitelinks,
+ *  most-linked first. They are NOT tectonic plates, so they never appear in the plate catch-all
+ *  (tectonicPlateItems) and need their own dump; the build tiers them into the floor beside the
+ *  extinct plates and hides them by default. The sitelink count rides along so the build keeps
+ *  this order without re-querying. */
+async function paleocontinentItems() {
+  const rows = await wdqs(
+    "SELECT ?i (COUNT(DISTINCT ?s) AS ?n) WHERE { ?i wdt:P31 wd:Q2284298. OPTIONAL { ?s schema:about ?i. } } GROUP BY ?i",
+  );
+  return rows
+    .map((b) => ({ id: b.i.value.split("/").pop(), sitelinks: Number(b.n.value) }))
+    .filter((r) => r.sitelinks >= MIN_PALEO_SITELINKS)
+    .sort((a, b) => b.sitelinks - a.sitelinks || a.id.localeCompare(b.id));
+}
+
+/** Surface areas (km²) from Wikidata P2046, for the items that carry one. An item with
+ *  several P2046 values (with and without islands, say) keeps the largest, so a re-dump is
+ *  deterministic rather than taking whichever row WDQS returned last. */
+async function areasFor(ids) {
+  const values = ids.map((q) => `wd:${q}`).join(" ");
+  const rows = await wdqs(`SELECT ?i (MAX(?ar) AS ?a) WHERE { VALUES ?i { ${values} } ?i wdt:P2046 ?ar. } GROUP BY ?i`);
+  const out = {};
+  for (const b of rows) out[b.i.value.split("/").pop()] = Math.round(Number(b.a.value));
+  return out;
+}
+/** A steradian of Earth's surface in km² (mean radius 6371 km), to read Bird's shares. */
+const STERAD_TO_KM2 = 6371 ** 2;
+
+/** The leading summary ahead of the rich name map, so a reader sees what an entry is at a
+ *  glance: `name` (the English preferred label) and, where known, `area` in km². */
+const itemObj = (rich, area) => {
+  const name = (rich.en ?? []).find((t) => t.pref)?.name;
+  return { ...(name ? { name } : {}), ...(area != null ? { area } : {}), names: rich };
+};
+
+/** A single JSON per dump, `{ <Q-id>: { name, area?, names } }` — keyed by Wikidata Q-id
+ *  like the country and language dumps, not a column per language. */
+async function writeNames(path, obj) {
+  await mkdir(dirname(path), { recursive: true });
+  await writeFile(path, JSON.stringify(obj, null, 2) + "\n", "utf8");
+}
+
+/** Per-language coverage: how many of the ids carry a name our content tag can read. */
+const logCoverage = (heading, byId, ids) => {
+  console.log(heading);
+  for (const t of NAME_LANGS) {
+    const c = ids.filter((q) => LANG_SRC[t].some((s) => byId[q]?.names?.[s]?.length)).length;
+    console.log(`  ${t.padEnd(8)} ${String(c).padStart(3)} of ${ids.length}`);
+  }
+};
 
 async function main() {
   // --- Landmasses ------------------------------------------------------------
-  const landLabels = await labelsFor(Object.values(LANDMASSES));
-  const landKeys = Object.keys(LANDMASSES);
-  console.log(`continents — ${landKeys.length}`);
-  await writeColumns(
-    join(OUT, "continents"),
-    landKeys,
-    (k, wd) => landLabels[LANDMASSES[k]]?.[wd]?.value,
-    landKeys.length,
+  const landIds = Object.values(LANDMASSES);
+  const landTerms = await termsFor(landIds);
+  const landAreas = await areasFor(landIds);
+  const landNames = Object.fromEntries(
+    landIds.map((q) => [q, itemObj(landTerms[q] ?? {}, landAreas[q])]),
   );
+  await writeNames(join(OUT, "continents", "continent-names.json"), landNames);
+  logCoverage(`continents — ${landIds.length}`, landNames, landIds);
 
   // --- Plates ----------------------------------------------------------------
   const en = bands(await wikitext("en.wikipedia.org", "List of tectonic plates"));
@@ -256,38 +348,88 @@ async function main() {
 
   await mkdir(join(OUT, "plates"), { recursive: true });
 
-  // Structure and names apart, as everywhere else: a corrected area should not
-  // arrive as a diff across nine name columns.
-  const structure = ranked.map((t) => {
-    const a = areaOf(t);
-    return [
-      t,
-      band(t),
-      parentOf.get(t) ?? "",
-      items[t] ?? "",
-      a ? a.sr.toFixed(5) : "",
-      a ? a.de : "",
-    ].join("\t");
-  });
+  // The Wikidata catch-all: every P31 tectonic plate the English bands miss, minus the
+  // ones already resolved from the article list (same Q-id = same plate, not two). They
+  // carry no band and no area, so they are written under band "unknown", keyed by their
+  // English label. The build tiers them into the "unknown classification" floor and does
+  // the name-level dedup (a redlink and its item, differing only in case) and the junk
+  // filtering a bare P31 query can't do. A catch-all whose key already names a banded
+  // plate keeps the banded row here; a case-only difference is left for the build.
+  const known = new Set(Object.values(items).filter(Boolean));
+  const extra = (await tectonicPlateItems()).filter((q) => !known.has(q));
+  const plateIds = [...new Set([...known, ...extra])];
+  const plateTerms = await termsFor(plateIds);
+  const enLabel = (q) => (plateTerms[q]?.en ?? []).find((t) => t.pref)?.name ?? q;
+  const rankedSet = new Set(ranked);
+  const extraByKey = new Map();
+  for (const q of extra) {
+    const k = enLabel(q);
+    if (!rankedSet.has(k) && !extraByKey.has(k)) extraByKey.set(k, q);
+  }
+  const extraKeys = [...extraByKey.keys()];
+
+  // Structure and names apart, as everywhere else: a corrected area should not arrive as
+  // a diff across the name map. structure.tsv is the identity — name ↔ Q-id, band, area —
+  // and the source of a redlink's English name (the row key) and German (the Bird column).
+  const rows = [
+    ...ranked.map((t) => {
+      const a = areaOf(t);
+      return [t, band(t), parentOf.get(t) ?? "", items[t] ?? "", a ? a.sr.toFixed(5) : "", a ? a.de : ""];
+    }),
+    ...extraKeys.map((k) => [k, "unknown", "", extraByKey.get(k), "", ""]),
+  ];
   await writeFile(
     join(OUT, "plates", "structure.tsv"),
     "# name\tband\tparent\twikidata\tsteradian (Bird 2003)\tde (Bird table)\n" +
-      structure.join("\n") +
+      rows.map((r) => r.join("\t")).join("\n") +
       "\n",
     "utf8",
   );
 
-  const labels = await labelsFor([...new Set(Object.values(items).filter(Boolean))]);
-  console.log(`plates — ${ranked.length} (${bird.length} of them with a Bird area)`);
-  await writeColumns(
-    join(OUT, "plates"),
-    ranked,
-    // Two fallbacks, both for plates Wikidata has no item for: English is the
-    // key itself — the article title is the name — and German comes from the
-    // Bird table, which prints twenty plates the German Wikipedia never wrote.
-    (k, wd) =>
-      labels[items[k]]?.[wd]?.value ?? (wd === "en" ? k : wd === "de" ? areaOf(k)?.de : undefined),
-    ranked.length,
+  // Names keyed by Q-id, like the country and language dumps: every plate Wikidata has an
+  // item for — the banded ones and the deduped catch-all. A redlink has no item, so no
+  // entry here; the build takes its English name from structure.tsv and its German from
+  // the Bird column. The leading `area` is Bird's share in km² where there is one, else
+  // Wikidata's P2046 (which only a single plate carries).
+  const nameIds = [...new Set([...known, ...extraByKey.values()])];
+  const plateP2046 = await areasFor(nameIds);
+  const birdKm2 = {};
+  for (const t of ranked) {
+    const a = areaOf(t);
+    if (a && items[t]) birdKm2[items[t]] = Math.round(a.sr * STERAD_TO_KM2);
+  }
+  const plateNames = Object.fromEntries(
+    nameIds.map((q) => [q, itemObj(plateTerms[q] ?? {}, birdKm2[q] ?? plateP2046[q])]),
+  );
+  await writeNames(join(OUT, "plates", "plate-names.json"), plateNames);
+  console.log(
+    `plates — ${ranked.length} banded (${bird.length} with a Bird area) + ${extraKeys.length} Wikidata catch-all`,
+  );
+  logCoverage("plate name coverage:", plateNames, nameIds);
+
+  // The extinct-plate class, for the build's `ancient` rule (see formerPlateItems). Kept
+  // apart from the names, like structure.tsv: a classification, not a label.
+  const former = (await formerPlateItems()).sort();
+  await writeFile(join(OUT, "plates", "former-plates.json"), JSON.stringify(former, null, 2) + "\n", "utf8");
+  console.log(`former tectonic plates (P31 Q141789550): ${former.length}`);
+
+  // Paleocontinents, their own dump (P31 paleocontinent) — vanished landmasses, not plates.
+  // Keyed by Q-id like the rest, in sitelink order, each carrying its sitelink count so the
+  // build ranks them without re-querying. No area: a paleocontinent has no present-day extent.
+  const paleo = await paleocontinentItems();
+  const paleoTerms = await termsFor(paleo.map((p) => p.id));
+  const paleoNames = Object.fromEntries(
+    paleo.map((p) => {
+      const rich = paleoTerms[p.id] ?? {};
+      const name = (rich.en ?? []).find((t) => t.pref)?.name;
+      return [p.id, { ...(name ? { name } : {}), sitelinks: p.sitelinks, names: rich }];
+    }),
+  );
+  await writeNames(join(OUT, "paleocontinents", "paleocontinent-names.json"), paleoNames);
+  logCoverage(
+    `paleocontinents (P31 Q2284298, >= ${MIN_PALEO_SITELINKS} sitelinks) — ${paleo.length}`,
+    paleoNames,
+    paleo.map((p) => p.id),
   );
 
   const unmatched = bird.filter((r) => ![...byItem.values(), ...byName.values()].includes(r));

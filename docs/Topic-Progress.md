@@ -12,19 +12,19 @@ Progress on every topic added or _planned_ so far. A topic's style says how far 
 
 \*of course limited to languages _planned out_ so far to be supported; In case your selected Language is missing, a "⚠️" will show up with a respective tooltip.
 
-The sections run in the order the app's own tree does, so the two can be read side by side.
+The sections run in the order the app's own tree does, so the two can be read side by side. A topic built from Wikidata links its 🌐 coverage page: which names are still missing there, per language.
 
 ## Science
 
 ### Chemistry
 
-- [x] **_Elements_**
+- [x] **_Elements_** · [🌐 coverage](https://trummler12.github.io/custom-wordlists/coverage/elements)
 
 ## Geography
 
 ### Physical
 
-- [x] _Continents & Plates_
+- [x] _Continents & Plates_ · [🌐 coverage](https://trummler12.github.io/custom-wordlists/coverage/continents)
 - [ ] Oceans & Seas
 - [ ] Islands
 - [ ] Mountains
@@ -34,9 +34,9 @@ The sections run in the order the app's own tree does, so the two can be read si
 
 ### Human
 
-- [x] **_Languages_**
-- [x] **_Countries_**
-- [x] **_Capitals_**
+- [x] **_Languages_** · [🌐 coverage](https://trummler12.github.io/custom-wordlists/coverage/languages)
+- [x] **_Countries_** · [🌐 coverage](https://trummler12.github.io/custom-wordlists/coverage/countries)
+- [x] **_Capitals_** · [🌐 coverage](https://trummler12.github.io/custom-wordlists/coverage/capitals)
 - [ ] Cities
 - [x] [Per-continent and worldwide lists — live for Countries & Capitals; Cities join once added]
 
@@ -99,10 +99,29 @@ _In the VERY long term, we might even expand downwards to individual Communities
 
 ## Sports
 
-### Olympia
+### Games
 
-- [ ] Athletes
-- [ ] Sports
+- [ ] _Sports_ — Olympics, Paralympics, Asian Games, Commonwealth Games, World Games · [🌐 coverage](https://trummler12.github.io/custom-wordlists/coverage/sports)
+- [ ] Athletes (Olympics)
+
+### Football
+
+- [ ] Clubs
+- [ ] World Cup Players
+- [ ] World Cup Teams
+
+### Basketball
+
+- [ ] NBA Teams
+
+### Motorsport
+
+- [ ] Formula One Drivers
+- [ ] Formula One Circuits
+
+### Tennis
+
+- [ ] Players
 
 ## Culture
 

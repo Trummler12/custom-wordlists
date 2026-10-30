@@ -1,0 +1,29 @@
+# The Wikidata-analysis link points at PR #38's branch until it merges;
+# switch it to blob/main then (see the same note in CONTRIBUTING.md).
+name: 🗳️ Topic request — ask for a topic (or upvote one)
+description: Request a topic you'd like built, or 👍 an existing request to push it up the queue. No query or list needed.
+title: "🗳️ <Topic>"
+labels: ["Topic Request 🗳️"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        **Before requesting a topic, please first check its status:** use **"Show `all` topics"** in the app's global settings, the [topic tracker](https://github.com/Trummler12/custom-wordlists/blob/main/docs/Topic-Progress.md), or the [Wikidata analysis](https://github.com/Trummler12/custom-wordlists/blob/docs/wikidata_analysis/docs/Queries/README.md).
+
+        **What's worth requesting:** a topic still in the analysis phase (listed among the *Candidates*, findable with `Ctrl`+`F`, carrying a ☑️, 🔵 or ➕ status), or one not listed at all. If it is already built or planned, there is nothing to request.
+
+        **Found an existing request for it?** 👍 that one instead of opening a new issue — the reaction count is what moves a topic up the queue.
+  - type: input
+    id: topic
+    attributes:
+      label: Topic
+      placeholder: e.g. Harry Potter spells
+    validations:
+      required: true
+  - type: textarea
+    id: why
+    attributes:
+      label: Why this topic? (optional)
+      description: "A sentence or two: why it suits word-based games, roughly how many items it has, or anything that helps judge it. Guesses are welcome."
+    validations:
+      required: false
