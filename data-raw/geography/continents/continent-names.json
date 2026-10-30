@@ -2897,8 +2897,12 @@
       ],
       "pt": [
         {
-          "name": "América do Norte e América Central",
+          "name": "América do Norte",
           "pref": true
+        },
+        {
+          "name": "América do Norte e América Central",
+          "alias": true
         }
       ],
       "ro": [
@@ -3427,6 +3431,14 @@
         {
           "name": "Океания",
           "pref": true
+        },
+        {
+          "name": "Австралия и Океания",
+          "alias": true
+        },
+        {
+          "name": "Океания и Австралия",
+          "alias": true
         }
       ],
       "tr": [
@@ -3489,6 +3501,14 @@
         {
           "name": "Oceanien",
           "pref": true
+        },
+        {
+          "name": "Australien og Oceanien",
+          "alias": true
+        },
+        {
+          "name": "Oceanien og Australien",
+          "alias": true
         }
       ],
       "zh-hans": [

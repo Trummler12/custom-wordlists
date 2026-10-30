@@ -6697,8 +6697,12 @@
       ],
       "de": [
         {
-          "name": "Sandwichplatte (tektonische Platte)",
+          "name": "Sandwichplatte",
           "pref": true
+        },
+        {
+          "name": "Sandwichplatte (tektonische Platte)",
+          "alias": true
         }
       ],
       "mk": [
@@ -8510,6 +8514,12 @@
           "name": "Placa da Gronelândia",
           "pref": true
         }
+      ],
+      "pl": [
+        {
+          "name": "tarcza grenlandzka",
+          "pref": true
+        }
       ]
     }
   },
@@ -8749,8 +8759,12 @@
       ],
       "ru": [
         {
-          "name": "Асориш (плато)",
+          "name": "Асориш",
           "pref": true
+        },
+        {
+          "name": "Асориш (плато)",
+          "alias": true
         }
       ]
     }
@@ -9313,47 +9327,6 @@
       ]
     }
   },
-  "Q1933940": {
-    "name": "microplate",
-    "names": {
-      "de": [
-        {
-          "name": "Mikroplatte",
-          "pref": true
-        }
-      ],
-      "ja": [
-        {
-          "name": "マイクロプレート",
-          "pref": true
-        }
-      ],
-      "pl": [
-        {
-          "name": "Mikropłyta",
-          "pref": true
-        }
-      ],
-      "en": [
-        {
-          "name": "microplate",
-          "pref": true
-        }
-      ],
-      "cs": [
-        {
-          "name": "mikrodeska",
-          "pref": true
-        }
-      ],
-      "mk": [
-        {
-          "name": "микроплоча",
-          "pref": true
-        }
-      ]
-    }
-  },
   "Q2043096": {
     "name": "Futuna Plate",
     "names": {
@@ -9388,45 +9361,6 @@
       "en": [
         {
           "name": "Futuna Plate",
-          "pref": true
-        }
-      ]
-    }
-  },
-  "Q3391667": {
-    "name": "Intermontane Plate",
-    "names": {
-      "fr": [
-        {
-          "name": "plaque Intermontane",
-          "pref": true
-        },
-        {
-          "name": "Intermontane",
-          "alias": true
-        }
-      ],
-      "en": [
-        {
-          "name": "Intermontane Plate",
-          "pref": true
-        }
-      ],
-      "ja": [
-        {
-          "name": "インターモンテンプレート",
-          "pref": true
-        }
-      ],
-      "it": [
-        {
-          "name": "Placca intermontana",
-          "pref": true
-        }
-      ],
-      "zh": [
-        {
-          "name": "山間板塊",
           "pref": true
         }
       ]
@@ -9478,73 +9412,6 @@
       "zh": [
         {
           "name": "別林斯高晉板塊",
-          "pref": true
-        }
-      ]
-    }
-  },
-  "Q3391684": {
-    "name": "Lhasa Plate",
-    "names": {
-      "fr": [
-        {
-          "name": "plaque de Lhassa",
-          "pref": true
-        },
-        {
-          "name": "Lhassa",
-          "alias": true
-        }
-      ],
-      "en": [
-        {
-          "name": "Lhasa Plate",
-          "pref": true
-        },
-        {
-          "name": "Lhasa Block",
-          "alias": true
-        }
-      ],
-      "zh": [
-        {
-          "name": "拉薩板塊",
-          "pref": true
-        },
-        {
-          "name": "拉薩地塊",
-          "alias": true
-        },
-        {
-          "name": "喀拉昆仑—拉萨地块",
-          "alias": true
-        },
-        {
-          "name": "拉萨地块",
-          "alias": true
-        }
-      ],
-      "ja": [
-        {
-          "name": "ラサプレート",
-          "pref": true
-        }
-      ],
-      "it": [
-        {
-          "name": "Placca di Lhasa",
-          "pref": true
-        }
-      ],
-      "zh-hant": [
-        {
-          "name": "喀拉崑崙—拉薩地塊",
-          "pref": true
-        }
-      ],
-      "zh-hans": [
-        {
-          "name": "喀拉昆仑—拉萨地块",
           "pref": true
         }
       ]
@@ -9758,23 +9625,6 @@
       ]
     }
   },
-  "Q6058525": {
-    "name": "Intraplate deformation",
-    "names": {
-      "en": [
-        {
-          "name": "Intraplate deformation",
-          "pref": true
-        }
-      ],
-      "zh": [
-        {
-          "name": "板内变形",
-          "pref": true
-        }
-      ]
-    }
-  },
   "Q6886313": {
     "name": "Moa Plate",
     "names": {
@@ -9844,6 +9694,10 @@
         {
           "name": "Western Siberia Plate",
           "pref": true
+        },
+        {
+          "name": "West Siberian Plate",
+          "alias": true
         }
       ]
     }
@@ -9867,42 +9721,6 @@
         {
           "name": "plaque européenne",
           "pref": true
-        }
-      ]
-    }
-  },
-  "Q25473407": {
-    "name": "West Siberian Plate",
-    "names": {
-      "en": [
-        {
-          "name": "West Siberian Plate",
-          "pref": true
-        }
-      ]
-    }
-  },
-  "Q115534336": {
-    "name": "Central India Tectonic Zone",
-    "names": {
-      "de": [
-        {
-          "name": "Central India Tectonic Zone",
-          "pref": true
-        },
-        {
-          "name": "CITZ",
-          "alias": true
-        }
-      ],
-      "en": [
-        {
-          "name": "Central India Tectonic Zone",
-          "pref": true
-        },
-        {
-          "name": "CITZ",
-          "alias": true
         }
       ]
     }
