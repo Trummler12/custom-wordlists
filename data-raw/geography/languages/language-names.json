@@ -44843,6 +44843,10 @@
         {
           "name": "Βόρεια Κουρδικά",
           "pref": true
+        },
+        {
+          "name": "κουρμαντζί",
+          "alias": true
         }
       ],
       "en": [
@@ -75068,6 +75072,18 @@
         {
           "name": "ガーナピジン英語",
           "pref": true
+        },
+        {
+          "name": "ガーナ・ピジン英語",
+          "alias": true
+        },
+        {
+          "name": "ガーナ・ピジン語",
+          "alias": true
+        },
+        {
+          "name": "ガーナピジン語",
+          "alias": true
         }
       ],
       "nl": [
@@ -80618,15 +80634,15 @@
       ],
       "ja": [
         {
-          "name": "ルガンダ語",
+          "name": "ガンダ語",
           "pref": true
         },
         {
-          "name": "Lug",
+          "name": "ルガンダ",
           "alias": true
         },
         {
-          "name": "ガンダ語",
+          "name": "ルガンダ語",
           "alias": true
         }
       ],
@@ -81081,7 +81097,13 @@
       ],
       "zh": [
         {
-          "name": "北索托語",
+          "name": "北索托语",
+          "pref": true
+        }
+      ],
+      "zh-cn": [
+        {
+          "name": "北索托语",
           "pref": true
         }
       ],
@@ -81093,6 +81115,12 @@
         {
           "name": "Sepedi",
           "alias": true
+        }
+      ],
+      "zh-tw": [
+        {
+          "name": "北索托語",
+          "pref": true
         }
       ]
     }
@@ -87390,6 +87418,10 @@
         {
           "name": "低ザクセン語",
           "pref": true
+        },
+        {
+          "name": "低地ザクセン語",
+          "alias": true
         }
       ],
       "ko": [
@@ -101456,11 +101488,15 @@
       ],
       "ja": [
         {
-          "name": "カバルド語",
+          "name": "カバルダ語",
           "pref": true
         },
         {
           "name": "kbd",
+          "alias": true
+        },
+        {
+          "name": "カバルド語",
           "alias": true
         }
       ],
@@ -111293,6 +111329,12 @@
           "alias": true
         }
       ],
+      "ja": [
+        {
+          "name": "標準エストニア語",
+          "pref": true
+        }
+      ],
       "nl": [
         {
           "name": "standaard Ests",
@@ -112702,19 +112744,7 @@
           "pref": true
         },
         {
-          "name": "Dagaare",
-          "alias": true
-        },
-        {
-          "name": "Dagaare language",
-          "alias": true
-        },
-        {
-          "name": "dga",
-          "alias": true
-        },
-        {
-          "name": "Southern Dagaare",
+          "name": "ダガーレ語",
           "alias": true
         }
       ],
@@ -122344,6 +122374,10 @@
         {
           "name": "ギリシア語ポントス方言",
           "pref": true
+        },
+        {
+          "name": "ポントス・ギリシア語",
+          "alias": true
         }
       ],
       "ko": [
@@ -147219,6 +147253,12 @@
           "pref": true
         }
       ],
+      "ja": [
+        {
+          "name": "オボロ語",
+          "pref": true
+        }
+      ],
       "mk": [
         {
           "name": "оболски јазик",
@@ -148318,8 +148358,28 @@
       ],
       "ja": [
         {
-          "name": "仏領ギアナのクレオール語",
+          "name": "フランス領ギアナ・クレオール語",
           "pref": true
+        },
+        {
+          "name": "ギアナ・クレオール",
+          "alias": true
+        },
+        {
+          "name": "ギアナ・クレオール語",
+          "alias": true
+        },
+        {
+          "name": "フランス領ギアナ・クレオール",
+          "alias": true
+        },
+        {
+          "name": "仏領ギアナ・クレオール",
+          "alias": true
+        },
+        {
+          "name": "仏領ギアナ・クレオール語",
+          "alias": true
         }
       ],
       "ko": [
@@ -311492,6 +311552,10 @@
         {
           "name": "ノヴィアル",
           "pref": true
+        },
+        {
+          "name": "ノヴィアル語",
+          "alias": true
         }
       ],
       "ko": [
