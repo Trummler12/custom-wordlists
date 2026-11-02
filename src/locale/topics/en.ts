@@ -64,7 +64,7 @@ export const en: TopicProse = {
       text: "Capitals of countries with {condition} inhabitants",
       empty: "Ranked by their country's population.",
     },
-    languages: { text: "Languages with {condition} speakers worldwide", empty: "Ranked by speakers worldwide." },
+    languages: { text: "Languages with {condition} speakers worldwide", empty: "Ranked by peak speakers worldwide." },
     continents: { text: "{condition}", empty: "Ordered by plate area (Bird 2003)." },
     sports: {
       text: "Sports with an article in {condition} Wikipedias",

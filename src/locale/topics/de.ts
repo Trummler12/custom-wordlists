@@ -51,7 +51,7 @@ export const de: TopicProseDict = {
       text: "Hauptstädte von Ländern mit {condition} Einwohnern",
       empty: "Nach Einwohnerzahl des Landes geordnet.",
     },
-    languages: { text: "Sprachen mit {condition} Sprechern weltweit", empty: "Nach Sprecherzahl weltweit geordnet." },
+    languages: { text: "Sprachen mit {condition} Sprechern weltweit", empty: "Nach höchster Sprecherzahl weltweit geordnet." },
     continents: { text: "{condition}", empty: "Nach Plattenfläche geordnet (Bird 2003)." },
     sports: {
       text: "Sportarten mit einem Artikel in {condition} Wikipedias",

@@ -3,14 +3,18 @@
 //
 //   node scripts/geography/dump-language-data.mjs
 //
-// MEMBERSHIP is the modern-language FAMILY, gated by a prominence signal. A language
-// qualifies when P31/P279* reaches one of WHITELIST *and* it either carries an ISO
-// 639-1 code (P218) or an ever-documented positive speaker count (P1098 > 0). Natural
-// language (Q33742) is deliberately NOT the base: Wikidata applies it inconsistently —
-// German and Chinese are `modern language` only and carry no natural tag, so a natural
-// membership silently drops them. The speaker/ISO gate keeps the list to the well-known
-// ~2000; a bare ISO 639-1 code rescues Latin, Pali and the like (dead but drawable) that
-// have no living speaker count. See the overlap research in scripts/test/Wikidata_Language_*.
+// MEMBERSHIP is a UNION of two readings, so neither a class gap nor a stray rank can drop a
+// language. An item qualifies when EITHER its class path (P31/P279*) reaches one of WHITELIST
+// and it carries a positive speaker count (P1098 > 0), OR it carries an ISO 639 code — 639-1
+// (P218) or 639-2 (P219) outright, 639-3 (P220) with a speaker count — regardless of class. An
+// ISO code names a language, macrolanguage or collective, never a class decision, so the code
+// branch rescues Serbian, Filipino, Mandarin, the sign languages and the like that the class
+// whitelist misses, and is robust against a preferred-rank P31 hiding the real classes (Hindi).
+// The only subtraction: the type-of-language meta-items that carry a collective code (crp, und,
+// mis, art, sgn), the sole coded instances of Q20829075 — a kind of language, not a language.
+// The whitelist still TYPES each member (dead / historical / dialect / …) for the opt-in
+// checkboxes. Natural language (Q33742) is deliberately not a base class: Wikidata applies it
+// inconsistently. See the overlap research in scripts/test/Wikidata_Language_*.
 //
 // language-structure.tsv carries the numbers and flags — the ISO code, the speaker count
 // that tiers the list, and one boolean per linguistic-type class the build folds into its
@@ -78,26 +82,77 @@ const NAMES = (values) => `SELECT ?item ?lang ?term ?type WHERE {
   FILTER(REGEX(?lang, "^(${SKRIBBL.join("|")})(-|$)"))
 }`;
 
-/** The ISO code, speaker count and type flags for a chunk of items. Bounding ?item with
- *  VALUES keeps the ten P31/P279* EXISTS cheap; the whole-membership version times the
- *  endpoint out (language family / group have huge subclass trees). */
+/** The ISO code and type flags for a chunk of items. Bounding ?item with VALUES keeps the ten
+ *  P31/P279* EXISTS cheap; the whole-membership version times the endpoint out (language family
+ *  / group have huge subclass trees). The speaker figure is fetched apart (SPEAKERS), the agreed
+ *  selection reading each P1098 statement's qualifiers rather than a bare aggregate. */
 const STRUCTURE = (values) => `SELECT ?item
   (MIN(?p218) AS ?iso1) (MIN(?p219) AS ?iso2) (MIN(?p220) AS ?iso3)
-  (MAX(?spk) AS ?speakers)
   ${FLAG_KEYS.map((k) => `?${k}`).join(" ")} WHERE {
   VALUES ?item { ${values} }
   OPTIONAL { ?item wdt:P218 ?p218. }
   OPTIONAL { ?item wdt:P219 ?p219. }
   OPTIONAL { ?item wdt:P220 ?p220. }
-  # The HIGHEST speaker count ever recorded, not the preferred value: an extinct language
-  # (Latin) marks its "0 today" preferred, so wdt:P1098 would read 0 — read every statement
-  # and drop only the deprecated ones, then MAX above picks the peak.
-  OPTIONAL {
-    ?item p:P1098 ?spkStmt. ?spkStmt ps:P1098 ?spk.
-    ?spkStmt wikibase:rank ?spkRank. FILTER(?spkRank != wikibase:DeprecatedRank)
-  }
   ${FLAG_KEYS.map((k) => `BIND(EXISTS { ?item wdt:P31/wdt:P279* wd:${FLAG[k]} } AS ?${k})`).join("\n  ")}
 } GROUP BY ?item ${FLAG_KEYS.map((k) => `?${k}`).join(" ")}`;
+
+/** Every non-deprecated P1098 statement for a chunk of items, with the qualifiers the agreed
+ *  speaker selection reads: point in time (P585), applies to part (P518, the figure's kind) and
+ *  the place qualifiers (P3005 / P276 / P1001). `speakerFigure` folds them into one figure. */
+const SPEAKERS = (values) => `SELECT ?item ?st ?v ?t ?ap ?pl WHERE {
+  VALUES ?item { ${values} }
+  ?item p:P1098 ?st. ?st ps:P1098 ?v; wikibase:rank ?rank.
+  FILTER(?rank != wikibase:DeprecatedRank)
+  OPTIONAL { ?st pq:P585 ?t. }
+  OPTIONAL { ?st pq:P518 ?ap. }
+  OPTIONAL { ?st pq:P3005|pq:P276|pq:P1001 ?pl. }
+}`;
+
+/** The P518 (applies to part) values that make a P1098 figure a total, a first-language or a
+ *  second-language count; any other value (a place, a group, a year) reads as a by-place figure.
+ *  From #38's _scripts/speakers.mjs — the agreed selection's reference implementation. */
+const SPK_TOTAL = new Set(["Q16868672", "Q218005", "Q13780930", "Q16657634"]);
+const SPK_L1 = new Set(["Q36870", "Q924130"]);
+const SPK_L2 = new Set(["Q125421", "Q150352"]);
+const CURRENT_YEAR = new Date().getUTCFullYear();
+
+/** A statement's kind from its P518 set: total (none, or all total-ish), L1, L2, else "other". */
+const spkKind = (ap) => {
+  const a = [...ap];
+  if (!a.length || a.every((x) => SPK_TOTAL.has(x))) return "total";
+  if (a.every((x) => SPK_L1.has(x))) return "L1";
+  if (a.every((x) => SPK_L2.has(x))) return "L2";
+  return "other";
+};
+
+/** The worldwide total at one point in time: the larger of (best first-language + best second-
+ *  language) and the best standalone total. Summing L1 and L2 only within the same date keeps a
+ *  figure a real simultaneous count, never two eras added together. */
+const groupPeak = (G) => {
+  const best = (kind) => G.reduce((m, s) => (spkKind(s.ap) === kind ? Math.max(m, s.v) : m), 0);
+  return Math.max(best("L1") + best("L2"), best("total"));
+};
+
+/** The agreed speaker figure for one language: its peak worldwide speaker count. Every non-
+ *  projection P1098 statement is grouped by point in time, and across those dates we take the
+ *  largest `groupPeak` — so a declined or dead language keeps its historical maximum without a
+ *  type special-case, and a growing one its current figure. A P585 year after this one is a
+ *  projection, not a peak, and drops out unless it is all there is. With only by-place figures
+ *  (no worldwide total/L1/L2), the peak per place summed stands in for the missing total. */
+const speakerFigure = (S) => {
+  if (!S.length) return null;
+  let W = S.filter((s) => !s.pl.size && spkKind(s.ap) !== "other");
+  const dated = W.filter((s) => s.t <= CURRENT_YEAR);
+  if (dated.length) W = dated;
+  if (W.length) {
+    const byTime = {};
+    for (const s of W) (byTime[s.t] ??= []).push(s);
+    return Math.max(...Object.values(byTime).map(groupPeak));
+  }
+  const byPlace = {};
+  for (const s of S) for (const p of s.pl.size ? [...s.pl] : [...s.ap]) (byPlace[p] ??= []).push(s);
+  return Object.values(byPlace).reduce((n, ss) => n + Math.max(...ss.map((s) => s.v)), 0);
+};
 
 /** SPARQL GET with retry on the transient statuses query.wikidata.org throws under load. */
 async function query(sparql, tries = 5) {
@@ -122,19 +177,25 @@ async function query(sparql, tries = 5) {
 /** `Q…` from a Wikidata entity URI. */
 const qid = (uri) => uri.replace(/^.*\/entity\//, "");
 
-/** The membership Q-ids: modern-family languages that carry a positive speaker count OR
- *  an ISO 639-1 code. Two narrow queries (each anchored on the cheap side before the
- *  path traversal) unioned, rather than one that walks the whole family and filters. */
+/** The membership Q-ids: the class-gated speaker set unioned with every ISO-coded language
+ *  (639-1 / -2 outright, 639-3 with a speaker count), minus the type-of-language meta-items that
+ *  carry a collective code. Narrow queries anchored on the cheap side before any path traversal,
+ *  rather than one that walks the whole family and filters. See the header for the rule. */
 async function memberIds() {
   const bySpeakers = await query(`SELECT DISTINCT ?l WHERE {
     ?l wdt:P1098 ?spk. FILTER(?spk > 0)
     ?l wdt:P31/wdt:P279* ?c. VALUES ?c { ${wlValues} }
   }`);
-  const byIso = await query(`SELECT DISTINCT ?l WHERE {
-    ?l wdt:P218 ?code.
-    ?l wdt:P31/wdt:P279* ?c. VALUES ?c { ${wlValues} }
-  }`);
-  return [...new Set([...bySpeakers, ...byIso].map((r) => qid(r.l.value)))];
+  const byIso1 = await query(`SELECT DISTINCT ?l WHERE { ?l wdt:P218 []. }`);
+  const byIso2 = await query(`SELECT DISTINCT ?l WHERE { ?l wdt:P219 []. }`);
+  const byIso3 = await query(`SELECT DISTINCT ?l WHERE { ?l wdt:P220 []. ?l wdt:P1098 ?spk. FILTER(?spk > 0) }`);
+  // The only coded instances of "type of language" (Q20829075): crp, und, mis, art, sgn. A kind
+  // of language, not a language — so they drop out, without a hand-kept Q-id list.
+  const exclude = new Set(
+    (await query(`SELECT DISTINCT ?l WHERE { ?l wdt:P31 wd:Q20829075. }`)).map((r) => qid(r.l.value)),
+  );
+  const ids = [...bySpeakers, ...byIso1, ...byIso2, ...byIso3].map((r) => qid(r.l.value));
+  return [...new Set(ids)].filter((q) => !exclude.has(q));
 }
 
 /** Structure for `qids` in chunks: `{ qid: { code, speakers, flags } }`. */
@@ -146,11 +207,40 @@ async function dumpStructure(qids, chunk = 40) {
       const q = qid(r.item.value);
       out[q] = {
         code: r.iso1?.value || r.iso2?.value || r.iso3?.value || "",
-        speakers: r.speakers ? Number(r.speakers.value) : null,
         flags: Object.fromEntries(FLAG_KEYS.map((k) => [k, r[k]?.value === "true"])),
       };
     }
     process.stdout.write(`  structure ${Math.min(i + chunk, qids.length)}/${qids.length}\r`);
+    await sleep(300);
+  }
+  return out;
+}
+
+/** The agreed speaker figure for each of `qids`, in chunks: `{ qid: number | null }`. Reads
+ *  every non-deprecated P1098 statement with its qualifiers and folds it with `speakerFigure`. */
+async function dumpSpeakers(qids, chunk = 50) {
+  const out = {};
+  for (let i = 0; i < qids.length; i += chunk) {
+    const slice = qids.slice(i, i + chunk);
+    const values = slice.map((q) => `wd:${q}`).join(" ");
+    const byItem = {};
+    for (const r of await query(SPEAKERS(values))) {
+      const item = qid(r.item.value);
+      const stmts = (byItem[item] ??= {});
+      const s = (stmts[r.st.value] ??= {
+        v: Number(r.v.value),
+        t: Number(r.t?.value?.slice(0, 4)) || 0,
+        ap: new Set(),
+        pl: new Set(),
+      });
+      if (r.ap) s.ap.add(qid(r.ap.value));
+      if (r.pl) s.pl.add(r.pl.value);
+    }
+    for (const q of slice) {
+      const fig = speakerFigure(Object.values(byItem[q] ?? {}));
+      out[q] = fig != null && fig > 0 ? fig : null;
+    }
+    process.stdout.write(`  speakers ${Math.min(i + chunk, qids.length)}/${qids.length}\r`);
     await sleep(300);
   }
   return out;
@@ -214,6 +304,9 @@ async function main() {
   const ids = await memberIds();
   console.log(`members — ${ids.length}`);
   const struct = await dumpStructure(ids);
+  const speakers = await dumpSpeakers(ids);
+  for (const q of ids) if (struct[q]) struct[q].speakers = speakers[q] ?? null;
+  console.log(`\nspeakers — ${ids.filter((q) => struct[q]?.speakers != null).length} of ${ids.length} with a figure`);
 
   // Descending by speakers, so the file reads in tier order and the build cuts thresholds
   // down a sorted list. No figure sorts last (Latin's absent count). Ties break by Q-id, so
@@ -232,10 +325,12 @@ async function main() {
   );
   console.log(`\nstructure — ${ranked.length}`);
 
-  const order = ranked.map((l) => l.lang);
-  const names = await dumpNames(order, order, struct);
+  // Names keyed and ordered by Q-id, not speaker rank: the build reads them by Q-id, so order is
+  // cosmetic — a stable key keeps this file's diff to real name changes, not a re-rank reshuffle.
+  const qidOrder = [...ids].sort((a, b) => a.localeCompare(b));
+  const names = await dumpNames(ids, qidOrder, struct);
   await writeFile(join(OUT, "language-names.json"), JSON.stringify(names, null, 2) + "\n", "utf8");
-  console.log(`\nnames — ${order.length}`);
+  console.log(`\nnames — ${qidOrder.length}`);
 }
 
 main().catch((err) => {
