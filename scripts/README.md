@@ -61,7 +61,8 @@ Kept for the next list that needs them, not part of any routine.
 | --- | --- |
 | `tier-by-fame` | Orders a flat list into fame tiers from a quiz result (`data-raw/**/Fame.txt`). Writes only with `--write`, and won't be re-run once a list's tiers are hand-nudged. |
 | `omission-report` | Shows what each omission rule actually catches and leaves behind — the *right?* companion to validate's *valid?*. |
-| `dissolve-groups` · `flatten-topics` | Structural codemods left over from the topic-format migrations. |
+
+`test/` holds the Wikidata overlap research behind the language dump's membership rule — `Wikidata_Language_Query.md`, `Wikidata_Language_Property_Counts.csv`, `Wikidata_Language_Types.csv` and `Language_Type_Venn.png`, cited from `geography/dump-language-data.mjs`.
 
 ## Shared library
 
