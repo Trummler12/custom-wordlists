@@ -22,7 +22,7 @@ What Wikidata offers for the One Piece topics, and how far it can serve as their
 - ✖️[Locations](#locations)
 - ✖️[Islands](#islands)
 - ❌[Episodes](#episodes)
-- 🔵[Films](#films)
+- ➕[Films](#films)
 - ✖️[Video Games](#video-games)
 
 ## ➕Characters
@@ -79,12 +79,15 @@ What Wikidata offers for the One Piece topics, and how far it can serve as their
 **Definition:** [is a list of](https://www.wikidata.org/wiki/Property:P360): [television series episode](https://www.wikidata.org/wiki/Q21191270), [part of the series](https://www.wikidata.org/wiki/Property:P179): [One Piece](https://www.wikidata.org/wiki/Q710324)  
 **Assessment:** Barely anyone knows individual Episodes’ Titles.
 
-## 🔵Films
+## ➕Films
 
 **Associated List:** [list of One Piece films (Q61721857)](https://www.wikidata.org/wiki/Q61721857)  
 **Definition:** [is a list of](https://www.wikidata.org/wiki/Property:P360): [animated feature film](https://www.wikidata.org/wiki/Q29168811), [part of the series](https://www.wikidata.org/wiki/Property:P179): [One Piece](https://www.wikidata.org/wiki/Q4431905)
 
 **Check (2026-10-07):** 10 films are linked via *part of the series* (P179), but none is typed *animated feature film* as the definition expects, so its query finds 0.
+
+**Check (2026-11-03):** 10 films by the definition (P179 Q4431905), against 17 on the One Piece Wiki (`onepiece.fandom.com/wiki/Category:One_Piece_Movies`). Batch `2026-11-03_one-piece-films.txt` (14 commands, imported and verified 2026-11-03) adds the link to *Clockwork Island Adventure*, *Chopper's Kingdom*, *Episode of Chopper Plus*, *3D: Mugiwara Chase*, *Film: Red* and the announced *God Valley* and *Baad*. **Candidate rule:** `upcoming` (omitted): a film dated in the future (2027, 2029). TV specials (*Heart of Gold*) stay out, as Wikidata has them.
+**Rating:** ➕ (was 🔵).
 
 ## ✖Video Games
 

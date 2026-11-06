@@ -21,6 +21,7 @@ What Wikidata offers for the Olympics topics, and how far it can serve as their 
 - ➕[Summer Athletes](#summer-athletes)
 - ☑️[Winter Sports](#winter-sports)
 - ➕[Winter Athletes](#winter-athletes)
+- [Candidates](#candidates)
 
 
 ## ✅Summer Sports
@@ -63,7 +64,7 @@ Wikidata marks the events of sports that were only shown, not contested for meda
 | edition events under another sport QID (2026-10-09) | polo (dated through its tournaments since; resolved), ten-pin bowling (1988 event names generic *bowling*), field lacrosse (1904 to 1948 events name generic *lacrosse*) |
 
 **Rule:** `demonstration-sports`, omitted, for a sport every one of whose Games events is a demonstration; `discontinued` keeps the ones contested for medals at least once. A meaningful class (these were at the Games, just never for medals), so a rule rather than an exclusion, and the same rule in both seasons.  
-**Gaps on Wikidata, fixed (2026-10-09, sourced from Olympedia; imported and checked on the items the same day; files in `_data/QuickStatements/imported/`):**
+**Gaps on Wikidata, fixed (2026-10-09, sourced from Olympedia; imported and checked on the items the same day):**
 
 | Batch (`_data/QuickStatements/`) | Edits | What |
 | :---- | :---- | :---- |
@@ -353,7 +354,7 @@ sports/
 - **`future-disciplines`** needs the next edition's events. Only the Olympics have them yet (2028, part of 2030), so it is empty elsewhere.
 - **`child-discipline`** reads the same: the Para variants are P279 children of their Olympic sport, but a parent counts only within the same list, so wheelchair basketball stays base in the Paralympics list.
 
-**Wikidata batches from this pass** (imported and checked on the items 2026-10-09; files in `_data/QuickStatements/imported/`):
+**Wikidata batches from this pass** (imported and checked on the items 2026-10-09):
 
 | Batch | Edits | What |
 | :---- | ----: | :---- |
@@ -366,5 +367,58 @@ sports/
 **Left as they are:**
 - The Summer Olympics' stray P641 values (archery, 3x3 basketball, figure skating) on the series item. They are wrong as a description, but a series of many sports has no single value to put instead; a manual cleanup, not a batch.
 - The cultural programme's *sport competition* class: its right class is a judgement call.
+
+## Candidates
+
+**Check (2026-11-03):** `_scripts/candidates-science.mjs`. Clubs, NBA teams, Formula 1 and tennis are `plannedTopic`s of PR #39, so here only what PR #39 asked of this analysis, the class filter.
+
+**For PR #39's topics:**
+- **NBA teams:** P118 NBA, class *basketball team*: 38, 8 ended, as an `omitted` rule. Clean.
+- **NFL teams:** P118 alone gives 146, of them 78 people, Super Bowls and seasons. With *American football team*: 32 and 21 defunct.
+- **Football clubs:** *association football club* gives 660 from 40 sitelinks; 204 national teams are out by class. League on 672 of the 882 measured.
+- **Formula 1 drivers:** P106 *Formula One driver*: 561 from 20, starts (P1350) on 553. Clean.
+- **Tennis players:** P106 alone lets in George VI, Diego Forlán and Paolo Maldini, who played as a pastime. Ranking (P1352) on 159 of the 187 from 40 is the filter to test.
+- **Formula 1 circuits:** not measured; my first pattern found nothing usable.
+
+**Free candidates:**
+
+**Olympic Host Cities** (➕; tiers approved by Trummler, 2026-11-04). Measured against [Olympedia's list of editions](https://www.olympedia.org/editions), without the five cancelled Games and the 1956 equestrian events in Stockholm: 46 hosts up to 2034.
+
+| Games hosted | Hosts | Who |
+| ---: | ---: | --- |
+| 3 | 3 | London, Paris, Los Angeles (with 2028) |
+| 2 | 8 | Athens, Tokyo, Beijing, St. Moritz, Lake Placid, Innsbruck, Cortina d'Ampezzo, Salt Lake City (with 2034) |
+| 1 | 35 | 18 Summer (Rome, Sydney, Rio ...), 17 Winter (Oslo, Sochi, Nagano ...) |
+
+- **Tiers:** the count alone leaves three quarters on one level, so that level splits by season: at least two Games (11), once in Summer (18), once in Winter (17). A range ruler by year fits on top.
+- **Wikidata's P276 can't draw it as it stands.** It mixes hosts with venue towns (Bormio, Whistler, Kvitfjell), stadiums and cancelled Games, which is why London counts 4 and Tokyo 3. Cancelled Games have a class on the Winter side only.
+- **Missing host in P276 (14):** Oslo 1952, Innsbruck 1964, Sapporo 1972, Munich 1972, Los Angeles 1984, Sarajevo 1984, Seoul 1988, Albertville 1992, Nagano 1998, Salt Lake City 2002 and 2034, Turin 2006, Vancouver 2010, PyeongChang 2018. **Batch** `2026-11-05_olympic-host-cities.txt` (**pending**): 13 from Olympedia's edition pages; Munich has it by now. P276 still mixes hosts with venues, so the list of 46 goes checked into `data-raw/`.
+
+**Other sports candidates (check 2026-11-06):**
+
+| Candidate | Base | Members | Rating |
+| --- | --- | ---: | --- |
+| NBA Teams | P118 NBA, no dissolution date | 30, all from 64 sitelinks | ☑ ready: exactly the 30 |
+| NFL Teams | P118 NFL, no dissolution date, from 20 sitelinks | 32 | ☑ ready: one stray below 20 |
+| Formula 1 Drivers | occupation *Formula One driver* (Q10841764) | 1,075; 561 from 20, 61 from 50 | ➕ tiers by sitelinks (Schumacher 172, Hamilton 117) |
+| Tennis Players | occupation *tennis player* with an ATP or WTA ID | 1,087 from 20; 90 from 50 | ➕ the IDs drop kings and players from other fields (George VI, Diego Forlán), but also early stars (Suzanne Lenglen, Althea Gibson): a short hand list |
+| Football Clubs | P31 *association football club* | 2,122 from 20; 336 from 50 | ➕ tiers by sitelinks (Real Madrid 153, Manchester United 148) |
+| Formula 1 Circuits | *race track* class, 86 from 20 | no link from the races found | ❓ the circuit of a Grand Prix isn't readable this way; research `optional/F1_Circuits_List.md` |
+| Paralympics, World Games, Commonwealth Games, Asian Games | the sport of every event of an edition | 0 to 5 | ❓ events aren't linked like the Olympics'; research `Multi_Sport_Games_Programmes.md` |
+
+**Non-Olympic Sports** (➕). P31 *type of sport* (Q31629) or under *sport* (Q349), from 20 sitelinks: 576. Minecraft and art are no longer in, and classes split most of the rest:
+
+| Split | Members | Treatment |
+| --- | ---: | --- |
+| under *Olympic sport* | 170 | out (football, tennis, judo) |
+| *recurring sporting event* | 73 | out (Monaco Grand Prix) |
+| under *mind sport* | 27 | `omitted` `mind-sports` (chess, poker, sudoku) |
+| under *motorsport* | 29 | `omittable` `motorsports` |
+| under *dance* | 23 | `omitted` `dance` (waltz, polka) |
+| under *Para sport* | 14 | `omitted` `para-sports` |
+| rest | 219 | base (cricket, American football, darts, squash, kabaddi, netball) |
+
+- **Read-through left:** the rest holds abstract classes (team sport, winter sport, combat sport), things that aren't sports (arms race, history of chess, card game) and blood sports (cockfight, dog fighting, a candidate for a rule of their own). A hand-sized exclusion list.
+- **What counts as Olympic:** the class goes by history loosely: baseball and golf are in it, cricket (played in 1900) is not. The line is better drawn against our own Summer and Winter lists. Formula One isn't reached by this base; *esports* (59) stays one entry.
 
 ## [to Navigation](#navigation)

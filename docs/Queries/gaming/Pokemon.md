@@ -215,7 +215,7 @@ The direction is right everywhere, but from generation 5 on most species have 2 
 
 **Answer to the question:** the explicit list of sufficiently official languages is exactly the build's: en, de, fr, es (and es-419), it, ja (and the derived ja-Latn), ko, zh-Hans, zh-Hant. Every other language shows the English name, which is already what an absent key means. No threshold is needed, and Wikidata's transliterations stay out.
 
-**Wikidata batch from this pass** (imported and checked on the items 2026-10-09; file in `_data/QuickStatements/imported/`):
+**Wikidata batch from this pass** (imported and checked on the items 2026-10-09):
 
 | Batch | Edits | What |
 | :---- | ----: | :---- |
@@ -365,5 +365,9 @@ Refs: this file, Pokémon => Labels: official where the games are released, and 
 
 **Check (2026-10-07):** The definition (*part of* = Pokémon video games) matches no video game; 103 games are linked via *media franchise* (P8345) = Pokémon (Q864).  
 **Rating:** ➕ (was 🔵), assuming the real number is a little above that.
+
+**Check (2026-11-06):** 102 games by P8345 Pokémon (98 *video game*, 3 DLC, 2 apps). Sitelinks can't rank them: the paired releases have their own items with few links (Pokémon Red 9, Sword 2), as the articles sit on the pair items. The series property is mixed (P179 *Pokémon* 39, *Pokémon video games* 13, spin-off series beside). Research: `optional/Pokemon_Games_List.md`; pokemon.com builds its game list by script, and Bulbapedia's Category:Games holds 263 pages with non-video games among them.
+
+**Decided (Trummler, 2026-11-06):** tiers by sales only: units sold, or for free games like Pokémon GO downloads or peak players, whichever reflects fame better. Core series, spin-offs, mobile games and DLC become rules that combine freely, not tier conditions. Wikidata has *units sold* (P2664) on 14 of the 102 (Legends: Arceus 14.8 million, Platinum 7.1 million); research `Pokemon_Game_Sales.md`. Bulbapedia's overview of 122 games marks the core series (`done/Pokemon_Games_List.md`).
 
 ## [to Navigation](#navigation)

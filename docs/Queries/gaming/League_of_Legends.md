@@ -42,7 +42,7 @@ What Wikidata offers for the League of Legends topics, and how far it can serve 
 **Labels:** Wikidata names the champions in ja (157), ko (162) and ru (154), elsewhere hardly at all (de 17, fr 12, zh-Hant 11, zh 10, es 8, zh-Hans 0). Five carry a disambiguator (fr Caitlyn, Warwick; it Viktor; vi Jinx, Vi), and so does it *Pentakill (gruppo musicale)*; batched.  
 **The better name source is Riot's own:** Data Dragon publishes every champion's official name in 28 locales (cs, de, el, es, fr, hu, id, it, ja, ko, pl, pt-BR, ro, ru, th, tr, vi, zh-CN, zh-TW, …), one request per locale. It covers what our list lacks (ja, ko, zh-Hans, zh-Hant, ru, el and the rest) with official names, which Wikidata can't match.
 
-**Wikidata batches from this pass** (imported and checked on the items 2026-10-10: the eight new items are Q141680380 to Q141680399, each with its references; files in `_data/QuickStatements/imported/`):
+**Wikidata batches from this pass** (imported and checked on the items 2026-10-10: the eight new items are Q141680380 to Q141680399, each with its references):
 
 | Batch | Edits | What |
 | :---- | ----: | :---- |
@@ -95,5 +95,7 @@ Refs: this file, Champions, "Name forms beyond short / long"; _data/Prompts/done
 **Assessment:** List lacks definition
 
 **Check (2026-10-07):** Still no P360 definition; the 164 linked characters are the champions.
+
+**Check (2026-11-06):** the League of Legends Wiki on Fandom (readable through its API) has 246 pages in Category:Characters, 179 of them in *Characters in League of Legends*; the rest come from Arcane (33), Legends of Runeterra, Ruined King and the lore. So about 70 non-champion characters exist as a list, readable by script; Wikidata holds none of them yet. A list for the build, then items if wanted.
 
 ## [to Navigation](#navigation)

@@ -41,6 +41,10 @@ Use the relative File Paths/Links provided on the Items listed in the [Overview 
   - [Candidates](#candidates-5)
 - [Science](#science):
   - [Chemistry](./science/Chemistry.md#navigation)
+  - [Biology](./science/Biology.md#navigation)
+  - [Astronomy](./science/Astronomy.md#navigation)
+  - [Geology](./science/Geology.md#navigation)
+  - [Physics](./science/Physics.md#navigation)
   - [Candidates](#candidates-6)
 - [Sports](#sports):
   - [Olympics](./sports/Olympics.md#navigation)
@@ -69,25 +73,27 @@ Use the relative File Paths/Links provided on the Items listed in the [Overview 
   - ➕[Video Games](./animation/South_Park.md#video-games)
 - [SpongeBob SquarePants](./animation/SpongeBob.md#navigation)
   - ➕[Characters](./animation/SpongeBob.md#characters)
-  - 🔵[Locations](./animation/SpongeBob.md#locations)
+  - ➕[Locations](./animation/SpongeBob.md#locations)
   - ❌[Episodes](./animation/SpongeBob.md#episodes)
   - ✖️[Video Games](./animation/SpongeBob.md#video-games)
 - [The Simpsons](./animation/The_Simpsons.md#navigation)
   - ➕[Characters](./animation/The_Simpsons.md#characters)
-  - 🔵[Locations](./animation/The_Simpsons.md#locations)
+  - ➕[Locations](./animation/The_Simpsons.md#locations)
   - ❌[Episodes](./animation/The_Simpsons.md#episodes)
   - ✖️[Video Games](./animation/The_Simpsons.md#video-games)
 
 #### Candidates
 
-- Family Guy
-- Futurama
-- Rick and Morty
-- Avatar: The Last Airbender
-- Gravity Falls
-- Looney Tunes
-- Scooby-Doo
-- Tom and Jerry
+Fullest character lists per franchise (2026-11-06, `_data/Prompts/done/Character_Lists_*.md`; Fandom counts read from its category API), then the characters Wikidata links to the franchise, its works or its universe (P1441, P1080; a rough count: Futurama includes a star and a cryptid, Scooby-Doo its DC crossovers):
+
+- Family Guy: Fandom 1,077 bit characters; Wikidata 97 (19 from 5)
+- Futurama: Fandom 848; Wikidata 125 (15 from 5)
+- Rick and Morty: Fandom 1,083; Wikidata 15 (6 from 5)
+- Avatar: The Last Airbender: Fandom 1,097; Wikidata 60 (19 from 5)
+- Gravity Falls: Fandom 342; Wikidata 26 (4 from 5)
+- Looney Tunes: Fandom 571; Wikidata 86 (38 from 5)
+- Scooby-Doo: none found (Fandom has 13 pages, 143 subcategories); Wikidata 239 (16 from 5)
+- Tom and Jerry: none found (Fandom has 1,057); Wikidata 14 (5 from 5)
 
 ### Anime
 
@@ -95,7 +101,7 @@ Use the relative File Paths/Links provided on the Items listed in the [Overview 
   - ➕[Characters](./anime/Dragon_Ball.md#characters)
   - ✖️[Locations](./anime/Dragon_Ball.md#locations)
   - ❌[Episodes](./anime/Dragon_Ball.md#episodes)
-  - 🔵[Films](./anime/Dragon_Ball.md#films)
+  - ➕[Films](./anime/Dragon_Ball.md#films)
   - ✖️[Video Games](./anime/Dragon_Ball.md#video-games)
 - [One Piece](./anime/One_Piece.md#navigation)
   - ➕[Characters](./anime/One_Piece.md#characters)
@@ -105,28 +111,28 @@ Use the relative File Paths/Links provided on the Items listed in the [Overview 
   - ✖️[Locations](./anime/One_Piece.md#locations)
   - ✖️[Islands](./anime/One_Piece.md#islands)
   - ❌[Episodes](./anime/One_Piece.md#episodes)
-  - 🔵[Films](./anime/One_Piece.md#films)
+  - ➕[Films](./anime/One_Piece.md#films)
   - ✖️[Video Games](./anime/One_Piece.md#video-games)
 - [Pokémon (Anime)](./anime/Pokemon.md#navigation)
   - ✖️[Characters](./anime/Pokemon.md#characters)
   - ➕[Locations](./anime/Pokemon.md#locations)
   - ❌[Episodes](./anime/Pokemon.md#episodes)
   - ✖️[Openings (theme songs)](./anime/Pokemon.md#openings-theme-songs)
-  - 🔵[Films](./anime/Pokemon.md#films)
+  - ➕[Films](./anime/Pokemon.md#films)
   - ➕[Video Games](./anime/Pokemon.md#video-games)
 
 #### Candidates
 
-- Naruto
-- Attack on Titan
-- Demon Slayer
-- My Hero Academia
-- Sailor Moon
-- Death Note
-- Digimon
-- Yu-Gi-Oh!
-- JoJo's Bizarre Adventure
-- Studio Ghibli
+- Naruto: official 488 (narutop99), Fandom 1,458; Wikidata 172 (65 from 5)
+- Attack on Titan: Fandom 228; Wikidata 43 (3 from 5)
+- Demon Slayer: Fandom 156; Wikidata 17 (3 from 5)
+- My Hero Academia: official about 40 (heroaca.com), Fandom 468; Wikidata 34 (4 from 5)
+- Sailor Moon: none found; Wikidata 58 (19 from 5)
+- Death Note: Fandom about 100; Wikidata 29 (10 from 5)
+- Digimon: official about 1,000 (digimon.net), Wikimon 1,652; Wikidata 1315 (51 from 5)
+- Yu-Gi-Oh!: Fandom 3,630; Wikidata 518 (10 from 5)
+- JoJo's Bizarre Adventure: official about 50, JoJo Wiki about 500; Wikidata 41 (13 from 5)
+- Studio Ghibli: official 24 works, Fandom 109; Wikidata 65 (7 from 5)
 
 ### Comics
 
@@ -141,11 +147,11 @@ Use the relative File Paths/Links provided on the Items listed in the [Overview 
 
 #### Candidates
 
-- Asterix
-- The Adventures of Tintin
-- Peanuts
-- Garfield
-- Lucky Luke
+- Asterix: Wikidata 60 (12 from 5)
+- The Adventures of Tintin: Wikidata 18 (10 from 5)
+- Peanuts: Wikidata 34 (18 from 5)
+- Garfield: Wikidata 6 (3 from 5)
+- Lucky Luke: Wikidata 13 (4 from 5)
 
 ### Film & TV
 
@@ -162,13 +168,13 @@ Use the relative File Paths/Links provided on the Items listed in the [Overview 
 #### Candidates
 
 - Pixar
-- DreamWorks Animation
-- Marvel Cinematic Universe
-- Star Trek
-- James Bond
-- Game of Thrones
-- Jurassic Park
-- Doctor Who
+- DreamWorks Animation: Fandom 1,165
+- Marvel Cinematic Universe: official about 1,200 (marvel.com, all comics), Fandom 9,390
+- Star Trek: Memory Alpha 2,536 individuals
+- James Bond: Fandom about 100 (a status category)
+- Game of Thrones: A Wiki of Ice and Fire about 2,000
+- Jurassic Park: Fandom 575
+- Doctor Who: Tardis Wiki 122 (a narrow category)
 
 ### Gaming
 
@@ -189,19 +195,20 @@ Use the relative File Paths/Links provided on the Items listed in the [Overview 
   - ➕[Locations](./gaming/Pokemon.md#locations)
   - ➕[Video Games](./gaming/Pokemon.md#video-games)
 - [Video Games](./gaming/Video_Games.md#navigation)
+  - ✖️[Characters](./gaming/Video_Games.md#characters)
 
 #### Candidates
 
-- Super Mario
-- The Legend of Zelda
-- Minecraft
-- Sonic the Hedgehog
-- Super Smash Bros.
-- Overwatch
-- Dota 2
-- Valorant
-- Genshin Impact
-- Fortnite
+- Super Mario: Super Mario Wiki 441 playable, about 1,000
+- The Legend of Zelda: Zelda Wiki 1,000+
+- Minecraft: official 9 mobs only
+- Sonic the Hedgehog: Fandom 46 game characters (an index)
+- Super Smash Bros.: official roster 89, complete
+- Overwatch: Fandom 55 heroes
+- Dota 2: Fandom 127 heroes
+- Valorant: Fandom 31 agents
+- Genshin Impact: Fandom 136 playable
+- Fortnite: Fandom 3,269 outfits
 
 ### Geography
 
@@ -212,44 +219,54 @@ Use the relative File Paths/Links provided on the Items listed in the [Overview 
   - ➕[Sub-Capitals](./geography/Human.md#sub-capitals)
   - ➕[Cities](./geography/Human.md#cities)
   - ✅[Languages](./geography/Human.md#languages)
+  - ➕[World Heritage Sites](./geography/Human.md#world-heritage-sites)
+  - ➕[Currencies](./geography/Human.md#currencies)
 - [Physical Geography](./geography/Physical.md#navigation)
   - ✅[Continents](./geography/Physical.md#continents)
   - ➕[Oceans & Seas](./geography/Physical.md#oceans--seas)
-  - 🔵[Islands](./geography/Physical.md#islands)
-  - 🔵[Mountains](./geography/Physical.md#mountains)
-  - 🔵[Deserts](./geography/Physical.md#deserts)
-  - 🔵[Rivers](./geography/Physical.md#rivers)
-  - 🔵[Lakes](./geography/Physical.md#lakes)
-  - 🔵[Climate Zones](./geography/Physical.md#climate-zones)
+  - ➕[Islands](./geography/Physical.md#islands)
+  - ➕[Mountains](./geography/Physical.md#mountains)
+  - ➕[Deserts](./geography/Physical.md#deserts)
+  - ➕[Rivers](./geography/Physical.md#rivers)
+  - ➕[Lakes](./geography/Physical.md#lakes)
+  - ➕[Climate Zones](./geography/Physical.md#climate-zones)
+  - ➕[Volcanoes](./geography/Physical.md#volcanoes)
+  - ➕[Mountain Ranges](./geography/Physical.md#mountain-ranges)
+  - ➕[Waterfalls](./geography/Physical.md#waterfalls)
+  - ✖️[National Parks](./geography/Physical.md#national-parks)
+  - [Candidates](./geography/Physical.md#candidates)
 
 #### Candidates
 
-- Volcanoes
-- Mountain Ranges
-- Waterfalls
 - Peninsulas
 - Straits & Canals
-- National Parks
-- World Heritage Sites
-- Currencies
 
 ### Science
 
 - [Chemistry](./science/Chemistry.md#navigation)
   - ✅[Chemical Elements](./science/Chemistry.md#chemical-elements)
+  - [Candidates](./science/Chemistry.md#candidates)
+- [Biology](./science/Biology.md#navigation)
+  - ➕[Organs & Organelles](./science/Biology.md#organs--organelles)
+  - ➕[Human Bones](./science/Biology.md#human-bones)
+  - [Candidates](./science/Biology.md#candidates)
+- [Astronomy](./science/Astronomy.md#navigation)
+  - ☑️[Planets & Asteroids](./science/Astronomy.md#planets--asteroids)
+  - ➕[Comets](./science/Astronomy.md#comets)
+  - ➕[Exoplanets](./science/Astronomy.md#exoplanets)
+  - ☑️[Moons](./science/Astronomy.md#moons)
+  - ☑️[Constellations](./science/Astronomy.md#constellations)
+  - ☑️[Stars](./science/Astronomy.md#stars)
+  - ❓[Deep-Sky Objects](./science/Astronomy.md#deep-sky-objects)
+- [Geology](./science/Geology.md#navigation)
+  - ☑️[Minerals](./science/Geology.md#minerals)
+- [Physics](./science/Physics.md#navigation)
+  - ☑️[SI Units](./science/Physics.md#si-units)
 
 #### Candidates
 
-- Planets & Dwarf Planets
-- Moons
-- Constellations
-- Stars
-- Dinosaurs
-- Animals
-- Human Bones
-- Organs
-- SI Units
-- Minerals
+- Substance Classes
+- Taxonomy
 
 ### Sports
 
@@ -258,6 +275,7 @@ Use the relative File Paths/Links provided on the Items listed in the [Overview 
   - ➕[Summer Athletes](./sports/Olympics.md#summer-athletes)
   - ☑️[Winter Sports](./sports/Olympics.md#winter-sports)
   - ➕[Winter Athletes](./sports/Olympics.md#winter-athletes)
+  - [Candidates](./sports/Olympics.md#candidates)
 
 #### Candidates
 

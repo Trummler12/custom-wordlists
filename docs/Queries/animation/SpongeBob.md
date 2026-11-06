@@ -16,7 +16,7 @@ What Wikidata offers for the SpongeBob SquarePants topics, and how far it can se
 
 [Animation](../README.md#animation)
 - ➕[Characters](#characters)
-- 🔵[Locations](#locations)
+- ➕[Locations](#locations)
 - ❌[Episodes](#episodes)
 - ✖️[Video Games](#video-games)
 
@@ -43,12 +43,15 @@ SELECT DISTINCT ?item WHERE {
 ```
 **Exclusion list:** the musical's roles (class Q63975020): no entries of their own, the animated characters already are.
 
-## 🔵Locations
+## ➕Locations
 
 **Associated List:** [list of SpongeBob SquarePants locations (Q4295475)](https://www.wikidata.org/wiki/Q4295475)  
 **Definition:** [is a list of](https://www.wikidata.org/wiki/Property:P360): [fictional location](https://www.wikidata.org/wiki/Q3895768), [part of the series](https://www.wikidata.org/wiki/Property:P179): [SpongeBob SquarePants](https://www.wikidata.org/wiki/Q83279)
 
 **Check (2026-10-07):** The definition's qualifier (P179) matches nothing either; 57 fictional locations are linked via P1441. Not yet compared with the real number.
+
+**Second check (2026-11-03):** the 57 hold the places a reader knows (the Krusty Krab, Bikini Bottom, the Chum Bucket, Jellyfish Fields, Goo Lagoon, Rock Bottom), but only five have a sitelink, so sitelinks can't give tiers. Whether 57 is near complete is open: optional research `_data/Prompts/optional/Animation_Location_Lists.md`.
+**Rating:** ➕ (was 🔵), tiers open.
 
 ## ❌Episodes
 

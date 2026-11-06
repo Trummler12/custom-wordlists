@@ -16,7 +16,7 @@ What Wikidata offers for the The Simpsons topics, and how far it can serve as th
 
 [Animation](../README.md#animation)
 - ➕[Characters](#characters)
-- 🔵[Locations](#locations)
+- ➕[Locations](#locations)
 - ❌[Episodes](#episodes)
 - ✖️[Video Games](#video-games)
 
@@ -42,12 +42,15 @@ SELECT DISTINCT ?item WHERE {
 }
 ```
 
-## 🔵Locations
+## ➕Locations
 
 **Associated List:** [list of The Simpsons locations (Q3526785)](https://www.wikidata.org/wiki/Q3526785)  
 **Definition:** [is a list of](https://www.wikidata.org/wiki/Property:P360): [fictional location](https://www.wikidata.org/wiki/Q3895768), [from narrative universe](https://www.wikidata.org/wiki/Property:P1080): [The Simpsons universe](https://www.wikidata.org/wiki/Q61468436)
 
 **Check (2026-10-07):** 29 fictional locations, linked via *from narrative universe* (P1080); the definition finds 0 without subclasses and 29 with them. Not yet compared with the real number.
+
+**Second check (2026-11-03):** 26 by universe or series link now (the Kwik-E-Mart, Moe's Tavern, the Simpsons' house, the nuclear power plant, Shelbyville); 19 have a sitelink, so they rank better than SpongeBob's. The show has many more places, so this is likely far from complete: optional research `_data/Prompts/optional/Animation_Location_Lists.md`.
+**Rating:** ➕ (was 🔵).
 
 ## ❌Episodes
 

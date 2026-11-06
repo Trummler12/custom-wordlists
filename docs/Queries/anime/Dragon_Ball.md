@@ -18,7 +18,7 @@ What Wikidata offers for the Dragon Ball topics, and how far it can serve as the
 - ➕[Characters](#characters)
 - ✖️[Locations](#locations)
 - ❌[Episodes](#episodes)
-- 🔵[Films](#films)
+- ➕[Films](#films)
 - ✖️[Video Games](#video-games)
 
 ## ➕Characters
@@ -76,12 +76,15 @@ Still: Toei's per-series pages other than *Super*'s render by script, and *Daima
 **Definition:** [is a list of](https://www.wikidata.org/wiki/Property:P360): [television series episode](https://www.wikidata.org/wiki/Q21191270), [part of the series](https://www.wikidata.org/wiki/Property:P179): [Dragon Ball](https://www.wikidata.org/wiki/Q239506)  
 **Assessment:** Barely anyone knows individual Episodes’ Titles.
 
-## 🔵Films
+## ➕Films
 
 **Associated List:** [list of Dragon Ball films (Q909572)](https://www.wikidata.org/wiki/Q909572)  
 **Definition:** [is a list of](https://www.wikidata.org/wiki/Property:P360): [film](https://www.wikidata.org/wiki/Q11424), [part of the series](https://www.wikidata.org/wiki/Property:P179): [Dragon Ball](https://www.wikidata.org/wiki/Q16515139)
 
 **Check (2026-10-07):** 24 films via *part of the series* (P179) = Dragon Ball (Q16515139). Not yet compared with the real number.
+
+**Check (2026-11-03):** 24 films by the definition (P179 Q16515139), every one with an ANN ID and its Japanese date, from *Curse of the Blood Rubies* (1986) to *Super Hero* (2022). It holds the theatrical films, the specials *Bardock* and *The History of Trunks*, and the live-action *Dragonball Evolution*. Outside the series item, rightly: the unofficial *The Magic Begins* and the Korean *Ssawora Son Goku*; *A Hero's Legacy* (a TV special) and the *Dream 9* collaboration short. **Candidate rule:** `live-action` (omitted). **Fame:** no size; sitelinks are flat (12 to 26, Evolution 36), so the release order or box office (P2142) would have to be looked at.
+**Rating:** ➕ (was 🔵).
 
 ## ✖Video Games
 

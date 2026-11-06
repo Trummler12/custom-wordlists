@@ -19,7 +19,7 @@ What Wikidata offers for the Pokémon (Anime) topics, and how far it can serve a
 - ➕[Locations](#locations)
 - ❌[Episodes](#episodes)
 - ✖️[Openings (theme songs)](#openings-theme-songs)
-- 🔵[Films](#films)
+- ➕[Films](#films)
 - ➕[Video Games](#video-games)
 
 ## ✖Characters
@@ -53,12 +53,15 @@ What Wikidata offers for the Pokémon (Anime) topics, and how far it can serve a
 **Check (2026-10-07):** The definition matches nothing: no theme music item has *used by* (P1535) = Pokémon.  
 **Rating:** ✖️ (was 🔵).
 
-## 🔵Films
+## ➕Films
 
 **Associated List:** [list of Pokémon films (Q5352741)](https://www.wikidata.org/wiki/Q5352741)  
 **Definition:** [is a list of](https://www.wikidata.org/wiki/Property:P360): [film](https://www.wikidata.org/wiki/Q11424), [part of the series](https://www.wikidata.org/wiki/Property:P179): [Pokémon](https://www.wikidata.org/wiki/Q97138261)
 
 **Check (2026-10-07):** 25 films via the definition with subclasses (1 without), 26 linked to the series overall. Not yet compared with the real number.
+
+**Check (2026-11-03):** 26 by the definition (P179 Q97138261), 25 with an ANN ID: the 23 anime films from *The First Movie* (1998) to *Secrets of the Jungle* (2020), the TV special *Mewtwo Returns*, the short *The Mastermind of Mirage Pokémon* and the live-action *Detective Pikachu*. The double release of 2011 is one item with the series link plus an item for each half, which carry none. Outside it: shorts and the announced *Wild Card* (2027). **Candidate rules:** `live-action`, `upcoming`, as for the other anime.
+**Rating:** ➕ (was 🔵).
 
 ## ➕Video Games
 
