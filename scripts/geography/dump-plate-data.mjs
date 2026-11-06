@@ -249,8 +249,10 @@ async function tectonicPlateItems() {
 /** Every item Wikidata types P31 former tectonic plate (Q141789550) — the extinct-plate
  *  class #38 created. The build reads this list for the `ancient` rule instead of a hand
  *  list, so a plate becoming (or ceasing to be) former is a Wikidata edit, not a code one.
- *  A former plate is only shown if it is also a catch-all plate (P31 tectonic plate); the
- *  ones typed former alone (e.g. the Danakil microplate) never enter the list. */
+ *  Their names are dumped alongside the catch-all (see nameIds), so a plate typed former
+ *  alone — one whose P31 tectonic plate was removed, dropping it from the catch-all — still
+ *  shows in the floor tier (hidden by default) instead of vanishing once Wikidata classifies
+ *  it. The build filters out any that carry no English label (e.g. the Danakil microplate). */
 async function formerPlateItems() {
   return (await wdqs("SELECT ?i WHERE { ?i wdt:P31 wd:Q141789550. }")).map((b) => b.i.value.split("/").pop());
 }
@@ -357,7 +359,11 @@ async function main() {
   // plate keeps the banded row here; a case-only difference is left for the build.
   const known = new Set(Object.values(items).filter(Boolean));
   const extra = (await tectonicPlateItems()).filter((q) => !known.has(q));
-  const plateIds = [...new Set([...known, ...extra])];
+  // The *former tectonic plate* class (see formerPlateItems): fetched here, not only for its
+  // own file below, so its items' terms and names ride along even when one has been typed
+  // former alone and so dropped out of the P31 tectonic-plate catch-all.
+  const former = (await formerPlateItems()).sort();
+  const plateIds = [...new Set([...known, ...extra, ...former])];
   const plateTerms = await termsFor(plateIds);
   const enLabel = (q) => (plateTerms[q]?.en ?? []).find((t) => t.pref)?.name ?? q;
   const rankedSet = new Set(ranked);
@@ -391,7 +397,9 @@ async function main() {
   // entry here; the build takes its English name from structure.tsv and its German from
   // the Bird column. The leading `area` is Bird's share in km² where there is one, else
   // Wikidata's P2046 (which only a single plate carries).
-  const nameIds = [...new Set([...known, ...extraByKey.values()])];
+  // Former plates too, so one typed *former tectonic plate* alone — gone from the catch-all,
+  // so absent from structure.tsv — still carries its names for the build's floor tier.
+  const nameIds = [...new Set([...known, ...extraByKey.values(), ...former])];
   const plateP2046 = await areasFor(nameIds);
   const birdKm2 = {};
   for (const t of ranked) {
@@ -407,9 +415,9 @@ async function main() {
   );
   logCoverage("plate name coverage:", plateNames, nameIds);
 
-  // The extinct-plate class, for the build's `ancient` rule (see formerPlateItems). Kept
-  // apart from the names, like structure.tsv: a classification, not a label.
-  const former = (await formerPlateItems()).sort();
+  // The extinct-plate class file, for the build's `ancient` rule (see formerPlateItems). Kept
+  // apart from the names, like structure.tsv: a classification, not a label. (`former` is
+  // fetched above, with the plate terms.)
   await writeFile(join(OUT, "plates", "former-plates.json"), JSON.stringify(former, null, 2) + "\n", "utf8");
   console.log(`former tectonic plates (P31 Q141789550): ${former.length}`);
 

@@ -71,19 +71,16 @@ const CATCHALL_DROP = new Set([
   //              its twin (Q25473407) was reclassified upstream, so only this is left, and it stays dropped
 ]);
 
-/** Extinct / ancient plates — no longer active, subducted or accreted long ago. The set is
- *  Wikidata's *former tectonic plate* class (Q141789550, from former-plates.json, written by
- *  the dump) plus a hand list of the few not yet typed there, each pending a source (#38).
- *  A former plate only shows if it is also a catch-all plate; the rest never enter the list.
- *  They sit in their tier, but an `omitted` rule hides them by default, the way the language
- *  list hides dead tongues. */
+/** Extinct / ancient plates — no longer active, subducted or accreted long ago. The live set
+ *  is Wikidata's *former tectonic plate* class (Q141789550, from former-plates.json, written
+ *  by the dump); this hand list holds only the few not yet typed there, each pending a source
+ *  (#38). As #38 sources one, it moves to the class and leaves this list. A former plate that
+ *  has left the catch-all (typed former alone) is built from its dumped names rather than
+ *  dropped, so the list keeps it; an `omitted` rule hides the whole set by default, the way
+ *  the language list hides dead tongues. */
 const ANCIENT_HAND = new Set([
-  "Q902322", // Phoenix
-  "Q1320205", // Kula
-  "Q5074185", // Charcot
   "Q5120147", // Cimmerian
   "Q13542800", // Baltic
-  "Q6886313", // Moa
   "Q19848929", // European
 ]);
 
@@ -386,11 +383,26 @@ async function main() {
       !CATCHALL_DROP.has(p.wikidata) &&
       !bandedNames.has(p.name.toLowerCase()),
   );
-  // The extinct ones among them, by their English name, for the `omitted` rule below. The
-  // set is the dump's *former tectonic plate* class plus the not-yet-typed hand list.
+  // The extinct ones, for the `omitted` rule below: the dump's *former tectonic plate* class
+  // plus the not-yet-typed hand list. A former plate still in the catch-all is already an
+  // entry above; one typed former alone has left the catch-all (and structure.tsv), so it is
+  // built here from its dumped names and appended to the floor tier — a Wikidata
+  // classification should hide a known ancient plate, not drop it out of the list.
   const former = JSON.parse(await readFile(join(RAW, "plates", "former-plates.json"), "utf8"));
   const ancient = new Set([...former, ...ANCIENT_HAND]);
-  const ancientNames = catchall.filter((p) => ancient.has(p.wikidata)).map((p) => p.name);
+  const catchallQ = new Set(catchall.map((p) => p.wikidata));
+  const extraFormer = [];
+  for (const q of ancient) {
+    if (!q || catchallQ.has(q)) continue;
+    const names = resolve(plateNames[q]);
+    if (!names.en) continue; // no dumped name ⇒ nothing to show (a hand QID with no article)
+    plates[names.en] = names;
+    extraFormer.push(names.en);
+  }
+  const ancientNames = [
+    ...catchall.filter((p) => ancient.has(p.wikidata)).map((p) => p.name),
+    ...extraFormer,
+  ];
 
   // Paleocontinents (their own dump, P31 paleocontinent) — vanished landmasses, not plates, so
   // they come from paleocontinent-names.json rather than the plate catch-all. Already sitelink-
@@ -406,6 +418,10 @@ async function main() {
     paleoOrder.push(names.en);
   }
   const paleoEntries = paleoOrder.map((n) => entry(undefined, n, lands, paleoNames));
+  // Former plates that left the catch-all (typed former alone) — built from their dumped
+  // names and dropped into the floor tier beside the catch-all extinct plates, hidden by the
+  // same `ancient` rule.
+  const extraFormerEntries = extraFormer.map((n) => entry(undefined, n, lands, plates));
 
   const tiers = [
     TIER0.map((e) => entry(e.land, e.plate, lands, plates, true)),
@@ -421,9 +437,9 @@ async function main() {
       ? tier
       : tier.map((p) => (p.name ? entry(undefined, p.name, lands, plates) : p)),
   );
-  // The paleocontinents join the floor tier, after the catch-all plates — they share the
-  // "outside the measured model" band and, like the extinct plates, hide by default.
-  tiers[tiers.length - 1].push(...paleoEntries);
+  // The extra former plates and then the paleocontinents join the floor tier, after the
+  // catch-all plates — all share the "outside the measured model" band and hide by default.
+  tiers[tiers.length - 1].push(...extraFormerEntries, ...paleoEntries);
 
   // Extinct plates sit in the last tier like any other, but the 🚫 panel hides them by
   // default — the way the language list hides dead tongues. An `omitted` rule matching
