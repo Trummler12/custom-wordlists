@@ -1627,7 +1627,7 @@
           "pref": true
         },
         {
-          "name": "キルマンジュキ語",
+          "name": "ザザ語",
           "alias": true
         }
       ],
@@ -2721,55 +2721,6 @@
       "tr": [
         {
           "name": "zmm",
-          "alias": true
-        }
-      ]
-    }
-  },
-  "Q10577443": {
-    "name": "Maringarr",
-    "users": 30,
-    "code": "zmt",
-    "names": {
-      "en": [
-        {
-          "name": "Maringarr",
-          "pref": true
-        }
-      ],
-      "en-gb": [
-        {
-          "name": "Maringarr",
-          "pref": true
-        }
-      ],
-      "fr": [
-        {
-          "name": "maringarr",
-          "pref": true
-        }
-      ],
-      "pl": [
-        {
-          "name": "Język maringarr",
-          "pref": true
-        }
-      ],
-      "ru": [
-        {
-          "name": "марингарр",
-          "pref": true
-        }
-      ],
-      "sv": [
-        {
-          "name": "Maringarr",
-          "pref": true
-        }
-      ],
-      "tr": [
-        {
-          "name": "zmt",
           "alias": true
         }
       ]
@@ -9092,7 +9043,7 @@
   },
   "Q12107": {
     "name": "Breton",
-    "users": 206000,
+    "users": 1200000,
     "code": "br",
     "names": {
       "bg": [
@@ -11764,6 +11715,10 @@
         {
           "name": "ルーマニア・タタール語",
           "pref": true
+        },
+        {
+          "name": "ドブロジャ・タタール語",
+          "alias": true
         }
       ],
       "lv": [
@@ -15477,7 +15432,7 @@
   },
   "Q13199": {
     "name": "Romansh",
-    "users": 40039,
+    "users": 104000,
     "code": "rm",
     "names": {
       "bg": [
@@ -32192,7 +32147,7 @@
   },
   "Q14185": {
     "name": "Occitan",
-    "users": 542000,
+    "users": 10000000,
     "code": "oc",
     "names": {
       "bg": [
@@ -39356,15 +39311,12 @@
       ],
       "es": [
         {
-          "name": "lengua awajún",
-          "pref": true
-        },
-        {
-          "name": "aguaruna",
+          "name": "awajún",
+          "pref": true,
           "alias": true
         },
         {
-          "name": "awajún",
+          "name": "aguaruna",
           "alias": true
         },
         {
@@ -55399,8 +55351,12 @@
       ],
       "el": [
         {
-          "name": "γλώσσα Ντογκρίμπ",
+          "name": "Τλίτσο",
           "pref": true
+        },
+        {
+          "name": "Ντογκρίμπ",
+          "alias": true
         }
       ],
       "en": [
@@ -55636,6 +55592,12 @@
         {
           "name": "Tukudh",
           "alias": true
+        }
+      ],
+      "el": [
+        {
+          "name": "Γκουίτσιν",
+          "pref": true
         }
       ],
       "en": [
@@ -98132,6 +98094,12 @@
     "users": 5000000,
     "code": "mtr",
     "names": {
+      "el": [
+        {
+          "name": "γλώσσα Μεβάρι",
+          "pref": true
+        }
+      ],
       "en": [
         {
           "name": "Mewari",
@@ -101627,7 +101595,7 @@
   },
   "Q30319": {
     "name": "Silesian",
-    "users": 457900,
+    "users": 509000,
     "code": "szl",
     "names": {
       "bg": [
@@ -108333,6 +108301,10 @@
         },
         {
           "name": "Wəlastəkwey",
+          "alias": true
+        },
+        {
+          "name": "Wolastoqey",
           "alias": true
         }
       ],
@@ -140401,6 +140373,12 @@
           "pref": true
         }
       ],
+      "el": [
+        {
+          "name": "κρι",
+          "pref": true
+        }
+      ],
       "en": [
         {
           "name": "Cree",
@@ -143627,7 +143605,7 @@
   },
   "Q33441": {
     "name": "Friulian",
-    "users": 300000,
+    "users": 800000,
     "code": "fur",
     "names": {
       "bg": [
@@ -152456,7 +152434,7 @@
   },
   "Q33569": {
     "name": "Hawaiian",
-    "users": 27200,
+    "users": 100000,
     "code": "haw",
     "names": {
       "bg": [
@@ -170037,7 +170015,7 @@
     }
   },
   "Q33845": {
-    "name": "Neapolitan language",
+    "name": "Neapolitan",
     "users": 7500000,
     "code": "nap",
     "names": {
@@ -170081,8 +170059,9 @@
       ],
       "en": [
         {
-          "name": "Neapolitan language",
-          "pref": true
+          "name": "Neapolitan",
+          "pref": true,
+          "alias": true
         },
         {
           "name": "Continental South Italian",
@@ -170118,10 +170097,6 @@
         },
         {
           "name": "Napulitano",
-          "alias": true
-        },
-        {
-          "name": "Neapolitan",
           "alias": true
         }
       ],
@@ -177380,7 +177355,7 @@
   },
   "Q33973": {
     "name": "Sicilian",
-    "users": 4700000,
+    "users": 5000000,
     "code": "scn",
     "names": {
       "bg": [
@@ -219465,7 +219440,7 @@
       ],
       "de": [
         {
-          "name": "Bikolano",
+          "name": "Bikolano-Sprachen",
           "pref": true
         },
         {
@@ -232286,6 +232261,12 @@
     "name": "Kimbundu",
     "code": "kmb",
     "names": {
+      "cs": [
+        {
+          "name": "Kimbundština",
+          "pref": true
+        }
+      ],
       "de": [
         {
           "name": "Kimbundu",
@@ -239395,7 +239376,7 @@
   },
   "Q36196": {
     "name": "Judaeo-Spanish",
-    "users": 137000,
+    "users": 200000,
     "code": "lad",
     "names": {
       "bg": [
@@ -252071,6 +252052,10 @@
         {
           "name": "tedaga",
           "pref": true
+        },
+        {
+          "name": "toubou",
+          "alias": true
         }
       ],
       "ja": [
@@ -262957,9 +262942,15 @@
   },
   "Q36983": {
     "name": "Umbundu",
-    "users": 6000000,
+    "users": 6260000,
     "code": "umb",
     "names": {
+      "cs": [
+        {
+          "name": "Umbundština",
+          "pref": true
+        }
+      ],
       "de": [
         {
           "name": "Umbundu",
@@ -280219,7 +280210,7 @@
   },
   "Q5218": {
     "name": "Quechua",
-    "users": 8900000,
+    "users": 13000000,
     "code": "qu",
     "names": {
       "bg": [
@@ -287972,6 +287963,18 @@
         {
           "name": "Forth and Bargy dialect",
           "alias": true
+        },
+        {
+          "name": "Forth and Bargy language",
+          "alias": true
+        },
+        {
+          "name": "Yola dialect",
+          "alias": true
+        },
+        {
+          "name": "Yola language",
+          "alias": true
         }
       ],
       "en-gb": [
@@ -291811,7 +291814,7 @@
       ],
       "ru": [
         {
-          "name": "Динка",
+          "name": "динка",
           "pref": true
         }
       ],
@@ -301920,10 +301923,6 @@
           "pref": true
         },
         {
-          "name": "A Nden",
-          "alias": true
-        },
-        {
           "name": "Abun language",
           "alias": true
         },
@@ -306087,18 +306086,6 @@
         {
           "name": "Pashto",
           "pref": true
-        },
-        {
-          "name": "Afghan",
-          "alias": true
-        },
-        {
-          "name": "Afghan language",
-          "alias": true
-        },
-        {
-          "name": "Afghani language",
-          "alias": true
         },
         {
           "name": "Pashto language",
@@ -313446,6 +313433,80 @@
         },
         {
           "name": "mrz",
+          "alias": true
+        }
+      ]
+    }
+  },
+  "Q6764397": {
+    "name": "Maringarr",
+    "users": 30,
+    "code": "zmt",
+    "names": {
+      "el": [
+        {
+          "name": "Γλώσσα Μαρινγκάρ",
+          "pref": true
+        }
+      ],
+      "en": [
+        {
+          "name": "Maringarr",
+          "pref": true,
+          "alias": true
+        },
+        {
+          "name": "Maringarr language",
+          "alias": true
+        }
+      ],
+      "en-gb": [
+        {
+          "name": "Maringarr",
+          "pref": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "maringar",
+          "pref": true
+        },
+        {
+          "name": "maringarr",
+          "alias": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "マティ・ケ語",
+          "pref": true
+        },
+        {
+          "name": "マガティ・ゲ語",
+          "alias": true
+        }
+      ],
+      "pl": [
+        {
+          "name": "Język maringarr",
+          "pref": true
+        }
+      ],
+      "ru": [
+        {
+          "name": "марингарр",
+          "pref": true
+        }
+      ],
+      "sv": [
+        {
+          "name": "Maringarr",
+          "pref": true
+        }
+      ],
+      "tr": [
+        {
+          "name": "zmt",
           "alias": true
         }
       ]
@@ -322330,6 +322391,10 @@
         },
         {
           "name": "Lekhitic",
+          "alias": true
+        },
+        {
+          "name": "Lekhitic languages",
           "alias": true
         }
       ],
@@ -342198,7 +342263,7 @@
   },
   "Q9142": {
     "name": "Irish",
-    "users": 1306310,
+    "users": 4100000,
     "code": "ga",
     "names": {
       "bg": [
@@ -352793,7 +352858,7 @@
   },
   "Q9314": {
     "name": "Scottish Gaelic",
-    "users": 60130,
+    "users": 254415,
     "code": "gd",
     "names": {
       "bg": [

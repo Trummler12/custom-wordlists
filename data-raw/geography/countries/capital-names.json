@@ -1012,11 +1012,8 @@
       ],
       "da": [
         {
-          "name": "Washington, D.C.",
-          "pref": true
-        },
-        {
           "name": "Washington D.C.",
+          "pref": true,
           "title": true,
           "alias": true
         },
@@ -1316,9 +1313,13 @@
       ],
       "it": [
         {
+          "name": "Washington D.C.",
+          "pref": true
+        },
+        {
           "name": "Washington",
-          "pref": true,
-          "title": true
+          "title": true,
+          "alias": true
         },
         {
           "name": "Distretto di Columbia",
@@ -4830,7 +4831,23 @@
           "alias": true
         },
         {
+          "name": "Τό̄κιο̄",
+          "alias": true
+        },
+        {
+          "name": "Το̄κιο̄",
+          "alias": true
+        },
+        {
           "name": "Τόκυο",
+          "alias": true
+        },
+        {
+          "name": "Τό̄κυο̄",
+          "alias": true
+        },
+        {
+          "name": "Το̄κυο̄",
           "alias": true
         }
       ],
@@ -7201,6 +7218,14 @@
           "name": "Ankara",
           "pref": true,
           "title": true
+        },
+        {
+          "name": "Ancira",
+          "alias": true
+        },
+        {
+          "name": "Ancyra",
+          "alias": true
         }
       ],
       "et": [
@@ -9208,6 +9233,10 @@
           "name": "Banguecoque",
           "pref": true,
           "title": true
+        },
+        {
+          "name": "Bangkok",
+          "alias": true
         }
       ],
       "pt-br": [
@@ -12829,6 +12858,12 @@
           "pref": true
         }
       ],
+      "en-us": [
+        {
+          "name": "Nairobi",
+          "pref": true
+        }
+      ],
       "es": [
         {
           "name": "Nairobi",
@@ -13504,6 +13539,10 @@
           "name": "Kampala",
           "pref": true,
           "title": true
+        },
+        {
+          "name": "uganda's Capital city",
+          "alias": true
         }
       ],
       "en-ca": [
@@ -13516,6 +13555,16 @@
         {
           "name": "Kampala",
           "pref": true
+        }
+      ],
+      "en-us": [
+        {
+          "name": "Kampala",
+          "pref": true
+        },
+        {
+          "name": "Uganda's capital city",
+          "alias": true
         }
       ],
       "es": [
@@ -14429,12 +14478,13 @@
       ],
       "da": [
         {
-          "name": "Kijev",
-          "pref": true
+          "name": "Kyiv",
+          "pref": true,
+          "title": true
         },
         {
-          "name": "Kyiv",
-          "title": true
+          "name": "Kijev",
+          "alias": true
         }
       ],
       "de": [
@@ -18450,6 +18500,30 @@
           "name": "Accra",
           "pref": true,
           "title": true
+        },
+        {
+          "name": "Akra",
+          "alias": true
+        }
+      ],
+      "en-gb": [
+        {
+          "name": "Accra",
+          "pref": true
+        },
+        {
+          "name": "Akra",
+          "alias": true
+        }
+      ],
+      "en-us": [
+        {
+          "name": "Accra",
+          "pref": true
+        },
+        {
+          "name": "Akra",
+          "alias": true
         }
       ],
       "es": [
@@ -18482,6 +18556,10 @@
           "name": "Accra",
           "pref": true,
           "title": true
+        },
+        {
+          "name": "Akra",
+          "alias": true
         }
       ],
       "he": [
@@ -25902,7 +25980,7 @@
       ],
       "nb": [
         {
-          "name": "Santiago",
+          "name": "Santiago de Chile",
           "pref": true
         }
       ],
@@ -29703,6 +29781,16 @@
           "pref": true
         }
       ],
+      "en-us": [
+        {
+          "name": "Kigali",
+          "pref": true
+        },
+        {
+          "name": "Kigali city",
+          "alias": true
+        }
+      ],
       "es": [
         {
           "name": "Kigali",
@@ -31093,6 +31181,14 @@
           "title": true
         },
         {
+          "name": "Chuqi Yapu",
+          "alias": true
+        },
+        {
+          "name": "Chuqiyapu",
+          "alias": true
+        },
+        {
           "name": "La Paz, Bolívia",
           "alias": true
         },
@@ -31105,6 +31201,18 @@
         {
           "name": "La Paz",
           "pref": true
+        },
+        {
+          "name": "Chuqi Yapu",
+          "alias": true
+        },
+        {
+          "name": "Chuqiyapu",
+          "alias": true
+        },
+        {
+          "name": "Nuestra Señora de La Paz",
+          "alias": true
         }
       ],
       "ro": [
@@ -34480,10 +34588,6 @@
         {
           "name": "STHLM",
           "alias": true
-        },
-        {
-          "name": "Stockholm",
-          "alias": true
         }
       ],
       "et": [
@@ -34497,10 +34601,6 @@
           "name": "Tukholma",
           "pref": true,
           "title": true
-        },
-        {
-          "name": "Stockholm",
-          "alias": true
         }
       ],
       "fr": [
@@ -34647,10 +34747,6 @@
           "name": "Стокгольм",
           "pref": true,
           "title": true
-        },
-        {
-          "name": "Stockholm",
-          "alias": true
         }
       ],
       "sk": [
@@ -35484,6 +35580,10 @@
           "name": "Lisboa",
           "pref": true,
           "title": true
+        },
+        {
+          "name": "Lisbona",
+          "alias": true
         }
       ],
       "et": [
@@ -37242,6 +37342,10 @@
           "name": "Budapesta",
           "pref": true,
           "title": true
+        },
+        {
+          "name": "Budapesta, Ungaria",
+          "alias": true
         }
       ],
       "ru": [
@@ -53473,6 +53577,10 @@
           "title": true
         },
         {
+          "name": "Wilna",
+          "alias": true
+        },
+        {
           "name": "Wilne",
           "alias": true
         },
@@ -53707,6 +53815,10 @@
           "name": "Wilno",
           "pref": true,
           "title": true
+        },
+        {
+          "name": "Vilnius",
+          "alias": true
         },
         {
           "name": "Vilnus",
@@ -58985,6 +59097,10 @@
           "title": true
         },
         {
+          "name": "于斯屈普",
+          "alias": true
+        },
+        {
           "name": "史高比耶",
           "alias": true
         }
@@ -60260,10 +60376,6 @@
           "alias": true
         },
         {
-          "name": "Reval",
-          "alias": true
-        },
-        {
           "name": "Revel",
           "alias": true
         },
@@ -60277,10 +60389,6 @@
           "name": "Tallinn",
           "pref": true,
           "title": true
-        },
-        {
-          "name": "Reval",
-          "alias": true
         }
       ],
       "el": [
@@ -60321,10 +60429,6 @@
           "alias": true
         },
         {
-          "name": "Reval",
-          "alias": true
-        },
-        {
           "name": "Revel",
           "alias": true
         },
@@ -60360,10 +60464,6 @@
           "alias": true
         },
         {
-          "name": "Reval",
-          "alias": true
-        },
-        {
           "name": "Revel",
           "alias": true
         }
@@ -60379,10 +60479,6 @@
           "alias": true
         },
         {
-          "name": "Reval",
-          "alias": true
-        },
-        {
           "name": "Tallinn",
           "alias": true
         }
@@ -60392,10 +60488,6 @@
           "name": "Tallinn",
           "pref": true,
           "title": true
-        },
-        {
-          "name": "Reval",
-          "alias": true
         }
       ],
       "he": [
@@ -60410,10 +60502,6 @@
           "name": "Tallinn",
           "pref": true,
           "title": true
-        },
-        {
-          "name": "Reval",
-          "alias": true
         }
       ],
       "it": [
@@ -60459,10 +60547,6 @@
         {
           "name": "Tallinn",
           "pref": true
-        },
-        {
-          "name": "Reval",
-          "alias": true
         }
       ],
       "nl": [
@@ -60470,10 +60554,6 @@
           "name": "Tallinn",
           "pref": true,
           "title": true
-        },
-        {
-          "name": "Reval",
-          "alias": true
         }
       ],
       "nn": [
@@ -60557,10 +60637,6 @@
           "title": true
         },
         {
-          "name": "Reval",
-          "alias": true
-        },
-        {
           "name": "Revel",
           "alias": true
         },
@@ -60585,10 +60661,6 @@
         },
         {
           "name": "Lindanäs",
-          "alias": true
-        },
-        {
-          "name": "Reval",
           "alias": true
         }
       ],
@@ -63618,19 +63690,17 @@
       ],
       "cs": [
         {
-          "name": "Thimbú",
-          "pref": true
-        },
-        {
           "name": "Thimphu",
-          "title": true
+          "pref": true,
+          "title": true,
+          "alias": true
         },
         {
           "name": "Thimbu",
           "alias": true
         },
         {
-          "name": "Thimpu",
+          "name": "Thimbú",
           "alias": true
         }
       ],
@@ -68866,10 +68936,6 @@
         {
           "name": "Svätý Tomáš (mesto)",
           "title": true
-        },
-        {
-          "name": "São Tomé",
-          "alias": true
         }
       ],
       "sr": [
@@ -70310,6 +70376,12 @@
         {
           "name": "St Georges, Granada",
           "alias": true
+        }
+      ],
+      "en-gb": [
+        {
+          "name": "Saint George's, Grenada",
+          "pref": true
         }
       ],
       "es": [
@@ -73473,6 +73545,7 @@
         {
           "name": "Vaduz",
           "pref": true,
+          "official": true,
           "title": true
         }
       ],
@@ -73894,13 +73967,25 @@
       ],
       "it": [
         {
+          "name": "San Marino",
+          "pref": true
+        },
+        {
           "name": "Città di San Marino",
-          "pref": true,
           "official": true,
-          "title": true
+          "alias": true
         },
         {
           "name": "San Marino Città",
+          "title": true,
+          "alias": true
+        },
+        {
+          "name": "Castello di San Marino",
+          "alias": true
+        },
+        {
+          "name": "Castello di San Marino Città",
           "alias": true
         }
       ],
@@ -74998,7 +75083,7 @@
   },
   "Q237": {
     "name": "Vatican City",
-    "population": 882,
+    "population": 949,
     "country": "Vatican City",
     "code": "VA",
     "names": {
@@ -79170,6 +79255,16 @@
           "alias": true
         }
       ],
+      "en-us": [
+        {
+          "name": "Sokhumi",
+          "pref": true
+        },
+        {
+          "name": "Tskhumi",
+          "alias": true
+        }
+      ],
       "es": [
         {
           "name": "Sujumi",
@@ -80161,12 +80256,8 @@
       "es": [
         {
           "name": "Nicosia del Norte",
-          "pref": true
-        },
-        {
-          "name": "Nicosia Norte",
-          "title": true,
-          "alias": true
+          "pref": true,
+          "title": true
         },
         {
           "name": "Lefkoşa",
@@ -80174,6 +80265,10 @@
         },
         {
           "name": "Lefkoşa Norte",
+          "alias": true
+        },
+        {
+          "name": "Nicosia Norte",
           "alias": true
         }
       ],
@@ -80675,6 +80770,10 @@
         {
           "name": "San Juan",
           "pref": true
+        },
+        {
+          "name": "San Juan, Puerto Rico",
+          "title": true
         }
       ],
       "tr": [
@@ -81607,11 +81706,8 @@
       ],
       "pt": [
         {
-          "name": "JHHargeisa",
-          "pref": true
-        },
-        {
           "name": "Hargeisa",
+          "pref": true,
           "title": true
         },
         {
@@ -87724,7 +87820,7 @@
   },
   "Q12245": {
     "name": "Stanley",
-    "population": 2121,
+    "population": 2538,
     "country": "Falkland Islands",
     "code": "FK",
     "names": {

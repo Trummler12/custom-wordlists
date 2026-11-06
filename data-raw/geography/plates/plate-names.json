@@ -8797,81 +8797,6 @@
       ]
     }
   },
-  "Q902322": {
-    "name": "Phoenix Plate",
-    "names": {
-      "ko": [
-        {
-          "name": "피닉스판",
-          "pref": true
-        }
-      ],
-      "fr": [
-        {
-          "name": "plaque de Phœnix",
-          "pref": true
-        },
-        {
-          "name": "Phœnix",
-          "alias": true
-        },
-        {
-          "name": "plaque de Phoenix",
-          "alias": true
-        }
-      ],
-      "en": [
-        {
-          "name": "Phoenix Plate",
-          "pref": true
-        }
-      ],
-      "zh": [
-        {
-          "name": "菲尼克斯板塊",
-          "pref": true
-        },
-        {
-          "name": "鳳凰板塊",
-          "alias": true
-        },
-        {
-          "name": "菲尼克斯板块",
-          "alias": true
-        }
-      ],
-      "ja": [
-        {
-          "name": "フェニックスプレート",
-          "pref": true
-        }
-      ],
-      "it": [
-        {
-          "name": "Placca di Phoenix",
-          "pref": true
-        }
-      ],
-      "zh-cn": [
-        {
-          "name": "菲尼克斯板块",
-          "pref": true
-        }
-      ],
-      "zh-hans": [
-        {
-          "name": "菲尼克斯板块",
-          "pref": true
-        }
-      ],
-      "es": [
-        {
-          "name": "Placa de Phoenix",
-          "pref": true
-        }
-      ]
-    }
-  },
   "Q1059335": {
     "name": "Izanagi Plate",
     "names": {
@@ -9258,75 +9183,6 @@
       ]
     }
   },
-  "Q1320205": {
-    "name": "Kula Plate",
-    "names": {
-      "fr": [
-        {
-          "name": "Plaque de Kula",
-          "pref": true
-        },
-        {
-          "name": "Kula",
-          "alias": true
-        }
-      ],
-      "ko": [
-        {
-          "name": "쿨라판",
-          "pref": true
-        }
-      ],
-      "ru": [
-        {
-          "name": "Плита Кула",
-          "pref": true
-        }
-      ],
-      "en": [
-        {
-          "name": "Kula Plate",
-          "pref": true
-        }
-      ],
-      "es": [
-        {
-          "name": "Placa de Kula",
-          "pref": true
-        }
-      ],
-      "bg": [
-        {
-          "name": "Плоча Кула",
-          "pref": true
-        }
-      ],
-      "ja": [
-        {
-          "name": "クラプレート",
-          "pref": true
-        }
-      ],
-      "it": [
-        {
-          "name": "Placca di Kula",
-          "pref": true
-        }
-      ],
-      "he": [
-        {
-          "name": "לוח קולה",
-          "pref": true
-        }
-      ],
-      "zh": [
-        {
-          "name": "庫拉板塊",
-          "pref": true
-        }
-      ]
-    }
-  },
   "Q2043096": {
     "name": "Futuna Plate",
     "names": {
@@ -9508,29 +9364,6 @@
       ]
     }
   },
-  "Q5074185": {
-    "name": "Charcot Plate",
-    "names": {
-      "en": [
-        {
-          "name": "Charcot Plate",
-          "pref": true
-        }
-      ],
-      "it": [
-        {
-          "name": "Placca Charcot",
-          "pref": true
-        }
-      ],
-      "zh": [
-        {
-          "name": "夏科板塊",
-          "pref": true
-        }
-      ]
-    }
-  },
   "Q5120147": {
     "name": "Cimmerian Plate",
     "names": {
@@ -9620,29 +9453,6 @@
       "zh": [
         {
           "name": "北加拉帕戈斯板塊",
-          "pref": true
-        }
-      ]
-    }
-  },
-  "Q6886313": {
-    "name": "Moa Plate",
-    "names": {
-      "en": [
-        {
-          "name": "Moa Plate",
-          "pref": true
-        }
-      ],
-      "zh": [
-        {
-          "name": "莫阿板塊",
-          "pref": true
-        }
-      ],
-      "it": [
-        {
-          "name": "Placca Moa",
           "pref": true
         }
       ]

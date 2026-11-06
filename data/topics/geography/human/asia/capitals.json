@@ -10,8 +10,8 @@
   "languages": ["en","de","es","fr","it","ja","ja-Latn","ko","zh-Hans","zh-Hant","pt","ru","tr","pl","nl","bg","cs","da","et","fi","el","he","hu","lv","mk","no","ro","sr","sk","sv","tl"],
   "generatedRomaji": true,
   "sources": ["Names & variants: Wikidata labels, official and short names of the capitals (P36) — https://www.wikidata.org/wiki/Property:P36 (see scripts/geography/dump-country-data.mjs)"],
-  "lastUpdated": "2026-10-09",
-  "lastChecked": "2026-10-09",
+  "lastUpdated": "2026-11-06",
+  "lastChecked": "2026-11-06",
   "defaultNames": "pref",
   "omittable": [
     {
@@ -99,7 +99,7 @@
     ],
 
     [
-      {"en":"Thimphu","es":"Timbu","fr":"Thimphou","ja":"ティンプー","ko":"팀부","zh-Hans":"廷布","zh-Hant":"辛布","pt":"Thimbu","ru":"Тхимпху","bg":"Тхимпху","cs":{"pref":"Thimbú","others":["Thimphu"]},"el":"Τιμπού","he":"טהימפהו","hu":"Timpu","mk":"Тимбу","sr":"Тимбу","tl":{"pref":"Thimphu","short":"Timbu"},"?":["no"]},
+      {"en":"Thimphu","es":"Timbu","fr":"Thimphou","ja":"ティンプー","ko":"팀부","zh-Hans":"廷布","zh-Hant":"辛布","pt":"Thimbu","ru":"Тхимпху","bg":"Тхимпху","el":"Τιμπού","he":"טהימפהו","hu":"Timpu","mk":"Тимбу","sr":"Тимбу","tl":{"pref":"Thimphu","short":"Timbu"},"?":["no"]},
       {"en":"Bandar Seri Begawan","ja":"バンダルスリブガワン","ko":"반다르스리브가완","zh-Hans":"斯里巴加湾市","zh-Hant":"斯里巴加灣市","ru":"Бандар-Сери-Бегаван","tr":"Bandar Seri Begavan","bg":"Бандар Сери Бегаван","el":"Μπαντάρ Σερί Μπεγκαβάν","he":"בנדר סרי בגוואן","lv":"Bandarseribegavana","mk":"Бандар Сери Бегаван","sr":"Бандар Сери Бегаван","?":["no"]},
       {"en":"Malé","it":"Male","ja":"マレ","ko":"말레","zh-Hans":"马累","zh-Hant":"馬累","ru":"Мале","pl":"Male","bg":"Мале","cs":"Male","et":"Male","el":"Μαλέ","he":"מאלה","lv":"Male","mk":"Мале","sr":"Мале","sk":"Male","?":["no"]}
     ]

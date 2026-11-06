@@ -242,7 +242,7 @@
       ],
       "fr": [
         {
-          "name": "république populaire de Chine",
+          "name": "République populaire de Chine",
           "pref": true
         },
         {
@@ -1504,6 +1504,10 @@
         {
           "name": "USA",
           "short": true
+        },
+        {
+          "name": "'Murica",
+          "alias": true
         },
         {
           "name": "Merica",
@@ -14553,6 +14557,18 @@
         {
           "name": "Burma",
           "short": true
+        },
+        {
+          "name": "Birmania",
+          "alias": true
+        },
+        {
+          "name": "MM",
+          "alias": true
+        },
+        {
+          "name": "MMR",
+          "alias": true
         }
       ],
       "en-ca": [
@@ -16725,6 +16741,16 @@
         {
           "name": "Kenya",
           "pref": true
+        }
+      ],
+      "en-us": [
+        {
+          "name": "Kenya",
+          "pref": true
+        },
+        {
+          "name": "Republic of Kenya",
+          "alias": true
         }
       ],
       "es": [
@@ -19878,6 +19904,10 @@
           "alias": true
         },
         {
+          "name": "iraquí",
+          "alias": true
+        },
+        {
           "name": "República de Irak",
           "alias": true
         },
@@ -20445,7 +20475,6 @@
       "no": [
         {
           "name": "Polen",
-          "pref": true,
           "title": true
         }
       ],
@@ -20748,6 +20777,14 @@
           "title": true
         },
         {
+          "name": "CA",
+          "alias": true
+        },
+        {
+          "name": "CAN",
+          "alias": true
+        },
+        {
           "name": "Dominio de Canadá",
           "alias": true
         },
@@ -20800,6 +20837,10 @@
           "name": "Canada",
           "pref": true,
           "title": true
+        },
+        {
+          "name": "Canadà",
+          "alias": true
         },
         {
           "name": "CDN",
@@ -29990,11 +30031,47 @@
           "title": true
         },
         {
-          "name": "三民主義新中國",
+          "name": "R.O.C.",
           "alias": true
         },
         {
+          "name": "ROC",
+          "alias": true
+        },
+        {
+          "name": "中",
+          "alias": true
+        },
+        {
+          "name": "台",
+          "alias": true
+        }
+      ],
+      "zh-cn": [
+        {
           "name": "中华民国",
+          "pref": true
+        }
+      ],
+      "zh-hans": [
+        {
+          "name": "中华民国",
+          "pref": true
+        },
+        {
+          "name": "ROC 台湾",
+          "alias": true
+        },
+        {
+          "name": "三民主义新中国",
+          "alias": true
+        },
+        {
+          "name": "中华台北",
+          "alias": true
+        },
+        {
+          "name": "中华民囻",
           "alias": true
         },
         {
@@ -30010,11 +30087,73 @@
           "alias": true
         },
         {
+          "name": "华",
+          "alias": true
+        },
+        {
+          "name": "反共中国",
+          "alias": true
+        },
+        {
+          "name": "台北当局",
+          "alias": true
+        },
+        {
+          "name": "台湾",
+          "alias": true
+        },
+        {
+          "name": "台湾当局",
+          "alias": true
+        },
+        {
+          "name": "国府中国",
+          "alias": true
+        },
+        {
+          "name": "国民党中国",
+          "alias": true
+        },
+        {
+          "name": "民国",
+          "alias": true
+        },
+        {
+          "name": "自由中国",
+          "alias": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "中華民國",
+          "pref": true
+        },
+        {
+          "name": "ROC 台灣",
+          "alias": true
+        },
+        {
+          "name": "三民主義新中國",
+          "alias": true
+        },
+        {
           "name": "中華台北",
           "alias": true
         },
         {
+          "name": "中華民囻",
+          "alias": true
+        },
+        {
+          "name": "中華民國（台灣）",
+          "alias": true
+        },
+        {
           "name": "中華民國（臺灣）",
+          "alias": true
+        },
+        {
+          "name": "中華民國自由地區",
           "alias": true
         },
         {
@@ -30023,10 +30162,6 @@
         },
         {
           "name": "反共中國",
-          "alias": true
-        },
-        {
-          "name": "台",
           "alias": true
         },
         {
@@ -30042,15 +30177,11 @@
           "alias": true
         },
         {
-          "name": "国民党中国",
-          "alias": true
-        },
-        {
           "name": "國府中國",
           "alias": true
         },
         {
-          "name": "民国",
+          "name": "國民黨中國",
           "alias": true
         },
         {
@@ -30074,60 +30205,6 @@
           "alias": true
         }
       ],
-      "zh-cn": [
-        {
-          "name": "中华民国",
-          "pref": true
-        },
-        {
-          "name": "中华台北",
-          "alias": true
-        }
-      ],
-      "zh-hans": [
-        {
-          "name": "中华民国",
-          "pref": true
-        },
-        {
-          "name": "中华台北",
-          "alias": true
-        },
-        {
-          "name": "台湾",
-          "alias": true
-        }
-      ],
-      "zh-hant": [
-        {
-          "name": "中華民國",
-          "pref": true
-        },
-        {
-          "name": "ROC 台灣",
-          "alias": true
-        },
-        {
-          "name": "中華民國（臺灣）",
-          "alias": true
-        },
-        {
-          "name": "中華民國臺灣",
-          "alias": true
-        },
-        {
-          "name": "台灣",
-          "alias": true
-        },
-        {
-          "name": "民國",
-          "alias": true
-        },
-        {
-          "name": "臺灣",
-          "alias": true
-        }
-      ],
       "zh-hk": [
         {
           "name": "中華民國",
@@ -30144,20 +30221,12 @@
         {
           "name": "中华民国",
           "pref": true
-        },
-        {
-          "name": "中华台北",
-          "alias": true
         }
       ],
       "zh-sg": [
         {
           "name": "中华民国",
           "pref": true
-        },
-        {
-          "name": "中华台北",
-          "alias": true
         }
       ],
       "zh-tw": [
@@ -30167,23 +30236,7 @@
           "official": true
         },
         {
-          "name": "中華台北",
-          "alias": true
-        },
-        {
-          "name": "中華民國（臺灣）",
-          "alias": true
-        },
-        {
           "name": "中華民國台灣",
-          "alias": true
-        },
-        {
-          "name": "台灣",
-          "alias": true
-        },
-        {
-          "name": "臺灣",
           "alias": true
         }
       ]
@@ -31507,16 +31560,16 @@
       ],
       "cs": [
         {
-          "name": "Šrí Lanka",
-          "pref": true
-        },
-        {
           "name": "Srí Lanka",
-          "title": true,
-          "alias": true
+          "pref": true,
+          "title": true
         },
         {
           "name": "Cejlon",
+          "alias": true
+        },
+        {
+          "name": "Šrí Lanka",
           "alias": true
         },
         {
@@ -32403,6 +32456,10 @@
           "name": "Kazahstan",
           "pref": true,
           "title": true
+        },
+        {
+          "name": "Republica Kazahstan",
+          "alias": true
         }
       ],
       "ru": [
@@ -33199,7 +33256,6 @@
       "no": [
         {
           "name": "Chile",
-          "pref": true,
           "title": true
         }
       ],
@@ -36122,10 +36178,6 @@
         {
           "name": "Nederland",
           "short": true
-        },
-        {
-          "name": "Koninkrijk der Nederlanden",
-          "alias": true
         }
       ],
       "de": [
@@ -36355,10 +36407,6 @@
         {
           "name": "Holandia",
           "title": true,
-          "alias": true
-        },
-        {
-          "name": "Koninkrijk der Nederlanden",
           "alias": true
         },
         {
@@ -43821,10 +43869,7 @@
       "tl": [
         {
           "name": "Suwesya",
-          "pref": true
-        },
-        {
-          "name": "Sweden",
+          "pref": true,
           "title": true
         },
         {
@@ -45541,6 +45586,11 @@
           "title": true
         },
         {
+          "name": "AZE",
+          "short": true,
+          "alias": true
+        },
+        {
           "name": "Republic of Azerbaijan",
           "alias": true
         }
@@ -47052,12 +47102,20 @@
         {
           "name": "以色列",
           "pref": true
+        },
+        {
+          "name": "以国",
+          "alias": true
         }
       ],
       "zh-hant": [
         {
           "name": "以色列",
           "pref": true
+        },
+        {
+          "name": "以國",
+          "alias": true
         }
       ],
       "zh-hk": [
@@ -52842,6 +52900,10 @@
           "title": true
         },
         {
+          "name": "República de Paraguay",
+          "alias": true
+        },
+        {
           "name": "República del Paraguay",
           "alias": true
         }
@@ -53393,6 +53455,10 @@
           "name": "Sérvia",
           "pref": true,
           "title": true
+        },
+        {
+          "name": "República da Sérvia",
+          "alias": true
         }
       ],
       "pt-br": [
@@ -53410,10 +53476,6 @@
           "name": "Serbia",
           "pref": true,
           "title": true
-        },
-        {
-          "name": "🇷🇸",
-          "alias": true
         },
         {
           "name": "Republica Serbia",
@@ -53444,13 +53506,46 @@
       ],
       "sr": [
         {
-          "name": "Srbija",
+          "name": "Србија",
+          "pref": true,
+          "official": true,
+          "title": true
+        },
+        {
+          "name": "Република Србија",
+          "alias": true
+        },
+        {
+          "name": "РС",
+          "alias": true
+        },
+        {
+          "name": "СРБ",
+          "alias": true
+        }
+      ],
+      "sr-ec": [
+        {
+          "name": "Србија",
           "pref": true
         },
         {
-          "name": "Србија",
-          "official": true,
-          "title": true
+          "name": "Република Србија",
+          "alias": true
+        },
+        {
+          "name": "РС",
+          "alias": true
+        },
+        {
+          "name": "СРБ",
+          "alias": true
+        }
+      ],
+      "sr-el": [
+        {
+          "name": "Srbija",
+          "pref": true
         },
         {
           "name": "Republika Srbija",
@@ -53463,22 +53558,6 @@
         {
           "name": "SRB",
           "alias": true
-        }
-      ],
-      "sr-ec": [
-        {
-          "name": "Србија",
-          "pref": true
-        },
-        {
-          "name": "Република Србија",
-          "alias": true
-        }
-      ],
-      "sr-el": [
-        {
-          "name": "Srbija",
-          "pref": true
         }
       ],
       "sv": [
@@ -53586,10 +53665,6 @@
           "name": "Република България",
           "official": true,
           "alias": true
-        },
-        {
-          "name": "Република България Republika Bǎlgarija",
-          "official": true
         },
         {
           "name": "Царство България",
@@ -54460,7 +54535,10 @@
       "nn": [
         {
           "name": "Kongo-Brazzaville",
-          "pref": true,
+          "pref": true
+        },
+        {
+          "name": "Republikken Kongo",
           "title": true
         }
       ],
@@ -56169,16 +56247,13 @@
       ],
       "fr": [
         {
-          "name": "Royaume de Danemark",
-          "pref": true
+          "name": "royaume de Danemark",
+          "pref": true,
+          "alias": true
         },
         {
           "name": "Danemark",
           "title": true,
-          "alias": true
-        },
-        {
-          "name": "royaume de Danemark",
           "alias": true
         },
         {
@@ -59321,15 +59396,16 @@
       ],
       "da": [
         {
-          "name": "Staten Palæstina",
-          "pref": true
+          "name": "Palæstina",
+          "pref": true,
+          "alias": true
         },
         {
           "name": "Palæstina (stat)",
           "title": true
         },
         {
-          "name": "Palæstina",
+          "name": "Staten Palæstina",
           "alias": true
         }
       ],
@@ -59495,9 +59571,13 @@
       ],
       "he": [
         {
+          "name": "פלסטין",
+          "pref": true
+        },
+        {
           "name": "מדינה פלסטינית",
-          "pref": true,
-          "title": true
+          "title": true,
+          "alias": true
         },
         {
           "name": "הרשות הפלסטינית",
@@ -59505,10 +59585,6 @@
         },
         {
           "name": "מדינת פלסטין",
-          "alias": true
-        },
-        {
-          "name": "פלסטין",
           "alias": true
         }
       ],
@@ -59591,7 +59667,7 @@
       ],
       "nl": [
         {
-          "name": "Staat Palestina",
+          "name": "Palestina",
           "pref": true
         },
         {
@@ -59599,15 +59675,15 @@
           "title": true
         },
         {
-          "name": "Palestina",
-          "alias": true
-        },
-        {
           "name": "PS",
           "alias": true
         },
         {
           "name": "PSE",
+          "alias": true
+        },
+        {
+          "name": "Staat Palestina",
           "alias": true
         }
       ],
@@ -65804,6 +65880,18 @@
           "name": "Uruguai",
           "pref": true,
           "title": true
+        },
+        {
+          "name": "República Oriental do Uruguai",
+          "alias": true
+        },
+        {
+          "name": "URU",
+          "alias": true
+        },
+        {
+          "name": "UY",
+          "alias": true
         }
       ],
       "pt-br": [
@@ -65813,6 +65901,14 @@
         },
         {
           "name": "República Oriental do Uruguai",
+          "alias": true
+        },
+        {
+          "name": "URU",
+          "alias": true
+        },
+        {
+          "name": "UY",
           "alias": true
         }
       ],
@@ -68682,7 +68778,23 @@
           "title": true
         },
         {
+          "name": "catarí",
+          "alias": true
+        },
+        {
           "name": "Estado de Catar",
+          "alias": true
+        },
+        {
+          "name": "Estado de Qatar",
+          "alias": true
+        },
+        {
+          "name": "Qatar",
+          "alias": true
+        },
+        {
+          "name": "qatarí",
           "alias": true
         }
       ],
@@ -69131,6 +69243,16 @@
         {
           "name": "Namibia",
           "pref": true
+        }
+      ],
+      "en-us": [
+        {
+          "name": "Namibia",
+          "pref": true
+        },
+        {
+          "name": "Republic of Namibia",
+          "alias": true
         }
       ],
       "es": [
@@ -71143,6 +71265,10 @@
           "name": "Gabona",
           "pref": true,
           "title": true
+        },
+        {
+          "name": "Gabonas Republika",
+          "alias": true
         }
       ],
       "mk": [
@@ -73523,6 +73649,14 @@
         },
         {
           "name": "北マケドニア共和国",
+          "alias": true
+        },
+        {
+          "name": "旧ユーゴスラヴィア・マケドニア共和国",
+          "alias": true
+        },
+        {
+          "name": "旧ユーゴスラビア・マケドニア共和国",
           "alias": true
         }
       ],
@@ -77469,12 +77603,13 @@
       ],
       "da": [
         {
-          "name": "Swaziland",
-          "pref": true
+          "name": "Eswatini",
+          "pref": true,
+          "title": true
         },
         {
-          "name": "Eswatini",
-          "title": true
+          "name": "Swaziland",
+          "alias": true
         }
       ],
       "de": [
@@ -79927,10 +80062,6 @@
           "title": true
         },
         {
-          "name": "bt",
-          "alias": true
-        },
-        {
           "name": "Königreich Bhutan",
           "alias": true
         }
@@ -79979,10 +80110,6 @@
         },
         {
           "name": "BHU",
-          "alias": true
-        },
-        {
-          "name": "bt",
           "alias": true
         }
       ],
@@ -81077,10 +81204,6 @@
           "name": "Montenegro",
           "pref": true,
           "title": true
-        },
-        {
-          "name": "ME",
-          "alias": true
         },
         {
           "name": "Republic of Montenegro",
@@ -82472,19 +82595,11 @@
           "title": true
         },
         {
-          "name": "Cap-V.",
-          "alias": true
-        },
-        {
-          "name": "Cap-vert",
-          "alias": true
-        },
-        {
-          "name": "îles du Cap-Vert",
-          "alias": true
-        },
-        {
           "name": "la République du Cap-Vert",
+          "alias": true
+        },
+        {
+          "name": "République du Cap-Vert",
           "alias": true
         }
       ],
@@ -83621,11 +83736,8 @@
       ],
       "tr": [
         {
-          "name": "Bruney",
-          "pref": true
-        },
-        {
           "name": "Brunei",
+          "pref": true,
           "title": true
         }
       ],
@@ -88837,7 +88949,7 @@
   },
   "Q757": {
     "name": "Saint Vincent and the Grenadines",
-    "population": 109897,
+    "population": 109296,
     "code": "VC",
     "names": {
       "bg": [
@@ -89137,12 +89249,13 @@
       ],
       "ro": [
         {
-          "name": "Sfântul Vincențiu și Grenadine",
-          "pref": true
+          "name": "Sfântul Vincențiu și Grenadinele",
+          "pref": true,
+          "title": true
         },
         {
-          "name": "Sfântul Vincențiu și Grenadinele",
-          "title": true
+          "name": "Sfântul Vincențiu și Grenadine",
+          "alias": true
         }
       ],
       "ru": [
@@ -90757,12 +90870,13 @@
       ],
       "ro": [
         {
-          "name": "Micronezia",
-          "pref": true
+          "name": "Statele Federate ale Microneziei",
+          "pref": true,
+          "title": true
         },
         {
-          "name": "Statele Federate ale Microneziei",
-          "title": true
+          "name": "Micronezia",
+          "alias": true
         }
       ],
       "ru": [
@@ -93492,6 +93606,14 @@
           "name": "Sanmarīno",
           "pref": true,
           "title": true
+        },
+        {
+          "name": "sm",
+          "alias": true
+        },
+        {
+          "name": "Visgaišākā Sanmarīno Republika",
+          "alias": true
         }
       ],
       "mk": [
@@ -94487,15 +94609,20 @@
       ],
       "pl": [
         {
-          "name": "Nauru",
-          "pref": true
-        },
-        {
           "name": "Naoero",
+          "pref": true,
           "title": true
         },
         {
+          "name": "Nauru",
+          "alias": true
+        },
+        {
           "name": "Pleasant Island",
+          "alias": true
+        },
+        {
+          "name": "Republika Naoero",
           "alias": true
         },
         {
@@ -94621,9 +94748,8 @@
           "pref": true
         },
         {
-          "name": "諾魯",
-          "title": true,
-          "alias": true
+          "name": "諾埃羅",
+          "title": true
         },
         {
           "name": "瑙魯",
@@ -94631,6 +94757,10 @@
         },
         {
           "name": "瑙魯共和國",
+          "alias": true
+        },
+        {
+          "name": "諾魯",
           "alias": true
         }
       ],
@@ -95050,7 +95180,7 @@
   },
   "Q237": {
     "name": "Vatican City",
-    "population": 882,
+    "population": 466,
     "code": "VA",
     "names": {
       "bg": [
@@ -98961,6 +99091,7 @@
       "sv": [
         {
           "name": "Jersey",
+          "pref": true,
           "title": true
         }
       ],
@@ -99073,10 +99204,6 @@
           "name": "Bailiwick of Guernsey",
           "pref": true,
           "title": true
-        },
-        {
-          "name": "Guernsey",
-          "alias": true
         }
       ],
       "de": [
@@ -99160,8 +99287,7 @@
         {
           "name": "Bailiwick of Guernsey",
           "official": true,
-          "title": true,
-          "alias": true
+          "title": true
         },
         {
           "name": "Bailliage de Guernesey",
@@ -99455,10 +99581,6 @@
         },
         {
           "name": "Guérnesei",
-          "alias": true
-        },
-        {
-          "name": "Guernesey",
           "alias": true
         },
         {
@@ -104186,12 +104308,12 @@
       ],
       "ro": [
         {
-          "name": "Porto Rico",
-          "pref": true
+          "name": "Puerto Rico",
+          "pref": true,
+          "title": true
         },
         {
-          "name": "Puerto Rico",
-          "title": true,
+          "name": "Porto Rico",
           "alias": true
         },
         {
@@ -107287,7 +107409,6 @@
       "no": [
         {
           "name": "Grønland",
-          "pref": true,
           "title": true
         }
       ],
@@ -109578,8 +109699,7 @@
         },
         {
           "name": "U.S. Virgin Islands",
-          "official": true,
-          "alias": true
+          "official": true
         },
         {
           "name": "USVI",
@@ -109612,10 +109732,6 @@
           "alias": true
         },
         {
-          "name": "U.S. Virgin Islands",
-          "alias": true
-        },
-        {
           "name": "Virgin Islands of the United States",
           "alias": true
         }
@@ -109634,10 +109750,6 @@
           "alias": true
         },
         {
-          "name": "US-VI",
-          "alias": true
-        },
-        {
           "name": "Virgin Islands of the United States",
           "alias": true
         }
@@ -109648,23 +109760,7 @@
           "pref": true
         },
         {
-          "name": "🇻🇮",
-          "alias": true
-        },
-        {
           "name": "American Virgin Islands",
-          "alias": true
-        },
-        {
-          "name": "U.S. Virgin Islands",
-          "alias": true
-        },
-        {
-          "name": "US-VI",
-          "alias": true
-        },
-        {
-          "name": "USVI",
           "alias": true
         },
         {
@@ -109677,10 +109773,6 @@
           "name": "Islas Vírgenes de los Estados Unidos",
           "pref": true,
           "title": true
-        },
-        {
-          "name": "🇻🇮",
-          "alias": true
         },
         {
           "name": "Islas Vírgenes Estadounidenses",
@@ -109717,10 +109809,6 @@
         {
           "name": "îles Vierges des É-U",
           "alias": true
-        },
-        {
-          "name": "US-VI",
-          "alias": true
         }
       ],
       "he": [
@@ -109745,10 +109833,6 @@
         {
           "name": "Isole Vergini Americane",
           "title": true,
-          "alias": true
-        },
-        {
-          "name": "🇻🇮",
           "alias": true
         },
         {
@@ -109798,15 +109882,7 @@
           "pref": true
         },
         {
-          "name": "🇻🇮",
-          "alias": true
-        },
-        {
           "name": "De amerikanske jomfruøyene",
-          "alias": true
-        },
-        {
-          "name": "USVI",
           "alias": true
         }
       ],
@@ -109839,10 +109915,6 @@
           "name": "Wyspy Dziewicze Stanów Zjednoczonych",
           "pref": true,
           "title": true
-        },
-        {
-          "name": "U.S. Virgin Islands",
-          "alias": true
         },
         {
           "name": "US Virgin Islands",
@@ -110754,7 +110826,7 @@
       ],
       "el": [
         {
-          "name": "Νησιά Καϋμάν",
+          "name": "Νησιά Κέιμαν",
           "pref": true
         },
         {
@@ -110762,7 +110834,7 @@
           "title": true
         },
         {
-          "name": "Νησιά Κέιμαν",
+          "name": "Νησιά Καϋμάν",
           "alias": true
         }
       ],
@@ -111168,11 +111240,8 @@
       ],
       "el": [
         {
-          "name": "Τερκ και Κάικος",
-          "pref": true
-        },
-        {
           "name": "Τερκς και Κέικος",
+          "pref": true,
           "title": true
         },
         {
@@ -111595,10 +111664,6 @@
           "name": "Britiske Jomfruøer",
           "pref": true,
           "title": true
-        },
-        {
-          "name": "BVI",
-          "alias": true
         }
       ],
       "de": [
@@ -111645,10 +111710,6 @@
           "alias": true
         },
         {
-          "name": "BVI",
-          "alias": true
-        },
-        {
           "name": "IVB",
           "alias": true
         },
@@ -111671,10 +111732,6 @@
           "pref": true
         },
         {
-          "name": "BVI",
-          "alias": true
-        },
-        {
           "name": "Virgin Islands of the United Kingdom",
           "alias": true
         }
@@ -111689,10 +111746,6 @@
           "alias": true
         },
         {
-          "name": "BVI",
-          "alias": true
-        },
-        {
           "name": "Virgin Islands of the United Kingdom",
           "alias": true
         }
@@ -111701,10 +111754,6 @@
         {
           "name": "British Virgin Islands",
           "pref": true
-        },
-        {
-          "name": "BVI",
-          "alias": true
         },
         {
           "name": "Virgin Islands of the United Kingdom",
@@ -111738,14 +111787,6 @@
           "name": "Brittiläiset Neitsytsaaret",
           "pref": true,
           "title": true
-        },
-        {
-          "name": "British Virgin Islands",
-          "alias": true
-        },
-        {
-          "name": "VGB",
-          "alias": true
         }
       ],
       "fr": [
@@ -111756,10 +111797,6 @@
         {
           "name": "Îles Vierges britanniques",
           "title": true,
-          "alias": true
-        },
-        {
-          "name": "BVI",
           "alias": true
         },
         {
@@ -111783,10 +111820,6 @@
           "name": "Brit Virgin-szigetek",
           "pref": true,
           "title": true
-        },
-        {
-          "name": "British Virgin Islands",
-          "alias": true
         }
       ],
       "it": [
@@ -111805,14 +111838,6 @@
           "name": "イギリス領ヴァージン諸島",
           "pref": true,
           "title": true
-        },
-        {
-          "name": "BVI",
-          "alias": true
-        },
-        {
-          "name": "VGB",
-          "alias": true
         },
         {
           "name": "イギリス領バージン諸島",
@@ -111859,10 +111884,6 @@
         {
           "name": "IVB",
           "alias": true
-        },
-        {
-          "name": "VGB",
-          "alias": true
         }
       ],
       "mk": [
@@ -111878,23 +111899,11 @@
           "pref": true
         },
         {
-          "name": "British Virgin Islands",
-          "alias": true
-        },
-        {
           "name": "Britiske Jomfruøyer",
           "alias": true
         },
         {
-          "name": "BVI",
-          "alias": true
-        },
-        {
           "name": "De britiske jomfruøyene",
-          "alias": true
-        },
-        {
-          "name": "VGB",
           "alias": true
         }
       ],
@@ -111907,14 +111916,6 @@
         {
           "name": "British Virgin Eilanden",
           "alias": true
-        },
-        {
-          "name": "VG",
-          "alias": true
-        },
-        {
-          "name": "VGB",
-          "alias": true
         }
       ],
       "nn": [
@@ -111922,10 +111923,6 @@
           "name": "Dei britiske Jomfruøyane",
           "pref": true,
           "title": true
-        },
-        {
-          "name": "British Virgin Islands",
-          "alias": true
         },
         {
           "name": "Britisk Virgin Islands",
@@ -111992,10 +111989,6 @@
           "alias": true
         },
         {
-          "name": "BVI",
-          "alias": true
-        },
-        {
           "name": "Ilhas Virgens",
           "alias": true
         },
@@ -112015,10 +112008,6 @@
           "name": "Insulele Virgine Britanice",
           "pref": true,
           "title": true
-        },
-        {
-          "name": "British Virgin Islands",
-          "alias": true
         }
       ],
       "ru": [
@@ -112057,10 +112046,6 @@
           "title": true
         },
         {
-          "name": "British Virgin Islands",
-          "alias": true
-        },
-        {
           "name": "Британска Вирџинска Острва",
           "alias": true
         },
@@ -112080,10 +112065,6 @@
           "name": "Brittiska Jungfruöarna",
           "pref": true,
           "title": true
-        },
-        {
-          "name": "British Virgin Islands",
-          "alias": true
         }
       ],
       "tl": [
@@ -112097,10 +112078,6 @@
         },
         {
           "name": "Birheng Kapuluang Britaniko",
-          "alias": true
-        },
-        {
-          "name": "British Virgin Islands",
           "alias": true
         },
         {
@@ -112124,10 +112101,6 @@
         },
         {
           "name": "British Virgin Adaları",
-          "alias": true
-        },
-        {
-          "name": "British Virgin Islands",
           "alias": true
         },
         {
@@ -112686,6 +112659,10 @@
           "name": "Монсерат",
           "pref": true,
           "title": true
+        },
+        {
+          "name": "Монтсерат",
+          "alias": true
         }
       ],
       "cs": [
@@ -113987,7 +113964,7 @@
       ],
       "ro": [
         {
-          "name": "Saint Martin",
+          "name": "Saint-Martin",
           "pref": true
         },
         {
@@ -115535,7 +115512,7 @@
   },
   "Q9648": {
     "name": "Falkland Islands",
-    "population": 4550,
+    "population": 287,
     "code": "FK",
     "names": {
       "bg": [
@@ -116789,10 +116766,6 @@
           "name": "Wallis e Futuna",
           "pref": true,
           "title": true
-        },
-        {
-          "name": "Geografia di Wallis e Futuna",
-          "alias": true
         }
       ],
       "ja": [
@@ -118914,7 +118887,7 @@
   },
   "Q36823": {
     "name": "Tokelau",
-    "population": 1499,
+    "population": 870,
     "code": "TK",
     "names": {
       "bg": [

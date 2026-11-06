@@ -13,8 +13,8 @@
     "Names & variants: Wikidata labels, official names (P1448) and short names (P1813) — https://www.wikidata.org/wiki/Q3624078 (see scripts/geography/dump-country-data.mjs)",
     "Population & tiers: Wikidata sovereign states (P1082 on P31 Q3624078) — https://www.wikidata.org/wiki/Q3624078 (see scripts/geography/dump-country-data.mjs)"
   ],
-  "lastUpdated": "2026-10-09",
-  "lastChecked": "2026-10-09",
+  "lastUpdated": "2026-11-06",
+  "lastChecked": "2026-11-06",
   "defaultNames": "pref",
   "omitted": [
     {
@@ -55,7 +55,7 @@
     ],
 
     [
-      {"en":{"pref":"Chile","long":"Republic of Chile"},"de":{"pref":"Chile","long":"Republik Chile"},"es":"Chile","fr":{"pref":"Chili","long":"République du Chili"},"it":"Cile","ja":"チリ","ko":"칠레","zh-Hans":"智利","zh-Hant":"智利","pt":"Chile","ru":"Чили","tr":"Şili","pl":"Chile","nl":"Chili","bg":"Чили","cs":"Chile","da":"Chile","et":"Tšiili","fi":"Chile","el":"Χιλή","he":"צ'ילה","hu":"Chile","lv":"Čīle","mk":"Чиле","no":"Chile","ro":"Chile","sr":"Чиле","sk":"Čile","sv":"Chile","tl":"Chile"},
+      {"en":{"pref":"Chile","long":"Republic of Chile"},"de":{"pref":"Chile","long":"Republik Chile"},"es":"Chile","fr":{"pref":"Chili","long":"République du Chili"},"it":"Cile","ja":"チリ","ko":"칠레","zh-Hans":"智利","zh-Hant":"智利","pt":"Chile","ru":"Чили","tr":"Şili","pl":"Chile","nl":"Chili","bg":"Чили","cs":"Chile","da":"Chile","et":"Tšiili","fi":"Chile","el":"Χιλή","he":"צ'ילה","hu":"Chile","lv":"Čīle","mk":"Чиле","ro":"Chile","sr":"Чиле","sk":"Čile","sv":"Chile","tl":"Chile","?":["no"]},
       {"en":"Ecuador","es":{"pref":"Ecuador","long":"República del Ecuador"},"fr":"Équateur","ja":"エクアドル","ko":"에콰도르","zh-Hans":"厄瓜多尔","zh-Hant":"厄瓜多","pt":"Equador","ru":"Эквадор","tr":"Ekvador","pl":"Ekwador","bg":"Еквадор","cs":"Ekvádor","el":"Ισημερινός","he":"אקוודור","lv":"Ekvadora","mk":"Еквадор","sr":"Еквадор","sk":"Ekvádor","?":["no"]},
       {"en":{"pref":"Bolivia","long":"Plurinational State of Bolivia"},"de":"Bolivien","es":{"pref":"Bolivia","long":"Estado Plurinacional de Bolivia"},"fr":{"pref":"Bolivie","long":"État plurinational de Bolivie"},"it":"Bolivia","ja":"ボリビア","ko":"볼리비아","zh-Hans":"玻利维亚","zh-Hant":"玻利維亞","pt":"Bolívia","ru":"Боливия","tr":"Bolivya","pl":"Boliwia","nl":"Bolivia","bg":"Боливия","cs":"Bolívie","da":"Bolivia","et":"Boliivia","fi":"Bolivia","el":"Βολιβία","he":"בוליביה","hu":"Bolívia","lv":"Bolīvija","mk":"Боливија","ro":"Bolivia","sr":"Боливија","sk":{"pref":"Bolívia","long":"Bolívijský mnohonárodný štát"},"sv":"Bolivia","tl":"Bolivia","?":["no"]},
       {"en":"Paraguay","fr":{"pref":"Paraguay","long":"République du Paraguay"},"ja":"パラグアイ","ko":"파라과이","zh-Hans":"巴拉圭","zh-Hant":"巴拉圭","pt":"Paraguai","ru":"Парагвай","pl":"Paragwaj","bg":"Парагвай","el":"Παραγουάη","he":"פרגוואי","lv":"Paragvaja","mk":"Парагвај","sr":"Парагвај","sk":"Paraguaj","?":["no"]}

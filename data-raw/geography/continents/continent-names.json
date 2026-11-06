@@ -3233,11 +3233,15 @@
       ],
       "ro": [
         {
-          "name": "Oceania și Australia",
+          "name": "Oceania",
           "pref": true
         },
         {
           "name": "Australia și Oceaniaa",
+          "alias": true
+        },
+        {
+          "name": "Oceania și Australia",
           "alias": true
         }
       ],
