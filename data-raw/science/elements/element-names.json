@@ -2217,6 +2217,10 @@
         {
           "name": "kvelestoff",
           "alias": true
+        },
+        {
+          "name": "tidlegare kalla kvelstoff",
+          "alias": true
         }
       ],
       "nn": [
@@ -2287,15 +2291,7 @@
           "alias": true
         },
         {
-          "name": "oxygen atom",
-          "alias": true
-        },
-        {
           "name": "element 8",
-          "alias": true
-        },
-        {
-          "name": "Oxygen",
           "alias": true
         }
       ],
@@ -11937,6 +11933,10 @@
         {
           "name": "Arsen",
           "alias": true
+        },
+        {
+          "name": "og oksidet kalles vit-arsenik",
+          "alias": true
         }
       ],
       "nn": [
@@ -14687,7 +14687,7 @@
       ],
       "nl": [
         {
-          "name": "zirkoon",
+          "name": "zirkonium",
           "pref": true
         },
         {
@@ -22973,7 +22973,7 @@
       ],
       "fr": [
         {
-          "name": "prométhéum",
+          "name": "prométhium",
           "pref": true
         },
         {
@@ -22990,6 +22990,10 @@
         },
         {
           "name": "₆₁Pm",
+          "alias": true
+        },
+        {
+          "name": "prométhéum",
           "alias": true
         }
       ],
@@ -42245,8 +42249,12 @@
       ],
       "tr": [
         {
-          "name": "ununtriyum",
+          "name": "nihonyum",
           "pref": true
+        },
+        {
+          "name": "ununtriyum",
+          "alias": true
         }
       ],
       "pl": [
@@ -42915,8 +42923,12 @@
       ],
       "tl": [
         {
-          "name": "Ununquadium",
+          "name": "Flerovyo",
           "pref": true
+        },
+        {
+          "name": "Ununquadium",
+          "alias": true
         }
       ]
     }
@@ -43283,8 +43295,12 @@
       ],
       "da": [
         {
-          "name": "ununpentium",
+          "name": "moscovium",
           "pref": true
+        },
+        {
+          "name": "ununpentium",
+          "alias": true
         }
       ],
       "et": [
@@ -43484,6 +43500,12 @@
         },
         {
           "name": "Uuh",
+          "alias": true
+        }
+      ],
+      "mul": [
+        {
+          "name": "Lv",
           "alias": true
         }
       ],
@@ -44003,10 +44025,6 @@
           "pref": true
         },
         {
-          "name": "ununheksiju",
-          "alias": true
-        },
-        {
           "name": "ekapolonijs",
           "alias": true
         },
@@ -44016,6 +44034,10 @@
         },
         {
           "name": "Lv",
+          "alias": true
+        },
+        {
+          "name": "ununheksijs",
           "alias": true
         }
       ],
@@ -44511,7 +44533,7 @@
       ],
       "tr": [
         {
-          "name": "ununseptiyum",
+          "name": "tennesin",
           "pref": true
         },
         {
@@ -44520,6 +44542,10 @@
         },
         {
           "name": "Uus",
+          "alias": true
+        },
+        {
+          "name": "ununseptiyum",
           "alias": true
         }
       ],
@@ -45559,7 +45585,7 @@
       ],
       "tl": [
         {
-          "name": "ununoctium",
+          "name": "Oganeson",
           "pref": true
         },
         {
@@ -45568,6 +45594,10 @@
         },
         {
           "name": "Uuo",
+          "alias": true
+        },
+        {
+          "name": "ununoctium",
           "alias": true
         }
       ]
