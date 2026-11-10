@@ -165,14 +165,17 @@ async function main() {
   let first; // the first list's topic, whose title a new list starts from
   for (const [list, series] of Object.entries(games)) {
     const season = list.split("/")[1];
-    const ids = listed.filter((q) => listsOf.get(q).includes(list));
+    const ids = listed
+      .filter((q) => listsOf.get(q).includes(list))
+      .sort((a, b) => dump[b].wikipedias - dump[a].wikipedias || a.localeCompare(b));
     const path = join(OUT, list, "sports.json");
     const old = await readJson(path).catch(() => null);
     const name = labelFor(series.names, "en");
 
     const tiers = [...BANDS, 0].map(() => []);
     const rules = Object.fromEntries(RULES.map((r) => [r.id, []]));
-    // The dump is sorted by article count, so each tier comes out ranked within.
+    // Ranked here by article count (the dump is by Q-id), so each tier's most widely
+    // known come first.
     for (const q of ids) {
       const s = dump[q];
       if (s.wikipedias === 0) continue;

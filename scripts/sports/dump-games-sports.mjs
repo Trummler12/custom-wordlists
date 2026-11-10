@@ -123,8 +123,11 @@ async function main() {
 
   const byId = await terms(ids);
   const out = {};
-  // Most widely known first, so the file reads like the lists it becomes.
-  for (const q of ids.sort((a, b) => byId[b].wikipedias - byId[a].wikipedias || a.localeCompare(b))) {
+  // By Q-id, a key that never moves, so a re-dump shows its content rather than
+  // reshuffling the whole file each time a sport's Wikipedia count passes a neighbour's.
+  // How widely known a sport is survives as the `wikipedias` field; the build orders the
+  // lists it makes.
+  for (const q of ids.sort((a, b) => Number(a.slice(1)) - Number(b.slice(1)))) {
     const s = sports.get(q);
     const demonstrations = [...s.demonstrations].sort();
     out[q] = {

@@ -15,8 +15,8 @@
     "Sports & names: Wikidata, the sport (P641) of every event that is part of an edition of the Asian Winter Games — https://www.wikidata.org/wiki/Q818463 (see scripts/sports/dump-games-sports.mjs)",
     "Tiers: how many language editions of Wikipedia have an article on the sport, from its Wikidata sitelinks — https://www.wikidata.org/wiki/Help:Sitelinks"
   ],
-  "lastUpdated": "2026-10-09",
-  "lastChecked": "2026-10-09",
+  "lastUpdated": "2026-11-10",
+  "lastChecked": "2026-11-10",
   "omitted": [
     {
       "id": "discontinued",
@@ -57,7 +57,7 @@
     [
       {"en":"Short-track speed skating","de":"Shorttrack","es":"Patinaje de velocidad sobre pista corta","fr":"Patinage de vitesse sur piste courte","it":"Short track","ja":"ショートトラックスピードスケート","ko":"쇼트트랙","zh-Hans":"短道速滑","zh-Hant":"短道競速滑冰","pt":"Patinagem de velocidade de pista curta","ru":"Шорт-трек","tr":"Kısa kulvar sürat pateni","pl":"Short track","nl":"Shorttrack","bg":"Шорттрек","cs":"Short track","da":"Kortbaneløb på skøjter","et":"Lühirajauisutamine","fi":"Kaukalopikaluistelu","el":"Πατινάζ ταχύτητας μικρής πίστας","he":"החלקה מהירה על הקרח במסלול קצר","hu":"Rövidpályás gyorskorcsolya","lv":"Šorttreks","mk":"Брзо лизгање на кратки патеки","no":"Kortbaneløp","ro":"Patinaj viteză pe pistă scurtă","sr":"Брзо клизање на кратким стазама","sk":"Šortrek","sv":"Short track","?":["tl"]},
       {"en":"Freestyle skiing","de":"Freestyle-Skiing","es":"Esquí acrobático","fr":"Ski acrobatique","it":"Sci acrobatico","ja":"フリースタイルスキー","ko":"프리스타일 스키","zh-Hans":"自由式滑雪","zh-Hant":"自由式滑雪","pt":"Esqui estilo livre","ru":"Фристайл","tr":"Serbest stil kayak","pl":"Narciarstwo dowolne","nl":"Freestyleskiën","bg":"Ски свободен стил","cs":"Akrobatické lyžování","da":"Freestyleskiløb","et":"Vigursuusatamine","fi":"Freestylehiihto","el":"Ελεύθερο σκι","he":"סקי בסגנון חופשי","hu":"Síakrobatika","lv":"Frīstails","mk":"Слободно скијање","no":"Freestylekjøring","ro":"Schi acrobatic","sr":"Скијање слободним стилом","sv":"Freestyle","?":["sk","tl"]},
-      {"en":"Nordic skiing","de":"Ski Nordisch","es":"Esquí nórdico","fr":"Ski nordique","it":"Sci nordico","ja":"ノルディック・スキー","ko":"노르딕 스키","zh-Hans":"北欧滑雪","zh-Hant":"北歐滑雪","pt":"Esqui nórdico","ru":"Северные дисциплины","tr":"Kuzey disiplini","pl":"Narciarstwo klasyczne","nl":"Noords skiën","bg":"Ски северни дисциплини","cs":"Klasické lyžování","da":"Nordiske discipliner","et":"Põhja suusaalad","fi":"Pohjoismaiset hiihtolajit","el":"Βορινό σκι","he":"סקי נורדי","hu":"Északisí","mk":"Нордиско скијање","no":"Nordiske grener","ro":"Schi nordic","sr":"Нордијско скијање","sv":"Nordisk skidsport","?":["lv","sk","tl"]}
+      {"en":"Nordic skiing","de":"Ski Nordisch","es":"Esquí nórdico","fr":"Ski nordique","it":"Sci nordico","ja":"ノルディック・スキー","ko":"노르딕 스키","zh-Hans":"北欧滑雪","zh-Hant":"北歐滑雪","pt":"Esqui nórdico","ru":"Северные дисциплины","tr":"Kuzey disiplini","pl":"Narciarstwo klasyczne","nl":"Noords skiën","bg":"Ски северни дисциплини","cs":"Klasické lyžování","da":"Nordiske discipliner","et":"Põhja suusaalad","fi":"Pohjoismaiset hiihtolajit","el":"Βορινό σκι","he":"סקי נורדי","hu":"Északisí","mk":"Нордиско скијање","no":"Nordiske grener","ro":"Schi nordic","sr":"Нордијско скијање","sk":"Severské lyžovanie","sv":"Nordisk skidsport","?":["lv","tl"]}
     ],
 
     [],

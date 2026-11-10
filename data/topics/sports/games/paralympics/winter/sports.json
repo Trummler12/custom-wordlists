@@ -15,8 +15,8 @@
     "Sports & names: Wikidata, the sport (P641) of every event that is part of an edition of the Winter Paralympic Games — https://www.wikidata.org/wiki/Q3317976 (see scripts/sports/dump-games-sports.mjs)",
     "Tiers: how many language editions of Wikipedia have an article on the sport, from its Wikidata sitelinks — https://www.wikidata.org/wiki/Help:Sitelinks"
   ],
-  "lastUpdated": "2026-10-09",
-  "lastChecked": "2026-10-09",
+  "lastUpdated": "2026-11-10",
+  "lastChecked": "2026-11-10",
   "omitted": [
     {
       "id": "discontinued",
