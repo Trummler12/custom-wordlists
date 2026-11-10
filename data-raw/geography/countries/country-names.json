@@ -3147,10 +3147,6 @@
           "title": true
         },
         {
-          "name": "Ислами́ Джумхури́йе Пакиста́н",
-          "alias": true
-        },
-        {
           "name": "Исламская Республика Пакистан",
           "alias": true
         }
@@ -8897,10 +8893,6 @@
           "name": "Vietnam",
           "pref": true,
           "title": true
-        },
-        {
-          "name": "🇻🇳",
-          "alias": true
         },
         {
           "name": "VN",
@@ -14701,7 +14693,8 @@
         },
         {
           "name": "Birmania",
-          "title": true
+          "title": true,
+          "alias": true
         }
       ],
       "ja": [
@@ -18993,10 +18986,6 @@
           "alias": true
         },
         {
-          "name": "Ukraina",
-          "alias": true
-        },
-        {
           "name": "Ukraïna",
           "alias": true
         },
@@ -19030,15 +19019,7 @@
           "title": true
         },
         {
-          "name": "🇺🇦",
-          "alias": true
-        },
-        {
           "name": "Ucraina",
-          "alias": true
-        },
-        {
-          "name": "Ukraina",
           "alias": true
         },
         {
@@ -19180,19 +19161,11 @@
           "title": true
         },
         {
-          "name": "🇺🇦",
-          "alias": true
-        },
-        {
           "name": "ua",
           "alias": true
         },
         {
           "name": "Ukr.",
-          "alias": true
-        },
-        {
-          "name": "Ukraina",
           "alias": true
         },
         {
@@ -19211,10 +19184,6 @@
           "name": "Ucraina",
           "pref": true,
           "title": true
-        },
-        {
-          "name": "🇺🇦",
-          "alias": true
         }
       ],
       "ru": [
@@ -24531,10 +24500,6 @@
           "name": "Madagascar",
           "pref": true,
           "title": true
-        },
-        {
-          "name": "🇲🇬",
-          "alias": true
         }
       ],
       "ja": [
@@ -26726,10 +26691,6 @@
           "name": "Cameroun",
           "pref": true,
           "title": true
-        },
-        {
-          "name": "🇨🇲",
-          "alias": true
         },
         {
           "name": "Cameroon",
@@ -34348,6 +34309,12 @@
           "pref": true
         }
       ],
+      "en-us": [
+        {
+          "name": "Malawi",
+          "pref": true
+        }
+      ],
       "es": [
         {
           "name": "Malaui",
@@ -35221,10 +35188,6 @@
           "name": "Cambodja",
           "pref": true,
           "title": true
-        },
-        {
-          "name": "🇰🇭",
-          "alias": true
         },
         {
           "name": "Camboya",
@@ -41985,10 +41948,6 @@
           "title": true
         },
         {
-          "name": "🇨🇺",
-          "alias": true
-        },
-        {
           "name": "Остров Свободы",
           "alias": true
         },
@@ -42766,10 +42725,6 @@
           "name": "Repubblica Ceca",
           "pref": true,
           "title": true
-        },
-        {
-          "name": "🇨🇿",
-          "alias": true
         },
         {
           "name": "Cechia",
@@ -44252,10 +44207,6 @@
           "name": "Grecia",
           "pref": true,
           "title": true
-        },
-        {
-          "name": "🇬🇷",
-          "alias": true
         },
         {
           "name": "Repubblica Ellenica",
@@ -60403,10 +60354,6 @@
           "title": true
         },
         {
-          "name": "🇨🇫",
-          "alias": true
-        },
-        {
           "name": "Centrafrique",
           "alias": true
         },
@@ -70399,10 +70346,6 @@
         {
           "name": "Republica Moldova",
           "title": true,
-          "alias": true
-        },
-        {
-          "name": "🇲🇩",
           "alias": true
         },
         {
@@ -80726,10 +80669,6 @@
           "name": "Lussemburgo",
           "pref": true,
           "title": true
-        },
-        {
-          "name": "🇱🇺",
-          "alias": true
         },
         {
           "name": "Granducato di Lussemburgo",
@@ -95433,10 +95372,6 @@
           "alias": true
         },
         {
-          "name": "🇻🇦",
-          "alias": true
-        },
-        {
           "name": "Vaticano",
           "alias": true
         }
@@ -110054,7 +109989,7 @@
   },
   "Q23635": {
     "name": "Bermuda",
-    "population": 65024,
+    "population": 44400,
     "code": "BM",
     "names": {
       "bg": [
@@ -112181,7 +112116,7 @@
   },
   "Q25228": {
     "name": "Anguilla",
-    "population": 19079,
+    "population": 6653,
     "code": "AI",
     "names": {
       "bg": [
@@ -117238,10 +117173,6 @@
         {
           "name": "Islas Norfolk",
           "alias": true
-        },
-        {
-          "name": "Norfolk",
-          "alias": true
         }
       ],
       "et": [
@@ -117260,10 +117191,6 @@
           "name": "Norfolkinsaari",
           "pref": true,
           "title": true
-        },
-        {
-          "name": "NFK",
-          "alias": true
         },
         {
           "name": "Norfolk-saari",
@@ -117286,10 +117213,6 @@
         },
         {
           "name": "île de Norfolk",
-          "alias": true
-        },
-        {
-          "name": "Norfolk",
           "alias": true
         }
       ],
@@ -117335,10 +117258,6 @@
         {
           "name": "Isole Norfolk",
           "alias": true
-        },
-        {
-          "name": "Norfolk Island",
-          "alias": true
         }
       ],
       "ja": [
@@ -117378,10 +117297,6 @@
           "title": true
         },
         {
-          "name": "NFK",
-          "alias": true
-        },
-        {
           "name": "Norfolkas sala",
           "alias": true
         },
@@ -117406,18 +117321,6 @@
           "pref": true
         },
         {
-          "name": "NFK",
-          "alias": true
-        },
-        {
-          "name": "Norfolk",
-          "alias": true
-        },
-        {
-          "name": "Norfolk Island",
-          "alias": true
-        },
-        {
           "name": "Norfolkøyene",
           "alias": true
         }
@@ -117430,14 +117333,6 @@
         {
           "name": "Norfolk (eiland)",
           "title": true
-        },
-        {
-          "name": "NF",
-          "alias": true
-        },
-        {
-          "name": "NFK",
-          "alias": true
         },
         {
           "name": "Norfolkeiland",
@@ -117453,10 +117348,6 @@
           "name": "Norfolkøya",
           "pref": true,
           "title": true
-        },
-        {
-          "name": "Norfolk Island",
-          "alias": true
         },
         {
           "name": "Norfolk-øya",
@@ -117509,10 +117400,6 @@
           "alias": true
         },
         {
-          "name": "Norfolk",
-          "alias": true
-        },
-        {
           "name": "Território da Ilha Norfolk",
           "alias": true
         }
@@ -117525,23 +117412,16 @@
       ],
       "ro": [
         {
-          "name": "insula Norfolk",
-          "pref": true
-        },
-        {
           "name": "Insula Norfolk",
+          "pref": true,
           "title": true
         }
       ],
       "ru": [
         {
-          "name": "Норфолк",
-          "pref": true
-        },
-        {
           "name": "Остров Норфолк",
-          "title": true,
-          "alias": true
+          "pref": true,
+          "title": true
         },
         {
           "name": "Норфолк (остров)",
@@ -117553,6 +117433,10 @@
         },
         {
           "name": "Норфолк, остров",
+          "alias": true
+        },
+        {
+          "name": "Территория острова Норфолк",
           "alias": true
         }
       ],
@@ -117590,10 +117474,6 @@
           "name": "Norfolkön",
           "pref": true,
           "title": true
-        },
-        {
-          "name": "Norfolk Island",
-          "alias": true
         }
       ],
       "tl": [
@@ -117608,10 +117488,6 @@
           "name": "Norfolk Adası",
           "pref": true,
           "title": true
-        },
-        {
-          "name": "Norfolk Island",
-          "alias": true
         }
       ],
       "zh": [

@@ -18,13 +18,13 @@
     "Areas: Bird (2003), An updated digital model of plate boundaries — via https://de.wikipedia.org/wiki/Liste_der_tektonischen_Platten",
     "Names: Wikidata labels of the plate articles and of https://www.wikidata.org/wiki/Q215680 — see scripts/geography/dump-plate-data.mjs"
   ],
-  "lastUpdated": "2026-11-06",
-  "lastChecked": "2026-11-06",
+  "lastUpdated": "2026-11-10",
+  "lastChecked": "2026-11-10",
   "defaultNames": "both",
   "omitted": [
     {
       "id": "ancient",
-      "match": ["Izanagi Plate","Farallon Plate","Bellingshausen Plate","Cimmerian Plate","Baltic plate","European plate","Kula Plate","Charcot Plate","Moa Plate","Phoenix Plate"],
+      "match": ["Izanagi Plate","Farallon Plate","Bellingshausen Plate","Cimmerian Plate","Baltic plate","European plate","Kula Plate","Charcot Plate","Moa Plate","Insular Plate","Phoenix Plate"],
       "count": true,
       "reason": "ancientPlates"
     },
@@ -148,9 +148,11 @@
       {"en":"Cimmerian Plate","fr":"Plaque cimmérienne","it":"Placca cimmeriana","ja":"キンメリアプレート","zh-Hans":"基梅里板块","zh-Hant":"基梅里板塊","ru":"Киммерийская плита","fi":"Kimmerian laatta","hu":"Kimmériai lemez","?":["de","es","ko","pt","tr","pl","nl","bg","cs","da","et","el","he","lv","mk","no","ro","sr","sk","sv","tl"]},
       {"en":"Baltic plate","it":"Placca baltica","ja":"バルトプレート","?":["de","es","fr","ko","zh-Hans","zh-Hant","pt","ru","tr","pl","nl","bg","cs","da","et","fi","el","he","hu","lv","mk","no","ro","sr","sk","sv","tl"]},
       {"en":"European plate","fr":"Plaque européenne","nl":"Europese Plaat","?":["de","es","it","ja","ko","zh-Hans","zh-Hant","pt","ru","tr","pl","bg","cs","da","et","fi","el","he","hu","lv","mk","no","ro","sr","sk","sv","tl"]},
+      {"en":"Kshiroda Plate","?":["de","es","fr","it","ja","ko","zh-Hans","zh-Hant","pt","ru","tr","pl","nl","bg","cs","da","et","fi","el","he","hu","lv","mk","no","ro","sr","sk","sv","tl"]},
       {"en":"Kula Plate","es":"Placa de Kula","fr":"Plaque de Kula","it":"Placca di Kula","ja":"クラプレート","ko":"쿨라판","zh-Hans":"庫拉板塊","ru":"Плита Кула","bg":"Плоча Кула","he":"לוח קולה","?":["de","zh-Hant","pt","tr","pl","nl","cs","da","et","fi","el","hu","lv","mk","no","ro","sr","sk","sv","tl"]},
       {"en":"Charcot Plate","it":"Placca Charcot","zh-Hans":"夏科板塊","?":["de","es","fr","ja","ko","zh-Hant","pt","ru","tr","pl","nl","bg","cs","da","et","fi","el","he","hu","lv","mk","no","ro","sr","sk","sv","tl"]},
       {"en":"Moa Plate","it":"Placca Moa","zh-Hans":"莫阿板塊","?":["de","es","fr","ja","ko","zh-Hant","pt","ru","tr","pl","nl","bg","cs","da","et","fi","el","he","hu","lv","mk","no","ro","sr","sk","sv","tl"]},
+      {"en":"Insular Plate","fr":"Plaque Insulaire","it":"Placca insulare","ja":"インスラープレート","zh-Hans":"海島板塊","?":["de","es","ko","zh-Hant","pt","ru","tr","pl","nl","bg","cs","da","et","fi","el","he","hu","lv","mk","no","ro","sr","sk","sv","tl"]},
       {"en":"Phoenix Plate","es":"Placa de Phoenix","fr":"Plaque de Phœnix","it":"Placca di Phoenix","ja":"フェニックスプレート","ko":"피닉스판","zh-Hans":"菲尼克斯板块","?":["de","zh-Hant","pt","ru","tr","pl","nl","bg","cs","da","et","fi","el","he","hu","lv","mk","no","ro","sr","sk","sv","tl"]},
       {"en":"Pangaea","es":"Pangea","fr":"Pangée","it":"Pangea","ja":"パンゲア大陸","ko":"판게아","zh-Hans":"盤古大陸","zh-Hant":"盤古大陸","pt":"Pangeia","ru":"Пангея","tr":"Pangea","pl":"Pangea","nl":"Pangea","bg":"Пангея","cs":"Pangea","da":"Pangæa","fi":"Pangea","el":"Παγγαία","he":"פנגיאה","hu":"Pangea","lv":"Pangeja","mk":"Пангеја","no":"Pangea","ro":"Pangeea","sr":"Пангеа","sk":"Pangea"},
       {"en":"Gondwana","ja":"ゴンドワナ大陸","ko":"곤드와나","zh-Hans":"冈瓦那大陆","ru":"Гондвана","tr":"Gondvana","bg":"Гондвана","da":"Gondwanaland","el":"Γκοντβάνα","he":"גונדוונה","lv":"Gondvāna","mk":"Гондвана","sr":"Гондвана","?":["zh-Hant"]},

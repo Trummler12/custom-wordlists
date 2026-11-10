@@ -2726,6 +2726,59 @@
       ]
     }
   },
+  "Q10577443": {
+    "name": "Maringarr",
+    "users": 30,
+    "code": "zmt",
+    "names": {
+      "en": [
+        {
+          "name": "Maringarr",
+          "pref": true
+        }
+      ],
+      "en-gb": [
+        {
+          "name": "Maringarr",
+          "pref": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "maringarr",
+          "pref": true
+        }
+      ],
+      "pl": [
+        {
+          "name": "Język maringarr",
+          "pref": true
+        }
+      ],
+      "ru": [
+        {
+          "name": "марингарр",
+          "pref": true
+        },
+        {
+          "name": "маранунггу",
+          "alias": true
+        }
+      ],
+      "sv": [
+        {
+          "name": "Maringarr",
+          "pref": true
+        }
+      ],
+      "tr": [
+        {
+          "name": "zmt",
+          "alias": true
+        }
+      ]
+    }
+  },
   "Q10577501": {
     "name": "Mariyedi",
     "users": 20,
@@ -3548,10 +3601,6 @@
           "pref": true
         },
         {
-          "name": "aae",
-          "alias": true
-        },
-        {
           "name": "Arbëreshë Albanian",
           "alias": true
         },
@@ -3660,10 +3709,6 @@
         {
           "name": "アルベレシュ方言",
           "pref": true
-        },
-        {
-          "name": "aae",
-          "alias": true
         },
         {
           "name": "アアルバレイシュ語",
@@ -46951,10 +46996,6 @@
           "pref": true
         },
         {
-          "name": "akz",
-          "alias": true
-        },
-        {
           "name": "Alabama language",
           "alias": true
         },
@@ -47075,10 +47116,6 @@
         {
           "name": "Alabama",
           "pref": true
-        },
-        {
-          "name": "akz",
-          "alias": true
         }
       ],
       "zh": [
@@ -60985,6 +61022,12 @@
           "pref": true
         }
       ],
+      "ko": [
+        {
+          "name": "바겔어",
+          "pref": true
+        }
+      ],
       "nb": [
         {
           "name": "Bagheli",
@@ -65596,7 +65639,7 @@
   },
   "Q25164": {
     "name": "Nynorsk",
-    "users": 4320000,
+    "users": 500000,
     "code": "nn",
     "names": {
       "bg": [
@@ -83527,10 +83570,6 @@
           "pref": true
         },
         {
-          "name": "ace",
-          "alias": true
-        },
-        {
           "name": "Aceh language",
           "alias": true
         },
@@ -83540,10 +83579,6 @@
         },
         {
           "name": "Achinese",
-          "alias": true
-        },
-        {
-          "name": "ISO ace",
           "alias": true
         }
       ],
@@ -83595,15 +83630,7 @@
           "pref": true
         },
         {
-          "name": "ace",
-          "alias": true
-        },
-        {
           "name": "achinais",
-          "alias": true
-        },
-        {
-          "name": "ISO ace",
           "alias": true
         },
         {
@@ -83757,20 +83784,12 @@
         {
           "name": "Wikang Atsenes",
           "pref": true
-        },
-        {
-          "name": "ace",
-          "alias": true
         }
       ],
       "tr": [
         {
           "name": "Bahsa Acèh",
           "pref": true
-        },
-        {
-          "name": "ace",
-          "alias": true
         }
       ],
       "zh": [
@@ -84015,6 +84034,12 @@
       "sk": [
         {
           "name": "čipvjančina",
+          "pref": true
+        }
+      ],
+      "sv": [
+        {
+          "name": "chipewyan",
           "pref": true
         }
       ],
@@ -88518,10 +88543,6 @@
         {
           "name": "Anicinàbemowin language",
           "alias": true
-        },
-        {
-          "name": "Article name",
-          "alias": true
         }
       ],
       "en-ca": [
@@ -90408,10 +90429,6 @@
         {
           "name": "Angika language",
           "alias": true
-        },
-        {
-          "name": "anp",
-          "alias": true
         }
       ],
       "en-ca": [
@@ -90442,10 +90459,6 @@
         {
           "name": "angika",
           "pref": true
-        },
-        {
-          "name": "anp",
-          "alias": true
         }
       ],
       "it": [
@@ -90458,20 +90471,12 @@
         {
           "name": "アンギカ語",
           "pref": true
-        },
-        {
-          "name": "anp",
-          "alias": true
         }
       ],
       "ko": [
         {
           "name": "앙기카어",
           "pref": true
-        },
-        {
-          "name": "anp",
-          "alias": true
         }
       ],
       "mk": [
@@ -90524,12 +90529,6 @@
         {
           "name": "Wikang Angika",
           "pref": true
-        }
-      ],
-      "tr": [
-        {
-          "name": "anp",
-          "alias": true
         }
       ],
       "zh": [
@@ -93346,10 +93345,6 @@
         },
         {
           "name": "roa-rup",
-          "alias": true
-        },
-        {
-          "name": "rup",
           "alias": true
         }
       ],
@@ -135943,10 +135938,6 @@
           "pref": true
         },
         {
-          "name": "Alor",
-          "alias": true
-        },
-        {
           "name": "Alorese language",
           "alias": true
         }
@@ -136085,10 +136076,6 @@
         {
           "name": "Alorese",
           "pref": true
-        },
-        {
-          "name": "Alor",
-          "alias": true
         },
         {
           "name": "aol",
@@ -204269,7 +204256,7 @@
     }
   },
   "Q3450749": {
-    "name": "Arakanese Language",
+    "name": "Arakanese",
     "users": 765000,
     "code": "rki",
     "names": {
@@ -204287,12 +204274,8 @@
       ],
       "en": [
         {
-          "name": "Arakanese Language",
-          "pref": true
-        },
-        {
           "name": "Arakanese",
-          "alias": true
+          "pref": true
         },
         {
           "name": "Arakanese language",
@@ -204300,10 +204283,6 @@
         },
         {
           "name": "Rakhine language",
-          "alias": true
-        },
-        {
-          "name": "rki",
           "alias": true
         }
       ],
@@ -204384,10 +204363,6 @@
         },
         {
           "name": "Arakan dili",
-          "alias": true
-        },
-        {
-          "name": "rki",
           "alias": true
         }
       ],
@@ -210853,10 +210828,6 @@
         {
           "name": "język amis",
           "pref": true
-        },
-        {
-          "name": "ami",
-          "alias": true
         },
         {
           "name": "amia",
@@ -292469,6 +292440,12 @@
           "pref": true
         }
       ],
+      "pt": [
+        {
+          "name": "Lichão Didão",
+          "pref": true
+        }
+      ],
       "ru": [
         {
           "name": "урмийский еврейско-арамейский язык",
@@ -298508,6 +298485,10 @@
           "alias": true
         },
         {
+          "name": "cpx",
+          "alias": true
+        },
+        {
           "name": "Henghua",
           "alias": true
         },
@@ -298545,6 +298526,10 @@
         },
         {
           "name": "Putian-Xianyou Min",
+          "alias": true
+        },
+        {
+          "name": "Puxian",
           "alias": true
         },
         {
@@ -313438,80 +313423,6 @@
       ]
     }
   },
-  "Q6764397": {
-    "name": "Maringarr",
-    "users": 30,
-    "code": "zmt",
-    "names": {
-      "el": [
-        {
-          "name": "Γλώσσα Μαρινγκάρ",
-          "pref": true
-        }
-      ],
-      "en": [
-        {
-          "name": "Maringarr",
-          "pref": true,
-          "alias": true
-        },
-        {
-          "name": "Maringarr language",
-          "alias": true
-        }
-      ],
-      "en-gb": [
-        {
-          "name": "Maringarr",
-          "pref": true
-        }
-      ],
-      "fr": [
-        {
-          "name": "maringar",
-          "pref": true
-        },
-        {
-          "name": "maringarr",
-          "alias": true
-        }
-      ],
-      "ja": [
-        {
-          "name": "マティ・ケ語",
-          "pref": true
-        },
-        {
-          "name": "マガティ・ゲ語",
-          "alias": true
-        }
-      ],
-      "pl": [
-        {
-          "name": "Język maringarr",
-          "pref": true
-        }
-      ],
-      "ru": [
-        {
-          "name": "марингарр",
-          "pref": true
-        }
-      ],
-      "sv": [
-        {
-          "name": "Maringarr",
-          "pref": true
-        }
-      ],
-      "tr": [
-        {
-          "name": "zmt",
-          "alias": true
-        }
-      ]
-    }
-  },
   "Q6772792": {
     "name": "Marranj",
     "users": 15,
@@ -317024,6 +316935,12 @@
     "name": "Wenzhounese",
     "users": 5000000,
     "names": {
+      "de": [
+        {
+          "name": "Wenzhou-Dialekt",
+          "pref": true
+        }
+      ],
       "en": [
         {
           "name": "Wenzhounese",
@@ -345965,6 +345882,10 @@
         {
           "name": "lao",
           "pref": true
+        },
+        {
+          "name": "laotien",
+          "alias": true
         }
       ],
       "he": [

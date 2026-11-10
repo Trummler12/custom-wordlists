@@ -36296,6 +36296,10 @@
         {
           "name": "Abu Dhabi",
           "alias": true
+        },
+        {
+          "name": "Abú-Zabí",
+          "alias": true
         }
       ],
       "it": [
@@ -75334,10 +75338,6 @@
         {
           "name": "Stato della Città del Vaticano",
           "official": true,
-          "alias": true
-        },
-        {
-          "name": "🇻🇦",
           "alias": true
         },
         {

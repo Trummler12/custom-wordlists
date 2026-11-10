@@ -341,7 +341,7 @@
   },
   "Q51": {
     "name": "Antarctica",
-    "area": 13720000,
+    "area": 14106900,
     "names": {
       "sk": [
         {
@@ -1009,7 +1009,7 @@
   },
   "Q408": {
     "name": "Australia",
-    "area": 7692024,
+    "area": 7688287,
     "names": {
       "el": [
         {
@@ -3235,10 +3235,6 @@
         {
           "name": "Oceania",
           "pref": true
-        },
-        {
-          "name": "Australia și Oceaniaa",
-          "alias": true
         },
         {
           "name": "Oceania și Australia",

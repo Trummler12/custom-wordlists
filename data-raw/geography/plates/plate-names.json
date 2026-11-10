@@ -9535,6 +9535,17 @@
       ]
     }
   },
+  "Q125635643": {
+    "name": "Kshiroda Plate",
+    "names": {
+      "en": [
+        {
+          "name": "Kshiroda Plate",
+          "pref": true
+        }
+      ]
+    }
+  },
   "Q1320205": {
     "name": "Kula Plate",
     "names": {
@@ -9645,6 +9656,45 @@
       "it": [
         {
           "name": "Placca Moa",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q798790": {
+    "name": "Insular Plate",
+    "names": {
+      "en": [
+        {
+          "name": "Insular Plate",
+          "pref": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "Plaque Insulaire",
+          "pref": true
+        },
+        {
+          "name": "Insulaire",
+          "alias": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "インスラープレート",
+          "pref": true
+        }
+      ],
+      "it": [
+        {
+          "name": "Placca insulare",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "海島板塊",
           "pref": true
         }
       ]
