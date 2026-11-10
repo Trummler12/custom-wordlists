@@ -2735,12 +2735,6 @@
           "alias": true
         }
       ],
-      "mul": [
-        {
-          "name": "🏓",
-          "alias": true
-        }
-      ],
       "de": [
         {
           "name": "Tischtennis",
@@ -4530,12 +4524,6 @@
     ],
     "names": {
       "en": [
-        {
-          "name": "cricket",
-          "pref": true
-        }
-      ],
-      "mul": [
         {
           "name": "cricket",
           "pref": true
@@ -13761,12 +13749,6 @@
         {
           "name": "sumo wrestling",
           "alias": true
-        }
-      ],
-      "mul": [
-        {
-          "name": "相撲",
-          "pref": true
         }
       ],
       "de": [
@@ -27716,16 +27698,6 @@
           "alias": true
         }
       ],
-      "mul": [
-        {
-          "name": "snowboard",
-          "pref": true
-        },
-        {
-          "name": "snowboarding",
-          "alias": true
-        }
-      ],
       "de": [
         {
           "name": "Snowboarden",
@@ -38233,12 +38205,6 @@
         {
           "name": "powerlifting",
           "pref": true
-        }
-      ],
-      "mul": [
-        {
-          "name": "Powerlifting",
-          "alias": true
         }
       ],
       "de": [
@@ -64014,12 +63980,6 @@
           "pref": true
         }
       ],
-      "mul": [
-        {
-          "name": "boccia",
-          "pref": true
-        }
-      ],
       "de": [
         {
           "name": "Boccia",
@@ -67713,12 +67673,6 @@
     ],
     "names": {
       "en": [
-        {
-          "name": "teqball",
-          "pref": true
-        }
-      ],
-      "mul": [
         {
           "name": "teqball",
           "pref": true

@@ -13,16 +13,6 @@
           "alias": true
         }
       ],
-      "mul": [
-        {
-          "name": "H",
-          "pref": true
-        },
-        {
-          "name": "₁H",
-          "alias": true
-        }
-      ],
       "de": [
         {
           "name": "Wasserstoff",
@@ -343,16 +333,6 @@
           "alias": true
         }
       ],
-      "mul": [
-        {
-          "name": "He",
-          "pref": true
-        },
-        {
-          "name": "₂He",
-          "alias": true
-        }
-      ],
       "de": [
         {
           "name": "Helium",
@@ -649,16 +629,6 @@
           "alias": true
         }
       ],
-      "mul": [
-        {
-          "name": "Li",
-          "pref": true
-        },
-        {
-          "name": "₃Li",
-          "alias": true
-        }
-      ],
       "de": [
         {
           "name": "Lithium",
@@ -936,12 +906,6 @@
         },
         {
           "name": "element 4",
-          "alias": true
-        }
-      ],
-      "mul": [
-        {
-          "name": "Be",
           "alias": true
         }
       ],
@@ -1250,12 +1214,6 @@
         },
         {
           "name": "boracium",
-          "alias": true
-        }
-      ],
-      "mul": [
-        {
-          "name": "B",
           "alias": true
         }
       ],
@@ -1607,12 +1565,6 @@
           "alias": true
         }
       ],
-      "mul": [
-        {
-          "name": "C",
-          "alias": true
-        }
-      ],
       "de": [
         {
           "name": "Kohlenstoff",
@@ -1942,12 +1894,6 @@
         },
         {
           "name": "₇N",
-          "alias": true
-        }
-      ],
-      "mul": [
-        {
-          "name": "N",
           "alias": true
         }
       ],
@@ -2295,16 +2241,6 @@
           "alias": true
         }
       ],
-      "mul": [
-        {
-          "name": "O",
-          "pref": true
-        },
-        {
-          "name": "₈O",
-          "alias": true
-        }
-      ],
       "de": [
         {
           "name": "Sauerstoff",
@@ -2633,12 +2569,6 @@
           "alias": true
         }
       ],
-      "mul": [
-        {
-          "name": "F",
-          "pref": true
-        }
-      ],
       "de": [
         {
           "name": "Fluor",
@@ -2947,16 +2877,6 @@
           "alias": true
         }
       ],
-      "mul": [
-        {
-          "name": "Ne",
-          "pref": true
-        },
-        {
-          "name": "₁₀Ne",
-          "alias": true
-        }
-      ],
       "de": [
         {
           "name": "Neon",
@@ -3255,12 +3175,6 @@
         {
           "name": "11Na",
           "alias": true
-        }
-      ],
-      "mul": [
-        {
-          "name": "Na",
-          "pref": true
         }
       ],
       "de": [
@@ -3575,16 +3489,6 @@
           "alias": true
         }
       ],
-      "mul": [
-        {
-          "name": "Mg",
-          "pref": true
-        },
-        {
-          "name": "₁₂Mg",
-          "alias": true
-        }
-      ],
       "de": [
         {
           "name": "Magnesium",
@@ -3891,12 +3795,6 @@
         {
           "name": "13Al",
           "alias": true
-        }
-      ],
-      "mul": [
-        {
-          "name": "Al",
-          "pref": true
         }
       ],
       "de": [
@@ -4209,12 +4107,6 @@
         {
           "name": "14Si",
           "alias": true
-        }
-      ],
-      "mul": [
-        {
-          "name": "Si",
-          "pref": true
         }
       ],
       "de": [
@@ -4545,12 +4437,6 @@
           "alias": true
         }
       ],
-      "mul": [
-        {
-          "name": "P",
-          "pref": true
-        }
-      ],
       "de": [
         {
           "name": "Phosphor",
@@ -4863,20 +4749,6 @@
           "alias": true
         }
       ],
-      "mul": [
-        {
-          "name": "S",
-          "pref": true
-        },
-        {
-          "name": "₁₆S",
-          "alias": true
-        },
-        {
-          "name": "16S",
-          "alias": true
-        }
-      ],
       "de": [
         {
           "name": "Schwefel",
@@ -5181,12 +5053,6 @@
           "alias": true
         }
       ],
-      "mul": [
-        {
-          "name": "Cl",
-          "alias": true
-        }
-      ],
       "de": [
         {
           "name": "Chlor",
@@ -5462,12 +5328,6 @@
         },
         {
           "name": "18Ar",
-          "alias": true
-        }
-      ],
-      "mul": [
-        {
-          "name": "Ar",
           "alias": true
         }
       ],
@@ -5781,12 +5641,6 @@
         {
           "name": "K",
           "alias": true
-        }
-      ],
-      "mul": [
-        {
-          "name": "K",
-          "pref": true
         }
       ],
       "de": [
@@ -6228,12 +6082,6 @@
         },
         {
           "name": "20Ca",
-          "alias": true
-        }
-      ],
-      "mul": [
-        {
-          "name": "Ca",
           "alias": true
         }
       ],
@@ -7061,12 +6909,6 @@
           "alias": true
         }
       ],
-      "mul": [
-        {
-          "name": "Ti",
-          "alias": true
-        }
-      ],
       "de": [
         {
           "name": "Titan",
@@ -7798,12 +7640,6 @@
           "name": "24Cr",
           "alias": true
         },
-        {
-          "name": "Cr",
-          "alias": true
-        }
-      ],
-      "mul": [
         {
           "name": "Cr",
           "alias": true
@@ -8665,16 +8501,6 @@
           "alias": true
         }
       ],
-      "mul": [
-        {
-          "name": "Fe",
-          "alias": true
-        },
-        {
-          "name": "26Fe",
-          "alias": true
-        }
-      ],
       "de": [
         {
           "name": "Eisen",
@@ -8965,12 +8791,6 @@
         {
           "name": "element 27",
           "alias": true
-        }
-      ],
-      "mul": [
-        {
-          "name": "Co",
-          "pref": true
         }
       ],
       "de": [
@@ -9403,12 +9223,6 @@
           "alias": true
         }
       ],
-      "mul": [
-        {
-          "name": "Ni",
-          "pref": true
-        }
-      ],
       "de": [
         {
           "name": "Nickel",
@@ -9838,12 +9652,6 @@
           "name": "Paragard T 380A",
           "alias": true
         },
-        {
-          "name": "Cu",
-          "alias": true
-        }
-      ],
-      "mul": [
         {
           "name": "Cu",
           "alias": true
@@ -12035,12 +11843,6 @@
           "alias": true
         }
       ],
-      "mul": [
-        {
-          "name": "Se",
-          "alias": true
-        }
-      ],
       "de": [
         {
           "name": "Selen",
@@ -12475,12 +12277,6 @@
           "alias": true
         }
       ],
-      "mul": [
-        {
-          "name": "Br",
-          "alias": true
-        }
-      ],
       "de": [
         {
           "name": "Brom",
@@ -12898,12 +12694,6 @@
           "name": "element 36",
           "alias": true
         },
-        {
-          "name": "Kr",
-          "alias": true
-        }
-      ],
-      "mul": [
         {
           "name": "Kr",
           "alias": true
@@ -13333,12 +13123,6 @@
           "alias": true
         }
       ],
-      "mul": [
-        {
-          "name": "Rb",
-          "alias": true
-        }
-      ],
       "de": [
         {
           "name": "Rubidium",
@@ -13724,12 +13508,6 @@
         },
         {
           "name": "38Sr",
-          "alias": true
-        }
-      ],
-      "mul": [
-        {
-          "name": "Sr",
           "alias": true
         }
       ],
@@ -14133,20 +13911,6 @@
           "alias": true
         }
       ],
-      "mul": [
-        {
-          "name": "Y",
-          "alias": true
-        },
-        {
-          "name": "39Y",
-          "alias": true
-        },
-        {
-          "name": "³⁹Y",
-          "alias": true
-        }
-      ],
       "de": [
         {
           "name": "Yttrium",
@@ -14544,16 +14308,6 @@
         },
         {
           "name": "element 40",
-          "alias": true
-        }
-      ],
-      "mul": [
-        {
-          "name": "40Zr",
-          "alias": true
-        },
-        {
-          "name": "Zr",
           "alias": true
         }
       ],
@@ -15409,12 +15163,6 @@
         {
           "name": "elemental molybdenum",
           "alias": true
-        }
-      ],
-      "mul": [
-        {
-          "name": "Mo",
-          "pref": true
         }
       ],
       "de": [
@@ -17455,16 +17203,6 @@
           "alias": true
         }
       ],
-      "mul": [
-        {
-          "name": "Ag",
-          "alias": true
-        },
-        {
-          "name": "₄₇Ag",
-          "alias": true
-        }
-      ],
       "de": [
         {
           "name": "Silber",
@@ -18175,20 +17913,6 @@
           "alias": true
         }
       ],
-      "mul": [
-        {
-          "name": "INE 06PB",
-          "alias": true
-        },
-        {
-          "name": "In",
-          "alias": true
-        },
-        {
-          "name": "INE 07PB",
-          "alias": true
-        }
-      ],
       "de": [
         {
           "name": "Indium",
@@ -18571,12 +18295,6 @@
           "alias": true
         }
       ],
-      "mul": [
-        {
-          "name": "Sn",
-          "alias": true
-        }
-      ],
       "de": [
         {
           "name": "Zinn",
@@ -18837,12 +18555,6 @@
         {
           "name": "51Sb",
           "alias": true
-        }
-      ],
-      "mul": [
-        {
-          "name": "Sb",
-          "pref": true
         }
       ],
       "de": [
@@ -19273,12 +18985,6 @@
           "alias": true
         }
       ],
-      "mul": [
-        {
-          "name": "Te",
-          "alias": true
-        }
-      ],
       "de": [
         {
           "name": "Tellur",
@@ -19678,12 +19384,6 @@
           "name": "₅₃I",
           "alias": true
         },
-        {
-          "name": "I",
-          "alias": true
-        }
-      ],
-      "mul": [
         {
           "name": "I",
           "alias": true
@@ -20552,12 +20252,6 @@
         },
         {
           "name": "element 55",
-          "alias": true
-        }
-      ],
-      "mul": [
-        {
-          "name": "Cs",
           "alias": true
         }
       ],
@@ -24477,16 +24171,6 @@
           "alias": true
         }
       ],
-      "mul": [
-        {
-          "name": "Tb",
-          "alias": true
-        },
-        {
-          "name": "₆₅Tb",
-          "alias": true
-        }
-      ],
       "de": [
         {
           "name": "Terbium",
@@ -25221,12 +24905,6 @@
         {
           "name": "Ho",
           "alias": true
-        }
-      ],
-      "mul": [
-        {
-          "name": "Ho",
-          "pref": true
         }
       ],
       "de": [
@@ -26306,16 +25984,6 @@
         },
         {
           "name": "element 70",
-          "alias": true
-        }
-      ],
-      "mul": [
-        {
-          "name": "Yb",
-          "alias": true
-        },
-        {
-          "name": "₇₀Yb",
           "alias": true
         }
       ],
@@ -27946,12 +27614,6 @@
         },
         {
           "name": "wolfram",
-          "alias": true
-        }
-      ],
-      "mul": [
-        {
-          "name": "W",
           "alias": true
         }
       ],
@@ -29683,16 +29345,6 @@
           "alias": true
         }
       ],
-      "mul": [
-        {
-          "name": "Au",
-          "pref": true
-        },
-        {
-          "name": "₇₉Au",
-          "alias": true
-        }
-      ],
       "de": [
         {
           "name": "Gold",
@@ -30010,12 +29662,6 @@
         },
         {
           "name": "quicksilver",
-          "alias": true
-        }
-      ],
-      "mul": [
-        {
-          "name": "Hg",
           "alias": true
         }
       ],
@@ -30418,12 +30064,6 @@
         },
         {
           "name": "81Tl",
-          "alias": true
-        }
-      ],
-      "mul": [
-        {
-          "name": "Tl",
           "alias": true
         }
       ],
@@ -31793,12 +31433,6 @@
           "alias": true
         }
       ],
-      "mul": [
-        {
-          "name": "At",
-          "alias": true
-        }
-      ],
       "de": [
         {
           "name": "Astat",
@@ -32212,12 +31846,6 @@
         },
         {
           "name": "element 86",
-          "alias": true
-        }
-      ],
-      "mul": [
-        {
-          "name": "Rn",
           "alias": true
         }
       ],
@@ -33261,12 +32889,6 @@
           "alias": true
         }
       ],
-      "mul": [
-        {
-          "name": "Ac",
-          "pref": true
-        }
-      ],
       "de": [
         {
           "name": "Actinium",
@@ -33596,12 +33218,6 @@
           "name": "element 90",
           "alias": true
         },
-        {
-          "name": "Th",
-          "alias": true
-        }
-      ],
-      "mul": [
         {
           "name": "Th",
           "alias": true
@@ -33988,12 +33604,6 @@
         },
         {
           "name": "element 91",
-          "alias": true
-        }
-      ],
-      "mul": [
-        {
-          "name": "Pa",
           "alias": true
         }
       ],
@@ -34385,12 +33995,6 @@
           "alias": true
         }
       ],
-      "mul": [
-        {
-          "name": "U",
-          "alias": true
-        }
-      ],
       "de": [
         {
           "name": "Uran",
@@ -34739,12 +34343,6 @@
           "alias": true
         }
       ],
-      "mul": [
-        {
-          "name": "Np",
-          "alias": true
-        }
-      ],
       "de": [
         {
           "name": "Neptunium",
@@ -35089,12 +34687,6 @@
           "alias": true
         }
       ],
-      "mul": [
-        {
-          "name": "Pu",
-          "alias": true
-        }
-      ],
       "de": [
         {
           "name": "Plutonium",
@@ -35422,12 +35014,6 @@
           "name": "element 95",
           "alias": true
         },
-        {
-          "name": "Am",
-          "alias": true
-        }
-      ],
-      "mul": [
         {
           "name": "Am",
           "alias": true
@@ -35768,12 +35354,6 @@
           "name": "element 96",
           "alias": true
         },
-        {
-          "name": "Cm",
-          "alias": true
-        }
-      ],
-      "mul": [
         {
           "name": "Cm",
           "alias": true
@@ -37515,16 +37095,6 @@
           "alias": true
         }
       ],
-      "mul": [
-        {
-          "name": "Md",
-          "alias": true
-        },
-        {
-          "name": "Unu",
-          "alias": true
-        }
-      ],
       "de": [
         {
           "name": "Mendelevium",
@@ -39057,16 +38627,6 @@
           "alias": true
         }
       ],
-      "mul": [
-        {
-          "name": "Unp",
-          "alias": true
-        },
-        {
-          "name": "Db",
-          "alias": true
-        }
-      ],
       "de": [
         {
           "name": "Dubnium",
@@ -39375,12 +38935,6 @@
           "alias": true
         }
       ],
-      "mul": [
-        {
-          "name": "Sg",
-          "alias": true
-        }
-      ],
       "de": [
         {
           "name": "Seaborgium",
@@ -39678,24 +39232,6 @@
         },
         {
           "name": "element 107",
-          "alias": true
-        }
-      ],
-      "mul": [
-        {
-          "name": "bohrium",
-          "pref": true
-        },
-        {
-          "name": "Bh",
-          "alias": true
-        },
-        {
-          "name": "unnilseptium",
-          "alias": true
-        },
-        {
-          "name": "Uns",
           "alias": true
         }
       ],
@@ -40459,12 +39995,6 @@
           "alias": true
         }
       ],
-      "mul": [
-        {
-          "name": "Mt",
-          "alias": true
-        }
-      ],
       "de": [
         {
           "name": "Meitnerium",
@@ -40754,16 +40284,6 @@
         },
         {
           "name": "element 110",
-          "alias": true
-        }
-      ],
-      "mul": [
-        {
-          "name": "Ds",
-          "alias": true
-        },
-        {
-          "name": "Uun",
           "alias": true
         }
       ],
@@ -41967,16 +41487,6 @@
           "alias": true
         }
       ],
-      "mul": [
-        {
-          "name": "Nh",
-          "pref": true
-        },
-        {
-          "name": "Uut",
-          "alias": true
-        }
-      ],
       "de": [
         {
           "name": "Nihonium",
@@ -42963,16 +42473,6 @@
           "alias": true
         }
       ],
-      "mul": [
-        {
-          "name": "Mc",
-          "pref": true
-        },
-        {
-          "name": "Uup",
-          "alias": true
-        }
-      ],
       "de": [
         {
           "name": "Moscovium",
@@ -43500,12 +43000,6 @@
         },
         {
           "name": "Uuh",
-          "alias": true
-        }
-      ],
-      "mul": [
-        {
-          "name": "Lv",
           "alias": true
         }
       ],
