@@ -16,7 +16,7 @@
 // inside beyond that. While the page scrolls it rides along with its anchor but stops at
 // the viewport's edges, so it never leaves the screen while open.
 
-export interface Box {
+interface Box {
   left: number;
   top: number;
   right: number;
@@ -24,7 +24,7 @@ export interface Box {
 }
 
 export type Horizontal = "frame-left" | "trigger-right";
-export type Vertical = "more-room" | "prefer-above" | "below";
+type Vertical = "more-room" | "prefer-above" | "below";
 
 export interface PlaceInput {
   /** The popup's horizontal bounds; its width also caps the popup's. */
@@ -50,7 +50,7 @@ export interface PlaceInput {
   gutter: number;
 }
 
-export interface Placement {
+interface Placement {
   /** Viewport x of the popup's left edge, and the width it may take. */
   left: number;
   maxWidth: number;
@@ -103,7 +103,7 @@ export function place(input: PlaceInput): Placement {
   return { left, maxWidth, above: up, top, maxHeight };
 }
 
-export interface PlacementOptions {
+interface PlacementOptions {
   /** The control that opened the popup. */
   trigger: Element | null | undefined;
   /** What it opens above or below: the trigger when left out, or `"container"` for the
