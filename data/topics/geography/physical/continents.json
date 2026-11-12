@@ -18,8 +18,8 @@
     "Areas: Bird (2003), An updated digital model of plate boundaries — via https://de.wikipedia.org/wiki/Liste_der_tektonischen_Platten",
     "Names: Wikidata labels of the plate articles and of https://www.wikidata.org/wiki/Q215680 — see scripts/geography/dump-plate-data.mjs"
   ],
-  "lastUpdated": "2026-11-10",
-  "lastChecked": "2026-11-10",
+  "lastUpdated": "2026-11-12",
+  "lastChecked": "2026-11-12",
   "defaultNames": "both",
   "omitted": [
     {

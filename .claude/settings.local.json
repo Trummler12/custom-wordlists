@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(perl -pi -e 's/\\\\blangName\\\\\\(/LANGSTORE.name\\(/g; s/\\\\bavailableLangs\\\\b/LANGSTORE.available/g; s/\\\\bui\\\\./LANGSTORE.ui./g; s/\\\\blang\\\\b\\(?![-.\\\\w]\\)/LANGSTORE.current/g' src/App.svelte)",
+      "Bash(perl -pi -e 's/LANGSTORE/lang/g' src/App.svelte)",
+      "Bash(perl -pi -e ' *)",
+      "Bash(perl -pi -e 's/TOPICS/topics/g' src/App.svelte)",
+      "Bash(git check-ignore *)",
+      "Bash(node scripts/pokemon/enrich-generations.mjs)"
+    ]
+  }
+}

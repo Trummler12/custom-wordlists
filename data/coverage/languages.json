@@ -1093,7 +1093,7 @@
     {"qid":"Q34181","name":"Siouan","miss":["bg","da","el","sk","tl"]},
     {"qid":"Q34186","name":"Yazgulyam","num":2500,"miss":["es","it","ko","nl","cs","da","el","he","hu","ro","sr","sk","sv","tl"]},
     {"qid":"Q34196","name":"Waigali","num":11500,"miss":["ko","zh-Hant","pt","tr","nl","cs","da","el","he","hu","lv","mk","ro","sr","sk","sv","tl"]},
-    {"qid":"Q34198","name":"Washo","num":20,"miss":["ko","pl","bg","cs","da","el","he","hu","lv","mk","no","ro","sk","sv"]},
+    {"qid":"Q34198","name":"Washo","num":20,"miss":["ko","pl","bg","da","el","he","hu","lv","mk","no","ro","sk","sv"]},
     {"qid":"Q34203","name":"Yaeyama","num":47600,"miss":["de","it","pl","nl","bg","da","fi","el","hu","lv","no","ro","sk","tl"]},
     {"qid":"Q34207","name":"Yankunytjatjara","num":600,"miss":["de","ko","zh-Hant","nl","bg","cs","da","et","fi","el","hu","lv","mk","ro","sr","sk","tl"]},
     {"qid":"Q34208","name":"Wakhi","num":11900,"miss":["zh-Hant","da","el","he","hu","ro","sr","sk","tl"]},

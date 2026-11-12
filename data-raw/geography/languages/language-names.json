@@ -1859,8 +1859,7 @@
       "en": [
         {
           "name": "Limburgish",
-          "pref": true,
-          "alias": true
+          "pref": true
         },
         {
           "name": "Limburgan",
@@ -5034,6 +5033,10 @@
         {
           "name": "hindoustani",
           "pref": true
+        },
+        {
+          "name": "Ourdou",
+          "alias": true
         }
       ],
       "he": [
@@ -96358,6 +96361,10 @@
         {
           "name": "アワディー語",
           "pref": true
+        },
+        {
+          "name": "アワド語",
+          "alias": true
         }
       ],
       "ko": [
@@ -113614,8 +113621,16 @@
       ],
       "cs": [
         {
-          "name": "Djula",
+          "name": "djula",
           "pref": true
+        },
+        {
+          "name": "dioula",
+          "alias": true
+        },
+        {
+          "name": "dyula",
+          "alias": true
         }
       ],
       "de": [
@@ -193742,6 +193757,20 @@
     "users": 20,
     "code": "was",
     "names": {
+      "cs": [
+        {
+          "name": "Washo",
+          "pref": true
+        },
+        {
+          "name": "wá·šiw ʔítlu",
+          "alias": true
+        },
+        {
+          "name": "Washoe",
+          "alias": true
+        }
+      ],
       "de": [
         {
           "name": "Washoe",

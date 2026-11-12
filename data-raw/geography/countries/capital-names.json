@@ -32417,7 +32417,7 @@
   },
   "Q2449": {
     "name": "Mogadishu",
-    "population": 2120000,
+    "population": 2330708,
     "country": "Somalia",
     "code": "SO",
     "names": {
@@ -84522,7 +84522,7 @@
           "pref": true
         },
         {
-          "name": "Τζωρτζ Τάουν (Νησιά Κέιμαν)",
+          "name": "Τζωρτζ Τάουν (Νήσοι Κέιμαν)",
           "title": true
         },
         {
@@ -87514,7 +87514,7 @@
   },
   "Q30970": {
     "name": "Jamestown",
-    "population": 714,
+    "population": 1516,
     "country": "Saint Helena, Ascension and Tristan da Cunha",
     "code": "SH",
     "names": {
