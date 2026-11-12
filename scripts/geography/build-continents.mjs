@@ -31,6 +31,7 @@ import { writeCoverage } from "./coverage.mjs";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 import { serializeTopic } from "../lib/serialize.mjs";
+import { NAME_LANGS, LANG_SRC, labelFor } from "../lib/wikidata.mjs";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..", "..");
 const RAW = join(ROOT, "data-raw", "geography");
@@ -39,24 +40,6 @@ const TOPIC = join(ROOT, "data", "topics", "geography", "physical", "continents.
 // The word-list output languages: skribbl's full set, a superset of the nine the
 // locale-like strings (titles, tier conditions, tooltips, notes) use. Names only —
 // dormant until CONTENT_LANGS grows into them. Mirrors build-country-data / the dump.
-const NAME_LANGS = [
-  "en", "de", "es", "fr", "it", "ja", "ko", "zh-Hans", "zh-Hant",
-  "pt", "ru", "tr", "pl", "nl", "bg", "cs", "da", "et", "fi", "el", "he",
-  "hu", "lv", "mk", "no", "ro", "sr", "sk", "sv", "tl",
-];
-
-/** Our content tag → the raw Wikidata label tags the dump keyed `names` under, first hit
- *  wins — the same chains the dump and build-country-data use (zh scripts, nb/nn, fil). */
-const LANG_SRC = {
-  en: ["en"], de: ["de"], es: ["es"], fr: ["fr"], it: ["it"], ja: ["ja"], ko: ["ko"],
-  "zh-Hans": ["zh-hans", "zh-cn", "zh-sg", "zh-my", "zh"],
-  "zh-Hant": ["zh-hant", "zh-tw", "zh-hk", "zh-mo"],
-  pt: ["pt", "pt-br", "pt-pt"], ru: ["ru"], tr: ["tr"], pl: ["pl"], nl: ["nl"],
-  bg: ["bg"], cs: ["cs"], da: ["da"], et: ["et"], fi: ["fi"], el: ["el"], he: ["he"],
-  hu: ["hu"], lv: ["lv"], mk: ["mk"], no: ["no", "nb", "nn"], ro: ["ro"], sr: ["sr"],
-  sk: ["sk"], sv: ["sv"], tl: ["tl", "fil"],
-};
-
 /** Curated departures for the Wikidata P31 catch-all (dump band "unknown"), which a
  *  bare query can't clean itself. Q-ids, so a relabel upstream doesn't slip one past.
  *  Dropped entirely: things Wikidata tags as a tectonic plate that are not one. Name-level
@@ -258,18 +241,11 @@ const tidy = (name) => {
 };
 /** The preferred name a content tag reads from a dump item's rich `names` map — the first
  *  of its Wikidata sources that carries a term, its `pref` label (else the first alias). */
-const prefName = (names, ourTag) => {
-  for (const src of LANG_SRC[ourTag]) {
-    const arr = names?.[src];
-    if (arr?.length) return (arr.find((t) => t.pref) ?? arr[0]).name;
-  }
-  return undefined;
-};
 /** A dump item (`{ name, area?, names }`) → our `{ tag: name }`, each name tidied. */
 const resolve = (item) => {
   const out = {};
   for (const tag of NAME_LANGS) {
-    const n = prefName(item?.names, tag);
+    const n = labelFor(item?.names, tag);
     if (n) out[tag] = tidy(n);
   }
   return out;
