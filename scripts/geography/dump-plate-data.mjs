@@ -34,35 +34,11 @@
 import { mkdir, writeFile } from "node:fs/promises";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
+import { NAME_LANGS, LANG_SRC, WD_TAGS } from "../lib/wikidata.mjs";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..", "..");
 const OUT = join(ROOT, "data-raw", "geography");
 const UA = { "User-Agent": "custom-wordlists/1.0 (https://github.com/Trummler12/custom-wordlists)" };
-
-/** The word-list output languages: skribbl's full set, a superset of the nine the
- *  locale-like strings use. Names only — declaring one here carries its names into the
- *  data; the app's CONTENT_LANGS still gates what a reader can pick, so the extra ones
- *  sit dormant until the interface grows into them. Mirrors build-country-data. */
-const NAME_LANGS = [
-  "en", "de", "es", "fr", "it", "ja", "ko", "zh-Hans", "zh-Hant",
-  "pt", "ru", "tr", "pl", "nl", "bg", "cs", "da", "et", "fi", "el", "he",
-  "hu", "lv", "mk", "no", "ro", "sr", "sk", "sv", "tl",
-];
-
-/** Our content tag → the Wikidata label tags to read it from, first hit wins — the same
- *  chains build-country-data uses (Chinese scripts, Norwegian nb/nn, Tagalog fil). */
-const LANG_SRC = {
-  en: ["en"], de: ["de"], es: ["es"], fr: ["fr"], it: ["it"], ja: ["ja"], ko: ["ko"],
-  "zh-Hans": ["zh-hans", "zh-cn", "zh-sg", "zh-my", "zh"],
-  "zh-Hant": ["zh-hant", "zh-tw", "zh-hk", "zh-mo"],
-  pt: ["pt", "pt-br", "pt-pt"], ru: ["ru"], tr: ["tr"], pl: ["pl"], nl: ["nl"],
-  bg: ["bg"], cs: ["cs"], da: ["da"], et: ["et"], fi: ["fi"], el: ["el"], he: ["he"],
-  hu: ["hu"], lv: ["lv"], mk: ["mk"], no: ["no", "nb", "nn"], ro: ["ro"], sr: ["sr"],
-  sk: ["sk"], sv: ["sv"], tl: ["tl", "fil"],
-};
-/** Every Wikidata label tag to request, flattened from the chains above. The build reads
- *  the preferred name for a content tag by walking these sources (see LANG_SRC there). */
-const WD_TAGS = [...new Set(Object.values(LANG_SRC).flat())];
 
 /** The landmasses, by hand. `P31 wd:Q5107` answers with fifteen items and most of
  *  them are noise — *African Continent* beside *Africa*, *Turtle Island*,
