@@ -128,6 +128,32 @@ class OverlayState {
     if (this.settingsMenu) this.#remember("settings", trigger);
   };
 
+  // --- Regular panels --------------------------------------------------------
+  // The eight panels below open one id at a time against their trigger and close on an
+  // outside press or Escape; they differ only in slot and host (HOSTS), so one table
+  // drives their toggles and the three window handlers. lang/settings/tip stay bespoke
+  // — their open/close is not uniform. Innermost-first order, as Escape resolves them.
+  #panels: { kind: OverlayKind; get: () => string | null; set: (v: string | null) => void }[] = [
+    { kind: "omitted", get: () => this.omittedPanel, set: (v) => (this.omittedPanel = v) },
+    { kind: "coverage", get: () => this.coveragePanel, set: (v) => (this.coveragePanel = v) },
+    { kind: "inclusion", get: () => this.inclusionPanel, set: (v) => (this.inclusionPanel = v) },
+    { kind: "sovereignty", get: () => this.sovereigntyPanel, set: (v) => (this.sovereigntyPanel = v) },
+    { kind: "savedLists", get: () => this.savedListsPanel, set: (v) => (this.savedListsPanel = v) },
+    { kind: "exportLists", get: () => this.exportPanel, set: (v) => (this.exportPanel = v) },
+    { kind: "importLists", get: () => this.importPanel, set: (v) => (this.importPanel = v) },
+    { kind: "customSettings", get: () => this.customSettingsPanel, set: (v) => (this.customSettingsPanel = v) },
+  ];
+  /** Toggle a regular panel: close if its id is already open, else open it and remember
+   *  the trigger (so Escape can hand the focus back). */
+  #togglePanel(kind: OverlayKind, id: string, trigger: Element): void {
+    const p = this.#panels.find((x) => x.kind === kind)!;
+    if (p.get() === id) p.set(null);
+    else {
+      p.set(id);
+      this.#remember(kind, trigger);
+    }
+  }
+
   // --- Omissions panel -------------------------------------------------------
 
   /** Which list is showing what it leaves out, keyed `${topicId}:${groupId}`.
@@ -136,106 +162,50 @@ class OverlayState {
    *  of sharing it: the 🧹 and the 🌎 sit on the same row and only one of them
    *  should ever be open. */
   omittedPanel = $state<string | null>(null);
-  toggleOmittedPanel = (id: string, trigger: Element): void => {
-    if (this.omittedPanel === id) {
-      this.omittedPanel = null;
-      return;
-    }
-    this.omittedPanel = id;
-    this.#remember("omitted", trigger);
-  };
+  toggleOmittedPanel = (id: string, trigger: Element): void => this.#togglePanel("omitted", id, trigger);
 
   // --- Coverage popup --------------------------------------------------------
 
   /** Which list is showing its Street View coverage filter, keyed
    *  `${topicId}:${groupId}` — the Pegman's popup, a sibling of the 🚫 panel. */
   coveragePanel = $state<string | null>(null);
-  toggleCoveragePanel = (id: string, trigger: Element): void => {
-    if (this.coveragePanel === id) {
-      this.coveragePanel = null;
-      return;
-    }
-    this.coveragePanel = id;
-    this.#remember("coverage", trigger);
-  };
+  toggleCoveragePanel = (id: string, trigger: Element): void => this.#togglePanel("coverage", id, trigger);
 
   // --- Inclusion panel --------------------------------------------------------
 
   /** Which inclusion checklist is open, keyed `${icon}-${topicId}-${groupId}`: the ☑️
    *  button's popup, the counterpart of the 🚫 panel. */
   inclusionPanel = $state<string | null>(null);
-  toggleInclusionPanel = (id: string, trigger: Element): void => {
-    if (this.inclusionPanel === id) {
-      this.inclusionPanel = null;
-      return;
-    }
-    this.inclusionPanel = id;
-    this.#remember("inclusion", trigger);
-  };
+  toggleInclusionPanel = (id: string, trigger: Element): void => this.#togglePanel("inclusion", id, trigger);
 
   // --- Sovereignty matrix ----------------------------------------------------
 
   /** Which list is showing its sovereignty & recognition matrix, keyed by the
    *  control id — the ✅ button's popup, a sibling of the Pegman's. */
   sovereigntyPanel = $state<string | null>(null);
-  toggleSovereigntyPanel = (id: string, trigger: Element): void => {
-    if (this.sovereigntyPanel === id) {
-      this.sovereigntyPanel = null;
-      return;
-    }
-    this.sovereigntyPanel = id;
-    this.#remember("sovereignty", trigger);
-  };
+  toggleSovereigntyPanel = (id: string, trigger: Element): void => this.#togglePanel("sovereignty", id, trigger);
 
   // --- Saved-lists panel -----------------------------------------------------
 
   /** Whether the reader's saved-lists manager (the 💾 button on the Custom row) is
    *  open — one panel, so a single slot under a fixed id. */
   savedListsPanel = $state<string | null>(null);
-  toggleSavedListsPanel = (id: string, trigger: Element): void => {
-    if (this.savedListsPanel === id) {
-      this.savedListsPanel = null;
-      return;
-    }
-    this.savedListsPanel = id;
-    this.#remember("savedLists", trigger);
-  };
+  toggleSavedListsPanel = (id: string, trigger: Element): void => this.#togglePanel("savedLists", id, trigger);
 
   // --- Export / import panels (§X4b) -----------------------------------------
 
   exportPanel = $state<string | null>(null);
-  toggleExportPanel = (id: string, trigger: Element): void => {
-    if (this.exportPanel === id) {
-      this.exportPanel = null;
-      return;
-    }
-    this.exportPanel = id;
-    this.#remember("exportLists", trigger);
-  };
+  toggleExportPanel = (id: string, trigger: Element): void => this.#togglePanel("exportLists", id, trigger);
 
   importPanel = $state<string | null>(null);
-  toggleImportPanel = (id: string, trigger: Element): void => {
-    if (this.importPanel === id) {
-      this.importPanel = null;
-      return;
-    }
-    this.importPanel = id;
-    this.#remember("importLists", trigger);
-  };
+  toggleImportPanel = (id: string, trigger: Element): void => this.#togglePanel("importLists", id, trigger);
 
   // --- Custom settings panel (⚙️) --------------------------------------------
 
   /** The ⚙️ on the Custom row — its own slot, like the panels above, so a hover
    *  tooltip (which shares the single `tip` slot) can't dismiss it. */
   customSettingsPanel = $state<string | null>(null);
-  toggleCustomSettingsPanel = (id: string, trigger: Element): void => {
-    if (this.customSettingsPanel === id) {
-      this.customSettingsPanel = null;
-      return;
-    }
-    this.customSettingsPanel = id;
-    this.#remember("customSettings", trigger);
-  };
+  toggleCustomSettingsPanel = (id: string, trigger: Element): void => this.#togglePanel("customSettings", id, trigger);
 
   // --- Tooltips --------------------------------------------------------------
 
@@ -314,14 +284,7 @@ class OverlayState {
     if (this.langSelect && !target?.closest?.(".lang-select")) this.langSelect = null;
     if (this.langMenu && !target?.closest?.(".lang-picker")) this.langMenu = null;
     if (this.settingsMenu && !target?.closest?.(".settings-picker")) this.settingsMenu = null;
-    if (this.omittedPanel && !target?.closest?.(".omitted-host")) this.omittedPanel = null;
-    if (this.coveragePanel && !target?.closest?.(".coverage-host")) this.coveragePanel = null;
-    if (this.inclusionPanel && !target?.closest?.(".inclusion-host")) this.inclusionPanel = null;
-    if (this.sovereigntyPanel && !target?.closest?.(".sovereignty-host")) this.sovereigntyPanel = null;
-    if (this.savedListsPanel && !target?.closest?.(".saved-lists-host")) this.savedListsPanel = null;
-    if (this.exportPanel && !target?.closest?.(".export-lists-host")) this.exportPanel = null;
-    if (this.importPanel && !target?.closest?.(".import-lists-host")) this.importPanel = null;
-    if (this.customSettingsPanel && !target?.closest?.(".custom-settings-host")) this.customSettingsPanel = null;
+    for (const p of this.#panels) if (p.get() && !target?.closest?.(HOSTS[p.kind])) p.set(null);
     // Neither on the marker, whose own click toggles, nor inside the note: a note
     // exists to be read, and one carrying a link exists to be clicked — closing it
     // here would take the link out of the document before the click reached it.
@@ -362,14 +325,7 @@ class OverlayState {
     else if (kind === "langSelect") this.langSelect = null;
     else if (kind === "lang") this.langMenu = this.langSelect = null;
     else if (kind === "settings") this.settingsMenu = null;
-    else if (kind === "coverage") this.coveragePanel = null;
-    else if (kind === "inclusion") this.inclusionPanel = null;
-    else if (kind === "sovereignty") this.sovereigntyPanel = null;
-    else if (kind === "savedLists") this.savedListsPanel = null;
-    else if (kind === "exportLists") this.exportPanel = null;
-    else if (kind === "importLists") this.importPanel = null;
-    else if (kind === "customSettings") this.customSettingsPanel = null;
-    else this.omittedPanel = null;
+    else this.#panels.find((p) => p.kind === kind)?.set(null);
     const back = this.#openers[kind];
     if (back) void returnFocus(back);
   };
@@ -391,14 +347,7 @@ class OverlayState {
     if (this.langSelect && inside(HOSTS.langSelect)) return "langSelect";
     if (this.langMenu && inside(HOSTS.lang)) return "lang";
     if (this.settingsMenu && inside(HOSTS.settings)) return "settings";
-    if (this.omittedPanel && inside(HOSTS.omitted)) return "omitted";
-    if (this.coveragePanel && inside(HOSTS.coverage)) return "coverage";
-    if (this.inclusionPanel && inside(HOSTS.inclusion)) return "inclusion";
-    if (this.sovereigntyPanel && inside(HOSTS.sovereignty)) return "sovereignty";
-    if (this.savedListsPanel && inside(HOSTS.savedLists)) return "savedLists";
-    if (this.exportPanel && inside(HOSTS.exportLists)) return "exportLists";
-    if (this.importPanel && inside(HOSTS.importLists)) return "importLists";
-    if (this.customSettingsPanel && inside(HOSTS.customSettings)) return "customSettings";
+    for (const p of this.#panels) if (p.get() && inside(HOSTS[p.kind])) return p.kind;
     return null;
   }
 }
