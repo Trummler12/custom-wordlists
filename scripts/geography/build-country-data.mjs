@@ -51,6 +51,7 @@ import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 import { serializeCategory, serializeTopic } from "../lib/serialize.mjs";
 import { bucketLangWiki } from "./bucket-names.mjs";
+import { NAME_LANGS, LANG_SRC, labelFor } from "../lib/wikidata.mjs";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..", "..");
 const RAW = join(ROOT, "data-raw", "geography");
@@ -66,26 +67,8 @@ const LANGS = ["en", "de", "es", "fr", "it", "ja", "ko", "zh-Hans", "zh-Hant", "
 // grows. Names only — declaring a language here carries its names into the data, but the
 // app's CONTENT_LANGS still gates what a reader can pick, so the extra ones sit dormant
 // until the interface grows into them (see docs/Language-Roadmap.md, src/locale CONTENT_LANGS).
-const NAME_LANGS = [
-  "en", "de", "es", "fr", "it", "ja", "ko", "zh-Hans", "zh-Hant",
-  "pt", "ru", "tr", "pl", "nl", "bg", "cs", "da", "et", "fi", "el", "he",
-  "hu", "lv", "mk", "no", "ro", "sr", "sk", "sv", "tl",
-];
 const TODAY = new Date().toISOString().slice(0, 10);
 
-/** Our content tag => the Wikidata tags to read it from, first hit wins. Wikidata files a
- *  Chinese name under any of zh / zh-cn / zh-tw / … as readily as under the explicit
- *  zh-hans / zh-hant, so the script slot needs a fallback chain; Norwegian rides nb/nn,
- *  and Portuguese/Tagalog their regional siblings. The rest are 1:1. */
-const LANG_SRC = {
-  en: ["en"], de: ["de"], es: ["es"], fr: ["fr"], it: ["it"], ja: ["ja"], ko: ["ko"],
-  "zh-Hans": ["zh-hans", "zh-cn", "zh-sg", "zh-my", "zh"],
-  "zh-Hant": ["zh-hant", "zh-tw", "zh-hk", "zh-mo"],
-  pt: ["pt", "pt-br", "pt-pt"], ru: ["ru"], tr: ["tr"], pl: ["pl"], nl: ["nl"],
-  bg: ["bg"], cs: ["cs"], da: ["da"], et: ["et"], fi: ["fi"], el: ["el"], he: ["he"],
-  hu: ["hu"], lv: ["lv"], mk: ["mk"], no: ["no", "nb", "nn"], ro: ["ro"], sr: ["sr"],
-  sk: ["sk"], sv: ["sv"], tl: ["tl", "fil"],
-};
 const pickLang = (names, tag) => {
   for (const s of LANG_SRC[tag]) if (names?.[s]?.length) return names[s];
   return undefined;
@@ -371,9 +354,8 @@ async function readContinentNames() {
   for (const [qid, v] of Object.entries(raw)) {
     out[qid] = {};
     for (const lang of NAME_LANGS) {
-      const arr = pickLang(v.names, lang);
-      const term = arr?.find((t) => t.pref) ?? arr?.[0];
-      if (term) out[qid][lang] = term.name;
+      const name = labelFor(v.names, lang);
+      if (name) out[qid][lang] = name;
     }
   }
   return out;
