@@ -11,6 +11,7 @@
   import { loadManifest } from "../lib/data";
   import { resolveStr } from "../lib/words";
   import type { LocalizedString, Manifest } from "../lib/types";
+  import { PAGE_SIZE } from "../lib/_tunables";
   import Msg from "../locale/html/Msg.svelte";
   import { plainText } from "../locale/html/markup";
   import SiteFooter from "../components/layout/SiteFooter.svelte";
@@ -112,7 +113,6 @@
   };
   // A shortened zh tag shows its real code first, then the name on a second line.
   const langTitle = (lang: string): string => (SHORT_LANG[lang] ? `${lang}\n${langName(lang)}` : langName(lang));
-  const PAGE_SIZE = 100; // one screenful of rows; a size control is a later batch
 
   // The interface language is applied but not shown: the shareable URL stays
   // <base>coverage/<topic>/<lang>. Drop any /<uiLang> segment or ?/ leftover once.

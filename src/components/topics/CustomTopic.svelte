@@ -3,14 +3,14 @@
   import { plain } from "../../locale/html/plain";
   import { availableSeparators, separatorLabel, type Separator } from "../../lib/custom";
   import { cancelFit, scheduleFit } from "../../lib/rowfit";
+  import { custom } from "../../state/custom.svelte";
   import {
-    custom,
     PREVIEW_CHARS_MAX,
     PREVIEW_CHARS_MIN,
     PREVIEW_ITEMS_MAX,
     PREVIEW_ITEMS_MIN,
     ROW_STEP,
-  } from "../../state/custom.svelte";
+  } from "../../lib/_tunables";
   import { lang } from "../../state/lang.svelte";
   import { output } from "../../state/output.svelte";
   import { overlays } from "../../state/overlays.svelte";

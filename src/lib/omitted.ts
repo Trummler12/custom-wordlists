@@ -5,11 +5,8 @@
 
 import type { Group, Omission, WordEntry } from "./types";
 import { displayName, isUnknownIn, UNKNOWN } from "./words";
+import { OMISSION_SAMPLE_CAP } from "./_tunables";
 
-/** How many matched names a rule's summary keeps for its hover — enough to fill the
- *  panel's five-line excerpt (see RULE_TITLE_* in OmittedPanel), capped so a large
- *  family doesn't stash hundreds. */
-const SAMPLE_CAP = 50;
 
 /** The reserved rule id for the entries no name is known for in a language. Not a
  *  rule in the file — it comes from the entries themselves — but a reader toggles
@@ -314,7 +311,7 @@ export function omissionSummary(
     if (!rule) continue;
     const s = out[rule.id];
     s.count++;
-    if (s.names.length < SAMPLE_CAP) s.names.push(displayName(e, lang).short);
+    if (s.names.length < OMISSION_SAMPLE_CAP) s.names.push(displayName(e, lang).short);
   }
   return out;
 }

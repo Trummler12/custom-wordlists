@@ -4,6 +4,7 @@
 
 import type { CategoryMeta, Group, Omission, TopicSummary, WordEntry } from "./types";
 import { renderEntry } from "./words";
+import { OMISSION_SAMPLE_CAP } from "./_tunables";
 
 /** One level of the category tree. Renders as a single collapsible node showing
  *  only its own path segment, so "gaming/pokemon/pokemon" nests inside
@@ -118,9 +119,6 @@ export function synthesizeTopics(topics: TopicSummary[]): TopicSummary[] {
  *  Republic of China) without depending on the list's names mode. */
 const mergeKey = (e: WordEntry): string => renderEntry(e, "both", "en").join("|");
 
-/** Cap on the names a merged rule's hover keeps, matching the per-list sample
- *  (SAMPLE_CAP in lib/omitted) and the panel's five-line excerpt. */
-const SUMMARY_NAME_CAP = 50;
 
 /** The declared omission rules across the contributors, deduplicated by `id` —
  *  every continent writes the "breakaway states" rule under the same id (with its
@@ -204,7 +202,7 @@ export function mergeGroups(
       const agg = (summary[id] ??= { count: 0, names: [] });
       agg.count += part.count;
       for (const name of part.names) {
-        if (agg.names.length < SUMMARY_NAME_CAP && !agg.names.includes(name)) agg.names.push(name);
+        if (agg.names.length < OMISSION_SAMPLE_CAP && !agg.names.includes(name)) agg.names.push(name);
       }
     }
   }

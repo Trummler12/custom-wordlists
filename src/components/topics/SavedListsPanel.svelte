@@ -2,7 +2,8 @@
   import Msg from "../../locale/html/Msg.svelte";
   import { plain } from "../../locale/html/plain";
   import { charKey, cleanItems, findDupes, oddChars, SEPARATORS, type Separator } from "../../lib/custom";
-  import { custom, NAME_MAX, type SavedList } from "../../state/custom.svelte";
+  import { custom, type SavedList } from "../../state/custom.svelte";
+  import { NAME_MAX } from "../../lib/_tunables";
   import { lang } from "../../state/lang.svelte";
   import { overlays } from "../../state/overlays.svelte";
   import { confirmPopup, controlPopup, placement } from "../shared/placement";

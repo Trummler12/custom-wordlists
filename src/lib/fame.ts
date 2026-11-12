@@ -7,6 +7,8 @@ import type { Group, LocalizedString, TierNote } from "./types";
 // Snap spacing: a non-empty tier gets at least this fraction of an equal step (of
 // the non-empty tiers), and the rest of the travel is distributed among them by
 // size. Lower = more size-faithful spacing; higher = more even. Range (0, 1).
+// These three ratios are local tunables kept by this geometry; see ./_tunables.ts for
+// the central settings home.
 const MIN_GAP_RATIO = 0.4;
 
 // An empty tier between two full ones gets this fraction of the travel — near

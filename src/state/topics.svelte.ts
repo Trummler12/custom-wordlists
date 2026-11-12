@@ -11,7 +11,7 @@ import { baseTag, langSupport } from "../lib/languages";
 import { allRules, BASE_RULE, EXTEND_RULE, includeRules, UNKNOWN_RULE, visibleGroup } from "../lib/omitted";
 import { displayName, type DisplayName, groupEntries, renderedForms } from "../lib/words";
 import { SKRIBBL } from "../lib/skribbl";
-import { PREVIEW_ITEMS_MAX } from "./custom.svelte";
+import { PREVIEW_ITEMS_MAX } from "../lib/_tunables";
 import { settings } from "./settings.svelte";
 import { lang } from "./lang.svelte";
 
@@ -43,7 +43,8 @@ function normalizedGroups(data: Topic): Group[] {
 
 /** How fast a name's sampling weight falls off per character away from the target length
  *  — 0.85 keeps a gentle gradient (weight halves roughly every ~4 characters) rather than
- *  collapsing onto the single target length. Tune for a steeper / flatter skew. */
+ *  collapsing onto the single target length. Tune for a steeper / flatter skew. A local
+ *  tunable kept by its logic; see ../lib/_tunables.ts for the central settings home. */
 const LENGTH_DECAY = 1/3;
 
 /** A weighted draw of `k` distinct names from `pool`, favouring those whose character

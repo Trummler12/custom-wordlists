@@ -22,6 +22,11 @@ import { DEFAULT_SCRIPT_LIMITS, type LengthRules } from "../lib/lengths";
 import type { SeparatorRules } from "../lib/separator";
 import { lang } from "./lang.svelte";
 import { settings } from "./settings.svelte";
+import {
+  MIN_ROWS, MAX_ROWS, ROW_STEP,
+  PREVIEW_ITEMS_MIN, PREVIEW_ITEMS_MAX, PREVIEW_ITEMS_DEFAULT,
+  PREVIEW_CHARS_MIN, PREVIEW_CHARS_MAX, PREVIEW_CHARS_DEFAULT,
+} from "../lib/_tunables";
 
 const STORAGE_KEY = "wordlists:custom";
 const LISTS_KEY = "wordlists:customLists";
@@ -35,27 +40,6 @@ export interface SavedList {
   separator: Separator;
   items: string[];
 }
-
-/** The input's height cap, in rows before it scrolls: the default and the range the
- *  − / + controls step through (§X2). */
-export const MIN_ROWS = 5;
-export const MAX_ROWS = 40;
-export const ROW_STEP = 5;
-
-/** The most characters a list name a reader types may hold (a `maxlength` on the rename
- *  fields). Names that arrive from an import may be longer and are kept as-is — the tiles
- *  ellipsize an over-long name rather than the store shortening it. */
-export const NAME_MAX = 32;
-
-/** The reader-set caps for the content previews (the ⚙️ Custom settings): how many items a
- *  preview lists and how long it may run, each with its range and default. `previewText`
- *  (lib/custom) applies them; the panels reach them through `custom.preview`. */
-export const PREVIEW_ITEMS_MIN = 1;
-export const PREVIEW_ITEMS_MAX = 420;
-export const PREVIEW_ITEMS_DEFAULT = 69;
-export const PREVIEW_CHARS_MIN = 10;
-export const PREVIEW_CHARS_MAX = 1337;
-export const PREVIEW_CHARS_DEFAULT = 420;
 
 class CustomState {
   /** The raw text in the input field. */

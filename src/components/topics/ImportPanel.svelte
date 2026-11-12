@@ -2,7 +2,8 @@
   import Msg from "../../locale/html/Msg.svelte";
   import { plain } from "../../locale/html/plain";
   import { overlapStats, parseImport, type PortableList } from "../../lib/custom";
-  import { custom, NAME_MAX } from "../../state/custom.svelte";
+  import { custom } from "../../state/custom.svelte";
+  import { NAME_MAX } from "../../lib/_tunables";
   import { lang } from "../../state/lang.svelte";
   import { overlays } from "../../state/overlays.svelte";
   import { controlPopup, placement } from "../shared/placement";

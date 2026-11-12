@@ -11,6 +11,7 @@
 
 import { lengthClass, limitsOf, type LengthRules } from "./lengths";
 import { fitSeparator, holdsSeparator, type SeparatorRules } from "./separator";
+import { OMISSION_SAMPLE_CAP } from "./_tunables";
 
 /** The separator characters the input offers, in menu order. A list is split on
  *  exactly one of them; `\n` / `\t` cover the paste-a-column case. */
@@ -26,9 +27,6 @@ export function separatorLabel(s: Separator): string {
  *  item, or a tie): the game's own list separator, and the most common typed one. */
 export const DEFAULT_SEPARATOR: Separator = ",";
 
-/** How many matched names a tier keeps for its hover — enough to fill the panel's
- *  excerpt, capped so a huge paste doesn't stash thousands. Mirrors lib/omitted. */
-const SAMPLE_CAP = 50;
 
 /** Characters that are no letter, mark, digit or space but are practically always part of
  *  a real name (the curated topics carry ~2200 hyphens, ~600 apostrophes, ~260 dots): listed
@@ -131,7 +129,7 @@ function emptyTier(): OmissionTier {
 }
 function record(tier: OmissionTier, item: string): void {
   tier.count++;
-  if (tier.samples.length < SAMPLE_CAP) tier.samples.push(item);
+  if (tier.samples.length < OMISSION_SAMPLE_CAP) tier.samples.push(item);
 }
 
 /** Classify the active custom sources — the input field and/or the activated saved

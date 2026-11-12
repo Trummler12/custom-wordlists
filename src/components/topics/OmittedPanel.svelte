@@ -4,6 +4,7 @@
   import { coverageTopicOf } from "../../coverage/route";
   import { baseTag, splitName } from "../../lib/languages";
   import { allRules, SEPARATOR_RULE, TOO_LONG_RULE, TOO_SHORT_RULE, UNKNOWN_RULE } from "../../lib/omitted";
+  import { OMISSION_SAMPLE_CAP } from "../../lib/_tunables";
   import { holdsSeparator } from "../../lib/separator";
   import type { Group, Omission } from "../../lib/types";
   import { groupEntries, outOfLimits, renderedForms, resolveReason } from "../../lib/words";
@@ -14,12 +15,6 @@
   import { topics } from "../../state/topics.svelte";
 
   let { tid, group }: { tid: string; group: Group } = $props();
-
-  // A rule's hover lists this many of its matched names before it trails off with an
-  // ellipsis — long enough to be useful (and a little funny) without listing a hundred
-  // countries. One running line: the browser wraps a native tooltip at the viewport
-  // edge itself, and breaks of our own on top of that left ragged half-lines.
-  const RULE_TITLE_NAMES = 50;
 
   // Icon-tagged rules leave for a control of their own (CoveragePanel), so the 🚫
   // panel lists only the plain omissions.
@@ -127,10 +122,12 @@
     const info = summaryOf(rule.id);
     const hint = plain(rule.locked ? lang.ui.omitted.locked : lang.ui.omitted.toggle(omitting), "\n");
     if (!info?.names.length) return hint;
-    const shown = info.names.slice(0, RULE_TITLE_NAMES);
+    const shown = info.names.slice(0, OMISSION_SAMPLE_CAP);
     // More matched than the sample shows (a big rule, or names deduplicated below
     // the count) — trail off, so the hover reads as an excerpt rather than the whole.
     const more = info.count > shown.length ? ", …" : "";
+    // One running line: the browser wraps a native tooltip at the viewport edge itself,
+    // and line breaks of our own on top of that leave ragged half-lines.
     return [hint, shown.join(", ") + more].join("\n");
   };
 </script>
