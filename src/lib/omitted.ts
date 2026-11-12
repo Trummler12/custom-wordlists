@@ -143,7 +143,7 @@ function compiledOf(rule: Omission): CompiledRule {
  *  of it — a name is in the list or it isn't — and only the rare glob falls through
  *  to a regex scan. Equivalent to the old all-regex test: `globToRegExp` anchors and
  *  escapes a literal, so matching it is exactly a set membership on the form. */
-export function ruleMatches(rule: Omission, forms: string[]): boolean {
+function ruleMatches(rule: Omission, forms: string[]): boolean {
   const { literals, globs } = compiledOf(rule);
   if (literals.size > 0 && forms.some((f) => literals.has(f))) return true;
   return globs.length > 0 && globs.some((re) => forms.some((f) => re.test(f)));

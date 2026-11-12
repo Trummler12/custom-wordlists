@@ -31,13 +31,13 @@ export const DEFAULT_SEPARATOR: Separator = ",";
 /** Characters that are no letter, mark, digit or space but are practically always part of
  *  a real name (the curated topics carry ~2200 hyphens, ~600 apostrophes, ~260 dots): listed
  *  in the ⚠️ panel, never reported as a problem, never offered for cleaning. */
-export const ACCEPTED_CHARS: ReadonlySet<string> = new Set(["-", "–", "—", "'", "’", ".", "·", "・", ":", "&", "/"]);
+const ACCEPTED_CHARS: ReadonlySet<string> = new Set(["-", "–", "—", "'", "’", ".", "·", "・", ":", "&", "/"]);
 /** Characters that can be wanted (`Dwayne "The Rock" Johnson`) but are as often a leftover,
  *  e.g. of quoting the game doesn't have: they raise the ⚠️, and cleaning offers them unticked. */
-export const TOLERATED_CHARS: ReadonlySet<string> = new Set(['"']);
+const TOLERATED_CHARS: ReadonlySet<string> = new Set(['"']);
 /** Brackets are judged per occurrence rather than per character: one closed by its partner
  *  belongs to the name (accepted), a lone one is tolerated. */
-export const BRACKET_PAIRS: readonly (readonly [string, string])[] = [
+const BRACKET_PAIRS: readonly (readonly [string, string])[] = [
   ["(", ")"],
   ["（", "）"],
   ["[", "]"],
@@ -48,7 +48,7 @@ export type CharClass = "ignored" | "tolerated" | "accepted";
 
 /** Characters that separate words, so cleaning replaces them with a space rather than
  *  deleting them: `x(y` must not become `xy`, nor `21C/Delta` `21CDelta`. */
-export const SPACED_CHARS: ReadonlySet<string> = new Set([...BRACKET_PAIRS.flat(), "/", "\\", "|"]);
+const SPACED_CHARS: ReadonlySet<string> = new Set([...BRACKET_PAIRS.flat(), "/", "\\", "|"]);
 
 /** Letters, combining marks and digits of any script, plus the plain space. The marks
  *  matter: Devanagari, Thai or Hebrew vowel signs are code points of their own. */
@@ -97,7 +97,7 @@ export function parseItems(raw: string, sep: string): string[] {
 }
 
 /** One reported omission group: how many items it caught and a sample of them. */
-export interface OmissionTier {
+interface OmissionTier {
   count: number;
   samples: string[];
 }
@@ -221,7 +221,7 @@ export interface OddChar {
 }
 
 /** One odd character inside an item: its position (in code points), and its class. */
-export interface OddHit {
+interface OddHit {
   index: number;
   char: string;
   cls: CharClass;

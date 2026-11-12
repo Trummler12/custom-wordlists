@@ -112,7 +112,7 @@ export interface Manifest {
 }
 
 /** A per-language map: the "en" base is required, other language codes optional. */
-export type LangMap<T> = { en: T } & Record<string, T>;
+type LangMap<T> = { en: T } & Record<string, T>;
 
 /** A string that may translate: the same in every language (a plain string), or a
  *  language map with an "en" base (languages equal to "en" are omitted). */
@@ -145,7 +145,7 @@ export type WordEntry = LocalizedString | NamePair | LangMapEntry;
 /** An entry-level language map. Beside the languages it carries a `"?"` listing
  *  the ones it has no name in at all — see `UNKNOWN` in lib/words for why an
  *  absent key can't say that. */
-export type LangMapEntry = { en: string | NamePair; "?"?: string[] } & Record<
+type LangMapEntry = { en: string | NamePair; "?"?: string[] } & Record<
   string,
   string | NamePair | string[] | undefined
 >;
@@ -181,7 +181,7 @@ export interface TierNote {
 /** The ruler's hover text — what the list is ordered by, and what the stop the
  *  reader has dragged to has just selected. Replaces the bare "Fame groups
  *  defined: n" for a list whose tiers came from an outside boundary. */
-export interface RulerTooltip {
+interface RulerTooltip {
   /** Shown once the ruler has moved off rest. May carry `{condition}`, replaced
    *  by `tierConditions[depth - 1]` — the lowest band the ruler has just brought
    *  in ("everything with {condition} inhabitants"). */
@@ -304,13 +304,13 @@ export interface Group {
 /** One repair of a source that is wrong, by the entry's English name. Beside
  *  `entry` and `why` the keys are language tags: `new` is what the entry must
  *  carry, `old` what the source said when the correction was written. */
-export type Correction = { entry: string; why: string } & Record<
+type Correction = { entry: string; why: string } & Record<
   string,
   string | { old: string; new: string } | undefined
 >;
 
 /** The parts of a topic file a script produced, short of all of it. */
-export type GeneratedPart = "entries" | "names" | "tiers" | "omissions";
+type GeneratedPart = "entries" | "names" | "tiers" | "omissions";
 /** `"fully"` where a script writes the whole file. See schema/topic.schema.json. */
 export type Generated = "fully" | GeneratedPart[];
 
