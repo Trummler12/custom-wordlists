@@ -30,10 +30,10 @@ the word lists, however, are where we heavily depend on **help from the communit
 
 ### Future plans
 
-The obvious next steps are
-\- finishing the **lists** that are marked as incomplete or planned,
-\- maybe extending some existing Topics with interesting new Subtypes some people might be interested to include,
-\- and of course using the power of the community to do all sorts of updates to Wikidata items;
+The obvious next steps are  
+\- finishing the **lists** that are marked as incomplete or planned,  
+\- maybe extending some existing Topics with interesting new Subtypes some people might be interested to include,  
+\- and of course using the power of the community to do all sorts of updates to Wikidata items;  
 \- and not to forget: All [Languages Skribbl.io supports](https://skribbl-io.fandom.com/wiki/Supported_Languages) ought to also find support in the App's Interface at some point;
 
 [Here](docs/Language-Roadmap.md) is the rough order in which those **languages** are meant to arrive.
