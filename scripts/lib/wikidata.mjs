@@ -1,8 +1,7 @@
 // What every Wikidata dump needs, in one place: the content languages and where Wikidata
 // keeps each of them, a SPARQL query that survives the endpoint's bad moments, and the
 // labels of a list of items in the shape coverage.mjs and the builds read. The chemical
-// elements and the Olympic sports are its first users; the geography dumps still carry
-// their own copies until they move onto it (strand Z, extract-common).
+// elements, the Olympic sports and the geography dumps all read it.
 
 const UA = { "User-Agent": "custom-wordlists/1.0 (https://github.com/Trummler12/custom-wordlists)" };
 const SPARQL = "https://query.wikidata.org/sparql";

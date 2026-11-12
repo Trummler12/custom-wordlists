@@ -37,9 +37,6 @@ const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..", "..");
 const RAW = join(ROOT, "data-raw", "geography");
 const TOPIC = join(ROOT, "data", "topics", "geography", "physical", "continents.json");
 
-// The word-list output languages: skribbl's full set, a superset of the nine the
-// locale-like strings (titles, tier conditions, tooltips, notes) use. Names only —
-// dormant until CONTENT_LANGS grows into them. Mirrors build-country-data / the dump.
 /** Curated departures for the Wikidata P31 catch-all (dump band "unknown"), which a
  *  bare query can't clean itself. Q-ids, so a relabel upstream doesn't slip one past.
  *  Dropped entirely: things Wikidata tags as a tectonic plate that are not one. Name-level
