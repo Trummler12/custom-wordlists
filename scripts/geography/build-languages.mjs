@@ -34,6 +34,7 @@ import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 import { serializeTopic } from "../lib/serialize.mjs";
 import { bucketLangWiki } from "./bucket-names.mjs";
+import { NAME_LANGS, LANG_SRC } from "../lib/wikidata.mjs";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..", "..");
 const RAW = join(ROOT, "data-raw", "geography", "languages");
@@ -47,23 +48,6 @@ const LANGS = ["en", "de", "es", "fr", "it", "ja", "ko", "zh-Hans", "zh-Hant", "
 // for every language the picker may later offer. A superset of LANGS, listed explicitly so
 // its order (which the coverage column order follows) stays put as LANGS grows. See
 // build-country-data.
-const NAME_LANGS = [
-  "en", "de", "es", "fr", "it", "ja", "ko", "zh-Hans", "zh-Hant",
-  "pt", "ru", "tr", "pl", "nl", "bg", "cs", "da", "et", "fi", "el", "he",
-  "hu", "lv", "mk", "no", "ro", "sr", "sk", "sv", "tl",
-];
-
-/** Our content tag => the Wikidata tags to read it from, first hit wins (Chinese script
- *  variants, Norwegian nb/nn, Portuguese/Tagalog siblings). Mirrors build-country-data. */
-const LANG_SRC = {
-  en: ["en"], de: ["de"], es: ["es"], fr: ["fr"], it: ["it"], ja: ["ja"], ko: ["ko"],
-  "zh-Hans": ["zh-hans", "zh-cn", "zh-sg", "zh-my", "zh"],
-  "zh-Hant": ["zh-hant", "zh-tw", "zh-hk", "zh-mo"],
-  pt: ["pt", "pt-br", "pt-pt"], ru: ["ru"], tr: ["tr"], pl: ["pl"], nl: ["nl"],
-  bg: ["bg"], cs: ["cs"], da: ["da"], et: ["et"], fi: ["fi"], el: ["el"], he: ["he"],
-  hu: ["hu"], lv: ["lv"], mk: ["mk"], no: ["no", "nb", "nn"], ro: ["ro"], sr: ["sr"],
-  sk: ["sk"], sv: ["sv"], tl: ["tl", "fil"],
-};
 const pickLang = (names, tag) => {
   for (const s of LANG_SRC[tag]) if (names?.[s]?.length) return names[s];
   return undefined;
