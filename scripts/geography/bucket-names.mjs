@@ -11,8 +11,9 @@
 //                              a disambiguated title ("Victoria (Seychelles)", "Victoria,
 //                              Seychelles") is no name and drops out. (Trummler, 2026-10-09,
 //                              from #38's formal-label finding.)
-// Unflagged skos:altLabel aliases are the discardable flood and never reach a bucket (they
-// are not dumped). See dump-country-data.mjs (source) and build-country-data.mjs (consumer).
+// Unflagged skos:altLabel aliases are the discardable flood: the dump keeps them for
+// offline review, but the bucketer never promotes one. See dump-country-data.mjs (source)
+// and build-country-data.mjs (consumer).
 
 const byLen = (a, b) => a.name.length - b.name.length;
 const shortest = (list) => (list.length ? [...list].sort(byLen)[0] : undefined);
