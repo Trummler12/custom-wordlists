@@ -113,6 +113,8 @@ Ask: build `ancient` from `?p wdt:P31 wd:Q141789550` plus the remaining hand ent
 Refs: this file, Continents => What the catch-all collects (Second pass)
 -->
 
+**Former plates, last research (2026-11-13, `_data/Prompts/done/Open_Gaps_Multi_Source.md`):** the Cimmerian Plate is now a *former tectonic plate* (batch `2026-11-13_geography-multi-source.txt`, *Episodes* 1987). For the *European plate* (Q19848929, only an nlwiki sitelink), no source names a Paleozoic "European plate": the literature calls the plate that joined Siberia and Kazakhstania **Baltica** (also *East European plate*), and IODP's thesaurus uses *European Plate* only as a synonym of the Eurasian Plate. So Q19848929 may be the same thing as the *Baltic plate* (Q13542800, enwiki *Baltic plate*: Baltica). **Open:** compare the two articles before proposing a merge; until then it stays a hand entry.
+
 **Rating:** clean for names, as designed. The class tree around *tectonic plate* had three misuses (batched); the catch-all still holds non-plates that only sourced class changes can clear.
 
 <!-- @agent(#35) from #38 · 2026-10-09 · OPEN
@@ -238,6 +240,8 @@ Refs: the sections named; `_data/QuickStatements/imported/`
 **Rating:** ➕.
 
 **Research (2026-11-04; `done/Pleistocene_Eruptions_2.md`):** VEI 8 stated by the USGS for Cerro Galán and Los Chocoyos, in **batch** `2026-11-04_eruptions-pleistocene-2.txt` (**pending**). Bishop Tuff (VEI 7) and Bandelier (VEI ~8) are behind blocks, so Trummler checks them by hand. La Pacana and Aira returned none found.
+
+**Hand check (2026-11-13; `_data/Prompts/done/_Hand_Check.md`):** both read on the page, so they become eruption items with the VEI (Otowi's as *circa*): `2026-11-13_eruptions-bishop-otowi-create_PRE6`, then the P793 links from the calderas (`POST6`). The other hand-checked rows (areas, range elevations, seats, the Baltic plate) are in `2026-11-13_geography-hand-check`.
 
 ## ➕Mountain Ranges
 

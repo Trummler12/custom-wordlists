@@ -58,6 +58,11 @@ What Wikidata offers for the One Piece topics, and how far it can serve as their
 
 **Check (2026-10-07):** The class Devil Fruit (Q1156774) has no instances: the individual fruits are not on Wikidata.
 
+**Batch (2026-11-12):** `_data/QuickStatements/2026-11-12_one-piece-devil-fruits-create_PRE2.txt`, 210 fruits from the One Piece Wiki: the English name as label, the Hepburn name as alias, P31 the type (Paramecia, Zoan, Logia), P1441 manga and anime, English localized names per release and German names per manga / TV as *official name* (P1448) with *applies to work* (P10663); model and sources in `_data/Prompts/done/One_Piece_Devil_Fruits.md`. Users (P2563) follow after the import. Rating then ➕.
+
+**Zoan labels (2026-11-13, Trummler):** the ja label is the common spelling without quotation marks (*イヌイヌの実 モデル 狼*); the quoted spellings the wiki gives (「」, “”, "") stay as alias and as *official name*. 14 labels changed in `2026-11-13_one-piece-zoan-labels-nidhoggr.txt`; the en labels follow the manga release (Viz), as before.
+**Users (2026-11-12):** 155 links in `POST2_one-piece-fruit-users`; of the 55 users without a match, Marco (wiki title now *Polo Marco*), Accino and Largo had items under another name (`one-piece-fruit-users-existing`), 48 are created from the One Piece Wiki infoboxes (`one-piece-fruit-users-create_PRE4`: canon ones with manga + anime, filler with anime, film and game characters with their work, stage-show characters with universe + franchise only; non-canon marked in the description) and linked in `POST4`. Left out: *Bounty* (a concept, not a user), *Dama's tablet* (no page), *Peketan* (only in a crew article), Imu (fruit unknown).
+
 ## ✖Locations
 
 **Associated List:** -  

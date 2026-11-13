@@ -16,6 +16,8 @@ Use the relative File Paths/Links provided on the Items listed in the [Overview 
 - [Anime](#anime):
   - [Dragon Ball](./anime/Dragon_Ball.md#navigation)
   - [One Piece](./anime/One_Piece.md#navigation)
+  - [JoJo's Bizarre Adventure](./anime/JoJo.md#navigation)
+  - [My Hero Academia](./anime/My_Hero_Academia.md#navigation)
   - [Pokémon (Anime)](./anime/Pokemon.md#navigation)
   - [Candidates](#candidates-1)
 - [Comics](#comics):
@@ -113,6 +115,12 @@ Fullest character lists per franchise (2026-11-06, `_data/Prompts/done/Character
   - ❌[Episodes](./anime/One_Piece.md#episodes)
   - ➕[Films](./anime/One_Piece.md#films)
   - ✖️[Video Games](./anime/One_Piece.md#video-games)
+- [JoJo's Bizarre Adventure](./anime/JoJo.md#navigation)
+  - ➕[Characters](./anime/JoJo.md#characters)
+  - ✖️[Stands](./anime/JoJo.md#stands)
+- [My Hero Academia](./anime/My_Hero_Academia.md#navigation)
+  - ➕[Characters](./anime/My_Hero_Academia.md#characters)
+  - ✖️[Quirks](./anime/My_Hero_Academia.md#quirks)
 - [Pokémon (Anime)](./anime/Pokemon.md#navigation)
   - ✖️[Characters](./anime/Pokemon.md#characters)
   - ➕[Locations](./anime/Pokemon.md#locations)
@@ -126,12 +134,12 @@ Fullest character lists per franchise (2026-11-06, `_data/Prompts/done/Character
 - Naruto: official 488 (narutop99), Fandom 1,458; Wikidata 172 (65 from 5)
 - Attack on Titan: Fandom 228; Wikidata 43 (3 from 5)
 - Demon Slayer: Fandom 156; Wikidata 17 (3 from 5)
-- My Hero Academia: official about 40 (heroaca.com), Fandom 468; Wikidata 34 (4 from 5)
+- My Hero Academia: official about 40 (heroaca.com), Fandom 468; Wikidata 34 (4 from 5). **Now a topic file: [My_Hero_Academia.md](./anime/My_Hero_Academia.md).** **2026-11-11:** heroaca.com has 125 character pages (`/character/chara_groupNN/NN-NN/`, Japanese, names as text); 31 have an item (some only as the real name: Endeavor as *Enji Todoroki*, Hawks as *Keigo Takami*), 94 don't. Batches `2026-11-11_mha-characters-create-1.txt` and `-2.txt` (**pending, CREATE, one after the other**, 47 each: en label, the page's ja name, P31 *fictional human* or *character* for Nezu, Nomu and Gigantomachia, P1441 the anime Q63686324 and the manga Q18047903 with the page as source), `2026-11-11_mha-characters-links.txt` (**pending**, 3 lines). The en labels are the usual romanizations and hero names of the English release, not from the page.
 - Sailor Moon: none found; Wikidata 58 (19 from 5)
 - Death Note: Fandom about 100; Wikidata 29 (10 from 5)
 - Digimon: official about 1,000 (digimon.net), Wikimon 1,652; Wikidata 1315 (51 from 5)
 - Yu-Gi-Oh!: Fandom 3,630; Wikidata 518 (10 from 5)
-- JoJo's Bizarre Adventure: official about 50, JoJo Wiki about 500; Wikidata 41 (13 from 5)
+- JoJo's Bizarre Adventure: official about 50, JoJo Wiki about 500; Wikidata 41 (13 from 5). **Now a topic file: [JoJo.md](./anime/JoJo.md).** **2026-11-11:** the official portal (`jojo-portal.com/en/anime/<season>/character/NN/`, Japanese names as text) has pages for the anime seasons *Stardust Crusaders* (32, its enemies under their Stand names), *Diamond Is Unbreakable* (33), *Golden Wind* (29) and *Steel Ball Run* (16); parts 1, 2 and 6 have none. Of the 74 characters of the last three, 54 had no item: `2026-11-11_jojo-characters-create.txt` (**pending**, CREATE, 439 lines: en label, the page's ja name and nickname as alias, P1441 the anime season and the manga part with the page as source), `2026-11-11_jojo-characters-edit.txt` (**pending**, 18 lines: Keicho Nijimura and Ghiaccio were bare items, Yuya Fungami and Melone lacked the part, Trish Una the ja label).
 - Studio Ghibli: official 24 works, Fandom 109; Wikidata 65 (7 from 5)
 
 ### Comics
@@ -203,7 +211,7 @@ Fullest character lists per franchise (2026-11-06, `_data/Prompts/done/Character
 - The Legend of Zelda: Zelda Wiki 1,000+
 - Minecraft: official 9 mobs only
 - Sonic the Hedgehog: Fandom 46 game characters (an index)
-- Super Smash Bros.: official roster 89, complete
+- Super Smash Bros.: official roster 89, complete (`smashbros.com/assets_v2/data/fighter.json`, 84 entries with the Pokémon Trainer and the Mii Fighters as one each). 2026-11-11: Wikidata linked 46 to *Super Smash Bros. Ultimate* (Q54093632) by P1441; batch `2026-11-11_smash-ultimate-fighters.txt` (**pending**, 37 lines, each fighter's official page as source) adds the rest, `2026-11-11_smash-dark-pit-create.txt` (**pending**, CREATE) the one without an item, Dark Pit. Left as they are: Zero Suit Samus (a form of Samus), Luma (with Rosalina). Then the roster reads as P1441 Ultimate filtered by the official list; Ultimate's 157 P1441 also hold assist trophies, stages and items
 - Overwatch: Fandom 55 heroes
 - Dota 2: Fandom 127 heroes
 - Valorant: Fandom 31 agents
@@ -369,3 +377,9 @@ Refs: animation/SpongeBob.md, animation/The_Simpsons.md, anime/Dragon_Ball.md, a
 - `hub.mjs`: rebuilds this file's categories and overview and every file's navigation from the headings (run after changing a status). A status emoji in a heading goes without U+FE0F (☑, ✖): GitHub keeps that character in the anchor and IntelliJ drops it, so a link would work in only one of them; the lists add it back.
 
 </details>
+
+<!-- @agent(#35) from #38 · 2026-11-11 · OPEN
+Decided (Trummler, 2026-11-11): new topics JoJo (Characters, Stands) and My Hero Academia (Characters, Quirks), both read from Wikidata once the pending batches are in; every Pokémon topic (species, moves, abilities, items) split by generation.
+Ask: (1) JoJo: a box per Part (P1441 => Part => P1545); `manga-only` as designed for Dragon Ball, its anime class list extended by *anime television series season* (Q100269041); QoL: ticking a Part no season is *based on* (8, 9) switches `manga-only` on, switching it off unticks them. (2) MHA: hero / villain filter from P106 (*superhero* Q188784 / *villain* Q134970729), omitted rule `vigilantes` (P1441 to a Vigilantes work, Q106091435 / Q131534559, and none to the main manga Q18047903 or anime Q63686324); Quirks follow their users. (3) Pokémon moves and abilities: generation = P4584 (the generation item), as for species; items once their scope is decided. No hurry.
+Refs: anime/JoJo.md, anime/My_Hero_Academia.md, gaming/Pokemon.md (Moves, Abilities, Items)
+-->
