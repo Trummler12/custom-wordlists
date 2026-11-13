@@ -1,4 +1,4 @@
-import type { UIStrings } from "./index";
+import type { LocaleDict } from "./index";
 
 /** Japanese UI strings. Machine-written and unreviewed by a native speaker — see
  *  the proofreading note in CONTRIBUTING.md.
@@ -6,7 +6,7 @@ import type { UIStrings } from "./index";
  *  Japanese marks no plural, so the counters that other locales branch on read the
  *  same at one as at many — and the language name needs no article or ending, so
  *  the two halves of a display name are simply joined. */
-export const ja: UIStrings = {
+export const ja: LocaleDict = {
   header: {
     // The link sits between the two halves, and Japanese puts it first.
     taglineBefore: "",
@@ -32,6 +32,7 @@ export const ja: UIStrings = {
     none: "知名度グループはまだ定義されていません。フッターの Contribution Guide から提案できます。",
     selected: "選択中：",
     mostlySelected: "大半を選択中：",
+    stored: (body) => `（保存済み：${body}）`,
     toggle: (shown) =>
       shown ? "このリストの知名度スライダーを隠す" : "このリストの知名度スライダーを表示する",
     toggleAll: (allShown) =>
@@ -55,12 +56,21 @@ export const ja: UIStrings = {
       omitted
         ? "オンにすると、それでも含めます。skribbl.io は受け付けませんが、他のゲームなら通るかもしれません。"
         : "オンにすると、再び除外します。",
+    helpAdd: (url) => ` — [不足分の追加にご協力ください](${url})`,
   },
   coverage: {
     label: "Geoguessr / ストリートビューの対応",
     all: "すべての国",
     withCoverage: "公式対応あり",
     reliable: "十分な対応のみ",
+  },
+  languageType: {
+    label: "含める言語の種類",
+    base: "現代の生きた言語",
+    submillion: "利用者100万人未満の言語も含める",
+    notRecommended: "カジュアルなお絵描きには不向き — 話者数の割に知名度が低い。",
+    toggle: (included) =>
+      included ? "選択中 — リストに含まれています。外すと除外します。" : "チェックするとリストに追加します。",
   },
   sovereignty: {
     label: "主権と承認",
@@ -83,7 +93,6 @@ export const ja: UIStrings = {
   },
   language: {
     label: (current) => `言語: ${current}`,
-    menu: "言語",
     unsupported: (language) => `${language}はまだ未確認です。このトピックは不完全かもしれません。`,
     fallback: "翻訳がない場合は英語が使われます。",
     usesEnglish: (primary, secondary) =>
@@ -92,22 +101,14 @@ export const ja: UIStrings = {
       romaji: "リストの項目にローマ字を使う",
       es419: "リストの項目にラテンアメリカのスペイン語を使う",
     },
-    variantNote: { romaji: "長音を母音の重ねで表すヘボン式（Moomoomiruku）。{br}ワープロローマ字は非対応です。公式表記を上書きしてしまうため — Batafurii ではなく Butterfree。" },
+    variantNote: { romaji: "長音を母音の重ねで表すヘボン式（Moomoomiruku）。{br}ワープロローマ字には対応していません。公式表記（Batafurii ではなく Butterfree）と衝突するためです。{br}この問題と、そこから生じる問題の解決は、現時点では対象外です。" },
     generatedRomaji:
-      "このローマ字は日本語名から自動生成したものです。実際の表記と違う場合は[お知らせください](https://github.com/Trummler12/custom-wordlists/issues/new)。",
+      "このローマ字は日本語名から自動生成したものです。実際の表記と違う場合は、お気軽に[お知らせください](https://github.com/Trummler12/custom-wordlists/issues/new)！",
     variantDiffers: (n) => `${n}件の項目が異なる表記です`,
     variantShowList: "どの項目か見る",
-    useEnglish: (forced) =>
-      forced ? "このリストを選択した言語で表示する" : "このリストの英語の項目を使う",
-    useEnglishAll: (allForced) =>
-      allForced ? "これらのリストを選択した言語で表示する" : "これらのリストの英語の項目を使う",
   },
   settings: {
     label: "設定",
-    showEnglish: "英語の項目を使う選択肢を表示する",
-    showEnglishEn: "このスイッチは英語以外の言語でのみ表示されます。",
-    interfaceLang: "表示言語:",
-    interfaceAuto: "自動",
     reset: "設定を{br}リセット",
     resetConfirm: "もう一度クリックで確定",
     resetCancel: "キャンセル",
@@ -118,7 +119,7 @@ export const ja: UIStrings = {
     copied: "コピーしました",
     copyFailed: "コピーできませんでした",
     copyManual: "リストを選択しました。手動でコピーしてください。",
-    empty: "トピックまたはグループを選ぶとリストができます。",
+    empty: "トピック、カテゴリ、またはカスタムリストを選ぶと出力が生成されます。",
     generatedList: "生成された単語リスト",
     words: "単語",
     chars: "文字",
@@ -132,5 +133,30 @@ export const ja: UIStrings = {
     // The guide itself is English only, so the link keeps its name.
     contributionGuide: "Contribution Guide",
     helpOutAfter: "をご覧ください。",
+  },
+  coveragePage: {
+    home: "メインアプリへ",
+    topicLabel: "トピック：",
+    uiLanguage: "表示言語",
+    title: "言語カバレッジ",
+    intro: "トピックを選ぶと、各項目についてWikidataがどの言語のラベルを持っているかを確認できます。",
+    lead: "このトピックの内容は[Wikidata](https://www.wikidata.org/wiki/Wikidata:Main_Page)に由来します。表は各項目がどの言語のラベルをすでに持っているかを示します。",
+    notesTitle: "協力する方法",
+    noteAdd: "最初の列から項目を開き、ログインのうえ、確信のある不足ラベルを追加してください。",
+    noteLabelLister: "まったく掲載されていない言語を追加するには、[Wikidataの設定](https://www.wikidata.org/wiki/Special:Preferences#mw-prefsection-gadgets)を開き、「ガジェット」タブで{i}labelLister{/i}ガジェットを有効にしてください。すると各項目に「Labels list」（右上の「ツール」内）が表示され、任意の言語コードを受け付けます。",
+    noteProtected: "一部のWikidata項目は保護されており、編集には作成から4日以上・100回以上編集したアカウントが必要です。",
+    noteStale: "この表は手動ダンプに基づくため、ここに表示されるカバレッジはWikidataの最新状態より数週間、場合によっては数か月遅れることがあります。",
+    itemCount: (n) => `${n.toLocaleString()} 項目`,
+    uiOnly: "UI言語のみ",
+    uiOnlyHint: "生データのダンプには、skribbl.io が対応するすべての言語に加え、{br}利用者の多い言語もいくつか含まれています。{br}つまりデータはすでにすべての計画言語に対応していますが、{br}インターフェースは私たちメンテナーが手入れしているため、当然ながら大きく遅れています。{br}また、その言語を扱うトピックがまだほとんどない状態で{br}新しい UI 言語を増やそうとしても、あまり意味がありません。{br}ただし協力者が増えるほど、新しい言語が早く承認されます！{br}=> よければ下の Contribution Guide をご覧ください！",
+    item: "項目",
+    numeric: { population: "人口", area: "面積 (km{smaller sup}2{/smaller sup})", users: "使用者数" },
+    first: "最初のページ",
+    prev: "前のページ",
+    next: "次のページ",
+    last: "最後のページ",
+    pageParts: (current, total) => [`${total} ページ中 `, `${current} ページ`, ""],
+    loading: (topic) => `${topic}を読み込み中…`,
+    loadError: (topic, message) => `${topic}のカバレッジを読み込めませんでした：${message}`,
   },
 };

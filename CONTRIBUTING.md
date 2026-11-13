@@ -2,39 +2,105 @@
 
 Thanks for helping with the project!
 
+<!-- REWORDING (the "so we only need to extend the Locales" link chains two separate ideas; a split, keep or discard):
+"Most of our word lists are built from [Wikidata](https://www.wikidata.org/), which delivers [every language Skribbl.io supports](https://skribbl-io.fandom.com/wiki/Supported_Languages) (and a few more) in a single dump. The lists themselves therefore need no per-language work; only the interface (the Locales) has to be extended when a new UI language is added."
+-->
+Most of our word lists are built from [Wikidata](https://www.wikidata.org/) and aim to carry [every Language Skribbl.io supports](https://skribbl-io.fandom.com/wiki/Supported_Languages) (plus some more) right from the get-go, so we only need to extend the Locales when building (technical) support for a new UI Language.  
+So the **most effective help** happens there: a label or an item added on **Wikidata** reaches the app with the next data dump, in that language and for everyone else using Wikidata too.
+
 ## What's worth contributing
 
-- A **new word list** for a topic that isn't covered yet.
-- An existing list that's **incomplete or has incorrect entries**.
-- **Fame groups** that don't match how well-known the entries actually are.
-- A **missing language**, or a wrong/awkward translation.
-- A **link to structured data** — an API, a dataset, a repo — that a list could be generated from.
-- Anything about the **tool itself** — a bug, or an idea for how it could work better.
+- **Missing names on Wikidata** for a topic that is already built from it: a label in your language, a missing item, a wrong statement.
+- **A new topic, or a change to one, that Wikidata can carry:** say which items belong to it and which don't (based on Wikidata Statements).
+- **A wrong entry** in a list, or one that sits in the wrong fame tier.
+- Anything about the **tool itself**: a bug, or an idea for how it could work better.
+- **Proofreading** one of the machine-written interface languages.
 
-The [topic tracker](docs/Topic-Progress.md) shows what's already covered and what's planned — worth a look before proposing a new list.
+<!-- Might at some point be worth replacing with docs/Queries/README.md ... or simple cross-linking might already be enough, since they both serve different purposes -->
+The [topic tracker](docs/Topic-Progress.md) shows what's already covered and what's planned. Worth a look before proposing a new topic.
 
-## Before you type out a list
+## Improve the data on Wikidata (recommended)
 
-If your topic already exists as **structured data** — a public API, a Wikidata query, a CLDR export, a maintained list on GitHub — then please don't compile it by hand. The language list and the Pokémon lists were all built by script from sources like that, and a script does in one pass, in every language at once, what a spreadsheet does in an evening in one of them.
+On a Topic built from Wikidata, you may find an **Omission entry** mentioning "items with no \<language\> names", followed by a "help us add what's missing!" with a URL behind:  
+![1791791568552](assets/docs/Missing_lang_screenshot.png)  
+<!-- Example coverage page: Sports for now; swap for South Park, One Piece or a similar topic once one of those is built from Wikidata. -->
+This URL leads you to a page that presents you a table showing the **language Coverage** across ALL items coming from the Wikidata Dump this Topic is built from[1]; Take [Sports](https://trummler12.github.io/custom-wordlists/coverage/sports) as an example;  
+A red "✗" marks a label that's not defined yet;
+You may also navigate to other Topics' Coverage Pages via the "Topic:" selector in the top right;  
+Every Topic built from Wikidata has such a Coverage Page.
 
-**A couple of links can be the entire contribution:** open a [Data source](https://github.com/Trummler12/custom-wordlists/issues/new?template=2-data-source.yml) issue and say what you found. Naming a source we can script beats a hand-typed list of the same topic — it arrives more complete, and it stays checkable against where it came from.
+Open an item from the table and, once logged in to Wikidata, add what's missing. The page's "How to help" notes cover the most important details. A few ground rules:
 
-## Choose your Way of Contributing
+- Only add what you're sure of, ideally based on a trustworthy source.
+- Fix a gap on Wikidata rather than asking us to work around it: a fix there helps every project that reads the data.
+- Our dumps are run by hand, so a fix takes a while to show up in the app.
 
-- **[Option A — propose via an issue](#option-a--propose-via-an-issue-preferred)** — *preferred*
-- **[Option B — fork & pull request](#option-b--fork--pull-request)** — *for the hands-on*
-- **[Option C — help convert a list](#option-c--help-convert-a-list)** — *for the helpers*
+<!-- At some point, the "only example" might be updated -->
+[1] Note: Most Topics have their own Dump, but some exceptions share a Dump with other sibling topics, `sports/games/<game>/sports` being the only example so far.
 
-## Option A — propose via an issue (preferred)
+### Improve Wikidata data beyond Labels
 
-You don't need to touch any code. [Open an issue](https://github.com/Trummler12/custom-wordlists/issues) with a template:
-- **Word list** (a new list or a full rework),
-- **Data source** (links to structured data a list can be built from — see above),
-- **Correction / small fix** (a wrong/missing entry, a fame-group tweak, a missing translation),
-- or **Bug** / **Improvement** (anything about the app rather than a list).
+It's perfectly fine when most contributors **limit** themselves **to updating labels** since that's where the majority of all manual work takes place;  
+And even though this Application doesn't use them, you're happily invited to **update Description & Aliases as well** when you're already at it, since they're often either empty, inconsistent or even confusing ^^
 
-For a small fix, just describe it.  
-For a **whole list**, there are two ways to hand it over — pick whichever you're comfortable with:
+Now, when it comes to **Statements**, it starts to become increasingly technical, but in case you're still interested, here are the most important statements you can update:
+
+- **official name (P1448)**: Serves as a basis for "long" variants on some (non-real-human) items,
+  - with "start time (P580)" and "end time (P582)" as optional qualifiers in case the item underwent a renaming (for example on Countries such as "White Russia"/"Belarus" or for LoL Champions with a legacy name)
+- **short name (P1813)**: Serves as a basis for "short" variants (in case the most _popular_ variant is shorter than the primary/official Label)
+- **family name (P734)** & **given name (P735)** for characters & humans,
+  - with "series ordinal (P1545)" in cases with multiple given and/or family names
+
+^That basically covers everything we rely on in terms of **_quality_**;  
+
+The **_quantity_** on the other hand relies on the completeness of the items themselves as well as their Statements we filter based on; And what those Statements (+even Qualifiers in some cases) _are_ differs from Topic to Topic;  
+<!-- REWORDING (this one sentence runs very long; a split into two, keep or discard):
+"The _logical_ completeness and correctness of the data is often highly objective and easy to check automatically via test query scripts, which makes it a task well suited to an AI agent. But an agent can't be let loose to hallucinate: any updates this way must carry the explicit instruction that the resulting [QuickStatements batches](https://quickstatements.toolforge.org/#/batch) only consist of data backed by a trustworthy, independent reference wherever a source makes sense."
+-->
+However, since the _logical_ completeness & correctness of Data often is highly objective and quite easy to automatically check via test query scripts, this is a task perfect to be delegated to an AI agent; BUT: of course you can't just blindly let an AI agent roam loose and risk hallucinating stuff; any updates this way shall only happen with the explicit instruction that any resulting [QuickStatements Batches](https://quickstatements.toolforge.org/#/batch) shall only consist of data updates when accompanied by some trustworthy independent reference(s) whenever the presence of a source makes sense;  
+In case you're interested in some insight in this regard, you may check out the [landing 'page'](https://github.com/Trummler12/custom-wordlists/blob/docs/wikidata_analysis/docs/Queries/README.md) of this whole background analysis
+
+## Propose a topic built from Wikidata
+
+Before a topic is fully supported it passes through a few stages:
+<!-- Candidate list lives on PR #38's branch until it merges; switch to a relative docs/Queries/README.md link then. -->
+1. it first shows up as a *Candidate* in the [Wikidata analysis](https://github.com/Trummler12/custom-wordlists/blob/docs/wikidata_analysis/docs/Queries/README.md),
+2. gets promoted to an evaluation of its own,
+3. and once it looks promising it turns into a planned, then a built topic (*Planned* and *Incomplete* are often skipped straight past).
+4. The [topic tracker](docs/Topic-Progress.md) shows where each one stands, usually trailing the analysis and sometimes even the live Topics a little.
+
+Open a [**Data source**](https://github.com/Trummler12/custom-wordlists/issues/new?template=1-data-source.yml) issue. The best proposal names the query that finds the topic's items, ideally as a ready-made [Wikidata Query Builder](https://query.wikidata.org/querybuilder/?uselang=en) link:
+
+- **"With"** conditions say what makes an item part of the topic: its class (*instance of*, `P31`), or the work or series it belongs to (*part of the series*, `P179`; *present in work*, `P1441`).
+- **"Without"** conditions say what to leave out. Please tell apart what doesn't belong at all from what a reader might merely want hidden by default (historical countries, discontinued sports): the latter becomes a rule the reader can switch, not a removal.
+- If something obvious ranks the items by fame, mention it; otherwise we rank by the number of Wikipedias covering an item.
+
+For example, [this query](https://w.wiki/XnJo) finds the countries: sovereign states, without those that have a dissolution date.
+<!-- Example query: the countries, which match our dump one to one; swap it along with the coverage example above if a better one turns up. -->
+<!-- Once PR #38 has merged: link docs/Queries/README.md here, the analyses of what Wikidata covers per topic and how we file edits through QuickStatements. -->
+
+The Data source form takes other structured sources too, such as a public API or a maintained dataset: a couple of links can be the whole contribution.
+
+### Request a topic instead (less technical)
+
+Not comfortable with queries? Just name the topic you'd like via a [**Topic Request**](https://github.com/Trummler12/custom-wordlists/issues/new?template=0-topic-request.yml) issue, or 👍 an [existing one](https://github.com/Trummler12/custom-wordlists/issues?q=is%3Aissue+state%3Aopen+label%3A%22Topic+Request+%F0%9F%97%B3%EF%B8%8F%22) to make it show anticipation.  
+No query or list needed, and it is also how a [topic still in the analysis phase](https://github.com/Trummler12/custom-wordlists/blob/docs/wikidata_analysis/docs/Queries/README.md#wikidata-query-analysis) can get moved forward more quickly.  
+Please check first that it isn't already covered or requested (the app's "Show `all` topics", or the [topic tracker](docs/Topic-Progress.md)).
+
+## Corrections
+
+On a topic built from Wikidata (it has a coverage page), please fix a wrong or missing name **on Wikidata** itself. Open a [**Correction**](https://github.com/Trummler12/custom-wordlists/issues/new?template=3-correction.yml) issue for what Wikidata can't fix: an item that doesn't belong in the list, a wrong fame tier, a family of entries that should be hidden. And for any mistake in a hand-written list.
+
+## Hand-written lists (not recommended)
+
+Some topics aren't on Wikidata in any usable shape, and for those a hand-written list is still welcome. It's the costly route for everyone, though: a list typed out by hand covers one language at a time, can't be checked against a source, and has to be converted into a data file by a maintainer. So please check first whether Wikidata can carry the topic, and propose that instead.
+
+<details>
+<summary><strong>How to hand over a list</strong></summary>
+
+### Propose it via an issue
+
+You don't need to touch any code. Open a [**Word list**](https://github.com/Trummler12/custom-wordlists/issues/new?template=2-word-list.yml) issue. For a **whole list**, there are two ways to hand it over — pick whichever you're comfortable with:
 
 <details>
 <summary><strong>I'd like it simple</strong></summary>
@@ -59,7 +125,7 @@ For a **rework** or a **language** addition, JSON is the natural choice — the 
 
 **Either way, discuss it.** Others (and the maintainer) may spot mistakes or suggest better fame ordering right in the issue thread — refine the proposal together before it's turned into a pull request. A maintainer converts an accepted proposal into the data files.
 
-## Option B — fork & pull request
+### Fork & pull request
 
 Prefer to edit the data yourself:
 
@@ -72,7 +138,7 @@ Prefer to edit the data yourself:
    - `"usesEnglishFor"` names the languages among those whose entries simply *are* the English names — League of Legends champions are called the same in German. The app then shows an ℹ️ rather than leaving a reader to wonder why a German list is full of English words. Use `"*"` for a list that is English in every language you haven't named in `"languages"`.
    - Entries must be unique within a topic, and the topic's `"id"` must match its file stem (or, for a topic alone in its own folder, the folder name).
    - `"sources"` (where the entries came from) and `"credits"` (who compiled them) are optional and free-form — a single string or a list. A label may precede the link, e.g. `"German: https://…"`. Please fill in `"sources"` for a new list.
-   - `"omitted"` lists families of entries the list hides from its source — junk nobody could draw, or numbered copies of one drawable thing. **The entries stay in the file**: they are filtered on the way into the list, so every rule is reversible and the app can show a 🧹 panel saying what was left out and offering it back.
+   - `"omitted"` lists families of entries the list hides from its source — junk nobody could draw, or numbered copies of one drawable thing. **The entries stay in the file**: they are filtered on the way into the list, so every rule is reversible and the app can show a 🚫 panel saying what was left out and offering it back.
 
      ```json
      "omitted": [
@@ -100,17 +166,19 @@ Prefer to edit the data yourself:
    ```
 4. Open the PR against `main`. The maintainer reviews and merges.
 
-## Option C — help convert a list
+### Help convert a list
 
-Comfortable with JSON and spotted a list posted in the [simple form](#option-a--propose-via-an-issue-preferred)? Turning it into ready-to-paste JSON is a genuine help — such issues carry the `Needs JSON 🧩` label.
+Comfortable with JSON and spotted a list posted in the [simple form](#propose-it-via-an-issue)? Turning it into ready-to-paste JSON is a genuine help — such issues carry the `Needs JSON 🧩` label.
 
 1. **Say you're on it** — a quick comment on the original, so two people don't convert the same list. (A maintainer then marks it `Being converted 🔨`)
 2. **Hand over the JSON** as a **new issue** that references the original (`Refs #<number>`), or as a PR if you'd rather — **not** a buried follow-up comment, which is easy to lose. **Cross-link both ways** so the thread and the conversion stay connected.
 3. **Credit stays shared:** name both the original proposer and yourself in the topic's `credits`.
 
-## Looking for UI proofreaders — Spanish, French, Italian, Japanese, Korean
+</details>
 
-The interface now speaks nine languages' worth of word lists and seven languages of its own. Two of those seven were written by people who speak them. **The other five — Spanish, French, Italian, Japanese and Korean — were machine-written and have never been read by a native speaker.** They are a starting point, not a translation.
+## Looking for UI proofreaders — Spanish, French, Italian, Japanese, Korean, Chinese, Russian, Portuguese
+
+The interface now speaks eleven languages of its own, the same eleven it offers word lists in. Two of those eleven — English and German — were written by people who speak them. **The other nine — Spanish, French, Italian, Japanese, Korean, Chinese in both scripts, Russian and Portuguese — were machine-written and have never been read by a native speaker.** They are a starting point, not a translation.
 
 If one of them is yours, we'd be glad of ten minutes of it. What's worth reporting:
 
@@ -125,8 +193,8 @@ Confirming that a locale reads fine is just as useful as correcting it, and neit
 ```bash
 npm install
 npm run dev        # dev server (runs build:index first, then vite)
-npm run build      # production build → dist/ (also runs build:index)
-npm run validate   # data against the schema + the cross-checks under Option B
+npm run build      # production build => dist/ (also runs build:index)
+npm run validate   # data against the schema + the cross-checks under *Fork & pull request*
 npm run check      # frontend type-check
 npm test           # unit tests — CI runs this as its own gate
 ```

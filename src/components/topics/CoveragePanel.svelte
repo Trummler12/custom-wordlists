@@ -1,4 +1,7 @@
 <script lang="ts">
+  import { placement, rowPopup } from "../shared/placement";
+  import Msg from "../../locale/html/Msg.svelte";
+  import { plain } from "../../locale/html/plain";
   import { lang } from "../../state/lang.svelte";
   import { overlays } from "../../state/overlays.svelte";
   import { settings } from "../../state/settings.svelte";
@@ -70,20 +73,20 @@
       class:on={level > 0}
       aria-haspopup="true"
       aria-expanded={open}
-      aria-label={lang.ui.coverage.label}
-      title={lang.ui.coverage.label}
+      aria-label={plain(lang.ui.coverage.label)}
+      title={plain(lang.ui.coverage.label)}
       onclick={(e) => overlays.toggleCoveragePanel(id, e.currentTarget)}
     >
       <img src={pegman} alt="" />
     </button>
     {#if open}
       <div
-        class="coverage-panel"
-        class:above={overlays.coverageAbove}
+        class="popup coverage-panel"
+        use:placement={rowPopup(overlays.opener("coverage"))}
         role="radiogroup"
-        aria-label={lang.ui.coverage.label}
+        aria-label={plain(lang.ui.coverage.label)}
       >
-        <p class="coverage-title">{lang.ui.coverage.label}</p>
+        <p class="coverage-title"><Msg text={lang.ui.coverage.label} /></p>
         <ul>
           {#each levels as n (n)}
             <li>
@@ -127,31 +130,10 @@
     height: 0.8rem;
     display: block;
   }
-  /* Stretched across the row rather than hung off the button, as .omitted-panel is,
-     and for the same reason: the trigger sits at an unknown offset. */
   .coverage-panel {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    z-index: 10;
-    max-height: clamp(9rem, calc(40vh - var(--footer-h)), 24rem);
-    overflow-y: auto;
-    overscroll-behavior: contain;
-    padding: 0.5rem 0.6rem;
-    background: var(--chip-bg);
-    border: 1px solid var(--panel-border);
-    border-radius: var(--radius);
-    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
     font-size: 0.8rem;
     font-weight: 400;
     line-height: 1.35;
-    text-align: left;
-    cursor: auto;
-  }
-  .coverage-panel.above {
-    top: auto;
-    bottom: 100%;
   }
   .coverage-title {
     margin: 0 0 0.35rem;
@@ -165,7 +147,7 @@
     gap: 0.3rem;
   }
   .coverage-panel label {
-    display: flex;
+    display: inline-flex;
     align-items: baseline;
     gap: 0.45rem;
     cursor: pointer;

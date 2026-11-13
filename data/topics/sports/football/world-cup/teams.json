@@ -1,0 +1,8 @@
+{
+  "id": "world-cup-teams",
+  "title": {"en":"National teams","de":"Nationalmannschaften"},
+  "icon": "👕",
+  "description": "National teams at the FIFA World Cup, from Wikidata; built in PR #39.",
+  "plannedTopic": true,
+  "words": []
+}

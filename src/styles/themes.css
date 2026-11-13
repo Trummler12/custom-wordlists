@@ -9,6 +9,8 @@
   /* Semantic tokens — light theme (default) */
   --muted: var(--color-gray-600);
   --muted-2: var(--color-gray-550);
+  /* What can't be used yet, a step quieter than --muted-2 (a planned topic's count). */
+  --disabled: var(--color-gray-400);
   --border: var(--color-gray-200);
   --panel-border: var(--color-gray-300);
   --chip-bg: var(--color-gray-100);
@@ -24,14 +26,21 @@
   --range-track: var(--color-gray-300);
   --range-dot: #ffffff;
   --range-thumb-ring: #ffffff;
+
+  /* Status-fill chips: a solid green/red box with a white ✓/✗ on top (the sovereignty
+     matrix cells, the coverage table cells). The glyph carries the meaning, not the hue,
+     so the pair is colour-blind safe and one value serves both themes. */
+  --fill-in: var(--color-green-700);
+  --fill-out: var(--color-red-600);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --muted: var(--color-gray-400);
-    --muted-2: var(--color-gray-500);
-    --border: var(--color-gray-800);
-    --panel-border: var(--color-gray-700);
+    --muted: var(--color-gray-100);
+    --muted-2: var(--color-gray-300);
+    --disabled: var(--color-gray-500);
+    --border: var(--color-gray-600);
+    --panel-border: var(--color-gray-550);
     --chip-bg: var(--color-slate-800);
     --chip-fg: var(--color-fog-100);
     --danger: var(--color-danger-soft);

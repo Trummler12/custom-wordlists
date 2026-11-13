@@ -16,7 +16,7 @@ import type { CategoryMeta, TopicSummary } from "./types";
 /** The node that governs a topic's ruler visibility: a category (by its path) or
  *  the topic itself. Topics sharing a control root form one toggle group; the
  *  category kind is also where that group's toggle is drawn. */
-export type ControlRoot =
+type ControlRoot =
   | { kind: "category"; path: string }
   | { kind: "topic"; id: string };
 

@@ -1,8 +1,8 @@
-import type { UIStrings } from "./index";
+import type { LocaleDict } from "./index";
 
 /** Italian UI strings. Machine-written and unreviewed by a native speaker — see
  *  the proofreading note in CONTRIBUTING.md. */
-export const it: UIStrings = {
+export const it: LocaleDict = {
   header: {
     taglineBefore: "Crea liste di parole personalizzate per",
     taglineAfter: "e giochi di parole simili.",
@@ -17,7 +17,7 @@ export const it: UIStrings = {
     wordsOf: (selected, total) => `${selected} di ${total} parol${total === 1 ? "a" : "e"}`,
   },
   names: {
-    form: { pref: "preferito", short: "corto", long: "lungo", both: "entrambi", all: "tutti" },
+    form: { pref: "pref.", short: "corto", long: "lungo", both: "entrambi", all: "tutti" },
     formLabel: (group) => `Forma del nome per ${group}`,
   },
   fame: {
@@ -28,6 +28,7 @@ export const it: UIStrings = {
     none: "Nessun gruppo di notorietà definito finora — vedi la Contribution Guide nel piè di pagina per proporne.",
     selected: "Selezione:",
     mostlySelected: "Selezione maggioritaria:",
+    stored: (body) => `(Memorizzato: ${body})`,
     toggle: (shown) =>
       shown
         ? "Nascondi il righello di notorietà di questa lista"
@@ -55,12 +56,23 @@ export const it: UIStrings = {
       omitted
         ? "Attiva per includerli comunque: skribbl.io non li accetta, ma un altro gioco potrebbe."
         : "Attiva per tralasciarli di nuovo.",
+    helpAdd: (url) => ` — [aiutaci ad aggiungere ciò che manca!](${url})`,
   },
   coverage: {
     label: "Geoguessr / Copertura Street View",
     all: "Tutti i paesi",
     withCoverage: "Con copertura ufficiale",
     reliable: "Solo copertura affidabile",
+  },
+  languageType: {
+    label: "Quali tipi di lingua includere",
+    base: "Lingue moderne vive",
+    submillion: "Anche lingue con <1 milione di utenti",
+    notRecommended: "Poco adatto al disegno informale: assai meno noto di quanto suggerisca il numero di parlanti.",
+    toggle: (included) =>
+      included
+        ? "Spuntato — sono nell'elenco. Togli la spunta per escluderle."
+        : "Spunta per aggiungerle all'elenco.",
   },
   sovereignty: {
     label: "Sovranità e riconoscimento",
@@ -71,7 +83,7 @@ export const it: UIStrings = {
     rows: ["Riconoscimento universale", "Ampio riconoscimento", "Riconoscimento parziale", "Senza riconoscimento"],
     colDefs: [
       "Gestisce da sé confini, giustizia, esercito e tasse.",
-      "Ha leggi e parlamento propri, ma condivide competenze fondamentali — moneta, difesa, politica estera — con un altro Stato.",
+      "Ha leggi e parlamento propri, ma condivide competenze fondamentali (moneta, difesa, politica estera) con un altro Stato.",
     ],
     rowDefs: [
       "Stato membro dell'ONU, riconosciuto da quasi tutti gli altri.",
@@ -83,7 +95,6 @@ export const it: UIStrings = {
   },
   language: {
     label: (current) => `Lingua: ${current}`,
-    menu: "Lingua",
     unsupported: (language) =>
       `Non ancora confermato per ${language} — questo argomento potrebbe essere incompleto.`,
     fallback: "Dove manca una traduzione viene usato l'inglese.",
@@ -94,26 +105,14 @@ export const it: UIStrings = {
       romaji: "Usare i rōmaji per le voci delle liste",
       es419: "Usare lo spagnolo latinoamericano per le voci delle liste",
     },
-    variantNote: { romaji: "Grafia Hepburn con vocali lunghe raddoppiate (Moomoomiruku).{br}I rōmaji wāpuro non sono offerti: sostituirebbero le grafie ufficiali — Butterfree, non Batafurii." },
+    variantNote: { romaji: "Grafia Hepburn con vocali lunghe raddoppiate (Moomoomiruku).{br}I rōmaji wāpuro NON sono supportati: entrerebbero in conflitto con le grafie ufficiali (Butterfree, non Batafurii),{br}e risolvere questo e i problemi che ne derivano va oltre gli scopi attuali." },
     generatedRomaji:
-      "Questi rōmaji sono stati generati dai nomi giapponesi. Se uno si scrive diversamente, [faccelo sapere](https://github.com/Trummler12/custom-wordlists/issues/new).",
+      "Questi rōmaji sono stati generati dai nomi giapponesi. Se uno si scrive diversamente, non esitare a [farcelo sapere](https://github.com/Trummler12/custom-wordlists/issues/new)!",
     variantDiffers: (n) => `${n} voc${n === 1 ? "e si scrive" : "i si scrivono"} in modo diverso`,
     variantShowList: "Vedi quali",
-    useEnglish: (forced) =>
-      forced
-        ? "Usa questa lista nella lingua selezionata"
-        : "Usa le voci inglesi di questa lista",
-    useEnglishAll: (allForced) =>
-      allForced
-        ? "Usa queste liste nella lingua selezionata"
-        : "Usa le voci inglesi di queste liste",
   },
   settings: {
     label: "Impostazioni",
-    showEnglish: "Mostra l'opzione per usare le voci inglesi",
-    showEnglishEn: "Questi interruttori compaiono solo per lingue diverse dall'inglese.",
-    interfaceLang: "Lingua dell'interfaccia:",
-    interfaceAuto: "Automatico",
     reset: "Ripristina{br}le impostazioni",
     resetConfirm: "Clicca di nuovo per confermare",
     resetCancel: "Annulla",
@@ -124,7 +123,7 @@ export const it: UIStrings = {
     copied: "Copiato!",
     copyFailed: "Copia non riuscita",
     copyManual: "L'elenco è selezionato: copialo tu.",
-    empty: "Seleziona argomenti o gruppi per creare una lista.",
+    empty: "Seleziona argomenti, categorie o liste personali per generare un output.",
     generatedList: "Lista di parole generata",
     words: "parole",
     chars: "caratteri",
@@ -135,9 +134,34 @@ export const it: UIStrings = {
   },
   footer: {
     repository: "Repository GitHub",
-    helpOut: "Vuoi dare una mano al progetto? Dai un'occhiata alla",
+    helpOut: "Vuoi dare una mano al progetto? Dai pure un'occhiata alla",
     // La guida esiste solo in inglese, quindi il link conserva il suo nome.
     contributionGuide: "Contribution Guide",
     helpOutAfter: "!",
+  },
+  coveragePage: {
+    home: "App principale",
+    topicLabel: "Argomento:",
+    uiLanguage: "Lingua dell'interfaccia",
+    title: "Copertura linguistica",
+    intro: "Scegli un argomento per vedere per quali lingue Wikidata ha già un'etichetta, per voce.",
+    lead: "I contenuti di questo argomento provengono da [Wikidata](https://www.wikidata.org/wiki/Wikidata:Main_Page). La tabella mostra per quali lingue ogni voce ha già un'etichetta.",
+    notesTitle: "Come contribuire",
+    noteAdd: "Apri una voce dalla prima colonna e, una volta effettuato l'accesso, aggiungi qualsiasi etichetta mancante di cui sei sicuro.",
+    noteLabelLister: "Per aggiungere una lingua non elencata affatto, vai nelle tue [preferenze di Wikidata](https://www.wikidata.org/wiki/Special:Preferences#mw-prefsection-gadgets) e attiva il gadget {i}labelLister{/i} nella scheda «Accessori»; ogni voce mostrerà allora una «Labels list» (in alto a destra, sotto Strumenti) che accetta qualsiasi codice lingua.",
+    noteProtected: "Alcune voci di Wikidata sono protette e possono essere modificate solo con un account vecchio almeno quattro giorni e con 100 o più modifiche.",
+    noteStale: "Tieni presente che questa tabella proviene da un dump manuale, quindi la copertura qui mostrata può essere indietro di diverse settimane o persino mesi rispetto allo stato attuale su Wikidata.",
+    itemCount: (n) => `${n.toLocaleString()} voci`,
+    uiOnly: "Solo lingue dell'interfaccia",
+    uiOnlyHint: "I dump di dati grezzi coprono già ogni lingua supportata da skribbl.io,{br}più qualcuna in più con molti utenti.{br}Quindi i dati supportano già ogni lingua prevista,{br}mentre l'interfaccia è curata da noi maintainer e naturalmente resta molto indietro.{br}E ha poco senso voler aggiungere una nuova lingua d'interfaccia{br}finché quasi nessun argomento copre quella lingua.{br}Ma più persone aiutano, prima vengono approvate nuove lingue.{br}=> Dai pure un'occhiata alla Contribution Guide qui sotto!",
+    item: "Voce",
+    numeric: { population: "Popolazione", area: "Superficie (km{smaller sup}2{/smaller sup})", users: "Utenti" },
+    first: "Prima pagina",
+    prev: "Pagina precedente",
+    next: "Pagina successiva",
+    last: "Ultima pagina",
+    pageParts: (current, total) => ["", `Pagina ${current}`, ` / ${total}`],
+    loading: (topic) => `Caricamento di ${topic}…`,
+    loadError: (topic, message) => `Impossibile caricare la copertura di ${topic}: ${message}`,
   },
 };

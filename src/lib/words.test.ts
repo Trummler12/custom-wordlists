@@ -5,7 +5,7 @@ import {
   groupHasNames,
   groupHasPref,
   groupHasVariants,
-  overlongForms,
+  outOfLimits,
   renderCount,
   renderEntry,
   resolveStr,
@@ -218,25 +218,34 @@ describe("renderCount", () => {
     expect(renderCount(entries, "long", "de")).toBe(2);
   });
 
-  it("drops the forms past maxLen, and counts all of them without one", () => {
+  it("drops the forms `fit` rejects, and counts all of them without one", () => {
     const entries = [{ short: "Sandwich", long: "South Sandwich Plate" }];
     expect(renderCount(entries, "both", "en")).toBe(2);
-    expect(renderCount(entries, "both", "en", false, 10)).toBe(1);
+    expect(renderCount(entries, "both", "en", false, (w) => (w.length <= 10 ? w : null))).toBe(1);
+  });
+
+  it("counts forms that `fit` makes the same only once", () => {
+    const entries = ["Moroni, Comoros", "Moroni Comoros"];
+    expect(renderCount(entries, "long", "en", false, (w) => w.replace(",", ""))).toBe(1);
   });
 });
 
-describe("overlongForms", () => {
+describe("outOfLimits", () => {
   // The entry survives its long form: that is what makes this a rule about forms
   // rather than about entries, and why it cannot live in `visibleGroup`.
-  const entries = [{ short: "Sandwich", long: "South Sandwich Plate" }, "Manus Plate"];
+  const entries = [{ short: "Sandwich", long: "South Sandwich Plate" }, "Manus Plate", "Wu"];
+  const rules = (min: number, max: number) => ({ limits: { min, max } });
 
-  it("names the forms past the limit and leaves the rest alone", () => {
-    expect(overlongForms(entries, "both", "en", false, 12)).toEqual(["South Sandwich Plate"]);
-    expect(overlongForms(entries, "short", "en", false, 12)).toEqual([]);
+  it("names the forms past the limits and leaves the rest alone", () => {
+    expect(outOfLimits(entries, "both", "en", false, rules(3, 12))).toEqual({
+      short: ["Wu"],
+      long: ["South Sandwich Plate"],
+    });
+    expect(outOfLimits(entries, "short", "en", false, rules(3, 12)).long).toEqual([]);
   });
 
   it("is empty when everything fits", () => {
-    expect(overlongForms(entries, "both", "en", false, 40)).toEqual([]);
+    expect(outOfLimits(entries, "both", "en", false, rules(1, 40))).toEqual({ short: [], long: [] });
   });
 });
 
@@ -319,9 +328,11 @@ describe("unknownLangs / isUnknownIn", () => {
     expect(isUnknownIn(filled, "ko")).toBe(true);
   });
 
-  it("never counts English — it is the base every entry has", () => {
-    expect(isUnknownIn({ en: "x", "?": ["en"] }, "en")).toBe(false);
-    expect(isUnknownIn({ en: "x", "?": ["en"] }, "en-GB")).toBe(false);
+  it("counts English despite its stand-in, which every entry must carry", () => {
+    expect(isUnknownIn({ en: "x", "?": ["en"] }, "en")).toBe(true);
+    expect(isUnknownIn({ en: "x", "?": ["en"] }, "en-GB")).toBe(true);
+    expect(isUnknownIn({ en: "x", "en-GB": "y", "?": ["en"] }, "en-GB")).toBe(false);
+    expect(isUnknownIn({ en: "x", "?": ["de"] }, "en")).toBe(false);
   });
 
   it("asks a variant tag about the language it varies from", () => {

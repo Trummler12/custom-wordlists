@@ -12,14 +12,16 @@ import type { TopicSummary } from "../lib/types";
 
 const STORAGE_KEY = "wordlists:lang";
 const UI_STORAGE_KEY = "wordlists:uiLang";
-const VARIANT_STORAGE_KEY = "wordlists:variants";
+const FALLBACK_STORAGE_KEY = "wordlists:fallbackLang";
+const SECONDARY_STORAGE_KEY = "wordlists:secondaryLang";
+/** The script-variant picks (e.g. romaji on for a Japanese list). Exported so a settings
+ *  reset can clear it as one of the selection settings (see `RESET_KEYS` in `state/reset`).
+ *  The language choices themselves (`wordlists:lang` / `:uiLang` / `:fallbackLang` /
+ *  `:secondaryLang`) are deliberately NOT
+ *  exported for it — a reset leaves who the reader reads as untouched. */
+export const VARIANT_STORAGE_KEY = "wordlists:variants";
 
-/** The keys the reader's language choices live under — the content language and the
- *  interface language. Grouped and exported so a settings reset can look them up by
- *  name rather than hard-code the strings (see `PRESERVED_KEYS` in `state/reset`). */
-export const LANGUAGE_STORAGE_KEYS = [STORAGE_KEY, UI_STORAGE_KEY] as const;
-
-/** The interface follows the list language unless told otherwise. */
+/** The interface follows the primary language unless told otherwise. */
 export const AUTO = "auto";
 
 /** One formatter per locale that has been asked for, `null` where the runtime
@@ -59,13 +61,21 @@ function overrideKey(v: Variant, tid: string): string {
 }
 
 class LangState {
-  /** The **content** language: which names a list emits, and what the 🌐 picker
-   *  sets. Neutral topics ignore it. */
+  /** The **primary** language: which names a list emits, and the default the other
+   *  language settings follow. Neutral topics ignore it. */
   current = $state("en");
 
   /** The **interface** preference: AUTO, or a language with a dictionary. Stored
    *  separately from the content language — the whole point is that they differ. */
   uiPref = $state(AUTO);
+
+  /** Where the interface dictionary has no label, the language that has it next.
+   *  English, the one complete dictionary, sits behind it either way. */
+  fallbackPref = $state(FALLBACK_LANG);
+
+  /** The language a single list can be switched to, on rows that offer the switch
+   *  (`settings.showSecondaryToggle`). */
+  secondary = $state(FALLBACK_LANG);
 
   /** What the browser asked for at startup, kept for AUTO to fall back on. */
   #browser = "";
@@ -89,7 +99,7 @@ class LangState {
   );
 
   /** UI-chrome strings for the interface language. */
-  readonly ui: UIStrings = $derived(strings(this.uiLang));
+  readonly ui: UIStrings = $derived(strings(this.uiLang, this.fallbackPref));
 
   /** A language in its own language — what the picker lists. */
   name(l: string): string {
@@ -117,6 +127,10 @@ class LangState {
     }
     const ui = read(UI_STORAGE_KEY);
     this.uiPref = ui && (ui === AUTO || UI_LANGS.includes(ui)) ? ui : AUTO;
+    const fallback = read(FALLBACK_STORAGE_KEY);
+    if (fallback && UI_LANGS.includes(fallback)) this.fallbackPref = fallback;
+    const secondary = read(SECONDARY_STORAGE_KEY);
+    if (secondary && this.available.includes(secondary)) this.secondary = secondary;
   }
 
   /** Switch languages. Topic files carry every language inline, so nothing is
@@ -133,11 +147,19 @@ class LangState {
     this.uiPref = l;
     write(UI_STORAGE_KEY, l);
   }
+  setFallback(l: string): void {
+    this.fallbackPref = l;
+    write(FALLBACK_STORAGE_KEY, l);
+  }
+  setSecondary(l: string): void {
+    this.secondary = l;
+    write(SECONDARY_STORAGE_KEY, l);
+  }
 
   // --- Content language ------------------------------------------------------
   // The interface language is one thing; the language a list's names come out in
-  // is another. They agree unless a topic is switched to English — for a list
-  // whose German names nobody uses, say. Everything that renders words asks
+  // is another. They agree unless a topic is switched to the secondary language —
+  // English, say, for a list whose German names nobody uses. Everything that renders words asks
   // `contentLang` rather than reading `current`, so counts, de-duplication, the
   // output, the ⚠️/ℹ️ marker and which entries a list even has all move together,
   // and none of them has to know a topic can differ.
@@ -146,12 +168,12 @@ class LangState {
   // one list's contents — and because `topics` needs it to resolve a group, which
   // it cannot ask `selection` for without a cycle.
 
-  /** Topics switched to their English entries. Not stored: it answers to the
-   *  language in the picker, and that changes under it. */
-  forceEnglish = $state<Record<string, boolean>>({});
+  /** Topics switched to their secondary-language entries. Not stored: it answers to
+   *  the languages in the 🌐 panel, and those change under it. */
+  forceSecondary = $state<Record<string, boolean>>({});
 
   /** Languages switched to their second way of being written, by language tag.
-   *  Stored: unlike the English toggles this is a lasting preference — someone who
+   *  Stored: unlike the per-list language toggles this is a lasting preference — someone who
    *  reads romaji reads it every visit. */
   variants = $state<Record<string, boolean>>({});
 
@@ -233,28 +255,34 @@ class LangState {
     write(VARIANT_STORAGE_KEY, Object.keys(this.variants).filter((k) => this.variants[k]).join(","));
   }
 
-  /** The tag a list's entries resolve with: English where the topic is switched to
-   *  it, the variant tag where one is on, the content language otherwise. */
+  /** The tag a list's entries resolve with: the secondary language where the topic
+   *  is switched to it, the variant tag where one is on, the primary language
+   *  otherwise. A switched list follows only the secondary language's global variant
+   *  switch: the per-list answers belong to the primary one. */
   contentLang(tid: string): string {
-    if (this.forceEnglish[tid]) return FALLBACK_LANG;
+    if (this.forceSecondary[tid]) {
+      const v = variantFor(this.secondary);
+      const declared = (this.declaredLangs[tid] ?? []).includes(v?.tag ?? "");
+      return v && declared && this.variantOn(this.secondary) ? v.tag : this.secondary;
+    }
     return this.variantOnFor(tid) ? VARIANTS[this.current].tag : this.current;
   }
-  isForcedEnglish(t: TopicSummary): boolean {
-    return !!this.forceEnglish[t.id];
+  isForced(t: TopicSummary): boolean {
+    return !!this.forceSecondary[t.id];
   }
-  toggleEnglish(t: TopicSummary): void {
-    this.forceEnglish[t.id] = !this.forceEnglish[t.id];
+  toggleForced(t: TopicSummary): void {
+    this.forceSecondary[t.id] = !this.forceSecondary[t.id];
   }
 
-  allForcedEnglish(ts: TopicSummary[]): boolean {
-    return ts.length > 0 && ts.every((t) => this.isForcedEnglish(t));
+  allForced(ts: TopicSummary[]): boolean {
+    return ts.length > 0 && ts.every((t) => this.isForced(t));
   }
-  someForcedEnglish(ts: TopicSummary[]): boolean {
-    return !this.allForcedEnglish(ts) && ts.some((t) => this.isForcedEnglish(t));
+  someForced(ts: TopicSummary[]): boolean {
+    return !this.allForced(ts) && ts.some((t) => this.isForced(t));
   }
-  toggleCatEnglish(ts: TopicSummary[]): void {
-    const on = !this.allForcedEnglish(ts);
-    for (const t of ts) this.forceEnglish[t.id] = on;
+  toggleCatForced(ts: TopicSummary[]): void {
+    const on = !this.allForced(ts);
+    for (const t of ts) this.forceSecondary[t.id] = on;
   }
 }
 

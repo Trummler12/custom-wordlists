@@ -1,4 +1,5 @@
 <script lang="ts">
+  import Msg from "../../locale/html/Msg.svelte";
   import { lang } from "../../state/lang.svelte";
   import LanguagePicker from "./LanguagePicker.svelte";
   import SettingsMenu from "./SettingsMenu.svelte";
@@ -17,8 +18,41 @@
     </div>
   </div>
   <p class="tagline">
-    {lang.ui.header.taglineBefore}
+    <Msg text={lang.ui.header.taglineBefore} />
     <a href="https://skribbl.io" target="_blank" rel="noopener noreferrer">skribbl.io</a>
-    {lang.ui.header.taglineAfter}
+    <Msg text={lang.ui.header.taglineAfter} />
   </p>
 </header>
+
+<style>
+  header {
+    margin-bottom: 1rem;
+  }
+  h1 {
+    /* No top margin: the browser default would push the title below the output column,
+       which starts at --output-gap. */
+    margin-top: 0;
+    margin-bottom: 0.25rem;
+  }
+  .title-row {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  /* The picker slot: shown only when the output stacks below the topics; in the wide layout
+     the picker lives in the output head instead. */
+  .lang-header-slot {
+    display: none;
+    margin-left: auto;
+    gap: 0.35rem;
+  }
+  @media (max-width: 50rem) {
+    .lang-header-slot {
+      display: flex;
+    }
+  }
+  .tagline {
+    margin: 0;
+    color: var(--muted);
+  }
+</style>

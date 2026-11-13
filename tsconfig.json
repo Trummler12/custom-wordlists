@@ -7,6 +7,9 @@
     "resolveJsonModule": true,
     "allowJs": true,
     "checkJs": true,
+    // Type-check only — Vite owns the build, so tsc must not try to emit (and would
+    // otherwise refuse to "overwrite" an included .mjs with its own output).
+    "noEmit": true,
     "isolatedModules": true,
     "moduleDetection": "force",
     "strict": true,
@@ -14,6 +17,6 @@
     "noUnusedParameters": true,
     "skipLibCheck": true
   },
-  "include": ["src/**/*.ts", "src/**/*.js", "src/**/*.svelte"],
+  "include": ["src/**/*.ts", "src/**/*.js", "src/**/*.mjs", "src/**/*.svelte"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

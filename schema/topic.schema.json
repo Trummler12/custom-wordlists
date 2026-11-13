@@ -6,6 +6,11 @@
   "type": "object",
   "additionalProperties": false,
   "required": ["id", "title"],
+  "dependentRequired": {
+    "generated": ["filePaths"],
+    "dataOrigin": ["generated"],
+    "filePaths": ["generated"]
+  },
   "oneOf": [
     { "required": ["words"] },
     { "required": ["tiers"] }
@@ -31,6 +36,28 @@
     },
     "icon": { "type": "string", "minLength": 1 },
     "description": { "type": "string" },
+    "generated": {
+      "oneOf": [
+        { "const": "fully" },
+        {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "enum": ["entries", "names", "tiers", "omissions"] }
+        }
+      ],
+      "description": "What a script produced, so a contributor knows what not to edit by hand without checking its source first. `\"fully\"`: a script writes the whole file, and hand edits are lost on its next run. Otherwise the parts it produced: `entries` (which entries exist), `names` (their per-language forms), `tiers` (grouping and order), `omissions` (`omitted` / `omittable`). It holds even where the script has since gone (the Pokémon generations' names). Absent = made by hand. Requires `filePaths`."
+    },
+    "dataOrigin": {
+      "allOf": [{ "$ref": "#/$defs/stringOrList" }],
+      "description": "Where the generated parts came from, as machine-readable tags (\"Wikidata\", \"PokéAPI\"), one or a list. Unlike the free-form `sources` citations, the app reads it: a Wikidata-sourced list links to its language coverage page. Only together with `generated`; validate-data warns on an unfamiliar tag."
+    },
+    "filePaths": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": { "allOf": [{ "$ref": "#/$defs/stringOrList" }] },
+      "description": "The files and folders that produced this topic, as directory prefix => file(s) or folder(s): `{ \"scripts/geography/\": [\"dump-country-data.mjs\", \"build-country-data.mjs\"], \"data-raw/geography/countries/\": \"country-names.json\" }`. A `data-raw/` folder is enough; its single dump files needn't be listed. Orientation for contributors only: never read by code and kept out of the manifest. Only together with `generated`, which requires it."
+    },
     "languages": {
       "type": "array",
       "minItems": 1,
@@ -57,7 +84,9 @@
       "allOf": [{ "$ref": "#/$defs/stringOrList" }],
       "description": "Where the entries came from — one string or a list of them. Free-form, so a label can precede the link (\"German: https://…\"); validate-data warns when an item contains no URL."
     },
-    "generatedRomaji": { "type": "boolean", "description": "True when this list's romaji were produced by transliterating its Japanese names rather than taken from a source that names them — see src/lib/kana.ts. A reading derived from kana is correct as a reading and may still not be how the name is officially spelled in Latin script, so the UI says where that is the case and invites a correction." },
+    "generatedRomaji": { "type": "boolean", "description": "True when this list's romaji were produced by transliterating its Japanese names rather than taken from a source that names them — see src/lib/languages/kana.mjs. A reading derived from kana is correct as a reading and may still not be how the name is officially spelled in Latin script, so the UI says where that is the case and invites a correction." },
+    "incompleteTopic": { "const": true, "description": "Marks a list that is still missing entries a reader would expect. The Topics list hides it unless the reader asks to see incomplete topics, and marks it 🚧 with a call for help where it is shown. Absent = complete. Topics only: a category's state follows from its children. Never together with `plannedTopic`, which already implies it." },
+    "plannedTopic": { "const": true, "description": "Marks a topic that is announced but not ready: hidden unless the reader asks to see planned topics, and where shown it is marked 📅 and cannot be selected, whatever entries the file already holds. Switching it to `incompleteTopic` is what releases it. Absent = ready." },
     "order": { "type": "integer", "description": "Where this sits among its siblings, lowest first. Undeclared sorts last, alphabetically — so ordering a few of them needs nothing on the rest. The tree is otherwise the file system's, which puts Animation first and Gaming sixth for no reason anyone chose." },
     "corrections": {
       "type": "array",
@@ -153,10 +182,20 @@
       "items": { "$ref": "#/$defs/locString" }
     },
     "rulerTooltip": { "$ref": "#/$defs/rulerTooltip" },
+    "extendFrom": {
+      "type": "integer",
+      "minimum": 1,
+      "description": "How many top tiers the fame ruler reaches by default. The languages list bottoms out at its ≥ 1M-speaker tiers and hides the long tail below until the reader lifts the cap (the ✅ panel's \"< 1M\" box, the reserved `~extend` toggle). Absent means the whole list is always reachable."
+    },
     "inheritsUpwards": {
       "type": "integer",
       "minimum": 1,
       "description": "How many levels up this leaf's list is ALSO shown, merged with the same-named leaves it meets there into one synthesized topic (which has no file of its own). `1` merges at the parent level — every `<continent>/countries.json` meets the others one level up, forming a single \"Countries\" topic under `human/`, a sibling of `languages`. A leaf contributes at every intermediate level up to this number, so `2` (cities: `<country>/cities.json`) merges both per continent and globally. An ADDITIONAL field beside `tiers`/`words`, not an alternative: the leaf keeps its own list where it sits and contributes it upward. All same-named leaves in a family must declare identical `tierConditions`, so the composite tiers mean one thing — validate-data enforces it."
+    },
+    "skipInherit": {
+      "type": "integer",
+      "minimum": 1,
+      "description": "How many of the first `inheritsUpwards` levels merge nothing, as if the leaf sat that many levels higher. `olympia/summer/sports.json` with `inheritsUpwards: 2, skipInherit: 1` merges with its Winter sibling only two levels up, not under `olympia/`. Needs `inheritsUpwards` and must be smaller than it."
     }
   },
   "$defs": {
@@ -244,7 +283,12 @@
         },
         "reason": {
           "allOf": [{ "$ref": "#/$defs/locString" }],
-          "description": "Why they are out, in one phrase — the line beside the checkbox that can bring them back, so write it for the reader. Localized here rather than in a locale file because it describes this list's source, not the app: adding a word list never means editing en.ts. May carry `{br}` and `[text](url)` links (https only), resolved by src/locale/html."
+          "description": "Why they are out, in one phrase — the line beside the checkbox that can bring them back, so write it for the reader. A bare string is a prose id into the centralized topic-prose dictionary (src/locale/topics), for a reason shared across generated lists (\"sovereignty.deFactoRecognized\"); a language map is a self-contained reason that lives with its own list, for a one-off that describes that list's source (the Pokémon reasons). May carry `{br}` and `[text](url)` links (https only), resolved by src/locale/html."
+        },
+        "wd": {
+          "type": "string",
+          "pattern": "^Q[0-9]+$",
+          "description": "A Wikidata entity id whose link wraps the resolved `reason` label, for a reason that names a Wikidata concept (the language types). The label is localized (a prose id), the link is not, so the frontend joins them into `[label](url)` — see `resolveReason` in src/lib/words."
         },
         "as": {
           "allOf": [{ "$ref": "#/$defs/word" }],
