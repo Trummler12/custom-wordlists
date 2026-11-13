@@ -41,7 +41,7 @@ export const de: UIStrings = {
     valueText: (depth, total) =>
       depth === 1 ? `oberste von ${total} Stufen` : `oberste ${depth} von ${total} Stufen`,
     groupsDefined: (count) => `Fame-Gruppen definiert: ${count}`,
-    none: "Noch keine Fame-Gruppen definiert — im Contribution Guide im Footer erfährst du, wie du welche vorschlagen kannst!",
+    none: "Noch keine Fame-Gruppen definiert. Im Contribution Guide im Footer erfährst du, wie du welche vorschlagen kannst!",
     selected: "Ausgewählt:",
     mostlySelected: "Grösstenteils ausgewählt:",
     stored: (body) => `(Gespeichert: ${body})`,
@@ -84,12 +84,12 @@ export const de: UIStrings = {
           : "Umschalten, um sie wieder wegzulassen.",
     tooLongHint: (omitted) =>
       omitted
-        ? "Umschalten, um sie trotzdem aufzunehmen — skribbl.io nimmt sie nicht an, ein anderes Spiel vielleicht schon."
+        ? "Umschalten, um sie trotzdem aufzunehmen (skribbl.io nimmt sie nicht an, ein anderes Spiel vielleicht schon)."
         : "Umschalten, um sie wieder wegzulassen.",
     helpAdd: (url) => ` — [hilf mit, Fehlendes zu ergänzen!](${url})`,
   },
   custom: {
-    title: "Eigene Liste",
+    title: "Custom",
     infoHint:
       "Nutze das Eingabefeld unten, um eigene Wortlisten hinzuzufügen.{br}" +
       "Es gelten dabei folgende Regeln:{br}" +
@@ -100,25 +100,25 @@ export const de: UIStrings = {
     separatorLabel: "Trennzeichen:",
     separatorPick: "Trennzeichen",
     internalDupes: (n) =>
-      n === 1 ? "1 doppelter Eintrag innerhalb einer aktiven eigenen Liste" : `${n} doppelte Einträge innerhalb einer aktiven eigenen Liste`,
-    localDupes: (n) => `${n} ${n === 1 ? "Duplikat" : "Duplikate"} zwischen deinen aktiven eigenen Listen`,
+      n === 1 ? "1 doppelter Eintrag innerhalb einer aktiven Custom-Liste" : `${n} doppelte Einträge innerhalb einer aktiven Custom-Liste`,
+    localDupes: (n) => `${n} ${n === 1 ? "Duplikat" : "Duplikate"} zwischen deinen aktiven Custom-Listen`,
     globalDupes: (n) => `${n} ${n === 1 ? "Duplikat" : "Duplikate"} mit den ausgewählten Themen`,
     dupesNote: "Duplikate werden für die Ausgabe automatisch auf je 1 Exemplar reduziert.",
     dupesNoteSave: "Duplikate innerhalb einer Liste werden zusätzlich auch beim Speichern bereinigt.",
     dupesSamples: {
       internal: "Interne Duplikate:",
-      local: "Duplikate zwischen deinen aktiven eigenen Listen:",
+      local: "Duplikate zwischen deinen aktiven Custom-Listen:",
       global: "Duplikate mit den ausgewählten Themen:",
     },
     fitToggle: "Eingabefeld auf volle Höhe ausklappen",
     fewerRows: "Weniger Zeilen anzeigen",
     moreRows: "Mehr Zeilen anzeigen",
     moreRowsOver: (steps) => `(${steps} ${steps === 1 ? "Schritt" : "Schritte"} über der Inhaltshöhe)`,
-    clearHint: "Eigene Eingabe leeren",
-    clearConfirm: "Du bist dabei, das eigene Eingabefeld zu leeren.",
+    clearHint: "Custom-Eingabefeld leeren",
+    clearConfirm: "Du bist dabei, das Custom-Eingabefeld zu leeren.",
     clearConfirmButton: "Zum Bestätigen hier klicken",
     listsLabel: "Gespeicherte Listen",
-    listsTitle: "Gespeicherte eigene Listen",
+    listsTitle: "Gespeicherte Custom-Listen",
     listsInfo:
       "Zum Speichern von Custom-Listen wird der LocalStorage verwendet;{br}" +
       "Jeder Browser unterhält seinen eigenen LocalStorage,{br}" +
@@ -170,7 +170,7 @@ export const de: UIStrings = {
     charsAccepted: "Akzeptierte Zeichen:",
     charsRemoveMaybe: "Erwäge vielleicht, dieses Zeichen zu entfernen.",
     charsLone: (char, partner) => `Einsames {code}${char}{/code} ohne passendes {code}${partner}{/code};`,
-    charsPaired: (open, close) => `Als Teil eines {code}${open}{/code}-{code}${close}{/code}-Paars.`,
+    charsPaired: (open, close) => `Als Teil eines {code}${open}{/code}-{code}${close}{/code}-Paars;`,
     cleanChars: "Deine eingegebene Liste enthält ungewöhnliche Sonderzeichen, die beim Speichern automatisch bereinigt werden können:",
     cleanDupes: (n) =>
       `Deine eingegebene Liste enthält ${n} ${n === 1 ? "internes Duplikat, das" : "interne Duplikate, die"} beim Speichern automatisch bereinigt ${n === 1 ? "wird" : "werden"}:`,
@@ -195,7 +195,7 @@ export const de: UIStrings = {
     notRecommended: "Für gemütliches Malen wenig geeignet: deutlich unbekannter, als die Sprecherzahl vermuten lässt.",
     toggle: (included) =>
       included
-        ? "Angehakt — diese sind in der Liste. Abwählen, um sie wegzulassen."
+        ? "Angehakt: diese sind in der Liste. Abwählen, um sie wegzulassen."
         : "Anhaken, um diese zur Liste hinzuzufügen.",
   },
   sportType: {
@@ -223,11 +223,11 @@ export const de: UIStrings = {
   language: {
     label: (current) => `Sprache: ${current}`,
     panelTitle: "Spracheinstellungen",
-    slot: { primary: "Primär:", interface: "Oberfläche:", fallback: "Fallback:" },
+    slot: { primary: "Primär:", interface: "Oberfläche:", fallback: "UI-Fallback:" },
     slotHint: {
       primary: "Primäre Sprache für die Listeneinträge und Standard für die meisten anderen Spracheinstellungen.",
       interface: "Sprache der Oberfläche.",
-      fallback: "Wird überall dort verwendet, wo der Oberflächensprache ein Label fehlt.",
+      fallback: "Wird verwendet, wo der Oberflächensprache eine Übersetzung fehlt.{br}Fehlt auch hier eine, greift Englisch.",
     },
     followPrimary: "{i}Primär{/i}",
     showSecondaryBefore: "Option zum Verwenden von Einträgen auf", showSecondaryAfter: "anzeigen",
@@ -237,7 +237,7 @@ export const de: UIStrings = {
     flagType: "Flaggentyp:",
     flagTypes: { country: "Land", mixed: "Gemischt", linguistic: "Sprachlich" },
     unsupported: (language) =>
-      `Für ${language} noch nicht bestätigt — dieses Thema ist evtl. unvollständig.`,
+      `Für ${language} noch nicht bestätigt; dieses Thema ist evtl. unvollständig.`,
     fallback: "Fehlende Übersetzungen erscheinen auf Englisch.",
     // Declined, which every language name ending in -isch takes an -en for:
     // Koreanisch → Koreanischen. The handful that don't (Urdu, Hindi, Suaheli)
@@ -290,7 +290,7 @@ export const de: UIStrings = {
     copied: "Kopiert!",
     copyFailed: "Kopieren fehlgeschlagen",
     copyManual: "Die Liste ist markiert — bitte selbst kopieren.",
-    empty: "Wähle Themen, Kategorien oder eigene Listen, um eine Ausgabe zu generieren.",
+    empty: "Wähle Themen, Kategorien oder Custom-Listen, um eine Ausgabe zu generieren.",
     generatedList: "Generierte Wortliste",
     words: "Wörter",
     chars: "Zeichen",

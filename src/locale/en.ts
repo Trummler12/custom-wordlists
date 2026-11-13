@@ -39,7 +39,7 @@ export const en: UIStrings = {
     valueText: (depth, total) =>
       depth === 1 ? `top tier of ${total}` : `top ${depth} of ${total} tiers`,
     groupsDefined: (count) => `Fame groups defined: ${count}`,
-    none: "No fame groups defined yet — see the Contribution Guide in the footer to propose some!",
+    none: "No fame groups defined yet. See the Contribution Guide in the footer to propose some!",
     selected: "Selected:",
     mostlySelected: "Mostly selected:",
     stored: (body) => `(Stored: ${body})`,
@@ -76,7 +76,7 @@ export const en: UIStrings = {
           : "Toggle to leave them out again.",
     tooLongHint: (omitted) =>
       omitted
-        ? "Toggle to include them anyway — skribbl.io won't take them, but another game might."
+        ? "Toggle to include them anyway (skribbl.io won't take them, but another game might)."
         : "Toggle to leave them out again.",
     helpAdd: (url) => ` — [help us add what's missing!](${url})`,
   },
@@ -161,7 +161,7 @@ export const en: UIStrings = {
     charsAccepted: "Accepted characters:",
     charsRemoveMaybe: "Maybe consider removing this character.",
     charsLone: (char, partner) => `Lone {code}${char}{/code} without a matching {code}${partner}{/code};`,
-    charsPaired: (open, close) => `As part of a {code}${open}{/code}-{code}${close}{/code} pair.`,
+    charsPaired: (open, close) => `As part of a {code}${open}{/code}-{code}${close}{/code} pair;`,
     cleanChars: "Your list contains unusual special characters that can be removed on saving:",
     cleanDupes: (n) =>
       `Your list contains ${n} internal duplicate${n === 1 ? "" : "s"}, which will be removed on saving:`,
@@ -217,8 +217,8 @@ export const en: UIStrings = {
     slot: { primary: "Primary:", interface: "Interface:", fallback: "UI Fallback:" },
     slotHint: {
       primary: "Primary language for list items, and the default for most other language settings.",
-      interface: "Language used for the interface in particular.",
-      fallback: "In case the interface language is missing a locale.{br}In case this {i}also{/i} fails, the app falls back to English.",
+      interface: "The interface language in particular.",
+      fallback: "Used wherever the interface language has no translation.{br}If this one lacks it too, English is used.",
     },
     followPrimary: "{i}Primary{/i}",
     showSecondaryBefore: "Show the option to use", showSecondaryAfter: "entries instead",
@@ -227,7 +227,7 @@ export const en: UIStrings = {
     secondaryMoot: "These toggles only appear while the primary and the secondary language differ.",
     flagType: "Flag type:",
     flagTypes: { country: "Country", mixed: "Mixed", linguistic: "Linguistic" },
-    unsupported: (language) => `Not confirmed for ${language} yet — this topic may be incomplete.`,
+    unsupported: (language) => `Not confirmed for ${language} yet; this topic may be incomplete.`,
     fallback: "English is used where a translation is missing.",
     usesEnglish: (primary, secondary) => `${primary}${secondary} officially uses the English names too.`,
     variant: {
