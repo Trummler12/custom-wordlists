@@ -27,8 +27,15 @@ export const ja: TopicProseDict = {
     constructed: "人工言語",
     fictional: "架空言語",
   },
+  games: {
+    discontinued: "現在は大会で実施されていない競技",
+    demonstrationSports: "公開競技としてのみ実施され、メダルの対象にならなかった競技",
+    futureDisciplines: "今後の大会に向けて追加された競技",
+    childDiscipline: "リストにある別の競技の種別",
+  },
   signLanguages: "手話",
   ancientPlates: "古代・消滅したプレート",
+  paleocontinents: "古大陸とかつての超大陸",
   continentTiers: [
     "大陸と主要プレート",
     "小規模プレート以上",
@@ -46,6 +53,10 @@ export const ja: TopicProseDict = {
     },
     languages: { text: "世界の話者数が{condition}の言語", empty: "世界の話者数順。" },
     continents: { text: "{condition}", empty: "プレート面積順（Bird 2003）。" },
+    sports: {
+      text: "{condition}のウィキペディアに記事がある競技",
+      empty: "記事があるウィキペディアの数順。",
+    },
   },
   bands: {
     "100M": "1億",

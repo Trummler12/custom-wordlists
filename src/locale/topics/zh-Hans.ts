@@ -27,8 +27,15 @@ export const zhHans: TopicProseDict = {
     constructed: "人造语言",
     fictional: "虚构语言",
   },
+  games: {
+    discontinued: "已不再在奥运会上举行的运动项目",
+    demonstrationSports: "只作为表演项目出现、从未设奖牌的运动项目",
+    futureDisciplines: "为今后的奥运会新增的运动项目",
+    childDiscipline: "列表中另一运动项目的分项",
+  },
   signLanguages: "手语",
   ancientPlates: "古代和已消亡的板块",
+  paleocontinents: "古大陆和曾经的超大陆",
   continentTiers: [
     "大陆和主要板块",
     "小板块及以上",
@@ -46,6 +53,10 @@ export const zhHans: TopicProseDict = {
     },
     languages: { text: "全球使用者为{condition}的语言", empty: "按全球使用者数排序。" },
     continents: { text: "{condition}", empty: "按板块面积排序（Bird 2003）。" },
+    sports: {
+      text: "在{condition}个维基百科中有条目的运动项目",
+      empty: "按拥有其条目的维基百科数量排序。",
+    },
   },
   bands: {
     "100M": "1亿",

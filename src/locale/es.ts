@@ -15,10 +15,25 @@ export const es: LocaleDict = {
     toggle: (expanded, title) => `${expanded ? "Contraer" : "Expandir"} ${title}`,
     loadingShort: "cargando…",
     wordsOf: (selected, total) => `${selected} de ${total} palabra${total === 1 ? "" : "s"}`,
+    duplicatesRemoved: (count) => `${count} duplicado${count === 1 ? "" : "s"} eliminado${count === 1 ? "" : "s"}`,
+    incompleteTopic: (url) => `Este tema está marcado como incompleto.{br}[¡Ayúdanos a añadir lo que falta!](${url})`,
+    plannedTopic: (url) => `Este tema está previsto, pero aún no está listo.{br}[¡Ayúdanos a preparar sus datos!](${url})`,
+    incompleteCategory: (url) =>
+      `Esta categoría contiene temas marcados como incompletos.{br}[¡Ayúdanos a añadir lo que falta!](${url})`,
+    plannedCategory: (url) =>
+      `Esta categoría contiene temas previstos que aún no están listos.{br}[¡Ayúdanos a preparar sus datos!](${url})`,
+    plannedUnselectable: "Los temas previstos aún no se pueden seleccionar",
   },
   names: {
     form: { pref: "pref.", short: "corto", long: "largo", both: "ambos", all: "todos" },
     formLabel: (group) => `Forma del nombre para ${group}`,
+    formHint: {
+      short: "Preferir nombres cortos",
+      long: "Preferir nombres completos/oficiales",
+      both: "Usar nombres cortos Y completos",
+      pref: "Usar solo la etiqueta principal",
+      all: "Usar TODAS las variantes disponibles",
+    },
   },
   fame: {
     depthLabel: (group) => `Nivel de fama para ${group}`,
@@ -55,6 +70,19 @@ export const es: LocaleDict = {
         ? "Activar para incluirlos de todos modos: skribbl.io no los acepta, pero otro juego sí podría."
         : "Activar para volver a dejarlos fuera.",
     helpAdd: (url) => `; [¡ayúdanos a añadir lo que falta!](${url})`,
+    tooShort: (n, minLen) => `Hasta ${n} nombre${n === 1 ? "" : "s"} de menos de ${minLen} caracteres`,
+    tooShortHint: (omitted) =>
+      omitted ? "Activar para incluirlos de todos modos." : "Activar para volver a dejarlos fuera.",
+    separatorIn: (n, sep, removing) =>
+      `Hasta ${n} nombre${n === 1 ? "" : "s"} que ${removing ? (n === 1 ? "{i}contendría{/i}" : "{i}contendrían{/i}") : n === 1 ? "contiene" : "contienen"} el separador elegido ({code}${sep}{/code})`,
+    separatorHint: (omitted, removing) =>
+      omitted
+        ? removing
+          ? "Activar para conservarlos, sin el separador."
+          : "Activar para incluirlos de todos modos: skribbl.io los partiría por el separador."
+        : removing
+          ? "Activar para dejarlos fuera en lugar de quitar el separador."
+          : "Activar para volver a dejarlos fuera.",
   },
   coverage: {
     label: "Geoguessr / Cobertura de Street View",
@@ -108,12 +136,47 @@ export const es: LocaleDict = {
       "Estos romaji se generaron a partir de los nombres japoneses. Si alguno se escribe de otra forma, ¡no dudes en [avisarnos](https://github.com/Trummler12/custom-wordlists/issues/new)!",
     variantDiffers: (n) => `${n} entrada${n === 1 ? "" : "s"} se escribe${n === 1 ? "" : "n"} de otra forma`,
     variantShowList: "Ver cuáles",
+    panelTitle: "Ajustes de idioma",
+    slot: { primary: "Principal:", interface: "Interfaz:", fallback: "Respaldo de interfaz:" },
+    slotHint: {
+      primary: "Idioma principal de las entradas de las listas y valor predeterminado de la mayoría de los demás ajustes de idioma.",
+      interface: "El idioma de la interfaz en particular.",
+      fallback: "Se usa donde el idioma de la interfaz no tiene traducción.{br}Si aquí también falta, se usa el inglés.",
+    },
+    followPrimary: "{i}Principal{/i}",
+    showSecondaryBefore: "Mostrar la opción de usar entradas en", showSecondaryAfter: "",
+    showSecondaryHint:
+      "Permite usar, por ejemplo, los nombres de países en tu lengua materna y los nombres de personajes de series en tu idioma de doblaje preferido.",
+    secondaryMoot: "Estos interruptores solo aparecen mientras el idioma principal y el secundario sean distintos.",
+    flagType: "Tipo de bandera:",
+    flagTypes: { country: "País", mixed: "Mixta", linguistic: "Lingüística" },
+    useSecondary: (forced, secondary) =>
+      forced ? "Usar esta lista en el idioma seleccionado" : `Usar las entradas de esta lista en ${secondary}`,
+    useSecondaryAll: (allForced, secondary) =>
+      allForced
+        ? "Usar estas listas en el idioma seleccionado"
+        : `Usar las entradas de estas listas en ${secondary}`,
   },
   settings: {
     label: "Ajustes",
     reset: "Restablecer ajustes{br}de selección",
     resetConfirm: "Pulsa de nuevo para confirmar",
     resetCancel: "Cancelar",
+    outputSeparator: "Separador de salida:",
+    outputSeparatorHint:
+      "skribbl.io solo acepta {code},{/code} como separador. Los demás solo cambian lo que se copia; el resultado se ve igual en cualquier caso.",
+    charLimits: "Límites de caracteres:",
+    minChars: "Mín.",
+    maxChars: "Máx.",
+    removeSeparator: (sep) => `Quitar {code}${sep}{/code} de los nombres`,
+    charMaxOver: (gameMax) => `skribbl.io acepta como máximo ${gameMax} caracteres por nombre.`,
+    scriptLimitsHint:
+      "Límites para los nombres en la escritura propia de este idioma, donde un solo carácter suele representar una sílaba o una palabra entera. El romaji y otros nombres en letras latinas siguen los límites generales.",
+    showTopicsBefore: "Mostrar temas:",
+    showTopicsAfter: "",
+    showTopicsKind: { incomplete: "incompletos", planned: "previstos", all: "todos" },
+    showTopicsHint:
+      "A los temas incompletos aún les faltan entradas. Los temas previstos están anunciados, pero aún no se pueden seleccionar.",
   },
   output: {
     label: "Resultado",
@@ -129,6 +192,8 @@ export const es: LocaleDict = {
     overMax: "· por encima del máximo",
     overLong: (count, maxLen) =>
       `${count} palabra${count === 1 ? "" : "s"} de más de ${maxLen} caracteres`,
+    splitting: (count, sep) =>
+      `${count} palabra${count === 1 ? "" : "s"} con el separador "${sep}" (se parte${count === 1 ? "" : "n"} al pegar)`,
   },
   footer: {
     repository: "Repositorio de GitHub",
@@ -153,7 +218,7 @@ export const es: LocaleDict = {
     uiOnly: "Solo idiomas de la interfaz",
     uiOnlyHint: "Los volcados de datos brutos ya cubren todos los idiomas que admite skribbl.io,{br}además de algunos más con muchos usuarios.{br}Así que los datos ya admiten todos los idiomas previstos,{br}mientras que la interfaz la mantenemos los maintainers y, naturalmente, va muy por detrás.{br}Y tiene poco sentido querer añadir un nuevo idioma de interfaz{br}mientras apenas hay temas que cubran ese idioma.{br}Pero cuanta más gente ayude, antes se aprobarán nuevos idiomas.{br}=> Échale un vistazo a la Contribution Guide más abajo, ¡sin problema!",
     item: "Elemento",
-    numeric: { population: "Población", area: "Área (km{smaller sup}2{/smaller sup})", users: "Usuarios" },
+    numeric: { population: "Población", area: "Área (km{smaller sup}2{/smaller sup})", users: "Usuarios", atomicNumber: "Número atómico", wikipedias: "Wikipedias" },
     first: "Primera página",
     prev: "Página anterior",
     next: "Página siguiente",
@@ -161,5 +226,110 @@ export const es: LocaleDict = {
     pageParts: (current, total) => ["", `Página ${current}`, ` / ${total}`],
     loading: (topic) => `Cargando ${topic}…`,
     loadError: (topic, message) => `No se pudo cargar la cobertura de ${topic}: ${message}`,
+    pageJumpHint: (numeric) =>
+      numeric
+        ? `Clic: ir a una página, a un nombre de entrada (en inglés) o a un valor de "${numeric}"`
+        : "Clic: ir a una página o a un nombre de entrada (en inglés)",
+    pageJumpInput: "Página, valor o nombre de entrada",
+    pageNoNumeric: "Esta tabla no tiene ninguna columna numérica.",
+  },
+  tip: {
+    unpin: "Desfijar",
+  },
+  custom: {
+    title: "Custom",
+    infoHint:
+      "Usa el campo de entrada de abajo para añadir tus propias listas de palabras.{br}" +
+      "Se aplican estas reglas:{br}" +
+      "- Todos los elementos se separan con un mismo carácter separador, igual en toda la entrada.{br}" +
+      "- Evita los elementos que contengan el propio separador.{br}" +
+      "- Con cada cambio del contenido, el separador se detecta automáticamente como el carácter separador más frecuente.{br}" +
+      "- skribbl.io ignora la puntuación, otros caracteres especiales y los espacios al principio o al final; parte de ello ya se limpia aquí mismo.",
+    separatorLabel: "Separador:",
+    separatorPick: "Carácter separador",
+    internalDupes: (n) => `${n} entrada${n === 1 ? "" : "s"} duplicada${n === 1 ? "" : "s"} dentro de una lista Custom activa`,
+    localDupes: (n) => `${n} duplicado${n === 1 ? "" : "s"} entre tus listas Custom activas`,
+    globalDupes: (n) => `${n} duplicado${n === 1 ? "" : "s"} con los temas seleccionados`,
+    dupesNote: "Los duplicados se reducen a una sola copia en el resultado.",
+    dupesNoteSave: "Los duplicados dentro de una lista también se eliminan al guardarla.",
+    dupesSamples: {
+      internal: "Duplicados internos:",
+      local: "Duplicados entre tus listas Custom activas:",
+      global: "Duplicados con los temas seleccionados:",
+    },
+    fitToggle: "Ajustar el campo a su altura completa",
+    fewerRows: "Mostrar menos filas",
+    moreRows: "Mostrar más filas",
+    moreRowsOver: (steps) => `(${steps} paso${steps === 1 ? "" : "s"} por encima de la altura del contenido)`,
+    clearHint: "Vaciar el campo de entrada Custom",
+    clearConfirm: "Vas a vaciar el campo de entrada Custom.",
+    clearConfirmButton: "Haz clic aquí para confirmar",
+    listsLabel: "Listas guardadas",
+    listsTitle: "Listas Custom guardadas",
+    listsInfo:
+      "Las listas Custom se guardan en el almacenamiento local.{br}" +
+      "Cada navegador tiene su propio almacenamiento local,{br}" +
+      "separado de otros navegadores o dispositivos.{br}" +
+      "Para llevar tus listas Custom a otro lugar,{br}" +
+      "expórtalas aquí e impórtalas en el destino.{br}{br}" +
+      "{b}IMPORTANTE{/b}: exporta tus listas después de cada cambio grande " +
+      "y guarda esas exportaciones como copia de seguridad; varias acciones del navegador " +
+      "pueden borrar tu almacenamiento local, y Safari incluso lo borra automáticamente " +
+      "cuando un sitio lleva 7 días sin visitarse.",
+    listActivate: "Usar esta lista",
+    listRename: "Renombrar",
+    listSave: "Guardar la entrada actual en esta lista",
+    listLoad: "Cargar esta lista en el campo de entrada",
+    listDelete: "Eliminar esta lista",
+    listUp: "Subir",
+    listDown: "Bajar",
+    listSaveNew: "Guardar la entrada actual como lista nueva",
+    phActivate: "El marcador de posición NO se puede usar",
+    phRename: "El marcador de posición NO se puede renombrar",
+    phLoad: "El marcador de posición NO se puede cargar",
+    phDelete: "El marcador de posición NO se puede eliminar",
+    phMove: "El marcador de posición NO se puede mover",
+    exportLabel: "Exportar listas",
+    exportTitle: "Exportar listas guardadas",
+    selectAll: "Seleccionar todo",
+    exportDownload: "Descargar",
+    importLabel: "Importar listas",
+    importTitle: "Importar listas guardadas",
+    importColName: "Nombre",
+    importColSize: "Tamaño",
+    importColDupes: "Dupl.",
+    importColWith: "con",
+    importButton: "Importar selección",
+    importEmpty: "No hay listas guardadas en este archivo.",
+    importDupesSecondary: (pct) => `Secundario: ${pct}`,
+    listReplaceConfirm: (name) => `¿Reemplazar la lista "${name}" por la entrada actual?`,
+    listDeleteConfirm: (name) => `¿Eliminar la lista "${name}"?`,
+    listLoadConfirm: "¿Sobrescribir el campo de entrada con esta lista?",
+    confirm: "Confirmar",
+    cancel: "Cancelar",
+    charsLabel: "Caracteres que skribbl.io probablemente ignora",
+    charsIgnored: "Caracteres que skribbl.io probablemente ignora:",
+    charsProblematic: "Caracteres problemáticos:",
+    charsTolerated: "Caracteres tolerados:",
+    charsRemove: "Considera quitar este carácter.",
+    charsLists: "Listas afectadas:",
+    inputName: "{i}Campo de entrada{/i}",
+    charsAccepted: "Caracteres aceptados:",
+    charsRemoveMaybe: "Quizá convenga quitar este carácter.",
+    charsLone: (char, partner) => `{code}${char}{/code} suelto, sin su {code}${partner}{/code};`,
+    charsPaired: (open, close) => `Como parte de un par {code}${open}{/code}-{code}${close}{/code};`,
+    cleanChars: "Tu lista contiene caracteres especiales poco habituales que pueden quitarse al guardar:",
+    cleanDupes: (n) =>
+      `Tu lista contiene ${n} duplicado${n === 1 ? "" : "s"} interno${n === 1 ? "" : "s"}, que se eliminará${n === 1 ? "" : "n"} al guardar:`,
+    settingsLabel: "Ajustes de Custom",
+    settingsTitle: "Ajustes de Custom",
+    maxPreviewItems: "Máx. elementos en la vista previa",
+    maxPreviewChars: "Máx. caracteres en la vista previa",
+    exampleListS: "Lista de ejemplo S",
+    exampleListL: "Lista de ejemplo L",
+    examplePreviewEmpty: "Aún no se han cargado nombres de temas.",
+  },
+  sportType: {
+    label: "Qué deportes incluir",
   },
 };

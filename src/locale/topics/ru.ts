@@ -27,8 +27,15 @@ export const ru: TopicProseDict = {
     constructed: "искусственные языки",
     fictional: "вымышленные языки",
   },
+  games: {
+    discontinued: "виды спорта, которые больше не проводятся на Играх",
+    demonstrationSports: "виды спорта, которые были только показательными, без медалей",
+    futureDisciplines: "виды спорта, добавленные для будущих Игр",
+    childDiscipline: "дисциплины другого вида спорта из списка",
+  },
   signLanguages: "жестовые языки",
   ancientPlates: "древние и исчезнувшие плиты",
+  paleocontinents: "палеоконтиненты и бывшие суперконтиненты",
   continentTiers: [
     "континенты и крупные плиты",
     "малые плиты и крупнее",
@@ -46,6 +53,10 @@ export const ru: TopicProseDict = {
     },
     languages: { text: "языки, на которых в мире говорят {condition}", empty: "Упорядочено по числу носителей в мире." },
     continents: { text: "{condition}", empty: "Упорядочено по площади плит (Bird 2003)." },
+    sports: {
+      text: "виды спорта со статьёй в {condition} Википедиях",
+      empty: "Упорядочено по числу Википедий, в которых есть статья о них.",
+    },
   },
   bands: {
     "100M": "100 миллионов",

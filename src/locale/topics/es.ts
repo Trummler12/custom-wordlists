@@ -27,8 +27,15 @@ export const es: TopicProseDict = {
     constructed: "lenguas construidas",
     fictional: "lenguas ficticias",
   },
+  games: {
+    discontinued: "deportes que ya no se disputan en los Juegos",
+    demonstrationSports: "deportes que solo se mostraron como exhibición, nunca con medallas",
+    futureDisciplines: "deportes añadidos para Juegos aún por celebrarse",
+    childDiscipline: "disciplinas de otro deporte de la lista",
+  },
   signLanguages: "lenguas de señas",
   ancientPlates: "placas antiguas y extintas",
+  paleocontinents: "paleocontinentes y antiguos supercontinentes",
   continentTiers: [
     "continentes y placas mayores",
     "placas menores y mayores",
@@ -46,6 +53,10 @@ export const es: TopicProseDict = {
     },
     languages: { text: "idiomas con {condition} hablantes en el mundo", empty: "Ordenados por número de hablantes en el mundo." },
     continents: { text: "{condition}", empty: "Ordenadas por superficie de la placa (Bird 2003)." },
+    sports: {
+      text: "deportes con artículo en {condition} Wikipedias",
+      empty: "Ordenados por el número de Wikipedias que tienen un artículo sobre ellos.",
+    },
   },
   bands: {
     "100M": "100 millones",

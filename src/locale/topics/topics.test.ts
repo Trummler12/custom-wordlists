@@ -41,7 +41,9 @@ describe("resolveProse", () => {
     expect(resolveProse("signLanguages", "xx")).toBe("sign languages");
   });
   it("falls back to English per field where a locale lacks just that one", () => {
-    expect(resolveProse("ruler.sports.text", "fr")).toBe(topicProse("en").ruler.sports.text);
+    // The article-count bands are plain numerals, which no locale restates.
+    expect(topicProse("fr").bands["20"]).toBe(topicProse("en").bands["20"]);
+    expect(resolveProse("bands.20", "fr")).toBe("20");
     expect(topicProse("fr").ruler.countries.text).not.toBe(topicProse("en").ruler.countries.text);
   });
   it("returns the id itself when it names nothing (a stale id fails visibly)", () => {

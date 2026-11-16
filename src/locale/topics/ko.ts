@@ -27,8 +27,15 @@ export const ko: TopicProseDict = {
     constructed: "인공어",
     fictional: "가공의 언어",
   },
+  games: {
+    discontinued: "더 이상 대회에서 열리지 않는 종목",
+    demonstrationSports: "시범 종목으로만 열리고 메달은 걸리지 않았던 종목",
+    futureDisciplines: "앞으로 열릴 대회를 위해 추가된 종목",
+    childDiscipline: "목록에 있는 다른 종목의 세부 종목",
+  },
   signLanguages: "수어",
   ancientPlates: "고대·소멸한 판",
+  paleocontinents: "고대륙과 옛 초대륙",
   continentTiers: [
     "대륙과 주요 판",
     "소규모 판 이상",
@@ -46,6 +53,10 @@ export const ko: TopicProseDict = {
     },
     languages: { text: "전 세계 사용자 수가 {condition}인 언어", empty: "전 세계 사용자 수 기준 정렬." },
     continents: { text: "{condition}", empty: "판 면적 순 (Bird 2003)." },
+    sports: {
+      text: "{condition}의 위키백과에 문서가 있는 종목",
+      empty: "문서가 있는 위키백과 수 기준 정렬.",
+    },
   },
   bands: {
     "100M": "1억",
