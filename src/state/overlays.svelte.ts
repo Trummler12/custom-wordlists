@@ -213,8 +213,15 @@ class OverlayState {
    *  than spanning a row. It follows a page scroll (shared/placement), but a scroll of the
    *  popup itself closes it: its trigger slides out from under it. See onLocalScroll. */
   #tipLocal = false;
+  /** Whether the open note is hover ground of its own, so the cursor can leave the marker
+   *  for it without closing it. Set once a note is found lying over its marker (a narrow
+   *  viewport leaves it nowhere else to go, and a note that hides its marker would
+   *  otherwise close itself and flicker), and by pinning; kept until the note closes. */
+  #tipHoverNote = false;
   /** Show a note; where it goes is the note's own business (shared/placement). */
   openTip = (id: string, trigger: Element, pinned = false, local = false): void => {
+    if (this.tip !== id) this.#tipHoverNote = false;
+    if (pinned) this.#tipHoverNote = true;
     this.tip = id;
     this.tipPinned = pinned;
     this.#tipLocal = local;
@@ -224,6 +231,7 @@ class OverlayState {
     this.tip = null;
     this.tipPinned = false;
     this.#tipLocal = false;
+    this.#tipHoverNote = false;
   };
   /** Close unless the note is pinned — what leaving the marker and losing focus
    *  both want, neither of them being a dismissal once the reader has asked for
@@ -243,7 +251,47 @@ class OverlayState {
     this.openTip(id, e.currentTarget as Element, false, local);
   };
   tipLeave = (e: PointerEvent): void => {
-    if (e.pointerType === "mouse") this.releaseTip();
+    if (e.pointerType !== "mouse") return;
+    const note = this.tip ? document.getElementById(this.tip) : null;
+    const to = e.relatedTarget;
+    if (note && to instanceof Node && note.contains(to)) {
+      // Measured here rather than when the note opens: this is the one moment the answer
+      // matters, and by now the note has certainly been placed.
+      const marker = e.currentTarget as Element;
+      if (this.#tipHoverNote || overlap(note, marker)) {
+        this.#tipHoverNote = true;
+        return;
+      }
+    }
+    this.releaseTip();
+  };
+  /** The cursor leaving a note that is hover ground: closes it like leaving the marker
+   *  does, unless the marker is where the cursor went. */
+  tipNoteLeave = (e: PointerEvent): void => {
+    if (e.pointerType !== "mouse" || !this.#tipHoverNote) return;
+    const to = e.relatedTarget;
+    if (to instanceof Node && this.#openers.tip?.contains(to)) return;
+    this.releaseTip();
+  };
+  /** A press inside the note pins it, one way only (the 📌 it then shows unpins). On the
+   *  press rather than the click: the press is what blurs a focused marker, and the pin
+   *  has to be in place before that blur asks the note to close. */
+  tipNotePress = (): void => {
+    if (!this.tip) return;
+    this.tipPinned = true;
+    this.#tipHoverNote = true;
+  };
+  /** The 📌 on a pinned note. Under a cursor the note stays for as long as the cursor is
+   *  on it; a finger or the keyboard has no hover to hand it back to, so there it closes. */
+  unpinTip = (e: MouseEvent): void => {
+    const keyboard = e.detail === 0;
+    if (!keyboard && this.#pointerType === "mouse") {
+      this.tipPinned = false;
+      return;
+    }
+    const back = this.#openers.tip;
+    this.closeTip();
+    if (keyboard && back) void returnFocus(back);
   };
   tipFocus = (e: FocusEvent, id: string, local = false): void => {
     // Only where a focus ring shows, which is to say: only for the keyboard, the
@@ -365,6 +413,13 @@ async function returnFocus(el: HTMLElement): Promise<void> {
   // nothing to return to then.
   const active = document.activeElement;
   if (el.isConnected && (!active || active === document.body)) el.focus();
+}
+
+/** Whether two elements' boxes share any area (touching edges don't count). */
+function overlap(a: Element, b: Element): boolean {
+  const p = a.getBoundingClientRect();
+  const q = b.getBoundingClientRect();
+  return p.left < q.right && q.left < p.right && p.top < q.bottom && q.top < p.bottom;
 }
 
 /** Whether this element is showing a focus ring: true when the keyboard put the

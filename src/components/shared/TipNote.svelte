@@ -1,6 +1,8 @@
 <script lang="ts">
   import { localNote, placement, rowPopup } from "./placement";
   import Msg from "../../locale/html/Msg.svelte";
+  import { plain } from "../../locale/html/plain";
+  import { lang } from "../../state/lang.svelte";
   import { overlays } from "../../state/overlays.svelte";
 
   // The note half of a tooltip; the trigger is whatever element carries the
@@ -22,12 +24,20 @@
     class:local
     {id}
     role="tooltip"
+    onpointerdown={overlays.tipNotePress}
+    onpointerleave={overlays.tipNoteLeave}
   >
     <!-- Says the note is staying, which is otherwise only discoverable by moving
-         the cursor away and seeing what happens. `aria-hidden`: it marks a
-         pointer affordance, and the trigger's `aria-expanded` already carries the
-         part that matters to a reader who has no pointer. -->
-    {#if overlays.tipPinned}<span class="tip-pin" aria-hidden="true">📌</span>{/if}
+         the cursor away and seeing what happens, and is the way to let it go again. -->
+    {#if overlays.tipPinned}
+      <button
+        type="button"
+        class="tip-pin"
+        aria-label={plain(lang.ui.tip.unpin)}
+        title={plain(lang.ui.tip.unpin)}
+        onclick={overlays.unpinTip}>📌</button
+      >
+    {/if}
     <Msg text={text} />
   </p>
 {/if}
@@ -46,10 +56,19 @@
      it make room; the rest of the note keeps its full width. */
   .tip-pin {
     float: right;
-    margin: -0.15rem -0.2rem 0 0.4rem;
+    margin: -0.3rem -0.35rem 0 0.25rem;
+    padding: 0.15rem;
+    background: none;
+    border: none;
+    font: inherit;
     font-size: 0.65rem;
     line-height: 1;
     opacity: 0.75;
+    cursor: pointer;
+  }
+  .tip-pin:hover,
+  .tip-pin:focus-visible {
+    opacity: 1;
   }
   /* Fixed, so the scrolling panel it belongs to doesn't clip it, and above that panel. */
   .tip-note.local {

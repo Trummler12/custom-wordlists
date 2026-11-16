@@ -23,6 +23,9 @@ export const en: UIStrings = {
       `This category contains planned topics that aren't ready yet.{br}[Help us prepare their data!](${url})`,
     plannedUnselectable: "Planned topics can't be selected yet",
   },
+  tip: {
+    unpin: "Unpin",
+  },
   names: {
     form: { pref: "pref", short: "short", long: "long", both: "both", all: "all" },
     formHint: {

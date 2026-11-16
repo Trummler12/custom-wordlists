@@ -515,8 +515,15 @@ export interface CustomStrings {
   examplePreviewEmpty: string;
 }
 
+/** The tooltip notes' own chrome. */
+export interface TipStrings {
+  /** The 📌 button on a pinned note, which lets it go again. */
+  unpin: string;
+}
+
 /** Every user-facing string the app chrome renders, keyed and typed. */
 export interface UIStrings {
+  tip: TipStrings;
   header: HeaderStrings;
   tree: TreeStrings;
   names: NamesStrings;
