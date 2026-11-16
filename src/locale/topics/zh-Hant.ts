@@ -36,7 +36,7 @@ export const zhHant: TopicProseDict = {
     "微板塊及以上，無論是否測量",
     "分類未知的構造板塊",
   ],
-  tier3Note: "這些板塊從未公佈過面積，因此本層按其所屬板塊分組，而非按大小排序——其中有幾個甚至沒有獨立的百科條目。",
+  tier3Note: "這些板塊從未公佈過面積，因此本層按其所屬板塊分組，而非按大小排序，其中有幾個甚至沒有獨立的百科條目。",
   noteLabel: "註：",
   ruler: {
     countries: { text: "人口為{condition}的國家", empty: "按人口排序。" },

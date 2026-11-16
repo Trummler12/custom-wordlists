@@ -36,7 +36,7 @@ export const zhHans: TopicProseDict = {
     "微板块及以上，无论是否测量",
     "分类未知的构造板块",
   ],
-  tier3Note: "这些板块从未公布过面积，因此本层按其所属板块分组，而非按大小排序——其中有几个甚至没有独立的百科条目。",
+  tier3Note: "这些板块从未公布过面积，因此本层按其所属板块分组，而非按大小排序，其中有几个甚至没有独立的百科条目。",
   noteLabel: "注：",
   ruler: {
     countries: { text: "人口为{condition}的国家", empty: "按人口排序。" },

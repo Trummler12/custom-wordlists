@@ -43,7 +43,7 @@ export const de: TopicProseDict = {
     "Mikroplatten und grösser, ob gemessen oder nicht",
     "unklassifizierte und erloschene Platten sowie Paläokontinente",
   ],
-  tier3Note: "Für diese Platten wurde nie eine Fläche veröffentlicht, daher ist diese Stufe nach Mutterplatte gruppiert statt nach Grösse sortiert — und mehrere von ihnen haben nicht einmal einen eigenen Enzyklopädie-Artikel.",
+  tier3Note: "Für diese Platten wurde nie eine Fläche veröffentlicht, daher ist diese Stufe nach Mutterplatte gruppiert statt nach Grösse sortiert, und mehrere von ihnen haben nicht einmal einen eigenen Enzyklopädie-Artikel.",
   noteLabel: "Hinweis: ",
   ruler: {
     countries: { text: "Länder mit {condition} Einwohnern", empty: "Nach Einwohnerzahl geordnet." },

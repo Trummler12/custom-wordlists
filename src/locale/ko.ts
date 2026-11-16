@@ -56,7 +56,7 @@ export const ko: LocaleDict = {
       omitted
         ? "켜면 그래도 포함합니다. skribbl.io는 받지 않지만 다른 게임은 받을 수도 있습니다."
         : "켜면 다시 제외합니다.",
-    helpAdd: (url) => ` — [빠진 것을 채우는 데 힘을 보태 주세요](${url})`,
+    helpAdd: (url) => ` ([빠진 것을 채우는 데 힘을 보태 주세요](${url}))`,
   },
   coverage: {
     label: "Geoguessr / 스트리트 뷰 지원",
@@ -68,9 +68,9 @@ export const ko: LocaleDict = {
     label: "포함할 언어 유형",
     base: "살아 있는 현대 언어",
     submillion: "사용자 100만 명 미만 언어도 포함",
-    notRecommended: "가벼운 그림 그리기에는 부적합 — 사용자 수에 비해 훨씬 덜 알려져 있습니다.",
+    notRecommended: "가벼운 그림 그리기에는 부적합: 사용자 수에 비해 훨씬 덜 알려져 있습니다.",
     toggle: (included) =>
-      included ? "선택됨 — 목록에 포함되어 있습니다. 해제하면 제외됩니다." : "선택하면 목록에 추가됩니다.",
+      included ? "선택됨: 목록에 포함되어 있습니다. 해제하면 제외됩니다." : "선택하면 목록에 추가됩니다.",
   },
   sovereignty: {
     label: "주권과 승인",
@@ -109,7 +109,7 @@ export const ko: LocaleDict = {
   },
   settings: {
     label: "설정",
-    reset: "설정{br}초기화",
+    reset: "선택 설정{br}초기화",
     resetConfirm: "다시 클릭하면 초기화",
     resetCancel: "취소",
   },

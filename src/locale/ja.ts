@@ -56,7 +56,7 @@ export const ja: LocaleDict = {
       omitted
         ? "オンにすると、それでも含めます。skribbl.io は受け付けませんが、他のゲームなら通るかもしれません。"
         : "オンにすると、再び除外します。",
-    helpAdd: (url) => ` — [不足分の追加にご協力ください](${url})`,
+    helpAdd: (url) => `（[不足分の追加にご協力ください](${url})）`,
   },
   coverage: {
     label: "Geoguessr / ストリートビューの対応",
@@ -68,9 +68,9 @@ export const ja: LocaleDict = {
     label: "含める言語の種類",
     base: "現代の生きた言語",
     submillion: "利用者100万人未満の言語も含める",
-    notRecommended: "カジュアルなお絵描きには不向き — 話者数の割に知名度が低い。",
+    notRecommended: "カジュアルなお絵描きには不向き：話者数の割に知名度が低い。",
     toggle: (included) =>
-      included ? "選択中 — リストに含まれています。外すと除外します。" : "チェックするとリストに追加します。",
+      included ? "選択中：リストに含まれています。外すと除外します。" : "チェックするとリストに追加します。",
   },
   sovereignty: {
     label: "主権と承認",
@@ -109,7 +109,7 @@ export const ja: LocaleDict = {
   },
   settings: {
     label: "設定",
-    reset: "設定を{br}リセット",
+    reset: "選択設定を{br}リセット",
     resetConfirm: "もう一度クリックで確定",
     resetCancel: "キャンセル",
   },

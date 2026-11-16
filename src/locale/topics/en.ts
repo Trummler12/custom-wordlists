@@ -53,7 +53,7 @@ export const en: TopicProse = {
     "microplates and larger, measured or not",
     "unclassified and extinct plates, and paleocontinents",
   ],
-  tier3Note: "No area has ever been published for these plates, so this tier is grouped by the plate each sits under rather than ordered by size — and several of them are not their own encyclopedia article either.",
+  tier3Note: "No area has ever been published for these plates, so this tier is grouped by the plate each sits under rather than ordered by size, and several of them are not their own encyclopedia article either.",
   noteLabel: "Note: ",
   // Ruler hovers per topic type (was RULER_COUNTRIES / RULER_CAPITALS / RULER_TOOLTIP).
   // `text` carries `{condition}`, filled at render from the tier band; `empty` names the

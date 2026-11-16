@@ -25,7 +25,7 @@ export const it: LocaleDict = {
     valueText: (depth, total) =>
       depth === 1 ? `primo livello di ${total}` : `primi ${depth} livelli di ${total}`,
     groupsDefined: (count) => `Gruppi di notorietà definiti: ${count}`,
-    none: "Nessun gruppo di notorietà definito finora — vedi la Contribution Guide nel piè di pagina per proporne.",
+    none: "Nessun gruppo di notorietà definito finora. Vedi la Contribution Guide nel piè di pagina per proporne!",
     selected: "Selezione:",
     mostlySelected: "Selezione maggioritaria:",
     stored: (body) => `(Memorizzato: ${body})`,
@@ -56,7 +56,7 @@ export const it: LocaleDict = {
       omitted
         ? "Attiva per includerli comunque: skribbl.io non li accetta, ma un altro gioco potrebbe."
         : "Attiva per tralasciarli di nuovo.",
-    helpAdd: (url) => ` — [aiutaci ad aggiungere ciò che manca!](${url})`,
+    helpAdd: (url) => `; [aiutaci ad aggiungere ciò che manca!](${url})`,
   },
   coverage: {
     label: "Geoguessr / Copertura Street View",
@@ -71,7 +71,7 @@ export const it: LocaleDict = {
     notRecommended: "Poco adatto al disegno informale: assai meno noto di quanto suggerisca il numero di parlanti.",
     toggle: (included) =>
       included
-        ? "Spuntato — sono nell'elenco. Togli la spunta per escluderle."
+        ? "Spuntato: sono nell'elenco. Togli la spunta per escluderle."
         : "Spunta per aggiungerle all'elenco.",
   },
   sovereignty: {
@@ -96,7 +96,7 @@ export const it: LocaleDict = {
   language: {
     label: (current) => `Lingua: ${current}`,
     unsupported: (language) =>
-      `Non ancora confermato per ${language} — questo argomento potrebbe essere incompleto.`,
+      `Non ancora confermato per ${language}; questo argomento potrebbe essere incompleto.`,
     fallback: "Dove manca una traduzione viene usato l'inglese.",
     // L'articolo si elide davanti a vocale, il che si decide sulla prima lettera.
     usesEnglish: (primary, secondary) =>
@@ -113,7 +113,7 @@ export const it: LocaleDict = {
   },
   settings: {
     label: "Impostazioni",
-    reset: "Ripristina{br}le impostazioni",
+    reset: "Ripristina le impostazioni{br}di selezione",
     resetConfirm: "Clicca di nuovo per confermare",
     resetCancel: "Annulla",
   },
@@ -123,7 +123,7 @@ export const it: LocaleDict = {
     copied: "Copiato!",
     copyFailed: "Copia non riuscita",
     copyManual: "L'elenco è selezionato: copialo tu.",
-    empty: "Seleziona argomenti, categorie o liste personali per generare un output.",
+    empty: "Seleziona argomenti, categorie o liste personalizzate per generare un output.",
     generatedList: "Lista di parole generata",
     words: "parole",
     chars: "caratteri",

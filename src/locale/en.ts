@@ -57,7 +57,7 @@ export const en: UIStrings = {
       `Up to ${n} entr${n === 1 ? "y" : "ies"} the source data has no ${primary}${secondary} name for`,
     unknownHint: (omitted) =>
       omitted
-        ? "Toggle to include these under their English names — the only ones known for them."
+        ? "Toggle to include these under their English names (the only ones known for them)."
         : "Toggle to leave these out again.",
     unknownTier: (tier, n) => `Tier ${tier}: ${n} entr${n === 1 ? "y" : "ies"}`,
     tooLong: (n, maxLen) => `Up to ${n} name${n === 1 ? "" : "s"} longer than ${maxLen} characters`,
@@ -78,7 +78,7 @@ export const en: UIStrings = {
       omitted
         ? "Toggle to include them anyway (skribbl.io won't take them, but another game might)."
         : "Toggle to leave them out again.",
-    helpAdd: (url) => ` — [help us add what's missing!](${url})`,
+    helpAdd: (url) => `; [help us add what's missing!](${url})`,
   },
   custom: {
     title: "Custom",
@@ -186,7 +186,7 @@ export const en: UIStrings = {
     notRecommended: "A poor fit for casual drawing: far less familiar than its speaker numbers suggest.",
     toggle: (included) =>
       included
-        ? "Ticked — these are in the list. Untick to leave them out."
+        ? "Ticked: these are in the list. Untick to leave them out."
         : "Tick to add these to the list.",
   },
   sportType: {
@@ -272,7 +272,7 @@ export const en: UIStrings = {
     copy: "Copy",
     copied: "Copied!",
     copyFailed: "Copy failed",
-    copyManual: "The list is selected — copy it yourself.",
+    copyManual: "The list is selected; copy it yourself.",
     empty: "Select topics, categories or custom lists to generate an output.",
     generatedList: "Generated word list",
     words: "words",

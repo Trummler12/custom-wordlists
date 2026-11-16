@@ -28,7 +28,7 @@ export const pt: LocaleDict = {
     valueText: (depth, total) =>
       depth === 1 ? `nível mais alto de ${total}` : `${depth} níveis mais altos de ${total}`,
     groupsDefined: (count) => `Grupos de fama definidos: ${count}`,
-    none: "Nenhum grupo de fama definido ainda — veja o Contribution Guide no rodapé para propor alguns!",
+    none: "Nenhum grupo de fama definido ainda. Veja o Contribution Guide no rodapé para propor alguns!",
     selected: "Selecionado:",
     mostlySelected: "Em grande parte selecionado:",
     stored: (body) => `(Armazenado: ${body})`,
@@ -48,15 +48,15 @@ export const pt: LocaleDict = {
       `Até ${n} ${n === 1 ? "entrada" : "entradas"} para as quais os dados de origem não têm nome em ${primary}${secondary}`,
     unknownHint: (omitted) =>
       omitted
-        ? "Alternar para incluí-las com seus nomes em inglês — os únicos conhecidos para elas."
+        ? "Alternar para incluí-las com seus nomes em inglês (os únicos conhecidos para elas)."
         : "Alternar para deixá-las de fora novamente.",
     unknownTier: (tier, n) => `Nível ${tier}: ${n} ${n === 1 ? "entrada" : "entradas"}`,
     tooLong: (n, maxLen) => `Até ${n} ${n === 1 ? "nome" : "nomes"} com mais de ${maxLen} caracteres`,
     tooLongHint: (omitted) =>
       omitted
-        ? "Alternar para incluí-los mesmo assim — o skribbl.io não os aceita, mas outro jogo pode."
+        ? "Alternar para incluí-los mesmo assim (o skribbl.io não os aceita, mas outro jogo pode)."
         : "Alternar para deixá-los de fora novamente.",
-    helpAdd: (url) => ` — [ajude-nos a adicionar o que falta!](${url})`,
+    helpAdd: (url) => `; [ajude-nos a adicionar o que falta!](${url})`,
   },
   coverage: {
     label: "Cobertura do Geoguessr / Street View",
@@ -71,7 +71,7 @@ export const pt: LocaleDict = {
     notRecommended: "Pouco adequado para desenho casual: bem menos familiar do que o número de falantes sugere.",
     toggle: (included) =>
       included
-        ? "Marcado — estão na lista. Desmarque para deixá-los de fora."
+        ? "Marcado: estão na lista. Desmarque para deixá-los de fora."
         : "Marque para adicioná-los à lista.",
   },
   sovereignty: {
@@ -95,7 +95,7 @@ export const pt: LocaleDict = {
   },
   language: {
     label: (current) => `Idioma: ${current}`,
-    unsupported: (language) => `Ainda não confirmado para ${language} — este tópico pode estar incompleto.`,
+    unsupported: (language) => `Ainda não confirmado para ${language}; este tópico pode estar incompleto.`,
     fallback: "O inglês é usado onde falta uma tradução.",
     usesEnglish: (primary, secondary) =>
       `${primary}${secondary} também usa oficialmente os nomes em inglês.`,
@@ -111,7 +111,7 @@ export const pt: LocaleDict = {
   },
   settings: {
     label: "Configurações",
-    reset: "Redefinir configurações{br}para o padrão",
+    reset: "Redefinir configurações de seleção{br}para o padrão",
     resetConfirm: "Clique novamente para confirmar",
     resetCancel: "Cancelar",
   },
@@ -120,8 +120,8 @@ export const pt: LocaleDict = {
     copy: "Copiar",
     copied: "Copiado!",
     copyFailed: "Falha ao copiar",
-    copyManual: "A lista está selecionada — copie-a você mesmo.",
-    empty: "Selecione tópicos, categorias ou listas próprias para gerar uma saída.",
+    copyManual: "A lista está selecionada; copie-a você mesmo.",
+    empty: "Selecione tópicos, categorias ou listas personalizadas para gerar uma saída.",
     generatedList: "Lista de palavras gerada",
     words: "palavras",
     chars: "caracteres",

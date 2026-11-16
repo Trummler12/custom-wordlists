@@ -54,7 +54,7 @@ export const es: LocaleDict = {
       omitted
         ? "Activar para incluirlos de todos modos: skribbl.io no los acepta, pero otro juego sí podría."
         : "Activar para volver a dejarlos fuera.",
-    helpAdd: (url) => ` — [¡ayúdanos a añadir lo que falta!](${url})`,
+    helpAdd: (url) => `; [¡ayúdanos a añadir lo que falta!](${url})`,
   },
   coverage: {
     label: "Geoguessr / Cobertura de Street View",
@@ -111,7 +111,7 @@ export const es: LocaleDict = {
   },
   settings: {
     label: "Ajustes",
-    reset: "Restablecer ajustes{br}predeterminados",
+    reset: "Restablecer ajustes{br}de selección",
     resetConfirm: "Pulsa de nuevo para confirmar",
     resetCancel: "Cancelar",
   },
@@ -121,7 +121,7 @@ export const es: LocaleDict = {
     copied: "¡Copiado!",
     copyFailed: "No se pudo copiar",
     copyManual: "La lista está seleccionada: cópiala tú mismo.",
-    empty: "Selecciona temas, categorías o listas propias para generar una salida.",
+    empty: "Selecciona temas, categorías o listas personalizadas para generar una salida.",
     generatedList: "Lista de palabras generada",
     words: "palabras",
     chars: "caracteres",

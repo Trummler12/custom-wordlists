@@ -36,7 +36,7 @@ export const pt: TopicProseDict = {
     "microplacas e maiores, medidas ou não",
     "placas tectônicas de classificação desconhecida",
   ],
-  tier3Note: "Nunca foi publicada uma área para estas placas, então este nível é agrupado pela placa sob a qual cada uma está, em vez de ordenado por tamanho — e várias delas também não têm um artigo de enciclopédia próprio.",
+  tier3Note: "Nunca foi publicada uma área para estas placas, então este nível é agrupado pela placa sob a qual cada uma está, em vez de ordenado por tamanho, e várias delas também não têm um artigo de enciclopédia próprio.",
   noteLabel: "Observação: ",
   ruler: {
     countries: { text: "Países com {condition} habitantes", empty: "Ordenado por população." },

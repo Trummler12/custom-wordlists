@@ -131,8 +131,8 @@ export interface OmittedStrings {
   separatorIn: (n: number, sep: string, removing: boolean) => string;
   separatorHint: (omitted: boolean, removing: boolean) => string;
   /** Appended to the unknown-names row for a Wikidata-sourced topic: a link to that
-   *  topic's Language-Coverage page, where a reader can fill the gaps. Leads with an
-   *  em-dash separator and carries a `[text](url)` link, so it renders through html/Msg
+   *  topic's Language-Coverage page, where a reader can fill the gaps. Leads with its
+   *  own separator and carries a `[text](url)` link, so it renders through html/Msg
    *  (which opens it in a new tab). Absent on the row for any other topic. */
   helpAdd: (url: string) => string;
 }

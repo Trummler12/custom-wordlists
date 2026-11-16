@@ -65,7 +65,7 @@ describe("resolveCondition", () => {
   });
   it("folds a tier's note onto a {br}{br} second line via the @noteId tail", () => {
     expect(resolveCondition("continentTiers.3@tier3Note", "en")).toBe(
-      "microplates and larger, measured or not{br}{br}Note: No area has ever been published for these plates, so this tier is grouped by the plate each sits under rather than ordered by size — and several of them are not their own encyclopedia article either.",
+      "microplates and larger, measured or not{br}{br}Note: No area has ever been published for these plates, so this tier is grouped by the plate each sits under rather than ordered by size, and several of them are not their own encyclopedia article either.",
     );
   });
 });

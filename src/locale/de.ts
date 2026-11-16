@@ -86,7 +86,7 @@ export const de: UIStrings = {
       omitted
         ? "Umschalten, um sie trotzdem aufzunehmen (skribbl.io nimmt sie nicht an, ein anderes Spiel vielleicht schon)."
         : "Umschalten, um sie wieder wegzulassen.",
-    helpAdd: (url) => ` — [hilf mit, Fehlendes zu ergänzen!](${url})`,
+    helpAdd: (url) => `; [hilf mit, Fehlendes zu ergänzen!](${url})`,
   },
   custom: {
     title: "Custom",
@@ -289,7 +289,7 @@ export const de: UIStrings = {
     copy: "Kopieren",
     copied: "Kopiert!",
     copyFailed: "Kopieren fehlgeschlagen",
-    copyManual: "Die Liste ist markiert — bitte selbst kopieren.",
+    copyManual: "Die Liste ist markiert; bitte selbst kopieren.",
     empty: "Wähle Themen, Kategorien oder Custom-Listen, um eine Ausgabe zu generieren.",
     generatedList: "Generierte Wortliste",
     words: "Wörter",

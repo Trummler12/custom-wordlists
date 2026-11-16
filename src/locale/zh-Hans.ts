@@ -56,7 +56,7 @@ export const zhHans: LocaleDict = {
       omitted
         ? "打开以仍然纳入。skribbl.io 不接受，但其他游戏或许可以。"
         : "打开以将其再次排除。",
-    helpAdd: (url) => ` — [帮我们补全缺失的部分！](${url})`,
+    helpAdd: (url) => `；[帮我们补全缺失的部分！](${url})`,
   },
   coverage: {
     label: "Geoguessr / 街景覆盖",
@@ -68,9 +68,9 @@ export const zhHans: LocaleDict = {
     label: "包含哪些语言类型",
     base: "现代在用语言",
     submillion: "也包含使用者不足 100 万的语言",
-    notRecommended: "不太适合休闲绘画 — 相对使用者数量而言知名度低得多。",
+    notRecommended: "不太适合休闲绘画：相对使用者数量而言知名度低得多。",
     toggle: (included) =>
-      included ? "已选择 — 已在列表中。取消勾选即可排除。" : "勾选即可加入列表。",
+      included ? "已选择：已在列表中。取消勾选即可排除。" : "勾选即可加入列表。",
   },
   sovereignty: {
     label: "主权与承认",
@@ -109,7 +109,7 @@ export const zhHans: LocaleDict = {
   },
   settings: {
     label: "设置",
-    reset: "重置{br}设置",
+    reset: "重置{br}选择设置",
     resetConfirm: "再次点击以确认",
     resetCancel: "取消",
   },

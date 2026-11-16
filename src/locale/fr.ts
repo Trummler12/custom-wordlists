@@ -25,7 +25,7 @@ export const fr: LocaleDict = {
     valueText: (depth, total) =>
       depth === 1 ? `premier palier sur ${total}` : `${depth} premiers paliers sur ${total}`,
     groupsDefined: (count) => `Paliers de notoriété définis : ${count}`,
-    none: "Aucun palier de notoriété défini pour l'instant — voir la Contribution Guide en pied de page pour en proposer.",
+    none: "Aucun palier de notoriété défini pour l'instant. Voir la Contribution Guide en pied de page pour en proposer !",
     selected: "Sélection :",
     mostlySelected: "Sélection majoritaire :",
     stored: (body) => `(Enregistré : ${body})`,
@@ -56,7 +56,7 @@ export const fr: LocaleDict = {
       omitted
         ? "Activer pour les inclure quand même : skribbl.io les refuse, mais un autre jeu peut les accepter."
         : "Activer pour les laisser de côté à nouveau.",
-    helpAdd: (url) => ` — [aide-nous à ajouter ce qui manque !](${url})`,
+    helpAdd: (url) => ` ; [aide-nous à ajouter ce qui manque !](${url})`,
   },
   coverage: {
     label: "Geoguessr / Couverture Street View",
@@ -71,7 +71,7 @@ export const fr: LocaleDict = {
     notRecommended: "Peu adapté au dessin détente : bien moins connu que son nombre de locuteurs ne le laisse penser.",
     toggle: (included) =>
       included
-        ? "Coché — elles sont dans la liste. Décochez pour les exclure."
+        ? "Coché : elles sont dans la liste. Décochez pour les exclure."
         : "Cochez pour les ajouter à la liste.",
   },
   sovereignty: {
@@ -96,7 +96,7 @@ export const fr: LocaleDict = {
   language: {
     label: (current) => `Langue : ${current}`,
     unsupported: (language) =>
-      `Pas encore confirmé pour ${language} — ce thème est peut-être incomplet.`,
+      `Pas encore confirmé pour ${language} ; ce thème est peut-être incomplet.`,
     fallback: "L'anglais est utilisé là où une traduction manque.",
     // Les noms de langue sont masculins ; l'article s'élide devant une voyelle,
     // ce qui se décide sur la première lettre et nulle part ailleurs.
@@ -114,7 +114,7 @@ export const fr: LocaleDict = {
   },
   settings: {
     label: "Paramètres",
-    reset: "Réinitialiser{br}les réglages",
+    reset: "Réinitialiser les réglages{br}de sélection",
     resetConfirm: "Cliquez à nouveau pour confirmer",
     resetCancel: "Annuler",
   },
@@ -123,8 +123,8 @@ export const fr: LocaleDict = {
     copy: "Copier",
     copied: "Copié !",
     copyFailed: "Échec de la copie",
-    copyManual: "La liste est sélectionnée — copiez-la vous-même.",
-    empty: "Sélectionnez des thèmes, des catégories ou des listes personnelles pour générer une sortie.",
+    copyManual: "La liste est sélectionnée ; copiez-la vous-même.",
+    empty: "Sélectionnez des thèmes, des catégories ou des listes personnalisées pour générer une sortie.",
     generatedList: "Liste de mots générée",
     words: "mots",
     chars: "caractères",
