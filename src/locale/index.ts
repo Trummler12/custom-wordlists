@@ -87,7 +87,7 @@ export interface FameStrings {
   toggleAll: (allShown: boolean) => string;
 }
 
-/** The 🧹 button and the panel it opens: what this list leaves out. */
+/** The 🚫 button and the panel it opens: what this list leaves out. */
 export interface OmittedStrings {
   label: string;
   title: string;

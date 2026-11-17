@@ -159,7 +159,7 @@ class OverlayState {
   /** Which list is showing what it leaves out, keyed `${topicId}:${groupId}`.
    *
    *  `VariantPanel` shares the slot under `variant-${topicId}`, which is the point
-   *  of sharing it: the 🧹 and the 🌎 sit on the same row and only one of them
+   *  of sharing it: the 🚫 and the 🌎 sit on the same row and only one of them
    *  should ever be open. */
   omittedPanel = $state<string | null>(null);
   toggleOmittedPanel = (id: string, trigger: Element): void => this.#togglePanel("omitted", id, trigger);

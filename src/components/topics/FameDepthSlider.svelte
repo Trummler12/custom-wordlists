@@ -117,7 +117,7 @@
     margin-left: 2.85rem;
   }
   .depth-track {
-    --inset: 8px; /* keeps the end dots off the rail edges; matches INSET_PX in App.svelte */
+    --inset: 8px; /* keeps the end dots off the rail edges; matches INSET_PX in lib/fame.ts */
     position: relative;
     /* Own stacking context, so the dots/thumb z-indexes below stack only against each other
        and can't escape to the root context (where they would paint over the fixed footer).

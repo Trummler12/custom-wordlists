@@ -26,7 +26,7 @@
   const open = $derived(overlays.omittedPanel === id);
 </script>
 
-<!-- Shares the 🧹 panel's slot and its styling: they are the same kind of overlay,
+<!-- Shares the 🚫 panel's slot and its styling: they are the same kind of overlay,
      one lists what a list leaves out and the other how it spells things, and only
      one of them should ever be open. -->
 {#if variant?.perTopic && pairs.length > 0}
@@ -81,7 +81,7 @@
 {/if}
 
 <style>
-  /* The side-by-side spellings a variant changes, inside the shared 🧹 panel (whose chrome
+  /* The side-by-side spellings a variant changes, inside the shared 🚫 panel (whose chrome
      comes from TopicRow). Only the variant-specific bits are here. */
   .variant-list > summary {
     cursor: pointer;

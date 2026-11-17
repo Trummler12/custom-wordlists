@@ -21,7 +21,7 @@ const INTERIOR_EMPTY_GAP = 0.02;
 const INTERIOR_EMPTY_BUDGET = 0.2;
 
 /** Horizontal inset (px) that keeps the slider's end dots off the rail edges.
- *  Must stay in sync with `--inset` in src/styles/app.css. */
+ *  Must stay in sync with `--inset` in FameDepthSlider.svelte. */
 export const INSET_PX = 8;
 
 /** How many fame groups a list actually defines — 0 for a flat one. What the

@@ -27,7 +27,7 @@ export const AUTO = "auto";
 /** One formatter per locale that has been asked for, `null` where the runtime
  *  refused to build one. Constructing an `Intl.DisplayNames` costs roughly nine
  *  times what asking an existing one does, and every topic row asks on every
- *  render — for the language in its ⚠️/ℹ️ marker — as does every 🧹 panel.
+ *  render — for the language in its ⚠️/ℹ️ marker — as does every 🚫 panel.
  *
  *  Bounded by the interface languages, so a handful of entries at most. */
 const formatters = new Map<string, Intl.DisplayNames | null>();
