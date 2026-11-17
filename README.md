@@ -1,7 +1,7 @@
 # Custom Wordlists
 
 Build your own custom word lists for **[skribbl.io](https://skribbl.io)**, [Codenames](https://codenames.game/), and other word-based games, or use them as fodder to [spin a wheel](https://spinthewheel.app/editor)!  
-Pick topics, tune the "fame ruler" based on your Group's knowledge on the topic, apply filters and copy a ready-to-paste list!
+Pick topics, tune the "fame ruler" based on your Group's knowledge of the topic, apply filters and copy a ready-to-paste list!
 
 **▶ Live: <https://trummler12.github.io/custom-wordlists/>**
 
@@ -10,20 +10,20 @@ Pick topics, tune the "fame ruler" based on your Group's knowledge on the topic,
 ## What can you do?
 
 - **Topics & Categories**: unfold Categories, select Topics and apply different filters.
-- **Fame Ruler**: define how many items you like to include from most to least well known (note that the criteria used may vary in quality).
+- **Fame Ruler**: define how many items you'd like to include from most to least well known (note that the criteria used may vary in quality).
 - **Name forms**: entries with a short/long name (e.g. *Cartman* / *Eric Cartman*) can be emitted preferably as short, long/full, or both at once.
 - **Languages**: in addition to your (primary) language, you can also pick a _different_ language for the Interface in particular, as well as some other niche things to customize, for example:
   - **Per-list overrides**: choose a single list to use a secondary language instead, while the rest stay in your _primary_ language (useful for fictional works with a preferred Dub that's in a different Language than the rest).
   - **Variant readings**: read a Japanese list as romaji instead of its native script, or a Spanish one in its Latin American forms.
-- **What a list leaves out** — a 🚫 panel names what items of each type a list filters out (numbered junk, things nobody could draw) and hands any of them back if you want them. Some other Elements like ✅ may technically do the same thing, but in an _inclusive_ manner instead.
+- **What a list leaves out**: a 🚫 panel names what items of each type a list filters out (numbered junk, things nobody could draw) and hands any of them back if you want them. Some other Elements like ✅ may technically do the same thing, but in an _inclusive_ manner instead.
 - **skribbl-ready output**: de-duplicated, with live word/character counts and the skribbl limits checked for you.
-- and **much more** to explore, such as the **Custom** section at the very bottom as well as **global** and also some **local settings**, **incomplete & planned Topics**
+- and **much more** to explore, such as the **Custom** section at the very bottom as well as **global** and also some **local settings** or **incomplete & planned Topics**;
 - and of course LOTS of things to be added in the future!
 
 ### Progress
 
 The tool itself already does what it needs to, with smaller functional updates as ideas flow in;  
-the word lists, however, are where we heavily depend on **help from the community** — see [Contributing](#contributing) below.
+the word lists, however, are where we heavily depend on **help from the community**; see [Contributing](#contributing) below.
 
 <!-- Replace with docs/Queries/README.md as soon as it's merged -->
 [Here](docs/Topic-Progress.md) is **every topic planned** so far and how far along it is (for English, since other languages may trail behind by varying degrees).
@@ -46,7 +46,7 @@ Most lists are built from [Wikidata](https://www.wikidata.org/): one dump ideall
 - **Improve the data on Wikidata (recommended).** Each topic built from it has a [coverage page](https://trummler12.github.io/custom-wordlists/coverage/sports) showing which names are still missing per language. Every one added there reaches the lists with the next dump update.
 - **Propose a topic built from Wikidata**, ideally with a Query Builder link, via a [*Data source*](https://github.com/Trummler12/custom-wordlists/issues/new?template=1-data-source.yml) issue.
 - **[Request a Topic](https://github.com/Trummler12/custom-wordlists/issues/new?template=0-topic-request.yml)** (a less technical alternative to the former): just name the topic you'd like, or 👍 an [existing request](https://github.com/Trummler12/custom-wordlists/issues?q=is%3Aissue+state%3Aopen+label%3A%22Topic+Request+%F0%9F%97%B3%EF%B8%8F%22).
-- **Handwritten lists** are still welcome for topics Wikidata can't carry, but they are the costly route for everyone.
+- **Hand-written lists** are still welcome for topics Wikidata can't carry, but they are the costly route for everyone.
 
 See **[CONTRIBUTING.md](CONTRIBUTING.md)** for details.
 
@@ -65,9 +65,9 @@ npm test           # unit tests — CI runs this as its own gate
 
 Each topic is one JSON file under [`data/topics/**`](https://github.com/Trummler12/custom-wordlists/tree/main/data/topics), described by [`schema/topic.schema.json`](schema/topic.schema.json). Entries are usually built from three base forms:
 
-- a **plain string** — `"Mr. Mackey"` — when it reads the same in every language & variant;
-- a **`{short, long}` name pair** — `{"short": "Cartman", "long": "Eric Cartman"}` — for entries with both a common and a full name;
-- a **language map** — `{"en": "Chef", "de": "Chefkoch"}` — for entries that differ between languages.
+- a **plain string** (`"Mr. Mackey"`) when it reads the same in every language & variant;
+- a **`{short, long}` name pair** (`{"short": "Cartman", "long": "Eric Cartman"}`) for entries with both a common and a full name;
+- a **language map** (`{"en": "Chef", "de": "Chefkoch"}`) for entries that differ between languages.
 
 In some cases these forms combine: a language map may wrap around only the part that actually differs from English, so a name pair whose long form translates becomes  
 `{"short": "Jesus", "long": {"en": "Jesus Christ", "de": "Jesus Christus"}}`.  
@@ -79,7 +79,7 @@ The manifest the app loads (`data/index.json`) is generated by the `build:index`
 
 Two further keys say something by being **absent**, which is worth knowing before editing a file by hand:
 
-- a **variant tag** — `ja-Latn` (romaji), `es-419` (Latin American Spanish) — is written only where the variant spells a name differently, so no key means "the same as the language it varies from"; This logic also applies for _standard_ languages relative to English;
+- a **variant tag** such as `ja-Latn` (romaji) or `es-419` (Latin American Spanish) is written only where the variant spells a name differently, so no key means "the same as the language it varies from"; This logic also applies for _standard_ languages relative to English;
 - **`?`** lists the languages an entry has no name in *at all*. It is needed because a missing key implicitly means "the same as English"; without it, a bulk import that stopped halfway would be asserting the English word as every other language's.
 
 ## Tech
@@ -90,4 +90,4 @@ Svelte 5 (runes) · Vite · TypeScript, deployed as a static site to GitHub Page
 
 The code is [MIT](LICENSE).
 
-The word lists are collections of **names** — characters, creatures, places and the like — compiled from public sources: more and more of them from [Wikidata](https://www.wikidata.org/) (CC0), others from sources such as fandom wikis; no descriptions or other prose is copied from them. Ideally each topic file names its own sources in its `sources` field, and whoever compiled it in `credits` — that part is still work in progress. Many lists are only sketched out so far, with no source worth naming yet. If you hold rights to something here and would rather it weren't, open an issue and it comes out.
+The word lists are collections of **names** (characters, creatures, places and the like) compiled from public sources: more and more of them from [Wikidata](https://www.wikidata.org/) (CC0), others from sources such as fandom wikis; no descriptions or other prose is copied from them. Ideally each topic file names its own sources in its `sources` field, and whoever compiled it in `credits`; that part is still work in progress. Many lists are only sketched out so far, with no source worth naming yet. If you hold rights to something here and would rather it weren't, open an issue and it comes out.

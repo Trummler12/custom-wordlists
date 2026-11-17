@@ -1,6 +1,6 @@
 # Pokémon species name archive
 
-All-language Pokémon species names, kept as a reference for when the site gains more languages later. **Not app data** — the app itself uses only the `de`/`en` lists under `data/topics/gaming/pokemon/`.
+All-language Pokémon species names, kept as a reference. **Not app data**: the app reads only the lists under `data/topics/gaming/pokemon/`, which already carry every language listed below (as `ja-Latn` rather than `ja-roma`, and without `ja-hrkt`).
 
 ## Provenance
 

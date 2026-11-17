@@ -5,7 +5,7 @@ The tooling that turns the raw dumps in [`data-raw/**`](../data-raw) into the cu
 Two kinds of script, marked in the headings below:
 
 - 🔧 **Everyday** — wired to an `npm run` script and part of the normal dev / contribution loop. Safe to run any time.
-- 🔒 **Maintainer** — regenerates a topic's data from an external source (Wikidata, PokéAPI, CLDR, …) or is a one-off codemod. Run rarely, usually needs `--write`, and re-running can overwrite hand-tuned tiers — read the script's own header first.
+- 🔒 **Maintainer** — regenerates a topic's data from an external source (Wikidata, PokéAPI, CLDR, …) or is a one-off tool. Run rarely, usually needs `--write`, and re-running can overwrite hand-tuned tiers — read the script's own header first.
 
 Contributors almost never need a 🔒 script: proposing or fixing a list goes through [CONTRIBUTING.md](../CONTRIBUTING.md), and a maintainer regenerates the data from the source.
 
@@ -13,8 +13,8 @@ Contributors almost never need a 🔒 script: proposing or fixing a list goes th
 
 - [🔧 Everyday](#-everyday) — npm-wired, safe any time
 - [🔒 Geography, languages & plates](#-geography-languages--plates) — the `dump` / `build:data` pipeline
-- [🔒 Other topic pipelines](#-other-topic-pipelines) — elements, Pokémon
-- [🔒 One-off codemods & analysis](#-one-off-codemods--analysis)
+- [🔒 Other topic pipelines](#-other-topic-pipelines) — elements, the Games' sports, Pokémon
+- [🔒 One-off & analysis tools](#-one-off--analysis-tools)
 - [Shared library](#shared-library)
 
 ## 🔧 Everyday
@@ -38,6 +38,7 @@ Two npm scripts drive the geography-family topics — Continents & Plates, Langu
 Supporting, not run directly:
 
 - `bucket-names.mjs` — the shared rule that turns one entity's flagged Wikidata names (`rdfs:label` / P1448 official / P1813 short / Wikipedia article title) into the `{ pref, short?, long?, others? }` shape. Imported by the country dump and build.
+- `coverage.mjs` — writes the slim per-topic dataset under `data/coverage/` that the app's Language Coverage page reads. Imported by every build that is fed from Wikidata.
 
 The country / capital names also draw on two raw-data files, kept as data rather than inline so they can be edited by hand:
 
@@ -51,9 +52,10 @@ Per topic, run individually — no umbrella npm script.
 | scripts | what they do |
 | --- | --- |
 | `science/dump-element-names` · `science/build-elements` | Chemical elements: dump names per language from Wikidata, then fill `elements.json` (names only — tiers stay editorial). |
+| `sports/dump-games-sports` · `sports/build-games-sports` | The sports of the multi-sport Games (Olympics, Paralympics, Asian, Commonwealth and World Games): dump them from Wikidata, then fill each Games' `sports.json`, tiered by how many Wikipedias cover a sport. |
 | `pokemon/dump-names` · `pokemon/enrich-names` · `pokemon/romanize-names` | Pokémon lists from PokéAPI: dump per language, join every language onto a flat list by English name, and bake or strip `ja-Latn` romaji. |
 
-## 🔒 One-off codemods & analysis
+## 🔒 One-off & analysis tools
 
 Kept for the next list that needs them, not part of any routine.
 
@@ -68,5 +70,6 @@ Kept for the next list that needs them, not part of any routine.
 
 Not executable on their own — imported by the scripts above.
 
-- `lib/serialize.mjs` — the one house-style serializer every codemod writes through, so none can round-trip a topic file into a smaller one than it read.
+- `lib/serialize.mjs` — the one house-style serializer every build writes through, so none can round-trip a topic file into a smaller one than it read.
+- `lib/wikidata.mjs` — what every Wikidata dump shares: the content languages and where Wikidata keeps each, a SPARQL query that retries, and the label fetch.
 - `lib/omissions.mjs` — omission-rule matching for the scripts, mirroring the tested `src/lib/omitted.ts` (a `.mjs` can't import the TypeScript).
