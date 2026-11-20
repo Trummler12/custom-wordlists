@@ -41,7 +41,7 @@
   // itself (which reads every topic's groups) from subscribing, so an omission toggle or a
   // single topic's language override doesn't silently re-roll the sample.
   $effect(() => {
-    lang.uiLang;
+    lang.current;
     if (topics.warmed) untrack(() => topics.resampleExample());
   });
 </script>
