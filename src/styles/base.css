@@ -1,0 +1,35 @@
+/* base.css — shared style primitives: classes and element defaults used at several
+   independent sites (like components/shared/, but for CSS). Anything that only makes
+   sense inside one component lives scoped in that component's <style> instead.
+   Loaded by both entries (app.css and coverage.css); @import themes so the semantic
+   tokens precede every rule below. First shared file in each entry's chain. */
+@import "./themes.css";
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  line-height: 1.5;
+}
+a {
+  color: inherit;
+}
+/* Inline code, e.g. locale markup's {code}…{/code}: boxed, because a monospace face alone
+   doesn't set a lone bracket or quote apart from the text around it. */
+code {
+  padding: 0 0.2em;
+  font-family: ui-monospace, Consolas, monospace;
+  font-size: 0.9em;
+  border: 1px solid var(--panel-border);
+  border-radius: var(--radius);
+}
+/* A danger/error text state, used independently by the topic status line and the
+   output counter — a shared utility, not one component's class. */
+.status.error,
+.warn {
+  color: var(--danger);
+}

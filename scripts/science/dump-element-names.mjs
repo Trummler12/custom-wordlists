@@ -1,85 +1,57 @@
-// Writes data-raw/science/elements/<lang>.txt from Wikidata: one file per
-// language, `<atomic number> ⇥ <name>` per line, sorted by atomic number.
+// Writes data-raw/science/elements/element-names.json from Wikidata: every chemical
+// element with its atomic number and its labels (and aliases) in every language the lists
+// carry, keyed by Q-id and sorted by atomic number.
 //
 //   node scripts/science/dump-element-names.mjs
 //
-// WHICH ITEMS. `wdt:P31 wd:Q11344` (chemical element) matches 174 items, because
-// the class also holds the hypothetical ones past oganesson. Bounding the atomic
-// number to 1…118 is the whole disambiguation: it leaves exactly 118 items, one
-// per number, no gaps and no collisions.
+// WHICH ITEMS. Instances of chemical element (`P31 Q11344`), minus anything that is an
+// instance of a hypothetical element's class (Q1299291 and its subclasses): the class
+// itself also holds the predicted elements past oganesson. 118 items, one per atomic
+// number. Unlike a bound on the atomic number, this takes a newly made element in as
+// soon as Wikidata calls it one.
 //
-// Not `Q6102450` — that is the *list article*, whose hundred-odd sitelinks point
-// at Wikipedia pages rather than at element names.
+// WHY A DUMP AND NOT A DIRECT BUILD. A file on disk is what makes a later re-import
+// reviewable as a diff, and the app never reads any of data-raw/ anyway. See
+// data-raw/README.md.
 //
-// WHY A DUMP AND NOT A DIRECT BUILD. Same reason as the language list: a file on
-// disk is what makes a later re-import reviewable as a diff, and the app never
-// reads any of data-raw/ anyway. See data-raw/README.md.
-//
-// CASE IS THE SOURCE'S. Wikidata writes English labels in lower case as a house
-// rule ("hydrogen"), which is a labelling convention rather than English
-// orthography — but the dump is a snapshot, so it keeps what it was given and the
-// build script decides. Every other language is written the way that language
-// writes a noun, which is what the curated lists carry too: `Deutsch` and
-// `alemán` sit side by side in geography/human/languages.json for the same reason.
+// CASE IS THE SOURCE'S. Wikidata writes labels in lower case as a house rule
+// ("hydrogen"), which is a labelling convention rather than orthography; the dump is a
+// snapshot, so it keeps what it was given and the build decides.
 import { mkdir, writeFile } from "node:fs/promises";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
+import { NAME_LANGS, labelFor, qid, sparql, terms } from "../lib/wikidata.mjs";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..", "..");
-const OUT = join(ROOT, "data-raw", "science", "elements");
-const ENDPOINT = "https://query.wikidata.org/sparql";
+const OUT = join(ROOT, "data-raw", "science", "elements", "element-names.json");
 
-/** Wikidata answers `LANG()` in lower case, so `zh-Hans` arrives as `zh-hans`.
- *  The file names use our spelling; this maps between them.
- *
- *  `zh` is here although the app has no such content language: eight elements
- *  carry no `zh-hans` label and do carry a `zh` one, and the build script needs
- *  the column to fall back to. Kept a column of its own rather than merged here,
- *  so the fallback is a decision someone can see rather than one this file made
- *  quietly. */
-const LANGS = {
-  en: "en",
-  de: "de",
-  es: "es",
-  fr: "fr",
-  it: "it",
-  ja: "ja",
-  ko: "ko",
-  "zh-Hans": "zh-hans",
-  "zh-Hant": "zh-hant",
-  zh: "zh",
-};
-
-const QUERY = `SELECT ?z ?lang (SAMPLE(?label) AS ?name) WHERE {
-  ?element wdt:P31 wd:Q11344 ; wdt:P1086 ?z ; rdfs:label ?label .
-  FILTER(?z >= 1 && ?z <= 118)
-  BIND(LANG(?label) AS ?lang)
-  FILTER(?lang IN (${Object.values(LANGS).map((l) => `"${l}"`).join(", ")}))
-} GROUP BY ?z ?lang`;
-
-async function query() {
-  const url = `${ENDPOINT}?format=json&query=${encodeURIComponent(QUERY)}`;
-  // Wikidata asks every client to identify itself and throttles the ones that
-  // don't; a script that runs once a year is no reason to be one of them.
-  const res = await fetch(url, {
-    headers: { "User-Agent": "custom-wordlists/1.0 (https://github.com/Trummler12/custom-wordlists)" },
-  });
-  if (!res.ok) throw new Error(`HTTP ${res.status} ${res.statusText}`);
-  return (await res.json()).results.bindings;
-}
+const QUERY = `SELECT DISTINCT ?item ?z WHERE {
+  ?item p:P31/ps:P31 wd:Q11344 .
+  MINUS { ?item p:P31/ps:P31/wdt:P279* wd:Q1299291 . }
+  OPTIONAL { ?item wdt:P1086 ?z . }
+}`;
 
 async function main() {
-  await mkdir(OUT, { recursive: true });
-  const rows = await query();
+  const rows = await sparql(QUERY);
+  const zOf = new Map(rows.map((r) => [qid(r.item.value), r.z ? Number(r.z.value) : null]));
+  const missingZ = [...zOf].filter(([, z]) => z === null).map(([q]) => q);
+  if (missingZ.length) throw new Error(`no atomic number on ${missingZ.join(", ")}`);
 
-  for (const [tag, wdLang] of Object.entries(LANGS)) {
-    const named = rows
-      .filter((r) => r.lang.value === wdLang)
-      .map((r) => [Number(r.z.value), r.name.value])
-      .sort((a, b) => a[0] - b[0]);
-    const text = named.map(([z, name]) => `${z}\t${name}`).join("\n") + "\n";
-    await writeFile(join(OUT, `${tag}.txt`), text, "utf8");
-    console.log(`${tag.padEnd(8)} ${String(named.length).padStart(3)} of 118 elements`);
+  const byId = await terms([...zOf.keys()]);
+  const ids = [...zOf.keys()].sort((a, b) => zOf.get(a) - zOf.get(b));
+  const out = {};
+  for (const q of ids) {
+    // The atomic number beside the English name, so the file reads as a table of elements;
+    // the build joins on the number.
+    out[q] = { name: labelFor(byId[q].names, "en") ?? q, atomicNumber: zOf.get(q), names: byId[q].names };
+  }
+
+  await mkdir(dirname(OUT), { recursive: true });
+  await writeFile(OUT, JSON.stringify(out, null, 2) + "\n", "utf8");
+  console.log(`dump-element-names: ${ids.length} elements`);
+  for (const tag of NAME_LANGS) {
+    const named = ids.filter((q) => labelFor(out[q].names, tag)).length;
+    console.log(`  ${tag.padEnd(8)} ${String(named).padStart(3)} of ${ids.length}`);
   }
 }
 

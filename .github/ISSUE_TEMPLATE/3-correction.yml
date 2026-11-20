@@ -6,7 +6,9 @@ body:
   - type: markdown
     attributes:
       value: |
-        For a whole new list or a full rework, use the **Word list** template instead.
+        **Topic built from Wikidata?** Then fix a wrong or missing name on Wikidata itself; the topic's [coverage page](https://trummler12.github.io/custom-wordlists/coverage/) links every item. This form is for what Wikidata can't fix (an item that doesn't belong in the list, a wrong fame tier, entries that should be hidden) and for hand-written lists.
+
+        For a whole new topic or a different query, use **Data source** instead.
   - type: input
     id: topic
     attributes:

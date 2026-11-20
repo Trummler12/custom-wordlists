@@ -1,13 +1,10 @@
-# Raw source dumps
+# Raw source data
 
-Unprocessed material the curated lists in [`data/topics/**`](../data/topics) were built from — mostly plain name lists pasted out of wikis and reference pages, one file per language, sometimes with the URL they came from on the first line.
+The material the curated lists in [`data/topics/**`](../data/topics) are built from. **The app never reads any of this**: only `data/topics/**` (and the generated `data/index.json` and `data/coverage/`) ships to the site.
 
-**The app never reads any of this.** Only `data/topics/**` is loaded; nothing here is built, validated or deployed. It is kept because re-deriving a list is far easier with the original dump at hand than by scraping the same page again a year later.
+It comes in two kinds, which are handled differently:
 
-A few things follow from that:
+- **Generated dumps** (JSON and TSV files, mostly under `geography/`, `science/` and `sports/`): written by the 🔒 dump scripts in [`scripts/`](../scripts/README.md) from Wikidata and other structured sources, and read back by the matching build scripts. They are kept in the repo so a re-dump shows up as a reviewable diff. **Don't hand-edit them**; the next dump overwrites the change. The few hand-maintained files that sit beside them (such as `geography/countries/name-overrides.json` and `name-abbreviations.json`) are named in the scripts README.
+- **Pasted snapshots** (plain `.txt` lists, e.g. under `animation/` and `gaming/`): name lists copied out of wikis and reference pages, one file per language, sometimes with the source URL on the first line. They are not maintained: when a curated list is corrected, the snapshot it came from is usually left alone, since `data/topics/**` is the source of truth. Formatting varies with whatever the source page produced (numbered lists, stray headings, duplicates). They are kept because re-deriving a list is far easier with the original at hand than by scraping the same page again a year later.
 
-- **Not maintained.** These files are snapshots. When a curated list is corrected, the dump it came from is usually left alone — `data/topics/**` is the source of truth.
-- **Not schema-checked.** Formatting varies with whatever the source page happened to produce: numbered lists, stray headings, duplicates.
-- **More languages than the app offers.** Some dumps carry Japanese, Korean, Chinese, French, Italian and Spanish. That's raw material for later, not a promise — see the [language roadmap](../docs/Language-Roadmap.md).
-
-If you want to propose or fix a list, work from [CONTRIBUTING.md](../CONTRIBUTING.md) instead; adding a dump here is optional and only worth it when it saves the next person the lookup.
+If you want to propose or fix a list, work from [CONTRIBUTING.md](../CONTRIBUTING.md) instead; adding a snapshot here is optional and only worth it when it saves the next person the lookup.

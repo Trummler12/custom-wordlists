@@ -1,4 +1,13 @@
 {
-  "title": "Dragon Ball Z",
+  "title": {
+    "en": "Dragon Ball Z",
+    "ja": "ドラゴンボールZ",
+    "ko": "드래곤볼 Z",
+    "zh-Hans": "七龙珠Z",
+    "zh-Hant": "七龍珠Z",
+    "ru": "Драконий жемчуг Z",
+    "el": "Ντράγκον Μπολ Z",
+    "he": "דרגון בול Z"
+  },
   "icon": "🐉"
 }

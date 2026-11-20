@@ -1,3 +1,7 @@
+// @ts-nocheck — untyped-by-design script mirror; its behaviour is pinned to the typed
+// source by omissions-parity.test.ts. The skip stops that test's import from pulling
+// this plain-JS file (the scripts are outside the typed surface) into svelte-check.
+//
 // Matching entries against a list's omission rules, for the scripts.
 //
 // This mirrors src/lib/omitted.ts, which is the tested copy — a .mjs script can't
@@ -9,15 +13,19 @@
  *  src/lib/words.ts. Not a language, and not a name. */
 export const UNKNOWN = "?";
 
-/** Every string an entry carries, across its forms and languages. `?` is skipped:
- *  it holds language codes, and a glob is here to match names, not tags. */
+/** Every string an entry carries, across its forms and languages. A named-forms
+ *  entry localizes per field (`pref`/`short`/`long` + any `others`); anything else
+ *  is a language map whose values are themselves entries. `?` is skipped: it holds
+ *  language codes, and a glob is here to match names, not tags. Mirrors
+ *  src/lib/omitted.ts (kept in parity by omissions-parity.test.ts). */
 export function entryForms(word) {
   if (typeof word === "string") return [word];
+  const others = Array.isArray(word.others) ? word.others : word.others !== undefined ? [word.others] : [];
   const parts =
-    "short" in word && "long" in word
-      ? [word.short, word.long]
+    "pref" in word || "short" in word || "long" in word
+      ? [word.pref, word.short, word.long, ...others]
       : Object.entries(word).filter(([k]) => k !== UNKNOWN).map(([, v]) => v);
-  return parts.flatMap(entryForms);
+  return parts.filter((p) => p !== undefined).flatMap(entryForms);
 }
 
 /** The languages an entry declares it has no name in. */

@@ -1,0 +1,30 @@
+{
+  "title": {
+    "en": "World Games",
+    "de": "World Games",
+    "es": "Juegos Mundiales",
+    "fr": "Jeux mondiaux",
+    "it": "Giochi mondiali",
+    "ja": "ワールドゲームズ",
+    "ko": "월드 게임",
+    "zh-Hans": "世界运动会",
+    "zh-Hant": "世界運動會",
+    "pt": "Jogos Mundiais",
+    "ru": "Всемирные игры",
+    "tr": "Dünya Oyunları",
+    "pl": "World Games",
+    "nl": "Wereldspelen",
+    "bg": "Световни игри",
+    "cs": "Světové hry",
+    "da": "World Games",
+    "fi": "World Games",
+    "el": "Παγκόσμιοι Αγώνες",
+    "he": "משחקי העולם",
+    "hu": "Világjátékok",
+    "no": "Verdenslekene",
+    "sr": "Светске игре",
+    "sk": "Svetové hry",
+    "sv": "World Games"
+  },
+  "order": 5
+}
