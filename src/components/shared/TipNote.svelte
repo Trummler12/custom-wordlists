@@ -9,8 +9,14 @@
   // matching `tip-trigger` class and opens `id`. Its parent has to be positioned,
   // since the note stretches across it — see the CSS for why it can't hang off the
   // trigger itself. A `local` note instead pins to its trigger's own place (overlays
-  // computes the fixed style), for a trigger sitting inside a scrolling popup.
-  let { id, text, local = false }: { id: string; text: string; local?: boolean } = $props();
+  // computes the fixed style), for a trigger sitting inside a scrolling popup. `literal`
+  // shows the text as it is, for a reader's own words that must not be read as markup.
+  let {
+    id,
+    text,
+    local = false,
+    literal = false,
+  }: { id: string; text: string; local?: boolean; literal?: boolean } = $props();
 </script>
 
 {#if overlays.tip === id}
@@ -38,7 +44,7 @@
         onclick={overlays.unpinTip}>📌</button
       >
     {/if}
-    <Msg text={text} />
+    {#if literal}{text}{:else}<Msg text={text} />{/if}
   </p>
 {/if}
 

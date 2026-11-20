@@ -6,7 +6,8 @@
   // opens a `local` note (placed by shared/placement) that shows `text`. Used for the
   // saved-lists / import / export content previews, where a touch reader has no hover
   // `title` to fall back on and needs a tap target to see what a list holds. The label
-  // ellipsizes; `maxWidth` caps how wide it grows before it does.
+  // ellipsizes; `maxWidth` caps how wide it grows before it does. The note shows `text`
+  // literally: a list item like `a{br}b` is a word, not markup.
   let {
     id,
     text,
@@ -27,7 +28,7 @@
   onblur={overlays.releaseTip}
   onclick={(e) => overlays.tipClick(e, id, true)}>{label}</button
 >
-<TipNote {id} {text} local />
+<TipNote {id} {text} local literal />
 
 <style>
   /* Reads as the text it sits among, not a control — but it is a button so a touch
