@@ -6,7 +6,7 @@ import { defineConfig } from "vitest/config";
 import type { Plugin, ResolvedConfig } from "vite";
 import { svelte } from "@sveltejs/vite-plugin-svelte";
 import { createReadStream } from "node:fs";
-import { cp, readFile, stat } from "node:fs/promises";
+import { cp, readFile, stat, writeFile } from "node:fs/promises";
 import { join, resolve, extname, relative, isAbsolute } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -24,12 +24,14 @@ const DATA_DIR = fileURLToPath(new URL("./data", import.meta.url));
 
 function serveData(): Plugin {
   let outDir = "dist";
+  let base = REPO_BASE;
   let building = false;
   return {
     name: "serve-data",
     configResolved(config: ResolvedConfig) {
       // outDir is relative to root; resolve it now so the copy doesn't depend on cwd.
       outDir = resolve(config.root, config.build.outDir);
+      base = config.base;
       // Vitest resolves this config in serve mode and points build.outDir at a
       // placeholder; without this, closeBundle would copy data/ into it on every
       // test run.
@@ -75,6 +77,12 @@ function serveData(): Plugin {
       if (!building) return;
       // Copy the whole data/ tree (incl. the generated index.json) into dist/data/.
       await cp(DATA_DIR, join(outDir, "data"), { recursive: true });
+      // public/ is copied untransformed, so 404.html names the Pages base literally;
+      // a BASE_PATH build points it at its own base instead.
+      if (base !== REPO_BASE) {
+        const notFound = join(outDir, "404.html");
+        await writeFile(notFound, (await readFile(notFound, "utf8")).replaceAll(REPO_BASE, base));
+      }
     },
   };
 }
