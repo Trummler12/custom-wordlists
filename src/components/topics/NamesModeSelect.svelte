@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { plain } from "../../locale/html/plain";
   import type { Group, NamesMode } from "../../lib/types";
   import { groupHasNames, groupHasPref, groupHasVariants } from "../../lib/words";
   import { lang } from "../../state/lang.svelte";
@@ -20,21 +21,32 @@
 {#if groupHasNames(group, lang.current)}
   <select
     class="names-mode"
-    aria-label={lang.ui.names.formLabel(label)}
+    aria-label={plain(lang.ui.names.formLabel(label))}
     value={mixed ? "" : mode}
     onchange={(e) => selection.setMode(tid, group, e.currentTarget.value as NamesMode)}
   >
-    {#if mixed}<option value="" hidden>{lang.ui.names.form[mode]}</option>{/if}
-    <option value="short">{lang.ui.names.form.short}</option>
-    <option value="long">{lang.ui.names.form.long}</option>
-    <option value="both">{lang.ui.names.form.both}</option>
+    {#if mixed}<option value="" hidden>{plain(lang.ui.names.form[mode])}</option>{/if}
+    <!-- Each option carries a native `title` (lang.ui.names.formHint) spelling out what the
+         form does — the labels themselves stay terse to keep the select narrow. -->
+    <option value="short" title={plain(lang.ui.names.formHint.short)}>{plain(lang.ui.names.form.short)}</option>
+    <option value="long" title={plain(lang.ui.names.formHint.long)}>{plain(lang.ui.names.form.long)}</option>
+    <option value="both" title={plain(lang.ui.names.formHint.both)}>{plain(lang.ui.names.form.both)}</option>
     <!-- `pref` sits below `both`, so the order reads that both and pref alike build on
          short/long — pref not above, where it would read as "even more than both". -->
     {#if groupHasPref(group, lang.current)}
-      <option value="pref">{lang.ui.names.form.pref}</option>
+      <option value="pref" title={plain(lang.ui.names.formHint.pref)}>{plain(lang.ui.names.form.pref)}</option>
     {/if}
     {#if groupHasVariants(group, lang.current)}
-      <option value="all">{lang.ui.names.form.all}</option>
+      <option value="all" title={plain(lang.ui.names.formHint.all)}>{plain(lang.ui.names.form.all)}</option>
     {/if}
   </select>
 {/if}
+
+<style>
+  /* The short/long/both dropdown; only on a list whose entries have name pairs. */
+  .names-mode {
+    font-size: 0.75rem;
+    padding: 0 0.15rem;
+    color: var(--muted);
+  }
+</style>

@@ -3,14 +3,19 @@
 // short one despite being the point of the whole app.
 
 import { SKRIBBL } from "../lib/skribbl";
+import { holdsSeparator } from "../lib/separator";
 import { renderEntry } from "../lib/words";
+import { custom } from "./custom.svelte";
+import { settings } from "./settings.svelte";
 import { lang } from "./lang.svelte";
 import { selection } from "./selection.svelte";
 import { topics } from "./topics.svelte";
 
 class OutputState {
-  /** Every selected group's words, de-duplicated, in manifest order. */
-  readonly merged: string[] = $derived.by(() => {
+  /** The selected topics' words, de-duplicated in manifest order — the output
+   *  before the Custom channel is appended. Its `seen` set is what that channel
+   *  checks its own words against, so global-dedup falls out of it for free. */
+  readonly nonCustom: { seen: Set<string>; words: string[] } = $derived.by(() => {
     const seen = new Set<string>();
     const out: string[] = [];
     for (const t of topics.all) {
@@ -22,13 +27,14 @@ class OutputState {
         // while the rest of the list follows the interface language.
         const code = lang.contentLang(t.id);
         const derived = lang.derivesRomaji(t.id);
-        // A list that hasn't been told otherwise leaves its over-long names out
-        // here, which is what keeps the counter below quiet: `excluded` can only
-        // fill up once someone has asked for them.
-        const cap = selection.capFor(t.id, g);
+        // A list that hasn't been told otherwise leaves names outside the character
+        // limits out here, which is what keeps the counter below quiet: `overlong`
+        // can only fill up once someone has asked for them.
+        const fit = selection.fitFor(t.id, g);
         for (const e of selection.entriesOf(t.id, g)) {
-          for (const w of renderEntry(e, mode, code, derived)) {
-            if (cap !== undefined && w.length > cap) continue;
+          for (const form of renderEntry(e, mode, code, derived)) {
+            const w = fit(form);
+            if (w === null) continue;
             if (!seen.has(w)) {
               seen.add(w);
               out.push(w);
@@ -37,8 +43,18 @@ class OutputState {
         }
       }
     }
-    return out;
+    return { seen, words: out };
   });
+
+  /** What the reader's own Custom list contributes and what it drops, classified
+   *  against `nonCustom.seen` — the single source both the output and the Custom
+   *  omission panel read, so the two can't disagree. */
+  readonly customBreakdown = $derived(custom.classify(this.nonCustom.seen));
+
+  /** Every selected group's words, de-duplicated, in manifest order, with the
+   *  reader's Custom entries appended after them (already unique and clear of the
+   *  above — see customBreakdown). */
+  readonly merged: string[] = $derived([...this.nonCustom.words, ...this.customBreakdown.kept]);
 
   /** The names skribbl would refuse for their length. Reported, not removed: the
    *  only way one reaches this list is that a reader switched its ✂️ rule off and
@@ -46,7 +62,15 @@ class OutputState {
   readonly overlong: string[] = $derived(
     this.merged.filter((w) => w.length > SKRIBBL.maxWordLen),
   );
-  readonly text: string = $derived(this.merged.join(SKRIBBL.separator));
+  /** Names that hold the separator and so come apart where the list is pasted. Like
+   *  `overlong`, only ever there because a reader let them in. */
+  readonly splitting: string[] = $derived(
+    this.merged.filter((w) => holdsSeparator(w, settings.outputSeparator)),
+  );
+  /** Names joined the way a copy hands them over — the button and a manual Ctrl+C
+   *  alike (see WordChips), so the two can't disagree. */
+  join = (words: readonly string[]): string => words.join(settings.outputSeparator);
+  readonly text: string = $derived(this.join(this.merged));
   readonly charCount: number = $derived(this.text.length);
 
   // The counter only renders when merged is non-empty, so these need no guard.

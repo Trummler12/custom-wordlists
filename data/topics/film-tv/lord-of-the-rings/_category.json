@@ -1,7 +1,34 @@
 {
   "title": {
     "en": "The Lord of the Rings",
-    "de": "Der Herr der Ringe"
+    "de": "Der Herr der Ringe",
+    "zh-Hans": "指环王",
+    "zh-Hant": "魔戒",
+    "es": "El Señor de los Anillos",
+    "fr": "Le Seigneur des anneaux",
+    "it": "Il Signore degli Anelli",
+    "ja": "ロード・オブ・ザ・リング",
+    "ko": "반지의 제왕",
+    "pt": "O Senhor dos Anéis",
+    "ru": "Властелин колец",
+    "tr": "Yüzüklerin Efendisi",
+    "pl": "Władca Pierścieni",
+    "nl": "In de ban van de ring",
+    "bg": "Властелинът на пръстените",
+    "cs": "Pán prstenů",
+    "da": "Ringenes Herre",
+    "et": "Sõrmuste isand",
+    "fi": "Taru sormusten herrasta",
+    "el": "Ο Άρχοντας των Δαχτυλιδιών",
+    "he": "שר הטבעות",
+    "hu": "A Gyűrűk Ura",
+    "lv": "Gredzenu pavēlnieks",
+    "mk": "Господарот на прстените",
+    "no": "Ringenes herre",
+    "ro": "Stăpânul inelelor",
+    "sr": "Господар прстенова",
+    "sk": "Pán prsteňov",
+    "sv": "Sagan om ringen"
   },
   "icon": "💍"
 }

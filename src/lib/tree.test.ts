@@ -1,5 +1,16 @@
 import { describe, expect, it } from "vitest";
-import { ancestorPaths, buildTree, catDepth, mergeGroups, synthesizeTopics, titleCase } from "./tree";
+import {
+  ancestorPaths,
+  buildTree,
+  catDepth,
+  liftControls,
+  mergeGroups,
+  opensByDefault,
+  pruneTree,
+  synthesizeTopics,
+  titleCase,
+  unfoldingWith,
+} from "./tree";
 import type { Group, TopicSummary } from "./types";
 
 const topic = (id: string, category: string): TopicSummary => ({
@@ -86,6 +97,16 @@ describe("synthesizeTopics", () => {
     leaf("geography/human/europe", "countries", 1, { languages: ["en", "de", "es"] }),
   ];
 
+  it("skips the first skipInherit levels, merging only further up", () => {
+    const seasons = [
+      leaf("sports/olympia/summer", "sports", 2, { skipInherit: 1 }),
+      leaf("sports/olympia/winter", "sports", 2, { skipInherit: 1 }),
+    ];
+    const synths = synthesizeTopics(seasons);
+    expect(synths.map((s) => s.category)).toEqual(["sports"]);
+    expect(synths[0].contributors).toEqual(["summer-sports", "winter-sports"]);
+  });
+
   it("merges same-named leaves into one topic at the meeting level", () => {
     const [synth, ...rest] = synthesizeTopics(countries);
     expect(rest).toHaveLength(0);
@@ -103,6 +124,33 @@ describe("synthesizeTopics", () => {
   it("gives the synthesized topic only the languages every member has", () => {
     const [synth] = synthesizeTopics(countries);
     expect(synth.languages).toEqual(["en", "de"]); // fr/ja/es each missing from some member
+  });
+
+  it("is as unfinished as its least finished member", () => {
+    const [complete] = synthesizeTopics(countries);
+    expect(complete.incompleteTopic).toBeUndefined();
+    expect(complete.plannedTopic).toBeUndefined();
+
+    const [incomplete] = synthesizeTopics([...countries.slice(1), { ...countries[0], incompleteTopic: true }]);
+    expect(incomplete.incompleteTopic).toBe(true);
+    expect(incomplete.plannedTopic).toBeUndefined();
+
+    const [planned] = synthesizeTopics([
+      { ...countries[0], incompleteTopic: true },
+      { ...countries[1], plannedTopic: true },
+      countries[2],
+    ]);
+    expect(planned.plannedTopic).toBe(true);
+    expect(planned.incompleteTopic).toBeUndefined();
+  });
+
+  it("carries the dataOrigin its members share, and none where they differ", () => {
+    const wd = countries.map((c) => ({ ...c, dataOrigin: "Wikidata" }));
+    expect(synthesizeTopics(wd)[0].dataOrigin).toBe("Wikidata");
+    const lists = countries.map((c) => ({ ...c, dataOrigin: ["Wikidata", "Wikipedia"] }));
+    expect(synthesizeTopics(lists)[0].dataOrigin).toEqual(["Wikidata", "Wikipedia"]);
+    expect(synthesizeTopics([...wd.slice(1), { ...wd[0], dataOrigin: "PokéAPI" }])[0].dataOrigin).toBeUndefined();
+    expect(synthesizeTopics([...wd.slice(1), countries[0]])[0].dataOrigin).toBeUndefined();
   });
 
   it("keeps different file stems apart", () => {
@@ -238,6 +286,106 @@ describe("mergeGroups", () => {
   });
 });
 
+describe("pruneTree", () => {
+  const root = buildTree([
+    topic("heroes", "comics/dc"),
+    topic("villains", "comics/dc"),
+    topic("south-park", "animation/south-park"),
+    topic("spongebob", "animation/spongebob"),
+    topic("loose", ""),
+  ]);
+  const ids = (ts: TopicSummary[]) => ts.map((t) => t.id);
+  const hiding = (...hidden: string[]) => (t: TopicSummary) => !hidden.includes(t.id);
+
+  it("keeps everything when every topic is shown", () => {
+    const pruned = pruneTree(root, () => true);
+    expect(ids(pruned.all)).toEqual(ids(root.all));
+    expect(pruned.children.map((c) => c.path)).toEqual(["comics", "animation"]);
+  });
+
+  it("drops a category once nothing below it is shown", () => {
+    const animation = pruneTree(root, hiding("spongebob")).children[1];
+    expect(animation.children.map((c) => c.path)).toEqual(["animation/south-park"]);
+    expect(ids(animation.all)).toEqual(["south-park"]);
+  });
+
+  it("keeps a top-level category even when it is empty", () => {
+    const comics = pruneTree(root, hiding("heroes", "villains")).children[0];
+    expect(comics.path).toBe("comics");
+    expect(comics.children).toEqual([]);
+    expect(comics.all).toEqual([]);
+  });
+
+  it("filters the root's own topics and refills its `all`", () => {
+    const pruned = pruneTree(root, hiding("loose", "spongebob"));
+    expect(pruned.topics).toEqual([]);
+    expect(ids(pruned.all)).toEqual(["heroes", "villains", "south-park"]);
+  });
+
+  it("hands back the branches nothing was taken from", () => {
+    const pruned = pruneTree(root, hiding("spongebob"));
+    expect(pruned.children[0]).toBe(root.children[0]); // comics, untouched
+    expect(pruned.children[1]).not.toBe(root.children[1]); // animation lost a topic
+    expect(pruned.children[1].children[0]).toBe(root.children[1].children[0]); // south-park
+    expect(pruneTree(root, () => true)).toBe(root);
+  });
+
+  it("leaves the tree it was given untouched", () => {
+    pruneTree(root, () => false);
+    expect(root.all).toHaveLength(5);
+  });
+});
+
+describe("liftControls", () => {
+  const carrying = (category: string, stem: string, icons: string[], extra: Partial<TopicSummary> = {}) =>
+    leaf(category, stem, 1, {
+      controls: Object.fromEntries(icons.map((i) => [i, [{ id: "rule" }]])),
+      ...extra,
+    });
+
+  it("lifts a control to the deepest category holding all its carriers", () => {
+    expect(
+      liftControls([
+        carrying("geography/human/africa", "countries", ["geoguessr", "sovereignty"]),
+        carrying("geography/human/africa", "capitals", ["geoguessr"]),
+        carrying("geography/human/asia", "countries", ["geoguessr", "sovereignty"]),
+      ]),
+    ).toEqual({ "geography/human": ["geoguessr", "sovereignty"] });
+  });
+
+  it("lifts higher once a carrier appears in another branch", () => {
+    expect(
+      liftControls([
+        carrying("geography/human/africa", "countries", ["geoguessr"]),
+        carrying("geography/human/asia", "countries", ["geoguessr"]),
+        carrying("geography/physical", "rivers", ["geoguessr"]),
+      ]),
+    ).toEqual({ geography: ["geoguessr"] });
+  });
+
+  it("keeps two carriers in one category on that category", () => {
+    expect(
+      liftControls([
+        carrying("geography/human/africa", "countries", ["geoguessr"]),
+        carrying("geography/human/africa", "capitals", ["geoguessr"]),
+      ]),
+    ).toEqual({ "geography/human/africa": ["geoguessr"] });
+  });
+
+  it("lifts nothing for a single carrier, across top-level categories, or for planned ones", () => {
+    expect(liftControls([carrying("geography/human", "languages", ["language-type"])])).toEqual({});
+    expect(
+      liftControls([carrying("geography", "countries", ["geoguessr"]), carrying("sports", "venues", ["geoguessr"])]),
+    ).toEqual({});
+    expect(
+      liftControls([
+        carrying("geography/human/africa", "countries", ["geoguessr"]),
+        carrying("geography/physical", "rivers", ["geoguessr"], { plannedTopic: true }),
+      ]),
+    ).toEqual({});
+  });
+});
+
 describe("catDepth", () => {
   it("counts top-level categories as 0", () => {
     const root = buildTree([topic("gen-1", "gaming/pokemon/pokemon")]);
@@ -245,6 +393,33 @@ describe("catDepth", () => {
     expect(catDepth(gaming)).toBe(0);
     expect(catDepth(gaming.children[0])).toBe(1);
     expect(catDepth(gaming.children[0].children[0])).toBe(2);
+  });
+});
+
+describe("unfoldsWithParent", () => {
+  const categories = {
+    "sports/games/olympia/summer": { unfoldsWithParent: true },
+    "sports/games/olympia/winter": { unfoldsWithParent: true },
+    "geography/human": { unfoldsWithParent: true },
+  };
+
+  it("opens the flagged children along with their parent, and only those", () => {
+    const root = buildTree([
+      topic("a", "sports/games/olympia/summer"),
+      topic("b", "sports/games/olympia/winter"),
+      topic("c", "sports/games/world-games"),
+    ]);
+    const games = root.children[0].children[0];
+    const olympia = games.children.find((c) => c.path.endsWith("olympia"))!;
+    expect(unfoldingWith(olympia, categories)).toEqual(["sports/games/olympia/summer", "sports/games/olympia/winter"]);
+    expect(unfoldingWith(games, categories)).toEqual([]);
+  });
+
+  it("starts a flagged category open only below one that starts open", () => {
+    expect(opensByDefault("sports", categories)).toBe(true);
+    expect(opensByDefault("geography/human", categories)).toBe(true);
+    expect(opensByDefault("sports/games", categories)).toBe(false);
+    expect(opensByDefault("sports/games/olympia/summer", categories)).toBe(false);
   });
 });
 
