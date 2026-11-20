@@ -1,0 +1,78 @@
+# Wikidata Query Analysis: Chemistry
+
+What Wikidata offers for the Chemistry topics, and how far it can serve as their source.
+
+## Legend
+
+✅ Wikidata **already in use** as Source  
+☑️ Wikidata **approved** as Source  
+🔵 Good Wikidata Coverage expected (**not checked yet**)  
+➕ Wikidata only has **minor Gaps**  
+✖️ Wikidata has **LOTS of Gaps**  
+❌ Wikidata **not viable** at all  
+❓ Viability not yet clear
+
+## Navigation
+
+[Science](../README.md#science)
+- ✅[Chemical Elements](#chemical-elements)
+- [Candidates](#candidates)
+
+## ✅Chemical Elements
+
+**Elements:** 118  
+**[Query](https://w.wiki/V3Aa):**
+
+```
+SELECT DISTINCT ?item ?itemLabel WHERE {
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],mul,en". }
+  {
+    SELECT DISTINCT ?item WHERE {
+      ?item p:P31 ?statement0.
+      ?statement0 (ps:P31) wd:Q11344.
+      MINUS {
+        ?item p:P31 ?statement1.
+        ?statement1 (ps:P31/(wdt:P279*)) wd:Q1299291.
+      }
+    }
+    LIMIT 2000
+  }
+}
+```
+**Results:** 118  
+**Rating:** **perfect**
+
+**Check (2026-10-07):** The query above still gives exactly 118. Without its MINUS, *chemical element* has 174 instances: the hypothetical ones it filters out.
+
+**Built by** #35: `scripts/science/{dump-element-names,build-elements}.mjs`, with the query above as membership. The names come from Wikidata; tiers and order stay editorial.  
+**Tool:** `_scripts/elements.mjs` (output `_data/elements-run1.txt`).
+
+**Check (2026-10-09):** 118 items, atomic numbers 1 to 118, each once.
+
+**Labels in the build's 30 languages:**
+- **No gaps:** every element has a label down every fallback chain.
+- **Clean:** no invisible characters, no disambiguators, no stray spaces (the Simplified Chinese left-to-right mark the build strips is gone from Wikidata).
+- **Simplified Chinese** comes from `zh` for 8 elements (xenon, neodymium, samarium, gadolinium, terbium, dysprosium, lutetium, rhenium); all 8 are already the simplified characters, so the fallback is harmless.
+- **Label against article title:** 88 differ beyond case. Most are a regional standard, not an error: pt labels follow European Portuguese (*arsénio*), ptwiki Brazilian (*Arsênio*); Italian *xeno* and Dutch *titaan* / *uraan* are the standard names beside their articles' *Xenon* / *Titanium* / *Uranium*. Tagalog has no settled chemical names: about 40 tl labels and tlwiki titles disagree, often an English word against a Tagalog form. That needs a Tagalog speaker, not a batch.
+- **Errors**, batched: the placeholder names IUPAC replaced in 2016 still stand as labels (tr *ununtriyum* and *ununseptiyum*, da *ununpentium*, tl *Ununquadium* and *ununoctium*); the nl label of zirconium is *zirkoon*, the mineral zircon; fr *prométhéum* is the old spelling of *prométhium*.
+
+**Wikidata batch from this pass** (imported and checked on the items 2026-10-09):
+
+| Batch | Edits | What |
+| :---- | ----: | :---- |
+| `2026-10-09_elements-labels.txt` | 13 | the seven labels above, named as the language's Wikipedia article; the placeholders and the old spelling kept as aliases, *zirkoon* not (it names another thing) |
+
+**Second pass (2026-10-20):** `elements.mjs` again (`_data/elements-run2.txt`): 118, no gaps, no invisible characters or disambiguators; the batched labels hold. Label and article title now differ on 81 (88 before), 48 of them in Tagalog. Tagalog is the one open point and needs a source, not a judgement: Researched (2026-10-20, settled; `_data/Prompts/done/Elements_Tagalog_Names.md`, Gemini): there is no official Filipino list of element names (the KWF only sets spelling rules), and Philippine schools teach chemistry in English. The names Gemini then gave are derived from spelling rules, not quoted from a source (*luryo* for curium, *ruterpodyo*), so they can't back a label. The `tl` labels stay as they are until a Tagalog speaker or a printed source settles them. No schema proposal: the element symbol (P246) would be a name form, but not one anyone draws or guesses in skribbl.
+
+**Rating:** still perfect for membership; the names were 7 labels short of clean (batched), Tagalog is the one weak language.
+
+## Candidates
+
+Science topics from the hub, not approved yet. **Check (2026-11-05).**
+
+**Substance Classes** (➕; Trummler, 2026-11-03). Base: P31 *structural class of chemical entities* (Q47154513): 5,262 items; 930 from 5 sitelinks, 330 from 20, 108 from 40 (DNA 189, protein 179, alcohols 143, salt 121, amino acid 116, alkane 103). Tiers: sitelinks.
+
+- **More classes:** *imprecise class of chemical entities* (Q74892521: lipid 124, flavonoid 55) and *class of chemical entities with similar applications or functions* (Q56256173: acid, base) belong in; *group or class of chemical substances* (Q17339814) only by hand, as it holds chemical element, mixture and gel beside sugar and polymer.
+- **Rules:** element groups (halogens, noble gases: P31 *group*, Q83306) could join as `omittable`. Specialised classes (phenylpropanoid, cerebrosides) fall below the floor, so the floor does that work.
+
+## [to Navigation](#navigation)
