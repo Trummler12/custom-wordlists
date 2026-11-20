@@ -22,6 +22,7 @@
   style:max-width={maxWidth}
   aria-expanded={overlays.tip === id}
   aria-controls={id}
+  aria-describedby={overlays.tip === id ? id : undefined}
   onpointerenter={(e) => overlays.tipEnter(e, id, true)}
   onpointerleave={(e) => overlays.tipLeave(e)}
   onfocus={(e) => overlays.tipFocus(e, id, true)}
