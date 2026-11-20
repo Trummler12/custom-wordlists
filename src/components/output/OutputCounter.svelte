@@ -35,7 +35,9 @@
     font-size: 0.85rem;
     margin: 0.6rem 0 0;
   }
+  /* The danger colour again: the shared `.warn` alone loses to the scoped `.counter`. */
   .counter.warn {
+    color: var(--danger);
     font-weight: 600;
   }
 </style>
