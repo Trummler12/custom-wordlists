@@ -18,6 +18,7 @@ Use the relative File Paths/Links provided on the Items listed in the [Overview 
   - [One Piece](./anime/One_Piece.md#navigation)
   - [JoJo's Bizarre Adventure](./anime/JoJo.md#navigation)
   - [My Hero Academia](./anime/My_Hero_Academia.md#navigation)
+  - [Naruto](./anime/Naruto.md#navigation)
   - [Pokémon (Anime)](./anime/Pokemon.md#navigation)
   - [Candidates](#candidates-1)
 - [Comics](#comics):
@@ -99,6 +100,8 @@ Fullest character lists per franchise (2026-11-06, `_data/Prompts/done/Character
 
 ### Anime
 
+- [Attack on Titan](./anime/Attack_on_Titan.md#navigation)
+  - ✖️[Characters](./anime/Attack_on_Titan.md#characters)
 - [Dragon Ball](./anime/Dragon_Ball.md#navigation)
   - ➕[Characters](./anime/Dragon_Ball.md#characters)
   - ✖️[Locations](./anime/Dragon_Ball.md#locations)
@@ -121,6 +124,8 @@ Fullest character lists per franchise (2026-11-06, `_data/Prompts/done/Character
 - [My Hero Academia](./anime/My_Hero_Academia.md#navigation)
   - ➕[Characters](./anime/My_Hero_Academia.md#characters)
   - ✖️[Quirks](./anime/My_Hero_Academia.md#quirks)
+- [Naruto](./anime/Naruto.md#navigation)
+  - ✖️[Characters](./anime/Naruto.md#characters)
 - [Pokémon (Anime)](./anime/Pokemon.md#navigation)
   - ✖️[Characters](./anime/Pokemon.md#characters)
   - ➕[Locations](./anime/Pokemon.md#locations)
@@ -131,8 +136,8 @@ Fullest character lists per franchise (2026-11-06, `_data/Prompts/done/Character
 
 #### Candidates
 
-- Naruto: official 488 (narutop99), Fandom 1,458; Wikidata 172 (65 from 5)
-- Attack on Titan: Fandom 228; Wikidata 43 (3 from 5)
+- Naruto: official 488 (narutop99), Fandom 1,458; Wikidata 172 (65 from 5). **First analysis: [Naruto.md](./anime/Naruto.md)** (2026-11-16): the poll site's data files give all 488 with ja / en name, kana, village and a fame group; 117 have an item (all 17 leads, 62 of 88 *main*, 38 of the 383 others); a topic since 2026-11-16 (Characters, Locations, Affiliations, Abilities; all 488, the official grouping as *narrative role*).
+- Attack on Titan: official *Character Encyclopedia FINAL* (guidebook, 2021: 197 characters with a wiki page + 160 minor), Fandom 215; Wikidata 43 (33 characters). **First analysis: [Attack_on_Titan.md](./anime/Attack_on_Titan.md)** (2026-11-20); scope open.
 - Demon Slayer: Fandom 156; Wikidata 17 (3 from 5)
 - My Hero Academia: official about 40 (heroaca.com), Fandom 468; Wikidata 34 (4 from 5). **Now a topic file: [My_Hero_Academia.md](./anime/My_Hero_Academia.md).** **2026-11-11:** heroaca.com has 125 character pages (`/character/chara_groupNN/NN-NN/`, Japanese, names as text); 31 have an item (some only as the real name: Endeavor as *Enji Todoroki*, Hawks as *Keigo Takami*), 94 don't. Batches `2026-11-11_mha-characters-create-1.txt` and `-2.txt` (**pending, CREATE, one after the other**, 47 each: en label, the page's ja name, P31 *fictional human* or *character* for Nezu, Nomu and Gigantomachia, P1441 the anime Q63686324 and the manga Q18047903 with the page as source), `2026-11-11_mha-characters-links.txt` (**pending**, 3 lines). The en labels are the usual romanizations and hero names of the English release, not from the page.
 - Sailor Moon: none found; Wikidata 58 (19 from 5)

@@ -54,7 +54,7 @@ Named minor bodies only, 16,709 of the 50,711 with a size and P397 Sun. Steps ar
 - **Inclusion option (proposal):** "Also show objects with a radius below 10 km". Well-known small ones (Eros 8.4, Gaspra 6.1, Toutatis 2.7, Apophis 0.2, Bennu 0.2, Itokawa 0.2) would need an `includible` rule, a short hand list. Sitelinks can't draw it: bots give low-numbered asteroids 40 to 50 each.
 - **Names:** asteroid labels carry the number (5,207 of 5,211 from 25 sitelinks), so the build strips it. Stripped, several meet a moon or a myth (52 Europa, 113 Amalthea, 106 Dione, 55 Pandora). Designation-only objects are out.
 - **Size gaps:** of 1,889 minor planets from 35 sitelinks, 36 have no size (719 Albert, 1134 Kepler); these need a look, not yet a batch.
-- **Labels (Trummler, 2026-11-05, provisional; `_data/Wikidata/Minor_Planet_Labels.md`):** dwarf planets carry the bare name in every language and in `mul`, the numbered form as an alias; descriptions in English and German name where they lie. Other minor planets stay untouched.
+- **Labels (Trummler, 2026-11-05, provisional; `_data/Wikidata/done/Minor_Planet_Labels.md`; thread archived 2026-11-14 without objection):** dwarf planets carry the bare name in every language and in `mul`, the numbered form as an alias; descriptions in English and German name where they lie. Other minor planets stay untouched.
 
 ## ➕Comets
 

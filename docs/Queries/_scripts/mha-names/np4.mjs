@@ -1,6 +1,6 @@
 import { fileURLToPath } from "node:url";
 import fs from "node:fs";
-const QS = fileURLToPath(new URL("../../_data/QuickStatements/", import.meta.url));
+const QS = fileURLToPath(new URL("../../_data/QuickStatements/backlog/", import.meta.url));
 const { a, P } = JSON.parse(fs.readFileSync("np3.json", "utf8"));
 const D = "|S813|+2026-11-13T00:00:00Z/11";
 const ref = page => `|S854|"https://myheroacademia.fandom.com/wiki/${encodeURIComponent(page.replace(/ /g, "_"))}"${D}`;
@@ -20,16 +20,24 @@ for (const o of a) for (const [t, prop, k, kana] of [["fam", "P734", o.famK, o.f
 }
 fs.writeFileSync(QS + "2026-11-13_mha-name-parts-existing-2.txt", now.join("\n") + "\n");
 // CREATE the rest
-const cre = ["My Hero Academia: Japanese family and given name items in the spelling and reading the characters use (for P734 / P735)"];
+const cre = ["My Hero Academia: family and given name items in the spelling and reading the characters use (for P734 / P735); fictional name items where no real bearer of the name is known"];
 const scr = k => /^[\u3040-\u309f]+$/.test(k) ? ["Q48332"] : /^[\u30a0-\u30ff]+$/.test(k) ? ["Q82946"] : [/[\u4e00-\u9fff]/.test(k) ? "Q82772" : null, /[\u3040-\u309f]/.test(k) ? "Q48332" : null, /[\u30a0-\u30ff]/.test(k) ? "Q82946" : null].filter(Boolean);
-let n = 0;
+let n = 0, nReal = 0, nFic = 0;
+const REAL = JSON.parse(fs.readFileSync("real-bearers.json", "utf8"));
+// bearers that are no family or given name: a Chinese name read Sen, the court title Kodai no Kimi, the nickname Yoarashi Okinu
+const NOT_NAMES = new Set(["旋", "小大", "夜嵐"]);
 for (const p of P.filter(p => p.match.length !== 1)) {
   const users = p.users.map(q => byQ[q]); const g = new Set(users.map(u => u.p21));
   const kind = p.t === "fam" ? "fam" : g.size > 1 ? "uni" : g.has("Q6581072") ? "fem" : "male";
-  const cls = { fam: ["Q101352", "Q19914123"], male: ["Q12308941", "Q22812564"], fem: ["Q11879590", "Q22812564"], uni: ["Q3409032", "Q22812564"] }[kind];
-  const en = { fam: "Japanese family name", male: "Japanese male given name", fem: "Japanese female given name", uni: "Japanese unisex given name" }[kind];
-  const de = { fam: "Familienname", male: "männlicher Vorname", fem: "weiblicher Vorname", uni: "Unisex-Vorname" }[kind];
-  const ja = { fam: "日本語の姓", male: "日本語圏の男性の名前", fem: "日本語圏の女性の名前", uni: "日本語圏の名前" }[kind];
+  const real = (REAL[p.t + p.k] || []).length > 0 && !NOT_NAMES.has(p.k);
+  const cls = real ? { fam: ["Q101352", "Q19914123"], male: ["Q12308941", "Q22812564"], fem: ["Q11879590", "Q22812564"], uni: ["Q3409032", "Q22812564"] }[kind] : [p.t === "fam" ? "Q137383044" : "Q137383048"];
+  const enK = { fam: "family name", male: "male given name", fem: "female given name", uni: "unisex given name" }[kind];
+  const deK = { fam: "Familienname", male: "männlicher Vorname", fem: "weiblicher Vorname", uni: "Unisex-Vorname" }[kind];
+  const jaK = { fam: "姓", male: "男性名", fem: "女性名", uni: "名前" }[kind];
+  const en = real ? "Japanese " + enK : "fictional Japanese " + enK + " in the My Hero Academia universe";
+  const de = real ? deK : (p.t === "fam" ? "fiktiver japanischer " : kind === "uni" ? "fiktiver japanischer " : "fiktiver japanischer ") + deK + " aus My Hero Academia";
+  const ja = real ? { fam: "日本語の姓", male: "日本語圏の男性の名前", fem: "日本語圏の女性の名前", uni: "日本語圏の名前" }[kind] : "『僕のヒーローアカデミア』の架空の" + jaK;
+  real ? nReal++ : nFic++;
   const kanaR = /^[\u30a0-\u30ff]+$/.test(p.k) ? p.kana : hira(p.kana);
   const R = ref(users[0].page);
   cre.push("CREATE", `LAST|Len|"${p.rom}"`, `LAST|Lde|"${p.rom}"`, `LAST|Lja|"${p.k}"`,
@@ -38,11 +46,12 @@ for (const p of P.filter(p => p.match.length !== 1)) {
   for (const x of alts) cre.push(`LAST|Aen|"${x}"`);
   if (kanaR !== p.k) cre.push(`LAST|Aja|"${kanaR}"`);
   for (const c of cls) cre.push(`LAST|P31|${c}${R}`);
+  if (!real) cre.push(`LAST|P1080|Q104884320`);
   cre.push(`LAST|P407|Q5287`); for (const s of scr(p.k)) cre.push(`LAST|P282|${s}`);
   cre.push(`LAST|P1705|ja:"${p.k}"${R}`, `LAST|P1814|"${kanaR}"${R}`);
   n++;
 }
 fs.writeFileSync(QS + "2026-11-13_mha-name-items-create_PRE7.txt", cre.join("\n") + "\n");
-fs.writeFileSync(QS + "backlog/2026-11-13_POST7_mha-name-parts-new.txt", ["My Hero Academia: family name (P734) and given name (P735) of the characters, linked to the new name items",
+fs.writeFileSync(QS + "2026-11-13_POST7_mha-name-parts-new.txt", ["My Hero Academia: family name (P734) and given name (P735) of the characters, linked to the new name items",
   `WAITING: for 2026-11-13_mha-name-items-create_PRE7.txt (${n} items); then resolve each item by P1705 + P1814 and link its users (${later} links, data: _data/mha/name-parts.json + the kanji split from the wiki's ruby).`].join("\n") + "\n");
-console.log("now", now.length - 1, "create", n, "later links", later);
+console.log("real", nReal, "fictional", nFic, "now", now.length - 1, "create", n, "later links", later);
