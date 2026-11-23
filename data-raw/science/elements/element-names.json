@@ -3027,7 +3027,7 @@
       ],
       "tr": [
         {
-          "name": "Neon",
+          "name": "neon",
           "pref": true
         }
       ],
@@ -3153,7 +3153,7 @@
       ],
       "tl": [
         {
-          "name": "Neon",
+          "name": "neon",
           "pref": true
         }
       ]
@@ -5631,15 +5631,7 @@
           "pref": true
         },
         {
-          "name": "19K",
-          "alias": true
-        },
-        {
           "name": "element 19",
-          "alias": true
-        },
-        {
-          "name": "K",
           "alias": true
         }
       ],
@@ -5647,20 +5639,12 @@
         {
           "name": "Kalium",
           "pref": true
-        },
-        {
-          "name": "K",
-          "alias": true
         }
       ],
       "es": [
         {
           "name": "potasio",
           "pref": true
-        },
-        {
-          "name": "K",
-          "alias": true
         }
       ],
       "fr": [
@@ -5669,15 +5653,7 @@
           "pref": true
         },
         {
-          "name": "19K",
-          "alias": true
-        },
-        {
           "name": "élément 19",
-          "alias": true
-        },
-        {
-          "name": "K",
           "alias": true
         }
       ],
@@ -5685,10 +5661,6 @@
         {
           "name": "potassio",
           "pref": true
-        },
-        {
-          "name": "K",
-          "alias": true
         }
       ],
       "ja": [
@@ -5702,10 +5674,6 @@
         },
         {
           "name": "加里",
-          "alias": true
-        },
-        {
-          "name": "K",
           "alias": true
         },
         {
@@ -5723,10 +5691,6 @@
           "pref": true
         },
         {
-          "name": "K",
-          "alias": true
-        },
-        {
           "name": "포타슘",
           "alias": true
         }
@@ -5735,20 +5699,12 @@
         {
           "name": "钾",
           "pref": true
-        },
-        {
-          "name": "K",
-          "alias": true
         }
       ],
       "zh-cn": [
         {
           "name": "钾",
           "pref": true
-        },
-        {
-          "name": "K",
-          "alias": true
         }
       ],
       "zh": [
@@ -5759,50 +5715,30 @@
         {
           "name": "钾",
           "alias": true
-        },
-        {
-          "name": "K",
-          "alias": true
         }
       ],
       "zh-hant": [
         {
           "name": "鉀",
           "pref": true
-        },
-        {
-          "name": "K",
-          "alias": true
         }
       ],
       "zh-tw": [
         {
           "name": "鉀",
           "pref": true
-        },
-        {
-          "name": "K",
-          "alias": true
         }
       ],
       "zh-hk": [
         {
           "name": "鉀",
           "pref": true
-        },
-        {
-          "name": "K",
-          "alias": true
         }
       ],
       "pt": [
         {
           "name": "potássio",
           "pref": true
-        },
-        {
-          "name": "K",
-          "alias": true
         },
         {
           "name": "elemento 19",
@@ -5815,10 +5751,6 @@
           "pref": true
         },
         {
-          "name": "K",
-          "alias": true
-        },
-        {
           "name": "elemento 19",
           "alias": true
         }
@@ -5827,10 +5759,6 @@
         {
           "name": "калий",
           "pref": true
-        },
-        {
-          "name": "K",
-          "alias": true
         }
       ],
       "tr": [
@@ -5839,15 +5767,7 @@
           "pref": true
         },
         {
-          "name": "19K",
-          "alias": true
-        },
-        {
           "name": "element 19",
-          "alias": true
-        },
-        {
-          "name": "K",
           "alias": true
         }
       ],
@@ -5855,90 +5775,54 @@
         {
           "name": "potas",
           "pref": true
-        },
-        {
-          "name": "K",
-          "alias": true
         }
       ],
       "nl": [
         {
           "name": "kalium",
           "pref": true
-        },
-        {
-          "name": "K",
-          "alias": true
         }
       ],
       "bg": [
         {
           "name": "калий",
           "pref": true
-        },
-        {
-          "name": "K",
-          "alias": true
         }
       ],
       "cs": [
         {
           "name": "draslík",
           "pref": true
-        },
-        {
-          "name": "K",
-          "alias": true
         }
       ],
       "da": [
         {
           "name": "kalium",
           "pref": true
-        },
-        {
-          "name": "K",
-          "alias": true
         }
       ],
       "et": [
         {
           "name": "kaalium",
           "pref": true
-        },
-        {
-          "name": "K",
-          "alias": true
         }
       ],
       "fi": [
         {
           "name": "kalium",
           "pref": true
-        },
-        {
-          "name": "K",
-          "alias": true
         }
       ],
       "el": [
         {
           "name": "κάλιο",
           "pref": true
-        },
-        {
-          "name": "K",
-          "alias": true
         }
       ],
       "he": [
         {
           "name": "אשלגן",
           "pref": true
-        },
-        {
-          "name": "K",
-          "alias": true
         }
       ],
       "hu": [
@@ -5949,30 +5833,18 @@
         {
           "name": "hamany",
           "alias": true
-        },
-        {
-          "name": "K",
-          "alias": true
         }
       ],
       "lv": [
         {
           "name": "kālijs",
           "pref": true
-        },
-        {
-          "name": "K",
-          "alias": true
         }
       ],
       "mk": [
         {
           "name": "калиум",
           "pref": true
-        },
-        {
-          "name": "K",
-          "alias": true
         }
       ],
       "nb": [
@@ -5982,14 +5854,6 @@
         },
         {
           "name": "grunnstoff 19",
-          "alias": true
-        },
-        {
-          "name": "K",
-          "alias": true
-        },
-        {
-          "name": "Kalium",
           "alias": true
         }
       ],
@@ -6001,64 +5865,36 @@
         {
           "name": "grunnstoff 19",
           "alias": true
-        },
-        {
-          "name": "19K",
-          "alias": true
-        },
-        {
-          "name": "K",
-          "alias": true
         }
       ],
       "ro": [
         {
           "name": "potasiu",
           "pref": true
-        },
-        {
-          "name": "K",
-          "alias": true
         }
       ],
       "sr": [
         {
           "name": "калијум",
           "pref": true
-        },
-        {
-          "name": "K",
-          "alias": true
         }
       ],
       "sk": [
         {
           "name": "draslík",
           "pref": true
-        },
-        {
-          "name": "K",
-          "alias": true
         }
       ],
       "sv": [
         {
           "name": "kalium",
           "pref": true
-        },
-        {
-          "name": "K",
-          "alias": true
         }
       ],
       "tl": [
         {
-          "name": "Potasyo",
+          "name": "potasyo",
           "pref": true
-        },
-        {
-          "name": "K",
-          "alias": true
         }
       ]
     }
@@ -8067,14 +7903,6 @@
           "pref": true
         },
         {
-          "name": "Mn",
-          "alias": true
-        },
-        {
-          "name": "25Mn",
-          "alias": true
-        },
-        {
           "name": "element 25",
           "alias": true
         }
@@ -8083,34 +7911,18 @@
         {
           "name": "Mangan",
           "pref": true
-        },
-        {
-          "name": "Mn",
-          "alias": true
         }
       ],
       "es": [
         {
           "name": "manganeso",
           "pref": true
-        },
-        {
-          "name": "Mn",
-          "alias": true
         }
       ],
       "fr": [
         {
           "name": "manganèse",
           "pref": true
-        },
-        {
-          "name": "Mn",
-          "alias": true
-        },
-        {
-          "name": "25Mn",
-          "alias": true
         },
         {
           "name": "élément 25",
@@ -8121,20 +7933,12 @@
         {
           "name": "manganese",
           "pref": true
-        },
-        {
-          "name": "Mn",
-          "alias": true
         }
       ],
       "ja": [
         {
           "name": "マンガン",
           "pref": true
-        },
-        {
-          "name": "Mn",
-          "alias": true
         },
         {
           "name": "満俺",
@@ -8157,80 +7961,48 @@
         {
           "name": "망간",
           "alias": true
-        },
-        {
-          "name": "Mn",
-          "alias": true
         }
       ],
       "zh-hans": [
         {
           "name": "锰",
           "pref": true
-        },
-        {
-          "name": "Mn",
-          "alias": true
         }
       ],
       "zh-cn": [
         {
           "name": "锰",
           "pref": true
-        },
-        {
-          "name": "Mn",
-          "alias": true
         }
       ],
       "zh": [
         {
           "name": "錳",
           "pref": true
-        },
-        {
-          "name": "Mn",
-          "alias": true
         }
       ],
       "zh-hant": [
         {
           "name": "錳",
           "pref": true
-        },
-        {
-          "name": "Mn",
-          "alias": true
         }
       ],
       "zh-tw": [
         {
           "name": "錳",
           "pref": true
-        },
-        {
-          "name": "Mn",
-          "alias": true
         }
       ],
       "zh-hk": [
         {
           "name": "錳",
           "pref": true
-        },
-        {
-          "name": "Mn",
-          "alias": true
         }
       ],
       "pt": [
         {
           "name": "manganês",
           "pref": true
-        },
-        {
-          "name": "Mn",
-          "alias": true
         },
         {
           "name": "manganésio",
@@ -8247,10 +8019,6 @@
           "pref": true
         },
         {
-          "name": "Mn",
-          "alias": true
-        },
-        {
           "name": "elemento 25",
           "alias": true
         }
@@ -8259,154 +8027,90 @@
         {
           "name": "марганец",
           "pref": true
-        },
-        {
-          "name": "Mn",
-          "alias": true
         }
       ],
       "tr": [
         {
           "name": "mangan",
           "pref": true
-        },
-        {
-          "name": "Mn",
-          "alias": true
         }
       ],
       "pl": [
         {
           "name": "mangan",
           "pref": true
-        },
-        {
-          "name": "Mn",
-          "alias": true
         }
       ],
       "nl": [
         {
           "name": "mangaan",
           "pref": true
-        },
-        {
-          "name": "Mn",
-          "alias": true
         }
       ],
       "bg": [
         {
           "name": "манган",
           "pref": true
-        },
-        {
-          "name": "Mn",
-          "alias": true
         }
       ],
       "cs": [
         {
           "name": "mangan",
           "pref": true
-        },
-        {
-          "name": "Mn",
-          "alias": true
         }
       ],
       "da": [
         {
           "name": "mangan",
           "pref": true
-        },
-        {
-          "name": "Mn",
-          "alias": true
         }
       ],
       "et": [
         {
           "name": "mangaan",
           "pref": true
-        },
-        {
-          "name": "Mn",
-          "alias": true
         }
       ],
       "fi": [
         {
           "name": "mangaani",
           "pref": true
-        },
-        {
-          "name": "Mn",
-          "alias": true
         }
       ],
       "el": [
         {
           "name": "μαγγάνιο",
           "pref": true
-        },
-        {
-          "name": "Mn",
-          "alias": true
         }
       ],
       "he": [
         {
           "name": "מנגן",
           "pref": true
-        },
-        {
-          "name": "Mn",
-          "alias": true
         }
       ],
       "hu": [
         {
           "name": "mangán",
           "pref": true
-        },
-        {
-          "name": "Mn",
-          "alias": true
         }
       ],
       "lv": [
         {
           "name": "mangāns",
           "pref": true
-        },
-        {
-          "name": "Mn",
-          "alias": true
         }
       ],
       "mk": [
         {
           "name": "манган",
           "pref": true
-        },
-        {
-          "name": "Mn",
-          "alias": true
         }
       ],
       "nb": [
         {
           "name": "mangan",
           "pref": true
-        },
-        {
-          "name": "Mn",
-          "alias": true
-        },
-        {
-          "name": "Mangan",
-          "alias": true
         },
         {
           "name": "grunnstoff 25",
@@ -8419,14 +8123,6 @@
           "pref": true
         },
         {
-          "name": "Mn",
-          "alias": true
-        },
-        {
-          "name": "25Mn",
-          "alias": true
-        },
-        {
           "name": "grunnstoff 25",
           "alias": true
         }
@@ -8435,20 +8131,12 @@
         {
           "name": "mangan",
           "pref": true
-        },
-        {
-          "name": "Mn",
-          "alias": true
         }
       ],
       "sr": [
         {
           "name": "манган",
           "pref": true
-        },
-        {
-          "name": "Mn",
-          "alias": true
         },
         {
           "name": "елемент 25",
@@ -8459,30 +8147,18 @@
         {
           "name": "mangán",
           "pref": true
-        },
-        {
-          "name": "Mn",
-          "alias": true
         }
       ],
       "sv": [
         {
           "name": "mangan",
           "pref": true
-        },
-        {
-          "name": "Mn",
-          "alias": true
         }
       ],
       "tl": [
         {
-          "name": "Mangganeso",
+          "name": "mangganeso",
           "pref": true
-        },
-        {
-          "name": "Mn",
-          "alias": true
         }
       ]
     }
@@ -9215,11 +8891,7 @@
           "alias": true
         },
         {
-          "name": "₂₈Ni",
-          "alias": true
-        },
-        {
-          "name": "Ni",
+          "name": "nickel metal",
           "alias": true
         }
       ],
@@ -9227,10 +8899,6 @@
         {
           "name": "Nickel",
           "pref": true
-        },
-        {
-          "name": "Ni",
-          "alias": true
         }
       ],
       "es": [
@@ -9241,10 +8909,6 @@
         {
           "name": "niquel",
           "alias": true
-        },
-        {
-          "name": "Ni",
-          "alias": true
         }
       ],
       "fr": [
@@ -9254,14 +8918,6 @@
         },
         {
           "name": "élément 28",
-          "alias": true
-        },
-        {
-          "name": "₂₈Ni",
-          "alias": true
-        },
-        {
-          "name": "Ni",
           "alias": true
         }
       ],
@@ -9277,10 +8933,6 @@
         {
           "name": "nichelio",
           "alias": true
-        },
-        {
-          "name": "Ni",
-          "alias": true
         }
       ],
       "ja": [
@@ -9291,80 +8943,48 @@
         {
           "name": "ニツケル",
           "alias": true
-        },
-        {
-          "name": "Ni",
-          "alias": true
         }
       ],
       "ko": [
         {
           "name": "니켈",
           "pref": true
-        },
-        {
-          "name": "Ni",
-          "alias": true
         }
       ],
       "zh-hans": [
         {
           "name": "镍",
           "pref": true
-        },
-        {
-          "name": "Ni",
-          "alias": true
         }
       ],
       "zh-cn": [
         {
           "name": "镍",
           "pref": true
-        },
-        {
-          "name": "Ni",
-          "alias": true
         }
       ],
       "zh": [
         {
           "name": "鎳",
           "pref": true
-        },
-        {
-          "name": "Ni",
-          "alias": true
         }
       ],
       "zh-hant": [
         {
           "name": "鎳",
           "pref": true
-        },
-        {
-          "name": "Ni",
-          "alias": true
         }
       ],
       "zh-tw": [
         {
           "name": "鎳",
           "pref": true
-        },
-        {
-          "name": "Ni",
-          "alias": true
         }
       ],
       "zh-hk": [
         {
           "name": "鎳",
           "pref": true
-        },
-        {
-          "name": "Ni",
-          "alias": true
         }
       ],
       "pt": [
@@ -9374,10 +8994,6 @@
         },
         {
           "name": "elemento 28",
-          "alias": true
-        },
-        {
-          "name": "Ni",
           "alias": true
         }
       ],
@@ -9389,80 +9005,48 @@
         {
           "name": "elemento 28",
           "alias": true
-        },
-        {
-          "name": "Ni",
-          "alias": true
         }
       ],
       "ru": [
         {
           "name": "никель",
           "pref": true
-        },
-        {
-          "name": "Ni",
-          "alias": true
         }
       ],
       "tr": [
         {
           "name": "nikel",
           "pref": true
-        },
-        {
-          "name": "Ni",
-          "alias": true
         }
       ],
       "pl": [
         {
           "name": "nikiel",
           "pref": true
-        },
-        {
-          "name": "Ni",
-          "alias": true
         }
       ],
       "nl": [
         {
           "name": "nikkel",
           "pref": true
-        },
-        {
-          "name": "Ni",
-          "alias": true
         }
       ],
       "bg": [
         {
           "name": "никел",
           "pref": true
-        },
-        {
-          "name": "Ni",
-          "alias": true
         }
       ],
       "cs": [
         {
           "name": "nikl",
           "pref": true
-        },
-        {
-          "name": "Ni",
-          "alias": true
         }
       ],
       "da": [
         {
           "name": "nikkel",
           "pref": true
-        },
-        {
-          "name": "Ni",
-          "alias": true
         }
       ],
       "et": [
@@ -9475,30 +9059,18 @@
         {
           "name": "nikkeli",
           "pref": true
-        },
-        {
-          "name": "Ni",
-          "alias": true
         }
       ],
       "el": [
         {
-          "name": "Νικέλιο",
+          "name": "νικέλιο",
           "pref": true
-        },
-        {
-          "name": "Ni",
-          "alias": true
         }
       ],
       "he": [
         {
           "name": "ניקל",
           "pref": true
-        },
-        {
-          "name": "Ni",
-          "alias": true
         }
       ],
       "hu": [
@@ -9513,30 +9085,18 @@
         {
           "name": "alany",
           "alias": true
-        },
-        {
-          "name": "Ni",
-          "alias": true
         }
       ],
       "lv": [
         {
           "name": "niķelis",
           "pref": true
-        },
-        {
-          "name": "Ni",
-          "alias": true
         }
       ],
       "mk": [
         {
           "name": "никел",
           "pref": true
-        },
-        {
-          "name": "Ni",
-          "alias": true
         }
       ],
       "nb": [
@@ -9546,14 +9106,6 @@
         },
         {
           "name": "grunnstoff 28",
-          "alias": true
-        },
-        {
-          "name": "Nikkel",
-          "alias": true
-        },
-        {
-          "name": "Ni",
           "alias": true
         }
       ],
@@ -9565,54 +9117,30 @@
         {
           "name": "grunnstoff 28",
           "alias": true
-        },
-        {
-          "name": "₂₈Ni",
-          "alias": true
-        },
-        {
-          "name": "Ni",
-          "alias": true
         }
       ],
       "ro": [
         {
           "name": "nichel",
           "pref": true
-        },
-        {
-          "name": "Ni",
-          "alias": true
         }
       ],
       "sr": [
         {
           "name": "никл",
           "pref": true
-        },
-        {
-          "name": "Ni",
-          "alias": true
         }
       ],
       "sk": [
         {
           "name": "nikel",
           "pref": true
-        },
-        {
-          "name": "Ni",
-          "alias": true
         }
       ],
       "sv": [
         {
           "name": "nickel",
           "pref": true
-        },
-        {
-          "name": "Ni",
-          "alias": true
         }
       ],
       "tl": [
@@ -14587,23 +14115,11 @@
           "alias": true
         },
         {
-          "name": "Cb",
-          "alias": true
-        },
-        {
-          "name": "Nb",
-          "alias": true
-        },
-        {
-          "name": "Columbite",
+          "name": "columbite",
           "alias": true
         },
         {
           "name": "columbium",
-          "alias": true
-        },
-        {
-          "name": "41Nb",
           "alias": true
         }
       ],
@@ -14617,15 +14133,7 @@
           "alias": true
         },
         {
-          "name": "Cb",
-          "alias": true
-        },
-        {
           "name": "Columbium",
-          "alias": true
-        },
-        {
-          "name": "Nb",
           "alias": true
         }
       ],
@@ -14633,14 +14141,6 @@
         {
           "name": "niobio",
           "pref": true
-        },
-        {
-          "name": "Cb",
-          "alias": true
-        },
-        {
-          "name": "Nb",
-          "alias": true
         },
         {
           "name": "columbio",
@@ -14657,19 +14157,7 @@
           "alias": true
         },
         {
-          "name": "Cb",
-          "alias": true
-        },
-        {
-          "name": "Nb",
-          "alias": true
-        },
-        {
           "name": "columbium",
-          "alias": true
-        },
-        {
-          "name": "41Nb",
           "alias": true
         }
       ],
@@ -14677,14 +14165,6 @@
         {
           "name": "niobio",
           "pref": true
-        },
-        {
-          "name": "Cb",
-          "alias": true
-        },
-        {
-          "name": "Nb",
-          "alias": true
         }
       ],
       "ja": [
@@ -14699,14 +14179,6 @@
         {
           "name": "ニオビウム",
           "alias": true
-        },
-        {
-          "name": "Cb",
-          "alias": true
-        },
-        {
-          "name": "Nb",
-          "alias": true
         }
       ],
       "ko": [
@@ -14719,15 +14191,7 @@
           "alias": true
         },
         {
-          "name": "Cb",
-          "alias": true
-        },
-        {
           "name": "니오브",
-          "alias": true
-        },
-        {
-          "name": "Nb",
           "alias": true
         }
       ],
@@ -14735,10 +14199,6 @@
         {
           "name": "铌",
           "pref": true
-        },
-        {
-          "name": "Nb",
-          "alias": true
         }
       ],
       "zh": [
@@ -14749,48 +14209,24 @@
         {
           "name": "钶",
           "alias": true
-        },
-        {
-          "name": "Cb",
-          "alias": true
-        },
-        {
-          "name": "Nb",
-          "alias": true
         }
       ],
       "zh-hant": [
         {
           "name": "鈮",
           "pref": true
-        },
-        {
-          "name": "Nb",
-          "alias": true
         }
       ],
       "zh-tw": [
         {
           "name": "鈮",
           "pref": true
-        },
-        {
-          "name": "Nb",
-          "alias": true
         }
       ],
       "pt": [
         {
           "name": "nióbio",
           "pref": true
-        },
-        {
-          "name": "Cb",
-          "alias": true
-        },
-        {
-          "name": "Nb",
-          "alias": true
         },
         {
           "name": "elemento 41",
@@ -14803,14 +14239,6 @@
           "pref": true
         },
         {
-          "name": "Cb",
-          "alias": true
-        },
-        {
-          "name": "Nb",
-          "alias": true
-        },
-        {
           "name": "elemento 41",
           "alias": true
         }
@@ -14821,15 +14249,7 @@
           "pref": true
         },
         {
-          "name": "Cb",
-          "alias": true
-        },
-        {
           "name": "колумбий",
-          "alias": true
-        },
-        {
-          "name": "Nb",
           "alias": true
         }
       ],
@@ -14837,112 +14257,48 @@
         {
           "name": "niobyum",
           "pref": true
-        },
-        {
-          "name": "Cb",
-          "alias": true
-        },
-        {
-          "name": "Nb",
-          "alias": true
         }
       ],
       "pl": [
         {
           "name": "niob",
           "pref": true
-        },
-        {
-          "name": "Cb",
-          "alias": true
-        },
-        {
-          "name": "Nb",
-          "alias": true
         }
       ],
       "nl": [
         {
           "name": "niobium",
           "pref": true
-        },
-        {
-          "name": "Cb",
-          "alias": true
-        },
-        {
-          "name": "Nb",
-          "alias": true
         }
       ],
       "bg": [
         {
           "name": "ниобий",
           "pref": true
-        },
-        {
-          "name": "Cb",
-          "alias": true
-        },
-        {
-          "name": "Nb",
-          "alias": true
         }
       ],
       "cs": [
         {
           "name": "niob",
           "pref": true
-        },
-        {
-          "name": "Cb",
-          "alias": true
-        },
-        {
-          "name": "Nb",
-          "alias": true
         }
       ],
       "da": [
         {
           "name": "niobium",
           "pref": true
-        },
-        {
-          "name": "Cb",
-          "alias": true
-        },
-        {
-          "name": "Nb",
-          "alias": true
         }
       ],
       "et": [
         {
           "name": "nioobium",
           "pref": true
-        },
-        {
-          "name": "Cb",
-          "alias": true
-        },
-        {
-          "name": "Nb",
-          "alias": true
         }
       ],
       "fi": [
         {
           "name": "niobium",
           "pref": true
-        },
-        {
-          "name": "Cb",
-          "alias": true
-        },
-        {
-          "name": "Nb",
-          "alias": true
         }
       ],
       "el": [
@@ -14953,88 +14309,36 @@
         {
           "name": "κολούμπιο",
           "alias": true
-        },
-        {
-          "name": "Cb",
-          "alias": true
-        },
-        {
-          "name": "Nb",
-          "alias": true
         }
       ],
       "he": [
         {
           "name": "ניאוביום",
           "pref": true
-        },
-        {
-          "name": "Cb",
-          "alias": true
-        },
-        {
-          "name": "Nb",
-          "alias": true
         }
       ],
       "hu": [
         {
           "name": "nióbium",
           "pref": true
-        },
-        {
-          "name": "Cb",
-          "alias": true
-        },
-        {
-          "name": "Nb",
-          "alias": true
         }
       ],
       "lv": [
         {
           "name": "niobijs",
           "pref": true
-        },
-        {
-          "name": "Cb",
-          "alias": true
-        },
-        {
-          "name": "Nb",
-          "alias": true
         }
       ],
       "mk": [
         {
           "name": "ниобиум",
           "pref": true
-        },
-        {
-          "name": "Cb",
-          "alias": true
-        },
-        {
-          "name": "Nb",
-          "alias": true
         }
       ],
       "nb": [
         {
           "name": "niob",
           "pref": true
-        },
-        {
-          "name": "Cb",
-          "alias": true
-        },
-        {
-          "name": "Nb",
-          "alias": true
-        },
-        {
-          "name": "Niob",
-          "alias": true
         }
       ],
       "nn": [
@@ -15043,19 +14347,7 @@
           "pref": true
         },
         {
-          "name": "Cb",
-          "alias": true
-        },
-        {
-          "name": "Nb",
-          "alias": true
-        },
-        {
           "name": "columbium",
-          "alias": true
-        },
-        {
-          "name": "41Nb",
           "alias": true
         },
         {
@@ -15067,66 +14359,30 @@
         {
           "name": "niobiu",
           "pref": true
-        },
-        {
-          "name": "Cb",
-          "alias": true
-        },
-        {
-          "name": "Nb",
-          "alias": true
         }
       ],
       "sr": [
         {
           "name": "ниобијум",
           "pref": true
-        },
-        {
-          "name": "Cb",
-          "alias": true
-        },
-        {
-          "name": "Nb",
-          "alias": true
         }
       ],
       "sk": [
         {
           "name": "niób",
           "pref": true
-        },
-        {
-          "name": "Cb",
-          "alias": true
-        },
-        {
-          "name": "Nb",
-          "alias": true
         }
       ],
       "sv": [
         {
           "name": "niob",
           "pref": true
-        },
-        {
-          "name": "Cb",
-          "alias": true
-        },
-        {
-          "name": "Nb",
-          "alias": true
         }
       ],
       "tl": [
         {
           "name": "niobium",
           "pref": true
-        },
-        {
-          "name": "Nb",
-          "alias": true
         },
         {
           "name": "niobio",
@@ -16417,34 +15673,18 @@
         {
           "name": "element 45",
           "alias": true
-        },
-        {
-          "name": "45Rh",
-          "alias": true
-        },
-        {
-          "name": "Rh",
-          "alias": true
         }
       ],
       "de": [
         {
           "name": "Rhodium",
           "pref": true
-        },
-        {
-          "name": "Rh",
-          "alias": true
         }
       ],
       "es": [
         {
           "name": "rodio",
           "pref": true
-        },
-        {
-          "name": "Rh",
-          "alias": true
         }
       ],
       "fr": [
@@ -16455,84 +15695,48 @@
         {
           "name": "élément 45",
           "alias": true
-        },
-        {
-          "name": "45Rh",
-          "alias": true
-        },
-        {
-          "name": "Rh",
-          "alias": true
         }
       ],
       "it": [
         {
           "name": "rodio",
           "pref": true
-        },
-        {
-          "name": "Rh",
-          "alias": true
         }
       ],
       "ja": [
         {
           "name": "ロジウム",
           "pref": true
-        },
-        {
-          "name": "Rh",
-          "alias": true
         }
       ],
       "ko": [
         {
           "name": "로듐",
           "pref": true
-        },
-        {
-          "name": "Rh",
-          "alias": true
         }
       ],
       "zh-hans": [
         {
           "name": "铑",
           "pref": true
-        },
-        {
-          "name": "Rh",
-          "alias": true
         }
       ],
       "zh": [
         {
           "name": "铑",
           "pref": true
-        },
-        {
-          "name": "Rh",
-          "alias": true
         }
       ],
       "zh-hant": [
         {
           "name": "銠",
           "pref": true
-        },
-        {
-          "name": "Rh",
-          "alias": true
         }
       ],
       "zh-tw": [
         {
           "name": "銠",
           "pref": true
-        },
-        {
-          "name": "Rh",
-          "alias": true
         }
       ],
       "pt": [
@@ -16542,10 +15746,6 @@
         },
         {
           "name": "elemento 45",
-          "alias": true
-        },
-        {
-          "name": "Rh",
           "alias": true
         }
       ],
@@ -16557,40 +15757,24 @@
         {
           "name": "elemento 45",
           "alias": true
-        },
-        {
-          "name": "Rh",
-          "alias": true
         }
       ],
       "ru": [
         {
           "name": "родий",
           "pref": true
-        },
-        {
-          "name": "Rh",
-          "alias": true
         }
       ],
       "tr": [
         {
-          "name": "Rodyum",
+          "name": "rodyum",
           "pref": true
-        },
-        {
-          "name": "Rh",
-          "alias": true
         }
       ],
       "pl": [
         {
           "name": "rod",
           "pref": true
-        },
-        {
-          "name": "Rh",
-          "alias": true
         }
       ],
       "nl": [
@@ -16601,90 +15785,54 @@
         {
           "name": "rhodium",
           "alias": true
-        },
-        {
-          "name": "Rh",
-          "alias": true
         }
       ],
       "bg": [
         {
           "name": "родий",
           "pref": true
-        },
-        {
-          "name": "Rh",
-          "alias": true
         }
       ],
       "cs": [
         {
           "name": "rhodium",
           "pref": true
-        },
-        {
-          "name": "Rh",
-          "alias": true
         }
       ],
       "da": [
         {
           "name": "rhodium",
           "pref": true
-        },
-        {
-          "name": "Rh",
-          "alias": true
         }
       ],
       "et": [
         {
-          "name": "Roodium",
+          "name": "roodium",
           "pref": true
-        },
-        {
-          "name": "Rh",
-          "alias": true
         }
       ],
       "fi": [
         {
           "name": "rodium",
           "pref": true
-        },
-        {
-          "name": "Rh",
-          "alias": true
         }
       ],
       "el": [
         {
           "name": "ρόδιο",
           "pref": true
-        },
-        {
-          "name": "Rh",
-          "alias": true
         }
       ],
       "he": [
         {
           "name": "רודיום",
           "pref": true
-        },
-        {
-          "name": "Rh",
-          "alias": true
         }
       ],
       "hu": [
         {
           "name": "ródium",
           "pref": true
-        },
-        {
-          "name": "Rh",
-          "alias": true
         },
         {
           "name": "rózsany",
@@ -16695,34 +15843,18 @@
         {
           "name": "rodijs",
           "pref": true
-        },
-        {
-          "name": "Rh",
-          "alias": true
         }
       ],
       "mk": [
         {
           "name": "родиум",
           "pref": true
-        },
-        {
-          "name": "Rh",
-          "alias": true
         }
       ],
       "nb": [
         {
           "name": "rhodium",
           "pref": true
-        },
-        {
-          "name": "Rhodium",
-          "alias": true
-        },
-        {
-          "name": "Rh",
-          "alias": true
         }
       ],
       "nn": [
@@ -16733,54 +15865,30 @@
         {
           "name": "grunnstoff 45",
           "alias": true
-        },
-        {
-          "name": "45Rh",
-          "alias": true
-        },
-        {
-          "name": "Rh",
-          "alias": true
         }
       ],
       "ro": [
         {
           "name": "rodiu",
           "pref": true
-        },
-        {
-          "name": "Rh",
-          "alias": true
         }
       ],
       "sr": [
         {
           "name": "родијум",
           "pref": true
-        },
-        {
-          "name": "Rh",
-          "alias": true
         }
       ],
       "sk": [
         {
           "name": "ródium",
           "pref": true
-        },
-        {
-          "name": "Rh",
-          "alias": true
         }
       ],
       "sv": [
         {
           "name": "rodium",
           "pref": true
-        },
-        {
-          "name": "Rh",
-          "alias": true
         }
       ],
       "tl": [
@@ -16790,10 +15898,6 @@
         },
         {
           "name": "rodio",
-          "alias": true
-        },
-        {
-          "name": "Rh",
           "alias": true
         }
       ]
@@ -16809,15 +15913,7 @@
           "pref": true
         },
         {
-          "name": "46Pd",
-          "alias": true
-        },
-        {
           "name": "element 46",
-          "alias": true
-        },
-        {
-          "name": "Pd",
           "alias": true
         }
       ],
@@ -16825,20 +15921,12 @@
         {
           "name": "Palladium",
           "pref": true
-        },
-        {
-          "name": "Pd",
-          "alias": true
         }
       ],
       "es": [
         {
           "name": "paladio",
           "pref": true
-        },
-        {
-          "name": "Pd",
-          "alias": true
         }
       ],
       "fr": [
@@ -16847,15 +15935,7 @@
           "pref": true
         },
         {
-          "name": "46Pd",
-          "alias": true
-        },
-        {
           "name": "élément 46",
-          "alias": true
-        },
-        {
-          "name": "Pd",
           "alias": true
         }
       ],
@@ -16863,70 +15943,42 @@
         {
           "name": "palladio",
           "pref": true
-        },
-        {
-          "name": "Pd",
-          "alias": true
         }
       ],
       "ja": [
         {
           "name": "パラジウム",
           "pref": true
-        },
-        {
-          "name": "Pd",
-          "alias": true
         }
       ],
       "ko": [
         {
           "name": "팔라듐",
           "pref": true
-        },
-        {
-          "name": "Pd",
-          "alias": true
         }
       ],
       "zh-hans": [
         {
           "name": "钯",
           "pref": true
-        },
-        {
-          "name": "Pd",
-          "alias": true
         }
       ],
       "zh": [
         {
           "name": "钯",
           "pref": true
-        },
-        {
-          "name": "Pd",
-          "alias": true
         }
       ],
       "zh-hant": [
         {
           "name": "鈀",
           "pref": true
-        },
-        {
-          "name": "Pd",
-          "alias": true
         }
       ],
       "zh-tw": [
         {
           "name": "鈀",
           "pref": true
-        },
-        {
-          "name": "Pd",
-          "alias": true
         }
       ],
       "pt": [
@@ -16936,10 +15988,6 @@
         },
         {
           "name": "elemento 46",
-          "alias": true
-        },
-        {
-          "name": "Pd",
           "alias": true
         }
       ],
@@ -16951,120 +15999,72 @@
         {
           "name": "elemento 46",
           "alias": true
-        },
-        {
-          "name": "Pd",
-          "alias": true
         }
       ],
       "ru": [
         {
           "name": "палладий",
           "pref": true
-        },
-        {
-          "name": "Pd",
-          "alias": true
         }
       ],
       "tr": [
         {
-          "name": "Paladyum",
+          "name": "paladyum",
           "pref": true
-        },
-        {
-          "name": "Pd",
-          "alias": true
         }
       ],
       "pl": [
         {
           "name": "pallad",
           "pref": true
-        },
-        {
-          "name": "Pd",
-          "alias": true
         }
       ],
       "nl": [
         {
           "name": "palladium",
           "pref": true
-        },
-        {
-          "name": "Pd",
-          "alias": true
         }
       ],
       "bg": [
         {
           "name": "паладий",
           "pref": true
-        },
-        {
-          "name": "Pd",
-          "alias": true
         }
       ],
       "cs": [
         {
           "name": "palladium",
           "pref": true
-        },
-        {
-          "name": "Pd",
-          "alias": true
         }
       ],
       "da": [
         {
           "name": "palladium",
           "pref": true
-        },
-        {
-          "name": "Pd",
-          "alias": true
         }
       ],
       "et": [
         {
-          "name": "Pallaadium",
+          "name": "pallaadium",
           "pref": true
-        },
-        {
-          "name": "Pd",
-          "alias": true
         }
       ],
       "fi": [
         {
           "name": "palladium",
           "pref": true
-        },
-        {
-          "name": "Pd",
-          "alias": true
         }
       ],
       "el": [
         {
           "name": "παλλάδιο",
           "pref": true
-        },
-        {
-          "name": "Pd",
-          "alias": true
         }
       ],
       "he": [
         {
           "name": "פלדיום",
           "pref": true
-        },
-        {
-          "name": "Pd",
-          "alias": true
         }
       ],
       "hu": [
@@ -17075,44 +16075,24 @@
         {
           "name": "itélany",
           "alias": true
-        },
-        {
-          "name": "Pd",
-          "alias": true
         }
       ],
       "lv": [
         {
           "name": "pallādijs",
           "pref": true
-        },
-        {
-          "name": "Pd",
-          "alias": true
         }
       ],
       "mk": [
         {
           "name": "паладиум",
           "pref": true
-        },
-        {
-          "name": "Pd",
-          "alias": true
         }
       ],
       "nb": [
         {
           "name": "palladium",
           "pref": true
-        },
-        {
-          "name": "Palladium",
-          "alias": true
-        },
-        {
-          "name": "Pd",
-          "alias": true
         }
       ],
       "nn": [
@@ -17121,15 +16101,7 @@
           "pref": true
         },
         {
-          "name": "46Pd",
-          "alias": true
-        },
-        {
           "name": "grunnstoff 46",
-          "alias": true
-        },
-        {
-          "name": "Pd",
           "alias": true
         }
       ],
@@ -17137,40 +16109,24 @@
         {
           "name": "paladiu",
           "pref": true
-        },
-        {
-          "name": "Pd",
-          "alias": true
         }
       ],
       "sr": [
         {
           "name": "паладијум",
           "pref": true
-        },
-        {
-          "name": "Pd",
-          "alias": true
         }
       ],
       "sk": [
         {
           "name": "paládium",
           "pref": true
-        },
-        {
-          "name": "Pd",
-          "alias": true
         }
       ],
       "sv": [
         {
           "name": "palladium",
           "pref": true
-        },
-        {
-          "name": "Pd",
-          "alias": true
         }
       ],
       "tl": [
@@ -17180,10 +16136,6 @@
         },
         {
           "name": "paladio",
-          "alias": true
-        },
-        {
-          "name": "Pd",
           "alias": true
         }
       ]
@@ -21869,34 +20821,18 @@
         {
           "name": "element 59",
           "alias": true
-        },
-        {
-          "name": "Pr",
-          "alias": true
-        },
-        {
-          "name": "59Pr",
-          "alias": true
         }
       ],
       "de": [
         {
           "name": "Praseodym",
           "pref": true
-        },
-        {
-          "name": "Pr",
-          "alias": true
         }
       ],
       "es": [
         {
           "name": "praseodimio",
           "pref": true
-        },
-        {
-          "name": "Pr",
-          "alias": true
         }
       ],
       "fr": [
@@ -21905,15 +20841,7 @@
           "pref": true
         },
         {
-          "name": "Pr",
-          "alias": true
-        },
-        {
           "name": "élément 59",
-          "alias": true
-        },
-        {
-          "name": "59Pr",
           "alias": true
         }
       ],
@@ -21921,70 +20849,42 @@
         {
           "name": "praseodimio",
           "pref": true
-        },
-        {
-          "name": "Pr",
-          "alias": true
         }
       ],
       "ja": [
         {
           "name": "プラセオジム",
           "pref": true
-        },
-        {
-          "name": "Pr",
-          "alias": true
         }
       ],
       "ko": [
         {
           "name": "프라세오디뮴",
           "pref": true
-        },
-        {
-          "name": "Pr",
-          "alias": true
         }
       ],
       "zh-hans": [
         {
           "name": "镨",
           "pref": true
-        },
-        {
-          "name": "Pr",
-          "alias": true
         }
       ],
       "zh": [
         {
           "name": "镨",
           "pref": true
-        },
-        {
-          "name": "Pr",
-          "alias": true
         }
       ],
       "zh-hant": [
         {
           "name": "鐠",
           "pref": true
-        },
-        {
-          "name": "Pr",
-          "alias": true
         }
       ],
       "zh-tw": [
         {
           "name": "鐠",
           "pref": true
-        },
-        {
-          "name": "Pr",
-          "alias": true
         }
       ],
       "pt": [
@@ -21994,10 +20894,6 @@
         },
         {
           "name": "elemento 59",
-          "alias": true
-        },
-        {
-          "name": "Pr",
           "alias": true
         }
       ],
@@ -22009,164 +20905,96 @@
         {
           "name": "elemento 59",
           "alias": true
-        },
-        {
-          "name": "Pr",
-          "alias": true
         }
       ],
       "ru": [
         {
           "name": "празеодим",
           "pref": true
-        },
-        {
-          "name": "Pr",
-          "alias": true
         }
       ],
       "tr": [
         {
-          "name": "Praseodim",
+          "name": "praseodim",
           "pref": true
-        },
-        {
-          "name": "Pr",
-          "alias": true
         }
       ],
       "pl": [
         {
           "name": "prazeodym",
           "pref": true
-        },
-        {
-          "name": "Pr",
-          "alias": true
         }
       ],
       "nl": [
         {
           "name": "praseodymium",
           "pref": true
-        },
-        {
-          "name": "Pr",
-          "alias": true
         }
       ],
       "bg": [
         {
           "name": "празеодим",
           "pref": true
-        },
-        {
-          "name": "Pr",
-          "alias": true
         }
       ],
       "cs": [
         {
           "name": "praseodym",
           "pref": true
-        },
-        {
-          "name": "Pr",
-          "alias": true
         }
       ],
       "da": [
         {
           "name": "praseodym",
           "pref": true
-        },
-        {
-          "name": "Pr",
-          "alias": true
         }
       ],
       "et": [
         {
-          "name": "Praseodüüm",
+          "name": "praseodüüm",
           "pref": true
-        },
-        {
-          "name": "Pr",
-          "alias": true
         }
       ],
       "fi": [
         {
           "name": "praseodyymi",
           "pref": true
-        },
-        {
-          "name": "Pr",
-          "alias": true
         }
       ],
       "el": [
         {
           "name": "πρασεοδύμιο",
           "pref": true
-        },
-        {
-          "name": "Pr",
-          "alias": true
         }
       ],
       "he": [
         {
           "name": "פרסאודימיום",
           "pref": true
-        },
-        {
-          "name": "Pr",
-          "alias": true
         }
       ],
       "hu": [
         {
           "name": "prazeodímium",
           "pref": true
-        },
-        {
-          "name": "Pr",
-          "alias": true
         }
       ],
       "lv": [
         {
           "name": "prazeodīms",
           "pref": true
-        },
-        {
-          "name": "Pr",
-          "alias": true
         }
       ],
       "mk": [
         {
           "name": "празеодиум",
           "pref": true
-        },
-        {
-          "name": "Pr",
-          "alias": true
         }
       ],
       "nb": [
         {
           "name": "praseodym",
           "pref": true
-        },
-        {
-          "name": "Pr",
-          "alias": true
-        },
-        {
-          "name": "Praseodym",
-          "alias": true
         }
       ],
       "nn": [
@@ -22175,15 +21003,7 @@
           "pref": true
         },
         {
-          "name": "Pr",
-          "alias": true
-        },
-        {
           "name": "grunnstoff 59",
-          "alias": true
-        },
-        {
-          "name": "59Pr",
           "alias": true
         }
       ],
@@ -22191,50 +21011,30 @@
         {
           "name": "praseodim",
           "pref": true
-        },
-        {
-          "name": "Pr",
-          "alias": true
         }
       ],
       "sr": [
         {
           "name": "празеодијум",
           "pref": true
-        },
-        {
-          "name": "Pr",
-          "alias": true
         }
       ],
       "sk": [
         {
           "name": "prazeodým",
           "pref": true
-        },
-        {
-          "name": "Pr",
-          "alias": true
         }
       ],
       "sv": [
         {
           "name": "praseodym",
           "pref": true
-        },
-        {
-          "name": "Pr",
-          "alias": true
         }
       ],
       "tl": [
         {
-          "name": "Praseodimyo",
+          "name": "praseodimyo",
           "pref": true
-        },
-        {
-          "name": "Pr",
-          "alias": true
         }
       ]
     }
@@ -22249,19 +21049,7 @@
           "pref": true
         },
         {
-          "name": "Neodymium",
-          "alias": true
-        },
-        {
-          "name": "60Nd",
-          "alias": true
-        },
-        {
           "name": "element 60",
-          "alias": true
-        },
-        {
-          "name": "Nd",
           "alias": true
         }
       ],
@@ -22269,20 +21057,12 @@
         {
           "name": "Neodym",
           "pref": true
-        },
-        {
-          "name": "Nd",
-          "alias": true
         }
       ],
       "es": [
         {
           "name": "neodimio",
           "pref": true
-        },
-        {
-          "name": "Nd",
-          "alias": true
         }
       ],
       "fr": [
@@ -22291,15 +21071,7 @@
           "pref": true
         },
         {
-          "name": "60Nd",
-          "alias": true
-        },
-        {
           "name": "élément 60",
-          "alias": true
-        },
-        {
-          "name": "Nd",
           "alias": true
         }
       ],
@@ -22307,10 +21079,6 @@
         {
           "name": "neodimio",
           "pref": true
-        },
-        {
-          "name": "Nd",
-          "alias": true
         }
       ],
       "ja": [
@@ -22321,50 +21089,30 @@
         {
           "name": "ネオジウム",
           "alias": true
-        },
-        {
-          "name": "Nd",
-          "alias": true
         }
       ],
       "ko": [
         {
           "name": "네오디뮴",
           "pref": true
-        },
-        {
-          "name": "Nd",
-          "alias": true
         }
       ],
       "zh": [
         {
           "name": "钕",
           "pref": true
-        },
-        {
-          "name": "Nd",
-          "alias": true
         }
       ],
       "zh-hant": [
         {
           "name": "釹",
           "pref": true
-        },
-        {
-          "name": "Nd",
-          "alias": true
         }
       ],
       "zh-tw": [
         {
           "name": "釹",
           "pref": true
-        },
-        {
-          "name": "Nd",
-          "alias": true
         }
       ],
       "pt": [
@@ -22374,10 +21122,6 @@
         },
         {
           "name": "elemento 60",
-          "alias": true
-        },
-        {
-          "name": "Nd",
           "alias": true
         }
       ],
@@ -22389,140 +21133,84 @@
         {
           "name": "elemento 60",
           "alias": true
-        },
-        {
-          "name": "Nd",
-          "alias": true
         }
       ],
       "ru": [
         {
           "name": "неодим",
           "pref": true
-        },
-        {
-          "name": "Nd",
-          "alias": true
         }
       ],
       "tr": [
         {
-          "name": "Neodimyum",
+          "name": "neodimyum",
           "pref": true
-        },
-        {
-          "name": "Nd",
-          "alias": true
         }
       ],
       "pl": [
         {
           "name": "neodym",
           "pref": true
-        },
-        {
-          "name": "Nd",
-          "alias": true
         }
       ],
       "nl": [
         {
           "name": "neodymium",
           "pref": true
-        },
-        {
-          "name": "Nd",
-          "alias": true
         }
       ],
       "bg": [
         {
           "name": "неодим",
           "pref": true
-        },
-        {
-          "name": "Nd",
-          "alias": true
         }
       ],
       "cs": [
         {
           "name": "neodym",
           "pref": true
-        },
-        {
-          "name": "Nd",
-          "alias": true
         }
       ],
       "da": [
         {
           "name": "neodym",
           "pref": true
-        },
-        {
-          "name": "Nd",
-          "alias": true
         }
       ],
       "et": [
         {
-          "name": "Neodüüm",
+          "name": "neodüüm",
           "pref": true
-        },
-        {
-          "name": "Nd",
-          "alias": true
         }
       ],
       "fi": [
         {
           "name": "neodyymi",
           "pref": true
-        },
-        {
-          "name": "Nd",
-          "alias": true
         }
       ],
       "el": [
         {
           "name": "νεοδύμιο",
           "pref": true
-        },
-        {
-          "name": "Nd",
-          "alias": true
         }
       ],
       "he": [
         {
           "name": "נאודימיום",
           "pref": true
-        },
-        {
-          "name": "Nd",
-          "alias": true
         }
       ],
       "hu": [
         {
           "name": "neodímium",
           "pref": true
-        },
-        {
-          "name": "Nd",
-          "alias": true
         }
       ],
       "lv": [
         {
           "name": "neodīms",
           "pref": true
-        },
-        {
-          "name": "Nd",
-          "alias": true
         }
       ],
       "mk": [
@@ -22533,24 +21221,12 @@
         {
           "name": "неодим",
           "alias": true
-        },
-        {
-          "name": "Nd",
-          "alias": true
         }
       ],
       "nb": [
         {
           "name": "neodym",
           "pref": true
-        },
-        {
-          "name": "Neodym",
-          "alias": true
-        },
-        {
-          "name": "Nd",
-          "alias": true
         }
       ],
       "nn": [
@@ -22559,15 +21235,7 @@
           "pref": true
         },
         {
-          "name": "60Nd",
-          "alias": true
-        },
-        {
           "name": "grunnstoff 60",
-          "alias": true
-        },
-        {
-          "name": "Nd",
           "alias": true
         }
       ],
@@ -22575,50 +21243,30 @@
         {
           "name": "neodim",
           "pref": true
-        },
-        {
-          "name": "Nd",
-          "alias": true
         }
       ],
       "sr": [
         {
           "name": "неодијум",
           "pref": true
-        },
-        {
-          "name": "Nd",
-          "alias": true
         }
       ],
       "sk": [
         {
           "name": "neodým",
           "pref": true
-        },
-        {
-          "name": "Nd",
-          "alias": true
         }
       ],
       "sv": [
         {
           "name": "neodym",
           "pref": true
-        },
-        {
-          "name": "Nd",
-          "alias": true
         }
       ],
       "tl": [
         {
-          "name": "Neodimyo",
+          "name": "neodimyo",
           "pref": true
-        },
-        {
-          "name": "Nd",
-          "alias": true
         }
       ]
     }
@@ -27921,14 +26569,6 @@
           "alias": true
         },
         {
-          "name": "75Re",
-          "alias": true
-        },
-        {
-          "name": "Re",
-          "alias": true
-        },
-        {
           "name": "element 75",
           "alias": true
         }
@@ -27939,10 +26579,6 @@
           "pref": true
         },
         {
-          "name": "Re",
-          "alias": true
-        },
-        {
           "name": "Masurium",
           "alias": true
         }
@@ -27951,10 +26587,6 @@
         {
           "name": "renio",
           "pref": true
-        },
-        {
-          "name": "Re",
-          "alias": true
         }
       ],
       "fr": [
@@ -27963,15 +26595,7 @@
           "pref": true
         },
         {
-          "name": "75Re",
-          "alias": true
-        },
-        {
           "name": "élément 75",
-          "alias": true
-        },
-        {
-          "name": "Re",
           "alias": true
         },
         {
@@ -27983,20 +26607,12 @@
         {
           "name": "renio",
           "pref": true
-        },
-        {
-          "name": "Re",
-          "alias": true
         }
       ],
       "ja": [
         {
           "name": "レニウム",
           "pref": true
-        },
-        {
-          "name": "Re",
-          "alias": true
         },
         {
           "name": "ニッポニウム",
@@ -28007,56 +26623,30 @@
         {
           "name": "레늄",
           "pref": true
-        },
-        {
-          "name": "Re",
-          "alias": true
-        }
-      ],
-      "zh-hans": [
-        {
-          "name": "Re",
-          "alias": true
         }
       ],
       "zh": [
         {
           "name": "铼",
           "pref": true
-        },
-        {
-          "name": "Re",
-          "alias": true
         }
       ],
       "zh-hant": [
         {
           "name": "錸",
           "pref": true
-        },
-        {
-          "name": "Re",
-          "alias": true
         }
       ],
       "zh-tw": [
         {
           "name": "錸",
           "pref": true
-        },
-        {
-          "name": "Re",
-          "alias": true
         }
       ],
       "pt": [
         {
           "name": "rénio",
           "pref": true
-        },
-        {
-          "name": "Re",
-          "alias": true
         },
         {
           "name": "elemento 75",
@@ -28073,10 +26663,6 @@
           "alias": true
         },
         {
-          "name": "Re",
-          "alias": true
-        },
-        {
           "name": "elemento 75",
           "alias": true
         }
@@ -28085,164 +26671,96 @@
         {
           "name": "рений",
           "pref": true
-        },
-        {
-          "name": "Re",
-          "alias": true
         }
       ],
       "tr": [
         {
           "name": "renyum",
           "pref": true
-        },
-        {
-          "name": "Re",
-          "alias": true
         }
       ],
       "pl": [
         {
           "name": "ren",
           "pref": true
-        },
-        {
-          "name": "Re",
-          "alias": true
         }
       ],
       "nl": [
         {
           "name": "renium",
           "pref": true
-        },
-        {
-          "name": "Re",
-          "alias": true
         }
       ],
       "bg": [
         {
           "name": "рений",
           "pref": true
-        },
-        {
-          "name": "Re",
-          "alias": true
         }
       ],
       "cs": [
         {
           "name": "rhenium",
           "pref": true
-        },
-        {
-          "name": "Re",
-          "alias": true
         }
       ],
       "da": [
         {
           "name": "rhenium",
           "pref": true
-        },
-        {
-          "name": "Re",
-          "alias": true
         }
       ],
       "et": [
         {
           "name": "reenium",
           "pref": true
-        },
-        {
-          "name": "Re",
-          "alias": true
         }
       ],
       "fi": [
         {
           "name": "renium",
           "pref": true
-        },
-        {
-          "name": "Re",
-          "alias": true
         }
       ],
       "el": [
         {
           "name": "ρήνιο",
           "pref": true
-        },
-        {
-          "name": "Re",
-          "alias": true
         }
       ],
       "he": [
         {
           "name": "רניום",
           "pref": true
-        },
-        {
-          "name": "Re",
-          "alias": true
         }
       ],
       "hu": [
         {
           "name": "rénium",
           "pref": true
-        },
-        {
-          "name": "Re",
-          "alias": true
         }
       ],
       "lv": [
         {
           "name": "rēnijs",
           "pref": true
-        },
-        {
-          "name": "Re",
-          "alias": true
         }
       ],
       "mk": [
         {
           "name": "рениум",
           "pref": true
-        },
-        {
-          "name": "Re",
-          "alias": true
         }
       ],
       "nb": [
         {
           "name": "rhenium",
           "pref": true
-        },
-        {
-          "name": "Re",
-          "alias": true
         }
       ],
       "nn": [
         {
           "name": "rhenium",
           "pref": true
-        },
-        {
-          "name": "75Re",
-          "alias": true
-        },
-        {
-          "name": "Re",
-          "alias": true
         },
         {
           "name": "grunnstoff 75",
@@ -28257,45 +26775,29 @@
         {
           "name": "rhenium",
           "alias": true
-        },
-        {
-          "name": "Re",
-          "alias": true
         }
       ],
       "sr": [
         {
           "name": "ренијум",
           "pref": true
-        },
-        {
-          "name": "Re",
-          "alias": true
         }
       ],
       "sk": [
         {
           "name": "rénium",
           "pref": true
-        },
-        {
-          "name": "Re",
-          "alias": true
         }
       ],
       "sv": [
         {
           "name": "rhenium",
           "pref": true
-        },
-        {
-          "name": "Re",
-          "alias": true
         }
       ],
       "tl": [
         {
-          "name": "Renyo",
+          "name": "renyo",
           "pref": true
         }
       ]
@@ -28313,34 +26815,18 @@
         {
           "name": "element 76",
           "alias": true
-        },
-        {
-          "name": "Os",
-          "alias": true
-        },
-        {
-          "name": "76Os",
-          "alias": true
         }
       ],
       "de": [
         {
           "name": "Osmium",
           "pref": true
-        },
-        {
-          "name": "Os",
-          "alias": true
         }
       ],
       "es": [
         {
           "name": "osmio",
           "pref": true
-        },
-        {
-          "name": "Os",
-          "alias": true
         }
       ],
       "fr": [
@@ -28351,24 +26837,12 @@
         {
           "name": "élément 76",
           "alias": true
-        },
-        {
-          "name": "Os",
-          "alias": true
-        },
-        {
-          "name": "76Os",
-          "alias": true
         }
       ],
       "it": [
         {
           "name": "osmio",
           "pref": true
-        },
-        {
-          "name": "Os",
-          "alias": true
         }
       ],
       "ja": [
@@ -28407,40 +26881,24 @@
         {
           "name": "锇",
           "alias": true
-        },
-        {
-          "name": "Os",
-          "alias": true
         }
       ],
       "zh-hant": [
         {
           "name": "鋨",
           "pref": true
-        },
-        {
-          "name": "Os",
-          "alias": true
         }
       ],
       "zh-tw": [
         {
           "name": "鋨",
           "pref": true
-        },
-        {
-          "name": "Os",
-          "alias": true
         }
       ],
       "zh-hk": [
         {
           "name": "鋨",
           "pref": true
-        },
-        {
-          "name": "Os",
-          "alias": true
         }
       ],
       "pt": [
@@ -28450,10 +26908,6 @@
         },
         {
           "name": "elemento 76",
-          "alias": true
-        },
-        {
-          "name": "Os",
           "alias": true
         }
       ],
@@ -28465,10 +26919,6 @@
         {
           "name": "elemento 76",
           "alias": true
-        },
-        {
-          "name": "Os",
-          "alias": true
         }
       ],
       "ru": [
@@ -28479,7 +26929,7 @@
       ],
       "tr": [
         {
-          "name": "Osmiyum",
+          "name": "osmiyum",
           "pref": true
         }
       ],
@@ -28487,10 +26937,6 @@
         {
           "name": "osm",
           "pref": true
-        },
-        {
-          "name": "Os",
-          "alias": true
         }
       ],
       "nl": [
@@ -28509,10 +26955,6 @@
         {
           "name": "osmium",
           "pref": true
-        },
-        {
-          "name": "Os",
-          "alias": true
         }
       ],
       "da": [
@@ -28523,7 +26965,7 @@
       ],
       "et": [
         {
-          "name": "Osmium",
+          "name": "osmium",
           "pref": true
         }
       ],
@@ -28551,10 +26993,6 @@
           "pref": true
         },
         {
-          "name": "Os",
-          "alias": true
-        },
-        {
           "name": "szagany",
           "alias": true
         }
@@ -28575,24 +27013,12 @@
         {
           "name": "osmium",
           "pref": true
-        },
-        {
-          "name": "Os",
-          "alias": true
         }
       ],
       "nn": [
         {
           "name": "osmium",
           "pref": true
-        },
-        {
-          "name": "76Os",
-          "alias": true
-        },
-        {
-          "name": "Os",
-          "alias": true
         },
         {
           "name": "grunnstoff 76",
@@ -28603,10 +27029,6 @@
         {
           "name": "osmiu",
           "pref": true
-        },
-        {
-          "name": "Os",
-          "alias": true
         }
       ],
       "sr": [
@@ -28617,20 +27039,12 @@
         {
           "name": "елемент 76",
           "alias": true
-        },
-        {
-          "name": "Os",
-          "alias": true
         }
       ],
       "sk": [
         {
           "name": "osmium",
           "pref": true
-        },
-        {
-          "name": "Os",
-          "alias": true
         }
       ],
       "sv": [
@@ -28641,7 +27055,7 @@
       ],
       "tl": [
         {
-          "name": "Osmiyo",
+          "name": "osmiyo",
           "pref": true
         }
       ]
@@ -28977,34 +27391,18 @@
         {
           "name": "element 78",
           "alias": true
-        },
-        {
-          "name": "Pt",
-          "alias": true
-        },
-        {
-          "name": "78Pt",
-          "alias": true
         }
       ],
       "de": [
         {
           "name": "Platin",
           "pref": true
-        },
-        {
-          "name": "Pt",
-          "alias": true
         }
       ],
       "es": [
         {
           "name": "platino",
           "pref": true
-        },
-        {
-          "name": "Pt",
-          "alias": true
         }
       ],
       "fr": [
@@ -29015,24 +27413,12 @@
         {
           "name": "élément 78",
           "alias": true
-        },
-        {
-          "name": "Pt",
-          "alias": true
-        },
-        {
-          "name": "78Pt",
-          "alias": true
         }
       ],
       "it": [
         {
           "name": "platino",
           "pref": true
-        },
-        {
-          "name": "Pt",
-          "alias": true
         }
       ],
       "ja": [
@@ -29075,30 +27461,18 @@
         {
           "name": "铂",
           "pref": true
-        },
-        {
-          "name": "Pt",
-          "alias": true
         }
       ],
       "zh-hant": [
         {
           "name": "鉑",
           "pref": true
-        },
-        {
-          "name": "Pt",
-          "alias": true
         }
       ],
       "zh-tw": [
         {
           "name": "鉑",
           "pref": true
-        },
-        {
-          "name": "Pt",
-          "alias": true
         }
       ],
       "zh-hk": [
@@ -29115,10 +27489,6 @@
         {
           "name": "elemento 78",
           "alias": true
-        },
-        {
-          "name": "Pt",
-          "alias": true
         }
       ],
       "pt-br": [
@@ -29128,10 +27498,6 @@
         },
         {
           "name": "elemento 78",
-          "alias": true
-        },
-        {
-          "name": "Pt",
           "alias": true
         }
       ],
@@ -29143,15 +27509,11 @@
         {
           "name": "серебрец",
           "alias": true
-        },
-        {
-          "name": "Pt",
-          "alias": true
         }
       ],
       "tr": [
         {
-          "name": "Platin",
+          "name": "platin",
           "pref": true
         }
       ],
@@ -29159,10 +27521,6 @@
         {
           "name": "platyna",
           "pref": true
-        },
-        {
-          "name": "Pt",
-          "alias": true
         }
       ],
       "nl": [
@@ -29189,10 +27547,6 @@
         {
           "name": "platinum",
           "alias": true
-        },
-        {
-          "name": "Pt",
-          "alias": true
         }
       ],
       "da": [
@@ -29203,7 +27557,7 @@
       ],
       "et": [
         {
-          "name": "Plaatina",
+          "name": "plaatina",
           "pref": true
         }
       ],
@@ -29217,10 +27571,6 @@
         {
           "name": "λευκόχρυσος",
           "pref": true
-        },
-        {
-          "name": "Pt",
-          "alias": true
         }
       ],
       "he": [
@@ -29236,10 +27586,6 @@
         },
         {
           "name": "éreny",
-          "alias": true
-        },
-        {
-          "name": "Pt",
           "alias": true
         }
       ],
@@ -29259,28 +27605,12 @@
         {
           "name": "platina",
           "pref": true
-        },
-        {
-          "name": "Pt",
-          "alias": true
         }
       ],
       "nn": [
         {
           "name": "platina",
           "pref": true
-        },
-        {
-          "name": "⁷⁸Pt",
-          "alias": true
-        },
-        {
-          "name": "Pt",
-          "alias": true
-        },
-        {
-          "name": "78Pt",
-          "alias": true
         },
         {
           "name": "grunnstoff 78",
@@ -29291,10 +27621,6 @@
         {
           "name": "platină",
           "pref": true
-        },
-        {
-          "name": "Pt",
-          "alias": true
         }
       ],
       "sr": [
@@ -29307,25 +27633,17 @@
         {
           "name": "platina",
           "pref": true
-        },
-        {
-          "name": "Pt",
-          "alias": true
         }
       ],
       "sv": [
         {
           "name": "platina",
           "pref": true
-        },
-        {
-          "name": "Pt",
-          "alias": true
         }
       ],
       "tl": [
         {
-          "name": "Platino",
+          "name": "platino",
           "pref": true
         }
       ]
@@ -31063,48 +29381,24 @@
         {
           "name": "element 84",
           "alias": true
-        },
-        {
-          "name": "84Po",
-          "alias": true
-        },
-        {
-          "name": "Po",
-          "alias": true
         }
       ],
       "de": [
         {
           "name": "Polonium",
           "pref": true
-        },
-        {
-          "name": "Po",
-          "alias": true
         }
       ],
       "es": [
         {
           "name": "polonio",
           "pref": true
-        },
-        {
-          "name": "Po",
-          "alias": true
         }
       ],
       "fr": [
         {
           "name": "polonium",
           "pref": true
-        },
-        {
-          "name": "84Po",
-          "alias": true
-        },
-        {
-          "name": "Po",
-          "alias": true
         },
         {
           "name": "élément 84",
@@ -31115,20 +29409,12 @@
         {
           "name": "polonio",
           "pref": true
-        },
-        {
-          "name": "Po",
-          "alias": true
         }
       ],
       "ja": [
         {
           "name": "ポロニウム",
           "pref": true
-        },
-        {
-          "name": "Po",
-          "alias": true
         }
       ],
       "ko": [
@@ -31165,30 +29451,18 @@
         {
           "name": "釙",
           "pref": true
-        },
-        {
-          "name": "Po",
-          "alias": true
         }
       ],
       "zh-hant": [
         {
           "name": "釙",
           "pref": true
-        },
-        {
-          "name": "Po",
-          "alias": true
         }
       ],
       "zh-tw": [
         {
           "name": "釙",
           "pref": true
-        },
-        {
-          "name": "Po",
-          "alias": true
         }
       ],
       "zh-hk": [
@@ -31211,10 +29485,6 @@
         {
           "name": "elemento 84",
           "alias": true
-        },
-        {
-          "name": "Po",
-          "alias": true
         }
       ],
       "pt-br": [
@@ -31224,10 +29494,6 @@
         },
         {
           "name": "elemento 84",
-          "alias": true
-        },
-        {
-          "name": "Po",
           "alias": true
         }
       ],
@@ -31247,10 +29513,6 @@
         {
           "name": "polon",
           "pref": true
-        },
-        {
-          "name": "Po",
-          "alias": true
         }
       ],
       "nl": [
@@ -31269,10 +29531,6 @@
         {
           "name": "polonium",
           "pref": true
-        },
-        {
-          "name": "Po",
-          "alias": true
         }
       ],
       "da": [
@@ -31285,30 +29543,18 @@
         {
           "name": "poloonium",
           "pref": true
-        },
-        {
-          "name": "Po",
-          "alias": true
         }
       ],
       "fi": [
         {
           "name": "polonium",
           "pref": true
-        },
-        {
-          "name": "Po",
-          "alias": true
         }
       ],
       "el": [
         {
           "name": "πολώνιο",
           "pref": true
-        },
-        {
-          "name": "Po",
-          "alias": true
         }
       ],
       "he": [
@@ -31321,10 +29567,6 @@
         {
           "name": "polónium",
           "pref": true
-        },
-        {
-          "name": "Po",
-          "alias": true
         }
       ],
       "lv": [
@@ -31343,10 +29585,6 @@
         {
           "name": "polonium",
           "pref": true
-        },
-        {
-          "name": "Po",
-          "alias": true
         }
       ],
       "nn": [
@@ -31355,19 +29593,7 @@
           "pref": true
         },
         {
-          "name": "84Po",
-          "alias": true
-        },
-        {
-          "name": "Po",
-          "alias": true
-        },
-        {
           "name": "grunnstoff 84",
-          "alias": true
-        },
-        {
-          "name": "⁸⁴Po",
           "alias": true
         }
       ],
@@ -31375,30 +29601,18 @@
         {
           "name": "poloniu",
           "pref": true
-        },
-        {
-          "name": "Po",
-          "alias": true
         }
       ],
       "sr": [
         {
           "name": "полонијум",
           "pref": true
-        },
-        {
-          "name": "Po",
-          "alias": true
         }
       ],
       "sk": [
         {
           "name": "polónium",
           "pref": true
-        },
-        {
-          "name": "Po",
-          "alias": true
         }
       ],
       "sv": [
@@ -31409,7 +29623,7 @@
       ],
       "tl": [
         {
-          "name": "Polonyo",
+          "name": "polonyo",
           "pref": true
         }
       ]
@@ -31841,10 +30055,6 @@
           "pref": true
         },
         {
-          "name": "86Rn",
-          "alias": true
-        },
-        {
           "name": "element 86",
           "alias": true
         }
@@ -31869,10 +30079,6 @@
         {
           "name": "radon",
           "pref": true
-        },
-        {
-          "name": "86Rn",
-          "alias": true
         },
         {
           "name": "élément 86",
@@ -32085,14 +30291,6 @@
         {
           "name": "radon",
           "pref": true
-        },
-        {
-          "name": "86Rn",
-          "alias": true
-        },
-        {
-          "name": "⁸⁶Rn",
-          "alias": true
         },
         {
           "name": "grunnstoff 86",
@@ -33595,14 +31793,6 @@
           "alias": true
         },
         {
-          "name": "Pa",
-          "alias": true
-        },
-        {
-          "name": "91Pa",
-          "alias": true
-        },
-        {
           "name": "element 91",
           "alias": true
         }
@@ -33611,20 +31801,12 @@
         {
           "name": "Protactinium",
           "pref": true
-        },
-        {
-          "name": "Pa",
-          "alias": true
         }
       ],
       "es": [
         {
           "name": "protactinio",
           "pref": true
-        },
-        {
-          "name": "Pa",
-          "alias": true
         }
       ],
       "fr": [
@@ -33641,14 +31823,6 @@
           "alias": true
         },
         {
-          "name": "Pa",
-          "alias": true
-        },
-        {
-          "name": "91Pa",
-          "alias": true
-        },
-        {
           "name": "élément 91",
           "alias": true
         }
@@ -33657,10 +31831,6 @@
         {
           "name": "protoattinio",
           "pref": true
-        },
-        {
-          "name": "Pa",
-          "alias": true
         }
       ],
       "ja": [
@@ -33711,10 +31881,6 @@
         {
           "name": "鎃",
           "alias": true
-        },
-        {
-          "name": "Pa",
-          "alias": true
         }
       ],
       "zh-hant": [
@@ -33725,10 +31891,6 @@
         {
           "name": "鎃",
           "alias": true
-        },
-        {
-          "name": "Pa",
-          "alias": true
         }
       ],
       "zh-tw": [
@@ -33738,10 +31900,6 @@
         },
         {
           "name": "鎃",
-          "alias": true
-        },
-        {
-          "name": "Pa",
           "alias": true
         }
       ],
@@ -33773,10 +31931,6 @@
         {
           "name": "elemento 91",
           "alias": true
-        },
-        {
-          "name": "Pa",
-          "alias": true
         }
       ],
       "pt-br": [
@@ -33786,10 +31940,6 @@
         },
         {
           "name": "elemento 91",
-          "alias": true
-        },
-        {
-          "name": "Pa",
           "alias": true
         }
       ],
@@ -33809,10 +31959,6 @@
         {
           "name": "protaktyn",
           "pref": true
-        },
-        {
-          "name": "Pa",
-          "alias": true
         }
       ],
       "nl": [
@@ -33831,10 +31977,6 @@
         {
           "name": "protaktinium",
           "pref": true
-        },
-        {
-          "name": "Pa",
-          "alias": true
         }
       ],
       "da": [
@@ -33871,10 +32013,6 @@
         {
           "name": "protaktínium",
           "pref": true
-        },
-        {
-          "name": "Pa",
-          "alias": true
         }
       ],
       "lv": [
@@ -33893,14 +32031,6 @@
         {
           "name": "protactinium",
           "pref": true
-        },
-        {
-          "name": "Protactinium",
-          "alias": true
-        },
-        {
-          "name": "Pa",
-          "alias": true
         }
       ],
       "nn": [
@@ -33923,28 +32053,12 @@
         {
           "name": "brevium",
           "alias": true
-        },
-        {
-          "name": "Pa",
-          "alias": true
-        },
-        {
-          "name": "91Pa",
-          "alias": true
-        },
-        {
-          "name": "⁹¹Pa",
-          "alias": true
         }
       ],
       "ro": [
         {
           "name": "protactiniu",
           "pref": true
-        },
-        {
-          "name": "Pa",
-          "alias": true
         }
       ],
       "sr": [
@@ -33957,10 +32071,6 @@
         {
           "name": "protaktínium",
           "pref": true
-        },
-        {
-          "name": "Pa",
-          "alias": true
         }
       ],
       "sv": [
@@ -33971,7 +32081,7 @@
       ],
       "tl": [
         {
-          "name": "Protaktinyo",
+          "name": "protaktinyo",
           "pref": true
         }
       ]
@@ -34331,14 +32441,6 @@
           "pref": true
         },
         {
-          "name": "Np",
-          "alias": true
-        },
-        {
-          "name": "93Np",
-          "alias": true
-        },
-        {
           "name": "element 93",
           "alias": true
         }
@@ -34347,34 +32449,18 @@
         {
           "name": "Neptunium",
           "pref": true
-        },
-        {
-          "name": "Np",
-          "alias": true
         }
       ],
       "es": [
         {
           "name": "neptunio",
           "pref": true
-        },
-        {
-          "name": "Np",
-          "alias": true
         }
       ],
       "fr": [
         {
           "name": "neptunium",
           "pref": true
-        },
-        {
-          "name": "Np",
-          "alias": true
-        },
-        {
-          "name": "93Np",
-          "alias": true
         },
         {
           "name": "élément 93",
@@ -34385,10 +32471,6 @@
         {
           "name": "nettunio",
           "pref": true
-        },
-        {
-          "name": "Np",
-          "alias": true
         }
       ],
       "ja": [
@@ -34431,10 +32513,6 @@
         {
           "name": "錼",
           "pref": true
-        },
-        {
-          "name": "Np",
-          "alias": true
         }
       ],
       "zh-hant": [
@@ -34445,20 +32523,12 @@
         {
           "name": "鎿",
           "alias": true
-        },
-        {
-          "name": "Np",
-          "alias": true
         }
       ],
       "zh-tw": [
         {
           "name": "錼",
           "pref": true
-        },
-        {
-          "name": "Np",
-          "alias": true
         }
       ],
       "zh-hk": [
@@ -34479,10 +32549,6 @@
           "pref": true
         },
         {
-          "name": "Np",
-          "alias": true
-        },
-        {
           "name": "elemento 93",
           "alias": true
         },
@@ -34495,10 +32561,6 @@
         {
           "name": "netúnio",
           "pref": true
-        },
-        {
-          "name": "Np",
-          "alias": true
         },
         {
           "name": "elemento 93",
@@ -34521,10 +32583,6 @@
         {
           "name": "neptun",
           "pref": true
-        },
-        {
-          "name": "Np",
-          "alias": true
         }
       ],
       "nl": [
@@ -34543,10 +32601,6 @@
         {
           "name": "neptunium",
           "pref": true
-        },
-        {
-          "name": "Np",
-          "alias": true
         }
       ],
       "da": [
@@ -34583,10 +32637,6 @@
         {
           "name": "neptúnium",
           "pref": true
-        },
-        {
-          "name": "Np",
-          "alias": true
         }
       ],
       "lv": [
@@ -34605,10 +32655,6 @@
         {
           "name": "neptunium",
           "pref": true
-        },
-        {
-          "name": "Np",
-          "alias": true
         }
       ],
       "nn": [
@@ -34619,24 +32665,12 @@
         {
           "name": "grunnstoff 93",
           "alias": true
-        },
-        {
-          "name": "Np",
-          "alias": true
-        },
-        {
-          "name": "93Np",
-          "alias": true
         }
       ],
       "ro": [
         {
           "name": "neptuniu",
           "pref": true
-        },
-        {
-          "name": "Np",
-          "alias": true
         }
       ],
       "sr": [
@@ -34649,10 +32683,6 @@
         {
           "name": "neptúnium",
           "pref": true
-        },
-        {
-          "name": "Np",
-          "alias": true
         }
       ],
       "sv": [
@@ -34663,7 +32693,7 @@
       ],
       "tl": [
         {
-          "name": "Neptunyo",
+          "name": "neptunyo",
           "pref": true
         }
       ]
@@ -34677,10 +32707,6 @@
         {
           "name": "plutonium",
           "pref": true
-        },
-        {
-          "name": "94Pu",
-          "alias": true
         },
         {
           "name": "element 94",
@@ -34697,20 +32723,12 @@
         {
           "name": "plutonio",
           "pref": true
-        },
-        {
-          "name": "Pu",
-          "alias": true
         }
       ],
       "fr": [
         {
           "name": "plutonium",
           "pref": true
-        },
-        {
-          "name": "94Pu",
-          "alias": true
         },
         {
           "name": "élément 94",
@@ -34721,10 +32739,6 @@
         {
           "name": "plutonio",
           "pref": true
-        },
-        {
-          "name": "Pu",
-          "alias": true
         }
       ],
       "ja": [
@@ -34779,10 +32793,6 @@
           "pref": true
         },
         {
-          "name": "Pu",
-          "alias": true
-        },
-        {
           "name": "鈈",
           "alias": true
         }
@@ -34791,10 +32801,6 @@
         {
           "name": "鈽",
           "pref": true
-        },
-        {
-          "name": "Pu",
-          "alias": true
         }
       ],
       "zh-hk": [
@@ -34815,10 +32821,6 @@
           "pref": true
         },
         {
-          "name": "Pu",
-          "alias": true
-        },
-        {
           "name": "elemento 94",
           "alias": true
         }
@@ -34827,10 +32829,6 @@
         {
           "name": "plutônio",
           "pref": true
-        },
-        {
-          "name": "Pu",
-          "alias": true
         },
         {
           "name": "elemento 94",
@@ -34853,10 +32851,6 @@
         {
           "name": "pluton",
           "pref": true
-        },
-        {
-          "name": "Pu",
-          "alias": true
         }
       ],
       "nl": [
@@ -34875,10 +32869,6 @@
         {
           "name": "plutonium",
           "pref": true
-        },
-        {
-          "name": "Pu",
-          "alias": true
         }
       ],
       "da": [
@@ -34915,10 +32905,6 @@
         {
           "name": "plutónium",
           "pref": true
-        },
-        {
-          "name": "Pu",
-          "alias": true
         }
       ],
       "lv": [
@@ -34937,24 +32923,12 @@
         {
           "name": "plutonium",
           "pref": true
-        },
-        {
-          "name": "Pu",
-          "alias": true
         }
       ],
       "nn": [
         {
           "name": "plutonium",
           "pref": true
-        },
-        {
-          "name": "Pu",
-          "alias": true
-        },
-        {
-          "name": "94Pu",
-          "alias": true
         },
         {
           "name": "grunnstoff 94",
@@ -34965,10 +32939,6 @@
         {
           "name": "plutoniu",
           "pref": true
-        },
-        {
-          "name": "Pu",
-          "alias": true
         }
       ],
       "sr": [
@@ -34981,10 +32951,6 @@
         {
           "name": "plutónium",
           "pref": true
-        },
-        {
-          "name": "Pu",
-          "alias": true
         }
       ],
       "sv": [
@@ -34995,7 +32961,7 @@
       ],
       "tl": [
         {
-          "name": "Plutonyo",
+          "name": "plutonyo",
           "pref": true
         }
       ]
@@ -37081,18 +35047,6 @@
         {
           "name": "element 101",
           "alias": true
-        },
-        {
-          "name": "unnilunium",
-          "alias": true
-        },
-        {
-          "name": "101Md",
-          "alias": true
-        },
-        {
-          "name": "Mv",
-          "alias": true
         }
       ],
       "de": [
@@ -37102,10 +35056,6 @@
         },
         {
           "name": "Mendelejewium",
-          "alias": true
-        },
-        {
-          "name": "Unnilunium",
           "alias": true
         }
       ],
@@ -37313,10 +35263,6 @@
         {
           "name": "mendelevium",
           "pref": true
-        },
-        {
-          "name": "Mendelevium",
-          "alias": true
         }
       ],
       "nn": [
@@ -37326,14 +35272,6 @@
         },
         {
           "name": "grunnstoff 101",
-          "alias": true
-        },
-        {
-          "name": "101Md",
-          "alias": true
-        },
-        {
-          "name": "unnilunium",
           "alias": true
         }
       ],
@@ -37367,7 +35305,7 @@
       ],
       "tl": [
         {
-          "name": "Mendelebiyo",
+          "name": "mendelebiyo",
           "pref": true
         }
       ]
@@ -37385,52 +35323,24 @@
         {
           "name": "element 102",
           "alias": true
-        },
-        {
-          "name": "Unb",
-          "alias": true
-        },
-        {
-          "name": "102No",
-          "alias": true
-        },
-        {
-          "name": "unnilbium",
-          "alias": true
-        },
-        {
-          "name": "No",
-          "alias": true
         }
       ],
       "de": [
         {
           "name": "Nobelium",
           "pref": true
-        },
-        {
-          "name": "No",
-          "alias": true
         }
       ],
       "es": [
         {
           "name": "nobelio",
           "pref": true
-        },
-        {
-          "name": "No",
-          "alias": true
         }
       ],
       "fr": [
         {
           "name": "nobélium",
           "pref": true
-        },
-        {
-          "name": "No",
-          "alias": true
         }
       ],
       "it": [
@@ -37440,10 +35350,6 @@
         },
         {
           "name": "unnilbio",
-          "alias": true
-        },
-        {
-          "name": "No",
           "alias": true
         }
       ],
@@ -37487,30 +35393,18 @@
         {
           "name": "锘",
           "pref": true
-        },
-        {
-          "name": "No",
-          "alias": true
         }
       ],
       "zh-hant": [
         {
           "name": "鍩",
           "pref": true
-        },
-        {
-          "name": "No",
-          "alias": true
         }
       ],
       "zh-tw": [
         {
           "name": "鍩",
           "pref": true
-        },
-        {
-          "name": "No",
-          "alias": true
         }
       ],
       "zh-hk": [
@@ -37533,14 +35427,6 @@
         {
           "name": "elemento 102",
           "alias": true
-        },
-        {
-          "name": "Unb",
-          "alias": true
-        },
-        {
-          "name": "No",
-          "alias": true
         }
       ],
       "pt-br": [
@@ -37550,10 +35436,6 @@
         },
         {
           "name": "elemento 102",
-          "alias": true
-        },
-        {
-          "name": "No",
           "alias": true
         }
       ],
@@ -37573,10 +35455,6 @@
         {
           "name": "nobel",
           "pref": true
-        },
-        {
-          "name": "No",
-          "alias": true
         }
       ],
       "nl": [
@@ -37595,10 +35473,6 @@
         {
           "name": "nobelium",
           "pref": true
-        },
-        {
-          "name": "No",
-          "alias": true
         }
       ],
       "da": [
@@ -37635,18 +35509,6 @@
         {
           "name": "nobélium",
           "pref": true
-        },
-        {
-          "name": "unnilbium",
-          "alias": true
-        },
-        {
-          "name": "Unb",
-          "alias": true
-        },
-        {
-          "name": "No",
-          "alias": true
         }
       ],
       "lv": [
@@ -37669,14 +35531,6 @@
         {
           "name": "nobelium",
           "pref": true
-        },
-        {
-          "name": "Nobelium",
-          "alias": true
-        },
-        {
-          "name": "No",
-          "alias": true
         }
       ],
       "nn": [
@@ -37685,23 +35539,7 @@
           "pref": true
         },
         {
-          "name": "Unb",
-          "alias": true
-        },
-        {
           "name": "grunnstoff 102",
-          "alias": true
-        },
-        {
-          "name": "unnilbium",
-          "alias": true
-        },
-        {
-          "name": "102No",
-          "alias": true
-        },
-        {
-          "name": "No",
           "alias": true
         }
       ],
@@ -37709,10 +35547,6 @@
         {
           "name": "nobeliu",
           "pref": true
-        },
-        {
-          "name": "No",
-          "alias": true
         }
       ],
       "sr": [
@@ -37725,10 +35559,6 @@
         {
           "name": "nobélium",
           "pref": true
-        },
-        {
-          "name": "No",
-          "alias": true
         }
       ],
       "sv": [
@@ -37739,7 +35569,7 @@
       ],
       "tl": [
         {
-          "name": "Nobelyo",
+          "name": "nobelyo",
           "pref": true
         }
       ]
@@ -39983,14 +37813,6 @@
           "pref": true
         },
         {
-          "name": "unnilennium",
-          "alias": true
-        },
-        {
-          "name": "Une",
-          "alias": true
-        },
-        {
           "name": "element 109",
           "alias": true
         }
@@ -40011,15 +37833,11 @@
           "alias": true
         },
         {
-          "name": "Une",
+          "name": "wl",
           "alias": true
         },
         {
-          "name": "Wl",
-          "alias": true
-        },
-        {
-          "name": "Wolschakio",
+          "name": "wolschakio",
           "alias": true
         }
       ],
@@ -40217,20 +38035,12 @@
         {
           "name": "meitnerium",
           "pref": true
-        },
-        {
-          "name": "Meitnerium",
-          "alias": true
         }
       ],
       "nn": [
         {
           "name": "meitnerium",
           "pref": true
-        },
-        {
-          "name": "109Mt",
-          "alias": true
         },
         {
           "name": "grunnstoff 109",
@@ -40263,7 +38073,7 @@
       ],
       "tl": [
         {
-          "name": "Meitneryo",
+          "name": "meitneryo",
           "pref": true
         }
       ]
