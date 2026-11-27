@@ -1,0 +1,6273 @@
+{
+  "Q10460": {
+    "name": "Big Dipper",
+    "sitelinks": 55,
+    "wikipedias": 55,
+    "in": [
+      "purpleForbidden"
+    ],
+    "statements": {
+      "instanceOf": [
+        "Q9262",
+        "Q29441572"
+      ]
+    },
+    "names": {
+      "en": [
+        {
+          "name": "Big Dipper",
+          "pref": true
+        },
+        {
+          "name": "Plough",
+          "alias": true
+        },
+        {
+          "name": "Saptarishi",
+          "alias": true
+        }
+      ],
+      "de": [
+        {
+          "name": "Großer Wagen",
+          "pref": true
+        }
+      ],
+      "es": [
+        {
+          "name": "El Carro",
+          "pref": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "Grande Casserole",
+          "pref": true
+        }
+      ],
+      "it": [
+        {
+          "name": "Grande Carro",
+          "pref": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "北斗七星",
+          "pref": true
+        }
+      ],
+      "ko": [
+        {
+          "name": "북두칠성",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "北斗七星",
+          "pref": true
+        },
+        {
+          "name": "北斗",
+          "alias": true
+        }
+      ],
+      "zh-tw": [
+        {
+          "name": "北斗七星",
+          "pref": true
+        }
+      ],
+      "pt": [
+        {
+          "name": "Grande Carro",
+          "pref": true
+        }
+      ],
+      "pt-br": [
+        {
+          "name": "Grande Carro",
+          "pref": true
+        }
+      ],
+      "ru": [
+        {
+          "name": "Большой Ковш",
+          "pref": true
+        }
+      ],
+      "tr": [
+        {
+          "name": "Büyük Kepçe",
+          "pref": true
+        }
+      ],
+      "pl": [
+        {
+          "name": "Wielki Wóz",
+          "pref": true
+        }
+      ],
+      "nl": [
+        {
+          "name": "Steelpan",
+          "pref": true
+        },
+        {
+          "name": "Steelpannetje",
+          "alias": true
+        },
+        {
+          "name": "Grote steelpan",
+          "alias": true
+        }
+      ],
+      "cs": [
+        {
+          "name": "Velký vůz",
+          "pref": true
+        }
+      ],
+      "da": [
+        {
+          "name": "Karlsvognen",
+          "pref": true
+        }
+      ],
+      "et": [
+        {
+          "name": "Suur Vanker (asterism)",
+          "pref": true
+        }
+      ],
+      "fi": [
+        {
+          "name": "Otava",
+          "pref": true
+        }
+      ],
+      "he": [
+        {
+          "name": "העגלה הגדולה",
+          "pref": true
+        }
+      ],
+      "mk": [
+        {
+          "name": "Голема Кола",
+          "pref": true
+        },
+        {
+          "name": "Плуг",
+          "alias": true
+        }
+      ],
+      "nb": [
+        {
+          "name": "Karlsvognen",
+          "pref": true
+        },
+        {
+          "name": "Karlsvogna",
+          "alias": true
+        }
+      ],
+      "ro": [
+        {
+          "name": "Carul Mare",
+          "pref": true
+        }
+      ],
+      "sr": [
+        {
+          "name": "Велика кола",
+          "pref": true
+        }
+      ],
+      "sk": [
+        {
+          "name": "Veľký voz",
+          "pref": true
+        }
+      ],
+      "sv": [
+        {
+          "name": "Karlavagnen",
+          "pref": true
+        }
+      ],
+      "tl": [
+        {
+          "name": "Malaking Pangsawsaw",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q125696": {
+    "name": "Black Tortoise",
+    "sitelinks": 35,
+    "wikipedias": 34,
+    "in": [
+      "fourSymbols"
+    ],
+    "statements": {
+      "instanceOf": [
+        "Q1074076",
+        "Q24334299"
+      ]
+    },
+    "names": {
+      "en": [
+        {
+          "name": "Black Tortoise",
+          "pref": true
+        },
+        {
+          "name": "Xuan Wu",
+          "alias": true
+        },
+        {
+          "name": "Black Turtle",
+          "alias": true
+        },
+        {
+          "name": "Black Tortoise of the North",
+          "alias": true
+        },
+        {
+          "name": "Black Warrior",
+          "alias": true
+        },
+        {
+          "name": "Xuánwǔ",
+          "alias": true
+        },
+        {
+          "name": "Hyeonmu",
+          "alias": true
+        },
+        {
+          "name": "Genbu",
+          "alias": true
+        },
+        {
+          "name": "Huyền Vũ",
+          "alias": true
+        }
+      ],
+      "de": [
+        {
+          "name": "Schwarze Schildkröte",
+          "pref": true
+        }
+      ],
+      "es": [
+        {
+          "name": "Genbu",
+          "pref": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "Tortue noire",
+          "pref": true
+        },
+        {
+          "name": "Xuanwu",
+          "alias": true
+        }
+      ],
+      "it": [
+        {
+          "name": "Tartaruga Nera",
+          "pref": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "玄武",
+          "pref": true
+        }
+      ],
+      "ko": [
+        {
+          "name": "현무",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "玄武",
+          "pref": true
+        }
+      ],
+      "pt": [
+        {
+          "name": "Tartaruga Negra",
+          "pref": true
+        }
+      ],
+      "ru": [
+        {
+          "name": "Чёрная черепаха",
+          "pref": true
+        }
+      ],
+      "tr": [
+        {
+          "name": "Siyah Kaplumbağa",
+          "pref": true
+        }
+      ],
+      "pl": [
+        {
+          "name": "Czarny Żółw",
+          "pref": true
+        }
+      ],
+      "nl": [
+        {
+          "name": "De zwarte schildpad chinese cultuur",
+          "pref": true
+        }
+      ],
+      "fi": [
+        {
+          "name": "Musta kilpikonna",
+          "pref": true
+        }
+      ],
+      "he": [
+        {
+          "name": "הצב-נחש השחור",
+          "pref": true
+        }
+      ],
+      "sr": [
+        {
+          "name": "Crna kornjača",
+          "pref": true
+        }
+      ],
+      "sv": [
+        {
+          "name": "Zhenwu",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q210912": {
+    "name": "Stomach",
+    "sitelinks": 14,
+    "wikipedias": 13,
+    "in": [
+      "mansions"
+    ],
+    "statements": {
+      "instanceOf": [
+        "Q1074076"
+      ]
+    },
+    "names": {
+      "en": [
+        {
+          "name": "Stomach",
+          "pref": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "Wei",
+          "pref": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "胃宿",
+          "pref": true
+        }
+      ],
+      "ko": [
+        {
+          "name": "위수",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "胃宿",
+          "pref": true
+        }
+      ],
+      "pt": [
+        {
+          "name": "Estômago",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q515882": {
+    "name": "Azure Dragon",
+    "sitelinks": 34,
+    "wikipedias": 33,
+    "in": [
+      "fourSymbols"
+    ],
+    "statements": {
+      "instanceOf": [
+        "Q1074076",
+        "Q1916821",
+        "Q24334299"
+      ]
+    },
+    "names": {
+      "en": [
+        {
+          "name": "Azure Dragon",
+          "pref": true
+        },
+        {
+          "name": "Azure Dragon of the East",
+          "alias": true
+        },
+        {
+          "name": "Qinglong",
+          "alias": true
+        },
+        {
+          "name": "Thanh Long",
+          "alias": true
+        },
+        {
+          "name": "Cheongnyong",
+          "alias": true
+        },
+        {
+          "name": "Seiryū",
+          "alias": true
+        }
+      ],
+      "de": [
+        {
+          "name": "Blauer Drache",
+          "pref": true
+        }
+      ],
+      "es": [
+        {
+          "name": "Seiryū",
+          "pref": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "Dragon azur",
+          "pref": true
+        }
+      ],
+      "it": [
+        {
+          "name": "Drago Azzurro",
+          "pref": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "青竜",
+          "pref": true
+        }
+      ],
+      "ko": [
+        {
+          "name": "청룡",
+          "pref": true
+        }
+      ],
+      "zh-hans": [
+        {
+          "name": "青龙",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "青龍",
+          "pref": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "青龍",
+          "pref": true
+        }
+      ],
+      "pt": [
+        {
+          "name": "Dragão Azul",
+          "pref": true
+        }
+      ],
+      "ru": [
+        {
+          "name": "Лазурный дракон",
+          "pref": true
+        },
+        {
+          "name": "зелёный дракон",
+          "alias": true
+        }
+      ],
+      "tr": [
+        {
+          "name": "Mavi Ejder",
+          "pref": true
+        }
+      ],
+      "pl": [
+        {
+          "name": "Qing Long",
+          "pref": true
+        }
+      ],
+      "fi": [
+        {
+          "name": "Sinivihreä lohikäärme",
+          "pref": true
+        }
+      ],
+      "nb": [
+        {
+          "name": "Den blå drage",
+          "pref": true
+        }
+      ],
+      "sr": [
+        {
+          "name": "Azurni zmaj",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q1059392": {
+    "name": "Zhuque",
+    "sitelinks": 36,
+    "wikipedias": 35,
+    "in": [
+      "fourSymbols"
+    ],
+    "statements": {
+      "instanceOf": [
+        "Q1074076",
+        "Q30301495"
+      ]
+    },
+    "names": {
+      "en": [
+        {
+          "name": "Zhuque",
+          "pref": true
+        },
+        {
+          "name": "Zhūquè",
+          "alias": true
+        },
+        {
+          "name": "Chu Tước",
+          "alias": true
+        },
+        {
+          "name": "Vermilion Bird",
+          "alias": true
+        },
+        {
+          "name": "Chu-chhiok",
+          "alias": true
+        },
+        {
+          "name": "Tsu-tshiok",
+          "alias": true
+        },
+        {
+          "name": "Chû-chiok",
+          "alias": true
+        },
+        {
+          "name": "Ciŏ-chiók",
+          "alias": true
+        }
+      ],
+      "de": [
+        {
+          "name": "Roter Vogel",
+          "pref": true
+        }
+      ],
+      "es": [
+        {
+          "name": "Suzaku",
+          "pref": true
+        },
+        {
+          "name": "Zhuque",
+          "alias": true
+        },
+        {
+          "name": "Zhu Que",
+          "alias": true
+        },
+        {
+          "name": "Zhū Que",
+          "alias": true
+        },
+        {
+          "name": "Zhu Què",
+          "alias": true
+        },
+        {
+          "name": "Zhū Què",
+          "alias": true
+        },
+        {
+          "name": "Ave bermellón",
+          "alias": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "oiseau vermillon",
+          "pref": true
+        },
+        {
+          "name": "Zhu Que",
+          "alias": true
+        },
+        {
+          "name": "Nán fāng zhū què",
+          "alias": true
+        },
+        {
+          "name": "oiseau vermillon des mers du sud",
+          "alias": true
+        },
+        {
+          "name": "oiseau vermillon du sud",
+          "alias": true
+        }
+      ],
+      "it": [
+        {
+          "name": "Uccello Vermiglio",
+          "pref": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "朱雀",
+          "pref": true
+        },
+        {
+          "name": "スーツェー",
+          "alias": true
+        },
+        {
+          "name": "南方朱雀",
+          "alias": true
+        }
+      ],
+      "ko": [
+        {
+          "name": "주작",
+          "pref": true
+        }
+      ],
+      "zh-hans": [
+        {
+          "name": "朱雀",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "朱雀",
+          "pref": true
+        },
+        {
+          "name": "南方朱雀",
+          "alias": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "朱雀",
+          "pref": true
+        }
+      ],
+      "zh-hk": [
+        {
+          "name": "朱雀",
+          "pref": true
+        }
+      ],
+      "pt": [
+        {
+          "name": "Pássaro Vermelho",
+          "pref": true
+        }
+      ],
+      "ru": [
+        {
+          "name": "Красная птица",
+          "pref": true
+        }
+      ],
+      "tr": [
+        {
+          "name": "Vermilyon Kuşu",
+          "pref": true
+        }
+      ],
+      "pl": [
+        {
+          "name": "Zhu Que",
+          "pref": true
+        },
+        {
+          "name": "Zhuniao",
+          "alias": true
+        },
+        {
+          "name": "Suzaku",
+          "alias": true
+        }
+      ],
+      "fi": [
+        {
+          "name": "Punainen lintu",
+          "pref": true
+        }
+      ],
+      "mk": [
+        {
+          "name": "Циноберна Птица",
+          "pref": true
+        },
+        {
+          "name": "Вермилионска Птица",
+          "alias": true
+        },
+        {
+          "name": "Џуѓќуе",
+          "alias": true
+        }
+      ],
+      "nb": [
+        {
+          "name": "Den røde fugl",
+          "pref": true
+        },
+        {
+          "name": "Suzaku",
+          "alias": true
+        },
+        {
+          "name": "Jujak",
+          "alias": true
+        },
+        {
+          "name": "Zhu Que",
+          "alias": true
+        }
+      ],
+      "ro": [
+        {
+          "name": "Pasărea Roșie",
+          "pref": true
+        },
+        {
+          "name": "Pasărea Roşie",
+          "alias": true
+        },
+        {
+          "name": "Zhū Què",
+          "alias": true
+        }
+      ],
+      "sr": [
+        {
+          "name": "Vermilionska ptica",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q1072455": {
+    "name": "White Tiger",
+    "sitelinks": 34,
+    "wikipedias": 33,
+    "in": [
+      "fourSymbols"
+    ],
+    "statements": {
+      "instanceOf": [
+        "Q1074076",
+        "Q24334299"
+      ]
+    },
+    "names": {
+      "en": [
+        {
+          "name": "White Tiger",
+          "pref": true
+        },
+        {
+          "name": "Baihu",
+          "alias": true
+        }
+      ],
+      "de": [
+        {
+          "name": "Weißer Tiger",
+          "pref": true
+        },
+        {
+          "name": "Byakko",
+          "alias": true
+        }
+      ],
+      "es": [
+        {
+          "name": "Byakko",
+          "pref": true
+        },
+        {
+          "name": "Baihu",
+          "alias": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "Tigre blanc de l'ouest",
+          "pref": true
+        },
+        {
+          "name": "Byakko",
+          "alias": true
+        }
+      ],
+      "it": [
+        {
+          "name": "Tigre Bianca",
+          "pref": true
+        },
+        {
+          "name": "Tigre Bianca dell'Ovest",
+          "alias": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "白虎",
+          "pref": true
+        },
+        {
+          "name": "西方白虎",
+          "alias": true
+        }
+      ],
+      "ko": [
+        {
+          "name": "백호",
+          "pref": true
+        }
+      ],
+      "zh-hans": [
+        {
+          "name": "白虎",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "白虎",
+          "pref": true
+        },
+        {
+          "name": "監名神君",
+          "alias": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "白虎",
+          "pref": true
+        }
+      ],
+      "zh-hk": [
+        {
+          "name": "白虎",
+          "pref": true
+        }
+      ],
+      "pt": [
+        {
+          "name": "Tigre Branco",
+          "pref": true
+        }
+      ],
+      "ru": [
+        {
+          "name": "Белый тигр",
+          "pref": true
+        }
+      ],
+      "tr": [
+        {
+          "name": "Beyaz Kaplan",
+          "pref": true
+        }
+      ],
+      "pl": [
+        {
+          "name": "Bai Hu",
+          "pref": true
+        },
+        {
+          "name": "Byakko",
+          "alias": true
+        }
+      ],
+      "nl": [
+        {
+          "name": "White Tiger",
+          "pref": true
+        }
+      ],
+      "fi": [
+        {
+          "name": "Valkoinen tiikeri",
+          "pref": true
+        }
+      ],
+      "nb": [
+        {
+          "name": "Den hvite tiger",
+          "pref": true
+        },
+        {
+          "name": "Baihu",
+          "alias": true
+        },
+        {
+          "name": "Jadetigeren",
+          "alias": true
+        },
+        {
+          "name": "Byakko",
+          "alias": true
+        }
+      ],
+      "sr": [
+        {
+          "name": "Beli tigar",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q1141299": {
+    "name": "Hairy Head",
+    "sitelinks": 15,
+    "wikipedias": 14,
+    "in": [
+      "mansions"
+    ],
+    "statements": {
+      "instanceOf": [
+        "Q1074076"
+      ]
+    },
+    "names": {
+      "en": [
+        {
+          "name": "Hairy Head",
+          "pref": true
+        },
+        {
+          "name": "Ball of Wool",
+          "alias": true
+        },
+        {
+          "name": "Stopping-place",
+          "alias": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "Mao",
+          "pref": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "昴宿",
+          "pref": true
+        },
+        {
+          "name": "昴星",
+          "alias": true
+        }
+      ],
+      "ko": [
+        {
+          "name": "묘수",
+          "pref": true
+        }
+      ],
+      "zh-hans": [
+        {
+          "name": "昴宿",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "昴宿",
+          "pref": true
+        },
+        {
+          "name": "昴日雞",
+          "alias": true
+        },
+        {
+          "name": "昂宿",
+          "alias": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "昴宿",
+          "pref": true
+        }
+      ],
+      "zh-hk": [
+        {
+          "name": "昴宿",
+          "pref": true
+        }
+      ],
+      "pt": [
+        {
+          "name": "Chefe Peluda",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q1143106": {
+    "name": "Ox",
+    "sitelinks": 14,
+    "wikipedias": 13,
+    "in": [
+      "mansions"
+    ],
+    "statements": {
+      "instanceOf": [
+        "Q1074076"
+      ]
+    },
+    "names": {
+      "en": [
+        {
+          "name": "Ox",
+          "pref": true
+        },
+        {
+          "name": "Ox mansion",
+          "alias": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "Niu",
+          "pref": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "牛宿",
+          "pref": true
+        }
+      ],
+      "ko": [
+        {
+          "name": "우수",
+          "pref": true
+        },
+        {
+          "name": "견우",
+          "alias": true
+        }
+      ],
+      "zh-hans": [
+        {
+          "name": "牛宿",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "牛宿",
+          "pref": true
+        },
+        {
+          "name": "牛金牛",
+          "alias": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "牛宿",
+          "pref": true
+        }
+      ],
+      "zh-hk": [
+        {
+          "name": "牛宿",
+          "pref": true
+        }
+      ],
+      "pt": [
+        {
+          "name": "Ox",
+          "pref": true
+        }
+      ],
+      "mk": [
+        {
+          "name": "Вол",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q1145451": {
+    "name": "Encampment",
+    "sitelinks": 13,
+    "wikipedias": 12,
+    "in": [
+      "mansions"
+    ],
+    "statements": {
+      "instanceOf": [
+        "Q1074076"
+      ]
+    },
+    "names": {
+      "en": [
+        {
+          "name": "Encampment",
+          "pref": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "Yingshi",
+          "pref": true
+        },
+        {
+          "name": "Ligong",
+          "alias": true
+        },
+        {
+          "name": "Shi",
+          "alias": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "室宿",
+          "pref": true
+        }
+      ],
+      "ko": [
+        {
+          "name": "실수",
+          "pref": true
+        }
+      ],
+      "zh-hans": [
+        {
+          "name": "室宿",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "室宿",
+          "pref": true
+        },
+        {
+          "name": "室火豬",
+          "alias": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "室宿",
+          "pref": true
+        }
+      ],
+      "zh-hk": [
+        {
+          "name": "室宿",
+          "pref": true
+        }
+      ],
+      "pt": [
+        {
+          "name": "Acampamento",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q1145465": {
+    "name": "Ghost",
+    "sitelinks": 13,
+    "wikipedias": 12,
+    "in": [
+      "mansions"
+    ],
+    "statements": {
+      "instanceOf": [
+        "Q1074076"
+      ]
+    },
+    "names": {
+      "en": [
+        {
+          "name": "Ghost",
+          "pref": true
+        },
+        {
+          "name": "Guǐ Xiù",
+          "alias": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "Yugui",
+          "pref": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "鬼宿",
+          "pref": true
+        },
+        {
+          "name": "鬼宿日",
+          "alias": true
+        }
+      ],
+      "ko": [
+        {
+          "name": "귀수",
+          "pref": true
+        }
+      ],
+      "zh-hans": [
+        {
+          "name": "鬼宿",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "鬼宿",
+          "pref": true
+        },
+        {
+          "name": "鬼金羊",
+          "alias": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "鬼宿",
+          "pref": true
+        }
+      ],
+      "zh-hk": [
+        {
+          "name": "鬼宿",
+          "pref": true
+        }
+      ],
+      "pt": [
+        {
+          "name": "Fantasma",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q1145474": {
+    "name": "Wings",
+    "sitelinks": 14,
+    "wikipedias": 13,
+    "in": [
+      "mansions"
+    ],
+    "statements": {
+      "instanceOf": [
+        "Q1074076"
+      ]
+    },
+    "names": {
+      "en": [
+        {
+          "name": "Wings",
+          "pref": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "Yi",
+          "pref": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "翼宿",
+          "pref": true
+        },
+        {
+          "name": "襷星",
+          "alias": true
+        }
+      ],
+      "ko": [
+        {
+          "name": "익수",
+          "pref": true
+        }
+      ],
+      "zh-hans": [
+        {
+          "name": "翼宿",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "翼宿",
+          "pref": true
+        },
+        {
+          "name": "翼火蛇",
+          "alias": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "翼宿",
+          "pref": true
+        }
+      ],
+      "zh-hk": [
+        {
+          "name": "翼宿",
+          "pref": true
+        }
+      ],
+      "pt": [
+        {
+          "name": "Asas",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q1145504": {
+    "name": "Bond",
+    "sitelinks": 14,
+    "wikipedias": 13,
+    "in": [
+      "mansions"
+    ],
+    "statements": {
+      "instanceOf": [
+        "Q1074076"
+      ]
+    },
+    "names": {
+      "en": [
+        {
+          "name": "Bond",
+          "pref": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "Lou",
+          "pref": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "婁宿",
+          "pref": true
+        },
+        {
+          "name": "婁",
+          "alias": true
+        }
+      ],
+      "ko": [
+        {
+          "name": "누수",
+          "pref": true
+        },
+        {
+          "name": "루수",
+          "alias": true
+        }
+      ],
+      "zh-hans": [
+        {
+          "name": "娄宿",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "娄宿",
+          "pref": true
+        },
+        {
+          "name": "婁宿",
+          "alias": true
+        },
+        {
+          "name": "婁金狗",
+          "alias": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "婁宿",
+          "pref": true
+        }
+      ],
+      "zh-hk": [
+        {
+          "name": "婁宿",
+          "pref": true
+        }
+      ],
+      "pt": [
+        {
+          "name": "Vínculo",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q1145781": {
+    "name": "Winnowing Basket",
+    "sitelinks": 14,
+    "wikipedias": 13,
+    "in": [
+      "mansions"
+    ],
+    "statements": {
+      "instanceOf": [
+        "Q1074076"
+      ]
+    },
+    "names": {
+      "en": [
+        {
+          "name": "Winnowing Basket",
+          "pref": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "Ji",
+          "pref": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "箕宿",
+          "pref": true
+        }
+      ],
+      "ko": [
+        {
+          "name": "기수",
+          "pref": true
+        }
+      ],
+      "zh-hans": [
+        {
+          "name": "箕宿",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "箕宿",
+          "pref": true
+        },
+        {
+          "name": "箕水豹",
+          "alias": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "箕宿",
+          "pref": true
+        }
+      ],
+      "zh-hk": [
+        {
+          "name": "箕宿",
+          "pref": true
+        }
+      ],
+      "pt": [
+        {
+          "name": "Cesto de despalhar",
+          "pref": true
+        }
+      ],
+      "mk": [
+        {
+          "name": "Сито",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q1145795": {
+    "name": "Root",
+    "sitelinks": 14,
+    "wikipedias": 13,
+    "in": [
+      "mansions"
+    ],
+    "statements": {
+      "instanceOf": [
+        "Q1074076"
+      ]
+    },
+    "names": {
+      "en": [
+        {
+          "name": "Root",
+          "pref": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "Di",
+          "pref": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "氐宿",
+          "pref": true
+        },
+        {
+          "name": "テイ宿",
+          "alias": true
+        }
+      ],
+      "ko": [
+        {
+          "name": "저수",
+          "pref": true
+        }
+      ],
+      "zh-hans": [
+        {
+          "name": "氐宿",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "氐宿",
+          "pref": true
+        },
+        {
+          "name": "氐土貉",
+          "alias": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "氐宿",
+          "pref": true
+        }
+      ],
+      "zh-hk": [
+        {
+          "name": "氐宿",
+          "pref": true
+        }
+      ],
+      "pt": [
+        {
+          "name": "Raiz",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q1145803": {
+    "name": "Girl",
+    "sitelinks": 14,
+    "wikipedias": 13,
+    "in": [
+      "mansions"
+    ],
+    "statements": {
+      "instanceOf": [
+        "Q1074076"
+      ]
+    },
+    "names": {
+      "en": [
+        {
+          "name": "Girl",
+          "pref": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "Xunu",
+          "pref": true
+        },
+        {
+          "name": "Nü",
+          "alias": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "女宿",
+          "pref": true
+        }
+      ],
+      "ko": [
+        {
+          "name": "여수",
+          "pref": true
+        }
+      ],
+      "zh-hans": [
+        {
+          "name": "女宿",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "女宿",
+          "pref": true
+        },
+        {
+          "name": "女土蝠",
+          "alias": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "女宿",
+          "pref": true
+        }
+      ],
+      "zh-hk": [
+        {
+          "name": "女宿",
+          "pref": true
+        }
+      ],
+      "pt": [
+        {
+          "name": "Garota",
+          "pref": true
+        }
+      ],
+      "mk": [
+        {
+          "name": "Девојка",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q1145810": {
+    "name": "Chariot",
+    "sitelinks": 13,
+    "wikipedias": 12,
+    "in": [
+      "mansions"
+    ],
+    "statements": {
+      "instanceOf": [
+        "Q1074076"
+      ]
+    },
+    "names": {
+      "en": [
+        {
+          "name": "Chariot",
+          "pref": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "Zhen",
+          "pref": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "軫宿",
+          "pref": true
+        }
+      ],
+      "ko": [
+        {
+          "name": "진수",
+          "pref": true
+        }
+      ],
+      "zh-hans": [
+        {
+          "name": "轸宿",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "轸宿",
+          "pref": true
+        },
+        {
+          "name": "軫水蚓",
+          "alias": true
+        },
+        {
+          "name": "軫宿",
+          "alias": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "軫宿",
+          "pref": true
+        }
+      ],
+      "zh-hk": [
+        {
+          "name": "軫宿",
+          "pref": true
+        }
+      ],
+      "pt": [
+        {
+          "name": "Biga",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q1145830": {
+    "name": "Willow",
+    "sitelinks": 13,
+    "wikipedias": 12,
+    "in": [
+      "mansions"
+    ],
+    "statements": {
+      "instanceOf": [
+        "Q1074076"
+      ]
+    },
+    "names": {
+      "en": [
+        {
+          "name": "Willow",
+          "pref": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "Liu",
+          "pref": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "柳宿",
+          "pref": true
+        }
+      ],
+      "ko": [
+        {
+          "name": "유수",
+          "pref": true
+        },
+        {
+          "name": "류수",
+          "alias": true
+        }
+      ],
+      "zh-hans": [
+        {
+          "name": "柳宿",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "柳宿",
+          "pref": true
+        },
+        {
+          "name": "柳土獐",
+          "alias": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "柳宿",
+          "pref": true
+        }
+      ],
+      "zh-hk": [
+        {
+          "name": "柳宿",
+          "pref": true
+        }
+      ],
+      "pt": [
+        {
+          "name": "Salgueiro",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q1145842": {
+    "name": "Tail",
+    "sitelinks": 14,
+    "wikipedias": 13,
+    "in": [
+      "mansions"
+    ],
+    "statements": {
+      "instanceOf": [
+        "Q1074076"
+      ]
+    },
+    "names": {
+      "en": [
+        {
+          "name": "Tail",
+          "pref": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "Wei",
+          "pref": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "尾宿",
+          "pref": true
+        }
+      ],
+      "ko": [
+        {
+          "name": "미수",
+          "pref": true
+        }
+      ],
+      "zh-hans": [
+        {
+          "name": "尾宿",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "尾宿",
+          "pref": true
+        },
+        {
+          "name": "尾火虎",
+          "alias": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "尾宿",
+          "pref": true
+        }
+      ],
+      "zh-hk": [
+        {
+          "name": "尾宿",
+          "pref": true
+        }
+      ],
+      "pt": [
+        {
+          "name": "Calda",
+          "pref": true
+        }
+      ],
+      "mk": [
+        {
+          "name": "Опашка",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q1145852": {
+    "name": "Purple Forbidden enclosure",
+    "sitelinks": 14,
+    "wikipedias": 14,
+    "in": [
+      "enclosures"
+    ],
+    "statements": {
+      "instanceOf": [
+        "Q1074076"
+      ]
+    },
+    "names": {
+      "en": [
+        {
+          "name": "Purple Forbidden enclosure",
+          "pref": true
+        },
+        {
+          "name": "Ziwei enclosure",
+          "alias": true
+        }
+      ],
+      "es": [
+        {
+          "name": "Palacio Púrpura",
+          "pref": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "Ziwei",
+          "pref": true
+        },
+        {
+          "name": "Ziwei gong",
+          "alias": true
+        },
+        {
+          "name": "Zigong (astronomie)",
+          "alias": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "紫微垣",
+          "pref": true
+        }
+      ],
+      "ko": [
+        {
+          "name": "자미원",
+          "pref": true
+        }
+      ],
+      "zh-hans": [
+        {
+          "name": "紫微垣",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "紫微垣",
+          "pref": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "紫微垣",
+          "pref": true
+        }
+      ],
+      "zh-hk": [
+        {
+          "name": "紫微垣",
+          "pref": true
+        }
+      ],
+      "pt": [
+        {
+          "name": "Púrpura Probida",
+          "pref": true
+        }
+      ],
+      "ru": [
+        {
+          "name": "Пурпурный запретный небосвод",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q1145862": {
+    "name": "Heavenly Market enclosure",
+    "sitelinks": 14,
+    "wikipedias": 14,
+    "in": [
+      "enclosures"
+    ],
+    "statements": {
+      "instanceOf": [
+        "Q1074076"
+      ]
+    },
+    "names": {
+      "en": [
+        {
+          "name": "Heavenly Market enclosure",
+          "pref": true
+        },
+        {
+          "name": "Celestial Market Enclosure",
+          "alias": true
+        },
+        {
+          "name": "Tian Shi enclosure",
+          "alias": true
+        }
+      ],
+      "es": [
+        {
+          "name": "Mercado Celeste",
+          "pref": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "Tianshi",
+          "pref": true
+        },
+        {
+          "name": "Tianshi (Oph)",
+          "alias": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "天市垣",
+          "pref": true
+        }
+      ],
+      "ko": [
+        {
+          "name": "천시원",
+          "pref": true
+        }
+      ],
+      "zh-hans": [
+        {
+          "name": "天市垣",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "天市垣",
+          "pref": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "天市垣",
+          "pref": true
+        }
+      ],
+      "zh-hk": [
+        {
+          "name": "天市垣",
+          "pref": true
+        }
+      ],
+      "pt": [
+        {
+          "name": "Mercado Celestial",
+          "pref": true
+        }
+      ],
+      "ru": [
+        {
+          "name": "Небосвод Небесного рынка",
+          "pref": true
+        }
+      ],
+      "mk": [
+        {
+          "name": "Небесно Пазариште",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q1145870": {
+    "name": "Room",
+    "sitelinks": 14,
+    "wikipedias": 13,
+    "in": [
+      "mansions"
+    ],
+    "statements": {
+      "instanceOf": [
+        "Q1074076"
+      ]
+    },
+    "names": {
+      "en": [
+        {
+          "name": "Room",
+          "pref": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "Fang",
+          "pref": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "房宿",
+          "pref": true
+        }
+      ],
+      "ko": [
+        {
+          "name": "방수",
+          "pref": true
+        }
+      ],
+      "zh-hans": [
+        {
+          "name": "房宿",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "房宿",
+          "pref": true
+        },
+        {
+          "name": "房日兔",
+          "alias": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "房宿",
+          "pref": true
+        }
+      ],
+      "zh-hk": [
+        {
+          "name": "房宿",
+          "pref": true
+        }
+      ],
+      "pt": [
+        {
+          "name": "Quarto",
+          "pref": true
+        }
+      ],
+      "mk": [
+        {
+          "name": "Одаја",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q1145878": {
+    "name": "Well",
+    "sitelinks": 14,
+    "wikipedias": 13,
+    "in": [
+      "mansions"
+    ],
+    "statements": {
+      "instanceOf": [
+        "Q1074076"
+      ]
+    },
+    "names": {
+      "en": [
+        {
+          "name": "Well",
+          "pref": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "Dongjing",
+          "pref": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "井宿",
+          "pref": true
+        }
+      ],
+      "ko": [
+        {
+          "name": "정수",
+          "pref": true
+        }
+      ],
+      "zh-hans": [
+        {
+          "name": "井宿",
+          "pref": true
+        },
+        {
+          "name": "井木犴",
+          "alias": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "井宿",
+          "pref": true
+        },
+        {
+          "name": "井木犴",
+          "alias": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "井宿",
+          "pref": true
+        }
+      ],
+      "zh-hk": [
+        {
+          "name": "井宿",
+          "pref": true
+        }
+      ],
+      "pt": [
+        {
+          "name": "Bem",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q1145890": {
+    "name": "Turtle Beak",
+    "sitelinks": 13,
+    "wikipedias": 12,
+    "in": [
+      "mansions"
+    ],
+    "statements": {
+      "instanceOf": [
+        "Q1074076"
+      ]
+    },
+    "names": {
+      "en": [
+        {
+          "name": "Turtle Beak",
+          "pref": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "Zuixi",
+          "pref": true
+        },
+        {
+          "name": "Zui",
+          "alias": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "觜宿",
+          "pref": true
+        }
+      ],
+      "ko": [
+        {
+          "name": "자수",
+          "pref": true
+        }
+      ],
+      "zh-hans": [
+        {
+          "name": "觜宿",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "觜宿",
+          "pref": true
+        },
+        {
+          "name": "觜火猴",
+          "alias": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "觜宿",
+          "pref": true
+        }
+      ],
+      "zh-hk": [
+        {
+          "name": "觜宿",
+          "pref": true
+        }
+      ],
+      "pt": [
+        {
+          "name": "Bico de Tartaruga",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q1145896": {
+    "name": "Roof",
+    "sitelinks": 12,
+    "wikipedias": 11,
+    "in": [
+      "mansions"
+    ],
+    "statements": {
+      "instanceOf": [
+        "Q1074076"
+      ]
+    },
+    "names": {
+      "en": [
+        {
+          "name": "Roof",
+          "pref": true
+        },
+        {
+          "name": "Rooftop",
+          "alias": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "Wei",
+          "pref": true
+        },
+        {
+          "name": "Fenmu",
+          "alias": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "危宿",
+          "pref": true
+        }
+      ],
+      "ko": [
+        {
+          "name": "위수",
+          "pref": true
+        }
+      ],
+      "zh-hans": [
+        {
+          "name": "危宿",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "危宿",
+          "pref": true
+        },
+        {
+          "name": "危月燕",
+          "alias": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "危宿",
+          "pref": true
+        }
+      ],
+      "zh-hk": [
+        {
+          "name": "危宿",
+          "pref": true
+        }
+      ],
+      "pt": [
+        {
+          "name": "Telhado",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q1145909": {
+    "name": "Heart",
+    "sitelinks": 14,
+    "wikipedias": 13,
+    "in": [
+      "mansions"
+    ],
+    "statements": {
+      "instanceOf": [
+        "Q1074076"
+      ]
+    },
+    "names": {
+      "en": [
+        {
+          "name": "Heart",
+          "pref": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "Xin",
+          "pref": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "心宿",
+          "pref": true
+        }
+      ],
+      "ko": [
+        {
+          "name": "심수",
+          "pref": true
+        }
+      ],
+      "zh-hans": [
+        {
+          "name": "心宿",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "心宿",
+          "pref": true
+        },
+        {
+          "name": "商宿",
+          "alias": true
+        },
+        {
+          "name": "心月狐",
+          "alias": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "心宿",
+          "pref": true
+        }
+      ],
+      "zh-hk": [
+        {
+          "name": "心宿",
+          "pref": true
+        }
+      ],
+      "pt": [
+        {
+          "name": "Coração",
+          "pref": true
+        }
+      ],
+      "mk": [
+        {
+          "name": "Срце",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q1145915": {
+    "name": "Extended Net",
+    "sitelinks": 14,
+    "wikipedias": 13,
+    "in": [
+      "mansions"
+    ],
+    "statements": {
+      "instanceOf": [
+        "Q1074076"
+      ]
+    },
+    "names": {
+      "en": [
+        {
+          "name": "Extended Net",
+          "pref": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "Zhang",
+          "pref": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "張宿",
+          "pref": true
+        }
+      ],
+      "ko": [
+        {
+          "name": "장수",
+          "pref": true
+        }
+      ],
+      "zh-hans": [
+        {
+          "name": "张宿",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "张宿",
+          "pref": true
+        },
+        {
+          "name": "張宿",
+          "alias": true
+        },
+        {
+          "name": "張月鹿",
+          "alias": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "張宿",
+          "pref": true
+        }
+      ],
+      "zh-hk": [
+        {
+          "name": "張宿",
+          "pref": true
+        }
+      ],
+      "pt": [
+        {
+          "name": "Rede estendida",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q1145921": {
+    "name": "Emptiness",
+    "sitelinks": 13,
+    "wikipedias": 12,
+    "in": [
+      "mansions"
+    ],
+    "statements": {
+      "instanceOf": [
+        "Q1074076"
+      ]
+    },
+    "names": {
+      "en": [
+        {
+          "name": "Emptiness",
+          "pref": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "Xu",
+          "pref": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "虚宿",
+          "pref": true
+        }
+      ],
+      "ko": [
+        {
+          "name": "허수",
+          "pref": true
+        }
+      ],
+      "zh-hans": [
+        {
+          "name": "虚宿",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "虚宿",
+          "pref": true
+        },
+        {
+          "name": "虛宿",
+          "alias": true
+        },
+        {
+          "name": "虛日鼠",
+          "alias": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "虛宿",
+          "pref": true
+        }
+      ],
+      "zh-hk": [
+        {
+          "name": "虛宿",
+          "pref": true
+        }
+      ],
+      "pt": [
+        {
+          "name": "Vazio",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q1145927": {
+    "name": "Neck",
+    "sitelinks": 13,
+    "wikipedias": 12,
+    "in": [
+      "mansions"
+    ],
+    "statements": {
+      "instanceOf": [
+        "Q1074076"
+      ]
+    },
+    "names": {
+      "en": [
+        {
+          "name": "Neck",
+          "pref": true
+        },
+        {
+          "name": "Kang",
+          "alias": true
+        },
+        {
+          "name": "Neck mansion",
+          "alias": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "Kang",
+          "pref": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "亢宿",
+          "pref": true
+        }
+      ],
+      "ko": [
+        {
+          "name": "항수",
+          "pref": true
+        }
+      ],
+      "zh-hans": [
+        {
+          "name": "亢宿",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "亢宿",
+          "pref": true
+        },
+        {
+          "name": "亢金龍",
+          "alias": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "亢宿",
+          "pref": true
+        }
+      ],
+      "zh-hk": [
+        {
+          "name": "亢宿",
+          "pref": true
+        }
+      ],
+      "pt": [
+        {
+          "name": "Pescoço",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q1145933": {
+    "name": "Wall",
+    "sitelinks": 13,
+    "wikipedias": 12,
+    "in": [
+      "mansions"
+    ],
+    "statements": {
+      "instanceOf": [
+        "Q1074076"
+      ]
+    },
+    "names": {
+      "en": [
+        {
+          "name": "Wall",
+          "pref": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "Dongbi",
+          "pref": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "壁宿",
+          "pref": true
+        }
+      ],
+      "ko": [
+        {
+          "name": "벽수",
+          "pref": true
+        }
+      ],
+      "zh-hans": [
+        {
+          "name": "壁宿",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "壁宿",
+          "pref": true
+        },
+        {
+          "name": "壁水貐",
+          "alias": true
+        },
+        {
+          "name": "壁水獝",
+          "alias": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "壁宿",
+          "pref": true
+        }
+      ],
+      "zh-hk": [
+        {
+          "name": "壁宿",
+          "pref": true
+        }
+      ],
+      "pt": [
+        {
+          "name": "Parede",
+          "pref": true
+        }
+      ],
+      "pt-br": [
+        {
+          "name": "Parede",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q1145944": {
+    "name": "Supreme Palace enclosure",
+    "sitelinks": 13,
+    "wikipedias": 13,
+    "in": [
+      "enclosures"
+    ],
+    "statements": {
+      "instanceOf": [
+        "Q1074076"
+      ]
+    },
+    "names": {
+      "en": [
+        {
+          "name": "Supreme Palace enclosure",
+          "pref": true
+        },
+        {
+          "name": "Tai Wei enclosure",
+          "alias": true
+        }
+      ],
+      "es": [
+        {
+          "name": "Palacio Supremo",
+          "pref": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "太微垣",
+          "pref": true
+        }
+      ],
+      "ko": [
+        {
+          "name": "태미원",
+          "pref": true
+        }
+      ],
+      "zh-hans": [
+        {
+          "name": "太微垣",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "太微垣",
+          "pref": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "太微垣",
+          "pref": true
+        }
+      ],
+      "zh-hk": [
+        {
+          "name": "太微垣",
+          "pref": true
+        }
+      ],
+      "pt": [
+        {
+          "name": "Supremo Palácio",
+          "pref": true
+        }
+      ],
+      "ru": [
+        {
+          "name": "Небосвод Верховного дворца",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q1146722": {
+    "name": "Dipper",
+    "sitelinks": 14,
+    "wikipedias": 13,
+    "in": [
+      "mansions"
+    ],
+    "statements": {
+      "instanceOf": [
+        "Q1074076"
+      ]
+    },
+    "names": {
+      "en": [
+        {
+          "name": "Dipper",
+          "pref": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "Nandou",
+          "pref": true
+        },
+        {
+          "name": "Dou",
+          "alias": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "斗宿",
+          "pref": true
+        }
+      ],
+      "ko": [
+        {
+          "name": "두수",
+          "pref": true
+        },
+        {
+          "name": "남두육성",
+          "alias": true
+        },
+        {
+          "name": "남두",
+          "alias": true
+        }
+      ],
+      "zh-hans": [
+        {
+          "name": "斗宿",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "斗宿",
+          "pref": true
+        },
+        {
+          "name": "斗木獬",
+          "alias": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "斗宿",
+          "pref": true
+        }
+      ],
+      "zh-hk": [
+        {
+          "name": "斗宿",
+          "pref": true
+        }
+      ],
+      "pt": [
+        {
+          "name": "Ursa",
+          "pref": true
+        }
+      ],
+      "mk": [
+        {
+          "name": "Црпка",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q1192463": {
+    "name": "Horn",
+    "sitelinks": 14,
+    "wikipedias": 13,
+    "in": [
+      "mansions"
+    ],
+    "statements": {
+      "instanceOf": [
+        "Q1074076"
+      ]
+    },
+    "names": {
+      "en": [
+        {
+          "name": "Horn",
+          "pref": true
+        },
+        {
+          "name": "Jiaoxiu",
+          "alias": true
+        },
+        {
+          "name": "the Horn mansion",
+          "alias": true
+        },
+        {
+          "name": "Horn mansion",
+          "alias": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "Jiaoxiu",
+          "pref": true
+        },
+        {
+          "name": "Jiao",
+          "alias": true
+        },
+        {
+          "name": "Juexiu (par erreur)",
+          "alias": true
+        },
+        {
+          "name": "Jue (par erreur)",
+          "alias": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "角宿",
+          "pref": true
+        }
+      ],
+      "ko": [
+        {
+          "name": "각수",
+          "pref": true
+        }
+      ],
+      "zh-hans": [
+        {
+          "name": "角宿",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "角宿",
+          "pref": true
+        },
+        {
+          "name": "角木蛟",
+          "alias": true
+        },
+        {
+          "name": "角星",
+          "alias": true
+        },
+        {
+          "name": "角星官",
+          "alias": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "角宿",
+          "pref": true
+        }
+      ],
+      "zh-hk": [
+        {
+          "name": "角宿",
+          "pref": true
+        }
+      ],
+      "pt": [
+        {
+          "name": "Chifre",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q1192490": {
+    "name": "Net",
+    "sitelinks": 13,
+    "wikipedias": 12,
+    "in": [
+      "mansions"
+    ],
+    "statements": {
+      "instanceOf": [
+        "Q1074076"
+      ]
+    },
+    "names": {
+      "en": [
+        {
+          "name": "Net",
+          "pref": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "Bi",
+          "pref": true
+        },
+        {
+          "name": "Fu'er",
+          "alias": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "畢宿",
+          "pref": true
+        }
+      ],
+      "ko": [
+        {
+          "name": "필수",
+          "pref": true
+        }
+      ],
+      "zh-hans": [
+        {
+          "name": "毕宿",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "毕宿",
+          "pref": true
+        },
+        {
+          "name": "畢月烏",
+          "alias": true
+        },
+        {
+          "name": "畢宿",
+          "alias": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "畢宿",
+          "pref": true
+        }
+      ],
+      "zh-hk": [
+        {
+          "name": "畢宿",
+          "pref": true
+        }
+      ],
+      "pt": [
+        {
+          "name": "Rede",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q1192788": {
+    "name": "Three Stars",
+    "sitelinks": 14,
+    "wikipedias": 13,
+    "in": [
+      "mansions"
+    ],
+    "statements": {
+      "instanceOf": [
+        "Q1074076"
+      ]
+    },
+    "names": {
+      "en": [
+        {
+          "name": "Three Stars",
+          "pref": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "Shen",
+          "pref": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "参宿",
+          "pref": true
+        }
+      ],
+      "ko": [
+        {
+          "name": "삼수",
+          "pref": true
+        }
+      ],
+      "zh-hans": [
+        {
+          "name": "参宿",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "参宿",
+          "pref": true
+        },
+        {
+          "name": "參宿",
+          "alias": true
+        },
+        {
+          "name": "參水猿",
+          "alias": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "參宿",
+          "pref": true
+        }
+      ],
+      "zh-hk": [
+        {
+          "name": "參宿",
+          "pref": true
+        }
+      ],
+      "pt": [
+        {
+          "name": "Três Estrelas",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q1193154": {
+    "name": "Star",
+    "sitelinks": 13,
+    "wikipedias": 12,
+    "in": [
+      "mansions"
+    ],
+    "statements": {
+      "instanceOf": [
+        "Q1074076"
+      ]
+    },
+    "names": {
+      "en": [
+        {
+          "name": "Star",
+          "pref": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "Qixing",
+          "pref": true
+        },
+        {
+          "name": "Xing",
+          "alias": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "星宿",
+          "pref": true
+        }
+      ],
+      "ko": [
+        {
+          "name": "성수",
+          "pref": true
+        }
+      ],
+      "zh-hans": [
+        {
+          "name": "星宿",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "星宿",
+          "pref": true
+        },
+        {
+          "name": "星日馬",
+          "alias": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "星宿",
+          "pref": true
+        }
+      ],
+      "zh-hk": [
+        {
+          "name": "星宿",
+          "pref": true
+        }
+      ],
+      "pt": [
+        {
+          "name": "Estrela",
+          "pref": true
+        }
+      ],
+      "ru": [
+        {
+          "name": "Звезда",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q1193839": {
+    "name": "Legs",
+    "sitelinks": 13,
+    "wikipedias": 12,
+    "in": [
+      "mansions"
+    ],
+    "statements": {
+      "instanceOf": [
+        "Q1074076"
+      ]
+    },
+    "names": {
+      "en": [
+        {
+          "name": "Legs",
+          "pref": true
+        }
+      ],
+      "es": [
+        {
+          "name": "Horcajadura",
+          "pref": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "Kui",
+          "pref": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "奎宿",
+          "pref": true
+        }
+      ],
+      "ko": [
+        {
+          "name": "규수",
+          "pref": true
+        }
+      ],
+      "zh-hans": [
+        {
+          "name": "奎宿",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "奎宿",
+          "pref": true
+        },
+        {
+          "name": "奎木狼",
+          "alias": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "奎宿",
+          "pref": true
+        }
+      ],
+      "zh-hk": [
+        {
+          "name": "奎宿",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q2967576": {
+    "name": "Guest House",
+    "sitelinks": 3,
+    "wikipedias": 3,
+    "in": [
+      "purpleForbidden"
+    ],
+    "statements": {
+      "instanceOf": [
+        "Q1074076"
+      ]
+    },
+    "names": {
+      "en": [
+        {
+          "name": "Guest House",
+          "pref": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "Chuanshe",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "傳舍",
+          "pref": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "傳舍",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q3032665": {
+    "name": "Emperor's Seat",
+    "sitelinks": 3,
+    "wikipedias": 3,
+    "in": [
+      "heavenlyMarket"
+    ],
+    "statements": {
+      "instanceOf": [
+        "Q1074076"
+      ]
+    },
+    "names": {
+      "en": [
+        {
+          "name": "Emperor's Seat",
+          "pref": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "Dizuo",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "帝座",
+          "pref": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "帝座",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q3118751": {
+    "name": "Coiled Thong",
+    "sitelinks": 3,
+    "wikipedias": 3,
+    "in": [
+      "heavenlyMarket"
+    ],
+    "statements": {
+      "instanceOf": [
+        "Q1074076"
+      ]
+    },
+    "names": {
+      "en": [
+        {
+          "name": "Coiled Thong",
+          "pref": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "Guansuo",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "貫索",
+          "pref": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "貫索",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q3141224": {
+    "name": "Astrologer",
+    "sitelinks": 3,
+    "wikipedias": 3,
+    "in": [
+      "heavenlyMarket"
+    ],
+    "statements": {
+      "instanceOf": [
+        "Q1074076"
+      ]
+    },
+    "names": {
+      "en": [
+        {
+          "name": "Astrologer",
+          "pref": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "Hou",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "候",
+          "pref": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "候",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q3141812": {
+    "name": "Canopy of the Emperor",
+    "sitelinks": 3,
+    "wikipedias": 3,
+    "in": [
+      "purpleForbidden"
+    ],
+    "statements": {
+      "instanceOf": [
+        "Q1074076"
+      ]
+    },
+    "names": {
+      "en": [
+        {
+          "name": "Canopy of the Emperor",
+          "pref": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "Huagai",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "華蓋",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q3141861": {
+    "name": "Huanzhe",
+    "sitelinks": 3,
+    "wikipedias": 3,
+    "in": [
+      "heavenlyMarket"
+    ],
+    "statements": {
+      "instanceOf": [
+        "Q1074076"
+      ]
+    },
+    "names": {
+      "en": [
+        {
+          "name": "Huanzhe",
+          "pref": true
+        },
+        {
+          "name": "Eunuch Official",
+          "alias": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "Huanzhe",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "宦者",
+          "pref": true
+        },
+        {
+          "name": "宦者 (星官)",
+          "alias": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "宦者",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q3347297": {
+    "name": "Woman's Bed",
+    "sitelinks": 4,
+    "wikipedias": 4,
+    "in": [
+      "heavenlyMarket"
+    ],
+    "statements": {
+      "instanceOf": [
+        "Q1074076"
+      ]
+    },
+    "names": {
+      "en": [
+        {
+          "name": "Woman's Bed",
+          "pref": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "Nüchuang",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "女床",
+          "pref": true
+        },
+        {
+          "name": "女床 (星官)",
+          "alias": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "女床",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q3412473": {
+    "name": "Qigong",
+    "sitelinks": 4,
+    "wikipedias": 4,
+    "in": [
+      "heavenlyMarket"
+    ],
+    "statements": {
+      "instanceOf": [
+        "Q1074076"
+      ]
+    },
+    "names": {
+      "en": [
+        {
+          "name": "Qigong",
+          "pref": true
+        },
+        {
+          "name": "Seven Excellencies",
+          "alias": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "Qigong",
+          "pref": true
+        },
+        {
+          "name": "Qigong (astronomie)",
+          "alias": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "七公",
+          "pref": true
+        },
+        {
+          "name": "七公 (星官)",
+          "alias": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "七公",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q3528025": {
+    "name": "Celestial Discipline",
+    "sitelinks": 3,
+    "wikipedias": 3,
+    "in": [
+      "heavenlyMarket"
+    ],
+    "statements": {
+      "instanceOf": [
+        "Q1074076"
+      ]
+    },
+    "names": {
+      "en": [
+        {
+          "name": "Celestial Discipline",
+          "pref": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "Tianji",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "天紀",
+          "pref": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "天紀",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q3528037": {
+    "name": "Celestial Spear",
+    "sitelinks": 4,
+    "wikipedias": 4,
+    "in": [
+      "purpleForbidden"
+    ],
+    "statements": {
+      "instanceOf": [
+        "Q1074076"
+      ]
+    },
+    "names": {
+      "en": [
+        {
+          "name": "Celestial Spear",
+          "pref": true
+        }
+      ],
+      "es": [
+        {
+          "name": "Lanza celeste",
+          "pref": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "Tianqiang",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "天枪",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q3528041": {
+    "name": "Celestial Flail",
+    "sitelinks": 3,
+    "wikipedias": 3,
+    "in": [
+      "purpleForbidden"
+    ],
+    "statements": {
+      "instanceOf": [
+        "Q1074076"
+      ]
+    },
+    "names": {
+      "en": [
+        {
+          "name": "Celestial Flail",
+          "pref": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "Tianpei",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "天棓",
+          "pref": true
+        },
+        {
+          "name": "天棓 (星官)",
+          "alias": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "天棓",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q3571068": {
+    "name": "Sombre Lance",
+    "sitelinks": 3,
+    "wikipedias": 3,
+    "in": [
+      "purpleForbidden"
+    ],
+    "statements": {
+      "instanceOf": [
+        "Q1074076"
+      ]
+    },
+    "names": {
+      "en": [
+        {
+          "name": "Sombre Lance",
+          "pref": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "Xuange",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "玄戈",
+          "pref": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "玄戈",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q3575974": {
+    "name": "Patriarchal Clan",
+    "sitelinks": 3,
+    "wikipedias": 3,
+    "in": [
+      "heavenlyMarket"
+    ],
+    "statements": {
+      "instanceOf": [
+        "Q1074076"
+      ]
+    },
+    "names": {
+      "en": [
+        {
+          "name": "Patriarchal Clan",
+          "pref": true
+        },
+        {
+          "name": "Patriarchal Clan",
+          "alias": true
+        },
+        {
+          "name": "Zong",
+          "alias": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "Zong",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "宗",
+          "pref": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "宗",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q3575983": {
+    "name": "Official of Religious Ceremonies",
+    "sitelinks": 3,
+    "wikipedias": 3,
+    "in": [
+      "heavenlyMarket"
+    ],
+    "statements": {
+      "instanceOf": [
+        "Q1074076"
+      ]
+    },
+    "names": {
+      "en": [
+        {
+          "name": "Official of Religious Ceremonies",
+          "pref": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "Zongren",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "宗人",
+          "pref": true
+        },
+        {
+          "name": "宗人 (星官)",
+          "alias": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "宗人",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q3575984": {
+    "name": "Official for the Royal Clan",
+    "sitelinks": 3,
+    "wikipedias": 3,
+    "in": [
+      "heavenlyMarket"
+    ],
+    "statements": {
+      "instanceOf": [
+        "Q1074076"
+      ]
+    },
+    "names": {
+      "en": [
+        {
+          "name": "Official for the Royal Clan",
+          "pref": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "Zongzheng",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "宗正",
+          "pref": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "宗正",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q5475009": {
+    "name": "Four Advisors",
+    "sitelinks": 6,
+    "wikipedias": 5,
+    "in": [
+      "purpleForbidden"
+    ],
+    "statements": {
+      "instanceOf": [
+        "Q1074076"
+      ]
+    },
+    "names": {
+      "en": [
+        {
+          "name": "Four Advisors",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "四輔",
+          "pref": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "四輔",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q7058862": {
+    "name": "Northern Pole",
+    "sitelinks": 6,
+    "wikipedias": 5,
+    "in": [
+      "purpleForbidden"
+    ],
+    "statements": {
+      "instanceOf": [
+        "Q1074076"
+      ]
+    },
+    "names": {
+      "en": [
+        {
+          "name": "Northern Pole",
+          "pref": true
+        }
+      ],
+      "es": [
+        {
+          "name": "Polo norte",
+          "pref": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "Beiji",
+          "pref": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "北極",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "北極",
+          "pref": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "北極",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q7213904": {
+    "name": "Left Wall of the Purple Forbidden Enclosure",
+    "sitelinks": 3,
+    "wikipedias": 3,
+    "in": [
+      "purpleForbidden"
+    ],
+    "statements": {
+      "instanceOf": [
+        "Q1074076"
+      ]
+    },
+    "names": {
+      "en": [
+        {
+          "name": "Left Wall of the Purple Forbidden Enclosure",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "紫微左垣",
+          "pref": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "紫微左垣",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q7245870": {
+    "name": "Celestial Kitchen",
+    "sitelinks": 3,
+    "wikipedias": 3,
+    "in": [
+      "purpleForbidden"
+    ],
+    "statements": {
+      "instanceOf": [
+        "Q1074076"
+      ]
+    },
+    "names": {
+      "en": [
+        {
+          "name": "Celestial Kitchen",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "天厨",
+          "pref": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "天廚",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q7254772": {
+    "name": "Curved Array",
+    "sitelinks": 7,
+    "wikipedias": 6,
+    "in": [
+      "purpleForbidden"
+    ],
+    "statements": {
+      "instanceOf": [
+        "Q1074076"
+      ]
+    },
+    "names": {
+      "en": [
+        {
+          "name": "Curved Array",
+          "pref": true
+        },
+        {
+          "name": "Gouchen",
+          "alias": true
+        }
+      ],
+      "es": [
+        {
+          "name": "La hilera curva",
+          "pref": true
+        }
+      ],
+      "fr": [
+        {
+          "name": "Gouchen",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "勾陳",
+          "pref": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "勾陳",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q7264596": {
+    "name": "Three Steps",
+    "sitelinks": 5,
+    "wikipedias": 4,
+    "in": [
+      "supremePalace"
+    ],
+    "statements": {
+      "instanceOf": [
+        "Q1074076"
+      ]
+    },
+    "names": {
+      "en": [
+        {
+          "name": "Three Steps",
+          "pref": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "三台 (星座)",
+          "pref": true
+        }
+      ],
+      "ko": [
+        {
+          "name": "삼태성",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "三台 (星官)",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q10865364": {
+    "name": "Three Dukes",
+    "sitelinks": 3,
+    "wikipedias": 3,
+    "in": [
+      "supremePalace"
+    ],
+    "statements": {
+      "instanceOf": [
+        "Q1074076"
+      ]
+    },
+    "names": {
+      "en": [
+        {
+          "name": "Three Dukes",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "三公",
+          "pref": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "三公",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q10865367": {
+    "name": "Three Excellencies",
+    "sitelinks": 4,
+    "wikipedias": 4,
+    "in": [
+      "purpleForbidden"
+    ],
+    "statements": {
+      "instanceOf": [
+        "Q1074076"
+      ]
+    },
+    "names": {
+      "en": [
+        {
+          "name": "Three Excellencies",
+          "pref": true
+        }
+      ],
+      "es": [
+        {
+          "name": "Los tres honorables",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "三公",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q10865980": {
+    "name": "Three Top Instructors",
+    "sitelinks": 4,
+    "wikipedias": 4,
+    "in": [
+      "purpleForbidden"
+    ],
+    "statements": {
+      "instanceOf": [
+        "Q1074076"
+      ]
+    },
+    "names": {
+      "en": [
+        {
+          "name": "Three Top Instructors",
+          "pref": true
+        }
+      ],
+      "es": [
+        {
+          "name": "Tres maestros",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "三师",
+          "pref": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "三師",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q10878706": {
+    "name": "Nine Ministers",
+    "sitelinks": 3,
+    "wikipedias": 3,
+    "in": [
+      "supremePalace"
+    ],
+    "statements": {
+      "instanceOf": [
+        "Q1074076"
+      ]
+    },
+    "names": {
+      "en": [
+        {
+          "name": "Nine Ministers",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "九卿",
+          "pref": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "九卿",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q10881760": {
+    "name": "Interior Seats of the Five Emperors",
+    "sitelinks": 2,
+    "wikipedias": 2,
+    "in": [
+      "purpleForbidden"
+    ],
+    "statements": {
+      "instanceOf": [
+        "Q1074076"
+      ]
+    },
+    "names": {
+      "en": [
+        {
+          "name": "Interior Seats of the Five Emperors",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "五帝內座",
+          "pref": true
+        },
+        {
+          "name": "五帝內座 (星官)",
+          "alias": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "五帝內座",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q10881766": {
+    "name": "Seats of the Five Emperors",
+    "sitelinks": 2,
+    "wikipedias": 2,
+    "in": [
+      "supremePalace"
+    ],
+    "statements": {
+      "instanceOf": [
+        "Q1074076"
+      ]
+    },
+    "names": {
+      "en": [
+        {
+          "name": "Seats of the Five Emperors",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "五帝座",
+          "pref": true
+        },
+        {
+          "name": "五帝座 (星官)",
+          "alias": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "五帝座",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q10882190": {
+    "name": "Five Lords",
+    "sitelinks": 2,
+    "wikipedias": 2,
+    "in": [
+      "supremePalace"
+    ],
+    "statements": {
+      "instanceOf": [
+        "Q1074076"
+      ]
+    },
+    "names": {
+      "en": [
+        {
+          "name": "Five Lords",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "五诸侯",
+          "pref": true
+        },
+        {
+          "name": "五諸侯 (星官)",
+          "alias": true
+        }
+      ]
+    }
+  },
+  "Q10884043": {
+    "name": "Retinue",
+    "sitelinks": 2,
+    "wikipedias": 2,
+    "in": [
+      "supremePalace"
+    ],
+    "statements": {
+      "instanceOf": [
+        "Q1074076"
+      ]
+    },
+    "names": {
+      "en": [
+        {
+          "name": "Retinue",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "从官",
+          "pref": true
+        },
+        {
+          "name": "从官 (星官)",
+          "alias": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "從官",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q10891267": {
+    "name": "Inner Screen",
+    "sitelinks": 2,
+    "wikipedias": 2,
+    "in": [
+      "supremePalace"
+    ],
+    "statements": {
+      "instanceOf": [
+        "Q1074076"
+      ]
+    },
+    "names": {
+      "en": [
+        {
+          "name": "Inner Screen",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "內屏",
+          "pref": true
+        },
+        {
+          "name": "內屏 (星官)",
+          "alias": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "內屏",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q10891276": {
+    "name": "Inner Kitchen",
+    "sitelinks": 2,
+    "wikipedias": 2,
+    "in": [
+      "purpleForbidden"
+    ],
+    "statements": {
+      "instanceOf": [
+        "Q1074076"
+      ]
+    },
+    "names": {
+      "en": [
+        {
+          "name": "Inner Kitchen",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "內廚",
+          "pref": true
+        },
+        {
+          "name": "內廚 (星官)",
+          "alias": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "內廚",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q10891377": {
+    "name": "Inner Steps",
+    "sitelinks": 3,
+    "wikipedias": 3,
+    "in": [
+      "purpleForbidden"
+    ],
+    "statements": {
+      "instanceOf": [
+        "Q1074076"
+      ]
+    },
+    "names": {
+      "en": [
+        {
+          "name": "Inner Steps",
+          "pref": true
+        }
+      ],
+      "es": [
+        {
+          "name": "Escalera interior",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "內階",
+          "pref": true
+        },
+        {
+          "name": "內階 (星官)",
+          "alias": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "內階",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q10892329": {
+    "name": "Eight Kinds of Crops",
+    "sitelinks": 3,
+    "wikipedias": 3,
+    "in": [
+      "purpleForbidden"
+    ],
+    "statements": {
+      "instanceOf": [
+        "Q1074076"
+      ]
+    },
+    "names": {
+      "en": [
+        {
+          "name": "Eight Kinds of Crops",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "八穀",
+          "pref": true
+        },
+        {
+          "name": "八穀 (星官)",
+          "alias": true
+        }
+      ]
+    }
+  },
+  "Q10893358": {
+    "name": "Six Jia",
+    "sitelinks": 2,
+    "wikipedias": 2,
+    "in": [
+      "purpleForbidden"
+    ],
+    "statements": {
+      "instanceOf": [
+        "Q1074076"
+      ]
+    },
+    "names": {
+      "en": [
+        {
+          "name": "Six Jia",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "六甲",
+          "pref": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "六甲",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q10897017": {
+    "name": "Jewel Market",
+    "sitelinks": 2,
+    "wikipedias": 2,
+    "in": [
+      "heavenlyMarket"
+    ],
+    "statements": {
+      "instanceOf": [
+        "Q1074076"
+      ]
+    },
+    "names": {
+      "en": [
+        {
+          "name": "Jewel Market",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "列肆",
+          "pref": true
+        },
+        {
+          "name": "列肆 (星官)",
+          "alias": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "列肆",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q10901452": {
+    "name": "Eunuch",
+    "sitelinks": 2,
+    "wikipedias": 2,
+    "in": [
+      "purpleForbidden"
+    ],
+    "statements": {
+      "instanceOf": [
+        "Q1074076"
+      ]
+    },
+    "names": {
+      "en": [
+        {
+          "name": "Eunuch",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "勢",
+          "pref": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "勢",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q10936785": {
+    "name": "Chief Judge",
+    "sitelinks": 3,
+    "wikipedias": 3,
+    "in": [
+      "purpleForbidden"
+    ],
+    "statements": {
+      "instanceOf": [
+        "Q1074076"
+      ]
+    },
+    "names": {
+      "en": [
+        {
+          "name": "Chief Judge",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "大理",
+          "pref": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "大理",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q10939049": {
+    "name": "Celestial Great One",
+    "sitelinks": 2,
+    "wikipedias": 2,
+    "in": [
+      "purpleForbidden"
+    ],
+    "statements": {
+      "instanceOf": [
+        "Q1074076"
+      ]
+    },
+    "names": {
+      "en": [
+        {
+          "name": "Celestial Great One",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "天乙",
+          "pref": true
+        },
+        {
+          "name": "天乙星",
+          "alias": true
+        }
+      ],
+      "zh-tw": [
+        {
+          "name": "天乙",
+          "pref": true
+        },
+        {
+          "name": "天乙星",
+          "alias": true
+        }
+      ],
+      "zh-hk": [
+        {
+          "name": "天乙",
+          "pref": true
+        },
+        {
+          "name": "天乙星",
+          "alias": true
+        }
+      ]
+    }
+  },
+  "Q10939524": {
+    "name": "Right Wall of the Heavenly Market Enclosure",
+    "sitelinks": 2,
+    "wikipedias": 2,
+    "in": [
+      "heavenlyMarket"
+    ],
+    "statements": {
+      "instanceOf": [
+        "Q1074076"
+      ]
+    },
+    "names": {
+      "en": [
+        {
+          "name": "Right Wall of the Heavenly Market Enclosure",
+          "pref": true
+        },
+        {
+          "name": "Right Wall",
+          "alias": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "天市右垣",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q10939525": {
+    "name": "Left Wall of the Heavenly Market Enclosure",
+    "sitelinks": 3,
+    "wikipedias": 3,
+    "in": [
+      "heavenlyMarket"
+    ],
+    "statements": {
+      "instanceOf": [
+        "Q1074076"
+      ]
+    },
+    "names": {
+      "en": [
+        {
+          "name": "Left Wall of the Heavenly Market Enclosure",
+          "pref": true
+        },
+        {
+          "name": "Left Wall",
+          "alias": true
+        }
+      ],
+      "es": [
+        {
+          "name": "Muro izquierdo del mercado celeste",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "天市左垣",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q10939549": {
+    "name": "Celestial Bed",
+    "sitelinks": 2,
+    "wikipedias": 2,
+    "in": [
+      "purpleForbidden"
+    ],
+    "statements": {
+      "instanceOf": [
+        "Q1074076"
+      ]
+    },
+    "names": {
+      "en": [
+        {
+          "name": "Celestial Bed",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "天床",
+          "pref": true
+        },
+        {
+          "name": "天床 (星官)",
+          "alias": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "天床",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q10939746": {
+    "name": "Celestial Pillar",
+    "sitelinks": 2,
+    "wikipedias": 2,
+    "in": [
+      "purpleForbidden"
+    ],
+    "statements": {
+      "instanceOf": [
+        "Q1074076"
+      ]
+    },
+    "names": {
+      "en": [
+        {
+          "name": "Celestial Pillar",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "天柱",
+          "pref": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "天柱",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q10940440": {
+    "name": "Celestial Prison",
+    "sitelinks": 3,
+    "wikipedias": 3,
+    "in": [
+      "purpleForbidden"
+    ],
+    "statements": {
+      "instanceOf": [
+        "Q1074076"
+      ]
+    },
+    "names": {
+      "en": [
+        {
+          "name": "Celestial Prison",
+          "pref": true
+        }
+      ],
+      "es": [
+        {
+          "name": "Prisión celeste",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "天牢",
+          "pref": true
+        },
+        {
+          "name": "天牢星",
+          "alias": true
+        },
+        {
+          "name": "天牢 (星官)",
+          "alias": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "天牢",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q10940463": {
+    "name": "Judge for Nobility",
+    "sitelinks": 3,
+    "wikipedias": 3,
+    "in": [
+      "purpleForbidden"
+    ],
+    "statements": {
+      "instanceOf": [
+        "Q1074076"
+      ]
+    },
+    "names": {
+      "en": [
+        {
+          "name": "Judge for Nobility",
+          "pref": true
+        }
+      ],
+      "es": [
+        {
+          "name": "Juez celeste",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "天理",
+          "pref": true
+        },
+        {
+          "name": "天理 (星官)",
+          "alias": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "天理",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q10940984": {
+    "name": "First Great One",
+    "sitelinks": 2,
+    "wikipedias": 2,
+    "in": [
+      "purpleForbidden"
+    ],
+    "statements": {
+      "instanceOf": [
+        "Q1074076"
+      ]
+    },
+    "names": {
+      "en": [
+        {
+          "name": "First Great One",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "太乙",
+          "pref": true
+        },
+        {
+          "name": "太乙星",
+          "alias": true
+        }
+      ]
+    }
+  },
+  "Q10941158": {
+    "name": "Crown Prince",
+    "sitelinks": 2,
+    "wikipedias": 2,
+    "in": [
+      "supremePalace"
+    ],
+    "statements": {
+      "instanceOf": [
+        "Q1074076"
+      ]
+    },
+    "names": {
+      "en": [
+        {
+          "name": "Crown Prince",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "太子 (星官)",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q10941225": {
+    "name": "Royals",
+    "sitelinks": 3,
+    "wikipedias": 3,
+    "in": [
+      "purpleForbidden"
+    ],
+    "statements": {
+      "instanceOf": [
+        "Q1074076"
+      ]
+    },
+    "names": {
+      "en": [
+        {
+          "name": "Royals",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "太尊",
+          "pref": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "太尊",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q10941554": {
+    "name": "Right Wall of the Supreme Palace Enclosure",
+    "sitelinks": 3,
+    "wikipedias": 3,
+    "in": [
+      "supremePalace"
+    ],
+    "statements": {
+      "instanceOf": [
+        "Q1074076"
+      ]
+    },
+    "names": {
+      "en": [
+        {
+          "name": "Right Wall of the Supreme Palace Enclosure",
+          "pref": true
+        },
+        {
+          "name": "Right Wall",
+          "alias": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "太微右垣",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q10941555": {
+    "name": "Left Wall of the Supreme Palace Enclosure",
+    "sitelinks": 3,
+    "wikipedias": 3,
+    "in": [
+      "supremePalace"
+    ],
+    "statements": {
+      "instanceOf": [
+        "Q1074076"
+      ]
+    },
+    "names": {
+      "en": [
+        {
+          "name": "Left Wall of the Supreme Palace Enclosure",
+          "pref": true
+        },
+        {
+          "name": "Left Wall",
+          "alias": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "太微左垣",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q10941827": {
+    "name": "Guard of the Sun",
+    "sitelinks": 2,
+    "wikipedias": 2,
+    "in": [
+      "purpleForbidden"
+    ],
+    "statements": {
+      "instanceOf": [
+        "Q1074076"
+      ]
+    },
+    "names": {
+      "en": [
+        {
+          "name": "Guard of the Sun",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "太陽守",
+          "pref": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "太陽守",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q10942725": {
+    "name": "Female Protocol",
+    "sitelinks": 3,
+    "wikipedias": 3,
+    "in": [
+      "purpleForbidden"
+    ],
+    "statements": {
+      "instanceOf": [
+        "Q1074076"
+      ]
+    },
+    "names": {
+      "en": [
+        {
+          "name": "Female Protocol",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "女史",
+          "pref": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "女史",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q11000041": {
+    "name": "Right Wall of the Purple Forbidden Enclosure",
+    "sitelinks": 3,
+    "wikipedias": 3,
+    "in": [
+      "purpleForbidden"
+    ],
+    "statements": {
+      "instanceOf": [
+        "Q1074076"
+      ]
+    },
+    "names": {
+      "en": [
+        {
+          "name": "Right Wall of the Purple Forbidden Enclosure",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "紫微右垣",
+          "pref": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "紫微右垣",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q11036535": {
+    "name": "Junior Officers",
+    "sitelinks": 2,
+    "wikipedias": 2,
+    "in": [
+      "supremePalace"
+    ],
+    "statements": {
+      "instanceOf": [
+        "Q1074076"
+      ]
+    },
+    "names": {
+      "en": [
+        {
+          "name": "Junior Officers",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "少微",
+          "pref": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "少微",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q11043438": {
+    "name": "Butcher's Shops",
+    "sitelinks": 2,
+    "wikipedias": 2,
+    "in": [
+      "heavenlyMarket"
+    ],
+    "statements": {
+      "instanceOf": [
+        "Q1074076"
+      ]
+    },
+    "names": {
+      "en": [
+        {
+          "name": "Butcher's Shops",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "屠肆",
+          "pref": true
+        },
+        {
+          "name": "屠肆 (星官)",
+          "alias": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "屠肆",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q11059483": {
+    "name": "Municipal Office",
+    "sitelinks": 2,
+    "wikipedias": 2,
+    "in": [
+      "heavenlyMarket"
+    ],
+    "statements": {
+      "instanceOf": [
+        "Q1074076"
+      ]
+    },
+    "names": {
+      "en": [
+        {
+          "name": "Municipal Office",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "市樓",
+          "pref": true
+        },
+        {
+          "name": "市樓 (星官)",
+          "alias": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "市樓",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q11060083": {
+    "name": "Textile Ruler",
+    "sitelinks": 2,
+    "wikipedias": 2,
+    "in": [
+      "heavenlyMarket"
+    ],
+    "statements": {
+      "instanceOf": [
+        "Q1074076"
+      ]
+    },
+    "names": {
+      "en": [
+        {
+          "name": "Textile Ruler",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "帛度",
+          "pref": true
+        },
+        {
+          "name": "帛度 (星官)",
+          "alias": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "帛度",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q11060498": {
+    "name": "Imperial Guards",
+    "sitelinks": 2,
+    "wikipedias": 2,
+    "in": [
+      "supremePalace"
+    ],
+    "statements": {
+      "instanceOf": [
+        "Q1074076"
+      ]
+    },
+    "names": {
+      "en": [
+        {
+          "name": "Imperial Guards",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "常陈",
+          "pref": true
+        },
+        {
+          "name": "常陳 (星官)",
+          "alias": true
+        }
+      ]
+    }
+  },
+  "Q11061556": {
+    "name": "Officer of Honour",
+    "sitelinks": 2,
+    "wikipedias": 2,
+    "in": [
+      "supremePalace"
+    ],
+    "statements": {
+      "instanceOf": [
+        "Q1074076"
+      ]
+    },
+    "names": {
+      "en": [
+        {
+          "name": "Officer of Honour",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "幸臣",
+          "pref": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "幸臣",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q11071163": {
+    "name": "Maids-in-waiting",
+    "sitelinks": 3,
+    "wikipedias": 3,
+    "in": [
+      "purpleForbidden"
+    ],
+    "statements": {
+      "instanceOf": [
+        "Q1074076"
+      ]
+    },
+    "names": {
+      "en": [
+        {
+          "name": "Maids-in-waiting",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "御女",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q11080483": {
+    "name": "Dipper for Liquids",
+    "sitelinks": 3,
+    "wikipedias": 3,
+    "in": [
+      "heavenlyMarket"
+    ],
+    "statements": {
+      "instanceOf": [
+        "Q1074076"
+      ]
+    },
+    "names": {
+      "en": [
+        {
+          "name": "Dipper for Liquids",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "斗",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q11080562": {
+    "name": "Dipper for Solids",
+    "sitelinks": 2,
+    "wikipedias": 2,
+    "in": [
+      "heavenlyMarket"
+    ],
+    "statements": {
+      "instanceOf": [
+        "Q1074076"
+      ]
+    },
+    "names": {
+      "en": [
+        {
+          "name": "Dipper for Solids",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "斛",
+          "pref": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "斛",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q11087757": {
+    "name": "Mingtang",
+    "sitelinks": 2,
+    "wikipedias": 2,
+    "in": [
+      "supremePalace"
+    ],
+    "statements": {
+      "instanceOf": [
+        "Q1074076"
+      ]
+    },
+    "names": {
+      "en": [
+        {
+          "name": "Mingtang",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "明堂",
+          "pref": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "明堂",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q11099668": {
+    "name": "Canopy Support",
+    "sitelinks": 2,
+    "wikipedias": 2,
+    "in": [
+      "purpleForbidden"
+    ],
+    "statements": {
+      "instanceOf": [
+        "Q1074076"
+      ]
+    },
+    "names": {
+      "en": [
+        {
+          "name": "Canopy Support",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "杠",
+          "pref": true
+        },
+        {
+          "name": "杠 (星官)",
+          "alias": true
+        }
+      ]
+    }
+  },
+  "Q11109296": {
+    "name": "Official of Royal Archives",
+    "sitelinks": 2,
+    "wikipedias": 2,
+    "in": [
+      "purpleForbidden"
+    ],
+    "statements": {
+      "instanceOf": [
+        "Q1074076"
+      ]
+    },
+    "names": {
+      "en": [
+        {
+          "name": "Official of Royal Archives",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "柱史",
+          "pref": true
+        },
+        {
+          "name": "柱史 (星官)",
+          "alias": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "柱史",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q15303554": {
+    "name": "Wenchang",
+    "sitelinks": 3,
+    "wikipedias": 3,
+    "in": [
+      "purpleForbidden"
+    ],
+    "statements": {
+      "instanceOf": [
+        "Q1074076"
+      ]
+    },
+    "names": {
+      "en": [
+        {
+          "name": "Wenchang",
+          "pref": true
+        }
+      ],
+      "es": [
+        {
+          "name": "Wenchang",
+          "pref": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "文昌星",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "文昌",
+          "pref": true
+        },
+        {
+          "name": "文昌星",
+          "alias": true
+        }
+      ],
+      "zh-hk": [
+        {
+          "name": "Wenchang",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q15476734": {
+    "name": "Assistant",
+    "sitelinks": 4,
+    "wikipedias": 4,
+    "in": [
+      "purpleForbidden"
+    ],
+    "statements": {
+      "instanceOf": [
+        "Q1074076"
+      ]
+    },
+    "names": {
+      "en": [
+        {
+          "name": "Assistant",
+          "pref": true
+        }
+      ],
+      "es": [
+        {
+          "name": "Ministro de estado",
+          "pref": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "輔",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "輔",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q15901627": {
+    "name": "Emperor's Bodyguard",
+    "sitelinks": 2,
+    "wikipedias": 2,
+    "in": [
+      "supremePalace"
+    ],
+    "statements": {
+      "instanceOf": [
+        "Q1074076"
+      ]
+    },
+    "names": {
+      "en": [
+        {
+          "name": "Emperor's Bodyguard",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "虎賁 (星官)",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q15938170": {
+    "name": "Officers of the Imperial Guard",
+    "sitelinks": 2,
+    "wikipedias": 2,
+    "in": [
+      "supremePalace"
+    ],
+    "statements": {
+      "instanceOf": [
+        "Q1074076"
+      ]
+    },
+    "names": {
+      "en": [
+        {
+          "name": "Officers of the Imperial Guard",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "郎位",
+          "pref": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "郎位",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q17023714": {
+    "name": "Tianhuang Emperor",
+    "sitelinks": 3,
+    "wikipedias": 3,
+    "in": [
+      "purpleForbidden"
+    ],
+    "statements": {
+      "instanceOf": [
+        "Q1074076"
+      ]
+    },
+    "names": {
+      "en": [
+        {
+          "name": "Tianhuang Emperor",
+          "pref": true
+        },
+        {
+          "name": "Gouchen Emperor",
+          "alias": true
+        },
+        {
+          "name": "Great Emperor of the Curved Array",
+          "alias": true
+        },
+        {
+          "name": "Great Heavenly Emperor of the Highest Palace of the Curved Array (Little Dipper)",
+          "alias": true
+        },
+        {
+          "name": "Great Heavenly Emperor of the Highest Palace of the Curved Array",
+          "alias": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "天皇大帝",
+          "pref": true
+        },
+        {
+          "name": "勾陳大帝",
+          "alias": true
+        },
+        {
+          "name": "gōuchén dàdì",
+          "alias": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "天皇大帝",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q17024875": {
+    "name": "Royal Secretary",
+    "sitelinks": 2,
+    "wikipedias": 2,
+    "in": [
+      "purpleForbidden"
+    ],
+    "statements": {
+      "instanceOf": [
+        "Q1074076"
+      ]
+    },
+    "names": {
+      "en": [
+        {
+          "name": "Royal Secretary",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "尚書",
+          "pref": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "尚書",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q17026191": {
+    "name": "Usher to the Court",
+    "sitelinks": 3,
+    "wikipedias": 3,
+    "in": [
+      "supremePalace"
+    ],
+    "statements": {
+      "instanceOf": [
+        "Q1074076"
+      ]
+    },
+    "names": {
+      "en": [
+        {
+          "name": "Usher to the Court",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "謁者",
+          "pref": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "謁者",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q17030135": {
+    "name": "Long Wall",
+    "sitelinks": 2,
+    "wikipedias": 2,
+    "in": [
+      "supremePalace"
+    ],
+    "statements": {
+      "instanceOf": [
+        "Q1074076"
+      ]
+    },
+    "names": {
+      "en": [
+        {
+          "name": "Long Wall",
+          "pref": true
+        }
+      ],
+      "ja": [
+        {
+          "name": "長垣",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "长垣",
+          "pref": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "長垣",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q17034221": {
+    "name": "Hidden Virtue",
+    "sitelinks": 4,
+    "wikipedias": 4,
+    "in": [
+      "purpleForbidden"
+    ],
+    "statements": {
+      "instanceOf": [
+        "Q1074076"
+      ]
+    },
+    "names": {
+      "en": [
+        {
+          "name": "Hidden Virtue",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "陰德",
+          "pref": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "陰德",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q17039457": {
+    "name": "Astronomical Observatory",
+    "sitelinks": 2,
+    "wikipedias": 2,
+    "in": [
+      "supremePalace"
+    ],
+    "statements": {
+      "instanceOf": [
+        "Q1074076"
+      ]
+    },
+    "names": {
+      "en": [
+        {
+          "name": "Astronomical Observatory",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "灵台",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q17041401": {
+    "name": "Commodity Market",
+    "sitelinks": 2,
+    "wikipedias": 2,
+    "in": [
+      "heavenlyMarket"
+    ],
+    "statements": {
+      "instanceOf": [
+        "Q1074076"
+      ]
+    },
+    "names": {
+      "en": [
+        {
+          "name": "Commodity Market",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "車肆",
+          "pref": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "車肆",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q17060986": {
+    "name": "Captain of the Bodyguards",
+    "sitelinks": 2,
+    "wikipedias": 2,
+    "in": [
+      "supremePalace"
+    ],
+    "statements": {
+      "instanceOf": [
+        "Q1074076"
+      ]
+    },
+    "names": {
+      "en": [
+        {
+          "name": "Captain of the Bodyguards",
+          "pref": true
+        }
+      ],
+      "ko": [
+        {
+          "name": "낭장",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "郎將",
+          "pref": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "郎將",
+          "pref": true
+        }
+      ]
+    }
+  },
+  "Q17066482": {
+    "name": "Prime Minister",
+    "sitelinks": 2,
+    "wikipedias": 2,
+    "in": [
+      "purpleForbidden"
+    ],
+    "statements": {
+      "instanceOf": [
+        "Q1074076"
+      ]
+    },
+    "names": {
+      "en": [
+        {
+          "name": "Prime Minister",
+          "pref": true
+        }
+      ],
+      "zh": [
+        {
+          "name": "相",
+          "pref": true
+        }
+      ],
+      "zh-hant": [
+        {
+          "name": "相",
+          "pref": true
+        }
+      ]
+    }
+  }
+}

@@ -14,7 +14,10 @@
 const PREFIX = "coverage";
 
 /** The Wikidata-sourced topics that have a coverage dataset (data/coverage/<topic>.json). */
-export const COVERAGE_TOPICS = ["countries", "capitals", "languages", "continents", "elements", "sports"] as const;
+export const COVERAGE_TOPICS = [
+  "countries", "capitals", "languages", "continents", "elements", "sports",
+  "western-constellations", "chinese-constellations",
+] as const;
 export type CoverageTopic = (typeof COVERAGE_TOPICS)[number];
 
 const TOPICS = new Set<string>(COVERAGE_TOPICS);
@@ -33,7 +36,8 @@ export interface Route {
  *  named after the list: the file stem, or for a synthesized merge topic, which has no
  *  file, its id ("geography-human-countries"), whichever ends in the list's name. The
  *  per-continent leaves (`africa/countries.json`) and the merge above them all feed
- *  the one "countries" page. */
+ *  the one "countries" page. A stem that is itself a page name wins first, so a
+ *  hyphenated one ("western-constellations") keeps its own page. */
 export function coverageTopicOf(topic: {
   id: string;
   path: string;
@@ -41,7 +45,7 @@ export function coverageTopicOf(topic: {
 }): CoverageTopic | null {
   if (![topic.dataOrigin ?? []].flat().includes("Wikidata")) return null;
   const stem = (topic.path.split("/").pop() ?? "").replace(/\.json$/, "") || topic.id;
-  const name = stem.split("-").pop() ?? "";
+  const name = TOPICS.has(stem) ? stem : (stem.split("-").pop() ?? "");
   return TOPICS.has(name) ? (name as CoverageTopic) : null;
 }
 
