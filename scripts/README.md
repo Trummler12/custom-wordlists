@@ -52,6 +52,7 @@ Per topic, run individually — no umbrella npm script.
 | scripts | what they do |
 | --- | --- |
 | `science/dump-element-names` · `science/build-elements` | Chemical elements: dump names per language from Wikidata, then fill `elements.json` (names only — tiers stay editorial). |
+| `science/dump-class-topic <topic>` · `science/build-class-topic <topic>` | The Science topics made from Wikidata (Western and Chinese constellations, …): per topic in `science/class-topics.mjs` its members (the instances of some classes, or the parts of some items), sitelink floor, tiers and rules; dump the members, then write the whole topic. Hand input: `data-raw/science/<folder>/<topic>-excluded.json`, what the members hold that is no entry. |
 | `sports/dump-games-sports` · `sports/build-games-sports` | The sports of the multi-sport Games (Olympics, Paralympics, Asian, Commonwealth and World Games): dump them from Wikidata, then fill each Games' `sports.json`, tiered by how many Wikipedias cover a sport. |
 | `pokemon/dump-names` · `pokemon/enrich-names` · `pokemon/romanize-names` | Pokémon lists from PokéAPI: dump per language, join every language onto a flat list by English name, and bake or strip `ja-Latn` romaji. |
 

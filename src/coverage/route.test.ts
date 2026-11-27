@@ -78,6 +78,10 @@ describe("coverageTopicOf", () => {
   it("matches a single topic outside geography", () => {
     expect(coverageTopicOf({ id: "elements", path: "science/chemistry/elements.json", dataOrigin: wd })).toBe("elements");
   });
+  it("keeps a hyphenated page name whole", () => {
+    const path = "science/astronomy/constellations/chinese-constellations.json";
+    expect(coverageTopicOf({ id: "chinese-constellations", path, dataOrigin: wd })).toBe("chinese-constellations");
+  });
   it("is null for a Wikidata topic with no coverage page", () => {
     expect(coverageTopicOf({ id: "athletes", path: "sports/olympia/athletes.json", dataOrigin: wd })).toBeNull();
   });
