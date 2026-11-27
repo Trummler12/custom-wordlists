@@ -4,6 +4,8 @@ The goal is to maintain as many Topics as possible via Wikidata;
 This however comes with some challenges, the most important one being that lots of Topics have **incomplete coverage** on Wikidata;  
 This File serves as a Hub for the documentation of results and other helpful stuff when analyzing what Wikidata already covers and what Gaps need to be filled.
 
+**Build specs** for released topics (what the build PRs read, tier and omit): [_Build_Specs.md](./_Build_Specs.md).
+
 Use the relative File Paths/Links provided on the Items listed in the [Overview section](#overview) below to jump to the (results so far of the Wikidata Query Analysis on the) respective Topic.
 
 ## Categories
@@ -14,6 +16,7 @@ Use the relative File Paths/Links provided on the Items listed in the [Overview 
   - [The Simpsons](./animation/The_Simpsons.md#navigation)
   - [Candidates](#candidates)
 - [Anime](#anime):
+  - [Attack on Titan](./anime/Attack_on_Titan.md#navigation)
   - [Dragon Ball](./anime/Dragon_Ball.md#navigation)
   - [One Piece](./anime/One_Piece.md#navigation)
   - [JoJo's Bizarre Adventure](./anime/JoJo.md#navigation)
@@ -101,7 +104,8 @@ Fullest character lists per franchise (2026-11-06, `_data/Prompts/done/Character
 ### Anime
 
 - [Attack on Titan](./anime/Attack_on_Titan.md#navigation)
-  - ✖️[Characters](./anime/Attack_on_Titan.md#characters)
+  - ➕[Characters](./anime/Attack_on_Titan.md#characters)
+  - ➕[Other topics](./anime/Attack_on_Titan.md#other-topics) (organisations, places, the Nine Titans, families, ranks)
 - [Dragon Ball](./anime/Dragon_Ball.md#navigation)
   - ➕[Characters](./anime/Dragon_Ball.md#characters)
   - ✖️[Locations](./anime/Dragon_Ball.md#locations)
@@ -125,7 +129,7 @@ Fullest character lists per franchise (2026-11-06, `_data/Prompts/done/Character
   - ➕[Characters](./anime/My_Hero_Academia.md#characters)
   - ✖️[Quirks](./anime/My_Hero_Academia.md#quirks)
 - [Naruto](./anime/Naruto.md#navigation)
-  - ✖️[Characters](./anime/Naruto.md#characters)
+  - ➕[Characters](./anime/Naruto.md#characters) (with locations, affiliations and jutsu)
 - [Pokémon (Anime)](./anime/Pokemon.md#navigation)
   - ✖️[Characters](./anime/Pokemon.md#characters)
   - ➕[Locations](./anime/Pokemon.md#locations)
@@ -258,7 +262,7 @@ Fullest character lists per franchise (2026-11-06, `_data/Prompts/done/Character
 
 - [Chemistry](./science/Chemistry.md#navigation)
   - ✅[Chemical Elements](./science/Chemistry.md#chemical-elements)
-  - [Candidates](./science/Chemistry.md#candidates)
+  - ➕[Substance Classes](./science/Chemistry.md#substance-classes)
 - [Biology](./science/Biology.md#navigation)
   - ➕[Organs & Organelles](./science/Biology.md#organs--organelles)
   - ➕[Human Bones](./science/Biology.md#human-bones)
@@ -278,7 +282,6 @@ Fullest character lists per franchise (2026-11-06, `_data/Prompts/done/Character
 
 #### Candidates
 
-- Substance Classes
 - Taxonomy
 
 ### Sports

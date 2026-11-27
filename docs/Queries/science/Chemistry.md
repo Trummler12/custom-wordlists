@@ -16,6 +16,7 @@ What Wikidata offers for the Chemistry topics, and how far it can serve as their
 
 [Science](../README.md#science)
 - ✅[Chemical Elements](#chemical-elements)
+- ➕[Substance Classes](#substance-classes)
 - [Candidates](#candidates)
 
 ## ✅Chemical Elements
@@ -66,13 +67,37 @@ SELECT DISTINCT ?item ?itemLabel WHERE {
 
 **Rating:** still perfect for membership; the names were 7 labels short of clean (batched), Tagalog is the one weak language.
 
-## Candidates
+## ➕Substance Classes
 
-Science topics from the hub, not approved yet. **Check (2026-11-05).**
-
-**Substance Classes** (➕; Trummler, 2026-11-03). Base: P31 *structural class of chemical entities* (Q47154513): 5,262 items; 930 from 5 sitelinks, 330 from 20, 108 from 40 (DNA 189, protein 179, alcohols 143, salt 121, amino acid 116, alkane 103). Tiers: sitelinks.
+Candidate since Trummler, 2026-11-03; promoted 2026-11-23 (#39 takes it into the PR). Base: P31 *structural class of chemical entities* (Q47154513): 5,262 items; 930 from 5 sitelinks, 330 from 20, 108 from 40 (DNA 189, protein 179, alcohols 143, salt 121, amino acid 116, alkane 103). Tiers: sitelinks.
 
 - **More classes:** *imprecise class of chemical entities* (Q74892521: lipid 124, flavonoid 55) and *class of chemical entities with similar applications or functions* (Q56256173: acid, base) belong in; *group or class of chemical substances* (Q17339814) only by hand, as it holds chemical element, mixture and gel beside sugar and polymer.
 - **Rules:** element groups (halogens, noble gases: P31 *group*, Q83306) could join as `omittable`. Specialised classes (phenylpropanoid, cerebrosides) fall below the floor, so the floor does that work.
+
+**Second pass (2026-11-23, ready for the topic):**
+- **Base:** the union of the three classes, each item once (cephalosporin carries two of them): *structural class of chemical entities* (Q47154513), *imprecise class of chemical entities* (Q74892521), *class of chemical entities with similar applications or functions* (Q56256173). From 5 sitelinks 1,068 (935 structural, 127 by function only), from 10 716, from 20 384, from 40 134, from 80 28, from 120 10.
+- **Tiers:** sitelinks in the half-decade steps of the other topics (120, 80, 40, 20, 10, 5).
+- **Rule `functional-classes`** (`omittable`, default on): the 127 classes by function only (antibiotic, toxin, pheromone, antioxidant, estrogen, pH indicator, nucleophile, novichok …). They read as substance classes in a quiz, but some lists will want structure only.
+- ~~Rule `element-groups`~~ (dropped 2026-11-26: the element groups became the topic *Periodic Groups*, `_Build_Specs.md#periodic-groups`).
+- **Exclusion:** *hazardous substances* (Q757138, enwiki *Dangerous goods*): a legal category, not a class of substances.
+- **Single compounds:** none mistyped among the 387 from 20 sitelinks. Those with a formula or CAS number are classes with a general formula (tetrose, heptose) or a collective CAS number (lignin, pectin).
+- **Labels:** compared with the enwiki titles: only the electrophile was wrong, its label vandalised to *Amymi* on 2026-05-06; restored by `2026-11-23_electrophile-label-restore.txt`. The other differences are synonyms (DNA / deoxyribonucleic acid, folate / vitamin B9).
+- **Rating:** ➕, ready once the restore is in.
+
+## Selection options (2026-11-25, Trummler's list; graded solid / worth considering / not supported)
+
+**Substance Classes.** The topic is broader than functional groups: DNA, protein, salt, polymer are classes too. The classes named by a functional group (alcohols, ketones, esters, amines, haloalkanes) are a part of it.
+- *Solid:* super- and subgroups as inclusion groups, read from the class tree (P279): *haloalkane* under *halogenated hydrocarbon*, *carboxylic acid* under *organic acid*; fluoro-, chloro-, bromo- and iodoalkanes under the haloalkanes the same way. The build groups by the top classes it meets.
+- *Worth considering:* a group per functional group (hydroxy, carbonyl, carboxyl …). The link from class to group is patchy: *ester* and *carboxylic acid* carry it as *has part(s)* (P527 *acyloxy group*, *carboxyl*), *ketone*, *amine*, *haloalkane* don't. ChEBI (whose IDs the classes carry, P683) defines most of them by their group; filling P527 from ChEBI's relations would be a batch.
+- German names: the class labels in de (*Alkohole*), which the build already reads.
+
+**Chemical Elements.** **Decided (Trummler, 2026-11-26):** inclusion groups for the everyday categories (alkali … noble gases, transition metals expandable into lanthanides and actinides, metals / metalloids / nonmetals with double membership for the borderline), `synthetic-elements` (95–118) `omitted` in the omission panel; the group names themselves became a topic of their own, *Periodic Groups*. Both: `_Build_Specs.md#chemical-elements-inclusion-groups`. de labels of the columns fixed (`2026-11-26_element-groups-de-labels.txt`). The points below are the earlier analysis; superseded where they differ.
+- *Solid:* group (1–18), period and block follow from the atomic number (P1086): no statement needed, the build computes them.
+- *Not supported:* metal / metalloid / nonmetal. Only a few elements carry such a class (metal 6, nonmetal 4, metalloid 2), and no standard fixes the metalloids (B, Si, Ge, As, Sb, Te, sometimes Po, At): a hand list in the build, the school convention, is the honest form; a P31 batch would claim more certainty than chemistry has.
+- *Worth considering:* *precious* / *noble metals* (3 and 2 elements carry them) and the *platinum group* (6 of 6, complete): a short hand list or a sourced batch.
+
+## Candidates
+
+Science topics from the hub, not approved yet. None left: Substance Classes became a topic (2026-11-23).
 
 ## [to Navigation](#navigation)

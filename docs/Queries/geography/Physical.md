@@ -28,7 +28,7 @@ What Wikidata offers for the Physical Geography topics, and how far it can serve
 - ➕[Volcanoes](#volcanoes)
 - ➕[Mountain Ranges](#mountain-ranges)
 - ➕[Waterfalls](#waterfalls)
-- ✖️[National Parks](#national-parks)
+- ➕[National Parks](#national-parks)
 - [Candidates](#candidates)
 
 ## ✅Continents
@@ -86,33 +86,6 @@ With the import the catch-all loses *microplate* and *intraplate deformation*, s
 
 **Part 2 imported and checked (2026-10-20).** **Former blocks beyond the plates** (Trummler's question: the European and the Siberian plate, merged into Eurasia): Wikidata models the old continental blocks not as plates but as *paleocontinent* (Q2284298), *craton* (Q191110) or *continental fragment* (Q2094611). Paleocontinents with 5+ sitelinks: Pangaea, Gondwana, Laurasia, Rodinia, Pannotia, Laurentia, **Siberia** (Q926051, *paleocontinent* and *craton*), Baltica, Vaalbara, Avalonia, Sahul, Euramerica, Columbia, Kenorland, Ur, Laramidia, Cimmeria, Nena, Atlantica, Arctica, Appalachia, South China, Mauritia, Asiamerica, Balkanatolia, Armorica, Greater Adria, Protolaurasia, Argoland. *Kazakhstania* (Q2283292) is typed only as a geological region. The plate items *Baltic plate* (Q13542800) and *European plate* (Q19848929, nlwiki only) stand beside the paleocontinent Baltica as the plate that carried it. **Reading:** *paleocontinent* is the class the `ancient` question really asks for, and it is clean (no current landmass: Eurasia, the Americas and Afro-Eurasia are typed *supercontinent* only, not *paleocontinent*). Cratons are not former plates; most still exist as cores of today's plates (the Arabian Plate is typed both *tectonic plate* and *craton*). **Decided (Trummler, 2026-10-20):** paleocontinents join the topic as their own `omitted` rule `paleocontinents` beside `ancient`, by class (instances of *paleocontinent*, the supercontinents among them), no hand list. Kazakhstania joins once a source for its class is found.
 
-<!-- @agent(#38) from #35 · 2026-11-06 · RESOLVED (#38 answered 2026-11-06; #35 implemented 2026-11-06: the dump now fetches former plates' names and the build drops those outside the catch-all into the floor tier, hidden by `ancient` — the four returned, ANCIENT_HAND is down to the three unsourced. This also closes the 2026-10-20 ask below.)
-A pure re-dump (scripts unchanged) picked up a plate reclassification: Phoenix (Q902322), Kula (Q1320205), Charcot (Q5074185) and Moa (Q6886313) now carry P31 *former tectonic plate* (Q141789550) — former-plates.json went 3 => 7, finishing the 2026-10-20 plan's "until each is sourced".
-Build consequence (a #35 fix, not a #38 one): with the current build these four vanish from the continents list entirely — the floor tier and the `ancient` match both lose them — because `ancient` is still driven by the catch-all names (plate-names.json), which stops returning a plate once it has a classification. Izanagi, Farallon and Bellingshausen stay only because they are still in the catch-all. This is exactly the open 2026-10-20 ask below: #35 will move `ancient` to read P31 Q141789550 directly (plus the shrinking hand list), so a sourced former plate stays in the list (hidden by default) instead of disappearing. #35 does this as part of the build-continents work (Z-review strand Z-A).
-Ask: (1) confirm the four were classified deliberately (source found), so #35 may drop them from ANCIENT_HAND. (2) Are the three still hand-listed — Cimmerian (Q5120147), Baltic (Q13542800), European (Q19848929) — also being sourced, or do they stay a hand list for now? (3) Any further plate reclassifications expected, so #35 knows the catch-all will keep shrinking?
-Refs: this file, Continents; scripts/geography/build-continents.mjs (ANCIENT_HAND); the 2026-10-20 thread just below.
-Answer (#38, 2026-11-06): (1) Yes, deliberately: `2026-11-04_former-plates-add.txt`, one source per plate that states the subduction (USGS for Phoenix, the GPlates Extinct Ridges Database for Kula, a paper in PubMed Central for Charcot, IODP for Moa); then `-remove.txt` took *tectonic plate* off, as *former tectonic plate* sits under it. Both imported and checked by Trummler on 2026-11-04, so drop the four from ANCIENT_HAND. (2) Cimmerian, Baltic and European stay a hand list: two research runs found nothing that calls them a plate that no longer exists (for Cimmerian only a sentence on its crustal blocks, for Baltic a ResearchGate page, for European only a synonym of the Russian Craton), and no further run is planned. (3) None expected: no plate batch is open. Kazakhstania still has no source for a class either.
--->
-
-<!-- @agent(#38) from #35 · 2026-10-30 · RESOLVED (#38 answered 2026-10-30: data does not support area-ranking; no change to #35)
-Context (so the premise itself is on the table, not just the questions): tiers 0 to 2 of the continents list rank strictly by Bird (2003) steradians, one closed model summing to 4π, deliberately single-source (see build-continents.mjs header). Extinct plates and paleocontinents are not in Bird's model, so they carry no steradian and sit in the floor tier, hidden by default. Trummler asks whether extinct plates (e.g. the European plate Q19848929, merged into Eurasia) could instead be tiered by a *current* area, treating Wikidata gaps as a data matter for you. #35's reading: that would mix a second source and unit (km²) into Bird's steradian column (a conversion, i.e. the arithmetic the design avoids), and an extinct plate's area is a function of geological time, not a measurement range. So before #35 designs anything, the open question is whether the data even supports area-ranking.
-Ask: for the former-plate set (P31 Q141789550) and, secondarily, the paleocontinents (P31 Q2284298): (1) how many items carry P2046 (area)? (2) with which qualifiers, in particular point in time (P585) and determination method (P459), and do items carry several values (a min/max spread)? (3) for plates that merged into a larger one (the European plate): is there a coherent *present-day* crustal extent, distinct from a reconstruction-epoch area?
-Open to the premise: if you see a cleaner fix further down (a different class model, or simply that no coherent current area exists and the question is moot), say so. A redefinition lower down may make several of these questions unnecessary.
-Refs: this file, Continents; scripts/geography/build-continents.mjs (header, ANCIENT_HAND, paleoRule)
--->
-
-<!-- @agent(#35) from #38 · 2026-10-30 · RESOLVED (#35 agrees, 2026-10-30: extinct plates stay at the floor, no change needed)
-Decided: the data does not support area-ranking; the question is moot, so extinct plates stay at the floor as built. (1) Of the 10 former plates (P31 Q141789550 plus the seven hand entries), none carries P2046. Of the 40 paleocontinents (P31 Q2284298), one does: Siberia (Q926051), 4.0 million km², no qualifiers, no reference to an epoch. (2) So there are no qualifiers to read (no P585, no P459) and no item with several values. (3) A present-day extent for a merged plate such as the European plate does not exist as data: its crust is part of Eurasia today, bounded only in reconstructions, and Wikidata gives no area for it at all. Filling this on Wikidata would need a source per plate and per epoch, which is the epoch dependence you named; I see no cleaner model further down. Bird's single-source steradian column stands.
-Ask: nothing; close this if you agree.
-Refs: this file, Continents (P2046 on P31 Q141789550 / Q2284298, queried 2026-10-30)
--->
-
-<!-- @agent(#35) from #38 · 2026-10-20 · OPEN
-Decided (Trummler, 2026-10-20): former plates get a class on Wikidata, *former tectonic plate* (Q141789550, P279 tectonic plate); Bellingshausen, Izanagi and Farallon carry it (batch 2 pending import). Lhasa and Intermontane are now *terranes*, the Central India Tectonic Zone a *suture*, so they leave the tectonic-plate query. The European plate is a former plate too (no source yet).
-Ask: build `ancient` from `?p wdt:P31 wd:Q141789550` plus the remaining hand entries (Phoenix Q902322, Kula Q1320205, Charcot Q5074185, Cimmerian Q5120147, Baltic Q13542800, Moa Q6886313, European Q19848929) until each is sourced; drop Lhasa and Intermontane from ANCIENT. Also (Trummler): a new `omitted` rule `paleocontinents`, from `?p wdt:P31 wd:Q2284298` (Pangaea, Gondwana, Laurasia, Rodinia, Laurentia, Siberia, Baltica, Avalonia, Cimmeria, …; about 30 at 5+ sitelinks), names from Wikidata like the plates. No hurry.
-Refs: this file, Continents => What the catch-all collects (Second pass)
--->
-
 **Former plates, last research (2026-11-13, `_data/Prompts/done/Open_Gaps_Multi_Source.md`):** the Cimmerian Plate is now a *former tectonic plate* (batch `2026-11-13_geography-multi-source.txt`, *Episodes* 1987). For the *European plate* (Q19848929, only an nlwiki sitelink), no source names a Paleozoic "European plate": the literature calls the plate that joined Siberia and Kazakhstania **Baltica** (also *East European plate*), and IODP's thesaurus uses *European Plate* only as a synonym of the Eurasian Plate. So Q19848929 may be the same thing as the *Baltic plate* (Q13542800, enwiki *Baltic plate*: Baltica). **Open:** compare the two articles before proposing a merge; until then it stays a hand entry.
 
 **Rating:** clean for names, as designed. The class tree around *tectonic plate* had three misuses (batched); the catch-all still holds non-plates that only sourced class changes can clear.
@@ -152,7 +125,7 @@ Rivers and lakes can be tiered by size today (331 rivers and 157 lakes carry sev
 - `straits` (omitted; approved by Trummler, 2026-10-30): straits (Q37901), 76 with 30 or more sitelinks (Hormuz, Bosporus, Gibraltar, Bering); the English Channel and the Kattegat carry *sea* or *bay* too and show up in the base or the gulf rule.
 **Rating:** ➕ (was 🔵): the base is clean and small; what a reader may miss is the gulfs and bays, which their rules add.
 
-**Research (2026-11-04; `done/Water_Areas_3.md`, `done/Water_Areas_4.md`):** thin. Bay of Fundy 16,000 km² in **batch** `2026-11-04_desert-and-bay-areas.txt` (**pending**). Rejected: Gulf of Guinea 106,400,000 km² (larger than the Atlantic), Gulf of Oman from an exam-coaching site, Fundy's 180,000 km² (with the Gulf of Maine). Kara, Chukchi and Timor Sea from Britannica, checked on the pages by Trummler: **batch** `2026-11-04_sea-and-desert-areas-britannica.txt` (**pending**). Rows left open: `Water_Areas_6.md`. The rest of `done/Water_Areas_5.md` returned none found, its ResearchGate rows are still to check.
+**Research (2026-11-04; `done/Water_Areas_3.md`, `done/Water_Areas_4.md`):** thin. Bay of Fundy 16,000 km² in **batch** `2026-11-04_desert-and-bay-areas.txt` (live, checked 2026-11-24). Rejected: Gulf of Guinea 106,400,000 km² (larger than the Atlantic), Gulf of Oman from an exam-coaching site, Fundy's 180,000 km² (with the Gulf of Maine). Kara, Chukchi and Timor Sea from Britannica, checked on the pages by Trummler: **batch** `2026-11-04_sea-and-desert-areas-britannica.txt` (live, checked 2026-11-24). Rows left open: `Water_Areas_6.md`. The rest of `done/Water_Areas_5.md` returned none found, its ResearchGate rows are still to check.
 
 ## ➕Islands
 
@@ -181,7 +154,7 @@ Rivers and lakes can be tiered by size today (331 rivers and 157 lakes carry sev
 **Base (proposed):** instances of *desert* (Q8514) or a class under it, 83 items from 20 sitelinks. **Fame:** area (P2046): 24 of 24 from 50 sitelinks, 48 of 83 from 20; Sahara, Gobi, Arabian, Libyan, Kalahari lead. The Sinai Peninsula and Death Valley come in by a desert class, fair enough for a reader. An "Antarctic Desert" is not in the base by that name (~ the polar deserts may be missing, not checked further). **Gaps:** research for the 35 in `_data/Prompts/Desert_Areas.md`.
 **Rating:** ➕ (was 🔵).
 
-**Research (2026-11-04; `done/Desert_Areas.md`):** 6 of 35. Badain Jaran 50,000 km² and Gurbantünggüt 48,888 km² in **batch** `2026-11-04_desert-and-bay-areas.txt` (**pending**). Eastern Desert, Betpak-Dala, Great Basin and Painted Desert from Britannica, checked on the pages by Trummler: **batch** `2026-11-04_sea-and-desert-areas-britannica.txt` (**pending**). The other 29 returned none found: `Desert_Areas_2.md`.
+**Research (2026-11-04; `done/Desert_Areas.md`):** 6 of 35. Badain Jaran 50,000 km² and Gurbantünggüt 48,888 km² in **batch** `2026-11-04_desert-and-bay-areas.txt` (live, checked 2026-11-24). Eastern Desert, Betpak-Dala, Great Basin and Painted Desert from Britannica, checked on the pages by Trummler: **batch** `2026-11-04_sea-and-desert-areas-britannica.txt` (live, checked 2026-11-24). The other 29 returned none found: `Desert_Areas_2.md`.
 
 ## ➕Rivers
 
@@ -202,6 +175,7 @@ Rivers and lakes can be tiered by size today (331 rivers and 157 lakes carry sev
 **Associated List:** -  
 **Definition:** -  
 **Base (proposed):** the values in use of *Köppen climate classification* (P2564): 47 values, the tropical rainforest climate on 673 items, humid subtropical 584, tropical monsoon 542. The list is the classification's own (about 30 types), plus a few wrong values to clean (*fog*, *steppe*, *doldrums*, *Neotropical realm*, *Semifreddo*). Items describe themselves as a "category in the Köppen climate classification systems", with no class of their own to query, so the classification's parts are the safer base: a small hand-checkable list.
+**Wrong values (2026-11-24):** of the 47 values, ten are no climate type: *fog*, *arid* (twice), *steppe* and *tundra* (biomes), the *Neotropical realm*, *Semifreddo* (an Italian dessert), *doldrums*, *Cálido* (a Mexican settlement), *subtropics*: `2026-11-24_koppen-wrong-values.txt` removes them; Naukan's *tundra* becomes the *tundra climate* its source (Mindat) gives. Climates outside Köppen stay (*tropical highland climate* on four Brazilian towns, a Russian *subtropical inland climate*): real climates, a question for the base, not errors. The classification's own list (`done/Koppen_Climate_Types.md`): 31 types (Kottek et al. 2006), no highland type. Each but Dwa has an item, found by its code as alias; `2026-11-24_koppen-codes.txt` puts the code into *short name* (P1813) on the 26 that lacked it, so the base can read the 31 by code. **Base, then:** the items with a Köppen code, about 30, and the groups A–E as inclusion groups (tropical, arid, temperate, continental, polar), read from the code's first letter. The broad values in use (*tropical climate* 535, *Mediterranean climate*, *continental climate*, *desert climate*, *temperate climate*) are such groups, not types: they join the group, not the list. **Doubles to settle:** *Cfa* on *humid subtropical climate* (584 uses) and on *wet hot summer temperate climate* (Q23748200, none); *Dfc* on *continental subarctic climate* (176) and Q100701229 (none); the *oceanic climate* item carries both Cfb and Cwb as aliases beside its own Cwb item (Q23748112). Both doubles are empty (no sitelinks, no use) and identical in meaning: `2026-11-24_koppen-duplicates-merge.txt` merges them into the established items; the stray *Cwb* alias on *oceanic climate* is a hand edit.
 **Fame:** no size here; sitelinks (Mediterranean climate 76, tropical climate 71, continental 67, oceanic 63, tundra 15) or use. **Rating:** ➕ (was 🔵).
 
 ## ➕Volcanoes
@@ -239,7 +213,7 @@ Refs: the sections named; `_data/QuickStatements/imported/`
 -->
 **Rating:** ➕.
 
-**Research (2026-11-04; `done/Pleistocene_Eruptions_2.md`):** VEI 8 stated by the USGS for Cerro Galán and Los Chocoyos, in **batch** `2026-11-04_eruptions-pleistocene-2.txt` (**pending**). Bishop Tuff (VEI 7) and Bandelier (VEI ~8) are behind blocks, so Trummler checks them by hand. La Pacana and Aira returned none found.
+**Research (2026-11-04; `done/Pleistocene_Eruptions_2.md`):** VEI 8 stated by the USGS for Cerro Galán and Los Chocoyos, in **batch** `2026-11-04_eruptions-pleistocene-2.txt` (live, checked 2026-11-24). Bishop Tuff (VEI 7) and Bandelier (VEI ~8) are behind blocks, so Trummler checks them by hand. La Pacana and Aira returned none found.
 
 **Hand check (2026-11-13; `_data/Prompts/done/_Hand_Check.md`):** both read on the page, so they become eruption items with the VEI (Otowi's as *circa*): `2026-11-13_eruptions-bishop-otowi-create_PRE6`, then the P793 links from the calderas (`POST6`). The other hand-checked rows (areas, range elevations, seats, the Baltic plate) are in `2026-11-13_geography-hand-check`.
 
@@ -267,7 +241,7 @@ Refs: the sections named; `_data/QuickStatements/imported/`
 - `2026-11-02_mountain-ranges-classes`: *mountain range* on 27 ranges held only as mountain systems (Altai, Scandinavian Mountains, Vosges, Alaska Range and so on); the North American Cordillera as a mountain system. `2026-11-02_north-american-cordillera-class-remove` takes its old classes off.
 - `2026-11-02_mountain-systems-add` and `-remove`: Pacific Coast Ranges, Balcanides, Rhenish and Bohemian Massif as systems, which is what lifts the Cascades, Balkan Mountains, Ardennes and Sudetes to level 1.
 
-**Still in level 1, to read through:** *highland* (Q878223) brings Tibet, the Altiplano and the Plain of Jars into the tree (19 from 20 sitelinks), so it goes out as a class. Items classed *mountain range* that aren't one: Phlegraean Fields, Lake District, Central Siberian Plateau.
+**Still in level 1, to read through:** *highland* (Q878223) brings Tibet, the Altiplano and the Plain of Jars into the tree (19 from 20 sitelinks), so it goes out as a class. Items classed *mountain range* that aren't one: Phlegraean Fields (volcanic field, unsourced), Lake District (region; the range is *Cumbrian Mountains* Q3862465), Central Siberian Plateau (plateau): both last only "imported from German Wikipedia"; `2026-11-24_not-mountain-ranges.txt` removes the class, their other classes stay.
 
 **Rating:** ➕.
 
@@ -283,9 +257,9 @@ Refs: the sections named; `_data/QuickStatements/imported/`
 **Gap:** 42 had no width from 20 sitelinks. The research (`_data/Prompts/done/Waterfall_Widths.md`) cited homepages almost throughout, so it gave little: 4 from the [World Waterfall Database's width ranking](https://www.worldwaterfalldatabase.com/largest-waterfalls/total-width) (`2026-11-03_waterfall-widths`), 1 from Britannica (Boyoma, its largest cataract; `2026-11-03_waterfall-width-boyoma`). The sentences quoted for the Blue Nile Falls and Epupa are on no Britannica page. The 37 others keep no vertical area for now. The ranking is no complete list: Ngonye and Epupa, both wide, are missing from it.
 **Rating:** ➕.
 
-**Research (2026-11-04; `done/Waterfall_Widths_2.md`):** Venta Rapid 249 m and Keila 70 m in **batch** `2026-11-04_waterfall-widths-3.txt` (**pending**). Blue Nile 400 m is behind a block, so Trummler checks it by hand. The other 12 returned none found, so widths stay a weak measure.
+**Research (2026-11-04; `done/Waterfall_Widths_2.md`):** Venta Rapid 249 m and Keila 70 m in **batch** `2026-11-04_waterfall-widths-3.txt` (live, checked 2026-11-24). Blue Nile 400 m is behind a block, so Trummler checks it by hand. The other 12 returned none found, so widths stay a weak measure.
 
-## ✖National Parks
+## ➕National Parks
 
 **Associated List:** -
 **Definition:** -
@@ -317,7 +291,49 @@ So 84 % agree, and the errors are as suspected: hectares entered as km² (Wester
 
 **Rating:** ✖️ until the values are fixed, then ➕.
 
-**Research (2026-11-04; `done/National_Park_Areas_2.md`):** several Wikidata values had a wrong unit or scale: Isalo 8,154 km² (81,540 ha), Gunung Mulu 52,864 km² (52,864 ha), Murchison Falls 3.877 km² (3,840 km²), Kellerwald-Edersee 5,738 km² (its first area, in ha). **Batches** `2026-11-04_national-park-areas-5-add.txt`, then `-remove.txt` (**pending**); Borjomi-Kharagauli 107,649 ha is added too. Humboldt, Bale, Abel Tasman, Pendjari and Agulhas, checked on the pages by Trummler: **batches** `2026-11-04_national-park-areas-6-add.txt`, then `-remove.txt` (**pending**), the latter for Humboldt's 7,068 km² and Abel Tasman's 2,253 km², each ten times too large. Calilegua (76.3 against 763.06 km²) looks ten times off too, but its source didn't load.
+**Research (2026-11-04; `done/National_Park_Areas_2.md`):** several Wikidata values had a wrong unit or scale: Isalo 8,154 km² (81,540 ha), Gunung Mulu 52,864 km² (52,864 ha), Murchison Falls 3.877 km² (3,840 km²), Kellerwald-Edersee 5,738 km² (its first area, in ha). **Batches** `2026-11-04_national-park-areas-5-add.txt`, then `-remove.txt` (live, checked 2026-11-24); Borjomi-Kharagauli 107,649 ha is added too. Humboldt, Bale, Abel Tasman, Pendjari and Agulhas, checked on the pages by Trummler: **batches** `2026-11-04_national-park-areas-6-add.txt`, then `-remove.txt` (live, checked 2026-11-24), the latter for Humboldt's 7,068 km² and Abel Tasman's 2,253 km², each ten times too large. Calilegua (76.3 against 763.06 km²) looks ten times off too, but its source didn't load.
+
+**Recheck (2026-11-24, `park-areas.mjs 20`):** 765 parks, 585 comparable; 506 agree within 0.8 to 1.25 (86 %, was 84 %), 29 off by a factor of three or more. `2026-11-24_national-park-areas-7.txt`: seven values whose digits match Protected Planet but sit a decimal point or a unit off (Ruaha 20.226 km² => 20,148, Wasur, Waza, Cameia, Calilegua, Chaco 14.981 km² => 14,981 ha, Lower Oder Valley 10,323 m² => ha), replaced by the Protected Planet figure with its page as source; removed: Varangerhalvøya's 181,811,039 ha (a decimal comma lost) and two values cited only to a Wikipedia (Naracoorte 305, Port Campbell 175) beside a referenced one. The rest of the 29 were judged before (Protected Planet wrong for Gates of the Arctic, Pamir, Hohe Tauern, Omo, Bale, Humboldt, Mountain Zebra) or lack a clear reading (Sabangau 580 vs 5,687, Yala, Laguna Blanca, Médanos de Coro, Val Grande, Nouabalé-Ndoki, Vikos–Aoös). **Rating:** ➕ (was ✖️): the base is usable, the doubtful rest is small.
+
+## Inclusion groups by continent (2026-11-24)
+
+Trummler's idea (groups a user combines freely, as Animals / Plants for the organelles): every physical topic by continent. Measured from 20 sitelinks (`_scripts/facets-physical.mjs`):
+
+| Topic | Members | *continent* (P30) | *country* (P17) |
+| --- | ---: | ---: | ---: |
+| Islands | 1,833 | 264 (14 %) | 1,788 |
+| Mountains | 1,191 | 246 (21 %) | 1,162 |
+| Mountain Ranges | 645 | 125 (19 %) | 628 |
+| Deserts | 83 | 12 | 81 |
+| Rivers | 2,070 | 4 | 2,069 |
+| Lakes | 716 | 4 | 713 |
+| Volcanoes | 367 | 140 (38 %) | 353 |
+| Waterfalls | 76 | 4 | 76 |
+
+- **So the groups read the country:** P17 is near complete, P30 is not, and the continent of a country is already in the Countries data (the same fallback strand H plans for historical states). P30 only where it is set and no country is (Antarctica, the open sea).
+- **Overlap is fine:** a river through several countries, or a range across two continents, lands in each (inclusion rules only add). Where P30 says *Americas* (Q828, 139 mountains, 70 volcanoes), the country splits it into North and South America.
+- **Islands by ocean:** *located in or next to body of water* (P206) is on 1,767 of the 1,833 (96 %): Pacific 447, Atlantic 184, Caribbean Sea 86, Arctic 75, Aegean 70, Indian 65, Adriatic 64. Groups per ocean need each sea mapped to its ocean (Aegean => Mediterranean => Atlantic), via the seas' own P361 / P206, a short hand table at worst.
+- **Per ocean (Trummler, 2026-11-24: Pacific, Indian, Atlantic with the Mediterranean and the Arctic; `_scripts/ocean-groups.mjs`):** walking P206 and then P361 / P206 up to an ocean resolves 1,627 of the 1,767 islands (Atlantic 701, Pacific 602, Indian 137, Arctic 127, both Indian and Pacific 15) and 110 of the 127 seas. Islands in rivers and lakes take the ocean their water drains into (Trummler, 2026-11-24), by *mouth of the watercourse* (P403) and a lake's *outflow* (P201): that resolves 60 more (Danube, Nile, Seine, Lake Victoria), 1,687 in all. Left: 80, the endorheic waters with no ocean at all (Caspian Sea 8, Aral Sea 3, Titicaca 2: the interesting exceptions, a group of their own or the continent), Lake Prespa (drains underground), and seas and straits without P361 (Sibuyan, Samar, Riiser-Larsen and Cooperation Seas; Korea, Malacca, Singapore and Bass Straits), and the **Southern Ocean**, which takes 40 islands and 11 seas the three-way split has no place for. A strait or sea between two oceans may take both (Trummler, 2026-11-24: Malacca Indian and Pacific), unless the source assigns one. **Settled by IHO S-23 (1953; `done/IHO_Seas_By_Ocean.md`):** the Southern Ocean's 40 islands and 11 seas go to the three oceans by sector, read from their coordinates (P625): the 1953 edition runs the South Atlantic, Indian and South Pacific Oceans to Antarctica, their limits along the meridians of Cape Agulhas (20° E), South East Cape of Tasmania (146° 55′ E) and Cape Horn (67° 16′ W; all three read in the S-23 text by Trummler, 2026-11-26: Agulhas and Cape Horn pp. 18–19, No. 32 *South Atlantic Ocean*; Tasmania p. 22, No. 45 *Indian Ocean*, On the East). The *East Indian Archipelago* and the Malacca and Singapore Straits take both Indian and Pacific; Bass Strait both too (a part of the Great Australian Bight, which S-23 puts between the two); Torres Strait the Pacific (Coral Sea). Wikidata needs no change: P361 *Southern Ocean* is right since the IHO recognised it (2023). Formerly: the standard that settles both, IHO S-23 *Limits of Oceans and Seas* (1953, in force, no Southern Ocean): `_data/Prompts/IHO_Seas_By_Ocean.md`.
+
+## Groups to decide before release (2026-11-26, for the specs)
+
+The topics are analysed and their bases clean; before they go into `_Build_Specs.md`, the groups. Panel rule as decided for Science: only cryptic or unsuitable entries go to the omission panel, everything else is an inclusion group with `omittable` (in by default) or `omitted` (out).
+
+| Topic | Proposed groups (default) | Basis on Wikidata |
+| --- | --- | --- |
+| all | per continent (all `omittable`) | the country's continent (P17 near complete, P30 thin); P30 where no country (Antarctica, open sea) |
+| Oceans & Seas | oceans (fixed in), seas `omittable`; gulfs, bays, fjords, straits each `omitted`; `historic-oceans` `omitted` | classes; gulfs told apart from bays by name (decided 2026-10-30) |
+| Islands | per ocean (`omittable`; 1,687 of 1,767 resolved, Southern Ocean split by S-23, all three meridians confirmed); `artificial-islands`, `former-islands` `omitted`; atolls, reefs `omittable` | P206 walked to the ocean, P403 / P201 for river and lake islands |
+| Mountains | `volcanoes` `omittable`; `extraterrestrial` `omitted`; *Seven Summits* (Q208126) and *eight-thousanders* (Q185552) as inclusion groups, worth considering | classes; P376 for not-on-Earth; P361 for the two sets (Seven Summits 11 members; eight-thousanders 2 of 14, the other 12 by `2026-11-26_eight-thousanders.txt` from 8000ers.com) |
+| Rivers | per ocean the river drains into (`omittable`); `dry-rivers`, `wadis` `omitted` | P403 walked to the sea, the seas to their ocean |
+| Lakes | `reservoirs` `omittable`; `lagoons`, `dry-lakes` `omitted`; salt lakes worth considering | classes |
+| Volcanoes | `submarine` `omitted`; `extraterrestrial` `omitted` | class and elevation |
+| Mountain Ranges | levels 0 / 1 / 2+ (decided) | P4552, P361, P706 |
+| Waterfalls | `former` `omitted` (decided) | class / end date |
+| National Parks | `archaeological-parks` `omitted` (Israel's) | class |
+
+- **Size versus fame:** where the tier measure is a size, a famous small entry sits low (Vesuvius 1,281 m, Table Mountain, the Thames). The Stars' answer fits here too: an *Always include* row *most famous* (Top 5 / 10 / 20 / 35 / 50 by sitelinks) beside the size tiers, for Mountains, Rivers, Lakes, Islands.
+- **Labels:** disambiguation brackets swept per topic (`*-label-brackets.txt`, 2026-11-26); en / de labels where only `mul` held the name (Aconcagua, Denali, Menorca: `2026-11-26_geography-mul-labels.txt`).
 
 ## Candidates
 

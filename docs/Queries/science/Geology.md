@@ -35,4 +35,12 @@ What Wikidata offers for the Minerals topic, and how far it can serve as its sou
 
 **Rating:** clean. One gap to read through (jade).
 
+## Selection options (2026-11-25)
+
+- **Decided (Trummler, 2026-11-26):** tiers ignore the class; species the implicit base; groups (inclusion panel) for the mineral groups, per species with 3+ varieties (quartz, feldspar, beryl) and *other varieties* (jade included), all `omittable`; Nickel–Strunz classes as `omitted` inclusion groups. `_Build_Specs.md#minerals`.
+- **Base gap found (2026-11-26):** mica (82), tourmalines (66), amphibole (56) are *mineral supergroups*, biotite (53), hornblende, lepidolite and 14 more *mineral series*, zeolite a *mineral subclass*: none of the three base classes, so the base takes those classes too (about 380 from 20). Default cut at 40 sitelinks (about 116), the rest behind *allow minerals below 40*.
+
+- *Solid:* groups by chemical class: all 3,127 minerals from 5 sitelinks link to one (P279 / P361): sulfates 166, phosphates 159, sulfides 149, carbonates 112, arsenates 98, oxides 94, halides 85, sulfosalts 81, borates 57, the silicate subclasses (neso-, ino-, phyllo-, cyclo-, soro-) and native elements 29: about 15 groups, the classic Strunz / Dana level.
+- *Worth considering:* the mineral groups one level down (garnet, pyroxene, spinel, autunite, eudialyte: 20–30 members each), as finer inclusion groups or folded into their class where small.
+
 ## [to Navigation](#navigation)

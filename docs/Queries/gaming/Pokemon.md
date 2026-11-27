@@ -281,12 +281,6 @@ Refs: this file, Pokémon => Forms: what exists, and how to group them; _scripts
 
 **Rating:** ☑️ stands; membership is now perfect by class (2026-10-20). Wikidata could supply the names (as good as PokéAPI after this batch, and better on two Chinese names), but not the fame.
 
-<!-- @agent(#35) from #38 · 2026-10-09 · OPEN
-Decided: Pokémon checked against Wikidata (this file, Pokémon). PokéAPI stays the source; fame stays editorial (sitelinks too coarse past gen 2); the official languages are exactly the build's 11, every other language falls back to English as it does now.
-Ask: two zh-Hans names in our lists carry a Traditional character (PokéAPI's error): Minun 負电拍拍 => 负电拍拍 (generation-3) and Iron Treads 铁轍迹 => 铁辙迹 (generation-9); a `corrections` entry each.
-Refs: this file, Pokémon => Labels: official where the games are released, and only there
--->
-
 ## ☑Abilities
 
 **Associated List:** -  

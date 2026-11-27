@@ -15,13 +15,13 @@ What Wikidata offers for a Naruto topic, and what it would take to make it the s
 ## Navigation
 
 [Anime](../README.md#anime)
-- ✖️[Characters](#characters)
+- ➕[Characters](#characters)
 - [Model (proposed)](#model-proposed)
 - [Decided](#decided-trummler-2026-11-16)
 - [Researched](#researched-2026-11-16)
 - [Open](#open)
 
-## ✖️Characters
+## ➕Characters
 
 **Official source:** the results site of the worldwide character poll *NARUTOP99* (`narutop99.naruto-official.com`, in ja, en, de, fr, es, it). Its page loads the data as script files, read here directly:
 - `_chars.gen.js`: **488 characters**, each with the Japanese name, its kana reading, the English name, a **group** (*principal* 17, *main* 88, *sub* 187, *mob* 196) and a **village** (木ノ葉 Leaf 219, 砂 Sand 45, 雲 Cloud 32, 霧 Mist 28, 岩 Stone 23, その他 other 141).
@@ -203,6 +203,20 @@ Following My Hero Academia and JoJo (`anime/My_Hero_Academia.md`, `anime/JoJo.md
 - **Names in de / fr / es / it (`chars-l10n.mjs`, `2026-11-20_naruto-character-names-de-fr-es-it.txt`):** per done/Naruto_Names_Other_Languages.md, the title of the character's page in that language's Naruto wiki, by the English wiki's language links: a label where the item has none in that language (325 de, 398 fr, 208 es, 67 it), an alias where it differs from the label.
 - **Land of Water (Q107103741), alias Kirigakure (found 2026-11-20):** the country carries its village's name as en alias, as the Land of Sound carried *Otogakure*. A hand edit (QuickStatements can't remove aliases).
 - **Land of Sound (Q1102030), mixed with its village:** en label *Land of Sound* and the itwiki article (*Paese del Suono*) are the country, but the ja label 音隠れの里, the es label *Aldea Oculta del Sonido* and the en alias *Otogakure* are its village, and the es aliases name characters (*Kimimaro Kaguya*, *Cuatro del Sonido*). The de label *Reisfeld-Reich* is the country's earlier name (the Land of Rice Paddies), which fits. `2026-11-17_naruto-land-of-sound-ja.txt` sets the ja label to 音の国; Otogakure gets its own item in PRE14. The es label and the stray aliases are a hand edit (QuickStatements can't remove aliases).
+
+## Notability (2026-11-23)
+
+**The note:** a Wikidata administrator (Yamato Shiya, 2026-11-20, on Trummler's talk page) pointed to WD:N: many of the new items cite only the fan wiki. The same admin closed the deletion of *General skill* and *Shape Transformation* (Bulk deletion request 6).
+
+**What carries an item here** (research: `_data/Prompts/done/Wikidata_Fictional_Notability.md`): WD:N criterion 2 asks for "serious and publicly available references", and Help:Sources accepts the work itself and printed guidebooks; criterion 3 holds items other items' statements need. No deletion precedent exists for techniques, minor characters or game-only elements either way.
+
+**Done:**
+- `2026-11-23_naruto-work-references.txt` (4,492 lines): on *present in work*, *stated in* the manga with the debut *chapter* (1,341: jutsu, characters, places), or the game, film or novel itself (3,151).
+- `2026-11-23_naruto-databooks-create_PRE7.txt`: the eight official guidebooks the wiki cites (*Rin / Tō / Sha / Jin no Sho*, the four databooks; *Retsu*, *Zai*, *Shō no Sho*, *One Decade, One Hundred Ninja*), with ISBN, date, pages; then `backlog/…_POST7_naruto-databook-references.txt`: the databook page as source on the 453 characters whose infobox cites one.
+- The links between the items (users, types, kekkei genkai, clans, places, ranks) are the structural need.
+- **For every new batch:** at least one source that is the work or an official book; the fan wiki beside it, and as identifier.
+
+**Backlog (Trummler, 2026-11-24: later, next year if need be):** 1,278 jutsu appear only in games (they now cite the game), 312 have no official name (the wiki's description serves as title; 55 of them game-only).
 
 ## Next steps
 
